@@ -229,4 +229,20 @@ describe('Checkbox', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+
+  test('a11y indeterminate', async () => {
+    const { getByTestId } = render(
+      <Checkbox indeterminate>
+        <Checkbox.Value>
+          <Checkbox.Value.Control data-testid={'checkboxControl'} />
+          <Checkbox.Text>Checkbox</Checkbox.Text>
+        </Checkbox.Value>
+      </Checkbox>,
+    );
+
+    const checkboxControl: any = getByTestId('checkboxControl');
+
+    expect(checkboxControl.indeterminate).toEqual(true);
+    expect(checkboxControl['aria-checked']).toEqual(undefined);
+  });
 });

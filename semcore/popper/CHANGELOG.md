@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.12.0] - 2023-11-28
+
+### Added
+
+- Internal api to enable new focus lock scope.
+
 ## [5.11.0] - 2023-12-04
 
 ### Changed
