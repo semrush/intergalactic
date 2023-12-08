@@ -72,6 +72,10 @@ SRangeIndicator[range='compare'] {
   background-color: var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
 }
 
+SRangeIndicator[disabled] {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+}
+
 SHumanizedDate {
   position: absolute;
   pointer-events: none;

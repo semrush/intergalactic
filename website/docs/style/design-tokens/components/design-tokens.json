@@ -2558,6 +2558,7 @@
       "button",
       "carousel",
       "checkbox",
+      "date-picker",
       "dropdown-menu",
       "inline-input",
       "input",
