@@ -9,8 +9,8 @@ import { renderLegacyEmails } from './renderLegacyEmails';
 
 export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
   md.use(container, 'sandbox', {
-    render(tokens, idx) {
-      return renderSandbox(tokens, idx, 'sandbox', plainTextOnly);
+    render(tokens, idx, _, state) {
+      return renderSandbox(tokens, idx, 'sandbox', plainTextOnly, state);
     },
   })
     .use(container, 'react-view', {

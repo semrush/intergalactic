@@ -2,6 +2,7 @@ import { createMarkdownRenderer } from 'vitepress/dist/node/index';
 import { resolve as resolvePath } from 'path';
 import parseImports from 'parse-es-import';
 import { transformSync } from 'esbuild';
+import fs from 'fs';
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'));
 
@@ -81,24 +82,35 @@ export const renderSandbox = (
   index: number,
   htmlTagName: string,
   renderNothing = false,
+  state?: { relativePath: string },
 ) => {
   const renderFunc = (tokens: any[], idx: number, htmlTag: string) => {
     if (renderNothing) return '';
     if (tokens[idx].nesting === 1) {
       const scriptTag = tokens[idx + 1].content;
-      const playgroundId = 'playground_' + Math.random().toString().substring(2);
-      const code = clearScriptTagFromTags(scriptTag);
-      const executedCode = makePlaygroundExecutedCode(
-        code,
-        playgroundId,
-        htmlTag === 'sandbox' ? 'Demo' : 'App',
-      );
       const lines = scriptTag.split('\n');
       const scriptHead = lines[lines.findIndex((line) => line.includes('<script'))];
       const hideCode = htmlTagName !== 'sandbox';
       const lang = /lang="([^"]+)"/.exec(scriptHead)?.[1];
       const params = /params="([^"]+)"/.exec(scriptHead)?.[1];
+      const src = /src="([^"]+)"/.exec(scriptHead)?.[1];
       const meta = (lang ?? '') + (params ?? '');
+
+      let code = '';
+
+      if (src) {
+        const pathToCurrentDir = state.relativePath.split('/').slice(0, -1);
+        code = fs.readFileSync(resolvePath('docs2', ...pathToCurrentDir, src), 'utf8');
+      } else {
+        code = clearScriptTagFromTags(scriptTag);
+      }
+
+      const playgroundId = 'playground_' + Math.random().toString().substring(2);
+      const executedCode = makePlaygroundExecutedCode(
+        code,
+        playgroundId,
+        htmlTag === 'sandbox' ? 'Demo' : 'App',
+      );
 
       const htmlCode = markdownRenderer.render('```' + meta + '\n' + code + '\n```\n');
       let lastScriptTokenIndex = -1;
