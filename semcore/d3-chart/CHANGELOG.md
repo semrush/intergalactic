@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.21.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.12.0 ~> 2.13.0], `@semcore/popper` [5.11.0 ~> 5.12.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
 ## [3.20.1] - 2023-12-06
 
 ### Fixed
 
-- Correct base element for `Dots`.
+- base element for `Dots`.
 
 ## [3.20.0] - 2023-12-04
 

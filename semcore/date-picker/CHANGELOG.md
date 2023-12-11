@@ -2,11 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.1] - 2023-12-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/checkbox` [7.16.0 ~> 7.16.1]).
+
+## [4.20.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.18.0 ~> 4.19.0], `@semcore/button` [5.13.0 ~> 5.14.0], `@semcore/dropdown` [4.12.0 ~> 4.13.0], `@semcore/checkbox` [7.15.0 ~> 7.16.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
 ## [4.19.0] - 2023-11-30
 
 ### Fixed
 
 - Input trigger were not displaying date or date range when it is passed as number or string.
+
+## [4.18.1] - 2023-11-30
+
+### Fixed
+
+- `DateRangeComparator` and `MonthDateRangeComparator` compare date input was not visually disabled during inaccessible state.
 
 ## [4.18.0] - 2023-11-28
 
