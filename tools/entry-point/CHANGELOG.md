@@ -1,3 +1,74 @@
+## [15.42.1] - 2023-12-07
+
+### @semcore/checkbox
+
+- **Fixed** How to `indeterminate` will be read by screen readers.
+
+### @semcore/input-tags
+
+- **Fixed** Removed unnecessary `role` from input element.
+
+## [15.42.0] - 2023-12-06
+
+### @semcore/core
+
+- **Changed** Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`. For INTERNAL usage only. Don't use it.
+
+### @semcore/dropdown
+
+- **Changed** Deprecated some values of `interaction` property.
+
+### @semcore/dropdown-menu
+
+- **Changed** Deprecated some values of `interaction` property.
+- **Removed** unnecessary style for focused `Popper`.
+
+### @semcore/popper
+
+- **Added** Internal api to enable new focus lock scope.
+
+### @semcore/select
+
+- **Added** `aria-disable` attribute for disabled `Trigger` and `Option` components.
+
+### @semcore/tooltip
+
+- **Changed** Deprecated `interaction` property.
+
+## [15.41.0] - 2023-12-05
+
+### @semcore/modal
+
+- **Fixed** Pass `ignorePortalsStacking` prop to the `Portal`.
+
+## [15.39.0] - 2023-12-04
+
+### @semcore/data-table
+
+- **Fixed** Lighthouse accessibility warning about existing scrollbar role element inside of the table.
+
+### @semcore/date-picker
+
+- **Fixed** Input trigger were not displaying date or date range when it is passed as number or string.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed vertical gaps between tags for `l` size.
+
+### @semcore/utils
+
+- **Added** New `--intergalactic-border-critical-pattern` token for marking controls invalid state.
+
+## [15.38.0] - 2023-11-30
+
+### @semcore/breakpoints
+
+- **Removed** `defaultIndex` from `MediaList` as unusable.
+
+### @semcore/data-table
+
+- **Added** Sort icon is visible when column is focused by keyboard.
+
 ## [15.37.0] - 2023-11-28
 
 ### @semcore/carousel
