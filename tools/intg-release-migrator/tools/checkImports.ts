@@ -38,7 +38,7 @@ export async function checkImports(baseDir = 'src') {
 *              new intergalactic package          *
 *                                                 *
 *                 To migrate, run                 *
-*        npx intergalactic-migrate       *
+*            npx intergalactic-migrate            *
 *                                                 *
 ***************************************************\n`,
       );
