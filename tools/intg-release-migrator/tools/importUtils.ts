@@ -50,7 +50,14 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
         const nodesES = ast.root().findAll({
           rule: {
             kind: 'import_statement',
-            pattern: "import $A from '$SCOPE';",
+            any: [
+              {
+                pattern: "import $A from '$SCOPE';",
+              },
+              {
+                pattern: 'import $A from "$SCOPE";',
+              },
+            ],
           },
           constraints: {
             SCOPE: {
@@ -61,7 +68,14 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
 
         const nodesCJS = ast.root().findAll({
           rule: {
-            pattern: 'require("$SCOPE")',
+            any: [
+              {
+                pattern: 'require("$SCOPE")',
+              },
+              {
+                pattern: "require('$SCOPE')",
+              },
+            ],
           },
           constraints: {
             SCOPE: {

@@ -37,7 +37,7 @@ async function makeIndexCJS(componentName: string) {
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }
 async function makeIndexESM(componentName: string) {
-  const dataToWrite = `export * from './lib/es6/index.js';`;
+  const dataToWrite = `export * from './lib/es6/index.js';\nexport { default } from './lib/es6/index.js';`;
   const pathToFile = path.resolve(dirname, componentName, 'index.mjs');
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
