@@ -48,13 +48,14 @@ SValue {
   &:disabled {
     user-select: none;
     opacity: var(--intergalactic-disabled-opacity, 0.3);
-
-    & ~ SOutline {
-      opacity: var(--intergalactic-disabled-opacity, 0.3);
-      cursor: default;
-      pointer-events: none;
-    }
   }
+}
+
+SInput[disabled] SOutline, SValue:disabled ~ SOutline {
+
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  pointer-events: none;
 }
 
 SOutline {

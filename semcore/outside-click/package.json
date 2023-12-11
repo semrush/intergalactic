@@ -1,7 +1,7 @@
 {
   "name": "@semcore/outside-click",
   "description": "Semrush OutsideClick Component",
-  "version": "3.11.0-prerelease.1",
+  "version": "3.12.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,10 +12,10 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
-    "@semcore/utils": "4.14.0-prerelease.1"
+    "@semcore/utils": "4.15.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.11.0-prerelease.1",
+    "@semcore/core": "^2.12.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

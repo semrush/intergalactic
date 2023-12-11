@@ -2,7 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [7.15.0-prerelease.1] - 2023-12-04
+## [7.16.1] - 2023-12-06
+
+### Fixed
+
+- How to `indeterminate` will be read by screen readers.
+
+## [7.16.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [7.15.0] - 2023-12-04
 
 ### Changed
 

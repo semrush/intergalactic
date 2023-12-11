@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.11.0-prerelease.1] - 2023-12-04
+## [6.12.0] - 2023-11-29
+
+### Changed
+
+- Deprecated `interaction` property.
+
+## [6.11.0] - 2023-12-04
 
 ### Changed
 

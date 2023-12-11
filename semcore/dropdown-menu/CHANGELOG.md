@@ -2,7 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.14.0-prerelease.1] - 2023-12-04
+## [4.15.0] - 2023-12-05
+
+### Changed
+
+- Deprecated some values of `interaction` property.
+
+### Removed
+
+- unnecessary style for focused `Popper`.
+
+## [4.14.0] - 2023-12-04
 
 ### Changed
 

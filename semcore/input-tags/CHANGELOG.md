@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.1] - 2023-12-07
+
+### Fixed
+
+- Removed unnecessary `role` from input element.
+
+## [4.15.0] - 2023-12-06
+
+### Changed
+
+- When input tags container is empty, focus on the container is automatically moved to the input field.
+- Version preminor update due to children dependencies update (`@semcore/input` [4.14.0 ~> 4.15.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [4.14.1] - 2023-11-24
+
+### Fixed
+
+- Fixed vertical gaps between tags for `l` size.
+
 ## [4.14.1-prerelease.1] - 2023-11-24
 
 ### Fixed

@@ -82,9 +82,6 @@ importers:
       '@semcore/gcs-upload':
         specifier: workspace:*
         version: link:tools/gcs-upload
-      'intergalactic-migrate':
-        specifier: workspace:*
-        version: link:tools/intg-release-migrator
       '@semcore/slack-integration':
         specifier: workspace:*
         version: link:tools/slack-integration
@@ -133,9 +130,6 @@ importers:
       inquirer:
         specifier: 6.3.1
         version: 6.3.1
-      intergalactic:
-        specifier: workspace:*
-        version: link:tools/entry-point
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -194,19 +188,19 @@ importers:
   semcore/accordion:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -231,13 +225,13 @@ importers:
   semcore/animation:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -256,13 +250,13 @@ importers:
   semcore/badge:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -281,25 +275,25 @@ importers:
   semcore/base-trigger:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/dot':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../dot
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/spin':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../spin
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -324,16 +318,16 @@ importers:
   semcore/breadcrumbs:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -352,8 +346,8 @@ importers:
   semcore/breakpoints:
     dependencies:
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
-        version: link:../utils
+        specifier: 4.14.0
+        version: 4.14.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: 16.8 - 18
         version: 18.2.0
@@ -371,19 +365,19 @@ importers:
   semcore/button:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/spin':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../spin
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -394,7 +388,7 @@ importers:
     devDependencies:
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -405,22 +399,22 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/tooltip':
-        specifier: 6.11.0-prerelease.1
+        specifier: 6.12.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -439,25 +433,25 @@ importers:
   semcore/carousel:
     dependencies:
       '@semcore/breakpoints':
-        specifier: 1.14.0-prerelease.1
+        specifier: 1.14.0
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.22.0
         version: link:../modal
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -482,16 +476,16 @@ importers:
   semcore/checkbox:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -510,28 +504,28 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/divider':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../dropdown
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -559,7 +553,7 @@ importers:
         specifier: 0.0.1-alpha.74
         version: 0.0.1-alpha.74
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -587,13 +581,13 @@ importers:
   semcore/counter:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -615,22 +609,22 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(typescript@5.1.6)
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/divider':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../divider
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.11.0-prerelease.1
+        specifier: 5.12.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       '@types/d3-shape':
         specifier: ^3.1.0
@@ -677,22 +671,22 @@ importers:
         version: link:../../tools/babel-plugin-react-semcore
       '@semcore/button':
         specifier: '*'
-        version: 5.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../button
       '@semcore/checkbox':
         specifier: '*'
-        version: 7.16.1(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../checkbox
       '@semcore/dropdown-menu':
         specifier: '*'
-        version: 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../dropdown-menu
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
       '@semcore/typography':
         specifier: '*'
-        version: 5.20.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../typography
       '@types/d3-array':
         specifier: ^3.0.2
         version: 3.0.4
@@ -709,19 +703,19 @@ importers:
   semcore/data-table:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../scroll-area
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -738,40 +732,40 @@ importers:
         version: 1.25.1
       '@semcore/accordion':
         specifier: '*'
-        version: 5.18.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../accordion
       '@semcore/base-trigger':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../base-trigger
       '@semcore/divider':
         specifier: '*'
-        version: 4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../divider
       '@semcore/dropdown-menu':
         specifier: '*'
-        version: 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../dropdown-menu
       '@semcore/portal':
         specifier: '*'
-        version: 3.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../portal
       '@semcore/progress-bar':
         specifier: '*'
-        version: 4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../progress-bar
       '@semcore/skeleton':
         specifier: '*'
-        version: 5.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../skeleton
       '@semcore/spin':
         specifier: '*'
-        version: 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../spin
       '@semcore/spin-container':
         specifier: '*'
-        version: 7.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../spin-container
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
       '@semcore/tooltip':
         specifier: '*'
-        version: 6.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../tooltip
       '@semcore/typography':
         specifier: '*'
-        version: 5.20.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../typography
       '@types/node':
         specifier: ^18.16.15
         version: 18.16.15
@@ -785,43 +779,43 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 7.15.0-prerelease.1
+        specifier: 7.16.1
         version: link:../checkbox
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/divider':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../dropdown
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../input-mask
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       dayjs:
         specifier: 1.8.36
@@ -849,13 +843,13 @@ importers:
   semcore/divider:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -874,19 +868,19 @@ importers:
   semcore/dot:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/portal':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../portal
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -903,7 +897,7 @@ importers:
         version: 1.25.1
       '@semcore/button':
         specifier: '*'
-        version: 5.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../button
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -914,19 +908,19 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.18.0-prerelease.1
+        specifier: 5.19.0
         version: link:../card
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/grid':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../grid
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -943,13 +937,13 @@ importers:
         version: 1.25.1
       '@semcore/badge':
         specifier: '*'
-        version: 4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../badge
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/tab-panel':
         specifier: '*'
-        version: 4.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../tab-panel
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -960,16 +954,16 @@ importers:
   semcore/dropdown:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.11.0-prerelease.1
+        specifier: 5.12.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -994,19 +988,19 @@ importers:
   semcore/dropdown-menu:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/dropdown':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../dropdown
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/scroll-area':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../scroll-area
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1040,16 +1034,16 @@ importers:
   semcore/ellipsis:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/tooltip':
-        specifier: 6.11.0-prerelease.1
+        specifier: 6.12.0
         version: link:../tooltip
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1122,25 +1116,25 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../format-text
       '@semcore/illustration':
-        specifier: 2.11.0-prerelease.1
+        specifier: 2.12.0
         version: link:../illustration
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1159,22 +1153,22 @@ importers:
   semcore/feature-popover:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/popper':
-        specifier: 5.11.0-prerelease.1
+        specifier: 5.12.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1193,25 +1187,25 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/notice':
-        specifier: 5.18.0-prerelease.1
+        specifier: 5.19.0
         version: link:../notice
       '@semcore/spin-container':
-        specifier: 7.13.0-prerelease.1
+        specifier: 7.14.0
         version: link:../spin-container
       '@semcore/tooltip':
-        specifier: 6.11.0-prerelease.1
+        specifier: 6.12.0
         version: link:../tooltip
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       final-form:
         specifier: 4.20.4
@@ -1239,13 +1233,13 @@ importers:
   semcore/flags:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1279,10 +1273,10 @@ importers:
   semcore/flex-box:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1310,13 +1304,13 @@ importers:
   semcore/format-text:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1335,22 +1329,22 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.22.0
         version: link:../modal
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1369,13 +1363,13 @@ importers:
   semcore/grid:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1394,8 +1388,8 @@ importers:
   semcore/i18n-unplugin:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       unplugin:
         specifier: 1.2.0
         version: 1.2.0
@@ -1425,16 +1419,16 @@ importers:
   semcore/icon:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: 'link:'
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1465,10 +1459,10 @@ importers:
         specifier: 7.19.0
         version: 7.19.0
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       react:
         specifier: 16.8 - 18
@@ -1493,16 +1487,16 @@ importers:
   semcore/inline-edit:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1527,28 +1521,28 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/core':
-        specifier: 2.11.0-prerelease.1
+        specifier: 2.12.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../input-number
       '@semcore/spin':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 6.11.0-prerelease.1
+        specifier: 6.12.0
         version: link:../tooltip
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1559,7 +1553,7 @@ importers:
     devDependencies:
       '@semcore/button':
         specifier: '*'
-        version: 5.14.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../button
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1570,16 +1564,16 @@ importers:
   semcore/input:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1590,7 +1584,7 @@ importers:
     devDependencies:
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1601,19 +1595,19 @@ importers:
   semcore/input-mask:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1641,13 +1635,13 @@ importers:
   semcore/input-number:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1666,19 +1660,19 @@ importers:
   semcore/input-tags:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/scroll-area':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../scroll-area
       '@semcore/tag':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../tag
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1689,13 +1683,13 @@ importers:
     devDependencies:
       '@semcore/select':
         specifier: '*'
-        version: 4.21.1(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../select
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
       '@semcore/tooltip':
         specifier: '*'
-        version: 6.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../tooltip
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -1703,16 +1697,16 @@ importers:
   semcore/link:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1723,7 +1717,7 @@ importers:
     devDependencies:
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1734,28 +1728,28 @@ importers:
   semcore/modal:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/outside-click':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../outside-click
       '@semcore/portal':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1780,10 +1774,10 @@ importers:
   semcore/neighbor-location:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1802,22 +1796,22 @@ importers:
   semcore/notice:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/notice-global':
-        specifier: 2.28.0-prerelease.1
+        specifier: 2.29.0
         version: link:../notice-global
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1836,22 +1830,22 @@ importers:
   semcore/notice-bubble:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/portal':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../portal
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1870,19 +1864,19 @@ importers:
   semcore/notice-global:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1901,10 +1895,10 @@ importers:
   semcore/outside-click:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1923,28 +1917,28 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/link':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../link
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1963,16 +1957,16 @@ importers:
   semcore/pills:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1989,10 +1983,10 @@ importers:
         version: 1.25.1
       '@semcore/badge':
         specifier: '*'
-        version: 4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../badge
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2006,25 +2000,25 @@ importers:
         specifier: 2.11.5
         version: 2.11.5
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/outside-click':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../outside-click
       '@semcore/portal':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../portal
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2043,10 +2037,10 @@ importers:
   semcore/portal:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2068,13 +2062,13 @@ importers:
   semcore/product-head:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2093,13 +2087,13 @@ importers:
   semcore/progress-bar:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2124,16 +2118,16 @@ importers:
   semcore/radio:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2152,13 +2146,13 @@ importers:
   semcore/scroll-area:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2177,31 +2171,31 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../base-trigger
       '@semcore/checkbox':
-        specifier: 7.15.0-prerelease.1
+        specifier: 7.16.1
         version: link:../checkbox
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/divider':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -2232,28 +2226,28 @@ importers:
   semcore/side-panel:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/outside-click':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../outside-click
       '@semcore/portal':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2272,13 +2266,13 @@ importers:
   semcore/skeleton:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2297,13 +2291,13 @@ importers:
   semcore/slider:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2328,13 +2322,13 @@ importers:
   semcore/spin:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2353,19 +2347,19 @@ importers:
   semcore/spin-container:
     dependencies:
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/spin':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../spin
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2384,13 +2378,13 @@ importers:
   semcore/sticky:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2409,16 +2403,16 @@ importers:
   semcore/switch:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2443,16 +2437,16 @@ importers:
   semcore/tab-line:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2471,13 +2465,13 @@ importers:
   semcore/tab-panel:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2488,7 +2482,7 @@ importers:
     devDependencies:
       '@semcore/icon':
         specifier: '*'
-        version: 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2499,22 +2493,22 @@ importers:
   semcore/table:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -2539,16 +2533,16 @@ importers:
   semcore/tag:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2567,13 +2561,13 @@ importers:
   semcore/textarea:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       csstype:
         specifier: 3.0.8
@@ -2595,22 +2589,22 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.21.1
         version: link:../select
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2635,16 +2629,16 @@ importers:
   semcore/tooltip:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.11.0-prerelease.1
+        specifier: 5.12.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2663,16 +2657,16 @@ importers:
   semcore/typography:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       csstype:
         specifier: 3.0.8
@@ -2694,223 +2688,223 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: 5.17.0-prerelease.1
+        specifier: 5.18.0
         version: link:../accordion
       '@semcore/animation':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../animation
       '@semcore/badge':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: 5.17.0-prerelease.1
+        specifier: 5.18.0
         version: link:../breadcrumbs
       '@semcore/breakpoints':
-        specifier: 1.14.0-prerelease.1
+        specifier: 1.14.0
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../button
       '@semcore/card':
-        specifier: 5.18.0-prerelease.1
+        specifier: 5.19.0
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.20.0-prerelease.1
+        specifier: 3.22.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 7.15.0-prerelease.1
+        specifier: 7.16.1
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: 2.18.0-prerelease.1
+        specifier: 2.19.0
         version: link:../color-picker
       '@semcore/core':
-        specifier: 2.11.0-prerelease.1
+        specifier: 2.12.0
         version: link:../core
       '@semcore/counter':
-        specifier: 3.12.0-prerelease.1
+        specifier: 3.13.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.20.0-prerelease.1
+        specifier: 3.21.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.19.1-prerelease.1
+        specifier: 4.20.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.19.0-prerelease.1
+        specifier: 4.20.1
         version: link:../date-picker
       '@semcore/divider':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../divider
       '@semcore/dot':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: 3.20.0-prerelease.1
+        specifier: 3.21.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: 2.12.0-prerelease.1
+        specifier: 2.13.0
         version: link:../ellipsis
       '@semcore/email':
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 4.15.0-prerelease.1
+        specifier: 4.16.0
         version: link:../errors
       '@semcore/feature-popover':
-        specifier: 4.17.0-prerelease.1
+        specifier: 4.18.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 6.13.0-prerelease.1
+        specifier: 6.14.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../flags
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../format-text
       '@semcore/fullscreen-modal':
-        specifier: 3.19.0-prerelease.1
+        specifier: 3.21.0
         version: link:../fullscreen-modal
       '@semcore/grid':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../grid
       '@semcore/i18n-unplugin':
-        specifier: 0.11.0-prerelease.1
+        specifier: 0.12.0
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/illustration':
-        specifier: 2.11.0-prerelease.1
+        specifier: 2.12.0
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../inline-input
       '@semcore/input':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.14.1-prerelease.1
+        specifier: 4.15.1
         version: link:../input-tags
       '@semcore/link':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../link
       '@semcore/modal':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.22.0
         version: link:../modal
       '@semcore/neighbor-location':
-        specifier: 4.11.0-prerelease.1
+        specifier: 4.12.0
         version: link:../neighbor-location
       '@semcore/notice':
-        specifier: 5.18.0-prerelease.1
+        specifier: 5.19.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 5.17.0-prerelease.1
+        specifier: 5.18.0
         version: link:../notice-bubble
       '@semcore/notice-global':
-        specifier: 2.28.0-prerelease.1
+        specifier: 2.29.0
         version: link:../notice-global
       '@semcore/outside-click':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.21.0
         version: link:../pagination
       '@semcore/pills':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../pills
       '@semcore/popper':
-        specifier: 5.11.0-prerelease.1
+        specifier: 5.12.0
         version: link:../popper
       '@semcore/portal':
-        specifier: 3.11.0-prerelease.1
+        specifier: 3.12.0
         version: link:../portal
       '@semcore/product-head':
-        specifier: 4.13.0-prerelease.1
+        specifier: 4.14.0
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 6.15.0-prerelease.1
+        specifier: 6.16.0
         version: link:../radio
       '@semcore/scroll-area':
-        specifier: 5.14.0-prerelease.1
+        specifier: 5.15.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.21.1
         version: link:../select
       '@semcore/side-panel':
-        specifier: 3.19.0-prerelease.1
+        specifier: 3.20.0
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../skeleton
       '@semcore/slider':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../slider
       '@semcore/spin':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../spin
       '@semcore/spin-container':
-        specifier: 7.13.0-prerelease.1
+        specifier: 7.14.0
         version: link:../spin-container
       '@semcore/sticky':
-        specifier: 3.12.0-prerelease.1
+        specifier: 3.13.0
         version: link:../sticky
       '@semcore/switch':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: 4.13.0-prerelease.1
+        specifier: 4.14.0
         version: link:../tab-panel
       '@semcore/tag':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../tag
       '@semcore/textarea':
-        specifier: 5.13.0-prerelease.1
+        specifier: 5.14.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.21.1
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: 6.11.0-prerelease.1
+        specifier: 6.12.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.19.0-prerelease.1
+        specifier: 5.20.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       '@semcore/widget-empty':
-        specifier: 4.12.0-prerelease.1
+        specifier: 4.13.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 2.19.0-prerelease.1
+        specifier: 2.21.0
         version: link:../wizard
       react:
         specifier: 16.8 - 18
@@ -2970,7 +2964,7 @@ importers:
         version: link:../../tools/babel-plugin-react-semcore
       '@semcore/core':
         specifier: ^2
-        version: 2.10.0(react-dom@18.2.0)(react@18.2.0)
+        version: link:../core
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -3008,16 +3002,16 @@ importers:
   semcore/widget-empty:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/illustration':
-        specifier: 2.11.0-prerelease.1
+        specifier: 2.12.0
         version: link:../illustration
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -3036,19 +3030,19 @@ importers:
   semcore/wizard:
     dependencies:
       '@semcore/core':
-        specifier: ^2.11.0-prerelease.1
-        version: 2.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.12.0
+        version: link:../core
       '@semcore/flex-box':
-        specifier: 5.12.0-prerelease.1
+        specifier: 5.13.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.18.0-prerelease.1
+        specifier: 4.19.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.20.0-prerelease.1
+        specifier: 4.22.0
         version: link:../modal
       '@semcore/utils':
-        specifier: 4.14.0-prerelease.1
+        specifier: 4.15.0
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -3067,7 +3061,7 @@ importers:
   tools/babel-plugin-react-semcore:
     dependencies:
       '@semcore/babel-plugin-styles':
-        specifier: ^1.8.1
+        specifier: ^1.9.1
         version: link:../babel-plugin-styles
       find-package-json:
         specifier: 1.2.0
@@ -3269,9 +3263,6 @@ importers:
       '@semcore/changelog-handler':
         specifier: '*'
         version: link:../changelog-handler
-      'intergalactic-migrate':
-        specifier: workspace:*
-        version: link:../intg-release-migrator
       '@semcore/slack-integration':
         specifier: '*'
         version: link:../slack-integration
@@ -3330,18 +3321,6 @@ importers:
       semver:
         specifier: 6.3.0
         version: 6.3.0
-
-  tools/entry-point:
-    dependencies:
-      'intergalactic-migrate':
-        specifier: '*'
-        version: link:../intg-release-migrator
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
 
   tools/esbuild-plugin-semcore:
     dependencies:
@@ -3420,25 +3399,6 @@ importers:
       babel-plugin-tester:
         specifier: 7.0.1
         version: 7.0.1(@babel/core@7.19.1)
-
-  tools/intg-release-migrator:
-    dependencies:
-      '@ast-grep/napi':
-        specifier: 0.13.0
-        version: 0.13.0
-      fs-extra:
-        specifier: 9.0.1
-        version: 9.0.1
-      yargs:
-        specifier: 17.7.2
-        version: 17.7.2
-    devDependencies:
-      '@types/fs-extra':
-        specifier: 9.0.13
-        version: 9.0.13
-      typescript:
-        specifier: 5.3.2
-        version: 5.3.2
 
   tools/playground:
     dependencies:
@@ -4347,72 +4307,6 @@ packages:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
 
-  /@ast-grep/napi-darwin-arm64@0.13.0:
-    resolution: {integrity: sha512-O9TgxfWQX1A7ppTCuoxhCe66vFrCNiqFPhWBzqfVZy4b4htDrZgt9XtuPfkau0tJgybpyv6G+aiURf5ejEqaFg==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@ast-grep/napi-darwin-x64@0.13.0:
-    resolution: {integrity: sha512-85N0WNEK/iicakQd+vDmGg500JjC3WVbSv2zJFpEPc+1SvAwZLpaRIPY1Y+XTOFvN9XKy7h9hczcoDobvJVl1Q==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@ast-grep/napi-linux-x64-gnu@0.13.0:
-    resolution: {integrity: sha512-/k0MNAGdInIB7Mf/68Ma+TQnY11KC5Jp2fnUFDyIPm08chCeDxFiPiaz8WryD8NEC+y0H0p33Tdytn86H0FbiA==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@ast-grep/napi-win32-arm64-msvc@0.13.0:
-    resolution: {integrity: sha512-tQVZnb9OdDRAC+tZMiqhJeNMUsmq+c5xtyQIjftf6edfYlClXq0bT9QgImjzZhEHnMKhKCZOLrg6ruVgjEaQsw==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@ast-grep/napi-win32-ia32-msvc@0.13.0:
-    resolution: {integrity: sha512-rhm4TQI9fNmWCgJmB94JuJPBdvRrBxD7rHWLgFj3v3GDUBdsMpsUJwxs9ZCDzMpLIW/lhKgjQtb6EHHBIliKAA==}
-    engines: {node: '>= 10'}
-    cpu: [ia32]
-    os: [win32]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@ast-grep/napi-win32-x64-msvc@0.13.0:
-    resolution: {integrity: sha512-fYoVxKJv54+23XNP/oI0IPuAH/XISQV59nRrbRQefiMhaMZl+O5dqvbq6jY4Z/ObLK1acYTDKEFuA5rWujEwnA==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@ast-grep/napi@0.13.0:
-    resolution: {integrity: sha512-MRDAK5i/OceZMXNYDqJebJRp7EkzV0tGex0Tc2JajvlqC26++4lDODdxIvsZjdeBhi1oNjgiPdoQ7g5ji2HOhw==}
-    engines: {node: '>= 10'}
-    optionalDependencies:
-      '@ast-grep/napi-darwin-arm64': 0.13.0
-      '@ast-grep/napi-darwin-x64': 0.13.0
-      '@ast-grep/napi-linux-x64-gnu': 0.13.0
-      '@ast-grep/napi-win32-arm64-msvc': 0.13.0
-      '@ast-grep/napi-win32-ia32-msvc': 0.13.0
-      '@ast-grep/napi-win32-x64-msvc': 0.13.0
-    dev: false
-
   /@babel/cli@7.12.0(@babel/core@7.19.1):
     resolution: {integrity: sha512-0EO6EN6brF4g0HaR6qQr2USkCvFjKNgBdmaYNW5NzB1IeHhqQkGhErX3/hvWA7+g/onS41IM/wm+yD+hcSwgVQ==}
     hasBin: true
@@ -4500,7 +4394,7 @@ packages:
     resolution: {integrity: sha512-QS3iR1GYC/YGUnW7IdggFeN5c1poPUurnGttOV/bZgPGV+izC/D8HnD6DLwod0fsatNyVn1G3EVWMYIF0nHbeA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
       '@jridgewell/gen-mapping': 0.3.2
       '@jridgewell/trace-mapping': 0.3.17
       jsesc: 2.5.2
@@ -4519,13 +4413,13 @@ packages:
     resolution: {integrity: sha512-duORpUiYrEpzKIop6iNbjnwKLAKnJ47csTyRACyEmWj0QdUrm5aqNJGHSSEQSUAvNW0ojX0dOmK9dZduvkfeXA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-annotate-as-pure@7.22.5:
     resolution: {integrity: sha512-LvBTxu8bQSQkcyKOU+a1btnNFQ1dMAd0R6PyW3arXes06F6QLWLIrd681bxRPIXlrMGR3XYnW9JyML7dP3qgxg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-builder-binary-assignment-operator-visitor@7.18.9:
@@ -4533,7 +4427,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-explode-assignable-expression': 7.18.6
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-compilation-targets@7.20.7(@babel/core@7.19.1):
     resolution: {integrity: sha512-4tGORmfQcrc+bvrjb5y3dG9Mx1IOZjsHqQVUz7XCNHO+iTmqxWnVg3KRygjGmpRLJGdQSKuvFinbIb0CnZwHAQ==}
@@ -4604,7 +4498,7 @@ packages:
       '@babel/helper-plugin-utils': 7.20.2
       debug: 4.3.4(supports-color@5.5.0)
       lodash.debounce: 4.0.8
-      resolve: 1.22.1
+      resolve: 1.22.2
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -4622,28 +4516,28 @@ packages:
     resolution: {integrity: sha512-eyAYAsQmB80jNfg4baAtLeWAQHfHFiR483rzFK+BhETlGZaQC9bsfrugfXDCbRHLQbIA7U5NxhhOxN7p/dWIcg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-function-name@7.21.0:
     resolution: {integrity: sha512-HfK1aMRanKHpxemaY2gqBmL04iAPOPRj7DxtNbiDOrJK+gdwkiNRVpCpUJYbUT+aZyemKN8brqTOxzCaG6ExRg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.20.7
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-function-name@7.22.5:
     resolution: {integrity: sha512-wtHSq6jMRE3uF2otvfuD3DIvVhOsSNshQl0Qrd7qC9oQJzHvOL4qQXlQn2916+CXGywIjpGuIkoyZRRxHPiNQQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.22.15
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-hoist-variables@7.18.6:
     resolution: {integrity: sha512-UlJQPkFqFULIcyW5sbzgbkxn2FKRgwWiRexcuaR8RNJRy8+LLveqPjwZV/bwrLZCN0eUHD/x8D0heK1ozuoo6Q==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-hoist-variables@7.22.5:
     resolution: {integrity: sha512-wGjk9QZVzvknA6yKIUURb8zY3grXCcOZt+/7Wcy8O2uctxhplmUPkOdlgoNhmdVee2c92JXbf1xpMtVNbfoxRw==}
@@ -4656,13 +4550,13 @@ packages:
     resolution: {integrity: sha512-Muu8cdZwNN6mRRNG6lAYErJ5X3bRevgYR2O8wN0yn7jJSnGDu6eG59RfT29JHxGUovyfrh6Pj0XzmR7drNVL3Q==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-member-expression-to-functions@7.22.15:
     resolution: {integrity: sha512-qLNsZbgrNh0fDQBCPocSL8guki1hcPvltGDv/NxvUoABwFq7GkKSu1nRXeJkVZc+wJvne2E0RKQz+2SQrz6eAA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-module-imports@7.18.6:
@@ -4675,7 +4569,7 @@ packages:
     resolution: {integrity: sha512-0pYVBnDKZO2fnSPCrgM/6WMc7eS20Fbok+0r88fp+YtWVLZrp4CkafFGIp+W0VKw4a22sgebPT99y+FDNMdP4w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-module-transforms@7.21.2:
@@ -4697,13 +4591,13 @@ packages:
     resolution: {integrity: sha512-HP59oD9/fEHQkdcbgFCnbmgH5vIQTJbxh2yf+CdM89/glUNnuzr87Q8GIjGEnOktTROemO0Pe0iPAYbqZuOUiA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-optimise-call-expression@7.22.5:
     resolution: {integrity: sha512-HBwaojN0xFRx4yIvpwGqxiV2tUfl7401jlok564NgB9EHS1y6QT17FmKWm4ztqjeVdXLuC4fSvHc5ePpQjoTbw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-plugin-utils@7.20.2:
@@ -4724,7 +4618,7 @@ packages:
       '@babel/helper-annotate-as-pure': 7.18.6
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-wrap-function': 7.20.5
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
     transitivePeerDependencies:
       - supports-color
 
@@ -4737,7 +4631,7 @@ packages:
       '@babel/helper-optimise-call-expression': 7.18.6
       '@babel/template': 7.20.7
       '@babel/traverse': 7.21.3(supports-color@5.5.0)
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
     transitivePeerDependencies:
       - supports-color
 
@@ -4769,20 +4663,20 @@ packages:
     resolution: {integrity: sha512-tK14r66JZKiC43p8Ki33yLBVJKlQDFoA8GYN67lWCDCqoL6EMMSuM9b+Iff2jHaM/RRFYl7K+iiru7hbRqNx8Q==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-split-export-declaration@7.18.6:
     resolution: {integrity: sha512-bde1etTx6ZyTmobl9LLMMQsaizFVZrquTEHOqKeQESMKo4PlObf+8+JA25ZsIpZhT/WEd39+vOdLXAFG/nELpA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/helper-split-export-declaration@7.22.6:
     resolution: {integrity: sha512-AsUnxuLhRYsisFiaJwvp1QF+I3KjD5FOxut14q/GzovUe6orHLesW2C7d754kRm53h5gqrz6sFl6sxc4BVtE/g==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/helper-string-parser@7.19.4:
@@ -4796,11 +4690,6 @@ packages:
   /@babel/helper-validator-identifier@7.19.1:
     resolution: {integrity: sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==}
     engines: {node: '>=6.9.0'}
-
-  /@babel/helper-validator-identifier@7.22.15:
-    resolution: {integrity: sha512-4E/F9IIEi8WR94324mbDUMo074YTheJmd7eZF5vITTeYchqAi6sYXRLHUVsmkdmY4QjfKTcB2jB7dVP3NaBElQ==}
-    engines: {node: '>=6.9.0'}
-    dev: false
 
   /@babel/helper-validator-identifier@7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
@@ -4822,7 +4711,7 @@ packages:
       '@babel/helper-function-name': 7.21.0
       '@babel/template': 7.20.7
       '@babel/traverse': 7.21.3(supports-color@5.5.0)
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
     transitivePeerDependencies:
       - supports-color
 
@@ -4858,14 +4747,14 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
 
   /@babel/parser@7.22.16:
     resolution: {integrity: sha512-+gPfKv8UWeKKeJTUxe59+OobVcrYHETCsORl61EmSkmgymguYk/X5bp7GuUIXaFsc6y++v8ZxPsLSSuujqDphA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/parser@7.23.0:
@@ -5937,7 +5826,7 @@ packages:
     dependencies:
       '@babel/code-frame': 7.22.13
       '@babel/parser': 7.22.16
-      '@babel/types': 7.22.15
+      '@babel/types': 7.22.19
     dev: false
 
   /@babel/traverse@7.21.3(supports-color@5.5.0):
@@ -5988,7 +5877,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
     dev: false
 
@@ -7336,6 +7225,7 @@ packages:
       rtl-css-js: 1.16.1
       stacktrace-js: 2.0.2
       stylis: 4.1.3
+    dev: false
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -7357,6 +7247,7 @@ packages:
 
   /@popperjs/core@2.11.5:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
+    dev: false
 
   /@previewjs/analyzer-api@0.1.4:
     resolution: {integrity: sha512-U2GcwR91FLBi42UBvJqj6VtlUHJLxewPyFS0xu1DToYAbvLbgw//GYlvPRwVsjstZbqeyPXo/7UzFU2+rIvVag==}
@@ -7863,6 +7754,7 @@ packages:
 
   /@reshadow/core@0.0.1-alpha.74:
     resolution: {integrity: sha512-oYATyZXe0gLbOnqDa01T5HeivUiEY7LxyfbTYVX6Q8pIWvfBJE0ftrrJkeKA2PW5HilE7qWxn7tmlX2YQFowSg==}
+    dev: false
 
   /@reshadow/utils@0.0.1-alpha.75:
     resolution: {integrity: sha512-9YerWUjSae8RVLacGh6XUhUIhfAG9K5CgvOjAa5t4HgTZ/ris4Wz1Yxj06wBKu8QacFBpY+D4YiJCAyEqnGBXA==}
@@ -7884,528 +7776,14 @@ packages:
       picomatch: 2.3.1
       rollup: 2.79.1
 
-  /@semcore/accordion@5.18.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-axfaJEafhnviQ5E+in/Dr6K5eMOsYzoOZTAuJtDX1Om0iU0MpoOkW/Rdtd1Yz7YDhSwQxOiQ2GGRXzpXSWI38Q==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/animation': 2.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/icon': 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/animation@2.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-enN8uNkmWewySKU3JsnKJSvGzBlHoZcG9i1jIZPJGphYZ4GrgXTj0+zMAyK2V8ZpdU4bb4NdGKgzaTzyE7k6cA==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/badge@4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Hl0DORRVoWbUhesxebg4trOKX5e/NXlfKD6FEDFJJhB9DknlMpEMpgLqP/k72+YPV2nqLKUOey+s3iTTzMb1Tg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/base-trigger@4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zgYSgqvHRjF9HaNTaom8uhyOijRk28+nQ298AEPX61v4bqu9FRERe6qHe/RJDN40c6f0I8e9MM6tGxiwTwEteA==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/dot': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/icon': 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/spin': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/button@5.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uS2ur6IwcLvf0OO4ReiBdh9uyC2ehnw3FE9KJt9Uf5Ozlf8dM0lLJt2F5Is1WlXHxIvpI7Y57tE+R2hvHvrobw==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/spin': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/button@5.14.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uS2ur6IwcLvf0OO4ReiBdh9uyC2ehnw3FE9KJt9Uf5Ozlf8dM0lLJt2F5Is1WlXHxIvpI7Y57tE+R2hvHvrobw==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.13.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.12.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/spin': 5.13.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/checkbox@7.16.1(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-8m8RSOx4+4ru5Whvua0y2qnkqwvfy7GfEVbpoVqIaSoRJUVgmFUMn9WitDMOQArYgh5eXWrn+NhpHVDjL/gEFg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/typography': 5.20.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/core@2.10.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-QbZq1kiRwZ7rU5UsvdXiFBVZK7wg9FcSqz2oihNtejPJy+CPeb2GZh79lRULuJzSVQA6x9ra6bOl78G31WKEvQ==}
-    peerDependencies:
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@reshadow/core': 0.0.1-alpha.74
-      '@semcore/utils': 4.13.0(@semcore/core@2.10.0)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/core@2.12.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xMEnIF4Kw2as2DQjgBtBi9H8P5GXxmT2JeEpV8DGG310l/tRWijeeY2Q0GRD6kKw0yY/KyYfiAmgcuJJiicxXA==}
-    peerDependencies:
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@reshadow/core': 0.0.1-alpha.74
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-
-  /@semcore/divider@4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-HHp2Ad7YFXbJPlfK8t6wHH1eSxT/kcqcGjubdQzXYuqNe2XHZXITp5YYwflKlgfPtgu9wLKK6ks1IjBfAyG86g==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/dot@5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Tnl5knaF+ESw5xn9tuCTtv6ehq2SEmJdEQlD1MhBI6AvD55ARR9TXrAQlpPhbOhFmg+55BrP2ucLkozRRtwPxQ==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/animation': 2.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/portal': 3.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/dropdown-menu@4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sm0lngO8S5sdMLLae1niq4BsL6wWWr26o8KuWZtmEFRJlB6ylkrMpcxKi7y6MxwFkCSFkWBRato33T6o0q4xaQ==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/dropdown': 4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/scroll-area': 5.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/dropdown@4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-3DFQ15M44UA/GoDAqICMjCZj2GbWvAv4QaNnzy6xDpl9blm3MxY9JjWDcgPEQgxvlIjbl/owYofZ+JlnCODTHw==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/popper': 5.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/flex-box@5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zdFNh816auXz7s88VaKJBW+ySFKaFxfDS0CuXiAVfjfSrdgnhb8ecFvk1SRGh0gG3RgvJ7W2mDdFLERSrcaWYg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/flex-box@5.13.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zdFNh816auXz7s88VaKJBW+ySFKaFxfDS0CuXiAVfjfSrdgnhb8ecFvk1SRGh0gG3RgvJ7W2mDdFLERSrcaWYg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.15.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/icon@4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dvTtNMr82Xtl80vbXpqfMJKXR+SfF88S2NaVPawi61zuPlo1Qs6bD28S0qS6gKoVkLOdKo/gnugO5i9SKLKKyg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/input@4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-F585D2uFys6SiUw7zf2oEechSolaUclK6C5O9oVuUyz5TAealLay//V+SJ69weX4X48KWw8NogXXrcM3pkXmsw==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/neighbor-location@4.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-jE812bpJcT8lglWBAN5rV12NcSf7UYzsmWpGzl3Hb8YthLbrPB5kwwoLr5h6yGmsgOFy1HSzbzgpTAl1Q5Pobg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/neighbor-location@4.12.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-jE812bpJcT8lglWBAN5rV12NcSf7UYzsmWpGzl3Hb8YthLbrPB5kwwoLr5h6yGmsgOFy1HSzbzgpTAl1Q5Pobg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.15.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/outside-click@3.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-LuPOoeTEJ6j/x6qC1fqNcXZ8yjhdPJAoLsiONF0Ua8Dc0vAtcpY7coa/veWnfFxZCupErFgRuZghWm+zaZoFJA==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/popper@5.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ibKrid4OCbuPrwrvjaseHxxvJjkZx3Owpx8DcJRqDRIoijpd/Kp4e9lLqgYJWbDsq5wFEzmG8qQF33z6uKqnHg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@popperjs/core': 2.11.5
-      '@semcore/animation': 2.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/outside-click': 3.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/portal': 3.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/portal@3.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aFtG5+Y6sHx4g5SmpVr5zSNmPpFJ1LAQB+CCbrOjbKqC5KaYxGwpoT+/efC74JZ8sdVgO71/rJ9WKwurqsvVIA==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/progress-bar@4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5LWioL09yVBN5/J+0ajfP+giQ1CXqeD5mlC+KMjiE7rWf8PQ2rc465cf6PEwlhqpwx4q+6gJQQdJsGBCuvkdew==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/scroll-area@5.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ahk/zPz1VihFM0LETAQKlvjTX4rF+bywfreAsFYp2E7kszZ5bp3brvx3xk9RD6oi6ylqT5ijkTZEhBy+UT9CAA==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/select@4.21.1(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1qeLUGAuQ7L/sc0s1l20DFRJ8RxKL3M89yzwY07IaiajbwW/hcfq30XftHEcYd5j4yvyPPEzijHOsQn+G0Kilg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/base-trigger': 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/checkbox': 7.16.1(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/divider': 4.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/dropdown-menu': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/icon': 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/input': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/skeleton@5.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-blzfvNE2TN2ndvKQnhqG28fm5AAklaJ7KyuL+S2pTVCVvhiglfY5vaBC4wS/04OJZwsddJCL8UOVmxN08BZSAQ==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/spin-container@7.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-q2rEMnXEJvrYAj7dRANp22wfC6Xu1rEm8DkBswVqYFSI5yh8J1aZKNfrNcyRZX/YmlvI24nZtXWGYXxXy89ohQ==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/animation': 2.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/spin': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/spin@5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-WKbEsJegRp4axWB81ooi7ScqwZ+M68L+/jezPTjf6tueVyyeu+xOHmgLUFVIB6A8J+TO2mnQ6L+qWIzjvfzCeg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/spin@5.13.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-WKbEsJegRp4axWB81ooi7ScqwZ+M68L+/jezPTjf6tueVyyeu+xOHmgLUFVIB6A8J+TO2mnQ6L+qWIzjvfzCeg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.13.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/tab-panel@4.14.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-T+9E5XA80kYsaaudjRF3zcPXv+E0tWoTL1nPStkFCTVBJYcvhNQ5d8RsycBGMdXzrRcyhkgrxiAyoZ5iE5ch3w==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
   /@semcore/theme-redesign@1.5.12:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
     dev: true
 
-  /@semcore/tooltip@6.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Gg1pFJnpiZQlgSgnEbOuMCcwWsXQDYxQ5m5l8D2t+zXvRQagH01tpDd4sP2R4+QyoRO2zEFJH6/ZARwlzUMObw==}
+  /@semcore/utils@4.14.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Nwgw1UcOMXvFW3xnpkr1qkU+armVm87BtdS5VKxm52q8aQK1uU1BCeC1kyodhZAmF2FaaYTAyJvb3nlndpKycg==}
     peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/popper': 5.12.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/typography@5.20.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-hYQR/Gy0fBvTo/hEnY22L8Fnq/GDrNE0SyxptDtFIFPc0AiDYQK9qHqLav3B6U5UYZS2WE9TMqlHohLFT70AsA==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box': 5.13.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/icon': 4.19.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0)
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/utils@4.13.0(@semcore/core@2.10.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-TNn0TgvpvI9viXr+IZG8hTgCwcwqOjGt0KTZs+Uw1YBX3NDCfoWAkKcvbyClkhqa4ZoJE5WclzxnVJebeRenXA==}
-    peerDependencies:
-      '@semcore/core': ^2.10.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.10.0(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      focus-lock: 0.11.3
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@semcore/utils@4.15.0(@semcore/core@2.12.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xWWiJPt4EVRDrOSgYuNHBZ6M5RoQojGCwY9nk6JeaqH6Tvuxqtd3zpplzKaC4iKIAEk8gwirwrscSd+zzPW4jg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': 2.12.0(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      focus-lock: 0.11.3
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-
-  /@semcore/utils@4.15.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xWWiJPt4EVRDrOSgYuNHBZ6M5RoQojGCwY9nk6JeaqH6Tvuxqtd3zpplzKaC4iKIAEk8gwirwrscSd+zzPW4jg==}
-    peerDependencies:
-      '@semcore/core': ^2.12.0
+      '@semcore/core': ^2.11.0
       react: 16.8 - 18
       react-dom: 16.8 - 18
     dependencies:
@@ -8417,7 +7795,7 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: true
+    dev: false
 
   /@sideway/address@4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
@@ -9283,7 +8661,7 @@ packages:
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
       magic-string: 0.30.1
-      postcss: 8.4.24
+      postcss: 8.4.31
       source-map-js: 1.0.2
     dev: false
 
@@ -10360,7 +9738,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@babel/template': 7.20.7
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
       '@types/babel__core': 7.20.1
       '@types/babel__traverse': 7.18.3
 
@@ -10817,7 +10195,6 @@ packages:
       electron-to-chromium: 1.4.576
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
-    dev: false
 
   /bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
@@ -11012,8 +10389,8 @@ packages:
   /caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
-      browserslist: 4.21.5
-      caniuse-lite: 1.0.30001472
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001561
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
@@ -11023,7 +10400,6 @@ packages:
 
   /caniuse-lite@1.0.30001561:
     resolution: {integrity: sha512-NTt0DNoKe958Q0BE0j0c1V9jbUzhBxHIEJy7asmGrpE0yG63KTV7PLHPnK2E1O9RsQrQ081I3NLuXGS6zht3cw==}
-    dev: false
 
   /caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
@@ -11284,6 +10660,7 @@ packages:
 
   /classnames@2.2.6:
     resolution: {integrity: sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==}
+    dev: false
 
   /clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -11844,6 +11221,7 @@ packages:
     resolution: {integrity: sha512-fJAcud6B3rRu+KHYk+Bwf+WFL2MDCJJ1XG9x137tJQ0xYxor7XziQtuGFbWNdqrvF4Tk26O3H73nfVqXt/fW1A==}
     dependencies:
       hyphenate-style-name: 1.0.4
+    dev: false
 
   /css-prefers-color-scheme@3.1.1:
     resolution: {integrity: sha512-MTu6+tMs9S3EUqzmqLXEcgNRbNkkD/TGFvowpeoWJn5Vfq7FMgsmRQs9X5NXAURiOBmOxm/lLjsDNXDE6k9bhg==}
@@ -12446,7 +11824,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       es-get-iterator: 1.1.3
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       is-arguments: 1.1.1
       is-array-buffer: 3.0.2
       is-date-object: 1.0.5
@@ -12913,7 +12291,6 @@ packages:
 
   /electron-to-chromium@1.4.576:
     resolution: {integrity: sha512-yXsZyXJfAqzWk1WKryr0Wl0MN2D47xodPvEEwlVePBnhU5E7raevLQR+E6b9JAD3GfL/7MbAL9ZtWQQPcLx7wA==}
-    dev: false
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -13006,6 +12383,7 @@ packages:
     resolution: {integrity: sha512-Sk5V6wVazPhq5MhpO+AUxJn5x7XSXGl1R93Vn7i+zS15KDVxQijejNCrz8340/2bgLBjR9GtEG8ZVKONDjcqGQ==}
     dependencies:
       stackframe: 1.3.4
+    dev: false
 
   /errorhandler@1.5.1:
     resolution: {integrity: sha512-rcOwbfvP1WTViVoUjcfZicVzjhjTuhSMntHh6mW3IrEiyE6mJyXvsToJUJGlGlw/2xU9P5whlWNGlIDVeCiT4A==}
@@ -13059,7 +12437,7 @@ packages:
     resolution: {integrity: sha512-sPZmqHBe6JIiTfN5q2pEi//TwxmAFHwj/XEuYjTuse78i8KxaqMTTzxPoFKuzRpDpTJ+0NAbpfenkmH2rePtuw==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       has-symbols: 1.0.3
       is-arguments: 1.1.1
       is-map: 2.0.2
@@ -14169,6 +13547,7 @@ packages:
 
   /fast-loops@1.1.3:
     resolution: {integrity: sha512-8EZzEP0eKkEEVX+drtd9mtuQ+/QrlfW/5MlwcwK5Nds6EkZ/tRzEexkzUY2mIssnAyVLT+TKHuRXmFNNXYUd6g==}
+    dev: false
 
   /fast-printf@1.6.9:
     resolution: {integrity: sha512-FChq8hbz65WMj4rstcQsFB0O7Cy++nmbNfLYnD9cYv2cRn8EG6k/MGn9kO/tjO66t09DLDugj3yL+V2o6Qftrg==}
@@ -14204,6 +13583,7 @@ packages:
 
   /fastest-stable-stringify@2.0.2:
     resolution: {integrity: sha512-bijHueCGd0LqqNK9b5oCMHc0MluJAx0cwqASgbWMvkO01lCYgIhacVRLcaDz3QnyYIRNJRDwMb41VuT6pHJ91Q==}
+    dev: false
 
   /fastparse@1.1.2:
     resolution: {integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==}
@@ -14512,6 +13892,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       tslib: 2.5.0
+    dev: false
 
   /focus-trap@7.5.4:
     resolution: {integrity: sha512-N7kHdlgsO/v+iD/dMoJKtsSqs5Dz/dXZVebRgJw23LDk+jMi/974zyiOYDziY2JPp8xivq9BmUGwIJMiuSBi7w==}
@@ -14904,7 +14285,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
     dev: false
 
   /get-uri@6.0.2:
@@ -15134,7 +14515,7 @@ packages:
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
 
   /got@12.6.1:
     resolution: {integrity: sha512-mThBblvlAF1d4O5oqyvN+ZxLAYwIJK7bpMxgYqPD9okW0C3qm5FFn7k811QrcuEBwaogR3ngOFoCfs6mRv7teQ==}
@@ -15709,6 +15090,7 @@ packages:
 
   /hyphenate-style-name@1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
+    dev: false
 
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -15922,6 +15304,7 @@ packages:
     dependencies:
       css-in-js-utils: 3.1.0
       fast-loops: 1.1.3
+    dev: false
 
   /inquirer@6.3.1:
     resolution: {integrity: sha512-MmL624rfkFt4TG9y/Jvmt8vdmOo836U7Y0Hxr2aFk3RelZEGX4Igk0KabWrcaaZaTv9uzglOqWh1Vly+FAWAXA==}
@@ -16054,7 +15437,7 @@ packages:
     resolution: {integrity: sha512-y+FyyR/w8vfIRq4eQcM1EYgSTnmHXPqaF+IgzgraytCFq5Xh8lllDVmAZolPJiZttZLeFSINPYMaEJ7/vWUa1w==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       is-typed-array: 1.1.10
 
   /is-arrayish@0.2.1:
@@ -16484,7 +15867,7 @@ packages:
     resolution: {integrity: sha512-t2yVvttHkQktwnNNmBQ98AhENLdPUTDTE21uPqAQ0ARwQfGeQKRVS0NNurH7bTf7RrvcVn1OOge45CnBeHCSmg==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
 
   /is-what@3.14.1:
     resolution: {integrity: sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==}
@@ -16659,7 +16042,7 @@ packages:
       jest-util: 29.5.0
       jest-validate: 29.5.0
       prompts: 2.4.2
-      yargs: 17.7.2
+      yargs: 17.7.1
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -16869,7 +16252,7 @@ packages:
       jest-pnp-resolver: 1.2.3(jest-resolve@29.5.0)
       jest-util: 29.5.0
       jest-validate: 29.5.0
-      resolve: 1.22.1
+      resolve: 1.22.2
       resolve.exports: 2.0.2
       slash: 3.0.0
     dev: true
@@ -16942,7 +16325,7 @@ packages:
       '@babel/plugin-syntax-jsx': 7.18.6(@babel/core@7.19.1)
       '@babel/plugin-syntax-typescript': 7.20.0(@babel/core@7.19.1)
       '@babel/traverse': 7.21.3(supports-color@5.5.0)
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.19
       '@jest/expect-utils': 29.5.0
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
@@ -18964,7 +18347,7 @@ packages:
     resolution: {integrity: sha512-7GGVawqyHF4pfd0YFybhv/eM9JwTtPqx0mAanQ146O3FlSh3pA24zf9IRQTOsfTSqXTNzPSP5iagAJ94jjuVog==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.3.8
+      semver: 7.3.5
     dev: false
 
   /node-abort-controller@3.1.1:
@@ -19055,7 +18438,6 @@ packages:
 
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
-    dev: false
 
   /node-stream-zip@1.15.0:
     resolution: {integrity: sha512-LN4fydt9TqhZhThkZIVQnF9cwjU3qmUH9h78Mx/K7d3VvfRqqwthLwJEUOEL0QPZ0XQmNN7be5Ggit5+4dq3Bw==}
@@ -19963,7 +19345,7 @@ packages:
       postcss: ^8.2.2
     dependencies:
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -20538,7 +19920,7 @@ packages:
       caniuse-api: 3.0.0
       cssnano-utils: 3.1.0(postcss@8.2.13)
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /postcss-minify-font-values@5.1.0(postcss@8.2.13):
@@ -20582,7 +19964,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /postcss-nested@5.0.5(postcss@8.2.13):
@@ -21037,7 +20419,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /postcss-value-parser@3.3.1:
@@ -21116,6 +20498,7 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
 
   /postcss@8.4.30:
     resolution: {integrity: sha512-7ZEao1g4kd68l97aWG/etQKPKq07us0ieSZ2TnFDk11i0ZfDW2AwKHYU8qv4MZKqN2fdBfg+7q0ES06UA73C1g==}
@@ -22487,6 +21870,7 @@ packages:
     resolution: {integrity: sha512-lRQgou1mu19e+Ya0LsTvKrVJ5TYUbqCVPAiImX3UfLTenarvPUl1QFdvu5Z3PYmHT9RCcwIfbjRQBntExyj3Zg==}
     dependencies:
       '@babel/runtime': 7.19.0
+    dev: false
 
   /run-async@2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
@@ -22529,7 +21913,7 @@ packages:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       is-regex: 1.1.4
     dev: false
 
@@ -22855,7 +22239,7 @@ packages:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.1
       object-inspect: 1.12.3
 
   /siginfo@2.0.0:
@@ -23082,6 +22466,7 @@ packages:
   /source-map@0.5.6:
     resolution: {integrity: sha512-MjZkVp0NHr5+TPihLcadqnlVoGIoWo4IBHptutGh9wI3ttUYvCG26HkSuDi+K6lsZ25syXJXcctwgyVCt//xqA==}
     engines: {node: '>=0.10.0'}
+    dev: false
 
   /source-map@0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
@@ -23194,6 +22579,7 @@ packages:
     resolution: {integrity: sha512-mwnua/hkqM6pF4k8SnmZ2zfETsRUpWXREfA/goT8SLCV4iOFa4bzOX2nDipWAZFPTjLvQB82f5yaodMVhK0yJQ==}
     dependencies:
       stackframe: 1.3.4
+    dev: false
 
   /stack-utils@2.0.6:
     resolution: {integrity: sha512-XlkWvfIm6RmsWtNJx+uqtKLS8eqFbxUg0ZzLXqY0caEy9l7hruX8IpiDnjsLavoBgqCCR71TqWO8MaXYheJ3RQ==}
@@ -23206,12 +22592,14 @@ packages:
 
   /stackframe@1.3.4:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
+    dev: false
 
   /stacktrace-gps@3.1.2:
     resolution: {integrity: sha512-GcUgbO4Jsqqg6RxfyTHFiPxdPqF+3LFmQhm7MgCuYQOYuWyqxo5pwRPz5d/u6/WYJdEnWfK4r+jGbyD8TSggXQ==}
     dependencies:
       source-map: 0.5.6
       stackframe: 1.3.4
+    dev: false
 
   /stacktrace-js@2.0.2:
     resolution: {integrity: sha512-Je5vBeY4S1r/RnLydLl0TBTi3F2qdfWmYsGvtfZgEI+SCprPppaIhQf5nGcal4gI4cGpCV/duLcAzT1np6sQqg==}
@@ -23219,6 +22607,7 @@ packages:
       error-stack-parser: 2.1.4
       stack-generator: 2.0.10
       stacktrace-gps: 3.1.2
+    dev: false
 
   /stacktrace-parser@0.1.10:
     resolution: {integrity: sha512-KJP1OCML99+8fhOHxwwzyWrlUuVX5GQ0ZpJTd1DFXhdkrvg1szxfHhawXUZ3g9TkXORQd4/WG68jMlQZ2p8wlg==}
@@ -23551,9 +22940,9 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.5
+      browserslist: 4.22.1
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /stylelint-config-recommended@12.0.0(stylelint@15.9.0):
@@ -23616,6 +23005,7 @@ packages:
 
   /stylis@4.1.3:
     resolution: {integrity: sha512-GP6WDNWf+o403jrEp9c5jibKavrtLW+/qYGhFxFrG8maXhwTBI7gLLhiBb0o7uFccWN+EOS9aMO6cGHWAO07OA==}
+    dev: false
 
   /sudo-prompt@9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
@@ -24293,6 +23683,7 @@ packages:
     resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: false
 
   /uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
@@ -24532,7 +23923,6 @@ packages:
       browserslist: 4.22.1
       escalade: 3.1.1
       picocolors: 1.0.0
-    dev: false
 
   /update-notifier@4.1.3:
     resolution: {integrity: sha512-Yld6Z0RyCYGB6ckIjffGOSOmHXj1gMeE7aROz4MG+XMkmixBX4jUngrGXNYz7wPKBmtoD4MnBa2Anu7RSKht/A==}

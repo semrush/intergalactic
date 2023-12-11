@@ -27,7 +27,7 @@ function RangeInput(props) {
       __excludeProps={['role', 'aria-haspopup', 'onChange', 'value']}
     >
       <InputTriggerBase.DateRange>
-        <SRangeIndicator range={props.range} w={12} h={12} ml={2} />
+        <SRangeIndicator range={props.range} disabled={props.disabled} w={12} h={12} ml={2} />
         <InputTriggerBase.DateRange.Indicator />
         <InputTriggerBase.DateRange.FromMaskedInput />
         <InputTriggerBase.DateRange.RangeSep />

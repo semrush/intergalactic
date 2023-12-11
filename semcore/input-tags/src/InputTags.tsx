@@ -68,10 +68,12 @@ class InputTags extends Component<IInputTagsProps> {
     defaultValue: '',
   };
 
-  _input = React.createRef<HTMLInputElement>();
+  inputRef = React.createRef<HTMLInputElement>();
+  scrollContainerRef = React.createRef<HTMLElement>();
+  tagsRefs: (HTMLElement | null)[] = [];
 
-  setFocusInput = (event: React.FocusEvent) => {
-    const inputRef = this._input.current;
+  moveFocusToInput = (event: React.FocusEvent) => {
+    const inputRef = this.inputRef.current;
     if (inputRef && event.target !== inputRef) {
       const caretPosition = inputRef.value.length;
       event.preventDefault();
@@ -91,10 +93,10 @@ class InputTags extends Component<IInputTagsProps> {
       event.preventDefault();
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
-      if (typeof this._input.current?.scrollIntoView === 'function') {
+      if (typeof this.inputRef.current?.scrollIntoView === 'function') {
         setTimeout(() => {
-          if (typeof this._input.current?.scrollIntoView === 'function') {
-            this._input.current.scrollIntoView({
+          if (typeof this.inputRef.current?.scrollIntoView === 'function') {
+            this.inputRef.current.scrollIntoView({
               block: 'nearest',
               inline: 'nearest',
               behavior: 'smooth',
@@ -127,10 +129,10 @@ class InputTags extends Component<IInputTagsProps> {
       }
       onAppend?.(tagsToBeAdded, event);
     }
-    if (typeof this._input.current?.scrollIntoView === 'function') {
+    if (typeof this.inputRef.current?.scrollIntoView === 'function') {
       setTimeout(() => {
-        if (typeof this._input.current?.scrollIntoView === 'function') {
-          this._input.current.scrollIntoView({
+        if (typeof this.inputRef.current?.scrollIntoView === 'function') {
+          this.inputRef.current.scrollIntoView({
             block: 'nearest',
             inline: 'nearest',
             behavior: 'smooth',
@@ -145,18 +147,30 @@ class InputTags extends Component<IInputTagsProps> {
     fire(this, 'onRemove', event);
   };
 
+  handleContainerFocus = (event: React.FocusEvent) => {
+    const { target } = event;
+    const { current: container } = this.scrollContainerRef;
+    if (!container || target !== container) return;
+    const hasTags = this.tagsRefs.some(Boolean);
+    if (hasTags) return;
+    this.moveFocusToInput(event);
+  };
+
   getValueProps() {
     return {
-      ref: this._input,
+      ref: this.inputRef,
       onKeyDown: this.handleKeyDown,
       onPaste: this.handlePaste,
     };
   }
 
-  getTagProps({ editable }: { editable: boolean }) {
+  getTagProps({ editable }: { editable: boolean }, index: number) {
     return {
       size: this.asProps.size,
       onClick: this.bindHandlerTagClick(editable),
+      ref: (node: HTMLElement | null) => {
+        this.tagsRefs[index] = node;
+      },
     };
   }
 
@@ -166,7 +180,13 @@ class InputTags extends Component<IInputTagsProps> {
     const SListAriaWrapper = 'div';
 
     return sstyled(styles)(
-      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput}>
+      <SInputTags
+        render={Input}
+        tag={ScrollArea}
+        onMouseDown={this.moveFocusToInput}
+        onFocus={this.handleContainerFocus}
+        container={this.scrollContainerRef}
+      >
         <SListAriaWrapper role='list'>
           <Children />
         </SListAriaWrapper>
@@ -224,7 +244,7 @@ class Value extends Component<IInputTagsValueProps> {
 
     return sstyled(this.asProps.styles)(
       <>
-        <SValue render={Input.Value} style={{ width: this.state.width }} role='listitem' />
+        <SValue render={Input.Value} style={{ width: this.state.width }} />
         <SSpacer ref={this._spacer} role='none' />
       </>,
     );
