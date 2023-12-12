@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.21.1] - 2023-12-12
+
+### Fixed
+
+- `ChartLegendTable` labels trimming with `Ellipsis` component.
+
 ## [3.21.0] - 2023-12-06
 
 ### Changed
