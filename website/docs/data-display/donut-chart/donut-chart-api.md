@@ -1,20 +1,21 @@
 ---
-title: API
+title: Donut / Pie chart
 fileSource: d3-chart
+tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-@## D3 API
+## D3 API
 
 
-@## Chart.Donut
+## Chart.Donut
 
 ```js
 import { Chart } from '@semcore/ui/d3-chart';
 ```
 
-@typescript DonutChartProps
+<TypesView type="DonutChartProps" :types={...types} />
 
-@## Donut
+## Donut
 
 It have children components `Pie`, `Label`, `EmptyData`.
 
@@ -28,4 +29,6 @@ import { Donut } from '@semcore/ui/d3-chart';
 </Donut>;
 ```
 
-@typescript DonutProps
+<TypesView type="DonutProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

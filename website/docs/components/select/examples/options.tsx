@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Select m='auto'>
       <Select.Trigger placeholder="I'll show u some options, buddy" />

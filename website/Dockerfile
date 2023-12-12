@@ -29,7 +29,7 @@ WORKDIR /app
 
 COPY ./website/nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=builder /app/website/docs2/.vitepress/dist ./static
+COPY --from=builder /app/website/docs/.vitepress/dist ./static
 
 EXPOSE 8080
 

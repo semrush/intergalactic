@@ -1,16 +1,25 @@
 ---
-title: Example
+title: AutoSuggest
+tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-code')
 ---
 
 To create one of the search patterns (Combobox, AutoSuggest) you will need the following:
 
-- [Select](/components/select/) (1 piece)
-- [Input](/components/input/) (1 piece)
+- [Select](/components/select/select) (1 piece)
+- [Input](/components/input/input) (1 piece)
 
-@## Combobox example
+## Combobox example
 
-@example combobox
+::: sandbox
 
-@## AutoSuggest example
+<script lang="tsx" src="examples/combobox_example.tsx"></script>
 
-@example autosuggest
+:::
+
+## AutoSuggest example
+
+::: sandbox
+
+<script lang="tsx" src="examples/autosuggest_example.tsx"></script>
+
+:::

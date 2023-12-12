@@ -3,7 +3,7 @@ import Ellipsis from '@semcore/ui/ellipsis';
 import { Box } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';
 
-export default function () {
+const Demo = () => {
   return (
     <Box w={220}>
       <Link inline href='https://developer.semrush.com/intergalactic/'>
@@ -11,4 +11,4 @@ export default function () {
       </Link>
     </Box>
   );
-}
+};

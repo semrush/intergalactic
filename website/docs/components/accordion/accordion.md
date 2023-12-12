@@ -1,10 +1,10 @@
 ---
 title: Accordion
 fileSource: accordion
-tabName: Design
+tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
 ---
 
-@## Description
+## Description
 
 **Accordion** is a component which allows you to hide/display areas with a large amount of data.
 
@@ -13,13 +13,15 @@ tabName: Design
 - **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
 - **When screen area is limited (for example, on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
-> **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
->
-> Use accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
->
-> Use dropdown primarily to hide additional features and sometimes additional information.
+::: tip
+**Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
 
-@## Component composition
+Use accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
+
+Use dropdown primarily to hide additional features and sometimes additional information.
+:::
+
+## Component composition
 
 ![](static/accordion-composition.png)
 
@@ -30,7 +32,7 @@ Component consists of the following:
 - Collapsed areas with content (`Accordion.Item.Collapse`)
 - `Accordion.Item.Chevron`
 
-@## Styles and sizes
+## Styles and sizes
 
 The `ChevronRight` icon always has M size and `margin-right: 8px` with all font sizes.
 
@@ -40,20 +42,22 @@ You can set the width of the accordion that is appropriate for the context.
 
 ![](static/max-width.png)
 
-> You can set different styles for the trigger and collapsed content than the default ones described below.
+::: tip
+You can set different styles for the trigger and collapsed content than the default ones described below.
+:::
 
-@## Trigger
+## Trigger
 
 You are free to set link or button of any size you need as the accordion trigger.
 
-@table-caption Trigger appearance
+Table: Trigger appearance
 
 | Trigger type       | Appearance example  | Default styles      |
 | ------------------ | ------------------- | ------------------- |
 | Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.    |
-| Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
+| Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
 
-@## Collapsed content
+## Collapsed content
 
 You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
@@ -67,33 +71,35 @@ You can use this component to hide almost any content. This can be a text conten
 
 ![](static/item-paddings.png)
 
-@## Interaction
+## Interaction
 
-> **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
->
-> The user expects this behavior when working with the desktop device interface.
->
-> On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
+::: tip
+**By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
+
+The user expects this behavior when working with the desktop device interface.
+
+On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
+:::
 
 **The icon and text label have the same target zone**.
 
 ![](static/hoverzone.png)
 
-@table-caption Accordion states
+Table: Accordion states
 
 | State    | Appearance examples    | Description and styles  |
 | -------- | ---------------------- | ----------------------- |
 | Default  | ![](static/default-state.png) ![](static/default-state-2.png)  |              |
 | Hover    | ![](static/hover-state.png) ![](static/hover-state-2.png)       | Cursor changes to `pointer`. If the accordion trigger has a background, it should change color to the next one in the palette. |
 | Active   | ![](static/active-state.png) ![](static/active-state-2.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg)`. All other trigger styles remain the same as in the `hover` state.                                          |
-| Disabled | ![](static/disabled-state.png) ![](static/disabled-state-2.png) | Use [`--disabled-opacity`](/style/design-tokens/) token.  |
-| Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)  | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/) with a respective size. By default, the spinner size is XS.                  |
+| Disabled | ![](static/disabled-state.png) ![](static/disabled-state-2.png) | Use [`--disabled-opacity`](/style/design-tokens/design-tokens) token.  |
+| Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)  | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/spin) with a respective size. By default, the spinner size is XS.                  |
 
-@## Animation
+## Animation
 
 For smooth content display and icon rotation, the component has `transition: all 0.35s`.
 
-@## Use in UI/UX
+## Use in UI/UX
 
 ### Accordion on mobile devices
 
@@ -112,7 +118,3 @@ Mostly, the advantages of the accordion relate to long pages that are loaded wit
 - Hiding additional information makes the page look less intimidatingly loaded.
 - Accordions can be a great alternative to links as they don't break the mental model the way the links do.
 
-@page accordion-a11y
-@page accordion-api
-@page accordion-code
-@page accordion-changelog

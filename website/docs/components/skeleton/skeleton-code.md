@@ -1,18 +1,31 @@
 ---
-title: Example
+title: Skeleton
 fileSource: skeleton
+tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
-@## Text initial loading
+## Text initial loading
 
-@example base
+::: sandbox
 
-@## Usage with other elements
+<script lang="tsx" src="examples/text_initial_loading.tsx"></script>
 
-@example other
+:::
 
-@## Skeleton examples for charts
+## Usage with other elements
+
+::: sandbox
+
+<script lang="tsx" src="examples/usage_with_other_elements.tsx"></script>
+
+:::
+
+## Skeleton examples for charts
 
 Use `h={100}` and `w={100}` to adjust the height and width of the skeleton.
 
-@example charts
+::: sandbox
+
+<script lang="tsx" src="examples/skeleton_examples_for_charts.tsx"></script>
+
+:::

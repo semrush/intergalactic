@@ -1,44 +1,45 @@
 ---
-title: API
+title: Table code and API
+tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog')
 ---
 
-@## Table
+## Table
 
 ```jsx
 import Table from '@semcore/ui/table';
 <Table />;
 ```
 
-@typescript TableProps
+<TypesView type="TableProps" :types={...types} />
 
-@## Table.Row
+## Table.Row
 
 ```jsx
 import Table from '@semcore/ui/table';
 <Table.Row />;
 ```
 
-@typescript TableRowProps
+<TypesView type="TableRowProps" :types={...types} />
 
-@## Table.Cell
+## Table.Cell
 
 ```jsx
 import Table from '@semcore/ui/table';
 <Table.Cell />;
 ```
 
-@typescript TableCellRowProps
+<TypesView type="TableCellRowProps" :types={...types} />
 
-@## Table.CellHead
+## Table.CellHead
 
 ```jsx
 import Table from '@semcore/ui/table';
 <Table.CellHead />;
 ```
 
-@typescript TableCellHeadProps
+<TypesView type="TableCellHeadProps" :types={...types} />
 
-@## Table.StickyHead
+## Table.StickyHead
 
 ```jsx
 import Table from '@semcore/ui/table';
@@ -48,4 +49,6 @@ import Table from '@semcore/ui/table';
 </Table>;
 ```
 
-@typescript StickyHeadProps
+<TypesView type="StickyHeadProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

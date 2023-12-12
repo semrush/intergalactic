@@ -9,9 +9,9 @@
     "start": "pnpm dev",
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js tools/searchIndexUpload.ts",
     "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
-    "dev": "vitepress dev docs2",
-    "build": "vitepress build docs2",
-    "preview": "vitepress preview docs2",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
     "make-examples": "tsm --require=../.ci/tsm-filter-warnings.js ./make-examples.ts"
   },
   "dependencies": {

@@ -1,9 +1,10 @@
 ---
-title: API
+title: ColorPicker
 fileSource: color-picker
+tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
-@## ColorPicker
+## ColorPicker
 
 Widget for selecting the color.
 
@@ -12,9 +13,9 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker />;
 ```
 
-@typescript ColorPickerProps
+<TypesView type="ColorPickerProps" :types={...types} />
 
-@## ColorPicker.Trigger
+## ColorPicker.Trigger
 
 The wrap over the `<Dropdown.Trigger/>` component.
 
@@ -23,7 +24,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Trigger />;
 ```
 
-@## ColorPicker.Popper
+## ColorPicker.Popper
 
 The wrap over the `<Dropdown.Popper/>` component.
 
@@ -32,7 +33,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Popper />;
 ```
 
-@## ColorPicker.Colors
+## ColorPicker.Colors
 
 Group of ColorPicker.Items.
 
@@ -41,9 +42,9 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Colors />;
 ```
 
-@typescript ColorsProps
+<TypesView type="ColorsProps" :types={...types} />
 
-@## ColorPicker.Item
+## ColorPicker.Item
 
 One unit of `<ColorPicker.Colors />`. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
@@ -52,9 +53,9 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Item />;
 ```
 
-@typescript ItemProps
+<TypesView type="ItemProps" :types={...types} />
 
-@## PaletteManager
+## PaletteManager
 
 Part of ColorPicker that provides the ability to add and remove custom colors to the palette.
 
@@ -63,9 +64,9 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager />;
 ```
 
-@typescript PaletteManagerProps
+<TypesView type="PaletteManagerProps" :types={...types} />
 
-@## PaletteManager.Colors
+## PaletteManager.Colors
 
 Group of PaletteManager.Items.
 
@@ -74,9 +75,9 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Colors />;
 ```
 
-@typescript ColorsCustomProps
+<TypesView type="ColorsCustomProps" :types={...types} />
 
-@## PaletteManager.Item
+## PaletteManager.Item
 
 One unit of `<PaletteManager.Colors />`. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
 
@@ -85,9 +86,9 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Item />;
 ```
 
-@typescript ItemProps
+<TypesView type="ItemProps" :types={...types} />
 
-@## ColorPicker.InputColor
+## ColorPicker.InputColor
 
 Input for adding colors in hexadecimal format.
 
@@ -96,4 +97,6 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.InputColor />;
 ```
 
-@typescript InputColorProps
+<TypesView type="InputColorProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

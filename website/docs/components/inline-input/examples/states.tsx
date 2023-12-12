@@ -34,4 +34,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+const Demo = Example;

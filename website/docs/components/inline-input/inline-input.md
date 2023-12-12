@@ -1,10 +1,10 @@
 ---
 title: InlineInput
 fileSource: inline-input
-tabName: Design
+tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-code'), Changelog('inline-input-changelog')
 ---
 
-@## Description
+## Description
 
 **InlineInput** is a single-line text field for input and edit. In edit mode, it always has buttons to save or cancel entered value.
 
@@ -14,9 +14,11 @@ tabName: Design
 - data in the interface is placed tightly, you need to save space;
 - transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
 
-> Don’t use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
+::: tip
+Don’t use such an input in a [form](/patterns/form/form) along with regular inputs (see the example in the UX/UI use section below).
+:::
 
-@## Appearance
+## Appearance
 
 ### Sizes
 
@@ -45,7 +47,7 @@ The color of the placeholder is the same as a regular input has - `--text-placeh
 
 ![](static/paddings.png)
 
-@## Addons
+## Addons
 
 Addons are slots inside the input to the left or right of the text for additional visual or interactive elements.
 
@@ -55,7 +57,7 @@ Addons are slots inside the input to the left or right of the text for additiona
 - Icon use `--icon-secondary-neutral` token for color, no hover, normal cursor.
 - **Notice the leading addon is underlined too**.
 
-@table-caption Leading addon styles
+Table: Leading addon styles
 
 |                                                               | Appearance example                               | Margins                                                | Icon size and color                             |
 | ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------- |
@@ -77,14 +79,14 @@ The color of the placeholder is the same as a regular input has - `--text-placeh
 Trailing addons are clickable icons to save input and cancel and return to view mode.
 The save icon is always has `--icon-secondary-success` token as color, the cancel icon – `--icon-secondary-neutral`.
 
-@table-caption Trailing addon styles
+Table: Trailing addon styles
 
 |                                                               | Appearance example                                       | Margins                              | Icon size |
 | ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------ | --------- |
 | For components with text less than 24px (including this size) | ![](static/trailing-addon-margins.png)     | ![](static/small-text.png) | M         |
 | For components with text larger than 24px                     | ![](static/trailing-addon-big-margins.png) | ![](static/big-text.png)     | L         |
 
-@## Tooltip
+## Tooltip
 
 For save and cancel button icons on hover, it's important to show a tooltip that tells a user what they're doing.
 
@@ -92,22 +94,22 @@ For save and cancel button icons on hover, it's important to show a tooltip that
 
 ![](static/tooltip1.png)
 
-@## Save and Cancel buttons
+## Save and Cancel buttons
 
 In some cases, where space allows and there is a need to show regular buttons, you can hide control icons.
 
 ![](static/buttons.png)
 
-@## Interaction
+## Interaction
 
-InlineInput can take on the same states as a [normal input](/components/input/), except for the normal, read-only, and disabled states.
+InlineInput can take on the same states as a [normal input](/components/input/input), except for the normal, read-only, and disabled states.
 
 - The user has activated a trigger that opens an InlineInput.
 - InlineInput immediately receives focus.
 - The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
 - When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
 
-@table-caption InlineInput states
+Table: InlineInput states
 
 | State         | Appearance example                       | Styles                                                                                                                                             |
 | ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -117,9 +119,9 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 | Invalid focus | ![](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active)`, `box-shadow: var(--keyboard-focus-invalid)`                                              |
 | Valid         | ![](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active)`                                                                                           |
 | Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                               |
-| Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/) token). |
+| Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/design-tokens) token). |
 
-@## Save и Cancel icon buttons
+## Save и Cancel icon buttons
 
 For the default state of the icons use the following tokens:
 
@@ -132,7 +134,7 @@ On hover, the icons change their color to to the darker one using CSS filter.
 
 ![](static/tooltip1.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Font size
 
@@ -152,11 +154,7 @@ _An InlineInput is convenient when you need to add a note, an additional descrip
 
 ### Using InlineInput with Tag
 
-For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/). A regular input doesn't have the ability to change the height of the input to fit it into a compact table.
+For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/input). A regular input doesn't have the ability to change the height of the input to fit it into a compact table.
 
 ![](static/inline-tag-yes-no.png)
 
-@page inline-input-a11y
-@page inline-input-api
-@page inline-input-code
-@page inline-input-changelog

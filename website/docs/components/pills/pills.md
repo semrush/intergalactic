@@ -1,19 +1,89 @@
 ---
 title: Pills
 fileSource: pills
-tabName: Design
+tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import Pills from '@semcore/pills';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import LikeM from '@semcore/ui/icon/Like/m';
+import LikeL from '@semcore/ui/icon/Like/l';
+
+// LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
+//   'LikeOutline';
+
+const SIZE_ADDON = {
+  s: <LikeM />,
+  m: <LikeM />,
+  l: <LikeL />,
+};
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { bool, radio, empty, onChange } = createGroupWidgets('Pill');
+
+    const size = radio({
+      key: 'size',
+      defaultValue: 'm',
+      label: 'Size',
+      options: ['m', 'l'],
+    });
+
+    const selected = empty({
+      key: 'selected',
+      defaultValue: 1,
+    });
+    const before = bool({
+      key: 'addon left',
+      defaultValue: false,
+      label: 'AddonLeft',
+    });
+    const after = bool({
+      key: 'addon right',
+      defaultValue: false,
+      label: 'AddonRight',
+    });
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
+    });
+
+    return (
+      <Pills size={size} onChange={(v) => onChange('selected', v)} value={selected}>
+        <Pills.Item value={1}>
+          {before && <Pills.Item.Addon>{SIZE_ADDON[size]}</Pills.Item.Addon>}
+          <Pills.Item.Text>Pill 1</Pills.Item.Text>
+          {after && <Pills.Item.Addon>{SIZE_ADDON[size]}</Pills.Item.Addon>}
+        </Pills.Item>
+        <Pills.Item value={2} disabled={disabled}>
+          Pill 2
+        </Pills.Item>
+        <Pills.Item value={3}>Pill 3</Pills.Item>
+      </Pills>
+    );
+  },
+  {
+    filterProps: ['onChange'],
+  },
+);
+</script>
+
+:::
+
+## Description
 
 **Pills** is a component designed for:
 
 - Switching between states, such as tabs, views, or screens with uniform content.
 - Filtering data in lists, tables, and charts.
 
-@## Component composition
+## Component composition
 
 ![](static/pills-composition.png)
 
@@ -23,21 +93,21 @@ Component consists of the following:
 2. `Pill.Item.Addon`
 3. `Pill.Item.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
-@table-caption Pills sizes and margins
+Table: Pills sizes and margins
 
 | Size (height in px) | Margins                          |
 | ------------------- | -------------------------------- |
 | M (28px)            | ![](static/pills-paddings-M.png) |
 | L (40px)            | ![](static/pills-paddings-L.png) |
 
-Addons (icons, flags, badges, counters) have the same margin as the addons inside the [Button](/components/button/).
+Addons (icons, flags, badges, counters) have the same margin as the addons inside the [Button](/components/button/button).
 
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
 
-@## Cases
+## Cases
 
 ### Default
 
@@ -47,9 +117,11 @@ The default appearance used in most cases across our design system.
 
 ### Adding new item
 
-> This type exists only in design, and the component doesn't cover this case yet.
+::: tip
+This type exists only in design, and the component doesn't cover this case yet.
+:::
 
-@table-caption States for adding new item case in Pills
+Table: States for adding new item case in Pills
 
 | State  | Appearance                          |
 | ------ | ----------------------------------- |
@@ -66,9 +138,9 @@ In some products, pills can act as a block with shared metrics. Their difference
 
 ![](static/pills-summary.png)
 
-@## Interaction
+## Interaction
 
-@table-caption States for Pills
+Table: States for Pills
 
 | State                                  | Appearance example             |
 | -------------------------------------- | ------------------------------ |
@@ -79,7 +151,7 @@ In some products, pills can act as a block with shared metrics. Their difference
 | Disabled `Pills.Item`                  | ![](static/disabled-pill.png)  |
 | Loading                                | ![](static/loading.png)        |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Pills are used for:
 
@@ -89,16 +161,16 @@ Pills are used for:
 Pills can be used in:
 
 - Lists;
-- [Tables](/table-group/table/);
-- [Charts](/data-display/chart-controls/);
+- [Tables](/table-group/data-table/data-table);
+- [Charts](/data-display/chart-controls/chart-controls);
 - Local filters in widgets, etc.
 
 ### Number of pills
 
 The minimum number of pills in the component is 2, and the maximum is unlimited. However, keep in mind that it might be challenging for the user to navigate the selection with too many items. In such cases, you can:
 
-- Collapse pills into a [DropdownMenu](/components/dropdown-menu/) with an `Ellipsis` icon;
-- Use [Select](/components/select) instead.
+- Collapse pills into a [DropdownMenu](/components/dropdown-menu/dropdown-menu) with an `Ellipsis` icon;
+- Use [Select](/components/select/select) instead.
 
 ![](static/pills-collapse.png)
 
@@ -122,7 +194,3 @@ Don’t use a single `Pills.Item`:
 
 ![](static/pills-one-yes-no.png)
 
-@page pills-a11y
-@page pills-api
-@page pills-code
-@page pills-changelog

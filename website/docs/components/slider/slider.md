@@ -1,10 +1,10 @@
 ---
 title: Slider
 fileSource: slider
-tabName: Design
+tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
 ---
 
-@## Description
+## Description
 
 **Slider** is a component designed for choosing values within a specified range.
 
@@ -15,10 +15,10 @@ compared to controls with only a few fixed options.
 **Use it when:**
 
 - You need to visualize a range from which the user can select an approximate value.
-- You want to visualize the maximum range of a usual [InputNumber](/components/input-number/).
+- You want to visualize the maximum range of a usual [InputNumber](/components/input-number/input-number).
 - The user needs to specify an approximate value, such as adjusting color brightness.
 
-@## Component composition
+## Component composition
 
 ![](static/slider-composition.png)
 
@@ -29,18 +29,20 @@ The Slider component consists of the following:
 - Value
 - (Optional) `Slider.Options` with `Slider.Item` inside.
 
-> When designing this type of input, consider the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law),
-> which describes how the time taken to perform an action depends on the thickness and width of the horizontal control used for that action.
-> Larger slider knobs and bars make using sliders easier and faster.
+::: tip
+When designing this type of input, consider the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law),
+which describes how the time taken to perform an action depends on the thickness and width of the horizontal control used for that action.
+Larger slider knobs and bars make using sliders easier and faster.
+:::
 
-@## Sizes
+## Sizes
 
 Default component sizes:
 
 - Bar height: 4px
 - Knob size: 20px * 20px
 
-@## Styles
+## Styles
 
 Default component styles:
 
@@ -49,7 +51,7 @@ Default component styles:
 
 ![](static/default.png)
 
-@## Value labels
+## Value labels
 
 You can display values under the input.
 
@@ -57,14 +59,16 @@ You can display values under the input.
 
 ![](static/value-labels2.png)
 
-> For mobile devices, display values or tooltips with values above the input.
-> On touch devices, the values should appear above the finger while manipulating the slider knob.
+::: tip
+For mobile devices, display values or tooltips with values above the input.
+On touch devices, the values should appear above the finger while manipulating the slider knob.
+:::
 
-@## Interaction
+## Interaction
 
 ### States
 
-@table-caption Slider states
+Table: Slider states
 
 | State        | Description         | Appearance example         |
 | ------------ | ------------------- | -------------------------- |
@@ -84,7 +88,7 @@ Ensure that keyboard shortcuts can still be used when the input is focused.
 the hover effect is not applied to the slider.
 The slider knob moves according to the value entered in the input.
 
-@table-caption Slider with linked input in active state
+Table: Slider with linked input in active state
 
 | State        | Description          | Appearance example   |
 | ------------ | -------------------- | -------------------- |
@@ -95,7 +99,7 @@ show a warning tooltip with an appropriate message.
 
 ![](static/maximum.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### When to use the slider
 
@@ -123,7 +127,3 @@ place them either to the left/right or above the slider.
 
 ![](static/mobile.png)
 
-@page slider-a11y
-@page slider-api
-@page slider-code
-@page slider-changelog

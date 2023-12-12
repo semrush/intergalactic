@@ -3,7 +3,7 @@ import InputMask from '@semcore/ui/input-mask';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   const [value, setValue] = React.useState('99');
 
   return (

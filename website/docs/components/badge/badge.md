@@ -1,12 +1,52 @@
 ---
 title: Badge
 fileSource: badge
-tabName: Design
+tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code'), Changelog('badge-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Badge from '@semcore/ui/badge';
+
+const Preview = (preview) => {
+  const { select, radio, text } = preview('Badge');
+
+  const color = radio({
+    key: 'color',
+    defaultValue: 'white',
+    label: 'Color',
+    options: ['white', 'gray-800'],
+  });
+
+  const bg = select({
+    key: 'bg',
+    defaultValue: 'gray-400',
+    label: 'Background',
+    options: ['gray-400', 'blue-400', 'red-400', 'orange-400', 'green-400', 'white'],
+  });
+
+  const child = text({
+    key: 'children',
+    defaultValue: 'soon',
+    label: 'Text',
+  });
+
+  return (
+    <Badge bg={bg} color={color}>
+      {child}
+    </Badge>
+  );
+};
+
+const App = PlaygroundGeneration(Preview);
+</script>
+
+:::
+
+## Description
 
 **Badge** is a visual component used to indicate the status of a feature or product.
 
@@ -18,7 +58,7 @@ _For example, you added a new tab to the report. In this case, you can highlight
 - Badge isn’t clickable.
 - Don’t use badge for filtering the data.
 
-@## Appearance
+## Appearance
 
 Component has one size.
 
@@ -26,7 +66,7 @@ Component has one size.
 
 Use the following badges in the products depending on the status of the feature or product:
 
-@table-caption Badge types
+Table: Badge types
 
 | Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
 | -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +84,7 @@ Every badge can be inverted like this:
 
 Use `--gray-white` color for the background and `--gray-800` for the text color.
 
-@## Feature status
+## Feature status
 
 The feature status can be shown inside most of the components and controls.
 
@@ -64,17 +104,17 @@ The feature status can be shown inside most of the components and controls.
 
 ### Badge vs. Tag
 
-Don’t confuse [Tag](/components/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
+Don’t confuse [Tag](/components/tag/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
 
 ![](static/table-yes-no.png)
 
-@## Location
+## Location
 
-Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
+Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/notice) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
-@table-caption Badge usage examples
+Table: Badge usage examples
 
 | Component/block     | Appearance example                        |
 | ------------------- | ----------------------------------------- |
@@ -82,7 +122,3 @@ Badge is usually placed to the right of the element. As an exception, in the [No
 | Landing page header | ![](static/landing-header.png) |
 | Widget              | ![](static/widget.png)              |
 
-@page badge-a11y
-@page badge-api
-@page badge-code
-@page badge-changelog

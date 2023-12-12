@@ -3,7 +3,7 @@ title: Example
 fileSource: d3-chart
 ---
 
-@## Selected date
+## Selected date
 
 Click on the date on the X-axis to see the date selection on the chart.
 

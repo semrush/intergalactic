@@ -1,8 +1,9 @@
 ---
-title: API
+title: Breadcrumbs
+tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-@## Breadcrumbs
+## Breadcrumbs
 
 Wrapper with the `nav` tag.
 
@@ -11,9 +12,9 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs />;
 ```
 
-@typescript BreadcrumbsProps
+<TypesView type="BreadcrumbsProps" :types={...types} />
 
-@## Breadcrumbs.Item
+## Breadcrumbs.Item
 
 A page in a hierarchical navigation structure, with the `a` tag by default, if inactive. **The active item is usually the last one in the link hierarchy**.
 
@@ -22,4 +23,6 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs.Item />;
 ```
 
-@typescript BreadcrumbsItemProps
+<TypesView type="BreadcrumbsItemProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

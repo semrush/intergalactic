@@ -1,9 +1,10 @@
 ---
-title: A11y
+title: Typography
 a11y: AA
+tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
 ---
 
-@## Considerations for developers
+## Considerations for developers
 
 ### Headings
 
@@ -22,7 +23,7 @@ _Source – [A11y style guide](https://a11y-style-guide.com/style-guide/section-
 
 _Source – [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-lists)_
 
-@## Considerations for designers
+## Considerations for designers
 
 Make sure that the user can easily read the text on the page.
 
@@ -45,7 +46,7 @@ Make sure that the user can easily read the text on the page.
 
 - **Determine the height of the text for optimal reading**. The larger the font size and line thickness, the larger the spacing should be. For the body text, the spacing to font size ratio should be around 1.4–1.65, for headings – 1–1.3, for captions and short lines – around 1.3. Lines that are spaced too tightly or too loosely make text less readable, so finding a new line becomes more difficult.
 
-@## Resources
+## Resources
 
 [Use of Color](https://www.w3.org/WAI/WCAG21/quickref/#use-of-color) – color isn’t used as the only visual means of
 conveying information, indicating an action, prompting a response, or distinguishing a visual element.
@@ -67,6 +68,6 @@ information rather than images of text. _(Level AA)_
 
 [Visual Presentation](https://www.w3.org/WAI/WCAG21/quickref/#visual-presentation) – _(Level AAA)_
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

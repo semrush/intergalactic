@@ -10,7 +10,7 @@ const options = Array(20)
     children: `Option ${index}`,
   }));
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Select options={options} multiselect m='auto' />
   </Flex>

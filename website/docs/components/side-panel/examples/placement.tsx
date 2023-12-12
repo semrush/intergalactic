@@ -6,7 +6,7 @@ import SidePanel, { SidePanelPlacement } from '@semcore/ui/side-panel';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [placement, setPlacement] = React.useState(placements[1]);
 
