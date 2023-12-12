@@ -3,6 +3,7 @@ import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { log } from '../utils';
 import { replaceImports } from 'intergalactic-migrate';
+import {c} from "vitest/dist/reporters-5f784f42";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
@@ -37,8 +38,15 @@ async function makeIndexCJS(componentName: string) {
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }
 async function makeIndexESM(componentName: string) {
-  const dataToWrite = `export * from './lib/es6/index.js';\nexport { default } from './lib/es6/index.js';`;
   const pathToFile = path.resolve(dirname, componentName, 'index.mjs');
+
+  let dataToWrite = `export * from './lib/es6/index.js';`;
+
+  const indexData = await fs.readFile(path.resolve(dirname, componentName, 'lib', 'es6', 'index.js'), 'utf8');
+
+  if (indexData.includes('export { default }')) {
+    dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.js';`;
+  }
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }
@@ -92,9 +100,7 @@ export async function copyLib(packages: string[]) {
       }
       case 'email': {
         await copyComponent(name, 'lib');
-        // We don't need to make Types file, because email has only styles
-        await makeIndexCJS(name);
-        await makeIndexESM(name);
+        // We don't need to make Type or JS files, because email has only styles
         break;
       }
       default: {
