@@ -37,7 +37,7 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
           ast = ts.parse(source);
         } else if (item.endsWith('.tsx')) {
           ast = tsx.parse(source);
-        } else if (item.endsWith('.js')) {
+        } else if (item.endsWith('.js') || item.endsWith('.mjs')) {
           ast = js.parse(source);
         } else if (item.endsWith('.jsx')) {
           ast = jsx.parse(source);

@@ -3,7 +3,6 @@ import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { log } from '../utils';
 import { replaceImports } from 'intergalactic-migrate';
-import {c} from "vitest/dist/reporters-5f784f42";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
@@ -42,9 +41,12 @@ async function makeIndexESM(componentName: string) {
 
   let dataToWrite = `export * from './lib/es6/index.js';`;
 
-  const indexData = await fs.readFile(path.resolve(dirname, componentName, 'lib', 'es6', 'index.js'), 'utf8');
+  const indexData = await fs.readFile(
+    path.resolve(dirname, componentName, 'lib', 'es6', 'index.js'),
+    'utf8',
+  );
 
-  if (indexData.includes('export { default }')) {
+  if (indexData.includes('export { default }') || indexData.includes('export default')) {
     dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.js';`;
   }
 
