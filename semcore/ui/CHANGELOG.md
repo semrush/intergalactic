@@ -1,3 +1,21 @@
+## [15.42.2] - 2023-12-12
+
+### @semcore/color-picker
+
+- **Fixed** `d.ts` output.
+
+### @semcore/d3-chart
+
+- **Fixed** `ChartLegendTable` labels trimming with `Ellipsis` component.
+
+### @semcore/popper
+
+- **Fixed** `focusLock` behavior for `hover` interaction.
+
+### @semcore/tooltip
+
+- **Fixed** Incorrect behavior in Tooltip when it has a focusable elements inside themself and don't close from the first `esc` keypress.
+
 ## [15.42.1] - 2023-12-07
 
 ### @semcore/checkbox
