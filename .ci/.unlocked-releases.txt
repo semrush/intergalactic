@@ -59,3 +59,4 @@
 15.41.0-prerelease.0=55ee7ae652a443b0982c2c3f8fdf0f18f3f6de0c
 15.42.0-prerelease.0=55ee7ae652a443b0982c2c3f8fdf0f18f3f6de0c
 15.42.1-prerelease.0=55ee7ae652a443b0982c2c3f8fdf0f18f3f6de0c
+15.42.2-prerelease.0=55ee7ae652a443b0982c2c3f8fdf0f18f3f6de0c
