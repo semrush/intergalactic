@@ -201,7 +201,7 @@ const Demo = () => {
 
 :::
 
-## Disabled
+## Disabled dates
 
 You can prevent selection of certain dates or a range of dates using the `disabled` property (and imagine yourself as a superhero 🕺🏻). The property takes an array of dates or an array with two dates to specify a range, or a `crontab` format for selecting dates periodically.
 
@@ -273,7 +273,7 @@ const Demo = () => {
 
 :::
 
-## Week picker
+## Week picker made from DateRangePicker
 
 You can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode.
 
@@ -356,9 +356,9 @@ const Demo = () => {
 
 :::
 
-## Date range comparator
+## DateRangeComparator
 
-Date range comparator allows user to compare two date ranges. Additional date range may be controlled with `compare` and `onCompareChange` props.
+DateRangeComparator allows user to compare two date ranges. Additional date range may be controlled with `compare` and `onCompareChange` props.
 
 ::: sandbox
 
@@ -381,7 +381,7 @@ const Demo = () => {
 
 :::
 
-## Date range comparator advanced use
+## DateRangeComparator advanced usage
 
 Both `DateRangeComparator` and `MonthDateRangeComparator` internal structure maybe deeply redefined for flexible customization. 
 
