@@ -37,7 +37,7 @@ import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
-<TypesView type="BaseTriggerProps" :types={...types} />
+<TypesView type="InputTriggerProps" :types={...types} />
 
 ## DateRangePicker.Period
 
