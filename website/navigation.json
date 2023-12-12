@@ -1012,9 +1012,9 @@
             "title": "API"
           },
           {
-            "route": "components/inline-edit/inline-edit-example",
+            "route": "components/inline-edit/inline-edit-code",
             "hasContent": true,
-            "filePath": "components/inline-edit/inline-edit-example.md",
+            "filePath": "components/inline-edit/inline-edit-code.md",
             "title": "Example"
           },
           {
@@ -1044,9 +1044,9 @@
             "title": "API"
           },
           {
-            "route": "components/inline-input/inline-input-example",
+            "route": "components/inline-input/inline-input-code",
             "hasContent": true,
-            "filePath": "components/inline-input/inline-input-example.md",
+            "filePath": "components/inline-input/inline-input-code.md",
             "title": "Example"
           },
           {
@@ -1320,9 +1320,9 @@
             "title": "API"
           },
           {
-            "route": "components/notice-bubble/notice-bubble-example",
+            "route": "components/notice-bubble/notice-bubble-code",
             "hasContent": true,
-            "filePath": "components/notice-bubble/notice-bubble-example.md",
+            "filePath": "components/notice-bubble/notice-bubble-code.md",
             "title": "Example"
           },
           {

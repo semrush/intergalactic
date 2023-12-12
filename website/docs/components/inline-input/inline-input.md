@@ -158,5 +158,5 @@ For a tag that adds another tag, use InlineInput instead of [normal input](/comp
 
 @page inline-input-a11y
 @page inline-input-api
-@page inline-input-example
+@page inline-input-code
 @page inline-input-changelog

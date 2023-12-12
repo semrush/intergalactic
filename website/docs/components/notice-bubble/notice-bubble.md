@@ -124,5 +124,5 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 
 @page notice-bubble-a11y
 @page notice-bubble-api
-@page notice-bubble-example
+@page notice-bubble-code
 @page notice-bubble-changelog

@@ -763,7 +763,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'API',
               },
               {
-                link: '/components/inline-edit/inline-edit-example',
+                link: '/components/inline-edit/inline-edit-code',
                 text: 'Example',
               },
               {
@@ -786,7 +786,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'API',
               },
               {
-                link: '/components/inline-input/inline-input-example',
+                link: '/components/inline-input/inline-input-code',
                 text: 'Example',
               },
               {
@@ -985,7 +985,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'API',
               },
               {
-                link: '/components/notice-bubble/notice-bubble-example',
+                link: '/components/notice-bubble/notice-bubble-code',
                 text: 'Example',
               },
               {

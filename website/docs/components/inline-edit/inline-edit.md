@@ -55,5 +55,5 @@ For instance, if the heading you wish to edit employs a font size of 24px, maint
 
 @page inline-edit-a11y
 @page inline-edit-api
-@page inline-edit-example
+@page inline-edit-code
 @page inline-edit-changelog
