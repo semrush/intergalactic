@@ -101,11 +101,9 @@ async function parseItem(path: string, item: string) {
 async function parse(path: string) {
   const data = await fs.readdir(path);
 
-  // for (const item of data) {
-  //     await parseItem(path, item);
-  // }
-
-  await parseItem(path, 'modal');
+  for (const item of data) {
+    await parseItem(path, item);
+  }
 }
 
 parse('docs2/components');
