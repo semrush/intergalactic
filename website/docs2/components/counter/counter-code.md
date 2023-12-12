@@ -8,22 +8,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Counter, { AnimatedNumber } from '@semcore/ui/counter';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-
-const Demo = () => (
-  <FilterTrigger>
-    <FilterTrigger.Text>Link to website</FilterTrigger.Text>
-    <FilterTrigger.Addon>
-      <Counter theme='bg-primary-info'>
-        <AnimatedNumber value={500} delay={1000} formatValue={(x) => Math.round(x).toString()} />
-      </Counter>
-    </FilterTrigger.Addon>
-  </FilterTrigger>
-);
-</script>
+<script lang="tsx" src="examples/counter_in_filters.tsx"></script>
 
 :::
 
@@ -35,35 +20,7 @@ Don't forget to place counters inside the `Addon` to create correct margins.
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Counter from '@semcore/ui/counter';
-import Button from '@semcore/ui/button';
-import SettingsM from '@semcore/ui/icon/Settings/m';
-
-const Demo = () => (
-  <>
-    <Button mr={4}>
-      <Button.Addon>
-        <SettingsM />
-      </Button.Addon>
-      <Button.Text>Manage columns</Button.Text>
-      <Button.Addon>
-        <Counter>23</Counter>
-      </Button.Addon>
-    </Button>
-    <Button use='primary'>
-      <Button.Addon>
-        <SettingsM />
-      </Button.Addon>
-      <Button.Text>Manage columns</Button.Text>
-      <Button.Addon>
-        <Counter theme='bg-primary-neutral'>23</Counter>
-      </Button.Addon>
-    </Button>
-  </>
-);
-</script>
+<script lang="tsx" src="examples/counter_in_button.tsx"></script>
 
 :::
 
@@ -75,36 +32,7 @@ As design guide recommends, the counter changes color to orange and then red whe
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Textarea from '@semcore/ui/textarea';
-import Counter from '@semcore/ui/counter';
-import { ScreenReaderOnly } from '@semcore/ui/utils/lib/ScreenReaderOnly';
-
-const Demo = () => (
-  <Flex direction='column' w={350}>
-    <Flex mb={2} justifyContent='space-between'>
-      <Text size={200} tag='label' htmlFor='limited-text-field'>
-        Label <ScreenReaderOnly>characters limit</ScreenReaderOnly>
-        <Counter ml={1}>
-          {0}
-          <ScreenReaderOnly>characters</ScreenReaderOnly>
-          <span aria-hidden='true'>/</span>
-          <ScreenReaderOnly>of</ScreenReaderOnly>
-          {150}
-          <ScreenReaderOnly>maximum</ScreenReaderOnly>
-        </Counter>
-      </Text>
-      <Text size={200} color='text-secondary' id='limited-text-field'>
-        optional
-      </Text>
-    </Flex>
-    <Textarea placeholder='Placeholder' />
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/counter_in_forms.tsx"></script>
 
 :::
 
@@ -114,22 +42,7 @@ The text counters shall be implemented using [Typography](/style/typography/typo
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Text } from '@semcore/ui/typography';
-
-const Demo = () => (
-  <>
-    <Text size={300}>
-      Lorem ipsum <Text color='text-secondary'>12,457</Text>
-    </Text>
-    <br />
-    <Text size={300}>
-      Dolor sit amet: <Text color='text-secondary'>149</Text>
-    </Text>
-  </>
-);
-</script>
+<script lang="tsx" src="examples/counter_and_typography.tsx"></script>
 
 :::
 
@@ -139,34 +52,7 @@ As you can see, there are text counters inside [Pills](/components/pills/pills).
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Pills from '@semcore/ui/pills';
-import { Text } from '@semcore/ui/typography';
-
-const Demo = () => (
-  <Pills defaultValue='all'>
-    <Pills.Item value='all'>
-      <Pills.Item.Text>All</Pills.Item.Text>
-      <Pills.Item.Addon>
-        <Text color='text-secondary'>1,259</Text>
-      </Pills.Item.Addon>
-    </Pills.Item>
-    <Pills.Item value='follow'>
-      <Pills.Item.Text>Follow</Pills.Item.Text>
-      <Pills.Item.Addon>
-        <Text color='text-secondary'>557</Text>
-      </Pills.Item.Addon>
-    </Pills.Item>
-    <Pills.Item value='not-follow'>
-      <Pills.Item.Text>Not Follow</Pills.Item.Text>
-      <Pills.Item.Addon>
-        <Text color='text-secondary'>736</Text>
-      </Pills.Item.Addon>
-    </Pills.Item>
-  </Pills>
-);
-</script>
+<script lang="tsx" src="examples/counter_in_pills.tsx"></script>
 
 :::
 
@@ -176,28 +62,7 @@ Implement the text counters in limits using [Typography](/style/typography/typog
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
-import ProgressBar from '@semcore/ui/progress-bar';
-import WarningM from '@semcore/ui/icon/Warning/m';
-
-const Demo = () => (
-  <Flex direction='column' w={350}>
-    <Flex mb={1} justifyContent='space-between'>
-      <Text size={200}>SEO Ideas Units</Text>
-      <Flex alignItems='center'>
-        <WarningM color='icon-primary-warning' />
-        <Text size={200} ml={1} bold>
-          10<Text color='text-secondary'>/10</Text>
-        </Text>
-      </Flex>
-    </Flex>
-    <ProgressBar theme='bg-primary-warning' size='s' />
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/counter_in_limits.tsx"></script>
 
 :::
 
@@ -207,31 +72,6 @@ The `Dot` component can also contain a text counter. For more information, see t
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Button from '@semcore/ui/button';
-import NotificationM from '@semcore/ui/icon/Notification/m';
-import Dot from '@semcore/ui/dot';
-import { AnimatedNumber } from '@semcore/ui/counter';
-
-const Demo = () => (
-  <Button aria-label='Open notifications'>
-    <Button.Addon>
-      <NotificationM />
-      <Dot up aria-labelledby='notifications-counter'>
-        <AnimatedNumber
-          id='notifications-counter'
-          aria-label='You have 18 unread notifications'
-          initValue={10}
-          value={18}
-          duration={1000}
-          delay={500}
-          formatValue={(x) => Math.round(x).toString()}
-        />
-      </Dot>
-    </Button.Addon>
-  </Button>
-);
-</script>
+<script lang="tsx" src="examples/counter_in_dot.tsx"></script>
 
 :::

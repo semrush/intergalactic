@@ -1,0 +1,19 @@
+import React from 'react';
+import InlineInput from '@semcore/ui/inline-input';
+
+const Example = () => {
+  return (
+    <div>
+        <InlineInput>
+            <InlineInput.Addon htmlFor='number-example' tag='label'>
+                Some score:
+            </InlineInput.Addon>
+            <InlineInput.NumberValue id="number-example" defaultValue={100}/>
+            <InlineInput.NumberControls />
+            <InlineInput.ConfirmControl />
+        </InlineInput>
+    </div>
+  );
+};
+
+const Demo = Example;

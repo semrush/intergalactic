@@ -10,34 +10,7 @@ RadioGroup acts as a controlling component and doesn't have an actual HTML eleme
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Radio, { RadioGroup } from '@semcore/ui/radio';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  const [value, setValue] = React.useState('1');
-  return (
-    <div>
-      <RadioGroup name='radio' value={value} onChange={(v) => setValue(v)}>
-        <div role='radiogroup' aria-labelledby='radioGroup'>
-          <Text tag='p' id='radioGroup' size={200}>
-            Select value
-          </Text>
-          <Flex mt={2} direction={'column'}>
-            <Radio mb={3} value={'1'} label={'Value 1'} />
-            <Radio mb={3} value={'2'} label={'Value 2'} />
-            <Radio mb={3} value={'3'} label={'Value 3'} />
-          </Flex>
-        </div>
-      </RadioGroup>
-    </div>
-  );
-};
-
-
-</script>
+<script lang="tsx" src="examples/radiogroup_example.tsx"></script>
 
 :::
 
@@ -53,26 +26,6 @@ If you need more control over input-tag, you can pass props to Radio.Value.Contr
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Radio, { RadioGroup } from '@semcore/ui/radio';
-
-const Demo = () => {
-  return (
-    <RadioGroup>
-      <Radio mb={3} value={'1'}>
-        <Radio.Value>
-          <Radio.Value.Control data-test-id={'TEST_ID'} />
-          <Radio.Value.RadioMark />
-        </Radio.Value>
-        <Radio.Text>Value</Radio.Text>
-      </Radio>
-      <Radio mb={3} value={'2'} label={'Second value'} />
-    </RadioGroup>
-  );
-};
-
-
-</script>
+<script lang="tsx" src="examples/additional_props_for_input.tsx"></script>
 
 :::

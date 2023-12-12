@@ -8,31 +8,7 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Slider from '@semcore/ui/slider';
-
-const Demo = () => {
-  const [value, setValue] = React.useState('medium');
-
-  return (
-    <Slider
-      value={value}
-      onChange={setValue}
-      step={1}
-      min={1}
-      max={3}
-      options={[
-        { value: 'small', label: 'Small' },
-        { value: 'medium', label: 'Medium' },
-        { value: 'big', label: 'Big' },
-      ]}
-    />
-  );
-};
-
-
-</script>
+<script lang="tsx" src="examples/slider_with_options.tsx"></script>
 
 :::
 
@@ -40,39 +16,7 @@ const Demo = () => {
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Slider from '@semcore/ui/slider';
-
-const Demo = () => {
-  const [value, setValue] = React.useState('medium');
-
-  return (
-    <Slider
-      w={200}
-      mb={3}
-      value={value}
-      onChange={setValue}
-      step={1}
-      min={1}
-      max={3}
-      options={[
-        { value: 'small', label: 'Small Floppa' },
-        { value: 'medium', label: 'Medium Floppa' },
-        { value: 'big', label: 'Big Floppa' },
-      ]}
-    >
-      <Slider.Bar />
-      <Slider.Knob />
-      <Slider.Options mt={3}>
-        <Slider.Item style={{ transform: 'rotate(-45deg)' }} />
-      </Slider.Options>
-    </Slider>
-  );
-};
-
-
-</script>
+<script lang="tsx" src="examples/customized_options_view.tsx"></script>
 
 :::
 
@@ -82,54 +26,6 @@ The Slider can be used in conjunction with the [InputNumber](/components/input-n
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Slider from '@semcore/ui/slider';
-import InputNumber from '@semcore/ui/input-number';
-import Tooltip from '@semcore/ui/tooltip';
-import { Box } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  const [value, setValue] = React.useState(51);
-  const [error, setError] = React.useState('');
-  const min = 10;
-  const max = 100;
-
-  const handleInput = (value) => {
-    if (!!value && (value > max || value < min)) {
-      setError('Please enter a valid value');
-      setValue(value);
-    } else {
-      setError('');
-      setValue(value);
-    }
-  };
-
-  return (
-    <>
-      <Box w={140}>
-        <Slider mb={3} value={value} onChange={setValue} step={1} min={min} max={max}>
-          <Slider.Bar />
-          <Slider.Knob />
-        </Slider>
-      </Box>
-      <Tooltip
-        title={`Please enter a valid value within ${min} and ${max}.`}
-        visible={!!error}
-        interaction='click'
-        theme='warning'
-        placement='right'
-      >
-        <InputNumber mt={4} w={140} size='m' state={error ? 'invalid' : 'normal'}>
-          <InputNumber.Value step={1} value={value.toString()} onChange={handleInput} />
-          <InputNumber.Controls showControls />
-        </InputNumber>
-      </Tooltip>
-    </>
-  );
-};
-
-
-</script>
+<script lang="tsx" src="examples/numeric_slider.tsx"></script>
 
 :::

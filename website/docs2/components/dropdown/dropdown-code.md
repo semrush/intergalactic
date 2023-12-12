@@ -16,18 +16,7 @@ The component API is completely identical to [@semcore/ui/popper](/utils/popper/
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import Dropdown from '@semcore/ui/dropdown';
-
-const Demo = () => (
-  <Dropdown>
-    <Dropdown.Trigger tag={ButtonTrigger}>Trigger</Dropdown.Trigger>
-    <Dropdown.Popper p={4}>Content</Dropdown.Popper>
-  </Dropdown>
-);
-</script>
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
 
 :::
 
@@ -35,17 +24,6 @@ const Demo = () => (
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import Dropdown from '@semcore/ui/dropdown';
-
-const Demo = () => (
-  <Dropdown interaction={'focus'}>
-    <Dropdown.Trigger tag={ButtonTrigger}>Trigger</Dropdown.Trigger>
-    <Dropdown.Popper p={4}>Content</Dropdown.Popper>
-  </Dropdown>
-);
-</script>
+<script lang="tsx" src="examples/focus_interaction.tsx"></script>
 
 :::

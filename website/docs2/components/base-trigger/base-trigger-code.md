@@ -8,23 +8,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select from '@semcore/ui/select';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
-
-const Demo = () => (
-  <Select tag={ButtonTrigger} options={options} placeholder='Select an option' m='auto' />
-);
-</script>
+<script lang="tsx" src="examples/buttontrigger.tsx"></script>
 
 :::
 
@@ -36,22 +20,6 @@ Check examples in the [FilterTrigger documentation](/components/filter-trigger/f
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select from '@semcore/ui/select';
-import { LinkTrigger } from '@semcore/ui/base-trigger';
-
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
-
-const Demo = () => (
-  <Select tag={LinkTrigger} options={options} placeholder='Select an option' m='auto' />
-);
-</script>
+<script lang="tsx" src="examples/filtertrigger.tsx"></script>
 
 :::

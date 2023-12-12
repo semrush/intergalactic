@@ -20,25 +20,7 @@ In the simplest case, you can implement the select by passing an array of option
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
-
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index, // value of the selected option
-    label: `Label ${index}`, // the value displayed in the trigger when the option is selected
-    children: `Option ${index}`, // option's children displayed in the dropdown
-  }));
-
-const Demo = () => (
-  <Flex>
-    <Select options={options} placeholder='Select an option, sir' m='auto' />
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
 
 :::
 
@@ -48,44 +30,7 @@ The component can operate in either controlled or uncontrolled mode.
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
-
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
-
-const { value: initialValue } = options[0];
-
-const Demo = () => {
-  const [value, setValue] = React.useState(initialValue);
-
-  return (
-    <Flex>
-      <Select
-        value={value}
-        onChange={setValue}
-        options={options}
-        placeholder='Select an option, sir'
-        m='auto'
-      />
-      <Select
-        defaultValue={initialValue}
-        onChange={setValue}
-        options={options}
-        placeholder='Select an option, sir'
-        m='auto'
-      />
-    </Flex>
-  );
-};
-</script>
+<script lang="tsx" src="examples/controlled_and_uncontrolled_modes.tsx"></script>
 
 :::
 
@@ -95,28 +40,7 @@ When you need to customize the trigger, you can pass the desired component to th
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
-import { ButtonTrigger, LinkTrigger } from '@semcore/ui/base-trigger';
-
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
-
-const Demo = () => (
-  <Flex>
-    {/* ButtonTrigger is the default trigger */}
-    <Select tag={ButtonTrigger} options={options} placeholder='Select an option, sir' m='auto' />
-    <Select tag={LinkTrigger} options={options} placeholder='Select an option, sir' m='auto' />
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/trigger_customization.tsx"></script>
 
 :::
 
@@ -195,42 +119,7 @@ The example below shows how to insert a [Notice](/components/notice/notice) in t
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select from '@semcore/ui/select';
-import { Flex } from '@semcore/ui/flex-box';
-import Notice from '@semcore/ui/notice';
-
-const options = Array(12)
-  .fill('')
-  .map((_, index) => `Option ${index}`);
-
-const noticeStyle = {
-  border: 'none',
-  borderRadius: '0 0 6px 6px',
-  padding: '12px 8px',
-};
-
-const Demo = () => (
-  <Flex>
-    <Select placeholder={'Select something'}>
-      <Select.Trigger m='auto' />
-      <Select.Popper>
-        <Select.List hMax='240px'>
-          {options.map((option, index) => (
-            <Select.Option value={option} key={index}>
-              {option}
-            </Select.Option>
-          ))}
-        </Select.List>
-        <Notice style={noticeStyle}>
-          <Notice.Content aria-live='polite'>Woooop, it's simple magic!</Notice.Content>
-        </Notice>
-      </Select.Popper>
-    </Select>
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/dropdownmenu_customization.tsx"></script>
 
 :::
 
@@ -245,32 +134,7 @@ The component offers several variants of options layout:
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
-
-const Demo = () => (
-  <Flex>
-    <Select m='auto'>
-      <Select.Trigger placeholder="I'll show u some options, buddy" />
-      <Select.Menu>
-        <Select.Option value={1}>I'm option</Select.Option>
-        <Select.Option value={2}>
-          <Select.Option.Checkbox />
-          I'm option-checkbox
-        </Select.Option>
-        <Select.Option value={3} disabled>
-          <Select.Option.Checkbox />
-          I'm disabled option-checkbox
-        </Select.Option>
-        <Select.OptionTitle>I'm title</Select.OptionTitle>
-        <Select.OptionHint>I'm hint</Select.OptionHint>
-      </Select.Menu>
-    </Select>
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/options.tsx"></script>
 
 :::
 
@@ -282,63 +146,7 @@ The example below shows one of the ways to implement filtering.
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select, { InputSearch } from '@semcore/ui/select';
-
-const data = Array(26)
-  .fill(0)
-  .map((_, index) => ({
-    label: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-    value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-  }));
-
-const Demo = () => {
-  const [filter, setFilter] = React.useState('');
-  const options = React.useMemo(
-    () => data.filter((option) => option.value.toString().includes(filter)),
-    [filter],
-  );
-
-  return (
-    <Select placeholder='Select value'>
-      <Select.Trigger />
-      <Select.Popper>
-        {({ highlightedIndex }) => (
-          <>
-            <InputSearch
-              value={filter}
-              onChange={setFilter}
-              placeholder='Search'
-              role='combobox'
-              aria-autocomplete='list'
-              aria-controls='search-list'
-              aria-owns='search-list'
-              aria-expanded='true'
-              aria-activedescendant={`option-${highlightedIndex}`}
-            />
-            <Select.List hMax={'224px'} id='search-list'>
-              {options.map(({ value, label }, index) => (
-                <Select.Option
-                  value={value}
-                  key={value}
-                  id={`option-${index}`}
-                  aria-selected={index === highlightedIndex}
-                >
-                  {label}
-                </Select.Option>
-              ))}
-              {!options.length && (
-                <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
-              )}
-            </Select.List>
-          </>
-        )}
-      </Select.Popper>
-    </Select>
-  );
-};
-</script>
+<script lang="tsx" src="examples/options_filtering.tsx"></script>
 
 :::
 
@@ -350,69 +158,7 @@ In the example below clear button handler is disabled.
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select, { InputSearch } from '@semcore/ui/select';
-
-const data = Array(26)
-  .fill(0)
-  .map((_, index) => ({
-    label: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-    value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-  }));
-
-const Demo = () => {
-  const [filter, setFilter] = React.useState('');
-  const options = React.useMemo(
-    () => data.filter((option) => option.value.toString().includes(filter)),
-    [filter],
-  );
-
-  return (
-    <Select placeholder='Select value'>
-      <Select.Trigger />
-      <Select.Popper>
-        {({ highlightedIndex }) => (
-          <>
-            <InputSearch value={filter} onChange={setFilter}>
-              <InputSearch.SearchIcon />
-              <InputSearch.Value
-                placeholder='Search'
-                role='combobox'
-                aria-autocomplete='list'
-                aria-controls='search-list'
-                aria-owns='search-list'
-                aria-expanded='true'
-                aria-activedescendant={`option-${highlightedIndex}`}
-              />
-              <InputSearch.Clear
-                onClick={() => {
-                  return false;
-                }}
-              />
-            </InputSearch>
-            <Select.List hMax={'224px'} id='search-list'>
-              {options.map(({ value, label }, index) => (
-                <Select.Option
-                  value={value}
-                  key={value}
-                  id={`option-${index}`}
-                  aria-selected={index === highlightedIndex}
-                >
-                  {label}
-                </Select.Option>
-              ))}
-              {!options.length && (
-                <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
-              )}
-            </Select.List>
-          </>
-        )}
-      </Select.Popper>
-    </Select>
-  );
-};
-</script>
+<script lang="tsx" src="examples/advanced_filtering_control.tsx"></script>
 
 :::
 
@@ -424,25 +170,7 @@ The layout of options inside the component will be changed to `Select.OptionChec
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
-
-const options = Array(20)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
-
-const Demo = () => (
-  <Flex>
-    <Select options={options} multiselect m='auto' />
-  </Flex>
-);
-</script>
+<script lang="tsx" src="examples/multiselect.tsx"></script>
 
 :::
 
@@ -452,65 +180,7 @@ The example below shows one of the ways to sort the selected options.
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select from '@semcore/ui/select';
-
-const options = Array(20)
-  .fill('')
-  .map((i, idx) => ({
-    value: idx,
-    title: `Awesome option ${idx}`,
-  }));
-
-const Option = ({ value, title }) => (
-  <Select.Option value={value} key={value}>
-    <Select.Option.Checkbox />
-    {title}
-  </Select.Option>
-);
-
-const Demo = () => {
-  const [selected, setSelected] = React.useState([]);
-  const [prevSelected, setPrevSelected] = React.useState([]);
-
-  const handleVisibleChange = (value) => {
-    if (value) return;
-    setPrevSelected(options.filter((o) => selected.includes(o.value)));
-  };
-
-  const renderOptions = () => {
-    if (!prevSelected.length) {
-      return options.map((props) => <Option key={props.value} {...props} />);
-    }
-    const [checked, unchecked] = options.reduce(
-      (acc, o) => {
-        prevSelected.find((v) => v.value === o.value) ? acc[0].push(o) : acc[1].push(o);
-        return acc;
-      },
-      [[], []],
-    );
-    return [
-      ...checked.map((props) => <Option key={props.value} {...props} />),
-      <Select.Divider />,
-      ...unchecked.map((props) => <Option key={props.value} {...props} />),
-    ];
-  };
-
-  return (
-    <Select
-      value={selected}
-      onChange={(v) => setSelected(v)}
-      onVisibleChange={handleVisibleChange}
-      multiselect
-      placeholder='Select values'
-    >
-      <Select.Trigger />
-      <Select.Menu hMax='240px'>{renderOptions()}</Select.Menu>
-    </Select>
-  );
-};
-</script>
+<script lang="tsx" src="examples/sorting_multiselect_options.tsx"></script>
 
 :::
 
@@ -522,61 +192,6 @@ The example below shows how to implement "Select all" and "Deselect all" buttons
 
 ::: sandbox
 
-<script lang="tsx">
-import React from 'react';
-import Select from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
-
-const options = Array(5)
-  .fill('')
-  .map((i, idx) => ({
-    value: `Option ${idx}`,
-  }));
-
-const Demo = () => (
-  <Select placeholder='Select value' multiselect>
-    {(props, handlers) => {
-      const {
-        getTriggerProps, // function encapsulating Select.Trigger logic
-        getPopperProps, // function encapsulating Select.Popper logic
-        getListProps, // function encapsulating Select.List logic
-        getInputSearchProps, // function encapsulating Select.InputSearch logic
-        getOptionProps, // function encapsulating Select.Option logic
-        getOptionCheckboxProps, // function encapsulating Select.OptionCheckbox logic
-        value: currentValue, // the current value of the select
-      } = props;
-      const {
-        visible, // function that controls the internal state of visibility
-        value, // function that controls the internal state of the selected value
-      } = handlers;
-
-      const handleClick = () => {
-        const newValue = (currentValue as any).length ? [] : options.map(({ value }) => value);
-        value(newValue);
-        return false; // cancel the default handler
-      };
-
-      return (
-        <React.Fragment>
-          <Select.Trigger />
-          <Select.Menu>
-            <Select.Option value='%all%' onClick={handleClick}>
-              <Text color='text-link'>
-                {(currentValue as any).length ? 'Deselect all' : 'Select all'}
-              </Text>
-            </Select.Option>
-            {options.map((option) => (
-              <Select.Option value={option.value} key={option.value}>
-                <Select.Option.Checkbox />
-                {option.value}
-              </Select.Option>
-            ))}
-          </Select.Menu>
-        </React.Fragment>
-      );
-    }}
-  </Select>
-);
-</script>
+<script lang="tsx" src="examples/render-function.tsx"></script>
 
 :::
