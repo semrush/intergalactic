@@ -1,4 +1,5 @@
 SLegendItem {
+  min-width: 0;
   align-items: flex-start;
 }
 
@@ -68,6 +69,10 @@ SIcon[size='l'] {
 
 SIcon[size='m'] {
   margin-top: 2px;
+}
+
+SLabel {
+  min-width: 0;
 }
 
 SLabel[size='l'], SAdditionalLabel[size='l'], SCount[size='l'] {
