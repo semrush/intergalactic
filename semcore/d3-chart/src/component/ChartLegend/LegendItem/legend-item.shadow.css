@@ -14,6 +14,7 @@ SLegendItem[disabled]:hover {
 SPointShape[color] {
   background-color: var(--color);
   margin-right: 8px;
+  flex-shrink: 0;
 }
 
 SPointShape[shape='Circle'][size='l'] {
