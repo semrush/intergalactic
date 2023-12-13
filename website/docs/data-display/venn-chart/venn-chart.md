@@ -39,6 +39,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     showTooltip,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   legendProps.legendMap = {
@@ -58,6 +59,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
+    patterns,
   };
 
   if (showLegend) {

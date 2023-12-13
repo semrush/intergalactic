@@ -196,7 +196,7 @@ const Demo = () => {
     .domain([0, 15]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} patterns>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

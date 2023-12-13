@@ -43,6 +43,7 @@ const App = PlaygroundGeneration((preview) => {
     showTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   label({ label: 'Linear chart props', key: 'linearChartProps' });
@@ -81,6 +82,7 @@ const App = PlaygroundGeneration((preview) => {
     alignItems,
     justifyContent,
     stacked,
+    patterns,
   };
 
   if (showLegend) {

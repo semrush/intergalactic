@@ -1199,7 +1199,7 @@
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
     "description": "Secondary link-lookalike icon.",
-    "components": ["d3-chart"]
+    "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-info-hover-active",

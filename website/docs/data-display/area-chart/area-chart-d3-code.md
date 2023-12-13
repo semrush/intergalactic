@@ -412,6 +412,7 @@ const Demo = () => {
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns={true}
       >
         <YAxis>
           <YAxis.Ticks />

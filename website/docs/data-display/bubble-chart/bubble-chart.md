@@ -37,6 +37,7 @@ const App = PlaygroundGeneration((preview) => {
     showTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   legendProps.shape = 'Circle';
@@ -51,6 +52,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
+    patterns,
   };
 
   if (showLegend) {

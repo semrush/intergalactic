@@ -34,6 +34,7 @@ const App = PlaygroundGeneration((preview) => {
     showTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground(
     { select, radio, label, bool },
     { direction: 'row-reverse', legendDirection: 'column' },
@@ -78,6 +79,7 @@ const App = PlaygroundGeneration((preview) => {
     halfsize: halfSize,
     innerRadius,
     innerLabel,
+    patterns,
   };
 
   if (showLegend) {

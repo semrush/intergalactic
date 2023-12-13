@@ -36,6 +36,7 @@ const App = PlaygroundGeneration((preview) => {
     showTotalInTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool }, { showTotalInTooltip: true });
 
   const chartProps: BarChartProps = {
@@ -51,6 +52,7 @@ const App = PlaygroundGeneration((preview) => {
     alignItems,
     justifyContent,
   };
+    patterns,
 
   if (showLegend) {
     chartProps.legendProps = legendProps;

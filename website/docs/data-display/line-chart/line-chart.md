@@ -67,6 +67,7 @@ const App = PlaygroundGeneration((preview) => {
     showLegend,
     legendProps,
     showTotalInTooltip,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   label({ label: 'Linear chart props', key: 'linearChartProps' });
@@ -113,6 +114,7 @@ const App = PlaygroundGeneration((preview) => {
     justifyContent,
     area: withArea ? area : undefined,
     areaCurve: curveMap[areaCurve],
+    patterns,
   };
 
   if (showLegend) {
