@@ -5,7 +5,7 @@ tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api')
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 These components serve as the base for building charts from your data in the product.

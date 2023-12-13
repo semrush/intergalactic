@@ -96,6 +96,7 @@ Use a modal window inside another modal window only if no other solution fits yo
 The modal window must have `min-width` of 320px for the desktop version.
 
 ![](static/modal-min-width-1.png)
+
 ![](static/modal-min-width-2.png)
 
 ## Interaction
@@ -120,7 +121,9 @@ User closes the modal window by using the following options:
 - "Back" button in the browser (nothing changes on the parent page in this case);
 - clicking outside the `Modal.Window` area.
 
-When the modal window is closed, the focus should return to its trigger.
+::: tip
+When the modal window is closed by keyboard, the focus should always return to the trigger.
+:::
 
 If the potential consequences of accidentally closing the window are significant, please alert the user about the potential loss of information.
 
