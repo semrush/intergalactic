@@ -13,3 +13,5 @@ const options = Array(6)
 const Demo = () => (
   <Select tag={ButtonTrigger} options={options} placeholder='Select an option' m='auto' />
 );
+
+export default Demo;

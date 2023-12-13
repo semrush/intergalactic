@@ -66,3 +66,5 @@ const pipeExpireDate = (value) => {
 
   return { value, indexesOfPipedChars };
 };
+
+export default Demo;

@@ -15,3 +15,5 @@ const Demo = () => {
     </RadioGroup>
   );
 };
+
+export default Demo;

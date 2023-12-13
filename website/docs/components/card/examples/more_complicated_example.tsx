@@ -39,3 +39,5 @@ const Demo = () => (
     </Card.Body>
   </Card>
 );
+
+export default Demo;

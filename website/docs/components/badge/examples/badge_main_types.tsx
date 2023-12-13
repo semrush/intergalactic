@@ -13,3 +13,5 @@ const Demo = () => {
     </Flex>
   );
 };
+
+export default Demo;

@@ -45,3 +45,5 @@ const Example = () => {
 };
 
 const Demo = Example;
+
+export default Demo;

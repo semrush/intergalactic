@@ -12,3 +12,5 @@ const Demo = () => (
     </Box>
   </Flex>
 );
+
+export default Demo;

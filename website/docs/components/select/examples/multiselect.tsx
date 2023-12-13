@@ -15,3 +15,5 @@ const Demo = () => (
     <Select options={options} multiselect m='auto' />
   </Flex>
 );
+
+export default Demo;

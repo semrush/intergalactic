@@ -12,3 +12,5 @@ const Demo = () => (
     </Text>
   </>
 );
+
+export default Demo;

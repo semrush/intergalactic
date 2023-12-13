@@ -27,3 +27,5 @@ const Demo = () => {
     </Slider>
   );
 };
+
+export default Demo;

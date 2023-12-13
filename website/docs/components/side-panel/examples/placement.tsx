@@ -42,3 +42,5 @@ const Demo = () => {
 function arrToOptions(arr) {
   return arr.map((i) => ({ value: i, label: i, children: i }));
 }
+
+export default Demo;

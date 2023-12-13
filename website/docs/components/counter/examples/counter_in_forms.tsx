@@ -26,3 +26,5 @@ const Demo = () => (
     <Textarea placeholder='Placeholder' />
   </Flex>
 );
+
+export default Demo;

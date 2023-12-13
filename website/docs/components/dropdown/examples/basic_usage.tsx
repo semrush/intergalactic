@@ -8,3 +8,5 @@ const Demo = () => (
     <Dropdown.Popper p={4}>Content</Dropdown.Popper>
   </Dropdown>
 );
+
+export default Demo;

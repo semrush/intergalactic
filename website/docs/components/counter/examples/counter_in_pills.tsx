@@ -24,3 +24,5 @@ const Demo = () => (
     </Pills.Item>
   </Pills>
 );
+
+export default Demo;

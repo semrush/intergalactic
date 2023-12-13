@@ -59,3 +59,5 @@ const Demo = () => {
     </DropdownMenu>
   );
 };
+
+export default Demo;

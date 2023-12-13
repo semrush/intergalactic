@@ -32,3 +32,5 @@ const Demo = () => (
     </Select>
   </Flex>
 );
+
+export default Demo;

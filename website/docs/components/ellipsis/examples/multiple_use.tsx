@@ -64,3 +64,5 @@ const data = [
     vol: '21,644,290,000,500',
   },
 ];
+
+export default Demo;

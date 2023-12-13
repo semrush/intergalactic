@@ -18,3 +18,5 @@ const Demo = () => (
     <ProgressBar theme='bg-primary-warning' size='s' />
   </Flex>
 );
+
+export default Demo;

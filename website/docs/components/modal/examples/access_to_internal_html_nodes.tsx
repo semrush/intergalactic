@@ -41,3 +41,5 @@ const Demo = class Demo extends React.Component {
     );
   }
 };
+
+export default Demo;

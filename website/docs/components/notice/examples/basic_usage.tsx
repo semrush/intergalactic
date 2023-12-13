@@ -35,3 +35,5 @@ const Demo = () => (
     </Notice.CloseIcon>
   </Notice>
 );
+
+export default Demo;

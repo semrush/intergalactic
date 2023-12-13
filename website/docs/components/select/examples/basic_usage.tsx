@@ -15,3 +15,5 @@ const Demo = () => (
     <Select options={options} placeholder='Select an option, sir' m='auto' />
   </Flex>
 );
+
+export default Demo;

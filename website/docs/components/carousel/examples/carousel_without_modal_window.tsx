@@ -27,3 +27,5 @@ const Demo = () => (
     ))}
   </Carousel>
 );
+
+export default Demo;

@@ -31,3 +31,5 @@ const Demo = () => {
     </ColorPicker>
   );
 };
+
+export default Demo;

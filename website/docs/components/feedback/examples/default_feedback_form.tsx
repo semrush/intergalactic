@@ -159,3 +159,5 @@ class FeedbackLink extends React.PureComponent {
 }
 
 const Demo = FeedbackLink;
+
+export default Demo;

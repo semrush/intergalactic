@@ -29,3 +29,5 @@ const Demo = () => {
     </React.Fragment>
   );
 };
+
+export default Demo;

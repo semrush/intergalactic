@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('AutoSuggest', () => {
   test('Arrows Navigation', async ({ page }) => {
-    const standPath = 'website/docs/components/auto-suggest/examples/autosuggest.tsx';
+    const standPath = 'website/docs/components/auto-suggest/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

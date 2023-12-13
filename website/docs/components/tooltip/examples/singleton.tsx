@@ -21,3 +21,5 @@ const Demo = () => (
     </Select.Menu>
   </Select>
 );
+
+export default Demo;

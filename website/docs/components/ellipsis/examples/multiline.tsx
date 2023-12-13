@@ -24,3 +24,5 @@ const Demo = () => {
     </Card>
   );
 };
+
+export default Demo;

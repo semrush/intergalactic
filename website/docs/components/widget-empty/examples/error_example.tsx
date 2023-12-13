@@ -72,3 +72,5 @@ const Demo = () => {
     </div>
   );
 };
+
+export default Demo;

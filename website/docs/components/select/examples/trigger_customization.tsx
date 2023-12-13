@@ -18,3 +18,5 @@ const Demo = () => (
     <Select tag={LinkTrigger} options={options} placeholder='Select an option, sir' m='auto' />
   </Flex>
 );
+
+export default Demo;

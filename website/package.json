@@ -11,8 +11,7 @@
     "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs",
-    "make-examples": "tsm --require=../.ci/tsm-filter-warnings.js ./make-examples.ts"
+    "preview": "vitepress preview docs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.1",

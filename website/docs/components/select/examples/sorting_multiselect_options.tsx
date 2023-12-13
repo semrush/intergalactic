@@ -55,3 +55,5 @@ const Demo = () => {
     </Select>
   );
 };
+
+export default Demo;

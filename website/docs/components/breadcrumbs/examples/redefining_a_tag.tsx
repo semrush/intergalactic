@@ -20,3 +20,5 @@ const Demo = () => (
     </Breadcrumbs.Item>
   </Breadcrumbs>
 );
+
+export default Demo;

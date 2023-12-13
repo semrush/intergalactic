@@ -12,3 +12,5 @@ const Demo = () => (
     </FilterTrigger.Addon>
   </FilterTrigger>
 );
+
+export default Demo;

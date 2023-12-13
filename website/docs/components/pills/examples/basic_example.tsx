@@ -20,3 +20,5 @@ const Demo = () => {
     </Pills>
   );
 };
+
+export default Demo;

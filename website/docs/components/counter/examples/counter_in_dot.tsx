@@ -22,3 +22,5 @@ const Demo = () => (
     </Button.Addon>
   </Button>
 );
+
+export default Demo;

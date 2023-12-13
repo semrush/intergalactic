@@ -18,3 +18,5 @@ const Demo = () => (
     <Breadcrumbs.Item active>Current page</Breadcrumbs.Item>
   </Breadcrumbs>
 );
+
+export default Demo;
