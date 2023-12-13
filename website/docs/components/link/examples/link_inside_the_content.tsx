@@ -8,7 +8,7 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <FormatText size={300}>
+        <FormatText size={'s'}>
           <p>
             The Intergalactic Design System is so cutting-edge that even black holes are jealous of
             its sleek interface,{' '}
