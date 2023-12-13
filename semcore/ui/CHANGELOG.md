@@ -1,3 +1,9 @@
+## [15.42.3] - 2023-12-13
+
+### @semcore/d3-chart
+
+- **Fixed** Squeeze of shapes in `ChartLegendTable`.
+
 ## [15.42.2] - 2023-12-12
 
 ### @semcore/color-picker
