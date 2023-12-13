@@ -6,7 +6,7 @@ import Close from '@semcore/ui/icon/Close/m';
 import Select from '@semcore/ui/select';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here`;
+const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const options = Array(6)
   .fill('')
   .map((_, index) => ({
@@ -20,22 +20,22 @@ const Demo = () => (
     <Card.Header>
       <Flex alignItems='center' justifyContent='space-between'>
         <Flex alignItems='center' tag='h4'>
-          <Card.Title hint={tooltipContent}>Market Traffic vs Selected Domains Trends</Card.Title>
+          <Card.Title hint={tooltipContent}>Card Title</Card.Title>
         </Flex>
         <Flex alignItems='center'>
-          <Text size={200} color='#6C6E79' mr={2}>
-            Info about data (optiona)
+          <Text size={200} color='text-secondary' mr={2}>
+            Optional info about data
           </Text>
           <Close color='icon-secondary-neutral' ml='auto' interactive aria-label='Close card' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>
         <Select tag={LinkTrigger} options={options} placeholder='Select' mr={4} />
-        This is card additional information or insights.
+        This is an optional additional information or insights.
       </Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text size={200}>Your awesome card content</Text>
+      <Text size={200}>Your awesome card content is placed here.</Text>
     </Card.Body>
   </Card>
 );

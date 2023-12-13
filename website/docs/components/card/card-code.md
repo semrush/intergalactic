@@ -4,25 +4,29 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 ---
 ## Basic example
 
-An example of the default styles of cards with the title.
-
 ::: sandbox
 
 <script lang="tsx" src="examples/basic_example.tsx"></script>
 
 :::
 
-## More complicated example
-
-Another example of a possible use
+## Complex example
 
 ::: sandbox
 
-<script lang="tsx" src="examples/more_complicated_example.tsx"></script>
+<script lang="tsx" src="examples/complex_example.tsx"></script>
 
 :::
 
-## Ellipsis
+## Card layout for tables
+
+::: sandbox
+
+<script lang="tsx" src="examples/card_layout_for_tables.tsx"></script>
+
+::: -->
+
+## Truncating text with ellipsis
 
 ::: sandbox
 

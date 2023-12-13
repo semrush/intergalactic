@@ -264,7 +264,7 @@ export type DatePickerHandlers = {
 
 /** @deprecated */
 export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
-type BaseInputTriggerProps = InputProps & {
+export type BaseInputTriggerProps = InputProps & {
   /**
    * Date input placeholder characters
    * @default { year: 'Y'; month: 'M'; day: 'D' }

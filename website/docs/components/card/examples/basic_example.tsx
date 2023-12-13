@@ -3,13 +3,13 @@ import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here`;
+const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 
 const Demo = () => (
   <Card>
     <Card.Header>
       <Card.Title hint={tooltipContent} tag='h4' inline my={0}>
-        Card heading
+        Card Title
       </Card.Title>
       <SettingsM
         style={{ float: 'right' }}
@@ -18,10 +18,12 @@ const Demo = () => (
         interactive
         aria-label='Open settings'
       />
-      <Card.Description>This is card additional information or insights.</Card.Description>
+      <Card.Description my={0}>
+        This is a description with additional information or insights.
+      </Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text size={100}>Your awesome card content</Text>
+      <Text size={200}>Your awesome card content is placed here.</Text>
     </Card.Body>
   </Card>
 );
