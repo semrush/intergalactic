@@ -100,8 +100,9 @@ export const renderSandbox = (
 
       if (src) {
         const pathToCurrentDir = state.relativePath.split('/').slice(0, -1);
-        code = fs.readFileSync(resolvePath('docs', ...pathToCurrentDir, src), 'utf8')
-            .replace('export default Demo;\n', '');
+        code = fs
+          .readFileSync(resolvePath('docs', ...pathToCurrentDir, src), 'utf8')
+          .replace('export default Demo;\n', '');
       } else {
         code = clearScriptTagFromTags(scriptTag);
       }

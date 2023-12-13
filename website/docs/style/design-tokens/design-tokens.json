@@ -1060,6 +1060,7 @@
     "computedValue": "#6c6e79",
     "description": "Primary neutral icon.",
     "components": [
+      "accordion",
       "base-trigger",
       "carousel",
       "drag-and-drop",
