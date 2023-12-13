@@ -64,12 +64,12 @@ class DateRangeComparatorAbstract extends Component {
       onHighlightedChange,
       onCompareHighlightedChange,
       onDisplayedPeriodChange,
-      defaultPreselectedValue,
+      preselectedValue,
       preselectedCompare,
       focusedRange,
     } = this.asProps;
 
-    let value = defaultPreselectedValue ?? this.asProps.value?.value;
+    let value = preselectedValue ?? this.asProps.value?.value;
     if (focusedRange === 'compare') {
       value = preselectedCompare ?? this.asProps.value?.compare;
     }
