@@ -7,6 +7,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT, measureText } from './utils';
 import Tooltip from './Tooltip';
+import { Pattern } from './Pattern';
 
 import style from './style/bubble.shadow.css';
 
@@ -78,6 +79,7 @@ class BubbleRoot extends Component {
       data,
       transparent,
       resolveColor,
+      patterns,
     } = this.asProps;
     const [xScale, yScale] = scale;
 
@@ -102,8 +104,8 @@ class BubbleRoot extends Component {
     return sstyled(styles)(
       <g
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i })}
+        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i, patterns })}
+        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i, patterns })}
       >
         {markedCross && (
           <SCenter
@@ -127,10 +129,19 @@ class BubbleRoot extends Component {
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
           color={resolveColor(d[color])}
+          pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
           r={z(d[value])}
           use:duration={`${duration}ms`}
           transparent={transparent}
         />
+        {patterns && (
+          <Pattern
+            id={`${uid}-${i}-pattern`}
+            patternKey={d[color]}
+            color={resolveColor(d[color])}
+            patterns={patterns}
+          />
+        )}
         {d[label] && (
           <SLabel
             aria-hidden

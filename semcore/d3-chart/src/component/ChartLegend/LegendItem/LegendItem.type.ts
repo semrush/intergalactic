@@ -57,7 +57,7 @@ export type ShapeProps = LegendItem & {
   shape: ShapeType;
 };
 
-export const StaticShapes = ['Circle', 'Line', 'Square'] as const;
+export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;
 
 export type ShapeType = 'Checkbox' | typeof StaticShapes[number];
 

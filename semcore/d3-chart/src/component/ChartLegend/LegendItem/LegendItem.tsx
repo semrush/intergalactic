@@ -13,6 +13,7 @@ import {
   StaticShapes,
 } from './LegendItem.type';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { PatternSymbol } from '../../../Pattern';
 
 class LegendItemRoot extends Component<
   LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
@@ -35,7 +36,8 @@ class LegendItemRoot extends Component<
   });
 
   getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
-    const { checked, color, shape, label, id, size, onClick, resolveColor } = this.asProps;
+    const { checked, color, shape, label, id, size, onClick, resolveColor, patterns } =
+      this.asProps;
 
     return {
       id,
@@ -43,6 +45,8 @@ class LegendItemRoot extends Component<
       shape,
       checked,
       color: resolveColor(color),
+      patternKey: color,
+      patterns,
       size,
       onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
         if (onClick && e.key === ' ') {
@@ -116,25 +120,42 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     shape,
     checked,
     color,
+    patternKey,
     Children,
     children: hasChildren,
     onKeyUp,
     label,
+    patterns,
   } = props;
 
   if (hasChildren) {
     return <Children />;
   }
 
+  if (shape === 'Pattern') {
+    return sstyled(styles)(
+      <Box mr={1}>
+        <PatternSymbol color={color} patternKey={patternKey} />
+      </Box>,
+    );
+  }
+
   if (shape === 'Checkbox') {
     return (
-      <Checkbox
-        size={size}
-        checked={checked}
-        theme={checked ? color : undefined}
-        onKeyUp={onKeyUp}
-        aria-label={label}
-      />
+      <>
+        <Checkbox
+          size={size}
+          checked={checked}
+          theme={checked ? color : undefined}
+          onKeyUp={onKeyUp}
+          aria-label={label}
+        />
+        {patterns && (
+          <Box mr={1}>
+            <PatternSymbol color={color} patternKey={patternKey} />
+          </Box>
+        )}
+      </>
     );
   }
 

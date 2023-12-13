@@ -8,6 +8,7 @@ SBubble {
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
   opacity: 0.5;
+
   &:hover {
     opacity: 0.8;
   }
@@ -15,6 +16,10 @@ SBubble {
 
 SBubble[color] {
   fill: var(--color);
+}
+
+SBubble[pattern] {
+  fill: var(--pattern);
 }
 
 SBubble[transparent] {

@@ -8,6 +8,7 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createElement from './createElement';
 import { measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
+import { PatternSymbol } from './Pattern';
 
 import style from './style/radial-tree.shadow.css';
 
@@ -418,7 +419,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   getCapProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
     const data = $rootProps.data?.[index];
     const { xEnd, yEnd, capSize } = this.computeRadianPosition(data!, index);
-    const { uid, transparent, resolveColor } = this.asProps;
+    const { uid, transparent, resolveColor, patterns } = this.asProps;
     const color = data!.color ?? this.asProps.color;
 
     return {
@@ -430,6 +431,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       color,
       resolveColor,
       transparent,
+      patterns,
       ['data-radial-animation']: `${uid}-cap-circle`,
       ['data-radian-index']: index,
     } as IRadialTreeRadianCapProps;
@@ -663,13 +665,15 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   color,
   resolveColor,
   transparent,
+  patterns,
 }) => {
   return sstyled(styles)(
     <SCap
-      render='circle'
-      cx={x}
-      cy={y}
-      r={radius}
+      render={PatternSymbol}
+      solidCircle={!patterns}
+      patternKey={color}
+      x={x - 5}
+      y={y - 5}
       fill={resolveColor(color)}
       transparent={transparent!}
     />,

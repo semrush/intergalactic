@@ -33,7 +33,7 @@ class LineRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, d3, color, resolveColor, duration, transparent } = this.asProps;
+    const { x, y, d3, color, resolveColor, duration, transparent, patterns } = this.asProps;
     return {
       x,
       y,
@@ -42,6 +42,7 @@ class LineRoot extends Component {
       resolveColor,
       duration,
       transparent,
+      patterns,
     };
   }
 

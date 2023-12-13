@@ -27,6 +27,8 @@ export type PlotProps = Context &
     /** Optional prop to tune up alt text generating for charts */
     a11yAltTextConfig?: PlotSummarizerConfig;
 
+    patterns?: boolean;
+
     /** @deprecated */
     eventEmitter?: unknown;
   };

@@ -6,6 +6,7 @@ import createElement from './createElement';
 import { eventToPoint, invert, interpolateValue } from './utils';
 
 import style from './style/dot.shadow.css';
+import { PatternSymbol, getPatternSymbolSize } from './Pattern';
 
 const EXCLUDE_PROPS = ['data', 'scale', 'value', 'display'];
 
@@ -26,6 +27,7 @@ function Dots(props) {
     transparent,
     radius: radiusBase = 6,
     resolveColor,
+    patterns,
   } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
@@ -76,26 +78,49 @@ function Dots(props) {
     const radius = radiusBase * (active ? 8 / 6 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
+    // acc.push(
+    //   sstyled(styles)(
+    //     <SDot
+    //       aria-hidden
+    //       key={`${i}`}
+    //       render='circle'
+    //       visible={visible}
+    //       __excludeProps={EXCLUDE_PROPS}
+    //       value={d}
+    //       index={i}
+    //       cx={d3.x()(d)}
+    //       cy={d3.y()(d)}
+    //       active={active}
+    //       hide={hide}
+    //       color={resolveColor(color)}
+    //       transparent={transparent}
+    //       radius={radius}
+    //     />,
+    //   ),
+    // );
+    const [width, height] = getPatternSymbolSize({
+      patternKey: color,
+      patterns,
+    });
     acc.push(
       sstyled(styles)(
         <SDot
-          aria-hidden
+          render={PatternSymbol}
+          solidCircle={!patterns}
+          color={resolveColor(color)}
+          patternKey={color}
           key={`${i}`}
-          render='circle'
           visible={visible}
-          __excludeProps={EXCLUDE_PROPS}
-          value={d}
-          index={i}
-          cx={d3.x()(d)}
-          cy={d3.y()(d)}
           active={active}
           hide={hide}
-          color={resolveColor(color)}
           transparent={transparent}
-          r={radius}
+          x={d3.x()(d) - width / 2}
+          y={d3.y()(d) - height / 2}
+          radius={radius}
         />,
       ),
     );
+    // acc.push(<PatternSymbol color={resolveColor(color)} patternKey={color} />);
     return acc;
   }, []);
   const SDots = 'g';

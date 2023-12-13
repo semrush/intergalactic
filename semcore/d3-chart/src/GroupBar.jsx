@@ -39,7 +39,7 @@ class GroupBarRoot extends Component {
   }
 
   getBarProps({ y }, index) {
-    const { x, maxBarSize = Infinity } = this.asProps;
+    const { x, maxBarSize = Infinity, patterns } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
     const width = Math.min(bandWidth, maxBarSize);
@@ -51,6 +51,7 @@ class GroupBarRoot extends Component {
       color: getChartDefaultColorName(index),
       x,
       groupKey: x,
+      patterns,
     };
   }
 

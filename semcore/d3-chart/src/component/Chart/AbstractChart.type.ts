@@ -53,6 +53,8 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Height of plot
    */
   plotHeight: number;
+
+  patterns?: boolean;
   /**
    * Margin (for Y axis points) from left side of chart container to Y axis
    */
