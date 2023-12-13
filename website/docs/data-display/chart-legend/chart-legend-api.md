@@ -1,9 +1,10 @@
 ---
-title: API
+title: Chart legend
 fileSource: d3-chart
+tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
 ---
 
-@## D3 API
+## D3 API
 
 ```js
 import { ChartLegend } from '@semcore/ui/d3-chart';
@@ -11,4 +12,6 @@ import { ChartLegend } from '@semcore/ui/d3-chart';
 <ChartLegend />;
 ```
 
-@typescript LegendFlexProps
+<TypesView type="LegendFlexProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

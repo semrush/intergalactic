@@ -1,17 +1,27 @@
 ---
-title: Example
+title: Notice
+tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
-@## Basic usage
+## Basic usage
 
-@example notice
+::: sandbox
 
-@## NoticeSmart
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
 
-It is an example that showcases the functionality of the [NoticeSmart](/components/notice/notice-api/#noticesmart) component.
+:::
 
-@example notice-smart
+## NoticeSmart
 
-@## Custom notice
+It is an example that showcases the functionality of the [NoticeSmart](/components/notice/notice-api#noticesmart) component.
 
-You have the flexibility to construct custom notices by utilizing individual components. For an example, refer to [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code/).
+::: sandbox
+
+<script lang="tsx" src="examples/noticesmart.tsx"></script>
+
+:::
+
+## Custom notice
+
+You have the flexibility to construct custom notices by utilizing individual components. For an example, refer to [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code).
+

@@ -1,19 +1,20 @@
 ---
-title: API
+title: TimePicker
 fileSource: time-picker
+tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
-@## Time picker
+## Time picker
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
 ```
 
-@typescript TimePickerProps
+<TypesView type="TimePickerProps" :types={...types} />
 
-@## TimePicker.Hours, TimePicker.Minutes
+## TimePicker.Hours, TimePicker.Minutes
 
-@typescript TimePickerItemProps
+<TypesView type="TimePickerItemProps" :types={...types} />
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
@@ -23,16 +24,16 @@ import Timepicker from '@semcore/ui/time-picker';
 </Timepicker>;
 ```
 
-@## TimePicker.Format
+## TimePicker.Format
 
-@typescript TimePickerFormatProps
+<TypesView type="TimePickerFormatProps" :types={...types} />
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Format />;
 ```
 
-@## TimePicker.Separator
+## TimePicker.Separator
 
 It is a usual `span`-element, it takes the HTML-attributes available for it.
 
@@ -40,3 +41,5 @@ It is a usual `span`-element, it takes the HTML-attributes available for it.
 import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Separator />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

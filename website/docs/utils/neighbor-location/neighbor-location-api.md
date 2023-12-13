@@ -1,9 +1,10 @@
 ---
-title: API
+title: NeighborLocation
 fileSource: neighbor-location
+tabs: Design('neighbor-location'), API('neighbor-location-api'), Changelog('neighbor-location-changelog')
 ---
 
-@## NeighborLocation
+## NeighborLocation
 
 Root wrapper-component doesn't create a node but provides a context for defining neighbors.
 
@@ -13,9 +14,9 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation />;
 ```
 
-@typescript NeighborLocationProps
+<TypesView type="NeighborLocationProps" :types={...types} />
 
-@## NeighborLocation.Detect
+## NeighborLocation.Detect
 
 Component for detect neighbors.
 
@@ -25,4 +26,6 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation.Detect />;
 ```
 
-@typescript NeighborItemProps
+<TypesView type="NeighborItemProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

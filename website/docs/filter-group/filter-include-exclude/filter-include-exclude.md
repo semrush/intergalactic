@@ -1,11 +1,13 @@
 ---
 title: Include/Exclude keywords
-tabName: Design
+tabs: Design('filter-include-exclude'), Example('filter-include-exclude-code')
 ---
 
-> **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+::: tip
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).**
+:::
 
-@## Description
+## Description
 
 **Include/Exclude keywords filter** is a filter for sorting by a large amount of keywords.
 
@@ -22,11 +24,11 @@ tabName: Design
   - quickly reset the entered data and search again;
 - be able to change data.
 
-@## Appearance
+## Appearance
 
 ### Trigger
 
-- For trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/) components.
+- For trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
 - **Set the trigger min-width to 140px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
 
 ![filter placeholder](static/placeholder-include.png)
@@ -46,9 +48,11 @@ tabName: Design
 
 ![opened filter](static/opened-exclude.png)
 
-@## Interaction
+## Interaction
 
-> All common rules for working and interacting with filters are described in the [Filter common rules guide](/filter-group/filter-rules/).
+::: tip
+All common rules for working and interacting with filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).
+:::
 
 When opening a dropdown texarea immediately gets the focus.
 
@@ -68,7 +72,7 @@ When opening a dropdown texarea immediately gets the focus.
 - Change the logic between the lines using radio buttons (in the "Include keywords" filter).
 - Don’t allow to nest additional square brackets inside square brackets. When user opens (or when inserting) a new open parenthesis, close the previous word and wrap the data onto a new line of data.
 
-@## Validation
+## Validation
 
 - When validating the data, highlight invalid lines with a Warning icon at the beginning of the line.
 - By clicking on "Apply", cut out special characters and leave only keywords.
@@ -99,19 +103,21 @@ For each error, be sure to show a tooltip with an explanation of what needs to b
 
 ![filter validation](static/many-errors.png)
 
-@## Abbreviations and tooltips
+## Abbreviations and tooltips
 
 If the names of filters "Include keywords" and "Exclude keywords" don’t fit completely, abbreviate them to "Include" and "Exclude", respectively.
 
 ![filter tooltips](static/tooltips.png)
 
-@## Old browsers support
+## Old browsers support
 
-> **Why do we have a separate view of this filter for the older browsers?**
->
-> Some of our users have old browsers, and we want them to be able working in them.
->
-> To make users use this filter, we have a cut version of it.
+::: tip
+**Why do we have a separate view of this filter for the older browsers?**
+
+Some of our users have old browsers, and we want them to be able working in them.
+
+To make users use this filter, we have a cut version of it.
+:::
 
 - For users with a new browser, show errors on the fly and highlight them, and add line numbering with keywords in the input.
 - In the old browser, these convenient things are absent, and the validation applies only after the clicking on "Apply" button.
@@ -125,8 +131,7 @@ Determine that the user has an input in the old browser only at the moment of th
 ![filter in old browsers](static/old-browser-2.png)
 ![filter in old browsers](static/old-browser-3.png)
 
-@## Nothing found
+## Nothing found
 
-"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
+"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
-@page filter-include-exclude-code

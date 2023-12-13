@@ -22,6 +22,7 @@ SItemToggle[disabled] {
 SItemChevron {
   transform: rotate(0deg);
   transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
+  fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
   &[selected] {
     transform: rotate(90deg);

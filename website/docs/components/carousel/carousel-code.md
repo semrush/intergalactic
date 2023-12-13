@@ -1,20 +1,33 @@
 ---
-title: Example
+title: Carousel
+tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
 ---
 
-@## Image & video galleries
+## Carousel with default indicators
 
-@example image
+::: sandbox
 
-@## Item indicators
+<script lang="tsx" src="examples/carousel_with_default_indicators.tsx"></script>
 
-@example dots
+:::
 
-@## Content galleries inside the modal window
+## Carousel with preview indicators
 
-@example content
+::: sandbox
 
-@## Hidden controls to move focus in hidden block
+<script lang="tsx" src="examples/carousel_with_preview_indicators.tsx"></script>
+
+:::
+
+## Carousel without modal window
+
+::: sandbox
+
+<script lang="tsx" src="examples/carousel_without_modal_window.tsx"></script>
+
+:::
+
+## Hidden controls to move focus in hidden block
 
 - `ariaHidden` controls the visibility on the screens.
 - `tabIndex` controls the visibility of the focus.
@@ -27,3 +40,4 @@ title: Example
   </Carousel.Item>
 </Carousel>
 ```
+

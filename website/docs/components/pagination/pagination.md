@@ -1,18 +1,56 @@
 ---
 title: Pagination
 fileSource: pagination
-tabName: Design
+tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+
+import Pagination from '@semcore/ui/pagination';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { onChange, text } = createGroupWidgets('Pagination');
+
+    const currentPage = text({
+      key: 'currentPage',
+      defaultValue: 1,
+      label: 'CurrentPage',
+    });
+
+    const totalPages = text({
+      key: 'totalPages',
+      defaultValue: 122360,
+      label: 'TotalPages',
+    });
+
+    return (
+      <Pagination
+        currentPage={currentPage}
+        onCurrentPageChange={(value) => onChange('currentPage', value)}
+        totalPages={totalPages}
+      />
+    );
+  },
+  {
+    filterProps: ['onChange'],
+  },
+);
+</script>
+
+:::
+
+## Description
 
 **Pagination** is a component that provides a set of controls to navigate through long lists of data.
 
 Using pagination is highly recommended for tables and long lists of data that users prefer to browse page by page.
 
-@## Component composition
+## Component composition
 
 ![](static/pagination-composition.png)
 
@@ -25,7 +63,7 @@ Component consists of the following:
 5. `Pagination.PrevPage`
 6. `Pagination.TotalPages`
 
-@## Margins
+## Margins
 
 - The margins between buttons in the component are always 8px.
 - The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
@@ -36,14 +74,14 @@ The margin from the table to the pagination is consistently 16px.
 
 ![](static/margin-top.png)
 
-@## Number of the rows
+## Number of the rows
 
 We provide some recommendations for the table size:
 
 - Use a minimum of two user screens (± 2000 px) for the table.
 - Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
 
-@## Interaction
+## Interaction
 
 - The table should scroll to the beginning when the user moves between pages.
 - After sorting and filtering, the pagination always returns the user to the first page.
@@ -63,7 +101,7 @@ The current page should always be displayed in the input:
 
 The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.
 
-@## States and cases
+## States and cases
 
 ### User is on the first page
 
@@ -85,7 +123,9 @@ In this case, there should be no error shown; instead, the user should be moved 
 
 Use this state only when there is some data, and there might be more data.
 
-> If there is no data or the filter is applied, pagination shouldn't be displayed. Instead, the table should contain a message indicating that there is no data.
+::: tip
+If there is no data or the filter is applied, pagination shouldn't be displayed. Instead, the table should contain a message indicating that there is no data.
+:::
 
 ![](static/one-page.png)
 
@@ -95,7 +135,7 @@ Use this state only when there is some data, and there might be more data.
 
 During loading, don’t display pagination.
 
-@## Additional states
+## Additional states
 
 ### Select for choosing the number of rows
 
@@ -111,7 +151,3 @@ In this case, add the `tilde (≈)` to the number of pages and change the link d
 
 ![](static/undefined-number.png)
 
-@page pagination-a11y
-@page pagination-api
-@page pagination-code
-@page pagination-changelog

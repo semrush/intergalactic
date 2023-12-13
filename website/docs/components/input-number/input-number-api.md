@@ -1,35 +1,36 @@
 ---
-title: API
+title: InputNumber & InputRange
 fileSource: input-number
+tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api'), Example('input-number-code'), Changelog('input-number-changelog')
 ---
 
-@## InputNumber
+## InputNumber
 
 ```js
 import InputNumber from '@semcore/ui/input-number';
 ```
 
-@typescript InputNumberProps
+<TypesView type="InputNumberProps" :types={...types} />
 
-@## InputNumber.Value
+## InputNumber.Value
 
 ```jsx
 import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Value />;
 ```
 
-@typescript InputNumberValueProps
+<TypesView type="InputNumberValueProps" :types={...types} />
 
-@## InputNumber.Controls
+## InputNumber.Controls
 
 ```jsx
 import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Controls />;
 ```
 
-@typescript InputNumberControlsProps
+<TypesView type="InputNumberControlsProps" :types={...types} />
 
-@## InputNumber.Addon
+## InputNumber.Addon
 
 ```jsx
 import InputNumber from '@semcore/ui/input-number';
@@ -37,3 +38,5 @@ import InputNumber from '@semcore/ui/input-number';
 ```
 
 API is the same as [Input.Addon](/components/input/input-api) has.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

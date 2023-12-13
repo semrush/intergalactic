@@ -1,13 +1,14 @@
 ---
-title: A11y
+title: NoticeBubble
 a11y: AA
+tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-code'), Changelog('notice-bubble-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key           | Function                                                                                                                                                            |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,7 +22,7 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role   | Attribute               | Element                                                      | Usage                                                                                                                                                                                                                               |
 | ------ | ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +32,7 @@ The list below describes roles and attributes that component already has.
 |        | `aria-live="assertive"` | Implicit on `div` (for 'No connection' type of NoticeBubble) | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
 |        | `aria-atomic="true"`    | Implicit on `div`                                            | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to use the entire content of the alert element as the alert message even if only a portion of it has changed.  |
 
-@## Considerations for developers
+## Considerations for developers
 
 Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
 
@@ -43,7 +44,7 @@ Note that it is necessary for elements that have attributes such as `aria-live` 
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role        | Attribute                  | Element | Usage                                                                                                                                                        |
 | ----------- | -------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -53,10 +54,10 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |             | `aria-modal="true"`        | `div`   | Tells assistive technologies that the windows underneath the current alert dialog are not available for interaction (inert).                                 |
 | alert       |                            | `div`   | Identifies the element that serves as the alert notification.                                                                                                |
 
-@## Resources
+## Resources
 
 [W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) has detailed information about the alerts accessible behavior.
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

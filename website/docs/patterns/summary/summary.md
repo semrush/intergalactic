@@ -1,9 +1,9 @@
 ---
 title: Summary
-tabName: Design
+tabs: Design('summary'), Example('summary-code')
 ---
 
-@## Description
+## Description
 
 **Summary** is a pattern for displaying summary metrics and trends within reports or products.
 
@@ -17,7 +17,7 @@ tabName: Design
 - Ensure the metric's meaning is evident from its title and/or nearby supplementary information. Whenever possible, provide details about the metric's calculation method.
 - Limit the display to 5-6 metrics per report or widget to prevent overwhelming users' cognitive capacity.
 
-@## Pattern composition
+## Pattern composition
 
 The pattern includes the following components:
 
@@ -28,7 +28,7 @@ The pattern includes the following components:
 
 ![](static/summary-metric.png)
 
-@## Styles, margins and paddings
+## Styles, margins and paddings
 
 ### Margins and paddings
 
@@ -44,20 +44,20 @@ For metrics composed of multiple values, use these margins:
 
 ![](static/default-example.png)
 
-@table-caption Summary recommended styles
+Table: Summary recommended styles
 
 |                                     | Styles     |
 | ----------------------------------- | ---------- |
 | **Title**                           | Text size: 14px (`--fs-200`, `--lh-200`), color uses `--text-primary`. Accompanied by an `Info` icon of M size. Alternatively, use a medium-sized icon for displaying brand metrics (for example, for social media).       |
 | **Date/period/location/database**   | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`. |
-| **Metric**                          | Text size: 24px (`--fs-500`, `--lh-500`), color uses `--text-primary`, link color, or another relevant color for indicating specific metrics in your product. You may adjust text size to 20px or 32px as needed. Refer to the  [Typography scale](/style/typography/). |
+| **Metric**                          | Text size: 24px (`--fs-500`, `--lh-500`), color uses `--text-primary`, link color, or another relevant color for indicating specific metrics in your product. You may adjust text size to 20px or 32px as needed. Refer to the  [Typography scale](/style/typography/typography). |
 | **Metric's additional information** | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.
  |
 | **Other information**               | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`. |
 
-@## Dividers
+## Dividers
 
-Separate metrics with 24px spacing and [Divider](/components/divider/). The last metric (`last-child` element) should not have a divider.
+Separate metrics with 24px spacing and [Divider](/components/divider/divider). The last metric (`last-child` element) should not have a divider.
 
 ![](static/divider.png)
 
@@ -67,11 +67,11 @@ When metrics need to be grouped, avoid using dividers to separate metrics belong
 
 ![](static/dividers.png)
 
-@## Horizontal & vertical layout
+## Horizontal & vertical layout
 
 Main report/widget metrics can be arranged either horizontally or vertically, depending on the layout requirement. The vertical layout is more space-efficient and compact.
 
-@table-caption Summary layouts
+Table: Summary layouts
 
 | Case                 | Layout type                    | Appearance example    |
 | -------------------- | ------------------------------ | --------------------- |
@@ -81,20 +81,20 @@ Main report/widget metrics can be arranged either horizontally or vertically, de
 
 ![](static/metric-yes-no.png)
 
-@## Alignment
+## Alignment
 
 Metrics can be placed not only within separate widgets but also within table cells and other components. As such, metric alignment and its supplementary information can be either left or right-aligned.
 
 ![](static/right-align.png)
 
-@## Title
+## Title
 
 - For cases where there's an abundance of metrics causing them to exceed page width, truncate their titles with an `ellipsis`.
-- Show the complete metric title by hovering over the title, revealing it in a tooltip. Alternatively, include the title within the `Info` icon tooltip (see [Informer](/patterns/informer/)).
+- Show the complete metric title by hovering over the title, revealing it in a tooltip. Alternatively, include the title within the `Info` icon tooltip (see [Informer](/patterns/informer/informer)).
 
 ![](static/minitrend3.png)
 
-@## Difference value
+## Difference value
 
 - Avoid displaying the metric's title in the tooltip, as it's already present in the summary.
 - Upon hovering over the difference value, present a tooltip showcasing the previous and current values adjacent to the metric. Avoid abbreviating values in the tooltip.
@@ -102,13 +102,13 @@ Metrics can be placed not only within separate widgets but also within table cel
 
 ![](static/diff.png) ![](static/diff2.png)
 
-@## Summary with minitrends
+## Summary with minitrends
 
 Minitrends serve as simplified chart versions for displaying trends or comparing metrics across different days.
 
 ![](static/minitrend1.png)
 
-@table-caption Summary with minitrens
+Table: Summary with minitrens
 
 | Case   | Appearance example                  |
 | ------ | ----------------------------------- |
@@ -134,9 +134,9 @@ Make minitrends clickable to provide the detailed information (for example, comp
 
 - Clickable minitrend charts are initially visible upon opening the report.
 - Expanding the detailed chart occurs in an accordion-like manner, shifting page content.
-- Upon expanding the [Accordion](/components/accordion/), selecting another minitrend replaces its content with the chosen value.
+- Upon expanding the [Accordion](/components/accordion/accordion), selecting another minitrend replaces its content with the chosen value.
 
-@table-caption Clickable minitrend states
+Table: Clickable minitrend states
 
 | State   | Appearance example                   |
 | ------- | ------------------------------------ |
@@ -144,23 +144,22 @@ Make minitrends clickable to provide the detailed information (for example, comp
 | Hover   | ![](static/clickable-minitrend2.png) |
 | Active  | ![](static/clickable-minitrend3.png) |
 
-@## Edge cases
+## Edge cases
 
-@table-caption Summary edge cases
+Table: Summary edge cases
 
 | State     | Appearance example                         |
 | --------- | ------------------------------------------ |
-| Display [Skeleton](/components/skeleton) on initial load. | ![](static/summary-skeleton.png)   |
-| Show [Spin](/components/spin) post data reload or filtering. | ![](static/spin.png)                   |
+| Display [Skeleton](/components/skeleton/skeleton) on initial load. | ![](static/summary-skeleton.png)   |
+| Show [Spin](/components/spin/spin) post data reload or filtering. | ![](static/spin.png)                   |
 | Indicate missing data with "n/a" message. | ![](static/not-available.png) |
 | In case of metric display error, show `Warning` icon. While hovering over the icon show tooltip with "Something went wrong" message. | ![](static/error2.png)                |
 | Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![](static/error.png)                 |
 
-@## Adaptivity
+## Adaptivity
 
 The Summary widget can have maximum and minimum widths at various resolutions.
 
 - The maximum width depends on the widget's content.
 - Avoid stretching the metrics widget to the full page width.
 
-@page summary-code

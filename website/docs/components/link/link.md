@@ -1,16 +1,111 @@
 ---
 title: Link
 fileSource: link
-tabName: Design
+tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Link from '@semcore/ui/link';
+import CheckM from '@semcore/ui/icon/Check/m';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 
-**Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It is a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale) guide.
+const SIZE = [
+  { value: '100', name: '100 = 12px' },
+  { value: '200', name: '200 = 14px' },
+  { value: '300', name: '300 = 16px' },
+  { value: '400', name: '400 = 19px' },
+  { value: '500', name: '500 = 25px' },
+  { value: '600', name: '600 = 33px' },
+  { value: '700', name: '700 = 36px' },
+  { value: '800', name: '800 = 48px' },
+];
 
-@## Appearance
+const Preview = (preview) => {
+  const { bool, select, radio, text } = preview('Button');
+
+  const size = select({
+    key: 'size',
+    defaultValue: '300',
+    label: 'Size',
+    options: SIZE,
+  });
+
+  const color = text({
+    key: 'color',
+    label: 'Color',
+    defaultValue: '',
+    placeholder: '',
+  });
+
+  const active = bool({
+    key: 'active',
+    defaultValue: false,
+    label: 'Active',
+  });
+
+  // const noWrap = bool({
+  //   key: 'noWrap',
+  //   defaultValue: true,
+  //   label: 'NoWrap',
+  // });
+
+  const disabled = bool({
+    key: 'disabled',
+    defaultValue: false,
+    label: 'Disabled',
+  });
+
+  const beforeIcon = bool({
+    key: 'before',
+    defaultValue: false,
+    label: 'AddonLeft',
+  });
+
+  const afterIcon = bool({
+    key: 'after',
+    defaultValue: false,
+    label: 'AddonRight',
+  });
+
+  const child = text({
+    key: 'children',
+    defaultValue: 'Link',
+    label: 'Text',
+  });
+
+  const renderIcon = (position) => {
+    switch (position) {
+      case 'before':
+        return <CheckM />;
+      case 'after':
+        return <ArrowRightM />;
+      default:
+        return false;
+    }
+  };
+
+  return (
+    <Link color={color} size={size} disabled={disabled} active={active} href='#'>
+      {beforeIcon && <Link.Addon>{renderIcon('before')}</Link.Addon>}
+      {beforeIcon || afterIcon ? <Link.Text>{child}</Link.Text> : child}
+      {afterIcon && <Link.Addon>{renderIcon('after')}</Link.Addon>}
+    </Link>
+  );
+};
+const App = PlaygroundGeneration(Preview);
+</script>
+
+:::
+
+## Description
+
+**Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It is a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
+
+## Appearance
 
 **Default link:** An accent control that links to another web page.
 
@@ -20,23 +115,23 @@ tabName: Design
 
 ![](static/custom-link.png)
 
-@## Sizes and margins
+## Sizes and margins
 
 You can add addons before and after the link text. Addons always have a 4px margin from the link text.
 
 - The icon should represent the action that will be performed by the link.
-- If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/) component.
+- If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/spin) component.
 
-@table-caption Link text and addon sizes and margins
+Table: Link text and addon sizes and margins
 
 | Text size                               | Appearance example     | Icon size |
 | --------------------------------------- | ---------------------- | --------- |
 | 12-16px (`--fs-100`-`--fs-300` tokens)  | ![](static/link-m.png) | M         |
 | 20px and bigger (from `--fs-400` token) | ![](static/link-l.png) | L         |
 
-@## Interaction
+## Interaction
 
-@table-caption Default link states
+Table: Default link states
 
 | State         | Appearance    | Description     | Cursor    |
 | ------------- | ------------- | --------------- | --------- |
@@ -59,19 +154,21 @@ Hided this section because it's for the dark theme.
 | visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
 | visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
 
-@## Links on a dark and colored background
+## Links on a dark and colored background
 
-Default links can be used on a colored background within a [Notice](/components/notice/) component.
+Default links can be used on a colored background within a [Notice](/components/notice/notice) component.
 
 ![](static/default-yes.png)
 
-@## Link text and target zone
+## Link text and target zone
 
-> _Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
->
-> _Links shouldn't be too large on mobile. Very large links that take up much of the viewport can be accidentally activated, such as when a user touches the screen to scroll up or down._
->
-> [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
+::: tip
+_Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
+
+_Links shouldn't be too large on mobile. Very large links that take up much of the viewport can be accidentally activated, such as when a user touches the screen to scroll up or down._
+
+[Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
+:::
 
 When clicking on a link that leads to another page or opens a modal window, the link text should clearly indicate the type of page or modal window it will be. Use an infinitive form ("What should be done?") for the link text.
 
@@ -101,7 +198,7 @@ If a link spans two lines, ensure that the cursor remains consistent throughout 
 
 ![](static/name-example-7.png)
 
-@## Margin between links
+## Margin between links
 
 For links placed in one line, maintain a margin between them that is a multiple of 4px:
 
@@ -110,14 +207,16 @@ For links placed in one line, maintain a margin between them that is a multiple 
 
 ![](static/link-margin.png)
 
-@## Default link or Hint link?
+## Default link or Hint link?
 
-> Find detailed information on the hint link in the [Typography guide](/style/typography/#hints_hint_links).
+::: tip
+Find detailed information on the hint link in the [Typography guide](/style/typography/typography#hints_hint_links).
+:::
 
 - Default link is suitable for internal and external transitions, reloading the page, updating data in a small block/widget, and clickable email.
 - Hint link is recommended for updating data in a table row, opening a modal window, opening a dropdown, opening an accordion, opening the full text on the same page, and tooltip on click/hover.
 
-@table-caption How to choose what type of link you should use
+Table: How to choose what type of link you should use
 
 | Action on the page   | Default link       | Hint link |
 | -------------------- | ------------------ | --------- |
@@ -133,18 +232,20 @@ For links placed in one line, maintain a margin between them that is a multiple 
 | Opening the full text on the same page | ❌                                   | ✅        |
 | Tooltip on click/hover                 | ❌                                   | ✅        |
 
-@## Links in tables
+## Links in tables
 
-- If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/).
+- If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/button).
 - In table rows, use 14px links. If the link is a URL leading to an external page, include the `LinkExternal` icon with M size and `--icon-secondary-neutral` color next to it. Ensure it has a `margin-left: var(--spacing-1x)`.
 
 ![](static/table-yes-no.png)
 
-@## External links
+## External links
 
-> External links always open in a new tab.
+::: tip
+External links always open in a new tab.
+:::
 
-@table-caption Cases for appearance of external links
+Table: Cases for appearance of external links
 
 | Case description     | Transition inside product | Transition to external resource | Appearance example     |
 | ---- | ------------------------------------------------ | ---------------------- | --------------------------------------------- |
@@ -159,13 +260,9 @@ For links placed in one line, maintain a margin between them that is a multiple 
 - When hovering over the icon, it changes color to the darker one with CSS filter.
 - If necessary, you can use link styles to highlight the external resource icon.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Avoid using the link component for text that doesn't lead to another page or perform an action to prevent misleading users.
 
 ![](static/yes-no-link.png)
 
-@page link-a11y
-@page link-api
-@page link-code
-@page link-changelog

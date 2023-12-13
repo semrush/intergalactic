@@ -1,16 +1,29 @@
 ---
-title: Example
+title: Drag and drop
 fileSource: drag-and-drop
+tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
 ---
 
-@## Use in the DropdownMenu
+## Use in the DropdownMenu
 
-@example list
+::: sandbox
 
-@## Use in TabPanel
+<script lang="tsx" src="examples/use_in_the_dropdownmenu.tsx"></script>
 
-@example tabs
+:::
 
-@## Example with use of the drop zone
+## Use in TabPanel
 
-@example zone
+::: sandbox
+
+<script lang="tsx" src="examples/use_in_tabpanel.tsx"></script>
+
+:::
+
+## Example with use of the drop zone
+
+::: sandbox
+
+<script lang="tsx" src="examples/example_with_use_of_the_drop_zone.tsx"></script>
+
+:::

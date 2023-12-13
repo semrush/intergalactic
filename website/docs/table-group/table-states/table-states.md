@@ -2,24 +2,28 @@
 title: Table states
 ---
 
-@## Basic rules for table states
+## Basic rules for table states
 
-> The message inside the table must get the `sticky` property when scrolling and be centered relative to the parent table and the user's viewport.
->
-> Thus the user will always see what is happening with the table, and won't need to scroll to the top of it.
+::: tip
+The message inside the table must get the `sticky` property when scrolling and be centered relative to the parent table and the user's viewport.
+
+Thus the user will always see what is happening with the table, and won't need to scroll to the top of it.
+:::
 
 Message with a loading or error state must have `margin-top: 40px`, so that when the user changes the size of the viewport, the message doesn't "stick" to table header.
 
 |                                                       | First screen                                                | The state of the page scrolling                             |
 | ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| Example with [ProgressBar](/components/progress-bar/) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
-| Example with [Spin](/components/spin/)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
+| Example with [ProgressBar](/components/progress-bar/progress-bar) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
+| Example with [Spin](/components/spin/spin)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
 
-> It is also not recommended to change the table height when switching between states.
+::: tip
+It is also not recommended to change the table height when switching between states.
+:::
 
-@## Skeleton
+## Skeleton
 
-When loading data for the first time, show the structure of the loaded page and data. Use the [Skeleton](/components/skeleton/).
+When loading data for the first time, show the structure of the loaded page and data. Use the [Skeleton](/components/skeleton/skeleton).
 
 **Show skeleton while there is:**
 
@@ -29,7 +33,9 @@ When loading data for the first time, show the structure of the loaded page and 
 
 We recommend using the skeleton to show only the first three rows, not the entire table.
 
-> Don't show [Pagination](/components/pagination/) when loading the table for the first time.
+::: tip
+Don't show [Pagination](/components/pagination/pagination) when loading the table for the first time.
+:::
 
 ![](static/table-skeleton.png)
 
@@ -37,9 +43,9 @@ In a secondary table, you can show the skeleton for all the rows (there are usua
 
 ![](static/skeleton-secondary.png)
 
-@## ProgressBar
+## ProgressBar
 
-If gathering data takes a large period of time **(more than 1 minute, for example)**, show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
+If gathering data takes a large period of time **(more than 1 minute, for example)**, show that data is being collected. Use the [ProgressBar](/components/progress-bar/progress-bar) in this case.
 
 A message with a progress bar gets `sticky` property and is centered relative to the screen that the user scrolls.
 
@@ -49,9 +55,9 @@ When scrolling the table, fix the progress bar to the table header. The message 
 
 ![](static/table-sticky-2.png)
 
-@## Loading
+## Loading
 
-This state is for cases when user filters, sorts, or search results data. In this case, use [Spin](/components/spin/).
+This state is for cases when user filters, sorts, or search results data. In this case, use [Spin](/components/spin/spin).
 
 If data loading is fast, then this state isn’t necessary.
 
@@ -67,7 +73,7 @@ The loading message gets the `sticky` property and is centered relative to the s
 
 ![](static/sticky-loading-1.png)
 
-@## Empty table
+## Empty table
 
 The table can be empty and has no data in it, because of the data that was either deleted or not provided at the beginning of working with the table.
 
@@ -76,13 +82,15 @@ The table can be empty and has no data in it, because of the data that was eithe
 - the table is empty and, for example, you need to connect data to it;
 - the user deleted all data from the table.
 
-See more information in the [Empty page](/patterns/empty-page/).
+See more information in the [Empty page](/patterns/empty-page/empty-page).
 
 ![](static/empty.png)
 
-> Note that illustrations for these cases are usually unique. Designers create them for each specific case or product if needed.
+::: tip
+Note that illustrations for these cases are usually unique. Designers create them for each specific case or product if needed.
+:::
 
-@## No data
+## No data
 
 **Show this message when:**
 
@@ -93,23 +101,29 @@ See more information in the [Empty page](/patterns/empty-page/).
 
 ![](static/no-data-button.png)
 
-> The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/table.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
+::: tip
+The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/table.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code).
+:::
 
-@## Nothing found
+## Nothing found
 
 Show this state when user has been searching or applying a filter in the table, and we didn't find anything.
 
-> In this state, save the active state of the sorted column.
+::: tip
+In this state, save the active state of the sorted column.
+:::
 
 In this state, we recommend adding a control that will help user correct the situation. For example, you can add a "Clear filters" button.
 
 ![](static/nothing-found-button.png)
 
-> The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
+::: tip
+The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code).
+:::
 
-@## Something went wrong
+## Something went wrong
 
-Show this state when there was an error in the product on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found in the widgets](/components/widget-empty/).
+Show this state when there was an error in the product on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found in the widgets](/components/widget-empty/widget-empty).
 
 **Show it when:**
 
@@ -122,24 +136,26 @@ Show this state when there was an error in the product on the backend, so we can
 | We are aware of the problem, and report it | ![](static/error-known.png)         |
 | We don't know about the problem            | ![](static/error-not-known.png) |
 
-> The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/warning.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
+::: tip
+The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/warning.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code).
+:::
 
-@## Message text
+## Message text
 
 It is important to indicate the following things in the empty state message:
 
 - In the title – the essence of the current situation.
 - In the description – what user need to do to change the situation.
 - If possible, suggest an action (in the form of a button or link) which will help user to change the situation.
-  For more information about the rules for such states, see the guides – [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
+  For more information about the rules for such states, see the guides – [Errors, n/a, nothing found in widgets](/components/widget-empty/widget-empty), [Global errors](/patterns/global-errors/global-errors), etc.
 
-@## Table header
+## Table header
 
 For all empty states of the table, keep the header. If it has sorting icons, also keep them.
 
 ![](static/empty-yes-no.png)
 
-@## Cell empty & error states
+## Cell empty & error states
 
 ### There is no data in the cell
 
@@ -152,9 +168,11 @@ For all empty states of the table, keep the header. If it has sorting icons, als
 
 ### Data uploading in the cell
 
-> Use [Skeleton](/components/skeleton/) when loading the table for the first time.
+::: tip
+Use [Skeleton](/components/skeleton/skeleton) when loading the table for the first time.
+:::
 
-When loading content in one or more cells, show the [Spin](/components/spin/) of XS size.
+When loading content in one or more cells, show the [Spin](/components/spin/spin) of XS size.
 
 ![](static/cell-loading.png)
 
@@ -165,7 +183,9 @@ This is the state when something broke in a particular cell and we can't show th
 - Use `Warning` icon with M size and `--icon-primary-warning` token for color.
 - On the hover, always show a tooltip with an explanation that something went wrong.
 
-> We recommend giving the user the opportunity to change the situation. In this case, you can display the control in a cell for reloading data, for example.
+::: tip
+We recommend giving the user the opportunity to change the situation. In this case, you can display the control in a cell for reloading data, for example.
+:::
 
 ![](static/cell-danger.png)
 
@@ -182,4 +202,6 @@ A cell in a table may be blocked by a limit or by the need to take some action t
 
 ![](static/cell-locked-tooltip.png)
 
-> For all the main table styles and principles, see [Table](/table-group/table/). For all svg illustrations for different states and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code/).
+::: tip
+For all the main table styles and principles, see [Table](/table-group/data-table/data-table). For all svg illustrations for different states and their names, refer to the the [Empty states](/components/widget-empty/widget-empty-code).
+:::

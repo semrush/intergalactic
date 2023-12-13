@@ -1,57 +1,60 @@
 ---
-title: API
+title: DataTable
+tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'),  Changelog('data-table-changelog')
 ---
 
-@## DataTable
+## DataTable
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
 <DataTable />;
 ```
 
-@typescript DataTableProps
+<TypesView type="DataTableProps" :types={...types} />
 
-@## DataTable.Head
+## DataTable.Head
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
 <DataTable.Head />;
 ```
 
-@typescript DataTableHeadProps
+<TypesView type="DataTableHeadProps" :types={...types} />
 
-@## DataTable.Column
+## DataTable.Column
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
 <DataTable.Column />;
 ```
 
-@typescript DataTableColumnProps
+<TypesView type="DataTableColumnProps" :types={...types} />
 
-@## DataTable.Body
+## DataTable.Body
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
 <DataTable.Body />;
 ```
 
-It's a wrapper over a [Box](/layout/box-system/box-api/#a3cfce) component.
+It's a wrapper over a [Box](/layout/box-system/box-api#a3cfce) component.
 
-@## DataTable.Row
+## DataTable.Row
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
 <DataTable.Row />;
 ```
 
-@typescript DataTableRowProps
+<TypesView type="DataTableRowProps" :types={...types} />
 
-@## DataTable.Cell
+## DataTable.Cell
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
 <DataTable.Cell />;
 ```
 
-@typescript DataTableCellProps
+<TypesView type="DataTableCellProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

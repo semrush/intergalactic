@@ -1,14 +1,14 @@
 ---
 title: ScrollArea
 fileSource: scroll-area
-tabName: Design
+tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
-@## Description
+## Description
 
 **ScrollArea** is a component that allows you to customize the native scroll functionality. It enables smooth navigation through content within a window or block, both vertically and horizontally.
 
-@## Component composition
+## Component composition
 
 ![](static/scroll-composition.png)
 
@@ -18,16 +18,16 @@ The ScrollArea consists of the following elements:
 - Scroll indicator (`ScrollArea.Bar`).
 - Slider (`ScrollArea.Bar.Slider`).
 
-@## Styles
+## Styles
 
-@table-caption ScrollArea styles
+Table: ScrollArea styles
 
 | Element                 | Styles                                      |
 | ----------------------- | ------------------------------------------- |
 | `ScrollArea.Bar`        | `background: transparent`                  |
 | `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background)` |
 
-@## Interaction
+## Interaction
 
 Scrolling inside the block can be controlled by:
 
@@ -40,11 +40,9 @@ Scrolling inside the block can be controlled by:
 
 With infinite scrolling content is loaded in portions. This type of scrolling is especially good if there is a lot of content on the page, and you don’t need to divide it into separate pages.
 
-> _Infinite scrolling helps to build a narration and sends the user on a journey._
->
-> (c) Roma Lysov 🤪 -->
+::: tip
+_Infinite scrolling helps to build a narration and sends the user on a journey._
 
-@page scroll-area-a11y
-@page scroll-area-api
-@page scroll-area-code
-@page scroll-area-changelog
+(c) Roma Lysov 🤪 -->
+:::
+

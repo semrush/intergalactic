@@ -1,36 +1,61 @@
 ---
-title: Example
+title: Ellipsis
 fileSource: ellipsis
+tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
-@## Basic usage
+## Basic usage
 
-@example basic
+::: sandbox
 
-@## Link
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
 
-@example link
+:::
 
-@## Trimming type
+## Link
+
+::: sandbox
+
+<script lang="tsx" src="examples/link.tsx"></script>
+
+:::
+
+## Trimming type
 
 It's possible to truncate the middle of the text string.
 
-@example middle
+::: sandbox
 
-@## Multiline
+<script lang="tsx" src="examples/trimming_type.tsx"></script>
+
+:::
+
+## Multiline
 
 It's possible to specify after what text line apply truncating
 
-@example multiline
+::: sandbox
 
-@## Multiple use
+<script lang="tsx" src="examples/multiline.tsx"></script>
+
+:::
+
+## Multiple use
 
 in case of multiple use of a component for optimization you can use one observer for all components
 
-@example observer
+::: sandbox
 
-@## Advanced use
+<script lang="tsx" src="examples/multiple_use.tsx"></script>
+
+:::
+
+## Advanced use
 
 For more control over the container and tooltip, you can use the `Ellipsis.Content` and `Ellipsis.Popper` components.
 
-@example advanced
+::: sandbox
+
+<script lang="tsx" src="examples/advanced_use.tsx"></script>
+
+:::

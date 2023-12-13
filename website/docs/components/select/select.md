@@ -1,16 +1,16 @@
 ---
 title: Select / Multiselect
 fileSource: select
-tabName: Design
+tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
-@## Description
+## Description
 
 **Select** component allows users to choose one or more values from a list. It can optionally include search input, titles, buttons, grouping, and nesting.
 
-The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/).
+The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 
-@## Component composition
+## Component composition
 
 ![](static/select-composition.png)
 
@@ -24,11 +24,11 @@ Component consists of the following:
 - `Select.OptionTitle`
 - `Select.OptionCheckbox`
 
-@## Trigger
+## Trigger
 
 For the select trigger, you can use one of the following [BaseTrigger](/components/base-trigger/base-trigger) types:
 
-@table-caption Trigger button types
+Table: Trigger button types
 
 | BaseTrigger type | Appearance example |
 | ---------------- | ------------------ |
@@ -38,7 +38,7 @@ For the select trigger, you can use one of the following [BaseTrigger](/componen
 
 ### Trigger sizes
 
-@table-caption Trigger button sizes
+Table: Trigger button sizes
 
 | Size | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)         | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)      | LinkTrigger with the color of text          |
 | ---- | --------------------- | ---------------- | ------------------------------------------- |
@@ -53,9 +53,9 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 
 ![](static/tooltip.png)
 
-@## Trigger states
+## Trigger states
 
-@table-caption Trigger button states
+Table: Trigger button states
 
 | State         | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)        | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)          | LinkTrigger with the color of text    |
 | ------------- | -------------------- | -------------------- | ------------------------------------- |
@@ -68,11 +68,11 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 | Invalid       | ![](static/primary-invalid.png)           | ![](static/inline-select-invalid.png)     | ![](static/inline-select-invalid.png)       |
 | Disabled      | ![](static/primary-disabled.png)         | ![](static/inline-select-disabled.png)   | ![](static/tertiary-select-disabled.png)   |
 
-@## Trigger content
+## Trigger content
 
-The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/) should be placed in the upper right corner of the trigger.
+The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/badge) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/dot) should be placed in the upper right corner of the trigger.
 
-@table-caption Content types trigger button can have
+Table: Content types trigger button can have
 
 | Element | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)  | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)     | LinkTrigger with the color of text                  |
 | ------- | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
@@ -81,11 +81,11 @@ The select trigger can contain an icon, flag, or other addon before the text. Th
 | Avatar  | ![](static/pic-primary.png)     | ![](static/inline-pic.png)     | ![](static/tertiary-pic.png)     |
 | Badge   | ![](static/badge-primary.png) | ![](static/inline-badge.png) | ![](static/tertiary-badge.png) |
 
-@## DropdownMenu
+## DropdownMenu
 
-Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/).
+Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 
-@## Multiselect
+## Multiselect
 
 **Multiselect** is a select type with the functionality to choose several items from a list. Items in such a list are represented by checkboxes.
 
@@ -93,7 +93,9 @@ Read about the dropdown list, its content, and states in [DropdownMenu](/compone
 
 If the list includes more than 10 values, add a search input. Otherwise, it will be difficult for the user to navigate among all values.
 
-> The search input should receive the focus state when the user opens the list, helping the user avoid extra clicks.
+::: tip
+The search input should receive the focus state when the user opens the list, helping the user avoid extra clicks.
+:::
 
 ![](static/multiselect-scroll.png)
 
@@ -103,11 +105,11 @@ If you have more than three values, add the "Select all" option at the very begi
 
 ![](static/multiselect-all.png)
 
-@## Specific cases for multiselect
+## Specific cases for multiselect
 
 In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
 
-@table-caption Specific cases for multiselect
+Table: Specific cases for multiselect
 
 | User opens select and starts selecting the items.    | User closes select.    | User has reopened select, and the items they selected are pinned at the very top of the list. When unchecking these items, they remain in the same place. |
 | ------------------------------------------------------- | ---------------------- | -------------------------------------- |
@@ -115,7 +117,7 @@ In long lists (for example, in the list of countries), the values selected by th
 
 ### Displaying the selected values in the trigger
 
-@table-caption States for displaying the selected values in the trigger
+Table: States for displaying the selected values in the trigger
 
 |                                                                                                                                      | Appearance example                                       |
 | ----------------------------- | -------------------------------------------------------- |
@@ -141,13 +143,11 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 
 - Sometimes, user selection can be limited by the number of required items.
 - In this case, once the user has selected the required number, all other items should receive the `disabled` state.
-- Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
+- Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
-> We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.
+::: tip
+We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.
+:::
 
 ![](static/multiselect-limit.png)
 
-@page select-a11y
-@page select-api
-@page select-code
-@page select-changelog

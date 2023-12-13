@@ -1,14 +1,79 @@
 ---
 title: Venn chart
 fileSource: d3-chart
-tabName: Design
+tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Examples('venn-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
+::: tip
+Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
+:::
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, VennChartProps } from '@semcore/d3-chart';
+
+const data = {
+  G: 200,
+  F: 200,
+  C: 500,
+  U: 1,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Venn');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  legendProps.legendMap = {
+    G: { label: 'Good' },
+    F: { label: 'Fast' },
+    C: { label: 'Clean' },
+    U: { label: 'Uniq' },
+  };
+
+  const chartProps: VennChartProps = {
+    data,
+    plotWidth: 300,
+    plotHeight: 300,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Venn {...chartProps} />;
+}, {filterProps: ['data']});
+
+</script>
+
+:::
+
+## Description
 
 **Venn chart** shows the relationship and intersections between two (or sometimes more) datasets. This chart type is also called a **set chart**.
 
@@ -16,7 +81,9 @@ tabName: Design
 - The circles overlapping area is called the "intersection area", – it shows data with common qualities from all intersecting sets.
 - This chart type focuses on how much different groups of sets have in common (or how different they are).
 
-> Keep in mind that when comparing more than 2 sets on one chart, the chart may become unreadable.
+::: tip
+Keep in mind that when comparing more than 2 sets on one chart, the chart may become unreadable.
+:::
 
 **When is it better to use a Venn chart?**
 
@@ -24,11 +91,13 @@ tabName: Design
 - When you need to compare two or more datasets, and clearly show what they have in common.
 - When you need to show boolean expressions, such as "or" and "and" expressions.
 
-> John Venn came up with this type of chart around 1880. They were used in the study of set theory as they excellently illustrated the relations of different groups.
->
-> [Venn diagram on datavizproject](https://datavizproject.com/data-type/venn-diagram/)
+::: tip
+John Venn came up with this type of chart around 1880. They were used in the study of set theory as they excellently illustrated the relations of different groups.
 
-@## Appearance
+[Venn diagram on datavizproject](https://datavizproject.com/data-type/venn-diagram/)
+:::
+
+## Appearance
 
 In the default state for all circles:
 
@@ -40,14 +109,16 @@ In the default state for all circles:
 - Minimum Venn chart size is **180px * 180px**.
 - Maximum Venn chart size is **300px * 300px**.
 
-> It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you shouldn't "enlarge" the report with an unnecessarily large chart.
+::: tip
+It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you shouldn't "enlarge" the report with an unnecessarily large chart.
+:::
 
 |                                                     | Appearance example                         |
 | --------------------------------------------------- | ------------------------------------------ |
 | Chart inside small narrow widgets (less than 400px) | ![](static/venn-small.png) |
 | Chart inside large widgets (more than 400px)        | ![](static/venn-big.png)     |
 
-@## Legend
+## Legend
 
 The legend for this type of chart:
 
@@ -80,23 +151,23 @@ If legend label is very long, wrap it to the next line.
 
 ![](static/venn-legend-long.png)
 
-@## Interaction
+## Interaction
 
 |         | Appearance example                         | Styles                                                                                                |
 | ------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
 | Default | ![](static/venn-big.png) | The fill transparency is 50%, stroke size is 2px.                                                     |
 | Hover   | ![](static/venn-hover.png) | When hovering, the transparency of the fill for the sector that the user hovered over changes by 70%. |
 
-@## Tooltip
+## Tooltip
 
 |                                           | Appearance example                          | Tooltip content                                                                                                                                        |
 | ----------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Hovering over a sector                    | ![](static/venn-hover.png)  | Show the name of the dataset and its value.                                                                                                           |
 | Hovering over the intersection of sectors | ![](static/venn-hover2.png) | Show how much is the intersection of sectors as a percentage and the value. Below you can show the names of all intersecting sectors and their values. |
 
-@## Edge cases
+## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ### Value less than 1%
 
@@ -131,17 +202,13 @@ In this case, show the datasets left aligned.
 
 ### Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![](static/venn-skeleton.png)
 
-@page venn-chart-a11y
-@page venn-chart-api
-@page venn-chart-d3-code
-@page d3-chart-changelog

@@ -1,13 +1,14 @@
 ---
-title: A11y
+title: Link
 a11y: AA
+tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
@@ -15,13 +16,13 @@ a11y: AA
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Enter`       | Activates the link.                            |
 
-@## Considerations for developers
+## Considerations for developers
 
 ### Roles & attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role   | Attribute      | Element       | Usage                                                 |
 | ------ | -------------- | ------------- | ----------------------------------------------------- |
@@ -51,10 +52,10 @@ While it's possible to create link-like behavior with other elements like `div` 
 
 Find more information in the [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#combine-adjacent-links).
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations for the links in the common [Accessibility guide](/core-principles/a11y/a11y-keyboard/#ae2a0e).
+See more accessibility recommendations for the links in the common [Accessibility guide](/core-principles/a11y/a11y-keyboard#ae2a0e).
 
-@## Resources
+## Resources
 
 [W3 link examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/link/link.html) has detailed information about the link accessible behavior.

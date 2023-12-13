@@ -147,5 +147,7 @@ declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, Inli
   Value: Intergalactic.Component<'input', InlineInputValueProps, InlineInputProps>;
   ConfirmControl: Intergalactic.Component<'div', InlineInputConfirmControlProps, InlineInputProps>;
   CancelControl: Intergalactic.Component<'div', InlineInputCancelControlProps, InlineInputProps>;
+  NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
+  NumberControls: Intergalactic.Component<'div', {}, InlineInputProps>;
 };
 export default InlineInput;

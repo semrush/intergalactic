@@ -2,19 +2,21 @@
 title: Loading states
 ---
 
-@## Description
+## Description
 
 These components are employed to manage user expectations:
 
-- [Spin](/components/spin/)
-- [Skeleton](/components/skeleton/)
-- [ProgressBar](/components/progress-bar/)
+- [Spin](/components/spin/spin)
+- [Skeleton](/components/skeleton/skeleton)
+- [ProgressBar](/components/progress-bar/progress-bar)
 
 **Use them for different cases.** For detailed insights into each component, refer to their guides.
 
-> Ensure that the container housing the loading message has margins. This prevents the container from becoming tightly attached to other elements on the page during cases like viewport size adjustments. The margin values are usually multiples of 4 (for example, for the spinner, we recommend using `margin: 40px`).
+::: tip
+Ensure that the container housing the loading message has margins. This prevents the container from becoming tightly attached to other elements on the page during cases like viewport size adjustments. The margin values are usually multiples of 4 (for example, for the spinner, we recommend using `margin: 40px`).
+:::
 
-@## Response from the system
+## Response from the system
 
 ### Lazy loading
 
@@ -24,15 +26,15 @@ For instance, if you know that a landing page loads quickly, you can progressive
 
 ### Page loading
 
-In all other circumstances, implement [Skeleton](/components/skeleton) to display while the page loads.
+In all other circumstances, implement [Skeleton](/components/skeleton/skeleton) to display while the page loads.
 
 A delay of `600ms` should be incorporated before the skeleton becomes visible across all products. This delay mitigates flickering during transitions between products.
 
 ### Spin as user interface feedback
 
-[Spin](/components/spin) should solely be employed when users interact with clickable interface elements on the page.
+[Spin](/components/spin/spin) should solely be employed when users interact with clickable interface elements on the page.
 
-@## Usage rules
+## Usage rules
 
 ### Skeleton
 
@@ -52,7 +54,9 @@ A delay of `600ms` should be incorporated before the skeleton becomes visible ac
 - Sorting significant data within widgets/tables/pages.
 - Conducting data searches.
 
-> If the download process is rapid, this state can be omitted.
+::: tip
+If the download process is rapid, this state can be omitted.
+:::
 
 ![](static/spin.png)
 
