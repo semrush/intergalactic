@@ -678,6 +678,9 @@ importers:
       '@semcore/dropdown-menu':
         specifier: '*'
         version: link:../dropdown-menu
+      '@semcore/ellipsis':
+        specifier: '*'
+        version: link:../ellipsis
       '@semcore/icon':
         specifier: '*'
         version: link:../icon

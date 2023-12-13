@@ -51,6 +51,7 @@
     "@semcore/divider": "*",
     "@semcore/checkbox": "*",
     "@semcore/dropdown-menu": "*",
+    "@semcore/ellipsis": "*",
     "@semcore/icon": "*",
     "@semcore/testing-utils": "1.0.0",
     "@semcore/typography": "*",
