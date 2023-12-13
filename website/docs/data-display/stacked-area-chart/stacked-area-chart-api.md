@@ -1,12 +1,13 @@
 ---
-title: API
+title: Stacked area chart
 fileSource: d3-chart
+tabs: Design('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-@## D3 API
+## D3 API
 
 
-@## Chart.Area
+## Chart.Area
 
 For stacked view, you should pass `true` into `stacked` prop
 
@@ -14,9 +15,9 @@ For stacked view, you should pass `true` into `stacked` prop
 import { Chart } from '@semcore/ui/d3-chart';
 ```
 
-@typescript AreaChartProps
+<TypesView type="AreaChartProps" :types={...types} />
 
-@## StackedArea
+## StackedArea
 
 It have children components `Area`.
 
@@ -28,4 +29,6 @@ import { StackedArea } from '@semcore/ui/d3-chart';
 </StackedArea>;
 ```
 
-@typescript StackedAreaProps
+<TypesView type="StackedAreaProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

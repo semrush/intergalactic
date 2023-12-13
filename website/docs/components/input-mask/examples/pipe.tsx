@@ -3,7 +3,7 @@ import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import InputMask from '@semcore/ui/input-mask';
 
-export default () => {
+const Demo = () => {
   const expireDateInput = React.useRef(null);
   const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
 
@@ -66,3 +66,5 @@ const pipeExpireDate = (value) => {
 
   return { value, indexesOfPipedChars };
 };
+
+export default Demo;

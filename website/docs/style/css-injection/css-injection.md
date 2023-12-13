@@ -1,21 +1,24 @@
 ---
 title: CSS Injection
+tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
-> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/#themes).
+::: warning
+:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
+:::
 
-@## Description
+## Description
 
 If you are creating a product that differs in style from other products of Semrush, use the tools for theming.
 
-@## How does it work?
+## How does it work?
 
 There are two ways to redefine styles of our components:
 
 - Local for one specific component.
 - Global for all components at once.
 
-@## Local specific
+## Local specific
 
 Styles composition helps us to extend basic styles of our components, and sometimes even supplement API. In fact, you write styles using `CSS-in-JS` approach and transfer them to our components.
 
@@ -30,9 +33,9 @@ Styles composition helps us to extend basic styles of our components, and someti
 - No style de-duplication.
 - It is difficult to reuse the styles.
 
-Read more about [how to apply styles composition in practice](/style/css-injection/css-injection-local/).
+Read more about [how to apply styles composition in practice](/style/css-injection/css-injection-local).
 
-@## Global specific
+## Global specific
 
 This helps you to rewrite or to add styles to all our components by redefining their appearance. **It looks like this: you write CSS, while babel-plugin combines it with our default styles and applies it to all the components**.
 
@@ -51,7 +54,5 @@ Using this approach, you can publish CSS injections to `NPM` and reuse them late
 - Strict structure and naming.
 - Need to configure webpack.
 
-You can write CSS injections for our components this way with [global use](/style/css-injection/css-injection-global/).
+You can write CSS injections for our components this way with [global use](/style/css-injection/css-injection-global).
 
-@page css-injection-local
-@page css-injection-global

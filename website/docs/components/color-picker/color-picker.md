@@ -1,12 +1,38 @@
 ---
 title: ColorPicker
-tabName: Design
 fileSource: color-picker
+tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import ColorPicker from '@semcore/ui/color-picker';
+
+const Preview = (preview) => {
+  const { bool } = preview('ColorPicker');
+
+  const displayLabel = bool({
+    key: 'displayLabel',
+    defaultValue: false,
+    label: 'Show label',
+  });
+
+  return (
+    <React.Fragment>
+      <ColorPicker displayLabel={displayLabel} />
+    </React.Fragment>
+  );
+};
+
+const App = PlaygroundGeneration(Preview);
+</script>
+
+:::
+
+## Description
 
 **ColorPicker** is a component that allows the user selecting a color from a given list or input a custom color using its HEX code.
 
@@ -16,7 +42,7 @@ fileSource: color-picker
 - List of ColorPicker.Items
 - Input (optional)
 
-@## Trigger
+## Trigger
 
 The trigger for a ColorPicker is a Select with a circle as the leading addon.
 
@@ -26,47 +52,47 @@ The trigger for a ColorPicker is a Select with a circle as the leading addon.
 
 ![](static/trigger-size.png)
 
-@## List of colors
+## List of colors
 
 A list of colors can include either a single ColorPicker.Item or multiple ones, which are preview swatches that display all available color values.
 
-@table-caption List of colors and its items
+Table: List of colors and its items
 
 | ColorPicker.Item     | List of ColorPicker.Items                             |
 | -------------------- | ----------------------------------------------------- |
 | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png) |
 
-@## Size
+## Size
 
 ColorPicker.Item has 28px * 28px size.
 
 ![](static/colorpicker-item-size.png)
 
-@## Margins
+## Margins
 
-All margins must be [multiples of 4](/layout/box-system/#spacing_system). The default recommended margins are 4px:
+All margins must be [multiples of 4](/layout/box-system/box-system#spacing_system). The default recommended margins are 4px:
 
 ![](static/colorpicker-margins.png)
 
-@## Item types
+## Item types
 
 An item can have two different types:
 
-@table-caption Color items
+Table: Color items
 
 | Type            | Appearance example                                                             | Usage                                                                                                                 |
 | --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | Item for background color | ![](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
 | Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, for example                                                                                             |
 
-@## Interaction
+## Interaction
 
 - In the hover state, trigger has a `border: 1px solid var(--border-secondary)`.
 - In the active state, trigger changes its border color to `var(--border-info-active)`.
 
 ### Default item
 
-@table-caption Color item states
+Table: Color item states
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
@@ -77,7 +103,7 @@ An item can have two different types:
 
 ### Item for custom colors
 
-@table-caption Custom color item states
+Table: Custom color item states
 
 | | Normal | Hover | Active                                              | Usage |
 | ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
@@ -86,13 +112,13 @@ An item can have two different types:
 
 ### Item for adding colors
 
-@table-caption States of item for adding colors
+Table: States of item for adding colors
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
 | Add color button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)| Use Button with icon and change border-radius to 50%.|
 
-@## Dropdown
+## Dropdown
 
 ### Width and height
 
@@ -100,7 +126,7 @@ An item can have two different types:
 
 Showing all available colors in the DropdownMenu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
 
-@table-caption DropdownMenu appearance
+Table: DropdownMenu appearance
 
 | DropdownMenu                  | DropdownMenu with more than 20 colors |
 | ----------------------------- | ------------------------------------- |
@@ -110,9 +136,9 @@ Showing all available colors in the DropdownMenu is crucial, however, if a user 
 
 ![](static/colorpicker-margins-paddings.png)
 
-@## Input (optional)
+## Input (optional)
 
-In case when a ColorPicker allows users to add custom colors, include an input that only accepts HEX values. For more information, refer to the [Validation section](/components/color-picker/#validation).
+In case when a ColorPicker allows users to add custom colors, include an input that only accepts HEX values. For more information, refer to the [Validation section](/components/color-picker/color-picker#validation).
 
 ### Size, margins and paddings
 
@@ -124,15 +150,19 @@ Use input with M size.
 
 The color value is always a 6-character string that specifies the color in the HEX format.
 
-> User can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+::: tip
+User can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+:::
 
-@## Interaction
+## Interaction
 
 Users have the ability to add or remove custom colors, but they cannot modify default or existing custom colors.
 
 ### Adding custom color
 
-> We recommend that your product sync and save the user's custom palette in different parts of the interface.
+::: tip
+We recommend that your product sync and save the user's custom palette in different parts of the interface.
+:::
 
 Users can add a color to the custom palette by clicking either the button with the `MathPlus` icon or the input field. They can add a color value by clicking the `Check` icon and remove a color by clicking the `Close` icon.
 
@@ -142,7 +172,7 @@ Users can add a color to the custom palette by clicking either the button with t
 
 ![](static/remove-custom-color.png)
 
-@## Validation
+## Validation
 
 The input field only allows six characters, which can include numbers and letters. If the user enters fewer or more characters or characters that cannot be converted to a 6-character HEX value, the input gets the `invalid` state.
 
@@ -150,30 +180,26 @@ To help users fix the invalid input, add the following message to the tooltip: "
 
 ![](static/validation.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Components that you can use as a trigger for the ColorPicker:
 
-- [Input](/components/input/)
-- [Link](/components/link/)
-- [Select](/components/select/)
+- [Input](/components/input/input)
+- [Link](/components/link/link)
+- [Select](/components/select/select)
 
 ![](static/color-picker-triggers.png)
 
 ColorPicker.Item can be placed inside the following components:
 
-- [Button](/components/button/)
-- [FilterTrigger](/components/filter-trigger/)
-- [Pills](/components/pills/)
-- [Select/Multiselect](/components/select/)
-- [TabLine](/components/tab-line/)
-- [TabPanel](/components/tab-panel/)
-- [Tag](/components/tag/)
-- [Option](/components/dropdown-menu/#a66af9)
+- [Button](/components/button/button)
+- [FilterTrigger](/components/filter-trigger/filter-trigger)
+- [Pills](/components/pills/pills)
+- [Select/Multiselect](/components/select/select)
+- [TabLine](/components/tab-line/tab-line)
+- [TabPanel](/components/tab-panel/tab-panel)
+- [Tag](/components/tag/tag)
+- [Option](/components/dropdown-menu/dropdown-menu#a66af9)
 
 ![](static/color-picker-places.png)
 
-@page color-picker-a11y
-@page color-picker-api
-@page color-picker-code
-@page color-picker-changelog

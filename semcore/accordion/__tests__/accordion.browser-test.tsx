@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Accordion', () => {
   test('Handles with keyboard', async ({ page }) => {
-    const standPath = 'website/docs/components/accordion/examples/base.tsx';
+    const standPath = 'website/docs/components/accordion/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -21,7 +21,7 @@ test.describe('Accordion', () => {
     await expect(page).toHaveScreenshot();
   });
   test('Handles with mouse', async ({ page }) => {
-    const standPath = 'website/docs/components/accordion/examples/base.tsx';
+    const standPath = 'website/docs/components/accordion/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

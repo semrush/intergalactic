@@ -1,16 +1,18 @@
 ---
 title: Feedback
 fileSource: feedback-form
-tabName: Design
+tabs: Design('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
 
-@## Description
+## Description
 
 **Feedback** component is the form for sending feedback or suggestions about the product. In most cases it opens from the "Send feedback" link or button.
 
-> When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
+::: tip
+When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/product-head), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/links-order).
+:::
 
-@## Сomponent composition
+## Сomponent composition
 
 ### Obligatory elements
 
@@ -28,7 +30,7 @@ tabName: Design
 
 ![](static/options.png)
 
-@## Appearance
+## Appearance
 
 - Dropdown has `padding: var(--spacing-4x)`.
 - All inputs in this form has one size – M.
@@ -36,9 +38,9 @@ tabName: Design
 
 ![](static/send-feedback-sizes.png)
 
-@## Placement
+## Placement
 
-In most cases the feedback form opens from the "Send feedback" link at the upper right of the page or from the "Send feedback" buttons inside a [notice for feedback collection](/patterns/feedback-yes-no).
+In most cases the feedback form opens from the "Send feedback" link at the upper right of the page or from the "Send feedback" buttons inside a [notice for feedback collection](/patterns/feedback-yes-no/feedback-yes-no).
 
 ![](static/send-feedback.png)
 
@@ -46,9 +48,11 @@ In most cases the feedback form opens from the "Send feedback" link at the upper
 
 In some cases it may open from the button "Send feedback", placed in the widgets.
 
-@## Interaction
+## Interaction
 
-> If the user closes the form and then opens it again, save the content previously entered into the inputs.
+::: tip
+If the user closes the form and then opens it again, save the content previously entered into the inputs.
+:::
 
 ### Input's behavior
 
@@ -74,7 +78,7 @@ Placeholder for this textarea: "I need help, please contact me".
 
 ### Message submitting
 
-To show loading state after submitting the form, wrap the form into the [SpinContainer](/components/spin-container/) with the [XL size Spin](/components/spin/).
+To show loading state after submitting the form, wrap the form into the [SpinContainer](/components/spin-container/spin-container) with the [XL size Spin](/components/spin/spin).
 
 ![](static/loading.png)
 
@@ -86,7 +90,7 @@ Message text for this case: "Thank you for your feedback!".
 
 ![](static/success.png)
 
-@## Validation
+## Validation
 
 ### Invalid textarea
 
@@ -118,7 +122,3 @@ Message text for this case: "Your message hasn’t been sent. Please try again o
 
 ![](static/error.png)
 
-@page feedback-form-a11y
-@page feedback-form-api
-@page feedback-form-code
-@page feedback-form-changelog

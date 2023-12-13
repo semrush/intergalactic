@@ -1,14 +1,15 @@
 ---
-title: A11y
+title: Tooltip
 fileSource: tooltip
 a11y: AA
+tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key   | Function            |
 | ----- | ------------------- |
@@ -18,7 +19,7 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role      | Attribute                 | Element                                                   | Usage                                                                                                                                                                                                                                                             |
 | --------- | ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,7 +28,7 @@ The list below describes roles and attributes that component already has.
 |           | `aria-live="assertive"`   | Implicit on `div` (only for tooltip with `warning` theme) | Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. Should only be used for time-sensitive/critical notifications that absolutely require the user's immediate attention. |
 |           | `aria-labelledby="IDREF"` | `div`                                                     | Refers to the element containing the name of the tooltip.                                                                                                                                                                                                         |
 
-@## Considerations for developers
+## Considerations for developers
 
 - Tooltips shouldn't receive focus. The focus should remain on the field, button, or link the tooltip is about.
 - When open, tooltips shouldn't block a user from performing any task on the page.
@@ -37,10 +38,10 @@ The list below describes roles and attributes that component already has.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-tooltips).
 
-@## Resources
+## Resources
 
 [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-tooltips) describes core principles for the accessible inputs and textarea.
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

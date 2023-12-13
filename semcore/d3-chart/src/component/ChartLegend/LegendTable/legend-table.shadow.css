@@ -1,7 +1,7 @@
 SLegendTable[columns-count] {
   font-variant-numeric: tabular-nums;
   display: grid;
-  grid-template-columns: auto 0.2fr 0.2fr;
+  grid-template-columns: auto 0.2fr;
   align-items: center;
   height: fit-content;
   grid-column-gap: 16px;

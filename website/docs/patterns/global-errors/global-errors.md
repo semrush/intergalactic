@@ -1,14 +1,14 @@
 ---
 title: Error message
 fileSource: errors
-tabName: Design
+tabs: Design('global-errors'), A11y('global-errors-a11y'), API('global-errors-api'), Example('global-errors-code'), Changelog('global-errors-changelog')
 ---
 
-@## Description
+## Description
 
 **Error message** is a component for displaying error message on the page. Use it for global error messages. Global errors is a pattern for pages blocking the user from working with the website, and informing why the system can't display the content. This pattern is also related to server errors, limitations, etc.
 
-@## Appearance
+## Appearance
 
 Composition, styles, and margins of the message:
 
@@ -20,7 +20,9 @@ Composition, styles, and margins of the message:
 
 ![](static/ge_margins.png)
 
-> Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
+::: tip
+Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
+:::
 
 ### Margins
 
@@ -46,7 +48,7 @@ For screens less than 768px:
 
 ![](static/mobile.png)
 
-@## Page not found
+## Page not found
 
 ![](static/ge_not-found.png)
 
@@ -64,7 +66,7 @@ It looks like this page doesn't exist. Try going back or click the button below 
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
-@## Project not found
+## Project not found
 
 ![](static/ge_project-not-found.png)
 
@@ -90,7 +92,7 @@ If you have any other problems with access to the project, please contact our [S
 - Go to Projects (leads you to the projects page).
 - Contact us (sends the user to the [support page](https://www.semrush.com/kb/support/)).
 
-@## Something went wrong
+## Something went wrong
 
 ### When you don't know what the problem is
 
@@ -130,7 +132,7 @@ Please try again later.
 
 Try again (refreshes the page).
 
-@## Under maintenance
+## Under maintenance
 
 ![](static/ge_under-maintenance-2.png)
 
@@ -148,7 +150,7 @@ We are doing our best to fix it as soon as possible. Please come back later.
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
-@## Log in to access
+## Log in to access
 
 ![](static/ge_access-login.png)
 
@@ -167,7 +169,7 @@ It seems that you were lost in space. Please log in or sign up to view the page.
 - The "Log in" button leads to a page with a login form.
 - The "Sign up" button leads to the same page, but with the registration form.
 
-@## Access denied
+## Access denied
 
 ![](static/ge_access-denied.png)
 
@@ -186,7 +188,7 @@ Go back to the previous page or visit our homepage.
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
-@## Connection was lost
+## Connection was lost
 
 ![](static/ge_connection-was-lost.png)
 
@@ -207,7 +209,7 @@ Reconnect and reload the page.
 - Reload page (refreshes the page).
 - or wait {XX}s
 
-@## Connection timed out
+## Connection timed out
 
 ![](static/ge_connection-timed-out.png)
 
@@ -221,12 +223,12 @@ Connection timed out
 
 The initial connection between Cloudflare’s network and the origin web server timed out. As a result, the webpage cannot be displayed.
 
-- Ray ID: {000000000000000}
-- Your IP address: {84.52.114.132}
+- Ray ID: \{000000000000000\}
+- Your IP address: \{84.52.114.132\}
 - Error reference number: 522
-- Cloudflare Location POP: {undef}
+- Cloudflare Location POP: \{undef\}
 
-@## Blocked (Bad) request
+## Blocked (Bad) request
 
 ![](static/ge_blocked-request.png)
 
@@ -248,7 +250,7 @@ This is the 400 error page. Try one of the following:
 - Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 - Contact support.
 
-@## Confirmation
+## Confirmation
 
 ![](static/ge_confirmation-submit.png)
 
@@ -271,7 +273,7 @@ Please complete the security check, and we’ll be out of your way.
 - Submit (confirms the action, then we take the user to the page where they were going).
 - Captcha (confirms the action, then we take the user to the page where they were going).
 
-@## Payment cannot be accepted
+## Payment cannot be accepted
 
 ![](static/ge_no-payment.png)
 
@@ -289,7 +291,7 @@ Unfortunately, we don’t accept payments from {Russian Federation}.
 
 Go to Dashboard (leads user to the Dashboard)..
 
-@## DNS Resolution Error
+## DNS Resolution Error
 
 ![](static/ge_dns-resolution.png)
 
@@ -307,21 +309,21 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 
 - Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (for example, a hosting provider) and the provider's DNS fails.
 
-  - Ray ID: {000000000000000}
+  - Ray ID: \{000000000000000\}
 
-  - Timestamp: {Thu, 01-Jan-70 00:00:00 GMT}
+  - Timestamp: \{Thu, 01-Jan-70 00:00:00 GMT\}
 
-  - Your IP address: {84.52.114.132}
+  - Your IP address: \{84.52.114.132\}
 
-  - Requested URL: {example.url/foo}
+  - Requested URL: \{example.url/foo\}
 
   - Error reference number: 1001
 
-  - Server ID: {FL_FOO}
+  - Server ID: \{FL_FOO\}
 
-  - User-Agent: {Example}
+  - User-Agent: \{Example\}
 
-@## Global errors usage
+## Global errors usage
 
 **When do we use it?**
 
@@ -353,7 +355,9 @@ There are two possible cases of the pattern's use:
 - As a full-page for the whole website.
 - As a state of the product.
 
-> The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+::: tip
+The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+:::
 
 | For the whole website                                | In the product                                             |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
@@ -367,7 +371,3 @@ There are two possible cases of the pattern's use:
    2.2 to take some actions to get rid of this state and load the page: "Reload page" / "Try again" / "Submit".
 3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something isn’t working.
 
-@page global-errors-a11y
-@page global-errors-api
-@page global-errors-code
-@page global-errors-changelog

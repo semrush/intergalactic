@@ -280,14 +280,11 @@ for (const theme of themes) {
     }
 
     await fs.writeFile(
-      resolvePath(
-        dirname,
-        '../../../website/docs/style/design-tokens/components/design-tokens.json',
-      ),
+      resolvePath(dirname, '../../../website/docs/style/design-tokens/design-tokens.json'),
       JSON.stringify(designTokensDocumentation, null, 2) + '\n',
     );
     await fs.writeFile(
-      resolvePath(dirname, '../../../website/docs/style/design-tokens/components/base-tokens.json'),
+      resolvePath(dirname, '../../../website/docs/style/design-tokens/base-tokens.json'),
       JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
     );
   }

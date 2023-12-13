@@ -1,17 +1,17 @@
 ---
 title: Form
-tabName: Design
+tabs: Design('form'), A11y('form-a11y'), Example('form-code')
 ---
 
-@## Description
+## Description
 
 **Form** is a pattern used for the collection and submission of data to the system. It consistently includes various types of inputs and controls.
 
 **Use one size for inputs and controls within the form.**
 
-@## Layout types
+## Layout types
 
-@table-caption Form layout types
+Table: Form layout types
 
 | Layout type | Example                      |
 | ----------- | ---------------------------- |
@@ -19,7 +19,7 @@ tabName: Design
 | Vertical    | ![](static/vertical.png)     |
 | Inline      | ![](static/inline.png)       |
 
-@## Input labels
+## Input labels
 
 Input should have accompanying text label.
 
@@ -41,7 +41,7 @@ When the form is centered on the page, input labels can be aligned to the right.
 
 ![](static/align-center.png)
 
-@## Placeholders
+## Placeholders
 
 Placeholders are necessary to guide users on the expected data input.
 
@@ -50,24 +50,24 @@ Placeholders are necessary to guide users on the expected data input.
 
 Placeholders can be omitted when the input's purpose is self-evident.
 
-For formatting user-entered values, use the [InputMask](/components/input-mask/).
+For formatting user-entered values, use the [InputMask](/components/input-mask/input-mask).
 
-@## Margins between inputs
+## Margins between inputs
 
-The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/#spacing_system) for further information.
+The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/box-system#spacing_system) for further information.
 
-@table-caption Margins between inputs
+Table: Margins between inputs
 
 | Input size | Example           |
 | ---------- | ----------------- |
 | M          | ![](static/m.png) |
 | L          | ![](static/l.png) |
 
-@## Form validation
+## Form validation
 
-Find detailed information about form validation in the [Validation](/patterns/validation-form/).
+Find detailed information about form validation in the [Validation](/patterns/validation-form/validation-form).
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Vertical form layout vs. horizontal form layout
 
@@ -139,5 +139,3 @@ In brief:
 - More challenging to scan and read (labels are right-aligned, requiring more time to find the start of each line).
 - Less suitable for multilingual interfaces.
 
-@page form-a11y
-@page form-code

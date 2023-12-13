@@ -1,20 +1,123 @@
 ---
 title: Notice
 fileSource: notice
-tabName: Design
+tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
-@import playground
+::: react-view
 
-> In the update of [version 4.0.0](/components/notice/notice-changelog/#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/). This change was made to enhance their usability.
+<script lang="tsx">
+import React from 'react';
 
-@## Description
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+import Notice from '@semcore/ui/notice';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
+
+const THEME = ['danger', 'warning', 'success', 'info'];
+
+const LayoutPreview = (props) => (
+  <Box wMin={200} wMax={500}>
+    {props.children}
+  </Box>
+);
+
+const Preview = (preview) => {
+  const { bool, select, text, empty, onChange } = preview('Notice');
+
+  const theme = select({
+    key: 'theme',
+    label: 'Theme',
+    defaultValue: 'info',
+    options: THEME.map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const label = bool({
+    key: 'label',
+    defaultValue: true,
+    label: 'Label',
+  });
+
+  const actions = bool({
+    key: 'actions',
+    defaultValue: true,
+    label: 'Actions',
+  });
+
+  const closable = bool({
+    key: 'closable',
+    defaultValue: true,
+    label: 'Close Icon',
+  });
+
+  const msg = text({
+    key: 'text',
+    defaultValue: 'You can place your message here.',
+    label: 'Text',
+  });
+
+  const hidden = empty({
+    key: 'hidden',
+    defaultValue: false,
+  });
+
+  function handlerClose() {
+    onChange('hidden', true);
+    setTimeout(() => {
+      onChange('hidden', false);
+    }, 2000);
+  }
+
+  return (
+    <Notice theme={theme} hidden={hidden}>
+      {label && (
+        <Notice.Label>
+          <QuestionAltM />
+        </Notice.Label>
+      )}
+      <Notice.Content>
+        <Text bold mb={2} size={300} lineHeight='24px' tag='div'>
+          Look at this notice!
+        </Text>
+        {msg}
+        {actions && (
+          <Notice.Actions>
+            <Button use='primary' theme='success'>
+              Wow, so cool!
+            </Button>
+            <Button use='tertiary' ml={2}>
+              Don't think so
+            </Button>
+          </Notice.Actions>
+        )}
+      </Notice.Content>
+      {closable && <Notice.CloseIcon onClick={handlerClose} />}
+    </Notice>
+  );
+};
+
+const App = PlaygroundGeneration(Preview, { LayoutPreview });
+</script>
+
+:::
+
+::: tip
+In the update of [version 4.0.0](/components/notice/notice-changelog#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/notice-global). This change was made to enhance their usability.
+:::
+
+## Description
 
 **Notice** is a component for displaying messages related to events concerning the user's work in the interface.
 
-It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/):
+It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/notice-bubble) and [NoticeGlobal](/components/notice-global/notice-global):
 
-@table-caption Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 | Criteria         | Notice | NoticeBubble | NoticeGlobal |
 | ---------------- | ------ | ------------ | ------------ |
@@ -28,27 +131,27 @@ It must fulfill four criteria to be considered a notice. Let's compare it to [No
 - contextual, appearing on product pages, widgets, and cards;
 - global, relating to the entire product.
 
-@## Component composition
+## Component composition
 
 ![](static/notice-composition.png)
 
 Component consists of the following:
 
 1. `Notice.Content`
-2. `Notice.Label`. It can be an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
+2. `Notice.Label`. It can be an [icon](/style/icon/icon), [badge](/components/badge/badge) or illustration that accompanies the message (optional);
 3. `Notice.Actions` (optional).
 4. `Notice.CloseIcon` (optional);
 
-@## Notice content examples
+## Notice content examples
 
-@table-caption Notice content examples
+Table: Notice content examples
 
 |           | Appearance example |
 | --------- | -------------------|
 | Notice with minimum possible elements | ![](static/notice-minimal.png) |
 | Notice with maximum possible elements | ![](static/notice-monster.png) ![](static/notice-max-button.png) |
 
-@## Sizes, paddings and margins
+## Sizes, paddings and margins
 
 The notice can be used as a standalone component or embedded within other components. _For instance, it can be placed inside dropdowns and modal windows._
 
@@ -61,36 +164,40 @@ The internal paddings of the notice match those of the component it is nested wi
 ![](static/notice-component.png)
 ![](static/notice-component-2.png)
 
-@## Maximum text width
+## Maximum text width
 
 Avoid stretching the text to the full width of the notice, particularly when the notice spans the entire screen width. Fully stretched text is inconvenient to read.
 
-> We recommend to set the maximum width of the notice message to 650-800px.
+::: tip
+We recommend to set the maximum width of the notice message to 650-800px.
+:::
 
 ![](static/notice-text-yes-no.png)
 
-@## Themes
+## Themes
 
-@table-caption Notice themes
+Table: Notice themes
 
 | Theme | Appearance example |
 | ----- | ------------------ |
-| **Info**: Used for neutral messages, information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/#advertising)). | ![](static/info.png) |
+| **Info**: Used for neutral messages, information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). | ![](static/info.png) |
 | **Success**: Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. | ![](static/success.png) |
 | **Warning**: Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. |![](static/warning.png) |
 | **Danger**: Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. | ![](static/danger.png) |
 
-@## Placement in the interface
+## Placement in the interface
 
 ### On the page
 
-If the notice is applicable to the entire product, position it in the product header (below the breadcrumbs) and let it inherit the width of the content section. For more information about paddings and margins, refer to the [ProductHead](/components/product-head/).
+If the notice is applicable to the entire product, position it in the product header (below the breadcrumbs) and let it inherit the width of the content section. For more information about paddings and margins, refer to the [ProductHead](/components/product-head/product-head).
 
-> Avoid placing multiple notices on the page simultaneously.
+::: tip
+Avoid placing multiple notices on the page simultaneously.
+:::
 
 ![](static/notice-placement-yes-no.png)
 
-If the message pertains solely to the content of a specific tab within the product, position the notice beneath the [TabLine](/components/tab-line/).
+If the message pertains solely to the content of a specific tab within the product, position the notice beneath the [TabLine](/components/tab-line/tab-line).
 
 ### Inside the widget
 
@@ -104,7 +211,7 @@ If the notice only relates to the component, position it at the top or bottom of
 
 ![](static/notice-component-yes-no.png)
 
-@## Interaction
+## Interaction
 
 ### Opening
 
@@ -129,13 +236,13 @@ Since the notice serves as a temporary notification, it should have a predefined
 
 When the close icon or closing link is clicked, the notice should smoothly fade out with a duration of `250ms`. The page content should transition to fill the space vacated by the notice within `250ms`.
 
-@## Custom notice
+## Custom notice
 
 Custom notices have their own rules and distinct styles compared to the default themes.
 
 ### Feedback notice
 
-The feedback notice deviates from the regular notice as it is attached to the header and spans the entire width of the content section of the report. It has no margins at the top, right, or left. You can refer to the [FeedbackYesNo](/patterns/feedback-yes-no) guide for an example.
+The feedback notice deviates from the regular notice as it is attached to the header and spans the entire width of the content section of the report. It has no margins at the top, right, or left. You can refer to the [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no) guide for an example.
 
 ### Advertising
 
@@ -147,11 +254,13 @@ The advertising notice differs from the default notice through the inclusion of 
 
 ![](static/notice-advertising-pic-button.png)
 
-> Please refrain from using an advertising notice for an "empty" state on a page or inside a component.
+::: tip
+Please refrain from using an advertising notice for an "empty" state on a page or inside a component.
+:::
 
 ![](static/notice-no.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### General rules
 
@@ -164,9 +273,9 @@ The advertising notice differs from the default notice through the inclusion of 
 
 A notice shouldn't be mistaken for other components:
 
-- **[NoticeBubble](/components/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
-- **[Tooltip](/components/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
-- **[Notes, hints](/style/typography/#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
+- **[NoticeBubble](/components/notice-bubble/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
+- **[Tooltip](/components/tooltip/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
+- **[Notes, hints](/style/typography/typography#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
 
 ### Examples of incorrect usage
 
@@ -178,11 +287,7 @@ An error related to a temporary failure. In this case, a notice with `warning` t
 
 ![](static/export-yes-no.png)
 
-A notice appearing on top of the interface to indicate the completion of a hidden process. It is advised to avoid this and use [NoticeBubble](/components/notice-bubble) instead in such cases.
+A notice appearing on top of the interface to indicate the completion of a hidden process. It is advised to avoid this and use [NoticeBubble](/components/notice-bubble/notice-bubble) instead in such cases.
 
 ![](static/notice-use-2-yes-no.png)
 
-@page notice-a11y
-@page notice-api
-@page notice-code
-@page notice-changelog

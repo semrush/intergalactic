@@ -1,86 +1,89 @@
 ---
-title: API
+title: Skeleton
 fileSource: skeleton
+tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
-@## Skeleton
+## Skeleton
 
 ```jsx
 import Skeleton from '@semcore/ui/skeleton';
 <Skeleton />;
 ```
 
-@typescript SkeletonProps
+<TypesView type="SkeletonProps" :types={...types} />
 
-@## Skeleton.Text
+## Skeleton.Text
 
 ```jsx
 import Skeleton from '@semcore/ui/skeleton';
 <Skeleton.Text />;
 ```
 
-@typescript SkeletonTextProps
+<TypesView type="SkeletonTextProps" :types={...types} />
 
-@## LineChartSkeleton
+## LineChartSkeleton
 
 ```jsx
 import { LineChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript LineChartSkeletonProps
+<TypesView type="LineChartSkeletonProps" :types={...types} />
 
-@## AreaChartSkeleton
+## AreaChartSkeleton
 
 ```jsx
 import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript AreaChartSkeletonProps
+<TypesView type="AreaChartSkeletonProps" :types={...types} />
 
-@## BarChartSkeleton
+## BarChartSkeleton
 
 ```jsx
 import { BarChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript BarChartSkeletonProps
+<TypesView type="BarChartSkeletonProps" :types={...types} />
 
-@## HistogramChartSkeleton
+## HistogramChartSkeleton
 
 ```jsx
 import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript HistogramChartSkeletonProps
+<TypesView type="HistogramChartSkeletonProps" :types={...types} />
 
-@## DonutChartSkeleton
+## DonutChartSkeleton
 
 ```jsx
 import { DonutChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript DonutChartSkeletonProps
+<TypesView type="DonutChartSkeletonProps" :types={...types} />
 
-@## BubbleChartSkeleton
+## BubbleChartSkeleton
 
 ```jsx
 import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@## ScatterPlotChartSkeleton
+## ScatterPlotChartSkeleton
 
 ```jsx
 import { ScatterPlotChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@## VennChartSkeleton
+## VennChartSkeleton
 
 ```jsx
 import { VennChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@## RadialTreeChartSkeleton
+## RadialTreeChartSkeleton
 
 ```jsx
 import { RadialTreeChartSkeleton } from '@semcore/ui/skeleton';
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

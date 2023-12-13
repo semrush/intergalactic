@@ -1,13 +1,16 @@
 ---
-title: API
+title: Divider
 fileSource: divider
+tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('divider-changelog')
 ---
 
-@## Divider
+## Divider
 
 ```jsx
 import Divider from '@semcore/ui/divider';
 <Divider />;
 ```
 
-@typescript DividerProps
+<TypesView type="DividerProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

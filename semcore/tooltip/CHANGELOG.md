@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.12.1] - 2023-12-07
+
+### Fixed
+
+- Incorrect behavior in Tooltip when it has a focusable elements inside themself and don't close from the first `esc` keypress.
+
 ## [6.12.0] - 2023-11-29
 
 ### Changed

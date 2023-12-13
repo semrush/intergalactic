@@ -8,7 +8,7 @@ const options = Array(5)
     value: `Option ${idx}`,
   }));
 
-export default () => (
+const Demo = () => (
   <Select placeholder='Select value' multiselect>
     {(props, handlers) => {
       const {
@@ -52,3 +52,5 @@ export default () => (
     }}
   </Select>
 );
+
+export default Demo;

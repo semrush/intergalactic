@@ -1,14 +1,15 @@
 ---
-title: Usage in design
+title: Design tokens
+tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code'), Changelog('design-tokens-changelog')
 ---
 
-@## What is a design token?
+## What is a design token?
 
 Basically, design tokens are atoms of the design system's visual styles. Think of them as values stored as predefined styles for predefined purposes, elements, and components.
 
 ![](static/token-description.png)
 
-@## Token sets
+## Token sets
 
 There are base and semantic token sets in our design system.
 
@@ -29,7 +30,7 @@ Semantic tokens include tokens for:
 
 ![](static/semantic-tokens.png)
 
-@## Token naming structure
+## Token naming structure
 
 Token name is the same in both Figma and code, except for the theme/project name which is added to the token in the code.
 
@@ -40,9 +41,11 @@ For example, compare token for primary neutral background:
 
 ![scheme of tokens naming structure: --{theme-name}-{category}-{priority}-{context}-{invert}-{state}](static/token-naming.png)
 
-> The token name doesn't have to contain all the elements of the naming structure. The naming structure creates a system so you can easily name the new token, and it will fit into the design system.
+::: tip
+The token name doesn't have to contain all the elements of the naming structure. The naming structure creates a system so you can easily name the new token, and it will fit into the design system.
+:::
 
-@## Tokens usage
+## Tokens usage
 
 Semantic tokens are context-specific, so they are used according to the intentions implied by their names:
 
@@ -62,6 +65,6 @@ Base tokens can be used for new elements and components which are not in the Int
 
 ![](static/token-usage4.png)
 
-@## How to make a new theme
+## How to make a new theme
 
 Please see the detailed process explained in the Figma file: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).

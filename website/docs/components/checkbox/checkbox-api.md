@@ -1,8 +1,9 @@
 ---
-title: API
+title: Checkbox
+tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
-@## Checkbox
+## Checkbox
 
 Wrapper over the checkbox with the `label` tag.
 
@@ -11,9 +12,9 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox />;
 ```
 
-@typescript CheckboxProps
+<TypesView type="CheckboxProps" :types={...types} />
 
-@## Checkbox.Value
+## Checkbox.Value
 
 Represents `input[type=checkbox]` and `span` with an icon.
 
@@ -22,7 +23,7 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value />;
 ```
 
-@## Checkbox.Value.Control
+## Checkbox.Value.Control
 
 Represents `input[type=checkbox]` 
 
@@ -31,7 +32,7 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value.Control />;
 ```
 
-@typescript CheckboxValueControlProps
+<TypesView type="CheckboxValueControlProps" :types={...types} />
 
 Represents `span` in `Checkbox.Value`.
 
@@ -40,9 +41,9 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value.CheckMark />;
 ```
 
-@typescript CheckboxValueCheckMarkProps
+<TypesView type="CheckboxValueCheckMarkProps" :types={...types} />
 
-@## Checkbox.Text
+## Checkbox.Text
 
 It is the customized `Text` from `@semcore/ui/typography`, depending on the size.
 
@@ -51,4 +52,6 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Text />;
 ```
 
-@typescript CheckboxTextProps
+<TypesView type="CheckboxTextProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

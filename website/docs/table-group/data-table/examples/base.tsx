@@ -1,7 +1,7 @@
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -47,3 +47,5 @@ const data = [
     vol: '21,644,290',
   },
 ];
+
+export default Demo;

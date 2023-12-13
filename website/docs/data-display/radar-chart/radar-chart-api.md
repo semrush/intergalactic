@@ -1,9 +1,10 @@
 ---
-title: API
+title: Radar chart
 fileSource: d3-chart
+tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
-@## D3 API
+## D3 API
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -11,9 +12,9 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar/>;
 ```
 
-@typescript RadarProps
+<TypesView type="RadarProps" :types={...types} />
 
-@## Radar.Axis
+## Radar.Axis
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -21,9 +22,9 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Axis/>;
 ```
 
-@typescript RadarAxisProps
+<TypesView type="RadarAxisProps" :types={...types} />
 
-@## Radar.Axis.Labels
+## Radar.Axis.Labels
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -31,9 +32,9 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Axis.Labels/>;
 ```
 
-@typescript RadarAxisLabelsProps
+<TypesView type="RadarAxisLabelsProps" :types={...types} />
 
-@## Radar.Axis.Ticks
+## Radar.Axis.Ticks
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -41,9 +42,9 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Axis.Ticks/>;
 ```
 
-@typescript RadarAxisTicksProps
+<TypesView type="RadarAxisTicksProps" :types={...types} />
 
-@## Radar.Polygon
+## Radar.Polygon
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -51,9 +52,9 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Polygon/>;
 ```
 
-@typescript RadialPolygonProps
+<TypesView type="RadialPolygonProps" :types={...types} />
 
-@## Radar.Polygon.Line
+## Radar.Polygon.Line
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -61,9 +62,9 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Polygon.Line/>;
 ```
 
-@typescript RadialPolygonLineProps
+<TypesView type="RadialPolygonLineProps" :types={...types} />
 
-@## Radar.Polygon.Dots
+## Radar.Polygon.Dots
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -71,4 +72,6 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Polygon.Dots/>;
 ```
 
-@typescript RadialPolygonDotsProps
+<TypesView type="RadialPolygonDotsProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

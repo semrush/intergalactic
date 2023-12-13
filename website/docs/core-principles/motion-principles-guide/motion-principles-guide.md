@@ -2,11 +2,11 @@
 title: Motion
 ---
 
-@## Description
+## Description
 
 Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behavior of major components – but always remember that motion must have a **purpose**.
 
-@## Principles
+## Principles
 
 **Motion is Functional**
 
@@ -24,9 +24,9 @@ Motion delights users with unexpected details that turn mundane moments into som
 
 Motion provides a visual response to an action, seamless transitions between states help focus and guide users to complete tasks.
 
-@## Durations
+## Durations
 
-@table-caption Durations
+Table: Durations
 
 | Token            | Value   | Usage                                                                                                                             |
 | ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -36,11 +36,87 @@ Motion provides a visual response to an action, seamless transitions between sta
 | fast             | `200ms` | Should be used for more complex effects (such as Dropdown or Accordion)                                                           |
 | extra-fast       | `100ms` | Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)                         |
 
-@## Easing
+## Easing
 
-@import easing
+::: react-view
 
-@## Accessibility
+<script lang="tsx">
+import React from 'react';
+import styles from './easing.module.css';
+import cx from 'classnames';
+
+// Example of usage: <Easing props={
+//  "cssFunc": "cubic-bezier(0.37, 0, 0.63, 1)",
+//  "jsFunc": " -(Math.cos(Math.PI * x) - 1) / 2",
+//  "name": "ease-in-out-sine",
+//  "description": "Lorem ipsum"
+// } />
+
+const chartSize = 200;
+
+const Easing = ({ cssFunc, jsFunc, name, description }) => {
+  const pathD = React.useMemo(() => {
+    const x = Array(chartSize)
+      .fill(0)
+      .map((_, index) => index);
+    const y = x
+      .map((x) => x / chartSize)
+      .map(jsFunc)
+      .map((y) => chartSize - y * chartSize + 1);
+    const points = x.map((x, i) => ({ x, y: y[i] }));
+    return `M${points.map(({ x, y }) => `${x} ${y}`).join(' L')}`;
+  }, [jsFunc]);
+
+  return (
+    <div className={styles.container}>
+      <svg width={chartSize} height={chartSize + 2} className={styles.chart}>
+        <path d={pathD} strokeWidth={2} />
+      </svg>
+      <div className={styles.aside}>
+        <div className={styles.details}>
+          <div className={styles.title}>
+            animation-timing-function: <strong>{name}</strong>
+          </div>
+          <div className={styles.description}>
+            <div>{cssFunc}</div>
+            <div>{description}</div>
+          </div>
+        </div>
+        <div className={styles.slider}>
+          <div className={styles.sliderLine} />
+          <div className={styles.sliderThumb} style={{ transitionTimingFunction: name }} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Take easings from https://easings.net/
+const EasingsDemo = () => {
+  return (
+    <div aria-hidden='true' className={styles.demo}>
+      <Easing
+        cssFunc='cubic-bezier(0.5, 0, 0.75, 0)'
+        jsFunc={(x) => x * x * x * x}
+        name='ease-in'
+        description='moves from slow to fast.'
+      />
+      <Easing
+        cssFunc='cubic-bezier(0.45, 0, 0.55, 1)'
+        jsFunc={(x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2)}
+        name='ease-in-out'
+        description='moves slowly on both ends.'
+      />
+    </div>
+  );
+};
+
+const App = EasingsDemo;
+</script>
+
+:::
+
+## Accessibility
 
 When using animation, you want to avoid the following effects:
 

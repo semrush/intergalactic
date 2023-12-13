@@ -1,8 +1,9 @@
 ---
-title: API
+title: InlineInput
+tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-code'), Changelog('inline-input-changelog')
 ---
 
-@## InlineInput
+## InlineInput
 
 Wrap over the inline-input elements.
 
@@ -11,9 +12,9 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput />;
 ```
 
-@typescript InlineInputProps
+<TypesView type="InlineInputProps" :types={...types} />
 
-@## InlineInput.Value
+## InlineInput.Value
 
 This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
@@ -22,9 +23,9 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.Value />;
 ```
 
-@typescript InlineInputValueProps
+<TypesView type="InlineInputValueProps" :types={...types} />
 
-@## InlineInput.Addon
+## InlineInput.Addon
 
 The addon inside the container (most often it is an icon or short text) places the correct indent units depending on the size.
 
@@ -35,7 +36,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.Addon />;
 ```
 
-@## InlineInput.ConfirmControl
+## InlineInput.ConfirmControl
 
 The addon with hint tooltip and icon. By default is displayed with middle-size Check icon. Addon click triggers `InlineInput` `onConfirm` callback.
 
@@ -46,9 +47,9 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.ConfirmControl />;
 ```
 
-@typescript InlineInputConfirmControlProps
+<TypesView type="InlineInputConfirmControlProps" :types={...types} />
 
-@## InlineInput.CancelControl
+## InlineInput.CancelControl
 
 The addon with hint tooltip and icon. By default is displayed with middle-size Close icon. Addon click triggers `InlineInput` `onCancel` callback.
 
@@ -57,4 +58,6 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.CancelControl />;
 ```
 
-@typescript InlineInputCancelControlProps
+<TypesView type="InlineInputCancelControlProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

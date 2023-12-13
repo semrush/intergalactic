@@ -1,18 +1,31 @@
 ---
-title: Example
+title: Slider
 fileSource: slider
+tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
 ---
 
-@## Slider with options
+## Slider with options
 
-@example slider
+::: sandbox
 
-@## Customized options view
+<script lang="tsx" src="examples/slider_with_options.tsx"></script>
 
-@example slider-styled-options
+:::
 
-@## Numeric slider
+## Customized options view
 
-The Slider can be used in conjunction with the [InputNumber](/components/input-number/) component. Additionally, if you input a value that is either too large or too small into the InputNumber, an error will be displayed.
+::: sandbox
 
-@example slider-with-input
+<script lang="tsx" src="examples/customized_options_view.tsx"></script>
+
+:::
+
+## Numeric slider
+
+The Slider can be used in conjunction with the [InputNumber](/components/input-number/input-number) component. Additionally, if you input a value that is either too large or too small into the InputNumber, an error will be displayed.
+
+::: sandbox
+
+<script lang="tsx" src="examples/numeric_slider.tsx"></script>
+
+:::

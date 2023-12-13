@@ -1,17 +1,18 @@
 ---
-title: API
+title: NoticeGlobal
+tabs: Design('notice-global'), A11y('notice-global-a11y'), API('notice-global-api'), Example('notice-global-code'), Changelog('notice-global-changelog')
 ---
 
-@## Notice
+## Notice
 
 ```jsx
 import NoticeGlobal from '@semcore/ui/notice-global';
 <NoticeGlobal />;
 ```
 
-@typescript NoticeGlobalProps
+<TypesView type="NoticeGlobalProps" :types={...types} />
 
-@## NoticeGlobal.Content
+## NoticeGlobal.Content
 
 The component is inherited from `Box` and is used to insert content in the notification.
 
@@ -20,7 +21,7 @@ import NoticeGlobal from '@semcore/ui/notice';
 <NoticeGlobal.Content />;
 ```
 
-@## NoticeGlobal.CloseIcon
+## NoticeGlobal.CloseIcon
 
 The component is inherited from `Box` and is used to insert the close cross.
 
@@ -28,3 +29,5 @@ The component is inherited from `Box` and is used to insert the close cross.
 import NoticeGlobal from '@semcore/ui/notice';
 <NoticeGlobal.CloseIcon />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

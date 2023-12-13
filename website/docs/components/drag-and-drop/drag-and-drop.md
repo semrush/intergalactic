@@ -1,14 +1,16 @@
 ---
 title: Drag and drop
 fileSource: drag-and-drop
-tabName: Design
+tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
 ---
 
-@## Description
+## Description
 
 **Drag and drop** is a component that allows user to move elements within the interface, changing their order and sometimes their properties.
 
-> One common use case is reordering columns in a table, using dropdowns known as "Table settings controls".
+::: tip
+One common use case is reordering columns in a table, using dropdowns known as "Table settings controls".
+:::
 
 The component imitates the physical dragging of objects, and two essential considerations for this are:
 
@@ -21,7 +23,7 @@ The component imitates the physical dragging of objects, and two essential consi
 
 ![](static/dragdrop-scheme.png)
 
-@## Appearance
+## Appearance
 
 ### Icon for identification of the possibility to drag the object
 
@@ -35,7 +37,7 @@ When hovering over a draggable element, it's recommended to display the `MoveAlt
 
 ![](static/dragging.png)
 
-@## Area for dragging
+## Area for dragging
 
 The area for dragging is where you can click and hold the mouse or use the keyboard to move a large object, like a card or table row. We recommend using the dotted pattern that appears when user hovers over the area or use the `Tab` key to navigate to the element. This pattern can be placed both horizontally, as in the case of cards, and vertically, as in table rows.
 
@@ -43,7 +45,7 @@ The area for dragging is where you can click and hold the mouse or use the keybo
 
 ![](static/drag-table.png)
 
-@## Area for dropping
+## Area for dropping
 
 By default, the element's placement area is marked with a dashed border. If user hovers over this area, its styles should remain unchanged to avoid giving the impression that it is clickable.
 
@@ -53,7 +55,7 @@ Use `border: 1px dashed var(--border-primary)` for border styles.
 
 ![](static/default-and-hover.png)
 
-@## Area highlighting
+## Area highlighting
 
 When the object is dragged to the area where the element can be placed, area must be highlighted.
 
@@ -63,19 +65,19 @@ Use `--bg-primary-neutral-hover` token for background-color and `border: 1px das
 
 ![](static/drag-card.png)
 
-@## Where to use
+## Where to use
 
-@table-caption Where to use drag and drop component
+Table: Where to use drag and drop component
 
 | Component                                | Appearance example                                                                                      |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [Accordion](/components/accordion/)       | ![](static/drag-accordion.png)                                                |
-| [Card](/components/card/)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
-| [Table](/table-group/table/)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
-| [TabPanel](/components/tab-panel/)        | ![](static/drag-tabpanel.png)                                                  |
-| [Select/Multiselect](/components/select/) | ![](static/drag-default.png) ![](static/dragging.png) |
+| [Accordion](/components/accordion/accordion)       | ![](static/drag-accordion.png)                                                |
+| [Card](/components/card/card)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
+| [Table](/table-group/data-table/data-table)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
+| [TabPanel](/components/tab-panel/tab-panel)        | ![](static/drag-tabpanel.png)                                                  |
+| [Select/Multiselect](/components/select/select) | ![](static/drag-default.png) ![](static/dragging.png) |
 
-@## Interaction
+## Interaction
 
 ### Cursor
 
@@ -85,7 +87,7 @@ When dragging either a clickable or non-clickable element, a long click on any p
 
 When dragging, the axis isn’t restricted, allowing the element to be moved anywhere on the page but only added to certain areas.
 
-@table-caption States of draggable element
+Table: States of draggable element
 
 | State    | Appearance example                                              | Description                                                                                                                                                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -96,7 +98,7 @@ When dragging, the axis isn’t restricted, allowing the element to be moved any
 
 ### States of droppable area
 
-@table-caption States of droppable area
+Table: States of droppable area
 
 | State    | Appearance example                                                                        | Description                                                                                                                                                                                                                                                                               |
 | -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -105,7 +107,7 @@ When dragging, the axis isn’t restricted, allowing the element to be moved any
 | dragging | ![](static/drag-card.png) ![](static/drag-table2.png) | Hovering over the area where an element can be dropped changes its color. When dragging an object in a list of similar objects, they are separated, and the drop zone changes the background color to `--bg-secondary-neutral-hover`.       |
 | no-drop  | ![](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                             |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 This component imitates physically dragging objects, so keep the following in mind when implementing it:
 
@@ -113,13 +115,11 @@ This component imitates physically dragging objects, so keep the following in mi
 - Display the area where the element can be placed.
 - Avoid placing the draggable element and its drop area too far apart.
 
-> Use appropriate cursors such as `move`, `grab`, or `grabbing` when interacting with draggable elements.
+::: tip
+Use appropriate cursors such as `move`, `grab`, or `grabbing` when interacting with draggable elements.
+:::
 
 Note that short and long clicks have different meanings, with long clicks used for clickable draggable objects.
 
 Apply the required styles to show that an element is being dragged during the `DragEvent`.
 
-@page drag-and-drop-a11y
-@page drag-and-drop-api
-@page drag-and-drop-code
-@page drag-and-drop-changelog
