@@ -1,18 +1,29 @@
 ---
-title: Example
+title: Dropdown
 fileSource: dropdown
+tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
-> ⚠️ If you need to customize your work with a dropdown window, refer to the documentation [@semcore/ui/popper](/utils/popper/)
+::: warning
+:warning: If you need to customize your work with a dropdown window, refer to the documentation [@semcore/ui/popper](/utils/popper/popper)
+:::
 
-The component is a wrap over [@semcore/ui/popper](/utils/popper/) with styles for a dropdown window.
+The component is a wrap over [@semcore/ui/popper](/utils/popper/popper) with styles for a dropdown window.
 
-@## Basic usage
+## Basic usage
 
-The component API is completely identical to [@semcore/ui/popper](/utils/popper/)
+The component API is completely identical to [@semcore/ui/popper](/utils/popper/popper)
 
-@example dropdown
+::: sandbox
 
-@## Focus interaction
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
 
-@example dropdown-focus
+:::
+
+## Focus interaction
+
+::: sandbox
+
+<script lang="tsx" src="examples/focus_interaction.tsx"></script>
+
+:::

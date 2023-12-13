@@ -1,8 +1,9 @@
 ---
-title: API
+title: Card
+tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
-@## Card
+## Card
 
 It's just a `Box`.
 
@@ -11,7 +12,7 @@ import Card from '@semcore/ui/card';
 <Card />;
 ```
 
-@## Card.Header
+## Card.Header
 
 It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
 
@@ -20,7 +21,7 @@ import Card from '@semcore/ui/card';
 <Card.Header />;
 ```
 
-@## Card.Body
+## Card.Body
 
 It's just a `Box`, with pre-installed paddings.
 
@@ -29,7 +30,7 @@ import Card from '@semcore/ui/card';
 <Card.Body />;
 ```
 
-@## Card.Title
+## Card.Title
 
 The card title is able to display the tip.
 
@@ -38,13 +39,15 @@ import Card from '@semcore/ui/card';
 <Card.Title />;
 ```
 
-@typescript TitleProps
+<TypesView type="TitleProps" :types={...types} />
 
-@## Card.Description
+## Card.Description
 
-Has all properties as the [Text](/style/typography/typography-api/#a9dffb).
+Has all properties as the [Text](/style/typography/typography-api#a9dffb).
 
 ```jsx
 import Card from '@semcore/ui/card';
 <Card.Description />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

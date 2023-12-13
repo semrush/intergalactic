@@ -1,227 +1,157 @@
 ---
-title: DataTable code and API
+title: DataTable
 fileSource: data-table
-tabName: Example
+tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'),  Changelog('data-table-changelog')
 ---
 
-The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and doesn't use native tables.
+## Description
 
-@## Simple usage example
+**DataTable** is a complex component designed for managing complex data lists.
 
-To build a table, we must provide columns with titles `<DataTable.Column name={name}/>` and data `data={data}`.
+## Appearance
 
-> `<DataTable.Column/>` must be a child component of `<DataTable.Head/>`
+### Types
 
-@example base
+Our design system offers two table types – [primary](../table-primary/table-primary) and [secondary](../table-secondary/table-secondary).
 
-@## Scroll in the table
+### Common styles for table content
 
-`<DataTable/>`, `<DataTable.Head/>`, `<DataTable.Body/>` are inherited from the `Box` component and accept all its parameters. `<DataTable/>` is a wrapper for `<DataTable.Head/>`, `<DataTable.Body />`, where scrolls are implemented.
+Table: Common styles for table content
 
-> If you don't see horizontal scrolling in the example, reduce the window size.
+| Content                     | Styles and tokens                          |
+| --------------------------- | ------------------------------------------ |
+| Text in the header          | Use `--fs-100` and `--lh-100` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
+| The text in the row         | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
+| Secondary text              | Use `--text-secondary` token for color.               |
+| Stand alone icon            | Icon with M size and `--icon-secondary-neutral` token for color.    |
+| The icon next to the text   | Icon with M size and `--icon-secondary-neutral` token for color.   |
+| Header and cell checkbox    | Use [Checkbox](/components/checkbox/checkbox) with M size.  |
 
-As you can see the most common case is scroll showed at the bottom of the table. But you can add it to the table header either. Scroll in the table header is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll can be either in the header and at the bottom of the table. Refer to the examples in the [Fixed header section](/table-group/data-table/#fixed_header).
+## Sorting
 
-@example table-scroll
+For detailed information on sorting columns in the table, refer to [Table controls](/table-group/table-controls/table-controls).
 
-@## Customizing the header
+## Tooltip
 
-You can use `children` to insert tooltips, selectors, and other components in the header.
+To display additional information about a column, use tooltip. It will appear by hovering over the column title.
 
-@example custom-header
+### Conditions for the tooltip appearance
 
-@## The size of the columns
+Table: Conditions for the tooltip appearance
 
-Columns are inherited from the `Flex` component and accept all its parameters. With `flex`, `wMin`, `wMax`, you can flexibly adjust the column width.
+|                                                       | Appearance example        |
+| ----------------------------------------------------- | ------------------------- |
+| If text is too long and collapsed into an `ellipsis`. | ![](static/tooltip-1.png) |
+| If the column has additional explanatory information. | ![](static/tooltip-2.png) |
 
-@example width-header
+## Table row states
 
-@## The alignment of the columns
+::: tip
+Hover state for a row is required for all table types.
+:::
 
-Since columns and cells are inherited from the `Flex` component, you can use `justifyContent/alignItems` to align the column to the desired edge. This property is automatically applied to table cells.
+Hovering highlights information in large data volumes, making it easier to perform actions such as reading, deleting, or opening.
 
-@example align-header
+- The row changes to the `hover` state when you hover over any part of it.
+- If the cursor is over an item, the row remains in the `hover` state, and the item under the cursor is also highlighted.
 
-@## Sorting
+![](static/tr-hover-all.png)
 
-If you can sort by column, then:
+### Hover styles for different cells
 
-1. Specify the `sortable` property on the column;
-2. Subscribe to `onSortChange`;
-3. Pass the `sort` property to the table.
-4. Sort data, provided to `data` property.
+If an entire row is in the disabled state, it should not have a hover state.
 
-@example sort
+::: tip
+Consider using darker icon colors to increase contrast when using colored cell backgrounds. For instance, switch from `--icon-secondary-neutral` to `--icon-primary-neutral`.
+:::
 
-@## Fixed header
+Table: Hover styles for different cells
 
-To fix the table header, use the `<Box position="sticky" top={top} />` component.
+| State                    | Appearance                                   | Styles                                                                                                                                                                          |
+| ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default, hover           | ![](static/default-hover.png)   | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)`. When you `hover` on, background color changes to `background: var(--table-td-cell-hover)`. |
+| Unread, unread hover     | ![](static/unread-hover.png)     | `background-color: var(--table-td-cell-unread)`. The `hover` state is the same as default cell has.                                                                                                |
+| Selected, selected hover | ![](static/selected-hover.png) | `background-color: var(--table-td-cell-selected)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-selected-hover)`.                                                              |
+| New, new hover           | ![](static/new-hover.png)           | `background-color: var(--table-td-cell-new)`. When you `hover` on, the background color changes to `background-color: background-color: var(--table-td-cell-new-hover)`.                                          |
+| Error, error hover       | ![](static/danger-hover.png)     | `background-color: var(--table-td-cell-critical)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-critical-hover)`.                                                                |
+| Warning, warning hover   | ![](static/warning-hover.png)   | `background-color: var(--table-td-cell-warning)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-warning-hover)`.                                                          |
+| Current, current hover   | ![](static/current-hover.png)   | The row is tagged with tag `You`. The `hover` state is the same as the `default` state.                                                                                         |
+| Loading                  | ![](static/loading-hover.png)   | Change opacity of the elements inside a row to `--disabled-opacity`. Spin has size XS.                                                                                                                           |
+| Limit, limit hover       | ![](static/limit.png)                   | For limiting rows use `--overlay-limitation-secondary` token. The `hover` state is the same as the default state has.                                                |
 
-> Set `zIndex=2` for correct display.
+### Hover for row-span and col-span
 
-Note that scroll in the table header is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll can be either in the header and at the bottom of the table.
+- Hovering over the parent column highlights all child rows.
+- Hovering over a child row highlights the parent column.
 
-@example sticky
+### Cells coloring
 
-@## Fixed columns
+If a cell is colored, it remains colored when you hover over it. Users should not lose information about the cell's color when hovering over a row.
 
-To fix table columns, pass the `fixed` property to `<DataTable.Column/>`.
+![](static/td-style-hover.png)
 
-> If you don't see fixed columns in the example, reduce the window size.
+## Content alignment inside cell
 
-@example fixed
+Text inside cells in rows and headers is aligned according to these rules.
 
-@## Multi-level header
+### Left-aligned
 
-To create a multi-level header, insert columns into each other. However, the `name` isn’t applicable for the group column.
+![](static/table-left.png)
 
-@example multi-header
+- Text
+- The link (URL)
+- Keyword
+- Code/Numbers/Hashes (text consisting of numbers, symbols, and letters)
+- Abbreviation
+- Date
+- Control element
+- Button
+- Select
+- Tag/Badge
+- Icons (if multiple, SERP features)
 
-@## Adding additional elements to the header
+### Center-aligned
 
-If you add custom components to `<DataTable.Head/>`, they will be inserted at the end of the header.
+![](static/table-center.png)
 
-@example add-head
+- Numbers (if horizontal comparison is needed)
+- Icon (if single)
+- Particular character
+- Image
 
-@## Header separation
+### Right-aligned
 
-Sometimes we need to move the table header outside of the table, this can be done using the portal. All functionality will work, the table body will adjust to the size of the header.
+![](static/table-right.png)
 
-@example portal-head
+- Numbers (if vertical comparison is needed)
+- Decimal numbers
+- Tags/Badges (when marking the entire row)
 
-@## Access to Row
+## Scroll bar
 
-To apply some properties to a table row, you need to define `<DataTable.Row/>`. You can use multiple `<DataTable.Row/>` to separate the business logic.
+The most common case is scroll bar showed at the bottom of the table. Horizontal scrolling in our tables indicates hidden data beyond the viewport in wide tables. It is needed when:
 
-> `<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>`.
->
-> It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
+- All table columns do not fit the viewport.
+- Adding a new column from the settings manager makes the table data exceed the viewport.
+- The screen where the user views the report is smaller than 992px.
 
-> You can provide `data` property for `<DataTable.Row/>`. It is not used in the component runtime but improves strict typings. 
+::: tip
+Having a horizontal scroll in a large table is not a bad practice; it is a familiar experience for most users (similar to Excel). It is wrong when adding columns to a table makes them unnecessarily narrow, without the need for scrolling.
+<!-- > [UX tables to work with (Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12) -->
+:::
 
-@example row
+![](static/scroll-horizontal.png)
 
-@## Access to Cell
+### Two scroll bars
 
-To apply some properties to a table cell, you need to define `<DataTable.Cell/>` with the appropriate `name={name}`. You can use multiple `<DataTable.Cell/>` for separating business logic.
+You can show two scroll bars in the table if necessary, adding scroll bar to the header and to the bottom of the table. It is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll bar can be either in the header and at the bottom of the table. Refer to the [examples in the Fixed header section](/table-group/data-table/data-table-code#fixed_header).
 
-> `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
->
-> It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
+![](static/table-scroll.png)
 
-> You can provide `data` property for `<DataTable.Cell/>`. It is not used in the component runtime but improves strict typings. 
+## Pagination
 
-@example cell
+Refer to the [Table controls](/table-group/table-controls/table-controls#pagination) guide for detailed recommendations on pagination.
 
-@## Access to a set of cells
+## Table states
 
-To apply properties to multiple table cells, you need to define `<DataTable.Cell />` with their names listed via `/`.
-
-@example multi-cell
-
-@## Adding additional elements to the table body
-
-When adding custom components to `<DataTable.Body/>` they will be inserted at the end of the table body.
-
-> To block fixed columns , you need to specify `z-index=1` to block scrolling, you need to specify `z-index=2`.
-
-@example add-body
-
-@## Custom footer cells
-
-To reuse size of columns, use css variables `var(--<%column-name%>_width)`.
-
-@example summary
-
-@## Accordion in the table
-
-We use the `@semcore/ui/accordion` component to extend the functionality of the string.
-
-1. Wrapping the table in the `Accordion` control component;
-2. Replacing the tag in `DataTable.Row` with our extended tag with `Accordion.Item`;
-3. Setting the value for `Accordion.Item`;
-4. Calculating the active line to highlight it;
-5. Render the children to accordion content;
-6. Set the arrow (Chevron icon), if necessary.
-
-@example accordion
-
-@## Table in table
-
-We use the example with [the accordion above](/table-group/data-table/#accordion_in_the_table).
-
-1. Hide the table header;
-2. Set "inherit" to use the size from the top table for each column;
-
-@example table-in-table
-
-@## Table in table with fixed column
-
-We use the example with [the table above](/table-group/data-table/#table_in_table).
-
-1. Set the desired z-index;
-2. Set the variable to block the scroll;
-3. Set the variable to remove overflow
-
-@example table-in-table-with-fixed
-
-@## Virtual scroll in the table
-
-Use `virtualScroll` property to enable scroll virtualization.
-
-@example virtual-scroll
-
-@## Download status
-
-You can replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with the spinner.
-
-@example loading
-
-@## Skeleton in the table
-
-You can substitute the skeleton directly in `data`, but you can also replace `rows` with `<DataTable .Body/>`.
-
-@example skeleton
-
-@## Merging columns
-
-To combine two or more columns, we can change the table data by combining the column keys via `/`.
-
-@example col-group
-
-@## Row merging
-
-To merge two or more rows, we can change the table data by adding a special grouping key.
-
-@example row-group
-
-@## Secondary table
-
-You can use secondary table for compact displaying small amount of data inside widgets.
-
-@example secondary
-
-@## Export in image
-
-@example export-to-pdf
-
-@## Compact
-
-To make the table with smaller indents you need to add `compact` property.
-
-@example compact
-
-@## Borders
-
-To add a border to a column, you need to pass `vBorders` properties to that column.
-
-@example borders
-
-@## Сolumn expand
-
-The active column will expand if there isn’t enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
-
-@example expanding-column
-
-@page data-table-api
-@page data-table-changelog
+For information about table states, refer to the specific document on [Table states](/table-group/table-states/table-states).

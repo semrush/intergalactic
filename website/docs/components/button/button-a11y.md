@@ -1,13 +1,14 @@
 ---
-title: A11y
+title: Button
 a11y: AA
+tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key              | Function                                       |
 | ---------------- | ---------------------------------------------- |
@@ -19,7 +20,7 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role     | Attribute              | Element    | Usage                                                                                                                                       |
 | -------- | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +29,7 @@ The list below describes roles and attributes that component already has.
 |          | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button isn’t pressed.                                                       |
 |          | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                                           |
 
-@## Considerations for developers
+## Considerations for developers
 
 - A `<button>` tag doesn't need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
 - Ensure visual labels and programmatic labels match.
@@ -44,19 +45,19 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
-@table-caption Attributes
+Table: Attributes
 
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is a required for buttons without text content.                                                     |
 | `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is a required for buttons without text content. |
 
-@## Resources
+## Resources
 
 - [W3 button examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) has detailed information about the button accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives recommendations for the accessible components.
 - Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

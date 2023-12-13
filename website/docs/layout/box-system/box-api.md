@@ -1,9 +1,10 @@
 ---
-title: API
+title: Flex-box and spacing system
 fileSource: flex-box
+tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 ---
 
-@## Box
+## Box
 
 Component responsible for spacings and sizes 📐
 
@@ -12,9 +13,9 @@ import { Box } from '@semcore/ui/flex-box';
 <Box />;
 ```
 
-@typescript BoxProps
+<TypesView type="BoxProps" :types={...types} />
 
-@## Flex
+## Flex
 
 The layout building component is a wrapper over CSS-flex. It inherits all properties from `Box`.
 
@@ -23,4 +24,6 @@ import { Flex } from '@semcore/ui/flex-box';
 <Flex />;
 ```
 
-@typescript FlexProps
+<TypesView type="FlexProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

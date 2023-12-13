@@ -1,9 +1,10 @@
 ---
-title: API
+title: DatePicker
 fileSource: date-picker
+tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
 ---
 
-@## DatePicker and MonthPicker
+## DatePicker and MonthPicker
 
 Widget for selecting the date/month.
 
@@ -13,9 +14,9 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker />;
 ```
 
-@typescript DatePickerProps
+<TypesView type="DatePickerProps" :types={...types} />
 
-@## DateRangePicker
+## DateRangePicker
 
 Widget for selecting the range of dates/months.
 
@@ -25,9 +26,9 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 <MonthRangePicker />;
 ```
 
-@typescript DateRangePickerProps
+<TypesView type="DateRangePickerProps" :types={...types} />
 
-@## DatePicker.Trigger and DateRangePicker.Trigger
+## DatePicker.Trigger and DateRangePicker.Trigger
 
 Trigger input, exists by default. `DateRangePicker` has the same interface.
 
@@ -36,9 +37,9 @@ import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
-@typescript BaseTriggerProps
+<TypesView type="BaseTriggerProps" :types={...types} />
 
-@## DateRangePicker.Period
+## DateRangePicker.Period
 
 Component for rendering the configurable periods.
 
@@ -47,9 +48,9 @@ import { DateRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker.Period />;
 ```
 
-@typescript DateRangePickerPeriodProps
+<TypesView type="DateRangePickerPeriodProps" :types={...types} />
 
-@## Calendar
+## Calendar
 
 Calendar component 📅
 
@@ -59,9 +60,9 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker.Calendar />;
 ```
 
-@typescript CalendarProps
+<TypesView type="CalendarProps" :types={...types} />
 
-@## Calendar.Unit
+## Calendar.Unit
 
 The unit inside the calendar.
 
@@ -71,4 +72,12 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker.Calendar.Unit />;
 ```
 
-@typescript CalendarUnitProps
+<TypesView type="CalendarUnitProps" :types={...types} />
+
+## DateRangeComparator
+
+Same api for `MonthDateRangeComparator`.
+
+<TypesView type="DateRangeComparatorProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

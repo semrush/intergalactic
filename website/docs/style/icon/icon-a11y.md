@@ -1,9 +1,10 @@
 ---
-title: A11y
+title: Icon
 a11y: AA
+tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
-@## Considerations for developers
+## Considerations for developers
 
 According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (for example, `button`, `link`).
 
@@ -28,12 +29,12 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs).
 
-@## Considerations for designers
+## Considerations for designers
 
 - If an icon has a function in the interface, it should be conveyed to the user through assistive technologies. In this case you should provide an appropriate `aria-label` for it. For example, if `Trash` icon removes a table row in the interface, add `aria-label="Remove row"`.
 - Check icon contrast against background. [The contrast ratio should be at least 3:1](https://www.w3.org/WAI/WCAG21/Techniques/general/G207).
 
-@## Resources
+## Resources
 
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html) gives recommendations for the accessible components.
 - [Accessible SVGs](https://css-tricks.com/accessible-svgs/) contains information about the accessible SVG.
@@ -41,6 +42,6 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 - [Icon links and icon buttons](https://a11y-101.com/development/icons-and-links).
 - [How to integrate icons in an accessible way](https://stevenmouret.github.io/web-accessibility-guidelines/techniques/accessible-icons.html).
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

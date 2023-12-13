@@ -1,17 +1,18 @@
 ---
-title: API
+title: Notice
+tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
-@## Notice
+## Notice
 
 ```jsx
 import Notice from '@semcore/ui/notice';
 <Notice />;
 ```
 
-@typescript NoticeProps
+<TypesView type="NoticeProps" :types={...types} />
 
-@## Notice.Label
+## Notice.Label
 
 The component is inherited from `Box` and is used to insert a label in the left part of the notification, usually it is an icon.
 
@@ -20,7 +21,7 @@ import Notice from '@semcore/ui/notice';
 <Notice.label />;
 ```
 
-@## Notice.Actions
+## Notice.Actions
 
 The component is inherited from `Box` and is used to insert control components in the lower part of the notification, usually it is a button or a group of buttons.
 
@@ -29,7 +30,7 @@ import Notice from '@semcore/ui/notice';
 <Notice.Actions />;
 ```
 
-@## Notice.Content
+## Notice.Content
 
 The component is inherited from `Box` and is used to insert content in the notification.
 
@@ -38,7 +39,7 @@ import Notice from '@semcore/ui/notice';
 <Notice.Content />;
 ```
 
-@## Notice.CloseIcon
+## Notice.CloseIcon
 
 The component is inherited from `Box` and is used to insert the close cross.
 
@@ -47,7 +48,7 @@ import Notice from '@semcore/ui/notice';
 <Notice.CloseIcon />;
 ```
 
-@## NoticeSmart
+## NoticeSmart
 
 This is the component version for simplified operation; for more details, see demo examples.
 
@@ -56,4 +57,6 @@ import { NoticeSmart } from '@semcore/ui/notice';
 <NoticeSmart />;
 ```
 
-@typescript NoticeSmartProps
+<TypesView type="NoticeSmartProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -1,21 +1,24 @@
 ---
-title: API
+title: Counter
+tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
-@## Counter
+## Counter
 
 ```jsx
 import Counter from '@semcore/ui/counter';
 <Counter />;
 ```
 
-@typescript CounterProps
+<TypesView type="CounterProps" :types={...types} />
 
-@## AnimatedNumber
+## AnimatedNumber
 
 ```jsx
 import { AnimatedNumber } from '@semcore/ui/counter';
 <AnimatedNumber />;
 ```
 
-@typescript AnimatedNumberBaseProps
+<TypesView type="AnimatedNumberBaseProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

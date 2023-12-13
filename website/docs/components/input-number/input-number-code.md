@@ -1,16 +1,25 @@
 ---
-title: Example
+title: InputNumber & InputRange
 fileSource: input-number
+tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api'), Example('input-number-code'), Changelog('input-number-changelog')
 ---
 
-@## Range of values
+## Range of values
 
-Use [InputNumber](/components/input-number) and [NeighborLocation](/utils/neighbor-location) components. In this case, InputNumber is always used as a controlled component.
+Use [InputNumber](/components/input-number/input-number) and [NeighborLocation](/utils/neighbor-location/neighbor-location) components. In this case, InputNumber is always used as a controlled component.
 
-@example basic
+::: sandbox
 
-@## Appearance customization
+<script lang="tsx" src="examples/range_of_values.tsx"></script>
+
+:::
+
+## Appearance customization
 
 You have the ability to customize the component's appearance. To ensure the step calculation is accurate, utilize the internal API's native input.
 
-@example alternative
+::: sandbox
+
+<script lang="tsx" src="examples/appearance_customization.tsx"></script>
+
+:::

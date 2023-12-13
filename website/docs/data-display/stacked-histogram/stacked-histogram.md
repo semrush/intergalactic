@@ -1,10 +1,11 @@
 ---
 title: Stacked histogram chart
 fileSource: d3-chart
-tabName: Design
 disabled: true
+tabs: Design('stacked-histogram'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
+:::
 
-@page d3-chart-changelog

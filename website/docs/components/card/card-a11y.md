@@ -1,9 +1,10 @@
 ---
-title: A11y
+title: Card
 a11y: AA
+tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
-@## Considerations for developers
+## Considerations for developers
 
 - Make sure you have tabbing focus indicators for all elements that should be controlled.
 - Ensure all text within the card is in the reading order and accessible to screen reader users.
@@ -14,10 +15,10 @@ a11y: AA
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html).
 
-@## Resources
+## Resources
 
 [A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html) gives core recommendations for the accessible card components.
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

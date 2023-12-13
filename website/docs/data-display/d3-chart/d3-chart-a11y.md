@@ -1,6 +1,7 @@
 ---
-title: A11y
+title: D3 chart principles
 fileSource: d3-chart
+tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
 ## How charts accessibility works
@@ -90,7 +91,7 @@ If you are redefining children rendering of `<XAxis.Ticks>` or `<YAxis.Ticks>` b
 
 If the chart summary looks similar to what you expect to tell users but not good enough–especially with your data (for example, your data is too variable and the summarizer seems to be too sensitive) – you can tweak the summarizer's configuration.
 
-@typescript PlotSummarizerConfig
+<TypesView type="PlotSummarizerConfig" :types={...types} />
 
 #### Add summary manually
 
@@ -106,7 +107,9 @@ If the automatically generated summary isn’t suitable for the data provided to
     override:
       "This chart represents the sales of our great unicorn startup. We haven't sold anything.",
   }}
->
+::: tip
+
+:::
 ...
 ```
 
@@ -121,3 +124,5 @@ Data summarization is performed on the client side in linear time, linear memory
 ## How to contribute to the chart accessibility module
 
 If you are interested in expanding the charts accessibility module for your needs or in ejecting the accessibility module into a separated package, feel free to [open a pull request](https://github.com/semrush/intergalactic/tree/master/semcore/d3-chart/src/a11y). We will react to it sooner.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -1,18 +1,19 @@
 ---
-title: API
+title: SpinContainer
 fileSource: spin-container
+tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
-@## SpinContainer
+## SpinContainer
 
 ```jsx
 import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
-@typescript SpinContainerProps
+<TypesView type="SpinContainerProps" :types={...types} />
 
-@## SpinContainer.Content
+## SpinContainer.Content
 
 Content wrapper with proper `position` and `z-index`.
 
@@ -21,7 +22,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Content />;
 ```
 
-@## SpinContainer.Overlay
+## SpinContainer.Overlay
 
 By default, it is a UI component and a base that closes the content under `Spin`.
 
@@ -29,3 +30,5 @@ By default, it is a UI component and a base that closes the content under `Spin`
 import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Overlay />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

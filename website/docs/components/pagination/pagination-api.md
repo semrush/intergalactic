@@ -1,17 +1,18 @@
 ---
-title: API
+title: Pagination
+tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
-@## Pagination
+## Pagination
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
-@typescript PaginationProps
+<TypesView type="PaginationProps" :types={...types} />
 
-@## Pagination.FirstPage
+## Pagination.FirstPage
 
 Takes all the properties of the button.
 
@@ -20,7 +21,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.FirstPage />;
 ```
 
-@## Pagination.NextPage
+## Pagination.NextPage
 
 Takes all the properties of the button.
 
@@ -29,25 +30,25 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.NextPage />;
 ```
 
-@## Pagination.PageInput
+## Pagination.PageInput
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput />;
 ```
 
-@typescript PageInputProps
+<TypesView type="PageInputProps" :types={...types} />
 
-@## Pagination.PageInput.Value
+## Pagination.PageInput.Value
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
-@typescript InputValueProps
+<TypesView type="InputValueProps" :types={...types} />
 
-@## Pagination.PrevPage
+## Pagination.PrevPage
 
 Takes all the properties of the button.
 
@@ -56,11 +57,13 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PrevPage />;
 ```
 
-@## Pagination.TotalPages
+## Pagination.TotalPages
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
 <Pagination.TotalPages />;
 ```
 
-@typescript TotalPagesProps
+<TypesView type="TotalPagesProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

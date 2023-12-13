@@ -1,8 +1,9 @@
 ---
-title: Usage in development
+title: Design tokens
+tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code'), Changelog('design-tokens-changelog')
 ---
 
-@## Global theme
+## Global theme
 
 Design tokens are ideal for global theming because they help ensure consistent visual choices and behavior across the design system. They also make it easier to update and maintain the product, as changes can be made in a centralized way.
 
@@ -13,7 +14,9 @@ Design tokens are ideal for global theming because they help ensure consistent v
 
 To sum up, using design tokens only for global theming is a best practice because it promotes consistency, maintainability, modularity, and adaptability in the design system.
 
-> If you can't find the token you are looking for, then please double-check the existing ones. If it is really missing, you can drop us a line with a request to add a new token.
+::: tip
+If you can't find the token you are looking for, then please double-check the existing ones. If it is really missing, you can drop us a line with a request to add a new token.
+:::
 
 ### How to apply theme globally
 
@@ -28,9 +31,9 @@ To apply a global theme, define CSS variables on the `:root` via CSS or JS. For 
 }
 ```
 
-Any design token from the [tokens list](/style/design-tokens/#semantic_tokens) may be applied.
+Any design token from the [tokens list](/style/design-tokens/design-tokens#semantic_tokens) may be applied.
 
-@## Local theme
+## Local theme
 
 We don’t recommend using tokens for local theming or specific instances, because it can lead to visual inconsistencies within the design system and may require more effort to maintain visual decisions. Besides, using tokens only for a certain component will cause changes to be applied to the internal content of the component as well, which may be unnecessary.
 
@@ -42,4 +45,39 @@ Theme for React components subtree may also be applied via `<ThemeProvider />`.
 
 `<ThemeProvider />` applies provided tokens on DOM node and handles passing them into React Portal created with `@semcore/portal`.
 
-@example theme-provider
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Button from '@semcore/button';
+import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+
+const violetPrimaryButtonTheme = {
+  '--intergalactic-control-primary-info': '#8649e1',
+  '--intergalactic-control-primary-info-hover': '#5925ab',
+  '--intergalactic-control-primary-info-active': '#5925ab',
+};
+const grayPrimaryButtonTheme = {
+  '--intergalactic-control-primary-info': '#6c6e79',
+  '--intergalactic-control-primary-info-hover': '#484a54',
+  '--intergalactic-control-primary-info-active': '#2b2e38',
+};
+
+const Demo = () => {
+  return (
+    <>
+      <ThemeProvider tokens={violetPrimaryButtonTheme}>
+        <Button use='primary'>Violet primary button theme</Button>
+      </ThemeProvider>
+      <br />
+      <br />
+      <ThemeProvider tokens={grayPrimaryButtonTheme}>
+        <Button use='primary'>Gray primary button theme</Button>
+      </ThemeProvider>
+    </>
+  );
+};
+
+</script>
+
+:::

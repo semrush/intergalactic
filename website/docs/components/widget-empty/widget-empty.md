@@ -1,16 +1,16 @@
 ---
 title: Widget empty state
 fileSource: widget-empty
-tabName: Design
+tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
-@## Description
+## Description
 
 **WidgetEmpty** is a component designed to display messages in widgets.
 
 Widgets have "empty" states, when there is no data to show. In such cases, the WidgetEmpty component informs the user why there is no data and provides guidance on how to address the situation.
 
-@## Composition and styles
+## Composition and styles
 
 ![](static/widgetempty-composition.png)
 
@@ -18,16 +18,16 @@ Component consists of the following:
 
 - `WidgetEmpty.Title`
 - `WidgetEmpty.Description`
-- [Illustration](/style/illustration/)
+- [Illustration](/style/illustration/illustration)
 - Controls
 
-@## Styles
+## Styles
 
 We recommend to add maximum 400px width for the "empty" state message to ensure readability.
 
 ![](static/medium-nothing.png)
 
-@table-caption WidgetEmpty styles
+Table: WidgetEmpty styles
 
 | Element             | Styles   |
 | ------------------- | -------- |
@@ -42,7 +42,7 @@ We recommend to add maximum 400px width for the "empty" state message to ensure 
 
 ![](static/margins-scheme-2.png)
 
-@## Widget sizes
+## Widget sizes
 
 The height of the widget in the "empty" state is usually the same as the height of the widget with data.
 
@@ -56,13 +56,13 @@ In some cases, the height of the widget with the "empty" state needs to be reduc
 
 ![](static/medium-extra-empty.png)
 
-@## Button names
+## Button names
 
 <!-- 1. If the WidgetEmpty's description starts with "Try" and only the problem area should be updated, then call the button "Try again". -->
 1. If the whole page should be refreshed, then call the button "Reload page."
 2. If the widget should be refreshed, then call the button "Reload."
 
-@## State types
+## State types
 
 The list of "empty" states in the widgets includes:
 
@@ -72,7 +72,7 @@ The list of "empty" states in the widgets includes:
 - Product isn't set up
 - Something went wrong (has a specific version: "Cannot filter data")
 
-@## No data
+## No data
 
 Use this state when there is no data or the system cannot display it for some reason. If the widget has a title, it should also be displayed in this state. In this case, display the following:
 
@@ -81,7 +81,7 @@ Use this state when there is no data or the system cannot display it for some re
 - An optional button to help users remedy the situation.
 - Optional filters to help remedy the situation.
 
-@table-caption No data message examples
+Table: No data message examples
 
 | Large widget     | Medium widget       | Text           |
 | ---------------- | ------------------- | -------------- |
@@ -102,7 +102,7 @@ This specific state is used when there are no data results in a search, table, o
 - A text message specifying that there is no data based on the user's request.
 - An optional button to help remedy the situation.
 
-@table-caption Nothing found message examples
+Table: Nothing found message examples
 
 | Large widget        | Medium widget      | Text     |
 | ------------------- | ------------------ | -------- |
@@ -112,7 +112,7 @@ If the widget has a width less than 300px, you may display only the title with s
 
 ![](static/small-nothing.png)
 
-@## Something went wrong
+## Something went wrong
 
 Use this state when something went wrong at the backend. Either the product team is unaware of the issue, or they are aware and informing the user about it.
 
@@ -124,7 +124,7 @@ Display the following:
 - A text message specifying what the user should do.
 - An additional button (recommended).
 
-@table-caption Something went wrong message examples
+Table: Something went wrong message examples
 
 | Large widget       | Medium widget               | Text    |
 | ------------------ | --------------------------- | ------- |
@@ -142,7 +142,7 @@ Display the following:
 - A text message specifying what the user should set up.
 - An additional button (recommended).
 
-@table-caption Something went wrong message examples
+Table: Something went wrong message examples
 
 | Large widget  | Medium widget         | Text       |
 | ------------- | --------------------- | ---------- |
@@ -152,7 +152,7 @@ If your widget has a width less than 300px, you may display only the title with 
 
 ![](static/small-error-2.png)
 
-@## Custom messages
+## Custom messages
 
 ### User has done something wrong
 
@@ -163,7 +163,7 @@ Display the following:
 - An illustration.
 - A text message specifying what the user should do.
 
-@table-caption Custom message examples
+Table: Custom message examples
 
 | Large widget   | Medium widget        | Text      |
 | -------------- | -------------------- | --------- |
@@ -186,7 +186,7 @@ Display the following:
 - A text message specifying what the user should set up or do to obtain the data.
 - A button.
 
-@table-caption Set up your product message examples
+Table: Set up your product message examples
 
 | Large widget           | Medium widget    | Text         |
 | ---------------------- | ---------------- | ------------ |
@@ -204,7 +204,3 @@ Add the text: "No more results" and center it both vertically and horizontally.
 
 ![](static/no-more-results.png)
 
-@page widget-empty-a11y
-@page widget-empty-api
-@page widget-empty-code
-@page widget-empty-changelog
