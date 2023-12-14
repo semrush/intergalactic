@@ -122,7 +122,7 @@ User closes the modal window by using the following options:
 - clicking outside the `Modal.Window` area.
 
 ::: tip
-When the modal window is closed by keyboard, the focus should always return to the trigger.
+When the modal window is closed, the focus should always return to the trigger.
 :::
 
 If the potential consequences of accidentally closing the window are significant, please alert the user about the potential loss of information.

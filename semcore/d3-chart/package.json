@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.21.1",
+  "version": "3.21.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -51,6 +51,7 @@
     "@semcore/divider": "*",
     "@semcore/checkbox": "*",
     "@semcore/dropdown-menu": "*",
+    "@semcore/ellipsis": "*",
     "@semcore/icon": "*",
     "@semcore/testing-utils": "1.0.0",
     "@semcore/typography": "*",
