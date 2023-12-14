@@ -5,7 +5,6 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT } from './utils';
-import ClipPath from './ClipPath';
 import Tooltip from './Tooltip';
 
 import style from './style/scatterplot.shadow.css';
@@ -123,14 +122,9 @@ class ScatterPlotRoot extends Component {
     return (
       <>
         {data.map(this.renderCircle.bind(this))}
-        <ClipPath
-          aria-hidden
-          id={uid}
-          x={xMargin}
-          y={yMargin}
-          width={`${xSize}px`}
-          height={`${ySize}px`}
-        />
+        <clipPath id={uid}>
+          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
+        </clipPath>
       </>
     );
   }

@@ -3,7 +3,7 @@ import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import ClipPath from './ClipPath';
+import AnimatedClipPath from './AnimatedClipPath';
 import { scaleToBand, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
@@ -137,12 +137,12 @@ class BarRoot extends Component {
       <>
         {data.map(this.renderBar.bind(this))}
         {duration && (
-          <ClipPath
-            aria-hidden
+          <AnimatedClipPath
+            duration={duration}
             key={`${uid}-animation`}
+            attributeName='y'
+            values='100%;0'
             id={uid}
-            x='0'
-            y={size[1]}
             width={size[0]}
             height={`${size[1]}px`}
           />
