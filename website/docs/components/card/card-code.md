@@ -18,13 +18,13 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 
 :::
 
-## Card layout for tables
+<!-- ## Card layout for tables
 
 ::: sandbox
 
 <script lang="tsx" src="examples/card_layout_for_tables.tsx"></script>
 
-::: -->
+::: --> -->
 
 ## Truncating text with ellipsis
 
