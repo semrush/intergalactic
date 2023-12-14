@@ -4,6 +4,10 @@ fileSource: d3-chart
 tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
 ---
 
+::: tip
+Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+:::
+
 ## Description
 
 **Radial Tree chart** is a radial chart for visual organization of information, one of the versions of MindMap. Such a chart in focus always has one central element (idea, phrase, keyword), which starts the search for new related ideas / topics / keywords.

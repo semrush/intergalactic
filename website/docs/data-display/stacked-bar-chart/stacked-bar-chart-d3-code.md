@@ -5,7 +5,7 @@ tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
