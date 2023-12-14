@@ -5,7 +5,7 @@ tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view

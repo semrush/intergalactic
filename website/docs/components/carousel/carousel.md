@@ -40,7 +40,7 @@ Table: Carousel default styles
 
 | Element            | Default styles                                                        |
 | ------------------ | --------------------------------------------------------------------- |
-| Navigation buttons | Use L size of [Button](/components/button/button) with `ChevronLeft`/`ChevronRight` icons with L size as well. |
+| Navigation buttons | Use L size of [Button](components/button/) with `ChevronLeft`/`ChevronRight` icons with L size as well. |
 | Indicator          | Indicator has 12px * 12px size and uses `--icon-secondary-neutral` token for color.  |
 | Carousel item (image, etc.) | Use `--surface-rounded` token for border-radius. |
 

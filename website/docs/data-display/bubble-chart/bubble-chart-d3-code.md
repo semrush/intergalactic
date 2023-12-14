@@ -5,7 +5,7 @@ tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api')
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
