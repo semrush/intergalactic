@@ -125,8 +125,7 @@ export async function copyLib(packages: string[]) {
         break;
       }
       case 'email': {
-        await copyComponent(name, 'lib');
-        // We don't need to make Type or JS files, because email has only styles
+        // We don't need to copy email for now
         break;
       }
       default: {
