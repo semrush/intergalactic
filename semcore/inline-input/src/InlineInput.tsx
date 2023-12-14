@@ -9,6 +9,15 @@ import CloseM from '@semcore/icon/Close/m';
 import Spin from '@semcore/spin';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import Input from '@semcore/input';
+import {
+  IncrementIcon,
+  DecrementIcon,
+  parseValueWithMinMax,
+  InputNumberValueProps,
+} from '@semcore/input-number';
+import { IRootComponentHandlers } from '@semcore/core';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 type OnConfirm = (
   value: string,
@@ -61,6 +70,15 @@ type ConfirmControlAsProps = ControlAsProps & {
 type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
 };
+type NumberValueAsProps = InputNumberValueProps & {
+  inputHandlerRefs?: React.RefObject<IRootComponentHandlers>;
+  increment?: (event: WheelEvent) => void;
+  decrement?: (event: WheelEvent) => void;
+};
+type NumberControlsAsProps = ControlAsProps & {
+  increment?: (event: React.SyntheticEvent) => void;
+  decrement?: (event: React.SyntheticEvent) => void;
+};
 
 const pointInsideOfRect = ({
   x,
@@ -92,6 +110,7 @@ class InlineInputBase extends Component<RootAsProps> {
 
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
+  inputHandlersRef = React.createRef<IRootComponentHandlers>();
   initValue = '';
   lastMouseDownPosition: { x: number; y: number } | null = null;
   lastHandledKeyboardEvent = -1;
@@ -154,6 +173,39 @@ class InlineInputBase extends Component<RootAsProps> {
     };
   }
 
+  increment = (event: React.SyntheticEvent | WheelEvent) => {
+    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.min || '0';
+    this.inputRef.current?.stepUp?.();
+    this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
+  };
+
+  decrement = (event: React.SyntheticEvent | WheelEvent) => {
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.max || '0';
+    this.inputRef.current?.stepDown?.();
+    this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
+  };
+  getNumberValueProps() {
+    return {
+      ref: this.inputRef,
+      inputHandlerRefs: this.inputHandlersRef,
+      increment: this.increment,
+      decrement: this.decrement,
+      onFocus: this.bindHandlerValueFocused(true),
+      onBlur: this.bindHandlerValueFocused(false),
+    };
+  }
+  getNumberControlsProps() {
+    const { getI18nText } = this.asProps;
+    return {
+      increment: this.increment,
+      decrement: this.decrement,
+      getI18nText,
+    };
+  }
+
   bindHandlerValueFocused = (focused: boolean) => () => {
     this.setState({ focused });
   };
@@ -209,7 +261,8 @@ class InlineInputBase extends Component<RootAsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children, styles, getI18nText } = this.asProps;
+    const SInvalidPattern = InvalidPattern;
+    const { Children, styles, getI18nText, state } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
@@ -221,6 +274,7 @@ class InlineInputBase extends Component<RootAsProps> {
         aria-label={getI18nText('keyboardHint')}
       >
         <SUnderline>
+          {state === 'invalid' && <SInvalidPattern />}
           <Children />
         </SUnderline>
       </SInlineInput>,
@@ -358,12 +412,126 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
   ) as React.ReactElement;
 };
 
+class NumberValue extends Component<NumberValueAsProps> {
+  static defaultProps = {
+    defaultValue: '',
+    step: 1,
+  };
+
+  inputRef = React.createRef<HTMLInputElement>();
+
+  uncontrolledProps() {
+    return {
+      value: null,
+    };
+  }
+
+  round(value: number, step: number): number {
+    const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
+    return countDecimals === 0 ? value : Number.parseFloat(value.toPrecision(countDecimals));
+  }
+
+  handleValidation = (event: React.SyntheticEvent<HTMLInputElement>) => {
+    const { value, min, max, step = 1 } = this.asProps;
+    const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
+    if (Number.isNaN(event.currentTarget.valueAsNumber)) {
+      event.currentTarget.value = '';
+      this.handlers.value('', event);
+    } else if (value !== undefined) {
+      let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
+      const rounded = this.round(numberValue % step, step);
+      if (rounded !== 0) {
+        if (rounded >= step / 2) {
+          numberValue += step - rounded;
+        } else if (Math.abs(rounded) < step) {
+          numberValue -= rounded;
+        }
+      }
+      const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
+      this.handlers.value(String(numberValueRounded), event);
+    }
+  };
+
+  // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
+  componentDidMount() {
+    this.inputRef.current?.addEventListener('wheel', this.handleWheel);
+  }
+  componentWillUnmount() {
+    this.inputRef.current?.removeEventListener('wheel', this.handleWheel);
+  }
+
+  handleWheel = (event: WheelEvent) => {
+    if (event.target !== this.inputRef.current) return;
+    if (document.activeElement !== this.inputRef.current) return;
+    event.preventDefault();
+    if (event.deltaY < 0 && this.asProps.increment) {
+      this.asProps.increment(event);
+    } else if (event.deltaY > 0 && this.asProps.decrement) {
+      this.asProps.decrement(event);
+    }
+  };
+
+  render() {
+    const SValue = Root;
+    const SValueHidden = 'div';
+    const { styles, inputHandlerRefs, value, min, max } = this.asProps;
+
+    if (inputHandlerRefs) {
+      // @ts-ignore
+      inputHandlerRefs.current = this.handlers;
+    }
+
+    return sstyled(styles)(
+      <>
+        <SValue
+          render={Input.Value}
+          type='number'
+          autoComplete='off'
+          onBlur={this.handleValidation}
+          onInvalid={this.handleValidation}
+          ref={this.inputRef}
+          aria-valuenow={value}
+          aria-valuemin={min}
+          aria-valuemax={max}
+        />
+        {/* the next hidden div is necessary for the screen reader to report the value
+        in the input, because after validation the value can change to the `min` or `max`
+        if entered less than `min` or more than `max` */}
+        <SValueHidden aria-live='polite' aria-atomic={true}>
+          {value}
+        </SValueHidden>
+      </>,
+    );
+  }
+}
+
+function NumberControls(props: NumberControlsAsProps) {
+  const { Children, increment, decrement, styles, getI18nText } = props;
+  const SControls = Root;
+  const SUp = 'button';
+  const SDown = 'button';
+
+  return sstyled(styles)(
+    <SControls render={InlineInput.Addon} aria-hidden='true'>
+      <SUp onClick={increment} tabIndex={-1} type='button' aria-label={getI18nText('increment')}>
+        <IncrementIcon />
+      </SUp>
+      <SDown onClick={decrement} tabIndex={-1} type='button' aria-label={getI18nText('decrement')}>
+        <DecrementIcon />
+      </SDown>
+      <Children />
+    </SControls>,
+  );
+}
+
 /** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */
 const InlineInput = createComponent(InlineInputBase, {
   Addon,
   Value,
   ConfirmControl,
   CancelControl,
+  NumberValue,
+  NumberControls,
 }) as any;
 
 export default InlineInput;

@@ -1,12 +1,30 @@
 ---
 title: Breadcrumbs
 fileSource: breadcrumbs
-tabName: Design
+tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
+
+const App = PlaygroundGeneration(() => {
+  return (
+    <Breadcrumbs>
+      <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
+      <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
+      <Breadcrumbs.Item active>semrush.com</Breadcrumbs.Item>
+    </Breadcrumbs>
+  );
+});
+</script>
+
+:::
+
+## Description
 
 **Breadcrumbs** is a component for displaying the "user's path" on the website. It's usually used as an additional navigation element.
 
@@ -18,15 +36,17 @@ tabName: Design
 
 Don’t use breadcrumbs on the main pages.
 
-@## Appearance
+## Appearance
 
 Links inside this component have custom styles.
 
-> The last item in the breadcrumbs is always non-clickable.
+::: tip
+The last item in the breadcrumbs is always non-clickable.
+:::
 
 ![](static/breadcrumbs.png)
 
-@table-caption Breadcrumbs styles
+Table: Breadcrumbs styles
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
@@ -39,17 +59,17 @@ Margins between the links inside the breadcrumbs is 8px.
 
 ![](static/margins.png)
 
-@## Long links truncation
+## Long links truncation
 
 If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
 
 ![](static/ellipsis.png)
 
-@## Interaction
+## Interaction
 
 ![](static/hover.png)
 
-@table-caption Breadcrumbs states
+Table: Breadcrumbs states
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
@@ -57,7 +77,7 @@ If there isn’t enough place for the breadcrumbs (screen is too small or the te
 | Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
 | Active | `color: var(--text-primary)`, `cursor: default`                                         |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 The recommended order of the navigation levels in the breadcrumbs:
 
@@ -66,7 +86,3 @@ The recommended order of the navigation levels in the breadcrumbs:
 3. The third link is the **Name of the project**.
 4. The fourth link is the **Name of the product**.
 
-@page breadcrumbs-a11y
-@page breadcrumbs-api
-@page breadcrumbs-code
-@page breadcrumbs-changelog

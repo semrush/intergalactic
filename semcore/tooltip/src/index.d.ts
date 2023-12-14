@@ -1,10 +1,15 @@
 import React from 'react';
 import { Intergalactic, UnknownProperties } from '@semcore/core';
-import Popper, { PopperContext, PopperProps, PopperTriggerProps } from '@semcore/popper';
+import Popper, {
+  PopperContext,
+  PopperProps,
+  PopperTriggerProps,
+  eventInteraction,
+} from '@semcore/popper';
 
 /** @deprecated */
 export interface ITooltipProps extends TooltipProps, UnknownProperties {}
-export type TooltipProps = PopperProps &
+export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperProps, 'interaction'> &
   PopperTriggerProps & {
     /**
      * Tooltip text
@@ -15,6 +20,17 @@ export type TooltipProps = PopperProps &
      * @default default
      */
     theme?: 'default' | 'warning' | 'invert';
+
+    /**
+     * Tooltip should have only one interaction - `hover`. You shouldn't use it with another interactions.
+     * We'll delete this prop in next major release.
+     */
+    interaction?:
+      | 'hover'
+      | 'click' /** @deprecated */
+      | 'focus' /** @deprecated */
+      | 'none' /** @deprecated */
+      | eventInteraction /** @deprecated */;
   };
 
 /** @deprecated */

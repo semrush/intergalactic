@@ -7,12 +7,14 @@ import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import logger from '@semcore/utils/lib/logger';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
-const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
+const INTERACTION_TAGS = ['INPUT', 'TEXTAREA', 'BUTTON'];
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -25,7 +27,10 @@ class DropdownMenuRoot extends Component {
     defaultHighlightedIndex: null,
     i18n: localizedMessages,
     locale: 'en',
+    interaction: 'click',
   };
+
+  popperRef = React.createRef();
 
   itemProps = [];
 
@@ -42,22 +47,42 @@ class DropdownMenuRoot extends Component {
 
   bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
+    const targetTagName = e.target.tagName;
 
-    if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
-    if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
+    if (e.key === ' ' && INTERACTION_TAGS.includes(targetTagName)) return;
+    if (e.key === 'Enter') {
+      if (targetTagName === 'TEXTAREA') return;
+      if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
+    }
+
+    const { visible } = this.asProps;
+    const element = this.popperRef.current;
+
+    if (place === 'popper' && visible && e.key === 'Tab' && hasFocusableIn(element)) {
+      this.handlers.highlightedIndex(null);
+
+      return;
+    }
+
     if (!KEYS.includes(e.key)) return;
 
     e.preventDefault();
 
+    const isVisible = this.asProps.visible;
+
     this.handlers.visible(true);
 
     switch (e.key) {
-      case 'ArrowDown':
-        this.moveHighlightedIndex(amount, e);
+      case 'ArrowDown': {
+        isVisible && this.moveHighlightedIndex(amount, e);
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && element.focus();
         break;
-      case 'ArrowUp':
-        this.moveHighlightedIndex(-amount, e);
+      }
+      case 'ArrowUp': {
+        isVisible && this.moveHighlightedIndex(-amount, e);
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && element.focus();
         break;
+      }
       case ' ':
       case 'Enter':
         if (this.highlightedItemRef.current) {
@@ -94,14 +119,18 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex } =
+      this.asProps;
 
     return {
+      ref: this.popperRef,
       tabIndex: 0,
       onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
       disablePortal,
       ignorePortalsStacking,
+      focusMaster: interaction === 'click',
+      hideFocus: highlightedIndex !== null,
     };
   }
 
@@ -189,8 +218,14 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, interaction, 'data-ui-name': dataUiName } = this.asProps;
     const props = {};
+
+    logger.warn(
+      interaction !== 'click' && interaction !== 'focus',
+      "You shouldn't use prop `interaction` except with `click` or `focus` value.",
+      dataUiName || DropdownMenuRoot.displayName,
+    );
 
     this.itemProps = [];
 

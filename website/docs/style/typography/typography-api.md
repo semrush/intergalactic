@@ -1,8 +1,9 @@
 ---
-title: API
+title: Typography
+tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
 ---
 
-@## Text
+## Text
 
 It's a main component for text in our interfaces. By default, this is a `span` tag.
 
@@ -11,9 +12,9 @@ import { Text } from '@semcore/ui/typography';
 <Text />;
 ```
 
-@typescript TextProps
+<TypesView type="TextProps" :types={...types} />
 
-@## List
+## List
 
 A list tagged with ʻul`. It's possible to set a custom marker for all items.
 
@@ -22,9 +23,9 @@ import { List } from '@semcore/ui/typography';
 <List />;
 ```
 
-@typescript ListProps
+<TypesView type="ListProps" :types={...types} />
 
-@## List.Item
+## List.Item
 
 A list item tagged with `li`. It's possible to set a custom marker.
 
@@ -33,9 +34,9 @@ import { List } from '@semcore/ui/typography';
 <List.Item />;
 ```
 
-@typescript ListItemProps
+<TypesView type="ListItemProps" :types={...types} />
 
-@## Blockquote
+## Blockquote
 
 Quotes from great people 🙊
 
@@ -44,11 +45,11 @@ import { Blockquote } from '@semcore/ui/typography';
 <Blockquote />;
 ```
 
-@typescript BlockquoteProps
+<TypesView type="BlockquoteProps" :types={...types} />
 
-@## Hint
+## Hint
 
-The hint is very similar to [Link](/components/link/) and has a similar structure from `Addon` + `Text`.
+The hint is very similar to [Link](/components/link/link) and has a similar structure from `Addon` + `Text`.
 
 ```jsx
 import { Hint } from '@semcore/ui/typography';
@@ -58,17 +59,21 @@ import { Hint } from '@semcore/ui/typography';
 </Hint>;
 ```
 
-@typescript HintProps
+<TypesView type="HintProps" :types={...types} />
 
-@## FormatText
+## FormatText
 
 A wrapper component required to add styles to native tags.
 
-> Note that the component is in another package `@semcore/ui/format-text`.
+::: tip
+Note that the component is in another package `@semcore/ui/format-text`.
+:::
 
 ```jsx
 import FormatText from '@semcore/ui/format-text';
 <FormatText />;
 ```
 
-@typescript FormatTextProps
+<TypesView type="FormatTextProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

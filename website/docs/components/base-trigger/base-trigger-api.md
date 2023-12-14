@@ -1,9 +1,10 @@
 ---
-title: API
+title: BaseTrigger
 fileSource: base-trigger
+tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api'), Example('base-trigger-code'), Changelog('base-trigger-changelog')
 ---
 
-@## BaseTrigger
+## BaseTrigger
 
 Basic trigger-button for all dropdowns.
 
@@ -11,9 +12,9 @@ Basic trigger-button for all dropdowns.
 import { BaseTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript BaseTriggerProps
+<TypesView type="BaseTriggerProps" :types={...types} />
 
-@## ButtonTrigger
+## ButtonTrigger
 
 Button-trigger with the `ChevronDownM` icon.
 
@@ -21,9 +22,9 @@ Button-trigger with the `ChevronDownM` icon.
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript ButtonTriggerProps
+<TypesView type="ButtonTriggerProps" :types={...types} />
 
-@## LinkTrigger
+## LinkTrigger
 
 This trigger looks like a link with the `ChevronDownM` icon.
 
@@ -31,9 +32,9 @@ This trigger looks like a link with the `ChevronDownM` icon.
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript LinkTriggerProps
+<TypesView type="LinkTriggerProps" :types={...types} />
 
-@## FilterTrigger
+## FilterTrigger
 
 Trigger for filters.
 
@@ -41,4 +42,6 @@ Trigger for filters.
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript FilterTriggerProps
+<TypesView type="FilterTriggerProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.12.0] - 2023-11-29
+
+### Changed
+
+- Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`. For INTERNAL usage only. Don't use it.
+
+## [2.11.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0]).
+
+## [2.10.0] - 2023-11-24
+
+### Changed
+
+- Types for `abstract class RootComponent`.
+
+## [2.9.2] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
+
+## [2.9.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2]).
+
+## [2.9.0] - 2023-11-06
+
+### Fixed
+
+- Fixed components css output of complex selectors.
+
 ## [2.8.0] - 2023-10-27
 
 ### Changed

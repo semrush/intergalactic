@@ -1,9 +1,10 @@
 ---
-title: API
+title: FilterTrigger
 fileSource: base-trigger
+tabs: Design('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---
 
-@## FilterTrigger
+## FilterTrigger
 
 Trigger for filters.
 
@@ -11,4 +12,6 @@ Trigger for filters.
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript FilterTriggerProps
+<TypesView type="FilterTriggerProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

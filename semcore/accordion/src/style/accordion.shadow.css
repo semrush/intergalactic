@@ -1,10 +1,17 @@
 SItemToggle {
+  position: relative;
   cursor: pointer;
   outline: 0;
 }
 
-SItemToggle[keyboardFocused] {
+SItemToggle[keyboardFocused]::after {
+  position: absolute;
+  display: block;
+  content: '';
+  inset: 3px;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  pointer-events: none;
+  z-index: 3;
 }
 
 SItemToggle[disabled] {
@@ -15,6 +22,7 @@ SItemToggle[disabled] {
 SItemChevron {
   transform: rotate(0deg);
   transition: transform calc(var(--intergalactic-duration-accordion, 200) * 1ms) ease-out;
+  fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
   &[selected] {
     transform: rotate(90deg);

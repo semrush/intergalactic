@@ -180,6 +180,7 @@ class Popper extends Component {
 
   createPopper() {
     if (!this.triggerRef.current || !this.popperRef.current) return;
+    if (this.asProps.__disablePopper) return;
 
     this.popper.current = createPopper(
       this.triggerRef.current,
@@ -270,7 +271,8 @@ class Popper extends Component {
   };
 
   handlerChangeVisibleWithTimer = (visible, e, cb) => {
-    const { timeout } = this.asProps;
+    const { timeout, disabled } = this.asProps;
+    if (typeof disabled === 'boolean' && disabled && visible) return;
     const handlers = this.handlers;
 
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
@@ -537,6 +539,7 @@ function PopperPopper(props) {
     animationsDisabled,
     popper,
     focusableTriggerReturnFocusToRef,
+    focusMaster = false,
   } = props;
   const ref = React.useRef(null);
 
@@ -546,8 +549,11 @@ function PopperPopper(props) {
   useFocusLock(
     ref,
     autoFocus,
-    interaction === 'focus' ? focusableTriggerReturnFocusToRef : triggerRef,
+    interaction === 'focus' || interaction === 'hover'
+      ? focusableTriggerReturnFocusToRef
+      : triggerRef,
     !visible || disableEnforceFocus,
+    focusMaster,
   );
 
   useContextTheme(ref, visible);

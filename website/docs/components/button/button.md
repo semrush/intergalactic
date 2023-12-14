@@ -1,18 +1,145 @@
 ---
 title: Button
 fileSource: button
-tabName: Design
+tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
 
-**Button** is a control component that performs an action on the page. Compared to [Link](/components/link/), it's an accent control or call-to-action for performing actions on the page.
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-> In some cases, you can use the button as a [Link](/components/link/) that leads to another page.
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
 
-@## Component composition
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+
+const SIZES = ['m', 'l'];
+const USE = ['primary', 'secondary', 'tertiary'];
+const THEME = {
+  primary: ['info', 'success', 'warning', 'danger', 'invert'],
+  secondary: ['info', 'muted', 'invert'],
+  tertiary: ['info', 'muted', 'invert'],
+};
+
+const Preview = (preview) => {
+  const { bool, select, radio, text } = preview('Button');
+
+  const size = radio({
+    key: 'size',
+    defaultValue: 'm',
+    label: 'Size',
+    options: SIZES,
+  });
+
+  const use = select({
+    key: 'use',
+    defaultValue: 'secondary',
+    label: 'Use',
+    options: USE.map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const theme = select({
+    key: 'theme',
+    placeholder: 'Select theme',
+    // defaultValue: THEME["secondary"][1],
+    label: 'Theme',
+    options: THEME[use].map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const active = bool({
+    key: 'active',
+    defaultValue: false,
+    label: 'Active',
+  });
+
+  const disabled = bool({
+    key: 'disabled',
+    defaultValue: false,
+    label: 'Disabled',
+  });
+
+  const loading = bool({
+    key: 'loading',
+    defaultValue: false,
+    label: 'Loading',
+  });
+
+  const beforeIcon = bool({
+    key: 'before',
+    defaultValue: false,
+    label: 'AddonLeft',
+  });
+
+  const afterIcon = bool({
+    key: 'after',
+    defaultValue: false,
+    label: 'AddonRight',
+  });
+
+  const child = text({
+    key: 'children',
+    defaultValue: 'Default text',
+    label: 'Text',
+  });
+  const beforeIconMap = {
+    l: <CheckM />,
+    m: <CheckM />,
+  };
+  const afterIconMap = {
+    l: <ArrowRightM />,
+    m: <ArrowRightM />,
+  };
+
+  const renderIcon = (position, size) => {
+    switch (position) {
+      case 'before':
+        return beforeIconMap[size];
+      case 'after':
+        return afterIconMap[size];
+      default:
+        return false;
+    }
+  };
+
+  return (
+    <Button
+      use={use}
+      theme={theme}
+      size={size}
+      loading={loading}
+      disabled={disabled || loading}
+      active={active}
+    >
+      {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', size)}</Button.Addon>}
+      {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
+      {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', size)}</Button.Addon>}
+    </Button>
+  );
+};
+
+const App = PlaygroundGeneration(Preview);
+</script>
+
+:::
+
+## Description
+
+**Button** is a control component that performs an action on the page. Compared to [Link](/components/link/link), it's an accent control or call-to-action for performing actions on the page.
+
+::: tip
+In some cases, you can use the button as a [Link](/components/link/link) that leads to another page.
+:::
+
+## Component composition
 
 ![](static/button-composition.png)
 
@@ -23,27 +150,27 @@ Component consists of the following:
 
 `Button.Text` has margins on the right and left sides. You can add addons before and after the text. As addons you can use:
 
-- [Icon](/style/icon/),
-- [Counter](/components/counter/),
-- [Badge](/components/badge/),
-- [Flag](/components/flags/).
+- [Icon](/style/icon/icon),
+- [Counter](/components/counter/counter),
+- [Badge](/components/badge/badge),
+- [Flag](/components/flags/flags).
 
 Addon before the text has `margin-left`, while the trailing addon has `margin-right`.
 
-@## Sizes and margins
+## Sizes and margins
 
-@table-caption Button sizes and margins
+Table: Button sizes and margins
 
 | Button size (height in px)  | Icon size | Margins             | Description     |
 | --------------------------- | --------- | ------------------- | --------------- |
 | **M (28px)** | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 | **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 
-@## Button types and themes
+## Button types and themes
 
 ### Types
 
-Intergalactic design system has three button types (`use` property in API):
+Intergalactic Design System has three button types (`use` property in API):
 
 - `primary`: Main accent button for filters and basic actions on the page.
 - `secondary`: Default non-accent button for secondary/repetitive actions on the page.
@@ -51,7 +178,7 @@ Intergalactic design system has three button types (`use` property in API):
 
 All button types can be used on a white and gray background, as well as on a transparent colored background.
 
-@table-caption Button types
+Table: Button types
 
 | Button type | Appearance example               |
 | ----------- | -------------------------------- |
@@ -61,11 +188,11 @@ All button types can be used on a white and gray background, as well as on a tra
 
 ### Themes
 
-You can use themes for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale) guide.
+You can use themes for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
 
-Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
+Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
-@table-caption Button themes
+Table: Button themes
 
 | Button type | `muted`    | `info`               | `success`            | `danger`        | `invert`|
 | ----------- | ---------- | -------------------- | -------------------- | --------------- | ------- |
@@ -73,9 +200,9 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 | `secondary` | ![](static/secondary-muted.png)  | _deprecated_ | _no theme_ | _no theme_ | ![](static/invert-second-normal.png) |
 | `tertiary`  | ![](static/tertiary-muted.png) | ![](static/tertiary-info.png)  | _no theme_ | _no theme_ | ![](static/invert-tertiary-normal.png) |
 
-@## Button states
+## Button states
 
-@table-caption States for all buttons types and themes
+Table: States for all buttons types and themes
 
 | Button type | Normal    | Hover       | Active        | Loading        | Disabled     |
 | ----------- | --------- | ----------- | ------------- | -------------- | ------------ |
@@ -83,7 +210,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 | `secondary`   | ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
 | `tertiary`    | ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
 
-@## Button width
+## Button width
 
 The button width is determined by its content. But it can also be stretched to a certain width. For example:
 
@@ -103,24 +230,24 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 ![](static/button-width3.png)
 
-@## Margins between buttons
+## Margins between buttons
 
-**The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+**The margin between buttons shall be [multiple of 4](/layout/box-system/box-system#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-@table-caption Margins between buttons
+Table: Margins between buttons
 
 | L (40px)                 | M (28px)                 |
 | ------------------------ | ------------------------ |
 | ![](static/margin-1.png) | ![](static/margin-2.png) |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - Try to have one call-to-action button on the page in the modal window. _For example, one green button._
 - We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
-- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
+- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
 
-@## Button variations
+## Button variations
 
 ### Text button
 
@@ -142,9 +269,11 @@ We recommend using the icon-only button if:
 - interface hasn’t enough space;
 - user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
-> **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
+::: tip
+**Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
+:::
 
-@## Button label
+## Button label
 
 Button label always starts with a capital letter.
 
@@ -158,7 +287,7 @@ The label of the button should clearly indicate what happens after user clicks i
 
 ![](static/define-action.png)
 
-@## Branded buttons
+## Branded buttons
 
 In case when you need to show that button connects or links to some other service, use a branded color for the background or the corresponding color icon of the service.
 
@@ -177,11 +306,7 @@ It may also be helpful checking the following branding guidelines:
 - Youtube – [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
 - Pinterest – [How to use the Pinterest brand in your marketing](https://business.pinterest.com/en-us/brand-guidelines/)
 
-@## Grouped buttons
+## Grouped buttons
 
-To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
+To combine the components such as Button, [Input](/components/input/input), and [Select](/components/select/select), use the [`neighborLocation`](/components/button/button-api) property.
 
-@page button-a11y
-@page button-api
-@page button-code
-@page button-changelog

@@ -1,15 +1,24 @@
 ---
-title: Example
+title: Breadcrumbs
+tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-@## Usage example
+## Usage example
 
 Try shrinking the page and see how the navigation shrinks. You can also wrap `<Breadcrumbs.Item />` to other components.
 
-@example basic
+::: sandbox
 
-@## Redefining a tag
+<script lang="tsx" src="examples/usage_example.tsx"></script>
+
+:::
+
+## Redefining a tag
 
 You can redefine the `<Breadcrumbs tag.Item />`. This is necessary, for example, to use `Link` from `react-router`.
 
-@example tag
+::: sandbox
+
+<script lang="tsx" src="examples/redefining_a_tag.tsx"></script>
+
+:::

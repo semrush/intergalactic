@@ -189,7 +189,7 @@ describe('InputNumber', () => {
     await expect(
       await snapshot(component, {
         actions: {
-          hover: '#controls > button',
+          hover: 'css=#controls > button',
         },
       }),
     ).toMatchImageSnapshot(task);

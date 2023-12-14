@@ -3,6 +3,10 @@
   max-width: 400px;
 }
 
+.searchInputIcon path {
+  fill: var(--intergalactic-icon-secondary-neutral);
+}
+
 .tokenNameWrapper {
   max-width: 100%;
 }

@@ -1,11 +1,22 @@
 ---
-title: API
+title: Horizontal bar chart
 fileSource: d3-chart
+tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-@## D3 API
+## D3 API
 
-@## HorizontalBar
+## Chart.Bar
+
+For Horizontal view, you should pass `true` into `invertAxis` prop
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="BarChartProps" :types={...types} />
+
+## HorizontalBar
 
 Horizontal chart Bar.
 
@@ -13,9 +24,9 @@ Horizontal chart Bar.
 import { HorizontalBar } from '@semcore/ui/d3-chart';
 ```
 
-@typescript HorizontalBarProps
+<TypesView type="HorizontalBarProps" :types={...types} />
 
-@## GroupBar
+## GroupBar
 
 It have children components `Bar, HorizontalBar`.
 
@@ -28,4 +39,6 @@ import { GroupBar } from '@semcore/ui/d3-chart';
 </GroupBar>;
 ```
 
-@typescript GroupBarProps
+<TypesView type="GroupBarProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

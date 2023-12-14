@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.12.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.12.0 ~> 5.13.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [2.11.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.11.0 ~> 5.12.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
+## [2.10.2] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.10.1 ~> 5.10.2], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
+## [2.10.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.10.0 ~> 5.10.1], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [2.10.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.9.0 ~> 5.10.0], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [2.9.0] - 2023-10-27
 
 ### Changed

@@ -86,21 +86,21 @@ SColumn[groupHead] {
 SColumn[sortable] {
   cursor: pointer;
 
-  &[use='primary']:hover {
+  &[use='primary']:hover, &[use='primary']:focus {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
 
-  &:hover SSortWrapper {
+  &:hover SSortWrapper, &:focus SSortWrapper {
     flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
     opacity: 1;
   }
 
-  &:hover SSortWrapper:before {
+  &:hover SSortWrapper:before, &:focus SSortWrapper:before {
     display: block;
     opacity: 1;
   }
 
-  &:hover SSortIcon {
+  &:hover SSortIcon, &:focus SSortIcon {
     display: block;
     opacity: 1;
   }
@@ -165,7 +165,6 @@ SSortWrapper {
   height: 100%;
   min-height: 16px;
   opacity: 0;
-  transition: all 0.3s ease;
 }
 
 SSortWrapper:before {
@@ -182,7 +181,7 @@ SSortWrapper:before {
 
 SSortIcon {
   display: none;
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   position: absolute;
   top: calc(1em * 1.25 - 16px);
   right: 0;

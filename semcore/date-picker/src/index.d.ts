@@ -1,6 +1,6 @@
 import React, { ChangeEvent, ComponentProps } from 'react';
 import dayjs from 'dayjs';
-import { Box, BoxProps } from '@semcore/flex-box';
+import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
 import Button, { ButtonProps } from '@semcore/button';
 import Dropdown, { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
@@ -8,6 +8,7 @@ import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import { InputMaskValueProps } from '@semcore/input-mask';
+import Checkbox from '@semcore/checkbox';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -263,7 +264,7 @@ export type DatePickerHandlers = {
 
 /** @deprecated */
 export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
-type BaseInputTriggerProps = InputProps & {
+export type BaseInputTriggerProps = InputProps & {
   /**
    * Date input placeholder characters
    * @default { year: 'Y'; month: 'M'; day: 'D' }
@@ -467,4 +468,137 @@ declare const MonthRangePicker: Intergalactic.Component<
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker };
+export type DateRangeComparatorProps = DropdownProps &
+  WithI18nEnhanceProps & {
+    /**
+     * Selected date ranges
+     * */
+    value?: { value?: DateConstructorParams[]; compare?: DateConstructorParams[] };
+    /**
+     * Default value for selected date ranges
+     * */
+    defaultValue?: { value?: DateConstructorParams[]; compare?: DateConstructorParams[] };
+    /**
+     * Default value date for showing the necessary month
+     * */
+    defaultDisplayedPeriod?: DateConstructorParams;
+    /**
+     * Default value selected date, accepts everything which is accepted by `new Date()`
+     * */
+    defaultHighlighted?: DateConstructorParams[];
+    /**
+     * Called with selected date when user clicks `Apply` button.
+     * */
+    onChange?: (ranges: {
+      value?: DateConstructorParams[];
+      compare?: DateConstructorParams[];
+    }) => void;
+    /**
+     * Array of dates blocked for selection
+     * */
+    disabled?: (Date | (Date | false)[] | string)[];
+    /**
+     * Date for showing the necessary month
+     * @default new Date()
+     * */
+    displayedPeriod?: DateConstructorParams;
+    /**
+     * To be activated upon changing the current shown month
+     * */
+    onDisplayedPeriodChange?: (date: Date) => void;
+    /**
+     * Component size
+     * @default m
+     */
+    size?: 'm' | 'l' | 'xl';
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    highlighted?: DateConstructorParams[];
+    /**
+     * To be activated upon selecting the date
+     * */
+    onHighlightedChange?: (date: Date[]) => void;
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    compareHighlighted?: DateConstructorParams[];
+    /**
+     * To be activated upon selecting the date
+     * */
+    onCompareHighlightedChange?: (date: Date[]) => void;
+    /**
+     * Remove the 'Reset' button
+     * */
+    unclearable?: boolean;
+    /**
+     * Array of periods
+     * [{value: [new Date(), new Date()], children: "Today"}]
+     * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
+     * */
+    periods?: (ButtonProps & { value: Date[] })[];
+  };
+
+export type DateRangeComparatorContext = {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
+  getHeaderProps: PropGetterFn;
+  getTitleProps: PropGetterFn;
+  getNextProps: PropGetterFn;
+  getPrevProps: PropGetterFn;
+  getCalendarProps: PropGetterFn;
+  getPeriodProps: PropGetterFn;
+};
+
+export type DateRangeComparatorTriggerProps = DropdownTriggerProps &
+  BaseTriggerProps & {
+    /**
+     * Text between the selected date range and the compared date range when both are selected.
+     * @default 'vs.'
+     */
+    separator?: string;
+    /**
+     * Trigger text when no ranges are selected.
+     */
+    placeholder?: string;
+  };
+
+declare const DateRangeComparator: Intergalactic.Component<
+  'div',
+  DateRangeComparatorProps,
+  DateRangeComparatorContext & CalendarDaysContext
+> & {
+  Popper: typeof Dropdown.Popper;
+  Header: typeof Flex;
+  Prev: typeof Button;
+  Next: typeof Button;
+  Calendar: typeof Calendar;
+  Apply: typeof Button;
+  Reset: typeof Button;
+
+  CalendarHeader: typeof Box;
+  Title: typeof Box;
+
+  Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
+    Addon: typeof BaseTrigger.Addon;
+    Text: typeof BaseTrigger.Text;
+  };
+  ValueDateRange: Intergalactic.Component<'div', InputTriggerProps>;
+  CompareToggle: typeof Checkbox;
+  CompareDateRange: Intergalactic.Component<'div', InputTriggerProps>;
+  Body: typeof Flex;
+  RangeCalendar: typeof Flex;
+  Periods: typeof Flex;
+  Footer: typeof Flex;
+};
+
+declare const MonthDateRangeComparator: typeof DateRangeComparator;
+
+export {
+  DatePicker,
+  DateRangePicker,
+  MonthPicker,
+  MonthRangePicker,
+  DateRangeComparator,
+  MonthDateRangeComparator,
+};

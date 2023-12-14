@@ -80,11 +80,12 @@ class ModalRoot extends Component {
   }
 
   getCloseProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, ghost } = this.asProps;
 
     return {
       onClick: this.handleIconCloseClick,
       getI18nText,
+      ghost,
     };
   }
 
@@ -99,14 +100,14 @@ class ModalRoot extends Component {
   }
 
   render() {
-    const { Children, disablePortal, forcedAdvancedMode } = this.asProps;
+    const { Children, disablePortal, forcedAdvancedMode, ignorePortalsStacking } = this.asProps;
 
     const advancedMode =
       forcedAdvancedMode ||
       isAdvanceMode(Children, [Modal.Overlay.displayName, Modal.Window.displayName]);
 
     return (
-      <Portal disablePortal={disablePortal}>
+      <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
         {advancedMode ? (
           <Children />
         ) : (

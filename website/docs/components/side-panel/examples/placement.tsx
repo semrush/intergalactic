@@ -6,7 +6,7 @@ import SidePanel, { SidePanelPlacement } from '@semcore/ui/side-panel';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [placement, setPlacement] = React.useState(placements[1]);
 
@@ -31,7 +31,7 @@ export default () => {
         mt={placement === 'bottom' ? 0 : 20}
       >
         <Text size={300} tag='p'>
-          Waba-laba-dub-dub! 😏
+          Waba-laba-dub-dub!
         </Text>
         <Button mt={3}>I'm just a button</Button>
       </SidePanel>
@@ -42,3 +42,5 @@ export default () => {
 function arrToOptions(arr) {
   return arr.map((i) => ({ value: i, label: i, children: i }));
 }
+
+export default Demo;

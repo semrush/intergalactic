@@ -2,27 +2,35 @@
 title: For developers
 ---
 
-@## Introduction
+## Introduction
 
-Let's explore the design system used at [Semrush](https://semrush.com), which you can also integrate into your own projects. The design system has more than 70 [React](https://reactjs.org) components, each of them accompanied by design guides, Figma components, usage examples and API descriptions. Additionally, we offer an extensive [icons library](/style/icon/) and [charts library](/data-display/d3-chart/d3-chart-code/).
+Let's explore the design system used at [Semrush](https://semrush.com), which you can also integrate into your own projects. The design system has more than 70 [React](https://reactjs.org) components, each of them accompanied by design guides, Figma components, usage examples and API descriptions. Additionally, we offer an extensive [icons library](/style/icon/icon) and [charts library](/data-display/d3-chart/d3-chart-code).
 
-@## Installation
+## Installation
 
 All components are bundled together in a single package, making the installation process straightforward. For example:
 
-```bash
-npm i @semcore/ui
+::: code-group
+
+```sh [pnpm]
+pnpm add @semcore/ui
 ```
 
-After the installation, you can access each component at `@semcore/ui/{{ component name }}`.
+```sh [npm]
+npm install @semcore/ui
+```
 
-@## Key features
+:::
+
+After the installation, you can access each component at `@semcore/ui/{component_name}`.
+
+## Key features
 
 We have developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
 
 ### Free template
 
-Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/) component:
+Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/button) component:
 
 ```jsx
 import Button from '@semcore/ui/button';
@@ -44,19 +52,21 @@ This approach provides multiple benefits:
 
 ### Theme
 
-You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/#themes/), enabling complete design customization and the extension of components with new properties.
+You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/design-tokens) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/design-tokens#themes/), enabling complete design customization and the extension of components with new properties.
 
 ### Controlled & uncontrolled
 
 Our components are designed to be controlled externally, meaning they do not have an internal state. This grants you complete control over the state and its changes. Each property that can be modified comes with a corresponding handler. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
 
-> This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
->
-> The handlers for these types of properties follow a specific notation: `on{{ eventName }}Change`.
+::: tip
+This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
 
-If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + {{ Property name }}` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+The handlers for these types of properties follow a specific notation: `on{ eventName }Change`.
+:::
 
-@### Handlers
+If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+
+### Handlers
 
 Consistency is crucial for a library as it ensures predictability. In our library, all event handlers follow the same format:
 
@@ -98,7 +108,7 @@ All our components return a DOM node in the `ref` property. This decision was ma
 
 ### Base component
 
-Underlying all our components is ["Box"](/layout/box-system/), which serves as a foundational building block. By importing Box from @semcore/ui/flex-box, you can leverage its capabilities, including:
+Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block. By importing Box from @semcore/ui/flex-box, you can leverage its capabilities, including:
 
 ```jsx
 import { Box } from '@semcore/ui/flex-box';
@@ -125,7 +135,9 @@ import { Box } from '@semcore/ui/flex-box';
 <Box tag={Component} />
 ```
 
-> **Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles, and the order of the styles may affect the display.
+::: tip
+**Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles, and the order of the styles may affect the display.
+:::
 
 `Box` serves as the foundation for other components, making its features available throughout the entire library. For example:
 
@@ -137,7 +149,7 @@ import Button from '@semcore/ui/button';
 </Button>;
 ```
 
-Additionally, consider exploring the ["Flex"](/layout/box-system/) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
+Additionally, consider exploring the ["Flex"](/layout/box-system/box-system) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
 
 
 ```jsx
@@ -146,11 +158,11 @@ import { Flex } from '@semcore/ui/flex-box';
 <Flex justifyContent="center" alignItems="center" />;
 ```
 
-@## Browser support
+## Browser support
 
 To ensure the best performance and user experience, we do not support legacy browsers. Our design system is optimized for the following browser versions:
 
-@table-caption Browser support
+Table: Browser support
 
 | Chrome | Firefox | Safari(macOS) | Safari(iOS) | Edge  |
 | ------ | ------- | ------------- | ----------- | ----- |

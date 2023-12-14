@@ -2,6 +2,70 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.1] - 2023-12-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.13.0 ~> 4.13.1]).
+
+## [4.15.0] - 2023-12-05
+
+### Changed
+
+- Deprecated some values of `interaction` property.
+
+### Removed
+
+- unnecessary style for focused `Popper`.
+
+## [4.14.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/dropdown` [4.11.0 ~> 4.12.0], `@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
+## [4.13.0] - 2023-11-23
+
+### Added
+
+- Support for both non-focusable and focusable items in DropdownMenu.
+
+## [4.12.6] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.10.2 ~> 4.10.3], `@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
+## [4.12.5] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.10.1 ~> 4.10.2]).
+
+## [4.12.4] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/scroll-area` [5.12.1 ~> 5.12.2]).
+
+## [4.12.3] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.10.0 ~> 4.10.1], `@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [4.12.2] - 2023-11-07
+
+### Changed
+
+- Deprecated `notInteractive` prop.
+
+## [4.12.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/dropdown` [4.9.0 ~> 4.10.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [4.11.0] - 2023-10-27
 
 ### Changed
@@ -249,7 +313,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added visual cue to the `selected` DropdownMenu.Item.
+- Added visual cue to the `selected` DropdownMenu. Item.
 
 ## [3.6.36] - 2023-05-22
 

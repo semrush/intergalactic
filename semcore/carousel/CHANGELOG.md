@@ -2,6 +2,72 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.22.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/button` [5.13.0 ~> 5.14.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [3.21.0] - 2023-12-05
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/modal` [4.20.0 ~> 4.21.0]).
+
+## [3.20.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/button` [5.12.0 ~> 5.13.0], `@semcore/breakpoints` [1.13.0 ~> 1.14.0]).
+
+## [3.19.0] - 2023-11-30
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/breakpoints` [1.12.3 ~> 1.13.0]).
+
+## [3.18.1] - 2023-11-28
+
+### Added
+
+- Reexport for types.
+
+## [3.18.0] - 2023-11-21
+
+### Changed
+
+- Some styles in controls were changed.
+
+## [3.17.1] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
+
+## [3.17.0] - 2023-11-13
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.15.0 ~> 4.16.0]).
+
+## [3.16.0] - 2023-11-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.14.1 ~> 4.15.0]).
+
+## [3.15.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2]).
+
+## [3.15.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.13.0 ~> 4.14.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [3.14.0] - 2023-10-27
 
 ### Changed

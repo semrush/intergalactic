@@ -2,6 +2,55 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.12.1] - 2023-12-07
+
+### Fixed
+
+- Incorrect behavior in Tooltip when it has a focusable elements inside themself and don't close from the first `esc` keypress.
+
+## [6.12.0] - 2023-11-29
+
+### Changed
+
+- Deprecated `interaction` property.
+
+## [6.11.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/flex-box` [5.11.0 ~> 5.12.0], `@semcore/popper` [5.10.0 ~> 5.11.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
+## [6.10.4] - 2023-11-24
+
+### Fixed
+
+- `aria-describedby` instead of `aria-labelledby`.
+- Working that `aria` property in uncontrolled mode.
+
+## [6.10.3] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/flex-box` [5.10.1 ~> 5.10.2], `@semcore/popper` [5.9.2 ~> 5.9.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
+## [6.10.2] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.9.1 ~> 5.9.2]).
+
+## [6.10.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/flex-box` [5.10.0 ~> 5.10.1], `@semcore/popper` [5.9.0 ~> 5.9.1], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [6.10.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/flex-box` [5.9.0 ~> 5.10.0], `@semcore/popper` [5.8.0 ~> 5.9.0], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [6.9.0] - 2023-10-26
 
 ### Added

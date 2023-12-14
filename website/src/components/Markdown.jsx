@@ -20,7 +20,6 @@ const tokenHandlers = {
   heading: ({ html, level, id, route }) => {
     return (
       <HeadingLink level={level} id={id} route={route} title={html}>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: */}
         <span dangerouslySetInnerHTML={{ __html: html }} />
       </HeadingLink>
     );

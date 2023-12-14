@@ -48,13 +48,14 @@ SValue {
   &:disabled {
     user-select: none;
     opacity: var(--intergalactic-disabled-opacity, 0.3);
-
-    & ~ SOutline {
-      opacity: var(--intergalactic-disabled-opacity, 0.3);
-      cursor: default;
-      pointer-events: none;
-    }
   }
+}
+
+SInput[disabled] SOutline, SValue:disabled ~ SOutline {
+
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  pointer-events: none;
 }
 
 SOutline {
@@ -83,7 +84,7 @@ SAddon[interactive] {
   cursor: pointer;
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   }
 }
 

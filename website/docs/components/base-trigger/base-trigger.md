@@ -1,25 +1,25 @@
 ---
 title: BaseTrigger
 fileSource: base-trigger
-tabName: Design
+tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api'), Example('base-trigger-code'), Changelog('base-trigger-changelog')
 ---
 
-@## Description
+## Description
 
 **BaseTrigger** is a foundational component for creating triggers with button-like behavior, resembling buttons, links, or filters.
 
-@## Sizes, margins and paddings
+## Sizes, margins and paddings
 
-@table-caption BaseTrigger sizes, margins and paddings
+Table: BaseTrigger sizes, margins and paddings
 
 | Size (height in px) | Appearance example                                       | Margins |
 | ------------------- | -------------------------------------------------------- | ------- |
 | M (28px)            | ![](static/base-trigger-m.png) ![](static/margins-m.png) | The button has `padding: 0 var(--intergalactic-spacing-2x)`, leading addon has `margin-right: var(--intergalactic-spacing-2x)`, trailing addon has `margin-left: var(--intergalactic-spacing-2x)`. |
 | L (40px)            | ![](static/base-trigger-l.png) ![](static/margins-l.png) | The button has `padding: 0 var(--intergalactic-spacing-3x)`, leading addon has `margin-right: var(--intergalactic-spacing-2x)`, trailing addon has `margin-left: var(--intergalactic-spacing-2x)`. |
 
-@## Interaction
+## Interaction
 
-@table-caption BaseTrigger states
+Table: BaseTrigger states
 
 | State     | Appearance example                    | Styles |
 | --------- | ------------------------------------- | ------ |
@@ -30,7 +30,7 @@ tabName: Design
 | Valid     | ![](static/base-trigger-valid.png)    | The border changes color to `--border-success-active`. |
 | Disabled  | ![](static/base-trigger-disabled.png) | The component changes opacity to `--disabled-opacity`. |
 
-@## BaseTrigger types
+## BaseTrigger types
 
 BaseTrigger has the following types for using in the different scenarios:
 
@@ -42,7 +42,7 @@ BaseTrigger has the following types for using in the different scenarios:
 
 ButtonTrigger has the same sizes as BaseTrigger has.
 
-@table-caption ButtonTrigger sizes
+Table: ButtonTrigger sizes
 
 | Size (height in px) | Appearance example                      |
 | ------------------- | --------------------------------------- |
@@ -51,7 +51,7 @@ ButtonTrigger has the same sizes as BaseTrigger has.
 
 #### ButtonTrigger states
 
-@table-caption ButtonTrigger states
+Table: ButtonTrigger states
 
 | State  | Appearance example |
 | ------ | ------------------ |
@@ -63,15 +63,15 @@ ButtonTrigger has the same sizes as BaseTrigger has.
 
 ### FilterTrigger
 
-This type has separate detailed [FilterTrigger guide](/components/filter-trigger) since it operates as an active state of a filter.
+This type has separate detailed [FilterTrigger guide](/components/filter-trigger/filter-trigger) since it operates as an active state of a filter.
 
 ![](static/filter-trigger.png) ![](static/advanced-filter-trigger.png)
 
 ### LinkTrigger
 
-LinkTrigger has the styles of [Link](/components/link).
+LinkTrigger has the styles of [Link](/components/link/link).
 
-@table-caption LinkTrigger sizes
+Table: LinkTrigger sizes
 
 | Size (height in px) | Appearance example                    |
 | ------------------- | ------------------------------------- |
@@ -80,7 +80,7 @@ LinkTrigger has the styles of [Link](/components/link).
 
 #### LinkTrigger states
 
-@table-caption LinkTrigger states
+Table: LinkTrigger states
 
 | State  | Appearance example |
 | ------ | ------------------ |
@@ -89,7 +89,3 @@ LinkTrigger has the styles of [Link](/components/link).
 | Active | ![](static/link-trigger-active-m.png) ![](static/link-trigger-active-l.png) |
 | Disabled | ![](static/link-trigger-disabled-m.png) ![](static/link-trigger-disabled-l.png) |
 
-@page base-trigger-a11y
-@page base-trigger-api
-@page base-trigger-code
-@page base-trigger-changelog

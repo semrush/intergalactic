@@ -13,6 +13,12 @@ SWindow {
   }
 }
 
+SWindow[ghost] {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
 SOverlay {
   position: fixed;
   top: 0;
@@ -48,7 +54,16 @@ SClose {
   outline: none;
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
+  }
+}
+
+SClose[ghost] {
+  color: var(--intergalactic-icon-primary-invert, #ffffff);
+  border-radius: 4px;
+
+  &:hover {
+    background-color: var(--intergalactic-control-tertiary-invert-active, rgba(255, 255, 255, 0.3));
   }
 }
 

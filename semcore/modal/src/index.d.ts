@@ -32,6 +32,11 @@ export type ModalProps = PortalProps &
     disablePreventScroll?: boolean;
 
     locale?: string;
+
+    /**
+     * Props for render modal without background and paddings. Useful in carousel for example
+     */
+    ghost?: boolean;
   };
 
 /** @deprecated */

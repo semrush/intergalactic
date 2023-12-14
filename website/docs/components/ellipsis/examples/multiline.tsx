@@ -3,7 +3,7 @@ import Ellipsis from '@semcore/ui/ellipsis';
 import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 
-export default function () {
+const Demo = () => {
   return (
     <Card w={220}>
       <Card.Header>
@@ -19,8 +19,10 @@ export default function () {
         </Card.Description>
       </Card.Header>
       <Card.Body>
-        <Text size={100}>Your awesome card content ✨</Text>
+        <Text size={100}>Your awesome card content</Text>
       </Card.Body>
     </Card>
   );
-}
+};
+
+export default Demo;

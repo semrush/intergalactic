@@ -79,3 +79,16 @@ export * from './component/ChartLegend/LegendFlex/LegendFlex.type';
 export * from './component/ChartLegend/LegendTable/LegendTable.type';
 // @ts-ignore
 export * from './component/ChartLegend/LegendItem/LegendItem.type';
+
+export { default as Chart } from './component/Chart';
+export * from './component/Chart/AbstractChart.type';
+export * from './component/Chart/LineChart.type';
+export * from './component/Chart/BarChart.type';
+export * from './component/Chart/HistogramChart.type';
+export * from './component/Chart/ScatterPlotChart.type';
+export * from './component/Chart/AreaChart.type';
+export * from './component/Chart/BubbleChart.type';
+export * from './component/Chart/DonutChart.type';
+export * from './component/Chart/VennChart.type';
+export * from './component/Chart/RadarChart.type';
+export * from './component/Chart/ScatterPlotChart.type';

@@ -25,15 +25,21 @@ class TooltipRoot extends Component {
       flipVariations: true,
       flipVariationsByContent: true,
     },
+    defaultVisible: false,
   };
   state = { popperChildren: null };
+
+  uncontrolledProps() {
+    return {
+      visible: null,
+    };
+  }
 
   getTriggerProps() {
     const { uid, visible, interaction } = this.asProps;
 
     return {
-      active: false,
-      'aria-labelledby': visible ? `igc-${uid}-popper` : undefined,
+      'aria-describedby': visible ? `igc-${uid}-popper` : undefined,
       'aria-haspopup': interaction !== 'hover' ? 'true' : 'false',
     };
   }
@@ -64,6 +70,12 @@ class TooltipRoot extends Component {
       other['data-ui-name'] || Tooltip.displayName,
     );
 
+    logger.warn(
+      other.interaction !== 'hover',
+      "You shouldn't use prop `interaction` except with `hover` value.",
+      other['data-ui-name'] || Tooltip.displayName,
+    );
+
     return (
       <Root render={Popper}>
         {advancedMode ? (
@@ -86,7 +98,7 @@ function TooltipTrigger(props) {
   const STrigger = Root;
 
   return sstyled(styles)(
-    <STrigger render={Popper.Trigger} active={false} role={undefined}>
+    <STrigger render={Popper.Trigger} role={undefined}>
       <Children />
     </STrigger>,
   );

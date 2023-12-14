@@ -1,9 +1,10 @@
 ---
-title: API
+title: FeaturePopover
 fileSource: feature-popover
+tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popover-api'), Example('feature-popover-code'), Changelog('feature-popover-changelog')
 ---
 
-@## FeaturePopover
+## FeaturePopover
 
 This is a wrap component, which is completely inherited from `<Popper/>`.
 
@@ -12,9 +13,9 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
-@typescript PopperProps
+<TypesView type="PopperProps" :types={...types} />
 
-@## FeaturePopover.Trigger
+## FeaturePopover.Trigger
 
 This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>`.
 
@@ -23,9 +24,9 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
-@typescript PopperTriggerProps
+<TypesView type="PopperTriggerProps" :types={...types} />
 
-@## FeaturePopover.Popper
+## FeaturePopover.Popper
 
 This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It is fully inherited from `<Popper.Popper/>`.
 
@@ -34,9 +35,9 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
-@typescript FeaturePopoverPopperProps
+<TypesView type="FeaturePopoverPopperProps" :types={...types} />
 
-@## FeaturePopover.Spot
+## FeaturePopover.Spot
 
 This blinking circle is inherited from `<Box>`.
 
@@ -44,3 +45,5 @@ This blinking circle is inherited from `<Box>`.
 import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Spot />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

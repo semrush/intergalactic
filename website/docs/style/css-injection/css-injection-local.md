@@ -1,8 +1,11 @@
 ---
-title: Local CSS Injection
+title: CSS Injection
+tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
-> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/#themes).
+::: warning
+:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
+:::
 
 If you need to change the style of a component in one specific case, then you should use local customization of styles.
 
@@ -57,7 +60,9 @@ const styles = sstyled.css`
 import styles from './custom.shadow.css';
 ```
 
-> ⚠️ The extension `.shadow.css` is required.
+::: warning
+:warning: The extension `.shadow.css` is required.
+:::
 
 ### Step four
 

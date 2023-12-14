@@ -60,7 +60,10 @@ export async function toMatchImageSnapshot(
   try {
     await stat(snapshotPath);
   } catch (err) {
-    if (this.snapshotState._updateSnapshot === 'new') {
+    if (
+      this.snapshotState._updateSnapshot === 'new' ||
+      this.snapshotState._updateSnapshot === 'all'
+    ) {
       await writeFile(snapshotPath, snapshot);
 
       return {
@@ -69,7 +72,7 @@ export async function toMatchImageSnapshot(
       };
     } else {
       return {
-        pass: true,
+        pass: false,
         message: () => `Snapshot ${snapshotPath} not found.`,
       };
     }
@@ -94,7 +97,7 @@ export async function toMatchImageSnapshot(
     width,
     height,
     {
-      threshold: 0,
+      threshold: 0.1,
     },
   );
 

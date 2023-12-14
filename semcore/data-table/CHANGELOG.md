@@ -2,11 +2,77 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [4.19.1] - 2023-11-30
+
+### Fixed
+
+- Lighthouse accessibility warning about existing scrollbar role element inside of the table.
+
+## [4.19.0] - 2023-11-30
+
+### Added
+
+- Sort icon is visible when column is focused by keyboard.
+
+## [4.18.0] - 2023-11-24
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.10.3 ~> 4.13.0], `@semcore/core` [2.9.2 ~> 2.10.0]).
+
+## [4.17.2] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
+## [4.17.1-prerelease.1] - 2023-11-20
+
+### Changed
+
+- Removed animation from sort icon.
+
+## [4.17.0] - 2023-11-13
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.15.0 ~> 4.16.0]).
+
+## [4.16.2] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/icon` [4.14.1 ~> 4.15.0], `@semcore/scroll-area` [5.12.1 ~> 5.12.2]).
+
+## [4.16.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [4.16.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.13.0 ~> 4.14.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [4.15.0] - 2023-10-27
 
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/icon` [4.12.0 ~> 4.13.0], `@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
+
+## [4.14.1] - 2023-10-27
+
+### Changed
+
+- Value for `--intergalactic-icon-secondary-neutral-hover-active` token.
 
 ## [4.14.0] - 2023-10-26
 
@@ -36,7 +102,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Table with columns with fixed position was not displayed correctly. 
+- Table with columns with fixed position was not displayed correctly.
 
 ## [4.12.2] - 2023-10-03
 
@@ -178,7 +244,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Using special characters and spaces in the data keys were braking columns width. 
+- Using special characters and spaces in the data keys were braking columns width.
 
 ## [4.2.0] - 2023-08-01
 

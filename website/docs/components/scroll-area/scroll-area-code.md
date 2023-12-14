@@ -1,28 +1,49 @@
 ---
-title: Example
+title: ScrollArea
 fileSource: scroll-area
+tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
-@## Basic usage
+## Basic usage
 
 To use the ScrollArea component, wrap your content with `ScrollArea`. It will create a couple of `div` wraps and handle the necessary calculations. You can set the `height` or `width` directly on the `ScrollArea` or somewhere higher in the hierarchy. `max-height` and `max-width` are also supported.
 
-@example basic
+::: sandbox
 
-@## Synchronized scroll on two different screens
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
 
-@example main-and-controlled
+:::
 
-@## Synchronized reverse scroll on two different screens
+## Synchronized scroll on two different screens
 
-@example reverse
+::: sandbox
 
-@## Scrollbar out of container
+<script lang="tsx" src="examples/synchronized_scroll_on_two_different_screens.tsx"></script>
 
-@example bar
+:::
 
-@## Dynamic virtual list
+## Synchronized reverse scroll on two different screens
+
+::: sandbox
+
+<script lang="tsx" src="examples/synchronized_reverse_scroll_on_two_different_screens.tsx"></script>
+
+:::
+
+## Scrollbar out of container
+
+::: sandbox
+
+<script lang="tsx" src="examples/scrollbar_out_of_container.tsx"></script>
+
+:::
+
+## Dynamic virtual list
 
 The dynamic virtual list is powered by [React-virtualized](https://github.com/bvaughn/react-virtualized).
 
-@example virtual-list
+::: sandbox
+
+<script lang="tsx" src="examples/dynamic_virtual_list.tsx"></script>
+
+:::

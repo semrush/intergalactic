@@ -4,7 +4,13 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
+import {
+  DatePicker,
+  DateRangePicker,
+  MonthRangePicker,
+  DateRangeComparator,
+  MonthDateRangeComparator,
+} from '../src';
 
 const RealDate = global.Date;
 
@@ -296,5 +302,112 @@ describe('DatePicker.Header', () => {
       </DatePicker>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+});
+
+describe('DateRangeComparator', () => {
+  beforeEach(() => {
+    global.Date = RealDate;
+    cleanup();
+  });
+  const disablePopper = { __disablePopper: true } as any;
+
+  test('Should render correctly', async ({ task }) => {
+    const value = {
+      value: [new Date('January 5, 2021 00:00:00'), new Date('January 10, 2021 00:00:00')],
+      compare: [new Date('January 8, 2021 00:00:00'), new Date('January 12, 2021 00:00:00')],
+    };
+    const displayPeriod = new Date('January 5, 2021 00:00:00');
+    const component = (
+      <DateRangeComparator
+        displayedPeriod={displayPeriod}
+        value={value}
+        visible
+        disablePortal
+        {...disablePopper}
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test('Should render correctly', async ({ task }) => {
+    const value = {
+      value: [new Date('January 5, 2021 00:00:00'), new Date('January 10, 2021 00:00:00')],
+      compare: [new Date('January 8, 2021 00:00:00'), new Date('January 12, 2021 00:00:00')],
+    };
+    const displayPeriod = new Date('January 5, 2021 00:00:00');
+    const component = (
+      <DateRangeComparator
+        displayedPeriod={displayPeriod}
+        value={value}
+        visible
+        disablePortal
+        {...disablePopper}
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test('Should render correctly monthes', async ({ task }) => {
+    const value = {
+      value: [new Date('January 5, 2021 00:00:00'), new Date('May 10, 2021 00:00:00')],
+      compare: [new Date('Februrary 8, 2021 00:00:00'), new Date('September 12, 2021 00:00:00')],
+    };
+    const displayPeriod = new Date('January 5, 2021 00:00:00');
+    const component = (
+      <MonthDateRangeComparator
+        displayedPeriod={displayPeriod}
+        value={value}
+        visible
+        disablePortal
+        {...disablePopper}
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test('Should render disabled compare input by default', async ({ task }) => {
+    const value = {
+      value: [new Date('January 5, 2021 00:00:00'), new Date('January 10, 2021 00:00:00')],
+    };
+    const displayPeriod = new Date('January 5, 2021 00:00:00');
+    const component = (
+      <DateRangeComparator
+        displayedPeriod={displayPeriod}
+        value={value}
+        visible
+        disablePortal
+        {...disablePopper}
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <div>
+        <DateRangeComparator>
+          <DateRangeComparator.Trigger />
+          <DateRangeComparator.Popper>
+            <DateRangeComparator.Header>
+              <DateRangeComparator.ValueDateRange aria-label='date-range from' />
+              <DateRangeComparator.CompareToggle />
+              <DateRangeComparator.CompareDateRange aria-label='date-range to' />
+            </DateRangeComparator.Header>
+            <DateRangeComparator.Body>
+              <DateRangeComparator.RangeCalendar />
+              <DateRangeComparator.Periods />
+            </DateRangeComparator.Body>
+            <DateRangeComparator.Footer>
+              <DateRangeComparator.Apply />
+              <DateRangeComparator.Reset />
+            </DateRangeComparator.Footer>
+          </DateRangeComparator.Popper>
+        </DateRangeComparator>
+      </div>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

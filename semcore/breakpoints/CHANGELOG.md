@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.14.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0]).
+
+## [1.13.0] - 2023-11-30
+
+### Removed
+
+- `defaultIndex` from `MediaList` as unusable.
+
+## [1.12.3] - 2023-11-24
+
+### Fixed
+
+- Matcher function in `MediaList` to use `defaultIndex`.
+
+## [1.12.2] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
+
+## [1.12.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2]).
+
+## [1.12.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.9.0 ~> 4.10.1]).
+
 ## [1.11.0] - 2023-10-27
 
 ### Changed

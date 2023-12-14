@@ -1,18 +1,19 @@
 ---
-title: API
+title: ScrollArea
 fileSource: scroll-area
+tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
-@## ScrollArea
+## ScrollArea
 
 ```jsx
 import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea />;
 ```
 
-@typescript ScrollAreaProps
+<TypesView type="ScrollAreaProps" :types={...types} />
 
-@## ScrollArea.Container
+## ScrollArea.Container
 
 This is a wrap over the content to calculate its size. It takes all properties of `Box`.
 
@@ -21,16 +22,16 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Container />;
 ```
 
-@## ScrollArea.Bar
+## ScrollArea.Bar
 
 ```jsx
 import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar />;
 ```
 
-@typescript ScrollBarProps
+<TypesView type="ScrollBarProps" :types={...types} />
 
-@## ScrollArea.Bar.Slider
+## ScrollArea.Bar.Slider
 
 Stylized div. It takes all properties of `Box`.
 
@@ -38,3 +39,5 @@ Stylized div. It takes all properties of `Box`.
 import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar.Slider />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

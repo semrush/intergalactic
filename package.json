@@ -5,13 +5,17 @@
     "build": "pnpm run clean && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/illustration --filter !@semcore/ui run build",
     "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/utils/theme/processor.ts",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
+    "install-n-test": "pnpm install && pnpm test",
+    "install-n-browser-test": "pnpm install && pnpm playwright test --config playwright.browser.config.ts",
     "test": "vitest",
+    "test:setup": "docker build -t intergalactic-playwright -f playwright.dockerfile .",
+    "test:docker": "pnpm run-in-docker pnpm install-n-test",
+    "browser-test:docker": "pnpm run-in-docker pnpm install-n-browser-test",
     "test:types": "vitest typecheck",
     "vo-test:setup": "npx @guidepup/setup",
     "vo-test": "playwright test --config playwright.vo.config.ts",
     "vo-test:ci": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/vo-tests-ci.ts",
-    "browser-test:build-image": "docker build -t intergalactic-playwright -f playwright.dockerfile .",
-    "browser-test:run-container": "docker run -e PLAYWRIGHT_ARGS= --rm -it --network host -v $(pwd)/package.json:/work/package.json -v $(pwd)/playwright.browser.config.ts:/work/playwright.browser.config.ts -v $(pwd)/semcore:/work/semcore/ -v $(pwd)/tools:/work/tools/ -v $(pwd)/website:/work/website/ -v $(pwd)/test-results:/work/test-results/ -w /work/ intergalactic-playwright",
+    "run-in-docker": "docker run -e PLAYWRIGHT_ARGS= --rm --network host -v $(pwd)/package.json:/work/package.json -v $(pwd)/playwright.browser.config.ts:/work/playwright.browser.config.ts -v $(pwd)/semcore:/work/semcore/ -v $(pwd)/tools:/work/tools/ -v $(pwd)/website:/work/website/ -v $(pwd)/test-results:/work/test-results/ -w /work/ intergalactic-playwright",
     "website": "pnpm --dir website start",
     "lint": "pnpm lint:es && pnpm lint-changelogs && pnpm lint:ts",
     "lint-changelogs": "pnpm --filter @semcore/changelog-handler run lint-changelogs",
@@ -23,6 +27,7 @@
     "playground": "pnpm --filter @semcore/playground run start",
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",
     "format": "biome format ./semcore ./tools ./website ./.ci --config-path . --write",
+    "format-changelogs": "tsm --require=./.ci/tsm-filter-warnings.js ./tools/continuous-delivery/bin/format-changelogs.ts",
     "lint:es": "biome check ./semcore ./tools ./website ./.ci --config-path .",
     "lint:ts": "tsc --noEmit && cd website && tsc --noEmit",
     "lint:css": "stylelint **/*.css",
@@ -84,7 +89,8 @@
     "typescript-plugin-css-modules": "2.2.0",
     "typescript-workspace-plugin": "2.0.1",
     "vite-plugin-babel": "^1.1.3",
-    "vitest": "^0.32.0",
+    "vitest": "^0.34.6",
+    "webdriverio": "^8.24.3",
     "yaml": "2.1.1"
   },
   "lint-staged": {
@@ -104,5 +110,11 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "react-hook-form@6.10.1": "patches/react-hook-form@6.10.1.patch",
+      "parse-es-import@0.6.0": "patches/parse-es-import@0.6.0.patch"
+    }
   }
 }

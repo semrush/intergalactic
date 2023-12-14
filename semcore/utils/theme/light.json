@@ -725,6 +725,11 @@
         "type": "color",
         "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state."
       },
+      "critical-pattern": {
+        "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
+        "type": "color",
+        "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
+      },
       "warning": {
         "value": "{orange.200}",
         "type": "color",
@@ -962,9 +967,9 @@
           "description": "Primary neutral icon."
         },
         "neutral-hover-active": {
-          "value": "{gray.600}",
+          "value": "#565861",
           "type": "color",
-          "description": "Hover and active (selected) states of the primary neutral icon."
+          "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color."
         },
         "info": {
           "value": "{blue.500}",
@@ -972,19 +977,19 @@
           "description": "Primary link-lookalike icon."
         },
         "info-hover-active": {
-          "value": "{blue.600}",
+          "value": "#0358A1",
           "type": "color",
-          "description": "Hover and active (selected) states of the primary link-lookalike icon."
+          "description": "Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color."
         },
         "success": {
           "value": "{green.400}",
           "type": "color",
-          "description": "Primary successful icon."
+          "description": "Primary success icon."
         },
         "success-hover-active": {
-          "value": "{green.500}",
+          "value": "#037E68",
           "type": "color",
-          "description": "Hover and active (selected) states of the primary successful icon."
+          "description": "Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color."
         },
         "critical": {
           "value": "{red.400}",
@@ -992,9 +997,9 @@
           "description": "Primary critical icon."
         },
         "critical-hover-active": {
-          "value": "{red.500}",
+          "value": "#CC3A42",
           "type": "color",
-          "description": "Hover and active (selected) states of the primary critical icon."
+          "description": "Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color."
         },
         "warning": {
           "value": "{orange.400}",
@@ -1002,9 +1007,9 @@
           "description": "Primary warning icon."
         },
         "warning-hover-active": {
-          "value": "{orange.500}",
+          "value": "#CC5024",
           "type": "color",
-          "description": "Hover and active (selected) states of the primary warning icon."
+          "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color."
         },
         "invert": {
           "value": "{gray.white}",
@@ -1024,9 +1029,9 @@
           "description": "Secondary neutral icon."
         },
         "neutral-hover-active": {
-          "value": "{gray.400}",
+          "value": "#878992",
           "type": "color",
-          "description": "Hover and active (selected) states of the secondary neutral icon."
+          "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color."
         },
         "info": {
           "value": "{blue.300}",
@@ -1034,19 +1039,19 @@
           "description": "Secondary link-lookalike icon."
         },
         "info-hover-active": {
-          "value": "{blue.400}",
+          "value": "#2290CC",
           "type": "color",
-          "description": "Hover and active (selected) states of the secondary link-lookalike icon."
+          "description": "Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color."
         },
         "success": {
           "value": "{green.300}",
           "type": "color",
-          "description": "Secondary successful icon."
+          "description": "Secondary success icon."
         },
         "success-hover-active": {
-          "value": "{green.400}",
+          "value": "#049B75",
           "type": "color",
-          "description": "Hover and active (selected) states of the secondary successful icon."
+          "description": "Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color."
         },
         "critical": {
           "value": "{red.300}",
@@ -1054,9 +1059,9 @@
           "description": "Secondary critical icon."
         },
         "critical-hover-active": {
-          "value": "{red.400}",
+          "value": "#CC6C6B",
           "type": "color",
-          "description": "Hover and active (selected) states of the secondary critical icon."
+          "description": "Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color."
         },
         "warning": {
           "value": "{orange.300}",
@@ -1064,9 +1069,9 @@
           "description": "Secondary warning icon."
         },
         "warning-hover-active": {
-          "value": "{orange.400}",
+          "value": "#CC7036",
           "type": "color",
-          "description": "Hover and active (selected) states of the secondary warning icon."
+          "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color."
         }
       },
       "non-interactive": {
@@ -1940,74 +1945,75 @@
     "tag": {
       "primary": {
         "gray-normal": {
-          "value": "{gray.100}, 0.5",
+          "value": "#ECEDF0",
           "type": "color",
-          "description": "Primary gray tag."
+          "$extensions": {},
+          "description": "Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath."
         },
         "gray-hover-active": {
-          "value": "{gray.100}",
+          "value": "#E3E4E9",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary gray tag."
+          "description": "Gray background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.3 opacity on the white background underneath."
         },
         "blue-normal": {
-          "value": "{blue.100}, 0.5",
+          "value": "#D0EEFF",
           "type": "color",
-          "description": "Primary blue tag."
+          "description": "Blue background color for primary tag. It’s built with CSS filter brightness(150%) that was applied to blue-500 color with 0.2 opacity on the white background underneath."
         },
         "blue-hover-active": {
-          "value": "{blue.100}",
+          "value": "#B7E4FF",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary blue tag."
+          "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. "
         },
         "green-normal": {
-          "value": "{green.100}, 0.5",
+          "value": "#CFF1EA",
           "type": "color",
-          "description": "Primary green tag."
+          "description": "Green background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.2 opacity on the white background underneath."
         },
         "green-hover-active": {
-          "value": "{green.100}",
+          "value": "#B7EAE0",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary green tag."
+          "description": "Green background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.3 opacity on the white background underneath."
         },
         "orange-normal": {
-          "value": "{orange.100}, 0.5",
+          "value": "#FFDDD2",
           "type": "color",
-          "description": "Primary orange tag."
+          "description": "Orange background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.2 opacity on the white background underneath."
         },
         "orange-hover-active": {
-          "value": "{orange.100}",
+          "value": "#FFCCBB",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary orange tag."
+          "description": "Orange background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.3 opacity on the white background underneath."
         },
         "red-normal": {
-          "value": "{red.100}, 0.5",
+          "value": "#FFCEDC",
           "type": "color",
-          "description": "Primary red tag."
+          "description": "Red background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.2 opacity on the white background underneath."
         },
         "red-hover-active": {
-          "value": "{red.100}",
+          "value": "#FFB6CA",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary red tag."
+          "description": "Red background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.3 opacity on the white background underneath."
         },
         "violet-normal": {
-          "value": "{violet.100}, 0.5",
+          "value": "#F4E3FF",
           "type": "color",
-          "description": "Primary violet tag."
+          "description": "Violet background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.2 opacity on the white background underneath."
         },
         "violet-hover-active": {
-          "value": "{violet.100}",
+          "value": "#EFD5FF",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary violet tag."
+          "description": "Violet background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.3 opacity on the white background underneath."
         },
         "yellow-normal": {
-          "value": "{yellow.100}, 0.5",
+          "value": "#FEE6D1",
           "type": "color",
-          "description": "Primary yellow tag."
+          "description": "Yellow background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.2 opacity on the white background underneath."
         },
         "yellow-hover-active": {
-          "value": "{yellow.100}",
+          "value": "#FEDAB9",
           "type": "color",
-          "description": "Hover and active (selected) state of the primary yellow tag."
+          "description": "Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath."
         },
         "white-normal": {
           "value": "{gray.white}, 0.15",

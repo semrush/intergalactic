@@ -4,8 +4,7 @@
   "main": "index.ts",
   "bin": {
     "deliver-prerelease": "bin/deliver-prerelease.ts",
-    "publish-release": "bin/publish-release.ts",
-    "format-changelogs": "bin/format-changelogs.ts"
+    "publish-release": "bin/publish-release.ts"
   },
   "private": true,
   "license": "MIT",

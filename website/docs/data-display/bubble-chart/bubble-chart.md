@@ -1,12 +1,72 @@
 ---
 title: Bubble chart
 fileSource: d3-chart
-tabName: Design
+tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+:::
 
-@## Description
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, BubbleChartProps } from '@semcore/d3-chart';
+import resolveColor from '@semcore/ui/utils/lib/color';
+
+const data = [
+  { x: 2, y: 3, value: 5040, label: 'label 1' },
+  { x: 1, y: 9, value: 40, label: 'label 2' },
+  { x: 6, y: 2, value: 45634, label: 'label 3' },
+  { x: 4, y: 7, value: 245, label: 'label 4' },
+  { x: 9, y: 5, value: 7462, label: 'label 5' },
+];
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Line');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  legendProps.shape = 'Circle';
+
+  const chartProps: BubbleChartProps = {
+    data,
+    plotWidth: 300,
+    plotHeight: 200,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Bubble {...chartProps} />;
+}, {filterProps: ['data']});
+
+</script>
+
+:::
+
+## Description
 
 A **bubble chart** visualizes relationships between data categories using proportions, colors, and positioning on a coordinate axis. This chart type helps you analyze patterns between datasets.
 
@@ -19,11 +79,13 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 - patterns between data categories.
 - the third or fourth dimension of the data (the size and color of the bubbles, respectively).
 
-> A bubble chart is a variation of a scatterplot chart, but with one or two additional dimensions added to the data (the size and color of the circles, respectively).
->
-> **Note that the more colors you use for the categories, the harder it will be to read the chart.**
+::: tip
+A bubble chart is a variation of a scatterplot chart, but with one or two additional dimensions added to the data (the size and color of the circles, respectively).
 
-@## Appearance
+**Note that the more colors you use for the categories, the harder it will be to read the chart.**
+:::
+
+## Appearance
 
 **A bubble plot chart must contain:**
 
@@ -31,7 +93,9 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 - labels for the X and Y axes (don't color them, as this makes the chart harder to read);
 - a legend if the dataset has different categories, each with a different color.
 
-> Make sure to add information on what the bubble size means.
+::: tip
+Make sure to add information on what the bubble size means.
+:::
 
 | Case             | Appearance example                                     | Styles                                                                                                                                                                                                                                                                                                           |
 | ---------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -42,25 +106,27 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 
 If you need captions for bubbles (in addition to the legend), show captions to the right or left of the bubble. Keep in mind that adding such captions to a data-dense chart can make the chart hard to read.
 
-> Remember to check contrast for the text labels. We don’t recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
+::: tip
+Remember to check contrast for the text labels. We don’t recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
+:::
 
 ![](static/labels.png)
 
-@## Legend
+## Legend
 
 - If there are multiple datasets in the chart, show the legend. Provide values for each dataset.
 - We recommend using the vertical legend. It makes categories and their meaning easier to read.
 
 ![](static/positive-correlation-2.png)
 
-@## Interaction
+## Interaction
 
 - When hovered, a bubble changes its opacity to 80%, and the tooltip displays the values for this bubble.
 - If by clicking on the bubble you can go somewhere or open an additional report, then the cursor must change into a `pointer`.
 
 ![](static/hover-1.png)
 
-@## Tooltip
+## Tooltip
 
 Show the following values in the tooltip for this chart type:
 
@@ -77,15 +143,15 @@ If you have several datasets on the chart, then it is important to show their co
 | One dataset      | ![](static/hover-2.png)                                                         |
 | Several datasets | ![](static/hover-1.png) ![](static/hover-3.png) |
 
-@## Bubbles intersection
+## Bubbles intersection
 
 For this type of charts, we don’t show values for the intersection of categories. On hovering over a specific circle, we show the values for that circle only.
 
 ![](static/hover-1.png)
 
-@## Edge cases
+## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                                    |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -95,11 +161,13 @@ Here you will find the states for some specific cases. All other "empty states" 
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                             |
 | First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![](static/bubble-chart-skeleton.png)          |
 
-@## UI/UX use
+## UI/UX use
 
 ### Subheading with additional information
 
-> Accompany the bubble chart with additional information on what determines the size of the circles.
+::: tip
+Accompany the bubble chart with additional information on what determines the size of the circles.
+:::
 
 ![](static/ux-1.png)
 
@@ -120,11 +188,9 @@ The data will be difficult to read and compare.
 
 ### Number of datasets
 
-> The more datasets you cram into your scatterplot chart, the harder it is to read.
+::: tip
+The more datasets you cram into your scatterplot chart, the harder it is to read.
+:::
 
 ![](static/categories-yes-no.png)
 
-@page bubble-chart-a11y
-@page bubble-chart-api
-@page bubble-chart-d3-code
-@page d3-chart-changelog

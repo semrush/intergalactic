@@ -1,23 +1,23 @@
 ---
-title: A11y
+title: TabLine
 fileSource: tab-line
 a11y: AA
+tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key           | Function                                                                                                                                                                                                    |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`         | When focus moves into the tab list, places focus on the active `tab` element. When the tab list contains the focus, moves focus to the next element in the `Tab` sequence, which is the `tabpanel` element. |
-| `Right Arrow` | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab. Activates the newly focused tab.                                                                                    |
-| `Left Arrow`  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab. Activates the newly focused tab.                                                                                |
-| `Space`, `Enter`       | Activates focused tab.  |
+| `Tab`         | When focus moves into the tab list, the active `tab` element gets the focus. When the tab list contains the focus, `Tab` moves focus to the next element in the `Tab` sequence, which is the `tabpanel` element. |
+| `Left Arrow` , `Right Arrow` | Changes the state of next/previous `tab` element in the group to `active`. If focus is on the last/first `tab`, arrows move focus to the first/last `tab` respectively.  |
+| `Space`/`Enter`       | Activates focused `tab` element. Works only when TabLine has `behavior='manual'`.  |
 
-@## Considerations for developers
+## Considerations for developers
 
 - Be mindful of using tabs, as they are less discoverable by design.
 - Once a tab button is focused, other tabs can be selected with the arrow keys.
@@ -30,7 +30,7 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role     | Attribute                 | Element  | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | -------- | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -42,13 +42,13 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |          | `aria-controls="IDREF"`   | `button` | Refers to the `tabpanel` element associated with the tab.                                                                                                                                                                                                                                                                                                                                                                            |
 | `tabpanel` |                           | `div`    | Indicates the element serves as a container for tab panel content. Is hidden unless its associated `tab` control is activated.                                                                                                                                                                                                                                                                                                       |
 |          | `aria-labelledby="IDREF"` | `div`    | Refers to the `tab` element that controls the panel. Provides an accessible name for the tab panel.                                                                                                                                                                                                                                                                                                                                  |
-|          | `tabindex="0"`            | `div`    | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if there are panels that don’t contain a focusable element.                                                                                                                                                                                                                                  |
+|          | `tabIndex="0"`            | `div`    | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if there are panels that don’t contain a focusable element.                                                                                                                                                                                                                                  |
 
-@## Resources
+## Resources
 
 - [W3 tabs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html) has detailed information about the tabs accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs) describes the core recommendations for the components.
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

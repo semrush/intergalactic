@@ -1,8 +1,11 @@
 ---
-title: Readme
+title: Email templates & grid
+tabs: Design('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
 ---
 
-> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+::: warning
+:rotating_light: Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+:::
 
 This article will guide you through creating an email template with components included in the Semcore library. In the end, you will get HTML code that you can copy and paste to your email client.
 
@@ -62,7 +65,7 @@ To include your styles, link an external stylesheet, or put the styles in the `<
 
 or
 
-```htmlqq
+```html
 <block name="content">
   <style>
     YOUR STYLES

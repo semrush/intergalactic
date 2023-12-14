@@ -1,42 +1,45 @@
 ---
-title: API
+title: SidePanel
 fileSource: side-panel
+tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
-@## SidePanel
+## SidePanel
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
 <SidePanel />;
 ```
 
-@typescript SidePanelProps
+<TypesView type="SidePanelProps" :types={...types} />
 
-@## SidePanel.Overlay
+## SidePanel.Overlay
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Overlay />;
 ```
 
-This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) component.
+This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
 
-@## SidePanel.Panel
+## SidePanel.Panel
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Panel />;
 ```
 
-This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) and [FocusLock](https://github.com/theKashey/react-focus-lock/blob/master/interfaces.d.ts#L4).
+This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) and [FocusLock](https://github.com/theKashey/react-focus-lock/blob/master/interfaces.d.ts#L4).
 
-@typescript SidePanelPanelProps
+<TypesView type="SidePanelPanelProps" :types={...types} />
 
-@## SidePanel.Close
+## SidePanel.Close
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Close />;
 ```
 
-This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) component.
+This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

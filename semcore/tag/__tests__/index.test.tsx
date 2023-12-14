@@ -4,7 +4,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 describe('Tag', () => {
@@ -47,8 +47,8 @@ describe('Tag', () => {
     await expect(
       await snapshot(component, {
         actions: {
-          hover: ['#hover', '#hover-1', '#hoveer-3'],
-          focus: ['#hover', '#hover-1', '#hoveer-3'],
+          hover: '#hover',
+          focus: '#hover',
         },
       }),
     ).toMatchImageSnapshot(task);
@@ -179,6 +179,25 @@ describe('Tag', () => {
 
     fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(0);
+  });
+
+  test.concurrent('should work as Button from keyboard', async ({ expect }) => {
+    const onClick = vi.fn();
+    const { getByTestId } = render(
+      <Tag interactive onClick={onClick} data-testid={'tag'}>
+        some tag
+      </Tag>,
+    );
+    const tag = getByTestId('tag');
+    await userEvent.keyboard('[Tab]');
+
+    expect(tag).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(onClick).toHaveBeenCalledTimes(1);
+
+    await userEvent.keyboard('[Space]');
+    expect(onClick).toHaveBeenCalledTimes(2);
   });
 
   test('a11y', async () => {

@@ -5,19 +5,21 @@ tabName: Design
 docs: true
 ---
 
-@## Basic rules
+## Basic rules
 
 - Use color thoughtfully and don't make colors too bright without a reason. **Keep in mind the visual hierarchy.**
 - If there are several widgets on a page that mention the same entity, then use the same color for the entity in all widgets on the same page.
 - **Keep in mind that green and red are often associated with good and bad, growth and decline.**
 
-> **We recommend using red carefully**. It is usually used for destructive actions and invalid states.
+::: tip
+**We recommend using red carefully**. It is usually used for destructive actions and invalid states.
+:::
 
-@## Chart tokens
+## Chart tokens
 
-You can find all tokens for charts in the [tokens list](/style/design-tokens/#semantic_tokens). They all have `chart` in their token name.
+You can find all tokens for charts in the [tokens list](/style/design-tokens/design-tokens#semantic_tokens). They all have `chart` in their token name.
 
-@## Tokens for text and additional information
+## Tokens for text and additional information
 
 | Token                 | Usage                                                       |
 | --------------------- | ----------------------------------------------------------- |
@@ -26,76 +28,431 @@ You can find all tokens for charts in the [tokens list](/style/design-tokens/#se
 | `--chart-grid-line`   | The X-axis and the accent lines on the grid when, if needed |
 | `--chart-grid-x-axis` | Additional guide lines                                      |
 
-@## Colors usage
+## Colors usage
 
 There are two ways of coloring your data with our palette.
 
 ### Categorical order
 
-This way helps to choose colors with a predefined order and contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/#base_tokens_palette).
+This way helps to choose colors with a predefined order and contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base_tokens_palette).
 
 #### Basic pack
 
-@import color-group {"group": "basicPack"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = [
+    '--blue-300',
+    '--green-200',
+    '--orange-400',
+    '--pink-300',
+    '--yellow-200',
+    '--violet-400',
+    '--red-300',
+    '--salad-200',
+  ] // basicPack
+
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Second pack
 
-@import color-group {"group": "secondPack"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = [
+    '--blue-400',
+    '--green-300',
+    '--orange-200',
+    '--pink-400',
+    '--yellow-300',
+    '--violet-200',
+    '--red-400',
+    '--salad-300',
+  ] // secondPack
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Third pack
 
-@import color-group {"group": "thirdPack"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = [
+    '--blue-200',
+    '--green-400',
+    '--orange-300',
+    '--pink-200',
+    '--yellow-400',
+    '--violet-300',
+    '--red-200',
+    '--salad-400',
+  ] // thirdPack
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Other data
 
 Use `--chart-palette-order-other-data` token to indicate voids, missing or some other data.
 
-@import color-group {"group": "otherData"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--gray-200'] // otherData
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 ### Sequental order
 
-This way helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/#base).
+This way helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base).
 
 #### Blue
 
-@import color-group {"group": "blue"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--blue-100', '--blue-200', '--blue-300', '--blue-400', '--blue-500'] // blue
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Green
 
-@import color-group {"group": "green"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--green-100', '--green-200', '--green-300', '--green-400', '--green-500'] // green
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Salad
 
-@import color-group {"group": "salad"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--salad-100', '--salad-200', '--salad-300', '--salad-400', '--salad-500'] // salad
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Orange
 
-@import color-group {"group": "orange"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--orange-100', '--orange-200', '--orange-300', '--orange-400', '--orange-500'] // orange
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Yellow
 
-@import color-group {"group": "yellow"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--yellow-100', '--yellow-200', '--yellow-300', '--yellow-400', '--yellow-500'] // yellow
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Red
 
-@import color-group {"group": "red"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--red-100', '--red-200', '--red-300', '--red-400', '--red-500'] // red
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Pink
 
-@import color-group {"group": "pink"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--pink-100', '--pink-200', '--pink-300', '--pink-400', '--pink-500'] // pink
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Violet
 
-@import color-group {"group": "violet"}
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--violet-100', '--violet-200', '--violet-300', '--violet-400', '--violet-500'] // violet
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
 
 #### Gray
 
-@import color-group {"group": "gray"}
+::: react-view
 
-@## Need more colors?
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
 
-> The recommended maximum number of colors on a chart is 30.
+const colors = ['--gray-100', '--gray-200', '--gray-300', '--gray-400', '--gray-500'] // gray
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
+
+## Need more colors?
+
+::: tip
+The recommended maximum number of colors on a chart is 30.
+:::
 
 30 and more colors are for the really complex cases where you need a large number of colors that will be set for the data by the system.
 
-To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.
+To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/design-tokens#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.

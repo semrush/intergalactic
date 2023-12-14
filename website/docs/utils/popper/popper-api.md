@@ -1,9 +1,10 @@
 ---
-title: API
+title: Popper
 fileSource: popper
+tabs: Design('popper'), API('popper-api'), Changelog('popper-changelog')
 ---
 
-@## Popper
+## Popper
 
 This is a wrapper for creating a context, which doesn't create additional nodes in the house.
 
@@ -12,9 +13,9 @@ import Popper from '@semcore/ui/popper';
 <Popper />;
 ```
 
-@typescript PopperProps
+<TypesView type="PopperProps" :types={...types} />
 
-@## Popper.Trigger
+## Popper.Trigger
 
 The element to which `<Popper.Popper/>` will be attached.
 
@@ -23,9 +24,9 @@ import Popper from '@semcore/ui/popper';
 <Popper.Trigger />;
 ```
 
-@typescript PopperTriggerProps
+<TypesView type="PopperTriggerProps" :types={...types} />
 
-@## Popper.Popper
+## Popper.Popper
 
 The element which will be attached to `<Popper.Trigger/>`.
 
@@ -34,4 +35,6 @@ import Popper from '@semcore/ui/popper';
 <Popper.Popper />;
 ```
 
-@typescript PopperPopperProps
+<TypesView type="PopperPopperProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

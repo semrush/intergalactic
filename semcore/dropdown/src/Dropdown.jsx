@@ -5,9 +5,10 @@ import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown.shadow.css';
-import { hasFocusableIn } from '@semcore/utils/src/use/useFocusLock';
+import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
@@ -22,6 +23,7 @@ class Dropdown extends Component {
     defaultVisible: false,
     i18n: localizedMessages,
     locale: 'en',
+    interaction: 'click',
   };
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
@@ -67,7 +69,7 @@ class Dropdown extends Component {
     const element = this.popperRef.current;
 
     if (
-      interaction !== 'focus' &&
+      interaction === 'click' &&
       visible &&
       e.key === 'Tab' &&
       element &&
@@ -100,7 +102,7 @@ class Dropdown extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking, interaction } = this.asProps;
 
     return {
       id: `igc-${uid}-popper`,
@@ -108,11 +110,18 @@ class Dropdown extends Component {
       disablePortal,
       ignorePortalsStacking,
       ref: this.popperRef,
+      focusMaster: interaction === 'click',
     };
   }
 
   render() {
     const { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
+
+    logger.warn(
+      other.interaction !== 'click' && other.interaction !== 'focus',
+      "You shouldn't use prop `interaction` except with `click` or `focus` value.",
+      other['data-ui-name'] || Dropdown.displayName,
+    );
 
     return (
       <Popper

@@ -1,13 +1,15 @@
 ---
 title: Click Potential, Competitive Density, CPC
-tabName: Design
+tabs: Design('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 ---
 
-> **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+::: tip
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).**
+:::
 
 **These filters are combined in one guide, since they differ only in the sorting parameter and the name.** The principle of work and states are the same.
 
-@## Description
+## Description
 
 **Click Potential filter** is a filter to sort the data on the page by the Click Potential parameter.
 
@@ -24,7 +26,7 @@ They contain only a field for a custom range value, there is no preset data, sin
 - quickly reset the entered data and search again;
 - be able to change data.
 
-@## Appearance
+## Appearance
 
 ### Trigger
 
@@ -46,21 +48,21 @@ They contain only a field for a custom range value, there is no preset data, sin
 | Competitive Density | ![opened cd](static/opened-cd.png) ![filled cd](static/filled-cd.png) |
 | CPC                 | ![opened cpc](static/opened.png) ![filled cpc](static/filled.png)     |
 
-@## Custom range
+## Custom range
 
-If the filter has the ability to select a custom period, then use [InputNumber](/components/input-number/).
+If the filter has the ability to select a custom period, then use [InputNumber](/components/input-number/input-number).
 
-The behavior and appearance of the stepper buttons is described in the [Filter common rules](/filter-group/filter-rules/).
+The behavior and appearance of the stepper buttons is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
-@## Interaction
+## Interaction
 
 When user opens a dropdown, the focus immediately goes to the first custom range input.
 
-Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/).
+Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
-@## Tooltips
+## Tooltips
 
-For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/).
+For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 | Filter              | Appearance example                     |
 | ------------------- | -------------------------------------- |
@@ -68,12 +70,11 @@ For more information about tooltips, see [Filter common rules](/filter-group/fil
 | Competitive Density | ![tooltips cd](static/tooltips-cd.png) |
 | CPC                 | ![tooltips cpc](static/tooltips.png)   |
 
-@## Validation
+## Validation
 
-Validation is described in the [Filter common rules](/filter-group/filter-rules/).
+Validation is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
-@## Nothing found
+## Nothing found
 
-"Empty" states is described in the [Filter common rules](/filter-group/filter-rules/).
+"Empty" states is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
-@page filter-cp-cd-cpc-code

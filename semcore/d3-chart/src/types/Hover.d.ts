@@ -22,9 +22,9 @@ type HoverTooltip = (<X, Y>(
     y?: Y;
     children: (props: {
       /** Index in `data` array of the current item */
-      xIndex: X extends string ? string : never;
+      xIndex: X extends string ? number : never;
       /** Index in `data` array of the current item */
-      yIndex: Y extends string ? string : never;
+      yIndex: Y extends string ? number : never;
     }) => { children: ReturnEl };
   } & Omit<BoxProps, 'children'>,
 ) => ReturnEl) &

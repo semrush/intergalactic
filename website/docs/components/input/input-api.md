@@ -1,9 +1,10 @@
 ---
-title: API
+title: Input
 fileSource: input
+tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
-@## Input
+## Input
 
 Wrap over the input elements.
 
@@ -12,9 +13,9 @@ import Input from '@semcore/ui/input';
 <Input />;
 ```
 
-@typescript InputProps
+<TypesView type="InputProps" :types={...types} />
 
-@## Input.Value
+## Input.Value
 
 This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
@@ -23,9 +24,9 @@ import Input from '@semcore/ui/input';
 <Input.Value />;
 ```
 
-@typescript InputValueProps
+<TypesView type="InputValueProps" :types={...types} />
 
-@## Input.Addon
+## Input.Addon
 
 The addon inside the input (most often it is an icon) places the correct indent units depending on the size. The addon can be `interactive`.
 
@@ -36,4 +37,6 @@ import Input from '@semcore/ui/input';
 <Input.Addon />;
 ```
 
-@typescript InputAddonProps
+<TypesView type="InputAddonProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

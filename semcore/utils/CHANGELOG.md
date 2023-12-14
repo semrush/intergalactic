@@ -2,6 +2,68 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [4.14.0] - 2023-11-28
+
+### Added
+
+- New `--intergalactic-border-critical-pattern` token for marking controls invalid state.
+- Fixed output of css utils.
+
+## [4.13.0] - 2023-11-24
+
+### Added
+
+- Types for enhances.
+
+## [4.12.0] - 2023-11-23
+
+### Added
+
+- Pass `props` from component into `onNeighborChange` in `a11yEnhance` as a second args.
+
+## [4.11.0] - 2023-11-22
+
+### Added
+
+- New `findAllComponents` (for passed `Children`) util method.
+
+## [4.10.3] - 2023-11-21
+
+### Changed
+
+- Values for `--facebook`, `--twitter` and `--linkedIn` variables to new ones.
+
+## [4.10.2] - 2023-11-09
+
+### Fixed
+
+- Fixed old palette colors resolving that was broken in `@semcore/utils@4.9.0`.
+
+## [4.10.1] - 2023-10-27
+
+### Changed
+
+- Updated colors of hover/active states a little to sync it across components.
+- Tag component design tokens are transformed from rgba colors with opacity to hex colors without opacity.
+
+## [4.10.0] - 2023-11-01
+
+### Changed
+
+- Don't animate the width/height of a node if they are specified as a percentage.
+
+## [4.9.1] - 2023-10-27
+
+### Changed
+
+- Values for tag and icon tokens that are built with CSS filters.
+
 ## [4.9.0] - 2023-10-26
 
 ### Added
@@ -137,7 +199,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed core invalid peer dependencies warning. 
+- Fixed core invalid peer dependencies warning.
 
 ## [4.0.0] - 2023-07-17
 

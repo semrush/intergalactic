@@ -2,6 +2,46 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.14.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.12.0 ~> 5.13.0], `@semcore/neighbor-location` [4.11.0 ~> 4.12.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [5.13.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.11.0 ~> 5.12.0], `@semcore/neighbor-location` [4.10.0 ~> 4.11.0], `@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
+## [5.12.0] - 2023-11-23
+
+### Added
+
+- New behavior `auto` instead of `radio` and `manual` instead of `tags`.
+
+### Fixed
+
+- Selection of disabled `Pills.Item`.
+
+## [5.11.2] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.10.1 ~> 5.10.2], `@semcore/neighbor-location` [4.9.1 ~> 4.9.2], `@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
+## [5.11.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.10.0 ~> 5.10.1], `@semcore/neighbor-location` [4.9.0 ~> 4.9.1], `@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [5.11.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.9.0 ~> 5.10.0], `@semcore/neighbor-location` [4.8.0 ~> 4.9.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [5.10.0] - 2023-10-27
 
 ### Changed
@@ -31,7 +71,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Pills with `behavior="tabs"` had focus ring both on container and on pills. Now focus ring is only on pills.
-- Focus ring of every pill was overlaped by the next sibling pill. 
+- Focus ring of every pill was overlaped by the next sibling pill.
 
 ## [5.8.4] - 2023-10-03
 
@@ -157,7 +197,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fix
 
-- `PillsProps` wasn't including `BoxProps`. 
+- `PillsProps` wasn't including `BoxProps`.
 
 ## [5.0.0] - 2023-07-17
 

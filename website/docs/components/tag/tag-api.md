@@ -1,13 +1,14 @@
 ---
-title: API
+title: Tag
 fileSource: tag
+tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
 ---
 
-@## Tag
+## Tag
 
-@typescript TagProps
+<TypesView type="TagProps" :types={...types} />
 
-@## Tag.Addon
+## Tag.Addon
 
 The addon inside the tag (most commonly an icon) sets the correct indents depending on the size.
 
@@ -18,7 +19,7 @@ import Tag from '@semcore/ui/tag';
 <Tag.Addon />;
 ```
 
-@## Tag.Text
+## Tag.Text
 
 This ordinary text sets the appropriate indents depending on the size. If a simple text without addons is used in the Tag, it will turn into `Tag.Text` automatically.
 
@@ -29,7 +30,7 @@ import Tag from '@semcore/ui/tag';
 <Tag.Text />;
 ```
 
-@## Tag.Close
+## Tag.Close
 
 Cross icon automatically adjusts to the selected theme and size.
 
@@ -40,7 +41,7 @@ import Tag from '@semcore/ui/tag';
 <Tag.Close />;
 ```
 
-@## Tag.Circle
+## Tag.Circle
 
 A special addon for round elements inside a tag (most often a picture) places the correct indents depending on the size.
 
@@ -50,3 +51,5 @@ It accepts all `Box` properties.
 import Tag from '@semcore/ui/tag';
 <Tag.Circle />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

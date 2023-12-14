@@ -1,9 +1,15 @@
 SCarousel {
   overflow: hidden;
   outline: none;
+  user-select: none;
 }
 
 SContainer {
+  display: flex;
+  transition: transform var(--duration) ease-in-out;
+}
+
+SModalContainer {
   display: flex;
   transition: transform var(--duration) ease-in-out;
 }
@@ -15,6 +21,13 @@ SItem {
   transform: var(--transform);
   border-radius: var(--intergalactic-surface-rounded, 6px);
   overflow: hidden;
+}
+
+SItem[zoomIn] {
+  cursor: zoom-in;
+}
+SItem[zoomOut] {
+  cursor: zoom-out;
 }
 
 SIndicators {
@@ -44,6 +57,10 @@ SIndicator[active] {
   opacity: 1;
 }
 
+SIndicator[inverted] {
+  background-color: var(--intergalactic-icon-primary-invert, #ffffff);
+}
+
 SPrev,
 SNext {
   display: inline-flex;
@@ -54,10 +71,10 @@ SNext {
 }
 
 SPrev {
-  margin-right: var(--intergalactic-spacing-3x, 12px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 SNext {
-  margin-left: var(--intergalactic-spacing-3x, 12px);
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SPrev[disabled],

@@ -4,7 +4,7 @@
 [![downloads](https://img.shields.io/npm/dt/@semcore/i18n-unplugin.svg)](https://www.npmjs.com/package/@semcore/i18n-unplugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
-> This component is part of the Intergalactic design system
+> This component is part of the Intergalactic Design System
 
 ### 📖 [Component documentation](https://developer.semrush.com/intergalactic/utils/i18n/#locale_bundle_extracting)
 

@@ -1,9 +1,27 @@
 ---
-title: Example
+title: Icon
+tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
-@## Interactive
+## Interactive
 
-If you need interactive icons that change their properties on hover (color, cursor), give the desired color to the icon using `color` property and add `interactive` property. And voila! You don't need to specify an additional color for the icon in a hover or in an active state.
+If you want an interactive icon that changes when hovered over (such as color and cursor), simply set the desired color for the icon using the `color` property and add the `interactive` property. That's it! You won't need to specify an extra color for the icon when it's hovered over or in an active state.
 
-@example interactive
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+
+const Demo = () => (
+  <LinkExternalM
+    interactive
+    aria-label='Go to our awesome article'
+    color='icon-secondary-neutral'
+  />
+);
+
+
+</script>
+
+:::

@@ -6,10 +6,6 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/usr/bin
 
 COPY . .
 
-RUN npm install --global pnpm
+RUN npm install --global pnpm@8.11.0
 RUN pnpm install --ignore-scripts 
 RUN npx playwright install
-
-ENV PLAYWRIGHT_ARGS=
-
-CMD pnpm playwright test --config playwright.browser.config.ts $PLAYWRIGHT_ARGS

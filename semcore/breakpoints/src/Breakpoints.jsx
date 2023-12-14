@@ -7,10 +7,8 @@ const DEFAULT_MEDIA = ['(min-width: 768px)', '(max-width: 767px)'];
 class MediaList {
   mediaQueries = [];
   listeners = [];
-  defaultIndex = 0;
 
-  constructor(media, defaultIndex) {
-    this.defaultIndex = defaultIndex ?? this.defaultIndex;
+  constructor(media) {
     if (canUseDOM()) {
       this.mediaQueries = media.map(window.matchMedia);
     }
@@ -28,7 +26,7 @@ class MediaList {
   });
 
   matches() {
-    return this.mediaQueries.findIndex((m) => m.matches) ?? this.defaultIndex;
+    return this.mediaQueries.findIndex((m) => m.matches);
   }
 
   addListener(listener) {

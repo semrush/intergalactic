@@ -29,13 +29,14 @@ import {
   ReferenceLine,
   Radar,
   ChartLegend,
-  LegendItem,
+  ChartLegendTable,
   // @ts-ignore
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 
 import { curveCardinal } from 'd3-shape';
 import { Flex, Box } from '@semcore/flex-box';
+import Ellipsis from '@semcore/ellipsis';
 import resolveColor from '@semcore/utils/lib/color';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
@@ -571,7 +572,7 @@ describe('Venn', () => {
       const [order, setOrder] = React.useState(0);
 
       return (
-        <Flex alignItems='center' direction='column'>
+        <Flex alignItems='flex-start' direction='column'>
           <Plot height={300} width={400} data={data}>
             <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
               <Venn.Circle dataKey='F' />
@@ -2049,6 +2050,86 @@ describe('Line', () => {
   });
 });
 
+describe('ChartLegend', () => {
+  test.concurrent('should correct render Ellipsis in tables', async ({ expect, task }) => {
+    const data = [...Array(5).keys()].map((d, i) => ({
+      x: i,
+      Line1: Math.random() * 10,
+      Line2: Math.random() * 10,
+      Line3: Math.random() * 10,
+      Line4: Math.random() * 10,
+      Line5: Math.random() * 10,
+    }));
+
+    const Component = () => {
+      const lines = Object.keys(data[0])
+        .filter((key) => key !== 'x')
+        .map((item, index) => {
+          return {
+            id: item,
+            label: (
+              <Ellipsis>
+                Itefbdsfbjksdbfjbdsjfbjhbfjhsbfjhsbdjhdmbfbsdjfbjdsbfjbsdjfbsdjfbsdbf
+              </Ellipsis>
+            ),
+            checked: true,
+            color: `chart-palette-order-${index + 1}`,
+            columns: [
+              <Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>,
+              <Text use={'primary'}>{42 * (index + 3)}</Text>,
+              <Text use={'primary'}>{22 * (index + 3)}</Text>,
+            ],
+          };
+        });
+
+      return (
+        <div style={{ outline: '1px solid magenta', width: '500px' }}>
+          <ChartLegendTable items={lines} shape={'Circle'} />
+        </div>
+      );
+    };
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('should correct render one column in tables', async ({ expect, task }) => {
+    const data = [...Array(5).keys()].map((d, i) => ({
+      x: i,
+      Line1: Math.random() * 10,
+      Line2: Math.random() * 10,
+      Line3: Math.random() * 10,
+      Line4: Math.random() * 10,
+      Line5: Math.random() * 10,
+    }));
+
+    const Component = () => {
+      const lines = Object.keys(data[0])
+        .filter((key) => key !== 'x')
+        .map((item, index) => {
+          return {
+            id: item,
+            label: (
+              <Ellipsis>
+                Itefbdsfbjksdbfjbdsjfbjhbfjhsbfjhsbdjhdmbfbsdjfbjdsbfjbsdjfbsdjfbsdbf
+              </Ellipsis>
+            ),
+            checked: true,
+            color: `chart-palette-order-${index + 1}`,
+            columns: [<Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>],
+          };
+        });
+
+      return (
+        <div style={{ outline: '1px solid magenta', width: '500px' }}>
+          <ChartLegendTable items={lines} shape={'Circle'} />
+        </div>
+      );
+    };
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+});
+
 describe('d3 charts visual regression', () => {
   test.concurrent('should render axis-grid', async ({ task }) => {
     const data = Array(20)
@@ -2322,16 +2403,12 @@ describe('d3 charts visual regression', () => {
       const [dataLegend, setDataLegend] = React.useState(
         Object.keys(data[0])
           .filter((name) => name !== 'x')
-          .reduce<LegendItem[]>((res, item) => {
-            res.push({
-              id: item,
-              label: item,
-              checked: true,
-              color: axe2theme[item],
-            });
-
-            return res;
-          }, []),
+          .map((item) => ({
+            id: item,
+            label: item,
+            checked: true,
+            color: axe2theme[item],
+          })),
       );
 
       const width = 500;

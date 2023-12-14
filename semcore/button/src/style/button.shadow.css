@@ -22,6 +22,7 @@ SButton {
   -webkit-tap-highlight-color: transparent;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--intergalactic-text-secondary, #6c6e79);
+  min-width: fit-content;
 
   &::-moz-focus-inner {
     padding: 0;
@@ -51,14 +52,12 @@ SButton[disabled] {
 
 SButton[size='m'] {
   height: 28px;
-  min-width: 28px;
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SButton[size='l'] {
   height: 40px;
-  min-width: 40px;
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
@@ -96,12 +95,12 @@ SButton[theme='primary-warning'] {
   background-color: var(--intergalactic-icon-primary-warning, #ff642d);
 
   &:hover {
-    background-color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
+    background-color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
+    background-color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
   }
 }
 
@@ -332,30 +331,30 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px); /* -1px - for border width */
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-2x, 8px);
+    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px); /* -1px - for border width */
   }
 
   &:only-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
+    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
   }
 }
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-3x, 12px);
+    margin-left: calc(var(--intergalactic-spacing-3x, 12px) - 1px); /* -1px - for border width */
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-right: calc(var(--intergalactic-spacing-3x, 12px) - 1px); /* -1px - for border width */
   }
 
   &:only-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
+    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
   }
 }

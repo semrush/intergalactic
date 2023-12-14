@@ -1,13 +1,13 @@
 ---
 title: D3 chart principles
 fileSource: d3-chart
-tabName: Design
 docs: true
+tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
-@## Chart widget anatomy
+## Chart widget anatomy
 
-In the Intergalactic Design System, data is typically organized within a [Card](/components/card/), which consists of the `Card.Header` and `Card.Body`.
+In the Intergalactic Design System, data is typically organized within a [Card](/components/card/card), which consists of the `Card.Header` and `Card.Body`.
 
 ![widget-scheme](static/widget-paddings.png)
 
@@ -23,13 +23,15 @@ In the Intergalactic Design System, data is typically organized within a [Card](
    2. Chart – axes, values, and the chart itself (`margin-top: 20px`)
    3. Optional bottom controls (`margin-top: 20px`)
 
-> The presence of optional elements depends on the specific interface case.
+::: tip
+The presence of optional elements depends on the specific interface case.
+:::
 
 ### Card header
 
 #### Title
 
-**A chart must include a title** that succinctly and clearly describes the displayed data. In cases where the title is distant from the chart, as in a table or report's [Summary](/patterns/summary/), ensure there are adequate margins between widgets. The user should easily grasp what data the chart represents.
+**A chart must include a title** that succinctly and clearly describes the displayed data. In cases where the title is distant from the chart, as in a table or report's [Summary](/patterns/summary/summary), ensure there are adequate margins between widgets. The user should easily grasp what data the chart represents.
 
 The title can be clickable.
 
@@ -37,7 +39,7 @@ You can place an `Info` icon with M size next to the title if you need to hide a
 
 ![chart-heading](static/heading.png)
 
-For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/).
+For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/link).
 
 #### Description
 
@@ -47,25 +49,27 @@ For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--
 
 For the description text, use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color.
 
-@## Chart controls
+## Chart controls
 
-For detailed information about chart controls, refer to the [Chart controls](/data-display/chart-controls/).
+For detailed information about chart controls, refer to the [Chart controls](/data-display/chart-controls/chart-controls).
 
-@## Collapsing rows
+## Collapsing rows
 
-When necessary, you can collapse card rows. Find more information in the [Chart controls](/data-display/chart-controls/#collapsing_rows_with_controls).
+When necessary, you can collapse card rows. Find more information in the [Chart controls](/data-display/chart-controls/chart-controls#collapsing_rows_with_controls).
 
-@## Legend
+## Legend
 
 The legend provides additional visual information explaining the data on the chart.
 
-The legend can function as a filter or simply represent the data without being clickable. For detailed information about the legend and its types, refer to [Chart legend](/data-display/chart-legend/).
+The legend can function as a filter or simply represent the data without being clickable. For detailed information about the legend and its types, refer to [Chart legend](/data-display/chart-legend/chart-legend).
 
-@## Grid and axes
+## Grid and axes
 
 Axes assist users in navigating the data and understanding the relationships between values.
 
-> Avoid making the additional lines overly bright and colorful – the emphasis should remain on the data.
+::: tip
+Avoid making the additional lines overly bright and colorful – the emphasis should remain on the data.
+:::
 
 ### Styles
 
@@ -83,7 +87,9 @@ Axes assist users in navigating the data and understanding the relationships bet
 
 To make it easier to track changes, use 3-5 additional horizontal guides. Round the values on the axes, such as _25K − 20K − 15K − 10K_, instead of using exact figures like _24.8K − 20.0K − 15.2K − 10.2K_.
 
-> The recommended minimum chart height is 118px. For such a chart, it's advisable to display 3 additional horizontal guides. Keep in mind that charts with such minimal height can make it challenging to discern changes.
+::: tip
+The recommended minimum chart height is 118px. For such a chart, it's advisable to display 3 additional horizontal guides. Keep in mind that charts with such minimal height can make it challenging to discern changes.
+:::
 
 Minimum (small) chart height has 3 additional horizontal guides.
 
@@ -93,7 +99,7 @@ The maximum chart height depends on your specific case. For charts with greater 
 
 ![](static/max-height.png)
 
-@## Tooltip
+## Tooltip
 
 When hovering over any part of the chart, a tooltip should appear, providing data for the dot or dots.
 
@@ -108,13 +114,15 @@ The tooltip appears adjacent to the cursor and is always positioned within the c
 - The tooltip can also contain the total value.
 - If several charts share the same timeline, they can be synchronized. Hovering over one chart triggers the hover state on the others. This is useful for data comparison.
 
-> Typically, measurement units are not included inside the tooltip (they should be clear from the chart title and axes). However, in more complex charts, such as scatterplots, adding a measurement unit can enhance data comprehension.
+::: tip
+Typically, measurement units are not included inside the tooltip (they should be clear from the chart title and axes). However, in more complex charts, such as scatterplots, adding a measurement unit can enhance data comprehension.
+:::
 
 ### Styles
 
 The data tooltip should always be displayed relative to the dot, with an 8px margin.
 
-@table-caption Chart tooltip styles
+Table: Chart tooltip styles
 
 | Appearance        | Styles   |
 | ----------------- | -------- |
@@ -125,14 +133,14 @@ The data tooltip should always be displayed relative to the dot, with an 8px mar
 
 ### Cases
 
-@table-caption Chart tooltip cases
+Table: Chart tooltip cases
 
 | Case                     | Appearance                               | Styles            |
 | ------------------------ | ---------------------------------------- | ----------------- |
 | Not available data       | ![](static/partially.png)   | Use a dashed line to represent not available data. |
 | Start of data collecting | ![](static/new-data-tooltip.png) | A solid line is used, and the dot color corresponds to the legend. In the tooltip, text about the beginning of data collection is 12px and has `--chart-grid-y-accent-hover-line` token for color. |
 
-@## Trend and average value
+## Trend and average value
 
 To display the trend line or average value on the chart, use gray color with the following styles: `border: solid 2px var(--chart-palette-order-total-amount)`. Similarly, you can display total values.
 
@@ -141,21 +149,19 @@ To display the trend line or average value on the chart, use gray color with the
 
 ![](static/d3-trend.png)
 
-@## Data loading
+## Data loading
 
-During the initial data loading, the widget displays the [Skeleton](/components/skeleton/) instead of the chart.
+During the initial data loading, the widget displays the [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, it should be displayed during the initial loading. The user should be aware of what is being loaded and whether they need to wait for the process to complete.
 
-> Keep in mind that each chart type has its own skeleton. Refer to the guides for specific chart types for more information.
+::: tip
+Keep in mind that each chart type has its own skeleton. Refer to the guides for specific chart types for more information.
+:::
 
-@## Edge cases
+## Edge cases
 
 Specific edge cases may vary depending on the chart type. Refer to the documentation for the specific chart type you are working with.
 
-General recommendations for "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
+General recommendations for "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
-@page d3-chart-code
-@page d3-chart-api
-@page d3-chart-a11y
-@page d3-chart-changelog

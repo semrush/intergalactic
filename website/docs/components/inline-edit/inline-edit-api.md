@@ -1,8 +1,9 @@
 ---
-title: API
+title: InlineEdit
+tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), Example('inline-edit-code'), Changelog('inline-edit-changelog')
 ---
 
-@## InlineEdit
+## InlineEdit
 
 Wrap over the inline edit elements.
 
@@ -11,9 +12,9 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit />;
 ```
 
-@typescript InlineEditProps
+<TypesView type="InlineEditProps" :types={...types} />
 
-@## InlineEdit.View
+## InlineEdit.View
 
 All children of `InlineEdit.View` is displayed when `editable` property of `InlineEdit` is set to `false`. When `editable` property is set to `true`, children elements still persist in DOM, but hidden via css opacity.
 
@@ -22,7 +23,7 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit.View />;
 ```
 
-@## InlineEdit.Edit
+## InlineEdit.Edit
 
 All children of `InlineEdit.Edit` is displayed when `editable` property of `InlineEdit` is set to `true`.
 
@@ -30,3 +31,5 @@ All children of `InlineEdit.Edit` is displayed when `editable` property of `Inli
 import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit.Edit />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

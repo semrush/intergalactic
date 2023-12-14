@@ -93,6 +93,7 @@ class RootSelect extends Component {
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
       'aria-expanded': visible ? 'true' : 'false',
+      'aria-disabled': disabled ? 'true' : 'false',
       empty: isEmptyValue(value),
       size,
       value,
@@ -152,6 +153,7 @@ class RootSelect extends Component {
     return {
       selected,
       'aria-selected': selected ? 'true' : 'false',
+      'aria-disabled': props.disabled ? 'true' : 'false',
       role: 'option',
       onClick: this.bindHandlerOptionClick(props.value),
       ...other,
@@ -188,7 +190,7 @@ class RootSelect extends Component {
   }
 
   getDividerProps() {
-    return { my: 1 };
+    return { my: 1, 'aria-disabled': 'true' };
   }
 
   renderChildrenTrigger(value, options) {
@@ -346,7 +348,7 @@ function Checkbox(props) {
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
       role='checkbox'
-      tabIndex={0}
+      tabIndex={-1}
       aria-checked={selected}
     />
   );

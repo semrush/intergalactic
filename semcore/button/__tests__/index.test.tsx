@@ -396,307 +396,299 @@ describe('Button', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent(
-    'Should support hover',
-    async ({ task }) => {
-      await expect(
-        await snapshot(<Button id='button'>Button</Button>, {
+  test.concurrent('Should support hover', async ({ task }) => {
+    await expect(
+      await snapshot(<Button id='button'>Button</Button>, {
+        actions: {
+          hover: '#button',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id='button' use='tertiary' theme='invert'>
+            Button
+          </Button>
+        </div>,
+        {
           actions: {
             hover: '#button',
           },
-        }),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <div style={{ background: '#eee' }}>
-            <Button id='button' use='tertiary' theme='invert'>
-              Button
-            </Button>
-          </div>,
-          {
-            actions: {
-              hover: '#button',
-            },
-          },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <div style={{ background: '#eee' }}>
-            <Button id='button' use='secondary' theme='invert'>
-              Button
-            </Button>
-          </div>,
-          {
-            actions: {
-              hover: '#button',
-            },
-          },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <div style={{ background: '#eee' }}>
-            <Button id='button' use='primary' theme='invert'>
-              Button
-            </Button>
-          </div>,
-          {
-            actions: {
-              hover: '#button',
-            },
-          },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='danger'>
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id='button' use='secondary' theme='invert'>
             Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+          </Button>
+        </div>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='warning'>
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id='button' use='primary' theme='invert'>
             Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+          </Button>
+        </div>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='success'>
-            Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='danger'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='info'>
-            Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='warning'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='secondary' theme='muted'>
-            Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='success'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='secondary' theme='info'>
-            Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='info'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='tertiary' theme='info'>
-            Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='secondary' theme='muted'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='tertiary' theme='muted'>
-            Button
-          </Button>,
-          {
-            actions: {
-              hover: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='secondary' theme='info'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-    },
-    { timeout: 30_000 },
-  );
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='tertiary' theme='info'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='tertiary' theme='muted'>
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+  });
 
-  test.concurrent(
-    'Should support active',
-    async ({ task }) => {
-      await expect(
-        await snapshot(<Button id='button'>Button</Button>, {
+  test.concurrent('Should support active', async ({ task }) => {
+    await expect(
+      await snapshot(<Button id='button'>Button</Button>, {
+        actions: {
+          active: '#button',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id='button' use='tertiary' theme='invert'>
+            Button
+          </Button>
+        </div>,
+        {
           actions: {
             active: '#button',
           },
-        }),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <div style={{ background: '#eee' }}>
-            <Button id='button' use='tertiary' theme='invert'>
-              Button
-            </Button>
-          </div>,
-          {
-            actions: {
-              active: '#button',
-            },
-          },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <div style={{ background: '#eee' }}>
-            <Button id='button' use='secondary' theme='invert'>
-              Button
-            </Button>
-          </div>,
-          {
-            actions: {
-              active: '#button',
-            },
-          },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <div style={{ background: '#eee' }}>
-            <Button id='button' use='primary' theme='invert'>
-              Button
-            </Button>
-          </div>,
-          {
-            actions: {
-              active: '#button',
-            },
-          },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='danger'>
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id='button' use='secondary' theme='invert'>
             Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+          </Button>
+        </div>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='warning'>
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id='button' use='primary' theme='invert'>
             Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+          </Button>
+        </div>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='success'>
-            Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='danger'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='primary' theme='info'>
-            Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='warning'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='secondary' theme='muted'>
-            Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='success'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='secondary' theme='info'>
-            Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='primary' theme='info'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='tertiary' theme='info'>
-            Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='secondary' theme='muted'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-      await expect(
-        await snapshot(
-          <Button id='button' use='tertiary' theme='muted'>
-            Button
-          </Button>,
-          {
-            actions: {
-              active: '#button',
-            },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='secondary' theme='info'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
           },
-        ),
-      ).toMatchImageSnapshot(task);
-    },
-    { timeout: 30_000 },
-  );
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='tertiary' theme='info'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(
+        <Button id='button' use='tertiary' theme='muted'>
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot(task);
+  });
 });

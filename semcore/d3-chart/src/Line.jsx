@@ -132,8 +132,10 @@ function Area(props) {
     y0,
     y1,
     curve = curveCardinal,
+    area,
   } = props;
   const [xScale, yScale] = scale;
+  const dataToArea = area ?? data;
 
   const d3 = d3Area()
     .curve(curve)
@@ -148,7 +150,7 @@ function Area(props) {
       render='path'
       hide={hide}
       color={color}
-      d={d3(data)}
+      d={d3(dataToArea)}
       use:duration={`${duration}ms`}
     />,
   );

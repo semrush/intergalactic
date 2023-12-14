@@ -2,6 +2,60 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.21.1] - 2023-12-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.19.0 ~> 5.19.1]).
+
+## [3.21.0] - 2023-12-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.18.0 ~> 5.19.0], `@semcore/core` [2.11.0 ~> 2.12.0]).
+
+## [3.20.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.17.2 ~> 5.18.0], `@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
+## [3.19.2] - 2023-11-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.17.1 ~> 5.17.2], `@semcore/utils` [4.10.3 ~> 4.13.0], `@semcore/core` [2.9.2 ~> 2.10.0]).
+
+## [3.19.1] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.17.0 ~> 5.17.1], `@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
+## [3.19.0] - 2023-11-13
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.16.0 ~> 5.17.0]).
+
+## [3.18.0] - 2023-11-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.15.1 ~> 5.16.0]).
+
+## [3.17.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.15.0 ~> 5.15.1], `@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [3.17.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.14.0 ~> 5.15.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [3.16.0] - 2023-10-27
 
 ### Changed

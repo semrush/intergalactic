@@ -3,7 +3,7 @@ import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import InputMask from '@semcore/ui/input-mask';
 
-export default () => {
+const Demo = () => {
   const expireDateInput = React.useRef(null);
   const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
 
@@ -24,7 +24,7 @@ export default () => {
           mask='9999 9999 9999 9999'
           placeholder='____ ____ ____ ____'
           onSuccess={handleSuccess}
-          title='card number – 16-digits'
+          title='card number - 16-digits'
           id='card_number'
         />
       </InputMask>
@@ -38,7 +38,7 @@ export default () => {
             mask='99/99'
             placeholder='MM/YY'
             pipe={pipeExpireDate}
-            title='month and year of card expiration – 4 digits in total'
+            title='month and year of card expiration - 4 digits in total'
             id='expire_date'
           />
         </InputMask>
@@ -66,3 +66,5 @@ const pipeExpireDate = (value) => {
 
   return { value, indexesOfPipedChars };
 };
+
+export default Demo;

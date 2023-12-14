@@ -4,7 +4,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
-import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -369,6 +369,45 @@ describe('Option.Checkbox', () => {
 
   shouldSupportClassName(Select.Option.Checkbox, Select);
   shouldSupportRef(Select.Option.Checkbox, Select);
+
+  test.skip('should not focused by Tab between Select.Option.Checkbox', async ({ expect }) => {
+    const { getByTestId } = render(
+      <Select>
+        <Select.Trigger placeholder="I'll show u some options" data-testid={'selectTrigger'} />
+        <Select.Menu>
+          <Select.Option value={1} data-testid={'firstOption'}>
+            I'm option
+          </Select.Option>
+          <Select.Option value={2}>
+            <Select.Option.Checkbox data-testid={'secondOptionCheckbox'} />
+            I'm option-checkbox
+          </Select.Option>
+          <Select.Option value={3} disabled>
+            <Select.Option.Checkbox data-testid={'thirdOptionCheckbox'} />
+            I'm disabled option-checkbox
+          </Select.Option>
+          <Select.OptionTitle>I'm title</Select.OptionTitle>
+          <Select.OptionHint>I'm hint</Select.OptionHint>
+        </Select.Menu>
+      </Select>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('selectTrigger')).toHaveFocus();
+
+    // open select
+    await userEvent.keyboard('[Enter]');
+
+    // focus into popover
+    await userEvent.keyboard('[Tab]');
+    // focus on the first checkbox
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('secondOptionCheckbox')).not.toHaveFocus();
+
+    // focus on the second checkbox
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('thirdOptionCheckbox')).not.toHaveFocus();
+  });
 });
 
 describe('InputSearch', () => {

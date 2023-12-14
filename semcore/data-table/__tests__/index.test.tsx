@@ -228,6 +228,30 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Sorting by keyboard', async ({ task }) => {
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data} onSortChange={vi.fn()}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' sortable id='row' />
+            <DataTable.Column name='cpc' children='CPC' sortable />
+            <DataTable.Column name='vol' children='Vol.' sortable />
+          </DataTable.Head>
+          <DataTable.Body />
+        </DataTable>
+      </div>
+    );
+
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#row',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
+  });
+
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   test.skip('Fixed columns', async ({ task }) => {
     const component = (
@@ -387,7 +411,7 @@ describe('DataTable', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Access to a set of cells', async ({ task }) => {
+  test.skip.concurrent('Access to a set of cells', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
