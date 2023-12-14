@@ -1,14 +1,68 @@
 ---
 title: Scatterplot chart
 fileSource: d3-chart
-tabName: Design
+tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterplot-chart-api'), Examples('scatterplot-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+:::
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
+
+const data = [...Array(25).keys()].map((d, i) => ({
+  x: i,
+  y: Math.random() * 10,
+  y2: Math.random() * 10,
+  value: Math.round(Math.random() * 10),
+}));
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.ScatterPlot');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool }, { direction: 'column' });
+
+  const chartProps: ScatterPlotChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 300,
+    plotHeight: 300,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.ScatterPlot {...chartProps} valueKey={'value'} xTicksCount={10} yTicksCount={6} />;
+}, {filterProps: ['data']});
+</script>
+
+:::
+
+## Description
 
 A **scatterplot chart** visualizes the relationship between two variables in one or more datasets.
 
@@ -16,7 +70,9 @@ This chart type helps to analyze patterns between two variables.
 
 Unlike other types of charts, a scatterplot chart can display trends, clusters, patterns, and relationships in a dataset, especially a very large one. Such charts allow to quickly understand if there is a dependency between the variables or not.
 
-> The scatterplot is arguably the most versatile, polymorphic, and generally useful invention in the history of statistical graphics ( [Journal of the History of the Behavioral Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract), 2005).
+::: tip
+The scatterplot is arguably the most versatile, polymorphic, and generally useful invention in the history of statistical graphics ( [Journal of the History of the Behavioral Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract), 2005).
+:::
 
 Use a scatterplot chart when you need to show the correlation between two variables in a large dataset. Scatterplots are sometimes called correlation plots because they show how two variables are correlated.
 
@@ -28,9 +84,11 @@ Use a scatterplot chart when you need to show the correlation between two variab
 | If the line runs from top left to bottom right, there is likely a negative correlation between the two variables.                    | ![](static/negative-correlation.png) |
 | If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)             |
 
-> Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
+::: tip
+Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
+:::
 
-@## Appearance
+## Appearance
 
 A scatterplot chart must contain:
 
@@ -45,7 +103,7 @@ A scatterplot chart must contain:
 | One dataset      | ![](static/no-correlation.png)              | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
 | Several datasets | ![](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                        |
 
-@## Value inside a dot
+## Value inside a dot
 
 - Dot size – 24px * 24px.
 - Text size – 12px.
@@ -58,14 +116,14 @@ For text color use the same color as the dot but pick the next shade (for exampl
 | One dataset      | ![](static/values-1.png)      |
 | Several datasets | ![](static/values-2.png) |
 
-@## Legend
+## Legend
 
 If the chart shows multiple datasets, show a legend. Provide values for each dataset.
 We recommend using the vertical legend. It helps to "read" the categories and their meaning better.
 
 ![](static/two-categories.png)
 
-@## Interaction
+## Interaction
 
 ### Hover
 
@@ -76,7 +134,7 @@ We recommend using the vertical legend. It helps to "read" the categories and th
 
 ![](static/hover-1.png)
 
-@## Tooltip
+## Tooltip
 
 Show the following values in the tooltip for this chart type:
 
@@ -92,9 +150,9 @@ If you have several datasets on the chart, it is important to show their color i
 | One dataset      | ![](static/hover-2.png)      |
 | Several datasets | ![](static/hover-1.png) |
 
-@## Edge cases
+## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                               |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
@@ -104,7 +162,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                        |
 | First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![](static/scatterplot-chart-skeleton.png) |
 
-@## UI/UX use
+## UI/UX use
 
 ### Axes
 
@@ -121,11 +179,9 @@ Otherwise, it can visually distort the presence of a correlation between the dat
 
 ### Number of datasets
 
-> The more datasets you cram into your scatterplot chart, the harder it is to read.
+::: tip
+The more datasets you cram into your scatterplot chart, the harder it is to read.
+:::
 
 ![](static/categories-yes-no.png)
 
-@page scatterplot-chart-a11y
-@page scatterplot-chart-api
-@page scatterplot-chart-d3-code
-@page d3-chart-changelog

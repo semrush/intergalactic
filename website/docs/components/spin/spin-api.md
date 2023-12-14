@@ -1,9 +1,10 @@
 ---
-title: API
+title: Spin
 fileSource: spin
+tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')
 ---
 
-@## Spin
+## Spin
 
 Note that Spin is built with SVG inside.
 
@@ -12,4 +13,6 @@ import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 
-@typescript SpinProps
+<TypesView type="SpinProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

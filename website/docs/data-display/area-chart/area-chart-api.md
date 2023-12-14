@@ -1,19 +1,20 @@
 ---
-title: API
+title: Area chart
 fileSource: d3-chart
+tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-@## D3 API
+## D3 API
 
-@## Chart.Area
+## Chart.Area
 
 ```js
 import { Chart } from '@semcore/ui/d3-chart';
 ```
 
-@typescript AreaChartProps
+<TypesView type="AreaChartProps" :types={...types} />
 
-@## Area
+## Area
 
 It have children components `Dots, Null`.
 
@@ -26,4 +27,6 @@ import { Area } from '@semcore/ui/d3-chart';
 </Area>;
 ```
 
-@typescript AreaProps
+<TypesView type="AreaProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

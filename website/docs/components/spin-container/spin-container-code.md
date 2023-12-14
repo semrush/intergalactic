@@ -1,14 +1,23 @@
 ---
-title: Example
+title: SpinContainer
 fileSource: spin-container
+tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
-@## Usage in content
+## Usage in content
 
-@example base
+::: sandbox
 
-@## Usage in dropdown lists
+<script lang="tsx" src="examples/usage_in_content.tsx"></script>
+
+:::
+
+## Usage in dropdown lists
 
 This example demonstrates how to resize and display content within the SpinContainer.
 
-@example other
+::: sandbox
+
+<script lang="tsx" src="examples/usage_in_dropdown_lists.tsx"></script>
+
+:::

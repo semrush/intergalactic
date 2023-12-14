@@ -1,9 +1,10 @@
 ---
-title: API
+title: Radio
 fileSource: radio
+tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
-@## RadioGroup
+## RadioGroup
 
 A component used to simplify working with multiple radio buttons.
 
@@ -12,9 +13,9 @@ import { RadioGroup } from '@semcore/ui/radio';
 <RadioGroup />;
 ```
 
-@typescript RadioGroupProps
+<TypesView type="RadioGroupProps" :types={...types} />
 
-@## Radio
+## Radio
 
 This is an independent radio component.
 
@@ -23,20 +24,22 @@ import Radio from '@semcore/ui/radio';
 <Radio />;
 ```
 
-@typescript RadioProps
+<TypesView type="RadioProps" :types={...types} />
 
-@## Radio.Value
+## Radio.Value
 
 ```jsx
 import Radio from '@semcore/ui/radio';
 <Radio.Value />;
 ```
 
-@typescript RadioValueProps
+<TypesView type="RadioValueProps" :types={...types} />
 
-@## Radio.Text
+## Radio.Text
 
 ```jsx
 import Radio from '@semcore/ui/radio';
 <Radio.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -1,12 +1,14 @@
 ---
 title: SidePanel
 fileSource: side-panel
-tabName: Design
+tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
-> In the [2.0.0 version](/components/side-panel/side-panel-changelog/), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
+::: tip
+In the [2.0.0 version](/components/side-panel/side-panel-changelog), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
+:::
 
-@## Description
+## Description
 
 **SidePanel** is a component used for displaying sliding panels with content. It can also be referred to as a panel or drawer.
 
@@ -15,7 +17,9 @@ tabName: Design
 - To show sub-tasks, additional support information, and links that may be useful to the user while working with a report, a specific widget, or the entire product.
 - To keep the user in the context of the page (even if the SidePanel has an overlay).
 
-> Use [Modal windows](/components/modal/) to show important information or request a response from the user.
+::: tip
+Use [Modal windows](/components/modal/modal) to show important information or request a response from the user.
+:::
 
 **For example, you can use SidePanel as:**
 
@@ -23,7 +27,7 @@ tabName: Design
 - A Help Center or News panel in products.
 - "Panels" on mobile devices.
 
-@## Component composition
+## Component composition
 
 ![](static/sidepanel-composition.png)
 
@@ -37,26 +41,26 @@ Component consists of the following:
 6. `SidePanel.Footer`
 7. `SidePanel.Overlay`
 
-@## Trigger
+## Trigger
 
 The trigger for opening the SidePanel can be the following:
 
 - A `News` icon in the main header of the website.
-- Additional links in [ProductHead](/components/product-head/).
+- Additional links in [ProductHead](/components/product-head/product-head).
 - Controls that hide additional information.
 - Charts that can be clicked to show additional information.
 - On small screens, other controls can serve as triggers to open SidePanel.
 
-@## Overlay
+## Overlay
 
-@table-caption SidePanel with and without overlay
+Table: SidePanel with and without overlay
 
 |                 | Appearance example                     | Styles                                                                                                           | When to use                                                                             |
 | --------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | Without overlay | ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
 | With overlay    | ![](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
-@## Sizes and indents
+## Sizes and indents
 
 ### Width
 
@@ -76,15 +80,17 @@ The padding between the title and content:
 
 ![](static/content-paddings.png)
 
-@## Default styles
+## Default styles
 
 ### Header
 
 For the panel's title, use 16px text (`--fs-300`, `--lh-300` tokens) with `font-weight: var(--bold)`.
 
-> Pin the header when scrolling large content inside the SidePanel.
+::: tip
+Pin the header when scrolling large content inside the SidePanel.
+:::
 
-@table-caption SidePanel.Header styles
+Table: SidePanel.Header styles
 
 | Appearance example     | Styles         |
 | ---------------------- | -------------- |
@@ -95,7 +101,7 @@ For the panel's title, use 16px text (`--fs-300`, `--lh-300` tokens) with `font-
 
 General recommendations for SidePanel content styles:
 
-- Choose the text size for the panel to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/).
+- Choose the text size for the panel to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/typography).
 
 ![](static/hierarchy.png)
 
@@ -107,7 +113,7 @@ General recommendations for SidePanel content styles:
 
 You can place common controls for SidePanel content in the footer.
 
-- Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar) can be placed there.
+- Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar/progress-bar) can be placed there.
 - The recommended size of controls in the panel on the desktop is M. Depending on the context, use M or L controls in the panel on small screens.
 
 Footer styles:
@@ -123,7 +129,7 @@ border-top: 1px solid var(–-border-primary);
 
 ![](static/footer-paddings.png)
 
-@## Interaction
+## Interaction
 
 ### Placement in the interface
 
@@ -134,7 +140,9 @@ border-top: 1px solid var(–-border-primary);
 
 Page scroll is disabled by default. We recommend you to enable it only when SidePanel has some tips and additional information for the page, and no overlay is enabled.
 
-> Always disable page scroll for SidePanel with an overlay.
+::: tip
+Always disable page scroll for SidePanel with an overlay.
+:::
 
 ### SidePanel opening and closing
 
@@ -158,19 +166,19 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 ![](static/320-width.png)
 
-@## Edge cases
+## Edge cases
 
 SidePanel should have a header in all cases.
 
 ### Initial load
 
-At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/).
+At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/skeleton).
 
 ![](static/side-panel-skeleton.png)
 
 ### Reloading
 
-When loading and reloading SidePanel content, show [Spin](/components/spin/) with XL size in the center.
+When loading and reloading SidePanel content, show [Spin](/components/spin/spin) with XL size in the center.
 
 ![](static/spin.png)
 
@@ -180,7 +188,3 @@ If an error occurs during data loading, show the corresponding message and the "
 
 ![](static/error.png)
 
-@page side-panel-a11y
-@page side-panel-api
-@page side-panel-code
-@page side-panel-changelog

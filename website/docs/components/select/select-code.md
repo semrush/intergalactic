@@ -1,13 +1,16 @@
 ---
-title: Example
+title: Select / Multiselect
 fileSource: select
+tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
-> If you need to customize the dropdown menu's behavior, please refer to the [@semcore/ui/popper](/utils/popper/) documentation.
+::: tip
+If you need to customize the dropdown menu's behavior, please refer to the [@semcore/ui/popper](/utils/popper/popper) documentation.
+:::
 
-The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu) with the additional functionality of item selection.
+The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
 
-@## Basic usage
+## Basic usage
 
 In the simplest case, you can implement the select by passing an array of options. The `options` array consists of objects with the following fields:
 
@@ -15,42 +18,112 @@ In the simplest case, you can implement the select by passing an array of option
 - `label`: the value displayed in the trigger when selecting an option.
 - `children`: represents nested options displayed in the dropdown list.
 
-@example basic
+::: sandbox
 
-@## Controlled and uncontrolled modes
+<script lang="tsx" src="examples/basic_usage.tsx"></script>
+
+:::
+
+## Controlled and uncontrolled modes
 
 The component can operate in either controlled or uncontrolled mode.
 
-@example controll-uncontroll
+::: sandbox
 
-@## Trigger customization
+<script lang="tsx" src="examples/controlled_and_uncontrolled_modes.tsx"></script>
+
+:::
+
+## Trigger customization
 
 When you need to customize the trigger, you can pass the desired component to the `tag` property of the select. The property will be passed to `Select.Trigger` and replace its render.
 
-@example simple-trigger
+::: sandbox
+
+<script lang="tsx" src="examples/trigger_customization.tsx"></script>
+
+:::
 
 In cases when you require deeper customization, you can "unfold" the component into its constituents. The example below shows how to create a Select component for selecting a list of countries.
 
-@example custom-trigger
+::: sandbox
 
-@## DropdownMenu customization
+<script lang="tsx">
+import React from 'react';
+import Select from '@semcore/ui/select';
+import { Flex } from '@semcore/ui/flex-box';
+import Flags, { iso2Name } from '@semcore/ui/flags';
 
-Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
+const formatName = (name) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+const Demo = () => {
+  const [value, setValue] = React.useState(null);
+
+  return (
+    <>
+      <Select onChange={setValue} placeholder='Select country'>
+        <Select.Trigger w={180}>
+          <Select.Trigger.Addon>
+            <Flags iso2={value} />
+          </Select.Trigger.Addon>
+          <Select.Trigger.Text>{formatName(iso2Name[value])}</Select.Trigger.Text>
+        </Select.Trigger>
+        <Select.Menu hMax={180}>
+          {Object.keys(iso2Name).map((value) => (
+            <Select.Option key={value} value={value}>
+              <Flags iso2={value as keyof typeof iso2Name} mr={2} />
+              {formatName(iso2Name[value])}
+            </Select.Option>
+          ))}
+        </Select.Menu>
+      </Select>
+      <br />
+      <br />
+      <Select onChange={setValue} placeholder='Select country'>
+        <Select.Trigger w={'100%'}>
+          <Select.Trigger.Addon>
+            <Flags iso2={value} />
+          </Select.Trigger.Addon>
+          <Select.Trigger.Text>{formatName(iso2Name[value])}</Select.Trigger.Text>
+        </Select.Trigger>
+        <Select.Menu hMax={180}>
+          {Object.keys(iso2Name).map((value) => (
+            <Select.Option key={value} value={value}>
+              <Flags iso2={value as keyof typeof iso2Name} mr={2} />
+              {formatName(iso2Name[value])}
+            </Select.Option>
+          ))}
+        </Select.Menu>
+      </Select>
+    </>
+  );
+};
+</script>
+
+:::
+
+## DropdownMenu customization
+
+Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`
 
-These components serve as wrappers over the corresponding components of the [DropdownMenu](/components/dropdown-menu).
+These components serve as wrappers over the corresponding components of the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 
 - `Select.Popper` is a layout for the dropdown window.
-- `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/) inside.
+- `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/scroll-area) inside.
 - `Select.Menu` is a wrapper over `Select.Popper` and `Select.List`, and all props are passed to `Select.List`.
 
-The example below shows how to insert a [Notice](/components/notice/) in the Select dropdown window.
+The example below shows how to insert a [Notice](/components/notice/notice) in the Select dropdown window.
 
-@example notice
+::: sandbox
 
-@## Options
+<script lang="tsx" src="examples/dropdownmenu_customization.tsx"></script>
+
+:::
+
+## Options
 
 The component offers several variants of options layout:
 
@@ -59,42 +132,66 @@ The component offers several variants of options layout:
 - `Select.OptionTitle`: a title of the list (cannot be selected from the keyboard).
 - `Select.OptionHint`: a subtitle of the list or a message with additional information (cannot be selected from the keyboard).
 
-@example options
+::: sandbox
 
-@## Options filtering
+<script lang="tsx" src="examples/options.tsx"></script>
 
-The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component with clear button.
+:::
+
+## Options filtering
+
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/input) component with clear button.
 
 The example below shows one of the ways to implement filtering.
 
-@example filtering
+::: sandbox
 
-@## Advanced filtering control
+<script lang="tsx" src="examples/options_filtering.tsx"></script>
+
+:::
+
+## Advanced filtering control
 
 To get more control over the parts of `InputSearch` component, you can use children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
 
 In the example below clear button handler is disabled.
 
-@example filtering-advanced
+::: sandbox
 
-@## Multiselect
+<script lang="tsx" src="examples/advanced_filtering_control.tsx"></script>
+
+:::
+
+## Multiselect
 
 The component has the ability to select several options. This functionality can be enabled by using the `multiselect` property.
 
 The layout of options inside the component will be changed to `Select.OptionCheckbox`, and the `value` will become an array.
 
-@example multiselect
+::: sandbox
 
-@## Sorting multiselect options
+<script lang="tsx" src="examples/multiselect.tsx"></script>
+
+:::
+
+## Sorting multiselect options
 
 The example below shows one of the ways to sort the selected options.
 
-@example multiselect-sorted
+::: sandbox
 
-@## Render-function
+<script lang="tsx" src="examples/sorting_multiselect_options.tsx"></script>
+
+:::
+
+## Render-function
 
 As with many of our components, you can access the logic of the component by passing a render-function to it.
 
 The example below shows how to implement "Select all" and "Deselect all" buttons using this function.
 
-@example render-function
+::: sandbox
+
+<script lang="tsx" src="examples/render-function.tsx"></script>
+
+:::

@@ -1,14 +1,133 @@
 ---
 title: Line chart
 fileSource: d3-chart
-tabName: Design
+tabs: Design('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Examples('line-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
+::: tip
+Basic data visualization rules in widgets with charts are described in [D3 chart principles](/data-display/d3-chart/d3-chart).
+:::
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, LineChartProps } from '@semcore/d3-chart';
+import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
+
+const data = [...Array(5).keys()].map((d, i) => ({
+  x: i,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+  Line3: Math.random() * 10,
+}));
+
+const area = {
+  Line1: data.map((item) => {
+    return {
+      x: item.x,
+      y0: item.Line1 - 1,
+      y1: item.Line1 + 1,
+    };
+  }),
+  Line2: data.map((item) => {
+    return {
+      x: item.x,
+      y0: item.Line2 - 1,
+      y1: item.Line2 + 1,
+    };
+  }),
+  Line3: data.map((item) => {
+    return {
+      x: item.x,
+      y0: item.Line3 - 1,
+      y1: item.Line3 + 1,
+    };
+  }),
+};
+
+const curveMap = {
+  curveCardinal,
+  curveLinearClosed,
+  curveBumpX,
+};
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Line');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+    showTotalInTooltip,
+  } = chartPlayground({ select, radio, label, bool });
+
+  label({ label: 'Linear chart props', key: 'linearChartProps' });
+
+  const curveName = select({
+    key: 'curveName',
+    defaultValue: 'No curve',
+    label: 'Curve',
+    options: ['No curve', ...Object.keys(curveMap)],
+  });
+
+  const showDots = bool({
+    key: 'hideDots',
+    defaultValue: true,
+    label: 'Show dots',
+  });
+
+  const withArea = bool({
+    key: 'withArea',
+    defaultValue: false,
+    label: 'Enable area',
+  });
+
+  const areaCurve = select({
+    key: 'areaCurve',
+    defaultValue: 'No curve',
+    label: 'Area Curve',
+    options: ['No curve', ...Object.keys(curveMap)],
+  });
+
+  const chartProps: LineChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 300,
+    plotHeight: 200,
+    showTotalInTooltip,
+    direction,
+    showTooltip,
+    showDots,
+    curve: curveMap[curveName],
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+    area: withArea ? area : undefined,
+    areaCurve: curveMap[areaCurve],
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Line {...chartProps} />;
+}, {filterProps: ['data']});
+</script>
+
+:::
+
+## Description
 
 **Line chart** helps to visualize the trend of numeric variables over a period of time.
 
@@ -21,16 +140,20 @@ If you have an array of values for a certain period, you can use this chart type
 - If the data doesn't start from zero, in some cases you can zoom the chart to the `Y-axis`. This can make your data more readable and easier to understand.
 - **Try not to compare more than 5-7 categories on a line chart**. The chart may become unreadable and confusing.
 
-> Useful materials about line chart vs. area chart:
->
-> - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
-> - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
+::: tip
+Useful materials about line chart vs. area chart:
 
-@## Appearance
+- [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
+- [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
+:::
+
+## Appearance
 
 By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
 
-> Add a possibility to select either straight or smooth line type in the widget settings.
+::: tip
+Add a possibility to select either straight or smooth line type in the widget settings.
+:::
 
 | Example                                       | Styles                 |
 | --------------------------------------------- | ---------------------- |
@@ -42,7 +165,7 @@ We recommended you to display the dots on lines either when there are few of the
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/dots.png) | Point size is 8px * 8px, `border: 2px solid var(--chart-grid-border)`. When hovering, the dot increases to 12px * 12px. |
 
-@## Interaction
+## Interaction
 
 When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
@@ -54,17 +177,21 @@ When user hovers over the chart area without values, show tooltip with informati
 
 If there are a lot of categories on the chart, the tooltip shows dots and values for all dots under the cursor.
 
-> Don’t change the order of categories inside the tooltip in relation to the order of lines on the chart.
+::: tip
+Don’t change the order of categories inside the tooltip in relation to the order of lines on the chart.
+:::
 
 ![](static/popover-2.png)
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
+::: tip
+To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip).
+:::
 
-@## Edge cases
+## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
-@## One value
+## One value
 
 For this case enable the display of dots on the chart by default.
 
@@ -75,7 +202,7 @@ For this case enable the display of dots on the chart by default.
 - **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
 - The line has the `dashed` border style and `--chart-grid-y-accent-hover-line` color.
 
-@## Two values
+## Two values
 
 For this case enable the display of dots on the chart by default.
 
@@ -87,23 +214,27 @@ For this case enable the display of dots on the chart by default.
 
 ![](static/two-dots2.png)
 
-@## Null values
+## Null values
 
 If all values on the chart are zero, then show the trend line on the zero axis.
 
-> **Zero is also data. 0 ≠ `n/a`.**
+::: tip
+**Zero is also data. 0 ≠ `n/a`.**
+:::
 
 ![](static/null-line-chart.png)
 
-@## No data
+## No data
 
 When user hovers over a dot that some of the categories don't have data for, show tooltip with the `n/a` value for these categories.
 
 ![](static/not-available.png)
 
-@## No data area
+## No data area
 
-> **When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
+::: tip
+**When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
+:::
 
 In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
 
@@ -113,19 +244,15 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 ![](static/partially.png)
 
-@## Initial data loading
+## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![](static/line-skeleton.png)
 
-@page line-chart-a11y
-@page line-chart-api
-@page line-chart-d3-code
-@page d3-chart-changelog

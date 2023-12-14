@@ -1,9 +1,10 @@
 ---
-title: A11y
+title: Illustration
 a11y: AA
+tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api'), Example('illustration-code'), Changelog('illustration-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Roles & attributes
 
@@ -11,13 +12,13 @@ According to the ARIA in HTML document, [SVG has no default corresponding role](
 
 The list below describes roles and attributes that component already has.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Attribute            | Element      | Usage                                                                                                                        |
 | -------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------- |
 | `aria-hidden="true"` | `img`, `svg` | Hides images from the assistive technologies, because this element is auxiliary and shouldn't be played by a screen reader. |
 
-@## Considerations for developers
+## Considerations for developers
 
 - The best way to make SVGs accessible to Assistive Technologies like screen readers and speech recognition tools is to put it directly into your HTML using the `<svg>` tag.
 - Illustration also might be interactive, just use role `button` or `link` for it (see the table below).
@@ -30,14 +31,14 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
-@table-caption Attributes
+Table: Attributes
 
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is a required for buttons without text content.                                                     |
 | `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is a required for buttons without text content. |
 
-@## Considerations for designers
+## Considerations for designers
 
 - If an illustration has a function in the interface, it should be conveyed to the user through assistive technologies. In this case you should provide an appropriate `aria-label` for it.
 - Avoid using generic strings like photo, image, or icon as `alt` values, as they don’t communicate valuable content to the user. Be as descriptive as possible.
@@ -46,7 +47,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 ### How to provide appropriate text alternatives based on the purpose of the image
 
-@table-caption Image types
+Table: Image types
 
 | Image type                                  | Description                                                                                                                                                                                                                                                   |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,7 +59,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | **Group of images**                         | If multiple images convey a single piece of information, the text alternative for one image should convey the information for the entire group.                                                                                                               |
 | **Image map**                               | The text alternative for an image that contains multiple target areas should provide an overall context for the set of links. Also, each individually target area should have alternative text that describes the purpose or destination of the link.   |
 
-@## Resources
+## Resources
 
 - [Images tutorial](https://www.w3.org/WAI/tutorials/images/) demonstrates how to provide appropriate text alternatives based on the purpose of the image.
 - [Role-img-alt](https://www.digitala11y.com/academy/role-img-alt/) has detailed information about the images accessible behavior.
@@ -66,6 +67,6 @@ The list below will help you to keep in mind the necessary roles and attributes 
 - [Non-text Content](https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#text-alternatives) gives recommendations for the accessible non-text content.
 - [Providing short text alternative for non-text content](https://www.w3.org/WAI/WCAG21/Techniques/general/G94) tips on writing good text alternatives.
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

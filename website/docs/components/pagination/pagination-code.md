@@ -1,11 +1,20 @@
 ---
-title: Example
+title: Pagination
+tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
 ### Basic usage
 
-@example base
+::: sandbox
+
+<script lang="tsx" src="examples/#_basic_usage.tsx"></script>
+
+:::
 
 ### Extended usage
 
-@example complex
+::: sandbox
+
+<script lang="tsx" src="examples/#_extended_usage.tsx"></script>
+
+:::

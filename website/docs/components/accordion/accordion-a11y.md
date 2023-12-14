@@ -1,25 +1,26 @@
 ---
-title: A11y
+title: Accordion
 a11y: AA
+tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key              | Function                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.                                         |
 | `Shift + Tab`    | Moves focus to the previous focusable element.                                     |
-| `Space`, `Enter` | When focus is on the accordion header of a collapsed section, expands the section. |
+| `Enter`, `Space` | When focus is on the accordion header of a collapsed section, expands the section. |
 
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role     | Attribute                 | Element  | Usage                                                                                                                                                                                                                       |
 | -------- | ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,7 +31,7 @@ The list below describes roles and attributes that component already has.
 |          | `aria-labelledby="IDREF"` | `div`    | Defines the accessible name for the region element. References the accordion header button that expands and collapses the region. `region` elements are required to have an accessible name to be identified as a landmark. |
 |          | `aria-disabled`             |          | The `aria-disabled` state indicates that the element is perceivable but disabled, so it isn’t editable or otherwise operable. |
 
-@## Considerations for developers
+## Considerations for developers
 
 - Buttons are used as the accordions so that they are tab-able by keyboard users and accessible to screen readers.
 - The accordion button should have an aria-controls attribute set to the `ID` of the element containing the accordion panel content.
@@ -38,11 +39,11 @@ The list below describes roles and attributes that component already has.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html).
 
-@## Resources
+## Resources
 
 - [W3 accordion example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html) has detailed information about the accordion accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html) gives recommendations for the accessible components.
 
-@## Other recommendations
+## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

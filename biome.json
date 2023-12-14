@@ -21,8 +21,8 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
-      "website/docs2/.vitepress/dist",
-      "website/docs2/.vitepress/cache"
+      "website/docs/.vitepress/dist",
+      "website/docs/.vitepress/cache"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -52,8 +52,8 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
-      "website/docs2/.vitepress/dist",
-      "website/docs2/.vitepress/cache",
+      "website/docs/.vitepress/dist",
+      "website/docs/.vitepress/cache",
       "./tools/playground/examples/**"
     ],
     "rules": {

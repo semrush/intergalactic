@@ -1,9 +1,10 @@
 ---
-title: API
+title: D3 chart principles
 fileSource: d3-chart
+tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
-@## Plot
+## Plot
 
 Root element for all charts.
 
@@ -11,9 +12,9 @@ Root element for all charts.
 import { Plot } from '@semcore/ui/d3-chart';
 ```
 
-@typescript PlotProps
+<TypesView type="PlotProps" :types={...types} />
 
-@## Axis
+## Axis
 
 It have children components `Title, Ticks, Grid`.
 
@@ -27,17 +28,17 @@ import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 </XAxis>;
 ```
 
-@typescript XAxisProps
+<TypesView type="XAxisProps" :types={...types} />
 
-@typescript YAxisProps
+<TypesView type="YAxisProps" :types={...types} />
 
-@typescript AxisTitleProps
+<TypesView type="AxisTitleProps" :types={...types} />
 
-@typescript AxisTicksProps
+<TypesView type="AxisTicksProps" :types={...types} />
 
-@typescript AxisGridProps
+<TypesView type="AxisGridProps" :types={...types} />
 
-@## ResponsiveContainer
+## ResponsiveContainer
 
 Container watch to size block.
 
@@ -45,9 +46,9 @@ Container watch to size block.
 import { ResponsiveContainer } from '@semcore/ui/d3-chart';
 ```
 
-@typescript ResponsiveContainerProps
+<TypesView type="ResponsiveContainerProps" :types={...types} />
 
-@## HoverLine
+## HoverLine
 
 Component for show line after hover on chart.
 
@@ -55,9 +56,9 @@ Component for show line after hover on chart.
 import { HoverLine } from '@semcore/ui/d3-chart';
 ```
 
-@typescript HoverProps
+<TypesView type="HoverProps" :types={...types} />
 
-@## HoverRect
+## HoverRect
 
 Component for show sector after hover on chart.
 
@@ -65,4 +66,6 @@ Component for show sector after hover on chart.
 import { HoverRect } from '@semcore/ui/d3-chart';
 ```
 
-@typescript HoverProps
+<TypesView type="HoverProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

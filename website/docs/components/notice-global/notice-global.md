@@ -1,18 +1,88 @@
 ---
 title: NoticeGlobal
 fileSource: notice-global
-tabName: Design
+tabs: Design('notice-global'), A11y('notice-global-a11y'), API('notice-global-api'), Example('notice-global-code'), Changelog('notice-global-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+import NoticeGlobal from '@semcore/ui/notice-global';
+import { Box } from '@semcore/ui/flex-box';
+
+const THEME = ['danger', 'info', 'neutral', 'success', 'warning'];
+
+const LayoutPreview = (props) => (
+  <Box wMin={200} wMax={500}>
+    {props.children}
+  </Box>
+);
+
+const Preview = (preview) => {
+  const { bool, select, radio, text, empty, onChange } = preview('Notice');
+
+  const theme = select({
+    key: 'theme',
+    label: 'Theme',
+    defaultValue: 'neutral',
+    options: THEME.map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const closable = bool({
+    key: 'closable',
+    defaultValue: true,
+    label: 'Close Icon',
+  });
+
+  const msg = text({
+    key: 'text',
+    defaultValue: 'You can place here your message.',
+    label: 'Text',
+  });
+
+  const hidden = empty({
+    key: 'hidden',
+    defaultValue: false,
+  });
+
+  function handlerClose() {
+    onChange('hidden', true);
+    setTimeout(() => {
+      onChange('hidden', false);
+    }, 2000);
+  }
+
+  return (
+    <NoticeGlobal
+      theme={theme}
+      hidden={hidden}
+      closable={closable}
+      onClose={closable ? handlerClose : false}
+    >
+      <NoticeGlobal.Content>{msg}</NoticeGlobal.Content>
+    </NoticeGlobal>
+  );
+};
+
+const App = PlaygroundGeneration(Preview, { LayoutPreview });
+</script>
+
+:::
+
+## Description
 
 **NoticeGlobal** is a component designed for conveying messages about events related to the entire website's operations.
 
-To be considered a notice, it must meet four specific criteria. If it fails to meet at least one of these criteria, it cannot be classified as a notice. Let's explore the distinctions between NoticeGlobal and [Notice](/components/notice/) as well as [NoticeBubble](/components/notice-bubble/).
+To be considered a notice, it must meet four specific criteria. If it fails to meet at least one of these criteria, it cannot be classified as a notice. Let's explore the distinctions between NoticeGlobal and [Notice](/components/notice/notice) as well as [NoticeBubble](/components/notice-bubble/notice-bubble).
 
-@table-caption Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 | Criteria         | Notice | NoticeBubble | NoticeGlobal |
 | ---------------- | ------ | ------------ | ------------ |
@@ -27,7 +97,7 @@ To be considered a notice, it must meet four specific criteria. If it fails to m
 - Notifications about outdated browser versions.
 - Messages related to the entire site's operations, such as downgrades, technical work, and other similar events.
 
-@## Component composition
+## Component composition
 
 ![](static/notice-global-composition.png)
 
@@ -36,7 +106,7 @@ Component consists of the following:
 1. `NoticeGlobal.Content`
 2. `NoticeGlobal.CloseIcon` (optional);
 
-@## Styles
+## Styles
 
 ### Paddings
 
@@ -46,7 +116,7 @@ Component consists of the following:
 
 ![](static/gnotice-margins.png)
 
-@## Themes
+## Themes
 
 ### Neutral
 
@@ -78,14 +148,14 @@ Use this theme to convey serious error or problem messages concerning the entire
 
 ![](static/gnotice-danger.png)
 
-@## Placement in the interface
+## Placement in the interface
 
 - Always position this notice above the main website header.
 - Stretch the notice to cover the full width of the screen.
 
 ![](static/placement.png)
 
-@## Interaction
+## Interaction
 
 ### Appearance
 
@@ -114,7 +184,7 @@ NoticeGlobal can be hide by:
 
 By clicking on the closing icon or closing link, the notice shall smoothly close with a `fade-out` effect lasting `250ms`. The page content moves up to the notice's position within `250ms`.
 
-@## Custom notice
+## Custom notice
 
 These are special notices that have their own unique rules and styles, distinct from default themes.
 
@@ -126,7 +196,7 @@ However, it is crucial to consider that an excessive use of visual elements in n
 
 ![](static/gnotice-illustration.png)
 
-@## Edge cases
+## Edge cases
 
 ### Two notices per page
 
@@ -139,12 +209,8 @@ In situations where a user on the site has two or more global messages to displa
 - Give higher priority to messages that require a response from the user or contain controls to close or exit a special mode.
 - Messages without controls inside should have lower priority. Display them after a user has interacted with a higher priority message.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - You can use global notices to notify about the following: website mode (for example, admin), system status (error, failure, end of works).
 - Keep the messages concise, so they don't obscure other widgets or report functionality. Try to convey the message's meaning to users in just one line.
 
-@page notice-global-a11y
-@page notice-global-api
-@page notice-global-code
-@page notice-global-changelog

@@ -1,14 +1,16 @@
 ---
-title: Email grid
-tabName: Example
+title: Email templates & grid
+tabs: Design('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
 ---
 
-> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+::: warning
+:rotating_light: Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+:::
 
-@## Grid example
+## Grid example
 
-@email_html compiled-examples/grid-column.html src/grid/examples/column.html
+::: legacy_emails_view compiled-examples/grid-column.html src/grid/examples/column.html :::
 
-@## Basic template
+## Basic template
 
-@email_html compiled-examples/grid-template.html src/grid/examples/template.html
+::: legacy_emails_view compiled-examples/grid-template.html src/grid/examples/template.html :::

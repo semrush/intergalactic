@@ -1,4 +1,5 @@
 SLegendItem {
+  min-width: 0;
   align-items: flex-start;
 }
 
@@ -13,6 +14,7 @@ SLegendItem[disabled]:hover {
 SPointShape[color] {
   background-color: var(--color);
   margin-right: 8px;
+  flex-shrink: 0;
 }
 
 SPointShape[shape='Circle'][size='l'] {
@@ -68,6 +70,10 @@ SIcon[size='l'] {
 
 SIcon[size='m'] {
   margin-top: 2px;
+}
+
+SLabel {
+  min-width: 0;
 }
 
 SLabel[size='l'], SAdditionalLabel[size='l'], SCount[size='l'] {

@@ -1,21 +1,95 @@
 ---
 title: TabLine
 fileSource: tab-line
-tabName: Design
+tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import TabLine from '@semcore/ui/tab-line';
+import Badge from '@semcore/ui/badge';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { bool, radio, select } = createGroupWidgets('TabLine');
+
+    const behavior = select({
+      key: 'behavior',
+      defaultValue: 'auto',
+      label: 'Behavior',
+      options: [
+        {name: 'auto', value: 'auto'},
+        {name: 'manual', value: 'manual'}
+      ]
+    });
+
+    const size = radio({
+      key: 'size',
+      defaultValue: 'm',
+      label: 'Size',
+      options: ['m', 'l'],
+    });
+
+    const underlined = bool({
+      key: 'underlined',
+      defaultValue: true,
+      label: 'Underlined',
+    });
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
+    });
+
+    const addon = bool({
+      key: 'addon',
+      defaultValue: false,
+      label: 'With addon',
+    });
+
+    return (
+      <TabLine defaultValue={0} underlined={underlined} size={size} behavior={behavior}>
+        <TabLine.Item value={0}>All</TabLine.Item>
+        <TabLine.Item value={1}>Overview</TabLine.Item>
+        <TabLine.Item value={2}>Issues</TabLine.Item>
+        <TabLine.Item disabled={disabled} value={3}>
+          Progress
+        </TabLine.Item>
+        <TabLine.Item value={4}>
+          {addon
+            ? [
+                <TabLine.Item.Text key={1}>Statistics</TabLine.Item.Text>,
+                <TabLine.Item.Addon key={2}>
+                  <Badge bg='bg-primary-success'>new</Badge>
+                </TabLine.Item.Addon>,
+              ]
+            : 'Statistics'}
+        </TabLine.Item>
+      </TabLine>
+    );
+  },
+  {
+    filterProps: ['defaultValue'],
+  },
+);
+</script>
+
+:::
+
+## Description
 
 **TabLine** is a component for navigating inside a report and grouping homogeneous content in the interface.
 
 **Don't use this component in the following scenarios:**
 
 - As the main navigation in your interface; in such cases, use the main menu instead as it provides better visual hierarchy.
-- For switching between states; for this purpose, use either the [Switch](/components/switch/) or [Radio](/components/radio/) components.
+- For switching between states; for this purpose, use either the [Switch](/components/switch/switch) or [Radio](/components/radio/radio) components.
 
-@## Component composition
+## Component composition
 
 ![](static/tabline-composition.png)
 
@@ -25,19 +99,19 @@ Component consists of the following:
 - `TabLine.Item.Addon`
 - `TabLine.Item.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 - The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 - Addons before and after the text have a margin of 8px.
 
-@table-caption TabLine sizes and margins
+Table: TabLine sizes and margins
 
 | Size (height in px) | Margins               |
 | ------------------- | --------------------- |
 | M (28px)            | ![](static/tab-m.png) |
 | L (40px)            | ![](static/tab-l.png) |
 
-@## Types
+## Types
 
 Depending on the context, you can use TabLine with or without a border-bottom. The border uses the `--border-primary` token for its color.
 
@@ -53,11 +127,11 @@ Use TabLine with border-bottom to visually separate navigation from the content 
 
 ![](static/tab-without-border.png)
 
-@## Addons
+## Addons
 
-Addons inside TabLine.Item have the same margins as addons inside the [Button](/components/button/) component.
+Addons inside TabLine.Item have the same margins as addons inside the [Button](/components/button/button) component.
 
-@table-caption Examples of addons for TabLine
+Table: Examples of addons for TabLine
 
 | Addon   | Appearance example        |
 | ------- | ------------------------- |
@@ -68,15 +142,15 @@ Addons inside TabLine.Item have the same margins as addons inside the [Button](/
 
 **Note the following:**
 
-- Avoid placing a single icon without accompanying text inside `TabLine.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/#usage_in_ux_ui)).
+- Avoid placing a single icon without accompanying text inside `TabLine.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/tab-line#usage_in_ux_ui)).
 - A flag and an icon cannot be placed together in a tab.
-- If both a [Badge](/components/badge/) and a [Counter](/components/counter/) are present inside the tab, the Badge should be placed after the Counter.
+- If both a [Badge](/components/badge/badge) and a [Counter](/components/counter/counter) are present inside the tab, the Badge should be placed after the Counter.
 
 ![](static/monster.png)
 
-@## Interaction
+## Interaction
 
-@table-caption TabLine states
+Table: TabLine states
 
 | State           | Appearance example       | Styles  |
 | --------------- | ------------------------ | ------- |
@@ -85,26 +159,28 @@ Addons inside TabLine.Item have the same margins as addons inside the [Button](/
 | Active          | ![](static/normal-active.png)            | `border-bottom: 2px solid var(--border-info-active)` |
 | Disabled        | ![](static/disabled.png)               | Use `--disabled-opacity` token.  |
 | Initial loading | ![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabLine.Item`, use Skeleton with the size of the text's line-height.                 |
-| Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabLine.Item` is currently being loaded, use [Spin](/components/spin/) with the smallest size (same as in [Button](/components/button)).|
+| Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabLine.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button)).|
 
 ### Animation
 
 When switching between active tabs, the border-bottom moves with an `ease` transition and a duration of `500ms`.
 
-@## Placement in the interface
+## Placement in the interface
 
-TabLine is always placed under the [ProductHead](/components/product-head/) of the report, following the title, additional controls, and filters that affect the entire report.
+TabLine is always placed under the [ProductHead](/components/product-head/product-head) of the report, following the title, additional controls, and filters that affect the entire report.
 
 - The margin between ProductHead content and TabLine is always 24px.
 - The margin between TabLine and the title/widget below is always 16px.
 
 ![](static/tabs-margins.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 In cases where you have many tabs or there isn't enough space for the full tab text, collapse the text using an `ellipsis`.
 
-> Make sure to add a tooltip with the full text message to such collapsed tabs.
+::: tip
+Make sure to add a tooltip with the full text message to such collapsed tabs.
+:::
 
 ![](static/ellipsis.png)
 
@@ -122,9 +198,5 @@ TabLine can also be used on settings pages and landings to separate information 
 
 ![](static/tabs-example-2.png)
 
-The rules for the naming and ordering of items are similar to the [Pills](/components/pills/) component, and the rules for the `disabled` state are also similar to the Pills.
+The rules for the naming and ordering of items are similar to the [Pills](/components/pills/pills) component, and the rules for the `disabled` state are also similar to the Pills.
 
-@page tab-line-a11y
-@page tab-line-api
-@page tab-line-code
-@page tab-line-changelog

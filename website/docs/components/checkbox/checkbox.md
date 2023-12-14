@@ -1,12 +1,82 @@
 ---
 title: Checkbox
 fileSource: checkbox
-tabName: Design
+tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import Checkbox from '@semcore/ui/checkbox';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { bool, radio, select, text, onChange } = createGroupWidgets('Checkbox');
+
+    const size = radio({
+      key: 'size',
+      defaultValue: 'm',
+      label: 'Size',
+      options: ['m', 'l'],
+    });
+
+    const checked = bool({
+      key: 'checked',
+      defaultValue: false,
+      label: 'Checked',
+    });
+
+    const indeterminate = bool({
+      key: 'indeterminate',
+      defaultValue: false,
+      label: 'Indeterminate',
+    });
+
+    const state = select({
+      key: 'state',
+      defaultValue: 'normal',
+      label: 'State',
+      options: ['normal', 'invalid'].map((value) => ({
+        name: value,
+        value,
+      })),
+    });
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
+    });
+
+    const children = text({
+      key: 'children',
+      defaultValue: 'Label text',
+      label: 'Children',
+    });
+
+    return (
+      <Checkbox
+        size={size}
+        state={state}
+        disabled={disabled}
+        checked={checked}
+        onChange={(v) => onChange('checked', v)}
+        indeterminate={indeterminate}
+        label={children}
+      />
+    );
+  },
+  {
+    filterProps: ['onChange'],
+  },
+);
+</script>
+
+:::
+
+## Description
 
 **Checkbox** is a component for selecting one or more values or options.
 
@@ -16,7 +86,7 @@ The checkbox component is used to select one or more options from a list. It dis
 
 Multi-selection, which is commonly used in filters, is the exception to the image above.
 
-@## Component composition
+## Component composition
 
 ![](static/checkbox-composition.png)
 
@@ -26,13 +96,13 @@ Component consists of the following:
 2. `Checkbox.Value`
 3. `Checkbox.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 ### Sizes
 
 Checkbox has two sizes: M and L. The text label is always positioned to the right of the checkbox.
 
-@table-caption Checkbox sizes
+Table: Checkbox sizes
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
@@ -43,45 +113,49 @@ Checkbox has two sizes: M and L. The text label is always positioned to the righ
 
 The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
 
-@table-caption Checkbox margins
+Table: Checkbox margins
 
 | Size (px)        | Margins                                         |
 | ---------------- | ----------------------------------------------- |
 | M (16px * 16px) | ![](static/margins-m.png) ![](static/vert-m.png) |
 | L (20px * 20px) | ![](static/margins-l.png) ![](static/vert-l.png) |
 
-@## Checkbox with a paragraph
+## Checkbox with a paragraph
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-@table-caption Checkbox with a paragraph of text
+Table: Checkbox with a paragraph of text
 
 | Checkbox size (px) | Paragraph size (px)    | Appearance example                           |
 | ------------------ | ---------------------- | -------------------------------------------- |
 | M (16px * 16px)   | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
 | L (20px * 20px)   | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
-@## Checkbox with Info icon
+## Checkbox with Info icon
 
 Add an `Info` icon next to the checkbox label to provide more information about checkbox's purpose. User can hover over the icon to see a tooltip with additional details.
 
 ![](static/info-icon.png)
 
-> Info icon should have `margin-left: 4px`.
+::: tip
+Info icon should have `margin-left: 4px`.
+:::
 
 ![](static/info-icon-margin.png)
 
-@## Checkbox with a link inside
+## Checkbox with a link inside
 
-Text label may contain a [Link](/components/link).
+Text label may contain a [Link](/components/link/link).
 
 ![](static/link.png)
 
-> Note, that the checkbox text active zone shouldn't include a link.
+::: tip
+Note, that the checkbox text active zone shouldn't include a link.
+:::
 
 ![](static/link-hover-zone.png)
 
-@## Interaction
+## Interaction
 
 - Hovering over the "Checkbox and text" area changes the cursor to a pointer.
 - Clicking anywhere on the "Checkbox and text" area changes the state of the checkbox.
@@ -90,7 +164,7 @@ Text label may contain a [Link](/components/link).
 
 ### States
 
-@table-caption Checkbox states
+Table: Checkbox states
 
 | State                 | Appearance example                            |
 | --------------------- | --------------------------------------------- |
@@ -102,7 +176,7 @@ Text label may contain a [Link](/components/link).
 | Indeterminate invalid | ![](static/state-indetermenate-invalid.png)   |
 | Disabled              | ![](static/state-disabled.png)                |
 
-@## Checkbox group
+## Checkbox group
 
 To save the user's time, use the "Select all" and "Deselect all" options for checkbox groups with more than 6-7 options. These buttons will select or deselect all checkboxes in the group:
 
@@ -118,7 +192,9 @@ If you have a checkbox tree, the top-level checkbox has three states:
 - `checked`;
 - `indeterminate` - this state shows that some options of the tree are selected.
 
-> If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
+::: tip
+If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
+:::
 
 ![](static/tree.png)
 
@@ -133,7 +209,7 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 
 ![](static/select-all.png) ![](static/deselect-all.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 
@@ -146,12 +222,8 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 Here are some other checkbox recommendations:
 
 - Only use checkboxes for changing settings and not as action buttons.
-- The [switch](/components/switch/) is better for binary settings since it performs an action while checkboxes have a status. [Radio buttons](/components/radio/) are also good for binary settings.
-- Use checkboxes for suspended actions and radio buttons for immediate actions. [Switches](/components/switch/) and [radio buttons](/components/radio/) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
+- The [switch](/components/switch/switch) is better for binary settings since it performs an action while checkboxes have a status. [Radio buttons](/components/radio/radio) are also good for binary settings.
+- Use checkboxes for suspended actions and radio buttons for immediate actions. [Switches](/components/switch/switch) and [radio buttons](/components/radio/radio) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
 - For checkbox groups with more than six options, include "Select all" and "Deselect all" controls to save time.
 - When a checkbox is used in a table to select the entire row, make sure the target area covers the entire table cell where the checkbox is located.
 
-@page checkbox-a11y
-@page checkbox-api
-@page checkbox-code
-@page checkbox-changelog

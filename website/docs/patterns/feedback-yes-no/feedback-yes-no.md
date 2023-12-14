@@ -1,14 +1,14 @@
 ---
 title: FeedbackYesNo
 fileSource: feedback-form
-tabName: Design
+tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
-@## Description
+## Description
 
-**FeedbackYesNo** represents a feedback collection pattern. This pattern consists of the [Notice](/components/notice/) and [Feedback form](/components/feedback/). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
+**FeedbackYesNo** represents a feedback collection pattern. This pattern consists of the [Notice](/components/notice/notice) and [Feedback form](/components/feedback/feedback). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
 
-@## Component appearance
+## Component appearance
 
 There are two potential variants for the notice to appear:
 
@@ -17,7 +17,7 @@ There are two potential variants for the notice to appear:
 
 The length of a session is determined by the Product Owner or UX designer of the product. It might be defined as a time interval, the next page load, or an update of company data.
 
-@## Location
+## Location
 
 Typically, this component is positioned at the top of a report or product.
 
@@ -27,23 +27,23 @@ It is also could be placed next to the feature for which feedback is desired.
 
 ![](static/send-feedback-notice-next-to-feature.png)
 
-@## Styles
+## Styles
 
 ![](static/feedback-yes-no.png)
 
 - The notice's height is 72px.
-- Preceding the text, include the [Feedback illustration](/style/illustration/). The image dimensions are 40px x 40px.
+- Preceding the text, include the [Feedback illustration](/style/illustration/illustration). The image dimensions are 40px x 40px.
 - The "Ask me later" button is designed as a button with `use="tertiary"` and `theme="info"`, not as a link.
 
 ### Margins and paddings
 
 ![](static/feedback-yes-no-sizes.png)
 
-@## Form behavior
+## Form behavior
 
-Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback/).
+Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback/feedback).
 
-@## Buttons behavior
+## Buttons behavior
 
 ### "Yes" and "No" buttons
 
@@ -62,7 +62,7 @@ Refer to the comprehensive behavior description of the feedback dropdown in the 
 - Pressing the "Yes" or "No" button reverts it to its normal state.
 - The notice remains visible.
 
-@## Closing and appearing of the notice
+## Closing and appearing of the notice
 
 ### "Ask me later" button
 
@@ -80,15 +80,15 @@ Display this element if the report or product offers an alternate method for sen
 - The first option involves having the `Close` icon always present within the notice.
 - The second option (**recommended**) entails the `Close` icon appearing after clicking "Ask me later" and upon reopening the notice in the second session (which could be the second, third, or subsequent sessions).
 
-@## Remembering states
+## Remembering states
 
 1. If the user submits feedback, the notice will no longer appear to them.
 2. Storing this status in the user's profile is advisable, in order to avoid being intrusive.
 3. It is permissible to use local storage for saving the closing and appearing statuses.
 
-@## Events arrangement
+## Events arrangement
 
-@table-caption Events arrangement
+Table: Events arrangement
 
 | Description                                                          | Action        | Label               | Value       |
 | -------------------------------------------------------------------- | ------------- | ------------------- | ----------- |
@@ -104,8 +104,6 @@ Display this element if the report or product offers an alternate method for sen
 | Appearance of an error in the input for the email                    | FeedbackYesNo | No valid Email      |             |
 | Error of empty email                                                 | FeedbackYesNo | Empty Email         |             |
 | Error of empty comment                                               | FeedbackYesNo | Empty Comment       |             |
-| Appearance of the [red notice](/components/notice/) on wrong sending | FeedbackYesNo | Error Send          |             |
+| Appearance of the [red notice](/components/notice/notice) on wrong sending | FeedbackYesNo | Error Send          |             |
 | Click email for communication `You can also send us an email...`     | FeedbackYesNo | Click Email Support |             |
 
-@page feedback-yes-no-a11y
-@page feedback-yes-no-code

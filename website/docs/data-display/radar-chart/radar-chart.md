@@ -1,20 +1,92 @@
 ---
 title: Radar chart
 fileSource: d3-chart
-tabName: Design
+tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+:::
 
-@import playground
+::: react-view
 
-@## Description
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, RadarChartProps } from '@semcore/d3-chart';
+
+const data = {
+  categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
+  data_1: [1, 3, 5, 5, 9, 2],
+  data_2: [5, 2, 1, 2, 7, 6],
+};
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Radar');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  label({ label: 'Linear chart props', key: 'linearChartProps' });
+
+  const showDots = bool({
+    key: 'showDots',
+    defaultValue: true,
+    label: 'Show dots',
+  });
+
+  const circle = bool({
+    key: 'circle',
+    defaultValue: false,
+    label: 'Circle',
+  });
+
+  const chartProps: RadarChartProps = {
+    data,
+    groupKey: 'categories',
+    plotWidth: 300,
+    plotHeight: 300,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+    showDots,
+    circle,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Radar {...chartProps} />;
+}, {filterProps: ['data']});
+
+</script>
+
+:::
+
+## Description
 
 **Radar chart** is a chart for displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point.
 
 It is designed to show similarities, differences, and outliers, or any other item of interest at a glance.
 
-> The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
+::: tip
+The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
+:::
 
 **Use radar chart when:**
 
@@ -26,7 +98,9 @@ It is designed to show similarities, differences, and outliers, or any other ite
 
 Radar charts are at their best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to their circular structure and their relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide – we’ll talk more about that in a later section), but technical audiences might find them intriguing.
 
-> Instead of the radar chart, you can use the parallel coordinates chart. This chart "unwinds" the same data into a straight line, which can make the comparisons across data easier to see.
+::: tip
+Instead of the radar chart, you can use the parallel coordinates chart. This chart "unwinds" the same data into a straight line, which can make the comparisons across data easier to see.
+:::
 
 ### Advantages of radar charts
 
@@ -45,9 +119,11 @@ Their main cons are:
 - Radar charts can create connections where there are none.
 - Radar charts can cause occlusion and confusion.
 
-> Additionally, humans recognize and can discern data in shapes like squares, circles, and triangles. Therefore, from a psychological standpoint, the random nature of radar chart shapes makes them less useful than known and quantifiable shapes.
+::: tip
+Additionally, humans recognize and can discern data in shapes like squares, circles, and triangles. Therefore, from a psychological standpoint, the random nature of radar chart shapes makes them less useful than known and quantifiable shapes.
+:::
 
-@## Appearance
+## Appearance
 
 ### Axes and variables
 
@@ -72,9 +148,11 @@ You can turn off grid ticks and labels if needed. It can be helpful for small-si
 
 You can curve polygons (datasets), if needed.
 
-> To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
->
-> You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+::: tip
+To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
+
+You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+:::
 
 ![Radar chart with curved polygons as datasets.](static/curved-radar-1.png)
 
@@ -101,7 +179,7 @@ Areas use the same color as the line, but with 20% opacity. Areas are enabled by
 
 ### Size
 
-Size can be set through the `width` and `height` properties ([check API](/data-display/d3-chart/d3-chart-api/#plot)). Chart components don't have maximum and minimum size.
+Size can be set through the `width` and `height` properties ([check API](/data-display/d3-chart/d3-chart-api#plot)). Chart components don't have maximum and minimum size.
 
 For a small radar chart, we recommend turning off scales, variables, labels, and data points to reduce visual noise. For example:
 
@@ -117,7 +195,7 @@ If a variable's label is too long, wrap it to the next line:
 
 ### Non-text labels
 
-Variables can be labeled with other components such as [Tag](/components/tag), [Button](/components/button), or [Icon](/style/icon):
+Variables can be labeled with other components such as [Tag](/components/tag/tag), [Button](/components/button/button), or [Icon](/style/icon/icon):
 
 ![Radar chart with Tag component as variables' labels instead of text labels.](static/non-text-variables.png)
 
@@ -136,7 +214,7 @@ Variables can have different scales. To reduce visual noise, we recommend that y
 
 ![Radar chart with variables that have different scales.](static/scales-3.png)
 
-@## Data sets
+## Data sets
 
 The radar chart is best suited for comparing several dimensions when there isn't much space in the interface. These charts are most beneficial when there are a few datasets to compare. We recommend you use it for no more than three datasets. Five datasets can make a mess out of your chart.
 
@@ -158,7 +236,7 @@ Your charts could look like this:
 ![Radar chart with curved datasets.](static/curved-radar-1.png)
 ![Radar chart with curved datasets.](static/curved-radar-2.png)
 
-@## Legend
+## Legend
 
 If there is more than one dataset, your chart needs a legend. Place it above the chart or on the right side.
 
@@ -173,7 +251,7 @@ To highlight one dataset and dim the others on the chart, use the `transparent` 
 
 ![While hovering the legend checkbox for the specific dataset, other datasets on the chart gets 30% opacity.](static/legend-hover.png)
 
-@## Interaction
+## Interaction
 
 On hover, the chart shows the values of the variable for all datasets.
 
@@ -186,7 +264,7 @@ Highlight the variable line with the `--chart-grid-y-accent-hover` color token.
 
 Data points that lie on this variable are increased to 12px (plus 2px outer border).
 
-@## Animation
+## Animation
 
 Data sets grow from the 0 point (from the center) using animation with these properties:
 
@@ -196,13 +274,13 @@ animation-delay: 400ms;
 animation-duration: 100ms;
 ```
 
-@## Tooltip
+## Tooltip
 
 Tooltips show a variable's data for all datasets:
 
 ![](static/tooltip-example-2.png)
 
-@## Edge cases
+## Edge cases
 
 ### No data
 
@@ -220,17 +298,17 @@ If for some reason data isn't available, show `n/a` in the tooltip. Data point i
 
 ### Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![](static/radar-skeleton.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 **When creating a radar chart, there are a few best practices.**
 
@@ -252,5 +330,3 @@ If there are multiple data series, the filled-in color should be transparent.
 
 ![](static/multiple-sets-yes-no.png)
 
-@page radar-chart-api
-@page radar-chart-code

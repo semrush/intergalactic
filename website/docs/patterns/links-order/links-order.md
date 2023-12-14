@@ -2,11 +2,11 @@
 title: Links order in ProductHead
 ---
 
-Place additional links in the upper right corner of the [ProductHead](/components/product-head/) in the following order:
+Place additional links in the upper right corner of the [ProductHead](/components/product-head/product-head) in the following order:
 
 ![](static/links-order.png)
 
-@table-caption Links order in ProductHead
+Table: Links order in ProductHead
 
 | Link name    | Description         | Appearance example                |
 | ------------ | ------------------- | --------------------------------- |
@@ -23,4 +23,6 @@ Place additional links in the upper right corner of the [ProductHead](/component
 | **User manual**                                             | Opens page with the Knowledge Base manual.                                       | ![](static/link11.png) |
 | **Send feedback**                                           | Opens dropdown with feedback form.                                                  | ![](static/link12.png) |
 
-> For more information about link styles, refer to the [Link](/components/link/).
+::: tip
+For more information about link styles, refer to the [Link](/components/link/link).
+:::
