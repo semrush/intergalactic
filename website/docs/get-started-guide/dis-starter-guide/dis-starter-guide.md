@@ -32,18 +32,18 @@ The Intergalactic Design System relies on two sets of design tokens: basic and s
 
 Tools like [Huetone](https://huetone.ardov.me/) can help you creating new palette.
 
-Refer to [Design tokens](/style/design-tokens/design-tokens) to learn more about the tokens and their usage.
+Refer to [Design tokens](/style/design-tokens/design-tokens), to learn more about the tokens and their usage.
 
 ## Typography
 
-The main font used in the Intergalactic Design System is Inter. Our type scale is based on a modular scale with a 12px font size and a 1.2 ratio.
+The main font used in the Intergalactic Design System is Inter. Refer to this recommendations when working with typography:
 
-- h1, h1, h3, h4 are used for hero blocks, big advertising blocks and notices, as well as product landings and the ProductHead component.
-- h5, h6 are used for smaller elements, as well as widgets and notices inside products.
+- Use h1, h1, h3, h4 for hero blocks, big advertising blocks and notices, as well as product landings and [ProductHead](/components/product-head/product-head) component.
+- Use h5, h6 for smaller elements, as well as widgets and notices inside products.
 
-We strongly recommend using 14px and 16px font sizes for text messages to optimize readability.
+We strongly recommend using 14px and 16px font sizes for body text and important text messages to optimize readability.
 
-See [Typography](/style/typography/typography) if want to learn more about our recommendations on typography.
+Refer to [Typography](/style/typography/typography), to learn more about our recommendations on typography.
 
 ## Breakpoints
 

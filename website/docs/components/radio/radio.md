@@ -144,12 +144,12 @@ Note, that the radio button text active zone shouldn't include a link.
 
 Table: Radio button states
 
-|           | Appearance                            |
-| --------- | ------------------------------------- |
-| Normal    | ![](static/radio button-default.png)   |
-| Checked   | ![](static/radio button-checked.png)   |
-| Invalid   | ![](static/radio button-invalid.png)   |
-| Disabled  | ![](static/radio button-disabled.png)  |
+|           | Appearance                           |
+| --------- | ------------------------------------ |
+| Normal    | ![](static/radiobutton-default.png)  |
+| Checked   | ![](static/radiobutton-checked.png)  |
+| Invalid   | ![](static/radiobutton-invalid.png)  |
+| Disabled  | ![](static/radiobutton-disabled.png) |
 
 ## Usage in UX/UI
 
