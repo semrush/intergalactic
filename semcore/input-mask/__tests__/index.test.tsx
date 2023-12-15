@@ -4,7 +4,7 @@ import InputMask from '../src';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -36,6 +36,40 @@ describe('InputMask', () => {
 
     expect(input.value).toBe('33 3');
     await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('should correctly work with `Backspace`', async () => {
+    const Component = () => (
+      <InputMask size='l' mb={4}>
+        <InputMask.Value
+          mask='+234 (999)999-999'
+          title='4-digit number'
+          data-testid='input'
+          includeInputProps={['data-testid']}
+        />
+      </InputMask>
+    );
+
+    const { getByTestId } = render(<Component />);
+    const input = getByTestId('input') as HTMLInputElement;
+
+    await userEvent.keyboard('[Tab]');
+
+    expect(input).toHaveFocus();
+
+    await userEvent.keyboard('3');
+    await userEvent.keyboard('2');
+    await userEvent.keyboard('2');
+
+    expect(input.value).toBe('+234 (322');
+
+    await userEvent.keyboard('[Backspace]');
+    await userEvent.keyboard('[Backspace]');
+    await userEvent.keyboard('[Backspace]');
+
+    expect(input.value).toBe('+234');
+    expect(input.selectionStart).toBe(4);
+    expect(input.selectionEnd).toBe(4);
   });
 
   test('a11y', async () => {

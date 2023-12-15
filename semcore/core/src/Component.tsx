@@ -35,6 +35,7 @@ export interface IRootComponentProps<Props = {}, Ctx = {}> {
   Children?: any;
   children?: ChildrenType<Props, Ctx>;
   styles?: IStyledProps['styles'];
+  'data-ui-name'?: string;
 }
 
 /** @deprecated */
@@ -97,7 +98,7 @@ abstract class RootComponent<
   Context = {},
   State = {},
   Enhance = {},
-> extends PureComponent<Props & IRootComponentProps<Props, Context>, State> {
+> extends PureComponent<Props, State> {
   get handlers(): Readonly<IRootComponentHandlers> {
     return {};
   }
