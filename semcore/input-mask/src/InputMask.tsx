@@ -70,6 +70,10 @@ export type InputMaskValueProps = InputValueProps & {
 
   includeInputProps?: string[];
 
+  /**
+   * Field for describe which symbols will use as mask
+   * @default `{_: true}`
+   */
   maskOnlySymbols?: Record<string, boolean>;
 };
 

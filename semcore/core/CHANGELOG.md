@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Types in `Component`.
+- Internal types in `Component`.
 
 ## [2.12.0] - 2023-11-29
 

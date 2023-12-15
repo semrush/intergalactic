@@ -4,9 +4,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.15.1] - 2023-12-14
 
+### Added
+
+- ``
+
 ### Fixed
 
-- Selector position after keypress `Backspace`.
+- Text cursor position after keypress `Backspace`.
 
 ## [5.15.0] - 2023-12-06
 
