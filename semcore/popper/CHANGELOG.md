@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.13.0] - 2023-12-14
 
-### Added
+### Fixed
 
-- Added `highlighted` flag in `Popper.Trigger`
+- `Select.Item's` `Tooltip` with keyboard navigation.
 
 ## [5.12.1] - 2023-12-07
 
