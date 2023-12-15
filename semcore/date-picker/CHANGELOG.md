@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.2] - 2023-12-15
+
+### Added
+
+- Set `displayedPeriod` from current `value` for each open of `Calendar`.
+
 ## [4.20.1] - 2023-12-07
 
 ### Changed
