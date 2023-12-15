@@ -14,7 +14,7 @@ export const collectComponentChangelogs = async () => {
     ...(await fs.readdir(resolvePath(filename, '../../../../tools'))).map((packageName) =>
       resolvePath(filename, '../../../../tools', packageName),
     ),
-  ].filter((path) => !path.endsWith('/semcore/ui'));
+  ].filter((path) => !path.endsWith('/semcore/ui') && !path.endsWith('/tools/entry-point'));
 
   return (
     await Promise.all(

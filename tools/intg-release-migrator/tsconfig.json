@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": false,
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": ["tools/**/*"]
+}

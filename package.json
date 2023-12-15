@@ -2,7 +2,7 @@
   "packageManager": "pnpm@8.7.6",
   "scripts": {
     "start": "pnpm playground",
-    "build": "pnpm run clean && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/illustration --filter !@semcore/ui run build",
+    "build": "pnpm run clean && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/illustration --filter !@semcore/ui --filter !intergalactiс-migrate run build",
     "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/utils/theme/processor.ts",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
     "install-n-test": "pnpm install && pnpm test",
@@ -54,6 +54,8 @@
     "@semcore/builder": "workspace:*",
     "@semcore/changelog-handler": "workspace:*",
     "@semcore/continuous-delivery": "workspace:*",
+    "intergalactic-migrate": "workspace:*",
+    "intergalactic": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
     "@semcore/esbuild-plugin-semcore": "workspace:*",

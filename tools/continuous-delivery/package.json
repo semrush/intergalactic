@@ -4,7 +4,9 @@
   "main": "index.ts",
   "bin": {
     "deliver-prerelease": "bin/deliver-prerelease.ts",
-    "publish-release": "bin/publish-release.ts"
+    "publish-release": "bin/publish-release.ts",
+    "intg-publish-release": "bin/intg-publish-release.ts",
+    "intg-publish-prerelease": "bin/intg-publish-prerelease.ts"
   },
   "private": true,
   "license": "MIT",
@@ -22,7 +24,8 @@
     "p-limit": "4.0.0",
     "semver": "5.6.0",
     "simple-git": "3.16.0",
-    "tsm": "2.2.2"
+    "tsm": "2.2.2",
+    "intergalactic-migrate": "workspace:*"
   },
   "scripts": {
     "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts"

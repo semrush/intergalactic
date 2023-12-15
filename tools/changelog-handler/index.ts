@@ -10,3 +10,4 @@ export { serializeReleaseChangelog } from './src/serializers/serializeReleaseCha
 export { toMarkdown } from 'marked-ast-markdown';
 export type { Changelog, ChangelogChange, ChangelogChangeLabel } from './src/types';
 export { mergeChangelogs } from './src/mergeChangelogs';
+export { patchReleaseChangelog } from './src/patchers/patchReleaseChangelog';
