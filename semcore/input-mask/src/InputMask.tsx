@@ -17,9 +17,10 @@ import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { Box, Flex } from '@semcore/flex-box';
 import { forkRef } from '@semcore/utils/lib/ref';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement, { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
 
 import style from './style/input-mask.shadow.css';
+import { callAllEventHandlers } from '@semcore/utils/src/assignProps';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
@@ -68,6 +69,12 @@ export type InputMaskValueProps = InputValueProps & {
   title?: string;
 
   includeInputProps?: string[];
+
+  /**
+   * Field for describe which symbols will use as mask
+   * @default `{_: true}`
+   */
+  maskOnlySymbols?: Record<string, boolean>;
 };
 
 type InputMaskCtx = {
@@ -98,7 +105,7 @@ class InputMask extends Component<IInputProps> {
   }
 }
 
-class Value extends Component<IInputMaskValueProps> {
+class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',
@@ -143,7 +150,7 @@ class Value extends Component<IInputMaskValueProps> {
   }
 
   componentDidUpdate(prevProps: any) {
-    const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
+    const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'] as const;
     const maskConfigChanged = maskConfigProps.some(
       (prop) => this.asProps[prop] !== prevProps[prop],
     );
@@ -261,11 +268,23 @@ class Value extends Component<IInputMaskValueProps> {
 
   onFocus = () => {
     setTimeout(() => {
-      if (!this.inputRef.current) return;
-      const { value } = this.inputRef.current;
-      const afterPotionValue = getAfterPositionValue(value);
-      this.inputRef.current.setSelectionRange(afterPotionValue, afterPotionValue);
+      this.setSelectionRange();
     }, 0);
+  };
+
+  onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace') {
+      setTimeout(() => {
+        this.setSelectionRange();
+      }, 0);
+    }
+  };
+
+  setSelectionRange = () => {
+    if (!this.inputRef.current) return;
+    const { value } = this.inputRef.current;
+    const afterPotionValue = getAfterPositionValue(value);
+    this.inputRef.current.setSelectionRange(afterPotionValue, afterPotionValue);
   };
 
   maskStrToRegexArray = (mask: string) => {
@@ -305,7 +324,10 @@ class Value extends Component<IInputMaskValueProps> {
       this.asProps['data-ui-name'] || InputMask.displayName,
     );
 
-    const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
+    const [controlProps, boxProps] = getInputProps(
+      otherProps,
+      includeInputProps as Array<keyof typeof otherProps>,
+    );
     const ref = forkRef(this.inputRef, forwardRef!);
 
     return (
@@ -343,6 +365,7 @@ class Value extends Component<IInputMaskValueProps> {
                   wMin={this.state.maskWidth}
                   aria-describedby={`hint-${uid}`}
                   {...controlProps}
+                  onKeyDown={callAllEventHandlers(this.onKeyDown, controlProps.onKeyDown)}
                   __excludeProps={['placeholder']}
                 />
                 <Children />
