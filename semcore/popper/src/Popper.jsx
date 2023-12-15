@@ -456,7 +456,10 @@ function Trigger(props) {
     disableEnforceFocus,
     active,
     popperRef,
+    highlighted,
   } = props;
+
+  const triggerRef = React.createRef();
 
   const { returnFocusEl, handleFocusReturnElBlur, handleFocus } = useReturnFocusEl(
     interaction,
@@ -468,6 +471,12 @@ function Trigger(props) {
     popperRef,
   );
 
+  React.useEffect(() => {
+    if (highlighted === true) {
+      onKeyboardFocus({ currentTarget: triggerRef.current });
+    }
+  }, [highlighted]);
+
   return (
     <>
       {returnFocusEl === 'before' && (
@@ -478,7 +487,14 @@ function Trigger(props) {
           style={focusCatcherStyles}
         />
       )}
-      <STrigger render={Box} inline role='button' aria-haspopup={true} onFocus={handleFocus}>
+      <STrigger
+        render={Box}
+        inline
+        role='button'
+        aria-haspopup={true}
+        onFocus={handleFocus}
+        ref={triggerRef}
+      >
         <Children />
       </STrigger>
       {focusHint && false && (
