@@ -33,29 +33,13 @@ async function makeIndexType(componentName: string) {
 async function makeIndexCJS(componentName: string) {
   const dataToWrite = `"use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-Object.defineProperty(exports, "__esModule", {
-  value: true
+module.exports.__esModule = true
+var item = require("./lib/cjs/index");
+module.exports = item['default'] || {};
+Object.keys(item).forEach(function (key) {
+  module.exports[key] = item[key]
 });
-var _exportNames = {};
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _Item["default"];
-  }
-});
-var _Item = _interopRequireWildcard(require("./lib/cjs/index"));
-Object.keys(_Item).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _Item[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Item[key];
-    }
-  });
-});`;
+`;
   const pathToFile = path.resolve(dirname, componentName, 'index.js');
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
