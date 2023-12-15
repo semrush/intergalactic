@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.13.0] - 2023-12-14
+
+### Fixed
+
+- `Select.Item's` `Tooltip` with keyboard navigation.
+
 ## [5.12.1] - 2023-12-07
 
 ### Fixed
