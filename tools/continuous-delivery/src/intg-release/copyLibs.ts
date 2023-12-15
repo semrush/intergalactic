@@ -33,11 +33,11 @@ async function makeIndexType(componentName: string) {
 async function makeIndexCJS(componentName: string) {
   const dataToWrite = `"use strict";
 
-module.exports.__esModule = true
+module.exports.__esModule = true;
 var item = require("./lib/cjs/index");
 module.exports = item['default'] || {};
 Object.keys(item).forEach(function (key) {
-  module.exports[key] = item[key]
+  module.exports[key] = item[key];
 });
 `;
   const pathToFile = path.resolve(dirname, componentName, 'index.js');

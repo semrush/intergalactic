@@ -4,9 +4,15 @@ import { execSync } from 'child_process';
 export const publishTarball = async (name: string, dirname: string) => {
   log('Publishing package...');
 
-  const pnpmOptions = process.argv.includes('--dry-run')
+  let pnpmOptions = process.argv.includes('--dry-run')
     ? '--dry-run --no-git-checks'
     : '--no-git-checks';
+
+  const prerelease = name.includes('prerelease');
+
+  if (prerelease) {
+    pnpmOptions += ' --tag beta';
+  }
 
   log(`pnpm options "${pnpmOptions}".`);
 

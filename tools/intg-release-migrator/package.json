@@ -1,6 +1,6 @@
 {
   "name": "intergalactic-migrate",
-  "version": "0.0.0-prerelease.3",
+  "version": "0.0.0",
   "license": "MIT",
   "main": "tools/index.js",
   "scripts": {

@@ -3337,7 +3337,7 @@ importers:
   tools/entry-point:
     dependencies:
       intergalactic-migrate:
-        specifier: '*'
+        specifier: 0.0.0
         version: link:../intg-release-migrator
       react:
         specifier: 16.8 - 18
