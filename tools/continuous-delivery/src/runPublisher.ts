@@ -141,10 +141,6 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     log('Pushing to git origin...');
     await git.push('origin', 'master', { '--follow-tags': null });
     log('Pushed to git origin.');
-
-    if (semcoreUiPatch && !prerelease) {
-      await publishReleaseNotes();
-    }
   }
   log('Publisher work is done.');
 };

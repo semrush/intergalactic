@@ -1,0 +1,17 @@
+{
+  "name": "intergalactic",
+  "version": "15.42.3",
+  "license": "MIT",
+  "dependencies": {
+    "intergalactic-migrate": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "tools/entry-point"
+  }
+}

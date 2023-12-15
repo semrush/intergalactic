@@ -130,6 +130,12 @@ importers:
       inquirer:
         specifier: 6.3.1
         version: 6.3.1
+      intergalactic:
+        specifier: workspace:*
+        version: link:tools/entry-point
+      intergalactic-migrate:
+        specifier: workspace:*
+        version: link:tools/intg-release-migrator
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3287,6 +3293,9 @@ importers:
       fs-extra:
         specifier: 9.0.1
         version: 9.0.1
+      intergalactic-migrate:
+        specifier: workspace:*
+        version: link:../intg-release-migrator
       marked-ast:
         specifier: 0.3.0
         version: 0.3.0
@@ -3324,6 +3333,18 @@ importers:
       semver:
         specifier: 6.3.0
         version: 6.3.0
+
+  tools/entry-point:
+    dependencies:
+      intergalactic-migrate:
+        specifier: 0.0.0
+        version: link:../intg-release-migrator
+      react:
+        specifier: 16.8 - 18
+        version: 18.2.0
+      react-dom:
+        specifier: 16.8 - 18
+        version: 18.2.0(react@18.2.0)
 
   tools/esbuild-plugin-semcore:
     dependencies:
@@ -3402,6 +3423,25 @@ importers:
       babel-plugin-tester:
         specifier: 7.0.1
         version: 7.0.1(@babel/core@7.19.1)
+
+  tools/intg-release-migrator:
+    dependencies:
+      '@ast-grep/napi':
+        specifier: 0.13.0
+        version: 0.13.0
+      fs-extra:
+        specifier: 9.0.1
+        version: 9.0.1
+      yargs:
+        specifier: 17.7.2
+        version: 17.7.2
+    devDependencies:
+      '@types/fs-extra':
+        specifier: 9.0.13
+        version: 9.0.13
+      typescript:
+        specifier: 5.3.2
+        version: 5.3.2
 
   tools/playground:
     dependencies:
@@ -4312,6 +4352,72 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
+
+  /@ast-grep/napi-darwin-arm64@0.13.0:
+    resolution: {integrity: sha512-O9TgxfWQX1A7ppTCuoxhCe66vFrCNiqFPhWBzqfVZy4b4htDrZgt9XtuPfkau0tJgybpyv6G+aiURf5ejEqaFg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ast-grep/napi-darwin-x64@0.13.0:
+    resolution: {integrity: sha512-85N0WNEK/iicakQd+vDmGg500JjC3WVbSv2zJFpEPc+1SvAwZLpaRIPY1Y+XTOFvN9XKy7h9hczcoDobvJVl1Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ast-grep/napi-linux-x64-gnu@0.13.0:
+    resolution: {integrity: sha512-/k0MNAGdInIB7Mf/68Ma+TQnY11KC5Jp2fnUFDyIPm08chCeDxFiPiaz8WryD8NEC+y0H0p33Tdytn86H0FbiA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ast-grep/napi-win32-arm64-msvc@0.13.0:
+    resolution: {integrity: sha512-tQVZnb9OdDRAC+tZMiqhJeNMUsmq+c5xtyQIjftf6edfYlClXq0bT9QgImjzZhEHnMKhKCZOLrg6ruVgjEaQsw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ast-grep/napi-win32-ia32-msvc@0.13.0:
+    resolution: {integrity: sha512-rhm4TQI9fNmWCgJmB94JuJPBdvRrBxD7rHWLgFj3v3GDUBdsMpsUJwxs9ZCDzMpLIW/lhKgjQtb6EHHBIliKAA==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ast-grep/napi-win32-x64-msvc@0.13.0:
+    resolution: {integrity: sha512-fYoVxKJv54+23XNP/oI0IPuAH/XISQV59nRrbRQefiMhaMZl+O5dqvbq6jY4Z/ObLK1acYTDKEFuA5rWujEwnA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ast-grep/napi@0.13.0:
+    resolution: {integrity: sha512-MRDAK5i/OceZMXNYDqJebJRp7EkzV0tGex0Tc2JajvlqC26++4lDODdxIvsZjdeBhi1oNjgiPdoQ7g5ji2HOhw==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@ast-grep/napi-darwin-arm64': 0.13.0
+      '@ast-grep/napi-darwin-x64': 0.13.0
+      '@ast-grep/napi-linux-x64-gnu': 0.13.0
+      '@ast-grep/napi-win32-arm64-msvc': 0.13.0
+      '@ast-grep/napi-win32-ia32-msvc': 0.13.0
+      '@ast-grep/napi-win32-x64-msvc': 0.13.0
+    dev: false
 
   /@babel/cli@7.12.0(@babel/core@7.19.1):
     resolution: {integrity: sha512-0EO6EN6brF4g0HaR6qQr2USkCvFjKNgBdmaYNW5NzB1IeHhqQkGhErX3/hvWA7+g/onS41IM/wm+yD+hcSwgVQ==}
@@ -16186,7 +16292,7 @@ packages:
       jest-util: 29.5.0
       jest-validate: 29.5.0
       prompts: 2.4.2
-      yargs: 17.7.1
+      yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -23827,7 +23933,6 @@ packages:
     resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: false
 
   /uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}

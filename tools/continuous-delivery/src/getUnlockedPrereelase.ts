@@ -1,9 +1,11 @@
 import { readFile } from 'fs/promises';
-import { log } from './utils';
 
-export const getUnlockedPrerelease = async () => {
+export const getUnlockedPrerelease = async (
+  pathToUikitPackage: string,
+  log: (message: string) => void,
+) => {
   log('Getting data about unlocked prerelease...');
-  const semcoreUiPackageFile = await readFile('semcore/ui/package.json', 'utf-8');
+  const semcoreUiPackageFile = await readFile(pathToUikitPackage, 'utf-8');
   const unlockedReleasesFiles = await readFile('.ci/.unlocked-releases.txt', 'utf-8');
   const semcoreUiPackage = JSON.parse(semcoreUiPackageFile);
   const unlockedReleases = unlockedReleasesFiles
