@@ -8,7 +8,6 @@ import { localizedMessages } from '../translations/__intergalactic-dynamic-local
 
 import style from '../style/date-picker.shadow.css';
 import includesDate from '../utils/includesDate';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const INTERACTION_TAGS = ['INPUT'];
 
@@ -58,9 +57,15 @@ class PickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
+          const { value, displayedPeriod } = this.asProps;
+
           if (!visible) {
             this.handlers.highlighted([]);
-            this.handlers.displayedPeriod(this.asProps.value || this.props.defaultDisplayedPeriod);
+            this.handlers.displayedPeriod(value || this.props.defaultDisplayedPeriod);
+          }
+
+          if (visible && value && value !== displayedPeriod) {
+            this.handlers.displayedPeriod(value);
           }
         },
       ],
@@ -197,14 +202,8 @@ class PickerAbstract extends Component {
     };
   }
 
-  onVisibleChange = (visible) => {
-    if (visible && this.asProps.value) {
-      this.handlers.displayedPeriod(this.asProps.value);
-    }
-  };
-
   render() {
-    const { styles, Children, 'aria-label': providedAriaLabel, onVisibleChange } = this.asProps;
+    const { styles, Children, 'aria-label': providedAriaLabel } = this.asProps;
     const { defaultInteraction } = this.state;
 
     return (
@@ -215,7 +214,6 @@ class PickerAbstract extends Component {
             use:aria-label={providedAriaLabel}
             interaction={defaultInteraction}
             __excludeProps={['onChange', 'value']}
-            onVisibleChange={callAllEventHandlers(onVisibleChange, this.onVisibleChange)}
           >
             <Children />
           </Root>,
