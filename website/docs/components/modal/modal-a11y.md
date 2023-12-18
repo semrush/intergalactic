@@ -32,6 +32,30 @@ You can close the modal window by clicking on the following controls:
 When the modal window is closed, the focus should always return to the trigger.
 :::
 
+### Roles & attributes
+
+The list below describes roles and attributes that component already has.
+
+Table: Roles & attributes
+
+| Role | Attribute    | Element | Usage                                                                                                                                                   |
+| ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dialog` |        | `div` | Identifies the element that serves as the dialog container. |
+|          | `aria-labelledby="IDREF"` | Gives the dialog an accessible name by referring to the element that provides the dialog title. |
+|      | `aria-modal="true"` | `div` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). |
+
+## Considerations for developers
+
+### Attributes
+
+The list below will help you to keep in mind the necessary attributes to make our components fully accessible in the particular cases in your interfaces.
+
+Table: Attributes
+
+| Attribute         | Element | Usage                                                                                                                                                                 |
+| ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-describedby="IDREF"`      | `div`   | Gives the dialog an accessible description by referring to the dialog content that describes the primary message or purpose of the dialog. |
+
 ## Resources
 
 [W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behavior.

@@ -1,7 +1,7 @@
 ---
 title: Success state
+tabs: Design('success-state'), A11y('success-state-a11y')
 ---
-
 
 ## Description
 

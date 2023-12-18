@@ -9,14 +9,15 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
 
-### Roles & attributes
+### Attributes
 
-The list below describes roles and attributes that component already has.
+The list below describes attributes that component already has.
 
-| Role   | Attribute            | Element           | Usage                                                                                                                                                                                                            |
-| ------ | -------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status |                      | `div`             | Defines a live region containing advisory information for the user that isn’t important enough to be an `alert`.                                                                                                |
-|        | `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
+Table: Attributes
+
+| Attribute            | Element           | Usage                                                                                                                                                                                                            |
+-------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
 
 ## Resources
 

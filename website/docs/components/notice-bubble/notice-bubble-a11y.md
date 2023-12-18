@@ -26,10 +26,8 @@ Table: Roles and attributes
 
 | Role   | Attribute               | Element                                                      | Usage                                                                                                                                                                                                                               |
 | ------ | ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status |                         | `div`                                                        | Defines a live region containing advisory information for the user that isn’t important enough to be an `alert`.                                                                                                                   |
-| alert  |                         | `div` (for 'No connection' type of NoticeBubble)             | Identifies the element as the container where alert content will be added or updated.                                                                                                                                               |
-|        | `aria-live="polite"`    | Implicit on `div`                                            | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle.                    |
-|        | `aria-live="assertive"` | Implicit on `div` (for 'No connection' type of NoticeBubble) | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
+| `alert`  |                         | `div`  | Identifies the element as the container where alert content will be added or updated.                                                                                                                                               |
+|        | `aria-live="assertive"` | Implicit on `div` | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
 |        | `aria-atomic="true"`    | Implicit on `div`                                            | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to use the entire content of the alert element as the alert message even if only a portion of it has changed.  |
 
 ## Considerations for developers
@@ -52,7 +50,6 @@ Table: Roles and attributes
 |             | `aria-labelledby="IDREF"`  | `div`   | Gives the alert dialog an accessible name by referring to the element that provides the alert dialog title.                                                  |
 |             | `aria-describedby="IDREF"` | `div`   | Gives the alert dialog an accessible description by referring to the alert dialog content that describes the primary message or purpose of the alert dialog. |
 |             | `aria-modal="true"`        | `div`   | Tells assistive technologies that the windows underneath the current alert dialog are not available for interaction (inert).                                 |
-| alert       |                            | `div`   | Identifies the element that serves as the alert notification.                                                                                                |
 
 ## Resources
 

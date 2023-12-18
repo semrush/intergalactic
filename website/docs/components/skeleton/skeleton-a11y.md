@@ -10,10 +10,14 @@ tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('s
 
 The list below describes roles and attributes that component already has.
 
+Table: Roles & attributes
+
 | Attribute            | Element           | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `aria-busy="true"`   | Implicit on `svg` | The `aria-busy` state indicates an element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. When multiple parts of a live region need to be loaded before changes are announced to the user, set `aria-busy="true"` until loading is complete. Then set to `aria-busy="false"`. This prevents assistive technologies from announcing changes before updates are done. |
-| `aria-atomic="true"` |                   | In ARIA live regions, the global `aria-atomic` attribute indicates whether assistive technologies such as a screen reader will present all, or only parts of.                                                                                                                                                                                                                                                                                                      |
+| `aria-hidden="true"` | Implicit on `svg` | The `aria-hidden` hides SVG image from assistive technologies. |
+| `aria-atomic="true"` |                   | In ARIA live regions, the global `aria-atomic` attribute indicates whether assistive technologies such as a screen reader will present all, or only parts of.    |
+| `alt=''` | Implicit on `svg` | Empty `alt` attribute helps to avoid reading image as a text, since skeleton's SVG do not convey any meaningful information to assistive technologies. |
 
 ## Considerations for developers and designers
 
