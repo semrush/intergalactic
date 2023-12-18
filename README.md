@@ -31,7 +31,10 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 
 ```sh
 pnpm add intergalactic
-# or npm install intergalactic
+```
+or
+```sh
+npm install intergalactic
 ```
 
 After the installation, all components will be available at `intergalactic/{{component_name}}`.
