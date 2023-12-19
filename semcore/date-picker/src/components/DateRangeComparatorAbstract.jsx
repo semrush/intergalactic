@@ -133,6 +133,12 @@ class DateRangeComparatorAbstract extends Component {
                 this.props.defaultDisplayedPeriod,
             );
           }
+
+          const { value, displayedPeriod } = this.asProps;
+
+          if (visible && value?.value && value.value !== displayedPeriod) {
+            this.handlers.displayedPeriod(getLatestDate(value.value));
+          }
         },
       ],
       highlighted: null,

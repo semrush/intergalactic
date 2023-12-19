@@ -64,12 +64,18 @@ class RangePickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
+          const { value, displayedPeriod } = this.asProps;
+
           if (!visible) {
             this.handlers.highlighted([]);
             this.setState({ dirtyValue: [] });
             this.handlers.displayedPeriod(
-              getEndDate(this.asProps.value ?? undefined) || this.props.defaultDisplayedPeriod,
+              getEndDate(value ?? undefined) || this.props.defaultDisplayedPeriod,
             );
+          }
+
+          if (visible && value && value !== displayedPeriod) {
+            this.handlers.displayedPeriod(getEndDate(value));
           }
         },
       ],
