@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.21.3] - 2023-12-14
+
+### Fixed
+
+- Chart dots were not displaying in Firefox.
+- Charts appearing animation in Firefox.
+
 ## [3.21.2] - 2023-12-13
 
 ### Fixed
