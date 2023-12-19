@@ -11,7 +11,7 @@ import {
   interpolateValue,
 } from './utils';
 import Dots from './Dots';
-import ClipPath from './ClipPath';
+import AnimatedClipPath from './AnimatedClipPath';
 
 import style from './style/line.shadow.css';
 
@@ -95,17 +95,14 @@ class LineRoot extends Component {
           use:duration={`${duration}ms`}
         />
         {duration && (
-          <ClipPath
+          <AnimatedClipPath
             aria-hidden
-            setAttributeTag={(rect) => {
-              rect.setAttribute('width', size[0]);
-            }}
+            duration={duration}
             id={uid}
             x='0'
             y='0'
             width={0}
             height={size[1]}
-            transition={`width ${duration}ms ease-in-out`}
           />
         )}
       </>,

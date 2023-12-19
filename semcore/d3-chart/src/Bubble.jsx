@@ -5,7 +5,6 @@ import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import ClipPath from './ClipPath';
 import { CONSTANT, measureText } from './utils';
 import Tooltip from './Tooltip';
 
@@ -165,14 +164,9 @@ class BubbleRoot extends Component {
       <>
         {data.map(this.renderCircle.bind(this))}
         {data.map(this.animationCircle.bind(this))}
-        <ClipPath
-          aria-hidden
-          id={uid}
-          x={xMargin}
-          y={yMargin}
-          width={`${xSize}px`}
-          height={`${ySize}px`}
-        />
+        <clipPath aria-hidden id={uid}>
+          <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
+        </clipPath>
       </>
     );
   }

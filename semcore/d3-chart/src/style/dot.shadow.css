@@ -9,7 +9,6 @@ SDots {
 SDot {
   stroke-width: 2px;
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
-  r: var(--radius);
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   transition-property: cx, cy;
   transition-timing-function: ease-in-out;
@@ -17,10 +16,6 @@ SDot {
 
 SDot[hide] {
   display: none;
-}
-
-SDot[active] {
-  r: calc(var(--radius) * 8/6);
 }
 
 SDot[color] {

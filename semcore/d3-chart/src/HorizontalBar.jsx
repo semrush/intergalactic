@@ -2,7 +2,7 @@ import React from 'react';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import ClipPath from './ClipPath';
+import AnimatedClipPath from './AnimatedClipPath';
 import { scaleToBand, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
@@ -122,17 +122,14 @@ class HorizontalBarRoot extends Component {
       <>
         {data.map(this.renderBar.bind(this))}
         {duration && (
-          <ClipPath
+          <AnimatedClipPath
             aria-hidden
-            setAttributeTag={(rect) => {
-              rect.setAttribute('width', size[0]);
-            }}
+            duration={duration}
             id={uid}
             x='0'
             y='0'
             width={0}
             height={size[1]}
-            transition={`width ${duration}ms ease-in-out`}
           />
         )}
       </>
