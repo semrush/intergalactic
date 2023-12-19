@@ -64,7 +64,7 @@ export const collectPackages = async (inNpmVersions: {
 
   for (const { packageFile, changelogFile, changelogPath, packageFilePath, packagePath } of files) {
     const changelogs: Changelog[] =
-      packageFile.name === '@semcore/ui'
+      packageFile.name === '@semcore/ui' || packageFile.name === 'intergalactic'
         ? []
         : componentChangelogParser(packageFile.name, changelogFile, changelogPath);
 
