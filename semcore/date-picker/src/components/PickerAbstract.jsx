@@ -57,9 +57,15 @@ class PickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
+          const { value, displayedPeriod } = this.asProps;
+
           if (!visible) {
             this.handlers.highlighted([]);
-            this.handlers.displayedPeriod(this.asProps.value || this.props.defaultDisplayedPeriod);
+            this.handlers.displayedPeriod(value || this.props.defaultDisplayedPeriod);
+          }
+
+          if (visible && value && value !== displayedPeriod) {
+            this.handlers.displayedPeriod(value);
           }
         },
       ],
