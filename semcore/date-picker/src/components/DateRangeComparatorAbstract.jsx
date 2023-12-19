@@ -135,9 +135,10 @@ class DateRangeComparatorAbstract extends Component {
           }
 
           const { value, displayedPeriod } = this.asProps;
+          const newDisplayedPeriod = value ? getLatestDate(value.value, value.compare) : undefined;
 
-          if (visible && value?.value && value.value !== displayedPeriod) {
-            this.handlers.displayedPeriod(getLatestDate(value.value));
+          if (visible && newDisplayedPeriod && newDisplayedPeriod !== displayedPeriod) {
+            this.handlers.displayedPeriod(newDisplayedPeriod);
           }
         },
       ],
