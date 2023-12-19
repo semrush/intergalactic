@@ -208,6 +208,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
     this.usedMask = mask;
 
     this.setState({ lastConformed: undefined });
+    let initiated = false;
     this.textMaskCoreInstance = createTextMaskInputElement({
       ...this.asProps,
       inputElement: this.inputRef.current,
@@ -216,6 +217,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
       showMask: !hideMask,
       placeholderChar: '_',
       pipe: (conformedValue: any, pipeConfigs: any) => {
+        const conformedValueBeforPiping = conformedValue;
         let indexesOfPipedChars = null;
         if (userPipe) {
           const piped = userPipe(conformedValue, pipeConfigs);
@@ -237,6 +239,11 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
         }
 
         if (conformedValue === false) {
+          if (!initiated) {
+            this.setState({ lastConformed: conformedValueBeforPiping });
+            return { value: conformedValueBeforPiping };
+          }
+
           this.setState({ lastConformed: this.prevConfirmedValue });
           if (indexesOfPipedChars !== null) {
             return { value: conformedValue, indexesOfPipedChars };
@@ -244,6 +251,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
             return conformedValue;
           }
         }
+        initiated = true;
 
         const userInput = conformedValue.substring(0, lastNonMaskCharPosition);
         const maskOnly = conformedValue.substring(lastNonMaskCharPosition);

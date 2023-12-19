@@ -2,15 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.15.2] - 2023-12-14
+
+### Fixed
+
+- Component was breaking a page when initial value was not allowed by outer pipe.
+
 ## [5.15.1] - 2023-12-14
 
 ### Added
 
-- ``
+- `maskOnlySymbols` prop.
 
 ### Fixed
 
-- Text cursor position after keypress `Backspace`.
+- Text cursor position after pressing `Backspace`.
 
 ## [5.15.0] - 2023-12-06
 
