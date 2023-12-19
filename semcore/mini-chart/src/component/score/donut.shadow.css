@@ -1,0 +1,15 @@
+SDonutContainer[semi] {
+  g {
+    transform: rotate(180deg) translate(-24px, -24px);
+  }
+}
+
+SDonutContainer {
+  g {
+    transform: rotate(-90deg) translate(-24px)
+  }
+}
+
+SDonutContainer[animate] circle {
+  transition: all 500ms ease-in-out;
+}

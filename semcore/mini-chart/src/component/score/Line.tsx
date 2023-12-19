@@ -1,0 +1,99 @@
+import React from 'react';
+import createComponent, { Component, Root, sstyled, ComponentType } from '@semcore/core';
+import { Box, Flex } from '@semcore/flex-box';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+
+import style from './line.shadow.css';
+import { BoxProps } from '@semcore/flex-box';
+
+export type CommonScoreProps = {
+  /**
+   * Value of score (in percents from 0 to 100)
+   */
+  value: number;
+
+  /**
+   * Color of value
+   */
+  color?: string;
+
+  /**
+   * Flag to enable skeleton
+   * @default false
+   */
+  isLoading?: boolean;
+
+  /**
+   * Flag to enable animate of charts
+   * @default true
+   */
+  animate?: boolean;
+};
+
+export type ScoreLineGaugeProps = BoxProps &
+  CommonScoreProps & {
+    segments?: number;
+  };
+
+type Enhances = {
+  resolveColor: ReturnType<typeof resolveColorEnhance>;
+};
+
+class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
+  static enhance = [resolveColorEnhance()];
+
+  static style = style;
+
+  static defaultProps = {
+    animate: true,
+  };
+
+  render() {
+    const SLineGauge = Root;
+    const SLineValue = Box;
+    const SLineGaugeSegment = Flex;
+    const SLineSegmentItem = Box;
+    const {
+      value,
+      styles,
+      color = 'chart-palette-order-1',
+      resolveColor,
+      segments,
+      isLoading,
+    } = this.asProps;
+
+    const SegmentItems = [];
+
+    if (segments) {
+      for (let i = 0; i < segments; i++) {
+        const width = `calc((100% - ${segments - 1}px) / ${segments})`;
+
+        SegmentItems.push(
+          sstyled(styles)(
+            <SLineSegmentItem
+              key={i}
+              color={i < value ? resolveColor(color) : undefined}
+              w={width}
+            />,
+          ),
+        );
+      }
+    }
+
+    let percent = `${value}%`;
+
+    if (segments) {
+      percent = `${(value / segments) * 100}%`;
+    }
+
+    return sstyled(styles)(
+      <SLineGauge render={Box}>
+        {!isLoading && <SLineValue w={percent} color={resolveColor(color)} />}
+        {Boolean(SegmentItems.length) && <SLineGaugeSegment>{SegmentItems}</SLineGaugeSegment>}
+      </SLineGauge>,
+    );
+  }
+}
+
+export const ScoreLine: ComponentType<ScoreLineGaugeProps, {}, {}, Enhances> =
+  createComponent(LineRoot);
