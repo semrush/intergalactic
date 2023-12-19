@@ -1,0 +1,63 @@
+SLineGauge {
+  height: 8px;
+  background-color: var(--intergalactic-skeleton-bg, rgba(224, 225, 233, 0.8));
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+SLineGauge[animate] SLineValue {
+  transition: all 500ms ease-in-out;
+  animation-name: move-line;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+SLineValue {
+  height: 8px;
+  background-color: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  border-radius: 2px 0 0 2px;
+}
+
+SLineValue[percent] {
+  width: var(--percent);
+}
+
+SLineValue[color] {
+  background-color: var(--color, var(--intergalactic-chart-palette-order-1, #2bb3ff));
+}
+
+SLineGauge[segments] {
+  border-radius: 4px;
+}
+
+SLineGauge[segments] SLineValue {
+  border-radius: 4px 0 0 4px;
+}
+
+SLineGaugeSegment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+SLineSegmentItem:last-child {
+  margin-right: 0;
+  border-right: none;
+}
+
+SLineSegmentItem {
+  height: 8px;
+  background: transparent;
+  margin-right: 1px;
+  border-right-color: var(--intergalactic-chart-grid-border, #ffffff);
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+@keyframes move-line {
+  0% {transform: translateX(-100%);}
+  100% {transform: translateX(0);}
+}

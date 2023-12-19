@@ -1,0 +1,113 @@
+import React from 'react';
+import createComponent, { ComponentType, assignProps, Root, sstyled } from '@semcore/core';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { Trend, CommonTrendProps } from './Trend';
+import { Box } from '@semcore/flex-box';
+
+type BarItem = {
+  /**
+   * Value
+   */
+  value: number;
+  /**
+   * Color of value
+   */
+  color?: string;
+};
+
+type TrendBarProps = CommonTrendProps & {
+  /**
+   * Data to bar chart
+   */
+  data: BarItem[];
+};
+
+type Enhances = {
+  resolveColor: ReturnType<typeof resolveColorEnhance>;
+  isHistogram?: true;
+};
+
+class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
+  static enhance = [resolveColorEnhance()];
+
+  static defaultProps = {
+    animate: true,
+  };
+
+  get defaultData(): BarItem[] {
+    return [{ value: 20 }, { value: 80 }, { value: 45 }, { value: 10 }];
+  }
+
+  get data(): BarItem[] {
+    const { data, isLoading } = this.asProps;
+
+    if (isLoading) {
+      return this.defaultData;
+    }
+
+    return data;
+  }
+
+  render() {
+    const STrend = Root;
+    const { styles, resolveColor, isHistogram, animate, isLoading } = this.asProps;
+    const step = this.defaultWidth / this.data.length;
+
+    return sstyled(styles)(
+      <STrend render={Box} ref={this.containerRef} __excludeProps={['data']}>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          {this.data.map((barItem, index) => {
+            let color = resolveColor('skeleton-bg');
+
+            if (barItem.color) {
+              color = resolveColor(barItem.color);
+            }
+
+            return (
+              <rect
+                key={index}
+                x={step * index}
+                y={this.defaultHeight - barItem.value}
+                width={isHistogram ? step : step * 0.8}
+                height={barItem.value}
+                fill={color}
+              >
+                {animate && !isLoading && (
+                  <animate
+                    attributeName={'y'}
+                    values={`${this.defaultHeight};${this.defaultHeight - barItem.value}`}
+                    dur={'500ms'}
+                  />
+                )}
+              </rect>
+            );
+          })}
+        </svg>
+      </STrend>,
+    );
+  }
+}
+
+export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
+  createComponent(TrendBarRoot);
+
+export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = createComponent(
+  TrendBarRoot,
+  {},
+  {
+    enhancements: [
+      () => {
+        return {
+          wrapperProps: (props: TrendBarProps) => {
+            return assignProps(props, { isHistogram: true });
+          },
+        };
+      },
+    ],
+  },
+);
