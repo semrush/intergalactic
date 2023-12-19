@@ -73,7 +73,7 @@ describe('InputMask', () => {
   });
 
   test.concurrent('should not break when initial value is disallowed by pipe', async () => {
-    const pipe = (value) => {
+    const pipe = (value: any) => {
       if (parseFloat(value) > 5000) return false;
       return value;
     };

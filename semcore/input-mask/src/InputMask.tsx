@@ -241,7 +241,11 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
         if (conformedValue === false) {
           if (!initiated) {
             this.setState({ lastConformed: conformedValueBeforPiping });
-            return { value: conformedValueBeforPiping };
+            if (indexesOfPipedChars !== null) {
+              return { value: conformedValueBeforPiping, indexesOfPipedChars };
+            } else {
+              return conformedValueBeforPiping;
+            }
           }
 
           this.setState({ lastConformed: this.prevConfirmedValue });
