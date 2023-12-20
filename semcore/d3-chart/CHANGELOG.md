@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.21.4] - 2023-12-20
+
+### Fixed
+
+- Order of chart lines/bars and tooltip HoverLine.
+
 ## [3.21.3-prerelease.1] - 2023-12-14
 
 ### Fixed

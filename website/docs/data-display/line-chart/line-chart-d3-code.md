@@ -229,9 +229,6 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Line x='x' y='y'>
-        <Line.Dots />
-      </Line>
       <HoverLine.Tooltip x='x' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -247,6 +244,9 @@ const Demo = () => {
           };
         }}
       </HoverLine.Tooltip>
+      <Line x='x' y='y'>
+        <Line.Dots />
+      </Line>
     </Plot>
   );
 };
@@ -311,9 +311,6 @@ const Demo = () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Line x='time' y='line'>
-        <Line.Dots display />
-      </Line>
       <HoverLine.Tooltip x='time' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -335,6 +332,9 @@ const Demo = () => {
           };
         }}
       </HoverLine.Tooltip>
+      <Line x='time' y='line'>
+        <Line.Dots display />
+      </Line>
     </Plot>
   );
 };
@@ -388,9 +388,6 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Line x='x' y='y' curve={curveCardinal}>
-        <Line.Dots />
-      </Line>
       <HoverLine.Tooltip x='x' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -406,6 +403,9 @@ const Demo = () => {
           };
         }}
       </HoverLine.Tooltip>
+      <Line x='x' y='y' curve={curveCardinal}>
+        <Line.Dots />
+      </Line>
     </Plot>
   );
 };
