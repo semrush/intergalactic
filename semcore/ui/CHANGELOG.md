@@ -1,4 +1,4 @@
-## [15.43.0-prerelease.0] - 2023-12-19
+## [15.43.0-prerelease.1] - 2023-12-19
 
 ### @semcore/core
 
