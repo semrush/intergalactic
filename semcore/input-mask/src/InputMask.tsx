@@ -20,7 +20,7 @@ import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import uniqueIDEnhancement, { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
 
 import style from './style/input-mask.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/src/assignProps';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
