@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.43.0-prerelease.0",
+  "version": "15.43.1-prerelease.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -26,7 +26,7 @@
     "@semcore/core": "2.12.1-prerelease.1",
     "@semcore/counter": "3.13.1-prerelease.1",
     "@semcore/data-table": "4.20.1-prerelease.1",
-    "@semcore/date-picker": "4.21.0-prerelease.1",
+    "@semcore/date-picker": "4.21.1-prerelease.1",
     "@semcore/divider": "4.13.1-prerelease.1",
     "@semcore/dot": "5.13.1-prerelease.1",
     "@semcore/drag-and-drop": "3.21.2-prerelease.1",

@@ -13,6 +13,10 @@
 
 - **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 - **Added** Set `displayedPeriod` from current `value` for each open of `Calendar`.
 
 ### @semcore/input-mask
