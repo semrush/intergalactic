@@ -3,6 +3,10 @@ title: CSS Injection
 tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
+::: danger
+:rotating_light: CSS Injection is a deprecated feature and will be removed in the next major release planned on Q1 of 2024.
+:::
+
 ::: warning
 :rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
 :::
@@ -15,8 +19,8 @@ If you are creating a product that differs in style from other products of Semru
 
 There are two ways to redefine styles of our components:
 
-- Local for one specific component.
-- Global for all components at once.
+* Local for one specific component.
+* Global for all components at once.
 
 ## Local specific
 
@@ -24,14 +28,14 @@ Styles composition helps us to extend basic styles of our components, and someti
 
 **Advantages:**
 
-- An opportunity to "extend" API components with new properties responsible for appearance.
+* An opportunity to "extend" API components with new properties responsible for appearance.
 
 **Disadvantages:**
 
-- Styles shall be applied every time you use our component.
-- Styles are applied in runtime.
-- No style de-duplication.
-- It is difficult to reuse the styles.
+* Styles shall be applied every time you use our component.
+* Styles are applied in runtime.
+* No style de-duplication.
+* It is difficult to reuse the styles.
 
 Read more about [how to apply styles composition in practice](/style/css-injection/css-injection-local).
 
@@ -43,16 +47,15 @@ Using this approach, you can publish CSS injections to `NPM` and reuse them late
 
 **Advantages:**
 
-- Styles are applied to all the components automatically.
-- The CSS injection is applied during assembly.
-- Easiness of reuse.
-- De-duplication of styles.
-- Versioning availability.
+* Styles are applied to all the components automatically.
+* The CSS injection is applied during assembly.
+* Easiness of reuse.
+* De-duplication of styles.
+* Versioning availability.
 
 **Disadvantages:**
 
-- Strict structure and naming.
-- Need to configure webpack.
+* Strict structure and naming.
+* Need to configure webpack.
 
 You can write CSS injections for our components this way with [global use](/style/css-injection/css-injection-global).
-
