@@ -13,6 +13,7 @@ import Tag, { TagProps } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
+import { findAllComponents } from '@semcore/utils/lib/findComponent';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -179,6 +180,9 @@ class InputTags extends Component<IInputTagsProps> {
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'div';
 
+    const TabItems = findAllComponents(Children, ['InputTags.Tag']);
+    const ValueItems = findAllComponents(Children, ['InputTags.Value']);
+
     return sstyled(styles)(
       <SInputTags
         render={Input}
@@ -187,9 +191,8 @@ class InputTags extends Component<IInputTagsProps> {
         onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
       >
-        <SListAriaWrapper role='list'>
-          <Children />
-        </SListAriaWrapper>
+        <SListAriaWrapper role='list'>{TabItems}</SListAriaWrapper>
+        {ValueItems}
       </SInputTags>,
     );
   }
