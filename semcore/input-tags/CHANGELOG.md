@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.3] - 2023-12-21
+
+### Fixed
+
+- `A11y` issues.
+
 ## [4.15.2] - 2023-12-19
 
 ### Changed
