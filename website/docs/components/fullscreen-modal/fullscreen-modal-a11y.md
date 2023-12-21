@@ -27,9 +27,9 @@ Table: Roles & attributes
 
 | Role | Attribute    | Element | Usage                                                                                                                                                   |
 | ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dialog` |        | `div` | Identifies the element that serves as the dialog container. Gets this role from [Modal](/components/modal). |
+| `dialog` |        | `div` | Identifies the element that serves as the dialog container. Gets this role from [Modal](/components/modal/modal). |
 |          | `aria-labelledby="IDREF"` | Gives the dialog an accessible name by referring to the element that provides the dialog title. |
-|      | `aria-modal="true"` | `div` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). Gets this attribute from [Modal](/components/modal). |
+|      | `aria-modal="true"` | `div` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). Gets this attribute from [Modal](/components/modal/modal). |
 
 ## Considerations for developers
 
