@@ -1,3 +1,13 @@
+## [15.43.2] - 2023-12-22
+
+### @semcore/d3-chart
+
+- **Fixed** Order of chart lines/bars and tooltip HoverLine.
+
+### @semcore/pills
+
+- **Fixed** Focused Pill with `behavior=tabs` were not visually highlighted.
+
 ## [15.43.0] - 2023-12-19
 
 ### @semcore/core

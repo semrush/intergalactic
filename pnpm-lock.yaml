@@ -2736,7 +2736,7 @@ importers:
         specifier: 3.13.1
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.21.3
+        specifier: 3.21.4-prerelease.1
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 4.20.1
@@ -2841,7 +2841,7 @@ importers:
         specifier: 4.21.1
         version: link:../pagination
       '@semcore/pills':
-        specifier: 5.14.1
+        specifier: 5.14.2-prerelease.1
         version: link:../pills
       '@semcore/popper':
         specifier: 5.13.0
