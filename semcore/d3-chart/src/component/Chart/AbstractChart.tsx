@@ -420,8 +420,8 @@ export abstract class AbstractChart<
           dataHints={this.dataHints}
         >
           {this.renderAxis()}
-          {this.renderChart()}
           {this.renderTooltip()}
+          {this.renderChart()}
         </Plot>
       </SChart>,
     );

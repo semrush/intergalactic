@@ -76,10 +76,6 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <StackBar x='category'>
-        <StackBar.Bar y='stack1' />
-        <StackBar.Bar y='stack2' />
-      </StackBar>
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -103,6 +99,10 @@ const Demo = () => {
           };
         }}
       </HoverRect.Tooltip>
+      <StackBar x='category'>
+        <StackBar.Bar y='stack1' />
+        <StackBar.Bar y='stack2' />
+      </StackBar>
     </Plot>
   );
 };

@@ -154,10 +154,6 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Area x='x' y='y'>
-        <Area.Null />
-        <Area.Dots />
-      </Area>
       <HoverLine.Tooltip x='x' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -173,6 +169,10 @@ const Demo = () => {
           };
         }}
       </HoverLine.Tooltip>
+      <Area x='x' y='y'>
+        <Area.Null />
+        <Area.Dots />
+      </Area>
     </Plot>
   );
 };

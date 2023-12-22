@@ -318,14 +318,6 @@ const Demo = () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1'>
-          <Radar.Polygon.Line />
-          <Radar.Polygon.Dots />
-        </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2'>
-          <Radar.Polygon.Line />
-          <Radar.Polygon.Dots />
-        </Radar.Polygon>
         <Radar.Tooltip wMin={100}>
           {({ index }) => {
             return {
@@ -339,6 +331,14 @@ const Demo = () => {
             };
           }}
         </Radar.Tooltip>
+        <Radar.Polygon dataKey='data_1'>
+          <Radar.Polygon.Line />
+          <Radar.Polygon.Dots />
+        </Radar.Polygon>
+        <Radar.Polygon dataKey='data_2'>
+          <Radar.Polygon.Line />
+          <Radar.Polygon.Dots />
+        </Radar.Polygon>
       </Radar>
     </Plot>
   );
@@ -379,14 +379,6 @@ const Demo = () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
-          <Radar.Polygon.Line />
-          <Radar.Polygon.Dots />
-        </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
-          <Radar.Polygon.Line />
-          <Radar.Polygon.Dots />
-        </Radar.Polygon>
         <Radar.Tooltip wMin={100}>
           {({ index }) => {
             return {
@@ -400,6 +392,14 @@ const Demo = () => {
             };
           }}
         </Radar.Tooltip>
+        <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
+          <Radar.Polygon.Line />
+          <Radar.Polygon.Dots />
+        </Radar.Polygon>
+        <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
+          <Radar.Polygon.Line />
+          <Radar.Polygon.Dots />
+        </Radar.Polygon>
       </Radar>
     </Plot>
   );
@@ -500,14 +500,6 @@ const Demo = () => {
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
-          <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
-            <Radar.Polygon.Line />
-            <Radar.Polygon.Dots />
-          </Radar.Polygon>
-          <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
-            <Radar.Polygon.Line />
-            <Radar.Polygon.Dots />
-          </Radar.Polygon>
           <Radar.Tooltip wMin={100}>
             {({ index }) => {
               return {
@@ -521,6 +513,14 @@ const Demo = () => {
               };
             }}
           </Radar.Tooltip>
+          <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
+            <Radar.Polygon.Line />
+            <Radar.Polygon.Dots />
+          </Radar.Polygon>
+          <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
+            <Radar.Polygon.Line />
+            <Radar.Polygon.Dots />
+          </Radar.Polygon>
         </Radar>
       </Plot>
     </div>
