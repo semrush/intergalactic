@@ -432,7 +432,7 @@ const useFocusCatch = (active, popperRef) => {
   const activeRef = React.useRef(active);
   activeRef.current = active;
 
-  const [keyboardFocused, setKeyboardFocused] = React.useState(null);
+  const [keyboardFocused, setKeyboardFocused] = React.useState(false);
   const [focusCatch, setFocusCatch] = React.useState(false);
   const focusSourceRef = useFocusSource();
   const handleFocusCatchFocus = React.useCallback(() => {
