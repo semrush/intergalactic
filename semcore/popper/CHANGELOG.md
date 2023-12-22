@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.14.0] - 2023-12-22
+
+### Changed
+
+- When keyboard users are focus-triggered closing popper, trigger is highlighted with focus ring while actually focus is placed on the sibling invisible element.
+
 ## [5.13.0] - 2023-12-14
 
 ### Fixed

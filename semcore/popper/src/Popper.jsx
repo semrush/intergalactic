@@ -18,6 +18,7 @@ import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import keyboardFocusEnhance, {
   useFocusSource,
+  enforcedKeyboardFocusEnhanceContext,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import createPopper from './createPopper';
@@ -380,6 +381,7 @@ const getElementNestingIndexes = (element, chain = new Set([element, document.bo
 };
 
 const useReturnFocusEl = (interaction, onKeyboardFocus, disable) => {
+  const [keyboardFocused, setKeyboardFocused] = React.useState(false);
   const [returnFocusEl, setReturnFocusEl] = React.useState(null);
   const focusSourceRef = useFocusSource();
   const handleFocus = React.useCallback(
@@ -409,18 +411,38 @@ const useReturnFocusEl = (interaction, onKeyboardFocus, disable) => {
     },
     [interaction, onKeyboardFocus, disable],
   );
+  const handleFocusReturnElFocus = React.useCallback(() => {
+    if (focusSourceRef.current !== 'keyboard') return;
+    setKeyboardFocused(true);
+  }, []);
   const handleFocusReturnElBlur = React.useCallback(() => {
     setTimeout(() => setReturnFocusEl(null), 0);
+    setKeyboardFocused(false);
   }, []);
 
-  return { returnFocusEl, handleFocus, handleFocusReturnElBlur };
+  return {
+    returnFocusEl,
+    handleFocus,
+    handleFocusReturnElFocus,
+    handleFocusReturnElBlur,
+    keyboardFocused,
+  };
 };
 const useFocusCatch = (active, popperRef) => {
   const activeRef = React.useRef(active);
   activeRef.current = active;
 
+  const [keyboardFocused, setKeyboardFocused] = React.useState(null);
   const [focusCatch, setFocusCatch] = React.useState(false);
-  const handleFocusCatchBlur = React.useCallback(() => setFocusCatch(false), []);
+  const focusSourceRef = useFocusSource();
+  const handleFocusCatchFocus = React.useCallback(() => {
+    if (focusSourceRef.current !== 'keyboard') return;
+    setKeyboardFocused(true);
+  }, []);
+  const handleFocusCatchBlur = React.useCallback(() => {
+    setFocusCatch(false);
+    setKeyboardFocused(false);
+  }, []);
   const handleFocusCatchRef = React.useCallback((node) => {
     if (activeRef.current) return setFocusCatch(false);
     if (!isFocusInside(popperRef.current) && document.activeElement !== document.body)
@@ -440,7 +462,13 @@ const useFocusCatch = (active, popperRef) => {
     };
   }, [active]);
 
-  return { focusCatch, handleFocusCatchBlur, handleFocusCatchRef };
+  return {
+    focusCatch,
+    handleFocusCatchFocus,
+    handleFocusCatchBlur,
+    handleFocusCatchRef,
+    keyboardFocused,
+  };
 };
 
 const focusCatcherStyles = { position: 'fixed' };
@@ -461,15 +489,22 @@ function Trigger(props) {
 
   const triggerRef = React.createRef();
 
-  const { returnFocusEl, handleFocusReturnElBlur, handleFocus } = useReturnFocusEl(
-    interaction,
-    onKeyboardFocus,
-    disableEnforceFocus,
-  );
-  const { focusCatch, handleFocusCatchBlur, handleFocusCatchRef } = useFocusCatch(
-    active,
-    popperRef,
-  );
+  const {
+    returnFocusEl,
+    handleFocusReturnElBlur,
+    handleFocus,
+    keyboardFocused: returnElKeyboardFocused,
+  } = useReturnFocusEl(interaction, onKeyboardFocus, disableEnforceFocus);
+  const {
+    focusCatch,
+    handleFocusReturnElFocus,
+    handleFocusCatchFocus,
+    handleFocusCatchBlur,
+    handleFocusCatchRef,
+    keyboardFocused: focusCatchKeyboardFocused,
+  } = useFocusCatch(active, popperRef);
+
+  const enforceKeyboardFocused = returnElKeyboardFocused || focusCatchKeyboardFocused;
 
   React.useEffect(() => {
     if (highlighted === true) {
@@ -484,6 +519,7 @@ function Trigger(props) {
           tabIndex='0'
           ref={focusableTriggerReturnFocusToRef}
           onBlur={handleFocusReturnElBlur}
+          onFocus={handleFocusReturnElFocus}
           style={focusCatcherStyles}
         />
       )}
@@ -495,7 +531,9 @@ function Trigger(props) {
         onFocus={handleFocus}
         ref={triggerRef}
       >
-        <Children />
+        <enforcedKeyboardFocusEnhanceContext.Provider value={enforceKeyboardFocused}>
+          <Children />
+        </enforcedKeyboardFocusEnhanceContext.Provider>
       </STrigger>
       {focusHint && false && (
         <SFocusHint aria-live='polite'>
@@ -507,6 +545,7 @@ function Trigger(props) {
           tabIndex='0'
           ref={focusableTriggerReturnFocusToRef}
           onBlur={handleFocusReturnElBlur}
+          onFocus={handleFocusReturnElFocus}
           style={focusCatcherStyles}
         />
       )}
@@ -514,6 +553,7 @@ function Trigger(props) {
         <div
           tabIndex='0'
           ref={handleFocusCatchRef}
+          onFocus={handleFocusCatchFocus}
           onBlur={handleFocusCatchBlur}
           style={focusCatcherStyles}
         />
