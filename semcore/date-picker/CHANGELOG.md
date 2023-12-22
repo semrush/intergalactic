@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.21.1] - 2023-12-20
+
+### Added
+
+- `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+
+## [4.21.0] - 2023-12-07
+
+### Added
+
+- `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+
 ## [4.21.0-prerelease.1] - 2023-12-07
 
 ### Added

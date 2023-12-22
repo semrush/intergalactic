@@ -1,4 +1,4 @@
-## [15.43.0-prerelease.0] - 2023-12-19
+## [15.43.0] - 2023-12-19
 
 ### @semcore/core
 
@@ -11,6 +11,10 @@
 
 ### @semcore/date-picker
 
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 - **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 - **Added** Set `displayedPeriod` from current `value` for each open of `Calendar`.

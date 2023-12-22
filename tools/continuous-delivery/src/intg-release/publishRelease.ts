@@ -10,7 +10,7 @@ import { log } from '../utils';
 import { updateVersionInComponents } from './updateVersionInComponents';
 import { updateExternalDeps } from './updateExternalDeps';
 
-const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
+const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
 const publishRelease = async () => {
   const packageJsonFilePath = path.resolve(dirname, 'package.json');

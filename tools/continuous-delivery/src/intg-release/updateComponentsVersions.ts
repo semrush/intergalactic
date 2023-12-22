@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { log } from '../utils';
 
 const filename = fileURLToPath(import.meta.url);
-const dirname = path.resolve(filename, '..', '..');
+const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
 
 export function updateComponentsVersions(packages: string[]) {
   log('Update components versions...');

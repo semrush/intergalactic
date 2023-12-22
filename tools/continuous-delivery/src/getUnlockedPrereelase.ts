@@ -13,7 +13,10 @@ export const getUnlockedPrerelease = async (
     .map((line) => line.split('=')[0].replace(/^v/, ''))
     .filter(Boolean);
 
-  if (unlockedReleases.includes(semcoreUiPackage.version)) {
+  if (
+    unlockedReleases.includes(semcoreUiPackage.version) ||
+    unlockedReleases.some((unlockedRelease) => unlockedRelease.includes(semcoreUiPackage.version))
+  ) {
     log(`Found unlocked prerelease "${semcoreUiPackage.version}".`);
     return semcoreUiPackage.version;
   }
