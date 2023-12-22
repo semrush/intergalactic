@@ -106,17 +106,6 @@ const Demo = () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <StackedArea x='time'>
-        <StackedArea.Area y='stack1' curve={curveCardinal}>
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-        <StackedArea.Area y='stack2' curve={curveCardinal}>
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-        <StackedArea.Area y='stack3' curve={curveCardinal}>
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-      </StackedArea>
       <HoverLine.Tooltip x='time' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -152,6 +141,17 @@ const Demo = () => {
           };
         }}
       </HoverLine.Tooltip>
+      <StackedArea x='time'>
+        <StackedArea.Area y='stack1' curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y='stack2' curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y='stack3' curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+      </StackedArea>
     </Plot>
   );
 };
@@ -204,20 +204,6 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks ticks={data.map((d) => +d.time)} />
       </XAxis>
-      <StackedArea x='time'>
-        <StackedArea.Area y='stack1'>
-          <StackedArea.Area.Null />
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-        <StackedArea.Area y='stack2'>
-          <StackedArea.Area.Null />
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-        <StackedArea.Area y='stack3'>
-          <StackedArea.Area.Null />
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-      </StackedArea>
       <HoverLine.Tooltip x='time' wMin={100}>
         {({ xIndex }) => {
           return {
@@ -241,6 +227,20 @@ const Demo = () => {
           };
         }}
       </HoverLine.Tooltip>
+      <StackedArea x='time'>
+        <StackedArea.Area y='stack1'>
+          <StackedArea.Area.Null />
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y='stack2'>
+          <StackedArea.Area.Null />
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y='stack3'>
+          <StackedArea.Area.Null />
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+      </StackedArea>
     </Plot>
   );
 };
@@ -344,17 +344,6 @@ const Demo = () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-        <StackedArea x='time'>
-          <StackedArea.Area y='1' color={lineColors[1]} curve={curveCardinal}>
-            <StackedArea.Area.Dots />
-          </StackedArea.Area>
-          <StackedArea.Area y='2' fill='#59DDAA50' color={lineColors[2]} curve={curveCardinal}>
-            <StackedArea.Area.Dots />
-          </StackedArea.Area>
-          <StackedArea.Area y='3' fill='#FF622D50' color={lineColors[3]} curve={curveCardinal}>
-            <StackedArea.Area.Dots />
-          </StackedArea.Area>
-        </StackedArea>
         <HoverLine.Tooltip x='time' wMin={100}>
           {({ xIndex }) => {
             return {
@@ -394,6 +383,17 @@ const Demo = () => {
             };
           }}
         </HoverLine.Tooltip>
+        <StackedArea x='time'>
+          <StackedArea.Area y='1' color={lineColors[1]} curve={curveCardinal}>
+            <StackedArea.Area.Dots />
+          </StackedArea.Area>
+          <StackedArea.Area y='2' fill='#59DDAA50' color={lineColors[2]} curve={curveCardinal}>
+            <StackedArea.Area.Dots />
+          </StackedArea.Area>
+          <StackedArea.Area y='3' fill='#FF622D50' color={lineColors[3]} curve={curveCardinal}>
+            <StackedArea.Area.Dots />
+          </StackedArea.Area>
+        </StackedArea>
       </Plot>
     </>
   );
