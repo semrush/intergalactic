@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `tabs` behavior.
+- Focused Pill with `behavior=tabs` were not visually highlighted.
 
 ## [5.14.1] - 2023-12-19
 
