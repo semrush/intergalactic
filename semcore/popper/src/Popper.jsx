@@ -523,18 +523,18 @@ function Trigger(props) {
           style={focusCatcherStyles}
         />
       )}
-      <STrigger
-        render={Box}
-        inline
-        role='button'
-        aria-haspopup={true}
-        onFocus={handleFocus}
-        ref={triggerRef}
-      >
-        <enforcedKeyboardFocusEnhanceContext.Provider value={enforceKeyboardFocused}>
+      <enforcedKeyboardFocusEnhanceContext.Provider value={enforceKeyboardFocused}>
+        <STrigger
+          render={Box}
+          inline
+          role='button'
+          aria-haspopup={true}
+          onFocus={handleFocus}
+          ref={triggerRef}
+        >
           <Children />
-        </enforcedKeyboardFocusEnhanceContext.Provider>
-      </STrigger>
+        </STrigger>
+      </enforcedKeyboardFocusEnhanceContext.Provider>
       {focusHint && false && (
         <SFocusHint aria-live='polite'>
           <ScreenReaderOnly>{focusHint}</ScreenReaderOnly>
