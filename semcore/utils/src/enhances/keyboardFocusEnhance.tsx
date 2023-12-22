@@ -14,6 +14,8 @@ export type KeyboardFocusProps = {
   autoFocus?: boolean;
 };
 
+export const enforcedKeyboardFocusEnhanceContext = React.createContext(false);
+
 let lastFocusSource: 'mouse' | 'keyboard' | 'none' = 'none';
 const focusSourceListeners: {
   setFocusSource: (source: 'mouse' | 'keyboard' | 'none') => void;
@@ -103,9 +105,11 @@ const keyboardFocusEnhance = (): KeyboardFocusEnhanceHook => {
       }
     }, [disabled]);
 
+    const enforcedKeyboardFocus = React.useContext(enforcedKeyboardFocusEnhanceContext);
+
     return assignProps(props, {
       tabIndex: disabled ? -1 : tabIndex,
-      keyboardFocused: keyboardFocused && !disabled,
+      keyboardFocused: (keyboardFocused || enforcedKeyboardFocus) && !disabled,
       onFocus: handleFocus,
       onBlur: handlerBlur,
       ref,
