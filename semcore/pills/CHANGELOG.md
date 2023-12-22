@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.14.2] - 2023-12-22
+
+### Fixed
+
+- `tabs` behavior.
+
 ## [5.14.1] - 2023-12-19
 
 ### Changed
