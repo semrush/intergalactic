@@ -1,3 +1,66 @@
+## [15.44.0-prerelease.0] - 2023-12-22
+
+### @semcore/d3-chart
+
+- **Fixed** Order of chart lines/bars and tooltip HoverLine.
+
+### @semcore/pills
+
+- **Fixed** Focused Pill with `behavior=tabs` were not visually highlighted.
+
+### @semcore/popper
+
+- **Changed** When keyboard users are focus-triggered closing popper, trigger is highlighted with focus ring while actually focus is placed on the sibling invisible element.
+
+### @semcore/utils
+
+- **Changed** `keyboardFocusEnhance` got context based keyboard focus enforcing.
+
+## [15.43.2] - 2023-12-22
+
+### @semcore/d3-chart
+
+- **Fixed** Order of chart lines/bars and tooltip HoverLine.
+
+### @semcore/pills
+
+- **Fixed** Focused Pill with `behavior=tabs` were not visually highlighted.
+
+## [15.43.0] - 2023-12-19
+
+### @semcore/core
+
+- **Fixed** Internal types in `Component`.
+
+### @semcore/d3-chart
+
+- **Fixed** Chart dots were not displaying in Firefox.
+- **Fixed** Charts appearing animation in Firefox.
+
+### @semcore/date-picker
+
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
+- **Added** Set `displayedPeriod` from current `value` for each open of `Calendar`.
+
+### @semcore/input-mask
+
+- **Fixed** Component was breaking a page when initial value was not allowed by outer pipe.
+- **Added** `maskOnlySymbols` prop.
+- **Fixed** Text cursor position after pressing `Backspace`.
+
+### @semcore/popper
+
+- **Fixed** `Select.Item's` `Tooltip` with keyboard navigation.
+
+### @semcore/utils
+
+- **Fixed** Types in `splitProps` function.
+
 ## [15.42.3] - 2023-12-13
 
 ### @semcore/d3-chart

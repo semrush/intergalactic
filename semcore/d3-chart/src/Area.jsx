@@ -12,7 +12,7 @@ import {
   definedNullData,
   interpolateValue,
 } from './utils';
-import ClipPath from './ClipPath';
+import AnimatedClipPath from './AnimatedClipPath';
 
 import style from './style/area.shadow.css';
 
@@ -128,20 +128,7 @@ class AreaRoot extends Component {
           use:duration={`${duration}ms`}
           transparent={transparent}
         />
-        {duration && (
-          <ClipPath
-            aria-hidden
-            setAttributeTag={(rect) => {
-              rect.setAttribute('width', size[0]);
-            }}
-            id={uid}
-            x='0'
-            y='0'
-            width={0}
-            height={size[1]}
-            transition={`width ${duration}ms ease-in-out`}
-          />
-        )}
+        {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
       </>,
     );
   }

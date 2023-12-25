@@ -33,6 +33,7 @@ class RangePickerAbstract extends Component {
       defaultValue: [],
       defaultHighlighted: [],
       defaultVisible: false,
+      defaultPreselectedValue: [],
       disabled: [],
       size: 'm',
     };
@@ -53,7 +54,6 @@ class RangePickerAbstract extends Component {
   keyStep;
 
   state = {
-    dirtyValue: [],
     // To remove after removing button trigger
     defaultInteraction: 'focus',
   };
@@ -64,16 +64,23 @@ class RangePickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
+          const { value, displayedPeriod } = this.asProps;
+
           if (!visible) {
             this.handlers.highlighted([]);
-            this.setState({ dirtyValue: [] });
+            this.handlers.preselectedValue([]);
             this.handlers.displayedPeriod(
-              getEndDate(this.asProps.value ?? undefined) || this.props.defaultDisplayedPeriod,
+              getEndDate(value ?? undefined) || this.props.defaultDisplayedPeriod,
             );
+          }
+
+          if (visible && value && value !== displayedPeriod) {
+            this.handlers.displayedPeriod(getEndDate(value));
           }
         },
       ],
       highlighted: null,
+      preselectedValue: null,
       value: [
         null,
         (value) => {
@@ -83,7 +90,6 @@ class RangePickerAbstract extends Component {
       ],
     };
   }
-
   navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
@@ -95,8 +101,7 @@ class RangePickerAbstract extends Component {
 
   handlerKeyDown = (e) => {
     if (e.target !== e.currentTarget) return;
-    const { displayedPeriod, highlighted } = this.asProps;
-    const { dirtyValue } = this.state;
+    const { displayedPeriod, highlighted, preselectedValue } = this.asProps;
     const day = this.keyDiff[e.keyCode];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
@@ -122,9 +127,9 @@ class RangePickerAbstract extends Component {
       if (INTERACTION_TAGS.includes(e.target.tagName)) return;
       if (highlighted.length) {
         let next_highlighted;
-        if (dirtyValue.length === 1) {
+        if (preselectedValue.length === 1) {
           next_highlighted = [
-            dirtyValue[0],
+            preselectedValue[0],
             dayjs(highlighted[1] || highlighted[0])
               .add(day, this.keyStep)
               .toDate(),
@@ -152,25 +157,24 @@ class RangePickerAbstract extends Component {
   };
 
   handleChange = (date) => {
-    let { dirtyValue } = this.state;
+    let { preselectedValue } = this.asProps;
     let highlighted = [];
     if (Array.isArray(date)) {
-      dirtyValue = date;
-    } else if (!dirtyValue.length) {
-      dirtyValue = [date];
+      preselectedValue = date;
+    } else if (!preselectedValue.length) {
+      preselectedValue = [date];
       highlighted = [date];
-    } else if (dirtyValue.length >= 2) {
-      dirtyValue = [date];
+    } else if (preselectedValue.length >= 2) {
+      preselectedValue = [date];
       highlighted = [date];
-    } else if (dirtyValue[0] > date) {
-      dirtyValue = [date, dirtyValue[0]];
+    } else if (preselectedValue[0] > date) {
+      preselectedValue = [date, preselectedValue[0]];
     } else {
-      dirtyValue = [dirtyValue[0], date];
+      preselectedValue = [preselectedValue[0], date];
     }
 
-    this.setState({ dirtyValue }, () => {
-      this.handlers.highlighted(highlighted);
-    });
+    this.handlers.preselectedValue(preselectedValue);
+    this.handlers.highlighted(highlighted);
   };
 
   getDefaultPeriods() {
@@ -286,8 +290,8 @@ class RangePickerAbstract extends Component {
       highlighted,
       onHighlightedChange,
       onVisibleChange,
+      preselectedValue,
     } = this.asProps;
-    const { dirtyValue } = this.state;
 
     return {
       locale,
@@ -299,7 +303,7 @@ class RangePickerAbstract extends Component {
       highlighted,
       onHighlightedChange,
       onVisibleChange,
-      value: dirtyValue.length ? dirtyValue : value,
+      value: preselectedValue.length ? preselectedValue : value,
       onChange: this.handleChange,
     };
   }
@@ -310,11 +314,11 @@ class RangePickerAbstract extends Component {
       value,
       onHighlightedChange,
       onDisplayedPeriodChange,
+      preselectedValue,
     } = this.asProps;
-    const { dirtyValue } = this.state;
     return {
       periods,
-      value: dirtyValue.length ? dirtyValue : value,
+      value: preselectedValue.length ? preselectedValue : value,
       onChange: this.handleApply,
       onHighlightedChange,
       onDisplayedPeriodChange,
@@ -322,11 +326,10 @@ class RangePickerAbstract extends Component {
   }
 
   getApplyProps() {
-    const { value, getI18nText } = this.asProps;
-    const { dirtyValue } = this.state;
+    const { value, getI18nText, preselectedValue } = this.asProps;
     return {
       getI18nText,
-      onClick: () => this.handleApply(dirtyValue.length ? dirtyValue : value),
+      onClick: () => this.handleApply(preselectedValue.length ? preselectedValue : value),
     };
   }
 

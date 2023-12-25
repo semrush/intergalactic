@@ -21,9 +21,8 @@ Feedback pattern consists of several components that have their own accessibilit
 
 ## Considerations for developers
 
-- Use the `label` element, and, in specific cases, other mechanisms (for example, WAI-ARIA, title attribute etc.), to identify each form control.
+- Use the `label` element, and, in specific cases, other mechanisms (for example, title attribute, etc.), to identify each form control.
 - Use the `fieldset` and `legend` elements to group and associate related form controls.
-- Validate input provided by the user and provide options to undo changes and confirm data entry.
 
 See [Forms Tutorial from W3](https://www.w3.org/WAI/tutorials/forms/) for the detailed information and links.
 

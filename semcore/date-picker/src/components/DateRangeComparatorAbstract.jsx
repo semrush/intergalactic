@@ -47,6 +47,10 @@ class DateRangeComparatorAbstract extends Component {
         getLatestDate(primaryRange, defaultPrimaryRange, secondaryRange, defaultSecondaryRange) ||
         defaultDisplayedPeriod,
       defaultVisible: false,
+      defaultPreselectedValue: null,
+      defaultPreselectedCompare: null,
+      defaultCompareToggle: null,
+      defaultFocusedRange: 'value',
       disabled: [],
       size: 'm',
     };
@@ -54,37 +58,33 @@ class DateRangeComparatorAbstract extends Component {
 
   static enhance = [i18nEnhance(localizedMessages)];
 
-  state = {
-    dirtyValue: undefined,
-    dirtyCompare: undefined,
-    dirtyToggler: undefined,
-    range: 'value', // 'value' | 'compare'
-  };
-
   getPeriodProps() {
     const {
       periods = this.getDefaultPeriods(),
       onHighlightedChange,
       onCompareHighlightedChange,
       onDisplayedPeriodChange,
+      preselectedValue,
+      preselectedCompare,
+      focusedRange,
     } = this.asProps;
-    const { dirtyValue, dirtyCompare, range } = this.state;
 
-    let value = dirtyValue ?? this.asProps.value?.value;
-    if (range === 'compare') {
-      value = dirtyCompare ?? this.asProps.value?.compare;
+    let value = preselectedValue ?? this.asProps.value?.value;
+    if (focusedRange === 'compare') {
+      value = preselectedCompare ?? this.asProps.value?.compare;
     }
     return {
       periods,
       value,
       onChange: (value) => {
-        if (range === 'compare') {
-          this.setState({ dirtyCompare: value });
+        if (focusedRange === 'compare') {
+          this.handlers.preselectedCompare(value);
         } else {
-          this.setState({ dirtyValue: value });
+          this.handlers.preselectedValue(value);
         }
       },
-      onHighlightedChange: range === 'compare' ? onCompareHighlightedChange : onHighlightedChange,
+      onHighlightedChange:
+        focusedRange === 'compare' ? onCompareHighlightedChange : onHighlightedChange,
       onDisplayedPeriodChange,
     };
   }
@@ -122,21 +122,30 @@ class DateRangeComparatorAbstract extends Component {
           if (!visible) {
             this.handlers.highlighted([]);
             this.handlers.compareHighlighted([]);
-            this.setState({
-              dirtyValue: undefined,
-              dirtyCompare: undefined,
-              dirtyToggler: undefined,
-              range: 'value',
-            });
+            this.handlers.preselectedValue(undefined);
+            this.handlers.preselectedCompare(undefined);
+            this.handlers.compareToggle(undefined);
+            this.handlers.focusedRange('value');
             this.handlers.displayedPeriod(
               getLatestDate(this.asProps.value?.value ?? this.asProps.value?.compare ?? []) ||
                 this.props.defaultDisplayedPeriod,
             );
           }
+
+          const { value, displayedPeriod } = this.asProps;
+          const newDisplayedPeriod = value ? getLatestDate(value.value, value.compare) : undefined;
+
+          if (visible && newDisplayedPeriod && newDisplayedPeriod !== displayedPeriod) {
+            this.handlers.displayedPeriod(newDisplayedPeriod);
+          }
         },
       ],
       highlighted: null,
       compareHighlighted: null,
+      preselectedValue: null,
+      preselectedCompare: null,
+      compareToggle: null,
+      focusedRange: null,
       value: [
         null,
         (value) => {
@@ -148,11 +157,11 @@ class DateRangeComparatorAbstract extends Component {
   }
 
   getApplyProps() {
-    const { value, getI18nText } = this.asProps;
-    const { dirtyValue, dirtyCompare } = this.state;
+    const { value, getI18nText, preselectedValue, preselectedCompare } = this.asProps;
     return {
       getI18nText,
-      onClick: () => this.handleApply(dirtyValue ?? value?.value, dirtyCompare ?? value?.compare),
+      onClick: () =>
+        this.handleApply(preselectedValue ?? value?.value, preselectedCompare ?? value?.compare),
     };
   }
 
@@ -242,13 +251,21 @@ class DateRangeComparatorAbstract extends Component {
   }
 
   getValueDateRangeProps() {
-    const { value, onDisplayedPeriodChange, locale, disabled, size, getI18nText } = this.asProps;
-    const { range, dirtyValue } = this.state;
+    const {
+      value,
+      onDisplayedPeriodChange,
+      locale,
+      disabled,
+      size,
+      getI18nText,
+      focusedRange,
+      preselectedValue,
+    } = this.asProps;
 
     return {
-      focused: range === 'value' ? true : undefined,
-      value: dirtyValue ?? value?.value,
-      onChange: (value) => this.setState({ dirtyValue: value }),
+      focused: focusedRange === 'value' ? true : undefined,
+      value: preselectedValue ?? value?.value,
+      onChange: (value) => this.handlers.preselectedValue(value),
       onDisplayedPeriodChange,
       locale,
       w: size === 'm' ? 300 : 330,
@@ -256,21 +273,30 @@ class DateRangeComparatorAbstract extends Component {
       children: this.getRangeInput(),
       getI18nText,
       onFocus: () => {
-        this.setState({ range: 'value' });
+        this.handlers.focusedRange('value');
         return false;
       },
     };
   }
 
   getCompareDateRangeProps() {
-    const { value, onDisplayedPeriodChange, locale, disabled, size, getI18nText } = this.asProps;
-    const { range, dirtyCompare, dirtyToggler } = this.state;
+    const {
+      value,
+      onDisplayedPeriodChange,
+      locale,
+      disabled,
+      size,
+      getI18nText,
+      focusedRange,
+      preselectedCompare,
+      compareToggle,
+    } = this.asProps;
 
     return {
-      focused: range === 'compare' ? true : undefined,
-      disabled: !(dirtyToggler ?? value?.compare?.length),
-      value: dirtyCompare ?? value?.compare,
-      onChange: (value) => this.setState({ dirtyCompare: value }),
+      focused: focusedRange === 'compare' ? true : undefined,
+      disabled: !(compareToggle ?? value?.compare?.length),
+      value: preselectedCompare ?? value?.compare,
+      onChange: (value) => this.handlers.preselectedCompare(value),
       onDisplayedPeriodChange,
       locale,
       w: size === 'm' ? 300 : 330,
@@ -278,24 +304,25 @@ class DateRangeComparatorAbstract extends Component {
       children: this.getRangeInput(),
       getI18nText,
       onFocus: () => {
-        this.setState({ range: 'compare' });
+        this.handlers.focusedRange('compare');
         return false;
       },
     };
   }
 
   getCompareToggleProps() {
-    const { getI18nText, value } = this.asProps;
-    const { dirtyToggler } = this.state;
+    const { getI18nText, value, compareToggle } = this.asProps;
 
     return {
       getI18nText,
-      checked: dirtyToggler ?? value?.compare?.length,
+      checked: compareToggle ?? value?.compare?.length,
       onChange: (checked) => {
         if (checked) {
-          this.setState({ range: 'compare', dirtyToggler: true });
+          this.handlers.compareToggle(true);
+          this.handlers.focusedRange('compare');
         } else {
-          this.setState({ range: 'value', dirtyCompare: [], dirtyToggler: false });
+          this.handlers.compareToggle(false);
+          this.handlers.focusedRange('value');
         }
       },
     };
@@ -311,8 +338,10 @@ class DateRangeComparatorAbstract extends Component {
       highlighted,
       compareHighlighted,
       onHighlightedChange,
+      preselectedCompare,
+      preselectedValue,
+      focusedRange,
     } = this.asProps;
-    const { dirtyValue, dirtyCompare, range } = this.state;
 
     return {
       locale,
@@ -326,44 +355,37 @@ class DateRangeComparatorAbstract extends Component {
       compareHighlighted,
       onCompareHighlightedChange,
       onHighlightedChange,
-      range,
-      value: dirtyValue ?? value?.value,
-      compare: dirtyCompare ?? value?.compare,
+      range: focusedRange,
+      value: preselectedValue ?? value?.value,
+      compare: preselectedCompare ?? value?.compare,
     };
   }
 
   handleChange = (date) => {
-    const { dirtyValue, dirtyCompare, range } = this.state;
+    const { focusedRange, preselectedCompare, preselectedValue } = this.asProps;
     let highlighted = [];
-    let dirty = range === 'compare' ? dirtyCompare : dirtyValue;
+    let value = focusedRange === 'compare' ? preselectedCompare : preselectedValue;
     if (Array.isArray(date)) {
-      dirty = date;
-    } else if (!dirty?.length) {
-      dirty = [date];
+      value = date;
+    } else if (!value?.length) {
+      value = [date];
       highlighted = [date];
-    } else if (dirty?.length >= 2) {
-      dirty = [date];
+    } else if (value?.length >= 2) {
+      value = [date];
       highlighted = [date];
-    } else if (dirty?.[0] > date) {
-      dirty = [date, dirty?.[0]];
+    } else if (value?.[0] > date) {
+      value = [date, value?.[0]];
     } else {
-      dirty = [dirty?.[0], date];
+      value = [value?.[0], date];
     }
 
-    const state = {};
-    if (range === 'compare') {
-      state['dirtyCompare'] = dirty;
+    if (focusedRange === 'compare') {
+      this.handlers.preselectedCompare(value);
+      this.handlers.compareHighlighted(highlighted);
     } else {
-      state['dirtyValue'] = dirty;
+      this.handlers.preselectedValue(value);
+      this.handlers.highlighted(highlighted);
     }
-
-    this.setState(state, () => {
-      if (range === 'compare') {
-        this.handlers.compareHighlighted(highlighted);
-      } else {
-        this.handlers.highlighted(highlighted);
-      }
-    });
   };
 
   getPopperProps() {

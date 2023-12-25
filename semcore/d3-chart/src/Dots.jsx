@@ -24,7 +24,7 @@ function Dots(props) {
     scale,
     duration = 500,
     transparent,
-    radius = 6,
+    radius: radiusBase = 6,
     resolveColor,
   } = props;
   const bisect = bisector((d) => d[x]).center;
@@ -73,6 +73,7 @@ function Dots(props) {
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
     const visible = display || i === activeIndex || (!isPrev && !isNext);
+    const radius = radiusBase * (active ? 8 / 6 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
     acc.push(
@@ -91,7 +92,7 @@ function Dots(props) {
           hide={hide}
           color={resolveColor(color)}
           transparent={transparent}
-          radius={radius}
+          r={radius}
         />,
       ),
     );

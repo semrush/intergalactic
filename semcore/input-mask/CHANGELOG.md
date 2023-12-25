@@ -2,15 +2,27 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.16.0-prerelease.1] - 2023-12-22
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/input` [4.15.1 ~> 4.16.0], `@semcore/utils` [4.15.1 ~> 4.16.0], `@semcore/flex-box` [5.13.1 ~> 5.14.0], `@semcore/core` [2.12.1 ~> 2.13.0]).
+
+## [5.15.2] - 2023-12-14
+
+### Fixed
+
+- Component was breaking a page when initial value was not allowed by outer pipe.
+
 ## [5.15.1] - 2023-12-14
 
 ### Added
 
-- ``
+- `maskOnlySymbols` prop.
 
 ### Fixed
 
-- Text cursor position after keypress `Backspace`.
+- Text cursor position after pressing `Backspace`.
 
 ## [5.15.0] - 2023-12-06
 

@@ -72,6 +72,30 @@ describe('InputMask', () => {
     expect(input.selectionEnd).toBe(4);
   });
 
+  test('should not break when initial value is disallowed by pipe', async () => {
+    const pipe = (value: any) => {
+      if (parseFloat(value) > 5000) return false;
+      return value;
+    };
+    const Component = () => (
+      <InputMask size='l' mb={4}>
+        <InputMask.Value
+          mask='9999'
+          value='6000'
+          title='4-digit number below 5000'
+          data-testid='input'
+          pipe={pipe}
+          includeInputProps={['data-testid']}
+        />
+      </InputMask>
+    );
+
+    const { getByTestId } = render(<Component />);
+    const input = getByTestId('input') as HTMLInputElement;
+
+    expect(input.value).toBe('6000');
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <>
