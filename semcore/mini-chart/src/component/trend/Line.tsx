@@ -104,7 +104,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
           <polyline
             points={points.join(' ')}
             stroke={this.color}
-            strokeWidth='3'
+            strokeWidth='4'
             fill={'none'}
             clipPath={`url(#${uid})`}
           />
@@ -114,7 +114,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
                 this.defaultHeight
               }`}
               fill={this.color}
-              fillOpacity={0.5}
+              fillOpacity={0.2}
               clipPath={`url(#${uid})`}
             />
           )}
@@ -125,7 +125,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
               r={this.lastPointRadius}
               fill={resolveColor(lastPointColor)}
               stroke={resolveColor('chart-grid-border')}
-              strokeWidth={2}
+              strokeWidth={4}
               clipPath={`url(#${uid})`}
             />
           )}

@@ -1721,6 +1721,10 @@
       "type": "spacing",
       "description": "120px"
     },
+    "rounded-extra-small": {
+      "value": "2px",
+      "type": "borderRadius"
+    },
     "rounded-small": {
       "value": "4px",
       "type": "borderRadius"
@@ -1746,6 +1750,11 @@
       "value": "{rounded-medium}",
       "type": "borderRadius",
       "description": "Use for rounding Badge."
+    },
+    "chart-rounded": {
+      "value": "{rounded-extra-small}",
+      "type": "borderRadius",
+      "description": "Use for rounding big and small charts like bar, histogram and others."
     },
     "counter-rounded": {
       "value": "{rounded-large}",
