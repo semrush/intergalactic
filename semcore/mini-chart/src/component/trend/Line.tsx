@@ -101,8 +101,8 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
           viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
           xmlns='http://www.w3.org/2000/svg'
         >
-          <path
-            d={`M ${points.join('\nL ')}`}
+          <polyline
+            points={points.join(' ')}
             stroke={this.color}
             strokeWidth='3'
             fill={'none'}

@@ -1,11 +1,10 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled, ComponentType } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box, BoxProps } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './donut.shadow.css';
 import { assignProps } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
 import { CommonScoreProps } from './Line';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;

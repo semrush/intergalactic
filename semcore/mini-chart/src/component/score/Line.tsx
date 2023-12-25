@@ -1,10 +1,9 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled, ComponentType } from '@semcore/core';
-import { Box, Flex } from '@semcore/flex-box';
+import { Box, Flex, BoxProps } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './line.shadow.css';
-import { BoxProps } from '@semcore/flex-box';
 
 export type CommonScoreProps = {
   /**
