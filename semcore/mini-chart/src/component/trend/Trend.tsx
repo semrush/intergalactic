@@ -69,10 +69,11 @@ export abstract class Trend<P extends CommonTrendProps, E> extends Component<
     if (this.containerRef.current) {
       const boundingClientRect = this.containerRef.current.getBoundingClientRect();
 
-      this.setState({
-        width: boundingClientRect.width,
-        height: boundingClientRect.height,
-      });
+      const { width, height } = boundingClientRect;
+
+      if (width > 0 && height > 0) {
+        this.setState({ width, height });
+      }
     }
   }
 }
