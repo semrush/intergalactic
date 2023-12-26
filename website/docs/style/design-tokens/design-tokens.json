@@ -2426,6 +2426,13 @@
     "components": []
   },
   {
+    "name": "--intergalactic-rounded-extra-small",
+    "type": "borderRadius",
+    "rawValue": "2px",
+    "computedValue": "2px",
+    "components": []
+  },
+  {
     "name": "--intergalactic-rounded-small",
     "type": "borderRadius",
     "rawValue": "4px",
@@ -2468,6 +2475,14 @@
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
     "components": ["badge"]
+  },
+  {
+    "name": "--intergalactic-chart-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-extra-small}",
+    "computedValue": "2px",
+    "description": "Use for rounding big and small charts like bar, histogram and others.",
+    "components": ["mini-chart"]
   },
   {
     "name": "--intergalactic-counter-rounded",
@@ -2521,7 +2536,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
-    "components": ["progress-bar", "slider"]
+    "components": ["mini-chart", "progress-bar", "slider"]
   },
   {
     "name": "--intergalactic-surface-rounded",

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.2] - 2023-12-25
+
+### Added
+
+- Two new tokens for extra-small border-radii: `--intergalactic-rounded-extra-small` and `-intergalactic-chart-rounded`.
+
 ## [4.16.0-prerelease.1] - 2023-12-22
 
 ### Changed
