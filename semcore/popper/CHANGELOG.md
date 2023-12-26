@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.14.1] - 2023-12-26
+
+### Added
+
+- `disabled` prop to types.
+
 ## [5.14.0-prerelease.1] - 2023-12-22
 
 ### Changed
