@@ -4,6 +4,8 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import { Trend, CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
+import style from '../skeleton/skeleton.shadow.css';
+
 type BarItem = {
   /**
    * Value
@@ -30,6 +32,8 @@ type Enhances = {
 class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
   static enhance = [resolveColorEnhance()];
 
+  static style = style;
+
   static defaultProps = {
     animate: true,
   };
@@ -49,12 +53,12 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
   }
 
   render() {
-    const STrend = Root;
+    const STrendBar = Root;
     const { styles, resolveColor, isHistogram, animate, isLoading } = this.asProps;
     const step = this.defaultWidth / this.data.length;
 
     return sstyled(styles)(
-      <STrend render={Box} ref={this.containerRef} __excludeProps={['data']}>
+      <STrendBar render={Box} ref={this.containerRef} __excludeProps={['data']}>
         <svg
           width='100%'
           height='100%'
@@ -88,7 +92,7 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
             );
           })}
         </svg>
-      </STrend>,
+      </STrendBar>,
     );
   }
 }

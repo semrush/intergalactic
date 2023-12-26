@@ -5,6 +5,8 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Trend, CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
+import style from '../skeleton/skeleton.shadow.css';
+
 type TrendLineProps = CommonTrendProps & {
   /**
    * List of values
@@ -35,6 +37,8 @@ type Enhances = {
 
 class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
   static enhance = [resolveColorEnhance(), uniqueIDEnhancement()];
+
+  static style = style;
 
   static defaultProps = {
     animate: true,
@@ -81,7 +85,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
   }
 
   render() {
-    const STrend = Root;
+    const STrendLine = Root;
     const { uid, withArea, animate, lastPointColor, resolveColor, isLoading, styles } =
       this.asProps;
 
@@ -94,7 +98,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
     }
 
     return sstyled(styles)(
-      <STrend render={Box} ref={this.containerRef} __excludeProps={['data']}>
+      <STrendLine render={Box} ref={this.containerRef} __excludeProps={['data']}>
         <svg
           width='100%'
           height='100%'
@@ -138,7 +142,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
             </clipPath>
           )}
         </svg>
-      </STrend>,
+      </STrendLine>,
     );
   }
 }

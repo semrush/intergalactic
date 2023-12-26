@@ -1455,7 +1455,7 @@
     "rawValue": "{gray.100}, 0.8",
     "computedValue": "rgba(224, 225, 233, 0.8)",
     "description": "Default color for the Skeleton.",
-    "components": ["skeleton"]
+    "components": ["mini-chart", "skeleton"]
   },
   {
     "name": "--intergalactic-skeleton-bg-invert",
@@ -3049,7 +3049,7 @@
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
     "description": "1 color in the default list of colors for charts.",
-    "components": ["d3-chart"]
+    "components": ["d3-chart", "mini-chart"]
   },
   {
     "name": "--intergalactic-chart-palette-order-2",
@@ -3321,7 +3321,7 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Border of the dot that appears on the chart grid when hovered over.",
-    "components": ["d3-chart"]
+    "components": ["d3-chart", "mini-chart"]
   },
   {
     "name": "--intergalactic-chart-x-axis-accent-period-active",

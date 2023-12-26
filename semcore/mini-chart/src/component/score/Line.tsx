@@ -7,7 +7,7 @@ import style from './line.shadow.css';
 
 export type CommonScoreProps = {
   /**
-   * Value of score (in percents from 0 to 100)
+   * Value of score (in percents from 0 to 100) or count of selected segments (for Line with segments)
    */
   value: number;
 
@@ -31,6 +31,9 @@ export type CommonScoreProps = {
 
 export type ScoreLineGaugeProps = BoxProps &
   CommonScoreProps & {
+    /**
+     * Count of line segments
+     */
     segments?: number;
   };
 

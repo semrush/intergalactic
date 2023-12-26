@@ -1,3 +1,5 @@
+@import '../skeleton/skeleton.shadow.css';
+
 SLineGauge {
   height: 8px;
   background-color: var(--intergalactic-skeleton-bg, rgba(224, 225, 233, 0.8));
