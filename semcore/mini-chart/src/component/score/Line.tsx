@@ -2,32 +2,9 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled, ComponentType } from '@semcore/core';
 import { Box, Flex, BoxProps } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { CommonScoreProps } from './Score';
 
 import style from './line.shadow.css';
-
-export type CommonScoreProps = {
-  /**
-   * Value of score (in percents from 0 to 100) or count of selected segments (for Line with segments)
-   */
-  value: number;
-
-  /**
-   * Color of value
-   */
-  color?: string;
-
-  /**
-   * Flag to enable skeleton
-   * @default false
-   */
-  isLoading?: boolean;
-
-  /**
-   * Flag to enable animate of charts
-   * @default true
-   */
-  animate?: boolean;
-};
 
 export type ScoreLineGaugeProps = BoxProps &
   CommonScoreProps & {
@@ -61,7 +38,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
       color = 'chart-palette-order-1',
       resolveColor,
       segments,
-      isLoading,
+      loading,
     } = this.asProps;
 
     const SegmentItems = [];
@@ -90,7 +67,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
 
     return sstyled(styles)(
       <SLineGauge render={Box}>
-        {!isLoading && <SLineValue w={percent} color={resolveColor(color)} />}
+        {!loading && <SLineValue w={percent} color={resolveColor(color)} />}
         {Boolean(SegmentItems.length) && <SLineGaugeSegment>{SegmentItems}</SLineGaugeSegment>}
       </SLineGauge>,
     );

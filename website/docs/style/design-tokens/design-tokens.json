@@ -3360,7 +3360,7 @@
     "rawValue": "500",
     "computedValue": "500",
     "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)",
-    "components": []
+    "components": ["mini-chart"]
   },
   {
     "name": "--intergalactic-duration-slow",

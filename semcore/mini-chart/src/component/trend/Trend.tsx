@@ -13,7 +13,7 @@ export type CommonTrendProps = BoxProps & {
    * Flag to enable skeleton
    * @default false
    */
-  isLoading?: boolean;
+  loading?: boolean;
 
   /**
    * Data for chart

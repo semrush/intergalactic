@@ -43,9 +43,9 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
   }
 
   get data(): BarItem[] {
-    const { data, isLoading } = this.asProps;
+    const { data, loading } = this.asProps;
 
-    if (isLoading) {
+    if (loading) {
       return this.defaultData;
     }
 
@@ -54,17 +54,12 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
 
   render() {
     const STrendBar = Root;
-    const { styles, resolveColor, isHistogram, animate, isLoading } = this.asProps;
+    const { styles, resolveColor, isHistogram, animate, loading } = this.asProps;
     const step = this.defaultWidth / this.data.length;
 
     return sstyled(styles)(
       <STrendBar render={Box} ref={this.containerRef} __excludeProps={['data']}>
-        <svg
-          width='100%'
-          height='100%'
-          viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
-          xmlns='http://www.w3.org/2000/svg'
-        >
+        <svg width='100%' height='100%' viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}>
           {this.data.map((barItem, index) => {
             let color = resolveColor('skeleton-bg');
 
@@ -81,7 +76,7 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
                 height={barItem.value}
                 fill={color}
               >
-                {animate && !isLoading && (
+                {animate && !loading && (
                   <animate
                     attributeName={'y'}
                     values={`${this.defaultHeight};${this.defaultHeight - barItem.value}`}

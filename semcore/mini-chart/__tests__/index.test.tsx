@@ -15,8 +15,8 @@ describe('MiniChart.Score', () => {
         <Flex flexWrap={true} alignItems={'flex-end'}>
           <MiniChart.ScoreDonut value={30} w={'50px'} />
           <MiniChart.ScoreSemiDonut value={45} w={'50px'} />
-          <MiniChart.ScoreDonut isLoading={true} value={30} w={'50px'} />
-          <MiniChart.ScoreSemiDonut isLoading={true} value={30} w={'50px'} />
+          <MiniChart.ScoreDonut loading={true} value={30} w={'50px'} />
+          <MiniChart.ScoreSemiDonut loading={true} value={30} w={'50px'} />
         </Flex>
         <br />
         <Flex flexWrap={true} alignItems={'flex-end'}>
@@ -48,11 +48,11 @@ describe('MiniChart.Score', () => {
         <Flex flexWrap={true} alignItems={'flex-end'}>
           <MiniChart.ScoreLine value={30} w={'80px'} />
           &nbsp;
-          <MiniChart.ScoreLine isLoading={true} value={30} w={'80px'} />
+          <MiniChart.ScoreLine loading={true} value={30} w={'80px'} />
           &nbsp;
           <MiniChart.ScoreLine segments={5} value={2} w={'80px'} />
           &nbsp;
-          <MiniChart.ScoreLine isLoading={true} segments={5} value={2} w={'80px'} />
+          <MiniChart.ScoreLine loading={true} segments={5} value={2} w={'80px'} />
         </Flex>
         <br />
         {new Array(16).fill(null).map((_, index) => {
@@ -96,9 +96,9 @@ describe('MiniChart.Trend', () => {
     const component = (
       <Flex>
         <MiniChart.TrendBar data={data} />
-        <MiniChart.TrendBar data={data} isLoading={true} />
+        <MiniChart.TrendBar data={data} loading={true} />
         <MiniChart.TrendHistogram data={data} />
-        <MiniChart.TrendHistogram data={data} isLoading={true} />
+        <MiniChart.TrendHistogram data={data} loading={true} />
       </Flex>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -110,9 +110,9 @@ describe('MiniChart.Trend', () => {
     const component = (
       <Flex>
         <MiniChart.TrendLine data={data} />
-        <MiniChart.TrendLine data={data} isLoading={true} />
+        <MiniChart.TrendLine data={data} loading={true} />
         <MiniChart.TrendArea data={data} />
-        <MiniChart.TrendArea data={data} isLoading={true} />
+        <MiniChart.TrendArea data={data} loading={true} />
         <MiniChart.TrendLine data={data} lastPointColor={'chart-palette-order-4'} />
         <MiniChart.TrendArea data={data} lastPointColor={'chart-palette-order-7'} />
       </Flex>

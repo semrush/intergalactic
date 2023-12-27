@@ -3,7 +3,7 @@ import createComponent, { Component, Root, sstyled, ComponentType } from '@semco
 import { Box, BoxProps } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { assignProps } from '@semcore/core';
-import { CommonScoreProps } from './Line';
+import { CommonScoreProps } from './Score';
 
 import style from './donut.shadow.css';
 
@@ -31,7 +31,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
       color = 'chart-palette-order-1',
       resolveColor,
       isSemiDonut,
-      isLoading,
+      loading,
     } = this.asProps;
 
     const strokeWidth = isSemiDonut ? 6 : 4;
@@ -57,13 +57,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
 
     return sstyled(styles)(
       <SDonutContainer render={Box} semi={isSemiDonut}>
-        <svg
-          width='100%'
-          height='100%'
-          viewBox={viewBox}
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
+        <svg width='100%' height='100%' viewBox={viewBox} fill='none'>
           <g>
             <circle
               cx='12'
@@ -72,11 +66,11 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
               strokeWidth={strokeWidth}
               stroke={resolveColor('skeleton-bg')}
               strokeDasharray={
-                isLoading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
+                loading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
               }
               strokeDashoffset={-1 * valueStrokeDasharray}
             />
-            {!isLoading && (
+            {!loading && (
               <>
                 <circle
                   cx='12'

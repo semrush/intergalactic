@@ -53,9 +53,9 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
   }
 
   get data(): number[] {
-    const { data, isLoading } = this.asProps;
+    const { data, loading } = this.asProps;
 
-    if (isLoading) {
+    if (loading) {
       return this.defaultData;
     }
 
@@ -75,9 +75,9 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
   }
 
   get color() {
-    const { resolveColor, color = 'chart-palette-order-1', isLoading } = this.asProps;
+    const { resolveColor, color = 'chart-palette-order-1', loading } = this.asProps;
 
-    if (isLoading) {
+    if (loading) {
       return resolveColor('skeleton-bg');
     }
 
@@ -86,8 +86,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
 
   render() {
     const STrendLine = Root;
-    const { uid, withArea, animate, lastPointColor, resolveColor, isLoading, styles } =
-      this.asProps;
+    const { uid, withArea, animate, lastPointColor, resolveColor, loading, styles } = this.asProps;
 
     const points: string[] = [];
     const length = this.data.length;
@@ -99,12 +98,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
 
     return sstyled(styles)(
       <STrendLine render={Box} ref={this.containerRef} __excludeProps={['data']}>
-        <svg
-          width='100%'
-          height='100%'
-          viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
-          xmlns='http://www.w3.org/2000/svg'
-        >
+        <svg width='100%' height='100%' viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}>
           <polyline
             points={points.join(' ')}
             stroke={this.color}
@@ -122,7 +116,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
               clipPath={`url(#${uid})`}
             />
           )}
-          {lastPointColor && !isLoading && (
+          {lastPointColor && !loading && (
             <circle
               cx={step * (length - 1)}
               cy={this.defaultHeight - this.data[length - 1]}
@@ -134,7 +128,7 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
             />
           )}
 
-          {animate && !isLoading && (
+          {animate && !loading && (
             <clipPath id={uid}>
               <rect x='0' y='0' width='100%' height='100%' fill={'black'}>
                 <animate dur='500ms' attributeName='width' values='0;100%' />
