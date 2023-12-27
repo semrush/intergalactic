@@ -73,7 +73,11 @@ export type PopperProps = OutsideClickProps &
     eventListeners?: Partial<OptionsEventListeners>;
     /** @ignore */
     onFirstUpdate?: Options['onFirstUpdate'];
-
+    /**
+     * Flag for disable Popover (if true, it will close Popper and it will not respond to handlers)
+     * @default false
+     */
+    disabled?: boolean;
     /**
      * Disabled focus trap, autofocus and focus return
      */
