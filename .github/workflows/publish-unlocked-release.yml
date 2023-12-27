@@ -66,9 +66,156 @@ jobs:
         run: pnpm whoami
       - name: Publish release
         run: pnpm publish-release
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.3
+      - name: Install Node.js
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Cache build
+        uses: actions/cache@v3.3.1
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-3
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: |
+          pnpm build
+  static-lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.3
+      - name: Install Node.js
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Restore cached build
+        uses: actions/cache@v3.3.1
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-3
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.3
+      - name: Install Node.js
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Restore cached build
+        uses: actions/cache@v3.3.1
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-3
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Test setup
+        id: test-setup
+        run: pnpm test:setup
+      - name: Test
+        id: test
+        run: pnpm test:docker run
+        continue-on-error: true
+      - name: Save test results as artifacts
+        if: steps.test.outcome != 'success'
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-testing-failure-output
+          path: semcore/*/__tests__/__image_snapshots__/__diff_output__/
+          retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.test.outcome != 'success'
+        run: exit 1
   publish-unlocked-intergalactic-release:
     runs-on: ubuntu-latest
-    needs: publish-unlocked-release
+    needs: [static-lint, unit-tests, browser-tests]
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
