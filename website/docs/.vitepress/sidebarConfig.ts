@@ -1805,6 +1805,25 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             ],
           },
           {
+            link: '/data-display/mini-chart/mini-chart',
+            text: 'Mini chart',
+            collapsed: true,
+            items: [
+              {
+                link: '/data-display/mini-chart/mini-chart-a11y',
+                text: 'A11y',
+              },
+              {
+                link: '/data-display/mini-chart/mini-chart-api',
+                text: 'API',
+              },
+              {
+                link: '/data-display/mini-chart/mini-chart-changelog',
+                text: 'Changelog',
+              },
+            ],
+          },
+          {
             link: '/data-display/radar-chart/radar-chart',
             text: 'Radar chart',
             collapsed: true,
