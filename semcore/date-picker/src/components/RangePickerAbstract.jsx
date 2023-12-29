@@ -7,6 +7,7 @@ import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
+import includesDate from '../utils/includesDate';
 
 import style from '../style/date-picker.shadow.css';
 
@@ -105,22 +106,31 @@ class RangePickerAbstract extends Component {
     const day = this.keyDiff[e.keyCode];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
-      const [, right_period] = next_highlighted;
+      const [left_period, right_period] = next_highlighted;
 
-      if (right_period) {
-        const month_right_period = right_period.getMonth();
-        const month_displayed_Period = displayedPeriod.getMonth();
-        if (month_right_period - month_displayed_Period > 1) {
-          return RangePickerAbstract.subtract(right_period, 1, 'month');
-        } else if (month_right_period - month_displayed_Period < 0) {
-          return right_period;
+      const monthDisplayedPeriod = displayedPeriod?.getMonth();
+      const monthPeriod = right_period || left_period;
+
+      if (monthPeriod) {
+        if (!monthDisplayedPeriod) {
+          return monthPeriod;
+        }
+
+        if (monthPeriod.getMonth() - monthDisplayedPeriod > 1) {
+          return RangePickerAbstract.subtract(monthPeriod, 1, 'month');
+        } else if (monthPeriod.getMonth() - monthDisplayedPeriod < 0) {
+          return monthPeriod;
         }
       }
       return displayedPeriod;
     };
 
     if (e.keyCode === 32 && highlighted.length) {
-      this.handleChange(highlighted[1] || highlighted[0]);
+      const highlightedDate = highlighted[1] || highlighted[0];
+
+      if (!this.isDisabled(highlightedDate)) {
+        this.handleChange(highlightedDate);
+      }
       e.preventDefault();
     }
     if (day) {
@@ -144,11 +154,17 @@ class RangePickerAbstract extends Component {
         this.handlers.highlighted(next_highlighted);
         this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
       } else {
-        this.handlers.highlighted([displayedPeriod]);
+        this.handlers.highlighted([displayedPeriod ? displayedPeriod : dayjs().toDate()]);
       }
       e.preventDefault();
     }
   };
+
+  isDisabled(date) {
+    const { disabled } = this.asProps;
+
+    return disabled.some(includesDate(dayjs(date), 'date'));
+  }
 
   handleApply = (value) => {
     const [startDate, endDate = startDate] = value;
