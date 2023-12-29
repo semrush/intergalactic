@@ -6,7 +6,7 @@ tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Chan
 
 ## Description
 
-Mini chart is a component for visualizing a small dataset or a single value that needs to be highlighted in the interface to assist the user in quickly reviewing data and understanding how the data has changed on the page.
+**Mini chart** is a component for visualizing a small dataset or a single value that needs to be highlighted in the interface to assist the user in quickly reviewing data and understanding how the data has changed on the page.
 
 ## Types
 

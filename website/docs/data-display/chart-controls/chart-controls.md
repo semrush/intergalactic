@@ -2,7 +2,6 @@
 title: Chart controls
 fileSource: d3-chart
 docs: true
-tabs: Design('chart-controls'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
