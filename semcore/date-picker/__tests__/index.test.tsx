@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import {
@@ -273,6 +273,65 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByText('Apply'));
     expect(getByText('August 2021')).toBeTruthy();
     vi.useRealTimers();
+  });
+
+  test('Should not select disabled date from the keyboard', async () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+    const onPreselectedValueChange = vi.fn();
+    const { getByTestId, getByText } = render(
+      <DateRangePicker
+        visible
+        disabled={[new Date('2023-12-28')]}
+        defaultDisplayedPeriod={new Date()}
+        onPreselectedValueChange={onPreselectedValueChange}
+      >
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper data-testid={'dd_popper'} />
+      </DateRangePicker>,
+    );
+
+    expect(getByText('December 2023')).toBeTruthy();
+    expect(getByText('January 2024')).toBeTruthy();
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    expect(getByTestId('dd_popper')).toHaveFocus();
+
+    await userEvent.keyboard('[ArrowLeft]'); // 2023-12-20
+    await userEvent.keyboard('[Space]');
+
+    expect(onPreselectedValueChange).toBeCalledWith([new Date()]);
+
+    await userEvent.keyboard('[ArrowDown]'); // 2023-12-27
+    await userEvent.keyboard('[ArrowRight]'); // 2023-12-28
+    await userEvent.keyboard('[Space]');
+
+    expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't call second time - 28 is disabled date
+  });
+
+  test('Should change month after of select new date from the keyboard', async () => {
+    mockDate('2023-12-20T12:00:00.808Z');
+
+    const { getByTestId, getByText } = render(
+      <DateRangePicker visible>
+        <DateRangePicker.Trigger />
+        <DateRangePicker.Popper data-testid={'dd_popper'} />
+      </DateRangePicker>,
+    );
+
+    expect(getByText('December 2023')).toBeTruthy();
+    expect(getByText('January 2024')).toBeTruthy();
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    expect(getByTestId('dd_popper')).toHaveFocus();
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[ArrowDown]');
+
+    expect(getByText('February 2024')).toBeTruthy();
   });
 
   test('a11y', async () => {

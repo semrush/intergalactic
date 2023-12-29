@@ -103,7 +103,7 @@ class RangePickerAbstract extends Component {
   handlerKeyDown = (e) => {
     if (e.target !== e.currentTarget) return;
     const { displayedPeriod, highlighted, preselectedValue } = this.asProps;
-    const day = this.keyDiff[e.keyCode];
+    const day = this.keyDiff[e.code];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
       const [left_period, right_period] = next_highlighted;
@@ -125,7 +125,7 @@ class RangePickerAbstract extends Component {
       return displayedPeriod;
     };
 
-    if (e.keyCode === 32 && highlighted.length) {
+    if (e.code === 'Space' && highlighted.length) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
