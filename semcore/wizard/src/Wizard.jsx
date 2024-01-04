@@ -7,6 +7,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/wizard.shadow.css';
 
@@ -21,6 +22,7 @@ class WizardRoot extends Component {
   };
 
   _steps = new Map();
+  modalRef = React.createRef();
 
   getStepProps(props) {
     return {
@@ -44,6 +46,17 @@ class WizardRoot extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.step === this.asProps.step) return;
+    setTimeout(() => {
+      if (prevProps.step === this.asProps.step) return;
+      if (document.activeElement !== document.body) return;
+      if (!this.asProps.visible) return;
+      if (!this.modalRef.current) return;
+      setFocus(this.modalRef.current, document.body);
+    }, 1);
+  }
+
   render() {
     const SWizard = this.Root;
     const { Children, styles } = this.asProps;
@@ -51,7 +64,7 @@ class WizardRoot extends Component {
     this._steps.clear();
 
     return sstyled(styles)(
-      <SWizard render={Modal}>
+      <SWizard render={Modal} ref={this.modalRef}>
         <Children />
       </SWizard>,
     );
