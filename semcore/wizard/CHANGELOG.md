@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.23.0] - 2024-01-04
+
+### Fixed
+
+- When focus is lost during the step change, the focus is moved to the wizard first focusable element.
+
 ## [2.22.0] - 2023-12-22
 
 ### Changed
