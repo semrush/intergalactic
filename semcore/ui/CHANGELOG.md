@@ -1,3 +1,17 @@
+## [15.45.0-prerelease.0] - 2024-01-04
+
+### @semcore/popper
+
+- **Added** `disabled` prop to types.
+
+### @semcore/tooltip
+
+- **Fixed** `aria-haspopup` for `disabled` tooltips.
+
+### @semcore/wizard
+
+- **Fixed** When focus is lost during the step change, the focus is moved to the wizard first focusable element.
+
 ## [15.44.0] - 2023-12-22
 
 ### @semcore/d3-chart
