@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.15.1-prerelease.1] - 2024-01-04
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/tooltip` [6.13.0 ~> 6.13.1]).
+
 ## [6.15.0] - 2023-12-22
 
 ### Changed

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.22.1-prerelease.1] - 2024-01-04
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.20.0 ~> 5.20.1]).
+
 ## [3.22.0] - 2023-12-22
 
 ### Changed
