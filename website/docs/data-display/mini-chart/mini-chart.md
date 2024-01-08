@@ -4,6 +4,100 @@ title: Mini chart
 tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Changelog('mini-chart-changelog')
 ---
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import MiniChart from '@semcore/mini-chart';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { bool, radio, select, text, onChange } = createGroupWidgets('MiniChart');
+
+    const type = select({
+      key: 'type',
+      defaultValue: 'scoreLine',
+      label: 'Type',
+      options: [
+        {name: 'scoreLine', value: 'scoreLine'},
+        {name: 'scoreSegmentLine', value: 'scoreSegmentLine'},
+        {name: 'scoreDonut', value: 'scoreDonut'},
+        {name: 'scoreSemiDonut', value: 'scoreSemiDonut'},
+        {name: 'trendArea', value: 'trendArea'},
+        {name: 'trendLine', value: 'trendLine'},
+      ],
+    });
+
+    const value = 30;
+
+    if (type === 'scoreLine') {
+      return (
+        <MiniChart.ScoreLine
+          value={value}
+          w={'100px'}
+        />
+      );
+    }
+
+if (type === 'scoreSegmentLine') {
+      return (
+        <MiniChart.ScoreLine
+          segments={5}
+          value={3}
+          w={'100px'}
+        />
+      );
+    }
+
+if (type === 'scoreDonut') {
+      return (
+        <MiniChart.ScoreDonut
+          value={value}
+          w={'40px'}
+        />
+      );
+    }
+
+if (type === 'scoreSemiDonut') {
+      return (
+        <MiniChart.ScoreSemiDonut
+          value={value}
+          w={'40px'}
+        />
+      );
+    }
+
+if (type === 'trendArea') {
+      return (
+        <MiniChart.TrendArea
+          w={'220px'}
+          h={'50px'}
+          data={[20, 50, 80, 65, 33, 12, 15, 18]}
+        />
+      );
+    }
+
+if (type === 'trendLine') {
+      return (
+        <MiniChart.TrendLine
+          data={[20, 50, 33, 80, 70, 35, 10, 40, 90, 50]}
+          w={'140px'}
+          h={'40px'}
+        />
+      );
+    }
+
+    return null;
+  },
+  {
+    filterProps: ['w', 'h', 'value', 'data'],
+  },
+);
+</script>
+
+:::
+
 ## Description
 
 **Mini chart** is a component for visualizing a small dataset or a single value that needs to be highlighted in the interface to assist the user in quickly reviewing data and understanding how the data has changed on the page.

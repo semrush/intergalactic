@@ -17,7 +17,7 @@ type BarItem = {
   color?: string;
 };
 
-type TrendBarProps = CommonTrendProps & {
+export type TrendBarProps = CommonTrendProps & {
   /**
    * Data to bar chart
    */

@@ -7,7 +7,7 @@ import { Box } from '@semcore/flex-box';
 
 import style from '../skeleton/skeleton.shadow.css';
 
-type TrendLineProps = CommonTrendProps & {
+export type TrendLineProps = CommonTrendProps & {
   /**
    * List of values
    */
