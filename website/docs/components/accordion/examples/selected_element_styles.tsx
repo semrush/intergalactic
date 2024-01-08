@@ -13,7 +13,12 @@ const Demo = () => {
               <Accordion.Item.Toggle
                 tag={Flex}
                 alignItems='center'
-                style={{ backgroundColor: selected ? 'var(--intergalactic-bg-secondary-neutral-hover)' : '', padding: '8px 12px' }}
+                style={{
+                  backgroundColor: selected
+                    ? 'var(--intergalactic-bg-secondary-neutral-hover)'
+                    : '',
+                  padding: '8px 12px',
+                }}
               >
                 <Accordion.Item.Chevron mr={2} />
                 <Text size={300} tag='h3' my={0}>{`Section ${index + 1}`}</Text>
