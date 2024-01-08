@@ -30,9 +30,16 @@ Table: Roles and attributes
 | `alert` |                                | `div` | Identifies the element as the container where alert content will be added or updated.                                                                                                                                               |
 |         | `aria-live="assertive"` | `div` | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
 |         | `tabIndex="0"` | `div` | Makes the elements focusable and includes them in the page `Tab` sequence.                                                                                                                                                          |
-|         | `aria-label` for grabbed item  | `div` | Defines the string value or identifies the element (or elements) that provides an accessible name. Grabbed item will be read as: `${itemText} grabbed, current position is ${index + 1} of ${itemsCount}` .                          |
-|         | `aria-label` for grabbing item | `div` | Defines the string value or identifies the element (or elements) that provides an accessible name. Grabbing item will be read as: `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}` .                       |
-|         | `aria-label` for dropped item  | `div` | Defines the string value or identifies the element (or elements) that provides an accessible name. Dropped item will be read as: `${itemText} dropped, final position is ${index + 1} of ${itemsCount}` .                            |
+
+### Aria-live messages
+
+Text message for assistive technologies that will be read when the user interacts with the component.
+
+| Action                | Message template                                                           |
+| --------------------- | -------------------------------------------------------------------------- |
+| Item was just grabbed | `${itemText} grabbed, current position is ${index + 1} of ${itemsCount}` |
+| Item is grabbing      | `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}` |
+| Item is dropped       | `${itemText} dropped, final position is ${index + 1} of ${itemsCount}` |
 
 ## Other recommendations
 
