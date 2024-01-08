@@ -113,12 +113,6 @@ Table: Mini chart types
 | `trend`    | ![](static/trend.png) | Use to show trend from a list of values. |
 | `score`    | ![](static/score.png) | Use to visualize some value or to indicate if something (in per cents or absolute numbers) is good/bad, high/low, above average, etc. |
 
-## Sizes
-
-The component charts have default sizes, but you can set them to those you need, chart will scale to them. For example:
-
-![](static/trend-bar-size-big.png)
-
 ### Trend type
 
 Table: Versions of charts with trend type
@@ -147,6 +141,12 @@ Table: Versions of charts with score type
 | Donut chart              | ![](static/score-donut.png) |
 | Semi donut chart (Gauge) | ![](static/score-semi-donut.png) |
 | Line gauge chart         | ![](static/score-line-gauge.png) |
+
+## Sizes
+
+The component charts have default sizes, but you can set them to those you need, chart will scale to them. For example:
+
+![](static/trend-bar-size-big.png)
 
 ## Usage with text
 
