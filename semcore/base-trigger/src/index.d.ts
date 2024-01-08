@@ -4,14 +4,14 @@ import { Box, BoxProps } from '@semcore/flex-box';
 import { DotProps } from '@semcore/dot';
 import { NeighborItemProps } from '@semcore/neighbor-location';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { IWithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import { WithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
 export type BaseTriggerProps = BoxProps &
   NeighborItemProps &
   KeyboardFocusProps &
-  IWithAnimatedSizeEnhanceProps & {
+  WithAnimatedSizeEnhanceProps & {
     /**
      * Trigger size
      * @default m
