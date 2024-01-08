@@ -15,9 +15,10 @@ const Demo = () => {
                 alignItems='center'
                 style={{
                   backgroundColor: selected
-                    ? 'var(--intergalactic-bg-secondary-neutral-hover)'
+                    ? 'var(--intergalactic-bg-secondary-neutral)'
                     : '',
                   padding: '8px 12px',
+                  marginBottom: '1px',
                 }}
               >
                 <Accordion.Item.Chevron mr={2} />
