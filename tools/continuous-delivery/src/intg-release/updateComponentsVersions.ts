@@ -6,7 +6,7 @@ import { log } from '../utils';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
 
-export function updateComponentsVersions(packages: string[]) {
+export function updateComponentsVersions(packages: string[], componentJsonPath: string) {
   log('Update components versions...');
 
   const newDeps: Record<string, string> = {};
@@ -19,5 +19,5 @@ export function updateComponentsVersions(packages: string[]) {
     newDeps[pack] = packageJsonData.version;
   });
 
-  fs.writeJSONSync(path.resolve(dirname, 'components.json'), newDeps, { spaces: 2 });
+  fs.writeJSONSync(componentJsonPath, newDeps, { spaces: 2 });
 }
