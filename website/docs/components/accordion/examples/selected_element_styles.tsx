@@ -14,9 +14,7 @@ const Demo = () => {
                 tag={Flex}
                 alignItems='center'
                 style={{
-                  backgroundColor: selected
-                    ? 'var(--intergalactic-bg-secondary-neutral)'
-                    : '',
+                  backgroundColor: selected ? 'var(--intergalactic-bg-secondary-neutral)' : '',
                   padding: '8px 12px',
                   marginBottom: '1px',
                 }}
