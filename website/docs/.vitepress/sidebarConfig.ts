@@ -1505,13 +1505,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           {
             link: '/data-display/chart-showcase/chart-showcase',
             text: 'Charts showcase',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/chart-showcase/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/d3-chart/d3-chart',
@@ -1543,17 +1536,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           {
             link: '/data-display/chart-controls/chart-controls',
             text: 'Chart controls',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/chart-controls/chart-control-code',
-                text: 'Example',
-              },
-              {
-                link: '/data-display/chart-controls/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/chart-legend/chart-legend',
@@ -1800,6 +1782,25 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               },
               {
                 link: '/data-display/line-chart/d3-chart-changelog',
+                text: 'Changelog',
+              },
+            ],
+          },
+          {
+            link: '/data-display/mini-chart/mini-chart',
+            text: 'Mini chart',
+            collapsed: true,
+            items: [
+              {
+                link: '/data-display/mini-chart/mini-chart-a11y',
+                text: 'A11y',
+              },
+              {
+                link: '/data-display/mini-chart/mini-chart-api',
+                text: 'API',
+              },
+              {
+                link: '/data-display/mini-chart/mini-chart-changelog',
                 text: 'Changelog',
               },
             ],
