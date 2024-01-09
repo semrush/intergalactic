@@ -1,4 +1,3 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/components/drag-and-drop/examples/list.tsx
 import React from 'react';
 import Select from '@semcore/ui/select';
 import DnD from '@semcore/ui/drag-and-drop';
