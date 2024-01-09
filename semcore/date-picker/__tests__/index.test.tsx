@@ -294,7 +294,6 @@ describe('DateRangePicker', () => {
     expect(getByText('January 2024')).toBeTruthy();
 
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
 
     expect(getByTestId('dd_popper')).toHaveFocus();
 
@@ -310,11 +309,11 @@ describe('DateRangePicker', () => {
     expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't call second time - 28 is disabled date
   });
 
-  test('Should change month after of select new date from the keyboard', async ({ expect }) => {
+  test('Should change month after select new date from the keyboard', async ({ expect }) => {
     mockDate('2023-12-20T12:00:00.808Z');
 
     const { getByTestId, getByText } = render(
-      <DateRangePicker visible>
+      <DateRangePicker visible defaultDisplayedPeriod={new Date()}>
         <DateRangePicker.Trigger />
         <DateRangePicker.Popper data-testid={'dd_popper'} />
       </DateRangePicker>,
@@ -324,10 +323,10 @@ describe('DateRangePicker', () => {
     expect(getByText('January 2024')).toBeTruthy();
 
     await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
 
     expect(getByTestId('dd_popper')).toHaveFocus();
 
+    await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[ArrowDown]');
 
