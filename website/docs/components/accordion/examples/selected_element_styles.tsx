@@ -13,6 +13,7 @@ const Demo = () => {
           .styled-accordion-item {
             background-color: var(--intergalactic-bg-secondary-neutral);
             padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-3x);
+            color: var(--intergalactic-text-primary);
           }
           .styled-accordion-item:first-of-type {
             border-radius: var(--intergalactic-control-rounded) var(--intergalactic-control-rounded) 0 0;
@@ -22,6 +23,7 @@ const Demo = () => {
           }
           .styled-accordion-item-selected {
             background-color: var(--intergalactic-bg-secondary-neutral-hover);
+            color: #000;
           }
         `}
       </style>
