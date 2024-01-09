@@ -12,7 +12,13 @@ const Demo = () => {
         <br />
         <MiniChart.ScoreLine segments={5} value={5} w={'80px'} color={'chart-palette-order-2'} />
         <br />
-        <MiniChart.ScoreLine segments={5} value={3} w={'80px'} animate={false} color={'chart-palette-order-5'} />
+        <MiniChart.ScoreLine
+          segments={5}
+          value={3}
+          w={'80px'}
+          animate={false}
+          color={'chart-palette-order-5'}
+        />
         <br />
         <MiniChart.ScoreLine segments={3} value={2} />
         <br />
