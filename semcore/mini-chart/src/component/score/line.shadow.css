@@ -57,6 +57,7 @@ SLineSegmentItem {
   border-right-color: var(--intergalactic-chart-grid-border, #ffffff);
   border-right-style: solid;
   border-right-width: 1px;
+  box-sizing: content-box;
 }
 
 @keyframes move-line {
