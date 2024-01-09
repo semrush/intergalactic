@@ -32,10 +32,10 @@ class DateRangePickerRoot extends RangePickerAbstract {
   navigateStep = 'month';
   keyStep = 'day';
   keyDiff = {
-    37: -1,
-    38: -7,
-    39: 1,
-    40: 7,
+    ArrowLeft: -1,
+    ArrowUp: -7,
+    ArrowRight: 1,
+    ArrowDown: 7,
   };
 
   getDefaultPeriods() {

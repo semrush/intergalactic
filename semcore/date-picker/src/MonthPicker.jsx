@@ -31,10 +31,10 @@ class MonthPickerRoot extends PickerAbstract {
   navigateStep = 'year';
   keyStep = 'month';
   keyDiff = {
-    37: -1,
-    38: -3,
-    39: 1,
-    40: 3,
+    ArrowLeft: -1,
+    ArrowUp: -3,
+    ArrowRight: 1,
+    ArrowDown: 3,
   };
 
   getButtonTriggerProps() {

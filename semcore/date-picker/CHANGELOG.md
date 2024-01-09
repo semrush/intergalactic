@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.22.1] - 2023-12-29
+
+### Fixed
+
+- Disabled dates should not be available from the keyboard.
+- Months should change when goes outside the current period.
+
 ## [4.22.0] - 2023-12-22
 
 ### Changed
