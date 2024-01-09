@@ -8,18 +8,10 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 
 <script lang="tsx">
 import React from 'react';
-import { Box } from '@semcore/flex-box';
-
 import ProgressBar from '@semcore/ui/progress-bar';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['l', 'm', 's'];
-
-const LayoutPreview = (props) => (
-  <Box w={200} p={5}>
-    {props.children}
-  </Box>
-);
 
 const Preview = (preview) => {
   const { radio, text, select } = preview('ProgressBar');
@@ -59,10 +51,10 @@ const Preview = (preview) => {
     label: 'Value',
   });
 
-  return <ProgressBar theme={theme} size={size} duration={duration} value={value} />;
+  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} />;
 };
 
-const App = PlaygroundGeneration(Preview, { LayoutPreview });
+const App = PlaygroundGeneration(Preview, {filterProps: ['w']});
 </script>
 
 :::
