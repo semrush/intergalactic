@@ -1,4 +1,3 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/components/inline-edit/examples/header.tsx
 import React from 'react';
 import InlineInput from '@semcore/ui/inline-input';
 import InlineEdit from '@semcore/ui/inline-edit';
