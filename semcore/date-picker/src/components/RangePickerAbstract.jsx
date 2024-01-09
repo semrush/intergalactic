@@ -109,17 +109,17 @@ class RangePickerAbstract extends Component {
       const [left_period, right_period] = next_highlighted;
 
       const monthDisplayedPeriod = displayedPeriod?.getMonth();
-      const monthPeriod = right_period || left_period;
+      const period = right_period || left_period;
 
-      if (monthPeriod) {
+      if (period) {
         if (!monthDisplayedPeriod) {
-          return monthPeriod;
+          return period;
         }
 
-        if (monthPeriod.getMonth() - monthDisplayedPeriod > 1) {
-          return RangePickerAbstract.subtract(monthPeriod, 1, 'month');
-        } else if (monthPeriod.getMonth() - monthDisplayedPeriod < 0) {
-          return monthPeriod;
+        if (period.getMonth() - monthDisplayedPeriod > 1) {
+          return RangePickerAbstract.subtract(period, 1, 'month');
+        } else if (period.getMonth() - monthDisplayedPeriod < 0) {
+          return period;
         }
       }
       return displayedPeriod;
