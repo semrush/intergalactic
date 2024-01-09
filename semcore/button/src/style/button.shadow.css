@@ -138,19 +138,15 @@ SButton[theme='secondary-muted'] {
   background-color: var(--intergalactic-control-secondary-neutral, rgba(138, 142, 155, 0.1));
 
   &:hover {
-    background-color: var(
-      --intergalactic-control-secondary-neutral-hover,
-      rgba(138, 142, 155, 0.2)
-    );
+    background-color: var(--intergalactic-control-secondary-neutral-hover,
+    rgba(138, 142, 155, 0.2));
     color: var(--intergalactic-text-primary, #191b23);
   }
 
   &:active,
   &[active] {
-    background-color: var(
-      --intergalactic-control-secondary-neutral-active,
-      rgba(138, 142, 155, 0.3)
-    );
+    background-color: var(--intergalactic-control-secondary-neutral-active,
+    rgba(138, 142, 155, 0.3));
     color: var(--intergalactic-text-primary, #191b23);
   }
 }
@@ -181,10 +177,8 @@ SButton[theme='secondary-invert'] {
 
   &:active,
   &[active] {
-    background-color: var(
-      --intergalactic-control-secondary-invert-active,
-      rgba(255, 255, 255, 0.3)
-    );
+    background-color: var(--intergalactic-control-secondary-invert-active,
+    rgba(255, 255, 255, 0.3));
   }
 }
 
@@ -213,10 +207,8 @@ SButton[theme='tertiary-muted'] {
 
   &:active,
   &[active] {
-    background-color: var(
-      --intergalactic-control-tertiary-neutral-active,
-      rgba(138, 142, 155, 0.3)
-    );
+    background-color: var(--intergalactic-control-tertiary-neutral-active,
+    rgba(138, 142, 155, 0.3));
     color: var(--intergalactic-text-primary, #191b23);
   }
 }
@@ -244,17 +236,6 @@ SButton[neighborLocation='both'] {
   border-radius: 0;
   /* disable-tokens-validator */
   margin-left: -1px;
-
-  &[theme='primary-info'],
-  &[theme='primary-success'],
-  &[theme='primary-warning'],
-  &[theme='primary-danger'] {
-    border-left-color: var(--intergalactic-neighbor-location-neutral, rgba(255, 255, 255, 0.5));
-  }
-
-  &[theme='primary-invert'] {
-    border-left-color: var(--intergalactic-neighbor-location-invert, rgba(0, 0, 0, 0.5));
-  }
 }
 
 SButton[neighborLocation='left'] {
@@ -262,16 +243,31 @@ SButton[neighborLocation='left'] {
   border-bottom-left-radius: 0;
   /* disable-tokens-validator */
   margin-left: -1px;
+}
 
-  &[theme='primary-info'],
-  &[theme='primary-success'],
-  &[theme='primary-warning'],
-  &[theme='primary-danger'] {
-    border-left-color: var(--intergalactic-neighbor-location-neutral, rgba(255, 255, 255, 0.5));
+SButton[neighborLocation='both'],
+SButton[neighborLocation='left'] {
+  position: relative;
+
+  SButton+& {
+    &:after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 1px;
+      height: calc(100% + 2px);
+    }
   }
 
-  &[theme='primary-invert'] {
-    border-left-color: var(--intergalactic-neighbor-location-invert, rgba(0, 0, 0, 0.5));
+  &:after {
+    background-color: var(--intergalactic-text-primary-invert, #ffffff);
+  }
+
+  &[theme='secondary-muted'] {
+    &:after {
+      background-color: var(--intergalactic-border-primary, #c4c7cf);
+    }
   }
 }
 
@@ -315,9 +311,11 @@ SText[size='l'] {
     margin-left: var(--intergalactic-spacing-3x, 12px);
     margin-right: var(--intergalactic-spacing-3x, 12px);
   }
+
   &:first-child {
     margin-left: var(--intergalactic-spacing-3x, 12px);
   }
+
   &:last-child {
     margin-right: var(--intergalactic-spacing-3x, 12px);
   }
@@ -331,30 +329,38 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px); /* -1px - for border width */
+    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+    /* -1px - for border width */
   }
 
   &:not(:only-child):last-child {
-    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px); /* -1px - for border width */
+    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+    /* -1px - for border width */
   }
 
   &:only-child {
-    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
-    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
+    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    /* -1px - for border width */
+    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    /* -1px - for border width */
   }
 }
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: calc(var(--intergalactic-spacing-3x, 12px) - 1px); /* -1px - for border width */
+    margin-left: calc(var(--intergalactic-spacing-3x, 12px) - 1px);
+    /* -1px - for border width */
   }
 
   &:not(:only-child):last-child {
-    margin-right: calc(var(--intergalactic-spacing-3x, 12px) - 1px); /* -1px - for border width */
+    margin-right: calc(var(--intergalactic-spacing-3x, 12px) - 1px);
+    /* -1px - for border width */
   }
 
   &:only-child {
-    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
-    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
+    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    /* -1px - for border width */
+    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    /* -1px - for border width */
   }
 }
