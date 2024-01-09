@@ -17,7 +17,7 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-
+        {this.renderRadarTooltip()}
         {dataDefinitions.map((item) => {
           return (
             item.checked && (
@@ -28,7 +28,6 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
             )
           );
         })}
-        {this.renderRadarTooltip()}
       </Radar>
     );
   }

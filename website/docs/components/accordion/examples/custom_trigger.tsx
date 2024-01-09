@@ -1,22 +1,22 @@
 import React from 'react';
 import Accordion from '@semcore/ui/accordion';
-import Link from '@semcore/ui/link';
 import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/button';
 
 const Demo = () => (
   <Accordion>
     {[...new Array(3)].map((_, index) => (
       <Accordion.Item value={index} key={index}>
-        <Accordion.Item.Toggle p='8px 12px' w='100%'>
-          <Link size={200} href='#'>
-            <Link.Addon>
+        <Accordion.Item.Toggle w='100%'>
+          <Button use='tertiary' theme='muted' size='l'>
+            <Button.Addon>
               <Accordion.Item.Chevron />
-            </Link.Addon>
-            <Link.Text tag='h3' my={0} inline>{`Section ${index + 1}`}</Link.Text>
-          </Link>
+            </Button.Addon>
+            <Button.Text tag='h3' my={0} inline>{`Section ${index + 1}`}</Button.Text>
+          </Button>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse>
-          <Box p='12px 32px'>{`Hello Section ${index + 1}`}</Box>
+          <Box p='12px 36px'>{`Hello Section ${index + 1}`}</Box>
         </Accordion.Item.Collapse>
       </Accordion.Item>
     ))}

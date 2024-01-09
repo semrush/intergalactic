@@ -95,7 +95,10 @@ declare const Calendar: Intergalactic.Component<
 
 /** @deprecated */
 export interface IDatePickerProps extends DatePickerProps, UnknownProperties {}
-export type DatePickerProps = DropdownProps &
+export type DatePickerProps = Intergalactic.InternalTypings.EfficientOmit<
+  DropdownProps,
+  'disabled'
+> &
   WithI18nEnhanceProps & {
     /**
      * The selected date, accepts everything which is accepted by `new Date()`

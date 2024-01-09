@@ -24,21 +24,22 @@ function getSizeText(sizeSpin) {
   }
   return 100;
 }
-function getMarginText(orientation = 'bottom', sizeSpin = undefined) {
-  if (orientation === 'right') {
-    if (sizeSpin.includes('xl')) {
-      return '0 0 0 16px';
-    }
-    if (sizeSpin.includes('xs')) {
-      return '0 0 0 4px';
-    }
-    return '0 0 0 8px';
-  }
-  if (sizeSpin.includes('s')) {
-    return '4px 0 0';
-  }
 
-  return '8px 0 0';
+const margins = {
+  xs: 4,
+  s: 4,
+  m: 8,
+  l: 8,
+  xl: 16,
+  xxl: 16,
+}
+
+function getMarginText(orientation = 'bottom', size = undefined) {
+  if (orientation === 'right') {
+    return `0 0 0 ${margins[size] || 0}px`;
+  } else {
+    return `${margins[size] || 0}px 0 0`;
+  }
 }
 
 const App = PlaygroundGeneration((createGroupWidgets) => {

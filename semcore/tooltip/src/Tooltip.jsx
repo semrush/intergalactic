@@ -36,11 +36,17 @@ class TooltipRoot extends Component {
   }
 
   getTriggerProps() {
-    const { uid, visible, interaction } = this.asProps;
+    const { uid, visible, interaction, disabled } = this.asProps;
+
+    let ariaHasPopup = 'true';
+
+    if (interaction === 'hover' || disabled) {
+      ariaHasPopup = 'false';
+    }
 
     return {
       'aria-describedby': visible ? `igc-${uid}-popper` : undefined,
-      'aria-haspopup': interaction !== 'hover' ? 'true' : 'false',
+      'aria-haspopup': ariaHasPopup,
     };
   }
 

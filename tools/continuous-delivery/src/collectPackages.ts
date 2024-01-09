@@ -63,6 +63,7 @@ export const collectPackages = async (inNpmVersions: {
   const packages: Package[] = [];
 
   for (const { packageFile, changelogFile, changelogPath, packageFilePath, packagePath } of files) {
+    if (packageFile.name === 'intergalactic') continue;
     const changelogs: Changelog[] =
       packageFile.name === '@semcore/ui'
         ? []

@@ -2,7 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.22.1] - 2024-01-04
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.14.0 ~> 5.14.1]).
+
+## [3.22.0] - 2023-12-22
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.13.1 ~> 2.14.0], `@semcore/popper` [5.13.0 ~> 5.14.0], `@semcore/utils` [4.15.1 ~> 4.16.0], `@semcore/core` [2.12.1 ~> 2.13.0]).
+
+## [3.21.4-prerelease.1] - 2023-12-20
+
+### Fixed
+
+- Order of chart lines/bars and tooltip HoverLine.
+
 ## [3.21.3] - 2023-12-14
+
+### Fixed
+
+- Chart dots were not displaying in Firefox.
+- Charts appearing animation in Firefox.
+
+## [3.21.3-prerelease.1] - 2023-12-14
 
 ### Fixed
 

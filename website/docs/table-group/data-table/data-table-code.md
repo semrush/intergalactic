@@ -454,13 +454,8 @@ import ScrollArea from '@semcore/ui/scroll-area';
 const Demo = () => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [container, setContainer] = React.useState(null);
-  const [top, setTop] = React.useState(0);
-  React.useEffect(() => {
-    containerRef.current &&
-      setContainer(containerRef.current.closest('[data-ui-name="ScrollArea.Container"]'));
-    const header = document.getElementsByTagName('header')[0];
-    header && setTop(header.offsetHeight);
-  }, []);
+  const top = 0; // Here should be height of Header in your application
+
   return (
     <>
       <DataTable data={data}>

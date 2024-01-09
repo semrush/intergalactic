@@ -75,7 +75,6 @@ const Demo = () => {
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
-      <HorizontalBar x='bar' y='category' />
       <HoverRect.Tooltip y='category' wMin={100}>
         {({ yIndex }) => {
           return {
@@ -91,6 +90,7 @@ const Demo = () => {
           };
         }}
       </HoverRect.Tooltip>
+      <HorizontalBar x='bar' y='category' />
     </Plot>
   );
 };
@@ -206,10 +206,6 @@ const Demo = () => {
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
-      <GroupBar y='category'>
-        <GroupBar.HorizontalBar x='bar1' />
-        <GroupBar.HorizontalBar x='bar2' />
-      </GroupBar>
       <HoverRect.Tooltip y='category' wMin={100}>
         {({ yIndex }) => {
           return {
@@ -229,6 +225,10 @@ const Demo = () => {
           };
         }}
       </HoverRect.Tooltip>
+      <GroupBar y='category'>
+        <GroupBar.HorizontalBar x='bar1' />
+        <GroupBar.HorizontalBar x='bar2' />
+      </GroupBar>
     </Plot>
   );
 };
@@ -275,9 +275,6 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <HorizontalBar x='bar' y='category'>
-        <HorizontalBar.Background />
-      </HorizontalBar>
       <HoverRect.Tooltip y='category' wMin={100}>
         {({ yIndex }) => {
           return {
@@ -293,6 +290,9 @@ const Demo = () => {
           };
         }}
       </HoverRect.Tooltip>
+      <HorizontalBar x='bar' y='category'>
+        <HorizontalBar.Background />
+      </HorizontalBar>
     </Plot>
   );
 };
@@ -397,20 +397,6 @@ const Demo = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <GroupBar y='category'>
-          {legendItems
-            .filter((item) => item.checked)
-            .map((item, index) => {
-              return (
-                <GroupBar.HorizontalBar
-                  key={item.id}
-                  x={item.id}
-                  color={item.color}
-                  transparent={highlightedLine !== -1 && highlightedLine !== index}
-                />
-              );
-            })}
-        </GroupBar>
         <HoverRect.Tooltip y='category' wMin={100}>
           {({ yIndex }) => ({
             children: (
@@ -432,6 +418,20 @@ const Demo = () => {
             ),
           })}
         </HoverRect.Tooltip>
+        <GroupBar y='category'>
+          {legendItems
+            .filter((item) => item.checked)
+            .map((item, index) => {
+              return (
+                <GroupBar.HorizontalBar
+                  key={item.id}
+                  x={item.id}
+                  color={item.color}
+                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                />
+              );
+            })}
+        </GroupBar>
       </Plot>
     </>
   );
