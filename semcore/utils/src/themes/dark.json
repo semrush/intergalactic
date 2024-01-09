@@ -43,7 +43,7 @@
   "--intergalactic-text-critical": "rgba(255, 155, 148, 1)",
   "--intergalactic-text-critical-hover-active": "#8e0016",
   "--intergalactic-text-primary-invert": "#ffffff",
-  "--intergalactic-text-secondary-Invert": "rgba(255, 255, 255, 0.75)",
+  "--intergalactic-text-secondary-invert": "rgba(255, 255, 255, 0.75)",
   "--intergalactic-text-link": "#8ecdff",
   "--intergalactic-text-link-hover-active": "#2bb3ff",
   "--intergalactic-text-link-invert": "#8ecdff",

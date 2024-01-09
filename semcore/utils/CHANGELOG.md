@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.1] - 2024-01-09
+
+### Fixed
+
+- Fixed name for `--intergalactic-text-secondary-invert` (from `--intergalactic-text-secondary-Invert`) for the dark theme json.
+
 ## [4.16.0] - 2023-12-22
 
 ### Changed

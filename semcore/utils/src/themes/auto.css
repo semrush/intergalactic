@@ -811,7 +811,7 @@
   /* Inverted version of the primary text. */
   --intergalactic-text-primary-invert: #ffffff;
   /* Inverted version of the secondary text. */
-  --intergalactic-text-secondary-Invert: rgba(255, 255, 255, 0.75);
+  --intergalactic-text-secondary-invert: rgba(255, 255, 255, 0.75);
   /* Link text. */
   --intergalactic-text-link: #8ecdff;
   /* Hover and active states for the link text. */
