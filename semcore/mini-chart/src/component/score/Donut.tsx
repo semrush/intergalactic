@@ -109,6 +109,8 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
 export const ScoreDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> =
   createComponent(DonutRoot);
 
+ScoreDonut.displayName = 'MiniChart.ScoreDonut';
+
 export const ScoreSemiDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> = createComponent(
   DonutRoot,
   {},
@@ -124,3 +126,5 @@ export const ScoreSemiDonut: ComponentType<ScoreDonutProps, {}, {}, Enhances> = 
     ],
   },
 );
+
+ScoreSemiDonut.displayName = 'MiniChart.ScoreSemiDonut';

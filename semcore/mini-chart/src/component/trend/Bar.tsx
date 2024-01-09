@@ -95,6 +95,8 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
 export const TrendBar: ComponentType<TrendBarProps, {}, {}, Enhances> =
   createComponent(TrendBarRoot);
 
+TrendBar.displayName = 'MiniChart.TrendBar';
+
 export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = createComponent(
   TrendBarRoot,
   {},
@@ -110,3 +112,5 @@ export const TrendHistogram: ComponentType<TrendBarProps, {}, {}, Enhances> = cr
     ],
   },
 );
+
+TrendBar.displayName = 'MiniChart.TrendHistogram';

@@ -144,6 +144,8 @@ class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
 export const TrendLine: ComponentType<TrendLineProps, {}, {}, Enhances> =
   createComponent(TrendLineRoot);
 
+TrendLine.displayName = 'MiniChart.TrendLine';
+
 export const TrendArea: ComponentType<TrendLineProps, {}, {}, Enhances> = createComponent(
   TrendLineRoot,
   {},
@@ -159,3 +161,5 @@ export const TrendArea: ComponentType<TrendLineProps, {}, {}, Enhances> = create
     ],
   },
 );
+
+TrendArea.displayName = 'MiniChart.TrendArea';

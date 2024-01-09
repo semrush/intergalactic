@@ -76,3 +76,5 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
 
 export const ScoreLine: ComponentType<ScoreLineGaugeProps, {}, {}, Enhances> =
   createComponent(LineRoot);
+
+ScoreLine.displayName = 'MiniChart.ScoreLine';

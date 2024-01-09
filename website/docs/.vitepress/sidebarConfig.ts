@@ -1796,6 +1796,10 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'A11y',
               },
               {
+                link: '/data-display/mini-chart/mini-chart-code',
+                text: 'Example',
+              },
+              {
                 link: '/data-display/mini-chart/mini-chart-api',
                 text: 'API',
               },
