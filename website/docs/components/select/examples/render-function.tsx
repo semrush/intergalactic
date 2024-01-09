@@ -15,7 +15,10 @@ const Demo = () => (
         getTriggerProps, // function encapsulating Select.Trigger logic
         getPopperProps, // function encapsulating Select.Popper logic
         getListProps, // function encapsulating Select.List logic
-        getInputSearchProps, // function encapsulating Select.InputSearch logic
+        getDividerProps, // function encapsulating Select.Divider logic
+        getItemHintProps, // function encapsulating Select.ItemHint logic
+        getItemProps, // function encapsulating Select.Item logic,
+        getItemTitleProps, // function encapsulating Select.ItemTitle logic
         getOptionProps, // function encapsulating Select.Option logic
         getOptionCheckboxProps, // function encapsulating Select.OptionCheckbox logic
         value: currentValue, // the current value of the select
