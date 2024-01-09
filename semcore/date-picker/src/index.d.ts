@@ -146,7 +146,10 @@ export type DatePickerProps = Intergalactic.InternalTypings.EfficientOmit<
 
 /** @deprecated */
 export interface IDateRangePickerProps extends DateRangePickerProps, UnknownProperties {}
-export type DateRangePickerProps = DropdownProps &
+export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
+  DropdownProps,
+  'disabled'
+> &
   WithI18nEnhanceProps & {
     /**
      * The selected date, accepts everything which is accepted by `new Date()`

@@ -96,7 +96,7 @@ class PickerAbstract extends Component {
   handlerKeyDown = (e) => {
     if (e.target !== e.currentTarget) return;
     const { value, displayedPeriod, highlighted, disabled: _disabled } = this.asProps;
-    const day = this.keyDiff[e.keyCode];
+    const day = this.keyDiff[e.code];
 
     const getCurrentHighlightedDay = (day) => {
       const current_day = day.toDate();
