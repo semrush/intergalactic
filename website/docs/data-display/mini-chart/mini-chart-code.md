@@ -1,7 +1,7 @@
 ---
 title: Mini chart
 #fileSource: mini-chart
-tabs: Design('mini-chart'), A11y('mini-chart-a11y'), Example('mini-chart-code'), API('mini-chart-api'), Changelog('mini-chart-changelog')
+tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Example('mini-chart-code'), Changelog('mini-chart-changelog')
 ---
 
 ## Basic usage
