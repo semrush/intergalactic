@@ -135,9 +135,12 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
 
       return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
-    if (color.startsWith('{') && color.split('.').length === 2 && color.endsWith('}')) {
-      const [group, index] = color.substring(1, color.length - 1).split('.');
-      const resolvedColor = (base as any)[group][index].value;
+    if (color.startsWith('{') && color.includes('.') && color.endsWith('}')) {
+      const dotPath = color.substring(1, color.length - 1);
+      const resolvedColor =
+        getByDotPath<{ value: string }>(base as any, dotPath)?.value ??
+        getByDotPath<{ value: string }>(tokens as any, dotPath)?.value;
+
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
@@ -253,4 +256,9 @@ export const tokensToJson = (tokens: { name: string; value: string; description:
     themeFile[token.name] = token.value;
   }
   return JSON.stringify(themeFile, null, 2) + '\n';
+};
+
+const getByDotPath = <T>(obj: {}, path: string | string[], defaultValue?: T): T | undefined => {
+  const pathArray = Array.isArray(path) ? path : path.split('.');
+  return (pathArray.reduce((prevObj, key) => prevObj?.[key], obj) as T) ?? defaultValue;
 };
