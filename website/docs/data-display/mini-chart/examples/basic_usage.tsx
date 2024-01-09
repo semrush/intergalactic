@@ -6,13 +6,13 @@ const Demo = () => {
   const value = 30;
 
   return (
-    <Flex gap={'20px'}>
+    <Flex gap={'40px'}>
       <Box w={'300px'}>
         <MiniChart.ScoreLine value={value} w={'120px'} />
         <br />
         <MiniChart.ScoreLine segments={5} value={5} w={'80px'} color={'chart-palette-order-2'} />
         <br />
-        <MiniChart.ScoreLine segments={5} value={3} w={'80px'} animate={false} color={'#b40e0e'} />
+        <MiniChart.ScoreLine segments={5} value={3} w={'80px'} animate={false} color={'chart-palette-order-5'} />
         <br />
         <MiniChart.ScoreLine segments={3} value={2} />
         <br />
@@ -24,25 +24,25 @@ const Demo = () => {
       <Box w={'400px'}>
         <MiniChart.TrendArea
           data={[20, 50, 33, 80, 70, 35, 10, 40, 90, 50]}
-          w={'140px'}
+          w={'120px'}
           h={'40px'}
         />
         <br />
         <MiniChart.TrendLine
           data={[20, 50, 33, 80, 70, 35, 10, 40, 90, 50]}
-          w={'140px'}
+          w={'120px'}
           h={'40px'}
         />
         <br />
         <MiniChart.TrendArea
           data={[20, 50, 80, 65, 33, 12, 15, 18]}
-          w={'200px'}
+          w={'120px'}
           h={'80px'}
-          lastPointColor={'chart-palette-order-6'}
+          lastPointColor={'chart-palette-order-15'}
         />
         <br />
         <MiniChart.TrendLine
-          w={'220px'}
+          w={'120px'}
           h={'40px'}
           data={[20, 50, 33, 80]}
           animate={false}
@@ -50,8 +50,8 @@ const Demo = () => {
         />
         <br />
         <MiniChart.TrendBar
-          w={'40px'}
-          h={'150px'}
+          w={'120px'}
+          h={'40px'}
           data={[
             { value: 10 },
             { value: 20 },
@@ -63,8 +63,8 @@ const Demo = () => {
         />
 
         <MiniChart.TrendHistogram
-          w={'300px'}
-          h={'50px'}
+          w={'120px'}
+          h={'40px'}
           data={[
             { value: 10 },
             { value: 20 },
