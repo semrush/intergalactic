@@ -9,7 +9,9 @@ By default, links are displayed as `inline-block` and don’t wrap properly with
 
 ::: sandbox
 
-<script lang="tsx" src="examples/link_inside_the_content.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/link_inside_the_content.tsx';
+</script>
 
 :::
 
@@ -19,7 +21,9 @@ You can add addons to link either by specifying the desired tag in the `addonLef
 
 ::: sandbox
 
-<script lang="tsx" src="examples/link_addon.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/link_addon.tsx';
+</script>
 
 :::
 
@@ -29,7 +33,9 @@ Links can be colored for specific purposes. You can apply a specific color to li
 
 ::: sandbox
 
-<script lang="tsx" src="examples/color_links.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/color_links.tsx';
+</script>
 
 :::
 
@@ -42,7 +48,9 @@ There are two moments you need to consider when using link with addons and ellip
 
 ::: sandbox
 
-<script lang="tsx" src="examples/links_with_ellipsis.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/links_with_ellipsis.tsx';
+</script>
 
 :::
 
@@ -52,6 +60,8 @@ If a link has no visible text, it is important to add an aria-label attribute wi
 
 ::: sandbox
 
-<script lang="tsx" src="examples/accessibility.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/accessibility.tsx';
+</script>
 
 :::

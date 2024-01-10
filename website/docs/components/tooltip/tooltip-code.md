@@ -19,7 +19,9 @@ As previously mentioned, the tooltip is essentially a styled version of [@semcor
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -31,7 +33,9 @@ The code below replicates the functionality of the previous example.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/title.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/title.tsx';
+</script>
 
 :::
 
@@ -41,7 +45,9 @@ You can use a single tooltip for multiple reference elements. This allows you to
 
 ::: sandbox
 
-<script lang="tsx" src="examples/singleton.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/singleton.tsx';
+</script>
 
 :::
 
@@ -51,6 +57,8 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 
 ::: sandbox
 
-<script lang="tsx" src="examples/ignore_portal_stacking.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/ignore_portal_stacking.tsx';
+</script>
 
 :::

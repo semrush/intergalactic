@@ -16,7 +16,9 @@ The component API is completely identical to [@semcore/ui/popper](/utils/popper/
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -24,6 +26,8 @@ The component API is completely identical to [@semcore/ui/popper](/utils/popper/
 
 ::: sandbox
 
-<script lang="tsx" src="examples/focus_interaction.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/focus_interaction.tsx';
+</script>
 
 :::

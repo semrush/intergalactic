@@ -9,7 +9,9 @@ The information on the GDPR should be obligatorily shown to the users from Europ
 
 ::: sandbox
 
-<script lang="tsx" src="examples/default_feedback_form.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/default_feedback_form.tsx';
+</script>
 
 :::
 
@@ -19,6 +21,8 @@ Refer for more details about forms in the [Form](/patterns/form/form).
 
 ::: sandbox
 
-<script lang="tsx" src="examples/feedback_form_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/feedback_form_example.tsx';
+</script>
 
 :::

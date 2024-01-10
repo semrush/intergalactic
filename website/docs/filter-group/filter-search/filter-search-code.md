@@ -9,7 +9,9 @@ Dynamic search searches as soon as at least one character is entered into the in
 
 ::: sandbox
 
-<script lang="tsx" src="examples/dynamic_search.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/dynamic_search.tsx';
+</script>
 
 :::
 

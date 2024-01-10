@@ -12,6 +12,8 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 
 ::: sandbox
 
-<script lang="tsx" src="examples/extended_example_of_the_header_with_tabs.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/extended_example_of_the_header_with_tabs.tsx';
+</script>
 
 :::

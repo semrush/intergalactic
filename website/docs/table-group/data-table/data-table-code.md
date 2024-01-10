@@ -16,7 +16,9 @@ To create a table, provide columns with titles using `<DataTable.Column name={na
 
 ::: sandbox
 
-<script lang="tsx" src="examples/base.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/base.tsx';
+</script>
 
 :::
 

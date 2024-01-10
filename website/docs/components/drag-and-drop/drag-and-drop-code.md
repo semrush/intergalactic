@@ -8,7 +8,9 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 ::: sandbox
 
-<script lang="tsx" src="examples/use_in_the_dropdownmenu.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/use_in_the_dropdownmenu.tsx';
+</script>
 
 :::
 
@@ -16,7 +18,9 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 ::: sandbox
 
-<script lang="tsx" src="examples/use_in_tabpanel.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/use_in_tabpanel.tsx';
+</script>
 
 :::
 
@@ -24,6 +28,8 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 ::: sandbox
 
-<script lang="tsx" src="examples/example_with_use_of_the_drop_zone.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/example_with_use_of_the_drop_zone.tsx';
+</script>
 
 :::

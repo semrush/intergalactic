@@ -7,7 +7,9 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 ::: sandbox
 
-<script lang="tsx" src="examples/#_basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/#_basic_usage.tsx';
+</script>
 
 :::
 
@@ -15,6 +17,8 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 ::: sandbox
 
-<script lang="tsx" src="examples/#_extended_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/#_extended_usage.tsx';
+</script>
 
 :::

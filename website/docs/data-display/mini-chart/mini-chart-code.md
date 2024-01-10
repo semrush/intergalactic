@@ -8,6 +8,8 @@ tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Exam
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::

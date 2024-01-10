@@ -10,7 +10,9 @@ RadioGroup acts as a controlling component and doesn't have an actual HTML eleme
 
 ::: sandbox
 
-<script lang="tsx" src="examples/radiogroup_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/radiogroup_example.tsx';
+</script>
 
 :::
 
@@ -26,6 +28,8 @@ If you need more control over input-tag, you can pass props to Radio.Value.Contr
 
 ::: sandbox
 
-<script lang="tsx" src="examples/additional_props_for_input.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/additional_props_for_input.tsx';
+</script>
 
 :::

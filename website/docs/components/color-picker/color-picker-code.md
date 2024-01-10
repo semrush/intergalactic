@@ -9,7 +9,9 @@ PaletteManager lets you add your own colors by typing in the hexadecimal code an
 
 ::: sandbox
 
-<script lang="tsx" src="examples/palettemanager.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/palettemanager.tsx';
+</script>
 
 :::
 
@@ -19,7 +21,9 @@ To prevent users from entering white as a color option, replace the default vali
 
 ::: sandbox
 
-<script lang="tsx" src="examples/input_validation.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/input_validation.tsx';
+</script>
 
 :::
 
@@ -29,7 +33,9 @@ You have complete control over the appearance of ColorPicker, including the trig
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_trigger.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_trigger.tsx';
+</script>
 
 :::
 
@@ -42,7 +48,9 @@ There are multiple ways to add colors in ColorPicker;
 
 ::: sandbox
 
-<script lang="tsx" src="examples/several_ways_to_use_component.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/several_ways_to_use_component.tsx';
+</script>
 
 :::
 
@@ -52,6 +60,8 @@ You can use default items with other components. For example, with [Tooltip](/co
 
 ::: sandbox
 
-<script lang="tsx" src="examples/items_with_tooltips.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/items_with_tooltips.tsx';
+</script>
 
 :::

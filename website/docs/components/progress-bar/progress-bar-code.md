@@ -8,7 +8,9 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 
 ::: sandbox
 
-<script lang="tsx" src="examples/complex_usage_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/complex_usage_example.tsx';
+</script>
 
 :::
 
@@ -18,6 +20,8 @@ By default, you should use `<ProgressBar/>`. However, if you need to customize t
 
 ::: sandbox
 
-<script lang="tsx" src="examples/customizing_the_bar.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/customizing_the_bar.tsx';
+</script>
 
 :::

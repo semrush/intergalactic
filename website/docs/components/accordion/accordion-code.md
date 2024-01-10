@@ -11,7 +11,9 @@ Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will br
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -21,7 +23,9 @@ Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will br
 
 ::: sandbox
 
-<script lang="tsx" src="examples/one_section_opening.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/one_section_opening.tsx';
+</script>
 
 :::
 
@@ -31,7 +35,9 @@ You can add your own styles to the trigger or change its `tag`.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_trigger.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_trigger.tsx';
+</script>
 
 :::
 
@@ -41,6 +47,8 @@ To find out whether an element is selected or not, pass the function into the bo
 
 ::: sandbox
 
-<script lang="tsx" src="examples/selected_element_styles.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/selected_element_styles.tsx';
+</script>
 
 :::

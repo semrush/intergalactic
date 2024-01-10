@@ -9,7 +9,9 @@ Please note that each example uses its own instance of `NoticeBubbleManager`, wh
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_notice.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_notice.tsx';
+</script>
 
 :::
 
@@ -21,7 +23,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/noticebubble_not_in_portal.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/noticebubble_not_in_portal.tsx';
+</script>
 
 :::
 
@@ -29,7 +33,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/undo_action.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/undo_action.tsx';
+</script>
 
 :::
 
@@ -37,7 +43,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/reload_action.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/reload_action.tsx';
+</script>
 
 :::
 
@@ -45,7 +53,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/loading_state.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/loading_state.tsx';
+</script>
 
 :::
 
@@ -53,7 +63,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/completion_state.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/completion_state.tsx';
+</script>
 
 :::
 
@@ -61,7 +73,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/success_notice.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/success_notice.tsx';
+</script>
 
 :::
 
@@ -69,7 +83,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/failure_notice.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/failure_notice.tsx';
+</script>
 
 :::
 
@@ -77,7 +93,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/dynamic_notice.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/dynamic_notice.tsx';
+</script>
 
 :::
 
@@ -85,7 +103,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/special_events_notice.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/special_events_notice.tsx';
+</script>
 
 :::
 
@@ -95,7 +115,9 @@ Use `type="warning"` for this case.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/no_connection_notice.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/no_connection_notice.tsx';
+</script>
 
 :::
 
@@ -105,6 +127,8 @@ Use `type="warning"` for this case.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/no_connection_notice_with_action.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/no_connection_notice_with_action.tsx';
+</script>
 
 :::

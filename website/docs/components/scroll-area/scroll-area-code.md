@@ -10,7 +10,9 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -18,7 +20,9 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 ::: sandbox
 
-<script lang="tsx" src="examples/synchronized_scroll_on_two_different_screens.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/synchronized_scroll_on_two_different_screens.tsx';
+</script>
 
 :::
 
@@ -26,7 +30,9 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 ::: sandbox
 
-<script lang="tsx" src="examples/synchronized_reverse_scroll_on_two_different_screens.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/synchronized_reverse_scroll_on_two_different_screens.tsx';
+</script>
 
 :::
 
@@ -34,7 +40,9 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 ::: sandbox
 
-<script lang="tsx" src="examples/scrollbar_out_of_container.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/scrollbar_out_of_container.tsx';
+</script>
 
 :::
 
@@ -44,6 +52,8 @@ The dynamic virtual list is powered by [React-virtualized](https://github.com/bv
 
 ::: sandbox
 
-<script lang="tsx" src="examples/dynamic_virtual_list.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/dynamic_virtual_list.tsx';
+</script>
 
 :::

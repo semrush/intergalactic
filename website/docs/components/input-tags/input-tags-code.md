@@ -10,7 +10,9 @@ Here's an example where tags have a limited width and can be edited by clicking 
 
 ::: sandbox
 
-<script lang="tsx" src="examples/entering_and_editing_tags.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/entering_and_editing_tags.tsx';
+</script>
 
 :::
 
@@ -20,7 +22,9 @@ In this example, emails are wrapped in tags without any width limitation.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/wrapping_email_in_tag.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/wrapping_email_in_tag.tsx';
+</script>
 
 :::
 
@@ -30,6 +34,8 @@ In this example, selected options from the dropdown menu are wrapped in tags wit
 
 ::: sandbox
 
-<script lang="tsx" src="examples/input_with_dropdownmenu_for_tag_filtering.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/input_with_dropdownmenu_for_tag_filtering.tsx';
+</script>
 
 :::

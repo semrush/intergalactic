@@ -7,6 +7,8 @@ tabs: Design('notice-global'), A11y('notice-global-a11y'), API('notice-global-ap
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::

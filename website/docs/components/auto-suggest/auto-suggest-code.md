@@ -12,7 +12,9 @@ To create one of the search patterns (Combobox, AutoSuggest) you will need the f
 
 ::: sandbox
 
-<script lang="tsx" src="examples/combobox_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/combobox_example.tsx';
+</script>
 
 :::
 
@@ -20,6 +22,8 @@ To create one of the search patterns (Combobox, AutoSuggest) you will need the f
 
 ::: sandbox
 
-<script lang="tsx" src="examples/autosuggest_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/autosuggest_example.tsx';
+</script>
 
 :::

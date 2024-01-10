@@ -52,7 +52,9 @@ This method is good when you need a flexible content customization in a dropdown
 
 ::: sandbox
 
-<script lang="tsx" src="examples/dropdown-menu.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/dropdown-menu.tsx';
+</script>
 
 :::
 
@@ -66,7 +68,9 @@ It is appropriate when it is necessary to manage only the content within the opt
 
 ::: sandbox
 
-<script lang="tsx" src="examples/#_the_second_method.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/#_the_second_method.tsx';
+</script>
 
 :::
 
@@ -80,7 +84,9 @@ The component has several variants of list elements layout:
 
 ::: sandbox
 
-<script lang="tsx" src="examples/elements_of_the_list.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/elements_of_the_list.tsx';
+</script>
 
 :::
 
@@ -92,6 +98,8 @@ You can see the list of available methods in the [API](/components/dropdown-menu
 
 ::: sandbox
 
-<script lang="tsx" src="examples/render-function.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/render-function.tsx';
+</script>
 
 :::

@@ -9,7 +9,9 @@ The input field is pre-filled with the value: `+`.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/unknown_country_and_number_format.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/unknown_country_and_number_format.tsx';
+</script>
 
 :::
 
@@ -23,7 +25,9 @@ In certain countries, there may be multiple valid formats for phone numbers. The
 
 ::: sandbox
 
-<script lang="tsx" src="examples/known_country,_but_the_number_format_is_unknown.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/known_country,_but_the_number_format_is_unknown.tsx';
+</script>
 
 :::
 
@@ -39,6 +43,8 @@ Make sure to verify the available valid phone number formats for the specific co
 
 ::: sandbox
 
-<script lang="tsx" src="examples/known_country_and_number_format.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/known_country_and_number_format.tsx';
+</script>
 
 :::

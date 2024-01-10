@@ -9,7 +9,9 @@ The Wizard component inherits from the [Modal](/components/modal/modal-api) comp
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_example.tsx';
+</script>
 
 :::
 
@@ -19,7 +21,9 @@ As the Wizard is typically a complex component, you have the flexibility to use 
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_step.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_step.tsx';
+</script>
 
 :::
 
@@ -29,6 +33,8 @@ The stepper can also be customized.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_stepper.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_stepper.tsx';
+</script>
 
 :::

@@ -18,7 +18,9 @@ Remember to set the placeholder for the input field to match the mask. Typically
 
 ::: sandbox
 
-<script lang="tsx" src="examples/inputmask.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/inputmask.tsx';
+</script>
 
 :::
 
@@ -32,7 +34,9 @@ Remember to set the placeholder for the input field to match the mask. Typically
 
 ::: sandbox
 
-<script lang="tsx" src="examples/aliases.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/aliases.tsx';
+</script>
 
 :::
 
@@ -44,6 +48,8 @@ In the example below, it is used for formatting and validating the card's expire
 
 ::: sandbox
 
-<script lang="tsx" src="examples/pipe.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/pipe.tsx';
+</script>
 
 :::

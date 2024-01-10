@@ -12,6 +12,8 @@ To control the automatic stretching, you can set limits on the number of lines u
 
 ::: sandbox
 
-<script lang="tsx" src="examples/textarea_with_auto_height.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/textarea_with_auto_height.tsx';
+</script>
 
 :::

@@ -9,7 +9,9 @@ In most simplest situation `<InlineEdit />` could be used to make some primitive
 
 ::: sandbox
 
-<script lang="tsx" src="examples/simple_use.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/simple_use.tsx';
+</script>
 
 :::
 
@@ -19,7 +21,9 @@ As far as `<InlineEdit />` is very flexible, it could be used with almost any ch
 
 ::: sandbox
 
-<script lang="tsx" src="examples/editable_tag.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/editable_tag.tsx';
+</script>
 
 :::
 
@@ -29,6 +33,8 @@ Component stays simple to provide you a way to handle edited values in any neede
 
 ::: sandbox
 
-<script lang="tsx" src="examples/pseudo_network_interaction.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/pseudo_network_interaction.tsx';
+</script>
 
 :::

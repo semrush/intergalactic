@@ -10,6 +10,8 @@ For deeper customization, you can expand the component.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/expanded_access_to_all_the_components.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/expanded_access_to_all_the_components.tsx';
+</script>
 
 :::

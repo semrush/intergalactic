@@ -8,7 +8,9 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_fullscreen.header's_use.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_fullscreen.header's_use.tsx';
+</script>
 
 :::
 
@@ -16,6 +18,8 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 ::: sandbox
 
-<script lang="tsx" src="examples/example_of_a_dual-zone_modal_window.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/example_of_a_dual-zone_modal_window.tsx';
+</script>
 
 :::
