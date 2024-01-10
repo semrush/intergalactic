@@ -12,8 +12,8 @@
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "*",
-    "@semcore/utils": "*"
+    "@semcore/flex-box": "5.14.0",
+    "@semcore/utils": "4.16.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.12.0",
