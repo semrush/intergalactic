@@ -2,14 +2,9 @@
 title: Charts showcase
 fileSource: d3-chart
 docs: true
-tabs: Design('chart-showcase'), Changelog('d3-chart-changelog')
 ---
 
 There are various chart types within the Intergalactic Design System, each designed for distinct scenarios and data representation.
-
-- [Grid & axes](/data-display/d3-chart/d3-chart#grid_and_axes)
-- [Chart tooltip](/data-display/d3-chart/d3-chart#tooltip)
-- [Chart legend](/data-display/chart-legend/chart-legend)
 
 ::: tip
 Note that some chart types are still under development and are not yet clickable.
@@ -36,36 +31,36 @@ import { Box } from '@semcore/flex-box';
 const group = {
   bar: {
     title: 'Bar chart',
-    route: '/intergalactic/data-display/bar-chart',
+    route: '/intergalactic/data-display/bar-chart/bar-chart',
     disabled: false,
     type: 'charts',
   },
   horizontalBar: {
     title: 'Horizontal bar chart',
-    route: '/intergalactic/data-display/bar-horizontal',
+    route: '/intergalactic/data-display/bar-horizontal/bar-horizontal',
     disabled: false,
     type: 'charts',
   },
   histogram: {
     title: 'Histogram chart',
-    route: '/intergalactic/data-display/histogram-chart',
+    route: '/intergalactic/data-display/histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
   },
   donut: {
     title: 'Donut Pie chart',
-    route: '/intergalactic/data-display/donut-chart',
+    route: '/intergalactic/data-display/donut-chart/donut-chart',
     disabled: false,
     type: 'charts',
   },
   bubble: {
     title: 'Bubble chart',
-    route: '/intergalactic/data-display/bubble-chart',
+    route: '/intergalactic/data-display/bubble-chart/bubble-chart',
     type: 'charts',
   },
   lollipop: {
     title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart',
+    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
     disabled: true,
     type: 'charts',
   },
@@ -125,49 +120,49 @@ import { Box } from '@semcore/flex-box';
 const group = {
   bar: {
     title: 'Bar chart',
-    route: '/intergalactic/data-display/bar-chart',
+    route: '/intergalactic/data-display/bar-chart/bar-chart',
     disabled: false,
     type: 'charts',
   },
   barStacked: {
     title: 'Stacked bar chart',
-    route: '/intergalactic/data-display/stacked-bar-chart',
+    route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
     disabled: false,
     type: 'charts',
   },
   horizontalBar: {
     title: 'Horizontal bar chart',
-    route: '/intergalactic/data-display/bar-horizontal',
+    route: '/intergalactic/data-display/bar-horizontal/bar-horizontal',
     disabled: false,
     type: 'charts',
   },
   stackedHorizontalBar: {
     title: 'Stacked horizontal bar chart',
-    route: '/intergalactic/data-display/stacked-horizontal-bar',
+    route: '/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar',
     disabled: false,
     type: 'charts',
   },
   histogram: {
     title: 'Histogram chart',
-    route: '/intergalactic/data-display/histogram-chart',
+    route: '/intergalactic/data-display/histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
   },
   stackedHistogram: {
     title: 'Stacked histogram chart',
-    route: '/intergalactic/data-display/stacked-histogram',
+    route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
     disabled: true,
     type: 'charts',
   },
   line: {
     title: 'Line chart',
-    route: '/intergalactic/data-display/line-chart',
+    route: '/intergalactic/data-display/line-chart/line-chart',
     disabled: false,
     type: 'charts',
   },
   lollipop: {
     title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart',
+    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
     disabled: true,
     type: 'charts',
   },
@@ -227,49 +222,55 @@ import { Box } from '@semcore/flex-box';
 const group = {
   line: {
     title: 'Line chart',
-    route: '/intergalactic/data-display/line-chart',
+    route: '/intergalactic/data-display/line-chart/line-chart',
     disabled: false,
     type: 'charts',
   },
   area: {
     title: 'Area chart',
-    route: '/intergalactic/data-display/area-chart',
+    route: '/intergalactic/data-display/area-chart/area-chart',
     disabled: false,
     type: 'charts',
   },
   areaStacked: {
     title: 'Stacked area chart',
-    route: '/intergalactic/data-display/stacked-area-chart',
+    route: '/intergalactic/data-display/stacked-area-chart/stacked-area-chart',
     disabled: false,
-    type: 'charts',
-  },
-  combinedAreaLine: {
-    title: 'Combined chart',
-    route: '/intergalactic/data-display/combined-chart',
-    disabled: true,
     type: 'charts',
   },
   bar: {
     title: 'Bar chart',
-    route: '/intergalactic/data-display/bar-chart',
+    route: '/intergalactic/data-display/bar-chart/bar-chart',
     disabled: false,
     type: 'charts',
   },
   barStacked: {
     title: 'Stacked bar chart',
-    route: '/intergalactic/data-display/stacked-bar-chart',
+    route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
     disabled: false,
+    type: 'charts',
+  },
+  minicharttrend: {
+    title: 'Mini chart',
+    route: '/intergalactic/data-display/mini-chart/mini-chart',
+    disabled: false,
+    type: 'charts',
+  },
+    combinedAreaLine: {
+    title: 'Combined chart',
+    route: '/intergalactic/data-display/combined-chart/combined-chart',
+    disabled: true,
     type: 'charts',
   },
   heatmap: {
     title: 'Heatmap',
-    route: '/intergalactic/data-display/heatmap',
+    route: '/intergalactic/data-display/heatmap/heatmap',
     disabled: true,
     type: 'charts',
   },
   lollipop: {
     title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart',
+    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
     disabled: true,
     type: 'charts',
   },
@@ -329,43 +330,49 @@ import { Box } from '@semcore/flex-box';
 const group = {
   donut: {
     title: 'Donut Pie chart',
-    route: '/intergalactic/data-display/donut-chart',
+    route: '/intergalactic/data-display/donut-chart/donut-chart',
     disabled: false,
     type: 'charts',
   },
   barStacked: {
     title: 'Stacked bar chart',
-    route: '/intergalactic/data-display/stacked-bar-chart',
+    route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
     disabled: false,
     type: 'charts',
   },
   horizontalBar: {
     title: 'Horizontal bar chart',
-    route: '/intergalactic/data-display/bar-horizontal',
+    route: '/intergalactic/data-display/bar-horizontal/bar-horizontal',
     disabled: false,
     type: 'charts',
   },
   stackedHorizontalBar: {
     title: 'Stacked horizontal bar chart',
-    route: '/intergalactic/data-display/stacked-horizontal-bar',
+    route: '/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar',
     disabled: false,
     type: 'charts',
   },
   areaStacked: {
     title: 'Stacked area chart',
-    route: '/intergalactic/data-display/stacked-area-chart',
+    route: '/intergalactic/data-display/stacked-area-chart//stacked-area-chart',
+    disabled: false,
+    type: 'charts',
+  },
+  minichartscore: {
+    title: 'Mini chart',
+    route: '/intergalactic/data-display/mini-chart/mini-chart',
     disabled: false,
     type: 'charts',
   },
   stackedHistogram: {
     title: 'Stacked histogram chart',
-    route: '/intergalactic/data-display/stacked-histogram',
+    route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
     disabled: true,
     type: 'charts',
   },
   funnel: {
     title: 'Funnel chart',
-    route: '/intergalactic/data-display/funnel-chart',
+    route: '/intergalactic/data-display/funnel-chart/funnel-chart',
     disabled: true,
     type: 'charts',
   },
@@ -425,70 +432,70 @@ import { Box } from '@semcore/flex-box';
 const group = {
   bar: {
     title: 'Bar chart',
-    route: '/intergalactic/data-display/bar-chart',
+    route: '/intergalactic/data-display/bar-chart/bar-chart',
     disabled: false,
     type: 'charts',
   },
   barStacked: {
     title: 'Stacked bar chart',
-    route: '/intergalactic/data-display/stacked-bar-chart',
+    route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
     disabled: false,
     type: 'charts',
   },
   histogram: {
     title: 'Histogram chart',
-    route: '/intergalactic/data-display/histogram-chart',
+    route: '/intergalactic/data-display/histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
   },
   stackedHistogram: {
     title: 'Stacked histogram chart',
-    route: '/intergalactic/data-display/stacked-histogram',
+    route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
     disabled: true,
     type: 'charts',
   },
   bubble: {
     title: 'Bubble chart',
-    route: '/intergalactic/data-display/bubble-chart',
+    route: '/intergalactic/data-display/bubble-chart/bubble-chart',
     type: 'charts',
   },
   scatterplot: {
     title: 'Scatterplot chart',
-    route: '/intergalactic/data-display/scatterplot-chart',
+    route: '/intergalactic/data-display/scatterplot-chart/scatterplot-chart',
     type: 'charts',
   },
   heatmap: {
     title: 'Heatmap',
-    route: '/intergalactic/data-display/heatmap',
+    route: '/intergalactic/data-display/heatmap/heatmap',
     disabled: true,
     type: 'charts',
   },
   radar: {
     title: 'Radar chart',
-    route: '/intergalactic/data-display/radar-chart',
+    route: '/intergalactic/data-display/radar-chart/radar-chart',
     disabled: false,
     type: 'charts',
   },
   radialTree: {
     title: 'Radial Tree chart',
-    route: '/intergalactic/data-display/radial-tree-chart',
+    route: '/intergalactic/data-display/radial-tree-chart/radial-tree-chart',
     type: 'charts',
   },
   polar: {
     title: 'Polar chart',
-    route: '/intergalactic/data-display/polar-chart',
+    route: '/intergalactic/data-display/polar-chart/polar-chart',
     disabled: true,
     type: 'charts',
   },
   alluvial: {
     title: 'Alluvial chart',
-    route: '/intergalactic/data-display/alluvial-chart',
+    route: '/intergalactic/data-display/alluvial-chart/alluvial-chart',
     disabled: true,
     type: 'charts',
   },
   quadrant: {
     title: 'Quadrant chart',
-    route: '/intergalactic/data-display/quadrant-chart',
+    route: '/intergalactic/data-display/quadrant-chart/quadrant-chart',
     disabled: true,
     type: 'charts',
   },
@@ -548,30 +555,30 @@ import { Box } from '@semcore/flex-box';
 const group = {
   venn: {
     title: 'Venn chart',
-    route: '/intergalactic/data-display/venn-chart',
+    route: '/intergalactic/data-display/venn-chart/venn-chart',
     disabled: false,
     type: 'charts',
   },
   scatterplot: {
     title: 'Scatterplot chart',
-    route: '/intergalactic/data-display/scatterplot-chart',
+    route: '/intergalactic/data-display/scatterplot-chart/scatterplot-chart',
     type: 'charts',
   },
   heatmap: {
     title: 'Heatmap',
-    route: '/intergalactic/data-display/heatmap',
+    route: '/intergalactic/data-display/heatmap/heatmap',
     disabled: true,
     type: 'charts',
   },
   alluvial: {
     title: 'Alluvial chart',
-    route: '/intergalactic/data-display/alluvial-chart',
+    route: '/intergalactic/data-display/alluvial-chart/alluvial-chart',
     disabled: true,
     type: 'charts',
   },
   kagi: {
     title: 'Kagi chart',
-    route: '/intergalactic/data-display/kagi-chart',
+    route: '/intergalactic/data-display/kagi-chart/kagi-chart',
     disabled: true,
     type: 'charts',
   },
@@ -631,19 +638,19 @@ import { Box } from '@semcore/flex-box';
 const group = {
   bar: {
     title: 'Bar chart',
-    route: '/intergalactic/data-display/bar-chart',
+    route: '/intergalactic/data-display/bar-chart/bar-chart',
     disabled: false,
     type: 'charts',
   },
   barStacked: {
     title: 'Stacked bar chart',
-    route: '/intergalactic/data-display/stacked-bar-chart',
+    route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
     disabled: false,
     type: 'charts',
   },
   area: {
     title: 'Area chart',
-    route: '/intergalactic/data-display/area-chart',
+    route: '/intergalactic/data-display/area-chart/area-chart',
     disabled: false,
     type: 'charts',
   },
@@ -655,18 +662,24 @@ const group = {
   },
   histogram: {
     title: 'Histogram chart',
-    route: '/intergalactic/data-display/histogram-chart',
+    route: '/intergalactic/data-display/histogram-chart/histogram-chart',
     disabled: false,
     type: 'charts',
   },
   scatterplot: {
     title: 'Scatterplot chart',
-    route: '/intergalactic/data-display/scatterplot-chart',
+    route: '/intergalactic/data-display/scatterplot-chart/scatterplot-chart',
+    type: 'charts',
+  },
+  minichartscore: {
+    title: 'Mini chart',
+    route: '/intergalactic/data-display/mini-chart/mini-chart',
+    disabled: false,
     type: 'charts',
   },
   lollipop: {
     title: 'Lollipop chart',
-    route: '/intergalactic/data-display/lollipop-chart',
+    route: '/intergalactic/data-display/lollipop-chart/lollipop-chart',
     disabled: true,
     type: 'charts',
   },
@@ -726,7 +739,7 @@ import { Box } from '@semcore/flex-box';
 const group = {
   choroplethMap: {
     title: 'Choropleth map',
-    route: '/intergalactic/data-display/choropleth-map',
+    route: '/intergalactic/data-display/choropleth-map/choropleth-map',
     disabled: true,
     type: 'charts',
   },

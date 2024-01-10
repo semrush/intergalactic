@@ -1734,6 +1734,37 @@ importers:
         specifier: 18.0.21
         version: 18.0.21
 
+  semcore/mini-chart:
+    dependencies:
+      '@semcore/core':
+        specifier: ^2.12.0
+        version: link:../core
+      '@semcore/flex-box':
+        specifier: '*'
+        version: link:../flex-box
+      '@semcore/utils':
+        specifier: '*'
+        version: link:../utils
+      react:
+        specifier: 16.8 - 18
+        version: 18.2.0
+      react-dom:
+        specifier: 16.8 - 18
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@guidepup/playwright':
+        specifier: 0.6.1
+        version: 0.6.1(@playwright/test@1.25.1)
+      '@playwright/test':
+        specifier: 1.25.1
+        version: 1.25.1
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../../tools/testing-utils
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
+
   semcore/modal:
     dependencies:
       '@semcore/animation':
@@ -3562,6 +3593,9 @@ importers:
       '@semcore/link':
         specifier: workspace:*
         version: link:../../semcore/link
+      '@semcore/mini-chart':
+        specifier: workspace:*
+        version: link:../../semcore/mini-chart
       '@semcore/modal':
         specifier: workspace:*
         version: link:../../semcore/modal

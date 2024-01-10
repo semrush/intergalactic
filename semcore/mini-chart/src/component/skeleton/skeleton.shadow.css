@@ -1,0 +1,24 @@
+SLineGauge[loading],
+SDonutContainer[loading],
+STrendLine[loading],
+STrendBar[loading] {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1.6s;
+  will-change: opacity;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

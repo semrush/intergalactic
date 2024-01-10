@@ -1,0 +1,66 @@
+@import '../skeleton/skeleton.shadow.css';
+
+SLineGauge {
+  height: 8px;
+  background-color: var(--intergalactic-skeleton-bg, rgba(224, 225, 233, 0.8));
+  border-radius: var(--intergalactic-chart-rounded, 2px);
+  overflow: hidden;
+  position: relative;
+}
+
+SLineGauge[animate] SLineValue {
+  transition: all var(--intergalactic-duration-extra-slow, 500) ease-in-out;
+  animation-name: move-line;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+SLineValue {
+  height: 8px;
+  background-color: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  border-radius: var(--intergalactic-chart-rounded, 2px) 0 0 var(--intergalactic-chart-rounded, 2px);
+}
+
+SLineValue[percent] {
+  width: var(--percent);
+}
+
+SLineValue[color] {
+  background-color: var(--color, var(--intergalactic-chart-palette-order-1, #2bb3ff));
+}
+
+SLineGauge[segments] {
+  border-radius: var(--intergalactic-progress-bar-rounded, 6px);
+}
+
+SLineGauge[segments] SLineValue {
+  border-radius: var(--intergalactic-progress-bar-rounded, 6px) 0 0 var(--intergalactic-progress-bar-rounded, 6px);
+}
+
+SLineGaugeSegment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+SLineSegmentItem:last-child {
+  margin-right: 0;
+  border-right: none;
+}
+
+SLineSegmentItem {
+  height: 8px;
+  background: transparent;
+  margin-right: 1px;
+  border-right-color: var(--intergalactic-chart-grid-border, #ffffff);
+  border-right-style: solid;
+  border-right-width: 1px;
+  box-sizing: content-box;
+}
+
+@keyframes move-line {
+  0% {transform: translateX(-100%);}
+  100% {transform: translateX(0);}
+}

@@ -50,6 +50,7 @@
     "@semcore/input-number": "workspace:*",
     "@semcore/input-tags": "workspace:*",
     "@semcore/link": "workspace:*",
+    "@semcore/mini-chart": "workspace:*",
     "@semcore/modal": "workspace:*",
     "@semcore/neighbor-location": "workspace:*",
     "@semcore/notice": "workspace:*",

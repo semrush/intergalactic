@@ -85,6 +85,18 @@ const group = {
     route: '/data-display/bubble-chart',
     type: 'charts',
   },
+  minicharttrend: {
+    title: 'Mini chart',
+    route: '/data-display/mini-chart',
+    disabled: false,
+    type: 'charts',
+  },
+  minichartscore: {
+    title: 'Mini chart',
+    route: '/intergalactic/data-display/mini-chart',
+    disabled: false,
+    type: 'charts',
+  },
   scatterplot: {
     title: 'Scatterplot chart',
     route: '/data-display/scatterplot-chart',
