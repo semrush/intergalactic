@@ -81,7 +81,7 @@ const makePlaygroundExecutableCode = (
     '; {\n' +
     importAliasLines.join('\n') +
     codeWithoutImports +
-    `;\n globalThis["render_${playgroundId}"] = () => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }; }`;
+    `;\n globalThis["render_${playgroundId}"] = (mountNode) => { globalThis.createReactRoot?.(mountNode).render(<${entryPoint} />); }; }`;
 
   return {
     executableCode,

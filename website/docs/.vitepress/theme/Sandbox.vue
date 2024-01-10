@@ -22,7 +22,25 @@ const rawCode = atob(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
 
 onMounted(() => {
-  globalThis[`render_${playgroundId}`]?.()
+  if (!playgroundId) return;
+  const wrapper = document.querySelector(`#${playgroundId}`);
+  if (!wrapper) return;
+  wrapper.attachShadow({ mode: "open" });
+  const shadowRoot = wrapper.shadowRoot!;
+  const element = document.createElement("div");
+  shadowRoot.appendChild(element);
+  const reshadowContainer = document.querySelector("#__reshadow__");
+  if (reshadowContainer) {
+    shadowRoot.adoptedStyleSheets.push(...[...reshadowContainer.children].map((node) => {
+      const sheet = new CSSStyleSheet()
+      const styleNode = node as HTMLStyleElement
+      const cssRules = [...(styleNode.sheet?.cssRules ?? [])];
+      const cssText = cssRules.reduce((acc, rule) => acc + rule.cssText, '');
+      sheet.replaceSync(cssText)
+      return sheet;
+    }))
+  }
+  globalThis[`render_${playgroundId}`]?.(element)
 })
 
 const dataToLzCompressedJson = (data) => {
