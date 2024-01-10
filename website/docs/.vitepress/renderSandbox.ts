@@ -76,18 +76,17 @@ const makePlaygroundExecutableCode = (
       }
     }
   }
-  const executableCode = (
+  const executableCode =
     importLines.join('\n') +
     '; {\n' +
     importAliasLines.join('\n') +
     codeWithoutImports +
-    `;\n globalThis["render_${playgroundId}"] = () => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }; }`
-  );
+    `;\n globalThis["render_${playgroundId}"] = () => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }; }`;
 
   return {
     executableCode,
-    demoVariableImport
-  }
+    demoVariableImport,
+  };
 };
 
 export const renderSandbox = (
@@ -131,8 +130,10 @@ export const renderSandbox = (
       let displayedCode = code;
       if (displayedCode.includes('export Demo from ')) {
         const pathToCurrentDir = state?.relativePath.split('/').slice(0, -1) ?? '.';
-        displayedCode = fs
-          .readFileSync(resolvePath('docs', ...pathToCurrentDir, demoVariableImport), 'utf8')
+        displayedCode = fs.readFileSync(
+          resolvePath('docs', ...pathToCurrentDir, demoVariableImport),
+          'utf8',
+        );
       }
 
       const htmlCode = markdownRenderer.render('```' + meta + '\n' + displayedCode + '\n```\n');
@@ -153,7 +154,9 @@ export const renderSandbox = (
           .map((token) => token.executableCode)
           .filter(Boolean)
           .join(';\n');
-        tokens[idx + 1].content = `<script lang="tsx">${allExecutableCode};${executableCode}</script>`;
+        tokens[
+          idx + 1
+        ].content = `<script lang="tsx">${allExecutableCode};${executableCode}</script>`;
       } else {
         tokens[idx + 1].content = '';
         tokens[idx + 1].executableCode = executableCode;
