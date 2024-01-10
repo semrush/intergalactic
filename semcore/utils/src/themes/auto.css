@@ -487,6 +487,7 @@
   --intergalactic-spacing-24x: 96px;
   /* 120px */
   --intergalactic-spacing-30x: 120px;
+  --intergalactic-rounded-extra-small: 2px;
   --intergalactic-rounded-small: 4px;
   --intergalactic-rounded-medium: 6px;
   --intergalactic-rounded-large: 12px;
@@ -495,6 +496,8 @@
   --intergalactic-addon-rounded: 4px;
   /* Use for rounding Badge. */
   --intergalactic-badge-rounded: 6px;
+  /* Use for rounding big and small charts like bar, histogram and others. */
+  --intergalactic-chart-rounded: 2px;
   /* Use for rounding Counter. */
   --intergalactic-counter-rounded: 12px;
   /* Use for rounding Tag. */

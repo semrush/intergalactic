@@ -1,0 +1,34 @@
+{
+  "name": "@semcore/mini-chart",
+  "description": "Semrush MiniChart Component",
+  "version": "0.1.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder --source=ts"
+  },
+  "dependencies": {
+    "@semcore/flex-box": "*",
+    "@semcore/utils": "*"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^2.12.0",
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/mini-chart"
+  },
+  "devDependencies": {
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
+    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "1.0.0"
+  }
+}
