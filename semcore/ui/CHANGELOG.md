@@ -1,3 +1,22 @@
+## [15.46.0-prerelease.0] - 2024-01-10
+
+### @semcore/base-trigger
+
+- **Fixed** `BaseTriggerProps` type had `{ [key: string]: unknown; }` that was breaking it's and all inherited types manipulations.
+
+### @semcore/button
+
+- **Fixed** Grouped controls separator color and shape. Additional separators are now added only between sibling `Button`s, all other components just removes one of sticked border.
+
+### @semcore/date-picker
+
+- **Fixed** Disabled dates should not be available from the keyboard.
+- **Fixed** Months should change when goes outside the current period.
+
+### @semcore/utils
+
+- **Added** Two new tokens for extra-small border-radii: `--intergalactic-rounded-extra-small` and `-intergalactic-chart-rounded`.
+
 ## [15.45.0] - 2024-01-04
 
 ### @semcore/popper
