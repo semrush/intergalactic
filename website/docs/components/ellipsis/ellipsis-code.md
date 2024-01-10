@@ -8,7 +8,9 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -16,7 +18,9 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 ::: sandbox
 
-<script lang="tsx" src="examples/link.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/link.tsx';
+</script>
 
 :::
 
@@ -26,7 +30,9 @@ It's possible to truncate the middle of the text string.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/trimming_type.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/trimming_type.tsx';
+</script>
 
 :::
 
@@ -36,7 +42,9 @@ It's possible to specify after what text line apply truncating
 
 ::: sandbox
 
-<script lang="tsx" src="examples/multiline.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/multiline.tsx';
+</script>
 
 :::
 
@@ -46,7 +54,9 @@ in case of multiple use of a component for optimization you can use one observer
 
 ::: sandbox
 
-<script lang="tsx" src="examples/multiple_use.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/multiple_use.tsx';
+</script>
 
 :::
 
@@ -56,6 +66,8 @@ For more control over the container and tooltip, you can use the `Ellipsis.Conte
 
 ::: sandbox
 
-<script lang="tsx" src="examples/advanced_use.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/advanced_use.tsx';
+</script>
 
 :::

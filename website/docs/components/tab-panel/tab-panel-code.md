@@ -14,7 +14,9 @@ Make sure to provide a tooltip with full text for tabs with text truncated with 
 
 ::: sandbox
 
-<script lang="tsx" src="examples/manual_tab_activation.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/manual_tab_activation.tsx';
+</script>
 
 :::
 
@@ -22,7 +24,9 @@ Make sure to provide a tooltip with full text for tabs with text truncated with 
 
 ::: sandbox
 
-<script lang="tsx" src="examples/automatic_tab_activation.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/automatic_tab_activation.tsx';
+</script>
 
 :::
 

@@ -20,7 +20,9 @@ In the simplest case, you can implement the select by passing an array of option
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -30,7 +32,9 @@ The component can operate in either controlled or uncontrolled mode.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/controlled_and_uncontrolled_modes.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/controlled_and_uncontrolled_modes.tsx';
+</script>
 
 :::
 
@@ -40,7 +44,9 @@ When you need to customize the trigger, you can pass the desired component to th
 
 ::: sandbox
 
-<script lang="tsx" src="examples/trigger_customization.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/trigger_customization.tsx';
+</script>
 
 :::
 
@@ -119,7 +125,9 @@ The example below shows how to insert a [Notice](/components/notice/notice) in t
 
 ::: sandbox
 
-<script lang="tsx" src="examples/dropdownmenu_customization.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/dropdownmenu_customization.tsx';
+</script>
 
 :::
 
@@ -134,7 +142,9 @@ The component offers several variants of options layout:
 
 ::: sandbox
 
-<script lang="tsx" src="examples/options.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/options.tsx';
+</script>
 
 :::
 
@@ -146,7 +156,9 @@ The example below shows one of the ways to implement filtering.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/options_filtering.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/options_filtering.tsx';
+</script>
 
 :::
 
@@ -158,7 +170,9 @@ In the example below clear button handler is disabled.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/advanced_filtering_control.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/advanced_filtering_control.tsx';
+</script>
 
 :::
 
@@ -170,7 +184,9 @@ The layout of options inside the component will be changed to `Select.OptionChec
 
 ::: sandbox
 
-<script lang="tsx" src="examples/multiselect.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/multiselect.tsx';
+</script>
 
 :::
 
@@ -180,7 +196,9 @@ The example below shows one of the ways to sort the selected options.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/sorting_multiselect_options.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/sorting_multiselect_options.tsx';
+</script>
 
 :::
 
@@ -192,6 +210,8 @@ The example below shows how to implement "Select all" and "Deselect all" buttons
 
 ::: sandbox
 
-<script lang="tsx" src="examples/render-function.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/render-function.tsx';
+</script>
 
 :::

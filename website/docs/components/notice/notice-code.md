@@ -7,7 +7,9 @@ tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_usage.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
 
 :::
 
@@ -17,7 +19,9 @@ It is an example that showcases the functionality of the [NoticeSmart](/componen
 
 ::: sandbox
 
-<script lang="tsx" src="examples/noticesmart.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/noticesmart.tsx';
+</script>
 
 :::
 

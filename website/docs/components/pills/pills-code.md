@@ -8,7 +8,9 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_example.tsx';
+</script>
 
 :::
 
@@ -18,6 +20,8 @@ Switch to Pills using the `Tab` key and attempt switching with the arrow keys.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/behavior_arrows.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/behavior_arrows.tsx';
+</script>
 
 :::

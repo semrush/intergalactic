@@ -9,7 +9,9 @@ Make sure to follow the guide's instructions on checkbox spacing.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/partial_selection.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/partial_selection.tsx';
+</script>
 
 :::
 
@@ -17,7 +19,9 @@ Make sure to follow the guide's instructions on checkbox spacing.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/checkbox_with_other_components.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/checkbox_with_other_components.tsx';
+</script>
 
 :::
 
@@ -32,6 +36,8 @@ If you need more control over input-tag, you can pass props to Checkbox.Value.Co
 
 ::: sandbox
 
-<script lang="tsx" src="examples/additional_props_for_input.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/additional_props_for_input.tsx';
+</script>
 
 :::

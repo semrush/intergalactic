@@ -7,7 +7,9 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 ::: sandbox
 
-<script lang="tsx" src="examples/basic_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/basic_example.tsx';
+</script>
 
 :::
 
@@ -15,6 +17,8 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 ::: sandbox
 
-<script lang="tsx" src="examples/two_addons.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/two_addons.tsx';
+</script>
 
 :::

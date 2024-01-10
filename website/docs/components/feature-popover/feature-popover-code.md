@@ -8,6 +8,8 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ::: sandbox
 
-<script lang="tsx" src="examples/animation_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/animation_example.tsx';
+</script>
 
 :::

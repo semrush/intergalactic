@@ -10,6 +10,8 @@ For the animation of appearance and hiding, it is correct not to delete an eleme
 
 ::: sandbox
 
-<script lang="tsx" src="examples/example_of_dot_animation.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/example_of_dot_animation.tsx';
+</script>
 
 :::

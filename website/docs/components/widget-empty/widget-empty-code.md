@@ -14,7 +14,9 @@ The locale can be passed directly to the component or wrap your application in `
 
 ::: sandbox
 
-<script lang="tsx" src="examples/nodata_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/nodata_example.tsx';
+</script>
 
 :::
 
@@ -22,7 +24,9 @@ The locale can be passed directly to the component or wrap your application in `
 
 ::: sandbox
 
-<script lang="tsx" src="examples/nothingfound_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/nothingfound_example.tsx';
+</script>
 
 :::
 
@@ -32,7 +36,9 @@ The template already includes the `title` and the `icon`. You only need to provi
 
 ::: sandbox
 
-<script lang="tsx" src="examples/error_example.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/error_example.tsx';
+</script>
 
 :::
 
@@ -44,7 +50,9 @@ To get the link to the [illustration](/style/illustration/illustration), use the
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_examples.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_examples.tsx';
+</script>
 
 :::
 

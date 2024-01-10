@@ -10,7 +10,9 @@ You can add addons to the Tag component in two ways: by passing the desired tag 
 
 ::: sandbox
 
-<script lang="tsx" src="examples/tag_addon.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/tag_addon.tsx';
+</script>
 
 :::
 
@@ -20,7 +22,9 @@ You can set custom tag colors.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_tag_color.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_tag_color.tsx';
+</script>
 
 :::
 
@@ -28,7 +32,9 @@ You can set custom tag colors.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/adding_tag.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/adding_tag.tsx';
+</script>
 
 :::
 
@@ -38,7 +44,9 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/editing_tag.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/editing_tag.tsx';
+</script>
 
 :::
 
@@ -46,6 +54,8 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/removing_tag.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/removing_tag.tsx';
+</script>
 
 :::

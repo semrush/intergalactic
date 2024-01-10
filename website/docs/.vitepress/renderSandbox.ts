@@ -23,16 +23,21 @@ const clearScriptTagFromTags = (scriptTag: string) => {
     .join('\n');
   return code;
 };
-const makePlaygroundExecutedCode = (
+const makePlaygroundExecutableCode = (
   codeWithTypes: string,
   playgroundId: string,
   entryPoint: string,
 ) => {
+  if (codeWithTypes.includes('export Demo from ')) {
+    codeWithTypes = codeWithTypes.replace('export Demo from ', 'import Demo from ');
+    codeWithTypes = codeWithTypes += '; Demo;';
+  }
   const { code } = transformSync(codeWithTypes, { loader: 'tsx' });
   const { imports } = parseImports(code);
   const importLines: string[] = [];
   const importAliasLines: string[] = [];
   let codeWithoutImports = code;
+  let demoVariableImport = '';
   {
     let importIndex = 0;
     for (const importStatement of imports) {
@@ -57,6 +62,9 @@ const makePlaygroundExecutedCode = (
           `import ${importStatement.defaultImport} from '${importStatement.moduleName}';`,
         );
         importAliasLines.push(`const ${name} = ${importStatement.defaultImport};`);
+        if (name === 'Demo') {
+          demoVariableImport = importStatement.moduleName;
+        }
       }
       for (let i = 0; i < importStatement.namedImports.length; i++) {
         const alias = importStatement.namedImports[i].alias || importStatement.namedImports[i].name;
@@ -68,13 +76,18 @@ const makePlaygroundExecutedCode = (
       }
     }
   }
-  return (
+  const executableCode = (
     importLines.join('\n') +
     '; {\n' +
     importAliasLines.join('\n') +
     codeWithoutImports +
     `;\n globalThis["render_${playgroundId}"] = () => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }; }`
   );
+
+  return {
+    executableCode,
+    demoVariableImport
+  }
 };
 
 export const renderSandbox = (
@@ -93,28 +106,36 @@ export const renderSandbox = (
       const hideCode = htmlTagName !== 'sandbox';
       const lang = /lang="([^"]+)"/.exec(scriptHead)?.[1];
       const params = /params="([^"]+)"/.exec(scriptHead)?.[1];
-      const src = /src="([^"]+)"/.exec(scriptHead)?.[1];
+      // const src = /src="([^"]+)"/.exec(scriptHead)?.[1];
       const meta = (lang ?? '') + (params ?? '');
 
-      let code = '';
+      // let code = '';
 
-      if (src) {
-        const pathToCurrentDir = state.relativePath.split('/').slice(0, -1);
-        code = fs
-          .readFileSync(resolvePath('docs', ...pathToCurrentDir, src), 'utf8')
-          .replace('export default Demo;\n', '');
-      } else {
-        code = clearScriptTagFromTags(scriptTag);
-      }
+      // if (src) {
+      //   const pathToCurrentDir = state.relativePath.split('/').slice(0, -1);
+      //   code = fs
+      //     .readFileSync(resolvePath('docs', ...pathToCurrentDir, src), 'utf8')
+      //     .replace('export default Demo;\n', '');
+      // } else {
+      //   code = clearScriptTagFromTags(scriptTag);
+      // }
+      const code = clearScriptTagFromTags(scriptTag);
 
       const playgroundId = 'playground_' + Math.random().toString().substring(2);
-      const executedCode = makePlaygroundExecutedCode(
+      const { executableCode, demoVariableImport } = makePlaygroundExecutableCode(
         code,
         playgroundId,
         htmlTag === 'sandbox' ? 'Demo' : 'App',
       );
 
-      const htmlCode = markdownRenderer.render('```' + meta + '\n' + code + '\n```\n');
+      let displayedCode = code;
+      if (displayedCode.includes('export Demo from ')) {
+        const pathToCurrentDir = state?.relativePath.split('/').slice(0, -1) ?? '.';
+        displayedCode = fs
+          .readFileSync(resolvePath('docs', ...pathToCurrentDir, demoVariableImport), 'utf8')
+      }
+
+      const htmlCode = markdownRenderer.render('```' + meta + '\n' + displayedCode + '\n```\n');
       let lastScriptTokenIndex = -1;
       for (let i = tokens.length - 1; i >= 0; i--) {
         const tokenContent = tokens[i].content;
@@ -128,21 +149,18 @@ export const renderSandbox = (
       }
 
       if (lastScriptTokenIndex === idx + 1) {
-        const allExecutedCode = tokens
-          .map((token) => token.executedCode)
+        const allExecutableCode = tokens
+          .map((token) => token.executableCode)
           .filter(Boolean)
           .join(';\n');
-        tokens[idx + 1].content = `<script lang="tsx">${allExecutedCode};${executedCode}</script>`;
+        tokens[idx + 1].content = `<script lang="tsx">${allExecutableCode};${executableCode}</script>`;
       } else {
         tokens[idx + 1].content = '';
-        tokens[idx + 1].executedCode = executedCode;
+        tokens[idx + 1].executableCode = executableCode;
       }
 
-      // const encodedHtmlCode = atob(encodeURIComponent(htmlCode));
-      // const encodedRawCode = atob(encodeURIComponent(code));
-
       const encodedHtmlCode = btoa(htmlCode);
-      const encodedRawCode = btoa(code);
+      const encodedRawCode = btoa(displayedCode);
       return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}">`;
     }
     return '</Sandbox>';

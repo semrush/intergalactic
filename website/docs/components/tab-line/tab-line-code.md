@@ -10,7 +10,9 @@ Try changing the page size to observe how the tabs are compressed. If the text i
 
 ::: sandbox
 
-<script lang="tsx" src="examples/automatic_tab_activation.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/automatic_tab_activation.tsx';
+</script>
 
 :::
 
@@ -18,7 +20,9 @@ Try changing the page size to observe how the tabs are compressed. If the text i
 
 ::: sandbox
 
-<script lang="tsx" src="examples/manual_tab_activation.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/manual_tab_activation.tsx';
+</script>
 
 :::
 

@@ -10,7 +10,9 @@ These are widgets for selecting dates and date ranges. The `DatePicker` componen
 
 ::: sandbox
 
-<script lang="tsx" src="examples/datepicker.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/datepicker.tsx';
+</script>
 
 :::
 
@@ -20,7 +22,9 @@ These are widgets for selecting a single month and a range of months, respective
 
 ::: sandbox
 
-<script lang="tsx" src="examples/monthrangepicker.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/monthrangepicker.tsx';
+</script>
 
 :::
 
@@ -30,7 +34,9 @@ To access the internal components, you must expand the component. The `Trigger` 
 
 ::: sandbox
 
-<script lang="tsx" src="examples/trigger_and_popper.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/trigger_and_popper.tsx';
+</script>
 
 :::
 
@@ -40,7 +46,9 @@ You can change the header layout by expanding the component further.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_header.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_header.tsx';
+</script>
 
 :::
 
@@ -50,7 +58,9 @@ Calendar days can have metrics, and you can change the units by passing a functi
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_day.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_day.tsx';
+</script>
 
 :::
 
@@ -60,7 +70,9 @@ You can prevent selection of certain dates or a range of dates using the `disabl
 
 ::: sandbox
 
-<script lang="tsx" src="examples/disabled_dates.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/disabled_dates.tsx';
+</script>
 
 :::
 
@@ -70,7 +82,9 @@ Date ranges may be customized or switched off at all, by transferring `periods={
 
 ::: sandbox
 
-<script lang="tsx" src="examples/custom_date_ranges.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/custom_date_ranges.tsx';
+</script>
 
 :::
 
@@ -80,7 +94,9 @@ You can manually select a custom period, if needed (for example, a week) by taki
 
 ::: sandbox
 
-<script lang="tsx" src="examples/week_picker.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/week_picker.tsx';
+</script>
 
 :::
 
@@ -90,7 +106,9 @@ DateRangeComparator allows user to compare two date ranges. Additional date rang
 
 ::: sandbox
 
-<script lang="tsx" src="examples/date_range_comparator.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/date_range_comparator.tsx';
+</script>
 
 :::
 
@@ -100,6 +118,8 @@ Both `DateRangeComparator` and `MonthDateRangeComparator` internal structure may
 
 ::: sandbox
 
-<script lang="tsx" src="examples/date_range_comparator_advanced_use.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/date_range_comparator_advanced_use.tsx';
+</script>
 
 :::

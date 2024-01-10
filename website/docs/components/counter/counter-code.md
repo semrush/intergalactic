@@ -8,7 +8,9 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_in_filters.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_in_filters.tsx';
+</script>
 
 :::
 
@@ -20,7 +22,9 @@ Don't forget to place counters inside the `Addon` to create correct margins.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_in_button.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_in_button.tsx';
+</script>
 
 :::
 
@@ -32,7 +36,9 @@ As design guide recommends, the counter changes color to orange and then red whe
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_in_forms.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_in_forms.tsx';
+</script>
 
 :::
 
@@ -42,7 +48,9 @@ The text counters shall be implemented using [Typography](/style/typography/typo
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_and_typography.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_and_typography.tsx';
+</script>
 
 :::
 
@@ -52,7 +60,9 @@ As you can see, there are text counters inside [Pills](/components/pills/pills).
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_in_pills.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_in_pills.tsx';
+</script>
 
 :::
 
@@ -62,7 +72,9 @@ Implement the text counters in limits using [Typography](/style/typography/typog
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_in_limits.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_in_limits.tsx';
+</script>
 
 :::
 
@@ -72,6 +84,8 @@ The `Dot` component can also contain a text counter. For more information, see t
 
 ::: sandbox
 
-<script lang="tsx" src="examples/counter_in_dot.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/counter_in_dot.tsx';
+</script>
 
 :::

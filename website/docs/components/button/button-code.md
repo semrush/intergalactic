@@ -9,7 +9,9 @@ Addons can be installed either by passing the required `tag` to the `addonLeft`/
 
 ::: sandbox
 
-<script lang="tsx" src="examples/addons.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/addons.tsx';
+</script>
 
 :::
 
@@ -19,7 +21,9 @@ To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/button_with_icon.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/button_with_icon.tsx';
+</script>
 
 :::
 
@@ -29,6 +33,8 @@ If there is no text in the button, it is necessary to add aria-label with a butt
 
 ::: sandbox
 
-<script lang="tsx" src="examples/button_accessibility.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/button_accessibility.tsx';
+</script>
 
 :::

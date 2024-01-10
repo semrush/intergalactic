@@ -12,7 +12,9 @@ Replace the `tag` for the `Select.Trigger`.
 
 ::: sandbox
 
-<script lang="tsx" src="examples/usage_with_select.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/usage_with_select.tsx';
+</script>
 
 :::
 
@@ -22,6 +24,8 @@ It is more complex example with [Dropdown](/components/dropdown/dropdown) and [C
 
 ::: sandbox
 
-<script lang="tsx" src="examples/usage_with_dropdown.tsx"></script>
+<script lang="tsx">
+  export Demo from './examples/usage_with_dropdown.tsx';
+</script>
 
 :::
