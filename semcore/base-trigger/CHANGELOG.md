@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.1] - 2024-01-08
+
+### Fixed
+
+- `BaseTriggerProps` type had `{ [key: string]: unknown; }` that was breaking it's and all inherited types manipulations.
+
 ## [4.20.0] - 2023-12-22
 
 ### Changed
