@@ -2736,7 +2736,7 @@
     "rawValue": "rgba(255, 255, 255, 0.5)",
     "computedValue": "rgba(255, 255, 255, 0.5)",
     "description": "Neutral border of the components that are combined with neighbor-location property.",
-    "components": ["button"]
+    "components": []
   },
   {
     "name": "--intergalactic-neighbor-location-invert",
@@ -2744,7 +2744,7 @@
     "rawValue": "rgba(0, 0, 0, 0.5)",
     "computedValue": "rgba(0, 0, 0, 0.5)",
     "description": "Inverted border of the components that are combined with neighbor-location property.",
-    "components": ["button"]
+    "components": []
   },
   {
     "name": "--intergalactic-scroll-area-shadow-left",

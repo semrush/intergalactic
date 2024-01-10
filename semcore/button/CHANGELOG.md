@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.16.0] - 2023-12-22
+
+### Fixed
+
+- Grouped controls separator color and shape. Additional separators are now added only between sibling `Button`s, all other components just removes one of sticked border.
+
 ## [5.15.0] - 2023-12-22
 
 ### Changed
