@@ -9,7 +9,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_fullscreen.header's_use.tsx';
+  export Demo from './examples/basic_fullscreen.headers_use.tsx';
 </script>
 
 :::
