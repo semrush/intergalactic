@@ -1,3 +1,9 @@
+## [15.46.1] - 2024-01-11
+
+### @semcore/d3-chart
+
+- **Fixed** Error in ScatterPlot with undefined values.
+
 ## [15.46.0] - 2024-01-10
 
 ### @semcore/base-trigger
