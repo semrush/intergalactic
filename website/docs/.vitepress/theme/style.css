@@ -565,7 +565,8 @@ img {
 }
 
 /* To remove double underline from the links in the sandboxes */
-.vp-doc .documentation-sandbox a:not([class]):hover, .vp-doc a:not([class]):active {
+.vp-doc .documentation-sandbox a:not([class]):hover,
+.vp-doc a:not([class]):active {
   text-decoration: none !important;
 }
 

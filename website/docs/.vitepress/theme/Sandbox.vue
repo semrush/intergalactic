@@ -16,29 +16,36 @@ const { compressToBase64: lzCompressToBase64 } = lzString;
 
 (globalThis as any).createReactRoot = createReactRoot;
 
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String })
+const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
 const htmlCode = atob(codeEncoded!);
 const rawCode = atob(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
 
+
 onMounted(() => {
+  console.log({ stylesIsolation })
   if (!playgroundId) return;
-  const wrapper = document.querySelector(`#${playgroundId}`);
+  const wrapper = document.querySelector(`#${playgroundId}`) as HTMLDivElement | undefined;
   if (!wrapper) return;
-  wrapper.attachShadow({ mode: "open" });
-  const shadowRoot = wrapper.shadowRoot!;
-  const element = document.createElement("div");
-  shadowRoot.appendChild(element);
-  const reshadowContainer = document.querySelector("#__reshadow__");
-  if (reshadowContainer) {
-    shadowRoot.adoptedStyleSheets.push(...[...reshadowContainer.children].map((node) => {
-      const sheet = new CSSStyleSheet()
-      const styleNode = node as HTMLStyleElement
-      const cssRules = [...(styleNode.sheet?.cssRules ?? [])];
-      const cssText = cssRules.reduce((acc, rule) => acc + rule.cssText, '');
-      sheet.replaceSync(cssText)
-      return sheet;
-    }))
+  let element: HTMLDivElement | null = null;
+  if (stylesIsolation) {
+    wrapper.attachShadow({ mode: "open" });
+    const shadowRoot = wrapper.shadowRoot!;
+    element = document.createElement("div");
+    shadowRoot.appendChild(element);
+    const reshadowContainer = document.querySelector("#__reshadow__");
+    if (reshadowContainer) {
+      shadowRoot.adoptedStyleSheets.push(...[...reshadowContainer.children].map((node) => {
+        const sheet = new CSSStyleSheet()
+        const styleNode = node as HTMLStyleElement
+        const cssRules = [...(styleNode.sheet?.cssRules ?? [])];
+        const cssText = cssRules.reduce((acc, rule) => acc + rule.cssText, '');
+        sheet.replaceSync(cssText)
+        return sheet;
+      }))
+    }
+  } else {
+    element = wrapper;
   }
   globalThis[`render_${playgroundId}`]?.(element)
 })

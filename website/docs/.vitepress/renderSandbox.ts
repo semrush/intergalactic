@@ -164,7 +164,9 @@ export const renderSandbox = (
 
       const encodedHtmlCode = btoa(htmlCode);
       const encodedRawCode = btoa(displayedCode);
-      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}">`;
+      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}" :stylesIsolation="${
+        htmlTag === 'sandbox'
+      }">`;
     }
     return '</Sandbox>';
   };
