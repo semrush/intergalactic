@@ -12,17 +12,24 @@
 import { onMounted } from 'vue';
 import { createRoot as createReactRoot } from 'react-dom/client'
 import lzString from 'lz-string';
+import { isolateStyles } from './isolateStyles';
 const { compressToBase64: lzCompressToBase64 } = lzString;
 
 (globalThis as any).createReactRoot = createReactRoot;
 
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String })
+const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
 const htmlCode = atob(codeEncoded!);
 const rawCode = atob(rawCodeEncoded!);
 const hideCode = hideCodeEncoded === 'true';
 
+
 onMounted(() => {
-  globalThis[`render_${playgroundId}`]?.()
+  if (!playgroundId) return;
+  const wrapper = document.querySelector(`#${playgroundId}`) as HTMLDivElement | undefined;
+  if (!wrapper) return;
+  let element = stylesIsolation ? isolateStyles(wrapper) : wrapper;
+
+  globalThis[`render_${playgroundId}`]?.(element)
 })
 
 const dataToLzCompressedJson = (data) => {

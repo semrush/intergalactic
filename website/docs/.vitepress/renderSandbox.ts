@@ -81,7 +81,7 @@ const makePlaygroundExecutableCode = (
     '; {\n' +
     importAliasLines.join('\n') +
     codeWithoutImports +
-    `;\n globalThis["render_${playgroundId}"] = () => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }; }`;
+    `;\n globalThis["render_${playgroundId}"] = (mountNode) => { globalThis.createReactRoot?.(mountNode).render(<${entryPoint} />); }; }`;
 
   return {
     executableCode,
@@ -164,7 +164,9 @@ export const renderSandbox = (
 
       const encodedHtmlCode = btoa(htmlCode);
       const encodedRawCode = btoa(displayedCode);
-      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}">`;
+      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}" :stylesIsolation="${
+        htmlTag === 'sandbox'
+      }">`;
     }
     return '</Sandbox>';
   };
