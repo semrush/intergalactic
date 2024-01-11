@@ -75,12 +75,12 @@ class DropdownMenuRoot extends Component {
     switch (e.key) {
       case 'ArrowDown': {
         isVisible && this.moveHighlightedIndex(amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element.focus();
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
         break;
       }
       case 'ArrowUp': {
         isVisible && this.moveHighlightedIndex(-amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element.focus();
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
         break;
       }
       case ' ':
