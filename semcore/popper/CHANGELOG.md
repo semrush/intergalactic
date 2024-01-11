@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.15.0] - 2024-01-11
+
+### Fixed
+
+- After closing popper with interaction `click` focus is returned to the trigger instead of special focus catch element.
+
 ## [5.14.2] - 2024-01-10
 
 ### Changed
