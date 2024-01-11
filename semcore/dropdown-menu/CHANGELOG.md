@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.3] - 2024-01-10
+
+### Fixed
+
+- Pressing `ArrowUp`/`ArrowDown` on closed `DropdownMenu` trigger was causing error in console.
+
 ## [4.16.2] - 2024-01-10
 
 ### Changed
