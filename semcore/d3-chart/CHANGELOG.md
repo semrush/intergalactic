@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.22.3] - 2023-01-11
+
+### Fixed
+
+- Error in ScatterPlot with undefined values.
+
 ## [3.22.2] - 2024-01-10
 
 ### Changed
