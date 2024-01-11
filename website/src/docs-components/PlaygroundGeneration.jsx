@@ -8,6 +8,24 @@ import { createPlayground, Playground } from '../components/playground';
 import styles from './PlaygroundGeneration.module.css';
 import { getHighlighter, setCDN } from 'shiki';
 import githubDarkTheme from 'shiki/themes/github-dark.json';
+import { createPortal } from 'react-dom';
+import { isolateStyles } from '../../docs/.vitepress/theme/isolateStyles';
+
+const ShadowRooted = ({ children }) => {
+  const ref = React.useRef();
+  const [shadowedRef, setShadowedRef] = React.useState();
+  React.useEffect(() => {
+    if (!ref.current) return;
+    const shadowed = isolateStyles(ref.current);
+    setShadowedRef(shadowed);
+  }, []);
+  return (
+    <>
+      <div ref={ref} />
+      {shadowedRef && createPortal(children, shadowedRef)}
+    </>
+  );
+};
 
 Playground.createWidget('label', ({ label }) => {
   return <h4>{label}</h4>;
@@ -131,8 +149,30 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
   return (
     <div className={styles.wrapperPlayground} aria-hidden='true'>
       <div className={styles.workArea}>
-        <div className={`playground-runtime ${styles.playgroundRuntime}`} style={{ margin: 0 }}>
-          <div>{result}</div>
+        <div className={`${styles.playgroundRuntime}`} style={{ margin: 0 }}>
+          <ShadowRooted>
+            <style>{`
+              .playground-runtime {
+                padding-top: 40px;
+                margin-top: 20px;
+                padding-bottom: 40px;
+                margin-bottom: -5px;
+                border-radius: 6px;
+                padding-left: 4px;
+                padding-right: 4px;
+                line-height: normal;
+                overflow: auto;
+              }
+
+              @media (min-width: 640px) {
+                .playground-runtime {
+                  padding-left: 24px;
+                  padding-right: 24px;
+                }
+              }
+            `}</style>
+            <div className='playground-runtime'>{result}</div>
+          </ShadowRooted>
         </div>
         {highlightedSource && (
           <div className='language-tsx vp-adaptive-theme'>

@@ -476,6 +476,13 @@ img {
   overflow: auto;
 }
 
+@media (min-width: 640px) {
+  .playground-runtime {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 .vp-doc div[class*='language-'] {
   overflow: auto;
 }
@@ -490,17 +497,6 @@ img {
   border-radius: 0;
   /* overflow: auto;
   max-width: 100%; */
-}
-
-.playground-runtime a {
-  text-decoration: none;
-}
-
-@media (min-width: 640px) {
-  .playground-runtime {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
 }
 
 .code-wrapper {
@@ -551,11 +547,6 @@ img {
 
 .documentation-sandbox {
   margin-top: 24px;
-}
-
-.vp-doc .documentation-sandbox .playground-runtime a,
-.vp-doc .documentation-sandbox .playground-runtime a:visited {
-  color: var(--vp-c-indigo-2) !important;
 }
 
 /* To remove hover styles that our components in the sandboxes are inheriting from the website */
