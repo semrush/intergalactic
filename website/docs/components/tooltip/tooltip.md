@@ -11,6 +11,7 @@ import React from 'react';
 
 import Button from '@semcore/ui/button';
 import Tooltip from '@semcore/ui/tooltip';
+import {Box} from '@semcore/ui/flex-box';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
@@ -64,13 +65,15 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   });
 
   return (
-    <Tooltip
-      title='Hey there! I am just a tooltip, not a magic genie, but I am here to sprinkle some knowledge on you!'
-      placement={placement}
-      theme={theme}
-    >
-      <Button>Button</Button>
-    </Tooltip>
+    <Box m='auto' p={5}>
+        <Tooltip
+          title='Hey there! I am just a tooltip, not a magic genie, but I am here to sprinkle some knowledge on you!'
+          placement={placement}
+          theme={theme}
+        >
+          <Button>Button</Button>
+        </Tooltip>
+    </Box>
   );
 });
 </script>
