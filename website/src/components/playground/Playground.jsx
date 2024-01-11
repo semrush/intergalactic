@@ -1,23 +1,5 @@
 import React, { Component } from 'react';
-import { createPortal } from 'react-dom';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { isolateStyles } from '../../../docs/.vitepress/theme/isolateStyles';
-
-const ShadowRooted = ({ children }) => {
-  const ref = React.useRef();
-  const [shadowedRef, setShadowedRef] = React.useState();
-  React.useEffect(() => {
-    if (!ref.current) return;
-    const shadowed = isolateStyles(ref.current);
-    setShadowedRef(shadowed);
-  }, []);
-  return (
-    <>
-      <div ref={ref} />
-      {shadowedRef && createPortal(children, shadowedRef)}
-    </>
-  );
-};
 
 class Playground extends Component {
   static widgets = {};
@@ -99,7 +81,7 @@ class Playground extends Component {
 
     const component = preview(createGroupWidgets);
     return {
-      result: <ShadowRooted>{component}</ShadowRooted>,
+      result: component,
       source: reactElementToJSXString(component, {
         showDefaultProps: false,
         useFragmentShortSyntax: false,
