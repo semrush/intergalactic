@@ -428,7 +428,7 @@ const useReturnFocusEl = (interaction, onKeyboardFocus, disable) => {
     keyboardFocused,
   };
 };
-const useFocusCatch = (active, popperRef) => {
+const useFocusCatch = (active, interaction, triggerRef, popperRef) => {
   const activeRef = React.useRef(active);
   activeRef.current = active;
 
@@ -457,10 +457,15 @@ const useFocusCatch = (active, popperRef) => {
       setTimeout(() => {
         if (activeRef.current) return;
         if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
-        setFocusCatch(true);
+
+        if (interaction === 'hover' || interaction === 'focus') {
+          setFocusCatch(true);
+        } else {
+          triggerRef.current?.focus();
+        }
       }, 1);
     };
-  }, [active]);
+  }, [active, interaction]);
 
   return {
     focusCatch,
@@ -487,7 +492,7 @@ function Trigger(props) {
     highlighted,
   } = props;
 
-  const triggerRef = React.createRef();
+  const triggerRef = React.useRef();
 
   const {
     returnFocusEl,
@@ -502,7 +507,7 @@ function Trigger(props) {
     handleFocusCatchBlur,
     handleFocusCatchRef,
     keyboardFocused: focusCatchKeyboardFocused,
-  } = useFocusCatch(active, popperRef);
+  } = useFocusCatch(active, interaction, triggerRef, popperRef);
 
   const enforceKeyboardFocused = returnElKeyboardFocused || focusCatchKeyboardFocused;
 
