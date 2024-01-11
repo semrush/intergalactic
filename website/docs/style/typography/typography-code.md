@@ -170,3 +170,31 @@ const Demo = () => (
 </script>
 
 :::
+
+## FormatText nested lists
+
+For proper nested ordered lists counting, you need to explicitly specify the `start`, `reversed`, or `type` attribute.
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import FormatText from '@semcore/ui/format-text';
+
+const Demo = () => (
+  <FormatText>
+    <ol start="1">
+      <li>List item one</li>
+      <li>List item two with subitems:
+        <ul>
+          <li>Subitem 1</li>
+          <li>Subitem 2</li>
+        </ul>
+      </li>
+      <li>Final list item</li>
+    </ol>
+  </FormatText>
+);
+</script>
+
+:::
