@@ -71,6 +71,10 @@ class ScatterPlotRoot extends Component {
     const SScatterPlot = this.Element;
     const SValue = 'text';
 
+    if (Number.isNaN(d[x]) || Number.isNaN(d[y])) {
+      return null;
+    }
+
     return sstyled(styles)(
       <g
         aria-hidden
