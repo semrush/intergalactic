@@ -40,7 +40,9 @@ const publishRelease = async () => {
   }
 
   // 4) Get prerelease tarball
-  const hash = await git.revparse(['HEAD~2']);
+  const logs = await git.log({ maxCount: 10 });
+  const filteredLogs = logs.all.filter((item) => item.author_name !== 'semrush-ci-whale');
+  const hash = filteredLogs[0].hash;
   const shortHash = hash.slice(0, 8);
 
   const npmResponse = await axios.get<ResponseNpmRegistry>(
