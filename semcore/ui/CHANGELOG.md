@@ -1,3 +1,13 @@
+## [15.47.0-prerelease.0] - 2024-01-12
+
+### @semcore/dropdown-menu
+
+- **Fixed** Pressing `ArrowUp`/`ArrowDown` on closed `DropdownMenu` trigger was causing error in console.
+
+### @semcore/popper
+
+- **Fixed** After closing popper with interaction `click` focus is returned to the trigger instead of special focus catch element.
+
 ## [15.46.1] - 2024-01-11
 
 ### @semcore/d3-chart
