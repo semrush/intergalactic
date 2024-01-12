@@ -40,7 +40,7 @@ const publishRelease = async () => {
   }
 
   // 4) Get prerelease tarball
-  const hash = await git.revparse(['HEAD']);
+  const hash = await git.revparse(['HEAD~2']);
   const shortHash = hash.slice(0, 8);
 
   const npmResponse = await axios.get<ResponseNpmRegistry>(
