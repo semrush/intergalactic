@@ -1,3 +1,42 @@
+## [15.46.1] - 2024-01-11
+
+### @semcore/d3-chart
+
+- **Fixed** Error in ScatterPlot with undefined values.
+
+## [15.46.0] - 2024-01-10
+
+### @semcore/base-trigger
+
+- **Fixed** `BaseTriggerProps` type had `{ [key: string]: unknown; }` that was breaking it's and all inherited types manipulations.
+
+### @semcore/button
+
+- **Fixed** Grouped controls separator color and shape. Additional separators are now added only between sibling `Button`s, all other components just removes one of sticked border.
+
+### @semcore/date-picker
+
+- **Fixed** Disabled dates should not be available from the keyboard.
+- **Fixed** Months should change when goes outside the current period.
+
+### @semcore/utils
+
+- **Added** Two new tokens for extra-small border-radii: `--intergalactic-rounded-extra-small` and `-intergalactic-chart-rounded`.
+
+## [15.45.0] - 2024-01-04
+
+### @semcore/popper
+
+- **Added** `disabled` prop to types.
+
+### @semcore/tooltip
+
+- **Fixed** `aria-haspopup` for `disabled` tooltips.
+
+### @semcore/wizard
+
+- **Fixed** When focus is lost during the step change, the focus is moved to the wizard first focusable element.
+
 ## [15.44.0] - 2023-12-22
 
 ### @semcore/d3-chart
