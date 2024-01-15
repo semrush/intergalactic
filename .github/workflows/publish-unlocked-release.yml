@@ -1,7 +1,7 @@
 name: publish-unlocked-release
 on:
   push:
-    branches: [master, test-release]
+    branches: [master]
     paths: .ci/.unlocked-releases.txt
   workflow_dispatch:
 concurrency:
@@ -76,6 +76,7 @@ jobs:
       - uses: actions/checkout@v3.5.3
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 10
       - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
