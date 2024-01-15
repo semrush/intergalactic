@@ -187,7 +187,7 @@ class InputTags extends Component<IInputTagsProps> {
         onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
       >
-        <SListAriaWrapper role='list'>
+        <SListAriaWrapper>
           <Children />
         </SListAriaWrapper>
       </SInputTags>,
@@ -245,7 +245,7 @@ class Value extends Component<IInputTagsValueProps> {
     return sstyled(this.asProps.styles)(
       <>
         <SValue render={Input.Value} style={{ width: this.state.width }} />
-        <SSpacer ref={this._spacer} role='none' />
+        <SSpacer ref={this._spacer} aria-hidden />
       </>,
     );
   }
@@ -263,7 +263,7 @@ function InputTag(props: any) {
   };
 
   return sstyled(props.styles)(
-    <STag data-value={props.value} render={Tag} role='listitem' onKeyDown={onKeyDown} />,
+    <STag data-value={props.value} render={Tag} onKeyDown={onKeyDown} />,
   );
 }
 
