@@ -37,7 +37,7 @@ const publishPreRelease = async () => {
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
   // 5) Publish package
-  await publishTarball(packageJson.name, dirname);
+  await publishTarball(packageJson.name, dirname, true);
 };
 
 export { publishPreRelease };
