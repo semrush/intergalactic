@@ -1,3 +1,13 @@
+## [15.48.0-prerelease.0] - 2024-01-15
+
+### @semcore/input-tags
+
+- **Fixed** Removed `role="list"` and `role="listitem"` from tags container and tags as it was misleading screen readers and other assistive technologies.
+
+### @semcore/notice
+
+- **Changed** `aria-label` in close notice button.
+
 ## [15.47.1] - 2024-01-15
 
 ### @semcore/icon
