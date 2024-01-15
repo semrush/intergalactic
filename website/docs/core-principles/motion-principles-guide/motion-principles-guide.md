@@ -1,5 +1,5 @@
 ---
-title: Motion
+title: Motion (animation)
 ---
 
 ## Description
@@ -25,6 +25,8 @@ Motion delights users with unexpected details that turn mundane moments into som
 Motion provides a visual response to an action, seamless transitions between states help focus and guide users to complete tasks.
 
 ## Durations
+
+Refer to [semantic tokens list](/style/design-tokens/design-tokens#semantic-tokens), to find tokens we use for controlling motion in the components.
 
 Table: Durations
 
