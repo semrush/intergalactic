@@ -1,4 +1,8 @@
 export const isolateStyles = (node: HTMLElement) => {
+  if (!document.adoptedStyleSheets) {
+    return node;
+  }
+
   node.attachShadow({ mode: 'open' });
   const shadowRoot = node.shadowRoot!;
   const element = document.createElement('div');
