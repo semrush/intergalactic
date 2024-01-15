@@ -1,7 +1,7 @@
 {
   "name": "@semcore/breadcrumbs",
   "description": "Semrush Breadcrumbs Component",
-  "version": "5.19.1",
+  "version": "5.19.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@semcore/utils": "4.16.2",
-    "@semcore/icon": "4.20.1",
+    "@semcore/icon": "4.20.2",
     "@semcore/flex-box": "5.14.1"
   },
   "peerDependencies": {

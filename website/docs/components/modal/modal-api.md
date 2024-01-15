@@ -15,7 +15,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Overlay
 
-Component which represents the background. Has all properties as [IBoxProps](/layout/box-system/box-api) prop does.
+Component which represents the background. Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';
@@ -24,7 +24,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Window
 
-Component which represents the modal window itself. Has all properties as [IBoxProps](/layout/box-system/box-api) prop does.
+Component which represents the modal window itself. Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';
@@ -33,7 +33,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Close
 
-Component which represents the closing icon. The component is the `CloseS` icon with the configured styles. Has all properties as [IBoxProps](/layout/box-system/box-api) prop and [IIconProps](/style/icon/icon-api) prop does.
+Component which represents the closing icon. The component is the `CloseS` icon with the configured styles. Has all properties as [BoxProps](/layout/box-system/box-api) prop and [IconProps](/style/icon/icon-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';
@@ -42,7 +42,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Title
 
-Component which represents the title. It adds `aria-labelledby` attribute to modal window. Has all properties as [ITextProps](/style/typography/typography-api) prop does.
+Component which represents the title. It adds `aria-labelledby` attribute to modal window. Has all properties as [TextProps](/style/typography/typography-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';
