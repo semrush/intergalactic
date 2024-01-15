@@ -64,8 +64,8 @@ export default createBaseComponent(${obj.name})
       `,
     templateDTS: () => `
 import React from 'react';
-import { IIconProps } from '@semcore/icon';
-declare const _default: <T>(props: IIconProps & T) => React.ReactElement;
+import { IconProps } from '@semcore/icon';
+declare const _default: <T>(props: IconProps & T) => React.ReactElement;
 export default _default;
       `,
     transformer: () => {
