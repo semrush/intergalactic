@@ -42,6 +42,10 @@ const publishRelease = async () => {
   // 4) Get prerelease tarball
   const logs = await git.log({ maxCount: 10 });
   const filteredLogs = logs.all.filter((item) => item.author_name !== 'semrush-ci-whale');
+
+  // biome-ignore lint/suspicious/noConsoleLog:
+  console.log(logs.all);
+
   const hash = filteredLogs[0].hash;
   const shortHash = hash.slice(0, 8);
 

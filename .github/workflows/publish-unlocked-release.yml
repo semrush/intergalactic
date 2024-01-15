@@ -1,7 +1,7 @@
 name: publish-unlocked-release
 on:
   push:
-    branches: [master]
+    branches: [master, test-release]
     paths: .ci/.unlocked-releases.txt
   workflow_dispatch:
 concurrency:
