@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "Semrush Feedback Form Component",
-  "version": "6.15.3-prerelease.1",
+  "version": "6.15.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@semcore/button": "5.16.0",
     "@semcore/flex-box": "5.14.1",
-    "@semcore/notice": "5.20.3-prerelease.1",
+    "@semcore/notice": "5.20.3",
     "@semcore/spin-container": "7.15.1",
     "@semcore/tooltip": "6.13.2",
     "@semcore/utils": "4.16.2",

@@ -1205,7 +1205,7 @@ importers:
         specifier: 5.14.1
         version: link:../flex-box
       '@semcore/notice':
-        specifier: 5.20.3-prerelease.1
+        specifier: 5.20.3
         version: link:../notice
       '@semcore/spin-container':
         specifier: 7.15.1
@@ -2803,7 +2803,7 @@ importers:
         specifier: 4.20.1
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 6.15.3-prerelease.1
+        specifier: 6.15.3
         version: link:../feedback-form
       '@semcore/flags':
         specifier: 4.14.1
@@ -2845,7 +2845,7 @@ importers:
         specifier: 5.16.1
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.17.0-prerelease.1
+        specifier: 4.17.0
         version: link:../input-tags
       '@semcore/link':
         specifier: 5.16.1
@@ -2857,7 +2857,7 @@ importers:
         specifier: 4.13.1
         version: link:../neighbor-location
       '@semcore/notice':
-        specifier: 5.20.3-prerelease.1
+        specifier: 5.20.3
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: 5.19.2
