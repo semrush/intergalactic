@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.17.0] - 2024-01-15
+
+### Fixed
+
+- Removed `role="list"` and `role="listitem"` from tags container and tags as it was misleading screen readers and other assistive technologies.
+
 ## [4.16.1] - 2024-01-10
 
 ### Changed
