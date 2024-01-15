@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.2] - 2024-01-15
+
+### Changed
+
+- `aria-label` in close notice button.
+
 ## [5.20.1] - 2024-01-10
 
 ### Changed
