@@ -1,3 +1,9 @@
+## [15.47.1] - 2024-01-15
+
+### @semcore/icon
+
+- **Fixed** Icon typings was containing `{ [key: string]: unknown; }`.
+
 ## [15.47.0] - 2024-01-12
 
 ### @semcore/dropdown-menu
