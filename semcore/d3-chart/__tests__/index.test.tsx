@@ -2496,7 +2496,7 @@ describe('d3 charts visual regression', () => {
       }));
 
     const Component: React.FC = () => {
-      const plotRef = React.useRef<Element>(null);
+      const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
         <>
