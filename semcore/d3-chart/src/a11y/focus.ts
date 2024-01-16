@@ -14,6 +14,26 @@ const isFocusable = (element: Element) => {
 
 type FocusableElement = Element & { focus: () => void };
 
+const findNextFocusableElementInChildren = (element: Element | null): FocusableElement | null => {
+  const children = element?.children;
+
+  if (element && isFocusable(element)) {
+    return element as FocusableElement;
+  }
+
+  if (children) {
+    for (let i = 0; i < children.length; i++) {
+      const childChild = children.item(i);
+
+      if (childChild) {
+        return findNextFocusableElementInChildren(childChild);
+      }
+    }
+  }
+
+  return null;
+};
+
 export const heavyFindNextFocusableElement = (
   base: Element,
   trace: Map<Element, true> = new Map(),
@@ -27,13 +47,13 @@ export const heavyFindNextFocusableElement = (
       if (!child) continue;
       if (trace.has(child)) continue;
       if (isFocusable(child)) return child as FocusableElement;
-      const childInnerResult = heavyFindNextFocusableElement(child, trace);
+      const childInnerResult = findNextFocusableElementInChildren(child.children.item(0));
       if (childInnerResult) return childInnerResult;
     }
     while (sibling) {
       if (isFocusable(sibling)) return sibling as FocusableElement;
       if (!trace.has(sibling)) {
-        const siblingInnerResult = heavyFindNextFocusableElement(sibling, trace);
+        const siblingInnerResult = findNextFocusableElementInChildren(sibling.children.item(0));
         if (siblingInnerResult) return siblingInnerResult;
       }
       sibling = sibling.nextElementSibling;

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.23.1] - 2024-01-16
+
+### Fixed
+
+- Selection of next focusable element after chart plot.
+
 ## [3.23.0] - 2024-01-12
 
 ### Changed
