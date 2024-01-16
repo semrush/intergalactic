@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- method for find next focusable element after chart plot.
+- Selection of next focusable element after chart plot.
 
 ## [3.23.0] - 2024-01-12
 
