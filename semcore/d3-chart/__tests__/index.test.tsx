@@ -2133,6 +2133,8 @@ describe('ChartLegend', () => {
 });
 
 describe('d3 charts visual regression', () => {
+  beforeEach(cleanup);
+
   test.concurrent('should render axis-grid', async ({ task }) => {
     const data = Array(20)
       .fill({})
@@ -2494,8 +2496,9 @@ describe('d3 charts visual regression', () => {
         x: i,
         y: Math.abs(Math.sin(Math.exp(i))) * 10,
       }));
+    const hints = makeDataHintsContainer();
 
-    const Component: React.FC = () => {
+    const PlotComponent: React.FC = () => {
       const plotRef = React.useRef<HTMLDivElement>(null);
 
       return (
@@ -2508,7 +2511,7 @@ describe('d3 charts visual regression', () => {
               plotLabel={'plot label'}
               locale={'en'}
               config={{}}
-              hints={makeDataHintsContainer()}
+              hints={hints}
             />
           </div>
           <div className={'one'}>
@@ -2526,7 +2529,7 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    const { getByTestId } = render(<Component />);
+    const { getByTestId } = render(<PlotComponent />);
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
