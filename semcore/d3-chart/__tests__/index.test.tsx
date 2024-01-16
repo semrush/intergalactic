@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import { scaleLinear, scaleBand } from 'd3-scale';
@@ -30,9 +30,11 @@ import {
   Radar,
   ChartLegend,
   ChartLegendTable,
+  makeDataHintsContainer,
   // @ts-ignore
 } from '../src';
 import { getIndexFromData } from '../src/utils';
+import { PlotA11yView } from '../src/a11y/PlotA11yView';
 
 import { curveCardinal } from 'd3-shape';
 import { Flex, Box } from '@semcore/flex-box';
@@ -2483,5 +2485,53 @@ describe('d3 charts visual regression', () => {
     };
 
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('should correctly select next focusable element', async ({ expect }) => {
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: Math.abs(Math.sin(Math.exp(i))) * 10,
+      }));
+
+    const Component: React.FC = () => {
+      const plotRef = React.useRef<Element>(null);
+
+      return (
+        <>
+          <div ref={plotRef}>
+            <PlotA11yView
+              id={'plotView'}
+              data={data}
+              plotRef={plotRef}
+              plotLabel={'plot label'}
+              locale={'en'}
+              config={{}}
+              hints={makeDataHintsContainer()}
+            />
+          </div>
+          <div className={'one'}>
+            <div className={'two'}>
+              <div className={'tree'}>some text</div>
+            </div>
+          </div>
+          <div>some data</div>
+          <div className={'one'}>
+            <div className={'two'} tabIndex={0} data-testid={'focusableElement'}>
+              <div className={'tree'}>some text 2</div>
+            </div>
+          </div>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+
+    expect(getByTestId('focusableElement')).toHaveFocus();
   });
 });
