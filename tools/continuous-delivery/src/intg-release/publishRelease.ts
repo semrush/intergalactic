@@ -72,9 +72,10 @@ const publishRelease = async () => {
   }
 
   // 7) Release notes in slack channel
-  if (!process.argv.includes('--dry-run') && version) {
-    await publishReleaseNotes(version, changelogs.slice(0, 1));
-  }
+  // todo Brauer Ilia: uncomment after removing the previous release system
+  // if (!process.argv.includes('--dry-run') && version) {
+  //   await publishReleaseNotes(version, changelogs.slice(0, 1));
+  // }
 };
 
 export { publishRelease };
