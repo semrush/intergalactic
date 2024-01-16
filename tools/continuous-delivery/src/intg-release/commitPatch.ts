@@ -1,9 +1,24 @@
 import Git from 'simple-git';
 import { log } from '../utils';
+import { execSync } from 'child_process';
 
 const git = Git();
 
 export const commitPatch = async (tag?: string) => {
+  log('Updating lockfile...');
+  execSync('pnpm install --frozen-lockfile false', {
+    stdio: 'inherit',
+  });
+  log('Lockfile updated.');
+
+  log('Committing changes...');
+  await git.add('.');
+  await git.commit(['[chore] changed versions from beta prereleases to latests'], []);
+  log('Lockfile committed.');
+  if (tag) {
+    await git.tag(['-f', tag]);
+  }
+
   log('Rebasing on git origin...');
   try {
     await git.pull('origin', 'master', { '--rebase': 'true' });
@@ -13,11 +28,7 @@ export const commitPatch = async (tag?: string) => {
     throw err;
   }
   log('Rebased on git origin.');
-  await git.add('.');
-  await git.commit(['[chore] changed versions from beta prereleases to latests']);
-  if (tag) {
-    await git.tag(['-f', tag]);
-  }
+
   log('Pushing to git origin...');
   await git.push('origin', 'master');
   log('Pushed to git origin.');
