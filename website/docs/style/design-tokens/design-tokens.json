@@ -3376,7 +3376,7 @@
     "rawValue": "300",
     "computedValue": "300",
     "description": "Should be used for more complex effects (such as Modal)",
-    "components": []
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-duration-fast",

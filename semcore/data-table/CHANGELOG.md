@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.22.0] - 2024-01-15
 
-### Changed
+### Added
 
-- Style and animation of sort icon.
+- Sort icon animation back.
 
 ## [4.21.2] - 2024-01-15
 
