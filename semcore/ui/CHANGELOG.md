@@ -1,3 +1,13 @@
+## [15.49.0-prerelease.0] - 2024-01-16
+
+### @semcore/d3-chart
+
+- **Fixed** Selection of next focusable element after chart plot.
+
+### @semcore/data-table
+
+- **Added** Sort icon animation back.
+
 ## [15.48.0] - 2024-01-15
 
 ### @semcore/input-tags
