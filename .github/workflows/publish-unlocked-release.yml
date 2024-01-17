@@ -72,11 +72,13 @@ jobs:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
+      INTERGALACTIC_BOT_CLOSE_TASKS_URL: ${{ secrets.INTERGALACTIC_BOT_CLOSE_TASKS_URL }}
+      INTERGALACTIC_BOT_SECRET: ${{ secrets.INTERGALACTIC_BOT_SECRET }}
     steps:
       - uses: actions/checkout@v3.5.3
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-          fetch-depth: 10
+          fetch-depth: 0
       - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
