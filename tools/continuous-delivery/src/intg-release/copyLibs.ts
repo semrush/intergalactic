@@ -54,7 +54,7 @@ async function makeIndexESM(componentName: string) {
     'utf8',
   );
 
-  if (indexData.includes('export { default }') || indexData.includes('export default')) {
+  if (indexData.includes('export { default') || indexData.includes('export default')) {
     dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.js';`;
   }
 
