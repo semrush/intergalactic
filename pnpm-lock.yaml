@@ -2767,10 +2767,10 @@ importers:
         specifier: 3.14.1
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.23.1-prerelease.1
+        specifier: 3.23.1
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.22.0-prerelease.1
+        specifier: 4.22.0
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.22.2
