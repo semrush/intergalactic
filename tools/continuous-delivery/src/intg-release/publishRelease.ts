@@ -12,6 +12,7 @@ import { ResponseNpmRegistry } from '../fetchFromNpm';
 import Git from 'simple-git';
 import { downloadTarballs } from '../downloadTarballs';
 import { unpackTarballs } from '../unpackTarballs';
+import { closeTasks } from './closeTasks';
 
 const git = Git();
 
@@ -66,12 +67,17 @@ const publishRelease = async () => {
   // TODO - For now, they updates in old release process. Uncomment after it will be removed.
   // updateVersionInComponents(changelogs);
 
-  // 6) Commit changes in package.json and components.json
+  // 6) Close tasks in clickup
+  if (!process.argv.includes('--dry-run') && version) {
+    await closeTasks(version);
+  }
+
+  // 7) Commit changes in package.json and components.json
   if (!process.argv.includes('--dry-run') && version) {
     await commitPatch(version);
   }
 
-  // 7) Release notes in slack channel
+  // 8) Release notes in slack channel
   // todo Brauer Ilia: uncomment after removing the previous release system
   // if (!process.argv.includes('--dry-run') && version) {
   //   await publishReleaseNotes(version, changelogs.slice(0, 1));

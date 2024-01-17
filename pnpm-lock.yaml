@@ -3333,6 +3333,9 @@ importers:
       marked-ast-markdown:
         specifier: 2.1.0
         version: 2.1.0
+      node-fetch:
+        specifier: 3.3.2
+        version: 3.3.2
       p-limit:
         specifier: 4.0.0
         version: 4.0.0
@@ -14471,7 +14474,7 @@ packages:
       extend: 3.0.2
       https-proxy-agent: 5.0.1
       is-stream: 2.0.1
-      node-fetch: 2.6.9
+      node-fetch: 2.7.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -14498,7 +14501,7 @@ packages:
       decamelize: 6.0.0
       http-proxy-agent: 7.0.0
       https-proxy-agent: 7.0.2
-      node-fetch: 3.3.1
+      node-fetch: 3.3.2
       tar-fs: 3.0.4
       unzipper: 0.10.14
       which: 4.0.0
@@ -18713,18 +18716,6 @@ packages:
       whatwg-url: 5.0.0
     dev: true
 
-  /node-fetch@2.6.9:
-    resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: false
-
   /node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -18743,6 +18734,7 @@ packages:
       data-uri-to-buffer: 4.0.1
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
+    dev: false
 
   /node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
@@ -23528,7 +23520,7 @@ packages:
     dependencies:
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
-      node-fetch: 2.6.9
+      node-fetch: 2.7.0
       stream-events: 1.0.5
       uuid: 8.3.2
     transitivePeerDependencies:
