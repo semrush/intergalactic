@@ -1,3 +1,86 @@
+## [15.49.0] - 2024-01-16
+
+### @semcore/d3-chart
+
+- **Fixed** Selection of next focusable element after chart plot.
+
+### @semcore/data-table
+
+- **Added** Sort icon animation back.
+
+## [15.48.0] - 2024-01-15
+
+### @semcore/input-tags
+
+- **Fixed** Removed `role="list"` and `role="listitem"` from tags container and tags as it was misleading screen readers and other assistive technologies.
+
+### @semcore/notice
+
+- **Changed** `aria-label` in close notice button.
+
+## [15.47.1] - 2024-01-15
+
+### @semcore/icon
+
+- **Fixed** Icon typings was containing `{ [key: string]: unknown; }`.
+
+## [15.47.0] - 2024-01-12
+
+### @semcore/base-trigger
+
+- **Fixed** `BaseTriggerProps` type had `{ [key: string]: unknown; }` that was breaking it's and all inherited types manipulations.
+
+### @semcore/button
+
+- **Fixed** Grouped controls separator color and shape. Additional separators are now added only between sibling `Button`s, all other components just removes one of sticked border.
+
+### @semcore/d3-chart
+
+- **Fixed** Selection of next focusable element after chart plot.
+- **Fixed** Error in ScatterPlot with undefined values.
+
+### @semcore/data-table
+
+- **Added** Sort icon animation back.
+
+### @semcore/date-picker
+
+- **Fixed** Disabled dates should not be available from the keyboard.
+- **Fixed** Months should change when goes outside the current period.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Pressing `ArrowUp`/`ArrowDown` on closed `DropdownMenu` trigger was causing error in console.
+
+### @semcore/icon
+
+- **Fixed** Icon typings was containing `{ [key: string]: unknown; }`.
+
+### @semcore/input-tags
+
+- **Fixed** Removed `role="list"` and `role="listitem"` from tags container and tags as it was misleading screen readers and other assistive technologies.
+
+### @semcore/notice
+
+- **Changed** `aria-label` in close notice button.
+
+### @semcore/popper
+
+- **Fixed** After closing popper with interaction `click` focus is returned to the trigger instead of special focus catch element.
+- **Added** `disabled` prop to types.
+
+### @semcore/tooltip
+
+- **Fixed** `aria-haspopup` for `disabled` tooltips.
+
+### @semcore/utils
+
+- **Added** Two new tokens for extra-small border-radii: `--intergalactic-rounded-extra-small` and `-intergalactic-chart-rounded`.
+
+### @semcore/wizard
+
+- **Fixed** When focus is lost during the step change, the focus is moved to the wizard first focusable element.
+
 ## [15.46.1] - 2024-01-11
 
 ### @semcore/d3-chart
@@ -64,14 +147,6 @@
 ### @semcore/pills
 
 - **Fixed** Focused Pill with `behavior=tabs` were not visually highlighted.
-
-### @semcore/popper
-
-- **Changed** When keyboard users are focus-triggered closing popper, trigger is highlighted with focus ring while actually focus is placed on the sibling invisible element.
-
-### @semcore/utils
-
-- **Changed** `keyboardFocusEnhance` got context based keyboard focus enforcing.
 
 ## [15.43.0] - 2023-12-19
 
