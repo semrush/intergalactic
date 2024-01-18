@@ -60,13 +60,14 @@ export type SliderProps<Value extends SliderValue = SliderValue> = BoxProps &
 type SliderOptionsProps = FlexProps;
 type SliderItemProps = BoxProps;
 
-type IntergalacticSliderComponent = (<
+type IntergalacticSliderComponent<PropsExtending = {}> = (<
   Value extends SliderValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', SliderProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', SliderProps<Value>> &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SliderProps>;
 
 declare const Slider: IntergalacticSliderComponent & {
   Knob: typeof Box;
@@ -79,5 +80,15 @@ declare const Slider: IntergalacticSliderComponent & {
   >;
   Item: Intergalactic.Component<'div', SliderItemProps, SliderContext, [handlers: SliderHandlers]>;
 };
+
+declare const wrapSlider: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticSliderComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticSliderComponent<PropsExtending>;
+export { wrapSlider };
 
 export default Slider;

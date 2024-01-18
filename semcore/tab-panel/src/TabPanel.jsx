@@ -96,4 +96,6 @@ const TabPanel = createComponent(TabPanelRoot, {
   Item: [TabPanelItem, { Text, Addon }],
 });
 
+export const wrapTabPanel = (wrapper) => wrapper;
+
 export default TabPanel;

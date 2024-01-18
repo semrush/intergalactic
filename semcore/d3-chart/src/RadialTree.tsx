@@ -859,7 +859,7 @@ type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, Context 
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
+  Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
 
 const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as IntergalacticD3Component<
   'g',

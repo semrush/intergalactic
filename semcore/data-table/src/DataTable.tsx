@@ -503,7 +503,7 @@ function ComponentDefinition() {
   return null;
 }
 
-type IntergalacticDataTableComponent = (<
+type IntergalacticDataTableComponent<PropsExtending = {}> = (<
   Data extends DataTableData[],
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -513,11 +513,12 @@ type IntergalacticDataTableComponent = (<
     DataTableProps<Data>,
     DataTableCtx,
     never
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps>;
 
-type IntergalacticDataTableRowComponent = (<
+type IntergalacticDataTableRowComponent<PropsExtending = {}> = (<
   Data extends DataTableData[],
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -531,11 +532,12 @@ type IntergalacticDataTableRowComponent = (<
     },
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps>;
 
-type IntergalacticDataTableCellComponent = (<
+type IntergalacticDataTableCellComponent<PropsExtending = {}> = (<
   Data extends DataTableData[] = [],
   Name extends string = string,
   Tag extends Intergalactic.Tag = 'div',
@@ -550,9 +552,10 @@ type IntergalacticDataTableCellComponent = (<
     },
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableCellProps>;
 
 const DefinitionTable = createComponent(
   RootDefinitionTable,
@@ -574,3 +577,30 @@ const DefinitionTable = createComponent(
 
 export { ROW_GROUP };
 export default DefinitionTable;
+
+export const wrapDataTable = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticDataTableComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): IntergalacticDataTableComponent<PropsExtending> => wrapper as any;
+
+export const wrapDataTableRow = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticDataTableRowComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): IntergalacticDataTableRowComponent<PropsExtending> => wrapper as any;
+
+export const wrapDataTableCell = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticDataTableCellComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): IntergalacticDataTableCellComponent<PropsExtending> => wrapper as any;

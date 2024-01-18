@@ -62,13 +62,14 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
   disabled?: boolean;
 };
 
-type IntergalacticWizardStepperComponent = (<
+type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   Value extends WizardStep,
   Tag extends Intergalactic.Tag = 'div',
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps<Value>> &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', WizardStepperProps>;
 
 declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
@@ -76,5 +77,15 @@ declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
   Stepper: IntergalacticWizardStepperComponent;
   Content: typeof Box;
 };
+
+declare const wrapWizardStepper: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticWizardStepperComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticWizardStepperComponent<PropsExtending>;
+export { wrapWizardStepper };
 
 export default Wizard;

@@ -70,7 +70,7 @@ export type PillsHandlers = {
   value: (value: PillsValue) => void;
 };
 
-type IntergalacticPillsComponent = (<
+type IntergalacticPillsComponent<PropsExtending = {}> = (<
   Value extends PillsValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -80,9 +80,10 @@ type IntergalacticPillsComponent = (<
     PillsProps<Value>,
     PillsContext,
     [handlers: PillsHandlers]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', PillsProps>;
 
 declare const Pills: IntergalacticPillsComponent & {
   Item: Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]> & {
@@ -90,5 +91,15 @@ declare const Pills: IntergalacticPillsComponent & {
     Addon: typeof Box;
   };
 };
+
+declare const wrapPills: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticPillsComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticPillsComponent<PropsExtending>;
+export { wrapPills };
 
 export default Pills;

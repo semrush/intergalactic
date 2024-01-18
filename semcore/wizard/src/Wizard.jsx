@@ -157,4 +157,6 @@ const Wizard = createComponent(WizardRoot, {
   Stepper,
 });
 
+export const wrapWizardStepper = (wrapper) => wrapper;
+
 export default Wizard;

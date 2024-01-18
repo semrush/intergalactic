@@ -57,7 +57,7 @@ export type TabPanelHandlers = {
   value: (value: TabPanelValue) => void;
 };
 
-type IntergalacticTabPanelComponent = (<
+type IntergalacticTabPanelComponent<PropsExtending = {}> = (<
   Value extends TabPanelValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -67,9 +67,10 @@ type IntergalacticTabPanelComponent = (<
     TabPanelProps<Value>,
     TabPanelContext,
     [handlers: TabPanelHandlers]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabPanelProps>;
 
 declare const TabPanel: IntergalacticTabPanelComponent & {
   Item: Intergalactic.Component<'div', TabPanelItemProps, {}, [handlers: TabPanelHandlers]> & {
@@ -77,5 +78,15 @@ declare const TabPanel: IntergalacticTabPanelComponent & {
     Addon: typeof Box;
   };
 };
+
+declare const wrapTabPanel: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticTabPanelComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticTabPanelComponent<PropsExtending>;
+export { wrapTabPanel };
 
 export default TabPanel;

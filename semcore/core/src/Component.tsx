@@ -231,8 +231,18 @@ export namespace Intergalactic {
     } & ComponentBasicProps<Tag> &
       MergeProps<EfficientOmit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
-    export type ComponentAdditive<BaseTag extends ComponentTag> = {
+    export type ComponentAdditive<
+      BaseTag extends ComponentTag,
+      Tag extends ComponentTag,
+      Props = {},
+      Context = {},
+      AdditionalContext = {},
+    > = {
       __nestedProps: ComponentPropsNesting<BaseTag>;
+      __tag: Tag;
+      __props: Props;
+      __context: Context;
+      __additionalContext: AdditionalContext;
     };
     export type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
       T extends React.DetailedHTMLProps<infer _, infer Element> ? Element : HTMLElement;
@@ -246,6 +256,10 @@ export namespace Intergalactic {
         : Tag extends { __nestedProps: infer NestedProps }
         ? InferRefElementFromProps<NestedProps>
         : HTMLElement;
+    export type UntypeRefAndTag<Props> = EfficientOmit<Props, 'ref' | 'tag'> & {
+      ref: React.Ref<any>;
+      tag: ComponentTag;
+    };
   }
   export type Component<
     BaseTag extends InternalTypings.ComponentTag = never,
@@ -255,8 +269,25 @@ export namespace Intergalactic {
   > = (<Tag extends InternalTypings.ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
     props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
-    InternalTypings.ComponentAdditive<BaseTag>;
+    InternalTypings.ComponentAdditive<BaseTag, Tag, BaseProps, Context, AdditionalContext>;
   export type Tag = InternalTypings.ComponentTag;
   export type DomProps<Tag extends keyof JSX.IntrinsicElements> =
     InternalTypings.InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>;
 }
+
+export const wrapIntergalacticComponent = <
+  Component extends Intergalactic.Component<any, any, any, any>,
+  PropsExtending = {},
+>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<Component>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): Intergalactic.Component<
+  Component['__tag'],
+  Component['__props'] & Component['__nestedProps'] & PropsExtending,
+  Component['__context'],
+  Component['__additionalContext']
+> => wrapper as any;
