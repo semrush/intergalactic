@@ -92,7 +92,7 @@ class RadioRoot extends Component {
       theme,
       disabled,
       name,
-    } = assignProps(this.context, this.asProps);
+    } = assignProps(this.asProps, this.context);
     const { value, checked } = this.asProps;
     const { hoistedDisabled } = this.state;
 

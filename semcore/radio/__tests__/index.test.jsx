@@ -328,6 +328,38 @@ describe('RadioGroup', () => {
     },
   );
 
+  test.concurrent('should support disabled prop', async ({ expect }) => {
+    const spy = vi.fn();
+
+    const { getByTestId } = render(
+      <RadioGroup onChange={spy}>
+        {[1, 2, 3].map((i) => {
+          return (
+            <Radio
+              key={i}
+              disabled={i % 2 === 0}
+              value={String(i)}
+              label={`Value - ${i}`}
+              data-testid={`radio_${i}`}
+            />
+          );
+        })}
+      </RadioGroup>,
+    );
+
+    const firstRadio = getByTestId('radio_1');
+
+    firstRadio.click();
+
+    expect(spy).toBeCalledWith('1', expect.anything());
+
+    const disabledRadio = getByTestId('radio_2');
+
+    disabledRadio.click();
+
+    expect(spy).not.toBeCalledWith('2', expect.anything());
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <RadioGroup name='radio' value='1'>
