@@ -237,6 +237,10 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         collapsed: true,
         items: [
           {
+            link: '/components/components-showcase/components-showcase',
+            text: 'Components showcase',
+          },
+          {
             link: '/components/accordion/accordion',
             text: 'Accordion',
             collapsed: true,
@@ -685,25 +689,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             ],
           },
           {
-            link: '/components/flags/flags',
-            text: 'Flags',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/flags/flags-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/flags/flags-api',
-                text: 'API',
-              },
-              {
-                link: '/components/flags/flags-changelog',
-                text: 'Changelog',
-              },
-            ],
-          },
-          {
             link: '/components/filter-trigger/filter-trigger',
             text: 'FilterTrigger',
             collapsed: true,
@@ -722,6 +707,25 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               },
               {
                 link: '/components/filter-trigger/filter-trigger-changelog',
+                text: 'Changelog',
+              },
+            ],
+          },
+          {
+            link: '/components/flags/flags',
+            text: 'Flags',
+            collapsed: true,
+            items: [
+              {
+                link: '/components/flags/flags-a11y',
+                text: 'A11y',
+              },
+              {
+                link: '/components/flags/flags-api',
+                text: 'API',
+              },
+              {
+                link: '/components/flags/flags-changelog',
                 text: 'Changelog',
               },
             ],

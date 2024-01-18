@@ -29,7 +29,7 @@ To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 
 ## Button accessibility
 
-If there is no text in the button, it is necessary to add aria-label with a button description.
+If there is no visible text in the button, it is necessary to add an `aria-label` with a short description of an action this button performs.
 
 ::: sandbox
 
