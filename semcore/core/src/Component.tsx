@@ -256,9 +256,12 @@ export namespace Intergalactic {
         : Tag extends { __nestedProps: infer NestedProps }
         ? InferRefElementFromProps<NestedProps>
         : HTMLElement;
-    export type UntypeRefAndTag<Props> = EfficientOmit<Props, 'ref' | 'tag'> & {
+    export type UntypeRefAndTag<Props> = Intergalactic.InternalTypings.EfficientOmit<
+      Props,
+      'ref' | 'tag'
+    > & {
       ref: React.Ref<any>;
-      tag: ComponentTag;
+      tag: Intergalactic.InternalTypings.ComponentTag;
     };
   }
   export type Component<
