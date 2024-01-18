@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.17.2] - 2024-01-18
+
+### Fixed
+
+- `disabled` wasn’t working for a standalone `Radio`.
+
 ## [6.17.1] - 2024-01-10
 
 ### Changed
