@@ -67,7 +67,7 @@ export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps
      */
     disabled?: boolean;
     /**
-     * Input name
+     * If provided, adds a hidden <input /> tag with the given name for enhancing accessibility.
      */
     name?: string;
     locale?: string;
