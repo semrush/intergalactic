@@ -2887,7 +2887,7 @@ importers:
         specifier: 4.14.1
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 6.17.2-prerelease.1
+        specifier: 6.17.2
         version: link:../radio
       '@semcore/scroll-area':
         specifier: 5.16.1
