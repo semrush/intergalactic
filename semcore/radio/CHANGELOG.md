@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `disabled` behaviour for Radio.
+- `disabled` wasn’t working for a standalone `Radio`.
 
 ## [6.17.1] - 2024-01-10
 
