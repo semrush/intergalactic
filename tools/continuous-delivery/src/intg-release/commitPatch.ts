@@ -30,6 +30,6 @@ export const commitPatch = async (tag?: string) => {
   log('Rebased on git origin.');
 
   log('Pushing to git origin...');
-  await git.push('origin', 'master');
+  await git.push('origin', 'master', { '--tags': 'true' });
   log('Pushed to git origin.');
 };
