@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.49.1",
+  "version": "15.49.2-prerelease.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -64,7 +64,7 @@
     "@semcore/portal": "3.13.1",
     "@semcore/product-head": "4.15.1",
     "@semcore/progress-bar": "4.14.1",
-    "@semcore/radio": "6.17.1",
+    "@semcore/radio": "6.17.2-prerelease.1",
     "@semcore/scroll-area": "5.16.1",
     "@semcore/select": "4.22.4",
     "@semcore/side-panel": "3.21.2",
