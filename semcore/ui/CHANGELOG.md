@@ -4,7 +4,7 @@
 
 - **Fixed** `disabled` wasn’t working for a standalone `Radio`.
 
-## [15.49.0-prerelease.0] - 2024-01-16
+## [15.49.0] - 2024-01-16
 
 ### @semcore/d3-chart
 
