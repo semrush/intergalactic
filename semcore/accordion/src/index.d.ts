@@ -65,7 +65,7 @@ export type AccordionItemContext = {
 
 export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
 
-type IntergalacticAccordionComponent = (<
+type IntergalacticAccordionComponent<PropsExtending = {}> = (<
   Value extends AccordionValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -75,9 +75,10 @@ type IntergalacticAccordionComponent = (<
     AccordionProps<Value>,
     AccordionContext & { value: Value },
     [handlers: AccordionHandlers]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', AccordionProps>;
 
 declare const Accordion: IntergalacticAccordionComponent & {
   Item: Intergalactic.Component<
@@ -91,5 +92,15 @@ declare const Accordion: IntergalacticAccordionComponent & {
     Collapse: Intergalactic.Component<'div', CollapseProps>;
   };
 };
+
+declare const wrapAccordion: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticAccordionComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticAccordionComponent<PropsExtending>;
+export { wrapAccordion };
 
 export default Accordion;

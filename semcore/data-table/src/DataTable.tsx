@@ -503,21 +503,21 @@ function ComponentDefinition() {
   return null;
 }
 
-type IntergalacticDataTableComponent = (<
+type IntergalacticDataTableComponent<PropsExtending extends {} = {}> = (<
   Data extends DataTableData[],
   Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
     'div',
-    DataTableProps<Data>,
+    DataTableProps<Data> & PropsExtending,
     DataTableCtx,
     never
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableProps>;
 
-type IntergalacticDataTableRowComponent = (<
+type IntergalacticDataTableRowComponent<PropsExtending extends {} = {}> = (<
   Data extends DataTableData[],
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -528,14 +528,14 @@ type IntergalacticDataTableRowComponent = (<
        * That property is ONLY used for the component strict typings. In the component runtime `data` prop set on `<DataTable>...</DataTable> is used.
        */
       data?: Data;
-    },
+    } & PropsExtending,
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableRowProps>;
 
-type IntergalacticDataTableCellComponent = (<
+type IntergalacticDataTableCellComponent<PropsExtending extends {} = {}> = (<
   Data extends DataTableData[] = [],
   Name extends string = string,
   Tag extends Intergalactic.Tag = 'div',
@@ -547,12 +547,12 @@ type IntergalacticDataTableCellComponent = (<
        * That property is ONLY used for the componenct strict typings. In the component runtime `data` prop set on `<DataTable>...</DataTable> is used.
        */
       data?: Data;
-    },
+    } & PropsExtending,
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', DataTableCellProps>;
 
 const DefinitionTable = createComponent(
   RootDefinitionTable,
@@ -574,3 +574,30 @@ const DefinitionTable = createComponent(
 
 export { ROW_GROUP };
 export default DefinitionTable;
+
+export const wrapDataTable = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticDataTableComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): IntergalacticDataTableComponent<PropsExtending> => wrapper as any;
+
+export const wrapDataTableRow = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticDataTableRowComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): IntergalacticDataTableRowComponent<PropsExtending> => wrapper as any;
+
+export const wrapDataTableCell = <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticDataTableCellComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+): IntergalacticDataTableCellComponent<PropsExtending> => wrapper as any;

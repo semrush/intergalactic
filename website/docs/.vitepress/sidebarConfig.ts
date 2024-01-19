@@ -61,6 +61,16 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             link: '/core-principles/visual-loudness-scale/visual-loudness-scale',
             text: 'Visual loudness scale',
           },
+          {
+            text: 'Writing code',
+            collapsed: false,
+            items: [
+              {
+                text: 'Wrapping components',
+                link: '/core-principles/writing-code/wrapping-components',
+              },
+            ],
+          },
         ],
       },
       {

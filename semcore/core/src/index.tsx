@@ -7,7 +7,7 @@ import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 // @ts-ignore
 import _assignProps from '@semcore/utils/lib/assignProps';
 
-import { Component, PropsWithRenderFnChildren } from './Component';
+import { Component, PropsWithRenderFnChildren, wrapIntergalacticComponent } from './Component';
 import register from './register';
 
 import childrenEnhancement, { CHILDREN_COMPONENT } from './enhancement/Children';

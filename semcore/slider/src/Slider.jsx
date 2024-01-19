@@ -253,4 +253,7 @@ const Slider = createComponent(SliderRoot, {
   Options,
   Item,
 });
+
+export const wrapSlider = (wrapper) => wrapper;
+
 export default Slider;

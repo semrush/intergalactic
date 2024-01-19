@@ -155,4 +155,6 @@ const Accordion = createComponent(RootAccordion, {
   Item,
 });
 
+export const wrapAccordion = (wrapper) => wrapper;
+
 export default Accordion;

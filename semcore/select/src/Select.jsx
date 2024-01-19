@@ -387,4 +387,6 @@ const Select = createComponent(
   { parent: DropdownMenu, context: selectContext },
 );
 
+export const wrapSelect = (wrapper) => wrapper;
+
 export default Select;

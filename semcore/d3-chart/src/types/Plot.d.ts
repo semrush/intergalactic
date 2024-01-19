@@ -112,7 +112,7 @@ export type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, C
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
+  Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, Props>;
 
 declare const Plot: IntergalacticD3Component<'svg', PlotProps, Context>;
 export default Plot;

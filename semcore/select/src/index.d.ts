@@ -115,7 +115,7 @@ export type SelectHandlers = DropdownMenuHandlers & {
   value: (index: SelectValue) => void;
 };
 
-type IntergalacticSelectComponent = (<
+type IntergalacticSelectComponent<PropsExtending = {}> = (<
   Value extends SelectValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -125,9 +125,10 @@ type IntergalacticSelectComponent = (<
     SelectProps<Value>,
     SelectContext,
     [handlers: SelectHandlers]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', SelectProps>;
 
 declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
@@ -158,5 +159,14 @@ declare const Select: IntergalacticSelectComponent & {
   Input: typeof InputSearch;
 };
 
-export { InputSearch };
+declare const wrapSelect: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticSelectComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticSelectComponent<PropsExtending>;
+
+export { InputSearch, wrapSelect };
 export default Select;

@@ -102,7 +102,7 @@ describe('Core types', () => {
     >(
       props: Intergalactic.InternalTypings.ComponentProps<Tag, BaseTag, PillsProps<Value>>,
     ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-      Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
+      Intergalactic.InternalTypings.ComponentAdditive<BaseTag, BaseTag, PillsProps>;
 
     const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
     const Pills: IntergalacticPillsComponent<'div'> = any;
