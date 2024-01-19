@@ -1,7 +1,7 @@
 {
   "name": "@semcore/radio",
   "description": "Semrush Radio Component",
-  "version": "6.17.2",
+  "version": "6.18.0-prerelease.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,12 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.16.2",
-    "@semcore/flex-box": "5.14.1",
-    "@semcore/typography": "5.21.1"
+    "@semcore/utils": "4.17.0-prerelease.1",
+    "@semcore/flex-box": "5.15.0-prerelease.1",
+    "@semcore/typography": "5.22.0-prerelease.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.13.1",
+    "@semcore/core": "^2.14.0-prerelease.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
