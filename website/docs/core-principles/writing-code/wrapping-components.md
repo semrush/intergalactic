@@ -103,7 +103,7 @@ Some components props are generic, for example `Select` component has generic `v
 
 It available for the following components:
 
-1. `wrapDataTable`, `wrapDataTableRow`, `wrapDataTableCell` for [DataTable](/components/data-table/data-table).
+1. `wrapDataTable`, `wrapDataTableRow`, `wrapDataTableCell` for [DataTable](/table-group/data-table/data-table).
 2. `wrapAccordion` for [Accordion](/components/accordion/accordion).
 3. `wrapPills` for [Pills](/components/pills/pills).
 4. `wrapRadioGroup` for [Radio](/components/radio/radio).
