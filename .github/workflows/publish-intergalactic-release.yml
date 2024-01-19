@@ -1,9 +1,8 @@
-name: publish-unlocked-release
+name: publish-intergalactic-release
 on:
   push:
-    branches: [master]
-    paths: .ci/.unlocked-releases.txt
-  workflow_dispatch:
+    tags:
+      - v*
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -14,10 +13,13 @@ jobs:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
+      INTERGALACTIC_BOT_CLOSE_TASKS_URL: ${{ secrets.INTERGALACTIC_BOT_CLOSE_TASKS_URL }}
+      INTERGALACTIC_BOT_SECRET: ${{ secrets.INTERGALACTIC_BOT_SECRET }}
     steps:
       - uses: actions/checkout@v3.5.3
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
       - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
@@ -65,39 +67,4 @@ jobs:
       - name: NPM auth check
         run: pnpm whoami
       - name: Publish release
-        run: pnpm publish-release
-  publish-website:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: publish-unlocked-release
-    env:
-      GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
-    steps:
-      - uses: actions/checkout@v3.5.3
-        with:
-          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-      - uses: actions/setup-node@v3.6.0
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - name: Github GPG Auth
-        uses: crazy-max/ghaction-import-gpg@v5.3.0
-        with:
-          gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-          git_committer_name: semrush-ci-whale
-          git_committer_email: semrush-ci-whale@users.noreply.github.com
-      - name: Update website/release branch
-        run: |
-          git checkout -b website/release
-          git push --force --set-upstream origin website/release
-          git push origin website/release --force
+        run: pnpm --filter intergalactic-migrate run build && pnpm intg-publish-release
