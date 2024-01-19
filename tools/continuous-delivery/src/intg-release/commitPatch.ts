@@ -13,7 +13,10 @@ export const commitPatch = async (tag?: string) => {
 
   log('Committing changes...');
   await git.add('.');
-  await git.commit(['[chore] changed versions from beta prereleases to latests for intergalactic'], []);
+  await git.commit(
+    ['[chore] changed versions from beta prereleases to latests for intergalactic'],
+    [],
+  );
   log('Lockfile committed.');
 
   // todo Brauer Ilia uncomment after removing old release system
@@ -33,10 +36,10 @@ export const commitPatch = async (tag?: string) => {
 
   log('Pushing to git origin...');
   await git.push(
-      'origin',
-      'master',
-      // todo Brauer Ilia uncomment after removing old release system
-      // ['--tags']
+    'origin',
+    'master',
+    // todo Brauer Ilia uncomment after removing old release system
+    // ['--tags']
   );
   log('Pushed to git origin.');
 };
