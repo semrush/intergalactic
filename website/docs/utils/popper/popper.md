@@ -19,7 +19,7 @@ import React from 'react';
 import Popper from '@semcore/ui/popper';
 import { Flex } from '@semcore/ui/flex-box';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '10px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
@@ -60,7 +60,7 @@ When these events are activated, the `onVisibleChange` handler is called with th
 import React from 'react';
 import Popper from '@semcore/ui/popper';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <Popper interaction='hover'>
@@ -86,7 +86,7 @@ You can subscribe to the `onOutsideClick` event. It will be called when a clicke
 import React from 'react';
 import Popper from '@semcore/ui/popper';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <Popper
@@ -117,7 +117,7 @@ import { Box } from '@semcore/ui/flex-box';
 import Popper from '@semcore/ui/popper';
 import Button from '@semcore/ui/button';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const styleBox = {
   display: 'grid',
@@ -232,7 +232,7 @@ import Popper from '@semcore/ui/popper';
 import Button from '@semcore/ui/button';
 import HamburgerM from '@semcore/ui/icon/Hamburger/m';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <Popper>
@@ -264,7 +264,7 @@ Inside the function, the first argument provides the component props and the `ge
 import React from 'react';
 import Popper from '@semcore/ui/popper';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <Popper interaction='focus'>
@@ -291,7 +291,7 @@ import React from 'react';
 import Button from '@semcore/ui/button';
 import Popper from '@semcore/ui/popper';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <Popper>
@@ -335,7 +335,7 @@ import React from 'react';
 import Popper from '@semcore/ui/popper';
 import Button from '@semcore/ui/button';
 
-const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
+const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 
 const Demo = () => (
   <>
