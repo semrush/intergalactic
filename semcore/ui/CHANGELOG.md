@@ -1,3 +1,35 @@
+## [15.51.0] - 2024-01-19
+
+### @semcore/outside-click
+
+- **Fixed** Clicks were always considered as outside in Shadow DOM.
+
+### @semcore/utils
+
+- **Added** Internal utility to handle DOM events inside of Shadow DOM.
+
+## [15.50.0] - 2024-01-19
+
+### @semcore/core
+
+- **Added** `wrapIntergalacticComponent` utility for wrapping components.
+
+## [15.49.1] - 2024-01-18
+
+### @semcore/radio
+
+- **Fixed** `disabled` wasn’t working for a standalone `Radio`.
+
+## [15.49.0] - 2024-01-16
+
+### @semcore/d3-chart
+
+- **Fixed** Selection of next focusable element after chart plot.
+
+### @semcore/data-table
+
+- **Added** Sort icon animation back.
+
 ## [15.48.0] - 2024-01-15
 
 ### @semcore/input-tags

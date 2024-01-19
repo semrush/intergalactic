@@ -112,13 +112,14 @@ export type RadioCtx = {
   getTextProps: PropGetterFn;
 };
 
-type IntergalacticRadioGroupComponent = (<
+type IntergalacticRadioGroupComponent<PropsExtending = {}> = (<
   Value extends RadioValue,
   Tag extends Intergalactic.Tag = typeof Flex,
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>> &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', typeof Flex, RadioGroupProps>;
 
 export type RadioValueControlProps = {};
 export type RadioValueMarkProps = {};
@@ -134,5 +135,15 @@ declare const Radio: Intergalactic.Component<'label', RadioProps, RadioCtx> & {
   };
   Text: typeof Text;
 };
+
+declare const wrapRadioGroup: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticRadioGroupComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticRadioGroupComponent<PropsExtending>;
+export { wrapRadioGroup };
 
 export default Radio;

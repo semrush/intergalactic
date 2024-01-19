@@ -3,6 +3,9 @@ SRadio {
   align-items: flex-start;
   cursor: pointer;
 }
+SRadio[disabled] {
+  pointer-events: none;
+}
 
 SText {
   margin-left: var(--intergalactic-spacing-2x, 8px);

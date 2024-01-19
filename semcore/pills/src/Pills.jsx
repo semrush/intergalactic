@@ -174,4 +174,6 @@ const Pills = createComponent(RootPills, {
   Item: [Pill, { Text, Addon }],
 });
 
+export const wrapPills = (wrapper) => wrapper;
+
 export default Pills;

@@ -191,4 +191,6 @@ const TabLine = createComponent(TabLineRoot, {
   Item: [TabLineItem, { Text, Addon }],
 });
 
+export const wrapTabLine = (wrapper) => wrapper;
+
 export default TabLine;

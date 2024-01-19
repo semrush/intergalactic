@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.15.0] - 2024-01-19
+
+### Fixed
+
+- Clicks were always considered as outside in Shadow DOM.
+
+## [3.14.0] - 2024-01-19
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/core` [2.13.1 ~> 2.14.0]).
+
 ## [3.13.1] - 2024-01-10
 
 ### Changed

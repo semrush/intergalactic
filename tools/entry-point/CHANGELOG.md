@@ -1,3 +1,51 @@
+## [15.50.0] - 2024-01-19
+
+### @semcore/core
+
+- **Added** `wrapIntergalacticComponent` utility for wrapping components.
+
+## [15.49.1] - 2024-01-18
+
+### @semcore/radio
+
+- **Fixed** `disabled` wasn’t working for a standalone `Radio`.
+
+## [15.49.0] - 2024-01-16
+
+### @semcore/d3-chart
+
+- **Fixed** Selection of next focusable element after chart plot.
+
+### @semcore/data-table
+
+- **Added** Sort icon animation back.
+
+## [15.48.0] - 2024-01-15
+
+### @semcore/input-tags
+
+- **Fixed** Removed `role="list"` and `role="listitem"` from tags container and tags as it was misleading screen readers and other assistive technologies.
+
+### @semcore/notice
+
+- **Changed** `aria-label` in close notice button.
+
+## [15.47.1] - 2024-01-15
+
+### @semcore/icon
+
+- **Fixed** Icon typings was containing `{ [key: string]: unknown; }`.
+
+## [15.47.0] - 2024-01-12
+
+### @semcore/dropdown-menu
+
+- **Fixed** Pressing `ArrowUp`/`ArrowDown` on closed `DropdownMenu` trigger was causing error in console.
+
+### @semcore/popper
+
+- **Fixed** After closing popper with interaction `click` focus is returned to the trigger instead of special focus catch element.
+
 ## [15.46.1] - 2024-01-11
 
 ### @semcore/d3-chart
@@ -64,14 +112,6 @@
 ### @semcore/pills
 
 - **Fixed** Focused Pill with `behavior=tabs` were not visually highlighted.
-
-### @semcore/popper
-
-- **Changed** When keyboard users are focus-triggered closing popper, trigger is highlighted with focus ring while actually focus is placed on the sibling invisible element.
-
-### @semcore/utils
-
-- **Changed** `keyboardFocusEnhance` got context based keyboard focus enforcing.
 
 ## [15.43.0] - 2023-12-19
 

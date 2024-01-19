@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.25.0] - 2024-01-19
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.15.0 ~> 2.16.0], `@semcore/utils` [4.17.0 ~> 4.18.0], `@semcore/core` [2.14.0 ~> 2.15.0]).
+
+## [3.24.0] - 2024-01-19
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.14.1 ~> 2.15.0], `@semcore/core` [2.13.1 ~> 2.14.0]).
+
+## [3.23.1] - 2024-01-16
+
+### Fixed
+
+- Selection of next focusable element after chart plot.
+
 ## [3.23.0] - 2024-01-12
 
 ### Changed
