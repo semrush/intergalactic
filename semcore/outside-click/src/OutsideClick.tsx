@@ -31,15 +31,17 @@ const noop = () => {};
 function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
-  const nodeRef = React.useRef(null);
-  const targetRef = React.useRef(null);
+  const nodeRef = React.useRef<Node | null>(null);
+  const targetRef = React.useRef<Node | null>(null);
 
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
 
   const handleOutsideClick = useEventCallback((event: any) => {
     const isTargetEvent = [...(excludeRefs as any), nodeRef]
       .filter((node) => getNodeByRef(node))
-      .some((node) => getNodeByRef(node)?.contains(targetRef.current || getEventTarget(event)));
+      .some((node) =>
+        getNodeByRef(node)?.contains(targetRef.current || (getEventTarget(event) as Node | null)),
+      );
 
     if (!isTargetEvent) {
       onOutsideClick?.(event);
@@ -47,7 +49,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   });
 
   const handleMouseDown = useEventCallback((event: any) => {
-    targetRef.current = getEventTarget(event);
+    targetRef.current = getEventTarget(event) as Node | null;
   });
 
   React.useEffect(() => {
