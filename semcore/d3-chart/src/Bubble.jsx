@@ -43,12 +43,12 @@ class BubbleRoot extends Component {
     const selectRect = transition().selection().selectAll(`[id^=${uid}${uid}]`).attr('r', 0);
 
     const selectRectNode = selectRect.node();
-    if (duration > 0 && selectRectNode) {
+    if (selectRectNode) {
       selectRect
         .transition()
         .duration(duration)
         .attr('r', function (_, ind) {
-          return z(data[ind][value]);
+          return z(data[ind]?.[value]);
         });
     }
   }
