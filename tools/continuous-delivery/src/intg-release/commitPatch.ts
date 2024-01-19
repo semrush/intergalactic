@@ -13,11 +13,13 @@ export const commitPatch = async (tag?: string) => {
 
   log('Committing changes...');
   await git.add('.');
-  await git.commit(['[chore] changed versions from beta prereleases to latests'], []);
+  await git.commit(['[chore] changed versions from beta prereleases to latests for intergalactic'], []);
   log('Lockfile committed.');
-  if (tag) {
-    await git.tag(['-f', tag]);
-  }
+
+  // todo Brauer Ilia uncomment after removing old release system
+  // if (tag) {
+  //   await git.tag(['-f', tag]);
+  // }
 
   log('Rebasing on git origin...');
   try {
@@ -30,6 +32,11 @@ export const commitPatch = async (tag?: string) => {
   log('Rebased on git origin.');
 
   log('Pushing to git origin...');
-  await git.push('origin', 'master', ['--tags']);
+  await git.push(
+      'origin',
+      'master',
+      // todo Brauer Ilia uncomment after removing old release system
+      // ['--tags']
+  );
   log('Pushed to git origin.');
 };
