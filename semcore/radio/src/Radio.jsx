@@ -289,4 +289,6 @@ const Radio = createComponent(RadioRoot, {
   Value,
 });
 
+export const wrapRadioGroup = (wrapper) => wrapper;
+
 export default Radio;

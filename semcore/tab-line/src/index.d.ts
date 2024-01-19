@@ -69,7 +69,7 @@ export type TabLineHandlers = {
   value: (value: TabLineValue) => void;
 };
 
-type IntergalacticTabLineComponent = (<
+type IntergalacticTabLineComponent<PropsExtending = {}> = (<
   Value extends TabLineValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
@@ -79,9 +79,10 @@ type IntergalacticTabLineComponent = (<
     TabLineProps<Value>,
     TabLineContext,
     [handlers: TabLineHandlers]
-  >,
+  > &
+    PropsExtending,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+  Intergalactic.InternalTypings.ComponentAdditive<'div', 'div', TabLineProps>;
 
 declare const TabLine: IntergalacticTabLineComponent & {
   Item: Intergalactic.Component<'div', TabLineItemProps, {}, [handlers: TabLineHandlers]> & {
@@ -89,5 +90,15 @@ declare const TabLine: IntergalacticTabLineComponent & {
     Addon: typeof Box;
   };
 };
+
+declare const wrapTabLine: <PropsExtending extends {}>(
+  wrapper: (
+    props: Intergalactic.InternalTypings.UntypeRefAndTag<
+      Intergalactic.InternalTypings.ComponentPropsNesting<IntergalacticTabLineComponent>
+    > &
+      PropsExtending,
+  ) => React.ReactNode,
+) => IntergalacticTabLineComponent<PropsExtending>;
+export { wrapTabLine };
 
 export default TabLine;

@@ -44,7 +44,11 @@ export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
     ChildrenRenderProps & TooltipChartContext
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<Intergalactic.Tag> &
+  Intergalactic.InternalTypings.ComponentAdditive<
+    Intergalactic.Tag,
+    Intergalactic.Tag,
+    TooltipProps
+  > &
   TooltipTypeBase;
 
 /**
