@@ -1,3 +1,9 @@
+## [15.50.0] - 2024-01-19
+
+### @semcore/core
+
+- **Added** `wrapIntergalacticComponent` utility for wrapping components.
+
 ## [15.49.1] - 2024-01-18
 
 ### @semcore/radio
