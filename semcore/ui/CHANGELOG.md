@@ -1,3 +1,13 @@
+## [15.51.0-prerelease.0] - 2024-01-19
+
+### @semcore/outside-click
+
+- **Fixed** Clicks were always considered as outside in Shadow DOM.
+
+### @semcore/utils
+
+- **Added** Internal utility to handle DOM events inside of Shadow DOM.
+
 ## [15.50.0] - 2024-01-19
 
 ### @semcore/core
