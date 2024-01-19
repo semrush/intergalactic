@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.18.0] - 2024-01-19
+
+### Added
+
+- Internal utility to handle DOM events inside of Shadow DOM.
+
 ## [4.17.0] - 2024-01-19
 
 ### Changed

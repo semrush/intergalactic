@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.15.0] - 2024-01-19
+
+### Fixed
+
+- Clicks were always considered as outside in Shadow DOM.
+
 ## [3.14.0] - 2024-01-19
 
 ### Changed
