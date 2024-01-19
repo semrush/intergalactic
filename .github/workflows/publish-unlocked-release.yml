@@ -67,6 +67,7 @@ jobs:
       - name: Publish release
         run: pnpm publish-release
   publish-unlocked-intergalactic-release:
+    needs: publish-unlocked-release
     runs-on: ubuntu-latest
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
