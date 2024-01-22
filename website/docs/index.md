@@ -20,7 +20,7 @@ hero:
 features:
   - title: Components
     details: 80+ React components out of the box
-    link: /components/accordion/accordion
+    link: /components/components-showcase/components-showcase
     linkText: Explore
   - title: Сharts
     details: 14+ chart types built with d3.js and accessibility in mind

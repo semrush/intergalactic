@@ -29,6 +29,6 @@
   left: 0;
 }
 .title {
-  margin-top: var(--intergalactic-spacing-3x);
+  margin-top: var(--intergalactic-spacing-3x) !important;
   white-space: break-spaces;
 }

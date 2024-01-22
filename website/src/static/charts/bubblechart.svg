@@ -1,20 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="146" height="80" fill="none" viewBox="0 0 146 80">
-  <circle cx="7.5" cy="50.5" r="6.5" stroke="#fff" stroke-width="2" opacity=".5"/>
-  <circle cx="7.5" cy="50.5" r="5.5" fill="#E14ADF" opacity=".5"/>
-  <path fill="#E14ADF" d="M8 47H7v3H4v1h3v3h1v-3h3v-1H8v-3Z"/>
-  <circle cx="16.5" cy="61.5" r="11.5" stroke="#fff" stroke-width="2" opacity=".5"/>
-  <circle cx="16.5" cy="61.5" r="10.5" fill="#AB6CFE" opacity=".5"/>
-  <path fill="#AB6CFE" d="M17 58h-1v3h-3v1h3v3h1v-3h3v-1h-3v-3Z"/>
-  <circle cx="51.5" cy="30.5" r="18.5" stroke="#fff" stroke-width="2" opacity=".5"/>
-  <circle cx="51.5" cy="30.5" r="17.5" fill="#FF4953" opacity=".5"/>
-  <path fill="#FF4953" d="M52 27h-1v3h-3v1h3v3h1v-3h3v-1h-3v-3Z"/>
-  <circle cx="108" cy="49" r="22" stroke="#fff" stroke-width="2" opacity=".5"/>
-  <circle cx="108" cy="49" r="21" fill="#FF8C43" opacity=".5"/>
-  <path fill="#FF8C43" d="M108 45h-1v3h-3v1h3v3h1v-3h3v-1h-3v-3Z"/>
-  <circle cx="25.431" cy="23.5" r="11.5" stroke="#fff" stroke-width="2" opacity=".5"/>
-  <circle cx="25.431" cy="23.5" r="10.5" fill="#66C030" opacity=".5"/>
-  <path fill="#66C030" d="M25.93 20h-1v3h-3v1h3v3h1v-3h3v-1h-3v-3Z"/>
-  <circle cx="55.5" cy="53.5" r="19.5" stroke="#fff" stroke-width="2" opacity=".5"/>
-  <circle cx="55.5" cy="53.5" r="18.5" fill="#008FF8" opacity=".5"/>
-  <path fill="#008FF8" d="M56 50h-1v3h-3v1h3v3h1v-3h3v-1h-3v-3Z"/>
+<svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="144" height="80" fill="white"/>
+<circle opacity="0.5" cx="14.5" cy="50.5" r="6.5" stroke="white" stroke-width="2"/>
+<circle opacity="0.5" cx="14.5" cy="50.5" r="5.5" fill="#E14ADF"/>
+<path d="M15 47H14V50H11V51H14V54H15V51H18V50H15V47Z" fill="#E14ADF"/>
+<circle opacity="0.5" cx="23.5" cy="61.5" r="11.5" stroke="white" stroke-width="2"/>
+<circle opacity="0.5" cx="23.5" cy="61.5" r="10.5" fill="#AB6CFE"/>
+<path d="M24 58H23V61H20V62H23V65H24V62H27V61H24V58Z" fill="#AB6CFE"/>
+<circle opacity="0.5" cx="58.5" cy="30.5" r="18.5" stroke="white" stroke-width="2"/>
+<circle opacity="0.5" cx="58.5" cy="30.5" r="17.5" fill="#FF4953"/>
+<path d="M59 27H58V30H55V31H58V34H59V31H62V30H59V27Z" fill="#FF4953"/>
+<circle opacity="0.5" cx="115" cy="49" r="22" stroke="white" stroke-width="2"/>
+<circle opacity="0.5" cx="115" cy="49" r="21" fill="#FF8C43"/>
+<path d="M115 45H114V48H111V49H114V52H115V49H118V48H115V45Z" fill="#FF8C43"/>
+<circle opacity="0.5" cx="32.4307" cy="23.5" r="11.5" stroke="white" stroke-width="2"/>
+<circle opacity="0.5" cx="32.4307" cy="23.5" r="10.5" fill="#66C030"/>
+<path d="M32.9307 20H31.9307V23H28.9307V24H31.9307V27H32.9307V24H35.9307V23H32.9307V20Z" fill="#66C030"/>
+<circle opacity="0.5" cx="62.5" cy="53.5" r="19.5" stroke="white" stroke-width="2"/>
+<circle opacity="0.5" cx="62.5" cy="53.5" r="18.5" fill="#008FF8"/>
+<path d="M63 50H62V53H59V54H62V57H63V54H66V53H63V50Z" fill="#008FF8"/>
 </svg>

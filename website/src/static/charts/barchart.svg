@@ -1,76 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="144" height="80" fill="none" viewBox="0 0 144 80">
-  <g clip-path="url(#a)">
-    <path fill="#2BB3FF" d="M8 50a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v30H8V50Z"/>
-  </g>
-  <g clip-path="url(#b)">
-    <path fill="#2BB3FF" d="M18.91 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-  </g>
-  <g clip-path="url(#c)">
-    <path fill="#2BB3FF" d="M29.818 23a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v57h-8V23Z"/>
-  </g>
-  <g clip-path="url(#d)">
-    <path fill="#2BB3FF" d="M40.727 39a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v41h-8V39Z"/>
-  </g>
-  <g clip-path="url(#e)">
-    <path fill="#2BB3FF" d="M51.636 26a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v54h-8V26Z"/>
-  </g>
-  <g clip-path="url(#f)">
-    <path fill="#2BB3FF" d="M62.545 64a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16h-8V64Z"/>
-  </g>
-  <g clip-path="url(#g)">
-    <path fill="#2BB3FF" d="M73.455 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v78h-8V20Z"/>
-  </g>
-  <g clip-path="url(#h)">
-    <path fill="#2BB3FF" d="M84.364 33a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v47h-8V33Z"/>
-  </g>
-  <g clip-path="url(#i)">
-    <path fill="#2BB3FF" d="M95.273 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-  </g>
-  <g clip-path="url(#j)">
-    <path fill="#2BB3FF" d="M106.182 56a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v24h-8V56Z"/>
-  </g>
-  <g clip-path="url(#k)">
-    <path fill="#2BB3FF" d="M117.091 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-  </g>
-  <g clip-path="url(#l)">
-    <path fill="#2BB3FF" d="M128 56a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v24h-8V56Z"/>
-  </g>
-  <defs>
-    <clipPath id="a">
-      <path fill="#fff" d="M8 50a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v30H8V50Z"/>
-    </clipPath>
-    <clipPath id="b">
-      <path fill="#fff" d="M18.91 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-    </clipPath>
-    <clipPath id="c">
-      <path fill="#fff" d="M29.818 23a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v57h-8V23Z"/>
-    </clipPath>
-    <clipPath id="d">
-      <path fill="#fff" d="M40.727 39a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v41h-8V39Z"/>
-    </clipPath>
-    <clipPath id="e">
-      <path fill="#fff" d="M51.636 26a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v54h-8V26Z"/>
-    </clipPath>
-    <clipPath id="f">
-      <path fill="#fff" d="M62.545 64a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16h-8V64Z"/>
-    </clipPath>
-    <clipPath id="g">
-      <path fill="#fff" d="M73.455 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-    </clipPath>
-    <clipPath id="h">
-      <path fill="#fff" d="M84.364 33a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v47h-8V33Z"/>
-    </clipPath>
-    <clipPath id="i">
-      <path fill="#fff" d="M95.273 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-    </clipPath>
-    <clipPath id="j">
-      <path fill="#fff" d="M106.182 56a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v24h-8V56Z"/>
-    </clipPath>
-    <clipPath id="k">
-      <path fill="#fff" d="M117.091 20a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v60h-8V20Z"/>
-    </clipPath>
-    <clipPath id="l">
-      <path fill="#fff" d="M128 56a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v24h-8V56Z"/>
-    </clipPath>
-  </defs>
+<svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="144" height="80" fill="white"/>
+<g clip-path="url(#clip0_430_18805)">
+<path d="M8 50C8 48.8954 8.89543 48 10 48H14C15.1046 48 16 48.8954 16 50V80H8V50Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip1_430_18805)">
+<path d="M18.9092 20C18.9092 18.8954 19.8046 18 20.9092 18H24.9092C26.0137 18 26.9092 18.8954 26.9092 20V80H18.9092V20Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip2_430_18805)">
+<path d="M29.8184 23C29.8184 21.8954 30.7138 21 31.8184 21H35.8184C36.9229 21 37.8184 21.8954 37.8184 23V80H29.8184V23Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip3_430_18805)">
+<path d="M40.7271 39C40.7271 37.8954 41.6225 37 42.7271 37H46.7271C47.8316 37 48.7271 37.8954 48.7271 39V80H40.7271V39Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip4_430_18805)">
+<path d="M51.6362 26C51.6362 24.8954 52.5317 24 53.6362 24H57.6362C58.7408 24 59.6362 24.8954 59.6362 26V80H51.6362V26Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip5_430_18805)">
+<path d="M62.5454 64C62.5454 62.8954 63.4408 62 64.5454 62H68.5454C69.65 62 70.5454 62.8954 70.5454 64V80H62.5454V64Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip6_430_18805)">
+<path d="M73.4546 20C73.4546 18.8954 74.35 18 75.4546 18H79.4546C80.5592 18 81.4546 18.8954 81.4546 20V98H73.4546V20Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip7_430_18805)">
+<path d="M84.3638 33C84.3638 31.8954 85.2592 31 86.3638 31H90.3638C91.4683 31 92.3638 31.8954 92.3638 33V80H84.3638V33Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip8_430_18805)">
+<path d="M95.2729 20C95.2729 18.8954 96.1684 18 97.2729 18H101.273C102.378 18 103.273 18.8954 103.273 20V80H95.2729V20Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip9_430_18805)">
+<path d="M106.182 56C106.182 54.8954 107.077 54 108.182 54H112.182C113.286 54 114.182 54.8954 114.182 56V80H106.182V56Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip10_430_18805)">
+<path d="M117.091 20C117.091 18.8954 117.986 18 119.091 18H123.091C124.195 18 125.091 18.8954 125.091 20V80H117.091V20Z" fill="#2BB3FF"/>
+</g>
+<g clip-path="url(#clip11_430_18805)">
+<path d="M128 56C128 54.8954 128.895 54 130 54H134C135.105 54 136 54.8954 136 56V80H128V56Z" fill="#2BB3FF"/>
+</g>
+<defs>
+<clipPath id="clip0_430_18805">
+<path d="M8 50C8 48.8954 8.89543 48 10 48H14C15.1046 48 16 48.8954 16 50V80H8V50Z" fill="white"/>
+</clipPath>
+<clipPath id="clip1_430_18805">
+<path d="M18.9092 20C18.9092 18.8954 19.8046 18 20.9092 18H24.9092C26.0137 18 26.9092 18.8954 26.9092 20V80H18.9092V20Z" fill="white"/>
+</clipPath>
+<clipPath id="clip2_430_18805">
+<path d="M29.8184 23C29.8184 21.8954 30.7138 21 31.8184 21H35.8184C36.9229 21 37.8184 21.8954 37.8184 23V80H29.8184V23Z" fill="white"/>
+</clipPath>
+<clipPath id="clip3_430_18805">
+<path d="M40.7271 39C40.7271 37.8954 41.6225 37 42.7271 37H46.7271C47.8316 37 48.7271 37.8954 48.7271 39V80H40.7271V39Z" fill="white"/>
+</clipPath>
+<clipPath id="clip4_430_18805">
+<path d="M51.6362 26C51.6362 24.8954 52.5317 24 53.6362 24H57.6362C58.7408 24 59.6362 24.8954 59.6362 26V80H51.6362V26Z" fill="white"/>
+</clipPath>
+<clipPath id="clip5_430_18805">
+<path d="M62.5454 64C62.5454 62.8954 63.4408 62 64.5454 62H68.5454C69.65 62 70.5454 62.8954 70.5454 64V80H62.5454V64Z" fill="white"/>
+</clipPath>
+<clipPath id="clip6_430_18805">
+<path d="M73.4546 20C73.4546 18.8954 74.35 18 75.4546 18H79.4546C80.5592 18 81.4546 18.8954 81.4546 20V80H73.4546V20Z" fill="white"/>
+</clipPath>
+<clipPath id="clip7_430_18805">
+<path d="M84.3638 33C84.3638 31.8954 85.2592 31 86.3638 31H90.3638C91.4683 31 92.3638 31.8954 92.3638 33V80H84.3638V33Z" fill="white"/>
+</clipPath>
+<clipPath id="clip8_430_18805">
+<path d="M95.2729 20C95.2729 18.8954 96.1684 18 97.2729 18H101.273C102.378 18 103.273 18.8954 103.273 20V80H95.2729V20Z" fill="white"/>
+</clipPath>
+<clipPath id="clip9_430_18805">
+<path d="M106.182 56C106.182 54.8954 107.077 54 108.182 54H112.182C113.286 54 114.182 54.8954 114.182 56V80H106.182V56Z" fill="white"/>
+</clipPath>
+<clipPath id="clip10_430_18805">
+<path d="M117.091 20C117.091 18.8954 117.986 18 119.091 18H123.091C124.195 18 125.091 18.8954 125.091 20V80H117.091V20Z" fill="white"/>
+</clipPath>
+<clipPath id="clip11_430_18805">
+<path d="M128 56C128 54.8954 128.895 54 130 54H134C135.105 54 136 54.8954 136 56V80H128V56Z" fill="white"/>
+</clipPath>
+</defs>
 </svg>
