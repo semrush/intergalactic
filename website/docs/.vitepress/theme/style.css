@@ -440,7 +440,8 @@ td {
 
 .vp-doc h2 {
   border-top: none;
-  margin: 24px 0 16px;
+  margin: 32px 0 16px;
+  padding-top: 0;
 }
 
 .embedded-video-container {
@@ -620,6 +621,10 @@ img {
   background-color: var(--vp-c-bg-elv);
 }
 
+.vp-doc h3 {
+  margin: 24px 0 16px 0;
+}
+
 .vp-doc a[class]:hover {
   color: inherit;
 }
@@ -644,6 +649,12 @@ img {
 
 .shiki.github-dark {
   background-color: #0C0E13 !important;
+}
+
+.vp-doc .custom-block {
+  margin: 24px 0;
+  font-size: var(--intergalactic-fs-300) !important;
+  line-height: var(--intergalactic-lh-300);
 }
 
 .custom-block.tip a,

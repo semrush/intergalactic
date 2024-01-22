@@ -11,13 +11,14 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 Table: Keyboard support
 
-| Key                      | Function                                       |
-| ------------------------ | ---------------------------------------------- |
-| `Tab` | Moves focus to the next focusable element.     |
+| Key                      | Function                          |
+| ------------------------ | --------------------------------- |
+| `Tab` | Moves focus to the next focusable element.           |
 | `Shift+Tab` | Moves focus to the previous focusable element. |
-| `Space` | Select the focused object and start dragging.  |
-| `Space` (while dragging) | Stop dragging.                                 |
-| `Esc` | Discard dragging.                              |
+| `Space` | Selects the focused object and start dragging.      |
+| `↓`, `↑`, `←`, `→` arrow keys | Move the focused object in the direction indicated by the key.  |
+| `Space` (while dragging) | Stops dragging.                    |
+| `Esc` | Discards dragging.                                    |
 
 ### Roles & attributes
 

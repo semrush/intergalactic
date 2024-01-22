@@ -1,12 +1,10 @@
 ---
-title: D3 chart principles
+title: D3 chart
 fileSource: d3-chart
 tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
-:::
+## Description
 
 These components serve as the base for building charts from your data in the product.
 
@@ -508,7 +506,7 @@ const data = Array(20)
 
 ## Chart legend
 
-See [Chart legend](/data-display/chart-legend/chart-legend) for a guide on how to implement a clickable chart legend.
+Refer to [Chart legend](/data-display/chart-legend/chart-legend), for a guide on how to implement a clickable chart legend.
 
 ::: sandbox
 

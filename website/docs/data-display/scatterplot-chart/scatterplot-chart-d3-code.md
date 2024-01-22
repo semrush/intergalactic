@@ -5,7 +5,7 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
