@@ -582,6 +582,12 @@ const group = {
     disabled: true,
     type: 'charts',
   },
+  radialtree: {
+    title: 'Radial Tree chart',
+    route: '/intergalactic/data-display/radial-tree-chart/radial-tree-chart',
+    disabled: true,
+    type: 'charts',
+  },
 };
 
 const cardsStyle = {

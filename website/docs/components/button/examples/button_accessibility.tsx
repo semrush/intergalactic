@@ -6,10 +6,8 @@ import CloseM from '@semcore/ui/icon/Close/m';
 const Demo = () => {
   return (
     <>
-      <Button addonLeft={CloseM} aria-label='Close' />
-      <Button ml={2} aria-label='Confirm'>
-        <CheckM />
-      </Button>
+      <Button addonLeft={CheckM} aria-label='Confirm action' mr={2} />
+      <Button addonLeft={CloseM} aria-label='Close notification' />
     </>
   );
 };
