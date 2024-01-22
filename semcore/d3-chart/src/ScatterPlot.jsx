@@ -6,7 +6,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT } from './utils';
 import Tooltip from './Tooltip';
-import { Pattern } from './Pattern';
+import { PatternFill } from './Pattern';
 
 import style from './style/scatterplot.shadow.css';
 
@@ -99,7 +99,7 @@ class ScatterPlotRoot extends Component {
           transparent={transparent}
         />
         {patterns && (
-          <Pattern
+          <PatternFill
             id={`${uid}-${i}-pattern`}
             patternKey={color}
             color={resolveColor(color)}

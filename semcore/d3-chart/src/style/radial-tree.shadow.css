@@ -22,6 +22,10 @@ SCap {
   transition: r 0.1s;
 }
 
+SCap[pattern] {
+  fill: var(--pattern);
+}
+
 SCap[transparent] {
   opacity: 0.3;
 }

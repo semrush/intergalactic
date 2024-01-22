@@ -13,7 +13,7 @@ import {
   interpolateValue,
 } from './utils';
 import AnimatedClipPath from './AnimatedClipPath';
-import { Pattern } from './Pattern';
+import { PatternFill } from './Pattern';
 
 import style from './style/area.shadow.css';
 
@@ -134,7 +134,7 @@ class AreaRoot extends Component {
         />
         {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
         {patterns && (
-          <Pattern
+          <PatternFill
             id={`${uid}-pattern`}
             patternKey={color}
             color={resolveColor(color)}

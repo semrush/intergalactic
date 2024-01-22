@@ -14,6 +14,7 @@ import {
 } from './LegendItem.type';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { PatternSymbol } from '../../../Pattern';
+import { getChartDefaultColorName } from '../../../utils';
 
 class LegendItemRoot extends Component<
   LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
@@ -120,7 +121,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     shape,
     checked,
     color,
-    patternKey,
+    patternKey = getChartDefaultColorName(0),
     Children,
     children: hasChildren,
     onKeyUp,

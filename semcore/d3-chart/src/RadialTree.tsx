@@ -6,9 +6,9 @@ import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createElement from './createElement';
-import { measureText } from './utils';
+import { getChartDefaultColorName, measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
-import { PatternSymbol } from './Pattern';
+import { PatternFill, PatternSymbol, PatternsConfig, getPatternSymbolSize } from './Pattern';
 
 import style from './style/radial-tree.shadow.css';
 
@@ -432,6 +432,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       resolveColor,
       transparent,
       patterns,
+      uid: `${uid}-cap-${index}`,
       ['data-radial-animation']: `${uid}-cap-circle`,
       ['data-radian-index']: index,
     } as IRadialTreeRadianCapProps;
@@ -652,28 +653,54 @@ export type RadialTreeRadianCapProps = {
 };
 
 type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
-  Element: React.FC<{ render: string; transparent: boolean } & React.SVGProps<any>>;
+  Element: React.FC<
+    {
+      render: React.FC<any> | string;
+      transparent: boolean;
+      solidCircle?: boolean;
+      patternKey?: string;
+    } & React.SVGProps<any>
+  >;
   styles: React.CSSProperties;
   resolveColor: (color?: string) => string;
+  patterns?: PatternsConfig;
 };
 const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   Element: SCap,
   styles,
-  x,
-  y,
+  x = 0,
+  y = 0,
   radius,
   color,
   resolveColor,
   transparent,
   patterns,
 }) => {
+  if (!patterns) {
+    return sstyled(styles)(
+      <SCap
+        render='circle'
+        cx={x}
+        cy={y}
+        r={radius}
+        fill={resolveColor(color)}
+        transparent={transparent!}
+      />,
+    ) as React.ReactElement;
+  }
+
+  const patternKey = color || getChartDefaultColorName(0);
+  const [width, height] = getPatternSymbolSize({
+    patternKey,
+    patterns,
+  });
+
   return sstyled(styles)(
     <SCap
       render={PatternSymbol}
-      solidCircle={!patterns}
       patternKey={color}
-      x={x - 5}
-      y={y - 5}
+      x={x - (width || 0) / 2}
+      y={y - (height || 0) / 2}
       fill={resolveColor(color)}
       transparent={transparent!}
     />,

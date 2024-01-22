@@ -5,7 +5,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import AnimatedClipPath from './AnimatedClipPath';
 import { scaleToBand, roundedPath } from './utils';
-import { Pattern } from './Pattern';
+import { PatternFill } from './Pattern';
 
 import style from './style/bar.shadow.css';
 
@@ -135,7 +135,7 @@ class BarRoot extends Component {
           />,
         )}
         {patterns && (
-          <Pattern
+          <PatternFill
             id={`${uid}-${i}-pattern`}
             patternKey={color}
             color={resolveColor(color)}

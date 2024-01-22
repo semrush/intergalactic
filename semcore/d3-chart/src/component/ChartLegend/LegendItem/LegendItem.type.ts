@@ -3,6 +3,7 @@ import { Intergalactic, Root } from '@semcore/core';
 import Icon from '@semcore/icon';
 import { Text } from '@semcore/typography';
 import { LSize } from '../BaseLegend.type';
+import { PatternsConfig } from '../../../Pattern';
 
 /**
  * Key of chart data item
@@ -34,6 +35,10 @@ export type LegendItem = {
    * Additional info with sub-label or count
    */
   additionalInfo?: { label: string } | { count: number };
+
+  patternKey?: string;
+
+  patterns?: PatternsConfig;
 };
 
 export type LegendItemProps = LegendItem & {
@@ -50,6 +55,8 @@ export type LegendItemProps = LegendItem & {
    * !Need to redefine onClick, because we don't have `event` in it.
    */
   onClick: () => void;
+
+  patterns?: PatternsConfig;
 };
 
 export type ShapeProps = LegendItem & {

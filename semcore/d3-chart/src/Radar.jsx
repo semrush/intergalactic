@@ -9,7 +9,7 @@ import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
 import { CONSTANT, eventToPoint, getChartDefaultColorName, measureText } from './utils';
 import Tooltip from './Tooltip';
-import { Pattern, PatternSymbol } from './Pattern';
+import { PatternFill, PatternSymbol } from './Pattern';
 
 import style from './style/radar.shadow.css';
 
@@ -295,7 +295,7 @@ class PolygonRoot extends Component {
           />,
         )}
         {patterns && (
-          <Pattern
+          <PatternFill
             id={`${uid}-pattern`}
             patternKey={color}
             color={resolveColor(fill || color)}

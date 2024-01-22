@@ -7,7 +7,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT, measureText } from './utils';
 import Tooltip from './Tooltip';
-import { Pattern } from './Pattern';
+import { PatternFill } from './Pattern';
 
 import style from './style/bubble.shadow.css';
 
@@ -135,7 +135,7 @@ class BubbleRoot extends Component {
           transparent={transparent}
         />
         {patterns && (
-          <Pattern
+          <PatternFill
             id={`${uid}-${i}-pattern`}
             patternKey={d[color]}
             color={resolveColor(d[color])}

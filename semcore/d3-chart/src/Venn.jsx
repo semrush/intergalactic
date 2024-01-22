@@ -6,7 +6,7 @@ import { FadeInOut } from '@semcore/animation';
 import createElement from './createElement';
 import { CONSTANT, getChartDefaultColorName } from './utils';
 import Tooltip from './Tooltip';
-import { Pattern } from './Pattern';
+import { PatternFill } from './Pattern';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/venn.shadow.css';
@@ -147,7 +147,14 @@ function Circle({
           use:duration={`${duration}ms`}
         />,
       )}
-      {patterns && <Pattern id={`${uid}-pattern`} patternKey={color} color={resolveColor(color)} />}
+      {patterns && (
+        <PatternFill
+          id={`${uid}-pattern`}
+          patternKey={color}
+          color={resolveColor(color)}
+          patterns={patterns}
+        />
+      )}
     </>
   );
 }

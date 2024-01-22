@@ -3,7 +3,7 @@ import React from 'react';
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
-import { eventToPoint, invert, interpolateValue } from './utils';
+import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 
 import style from './style/dot.shadow.css';
 import { PatternSymbol, getPatternSymbolSize } from './Pattern';
@@ -98,17 +98,20 @@ function Dots(props) {
     //     />,
     //   ),
     // );
+    const patternKey = color || getChartDefaultColorName(0);
     const [width, height] = getPatternSymbolSize({
-      patternKey: color,
+      patternKey,
       patterns,
     });
+
     acc.push(
       sstyled(styles)(
         <SDot
           render={PatternSymbol}
           solidCircle={!patterns}
           color={resolveColor(color)}
-          patternKey={color}
+          patternKey={patternKey}
+          patterns={patterns}
           key={`${i}`}
           visible={visible}
           active={active}
