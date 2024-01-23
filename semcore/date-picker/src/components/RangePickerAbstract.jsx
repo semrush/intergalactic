@@ -12,6 +12,7 @@ import includesDate from '../utils/includesDate';
 import style from '../style/date-picker.shadow.css';
 
 const INTERACTION_TAGS = ['INPUT'];
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
 
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
@@ -50,14 +51,11 @@ class RangePickerAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  popperRef = React.createRef();
+
   navigateStep;
   keyDiff;
   keyStep;
-
-  state = {
-    // To remove after removing button trigger
-    defaultInteraction: 'focus',
-  };
 
   uncontrolledProps() {
     return {
@@ -66,17 +64,20 @@ class RangePickerAbstract extends Component {
         null,
         (visible) => {
           const { value, displayedPeriod } = this.asProps;
+          const endDate = getEndDate(value ?? undefined);
 
           if (!visible) {
             this.handlers.highlighted([]);
             this.handlers.preselectedValue([]);
-            this.handlers.displayedPeriod(
-              getEndDate(value ?? undefined) || this.props.defaultDisplayedPeriod,
-            );
           }
 
-          if (visible && value && value !== displayedPeriod) {
-            this.handlers.displayedPeriod(getEndDate(value));
+          if (visible) {
+            if (endDate && endDate !== displayedPeriod) {
+              this.handlers.displayedPeriod(endDate);
+            } else if (!endDate) {
+              const { displayedPeriod, defaultDisplayedPeriod } = this.props;
+              this.handlers.displayedPeriod(displayedPeriod || defaultDisplayedPeriod);
+            }
           }
         },
       ],
@@ -100,10 +101,25 @@ class RangePickerAbstract extends Component {
 
   bindHandlerNavigateClick = (direction) => () => this.navigateView(direction);
 
-  handlerKeyDown = (e) => {
+  handlerKeyDown = (place) => (e) => {
+    const { displayedPeriod, highlighted, preselectedValue, visible } = this.asProps;
+    const key = e.code;
+
+    if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
+      e.stopPropagation();
+      this.handlers.visible(!visible);
+
+      setTimeout(() => {
+        const popper = this.popperRef.current;
+
+        if (popper) {
+          popper.focus();
+        }
+      }, 0);
+    }
+
     if (e.target !== e.currentTarget) return;
-    const { displayedPeriod, highlighted, preselectedValue } = this.asProps;
-    const day = this.keyDiff[e.code];
+    const day = this.keyDiff[key];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
       const [left_period, right_period] = next_highlighted;
@@ -125,7 +141,7 @@ class RangePickerAbstract extends Component {
       return displayedPeriod;
     };
 
-    if (e.code === 'Space' && highlighted.length) {
+    if (place === 'popper' && e.code === 'Space' && highlighted.length) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
@@ -197,19 +213,13 @@ class RangePickerAbstract extends Component {
     return [];
   }
 
-  setDefaultInteractionToClick = () => {
-    if (this.state.defaultInteraction === 'click') return;
-    this.setState({ defaultInteraction: 'click' });
-  };
-
   getButtonTriggerProps() {
     const { value, size } = this.asProps;
 
     return {
       size,
       empty: !value[0] && !value[1],
-      onKeyDown: this.handlerKeyDown,
-      setDefaultInteractionToClick: this.setDefaultInteractionToClick,
+      onKeyDown: this.handlerKeyDown('trigger'),
     };
   }
 
@@ -226,7 +236,8 @@ class RangePickerAbstract extends Component {
 
     return {
       tabIndex: 0,
-      onKeyDown: this.handlerKeyDown,
+      ref: this.popperRef,
+      onKeyDown: this.handlerKeyDown('popper'),
       children: (
         <>
           <Flex>
@@ -359,7 +370,6 @@ class RangePickerAbstract extends Component {
 
   render() {
     const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
-    const { defaultInteraction } = this.state;
 
     return (
       <>
@@ -367,7 +377,7 @@ class RangePickerAbstract extends Component {
           <Root
             render={Dropdown}
             use:aria-label={providedAriaLabel}
-            interaction={defaultInteraction}
+            interaction={'click'}
             __excludeProps={['onChange', 'value']}
           >
             <Children />
