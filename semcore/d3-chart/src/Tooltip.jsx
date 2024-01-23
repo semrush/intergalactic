@@ -160,15 +160,21 @@ function Dot(props) {
   }
   const SDotGroup = Root;
   const SDot = Box;
+  const SDotCircle = Box;
   return sstyled(styles)(
     <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
-      <SDot>
-        <PatternSymbol
-          color={resolveColor(color ?? defaultColor)}
-          patternKey={color ?? defaultColor}
-          solidCircle={!patterns}
-        />
-      </SDot>
+      {patterns ? (
+        <SDot>
+          <PatternSymbol
+            color={resolveColor(color ?? defaultColor)}
+            patternKey={color ?? defaultColor}
+          />
+        </SDot>
+      ) : (
+        <SDot>
+          <SDotCircle color={resolveColor(color ?? defaultColor)} />
+        </SDot>
+      )}
       <Children />
     </SDotGroup>,
   );

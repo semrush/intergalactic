@@ -172,6 +172,7 @@ const Demo = () => {
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
+          patterns
         />
         <Plot
           data={data}
@@ -179,6 +180,7 @@ const Demo = () => {
           width={width}
           height={height}
           dataHints={dataHints}
+          patterns
         >
           <YAxis>
             <YAxis.Ticks />

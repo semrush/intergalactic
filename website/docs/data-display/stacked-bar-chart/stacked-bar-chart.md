@@ -51,8 +51,8 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
-  };
     patterns,
+  };
 
   if (showLegend) {
     chartProps.legendProps = legendProps;

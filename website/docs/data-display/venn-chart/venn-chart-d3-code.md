@@ -253,8 +253,8 @@ const legendItems = [
 const Demo = () => {
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Line'} />
-      <Plot height={300} width={400} data={data}>
+      <ChartLegend items={legendItems} shape={'Line'} patterns />
+      <Plot height={300} width={400} data={data} patterns>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />
           <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />

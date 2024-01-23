@@ -13,6 +13,8 @@ SBar[color] {
 
 SBar[pattern] {
   fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 0.5px;
 }
 
 SBar[hide] {

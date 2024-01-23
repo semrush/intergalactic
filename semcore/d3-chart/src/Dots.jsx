@@ -104,25 +104,45 @@ function Dots(props) {
       patterns,
     });
 
-    acc.push(
-      sstyled(styles)(
-        <SDot
-          render={PatternSymbol}
-          solidCircle={!patterns}
-          color={resolveColor(color)}
-          patternKey={patternKey}
-          patterns={patterns}
-          key={`${i}`}
-          visible={visible}
-          active={active}
-          hide={hide}
-          transparent={transparent}
-          x={d3.x()(d) - width / 2}
-          y={d3.y()(d) - height / 2}
-          radius={radius}
-        />,
-      ),
-    );
+    if (!patterns) {
+      acc.push(
+        sstyled(styles)(
+          <SDot
+            render='circle'
+            color={resolveColor(color)}
+            patternKey={patternKey}
+            patterns={patterns}
+            key={`${i}`}
+            visible={visible}
+            active={active}
+            hide={hide}
+            transparent={transparent}
+            cx={d3.x()(d)}
+            cy={d3.y()(d)}
+            r={radius}
+          />,
+        ),
+      );
+    } else {
+      acc.push(
+        sstyled(styles)(
+          <SDot
+            render={PatternSymbol}
+            color={resolveColor(color)}
+            patternKey={patternKey}
+            patterns={patterns}
+            key={`${i}`}
+            visible={visible}
+            active={active}
+            hide={hide}
+            transparent={transparent}
+            x={d3.x()(d) - width / 2}
+            y={d3.y()(d) - height / 2}
+            radius={radius}
+          />,
+        ),
+      );
+    }
     // acc.push(<PatternSymbol color={resolveColor(color)} patternKey={color} />);
     return acc;
   }, []);

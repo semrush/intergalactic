@@ -11,6 +11,8 @@ SPie[color] {
 
 SPie[pattern] {
   fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 0.5px;
 }
 
 SPie[transparent] {

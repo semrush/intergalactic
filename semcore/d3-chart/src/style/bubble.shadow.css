@@ -20,6 +20,8 @@ SBubble[color] {
 
 SBubble[pattern] {
   fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 0.5px;
 }
 
 SBubble[transparent] {

@@ -9,7 +9,7 @@ import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
 import { CONSTANT, eventToPoint, getChartDefaultColorName, measureText } from './utils';
 import Tooltip from './Tooltip';
-import { PatternFill, PatternSymbol } from './Pattern';
+import { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';
 
 import style from './style/radar.shadow.css';
 
@@ -337,16 +337,36 @@ function PolygonDots(props) {
     const radius = scale(value);
     props.dataHintsHandler.describeGroupedValues(categoryKey, `${categoryKey}.${i}`);
     const [cx, cy] = getRadianPosition(i, radius, data.length, angleOffset);
+
+    if (!patterns) {
+      return sstyled(styles)(
+        <SPolygonDot
+          render='circle'
+          color={resolveColor(color)}
+          transparent={transparent}
+          patternKey={color}
+          key={`${i}`}
+          cx={cx}
+          cy={cy}
+        />,
+      );
+    }
+
+    const patternKey = color || getChartDefaultColorName(0);
+    const [width, height] = getPatternSymbolSize({
+      patternKey,
+      patterns,
+    });
+
     return sstyled(styles)(
       <SPolygonDot
         render={PatternSymbol}
-        solidCircle={!patterns}
         color={resolveColor(color)}
         transparent={transparent}
         patternKey={color}
         key={`${i}`}
-        x={cx - 5}
-        y={cy - 5}
+        x={cx - width / 2}
+        y={cy - height / 2}
       />,
     );
   });

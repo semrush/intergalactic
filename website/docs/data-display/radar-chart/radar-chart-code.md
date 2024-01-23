@@ -553,8 +553,8 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Square'} />
-      <Plot data={data} width={width} height={height}>
+      <ChartLegend items={legendItems} shape={'Square'} patterns />
+      <Plot data={data} width={width} height={height} patterns>
         <Radar scale={scale}>
           <Radar.Axis dataKey='categories'>
             <Radar.Axis.Ticks />

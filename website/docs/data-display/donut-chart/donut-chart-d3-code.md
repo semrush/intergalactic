@@ -49,7 +49,7 @@ import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   return (
-    <Plot width={300} height={300} data={data}>
+    <Plot width={300} height={300} data={data} patterns>
       <Donut innerRadius={100}>
         <Donut.Pie dataKey='a' name='Pie 1' />
         <Donut.Pie dataKey='b' name='Pie 2' />

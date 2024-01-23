@@ -218,13 +218,14 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Circle'} />
+      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Circle'} patterns />
       <Plot
         data={data}
         scale={[xScale, yScale]}
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns
       >
         <YAxis>
           <YAxis.Ticks />

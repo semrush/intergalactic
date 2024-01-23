@@ -657,7 +657,6 @@ type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
     {
       render: React.FC<any> | string;
       transparent: boolean;
-      solidCircle?: boolean;
       patternKey?: string;
     } & React.SVGProps<any>
   >;

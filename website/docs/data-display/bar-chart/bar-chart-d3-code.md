@@ -547,6 +547,7 @@ const Demo = () => {
         onChangeVisibleItem={handleChangeVisible}
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
+        patterns
       />
       <Plot
         data={data}
@@ -554,6 +555,7 @@ const Demo = () => {
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns
       >
         <YAxis>
           <YAxis.Ticks />

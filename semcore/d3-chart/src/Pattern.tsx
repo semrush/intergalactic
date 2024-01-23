@@ -1,4 +1,5 @@
 import React from 'react';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 export type Pattern = {
   fill: {
@@ -601,13 +602,10 @@ export const PatternFill = ({
 export const getPatternSymbolSize = ({
   patternKey,
   patterns,
-  solidCircle,
 }: {
   patternKey: string;
   patterns?: PatternsConfig;
-  solidCircle?: boolean;
 }): [width: number, height: number] => {
-  if (solidCircle) return [10, 10];
   const patternData = getPatternByKey(patternKey, patterns);
   if (!patternData.symbol.size) return [10, 10];
 
@@ -618,22 +616,15 @@ export const PatternSymbol: React.FC<
   {
     color: string;
     patternKey: string;
-    solidCircle?: boolean;
     patterns?: PatternsConfig;
   } & React.ComponentProps<'svg'>
-> = ({ color, patternKey, solidCircle, patterns, ...props }) => {
+> = ({ color, patternKey, patterns, ...props }) => {
   const DefaultSymbol = React.useMemo(() => {
-    let children: React.ReactNode = <circle cx='5' cy='5' r='5' />;
-    let viewBox = '0 0 10 10';
-    let width = 18;
-    let height = 18;
-    if (!solidCircle) {
-      const patternData = getPatternByKey(patternKey, patterns);
-      children = patternData.symbol.children;
-      viewBox = patternData.symbol.viewBox;
-      width = patternData.symbol.size[0];
-      height = patternData.symbol.size[1];
-    }
+    const patternData = getPatternByKey(patternKey, patterns);
+    const children = patternData.symbol.children;
+    const viewBox = patternData.symbol.viewBox;
+    const width = patternData.symbol.size[0];
+    const height = patternData.symbol.size[1];
     return (props: React.ComponentProps<'svg'>) => (
       <svg
         fill={color}
@@ -643,12 +634,12 @@ export const PatternSymbol: React.FC<
         height={height}
         viewBox={viewBox}
         strokeWidth='1'
-        {...props}
+        {...propsForElement(props, 'svg')}
       >
         {children}
       </svg>
     );
-  }, [patternKey, solidCircle]);
+  }, [patternKey]);
 
   return <DefaultSymbol {...props} />;
 };

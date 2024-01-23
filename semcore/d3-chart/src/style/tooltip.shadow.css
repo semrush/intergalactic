@@ -26,6 +26,13 @@ SDot {
   margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
+SDotCircle[color] {
+  background-color: var(--color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
 
 SFooter {
   background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);

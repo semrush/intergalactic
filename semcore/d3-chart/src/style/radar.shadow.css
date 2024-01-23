@@ -41,6 +41,8 @@ SPolygon[color] {
 
 SPolygon[pattern] {
   fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 0.5px;
 }
 
 SPolygonDot {
