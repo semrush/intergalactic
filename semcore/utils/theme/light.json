@@ -2285,7 +2285,7 @@
         "border": {
           "value": "{gray.white}",
           "type": "color",
-          "description": "Border of the dot that appears on the chart grid when hovered over."
+          "description": "Border for distinguishing data sets and chart dots on the chart grid."
         }
       },
       "x-axis-accent": {
