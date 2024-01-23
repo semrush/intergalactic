@@ -5,12 +5,12 @@ h4 {
 .field {
   display: flex;
   margin-bottom: var(--intergalactic-spacing-4x);
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
 .label {
-  flex: 0 0 100px;
+  flex: 0 0 72px;
 }
 
 .control {
