@@ -40,6 +40,7 @@
     "@semcore/input-number",
     "@semcore/input-tags",
     "@semcore/link",
+    "@semcore/mini-chart",
     "@semcore/modal",
     "@semcore/neighbor-location",
     "@semcore/notice",
