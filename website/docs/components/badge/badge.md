@@ -18,7 +18,7 @@ const Preview = (preview) => {
     key: 'color',
     defaultValue: 'white',
     label: 'Color',
-    options: ['white', 'gray-800'],
+    options: ['text-primary-invert', 'text-primary'],
   });
 
   const bg = select({
@@ -82,7 +82,7 @@ Every badge can be inverted like this:
 
 ![](static/inverted.png)
 
-Use `--gray-white` color for the background and `--gray-800` for the text color.
+Use `--gray-white` color for the background and `--text-primary` for the text color.
 
 ## Feature status
 

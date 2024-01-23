@@ -112,15 +112,17 @@ Table: Chart dot styles
 
 | Appearance        | Styles   |
 | ----------------- | -------- |
-| ![](static/tooltip-4.png) ![](static/tooltip-2.png) | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`. |
-| ![](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
-| ![](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--chart-grid-bar-chart-hover`                                           |
+| ![](static/tooltip-4.png) ![](static/tooltip-2.png) | Default dot size is `12px * 12px`. The dot's size in hovered state is `16px * 16px`. |
+| ![](static/tooltip-1.png)                                                                | Color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
+| ![](static/tooltip-3.png)                                                                | Background color for hovering bar charts is `--chart-grid-bar-chart-hover`.                                           |
 
 ## Legend
 
 Legend explains chart data and can act as filters. For detailed information, refer to [Chart legend](/data-display/chart-legend/chart-legend).
 
 ## Chart widget anatomy
+
+![](static/heading.png)
 
 In our design system, data is typically placed within a [Card](/components/card/card), which consists of the `Card.Header` and `Card.Body`.
 
@@ -142,19 +144,17 @@ In our design system, data is typically placed within a [Card](/components/card/
 The presence of optional elements depends on the specific interface case.
 :::
 
-### Card header
-
-#### Title
+### Chart title
 
 Every chart needs a clear title. If the title is far from the chart, ensure clear margins. Make titles clickable and use an `Info` icon for additional details.
 
-![chart-heading](static/heading.png)
+![](static/heading.png)
 
 For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches [link styles](/components/link/link).
 
-#### Description
+### Chart description
 
-**The header may contain a description text.** Typically, this text provides information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
+**The card header may contain a description text.** Typically, this text provides information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
 
 ![](static/subtitle.png)
 
