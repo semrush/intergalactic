@@ -2850,6 +2850,9 @@ importers:
       '@semcore/link':
         specifier: 5.18.0
         version: link:../link
+      '@semcore/mini-chart':
+        specifier: 0.3.0
+        version: link:../mini-chart
       '@semcore/modal':
         specifier: 4.25.0
         version: link:../modal

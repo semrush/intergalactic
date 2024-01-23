@@ -1,3 +1,9 @@
+## [15.52.0] - 2024-01-23
+
+### @semcore/mini-chart
+
+- **Added** New component
+
 ## [15.51.0] - 2024-01-19
 
 ### @semcore/outside-click
