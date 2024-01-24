@@ -10,6 +10,7 @@ import style from '../style/date-picker.shadow.css';
 import includesDate from '../utils/includesDate';
 
 const INTERACTION_TAGS = ['INPUT'];
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
 
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
@@ -38,22 +39,15 @@ class PickerAbstract extends Component {
     return dayjs(date).subtract(amount, unit).toDate();
   };
 
+  popperRef = React.createRef();
+
   navigateStep;
   keyDiff;
   keyStep;
 
-  state = {
-    // To remove after removing button trigger
-    defaultInteraction: 'focus',
-  };
   uncontrolledProps() {
     return {
-      displayedPeriod: [
-        null,
-        () => {
-          this.handlers.visible(true);
-        },
-      ],
+      displayedPeriod: null,
       visible: [
         null,
         (visible) => {
@@ -61,11 +55,15 @@ class PickerAbstract extends Component {
 
           if (!visible) {
             this.handlers.highlighted([]);
-            this.handlers.displayedPeriod(value || this.props.defaultDisplayedPeriod);
           }
 
-          if (visible && value && value !== displayedPeriod) {
-            this.handlers.displayedPeriod(value);
+          if (visible) {
+            if (value && value !== displayedPeriod) {
+              this.handlers.displayedPeriod(value);
+            } else if (!value) {
+              const { displayedPeriod, defaultDisplayedPeriod } = this.props;
+              this.handlers.displayedPeriod(displayedPeriod || defaultDisplayedPeriod);
+            }
           }
         },
       ],
@@ -93,9 +91,24 @@ class PickerAbstract extends Component {
     this.navigateView(direction);
   };
 
-  handlerKeyDown = (e) => {
+  handlerKeyDown = (place) => (e) => {
+    const { value, displayedPeriod, highlighted, disabled: _disabled, visible } = this.asProps;
+    const key = e.code;
+
+    if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
+      e.stopPropagation();
+      this.handlers.visible(!visible);
+
+      setTimeout(() => {
+        const popper = this.popperRef.current;
+
+        if (popper) {
+          popper.focus();
+        }
+      }, 0);
+    }
+
     if (e.target !== e.currentTarget) return;
-    const { value, displayedPeriod, highlighted, disabled: _disabled } = this.asProps;
     const day = this.keyDiff[e.code];
 
     const getCurrentHighlightedDay = (day) => {
@@ -104,7 +117,7 @@ class PickerAbstract extends Component {
       return isDisabledDay ? null : current_day;
     };
 
-    if (e.key === 'Space' || (e.key === 'Enter' && highlighted.length)) {
+    if (place === 'popper' && (e.key === 'Space' || (e.key === 'Enter' && highlighted.length))) {
       this.handlers.value(highlighted[0]);
       e.preventDefault();
     }
@@ -126,19 +139,13 @@ class PickerAbstract extends Component {
     }
   };
 
-  setDefaultInteractionToClick = () => {
-    if (this.state.defaultInteraction === 'click') return;
-    this.setState({ defaultInteraction: 'click' });
-  };
-
   getButtonTriggerProps() {
     const { value, size } = this.asProps;
 
     return {
       size,
       empty: !value,
-      onKeyDown: this.handlerKeyDown,
-      setDefaultInteractionToClick: this.setDefaultInteractionToClick,
+      onKeyDown: this.handlerKeyDown('trigger'),
     };
   }
 
@@ -146,7 +153,8 @@ class PickerAbstract extends Component {
     const Picker = this[CORE_INSTANCE];
     return {
       tabIndex: 0,
-      onKeyDown: this.handlerKeyDown,
+      ref: this.popperRef,
+      onKeyDown: this.handlerKeyDown('popper'),
       children: (
         <>
           <Picker.Header />
@@ -204,7 +212,6 @@ class PickerAbstract extends Component {
 
   render() {
     const { styles, Children, 'aria-label': providedAriaLabel } = this.asProps;
-    const { defaultInteraction } = this.state;
 
     return (
       <>
@@ -212,7 +219,6 @@ class PickerAbstract extends Component {
           <Root
             render={Dropdown}
             use:aria-label={providedAriaLabel}
-            interaction={defaultInteraction}
             __excludeProps={['onChange', 'value']}
           >
             <Children />
