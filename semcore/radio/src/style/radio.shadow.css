@@ -2,14 +2,14 @@ SRadio {
   display: inline-flex;
   align-items: flex-start;
   cursor: pointer;
+
+  SText {
+    margin-left: var(--intergalactic-spacing-2x, 8px);
+    color: var(--intergalactic-text-primary, #191b23);
+  }
 }
 SRadio[disabled] {
   pointer-events: none;
-}
-
-SText {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SText[size='m'] {
