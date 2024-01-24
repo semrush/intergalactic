@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.19.1] - 2024-01-24
+
+### Changed
+
+- css selector specify to prevent rare edge case bug.
+
 ## [4.19.0] - 2024-01-19
 
 ### Changed
