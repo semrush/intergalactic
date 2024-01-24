@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.25.1] - 2024-01-24
 
-### Added
+### Changed
 
-- Specific css selector for `Title` component.
+- css selector specify to prevent rare edge case bug.
 
 ## [4.25.0] - 2024-01-19
 

@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [6.19.1] - 2024-01-24
 
-### Added
+### Changed
 
-- Specific css selector for `Text` component.
+- css selector specify to prevent rare edge case bug.
 
 ## [6.19.0] - 2024-01-19
 
