@@ -18,13 +18,11 @@ SLine[transparent] {
 }
 
 SCap {
-  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   transition: r 0.1s;
 }
 
 SCap[pattern] {
-  fill: var(--pattern);
-  stroke: var(--color);
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 0.5px;
 }
 

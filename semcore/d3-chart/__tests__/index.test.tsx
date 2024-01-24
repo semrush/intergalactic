@@ -31,6 +31,7 @@ import {
   ChartLegend,
   ChartLegendTable,
   makeDataHintsContainer,
+  Chart,
   // @ts-ignore
 } from '../src';
 import { getIndexFromData } from '../src/utils';
@@ -2488,7 +2489,9 @@ describe('d3 charts visual regression', () => {
 
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
+});
 
+describe('focus handling', () => {
   test.concurrent('should correctly select next focusable element', async ({ expect }) => {
     const data = Array(20)
       .fill({})
@@ -2536,5 +2539,119 @@ describe('d3 charts visual regression', () => {
     await userEvent.keyboard('[Enter]');
 
     expect(getByTestId('focusableElement')).toHaveFocus();
+  });
+});
+
+describe('patterns rendering', () => {
+  const linearData = [
+    { x: 0, y: 5 },
+    { x: 1, y: 1 },
+    { x: 2, y: 6 },
+    { x: 3, y: 1 },
+    { x: 4, y: 6 },
+    { x: 5, y: 8 },
+    { x: 6, y: 6 },
+    { x: 7, y: 9 },
+    { x: 8, y: 3 },
+    { x: 9, y: 9 },
+  ];
+
+  const compareData = {
+    a: 1,
+    b: 2,
+    c: 3,
+  };
+
+  const cloudData = [
+    { x: 7, y: 5, value: 5 },
+    { x: 3, y: 7, value: 1 },
+    { x: 8, y: 9, value: 6 },
+    { x: 1, y: 3, value: 1 },
+    { x: 4, y: 5, value: 6 },
+    { x: 10, y: 3, value: 8 },
+    { x: 7, y: 8, value: 6 },
+    { x: 7, y: 5, value: 9 },
+    { x: 10, y: 9, value: 3 },
+    { x: 2, y: 2, value: 9 },
+  ];
+
+  const radarData = {
+    categories: ['a', 'b', 'c', 'd', 'e'],
+    a: [7, 3, 8, 1, 4],
+    b: [5, 7, 9, 3, 5],
+  };
+
+  test.concurrent('Chart.Area', async ({ task }) => {
+    const Component = () => (
+      <Chart.Area
+        data={linearData}
+        groupKey='x'
+        plotHeight={200}
+        plotWidth={300}
+        showDots={true}
+        stacked={false}
+        showXAxis={false}
+        patterns
+      />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Chart.Bar', async ({ task }) => {
+    const Component = () => (
+      <Chart.Bar
+        data={linearData}
+        groupKey='x'
+        plotHeight={200}
+        plotWidth={300}
+        showXAxis={false}
+        patterns
+      />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Chart.Bubble', async ({ task }) => {
+    const Component = () => (
+      <Chart.Bubble data={cloudData} plotHeight={200} plotWidth={300} showXAxis={false} patterns />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Chart.Donut', async ({ task }) => {
+    const Component = () => (
+      <Chart.Donut data={compareData} plotHeight={200} plotWidth={300} showXAxis={false} patterns />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Chart.Radar', async ({ task }) => {
+    const Component = () => (
+      <Chart.Radar
+        data={radarData}
+        groupKey='categories'
+        plotHeight={200}
+        plotWidth={300}
+        showDots={true}
+        showXAxis={false}
+        patterns
+      />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Chart.ScatterPlot', async ({ task }) => {
+    const Component = () => (
+      <Chart.ScatterPlot
+        data={cloudData}
+        groupKey='x'
+        plotHeight={200}
+        plotWidth={300}
+        showXAxis={false}
+        patterns
+      />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });

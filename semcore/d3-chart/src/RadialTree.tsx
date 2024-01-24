@@ -702,6 +702,7 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
       y={y - (height || 0) / 2}
       fill={resolveColor(color)}
       transparent={transparent!}
+      pattern
     />,
   ) as React.ReactElement;
 };
