@@ -1,12 +1,32 @@
 ## [15.52.0] - 2024-01-23
 
+### @semcore/checkbox
+
+- **Changed** css selector specify to prevent rare edge case bug.
+
 ### @semcore/date-picker
 
 - **Changed** interaction with component - it'll open with `Enter`, `Space`, `ArrowDown` or `mouse click`.
 
+### @semcore/errors
+
+- **Changed** css selector specify to prevent rare edge case bug.
+
+### @semcore/inline-input
+
+- **Changed** css selector specify to prevent rare edge case bug.
+
 ### @semcore/mini-chart
 
 - **Added** MiniChart component.
+
+### @semcore/modal
+
+- **Changed** css selector specify to prevent rare edge case bug.
+
+### @semcore/radio
+
+- **Changed** css selector specify to prevent rare edge case bug.
 
 ## [15.51.0] - 2024-01-19
 
