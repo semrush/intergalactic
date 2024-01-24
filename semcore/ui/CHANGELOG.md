@@ -1,8 +1,12 @@
 ## [15.52.0] - 2024-01-23
 
+### @semcore/date-picker
+
+- **Changed** interaction with component - it'll open with `Enter`, `Space`, `ArrowDown` or `mouse click`.
+
 ### @semcore/mini-chart
 
-- **Added** New component
+- **Added** MiniChart component.
 
 ## [15.51.0] - 2024-01-19
 

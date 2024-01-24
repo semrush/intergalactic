@@ -2773,7 +2773,7 @@ importers:
         specifier: 4.24.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.24.0
+        specifier: 4.25.0-prerelease.1
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.16.0
