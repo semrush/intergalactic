@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.1] - 2024-01-24
+
+### Added
+
+- Specific css selector for `Title` component.
+
 ## [4.25.0] - 2024-01-19
 
 ### Changed
