@@ -91,9 +91,10 @@ const defaultPatterns = {
       children: (
         <>
           <path
-            fill-rule="evenodd"
-            d="M3 1a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 3a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z"
-            clip-rule="evenodd"/>
+            fillRule='evenodd'
+            d='M3 1a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 3a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z'
+            clipRule='evenodd'
+          />
         </>
       ),
     },
