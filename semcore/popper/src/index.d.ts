@@ -82,6 +82,11 @@ export type PopperProps = OutsideClickProps &
      * Disabled focus trap, autofocus and focus return
      */
     disableEnforceFocus?: boolean;
+    /**
+     * Loops focus inside the popper, when disabled the focus goes through the popper to the next element after the trigger.
+     * @default true
+     */
+    focusLoop?: boolean;
   };
 
 /** @deprecated */

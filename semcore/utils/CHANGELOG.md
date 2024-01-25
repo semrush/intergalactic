@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.19.0] - 2024-01-25
+
+### Changed
+
+- Extended internal focus lock api for more precision control over browser focus.
+
 ## [4.18.0] - 2024-01-19
 
 ### Added
