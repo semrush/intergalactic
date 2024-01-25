@@ -660,11 +660,11 @@ type RadialTreeRadianCapAsProps = RadialTreeRadianCapProps & {
       render: React.FC<any> | string;
       transparent: boolean;
       patternKey?: string;
+      pattern?: boolean;
     } & React.SVGProps<any>
   >;
   styles: React.CSSProperties;
   resolveColor: (color?: string) => string;
-  pattern?: boolean;
 };
 const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   Element: SCap,
