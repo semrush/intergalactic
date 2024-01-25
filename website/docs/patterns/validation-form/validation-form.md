@@ -5,23 +5,25 @@ tabs: Design('validation-form'), A11y('validation-form-a11y'), Example('validati
 
 ## Description
 
-**Validation** refers to the system's process of confirming values entered by the user.
+**Validation** refers to the process of checking if the user's input is correct.
 
 ## How validation works
 
-- In forms and filters, validation can be executed concurrently through `unFocus` and `Submit`. Note: This option is not suitable for forms with limits; use only `Submit` for them.
-- Empty fields (where the user has not entered any value) should not be validated by `unFocus`.
+Input's validation can be performed two ways:
+
+| Validation type | Description | Important notes |
+| --------------- | ----------- | --------------- |
+| By `unFocus`    | Happens right away when user types something in the input and clicks outside it (`unFocus`). Input (or inputs) gets invalid state and become highlighted. When user focuses an invalid input, it shows tooltip with a message what should be fixed. | In this case avoid validating empty fields (where nothing has been typed) right after the user clicks outside them (`unFocus`). |
+| By `submit` | Happens by submitting button (usually at the end of the form). Input (or inputs) gets invalid state and become highlighted. The first invalid input gets focus accompanied by a tooltip with a message what should be fixed. | For this case it's good to keep primary buttons active (not disable them). This way, users won't think the form or filter is broken. |
+
+
+
+If the page is long, focusing on the initial input with an error should scroll the page to it. In such cases, a tooltip providing correction guidance should also be visible.
 
 ::: tip
-Since form validation can be triggered by button clicks, it is advisable not to disable primary buttons. This prevents users from mistakenly thinking that the form or filter is entirely dysfunctional.
-:::
+If the form is long and the first invalid input is focused, the page should scroll to it and show a tooltip with a message what should be fixed.
 
-- Following validation by `unFocus`, erroneous inputs are highlighted. Upon focusing on them, a tooltip emerges, guiding users on necessary adjustments within the form.
-- Post validation via `Submit`, inputs with errors acquire an `invalid` state. Focus, accompanied by a tooltip, is directed towards the first erroneous input.
-- If the page is long, focusing on the initial input with an error should scroll the page to it. In such cases, a tooltip providing correction guidance should also be visible.
-
-::: tip
-The tooltip elucidates why an input receives an invalid state or offers instructions for sending data. Whenever possible, ensure the tooltip is positioned near the input or control and conclude the text with a period.
+The message should explain why the input is invalid or gives steps to fix it. Try to place the message close to the input and end it with a period.
 :::
 
 ### How the invalid state is removed from the input
@@ -33,13 +35,13 @@ If users address inputs with errors out of sequence, all uncorrected inputs will
 
 ## unFocus validation
 
-Where deductions of paid limits and backend complexities are absent, immediate validation can be applied as users complete forms. Utilize this validation approach to facilitate form and filter completion. Displaying correction cues before submitting the form is recommended.
+Where deductions of paid limits and backend complexities are absent, immediate validation can be applied as users complete forms. Use this validation approach to facilitate form and filter completion. Displaying correction cues before submitting the form is recommended.
 
 ![](static/immediate-validation.png)
 
 ## Appearance
 
-Uniformly, all form elements assume an `invalid` state, marked by a `var(--border-danger-active)` border. When focused, this state triggers a tooltip in the `warning` theme.
+Uniformly, all form elements assume an `invalid` state, marked by a `var(--border-danger-active)` border. When focused, this state triggers a tooltip with the `warning` theme.
 
 ![](./static/checkbox-validation.png)
 
@@ -53,7 +55,7 @@ Uniformly, all form elements assume an `invalid` state, marked by a `var(--borde
 
 ## Notice with error message
 
-For guidance on positioning the error message notice, consult the [Notice guide](/components/notice/notice).
+For guidance on positioning the error message notice, refer to the [Notice](/components/notice/notice).
 
 ## Validation messages
 
