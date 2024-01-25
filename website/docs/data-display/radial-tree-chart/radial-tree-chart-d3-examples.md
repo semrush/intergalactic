@@ -47,7 +47,7 @@ const Demo = () => {
 
 :::
 
-## Multicolor and symbol for dots
+## Multicolor and accessibility
 
 Pass color in data to specify radians color. You also can enable `patterns` property to show different symbols for different values.
 

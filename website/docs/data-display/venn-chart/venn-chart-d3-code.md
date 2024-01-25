@@ -204,6 +204,8 @@ const data = {
 
 ## Legend and pattern fill
 
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -253,7 +255,7 @@ const legendItems = [
 const Demo = () => {
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Circle'} patterns />
+      <ChartLegend items={legendItems} patterns/>
       <Plot height={300} width={400} data={data} patterns>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />

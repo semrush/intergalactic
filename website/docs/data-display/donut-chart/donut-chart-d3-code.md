@@ -268,7 +268,9 @@ const data = {
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -332,8 +334,9 @@ const Demo = () => {
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
+          patterns
         />
-        <Plot width={width} height={height} data={data} dataHints={dataHints}>
+        <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
           <Donut innerRadius={height / 2 - 50}>
             {legendItems.map((item, index) => {
               return (

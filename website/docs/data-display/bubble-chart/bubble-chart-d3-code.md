@@ -176,6 +176,8 @@ const Demo = () => (
 
 ## Legend and pattern fill
 
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -218,7 +220,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Circle'} patterns />
+      <ChartLegend dataHints={dataHints} items={legendItems} patterns/>
       <Plot
         data={data}
         scale={[xScale, yScale]}

@@ -471,6 +471,8 @@ const data = Array(10)
 
 ## Legend and pattern fill
 
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+
 ::: sandbox
 
 <script lang="tsx">
