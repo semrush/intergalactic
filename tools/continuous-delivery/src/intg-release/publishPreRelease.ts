@@ -10,7 +10,17 @@ import { updateExternalDeps } from './updateExternalDeps';
 const git = Git();
 const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
+export const CI_AUTHOR_NAME = 'semrush-ci-whale';
+
 const publishPreRelease = async () => {
+  const logResult = await git.log();
+
+  if (logResult.latest?.author_name === 'CI_AUTHOR') {
+    log('Skip prerelease form CI commit');
+
+    process.exit();
+  }
+
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
