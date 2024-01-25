@@ -1,3 +1,9 @@
+## [15.52.2] - 2024-01-25
+
+### @semcore/d3-chart
+
+- **Fixed** array index out-of-bounds crash and animation glitch at 0 duration
+
 ## [15.52.0] - 2024-01-23
 
 ### @semcore/checkbox
