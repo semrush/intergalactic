@@ -304,7 +304,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 

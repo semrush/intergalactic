@@ -202,7 +202,7 @@ const data = {
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 
@@ -253,7 +253,7 @@ const legendItems = [
 const Demo = () => {
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Line'} patterns />
+      <ChartLegend items={legendItems} shape={'Circle'} patterns />
       <Plot height={300} width={400} data={data} patterns>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />

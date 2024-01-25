@@ -336,7 +336,7 @@ const data = [
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 
@@ -405,6 +405,7 @@ const Demo = () => {
         dataHints={dataHints}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
+        patterns
       />
       <Plot
         data={data}

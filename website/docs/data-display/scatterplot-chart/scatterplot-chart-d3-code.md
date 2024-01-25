@@ -216,7 +216,7 @@ const data = Array(20)
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 
@@ -251,8 +251,8 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Square'} />
-      <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
+      <ChartLegend items={legendItems} shape={'Circle'} />
+      <Plot scale={[xScale, yScale]} width={width} height={height} data={data} patterns={true}>
         <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />

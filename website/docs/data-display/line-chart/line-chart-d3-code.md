@@ -420,7 +420,7 @@ const data = Array(20)
 
 :::
 
-## Legend
+## Legend and symbols for dots
 
 ::: sandbox
 

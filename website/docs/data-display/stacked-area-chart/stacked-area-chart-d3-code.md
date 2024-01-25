@@ -261,7 +261,7 @@ const data = [
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 
@@ -297,9 +297,9 @@ const lineColors = {
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
-  const MARGIN = 40;
+  const MARGIN = 28;
   const width = 500;
-  const height = 300;
+  const height = 260;
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
@@ -322,13 +322,14 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Square'} />
+      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Checkbox'} patterns/>
       <Plot
         data={data}
         scale={[xScale, yScale]}
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns={true}
       >
         <YAxis>
           <YAxis.Ticks />

@@ -536,7 +536,7 @@ const data = {
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 
@@ -577,13 +577,13 @@ const Demo = () => {
 const legendItems: LegendItem[] = [
   {
     id: 'data_1',
-    label: 'Some label for 1',
+    label: 'Label for 1',
     checked: true,
     color: colors['orange-04'],
   },
   {
     id: 'data_2',
-    label: 'label for 2',
+    label: 'Label for 2',
     checked: true,
     color: colors['violet-04'],
   },

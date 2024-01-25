@@ -174,7 +174,7 @@ const Demo = () => (
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 

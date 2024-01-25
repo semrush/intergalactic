@@ -19,7 +19,7 @@ SScatterPlot[color] {
 SScatterPlot[pattern] {
   fill: var(--pattern);
   stroke: var(--color);
-  stroke-width: 0.5px;
+  stroke-width: 1px;
 }
 
 SScatterPlot[transparent] {

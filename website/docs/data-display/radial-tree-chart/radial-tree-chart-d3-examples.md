@@ -8,7 +8,7 @@ tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tr
 For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
 :::
 
-## Radial Tree
+## Basic usage
 
 ::: sandbox
 
@@ -47,9 +47,9 @@ const Demo = () => {
 
 :::
 
-## Multicolor
+## Multicolor and symbol for dots
 
-Pass color in data to specify radians color.
+Pass color in data to specify radians color. You also can enable `patterns` property to show different symbols for different values.
 
 ::: sandbox
 

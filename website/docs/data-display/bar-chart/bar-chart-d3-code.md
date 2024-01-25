@@ -469,7 +469,7 @@ const data = Array(10)
 
 :::
 
-## Legend
+## Legend and pattern fill
 
 ::: sandbox
 
