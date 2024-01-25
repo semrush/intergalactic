@@ -115,6 +115,7 @@ class LegendItemRoot extends Component<
 
 function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabelElement>) {
   const SPointShape = Root;
+  const SPatternSymbol = PatternSymbol;
   const {
     styles,
     size,
@@ -136,13 +137,13 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
   if (shape === 'Pattern') {
     return sstyled(styles)(
       <Box mr={1}>
-        <PatternSymbol color={color} patternKey={patternKey} />
+        <SPatternSymbol color={color} patternKey={patternKey} />
       </Box>,
     );
   }
 
   if (shape === 'Checkbox') {
-    return (
+    return sstyled(styles)(
       <>
         <Checkbox
           size={size}
@@ -153,10 +154,10 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
         />
         {patterns && (
           <Box mr={1}>
-            <PatternSymbol color={color} patternKey={patternKey} />
+            <SPatternSymbol color={color} patternKey={patternKey} />
           </Box>
         )}
-      </>
+      </>,
     );
   }
 

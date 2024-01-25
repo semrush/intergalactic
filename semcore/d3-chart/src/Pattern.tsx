@@ -591,6 +591,7 @@ const defaultPatternsList = Object.values(defaultPatterns);
 const patternsKeysOrderCache = new WeakMap();
 patternsKeysOrderCache.set(defaultPatternsList, []);
 const resolvePatternIndex = (patternKey: string, patterns: Pattern[]) => {
+  if (typeof patterns !== 'object') return 0;
   if (!patternsKeysOrderCache.has(patterns)) {
     patternsKeysOrderCache.set(patterns, []);
   }
@@ -658,7 +659,7 @@ export const getPatternSymbolSize = ({
   patterns?: PatternsConfig;
 }): [width: number, height: number] => {
   const patternData = resolvePattern(patternKey, patterns);
-  if (!patternData.symbol.size) return [10, 10];
+  if (!patternData?.symbol?.size) return [10, 10];
 
   return patternData.symbol.size;
 };
@@ -672,10 +673,10 @@ export const PatternSymbol: React.FC<
 > = ({ color, patternKey, patterns, ...props }) => {
   const DefaultSymbol = React.useMemo(() => {
     const patternData = resolvePattern(patternKey, patterns);
-    const children = patternData.symbol.children;
-    const viewBox = patternData.symbol.viewBox;
-    const width = patternData.symbol.size[0];
-    const height = patternData.symbol.size[1];
+    const children = patternData?.symbol.children;
+    const viewBox = patternData?.symbol.viewBox;
+    const width = patternData?.symbol.size[0];
+    const height = patternData?.symbol.size[1];
     return (props: React.ComponentProps<'svg'>) => (
       <svg
         fill={color}
