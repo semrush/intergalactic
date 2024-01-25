@@ -38,6 +38,7 @@ export type LegendItem = {
 
   patternKey?: string;
 
+  /** Enables patterns symbols that enhances charts accessability */
   patterns?: PatternsConfig;
 };
 
@@ -56,6 +57,7 @@ export type LegendItemProps = LegendItem & {
    */
   onClick: () => void;
 
+  /** Enables patterns symbols that enhances charts accessability */
   patterns?: PatternsConfig;
 };
 

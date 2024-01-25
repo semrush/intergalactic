@@ -169,12 +169,6 @@ class RadarRoot extends Component {
     };
   }
 
-  // getTooltipProps() {
-  //   const { patterns } = this.asProps;
-
-  //   return { patterns };
-  // }
-
   getHoverProps() {
     return {
       type: this.asProps.type,

@@ -78,26 +78,7 @@ function Dots(props) {
     const radius = radiusBase * (active ? 8 / 6 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
-    // acc.push(
-    //   sstyled(styles)(
-    //     <SDot
-    //       aria-hidden
-    //       key={`${i}`}
-    //       render='circle'
-    //       visible={visible}
-    //       __excludeProps={EXCLUDE_PROPS}
-    //       value={d}
-    //       index={i}
-    //       cx={d3.x()(d)}
-    //       cy={d3.y()(d)}
-    //       active={active}
-    //       hide={hide}
-    //       color={resolveColor(color)}
-    //       transparent={transparent}
-    //       radius={radius}
-    //     />,
-    //   ),
-    // );
+
     const patternKey = color || getChartDefaultColorName(0);
     const [width, height] = getPatternSymbolSize({
       patternKey,

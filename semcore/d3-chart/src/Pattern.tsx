@@ -540,12 +540,29 @@ const defaultPatterns = {
 } satisfies Record<string, Pattern>;
 
 const defaultPatternsList = Object.values(defaultPatterns);
-const patternsSync = new WeakMap();
-patternsSync.set(defaultPatternsList, []);
+/**
+ * Patterns list cache is a weak map based
+ * cache that allows simmilar colors (when color is used as a pattern key)
+ * to be rendered with the same pattern.
+ */
+const patternsKeysOrderCache = new WeakMap();
+patternsKeysOrderCache.set(defaultPatternsList, []);
+const resolvePatternIndex = (patternKey: string, patterns: Pattern[]) => {
+  if (!patternsKeysOrderCache.has(patterns)) {
+    patternsKeysOrderCache.set(patterns, []);
+  }
+  const patternsKeysCachedList = patternsKeysOrderCache.get(patterns);
+  let index = patternsKeysCachedList.indexOf(patternKey);
+  if (index === -1) {
+    index = patternsKeysCachedList.length;
+    patternsKeysCachedList.push(patternKey);
+  }
+  return index;
+};
 
 export type PatternsConfig = true | keyof typeof defaultPatterns | Pattern | Pattern[];
 
-const getPatternByKey = (patternKey: string, patternsConfig: PatternsConfig = true) => {
+const resolvePattern = (patternKey: string, patternsConfig: PatternsConfig = true): Pattern => {
   if (typeof patternsConfig === 'object' && patternsConfig && !Array.isArray(patternsConfig))
     return patternsConfig;
   if (typeof patternsConfig === 'string') {
@@ -559,16 +576,8 @@ const getPatternByKey = (patternKey: string, patternsConfig: PatternsConfig = tr
   }
   const patterns = patternsConfig === true ? defaultPatternsList : patternsConfig;
 
-  if (!patternsSync.has(patterns)) {
-    patternsSync.set(patterns, []);
-  }
-  const patternsSyncList = patternsSync.get(patterns);
-  let index = patternsSyncList.indexOf(patternKey);
-  if (index === -1) {
-    index = patternsSyncList.length;
-    patternsSyncList.push(patternKey);
-  }
-  const patternIndex = index % patterns.length;
+  let patternIndex = resolvePatternIndex(patternKey, patterns);
+  patternIndex = patternIndex % patterns.length;
   return patterns[patternIndex];
 };
 export const PatternFill = ({
@@ -578,7 +587,7 @@ export const PatternFill = ({
   patterns = defaultPatternsList,
 }: { id: string; color: string; patternKey: string; patterns?: PatternsConfig }) => {
   const DefaultPattern = React.useMemo(() => {
-    const { fill } = getPatternByKey(patternKey, patterns);
+    const { fill } = resolvePattern(patternKey, patterns);
     return () => (
       <pattern
         id={id}
@@ -605,7 +614,7 @@ export const getPatternSymbolSize = ({
   patternKey: string;
   patterns?: PatternsConfig;
 }): [width: number, height: number] => {
-  const patternData = getPatternByKey(patternKey, patterns);
+  const patternData = resolvePattern(patternKey, patterns);
   if (!patternData.symbol.size) return [10, 10];
 
   return patternData.symbol.size;
@@ -619,7 +628,7 @@ export const PatternSymbol: React.FC<
   } & React.ComponentProps<'svg'>
 > = ({ color, patternKey, patterns, ...props }) => {
   const DefaultSymbol = React.useMemo(() => {
-    const patternData = getPatternByKey(patternKey, patterns);
+    const patternData = resolvePattern(patternKey, patterns);
     const children = patternData.symbol.children;
     const viewBox = patternData.symbol.viewBox;
     const width = patternData.symbol.size[0];

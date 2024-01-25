@@ -33,5 +33,6 @@ export type LegendProps = BoxProps &
      */
     items: LegendItem[];
 
+    /** Enables charts patterns on  rendering that enhances charts accessability */
     patterns?: PatternsConfig;
   };

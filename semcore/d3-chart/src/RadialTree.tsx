@@ -650,9 +650,11 @@ export type RadialTreeRadianCapProps = {
   transparent?: boolean;
   ['data-radial-animation']?: `${string}-cap-circle`;
   ['data-radian-index']?: number;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
-type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
+type RadialTreeRadianCapAsProps = RadialTreeRadianCapProps & {
   Element: React.FC<
     {
       render: React.FC<any> | string;
@@ -662,7 +664,7 @@ type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
   >;
   styles: React.CSSProperties;
   resolveColor: (color?: string) => string;
-  patterns?: PatternsConfig;
+  pattern?: boolean;
 };
 const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   Element: SCap,

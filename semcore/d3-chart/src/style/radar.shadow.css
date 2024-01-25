@@ -39,7 +39,7 @@ SPolygon[color] {
   fill: var(--color);
 }
 
-SPolygon[pattern] {
+SPolygon[pattern][color] {
   fill: var(--pattern);
   stroke: var(--color);
   stroke-width: 1px;

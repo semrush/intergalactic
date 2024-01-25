@@ -18,7 +18,7 @@ SBubble[color] {
   fill: var(--color);
 }
 
-SBubble[pattern] {
+SBubble[pattern][color] {
   fill: var(--pattern);
   stroke: var(--color);
   stroke-width: 1px;

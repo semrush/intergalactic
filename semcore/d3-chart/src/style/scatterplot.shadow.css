@@ -16,7 +16,7 @@ SScatterPlot[color] {
   fill: var(--color);
 }
 
-SScatterPlot[pattern] {
+SScatterPlot[pattern][color] {
   fill: var(--pattern);
   stroke: var(--color);
   stroke-width: 1px;
