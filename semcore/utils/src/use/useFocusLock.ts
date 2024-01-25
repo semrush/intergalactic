@@ -31,12 +31,11 @@ const safeMoveFocusInside: typeof moveFocusInside = (...args) => {
   return moveFocusInside(...args);
 };
 if (canUseDOM()) {
-  document.addEventListener('keydown', () => {
-    lastUserAction = Date.now();
-  });
-  document.addEventListener('mousedown', () => {
-    lastUserAction = Date.now();
-  });
+  const saveLastUserActionTime = (event: Event) => {
+    if (event.isTrusted) lastUserAction = Date.now();
+  };
+  document.addEventListener('keydown', saveLastUserActionTime);
+  document.addEventListener('mousedown', saveLastUserActionTime);
 }
 
 const focusBordersConsumers = new Set();
@@ -148,6 +147,11 @@ const useUniqueIdHookMock = (React: ReactT) => {
   useEnhancedEffect(noop, []);
 };
 
+export type FocusLockFocusEven = Event & {
+  relatedTarget?: HTMLElement | undefined;
+  target?: HTMLElement | undefined;
+};
+
 const useFocusLockHook = (
   React: ReactT,
   trapRef: React.RefObject<HTMLElement>,
@@ -155,6 +159,7 @@ const useFocusLockHook = (
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
+  handleFocusOut?: (event: FocusLockFocusEven) => void,
 ) => {
   useFocusBorders(React, disabled);
 
@@ -162,7 +167,7 @@ const useFocusLockHook = (
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
   const handleFocusIn = React.useCallback(
-    (event: Event & { relatedTarget?: HTMLElement; target?: HTMLElement }) => {
+    (event: FocusLockFocusEven) => {
       const focusCameFrom = event.relatedTarget;
       setTimeout(() => {
         if (!focusCameFrom) return;
@@ -181,10 +186,11 @@ const useFocusLockHook = (
 
         if (focusCameFrom) {
           safeMoveFocusInside(trapRef.current, focusCameFrom);
+          handleFocusOut?.(event);
         }
       });
     },
-    [],
+    [handleFocusOut],
   );
   const handleMouseEvent = React.useCallback(() => {
     lastUserInteractionRef.current = 'mouse';
@@ -297,9 +303,10 @@ export const useFocusLock = (
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
+  handleFocusOut?: (event: FocusLockFocusEven) => void,
 ) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
+  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster, handleFocusOut);
 };
 
 export const hasFocusableIn = (element: HTMLElement): boolean => {

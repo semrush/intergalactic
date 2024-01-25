@@ -39,6 +39,20 @@ The code below replicates the functionality of the previous example.
 
 :::
 
+
+## With focusable elements
+
+If tooltip contains focusable elements, keyboard focus is navigated throw the popper.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/with_focusable_elements.tsx';
+</script>
+
+:::
+
+
 ## Singleton
 
 You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience.

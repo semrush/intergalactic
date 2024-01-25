@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.18.0] - 2024-01-25
+
+### Added
+
+- `focusLoop` (`true` by default) prop that enabled focus loop inside of the popper. When disabled the focus goes through the popper to the next element after the trigger.
+
 ## [5.17.0] - 2024-01-19
 
 ### Changed
