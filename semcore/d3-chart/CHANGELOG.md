@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- fixed array index out-of-bounds crash and animation glitch at 0 duration
+- array index out-of-bounds crash and animation glitch at 0 duration
 
 ## [3.25.0] - 2024-01-19
 
