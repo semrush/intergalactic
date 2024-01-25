@@ -2581,6 +2581,21 @@ describe('patterns rendering', () => {
     b: [5, 7, 9, 3, 5],
   };
 
+  test.concurrent('Chart.Line', async ({ task }) => {
+    const Component = () => (
+      <Chart.Line
+        data={linearData}
+        groupKey='x'
+        plotHeight={200}
+        plotWidth={300}
+        showDots={true}
+        showXAxis={false}
+        patterns
+      />
+    );
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
   test.concurrent('Chart.Area', async ({ task }) => {
     const Component = () => (
       <Chart.Area

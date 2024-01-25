@@ -1,17 +1,36 @@
 import React from 'react';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 
+/**
+ * Object that is fully describes the pattern
+ */
 export type Pattern = {
+  /**
+   * SVG jsx element and svg viewbox of the SVG pattern
+   * used to fill chart elements such bars or areas
+   */
   fill: {
     viewBox: string;
     children: React.ReactNode;
   };
+  /**
+   * SVG jsx element, viewbox and render size of the single
+   * pattern image used on line dots or caps
+   */
   symbol: {
     viewBox: string;
     size: [width: number, height: number];
     children: React.ReactNode;
   };
+  /**
+   * SVG stroke-dasharray property that defines line chart
+   * lines dash pattern
+   */
+  dasharray?: string;
 };
+
+const defaultDasharrays = ['2 2', '4 4', '8 8', '2 4', '4 8', '8 2', '8 4', '12 4'];
+
 const defaultPatterns = {
   starSmall: {
     fill: {
@@ -31,6 +50,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[0],
   },
   romb: {
     fill: {
@@ -50,6 +70,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[1],
   },
   circleOutline: {
     fill: {
@@ -76,6 +97,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[2],
   },
   triangleDown: {
     fill: {
@@ -95,6 +117,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[3],
   },
   rombOutline: {
     fill: {
@@ -122,6 +145,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[4],
   },
   square: {
     fill: {
@@ -141,6 +165,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[5],
   },
   trees: {
     fill: {
@@ -160,6 +185,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[6],
   },
   wave: {
     fill: {
@@ -183,6 +209,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[7],
   },
   star: {
     fill: {
@@ -202,6 +229,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[0],
   },
   cogwheel: {
     fill: {
@@ -229,6 +257,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[1],
   },
   crossesDiagonal: {
     fill: {
@@ -256,6 +285,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[2],
   },
   triangleOutline: {
     fill: {
@@ -283,6 +313,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[3],
   },
   chain: {
     fill: {
@@ -310,6 +341,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[4],
   },
   squama: {
     fill: {
@@ -329,6 +361,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[5],
   },
   linesDouble: {
     fill: {
@@ -349,6 +382,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[6],
   },
   zigzagVertical: {
     fill: {
@@ -368,6 +402,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[7],
   },
   triangleDownOutline: {
     fill: {
@@ -395,6 +430,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[0],
   },
   crosses: {
     fill: {
@@ -414,6 +450,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[1],
   },
   linesDoubleHorizontal: {
     fill: {
@@ -433,6 +470,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[2],
   },
   waveVertical: {
     fill: {
@@ -456,6 +494,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[3],
   },
   squareOutline: {
     fill: {
@@ -479,6 +518,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[4],
   },
   triangle: {
     fill: {
@@ -498,6 +538,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[5],
   },
   crescent: {
     fill: {
@@ -517,6 +558,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[6],
   },
   zigzag: {
     fill: {
@@ -536,6 +578,7 @@ const defaultPatterns = {
         </>
       ),
     },
+    dasharray: defaultDasharrays[7],
   },
 } satisfies Record<string, Pattern>;
 
@@ -650,4 +693,12 @@ export const PatternSymbol: React.FC<
   }, [patternKey]);
 
   return <DefaultSymbol {...props} />;
+};
+
+export const resolvePatternDasharray = (
+  patternKey: string,
+  patterns: PatternsConfig,
+): string | undefined => {
+  const pattern = resolvePattern(patternKey, patterns);
+  return pattern?.dasharray;
 };
