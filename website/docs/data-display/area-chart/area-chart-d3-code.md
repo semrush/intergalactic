@@ -403,7 +403,7 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLege
+      <ChartLegend
         dataHints={dataHints}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}

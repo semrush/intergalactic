@@ -43,7 +43,7 @@ const defaultPatterns = {
     },
     symbol: {
       viewBox: '0 0 20 20',
-      size: [18, 18],
+      size: [14, 14],
       children: (
         <>
           <path d='M20 10 10 0 0 10l10 10 10-10Z' />
@@ -65,15 +65,14 @@ const defaultPatterns = {
       ),
     },
     symbol: {
-      viewBox: '0 0 20 20',
-      size: [18, 18],
+      viewBox: '0 0 6 6',
+      size: [12, 12],
       children: (
         <>
           <path
-            fillRule='evenodd'
-            d='M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0ZM6 10a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z'
-            clipRule='evenodd'
-          />
+            fill-rule="evenodd"
+            d="M3 1a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 3a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z"
+            clip-rule="evenodd"/>
         </>
       ),
     },

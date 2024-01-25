@@ -390,10 +390,10 @@ const Demo = () => {
           <StackedArea.Area y='1' color={lineColors[1]} curve={curveCardinal}>
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y='2' fill='#59DDAA50' color={lineColors[2]} curve={curveCardinal}>
+          <StackedArea.Area y='2' fill='chart-palette-order-2' color={lineColors[2]} curve={curveCardinal}>
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y='3' fill='#FF622D50' color={lineColors[3]} curve={curveCardinal}>
+          <StackedArea.Area y='3' fill='chart-palette-order-3' color={lineColors[3]} curve={curveCardinal}>
             <StackedArea.Area.Dots />
           </StackedArea.Area>
         </StackedArea>
