@@ -18,12 +18,12 @@ The data table may not look pretty but it is fully accessible for screen readers
 
 Using patterns in charts instead of just colors makes them easier to understand for people who are color-blind or have low vision. Some colors can be hard to differentiate for these users, even if selected thoughtfully and with different contrasts. This can make it hard to read charts. Adding patterns helps everyone see the differences between data sets clearly.
 
-Our charts have properties to enable pattern fills and show symbols (for charts with no area to fill): 
+Our charts feature properties that enable pattern fills for charts with areas to fill, display symbols instead of dots, and convert solid lines to dashed lines for charts without areas to fill:
 
 - `patterns` property for `Plot`
 - `patterns` property `ChartLegend` (works only with `shape={'Checkbox'}`)
 
-![](static/patterns.png) ![](static/symbols.png)
+![](static/patterns.png) ![](static/symbols.png) ![](static/stroke-dasarrays.png)
 
 ## Examples of accessible charts
 
