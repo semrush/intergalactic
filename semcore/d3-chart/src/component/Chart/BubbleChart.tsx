@@ -1,10 +1,15 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { scaleLinear, ScaleLinear } from 'd3-scale';
+import { scaleLinear, ScaleLinear, ScalePower } from 'd3-scale';
 // @ts-ignore
-import { Bubble, minMax } from '../..';
+import { Bubble, getBubbleChartValueScale } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
+import {
+  BubbleChartData,
+  BubbleChartProps,
+  BubbleChartType,
+  ScaledValues,
+} from './BubbleChart.type';
 import { Text } from '@semcore/typography';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
@@ -49,6 +54,33 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     });
   }
 
+  get valueScale(): ScalePower<number, number> {
+    const { data } = this.asProps;
+
+    return getBubbleChartValueScale(data, 'value');
+  }
+
+  get scaledValues(): ScaledValues {
+    const { data, plotWidth, plotHeight } = this.asProps;
+    const values: ScaledValues = { x: [], y: [] };
+
+    const xScale = (plotWidth / plotHeight) * 10;
+    const yScale = xScale * (plotHeight / plotWidth);
+
+    data.forEach((item) => {
+      const x = item.x;
+      const y = item.y;
+      const scaledValue = this.valueScale(item.value);
+
+      values.x.push(x - scaledValue / xScale);
+      values.x.push(x + scaledValue / xScale);
+      values.y.push(y - scaledValue / yScale);
+      values.y.push(y + scaledValue / yScale);
+    });
+
+    return values;
+  }
+
   get xScale() {
     const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
 
@@ -57,9 +89,8 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     }
 
     const range = [marginY, plotWidth - this.plotPadding];
-    const domain = minMax(data, 'x');
 
-    return scaleLinear([domain[0] * 0.8, domain[1] * 1.2], range);
+    return scaleLinear([Math.min(...this.scaledValues.x), Math.max(...this.scaledValues.x)], range);
   }
 
   get yScale(): ScaleLinear<any, any> {
@@ -70,9 +101,8 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     }
 
     const range = [plotHeight - marginX, this.plotPadding];
-    const domain = minMax(data, 'y');
 
-    return scaleLinear([domain[0] * 0.8, domain[1] * 1.2], range);
+    return scaleLinear([Math.min(...this.scaledValues.y), Math.max(...this.scaledValues.y)], range);
   }
 
   defaultLegendProps() {

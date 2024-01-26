@@ -8,6 +8,7 @@ import {
   ScalePoint,
   NumberValue,
   scaleBand,
+  scaleSqrt,
 } from 'd3-scale';
 import React from 'react';
 
@@ -246,4 +247,12 @@ export const getChartDefaultColorName = (index: number) => {
   if (index > 24) index %= 24;
 
   return `chart-palette-order-${index}`;
+};
+
+export const getBubbleChartValueScale = (data: any[], key: string) => {
+  const z = scaleSqrt()
+    .domain([0, Math.max(...data.map((el) => el[key]))])
+    .range([5.5, 50.5]);
+
+  return z;
 };

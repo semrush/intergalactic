@@ -1,11 +1,10 @@
 import React from 'react';
-import { scaleSqrt } from 'd3-scale';
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import { CONSTANT, measureText } from './utils';
+import { getBubbleChartValueScale, CONSTANT, measureText } from './utils';
 import Tooltip from './Tooltip';
 
 import style from './style/bubble.shadow.css';
@@ -36,9 +35,7 @@ class BubbleRoot extends Component {
 
   animationCircle() {
     const { duration, uid, data, value } = this.asProps;
-    const z = scaleSqrt()
-      .domain([0, Math.max(...data.map((el) => el[value]))])
-      .range([5.5, 50.5]);
+    const z = getBubbleChartValueScale(data, value);
 
     const selectRect = transition().selection().selectAll(`[id^=${uid}${uid}]`).attr('r', 0);
 
@@ -84,9 +81,7 @@ class BubbleRoot extends Component {
     const SBubble = this.Element;
     const SCenter = 'text';
     const SLabel = 'text';
-    const z = scaleSqrt()
-      .domain([0, Math.max(...data.map((el) => el[value]))])
-      .range([5.5, 50.5]);
+    const z = getBubbleChartValueScale(data, value);
 
     const margin = Math.min(xScale.range()[0], xScale.range()[1]);
 

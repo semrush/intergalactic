@@ -3,6 +3,11 @@ import { Flex } from '@semcore/flex-box';
 import { ScaleLinear } from 'd3-scale';
 import { BaseChartProps } from './AbstractChart.type';
 
+export type ScaledValues = {
+  x: number[];
+  y: number[];
+};
+
 export type BubbleChartData = Array<{
   x: number;
   y: number;

@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.25.2] - 2024-01-25
+
+### Fixed
+
+- view data in BubbleChart.
+
 ## [3.25.1] - 2024-01-25
 
 ### Fixed
 
-- array index out-of-bounds crash and animation glitch at 0 duration
+- array index out-of-bounds crash and animation glitch at 0 duration.
 
 ## [3.25.0] - 2024-01-19
 
