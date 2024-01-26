@@ -454,7 +454,7 @@ importers:
         specifier: 4.22.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.25.0
+        specifier: 4.25.1
         version: link:../modal
       '@semcore/utils':
         specifier: 4.18.0
@@ -794,7 +794,7 @@ importers:
         specifier: 5.18.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 7.19.0
+        specifier: 7.19.1
         version: link:../checkbox
       '@semcore/core':
         specifier: ^2.15.0
@@ -1347,7 +1347,7 @@ importers:
         specifier: 4.22.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.25.0
+        specifier: 4.25.1
         version: link:../modal
       '@semcore/typography':
         specifier: 5.23.0
@@ -2214,7 +2214,7 @@ importers:
         specifier: 4.22.0
         version: link:../base-trigger
       '@semcore/checkbox':
-        specifier: 7.19.0
+        specifier: 7.19.1
         version: link:../checkbox
       '@semcore/core':
         specifier: ^2.15.0
@@ -2641,7 +2641,7 @@ importers:
         specifier: 4.18.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.24.0
+        specifier: 4.24.1
         version: link:../select
       '@semcore/utils':
         specifier: 4.18.0
@@ -2752,10 +2752,10 @@ importers:
         specifier: 5.22.0
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.25.0
+        specifier: 3.25.1
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 7.19.0
+        specifier: 7.19.1
         version: link:../checkbox
       '@semcore/color-picker':
         specifier: 2.22.0
@@ -2767,13 +2767,13 @@ importers:
         specifier: 3.16.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.25.0
+        specifier: 3.25.1
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 4.24.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.24.0
+        specifier: 4.25.1
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.16.0
@@ -2797,7 +2797,7 @@ importers:
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 4.19.0
+        specifier: 4.19.1
         version: link:../errors
       '@semcore/feature-popover':
         specifier: 4.22.0
@@ -2815,7 +2815,7 @@ importers:
         specifier: 4.16.0
         version: link:../format-text
       '@semcore/fullscreen-modal':
-        specifier: 3.24.0
+        specifier: 3.24.1
         version: link:../fullscreen-modal
       '@semcore/grid':
         specifier: 5.16.0
@@ -2833,7 +2833,7 @@ importers:
         specifier: 4.18.0
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: 4.22.0
+        specifier: 4.22.1
         version: link:../inline-input
       '@semcore/input':
         specifier: 4.18.0
@@ -2850,8 +2850,11 @@ importers:
       '@semcore/link':
         specifier: 5.18.0
         version: link:../link
+      '@semcore/mini-chart':
+        specifier: 0.3.0
+        version: link:../mini-chart
       '@semcore/modal':
-        specifier: 4.25.0
+        specifier: 4.25.1
         version: link:../modal
       '@semcore/neighbor-location':
         specifier: 4.15.0
@@ -2887,13 +2890,13 @@ importers:
         specifier: 4.16.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 6.19.0
+        specifier: 6.19.1
         version: link:../radio
       '@semcore/scroll-area':
         specifier: 5.18.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.24.0
+        specifier: 4.24.1
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.23.0
@@ -2929,7 +2932,7 @@ importers:
         specifier: 5.17.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.24.0
+        specifier: 4.24.1
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.16.0
@@ -2944,7 +2947,7 @@ importers:
         specifier: 4.16.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 2.25.0
+        specifier: 2.25.1
         version: link:../wizard
       react:
         specifier: 16.8 - 18
@@ -3079,7 +3082,7 @@ importers:
         specifier: 4.22.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.25.0
+        specifier: 4.25.1
         version: link:../modal
       '@semcore/utils':
         specifier: 4.18.0

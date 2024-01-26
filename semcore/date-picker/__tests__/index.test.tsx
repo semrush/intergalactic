@@ -240,7 +240,7 @@ describe('DateRangePicker', () => {
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     vi.useFakeTimers();
     const component = (
-      <DateRangePicker visible defaultDisplayedPeriod={'2020-03-10T12:00:00.808Z'}>
+      <DateRangePicker defaultVisible defaultDisplayedPeriod={'2020-03-10T12:00:00.808Z'}>
         <DateRangePicker.ButtonTrigger aria-label='date picker'>
           Date picker
         </DateRangePicker.ButtonTrigger>

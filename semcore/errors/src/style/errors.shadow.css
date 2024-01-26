@@ -10,6 +10,15 @@ SError {
   @media (max-width: 320px) {
     padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-20x, 80px);
   }
+
+  SControls {
+    display: flex;
+    align-items: center;
+
+    &>*:not(:last-child) {
+      margin-right: var(--intergalactic-spacing-3x, 12px);
+    }
+  }
 }
 
 SInner {
@@ -55,13 +64,4 @@ SDescription {
   line-height: var(--intergalactic-lh-300, 150%);
   color: var(--intergalactic-text-primary, #191b23);
   margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
-}
-
-SControls {
-  display: flex;
-  align-items: center;
-
-  &>*:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-3x, 12px);
-  }
 }

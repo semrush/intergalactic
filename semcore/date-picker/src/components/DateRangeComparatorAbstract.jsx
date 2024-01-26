@@ -12,6 +12,7 @@ import { LinkTrigger } from '@semcore/base-trigger';
 
 import style from '../style/date-picker.shadow.css';
 
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
 const getLatestDate = (...dateRanges) => {
@@ -57,6 +58,8 @@ class DateRangeComparatorAbstract extends Component {
   }
 
   static enhance = [i18nEnhance(localizedMessages)];
+
+  popperRef = React.createRef();
 
   getPeriodProps() {
     const {
@@ -126,17 +129,18 @@ class DateRangeComparatorAbstract extends Component {
             this.handlers.preselectedCompare(undefined);
             this.handlers.compareToggle(undefined);
             this.handlers.focusedRange('value');
-            this.handlers.displayedPeriod(
-              getLatestDate(this.asProps.value?.value ?? this.asProps.value?.compare ?? []) ||
-                this.props.defaultDisplayedPeriod,
-            );
           }
 
           const { value, displayedPeriod } = this.asProps;
           const newDisplayedPeriod = value ? getLatestDate(value.value, value.compare) : undefined;
 
-          if (visible && newDisplayedPeriod && newDisplayedPeriod !== displayedPeriod) {
-            this.handlers.displayedPeriod(newDisplayedPeriod);
+          if (visible) {
+            if (newDisplayedPeriod && newDisplayedPeriod !== displayedPeriod) {
+              this.handlers.displayedPeriod(newDisplayedPeriod);
+            } else if (!newDisplayedPeriod) {
+              const { displayedPeriod, defaultDisplayedPeriod } = this.props;
+              this.handlers.displayedPeriod(displayedPeriod || defaultDisplayedPeriod);
+            }
           }
         },
       ],
@@ -176,6 +180,24 @@ class DateRangeComparatorAbstract extends Component {
   handleApply = (value, compare) => {
     this.handlers.value({ value, compare });
     this.handlers.visible(false);
+  };
+
+  handleKeyDown = (e) => {
+    const { visible } = this.asProps;
+    const key = e.code;
+
+    if (INTERACTION_KEYS.includes(key)) {
+      e.stopPropagation();
+      this.handlers.visible(!visible);
+
+      setTimeout(() => {
+        const popper = this.popperRef.current;
+
+        if (popper) {
+          popper.focus();
+        }
+      }, 0);
+    }
   };
 
   getDefaultPeriods() {
@@ -243,6 +265,7 @@ class DateRangeComparatorAbstract extends Component {
       children,
       visible,
       onClick: () => this.handlers.visible(!visible),
+      onKeyDown: this.handleKeyDown,
     };
   }
 
@@ -389,7 +412,10 @@ class DateRangeComparatorAbstract extends Component {
   };
 
   getPopperProps() {
-    return { p: 0 };
+    return {
+      p: 0,
+      ref: this.popperRef,
+    };
   }
 
   render() {

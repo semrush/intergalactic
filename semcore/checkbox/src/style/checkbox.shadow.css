@@ -7,14 +7,14 @@ SLabel {
   &[disabled] {
     cursor: default;
   }
-}
 
-SText {
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-  color: var(--intergalactic-text-primary, #191b23);
+  SText {
+    margin-left: var(--intergalactic-spacing-2x, 8px);
+    color: var(--intergalactic-text-primary, #191b23);
 
-  &[disabled] {
-    opacity: var(--intergalactic-disabled-opacity, 0.3);
+    &[disabled] {
+      opacity: var(--intergalactic-disabled-opacity, 0.3);
+    }
   }
 }
 
