@@ -83,7 +83,7 @@ const styles = `
 
     display: grid;
     grid-template-rows: max-content;
-    grid-template-columns: repeat(auto-fill, 176px);
+    grid-template-columns: repeat(auto-fill, 160px);
     grid-gap: 12px 12px;
     width: 100%;
     margin: 0;
@@ -184,7 +184,7 @@ const styles = `
 
     display: grid;
     grid-template-rows: max-content;
-    grid-template-columns: repeat(auto-fill, 176px);
+    grid-template-columns: repeat(auto-fill, 160px);
     grid-gap: 12px 12px;
     width: 100%;
     margin: 0;
@@ -305,7 +305,7 @@ const styles = `
 
     display: grid;
     grid-template-rows: max-content;
-    grid-template-columns: repeat(auto-fill, 176px);
+    grid-template-columns: repeat(auto-fill, 160px);
     grid-gap: 12px 12px;
     width: 100%;
     margin: 0;
