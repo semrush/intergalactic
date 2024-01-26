@@ -153,7 +153,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           aria-label={label}
         />
         {patterns && (
-          <Box mr={1}>
+          <Box mt={'2px'} mr={1}>
             <SPatternSymbol color={color} patternKey={patternKey} />
           </Box>
         )}

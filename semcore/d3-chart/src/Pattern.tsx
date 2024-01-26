@@ -29,7 +29,7 @@ export type Pattern = {
   dasharray?: string;
 };
 
-const defaultDasharrays = ['2 2', '4 4', '8 8', '2 4', '4 8', '8 2', '8 4', '12 4'];
+const defaultDasharrays = ['4 4', '8 8', '2 4', '4 8', '8 2', '8 4', '12 4', '2 2'];
 
 const defaultPatterns = {
   starSmall: {
@@ -86,13 +86,13 @@ const defaultPatterns = {
       ),
     },
     symbol: {
-      viewBox: '0 0 6 6',
-      size: [12, 12],
+      viewBox: '0 0 10 10',
+      size: [14, 14],
       children: (
         <>
-          <path
+          <path 
             fillRule='evenodd'
-            d='M3 1a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 3a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z'
+            d='M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 5a5 5 0 1 1 10 0A5 5 0 0 1 0 5Z'
             clipRule='evenodd'
           />
         </>

@@ -7,7 +7,7 @@ SDots {
 }
 
 SDot {
-  stroke-width: 2px;
+  stroke-width: 1px;
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   transition-property: cx, cy, x, y;

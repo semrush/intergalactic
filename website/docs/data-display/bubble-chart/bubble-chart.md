@@ -40,7 +40,7 @@ const App = PlaygroundGeneration((preview) => {
     patterns,
   } = chartPlayground({ select, radio, label, bool });
 
-  legendProps.shape = 'Circle';
+  legendProps.shape = 'Checkbox';
 
   const chartProps: BubbleChartProps = {
     data,
