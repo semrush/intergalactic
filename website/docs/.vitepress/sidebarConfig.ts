@@ -1522,7 +1522,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/data-display/d3-chart/d3-chart',
-            text: 'D3 chart principles',
+            text: 'D3 chart',
             collapsed: true,
             items: [
               {

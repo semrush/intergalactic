@@ -5,7 +5,7 @@ tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tr
 ---
 
 ::: tip
-Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
