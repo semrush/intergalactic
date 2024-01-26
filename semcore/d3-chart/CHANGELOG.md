@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - view data in BubbleChart.
+- prevent animation on every rerender.
 
 ## [3.25.1] - 2024-01-25
 

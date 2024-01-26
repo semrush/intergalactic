@@ -50,8 +50,14 @@ class BubbleRoot extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.animationCircle();
+  componentDidUpdate(prevProps) {
+    const { data, x, y, value } = this.asProps;
+    const { x: prevX, y: prevY, value: prevValue } = prevProps;
+    const prevData = prevProps.$rootProps.data;
+
+    if (data !== prevData || x !== prevX || y !== prevY || value !== prevValue) {
+      this.animationCircle();
+    }
   }
 
   componentDidMount() {
@@ -158,7 +164,6 @@ class BubbleRoot extends Component {
     return (
       <>
         {data.map(this.renderCircle.bind(this))}
-        {data.map(this.animationCircle.bind(this))}
         <clipPath aria-hidden id={uid}>
           <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
         </clipPath>
