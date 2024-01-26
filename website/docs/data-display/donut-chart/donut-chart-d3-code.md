@@ -5,7 +5,7 @@ tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), E
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage

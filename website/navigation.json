@@ -2077,7 +2077,7 @@
         "route": "data-display/d3-chart",
         "hasContent": true,
         "filePath": "data-display/d3-chart/d3-chart.md",
-        "title": "D3 chart principles",
+        "title": "D3 chart",
         "children": [
           {
             "route": "data-display/d3-chart/d3-chart-code",

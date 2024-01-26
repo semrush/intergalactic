@@ -5,7 +5,7 @@ tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Horizontal bar
