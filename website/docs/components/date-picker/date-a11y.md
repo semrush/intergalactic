@@ -8,7 +8,7 @@ tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-c
 ## What component has
 
 * If the dropdown with the calendar grid opens, then a current date gets the focus.
-* If a date is selected, the accessible name of the "Select date" button is updated to include the selected date.
+* If a date is selected, the accessible name of the "Date field" input is updated to include the selected date.
 
 ### Keyboard support
 
