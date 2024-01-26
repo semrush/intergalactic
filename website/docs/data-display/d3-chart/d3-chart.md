@@ -120,29 +120,11 @@ Table: Chart dot styles
 
 Legend explains chart data and can act as filters. For detailed information, refer to [Chart legend](/data-display/chart-legend/chart-legend).
 
-## Chart widget anatomy
+## Usage with Card
 
 ![](static/heading.png)
 
 In our design system, data is typically placed within a [Card](/components/card/card), which consists of the `Card.Header` and `Card.Body`.
-
-![widget-scheme](static/widget-paddings.png)
-
-**Card.Header includes:**
-
-   1. Title (`margin-bottom: 8px`)
-   2. Optional additional information below the title (`margin-bottom: 8px`)
-   3. Optional general widget controls (for example, export or view settings)
-
-**Card.Body includes:**
-
-   1. Optional top controls (for example, filters, buttons)
-   2. Chart (`margin-top: 20px`)
-   3. Optional bottom controls (`margin-top: 20px`)
-
-::: tip
-The presence of optional elements depends on the specific interface case.
-:::
 
 ### Chart title
 
@@ -154,7 +136,7 @@ For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--
 
 ### Chart description
 
-**The card header may contain a description text.** Typically, this text provides information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
+You can add a description text to your chart. Typically, such a text can provide information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
 
 ![](static/subtitle.png)
 
