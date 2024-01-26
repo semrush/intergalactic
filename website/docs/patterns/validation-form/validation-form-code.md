@@ -3,7 +3,7 @@ title: Validation
 tabs: Design('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
 ---
 
-## Form validation example
+## Form validation example by `unFocus`
 
 ::: sandbox
 
@@ -34,7 +34,7 @@ class Demo extends React.Component {
         <Form decorators={[this.focusDecorator]} onSubmit={(data) => alert(JSON.stringify(data))}>
           {({ handleSubmit, invalid }) => (
             <form onSubmit={handleSubmit}>
-              <Flex mb={6}>
+              <Flex mb={4}>
                 <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='1 0 auto'>
                   Name
                 </Text>
@@ -102,7 +102,7 @@ class Demo extends React.Component {
                   </Field>
                 </Flex>
               </Flex>
-              <Flex mb={6}>
+              <Flex mb={4}>
                 <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
                   Your email
                 </Text>

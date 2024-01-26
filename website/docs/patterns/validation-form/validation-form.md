@@ -26,22 +26,24 @@ If the form is long and the first invalid input is focused, the page should scro
 The message should explain why the input is invalid or gives steps to fix it. Try to place the message close to the input and end it with a period.
 :::
 
-### How the invalid state is removed from the input
+### How invalid state is removed from input
 
-- If browser-based validation is in play, the `invalid` state can be reset as soon as the input becomes `valid`.
-- For server-based validation, the `invalid` state can be reset each time input data changes.
+- If the browser checks the input, the `invalid` state goes away as soon as the input is correct.
+- If the server checks the input, the `invalid` state goes away each time the input is changed.
 
-If users address inputs with errors out of sequence, all uncorrected inputs will remain highlighted, unless changes are made to them.
+If user fixes inputs in a different order, all inputs that are still invalid will stay marked until they are changed.
 
 ## unFocus validation
 
 Where deductions of paid limits and backend complexities are absent, immediate validation can be applied as users complete forms. Use this validation approach to facilitate form and filter completion. Displaying correction cues before submitting the form is recommended.
 
+Where there's no need to consider limits or complex backend rules, check inputs right away as they are filled out. Use this method to help users complete forms and filters. It's better to show messages on how to correct inputs before user submits the form.
+
 ![](static/immediate-validation.png)
 
 ## Appearance
 
-Uniformly, all form elements assume an `invalid` state, marked by a `var(--border-danger-active)` border. When focused, this state triggers a tooltip with the `warning` theme.
+All form elements show an `invalid` state with a `var(--border-danger-active)` border. When focused, this state should trigger a tooltip with the `warning` theme.
 
 ![](./static/checkbox-validation.png)
 

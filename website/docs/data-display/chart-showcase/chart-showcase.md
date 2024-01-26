@@ -593,7 +593,7 @@ const group = {
 const cardsStyle = {
   display: 'grid',
   gridTemplateRows: 'max-content',
-  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridTemplateColumns: 'repeat(auto-fill, 160px)',
   gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
   width: '100%',
   margin: '0',
