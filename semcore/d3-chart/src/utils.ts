@@ -256,3 +256,7 @@ export const getBubbleChartValueScale = (data: any[], key: string) => {
 
   return z;
 };
+
+export const getScatterPlotRadius = (valueKey?: string): number => {
+  return valueKey !== undefined ? 12 : 5.5;
+};

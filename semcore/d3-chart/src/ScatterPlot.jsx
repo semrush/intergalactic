@@ -4,7 +4,7 @@ import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import { CONSTANT } from './utils';
+import { CONSTANT, getScatterPlotRadius } from './utils';
 import Tooltip from './Tooltip';
 
 import style from './style/scatterplot.shadow.css';
@@ -34,7 +34,7 @@ class ScatterPlotRoot extends Component {
 
   animationCircle() {
     const { duration, uid, r, value } = this.asProps;
-    const radius = r ? r : value ? 12 : 5.5;
+    const radius = r ? r : getScatterPlotRadius(value);
     const selectRect = transition().selection().selectAll(`[id^=${uid}]`).attr('r', 0);
     const selectRectNode = selectRect.node();
 

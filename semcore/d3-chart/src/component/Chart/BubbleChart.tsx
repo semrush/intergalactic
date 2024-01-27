@@ -60,45 +60,22 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     return getBubbleChartValueScale(data, 'value');
   }
 
-  get xValueScale() {
-    const { data, plotWidth, plotHeight } = this.asProps;
-    const xMax = Math.max(...data.map((d) => d.x));
-    const xMin = Math.min(...data.map((d) => d.x));
-
-    const avg = (xMax + xMin) / 2;
-    const count = Math.round(Math.log10(avg));
-
-    const valueScale = 100 / 10 ** count;
-
-    return (plotWidth / plotHeight) * valueScale;
-  }
-
-  get yValueScale() {
-    const { data, plotWidth, plotHeight } = this.asProps;
-    const yMax = Math.max(...data.map((d) => d.y));
-    const yMin = Math.min(...data.map((d) => d.y));
-
-    const avg = (yMax + yMin) / 2;
-    const count = Math.round(Math.log10(avg));
-
-    const valueScale = 100 / 10 ** count;
-
-    return (plotHeight / plotWidth) * valueScale;
-  }
-
   get scaledValues(): ScaledValues {
     const { data, plotWidth, plotHeight } = this.asProps;
     const values: ScaledValues = { x: [], y: [] };
+
+    const xValueScale = (plotWidth / plotHeight) * this.getValueScale(data.map((d) => d.x));
+    const yValueScale = (plotHeight / plotWidth) * this.getValueScale(data.map((d) => d.y));
 
     data.forEach((item) => {
       const x = item.x;
       const y = item.y;
       const scaledValue = this.valueScale(item.value);
 
-      values.x.push(x - scaledValue / this.xValueScale);
-      values.x.push(x + scaledValue / this.xValueScale);
-      values.y.push(y - scaledValue / this.yValueScale);
-      values.y.push(y + scaledValue / this.yValueScale);
+      values.x.push(x - scaledValue / xValueScale);
+      values.x.push(x + scaledValue / xValueScale);
+      values.y.push(y - scaledValue / yValueScale);
+      values.y.push(y + scaledValue / yValueScale);
     });
 
     return values;
