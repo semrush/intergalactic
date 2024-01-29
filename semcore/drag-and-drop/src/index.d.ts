@@ -65,9 +65,9 @@ export type DropZoneProps = BoxProps & {
 
 declare const DragAndDrop: Intergalactic.Component<'div', DragAndDropProps, DragAndDropContext> & {
   Draggable: Intergalactic.Component<'div', DraggableProps>;
-  DropZone: Intergalactic.Component<Box, DropZoneProps>;
+  DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
   /** @deprecated use `DragAndDrop.DropZone` instead */
-  Droppable: Intergalactic.Component<Box, DropZoneProps>;
+  Droppable: Intergalactic.Component<typeof Box, DropZoneProps>;
 };
 
 export default DragAndDrop;
