@@ -16,10 +16,42 @@ test.describe('Accordion', () => {
 
     await expect(page).toHaveScreenshot();
 
+    await page.keyboard.press('Tab');
+
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Space');
+
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Tab');
+
+    await expect(page).toHaveScreenshot();
+
     await page.keyboard.press('Space');
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Handles with keyboard and custom trigger', async ({ page }) => {
+    const standPath = 'website/docs/components/accordion/examples/custom_trigger.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await page.keyboard.press('Tab');
+
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Tab');
+
+    await expect(page).toHaveScreenshot();
+
+    await page.keyboard.press('Space');
+
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Handles with mouse', async ({ page }) => {
     const standPath = 'website/docs/components/accordion/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
