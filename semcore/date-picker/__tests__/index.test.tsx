@@ -333,6 +333,20 @@ describe('DateRangePicker', () => {
     expect(getByText('February 2024')).toBeTruthy();
   });
 
+  test('Should render correctly with empty period', async ({ task, expect }) => {
+    const component = (
+      <DateRangePicker
+        periods={[]}
+        visible
+        disablePortal // only for render popper in test
+        // @ts-ignore
+        __disablePopper // only for render popper in test
+      />
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <DateRangePicker visible disablePortal aria-label='data range picker'>
