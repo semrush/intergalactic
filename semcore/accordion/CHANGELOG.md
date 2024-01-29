@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.21.1] - 2024-01-29
+
+### Changed
+
+- Keyboard focus view for `ItemToggle` with inner custom triggers - disable it if `tabIndex=-1`.
+
 ## [5.21.0] - 2024-01-19
 
 ### Changed

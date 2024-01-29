@@ -42,14 +42,6 @@ test.describe('Accordion', () => {
     await page.keyboard.press('Tab');
 
     await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Tab');
-
-    await expect(page).toHaveScreenshot();
-
-    await page.keyboard.press('Space');
-
-    await expect(page).toHaveScreenshot();
   });
 
   test('Handles with mouse', async ({ page }) => {
