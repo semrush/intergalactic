@@ -2,5 +2,10 @@
   "grabbed": "Ítem {itemText} capturado, la posición actual es {itemPosition} de {itemsCount}",
   "grabbing": "Ítem {itemText} capturado, la posición para soltar es {itemPosition} de {itemsCount}",
   "dropped": "Ítem {itemText} soltado, la posición final es {itemPosition} de {itemsCount}",
+  "grabbedWithZone": "{itemText} capturado, la posición actual es {itemPosition} de {itemsCount} en {zoneName}",
+  "grabbingFullWithZone": "Capturando {itemText}, la posición para soltar es {itemPosition} de {itemsCount} en {zoneName}",
+  "grabbingJustWithZone": "Capturando {itemText}, soltar en {zoneName}",
+  "droppedFullWithZone": "{itemText} soltado, la posición final es {itemPosition} de {itemsCount} en {zoneName}",
+  "droppedJustWithZone": "{itemText} soltado en {zoneName}",
   "discarded": "Se descartó el arrastre"
 }
