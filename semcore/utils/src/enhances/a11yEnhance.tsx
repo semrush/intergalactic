@@ -1,15 +1,25 @@
 import { callAllEventHandlers } from '../assignProps';
 import React from 'react';
 
-const defaultOnNeighborChange = (neighborElement: HTMLElement) => {
-  neighborElement?.focus();
-};
-
-const defaultFindNeighbor = (
+type OnNeighborChange<P> = (neighborElement: HTMLElement, props: P) => void;
+type FindNeighbor = (
   listSelectors: HTMLElement[],
   element: HTMLElement,
   direction: string,
-) => {
+) => HTMLElement | undefined;
+type ChildSelector<P> = [string, string] | ((props: P) => [string, string]);
+
+type A11yEnhanceOptions<P = any> = {
+  findNeighbor?: FindNeighbor;
+  onNeighborChange?: OnNeighborChange<P>;
+  childSelector: ChildSelector<P>;
+};
+
+const defaultOnNeighborChange: OnNeighborChange<any> = (neighborElement) => {
+  neighborElement?.focus();
+};
+
+const defaultFindNeighbor: FindNeighbor = (listSelectors, element, direction) => {
   const elementSibling = ['right', 'top'].includes(direction) ? 1 : -1;
   const indexElement = listSelectors.findIndex((node) => node === element);
   const lengthList = listSelectors.length;
@@ -21,7 +31,7 @@ const defaultFindNeighbor = (
   return listSelectors[indexNext];
 };
 
-const a11yEnhance = (options: { [key: string]: any } = {}) => {
+const a11yEnhance = (options: A11yEnhanceOptions) => {
   const findNeighbor = options.findNeighbor || defaultFindNeighbor;
   const onNeighborChange = options.onNeighborChange || defaultOnNeighborChange;
   const { childSelector } = options;
@@ -36,14 +46,16 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
     ): HTMLElement => {
       const neighbor = findNeighbor(listSelectors, element, direction);
       if (!neighbor) return element;
-      if (neighbor.disabled) return getNeighbor(listSelectors, neighbor, direction);
+      if ('disabled' in neighbor && neighbor.disabled)
+        return getNeighbor(listSelectors, neighbor, direction);
       return neighbor;
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       const parent = event.currentTarget;
       const selectedElement = event.target as HTMLElement;
-      const [childAttrName, childAttrValue] = childSelector;
+      const [childAttrName, childAttrValue] =
+        typeof childSelector === 'function' ? childSelector(props) : childSelector;
       if (!selectedElement.getAttribute(childAttrName)) return;
 
       const listSelectors = Array.from(
