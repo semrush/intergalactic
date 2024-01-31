@@ -9,9 +9,11 @@ import {
   scaleOfBandwidth,
   getNullData,
   interpolateValue,
+  getChartDefaultColorName,
 } from './utils';
 import Dots from './Dots';
 import AnimatedClipPath from './AnimatedClipPath';
+import { resolvePatternDasharray } from './Pattern';
 
 import style from './style/line.shadow.css';
 
@@ -33,7 +35,7 @@ class LineRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, d3, color, resolveColor, duration, transparent } = this.asProps;
+    const { x, y, d3, color, resolveColor, duration, transparent, patterns } = this.asProps;
     return {
       x,
       y,
@@ -42,6 +44,7 @@ class LineRoot extends Component {
       resolveColor,
       duration,
       transparent,
+      patterns,
     };
   }
 
@@ -75,12 +78,26 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, resolveColor, uid, size, d3, duration, x, y, transparent } =
-      this.asProps;
+    const {
+      styles,
+      hide,
+      color,
+      resolveColor,
+      uid,
+      size,
+      d3,
+      duration,
+      x,
+      y,
+      transparent,
+      patterns,
+    } = this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');
+
+    const patternKey = color || getChartDefaultColorName(0);
 
     return sstyled(styles)(
       <>
@@ -93,6 +110,7 @@ class LineRoot extends Component {
           transparent={transparent}
           d={d3(data)}
           use:duration={`${duration}ms`}
+          strokeDasharray={patterns ? resolvePatternDasharray(patternKey, patterns) : undefined}
         />
         {duration && (
           <AnimatedClipPath
@@ -130,6 +148,7 @@ function Area(props) {
     y1,
     curve = curveCardinal,
     area,
+    patterns,
   } = props;
   const [xScale, yScale] = scale;
   const dataToArea = area ?? data;
@@ -149,6 +168,7 @@ function Area(props) {
       color={color}
       d={d3(dataToArea)}
       use:duration={`${duration}ms`}
+      patterns={patterns}
     />,
   );
 }

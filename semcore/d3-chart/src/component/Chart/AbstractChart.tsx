@@ -307,7 +307,7 @@ export abstract class AbstractChart<
   }
 
   protected renderLegend() {
-    const { legendProps, direction, showLegend } = this.asProps;
+    const { legendProps, direction, showLegend, patterns } = this.asProps;
 
     if (
       !showLegend ||
@@ -328,6 +328,7 @@ export abstract class AbstractChart<
       items: dataDefinitions,
       size: lProps.size,
       shape: lProps.shape,
+      patterns,
       direction:
         lProps.direction ?? (direction === 'row' || direction === 'row-reverse' ? 'column' : 'row'),
       onChangeVisibleItem: lProps.disableSelectItems
@@ -407,7 +408,7 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data } = this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns } = this.asProps;
 
     return sstyled(styles)(
       <SChart render={Flex} gap={5}>
@@ -418,6 +419,7 @@ export abstract class AbstractChart<
           width={plotWidth}
           height={plotHeight}
           dataHints={this.dataHints}
+          patterns={patterns}
         >
           {this.renderAxis()}
           {this.renderTooltip()}

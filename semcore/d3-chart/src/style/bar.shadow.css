@@ -11,6 +11,12 @@ SBar[color] {
   fill: var(--color);
 }
 
+SBar[pattern][color] {
+  fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 1px;
+}
+
 SBar[hide] {
   display: none;
 }

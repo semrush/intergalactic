@@ -6,8 +6,9 @@ import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createElement from './createElement';
-import { measureText } from './utils';
+import { getChartDefaultColorName, measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
+import { PatternFill, PatternSymbol, PatternsConfig, getPatternSymbolSize } from './Pattern';
 
 import style from './style/radial-tree.shadow.css';
 
@@ -418,7 +419,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   getCapProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
     const data = $rootProps.data?.[index];
     const { xEnd, yEnd, capSize } = this.computeRadianPosition(data!, index);
-    const { uid, transparent, resolveColor } = this.asProps;
+    const { uid, transparent, resolveColor, patterns } = this.asProps;
     const color = data!.color ?? this.asProps.color;
 
     return {
@@ -430,6 +431,8 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       color,
       resolveColor,
       transparent,
+      patterns,
+      uid: `${uid}-cap-${index}`,
       ['data-radial-animation']: `${uid}-cap-circle`,
       ['data-radian-index']: index,
     } as IRadialTreeRadianCapProps;
@@ -647,31 +650,61 @@ export type RadialTreeRadianCapProps = {
   transparent?: boolean;
   ['data-radial-animation']?: `${string}-cap-circle`;
   ['data-radian-index']?: number;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
-type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
-  Element: React.FC<{ render: string; transparent: boolean } & React.SVGProps<any>>;
+type RadialTreeRadianCapAsProps = RadialTreeRadianCapProps & {
+  Element: React.FC<
+    {
+      render: React.FC<any> | string;
+      transparent: boolean;
+      patternKey?: string;
+      pattern?: boolean;
+    } & React.SVGProps<any>
+  >;
   styles: React.CSSProperties;
   resolveColor: (color?: string) => string;
 };
 const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   Element: SCap,
   styles,
-  x,
-  y,
+  x = 0,
+  y = 0,
   radius,
   color,
   resolveColor,
   transparent,
+  patterns,
 }) => {
+  if (!patterns) {
+    return sstyled(styles)(
+      <SCap
+        render='circle'
+        cx={x}
+        cy={y}
+        r={radius}
+        fill={resolveColor(color)}
+        transparent={transparent!}
+      />,
+    ) as React.ReactElement;
+  }
+
+  const patternKey = color || getChartDefaultColorName(0);
+  const [width, height] = getPatternSymbolSize({
+    patternKey,
+    patterns,
+  });
+
   return sstyled(styles)(
     <SCap
-      render='circle'
-      cx={x}
-      cy={y}
-      r={radius}
+      render={PatternSymbol}
+      patternKey={color}
+      x={x - (width || 0) / 2}
+      y={y - (height || 0) / 2}
       fill={resolveColor(color)}
       transparent={transparent!}
+      pattern
     />,
   ) as React.ReactElement;
 };

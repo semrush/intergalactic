@@ -9,6 +9,7 @@ import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
 import { CONSTANT, eventToPoint, getChartDefaultColorName, measureText } from './utils';
 import Tooltip from './Tooltip';
+import { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';
 
 import style from './style/radar.shadow.css';
 
@@ -155,7 +156,7 @@ class RadarRoot extends Component {
   }
 
   getPolygonProps({ dataKey }, index) {
-    const { data, scale, angleOffset } = this.asProps;
+    const { data, scale, angleOffset, uid, patterns } = this.asProps;
 
     return {
       offset: this.offset,
@@ -163,6 +164,8 @@ class RadarRoot extends Component {
       scale,
       angleOffset,
       color: getChartDefaultColorName(index),
+      uid: `${uid}-${index}`,
+      patterns,
     };
   }
 
@@ -237,6 +240,7 @@ class PolygonRoot extends Component {
       dataKey,
       dataHintsHandler,
       angleOffset,
+      patterns,
     } = this.asProps;
     return {
       data,
@@ -247,6 +251,7 @@ class PolygonRoot extends Component {
       categoryKey: dataKey,
       dataHintsHandler,
       angleOffset,
+      patterns,
     };
   }
 
@@ -262,9 +267,36 @@ class PolygonRoot extends Component {
   }
 
   render() {
-    const { Element: SPolygon, styles, d3, data, color, resolveColor, fill } = this.asProps;
-    return sstyled(styles)(
-      <SPolygon render='path' d={d3(data)} color={resolveColor(fill || color)} />,
+    const {
+      Element: SPolygon,
+      styles,
+      d3,
+      data,
+      color,
+      resolveColor,
+      fill,
+      uid,
+      patterns,
+    } = this.asProps;
+    return (
+      <>
+        {sstyled(styles)(
+          <SPolygon
+            render='path'
+            d={d3(data)}
+            color={resolveColor(fill || color)}
+            pattern={patterns ? `url(#${uid}-pattern)` : undefined}
+          />,
+        )}
+        {patterns && (
+          <PatternFill
+            id={`${uid}-pattern`}
+            patternKey={color}
+            color={resolveColor(fill || color)}
+            patterns={patterns}
+          />
+        )}
+      </>
     );
   }
 }
@@ -292,20 +324,43 @@ function PolygonDots(props) {
     transparent,
     categoryKey,
     angleOffset,
+    patterns,
   } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
     const radius = scale(value);
     props.dataHintsHandler.describeGroupedValues(categoryKey, `${categoryKey}.${i}`);
     const [cx, cy] = getRadianPosition(i, radius, data.length, angleOffset);
+
+    if (!patterns) {
+      return sstyled(styles)(
+        <SPolygonDot
+          render='circle'
+          color={resolveColor(color)}
+          transparent={transparent}
+          patternKey={color}
+          key={`${i}`}
+          cx={cx}
+          cy={cy}
+        />,
+      );
+    }
+
+    const patternKey = color || getChartDefaultColorName(0);
+    const [width, height] = getPatternSymbolSize({
+      patternKey,
+      patterns,
+    });
+
     return sstyled(styles)(
       <SPolygonDot
-        key={i}
-        render='circle'
-        cx={cx}
-        cy={cy}
+        render={PatternSymbol}
         color={resolveColor(color)}
         transparent={transparent}
+        patternKey={color}
+        key={`${i}`}
+        x={cx - width / 2}
+        y={cy - height / 2}
       />,
     );
   });
@@ -523,7 +578,7 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, size, rootRef } = this.asProps;
+    const { eventEmitter, size, rootRef, patterns } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const diam = Math.min(size[0], size[1]);
     const centerX = point[0] - diam / 2;
@@ -543,18 +598,25 @@ class Hover extends Component {
         index,
       },
       () => {
-        eventEmitter.emit('onTooltipVisible', index !== null, {}, { index }, this.virtualElement);
+        eventEmitter.emit(
+          'onTooltipVisible',
+          index !== null,
+          {},
+          { index, patterns },
+          this.virtualElement,
+        );
       },
     );
   });
 
   handlerMouseLeaveRoot = trottle(() => {
+    const { patterns } = this.asProps;
     this.setState(
       {
         index: null,
       },
       () => {
-        this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, { index: null });
+        this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, { index: null, patterns });
       },
     );
   });

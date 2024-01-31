@@ -9,6 +9,12 @@ SPie[color] {
   fill: var(--color);
 }
 
+SPie[pattern][color] {
+  fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 1px;
+}
+
 SPie[transparent] {
   opacity: 0.3;
 }
