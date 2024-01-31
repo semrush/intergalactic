@@ -22,44 +22,44 @@ class Demo extends React.Component {
         <div>
           <Text size={700}>Text</Text>
           <Tooltip title='Awesome hint text'>
-            <InfoL ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+            <InfoL ml='4px' color='gray-300' cursor='help' interactive={true} />
           </Tooltip>
         </div>
         <div>
           <Text size={600}>Text</Text>
           <Tooltip title='Awesome hint text'>
-            <InfoL ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+            <InfoL ml='4px' color='gray-300' cursor='help' interactive={true} />
           </Tooltip>
         </div>
         <div>
           <Text size={500}>Text</Text>
           <Tooltip title='Awesome hint text'>
-            <InfoM ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+            <InfoM ml='4px' color='gray-300' cursor='help' interactive={true} />
           </Tooltip>
         </div>
         <div>
           <div>
             <Text size={400}>Text</Text>
             <Tooltip title='Awesome hint text'>
-              <InfoM ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+              <InfoM ml='4px' color='gray-300' cursor='help' interactive={true} />
             </Tooltip>
           </div>
           <div />
           <Text size={300}>Text</Text>
           <Tooltip title='Awesome hint text'>
-            <InfoM ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+            <InfoM ml='4px' color='gray-300' cursor='help' interactive={true} />
           </Tooltip>
         </div>
         <div>
           <Text size={200}>Text</Text>
           <Tooltip title='Awesome hint text'>
-            <InfoM ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+            <InfoM ml='4px' color='gray-300' cursor='help' interactive={true} />
           </Tooltip>
         </div>
         <div>
           <Text size={100}>Text</Text>
           <Tooltip title='Awesome hint text'>
-            <InfoM ml='4px' color='gray-300' cursor='help' tabIndex={0} />
+            <InfoM ml='4px' color='gray-300' cursor='help' interactive={true} />
           </Tooltip>
         </div>
       </>
@@ -68,6 +68,18 @@ class Demo extends React.Component {
 }
 
 
+</script>
+
+:::
+
+## Interactive Icon as Tooltip Trigger
+
+You can use an Icon as a Trigger for Tooltip
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from '../../components/tooltip/examples/info_icon.tsx';
 </script>
 
 :::
