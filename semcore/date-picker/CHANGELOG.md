@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.2] - 2024-01-29
+
+### Fixed
+
+- View of Apply/Reset buttons in Popper with empty `periods`.
+
 ## [4.25.1] - 2024-01-24
 
 ### Changed
