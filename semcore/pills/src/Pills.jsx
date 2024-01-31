@@ -4,9 +4,23 @@ import { Box } from '@semcore/flex-box';
 import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
 import log from '@semcore/utils/lib/logger';
 
 import style from './style/pills.shadow.css';
+
+const optionsA11yEnhance = {
+  onNeighborChange: (neighborElement, props) => {
+    if (neighborElement) {
+      neighborElement.focus();
+      if (props.behavior === 'auto' || props.behavior === 'radio') {
+        neighborElement.click();
+      }
+    }
+  },
+  childSelector: (props) =>
+    props.behavior === 'auto' || props.behavior === 'radio' ? ['role', 'radio'] : ['role', 'tab'],
+};
 
 class RootPills extends Component {
   static displayName = 'Pills';
@@ -15,11 +29,9 @@ class RootPills extends Component {
     size: 'm',
     defaultValue: null,
     behavior: behavior ?? 'auto',
-    tabIndex: behavior === 'tabs' || behavior === 'manual' ? -1 : 0,
   });
-  itemRefs = [];
   itemValues = [];
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   componentDidMount() {
     log.warn(
@@ -45,20 +57,26 @@ class RootPills extends Component {
     this.handlers.value(value, e);
   };
 
+  bindHandleKeyDown = (value) => (event) => {
+    if (event.key === 'Enter' || event.key === 'Space') {
+      this.handlers.value(value, event);
+    }
+  };
+
   getItemProps(props, index) {
-    const { value, size, disabled, behavior } = this.asProps;
+    const { value, size, disabled, behavior, keyboardFocused } = this.asProps;
+    const isSelected = value === props.value;
+
     this.itemValues[index] = props.value;
     return {
-      ref: (node) => {
-        this.itemRefs[index] = node;
-      },
       index: index,
       size,
       disabled,
-      selected: value === props.value,
+      selected: isSelected,
       behavior,
-      tabIndex: behavior === 'tabs' || behavior === 'manual' ? 0 : -1,
+      tabIndex: isSelected ? 0 : -1,
       onClick: this.bindHandlerClick(props.value),
+      onKeyDown: this.bindHandleKeyDown(props.value),
     };
   }
 
@@ -79,37 +97,6 @@ class RootPills extends Component {
     return startIndex >= 0 && startIndex < this.itemValues.length ? startIndex : undefined;
   };
 
-  handleKeyDown = (event) => {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-    const behavior = this.asProps.behavior;
-    if (behavior === 'radio' || behavior === 'auto') {
-      let selectedIndex = this.itemValues.findIndex((value) => value === this.asProps.value);
-      if (selectedIndex === -1) return;
-
-      selectedIndex = this.changeIndex(
-        selectedIndex,
-        event.key === 'ArrowLeft' ? 'decrement' : 'increment',
-      );
-
-      if (selectedIndex !== undefined) {
-        this.handlers.value(this.itemValues[selectedIndex], event);
-        this.itemRefs[selectedIndex]?.focus();
-      }
-    } else {
-      let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
-      if (focusedIndex === -1) return;
-
-      focusedIndex = this.changeIndex(
-        focusedIndex,
-        event.key === 'ArrowLeft' ? 'decrement' : 'increment',
-      );
-
-      if (focusedIndex !== undefined) {
-        this.itemRefs[focusedIndex]?.focus();
-      }
-    }
-  };
-
   render() {
     const SPills = Root;
     const { Children, styles, controlsLength, disabled, behavior } = this.asProps;
@@ -119,7 +106,6 @@ class RootPills extends Component {
         render={Box}
         role={behavior === 'radio' || behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
-        onKeyDown={this.handleKeyDown}
       >
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
