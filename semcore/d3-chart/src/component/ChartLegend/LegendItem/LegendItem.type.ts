@@ -3,6 +3,7 @@ import { Intergalactic, Root } from '@semcore/core';
 import Icon from '@semcore/icon';
 import { Text } from '@semcore/typography';
 import { LSize } from '../BaseLegend.type';
+import { PatternsConfig } from '../../../Pattern';
 
 /**
  * Key of chart data item
@@ -34,6 +35,11 @@ export type LegendItem = {
    * Additional info with sub-label or count
    */
   additionalInfo?: { label: string } | { count: number };
+
+  patternKey?: string;
+
+  /** Enables patterns symbols that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 export type LegendItemProps = LegendItem & {
@@ -50,6 +56,9 @@ export type LegendItemProps = LegendItem & {
    * !Need to redefine onClick, because we don't have `event` in it.
    */
   onClick: () => void;
+
+  /** Enables patterns symbols that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 export type ShapeProps = LegendItem & {
@@ -57,7 +66,7 @@ export type ShapeProps = LegendItem & {
   shape: ShapeType;
 };
 
-export const StaticShapes = ['Circle', 'Line', 'Square'] as const;
+export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;
 
 export type ShapeType = 'Checkbox' | typeof StaticShapes[number];
 

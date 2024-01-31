@@ -13,6 +13,7 @@ import {
   interpolateValue,
 } from './utils';
 import AnimatedClipPath from './AnimatedClipPath';
+import { PatternFill } from './Pattern';
 
 import style from './style/area.shadow.css';
 
@@ -42,7 +43,7 @@ class AreaRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, color, d3Line, transparent, resolveColor } = this.asProps;
+    const { x, y, color, d3Line, transparent, resolveColor, patterns } = this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     return {
@@ -53,6 +54,7 @@ class AreaRoot extends Component {
       color,
       resolveColor,
       transparent,
+      patterns,
     };
   }
 
@@ -99,6 +101,7 @@ class AreaRoot extends Component {
       transparent,
       forcedAdvancedMode,
       resolveColor,
+      patterns,
     } = this.asProps;
     const advancedMode = forcedAdvancedMode || !!findComponent(Children, [Area.Line.displayName]);
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
@@ -111,7 +114,7 @@ class AreaRoot extends Component {
         {!advancedMode && (
           <SAreaLine
             aria-hidden
-            clipPath={`url(#${uid})`}
+            clipPath={`url(#${uid}-animation)`}
             d={d3Line(data)}
             color={resolveColor(color)}
             use:duration={`${duration}ms`}
@@ -124,11 +127,20 @@ class AreaRoot extends Component {
           render='path'
           d={d3(data)}
           hide={hide}
+          pattern={patterns ? `url(#${uid}-pattern)` : undefined}
           color={resolveColor(color)}
           use:duration={`${duration}ms`}
           transparent={transparent}
         />
         {duration && <AnimatedClipPath duration={duration} id={uid} width={0} height={size[1]} />}
+        {patterns && (
+          <PatternFill
+            id={`${uid}-pattern`}
+            patternKey={color}
+            color={resolveColor(color)}
+            patterns={patterns}
+          />
+        )}
       </>,
     );
   }

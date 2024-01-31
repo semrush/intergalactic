@@ -2,5 +2,10 @@
   "grabbed": "{itemText} vastgepakt, huidige positie is {itemPosition} van {itemsCount}",
   "grabbing": "{itemText} is vastgepakt, nieuwe positie is {itemPosition} van {itemsCount}",
   "dropped": "{itemText} losgelaten, eindpositie is {itemPosition} van {itemsCount}",
+  "grabbedWithZone": "{itemText} vastgepakt, huidige positie is {itemPosition} van {itemsCount} in {zoneName}",
+  "grabbingFullWithZone": "{itemText} is vastgepakt, nieuwe positie is {itemPosition} van {itemsCount} in {zoneName}",
+  "grabbingJustWithZone": "{itemText} is vastgepakt, nieuwe positie in {zoneName}",
+  "droppedFullWithZone": "{itemText} losgelaten, eindpositie is {itemPosition} van {itemsCount} in {zoneName}",
+  "droppedJustWithZone": "{itemText} heeft nieuwe positie in {zoneName}",
   "discarded": "Verslepen genegeerd"
 }

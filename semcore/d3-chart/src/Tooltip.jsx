@@ -8,6 +8,7 @@ import { CONSTANT, getChartDefaultColorName } from './utils';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 import style from './style/tooltip.shadow.css';
+import { PatternSymbol } from './Pattern';
 
 /**
  * `TooltipDotRenderContext` is a hack to bypass problem that getDotProps doesn't work for D3 tooltip.
@@ -87,6 +88,8 @@ class TooltipRoot extends Component {
       !!findComponent(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
     this.renderContext.index = -1;
     this.renderContext.indexKeysCache.clear();
+    this.renderContext.patterns = this.asProps.patterns ?? this.state.tooltipProps.patterns;
+
     return (
       <TooltipDotRenderContext.Provider value={this.renderContext}>
         <Root
@@ -148,6 +151,7 @@ function Dot(props) {
   const resolveColor = useColorResolver();
   const renderContext = React.useContext(TooltipDotRenderContext);
   const defaultColor = getChartDefaultColorName(renderContext.index);
+  const patterns = props.patterns ?? renderContext.patterns;
 
   const key = Children;
   if (!renderContext.indexKeysCache.has(key)) {
@@ -156,9 +160,21 @@ function Dot(props) {
   }
   const SDotGroup = Root;
   const SDot = Box;
+  const SDotCircle = Box;
   return sstyled(styles)(
     <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
-      <SDot color={resolveColor(color ?? defaultColor)} />
+      {patterns ? (
+        <SDot>
+          <PatternSymbol
+            color={resolveColor(color ?? defaultColor)}
+            patternKey={color ?? defaultColor}
+          />
+        </SDot>
+      ) : (
+        <SDot>
+          <SDotCircle color={resolveColor(color ?? defaultColor)} />
+        </SDot>
+      )}
       <Children />
     </SDotGroup>,
   );

@@ -255,7 +255,7 @@ class RangePickerAbstract extends Component {
               </Picker.Header>
               <Picker.Calendar />
             </Box>
-            {periods.length ? (
+            {periods.length > 0 && (
               <>
                 <Divider m='-16px 16px' orientation='vertical' h='auto' />
                 <Flex direction='column'>
@@ -263,10 +263,17 @@ class RangePickerAbstract extends Component {
                   <Flex mt='auto'>{buttons}</Flex>
                 </Flex>
               </>
-            ) : (
-              <Flex mt={4}>{buttons}</Flex>
             )}
           </Flex>
+          {periods.length === 0 && (
+            <>
+              <Divider m='16px -16px' orientation='horizontal' w='auto' />
+              <Flex>
+                <Picker.Period />
+                <Flex mt='auto'>{buttons}</Flex>
+              </Flex>
+            </>
+          )}
         </>
       ),
     };

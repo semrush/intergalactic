@@ -2,6 +2,7 @@ import { BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { Context } from './context';
 import { DataStructureHints } from './a11y/hints';
+import { PatternsConfig } from '../Pattern';
 
 /** @deprecated */
 export interface IPlotProps extends PlotProps, UnknownProperties {}
@@ -26,6 +27,9 @@ export type PlotProps = Context &
     dataHints?: DataStructureHints;
     /** Optional prop to tune up alt text generating for charts */
     a11yAltTextConfig?: PlotSummarizerConfig;
+
+    /** Enables charts patterns that enhances charts accessability */
+    patterns?: PatternsConfig;
 
     /** @deprecated */
     eventEmitter?: unknown;

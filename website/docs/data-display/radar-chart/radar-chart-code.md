@@ -536,7 +536,9 @@ const data = {
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -553,8 +555,8 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Square'} />
-      <Plot data={data} width={width} height={height}>
+      <ChartLegend items={legendItems} patterns/>
+      <Plot data={data} width={width} height={height} patterns>
         <Radar scale={scale}>
           <Radar.Axis dataKey='categories'>
             <Radar.Axis.Ticks />
@@ -577,13 +579,13 @@ const Demo = () => {
 const legendItems: LegendItem[] = [
   {
     id: 'data_1',
-    label: 'Some label for 1',
+    label: 'Label for 1',
     checked: true,
     color: colors['orange-04'],
   },
   {
     id: 'data_2',
-    label: 'label for 2',
+    label: 'Label for 2',
     checked: true,
     color: colors['violet-04'],
   },

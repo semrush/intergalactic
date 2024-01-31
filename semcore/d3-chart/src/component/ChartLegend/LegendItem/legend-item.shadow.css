@@ -59,6 +59,11 @@ SPointShape[shape='Square'][size='m'] {
   margin-top: 4px;
 }
 
+SPointShape[shape='Pattern'] {
+  background-color: transparent;
+  margin-right: 4px;
+}
+
 SIcon {
   line-height: 0;
   margin-right: 4px;
@@ -76,17 +81,22 @@ SLabel {
   min-width: 0;
 }
 
-SLabel[size='l'], SAdditionalLabel[size='l'], SCount[size='l'] {
+SLabel[size='l'],
+SAdditionalLabel[size='l'],
+SCount[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 }
 
-SLabel[size='m'], SAdditionalLabel[size='m'], SCount[size='m'] {
+SLabel[size='m'],
+SAdditionalLabel[size='m'],
+SCount[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 }
 
-SAdditionalLabel, SCount {
+SAdditionalLabel,
+SCount {
   margin-left: 4px;
 }
 
@@ -112,4 +122,8 @@ SAdditionalLabel[size='l']::before {
 
 SAdditionalLabel[size='m']::before {
   margin-top: 8px;
+}
+
+SPatternSymbol {
+  transform: scale(0.8);
 }

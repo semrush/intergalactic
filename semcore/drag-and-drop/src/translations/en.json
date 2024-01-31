@@ -2,5 +2,10 @@
   "grabbed": "{itemText} grabbed, current position is {itemPosition} of {itemsCount}",
   "grabbing": "Grabbing {itemText}, drop position is {itemPosition} of {itemsCount}",
   "dropped": "{itemText} dropped, final position is {itemPosition} of {itemsCount}",
+  "grabbedWithZone": "{itemText} grabbed, current position is {itemPosition} of {itemsCount} in {zoneName}",
+  "grabbingFullWithZone": "Grabbing {itemText}, drop position is {itemPosition} of {itemsCount} in {zoneName}",
+  "grabbingJustWithZone": "Grabbing {itemText}, drop in {zoneName}",
+  "droppedFullWithZone": "{itemText} dropped, final position is {itemPosition} of {itemsCount} in {zoneName}",
+  "droppedJustWithZone": "{itemText} dropped in {zoneName}",
   "discarded": "Dragging was discarded"
 }

@@ -18,6 +18,17 @@ SCircle[color] {
   fill: var(--color);
 }
 
+SCircle[pattern][color] {
+  fill: var(--pattern);
+  fill-opacity: 0.7;
+  stroke: var(--color);
+  stroke-width: 1px;
+
+  &:hover {
+    fill-opacity: 0.85;
+  }
+}
+
 SCircle[transparent] {
   opacity: 0.3;
 }

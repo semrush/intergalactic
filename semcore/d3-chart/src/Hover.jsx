@@ -30,7 +30,7 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, data, scale, x, y, rootRef } = this.asProps;
+    const { eventEmitter, data, scale, x, y, rootRef, patterns } = this.asProps;
     const { clientX, clientY } = e;
     const [xScale, yScale] = scale;
     const [pX, pY] = eventToPoint(e, rootRef.current);
@@ -40,7 +40,7 @@ class Hover extends Component {
       x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
     const yIndex =
       y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
-    const state = { xIndex, yIndex };
+    const state = { xIndex, yIndex, patterns };
     this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(
       clientX,
       clientY,
@@ -62,6 +62,7 @@ class Hover extends Component {
     const state = {
       xIndex: null,
       yIndex: null,
+      patterns: this.asProps.patterns,
     };
     this.setState(state, () => {
       this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, state);

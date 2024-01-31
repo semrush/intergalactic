@@ -88,7 +88,7 @@ export function chartPlayground(previewData, defaults = {}) {
     key: 'shape',
     defaultValue: defaults.shape ?? 'Checkbox',
     label: 'Shape',
-    options: ['Checkbox', 'Line', 'Circle', 'Square'],
+    options: ['Checkbox', 'Line', 'Circle', 'Square', 'Pattern'],
   });
 
   const disableSelect = bool({
@@ -103,6 +103,12 @@ export function chartPlayground(previewData, defaults = {}) {
     label: 'Disable hover',
   });
 
+  const patterns = bool({
+    key: 'patterns',
+    defaultValue: defaults.patterns ?? false,
+    label: 'Patterns',
+  });
+
   const legendProps = {
     direction: legendDirection,
     alignItems: legendAlignItems,
@@ -111,6 +117,7 @@ export function chartPlayground(previewData, defaults = {}) {
     size,
     disableSelectItems: disableSelect,
     disableHoverItems: disableHover,
+    patterns,
   };
 
   return {
@@ -123,5 +130,6 @@ export function chartPlayground(previewData, defaults = {}) {
     showTotalInTooltip,
     showLegend,
     legendProps,
+    patterns,
   };
 }
