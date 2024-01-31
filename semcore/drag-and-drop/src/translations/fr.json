@@ -2,5 +2,10 @@
   "grabbed": "L’élément « {itemText} » est saisi, la position actuelle est de {itemPosition} sur {itemsCount}",
   "grabbing": "Saisie de l’élément « {itemText} », dépôt en position {itemPosition} sur {itemsCount}",
   "dropped": "L’élément « {itemText} » est déposé, la position finale est de {itemPosition} sur {itemsCount}",
+  "grabbedWithZone": "L’élément « {itemText} » est saisi, la position actuelle est de {itemPosition} sur {itemsCount} dans {zoneName}",
+  "grabbingFullWithZone": "Saisie de l’élément « {itemText} », dépôt en position {itemPosition} sur {itemsCount} dans {zoneName}",
+  "grabbingJustWithZone": "L’élement « {itemText} » est saisi et déposé dans {zoneName}",
+  "droppedFullWithZone": "L’élément « {itemText} » est déposé, la position finale est de {itemPosition} sur {itemsCount} dans {zoneName}",
+  "droppedJustWithZone": "L’élement « {itemText} » est déposé dans {zoneName}",
   "discarded": "Le glissement a été abandonné"
 }

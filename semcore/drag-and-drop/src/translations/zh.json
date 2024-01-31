@@ -2,5 +2,10 @@
   "grabbed": "“{itemText}”已抓取，当前位置是 {itemPosition} / {itemsCount}",
   "grabbing": "正在抓取 {itemText}，掉落位置是 {itemPosition} / {itemsCount}",
   "dropped": "“{itemText}”已掉落，最终位置是 {itemPosition} / {itemsCount}",
+  "grabbedWithZone": "“{itemText}”已抓取，当前位置是 {itemPosition} / {itemsCount}，在 {zoneName}",
+  "grabbingFullWithZone": "正在抓取 {itemText}，掉落位置是 {itemPosition} / {itemsCount}，在 {zoneName}",
+  "grabbingJustWithZone": "正在抓取 {itemText}，掉落于 {zoneName}",
+  "droppedFullWithZone": "“{itemText}”已抓取，最终位置是 {itemPosition} / {itemsCount}，在 {zoneName}",
+  "droppedJustWithZone": "{itemText} 掉落于 {zoneName}",
   "discarded": "拖动已被丢弃"
 }

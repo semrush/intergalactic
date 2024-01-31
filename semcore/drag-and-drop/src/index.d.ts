@@ -43,6 +43,10 @@ export type DraggableProps = BoxProps & {
    * Used as `fromId` or `toId` in `onDnD` handler.
    */
   id?: string;
+  /**
+   * Used for add zoneName in a11y hints
+   */
+  zoneName?: string;
 };
 
 /** @deprecated */
@@ -52,11 +56,18 @@ export type DragAndDropContext = {
   getDroppableProps: PropGetterFn;
 };
 
+export type DropZoneProps = BoxProps & {
+  /**
+   * Used for add zoneName in a11y hints
+   */
+  zoneName?: string;
+};
+
 declare const DragAndDrop: Intergalactic.Component<'div', DragAndDropProps, DragAndDropContext> & {
   Draggable: Intergalactic.Component<'div', DraggableProps>;
-  DropZone: typeof Box;
+  DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
   /** @deprecated use `DragAndDrop.DropZone` instead */
-  Droppable: typeof Box;
+  Droppable: Intergalactic.Component<typeof Box, DropZoneProps>;
 };
 
 export default DragAndDrop;

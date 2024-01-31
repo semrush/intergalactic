@@ -2,5 +2,10 @@
   "grabbed": "{itemText} alındı, mevcut konum {itemPosition}/{itemsCount}",
   "grabbing": "{itemText} alınıyor, bırakma konumu {itemPosition}/{itemsCount}",
   "dropped": "{itemText} bırakıldı, son konum {itemPosition}/{itemsCount}",
+  "grabbedWithZone": "{itemText} alındı, mevcut konum {zoneName} içinde {itemPosition}/{itemsCount}",
+  "grabbingFullWithZone": "{itemText} alınıyor, bırakma konumu {zoneName} içinde {itemPosition}/{itemsCount}",
+  "grabbingJustWithZone": "{itemText} alınıyor, {zoneName} içine bırakın",
+  "droppedFullWithZone": "{itemText} bırakıldı, son konum {zoneName} içinde {itemPosition}/{itemsCount}",
+  "droppedJustWithZone": "{itemText} {zoneName} içine bırakıldı",
   "discarded": "Sürükleme iptal edildi"
 }
