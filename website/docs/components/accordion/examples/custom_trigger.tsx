@@ -7,7 +7,7 @@ const Demo = () => (
   <Accordion>
     {[...new Array(3)].map((_, index) => (
       <Accordion.Item value={index} key={index}>
-        <Accordion.Item.Toggle w='100%'>
+        <Accordion.Item.Toggle w='100%' tabIndex={-1}>
           <Button use='tertiary' theme='muted' size='l'>
             <Button.Addon>
               <Accordion.Item.Chevron />
