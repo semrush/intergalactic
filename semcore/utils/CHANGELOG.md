@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.0] - 2024-01-31
+
+### Added
+
+- New tokens for branded orange buttons: `--intergalactic-control-primary-brand`, `--intergalactic-control-primary-brand-hover`, `--intergalactic-control-primary-active`.
+
 ## [4.19.0] - 2024-01-30
 
 ### Changed
