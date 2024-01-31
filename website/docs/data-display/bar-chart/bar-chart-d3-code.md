@@ -469,7 +469,9 @@ const data = Array(10)
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -547,6 +549,7 @@ const Demo = () => {
         onChangeVisibleItem={handleChangeVisible}
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
+        patterns
       />
       <Plot
         data={data}
@@ -554,6 +557,7 @@ const Demo = () => {
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns
       >
         <YAxis>
           <YAxis.Ticks />

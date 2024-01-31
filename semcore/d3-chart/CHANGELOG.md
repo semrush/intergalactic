@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.26.0] - 2024-01-25
+
+### Added
+
+- `patterns` api that enhances charts accessibility.
+
 ## [3.25.1] - 2024-01-25
 
 ### Fixed

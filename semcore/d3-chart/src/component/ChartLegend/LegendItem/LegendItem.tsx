@@ -13,6 +13,8 @@ import {
   StaticShapes,
 } from './LegendItem.type';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { PatternSymbol } from '../../../Pattern';
+import { getChartDefaultColorName } from '../../../utils';
 
 class LegendItemRoot extends Component<
   LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
@@ -35,7 +37,8 @@ class LegendItemRoot extends Component<
   });
 
   getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
-    const { checked, color, shape, label, id, size, onClick, resolveColor } = this.asProps;
+    const { checked, color, shape, label, id, size, onClick, resolveColor, patterns } =
+      this.asProps;
 
     return {
       id,
@@ -43,6 +46,8 @@ class LegendItemRoot extends Component<
       shape,
       checked,
       color: resolveColor(color),
+      patternKey: color,
+      patterns,
       size,
       onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
         if (onClick && e.key === ' ') {
@@ -110,31 +115,49 @@ class LegendItemRoot extends Component<
 
 function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabelElement>) {
   const SPointShape = Root;
+  const SPatternSymbol = PatternSymbol;
   const {
     styles,
     size,
     shape,
     checked,
     color,
+    patternKey = getChartDefaultColorName(0),
     Children,
     children: hasChildren,
     onKeyUp,
     label,
+    patterns,
   } = props;
 
   if (hasChildren) {
     return <Children />;
   }
 
+  if (shape === 'Pattern') {
+    return sstyled(styles)(
+      <Box mr={1}>
+        <SPatternSymbol color={color} patternKey={patternKey} />
+      </Box>,
+    );
+  }
+
   if (shape === 'Checkbox') {
-    return (
-      <Checkbox
-        size={size}
-        checked={checked}
-        theme={checked ? color : undefined}
-        onKeyUp={onKeyUp}
-        aria-label={label}
-      />
+    return sstyled(styles)(
+      <>
+        <Checkbox
+          size={size}
+          checked={checked}
+          theme={checked ? color : undefined}
+          onKeyUp={onKeyUp}
+          aria-label={label}
+        />
+        {patterns && (
+          <Box mt={'2px'} mr={1}>
+            <SPatternSymbol color={color} patternKey={patternKey} />
+          </Box>
+        )}
+      </>,
     );
   }
 

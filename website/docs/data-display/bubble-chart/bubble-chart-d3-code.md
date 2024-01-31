@@ -174,7 +174,9 @@ const Demo = () => (
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -218,13 +220,14 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Circle'} />
+      <ChartLegend dataHints={dataHints} items={legendItems} patterns/>
       <Plot
         data={data}
         scale={[xScale, yScale]}
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns
       >
         <YAxis>
           <YAxis.Ticks />

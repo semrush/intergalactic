@@ -29,3 +29,5 @@ export { minMax, interpolateValue } from './utils';
 export { colors } from './color';
 
 export { makeDataHintsContainer } from './a11y/hints';
+
+export { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';

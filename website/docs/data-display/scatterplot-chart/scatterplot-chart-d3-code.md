@@ -216,7 +216,9 @@ const data = Array(20)
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -251,8 +253,8 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Square'} />
-      <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
+      <ChartLegend items={legendItems} shape={'Checkbox'} patterns/>
+      <Plot scale={[xScale, yScale]} width={width} height={height} data={data} patterns={true}>
         <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />

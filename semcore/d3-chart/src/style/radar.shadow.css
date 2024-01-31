@@ -39,6 +39,12 @@ SPolygon[color] {
   fill: var(--color);
 }
 
+SPolygon[pattern][color] {
+  fill: var(--pattern);
+  stroke: var(--color);
+  stroke-width: 1px;
+}
+
 SPolygonDot {
   stroke-width: 2px;
   stroke: var(--intergalactic-chart-grid-border, #ffffff);

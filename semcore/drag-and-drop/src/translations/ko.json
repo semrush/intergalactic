@@ -2,5 +2,10 @@
   "grabbed": "'{itemText}' 부분이 선택되었으며 현재 위치는 {itemsCount}개 단어 중 {itemPosition}번째입니다",
   "grabbing": "선택한 '{itemText}' 부분을 이동할 위치는 {itemsCount}개 단어 중 {itemPosition}번째입니다",
   "dropped": "'{itemText}' 부분을 이동했으며 최종 위치는 {itemsCount}개 단어 중 {itemPosition}번째입니다",
+  "grabbedWithZone": "{itemText} 링크가 확보되었으며, 현재 순위는 {zoneName}에서 {itemsCount}개 중 {itemPosition}위입니다.",
+  "grabbingFullWithZone": "확보한 {itemText} 링크의 순위가 하락하여 {zoneName}에서 {itemsCount}개 중 {itemPosition}위입니다.",
+  "grabbingJustWithZone": "확보한 {itemText} 링크의 순위가 {zoneName}에서 하락했습니다.",
+  "droppedFullWithZone": "{itemText} 링크가 손실되었으며 최종 순위는 {zoneName}에서 {itemsCount}개 중 {itemPosition}위입니다.",
+  "droppedJustWithZone": "{itemText} 링크가 {zoneName}에서 손실되었습니다.",
   "discarded": "드래그에 실패했습니다"
 }

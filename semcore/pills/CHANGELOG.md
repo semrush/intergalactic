@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.18.0] - 2024-01-30
+
+### Changed
+
+- `Tab` click will not move by Pills with `behaviour=manual`.
+
 ## [5.17.0] - 2024-01-19
 
 ### Changed

@@ -5,6 +5,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import AnimatedClipPath from './AnimatedClipPath';
 import { scaleToBand, roundedPath } from './utils';
+import { PatternFill } from './Pattern';
 
 import style from './style/bar.shadow.css';
 
@@ -78,6 +79,7 @@ class BarRoot extends Component {
       onClick,
       transparent,
       maxBarSize = Infinity,
+      patterns,
     } = this.asProps;
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
@@ -108,27 +110,39 @@ class BarRoot extends Component {
       this.asProps.dataHintsHandler.describeValueEntity(`${i}.${y}`, groupKey ?? d[x]);
     }
 
-    return sstyled(styles)(
-      <SBar
-        aria-hidden
-        key={`bar-${i}`}
-        render='path'
-        clipPath={`url(#${uid})`}
-        __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
-        childrenPosition='above'
-        value={d}
-        index={i}
-        hide={hide}
-        color={resolveColor(color)}
-        x={barX}
-        y={barY}
-        width={width}
-        height={height}
-        d={dSvg}
-        onClickCapture={handleClick}
-        use:duration={`${duration}ms`}
-        transparent={transparent}
-      />,
+    return (
+      <React.Fragment key={`bar-${i}`}>
+        {sstyled(styles)(
+          <SBar
+            aria-hidden
+            render='path'
+            clipPath={`url(#${uid})`}
+            __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
+            childrenPosition='above'
+            value={d}
+            index={i}
+            hide={hide}
+            pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
+            color={resolveColor(color)}
+            x={barX}
+            y={barY}
+            width={width}
+            height={height}
+            d={dSvg}
+            onClickCapture={handleClick}
+            use:duration={`${duration}ms`}
+            transparent={transparent}
+          />,
+        )}
+        {patterns && (
+          <PatternFill
+            id={`${uid}-${i}-pattern`}
+            patternKey={color}
+            color={resolveColor(color)}
+            patterns={patterns}
+          />
+        )}
+      </React.Fragment>
     );
   }
   render() {

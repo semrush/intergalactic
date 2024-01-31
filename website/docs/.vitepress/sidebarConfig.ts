@@ -1548,6 +1548,10 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             text: 'Color palette',
           },
           {
+            link: '/data-display/visual-patterns/visual-patterns',
+            text: 'Visual patterns',
+          },
+          {
             link: '/data-display/chart-controls/chart-controls',
             text: 'Chart controls',
           },

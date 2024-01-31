@@ -9,6 +9,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT, getChartDefaultColorName } from './utils';
 import Tooltip from './Tooltip';
+import { PatternFill } from './Pattern';
 
 import style from './style/donut.shadow.css';
 
@@ -217,7 +218,8 @@ class DonutRoot extends Component {
   };
 
   getPieProps(props, index) {
-    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor } = this.asProps;
+    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor, uid, patterns } =
+      this.asProps;
     const { active } = props;
     const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
     if (active) {
@@ -230,6 +232,7 @@ class DonutRoot extends Component {
       color: props.color || getChartDefaultColorName(index),
       active: props.active,
       transparent: props.transparent,
+      patterns,
     };
 
     return {
@@ -238,6 +241,8 @@ class DonutRoot extends Component {
       d3ArcOut,
       innerRadius,
       outerRadius,
+      uid: `${uid}-${index}`,
+      patterns,
       halfsize,
       color: props.color || getChartDefaultColorName(index),
       resolveColor,
@@ -321,6 +326,8 @@ function Pie({
   outerRadius,
   resolveColor,
   halfsize,
+  uid,
+  patterns,
   ...other
 }) {
   const [isMount, setIsMount] = React.useState(false);
@@ -354,14 +361,27 @@ function Pie({
   dataHintsHandler.establishDataType('values-set');
   dataHintsHandler.describeValueEntity(dataKey, name);
 
-  return sstyled(styles)(
-    <SPie
-      render='path'
-      ref={pieRef}
-      color={resolveColor(color)}
-      d={active ? d3ArcOut(data) : d3Arc(data)}
-      transparent={transparent}
-    />,
+  return (
+    <React.Fragment>
+      {sstyled(styles)(
+        <SPie
+          render='path'
+          ref={pieRef}
+          color={resolveColor(color)}
+          pattern={patterns ? `url(#${uid}-pattern)` : undefined}
+          d={active ? d3ArcOut(data) : d3Arc(data)}
+          transparent={transparent}
+        />,
+      )}
+      {patterns && (
+        <PatternFill
+          id={`${uid}-pattern`}
+          patternKey={color}
+          color={resolveColor(color)}
+          patterns={patterns}
+        />
+      )}
+    </React.Fragment>
   );
 }
 

@@ -2,5 +2,10 @@
   "grabbed": "{itemText}が選択されており、現在位置は{itemsCount}の{itemPosition}です",
   "grabbing": "{itemText}が選択されており、ドロップ位置は{itemsCount}の{itemPosition}です",
   "dropped": "{itemText}がドロップされ、最終位置は{itemsCount}の{itemPosition}になりました",
+  "grabbedWithZone": "{itemText} を入手しました。現在の位置は{zoneName} の{itemsCount} の{itemPosition} です。",
+  "grabbingFullWithZone": "{itemText} を入手し、ドロップ位置は{zoneName} の{itemsCount} の{itemPosition} です",
+  "grabbingJustWithZone": "{itemText} を入手し、{zoneName} にドロップします",
+  "droppedFullWithZone": "{itemText} を入手しました。最終位置は{zoneName} の{itemsCount} の{itemPosition} です",
+  "droppedJustWithZone": "{itemText} が {zoneName} にドロップしました",
   "discarded": "ドラッグは破棄されました"
 }

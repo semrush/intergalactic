@@ -6,6 +6,8 @@ import { FadeInOut } from '@semcore/animation';
 import createElement from './createElement';
 import { CONSTANT, getChartDefaultColorName } from './utils';
 import Tooltip from './Tooltip';
+import { PatternFill } from './Pattern';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/venn.shadow.css';
 
@@ -18,6 +20,7 @@ class VennRoot extends Component {
     orientationOrder: (c1, c2) => c2.radius - c1.radius,
     duration: 500,
   };
+  static enhance = [uniqueIDEnhancement()];
 
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
@@ -54,6 +57,7 @@ class VennRoot extends Component {
       dataKey: props.dataKey,
       name: props.name,
       color,
+      patterns: this.asProps.patterns,
     };
 
     return {
@@ -65,6 +69,8 @@ class VennRoot extends Component {
       transparent: this.asProps.transparent,
       resolveColor: this.asProps.resolveColor,
       color,
+      uid: `${this.asProps.uid}-${index}`,
+      patterns: this.asProps.patterns,
     };
   }
 
@@ -121,20 +127,35 @@ function Circle({
   dataKey,
   dataHintsHandler,
   transparent,
+  uid,
+  patterns,
 }) {
   dataHintsHandler.describeValueEntity(dataKey, name);
 
-  return sstyled(styles)(
-    <SCircle
-      aria-hidden
-      render='circle'
-      color={resolveColor(color)}
-      cx={data.x}
-      cy={data.y}
-      r={data.radius}
-      transparent={transparent}
-      use:duration={`${duration}ms`}
-    />,
+  return (
+    <>
+      {sstyled(styles)(
+        <SCircle
+          aria-hidden
+          render='circle'
+          color={resolveColor(color)}
+          pattern={patterns ? `url(#${uid}-pattern)` : undefined}
+          cx={data.x}
+          cy={data.y}
+          r={data.radius}
+          transparent={transparent}
+          use:duration={`${duration}ms`}
+        />,
+      )}
+      {patterns && (
+        <PatternFill
+          id={`${uid}-pattern`}
+          patternKey={color}
+          color={resolveColor(color)}
+          patterns={patterns}
+        />
+      )}
+    </>
   );
 }
 

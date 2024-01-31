@@ -51,6 +51,18 @@ You can use a single tooltip for multiple reference elements. This allows you to
 
 :::
 
+## Interactive Icon as Tooltip Trigger
+
+You can use an Icon as a Trigger for Tooltip
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/info_icon.tsx';
+</script>
+
+:::
+
 ## Ignore portal stacking
 
 By default, when a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may try to push it inside the block as much as possible. If you don't want this behavior, you can set the `ignorePortalsStacking` prop.
