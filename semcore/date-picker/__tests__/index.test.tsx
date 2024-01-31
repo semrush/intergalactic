@@ -334,6 +334,8 @@ describe('DateRangePicker', () => {
   });
 
   test('Should render correctly with empty period', async ({ task, expect }) => {
+    mockDate('2024-01-20T12:00:00.000Z');
+
     const component = (
       <DateRangePicker
         periods={[]}
