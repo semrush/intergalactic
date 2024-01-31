@@ -90,7 +90,7 @@ const defaultPatterns = {
       size: [14, 14],
       children: (
         <>
-          <path 
+          <path
             fillRule='evenodd'
             d='M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 5a5 5 0 1 1 10 0A5 5 0 0 1 0 5Z'
             clipRule='evenodd'
