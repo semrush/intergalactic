@@ -21,6 +21,11 @@ SCap {
   transition: r 0.1s;
 }
 
+SCap[pattern] {
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  stroke-width: 1px;
+}
+
 SCap[transparent] {
   opacity: 0.3;
 }

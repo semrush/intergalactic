@@ -80,6 +80,9 @@ export * from './component/ChartLegend/LegendTable/LegendTable.type';
 // @ts-ignore
 export * from './component/ChartLegend/LegendItem/LegendItem.type';
 
+// @ts-ignore
+export * from './Pattern';
+
 export { default as Chart } from './component/Chart';
 export * from './component/Chart/AbstractChart.type';
 export * from './component/Chart/LineChart.type';

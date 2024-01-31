@@ -50,6 +50,7 @@ const App = PlaygroundGeneration((preview) => {
     showTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   const withTrend = bool({
@@ -71,6 +72,7 @@ const App = PlaygroundGeneration((preview) => {
     alignItems,
     justifyContent,
     trend: withTrend ? trendData : undefined,
+    patterns,
   };
 
   if (showLegend) {

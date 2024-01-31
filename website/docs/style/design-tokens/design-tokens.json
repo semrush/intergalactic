@@ -1199,7 +1199,7 @@
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
     "description": "Secondary link-lookalike icon.",
-    "components": ["d3-chart"]
+    "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-info-hover-active",
@@ -3335,7 +3335,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "description": "Border of the dot that appears on the chart grid when hovered over.",
+    "description": "Border for distinguishing data sets and chart dots on the chart grid.",
     "components": ["d3-chart", "mini-chart"]
   },
   {

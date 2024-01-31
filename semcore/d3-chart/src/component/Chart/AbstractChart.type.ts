@@ -4,6 +4,7 @@ import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 import Icon from '@semcore/icon';
 import { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import { PatternsConfig } from '../../Pattern';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -53,6 +54,9 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Height of plot
    */
   plotHeight: number;
+
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
   /**
    * Margin (for Y axis points) from left side of chart container to Y axis
    */

@@ -9,6 +9,11 @@ SArea[color] {
   fill: var(--color);
 }
 
+SArea[pattern] {
+  fill: var(--pattern);
+  fill-opacity: 0.7;
+}
+
 SArea[transparent] {
   opacity: 0.3;
 }

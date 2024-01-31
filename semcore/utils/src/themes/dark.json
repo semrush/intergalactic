@@ -346,7 +346,7 @@
   "--intergalactic-chart-grid-bar-chart-hover": "rgba(196, 199, 207, 0.3)",
   "--intergalactic-chart-grid-bar-chart-base-bg": "#e0e1e9",
   "--intergalactic-chart-grid-period-bg": "rgba(196, 199, 207, 0.2)",
-  "--intergalactic-chart-grid-border": "#ffffff",
+  "--intergalactic-chart-grid-border": "#191b23",
   "--intergalactic-chart-x-axis-accent-period-active": "#8a8e9b",
   "--intergalactic-chart-x-axis-accent-data-start-tracking": "rgba(0, 159, 129, 0.2)",
   "--intergalactic-duration-extra-slow": "500",

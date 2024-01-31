@@ -38,7 +38,7 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
     _: {},
     index: number,
   ): LegendItemProps & Intergalactic.InternalTypings.ComponentPropsNesting<'div'> {
-    const { shape = 'Checkbox', size = 'm' } = this.asProps;
+    const { shape = 'Checkbox', size = 'm', patterns } = this.asProps;
     const line = this.getItem(index);
 
     return {
@@ -49,6 +49,7 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
       onMouseEnter: this.bindOnMouseEnterItem(line.id),
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
+      patterns,
     };
   }
 

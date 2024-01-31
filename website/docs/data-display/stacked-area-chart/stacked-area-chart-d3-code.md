@@ -196,7 +196,7 @@ const Demo = () => {
     .domain([0, 15]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} patterns>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -261,7 +261,9 @@ const data = [
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -297,9 +299,9 @@ const lineColors = {
 const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
-  const MARGIN = 40;
+  const MARGIN = 28;
   const width = 500;
-  const height = 300;
+  const height = 260;
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
@@ -322,13 +324,14 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Square'} />
+      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Checkbox'} patterns/>
       <Plot
         data={data}
         scale={[xScale, yScale]}
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns={true}
       >
         <YAxis>
           <YAxis.Ticks />
@@ -387,10 +390,10 @@ const Demo = () => {
           <StackedArea.Area y='1' color={lineColors[1]} curve={curveCardinal}>
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y='2' fill='#59DDAA50' color={lineColors[2]} curve={curveCardinal}>
+          <StackedArea.Area y='2' fill='chart-palette-order-2' color={lineColors[2]} curve={curveCardinal}>
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y='3' fill='#FF622D50' color={lineColors[3]} curve={curveCardinal}>
+          <StackedArea.Area y='3' fill='chart-palette-order-3' color={lineColors[3]} curve={curveCardinal}>
             <StackedArea.Area.Dots />
           </StackedArea.Area>
         </StackedArea>

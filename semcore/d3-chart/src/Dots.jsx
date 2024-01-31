@@ -3,9 +3,10 @@ import React from 'react';
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
-import { eventToPoint, invert, interpolateValue } from './utils';
+import { eventToPoint, invert, interpolateValue, getChartDefaultColorName } from './utils';
 
 import style from './style/dot.shadow.css';
+import { PatternSymbol, getPatternSymbolSize } from './Pattern';
 
 const EXCLUDE_PROPS = ['data', 'scale', 'value', 'display'];
 
@@ -26,6 +27,7 @@ function Dots(props) {
     transparent,
     radius: radiusBase = 6,
     resolveColor,
+    patterns,
   } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = React.useState(null);
@@ -76,26 +78,53 @@ function Dots(props) {
     const radius = radiusBase * (active ? 8 / 6 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
-    acc.push(
-      sstyled(styles)(
-        <SDot
-          aria-hidden
-          key={`${i}`}
-          render='circle'
-          visible={visible}
-          __excludeProps={EXCLUDE_PROPS}
-          value={d}
-          index={i}
-          cx={d3.x()(d)}
-          cy={d3.y()(d)}
-          active={active}
-          hide={hide}
-          color={resolveColor(color)}
-          transparent={transparent}
-          r={radius}
-        />,
-      ),
-    );
+
+    const patternKey = color || getChartDefaultColorName(0);
+    const [width, height] = getPatternSymbolSize({
+      patternKey,
+      patterns,
+    });
+
+    if (!patterns) {
+      acc.push(
+        sstyled(styles)(
+          <SDot
+            render='circle'
+            color={resolveColor(color)}
+            patternKey={patternKey}
+            patterns={patterns}
+            key={`${i}`}
+            visible={visible}
+            active={active}
+            hide={hide}
+            transparent={transparent}
+            cx={d3.x()(d)}
+            cy={d3.y()(d)}
+            r={radius}
+          />,
+        ),
+      );
+    } else {
+      acc.push(
+        sstyled(styles)(
+          <SDot
+            render={PatternSymbol}
+            color={resolveColor(color)}
+            patternKey={patternKey}
+            patterns={patterns}
+            key={`${i}`}
+            visible={visible}
+            active={active}
+            hide={hide}
+            transparent={transparent}
+            x={d3.x()(d) - width / 2}
+            y={d3.y()(d) - height / 2}
+            radius={radius}
+          />,
+        ),
+      );
+    }
+    // acc.push(<PatternSymbol color={resolveColor(color)} patternKey={color} />);
     return acc;
   }, []);
   const SDots = 'g';

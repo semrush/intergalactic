@@ -1,6 +1,7 @@
 import { BoxProps, FlexProps } from '@semcore/flex-box';
 import { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
 import { DataStructureHints } from '../../a11y/hints';
+import type { PatternsConfig } from '../../Pattern';
 
 export type LSize = 'm' | 'l';
 
@@ -31,4 +32,7 @@ export type LegendProps = BoxProps &
      * Legend items
      */
     items: LegendItem[];
+
+    /** Enables charts patterns that enhances charts accessability */
+    patterns?: PatternsConfig;
   };

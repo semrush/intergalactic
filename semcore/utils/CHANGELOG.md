@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.18.1] - 2024-01-23
+
+### Fixed
+
+- `--intergalactic-chart-grid-border` token for dark theme.
+
 ## [4.18.0] - 2024-01-19
 
 ### Added
