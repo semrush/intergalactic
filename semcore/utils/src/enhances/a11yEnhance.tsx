@@ -64,20 +64,20 @@ const a11yEnhance = (options: A11yEnhanceOptions) => {
       if (!listSelectors.length)
         throw `no children found querySelectorAll([${childAttrName}="${childAttrValue}"] a11yEnhance for ${props['data-ui-name']}`;
 
-      switch (event.keyCode) {
-        case 37:
+      switch (event.key) {
+        case 'ArrowLeft':
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'left'), props);
           event.preventDefault();
           break;
-        case 38:
+        case 'ArrowTop':
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'top'), props);
           event.preventDefault();
           break;
-        case 39:
+        case 'ArrowRight':
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'right'), props);
           event.preventDefault();
           break;
-        case 40:
+        case 'ArrowBottom':
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'bottom'), props);
           event.preventDefault();
           break;

@@ -13,12 +13,13 @@ const optionsA11yEnhance = {
   onNeighborChange: (neighborElement, props) => {
     if (neighborElement) {
       neighborElement.focus();
-      if (props.behavior === 'auto') {
+      if (props.behavior === 'auto' || props.behavior === 'radio') {
         neighborElement.click();
       }
     }
   },
-  childSelector: (props) => (props.behavior === 'auto' ? ['role', 'radio'] : ['role', 'tab']),
+  childSelector: (props) =>
+    props.behavior === 'auto' || props.behavior === 'radio' ? ['role', 'radio'] : ['role', 'tab'],
 };
 
 class RootPills extends Component {
