@@ -2,5 +2,10 @@
   "grabbed": "{itemText} valdes, nuvarande position är {itemPosition} av {itemsCount}",
   "grabbing": "Väljer {itemText}, släppt position är {itemPosition} av {itemsCount}",
   "dropped": "{itemText} släppdes, slutlig position är {itemPosition} av {itemsCount}",
+  "grabbedWithZone": "{itemText} valdes, nuvarande position är {itemPosition} av {itemsCount} i {zoneName}",
+  "grabbingFullWithZone": "Väljer {itemText}, släppt position är {itemPosition} av {itemsCount} i {zoneName}",
+  "grabbingJustWithZone": "Väljer {itemText}, släpp i {zoneName}",
+  "droppedFullWithZone": "{itemText} släpptes, slutgiltig position är {itemPosition} av {itemsCount} i {zoneName}",
+  "droppedJustWithZone": "{itemText} släpptes i {zoneName}",
   "discarded": "Dragningen avvisades"
 }
