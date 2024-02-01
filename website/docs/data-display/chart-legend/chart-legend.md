@@ -6,7 +6,7 @@ tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-cod
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view
@@ -260,6 +260,8 @@ Example of a combination of the elements above:
 To display the trend or average value in the legend, use the `withTrend` property. It adds checkbox with [Divider](/components/divider/divider) to separate trend from the main legend.
 
 ![](static/legend-trend.png)
+
+Similarly, you can display total values. Dots on the line are optional.
 
 ## Interaction
 

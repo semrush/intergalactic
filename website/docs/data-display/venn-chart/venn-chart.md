@@ -5,7 +5,7 @@ tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Exam
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view
@@ -39,6 +39,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     showTooltip,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   legendProps.legendMap = {
@@ -58,6 +59,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
+    patterns,
   };
 
   if (showLegend) {

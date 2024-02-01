@@ -5,7 +5,7 @@ tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Exam
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
@@ -336,7 +336,9 @@ const data = [
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -405,6 +407,7 @@ const Demo = () => {
         dataHints={dataHints}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
+        patterns
       />
       <Plot
         data={data}
@@ -412,6 +415,7 @@ const Demo = () => {
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns={true}
       >
         <YAxis>
           <YAxis.Ticks />

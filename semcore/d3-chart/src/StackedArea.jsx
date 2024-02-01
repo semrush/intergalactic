@@ -35,11 +35,12 @@ class StackedAreaRoot extends Component {
   }
 
   getAreaProps({ y }, index) {
-    const { x } = this.asProps;
+    const { x, patterns } = this.asProps;
     // or [] if hide area
     const series = this.series.find((s) => s.key === y) || [];
     return {
       color: getChartDefaultColorName(index),
+      patterns,
       data: series.map((s) => ({
         ...s.data,
         // if null is passed in the data, then we pass it, because d3 null leads to 0

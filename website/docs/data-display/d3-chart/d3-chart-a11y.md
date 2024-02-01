@@ -1,5 +1,5 @@
 ---
-title: D3 chart principles
+title: D3 chart
 fileSource: d3-chart
 tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
@@ -13,6 +13,17 @@ All charts created with the `@semcore/d3-chart` package are available for [scree
 The data table may not look pretty but it is fully accessible for screen readers.
 
 ![Chart with displayed accessibility module, data table visible.](static/charts-a11y-stocks-data-table.png)
+
+## Colorblind and low vision solution
+
+Using patterns in charts instead of just colors makes them easier to understand for people who are color-blind or have low vision. Some colors can be hard to differentiate for these users, even if selected thoughtfully and with different contrasts. This can make it hard to read charts. Adding patterns helps everyone see the differences between data sets clearly.
+
+Our charts feature properties that enable pattern fills for charts with areas to fill, display symbols instead of dots, and convert solid lines to dashed lines for charts without areas to fill:
+
+- `patterns` property for `Plot`
+- `patterns` property `ChartLegend` (works only with `shape={'Checkbox'}`)
+
+![](static/patterns.png) ![](static/symbols.png) ![](static/stroke-dasarrays.png)
 
 ## Examples of accessible charts
 

@@ -2,12 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.25.2] - 2024-01-25
+## [3.26.1] - 2024-02-01
 
 ### Fixed
 
 - view data in BubbleChart.
 - prevent animation on every rerender.
+
+## [3.26.0] - 2024-01-25
+
+### Added
+
+- `patterns` api that enhances charts accessibility.
 
 ## [3.25.1] - 2024-01-25
 

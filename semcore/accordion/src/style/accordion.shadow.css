@@ -4,7 +4,7 @@ SItemToggle {
   outline: 0;
 }
 
-SItemToggle[keyboardFocused]::after {
+SItemToggle[keyboardFocused]:not([tabIndex='-1'])::after {
   position: absolute;
   display: block;
   content: '';

@@ -5,7 +5,7 @@ tabs: Design('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Exam
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view
@@ -67,6 +67,7 @@ const App = PlaygroundGeneration((preview) => {
     showLegend,
     legendProps,
     showTotalInTooltip,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
   label({ label: 'Linear chart props', key: 'linearChartProps' });
@@ -113,6 +114,7 @@ const App = PlaygroundGeneration((preview) => {
     justifyContent,
     area: withArea ? area : undefined,
     areaCurve: curveMap[areaCurve],
+    patterns,
   };
 
   if (showLegend) {

@@ -23,16 +23,16 @@ SDotGroup {
 }
 
 SDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
   margin-right: var(--intergalactic-spacing-2x, 8px);
-  background: var(--intergalactic-icon-secondary-info, #2bb3ff);
 }
 
-SDot[color] {
-  background: var(--color);
+SDotCircle[color] {
+  background-color: var(--color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }
+
 
 SFooter {
   background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);

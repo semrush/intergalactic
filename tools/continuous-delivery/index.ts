@@ -22,6 +22,7 @@ import {
   getReleaseChangelog,
 } from '@semcore/changelog-handler';
 import semver from 'semver';
+import { publishIntergalacticRelease } from './src/intg-release/publishRelease';
 
 export const deliverPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -84,6 +85,10 @@ export const publishRelease = async () => {
   const releaseChangelog = await getReleaseChangelog();
 
   await removeBetaVersionFromReleaseChangelog(releaseChangelog.changelogs);
+
+  /** publish intergalactic */
+  await publishIntergalacticRelease();
+  /** publish intergalactic */
 
   await republishTarballs(packagesPaths);
   if (!process.argv.includes('--dry-run')) {

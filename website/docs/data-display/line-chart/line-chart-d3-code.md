@@ -5,7 +5,7 @@ tabs: Design('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Exam
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
@@ -420,7 +420,7 @@ const data = Array(20)
 
 :::
 
-## Legend
+## Legend and symbols for dots
 
 ::: sandbox
 
@@ -502,6 +502,7 @@ const Demo = () => {
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
+          patterns
         />
         <Plot
           data={data}
@@ -509,6 +510,7 @@ const Demo = () => {
           width={width}
           height={height}
           dataHints={dataHints}
+          patterns
         >
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks(4)} />

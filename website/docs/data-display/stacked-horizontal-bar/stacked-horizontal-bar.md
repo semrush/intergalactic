@@ -5,7 +5,7 @@ tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API
 ---
 
 ::: tip
-Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view
@@ -36,6 +36,7 @@ const App = PlaygroundGeneration((preview) => {
     showTotalInTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground(
     { select, radio, label, bool },
     { invertAxis: true, showTotalInTooltip: true },
@@ -53,6 +54,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
+    patterns,
   };
 
   if (showLegend) {

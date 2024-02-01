@@ -1,3 +1,30 @@
+## [15.53.0] - 2024-01-31
+
+### @semcore/accordion
+
+- **Changed** Keyboard focus view for `ItemToggle` with inner custom triggers - disable it if `tabIndex=-1`.
+
+### @semcore/d3-chart
+
+- **Added** `patterns` api that enhances charts accessibility.
+
+### @semcore/date-picker
+
+- **Fixed** View of Apply/Reset buttons in Popper with empty `periods`.
+
+### @semcore/drag-and-drop
+
+- **Changed** A11Y hint in component - added name for d-n-d groups.
+
+### @semcore/pills
+
+- **Changed** `Tab` click will not move by Pills with `behaviour=manual`.
+
+### @semcore/utils
+
+- **Changed** options in `a11yEnhance`. `childSelector` could be a function with props from the calling component.
+- **Fixed** `--intergalactic-chart-grid-border` token for dark theme.
+
 ## [15.52.2] - 2024-01-25
 
 ### @semcore/d3-chart

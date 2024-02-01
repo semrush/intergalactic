@@ -5,7 +5,7 @@ tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api')
 ---
 
 ::: tip
-Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view
@@ -37,9 +37,10 @@ const App = PlaygroundGeneration((preview) => {
     showTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool });
 
-  legendProps.shape = 'Circle';
+  legendProps.shape = 'Checkbox';
 
   const chartProps: BubbleChartProps = {
     data,
@@ -51,6 +52,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
+    patterns,
   };
 
   if (showLegend) {

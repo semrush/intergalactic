@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.25.0] - 2024-01-23
+
+### Changed
+
+- A11Y hint in component - added name for d-n-d groups.
+
 ## [3.24.0] - 2024-01-19
 
 ### Changed

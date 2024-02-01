@@ -2,5 +2,10 @@
   "grabbed": "{itemText} erfasst, aktuelle Position ist {itemPosition} von {itemsCount}",
   "grabbing": "Erfasse {itemText}, Ablageposition ist {itemPosition} von {itemsCount}",
   "dropped": "{itemText} abgelegt, finale Position ist {itemPosition} von {itemsCount}",
+  "grabbedWithZone": "{itemText} erfasst, aktuelle Position ist {itemPosition} von {itemsCount} in {zoneName}",
+  "grabbingFullWithZone": "Erfasse {itemText}, Ablageposition ist {itemPosition} von {itemsCount} in {zoneName}",
+  "grabbingJustWithZone": "Erfasse {itemText}, Ablegen in {zoneName}",
+  "droppedFullWithZone": "{itemText} abgelegt, finale Position ist {itemPosition} von {itemsCount} in {zoneName}",
+  "droppedJustWithZone": "{itemText} abgelegt in {zoneName}",
   "discarded": "Ziehen wurde abgebrochen"
 }

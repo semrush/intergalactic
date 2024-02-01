@@ -5,7 +5,7 @@ tabs: Design('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('bar-c
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
@@ -469,7 +469,9 @@ const data = Array(10)
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -547,6 +549,7 @@ const Demo = () => {
         onChangeVisibleItem={handleChangeVisible}
         onMouseEnterItem={handleMouseEnter}
         onMouseLeaveItem={handleMouseLeave}
+        patterns
       />
       <Plot
         data={data}
@@ -554,6 +557,7 @@ const Demo = () => {
         width={width}
         height={height}
         dataHints={dataHints}
+        patterns
       >
         <YAxis>
           <YAxis.Ticks />

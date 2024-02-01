@@ -5,7 +5,7 @@ tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal
 ---
 
 ::: tip
-Basic data visualization rules are described in the [D3 chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ::: react-view
@@ -35,6 +35,7 @@ const App = PlaygroundGeneration((preview) => {
     showTooltip,
     showLegend,
     legendProps,
+    patterns,
   } = chartPlayground({ select, radio, label, bool }, { invertAxis: true });
 
   const chartProps: BarChartProps = {
@@ -49,6 +50,7 @@ const App = PlaygroundGeneration((preview) => {
     showYAxis,
     alignItems,
     justifyContent,
+    patterns,
   };
 
   if (showLegend) {

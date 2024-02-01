@@ -5,7 +5,7 @@ tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Exam
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
@@ -202,7 +202,9 @@ const data = {
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -253,8 +255,8 @@ const legendItems = [
 const Demo = () => {
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Line'} />
-      <Plot height={300} width={400} data={data}>
+      <ChartLegend items={legendItems} patterns/>
+      <Plot height={300} width={400} data={data} patterns>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />
           <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />

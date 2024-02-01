@@ -5,7 +5,7 @@ tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), E
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
@@ -49,7 +49,7 @@ import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   return (
-    <Plot width={300} height={300} data={data}>
+    <Plot width={300} height={300} data={data} patterns>
       <Donut innerRadius={100}>
         <Donut.Pie dataKey='a' name='Pie 1' />
         <Donut.Pie dataKey='b' name='Pie 2' />
@@ -268,7 +268,9 @@ const data = {
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -332,8 +334,9 @@ const Demo = () => {
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
+          patterns
         />
-        <Plot width={width} height={height} data={data} dataHints={dataHints}>
+        <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
           <Donut innerRadius={height / 2 - 50}>
             {legendItems.map((item, index) => {
               return (

@@ -6,6 +6,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT, getScatterPlotRadius } from './utils';
 import Tooltip from './Tooltip';
+import { PatternFill } from './Pattern';
 
 import style from './style/scatterplot.shadow.css';
 
@@ -66,6 +67,7 @@ class ScatterPlotRoot extends Component {
       valueColor,
       transparent,
       resolveColor,
+      patterns,
     } = this.asProps;
     const [xScale, yScale] = scale;
     const SScatterPlot = this.Element;
@@ -79,8 +81,8 @@ class ScatterPlotRoot extends Component {
       <g
         aria-hidden
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i })}
+        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i, patterns })}
+        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i, patterns })}
       >
         <SScatterPlot
           aria-hidden
@@ -91,10 +93,19 @@ class ScatterPlotRoot extends Component {
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
           color={resolveColor(color)}
+          pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
           r={r}
           use:duration={`${duration}ms`}
           transparent={transparent}
         />
+        {patterns && (
+          <PatternFill
+            id={`${uid}-${i}-pattern`}
+            patternKey={color}
+            color={resolveColor(color)}
+            patterns={patterns}
+          />
+        )}
         {d[value] !== undefined && (
           <SValue
             aria-hidden

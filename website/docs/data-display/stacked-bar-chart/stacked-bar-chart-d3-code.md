@@ -5,7 +5,7 @@ tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-
 ---
 
 ::: tip
-For core principles, concept description, API and changelog, refer to the [D3 chart principles](/data-display/d3-chart/d3-chart).
+For core principles, concept description, API and changelog, refer to the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Basic usage
@@ -116,7 +116,9 @@ const data = [...Array(5).keys()].map((d, i) => ({
 
 :::
 
-## Legend
+## Legend and pattern fill
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
@@ -199,6 +201,7 @@ const Demo = () => {
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
+          patterns
         />
         <Plot
           data={data}
@@ -206,6 +209,7 @@ const Demo = () => {
           width={width}
           height={height}
           dataHints={dataHints}
+          patterns
         >
           <YAxis>
             <YAxis.Ticks />

@@ -1522,7 +1522,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/data-display/d3-chart/d3-chart',
-            text: 'D3 chart principles',
+            text: 'D3 chart',
             collapsed: true,
             items: [
               {
@@ -1546,6 +1546,10 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           {
             link: '/data-display/color-palette/color-palette',
             text: 'Color palette',
+          },
+          {
+            link: '/data-display/visual-patterns/visual-patterns',
+            text: 'Visual patterns',
           },
           {
             link: '/data-display/chart-controls/chart-controls',
