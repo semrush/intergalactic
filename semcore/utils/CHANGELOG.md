@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.19.1] - 2024-02-01
+
+### Changed
+
+- version of `postcss`.
+
 ## [4.19.0] - 2024-01-30
 
 ### Changed
