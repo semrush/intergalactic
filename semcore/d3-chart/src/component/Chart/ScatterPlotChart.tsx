@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent from '@semcore/core';
 import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
-import { minMax, ScatterPlot } from '../..';
+import { minMax, ScatterPlot, getScatterPlotRadius } from '../..';
 import { AbstractChart } from './AbstractChart';
 import {
   ScatterPlotChartData,
@@ -10,10 +10,15 @@ import {
   ScatterPlotChartType,
 } from './ScatterPlotChart.type';
 import { Text } from '@semcore/typography';
+import { BaseChartProps, ListData } from './AbstractChart.type';
 
 class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, ScatterPlotChartProps> {
   static displayName = 'Chart.ScatterPlot';
-  static defaultProps: Partial<ScatterPlotChartProps> = {
+  public static defaultProps: Partial<BaseChartProps<ListData>> = {
+    direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
     showLegend: false,
   };
 
@@ -24,38 +29,40 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
   }
 
   protected get xScale() {
-    const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
+    const { xScale, marginY = 30, plotWidth, data, groupKey, valueKey } = this.asProps;
 
     if (xScale) {
       return xScale;
     }
 
+    const radius = getScatterPlotRadius(valueKey) / this.getValueScale([...this.flatValues]);
     const testItem = data[0][groupKey];
     const range = [marginY, plotWidth - this.plotPadding];
     const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
-      return scaleTime([domain[0] * 0.8, domain[1] * 1.2], range);
+      return scaleTime([domain[0] - radius, domain[1] + radius], range);
     }
 
-    return scaleLinear([domain[0] * 0.8, domain[1] * 1.2], range);
+    return scaleLinear([domain[0] - radius, domain[1] + radius], range);
   }
 
   protected get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, plotHeight } = this.asProps;
+    const { yScale, marginX = 30, plotHeight, valueKey } = this.asProps;
 
     if (yScale) {
       return yScale;
     }
 
     const flatValues = this.flatValues;
+    const radius = getScatterPlotRadius(valueKey) / this.getValueScale([...flatValues]);
 
-    const max = Math.max(...flatValues);
-    const min = Math.min(...flatValues);
+    const max = Math.max(...flatValues) + radius;
+    const min = Math.min(...flatValues) - radius;
 
     return scaleLinear()
       .range([plotHeight - marginX, this.plotPadding])
-      .domain([min * 0.8, max * 1.1]);
+      .domain([min, max]);
   }
 
   protected get flatValues(): Set<number> {

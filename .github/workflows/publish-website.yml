@@ -13,7 +13,7 @@ jobs:
     env:
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v2.2.4
@@ -22,7 +22,7 @@ jobs:
         with:
           version: 8
           run_install: false
-      - uses: actions/setup-node@v3.6.0
+      - uses: actions/setup-node@v4.0.1
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
@@ -40,4 +40,3 @@ jobs:
           git checkout -b website/release
           git push --force --set-upstream origin website/release
           git push origin website/release --force
- 

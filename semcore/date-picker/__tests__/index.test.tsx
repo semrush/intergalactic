@@ -338,6 +338,7 @@ describe('DateRangePicker', () => {
 
     const component = (
       <DateRangePicker
+        defaultDisplayedPeriod={new Date()}
         periods={[]}
         visible
         disablePortal // only for render popper in test

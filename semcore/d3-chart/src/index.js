@@ -25,7 +25,7 @@ export { default as ReferenceLine } from './ReferenceLine';
 
 export { HoverLine, HoverRect } from './Hover';
 
-export { minMax, interpolateValue } from './utils';
+export { minMax, interpolateValue, getBubbleChartValueScale, getScatterPlotRadius } from './utils';
 export { colors } from './color';
 
 export { makeDataHintsContainer } from './a11y/hints';
