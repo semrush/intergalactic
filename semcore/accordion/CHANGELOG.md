@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.21.2] - 2024-02-01
+
+### Fixed
+
+- Handle keyDown event on `Toggle` only for target element.
+
 ## [5.21.1] - 2024-01-29
 
 ### Changed
