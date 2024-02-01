@@ -818,10 +818,20 @@
           "type": "color",
           "description": "Active (selected) state of the primary control with danger theme."
         },
-        "advertising-active": {
-          "value": "{violet.500}",
+        "brand": {
+          "value": "{orange.400}",
           "type": "color",
-          "description": "Background of the advertising primary control."
+          "description": "Background of the primary brand colored control."
+        },
+        "brand-hover": {
+          "value": "{orange.500}",
+          "type": "color",
+          "description": "Hover state of the primary brand colored control."
+        },
+        "brand-active": {
+          "value": "{orange.500}",
+          "type": "color",
+          "description": "Active state of the primary brand colored control."
         },
         "advertising": {
           "value": "{violet.600}",
@@ -832,6 +842,11 @@
           "value": "{violet.700}",
           "type": "color",
           "description": "Active (selected) state of the advertising primary control."
+        },
+        "advertising-active": {
+          "value": "{violet.500}",
+          "type": "color",
+          "description": "Background of the advertising primary control."
         },
         "invert": {
           "value": "{gray.white}",
@@ -847,21 +862,6 @@
           "value": "{gray.100}",
           "type": "color",
           "description": "Active (selected) state of the inverted primary control."
-        },
-        "brand": {
-          "value": "{orange.400}",
-          "type": "color",
-          "description": "Background of the primary brand colored control."
-        },
-        "brand-hover": {
-          "value": "{orange.500}",
-          "type": "color",
-          "description": "Hover state of the primary brand colored control."
-        },
-        "brand-active": {
-          "value": "{orange.600}",
-          "type": "color",
-          "description": "Active state of the primary brand colored control."
         }
       },
       "secondary": {
