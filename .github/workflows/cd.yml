@@ -27,13 +27,13 @@ jobs:
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@v4.0.0
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Cache build
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v4.0.0
         id: cache-build
         with:
           path: |
@@ -73,13 +73,13 @@ jobs:
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@v4.0.0
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore cached build
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v4.0.0
         id: cache-build
         with:
           path: |
@@ -178,13 +178,13 @@ jobs:
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@v4.0.0
         name: Restore pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore cached build
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v4.0.0
         with:
           path: |
             semcore/*/lib
@@ -214,7 +214,7 @@ jobs:
       - name: NPM auth check
         run: pnpm whoami
       - name: Deliver prerelease (old release system)
-        run: pnpm deliver-prerelease
+        run: pnpm --filter intergalactic-migrate run build && pnpm deliver-prerelease
   publish-intergalactic-prerelease:
     runs-on: ubuntu-latest
     needs: [static-lint, unit-tests, browser-tests]
@@ -238,13 +238,13 @@ jobs:
         id: pnpm-cache
         run: |
           echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@v4.0.0
         name: Restore pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore cached build
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@v4.0.0
         with:
           path: |
             semcore/*/lib
@@ -290,13 +290,13 @@ jobs:
   #       id: pnpm-cache
   #       run: |
   #         echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-  #     - uses: actions/cache@v3.3.1
+  #     - uses: actions/cache@v4.0.0
   #       name: Restore pnpm cache
   #       with:
   #         path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
   #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
   #     - name: Restore cached build
-  #       uses: actions/cache@v3.3.1
+  #       uses: actions/cache@v4.0.0
   #       with:
   #         path: |
   #           semcore/*/lib
