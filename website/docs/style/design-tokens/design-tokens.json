@@ -838,12 +838,28 @@
     "components": ["button"]
   },
   {
-    "name": "--intergalactic-control-primary-advertising-active",
+    "name": "--intergalactic-control-primary-brand",
     "type": "color",
-    "rawValue": "{violet.500}",
-    "computedValue": "#8649e1",
-    "description": "Background of the advertising primary control.",
-    "components": ["wizard"]
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
+    "description": "Background of the primary brand colored control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-primary-brand-hover",
+    "type": "color",
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
+    "description": "Hover state of the primary brand colored control.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-primary-brand-active",
+    "type": "color",
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
+    "description": "Active state of the primary brand colored control.",
+    "components": []
   },
   {
     "name": "--intergalactic-control-primary-advertising",
@@ -859,6 +875,14 @@
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
     "description": "Active (selected) state of the advertising primary control.",
+    "components": ["wizard"]
+  },
+  {
+    "name": "--intergalactic-control-primary-advertising-active",
+    "type": "color",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
+    "description": "Background of the advertising primary control.",
     "components": ["wizard"]
   },
   {
@@ -884,30 +908,6 @@
     "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the inverted primary control.",
     "components": ["button", "notice-bubble"]
-  },
-  {
-    "name": "--intergalactic-control-primary-brand",
-    "type": "color",
-    "rawValue": "{orange.400}",
-    "computedValue": "#ff642d",
-    "description": "Background of the primary brand colored control.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-control-primary-brand-hover",
-    "type": "color",
-    "rawValue": "{orange.500}",
-    "computedValue": "#c33909",
-    "description": "Hover state of the primary brand colored control.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-control-primary-brand-active",
-    "type": "color",
-    "rawValue": "{orange.600}",
-    "computedValue": "#8b1500",
-    "description": "Active state of the primary brand colored control.",
-    "components": []
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
