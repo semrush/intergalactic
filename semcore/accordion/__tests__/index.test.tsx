@@ -212,34 +212,36 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith([]);
   });
 
-  test.concurrent('Should not open/close Collapse item by keyboard click on some clickable element in Toggle', async ({ expect }) => {
+  test.concurrent(
+    'Should not open/close Collapse item by keyboard click on some clickable element in Toggle',
+    async ({ expect }) => {
       const spy = vi.fn();
       const spyInnerButton = vi.fn();
       const { getByTestId } = render(
-          <Accordion onChange={spy}>
-              {[...new Array(2)].map((_, index) => {
-                  return (
-                      <Accordion.Item value={index} key={index}>
-                          <Accordion.Item.Toggle>
-                              <Accordion.Item.Chevron />
-                              <div>{`Toggle ${index + 1}`}</div>
-                              <Button
-                                  data-testid={`button_in_toggle_${index + 1}`}
-                                  onClick={(e) => {
-                                      e.stopPropagation();
-                                    spyInnerButton();
-                                  }}
-                              >
-                                  Just button
-                              </Button>
-                          </Accordion.Item.Toggle>
-                          <Accordion.Item.Collapse>
-                              <div>{`Accordion content ${index + 1}`}</div>
-                          </Accordion.Item.Collapse>
-                      </Accordion.Item>
-                  );
-              })}
-          </Accordion>
+        <Accordion onChange={spy}>
+          {[...new Array(2)].map((_, index) => {
+            return (
+              <Accordion.Item value={index} key={index}>
+                <Accordion.Item.Toggle>
+                  <Accordion.Item.Chevron />
+                  <div>{`Toggle ${index + 1}`}</div>
+                  <Button
+                    data-testid={`button_in_toggle_${index + 1}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      spyInnerButton();
+                    }}
+                  >
+                    Just button
+                  </Button>
+                </Accordion.Item.Toggle>
+                <Accordion.Item.Collapse>
+                  <div>{`Accordion content ${index + 1}`}</div>
+                </Accordion.Item.Collapse>
+              </Accordion.Item>
+            );
+          })}
+        </Accordion>,
       );
 
       await userEvent.keyboard('[Tab]');
@@ -251,7 +253,8 @@ describe('Accordion', () => {
 
       expect(spyInnerButton).toBeCalled();
       expect(spy).not.toBeCalled();
-  });
+    },
+  );
 
   test('a11y', async () => {
     const { getByText, container } = render(
