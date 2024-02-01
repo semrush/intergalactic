@@ -1,3 +1,9 @@
+## [15.54.0-prerelease.0] - 2024-02-01
+
+### @semcore/utils
+
+- **Added** New tokens for branded orange buttons: `--intergalactic-control-primary-brand`, `--intergalactic-control-primary-brand-hover`, `--intergalactic-control-primary-active`.
+
 ## [15.53.1] - 2024-02-01
 
 ### @semcore/d3-chart
