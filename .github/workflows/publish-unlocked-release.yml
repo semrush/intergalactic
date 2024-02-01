@@ -15,16 +15,16 @@ jobs:
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2.4.0
         name: Install pnpm
         id: pnpm-install
         with:
           version: 8
           run_install: false
-      - uses: actions/setup-node@v3.6.0
+      - uses: actions/setup-node@v4.0.1
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
@@ -74,16 +74,16 @@ jobs:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2.4.0
         name: Install pnpm
         id: pnpm-install
         with:
           version: 8
           run_install: false
-      - uses: actions/setup-node@v3.6.0
+      - uses: actions/setup-node@v4.0.1
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
