@@ -65,7 +65,7 @@ jobs:
       - name: NPM auth check
         run: pnpm whoami
       - name: Publish release
-        run: pnpm publish-release
+        run: pnpm --filter intergalactic-migrate run build && pnpm publish-release
   publish-website:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
