@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -63,7 +63,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -107,7 +107,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -167,7 +167,7 @@ jobs:
       - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -227,7 +227,7 @@ jobs:
       - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -282,7 +282,7 @@ jobs:
   #     - uses: actions/checkout@v4.1.1
   #       with:
   #         token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
-  #     - uses: pnpm/action-setup@v2.4.0
+  #     - uses: pnpm/action-setup@v2.2.4
   #       with:
   #         version: 8
   #         run_install: false
@@ -343,7 +343,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4.1.1
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 8
           run_install: false
