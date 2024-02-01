@@ -157,23 +157,6 @@ const data = [
 
 :::
 
-## Data loading
-
-::: sandbox
-
-<script lang="tsx">
-import React from 'react';
-import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
-
-const Demo = () => (
-  <React.Fragment>
-    <BubbleChartSkeleton />
-  </React.Fragment>
-);
-</script>
-
-:::
-
 ## Legend and pattern fill
 
 Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
@@ -263,6 +246,23 @@ const data = [
   { x: 4, y: 7, value: 245, label: 'label 4', color: '#AB6CFE' },
   { x: 9, y: 5, value: 7462, label: 'label 5', color: '#66C030' },
 ];
+</script>
+
+:::
+
+## Data loading
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
+
+const Demo = () => (
+  <React.Fragment>
+    <BubbleChartSkeleton />
+  </React.Fragment>
+);
 </script>
 
 :::

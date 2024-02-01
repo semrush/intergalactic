@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.26.1] - 2024-02-01
+
+### Fixed
+
+- view data in BubbleChart.
+- prevent animation on every rerender.
+
 ## [3.26.0] - 2024-01-25
 
 ### Added
@@ -12,7 +19,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- array index out-of-bounds crash and animation glitch at 0 duration
+- array index out-of-bounds crash and animation glitch at 0 duration.
 
 ## [3.25.0] - 2024-01-19
 
