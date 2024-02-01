@@ -1,11 +1,10 @@
 import React from 'react';
-import { scaleSqrt } from 'd3-scale';
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import { CONSTANT, measureText } from './utils';
+import { getBubbleChartValueScale, CONSTANT, measureText } from './utils';
 import Tooltip from './Tooltip';
 import { PatternFill } from './Pattern';
 
@@ -37,9 +36,7 @@ class BubbleRoot extends Component {
 
   animationCircle() {
     const { duration, uid, data, value } = this.asProps;
-    const z = scaleSqrt()
-      .domain([0, Math.max(...data.map((el) => el[value]))])
-      .range([5.5, 50.5]);
+    const z = getBubbleChartValueScale(data, value);
 
     const selectRect = transition().selection().selectAll(`[id^=${uid}${uid}]`).attr('r', 0);
 
@@ -54,8 +51,14 @@ class BubbleRoot extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.animationCircle();
+  componentDidUpdate(prevProps) {
+    const { data, x, y, value } = this.asProps;
+    const { x: prevX, y: prevY, value: prevValue } = prevProps;
+    const prevData = prevProps.$rootProps.data;
+
+    if (data !== prevData || x !== prevX || y !== prevY || value !== prevValue) {
+      this.animationCircle();
+    }
   }
 
   componentDidMount() {
@@ -86,9 +89,7 @@ class BubbleRoot extends Component {
     const SBubble = this.Element;
     const SCenter = 'text';
     const SLabel = 'text';
-    const z = scaleSqrt()
-      .domain([0, Math.max(...data.map((el) => el[value]))])
-      .range([5.5, 50.5]);
+    const z = getBubbleChartValueScale(data, value);
 
     const margin = Math.min(xScale.range()[0], xScale.range()[1]);
 
@@ -174,7 +175,6 @@ class BubbleRoot extends Component {
     return (
       <>
         {data.map(this.renderCircle.bind(this))}
-        {data.map(this.animationCircle.bind(this))}
         <clipPath aria-hidden id={uid}>
           <rect x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />{' '}
         </clipPath>

@@ -246,6 +246,18 @@ export abstract class AbstractChart<
     return total;
   }
 
+  protected getValueScale(values: number[]): number {
+    const max = Math.max(...values);
+    const min = Math.min(...values);
+
+    const avg = (max + min) / 2;
+    const count = Math.round(Math.log10(avg));
+
+    const valueScale = 100 / 10 ** count;
+
+    return valueScale;
+  }
+
   protected setHighlightedLine(index: number) {
     this.setState({ highlightedLine: index });
   }
