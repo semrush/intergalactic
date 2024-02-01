@@ -1,7 +1,7 @@
 {
   "name": "@semcore/sticky",
   "description": "Semrush Sticky Component",
-  "version": "3.17.0",
+  "version": "3.17.1-prerelease.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
-    "@semcore/utils": "4.19.0",
-    "@semcore/flex-box": "5.17.0"
+    "@semcore/utils": "4.19.1-prerelease.1",
+    "@semcore/flex-box": "5.17.1-prerelease.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.16.0",
+    "@semcore/core": "^2.16.1-prerelease.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

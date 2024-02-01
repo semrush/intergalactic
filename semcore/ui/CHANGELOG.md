@@ -1,3 +1,14 @@
+## [15.53.1] - 2024-02-01
+
+### @semcore/d3-chart
+
+- **Fixed** view data in BubbleChart.
+- **Fixed** prevent animation on every rerender.
+
+### @semcore/utils
+
+- **Changed** version of `postcss`.
+
 ## [15.53.0] - 2024-01-31
 
 ### @semcore/accordion
