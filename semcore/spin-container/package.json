@@ -1,7 +1,7 @@
 {
   "name": "@semcore/spin-container",
   "description": "Semrush SpinContainer Component",
-  "version": "7.18.0",
+  "version": "7.18.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "types": "lib/types/index.d.ts",
@@ -12,13 +12,13 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.19.0",
-    "@semcore/spin": "5.17.0",
-    "@semcore/flex-box": "5.17.0",
-    "@semcore/animation": "2.17.0"
+    "@semcore/utils": "4.19.1",
+    "@semcore/spin": "5.17.1",
+    "@semcore/flex-box": "5.17.1",
+    "@semcore/animation": "2.17.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.16.0",
+    "@semcore/core": "^2.16.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
