@@ -358,9 +358,9 @@ SAddon[size='l'] {
   }
 
   &:only-child {
-    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     /* -1px - for border width */
-    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     /* -1px - for border width */
   }
 }
