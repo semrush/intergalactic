@@ -77,7 +77,7 @@ export const publishRelease = async () => {
   const npmData = await fetchFromNpm();
   const packages = await collectPackages(npmData);
   const tarballUrls = await collectTarballs(unlockedRelease);
-  const tarballPaths = await downloadTarballs(tarballUrls);
+  const tarballPaths = await downloadTarballs(tarballUrls, '.tmp/prerelease');
   const packagesPaths = await unpackTarballs(tarballPaths);
   const versionPatches = await patchVersionsFromPrereleaseToRelease(packagesPaths, packages);
   await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
