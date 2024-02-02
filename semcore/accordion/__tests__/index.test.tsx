@@ -1,11 +1,12 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Accordion from '../src';
 import { Intergalactic } from '@semcore/core';
+import Button from '@semcore/button';
 
 describe('Accordion', () => {
   describe('types', () => {
@@ -210,6 +211,50 @@ describe('Accordion', () => {
     fireEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
   });
+
+  test.concurrent(
+    'Should not open/close Collapse item by keyboard click on some clickable element in Toggle',
+    async ({ expect }) => {
+      const spy = vi.fn();
+      const spyInnerButton = vi.fn();
+      const { getByTestId } = render(
+        <Accordion onChange={spy}>
+          {[...new Array(2)].map((_, index) => {
+            return (
+              <Accordion.Item value={index} key={index}>
+                <Accordion.Item.Toggle>
+                  <Accordion.Item.Chevron />
+                  <div>{`Toggle ${index + 1}`}</div>
+                  <Button
+                    data-testid={`button_in_toggle_${index + 1}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      spyInnerButton();
+                    }}
+                  >
+                    Just button
+                  </Button>
+                </Accordion.Item.Toggle>
+                <Accordion.Item.Collapse>
+                  <div>{`Accordion content ${index + 1}`}</div>
+                </Accordion.Item.Collapse>
+              </Accordion.Item>
+            );
+          })}
+        </Accordion>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Tab]');
+
+      expect(getByTestId('button_in_toggle_1')).toHaveFocus();
+
+      await userEvent.keyboard('[Enter]');
+
+      expect(spyInnerButton).toBeCalled();
+      expect(spy).not.toBeCalled();
+    },
+  );
 
   test('a11y', async () => {
     const { getByText, container } = render(

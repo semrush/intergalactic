@@ -111,14 +111,18 @@ export class RootItem extends Component {
 class Toggle extends Component {
   static enhance = [keyboardFocusEnhance()];
 
-  handleKeyDown(e) {
+  toggleRef = React.createRef();
+
+  handleKeyDown = (e) => {
     switch (e.key) {
       case 'Enter':
-      case ' ':
-        e.preventDefault();
-        e.currentTarget.click();
+      case ' ': {
+        if (this.toggleRef.current === e.target) {
+          e.currentTarget.click();
+        }
+      }
     }
-  }
+  };
 
   render() {
     const { styles, disabled } = this.asProps;
@@ -126,6 +130,7 @@ class Toggle extends Component {
 
     return sstyled(styles)(
       <SItemToggle
+        ref={this.toggleRef}
         render={Box}
         onKeyDown={this.handleKeyDown}
         aria-disabled={disabled ? 'true' : undefined}
