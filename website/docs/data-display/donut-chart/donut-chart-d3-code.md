@@ -223,7 +223,7 @@ const Demo = () => {
     <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
         <Donut.Pie name='Speed' dataKey='speed' />
-        <Donut.Pie name='Other' dataKey='other' color='#E0E1E9' />
+        <Donut.Pie name='Other' dataKey='other' color='chart-grid-bar-chart-base-bg' />
         <Donut.Label>
           <Text tag='tspan' x='0' dy='-1.2em' fill='#6C6E79' size={400}>
             Keyword volume
