@@ -7,6 +7,7 @@ import { render } from '@semcore/testing-utils/testing-library';
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/L';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button from '../src';
 
@@ -49,6 +50,12 @@ describe('Button', () => {
 
   test.concurrent('Renders correctly with one Addon as props', async ({ task }) => {
     const component = <Button addonLeft={CheckM} aria-label='Check' />;
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Renders correctly with one Addon as props for large size', async ({ task }) => {
+    const component = <Button addonLeft={CheckL} aria-label='Check' size='l' />;
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
