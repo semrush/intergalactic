@@ -1,3 +1,9 @@
+## [15.54.1] - 2024-02-02
+
+### @semcore/accordion
+
+- **Fixed** Handle keyDown event on `Toggle` only for target element.
+
 ## [15.54.0] - 2024-02-01
 
 ### @semcore/utils
