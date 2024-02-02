@@ -33,36 +33,36 @@ const publishIntergalacticRelease = async () => {
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
   // 3) Check that all tests are passed and release is unlocked
-  // const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath, log);
-  // if (!unlockedRelease) {
-  //   log('No unlocked prerelease found.');
-  //   if (!process.argv.includes('--dry-run')) {
-  //     return;
-  //   }
-  // }
+  const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath, log);
+  if (!unlockedRelease) {
+    log('No unlocked prerelease found.');
+    if (!process.argv.includes('--dry-run')) {
+      return;
+    }
+  }
 
   // 4) Get prerelease tarball
-  // const logs = await git.log({ maxCount: 10 });
-  // const filteredLogs = logs.all.filter((item) => item.author_name !== CI_AUTHOR_NAME);
-  // const hash = filteredLogs[0].hash;
-  // const shortHash = hash.slice(0, 8);
-  //
-  // const npmResponse = await axios.get<ResponseNpmRegistry>(
-  //   `https://registry.npmjs.org/intergalactic/${version}-prerelease-${shortHash}`,
-  // );
-  //
-  // const tarballUrl = npmResponse.data.dist.tarball;
-  //
-  // const tarballPaths = await downloadTarballs([tarballUrl], '.tmp/prerelease_intergalactic');
-  // const [packagePath] = await unpackTarballs(tarballPaths);
+  const logs = await git.log({ maxCount: 10 });
+  const filteredLogs = logs.all.filter((item) => item.author_name !== CI_AUTHOR_NAME);
+  const hash = filteredLogs[0].hash;
+  const shortHash = hash.slice(0, 8);
+
+  const npmResponse = await axios.get<ResponseNpmRegistry>(
+    `https://registry.npmjs.org/intergalactic/${version}-prerelease-${shortHash}`,
+  );
+
+  const tarballUrl = npmResponse.data.dist.tarball;
+
+  const tarballPaths = await downloadTarballs([tarballUrl], '.tmp/prerelease_intergalactic');
+  const [packagePath] = await unpackTarballs(tarballPaths);
 
   // 5) Update versions in components.json in both tarball nd current entry-point
-  // updateComponentsVersions(packages, path.resolve(packagePath, 'components.json'));
+  updateComponentsVersions(packages, path.resolve(packagePath, 'components.json'));
   updateComponentsVersions(packages, path.resolve(dirname, 'components.json'));
 
   // 5) Publish package
-  // fs.writeJsonSync(path.resolve(packagePath, 'package.json'), packageJson, { spaces: 2 });
-  // await publishTarball(packageJson.name, packagePath);
+  fs.writeJsonSync(path.resolve(packagePath, 'package.json'), packageJson, { spaces: 2 });
+  await publishTarball(packageJson.name, packagePath);
 
   // 6) Close tasks in clickup
   if (!process.argv.includes('--dry-run') && version) {
