@@ -2213,6 +2213,7 @@
       "base-trigger",
       "button",
       "card",
+      "carousel",
       "color-picker",
       "counter",
       "d3-chart",
