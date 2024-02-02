@@ -29,14 +29,14 @@ const downloadFile = async (fileUrl: string, outputPath: string) => {
   });
 };
 
-export const downloadTarballs = async (urls: string[]): Promise<string[]> => {
+export const downloadTarballs = async (urls: string[], rootDir: string): Promise<string[]> => {
   log('Downloading tarballs...');
-  await fs.emptyDir('.tmp/prerelease');
-  await fs.ensureDir('.tmp/prerelease/tarballs');
+  await fs.emptyDir(rootDir);
+  await fs.ensureDir(`${rootDir}/tarballs`);
   const paths = await Promise.all(
     urls.map(async (url) => {
       const fileName = url.split('/')[url.split('/').length - 1];
-      const path = `.tmp/prerelease/tarballs/${fileName}`;
+      const path = `${rootDir}/tarballs/${fileName}`;
 
       await downloadFile(url, path);
 

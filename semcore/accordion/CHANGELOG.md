@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.21.3] - 2024-02-01
+## [5.22.1] - 2024-02-02
 
 ### Fixed
 
 - Handle keyDown event on `Toggle` only for target element.
+
+## [5.22.0] - 2024-02-01
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.19.1 ~> 4.20.0]).
 
 ## [5.21.2] - 2024-02-01
 
