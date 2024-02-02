@@ -5,36 +5,38 @@ tabName: Design
 docs: true
 ---
 
-## Basic rules
+## Basic principles
 
-- Use color thoughtfully and don't make colors too bright without a reason. **Keep in mind the visual hierarchy.**
-- If there are several widgets on a page that mention the same entity, then use the same color for the entity in all widgets on the same page.
-- **Keep in mind that green and red are often associated with good and bad, growth and decline.**
+- Use colors thoughtfully and avoid excessive brightness without a valid reason, **always considering the visual hierarchy**.
+- When multiple widgets on a page reference the same entity, ensure consistent color usage for that entity across all widgets on the page.
+- Be mindful that green and red are often associated with positive and negative connotations, such as growth and decline.
 
 ::: tip
-**We recommend using red carefully**. It is usually used for destructive actions and invalid states.
+We recommend using red carefully, as it is typically reserved for destructive actions and invalid states.
 :::
 
 ## Chart tokens
 
-You can find all tokens for charts in the [tokens list](/style/design-tokens/design-tokens#semantic_tokens). They all have `chart` in their token name.
+For chart-related elements, refer to the [tokens list](/style/design-tokens/design-tokens#semantic_tokens) containing tokens with `chart` in their names.
 
 ## Tokens for text and additional information
 
-| Token                 | Usage                                                       |
-| --------------------- | ----------------------------------------------------------- |
-| `--text-primary`      | Basic text information                                      |
-| `--text-secondary`    | Additional text information                                 |
-| `--chart-grid-line`   | The X-axis and the accent lines on the grid when, if needed |
-| `--chart-grid-x-axis` | Additional guide lines                                      |
+Table: Tokens for text and additional information
+
+| Token                 | Usage                                                    |
+| --------------------- | -------------------------------------------------------- |
+| `--text-primary`      | Primary text information                                 |
+| `--text-secondary`    | Additional text information                              |
+| `--chart-grid-line`   | Grid lines for the X-axis and accent lines, if necessary |
+| `--chart-grid-x-axis` | Additional guide lines for X-axis                        |
 
 ## Colors usage
 
-There are two ways of coloring your data with our palette.
+There are two approaches for applying colors from our palette:
 
 ### Categorical order
 
-This way helps to choose colors with a predefined order and contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base_tokens_palette).
+This method assists in selecting colors in a predefined order with suitable contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base_tokens_palette).
 
 #### Basic pack
 
@@ -151,6 +153,37 @@ const App = function (props) {
 
 :::
 
+#### Total amount
+
+Use `--chart-palette-order-total-amount` token to indicate total values.
+
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--gray-400'] // totalAmount
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
+
 #### Other data
 
 Use `--chart-palette-order-other-data` token to indicate voids, missing or some other data.
@@ -182,9 +215,40 @@ const App = function (props) {
 
 :::
 
+#### Null and n/a data
+
+Use `--chart-palette-order-null` token to indicate null or not available data when applicable (for example, in Donut chart).
+
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Color from '@components/Color';
+
+const colors = ['--gray-100'] // nullData
+
+const App = function (props) {
+  return (
+    <div style={{ marginBottom: 32 }}>
+      {colors.map((colorName, i) => {
+        return (
+          <Color
+            key={i}
+            style={{ margin: 4, width: 48, height: 48, borderRadius: 6 }}
+            name={colorName}
+          />
+        );
+      })}
+    </div>
+  );
+}
+</script>
+
+:::
+
 ### Sequental order
 
-This way helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base).
+This method helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base).
 
 #### Blue
 
@@ -453,6 +517,10 @@ const App = function (props) {
 The recommended maximum number of colors on a chart is 30.
 :::
 
-30 and more colors are for the really complex cases where you need a large number of colors that will be set for the data by the system.
+Using 30 or more colors is reserved for exceptionally complex scenarios when a large number of colors must be assigned by the system for data representation.
 
-To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/design-tokens#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.
+To create a usable palette for such situations, begin by using [tokens from the base palette](/style/design-tokens/design-tokens#base_tokens_palette) with a hue of 300, followed by 200, and then 400. Continue this process until you achieve the desired quantity of colors.
+
+## Accessibility
+
+To make charts more visually accessible, you can fill them with patterns (`patterns` property in our D3 chart components). Refer to [D3 chart's accessibility section](/data-display/d3-chart/d3-chart-a11y#colorblind-and-low-vision-solution), for more details on usage of the feature.
