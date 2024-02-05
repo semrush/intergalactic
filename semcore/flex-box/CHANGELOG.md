@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `InvalidStatePattern` component.
+- `InvalidStateBox` component.
 
 ## [5.18.0] - 2024-02-01
 

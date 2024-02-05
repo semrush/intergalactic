@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [6.21.1] - 2024-02-05
 
-### Changed
+### Fixed
 
-- Use `InvalidStatePattern`.
+- Invalid attribute errors in console that appears when component has invalid state.
 
 ## [6.21.0] - 2024-02-01
 

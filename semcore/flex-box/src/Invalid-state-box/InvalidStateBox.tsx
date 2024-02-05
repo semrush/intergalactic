@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { sstyled, Root } from '@semcore/core';
-import style from './invalidStatePattern.shadow.css';
+import style from './invalidStateBox.shadow.css';
 import Box from '../Box';
 
 const InvalidStatePatternComponent = () => {
@@ -9,6 +9,6 @@ const InvalidStatePatternComponent = () => {
   return sstyled(style)(<SPattern render={Box} />);
 };
 
-export const InvalidStatePattern = createComponent(InvalidStatePatternComponent);
+export const InvalidStateBox = createComponent(InvalidStatePatternComponent);
 
-export default InvalidStatePattern;
+export default InvalidStateBox;

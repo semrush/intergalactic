@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Mark InvalidStatePattern as `deprecated` because of moving it to flex-box.
+- Deprecated all `@semcore/ui/utils/lib/invalid-state-pattern/InvalidStatePattern`.
 
 ## [4.20.0] - 2024-02-01
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box, InvalidStatePattern } from '@semcore/flex-box';
+import { Box, InvalidStateBox } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import Tooltip, { ITooltipProps } from '@semcore/tooltip';
 import style from './style/inline-input.shadow.css';
@@ -260,7 +260,7 @@ class InlineInputBase extends Component<RootAsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const SInvalidPattern = InvalidStatePattern;
+    const SInvalidPattern = InvalidStateBox;
     const { Children, styles, getI18nText, state } = this.asProps;
     const { focused } = this.state;
 
