@@ -41,8 +41,7 @@ const data = Array(20)
 
 ## Line
 
-- Line charts are displayed using the `Line` component.
-- `Dots` are the dots on the line chart.
+Line charts are displayed using the `Line` component. `Dots` are the dots on the line chart.
 
 ::: sandbox
 
@@ -92,7 +91,7 @@ const data = Array(20)
 
 ## Line with area
 
-- You must define `y0` and `y1` in `Line.Area` props and in the `data`.
+To get line with area, define `y0` and `y1` in `Line.Area` props and in the `data`.
 
 ::: sandbox
 
@@ -354,7 +353,7 @@ const data = Array(10)
 
 ## Curve
 
-To get smoothed lines, you need to transfer curve with the required rounding method to the chart. You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+To get curved lines, transfer `curve` property with the required rounding method to the chart. You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
 ::: sandbox
 
@@ -421,6 +420,10 @@ const data = Array(20)
 :::
 
 ## Legend and symbols for dots
+
+To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property. With this property enabled lines become dashed and change dots to different symbols.
+
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 

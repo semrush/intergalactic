@@ -4,10 +4,6 @@ fileSource: d3-chart
 tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -63,6 +59,10 @@ const App = PlaygroundGeneration((preview) => {
 }, {filterProps: ['data']});
 </script>
 
+:::
+
+::: tip
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description

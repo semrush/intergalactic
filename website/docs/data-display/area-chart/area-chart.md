@@ -4,10 +4,6 @@ fileSource: d3-chart
 tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -98,6 +94,10 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
+::: tip
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
+:::
+
 ## Description
 
 **Area chart** shows trends and the relationship between numeric variables over time. Area charts often used to show overall trends over time rather than specific values.
@@ -110,7 +110,7 @@ const App = PlaygroundGeneration((preview) => {
 - For showing data proportions as well as quantities, use a [Stacked area chart](/data-display/stacked-area-chart/stacked-area-chart).
 
 ::: tip
-For more insights on choosing between line and area charts:
+Refer to materials below, to have insights on choosing between line and area charts:
 
 - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
