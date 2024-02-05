@@ -42,6 +42,14 @@ class FeedbackForm extends Component {
 
   focusDecorator = createFocusDecorator();
 
+  getItemProps() {
+    const { validateOnBlur } = this.asProps;
+
+    return {
+      validateOnBlur,
+    };
+  }
+
   render() {
     const SFeedbackForm = Box;
     const { Children, styles, forwardRef, loading, background, theme, ...other } = this.asProps;
@@ -104,18 +112,20 @@ function Item({ Children, tag, uid, ...props }) {
   return (
     <Field {...props}>
       {({ input, meta, ...other }) => {
+        const showError = other.validateOnBlur === false ? meta.submitFailed : true;
         const invalid = meta.invalid && meta.touched;
+        const errorState = showError && invalid;
         const inputProps = {
           ...input,
-          state: invalid ? 'invalid' : 'normal',
-          'aria-invalid': invalid ? true : false,
+          state: errorState ? 'invalid' : 'normal',
+          'aria-invalid': errorState ? true : false,
           'aria-errormessage': uid,
         };
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
           <Tooltip
-            visible={invalid && meta.active}
+            visible={errorState && meta.active}
             theme='warning'
             placement='left'
             flip={{
