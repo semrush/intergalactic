@@ -31,6 +31,11 @@ const data = [
 
 :::
 
+::: tip
+For all the following examples, scale is calculated taking into account synthetic data. 
+You can see the mathematics, used in `Change.Bubble` to calculate common scale, in [our github repo](https://github.com/semrush/intergalactic/blob/master/semcore/d3-chart/src/component/Chart/BubbleChart.tsx#L84).
+:::
+
 ## Bubble chart
 
 ::: sandbox
@@ -48,11 +53,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain([0, 10]);
+    .domain([-4, 14]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-4, 14]);
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -116,7 +121,7 @@ const Demo = () => {
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-1, 10]);
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -182,7 +187,7 @@ const dataHints = makeDataHintsContainer();
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
-  const height = 200;
+  const height = 300;
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
@@ -190,7 +195,7 @@ const Demo = () => {
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-2, 10]);
 
   const legendItems = data.map((item, index) => {
     return {
