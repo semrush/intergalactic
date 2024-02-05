@@ -55,7 +55,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+**Zero counts as data. 0 ≠ n/a.**
 :::
 
 ![](/data-display/bar-chart/static/null-bar-chart.png)

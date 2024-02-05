@@ -178,7 +178,7 @@ Display message: "No more results" – below the values with a 32px margin.
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+**Zero counts as data. 0 ≠ n/a.**
 :::
 
 ![](static/null-bar-horizontal.png)

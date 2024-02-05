@@ -178,7 +178,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+**Zero counts as data. 0 ≠ n/a.**
 :::
 
 ![](static/null-histogram-chart.png)

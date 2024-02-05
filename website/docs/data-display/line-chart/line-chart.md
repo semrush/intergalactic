@@ -221,7 +221,7 @@ For this case enable the display of dots on the chart by default.
 If all values on the chart are zero, then show the trend line on the zero axis.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+**Zero counts as data. 0 ≠ n/a.**
 :::
 
 ![](static/null-line-chart.png)
@@ -235,7 +235,7 @@ When user hovers over a dot that some of the categories don't have data for, sho
 ## No data area
 
 ::: tip
-**When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
+**When there is no data, you can't draw a zero line. Zero counts as data. 0 ≠ n/a.**
 :::
 
 In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
