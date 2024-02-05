@@ -65,4 +65,4 @@ jobs:
         env:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
         run: |
-          pnpm slack-updates-broadcast
+          pnpm --filter intergalactic-migrate run build && pnpm slack-updates-broadcast

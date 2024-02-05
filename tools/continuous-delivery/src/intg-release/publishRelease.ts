@@ -53,7 +53,7 @@ const publishIntergalacticRelease = async () => {
 
   const tarballUrl = npmResponse.data.dist.tarball;
 
-  const tarballPaths = await downloadTarballs([tarballUrl]);
+  const tarballPaths = await downloadTarballs([tarballUrl], '.tmp/prerelease_intergalactic');
   const [packagePath] = await unpackTarballs(tarballPaths);
 
   // 5) Update versions in components.json in both tarball nd current entry-point

@@ -80,3 +80,4 @@
 15.53.0-prerelease.1=68e6245afa3f83ff975b8ce5fc50b976edc3bf66
 15.53.1-prerelease.0=68e6245afa3f83ff975b8ce5fc50b976edc3bf66
 15.54.0-prerelease.0=68e6245afa3f83ff975b8ce5fc50b976edc3bf66
+15.54.1-prerelease.0=68e6245afa3f83ff975b8ce5fc50b976edc3bf66
