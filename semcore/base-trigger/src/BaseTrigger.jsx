@@ -1,13 +1,12 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box, InvalidStatePattern } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
 import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/base-trigger.shadow.css';
 
@@ -43,7 +42,7 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const SInvalidPattern = InvalidPattern;
+    const SInvalidPattern = InvalidStatePattern;
     const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
 
     logger.warn(

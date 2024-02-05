@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.1] - 2024-02-05
+
+### Changed
+
+- Use `InvalidStatePattern`.
+
 ## [4.24.0] - 2024-02-01
 
 ### Changed

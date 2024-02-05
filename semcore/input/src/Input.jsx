@@ -1,10 +1,9 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box, InvalidStatePattern } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/input.shadow.css';
 
@@ -111,7 +110,7 @@ class Input extends Component {
               <NeighborLocation controlsLength={controlsLength}>
                 <Children />
               </NeighborLocation>
-              <SOutline>{state === 'invalid' && <InvalidPattern />}</SOutline>
+              <SOutline>{state === 'invalid' && <InvalidStatePattern />}</SOutline>
             </SInput>,
           )
         }
