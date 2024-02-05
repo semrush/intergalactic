@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.19.1] - 2024-02-02
+
+### Fixed
+
+- `validateOnBlur=false` behaviour.
+
 ## [6.19.0] - 2024-02-01
 
 ### Changed
