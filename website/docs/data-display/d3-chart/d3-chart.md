@@ -9,7 +9,7 @@ tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api')
 
 **D3 chart components** offer various chart types and tools for data visualization.
 
-Refer to [Charts showcase](/data-display/chart-showcase), to explore all charts and pick the best one for your needs.
+Refer to [Charts showcase](/data-display/chart-showcase/chart-showcase), to explore all charts and pick the best one for your needs.
 
 ## Grid and axes
 
