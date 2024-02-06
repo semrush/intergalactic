@@ -69,3 +69,21 @@ import { HoverRect } from '@semcore/ui/d3-chart';
 <TypesView type="HoverProps" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
+
+## Pattern fill
+
+```ts
+type Pattern = {
+  fill: {
+    viewBox: string;
+    children: React.ReactNode;
+  };
+  symbol: {
+    viewBox: string;
+    size: [width: number, height: number];
+    children: React.ReactNode;
+  };
+};
+```
+
+<TypesView type="Pattern" :types={...types} />

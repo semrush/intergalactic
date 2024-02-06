@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { log } from '../utils';
-import { replaceImports } from 'intergalactic-migrate';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
@@ -20,6 +19,7 @@ async function copyComponent(componentName: string, toCopy: string | string[]) {
       await fs.copy(from, to, { recursive: true });
     }),
   );
+  const { replaceImports } = await import('intergalactic-migrate');
 
   await replaceImports(path.resolve(dirname, componentName));
 }

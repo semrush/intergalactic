@@ -69,7 +69,7 @@ It is appropriate when it is necessary to manage only the content within the opt
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/#_the_second_method.tsx';
+  export Demo from './examples/the_second_method.tsx';
 </script>
 
 :::
