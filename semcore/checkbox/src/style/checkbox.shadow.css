@@ -16,6 +16,10 @@ SLabel {
       opacity: var(--intergalactic-disabled-opacity, 0.3);
     }
   }
+
+  SText[color] {
+    color: var(--color);
+  }
 }
 
 SControl {
@@ -71,6 +75,7 @@ SCheckbox[size='l'] {
   margin-top: var(--intergalactic-spacing-05x, 2px);
   width: 20px;
   height: 20px;
+
   &[checked]::after {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
   }
@@ -80,6 +85,7 @@ SCheckbox[size='m'] {
   margin-top: var(--intergalactic-spacing-05x, 2px);
   width: 16px;
   height: 16px;
+
   &[checked]::after {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
   }
@@ -97,19 +103,19 @@ SText[size='m'] {
 }
 
 
-SControl[checked] ~ SCheckbox[state='normal']:before,
-SControl[checked] ~ SCheckbox[state='invalid']:before {
+SControl[checked]~SCheckbox[state='normal']:before,
+SControl[checked]~SCheckbox[state='invalid']:before {
   background-color: var(--intergalactic-control-primary-info, #008ff8);
   border-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
-SControl[indeterminate] ~ SCheckbox[state='normal']:before {
+SControl[indeterminate]~SCheckbox[state='normal']:before {
   background-color: var(--intergalactic-control-primary-info, #008ff8);
   border-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
 SCheckbox[state='invalid'],
-SControl[checked] ~ SCheckbox[state='invalid'] {
+SControl[checked]~SCheckbox[state='invalid'] {
   &:before {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
   }
@@ -126,36 +132,36 @@ SControl[checked] {
   }
 }
 
-SControl[disabled] ~ SCheckbox:before {
+SControl[disabled]~SCheckbox:before {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
 }
 
-SControl[checked] ~ SCheckbox {
+SControl[checked]~SCheckbox {
   &[state='invalid']:before {
     background-color: var(--intergalactic-control-primary-critical, #ff4953);
     border-color: var(--intergalactic-control-primary-critical, #ff4953);
   }
 }
 
-SControl[indeterminate] ~ SCheckbox:after {
+SControl[indeterminate]~SCheckbox:after {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   margin: auto;
   /* disable-tokens-validator */
   border-radius: 1px;
 }
 
-SControl[indeterminate] ~ SCheckbox[size='l']:after {
+SControl[indeterminate]~SCheckbox[size='l']:after {
   width: 12px;
   height: 2px;
 }
 
-SControl[indeterminate] ~ SCheckbox[size='m']:after {
+SControl[indeterminate]~SCheckbox[size='m']:after {
   width: 8px;
   height: 2px;
 }
 
-SControl[indeterminate] ~ SCheckbox[state='invalid']:before {
+SControl[indeterminate]~SCheckbox[state='invalid']:before {
   background-color: var(--intergalactic-control-primary-critical, #ff4953);
   border-color: var(--intergalactic-control-primary-critical, #ff4953);
 }
@@ -163,17 +169,18 @@ SControl[indeterminate] ~ SCheckbox[state='invalid']:before {
 SCheckbox[theme][state='normal']:before {
   border-color: var(--theme);
 }
+
 SCheckbox[theme][state='normal'][keyboardFocused]:before {
   border-color: var(--theme);
 }
 
-SControl[checked] ~ SCheckbox[theme][state='normal']:before,
-SControl[checked] ~ SCheckbox[theme][state='invalid']:before {
+SControl[checked]~SCheckbox[theme][state='normal']:before,
+SControl[checked]~SCheckbox[theme][state='invalid']:before {
   background-color: var(--theme);
   border-color: var(--theme);
 }
 
-SControl[indeterminate] ~ SCheckbox[theme][state='normal']:before {
+SControl[indeterminate]~SCheckbox[theme][state='normal']:before {
   background-color: var(--theme);
   border-color: var(--theme);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
+import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -208,7 +209,7 @@ CheckMark.displayName = 'CheckMark';
 
 const Text = (props) => {
   const SText = Root;
-  const { styles } = props;
+  const { styles, color } = props;
 
   React.useEffect(() => {
     if (props.rootDisabled !== props.disabled) {
@@ -216,7 +217,11 @@ const Text = (props) => {
     }
   }, [props.rootDisabled, props.disabled, props.hoistDisabled]);
 
-  return sstyled(styles)(<SText render={TypographyText} tag='span' />);
+  const resolveColor = useColorResolver();
+
+  return sstyled(styles)(
+    <SText render={TypographyText} tag='span' use:color={resolveColor(color)} />,
+  );
 };
 Text.displayName = 'Text';
 
