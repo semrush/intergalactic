@@ -49,6 +49,19 @@ describe('Checkbox', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Should support custom text color', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps m='5px'>
+        <Checkbox>
+          <Checkbox.Value />
+          <Checkbox.Text color='text-critical'>Label</Checkbox.Text>
+        </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px'>

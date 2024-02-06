@@ -6,6 +6,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
+import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 import style from './style/radio.shadow.css';
 import logger from '@semcore/utils/lib/logger';
@@ -265,15 +266,18 @@ RadioMark.displayName = 'RadioMark';
 
 const Text = (props) => {
   const SText = Root;
-  const { styles } = props;
+  const { styles, color } = props;
 
   React.useEffect(() => {
     if (props.rootDisabled !== props.disabled) {
       props.hoistDisabled(props.disabled);
     }
   }, [props.rootDisabled, props.disabled, props.hoistDisabled]);
+  const resolveColor = useColorResolver();
 
-  return sstyled(styles)(<SText render={TypographyText} tag='span' />);
+  return sstyled(styles)(
+    <SText render={TypographyText} tag='span' use:color={resolveColor(color)} />,
+  );
 };
 Text.displayName = 'Text';
 
