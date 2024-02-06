@@ -105,7 +105,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 **Key considerations for using an area chart:**
 
 - Use an area chart to present a broader view of data. _For example, line charts are good for tracking population changes over time, but area charts excel at showing the total population volume over a period._
-- Limit the categories to no more than four to maintain clarity; otherwise, consider the [Line](/data-display/line-chart/line-chart) chart for a cleaner data presentation.
+- Stick to no more than four data sets to keep your chart readable. If you have more, the [Line](/data-display/line-chart/line-chart) might be a better choice for a clearer view.
 - Ensure the chart is clearly labeled for easy understanding of the axes.
 - For showing data proportions as well as quantities, use a [Stacked area chart](/data-display/stacked-area-chart/stacked-area-chart).
 
@@ -132,7 +132,7 @@ Display dots on lines when data points either are few or collected irregularly.
 
 ## Interaction
 
-Hovering over the chart shows a vertical guide line at the nearest dot and a tooltip with detailed data. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
+Hovering over the chart highlights the nearest point with a vertical guide line, enlarges the dot, and shows a detailed tooltip. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
 ::: tip
 For detailed tooltip information, see [Chart principles](/data-display/d3-chart/d3-chart#tooltip) and [Line chart](/data-display/line-chart/line-chart).
@@ -182,7 +182,7 @@ Display a tooltip with n/a when hovering over a dot without data, and explain wh
 
 ![](static/partially.png)
 
-### Initial data loading
+## Initial data loading
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 

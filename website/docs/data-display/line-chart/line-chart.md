@@ -227,7 +227,7 @@ Display a tooltip with n/a when hovering over a dot without data, and explain wh
 
 ![](static/not-available.png)
 
-### Initial data loading
+## Initial data loading
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
