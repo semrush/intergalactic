@@ -103,7 +103,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
 
 :::
 
-## Label bar
+## Bar labels
 
 To draw the values of the bars, pass the function to `<Bar/>` to receive all required values.
 
@@ -165,7 +165,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
 
 :::
 
-## Horizontal group bar
+## Grouped horizontal bars
 
 To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>`.
 

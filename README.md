@@ -12,7 +12,7 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 
 ## Features ✨
 
-- 80+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
+- 56+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
 - High-quality React components out of the box
 - Written in TypeScript with predictable static types
 - Whole package of design resources and development tools

@@ -164,6 +164,6 @@ Table: Mini chart states
 | State         | Appearance example | Description |
 | ------------- | ------------------ | ----------- |
 | Default       | ![](static/trend-default.png) | |
-| Null data     | ![](static/trend-null-data.png) | If all values on the chart are zero, then show the trend line on the zero axis. **Zero is also data. 0 ≠ `n/a`.** |
+| Null data     | ![](static/trend-null-data.png) | If all values on the chart are zero, then show the trend line on the zero axis. **Zero counts as data. 0 ≠ n/a.** |
 | No available data       | ![](static/trend-no-data.png) | If there are no available data, then show only the "n/a" text for the value. |
 | Initial data loading | ![](static/trend-skeleton.png) | When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart. |

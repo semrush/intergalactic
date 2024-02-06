@@ -19,7 +19,7 @@ hero:
 
 features:
   - title: Components
-    details: 80+ React components out of the box
+    details: 56+ React components out of the box
     link: /components/components-showcase/components-showcase
     linkText: Explore
   - title: Сharts

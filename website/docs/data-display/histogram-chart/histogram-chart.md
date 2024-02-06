@@ -4,10 +4,6 @@ fileSource: d3-chart
 tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -64,6 +60,10 @@ const App = PlaygroundGeneration((preview) => {
 }, {filterProps: ['data']});
 </script>
 
+:::
+
+::: tip
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -178,7 +178,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+**Zero counts as data. 0 ≠ n/a.**
 :::
 
 ![](static/null-histogram-chart.png)

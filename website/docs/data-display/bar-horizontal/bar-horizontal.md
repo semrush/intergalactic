@@ -4,10 +4,6 @@ fileSource: d3-chart
 tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -65,58 +61,58 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
-## Description
-
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/bar-chart) or horizontal.
-
 ::: tip
-**Difference from histogram chart**
-
-Bar chart displays distribution of datasets by quality categories.
-
-Histogram charts are used to display distribution of datasets: how often values fall into quantitative ranges.
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
-Important points to keep in mind when presenting data as a bar chart:
+## Description
 
-- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
-- Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
+**Horizontal bar chart** visualizes distribution of values by category for value comparison.
+
+::: tip
+**Bar vs. Histogram Chart**
+
+- Bar charts categorize data qualitatively, showing how different categories compare.
+- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
+:::
+
+**Key points for bar charts:**
+
+- Ensure the chart's axes are understandable. Label them if needed.
+- Use simple color schemes. Highlight categories only when needed.
 
 ## Usage
 
-**Horizontal bars are best used when:**
+**Use horizontal bars when:**
 
-- the names of compared categories of values are long (for example, names of countries);
-- you need to compare more than 10 categories of values;
-- you need to label value for each category to measure.
+- Categories have long names, like country names.
+- Comparing more than 10 categories.
+- Each category's value needs labeling.
+- Showing category distribution in order.
 
-**Horizontal bars are not recommended when:**
+**Avoid horizontal bars when:**
 
-- you need to display a trend (use [Line chart](/data-display/line-chart/line-chart) instead);
-- you need to compare data for a certain period of time (use Vertical bar chart or [Line chart](/data-display/line-chart/line-chart) in this case);
-- compare category values if they all add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
-
-**Horizontal bars help you compare data in the following cases:**
-
-- Distribution of different categories in a certain sequence. _For example, by reducing of their value._
-- Compare different categories with each other if they have long names.
+- Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
+- Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
+- Categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
 
 ## Appearance
 
-### Horizontal bar chart
+Bars should have `border-radius: 2px` for the top-right and bottom-right corners. 
 
-|                | Appearance example                          | Styles                                 |
-| -------------- | ------------------------------------------- | -------------------------------------- |
-| One category   | ![](static/one-cat.png)  | `border-radius: 2px`                   |
-| Two categories | ![](static/two-cat.png) | The margin between two columns is 4px. |
+![](static/one-cat.png)
 
-::: tip
-If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or try to present the data using a different type of chart.
+For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between columns to avoid clutter.
 
-It is also a good solution to allow users to switch the chart type in the widget settings.
-:::
+![](static/two-cat.png)
 
-## Margins
+For more than 3-4 categories, consider using the [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or other chart type to present the data. Additionally, consider allowing users to switch chart types in the widget settings.
+
+### Margins
+
+Ensure clear margins for readability and to avoid clutter, such as 8px top and bottom and 16px between category labels and bars.
+
+Table: Margins for Horizontal bar chart
 
 | Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -126,48 +122,55 @@ It is also a good solution to allow users to switch the chart type in the widget
 
 ## Grid and axes
 
-### No grid and axes
+### No grid
 
-If you need to demonstrate the ratio of the category value to 100%, don't use grid and axes.
+Omit grid and axes when showing category values as a percentage of 100.
 
 ![](static/one-cat.png)
 
-### With grid and axes
+### With grid
 
-If you don’t need to present the ratio of values to 100%, but just to display their distribution, use the additional axes and the X-axis.
+Use axes and grids for displaying distribution without percentage constraints.
 
 ![](static/grid.png)
 
 ::: tip
-Don't forget to provide space for category values in the right and left parts of the chart.
+Allocate space for category labels on both sides of the chart.
 :::
 
-## Labels of categories
+## Category labels
 
-- Unlike vertical chart, the Y-axis labels must have same color as the color of the main text – `--text-primary`.They are one of the main elements for "reading" data on this chart type.
-- If the category label is too long, collapse into an `ellipsis`. By hovering over it, show the tooltip with the full category name.
-- It is better to add the tooltip on the right or left side relative to the category label (so it will not labels of other categories).
+- Y-axis labels should match the primary text color for clarity (use `--text-primary` token).
+- Use `ellipsis` for long labels, with tooltips showing the full name.
 
 ![](static/label.png)
 
+## Legend
+
+Legends are unnecessary for a single-category bar chart; clear chart naming is usually enough.
+
+![](static/hor-bar-example.png)
+
+Use legends for multiple categories.
+
+![](static/hor-legend.png)
+
 ## Interaction
 
-When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the columns margin on the top and bottom sides.
 
-If the column is clickable, the cursor changes to `pointer`.
+Table: Horizontal bar chart interaction
 
-|                                   | Appearance example                                         |
-| --------------------------------- | ---------------------------------------------------------- |
-| Chart with one category           | ![](static/hover-1.png)                |
+|                                   | Appearance example      |
+| --------------------------------- | ----------------------- |
+| Chart with one category           | ![](static/hover-1.png) |
 | Chart with two or more categories | ![](static/hover-2.png) |
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
-
 ### No more results
 
-Display message: "No more results" – below the values with a 32px margin.
+Show "No more results" with a 32px margin below values and text with `--text-secondary` color.
 
 ![](static/no-more-bar-horizontal.png)
 
@@ -175,21 +178,19 @@ Display message: "No more results" – below the values with a 32px margin.
 
 ### Null values
 
-If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
+If all values on the chart are zero, display zero in the tooltips.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+Zero counts as data. 0 ≠ n/a.
 :::
 
 ![](static/null-bar-horizontal.png)
 
 ![](static/null-2.png)
 
-### Some dots have no data
+### No data
 
-Don’t display bars without data.
-
-When you hover over a dot without data, show tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
+Do not display bars for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/na.png)
 
@@ -197,13 +198,10 @@ When you hover over a dot without data, show tooltip with the `n/a` value. We al
 
 ## Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
+Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+Use the `--skeleton-bg` color token for the skeleton's background.
 
-![](static/bar-horizontal-skeleton.png)
+![](static/skeleton.png)
 
-For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
-
-Use the `--skeleton-bg` color token for the skeleton background color.
-
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states."

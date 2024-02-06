@@ -4,10 +4,6 @@ fileSource: d3-chart
 tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-bar-chart-api'), Examples('stacked-bar-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -66,6 +62,10 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
+::: tip
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
+:::
+
 ## Description
 
 **Stacked bar chart** is used when it's necessary to display more than two categories of values and show the ratio of them to the whole.
@@ -111,11 +111,11 @@ When you hover over any part of the bar, display the tooltip with the values for
 
 ## Edge cases
 
-Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart-vertical#a54381) has.
+Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart#a54381) has.
 
 ## Initial loading
 
-See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart-vertical#ac26f2).
+See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart#ac26f2).
 
 ## Usage in UX/UI
 

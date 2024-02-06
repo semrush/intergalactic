@@ -2266,12 +2266,6 @@
         "title": "Bar chart",
         "children": [
           {
-            "route": "data-display/bar-chart/bar-chart-vertical",
-            "hasContent": true,
-            "filePath": "data-display/bar-chart/bar-chart-vertical.md",
-            "title": "Vertical bar chart"
-          },
-          {
             "route": "data-display/bar-chart/bar-chart-a11y",
             "hasContent": true,
             "filePath": "data-display/bar-chart/bar-chart-a11y.md",

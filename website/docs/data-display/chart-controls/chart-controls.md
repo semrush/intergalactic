@@ -10,20 +10,20 @@ Basic data visualization rules in widgets with charts are described in [D3 chart
 
 ## Control types
 
-Controls in the widget can be divided into the following types:
+The widget's controls can be categorized into the following types:
 
-- general controls and filters;
-- chart controls.
+- General controls and filters
+- Chart controls
 
 ## General controls and filters
 
-General controls and filters are always placed on the same level as the title. For example they include:
+General controls and filters are always positioned at the same level as the title and include options such as:
 
-- widget settings;
-- chart display settings (smooth or sharp line, dot or without dots);
-- screenshot settings, etc.
+- Widget settings
+- Chart display settings (smooth or sharp lines, dots or no dots)
+- Screenshot settings, and so on.
 
-For widget settings use icon button with `use="tertiary"` and `theme="muted"`. If you want to place another button next to the settings button, add [Divider](/components/divider/divider) with 16px margin between them. Don't forget to add a tooltip to all the buttons.
+For widget settings, use a button with `use="tertiary"` and `theme="muted"`. Remember to add tooltips to all the buttons without visible text.
 
 ![](static/settings.png)
 
@@ -31,21 +31,21 @@ For widget settings use icon button with `use="tertiary"` and `theme="muted"`. I
 
 ## Chart controls and filters
 
-These controls filter the data, axes, and some controls shown below.
+These controls filter the data, axes, and additional controls as described below:
 
 ### Left-placed controls and filters
 
-- Legend;
-- Country select;
-- Device ([Select](/components/select/select) or just text);
-- Notes ([Notes module](/data-display/notes/notes)).
+- Legend
+- Country select
+- Device (use [Select](/components/select/select) or plain text)
+- Notes (refer to [Notes module](/data-display/notes/notes))
 
 #### Legend
 
-We use several types of legends in our charts. Find more details in the [Chart legend](/data-display/chart-legend/chart-legend) guide.
+We use various types of legends in our charts. Refer to the [Chart legend](/data-display/chart-legend/chart-legend) guide for more details.
 
 ::: tip
-We recommend you to place legend in the top left – above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
+We recommend placing the legend at the top left, above the chart. For charts with numerous filters, position the legend at the bottom left, under the data.
 :::
 
 ![](static/legend-top.png)
@@ -58,19 +58,19 @@ We recommend you to place legend in the top left – above the chart. For charts
 
 #### Notes (Notes module)
 
-You can display notes made by the user, system, or other services on the chart. To read more about this module, see [Notes](/data-display/notes/notes).
+You can display user, system, or other service-generated notes on the chart. To learn more about this module, refer to [Notes](/data-display/notes/notes).
 
 ### Right-placed controls and filters
 
 Always place these controls on the right side of the widget:
 
-- Period ([Pills](/components/pills/pills) or text) or custom period;
-- Data frequency ([Pills](/components/pills/pills));
-- Zoom controls.
+- Period (use [Pills](/components/pills/pills) or plain text) or a custom period
+- Data frequency (use [Pills](/components/pills/pills))
+- Zoom controls
 
-#### Data period / frequency
+#### Data period / Frequency
 
-Data period can be represented either by the [TabLine](/components/tab-line/tab-line) or by additional text with the `--text-secondary` color.
+The data period can be represented either by the [TabLine](/components/tab-line/tab-line) or additional text with the `--text-secondary` color.
 
 ![](static/period-1.png)
 
@@ -78,13 +78,13 @@ Data period can be represented either by the [TabLine](/components/tab-line/tab-
 
 #### Custom period
 
-For custom period use [DateRangePicker](/components/date-picker/date-picker#a3d75b).
+For custom periods, use the [DateRangePicker](/components/date-picker/date-picker#a3d75b).
 
 ![](static/period-custom.png)
 
 ![](static/custom.png)
 
-#### Data frequency (daily/weekly/monthly)
+#### Data frequency (Daily/Weekly/Monthly)
 
 ![](static/period-1.png)
 
@@ -94,9 +94,7 @@ For custom period use [DateRangePicker](/components/date-picker/date-picker#a3d7
 
 ## Collapsing rows with controls
 
-You can collapse rows if necessary.
-
-Divide different controls or groups of controls with [Divider](/components/divider/divider) with the `--border-secondary` token for color and `margin: 0px 16px`.
+You can collapse rows as needed. Different controls or control groups should be separated by a [Divider](/components/divider/divider) using the `--border-secondary` token for color and a margin of 0px 16px.
 
 ![](static/widget-yes-no.png)
 
