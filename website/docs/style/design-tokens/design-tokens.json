@@ -14,6 +14,7 @@
       "d3-chart",
       "data-table",
       "dropdown",
+      "flex-box",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -699,7 +700,7 @@
     "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
     "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
     "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
-    "components": ["textarea", "utils"]
+    "components": ["flex-box", "textarea", "utils"]
   },
   {
     "name": "--intergalactic-border-warning",
@@ -2521,6 +2522,7 @@
       "carousel",
       "date-picker",
       "dropdown-menu",
+      "flex-box",
       "input",
       "pills",
       "select",

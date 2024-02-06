@@ -105,30 +105,27 @@ describe('FeedbackForm', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent(
-    'Should work with validationOnBlur=true (default behaviour)',
-    async ({ expect }) => {
-      const required = (value) => (value ? undefined : 'Required');
-      const onSubmit = vi.fn();
+  test('Should work with validationOnBlur=true (default behaviour)', async ({ expect }) => {
+    const required = (value) => (value ? undefined : 'Required');
+    const onSubmit = vi.fn();
 
-      const { getByTestId } = render(
-        <FeedbackForm onSubmit={onSubmit}>
-          <FeedbackForm.Item name='description' validate={required}>
-            {({ input, meta }) => <input data-testid={'input'} {...input} />}
-          </FeedbackForm.Item>
-          <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
-        </FeedbackForm>,
-      );
+    const { getByTestId } = render(
+      <FeedbackForm onSubmit={onSubmit}>
+        <FeedbackForm.Item name='description' validate={required}>
+          {({ input, meta }) => <input data-testid={'input'} {...input} />}
+        </FeedbackForm.Item>
+        <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
+      </FeedbackForm>,
+    );
 
-      const Input = getByTestId('input');
+    const Input = getByTestId('input');
 
-      await userEvent.keyboard('[Tab]');
-      await userEvent.keyboard('[Tab]');
-      expect(Input.attributes.state.value).toBe('invalid');
-    },
-  );
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+    expect(Input.attributes.state.value).toBe('invalid');
+  });
 
-  test.concurrent('Should work with validationOnBlur=false', async ({ expect }) => {
+  test('Should work with validationOnBlur=false', async ({ expect }) => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
