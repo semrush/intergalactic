@@ -9,6 +9,8 @@ import { algoliaConfig } from '../../algoliaConfig';
 import { figmaIcon } from './figma-icon';
 import { resolve as resolvePath } from 'path';
 
+const gtmKey = 'GTM-PP7RKT7'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/intergalactic/',
@@ -52,6 +54,13 @@ export default defineConfig({
       { rel: 'mask-icon', href: '/intergalactic/favicon/safari-pinned-tab.svg', color: '#421983' },
     ],
     ['meta', { name: 'msapplication-TileColor', content: '#603cba' }],
+    // Google Tag Manager
+    ...(
+      process.env.NODE_ENV === 'production' ? [
+        ['script', {}, 'dataLayer = window.dataLayer || []; dataLayer.push({ "userType": "Unlogged-User" });'],
+        ['script', {}, `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmKey}');`]
+      ] : ([] as any)
+    )
   ],
 
   themeConfig: {
