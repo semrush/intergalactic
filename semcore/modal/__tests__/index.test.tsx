@@ -183,6 +183,25 @@ describe('Modal', () => {
     ).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Should support custom title color', async ({ task }) => {
+    const component = (
+      <Modal disablePortal visible>
+        <Modal.Title color='text-critical'>Do you want to save your changes?</Modal.Title>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque facilis laudantium nam
+        officiis ratione saepe. Asperiores atque eius enim error fuga impedit laudantium maxime
+        nulla quae quidem. Consequatur, dolorum, ducimus!
+      </Modal>
+    );
+
+    await expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 800,
+        height: 300,
+      }),
+    ).toMatchImageSnapshot(task);
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <Modal visible disablePortal>
