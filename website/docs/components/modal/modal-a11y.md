@@ -44,7 +44,7 @@ Table: Roles & attributes
 |          | `aria-labelledby="IDREF"` | Gives the dialog an accessible name by referring to the element that provides the dialog title. |
 |      | `aria-modal="true"` | `div` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). |
 
-## Considerations for developers
+## Considerations for designers & developers
 
 ### Attributes
 
@@ -55,6 +55,12 @@ Table: Attributes
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-describedby="IDREF"`      | `div`   | Gives the dialog an accessible description by referring to the dialog content that describes the primary message or purpose of the dialog. |
+
+### Headings
+
+By default, `Modal.Title` in our Modal component is marked as `h2`. Since there is no strict WCAG recommendation on this, we've made this decision for the following reason: Modal windows are usually part of the page and don't have a separate URL, so to keep consistency within the page, it's recommended to have only one `h1` tag on the page. Having more than one `h1` tag per page can confuse users of assistive technology.
+
+However, if your modal window has a separate URL, you can mark `Modal.Title` as `h1`.
 
 ## Resources
 
