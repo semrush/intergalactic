@@ -7,4 +7,4 @@ export { default as Flex } from './Flex';
 export { default as useFlex } from './Flex/useFlex';
 export * from './Flex/useFlex';
 
-export { InvalidStateBox } from './Invalid-state-box/InvalidStateBox';
+export { InvalidStateBox } from './invalid-state-box/InvalidStateBox';
