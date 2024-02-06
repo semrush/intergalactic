@@ -121,7 +121,7 @@ The upper part of the bar should have `border-radius: 2px`.
 
 ![](/data-display/bar-chart/static/bar-chart.png)
 
-For the grouped bars maintain a 4px margin between two them. Aim for at least a 20% margin between columns to avoid clutter.
+For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between columns to avoid clutter.
 
 ![](/data-display/bar-chart/static/bar-chart-2.png)
 
@@ -151,7 +151,7 @@ Explore alternative solutions for skewed data in the [article from Tom Hopper](h
 
 ## Legend
 
-Legends are unnecessary for a single-category bar chart; clear chart naming is enough.
+Legends are unnecessary for a single-category bar chart; clear chart naming is usually enough.
 
 ![](static/legend.png)
 
