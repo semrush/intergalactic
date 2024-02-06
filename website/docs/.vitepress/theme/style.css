@@ -584,6 +584,10 @@ img {
   color: var(--vp-c-indigo-2);
 }
 
+.vp-doc h2 .header-anchor {
+  top: 0;
+}
+
 .vp-doc .anchor-like-button:hover {
   color: var(--vp-c-indigo-1);
   text-decoration: underline;
