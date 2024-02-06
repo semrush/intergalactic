@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.21.1] - 2024-02-05
+## [6.21.2] - 2024-02-06
 
 ### Fixed
 
 - Invalid attribute errors in console that appears when component has invalid state.
+
+## [6.21.1] - 2024-02-06
+
+### Fixed
+
+- `Radio.Text` custom color were not working.
 
 ## [6.21.0] - 2024-02-01
 
