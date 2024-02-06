@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.21.2] - 2024-02-06
+
+### Fixed
+
+- Invalid attribute errors in console that appears when component has invalid state.
+
 ## [7.21.1] - 2024-02-06
 
 ### Fixed

@@ -1,11 +1,10 @@
 import React from 'react';
 import createComponent, { Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
-import { Flex, Box } from '@semcore/flex-box';
+import { Flex, Box, InvalidStateBox } from '@semcore/flex-box';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
-import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 import style from './style/radio.shadow.css';
@@ -253,7 +252,7 @@ Control.displayName = 'Control';
 
 const RadioMark = (props) => {
   const SValue = Root;
-  const SInvalidPattern = InvalidPattern;
+  const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked } = props;
 
   return sstyled(styles)(
