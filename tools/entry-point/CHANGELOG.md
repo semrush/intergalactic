@@ -1,3 +1,47 @@
+## [15.55.0] - 2024-02-06
+
+### @semcore/base-trigger
+
+- **Fixed** Invalid attribute errors in console that appears when component has invalid state.
+
+### @semcore/carousel
+
+- **Fixed** `Prev` and `Next` `Buttons` are now Square instead of Rectangle.
+
+### @semcore/checkbox
+
+- **Fixed** Invalid attribute errors in console that appears when component has invalid state.
+- **Fixed** `Checkbox.Text` custom color were not working.
+
+### @semcore/feedback-form
+
+- **Fixed** `validateOnBlur=false` behaviour.
+
+### @semcore/flex-box
+
+- **Added** `InvalidStateBox` component.
+
+### @semcore/inline-input
+
+- **Fixed** Invalid attribute errors in console that appears when component has invalid state.
+
+### @semcore/input
+
+- **Fixed** Invalid attribute errors in console that appears when component has invalid state.
+
+### @semcore/modal
+
+- **Fixed** `Modal.Title` custom color were not working.
+
+### @semcore/radio
+
+- **Fixed** Invalid attribute errors in console that appears when component has invalid state.
+- **Fixed** `Radio.Text` custom color were not working.
+
+### @semcore/utils
+
+- **Changed** Deprecated all `@semcore/ui/utils/lib/invalid-state-pattern/InvalidStatePattern`.
+
 ## [15.54.1] - 2024-02-02
 
 ### @semcore/accordion
