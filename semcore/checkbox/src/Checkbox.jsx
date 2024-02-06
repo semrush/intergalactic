@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box, Flex } from '@semcore/flex-box';
+import { Box, Flex, InvalidStateBox } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
@@ -8,7 +8,6 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import logger from '@semcore/utils/lib/logger';
-import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/checkbox.shadow.css';
 
@@ -197,7 +196,7 @@ Control.displayName = 'Control';
 
 const CheckMark = (props) => {
   const SCheckbox = Root;
-  const SInvalidPattern = InvalidPattern;
+  const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked, indeterminate } = props;
   return sstyled(styles)(
     <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)}>

@@ -7,7 +7,11 @@ const InvalidStatePatternComponent = () => {
 
   return sstyled(style)(<SPattern render={'div'} />);
 };
-
+/**
+ * @deprecated
+ */
 export const InvalidStatePattern = createComponent(InvalidStatePatternComponent);
-
+/**
+ * @deprecated
+ */
 export default InvalidStatePattern;
