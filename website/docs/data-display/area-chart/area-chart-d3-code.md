@@ -119,7 +119,7 @@ const data = Array(10)
 
 ## Edge cases
 
-- If a part of the chart has no data – use a dashed line to draw that period.
+- If a part of the chart has no data – use a dashed line to draw the period.
 - If the data has only one value – display it as a dot.
 - Two consecutively known values will automatically be displayed as the `Area` component.
 
@@ -199,7 +199,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 
-const customLineStyles = { strokeWidth: 1, stroke: 'orange' };
+const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
 
 const Demo = () => {
   const MARGIN = 40;
@@ -337,6 +337,8 @@ const data = [
 :::
 
 ## Legend and pattern fill
+
+To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property.
 
 Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 

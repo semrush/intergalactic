@@ -5,10 +5,6 @@ docs: true
 tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -179,6 +175,10 @@ const App = PlaygroundGeneration(Preview);
 
 </script>
 
+:::
+
+::: tip
+Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description

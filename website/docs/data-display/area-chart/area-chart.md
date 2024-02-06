@@ -4,10 +4,6 @@ fileSource: d3-chart
 tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
-Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
-:::
-
 ::: react-view
 
 <script lang="tsx">
@@ -98,20 +94,23 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
+::: tip
+Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
+:::
 
 ## Description
 
-**Area chart** visualizes a trend and the ratio of numeric variables over a period of time. It can be used instead of [Line chart](/data-display/line-chart/line-chart) when it is important to demonstrate the ratio of parts to the whole.
+**Area chart** shows trends and the relationship between numeric variables over time. Area charts often used to show overall trends over time rather than specific values.
 
-**Important points to keep in mind when presenting data as an area chart:**
+**Key considerations for using an area chart:**
 
-- A chart with areas shall be used when you need to show a larger picture of the data. _For example, line charts can be used to show the change in a population over time, while charts with areas are excellent for demonstrating the total volume of population over a time period._
-- Try not to use too many categories (**it isn’t recommended to use more than 4 categories**). In such cases, it is better to use a line chart as it provides a cleaner and clearer data reading.
-- Don't forget to clearly name the chart so that the axes are understandable enough.
-- Use [Stacked area chart](/data-display/stacked-area-chart/stacked-area-chart) when, in addition to data amount, you need to display the part to the whole data.
+- Use an area chart to present a broader view of data. _For example, line charts are good for tracking population changes over time, but area charts excel at showing the total population volume over a period._
+- Stick to no more than four data sets to keep your chart readable. If you have more, the [Line](/data-display/line-chart/line-chart) might be a better choice for a clearer view.
+- Ensure the chart is clearly labeled for easy understanding of the axes.
+- For showing data proportions as well as quantities, use a [Stacked area chart](/data-display/stacked-area-chart/stacked-area-chart).
 
 ::: tip
-Useful materials about line chart vs. area chart:
+Refer to materials below, to have insights on choosing between line and area charts:
 
 - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
@@ -119,96 +118,76 @@ Useful materials about line chart vs. area chart:
 
 ## Appearance
 
-By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
-
-::: tip
-Add a possibility to select either straight or smooth line type in the widget settings.
-:::
+Charts are displayed with non-curved lines by default (without `curve` property) to make it easier to read exact values.
 
 | Example                                             | Styles                                                                                                     |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| ![Area chart without dots.](static/without-dots.png) | **Line thickness is 3px**. Background color under the line is the color of the line with 0.2 transparency. |
+| ![Area chart without dots.](static/without-dots.png) | **Line thickness: 3px.** The background color under the line matches the line color with 0.2 transparency. |
 
-We recommend you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
+Display dots on lines when data points either are few or collected irregularly.
 
 | Example                                  | Styles                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![Area chart with dots.](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
+| ![Area chart with dots.](static/dots.png) | Dot has size **8px * 8px** and **border: 2px solid var(--chart-grid-border)**. On hover, dot expand to **12px * 12px**. |
 
 ## Interaction
 
-When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
+Hovering over the chart highlights the nearest point with a vertical guide line, enlarges the dot, and shows a detailed tooltip. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
 ::: tip
-To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip) or [Line chart](/data-display/line-chart/line-chart).
+For detailed tooltip information, see [Chart principles](/data-display/d3-chart/d3-chart#tooltip) and [Line chart](/data-display/line-chart/line-chart).
 :::
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
+### One value
 
-## One value
-
-For this case enable the display of dots on the chart by default.
+Display dots by default for charts with a single data point. The line is dashed and colored with `--chart-palette-order-other-data`.
 
 ![](static/one-dot-area-chart.png)
 
-### Styles
+### Two values
 
-- **Dot size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
-- The line has the `dashed` border style and `--chart-palette-order-other-data` color.
+Display dots by default.
 
-## Two values
-
-For this case enable the display of dots on the chart by default.
-
-**Example 1** is for the case when there is data for two non-near dates.
+**Example 1** is for two distant dates.
 
 ![](static/two-dots1-area-chart.png)
 
-**Example 2** is when there is data for one after another dates.
+**Example 2** is for consecutive dates.
 
 ![](static/two-dots2.png)
 
-## Null values
+### Null values
 
-If all values on the chart are zero, then show the trend line on the zero axis.
+Display the line at the zero axis if all values are zero.
 
 ::: tip
-**Zero is also data. 0 ≠ `n/a`.**
+Zero counts as data. 0 ≠ n/a.
 :::
 
 ![](static/null-area-chart.png)
 
-## No data
+### No data
+
+For periods without data, use a dashed line between known points.
 
 ::: tip
-**When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
+When there is no data, you can't draw a zero line. Zero counts as data. 0 ≠ n/a.
 :::
-
-In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
 
 ![](static/partially-trash.png)
 
-When user hovers over a dot without data, show the tooltip with the `n/a` value. We recommend you to add a message why there is no data, and when it will be available, if possible.
+Display a tooltip with n/a when hovering over a dot without data, and explain why, if possible.
 
 ![](static/partially.png)
 
 ## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
+Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
-
-For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
-
-Use the `--skeleton-bg` color token for the skeleton background color.
-
-Use the `--skeleton-bg` color token for the skeleton background color.
-
-Use the `--skeleton-bg` color token for the skeleton background color.
-
-Use the `--skeleton-bg` color token for the skeleton background color.
+Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/area-skeleton.png)
 
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states."
