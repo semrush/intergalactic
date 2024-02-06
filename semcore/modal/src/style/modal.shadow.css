@@ -19,6 +19,10 @@ SWindow {
     font-weight: var(--intergalactic-semi-bold, 600);
     margin-bottom: var(--intergalactic-spacing-2x, 8px);
   }
+
+  STitle[color] {
+    color: var(--color)
+  }
 }
 
 SWindow[ghost] {

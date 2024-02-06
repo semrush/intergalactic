@@ -7,7 +7,12 @@ SRadio {
     margin-left: var(--intergalactic-spacing-2x, 8px);
     color: var(--intergalactic-text-primary, #191b23);
   }
+
+  SText[color] {
+    color: var(--color);
+  }
 }
+
 SRadio[disabled] {
   pointer-events: none;
 }
@@ -89,17 +94,17 @@ SControl {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-SControl:checked ~ SValue::before {
+SControl:checked~SValue::before {
   border-color: var(--intergalactic-control-primary-info, #008ff8);
   background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
-SControl:checked ~ SValue[size='m']::after {
+SControl:checked~SValue[size='m']::after {
   width: 6px;
   height: 6px;
 }
 
-SControl:checked ~ SValue[size='l']::after {
+SControl:checked~SValue[size='l']::after {
   width: 8px;
   height: 8px;
 }
@@ -113,7 +118,7 @@ SValue[state='invalid'][keyboardFocused]::before {
   box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
 }
 
-SControl:checked ~ SValue[theme]::before {
+SControl:checked~SValue[theme]::before {
   border-color: var(--theme);
   background-color: var(--theme);
 }

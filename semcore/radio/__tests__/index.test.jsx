@@ -58,6 +58,19 @@ describe('Radio', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Should support custom text color', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps m='5px'>
+        <Radio>
+          <Radio.Value />
+          <Radio.Text color='text-critical'>Test quest</Radio.Text>
+        </Radio>
+      </snapshot.ProxyProps>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px'>

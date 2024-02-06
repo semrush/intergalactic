@@ -17,6 +17,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
+import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -175,12 +176,13 @@ function Close(props) {
 Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
-  const { setHasTitle, styles } = props;
+  const { setHasTitle, styles, color } = props;
   const STitle = Root;
 
+  const resolveColor = useColorResolver();
   React.useEffect(() => setHasTitle());
 
-  return sstyled(styles)(<STitle render={Text} tag='h2' />);
+  return sstyled(styles)(<STitle render={Text} tag='h2' use:color={resolveColor(color)} />);
 }
 
 const Modal = createComponent(ModalRoot, {
