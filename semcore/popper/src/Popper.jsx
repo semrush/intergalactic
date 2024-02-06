@@ -282,6 +282,10 @@ class Popper extends Component {
       this.setState({
         ignoreTriggerFocusUntil: now + 5000,
       });
+    } else if (now < this.state.ignoreTriggerFocusUntil + 5000) {
+      this.setState({
+        ignoreTriggerFocusUntil: 0,
+      });
     }
   };
 
