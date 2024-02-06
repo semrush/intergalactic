@@ -49,12 +49,16 @@ import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   return (
-    <Plot width={300} height={300} data={data} patterns>
+    <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
         <Donut.Pie dataKey='a' name='Pie 1' />
         <Donut.Pie dataKey='b' name='Pie 2' />
         <Donut.Pie dataKey='c' name='Pie 3' />
-        <Donut.Label>Example</Donut.Label>
+        <Donut.Label>
+          <Text tag='tspan' fill='#191b23' size={400}>
+            Example
+          </Text>
+        </Donut.Label>
       </Donut>
       <Donut.Tooltip>
         {({ dataKey, name }) => {
@@ -219,7 +223,7 @@ const Demo = () => {
     <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
         <Donut.Pie name='Speed' dataKey='speed' />
-        <Donut.Pie name='Other' dataKey='other' color='#C4C7CF' />
+        <Donut.Pie name='Other' dataKey='other' color='chart-grid-bar-chart-base-bg' />
         <Donut.Label>
           <Text tag='tspan' x='0' dy='-1.2em' fill='#6C6E79' size={400}>
             Keyword volume

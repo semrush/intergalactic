@@ -582,6 +582,7 @@ class Item extends Component<CarouselItemProps> {
 const Prev = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SPrev = Root;
+  const SPrevButton = Button;
   const [isActive, setIsActive] = React.useState(false);
   const handleMouseEnter = React.useCallback(() => {
     setIsActive(true);
@@ -595,7 +596,7 @@ const Prev = (props: CarouselButtonProps) => {
       {children ? (
         <Children />
       ) : (
-        <Button
+        <SPrevButton
           addonLeft={ChevronLeft}
           aria-label={label}
           theme={inverted ? 'invert' : 'muted'}
@@ -611,6 +612,7 @@ const Prev = (props: CarouselButtonProps) => {
 const Next = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted } = props;
   const SNext = Root;
+  const SNextButton = Button;
   const [isActive, setIsActive] = React.useState(false);
   const handleMouseEnter = React.useCallback(() => {
     setIsActive(true);
@@ -624,7 +626,7 @@ const Next = (props: CarouselButtonProps) => {
       {children ? (
         <Children />
       ) : (
-        <Button
+        <SNextButton
           addonLeft={ChevronRight}
           aria-label={label}
           theme={inverted ? 'invert' : 'muted'}

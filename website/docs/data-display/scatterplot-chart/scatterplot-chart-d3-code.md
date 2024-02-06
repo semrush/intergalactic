@@ -30,6 +30,11 @@ const data = Array(20)
 
 :::
 
+::: tip
+For all the following examples, scale is calculated taking into account synthetic data.
+You can see the mathematics, used in `Change.Scatterplot` to calculate common scale, in [our github repo](https://github.com/semrush/intergalactic/blob/master/semcore/d3-chart/src/component/Chart/ScatterPlotChart.tsx#L31).
+:::
+
 ## Scatter plot
 
 ::: sandbox
@@ -47,11 +52,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([-1, 21]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-1, 11]);
 
   return (
     <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
@@ -109,11 +114,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([-1, 21]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-1, 11]);
 
   return (
     <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
@@ -171,11 +176,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([-1, 21]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-1, 11]);
 
   return (
     <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
@@ -234,11 +239,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([-1, 11]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-1, 11]);
 
   const legendItems = Object.keys(data[0])
     .filter((name) => name !== 'x' && name !== 'value')
@@ -306,11 +311,11 @@ const Demo = () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([-1, 21]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
+    .domain([-1, 11]);
 
   return (
     <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
