@@ -1,7 +1,7 @@
 ---
 title: Bar chart
 fileSource: d3-chart
-tabs: Design('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('bar-chart-a11y'), API('bar-chart-api'), Examples('bar-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('bar-chart'), A11y('bar-chart-a11y'), API('bar-chart-api'), Examples('bar-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: react-view
@@ -89,97 +89,87 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](/data-display/bar-chart/bar-chart-vertical) or [horizontal](/data-display/bar-horizontal/bar-horizontal).
+**Bar chart** visualizes distribution of values by time period or category for value comparison. A bar chart can be vertical or [horizontal](/data-display/bar-horizontal/bar-horizontal).
 
 ::: tip
-**Difference from histogram chart**
+**Bar vs. Histogram Chart**
 
-Bar chart displays distribution of datasets by quality categories.
-
-Histogram charts are used to display distribution of datasets: how often values fall into quantitative ranges.
+- Bar charts categorize data qualitatively, showing how different categories compare.
+- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
 :::
 
-Important points to keep in mind when presenting data as a bar chart:
+**Key tips for bar chart:**
 
-- Always start the Y-axis from zero.
-- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
-- Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
+- Begin the Y-axis at zero to maintain scale integrity.
+- Ensure the chart's axes are clear, adding labels if the title isn't descriptive enough.
+- Use a single color or shades of one color for simplicity. Highlight categories only if needed.
+
+### When to use
+
+- Use the bar chart when you need to focus on individual data points' values rather than tracking trends. For instance, when measuring a goal's achievement in a specific month or when analyzing audience fluctuations on specific days.
+- Compare different categories against each other.
+
+![](static/example-3.png)
+
+::: tip
+Consider using the [horizontal bar chart](/data-display/bar-horizontal/bar-horizontal), as it makes it easier to fit category names within the columns.
+:::
 
 ## Appearance
 
-If you have two categories of values, you can place them next to each other – this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (for example, a stacked bar chart).
+The upper part of the bar should have `border-radius: 2px`. 
 
-::: tip
-It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data doesn't turn into mess.
-:::
+![](/data-display/bar-chart/static/bar-chart.png)
+
+For the grouped bars maintain a 4px margin between two them. Aim for at least a 20% margin between columns to avoid clutter.
+
+![](/data-display/bar-chart/static/bar-chart-2.png)
+
+For more than 3-4 categories, consider using the [stacked bar chart](/data-display/stacked-bar-chart/stacked-bar-chart) or other chart type to present the data. Additionally, consider allowing users to switch chart types in the widget settings.
 
 ### Chart colors
 
-Use [special chart palette](/data-display/color-palette/color-palette) and follow the rules prescribed for it.
-
-::: tip
-If the data refers to the same category, the values shall not have different colors.
-:::
+Stick to the [designated chart palette](/data-display/color-palette/color-palette) and ensure consistent color use. Colors can emphasize parts of the data, but be cautious not to overshadow other data points.
 
 ![](static/example-yes-no.png)
 
-On the other hand, color can focus attention on a specific portion of data. For example, in some cases the size of the column may not be enough for visual hierarchy.
+### Handling outliers
 
-![](static/example-4.png)
-
-### Min-height and outliers (big values)
-
-In some cases some of the values in the data can be very different from the majority of values. If you show this picture as it is, then large values will have all the attention, while the rest of the data will look like null.
-
-::: tip
-**The bar has a min-height of 2px.** It is necessary so that the column doesn't "disappear" if there are extremely large values next to it.
-:::
+Significant value differences can skew perception. To balance this use a minimum bar height of 2px to keep small values visible alongside large ones.
 
 ![](static/outlier.png)
 
-**Recommended solution for this case: make the scale not linear, but logarithmic.** In this case, the data will align with each other and remain comparable, and our outliers will still be the largest (although not so large).
+Consider a logarithmic scale for a more uniform data comparison, especially with outliers.
 
 ![](static/outlier-1.png)
 
-::: tip
-Read the **[article about other solutions](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).**
-:::
+Switch to another chart type if focusing on large values is more insightful.
 
-If there are very large values, you may choose a different chart type which is better suited to solve your problem. Perhaps your visualization needs to focus on these large values?
+::: tip
+Explore alternative solutions for skewed data in the [article from Tom Hopper](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).
+:::
 
 ## Legend
 
-If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title isn’t enough.
+Legends are unnecessary for a single-category bar chart; clear chart naming is enough.
 
-| Vertical bar chart example      | Horizontal bar chart example    |
-| ------------------------------- | ------------------------------- |
-| ![](static/legend.png)          | ![](static/hor-bar-example.png) |
+![](static/legend.png)
 
-::: tip
-**Legend is required when there are two or more categories in the dataset.**
-:::
+Use legends for multiple categories.
 
-| Vertical bar chart example   | Horizontal bar chart example      |
-| ---------------------------- | --------------------------------- |
-| ![](static/bar-chart-2.png)  | ![](static/hor-legend.png)        |
+![](static/bar-chart-2.png)
 
 ## Trend
 
-A bar chart may have a trend line. Most often, trend line overloads charts. However, in some cases, it can be useful for reading the overall trend.
-
-![](static/bar-trend.png)
-
-When you hover over any part of the column, the tooltip shall display all values of the bar item and the total value for the trend.
+Trend lines can help identify overall patterns but may clutter simple charts. If used, ensure tooltips provide comprehensive value details.
 
 ![](static/trend-hover.png)
 
 ## Interaction
 
-When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
+Hovering highlights a column with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
-If the column is clickable, the cursor changes to `pointer`.
-
-If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
+Table: Bar chart interaction
 
 |                                   | Appearance example                        |
 | --------------------------------- | ----------------------------------------- |
@@ -187,50 +177,88 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 | Chart with two or more categories | ![](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
 ::: tip
-To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip).
+For detailed tooltip guidelines, see [Chart principles](/data-display/d3-chart/d3-chart#tooltip).
 :::
+
+## Edge cases
+
+### One value
+
+![](static/one-dot-bar-chart.png)
+
+### Two values
+
+![](static/two-dots.png)
+
+### Null values
+
+If all values on the chart are zero, display zero in the tooltips.
+
+::: tip
+Zero counts as data. 0 ≠ n/a.
+:::
+
+![](static/null-bar-chart.png)
+
+### No data
+
+Do not display columns for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+
+![](static/partially-trash.png)
+
+## Initial loading
+
+Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
+
+Use the `--skeleton-bg` color token for the skeleton's background.
+
+![](static/bar-vertical-skeleton.png)
 
 ## Usage in UX/UI
 
 ### Start the axes from zero
 
-By comparing columns, we are actually comparing the length. If we don’t start the axis from zero, there will be a visual illusion. Check out the charts below. In the wrong case, the axis doesn't start from zero, and it seems that the value on the right is almost half as large as the value on the left. However, this isn’t true.
+When comparing columns, we are actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
 
 ![](static/deception-yes-no.png)
 
-If the values are very large and close to each other, you may not see the difference in the columns. In this case, we recommend using a line chart.
+If the values are very large and close to each other, the difference between the columns may not be noticeable. In such cases, we recommend using a line chart.
 
 ![](static/example-2-yes-no.png)
 
-For such cases, you can add the possibility to switch the data display from bar chart to line chart in the settings.
+For such cases, you can add the possibility to switch the data display from a bar chart to a line chart in the settings.
 
 ![](static/type.png)
 
 ### Sorting of columns
 
-Keep in mind a reasonable order of values on the axes. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
+Consider a logical order for the values on the axes. For instance, arrange them from the largest value to the smallest, or, if they represent months, from January to December, etc.
 
 ![](static/sort-yes-no.png)
 
 ### Chart as an entry point
 
-Sometimes the chart displays overall picture, and detailed data can be viewed when interacting with it. There are two typical cases.
+Sometimes, the chart provides an overall view, and detailed data can be accessed through interaction. There are two common scenarios:
 
-#### The detailed information is contained in another report
+#### Detailed information in another report
 
-In this case, clicking on the column opens the corresponding report. The column must have the `hover` state. You can add the `Click to view details` text to the chart tooltip for clarity.
+In this case, clicking on a column opens the corresponding report. The column should show a `hover` state. For clarity, you can add a "Click to view details" message to the chart's tooltip.
 
-When hovering over, the column/columns are highlighted with `--chart-grid-bar-chart-hover`.
+Upon hovering, the column or columns are highlighted with `--chart-grid-bar-chart-hover`.
+
+Table: Detailed information in another report
 
 | Vertical bar chart example  | Horizontal bar chart example |
 | --------------------------- | ---------------------------- |
 | ![](static/interactive.png) | ![](static/hor-hover-3.png)  |
 
-#### The detailed information is contained in the table below
+#### Detailed information in the table below
 
-In this case, clicking on the date/column opens the detailed and switches the period in the table to the corresponding date.
+In this case, clicking on the date or column reveals detailed information and changes the period in the table to match the selected date.
 
-When you hover over a clickable date, it changes background `--chart-grid-period-bg`. In active state clickable date changes text color to `--text-invert` and background color to `--chart-x-axis-accent-period-active`.
+Hovering over a clickable date changes its background to `--chart-grid-period-bg`. When active, the clickable date's text color changes to `--text-invert` and its background color to `--chart-x-axis-accent-period-active`.
+
+Table: Detailed information in the table below
 
 | Vertical bar chart example     | Horizontal bar chart example       |
 | ------------------------------ | ---------------------------------- |

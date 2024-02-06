@@ -199,7 +199,7 @@ import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 
-const customLineStyles = { strokeWidth: 1, stroke: 'orange' };
+const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
 
 const Demo = () => {
   const MARGIN = 40;

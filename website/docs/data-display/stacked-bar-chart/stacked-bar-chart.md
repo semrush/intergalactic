@@ -111,11 +111,11 @@ When you hover over any part of the bar, display the tooltip with the values for
 
 ## Edge cases
 
-Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart-vertical#a54381) has.
+Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart#a54381) has.
 
 ## Initial loading
 
-See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart-vertical#ac26f2).
+See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart#ac26f2).
 
 ## Usage in UX/UI
 

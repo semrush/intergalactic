@@ -151,11 +151,15 @@ Refer to materials below, to have insights on choosing between line and area cha
 
 Charts are displayed with non-curved lines by default (without `curve` property) to make it easier to read exact values.
 
+Table: Line chart default appearance
+
 | Example                                       | Styles                 |
 | --------------------------------------------- | ---------------------- |
 | ![](static/without-dots.png) | Line thickness: 3px. |
 
 Display dots on lines when data points either are few or collected irregularly.
+
+Table: Line chart default appearance with dots
 
 | Example                            | Styles                                                                                                                      |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |

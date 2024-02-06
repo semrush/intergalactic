@@ -121,11 +121,15 @@ Refer to materials below, to have insights on choosing between line and area cha
 
 Charts are displayed with non-curved lines by default (without `curve` property) to make it easier to read exact values.
 
+Table: Stacked bar chart with non-curved lines
+
 | Example                                             | Styles                                                                                                     |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | ![area chart without dots](static/without-dots.png) | **Line thickness: 3px.** The background color under the line matches the line color with 0.2 transparency. |
 
 Display dots on lines when data points either are few or collected irregularly.
+
+Table: Stacked bar chart with dots and non-curved lines
 
 | Example                                  | Styles                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |

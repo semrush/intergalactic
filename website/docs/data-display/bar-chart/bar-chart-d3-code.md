@@ -1,7 +1,7 @@
 ---
 title: Bar chart
 fileSource: d3-chart
-tabs: Design('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('bar-chart-a11y'), API('bar-chart-api'), Examples('bar-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('bar-chart'), A11y('bar-chart-a11y'), API('bar-chart-api'), Examples('bar-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -81,7 +81,7 @@ const data = Array(5)
 
 :::
 
-## Hover bar
+## Bar hover
 
 The `<HoverRect/>` component draws a rectangle when hovering the cursor over a chart. It's similar to how the `<HoverLine/>` component works for the line chart.
 
@@ -256,7 +256,7 @@ const data = [...Array(10).keys()].map((d, i) => ({
 
 :::
 
-## Negative bar
+## Negative values
 
 The bar can also have negative values. For better readability, add an additional `XAxis` positioned at zero at the end.
 
@@ -330,7 +330,7 @@ const data = Array(5)
 
 :::
 
-## Group bar
+## Grouped bars
 
 To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 
@@ -450,7 +450,7 @@ const Demo = () => {
       <Line
         x='category'
         y='bar'
-        color='text-secondary'
+        color='chart-palette-order-total-amount'
         style={{ strokeWidth: 3, strokeDasharray: 5 }}
       >
         <Line.Dots display />

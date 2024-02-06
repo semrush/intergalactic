@@ -142,13 +142,23 @@ If you don’t need to present the ratio of values to 100%, but just to display 
 Don't forget to provide space for category values in the right and left parts of the chart.
 :::
 
-## Labels of categories
+## Category labels
 
 - Unlike vertical chart, the Y-axis labels must have same color as the color of the main text – `--text-primary`.They are one of the main elements for "reading" data on this chart type.
 - If the category label is too long, collapse into an `ellipsis`. By hovering over it, show the tooltip with the full category name.
 - It is better to add the tooltip on the right or left side relative to the category label (so it will not labels of other categories).
 
 ![](static/label.png)
+
+## Legend
+
+Legends are unnecessary for a single-category bar chart; clear chart naming is enough.
+
+![](static/hor-bar-example.png)
+
+Use legends for multiple categories.
+
+![](static/hor-legend.png)
 
 ## Interaction
 

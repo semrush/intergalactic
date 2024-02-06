@@ -1622,10 +1622,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             collapsed: true,
             items: [
               {
-                link: '/data-display/bar-chart/bar-chart-vertical',
-                text: 'Vertical bar chart',
-              },
-              {
                 link: '/data-display/bar-chart/bar-chart-a11y',
                 text: 'A11y',
               },
