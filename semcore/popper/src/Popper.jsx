@@ -127,7 +127,7 @@ class Popper extends Component {
     };
   }
 
-  state = { ignoreTriggerFocus: false };
+  state = { ignoreTriggerFocusUntil: 0 };
 
   createTriggerRef = (ref) => {
     if (ref && this.triggerRef.current !== ref) {
@@ -254,10 +254,15 @@ class Popper extends Component {
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
   bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
-    if (this.state.ignoreTriggerFocus && visible && component === 'trigger') {
-      if (['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action)) {
-        return;
-      }
+    const now = Date.now();
+    const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
+    if (
+      now < this.state.ignoreTriggerFocusUntil &&
+      visible &&
+      component === 'trigger' &&
+      focusAction
+    ) {
+      return;
     }
     const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
@@ -275,7 +280,7 @@ class Popper extends Component {
     });
     if (!visible) {
       this.setState({
-        ignoreTriggerFocus: true,
+        ignoreTriggerFocusUntil: now + 5000,
       });
     }
   };
@@ -315,7 +320,7 @@ class Popper extends Component {
   }
 
   handleTriggerBlur = () => {
-    this.setState({ ignoreTriggerFocus: false });
+    this.setState({ ignoreTriggerFocusUntil: 0 });
   };
 
   getPopperProps() {
