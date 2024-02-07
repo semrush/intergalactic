@@ -198,3 +198,43 @@ const Demo = () => (
 </script>
 
 :::
+
+## Hint with button role
+
+For `Hint` with `role=button` your need to add `onKeyDown` handler yourself for correct working from the keyboard.
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Hint } from '@semcore/ui/typography';
+
+const Demo = () => {
+  /**
+   * Common logic for handle click or keypress Enter/Space
+   */
+  const handler = () => {
+    console.log('click or keyDown');
+  };
+
+  const handleClick = React.useCallback(() => {
+    handler();
+  }, []);
+
+   const handleKeyDown = React.useCallback((e) => {
+    if (e.key === 'Enter' || e.key === 'Space') {
+      handler();
+    }
+  }, []);
+
+  return (
+    <Hint onClick={handleClick} onKeyDown={handleKeyDown} role="button">
+      <Hint.Text>
+        Some hint text
+      </Hint.Text>
+    </Hint>
+  );
+}
+</script>
+
+:::
