@@ -69,7 +69,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
-**Key points for using a bar chart:**
+**Key points for using bar chart:**
 
 - Ensure the chart's axes are understandable. Label them if needed.
 - Use simple color schemes. Highlight categories only when needed.
@@ -196,7 +196,7 @@ Do not display bars for data points without values. When hovering over such bars
 
 ![](static/na-2.png)
 
-## Initial loading
+## Initial data loading
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 

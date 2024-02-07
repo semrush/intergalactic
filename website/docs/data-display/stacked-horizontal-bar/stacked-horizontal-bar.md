@@ -73,7 +73,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal stacked bar chart** is used to display multiple categories of values and illustrate their proportions relative to the total.
 
-**Key points for using a horizontal stacked bar chart:**
+**Key points for using horizontal stacked bar chart:**
 
 - Choose this chart to compare more than two categories.
 - It's ideal for showing how parts contribute to a whole.
@@ -123,6 +123,6 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 Refer to [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#edge-cases).
 
-## Initial loading
+## Initial data loading
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#initial-loading).
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#initial-data-loading).

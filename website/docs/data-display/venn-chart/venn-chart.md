@@ -202,7 +202,7 @@ In this case, show the datasets left aligned.
 
 ![](static/venn-na.png)
 
-### Initial loading
+## Initial data loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 

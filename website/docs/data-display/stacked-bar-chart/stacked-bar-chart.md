@@ -70,7 +70,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Stacked bar chart** is used to display multiple categories of values and illustrate their proportions relative to the total.
 
-**Key points for using a stacked bar chart:**
+**Key points for using stacked bar chart:**
 
 - Choose this chart to compare more than two categories.
 - It's ideal for showing how parts contribute to a whole.
@@ -114,9 +114,9 @@ Trend lines can help identify overall patterns but may clutter simple charts. If
 
 Edge cases for stacked bar chart align with those of the [Bar chart](/data-display/bar-chart/bar-chart#edge-cases).
 
-## Initial loading
+## Initial data loading
 
-For loading details, refer to the [Bar chart guide](/data-display/bar-chart/bar-chart#initial-loading).
+For loading details, refer to the [Bar chart guide](/data-display/bar-chart/bar-chart#initial-data-loading).
 
 ## Usage in UX/UI
 

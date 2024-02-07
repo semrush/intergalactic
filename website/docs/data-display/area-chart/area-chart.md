@@ -102,7 +102,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Area chart** shows trends and the relationship between numeric variables over time. Area charts often used to show overall trends over time rather than specific values.
 
-**Key considerations for using an area chart:**
+**Key considerations for using area chart:**
 
 - Use an area chart to present a broader view of data. _For example, line charts are good for tracking population changes over time, but area charts excel at showing the total population volume over a period._
 - Stick to no more than four data sets to keep your chart readable. If you have more, the [Line](/data-display/line-chart/line-chart) might be a better choice for a clearer view.

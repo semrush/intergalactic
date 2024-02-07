@@ -298,7 +298,7 @@ If for some reason data isn't available, show `n/a` in the tooltip. Data point i
 ![](static/not-available-data-1.png)
 ![](static/not-available-data-2.png)
 
-### Initial data loading
+## Initial data loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 

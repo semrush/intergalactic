@@ -256,7 +256,7 @@ In this case, move legend under the chart. The margin from the chart to the lege
 
 ![](static/donut-small-widget.png)
 
-## Initial loading
+## Initial data loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 

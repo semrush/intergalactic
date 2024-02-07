@@ -957,7 +957,7 @@ const svgText2DownloadUrl = async (svg: string, width: number, height: number, f
 
 :::
 
-## Initial loading
+## Initial data loading
 
 Use [Skeleton](/components/skeleton/skeleton) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
 
