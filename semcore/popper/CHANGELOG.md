@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Invisible focus return and catch elements are removed that were used for keyboard users focus flow control. Instead, trigger may ignore focus event for a short time just after corresponding popper close.
 
+### Added
+
+- `focusLoop` api that controls how browser focus behaves when goes out of popper.
+
 ## [5.19.1] - 2024-02-06
 
 ### Changed
