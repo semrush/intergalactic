@@ -2,7 +2,9 @@ import { isFocusable } from './isFocusable';
 
 export const getFocusableIn = (node: HTMLElement) => {
   const treeWalker = node?.ownerDocument?.createTreeWalker(node, NodeFilter.SHOW_ELEMENT, (node) =>
-    'ownerSVGElement' in node ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
+    'ownerSVGElement' in node && node.ownerSVGElement
+      ? NodeFilter.FILTER_REJECT
+      : NodeFilter.FILTER_ACCEPT,
   );
 
   const result: HTMLElement[] = [];
