@@ -29,3 +29,15 @@ It is more complex example with [Dropdown](/components/dropdown/dropdown) and [C
 </script>
 
 :::
+
+## Programmatic focus 
+
+Filter trigger contains two elements in the wrapper – button that opens dropdown (the inner trigger) and the clear button that empties selected value. In case you want to set browser focus on filter trigger, use the `triggerRef` prop to access the inner trigger node.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/programmatic_focus.tsx';
+</script>
+
+:::

@@ -1,3 +1,13 @@
+## [15.56.0-prerelease.0] - 2024-02-07
+
+### @semcore/base-trigger
+
+- **Added** `triggerRef` prop for FilterTrigger component to access inner trigger.
+
+### @semcore/textarea
+
+- **Fixed** Prevented changing size of textarea while calculating rows.
+
 ## [15.55.0] - 2024-02-06
 
 ### @semcore/base-trigger

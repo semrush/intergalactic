@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.0-prerelease.1] - 2024-02-07
+
+### Added
+
+- `triggerRef` prop for FilterTrigger component to access inner trigger.
+
 ## [4.24.1] - 2024-02-05
 
 ### Fixed
