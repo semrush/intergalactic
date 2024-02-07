@@ -374,7 +374,7 @@ class Popper extends Component {
 
   handlePopperFocusOut = (event) => {
     if (this.asProps.focusLoop) return;
-    if (hasParent(event.relatedTarget, this.triggerRef.current)) return;
+    if (hasParent(event.target, this.triggerRef.current)) return;
 
     this.bindHandlerChangeVisibleWithTimer(false, 'popper', 'onBlur')(event);
   };
