@@ -2992,9 +2992,6 @@ importers:
       classnames:
         specifier: 2.2.6
         version: 2.2.6
-      focus-lock:
-        specifier: 0.11.3
-        version: 0.11.3
       hoist-non-react-statics:
         specifier: 3.3.2
         version: 3.3.2

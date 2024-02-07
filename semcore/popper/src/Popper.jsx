@@ -320,12 +320,14 @@ class Popper extends Component {
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
       disableEnforceFocus,
       popperRef: this.popperRef,
-      onBlur: this.handleTriggerBlur,
+      onBlur: callAllEventHandlers(this.handleTriggerBlur, interactionProps.onBlur),
     };
   }
 
   handleTriggerBlur = () => {
-    this.setState({ ignoreTriggerFocusUntil: 0 });
+    setTimeout(() => {
+      this.setState({ ignoreTriggerFocusUntil: 0 });
+    }, 0);
   };
 
   getPopperProps() {
@@ -436,6 +438,7 @@ function Trigger(props) {
         aria-haspopup={true}
         ref={triggerRef}
         onFocus={handleFocus}
+        onBlur={props.onBlur}
       >
         <Children />
       </STrigger>
