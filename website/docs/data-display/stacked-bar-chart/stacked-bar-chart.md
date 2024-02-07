@@ -77,6 +77,13 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Pick distinctly different colors for clarity.
 - Ensure the chart is large enough to easily read the data.
 
+::: tip
+**Bar vs. Histogram Chart**
+
+- Bar charts categorize data qualitatively, showing how different categories compare.
+- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
+:::
+
 ## Appearance
 
 In a stacked bar chart, columns have no gaps between value segments. Select contrasting colors for visibility.

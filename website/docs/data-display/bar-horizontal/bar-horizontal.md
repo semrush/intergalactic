@@ -69,17 +69,17 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
+**Key points for using a bar chart:**
+
+- Ensure the chart's axes are understandable. Label them if needed.
+- Use simple color schemes. Highlight categories only when needed.
+
 ::: tip
 **Bar vs. Histogram Chart**
 
 - Bar charts categorize data qualitatively, showing how different categories compare.
 - Histograms organize data quantitatively, indicating how often values fall within certain ranges.
 :::
-
-**Key points for bar charts:**
-
-- Ensure the chart's axes are understandable. Label them if needed.
-- Use simple color schemes. Highlight categories only when needed.
 
 ## Usage
 
