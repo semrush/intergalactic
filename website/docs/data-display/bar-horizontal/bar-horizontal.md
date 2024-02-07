@@ -205,3 +205,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 ![](static/skeleton.png)
 
 Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states."
+
+## Usage in UX/UI
+
+See detailed information in the [Bar chart guide](/data-display/bar-chart/bar-chart#usage-in-ux-ui).

@@ -12,7 +12,7 @@ const options = Array(6)
 
 const Demo = () => (
   <Flex>
-    <Select options={options} placeholder='Select an option, sir' m='auto' />
+    <Select options={options} placeholder='Select option' m='auto' />
   </Flex>
 );
 
