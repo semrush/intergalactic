@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.27.2] - 2024-02-07
+
+### Fixed
+
+- background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
+
 ## [3.27.1] - 2024-02-06
 
 ### Changed
