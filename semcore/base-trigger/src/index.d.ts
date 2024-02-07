@@ -69,7 +69,7 @@ export type FilterTriggerProps = BaseTriggerProps & {
   /** List of props that will be added to the select inside of filter */
   includeInputProps?: string[];
   /** Normal `ref` prop refers to FilterTrigger wrapper while `triggerRef` refers explicitly to trigger button */
-  triggerRef?: React.Ref;
+  triggerRef?: React.Ref<HTMLButtonElement>;
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
