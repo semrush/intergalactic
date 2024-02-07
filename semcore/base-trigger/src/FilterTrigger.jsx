@@ -39,15 +39,16 @@ class RootFilterTrigger extends Component {
     includeInputProps: inputProps,
     i18n: localizedMessages,
     locale: 'en',
+    triggerRef: React.createRef(),
+    role: 'group',
   };
-  triggerRef = React.createRef();
 
   handleStopPropagation = (e) => e.stopPropagation();
 
   handleClear = () => {
     setTimeout(() => {
       if (document.activeElement === document.body) {
-        setFocus(this.triggerRef.current);
+        setFocus(this.asProps.triggerRef.current);
       }
     }, 0);
   };
@@ -68,9 +69,9 @@ class RootFilterTrigger extends Component {
       includeInputProps,
       uid,
       id,
+      triggerRef,
+      role,
     } = this.asProps;
-
-    const role = empty ? this.asProps.role ?? 'button' : 'group';
 
     const [controlProps] = getInputProps(this.asProps, includeInputProps);
 
@@ -80,10 +81,10 @@ class RootFilterTrigger extends Component {
         aria-label={getI18nText('filter')}
         __excludeProps={['id']}
         use:role={role}
-        data-role={role}
       >
         <NeighborLocation>
           <SFilterTrigger
+            tag='button'
             w='100%'
             size={size}
             placeholder={placeholder}
@@ -91,7 +92,7 @@ class RootFilterTrigger extends Component {
             selected={!empty}
             active={active}
             disabled={disabled}
-            ref={this.triggerRef}
+            ref={triggerRef}
             animationsDisabled
             {...controlProps}
           >
