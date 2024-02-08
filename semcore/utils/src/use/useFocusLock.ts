@@ -193,15 +193,17 @@ const useFocusLockHook = (
     lastUserInteractionRef.current = 'keyboard';
   }, []);
   const returnFocus = React.useCallback(() => {
-    const trapNode = trapRef.current!;
-    if (!focusInside(trapNode)) return;
+    const trapNode = trapRef.current;
+    if (trapNode && !focusInside(trapNode)) return;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
-      setTimeout(() => safeMoveFocusInside(returnFocusNode, trapNode), 0);
+      setTimeout(() => safeMoveFocusInside(returnFocusNode, trapNode || document.body), 0);
     }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
-      setTimeout(() => safeMoveFocusInside(autoTrigger, trapNode), 0);
+      setTimeout(() => {
+        safeMoveFocusInside(autoTrigger, trapNode || document.body);
+      }, 0);
     }
   }, [returnFocusTo]);
   React.useEffect(() => {
