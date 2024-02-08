@@ -18,6 +18,7 @@ import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { hasParent } from '@semcore/utils/lib/hasParent';
 
 import createPopper from './createPopper';
 
@@ -42,13 +43,6 @@ const useUpdatePopperEveryFrame = (popperRef) => {
   }, []);
   React.useEffect(() => () => cancelAnimationFrame(nextAnimationFrameRef.current), []);
   return handleAnimationFrame;
-};
-
-const hasParent = (element, parent) => {
-  if (!element) return false;
-  if (element === document.body) return parent === document.body;
-  if (element === parent) return true;
-  return hasParent(element.parentElement, parent);
 };
 
 const MODIFIERS_OPTIONS = [
