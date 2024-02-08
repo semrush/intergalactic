@@ -11,6 +11,7 @@ import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
 import PreferenceSwitch from './PreferenceSwitch.vue';
 import BlogPosts from './blog/BlogPosts.vue';
+import BlogPostsMainPage from './blog/BlogPostsMainPage.vue';
 
 export default {
   ...Theme,
@@ -29,5 +30,6 @@ export default {
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
     app.component('BlogPosts', BlogPosts);
+    app.component('BlogPostsMainPage', BlogPostsMainPage);
   },
 };

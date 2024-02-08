@@ -50,6 +50,7 @@ async function getPost(file: string, postDir: string): Promise<Post | undefined>
   const timestamp = (await fs.stat(fullPath)).mtimeMs;
 
   const { data, excerpt, content } = readFrontMatter(fullPath, cache);
+  if (!content) return;
   const firstImage = content.match(/!\[.*?\]\((.*?)\)/)?.[1];
   const postSlug = fullPath.split('/').slice(-2)[0];
 

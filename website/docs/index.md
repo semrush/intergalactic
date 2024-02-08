@@ -51,3 +51,5 @@ features:
     link: /core-principles/a11y/a11y
     linkText: Explore
 ---
+
+<BlogPostsMainPage />
