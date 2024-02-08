@@ -791,7 +791,7 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.25.0-prerelease.3
+        specifier: 4.25.0
         version: link:../base-trigger
       '@semcore/button':
         specifier: 5.20.1
@@ -2214,7 +2214,7 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.25.0-prerelease.3
+        specifier: 4.25.0
         version: link:../base-trigger
       '@semcore/checkbox':
         specifier: 7.21.2
@@ -2644,7 +2644,7 @@ importers:
         specifier: 4.20.1
         version: link:../input
       '@semcore/select':
-        specifier: 4.27.0-prerelease.2
+        specifier: 4.27.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.20.1
@@ -2740,7 +2740,7 @@ importers:
         specifier: 4.18.1
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: 4.25.0-prerelease.3
+        specifier: 4.25.0
         version: link:../base-trigger
       '@semcore/breadcrumbs':
         specifier: 5.23.1
@@ -2776,7 +2776,7 @@ importers:
         specifier: 4.26.1
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.27.0-prerelease.2
+        specifier: 4.27.0
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.18.1
@@ -2899,7 +2899,7 @@ importers:
         specifier: 5.20.1
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.27.0-prerelease.2
+        specifier: 4.27.0
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.25.1
@@ -2932,10 +2932,10 @@ importers:
         specifier: 5.25.1
         version: link:../tag
       '@semcore/textarea':
-        specifier: 5.19.2-prerelease.1
+        specifier: 5.19.2
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.27.0-prerelease.2
+        specifier: 4.27.0
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.18.1
