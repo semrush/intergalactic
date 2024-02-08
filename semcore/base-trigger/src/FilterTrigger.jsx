@@ -70,8 +70,9 @@ class RootFilterTrigger extends Component {
       uid,
       id,
       triggerRef,
-      role,
     } = this.asProps;
+
+    const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
 
     const [controlProps] = getInputProps(this.asProps, includeInputProps);
 
