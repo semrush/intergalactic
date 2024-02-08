@@ -213,7 +213,7 @@ describe('focus control', () => {
     expect(PopperElement).toHaveFocus();
   });
 
-  test('loop', async () => {
+  test('should lock focus inside popper', async () => {
     const { getByTestId } = render(
       <div>
         <input />
