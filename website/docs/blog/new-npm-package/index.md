@@ -13,7 +13,7 @@ The fragmentation of component versions could lead to unexpected bugs, which wer
 
 To solve this issue, we've put the build artifacts of all components into a single package. This change not only accelerates library installation and new release publishing but also ensures compatibility with frameworks that previously faced integration difficulties.
 
-To facilitate a smooth transition and maintain backward compatibility, we've introduced this as a new npm package named `intergalactic` , thanks to [Dan Helfman](https://github.com/witten), who [graciously agreed]((https://projects.torsion.org/witten/intergalactic/issues/14)) to transfer the rights to the package name to us.
+To facilitate a smooth transition and maintain backward compatibility, we've introduced this as a new npm package named `intergalactic` , thanks to [Dan Helfman](https://github.com/witten), who graciously agreed to transfer the rights to the package name to us.
 
 The `@semcore/ui` package and individual component packages will continue to be available up-to-date until at least the end of Q1 2024.
 
