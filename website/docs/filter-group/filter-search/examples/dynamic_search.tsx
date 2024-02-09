@@ -35,7 +35,7 @@ const Demo = () => {
           placeholder='Enter keyword here'
         />
         {value && (
-          <Input.Addon tag={CloseM} interactive onClick={handleClick} aria-label='Clear filters' />
+          <Input.Addon tag={CloseM} interactive onClick={handleClick} aria-label='Clear filter' />
         )}
       </Input>
     </Flex>

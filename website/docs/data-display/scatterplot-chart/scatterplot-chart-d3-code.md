@@ -358,7 +358,7 @@ const data = Array(20)
 
 :::
 
-## Data loading
+## Initial data loading
 
 ::: sandbox
 

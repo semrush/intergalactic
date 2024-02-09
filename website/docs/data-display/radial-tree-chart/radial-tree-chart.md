@@ -75,15 +75,38 @@ The transparency of values appearance changes from 0 to 100 with `ease-in` and `
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
+### One value
 
-| Case                                                                                                                                                                                                                           | Appearance example                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| **One value**                                                                                                                                                                                                                  | ![](static/one-value.png)               |
-| **Two values**                                                                                                                                                                                                                 | ![](static/two-values.png)             |
-| **Few values.** If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.                                                                | ![](static/few-values.png)             |
-| **Very long main element.** Don't fold the long center value into ellipsis. Wrap it on the second line.                                                                                                                        | ![](static/long-value.png) |
-| **No data.** Show a special WidgetEmpty message for cases when there is no data.                                                                                                                                               | ![](static/no-data-state.png)             |
-| **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![](static/n-a-state.png)           |
-| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![](static/radial-tree-skeleton.png)     |
+![](static/one-value.png)
 
+### Two values
+
+![](static/two-values.png)
+
+### Few values
+
+If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.
+
+![](static/few-values.png)
+
+### Very long main element
+
+Don't fold the long center value into ellipsis. Wrap it on the second line.
+
+![](static/long-value.png)
+
+### No data
+
+Show a special message for cases when there is no data.
+
+![](static/no-data-state.png)
+
+## Initial data loading
+
+Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
+
+Use the `--skeleton-bg` color token for the skeleton's background.      
+
+![](static/radial-tree-skeleton.png)
+
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".

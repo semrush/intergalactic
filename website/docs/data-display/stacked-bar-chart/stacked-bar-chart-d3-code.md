@@ -18,7 +18,7 @@ import { Chart } from '@semcore/ui/d3-chart';
 
 const Demo = () => {
   return (
-    <Chart.Bar groupKey={'category'} data={data} plotWidth={500} plotHeight={300} type={'stack'} />
+    <Chart.Bar groupKey={'category'} data={data} plotWidth={500} plotHeight={200} type={'stack'} />
   );
 };
 
@@ -55,7 +55,7 @@ import { Text } from '@semcore/ui/typography';
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
-  const height = 300;
+  const height = 220;
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
