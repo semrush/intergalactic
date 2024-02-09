@@ -81,7 +81,12 @@ export type PopperProps = OutsideClickProps &
     /**
      * Disabled focus trap, autofocus and focus return
      */
-    disableEnforceFocus?: boolean;
+    disableEnforceFocus?: boolean /**
+     * If enabled, after reaching the end of popper the browser focus goes to the start of popper and vice versa.
+     * If disabled, after reading the end of popper the browser focus returns to trigger and popper is being closed.
+     * @default `true` (`false` in Tooltip)
+     */;
+    focusLoop?: boolean;
   };
 
 /** @deprecated */

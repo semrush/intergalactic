@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.19.0] - 2023-02-07
+
+### Changed
+
+- Disabled focus looping when focusable elements exist in tooltip.
+
 ## [6.18.1] - 2024-02-06
 
 ### Changed

@@ -96,6 +96,7 @@ const useFocusLockHook = (
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
+  onFocusOut?: (event: Event) => void,
 ) => {
   useFocusBorders(React, disabled);
 
@@ -125,9 +126,11 @@ const useFocusLockHook = (
         if (focusCameFrom) {
           setFocus(trapRef.current, focusCameFrom, focusMovedTo);
         }
+
+        onFocusOut?.(event);
       });
     },
-    [],
+    [onFocusOut],
   );
   const handleMouseEvent = React.useCallback(() => {
     lastUserInteractionRef.current = 'mouse';
@@ -240,9 +243,10 @@ export const useFocusLock = (
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
+  onFocusOut?: (event: Event) => void,
 ) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
+  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster, onFocusOut);
 };
 
 export const hasFocusableIn = (element: HTMLElement): boolean => {

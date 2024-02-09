@@ -26,6 +26,7 @@ class TooltipRoot extends Component {
       flipVariationsByContent: true,
     },
     defaultVisible: false,
+    focusLoop: false,
   };
   state = { popperChildren: null };
 
