@@ -262,7 +262,6 @@ function Menu(props) {
     interaction,
     autoFocus,
     animationsDisabled,
-    focusableTriggerReturnFocusToRef,
   } = props;
   const popperProps = {
     visible,
@@ -272,7 +271,6 @@ function Menu(props) {
     interaction,
     autoFocus,
     animationsDisabled,
-    focusableTriggerReturnFocusToRef,
   };
   return (
     <DropdownMenu.Popper {...popperProps}>

@@ -7,10 +7,9 @@ import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
 import { setRef } from '@semcore/utils/lib/ref';
-import { useFocusLock, isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock, isFocusInside, setFocus } from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
-import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
@@ -18,7 +17,6 @@ import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import keyboardFocusEnhance, {
   useFocusSource,
-  enforcedKeyboardFocusEnhanceContext,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import createPopper from './createPopper';
@@ -109,7 +107,6 @@ class Popper extends Component {
   // timer: ReturnType<typeof setTimeout>;
   // observer: ResizeObserver;
   triggerRef = React.createRef();
-  focusableTriggerReturnFocusToRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
 
@@ -129,6 +126,8 @@ class Popper extends Component {
       visible: null,
     };
   }
+
+  state = { ignoreTriggerFocusUntil: 0 };
 
   createTriggerRef = (ref) => {
     if (ref && this.triggerRef.current !== ref) {
@@ -231,15 +230,15 @@ class Popper extends Component {
     const handlers = {};
 
     showEvents.forEach((action) => {
-      handlers[action] = this.bindHandlerChangeVisibleWithTimer(true, component);
+      handlers[action] = this.bindHandlerChangeVisibleWithTimer(true, component, action);
     });
     hideEvents.forEach((action) => {
-      handlers[action] = this.bindHandlerChangeVisibleWithTimer(false, component);
+      handlers[action] = this.bindHandlerChangeVisibleWithTimer(false, component, action);
     });
     crossEvents.forEach((action) => {
       handlers[action] = visible
-        ? this.bindHandlerChangeVisibleWithTimer(false, component)
-        : this.bindHandlerChangeVisibleWithTimer(true, component);
+        ? this.bindHandlerChangeVisibleWithTimer(false, component, action)
+        : this.bindHandlerChangeVisibleWithTimer(true, component, action);
     });
     return handlers;
   }
@@ -254,7 +253,17 @@ class Popper extends Component {
   };
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
-  bindHandlerChangeVisibleWithTimer = (visible, component) => (e) => {
+  bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
+    const now = Date.now();
+    const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
+    if (
+      now < this.state.ignoreTriggerFocusUntil &&
+      visible &&
+      component === 'trigger' &&
+      focusAction
+    ) {
+      return;
+    }
     const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       clearTimeout(this.timerMultiTrigger);
@@ -269,6 +278,16 @@ class Popper extends Component {
         }
       }, 0);
     });
+    const ignoringDuration = 2000;
+    if (!visible) {
+      this.setState({
+        ignoreTriggerFocusUntil: now + ignoringDuration,
+      });
+    } else if (now < this.state.ignoreTriggerFocusUntil + ignoringDuration) {
+      this.setState({
+        ignoreTriggerFocusUntil: 0,
+      });
+    }
   };
 
   handlerChangeVisibleWithTimer = (visible, e, cb) => {
@@ -299,11 +318,17 @@ class Popper extends Component {
       interaction,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
-      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
       disableEnforceFocus,
       popperRef: this.popperRef,
+      onBlur: callAllEventHandlers(this.handleTriggerBlur, interactionProps.onBlur),
     };
   }
+
+  handleTriggerBlur = () => {
+    setTimeout(() => {
+      this.setState({ ignoreTriggerFocusUntil: 0 });
+    }, 0);
+  };
 
   getPopperProps() {
     const {
@@ -314,7 +339,6 @@ class Popper extends Component {
       duration,
       animationsDisabled,
       disableEnforceFocus,
-      ...other
     } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
@@ -335,7 +359,6 @@ class Popper extends Component {
       duration,
       animationsDisabled,
       popper: this.popper,
-      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
       disableEnforceFocus,
     };
   }
@@ -372,84 +395,27 @@ class Popper extends Component {
   }
 }
 
-const getElementNestingIndexes = (element, chain = new Set([element, document.body])) => {
-  if (!element?.parentElement) return [];
-  const index = Array.from(element.parentElement.children).indexOf(element);
-  if (chain.has(element.parentElement)) return [index];
-  chain.add(element.parentElement);
-  return [...getElementNestingIndexes(element.parentElement, chain), index];
-};
+function Trigger(props) {
+  const STrigger = Root;
+  const SFocusHint = 'span';
+  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef } = props;
 
-const useReturnFocusEl = (interaction, onKeyboardFocus, disable) => {
-  const [keyboardFocused, setKeyboardFocused] = React.useState(false);
-  const [returnFocusEl, setReturnFocusEl] = React.useState(null);
+  const triggerRef = React.useRef();
+
+  React.useEffect(() => {
+    if (highlighted === true) {
+      onKeyboardFocus({ currentTarget: triggerRef.current });
+    }
+  }, [highlighted]);
+
   const focusSourceRef = useFocusSource();
-  const handleFocus = React.useCallback(
-    (event) => {
-      if (focusSourceRef.current !== 'keyboard') return;
-      onKeyboardFocus?.();
-      if (disable) return;
-      if (interaction !== 'focus') return;
-      if (!event.relatedTarget) {
-        setReturnFocusEl('after');
-      }
-      const focusToNesting = getElementNestingIndexes(event.target);
-      const focusFromNesting = getElementNestingIndexes(event.relatedTarget);
-      const nestingLength = Math.max(focusToNesting.length, focusFromNesting.length);
-      for (let i = 0; i < nestingLength; i++) {
-        if (focusFromNesting[i] === undefined) {
-          setReturnFocusEl('after'); // <div tabIndex="0" id="focus1" /> <input id="focus2" /> </div>
-          return;
-        }
-        if (focusFromNesting[i] > focusToNesting[i]) {
-          setReturnFocusEl('before'); // <input id="focus2" /> <input id="focus1" />
-          return;
-        }
-      }
-
-      setReturnFocusEl('after'); // <input id="focus1" /> <input id="focus2" />
-    },
-    [interaction, onKeyboardFocus, disable],
-  );
-  const handleFocusReturnElFocus = React.useCallback(() => {
+  const handleFocus = React.useCallback(() => {
     if (focusSourceRef.current !== 'keyboard') return;
-    setKeyboardFocused(true);
-  }, []);
-  const handleFocusReturnElBlur = React.useCallback(() => {
-    setTimeout(() => setReturnFocusEl(null), 0);
-    setKeyboardFocused(false);
-  }, []);
+    onKeyboardFocus?.();
+  }, [onKeyboardFocus]);
 
-  return {
-    returnFocusEl,
-    handleFocus,
-    handleFocusReturnElFocus,
-    handleFocusReturnElBlur,
-    keyboardFocused,
-  };
-};
-const useFocusCatch = (active, interaction, triggerRef, popperRef) => {
   const activeRef = React.useRef(active);
   activeRef.current = active;
-
-  const [keyboardFocused, setKeyboardFocused] = React.useState(false);
-  const [focusCatch, setFocusCatch] = React.useState(false);
-  const focusSourceRef = useFocusSource();
-  const handleFocusCatchFocus = React.useCallback(() => {
-    if (focusSourceRef.current !== 'keyboard') return;
-    setKeyboardFocused(true);
-  }, []);
-  const handleFocusCatchBlur = React.useCallback(() => {
-    setFocusCatch(false);
-    setKeyboardFocused(false);
-  }, []);
-  const handleFocusCatchRef = React.useCallback((node) => {
-    if (activeRef.current) return setFocusCatch(false);
-    if (!isFocusInside(popperRef.current) && document.activeElement !== document.body)
-      return setFocusCatch(false);
-    node?.focus();
-  }, []);
-
   React.useEffect(() => {
     if (!active) return;
     if (!popperRef.current) return;
@@ -458,110 +424,28 @@ const useFocusCatch = (active, interaction, triggerRef, popperRef) => {
         if (activeRef.current) return;
         if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
 
-        if (interaction === 'hover' || interaction === 'focus') {
-          setFocusCatch(true);
-        } else {
-          triggerRef.current?.focus();
-        }
+        setFocus(triggerRef.current);
       }, 1);
     };
-  }, [active, interaction]);
-
-  return {
-    focusCatch,
-    handleFocusCatchFocus,
-    handleFocusCatchBlur,
-    handleFocusCatchRef,
-    keyboardFocused,
-  };
-};
-
-const focusCatcherStyles = { position: 'fixed' };
-function Trigger(props) {
-  const STrigger = Root;
-  const SFocusHint = 'span';
-  const {
-    Children,
-    interaction,
-    focusableTriggerReturnFocusToRef,
-    focusHint,
-    onKeyboardFocus,
-    disableEnforceFocus,
-    active,
-    popperRef,
-    highlighted,
-  } = props;
-
-  const triggerRef = React.useRef();
-
-  const {
-    returnFocusEl,
-    handleFocusReturnElBlur,
-    handleFocus,
-    keyboardFocused: returnElKeyboardFocused,
-  } = useReturnFocusEl(interaction, onKeyboardFocus, disableEnforceFocus);
-  const {
-    focusCatch,
-    handleFocusReturnElFocus,
-    handleFocusCatchFocus,
-    handleFocusCatchBlur,
-    handleFocusCatchRef,
-    keyboardFocused: focusCatchKeyboardFocused,
-  } = useFocusCatch(active, interaction, triggerRef, popperRef);
-
-  const enforceKeyboardFocused = returnElKeyboardFocused || focusCatchKeyboardFocused;
-
-  React.useEffect(() => {
-    if (highlighted === true) {
-      onKeyboardFocus({ currentTarget: triggerRef.current });
-    }
-  }, [highlighted]);
+  }, [active]);
 
   return (
     <>
-      {returnFocusEl === 'before' && (
-        <div
-          tabIndex='0'
-          ref={focusableTriggerReturnFocusToRef}
-          onBlur={handleFocusReturnElBlur}
-          onFocus={handleFocusReturnElFocus}
-          style={focusCatcherStyles}
-        />
-      )}
-      <enforcedKeyboardFocusEnhanceContext.Provider value={enforceKeyboardFocused}>
-        <STrigger
-          render={Box}
-          inline
-          role='button'
-          aria-haspopup={true}
-          onFocus={handleFocus}
-          ref={triggerRef}
-        >
-          <Children />
-        </STrigger>
-      </enforcedKeyboardFocusEnhanceContext.Provider>
+      <STrigger
+        render={Box}
+        inline
+        role='button'
+        aria-haspopup={true}
+        ref={triggerRef}
+        onFocus={handleFocus}
+        onBlur={props.onBlur}
+      >
+        <Children />
+      </STrigger>
       {focusHint && false && (
         <SFocusHint aria-live='polite'>
           <ScreenReaderOnly>{focusHint}</ScreenReaderOnly>
         </SFocusHint>
-      )}
-      {returnFocusEl === 'after' && (
-        <div
-          tabIndex='0'
-          ref={focusableTriggerReturnFocusToRef}
-          onBlur={handleFocusReturnElBlur}
-          onFocus={handleFocusReturnElFocus}
-          style={focusCatcherStyles}
-        />
-      )}
-      {focusCatch && (
-        <div
-          tabIndex='0'
-          ref={handleFocusCatchRef}
-          onFocus={handleFocusCatchFocus}
-          onBlur={handleFocusCatchBlur}
-          style={focusCatcherStyles}
-        />
       )}
     </>
   );
@@ -577,13 +461,11 @@ function PopperPopper(props) {
     ignorePortalsStacking,
     disableEnforceFocus,
     triggerRef,
-    interaction,
     autoFocus,
     controlsLength,
     duration,
     animationsDisabled,
     popper,
-    focusableTriggerReturnFocusToRef,
     focusMaster = false,
   } = props;
   const ref = React.useRef(null);
@@ -591,15 +473,7 @@ function PopperPopper(props) {
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
 
-  useFocusLock(
-    ref,
-    autoFocus,
-    interaction === 'focus' || interaction === 'hover'
-      ? focusableTriggerReturnFocusToRef
-      : triggerRef,
-    !visible || disableEnforceFocus,
-    focusMaster,
-  );
+  useFocusLock(ref, autoFocus, triggerRef, !visible || disableEnforceFocus, focusMaster);
 
   useContextTheme(ref, visible);
 
