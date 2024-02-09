@@ -139,8 +139,8 @@ const useFocusLockHook = (
     lastUserInteractionRef.current = 'keyboard';
   }, []);
   const returnFocus = React.useCallback(() => {
-    const trapNode = trapRef.current!;
-    if (!isFocusInside(trapNode)) return;
+    const trapNode = trapRef.current;
+    if (trapNode && !isFocusInside(trapNode)) return;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
       setTimeout(() => setFocus(returnFocusNode, trapNode), 0);
@@ -196,7 +196,7 @@ const useFocusLockHook = (
     if (autoFocus)
       setFocus(
         trapRef.current,
-        typeof returnFocusTo === 'object' ? returnFocusTo?.current! : document.body,
+        typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
       );
 
     return () => {

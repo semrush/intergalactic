@@ -3,7 +3,7 @@ import { getFocusableIn } from './getFocusableIn';
 
 const unsafeSetFocus = (
   node: HTMLElement,
-  previousActiveElement?: HTMLElement,
+  previousActiveElement?: HTMLElement | null,
   actualActiveElement?: HTMLElement,
   focusOptions: FocusOptions = {},
 ) => {
