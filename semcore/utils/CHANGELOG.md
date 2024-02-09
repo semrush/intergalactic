@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Logic of returning focus to the trigger component if `trapRef` has been removed from DOM.
+- Fixed edge case bug when browser focus should be returned from modal, but a button that triggered modal opening is already unmounted.
 
 ## [4.20.1] - 2024-02-05
 
