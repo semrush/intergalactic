@@ -91,18 +91,18 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Bar chart** visualizes distribution of values by time period or category for value comparison. A bar chart can be vertical or [horizontal](/data-display/bar-horizontal/bar-horizontal).
 
+**Key tips for using bar chart:**
+
+- Begin the Y-axis at zero to maintain scale integrity.
+- Ensure the chart's axes are clear, adding labels if the title isn't descriptive enough.
+- Use a single color or shades of one color for simplicity. Highlight categories only if needed.
+
 ::: tip
 **Bar vs. Histogram Chart**
 
 - Bar charts categorize data qualitatively, showing how different categories compare.
 - Histograms organize data quantitatively, indicating how often values fall within certain ranges.
 :::
-
-**Key tips for bar chart:**
-
-- Begin the Y-axis at zero to maintain scale integrity.
-- Ensure the chart's axes are clear, adding labels if the title isn't descriptive enough.
-- Use a single color or shades of one color for simplicity. Highlight categories only if needed.
 
 ### When to use
 
@@ -206,7 +206,7 @@ Do not display columns for data points without values. When hovering over such d
 
 ![](static/partially-trash.png)
 
-## Initial loading
+## Initial data loading
 
 Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 

@@ -21,14 +21,14 @@ const Demo = () => {
         value={value}
         onChange={setValue}
         options={options}
-        placeholder='Select an option, sir'
+        placeholder='Select option'
         m='auto'
       />
       <Select
         defaultValue={initialValue}
         onChange={setValue}
         options={options}
-        placeholder='Select an option, sir'
+        placeholder='Select option'
         m='auto'
       />
     </Flex>

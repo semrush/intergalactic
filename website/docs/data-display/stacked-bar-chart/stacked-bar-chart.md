@@ -68,56 +68,56 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Stacked bar chart** is used when it's necessary to display more than two categories of values and show the ratio of them to the whole.
+**Stacked bar chart** is used to display multiple categories of values and illustrate their proportions relative to the total.
 
-Important points to keep in mind when presenting data as a Stacked bar chart:
+**Key points for using stacked bar chart:**
 
-1. Use this chart type if you have more than two categories to compare.
-2. Use this chart type to visualize the ratio of parts to the whole.
-3. Use sufficiently contrasting colors to show different parts more clearly.
-4. Don't make this chart too small in height and width – it will make it harder to read data.
+- Choose this chart to compare more than two categories.
+- It's ideal for showing how parts contribute to a whole.
+- Pick distinctly different colors for clarity.
+- Ensure the chart is large enough to easily read the data.
+
+::: tip
+**Bar vs. Histogram Chart**
+
+- Bar charts categorize data qualitatively, showing how different categories compare.
+- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
+:::
 
 ## Appearance
 
-Stacked bar chart has no margin between values inside the column. **Choose contrasting colors for different categories.**
+In a stacked bar chart, columns have no gaps between value segments. Select contrasting colors for visibility.
 
-::: tip
-It is recommended to make a minimum 20% margin between a bars. This is necessary so that the data doesn't turn into a mess.
-:::
+Aim for at least a 20% margin between columns to avoid clutter.
 
 ![stacked bar chart](static/stacked-bar-chart.png)
 
 ### Chart colors
 
-Use [color palette](/data-display/color-palette/color-palette) and follow the rules prescribed for it.
+Stick to the [designated chart palette](/data-display/color-palette/color-palette) and ensure consistent color use.
 
 ## Interaction
 
-When you hover over a column, highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
-
-If the column is clickable, the cursor changes to `pointer`.
+Hovering highlights a column with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
 ![stacked bar chart](static/stacked-bar-chart-hover.png)
 
-See detailed information in the common [Bar chart guide](/data-display/bar-chart/bar-chart#a61ee5/).
+For more, refer to the [Bar chart](/data-display/bar-chart/bar-chart#a61ee5/).
 
 ## Trend
 
-In some cases, a stacked bar chart may have a trend line. Most often, trend line overloads charts. However, in some cases, it can be useful for reading the overall trend. It helps to focus on the total value of each dot.
-
-When you hover over any part of the bar, display the tooltip with the values for all categories and the total value.
+Trend lines can help identify overall patterns but may clutter simple charts. If used, ensure tooltips provide comprehensive value details.
 
 ![stacked bar chart](static/stacked-bar-chart-trend.png)
 
 ## Edge cases
 
-Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart#a54381) has.
+Edge cases for stacked bar chart align with those of the [Bar chart](/data-display/bar-chart/bar-chart#edge-cases).
 
-## Initial loading
+## Initial data loading
 
-See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart#ac26f2).
+For loading details, refer to the [Bar chart guide](/data-display/bar-chart/bar-chart#initial-data-loading).
 
 ## Usage in UX/UI
 
-See detailed information in the [Bar chart guide](/data-display/bar-chart/bar-chart#a1d837).
-
+Refer to the [Bar chart guide](/data-display/bar-chart/bar-chart#usage-in-ux-ui), for the detailed information on specific use cases.
