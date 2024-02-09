@@ -70,9 +70,9 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-A **bubble chart** visualizes relationships between data categories using proportions, colors, and positioning on a coordinate axis. This chart type helps you analyze patterns between datasets.
+A **bubble chart** visualizes relationships between data categories using proportions, colors, and positioning on a coordinate axis. This chart type helps you analyze patterns between data sets.
 
-It allows to visualize up to 3-4 parameters for datasets. A bubble chart is a mix between a scatterplot chart and a proportional area chart.
+It allows to visualize up to 3-4 parameters for data sets. A bubble chart is a mix between a scatterplot chart and a proportional area chart.
 
 As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Microsoft_Office) explains, "You can use a bubble chart instead of a scatterplot chart if your data has three data series that each contain a set of values. The sizes of the bubbles are determined by the values in the third data series.".
 
@@ -93,7 +93,7 @@ A bubble chart is a variation of a scatterplot chart, but with one or two additi
 
 - vertical lines (in addition to horizontal);
 - labels for the X and Y axes (don't color them, as this makes the chart harder to read);
-- a legend if the dataset has different categories, each with a different color.
+- a legend if the data set has different categories, each with a different color.
 
 ::: tip
 Make sure to add information on what the bubble size means.
@@ -101,8 +101,8 @@ Make sure to add information on what the bubble size means.
 
 | Case             | Appearance example                                     | Styles                                                                                                                                                                                                                                                                                                           |
 | ---------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dataset      | ![](static/positive-correlation-1.png)      | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. If necessary, you can select any other color from the chart palette. A bubble always has a 2px white stroke. The center of the bubble is marked with a cross in the same color as the circle itself. |
-| Several datasets | ![](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                                                                                                                                               |
+| One data set      | ![](static/positive-correlation-1.png)      | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. If necessary, you can select any other color from the chart palette. A bubble always has a 2px white stroke. The center of the bubble is marked with a cross in the same color as the circle itself. |
+| Several data sets | ![](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                                                                                                                                               |
 
 ### Text labels for bubbles
 
@@ -116,7 +116,7 @@ Remember to check contrast for the text labels. We don’t recommend to use ligh
 
 ## Legend
 
-- If there are multiple datasets in the chart, show the legend. Provide values for each dataset.
+- If there are multiple data sets in the chart, show the legend. Provide values for each data set.
 - We recommend using the vertical legend. It makes categories and their meaning easier to read.
 
 ![](static/positive-correlation-2.png)
@@ -138,12 +138,12 @@ Show the following values in the tooltip for this chart type:
 
 **In the tooltip, focus on values rather than axis names or data categories.**
 
-If you have several datasets on the chart, then it is important to show their color in the tooltip. Sometimes it is necessary to show a third value for a bubble, which affects its size (this may be the difference between the axes, or there may be a different value).
+If you have several data sets on the chart, then it is important to show their color in the tooltip. Sometimes it is necessary to show a third value for a bubble, which affects its size (this may be the difference between the axes, or there may be a different value).
 
 | Case             | Appearance example                                                                                    |
 | ---------------- | ----------------------------------------------------------------------------------------------------- |
-| One dataset      | ![](static/hover-2.png)                                                         |
-| Several datasets | ![](static/hover-1.png) ![](static/hover-3.png) |
+| One data set      | ![](static/hover-2.png)                                                         |
+| Several data sets | ![](static/hover-1.png) ![](static/hover-3.png) |
 
 ## Bubbles intersection
 
@@ -158,8 +158,8 @@ Here you will find the states for some specific cases. All other "empty states" 
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                                    |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | Outliers                               | To prevent small values from being lost under the large ones (outliers), the bubble has a minimum size – 11px * 11px.                                                                                            | ![](static/outliers-1.png) ![](static/outliers-2.png) |
-| Data values are null                   | If all the values on the chart are zero, display them at the origin of the grid. For cases where you compare multiple datasets, show the values for each dataset in the legend. **Zero is also data. 0 ≠ N / A.** | ![](static/null-1.png) ![](static/null-2.png)                 |
-| No data for some points (n/a)          | Don't show points without data on the chart. For cases where you compare multiple datasets, show the values for each dataset in the legend.                                                                       | ![](static/n-a-1.png) ![](static/n-a-2.png)             |
+| Data values are null                   | If all the values on the chart are zero, display them at the origin of the grid. For cases where you compare multiple data sets, show the values for each data set in the legend. **Zero is also data. 0 ≠ N / A.** | ![](static/null-1.png) ![](static/null-2.png)                 |
+| No data for some points (n/a)          | Don't show points without data on the chart. For cases where you compare multiple data sets, show the values for each data set in the legend.                                                                       | ![](static/n-a-1.png) ![](static/n-a-2.png)             |
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                             |
 | First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![](static/bubble-chart-skeleton.png)          |
 
@@ -188,10 +188,10 @@ The data will be difficult to read and compare.
 
 ![](static/size-yes-no.png)
 
-### Number of datasets
+### Number of data sets
 
 ::: tip
-The more datasets you cram into your scatterplot chart, the harder it is to read.
+The more data sets you cram into your scatterplot chart, the harder it is to read.
 :::
 
 ![](static/categories-yes-no.png)

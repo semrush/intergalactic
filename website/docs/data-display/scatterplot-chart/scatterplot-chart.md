@@ -66,17 +66,17 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-A **scatterplot chart** visualizes the relationship between two variables in one or more datasets.
+A **scatterplot chart** visualizes the relationship between two variables in one or more data sets.
 
 This chart type helps to analyze patterns between two variables.
 
-Unlike other types of charts, a scatterplot chart can display trends, clusters, patterns, and relationships in a dataset, especially a very large one. Such charts allow to quickly understand if there is a dependency between the variables or not.
+Unlike other types of charts, a scatterplot chart can display trends, clusters, patterns, and relationships in a data set, especially a very large one. Such charts allow to quickly understand if there is a dependency between the variables or not.
 
 ::: tip
 The scatterplot is arguably the most versatile, polymorphic, and generally useful invention in the history of statistical graphics ( [Journal of the History of the Behavioral Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract), 2005).
 :::
 
-Use a scatterplot chart when you need to show the correlation between two variables in a large dataset. Scatterplots are sometimes called correlation plots because they show how two variables are correlated.
+Use a scatterplot chart when you need to show the correlation between two variables in a large data set. Scatterplots are sometimes called correlation plots because they show how two variables are correlated.
 
 ### How to read a scatterplot chart
 
@@ -96,14 +96,14 @@ A scatterplot chart must contain:
 
 - vertical lines (in addition to horizontal);
 - labels for the X and Y axes (don't color them, as this will complicate the "reading" of the chart);
-- a legend if the dataset has different categories, each with a different color.
+- a legend if the data set has different categories, each with a different color.
 
 **Dot size – 11px * 11px.**
 
 | Case             | Appearance example                                     | Styles                                                                                                                                                                                    |
 | ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dataset      | ![](static/no-correlation.png)              | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
-| Several datasets | ![](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                        |
+| One data set      | ![](static/no-correlation.png)              | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
+| Several data sets | ![](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                        |
 
 ## Value inside a dot
 
@@ -115,12 +115,12 @@ For text color use the same color as the dot but pick the next shade (for exampl
 
 | Case             | Appearance example                                   |
 | ---------------- | ---------------------------------------------------- |
-| One dataset      | ![](static/values-1.png)      |
-| Several datasets | ![](static/values-2.png) |
+| One data set      | ![](static/values-1.png)      |
+| Several data sets | ![](static/values-2.png) |
 
 ## Legend
 
-If the chart shows multiple datasets, show a legend. Provide values for each dataset.
+If the chart shows multiple data sets, show a legend. Provide values for each data set.
 We recommend using the vertical legend. It helps to "read" the categories and their meaning better.
 
 ![](static/two-categories.png)
@@ -145,12 +145,12 @@ Show the following values in the tooltip for this chart type:
 
 **In the tooltip, focus on values rather than axis names or data categories.**
 
-If you have several datasets on the chart, it is important to show their color in the tooltip.
+If you have several data sets on the chart, it is important to show their color in the tooltip.
 
 | Case             | Appearance example                                  |
 | ---------------- | --------------------------------------------------- |
-| One dataset      | ![](static/hover-2.png)      |
-| Several datasets | ![](static/hover-1.png) |
+| One data set      | ![](static/hover-2.png)      |
+| Several data sets | ![](static/hover-1.png) |
 
 ## Edge cases
 
@@ -159,8 +159,8 @@ Here you will find the states for some specific cases. All other "empty states" 
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                               |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | Outliers                               | When there is a trend on the chart, but some data doesn't fit into it.                                                                                                                                           | ![](static/outliers-1.png)                               |
-| Data values are null                   | If all the values in the chart are zero, display them at the origin of the grid. For cases where you compare multiple datasets, show the values for each dataset in the legend. **Zero is also data. 0 ≠ N / A.** | ![](static/null-1.png) ![](static/null-2.png)            |
-| No data for some points (n/a)          | Don't show points without data on the chart. For cases where you compare multiple datasets, show the values for each dataset in the legend.                                                                       | ![](static/n-a-1.png) ![](static/n-a-2.png)        |
+| Data values are null                   | If all the values in the chart are zero, display them at the origin of the grid. For cases where you compare multiple data sets, show the values for each data set in the legend. **Zero is also data. 0 ≠ N / A.** | ![](static/null-1.png) ![](static/null-2.png)            |
+| No data for some points (n/a)          | Don't show points without data on the chart. For cases where you compare multiple data sets, show the values for each data set in the legend.                                                                       | ![](static/n-a-1.png) ![](static/n-a-2.png)        |
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                        |
 | First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![](static/scatterplot-chart-skeleton.png) |
 
@@ -179,10 +179,10 @@ Otherwise, it can visually distort the presence of a correlation between the dat
 
 ![](static/axis-yes-no.png)
 
-### Number of datasets
+### Number of data sets
 
 ::: tip
-The more datasets you cram into your scatterplot chart, the harder it is to read.
+The more data sets you cram into your scatterplot chart, the harder it is to read.
 :::
 
 ![](static/categories-yes-no.png)

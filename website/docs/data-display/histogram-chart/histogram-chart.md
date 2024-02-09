@@ -80,8 +80,8 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 ::: tip
 Histogram vs. Bar Chart
 
-- Histogram chart are used to display distribution of datasets: how often values fall into quantitative ranges.
-- Bar chart displays the distribution of datasets by quality categories for comparison.
+- Histogram chart are used to display distribution of data sets: how often values fall into quantitative ranges.
+- Bar chart displays the distribution of data sets by quality categories for comparison.
 
 > Histograms are used to show distributions of variables while bar charts are used to compare variables, [source](https://www.forbes.com/sites/naomirobbins/2012/01/04/a-histogram-is-not-a-bar-chart/#93b29b6d775f). _For example, we want to compare revenues of five companies. In this case, use [Bar chart](/data-display/bar-chart/bar-chart)._
 >
