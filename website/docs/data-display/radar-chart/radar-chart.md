@@ -138,6 +138,8 @@ Radar charts are most beneficial when there are a few items to compare. That is 
 - Use the `--chart-grid-line` token for the color of the all axis and variables lines.
 - Use dashed lines for variables.
 
+Table: Radar chart styles
+
 | Minimum variables (3)                                                 | Maximum recommended variables (10)                                     |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | ![Radar chart with 3 minimum variables.](static/variables-minimum.png) | ![Radar chart with 10 maximum variables.](static/variables-maximum.png) |
@@ -165,6 +167,8 @@ If there are three or four variables grid is displayed as a circle.
 ![Radar chart with three variables and circular grid.](static/circle-type-1.png)
 
 But in case if you have more than four variables, you can also display the grid as a circle instead of a polygon. Use `type="circle"` in this case.
+
+Table: Radar chart grid types
 
 | Grid as a polygon                                                                | Grid as a circle                                                                 |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -207,7 +211,6 @@ You can add as many scales as you need to the axes. To keep your chart readable,
 
 Use `dashed` lines for scales:
 
-![Radar chart with few scale lines on the polar grid.](static/scales-1.png)
 ![Radar chart with many scale lines on the polar grid.](static/scales-2.png)
 
 #### Variables with different scales
@@ -225,6 +228,8 @@ The radar chart is best suited for comparing several dimensions when there isn't
 - Line thickness for data sets is 3px.
 - Dot size is 8px with 2px outer border (use the `--chart-grid-border` color token).
 
+Table: Radar chart data set styles
+
 | Minimum data sets (1)                                          | Maximum recommended data sets (3)                                                     |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | ![Radar chart with one data set.](static/data-sets-minimum.png) | ![Radar chart with three maximum recommended data sets.](static/data-sets-maximum.png) |
@@ -241,6 +246,8 @@ Your charts could look like this:
 ## Legend
 
 If there is more than one data set, your chart needs a legend. Place it above the chart or on the right side.
+
+Table: Radar chart legend
 
 | Legend placement | Appearance example                                                                          | Margins                                                                                                  |
 | ---------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -266,7 +273,7 @@ Highlight the variable line with the `--chart-grid-y-accent-hover` color token.
 
 Data points that lie on this variable are increased to 12px (plus 2px outer border).
 
-## Animation
+### Animation
 
 Data sets grow from the 0 point (from the center) using animation with these properties:
 
@@ -300,15 +307,13 @@ If for some reason data isn't available, show `n/a` in the tooltip. Data point i
 
 ## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
+Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
-
-For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
-
-Use the `--skeleton-bg` color token for the skeleton background color.
+Use the `--skeleton-bg` color token for the skeleton's background.        
 
 ![](static/radar-skeleton.png)
+
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
 
 ## Usage in UX/UI
 
