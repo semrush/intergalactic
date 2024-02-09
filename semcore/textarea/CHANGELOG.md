@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.19.2] - 2024-02-07
+
+### Fixed
+
+- Prevented changing size of textarea while calculating rows.
+
 ## [5.19.1] - 2024-02-06
 
 ### Changed

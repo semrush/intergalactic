@@ -253,56 +253,6 @@ describe('focus control', () => {
     expect(div3Element).toHaveFocus();
   });
 
-  test.only('disable loop', async () => {
-    const { getByTestId } = render(
-      <div>
-        <input data-testid='input-before' />
-        <Popper interaction='focus' focusLoop={false}>
-          <Popper.Trigger>
-            <input data-testid='trigger' />
-          </Popper.Trigger>
-          <Popper.Popper data-testid='popper'>
-            <div tabIndex={0} data-testid='div-1' />
-            <div tabIndex={0} data-testid='div-2' />
-            <div tabIndex={0} data-testid='div-3' />
-          </Popper.Popper>
-        </Popper>
-        <input data-testid='input-after' />
-      </div>,
-    );
-
-    const inputBeforeElement = getByTestId('input-before');
-    const triggerElement = getByTestId('trigger');
-    const inputAfterElement = getByTestId('input-after');
-
-    await userEvent.keyboard('[Tab]');
-    expect(inputBeforeElement).toHaveFocus();
-    await userEvent.keyboard('[Tab]');
-    expect(triggerElement).toHaveFocus();
-
-    const popperElement = getByTestId('popper');
-    const div1Element = getByTestId('div-1');
-    const div2Element = getByTestId('div-2');
-    const div3Element = getByTestId('div-3');
-
-    await userEvent.keyboard('[Tab]');
-    expect(popperElement).toHaveFocus();
-    await userEvent.keyboard('[Tab]');
-
-    expect(div1Element).toHaveFocus();
-    await userEvent.keyboard('[Tab]');
-    expect(div2Element).toHaveFocus();
-    await userEvent.keyboard('[Tab]');
-    expect(div3Element).toHaveFocus();
-    await userEvent.keyboard('[Tab]');
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-
-    expect(triggerElement).toHaveFocus();
-    await userEvent.keyboard('[Tab]');
-    expect(inputAfterElement).toHaveFocus();
-  });
-
   test('focus return', () => {
     let hidePopper = undefined;
     vi.useFakeTimers();

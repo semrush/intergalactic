@@ -53,15 +53,22 @@ class Textarea extends Component {
     const { rows, minRows, maxRows } = this.asProps;
     if (!node || !canUseDOM() || rows || !(minRows || maxRows)) return;
 
-    const lh = cssToIntDefault(getComputedStyle(node).getPropertyValue('line-height'));
     const previousRows = node.rows;
+    const clonnedNode = node.cloneNode(true);
 
-    node.rows = minRows;
+    clonnedNode.style.visibility = 'hidden';
 
-    const computed = Math.floor(node.scrollHeight / lh);
+    document.body.appendChild(clonnedNode);
+
+    const lh = cssToIntDefault(getComputedStyle(clonnedNode).getPropertyValue('line-height'));
+
+    clonnedNode.rows = minRows;
+
+    const computed = Math.floor(clonnedNode.scrollHeight / lh);
+
+    document.body.removeChild(clonnedNode);
 
     if (computed === previousRows) {
-      node.rows = computed;
       return;
     }
     if (computed <= minRows) {
