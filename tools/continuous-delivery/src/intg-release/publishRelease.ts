@@ -28,7 +28,7 @@ const publishIntergalacticRelease = async () => {
   // 1) Update changelog
   const { changelogs, version } = await updateReleaseChangelog(packageJson, deps);
 
-  // 2) Update version in package.json
+  // 2) Update version in package.json for correct check unlocked release
   packageJson.version = version;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
@@ -60,11 +60,15 @@ const publishIntergalacticRelease = async () => {
   updateComponentsVersions(packages, path.resolve(packagePath, 'components.json'));
   updateComponentsVersions(packages, path.resolve(dirname, 'components.json'));
 
-  // 5) Publish package
-  fs.writeJsonSync(path.resolve(packagePath, 'package.json'), packageJson, { spaces: 2 });
-  await publishTarball(packageJson.name, packagePath);
+  // 6) Update version in prereleased package
+  const publishedPackageJson = fs.readJSONSync(path.resolve(packagePath, 'package.json'));
+  publishedPackageJson.version = version;
 
-  // 6) Close tasks in clickup
+  // 7) Publish package
+  fs.writeJsonSync(path.resolve(packagePath, 'package.json'), publishedPackageJson, { spaces: 2 });
+  await publishTarball(publishedPackageJson.name, packagePath);
+
+  // 8) Close tasks in clickup
   if (!process.argv.includes('--dry-run') && version) {
     await closeTasks(version);
   }
