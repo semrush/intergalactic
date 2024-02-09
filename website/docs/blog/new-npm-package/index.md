@@ -19,7 +19,7 @@ The `@semcore/ui` package and individual component packages will continue to be 
 
 Migrating to intergalactic is designed to be as seamless as possible. To simplify the process, we've published a migration tool that automatically replaces all imports from the `@semcore/*` scope with the correct imports from `intergalactic` .
 
-Migration Example:
+Migration example:
 
 ::: code-group
 
@@ -38,7 +38,7 @@ npm uninstall @semcore/ui
 
 :::
 
-We have tested the migration and usage of components through intergalactic on several projects with excellent results. Should you encounter any issues, please feel free to open an issue on GitHub.
+We have tested the migration and usage of components through intergalactic on several projects with excellent results. In case if you encounter any issues, please feel free to open an issue on [GitHub](https://github.com/semrush/intergalactic/issues/new/choose).
 
 Publish date: _2024-02-08_.
 
