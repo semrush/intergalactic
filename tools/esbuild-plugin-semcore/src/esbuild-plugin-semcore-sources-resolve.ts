@@ -16,7 +16,7 @@ const isFile = async (path: string) => {
 };
 
 const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
-  if (!path.startsWith('@semcore/')) {
+  if (!path.startsWith('@semcore/') && !path.startsWith('intergalactic')) {
     throw new Error(
       `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
     );
@@ -85,6 +85,8 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
       if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
       if (path.startsWith('@semcore/ui/'))
         path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
+      if (path.startsWith('intergalactic/'))
+        path = `@semcore/${path.substring('intergalactic/'.length)}`;
       const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
       const componentName = path.split('/')[1];
       const subPath = path.split('/').slice(2).join('/');

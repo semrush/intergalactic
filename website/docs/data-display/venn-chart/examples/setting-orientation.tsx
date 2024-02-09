@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import { colors, Plot, Venn } from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
+import Button from 'intergalactic/button';
+import { colors, Plot, Venn } from 'intergalactic/d3-chart';
+import { Flex } from 'intergalactic/flex-box';
 
 const orders = [
   (val1, val2) => val2.radius - val1.radius,

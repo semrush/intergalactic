@@ -9,23 +9,33 @@ tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api')
 Root element for all charts.
 
 ```js
-import { Plot } from '@semcore/ui/d3-chart';
+import {
+    Plot
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="PlotProps" :types={...types} />
 
 ## Axis
 
-It have children components `Title, Ticks, Grid`.
+It have children components `Title, Ticks, Grid` .
 
 ```js
-import { XAxis, YAxis } from '@semcore/ui/d3-chart';
+import {
+    XAxis,
+    YAxis
+} from 'intergalactic/d3-chart';
 
-<XAxis>
-  <XAxis.Title />
-  <XAxis.Ticks />
-  <XAxis.Grid />
-</XAxis>;
+<
+XAxis >
+    <
+    XAxis.Title / >
+    <
+    XAxis.Ticks / >
+    <
+    XAxis.Grid / >
+    <
+    /XAxis>;
 ```
 
 <TypesView type="XAxisProps" :types={...types} />
@@ -43,7 +53,9 @@ import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 Container watch to size block.
 
 ```js
-import { ResponsiveContainer } from '@semcore/ui/d3-chart';
+import {
+    ResponsiveContainer
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="ResponsiveContainerProps" :types={...types} />
@@ -53,7 +65,9 @@ import { ResponsiveContainer } from '@semcore/ui/d3-chart';
 Component for show line after hover on chart.
 
 ```js
-import { HoverLine } from '@semcore/ui/d3-chart';
+import {
+    HoverLine
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="HoverProps" :types={...types} />
@@ -63,12 +77,14 @@ import { HoverLine } from '@semcore/ui/d3-chart';
 Component for show sector after hover on chart.
 
 ```js
-import { HoverRect } from '@semcore/ui/d3-chart';
+import {
+    HoverRect
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="HoverProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>
 
 ## Pattern fill
 

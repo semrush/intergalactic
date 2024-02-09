@@ -6,44 +6,44 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ## FeaturePopover
 
-This is a wrap component, which is completely inherited from `<Popper/>`.
+This is a wrap component, which is completely inherited from `<Popper/>` .
 
 ```jsx
-import FeaturePopover from '@semcore/ui/feature-popover';
+import FeaturePopover from 'intergalactic/feature-popover';
 <FeaturePopover />;
 ```
 
 <TypesView type="PopperProps" :types={...types} />
 
-## FeaturePopover.Trigger
+## FeaturePopover. Trigger
 
-This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>`.
+This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>` .
 
 ```jsx
-import FeaturePopover from '@semcore/ui/feature-popover';
+import FeaturePopover from 'intergalactic/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
 <TypesView type="PopperTriggerProps" :types={...types} />
 
-## FeaturePopover.Popper
+## FeaturePopover. Popper
 
-This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It is fully inherited from `<Popper.Popper/>`.
+This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It is fully inherited from `<Popper.Popper/>` .
 
 ```jsx
-import FeaturePopover from '@semcore/ui/feature-popover';
+import FeaturePopover from 'intergalactic/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
 <TypesView type="FeaturePopoverPopperProps" :types={...types} />
 
-## FeaturePopover.Spot
+## FeaturePopover. Spot
 
-This blinking circle is inherited from `<Box>`.
+This blinking circle is inherited from `<Box>` .
 
 ```jsx
-import FeaturePopover from '@semcore/ui/feature-popover';
+import FeaturePopover from 'intergalactic/feature-popover';
 <FeaturePopover.Spot />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

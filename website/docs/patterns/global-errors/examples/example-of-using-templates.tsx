@@ -1,13 +1,13 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
+import Select from 'intergalactic/select';
+import { I18nProvider } from 'intergalactic/utils/lib/enhances/WithI18n';
 import {
   AccessDenied,
   Maintenance,
   PageError,
   PageNotFound,
   ProjectNotFound,
-} from '@semcore/ui/errors';
+} from 'intergalactic/errors';
 
 const options = [
   'de',

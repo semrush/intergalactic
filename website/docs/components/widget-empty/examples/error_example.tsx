@@ -1,14 +1,14 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import { Box } from '@semcore/ui/flex-box';
-import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
-import { Error } from '@semcore/ui/widget-empty';
-import Card from '@semcore/ui/card';
-import { Text } from '@semcore/ui/typography';
-import Button from '@semcore/ui/button';
-import ReloadM from '@semcore/ui/icon/Reload/m';
-import Link from '@semcore/ui/link';
-import Divider from '@semcore/ui/divider';
+import Select from 'intergalactic/select';
+import { Box } from 'intergalactic/flex-box';
+import { I18nProvider } from 'intergalactic/utils/lib/enhances/WithI18n';
+import { Error } from 'intergalactic/widget-empty';
+import Card from 'intergalactic/card';
+import { Text } from 'intergalactic/typography';
+import Button from 'intergalactic/button';
+import ReloadM from 'intergalactic/icon/Reload/m';
+import Link from 'intergalactic/link';
+import Divider from 'intergalactic/divider';
 
 const options = [
   'de',

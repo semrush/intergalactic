@@ -7,13 +7,14 @@ tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import TabPanel from '@semcore/ui/tab-panel';
-import Badge from '@semcore/ui/badge';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import React from 'react'; 
+import TabPanel from 'intergalactic/tab-panel'; 
+import Badge from 'intergalactic/badge'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
+
     const { bool, select } = createGroupWidgets('TabPanel');
 
     const behavior = select({
@@ -57,11 +58,14 @@ const App = PlaygroundGeneration(
         </TabPanel.Item>
       </TabPanel>
     );
-  },
+
+  }, 
   {
+
     filterProps: ['defaultValue'],
-  },
-);
+
+  }, 
+); 
 </script>
 
 :::
@@ -72,8 +76,8 @@ const App = PlaygroundGeneration(
 
 **Don't use this component in the following scenarios:**
 
-- As the main navigation in your interface; instead, use the main menu, which offers better visual hierarchy.
-- For switching between states; for this purpose, use either the [Switch](/components/switch/switch) or [Radio](/components/radio/radio) components.
+* As the main navigation in your interface; instead, use the main menu, which offers better visual hierarchy.
+* For switching between states; for this purpose, use either the [Switch](/components/switch/switch) or [Radio](/components/radio/radio) components.
 
 ## Component composition
 
@@ -81,20 +85,20 @@ const App = PlaygroundGeneration(
 
 Component consists of the following:
 
-- `TabPanel.Item`
-- `TabPanel.Item.Addon`
-- `TabPanel.Item.Text`
+* `TabPanel.Item`
+* `TabPanel.Item.Addon`
+* `TabPanel.Item.Text`
 
 ## Sizes and margins
 
-- The TabPanel.Item has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
+* The TabPanel. Item has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 Addons before and after the text have a margin of 8px.
 
 ![](static/tab-m.png)
 
 ## Addons
 
-Addons inside TabPanel.Item have the same margins as addons inside the [Button](/components/button/button) component.
+Addons inside TabPanel. Item have the same margins as addons inside the [Button](/components/button/button) component.
 
 Table: Examples of addons for TabPanel
 
@@ -107,9 +111,9 @@ Table: Examples of addons for TabPanel
 
 **Note the following:**
 
-- Avoid placing a single icon without accompanying text inside `TabPanel.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/tab-line#usage_in_ux_ui)).
-- A flag and an icon cannot be placed together in a tab.
-- If both a [Badge](/components/badge/badge) and a [Counter](/components/counter/counter) are present inside the tab, the Badge should be placed after the Counter.
+* Avoid placing a single icon without accompanying text inside `TabPanel.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/tab-line#usage_in_ux_ui)).
+* A flag and an icon cannot be placed together in a tab.
+* If both a [Badge](/components/badge/badge) and a [Counter](/components/counter/counter) are present inside the tab, the Badge should be placed after the Counter.
 
 ## Interaction
 
@@ -121,16 +125,24 @@ Table: TabPanel states
 
 | State           | Appearance     | Styles     |
 | --------------- | -------------- | ---------- |
-| Normal          | ![](static/normal-active.png)            | `color: var(--text-secondary)`    |
-| Hover           | ![](static/hover.png)                     | `color: var(--text-primary)`    |
-| Active          | ![](static/normal-active.png)            | `color: var(--text-link)`, `border-width: 1px 1px 0px 1px`, `border-style: solid`, `border-color: var(--border-primary)` `border-radius: 6px 6px 0px 0px`                                                        |
+| Normal          | ![](static/normal-active.png)            | `color: var(--text-secondary)` |
+| Hover           | ![](static/hover.png)                     | `color: var(--text-primary)` |
+| Active          | ![](static/normal-active.png)            | `color: var(--text-link)` , `border-width: 1px 1px 0px 1px` , `border-style: solid` , `border-color: var(--border-primary)`  `border-radius: 6px 6px 0px 0px` |
 | Disabled        | ![](static/disabled.png)               | Use the `--disabled-opacity` token.     |
-| Initial loading | ![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabPanel.Item`, use [Skeleton](/components/skeleton/skeleton) with the size of the text's line-height.                 |
-| Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabPanel.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button)).|
+| Initial loading | 
+
+![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabPanel.Item` , use [Skeleton](/components/skeleton/skeleton)
+
+ with the size of the text's line-height.                 |
+| Loading         | 
+
+![](static/loading.png)                 | When showing that data in the counter inside `TabPanel.Item` is currently being loaded, use [Spin](/components/spin/spin) with the smallest size (same as in [Button](/components/button/button))
+
+.|
 
 ## Usage in UX/UI
 
-In cases where you have numerous tabs or there isn't enough space for the full tab text, truncate the text using an `ellipsis`.
+In cases where you have numerous tabs or there isn't enough space for the full tab text, truncate the text using an `ellipsis` .
 
 ::: tip
 Make sure to add a tooltip with the full text message to such collapsed tabs.
@@ -145,4 +157,3 @@ By clicking on the last tab with an `ellipsis` in the dropdown, it is possible t
 :::
 
 ![](static/tab-collapse.png)
-

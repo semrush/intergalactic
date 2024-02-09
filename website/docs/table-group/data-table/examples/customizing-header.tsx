@@ -1,9 +1,9 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Tooltip from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { LinkTrigger } from '@semcore/ui/base-trigger';
+import DataTable from 'intergalactic/data-table';
+import Tooltip from 'intergalactic/tooltip';
+import { Text } from 'intergalactic/typography';
+import DropdownMenu from 'intergalactic/dropdown-menu';
+import { LinkTrigger } from 'intergalactic/base-trigger';
 
 const Demo = () => {
   return (

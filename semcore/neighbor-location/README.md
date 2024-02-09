@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import NeighborLocation from '@semcore/ui/neighbor-location';
+import NeighborLocation from 'intergalactic/neighbor-location';
 ```
 
 <details>

@@ -8,7 +8,7 @@ tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/confirm-modal-example.tsx';
+  export Demo from './examples/confirm-modal-example.tsx'; 
 </script>
 
 :::

@@ -8,7 +8,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 It's a main component for text in our interfaces. By default, this is a `span` tag.
 
 ```jsx
-import { Text } from '@semcore/ui/typography';
+import { Text } from 'intergalactic/typography';
 <Text />;
 ```
 
@@ -19,19 +19,19 @@ import { Text } from '@semcore/ui/typography';
 A list tagged with ʻul`. It's possible to set a custom marker for all items.
 
 ```jsx
-import { List } from '@semcore/ui/typography';
+import { List } from 'intergalactic/typography';
 <List />;
 ```
 
 <TypesView type="ListProps" :types={...types} />
 
-## List.Item
+## List. Item
 
-A list item tagged with `li`. It's possible to set a custom marker.
-Also, it is possible to customise content with `<List.Item.Content />`;
+A list item tagged with `li` . It's possible to set a custom marker.
+Also, it is possible to customise content with `<List.Item.Content />` ; 
 
 ```jsx
-import { List } from '@semcore/ui/typography';
+import { List } from 'intergalactic/typography';
 <List.Item />;
 <List.Item.Content />;
 ```
@@ -44,7 +44,7 @@ import { List } from '@semcore/ui/typography';
 Quotes from great people 🙊
 
 ```jsx
-import { Blockquote } from '@semcore/ui/typography';
+import { Blockquote } from 'intergalactic/typography';
 <Blockquote />;
 ```
 
@@ -52,10 +52,10 @@ import { Blockquote } from '@semcore/ui/typography';
 
 ## Hint
 
-The hint is very similar to [Link](/components/link/link) and has a similar structure from `Addon` + `Text`.
+The hint is very similar to [Link](/components/link/link) and has a similar structure from `Addon` + `Text` .
 
 ```jsx
-import { Hint } from '@semcore/ui/typography';
+import { Hint } from 'intergalactic/typography';
 <Hint>
   <Hint.Addon />
   <Hint.Text />
@@ -69,14 +69,14 @@ import { Hint } from '@semcore/ui/typography';
 A wrapper component required to add styles to native tags.
 
 ::: tip
-Note that the component is in another package `@semcore/ui/format-text`.
+Note that the component is in another package `intergalactic/format-text` .
 :::
 
 ```jsx
-import FormatText from '@semcore/ui/format-text';
+import FormatText from 'intergalactic/format-text';
 <FormatText />;
 ```
 
 <TypesView type="FormatTextProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

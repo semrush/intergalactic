@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import DragAndDrop from '@semcore/ui/drag-and-drop';
+import DragAndDrop from 'intergalactic/drag-and-drop';
 ```
 
 <details>

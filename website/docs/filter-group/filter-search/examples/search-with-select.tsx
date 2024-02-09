@@ -1,12 +1,12 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import CloseM from '@semcore/ui/icon/Close/m';
-import Search from '@semcore/ui/icon/Search/m';
-import Button from '@semcore/ui/button';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-import Select from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
-import { Flex, Box } from '@semcore/ui/flex-box';
+import Input from 'intergalactic/input';
+import CloseM from 'intergalactic/icon/Close/m';
+import Search from 'intergalactic/icon/Search/m';
+import Button from 'intergalactic/button';
+import NeighborLocation from 'intergalactic/neighbor-location';
+import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import { Flex, Box } from 'intergalactic/flex-box';
 
 const selectOptions = ['Option 1', 'Option 2'];
 

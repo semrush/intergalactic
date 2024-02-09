@@ -5,7 +5,7 @@ tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in 
 ---
 
 ::: tip
-Design tokens are available for use from **@semcore/ui@13.5.0** version.
+Design tokens are available for use from **intergalactic@13.5.0** version.
 :::
 
 ## Description
@@ -14,8 +14,8 @@ Design tokens are variables that store visual design choices (colors, fonts, spa
 
 Intergalactic Design System has:
 
-- set of base tokens that define a base palette;
-- set of semantic tokens which are applied across all components and even the chart library.
+* set of base tokens that define a base palette; 
+* set of semantic tokens which are applied across all components and even the chart library.
 
 These sets form the default theme of the design system.
 
@@ -28,13 +28,13 @@ Shades of the same color have a value ranging from 50 to 800, depending on its t
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import tokens from './base-tokens.json';
-import BaseTokensTable from '@components/BaseTokens';
+import React from 'react'; 
+import tokens from './base-tokens.json'; 
+import BaseTokensTable from '@components/BaseTokens'; 
 
-const BaseTokens = () => <BaseTokensTable tokens={tokens} />;
+const BaseTokens = () => <BaseTokensTable tokens={tokens} />; 
 
-const App = BaseTokens;
+const App = BaseTokens; 
 </script>
 
 :::
@@ -45,25 +45,25 @@ It is a list of tokens for components and charts for the default Intergalactic t
 
 Semantic tokens include tokens for:
 
-- colors;
-- typography;
-- sizing;
-- spacings;
-- box-shadows;
-- border-radius.
+* colors; 
+* typography; 
+* sizing; 
+* spacings; 
+* box-shadows; 
+* border-radius.
 
 To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage#token_naming_structure).
 
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import tokens from './design-tokens.json';
-import DesignTokensTable from '@components/DesignTokens';
+import React from 'react'; 
+import tokens from './design-tokens.json'; 
+import DesignTokensTable from '@components/DesignTokens'; 
 
-const DesignTokens = () => <DesignTokensTable tokens={tokens} />;
+const DesignTokens = () => <DesignTokensTable tokens={tokens} />; 
 
-const App = DesignTokens;
+const App = DesignTokens; 
 </script>
 
 :::
@@ -117,7 +117,6 @@ This is where the magic of converting the json file with tokens into a new theme
 
 We recommend you to check:
 
-- [Usage in development](/style/design-tokens/design-tokens-usage-development);
-- [Example for custom component](/style/design-tokens/design-tokens-code);
-- [CSS Injection guide](/style/css-injection/css-injection).
-
+* [Usage in development](/style/design-tokens/design-tokens-usage-development); 
+* [Example for custom component](/style/design-tokens/design-tokens-code); 
+* [CSS Injection guide](/style/css-injection/css-injection).

@@ -6,11 +6,12 @@ tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api')
 
 ## D3 API
 
-
-## Chart.Bubble
+## Chart. Bubble
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import {
+    Chart
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="BubbleChartProps" :types={...types} />
@@ -18,11 +19,14 @@ import { Chart } from '@semcore/ui/d3-chart';
 ## Bubble
 
 ```js
-import { Bubble } from '@semcore/ui/d3-chart';
+import {
+    Bubble
+} from 'intergalactic/d3-chart';
 
-<Bubble />;
+<
+Bubble / > ;
 ```
 
 <TypesView type="BubbleProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

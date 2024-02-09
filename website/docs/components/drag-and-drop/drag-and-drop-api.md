@@ -9,18 +9,18 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 Drag control component.
 
 ```jsx
-import DnD from '@semcore/ui/drag-and-drop;
+import DnD from 'intergalactic/drag-and-drop;
 <DnD />;
 ```
 
 <TypesView type="DragAndDropProps" :types={...types} />
 
-## DnD.Draggable
+## DnD. Draggable
 
 The element, which will be dragged.
 
 ```jsx
-import DnD from '@semcore/ui/drag-and-drop;
+import DnD from 'intergalactic/drag-and-drop;
 <DnD>
   <DnD.Draggable />
 </DnD>
@@ -28,12 +28,12 @@ import DnD from '@semcore/ui/drag-and-drop;
 
 <TypesView type="DraggableProps" :types={...types} />
 
-## DnD.DropZone
+## DnD. DropZone
 
 The area, to which the dragged element will be placed.
 
 ```jsx
-import DnD from '@semcore/ui/drag-and-drop;
+import DnD from 'intergalactic/drag-and-drop;
 <DnD>
   <DnD.DropZone />
 </DnD>
@@ -41,4 +41,4 @@ import DnD from '@semcore/ui/drag-and-drop;
 
 Takes the same properties, as [Box](/layout/box-system/box-api#a3cfce).
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

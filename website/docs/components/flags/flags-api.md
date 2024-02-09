@@ -6,9 +6,9 @@ tabs: Design('flags'), A11y('flags-a11y'), API('flags-api'), Changelog('flags-ch
 ## Flags
 
 ```js
-import Flags from '@semcore/ui/flags';
+import Flags from 'intergalactic/flags';
 ```
 
 <TypesView type="FlagsProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

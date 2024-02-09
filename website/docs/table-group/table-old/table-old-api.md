@@ -6,43 +6,43 @@ tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog
 ## Table
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table />;
 ```
 
 <TypesView type="TableProps" :types={...types} />
 
-## Table.Row
+## Table. Row
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table.Row />;
 ```
 
 <TypesView type="TableRowProps" :types={...types} />
 
-## Table.Cell
+## Table. Cell
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table.Cell />;
 ```
 
 <TypesView type="TableCellRowProps" :types={...types} />
 
-## Table.CellHead
+## Table. CellHead
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table.CellHead />;
 ```
 
 <TypesView type="TableCellHeadProps" :types={...types} />
 
-## Table.StickyHead
+## Table. StickyHead
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table>
   <Table.StickyHead />
   <Table.Head />
@@ -51,4 +51,4 @@ import Table from '@semcore/ui/table';
 
 <TypesView type="StickyHeadProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

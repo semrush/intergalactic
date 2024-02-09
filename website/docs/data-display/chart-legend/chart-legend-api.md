@@ -7,11 +7,14 @@ tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-cod
 ## D3 API
 
 ```js
-import { ChartLegend } from '@semcore/ui/d3-chart';
+import {
+    ChartLegend
+} from 'intergalactic/d3-chart';
 
-<ChartLegend />;
+<
+ChartLegend / > ;
 ```
 
 <TypesView type="LegendFlexProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

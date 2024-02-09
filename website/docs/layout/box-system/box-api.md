@@ -9,7 +9,7 @@ tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 Component responsible for spacings and sizes 📐
 
 ```jsx
-import { Box } from '@semcore/ui/flex-box';
+import { Box } from 'intergalactic/flex-box';
 <Box />;
 ```
 
@@ -17,13 +17,13 @@ import { Box } from '@semcore/ui/flex-box';
 
 ## Flex
 
-The layout building component is a wrapper over CSS-flex. It inherits all properties from `Box`.
+The layout building component is a wrapper over CSS-flex. It inherits all properties from `Box` .
 
 ```jsx
-import { Flex } from '@semcore/ui/flex-box';
+import { Flex } from 'intergalactic/flex-box';
 <Flex />;
 ```
 
 <TypesView type="FlexProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

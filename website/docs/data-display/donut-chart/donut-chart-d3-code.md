@@ -13,21 +13,21 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from './examples/basic-usage.tsx'; 
 </script>
 
 :::
 
 ## Donut
 
-- You can draw donut and pie charts with the `Donut` component.
-- `Pie` is a separate sector.
-- `Label` is a text label inside the chart.
+* You can draw donut and pie charts with the `Donut` component.
+* `Pie` is a separate sector.
+* `Label` is a text label inside the chart.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/donut.tsx';
+  export Demo from './examples/donut.tsx'; 
 </script>
 
 :::
@@ -39,7 +39,7 @@ Use `active` property to control segments highlight.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/donut-controlled-highlight.tsx';
+  export Demo from './examples/donut-controlled-highlight.tsx'; 
 </script>
 
 :::
@@ -51,42 +51,42 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/semi-donut.tsx';
+  export Demo from './examples/semi-donut.tsx'; 
 </script>
 
 :::
 
 ## Edge cases
 
-- If any data is missing – don't display it on the chart.
-- If only one value is known – display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
+* If any data is missing – don't display it on the chart.
+* If only one value is known – display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from './examples/edge-cases.tsx'; 
 </script>
 
 :::
 
-- If there is no data – show an empty gray chart.
+* If there is no data – show an empty gray chart.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from './examples/edge-cases.tsx'; 
 </script>
 
 :::
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from './examples/legend-and-pattern-fill.tsx'; 
 </script>
 
 :::

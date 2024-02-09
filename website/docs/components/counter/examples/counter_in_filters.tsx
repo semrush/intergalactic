@@ -1,6 +1,6 @@
 import React from 'react';
-import Counter, { AnimatedNumber } from '@semcore/ui/counter';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Counter, { AnimatedNumber } from 'intergalactic/counter';
+import { FilterTrigger } from 'intergalactic/base-trigger';
 
 const Demo = () => (
   <FilterTrigger>

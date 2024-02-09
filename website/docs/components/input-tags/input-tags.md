@@ -7,27 +7,30 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import InputTags from '@semcore/ui/input-tags';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import React from 'react'; 
+import InputTags from 'intergalactic/input-tags'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
-import CheckM from '@semcore/ui/icon/Check/m';
+import CheckM from 'intergalactic/icon/Check/m'; 
 
-const SIZES = ['m', 'l'];
-const STATES = ['normal', 'invalid', 'valid'];
+const SIZES = ['m', 'l']; 
+const STATES = ['normal', 'invalid', 'valid']; 
 
 const Preview = (preview) => {
-  const { bool, select, radio } = preview('InputTags');
-  const { bool: boolTag, text: textTag } = preview('InputTags.Tag');
+  const { bool, select, radio } = preview('InputTags'); 
+  const { bool: boolTag, text: textTag } = preview('InputTags. Tag'); 
 
   const size = radio({
+
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
     options: SIZES,
-  });
+
+  }); 
 
   const state = select({
+
     key: 'state',
     defaultValue: 'normal',
     label: 'State',
@@ -35,56 +38,74 @@ const Preview = (preview) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   const disabled = bool({
+
     key: 'disabled',
     defaultValue: false,
     label: 'Disabled',
-  });
+
+  }); 
 
   const readOnly = bool({
+
     key: 'readOnly',
     defaultValue: false,
     label: 'Read-only',
-  });
+
+  }); 
 
   const tagText = textTag({
+
     key: 'tag',
     defaultValue: 'Tag 1',
     label: 'Text',
-  });
+
+  }); 
 
   const circleTag = boolTag({
+
     key: 'circle',
     defaultValue: false,
     label: 'Circle',
-  });
+
+  }); 
 
   const closeTag = boolTag({
+
     key: 'closable',
     defaultValue: false,
     label: 'Close',
-  });
+
+  }); 
 
   const editableTag = boolTag({
+
     key: 'editable',
     defaultValue: false,
     label: 'Editable',
-  });
+
+  }); 
 
   const beforeIconMap = {
+
     l: <CheckM />,
     m: <CheckM />,
-  };
+
+  }; 
 
   const before = boolTag({
+
     key: 'before',
     defaultValue: false,
     label: 'Addon',
-  });
+
+  }); 
 
   return (
+
     <InputTags size={size} state={state}>
       {tagText.length ? (
         <InputTags.Tag tabIndex={0} editable={editableTag}>
@@ -96,10 +117,11 @@ const Preview = (preview) => {
       ) : null}
       <InputTags.Value disabled={disabled} readOnly={readOnly} />
     </InputTags>
-  );
-};
 
-const App = PlaygroundGeneration(Preview);
+  ); 
+}; 
+
+const App = PlaygroundGeneration(Preview); 
 </script>
 
 :::
@@ -118,8 +140,16 @@ Table: InputTags sizes
 
 | Size     | Appearance      |                 | Margins        |
 | -------- | --------------- | --------------- | -------------- |
-| M input is used with the M tag | ![](static/m-size.png) | ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
-| L input is used with the L tag | ![](static/l-size.png) | ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
+| M input is used with the M tag | 
+
+![](static/m-size.png) | ![](static/m-size-2.png) | ![](static/m-paddings-2.png)
+
+ |
+| L input is used with the L tag | 
+
+![](static/l-size.png) | ![](static/l-size-2.png) | ![](static/l-paddings-2.png)
+
+ |
 
 ## Tag colors
 
@@ -147,7 +177,11 @@ Table: Interaction with InputTags
 
 | Data from the combobox    | User-entered data   | Data from the combobox and user-entered data    |
 | ------------------------- | ------------------- | ------------------------ |
-| ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png) |
+| 
+
+![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png)
+
+ |
 
 When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [Combobox](/components/auto-suggest/auto-suggest) will open. Clicking on a line in the combobox will insert the corresponding data into the input field and wrap it in a tag.
 
@@ -157,11 +191,11 @@ If the input field doesn't have preset options and allows users to enter any dat
 
 The text entered by the user is automatically converted into a tag inside InputTags in the following cases:
 
-- When the input field loses focus (for example, by tabbing out).
-- When the user presses the `Enter` key.
-- When entering a punctuation separator ("," , ";" , "|").
-- When there is a double space.
-- When the user presses the Tab key to insert data.
+* When the input field loses focus (for example, by tabbing out).
+* When the user presses the `Enter` key.
+* When entering a punctuation separator (", " , "; " , "|").
+* When there is a double space.
+* When the user presses the Tab key to insert data.
 
 ::: tip
 Leading and trailing spaces are trimmed when creating tags.
@@ -184,4 +218,3 @@ Note that this behavior isn’t recommended for full accessibility. Web page con
 You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an ellipsis. Hovering over the tag will display a tooltip with the full text of the tag.
 
 ![](static/ellipsis.png)
-

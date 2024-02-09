@@ -11,76 +11,76 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ## Select
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select />;
 ```
 
 <TypesView type="SelectProps" :types={...types} />
 
-## Select.Trigger
+## Select. Trigger
 
 It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger).
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Trigger />;
 ```
 
-## Select.Menu
+## Select. Menu
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Menu />;
 ```
 
-## Select.InputSearch
+## Select. InputSearch
 
-It is a wrap over the `<Input.Value/>`.
+It is a wrap over the `<Input.Value/>` .
 
 ```jsx
-import { InputSearch } from '@semcore/ui/select';
+import { InputSearch } from 'intergalactic/select';
 <InputSearch />;
 ```
 
-## Select.Option
+## Select. Option
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Option />;
 ```
 
 <TypesView type="SelectOptionProps" :types={...types} />
 
-## Select.OptionHint
+## Select. OptionHint
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.OptionHint />;
 ```
 
-## Select.OptionTitle
+## Select. OptionTitle
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.OptionTitle />;
 ```
 
-## Select.OptionCheckbox
+## Select. OptionCheckbox
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.OptionCheckbox />;
 ```
 
 <TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
-## Select.Option.Checkbox
+## Select. Option. Checkbox
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Option.Checkbox />;
 ```
 
-Styled [`Box`](/layout/box-system/box-api#a3cfce).
+Styled [ `Box` ](/layout/box-system/box-api#a3cfce).
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

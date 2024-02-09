@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 
 const options = Array(20)
   .fill('')

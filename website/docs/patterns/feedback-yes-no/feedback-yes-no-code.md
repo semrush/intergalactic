@@ -8,7 +8,7 @@ tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/feedbackyesno-example.tsx';
+  export Demo from './examples/feedbackyesno-example.tsx'; 
 </script>
 
 :::

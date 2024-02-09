@@ -7,7 +7,7 @@ title: Wrapping components
 Intergalactic components are built with polymorphic typings, that means that you can provide `tag` property that will redefine allowed properties list.
 
 ```tsx
-import Button from '@semcore/ui/button';
+import Button from 'intergalactic/button';
 <Button
   href="">
 // Error: Property 'href' does not exist on type... // [!code error]
@@ -29,7 +29,7 @@ import Button from '@semcore/ui/button';
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/the-`tag`-property.tsx';
+  export Demo from './examples/the- `tag` -property.tsx'; 
 </script>
 
 :::
@@ -37,7 +37,7 @@ import Button from '@semcore/ui/button';
 The `tag` property is not included in the component's props, so you can't make wrappers by simple using that.
 
 ```tsx
-import Select, { SelectProps } from '@semcore/ui/select'
+import Select, { SelectProps } from 'intergalactic/select'
 
 const WrappedSelect = ({
   tag, // Property tag does not exist on type SelectProps. // [!code error]
@@ -55,19 +55,18 @@ Use the special utility `makeWrapper` to wrap components. It does nothing in run
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/making-wrappers.tsx';
+  export Demo from './examples/making-wrappers.tsx'; 
 </script>
 
 :::
 
 ## Complex components wrappers
 
-Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data`. For such components, special wrapping utilities are provided. 
-
+Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data` . For such components, special wrapping utilities are provided. 
 
 It available for the following components:
 
-1. `wrapDataTable`, `wrapDataTableRow`, `wrapDataTableCell` for [DataTable](/table-group/data-table/data-table).
+1. `wrapDataTable`,   `wrapDataTableRow`,  `wrapDataTableCell` for [DataTable](/table-group/data-table/data-table).
 2. `wrapAccordion` for [Accordion](/components/accordion/accordion).
 3. `wrapPills` for [Pills](/components/pills/pills).
 4. `wrapRadioGroup` for [Radio](/components/radio/radio).
@@ -80,8 +79,7 @@ It available for the following components:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/complex-components-wrappers.tsx';
+  export Demo from './examples/complex-components-wrappers.tsx'; 
 </script>
 
 :::
-

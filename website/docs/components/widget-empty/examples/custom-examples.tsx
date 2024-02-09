@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import Card from '@semcore/ui/card';
-import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
-import Divider from '@semcore/ui/divider';
+import { Text } from 'intergalactic/typography';
+import Card from 'intergalactic/card';
+import WidgetEmpty, { getIconPath } from 'intergalactic/widget-empty';
+import Divider from 'intergalactic/divider';
 
 const Demo = () => {
   return (

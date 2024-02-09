@@ -7,25 +7,25 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 ## SidePanel
 
 ```jsx
-import SidePanel from '@semcore/ui/side-panel';
+import SidePanel from 'intergalactic/side-panel';
 <SidePanel />;
 ```
 
 <TypesView type="SidePanelProps" :types={...types} />
 
-## SidePanel.Overlay
+## SidePanel. Overlay
 
 ```jsx
-import SidePanel from '@semcore/ui/side-panel';
+import SidePanel from 'intergalactic/side-panel';
 <SidePanel.Overlay />;
 ```
 
 This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
 
-## SidePanel.Panel
+## SidePanel. Panel
 
 ```jsx
-import SidePanel from '@semcore/ui/side-panel';
+import SidePanel from 'intergalactic/side-panel';
 <SidePanel.Panel />;
 ```
 
@@ -33,13 +33,13 @@ This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) and [FocusLock]
 
 <TypesView type="SidePanelPanelProps" :types={...types} />
 
-## SidePanel.Close
+## SidePanel. Close
 
 ```jsx
-import SidePanel from '@semcore/ui/side-panel';
+import SidePanel from 'intergalactic/side-panel';
 <SidePanel.Close />;
 ```
 
 This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

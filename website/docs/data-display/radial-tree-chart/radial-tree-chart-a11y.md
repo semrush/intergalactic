@@ -10,7 +10,7 @@ Radial tree chart is accessible for screen readers. Refer to [Accessibility sect
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic.tsx';
+  export Demo from './examples/basic.tsx'; 
 </script>
 
 :::

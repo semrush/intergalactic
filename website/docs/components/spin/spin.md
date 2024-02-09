@@ -7,45 +7,54 @@ tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-change
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import Spin from '@semcore/ui/spin';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import React from 'react'; 
+import Spin from 'intergalactic/spin'; 
+import { Flex } from 'intergalactic/flex-box'; 
+import { Text } from 'intergalactic/typography'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
-const SIZES = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
-const THEMES = ['dark', 'invert'];
+const SIZES = ['xs', 's', 'm', 'l', 'xl', 'xxl']; 
+const THEMES = ['dark', 'invert']; 
 function getSizeText(sizeSpin) {
   if (sizeSpin.includes('l') || sizeSpin.includes('m')) {
+
     return 300;
+
   }
   if (sizeSpin.includes('s')) {
+
     return 200;
+
   }
-  return 100;
+  return 100; 
 }
 
 const margins = {
-  xs: 4,
-  s: 4,
-  m: 8,
-  l: 8,
-  xl: 16,
-  xxl: 16,
+  xs: 4, 
+  s: 4, 
+  m: 8, 
+  l: 8, 
+  xl: 16, 
+  xxl: 16, 
 }
 
 function getMarginText(orientation = 'bottom', size = undefined) {
   if (orientation === 'right') {
-    return `0 0 0 ${margins[size] || 0}px`;
+
+    return `0 0 0 ${margins[size] || 0}px` ;
+
   } else {
-    return `${margins[size] || 0}px 0 0`;
+
+    return `${margins[size] || 0}px 0 0` ;
+
   }
 }
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
-  const { bool, select, radio, text: textWidget } = createGroupWidgets('Spin');
+  const { bool, select, radio, text: textWidget } = createGroupWidgets('Spin'); 
 
   const size = select({
+
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
@@ -53,34 +62,44 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   const theme = radio({
+
     key: 'theme',
     defaultValue: 'dark',
     label: 'Theme',
     options: THEMES,
-  });
+
+  }); 
 
   const centered = bool({
+
     key: 'centered',
     defaultValue: true,
     label: 'Centered',
-  });
+
+  }); 
 
   const text = textWidget({
+
     key: 'text',
     defaultValue: '',
     label: 'Text',
-  });
+
+  }); 
 
   const textRight = bool({
+
     key: 'textRight',
     defaultValue: false,
     label: 'TextRight',
-  });
+
+  }); 
 
   if (text.length) {
+
     return (
       <Flex
         m={centered ? 'auto' : 0}
@@ -101,10 +120,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         }
       </Flex>
     );
+
   }
 
-  return <Spin size={size} theme={theme} centered={centered} />;
-});
+  return <Spin size={size} theme={theme} centered={centered} />; 
+}); 
 </script>
 
 :::
@@ -127,12 +147,36 @@ Table: Spin sizes and margins
 
 | Size    | Text below                        | Text on the right                   |
 | ------- | --------------------------------- | ----------------------------------- |
-| **XS**  | ![](static/text-vertical-xs.png)  | ![](static/text-horizontal-xs.png)  |
-| **S**   | ![](static/text-vertical-s.png)   | ![](static/text-horizontal-s.png)   |
-| **M**   | ![](static/text-vertical-m.png)   | ![](static/text-horizontal-m.png)   |
-| **L**   | ![](static/text-vertical-l.png)   | ![](static/text-horizontal-l.png)   |
-| **XL**  | ![](static/text-vertical-xl.png)  | ![](static/text-horizontal-xl.png)  |
-| **XXL** | ![](static/text-vertical-xxl.png) | ![](static/text-horizontal-xxl.png) |
+| **XS**  | 
+
+![](static/text-vertical-xs.png)  | ![](static/text-horizontal-xs.png)
+
+  |
+| **S**   | 
+
+![](static/text-vertical-s.png)   | ![](static/text-horizontal-s.png)
+
+   |
+| **M**   | 
+
+![](static/text-vertical-m.png)   | ![](static/text-horizontal-m.png)
+
+   |
+| **L**   | 
+
+![](static/text-vertical-l.png)   | ![](static/text-horizontal-l.png)
+
+   |
+| **XL**  | 
+
+![](static/text-vertical-xl.png)  | ![](static/text-horizontal-xl.png)
+
+  |
+| **XXL** | 
+
+![](static/text-vertical-xxl.png) | ![](static/text-horizontal-xxl.png)
+
+ |
 
 ## Styles
 
@@ -152,7 +196,7 @@ Table: Spin themes
 
 | Theme    | Appearance example        | Description                                          |
 | -------- | ------------------------- | ---------------------------------------------------- |
-| `dark`   | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
+| `dark` | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
 | `invert` | ![](static/invert-m.png)  | Use this theme of Spin on a dark/colored background. |
 
 ## Animation
@@ -162,4 +206,3 @@ For Spin appearance and disappearance, use an animation with a 300ms delay and `
 ## Usage in UX/UI
 
 Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
-

@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 
 const Demo = () => <Pagination totalPages={122360} />;
 

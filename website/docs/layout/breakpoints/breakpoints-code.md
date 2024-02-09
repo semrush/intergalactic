@@ -16,19 +16,19 @@ Resize the window to see the changes.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/simple-use.tsx';
+  export Demo from './examples/simple-use.tsx'; 
 </script>
 
 :::
 
 ## Manual control
 
-You can use an instance of the `MediaList` class, it has methods `matches`/`addListener`/`removeListener` and `destructor`.
+You can use an instance of the `MediaList` class, it has methods `matches` / `addListener` / `removeListener` and `destructor` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/manual-control.tsx';
+  export Demo from './examples/manual-control.tsx'; 
 </script>
 
 :::
@@ -44,7 +44,7 @@ The 'Breakpoints.mediaList.matches()' will return the intex of the first matchin
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-media.tsx';
+  export Demo from './examples/custom-media.tsx'; 
 </script>
 
 :::

@@ -7,24 +7,25 @@ tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api')
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import { chartPlayground } from '@components/ChartPlayground';
-import { Chart, BubbleChartProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import React from 'react'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import { chartPlayground } from '@components/ChartPlayground'; 
+import { Chart, BubbleChartProps } from '@semcore/d3-chart'; 
+import resolveColor from 'intergalactic/utils/lib/color'; 
 
 const data = [
-  { x: 2, y: 3, value: 5040, label: 'label 1' },
-  { x: 1, y: 9, value: 40, label: 'label 2' },
-  { x: 6, y: 2, value: 45634, label: 'label 3' },
-  { x: 4, y: 7, value: 245, label: 'label 4' },
-  { x: 9, y: 5, value: 7462, label: 'label 5' },
-];
+  { x: 2, y: 3, value: 5040, label: 'label 1' }, 
+  { x: 1, y: 9, value: 40, label: 'label 2' }, 
+  { x: 6, y: 2, value: 45634, label: 'label 3' }, 
+  { x: 4, y: 7, value: 245, label: 'label 4' }, 
+  { x: 9, y: 5, value: 7462, label: 'label 5' }, 
+]; 
 
 const App = PlaygroundGeneration((preview) => {
-  const { select, radio, label, bool } = preview('Chart.Line');
+  const { select, radio, label, bool } = preview('Chart. Line'); 
 
   const {
+
     direction,
     alignItems,
     justifyContent,
@@ -34,11 +35,13 @@ const App = PlaygroundGeneration((preview) => {
     showLegend,
     legendProps,
     patterns,
-  } = chartPlayground({ select, radio, label, bool });
 
-  legendProps.shape = 'Checkbox';
+  } = chartPlayground({ select, radio, label, bool }); 
+
+  legendProps.shape = 'Checkbox'; 
 
   const chartProps: BubbleChartProps = {
+
     data,
     plotWidth: 300,
     plotHeight: 200,
@@ -49,16 +52,21 @@ const App = PlaygroundGeneration((preview) => {
     alignItems,
     justifyContent,
     patterns,
-  };
+
+  }; 
 
   if (showLegend) {
+
     chartProps.legendProps = legendProps;
+
   } else {
+
     chartProps.showLegend = false;
+
   }
 
-  return <Chart.Bubble {...chartProps} />;
-}, {filterProps: ['data']});
+  return <Chart. Bubble {...chartProps} />; 
+}, {filterProps: ['data']}); 
 
 </script>
 
@@ -212,4 +220,3 @@ Avoid placing bubble charts in small widgets to ensure data is readable and comp
 Limit the number of datasets to maintain chart readability.
 
 ![](static/categories-yes-no.png)
-

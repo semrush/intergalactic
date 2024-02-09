@@ -1,8 +1,8 @@
 import React from 'react';
-import Slider from '@semcore/ui/slider';
-import InputNumber from '@semcore/ui/input-number';
-import Tooltip from '@semcore/ui/tooltip';
-import { Box } from '@semcore/ui/flex-box';
+import Slider from 'intergalactic/slider';
+import InputNumber from 'intergalactic/input-number';
+import Tooltip from 'intergalactic/tooltip';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState(51);

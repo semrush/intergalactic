@@ -13,35 +13,35 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from './examples/basic-usage.tsx'; 
 </script>
 
 :::
 
 ## Area
 
-- You can draw a chart with areas using the `Area` component.
-- `Dots` are the dots on the line chart.
-- As with the [Line chart](/data-display/line-chart/line-chart-d3-code), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
+* You can draw a chart with areas using the `Area` component.
+* `Dots` are the dots on the line chart.
+* As with the [Line chart](/data-display/line-chart/line-chart-d3-code), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/area.tsx';
+  export Demo from './examples/area.tsx'; 
 </script>
 
 :::
 
 ## Edge cases
 
-- If a part of the chart has no data – use a dashed line to draw the period.
-- If the data has only one value – display it as a dot.
-- Two consecutively known values will automatically be displayed as the `Area` component.
+* If a part of the chart has no data – use a dashed line to draw the period.
+* If the data has only one value – display it as a dot.
+* Two consecutively known values will automatically be displayed as the `Area` component.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx';
+  export Demo from './examples/edge-cases.tsx'; 
 </script>
 
 :::
@@ -51,7 +51,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-line.tsx';
+  export Demo from './examples/custom-line.tsx'; 
 </script>
 
 :::
@@ -61,13 +61,13 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 If exact values of specific point is not available, you can pass `interpolateValue` and value will be automatically interpolated.
 
 ::: warning
-:rotating_light: Interpolation doesn't works with `StackedArea`.
+:rotating_light: Interpolation doesn't works with `StackedArea` .
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/interpolation.tsx';
+  export Demo from './examples/interpolation.tsx'; 
 </script>
 
 :::
@@ -76,12 +76,12 @@ If exact values of specific point is not available, you can pass `interpolateVal
 
 To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property.
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from './examples/legend-and-pattern-fill.tsx'; 
 </script>
 
 :::

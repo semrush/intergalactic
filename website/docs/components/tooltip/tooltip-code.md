@@ -5,22 +5,22 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ---
 
 ::: warning
-:warning: If you require customizing the tooltip behavior, please refer to the [@semcore/ui/popper](/utils/popper/popper) documentation.
+:warning: If you require customizing the tooltip behavior, please refer to the [intergalactic/popper](/utils/popper/popper) documentation.
 :::
 
-The tooltip component is a wrap over [@semcore/ui/popper](/utils/popper/popper) with additional features:
+The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper) with additional features:
 
-- Stylization and themes for the popper.
-- Displaying the arrow of the popper.
+* Stylization and themes for the popper.
+* Displaying the arrow of the popper.
 
 ## Basic usage
 
-As previously mentioned, the tooltip is essentially a styled version of [@semcore/ui/popper](/utils/popper/popper) and functions in the same way.
+As previously mentioned, the tooltip is essentially a styled version of [intergalactic/popper](/utils/popper/popper) and functions in the same way.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from './examples/basic_usage.tsx'; 
 </script>
 
 :::
@@ -34,7 +34,7 @@ The code below replicates the functionality of the previous example.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/title.tsx';
+  export Demo from './examples/title.tsx'; 
 </script>
 
 :::
@@ -60,7 +60,7 @@ You can use a single tooltip for multiple reference elements. This allows you to
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/singleton.tsx';
+  export Demo from './examples/singleton.tsx'; 
 </script>
 
 :::
@@ -72,7 +72,7 @@ You can use an Icon as a Trigger for Tooltip
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/info_icon.tsx';
+  export Demo from './examples/info_icon.tsx'; 
 </script>
 
 :::
@@ -84,7 +84,7 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/ignore_portal_stacking.tsx';
+  export Demo from './examples/ignore_portal_stacking.tsx'; 
 </script>
 
 :::

@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import CloseM from '@semcore/ui/icon/Close/m';
-import { Text } from '@semcore/ui/typography';
+import Input from 'intergalactic/input';
+import CloseM from 'intergalactic/icon/Close/m';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const [value, setValue] = React.useState('+');

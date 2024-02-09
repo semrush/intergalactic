@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Breadcrumbs from '@semcore/ui/breadcrumbs';
+import Breadcrumbs from 'intergalactic/breadcrumbs';
 ```
 
 <details>

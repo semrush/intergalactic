@@ -6,13 +6,13 @@ tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('t
 
 ## Textarea
 
-Component represents native `textarea` tag and takes all its properties such as `value` and `defaultValue`.
+Component represents native `textarea` tag and takes all its properties such as `value` and `defaultValue` .
 
 ```jsx
-import Textarea from '@semcore/ui/textarea';
+import Textarea from 'intergalactic/textarea';
 <Textarea />;
 ```
 
 <TypesView type="TextareaProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

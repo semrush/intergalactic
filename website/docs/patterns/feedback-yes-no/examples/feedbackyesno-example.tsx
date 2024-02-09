@@ -1,16 +1,16 @@
 import React from 'react';
-import FeedbackForm from '@semcore/ui/feedback-form';
-import Input from '@semcore/ui/input';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Link from '@semcore/ui/link';
-import Dropdown from '@semcore/ui/dropdown';
-import Textarea from '@semcore/ui/textarea';
-import Notice from '@semcore/ui/notice';
-import Button from '@semcore/ui/button';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import { Text } from '@semcore/ui/typography';
-import FeedbackIllustration from '@semcore/ui/illustration/Feedback';
+import FeedbackForm from 'intergalactic/feedback-form';
+import Input from 'intergalactic/input';
+import { Box, Flex } from 'intergalactic/flex-box';
+import Link from 'intergalactic/link';
+import Dropdown from 'intergalactic/dropdown';
+import Textarea from 'intergalactic/textarea';
+import Notice from 'intergalactic/notice';
+import Button from 'intergalactic/button';
+import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
+import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
+import { Text } from 'intergalactic/typography';
+import FeedbackIllustration from 'intergalactic/illustration/Feedback';
 
 const validate = {
   description: (value = '') => {

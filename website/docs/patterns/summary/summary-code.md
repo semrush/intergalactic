@@ -8,7 +8,7 @@ tabs: Design('summary'), Example('summary-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/default-summary-example.tsx';
+  export Demo from './examples/default-summary-example.tsx'; 
 </script>
 
 :::
@@ -20,26 +20,29 @@ In case your report layout demands it, you have the option to vertically arrange
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
-import Skeleton from '@semcore/ui/skeleton';
-import '@semcore/ui/utils/style/var.css';
-import { AnimatedNumber } from '@semcore/ui/counter/src';
+import React, { useEffect, useState } from 'react'; 
+import { Box, Flex } from 'intergalactic/flex-box'; 
+import { Text } from 'intergalactic/typography'; 
+import Tooltip from 'intergalactic/tooltip'; 
+import Skeleton from 'intergalactic/skeleton'; 
+import 'intergalactic/utils/style/var.css'; 
+import { AnimatedNumber } from 'intergalactic/counter/src'; 
 
 const Demo = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
   useEffect(() => {
+
     const timer = setInterval(() => {
       setLoading(!loading);
     }, 2000);
     return () => {
       clearInterval(timer);
     };
-  }, [loading]);
+
+  }, [loading]); 
 
   return (
+
     <Flex direction='column' style={{ overflow: 'hidden' }}>
       <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
         <Tooltip title='Keyword' wMax='100%'>
@@ -216,9 +219,9 @@ const Demo = () => {
         </Skeleton>
       </Box>
     </Flex>
-  );
-};
 
+  ); 
+}; 
 
 </script>
 
@@ -231,7 +234,7 @@ If the metrics are wider than the page's maximum width, a good approach is to or
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/summary-with-minitrend.tsx';
+  export Demo from './examples/summary-with-minitrend.tsx'; 
 </script>
 
 :::
@@ -241,7 +244,7 @@ If the metrics are wider than the page's maximum width, a good approach is to or
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/summary-with-error.tsx';
+  export Demo from './examples/summary-with-error.tsx'; 
 </script>
 
 :::

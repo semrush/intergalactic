@@ -1,4 +1,4 @@
-Package for migrate from `@semcore/ui` to the `@semcore/intergalactic`.
+Package to migrate from `@semcore/ui` to the `@semcore/intergalactic`.
 
 It has two scripts:
 - `intg-check-imports`: to find all old imports in your project except manually installed and stay in package.json dependencies.

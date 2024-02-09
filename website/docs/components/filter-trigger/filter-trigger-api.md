@@ -9,9 +9,11 @@ tabs: Design('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger
 Trigger for filters.
 
 ```js
-import { FilterTrigger } from '@semcore/ui/base-trigger';
+import {
+    FilterTrigger
+} from 'intergalactic/base-trigger';
 ```
 
 <TypesView type="FilterTriggerProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

@@ -1,7 +1,7 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import { Flex } from '@semcore/ui/flex-box';
-import Notice from '@semcore/ui/notice';
+import Select from 'intergalactic/select';
+import { Flex } from 'intergalactic/flex-box';
+import Notice from 'intergalactic/notice';
 
 const options = Array(12)
   .fill('')

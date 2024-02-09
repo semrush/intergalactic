@@ -7,13 +7,14 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
+import React from 'react'; 
 
-import Pagination from '@semcore/ui/pagination';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Pagination from 'intergalactic/pagination'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
+
     const { onChange, text } = createGroupWidgets('Pagination');
 
     const currentPage = text({
@@ -35,11 +36,14 @@ const App = PlaygroundGeneration(
         totalPages={totalPages}
       />
     );
-  },
+
+  }, 
   {
+
     filterProps: ['onChange'],
-  },
-);
+
+  }, 
+); 
 </script>
 
 :::
@@ -65,8 +69,8 @@ Component consists of the following:
 
 ## Margins
 
-- The margins between buttons in the component are always 8px.
-- The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
+* The margins between buttons in the component are always 8px.
+* The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
 
 ![](static/margins.png)
 
@@ -78,26 +82,26 @@ The margin from the table to the pagination is consistently 16px.
 
 We provide some recommendations for the table size:
 
-- Use a minimum of two user screens (± 2000 px) for the table.
-- Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
+* Use a minimum of two user screens (± 2000 px) for the table.
+* Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
 
 ## Interaction
 
-- The table should scroll to the beginning when the user moves between pages.
-- After sorting and filtering, the pagination always returns the user to the first page.
+* The table should scroll to the beginning when the user moves between pages.
+* After sorting and filtering, the pagination always returns the user to the first page.
 
 | Appearance example                | Action          |
 | --------------------------------- | --------------- |
 | ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
 | ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
 | ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
-| ![](static/steps.png)              | When the input is in focus, a clickable `Return` icon with M size appears. By clicking it or pressing `Enter`, the user moves to the entered page. |
+| ![](static/steps.png)              | When the input is in focus, a clickable `Return` icon with M size appears. By clicking it or pressing `Enter` , the user moves to the entered page. |
 
 The current page should always be displayed in the input:
 
-- When the input is unfocused, show the current page, even if the user has changed this value but hasn’t pressed `Enter` or clicked the icon inside the input.
-- If the input is empty (for example, the user cleared it) or "0" is entered, then the user will move to the first page by clicking the icon inside the input or pressing `Enter`.
-- This input restricts the entry of any symbols except numerical characters.
+* When the input is unfocused, show the current page, even if the user has changed this value but hasn’t pressed `Enter` or clicked the icon inside the input.
+* If the input is empty (for example, the user cleared it) or "0" is entered, then the user will move to the first page by clicking the icon inside the input or pressing `Enter`.
+* This input restricts the entry of any symbols except numerical characters.
 
 The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.
 
@@ -105,13 +109,13 @@ The link at the end of the pagination shows the total number of pages. The user 
 
 ### User is on the first page
 
-In this case, the "First page" button and the "Previous" button are `disabled`.
+In this case, the "First page" button and the "Previous" button are `disabled` .
 
 ![](static/first-page.png)
 
 ### User is on the last page
 
-The "Next page" button becomes `disabled`, and the link to the last page appears as plain text.
+The "Next page" button becomes `disabled` , and the link to the last page appears as plain text.
 
 ![](static/last-page.png)
 
@@ -150,4 +154,3 @@ Use only these values for the select: 10, 20, 50, 100.
 In this case, add the `tilde (≈)` to the number of pages and change the link displaying the number of all pages to plain text.
 
 ![](static/undefined-number.png)
-

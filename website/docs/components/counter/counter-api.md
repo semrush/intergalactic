@@ -6,7 +6,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 ## Counter
 
 ```jsx
-import Counter from '@semcore/ui/counter';
+import Counter from 'intergalactic/counter';
 <Counter />;
 ```
 
@@ -15,10 +15,10 @@ import Counter from '@semcore/ui/counter';
 ## AnimatedNumber
 
 ```jsx
-import { AnimatedNumber } from '@semcore/ui/counter';
+import { AnimatedNumber } from 'intergalactic/counter';
 <AnimatedNumber />;
 ```
 
 <TypesView type="AnimatedNumberBaseProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

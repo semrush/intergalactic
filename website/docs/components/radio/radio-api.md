@@ -9,7 +9,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 A component used to simplify working with multiple radio buttons.
 
 ```jsx
-import { RadioGroup } from '@semcore/ui/radio';
+import { RadioGroup } from 'intergalactic/radio';
 <RadioGroup />;
 ```
 
@@ -20,26 +20,26 @@ import { RadioGroup } from '@semcore/ui/radio';
 This is an independent radio component.
 
 ```jsx
-import Radio from '@semcore/ui/radio';
+import Radio from 'intergalactic/radio';
 <Radio />;
 ```
 
 <TypesView type="RadioProps" :types={...types} />
 
-## Radio.Value
+## Radio. Value
 
 ```jsx
-import Radio from '@semcore/ui/radio';
+import Radio from 'intergalactic/radio';
 <Radio.Value />;
 ```
 
 <TypesView type="RadioValueProps" :types={...types} />
 
-## Radio.Text
+## Radio. Text
 
 ```jsx
-import Radio from '@semcore/ui/radio';
+import Radio from 'intergalactic/radio';
 <Radio.Text />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

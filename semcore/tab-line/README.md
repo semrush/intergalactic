@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import TabLine from '@semcore/ui/tab-line';
+import TabLine from 'intergalactic/tab-line';
 ```
 
 <details>

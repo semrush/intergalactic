@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import SpinContainer from '@semcore/ui/spin-container';
+import SpinContainer from 'intergalactic/spin-container';
 ```
 
 <details>

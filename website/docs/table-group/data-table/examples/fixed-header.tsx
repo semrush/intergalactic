@@ -1,7 +1,7 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import { Box } from '@semcore/ui/flex-box';
-import ScrollArea from '@semcore/ui/scroll-area';
+import DataTable from 'intergalactic/data-table';
+import { Box } from 'intergalactic/flex-box';
+import ScrollArea from 'intergalactic/scroll-area';
 
 const Demo = () => {
   const [headScrollContainer, setHeadScrollContainer] = React.useState<Element | null>(null);

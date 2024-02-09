@@ -7,44 +7,49 @@ tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('d
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import Dropdown from '@semcore/ui/dropdown';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import React from 'react'; 
+import { ButtonTrigger } from 'intergalactic/base-trigger'; 
+import Dropdown from 'intergalactic/dropdown'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
 const PLACEMENT = [
-  'top-start',
-  'top',
-  'top-end',
-  'right-start',
-  'right',
-  'right-end',
-  'bottom-start',
-  'bottom',
-  'bottom-end',
-  'left-start',
-  'left',
-  'left-end',
-];
+  'top-start', 
+  'top', 
+  'top-end', 
+  'right-start', 
+  'right', 
+  'right-end', 
+  'bottom-start', 
+  'bottom', 
+  'bottom-end', 
+  'left-start', 
+  'left', 
+  'left-end', 
+]; 
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
-  const { radio, select } = createGroupWidgets('Dropdown');
+  const { radio, select } = createGroupWidgets('Dropdown'); 
 
   const interactive = radio({
+
     key: 'interactive',
     defaultValue: 'click',
     label: 'Interactive event',
     options: ['click', 'focus'],
-  });
+
+  }); 
 
   const stretch = radio({
+
     key: 'stretch',
     defaultValue: 'min',
     label: 'Stretch',
     options: ['min', 'fixed'],
-  });
+
+  }); 
 
   const placement = select({
+
     key: 'placement',
     defaultValue: 'top',
     label: 'Placement',
@@ -52,17 +57,20 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   return (
+
     <Dropdown placement={placement} interaction={interactive} stretch={stretch}>
       <Dropdown.Trigger>
         <ButtonTrigger>Trigger</ButtonTrigger>
       </Dropdown.Trigger>
       <Dropdown.Popper>Hello there! I'm Dropdown's content</Dropdown.Popper>
     </Dropdown>
-  );
-});
+
+  ); 
+}); 
 </script>
 
 :::
@@ -73,7 +81,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 ### Component composition
 
-Dropdown component consists of `Dropdown.Trigger` and `Dropdown.Popper`.
+Dropdown component consists of `Dropdown.Trigger` and `Dropdown.Popper` .
 
 ![](static/dropdown-scheme.png)
 
@@ -97,15 +105,15 @@ Margin between trigger and dropdown is always 4px.
 
 **Dropdown opens:**
 
-- by clicking on the trigger;
-- by typing in the input.
+* by clicking on the trigger; 
+* by typing in the input.
 
 **Dropdown is hidden:**
 
-- by clicking outside the dropdown;
-- by an action inside the dropdown (for example, by clicking the "Cancel" button);
-- by clicking `Esc`;
-- when input trigger loses `focus`.
+* by clicking outside the dropdown; 
+* by an action inside the dropdown (for example, by clicking the "Cancel" button); 
+* by clicking `Esc`; 
+* when input trigger loses `focus`.
 
 ## Position
 
@@ -119,8 +127,7 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 
 ## Usage in UX/UI
 
-- Don’t use dropdown inside dropdown.
-- When dropdown is opened, the trigger should get the `active` state.
+* Don’t use dropdown inside dropdown.
+* When dropdown is opened, the trigger should get the `active` state.
 
 ![](static/dropdown-trigger-yes-no.png)
-

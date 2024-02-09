@@ -6,27 +6,35 @@ tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Exam
 
 ## D3 API
 
-## Chart.Venn
+## Chart. Venn
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import {
+    Chart
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="VennChartProps" :types={...types} />
 
 ## Venn
 
-It have children components `Circle`, `Intersection`.
+It have children components `Circle` , `Intersection` .
 
 ```js
-import { Venn } from '@semcore/ui/d3-chart';
+import {
+    Venn
+} from 'intergalactic/d3-chart';
 
-<Venn>
-  <Venn.Circle />
-  <Venn.Intersection />
-</Venn>;
+<
+Venn >
+    <
+    Venn.Circle / >
+    <
+    Venn.Intersection / >
+    <
+    /Venn>;
 ```
 
 <TypesView type="VennProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

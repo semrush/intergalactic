@@ -1,12 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 
-import { Row } from '@semcore/ui/grid';
-import OutsideClick from '@semcore/ui/outside-click';
+import { Row } from 'intergalactic/grid';
+import OutsideClick from 'intergalactic/outside-click';
 import Copy from '@components/Copy';
-import Button from '@semcore/ui/button';
-import FileDownloadM from '@semcore/ui/icon/FileDownload/m';
-import CopyM from '@semcore/ui/icon/Copy/m';
+import Button from 'intergalactic/button';
+import FileDownloadM from 'intergalactic/icon/FileDownload/m';
+import CopyM from 'intergalactic/icon/Copy/m';
 import styles from './styles.module.css';
 
 function modalLayout() {
@@ -23,7 +23,7 @@ function modalLayout() {
 class PanelChangeIllustration extends PureComponent {
   render() {
     const { name } = this.props;
-    const importText = `import ${name} from '@semcore/ui/illustration/${name}'`;
+    const importText = `import ${name} from 'intergalactic/illustration/${name}'`;
     const url = `semcore/illustration/svg/${name}.svg`;
 
     return (

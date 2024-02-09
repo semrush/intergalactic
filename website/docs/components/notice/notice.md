@@ -7,28 +7,31 @@ tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
+import React from 'react'; 
 
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
-import Notice from '@semcore/ui/notice';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-import QuestionAltM from '@semcore/ui/icon/Question/m';
+import Notice from 'intergalactic/notice'; 
+import { Text } from 'intergalactic/typography'; 
+import { Box } from 'intergalactic/flex-box'; 
+import Button from 'intergalactic/button'; 
+import QuestionAltM from 'intergalactic/icon/Question/m'; 
 
-const THEME = ['danger', 'warning', 'success', 'info'];
+const THEME = ['danger', 'warning', 'success', 'info']; 
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>
+
     {props.children}
+
   </Box>
-);
+); 
 
 const Preview = (preview) => {
-  const { bool, select, text, empty, onChange } = preview('Notice');
+  const { bool, select, text, empty, onChange } = preview('Notice'); 
 
   const theme = select({
+
     key: 'theme',
     label: 'Theme',
     defaultValue: 'info',
@@ -36,45 +39,59 @@ const Preview = (preview) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   const label = bool({
+
     key: 'label',
     defaultValue: true,
     label: 'Label',
-  });
+
+  }); 
 
   const actions = bool({
+
     key: 'actions',
     defaultValue: true,
     label: 'Actions',
-  });
+
+  }); 
 
   const closable = bool({
+
     key: 'closable',
     defaultValue: true,
     label: 'Close Icon',
-  });
+
+  }); 
 
   const msg = text({
+
     key: 'text',
     defaultValue: 'You can place your message here.',
     label: 'Text',
-  });
+
+  }); 
 
   const hidden = empty({
+
     key: 'hidden',
     defaultValue: false,
-  });
+
+  }); 
 
   function handlerClose() {
+
     onChange('hidden', true);
     setTimeout(() => {
       onChange('hidden', false);
     }, 2000);
+
   }
 
   return (
+
     <Notice theme={theme} hidden={hidden}>
       {label && (
         <Notice.Label>
@@ -99,16 +116,17 @@ const Preview = (preview) => {
       </Notice.Content>
       {closable && <Notice.CloseIcon onClick={handlerClose} />}
     </Notice>
-  );
-};
 
-const App = PlaygroundGeneration(Preview, { LayoutPreview });
+  ); 
+}; 
+
+const App = PlaygroundGeneration(Preview, { LayoutPreview }); 
 </script>
 
 :::
 
 ::: tip
-In the update of [version 4.0.0](/components/notice/notice-changelog#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/notice-global). This change was made to enhance their usability.
+In the update of [version 4.0.0](/components/notice/notice-changelog#v_4_0_0), instead of using `use=primary/secondary` , the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/notice-global). This change was made to enhance their usability.
 :::
 
 ## Description
@@ -128,8 +146,8 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 **The notice message can be either:**
 
-- contextual, appearing on product pages, widgets, and cards;
-- global, relating to the entire product.
+* contextual, appearing on product pages, widgets, and cards; 
+* global, relating to the entire product.
 
 ## Component composition
 
@@ -140,7 +158,7 @@ Component consists of the following:
 1. `Notice.Content`
 2. `Notice.Label`. It can be an [icon](/style/icon/icon), [badge](/components/badge/badge) or illustration that accompanies the message (optional);
 3. `Notice.Actions` (optional).
-4. `Notice.CloseIcon` (optional);
+4. `Notice.CloseIcon` (optional); 
 
 ## Notice content examples
 
@@ -149,7 +167,11 @@ Table: Notice content examples
 |           | Appearance example |
 | --------- | -------------------|
 | Notice with minimum possible elements | ![](static/notice-minimal.png) |
-| Notice with maximum possible elements | ![](static/notice-monster.png) ![](static/notice-max-button.png) |
+| Notice with maximum possible elements | 
+
+![](static/notice-monster.png) ![](static/notice-max-button.png)
+
+ |
 
 ## Sizes, paddings and margins
 
@@ -221,20 +243,20 @@ The notice should appear instantaneously without any delays or visual effects. I
 
 Since the notice serves as a temporary notification, it should have a predefined "lifespan." The lifespan can be determined by the following rules:
 
-- Number of days (for example, for the duration of an experiment)
-- Number of user sessions
-- Specific events (for example, completion of tasks, bug fixes, transitioning features out of beta)
-- User actions as triggers (for example, installing something, viewing specific content, resolving an error)
+* Number of days (for example, for the duration of an experiment)
+* Number of user sessions
+* Specific events (for example, completion of tasks, bug fixes, transitioning features out of beta)
+* User actions as triggers (for example, installing something, viewing specific content, resolving an error)
 
 ### Hiding
 
-- Clicking on the `Close` icon.
-- Clicking on a link that triggers a re-opening condition (for example, "Ask me later," "Never show again," etc.).
-- If there is no `Close` icon or hide link, the user cannot manually hide the notice. It will be hidden automatically based on conditions set by the service (such as a specific duration, a certain number of sessions, or triggering a specific action).
+* Clicking on the `Close` icon.
+* Clicking on a link that triggers a re-opening condition (for example, "Ask me later, " "Never show again, " etc.).
+* If there is no `Close` icon or hide link, the user cannot manually hide the notice. It will be hidden automatically based on conditions set by the service (such as a specific duration, a certain number of sessions, or triggering a specific action).
 
 ### Animation
 
-When the close icon or closing link is clicked, the notice should smoothly fade out with a duration of `250ms`. The page content should transition to fill the space vacated by the notice within `250ms`.
+When the close icon or closing link is clicked, the notice should smoothly fade out with a duration of `250ms` . The page content should transition to fill the space vacated by the notice within `250ms` .
 
 ## Custom notice
 
@@ -264,18 +286,18 @@ Please refrain from using an advertising notice for an "empty" state on a page o
 
 ### General rules
 
-- Notices can be used to notify users about various events, such as product and report announcements, collecting feedback, providing quick help for additional features, system status (errors, failures, completion of tasks, new features), and more.
-- In certain cases, notices with the same text may have different colors to convey different meanings.
-- Typically, notices are replaced by others based on priority: red > yellow > green > blue > gray.
-- Be concise and avoid overshadowing other widgets or report functionalities. Strive to convey the message to users within two lines for notices, and within four lines for notices within blocks or other components.
+* Notices can be used to notify users about various events, such as product and report announcements, collecting feedback, providing quick help for additional features, system status (errors, failures, completion of tasks, new features), and more.
+* In certain cases, notices with the same text may have different colors to convey different meanings.
+* Typically, notices are replaced by others based on priority: red > yellow > green > blue > gray.
+* Be concise and avoid overshadowing other widgets or report functionalities. Strive to convey the message to users within two lines for notices, and within four lines for notices within blocks or other components.
 
 ### Incorrect use
 
 A notice shouldn't be mistaken for other components:
 
-- **[NoticeBubble](/components/notice-bubble/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
-- **[Tooltip](/components/tooltip/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
-- **[Notes, hints](/style/typography/typography#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
+* **[NoticeBubble](/components/notice-bubble/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
+* **[Tooltip](/components/tooltip/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
+* **[Notes, hints](/style/typography/typography#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
 
 ### Examples of incorrect usage
 
@@ -290,4 +312,3 @@ An error related to a temporary failure. In this case, a notice with `warning` t
 A notice appearing on top of the interface to indicate the completion of a hidden process. It is advised to avoid this and use [NoticeBubble](/components/notice-bubble/notice-bubble) instead in such cases.
 
 ![](static/notice-use-2-yes-no.png)
-

@@ -7,43 +7,52 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
+import React from 'react'; 
 
-import Dot from '@semcore/ui/dot';
-import Button from '@semcore/ui/button';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Dot from 'intergalactic/dot'; 
+import Button from 'intergalactic/button'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
-const SIZES = ['m', 'l'];
+const SIZES = ['m', 'l']; 
 
 const Preview = (preview) => {
-  const { bool, radio, text } = preview('Dot');
+  const { bool, radio, text } = preview('Dot'); 
 
   const size = radio({
+
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
     options: SIZES,
-  });
+
+  }); 
 
   const up = bool({
+
     key: 'up',
     defaultValue: false,
     label: 'Up',
-  });
+
+  }); 
 
   const hidden = bool({
+
     key: 'hidden',
     defaultValue: false,
     label: 'Hidden',
-  });
+
+  }); 
 
   const value = text({
+
     key: 'value',
     defaultValue: undefined,
     label: 'Value',
-  });
+
+  }); 
 
   return (
+
     <Button>
       <Button.Text alignItems='center'>Notification</Button.Text>
       {up ? (
@@ -58,10 +67,11 @@ const Preview = (preview) => {
         </Button.Addon>
       )}
     </Button>
-  );
-};
 
-const App = PlaygroundGeneration(Preview);
+  ); 
+}; 
+
+const App = PlaygroundGeneration(Preview); 
 </script>
 
 :::
@@ -76,8 +86,8 @@ Keep in mind that a dot isn’t used to display the status of a feature, new dat
 
 **You can use it to:**
 
-- draw the user's attention to updated controls and menu items. Clicking an item with a dot will reveal other items marked with a dot.
-- show new notifications, like in a blog.
+* draw the user's attention to updated controls and menu items. Clicking an item with a dot will reveal other items marked with a dot.
+* show new notifications, like in a blog.
 
 ::: tip
 Dot must disappear after user clicks/hovers over an item with a dot. See the details of these cases below.
@@ -103,7 +113,7 @@ Table: Dot sizes
 
 ## Location
 
-Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it is always has `transform: translate (30%, -30%)`.
+Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it is always has `transform: translate (30%, -30%)` .
 
 If dot shows an update in the control, locate it in the upper right corner above the component. Use `size="l"` and `up` props.
 
@@ -166,4 +176,3 @@ Table: Interaction with Dot
 |                                             | after the user **has clicked** on all new items of the list.  |
 | The dot disappears from an item in the list | after the user **has hovered** a new item of the list.        |
 |                                             | after the user **has clicked** on a new item of the list.     |
-

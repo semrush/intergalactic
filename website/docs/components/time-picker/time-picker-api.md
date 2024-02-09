@@ -7,39 +7,39 @@ tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), E
 ## Time picker
 
 ```jsx
-import Timepicker from '@semcore/ui/time-picker';
+import Timepicker from 'intergalactic/time-picker';
 ```
 
 <TypesView type="TimePickerProps" :types={...types} />
 
-## TimePicker.Hours, TimePicker.Minutes
+## TimePicker. Hours, TimePicker. Minutes
 
 <TypesView type="TimePickerItemProps" :types={...types} />
 
 ```jsx
-import Timepicker from '@semcore/ui/time-picker';
+import Timepicker from 'intergalactic/time-picker';
 <Timepicker>
   <Timepicker.Hours />
   <Timepicker.Minutes />
 </Timepicker>;
 ```
 
-## TimePicker.Format
+## TimePicker. Format
 
 <TypesView type="TimePickerFormatProps" :types={...types} />
 
 ```jsx
-import Timepicker from '@semcore/ui/time-picker';
+import Timepicker from 'intergalactic/time-picker';
 <Timepicker.Format />;
 ```
 
-## TimePicker.Separator
+## TimePicker. Separator
 
-It is a usual `span`-element, it takes the HTML-attributes available for it.
+It is a usual `span` -element, it takes the HTML-attributes available for it.
 
 ```jsx
-import Timepicker from '@semcore/ui/time-picker';
+import Timepicker from 'intergalactic/time-picker';
 <Timepicker.Separator />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '@semcore/ui/base-trigger';
+import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from 'intergalactic/base-trigger';
 ```
 
 <details>

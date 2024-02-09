@@ -6,29 +6,35 @@ tabs: Design('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacke
 
 ## D3 API
 
-
-## Chart.Area
+## Chart. Area
 
 For stacked view, you should pass `true` into `stacked` prop
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import {
+    Chart
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="AreaChartProps" :types={...types} />
 
 ## StackedArea
 
-It have children components `Area`.
+It have children components `Area` .
 
 ```js
-import { StackedArea } from '@semcore/ui/d3-chart';
+import {
+    StackedArea
+} from 'intergalactic/d3-chart';
 
-<StackedArea>
-  <StackedArea.Area />
-</StackedArea>;
+<
+StackedArea >
+    <
+    StackedArea.Area / >
+    <
+    /StackedArea>;
 ```
 
 <TypesView type="StackedAreaProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

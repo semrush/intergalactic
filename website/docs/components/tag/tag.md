@@ -7,22 +7,25 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import Tag from '@semcore/ui/tag';
-import EditM from '@semcore/ui/icon/Edit/m';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import React from 'react'; 
+import Tag from 'intergalactic/tag'; 
+import EditM from 'intergalactic/icon/Edit/m'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
-  const { bool, radio, text, select } = createGroupWidgets('Tag');
+  const { bool, radio, text, select } = createGroupWidgets('Tag'); 
 
   const size = radio({
+
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
     options: ['m', 'l', 'xl'],
-  });
+
+  }); 
 
   const COLORS = [
+
     'gray-500',
     'blue-500',
     'green-500',
@@ -33,9 +36,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     'pink-500',
     'violet-500',
     'white',
-  ];
+
+  ]; 
 
   const color = select({
+
     key: 'color',
     defaultValue: 'gray-500',
     label: 'Color',
@@ -43,9 +48,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   const theme = select({
+
     key: 'theme',
     defaultValue: 'primary',
     label: 'Theme',
@@ -53,45 +60,59 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   const beforeIcon = bool({
+
     key: 'before Icon',
     defaultValue: false,
     label: 'AddonLeft',
-  });
+
+  }); 
 
   const imageIcon = bool({
+
     key: 'image Icon',
     defaultValue: false,
     label: 'Image Addon',
-  });
+
+  }); 
 
   const closeIcon = bool({
+
     key: 'close Icon',
     defaultValue: false,
     label: 'Close Icon',
-  });
+
+  }); 
 
   const interactive = bool({
+
     key: 'interactive',
     defaultValue: false,
     label: 'Interactive',
-  });
+
+  }); 
 
   const active = bool({
+
     key: 'active',
     defaultValue: false,
     label: 'Active',
-  });
+
+  }); 
 
   const disabled = bool({
+
     key: 'disabled',
     defaultValue: false,
     label: 'Disabled',
-  });
+
+  }); 
 
   return (
+
     <Tag
       interactive={interactive}
       active={active}
@@ -114,8 +135,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       <Tag.Text>Tag text</Tag.Text>
       {closeIcon && <Tag.Close />}
     </Tag>
-  );
-});
+
+  ); 
+}); 
 </script>
 
 :::
@@ -132,10 +154,10 @@ Tags are typically set either by the system or by the user.
 
 Component consists of the following:
 
-- `Tag.Text`
-- `Tag.Addon`: icon or any other small element before the text
-- `Tag.Close`
-- `Tag.Circle`: a circle image
+* `Tag.Text`
+* `Tag.Addon`: icon or any other small element before the text
+* `Tag.Close`
+* `Tag.Circle`: a circle image
 
 ## Sizes and paddings
 
@@ -143,9 +165,21 @@ Table: Tag sizes and paddings
 
 Size (height in px) | Paddings                                       |
 | ----------------- | ---------------------------------------------- |
-| M (20px)          | ![](static/tag-M.png) ![](static/tag2-M.png)   |
-| L (28px)          | ![](static/tag-L.png) ![](static/tag2-L.png)   |
-| XL (40px)         | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
+| M (20px)          | 
+
+![](static/tag-M.png) ![](static/tag2-M.png)
+
+   |
+| L (28px)          | 
+
+![](static/tag-L.png) ![](static/tag2-L.png)
+
+   |
+| XL (40px)         | 
+
+![](static/tag-XL.png) ![](static/tag2-XL.png)
+
+ |
 
 ## Themes
 
@@ -153,11 +187,15 @@ The component offers several themes for tags.
 
 | Tag theme     | Appearance example            | Description     |
 | ------------- | ----------------------------- | --------------- |
-| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background color for all states and color for icon inside the tag is calculated with CSS filter). |
-| `primary` with `color:"white"`    | ![](static/primary-invert.png)     | An inversion of the `primary` tag meant for dark or colored backgrounds.|
-| `secondary`                       | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required. Border color and color for icon inside the tag is calculated with CSS filter. |
-| `secondary` with `color:"white"`  | ![](static/secondary-invert.png) | An inversion of the `secondary` tag suitable for dark or colored backgrounds.|
-| `additional`                      | ![](static/additional.png)             | Ideal for special tags that are added to other tags. Border color and color for icon inside the tag is calculated with CSS filter. |
+| `primary` | 
+
+![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background color for all states and color for icon inside the tag is calculated with CSS filter)
+
+. |
+| `primary` with `color:"white"` | ![](static/primary-invert.png)     | An inversion of the `primary` tag meant for dark or colored backgrounds.|
+| `secondary` | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required. Border color and color for icon inside the tag is calculated with CSS filter. |
+| `secondary` with `color:"white"` | ![](static/secondary-invert.png) | An inversion of the `secondary` tag suitable for dark or colored backgrounds.|
+| `additional` | ![](static/additional.png)             | Ideal for special tags that are added to other tags. Border color and color for icon inside the tag is calculated with CSS filter. |
 | `additional` with `color:"white"` | ![](static/additional-invert.png)      | An inversion of the `additional` theme used for special tags that are added to other tags. |
 
 ## Interaction
@@ -166,9 +204,9 @@ Table: Tag states
 
 | Tag theme                        | States                                                                |
 | -------------------------------- | --------------------------------------------------------------------- |
-| `primary`                        | ![](static/default-color-example.png)            |
-| `primary` with `color:"white"`   | ![](static/invert-states.png)             |
-| `secondary`                      | ![](static/secondary-states.png)               |
+| `primary` | ![](static/default-color-example.png)            |
+| `primary` with `color:"white"` | ![](static/invert-states.png)             |
+| `secondary` | ![](static/secondary-states.png)               |
 | `secondary` with `color:"white"` | ![](static/secondary-invert-states.png) |
 
 ## Tag for adding other tags
@@ -177,19 +215,19 @@ Users can create tags using tags with the `additional` theme.
 
 | State  | Appearance example                  | Styles    |
 | ------ | ----------------------------------- | --------- |
-| Normal | ![](static/normal.png) | `color: var(--text-secondary)`, `background-color: var(--tag-secondary-normal)`, `border: 1px dotted var(--border-primary)` |
-| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                         |
-| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                         |
+| Normal | ![](static/normal.png) | `color: var(--text-secondary)` , `background-color: var(--tag-secondary-normal)` , `border: 1px dotted var(--border-primary)` |
+| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)` |
+| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)` |
 
 This tag opens [InlineInput](/components/inline-input/inline-input), and you can add a [mask label](/components/input-mask/input-mask) to guide the user on what to type into the input.
 
 ![](static/add-input-L.png)
 
-Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and transformed into a tag.
+Upon clicking the `Check` icon or pressing `Enter` , the input value is saved and transformed into a tag.
 
 ![](static/add-loading-L.png)
 
-If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` displays a tooltip with the full tag label.
+If space for tag placement is limited, the text should be truncated with an `ellipsis` . Hovering over a tag with an `ellipsis` displays a tooltip with the full tag label.
 
 ## Editing tag
 
@@ -197,7 +235,7 @@ For editable tags, use the [InlineInput](/components/inline-input/inline-input) 
 
 ## Long text
 
-You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be collapsed with an `ellipsis`, and hovering over the tag will show a tooltip with the full tag label.
+You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be collapsed with an `ellipsis` , and hovering over the tag will show a tooltip with the full tag label.
 
 ![](static/ellipsis.png)
 
@@ -209,7 +247,9 @@ In case you have a huge number of tags and don’t need to show them all at once
 Unfortunately, this solution can be found in several places so far.
 :::
 
-![more tags example](static/more-tags.png) -->
+![more tags example](static/more-tags.png)
+
+ -->
 
 ## Margins between tags
 
@@ -225,8 +265,8 @@ Size (height in px) | Margins                 |
 
 Recommendations on positioning of tags in relation to other components:
 
-- In most cases, place tag to the right of the component.
-- In the card, place tag at the bottom. -->
+* In most cases, place tag to the right of the component.
+* In the card, place tag at the bottom. -->
 
 ## Usage in UX/UI
 
@@ -239,4 +279,3 @@ Use tags for visual marking of objects, fast recognition and navigation.
 ### Example of usage in table
 
 ![](static/tag-table-pic.png)
-

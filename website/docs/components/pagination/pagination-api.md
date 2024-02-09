@@ -6,64 +6,64 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 ## Pagination
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination />;
 ```
 
 <TypesView type="PaginationProps" :types={...types} />
 
-## Pagination.FirstPage
+## Pagination. FirstPage
 
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination.FirstPage />;
 ```
 
-## Pagination.NextPage
+## Pagination. NextPage
 
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination.NextPage />;
 ```
 
-## Pagination.PageInput
+## Pagination. PageInput
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination.PageInput />;
 ```
 
 <TypesView type="PageInputProps" :types={...types} />
 
-## Pagination.PageInput.Value
+## Pagination. PageInput. Value
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination.PageInput.Value />;
 ```
 
 <TypesView type="InputValueProps" :types={...types} />
 
-## Pagination.PrevPage
+## Pagination. PrevPage
 
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination.PrevPage />;
 ```
 
-## Pagination.TotalPages
+## Pagination. TotalPages
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 <Pagination.TotalPages />;
 ```
 
 <TypesView type="TotalPagesProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

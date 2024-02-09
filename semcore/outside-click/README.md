@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import OutsideClick from '@semcore/ui/outside-click';
+import OutsideClick from 'intergalactic/outside-click';
 ```
 
 <details>

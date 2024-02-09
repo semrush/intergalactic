@@ -7,71 +7,92 @@ tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code'
 ## D3 API
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar/>;
+<
+Radar / > ;
 ```
 
 <TypesView type="RadarProps" :types={...types} />
 
-## Radar.Axis
+## Radar. Axis
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar.Axis/>;
+<
+Radar.Axis / > ;
 ```
 
 <TypesView type="RadarAxisProps" :types={...types} />
 
-## Radar.Axis.Labels
+## Radar. Axis. Labels
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar.Axis.Labels/>;
+<
+Radar.Axis.Labels / > ;
 ```
 
 <TypesView type="RadarAxisLabelsProps" :types={...types} />
 
-## Radar.Axis.Ticks
+## Radar. Axis. Ticks
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar.Axis.Ticks/>;
+<
+Radar.Axis.Ticks / > ;
 ```
 
 <TypesView type="RadarAxisTicksProps" :types={...types} />
 
-## Radar.Polygon
+## Radar. Polygon
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar.Polygon/>;
+<
+Radar.Polygon / > ;
 ```
 
 <TypesView type="RadialPolygonProps" :types={...types} />
 
-## Radar.Polygon.Line
+## Radar. Polygon. Line
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar.Polygon.Line/>;
+<
+Radar.Polygon.Line / > ;
 ```
 
 <TypesView type="RadialPolygonLineProps" :types={...types} />
 
-## Radar.Polygon.Dots
+## Radar. Polygon. Dots
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import {
+    Radar
+} from 'intergalactic/d3-chart';
 
-<Radar.Polygon.Dots/>;
+<
+Radar.Polygon.Dots / > ;
 ```
 
 <TypesView type="RadialPolygonDotsProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

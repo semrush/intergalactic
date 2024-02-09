@@ -10,7 +10,7 @@ Our typography primitives have no margins as they may differ in the end products
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from './examples/basic-usage.tsx'; 
 </script>
 
 :::
@@ -22,7 +22,7 @@ Using the example below, you can easily create lists with custom bullets.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/list-with-custom-bullets.tsx';
+  export Demo from './examples/list-with-custom-bullets.tsx'; 
 </script>
 
 :::
@@ -32,33 +32,33 @@ Using the example below, you can easily create lists with custom bullets.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/list-with-custom-content.tsx';
+  export Demo from './examples/list-with-custom-content.tsx'; 
 </script>
 
 :::
 
 ## Native typography tags
 
-To style native tags, use the `FormatText` component from the `@semcore/ui/format-text` package.
+To style native tags, use the `FormatText` component from the `intergalactic/format-text` package.
 
 It's acceptable to style third-party HTML. However, in other cases, we recommend using the `Text` component.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/native-typography-tags.tsx';
+  export Demo from './examples/native-typography-tags.tsx'; 
 </script>
 
 :::
 
 ## FormatText nested lists
 
-For proper nested ordered lists counting, you need to explicitly specify the `start`, `reversed`, or `type` attribute.
+For proper nested ordered lists counting, you need to explicitly specify the `start` , `reversed` , or `type` attribute.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/formattext-nested-lists.tsx';
+  export Demo from './examples/formattext-nested-lists.tsx'; 
 </script>
 
 :::
@@ -70,7 +70,7 @@ For `Hint` with `role=button` your need to add `onKeyDown` handler yourself for 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/hint-with-button-role.tsx';
+  export Demo from './examples/hint-with-button-role.tsx'; 
 </script>
 
 :::

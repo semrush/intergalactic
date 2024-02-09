@@ -9,11 +9,13 @@ import TypesView from './TypesView.vue';
 import Page404 from './Page404.vue';
 import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
+import PreferenceSwitch from './PreferenceSwitch.vue';
 
 export default {
   ...Theme,
   Layout: () => {
     return h(Theme.Layout, null, {
+      'sidebar-nav-before': () => h(PreferenceSwitch),
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-top': () => h(PageTopTabs),
       'not-found': () => h(Page404),

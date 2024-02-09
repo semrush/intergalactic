@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from './examples/basic-usage.tsx'; 
 </script>
 
 :::
@@ -27,7 +27,7 @@ Use `scaleBand` and `scaleLinear` for creating bar charts. See [d3 Ordinal Scale
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/bar.tsx';
+  export Demo from './examples/bar.tsx'; 
 </script>
 
 :::
@@ -39,7 +39,7 @@ The `<HoverRect/>` component draws a rectangle when hovering the cursor over a c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/bar-hover.tsx';
+  export Demo from './examples/bar-hover.tsx'; 
 </script>
 
 :::
@@ -51,7 +51,7 @@ You can add a tooltip to any element of a chart. The internal content can be eas
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip.tsx';
+  export Demo from './examples/tooltip.tsx'; 
 </script>
 
 :::
@@ -63,7 +63,7 @@ Use `scaleBand` when you need to display dates on one of the axes.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/date-format.tsx';
+  export Demo from './examples/date-format.tsx'; 
 </script>
 
 :::
@@ -75,14 +75,14 @@ The bar can also have negative values. For better readability, add an additional
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/negative-values.tsx';
+  export Demo from './examples/negative-values.tsx'; 
 </script>
 
 :::
 
 ## Grouped bars
 
-To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
+To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>` .
 
 ::: tip
 The `<GroupBar.Bar/>` component is a customized `<Bar/>` that has the same API.
@@ -91,7 +91,7 @@ The `<GroupBar.Bar/>` component is a customized `<Bar/>` that has the same API.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouped-bars.tsx';
+  export Demo from './examples/grouped-bars.tsx'; 
 </script>
 
 :::
@@ -103,19 +103,19 @@ You can combine charts with each other. For example, to display a trend line on 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/trend-line.tsx';
+  export Demo from './examples/trend-line.tsx'; 
 </script>
 
 :::
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx';
+  export Demo from './examples/legend-and-pattern-fill.tsx'; 
 </script>
 
 :::

@@ -15,7 +15,7 @@ const isFile = async (path: string) => {
 };
 
 const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
-  if (!path.startsWith('@semcore/')) {
+  if (!path.startsWith('@semcore/') && !path.startsWith('intergalactic')) {
     throw new Error(
       `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
     );

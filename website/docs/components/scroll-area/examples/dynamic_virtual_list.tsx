@@ -1,9 +1,9 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import ScrollArea from '@semcore/ui/scroll-area';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Button from '@semcore/ui/button';
+import ScrollArea from 'intergalactic/scroll-area';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import Button from 'intergalactic/button';
 import { List } from 'react-virtualized';
 
 const list = [...new Array(6)];

@@ -1,9 +1,9 @@
 import React from 'react';
-import Portal from '@semcore/ui/portal';
-import NoticeGlobal from '@semcore/ui/notice-global';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
+import Portal from 'intergalactic/portal';
+import NoticeGlobal from 'intergalactic/notice-global';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

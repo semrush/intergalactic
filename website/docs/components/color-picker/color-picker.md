@@ -7,27 +7,31 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import ColorPicker from '@semcore/ui/color-picker';
+import React from 'react'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import ColorPicker from 'intergalactic/color-picker'; 
 
 const Preview = (preview) => {
-  const { bool } = preview('ColorPicker');
+  const { bool } = preview('ColorPicker'); 
 
   const displayLabel = bool({
+
     key: 'displayLabel',
     defaultValue: false,
     label: 'Show label',
-  });
+
+  }); 
 
   return (
+
     <React.Fragment>
       <ColorPicker displayLabel={displayLabel} />
     </React.Fragment>
-  );
-};
 
-const App = PlaygroundGeneration(Preview);
+  ); 
+}; 
+
+const App = PlaygroundGeneration(Preview); 
 </script>
 
 :::
@@ -38,9 +42,9 @@ const App = PlaygroundGeneration(Preview);
 
 **ColorPicker contains:**
 
-- Trigger
-- List of ColorPicker.Items
-- Input (optional)
+* Trigger
+* List of ColorPicker. Items
+* Input (optional)
 
 ## Trigger
 
@@ -54,17 +58,21 @@ The trigger for a ColorPicker is a Select with a circle as the leading addon.
 
 ## List of colors
 
-A list of colors can include either a single ColorPicker.Item or multiple ones, which are preview swatches that display all available color values.
+A list of colors can include either a single ColorPicker. Item or multiple ones, which are preview swatches that display all available color values.
 
 Table: List of colors and its items
 
-| ColorPicker.Item     | List of ColorPicker.Items                             |
+| ColorPicker. Item     | List of ColorPicker. Items                             |
 | -------------------- | ----------------------------------------------------- |
-| ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png) |
+| 
+
+![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png)
+
+ |
 
 ## Size
 
-ColorPicker.Item has 28px * 28px size.
+ColorPicker. Item has 28px * 28px size.
 
 ![](static/colorpicker-item-size.png)
 
@@ -87,8 +95,8 @@ Table: Color items
 
 ## Interaction
 
-- In the hover state, trigger has a `border: 1px solid var(--border-secondary)`.
-- In the active state, trigger changes its border color to `var(--border-info-active)`.
+* In the hover state, trigger has a `border: 1px solid var(--border-secondary)`.
+* In the active state, trigger changes its border color to `var(--border-info-active)`.
 
 ### Default item
 
@@ -96,10 +104,26 @@ Table: Color item states
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
-| Background color | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-item-bg-hover.png) | ![](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
-| Text color | ![](static/colorpicker-item-text-default.png) | ![](static/colorpicker-item-text-hover.png) | ![](static/colorpicker-item-text-active.png)| Use for changing text and background colors of other components.|
-| No background color | ![](static/colorpicker-item-nocolor-default.png) | ![](static/colorpicker-item-nocolor-hover.png) | ![](static/colorpicker-item-nocolor-active.png)| Use when no color is selected.|
-| No text color | ![](static/colorpicker-item-text-nocolor-default.png) | ![](static/colorpicker-item-text-nocolor-hover.png) | ![](static/colorpicker-item-text-nocolor-active.png)| Use when no color is selected.|
+| Background color | 
+
+![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-item-bg-hover.png) | ![](static/colorpicker-item-bg-active.png)
+
+| Use for changing the background color of other components.|
+| Text color | 
+
+![](static/colorpicker-item-text-default.png) | ![](static/colorpicker-item-text-hover.png) | ![](static/colorpicker-item-text-active.png)
+
+| Use for changing text and background colors of other components.|
+| No background color | 
+
+![](static/colorpicker-item-nocolor-default.png) | ![](static/colorpicker-item-nocolor-hover.png) | ![](static/colorpicker-item-nocolor-active.png)
+
+| Use when no color is selected.|
+| No text color | 
+
+![](static/colorpicker-item-text-nocolor-default.png) | ![](static/colorpicker-item-text-nocolor-hover.png) | ![](static/colorpicker-item-text-nocolor-active.png)
+
+| Use when no color is selected.|
 
 ### Item for custom colors
 
@@ -107,8 +131,16 @@ Table: Custom color item states
 
 | | Normal | Hover | Active                                              | Usage |
 | ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
-| Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
-| Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
+| Background color | 
+
+![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)
+
+      | Use for changing the background color of other components.|
+| Text color | 
+
+![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png)
+
+ | Use for changing the text and background colors of other components.|
 
 ### Item for adding colors
 
@@ -116,7 +148,11 @@ Table: States of item for adding colors
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
-| Add color button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)| Use Button with icon and change border-radius to 50%.|
+| Add color button | 
+
+![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)
+
+| Use Button with icon and change border-radius to 50%.|
 
 ## Dropdown
 
@@ -130,7 +166,11 @@ Table: DropdownMenu appearance
 
 | DropdownMenu                  | DropdownMenu with more than 20 colors |
 | ----------------------------- | ------------------------------------- |
-| ![](static/dropdown-menu.png) | ![](static/scroll.png)                |
+| 
+
+![](static/dropdown-menu.png) | ![](static/scroll.png)
+
+                |
 
 ### Margins and paddings
 
@@ -184,22 +224,21 @@ To help users fix the invalid input, add the following message to the tooltip: "
 
 Components that you can use as a trigger for the ColorPicker:
 
-- [Input](/components/input/input)
-- [Link](/components/link/link)
-- [Select](/components/select/select)
+* [Input](/components/input/input)
+* [Link](/components/link/link)
+* [Select](/components/select/select)
 
 ![](static/color-picker-triggers.png)
 
-ColorPicker.Item can be placed inside the following components:
+ColorPicker. Item can be placed inside the following components:
 
-- [Button](/components/button/button)
-- [FilterTrigger](/components/filter-trigger/filter-trigger)
-- [Pills](/components/pills/pills)
-- [Select/Multiselect](/components/select/select)
-- [TabLine](/components/tab-line/tab-line)
-- [TabPanel](/components/tab-panel/tab-panel)
-- [Tag](/components/tag/tag)
-- [Option](/components/dropdown-menu/dropdown-menu#a66af9)
+* [Button](/components/button/button)
+* [FilterTrigger](/components/filter-trigger/filter-trigger)
+* [Pills](/components/pills/pills)
+* [Select/Multiselect](/components/select/select)
+* [TabLine](/components/tab-line/tab-line)
+* [TabPanel](/components/tab-panel/tab-panel)
+* [Tag](/components/tag/tag)
+* [Option](/components/dropdown-menu/dropdown-menu#a66af9)
 
 ![](static/color-picker-places.png)
-

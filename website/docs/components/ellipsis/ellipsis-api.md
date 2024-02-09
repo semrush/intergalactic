@@ -7,10 +7,10 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 ## Ellipsis
 
 ```jsx
-import Ellipsis from '@semcore/ui/ellipsis';
+import Ellipsis from 'intergalactic/ellipsis';
 <Ellipsis />;
 ```
 
 <TypesView type="EllipsisProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

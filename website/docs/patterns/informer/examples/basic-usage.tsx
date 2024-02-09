@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
+import { Text } from 'intergalactic/typography';
+import Tooltip from 'intergalactic/tooltip';
 
-import InfoM from '@semcore/ui/icon/Info/m';
-import InfoL from '@semcore/ui/icon/Info/l';
+import InfoM from 'intergalactic/icon/Info/m';
+import InfoL from 'intergalactic/icon/Info/l';
 
 class Demo extends React.Component {
   render() {

@@ -6,29 +6,37 @@ tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), E
 
 ## D3 API
 
-
-## Chart.Donut
+## Chart. Donut
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import {
+    Chart
+} from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="DonutChartProps" :types={...types} />
 
 ## Donut
 
-It have children components `Pie`, `Label`, `EmptyData`.
+It have children components `Pie` , `Label` , `EmptyData` .
 
 ```js
-import { Donut } from '@semcore/ui/d3-chart';
+import {
+    Donut
+} from 'intergalactic/d3-chart';
 
-<Donut>
-  <Donut.EmptyData />
-  <Donut.Pie />
-  <Donut.Label />
-</Donut>;
+<
+Donut >
+    <
+    Donut.EmptyData / >
+    <
+    Donut.Pie / >
+    <
+    Donut.Label / >
+    <
+    /Donut>;
 ```
 
 <TypesView type="DonutProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

@@ -9,47 +9,47 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 Widget for selecting the color.
 
 ```jsx
-import ColorPicker from '@semcore/ui/color-picker';
+import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker />;
 ```
 
 <TypesView type="ColorPickerProps" :types={...types} />
 
-## ColorPicker.Trigger
+## ColorPicker. Trigger
 
 The wrap over the `<Dropdown.Trigger/>` component.
 
 ```jsx
-import ColorPicker from '@semcore/ui/color-picker';
+import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker.Trigger />;
 ```
 
-## ColorPicker.Popper
+## ColorPicker. Popper
 
 The wrap over the `<Dropdown.Popper/>` component.
 
 ```jsx
-import ColorPicker from '@semcore/ui/color-picker';
+import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker.Popper />;
 ```
 
-## ColorPicker.Colors
+## ColorPicker. Colors
 
-Group of ColorPicker.Items.
+Group of ColorPicker. Items.
 
 ```jsx
-import ColorPicker from '@semcore/ui/color-picker';
+import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker.Colors />;
 ```
 
 <TypesView type="ColorsProps" :types={...types} />
 
-## ColorPicker.Item
+## ColorPicker. Item
 
-One unit of `<ColorPicker.Colors />`. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
+One unit of `<ColorPicker.Colors />` . ColorPicker. Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
-import ColorPicker from '@semcore/ui/color-picker';
+import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker.Item />;
 ```
 
@@ -60,43 +60,43 @@ import ColorPicker from '@semcore/ui/color-picker';
 Part of ColorPicker that provides the ability to add and remove custom colors to the palette.
 
 ```jsx
-import { PaletteManager } from '@semcore/ui/color-picker';
+import { PaletteManager } from 'intergalactic/color-picker';
 <PaletteManager />;
 ```
 
 <TypesView type="PaletteManagerProps" :types={...types} />
 
-## PaletteManager.Colors
+## PaletteManager. Colors
 
-Group of PaletteManager.Items.
+Group of PaletteManager. Items.
 
 ```jsx
-import { PaletteManager } from '@semcore/ui/color-picker';
+import { PaletteManager } from 'intergalactic/color-picker';
 <PaletteManager.Colors />;
 ```
 
 <TypesView type="ColorsCustomProps" :types={...types} />
 
-## PaletteManager.Item
+## PaletteManager. Item
 
-One unit of `<PaletteManager.Colors />`. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
+One unit of `<PaletteManager.Colors />` . PaletteManager. Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
-import { PaletteManager } from '@semcore/ui/color-picker';
+import { PaletteManager } from 'intergalactic/color-picker';
 <PaletteManager.Item />;
 ```
 
 <TypesView type="ItemProps" :types={...types} />
 
-## ColorPicker.InputColor
+## ColorPicker. InputColor
 
 Input for adding colors in hexadecimal format.
 
 ```jsx
-import { PaletteManager } from '@semcore/ui/color-picker';
+import { PaletteManager } from 'intergalactic/color-picker';
 <PaletteManager.InputColor />;
 ```
 
 <TypesView type="InputColorProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

@@ -7,36 +7,36 @@ tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api')
 ## InputNumber
 
 ```js
-import InputNumber from '@semcore/ui/input-number';
+import InputNumber from 'intergalactic/input-number';
 ```
 
 <TypesView type="InputNumberProps" :types={...types} />
 
-## InputNumber.Value
+## InputNumber. Value
 
 ```jsx
-import InputNumber from '@semcore/ui/input-number';
+import InputNumber from 'intergalactic/input-number';
 <InputNumber.Value />;
 ```
 
 <TypesView type="InputNumberValueProps" :types={...types} />
 
-## InputNumber.Controls
+## InputNumber. Controls
 
 ```jsx
-import InputNumber from '@semcore/ui/input-number';
+import InputNumber from 'intergalactic/input-number';
 <InputNumber.Controls />;
 ```
 
 <TypesView type="InputNumberControlsProps" :types={...types} />
 
-## InputNumber.Addon
+## InputNumber. Addon
 
 ```jsx
-import InputNumber from '@semcore/ui/input-number';
+import InputNumber from 'intergalactic/input-number';
 <InputNumber.Addon />;
 ```
 
-API is the same as [Input.Addon](/components/input/input-api) has.
+API is the same as [Input. Addon](/components/input/input-api) has.
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

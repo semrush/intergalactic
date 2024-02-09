@@ -9,7 +9,7 @@ tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-c
 Widget for selecting the date/month.
 
 ```jsx
-import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
+import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 <DatePicker />;
 <MonthPicker />;
 ```
@@ -21,30 +21,30 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 Widget for selecting the range of dates/months.
 
 ```jsx
-import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
+import { DateRangePicker, MonthRangePicker } from 'intergalactic/date-picker';
 <DateRangePicker />;
 <MonthRangePicker />;
 ```
 
 <TypesView type="DateRangePickerProps" :types={...types} />
 
-## DatePicker.Trigger and DateRangePicker.Trigger
+## DatePicker. Trigger and DateRangePicker. Trigger
 
 Trigger input, exists by default. `DateRangePicker` has the same interface.
 
 ```jsx
-import { DatePicker } from '@semcore/ui/date-picker';
+import { DatePicker } from 'intergalactic/date-picker';
 <DatePicker.Trigger />;
 ```
 
 <TypesView type="BaseTriggerProps" :types={...types} />
 
-## DateRangePicker.Period
+## DateRangePicker. Period
 
 Component for rendering the configurable periods.
 
 ```jsx
-import { DateRangePicker } from '@semcore/ui/date-picker';
+import { DateRangePicker } from 'intergalactic/date-picker';
 <DateRangePicker.Period />;
 ```
 
@@ -55,19 +55,19 @@ import { DateRangePicker } from '@semcore/ui/date-picker';
 Calendar component 📅
 
 ```jsx
-import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
+import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 <DatePicker.Calendar />;
 <MonthPicker.Calendar />;
 ```
 
 <TypesView type="CalendarProps" :types={...types} />
 
-## Calendar.Unit
+## Calendar. Unit
 
 The unit inside the calendar.
 
 ```jsx
-import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
+import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 <DatePicker.Calendar.Unit />;
 <MonthPicker.Calendar.Unit />;
 ```
@@ -76,8 +76,8 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 
 ## DateRangeComparator
 
-Same api for `MonthDateRangeComparator`.
+Same api for `MonthDateRangeComparator` .
 
 <TypesView type="DateRangeComparatorProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

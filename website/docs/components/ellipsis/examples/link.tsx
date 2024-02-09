@@ -1,7 +1,7 @@
 import React from 'react';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Box } from '@semcore/ui/flex-box';
-import Link from '@semcore/ui/link';
+import Ellipsis from 'intergalactic/ellipsis';
+import { Box } from 'intergalactic/flex-box';
+import Link from 'intergalactic/link';
 
 const Demo = () => {
   return (

@@ -14,7 +14,7 @@ To specify the main text color, use the `--text-primary` token.
 
 For the secondary text color, utilize the `--text-secondary` token.
 
-Additionally, both paragraphs, headings, and text can be colored with our main semantic colors, which include `--text-success`, `--text-critical` and others.
+Additionally, both paragraphs, headings, and text can be colored with our main semantic colors, which include `--text-success` , `--text-critical` and others.
 
 Please use text coloring thoughtfully and avoid excessive use, as it may reduce readability. Always ensure text contrast against its background.
 
@@ -24,19 +24,19 @@ Table: Font size and line height
 
 | px   | em      | Font size tokens | Line height tokens |
 | ---- | ------- | ---------------- | ------------------ |
-| 48px | 3em     | `--fs-800`       | `--lh-800`         |
-| 36px | 2.25em  | `--fs-700`      | `--lh-700`        |
-| 32px | 2em     | `--fs-600`      | `--lh-600`        |
-| 24px | 1.5em   | `--fs-500`      | `--lh-500`        |
-| 20px | 1.25em  | `--fs-400`      | `--lh-400`        |
-| 16px | 1em     | `--fs-300`      | `--lh-300`        |
-| 14px | 0.875em | `--fs-200`      | `--lh-200`        |
-| 12px | 0.75em  | `--fs-100`      | `--lh-100`        |
+| 48px | 3em     | `--fs-800` | `--lh-800` |
+| 36px | 2.25em  | `--fs-700` | `--lh-700` |
+| 32px | 2em     | `--fs-600` | `--lh-600` |
+| 24px | 1.5em   | `--fs-500` | `--lh-500` |
+| 20px | 1.25em  | `--fs-400` | `--lh-400` |
+| 16px | 1em     | `--fs-300` | `--lh-300` |
+| 14px | 0.875em | `--fs-200` | `--lh-200` |
+| 12px | 0.75em  | `--fs-100` | `--lh-100` |
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/font-size-and-line-height.tsx';
+  export Demo from './examples/font-size-and-line-height.tsx'; 
 </script>
 
 :::
@@ -45,29 +45,29 @@ Table: Font size and line height
 
 Our design system offers six heading sizes.
 
-The first four headings are typically used for hero blocks, large advertising screens, banners, and landing pages. Use the `semibold` font-weight (`--semi-bold` token) with these headings.
+The first four headings are typically used for hero blocks, large advertising screens, banners, and landing pages. Use the `semibold` font-weight ( `--semi-bold` token) with these headings.
 
 Table: Heading from 48px to 24px styles
 
 | Appearance           | Styles                     | Tokens                 |
 | -------------------- | -------------------------- | ---------------------- |
-| ![](static/h1.png) | `font-size: 48px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-800`, `--lh-800` |
-| ![](static/h2.png) | `font-size: 36px`, `line-height: 1.11`, `font-weight: semibold` | `--fs-700`, `--lh-700`  |
-| ![](static/h3.png) | `font-size: 32px`, `line-height: 1.25`, `font-weight: semibold` | `--fs-600`, `--lh-600`  |
-| ![](static/h4.png) | `font-size: 24px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-500`, `--lh-500`  |
+| ![](static/h1.png) | `font-size: 48px` , `line-height: 1.17` , `font-weight: semibold` | `--fs-800` , `--lh-800` |
+| ![](static/h2.png) | `font-size: 36px` , `line-height: 1.11` , `font-weight: semibold` | `--fs-700` , `--lh-700` |
+| ![](static/h3.png) | `font-size: 32px` , `line-height: 1.25` , `font-weight: semibold` | `--fs-600` , `--lh-600` |
+| ![](static/h4.png) | `font-size: 24px` , `line-height: 1.17` , `font-weight: semibold` | `--fs-500` , `--lh-500` |
 
-The remaining headings are used for the content part of products and landing pages. For headings with a size of 16px and smaller, use the `bold` font-weight (`--bold` token).
+The remaining headings are used for the content part of products and landing pages. For headings with a size of 16px and smaller, use the `bold` font-weight ( `--bold` token).
 
 Table: Heading from 20px to 16px styles
 
 | Appearance           | Styles                                                  | Tokens                |
 | -------------------- | ------------------------------------------------------- | --------------------- |
-| ![](static/h5.png) | `font-size: 20px`, `line-height: 1.2`, `font-weight: semibold` | `--fs-400`, `--lh-400` |
-| ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold` | `--fs-300`, `--lh-300` |
+| ![](static/h5.png) | `font-size: 20px` , `line-height: 1.2` , `font-weight: semibold` | `--fs-400` , `--lh-400` |
+| ![](static/h6.png) | `font-size: 16px` , `line-height: 1.5` , `font-weight: bold` | `--fs-300` , `--lh-300` |
 
 ## Heading with counter
 
-In certain cases, headings can include additional information, such as a counter of results found. These are often used in table headings. In such cases, the additional information is presented using the secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
+In certain cases, headings can include additional information, such as a counter of results found. These are often used in table headings. In such cases, the additional information is presented using the secondary text ( `--text-secondary` token) and `regular` font-weight ( `--regular` token).
 
 ![](static/secondary-info.png)
 
@@ -83,12 +83,12 @@ Table: Heading styles for mobile devices
 
 | 0px – 768px                        | 768px – ∞                           |
 | ---------------------------------- | ----------------------------------- |
-| H1 (36/40) – `--fs-700`, `--lh-700` | H1 (48/56) – `--fs-800`, `--lh-800` |
-| H2 (32/40) – `--fs-600`, `--lh-600` | H2 (36/40) – `--fs-700`, `--lh-700`  |
-| H3 (24/28) – `--fs-500`, `--lh-500` | H3 (32/40) – `--fs-600`, `--lh-600`  |
-| H4 (20/24) – `--fs-400`, `--lh-400` | H4 (24/28) – `--fs-500`, `--lh-500`  |
-| H5 (16/24) – `--fs-300`, `--lh-300` | H5 (20/24) – `--fs-400`, `--lh-400`  |
-| H6 (14/20) – `--fs-200`, `--lh-200` | H6 (16/24) – `--fs-300`, `--lh-300`  |
+| H1 (36/40) –  `--fs-700` , `--lh-700` | H1 (48/56) –  `--fs-800` , `--lh-800` |
+| H2 (32/40) –  `--fs-600` , `--lh-600` | H2 (36/40) –  `--fs-700` , `--lh-700` |
+| H3 (24/28) –  `--fs-500` , `--lh-500` | H3 (32/40) –  `--fs-600` , `--lh-600` |
+| H4 (20/24) –  `--fs-400` , `--lh-400` | H4 (24/28) –  `--fs-500` , `--lh-500` |
+| H5 (16/24) –  `--fs-300` , `--lh-300` | H5 (20/24) –  `--fs-400` , `--lh-400` |
+| H6 (14/20) –  `--fs-200` , `--lh-200` | H6 (16/24) –  `--fs-300` , `--lh-300` |
 
 ## Paragraph
 
@@ -109,14 +109,14 @@ There are three text sizes commonly used in our products:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/12px-text.tsx';
+  export Demo from './examples/12px-text.tsx'; 
 </script>
 
 :::
 
 ## Paragraph margins
 
-Paragraphs have a `margin-bottom`, and each paragraph size has its own specific `margin`. For instance, a paragraph with a 16px font size has a `margin-bottom: 14px`, a paragraph with a 14px font size has a `margin-bottom: 12px`, and a paragraph with a 12px font size has a `margin-bottom: 8px`.
+Paragraphs have a `margin-bottom` , and each paragraph size has its own specific `margin` . For instance, a paragraph with a 16px font size has a `margin-bottom: 14px` , a paragraph with a 14px font size has a `margin-bottom: 12px` , and a paragraph with a 12px font size has a `margin-bottom: 8px` .
 
 These margins can also be applied when a paragraph is followed by a paragraph with a smaller font size.
 
@@ -130,28 +130,28 @@ Table: Font styles for metrics
 
 | px   | Tokens                | Appearance                  |
 | ---- | --------------------- | --------------------------- |
-| 32px | `--fs-600`, `--lh-600` | ![](static/metric-600.png) |
-| 24px | `--fs-500`, `--lh-500` | ![](static/metric-500.png) |
-| 20px | `--fs-400`, `--lh-400` | ![](static/metric-400.png) |
-| 16px | `--fs-300`, `--lh-300` | ![](static/metric-300.png) |
-| 14px | `--fs-200`, `--lh-200` | ![](static/metric-200.png) |
+| 32px | `--fs-600` , `--lh-600` | ![](static/metric-600.png) |
+| 24px | `--fs-500` , `--lh-500` | ![](static/metric-500.png) |
+| 20px | `--fs-400` , `--lh-400` | ![](static/metric-400.png) |
+| 16px | `--fs-300` , `--lh-300` | ![](static/metric-300.png) |
+| 14px | `--fs-200` , `--lh-200` | ![](static/metric-200.png) |
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/metric.tsx';
+  export Demo from './examples/metric.tsx'; 
 </script>
 
 :::
 
 ## Text styles
 
-You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link](/components/link/link), a [hint](/style/typography/typography#hints_hint_links), or applying `strikethrough`.
+You have the flexibility to change the style of text by making it `bold` , `italic` , adding a [link](/components/link/link), a [hint](/style/typography/typography#hints_hint_links), or applying `strikethrough` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/text-styles.tsx';
+  export Demo from './examples/text-styles.tsx'; 
 </script>
 
 :::
@@ -162,9 +162,21 @@ Table: Font styles for lists
 
 | px  | Tokens | Styles | Numbered list | Unordered list | Check list |
 | --- | ------ | ------ | ------------- | -------------- | ---------- |
-| 16px | `--fs-300`, `--lh-300` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-16.png) | ![](static/ul-16.png) | ![](static/checklist-16.png) |
-| 14px | `--fs-200`, `--lh-200` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png) |
-| 12px | `--fs-100`, `--lh-100` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png) |
+| 16px | `--fs-300` , `--lh-300` | `margin-bottom: 8px` , `padding-right: 8px` | 
+
+![](static/ol-16.png) | ![](static/ul-16.png) | ![](static/checklist-16.png)
+
+ |
+| 14px | `--fs-200` , `--lh-200` | `margin-bottom: 8px` , `padding-right: 8px` | 
+
+![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png)
+
+ |
+| 12px | `--fs-100` , `--lh-100` | `margin-bottom: 8px` , `padding-right: 8px` | 
+
+![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png)
+
+ |
 
 ## Nested list
 
@@ -174,9 +186,9 @@ Table: Font styles for nested lists
 
 | px   | Tokens                | Margins                                          |
 | ---- | --------------------- | ------------------------------------------------ |
-| 16px | `--fs-300`, `--lh-300` | ![](static/second-level-16.png) |
-| 14px | `--fs-200`, `--lh-200` | ![](static/second-level-14.png) |
-| 12px | `--fs-100`, `--lh-100` | ![](static/second-level-12.png) |
+| 16px | `--fs-300` , `--lh-300` | ![](static/second-level-16.png) |
+| 14px | `--fs-200` , `--lh-200` | ![](static/second-level-14.png) |
+| 12px | `--fs-100` , `--lh-100` | ![](static/second-level-12.png) |
 
 ## Quote
 
@@ -196,9 +208,9 @@ Table: Hint link states
 
 | State        | Appearance example  | Styles and tokens      | Cursor          |
 | ------------ | ------------------- | ---------------------- | --------------- |
-| Normal       | ![](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.     | `help` or `pointer`, if clickable   |
-| Active/hover | ![](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If used with an icon, the icon changes color along with the text. | `help`, `default` or `pointer` (depending on the usage context) |
-| Disabled     | ![](static/hint-disabled.png) | `--disabled-opacity`. Use this state as a last resort and be sure to label the disabled link with an explanatory tooltip.     | `default`       |
+| Normal       | ![](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.     | `help` or `pointer` , if clickable   |
+| Active/hover | ![](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If used with an icon, the icon changes color along with the text. | `help` , `default` or `pointer` (depending on the usage context) |
+| Disabled     | ![](static/hint-disabled.png) | `--disabled-opacity` . Use this state as a last resort and be sure to label the disabled link with an explanatory tooltip.     | `default` |
 | visited      |             | This link does not have `visited` state.  |                   |
 
 ## Which heading with which paragraph size shall be used
@@ -218,4 +230,3 @@ Table: Hint link states
 ![](static/h5-p.png)
 
 ![](static/h6-p.png)
-

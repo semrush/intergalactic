@@ -13,32 +13,32 @@ The `Dropdown` is a wrap over the `Popper` with the addition of styles, presets 
 The wrap over the `<Popper/>` component.
 
 ```jsx
-import Dropdown from '@semcore/ui/dropdown';
+import Dropdown from 'intergalactic/dropdown';
 <Dropdown />;
 ```
 
 <TypesView type="DropdownProps" :types={...types} />
 
-## Dropdown.Trigger
+## Dropdown. Trigger
 
 The wrap over the `<Popper.Trigger/>` component.
 
 ```jsx
-import Dropdown from '@semcore/ui/dropdown';
+import Dropdown from 'intergalactic/dropdown';
 <Dropdown.Trigger />;
 ```
 
 <TypesView type="PopperTriggerProps" :types={...types} />
 
-## Dropdown.Popper
+## Dropdown. Popper
 
 The wrap over the `<Popper.Popper/>` component.
 
 ```jsx
-import Dropdown from '@semcore/ui/dropdown';
+import Dropdown from 'intergalactic/dropdown';
 <Dropdown.Popper />;
 ```
 
 <TypesView type="PopperPopperProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>

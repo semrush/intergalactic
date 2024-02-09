@@ -6,7 +6,7 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 ## NoticeBubbleManager
 
 ```js
-import NoticeBubbleManager from '@semcore/ui/notice-bubble';
+import NoticeBubbleManager from 'intergalactic/notice-bubble';
 ```
 
 Manager is a storage of all notice instances, it is able to add, delete and update notices by calling the appropriate methods.
@@ -16,11 +16,13 @@ Manager is a storage of all notice instances, it is able to add, delete and upda
 ## NoticeBubbleContainer
 
 ```js
-import { NoticeBubbleContainer } from '@semcore/ui/notice-bubble';
+import {
+    NoticeBubbleContainer
+} from 'intergalactic/notice-bubble';
 ```
 
-Container - div in the body via the portal (`React.Portal`). It is inserted once in any part of the application and subscribes to Manager updates (`NoticeBubbleManager`). Later, notices will be rendered to it.
+Container - div in the body via the portal ( `React.Portal` ). It is inserted once in any part of the application and subscribes to Manager updates ( `NoticeBubbleManager` ). Later, notices will be rendered to it.
 
 <TypesView type="NoticeBubbleContainerProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts';</script>
+<script setup>import { data as types } from '@types.data.ts'; </script>
