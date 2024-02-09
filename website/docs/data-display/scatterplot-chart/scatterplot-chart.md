@@ -164,7 +164,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                        |
 | First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![](static/scatterplot-chart-skeleton.png) |
 
-## UI/UX use
+## Usage in UX/UI
 
 ### Axes
 

@@ -183,6 +183,10 @@ Align data sets to the left.
 
 If the data set value is zero, don't show it on the chart, but show the value in the legend.
 
+::: tip
+Zero counts as data. 0 ≠ n/a.
+:::
+
 ![](static/venn-null.png)
 
 If all data set values are zero, display a circle in `--chart-palette-order-null` color.
