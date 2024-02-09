@@ -15,7 +15,7 @@ export const closeTasks = async (version: string) => {
   }
 
   const logs = await git.log({ from: latestTag });
-  const regexp = new RegExp(/\[(.*?)\]\[(.*?)\]/gi);
+  const regexp = new RegExp(/\[(.*?)\]/gi);
   const taskIds = logs.all
     .map((item) => {
       const result = [...item.message.matchAll(regexp)][0];

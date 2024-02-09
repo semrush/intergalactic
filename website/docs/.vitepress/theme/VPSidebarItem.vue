@@ -67,14 +67,15 @@ function collapse() {
     toggle();
   }
 }
-
-(window as any).sidebarItems ??= [];
-(window as any).sidebarItems.push({ item: props.item, collapse })
+if (globalThis.window) {
+  (globalThis.window as any).sidebarItems ??= [];
+  (globalThis.window as any).sidebarItems.push({ item: props.item, collapse })
+}
 
 const isParentItem = (item: Item) => item.items?.some(children => children === props.item || isParentItem(children))
 
 function collapseAllOthers() {
-  for (let { item, collapse: collapseItem } of (window as any).sidebarItems) {
+  for (let { item, collapse: collapseItem } of (globalThis.window as any).sidebarItems) {
     if (!isParentItem(item) && item !== props.item) {
       collapseItem();
     }
