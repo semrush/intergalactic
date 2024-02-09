@@ -8,6 +8,7 @@ import { unpluginIcons } from './unplugins/unplugin-icons';
 import { unpluginStatic } from './unplugins/unplugin-static';
 import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
+import { fileURLToPath, URL } from 'url';
 
 export const viteConfig = defineConfig({
   base: '/intergalactic/',
@@ -58,5 +59,13 @@ export const viteConfig = defineConfig({
   ],
   build: {
     chunkSizeWarningLimit: 1500,
+  },
+  resolve: {
+    alias: [
+      {
+        find: /^.*\/VPSidebarItem\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPSidebarItem.vue', import.meta.url)),
+      },
+    ],
   },
 });

@@ -3011,6 +3011,23 @@ const iconsList = {
       ],
     },
     {
+      name: 'Hashtag',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'hashtag',
+        'хештег',
+        'smm',
+        'смм',
+        'octothorpe',
+        'pound',
+        'symbol',
+        'hash',
+        'mark',
+        'number',
+      ],
+    },
+    {
       name: 'Hotel',
       size: ['l', 'm'],
       group: 'Misc',
