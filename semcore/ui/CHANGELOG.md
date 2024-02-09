@@ -1,3 +1,22 @@
+## [15.57.0-prerelease.0] - 2024-02-09
+
+### @semcore/icon
+
+- **Added** New `Hashtag` icon.
+
+### @semcore/popper
+
+- **Added** `focusLoop` api that controls how browser focus behaves when goes out of popper.
+- **Changed** Invisible focus return and catch elements are removed that were used for keyboard users focus flow control. Instead, trigger may ignore focus event for a short time just after corresponding popper close.
+
+### @semcore/tooltip
+
+- **Changed** Disabled focus looping when focusable elements exist in tooltip.
+
+### @semcore/utils
+
+- **Fixed** Fixed edge case bug when browser focus should be returned from modal, but a button that triggered modal opening is already unmounted.
+
 ## [15.56.0] - 2024-02-07
 
 ### @semcore/base-trigger
