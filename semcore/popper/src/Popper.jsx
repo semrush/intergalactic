@@ -18,6 +18,7 @@ import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { hasParent } from '@semcore/utils/lib/hasParent';
 
 import createPopper from './createPopper';
 
@@ -69,6 +70,7 @@ class Popper extends Component {
     interaction: 'click',
     timeout: 0,
     excludeRefs: [],
+    focusLoop: true,
   };
 
   static enhance = [
@@ -360,8 +362,16 @@ class Popper extends Component {
       animationsDisabled,
       popper: this.popper,
       disableEnforceFocus,
+      handleFocusOut: this.handlePopperFocusOut,
     };
   }
+
+  handlePopperFocusOut = (event) => {
+    if (this.asProps.focusLoop) return;
+    if (hasParent(event.target, this.triggerRef.current)) return;
+
+    this.bindHandlerChangeVisibleWithTimer(false, 'popper', 'onBlur')(event);
+  };
 
   setContext() {
     return {
@@ -467,13 +477,21 @@ function PopperPopper(props) {
     animationsDisabled,
     popper,
     focusMaster = false,
+    handleFocusOut,
   } = props;
   const ref = React.useRef(null);
 
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
 
-  useFocusLock(ref, autoFocus, triggerRef, !visible || disableEnforceFocus, focusMaster);
+  useFocusLock(
+    ref,
+    autoFocus,
+    triggerRef,
+    !visible || disableEnforceFocus,
+    focusMaster,
+    handleFocusOut,
+  );
 
   useContextTheme(ref, visible);
 
