@@ -255,7 +255,7 @@ const data = [
 
 :::
 
-## Data loading
+## Initial data loading
 
 ::: sandbox
 

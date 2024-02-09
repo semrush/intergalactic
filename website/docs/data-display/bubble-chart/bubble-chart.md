@@ -112,8 +112,8 @@ Remember to check contrast for the text labels. We don’t recommend to use ligh
 
 ## Legend
 
-- Include a legend for multiple data sets, with clear values for each.
-- A vertical legend layout is preferred for readability.
+- Add a legend for multiple data sets, with clear values for each.
+- A vertical legend layout is preferred for easier reading and values comparing.
 
 ![](static/positive-correlation-2.png)
 
@@ -134,10 +134,10 @@ Tooltips should show:
 
 Table: Bubble chart tooltips
 
-| Case             | Appearance example                               |
-| ---------------- | ------------------------------------------------ |
-| One data set      | ![](static/hover-2.png)                         |
-| Several data sets | ![](static/hover-1.png) ![](static/hover-3.png) |
+| Case             | Appearance example       |
+| ---------------- | ------------------------ |
+| One data set      | ![](static/hover-2.png) |
+| Several data sets | ![](static/hover-1.png) |
 
 ### Bubbles intersection
 
@@ -155,7 +155,7 @@ To prevent small values from being lost under the large ones (outliers), the bub
 
 ### Null values
 
-Zero values are displayed at the origin, with legends reflecting zero data.
+Zero values are displayed at the origin, with legend reflecting zero data.
 
 ::: tip
 Zero counts as data. 0 ≠ n/a.
@@ -184,6 +184,8 @@ Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the ch
 Use the `--skeleton-bg` color token for the skeleton's background.         
 
 ![](static/bubble-chart-skeleton.png)
+
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
 
 ## Usage in UX/UI
 

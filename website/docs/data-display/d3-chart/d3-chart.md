@@ -142,7 +142,7 @@ You can add a description text to your chart. Typically, such a text can provide
 
 For the description text, use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color.
 
-## Data loading
+## Initial data loading
 
 During the initial data loading, display the [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
