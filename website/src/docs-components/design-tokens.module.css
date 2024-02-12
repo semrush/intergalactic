@@ -1,10 +1,22 @@
-.searchInput {
+.filters {
   margin-bottom: var(--intergalactic-spacing-4x);
-  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.searchInputIcon path {
+.nameFilterInput {
+  flex: 2;
+  min-width: 300px;
+}
+
+.nameFilterInputIcon path {
   fill: var(--intergalactic-icon-secondary-neutral);
+}
+
+.componentsFilterSelect.componentsFilterSelect {
+  flex: 1;
+  min-width: 200px;
 }
 
 .tokenNameWrapper {
