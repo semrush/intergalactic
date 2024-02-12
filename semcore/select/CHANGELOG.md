@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.0] - 2024-02-12
+
+### Added
+
+- `indeterminate` prop for `Select.Option.Checkbox`,
+
 ## [4.27.1] - 2024-02-09
 
 ### Changed
