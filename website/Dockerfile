@@ -9,6 +9,7 @@ FROM node:16-alpine AS builder
 WORKDIR /app
 
 COPY ./ ./
+COPY .git/ ./.git/
 
 ARG ALGOLIA_SECRET_KEY
 ENV ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY

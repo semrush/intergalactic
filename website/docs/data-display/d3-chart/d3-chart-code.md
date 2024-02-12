@@ -809,7 +809,8 @@ const Demo = () => {
 
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
-      const svgElement = svgRef.current;
+      const svgElement = svgRef.current.cloneNode(true);
+      [...svgElement.querySelectorAll('animate')].forEach(animate => animate.remove())
       let svgText = svgElementToSvgText(svgElement);
       svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
       svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
