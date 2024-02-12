@@ -6,10 +6,10 @@ import Select from '@semcore/select';
 import Pills from '@semcore/pills';
 import { createPlayground, Playground } from '../components/playground';
 import styles from './PlaygroundGeneration.module.css';
-import { getHighlighter, setCDN } from 'shiki';
-import githubDarkTheme from 'shiki/themes/github-dark.json';
+import { getHighlighterCore } from 'shiki/core';
 import { createPortal } from 'react-dom';
 import { isolateStyles } from '../../docs/.vitepress/theme/isolateStyles';
+import getWasm from 'shiki/wasm';
 
 const ShadowRooted = ({ children }) => {
   const ref = React.useRef();
@@ -137,14 +137,19 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
   const hasWidget = !!widgetControls.length;
 
   React.useEffect(() => {
-    setCDN('https://unpkg.com/shiki/');
-    getHighlighter({ theme: 'github-dark', themes: [githubDarkTheme], langs: ['tsx'] }).then(
-      (highlighter) => {
-        const html = highlighter.codeToHtml(source, { lang: 'tsx', theme: 'github-dark' });
-        setHighlightedSource(html);
-      },
-    );
-  });
+    (async () => {
+      const highlighter = await getHighlighterCore({
+        themes: [import('shiki/themes/github-dark.mjs')],
+        langs: [import('shiki/langs/tsx.mjs')],
+        loadWasm: getWasm,
+      });
+      const html = highlighter.codeToHtml(source, {
+        lang: 'tsx',
+        theme: 'github-dark',
+      });
+      setHighlightedSource(html);
+    })();
+  }, [source]);
 
   return (
     <div className={styles.wrapperPlayground} aria-hidden='true'>
