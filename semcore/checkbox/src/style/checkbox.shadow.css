@@ -145,7 +145,7 @@ SControl[checked]~SCheckbox {
 }
 
 SControl[indeterminate]~SCheckbox:after {
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background-color: #ffffff;
   margin: auto;
   /* disable-tokens-validator */
   border-radius: 1px;

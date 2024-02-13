@@ -16,6 +16,10 @@ const Demo = () => (
           <Select.Option.Checkbox />
           I'm disabled option-checkbox
         </Select.Option>
+        <Select.Option value={3}>
+          <Select.Option.Checkbox indeterminate />
+          I'm indeterminate option-checkbox
+        </Select.Option>
         <Select.OptionTitle>I'm title</Select.OptionTitle>
         <Select.OptionHint>I'm hint</Select.OptionHint>
       </Select.Menu>
