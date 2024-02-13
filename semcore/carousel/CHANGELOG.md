@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.28.0] - 2024-02-13
+
+### Changed
+
+- Navigation buttons are clickable by `Space` now (along with `Enter` as before).
+
 ## [3.27.2] - 2024-02-09
 
 ### Changed

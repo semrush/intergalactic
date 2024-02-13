@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.28.0] - 2024-02-13
+
+### Changed
+
+- A11y module links are clickable by `Space` now (along with `Enter` as before).
+
 ## [3.27.3] - 2024-02-13
 
 ### Fixed

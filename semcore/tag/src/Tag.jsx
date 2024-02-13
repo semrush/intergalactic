@@ -64,6 +64,7 @@ class RootTag extends Component {
     switch (e.key) {
       case ' ':
       case 'Enter':
+        e.preventDefault();
         this.asProps.onClick?.(e);
         break;
     }
@@ -119,7 +120,8 @@ function Close(props) {
       return props.onKeyDown(event);
     }
 
-    if (event.key === 'Enter') {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      event.preventDefault();
       props.onClick?.(event);
     }
   }
