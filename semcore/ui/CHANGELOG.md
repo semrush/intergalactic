@@ -1,3 +1,9 @@
+## [15.58.1] - 2024-02-13
+
+### @semcore/d3-chart
+
+- **Fixed** `Dots` component was missing `value` prop in it's props mapping function.
+
 ## [15.58.0] - 2024-02-13
 
 ### @semcore/checkbox
