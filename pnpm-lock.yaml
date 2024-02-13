@@ -2770,7 +2770,7 @@ importers:
         specifier: 3.18.2
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.27.2
+        specifier: 3.27.3
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 4.26.2
