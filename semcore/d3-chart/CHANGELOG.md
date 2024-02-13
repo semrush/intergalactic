@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.27.3] - 2024-02-13
+
+### Fixed
+
+- `Dots` component was missing `value` prop in it's props mapping function.
+
 ## [3.27.2] - 2024-02-09
 
 ### Changed
