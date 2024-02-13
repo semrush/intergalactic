@@ -1,3 +1,13 @@
+## [15.58.0] - 2024-02-13
+
+### @semcore/checkbox
+
+- **Fixed** indeterminate mark color were different from checked mark color.
+
+### @semcore/select
+
+- **Added** `indeterminate` prop for `Select.Option.Checkbox`,
+
 ## [15.57.0] - 2024-02-09
 
 ### @semcore/icon
