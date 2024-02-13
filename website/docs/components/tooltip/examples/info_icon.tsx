@@ -5,7 +5,7 @@ import IconInfo from '@semcore/ui/icon/Info/m';
 const Demo = () => {
   return (
     <Tooltip>
-      <Tooltip.Trigger tag={IconInfo} interactive={true} />
+      <Tooltip.Trigger tag={IconInfo} interactive={true} aria-label='Infromation hint' />
       <Tooltip.Popper>Content for tooltip</Tooltip.Popper>
     </Tooltip>
   );
