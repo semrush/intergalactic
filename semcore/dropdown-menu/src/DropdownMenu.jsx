@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import { Flex, useBox, useFlex } from '@semcore/flex-box';
+import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -12,6 +12,7 @@ import logger from '@semcore/utils/lib/logger';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
+import { getFocusableIn } from '@semcore/utils/src/focus-lock/getFocusableIn';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA', 'BUTTON'];
@@ -55,11 +56,34 @@ class DropdownMenuRoot extends Component {
       if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
     }
 
-    const { visible } = this.asProps;
-    const element = this.popperRef.current;
+    const { visible, highlightedIndex } = this.asProps;
+    const popperElement = this.popperRef.current;
 
-    if (place === 'popper' && visible && e.key === 'Tab' && hasFocusableIn(element)) {
+    if (place === 'popper' && visible && hasFocusableIn(popperElement) && e.key === 'Tab') {
+      const focusableInHighlighted = this.highlightedItemRef.current
+        ? getFocusableIn(this.highlightedItemRef.current)
+        : [];
+      const firstIndex = highlightedIndex === null ? 0 : 1;
+
       this.handlers.highlightedIndex(null);
+
+      // highlighted item has focusable items or keypress Tab on last focusable item in DDItem
+      if (
+        focusableInHighlighted.length > firstIndex &&
+        (highlightedIndex !== null ||
+          (document.activeElement === focusableInHighlighted[focusableInHighlighted.length - 1] &&
+            !e.shiftKey) ||
+          (document.activeElement === focusableInHighlighted[firstIndex] && e.shiftKey))
+      ) {
+        e.preventDefault();
+
+        const index =
+          document.activeElement === focusableInHighlighted[firstIndex]
+            ? focusableInHighlighted.length - 1
+            : firstIndex;
+
+        focusableInHighlighted[index]?.focus();
+      }
 
       return;
     }
@@ -68,19 +92,17 @@ class DropdownMenuRoot extends Component {
 
     e.preventDefault();
 
-    const isVisible = this.asProps.visible;
-
     this.handlers.visible(true);
 
     switch (e.key) {
       case 'ArrowDown': {
-        isVisible && this.moveHighlightedIndex(amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
+        visible && this.moveHighlightedIndex(amount, e);
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && popperElement?.focus();
         break;
       }
       case 'ArrowUp': {
-        isVisible && this.moveHighlightedIndex(-amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
+        visible && this.moveHighlightedIndex(-amount, e);
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && popperElement?.focus();
         break;
       }
       case ' ':
@@ -95,16 +117,13 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
 
     return {
       size,
       id: `igc-${uid}-trigger`,
-      'aria-controls': `igc-${uid}-popper`,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
-      'aria-activedescendant':
-        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
@@ -166,8 +185,12 @@ class DropdownMenuRoot extends Component {
   }
 
   scrollToNode = (node) => {
-    this.highlightedItemRef.current = node;
     setTimeout(() => {
+      if (node) {
+        this.highlightedItemRef.current = node;
+        node.focus();
+      }
+
       if (node?.scrollIntoView) {
         if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
           this.prevHighlightedIndex = this.asProps.highlightedIndex;
@@ -190,6 +213,8 @@ class DropdownMenuRoot extends Component {
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         highlightedIndex = selectedIndex;
+      } else if (this.highlightedItemRef.current) {
+        highlightedIndex = this.prevHighlightedIndex;
       } else {
         highlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
@@ -280,24 +305,15 @@ function Menu(props) {
 }
 
 function Item(props) {
-  const [SDropdownMenuItem, { className, ...other }] = useFlex(props, props.forwardRef);
-  const styles = sstyled(props.styles);
-  return (
+  const SDropdownMenuItem = Root;
+  const highlighted = !props.disabled && props.highlighted;
+  return sstyled(props.styles)(
     <SDropdownMenuItem
+      render={Flex}
       role='menuitem'
-      tabIndex={-1}
+      tabIndex={highlighted ? 0 : -1}
       id={props.label}
-      className={
-        cn(
-          styles.cn('SDropdownMenuItem', {
-            ...props,
-            highlighted: !props.disabled && props.highlighted,
-          }).className,
-          className,
-        ) || undefined
-      }
-      {...other}
-    />
+    />,
   );
 }
 
