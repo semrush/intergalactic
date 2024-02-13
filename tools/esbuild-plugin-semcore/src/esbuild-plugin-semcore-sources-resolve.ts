@@ -80,48 +80,51 @@ const outOfSourceDirs = ['style'];
 export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
-    build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path, importer }) => {
-      const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
-      if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
-      if (path.startsWith('@semcore/ui/'))
-        path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
-      if (path.startsWith('intergalactic/'))
-        path = `@semcore/${path.substring('intergalactic/'.length)}`;
-      const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
-      const componentName = path.split('/')[1];
-      const subPath = path.split('/').slice(2).join('/');
-      let modifiedSubPath = subPath;
+    build.onResolve(
+      { filter: /^(!!raw-loader!)?(@semcore|intergalactic)\// },
+      async ({ path, importer }) => {
+        const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
+        if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
+        if (path.startsWith('@semcore/ui/'))
+          path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
+        if (path.startsWith('intergalactic/'))
+          path = `@semcore/${path.substring('intergalactic/'.length)}`;
+        const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
+        const componentName = path.split('/')[1];
+        const subPath = path.split('/').slice(2).join('/');
+        let modifiedSubPath = subPath;
 
-      if (
-        !rootFiles.includes(subPath) &&
-        !(generatedComponents.includes(componentName) && subPath) &&
-        !outOfSourceDirs.some((dir) => subPath.startsWith(dir))
-      ) {
-        if (subPath.includes('lib')) {
-          modifiedSubPath = subPath.replace('lib/', 'src/');
-        } else if (!subPath.startsWith('src/')) {
-          modifiedSubPath = `src/${subPath}`;
+        if (
+          !rootFiles.includes(subPath) &&
+          !(generatedComponents.includes(componentName) && subPath) &&
+          !outOfSourceDirs.some((dir) => subPath.startsWith(dir))
+        ) {
+          if (subPath.includes('lib')) {
+            modifiedSubPath = subPath.replace('lib/', 'src/');
+          } else if (!subPath.startsWith('src/')) {
+            modifiedSubPath = `src/${subPath}`;
+          }
         }
-      }
 
-      for (const absolutePath of [
-        resolvePath(workspacePath, modifiedSubPath),
-        resolvePath(workspacePath, subPath),
-      ]) {
-        for (const tryToResolve of [
-          tryToResolveFile,
-          tryToResolveFileExtention,
-          tryToResolveIndexFile,
+        for (const absolutePath of [
+          resolvePath(workspacePath, modifiedSubPath),
+          resolvePath(workspacePath, subPath),
         ]) {
-          const resolved = await tryToResolve(absolutePath);
-          if (resolved) return { ...resolved, namespace };
+          for (const tryToResolve of [
+            tryToResolveFile,
+            tryToResolveFileExtention,
+            tryToResolveIndexFile,
+          ]) {
+            const resolved = await tryToResolve(absolutePath);
+            if (resolved) return { ...resolved, namespace };
+          }
         }
-      }
 
-      throw new Error(
-        `Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}" from "${importer}").`,
-      );
-    });
+        throw new Error(
+          `Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}" from "${importer}").`,
+        );
+      },
+    );
     build.onLoad({ filter: /./, namespace: 'rawFile' }, async ({ path }) => {
       const contents = await readFile(path, 'utf-8');
       return {
