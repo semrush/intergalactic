@@ -9,9 +9,9 @@ tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog
 :rotating_light: Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/data-table). It is based on `CSS-flex` technology and doesn't use native tables.
 :::
 
-## Table with an accordion
+## Table with accordion
 
-Example of a table with an [accordion](/components/accordion/accordion) :sunglasses:.
+Example of the table with [Accordion](/components/accordion/accordion).
 
 ::: sandbox
 
@@ -91,7 +91,7 @@ const data = [
 
 :::
 
-## Table with a fixed header
+## Table with fixed header
 
 ::: sandbox
 
@@ -332,7 +332,7 @@ const Demo = () => (
 
 :::
 
-## Example of data being loaded for the first time
+## Table with skeleton
 
 ::: sandbox
 
