@@ -319,13 +319,14 @@ function Trigger({
 
 function Checkbox(props) {
   const [SOptionCheckbox, componentProps] = useBox(props, props.forwardRef);
-  const { size, theme, selected, resolveColor } = props;
+  const { size, theme, selected, resolveColor, indeterminate } = props;
   const styles = sstyled(props.styles);
 
   const { className, style } = styles.cn('SOptionCheckbox', {
     size,
     'use:theme': resolveColor(theme),
     checked: selected,
+    indeterminate,
   });
 
   return (
