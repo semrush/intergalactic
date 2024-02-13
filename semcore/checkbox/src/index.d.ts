@@ -53,7 +53,7 @@ export type CheckboxValueProps = KeyboardFocusProps &
      * */
     defaultChecked?: boolean;
     /**
-     * @deprecated set `defaultChecked` on root Checkbox instead
+     * @deprecated set `indeterminate` on root Checkbox instead
      * */
     indeterminate?: boolean;
     /**
