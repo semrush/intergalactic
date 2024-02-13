@@ -103,3 +103,13 @@ You can see the list of available methods in the [API](/components/dropdown-menu
 </script>
 
 :::
+
+## Nested dropdown menus
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/nested.tsx';
+</script>
+
+:::
