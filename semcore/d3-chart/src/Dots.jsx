@@ -94,6 +94,7 @@ function Dots(props) {
             patternKey={patternKey}
             patterns={patterns}
             key={`${i}`}
+            value={d}
             visible={visible}
             active={active}
             hide={hide}
@@ -113,6 +114,7 @@ function Dots(props) {
             patternKey={patternKey}
             patterns={patterns}
             key={`${i}`}
+            value={d}
             visible={visible}
             active={active}
             hide={hide}
