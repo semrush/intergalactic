@@ -90,7 +90,7 @@ export type SelectOptionProps = DropdownMenuItemProps & {
 
 /** @deprecated */
 export interface ISelectOptionCheckboxProps extends SelectOptionCheckboxProps, UnknownProperties {}
-export type SelectOptionCheckboxProps = {
+export type SelectOptionCheckboxProps = BoxProps & {
   /** Checkbox theme */
   theme?: string;
   /** Visual indeterminate state */
