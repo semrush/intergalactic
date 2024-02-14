@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.1] - 2024-02-14
+
+### Changed
+
+- `ListAddBottom` icon.
+
 ## [4.25.0] - 2024-o2-18
 
 ### Added
