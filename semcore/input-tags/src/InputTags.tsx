@@ -255,9 +255,9 @@ function InputTag(props: any) {
   const STag = Root;
 
   const onKeyDown = (event: React.KeyboardEvent) => {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    if (props.onClick && (event.code === 'Enter' || event.code === 'Space')) {
       event.preventDefault();
-      props.onClick?.(event);
+      props.onClick(event);
 
       return false;
     }
