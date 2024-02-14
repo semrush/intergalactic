@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
 import Input from '@semcore/input';
+import Select from '@semcore/select';
 import SearchIcon from '@semcore/icon/Search/m';
 import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
@@ -24,14 +25,37 @@ export const ColorPreview = ({ color }) => {
 };
 
 const DesignTokens = ({ tokens }) => {
-  const [filter, setFilter] = React.useState('');
+  const [nameFilter, setNameFilter] = React.useState('');
+  const [componentFilter, setComponentFilter] = React.useState(null);
   const tokensIndex = React.useMemo(
     () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'rawValue', 'description'] }),
     [tokens],
   );
-  const filteredTokens = React.useMemo(
-    () => (filter ? tokensIndex.search(filter).map(({ item }) => item) : tokens),
-    [tokens, tokensIndex, filter],
+  const filteredTokens = React.useMemo(() => {
+    let result = tokens;
+    if (nameFilter) {
+      result = tokensIndex.search(nameFilter).map(({ item }) => item);
+    }
+    if (componentFilter) {
+      result = result.filter((token) => token.components.includes(componentFilter));
+    }
+    return result;
+  }, [tokens, tokensIndex, nameFilter, componentFilter]);
+
+  const components = React.useMemo(
+    () => [...new Set(tokens.flatMap((token) => token.components))],
+    [tokens],
+  );
+  const componentsFilterOptions = React.useMemo(
+    () => [
+      { children: 'All components', label: 'All components', value: null },
+      ...components.map((component) => ({
+        children: component,
+        label: component,
+        value: component,
+      })),
+    ],
+    [components],
   );
 
   const nameHeaderRef = React.useRef(null);
@@ -43,10 +67,20 @@ const DesignTokens = ({ tokens }) => {
 
   return (
     <div>
-      <Input className={styles.searchInput} size='l'>
-        <Input.Addon className={styles.searchInputIcon} tag={SearchIcon} />
-        <Input.Value placeholder='Find token' value={filter} onChange={setFilter} />
-      </Input>
+      <div className={styles.filters}>
+        <Input className={styles.nameFilterInput} size='l'>
+          <Input.Addon className={styles.nameFilterInputIcon} tag={SearchIcon} />
+          <Input.Value placeholder='Find token' value={nameFilter} onChange={setNameFilter} />
+        </Input>
+        <Select
+          className={styles.componentsFilterSelect}
+          size='l'
+          placeholder='All components'
+          value={componentFilter}
+          onChange={setComponentFilter}
+          options={componentsFilterOptions}
+        />
+      </div>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
           <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} wMin={300} />
