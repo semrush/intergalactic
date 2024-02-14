@@ -121,8 +121,11 @@ class Value extends Component {
     clearTimeout(this.timer);
   }
 
-  handleKeyDown = (e) => {
-    if (e.key === 'Enter') this.handlers.checked(!this.asProps.checked, e);
+  handleKeyDown = (event) => {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      event.preventDefault();
+      this.handlers.checked(!this.asProps.checked, event);
+    }
   };
 
   // because clicking on label causes a click on input
