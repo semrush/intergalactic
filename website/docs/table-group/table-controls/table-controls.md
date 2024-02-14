@@ -221,3 +221,24 @@ Specify a 400ms transition for appearing and hiding of such a row.
 - Limit actions to 3-5 popular options.
 
 "Select all" is not an obvious action, so we recommend avoiding it and using the options above instead.
+
+## Table settings and column manager
+
+For complex tables you can add a list of table settings or column manager.
+
+### Table settings
+
+- Place a list of settings inside such a control: from disabling columns to changing the appearance of the table.
+- Do not use it for changing columns order.
+- Avoid showing columns that cannot be hidden.
+
+![](static/table-settings.png)
+
+### Column manager
+
+Use it only to enable and disable columns. Show this with a counter inside the button.
+
+- Use it for changing the columns order.
+- Show columns that cannot be hidden as `disabled`.
+
+![](static/column-manager.png)
