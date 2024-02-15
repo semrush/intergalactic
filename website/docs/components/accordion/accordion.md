@@ -34,7 +34,7 @@ Component consists of the following:
 
 ## Styles and sizes
 
-The `ChevronRight` icon could have m and l sizes and always has `margin-right: 8px` with all font sizes.
+The `ChevronRight` icon could have M and L sizes and always has `margin-right: 8px` with all font sizes.
 
 ![](static/margins.png)
 

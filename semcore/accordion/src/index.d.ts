@@ -25,11 +25,6 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
   /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
-  /**
-   * Toggle size
-   * @default m
-   * */
-  size?: 'm' | 'l';
 };
 
 export interface IAccordionProps<T extends AccordionValue = AccordionValue>
