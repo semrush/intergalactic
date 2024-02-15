@@ -7,14 +7,14 @@ import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
+import { setFocus } from '@semcore/utils/src/focus-lock/setFocus';
+import { isFocusInside } from '@semcore/utils/src/focus-lock/isFocusInside';
 import { getFocusableIn } from '@semcore/utils/src/focus-lock/getFocusableIn';
-
-const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
-const INTERACTION_TAGS = ['INPUT', 'TEXTAREA', 'BUTTON'];
+import logger from '@semcore/utils/lib/logger';
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -30,9 +30,15 @@ class DropdownMenuRoot extends Component {
     interaction: 'click',
   };
 
+  state = {
+    focusLockItemIndex: null,
+  };
+
   popperRef = React.createRef();
+  triggerRef = React.createRef();
 
   itemProps = [];
+  itemRefs = [];
 
   highlightedItemRef = React.createRef();
 
@@ -45,77 +51,93 @@ class DropdownMenuRoot extends Component {
     };
   }
 
+  focusTrigger = () => {
+    const trigger = this.triggerRef.current;
+    if (!trigger) return;
+    if (isFocusInside(trigger)) return;
+    setFocus(trigger);
+  };
+
   bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
     const targetTagName = e.target.tagName;
 
-    const { visible, highlightedIndex } = this.asProps;
-    const popperElement = this.popperRef.current;
+    const { visible, highlightedIndex, placement } = this.asProps;
 
-    if (e.key === ' ' && INTERACTION_TAGS.includes(targetTagName)) return;
+    if (e.key === ' ' && ['INPUT', 'TEXTAREA', 'BUTTON'].includes(targetTagName)) return;
     if (e.key === 'Enter') {
       if (targetTagName === 'TEXTAREA') return;
       if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
     }
 
-    if (visible && hasFocusableIn(popperElement) && e.key === 'Tab') {
-      const focusableInHighlighted = this.highlightedItemRef.current
-        ? getFocusableIn(this.highlightedItemRef.current)
-        : [];
-
-      this.handlers.highlightedIndex(null);
-
-      // highlighted item has focusable items or keypress Tab on last focusable item in DDItem
-      if (
-        focusableInHighlighted.length > 0 &&
-        (highlightedIndex !== null ||
-          (document.activeElement === focusableInHighlighted[focusableInHighlighted.length - 1] &&
-            !e.shiftKey) ||
-          (document.activeElement === focusableInHighlighted[0] && e.shiftKey))
-      ) {
-        e.preventDefault();
-
-        const index =
-          document.activeElement === focusableInHighlighted[0]
-            ? focusableInHighlighted.length - 1
-            : 0;
-
-        focusableInHighlighted[index]?.focus();
+    if (visible && e.key === 'Tab') {
+      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
+      if (item && getFocusableIn(item).length !== 0) {
+        this.setState({ focusLockItemIndex: highlightedIndex });
+      } else {
+        this.handlers.highlightedIndex(null);
       }
-
       return;
     }
 
-    if (!KEYS.includes(e.key)) return;
+    if (e.key === 'Escape' && this.state.focusLockItemIndex !== null) {
+      this.setState({ focusLockItemIndex: null });
+      return false;
+    }
 
-    e.preventDefault();
+    const verticalPlacement =
+      !placement || placement.startsWith('top') || placement.startsWith('bottom');
 
-    this.handlers.visible(true);
+    if (['ArrowDown', 'ArrowUp'].includes(e.key) && verticalPlacement) {
+      e.preventDefault();
+      this.handlers.visible(true);
+    }
+    if (['ArrowLeft', 'ArrowRight'].includes(e.key) && !verticalPlacement) {
+      e.preventDefault();
+      this.handlers.visible(true);
+    }
 
     switch (e.key) {
       case 'ArrowDown': {
-        visible && this.moveHighlightedIndex(amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && popperElement?.focus();
+        if (visible) {
+          this.moveHighlightedIndex(amount, e);
+          if (isFocusInside(this.popperRef.current)) {
+            this.focusTrigger();
+          }
+          e.preventDefault();
+          e.stopPropagation();
+        }
         break;
       }
       case 'ArrowUp': {
-        visible && this.moveHighlightedIndex(-amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && popperElement?.focus();
+        if (visible) {
+          this.moveHighlightedIndex(-amount, e);
+          if (isFocusInside(this.popperRef.current)) {
+            this.focusTrigger();
+          }
+          e.preventDefault();
+          e.stopPropagation();
+        }
         break;
       }
       case ' ':
       case 'Enter':
         if (this.highlightedItemRef.current) {
+          e.stopPropagation();
+          e.preventDefault();
           this.highlightedItemRef.current.click();
         } else {
-          if (place === 'trigger') this.handlers.visible(false);
+          if (place === 'trigger') {
+            this.handlers.visible(false);
+            e.preventDefault();
+          }
         }
         break;
     }
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
 
     return {
       size,
@@ -123,7 +145,10 @@ class DropdownMenuRoot extends Component {
       'aria-controls': `igc-${uid}-popper`,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
+      'aria-activedescendant':
+        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
+      ref: this.triggerRef,
     };
   }
 
@@ -137,7 +162,7 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex, visible } =
+    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex } =
       this.asProps;
 
     return {
@@ -149,25 +174,28 @@ class DropdownMenuRoot extends Component {
       ignorePortalsStacking,
       focusMaster: interaction === 'click',
       hideFocus: highlightedIndex !== null,
-      'aria-activedescendant':
-        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
     };
   }
 
   getItemProps(props, index) {
     const { size, highlightedIndex, uid } = this.asProps;
     const highlighted = index === highlightedIndex;
-    const extraProps = {};
+    let ref = this.itemRefs[index];
     this.itemProps[index] = props;
     if (highlighted) {
-      extraProps.ref = this.scrollToNode;
+      ref = (node) => {
+        this.itemRefs[index] = node;
+        this.scrollToNode(node);
+      };
     }
 
     return {
       id: `igc-${uid}-option-${index}`,
       size,
       highlighted,
-      ...extraProps,
+      focusLock: this.state.focusLockItemIndex === index,
+      triggerRef: this.triggerRef,
+      ref,
     };
   }
 
@@ -234,10 +262,16 @@ class DropdownMenuRoot extends Component {
   }
 
   componentDidUpdate() {
-    const { visible } = this.asProps;
-
-    if (!visible) {
+    if (!this.asProps.visible) {
       this.handlers.highlightedIndex(null);
+    }
+    if (
+      this.state.focusLockItemIndex !== this.asProps.highlightedIndex &&
+      this.state.focusLockItemIndex !== null
+    ) {
+      setTimeout(() => {
+        this.setState({ focusLockItemIndex: null });
+      }, 0);
     }
   }
 
@@ -297,25 +331,21 @@ function Menu(props) {
   );
 }
 
-function Item(props) {
-  const [SDropdownMenuItem, { className, ...other }] = useFlex(props, props.forwardRef);
-  const styles = sstyled(props.styles);
-  return (
+function Item({ styles, label, triggerRef, focusLock, disabled, highlighted }) {
+  const SDropdownMenuItem = Root;
+  const ref = React.useRef();
+
+  useFocusLock(ref, false, triggerRef, !focusLock || disabled, true);
+
+  return sstyled(styles)(
     <SDropdownMenuItem
+      ref={ref}
+      render={Flex}
       role='menuitem'
       tabIndex={-1}
-      id={props.label}
-      className={
-        cn(
-          styles.cn('SDropdownMenuItem', {
-            ...props,
-            highlighted: !props.disabled && props.highlighted,
-          }).className,
-          className,
-        ) || undefined
-      }
-      {...other}
-    />
+      id={label}
+      use:highlighted={!disabled && highlighted}
+    />,
   );
 }
 

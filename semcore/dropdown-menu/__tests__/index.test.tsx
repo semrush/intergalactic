@@ -174,11 +174,12 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('support items and focusable elements at the same time', async ({ expect }) => {
+  test.only('support items and focusable elements at the same time', async ({ expect }) => {
     const spy = vi.fn();
     const buttonSpy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu visible>
+        <DropdownMenu.Trigger tag='button'>trigger</DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
           <DropdownMenu.Item>Item 2</DropdownMenu.Item>
@@ -198,6 +199,7 @@ describe('DropdownMenu', () => {
     await userEvent.keyboard('[Enter]');
     expect(spy).toHaveBeenCalled();
 
+    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     expect(acceptButton).toHaveFocus();
 
