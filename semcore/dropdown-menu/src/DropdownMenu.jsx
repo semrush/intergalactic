@@ -11,6 +11,7 @@ import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
+import { getFocusableIn } from '@semcore/utils/src/focus-lock/getFocusableIn';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA', 'BUTTON'];
@@ -48,17 +49,39 @@ class DropdownMenuRoot extends Component {
     const amount = e.shiftKey ? 5 : 1;
     const targetTagName = e.target.tagName;
 
+    const { visible, highlightedIndex } = this.asProps;
+    const popperElement = this.popperRef.current;
+
     if (e.key === ' ' && INTERACTION_TAGS.includes(targetTagName)) return;
     if (e.key === 'Enter') {
       if (targetTagName === 'TEXTAREA') return;
       if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
     }
 
-    const { visible } = this.asProps;
-    const element = this.popperRef.current;
+    if (visible && hasFocusableIn(popperElement) && e.key === 'Tab') {
+      const focusableInHighlighted = this.highlightedItemRef.current
+        ? getFocusableIn(this.highlightedItemRef.current)
+        : [];
 
-    if (place === 'popper' && visible && e.key === 'Tab' && hasFocusableIn(element)) {
       this.handlers.highlightedIndex(null);
+
+      // highlighted item has focusable items or keypress Tab on last focusable item in DDItem
+      if (
+        focusableInHighlighted.length > 0 &&
+        (highlightedIndex !== null ||
+          (document.activeElement === focusableInHighlighted[focusableInHighlighted.length - 1] &&
+            !e.shiftKey) ||
+          (document.activeElement === focusableInHighlighted[0] && e.shiftKey))
+      ) {
+        e.preventDefault();
+
+        const index =
+          document.activeElement === focusableInHighlighted[0]
+            ? focusableInHighlighted.length - 1
+            : 0;
+
+        focusableInHighlighted[index]?.focus();
+      }
 
       return;
     }
@@ -67,19 +90,17 @@ class DropdownMenuRoot extends Component {
 
     e.preventDefault();
 
-    const isVisible = this.asProps.visible;
-
     this.handlers.visible(true);
 
     switch (e.key) {
       case 'ArrowDown': {
-        isVisible && this.moveHighlightedIndex(amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
+        visible && this.moveHighlightedIndex(amount, e);
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && popperElement?.focus();
         break;
       }
       case 'ArrowUp': {
-        isVisible && this.moveHighlightedIndex(-amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
+        visible && this.moveHighlightedIndex(-amount, e);
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && popperElement?.focus();
         break;
       }
       case ' ':
@@ -94,7 +115,7 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
 
     return {
       size,
@@ -102,8 +123,6 @@ class DropdownMenuRoot extends Component {
       'aria-controls': `igc-${uid}-popper`,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
-      'aria-activedescendant':
-        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
@@ -118,7 +137,7 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex } =
+    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex, visible } =
       this.asProps;
 
     return {
@@ -130,6 +149,8 @@ class DropdownMenuRoot extends Component {
       ignorePortalsStacking,
       focusMaster: interaction === 'click',
       hideFocus: highlightedIndex !== null,
+      'aria-activedescendant':
+        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
     };
   }
 
@@ -165,7 +186,9 @@ class DropdownMenuRoot extends Component {
   }
 
   scrollToNode = (node) => {
-    this.highlightedItemRef.current = node;
+    if (node) {
+      this.highlightedItemRef.current = node;
+    }
     setTimeout(() => {
       if (node?.scrollIntoView) {
         if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
@@ -189,6 +212,8 @@ class DropdownMenuRoot extends Component {
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         highlightedIndex = selectedIndex;
+      } else if (this.highlightedItemRef.current) {
+        highlightedIndex = this.prevHighlightedIndex;
       } else {
         highlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
