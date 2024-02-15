@@ -34,7 +34,7 @@ Component consists of the following:
 
 ## Styles and sizes
 
-The `ChevronRight` icon always has M size and `margin-right: 8px` with all font sizes.
+The `ChevronRight` icon could have m and l sizes and always has `margin-right: 8px` with all font sizes.
 
 ![](static/margins.png)
 
@@ -117,4 +117,3 @@ Mostly, the advantages of the accordion relate to long pages that are loaded wit
 - The accordion tabs makes a mini-structure of a page. Content becomes easier to navigate, and it is easier for users to build a mental model of the information available on the page.
 - Hiding additional information makes the page look less intimidatingly loaded.
 - Accordions can be a great alternative to links as they don't break the mental model the way the links do.
-

@@ -1,4 +1,4 @@
-import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { BoxProps, FlexProps } from '@semcore/flex-box';
 import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import { CollapseProps } from '@semcore/animation';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -25,6 +25,11 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
   /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
+  /**
+   * Toggle size
+   * @default m
+   * */
+  size?: 'm' | 'l';
 };
 
 export interface IAccordionProps<T extends AccordionValue = AccordionValue>
@@ -64,6 +69,13 @@ export type AccordionItemContext = {
 };
 
 export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
+export type ChevronItemProps = BoxProps & {
+  /**
+   * Chevron size
+   * @ default m
+   */
+  size?: 'm' | 'l';
+};
 
 type IntergalacticAccordionComponent<PropsExtending = {}> = (<
   Value extends AccordionValue,
@@ -88,7 +100,7 @@ declare const Accordion: IntergalacticAccordionComponent & {
     [handlers: AccordionHandlers]
   > & {
     Toggle: Intergalactic.Component<'div', AccordionItemToggleProps>;
-    Chevron: typeof Box;
+    Chevron: Intergalactic.Component<'div', ChevronItemProps>;
     Collapse: Intergalactic.Component<'div', CollapseProps>;
   };
 };
