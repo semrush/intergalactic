@@ -174,7 +174,7 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('support items and focusable elements at the same time', async ({ expect }) => {
+  test('support items and focusable elements at the same time', async ({ expect }) => {
     const spy = vi.fn();
     const buttonSpy = vi.fn();
     const { getByTestId } = render(
@@ -206,9 +206,48 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledTimes(1);
 
     await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[Enter]');
     expect(spy).toHaveBeenCalledTimes(2);
     expect(buttonSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('support focusable element in Dropdown item', async ({ expect }) => {
+    const spy = vi.fn();
+    const buttonSpy = vi.fn();
+    const { getByTestId } = render(
+      <DropdownMenu visible>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item>
+            Item 2
+            <Button data-testid={'testButton'} onClick={buttonSpy}>
+              Test Button
+            </Button>
+          </DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    const testButton = getByTestId('testButton');
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).toHaveBeenCalled();
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Tab]');
+    expect(testButton).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(buttonSpy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    await userEvent.keyboard('[Tab]');
+    expect(testButton).toHaveFocus();
   });
 
   test('a11y', async () => {
