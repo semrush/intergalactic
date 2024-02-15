@@ -26,7 +26,7 @@ const publishIntergalacticRelease = async () => {
   const packages = Object.keys(deps);
 
   // 1) Update changelog
-  const { changelogs, version } = await updateReleaseChangelog(packageJson, deps);
+  const { version } = await updateReleaseChangelog(packageJson, deps);
 
   // 2) Update version in package.json for correct check unlocked release
   packageJson.version = version;
@@ -42,16 +42,24 @@ const publishIntergalacticRelease = async () => {
   }
 
   // 4) Get prerelease tarball
-  const logs = await git.log({ maxCount: 10 });
+  const logs = await git.log({ maxCount: 50 });
   const filteredLogs = logs.all.filter((item) => item.author_name !== CI_AUTHOR_NAME);
-  const hash = filteredLogs[0].hash;
-  const shortHash = hash.slice(0, 8);
 
-  const npmResponse = await axios.get<ResponseNpmRegistry>(
-    `https://registry.npmjs.org/intergalactic/${version}-prerelease-${shortHash}`,
-  );
+  let tarballUrl: string | null = null;
+  for (const log of filteredLogs) {
+    const hash = log.hash;
+    const shortHash = hash.slice(0, 8);
 
-  const tarballUrl = npmResponse.data.dist.tarball;
+    try {
+      const npmResponse = await axios.get<ResponseNpmRegistry>(
+        `https://registry.npmjs.org/intergalactic/${version}-prerelease-${shortHash}`,
+      );
+      tarballUrl = npmResponse.data.dist.tarball;
+    } catch {}
+  }
+  if (!tarballUrl) {
+    throw new Error('Unable to find prerelease tarball');
+  }
 
   const tarballPaths = await downloadTarballs([tarballUrl], '.tmp/prerelease_intergalactic');
   const [packagePath] = await unpackTarballs(tarballPaths);
