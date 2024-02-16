@@ -67,7 +67,7 @@ export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
 export type ChevronItemProps = BoxProps & {
   /**
    * Chevron size
-   * @ default m
+   * @default m
    */
   size?: 'm' | 'l';
 };
