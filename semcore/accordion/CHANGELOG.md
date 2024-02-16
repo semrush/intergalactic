@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.24.0] - 2024-02-16
+
+### Added
+
+- Ability to set 'l' icon size for `Accordion.Item.Chevron`
+
 ## [5.23.0] - 2024-02-14
 
 ### Changed

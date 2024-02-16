@@ -2,7 +2,8 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
-import ChevronRight from '@semcore/icon/ChevronRight/m';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
+import ChevronRightL from '@semcore/icon/ChevronRight/l';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
@@ -96,9 +97,10 @@ export class RootItem extends Component {
   }
 
   getChevronProps() {
-    const { selected } = this.asProps;
+    const { selected, size } = this.asProps;
     return {
       selected,
+      size,
     };
   }
 
@@ -140,9 +142,10 @@ class Toggle extends Component {
 }
 
 function Chevron(props) {
-  const { styles } = props;
+  const { styles, size } = props;
+
   const SItemChevron = Root;
-  return sstyled(styles)(<SItemChevron render={ChevronRight} />);
+  return sstyled(styles)(<SItemChevron render={size === 'l' ? ChevronRightL : ChevronRightM} />);
 }
 
 function Collapse(props) {
