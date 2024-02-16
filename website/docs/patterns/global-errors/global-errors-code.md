@@ -10,53 +10,7 @@ Both graphics and texts are already included in ready-to-use templates. The loca
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Select from '@semcore/ui/select';
-import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
-import {
-  AccessDenied,
-  Maintenance,
-  PageError,
-  PageNotFound,
-  ProjectNotFound,
-} from '@semcore/ui/errors';
-
-const options = [
-  'de',
-  'en',
-  'es',
-  'fr',
-  'it',
-  'ja',
-  'pt',
-  'ru',
-  'zh',
-  'ko',
-  'vi',
-  'pl',
-  'nl',
-  'sv',
-].map((o) => ({
-  value: o,
-  children: o,
-}));
-
-const Demo = () => {
-  const [lang, setLang] = React.useState('en');
-
-  return (
-    <div>
-      Select lang: <Select options={options} value={lang} onChange={(value) => setLang(value)} />
-      <I18nProvider value={lang}>
-        <AccessDenied />
-        <Maintenance toolName={'Ui-kit'} />
-        <PageError />
-        <PageNotFound />
-        <ProjectNotFound />
-      </I18nProvider>
-    </div>
-  );
-};
+  export Demo from './examples/example-of-using-templates.tsx';
 </script>
 
 :::
@@ -68,24 +22,7 @@ You can create any error page. In the `Error` package, you will find the `getIco
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Error, { getIconPath } from '@semcore/ui/errors';
-import Button from '@semcore/ui/button';
-
-const Demo = () => (
-  <Error icon={getIconPath('confirmation')}>
-    <Error.Title>Confirm you are a real person</Error.Title>
-    <Error.Description wMax={510}>
-      We need to make sure you're not a robot. Please complete the security check, and we'll be out
-      of your way.
-    </Error.Description>
-    <Error.Controls>
-      <Button size='l' use='primary' theme='info'>
-        Submit
-      </Button>
-    </Error.Controls>
-  </Error>
-);
+  export Demo from './examples/example-of-using-a-custom-error.tsx';
 </script>
 
 :::
