@@ -1,4 +1,14 @@
-## [15.59.0-prerelease.0] - 2024-02-14
+## [15.59.1] - 2024-02-16
+
+### @semcore/dropdown
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+### @semcore/dropdown-menu
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+## [15.59.0] - 2024-02-14
 
 ### @semcore/carousel
 

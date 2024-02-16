@@ -1,3 +1,68 @@
+## [15.59.1] - 2024-02-16
+
+### @semcore/dropdown
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+### @semcore/dropdown-menu
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+## [15.59.0] - 2024-02-14
+
+### @semcore/carousel
+
+- **Changed** Navigation buttons are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/color-picker
+
+- **Changed** Color palette items are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/data-table
+
+- **Changed** Header sorting cells are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/icon
+
+- **Changed** Icons are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/inline-edit
+
+- **Changed** `InlineEdit.View` are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/inline-input
+
+- **Fixed** Confirm and cancel controls were ignoring `Space` click.
+
+### @semcore/input-tags
+
+- **Changed** Tags are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/pills
+
+- **Changed** Pills are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/switch
+
+- **Changed** Switches are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tab-panel
+
+- **Changed** Tabs are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tag
+
+- **Changed** Tags are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tooltip
+
+- **Fixed** Some assistive technologies were reading tooltip popper content twice.
+- **Added** Tooltip trigger children render function got `popperId` param that allows to apply `aria-describedby` on specific children of tooltip trigger.
+
+### @semcore/wizard
+
+- **Changed** Wizard steps are clickable by `Space` now (along with `Enter` as before).
+
 ## [15.58.1] - 2024-02-13
 
 ### @semcore/d3-chart
