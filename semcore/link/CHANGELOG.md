@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.21.0] - 2024-02-16
+
+### Changed
+
+- Used native outline to display links focus ring to fix highlighting of wrapped inline links.
+
 ## [5.20.2] - 2024-02-09
 
 ### Changed
