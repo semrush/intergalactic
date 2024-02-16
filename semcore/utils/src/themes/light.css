@@ -139,8 +139,6 @@
   --intergalactic-border-critical: #ffaeb5;
   /* Active border in the focused input field with invalid state, and active state of the other components with invalid state. */
   --intergalactic-border-critical-active: #d1002f;
-  /* Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states. */
-  --intergalactic-border-critical-pattern: repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%);
   /* Subtle secondary border in the warning message. */
   --intergalactic-border-warning: #ffb26e;
   /* Active border in components with warning intention. */
@@ -155,6 +153,8 @@
   --intergalactic-border-table-accent: #a9abb6;
   /* Border color of the second period for the comparison mode in the DatePicker. */
   --intergalactic-border-date-picker-range-comparison: #8649e1;
+  /* Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states. */
+  --intergalactic-border-critical-pattern: repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%);
   /* Subtle background of the Switch control. */
   --intergalactic-control-switch-bg: #a9abb6;
   /* Background of the regular primary control. */
@@ -313,8 +313,6 @@
   --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
   /* Hover state for the inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
-  /* Value color of the ProgressBar. */
-  --intergalactic-progress-bar-value: #009f81;
   /* Value with gradient for the ProgressBar. */
   --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%);
   /* Null value gradient for the ProgressBar. */
@@ -401,6 +399,10 @@
   --intergalactic-box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
   /* Default shadow of all Poppers, Dropdowns and Tooltips. */
   --intergalactic-box-shadow-popper: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
+  /* Color for default keyboard focus outline styles. */
+  --intergalactic-keyboard-focus-outline: rgba(0, 143, 248, 0.5);
+  /* Color for default keyboard focus outline styles to use on the dark and color background. */
+  --intergalactic-keyboard-focus-outline-invert: rgba(255, 255, 255, 0.7);
   /* Default keyboard focus styles. */
   --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.5);
   /* Keyboard focus styles for elements with invalid state. */
