@@ -15,35 +15,7 @@ The component can function in both `uncontrolled` and `controlled` modes.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Popper from '@semcore/ui/popper';
-import { Flex } from '@semcore/ui/flex-box';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => {
-  const [visible, setVisible] = React.useState(false);
-
-  const toggleVisible = () => {
-    setVisible(!visible);
-  };
-
-  return (
-    <Flex justifyContent='space-between'>
-      <Popper visible={visible} onVisibleChange={toggleVisible}>
-        <Popper.Trigger style={style}>Controlled</Popper.Trigger>
-        <Popper.Popper style={style}>Attached content</Popper.Popper>
-      </Popper>
-
-      <Popper>
-        <Popper.Trigger style={style} ml='auto'>
-          Uncontrolled
-        </Popper.Trigger>
-        <Popper.Popper style={style}>Attached content</Popper.Popper>
-      </Popper>
-    </Flex>
-  );
-};
+  export Demo from './examples/show-hide.tsx';
 </script>
 
 :::
@@ -57,17 +29,7 @@ When these events are activated, the `onVisibleChange` handler is called with th
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Popper from '@semcore/ui/popper';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => (
-  <Popper interaction='hover'>
-    <Popper.Trigger style={style}>Hover me pls</Popper.Trigger>
-    <Popper.Popper style={style}>Attached content</Popper.Popper>
-  </Popper>
-);
+  export Demo from './examples/events-trigger.tsx';
 </script>
 
 :::
@@ -83,22 +45,7 @@ You can subscribe to the `onOutsideClick` event. It will be called when a clicke
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Popper from '@semcore/ui/popper';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => (
-  <Popper
-    onOutsideClick={() => {
-      // cancel hide popper
-      return false;
-    }}
-  >
-    <Popper.Trigger style={style}>Click me pls</Popper.Trigger>
-    <Popper.Popper style={style}>Attached content</Popper.Popper>
-  </Popper>
-);
+  export Demo from './examples/click-outside.tsx';
 </script>
 
 :::
@@ -112,104 +59,7 @@ Placement may be `'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'to
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import Popper from '@semcore/ui/popper';
-import Button from '@semcore/ui/button';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const styleBox = {
-  display: 'grid',
-  gridTemplateRows: '1fr 1fr 1fr',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gridGap: '2vw',
-  padding: '60px',
-};
-
-const Demo = () => (
-  <Box style={styleBox}>
-    <Popper placement='top-start' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        TOP START
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <Popper placement='top' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        TOP
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <Popper placement='top-end' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        TOP END
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-
-    <Popper placement='left-start' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        LEFT START
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <div />
-    <Popper placement='right-start' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        RIGHT START
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-
-    <Popper placement='left' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        LEFT
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <div />
-    <Popper placement='right' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        RIGHT
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-
-    <Popper placement='left-end' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        LEFT END
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <div />
-    <Popper placement='right-end' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        RIGHT END
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-
-    <Popper placement='bottom-start' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        BOTTOM START
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <Popper placement='bottom' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        BOTTOM
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-    <Popper placement='bottom-end' interaction='hover'>
-      <Popper.Trigger w='100px' tag={Button}>
-        BOTTOM END
-      </Popper.Trigger>
-      <Popper.Popper style={style}>Attached content</Popper.Popper>
-    </Popper>
-  </Box>
-);
+  export Demo from './examples/placement.tsx';
 </script>
 
 :::
@@ -227,23 +77,7 @@ The `tag` for `Trigger` and `Popper` is a `Box` by default, so all props from th
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Popper from '@semcore/ui/popper';
-import Button from '@semcore/ui/button';
-import HamburgerM from '@semcore/ui/icon/Hamburger/m';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => (
-  <Popper>
-    <Popper.Trigger tag={Button}>
-      <Button.Addon>
-        <HamburgerM />
-      </Button.Addon>
-    </Popper.Trigger>
-    <Popper.Popper style={style}>Attached content</Popper.Popper>
-  </Popper>
-);
+  export Demo from './examples/custom-tag.tsx';
 </script>
 
 :::
@@ -261,21 +95,7 @@ Inside the function, the first argument provides the component props and the `ge
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Popper from '@semcore/ui/popper';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => (
-  <Popper interaction='focus'>
-    {({ getTriggerProps }) => (
-      <>
-        <input {...getTriggerProps({ placeholder: 'My custom trigger' })} />
-        <Popper.Popper style={style}>Attached content</Popper.Popper>
-      </>
-    )}
-  </Popper>
-);
+  export Demo from './examples/render-functions.tsx';
 </script>
 
 :::
@@ -287,33 +107,7 @@ The second argument of the render-function will provide `handlers`, functions fo
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Button from '@semcore/ui/button';
-import Popper from '@semcore/ui/popper';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => (
-  <Popper>
-    {(props, handlers) => {
-      // function for managing the visibility state of Popper.Popper
-      const { visible } = handlers;
-
-      return (
-        <>
-          <Button onClick={() => visible(true)} mr={4}>
-            Open popper
-          </Button>
-          <Popper.Trigger style={style}>Attach trigger</Popper.Trigger>
-          <Popper.Popper style={style}>
-            <p>Attached content</p>
-            <Button onClick={() => visible(false)}>Close popper</Button>
-          </Popper.Popper>
-        </>
-      );
-    }}
-  </Popper>
-);
+  export Demo from './examples/render-functions.tsx';
 </script>
 
 :::
@@ -331,26 +125,7 @@ Where the `Popper` are located, see in dev-inspector.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Popper from '@semcore/ui/popper';
-import Button from '@semcore/ui/button';
-
-const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
-
-const Demo = () => (
-  <>
-    <Popper disablePortal>
-      <Popper.Trigger tag={Button} mr={8}>
-        disablePortal=true
-      </Popper.Trigger>
-      <Popper.Popper style={style}>disablePortal=true</Popper.Popper>
-    </Popper>
-    <Popper>
-      <Popper.Trigger tag={Button}>disablePortal=false</Popper.Trigger>
-      <Popper.Popper style={style}>disablePortal=false</Popper.Popper>
-    </Popper>
-  </>
-);
+  export Demo from './examples/disabled-portal.tsx';
 </script>
 
 :::
