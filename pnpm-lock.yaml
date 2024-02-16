@@ -2731,7 +2731,7 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: 5.23.0
+        specifier: 5.24.0-prerelease.1
         version: link:../accordion
       '@semcore/animation':
         specifier: 2.18.2

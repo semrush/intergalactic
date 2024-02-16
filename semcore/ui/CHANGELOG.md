@@ -1,3 +1,9 @@
+## [15.60.0-prerelease.0] - 2024-02-16
+
+### @semcore/accordion
+
+- **Added** Ability to set 'l' icon size for `Accordion.Item.Chevron`
+
 ## [15.59.1] - 2024-02-16
 
 ### @semcore/dropdown
