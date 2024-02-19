@@ -128,7 +128,7 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test.concurrent('should support change tag YAxis.Ticks', () => {
+  test.sequential('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>

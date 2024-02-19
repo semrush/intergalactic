@@ -20,7 +20,7 @@ describe('Portal', () => {
     expect((document.body.lastChild as HTMLElement)?.dataset.testid).toEqual('child');
   });
 
-  test.concurrent('should render support disablePortal', () => {
+  test.sequential('should render support disablePortal', () => {
     const { getByTestId } = render(
       <div data-testid='parent'>
         <Portal disablePortal>

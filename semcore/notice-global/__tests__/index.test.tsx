@@ -23,7 +23,7 @@ describe('NoticeGlobal', () => {
     expect(getByTestId('close')).toBeTruthy();
   });
 
-  test.concurrent('Should support handler for close', () => {
+  test.sequential('Should support handler for close', () => {
     const spy = vi.fn();
     const component = <NoticeGlobal closable onClose={spy} />;
     const { getByLabelText } = render(component);
