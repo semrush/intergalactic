@@ -1,6 +1,14 @@
 import { DefaultTheme } from 'vitepress';
 
-export const sideBarConfig: DefaultTheme.Sidebar = [
+type SidebarConfig = {
+  text?: string;
+  link?: string;
+  collapsed?: boolean;
+  activeMatch?: string;
+  items?: SidebarConfig;
+}[];
+
+export const sideBarConfig: SidebarConfig = [
   {
     items: [
       {
@@ -79,91 +87,23 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         items: [
           {
             link: '/style/design-tokens/design-tokens',
+            activeMatch: '/style/design-tokens/',
             text: 'Design tokens',
-            collapsed: true,
-            items: [
-              {
-                link: '/style/design-tokens/design-tokens-usage',
-                text: 'Usage in design',
-              },
-              {
-                link: '/style/design-tokens/design-tokens-usage-development',
-                text: 'Usage in development',
-              },
-              {
-                link: '/style/design-tokens/design-tokens-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/style/icon/icon',
+            activeMatch: '/style/icon/',
             text: 'Icon',
-            collapsed: true,
-            items: [
-              {
-                link: '/style/icon/icon-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/style/icon/icon-api',
-                text: 'API',
-              },
-              {
-                link: '/style/icon/icon-code',
-                text: 'Example',
-              },
-              {
-                link: '/style/icon/icon-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/style/illustration/illustration',
+            activeMatch: '/style/illustration/',
             text: 'Illustration',
-            collapsed: true,
-            items: [
-              {
-                link: '/style/illustration/illustration-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/style/illustration/illustration-code',
-                text: 'Example',
-              },
-              {
-                link: '/style/illustration/illustration-api',
-                text: 'API',
-              },
-              {
-                link: '/style/illustration/illustration-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/style/typography/typography',
+            activeMatch: '/style/typography/',
             text: 'Typography',
-            collapsed: true,
-            items: [
-              {
-                link: '/style/typography/typography-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/style/typography/typography-api',
-                text: 'API',
-              },
-              {
-                link: '/style/typography/typography-code',
-                text: 'Example',
-              },
-              {
-                link: '/style/typography/typography-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/style/css-injection/css-injection',
@@ -188,52 +128,18 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         items: [
           {
             link: '/layout/breakpoints/breakpoints',
+            activeMatch: '/layout/breakpoints/',
             text: 'Breakpoints',
-            collapsed: true,
-            items: [
-              {
-                link: '/layout/breakpoints/breakpoints-api',
-                text: 'API',
-              },
-              {
-                link: '/layout/breakpoints/breakpoints-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/layout/grid-system/grid-system',
+            activeMatch: '/layout/grid-system/',
             text: 'Grid and page layout',
-            collapsed: true,
-            items: [
-              {
-                link: '/layout/grid-system/grid-api',
-                text: 'API',
-              },
-              {
-                link: '/layout/grid-system/grid-code',
-                text: 'Grid system',
-              },
-              {
-                link: '/layout/grid-system/grid-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/layout/box-system/box-system',
+            activeMatch: '/layout/box-system/',
             text: 'Flex-box and spacing system',
-            collapsed: true,
-            items: [
-              {
-                link: '/layout/box-system/box-api',
-                text: 'API',
-              },
-              {
-                link: '/layout/box-system/box-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
         ],
       },
@@ -248,1267 +154,288 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         items: [
           {
             link: '/components/components-showcase/components-showcase',
+            activeMatch: '/components/components-showcase/',
             text: 'Components showcase',
           },
           {
             link: '/components/accordion/accordion',
+            activeMatch: '/components/accordion/',
             text: 'Accordion',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/accordion/accordion-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/accordion/accordion-api',
-                text: 'API',
-              },
-              {
-                link: '/components/accordion/accordion-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/accordion/accordion-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/auto-suggest/auto-suggest',
+            activeMatch: '/components/auto-suggest/',
             text: 'AutoSuggest',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/auto-suggest/auto-suggest-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/auto-suggest/auto-suggest-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/components/badge/badge',
+            activeMatch: '/components/badge/',
             text: 'Badge',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/badge/badge-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/badge/badge-api',
-                text: 'API',
-              },
-              {
-                link: '/components/badge/badge-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/badge/badge-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/base-trigger/base-trigger',
+            activeMatch: '/components/base-trigger/',
             text: 'BaseTrigger',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/base-trigger/base-trigger-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/base-trigger/base-trigger-api',
-                text: 'API',
-              },
-              {
-                link: '/components/base-trigger/base-trigger-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/base-trigger/base-trigger-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/breadcrumbs/breadcrumbs',
+            activeMatch: '/components/breadcrumbs/',
             text: 'Breadcrumbs',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/breadcrumbs/breadcrumbs-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/breadcrumbs/breadcrumbs-api',
-                text: 'API',
-              },
-              {
-                link: '/components/breadcrumbs/breadcrumbs-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/breadcrumbs/breadcrumbs-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/button/button',
+            activeMatch: '/components/button/',
             text: 'Button',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/button/button-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/button/button-api',
-                text: 'API',
-              },
-              {
-                link: '/components/button/button-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/button/button-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/card/card',
+            activeMatch: '/components/card/',
             text: 'Card',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/card/card-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/card/card-api',
-                text: 'API',
-              },
-              {
-                link: '/components/card/card-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/card/card-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/carousel/carousel',
+            activeMatch: '/components/carousel/',
             text: 'Carousel',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/carousel/carousel-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/carousel/carousel-api',
-                text: 'API',
-              },
-              {
-                link: '/components/carousel/carousel-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/carousel/carousel-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/checkbox/checkbox',
+            activeMatch: '/components/checkbox/',
             text: 'Checkbox',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/checkbox/checkbox-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/checkbox/checkbox-api',
-                text: 'API',
-              },
-              {
-                link: '/components/checkbox/checkbox-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/checkbox/checkbox-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/color-picker/color-picker',
+            activeMatch: '/components/color-picker/',
             text: 'ColorPicker',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/color-picker/color-picker-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/color-picker/color-picker-api',
-                text: 'API',
-              },
-              {
-                link: '/components/color-picker/color-picker-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/color-picker/color-picker-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/counter/counter',
+            activeMatch: '/components/counter/',
             text: 'Counter',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/counter/counter-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/counter/counter-api',
-                text: 'API',
-              },
-              {
-                link: '/components/counter/counter-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/counter/counter-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/date-picker/date-picker',
+            activeMatch: '/components/date-picker/',
             text: 'DatePicker',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/date-picker/date-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/date-picker/date-api',
-                text: 'API',
-              },
-              {
-                link: '/components/date-picker/date-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/date-picker/date-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/divider/divider',
+            activeMatch: '/components/divider/',
             text: 'Divider',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/divider/divider-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/divider/divider-api',
-                text: 'API',
-              },
-              {
-                link: '/components/divider/divider-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/dot/dot',
+            activeMatch: '/components/dot/',
             text: 'Dot',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/dot/dot-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/dot/dot-api',
-                text: 'API',
-              },
-              {
-                link: '/components/dot/dot-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/dot/dot-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/drag-and-drop/drag-and-drop',
+            activeMatch: '/components/drag-and-drop/',
             text: 'Drag and drop',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/drag-and-drop/drag-and-drop-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/drag-and-drop/drag-and-drop-api',
-                text: 'API',
-              },
-              {
-                link: '/components/drag-and-drop/drag-and-drop-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/drag-and-drop/drag-and-drop-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/dropdown/dropdown',
+            activeMatch: '/components/dropdown/',
             text: 'Dropdown',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/dropdown/dropdown-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/dropdown/dropdown-api',
-                text: 'API',
-              },
-              {
-                link: '/components/dropdown/dropdown-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/dropdown/dropdown-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/dropdown-menu/dropdown-menu',
+            activeMatch: '/components/dropdown-menu/',
             text: 'DropdownMenu',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/dropdown-menu/dropdown-menu-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/dropdown-menu/dropdown-menu-api',
-                text: 'API',
-              },
-              {
-                link: '/components/dropdown-menu/dropdown-menu-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/dropdown-menu/dropdown-menu-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/ellipsis/ellipsis',
+            activeMatch: '/components/ellipsis/',
             text: 'Ellipsis',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/ellipsis/ellipsis-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/ellipsis/ellipsis-api',
-                text: 'API',
-              },
-              {
-                link: '/components/ellipsis/ellipsis-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/ellipsis/ellipsis-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/feature-popover/feature-popover',
+            activeMatch: '/components/feature-popover/',
             text: 'FeaturePopover',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/feature-popover/feature-popover-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/feature-popover/feature-popover-api',
-                text: 'API',
-              },
-              {
-                link: '/components/feature-popover/feature-popover-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/feature-popover/feature-popover-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/feedback/feedback',
+            activeMatch: '/components/feedback/',
             text: 'Feedback',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/feedback/feedback-form-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/feedback/feedback-form-api',
-                text: 'API',
-              },
-              {
-                link: '/components/feedback/feedback-form-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/feedback/feedback-form-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/filter-trigger/filter-trigger',
+            activeMatch: '/components/filter-trigger/',
             text: 'FilterTrigger',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/filter-trigger/filter-trigger-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/filter-trigger/filter-trigger-api',
-                text: 'API',
-              },
-              {
-                link: '/components/filter-trigger/filter-trigger-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/filter-trigger/filter-trigger-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/flags/flags',
+            activeMatch: '/components/flags/',
             text: 'Flags',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/flags/flags-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/flags/flags-api',
-                text: 'API',
-              },
-              {
-                link: '/components/flags/flags-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/fullscreen-modal/fullscreen-modal',
+            activeMatch: '/components/fullscreen-modal/',
             text: 'FullscreenModal',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/fullscreen-modal/fullscreen-modal-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/fullscreen-modal/fullscreen-modal-api',
-                text: 'API',
-              },
-              {
-                link: '/components/fullscreen-modal/fullscreen-modal-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/fullscreen-modal/fullscreen-modal-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/inline-edit/inline-edit',
+            activeMatch: '/components/inline-edit/',
             text: 'InlineEdit',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/inline-edit/inline-edit-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/inline-edit/inline-edit-api',
-                text: 'API',
-              },
-              {
-                link: '/components/inline-edit/inline-edit-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/inline-edit/inline-edit-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/inline-input/inline-input',
+            activeMatch: '/components/inline-input/',
             text: 'InlineInput',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/inline-input/inline-input-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/inline-input/inline-input-api',
-                text: 'API',
-              },
-              {
-                link: '/components/inline-input/inline-input-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/inline-input/inline-input-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/input/input',
+            activeMatch: '/components/input/',
             text: 'Input',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/input/input-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/input/input-api',
-                text: 'API',
-              },
-              {
-                link: '/components/input/input-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/input/input-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/input-mask/input-mask',
+            activeMatch: '/components/input-mask/',
             text: 'InputMask',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/input-mask/input-mask-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/input-mask/input-mask-api',
-                text: 'API',
-              },
-              {
-                link: '/components/input-mask/input-mask-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/input-mask/input-mask-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/input-number/input-number',
+            activeMatch: '/components/input-number/',
             text: 'InputNumber & InputRange',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/input-number/input-number-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/input-number/input-number-api',
-                text: 'API',
-              },
-              {
-                link: '/components/input-number/input-number-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/input-number/input-number-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/input-phone/input-phone',
+            activeMatch: '/components/input-phone/',
             text: 'InputPhone',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/input-phone/input-phone-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/input-phone/input-phone-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/components/input-tags/input-tags',
+            activeMatch: '/components/input-tags/',
             text: 'InputTags',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/input-tags/input-tags-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/input-tags/input-tags-api',
-                text: 'API',
-              },
-              {
-                link: '/components/input-tags/input-tags-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/input-tags/input-tags-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/link/link',
+            activeMatch: '/components/link/',
             text: 'Link',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/link/link-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/link/link-api',
-                text: 'API',
-              },
-              {
-                link: '/components/link/link-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/link/link-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/modal/modal',
+            activeMatch: '/components/modal/',
             text: 'Modal',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/modal/modal-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/modal/modal-api',
-                text: 'API',
-              },
-              {
-                link: '/components/modal/modal-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/modal/modal-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/notice/notice',
+            activeMatch: '/components/notice/',
             text: 'Notice',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/notice/notice-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/notice/notice-api',
-                text: 'API',
-              },
-              {
-                link: '/components/notice/notice-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/notice/notice-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/notice-bubble/notice-bubble',
+            activeMatch: '/components/notice-bubble/',
             text: 'NoticeBubble',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/notice-bubble/notice-bubble-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/notice-bubble/notice-bubble-api',
-                text: 'API',
-              },
-              {
-                link: '/components/notice-bubble/notice-bubble-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/notice-bubble/notice-bubble-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/notice-global/notice-global',
+            activeMatch: '/components/notice-global/',
             text: 'NoticeGlobal',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/notice-global/notice-global-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/notice-global/notice-global-api',
-                text: 'API',
-              },
-              {
-                link: '/components/notice-global/notice-global-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/notice-global/notice-global-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/pagination/pagination',
+            activeMatch: '/components/pagination/',
             text: 'Pagination',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/pagination/pagination-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/pagination/pagination-api',
-                text: 'API',
-              },
-              {
-                link: '/components/pagination/pagination-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/pagination/pagination-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/pills/pills',
+            activeMatch: '/components/pills/',
             text: 'Pills',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/pills/pills-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/pills/pills-api',
-                text: 'API',
-              },
-              {
-                link: '/components/pills/pills-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/pills/pills-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/product-head/product-head',
+            activeMatch: '/components/product-head/',
             text: 'ProductHead',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/product-head/product-head-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/product-head/product-head-api',
-                text: 'API',
-              },
-              {
-                link: '/components/product-head/product-head-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/product-head/product-head-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/progress-bar/progress-bar',
+            activeMatch: '/components/progress-bar/',
             text: 'ProgressBar',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/progress-bar/progress-bar-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/progress-bar/progress-bar-api',
-                text: 'API',
-              },
-              {
-                link: '/components/progress-bar/progress-bar-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/progress-bar/progress-bar-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/radio/radio',
+            activeMatch: '/components/radio/',
             text: 'Radio',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/radio/radio-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/radio/radio-api',
-                text: 'API',
-              },
-              {
-                link: '/components/radio/radio-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/radio/radio-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/select/select',
+            activeMatch: '/components/select/',
             text: 'Select / Multiselect',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/select/select-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/select/select-api',
-                text: 'API',
-              },
-              {
-                link: '/components/select/select-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/select/select-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/scroll-area/scroll-area',
+            activeMatch: '/components/scroll-area/',
             text: 'ScrollArea',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/scroll-area/scroll-area-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/scroll-area/scroll-area-api',
-                text: 'API',
-              },
-              {
-                link: '/components/scroll-area/scroll-area-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/scroll-area/scroll-area-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/side-panel/side-panel',
+            activeMatch: '/components/side-panel/',
             text: 'SidePanel',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/side-panel/side-panel-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/side-panel/side-panel-api',
-                text: 'API',
-              },
-              {
-                link: '/components/side-panel/side-panel-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/side-panel/side-panel-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/skeleton/skeleton',
+            activeMatch: '/components/skeleton/',
             text: 'Skeleton',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/skeleton/skeleton-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/skeleton/skeleton-api',
-                text: 'API',
-              },
-              {
-                link: '/components/skeleton/skeleton-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/skeleton/skeleton-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/slider/slider',
+            activeMatch: '/components/slider/',
             text: 'Slider',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/slider/slider-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/slider/slider-api',
-                text: 'API',
-              },
-              {
-                link: '/components/slider/slider-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/slider/slider-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/spin/spin',
+            activeMatch: '/components/spin/',
             text: 'Spin',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/spin/spin-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/spin/spin-api',
-                text: 'API',
-              },
-              {
-                link: '/components/spin/spin-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/spin-container/spin-container',
+            activeMatch: '/components/spin-container/',
             text: 'SpinContainer',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/spin-container/spin-container-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/spin-container/spin-container-api',
-                text: 'API',
-              },
-              {
-                link: '/components/spin-container/spin-container-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/spin-container/spin-container-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/switch/switch',
+            activeMatch: '/components/switch/',
             text: 'Switch',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/switch/switch-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/switch/switch-api',
-                text: 'API',
-              },
-              {
-                link: '/components/switch/switch-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/switch/switch-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/tab-line/tab-line',
+            activeMatch: '/components/tab-line/',
             text: 'TabLine',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/tab-line/tab-line-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/tab-line/tab-line-api',
-                text: 'API',
-              },
-              {
-                link: '/components/tab-line/tab-line-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/tab-line/tab-line-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/tab-panel/tab-panel',
+            activeMatch: '/components/tab-panel/',
             text: 'TabPanel',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/tab-panel/tab-panel-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/tab-panel/tab-panel-api',
-                text: 'API',
-              },
-              {
-                link: '/components/tab-panel/tab-panel-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/tab-panel/tab-panel-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/tag/tag',
+            activeMatch: '/components/tag/',
             text: 'Tag',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/tag/tag-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/tag/tag-api',
-                text: 'API',
-              },
-              {
-                link: '/components/tag/tag-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/tag/tag-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/textarea/textarea',
+            activeMatch: '/components/textarea/',
             text: 'Textarea',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/textarea/textarea-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/textarea/textarea-api',
-                text: 'API',
-              },
-              {
-                link: '/components/textarea/textarea-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/textarea/textarea-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/time-picker/time-picker',
+            activeMatch: '/components/time-picker/',
             text: 'TimePicker',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/time-picker/time-picker-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/time-picker/time-picker-api',
-                text: 'API',
-              },
-              {
-                link: '/components/time-picker/time-picker-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/time-picker/time-picker-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/tooltip/tooltip',
+            activeMatch: '/components/tooltip/',
             text: 'Tooltip',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/tooltip/tooltip-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/tooltip/tooltip-api',
-                text: 'API',
-              },
-              {
-                link: '/components/tooltip/tooltip-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/tooltip/tooltip-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/widget-empty/widget-empty',
+            activeMatch: '/components/widget-empty/',
             text: 'Widget empty state',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/widget-empty/widget-empty-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/widget-empty/widget-empty-api',
-                text: 'API',
-              },
-              {
-                link: '/components/widget-empty/widget-empty-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/widget-empty/widget-empty-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/components/wizard/wizard',
+            activeMatch: '/components/wizard/',
             text: 'Wizard',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/wizard/wizard-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/components/wizard/wizard-api',
-                text: 'API',
-              },
-              {
-                link: '/components/wizard/wizard-code',
-                text: 'Example',
-              },
-              {
-                link: '/components/wizard/wizard-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
         ],
       },
@@ -1522,26 +449,8 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/data-display/d3-chart/d3-chart',
+            activeMatch: '/data-display/d3-chart/d3-chart/',
             text: 'D3 chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/d3-chart/d3-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/d3-chart/d3-chart-code',
-                text: 'Concept and code',
-              },
-              {
-                link: '/data-display/d3-chart/d3-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/d3-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/color-palette/color-palette',
@@ -1553,18 +462,8 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/data-display/chart-legend/chart-legend',
+            activeMatch: '/data-display/chart-legend/chart-legend/',
             text: 'Chart legend',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/chart-legend/chart-legend-code',
-                text: 'Example',
-              },
-              {
-                link: '/data-display/chart-legend/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/notes/notes',
@@ -1572,336 +471,78 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/data-display/area-chart/area-chart',
+            activeMatch: '/data-display/area-chart/area-chart/',
             text: 'Area chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/area-chart/area-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/area-chart/area-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/area-chart/area-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/area-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/stacked-area-chart/stacked-area-chart',
+            activeMatch: '/data-display/stacked-area-chart/',
             text: 'Stacked area chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/stacked-area-chart/stacked-area-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/stacked-area-chart/stacked-area-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/stacked-area-chart/stacked-area-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/stacked-area-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/bar-chart/bar-chart',
+            activeMatch: '/data-display/bar-chart/',
             text: 'Bar chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/bar-chart/bar-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/bar-chart/bar-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/bar-chart/bar-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/bar-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/stacked-bar-chart/stacked-bar-chart',
+            activeMatch: '/data-display/stacked-bar-chart/',
             text: 'Stacked bar chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/stacked-bar-chart/stacked-bar-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/stacked-bar-chart/stacked-bar-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/stacked-bar-chart/stacked-bar-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/stacked-bar-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/bar-horizontal/bar-horizontal',
+            activeMatch: '/data-display/bar-horizontal/',
             text: 'Horizontal bar chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/bar-horizontal/bar-horizontal-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/bar-horizontal/bar-horizontal-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/bar-horizontal/bar-horizontal-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/bar-horizontal/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar',
+            activeMatch: '/data-display/stacked-horizontal-bar/',
             text: 'Stacked horizontal bar chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/stacked-horizontal-bar/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/bubble-chart/bubble-chart',
+            activeMatch: '/data-display/bubble-chart/',
             text: 'Bubble chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/bubble-chart/bubble-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/bubble-chart/bubble-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/bubble-chart/bubble-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/bubble-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/donut-chart/donut-chart',
+            activeMatch: '/data-display/donut-chart/',
             text: 'Donut / Pie chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/donut-chart/donut-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/donut-chart/donut-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/donut-chart/donut-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/donut-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/histogram-chart/histogram-chart',
+            activeMatch: '/data-display/histogram-chart/',
             text: 'Histogram chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/histogram-chart/histogram-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/histogram-chart/histogram-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/histogram-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/line-chart/line-chart',
+            activeMatch: '/data-display/line-chart/',
             text: 'Line chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/line-chart/line-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/line-chart/line-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/line-chart/line-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/line-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/mini-chart/mini-chart',
+            activeMatch: '/data-display/mini-chart/',
             text: 'Mini chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/mini-chart/mini-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/mini-chart/mini-chart-code',
-                text: 'Example',
-              },
-              {
-                link: '/data-display/mini-chart/mini-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/mini-chart/mini-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/radar-chart/radar-chart',
+            activeMatch: '/data-display/radar-chart/',
             text: 'Radar chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/radar-chart/radar-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/radar-chart/radar-chart-code',
-                text: 'Examples',
-              },
-            ],
           },
           {
             link: '/data-display/radial-tree-chart/radial-tree-chart',
+            activeMatch: '/data-display/radial-tree-chart/',
             text: 'Radial Tree chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/radial-tree-chart/radial-tree-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/radial-tree-chart/radial-tree-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/radial-tree-chart/radial-tree-chart-d3-examples',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/radial-tree-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/scatterplot-chart/scatterplot-chart',
+            activeMatch: '/data-display/scatterplot-chart/',
             text: 'Scatterplot chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/scatterplot-chart/scatterplot-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/scatterplot-chart/scatterplot-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/scatterplot-chart/scatterplot-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/scatterplot-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/venn-chart/venn-chart',
+            activeMatch: '/data-display/venn-chart/',
             text: 'Venn chart',
-            collapsed: true,
-            items: [
-              {
-                link: '/data-display/venn-chart/venn-chart-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/data-display/venn-chart/venn-chart-api',
-                text: 'API',
-              },
-              {
-                link: '/data-display/venn-chart/venn-chart-d3-code',
-                text: 'Examples',
-              },
-              {
-                link: '/data-display/venn-chart/d3-chart-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/data-display/alluvial-chart/alluvial-chart',
@@ -1947,63 +588,23 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/table-group/data-table/data-table',
+            activeMatch: '/table-group/data-table/',
             text: 'DataTable',
-            collapsed: true,
-            items: [
-              {
-                link: '/table-group/data-table/data-table-code',
-                text: 'Example',
-              },
-              {
-                link: '/table-group/data-table/data-table-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/table-group/data-table/data-table-api',
-                text: 'API',
-              },
-              {
-                link: '/table-group/data-table/data-table-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/table-group/table-old/table-old',
+            activeMatch: '/table-group/table-old/',
             text: 'Table (old)',
-            collapsed: true,
-            items: [
-              {
-                link: '/table-group/table-old/table-old-api',
-                text: 'API',
-              },
-              {
-                link: '/table-group/table-old/table-old-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/table-group/table-primary/table-primary',
+            activeMatch: '/table-group/table-primary/',
             text: 'Primary table',
-            collapsed: true,
-            items: [
-              {
-                link: '/table-group/table-primary/table-primary-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/table-group/table-secondary/table-secondary',
+            activeMatch: '/table-group/table-secondary/',
             text: 'Secondary table',
-            collapsed: true,
-            items: [
-              {
-                link: '/table-group/table-secondary/table-secondary-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/table-group/table-controls/table-controls',
@@ -2025,14 +626,8 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/filter-group/advanced-filters/advanced-filters',
+            activeMatch: '/filter-group/advanced-filters/',
             text: 'Advanced filters',
-            collapsed: true,
-            items: [
-              {
-                link: '/filter-group/advanced-filters/advanced-filters-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/filter-group/filter-category/filter-category',
@@ -2040,47 +635,23 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc',
+            activeMatch: '/filter-group/filter-cp-cd-cpc/',
             text: 'Click Potential, Competitive Density, CPC',
-            collapsed: true,
-            items: [
-              {
-                link: '/filter-group/filter-cp-cd-cpc/filter-cp-cd-cpc-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/filter-group/filter-include-exclude/filter-include-exclude',
+            activeMatch: '/filter-group/filter-include-exclude/',
             text: 'Include/Exclude keywords',
-            collapsed: true,
-            items: [
-              {
-                link: '/filter-group/filter-include-exclude/filter-include-exclude-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/filter-group/filter-kd-positions-volume/filter-kd-positions-volume',
+            activeMatch: '/filter-group/filter-kd-positions-volume/',
             text: 'Keyword Difficulty, Positions, Volume',
-            collapsed: true,
-            items: [
-              {
-                link: '/filter-group/filter-kd-positions-volume/filter-kd-position-volume-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/filter-group/filter-search/filter-search',
+            activeMatch: '/filter-group/filter-search/',
             text: 'Filter Search',
-            collapsed: true,
-            items: [
-              {
-                link: '/filter-group/filter-search/filter-search-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/filter-group/filter-serp-features/filter-serp-features',
@@ -2102,14 +673,8 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/patterns/confirm-dialog/confirm-dialog',
+            activeMatch: '/patterns/confirm-dialog/',
             text: 'Confirmation modal dialog',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/confirm-dialog/confirm-dialog-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/patterns/empty-page/empty-page',
@@ -2117,26 +682,8 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/patterns/global-errors/global-errors',
+            activeMatch: '/patterns/global-errors/',
             text: 'Error message',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/global-errors/global-errors-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/patterns/global-errors/global-errors-api',
-                text: 'API',
-              },
-              {
-                link: '/patterns/global-errors/global-errors-code',
-                text: 'Example',
-              },
-              {
-                link: '/patterns/global-errors/global-errors-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/patterns/export/export',
@@ -2144,44 +691,18 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/patterns/feedback-yes-no/feedback-yes-no',
+            activeMatch: '/patterns/feedback-yes-no/',
             text: 'FeedbackYesNo',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/feedback-yes-no/feedback-yes-no-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/patterns/feedback-yes-no/feedback-yes-no-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/patterns/form/form',
+            activeMatch: '/patterns/form/',
             text: 'Form',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/form/form-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/patterns/form/form-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/patterns/informer/informer',
+            activeMatch: '/patterns/informer/',
             text: 'Informer',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/informer/informer-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/patterns/links-order/links-order',
@@ -2205,29 +726,13 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/patterns/summary/summary',
+            activeMatch: '/patterns/summary/',
             text: 'Summary',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/summary/summary-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/patterns/validation-form/validation-form',
+            activeMatch: '/patterns/validation-form/',
             text: 'Validation',
-            collapsed: true,
-            items: [
-              {
-                link: '/patterns/validation-form/validation-form-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/patterns/validation-form/validation-form-code',
-                text: 'Example',
-              },
-            ],
           },
           {
             link: '/patterns/web-performance/web-performance',
@@ -2241,22 +746,8 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         items: [
           {
             link: '/product-emails/grid-email/grid-email',
+            activeMatch: '/product-emails/grid-email/',
             text: 'Email templates & grid',
-            collapsed: true,
-            items: [
-              {
-                link: '/product-emails/grid-email/grid-email-code',
-                text: 'Email grid',
-              },
-              {
-                link: '/product-emails/grid-email/grid-email-readme',
-                text: 'Readme',
-              },
-              {
-                link: '/product-emails/grid-email/grid-email-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/product-emails/core-email/core-email',
@@ -2298,48 +789,18 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         items: [
           {
             link: '/utils/neighbor-location/neighbor-location',
+            activeMatch: '/utils/neighbor-location/',
             text: 'NeighborLocation',
-            collapsed: true,
-            items: [
-              {
-                link: '/utils/neighbor-location/neighbor-location-api',
-                text: 'API',
-              },
-              {
-                link: '/utils/neighbor-location/neighbor-location-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/utils/popper/popper',
+            activeMatch: '/utils/popper/',
             text: 'Popper',
-            collapsed: true,
-            items: [
-              {
-                link: '/utils/popper/popper-api',
-                text: 'API',
-              },
-              {
-                link: '/utils/popper/popper-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/utils/portal/portal',
+            activeMatch: '/utils/portal/',
             text: 'Portal',
-            collapsed: true,
-            items: [
-              {
-                link: '/utils/portal/portal-api',
-                text: 'API',
-              },
-              {
-                link: '/utils/portal/portal-changelog',
-                text: 'Changelog',
-              },
-            ],
           },
           {
             link: '/utils/i18n/i18n',

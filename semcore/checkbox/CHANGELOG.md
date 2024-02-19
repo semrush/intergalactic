@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.21.4] - 2024-02-12
+
+### Fixed
+
+- indeterminate mark color were different from checked mark color.
+
+## [7.21.3] - 2024-02-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.1 ~> 4.20.2]).
+
 ## [7.21.2] - 2024-02-06
 
 ### Fixed

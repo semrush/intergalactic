@@ -213,43 +213,92 @@ describe('Modal', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test.concurrent(
-    'Should support correct focusing inside modals in forward and reverse "tabs"',
-    async ({ expect }) => {
-      const { getByTestId } = render(
-        <Modal visible={true} data-testid={'Modal'}>
-          <Modal.Title>Do you want to save your changes?</Modal.Title>
+  test('Should support correct focusing inside modals in forward and reverse "tabs"', async ({
+    expect,
+  }) => {
+    const { getByTestId } = render(
+      <Modal visible={true} data-testid={'Modal'}>
+        <Modal.Title>Do you want to save your changes?</Modal.Title>
 
-          <Button use='primary' theme='success' size='l' data-testid={'SaveChangesButton'}>
+        <Button use='primary' theme='success' size='l' data-testid={'SaveChangesButton'}>
+          Save changes
+        </Button>
+        <Button size='l' ml={2} data-testid={'CancelButton'}>
+          Don't save
+        </Button>
+      </Modal>,
+    );
+
+    const SaveButton = getByTestId('SaveChangesButton');
+    const CancelButton = getByTestId('CancelButton');
+    const CloseButton = getByTestId('Modal').children[0];
+
+    await userEvent.keyboard('[Tab]');
+    expect(SaveButton).toHaveFocus();
+
+    await userEvent.keyboard('[Tab]');
+    expect(CancelButton).toHaveFocus();
+
+    await userEvent.keyboard('[Tab]');
+    expect(CloseButton).toHaveFocus();
+
+    await userEvent.keyboard('[Tab]');
+    expect(SaveButton).toHaveFocus();
+
+    await userEvent.keyboard('{Shift>}[Tab]');
+    expect(CloseButton).toHaveFocus();
+
+    await userEvent.keyboard('{Shift>}[Tab]');
+    expect(CancelButton).toHaveFocus();
+  });
+
+  test('Should support correct returning focus to trigger if Modal removing from DOM', async ({
+    expect,
+  }) => {
+    const ExternalModalComponent = ({ onClose }: any) => {
+      const [visible, setVisible] = React.useState(true);
+      const handleClose = React.useCallback(() => {
+        onClose();
+
+        setVisible(false);
+      }, [onClose]);
+
+      return (
+        <Modal visible={visible} onClose={handleClose}>
+          <Modal.Title data-testid={'modalTitle'}>Do you want to save your changes?</Modal.Title>
+          <Button use='primary' theme='success' size='l' onClick={handleClose}>
             Save changes
           </Button>
-          <Button size='l' ml={2} data-testid={'CancelButton'}>
+          <Button size='l' ml={2} onClick={handleClose}>
             Don't save
           </Button>
-        </Modal>,
+        </Modal>
       );
+    };
 
-      const SaveButton = getByTestId('SaveChangesButton');
-      const CancelButton = getByTestId('CancelButton');
-      const CloseButton = getByTestId('Modal').children[0];
+    const Component = () => {
+      const [visible, setVisible] = React.useState(false);
+      const handleOpen = React.useCallback(() => setVisible(true), []);
 
-      await userEvent.keyboard('[Tab]');
-      expect(SaveButton).toHaveFocus();
+      return (
+        <React.Fragment>
+          <Button onClick={handleOpen} data-testid={'openModalButton'} autoFocus>
+            Open modal dynamically
+          </Button>
 
-      await userEvent.keyboard('[Tab]');
-      expect(CancelButton).toHaveFocus();
+          {visible ? <ExternalModalComponent onClose={() => setVisible(false)} /> : undefined}
+        </React.Fragment>
+      );
+    };
 
-      await userEvent.keyboard('[Tab]');
-      expect(CloseButton).toHaveFocus();
+    const { getByTestId, getByText } = render(<Component />);
 
-      await userEvent.keyboard('[Tab]');
-      expect(SaveButton).toHaveFocus();
+    expect(getByTestId('openModalButton')).toHaveFocus();
 
-      await userEvent.keyboard('{Shift>}[Tab]');
-      expect(CloseButton).toHaveFocus();
+    await userEvent.keyboard('[Enter]');
+    expect(getByText('Do you want to save your changes?')).toBeTruthy();
 
-      await userEvent.keyboard('{Shift>}[Tab]');
-      expect(CancelButton).toHaveFocus();
-    },
-  );
+    await userEvent.keyboard('[Escape]');
+    expect(getByTestId('openModalButton')).toHaveFocus();
+  });
 });

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.2] - 2024-02-08
+
+### Fixed
+
+- Fixed edge case bug when browser focus should be returned from modal, but a button that triggered modal opening is already unmounted.
+
 ## [4.20.1] - 2024-02-05
 
 ### Changed

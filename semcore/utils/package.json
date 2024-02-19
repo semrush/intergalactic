@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "4.20.1",
+  "version": "4.20.2",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -27,12 +27,11 @@
   "dependencies": {
     "@babel/runtime": "^7.17.9",
     "classnames": "2.2.6",
-    "focus-lock": "0.11.3",
     "hoist-non-react-statics": "3.3.2",
     "@phytonmk/nano-css": "5.3.7"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.17.1",
+    "@semcore/core": "^2.17.2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

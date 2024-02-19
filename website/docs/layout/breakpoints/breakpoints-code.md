@@ -16,25 +16,7 @@ Resize the window to see the changes.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Breakpoints from '@semcore/ui/breakpoints';
-import Button from '@semcore/ui/button';
-
-const buttonSizes = ['m', 'l'] as const;
-
-const Example = () => {
-  const index = React.useContext(Breakpoints.Context);
-
-  return <Button size={buttonSizes[index]}>Button size {buttonSizes[index]}</Button>;
-};
-
-const Demo = () => {
-  return (
-    <Breakpoints>
-      <Example />
-    </Breakpoints>
-  );
-};
+  export Demo from './examples/simple-use.tsx';
 </script>
 
 :::
@@ -46,24 +28,7 @@ You can use an instance of the `MediaList` class, it has methods `matches`/`addL
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Breakpoints from '@semcore/ui/breakpoints';
-import Button from '@semcore/ui/button';
-
-const Demo = () => {
-  const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());
-
-  React.useEffect(() => {
-    const unsubscribe = Breakpoints.mediaList.addListener((index) => {
-      setIndex(index);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  return <Button size={(['m', 'l'] as const)[index]}>Button size {['M', 'L'][index]}</Button>;
-};
+  export Demo from './examples/manual-control.tsx';
 </script>
 
 :::
@@ -79,31 +44,7 @@ The 'Breakpoints.mediaList.matches()' will return the intex of the first matchin
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { createBreakpoints } from '@semcore/ui/breakpoints';
-
-const MEDIA = [
-  '(max-width: 300px)',
-  '(max-width: 500px)',
-  '(max-width: 700px)',
-  '(max-width: 900px)',
-  '(max-width: 1100px)',
-];
-const Breakpoints = createBreakpoints(MEDIA);
-
-const Example = () => {
-  const index = React.useContext(Breakpoints.Context);
-
-  return <div>Media matches "{MEDIA[index] || 'ZOOM WINDOW'}"</div>;
-};
-
-const Demo = () => {
-  return (
-    <Breakpoints>
-      <Example />
-    </Breakpoints>
-  );
-};
+  export Demo from './examples/custom-media.tsx';
 </script>
 
 :::

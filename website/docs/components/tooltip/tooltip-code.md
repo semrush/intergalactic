@@ -39,6 +39,20 @@ The code below replicates the functionality of the previous example.
 
 :::
 
+
+## Accessability
+
+To make use of Tooltip accessible for assistive tocologies, the `aria-describedby` is being set on the trigger that refers to the popper. That's why you need to merge nested focusable elements (such links or interactive icons) with the `tag` prop. If you want to put focusable elements inside of the trigger, you **must** set the trigger `aria-describedby` to `undefined` and set the focusable element `aria-describedby` to the value that you can get from the children render function.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/nested.tsx';
+</script>
+
+:::
+
+
 ## Singleton
 
 You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience.

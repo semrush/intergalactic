@@ -1,4 +1,110 @@
-## [15.56.0-prerelease.0] - 2024-02-07
+## [15.60.0] - 2024-02-16
+
+### @semcore/accordion
+
+- **Added** Ability to set 'l' icon size for `Accordion.Item.Chevron`
+
+## [15.59.1] - 2024-02-16
+
+### @semcore/dropdown
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+### @semcore/dropdown-menu
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+## [15.59.0] - 2024-02-14
+
+### @semcore/carousel
+
+- **Changed** Navigation buttons are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/color-picker
+
+- **Changed** Color palette items are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/data-table
+
+- **Changed** Header sorting cells are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/icon
+
+- **Changed** Icons are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/inline-edit
+
+- **Changed** `InlineEdit.View` are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/inline-input
+
+- **Fixed** Confirm and cancel controls were ignoring `Space` click.
+
+### @semcore/input-tags
+
+- **Changed** Tags are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/pills
+
+- **Changed** Pills are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/switch
+
+- **Changed** Switches are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tab-panel
+
+- **Changed** Tabs are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tag
+
+- **Changed** Tags are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tooltip
+
+- **Fixed** Some assistive technologies were reading tooltip popper content twice.
+- **Added** Tooltip trigger children render function got `popperId` param that allows to apply `aria-describedby` on specific children of tooltip trigger.
+
+### @semcore/wizard
+
+- **Changed** Wizard steps are clickable by `Space` now (along with `Enter` as before).
+
+## [15.58.1] - 2024-02-13
+
+### @semcore/d3-chart
+
+- **Fixed** `Dots` component was missing `value` prop in it's props mapping function.
+
+## [15.58.0] - 2024-02-13
+
+### @semcore/checkbox
+
+- **Fixed** indeterminate mark color were different from checked mark color.
+
+### @semcore/select
+
+- **Added** `indeterminate` prop for `Select.Option.Checkbox`,
+
+## [15.57.0] - 2024-02-09
+
+### @semcore/icon
+
+- **Added** New `Hashtag` icon.
+
+### @semcore/popper
+
+- **Added** `focusLoop` api that controls how browser focus behaves when goes out of popper.
+- **Changed** Invisible focus return and catch elements are removed that were used for keyboard users focus flow control. Instead, trigger may ignore focus event for a short time just after corresponding popper close.
+
+### @semcore/tooltip
+
+- **Changed** Disabled focus looping when focusable elements exist in tooltip.
+
+### @semcore/utils
+
+- **Fixed** Fixed edge case bug when browser focus should be returned from modal, but a button that triggered modal opening is already unmounted.
+
+## [15.56.0] - 2024-02-07
 
 ### @semcore/base-trigger
 

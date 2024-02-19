@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.0] - 2024-02-13
+
+### Changed
+
+- Tags are clickable by `Space` now (along with `Enter` as before).
+
+## [5.25.2] - 2024-02-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.1 ~> 4.20.2], `@semcore/icon` [4.24.1 ~> 4.25.0], `@semcore/flex-box` [5.19.0 ~> 5.19.1], `@semcore/core` [2.17.1 ~> 2.17.2]).
+
 ## [5.25.1] - 2024-02-06
 
 ### Changed

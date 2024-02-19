@@ -3,6 +3,9 @@ substitutions:
   _GCR_HOSTNAME: us-east4-docker.pkg.dev
 
 steps:
+  - id: 'Unshallow git history'
+    name: gcr.io/cloud-builders/git
+    args: ["fetch", "--unshallow", "--tags"]
   - id: 'Build docker'
     name: gcr.io/cloud-builders/docker
     entrypoint: 'bash'

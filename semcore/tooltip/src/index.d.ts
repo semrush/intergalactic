@@ -33,12 +33,15 @@ export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperPro
       | eventInteraction /** @deprecated */;
   };
 
+export type TooltipTriggerContext = PopperContext & {
+  popperId?: string;
+};
 /** @deprecated */
 export interface ITooltipContext extends TooltipContext, UnknownProperties {}
 export type TooltipContext = PopperContext & {};
 
 declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipContext> & {
-  Trigger: typeof Popper.Trigger;
+  Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
   Popper: Intergalactic.Component<'div', TooltipProps, TooltipContext>;
 };
 

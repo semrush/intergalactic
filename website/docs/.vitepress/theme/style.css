@@ -386,6 +386,10 @@
 
 /* Table styles */
 
+.vp-doc table {
+  margin: 20px 0 40px 0;
+}
+
 .vp-doc table caption:first-child {
   position: absolute;
   width: 1px;

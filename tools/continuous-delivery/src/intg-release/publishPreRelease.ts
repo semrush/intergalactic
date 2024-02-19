@@ -15,7 +15,7 @@ export const CI_AUTHOR_NAME = 'semrush-ci-whale';
 const publishPreRelease = async () => {
   const logResult = await git.log();
 
-  if (logResult.latest?.author_name === 'CI_AUTHOR') {
+  if (logResult.latest?.author_name === CI_AUTHOR_NAME) {
     log('Skip prerelease form CI commit');
 
     process.exit();

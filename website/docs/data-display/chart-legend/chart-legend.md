@@ -185,7 +185,7 @@ Basic data visualization rules in widgets with charts are described in [D3 chart
 
 **Chart legend** is a component that helps a user read the data presented on the chart.
 
-Add legend to the chart if there are more than one dataset. If there is only one dataset on the chart, then don’t display the legend: in this case the purpose of the data should be clear from the chart context: chart title, description, etc.
+Add legend to the chart if there are more than one data set. If there is only one data set on the chart, then don’t display the legend: in this case the purpose of the data should be clear from the chart context: chart title, description, etc.
 
 ## Component composition
 

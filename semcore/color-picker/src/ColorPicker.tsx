@@ -126,7 +126,8 @@ class ColorPickerRoot extends Component<RootAsProps> {
       displayLabel,
       onClick: this.bindHandlerItemClick(props.value),
       onKeyDown: (event: React.KeyboardEvent) => {
-        if (event.key === 'Enter' || event.key === 'Space') {
+        if (event.code === 'Enter' || event.code === 'Space') {
+          event.preventDefault();
           this.bindHandlerItemClick(props.value)(event);
         }
       },

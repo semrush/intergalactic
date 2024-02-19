@@ -133,7 +133,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Line chart** displays the trend of numeric variables over time, making it ideal for showing changes in data across a specified period.
 
-**Key considerations for line charts:**
+**Key considerations for line chart:**
 
 - Ensure the chart's axes are clear, adding labels if the chart name isn't sufficient.
 - Simplify the chart by removing unnecessary visuals like excessive lines or colors to avoid distracting the viewer.
@@ -239,4 +239,4 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/line-skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states."
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".

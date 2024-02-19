@@ -96,34 +96,31 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Donut chart** visualizes parts to the whole by dividing the circle into proportional segments.
+**Donut chart** shows parts of a whole by dividing a circle into proportional segments. Each segment represents a fraction, and the entire circle represents the total sum, always equaling 100%.
 
-The length of each segment is a proportional fraction, and the entire circle is ALWAYS the total sum of all data, equal to 100%.
+**Key points for using donut chart:**
 
-**Important points to keep in mind when using donut chart:**
+- Donut charts are best for highlighting category proportions, not exact values.
+- For more than 5 categories, consider another chart type, like a [Bar chart](/data-display/bar-chart/bar-chart).
 
-- We recommend using a donut chart when you need to focus on the proportions of categories, rather than on specific values.
-- If you need to visualize more than 5 categories, we recommend using a different chart type (for example, [Bar chart](/data-display/bar-chart/bar-chart)).
 
-**Donut chart has several disadvantages:**
+**Disadvantages of donut chart:**
 
-- The number of displayed values is very limited, because the more values, the smaller the size of each individual segment. Accordingly, these charts are not suitable for working with large amounts of data.
-- They take up more space than, for example, [Bar chart](/data-display/bar-chart/bar-chart).
-- They are inconvenient for making accurate comparisons between different datasets, since visually the area of segments is more difficult to compare than the length.
+- It can only show a few values clearly. With more values, segments become too small to be effective.
+- Donut chart needs more space than, for instance, [Bar chart](/data-display/bar-chart/bar-chart).
+- Comparing data between different donut charts is hard because it's tougher to compare segment areas than lengths.
 
 ::: tip
-**Interesting fact**
+William Playfair, a Scottish engineer, introduced the donut chart in 1801 to depict the Turkish Empire's land distribution across Asia, Europe, and Africa.
 
-The creation of the donut chart is credited to the Scottish engineer William Playfair. Back in 1801, <!-- vale DevDocs.Gender = NO -->he<!-- vale DevDocs.Gender = NO --> used it to show the proportions of land occupied by the Turkish Empire in Asia, Europe and Africa.
-
-The French don’t call such charts donut chart, they compare it with round cheese Camembert.
+In France, this chart is likened to Camembert cheese rather than a donut.
 
 [How to design pie charts](https://visage.co/data-visualization-101-pie-charts/)
 :::
 
 ## Appearance
 
-For all types, show the values clockwise. The angle of the padding between the values:
+Display values in a clockwise direction. The gap between values is 1px.
 
 ![](static/donut-padding-angle.png)
 
@@ -145,60 +142,60 @@ endAngle={0}
 
 ### Donut chart ("doughnut") 🍩
 
-|                                                              | Appearance example                                 | Description, styles                                                                                  |
-| ------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/summary). | ![](static/donut-small.png)   | The donut size is 24px * 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
-| Chart inside small widgets (less than 400px).                | ![](static/donut-medium.png) | The donut size is 80px * 80px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`   |
-| Chart inside large widgets (more than 400px).                | ![](static/donut-big.png)       | The donut size is 180px * 180px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
+Table: Donut chart ("doughnut") styles
+
+| Case | Appearance example                                 | Description, styles                                                                                  |
+| ---- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| In [Summary](/patterns/summary/summary) | ![](static/donut-small.png)   | The chart is 24px by 24px with a 6px line thickness. Use `innerRadius={6}`, `outerRadius={12}`.     |
+| Small widgets (less than 400px).                | ![](static/donut-medium.png) | The chart is 80px by 80px with a 20px line thickness. Use `innerRadius={20}`, `outerRadius={40}`.   |
+| Large widgets (more than 400px).                | ![](static/donut-big.png)       | The chart is 180px by 180px with a 30px line thickness. Use `innerRadius={60}`, `outerRadius={90}`. |
 
 ### Semi donut chart ("half doughnut") 🔪🍩
 
-|                                                              | Appearance example                                           | Description, styles                                                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/summary). | ![](static/semi-donut-small.png)   | The donut size is 24px * 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
-| Chart inside small narrow widgets (less than 400px).         | ![](static/semi-donut-medium.png) | The donut size is 80px * 40px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`  |
-| Chart inside large widgets (more than 400px).                | ![](static/semi-donut-big.png)       | The donut size is 180px * 90px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
+Table: Semi donut chart ("half doughnut") styles
+
+| Case    | Appearance example                                           | Description, styles                                                                                 |
+| ------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| In [Summary](/patterns/summary/summary). | ![](static/semi-donut-small.png)   | The semi donut is 24px by 12px with a 6px line thickness. Use `innerRadius={6}`, `outerRadius={12}`.    |
+| Small narrow widgets (less than 400px).         | ![](static/semi-donut-medium.png) | The semi donut is 80px by 40px with a 20px line thickness. Use `innerRadius={20}`, `outerRadius={40}`.  |
+| Large widgets (more than 400px).                | ![](static/semi-donut-big.png)       | The semi donut is 180px by 90px with a 30px line thickness. Use `innerRadius={60}`, `outerRadius={90}`. |
 
 ## Legend
 
-Show legend with the values.
-
-- The legend shouldn't be far from the chart, the margin is 24px maximum.
-- **The legend label has 16px margin-right. The margin between the values is 12px.**
-- The legend is aligned to the top of the chart.
+- Keep the legend close to the chart, ideally within a 24px margin.
+- Legends have a 16px margin-right and a 12px margin between values.
+- Align the legend with the chart's top.
 
 ![](static/donut-legend-margins-1.png)
-
-- If you need to place the legend under the chart, then add 24px margin to the legend.
 
 ![](static/donut-legend-margins-2.png)
 
 ### Long label
 
-If legend label is very long, wrap it to the next line.
+Wrap long labels to the next line for clarity.
 
 ![](static/donut-legend-long.png)
 
 ## Main metric
 
-- For a big donut chart, you can select the largest or the main value and place it inside the chart.
-- The metric must have a name.
-- The additional metric information can be hidden in the Info icon next to the metric name.
-
-If you have a small donut and the widget should be compact, the metric can be placed over the legend.
+- You can place the largest or main value inside large donut charts.
+- Always name the metric.
+- Additional info can go in an `Info` icon next to the metric name.
+- For small donuts, position the metric above the legend.
 
 ### Metric styles
 
-- The metric default size is 24px (`--fs-500`). The text color is `--text-primary`.
-- The default size of the metric legend is 12px (`--fs-100`). The text color is `--text-secondary`.
-- There is no margin between them.
-- They are centered vertically and horizontally relative to the chart.
+- Use 24px (`--fs-500`) size and `--text-primary` color for the metric text.
+- For the description text use 12px (`--fs-100`) size and `--text-secondary` color.
+- Center them inside the chart vertically and horizontally.
 
 ::: tip
 If the metrics name is too long, wrap it to the next line.
 
-In a half-sized donut, the name of the metric should be as short as possible, and the explanation can be contained in the Info icon.
+In a semi donut, the metric's name should be as short as possible, and its description can be contained in the `Info` icon.
 :::
+
+Table: Metric examples in Donut and Semi donut charts
 
 | Donut                                                                                                 | Semi donut                                                                                                                | Donut in a small widget                                |
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
@@ -206,9 +203,7 @@ In a half-sized donut, the name of the metric should be as short as possible, an
 
 ## Interaction
 
-::: tip
-The cursor changes to `pointer` when the sector is clickable. In all other cases, the cursor is `default`.
-:::
+Table: Donut chart interaction
 
 |             | Appearance examples                                                                                               | Styles                                                                                                                                   |
 | ----------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -218,11 +213,7 @@ The cursor changes to `pointer` when the sector is clickable. In all other cases
 
 ## Tooltip
 
-Hovering over the chart triggers a tooltip with the name and value of the data.
-
-::: tip
-Disable tooltip for the smallest charts which serve as an illustration to a particular metric.
-:::
+Display name and value in tooltips. Disable tooltips for very small charts.
 
 ![](static/donut-hover-big.png)
 
@@ -230,55 +221,50 @@ Disable tooltip for the smallest charts which serve as an illustration to a part
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
-
 ### Null values
 
-If the data for any category is zero, then don’t disable the legend. Show 0 as the values in the legend, use `--text-secondary` color. The zero value sector isn’t displayed on the chart.
+Show zeros in the legend but not on the chart. Show 0 as the values in the legend, use `--text-secondary` color.
 
 ![](static/donut-null.png)
 
 ### Value less than or equal 1%
 
-In this case, display 1% of the sector.
+Show as 1% on the chart.
 
 ![](static/donut-less-1-per-cent.png)
 
-### Not available data
+### No data
 
-If for some reason the data isn’t known or not available, show `n/a` in the legend and tooltip, use `--text-secondary` color.
+Mark data as n/a in legend and tooltip, use `--text-secondary` color.
 
 ![](static/donut-na.png)
 
 ### Not enough space for the legend
 
-In this case, move legend under the chart. The margin from the chart to the legend is 24px.
+Move the legend below the chart with a 24px margin.
 
 ![](static/donut-small-widget.png)
 
-## Initial loading
+## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
+Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the chart has a title, display it to inform users about what's loading. Refer to [Skeleton](/components/skeleton/skeleton) for more details.
 
-If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
-
-For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
-
-Use the `--skeleton-bg` color token for the skeleton background color.
+Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/donut-skeleton.png)
+
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
 
 ## Usage in UX/UI
 
 ::: tip
-**It isn’t recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
+**It isn’t recommended to display more than five categories on the donut chart**. If there are more than five categories, display the largest five, and place the others in the "Other" category.
 :::
 
-Don't use donut chart to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart/bar-chart).
+Avoid using donut chart for comparing two sets of values. Use [Stacked bar chart](/data-display/bar-chart/bar-chart) instead.
 
 ![](static/donut-yes-no.png)
 
-The starting angle for displaying values is always `90 degrees`.
+Start displaying values from a 90-degree angle.
 
 ![](static/start-yes-no.png)
-
