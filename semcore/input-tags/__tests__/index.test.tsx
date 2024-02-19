@@ -134,7 +134,7 @@ describe('InputTags', () => {
     );
 
     act(() => {
-      fireEvent.keyDown(getByTestId('tag'), { key: 'Enter' });
+      fireEvent.keyDown(getByTestId('tag'), { code: 'Enter' });
     });
     expect(onClick).toHaveBeenCalledTimes(1);
   });

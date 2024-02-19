@@ -8,6 +8,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/tag.shadow.css';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -28,7 +29,12 @@ const legacyThemeRecommendedMigration = {
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+    resolveColorEnhance(),
+    keyboardFocusEnhance(),
+  ];
   static defaultProps = {
     theme: 'primary',
     color: 'gray-500',
@@ -60,12 +66,14 @@ class RootTag extends Component {
     return { getI18nText, tagId: id || `igc-${uid}-tag`, uid };
   }
 
-  handleKeyDown = (e) => {
-    switch (e.key) {
-      case ' ':
+  handleKeyDown = (event) => {
+    switch (event.code) {
+      case 'Space':
       case 'Enter':
-        e.preventDefault();
-        this.asProps.onClick?.(e);
+        if (this.asProps.onClick) {
+          event.preventDefault();
+          this.asProps.onClick(event);
+        }
         break;
     }
   };
@@ -81,7 +89,6 @@ class RootTag extends Component {
       addonLeft,
       addonRight,
       resolveColor,
-      onClick,
       id: outerId,
       uid,
       onKeyDown,
@@ -93,7 +100,8 @@ class RootTag extends Component {
         render={Box}
         id={id}
         use:interactive={!disabled && interactive}
-        tabIndex={interactive && onClick ? 0 : undefined}
+        tabIndex={interactive ? 0 : undefined}
+        role={interactive ? 'button' : undefined}
         tag-color={resolveColor(color)}
         onKeyDown={callAllEventHandlers(onKeyDown, this.handleKeyDown)}
       >

@@ -43,7 +43,20 @@ STag {
     opacity: 0.1;
     filter: brightness(150%);
   }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
 }
+
+STag[keyboardFocused]:focus {
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  z-index: 1;
+}
+
 
 STag[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
@@ -227,9 +240,12 @@ SClose {
   align-items: center;
   justify-content: center;
   padding: var(--intergalactic-spacing-1x, 4px);
-  opacity: 0.5;
 
-  &:hover {
+  & path {
+    opacity: 0.5;
+  }
+
+  &:hover path {
     opacity: 1;
   }
 }
