@@ -1,3 +1,13 @@
+## [15.60.1] - 2024-02-19
+
+### @semcore/base-trigger
+
+- **Fixed** Pressing enter in forms was triggering `FilterTrigger` to open.
+
+### @semcore/popper
+
+- **Fixed** Focusing trigger right after popper had been closed by mouse leave was not opening popper again.
+
 ## [15.60.0] - 2024-02-16
 
 ### @semcore/accordion
