@@ -2,6 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { TooltipType } from './Tooltip';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IScatterPlotProps extends ScatterPlotProps, UnknownProperties {}
@@ -26,6 +27,8 @@ export type ScatterPlotProps = Context & {
   r?: number;
   /** Enables element transparency */
   transparent?: boolean;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 declare const ScatterPlot: IntergalacticD3Component<'g', ScatterPlotProps, Context> & {

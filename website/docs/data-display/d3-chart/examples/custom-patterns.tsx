@@ -1,6 +1,5 @@
 import React from 'react';
-import { Plot, Venn, colors } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Pattern, Plot, Venn } from '@semcore/ui/d3-chart';
 
 const data = {
   G: 200,
@@ -13,7 +12,7 @@ const data = {
   'G/F/C': 100,
 };
 
-const patterns = [
+const patterns: Pattern[] = [
   {
     fill: {
       viewBox: '0 0 12 12',

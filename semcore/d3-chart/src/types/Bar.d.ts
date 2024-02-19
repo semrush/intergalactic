@@ -2,6 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { IntergalacticD3Component } from './Plot';
 import { ScaleBand, ScaleLinear } from 'd3-scale';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IBarProps extends BarProps, UnknownProperties {}
@@ -36,6 +37,8 @@ export type BarProps = Context & {
    * The maximum width of each Bar
    */
   maxBarSize?: number;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

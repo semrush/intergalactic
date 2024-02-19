@@ -16,7 +16,6 @@ class Demo extends React.Component {
             tag={InfoL}
             ml='4px'
             color='gray-300'
-            cursor='help'
             interactive={true}
           />
         </div>
@@ -27,7 +26,6 @@ class Demo extends React.Component {
             tag={InfoL}
             ml='4px'
             color='gray-300'
-            cursor='help'
             interactive={true}
           />
         </div>
@@ -38,7 +36,6 @@ class Demo extends React.Component {
             tag={InfoM}
             ml='4px'
             color='gray-300'
-            cursor='help'
             interactive={true}
           />
         </div>
@@ -50,7 +47,6 @@ class Demo extends React.Component {
               tag={InfoM}
               ml='4px'
               color='gray-300'
-              cursor='help'
               interactive={true}
             />
           </div>
@@ -61,7 +57,6 @@ class Demo extends React.Component {
             tag={InfoM}
             ml='4px'
             color='gray-300'
-            cursor='help'
             interactive={true}
           />
         </div>
@@ -72,7 +67,6 @@ class Demo extends React.Component {
             tag={InfoM}
             ml='4px'
             color='gray-300'
-            cursor='help'
             interactive={true}
           />
         </div>
@@ -83,7 +77,6 @@ class Demo extends React.Component {
             tag={InfoM}
             ml='4px'
             color='gray-300'
-            cursor='help'
             interactive={true}
           />
         </div>

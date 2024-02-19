@@ -2,6 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { BarContext, BackgroundProps } from './Bar';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IHorizontalBarProps extends HorizontalBarProps, UnknownProperties {}
@@ -26,6 +27,8 @@ export type HorizontalBarProps = Context & {
    * The maximum width of each Bar
    */
   maxBarSize?: number;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {
