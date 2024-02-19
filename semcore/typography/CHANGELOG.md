@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Some styles for `List.Item` component.
 
+### Added
+
+- `List.Item.Content` component for customise view of each list item.
+
 ## [5.26.0] - 2024-02-14
 
 ### Changed
