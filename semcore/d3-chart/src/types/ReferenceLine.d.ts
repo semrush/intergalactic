@@ -9,7 +9,6 @@ export type ReferenceLineProps = Context & {
    * @default 'left' */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
-  /** @deprecated */
   value?: any;
 
   title?: string;
@@ -21,7 +20,6 @@ export type ReferenceLineTitleProps = Context & {
   /** The position of the axis relative reference line */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
-  /** @deprecated */
   value: any;
 };
 
@@ -33,8 +31,9 @@ export type ReferenceLineBackgroundProps = Context & {
   /** The position of the axis relative reference line */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
-  /** @deprecated */
   value?: any;
+  /** Value of the background end */
+  endValue?: number | string;
 };
 
 declare const ReferenceLine: IntergalacticD3Component<'line', ReferenceLineProps, Context> & {
