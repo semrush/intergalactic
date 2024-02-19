@@ -224,12 +224,12 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 :::
 
-## Export to image (png, jpeg, webp)
+## Export to image
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/export-to-image-(png,-jpeg,-webp).tsx';
+  export Demo from './examples/export-to-image.tsx';
 </script>
 
 :::
