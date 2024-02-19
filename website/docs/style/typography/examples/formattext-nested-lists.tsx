@@ -3,7 +3,7 @@ import FormatText from '@semcore/ui/format-text';
 
 const Demo = () => (
   <FormatText>
-    <ol start='1'>
+    <ol start={1}>
       <li>List item one</li>
       <li>
         List item two with subitems:

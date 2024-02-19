@@ -9,14 +9,7 @@ const Demo = () => {
   return (
     <svg height='100px' width='200px'>
       <PatternFill id='pattern-element' patternKey={patternKey} color='red' patterns={patterns} />
-      <rect
-        width='100px'
-        height='100px'
-        top='0'
-        left='0'
-        fill='url(#pattern-element)'
-        stroke='red'
-      />
+      <rect width='100px' height='100px' x='0' y='0' fill='url(#pattern-element)' stroke='red' />
       <PatternSymbol
         color='red'
         patternKey={patternKey}

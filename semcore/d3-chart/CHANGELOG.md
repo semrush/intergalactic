@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.28.1] - 2024-02-19
+
+### Fixed
+
+- `patterns` prop was missing in multiple chart types.
+
 ## [2.28.0] - 2024-02-13
 
 ### Changed
