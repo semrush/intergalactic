@@ -5,7 +5,7 @@ import Button from '@semcore/ui/button';
 const AlertButton = wrapIntergalacticComponent<
   typeof Button,
   {
-    handle: ['click', 'hover'];
+    handle: ('click' | 'hover')[];
     message: string;
   }
 >(({ handle, message, ...restProps }) => {

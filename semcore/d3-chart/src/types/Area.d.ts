@@ -2,6 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { CurveFactory } from 'd3-shape';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IAreaProps extends AreaProps, UnknownProperties {}
@@ -22,6 +23,8 @@ export type AreaProps = Context & {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

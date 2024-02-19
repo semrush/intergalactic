@@ -31,7 +31,7 @@ const Demo = () => {
 
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
-      const svgElement = svgRef.current.cloneNode(true);
+      const svgElement = svgRef.current.cloneNode(true) as typeof svgRef.current;
       [...svgElement.querySelectorAll('animate')].forEach((animate) => animate.remove());
       let svgText = svgElementToSvgText(svgElement);
       svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
