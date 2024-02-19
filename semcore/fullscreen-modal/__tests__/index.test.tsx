@@ -21,7 +21,7 @@ describe('FullscreenModal', () => {
     expect(queryByText(/Text/)).toBeTruthy();
   });
 
-  test('should support onClose for CloseIcons', () => {
+  test.sequential('should support onClose for CloseIcons', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
@@ -43,7 +43,7 @@ describe('FullscreenModal', () => {
     expect(spy).toBeCalledWith('onBackClick', expect.anything());
   });
 
-  test('should support onClose for Escape', () => {
+  test.sequential('should support onClose for Escape', () => {
     const spy = vi.fn();
     const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid='modal' />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });

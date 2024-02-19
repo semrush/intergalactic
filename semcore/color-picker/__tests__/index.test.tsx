@@ -126,7 +126,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test.concurrent('Should add color when click on "Enter" click', async () => {
+  test.sequential('Should add color when click on "Enter" click', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
