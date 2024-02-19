@@ -35,7 +35,7 @@ const Demo = () => {
         strokeWidth='0.5'
         width='100'
       >
-        <ReferenceLine.Background width='100' />
+        <ReferenceLine.Background endValue={dataBar[4].category} />
       </ReferenceLine>
     </Plot>
   );
