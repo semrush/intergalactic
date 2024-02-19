@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.1] - 2024-02-16
+
+### Fixed
+
+- Focusing trigger right after popper had been closed by mouse leave was not opening popper again.
+
 ## [5.20.0] - 2024-02-06
 
 ### Added
