@@ -2537,8 +2537,8 @@ describe('d3 charts visual regression', () => {
   });
 });
 
-describe('focus handling', () => {
-  test.concurrent('should correctly select next focusable element', async ({ expect }) => {
+describe('Focus skip to content after plot', () => {
+  test.sequential('nested case', async ({ expect }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -2570,7 +2570,7 @@ describe('focus handling', () => {
           </div>
           <div>some data</div>
           <div className={'one'}>
-            <div className={'two'} tabIndex={0} data-testid={'focusableElement'}>
+            <div className={'two'} tabIndex={0} data-testid={'focusableElement-1'}>
               <div className={'tree'}>some text 2</div>
             </div>
           </div>
@@ -2584,7 +2584,60 @@ describe('focus handling', () => {
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
 
-    expect(getByTestId('focusableElement')).toHaveFocus();
+    expect(getByTestId('focusableElement-1')).toHaveFocus();
+  });
+
+  test.sequential('nested and shifted case', async ({ expect }) => {
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: Math.abs(Math.sin(Math.exp(i))) * 10,
+      }));
+    const hints = makeDataHintsContainer();
+
+    const PlotComponent: React.FC = () => {
+      const plotRef = React.useRef<HTMLDivElement>(null);
+
+      return (
+        <>
+          <div ref={plotRef}>
+            <PlotA11yView
+              id={'plotView'}
+              data={data}
+              plotRef={plotRef}
+              plotLabel={'plot label'}
+              locale={'en'}
+              config={{}}
+              hints={hints}
+            />
+          </div>
+          <div className={'one'}>
+            <div className={'two'}>
+              <div />
+              <div />
+              <div className={'tree'}>some text 3</div>
+            </div>
+          </div>
+          <div>some data</div>
+          <div className={'one'}>
+            <div />
+            <div />
+            <div className={'two'} tabIndex={0} data-testid={'focusableElement-2'}>
+              <div className={'tree'}>some text 4</div>
+            </div>
+          </div>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<PlotComponent />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+
+    expect(getByTestId('focusableElement-2')).toHaveFocus();
   });
 });
 
