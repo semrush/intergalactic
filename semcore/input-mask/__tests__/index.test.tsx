@@ -38,7 +38,7 @@ describe('InputMask', () => {
     await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should correctly work with `Backspace`', async () => {
+  test.sequential('should correctly work with `Backspace`', async () => {
     const Component = () => (
       <InputMask size='l' mb={4}>
         <InputMask.Value

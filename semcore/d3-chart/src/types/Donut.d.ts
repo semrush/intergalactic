@@ -2,6 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { TooltipType } from './Tooltip';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IDonutProps extends DonutProps, UnknownProperties {}
@@ -24,6 +25,8 @@ export type DonutProps = Context & {
    * @default 0
    */
   paddingAngle?: number;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

@@ -86,6 +86,7 @@ class RootFilterTrigger extends Component {
         <NeighborLocation>
           <SFilterTrigger
             tag='button'
+            type='button'
             w='100%'
             size={size}
             placeholder={placeholder}
@@ -108,6 +109,7 @@ class RootFilterTrigger extends Component {
           {!empty && (
             <SFilterTrigger
               tag='button'
+              type='button'
               size={size}
               empty={empty}
               selected

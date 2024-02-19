@@ -36,37 +36,7 @@ Table: Font size and line height
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Text } from '@semcore/ui/typography';
-
-const Demo = () => (
-  <div>
-    <Text size={800} tag='p' mb={6} mt={0}>
-      48px / 3em / --fs-800,--lh-800
-    </Text>
-    <Text size={700} tag='p' mb={4} mt={0}>
-      36px / 2.25em / --fs-700,--lh-700
-    </Text>
-    <Text size={600} tag='p' mb={4} mt={0}>
-      32px / 2em / --fs-600,--lh-600
-    </Text>
-    <Text size={500} tag='p' mb={3} mt={0}>
-      24px / 1.5em / --fs-500,--lh-500
-    </Text>
-    <Text size={400} tag='p' mb={2} mt={0}>
-      20px / 1.25em / --fs-400,--lh-400
-    </Text>
-    <Text size={300} tag='p' mb={1} mt={0}>
-      16px / 1em / --fs-300,--lh-300
-    </Text>
-    <Text size={200} tag='p' mb={1} mt={0}>
-      14px / 0.875em / --fs-200,--lh-200
-    </Text>
-    <Text size={100} tag='p' mb={1} mt={0}>
-      12px / 0.75em / --fs-100,--lh-100
-    </Text>
-  </div>
-);
+  export Demo from './examples/font-size-and-line-height.tsx';
 </script>
 
 :::
@@ -139,22 +109,7 @@ There are three text sizes commonly used in our products:
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Text } from '@semcore/ui/typography';
-
-const Demo = () => (
-  <div>
-    <Text size={300} tag='p' mb={4} mt={0}>
-      Paragraph 16px / 1em / --fs-300,--lh-300
-    </Text>
-    <Text size={200} tag='p' mb={3} mt={0}>
-      Paragraph 14px / 0.875em / --fs-200,--lh-200
-    </Text>
-    <Text size={100} tag='p' mb={2} mt={0}>
-      Paragraph 12px / 0.75em / --fs-100,--lh-100
-    </Text>
-  </div>
-);
+  export Demo from './examples/12px-text.tsx';
 </script>
 
 :::
@@ -184,33 +139,7 @@ Table: Font styles for metrics
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
-
-const Demo = () => (
-  <div>
-    <Text size={600} tag='strong' mb={4} mt={0}>
-      Metric 32px / 2em / --fs-600,--lh-600
-    </Text>
-    <Box h={8} />
-    <Text size={500} tag='strong' mb={3} mt={0}>
-      Metric 24px / 1.5em / --fs-500,--lh-500
-    </Text>
-    <Box h={8} />
-    <Text size={400} tag='strong' mb={2} mt={0}>
-      Metric 20px / 1.25em / --fs-400,--lh-400
-    </Text>
-    <Box h={8} />
-    <Text size={300} tag='strong' mb={1} mt={0}>
-      Metric 16px / 1em / --fs-300,--lh-300
-    </Text>
-    <Box h={8} />
-    <Text size={200} tag='strong' mb={1} mt={0}>
-      Metric 14px / 0.875em / --fs-200,--lh-200
-    </Text>
-  </div>
-);
+  export Demo from './examples/metric.tsx';
 </script>
 
 :::
@@ -222,40 +151,7 @@ You have the flexibility to change the style of text by making it `bold`, `itali
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Hint, Text } from '@semcore/ui/typography';
-
-const Demo = () => (
-  <div>
-    <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='em'>good burger</Text>. Mm-mm-mm.
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text color='text-success'>good burger</Text>. Mm-mm-mm.
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Hint>good burger</Hint>. Mm-mm-mm.
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0} monospace>
-      monospace text
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0} uppercase>
-      uppercase text
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0} capitalize>
-      capitalize text
-    </Text>
-    <Text size={300} tag='p' mb={2} mt={0} lowercase>
-      LOWERCASE TEXT
-    </Text>
-  </div>
-);
+  export Demo from './examples/text-styles.tsx';
 </script>
 
 :::

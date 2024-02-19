@@ -55,7 +55,7 @@ To make use of Tooltip accessible for assistive tocologies, the `aria-describedb
 
 ## Singleton
 
-You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience.
+You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience. This example uses React context and memo to bypass select component rerendering and much improve performance during quick navigation.
 
 ::: sandbox
 

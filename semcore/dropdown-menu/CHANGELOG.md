@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.3] - 2024-02-16
+
+### Fixed
+
+- Removed deprecation messages about `interaction` property (that were added by mistake).
+
 ## [4.20.2] - 2024-02-09
 
 ### Changed

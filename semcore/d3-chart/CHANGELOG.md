@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.29.0] - 2024-02-16
+
+### Changed
+
+- Removed wrongly added deprecation messages about `ReferenceLine` `value` props.
+- Added `valueEnd` prop to `ReferenceLine.Background` component that allows to specify background width by chart value.
+
+### Fixed
+
+- `patterns` prop was missing in multiple chart types.
+
 ## [2.28.0] - 2024-02-13
 
 ### Changed

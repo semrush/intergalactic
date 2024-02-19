@@ -128,7 +128,7 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test.concurrent('should support change tag YAxis.Ticks', () => {
+  test.sequential('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -2308,7 +2308,7 @@ describe('d3 charts visual regression', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should render reference line', async ({ task }) => {
+  test.concurrent('should render reference line with fixed width', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -2347,6 +2347,52 @@ describe('d3 charts visual regression', () => {
             width='100'
           >
             <ReferenceLine.Background width='100' />
+          </ReferenceLine>
+        </Plot>
+      );
+    };
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('should render reference line with value based width', async ({ task }) => {
+    const data = Array(5)
+      .fill({})
+      .map((d, i) => ({
+        category: `Category ${i}`,
+        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
+      }));
+
+    const Component: React.FC = () => {
+      const width = 500;
+      const height = 300;
+      const xScale = scaleBand()
+        .range([90, width - 60])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
+      const yScale = scaleLinear()
+        .range([height - 40, 40])
+        .domain([0, 1000000]);
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <ReferenceLine title='Left data' value={data[0].category} />
+          <ReferenceLine title='Right data' position='right' value={data[1].category} />
+          <ReferenceLine title='Top data' position='top' value={900000} />
+          <ReferenceLine title='Bottom data' position='bottom' value={300000} />
+          <ReferenceLine
+            value={data[3].category}
+            strokeDasharray='3 3'
+            strokeWidth='0.5'
+            title='Mobile data'
+            width='100'
+          >
+            <ReferenceLine.Background endValue={data[4].category} />
           </ReferenceLine>
         </Plot>
       );

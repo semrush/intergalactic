@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.26.0-prerelease.1] - 2024-02-14
+## [4.26.1] - 2024-02-19
+
+### Fixed
+
+- Pressing enter in forms was triggering `FilterTrigger` to open.
+
+## [4.26.0] - 2024-02-14
 
 ### Changed
 

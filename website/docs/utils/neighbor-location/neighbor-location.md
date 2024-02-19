@@ -48,35 +48,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Button from '@semcore/ui/button';
-import Divider from '@semcore/ui/divider';
-import { Flex } from '@semcore/ui/flex-box';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-
-const Demo = () => {
-  return (
-    <Flex direction="column" gap={4}>
-      <Flex>
-        <Button neighborLocation='right'>Left</Button>
-        <Button neighborLocation='both'>Center</Button>
-        <Button neighborLocation='left'>Right</Button>
-      </Flex>
-      <Flex>
-        <Button neighborLocation='right' use='primary'>Left</Button>
-        <Button neighborLocation='both' use='primary'>Center</Button>
-        <Button neighborLocation='left' use='primary'>Right</Button>
-      </Flex>
-      <Flex>
-        <Button neighborLocation='right' use='primary' theme='success'>Left</Button>
-        <Button neighborLocation='both' use='primary' theme='success'>Center</Button>
-        <Button neighborLocation='left' use='primary' theme='success'>Right</Button>
-      </Flex>
-    </Flex>
-  );
-};
-
-
+  export Demo from './examples/grouped-buttons.tsx';
 </script>
 
 :::
@@ -86,41 +58,7 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Input from '@semcore/ui/input';
-import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  return (
-    <>
-      <Flex mb={4}>
-        <Input neighborLocation='right' w={200}>
-          <Input.Value placeholder='Placeholder' />
-        </Input>
-        <Button neighborLocation='left'>Button</Button>
-      </Flex>
-      <Flex mb={4}>
-        <Input neighborLocation='right' w={200}>
-          <Input.Value placeholder='Placeholder' />
-        </Input>
-        <Button neighborLocation='left' use='primary'>
-          Button
-        </Button>
-      </Flex>
-      <Flex>
-        <Input neighborLocation='right' w={200}>
-          <Input.Value placeholder='Placeholder' />
-        </Input>
-        <Button neighborLocation='left' use='primary' theme='success'>
-          Button
-        </Button>
-      </Flex>
-    </>
-  );
-};
-
-
+  export Demo from './examples/grouped-input-and-button.tsx';
 </script>
 
 :::
@@ -130,29 +68,7 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Input from '@semcore/ui/input';
-import Select from '@semcore/ui/select';
-import { Flex } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  return (
-    <Flex>
-      <Input neighborLocation='right' w={200}>
-        <Input.Value placeholder='Placeholder' />
-      </Input>
-      <Select
-        neighborLocation='left'
-        options={[
-          { value: 'Option 1', children: 'Option 1' },
-          { value: 'Option 2', children: 'Option 2' },
-        ]}
-      />
-    </Flex>
-  );
-};
-
-
+  export Demo from './examples/grouped-input-and-select.tsx';
 </script>
 
 :::
@@ -166,33 +82,7 @@ You can group input, select, and button.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Input from '@semcore/ui/input';
-import Select from '@semcore/ui/select';
-import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  return (
-    <Flex>
-      <Input neighborLocation='right' w={200}>
-        <Input.Value placeholder='Placeholder' />
-      </Input>
-      <Select
-        neighborLocation='both'
-        options={[
-          { value: 'Option 1', children: 'Option 1' },
-          { value: 'Option 2', children: 'Option 2' },
-        ]}
-      />
-      <Button neighborLocation='left' use='primary'>
-        Button
-      </Button>
-    </Flex>
-  );
-};
-
-
+  export Demo from './examples/grouped-input,-select,-and-button.tsx';
 </script>
 
 :::
@@ -209,29 +99,7 @@ For the correct type mapping in the TC, you must also pass the interface.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-
-const Demo = () => {
-  return (
-    <>
-      <NeighborLocation tag={Flex} mb={4}>
-        <Button use='primary'>Left</Button>
-        <Button use='primary'>Center</Button>
-        <Button use='primary'>Right</Button>
-      </NeighborLocation>
-      <NeighborLocation tag={Flex}>
-        <Button>Left</Button>
-        <Button>Center</Button>
-        <Button>Right</Button>
-      </NeighborLocation>
-    </>
-  );
-};
-
-
+  export Demo from './examples/adding-a-wrapper.tsx';
 </script>
 
 :::
@@ -249,30 +117,7 @@ You can use the render function or the element will be cloned.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-
-const CustomComponent: React.FC<{ neighborLocation?: string }> = ({ neighborLocation }) => {
-  return <span>{neighborLocation}</span>;
-};
-
-const Demo = () => {
-  return (
-    <NeighborLocation>
-      <NeighborLocation.Detect>
-        {(neighborLocation) => <span>{neighborLocation}</span>}
-      </NeighborLocation.Detect>
-      <NeighborLocation.Detect>
-        {(neighborLocation) => <span> | {neighborLocation} | </span>}
-      </NeighborLocation.Detect>
-      <NeighborLocation.Detect>
-        <CustomComponent />
-      </NeighborLocation.Detect>
-    </NeighborLocation>
-  );
-};
-
-
+  export Demo from './examples/using-a-custom-component.tsx';
 </script>
 
 :::

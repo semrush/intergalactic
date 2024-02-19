@@ -3,6 +3,7 @@ import { Context } from './context';
 import { FadeInOutProps } from '@semcore/animation';
 import { TooltipType } from './Tooltip';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IVennProps extends VennProps, UnknownProperties {}
@@ -18,6 +19,8 @@ export type VennProps = Context &
      * @default (circle1, circle2) => circle2.radius - circle1.radius
      */
     orientationOrder?: (c1: number, c2: number) => number;
+    /** Enables charts patterns that enhances charts accessability */
+    patterns?: PatternsConfig;
   };
 
 /** @deprecated */

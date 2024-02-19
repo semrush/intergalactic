@@ -2,6 +2,7 @@ import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { TooltipType } from './Tooltip';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IBubbleProps extends BubbleProps, UnknownProperties {}
@@ -26,6 +27,8 @@ export type BubbleProps = Context & {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

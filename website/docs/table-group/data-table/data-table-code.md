@@ -35,85 +35,7 @@ By default, scrolling is displayed at the bottom of the table, but it can also b
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head wMin={1000}>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body hMax={200} />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/scroll-in-table.tsx';
 </script>
 
 :::
@@ -125,85 +47,7 @@ You can insert tooltips, selectors, and other components into the table header u
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Tooltip from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { LinkTrigger } from '@semcore/ui/base-trigger';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword'>
-          <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-            <Text noWrap>
-              Keyword <Text color='text-secondary'>(1 - 100)</Text>
-            </Text>
-          </Tooltip>
-        </DataTable.Column>
-        <DataTable.Column name='kd'>
-          <DropdownMenu>
-            <DropdownMenu.Trigger>
-              <LinkTrigger color='text-primary' style={{ fontSize: '12px' }}>
-                KD,%
-              </LinkTrigger>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Menu>
-              <DropdownMenu.Item>Options 1</DropdownMenu.Item>
-              <DropdownMenu.Item>Options 2</DropdownMenu.Item>
-            </DropdownMenu.Menu>
-          </DropdownMenu>
-        </DataTable.Column>
-        <DataTable.Column name='cpc'>
-          <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-            CPC
-          </Tooltip>
-        </DataTable.Column>
-        <DataTable.Column name='vol'>
-          <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-            Vol.
-          </Tooltip>
-        </DataTable.Column>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/customizing-header.tsx';
 </script>
 
 :::
@@ -215,55 +59,7 @@ Columns are inherited from the `Flex` component and accept its parameters, such 
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto' />
-        <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100} />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/column-sizes.tsx';
 </script>
 
 :::
@@ -275,55 +71,7 @@ Columns and cells inherit properties from the `Flex` component, so you can use `
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' justifyContent='flex-end' />
-        <DataTable.Column name='cpc' children='CPC' justifyContent='flex-end' />
-        <DataTable.Column name='vol' children='Vol.' justifyContent='flex-end' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/column-alignment.tsx';
 </script>
 
 :::
@@ -448,78 +196,7 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import { Box } from '@semcore/ui/flex-box';
-import ScrollArea from '@semcore/ui/scroll-area';
-
-const Demo = () => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const [container, setContainer] = React.useState(null);
-  const top = 0; // Here should be height of Header in your application
-
-  return (
-    <>
-      <DataTable data={data}>
-        <Box position='sticky' top={top} zIndex={2}>
-          <DataTable.Head wMin={1000}>
-            <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' />
-            <DataTable.Column name='cpc' children='CPC' />
-            <DataTable.Column name='vol' children='Vol.' />
-          </DataTable.Head>
-        </Box>
-        <DataTable.Body />
-      </DataTable>
-      <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data}>
-        <Box position='sticky' top={top} zIndex={2}>
-          <DataTable.Head wMin={1000} ref={containerRef}>
-            <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' />
-            <DataTable.Column name='cpc' children='CPC' />
-            <DataTable.Column name='vol' children='Vol.' />
-          </DataTable.Head>
-          {container && <ScrollArea.Bar container={container} />}
-        </Box>
-        <DataTable.Body />
-      </DataTable>
-    </>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/fixed-header.tsx';
 </script>
 
 :::
@@ -535,55 +212,7 @@ If fixed columns are not visible in the example below, try reducing the window s
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head wMin={1000}>
-        <DataTable.Column name='keyword' children='Keyword' fixed='left' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' fixed='right' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/fixed-columns.tsx';
 </script>
 
 :::
@@ -599,58 +228,7 @@ Create a multi-level header by nesting columns within each other.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column vBorders wMax={'40%'}>
-          Organic Sessions
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Column>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/multi-level-header.tsx';
 </script>
 
 :::
@@ -662,59 +240,7 @@ Components added to `<DataTable.Head/>` will be inserted at the end of the heade
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import ProgressBar from '@semcore/ui/progress-bar';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-        <ProgressBar value={40} size='s' style={{ borderRadius: 0 }}>
-          <ProgressBar.Value style={{ borderRadius: 0 }} />
-        </ProgressBar>
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/additional-elements-in-header.tsx';
 </script>
 
 :::
@@ -726,66 +252,7 @@ Move the table header outside of the table using a portal. All functionality wil
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Divider from '@semcore/ui/divider';
-import Portal, { PortalProvider } from '@semcore/ui/portal';
-
-const Demo = () => {
-  const portalRef = React.useRef(null);
-  return (
-    <>
-      <div style={{ border: '1px solid' }} ref={portalRef} />
-      <Divider my={5} />
-      <DataTable style={{ border: '1px solid' }} data={data}>
-        <PortalProvider value={portalRef}>
-          <Portal>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' children='Keyword' />
-              <DataTable.Column name='kd' children='KD,%' />
-              <DataTable.Column name='cpc' children='CPC' />
-              <DataTable.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-          </Portal>
-        </PortalProvider>
-        <DataTable.Body />
-      </DataTable>
-    </>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/header-separation.tsx';
 </script>
 
 :::
@@ -803,85 +270,7 @@ You can provide `data` property for `<DataTable.Row/>`. It is not used in the co
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Row data={data}>
-          {(props, row) => {
-            return {
-              theme: row['kd'] === '-' ? 'warning' : props.theme,
-            };
-          }}
-        </DataTable.Row>
-        <DataTable.Row data={data}>
-          {(props, row, index) => {
-            return {
-              style: {
-                cursor: 'pointer',
-              },
-              onClick: () => {
-                alert(`Click row
-                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
-              },
-              onKeyDown: (event) => {
-                if (event.key === ' ' || event.key === 'Enter')
-                  alert(`Click row
-                    props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                    row: ${JSON.stringify(row, null, '  ')};
-                    index: ${index};`);
-              },
-            };
-          }}
-        </DataTable.Row>
-      </DataTable.Body>
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/access-to-rows.tsx';
 </script>
 
 :::
@@ -897,86 +286,7 @@ You can provide `data` property for `<DataTable.Cell/>`. It is not used in the c
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Link from '@semcore/ui/link';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='keyword'>
-          {(props, row) => {
-            return {
-              children: <Link>{row[props.name]}</Link>,
-            };
-          }}
-        </DataTable.Cell>
-        <DataTable.Cell data={data} name='keyword'>
-          {(props, row, index) => {
-            return {
-              style: {
-                cursor: 'pointer',
-              },
-              onClick: () => {
-                alert(`Click row 
-                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
-              },
-              onKeyDown: (event) => {
-                if (event.key === ' ' || event.key === 'Enter')
-                  alert(`Click row 
-                    props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                    row: ${JSON.stringify(row, null, '  ')};
-                    index: ${index};`);
-              },
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/access-to-cells.tsx';
 </script>
 
 :::
@@ -988,64 +298,7 @@ To apply properties to multiple table cells, define `<DataTable.Cell />` with th
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Spin from '@semcore/ui/spin';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <DataTable.Cell data={data} name='keyword/kd/cpc/vol'>
-          {(props, row) => {
-            return {
-              children: ['-', '$0', 'n/a'].includes(row[props.name]) ? <Spin /> : props.children,
-            };
-          }}
-        </DataTable.Cell>
-      </DataTable.Body>
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/access-to-set-of-cells.tsx';
 </script>
 
 :::
@@ -1057,71 +310,7 @@ Components added to `<DataTable.Body/>` will be inserted at the end of the table
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <div
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: 'calc(45px * 2)',
-            left: 0,
-            bottom: 0,
-            background:
-              'linear-gradient(45deg, rgba(255, 187, 51, 0.3) 25%, rgba(85, 136, 170, 0.3) 0px, rgba(85, 136,' +
-              ' 170, 0.3)' +
-              ' 50%,' +
-              ' rgba(255, 187, 51, 0.3) 0px, rgba(255, 187, 51, 0.3) 75%, rgba(85, 136, 170, 0.3) 0px) 0% 0% / 42px 42px',
-            zIndex: 2,
-          }}
-        />
-      </DataTable.Body>
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
 </script>
 
 :::
@@ -1133,69 +322,7 @@ To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)`.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import { Box, Flex } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body>
-        <Flex>
-          <Box p={3} style={{ width: 'var(--keyword_width)' }}>
-            Summary
-          </Box>
-          <Box p={3} style={{ width: 'var(--kd_width)' }} />
-          <Box p={3} style={{ width: 'var(--cpc_width)' }}>
-            {data.reduce((sum, row) => sum + row.cpc, 0)}
-          </Box>
-          <Box p={3} style={{ width: 'var(--vol_width)' }}>
-            {data.reduce((sum, row) => sum + row.vol, 0)}
-          </Box>
-        </Flex>
-      </DataTable.Body>
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: 77.8,
-    cpc: 125,
-    vol: 32500000,
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: 11.2,
-    cpc: 3.4,
-    vol: 65457920,
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: 10,
-    cpc: 0.65,
-    vol: 47354640,
-  },
-  {
-    keyword: 'ebay buy',
-    kd: 0,
-    cpc: 0,
-    vol: 0,
-  },
-  {
-    keyword: 'ebay buy',
-    kd: 75.89,
-    cpc: 0,
-    vol: 21644290,
-  },
-];
+  export Demo from './examples/custom-footer-cells.tsx';
 </script>
 
 :::
@@ -1214,138 +341,7 @@ Extend table functionality using the `@semcore/ui/accordion` component. This all
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { scaleLinear } from 'd3-scale';
-import DataTable from '@semcore/ui/data-table';
-import Accordion from '@semcore/ui/accordion';
-import { Flex } from '@semcore/ui/flex-box';
-import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
-
-const RowAccordion = React.forwardRef(function (
-  { value, collapse = {}, ...props }: any,
-  ref: React.Ref<HTMLDivElement>,
-) {
-  return (
-    <Accordion.Item value={value} ref={ref}>
-      <Accordion.Item.Toggle {...props} />
-      <Accordion.Item.Collapse {...collapse} />
-    </Accordion.Item>
-  );
-});
-
-const Demo = () => {
-  const [exapnded, setExapnded] = React.useState<number[]>([]);
-
-  return (
-    /* [1] Wrapping the table in the Accordion control component; */
-    <Accordion value={exapnded} onChange={setExapnded}>
-      <DataTable data={data}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body>
-          {/* [2] Replacing the tag in DataTable.Row with our extended tag with Accordion.Item */}
-          <DataTable.Row tag={RowAccordion}>
-            {(_props, _row, index) => {
-              return {
-                /* [3] Setting the value for Accordion.Item; */
-                value: index,
-                /* [4] Calculating the active line to highlight it */
-                active: exapnded.includes(index),
-                collapse: {
-                  /* [5] Render the children to accordion content; */
-                  children: <ChartExample />,
-                },
-              };
-            }}
-          </DataTable.Row>
-          <DataTable.Cell data={data} name='keyword'>
-            {(props) => {
-              return {
-                children: (
-                  <Flex alignItems='center'>
-                    {/* [6] Set the arrow (Chevron icon), if necessary. */}
-                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
-                    {props.children}
-                  </Flex>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
-      </DataTable>
-    </Accordion>
-  );
-};
-
-const ChartExample = () => {
-  const [[width, height], setSize] = React.useState([0, 0]);
-  const MARGIN = 40;
-  const dataChart = Array(20)
-    .fill({})
-    .map((d, i) => ({
-      x: i,
-      y: Math.random() * 10,
-    }));
-  const xScale = scaleLinear()
-    .range([MARGIN, width - MARGIN])
-    .domain(minMax(dataChart, 'x'));
-  const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([0, 10]);
-  return (
-    <ResponsiveContainer h={300} onResize={setSize}>
-      <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Line x='x' y='y'>
-          <Line.Dots display />
-        </Line>
-      </Plot>
-    </ResponsiveContainer>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/accordion-inside-table.tsx';
 </script>
 
 :::
@@ -1360,108 +356,7 @@ We use the [example with the accordion above](/table-group/data-table/data-table
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Accordion from '@semcore/ui/accordion';
-import { Flex } from '@semcore/ui/flex-box';
-
-const RowAccordion = React.forwardRef(
-  ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => {
-    return (
-      <Accordion.Item value={value} ref={ref}>
-        <Accordion.Item.Toggle {...props} />
-        <Accordion.Item.Collapse {...collapse} />
-      </Accordion.Item>
-    );
-  },
-);
-
-const Demo = () => {
-  const [value, setValue] = React.useState<number[]>([]);
-
-  return (
-    <Accordion value={value} onChange={setValue}>
-      <DataTable data={data}>
-        <DataTable.Head>
-          <DataTable.Column name='keyword' children='Keyword' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body>
-          <DataTable.Row tag={RowAccordion}>
-            {(_props, _row, index) => {
-              return {
-                value: index,
-                active: value.includes(index),
-                collapse: {
-                  children: (
-                    <DataTable data={data}>
-                      {/* [1] Hide the table header */}
-                      <DataTable.Head hidden>
-                        {/* [2] Set "inherit" to use the size from the top table for each column. */}
-                        <DataTable.Column name='keyword' flex='inherit' />
-                        <DataTable.Column name='kd' flex='inherit' />
-                        <DataTable.Column name='cpc' flex='inherit' />
-                        <DataTable.Column name='vol' flex='inherit' />
-                      </DataTable.Head>
-                      <DataTable.Body />
-                    </DataTable>
-                  ),
-                },
-              };
-            }}
-          </DataTable.Row>
-          <DataTable.Cell data={data} name='keyword'>
-            {(props) => {
-              return {
-                children: (
-                  <Flex alignItems='center'>
-                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
-                    {props.children}
-                  </Flex>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
-      </DataTable>
-    </Accordion>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/table-in-table.tsx';
 </script>
 
 :::
@@ -1477,107 +372,7 @@ We use the [example with the table above](/table-group/data-table/data-table#tab
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Accordion from '@semcore/ui/accordion';
-import { Flex } from '@semcore/ui/flex-box';
-
-const RowAccordion = React.forwardRef(
-  ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => {
-    return (
-      <Accordion.Item value={value} ref={ref}>
-        <Accordion.Item.Toggle {...props} />
-        <Accordion.Item.Collapse {...collapse} />
-      </Accordion.Item>
-    );
-  },
-);
-
-const Demo = () => {
-  const [value, setValue] = React.useState([]);
-  return (
-    <Accordion value={value} onChange={setValue}>
-      <DataTable data={data}>
-        <DataTable.Head wMin={1000}>
-          <DataTable.Column name='keyword' children='Keyword' fixed='left' />
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Head>
-        <DataTable.Body>
-          <DataTable.Row tag={RowAccordion}>
-            {(_props, _row, index) => {
-              return {
-                value: index,
-                active: value.includes(index),
-                collapse: {
-                  children: (
-                    <DataTable data={data}>
-                      {/* [1] Set the desired z-index */}
-                      <DataTable.Head hidden z-index={1}>
-                        <DataTable.Column name='keyword' flex='inherit' fixed='left' />
-                        <DataTable.Column name='kd' flex='inherit' />
-                        <DataTable.Column name='cpc' flex='inherit' />
-                        <DataTable.Column name='vol' flex='inherit' />
-                      </DataTable.Head>
-                      {/* [2] Set a variable to block the scroll */}
-                      <DataTable.Body disabledScroll />
-                    </DataTable>
-                  ),
-                },
-              };
-            }}
-          </DataTable.Row>
-          <DataTable.Cell data={data} name='keyword'>
-            {(props) => {
-              return {
-                children: (
-                  <Flex alignItems='center'>
-                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
-                    {props.children}
-                  </Flex>
-                ),
-              };
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
-      </DataTable>
-    </Accordion>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/table-in-table-with-fixed-column.tsx';
 </script>
 
 :::
@@ -1589,45 +384,7 @@ Enable scroll virtualization using the `virtualScroll` property.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable, { ROW_GROUP } from '@semcore/ui/data-table';
-
-const keyword = ['ebay buy', 'www.ebay.com', 'ebay buy'];
-const kd = ['77.8', '10', '11.2', '-', '75.89'];
-const cpc = ['$3.4', '$0.65', '$1.25', '$0', '$0'];
-const vol = ['32,500,000', '65,457,920', '47,354,640', 'n/a', '21,644,290'];
-
-const data = Array(10000)
-  .fill(0)
-  .map((_, index) => ({
-    id: `#${index + 1}`,
-    keyword: keyword[Math.floor(keyword.length * Math.random())],
-    [ROW_GROUP]: [
-      {
-        kd: kd[Math.floor(kd.length * Math.random())],
-        cpc: cpc[Math.floor(cpc.length * Math.random())],
-        vol: vol[Math.floor(vol.length * Math.random())],
-      },
-    ],
-  }));
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='id' children='ID' />
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column>
-          Organic Sessions
-          <DataTable.Column name='kd' children='KD,%' />
-          <DataTable.Column name='cpc' children='CPC' />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Column>
-      </DataTable.Head>
-      <DataTable.Body h={400} virtualScroll />
-    </DataTable>
-  );
-};
+  export Demo from './examples/virtual-scroll-in-table.tsx';
 </script>
 
 :::
@@ -1639,67 +396,7 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import SpinContainer from '@semcore/ui/spin-container';
-
-const Demo = () => {
-  const [loading, setLoading] = React.useState(true);
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setLoading(!loading);
-    }, 1500);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [loading]);
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
-        <DataTable.Body />
-      </SpinContainer>
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/download-status.tsx';
 </script>
 
 :::
@@ -1711,67 +408,7 @@ Add a skeleton to the table by directly substituting it in the `data` or replaci
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Skeleton from '@semcore/ui/skeleton';
-
-function getSkeleton() {
-  return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
-    cssVar: `--${c}_width`,
-    name: c,
-    data: (
-      <Skeleton height={17}>
-        <Skeleton.Text y='5' width='60%' />
-      </Skeleton>
-    ),
-  }));
-}
-
-const Demo = () => {
-  const [loading, setLoading] = React.useState(true);
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setLoading(!loading);
-    }, 2000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [loading]);
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body
-        {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
-      />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-];
+  export Demo from './examples/skeleton-in-table.tsx';
 </script>
 
 :::
@@ -1783,53 +420,7 @@ Merge two or more columns by changing the table data and using `/` to combine co
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    'kd/cpc/vol': 'This is columns group. This is columns group. This is columns group.',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
+  export Demo from './examples/columns-merging.tsx';
 </script>
 
 :::
@@ -1841,60 +432,7 @@ Merge two or more rows by adding a special grouping key to the table data.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable, { ROW_GROUP } from '@semcore/ui/data-table';
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    [ROW_GROUP]: [
-      {
-        kd: '77.8',
-        cpc: '$1.25',
-        vol: '32,500,000',
-      },
-      {
-        kd: '-',
-        cpc: '$0',
-        vol: 'n/a',
-      },
-      {
-        kd: '75.89',
-        cpc: '$0',
-        vol: '21,644,290',
-      },
-    ],
-  },
-  {
-    keyword: 'www.ebay.com',
-    [ROW_GROUP]: [
-      {
-        kd: '11.2',
-        cpc: '$3.4',
-        vol: '65,457,920',
-      },
-      {
-        kd: '10',
-        cpc: '$0.65',
-        vol: '47,354,640',
-      },
-    ],
-  },
-];
-
-const Demo = () => {
-  return (
-    <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
+  export Demo from './examples/rows-merging.tsx';
 </script>
 
 :::
@@ -1906,55 +444,7 @@ Use the secondary table for compactly displaying a small amount of data.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data} use='secondary' sort={['kd', 'desc']}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' sortable />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/secondary-table.tsx';
 </script>
 
 :::
@@ -1966,202 +456,7 @@ Export the table to an image.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
-import DataTable from '@semcore/ui/data-table';
-
-const extensions = ['png', 'jpeg', 'webp'];
-
-const Demo = () => {
-  const svgRef = React.useRef<SVGSVGElement>(null);
-  const width = 500;
-  const height = 300;
-
-  const downloadImage = React.useCallback(
-    (extention: string) => async () => {
-      const svgElement = svgRef.current;
-      let svgText = svgElementToSvgText(svgElement);
-      svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
-      svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
-
-      const downloadUrl = await svgText2DownloadUrl(svgText, 2 * width, 2 * height, extention);
-
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `image.${extention}`;
-
-      link.dispatchEvent(
-        new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        }),
-      );
-
-      setTimeout(() => {
-        link.remove();
-      }, 100);
-    },
-    [],
-  );
-
-  return (
-    <Flex>
-      <svg ref={svgRef} xmlns='http://www.w3.org/2000/svg' width={width} height={height}>
-        <foreignObject width='100%' height='100%'>
-          <DataTable data={data}>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' children='Keyword' />
-              <DataTable.Column name='kd' children='KD,%' />
-              <DataTable.Column name='cpc' children='CPC' />
-              <DataTable.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-            <DataTable.Body />
-          </DataTable>
-        </foreignObject>
-      </svg>
-      <DropdownMenu>
-        <DropdownMenu.Trigger tag={Button} ml={4}>
-          <Button.Addon>
-            <FileExportM />
-          </Button.Addon>
-          <Button.Text>Export</Button.Text>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax='257px'>
-          <DropdownMenu.List>
-            {extensions.map((name) => (
-              <DropdownMenu.Item key={name} onClick={downloadImage(name)}>
-                {name}
-              </DropdownMenu.Item>
-            ))}
-          </DropdownMenu.List>
-        </DropdownMenu.Popper>
-      </DropdownMenu>
-    </Flex>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
-
-const getCSSStyles = (parentElement: Element) => {
-  const selectorTextArr: string[] = [];
-
-  for (let c = 0; c < parentElement.classList.length; c++) {
-    if (!selectorTextArr.includes(`.${parentElement.classList[c]}`))
-      selectorTextArr.push(`.${parentElement.classList[c]}`);
-  }
-
-  // Add Children element Ids and Classes to the list
-  const nodes = parentElement.getElementsByTagName('*');
-  for (let i = 0; i < nodes.length; i++) {
-    const id = nodes[i].id;
-    if (!selectorTextArr.includes(`#${id}`)) selectorTextArr.push(`#${id}`);
-
-    const classes = nodes[i].classList;
-    for (let c = 0; c < classes.length; c++)
-      if (!selectorTextArr.includes(`.${classes[c]}`)) selectorTextArr.push(`.${classes[c]}`);
-  }
-
-  // Extract CSS Rules
-  let extractedCSSText = '';
-  for (let i = 0; i < document.styleSheets.length; i++) {
-    const s = document.styleSheets[i];
-
-    try {
-      if (!s.cssRules) continue;
-    } catch (e) {
-      if (e.name !== 'SecurityError') throw e; // for Firefox
-      continue;
-    }
-
-    const cssRules: any = s.cssRules;
-    for (let r = 0; r < cssRules.length; r++) {
-      if (
-        cssRules[r].selectorText &&
-        selectorTextArr.some((s) => cssRules[r].selectorText.includes(s))
-      )
-        extractedCSSText += cssRules[r].cssText;
-    }
-  }
-  return extractedCSSText;
-};
-
-const appendCSS = (cssText: string, element: Element) => {
-  const styleElement = document.createElement('style');
-  styleElement.setAttribute('type', 'text/css');
-  styleElement.innerHTML = cssText;
-  const refNode = element.hasChildNodes() ? element.children[0] : null;
-  element.insertBefore(styleElement, refNode);
-};
-
-const svgElementToSvgText = (svgNode: Element) => {
-  svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
-  const cssStyleText = getCSSStyles(svgNode);
-  appendCSS(cssStyleText, svgNode);
-
-  const serializer = new XMLSerializer();
-
-  const svgString = serializer.serializeToString(svgNode);
-
-  return svgString;
-};
-
-const svgText2DownloadUrl = async (svg: string, width: number, height: number, format: string) =>
-  new Promise<string>((resolve, reject) => {
-    const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svg)))}`;
-
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-
-    canvas.width = width;
-    canvas.height = height;
-
-    const image = new Image();
-    image.onload = function () {
-      context.clearRect(0, 0, width, height);
-      context.drawImage(image, 0, 0, width, height);
-
-      const img = canvas.toDataURL(`image/${format}`);
-      resolve(img);
-    };
-    image.onerror = reject;
-
-    image.src = imgsrc;
-  });
+  export Demo from './examples/export-in-image.tsx';
 </script>
 
 :::
@@ -2173,55 +468,7 @@ Reduce table cel  paddings by adding the `compact` property.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-
-const Demo = () => {
-  return (
-    <DataTable data={data} compact>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-  },
-];
+  export Demo from './examples/compact.tsx';
 </script>
 
 :::
@@ -2233,66 +480,7 @@ Add borders to columns by passing the `vBorders` property to specific columns.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable, { DataTableSort } from '@semcore/ui/data-table';
-
-const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
-
-  return (
-    <DataTable data={data} sort={sort} onSortChange={setSort}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' sortable />
-        <DataTable.Column vBorders>
-          Organic Sessions
-          <DataTable.Column name='kd' children='KD' sortable />
-          <DataTable.Column name='cpc' children='CPC' sortable />
-          <DataTable.Column name='vol' children='Vol.' />
-        </DataTable.Column>
-        <DataTable.Column name='other' children='Other' />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-    other: 'ebay buy',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-    other: 'ebay buy',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-    other: 'ebay buy',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-    other: 'ebay buy',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-    other: 'ebay buy',
-  },
-];
+  export Demo from './examples/borders.tsx';
 </script>
 
 :::
@@ -2308,63 +496,7 @@ Be cautious with columns with a `wMax` property, as the sort icon may overlap th
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import DataTable, { DataTableSort } from '@semcore/ui/data-table';
-
-const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
-
-  return (
-    <DataTable data={data} sort={sort} onSortChange={setSort}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' wMax={'300px'} />
-        <DataTable.Column name='kd' children='Difficulty Difficulty' sortable wMax={'85px'} />
-        <DataTable.Column name='cpc' children='CPC' sortable />
-        <DataTable.Column name='vol' children='Vol.' sortable wMax={'300px'} />
-        <DataTable.Column name='md' children='Marketing SEO' sortable wMax={'90px'} />
-      </DataTable.Head>
-      <DataTable.Body />
-    </DataTable>
-  );
-};
-
-const data = [
-  {
-    keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
-    md: '221',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
-    md: '221',
-  },
-  {
-    keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
-    md: 'n/a',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
-    md: '221',
-  },
-  {
-    keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
-    md: '221',
-  },
-];
+  export Demo from './examples/сolumn-expand.tsx';
 </script>
 
 :::

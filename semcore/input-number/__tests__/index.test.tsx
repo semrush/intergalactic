@@ -21,7 +21,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123', expect.anything());
   });
 
-  test.concurrent('Should accept float numbers', () => {
+  test.sequential('Should accept float numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -33,7 +33,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
-  test.concurrent('Should correct round float numbers with step less than 1', () => {
+  test.sequential('Should correct round float numbers with step less than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -45,7 +45,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('0.3', expect.anything());
   });
 
-  test.concurrent('Should correct round float numbers with step more than 1', () => {
+  test.sequential('Should correct round float numbers with step more than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -57,7 +57,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
-  test.concurrent('Should not accept letters', () => {
+  test.sequential('Should not accept letters', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -81,7 +81,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('10', expect.anything());
   });
 
-  test.concurrent('Should not accept value which is smaller than min prop', () => {
+  test.sequential('Should not accept value which is smaller than min prop', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -178,7 +178,7 @@ describe('InputNumber', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support controls hover', async ({ task }) => {
+  test.sequential('Should support controls hover', async ({ task }) => {
     const component = (
       <InputNumber>
         <InputNumber.Value />

@@ -281,7 +281,7 @@ class Popper extends Component {
       }, 0);
     });
     const ignoringDuration = 2000;
-    if (!visible) {
+    if (!visible && ['onClick', 'onBlur'].includes(action)) {
       this.setState({
         ignoreTriggerFocusUntil: now + ignoringDuration,
       });
