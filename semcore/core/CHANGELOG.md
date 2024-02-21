@@ -2,239 +2,239 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.17.3-prerelease.3] - 2024-02-21
+## [2.17.3-prerelease.4] - 2024-02-21
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3]).
 
 ## [2.17.2] - 2024-02-09
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.1 ~> 4.20.2]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.1 ~> 4.20.2]).
 
 ## [2.17.1] - 2024-02-06
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.0 ~> 4.20.1]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.0 ~> 4.20.1]).
 
 ## [2.17.0] - 2024-02-01
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.19.1 ~> 4.20.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.19.1 ~> 4.20.0]).
 
 ## [2.16.1] - 2024-02-01
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.19.0 ~> 4.19.1]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.19.0 ~> 4.19.1]).
 
 ## [2.16.0] - 2024-01-31
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.18.0 ~> 4.19.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.18.0 ~> 4.19.0]).
 
 ## [2.15.0] - 2024-01-19
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.17.0 ~> 4.18.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.17.0 ~> 4.18.0]).
 
 ## [2.14.0] - 2024-01-19
 
 ### Added
 
-- `wrapIntergalacticComponent` utility for wrapping components.
+* `wrapIntergalacticComponent` utility for wrapping components.
 
 ## [2.13.1] - 2024-01-10
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.16.0 ~> 4.16.2]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.16.0 ~> 4.16.2]).
 
 ## [2.13.0] - 2023-12-22
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.15.1 ~> 4.16.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.15.1 ~> 4.16.0]).
 
 ## [2.12.1] - 2023-12-14
 
 ### Fixed
 
-- Internal types in `Component`.
+* Internal types in `Component`.
 
 ## [2.12.0] - 2023-11-29
 
 ### Changed
 
-- Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`. For INTERNAL usage only. Don't use it.
+* Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`. For INTERNAL usage only. Don't use it.
 
 ## [2.11.0] - 2023-12-04
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0]).
 
 ## [2.10.0] - 2023-11-24
 
 ### Changed
 
-- Types for `abstract class RootComponent`.
+* Types for `abstract class RootComponent`.
 
 ## [2.9.2] - 2023-11-21
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
 
 ## [2.9.1] - 2023-11-09
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2]).
 
 ## [2.9.0] - 2023-11-06
 
 ### Fixed
 
-- Fixed components css output of complex selectors.
+* Fixed components css output of complex selectors.
 
 ## [2.8.0] - 2023-10-27
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.8.4 ~> 4.9.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.8.4 ~> 4.9.0]).
 
 ## [2.7.7] - 2023-10-24
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
 
 ## [2.7.6] - 2023-10-16
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3]).
 
 ## [2.7.5] - 2023-10-06
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2]).
 
 ## [2.7.4] - 2023-10-03
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1]).
 
 ## [2.7.3] - 2023-10-02
 
 ### Changed
 
-- Improved core component typings flexibility
+* Improved core component typings flexibility
 
 ## [2.7.2] - 2023-09-20
 
 ### Fixed
 
-- Release doesn't contain any meaningful changes but contains inner dependencies fixes required by the previous release.
+* Release doesn't contain any meaningful changes but contains inner dependencies fixes required by the previous release.
 
 ## [2.7.1] - 2023-09-20
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.7.0 ~> 4.7.1]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.7.0 ~> 4.7.1]).
 
 ## [2.7.0] - 2023-09-13
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.6.3 ~> 4.7.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.6.3 ~> 4.7.0]).
 
 ## [2.6.3] - 2023-09-12
 
 ### Fixed
 
-- Fixed `locale` propagation in complex components.
+* Fixed `locale` propagation in complex components.
 
 ## [2.6.2] - 2023-09-08
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.6.1 ~> 4.6.2]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.6.1 ~> 4.6.2]).
 
 ## [2.6.1] - 2023-09-05
 
 ### Fixed
 
-- Functional component default props warnings from the nextjs.
+* Functional component default props warnings from the nextjs.
 
 ## [2.6.0] - 2023-09-04
 
 ### Changed
 
-- Core types compilation speed up.
+* Core types compilation speed up.
 
 ## [2.4.1] - 2023-08-24
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1]).
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1]).
 
 ## [2.4.0] - 2023-08-23
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/utils` [4.3.1 ~> 4.4.0]).
+* Version preminor update due to children dependencies update (`@semcore/utils` [4.3.1 ~> 4.4.0]).
 
 ## [2.3.1] - 2023-08-21
 
 ### Fixed
 
-- Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
+* Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
 
 ## [2.3.0] - 2023-08-18
 
 ### Added
 
-- Exported type `Intergalactic.DomProps` that may be helpful for typing component wrappers.
+* Exported type `Intergalactic.DomProps` that may be helpful for typing component wrappers.
 
 ## [2.2.1] - 2023-08-14
 
 ### Changed
 
-- Internal typings update that fixes edge cases of props nesting.
+* Internal typings update that fixes edge cases of props nesting.
 
 ## [2.2.0] - 2023-08-07
 
 ### Changed
 
-- Version minor update due to children dependencies update (`@semcore/utils` [4.0.0 ~> 4.1.0]).
+* Version minor update due to children dependencies update (`@semcore/utils` [4.0.0 ~> 4.1.0]).
 
 ## [2.1.0] - 2023-08-01
 
 ### Change
 
-- Supported `tag={React.Fragment}` for all root components.
+* Supported `tag={React.Fragment}` for all root components.
 
 ## [2.0.0] - 2023-06-20
 
 ### Break
 
-- Strict typings.
+* Strict typings.
 
 ## [1.16.0] - 2023-06-20
 
 ### Changed
 
-- Internal API for exposing component destructuring children.
+* Internal API for exposing component destructuring children.
 
 ## [1.15.8] - 2023-06-30
 
@@ -242,67 +242,67 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [1.15.6] - 2023-06-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [1.15.5] - 2023-06-12
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
 
 ## [1.15.4] - 2023-06-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
 
 ## [1.15.3] - 2023-06-07
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
 
 ## [1.15.2] - 2023-05-31
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
 
 ## [1.15.1] - 2023-05-25
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
 
 ## [1.15.0] - 2023-05-24
 
 ### Changed
 
-- Prop `locale` default value is provided for all Intergalactic components under this `I18nProvider`.
+* Prop `locale` default value is provided for all Intergalactic components under this `I18nProvider`.
 
 ## [1.14.12] - 2023-05-22
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
 
 ## [1.14.11] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [1.14.10] - 2023-05-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [1.14.8] - 2023-04-24
 
@@ -310,19 +310,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
 
 ## [1.14.0] - 2023-03-16
 
 ### Changed
 
-- Changed logic of merging component styles and context styles due to losing context styles before.
+* Changed logic of merging component styles and context styles due to losing context styles before.
 
 ## [1.13.19] - 2023-03-16
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.47.2 ~> 3.47.3]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.47.2 ~> 3.47.3]).
 
 ## [1.13.15] - 2023-02-09
 
@@ -330,7 +330,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [1.13.12] - 2023-01-10
 
@@ -338,13 +338,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [1.13.8] - 2022-12-13
 
 ### Changed
 
-- Added `react-dom` to peer dependencies.
+* Added `react-dom` to peer dependencies.
 
 ## [1.13.7] - 2022-12-12
 
@@ -352,279 +352,279 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0]).
 
 ## [1.13.2] - 2022-10-18
 
 ### Fixed
 
-- Fixed calculation children index.
+* Fixed calculation children index.
 
 ## [1.13.1] - 2022-10-17
 
 ### Changed
 
-- Version patch update due to children dependencies update.
+* Version patch update due to children dependencies update.
 
 ## [1.13.0] - 2022-10-10
 
 ### Changed
 
-- Added support for React 18 🔥
+* Added support for React 18 🔥
 
 ## [1.12.0] - 2022-10-04
 
 ### Changed
 
-- Changed approach to children index calculation with React parallel rendering.
+* Changed approach to children index calculation with React parallel rendering.
 
 ## [1.11.13] - 2022-10-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [1.11.3] - 2022-02-24
 
 ### Added
 
-- Added repository field to package.json file.
+* Added repository field to package.json file.
 
 ## [1.11.2] - 2021-8-26
 
 ### Changed
 
-- Add 'sideEffect=false' for more optimal build via webpack
+* Add 'sideEffect=false' for more optimal build via webpack
 
 ## [1.11.1] - 2021-05-11
 
 ### Changed
 
-- Extended type for Root
+* Extended type for Root
 
 ## [1.11.0] - 2021-04-26
 
 ### Added
 
-- Added Root type for `babel-plugin-root`.
-- Added a new system for processing styles.
+* Added Root type for `babel-plugin-root`.
+* Added a new system for processing styles.
 
 ## [1.10.0] - 2020-12-28
 
 ### Added
 
-- Added support custom enhancement.
+* Added support custom enhancement.
 
 ## [1.9.0] - 2020-12-17
 
 ### Added
 
-- Added supported react@17.
+* Added supported react@17.
 
 ## [1.8.3] - 2020-11-20
 
 ### Added
 
-- Add shared types.
+* Add shared types.
 
 ## [1.8.2] - 2020-10-14
 
 ### Fixed
 
-- fixed wrong path for ES6 build
+* fixed wrong path for ES6 build
 
 ## [1.8.1] - 2020-10-09
 
 ### Fixed
 
-- Fixed transfer of many arguments to handlers
+* Fixed transfer of many arguments to handlers
 
 ## [1.8.0] - 2020-09-30
 
 ### Added
 
-- Added generic type `PropGetterFn` to describe prop-getters
+* Added generic type `PropGetterFn` to describe prop-getters
 
 ## [1.7.0] - 2020-08-25
 
 ### Added
 
-- Добавлена возможность создавать generic-компоненты через `createComponent`
+* Добавлена возможность создавать generic-компоненты через `createComponent`
 
 ### Fixed
 
-- Исправлена типизация второго аргумента (handlers) render-функций компонентов
-- Исправлено объединение prop-getter'ов потомка и родителя в рендер-функциях компонентов
+* Исправлена типизация второго аргумента (handlers) render-функций компонентов
+* Исправлено объединение prop-getter'ов потомка и родителя в рендер-функциях компонентов
 
 ## [1.6.2] - 2020-07-15
 
 ### Fixed
 
-- Исправлена типизация children функций у некоторых унаследованных элементов
+* Исправлена типизация children функций у некоторых унаследованных элементов
 
 ## [1.6.0] - 2020-07-14
 
 ### Added
 
-- Автоматическую установку `data-ui-name` для компонентов созданных через функцию `createBaseComponent`
-- Добавлена мемоизация на функции которые начинаются с `bindHandler`, для биндинга значений хендлеров в геттер-функциях
+* Автоматическую установку `data-ui-name` для компонентов созданных через функцию `createBaseComponent`
+* Добавлена мемоизация на функции которые начинаются с `bindHandler`, для биндинга значений хендлеров в геттер-функциях
 
 ## [1.5.0] - 2020-07-10
 
 ### Added
 
-- Добавлено автоматическое расширение контекста рутового компонента контекстом дочерних
+* Добавлено автоматическое расширение контекста рутового компонента контекстом дочерних
 
 ## [1.4.2] - 2020-06-24
 
 ### Fixed
 
-- Исправлено получение унаследованного контекста у дочерних компонентов
+* Исправлено получение унаследованного контекста у дочерних компонентов
 
 ## [1.4.1] - 2020-06-22
 
 ### Fixed
 
-- Исправлены названия у геттер функции для дочерних компонентов, теперь их можно взять по имени родителя + свое имя, например getInputAddonProps.
+* Исправлены названия у геттер функции для дочерних компонентов, теперь их можно взять по имени родителя + свое имя, например getInputAddonProps.
 
 ## [1.4.0] - 2020-06-19
 
 ### Added
 
-- Добавлена возможность у инстанса класса взять свой экземпляр созданный через `createComponenta`.
+* Добавлена возможность у инстанса класса взять свой экземпляр созданный через `createComponenta`.
 
 ## [1.3.2] - 2020-06-10
 
 ### Fixed
 
-- Исправлена получение текущего контекста у унаследованных компонентов
+* Исправлена получение текущего контекста у унаследованных компонентов
 
 ## [1.3.1] - 2020-06-10
 
 ### Fixed
 
-- Исправлена типизация ф-ции `createComponent`
+* Исправлена типизация ф-ции `createComponent`
 
 ### Added
 
-- Добавлен тип `MergeGetters` для расширения типов проп-геттеров
+* Добавлен тип `MergeGetters` для расширения типов проп-геттеров
 
 ## [1.1.0] - 2020-06-02
 
 ### Added
 
-- Добавлен статический метод для создания новых инстансов компонентов
+* Добавлен статический метод для создания новых инстансов компонентов
 
 ## [1.0.2] - 2020-06-01
 
 ### Fixed
 
-- Исправлена проблема SSR, при которой использовался `useLayoutEffect`.
+* Исправлена проблема SSR, при которой использовался `useLayoutEffect`.
 
 ## [1.0.1] - 2020-05-28
 
 ### Added
 
-- Публикация стабильной версии
+* Публикация стабильной версии
 
 ## [0.0.1-14] - 2020-05-19
 
 ### Changed
 
-- Изменено свойство с `css` на `styles`
+* Изменено свойство с `css` на `styles`
 
 ## [0.0.1-13] - 2020-05-19
 
 ### Changed
 
-- Изменен метод рендера core компонентов при передаче их как статичный метод в другие компоненты
-- Теперь в Root компоненте children не вставляется если Children.origin пуст
+* Изменен метод рендера core компонентов при передаче их как статичный метод в другие компоненты
+* Теперь в Root компоненте children не вставляется если Children.origin пуст
 
 ## [0.0.1-12] - 2020-05-13
 
 ### Fixed
 
-- Исправлен тип `Root`
-- Оптимизирован создание объекта в `context`
-- Оптимизирован создание ref ссылок
+* Исправлен тип `Root`
+* Оптимизирован создание объекта в `context`
+* Оптимизирован создание ref ссылок
 
 ## [0.0.1-11] - 2020-04-23
 
 ### Changed
 
-- Теперь `styles` нельзя перетереть из пропсов
-- Теперь `Children` нельзя передать сверху
+* Теперь `styles` нельзя перетереть из пропсов
+* Теперь `Children` нельзя передать сверху
 
 ### Added
 
-- Добавлено предупреждение при вызове геттеров внутри статичных компонентов
-- Добавлена уникальность `INHERITED_NAME`
+* Добавлено предупреждение при вызове геттеров внутри статичных компонентов
+* Добавлена уникальность `INHERITED_NAME`
 
 ## [0.0.1-10] - 2020-04-21
 
 ### Added
 
-- Добавлена возможность указывать массивы при создании компонентов в статичных чилдренах
+* Добавлена возможность указывать массивы при создании компонентов в статичных чилдренах
 
 ## [0.0.1-9] - 2020-04-20
 
 ### Changed
 
-- Убран `styledEnhance`
-- Оптимизирован алгоритм применения стилей
+* Убран `styledEnhance`
+* Оптимизирован алгоритм применения стилей
 
 ## [0.0.1-8] - 2020-04-17
 
 ### Changed
 
-- Рутовый компонент не вызывает getter функции из контекста
+* Рутовый компонент не вызывает getter функции из контекста
 
 ## [0.0.1-7] - 2020-04-16
 
 ### BREAK
 
-- Изменен третий аргумент в `createComponent`. Теперь он принимает объект с настройками.
-- Контекст можно получить через символ `CONTEXT`, а не как статичный метод context.
+* Изменен третий аргумент в `createComponent`. Теперь он принимает объект с настройками.
+* Контекст можно получить через символ `CONTEXT`, а не как статичный метод context.
 
 ## [0.0.1-6] - 2020-04-10
 
 ### Added
 
-- Добавлен тип `Merge`
-- Исправлена типизация `createComponent`
+* Добавлен тип `Merge`
+* Исправлена типизация `createComponent`
 
 ## [0.0.1-5] - 2020-04-08
 
 ### Changed
 
-- `styledEnhance` теперь считается устаревшим, используйте `static style = style;`.
+* `styledEnhance` теперь считается устаревшим, используйте `static style = style;`.
 
 ## [0.0.1-4] - 2020-04-02
 
 ### Added
 
-- Добавлена возможность переименовывать hoist свойства
+* Добавлена возможность переименовывать hoist свойства
 
 ### Changed
 
-- Изменился алгоритм сохранения в `register`
+* Изменился алгоритм сохранения в `register`
 
 ## [0.0.1-3] - 2020-03-30
 
 ### Changed
 
-- Заменена внутренняя реализация фейкового `this` для функции
-- Помечен тип Root как обязательное свойство в функциональных компонентах
-- Добавлена утилита `register`, для шаринга данных между пакетами
+* Заменена внутренняя реализация фейкового `this` для функции
+* Помечен тип Root как обязательное свойство в функциональных компонентах
+* Добавлена утилита `register`, для шаринга данных между пакетами
 
 ## [0.0.1-1] - 2020-03-26
 
 ### Changed
 
-- Поднята версия `utils`
+* Поднята версия `utils`
 
-## [0.0.1-0] - 2020-03-24
+## [0.0.1-prerelease.2" - 2020-03-24
 
 ### Added
 
-- Beta release
+* Beta release
