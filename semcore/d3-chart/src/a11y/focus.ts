@@ -1,66 +1,52 @@
-const isFocusable = (element: Element) => {
-  const tabIndex = element.getAttribute('tabindex');
-  if (tabIndex) {
-    const tabIndexValue = parseInt(tabIndex, 10);
-    if (!isNaN(tabIndexValue) && tabIndexValue >= 0) return element;
-  }
-
-  const { tagName } = element;
-
-  if ('INPUT' === tagName) return !element.getAttribute('disabled');
-  if ('A' === tagName || 'AREA' === tagName) return element.hasAttribute('href');
-  if ('BODY' === tagName || 'IFRAME' === tagName) return true;
-};
+import { isFocusable } from '@semcore/utils/lib/focus-lock/isFocusable';
 
 type FocusableElement = Element & { focus: () => void };
 
 const findNextFocusableElementInChildren = (element: Element | null): FocusableElement | null => {
-  const children = element?.children;
-
   if (element && isFocusable(element)) {
     return element as FocusableElement;
   }
 
+  const children = element?.children;
+
   if (children) {
     for (let i = 0; i < children.length; i++) {
       const childChild = children.item(i);
-
-      if (childChild) {
-        return findNextFocusableElementInChildren(childChild);
-      }
+      if (!childChild) continue;
+      const result = findNextFocusableElementInChildren(childChild);
+      if (result) return result;
     }
   }
 
   return null;
 };
 
-export const heavyFindNextFocusableElement = (
-  base: Element,
-  trace: Map<Element, true> = new Map(),
-): FocusableElement | null => {
-  trace.set(base, true);
-  let sibling = base.nextElementSibling;
-  if (sibling) {
-    trace.set(sibling, true);
-    for (let i = 0; i < sibling.children.length; i++) {
-      const child = sibling.children.item(i);
-      if (!child) continue;
-      if (trace.has(child)) continue;
-      if (isFocusable(child)) return child as FocusableElement;
-      const childInnerResult = findNextFocusableElementInChildren(child.children.item(0));
-      if (childInnerResult) return childInnerResult;
+const makeParentsChain = (element: Element): Element[] => {
+  const parents = [];
+  let parent = element.parentElement;
+
+  while (parent) {
+    parents.push(parent);
+    parent = parent.parentElement;
+  }
+
+  return parents;
+};
+
+export const heavyFindNextFocusableElement = (base: Element): FocusableElement | null => {
+  const parents = makeParentsChain(base);
+  for (let i = 0; i < parents.length; i++) {
+    const parent = parents[i];
+    let siblings = Array.from(parent?.children ?? []);
+    if (siblings.indexOf(parents[i - 1] || base) !== -1) {
+      siblings = siblings.slice(siblings.indexOf(parents[i - 1] || base) + 1);
     }
-    while (sibling) {
-      if (isFocusable(sibling)) return sibling as FocusableElement;
-      if (!trace.has(sibling)) {
-        const siblingInnerResult = findNextFocusableElementInChildren(sibling.children.item(0));
-        if (siblingInnerResult) return siblingInnerResult;
-      }
-      sibling = sibling.nextElementSibling;
+
+    for (let i = 0; i < siblings.length; i++) {
+      const focusable = findNextFocusableElementInChildren(siblings[i]);
+      if (focusable) return focusable;
     }
   }
 
-  if (!base.parentElement || trace.has(base.parentElement)) return null;
-
-  return heavyFindNextFocusableElement(base.parentElement, trace);
+  return null;
 };
