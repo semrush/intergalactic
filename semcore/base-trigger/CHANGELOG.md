@@ -726,7 +726,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Исправлена типизация `FilterTrigger.Counter`
 
-## [2.0.2-prerelease.2"] - 2020-06-03
+## [2.0.2-prerelease.2] - 2020-06-03
 
 ### Fixed
 

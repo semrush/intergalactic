@@ -819,7 +819,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Add prop `active` for `Row`.
 
-## [0.0.1-prerelease.2"] - 2020-09-11
+## [0.0.1-prerelease.2] - 2020-09-11
 
 ### Added
 

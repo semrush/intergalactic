@@ -656,7 +656,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Fixed possible styles collisions between components with different versions, but same styles
 
-## [1.0.0-prerelease.2"] - 2020-08-14
+## [1.0.0-prerelease.2] - 2020-08-14
 
 ### Added
 

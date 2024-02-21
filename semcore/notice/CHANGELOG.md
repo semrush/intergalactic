@@ -722,7 +722,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Исправлена работа анимации
 
-## [1.0.0-prerelease.2"] - 2018-09-26
+## [1.0.0-prerelease.2] - 2018-09-26
 
 ### Added
 
