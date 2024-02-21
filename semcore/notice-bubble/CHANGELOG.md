@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.24.2-prerelease.1] - 2024-02-21
+## [5.24.2-prerelease.10] - 2024-02-21
 
 ### Changed
 
-- Version prerelease update due to children dependencies update (`@semcore/icon` [4.26.1-prerelease.1 ~> 4.26.1], `@semcore/flex-box` [5.19.2-prerelease.1 ~> 5.19.2], `@semcore/animation` [2.18.3-prerelease.1 ~> 2.18.3], `@semcore/core` [2.17.3-prerelease.1 ~> 2.17.3]).
+- Version prerelease update due to children dependencies update (`@semcore/icon` [4.26.1-prerelease.10 ~> 4.26.1], `@semcore/flex-box` [5.19.2-prerelease.10 ~> 5.19.2], `@semcore/animation` [2.18.3-prerelease.10 ~> 2.18.3], `@semcore/core` [2.17.3-prerelease.10 ~> 2.17.3]).
 
 ## [5.24.1] - 2024-02-21
 

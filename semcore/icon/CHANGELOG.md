@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.26.1-prerelease.2] - 2024-02-21
+## [4.26.1-prerelease.10] - 2024-02-21
 
 ### Changed
 
@@ -1081,7 +1081,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- размер `s`,`xs` для `Expand` иконки
+- размер `s`, `xs` для `Expand` иконки
 
 ## [1.1.1] - 2018-09-14
 

@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.27.2-prerelease.2] - 2024-02-21
+## [3.27.2-prerelease.10] - 2024-02-21
 
 ### Changed
 
@@ -593,7 +593,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - TS property `noDrop` became not requered for `IDraggableProps`.
 
-## [1.0.0-prerelease.2] - 2020-09-09
+## [1.0.0-prerelease.10] - 2020-09-09
 
 ### Added
 
