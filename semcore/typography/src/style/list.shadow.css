@@ -22,6 +22,7 @@ SItem + SItem {
 }
 
 SMarker {
-  margin-right: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
+  margin-right: var(--intergalactic-spacing-2x, 8px);
   color: var(--intergalactic-text-secondary, #6c6e79);
+  line-height: normal;
 }

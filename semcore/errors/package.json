@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "Semrush Errors Component",
-  "version": "4.22.0",
+  "version": "4.23.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "@semcore/flex-box": "5.19.1",
     "@semcore/format-text": "4.19.0",
     "@semcore/illustration": "2.17.2",
-    "@semcore/typography": "5.25.2",
+    "@semcore/typography": "5.26.1",
     "@semcore/utils": "4.20.2"
   },
   "peerDependencies": {

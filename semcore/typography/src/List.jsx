@@ -1,12 +1,14 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { Flex } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import Text from './Text';
 
 import style from './style/list.shadow.css';
 
-class List extends Component {
+class ListRoot extends Component {
   static displayName = 'List';
   static style = style;
   static defaultProps = {
@@ -27,18 +29,37 @@ class List extends Component {
   }
 }
 
-function Item(props) {
-  const SItem = Root;
-  const { styles, children, marker: markerNode } = props;
-  const SMarker = 'span';
-  const SContent = 'div';
+class ItemRoot extends Component {
+  static style = style;
+  static displayName = 'Item';
 
-  return sstyled(styles)(
-    <SItem render={Text} tag='li' role='listitem'>
-      {isNode(markerNode) && <SMarker aria-hidden='true'>{markerNode}</SMarker>}
-      <SContent>{children}</SContent>
-    </SItem>,
-  );
+  render() {
+    const SItem = Root;
+    const { styles, children, marker: markerNode, Children } = this.asProps;
+    const SMarker = 'span';
+
+    const isAdvancedMode = isAdvanceMode(Children, [List.Item.Content.displayName]);
+
+    return sstyled(styles)(
+      <SItem render={Text} tag='li' role='listitem'>
+        {isNode(markerNode) && <SMarker aria-hidden='true'>{markerNode}</SMarker>}
+        {isAdvancedMode ? <Children /> : <List.Item.Content>{children}</List.Item.Content>}
+      </SItem>,
+    );
+  }
 }
 
-export default createComponent(List, { Item });
+function Content(props) {
+  const { styles, children } = props;
+  const SContent = Root;
+
+  return sstyled(styles)(<SContent render={Flex}>{children}</SContent>);
+}
+
+Content.displayName = 'Content';
+
+const Item = createComponent(ItemRoot, { Content });
+
+const List = createComponent(ListRoot, { Item });
+
+export default List;
