@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.3] - 2024-02-08
+
+### Fixed
+
+- Focus lock fixes essential for nested dropdowns.
+
 ## [4.20.2] - 2024-02-08
 
 ### Fixed

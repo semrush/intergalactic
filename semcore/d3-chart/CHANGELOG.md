@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.30.0] - 2024-02-16
+
+### Fixed
+
+- a11y module "Skip to content after plot" link was not working in some cases.
+
 ## [3.29.0] - 2024-02-16
 
 ### Changed
