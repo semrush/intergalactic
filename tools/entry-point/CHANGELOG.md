@@ -1,3 +1,10 @@
+## [15.62.1] - 2024-02-21
+
+### @semcore/typography
+
+- **Fixed** Some styles for `List.Item` component.
+- **Added** `List.Item.Content` component for customise view of each list item.
+
 ## [15.62.0] - 2024-02-21
 
 ### @semcore/d3-chart
