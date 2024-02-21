@@ -146,6 +146,15 @@ declare const DropdownMenu: Intergalactic.Component<
   };
   ItemTitle: Intergalactic.Component<'div', DropdownMenuItemTitleProps>;
   ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
+  Nesting: Intergalactic.Component<
+    'div',
+    DropdownMenuItemProps,
+    DropdownMenuContext,
+    [handlers: DropdownMenuHandlers]
+  > & {
+    Trigger: Intergalactic.Component<'div', DropdownMenuItemProps>;
+    Addon: typeof Box;
+  };
 };
 
 export default DropdownMenu;
