@@ -2,13 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.27.4] - 2024-02-19
-
-### Changed
-
-- Version prepatch update due to children dependencies update (`@semcore/popper` [5.20.0 ~> 5.20.1]).
-
-## [2.29.0] - 2024-02-16
+## [3.29.0] - 2024-02-16
 
 ### Changed
 
@@ -19,7 +13,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `patterns` prop was missing in multiple chart types.
 
-## [2.28.0] - 2024-02-13
+## [3.28.0] - 2024-02-13
 
 ### Changed
 
