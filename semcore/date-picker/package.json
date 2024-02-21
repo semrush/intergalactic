@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "Semrush DatePicker Component",
-  "version": "4.28.2",
+  "version": "4.28.3-prerelease.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -22,8 +22,8 @@
     "@semcore/input": "4.20.2",
     "@semcore/input-mask": "5.20.2",
     "@semcore/neighbor-location": "4.17.2",
-    "@semcore/typography": "5.26.0",
-    "@semcore/checkbox": "7.21.4",
+    "@semcore/typography": "5.26.1-prerelease.1",
+    "@semcore/checkbox": "7.22.0-prerelease.1",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
