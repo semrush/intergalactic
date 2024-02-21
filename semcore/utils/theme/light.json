@@ -542,12 +542,12 @@
         }
       },
       "highlight-results": {
-        "value": "{yellow.300}, 0.4",
+        "value": "rgba({yellow.300}, 0.4)",
         "type": "color",
         "description": "Highlighting the search results."
       },
       "highlight-focus": {
-        "value": "{blue.400}, 0.2",
+        "value": "rgba({blue.400}, 0.2)",
         "type": "color",
         "description": "Focusing values in the input."
       }
@@ -725,11 +725,6 @@
         "type": "color",
         "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state."
       },
-      "critical-pattern": {
-        "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
-        "type": "color",
-        "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
-      },
       "warning": {
         "value": "{orange.200}",
         "type": "color",
@@ -746,7 +741,7 @@
         "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background."
       },
       "secondary-invert": {
-        "value": "{gray.white}, 0.3",
+        "value": "rgba({gray.white}, 0.3)",
         "type": "color",
         "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background."
       },
@@ -764,6 +759,11 @@
         "value": "{violet.500}",
         "type": "color",
         "description": "Border color of the second period for the comparison mode in the DatePicker."
+      },
+      "critical-pattern": {
+        "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
+        "type": "color",
+        "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
       }
     },
     "control": {
@@ -866,94 +866,94 @@
       },
       "secondary": {
         "neutral": {
-          "value": "{gray.400}, 0.1",
+          "value": "rgba({gray.400}, 0.1)",
           "type": "color",
           "description": "Background of the regular secondary control."
         },
         "neutral-hover": {
-          "value": "{gray.400}, 0.2",
+          "value": "rgba({gray.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the regular secondary control."
         },
         "neutral-active": {
-          "value": "{gray.400}, 0.3",
+          "value": "rgba({gray.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the regular secondary control."
         },
         "info": {
-          "value": "{blue.400}, 0.1",
+          "value": "rgba({blue.400}, 0.1)",
           "type": "color",
           "description": "Background of the accent secondary control."
         },
         "info-hover": {
-          "value": "{blue.400}, 0.2",
+          "value": "rgba({blue.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the accent secondary control."
         },
         "info-active": {
-          "value": "{blue.400}, 0.3",
+          "value": "rgba({blue.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the accent secondary control."
         },
         "invert": {
-          "value": "{gray.white}, 0.05",
+          "value": "rgba({gray.white}, 0.05)",
           "type": "color",
           "description": "Background of the inverted version of the secondary control."
         },
         "invert-hover": {
-          "value": "{gray.white}, 0.1",
+          "value": "rgba({gray.white}, 0.1)",
           "type": "color",
           "description": "Hover state of the inverted version of the secondary control."
         },
         "invert-active": {
-          "value": "{gray.white}, 0.3",
+          "value": "rgba({gray.white}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the inverted version of the secondary control."
         }
       },
       "tertiary": {
         "neutral": {
-          "value": "{gray.400}, 0",
+          "value": "rgba({gray.400}, 0)",
           "type": "color",
           "description": "Background of the regular tertiary control."
         },
         "neutral-hover": {
-          "value": "{gray.400}, 0.2",
+          "value": "rgba({gray.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the regular tertiary control."
         },
         "neutral-active": {
-          "value": "{gray.400}, 0.3",
+          "value": "rgba({gray.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the regular tertiary control."
         },
         "info": {
-          "value": "{blue.400}, 0",
+          "value": "rgba({blue.400}, 0)",
           "type": "color",
           "description": "Background of the accent and link-lookalike tertiary control."
         },
         "info-hover": {
-          "value": "{blue.400}, 0.2",
+          "value": "rgba({blue.400}, 0.2)",
           "type": "color",
           "description": "Hover state of the accent and link-lookalike tertiary control."
         },
         "info-active": {
-          "value": "{blue.400}, 0.3",
+          "value": "rgba({blue.400}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the accent and link-lookalike tertiary control."
         },
         "invert": {
-          "value": "{gray.white}, 0",
+          "value": "rgba({gray.white}, 0)",
           "type": "color",
           "description": "Background of the inverted version of the tertiary control."
         },
         "invert-hover": {
-          "value": "{gray.white}, 0.1",
+          "value": "rgba({gray.white}, 0.1)",
           "type": "color",
           "description": "Hover state of the inverted version of the tertiary control."
         },
         "invert-active": {
-          "value": "{gray.white}, 0.3",
+          "value": "rgba({gray.white}, 0.3)",
           "type": "color",
           "description": "Active (selected) state of the inverted version of the tertiary control."
         }
@@ -1117,7 +1117,7 @@
         "description": "Hover for the active (selected) date-picker cell background."
       },
       "cell-current-invert": {
-        "value": "{gray.white}, 0.5",
+        "value": "rgba({gray.white}, 0.5)",
         "type": "color",
         "description": "Color for marking the active cell with the current date, month or year in the date-picker."
       },
@@ -1144,7 +1144,7 @@
         "description": "Hover state of the default background color for the list item in the dropdown-menu."
       },
       "item-selected": {
-        "value": "{blue.100}, 0.7",
+        "value": "rgba({blue.100}, 0.7)",
         "type": "color",
         "description": "Active (selected) state of the default background color for the list item in the dropdown-menu."
       },
@@ -1156,7 +1156,7 @@
     },
     "feature-popover": {
       "dot-outer-border": {
-        "value": "{yellow.100}, 0.3",
+        "value": "rgba({yellow.100}, 0.3)",
         "type": "color",
         "description": "Color of the outer border of the FeaturePopover.Spot."
       }
@@ -1173,12 +1173,12 @@
         "description": "Hover state of the background color of the ProgressBar."
       },
       "bg-invert": {
-        "value": "{gray.white}, 0.2",
+        "value": "rgba({gray.white}, 0.2)",
         "type": "color",
         "description": "Inverted version of the background color of the ProgressBar."
       },
       "bg-invert-hover": {
-        "value": "{gray.white}, 0.4",
+        "value": "rgba({gray.white}, 0.4)",
         "type": "color",
         "description": "Hover state for the inverted version of the background color of the ProgressBar."
       },
@@ -1205,12 +1205,12 @@
     },
     "skeleton": {
       "bg": {
-        "value": "{gray.100}, 0.8",
+        "value": "rgba({gray.100}, 0.8)",
         "type": "color",
         "description": "Default color for the Skeleton."
       },
       "bg-invert": {
-        "value": "{gray.white}, 0.3",
+        "value": "rgba({gray.white}, 0.3)",
         "type": "color",
         "description": "Inverted version of the default color for the Skeleton."
       }
@@ -1438,9 +1438,19 @@
       }
     },
     "keyboard-focus": {
-      "value": "0px 0px 0px 3px rgba({blue.400}, 0.5)",
+      "value": "0px 0px 0px 3px {keyboard-focus.outline}",
       "type": "boxShadow",
-      "description": "Default keyboard focus styles."
+      "description": "Default keyboard focus styles.",
+      "outline": {
+        "value": "rgba({blue.400}, 0.5)",
+        "type": "color",
+        "description": "Color for default keyboard focus outline styles."
+      },
+      "outline-invert": {
+        "value": "rgba({gray.white}, 0.7)",
+        "type": "color",
+        "description": "Color for default keyboard focus outline styles to use on the dark and color background."
+      }
     },
     "keyboard-focus-invalid": {
       "value": "0px 0px 0px 3px rgba({red.400}, 0.5)",
@@ -1453,7 +1463,7 @@
       "description": "Keyboard focus styles for elements with valid state."
     },
     "keyboard-focus-invert": {
-      "value": "0px 0px 0px 3px rgba({gray.white}, 0.7)",
+      "value": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
       "type": "boxShadow",
       "description": "Default keyboard focus styles for using with dark background."
     },
@@ -1823,12 +1833,12 @@
     },
     "overlay": {
       "primary": {
-        "value": "{gray.800}, 0.7",
+        "value": "rgba({gray.800}, 0.7)",
         "type": "color",
         "description": "Use for cover the content under the modal dialogs."
       },
       "secondary": {
-        "value": "{gray.800}, 0.4",
+        "value": "rgba({gray.800}, 0.4)",
         "type": "color",
         "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs."
       },
@@ -1838,7 +1848,7 @@
         "description": "Use as a primary cover of the content under the messages about limitations."
       },
       "limitation-secondary": {
-        "value": "{gray.white}, 0.85",
+        "value": "rgba({gray.white}, 0.85)",
         "type": "color",
         "description": "Use as a secondary cover of the content under the messages about limitations."
       }
@@ -1946,7 +1956,7 @@
     },
     "scroll-bar": {
       "background": {
-        "value": "{gray.800}, 0.3",
+        "value": "rgba({gray.800}, 0.3)",
         "type": "color",
         "description": "Background color for ScrollBar."
       }
@@ -1956,7 +1966,6 @@
         "gray-normal": {
           "value": "#ECEDF0",
           "type": "color",
-          "$extensions": {},
           "description": "Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath."
         },
         "gray-hover-active": {
@@ -2087,12 +2096,12 @@
           "description": "Hover and active (selected) states of the background color for the default secondary tag."
         },
         "white-normal": {
-          "value": "{gray.white}, 0",
+          "value": "rgba({gray.white}, 0)",
           "type": "color",
           "description": "White secondary tag."
         },
         "white-hover-active": {
-          "value": "{gray.white}, 0.1",
+          "value": "rgba({gray.white}, 0.1)",
           "type": "color",
           "description": "Active state of the secondary white tag."
         },
@@ -2268,7 +2277,7 @@
           "description": "Text label on the chart grid."
         },
         "bar-chart-hover": {
-          "value": "{gray.200}, 0.3",
+          "value": "rgba({gray.200}, 0.3)",
           "type": "color",
           "description": "Background color for the hover state of a bar on the chart grid."
         },
@@ -2278,7 +2287,7 @@
           "description": "Default background color of a bar in the BarChart."
         },
         "period-bg": {
-          "value": "{gray.200}, 0.2",
+          "value": "rgba({gray.200}, 0.2)",
           "type": "color",
           "description": "Use for highlighting the period on the chart grid."
         },
@@ -2295,7 +2304,7 @@
           "description": "Background color for the clickable date on the X-axis of the chart grid."
         },
         "data-start-tracking": {
-          "value": "{green.400}, 0.2",
+          "value": "rgba({green.400}, 0.2)",
           "type": "color",
           "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid."
         }

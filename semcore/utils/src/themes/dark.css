@@ -303,8 +303,6 @@
   --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
   /* Hover state for the inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
-  /* Value color of the ProgressBar. */
-  --intergalactic-progress-bar-value: #009f81;
   /* Value with gradient for the ProgressBar. */
   --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%);
   /* Null value gradient for the ProgressBar. */
