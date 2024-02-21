@@ -42,6 +42,9 @@ class RootTag extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+  state = {
+    focusable: 'container',
+  };
 
   constructor(props) {
     super(props);
@@ -60,10 +63,35 @@ class RootTag extends Component {
     return { size };
   }
 
-  getCloseProps() {
-    const { getI18nText, id, uid } = this.asProps;
+  getTextProps() {
+    const { interactive } = this.asProps;
+    const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
+    const { focusable } = this.state;
 
-    return { getI18nText, tagId: id || `igc-${uid}-tag`, uid };
+    return {
+      tabIndex: focusable === 'text' && interactive ? 0 : -1,
+      id: `${id}-text`,
+    };
+  }
+  handleCloseMount = () => {
+    this.setState({ focusable: 'text' });
+  };
+  handleCloseUnmount = () => {
+    this.setState({ focusable: 'container' });
+  };
+  getCloseProps() {
+    const { getI18nText } = this.asProps;
+    const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
+
+    return {
+      getI18nText,
+      id: `${id}-clear`,
+      'aria-labelledby': `${id}-clear ${id}-text`,
+      'aria-label': getI18nText('remove'),
+      'aria-hidden': 'true',
+      onMount: this.handleCloseMount,
+      onUnmount: this.handleCloseUnmount,
+    };
   }
 
   handleKeyDown = (event) => {
@@ -93,6 +121,7 @@ class RootTag extends Component {
       uid,
       onKeyDown,
     } = this.asProps;
+    const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
 
     return sstyled(styles)(
@@ -100,10 +129,10 @@ class RootTag extends Component {
         render={Box}
         id={id}
         use:interactive={!disabled && interactive}
-        tabIndex={interactive ? 0 : undefined}
         role={interactive ? 'button' : undefined}
         tag-color={resolveColor(color)}
         onKeyDown={callAllEventHandlers(onKeyDown, this.handleKeyDown)}
+        use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}
@@ -118,33 +147,32 @@ function Text(props) {
   const { styles } = props;
   return sstyled(styles)(<SText render={Box} tag='span' />);
 }
+Text.enhance = [keyboardFocusEnhance()];
 
 function Close(props) {
   const SClose = Root;
-  const { styles, getI18nText, tagId, uid } = props;
+  const { styles } = props;
 
-  function onKeyDown(event) {
-    if (props.onKeyDown) {
-      return props.onKeyDown(event);
-    }
+  React.useEffect(() => {
+    props.onMount?.();
+    return () => props.onUnmount?.();
+  }, []);
 
-    if (props.onClick && (event.code === 'Enter' || event.code === 'Space')) {
-      event.preventDefault();
-      props.onClick(event);
-    }
-  }
+  const onKeyDown = React.useCallback(
+    (event) => {
+      if (props.onKeyDown) {
+        return props.onKeyDown(event);
+      }
 
-  return sstyled(styles)(
-    <SClose
-      render={Box}
-      tag={CloseM}
-      interactive
-      id={`igc-${uid}-tag-clear`}
-      aria-labelledby={`igc-${uid}-tag-clear ${tagId}`}
-      aria-label={getI18nText('remove')}
-      onKeyDown={onKeyDown}
-    />,
+      if (props.onClick && (event.code === 'Enter' || event.code === 'Space')) {
+        event.preventDefault();
+        props.onClick(event);
+      }
+    },
+    [props.onKeyDown, props.onClick],
   );
+
+  return sstyled(styles)(<SClose render={Box} tag={CloseM} interactive onKeyDown={onKeyDown} />);
 }
 
 function Addon(props) {
