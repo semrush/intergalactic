@@ -11,14 +11,16 @@
 <script setup lang="ts">
 const homeUrl = process.env.NODE_ENV === 'development' ? '/' : '/intergalactic/';
 
+import { useRouter } from 'vitepress';
 import { onMounted, onUnmounted } from 'vue';
 import {
   initAmplitude, initGlobalEventsHandler, disposeGlobalEventsHandler
 } from './amplitude/amplitude'
 
 onMounted(() => {
+  const router = useRouter();
   initAmplitude();
-  initGlobalEventsHandler();
+  initGlobalEventsHandler(router);
 })
 onUnmounted(() => {
   disposeGlobalEventsHandler();
