@@ -111,7 +111,7 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support hover', async ({ task }) => {
+  test.sequential('Should support hover', async ({ task }) => {
     const component = (
       <DropdownMenu>
         <DropdownMenu.List>
@@ -131,7 +131,234 @@ describe('DropdownMenu', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support selected hover ', async ({ task }) => {
+  describe.sequential('item focus lock', () => {
+    test.sequential('tab navigation', async ({ expect }) => {
+      const spy = vi.fn();
+      const buttonSpy = vi.fn();
+      const { getByTestId } = render(
+        <DropdownMenu visible>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>
+              Item 2
+              <Button data-testid={'testButton'} onClick={buttonSpy}>
+                Test Button
+              </Button>
+            </DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>,
+      );
+
+      const testButton = getByTestId('testButton');
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Tab]');
+
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Enter]');
+      expect(spy).toHaveBeenCalled();
+
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Tab]');
+      expect(testButton).toHaveFocus();
+
+      await userEvent.keyboard('[Enter]');
+      expect(buttonSpy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      await userEvent.keyboard('[Tab]');
+      expect(testButton).toHaveFocus();
+    });
+    test.sequential('arrows', async ({ expect }) => {
+      const spy = vi.fn();
+      const buttonSpy = vi.fn();
+      const { getByTestId } = render(
+        <DropdownMenu visible>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>
+              Item 2
+              <Button data-testid={'testButton'} onClick={buttonSpy}>
+                Test Button
+              </Button>
+            </DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>,
+      );
+
+      const testButton = getByTestId('testButton');
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Tab]');
+
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Enter]');
+      expect(spy).toHaveBeenCalled();
+
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[ArrowRight]');
+      expect(testButton).toHaveFocus();
+
+      await userEvent.keyboard('[Enter]');
+      expect(buttonSpy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      await userEvent.keyboard('[Tab]');
+      expect(testButton).toHaveFocus();
+    });
+  });
+
+  test.sequential('arrows open/close', async ({ expect }) => {
+    let visible = undefined;
+    render(
+      <DropdownMenu
+        placement='right'
+        onVisibleChange={(v) => {
+          visible = v;
+        }}
+      >
+        <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[ArrowRight]');
+    expect(visible).toBe(true);
+    await userEvent.keyboard('[ArrowLeft]');
+    expect(visible).toBe(false);
+  });
+  describe.sequential('opens nested menu', () => {
+    test.sequential('by tab', async ({ expect }) => {
+      const { getByTestId } = render(
+        <DropdownMenu placement='right'>
+          <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Nesting>
+              <DropdownMenu interaction='hover' placement='right'>
+                <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
+                  Item 2
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Menu>
+                  <DropdownMenu.Item>Item 2.1</DropdownMenu.Item>
+                  <DropdownMenu.Item data-testid='item-2-2'>Item 2.2</DropdownMenu.Item>
+                </DropdownMenu.Menu>
+              </DropdownMenu>
+            </DropdownMenu.Nesting>
+          </DropdownMenu.Menu>
+        </DropdownMenu>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Enter]');
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Tab]');
+      expect(getByTestId('item-2-2')).toBeTruthy();
+    });
+    test.sequential('by enter', async ({ expect }) => {
+      const { getByTestId } = render(
+        <DropdownMenu placement='right'>
+          <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Nesting>
+              <DropdownMenu interaction='hover' placement='right'>
+                <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
+                  Item 2
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Menu>
+                  <DropdownMenu.Item>Item 2.1</DropdownMenu.Item>
+                  <DropdownMenu.Item data-testid='item-2-2'>Item 2.2</DropdownMenu.Item>
+                </DropdownMenu.Menu>
+              </DropdownMenu>
+            </DropdownMenu.Nesting>
+          </DropdownMenu.Menu>
+        </DropdownMenu>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Enter]');
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Enter]');
+      expect(getByTestId('item-2-2')).toBeTruthy();
+    });
+    test.sequential('by arrow right', async ({ expect }) => {
+      const { getByTestId } = render(
+        <DropdownMenu placement='right'>
+          <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Nesting>
+              <DropdownMenu interaction='hover' placement='right'>
+                <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
+                  Item 2
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Menu>
+                  <DropdownMenu.Item>Item 2.1</DropdownMenu.Item>
+                  <DropdownMenu.Item data-testid='item-2-2'>Item 2.2</DropdownMenu.Item>
+                </DropdownMenu.Menu>
+              </DropdownMenu>
+            </DropdownMenu.Nesting>
+          </DropdownMenu.Menu>
+        </DropdownMenu>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Enter]');
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[ArrowRight]');
+      expect(getByTestId('item-2-2')).toBeTruthy();
+    });
+  });
+
+  test.sequential('support items and focusable elements at the same time', async ({ expect }) => {
+    const spy = vi.fn();
+    const buttonSpy = vi.fn();
+    const { getByTestId } = render(
+      <DropdownMenu visible>
+        <DropdownMenu.Trigger tag='button'>trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+          <Button data-testid={'acceptButton'} onClick={buttonSpy}>
+            Accept
+          </Button>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    const acceptButton = getByTestId('acceptButton');
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).toHaveBeenCalled();
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+    expect(acceptButton).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(buttonSpy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(buttonSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test.sequential('Should support selected hover ', async ({ task }) => {
     const component = (
       <DropdownMenu>
         <DropdownMenu.List>
@@ -153,7 +380,7 @@ describe('DropdownMenu', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should have shadow style', async ({ task }) => {
+  test.sequential('should have shadow style', async ({ task }) => {
     const component = (
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Menu hMax={'180px'}>
@@ -172,43 +399,6 @@ describe('DropdownMenu', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('support items and focusable elements at the same time', async ({ expect }) => {
-    const spy = vi.fn();
-    const buttonSpy = vi.fn();
-    const { getByTestId } = render(
-      <DropdownMenu visible>
-        <DropdownMenu.Menu>
-          <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-          <Button data-testid={'acceptButton'} onClick={buttonSpy}>
-            Accept
-          </Button>
-        </DropdownMenu.Menu>
-      </DropdownMenu>,
-    );
-
-    const acceptButton = getByTestId('acceptButton');
-
-    await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('[Tab]');
-
-    await userEvent.keyboard('[ArrowDown]');
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toHaveBeenCalled();
-
-    await userEvent.keyboard('[Tab]');
-    expect(acceptButton).toHaveFocus();
-
-    await userEvent.keyboard('[Enter]');
-    expect(buttonSpy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
-
-    await userEvent.keyboard('[ArrowDown]');
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(buttonSpy).toHaveBeenCalledTimes(1);
   });
 
   test('a11y', async () => {

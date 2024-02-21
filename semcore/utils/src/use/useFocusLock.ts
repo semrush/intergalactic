@@ -122,6 +122,12 @@ const useFocusLockHook = (
           ? [trapRef.current]
           : [trapRef.current, ...focusLockAllTraps];
         if (isFocusInside(trapNodes, focusMovedTo)) return;
+        if (
+          typeof returnFocusTo === 'object' &&
+          returnFocusTo?.current &&
+          isFocusInside(returnFocusTo.current)
+        )
+          return;
 
         if (focusCameFrom) {
           setFocus(trapRef.current, focusCameFrom, focusMovedTo);
@@ -165,6 +171,10 @@ const useFocusLockHook = (
     if (disabled) return;
     if (!canUseDOM()) return;
     if (!trapRef.current) return;
+    const focusableChildren = Array.from(trapRef.current.children).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
+    if (focusableChildren.length === 0) return;
 
     if (focusMaster) {
       focusMastersStack.push(trapRef.current);
