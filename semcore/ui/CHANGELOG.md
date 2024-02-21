@@ -1,3 +1,17 @@
+## [15.64.0-prerelease.0] - 2024-02-21
+
+### @semcore/d3-chart
+
+- **Fixed** a11y module "Skip to content after plot" link was not working in some cases.
+
+### @semcore/select
+
+- **Changed** Removed `aria-owns` from the `Select.Trigger`. It was misleading assistive technologies and creating a "screen reader focus ring shift" effect. `aria-controls` is kept on the `Select.Trigger`.
+
+### @semcore/utils
+
+- **Fixed** Focus lock fixes essential for nested dropdowns.
+
 ## [15.62.1] - 2024-02-21
 
 ### @semcore/typography
