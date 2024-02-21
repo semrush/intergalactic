@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.62.0-prerelease.0",
+  "version": "15.62.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -32,7 +32,7 @@
     "@semcore/drag-and-drop": "3.27.0",
     "@semcore/dropdown": "4.19.4",
     "@semcore/dropdown-menu": "4.21.0",
-    "@semcore/d3-chart": "3.29.0-prerelease.1",
+    "@semcore/d3-chart": "3.29.0",
     "@semcore/ellipsis": "2.19.0",
     "@semcore/email": "1.0.2",
     "@semcore/errors": "4.22.0",
