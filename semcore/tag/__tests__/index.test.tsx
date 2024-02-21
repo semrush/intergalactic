@@ -36,6 +36,31 @@ describe('Tag', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color} keyboardFocused>
+          <Tag.Text>Tag name</Tag.Text>
+        </Tag>
+      )),
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Renders text correctly with keyboardFocused', async ({ task }) => {
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color}>
+          <Tag.Text keyboardFocused>Tag name</Tag.Text>
+          <Tag.Close />
+        </Tag>
+      )),
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
     const component = (
       <Tag>
