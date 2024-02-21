@@ -532,7 +532,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Обновлена зависимость от utils
 
-## [1.0.0-prerelease.2"] - 2018-07-06
+## [1.0.0-prerelease.2] - 2018-07-06
 
 ### Added
 

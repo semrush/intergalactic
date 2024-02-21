@@ -844,7 +844,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Изменения описаны в [migration guide](/internal/migration-guide)
 
-## [1.4.1-prerelease.2"] - 2020-05-20
+## [1.4.1-prerelease.2] - 2020-05-20
 
 ### Changed
 

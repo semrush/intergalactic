@@ -549,7 +549,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - изменили размера ['m', 's'] -> ['m', 'l']
 
-## [1.0.0-prerelease.2"] - 2018-12-26
+## [1.0.0-prerelease.2] - 2018-12-26
 
 ### Added
 

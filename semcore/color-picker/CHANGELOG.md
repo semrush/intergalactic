@@ -527,7 +527,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/button` [4.0.15 ~> 4.0.16], `@semcore/utils` [3.37.0 ~> 3.37.1]).
 
-## [1.0.0-prerelease.2"] - 2022-08-17
+## [1.0.0-prerelease.2] - 2022-08-17
 
 ### Added
 

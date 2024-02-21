@@ -593,7 +593,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - TS property `noDrop` became not requered for `IDraggableProps`.
 
-## [1.0.0-prerelease.2"] - 2020-09-09
+## [1.0.0-prerelease.2] - 2020-09-09
 
 ### Added
 

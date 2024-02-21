@@ -553,7 +553,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Changed api
 
-## [1.0.0-prerelease.2"] - 2022-06-01
+## [1.0.0-prerelease.2] - 2022-06-01
 
 ### Added
 

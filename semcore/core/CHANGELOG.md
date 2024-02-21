@@ -623,7 +623,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Поднята версия `utils`
 
-## [0.0.1-prerelease.2"] - 2020-03-24
+## [0.0.1-prerelease.2] - 2020-03-24
 
 ### Added
 
