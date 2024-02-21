@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.0] - 2024-02-21
+
+### Changed
+
+- Removed `aria-owns` from the `Select.Trigger`. It was misleading assistive technologies and creating a "screen reader focus ring shift" effect. `aria-controls` is kept on the `Select.Trigger`.
+
 ## [4.31.0] - 2024-02-21
 
 ### Changed
