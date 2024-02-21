@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.3-prerelease.1] - 2024-02-21
+
+### Changed
+
+- Version prerelease update due to children dependencies update (`@semcore/animation` [2.18.3-prerelease.1 ~> 2.18.3], `@semcore/core` [2.17.3-prerelease.1 ~> 2.17.3]).
+
 ## [4.25.2] - 2024-02-21
 
 ### Changed
