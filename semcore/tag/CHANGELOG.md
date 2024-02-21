@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.0] - 2024-02-19
+
+### Changed
+
+- Interactive tags keyboard focused ring style adjusted to same focus ring styles of other components.
+- Interactive tags now get `role=button`.
+- If tag contains `Tag.Close`, tag will not be focusable. Instead, focus will go to `Tag.Text`.
+
 ## [5.26.0] - 2024-02-13
 
 ### Changed
