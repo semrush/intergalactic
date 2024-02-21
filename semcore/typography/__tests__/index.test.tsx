@@ -232,6 +232,21 @@ describe('List', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test('Should support custom List.Item.Content', async ({ task }) => {
+    const component = (
+      <List>
+        <List.Item>List item</List.Item>
+        <List.Item>
+          <List.Item.Content justifyContent={'flex-end'} wMin={'240px'}>
+            Right list item
+          </List.Item.Content>
+        </List.Item>
+      </List>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <>
