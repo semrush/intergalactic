@@ -1,3 +1,12 @@
+## [15.62.0] - 2024-02-21
+
+### @semcore/d3-chart
+
+- **Changed** Removed wrongly added deprecation messages about `ReferenceLine` `value` props.
+- **Changed** Added `valueEnd` prop to `ReferenceLine.Background` component that allows to specify background width by chart value.
+- **Fixed** `patterns` prop was missing in multiple chart types.
+- **Changed** A11y module links are clickable by `Space` now (along with `Enter` as before).
+
 ## [15.61.0] - 2024-02-21
 
 ### @semcore/dropdown-menu
