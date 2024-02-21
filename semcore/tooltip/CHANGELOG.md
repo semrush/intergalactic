@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.20.2-prerelease.2] - 2024-02-21
+## [6.20.2-prerelease.10] - 2024-02-21
 
 ### Changed
 
@@ -90,7 +90,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/utils` [4.15.1 ~> 4.16.0], `@semcore/flex-box` [5.13.1 ~> 5.14.0], `@semcore/popper` [5.13.0 ~> 5.14.0], `@semcore/core` [2.12.1 ~> 2.13.0]).
 
-## [6.13.0-prerelease.1] - 2023-12-22
+## [6.13.0-prerelease.10] - 2023-12-22
 
 ### Changed
 
@@ -740,7 +740,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлены типы TS для `title`,так как `title` является стандартным свойством dom
+- Исправлены типы TS для `title`, так как `title` является стандартным свойством dom
 
 ## [3.0.0] - 2019-06-06
 

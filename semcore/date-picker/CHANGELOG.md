@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.28.4-prerelease.2] - 2024-02-21
+## [4.28.4-prerelease.10] - 2024-02-21
 
 ### Changed
 
@@ -80,7 +80,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version prepatch update due to children dependencies update (`@semcore/checkbox` [7.19.0 ~> 7.19.1]).
 
-## [4.25.0-prerelease.1] - 2024-01-23
+## [4.25.0-prerelease.10] - 2024-01-23
 
 ### Changed
 
@@ -131,7 +131,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 
-## [4.21.0-prerelease.1] - 2023-12-07
+## [4.21.0-prerelease.10] - 2023-12-07
 
 ### Added
 
@@ -292,7 +292,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed types for `value` and `onChange` in DateRangePicker.Trigger.
+- Fixed types for `value` and `onChange` in DateRangePicker. Trigger.
 
 ## [4.10.0] - 2023-09-19
 

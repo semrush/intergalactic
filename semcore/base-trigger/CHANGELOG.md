@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.26.2-prerelease.2] - 2024-02-21
+## [4.26.2-prerelease.10] - 2024-02-21
 
 ### Changed
 
@@ -726,7 +726,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Исправлена типизация `FilterTrigger.Counter`
 
-## [2.0.2-prerelease.2] - 2020-06-03
+## [2.0.2-prerelease.10] - 2020-06-03
 
 ### Fixed
 
