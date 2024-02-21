@@ -1,4 +1,4 @@
-<!--  
+<!--
 To remove after merge of https://github.com/vuejs/vitepress/issues/2257
 Same to https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/components/VPSidebarItem.vue but also support `activeMatch`
 -->
