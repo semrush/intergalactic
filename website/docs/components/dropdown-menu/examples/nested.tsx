@@ -15,14 +15,17 @@ const Demo = () => {
           <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
             <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
               Item 4
-              <DropdownMenu.Nesting.Addon tag={ChevronRightIcon} />
+              <DropdownMenu.Nesting.Addon tag={ChevronRightIcon} color='icon-secondary-neutral' />
             </DropdownMenu.Trigger>
             <DropdownMenu.Menu w={120}>
               <DropdownMenu.Nesting>
                 <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
                   <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
                     Item 4.1
-                    <DropdownMenu.Nesting.Addon tag={ChevronRightIcon} />
+                    <DropdownMenu.Nesting.Addon
+                      tag={ChevronRightIcon}
+                      color='icon-secondary-neutral'
+                    />
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Menu w={120}>
                     <DropdownMenu.Item>Item 4.1.1</DropdownMenu.Item>
@@ -35,14 +38,20 @@ const Demo = () => {
                 <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
                   <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
                     Item 4.2
-                    <DropdownMenu.Nesting.Addon tag={ChevronRightIcon} />
+                    <DropdownMenu.Nesting.Addon
+                      tag={ChevronRightIcon}
+                      color='icon-secondary-neutral'
+                    />
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Menu w={120}>
                     <DropdownMenu.Nesting>
                       <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
                         <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
                           Item 4.2.1
-                          <DropdownMenu.Nesting.Addon tag={ChevronRightIcon} />
+                          <DropdownMenu.Nesting.Addon
+                            tag={ChevronRightIcon}
+                            color='icon-secondary-neutral'
+                          />
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Menu w={120}>
                           <DropdownMenu.Item>Item 4.2.1.1</DropdownMenu.Item>
