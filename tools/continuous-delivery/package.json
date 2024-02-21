@@ -13,7 +13,7 @@
   "dependencies": {
     "@semcore/changelog-handler": "*",
     "@semcore/slack-integration": "*",
-    "axios": "0.25.0",
+    "axios": "0.28.0",
     "compressing": "^1.9.1",
     "dayjs": "1.8.36",
     "dotenv": "^16.0.3",

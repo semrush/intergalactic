@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "axios": "0.21.2",
+    "axios": "0.28.0",
     "require-all": "3.0.0",
     "semver": "6.3.0"
   }

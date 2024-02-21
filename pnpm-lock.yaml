@@ -3310,8 +3310,8 @@ importers:
         specifier: '*'
         version: link:../slack-integration
       axios:
-        specifier: 0.25.0
-        version: 0.25.0
+        specifier: 0.28.0
+        version: 0.28.0
       compressing:
         specifier: ^1.9.1
         version: 1.9.1
@@ -3362,8 +3362,8 @@ importers:
   tools/dep-checker:
     dependencies:
       axios:
-        specifier: 0.21.2
-        version: 0.21.2
+        specifier: 0.28.0
+        version: 0.28.0
       require-all:
         specifier: 3.0.0
         version: 3.0.0
@@ -3814,8 +3814,8 @@ importers:
         specifier: 0.0.1
         version: link:../changelog-handler
       axios:
-        specifier: 0.21.2
-        version: 0.21.2
+        specifier: 0.28.0
+        version: 0.28.0
       dayjs:
         specifier: 1.8.17
         version: 1.8.17
@@ -10277,10 +10277,12 @@ packages:
       - debug
     dev: false
 
-  /axios@0.25.0:
-    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
+  /axios@0.28.0:
+    resolution: {integrity: sha512-Tu7NYoGY4Yoc7I+Npf9HhUMtEEpV7ZiLH9yndTCoNhcpBH0kwcvFbzYN9/u5QKI5A6uefjsNNWaz5olJVYS62Q==}
     dependencies:
       follow-redirects: 1.15.2
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
