@@ -5,6 +5,7 @@
 <script setup>
 import OriginalNotFoundPate from 'vitepress/dist/client/theme-default/NotFound.vue'
 import { onMounted } from 'vue';
+import { logEvent } from './amplitude/amplitude';
 
 const redirects = {
   "/intergalactic/bug-reporting/report-bug": "/intergalactic/bug-reporting/report-bug/report-bug",
@@ -166,6 +167,8 @@ onMounted(() => {
   if (redirects[pathName]) {
     url.pathname = redirects[pathName]
     window.location.href = url.toString()
+  } else {
+    logEvent('error_404', { pathName, referrer: document.referrer });
   }
 })
 

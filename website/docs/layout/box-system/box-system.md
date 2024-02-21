@@ -15,23 +15,7 @@ Example below shows how to implement equal margins between form components.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-
-const Demo = () => (
-  <div>
-    <Button>Button</Button>
-    <Box inline w={8} />
-    <Button>Button</Button>
-    <Box inline w={8} />
-    <Button>Button</Button>
-    <Box inline w={8} />
-    <Button>Button</Button>
-  </div>
-);
-
-
+  export Demo from './examples/box.tsx';
 </script>
 
 :::
@@ -41,28 +25,7 @@ Example below shows how a component creates indents using dynamically generated 
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-
-const Demo = () => (
-  <div>
-    <Box tag={Button} mr={2}>
-      Button
-    </Box>
-    <Box tag={Button} mr={2}>
-      Button
-    </Box>
-    <Box tag={Button} mr={2}>
-      Button
-    </Box>
-    <Box tag={Button} mr={2}>
-      Button
-    </Box>
-  </div>
-);
-
-
+  export Demo from './examples/box.tsx';
 </script>
 
 :::
@@ -76,32 +39,7 @@ Example below shows how Flex component takes all properties of a Box component.
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-
-const Demo = () => {
-  const styleBox = {
-    background: 'rgba(79, 96, 213, 0.5)',
-  };
-
-  return (
-    <div>
-      <Flex justifyContent='space-between'>
-        <Box m={5} p={5} style={styleBox} />
-        <Box m={5} p={5} style={styleBox} />
-        <Box m={5} p={5} style={styleBox} />
-      </Flex>
-      <hr />
-      <Flex alignItems='center'>
-        <Box h={100} m={5} p={5} style={styleBox} />
-        <Box h={60} m={5} p={5} style={styleBox} />
-        <Box ml='auto' m={5} p={5} style={styleBox} />
-      </Flex>
-    </div>
-  );
-};
-
-
+  export Demo from './examples/flex.tsx';
 </script>
 
 :::

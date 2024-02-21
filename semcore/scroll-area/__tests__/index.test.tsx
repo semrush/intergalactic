@@ -13,7 +13,7 @@ describe('ScrollArea', () => {
   shouldSupportClassName(ScrollArea);
   shouldSupportRef(ScrollArea);
 
-  test.concurrent('should support render function for children', () => {
+  test.sequential('should support render function for children', () => {
     const component = <ScrollArea>{() => <ScrollArea.Container />}</ScrollArea>;
     render(component);
 

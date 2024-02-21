@@ -113,7 +113,8 @@ function Stepper(props) {
 
   const handlerKeyDown = React.useCallback(
     (e) => {
-      if (onActive && e.key === 'Enter') {
+      if (onActive && (e.code === 'Enter' || e.code === 'Space')) {
+        e.preventDefault();
         onActive(step, e);
       }
     },

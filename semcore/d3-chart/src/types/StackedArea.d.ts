@@ -2,6 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import Area from './Area';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IStackedAreaProps extends StackedAreaProps, UnknownProperties {}
@@ -14,6 +15,9 @@ export type StackedAreaProps = Context & {
    * @default d3.stack() */
   /** @deprecated */
   stack?: any;
+
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

@@ -2,6 +2,39 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.21.0] - 2024-02-15
+
+### Fixed
+
+- Assistive technologies were not announcing the selected item if dropdown contained focusable elements.
+
+### Changed
+
+- When dropdown menu item has focusable elements inside, pressing tab locks focus inside the item. Closing or navigating inside the dropdown menu unlocks the focus.
+- If dropdown menu poppers placed to the left or right side of trigger, user needs to press `ArrowLeft` or `ArrowRight` to open the popper (`ArrowUp` or `ArrowDown` was opening popper with any placement before the change).
+
+### Added
+
+- `DropdownMenu.Nesting` component to support accessible nested dropdowns.
+
+## [4.20.4] - 2024-02-19
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.19.3 ~> 4.19.4]).
+
+## [4.20.3] - 2024-02-16
+
+### Fixed
+
+- Removed deprecation messages about `interaction` property (that were added by mistake).
+
+## [4.20.2] - 2024-02-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.19.1 ~> 4.19.2], `@semcore/utils` [4.20.1 ~> 4.20.2], `@semcore/core` [2.17.1 ~> 2.17.2]).
+
 ## [4.20.1] - 2024-02-06
 
 ### Changed

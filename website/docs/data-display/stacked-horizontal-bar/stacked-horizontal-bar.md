@@ -71,56 +71,58 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Description
 
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/bar-chart) or horizontal.
+**Horizontal stacked bar chart** is used to display multiple categories of values and illustrate their proportions relative to the total.
+
+**Key points for using horizontal stacked bar chart:**
+
+- Choose this chart to compare more than two categories.
+- It's ideal for showing how parts contribute to a whole.
+- Pick distinctly different colors for clarity. Avoid using too many colors for categories. Shades of one color can work well.
+- Ensure the chart is large enough to easily read the data.
 
 ::: tip
-**Difference from histogram chart**
+**Bar vs. Histogram Chart**
 
-Bar chart displays distribution of datasets by quality categories.
-
-Histogram charts are used to display distribution of datasets: how often values fall into quantitative ranges.
+- Bar charts categorize data qualitatively, showing how different categories compare.
+- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
 :::
-
-Important points to keep in mind when presenting data as a bar chart:
-
-- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
-- Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
 ## Usage
 
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#ac6451).
-
-## Margins
-
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#abd326).
-
-## Grid and axes
-
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#a9e6f0).
-
-## Labels of categories
-
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#a05155).
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#usage).
 
 ## Appearance
 
-The stacked bar chart has no margin between categories inside the bar. **Choose contrasting colors for different categories.**
+Choose contrasting colors for different categories.
 
 ![bar-chart stacked](static/stacked.png)
 
+### Margins
+
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#margins).
+
+## Grid and axes
+
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#grid-and-axes).
+
+## Category labels
+
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#category-labels).
+
+## Legend
+
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#legend).
+
 ## Interaction
 
-When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the top and bottom sides.
-
-If the column is clickable, the cursor changes to `pointer`.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the columns margin on the top and bottom sides.
 
 ![stacked bar chart](static/hover.png)
 
 ## Edge cases
 
-Edge cases for stacked bar chart are pretty much the same as [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#a54381) has.
+Refer to [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#edge-cases).
 
-## Data loading
+## Initial data loading
 
-See detailed information in the section about data loading in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#ac26f2).
-
+Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#initial-data-loading).

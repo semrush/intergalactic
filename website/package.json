@@ -1,6 +1,6 @@
 {
   "name": "intergalactic-documentation",
-  "version": "1.33.1",
+  "version": "1.33.12",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -55,7 +55,7 @@
     "react-virtualized": "9.22.3",
     "reflect-metadata": "0.1.13",
     "sharp": "^0.31.3",
-    "shiki": "^0.14.3",
+    "shiki": "^1.1.1",
     "sitemap": "^7.1.1",
     "unplugin": "^1.0.0",
     "vitest": "^0.34.1",
@@ -65,8 +65,8 @@
   "devDependencies": {
     "@babel/core": "7.19.1",
     "@babel/plugin-proposal-class-properties": "7.18.6",
-    "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/plugin-proposal-export-default-from": "7.23.3",
+    "@babel/plugin-proposal-optional-chaining": "7.18.9",
     "@babel/preset-env": "7.19.1",
     "@babel/preset-react": "7.12.1",
     "@types/classnames": "2.2.6",

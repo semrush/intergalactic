@@ -21,7 +21,7 @@ describe('Popper', () => {
     expect(getByTestId('popper')).toBeTruthy();
   });
 
-  test.concurrent('should support a custom handler a reference', () => {
+  test.sequential('should support a custom handler a reference', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -48,7 +48,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test.concurrent('should support timeout for change visible', () => {
+  test.sequential('should support timeout for change visible', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -70,7 +70,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test.concurrent('should proxy style', async () => {
+  test.sequential('should proxy style', async () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger data-testid='reference' />
@@ -81,7 +81,7 @@ describe('Popper', () => {
     expect(getByTestId('popper').style.position).toEqual('absolute');
   });
 
-  test.concurrent('should nested popper', async () => {
+  test.sequential('should nested popper', async () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger children='trigger 1' />
@@ -211,6 +211,46 @@ describe('focus control', () => {
     await userEvent.keyboard('{Shift>}[Tab]');
 
     expect(PopperElement).toHaveFocus();
+  });
+
+  test('should lock focus inside popper', async () => {
+    const { getByTestId } = render(
+      <div>
+        <input />
+        <input />
+        <input />
+        <Popper visible>
+          <Popper.Popper autoFocus data-testid='popper'>
+            <div tabIndex={0} data-testid='div-1' />
+            <div tabIndex={0} data-testid='div-2' />
+            <div tabIndex={0} data-testid='div-3' />
+          </Popper.Popper>
+        </Popper>
+        <input />
+        <input />
+        <input />
+      </div>,
+    );
+
+    const popperElement = getByTestId('popper');
+    const div1Element = getByTestId('div-1');
+    const div2Element = getByTestId('div-2');
+    const div3Element = getByTestId('div-3');
+    expect(popperElement).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(div1Element).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(div2Element).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(div3Element).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(popperElement).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(div1Element).toHaveFocus();
+    await userEvent.keyboard('{Shift>}[Tab]');
+    expect(popperElement).toHaveFocus();
+    await userEvent.keyboard('{Shift>}[Tab]');
+    expect(div3Element).toHaveFocus();
   });
 
   test('focus return', () => {

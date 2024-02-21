@@ -36,6 +36,31 @@ describe('Tag', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color} keyboardFocused>
+          <Tag.Text>Tag name</Tag.Text>
+        </Tag>
+      )),
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Renders text correctly with keyboardFocused', async ({ task }) => {
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color}>
+          <Tag.Text keyboardFocused>Tag name</Tag.Text>
+          <Tag.Close />
+        </Tag>
+      )),
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
     const component = (
       <Tag>
@@ -163,7 +188,7 @@ describe('Tag', () => {
       </Tag>,
     );
 
-    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
+    fireEvent.keyDown(getByTestId('close'), { code: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -177,7 +202,7 @@ describe('Tag', () => {
       </Tag>,
     );
 
-    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
+    fireEvent.keyDown(getByTestId('close'), { code: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 

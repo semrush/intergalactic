@@ -26,6 +26,7 @@ class TooltipRoot extends Component {
       flipVariationsByContent: true,
     },
     defaultVisible: false,
+    focusLoop: false,
   };
   state = { popperChildren: null };
 
@@ -44,8 +45,11 @@ class TooltipRoot extends Component {
       ariaHasPopup = 'false';
     }
 
+    const popperId = visible ? `igc-${uid}-popper` : undefined;
+
     return {
-      'aria-describedby': visible ? `igc-${uid}-popper` : undefined,
+      'aria-describedby': popperId,
+      popperId,
       'aria-haspopup': ariaHasPopup,
     };
   }
@@ -114,16 +118,14 @@ function TooltipPopper(props) {
   const { Children, styles, theme, resolveColor } = props;
   const STooltip = Root;
   const SArrow = Box;
+  const STooltipContent = 'span';
 
   return sstyled(styles)(
     <>
-      <STooltip
-        render={Popper.Popper}
-        role='tooltip'
-        use:theme={resolveColor(theme)}
-        aria-live={theme === 'warning' ? 'assertive' : 'polite'}
-      >
-        <Children />
+      <STooltip render={Popper.Popper} role='tooltip' use:theme={resolveColor(theme)}>
+        <STooltipContent aria-live={theme === 'warning' ? 'assertive' : 'polite'}>
+          <Children />
+        </STooltipContent>
         <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
       </STooltip>
     </>,

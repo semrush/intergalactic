@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.0] - 2024-02-21
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/dropdown-menu` [4.20.4 ~> 4.21.0]).
+
+## [4.29.2] - 2024-02-19
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.0 ~> 4.26.1], `@semcore/dropdown-menu` [4.20.3 ~> 4.20.4]).
+
+## [4.29.1] - 2024-02-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown-menu` [4.20.2 ~> 4.20.3]).
+
+## [4.29.0] - 2024-02-14
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.25.1 ~> 4.26.0], `@semcore/icon` [4.25.0 ~> 4.26.0]).
+
+## [4.28.0] - 2024-02-12
+
+### Added
+
+- `indeterminate` prop for `Select.Option.Checkbox`,
+
+## [4.27.1] - 2024-02-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.25.0 ~> 4.25.1], `@semcore/checkbox` [7.21.2 ~> 7.21.3], `@semcore/divider` [4.18.1 ~> 4.18.2], `@semcore/dropdown-menu` [4.20.1 ~> 4.20.2], `@semcore/flex-box` [5.19.0 ~> 5.19.1], `@semcore/icon` [4.24.1 ~> 4.25.0], `@semcore/input` [4.20.1 ~> 4.20.2], `@semcore/utils` [4.20.1 ~> 4.20.2], `@semcore/core` [2.17.1 ~> 2.17.2]).
+
+## [4.27.0] - 2024-02-07
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.24.1 ~> 4.25.0]).
+
 ## [4.26.1] - 2024-02-06
 
 ### Changed

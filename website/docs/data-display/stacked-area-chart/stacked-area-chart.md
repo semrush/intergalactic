@@ -104,7 +104,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 Use a stacked area chart to display both the total data amount and how parts contribute to the whole.
 
-**Key considerations for using a stacked area chart:**
+**Key considerations for using stacked area chart:**
 
 - Use area charts for a comprehensive view of your data. _For instance, while line charts are great for showing how a population changes over time, area charts excel at showing the total population volume within a specific period._
 - Stick to no more than four data sets to keep your chart readable. If you have more, the [Line](/data-display/line-chart/line-chart) might be a better choice for a clearer view.
@@ -195,4 +195,4 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![skeleton](static/stacked-area-skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states."
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".

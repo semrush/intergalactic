@@ -31,7 +31,7 @@ describe('FeedbackForm', () => {
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should not call onSubmit for validation error', () => {
+  test.sequential('Should not call onSubmit for validation error', () => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 

@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.20.1] - 2024-02-19
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.20.0 ~> 5.20.1]).
+
+## [6.20.0] - 2023-02-13
+
+### Fixed
+
+- Some assistive technologies were reading tooltip popper content twice.
+
+### Added
+
+- Tooltip trigger children render function got `popperId` param that allows to apply `aria-describedby` on specific children of tooltip trigger.
+
+## [6.19.0] - 2023-02-07
+
+### Changed
+
+- Disabled focus looping when focusable elements exist in tooltip.
+
 ## [6.18.1] - 2024-02-06
 
 ### Changed

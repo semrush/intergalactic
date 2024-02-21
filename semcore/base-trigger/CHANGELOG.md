@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.1] - 2024-02-19
+
+### Fixed
+
+- Pressing enter in forms was triggering `FilterTrigger` to open.
+
+## [4.26.0] - 2024-02-14
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.25.0 ~> 4.26.0]).
+
+## [4.25.1] - 2024-02-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/icon` [4.24.1 ~> 4.25.0], `@semcore/utils` [4.20.1 ~> 4.20.2]).
+
+## [4.25.0] - 2024-02-07
+
+### Added
+
+- `triggerRef` prop for FilterTrigger component to access inner trigger.
+
 ## [4.24.1] - 2024-02-05
 
 ### Fixed

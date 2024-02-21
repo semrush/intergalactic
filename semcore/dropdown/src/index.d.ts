@@ -9,10 +9,7 @@ import Popper, {
 
 /** @deprecated */
 export interface IDropdownProps extends DropdownProps, UnknownProperties {}
-export type DropdownProps = Intergalactic.InternalTypings.EfficientOmit<
-  PopperProps,
-  'interaction'
-> & {
+export type DropdownProps = PopperProps & {
   /**
    * Modifier responsible for the size of the pop-up window:
    * `fixed` - a pop-up window of the same size as trigger;
@@ -22,16 +19,6 @@ export type DropdownProps = Intergalactic.InternalTypings.EfficientOmit<
    * */
   stretch?: 'min' | 'fixed' | false;
   locale?: string;
-
-  /**
-   * @deprecated Dropdown should have only one of `click` or `focus` interaction. You shouldn't use it with another interactions.
-   */
-  interaction?:
-    | 'hover' /** @deprecated */
-    | 'click'
-    | 'focus'
-    | 'none' /** @deprecated */
-    | eventInteraction /** @deprecated */;
 };
 
 /** @deprecated */

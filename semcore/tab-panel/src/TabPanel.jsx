@@ -39,7 +39,8 @@ class TabPanelRoot extends Component {
   };
 
   handleKeyDown = (value) => (event) => {
-    if (event.key === 'Enter' || event.key === 'Space') {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      event.preventDefault();
       this.handlers.value(value, event);
     }
   };

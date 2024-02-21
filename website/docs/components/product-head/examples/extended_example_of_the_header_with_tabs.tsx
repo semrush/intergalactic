@@ -70,7 +70,7 @@ const Demo = () => {
         <Header.Row>
           <Info>
             <Info.Item label='Location:'>
-              <Select value={['us']} placeholder='Select an option, sir' m='auto'>
+              <Select value={['us']} placeholder='Select option' m='auto'>
                 <Select.Trigger tag={Link}>
                   United States
                   <Link.Addon tag={ChevronDownM} />
@@ -88,7 +88,7 @@ const Demo = () => {
               </Select>
             </Info.Item>
             <Info.Item label='Device:'>
-              <Select value={['desktop']} placeholder='Select an option, sir' m='auto'>
+              <Select value={['desktop']} placeholder='Select option' m='auto'>
                 <Select.Trigger tag={Link}>
                   Desktop
                   <Link.Addon tag={ChevronDownM} />

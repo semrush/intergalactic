@@ -38,12 +38,18 @@ SOptionCheckbox {
 SOptionCheckbox[size='l'] {
   width: 20px;
   height: 20px;
+
   &::after {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
   }
 }
 
 SOptionCheckbox[checked]:before {
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
+  border-color: var(--intergalactic-control-primary-info, #008ff8);
+}
+
+SOptionCheckbox[indeterminate]:before {
   background-color: var(--intergalactic-control-primary-info, #008ff8);
   border-color: var(--intergalactic-control-primary-info, #008ff8);
 }
@@ -63,4 +69,22 @@ SOptionCheckbox[selected] {
   &:hover {
     background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
   }
+}
+
+SOptionCheckbox[indeterminate]:after {
+  background-color: #ffffff;
+  background-image: none;
+  margin: auto;
+  /* disable-tokens-validator */
+  border-radius: 1px;
+}
+
+SOptionCheckbox[indeterminate][size='l']:after {
+  width: 12px;
+  height: 2px;
+}
+
+SOptionCheckbox[indeterminate][size='m']:after {
+  width: 8px;
+  height: 2px;
 }

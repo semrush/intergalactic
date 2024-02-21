@@ -58,7 +58,6 @@ class RootSelect extends Component {
   firstSelectedOptionRef = React.createRef();
 
   triggerRef = React.createRef();
-  focusableTriggerReturnFocusToRef = React.createRef();
 
   isScrolledToFirstOption = false;
 
@@ -108,7 +107,6 @@ class RootSelect extends Component {
       children: this.renderChildrenTrigger(value, options),
       getI18nText,
       ref: this.triggerRef,
-      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
     };
   }
 
@@ -122,11 +120,6 @@ class RootSelect extends Component {
       'aria-label': 'List of options',
     };
   }
-  getPopperProps() {
-    return {
-      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
-    };
-  }
 
   getMenuProps() {
     const { uid, getI18nText, multiselect } = this.asProps;
@@ -136,7 +129,6 @@ class RootSelect extends Component {
       id: `igc-${uid}-list`,
       role: 'listbox',
       'aria-label': getI18nText('optionsList'),
-      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
     };
   }
 
@@ -230,10 +222,6 @@ class RootSelect extends Component {
           setFocus(this.triggerRef.current);
           return;
         }
-        if (this.focusableTriggerReturnFocusToRef.current) {
-          this.focusableTriggerReturnFocusToRef.current.focus();
-          return;
-        }
       }, 0);
     }
   };
@@ -306,7 +294,6 @@ function Trigger({
   $hiddenRef,
   tag: Tag = ButtonTrigger,
   getI18nText,
-  focusableTriggerReturnFocusToRef,
 }) {
   const hasInputTrigger = isInputTriggerTag(Tag);
   const SSelectTrigger = Root;
@@ -318,7 +305,6 @@ function Trigger({
       placeholder={getI18nText('selectPlaceholder')}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
       role={(hasInputTrigger && 'combobox') || undefined}
-      focusableTriggerReturnFocusToRef={focusableTriggerReturnFocusToRef}
     >
       {addonTextChildren(
         Children,
@@ -333,13 +319,14 @@ function Trigger({
 
 function Checkbox(props) {
   const [SOptionCheckbox, componentProps] = useBox(props, props.forwardRef);
-  const { size, theme, selected, resolveColor } = props;
+  const { size, theme, selected, resolveColor, indeterminate } = props;
   const styles = sstyled(props.styles);
 
   const { className, style } = styles.cn('SOptionCheckbox', {
     size,
     'use:theme': resolveColor(theme),
     checked: selected,
+    indeterminate,
   });
 
   return (

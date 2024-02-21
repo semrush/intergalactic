@@ -99,7 +99,7 @@ if (type === 'trendLine') {
 
 ## Description
 
-**Mini chart** is a component for visualizing a small dataset or a single value that needs to be highlighted in the interface to assist the user in quickly reviewing data and understanding how the data has changed on the page.
+**Mini chart** is a component for visualizing a small data set or a single value that needs to be highlighted in the interface to assist the user in quickly reviewing data and understanding how the data has changed on the page.
 
 ## Types
 
@@ -118,10 +118,10 @@ Table: Versions of charts with trend type
 
 | Chart type       | Appearance example | Description |
 | ---------------- | ------------------ | ----------- |
-| Line chart       | ![](static/trend-line.png) | Use to show overall trend over time for a big dataset.|
-| Area chart       | ![](static/trend-area.png) | Use to show overall trend over time for a big dataset, but when you need to make trend more visible in the interface.|
-| Bar chart        | ![](static/trend-bar.png) | Use to show overall trend over time for a small dataset. |
-| Histogram chart  | ![](static/trend-histogram.png) |Use to show overall trend over time for a big dataset. |
+| Line chart       | ![](static/trend-line.png) | Use to show overall trend over time for a big data set.|
+| Area chart       | ![](static/trend-area.png) | Use to show overall trend over time for a big data set, but when you need to make trend more visible in the interface.|
+| Bar chart        | ![](static/trend-bar.png) | Use to show overall trend over time for a small data set. |
+| Histogram chart  | ![](static/trend-histogram.png) |Use to show overall trend over time for a big data set. |
 
 You can show the highest/lowest point if necessary.
 

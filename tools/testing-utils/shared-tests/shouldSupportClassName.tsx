@@ -7,7 +7,7 @@ export const shouldSupportClassName = (
   Wrapper: any = React.Fragment,
   props: any = {},
 ) => {
-  test.concurrent('should support className extending', () => {
+  test.sequential('should support className extending', () => {
     const className = 'more-then one-class';
 
     const { getByTestId } = render(

@@ -184,7 +184,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    fireEvent.keyDown(getByTestId('value'), { key: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(getByTestId('value'), { code: 'Enter', keyCode: 13 });
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 

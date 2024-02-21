@@ -90,9 +90,13 @@ export type SelectOptionProps = DropdownMenuItemProps & {
 
 /** @deprecated */
 export interface ISelectOptionCheckboxProps extends SelectOptionCheckboxProps, UnknownProperties {}
-export type SelectOptionCheckboxProps = SelectOptionProps & {
+export type SelectOptionCheckboxProps = BoxProps & {
   /** Checkbox theme */
   theme?: string;
+  /** Visual indeterminate state */
+  indeterminate?: boolean;
+
+  selected?: boolean;
 };
 
 declare const InputSearch: Intergalactic.Component<'div', SelectInputSearch> & {
@@ -150,7 +154,7 @@ declare const Select: IntergalacticSelectComponent & {
     [handlers: SelectHandlers]
   > & {
     Addon: typeof DropdownMenu.Item.Addon;
-    Checkbox: Intergalactic.Component<'div', BoxProps & { theme?: string; selected?: boolean }>;
+    Checkbox: Intergalactic.Component<'div', SelectOptionCheckboxProps>;
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;
   OptionHint: typeof DropdownMenu.ItemHint;

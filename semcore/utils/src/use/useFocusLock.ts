@@ -1,85 +1,19 @@
 import canUseDOM from '../canUseDOM';
-import moveFocusInside, { focusInside, getFocusableIn } from 'focus-lock';
 import LocalReact from 'react';
 
-/** "safe" focus movement means that function wrapper tries
- * to detect focus war (when two focus locks are trying to
- * control focus recursively) and disables it for 10 seconds
- */
-let focusMoveRequests: number[] = [];
-let focusMoveDisabledUntil = 0;
-let lastUserAction = 0;
-const safeMoveFocusInside: typeof moveFocusInside = (...args) => {
-  if (focusMoveDisabledUntil > Date.now()) return;
-  focusMoveRequests.push(Date.now());
-  if (focusMoveRequests.length > 10 && Date.now() - lastUserAction > 600) {
-    const lastFocusMoveRequests = focusMoveRequests.slice(-10);
-    const timeBetweenFocusMoveRequests = lastFocusMoveRequests
-      .slice(1)
-      .map((time, index) => Math.abs(time - lastFocusMoveRequests[index]));
-    if (timeBetweenFocusMoveRequests.every((time) => time < 250)) {
-      focusMoveDisabledUntil = Date.now() + 10000;
-      focusMoveRequests = [];
-      console.error(
-        '[useFocusLock] Probably the focus war was detected. It is a process when multiple browser focus control subjects are reacting to "blur" event on their element and are trying to get it back. Focus move function was disabled for 10 seconds. Probably your page has different focus lock systems. If you have multiple versions of Intergalactic components, updated them to the latest version (at least to 15.16.3).',
-      );
-      return;
-    }
-  }
-  if (focusMoveRequests.length > 500) focusMoveRequests = focusMoveRequests.slice(-10);
+import { isFocusInside } from '../focus-lock/isFocusInside';
+import { setFocus } from '../focus-lock/setFocus';
+import { getFocusableIn } from '../focus-lock/getFocusableIn';
+import {
+  addFocusBorders,
+  removeFocusBorders,
+  areFocusBordersPlacedCorrectly,
+} from '../focus-lock/focusBorders';
 
-  return moveFocusInside(...args);
-};
-if (canUseDOM()) {
-  document.addEventListener('keydown', () => {
-    lastUserAction = Date.now();
-  });
-  document.addEventListener('mousedown', () => {
-    lastUserAction = Date.now();
-  });
-}
+export { isFocusInside, setFocus };
 
 const focusBordersConsumers = new Set();
-const focusBordersRefs: {
-  before: HTMLElement | null;
-  after: HTMLElement | null;
-} = { before: null, after: null };
 
-const addBorders = () => {
-  if (!focusBordersRefs.before) {
-    focusBordersRefs.before = document.createElement('div');
-    focusBordersRefs.before.setAttribute('tabindex', '0');
-    focusBordersRefs.before.style.position = 'fixed';
-    focusBordersRefs.before.dataset.id = '__intergalactic-focus-border-before';
-    document.body.prepend(focusBordersRefs.before);
-  }
-  if (!focusBordersRefs.after) {
-    focusBordersRefs.after = document.createElement('div');
-    focusBordersRefs.after.setAttribute('tabindex', '0');
-    focusBordersRefs.after.dataset.id = '__intergalactic-focus-border-after';
-    focusBordersRefs.after.style.position = 'fixed';
-    document.body.append(focusBordersRefs.after);
-  }
-};
-const removeBorders = () => {
-  focusBordersRefs.before?.remove();
-  focusBordersRefs.after?.remove();
-  focusBordersRefs.before = null;
-  focusBordersRefs.after = null;
-};
-const areBordersPlacedCorrectly = () => {
-  if (!focusBordersRefs.before || !focusBordersRefs.after) return true;
-  if (document.body.children[0] !== focusBordersRefs.before) return false;
-  if (document.body.children[document.body.children.length - 1] !== focusBordersRefs.after)
-    return false;
-  return true;
-};
-
-type ReactT = typeof LocalReact;
-
-let uniqueId = 0;
-const getUniqueId = (prefix: string) =>
-  `${prefix}-${Math.random().toString(36).slice(2)}-${uniqueId++}`;
 const useFocusBorders = (React: ReactT, disabled?: boolean) => {
   useUniqueIdHookMock(React);
   React.useEffect(() => {
@@ -88,15 +22,22 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
       focusBordersConsumers.add(id);
     }
 
-    if (!areBordersPlacedCorrectly()) removeBorders();
-    if (focusBordersConsumers.size > 0) addBorders();
+    if (!areFocusBordersPlacedCorrectly()) removeFocusBorders();
+    if (focusBordersConsumers.size > 0) addFocusBorders();
 
     return () => {
       focusBordersConsumers.delete(id);
-      if (focusBordersConsumers.size === 0) removeBorders();
+      if (focusBordersConsumers.size === 0) removeFocusBorders();
     };
   }, [disabled]);
 };
+
+type ReactT = typeof LocalReact;
+
+let uniqueId = 0;
+const getUniqueId = (prefix: string) =>
+  `${prefix}-${Math.random().toString(36).slice(2)}-${uniqueId++}`;
+
 /**
  * # Focus lock hook merging
  * In some cases same page might contain different versions of components.
@@ -155,15 +96,18 @@ const useFocusLockHook = (
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
+  onFocusOut?: (event: Event) => void,
 ) => {
   useFocusBorders(React, disabled);
 
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
-  const handleFocusIn = React.useCallback(
+  const handleFocusOut = React.useCallback(
     (event: Event & { relatedTarget?: HTMLElement; target?: HTMLElement }) => {
-      const focusCameFrom = event.relatedTarget;
+      const focusCameFrom = event.target;
+      const focusMovedTo = event.relatedTarget;
+
       setTimeout(() => {
         if (!focusCameFrom) return;
         if (autoTriggerRef.current) return;
@@ -177,14 +121,22 @@ const useFocusLockHook = (
         const trapNodes = currentFocusMaster
           ? [trapRef.current]
           : [trapRef.current, ...focusLockAllTraps];
-        if (focusInside(trapNodes)) return;
+        if (isFocusInside(trapNodes, focusMovedTo)) return;
+        if (
+          typeof returnFocusTo === 'object' &&
+          returnFocusTo?.current &&
+          isFocusInside(returnFocusTo.current)
+        )
+          return;
 
         if (focusCameFrom) {
-          safeMoveFocusInside(trapRef.current, focusCameFrom);
+          setFocus(trapRef.current, focusCameFrom, focusMovedTo);
         }
+
+        onFocusOut?.(event);
       });
     },
-    [],
+    [onFocusOut],
   );
   const handleMouseEvent = React.useCallback(() => {
     lastUserInteractionRef.current = 'mouse';
@@ -193,15 +145,15 @@ const useFocusLockHook = (
     lastUserInteractionRef.current = 'keyboard';
   }, []);
   const returnFocus = React.useCallback(() => {
-    const trapNode = trapRef.current!;
-    if (!focusInside(trapNode)) return;
+    const trapNode = trapRef.current;
+    if (trapNode && !isFocusInside(trapNode)) return;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
-      setTimeout(() => safeMoveFocusInside(returnFocusNode, trapNode), 0);
+      setTimeout(() => setFocus(returnFocusNode, trapNode), 0);
     }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
-      setTimeout(() => safeMoveFocusInside(autoTrigger, trapNode), 0);
+      setTimeout(() => setFocus(autoTrigger, trapNode), 0);
     }
   }, [returnFocusTo]);
   React.useEffect(() => {
@@ -213,12 +165,16 @@ const useFocusLockHook = (
       if (!node) return;
       focusLockAllTraps.delete(node);
     };
-  }, []);
+  }, [disabled]);
   React.useEffect(() => {
     if (typeof trapRef !== 'object' || trapRef === null) return;
     if (disabled) return;
     if (!canUseDOM()) return;
     if (!trapRef.current) return;
+    const focusableChildren = Array.from(trapRef.current.children).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
+    if (focusableChildren.length === 0) return;
 
     if (focusMaster) {
       focusMastersStack.push(trapRef.current);
@@ -242,19 +198,19 @@ const useFocusLockHook = (
     );
     if (focusableChildren.length === 0) return;
 
-    document.body.addEventListener('focusin', handleFocusIn as any);
+    document.body.addEventListener('focusout', handleFocusOut as any);
     document.body.addEventListener('mousedown', handleMouseEvent);
     document.body.addEventListener('touchstart', handleMouseEvent);
     document.body.addEventListener('keydown', handleKeyboardEvent);
 
     if (autoFocus)
-      safeMoveFocusInside(
+      setFocus(
         trapRef.current,
-        typeof returnFocusTo === 'object' ? returnFocusTo?.current! : document.body,
+        typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
       );
 
     return () => {
-      document.body.removeEventListener('focusin', handleFocusIn as any);
+      document.body.removeEventListener('focusout', handleFocusOut as any);
       document.body.removeEventListener('mousedown', handleMouseEvent);
       document.body.removeEventListener('touchstart', handleMouseEvent);
       document.body.removeEventListener('keydown', handleKeyboardEvent);
@@ -297,9 +253,10 @@ export const useFocusLock = (
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
+  onFocusOut?: (event: Event) => void,
 ) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
+  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster, onFocusOut);
 };
 
 export const hasFocusableIn = (element: HTMLElement): boolean => {
@@ -307,5 +264,3 @@ export const hasFocusableIn = (element: HTMLElement): boolean => {
     Array.from(element.children).flatMap((node) => getFocusableIn(node as HTMLElement)).length > 0
   );
 };
-export const isFocusInside = focusInside;
-export const setFocus = safeMoveFocusInside as (topNode: HTMLElement, lastNode?: Element) => void;

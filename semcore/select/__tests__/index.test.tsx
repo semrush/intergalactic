@@ -174,6 +174,10 @@ describe('Select Trigger', () => {
               <Select.Option.Checkbox theme={theme} />
               size {size ?? 'default'}
             </Select.Option>
+            <Select.Option value='3'>
+              <Select.Option.Checkbox indeterminate />
+              size {size ?? 'default'}
+            </Select.Option>
           </Select.Popper>
         </Select>
       </div>
@@ -358,7 +362,7 @@ describe('Select Trigger', () => {
     act(() => {
       vi.runAllTimers();
     });
-    expect(document.activeElement?.tagName).toBe('DIV');
+    expect(document.activeElement?.tagName).toBe('INPUT');
 
     vi.useRealTimers();
   });

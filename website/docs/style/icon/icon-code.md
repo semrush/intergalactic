@@ -10,18 +10,7 @@ If you want an interactive icon that changes when hovered over (such as color an
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
-
-const Demo = () => (
-  <LinkExternalM
-    interactive
-    aria-label='Go to our awesome article'
-    color='icon-secondary-neutral'
-  />
-);
-
-
+  export Demo from './examples/interactive.tsx';
 </script>
 
 :::

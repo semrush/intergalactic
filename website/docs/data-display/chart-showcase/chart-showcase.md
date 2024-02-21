@@ -250,7 +250,7 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  minicharttrend: {
+  miniTrend: {
     title: 'Mini chart',
     route: '/intergalactic/data-display/mini-chart/mini-chart',
     disabled: false,
@@ -358,7 +358,7 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  minichartscore: {
+  miniScore: {
     title: 'Mini chart',
     route: '/intergalactic/data-display/mini-chart/mini-chart',
     disabled: false,
@@ -677,7 +677,7 @@ const group = {
     route: '/intergalactic/data-display/scatterplot-chart/scatterplot-chart',
     type: 'charts',
   },
-  minichartscore: {
+  miniScore: {
     title: 'Mini chart',
     route: '/intergalactic/data-display/mini-chart/mini-chart',
     disabled: false,
