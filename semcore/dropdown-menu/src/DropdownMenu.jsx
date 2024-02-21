@@ -450,7 +450,7 @@ function Item({ styles, label, triggerRef, focusLock, disabled, highlighted }) {
 function Nesting({ styles }) {
   const SDropdownMenuNesting = Root;
 
-  return sstyled(styles)(<SDropdownMenuNesting render={DropdownMenu.Item} />);
+  return sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />);
 }
 
 function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
