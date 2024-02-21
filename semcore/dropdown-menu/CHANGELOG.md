@@ -13,6 +13,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - When dropdown menu item has focusable elements inside, pressing tab locks focus inside the item. Closing or navigating inside the dropdown menu unlocks the focus.
 - If dropdown menu poppers placed to the left or right side of trigger, user needs to press `ArrowLeft` or `ArrowRight` to open the popper (`ArrowUp` or `ArrowDown` was opening popper with any placement before the change).
 
+### Added
+
+- `DropdownMenu.Nesting` component to support accessible nested dropdowns.
+
 ## [4.20.4] - 2024-02-19
 
 ### Changed

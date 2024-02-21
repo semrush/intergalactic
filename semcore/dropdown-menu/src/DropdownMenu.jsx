@@ -14,7 +14,6 @@ import style from './style/dropdown-menu.shadow.css';
 import { setFocus } from '@semcore/utils/src/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/src/focus-lock/isFocusInside';
 import { getFocusableIn } from '@semcore/utils/src/focus-lock/getFocusableIn';
-import logger from '@semcore/utils/lib/logger';
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -42,12 +41,20 @@ class DropdownMenuRoot extends Component {
 
   highlightedItemRef = React.createRef();
 
+  ignoreTriggerKeyboardFocusUntil = 0;
   prevHighlightedIndex = null;
 
   uncontrolledProps() {
     return {
       highlightedIndex: null,
-      visible: null,
+      visible: [
+        null,
+        (visible) => {
+          if (!visible) {
+            this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
+          }
+        },
+      ],
     };
   }
 
@@ -93,8 +100,51 @@ class DropdownMenuRoot extends Component {
       this.handlers.visible(true);
     }
     if (['ArrowLeft', 'ArrowRight'].includes(e.key) && !verticalPlacement) {
-      e.preventDefault();
-      this.handlers.visible(true);
+      const show =
+        (e.key === 'ArrowRight' && placement.startsWith('right')) ||
+        (e.key === 'ArrowLeft' && placement.startsWith('left'));
+      const hide =
+        (e.key === 'ArrowLeft' && placement.startsWith('right')) ||
+        (e.key === 'ArrowRight' && placement.startsWith('left'));
+      const visibleChanged = (visible && hide) || (!visible && show);
+      if (show) {
+        this.handlers.visible(true);
+      } else if (hide) {
+        this.handlers.visible(false);
+      }
+      if (visibleChanged) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+    }
+    if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
+      const focusable = getFocusableIn(item);
+      if (focusable.length > 0 && item) {
+        const focusedIndex = focusable.indexOf(document.activeElement);
+        if (e.key === 'ArrowRight') {
+          if (focusedIndex === -1) {
+            this.setState({ focusLockItemIndex: highlightedIndex });
+          }
+          const nextFocused = focusable[focusedIndex + 1];
+          if (nextFocused) {
+            e.preventDefault();
+            e.stopPropagation();
+            nextFocused.focus();
+          }
+        } else if (e.key === 'ArrowLeft') {
+          if (focusedIndex === 0) {
+            this.setState({ focusLockItemIndex: null });
+          }
+          const prevFocused = focusable[focusedIndex - 1];
+          if (prevFocused) {
+            e.preventDefault();
+            e.stopPropagation();
+            prevFocused.focus();
+          }
+        }
+      }
     }
 
     switch (e.key) {
@@ -129,11 +179,16 @@ class DropdownMenuRoot extends Component {
         } else {
           if (place === 'trigger') {
             this.handlers.visible(false);
+
             e.preventDefault();
           }
         }
         break;
     }
+  };
+
+  handleTriggerKeyboardFocus = () => {
+    if (this.ignoreTriggerKeyboardFocusUntil > Date.now()) return false;
   };
 
   getTriggerProps() {
@@ -149,6 +204,7 @@ class DropdownMenuRoot extends Component {
         visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
       ref: this.triggerRef,
+      onKeyboardFocus: this.handleTriggerKeyboardFocus,
     };
   }
 
@@ -196,8 +252,51 @@ class DropdownMenuRoot extends Component {
       focusLock: this.state.focusLockItemIndex === index,
       triggerRef: this.triggerRef,
       ref,
+      index,
     };
   }
+
+  handleNestingClick = (event) => {
+    const itemIndex = this.itemRefs.indexOf(event.currentTarget);
+    if (itemIndex === -1) return;
+    const focusable = getFocusableIn(event.currentTarget);
+    focusable[0]?.focus();
+    if (focusable[0] && this.state.focusLockItemIndex === null) {
+      this.setState({ focusLockItemIndex: null });
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+  handleNestingKeyDown = (event) => {
+    if (event.key === ' ') {
+      this.handleNestingClick(event);
+    }
+  };
+  getNestingProps = () => {
+    const { size } = this.asProps;
+    return {
+      size,
+      onClick: this.handleNestingClick,
+      onKeyDown: this.handleNestingKeyDown,
+    };
+  };
+  handleNestedVisibleChange = (lastUserInteraction) => {
+    if (
+      this.asProps.visible &&
+      this.asProps.highlightedIndex === null &&
+      lastUserInteraction === 'keyboard'
+    ) {
+      this.handlers.highlightedIndex(0);
+    }
+  };
+  getNestingTriggerProps = () => {
+    const { size, visible } = this.asProps;
+    return {
+      size,
+      visible,
+      onNestedVisibleChange: this.handleNestedVisibleChange,
+    };
+  };
 
   getItemHintProps() {
     const { size } = this.asProps;
@@ -266,7 +365,7 @@ class DropdownMenuRoot extends Component {
       this.handlers.highlightedIndex(null);
     }
     if (
-      this.state.focusLockItemIndex !== this.asProps.highlightedIndex &&
+      (this.state.focusLockItemIndex !== this.asProps.highlightedIndex || !this.asProps.visible) &&
       this.state.focusLockItemIndex !== null
     ) {
       setTimeout(() => {
@@ -276,13 +375,12 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { Children, interaction, 'data-ui-name': dataUiName } = this.asProps;
-    const props = {};
+    const { Children } = this.asProps;
 
     this.itemProps = [];
 
     return (
-      <Root render={Dropdown} {...props}>
+      <Root render={Dropdown}>
         <Children />
       </Root>
     );
@@ -349,6 +447,39 @@ function Item({ styles, label, triggerRef, focusLock, disabled, highlighted }) {
   );
 }
 
+function Nesting({ styles }) {
+  const SDropdownMenuNesting = Root;
+
+  return sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />);
+}
+
+function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
+  const SDropdownMenuItem = Root;
+
+  const lastUserInteractionRef = React.useRef(undefined);
+  React.useEffect(() => {
+    onNestedVisibleChange(lastUserInteractionRef.current);
+  }, [visible]);
+
+  const handleMouseEvent = React.useCallback(() => {
+    lastUserInteractionRef.current = 'mouse';
+  }, []);
+  const handleKeyboardEvent = React.useCallback(() => {
+    lastUserInteractionRef.current = 'keyboard';
+  }, []);
+
+  React.useEffect(() => {
+    document.addEventListener('mouseover', handleMouseEvent, { capture: true });
+    document.addEventListener('keydown', handleKeyboardEvent, { capture: true });
+    return () => {
+      document.removeEventListener('mouseover', handleMouseEvent, { capture: true });
+      document.removeEventListener('keydown', handleKeyboardEvent, { capture: true });
+    };
+  }, []);
+
+  return sstyled(styles)(<SDropdownMenuItem nesting-trigger tabIndex={0} render={Flex} />);
+}
+
 function Addon(props) {
   const [SDropdownMenuItemAddon, { className, ...other }] = useBox(props, props.forwardRef);
   const styles = sstyled(props.styles);
@@ -382,6 +513,7 @@ const DropdownMenu = createComponent(
     List,
     Menu,
     Item: [Item, { Addon }],
+    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
     ItemTitle: Title,
     ItemHint: Hint,
   },
