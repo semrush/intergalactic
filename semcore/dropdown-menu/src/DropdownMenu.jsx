@@ -11,9 +11,9 @@ import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
-import { setFocus } from '@semcore/utils/src/focus-lock/setFocus';
-import { isFocusInside } from '@semcore/utils/src/focus-lock/isFocusInside';
-import { getFocusableIn } from '@semcore/utils/src/focus-lock/getFocusableIn';
+import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
+import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
