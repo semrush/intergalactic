@@ -52,9 +52,13 @@ STag {
   }
 }
 
-STag[keyboardFocused]:focus {
+STag[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   z-index: 1;
+}
+
+STag[keyboardFocused]:has(:focus) {
+  box-shadow: none;
 }
 
 
