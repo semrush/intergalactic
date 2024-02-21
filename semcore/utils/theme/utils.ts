@@ -55,6 +55,13 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     | DesignTokenTree;
   type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
   const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
+    for (const key in node) {
+      if (key === 'type') continue;
+      if (key === 'value') continue;
+      if (key === 'description') continue;
+      if (key === '$extensions') continue;
+      traverse((node as any)[key], [...pathParts, key]);
+    }
     if ('type' in node && typeof node.type === 'string') {
       const path = pathParts.join('-');
       types[path] = node.type;
@@ -77,14 +84,11 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           }
         }
       }
-      return;
-    }
-    for (const key in node) {
-      traverse((node as any)[key], [...pathParts, key]);
     }
   };
 
   traverse(tokens);
+
   const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
       return replaceColors(color);
@@ -164,9 +168,15 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`Unsupported expression ${token}`);
       }
       return `${parseFloat(resolvedValue) * parseFloat(factor)}px`;
-    } else if (token.startsWith('{') && token.endsWith('}')) {
-      const resolvedToken = values[token.substring(1, token.length - 1).replace(/\./g, '-')];
-      if (!resolvedToken || resolvedToken.startsWith('{')) {
+    } else if (token.includes('{') && token.includes('}')) {
+      const reference = token
+        .substring(token.indexOf('{') + 1, token.indexOf('}'))
+        .replace(/\./g, '-');
+      const resolvedToken =
+        token.substring(0, token.indexOf('{')) +
+        values[reference] +
+        token.substring(token.indexOf('}') + 1);
+      if (!resolvedToken || resolvedToken.includes('{')) {
         throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
       }
       return resolvedToken;
@@ -195,7 +205,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     if (types[token] === 'color') {
       values[token] = resolveColor(values[token]);
     } else if (types[token] === 'boxShadow') {
-      values[token] = values[token].split('; ').map(replaceColors).join(', ');
+      values[token] = resolveToken(values[token].split('; ').map(replaceColors).join(', '));
     } else if (
       types[token] === 'sizing' ||
       types[token] === 'spacing' ||
