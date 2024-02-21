@@ -1789,7 +1789,7 @@ importers:
         specifier: 4.26.1-prerelease.2
         version: link:../icon
       '@semcore/outside-click':
-        specifier: 3.17.4-0
+        specifier: 3.17.4-prerelease.2
         version: link:../outside-click
       '@semcore/portal':
         specifier: 3.17.3-prerelease.2
@@ -2061,7 +2061,7 @@ importers:
         specifier: 4.17.3-prerelease.2
         version: link:../neighbor-location
       '@semcore/outside-click':
-        specifier: 3.17.4-0
+        specifier: 3.17.4-prerelease.2
         version: link:../outside-click
       '@semcore/portal':
         specifier: 3.17.3-prerelease.2
@@ -2287,7 +2287,7 @@ importers:
         specifier: 4.26.1-prerelease.2
         version: link:../icon
       '@semcore/outside-click':
-        specifier: 3.17.4-0
+        specifier: 3.17.4-prerelease.2
         version: link:../outside-click
       '@semcore/portal':
         specifier: 3.17.3-prerelease.2
@@ -2800,7 +2800,7 @@ importers:
         specifier: 4.21.1-prerelease.2
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: 2.19.2-0
+        specifier: 2.19.2-prerelease.2
         version: link:../ellipsis
       '@semcore/email':
         specifier: 1.0.2
@@ -2815,7 +2815,7 @@ importers:
         specifier: 6.20.1-prerelease.2
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: 4.18.4-0
+        specifier: 4.18.4-prerelease.2
         version: link:../flags
       '@semcore/flex-box':
         specifier: 5.19.2-prerelease.2
@@ -2830,7 +2830,7 @@ importers:
         specifier: 5.18.4-prerelease.1
         version: link:../grid
       '@semcore/i18n-unplugin':
-        specifier: 0.17.4-0
+        specifier: 0.17.4-prerelease.2
         version: link:../i18n-unplugin
       '@semcore/icon':
         specifier: 4.26.1-prerelease.2
@@ -2878,7 +2878,7 @@ importers:
         specifier: 2.35.2-prerelease.1
         version: link:../notice-global
       '@semcore/outside-click':
-        specifier: 3.17.4-0
+        specifier: 3.17.4-prerelease.2
         version: link:../outside-click
       '@semcore/pagination':
         specifier: 4.28.3-prerelease.1
