@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.1-prerelease.1] - 2024-02-21
+
+### Changed
+
+- Version prerelease update due to children dependencies update (`@semcore/base-trigger` [4.26.2-prerelease.1 ~> 4.26.2], `@semcore/checkbox` [7.22.1-prerelease.1 ~> 7.22.1], `@semcore/divider` [4.18.3-prerelease.1 ~> 4.18.3], `@semcore/dropdown-menu` [4.21.1-prerelease.1 ~> 4.21.1], `@semcore/flex-box` [5.19.2-prerelease.1 ~> 5.19.2], `@semcore/icon` [4.26.1-prerelease.1 ~> 4.26.1], `@semcore/input` [4.20.3-prerelease.1 ~> 4.20.3], `@semcore/core` [2.17.3-prerelease.1 ~> 2.17.3]).
+
 ## [4.32.0] - 2024-02-21
 
 ### Changed
