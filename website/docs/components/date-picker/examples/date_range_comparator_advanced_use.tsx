@@ -18,11 +18,19 @@ const Demo = () => {
           </DateRangeComparator.Header>
           <DateRangeComparator.Body>
             <DateRangeComparator.RangeCalendar />
-            <DateRangeComparator.Periods />
+            <DateRangeComparator.Periods>
+              <DateRangeComparator.Periods.Divider />
+              <DateRangeComparator.Periods.Column>
+                <DateRangeComparator.Periods.Options />
+                <DateRangeComparator.Periods.Controls>
+                  <DateRangeComparator.Apply />
+                  <DateRangeComparator.Reset />
+                </DateRangeComparator.Periods.Controls>
+              </DateRangeComparator.Periods.Column>
+            </DateRangeComparator.Periods>
           </DateRangeComparator.Body>
           <DateRangeComparator.Footer>
-            <DateRangeComparator.Apply />
-            <DateRangeComparator.Reset />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </DateRangeComparator.Footer>
           <Notice theme='warning' style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
             <Notice.Content>
@@ -48,11 +56,19 @@ const Demo = () => {
           </MonthDateRangeComparator.Header>
           <MonthDateRangeComparator.Body>
             <MonthDateRangeComparator.RangeCalendar />
-            <MonthDateRangeComparator.Periods />
+            <MonthDateRangeComparator.Periods>
+              <MonthDateRangeComparator.Periods.Divider />
+              <MonthDateRangeComparator.Periods.Column>
+                <MonthDateRangeComparator.Periods.Options />
+                <MonthDateRangeComparator.Periods.Controls>
+                  <MonthDateRangeComparator.Apply />
+                  <MonthDateRangeComparator.Reset />
+                </MonthDateRangeComparator.Periods.Controls>
+              </MonthDateRangeComparator.Periods.Column>
+            </MonthDateRangeComparator.Periods>
           </MonthDateRangeComparator.Body>
           <MonthDateRangeComparator.Footer>
-            <MonthDateRangeComparator.Apply />
-            <MonthDateRangeComparator.Reset />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </MonthDateRangeComparator.Footer>
           <Notice theme='warning' style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
             <Notice.Content>

@@ -471,7 +471,16 @@ describe('DateRangeComparator', () => {
             </DateRangeComparator.Header>
             <DateRangeComparator.Body>
               <DateRangeComparator.RangeCalendar />
-              <DateRangeComparator.Periods />
+              <DateRangeComparator.Periods>
+                <DateRangeComparator.Periods.Divider />
+                <DateRangeComparator.Periods.Column>
+                  <DateRangeComparator.Periods.Options />
+                  <DateRangeComparator.Periods.Controls>
+                    <DateRangeComparator.Apply />
+                    <DateRangeComparator.Reset />
+                  </DateRangeComparator.Periods.Controls>
+                </DateRangeComparator.Periods.Column>
+              </DateRangeComparator.Periods>
             </DateRangeComparator.Body>
             <DateRangeComparator.Footer>
               <DateRangeComparator.Apply />
