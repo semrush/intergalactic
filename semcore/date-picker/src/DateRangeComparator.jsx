@@ -76,8 +76,7 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
       children: (
         <>
           <DateRangeComparator.Header />
-          <DateRangeComparator.Body />
-          <DateRangeComparator.Footer />
+          <DateRangeComparator.Body showButtons={true} />
         </>
       ),
     };
@@ -95,12 +94,31 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
     };
   }
 
-  getBodyProps() {
+  getBodyProps({ showButtons }) {
     return {
       children: (
         <>
           <DateRangeComparator.RangeCalendar />
-          <DateRangeComparator.Periods />
+          <DateRangeComparator.Periods showButtons={showButtons} />
+        </>
+      ),
+    };
+  }
+
+  getPeriodsProps({ showButtons, unclearable = false }) {
+    return {
+      children: (
+        <>
+          <DateRangeComparator.Periods.Divider />
+          <DateRangeComparator.Periods.Column>
+            <DateRangeComparator.Periods.Options />
+            {showButtons && (
+              <DateRangeComparator.Periods.Controls>
+                <DateRangeComparator.Apply />
+                {!unclearable && <DateRangeComparator.Reset />}
+              </DateRangeComparator.Periods.Controls>
+            )}
+          </DateRangeComparator.Periods.Column>
         </>
       ),
     };
@@ -153,15 +171,25 @@ function RangeCalendar(props) {
 }
 function Periods(props) {
   const { Root: SPeriods, styles } = props;
-  const SPeriodsList = DateRangeComparator.Period;
+  return sstyled(styles)(<SPeriods render={Flex} />);
+}
+function PeriodsDivider(props) {
+  const { Root: SPeriodsDivider, styles } = props;
+  return sstyled(styles)(<SPeriodsDivider orientation='vertical' h='auto' render={Divider} />);
+}
+function PeriodsColumn(props) {
+  const { Root: SPeriodsColumn, styles } = props;
   return sstyled(styles)(
-    <SPeriods render={Flex}>
-      <Divider orientation='vertical' h='auto' />
-      <Flex direction='column'>
-        <SPeriodsList />
-      </Flex>
-    </SPeriods>,
+    <SPeriodsColumn render={Flex} direction='column' justifyContent='space-between' />,
   );
+}
+function PeriodsOptions(props) {
+  const { styles, Root: SPeriodsOptions } = props;
+  return sstyled(styles)(<SPeriodsOptions render={DateRangeComparator.Period} />);
+}
+function PeriodsControls(props) {
+  const { styles, Root: SPeriodsControls } = props;
+  return sstyled(styles)(<SPeriodsControls render={Flex} p={4} gap={2} />);
 }
 
 const DateRangeComparator = createComponent(
@@ -184,7 +212,15 @@ const DateRangeComparator = createComponent(
     CompareDateRange,
     Body,
     RangeCalendar,
-    Periods,
+    Periods: [
+      Periods,
+      {
+        Divider: PeriodsDivider,
+        Column: PeriodsColumn,
+        Options: PeriodsOptions,
+        Controls: PeriodsControls,
+      },
+    ],
     Footer,
     RangeInput,
   },

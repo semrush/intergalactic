@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
 import Button, { ButtonProps } from '@semcore/button';
+import Divider from '@semcore/divider';
 import Dropdown, { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
 import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
@@ -634,7 +635,12 @@ declare const DateRangeComparator: Intergalactic.Component<
   CompareDateRange: Intergalactic.Component<'div', InputTriggerProps>;
   Body: typeof Flex;
   RangeCalendar: typeof Flex;
-  Periods: typeof Flex;
+  Periods: typeof Flex & {
+    Divider: typeof Divider;
+    Column: typeof Flex;
+    Options: typeof Flex;
+    Controls: typeof Flex;
+  };
   Footer: typeof Flex;
 };
 
