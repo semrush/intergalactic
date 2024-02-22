@@ -10,6 +10,9 @@ import { axe } from '@semcore/testing-utils/axe';
 import Pills from '../src';
 import { Intergalactic } from '@semcore/core';
 import { assertType } from 'vitest';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import { Box } from '@semcore/flex-box';
 
 describe('PillGroup', () => {
   describe('types', () => {
@@ -237,10 +240,24 @@ describe('PillGroup', () => {
             2
           </Pills.Item>
         </Pills>
+        <Pills id={'autofocusedPills'}>
+          <Pills.Item value={1}>1</Pills.Item>
+          <Pills.Item value={2}>2</Pills.Item>
+        </Pills>
+        <Pills value={1}>
+          <div>
+            <Pills.Item value={1} keyboardFocused>
+              1
+            </Pills.Item>
+          </div>
+          <Pills.Item value={2}>2</Pills.Item>
+        </Pills>
       </snapshot.ProxyProps>
     );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    await expect(
+      await snapshot(component, { actions: { focus: '#autofocusedPills' } }),
+    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('should support additional elements as props', async ({ task }) => {

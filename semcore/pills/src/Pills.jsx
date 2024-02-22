@@ -65,7 +65,7 @@ class RootPills extends Component {
   };
 
   getItemProps(props, index) {
-    const { value, size, disabled, behavior, keyboardFocused } = this.asProps;
+    const { value, size, disabled, behavior } = this.asProps;
     const isSelected = value === props.value;
 
     this.itemValues[index] = props.value;
