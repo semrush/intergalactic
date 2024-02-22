@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.3] - 2024-02-22
+
+### Fixed
+
+- Filter trigger options navigations were not announced by assistive technologies.
+
 ## [4.26.2] - 2024-02-21
 
 ### Changed
