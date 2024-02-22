@@ -32,8 +32,8 @@ export type LineProps = Context & {
 export interface ILineDotsProps extends LineDotsProps, UnknownProperties {}
 export type LineDotsProps = Context &
   Omit<FadeInOutProps, 'display'> & {
-    /** Show all Dot */
-    display?: boolean;
+    /** Show dots */
+    display?: boolean | ((index: number, active: boolean, single: boolean) => boolean);
     /** Hide property */
     hide?: boolean;
     /** Index active of element */
