@@ -94,6 +94,7 @@ class RootFilterTrigger extends Component {
         __excludeProps={['id']}
         use:role={role}
         use:aria-controls={undefined}
+        use:aria-owns={undefined}
         use:aria-haspopup={undefined}
         use:aria-expanded={undefined}
         use:aria-disabled={undefined}
