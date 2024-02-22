@@ -100,13 +100,14 @@ class RootPills extends Component {
 
   render() {
     const SPills = Root;
-    const { Children, styles, controlsLength, disabled, behavior } = this.asProps;
+    const { Children, styles, controlsLength, disabled, behavior, value } = this.asProps;
 
     return sstyled(styles)(
       <SPills
         render={Box}
         role={behavior === 'radio' || behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
+        tabIndex={value !== null ? -1 : 0}
       >
         <NeighborLocation controlsLength={controlsLength}>
           <Children />

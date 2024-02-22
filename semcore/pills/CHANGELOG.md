@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - View of `keyboardFocused` Pill.
 
+### Added
+
+- Focus border for focused Pills without default value.
+
 ## [5.20.2] - 2024-02-21
 
 ### Changed
