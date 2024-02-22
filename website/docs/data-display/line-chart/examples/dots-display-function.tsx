@@ -3,7 +3,7 @@ import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 
-const displayDots = (index, active, single) => {
+const displayDots = (index: number, active: boolean, single: boolean) => {
   if (single || active) return true;
   return index < 10;
 };
