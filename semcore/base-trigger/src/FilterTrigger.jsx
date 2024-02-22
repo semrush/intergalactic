@@ -18,6 +18,17 @@ import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
 
+const filterTriggerInputProps = [
+  ...inputProps,
+  'aria-controls',
+  'aria-haspopup',
+  'aria-expanded',
+  'aria-disabled',
+  'aria-activedescendant',
+  'aria-label',
+  'aria-labelledby',
+];
+
 class RootFilterTrigger extends Component {
   static displayName = 'FilterTrigger';
   static style = style;
@@ -36,7 +47,7 @@ class RootFilterTrigger extends Component {
     uniqueIDEnhancement(),
   ];
   static defaultProps = {
-    includeInputProps: inputProps,
+    includeInputProps: filterTriggerInputProps,
     i18n: localizedMessages,
     locale: 'en',
     triggerRef: React.createRef(),
@@ -82,6 +93,13 @@ class RootFilterTrigger extends Component {
         aria-label={getI18nText('filter')}
         __excludeProps={['id']}
         use:role={role}
+        use:aria-controls={undefined}
+        use:aria-haspopup={undefined}
+        use:aria-expanded={undefined}
+        use:aria-disabled={undefined}
+        use:aria-activedescendant={undefined}
+        use:aria-label={undefined}
+        use:aria-labelledby={undefined}
       >
         <NeighborLocation>
           <SFilterTrigger
