@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.2] - 2024-02-22
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.2 ~> 4.26.3]).
+
+## [4.32.1] - 2024-02-21
+
+### Changed
+
+- Version prerelease update due to children dependencies update (`@semcore/base-trigger` [4.26.2-prerelease.10 ~> 4.26.2], `@semcore/checkbox` [7.22.1-prerelease.10 ~> 7.22.1], `@semcore/divider` [4.18.3-prerelease.10 ~> 4.18.3], `@semcore/dropdown-menu` [4.21.1-prerelease.10 ~> 4.21.1], `@semcore/flex-box` [5.19.2-prerelease.10 ~> 5.19.2], `@semcore/icon` [4.26.1-prerelease.10 ~> 4.26.1], `@semcore/input` [4.20.3-prerelease.10 ~> 4.20.3], `@semcore/core` [2.17.3-prerelease.10 ~> 2.17.3]).
+
+## [4.32.0] - 2024-02-21
+
+### Changed
+
+- Removed `aria-owns` from the `Select.Trigger`. It was misleading assistive technologies and creating a "screen reader focus ring shift" effect. `aria-controls` is kept on the `Select.Trigger`.
+
+## [4.31.0] - 2024-02-21
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/checkbox` [7.21.4 ~> 7.22.0]).
+
 ## [4.30.0] - 2024-02-21
 
 ### Changed
@@ -866,7 +890,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed to show components for tag in Select.Trigger, example `<Select.Trigger tag={FilterTrigger}`
+- Fixed to show components for tag in Select. Trigger, example `<Select.Trigger tag={FilterTrigger}`
 
 ## [2.4.0] - 2020-12-17
 

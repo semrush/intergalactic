@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.26.3] - 2024-02-21
+
+### Changed
+
+- Version prerelease update due to children dependencies update (`@semcore/animation` [2.18.3-prerelease.10 ~> 2.18.3], `@semcore/flex-box` [5.19.2-prerelease.10 ~> 5.19.2], `@semcore/portal` [3.17.3-prerelease.10 ~> 3.17.3], `@semcore/outside-click` [3.17.3 ~> 3.17.4], `@semcore/icon` [4.26.1-prerelease.10 ~> 4.26.1], `@semcore/core` [2.17.3-prerelease.10 ~> 2.17.3]).
+
+## [3.26.2] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/animation` [2.18.2 ~> 2.18.3], `@semcore/flex-box` [5.19.1 ~> 5.19.2], `@semcore/portal` [3.17.2 ~> 3.17.3], `@semcore/outside-click` [3.17.2 ~> 3.17.3], `@semcore/icon` [4.26.0 ~> 4.26.1], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [3.26.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/typography` [5.26.0 ~> 5.26.1]).
+
 ## [3.26.0] - 2024-02-14
 
 ### Changed
@@ -638,7 +656,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Fixed possible styles collisions between components with different versions, but same styles
 
-## [1.0.0-0] - 2020-08-14
+## [1.0.0-prerelease.10] - 2020-08-14
 
 ### Added
 

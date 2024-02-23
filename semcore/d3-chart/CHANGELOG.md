@@ -2,19 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.27.5] - 2024-02-21
+## [3.30.1] - 2024-02-23
 
 ### Fixed
 
 - background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
 
-## [3.27.4] - 2024-02-19
+## [3.30.0] - 2024-02-16
 
-### Changed
+### Fixed
 
-- Version prepatch update due to children dependencies update (`@semcore/popper` [5.20.0 ~> 5.20.1]).
+- a11y module "Skip to content after plot" link was not working in some cases.
 
-## [2.29.0] - 2024-02-16
+## [3.29.0] - 2024-02-16
 
 ### Changed
 
@@ -25,7 +25,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `patterns` prop was missing in multiple chart types.
 
-## [2.28.0] - 2024-02-13
+## [3.28.0] - 2024-02-13
 
 ### Changed
 
@@ -122,7 +122,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/animation` [2.13.1 ~> 2.14.0], `@semcore/popper` [5.13.0 ~> 5.14.0], `@semcore/utils` [4.15.1 ~> 4.16.0], `@semcore/core` [2.12.1 ~> 2.13.0]).
 
-## [3.21.4-prerelease.1] - 2023-12-20
+## [3.21.4-prerelease.10] - 2023-12-20
 
 ### Fixed
 
@@ -135,7 +135,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Chart dots were not displaying in Firefox.
 - Charts appearing animation in Firefox.
 
-## [3.21.3-prerelease.1] - 2023-12-14
+## [3.21.3-prerelease.10] - 2023-12-14
 
 ### Fixed
 
@@ -1287,7 +1287,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Fixed hover for `svg` element inside `XYPlot`.
 
-## [1.0.0-0] - 2021-02-11
+## [1.0.0-prerelease.10] - 2021-02-11
 
 ### Added
 

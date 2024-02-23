@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.2] - 2024-02-21
+
+### Changed
+
+- Version prerelease update due to children dependencies update (`@semcore/flex-box` [5.19.2-prerelease.10 ~> 5.19.2], `@semcore/neighbor-location` [4.17.3-prerelease.10 ~> 4.17.3], `@semcore/core` [2.17.3-prerelease.10 ~> 2.17.3]).
+
+## [5.20.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.19.1 ~> 5.19.2], `@semcore/neighbor-location` [4.17.2 ~> 4.17.3], `@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
 ## [5.20.0] - 2024-02-13
 
 ### Changed
@@ -62,7 +74,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/flex-box` [5.13.1 ~> 5.14.0], `@semcore/neighbor-location` [4.12.1 ~> 4.13.0], `@semcore/utils` [4.15.1 ~> 4.16.0], `@semcore/core` [2.12.1 ~> 2.13.0]).
 
-## [5.14.2-prerelease.1] - 2023-12-22
+## [5.14.2-prerelease.10] - 2023-12-22
 
 ### Fixed
 
@@ -663,7 +675,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Фон пилов исправлен с `transparent` на `#fff`
-- Проп className на Pill.Item больше не переопределяет класс компонента
+- Проп className на Pill. Item больше не переопределяет класс компонента
 
 ## [2.0.0] - 2019-01-18
 

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.24.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3]).
+
 ## [5.24.0] - 2024-02-14
 
 ### Changed
@@ -493,7 +499,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Updated styles according to the library redesign policy.Updated styles according to library redesign policy.
+- Updated styles according to the library redesign policy. Updated styles according to library redesign policy.
 - Increased gap between elements to match planned design.
 
 ## [2.6.5] - 2022-05-16

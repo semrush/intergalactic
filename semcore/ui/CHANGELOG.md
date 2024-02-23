@@ -1,3 +1,30 @@
+## [15.65.0] - 2024-02-22
+
+### @semcore/base-trigger
+
+- **Fixed** Filter trigger options navigations were not announced by assistive technologies.
+
+### @semcore/date-picker
+
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` got new subcomponents `DateRangeComparator.Periods.Divider`, `DateRangeComparator.Periods.Column`, `DateRangeComparator.Periods.Options` and `DateRangeComparator.Periods.Controls` that allows customize comparators sidebars.
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` apply and clear buttons default placement is changed from footer to sidebar.
+
+## [15.62.1] - 2024-02-21
+
+### @semcore/typography
+
+- **Fixed** Some styles for `List.Item` component.
+- **Added** `List.Item.Content` component for customise view of each list item.
+
+## [15.62.0] - 2024-02-21
+
+### @semcore/d3-chart
+
+- **Changed** Removed wrongly added deprecation messages about `ReferenceLine` `value` props.
+- **Changed** Added `valueEnd` prop to `ReferenceLine.Background` component that allows to specify background width by chart value.
+- **Fixed** `patterns` prop was missing in multiple chart types.
+- **Changed** A11y module links are clickable by `Space` now (along with `Enter` as before).
+
 ## [15.61.0] - 2024-02-21
 
 ### @semcore/dropdown-menu
