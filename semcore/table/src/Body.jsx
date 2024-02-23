@@ -16,7 +16,7 @@ const BodyCore = createBaseComponent(BodyInner);
 const Body = React.forwardRef((props, ref) => {
   const contextProps = React.useContext(Context);
   const styles = sstyled.merge(contextProps.styles, props.styles);
-  return <BodyCore ref={ref} {...contextProps} {...props} styles={styles} />;
+  return <BodyCore tabIndex={0} ref={ref} {...contextProps} {...props} styles={styles} />;
 });
 
 Body.displayName = 'Row';

@@ -1,7 +1,4 @@
 import React, { createContext } from 'react';
-
-import { createPortal } from 'react-dom';
-
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { fireFn } from '@semcore/utils/lib/fire';
 import Table from './Table';
@@ -216,7 +213,7 @@ function ContainerSticky(props, ref) {
   } = props;
   const { styles } = React.useContext(ContextTable);
   const { container, tableDOM } = React.useContext(StickyHeadContext);
-  const thead = container.getElementsByTagName('thead')[0];
+  const thead = container.getElementsByTagName('thead')[1];
   const styleBar = {};
 
   if (tableDOM) {
@@ -443,17 +440,14 @@ function StickyHeadInner(props, ref) {
 
   return (
     <StickyHeadContext.Provider value={{ container, tableDOM }}>
-      {createPortal(
-        <ContainerStickyCore
-          setRefContainer={setRefScrollContainer}
-          positionFixed={positionFixed}
-          top={top}
-          bottom={bottom}
-          ref={ref}
-          {...other}
-        />,
-        container,
-      )}
+      <ContainerStickyCore
+        setRefContainer={setRefScrollContainer}
+        positionFixed={positionFixed}
+        top={top}
+        bottom={bottom}
+        ref={ref}
+        {...other}
+      />
     </StickyHeadContext.Provider>
   );
 }

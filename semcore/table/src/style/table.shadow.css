@@ -82,6 +82,7 @@ SCellHead {
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
   font-weight: normal;
+  display: table-cell;
   color: var(--intergalactic-text-primary, #191b23);
   cursor: default;
   box-sizing: border-box;
@@ -123,21 +124,21 @@ SCellHead[borderRight] {
 SCellHead[sorting] {
   cursor: pointer;
 
-  &[use='primary']:hover {
+  &[use='primary']:hover, &[use='primary']:focus {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
 
-  &:hover SSortWrapper {
+  &:hover SSortWrapper, &:focus SSortWrapper {
     flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
     opacity: 1;
   }
 
-  &:hover SSortWrapper:before {
+  &:hover SSortWrapper:before, &:focus SSortWrapper:before {
     display: block;
     opacity: 1;
   }
 
-  &:hover SSortIcon {
+  &:hover SSortIcon, &:focus SSortIcon {
     display: block;
     opacity: 1;
   }
@@ -308,7 +309,7 @@ SStickyHeadTable {
 
 SStickyHead[position='fixed'] {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 }
 
 SStickyHead[position='top'] {
