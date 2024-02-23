@@ -1,3 +1,14 @@
+## [15.65.0] - 2024-02-22
+
+### @semcore/base-trigger
+
+- **Fixed** Filter trigger options navigations were not announced by assistive technologies.
+
+### @semcore/date-picker
+
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` got new subcomponents `DateRangeComparator.Periods.Divider`, `DateRangeComparator.Periods.Column`, `DateRangeComparator.Periods.Options` and `DateRangeComparator.Periods.Controls` that allows customize comparators sidebars.
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` apply and clear buttons default placement is changed from footer to sidebar.
+
 ## [15.62.1] - 2024-02-21
 
 ### @semcore/typography
