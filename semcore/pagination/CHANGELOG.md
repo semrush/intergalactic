@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.4] - 2024-02-23
+
+### Fixed
+
+- Prevent to clear input value after moving focus to `PageInput.Addon` element.
+
 ## [4.28.3] - 2024-02-21
 
 ### Changed

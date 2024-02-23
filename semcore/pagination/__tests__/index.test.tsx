@@ -1,11 +1,12 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Return from '@semcore/icon/Return/m';
 import Pagination from '../src';
+import Button from '@semcore/button';
 
 describe('Pagination', () => {
   beforeEach(cleanup);
@@ -356,4 +357,50 @@ describe('Pagination.PageInput.Value', () => {
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(totalPages);
   });
+
+  test.concurrent(
+    'Should stay value in input after moving focus to addon element by keyboard and change value in input to currentValue after moving focus by any element expect Input.Addon',
+    async () => {
+      const { getByTestId } = render(
+        <>
+          <Pagination currentPage={1} totalPages={100}>
+            <Pagination.PageInput>
+              <Pagination.PageInput.Value data-testid='value' />
+              <Pagination.PageInput.Addon
+                data-testid={'selectPageButton'}
+                tag={Return}
+                interactive
+              />
+            </Pagination.PageInput>
+          </Pagination>
+          <Button data-testid={'testButton'}>test button</Button>
+        </>,
+      );
+
+      const InputValue = getByTestId('value') as HTMLInputElement;
+
+      await userEvent.keyboard('[Tab]');
+      expect(InputValue).toHaveFocus();
+
+      await userEvent.keyboard('123');
+      expect(InputValue.value).toBe('123');
+
+      await userEvent.keyboard('[Tab]');
+      expect(getByTestId('selectPageButton')).toHaveFocus();
+      expect(InputValue.value).toBe('123');
+
+      await userEvent.keyboard('[Tab]');
+      expect(getByTestId('testButton')).toHaveFocus();
+      expect(InputValue.value).toBe('1');
+
+      await userEvent.click(InputValue);
+      expect(InputValue).toHaveFocus();
+
+      await userEvent.keyboard('23');
+      expect(InputValue.value).toBe('123'); // because we already has 1 in input
+
+      await userEvent.keyboard('{Shift>}[Tab]');
+      expect(InputValue.value).toBe('1');
+    },
+  );
 });
