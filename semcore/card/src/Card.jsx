@@ -36,15 +36,23 @@ class CardRoot extends Component {
 }
 
 function Title(props) {
-  const { styles, hint } = props;
+  const { styles, innerHint, Children } = props;
+  const hintAfter = props.hintAfter || props.hint;
   const STitle = Root;
   const SIcon = InfoM;
   const STooltip = Tooltip;
   return sstyled(styles)(
     <>
-      <STitle render={Text} />
-      {hint && (
-        <STooltip title={hint}>
+      <STitle render={Text}>
+        <Children />
+        {innerHint && (
+          <STooltip ml={1} title={innerHint}>
+            <SIcon interactive />
+          </STooltip>
+        )}
+      </STitle>
+      {hintAfter && (
+        <STooltip title={hintAfter}>
           <SIcon interactive />
         </STooltip>
       )}
