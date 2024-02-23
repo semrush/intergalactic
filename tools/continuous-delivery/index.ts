@@ -87,7 +87,7 @@ export const publishRelease = async () => {
   await removeBetaVersionFromReleaseChangelog(releaseChangelog.changelogs);
 
   /** publish intergalactic */
-  // await publishIntergalacticRelease();
+  await publishIntergalacticRelease();
   /** publish intergalactic */
 
   await republishTarballs(packagesPaths);
