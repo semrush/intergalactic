@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.28.1-prerelease.1] - 2024-02-21
+## [3.28.1] - 2024-02-21
 
 ### Changed
 
@@ -617,7 +617,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added animation for change active index in control mode.
 
-## [1.0.0-0] - 2020-11-05
+## [1.0.0-prerelease.10] - 2020-11-05
 
 ### Added
 

@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.20.2-prerelease.1] - 2024-02-21
+## [5.20.2] - 2024-02-21
 
 ### Changed
 
@@ -84,7 +84,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - When keyboard users are focus-triggered closing popper, trigger is highlighted with focus ring while actually focus is placed on the sibling invisible element.
 
-## [5.14.0-prerelease.1] - 2023-12-22
+## [5.14.0-prerelease.10] - 2023-12-22
 
 ### Changed
 

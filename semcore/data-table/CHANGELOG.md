@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.27.1-prerelease.1] - 2024-02-21
+## [4.27.1] - 2024-02-21
 
 ### Changed
 
@@ -116,7 +116,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
 
-## [4.17.1-prerelease.1] - 2023-11-20
+## [4.17.1-prerelease.10] - 2023-11-20
 
 ### Changed
 
@@ -819,7 +819,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Add prop `active` for `Row`.
 
-## [0.0.1-0] - 2020-09-11
+## [0.0.1-prerelease.10] - 2020-09-11
 
 ### Added
 

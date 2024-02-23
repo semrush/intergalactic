@@ -1,4 +1,6 @@
 import chroma from 'chroma-js';
+import { writeFile } from 'fs/promises';
+import { readFile } from 'fs/promises';
 
 type ExtensionsInput = {
   'studio.tokens': {
@@ -263,4 +265,14 @@ export const tokensToJson = (tokens: { name: string; value: string; description:
     themeFile[token.name] = token.value;
   }
   return JSON.stringify(themeFile, null, 2) + '\n';
+};
+
+export const writeIfChanged = async (path: string, content: string) => {
+  try {
+    const originalContent = await readFile(path, 'utf-8');
+    if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
+      return;
+    }
+  } catch {}
+  await writeFile(path, content);
 };

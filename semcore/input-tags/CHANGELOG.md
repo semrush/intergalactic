@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.23.1-prerelease.1] - 2024-02-21
+## [4.23.1] - 2024-02-21
 
 ### Changed
 
@@ -105,7 +105,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Fixed vertical gaps between tags for `l` size.
 
-## [4.14.1-prerelease.1] - 2023-11-24
+## [4.14.1-prerelease.10] - 2023-11-24
 
 ### Fixed
 

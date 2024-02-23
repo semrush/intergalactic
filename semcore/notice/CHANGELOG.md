@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.25.1-prerelease.1] - 2024-02-21
+## [5.25.1] - 2024-02-21
 
 ### Changed
 
@@ -722,7 +722,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Исправлена работа анимации
 
-## [1.0.0-0] - 2018-09-26
+## [1.0.0-prerelease.10] - 2018-09-26
 
 ### Added
 

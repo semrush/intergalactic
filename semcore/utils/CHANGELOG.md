@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.20.3-prerelease.1] - 2024-02-08
+## [4.20.3] - 2024-02-08
 
 ### Fixed
 
@@ -68,7 +68,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `keyboardFocusEnhance` got context based keyboard focus enforcing.
 
-## [4.16.0-prerelease.1] - 2023-12-22
+## [4.16.0-prerelease.10] - 2023-12-22
 
 ### Changed
 
