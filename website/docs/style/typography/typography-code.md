@@ -27,6 +27,16 @@ Using the example below, you can easily create lists with custom bullets.
 
 :::
 
+## List with custom content render
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/list-with-custom-content.tsx';
+</script>
+
+:::
+
 ## Native typography tags
 
 To style native tags, use the `FormatText` component from the `@semcore/ui/format-text` package.
