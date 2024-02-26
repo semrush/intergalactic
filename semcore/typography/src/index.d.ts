@@ -100,7 +100,7 @@ declare const Hint: Intergalactic.Component<'abbr', HintProps> & {
 };
 
 declare const Item: Intergalactic.Component<'li', ListItemProps> & {
-  Content: Intergalactic.Component<Flex, ListItemContentProps>;
+  Content: Intergalactic.Component<typeof Flex, ListItemContentProps>;
 };
 
 declare const List: Intergalactic.Component<'ul', ListProps> & {
