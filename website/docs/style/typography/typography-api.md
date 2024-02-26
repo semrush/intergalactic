@@ -28,13 +28,16 @@ import { List } from '@semcore/ui/typography';
 ## List.Item
 
 A list item tagged with `li`. It's possible to set a custom marker.
+Also, it is possible to customise content with `<List.Item.Content />`;
 
 ```jsx
 import { List } from '@semcore/ui/typography';
 <List.Item />;
+<List.Item.Content />;
 ```
 
 <TypesView type="ListItemProps" :types={...types} />
+<TypesView type="ListItemContentProps" :types={...types} />
 
 ## Blockquote
 
