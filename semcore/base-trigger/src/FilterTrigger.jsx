@@ -136,7 +136,11 @@ class RootFilterTrigger extends Component {
               id={`igc-${uid}-filter-trigger-clear`}
               aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
             >
-              <FilterTrigger.Addon tag={Close} aria-label={getI18nText('clear')} />
+              <FilterTrigger.Addon
+                tag={Close}
+                aria-label={getI18nText('clear')}
+                aria-hidden={false}
+              />
             </SFilterTrigger>
           )}
         </NeighborLocation>
