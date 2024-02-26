@@ -57,11 +57,9 @@ class RootFilterTrigger extends Component {
   handleStopPropagation = (e) => e.stopPropagation();
 
   handleClear = () => {
-    setTimeout(() => {
-      if (document.activeElement === document.body) {
-        setFocus(this.asProps.triggerRef.current);
-      }
-    }, 0);
+    requestAnimationFrame(() => {
+      setFocus(this.asProps.triggerRef.current);
+    });
   };
 
   render() {
