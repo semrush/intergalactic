@@ -1,3 +1,13 @@
+## [15.65.2] - 2024-02-26
+
+### @semcore/d3-chart
+
+- **Fixed** paddings on X axis in Firefox.
+
+### @semcore/pagination
+
+- **Fixed** Pressing tab in pagination input was causing input to clear.
+
 ## [15.65.1] - 2024-02-26
 
 ### @semcore/base-trigger
