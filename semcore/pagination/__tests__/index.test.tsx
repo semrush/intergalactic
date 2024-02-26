@@ -279,7 +279,7 @@ describe('Pagination.PageInput.Value', () => {
     expect(spy).toBeCalledTimes(0);
   });
 
-  test('should reset input value on blur without onCurrentPageChange call', () => {
+  test('should reset input value on blur without onCurrentPageChange call', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pagination currentPage={10} totalPages={100} onCurrentPageChange={spy}>
@@ -297,8 +297,11 @@ describe('Pagination.PageInput.Value', () => {
     expect(input.value).toBe('100');
     expect(spy).toBeCalledTimes(0);
     fireEvent.blur(input);
+    await vi.runAllTimersAsync();
     expect(spy).toBeCalledTimes(0);
-    expect((input as any)._valueTracker.getValue()).toBe('10');
+    expect(input.value).toBe('10');
+
+    vi.useRealTimers();
   });
 
   test('should call onCurrentPageChange on Enter click', () => {
