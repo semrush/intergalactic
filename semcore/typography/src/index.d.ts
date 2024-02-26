@@ -2,7 +2,7 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 
 import { Property } from 'csstype';
-import { Box, BoxProps, Flex } from '@semcore/flex-box';
+import { Box, BoxProps, Flex, FlexProps } from '@semcore/flex-box';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
@@ -63,6 +63,8 @@ export type ListItemProps = TextProps & {
   marker?: React.ReactNode;
 };
 
+export type ListItemContentProps = FlexProps;
+
 /** @deprecated */
 export interface IListContext extends ListContext, UnknownProperties {}
 export type ListContext = {
@@ -98,7 +100,7 @@ declare const Hint: Intergalactic.Component<'abbr', HintProps> & {
 };
 
 declare const Item: Intergalactic.Component<'li', ListItemProps> & {
-  Content: typeof Flex;
+  Content: Intergalactic.Component<Flex, ListItemContentProps>;
 };
 
 declare const List: Intergalactic.Component<'ul', ListProps> & {
