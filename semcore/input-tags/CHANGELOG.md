@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Height for `InputTag` with size `l`.
+- Height for `InputTag` with size `l` (from 44px to 40px, like our other `large` components).
 
 ## [4.23.1] - 2024-02-21
 
