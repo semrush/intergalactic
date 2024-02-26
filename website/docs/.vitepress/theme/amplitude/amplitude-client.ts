@@ -1,12 +1,25 @@
 import 'whatwg-fetch';
 import { nanoid } from 'nanoid';
 import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
+import Bowser from 'bowser';
 
 declare global {
   interface Window {
     cookiehub: any;
   }
 }
+
+type IdentificationParameter = {
+  platform: string;
+  os_name: string;
+  os_version: string;
+  device_brand: string;
+  device_manufacturer: string;
+  device_model: string;
+  country: string;
+  language: string;
+  user_properties: any;
+};
 
 const getThemePreference = () => {
   return document.body.classList.contains('dark') ? 'dark' : 'light';
@@ -25,8 +38,8 @@ const getIsConsented = (getExternalProviderConsentStatus: () => boolean): boolea
   return hasCookieHubConsented || hasExternalProviderConsented;
 };
 
-const AMPLITUDE_HTTP_HANDLER = 'https://api.amplitude.com/2/httpapi';
-const AMPLITUDE_HTTP_IDENTIFY_HANDLER = 'https://api.amplitude.com/identify';
+const AMPLITUDE_HTTP_HANDLER = 'https://api2.amplitude.com/2/httpapi';
+const AMPLITUDE_HTTP_IDENTIFY_HANDLER = 'https://api2.amplitude.com/identify';
 
 const amplitudeHttp = {
   setDeviceId(): string {
@@ -55,21 +68,19 @@ const amplitudeHttp = {
     this.deviceId = getCookie(AMPLITUDE_COOKIE_NAME);
     this.sessionId = Date.now();
 
-    const theme = getThemePreference();
-
     if (getIsConsented(this.getExternalConsentStatusCb)) {
       this.setDeviceId();
+      this.sendUserProperties();
     }
 
-    this.logEvent('init_app', { theme });
+    const theme = getThemePreference();
+
+    this.logEvent('init_app', { event_properties: { theme } });
 
     return this;
   },
 
-  async sendUserProperties(
-    userProperties: {},
-    method: 'set' | 'setOnce' | 'add' | 'append' | 'unset' = 'set',
-  ) {
+  async sendUserProperties() {
     const { apiKey, deviceId, sessionId, getExternalConsentStatusCb } = this;
     let identification = '';
     const isConsentGotten = getIsConsented(getExternalConsentStatusCb);
@@ -84,9 +95,7 @@ const amplitudeHttp = {
       identification = JSON.stringify([
         {
           device_id: preparedDeviceId,
-          user_properties: {
-            [`$${method}`]: userProperties,
-          },
+          ...this.getIdentificationParameter(),
         },
       ]);
     } catch (error) {
@@ -133,6 +142,7 @@ const amplitudeHttp = {
         session_id: preparedSessionId,
         event_type: eventType,
         ...eventArguments,
+        ...this.getIdentificationParameter(),
       },
     ];
 
@@ -183,6 +193,33 @@ const amplitudeHttp = {
     }
 
     return true;
+  },
+
+  getIdentificationParameter(): IdentificationParameter {
+    const systemInfo = Bowser.parse(window.navigator.userAgent);
+    const language = window.navigator.language;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    return {
+      platform: `${systemInfo.platform.vendor} ${systemInfo.platform.type}`,
+      os_name: systemInfo.browser.name,
+      os_version: systemInfo.browser.version,
+      device_brand: systemInfo.os.name,
+      device_manufacturer: systemInfo.os.versionName,
+      device_model: '',
+      country: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language,
+      user_properties: {
+        ['$set']: {
+          OS: `${systemInfo.os.name} ${systemInfo.os.versionName} v${systemInfo.os.version}`,
+          platform: `${systemInfo.platform.vendor} ${systemInfo.platform.type}`,
+          language,
+          referer: document.referrer,
+          screen: `${width} x ${height}`,
+        },
+      },
+    };
   },
 };
 
