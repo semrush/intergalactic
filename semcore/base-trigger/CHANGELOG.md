@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Returning focus on trigger after clear `FilterTrigger` without any checks.
+- Returning focus on trigger after clear `FilterTrigger`.
 
 ## [4.26.3] - 2024-02-22
 
