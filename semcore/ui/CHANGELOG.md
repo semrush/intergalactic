@@ -1,3 +1,17 @@
+## [15.65.1] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** Returning focus on trigger after clear `FilterTrigger`.
+
+### @semcore/data-table
+
+- **Fixed** Virtual scroll in table - setup row size observer in `requestAnimationFrame`.
+
+### @semcore/input-tags
+
+- **Fixed** Height for `InputTag` with size `l` (from 44px to 40px, like our other `large` components).
+
 ## [15.65.0] - 2024-02-22
 
 ### @semcore/base-trigger
