@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.23.2] - 2024-02-26
+
+### Fixed
+
+- Height for `InputTag` with size `l`.
+
 ## [4.23.1] - 2024-02-21
 
 ### Changed
