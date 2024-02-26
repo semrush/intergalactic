@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Prevent to clear input value after moving focus to `PageInput.Addon` element.
+- Pressing tab in pagination input was causing input to clear.
 
 ## [4.28.3] - 2024-02-21
 

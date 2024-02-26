@@ -102,7 +102,7 @@ class PaginationRoot extends Component {
       if (this.pageInputAddonRef.current !== document.activeElement) {
         this.setState({ dirtyCurrentPage: currentPage });
       }
-    });
+    }, 0);
   };
 
   getDirtyCurrentPage = () => {
