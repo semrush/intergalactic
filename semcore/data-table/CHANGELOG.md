@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.27.4] - 2024-02-27
+
+### Fixed
+
+- Calculation of column widths to properly render Skeleton after the first paint.
+
 ## [4.27.2] - 2024-02-23
 
 ### Fixed
