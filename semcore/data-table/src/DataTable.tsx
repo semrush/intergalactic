@@ -472,6 +472,10 @@ class RootDefinitionTable extends Component<AsProps> {
     return parseData(data, {});
   }
 
+  componentDidMount() {
+    this.setVarStyle(this.columns);
+  }
+
   componentDidUpdate() {
     this.setVarStyle(this.columns);
   }
