@@ -47,14 +47,14 @@ import React from 'react';
 import Color from '@components/Color';
 
 const colors = [
-    '--blue-300',
-    '--green-200',
-    '--orange-400',
-    '--pink-300',
-    '--yellow-200',
-    '--violet-400',
-    '--red-300',
-    '--salad-200',
+    '--intergalactic-chart-palette-order-1',
+    '--intergalactic-chart-palette-order-2',
+    '--intergalactic-chart-palette-order-3',
+    '--intergalactic-chart-palette-order-4',
+    '--intergalactic-chart-palette-order-5',
+    '--intergalactic-chart-palette-order-6',
+    '--intergalactic-chart-palette-order-7',
+    '--intergalactic-chart-palette-order-8',
   ] // basicPack
 
 
@@ -86,14 +86,14 @@ import React from 'react';
 import Color from '@components/Color';
 
 const colors = [
-    '--blue-400',
-    '--green-300',
-    '--orange-200',
-    '--pink-400',
-    '--yellow-300',
-    '--violet-200',
-    '--red-400',
-    '--salad-300',
+    '--intergalactic-chart-palette-order-9',
+    '--intergalactic-chart-palette-order-10',
+    '--intergalactic-chart-palette-order-11',
+    '--intergalactic-chart-palette-order-12',
+    '--intergalactic-chart-palette-order-13',
+    '--intergalactic-chart-palette-order-14',
+    '--intergalactic-chart-palette-order-15',
+    '--intergalactic-chart-palette-order-16',
   ] // secondPack
 
 const App = function (props) {
@@ -124,14 +124,14 @@ import React from 'react';
 import Color from '@components/Color';
 
 const colors = [
-    '--blue-200',
-    '--green-400',
-    '--orange-300',
-    '--pink-200',
-    '--yellow-400',
-    '--violet-300',
-    '--red-200',
-    '--salad-400',
+    '--intergalactic-chart-palette-order-17',
+    '--intergalactic-chart-palette-order-18',
+    '--intergalactic-chart-palette-order-19',
+    '--intergalactic-chart-palette-order-20',
+    '--intergalactic-chart-palette-order-21',
+    '--intergalactic-chart-palette-order-22',
+    '--intergalactic-chart-palette-order-23',
+    '--intergalactic-chart-palette-order-24',
   ] // thirdPack
 
 const App = function (props) {
@@ -155,7 +155,7 @@ const App = function (props) {
 
 #### Total amount
 
-Use `--chart-palette-order-total-amount` token to indicate total values.
+Use `--intergalactic-chart-palette-order-total-amount` token to indicate total values.
 
 ::: react-view
 
@@ -163,7 +163,7 @@ Use `--chart-palette-order-total-amount` token to indicate total values.
 import React from 'react';
 import Color from '@components/Color';
 
-const colors = ['--gray-400'] // totalAmount
+const colors = ['--intergalactic-chart-palette-order-total-amount'] // totalAmount
 
 const App = function (props) {
   return (
@@ -186,7 +186,7 @@ const App = function (props) {
 
 #### Other data
 
-Use `--chart-palette-order-other-data` token to indicate voids, missing or some other data.
+Use `--intergalactic-chart-palette-order-other-data` token to indicate voids, missing or some other data.
 
 ::: react-view
 
@@ -194,7 +194,7 @@ Use `--chart-palette-order-other-data` token to indicate voids, missing or some 
 import React from 'react';
 import Color from '@components/Color';
 
-const colors = ['--gray-200'] // otherData
+const colors = ['--intergalactic-chart-palette-order-other-data'] // otherData
 
 const App = function (props) {
   return (
@@ -217,7 +217,7 @@ const App = function (props) {
 
 #### Null and n/a data
 
-Use `--chart-palette-order-null` token to indicate null or not available data when applicable (for example, in Donut chart).
+Use `--intergalactic-chart-palette-order-null` token to indicate null or not available data when applicable (for example, in Donut chart).
 
 ::: react-view
 
@@ -225,7 +225,7 @@ Use `--chart-palette-order-null` token to indicate null or not available data wh
 import React from 'react';
 import Color from '@components/Color';
 
-const colors = ['--gray-100'] // nullData
+const colors = ['--intergalactic-chart-palette-order-null'] // nullData
 
 const App = function (props) {
   return (
