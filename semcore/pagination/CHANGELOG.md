@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.4-prerelease.1] - 2024-02-23
+
+### Fixed
+
+- Pressing tab in pagination input was causing input to clear.
+
 ## [4.28.3] - 2024-02-21
 
 ### Changed

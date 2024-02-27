@@ -15,19 +15,19 @@ STitle[position='top'] {
 
 STitle[position='bottom'] {
   text-anchor: middle;
-  alignment-baseline: hanging;
+  dominant-baseline: hanging;
 }
 
 STitle[position='right'] {
   transform: rotate(-90deg);
-  alignment-baseline: middle;
+  dominant-baseline: middle;
   text-anchor: middle;
 }
 
 STitle[position='left'] {
   transform: rotate(-90deg);
   text-anchor: middle;
-  alignment-baseline: middle;
+  dominant-baseline: middle;
 }
 
 SBackground {
