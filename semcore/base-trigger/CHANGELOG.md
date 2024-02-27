@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.5] - 2024-02-26
+
+### Fixed
+
+- A11y in Firefox for clear button in FilterTrigger.
+
 ## [4.26.4] - 2024-02-23
 
 ### Fixed
