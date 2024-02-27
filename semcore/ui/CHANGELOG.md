@@ -1,5 +1,9 @@
 ## [15.65.2] - 2024-02-26
 
+### @semcore/base-trigger
+
+- **Fixed** A11y in Firefox for clear button in FilterTrigger.
+
 ### @semcore/d3-chart
 
 - **Fixed** paddings on X axis in Firefox.
