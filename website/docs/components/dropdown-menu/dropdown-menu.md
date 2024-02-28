@@ -229,19 +229,26 @@ Table: Fixed item examples
 | Notice            | ![fixed-notice](static/fixed-notice.png) ![fixed-notice-paddings](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: var(--bold)`.                                                                                           |
 | Button            | ![fixed-button](static/fixed-button.png)                                                      |                                                                                                                                                                                       |
 
-## Nested lists and items
+## Nested dropdown menus
 
-The item of the list can have a list of items inside. In this case, it should have the `ChevronRight` icon after the text.
+The menu item can have a nested menu. In this case, it should have the `ChevronRight` icon to indicate the nesting.
 
-![second-level](static/second-level.png)
+![](static/second-level.png)
 
-**The maximum nesting level is three, but it's best to avoid nesting as it can be uncomfortable to work with long lists.** If there is enough space, nested lists will drop to the right. If there isn't enough space, they will drop to the left.
+**The maximum recommended nesting level is two, but it's better to avoid nesting altogether because large menus can be inconvenient to work with.** If there's sufficient space, nested lists will drop to the right; otherwise, they will drop to the left.
 
-Nested groups will be hidden after a delay of 0.3 seconds in the following cases:
+Nested menus hide after the 0.3 seconds delay in the following cases:
 
-- When the user hovers over another item in the parent list.
-- When the mouse cursor moves away from the dropdown.
+- When user hovers over another item in the parent list.
+- When mouse cursor moves away from the dropdown.
 - When the entire dropdown closes (for example, by pressing the `Esc` button).
 
-If you select a nested item, only its name will be displayed in the trigger, without the name of the parent item.
+If user selects a nested item, only its name will be displayed in the trigger, without the name of the parent item.
 
+### Selected item in nested menu
+
+If an item in a submenu is selected, the submenu stays hidden until the user opens it.
+
+To prevent inconvenience for users with small screens, avoid expanding the entire chain of submenus when opening a dropdown with a selected item in such a menu.
+
+![](static/second-level-selected.png)
