@@ -6,6 +6,7 @@ import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-uti
 import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 
 describe('DropdownMenu', () => {
   beforeEach(cleanup);
@@ -316,6 +317,30 @@ describe('DropdownMenu', () => {
       await userEvent.keyboard('[ArrowRight]');
       expect(getByTestId('item-2-2')).toBeTruthy();
     });
+  });
+
+  test.concurrent('disabled nested', ({ expect }) => {
+    const { getByTestId } = render(
+      <DropdownMenu visible placement='right'>
+        <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Menu data-testid='dropdown-menu-with-disabled-nesting'>
+          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Nesting disabled>
+            <DropdownMenu interaction='hover' placement='right'>
+              <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>Item 2</DropdownMenu.Trigger>
+              <DropdownMenu.Menu>
+                <DropdownMenu.Item>Item 2.1</DropdownMenu.Item>
+                <DropdownMenu.Item>Item 2.2</DropdownMenu.Item>
+              </DropdownMenu.Menu>
+            </DropdownMenu>
+          </DropdownMenu.Nesting>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    const menu = getByTestId('dropdown-menu-with-disabled-nesting');
+
+    expect(getFocusableIn(menu)).toHaveLength(0);
   });
 
   test.sequential('support items and focusable elements at the same time', async ({ expect }) => {
