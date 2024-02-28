@@ -96,12 +96,17 @@ describe('DatePicker', () => {
 
   test('a11y', async () => {
     const { container } = render(
-      <DatePicker visible disablePortal aria-label='date picker'>
-        <DatePicker.ButtonTrigger aria-label='date picker'>
-          Open date picker
-        </DatePicker.ButtonTrigger>
-        <DatePicker.Popper />
-      </DatePicker>,
+      <div>
+        <label htmlFor='date-picker-a11y-test-trigger'>Date picker</label>
+        <DatePicker visible disablePortal aria-label='date picker'>
+          <DatePicker.Trigger>
+            <DatePicker.Trigger.SingleDateInput>
+              <DatePicker.Trigger.SingleDateInput.MaskedInput id='date-picker-a11y-test-trigger' />
+            </DatePicker.Trigger.SingleDateInput>
+          </DatePicker.Trigger>
+          <DatePicker.Popper />
+        </DatePicker>
+      </div>,
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
