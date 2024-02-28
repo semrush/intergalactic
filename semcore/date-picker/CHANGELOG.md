@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.2] - 2024-02-27
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.4 ~> 4.26.5]).
+
+## [4.29.1] - 2024-02-26
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.3 ~> 4.26.4]).
+
+## [4.29.0] - 2024-02-22
+
+### Changed
+
+- `DateRangeComparator` and `MonthDateRangeComparator` got new subcomponents `DateRangeComparator.Periods.Divider`, `DateRangeComparator.Periods.Column`, `DateRangeComparator.Periods.Options` and `DateRangeComparator.Periods.Controls` that allows customize comparators sidebars.
+- `DateRangeComparator` and `MonthDateRangeComparator` apply and clear buttons default placement is changed from footer to sidebar.
+
 ## [4.28.4] - 2024-02-21
 
 ### Changed

@@ -1,3 +1,42 @@
+## [15.65.2] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** A11y in Firefox for clear button in FilterTrigger.
+
+### @semcore/d3-chart
+
+- **Fixed** paddings on X axis in Firefox.
+
+### @semcore/pagination
+
+- **Fixed** Pressing tab in pagination input was causing input to clear.
+
+## [15.65.1] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** Returning focus on trigger after clear `FilterTrigger`.
+
+### @semcore/data-table
+
+- **Fixed** Virtual scroll in table - setup row size observer in `requestAnimationFrame`.
+
+### @semcore/input-tags
+
+- **Fixed** Height for `InputTag` with size `l` (from 44px to 40px, like our other `large` components).
+
+## [15.65.0] - 2024-02-22
+
+### @semcore/base-trigger
+
+- **Fixed** Filter trigger options navigations were not announced by assistive technologies.
+
+### @semcore/date-picker
+
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` got new subcomponents `DateRangeComparator.Periods.Divider`, `DateRangeComparator.Periods.Column`, `DateRangeComparator.Periods.Options` and `DateRangeComparator.Periods.Controls` that allows customize comparators sidebars.
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` apply and clear buttons default placement is changed from footer to sidebar.
+
 ## [15.62.1] - 2024-02-21
 
 ### @semcore/typography

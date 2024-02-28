@@ -41,29 +41,29 @@ Table: Font size and line height
 
 :::
 
-## Heading
+## Headings
 
-Our design system offers six different heading sizes.
+Our design system offers six heading sizes.
 
-The first four headings are typically used for hero blocks, large advertising screens, banners, and landing pages. These headings should use the `semibold` font-weight (`--semi-bold` token).
+The first four headings are typically used for hero blocks, large advertising screens, banners, and landing pages. Use the `semibold` font-weight (`--semi-bold` token) with these headings.
 
-Table: Heading from h1 to h4 levels and styles
+Table: Heading from 48px to 24px styles
 
-|     | Appearance           | Styles                     | Tokens                 |
-| --- | -------------------- | -------------------------- | ---------------------- |
-| h1  | ![](static/h1.png) | `font-size: 48px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-800`, `--lh-800` |
-| h2  | ![](static/h2.png) | `font-size: 36px`, `line-height: 1.11`, `font-weight: semibold` | `--fs-700`, `--lh-700`  |
-| h3  | ![](static/h3.png) | `font-size: 32px`, `line-height: 1.25`, `font-weight: semibold` | `--fs-600`, `--lh-600`  |
-| h4  | ![](static/h4.png) | `font-size: 24px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-500`, `--lh-500`  |
+| Appearance           | Styles                     | Tokens                 |
+| -------------------- | -------------------------- | ---------------------- |
+| ![](static/h1.png) | `font-size: 48px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-800`, `--lh-800` |
+| ![](static/h2.png) | `font-size: 36px`, `line-height: 1.11`, `font-weight: semibold` | `--fs-700`, `--lh-700`  |
+| ![](static/h3.png) | `font-size: 32px`, `line-height: 1.25`, `font-weight: semibold` | `--fs-600`, `--lh-600`  |
+| ![](static/h4.png) | `font-size: 24px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-500`, `--lh-500`  |
 
 The remaining headings are used for the content part of products and landing pages. For headings with a size of 16px and smaller, use the `bold` font-weight (`--bold` token).
 
-Table: Heading from h5 to h6 levels and styles
+Table: Heading from 20px to 16px styles
 
-|     | Appearance           | Styles                                                  | Tokens                |
-| --- | -------------------- | ------------------------------------------------------- | --------------------- |
-| h5  | ![](static/h5.png) | `font-size: 20px`, `line-height: 1.2`, `font-weight: semibold` | `--fs-400`, `--lh-400` |
-| h6  | ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold` | `--fs-300`, `--lh-300` |
+| Appearance           | Styles                                                  | Tokens                |
+| -------------------- | ------------------------------------------------------- | --------------------- |
+| ![](static/h5.png) | `font-size: 20px`, `line-height: 1.2`, `font-weight: semibold` | `--fs-400`, `--lh-400` |
+| ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold` | `--fs-300`, `--lh-300` |
 
 ## Heading with counter
 
@@ -71,7 +71,7 @@ In certain cases, headings can include additional information, such as a counter
 
 ![](static/secondary-info.png)
 
-## Heading for mobile devices
+## Headings for mobile devices
 
 To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/grid-system).
 
