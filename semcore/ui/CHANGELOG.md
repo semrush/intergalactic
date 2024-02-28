@@ -1,3 +1,9 @@
+## [15.65.4] - 2024-02-28
+
+### @semcore/data-table
+
+- **Fixed** Calculation of column widths to properly render Skeleton after the first paint.
+
 ## [15.65.2] - 2024-02-26
 
 ### @semcore/base-trigger
