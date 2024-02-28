@@ -319,7 +319,7 @@ describe('DateRangePicker', () => {
 
     const { getByTestId, getByText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={new Date()}>
-        <DateRangePicker.Trigger />
+        <DateRangePicker.Trigger autoFocus />
         <DateRangePicker.Popper data-testid={'dd_popper'} />
       </DateRangePicker>,
     );
@@ -327,7 +327,7 @@ describe('DateRangePicker', () => {
     expect(getByText('December 2023')).toBeTruthy();
     expect(getByText('January 2024')).toBeTruthy();
 
-    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[ArrowDown]');
 
     expect(getByTestId('dd_popper')).toHaveFocus();
 
