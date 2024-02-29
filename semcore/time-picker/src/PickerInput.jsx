@@ -46,7 +46,7 @@ class ItemPicker extends Component {
 
   state = {
     dirtyValue: undefined,
-    visible: true,
+    visible: false,
   };
 
   parseValueWithMinMax = (value) => {
