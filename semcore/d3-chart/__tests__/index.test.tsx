@@ -257,7 +257,7 @@ describe('Area', () => {
           <XAxis.Ticks />
         </XAxis>
         <Area x='time' y='stack1' curve={curveCardinal} duration={0}>
-          <Area.Dots display={(i) => i % 2 === 0} />
+          <Area.Dots display={(i: number) => i % 2 === 0} />
         </Area>
       </Plot>
     );
