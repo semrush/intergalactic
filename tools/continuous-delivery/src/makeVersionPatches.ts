@@ -14,15 +14,7 @@ export type VersionPatch = {
   needPublish: boolean;
 };
 
-export const orderedReleaseType: semver.ReleaseType[] = [
-  'major',
-  'premajor',
-  'minor',
-  'preminor',
-  'patch',
-  'prepatch',
-  'prerelease',
-];
+export const orderedReleaseType: semver.ReleaseType[] = ['major', 'minor', 'patch'];
 
 const maxSemver = (v1: string, v2: string) => (semver.compare(v1, v2) === 1 ? v1 : v2);
 
@@ -66,14 +58,6 @@ export const makeVersionPatches = (packages: Package[]) => {
 
     if (!hasNewerVersion) continue;
 
-    const diff = semver.diff(newVersion, lastChangelog.version);
-    if (diff?.startsWith('pre')) {
-      lastChangelog.version = semver
-        .inc(lastChangelog.version, 'prerelease' as semver.ReleaseType, undefined, prerelaseSuffix)!
-        .replace(`-${prerelaseSuffix}.${0}`, `-${prerelaseSuffix}.${prereleaseBaseIndex}`);
-    } else if (!lastChangelog.version.includes(`-${prerelaseSuffix}.`)) {
-      lastChangelog.version += `-${prerelaseSuffix}.${prereleaseBaseIndex}`;
-    }
     if (lastChangelog.changes[0]) {
       lastChangelog.changes[0].version = lastChangelog.version;
     }
@@ -100,7 +84,7 @@ export const makeVersionPatches = (packages: Package[]) => {
 
       let updateType: semver.ReleaseType | null = null;
       let updateIdentifier: string | undefined = undefined;
-      let updateTypeFallback: 'patch' | 'prerelease' = 'patch';
+      const updateTypeFallback = 'patch';
       let needUpdate = false;
       const updatedDependencies: { name: string; from: string; to: string }[] = [];
 
@@ -115,13 +99,6 @@ export const makeVersionPatches = (packages: Package[]) => {
             from: dependencyVersionPatch.from,
             to: dependencyVersionPatch.to,
           });
-
-          if (
-            semver.prerelease(normalizeSemver(dependencyVersionPatch.to)) !== null &&
-            updateTypeFallback !== 'prerelease'
-          ) {
-            updateTypeFallback = 'prerelease';
-          }
 
           if (
             !semver.satisfies(
@@ -153,9 +130,7 @@ export const makeVersionPatches = (packages: Package[]) => {
           ? packageFile.currentVersion
           : packageFile.lastPublishedVersion;
 
-        const version = semver
-          .inc(versionBase, updateType || updateTypeFallback, undefined, updateIdentifier)!
-          .replace(`-${prerelaseSuffix}.${0}`, `-${prerelaseSuffix}.${prereleaseBaseIndex}`);
+        const version = semver.inc(versionBase, updateType || updateTypeFallback)!;
         const updateTypeLabel = updateType || updateTypeFallback;
         const descriptionBefore = `Version ${updateTypeLabel} update due to children dependencies update (`;
         const updatedDependenciesList = updatedDependencies
