@@ -224,8 +224,8 @@ class CalendarAbstract extends Component {
     } else if (actionsDescribing === 'range-compare') {
       if (compare.length === 1) {
         description += t('dateRange2') + ' ';
-        if (value[0]) description += t('fromDate', value[0]) + ', ';
-        if (value[1]) description += t('toDate', value[1]) + '. ';
+        if (compare[0]) description += t('fromDate', value[0]) + ', ';
+        if (compare[1]) description += t('toDate', value[1]) + '. ';
       } else {
         if (value[0] || value[1]) description += t('dateRange1') + ' ';
         if (value[0]) description += t('fromDate', value[0]) + ', ';
