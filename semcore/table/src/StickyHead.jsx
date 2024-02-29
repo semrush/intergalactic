@@ -215,8 +215,8 @@ function ContainerSticky(props, ref) {
     ...other
   } = props;
   const { styles } = React.useContext(ContextTable);
-  const { container, tableDOM } = React.useContext(StickyHeadContext);
-  const thead = container.getElementsByTagName('thead')[0];
+  const { container, tableDOM, disablePortal } = React.useContext(StickyHeadContext);
+  const thead = container.getElementsByTagName('thead')[disablePortal ? 1 : 0];
   const styleBar = {};
 
   if (tableDOM) {
@@ -268,6 +268,7 @@ function StickyHeadInner(props, ref) {
     top: offsetTop = 0,
     bottom: offsetBottom = 0,
     container: propsContainer,
+    disablePortal,
     ...other
   } = props;
   const top = typeof offsetTop === 'number' ? offsetTop : parseInt(offsetTop, 10);
@@ -440,20 +441,20 @@ function StickyHeadInner(props, ref) {
   if (!container) return null;
 
   const tableDOM = container.getElementsByTagName('table')[0];
+  const stickyCore = (
+    <ContainerStickyCore
+      setRefContainer={setRefScrollContainer}
+      positionFixed={positionFixed}
+      top={top}
+      bottom={bottom}
+      ref={ref}
+      {...other}
+    />
+  );
 
   return (
-    <StickyHeadContext.Provider value={{ container, tableDOM }}>
-      {createPortal(
-        <ContainerStickyCore
-          setRefContainer={setRefScrollContainer}
-          positionFixed={positionFixed}
-          top={top}
-          bottom={bottom}
-          ref={ref}
-          {...other}
-        />,
-        container,
-      )}
+    <StickyHeadContext.Provider value={{ container, tableDOM, disablePortal }}>
+      {disablePortal ? stickyCore : createPortal(stickyCore, container)}
     </StickyHeadContext.Provider>
   );
 }
