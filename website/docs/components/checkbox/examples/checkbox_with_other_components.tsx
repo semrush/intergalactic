@@ -13,9 +13,15 @@ const Demo = () => (
     {[0, 1, 2].map((item) => (
       <div key={item}>
         <Checkbox mb={3} label={`Note ${item + 1}`} />
-        <Tooltip title='There is information about point.' placement='right-start' ml={1}>
-          <InfoM color='icon-secondary-neutral' interactive aria-label='Additional info' />
-        </Tooltip>
+        <Tooltip
+          title='There is information about point.'
+          placement='right-start'
+          ml={1}
+          tag={InfoM}
+          color='icon-secondary-neutral'
+          interactive
+          aria-label='Additional info'
+        />
       </div>
     ))}
 

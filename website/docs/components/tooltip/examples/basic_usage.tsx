@@ -7,9 +7,7 @@ const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
       <Tooltip>
-        <Tooltip.Trigger>
-          <Link>Trigger</Link>
-        </Tooltip.Trigger>
+        <Tooltip.Trigger tag={Link}>Trigger</Tooltip.Trigger>
         <Tooltip.Popper>Hello, stranger</Tooltip.Popper>
       </Tooltip>
     </Box>

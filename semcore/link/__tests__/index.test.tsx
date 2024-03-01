@@ -92,7 +92,7 @@ describe('Link', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support inline property', () => {
+  test.sequential('Should support inline property', () => {
     const { rerender, getByTestId } = render(<Link data-testid='link'>Link</Link>);
     expect(getByTestId('link').className).not.toContain('inline');
     rerender(

@@ -276,7 +276,7 @@ class Body extends Component<AsProps, State> {
       rowHeight !== undefined && virtualScroll ? rowHeight * rows.length : undefined;
 
     if (virtualScroll && columnsInitialized && !rowHeight) {
-      new Promise(() => this.setupRowSizeObserver());
+      requestAnimationFrame(this.setupRowSizeObserver);
     }
 
     const body = sstyled(styles)(

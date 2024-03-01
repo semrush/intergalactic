@@ -6,8 +6,8 @@ import Link from '@semcore/ui/link';
 const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
-      <Tooltip title='Hello, stranger'>
-        <Link>Trigger</Link>
+      <Tooltip title='Hello, stranger' tag={Link}>
+        Trigger
       </Tooltip>
     </Box>
   </Flex>

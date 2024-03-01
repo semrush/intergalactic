@@ -1,3 +1,162 @@
+## [15.65.2] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** A11y in Firefox for clear button in FilterTrigger.
+
+### @semcore/d3-chart
+
+- **Fixed** paddings on X axis in Firefox.
+
+### @semcore/pagination
+
+- **Fixed** Pressing tab in pagination input was causing input to clear.
+
+## [15.65.1] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** Returning focus on trigger after clear `FilterTrigger`.
+
+### @semcore/data-table
+
+- **Fixed** Virtual scroll in table - setup row size observer in `requestAnimationFrame`.
+
+### @semcore/input-tags
+
+- **Fixed** Height for `InputTag` with size `l` (from 44px to 40px, like our other `large` components).
+
+## [15.65.0] - 2024-02-22
+
+### @semcore/base-trigger
+
+- **Fixed** Filter trigger options navigations were not announced by assistive technologies.
+
+### @semcore/date-picker
+
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` got new subcomponents `DateRangeComparator.Periods.Divider`, `DateRangeComparator.Periods.Column`, `DateRangeComparator.Periods.Options` and `DateRangeComparator.Periods.Controls` that allows customize comparators sidebars.
+- **Changed** `DateRangeComparator` and `MonthDateRangeComparator` apply and clear buttons default placement is changed from footer to sidebar.
+
+## [15.62.1] - 2024-02-21
+
+### @semcore/typography
+
+- **Fixed** Some styles for `List.Item` component.
+- **Added** `List.Item.Content` component for customise view of each list item.
+
+## [15.62.0] - 2024-02-21
+
+### @semcore/d3-chart
+
+- **Changed** Removed wrongly added deprecation messages about `ReferenceLine` `value` props.
+- **Changed** Added `valueEnd` prop to `ReferenceLine.Background` component that allows to specify background width by chart value.
+- **Fixed** `patterns` prop was missing in multiple chart types.
+- **Changed** A11y module links are clickable by `Space` now (along with `Enter` as before).
+
+## [15.61.0] - 2024-02-21
+
+### @semcore/dropdown-menu
+
+- **Fixed** Assistive technologies were not announcing the selected item if dropdown contained focusable elements.
+- **Changed** When dropdown menu item has focusable elements inside, pressing tab locks focus inside the item. Closing or navigating inside the dropdown menu unlocks the focus.
+- **Changed** If dropdown menu poppers placed to the left or right side of trigger, user needs to press `ArrowLeft` or `ArrowRight` to open the popper (`ArrowUp` or `ArrowDown` was opening popper with any placement before the change).
+- **Added** `DropdownMenu.Nesting` component to support accessible nested dropdowns.
+
+### @semcore/format-text
+
+- **Changed** Used native outline to display links focus ring to fix highlighting of wrapped inline links.
+
+### @semcore/link
+
+- **Changed** Used native outline to display links focus ring to fix highlighting of wrapped inline links.
+
+### @semcore/tag
+
+- **Changed** Interactive tags keyboard focused ring style adjusted to same focus ring styles of other components.
+- **Changed** Interactive tags now get `role=button`.
+- **Changed** If tag contains `Tag.Close`, tag will not be focusable. Instead, focus will go to `Tag.Text`.
+
+## [15.60.1] - 2024-02-19
+
+### @semcore/base-trigger
+
+- **Fixed** Pressing enter in forms was triggering `FilterTrigger` to open.
+
+### @semcore/popper
+
+- **Fixed** Focusing trigger right after popper had been closed by mouse leave was not opening popper again.
+
+## [15.60.0] - 2024-02-16
+
+### @semcore/accordion
+
+- **Added** Ability to set 'l' icon size for `Accordion.Item.Chevron`
+
+## [15.59.1] - 2024-02-16
+
+### @semcore/dropdown
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+### @semcore/dropdown-menu
+
+- **Fixed** Removed deprecation messages about `interaction` property (that were added by mistake).
+
+## [15.59.0] - 2024-02-14
+
+### @semcore/carousel
+
+- **Changed** Navigation buttons are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/color-picker
+
+- **Changed** Color palette items are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/data-table
+
+- **Changed** Header sorting cells are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/icon
+
+- **Changed** Icons are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/inline-edit
+
+- **Changed** `InlineEdit.View` are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/inline-input
+
+- **Fixed** Confirm and cancel controls were ignoring `Space` click.
+
+### @semcore/input-tags
+
+- **Changed** Tags are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/pills
+
+- **Changed** Pills are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/switch
+
+- **Changed** Switches are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tab-panel
+
+- **Changed** Tabs are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tag
+
+- **Changed** Tags are clickable by `Space` now (along with `Enter` as before).
+
+### @semcore/tooltip
+
+- **Fixed** Some assistive technologies were reading tooltip popper content twice.
+- **Added** Tooltip trigger children render function got `popperId` param that allows to apply `aria-describedby` on specific children of tooltip trigger.
+
+### @semcore/wizard
+
+- **Changed** Wizard steps are clickable by `Space` now (along with `Enter` as before).
+
 ## [15.58.1] - 2024-02-13
 
 ### @semcore/d3-chart

@@ -76,6 +76,22 @@ const group = {
     type: 'table',
 
   },
+    tableSettings: {
+
+    title: 'Table settings',
+    route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
+    disabled: false,
+    type: 'table',
+
+  },
+    columnsManager: {
+
+    title: 'Columns manager',
+    route: '/intergalactic/table-group/table-controls/table-controls#table-settings-and-column-manager',
+    disabled: false,
+    type: 'table',
+
+  },
 }; 
 
 const styles = `

@@ -3,6 +3,7 @@ import { Context } from './context';
 import { curveCardinal, CurveFactory } from 'd3-shape';
 import { FadeInOutProps } from '@semcore/animation';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface ILineProps extends LineProps, UnknownProperties {}
@@ -23,6 +24,8 @@ export type LineProps = Context & {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

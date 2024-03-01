@@ -114,12 +114,24 @@ DateRangeComparator allows user to compare two date ranges. Additional date rang
 
 ## DateRangeComparator advanced usage
 
-Both `DateRangeComparator` and `MonthDateRangeComparator` internal structure maybe deeply redefined for flexible customization.
+`DateRangeComparator` internal structure maybe deeply redefined for flexible customization.
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/date_range_comparator_advanced_use.tsx';
+</script>
+
+:::
+
+## MonthRangeComparator advanced usage
+
+`MonthDateRangeComparator` internal structure maybe deeply redefined for flexible customization.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/month_range_comparator_advanced_use.tsx';
 </script>
 
 :::

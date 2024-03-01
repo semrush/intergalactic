@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.27.2] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.25.1 ~> 5.25.2], `@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [3.27.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.25.0 ~> 5.25.1]).
+
+## [3.27.0] - 2024-02-14
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.24.2 ~> 5.25.0]).
+
 ## [3.26.2] - 2024-02-09
 
 ### Changed
@@ -575,7 +593,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - TS property `noDrop` became not requered for `IDraggableProps`.
 
-## [1.0.0-0] - 2020-09-09
+## [1.0.0-prerelease.10] - 2020-09-09
 
 ### Added
 

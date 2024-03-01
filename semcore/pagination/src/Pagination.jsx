@@ -63,6 +63,8 @@ class PaginationRoot extends Component {
     dirtyCurrentPage: undefined,
   };
 
+  pageInputAddonRef = React.createRef();
+
   uncontrolledProps() {
     return {
       totalPages: null,
@@ -95,7 +97,12 @@ class PaginationRoot extends Component {
 
   handlePageValueBlur = () => {
     const { currentPage } = this.asProps;
-    this.setState({ dirtyCurrentPage: currentPage });
+
+    setTimeout(() => {
+      if (this.pageInputAddonRef.current !== document.activeElement) {
+        this.setState({ dirtyCurrentPage: currentPage });
+      }
+    }, 0);
   };
 
   getDirtyCurrentPage = () => {
@@ -158,6 +165,8 @@ class PaginationRoot extends Component {
   getPageInputAddonProps = () => {
     return {
       onClick: this.handlePageInputIconClick,
+      ref: this.pageInputAddonRef,
+      onBlur: this.handlePageValueBlur,
     };
   };
 

@@ -8,14 +8,7 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 ::: sandbox
 
 <script lang="tsx">
-import React from 'react';
-import MailSentReact from '@semcore/ui/illustration/MailSent';
-
-const Demo = () => {
-  return <MailSentReact />;
-};
-
-
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::

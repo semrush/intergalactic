@@ -4,6 +4,7 @@ import { CurveFactory } from 'd3-shape';
 import { TooltipType } from './Tooltip';
 import { IntergalacticD3Component } from './Plot';
 import { BoxProps } from '@semcore/flex-box';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IRadarProps extends RadarProps, UnknownProperties {}
@@ -35,6 +36,8 @@ export type RadarProps = Context & {
    * @example Math.PI/3
    * */
   angleOffset?: number;
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

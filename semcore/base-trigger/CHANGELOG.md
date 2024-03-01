@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.5] - 2024-02-26
+
+### Fixed
+
+- A11y in Firefox for clear button in FilterTrigger.
+
+## [4.26.4] - 2024-02-23
+
+### Fixed
+
+- Returning focus on trigger after clear `FilterTrigger`.
+
+## [4.26.3] - 2024-02-22
+
+### Fixed
+
+- Filter trigger options navigations were not announced by assistive technologies.
+
+## [4.26.2] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3]).
+
+## [4.26.1] - 2024-02-19
+
+### Fixed
+
+- Pressing enter in forms was triggering `FilterTrigger` to open.
+
+## [4.26.0] - 2024-02-14
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.25.0 ~> 4.26.0]).
+
 ## [4.25.1] - 2024-02-09
 
 ### Changed
@@ -708,7 +744,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Исправлена типизация `FilterTrigger.Counter`
 
-## [2.0.2-0] - 2020-06-03
+## [2.0.2-prerelease.10] - 2020-06-03
 
 ### Fixed
 

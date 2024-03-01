@@ -3,6 +3,7 @@ import { Context } from './context';
 import { BarContext, BarProps } from './Bar';
 import { HorizontalBarProps } from './HorizontalBar';
 import { IntergalacticD3Component } from './Plot';
+import { PatternsConfig } from './Pattern';
 
 /** @deprecated */
 export interface IStackBarProps extends StackBarProps, UnknownProperties {}
@@ -19,6 +20,9 @@ export type StackBarProps = Context & {
    * The maximum width of each Bar
    */
   maxBarSize?: number;
+
+  /** Enables charts patterns that enhances charts accessability */
+  patterns?: PatternsConfig;
 };
 
 /** @deprecated */

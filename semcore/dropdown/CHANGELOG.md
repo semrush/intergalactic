@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.19.5] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [4.19.4] - 2024-02-19
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.20.0 ~> 5.20.1]).
+
+## [4.19.3] - 2024-02-16
+
+### Fixed
+
+- Removed deprecation messages about `interaction` property (that were added by mistake).
+
 ## [4.19.2] - 2024-02-09
 
 ### Changed
@@ -565,7 +583,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Исправли проблему неправильного позиционирование `Dropdown.Popper` относительно триггера с заданным значением
-`stretch` для `Dropdown`.
+`stretch` для `Dropdown` .
 
 ## [2.0.3] - 2020-07-06
 

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.28.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/button` [5.20.2 ~> 5.20.3], `@semcore/breakpoints` [1.19.2 ~> 1.19.3]).
+
+## [3.28.0] - 2024-02-13
+
+### Changed
+
+- Navigation buttons are clickable by `Space` now (along with `Enter` as before).
+
 ## [3.27.2] - 2024-02-09
 
 ### Changed
@@ -605,7 +617,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added animation for change active index in control mode.
 
-## [1.0.0-0] - 2020-11-05
+## [1.0.0-prerelease.10] - 2020-11-05
 
 ### Added
 

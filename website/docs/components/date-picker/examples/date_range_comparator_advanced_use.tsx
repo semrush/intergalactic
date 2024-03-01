@@ -7,7 +7,7 @@ import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   return (
-    <Flex gap={4} flexWrap>
+    <Flex flexWrap>
       <DateRangeComparator>
         <DateRangeComparator.Trigger />
         <DateRangeComparator.Popper>
@@ -18,11 +18,19 @@ const Demo = () => {
           </DateRangeComparator.Header>
           <DateRangeComparator.Body>
             <DateRangeComparator.RangeCalendar />
-            <DateRangeComparator.Periods />
+            <DateRangeComparator.Periods>
+              <DateRangeComparator.Periods.Divider />
+              <DateRangeComparator.Periods.Column>
+                <DateRangeComparator.Periods.Options />
+                <DateRangeComparator.Periods.Controls>
+                  <DateRangeComparator.Apply />
+                  <DateRangeComparator.Reset />
+                </DateRangeComparator.Periods.Controls>
+              </DateRangeComparator.Periods.Column>
+            </DateRangeComparator.Periods>
           </DateRangeComparator.Body>
           <DateRangeComparator.Footer>
-            <DateRangeComparator.Apply />
-            <DateRangeComparator.Reset />
+            Place for a hint, useful message or controls.
           </DateRangeComparator.Footer>
           <Notice theme='warning' style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
             <Notice.Content>
@@ -38,36 +46,6 @@ const Demo = () => {
           </Notice>
         </DateRangeComparator.Popper>
       </DateRangeComparator>
-      <MonthDateRangeComparator>
-        <MonthDateRangeComparator.Trigger />
-        <MonthDateRangeComparator.Popper>
-          <MonthDateRangeComparator.Header>
-            <MonthDateRangeComparator.ValueDateRange />
-            <MonthDateRangeComparator.CompareToggle />
-            <MonthDateRangeComparator.CompareDateRange />
-          </MonthDateRangeComparator.Header>
-          <MonthDateRangeComparator.Body>
-            <MonthDateRangeComparator.RangeCalendar />
-            <MonthDateRangeComparator.Periods />
-          </MonthDateRangeComparator.Body>
-          <MonthDateRangeComparator.Footer>
-            <MonthDateRangeComparator.Apply />
-            <MonthDateRangeComparator.Reset />
-          </MonthDateRangeComparator.Footer>
-          <Notice theme='warning' style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
-            <Notice.Content>
-              <Flex mb={1}>
-                <Notice.Label>
-                  <WarningIcon />
-                </Notice.Label>
-                <Text bold>Notice heading</Text>
-              </Flex>
-              If you change your location, all previously collected data for this article will be
-              lost.
-            </Notice.Content>
-          </Notice>
-        </MonthDateRangeComparator.Popper>
-      </MonthDateRangeComparator>
     </Flex>
   );
 };

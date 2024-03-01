@@ -186,7 +186,7 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
         )}
       </div>
       {hasWidget ? (
-        <div className={styles.widgetsBar}>
+        <div className={`${styles.widgetsBar} playground-widgets-bar`}>
           {widgetControls.map((control, i) => {
             return (
               <div className={styles.widgetGroup} key={i}>

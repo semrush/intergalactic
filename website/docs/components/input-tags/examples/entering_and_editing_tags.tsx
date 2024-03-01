@@ -3,6 +3,7 @@ import InputTags from '@semcore/ui/input-tags';
 import Tooltip from '@semcore/ui/tooltip';
 
 const Demo = () => {
+  const inputValueRef = React.useRef<HTMLInputElement>();
   const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
   const [value, setValue] = React.useState('');
 
@@ -21,6 +22,13 @@ const Demo = () => {
     e.preventDefault();
   };
 
+  const handleTagKeyDown = (e) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      handleEditTag(e);
+    }
+    return false;
+  };
+
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget;
     let allTags = [...tags];
@@ -30,13 +38,18 @@ const Demo = () => {
     setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
     if (!e.defaultPrevented) {
       setValue(tags[dataset.id]);
+      inputValueRef.current?.focus();
     }
     return false;
   };
 
-  const handleBlurInput = (e) => {
-    const { value } = e.currentTarget;
-    if (value) handleAppendTags([value]);
+  const handleInputKeyDown = (e) => {
+    const { value } = e.target;
+    if (e.key === 'Enter' && value) {
+      handleAppendTags([value]);
+
+      return false;
+    }
   };
 
   return (
@@ -49,6 +62,7 @@ const Demo = () => {
             editable
             data-id={idx}
             onClick={handleEditTag}
+            onKeyDown={handleTagKeyDown}
           >
             <InputTags.Tag.Text tabIndex={0}>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag} />
@@ -59,7 +73,8 @@ const Demo = () => {
       <InputTags.Value
         value={value}
         onChange={setValue}
-        onBlur={handleBlurInput}
+        onKeyDown={handleInputKeyDown}
+        ref={inputValueRef}
         aria-label='Input with tags'
       />
     </InputTags>
