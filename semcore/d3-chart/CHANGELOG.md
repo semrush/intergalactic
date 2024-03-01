@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.31.0] - 2024-02-16
+## [3.31.0] - 2024-03-01
 
 ### Added
 
@@ -11,6 +11,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - a11y module "Skip to content after plot" link was not working in some cases.
+
+## [3.30.2] - 2024-02-28
+
+### Fixed
+
+- view of Line.Area with `null` in data.
 
 ## [3.30.1] - 2024-02-26
 
