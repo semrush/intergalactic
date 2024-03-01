@@ -71,11 +71,14 @@ class DropdownMenuRoot extends Component {
 
     const { visible, highlightedIndex, placement } = this.asProps;
 
-    if (e.key === ' ' && ['INPUT', 'TEXTAREA', 'BUTTON'].includes(targetTagName)) return;
-    if (e.key === 'Enter') {
-      if (targetTagName === 'TEXTAREA') return;
-      if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
-    }
+    if (e.key === ' ' && ['INPUT', 'TEXTAREA'].includes(targetTagName)) return;
+    if (e.key === 'Enter' && targetTagName === 'TEXTAREA') return;
+    if (
+      place === 'popper' &&
+      (e.key === ' ' || e.key === 'Enter') &&
+      (targetTagName === 'BUTTON' || targetTagName === 'A')
+    )
+      return;
 
     if (visible && e.key === 'Tab') {
       const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
