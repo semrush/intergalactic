@@ -34,9 +34,15 @@ export class GitUtils {
     return components;
   }
 
-  public static async getPrerelease(): Promise<string | null> {
+  public static async getCurrentTag(): Promise<string | null> {
     const tags = await git.tags();
-    const latestTag = tags.latest;
+    const latestTag = tags.latest ?? null;
+
+    return latestTag;
+  }
+
+  public static async getPrerelease(): Promise<string | null> {
+    const latestTag = await GitUtils.getCurrentTag();
 
     if (!latestTag || !latestTag.includes(prerelaseSuffix)) {
       return null;
