@@ -232,6 +232,47 @@ describe('DropdownMenu', () => {
     await userEvent.keyboard('[ArrowLeft]');
     expect(visible).toBe(false);
   });
+  test.sequential('focus lock highlites next item on focus out', async ({ expect }) => {
+    let highlightedIndex: number | undefined = undefined;
+    const { getByTestId } = render(
+      <DropdownMenu
+        placement='right'
+        onHighlightedIndexChange={(index) => {
+          highlightedIndex = index;
+        }}
+      >
+        <DropdownMenu.Trigger data-testid='dd-trigger' tag='button'>
+          Trigger
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item>
+            Item 1{' '}
+            <button type='button' data-testid='delete-1'>
+              delete 1
+            </button>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            Item 2{' '}
+            <button type='button' data-testid='delete-2'>
+              delete 2
+            </button>
+          </DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+    expect(getByTestId('dd-trigger')).toHaveFocus();
+    await userEvent.keyboard('[ArrowDown]');
+    expect(highlightedIndex).toBe(0);
+    await userEvent.keyboard('[ArrowRight]');
+    expect(highlightedIndex).toBe(0);
+    expect(getByTestId('delete-1')).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(highlightedIndex).toBe(null);
+    expect(getByTestId('delete-2')).toHaveFocus();
+  });
   describe.sequential('opens nested menu', () => {
     test.sequential('by tab', async ({ expect }) => {
       const { getByTestId } = render(

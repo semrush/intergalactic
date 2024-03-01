@@ -168,7 +168,7 @@ onMounted(() => {
     url.pathname = redirects[pathName]
     window.location.href = url.toString()
   } else {
-    logEvent('error_404', { pathName, referrer: document.referrer });
+    logEvent('error_404', { pathname, referrer: document.referrer });
   }
 })
 

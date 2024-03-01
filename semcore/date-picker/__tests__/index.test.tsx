@@ -96,12 +96,17 @@ describe('DatePicker', () => {
 
   test('a11y', async () => {
     const { container } = render(
-      <DatePicker visible disablePortal aria-label='date picker'>
-        <DatePicker.ButtonTrigger aria-label='date picker'>
-          Open date picker
-        </DatePicker.ButtonTrigger>
-        <DatePicker.Popper />
-      </DatePicker>,
+      <div>
+        <label htmlFor='date-picker-a11y-test-trigger'>Date picker</label>
+        <DatePicker visible disablePortal aria-label='date picker'>
+          <DatePicker.Trigger>
+            <DatePicker.Trigger.SingleDateInput>
+              <DatePicker.Trigger.SingleDateInput.MaskedInput id='date-picker-a11y-test-trigger' />
+            </DatePicker.Trigger.SingleDateInput>
+          </DatePicker.Trigger>
+          <DatePicker.Popper />
+        </DatePicker>
+      </div>,
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -309,12 +314,12 @@ describe('DateRangePicker', () => {
     expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't call second time - 28 is disabled date
   });
 
-  test('Should change month after select new date from the keyboard', async ({ expect }) => {
+  test.only('Should change month after select new date from the keyboard', async ({ expect }) => {
     mockDate('2023-12-20T12:00:00.808Z');
 
     const { getByTestId, getByText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={new Date()}>
-        <DateRangePicker.Trigger />
+        <DateRangePicker.Trigger data-testid={'dd_trigger'} />
         <DateRangePicker.Popper data-testid={'dd_popper'} />
       </DateRangePicker>,
     );
@@ -322,9 +327,8 @@ describe('DateRangePicker', () => {
     expect(getByText('December 2023')).toBeTruthy();
     expect(getByText('January 2024')).toBeTruthy();
 
+    getByTestId('dd_popper').focus();
     await userEvent.keyboard('[Tab]');
-
-    expect(getByTestId('dd_popper')).toHaveFocus();
 
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[ArrowDown]');

@@ -249,6 +249,7 @@ SClose {
   align-items: center;
   justify-content: center;
   padding: var(--intergalactic-spacing-1x, 4px);
+  position: relative;
 
   & path {
     opacity: 0.5;

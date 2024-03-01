@@ -24,7 +24,7 @@ function RangeInput(props) {
       data-name='SComparatorRangeInput'
       render={Box}
       tag={InputTriggerBase}
-      __excludeProps={['role', 'aria-haspopup', 'onChange', 'value']}
+      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value']}
     >
       <InputTriggerBase.DateRange>
         <SRangeIndicator range={props.range} disabled={props.disabled} w={12} h={12} ml={2} />
@@ -60,10 +60,10 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
   navigateStep = 'month';
   keyStep = 'day';
   keyDiff = {
-    37: -1,
-    38: -7,
-    39: 1,
-    40: 7,
+    ArrowLeft: -1,
+    ArrowUp: -7,
+    ArrowRight: 1,
+    ArrowDown: 7,
   };
 
   getRangeInput() {
@@ -97,10 +97,10 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
   getBodyProps({ showButtons }) {
     return {
       children: (
-        <>
-          <DateRangeComparator.RangeCalendar />
+        <Flex direction='row-reverse'>
           <DateRangeComparator.Periods showButtons={showButtons} />
-        </>
+          <DateRangeComparator.RangeCalendar />
+        </Flex>
       ),
     };
   }
@@ -185,7 +185,7 @@ function PeriodsColumn(props) {
 }
 function PeriodsOptions(props) {
   const { styles, Root: SPeriodsOptions } = props;
-  return sstyled(styles)(<SPeriodsOptions render={DateRangeComparator.Period} />);
+  return sstyled(styles)(<SPeriodsOptions render={DateRangeComparator.Period} p={2} />);
 }
 function PeriodsControls(props) {
   const { styles, Root: SPeriodsControls } = props;
