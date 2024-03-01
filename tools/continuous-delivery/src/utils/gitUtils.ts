@@ -16,7 +16,7 @@ export class GitUtils {
       await NpmUtils.updateLockFile();
       await GitUtils.commitNewPrerelease(versionPatches);
       const tag = await GitUtils.createPrereleaseTag(semcoreUiPatch);
-      await GitUtils.push(newPrereleaseBranch, tag);
+      await GitUtils.push(tag);
     }
   }
 
@@ -106,10 +106,9 @@ export class GitUtils {
     log('Rebased on git origin.');
   }
 
-  private static async push(branch: string, tag?: string) {
+  private static async push(branch: string) {
     if (!process.argv.includes('--dry-run')) {
       log('Pushing to git origin...');
-      await git.push('origin', tag);
       await git.push('origin', branch, { '--follow-tags': null });
       log('Pushed to git origin.');
     }
