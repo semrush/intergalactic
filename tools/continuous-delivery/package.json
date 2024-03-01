@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "index.ts",
   "bin": {
-    "deliver-prerelease": "bin/deliver-prerelease.ts",
+    "init-prerelease": "bin/init-prerelease.ts",
+    "publish-prerelease": "bin/publish-prerelease.ts",
     "publish-release": "bin/publish-release.ts",
     "intg-publish-release": "bin/intg-publish-release.ts",
     "intg-publish-prerelease": "bin/intg-publish-prerelease.ts"
