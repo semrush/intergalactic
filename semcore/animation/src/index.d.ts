@@ -45,7 +45,7 @@ export type AnimationProps = BoxProps & {
 export interface ICollapseProps extends CollapseProps, UnknownProperties {}
 export type CollapseProps = AnimationProps & {
   /**
-   * Add overflow=hidden when passing animation
+   * Add overflow=clip when passing animation
    * @default true
    * */
   overflowHidden?: boolean;
