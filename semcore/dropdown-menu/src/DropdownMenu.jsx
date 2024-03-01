@@ -462,14 +462,24 @@ function Item({ styles, label, triggerRef, focusLock, disabled, highlighted, han
   );
 }
 
-function Nesting({ styles }) {
-  const SDropdownMenuNesting = Root;
+const NestingContext = React.createContext(null);
 
-  return sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />);
+function Nesting({ styles, disabled }) {
+  const SDropdownMenuNesting = Root;
+  const contextValue = React.useMemo(() => ({ disabled }), [disabled]);
+
+  return (
+    <NestingContext.Provider value={contextValue}>
+      {sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />)}
+    </NestingContext.Provider>
+  );
 }
 
-function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
+function NestingTrigger(props) {
+  const { styles, visible, onNestedVisibleChange } = props;
   const SDropdownMenuItem = Root;
+  const nestingContext = React.useContext(NestingContext);
+  const disabled = props.disabled || nestingContext?.disabled;
 
   const lastUserInteractionRef = React.useRef(undefined);
   React.useEffect(() => {
@@ -492,7 +502,13 @@ function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
     };
   }, []);
 
-  return sstyled(styles)(<SDropdownMenuItem nesting-trigger tabIndex={0} render={Flex} />);
+  return (
+    <NestingContext.Provider value={null}>
+      {sstyled(styles)(
+        <SDropdownMenuItem nesting-trigger tabIndex={!disabled ? 0 : undefined} render={Flex} />,
+      )}
+    </NestingContext.Provider>
+  );
 }
 
 function Addon(props) {
