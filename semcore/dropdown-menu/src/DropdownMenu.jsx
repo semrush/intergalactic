@@ -2,12 +2,13 @@ import React from 'react';
 import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import { Flex, useBox, useFlex } from '@semcore/flex-box';
+import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { hasParent } from '@semcore/utils/lib/hasParent';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
@@ -239,7 +240,9 @@ class DropdownMenuRoot extends Component {
   getItemProps(props, index) {
     const { size, highlightedIndex, uid } = this.asProps;
     const highlighted = index === highlightedIndex;
-    let ref = this.itemRefs[index];
+    let ref = (node) => {
+      this.itemRefs[index] = node;
+    };
     this.itemProps[index] = props;
     if (highlighted) {
       ref = (node) => {
@@ -256,8 +259,20 @@ class DropdownMenuRoot extends Component {
       triggerRef: this.triggerRef,
       ref,
       index,
+      handleFocusOut: this.handleItemFocusOut,
     };
   }
+
+  handleItemFocusOut = (event) => {
+    if (event.relatedTarget === this.popperRef.current) return;
+    const focused = event.relatedTarget;
+
+    if (hasParent(focused, this.popperRef.current)) {
+      this.handlers.highlightedIndex(null);
+      this.setState({ focusLockItemIndex: null });
+      focused.focus();
+    }
+  };
 
   handleNestingClick = (event) => {
     const itemIndex = this.itemRefs.indexOf(event.currentTarget);
@@ -432,11 +447,11 @@ function Menu(props) {
   );
 }
 
-function Item({ styles, label, triggerRef, focusLock, disabled, highlighted }) {
+function Item({ styles, label, triggerRef, focusLock, disabled, highlighted, handleFocusOut }) {
   const SDropdownMenuItem = Root;
   const ref = React.useRef();
 
-  useFocusLock(ref, false, triggerRef, !focusLock || disabled, true);
+  useFocusLock(ref, false, triggerRef, !focusLock || disabled, true, handleFocusOut);
 
   return sstyled(styles)(
     <SDropdownMenuItem
@@ -450,14 +465,24 @@ function Item({ styles, label, triggerRef, focusLock, disabled, highlighted }) {
   );
 }
 
-function Nesting({ styles }) {
-  const SDropdownMenuNesting = Root;
+const NestingContext = React.createContext(null);
 
-  return sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />);
+function Nesting({ styles, disabled }) {
+  const SDropdownMenuNesting = Root;
+  const contextValue = React.useMemo(() => ({ disabled }), [disabled]);
+
+  return (
+    <NestingContext.Provider value={contextValue}>
+      {sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />)}
+    </NestingContext.Provider>
+  );
 }
 
-function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
+function NestingTrigger(props) {
+  const { styles, visible, onNestedVisibleChange } = props;
   const SDropdownMenuItem = Root;
+  const nestingContext = React.useContext(NestingContext);
+  const disabled = props.disabled || nestingContext?.disabled;
 
   const lastUserInteractionRef = React.useRef(undefined);
   React.useEffect(() => {
@@ -480,7 +505,13 @@ function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
     };
   }, []);
 
-  return sstyled(styles)(<SDropdownMenuItem nesting-trigger tabIndex={0} render={Flex} />);
+  return (
+    <NestingContext.Provider value={null}>
+      {sstyled(styles)(
+        <SDropdownMenuItem nesting-trigger tabIndex={!disabled ? 0 : undefined} render={Flex} />,
+      )}
+    </NestingContext.Provider>
+  );
 }
 
 function Addon(props) {

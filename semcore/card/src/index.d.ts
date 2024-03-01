@@ -7,7 +7,16 @@ import { Text, TextProps } from '@semcore/typography';
 export interface ITitleProps extends TitleProps, UnknownProperties {}
 export type TitleProps = TextProps & {
   /**
-   * Tooltip text
+   * Content of the tooltip that is displayed when hovering over the info icon in the end of title.
+   */
+  innerHint?: React.ReactNode;
+  /**
+   * Content of the tooltip that is displayed when hovering over the info icon right after the title. Useful in case of using Title with Ellipsis.
+   */
+  hintAfter?: React.ReactNode;
+  /**
+   * Renamed to `hintAfter`
+   * @deprecated
    */
   hint?: React.ReactNode;
 };

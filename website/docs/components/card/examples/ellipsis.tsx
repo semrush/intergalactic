@@ -10,7 +10,7 @@ const Demo = () => (
   <Card w={'50%'}>
     <Card.Header>
       <Flex alignItems='center' tag='h4'>
-        <Card.Title tag={Ellipsis} hint={tooltipContent}>
+        <Card.Title tag={Ellipsis} hintAfter={tooltipContent}>
           Long title which should show ellipsis when there isn't enough space.
         </Card.Title>
       </Flex>

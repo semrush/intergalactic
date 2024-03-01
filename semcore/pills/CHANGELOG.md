@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.3] - 2024-02-22
+
+### Fixed
+
+- View of `keyboardFocused` Pill.
+
+### Added
+
+- Focus border for focused Pills without default value.
+
 ## [5.20.2] - 2024-02-21
 
 ### Changed
