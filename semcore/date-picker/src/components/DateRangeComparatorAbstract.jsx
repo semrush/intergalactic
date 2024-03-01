@@ -9,9 +9,11 @@ import { localizedMessages } from '../translations/__intergalactic-dynamic-local
 import shortDateRangeFormat from '../utils/shortDateRangeFormat';
 import Checkbox from '@semcore/checkbox';
 import { LinkTrigger } from '@semcore/base-trigger';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 
 import style from '../style/date-picker.shadow.css';
 
+const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
@@ -59,7 +61,12 @@ class DateRangeComparatorAbstract extends Component {
 
   static enhance = [i18nEnhance(localizedMessages)];
 
+  static subtract = (date, amount, unit) => {
+    return dayjs(date).subtract(amount, unit).toDate();
+  };
+
   popperRef = React.createRef();
+  unitRefs = {};
 
   getPeriodProps() {
     const {
@@ -160,12 +167,16 @@ class DateRangeComparatorAbstract extends Component {
     };
   }
 
+  handleApplyClick = () => {
+    const { value, preselectedValue, preselectedCompare } = this.asProps;
+    return this.handleApply(preselectedValue ?? value?.value, preselectedCompare ?? value?.compare);
+  };
+
   getApplyProps() {
-    const { value, getI18nText, preselectedValue, preselectedCompare } = this.asProps;
+    const { getI18nText } = this.asProps;
     return {
       getI18nText,
-      onClick: () =>
-        this.handleApply(preselectedValue ?? value?.value, preselectedCompare ?? value?.compare),
+      onClick: this.handleApplyClick,
     };
   }
 
@@ -182,11 +193,13 @@ class DateRangeComparatorAbstract extends Component {
     this.handlers.visible(false);
   };
 
-  handleKeyDown = (e) => {
-    const { visible } = this.asProps;
+  handleKeydownDown = (place) => (e) => {
+    const { displayedPeriod, preselectedValue, visible, focusedRange } = this.asProps;
     const key = e.code;
+    const highlighted =
+      focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
 
-    if (INTERACTION_KEYS.includes(key)) {
+    if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
       this.handlers.visible(!visible);
 
@@ -197,6 +210,84 @@ class DateRangeComparatorAbstract extends Component {
           popper.focus();
         }
       }, 0);
+    }
+
+    const day = this.keyDiff[key];
+
+    const setNextDisplayedPeriod = (next_highlighted) => {
+      const [left_period, right_period] = next_highlighted;
+
+      const monthDisplayedPeriod = displayedPeriod?.getMonth();
+      const period = right_period || left_period;
+
+      if (period) {
+        if (!monthDisplayedPeriod) {
+          return period;
+        }
+
+        if (period.getMonth() - monthDisplayedPeriod > 1) {
+          return DateRangeComparatorAbstract.subtract(period, 1, 'month');
+        } else if (period.getMonth() - monthDisplayedPeriod < 0) {
+          return period;
+        }
+      }
+      return displayedPeriod;
+    };
+
+    if (place === 'popper' && e.code === 'Space' && highlighted.length) {
+      const highlightedDate = highlighted[1] || highlighted[0];
+
+      if (!this.isDisabled(highlightedDate)) {
+        this.handleChange(highlightedDate);
+      }
+      e.preventDefault();
+    }
+    if (place === 'popper' && e.code === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      return this.handleApplyClick();
+    }
+    let changedDate = undefined;
+    if (day) {
+      if (INTERACTION_TAGS.includes(e.target.tagName)) return;
+      if (highlighted.length) {
+        let next_highlighted;
+        if (preselectedValue?.length === 1) {
+          next_highlighted = [
+            preselectedValue[0],
+            dayjs(highlighted[1] || highlighted[0])
+              .add(day, this.keyStep)
+              .toDate(),
+          ];
+          changedDate = next_highlighted[1];
+        } else {
+          next_highlighted = [
+            dayjs(highlighted[0])
+              .add(day, this.keyStep)
+              .toDate(),
+          ];
+          changedDate = next_highlighted[0];
+        }
+        if (focusedRange === 'compare') {
+          this.handlers.compareHighlighted(next_highlighted);
+        } else {
+          this.handlers.highlighted(next_highlighted);
+        }
+        this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
+      } else {
+        const highlighted = [displayedPeriod ? displayedPeriod : dayjs().toDate()];
+        if (focusedRange === 'compare') {
+          this.handlers.compareHighlighted(highlighted);
+        } else {
+          this.handlers.highlighted(highlighted);
+        }
+        changedDate = highlighted[0];
+      }
+      e.preventDefault();
+
+      if (changedDate) {
+        const formatter = this.keyStep === 'month' ? formatMMYY : formatDDMMYY;
+        const formattedDate = formatter(changedDate, this.asProps.locale);
+        this.unitRefs[formattedDate]?.focus();
+      }
     }
   };
 
@@ -265,7 +356,7 @@ class DateRangeComparatorAbstract extends Component {
       children,
       visible,
       onClick: () => this.handlers.visible(!visible),
-      onKeyDown: this.handleKeyDown,
+      onKeyDown: this.handleKeydownDown('trigger'),
     };
   }
 
@@ -364,6 +455,7 @@ class DateRangeComparatorAbstract extends Component {
       preselectedCompare,
       preselectedValue,
       focusedRange,
+      getI18nText,
     } = this.asProps;
 
     return {
@@ -381,6 +473,9 @@ class DateRangeComparatorAbstract extends Component {
       range: focusedRange,
       value: preselectedValue ?? value?.value,
       compare: preselectedCompare ?? value?.compare,
+      unitRefs: this.unitRefs,
+      getI18nText,
+      actionsDescribing: index === 0 ? 'range-compare' : null,
     };
   }
 
@@ -415,6 +510,7 @@ class DateRangeComparatorAbstract extends Component {
     return {
       p: 0,
       ref: this.popperRef,
+      onKeyDown: this.handleKeydownDown('popper'),
     };
   }
 
