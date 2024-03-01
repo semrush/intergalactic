@@ -1,10 +1,25 @@
 import Git from 'simple-git';
 import { log, prerelaseSuffix } from '../utils';
 import { VersionPatch } from '../makeVersionPatches';
+import { NpmUtils } from './npmUtils';
 
 const git = Git();
 
 export class GitUtils {
+  public static async initNewPrerelease(versionPatches: VersionPatch[]) {
+    const semcoreUiPatch = versionPatches.find((item) => item.package.name === '@semcore/ui');
+
+    if (semcoreUiPatch) {
+      const newPrereleaseBranch = `prerelease/v${semcoreUiPatch.to}`;
+      await git.checkout(['-b', newPrereleaseBranch]);
+
+      await NpmUtils.updateLockFile();
+      await GitUtils.commitNewPrerelease(versionPatches);
+      const tag = await GitUtils.createPrereleaseTag(semcoreUiPatch);
+      await GitUtils.push(newPrereleaseBranch, tag);
+    }
+  }
+
   public static async commitNewPrerelease(versionPatches: VersionPatch[]) {
     let commitMessage = '[chore] bumped';
     if (versionPatches.length === 1) {

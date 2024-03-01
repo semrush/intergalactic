@@ -74,14 +74,7 @@ export const initPrerelease = async () => {
       versionPatches.push(patch);
     }
 
-    const semcoreUiPatch = versionPatches.find((patch) => patch.package.name === '@semcore/ui');
-
-    if (semcoreUiPatch) {
-      await NpmUtils.updateLockFile();
-      await GitUtils.commitNewPrerelease(versionPatches);
-      const tag = await GitUtils.createPrereleaseTag(semcoreUiPatch);
-      await GitUtils.push('release/test', tag);
-    }
+    await GitUtils.initNewPrerelease(versionPatches);
   }
 };
 
