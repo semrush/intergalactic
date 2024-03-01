@@ -333,9 +333,9 @@ class CalendarDaysRoot extends CalendarAbstract {
         <SGridDays onMouseLeave={this.handleMouseLeave}>
           <Children />
         </SGridDays>
-        <span aria-live='polite'>
-          <ScreenReaderOnly>{description}</ScreenReaderOnly>
-        </span>
+        <ScreenReaderOnly>
+          <span aria-live='polite'>{description}</span>
+        </ScreenReaderOnly>
       </SCalendar>,
     );
   }
@@ -381,9 +381,9 @@ class CalendarMonthsRoot extends CalendarAbstract {
         <SGridMonths onMouseLeave={this.handleMouseLeave}>
           <Children />
         </SGridMonths>
-        <span aria-live='polite'>
-          <ScreenReaderOnly>{description}</ScreenReaderOnly>
-        </span>
+        <ScreenReaderOnly>
+          <span aria-live='polite'>{description}</span>
+        </ScreenReaderOnly>
       </SCalendar>,
     );
   }
