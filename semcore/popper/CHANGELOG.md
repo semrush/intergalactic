@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.2] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.18.2 ~> 2.18.3], `@semcore/flex-box` [5.19.1 ~> 5.19.2], `@semcore/neighbor-location` [4.17.2 ~> 4.17.3], `@semcore/outside-click` [3.17.2 ~> 3.17.3], `@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [5.20.1] - 2024-02-16
+
+### Fixed
+
+- Focusing trigger right after popper had been closed by mouse leave was not opening popper again.
+
 ## [5.20.0] - 2024-02-06
 
 ### Added
@@ -72,7 +84,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - When keyboard users are focus-triggered closing popper, trigger is highlighted with focus ring while actually focus is placed on the sibling invisible element.
 
-## [5.14.0-prerelease.1] - 2023-12-22
+## [5.14.0-prerelease.10] - 2023-12-22
 
 ### Changed
 

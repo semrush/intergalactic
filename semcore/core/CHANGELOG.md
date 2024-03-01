@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.17.3] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3]).
+
 ## [2.17.2] - 2024-02-09
 
 ### Changed
@@ -617,7 +623,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Поднята версия `utils`
 
-## [0.0.1-0] - 2020-03-24
+## [0.0.1-prerelease.10] - 2020-03-24
 
 ### Added
 

@@ -298,7 +298,7 @@
   {
     "name": "--intergalactic-bg-highlight-results",
     "type": "color",
-    "rawValue": "{yellow.300}, 0.4",
+    "rawValue": "rgba({yellow.300}, 0.4)",
     "computedValue": "rgba(239, 152, 0, 0.4)",
     "description": "Highlighting the search results.",
     "components": []
@@ -306,7 +306,7 @@
   {
     "name": "--intergalactic-bg-highlight-focus",
     "type": "color",
-    "rawValue": "{blue.400}, 0.2",
+    "rawValue": "rgba({blue.400}, 0.2)",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Focusing values in the input.",
     "components": ["date-picker", "time-picker"]
@@ -695,14 +695,6 @@
     ]
   },
   {
-    "name": "--intergalactic-border-critical-pattern",
-    "type": "color",
-    "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
-    "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
-    "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
-    "components": ["flex-box", "textarea", "utils"]
-  },
-  {
     "name": "--intergalactic-border-warning",
     "type": "color",
     "rawValue": "{orange.200}",
@@ -729,7 +721,7 @@
   {
     "name": "--intergalactic-border-secondary-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.3",
+    "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": []
@@ -757,6 +749,14 @@
     "computedValue": "#8649e1",
     "description": "Border color of the second period for the comparison mode in the DatePicker.",
     "components": []
+  },
+  {
+    "name": "--intergalactic-border-critical-pattern",
+    "type": "color",
+    "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
+    "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
+    "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
+    "components": ["flex-box", "textarea", "utils"]
   },
   {
     "name": "--intergalactic-control-switch-bg",
@@ -913,7 +913,7 @@
   {
     "name": "--intergalactic-control-secondary-neutral",
     "type": "color",
-    "rawValue": "{gray.400}, 0.1",
+    "rawValue": "rgba({gray.400}, 0.1)",
     "computedValue": "rgba(138, 142, 155, 0.1)",
     "description": "Background of the regular secondary control.",
     "components": ["button"]
@@ -921,7 +921,7 @@
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
     "type": "color",
-    "rawValue": "{gray.400}, 0.2",
+    "rawValue": "rgba({gray.400}, 0.2)",
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular secondary control.",
     "components": ["button"]
@@ -929,7 +929,7 @@
   {
     "name": "--intergalactic-control-secondary-neutral-active",
     "type": "color",
-    "rawValue": "{gray.400}, 0.3",
+    "rawValue": "rgba({gray.400}, 0.3)",
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular secondary control.",
     "components": ["button"]
@@ -937,7 +937,7 @@
   {
     "name": "--intergalactic-control-secondary-info",
     "type": "color",
-    "rawValue": "{blue.400}, 0.1",
+    "rawValue": "rgba({blue.400}, 0.1)",
     "computedValue": "rgba(0, 143, 248, 0.1)",
     "description": "Background of the accent secondary control.",
     "components": ["base-trigger", "button", "pills"]
@@ -945,7 +945,7 @@
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "type": "color",
-    "rawValue": "{blue.400}, 0.2",
+    "rawValue": "rgba({blue.400}, 0.2)",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Hover state of the accent secondary control.",
     "components": ["base-trigger", "button"]
@@ -953,7 +953,7 @@
   {
     "name": "--intergalactic-control-secondary-info-active",
     "type": "color",
-    "rawValue": "{blue.400}, 0.3",
+    "rawValue": "rgba({blue.400}, 0.3)",
     "computedValue": "rgba(0, 143, 248, 0.3)",
     "description": "Active (selected) state of the accent secondary control.",
     "components": ["base-trigger", "button"]
@@ -961,7 +961,7 @@
   {
     "name": "--intergalactic-control-secondary-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.05",
+    "rawValue": "rgba({gray.white}, 0.05)",
     "computedValue": "rgba(255, 255, 255, 0.05)",
     "description": "Background of the inverted version of the secondary control.",
     "components": ["button"]
@@ -969,7 +969,7 @@
   {
     "name": "--intergalactic-control-secondary-invert-hover",
     "type": "color",
-    "rawValue": "{gray.white}, 0.1",
+    "rawValue": "rgba({gray.white}, 0.1)",
     "computedValue": "rgba(255, 255, 255, 0.1)",
     "description": "Hover state of the inverted version of the secondary control.",
     "components": ["button"]
@@ -977,7 +977,7 @@
   {
     "name": "--intergalactic-control-secondary-invert-active",
     "type": "color",
-    "rawValue": "{gray.white}, 0.3",
+    "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Active (selected) state of the inverted version of the secondary control.",
     "components": ["button"]
@@ -985,7 +985,7 @@
   {
     "name": "--intergalactic-control-tertiary-neutral",
     "type": "color",
-    "rawValue": "{gray.400}, 0",
+    "rawValue": "rgba({gray.400}, 0)",
     "computedValue": "rgba(138, 142, 155, 0)",
     "description": "Background of the regular tertiary control.",
     "components": ["button"]
@@ -993,7 +993,7 @@
   {
     "name": "--intergalactic-control-tertiary-neutral-hover",
     "type": "color",
-    "rawValue": "{gray.400}, 0.2",
+    "rawValue": "rgba({gray.400}, 0.2)",
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular tertiary control.",
     "components": ["button"]
@@ -1001,7 +1001,7 @@
   {
     "name": "--intergalactic-control-tertiary-neutral-active",
     "type": "color",
-    "rawValue": "{gray.400}, 0.3",
+    "rawValue": "rgba({gray.400}, 0.3)",
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular tertiary control.",
     "components": ["button"]
@@ -1009,7 +1009,7 @@
   {
     "name": "--intergalactic-control-tertiary-info",
     "type": "color",
-    "rawValue": "{blue.400}, 0",
+    "rawValue": "rgba({blue.400}, 0)",
     "computedValue": "rgba(0, 143, 248, 0)",
     "description": "Background of the accent and link-lookalike tertiary control.",
     "components": ["button"]
@@ -1017,7 +1017,7 @@
   {
     "name": "--intergalactic-control-tertiary-info-hover",
     "type": "color",
-    "rawValue": "{blue.400}, 0.2",
+    "rawValue": "rgba({blue.400}, 0.2)",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Hover state of the accent and link-lookalike tertiary control.",
     "components": ["button"]
@@ -1025,7 +1025,7 @@
   {
     "name": "--intergalactic-control-tertiary-info-active",
     "type": "color",
-    "rawValue": "{blue.400}, 0.3",
+    "rawValue": "rgba({blue.400}, 0.3)",
     "computedValue": "rgba(0, 143, 248, 0.3)",
     "description": "Active (selected) state of the accent and link-lookalike tertiary control.",
     "components": ["button"]
@@ -1033,7 +1033,7 @@
   {
     "name": "--intergalactic-control-tertiary-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0",
+    "rawValue": "rgba({gray.white}, 0)",
     "computedValue": "rgba(255, 255, 255, 0)",
     "description": "Background of the inverted version of the tertiary control.",
     "components": ["button"]
@@ -1041,7 +1041,7 @@
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
     "type": "color",
-    "rawValue": "{gray.white}, 0.1",
+    "rawValue": "rgba({gray.white}, 0.1)",
     "computedValue": "rgba(255, 255, 255, 0.1)",
     "description": "Hover state of the inverted version of the tertiary control.",
     "components": ["button"]
@@ -1049,7 +1049,7 @@
   {
     "name": "--intergalactic-control-tertiary-invert-active",
     "type": "color",
-    "rawValue": "{gray.white}, 0.3",
+    "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
     "components": ["button", "modal"]
@@ -1325,7 +1325,7 @@
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.5",
+    "rawValue": "rgba({gray.white}, 0.5)",
     "computedValue": "rgba(255, 255, 255, 0.5)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
@@ -1365,7 +1365,7 @@
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
     "type": "color",
-    "rawValue": "{blue.100}, 0.7",
+    "rawValue": "rgba({blue.100}, 0.7)",
     "computedValue": "rgba(196, 229, 254, 0.7)",
     "description": "Active (selected) state of the default background color for the list item in the dropdown-menu.",
     "components": ["dropdown-menu", "select"]
@@ -1381,7 +1381,7 @@
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
     "type": "color",
-    "rawValue": "{yellow.100}, 0.3",
+    "rawValue": "rgba({yellow.100}, 0.3)",
     "computedValue": "rgba(252, 224, 129, 0.3)",
     "description": "Color of the outer border of the FeaturePopover.Spot.",
     "components": []
@@ -1405,7 +1405,7 @@
   {
     "name": "--intergalactic-progress-bar-bg-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.2",
+    "rawValue": "rgba({gray.white}, 0.2)",
     "computedValue": "rgba(255, 255, 255, 0.2)",
     "description": "Inverted version of the background color of the ProgressBar.",
     "components": ["progress-bar"]
@@ -1413,17 +1413,9 @@
   {
     "name": "--intergalactic-progress-bar-bg-invert-hover",
     "type": "color",
-    "rawValue": "{gray.white}, 0.4",
+    "rawValue": "rgba({gray.white}, 0.4)",
     "computedValue": "rgba(255, 255, 255, 0.4)",
     "description": "Hover state for the inverted version of the background color of the ProgressBar.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-progress-bar-value",
-    "type": "color",
-    "rawValue": "{green.400}",
-    "computedValue": "#009f81",
-    "description": "Value color of the ProgressBar.",
     "components": []
   },
   {
@@ -1453,7 +1445,7 @@
   {
     "name": "--intergalactic-skeleton-bg",
     "type": "color",
-    "rawValue": "{gray.100}, 0.8",
+    "rawValue": "rgba({gray.100}, 0.8)",
     "computedValue": "rgba(224, 225, 233, 0.8)",
     "description": "Default color for the Skeleton.",
     "components": ["mini-chart", "skeleton"]
@@ -1461,7 +1453,7 @@
   {
     "name": "--intergalactic-skeleton-bg-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.3",
+    "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Inverted version of the default color for the Skeleton.",
     "components": ["skeleton"]
@@ -1771,9 +1763,25 @@
     "components": ["d3-chart", "dropdown", "feature-popover", "side-panel", "tooltip"]
   },
   {
+    "name": "--intergalactic-keyboard-focus-outline",
+    "type": "color",
+    "rawValue": "rgba({blue.400}, 0.5)",
+    "computedValue": "rgba(0, 143, 248, 0.5)",
+    "description": "Color for default keyboard focus outline styles.",
+    "components": ["format-text", "link"]
+  },
+  {
+    "name": "--intergalactic-keyboard-focus-outline-invert",
+    "type": "color",
+    "rawValue": "rgba({gray.white}, 0.7)",
+    "computedValue": "rgba(255, 255, 255, 0.7)",
+    "description": "Color for default keyboard focus outline styles to use on the dark and color background.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({blue.400}, 0.5)",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline}",
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
     "description": "Default keyboard focus styles.",
     "components": [
@@ -1787,14 +1795,12 @@
       "data-table",
       "date-picker",
       "dropdown-menu",
-      "format-text",
       "fullscreen-modal",
       "icon",
       "inline-edit",
       "inline-input",
       "input",
       "input-tags",
-      "link",
       "modal",
       "pills",
       "popper",
@@ -1830,7 +1836,7 @@
   {
     "name": "--intergalactic-keyboard-focus-invert",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({gray.white}, 0.7)",
+    "rawValue": "0px 0px 0px 3px {keyboard-focus.outline-invert}",
     "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
     "description": "Default keyboard focus styles for using with dark background.",
     "components": []
@@ -2199,7 +2205,6 @@
       "radio",
       "select",
       "tag",
-      "typography",
       "wizard"
     ]
   },
@@ -2631,7 +2636,7 @@
   {
     "name": "--intergalactic-overlay-primary",
     "type": "color",
-    "rawValue": "{gray.800}, 0.7",
+    "rawValue": "rgba({gray.800}, 0.7)",
     "computedValue": "rgba(25, 27, 35, 0.7)",
     "description": "Use for cover the content under the modal dialogs.",
     "components": ["modal", "side-panel"]
@@ -2639,7 +2644,7 @@
   {
     "name": "--intergalactic-overlay-secondary",
     "type": "color",
-    "rawValue": "{gray.800}, 0.4",
+    "rawValue": "rgba({gray.800}, 0.4)",
     "computedValue": "rgba(25, 27, 35, 0.4)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
     "components": ["modal", "spin-container"]
@@ -2655,7 +2660,7 @@
   {
     "name": "--intergalactic-overlay-limitation-secondary",
     "type": "color",
-    "rawValue": "{gray.white}, 0.85",
+    "rawValue": "rgba({gray.white}, 0.85)",
     "computedValue": "rgba(255, 255, 255, 0.85)",
     "description": "Use as a secondary cover of the content under the messages about limitations.",
     "components": ["spin-container"]
@@ -2816,7 +2821,7 @@
   {
     "name": "--intergalactic-scroll-bar-background",
     "type": "color",
-    "rawValue": "{gray.800}, 0.3",
+    "rawValue": "rgba({gray.800}, 0.3)",
     "computedValue": "rgba(25, 27, 35, 0.3)",
     "description": "Background color for ScrollBar.",
     "components": ["scroll-area"]
@@ -3032,7 +3037,7 @@
   {
     "name": "--intergalactic-tag-secondary-white-normal",
     "type": "color",
-    "rawValue": "{gray.white}, 0",
+    "rawValue": "rgba({gray.white}, 0)",
     "computedValue": "rgba(255, 255, 255, 0)",
     "description": "White secondary tag.",
     "components": []
@@ -3040,7 +3045,7 @@
   {
     "name": "--intergalactic-tag-secondary-white-hover-active",
     "type": "color",
-    "rawValue": "{gray.white}, 0.1",
+    "rawValue": "rgba({gray.white}, 0.1)",
     "computedValue": "rgba(255, 255, 255, 0.1)",
     "description": "Active state of the secondary white tag.",
     "components": []
@@ -3312,7 +3317,7 @@
   {
     "name": "--intergalactic-chart-grid-bar-chart-hover",
     "type": "color",
-    "rawValue": "{gray.200}, 0.3",
+    "rawValue": "rgba({gray.200}, 0.3)",
     "computedValue": "rgba(196, 199, 207, 0.3)",
     "description": "Background color for the hover state of a bar on the chart grid.",
     "components": ["d3-chart"]
@@ -3328,7 +3333,7 @@
   {
     "name": "--intergalactic-chart-grid-period-bg",
     "type": "color",
-    "rawValue": "{gray.200}, 0.2",
+    "rawValue": "rgba({gray.200}, 0.2)",
     "computedValue": "rgba(196, 199, 207, 0.2)",
     "description": "Use for highlighting the period on the chart grid.",
     "components": ["d3-chart"]
@@ -3352,7 +3357,7 @@
   {
     "name": "--intergalactic-chart-x-axis-accent-data-start-tracking",
     "type": "color",
-    "rawValue": "{green.400}, 0.2",
+    "rawValue": "rgba({green.400}, 0.2)",
     "computedValue": "rgba(0, 159, 129, 0.2)",
     "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid.",
     "components": []

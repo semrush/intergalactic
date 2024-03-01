@@ -7,14 +7,13 @@ import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
-import logger from '@semcore/utils/lib/logger';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
-
-const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
-const INTERACTION_TAGS = ['INPUT', 'TEXTAREA', 'BUTTON'];
+import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
+import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -30,68 +29,166 @@ class DropdownMenuRoot extends Component {
     interaction: 'click',
   };
 
+  state = {
+    focusLockItemIndex: null,
+  };
+
   popperRef = React.createRef();
+  triggerRef = React.createRef();
 
   itemProps = [];
+  itemRefs = [];
 
   highlightedItemRef = React.createRef();
 
+  ignoreTriggerKeyboardFocusUntil = 0;
   prevHighlightedIndex = null;
 
   uncontrolledProps() {
     return {
       highlightedIndex: null,
-      visible: null,
+      visible: [
+        null,
+        (visible) => {
+          if (!visible) {
+            this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
+          }
+        },
+      ],
     };
   }
+
+  focusTrigger = () => {
+    const trigger = this.triggerRef.current;
+    if (!trigger) return;
+    if (isFocusInside(trigger)) return;
+    setFocus(trigger);
+  };
 
   bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
     const targetTagName = e.target.tagName;
 
-    if (e.key === ' ' && INTERACTION_TAGS.includes(targetTagName)) return;
+    const { visible, highlightedIndex, placement } = this.asProps;
+
+    if (e.key === ' ' && ['INPUT', 'TEXTAREA', 'BUTTON'].includes(targetTagName)) return;
     if (e.key === 'Enter') {
       if (targetTagName === 'TEXTAREA') return;
       if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
     }
 
-    const { visible } = this.asProps;
-    const element = this.popperRef.current;
-
-    if (place === 'popper' && visible && e.key === 'Tab' && hasFocusableIn(element)) {
-      this.handlers.highlightedIndex(null);
-
+    if (visible && e.key === 'Tab') {
+      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
+      if (item && getFocusableIn(item).length !== 0) {
+        this.setState({ focusLockItemIndex: highlightedIndex });
+      } else {
+        this.handlers.highlightedIndex(null);
+      }
       return;
     }
 
-    if (!KEYS.includes(e.key)) return;
+    if (e.key === 'Escape' && this.state.focusLockItemIndex !== null) {
+      this.setState({ focusLockItemIndex: null });
+      return false;
+    }
 
-    e.preventDefault();
+    const verticalPlacement =
+      !placement || placement.startsWith('top') || placement.startsWith('bottom');
 
-    const isVisible = this.asProps.visible;
-
-    this.handlers.visible(true);
+    if (['ArrowDown', 'ArrowUp'].includes(e.key) && verticalPlacement) {
+      e.preventDefault();
+      this.handlers.visible(true);
+    }
+    if (['ArrowLeft', 'ArrowRight'].includes(e.key) && !verticalPlacement) {
+      const show =
+        (e.key === 'ArrowRight' && placement.startsWith('right')) ||
+        (e.key === 'ArrowLeft' && placement.startsWith('left'));
+      const hide =
+        (e.key === 'ArrowLeft' && placement.startsWith('right')) ||
+        (e.key === 'ArrowRight' && placement.startsWith('left'));
+      const visibleChanged = (visible && hide) || (!visible && show);
+      if (show) {
+        this.handlers.visible(true);
+      } else if (hide) {
+        this.handlers.visible(false);
+      }
+      if (visibleChanged) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+    }
+    if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
+      const focusable = getFocusableIn(item);
+      if (focusable.length > 0 && item) {
+        const focusedIndex = focusable.indexOf(document.activeElement);
+        if (e.key === 'ArrowRight') {
+          if (focusedIndex === -1) {
+            this.setState({ focusLockItemIndex: highlightedIndex });
+          }
+          const nextFocused = focusable[focusedIndex + 1];
+          if (nextFocused) {
+            e.preventDefault();
+            e.stopPropagation();
+            nextFocused.focus();
+          }
+        } else if (e.key === 'ArrowLeft') {
+          if (focusedIndex === 0) {
+            this.setState({ focusLockItemIndex: null });
+          }
+          const prevFocused = focusable[focusedIndex - 1];
+          if (prevFocused) {
+            e.preventDefault();
+            e.stopPropagation();
+            prevFocused.focus();
+          }
+        }
+      }
+    }
 
     switch (e.key) {
       case 'ArrowDown': {
-        isVisible && this.moveHighlightedIndex(amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
+        if (visible) {
+          this.moveHighlightedIndex(amount, e);
+          if (isFocusInside(this.popperRef.current)) {
+            this.focusTrigger();
+          }
+          e.preventDefault();
+          e.stopPropagation();
+        }
         break;
       }
       case 'ArrowUp': {
-        isVisible && this.moveHighlightedIndex(-amount, e);
-        (targetTagName === 'BUTTON' || targetTagName === 'A') && element?.focus();
+        if (visible) {
+          this.moveHighlightedIndex(-amount, e);
+          if (isFocusInside(this.popperRef.current)) {
+            this.focusTrigger();
+          }
+          e.preventDefault();
+          e.stopPropagation();
+        }
         break;
       }
       case ' ':
       case 'Enter':
         if (this.highlightedItemRef.current) {
+          e.stopPropagation();
+          e.preventDefault();
           this.highlightedItemRef.current.click();
         } else {
-          if (place === 'trigger') this.handlers.visible(false);
+          if (place === 'trigger') {
+            this.handlers.visible(false);
+
+            e.preventDefault();
+          }
         }
         break;
     }
+  };
+
+  handleTriggerKeyboardFocus = () => {
+    if (this.ignoreTriggerKeyboardFocusUntil > Date.now()) return false;
   };
 
   getTriggerProps() {
@@ -106,6 +203,8 @@ class DropdownMenuRoot extends Component {
       'aria-activedescendant':
         visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
+      ref: this.triggerRef,
+      onKeyboardFocus: this.handleTriggerKeyboardFocus,
     };
   }
 
@@ -137,19 +236,67 @@ class DropdownMenuRoot extends Component {
   getItemProps(props, index) {
     const { size, highlightedIndex, uid } = this.asProps;
     const highlighted = index === highlightedIndex;
-    const extraProps = {};
+    let ref = this.itemRefs[index];
     this.itemProps[index] = props;
     if (highlighted) {
-      extraProps.ref = this.scrollToNode;
+      ref = (node) => {
+        this.itemRefs[index] = node;
+        this.scrollToNode(node);
+      };
     }
 
     return {
       id: `igc-${uid}-option-${index}`,
       size,
       highlighted,
-      ...extraProps,
+      focusLock: this.state.focusLockItemIndex === index,
+      triggerRef: this.triggerRef,
+      ref,
+      index,
     };
   }
+
+  handleNestingClick = (event) => {
+    const itemIndex = this.itemRefs.indexOf(event.currentTarget);
+    if (itemIndex === -1) return;
+    const focusable = getFocusableIn(event.currentTarget);
+    focusable[0]?.focus();
+    if (focusable[0] && this.state.focusLockItemIndex === null) {
+      this.setState({ focusLockItemIndex: null });
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+  handleNestingKeyDown = (event) => {
+    if (event.key === ' ') {
+      this.handleNestingClick(event);
+    }
+  };
+  getNestingProps = () => {
+    const { size } = this.asProps;
+    return {
+      size,
+      onClick: this.handleNestingClick,
+      onKeyDown: this.handleNestingKeyDown,
+    };
+  };
+  handleNestedVisibleChange = (lastUserInteraction) => {
+    if (
+      this.asProps.visible &&
+      this.asProps.highlightedIndex === null &&
+      lastUserInteraction === 'keyboard'
+    ) {
+      this.handlers.highlightedIndex(0);
+    }
+  };
+  getNestingTriggerProps = () => {
+    const { size, visible } = this.asProps;
+    return {
+      size,
+      visible,
+      onNestedVisibleChange: this.handleNestedVisibleChange,
+    };
+  };
 
   getItemHintProps() {
     const { size } = this.asProps;
@@ -166,7 +313,9 @@ class DropdownMenuRoot extends Component {
   }
 
   scrollToNode = (node) => {
-    this.highlightedItemRef.current = node;
+    if (node) {
+      this.highlightedItemRef.current = node;
+    }
     setTimeout(() => {
       if (node?.scrollIntoView) {
         if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
@@ -190,6 +339,8 @@ class DropdownMenuRoot extends Component {
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
         highlightedIndex = selectedIndex;
+      } else if (this.highlightedItemRef.current) {
+        highlightedIndex = this.prevHighlightedIndex;
       } else {
         highlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
@@ -210,27 +361,26 @@ class DropdownMenuRoot extends Component {
   }
 
   componentDidUpdate() {
-    const { visible } = this.asProps;
-
-    if (!visible) {
+    if (!this.asProps.visible) {
       this.handlers.highlightedIndex(null);
+    }
+    if (
+      (this.state.focusLockItemIndex !== this.asProps.highlightedIndex || !this.asProps.visible) &&
+      this.state.focusLockItemIndex !== null
+    ) {
+      setTimeout(() => {
+        this.setState({ focusLockItemIndex: null });
+      }, 0);
     }
   }
 
   render() {
-    const { Children, interaction, 'data-ui-name': dataUiName } = this.asProps;
-    const props = {};
-
-    logger.warn(
-      interaction !== 'click' && interaction !== 'focus',
-      "You shouldn't use prop `interaction` except with `click` or `focus` value.",
-      dataUiName || DropdownMenuRoot.displayName,
-    );
+    const { Children } = this.asProps;
 
     this.itemProps = [];
 
     return (
-      <Root render={Dropdown} {...props}>
+      <Root render={Dropdown}>
         <Children />
       </Root>
     );
@@ -279,26 +429,55 @@ function Menu(props) {
   );
 }
 
-function Item(props) {
-  const [SDropdownMenuItem, { className, ...other }] = useFlex(props, props.forwardRef);
-  const styles = sstyled(props.styles);
-  return (
+function Item({ styles, label, triggerRef, focusLock, disabled, highlighted }) {
+  const SDropdownMenuItem = Root;
+  const ref = React.useRef();
+
+  useFocusLock(ref, false, triggerRef, !focusLock || disabled, true);
+
+  return sstyled(styles)(
     <SDropdownMenuItem
+      ref={ref}
+      render={Flex}
       role='menuitem'
       tabIndex={-1}
-      id={props.label}
-      className={
-        cn(
-          styles.cn('SDropdownMenuItem', {
-            ...props,
-            highlighted: !props.disabled && props.highlighted,
-          }).className,
-          className,
-        ) || undefined
-      }
-      {...other}
-    />
+      id={label}
+      use:highlighted={!disabled && highlighted}
+    />,
   );
+}
+
+function Nesting({ styles }) {
+  const SDropdownMenuNesting = Root;
+
+  return sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />);
+}
+
+function NestingTrigger({ styles, visible, onNestedVisibleChange }) {
+  const SDropdownMenuItem = Root;
+
+  const lastUserInteractionRef = React.useRef(undefined);
+  React.useEffect(() => {
+    onNestedVisibleChange(lastUserInteractionRef.current);
+  }, [visible]);
+
+  const handleMouseEvent = React.useCallback(() => {
+    lastUserInteractionRef.current = 'mouse';
+  }, []);
+  const handleKeyboardEvent = React.useCallback(() => {
+    lastUserInteractionRef.current = 'keyboard';
+  }, []);
+
+  React.useEffect(() => {
+    document.addEventListener('mouseover', handleMouseEvent, { capture: true });
+    document.addEventListener('keydown', handleKeyboardEvent, { capture: true });
+    return () => {
+      document.removeEventListener('mouseover', handleMouseEvent, { capture: true });
+      document.removeEventListener('keydown', handleKeyboardEvent, { capture: true });
+    };
+  }, []);
+
+  return sstyled(styles)(<SDropdownMenuItem nesting-trigger tabIndex={0} render={Flex} />);
 }
 
 function Addon(props) {
@@ -334,6 +513,7 @@ const DropdownMenu = createComponent(
     List,
     Menu,
     Item: [Item, { Addon }],
+    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
     ItemTitle: Title,
     ItemHint: Hint,
   },

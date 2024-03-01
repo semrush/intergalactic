@@ -36,24 +36,26 @@ const lineDirection2props = {
 };
 
 const rectDirection2props = {
-  vertical: ([xScale, yScale], value) => {
+  vertical: ([xScale, yScale], value, endValue) => {
     const yRange = yScale.range();
     const x = scaleOfBandwidth(xScale, value);
+    const width = endValue !== undefined ? scaleOfBandwidth(xScale, endValue) - x : 100;
     return {
       x: x,
       y: yRange[1],
-      width: 100,
+      width,
       height: yRange[0] - yRange[1],
     };
   },
-  horizontal: ([xScale, yScale], value) => {
+  horizontal: ([xScale, yScale], value, endValue) => {
     const xRange = xScale.range();
     const y = scaleOfBandwidth(yScale, value);
+    const height = endValue !== undefined ? scaleOfBandwidth(yScale, endValue) - y : 100;
     return {
       x: xRange[0],
       y: y,
       width: xRange[1] - xRange[0],
-      height: 100,
+      height,
     };
   },
 };
@@ -153,11 +155,15 @@ function Title(props) {
 }
 
 function Background(props) {
-  const { Element: SBackground, styles, scale, position, value } = props;
+  const { Element: SBackground, styles, scale, position, value, endValue } = props;
   const positionProps = rectDirection2props[side2direction[position]];
 
   return sstyled(styles)(
-    <SBackground render='rect' childrenPosition='inside' {...positionProps(scale, value)} />,
+    <SBackground
+      render='rect'
+      childrenPosition='inside'
+      {...positionProps(scale, value, endValue)}
+    />,
   );
 }
 

@@ -7,6 +7,16 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { processTokens, tokensToCss, tokensToJson } from './utils';
 
+export const writeIfChanged = async (path: string, content: string) => {
+  try {
+    const originalContent = await fs.readFile(path, 'utf-8');
+    if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
+      return;
+    }
+  } catch {}
+  await fs.writeFile(path, content);
+};
+
 const defaultTheme = 'light';
 const themes = ['light', 'dark'];
 
@@ -42,25 +52,25 @@ for (const theme of themes) {
 
     if (excludedTokens.length > 0) {
       const path = excludeToPath.replace('{theme}', theme);
-      await fs.writeFile(`${path}.css`, tokensToCss(excludedTokens));
-      await fs.writeFile(`${path}.json`, tokensToJson(excludedTokens));
+      await writeIfChanged(`${path}.css`, tokensToCss(excludedTokens));
+      await writeIfChanged(`${path}.json`, tokensToJson(excludedTokens));
       if (theme === defaultTheme) {
         const path = excludeToPath.replace('{theme}', 'default');
-        await fs.writeFile(`${path}.css`, tokensToCss(excludedTokens));
-        await fs.writeFile(`${path}.json`, tokensToJson(excludedTokens));
+        await writeIfChanged(`${path}.css`, tokensToCss(excludedTokens));
+        await writeIfChanged(`${path}.json`, tokensToJson(excludedTokens));
       }
     }
   }
 
-  await fs.writeFile(`./semcore/utils/src/themes/${theme}.css`, tokensToCss(processedTokens));
-  await fs.writeFile(`./semcore/utils/src/themes/${theme}.json`, tokensToJson(processedTokens));
+  await writeIfChanged(`./semcore/utils/src/themes/${theme}.css`, tokensToCss(processedTokens));
+  await writeIfChanged(`./semcore/utils/src/themes/${theme}.json`, tokensToJson(processedTokens));
 
   autoTheme[theme] = processedTokens;
 
   const usages: { [tokenName: string]: string[] } = {};
   if (theme === defaultTheme) {
-    await fs.writeFile('./semcore/utils/src/themes/default.css', tokensToCss(processedTokens));
-    await fs.writeFile('./semcore/utils/src/themes/default.json', tokensToJson(processedTokens));
+    await writeIfChanged('./semcore/utils/src/themes/default.css', tokensToCss(processedTokens));
+    await writeIfChanged('./semcore/utils/src/themes/default.json', tokensToJson(processedTokens));
 
     const projectCssPaths = (
       await glob('./semcore/*/src/**/*.shadow.css', {
@@ -201,7 +211,7 @@ for (const theme of themes) {
       ),
     );
     await Promise.all(
-      projectCssPaths.map((path, index) => fs.writeFile(path, processedCss[index].css)),
+      projectCssPaths.map((path, index) => writeIfChanged(path, processedCss[index].css)),
     );
 
     const unusedVariables: string[] = [];
@@ -279,11 +289,11 @@ for (const theme of themes) {
       }
     }
 
-    await fs.writeFile(
+    await writeIfChanged(
       resolvePath(dirname, '../../../website/docs/style/design-tokens/design-tokens.json'),
       JSON.stringify(designTokensDocumentation, null, 2) + '\n',
     );
-    await fs.writeFile(
+    await writeIfChanged(
       resolvePath(dirname, '../../../website/docs/style/design-tokens/base-tokens.json'),
       JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
     );
@@ -296,7 +306,7 @@ for (const theme in autoTheme) {
   autoThemeLines.push(tokensToCss(autoTheme[theme], selector));
 }
 
-await fs.writeFile('./semcore/utils/src/themes/auto.css', autoThemeLines.join('\n'));
+await writeIfChanged('./semcore/utils/src/themes/auto.css', autoThemeLines.join('\n'));
 
 execSync('pnpm lint:css --fix', {
   encoding: 'utf-8',

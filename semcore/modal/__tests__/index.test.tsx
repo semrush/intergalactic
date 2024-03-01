@@ -22,7 +22,7 @@ describe('Modal', () => {
     expect((getByTestId('modal').attributes as any)['data-name'].value).toBe('modal');
   });
 
-  test.concurrent('should support onClose for CloseIcons', () => {
+  test.sequential('should support onClose for CloseIcons', () => {
     const spy = vi.fn();
     const { getByTitle } = render(<Modal onClose={spy} visible />);
     fireEvent.click(getByTitle('Close'));
@@ -40,7 +40,7 @@ describe('Modal', () => {
     expect(spy).toBeCalledWith('onOutsideClick', expect.anything());
   });
 
-  test.concurrent('should support onClose for Escape', () => {
+  test.sequential('should support onClose for Escape', () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Modal onClose={spy} data-testid='modal' visible />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
@@ -58,7 +58,7 @@ describe('Modal', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test.concurrent('should support render function for children', async ({ expect }) => {
+  test.sequential('should support render function for children', async ({ expect }) => {
     const component = <Modal visible>{() => <Modal.Overlay />}</Modal>;
     render(component);
 
@@ -67,7 +67,7 @@ describe('Modal', () => {
     ).toBe(1);
   });
 
-  test.concurrent('should block global scroll when visible', async ({ expect }) => {
+  test.sequential('should block global scroll when visible', async ({ expect }) => {
     const component = render(<Modal visible>Content</Modal>);
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();

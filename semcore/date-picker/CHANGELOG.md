@@ -2,6 +2,55 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.2] - 2024-02-27
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.4 ~> 4.26.5]).
+
+## [4.29.1] - 2024-02-26
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.3 ~> 4.26.4]).
+
+## [4.29.0] - 2024-02-22
+
+### Changed
+
+- `DateRangeComparator` and `MonthDateRangeComparator` got new subcomponents `DateRangeComparator.Periods.Divider`, `DateRangeComparator.Periods.Column`, `DateRangeComparator.Periods.Options` and `DateRangeComparator.Periods.Controls` that allows customize comparators sidebars.
+- `DateRangeComparator` and `MonthDateRangeComparator` apply and clear buttons default placement is changed from footer to sidebar.
+
+## [4.28.4] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/base-trigger` [4.26.1 ~> 4.26.2], `@semcore/button` [5.20.2 ~> 5.20.3], `@semcore/checkbox` [7.22.0 ~> 7.22.1], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [4.28.3] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/typography` [5.26.0 ~> 5.26.1], `@semcore/checkbox` [7.21.4 ~> 7.22.0]).
+
+## [4.28.2] - 2024-02-19
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.0 ~> 4.26.1]).
+
+## [4.28.1] - 2024-02-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.19.2 ~> 4.19.3]).
+
+## [4.28.0] - 2024-02-14
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.25.1 ~> 4.26.0], `@semcore/icon` [4.25.0 ~> 4.26.0]).
+
 ## [4.27.2] - 2024-02-13
 
 ### Changed
@@ -50,7 +99,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version prepatch update due to children dependencies update (`@semcore/checkbox` [7.19.0 ~> 7.19.1]).
 
-## [4.25.0-prerelease.1] - 2024-01-23
+## [4.25.0-prerelease.10] - 2024-01-23
 
 ### Changed
 
@@ -101,7 +150,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 
-## [4.21.0-prerelease.1] - 2023-12-07
+## [4.21.0-prerelease.10] - 2023-12-07
 
 ### Added
 
@@ -262,7 +311,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed types for `value` and `onChange` in DateRangePicker.Trigger.
+- Fixed types for `value` and `onChange` in DateRangePicker. Trigger.
 
 ## [4.10.0] - 2023-09-19
 

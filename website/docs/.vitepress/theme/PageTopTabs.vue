@@ -6,7 +6,7 @@
   </div>
   <div class="page-top-tabs-container">
     <div class="page-top-tabs-content">
-      <a class="page-top-tabs-tab" v-for="tab in tabs" :href="tab.url" :data-current="tab.current">{{ tab.title }}</a>
+      <a class="page-top-tabs-tab" v-for="tab in tabs" :href="tab.url" :data-current="tab.current" @click="handleClick">{{ tab.title }}</a>
     </div>
     <div class="page-top-tabs-fake-aside"></div>
   </div>
@@ -104,9 +104,10 @@
 </style>
 <script setup>
 import { computed } from 'vue'
-import { useData, useRoute } from 'vitepress'
+import { useData, useRoute, useRouter } from 'vitepress'
 const { frontmatter } = useData();
 const route = useRoute();
+const router = useRouter();
 const tabs = computed(() => (typeof frontmatter.value.tabs === 'string') ? frontmatter.value.tabs.split(',').map(tab => {
   const urlLastPart = tab.substring(tab.lastIndexOf("('") + 2, tab.lastIndexOf("')")).trim()
   const title = tab.substring(0, tab.indexOf("('")).trim()
@@ -115,4 +116,11 @@ const tabs = computed(() => (typeof frontmatter.value.tabs === 'string') ? front
   return { url, title, current }
 }) : []);
 const title = computed(() => frontmatter.value.title);
+
+async function handleClick(event) {
+    event.preventDefault();
+    await router.go(event.target.href);
+    event.target.focus()
+}
+
 </script>

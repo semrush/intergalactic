@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.25.1] - 2024-02-14
+## [4.26.2] - 2024-03-01
 
 ### Changed
 
 - `ListAddBottom` icon.
+
+## [4.26.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.19.1 ~> 5.19.2], `@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [4.26.0] - 2024-02-13
+
+### Changed
+
+- Icons are clickable by `Space` now (along with `Enter` as before).
 
 ## [4.25.0] - 2024-o2-18
 
@@ -1075,7 +1087,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- размер `s`,`xs` для `Expand` иконки
+- размер `s`, `xs` для `Expand` иконки
 
 ## [1.1.1] - 2018-09-14
 

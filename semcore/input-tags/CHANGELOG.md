@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.23.2] - 2024-02-26
+
+### Fixed
+
+- Height for `InputTag` with size `l` (from 44px to 40px, like our other `large` components).
+
+## [4.23.1] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/input` [4.20.2 ~> 4.20.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [4.23.0] - 2024-02-21
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/tag` [5.26.0 ~> 5.27.0]).
+
+## [4.22.0] - 2024-02-13
+
+### Changed
+
+- Tags are clickable by `Space` now (along with `Enter` as before).
+
 ## [4.21.2] - 2024-02-09
 
 ### Changed
@@ -87,7 +111,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Fixed vertical gaps between tags for `l` size.
 
-## [4.14.1-prerelease.1] - 2023-11-24
+## [4.14.1-prerelease.10] - 2023-11-24
 
 ### Fixed
 

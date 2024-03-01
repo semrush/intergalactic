@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.19.4] - 2024-02-21
+
+### Changed
+
+- Version prerelease update due to children dependencies update (`@semcore/spin` [5.18.3-prerelease.10 ~> 5.18.3], `@semcore/flex-box` [5.19.2-prerelease.10 ~> 5.19.2], `@semcore/animation` [2.18.3-prerelease.10 ~> 2.18.3], `@semcore/core` [2.17.3-prerelease.10 ~> 2.17.3]).
+
+## [7.19.3] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/spin` [5.18.2 ~> 5.18.3], `@semcore/flex-box` [5.19.1 ~> 5.19.2], `@semcore/animation` [2.18.2 ~> 2.18.3], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
 ## [7.19.2] - 2024-02-09
 
 ### Changed
@@ -557,7 +569,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Обновлена зависимость от utils
 
-## [1.0.0-0] - 2018-07-06
+## [1.0.0-prerelease.10] - 2018-07-06
 
 ### Added
 

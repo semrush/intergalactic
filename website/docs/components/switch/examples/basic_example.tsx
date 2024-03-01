@@ -12,7 +12,13 @@ const Demo = () => {
       </Text>
       <Box mt={2}>
         <Switch size='l' theme='success'>
-          <Switch.Value defaultChecked={true} id='email-subscription'>
+          <Switch.Addon hidden>Do not receive updates</Switch.Addon>
+          <Switch.Value
+            defaultChecked={true}
+            id='email-subscription'
+            aria-label='Email subscription'
+            ml={0}
+          >
             <CheckM />
           </Switch.Value>
           <Switch.Addon>Receive updates</Switch.Addon>

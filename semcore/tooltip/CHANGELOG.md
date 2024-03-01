@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.20.2] - 2024-02-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.20.2 ~> 4.20.3], `@semcore/flex-box` [5.19.1 ~> 5.19.2], `@semcore/popper` [5.20.1 ~> 5.20.2], `@semcore/core` [2.17.2 ~> 2.17.3]).
+
+## [6.20.1] - 2024-02-19
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.20.0 ~> 5.20.1]).
+
+## [6.20.0] - 2023-02-13
+
+### Fixed
+
+- Some assistive technologies were reading tooltip popper content twice.
+
+### Added
+
+- Tooltip trigger children render function got `popperId` param that allows to apply `aria-describedby` on specific children of tooltip trigger.
+
 ## [6.19.0] - 2023-02-07
 
 ### Changed
@@ -68,7 +90,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/utils` [4.15.1 ~> 4.16.0], `@semcore/flex-box` [5.13.1 ~> 5.14.0], `@semcore/popper` [5.13.0 ~> 5.14.0], `@semcore/core` [2.12.1 ~> 2.13.0]).
 
-## [6.13.0-prerelease.1] - 2023-12-22
+## [6.13.0-prerelease.10] - 2023-12-22
 
 ### Changed
 
@@ -718,7 +740,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлены типы TS для `title`,так как `title` является стандартным свойством dom
+- Исправлены типы TS для `title`, так как `title` является стандартным свойством dom
 
 ## [3.0.0] - 2019-06-06
 
