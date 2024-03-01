@@ -28,7 +28,7 @@ function RangeInput(props) {
       render={Box}
       tag={InputTriggerBase}
       parts={dateParts}
-      __excludeProps={['role', 'aria-haspopup', 'onChange', 'value']}
+      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value']}
     >
       <InputTriggerBase.DateRange>
         <SRangeIndicator range={props.range} disabled={props.disabled} w={12} h={12} ml={2} />
@@ -65,10 +65,10 @@ class MonthDateRangeComparatorRoot extends RangeComparatorAbstract {
   navigateStep = 'year';
   keyStep = 'month';
   keyDiff = {
-    37: -1,
-    38: -3,
-    39: 1,
-    40: 3,
+    ArrowLeft: -1,
+    ArrowUp: -3,
+    ArrowRight: 1,
+    ArrowDown: 3,
   };
 
   getTitleProps(props, index) {
@@ -213,7 +213,7 @@ function PeriodsDivider(props) {
 function PeriodsColumn(props) {
   const { Root: SPeriodsColumn, styles } = props;
   return sstyled(styles)(
-    <SPeriodsColumn render={Flex} direction='column' justifyContent='space-between' />,
+    <SPeriodsColumn render={Flex} direction='column' justifyContent='space-between' p={1} />,
   );
 }
 function PeriodsOptions(props) {

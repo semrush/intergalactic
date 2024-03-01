@@ -16,7 +16,7 @@ import {
 } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
-import { getLocaleDate } from './utils/formatDate';
+import { formatDDMMYY } from './utils/formatDate';
 import includesDate from './utils/includesDate';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -51,7 +51,7 @@ export class DatePickerRoot extends PickerAbstract {
     return {
       ...super.getButtonTriggerProps(),
       placeholder: 'Select date',
-      children: value ? getLocaleDate(value, locale) : null,
+      children: value ? formatDDMMYY(value, locale) : null,
     };
   }
 

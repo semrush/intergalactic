@@ -20,7 +20,7 @@ export function InputTrigger() {
     <Root
       render={Dropdown.Trigger}
       tag={InputTriggerBase}
-      __excludeProps={['role', 'aria-haspopup', 'onChange', 'value']}
+      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value']}
     />
   );
 }
@@ -45,7 +45,7 @@ export function Header(props) {
 export const Title = ({ Children, styles }) => {
   const STitle = Root;
   return sstyled(styles)(
-    <STitle render={Box}>
+    <STitle render={Box} aria-live='polite'>
       <Children />
     </STitle>,
   );
@@ -53,14 +53,7 @@ export const Title = ({ Children, styles }) => {
 
 export function Prev({ getI18nText, children, Children }) {
   return (
-    <Root
-      render={Button}
-      use='tertiary'
-      theme='muted'
-      size='l'
-      tabIndex={-1}
-      aria-label={getI18nText('prev')}
-    >
+    <Root render={Button} use='tertiary' theme='muted' size='l' aria-label={getI18nText('prev')}>
       {children ? (
         <Children />
       ) : (
@@ -74,14 +67,7 @@ export function Prev({ getI18nText, children, Children }) {
 
 export function Next({ getI18nText, children, Children }) {
   return (
-    <Root
-      render={Button}
-      use='tertiary'
-      theme='muted'
-      size='l'
-      tabIndex={-1}
-      aria-label={getI18nText('next')}
-    >
+    <Root render={Button} use='tertiary' theme='muted' size='l' aria-label={getI18nText('next')}>
       {children ? (
         <Children />
       ) : (
