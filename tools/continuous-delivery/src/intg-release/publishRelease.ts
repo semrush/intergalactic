@@ -13,7 +13,6 @@ import Git from 'simple-git';
 import { downloadTarballs } from '../downloadTarballs';
 import { unpackTarballs } from '../unpackTarballs';
 import { closeTasks } from './closeTasks';
-import { CI_AUTHOR_NAME } from './publishPreRelease';
 
 const git = Git();
 
@@ -43,7 +42,7 @@ const publishIntergalacticRelease = async () => {
 
   // 4) Get prerelease tarball
   const logs = await git.log({ maxCount: 50 });
-  const filteredLogs = logs.all.filter((item) => item.author_name !== CI_AUTHOR_NAME);
+  const filteredLogs = logs.all.filter((item) => item.author_name !== 'semrush-ci-whale');
 
   let tarballUrl: string | null = null;
   for (const log of filteredLogs) {

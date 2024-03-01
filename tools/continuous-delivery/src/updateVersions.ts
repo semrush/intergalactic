@@ -1,17 +1,42 @@
-import { VersionPatch } from './makeVersionPatches';
-import { resolve as resolvePath } from 'path';
+import { dirname as resolveDirname, resolve as resolvePath } from 'path';
 import fs from 'fs-extra';
 import semver from 'semver';
 import { carefulVersionUpdate, log } from './utils';
+import { fileURLToPath } from 'url';
+
+type VersionPatch =
+  | {
+      name: string; // @semcore/COMPONENT from package.json
+      version: string;
+    }
+  | {
+      name: string;
+      prerelease: string;
+    };
+
+const dirname = resolveDirname(fileURLToPath(import.meta.url));
+
+const getPathToPackage = (name: VersionPatch['name']) => {
+  const componentName = name.split('semcore/')[1];
+  return resolvePath(dirname, '..', '..', '..', 'semcore', componentName, 'package.json');
+};
 
 export const updateVersions = async (versionPatches: VersionPatch[]) => {
   log('Updating package.json files versions...');
   const packageFiles = await Promise.all(
-    versionPatches.map((patch) => fs.readJson(resolvePath(patch.package.path, 'package.json'))),
+    versionPatches.map((patch) => fs.readJson(getPathToPackage(patch.name))),
   );
   const setVersions: { [packageName: string]: string } = {};
   for (const patch of versionPatches) {
-    setVersions[patch.package.name] = patch.to;
+    if ('version' in patch) {
+      setVersions[patch.name] = patch.version;
+    } else {
+      const patchPackage = packageFiles.find((p) => p.name === patch.name);
+
+      if (patchPackage) {
+        setVersions[patchPackage.name] = `${patchPackage.version}-${patch.prerelease}`;
+      }
+    }
   }
   for (const packageFile of packageFiles) {
     if (setVersions[packageFile.name]) {
@@ -36,7 +61,7 @@ export const updateVersions = async (versionPatches: VersionPatch[]) => {
   }
   await Promise.all(
     versionPatches.map((patch, index) =>
-      fs.writeJson(resolvePath(patch.package.path, 'package.json'), packageFiles[index], {
+      fs.writeJson(getPathToPackage(patch.name), packageFiles[index], {
         spaces: 2,
       }),
     ),

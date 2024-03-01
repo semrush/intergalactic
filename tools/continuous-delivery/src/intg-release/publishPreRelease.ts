@@ -6,21 +6,11 @@ import { publishTarball } from './publishTarball';
 import Git from 'simple-git';
 import { log } from '../utils';
 import { updateExternalDeps } from './updateExternalDeps';
+import { GitUtils } from '../utils/gitUtils';
 
-const git = Git();
 const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
-export const CI_AUTHOR_NAME = 'semrush-ci-whale';
-
 const publishPreRelease = async () => {
-  const logResult = await git.log();
-
-  if (logResult.latest?.author_name === CI_AUTHOR_NAME) {
-    log('Skip prerelease form CI commit');
-
-    process.exit();
-  }
-
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
@@ -34,16 +24,25 @@ const publishPreRelease = async () => {
 
   // 3) Update changelog
   const { version, changelogs } = await updateReleaseChangelog(packageJson, deps);
-  const hash = await git.revparse(['HEAD']);
-  const shortHash = hash.slice(0, 8);
+  const currentVTag = await GitUtils.getCurrentTag();
+  const currentTag = currentVTag?.slice(1);
+  const versionFromTag = currentTag?.split('-')[0];
 
   if (version === null) {
     log('No changes from previous version was found. Skip publish prerelease.');
     return;
   }
+  if (currentTag === undefined) {
+    log('Not a tag. Skip publish prerelease.');
+    return;
+  }
+  if (currentTag !== versionFromTag) {
+    log(`Errors in calculated version. Calculated version is ${version}.`);
+    return;
+  }
 
   // 4) Update version in package.json
-  packageJson.version = `${version}-prerelease-${shortHash}`;
+  packageJson.version = currentTag;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
   // 5) Publish package
