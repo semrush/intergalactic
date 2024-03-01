@@ -20,7 +20,7 @@ const Demo = () => (
     <Card.Header>
       <Flex alignItems='center' justifyContent='space-between'>
         <Flex alignItems='center' tag='h4'>
-          <Card.Title hint={tooltipContent}>Card Title</Card.Title>
+          <Card.Title innerHint={tooltipContent}>Card Title</Card.Title>
         </Flex>
         <Flex alignItems='center'>
           <Text size={200} color='text-secondary' mr={2}>
