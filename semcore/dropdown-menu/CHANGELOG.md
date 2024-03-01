@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- selection item by keypress `Space` for button trigger.
+- selection item by keypress `Space` when button trigger is used.
 
 ## [4.21.1] - 2024-02-21
 

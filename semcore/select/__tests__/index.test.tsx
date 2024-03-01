@@ -130,34 +130,33 @@ describe('Select Trigger', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent(
-    'Should select by keypress space with button as trigger (FilterTrigger as example)',
-    async ({ expect }) => {
-      const spy = vi.fn();
+  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({
+    expect,
+  }) => {
+    const spyChange = vi.fn();
 
-      const component = (
-        <Select onChange={spy}>
-          <Select.Trigger tag={'button'} data-testid='button' />
-          <Select.Popper>
-            <Select.Option value={1}>Option1</Select.Option>
-            <Select.Option value={2}>Option2</Select.Option>
-            <Select.Option value={3}>Option3</Select.Option>
-          </Select.Popper>
-        </Select>
-      );
+    const component = (
+      <Select onChange={spyChange}>
+        <Select.Trigger tag={'button'} data-testid='buttonTrigger' />
+        <Select.Popper>
+          <Select.Option value={1}>Option1</Select.Option>
+          <Select.Option value={2}>Option2</Select.Option>
+          <Select.Option value={3}>Option3</Select.Option>
+        </Select.Popper>
+      </Select>
+    );
 
-      const { getByTestId } = render(component);
+    const { getByTestId } = render(component);
 
-      await userEvent.keyboard('[Tab]');
-      expect(getByTestId('button')).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('buttonTrigger')).toHaveFocus();
 
-      await userEvent.keyboard('[ArrowDown]');
-      await userEvent.keyboard('[ArrowDown]');
-      await userEvent.keyboard('[Space]');
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Space]');
 
-      expect(spy).toHaveBeenCalledWith(1, expect.anything());
-    },
-  );
+    expect(spyChange).toHaveBeenCalledWith(1, expect.anything());
+  });
 
   test.concurrent('Should support tag as string', async ({ task }) => {
     const component = (
