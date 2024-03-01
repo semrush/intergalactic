@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.4] - 2024-02-29
+
+### Fixed
+
+- Old themization with `@semcore/babel-plugin-react-semcore` wasn't working.
+
 ## [5.20.3] - 2024-02-21
 
 ### Changed
