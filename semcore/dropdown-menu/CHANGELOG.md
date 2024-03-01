@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.22.0] - 2024-02-29
+
+### Fixed
+
+- Allowed to `Tab` navigate from focusables inside of an item if the item was highlighted right before the focusable was focused.
+
 ## [4.21.1] - 2024-02-21
 
 ### Changed
