@@ -246,6 +246,25 @@ describe('Area', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('should support dots display function', async ({ task }) => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis ticks={yScale.ticks()}>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Area x='time' y='stack1' curve={curveCardinal} duration={0}>
+          <Area.Dots display={(i: number) => i % 2 === 0} />
+        </Area>
+      </Plot>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('should render Stacked Area chart without data correctly', async ({ task }) => {
     const data = [
       { time: 0, stack1: 1, stack2: 4, stack3: 3 },

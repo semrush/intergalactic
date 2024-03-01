@@ -30,8 +30,8 @@ export type AreaProps = Context & {
 /** @deprecated */
 export interface IAreaDotsProps extends AreaDotsProps, UnknownProperties {}
 export type AreaDotsProps = Context & {
-  /** Show all Dot */
-  display?: boolean;
+  /** Show dots */
+  display?: boolean | ((index: number, active: boolean, single: boolean) => boolean);
   /** Hide property */
   hide?: boolean;
   /** Enables element transparency */
