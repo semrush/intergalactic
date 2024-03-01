@@ -101,7 +101,7 @@ describe('Card', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should support keyboard navigation to the Hint', async ({ expect }) => {
+  test.sequential('should support keyboard navigation to the Hint', async ({ expect }) => {
     const tooltipContent = 'Some tooltip content';
 
     render(
