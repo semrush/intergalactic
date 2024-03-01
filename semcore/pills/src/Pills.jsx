@@ -31,7 +31,7 @@ class RootPills extends Component {
     behavior: behavior ?? 'auto',
   });
   itemValues = [];
-  static enhance = [a11yEnhance(optionsA11yEnhance)];
+  static enhance = [a11yEnhance(optionsA11yEnhance), keyboardFocusEnhance()];
 
   componentDidMount() {
     log.warn(
@@ -65,7 +65,7 @@ class RootPills extends Component {
   };
 
   getItemProps(props, index) {
-    const { value, size, disabled, behavior, keyboardFocused } = this.asProps;
+    const { value, size, disabled, behavior } = this.asProps;
     const isSelected = value === props.value;
 
     this.itemValues[index] = props.value;
@@ -100,13 +100,14 @@ class RootPills extends Component {
 
   render() {
     const SPills = Root;
-    const { Children, styles, controlsLength, disabled, behavior } = this.asProps;
+    const { Children, styles, controlsLength, disabled, behavior, value } = this.asProps;
 
     return sstyled(styles)(
       <SPills
         render={Box}
         role={behavior === 'radio' || behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
+        use:tabIndex={value !== null ? -1 : 0}
       >
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
