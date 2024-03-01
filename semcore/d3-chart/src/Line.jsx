@@ -151,7 +151,7 @@ function Area(props) {
     patterns,
   } = props;
   const [xScale, yScale] = scale;
-  const dataToArea = area ?? data;
+  const dataToArea = area ?? data.filter((d) => definedData(y0, y1)(d));
 
   const d3 = d3Area()
     .curve(curve)
