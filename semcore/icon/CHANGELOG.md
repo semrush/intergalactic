@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.27.0] - 2024-02-28
+
+### Added
+
+- New `CollapseAlt`, `ExpandAlt` and `CheckDouble` icons.
+
+### Changed
+
+- `Check` icon.
+
 ## [4.26.1] - 2024-02-21
 
 ### Changed
@@ -14,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Icons are clickable by `Space` now (along with `Enter` as before).
 
-## [4.25.0] - 2024-o2-18
+## [4.25.0] - 2024-02-18
 
 ### Added
 
