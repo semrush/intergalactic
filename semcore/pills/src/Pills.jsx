@@ -31,7 +31,7 @@ class RootPills extends Component {
     behavior: behavior ?? 'auto',
   });
   itemValues = [];
-  static enhance = [a11yEnhance(optionsA11yEnhance)];
+  static enhance = [a11yEnhance(optionsA11yEnhance), keyboardFocusEnhance()];
 
   componentDidMount() {
     log.warn(
@@ -107,7 +107,7 @@ class RootPills extends Component {
         render={Box}
         role={behavior === 'radio' || behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
-        tabIndex={value !== null ? -1 : 0}
+        use:tabIndex={value !== null ? -1 : 0}
       >
         <NeighborLocation controlsLength={controlsLength}>
           <Children />

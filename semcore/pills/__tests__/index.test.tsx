@@ -240,7 +240,7 @@ describe('PillGroup', () => {
             2
           </Pills.Item>
         </Pills>
-        <Pills id={'autofocusedPills'}>
+        <Pills id={'autofocusedPills'} keyboardFocused>
           <Pills.Item value={1}>1</Pills.Item>
           <Pills.Item value={2}>2</Pills.Item>
         </Pills>
