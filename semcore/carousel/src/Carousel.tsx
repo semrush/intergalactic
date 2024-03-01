@@ -214,7 +214,7 @@ class CarouselRoot extends Component<
         }),
         () => {
           this.transformContainer();
-          this.handlers.index(this.getReminderIndex());
+          this.handlers.index(this.getIndex());
         },
       );
 
@@ -238,7 +238,7 @@ class CarouselRoot extends Component<
         }),
         () => {
           this.transformContainer();
-          this.handlers.index(this.getReminderIndex());
+          this.handlers.index(this.getIndex());
         },
       );
 
@@ -378,7 +378,7 @@ class CarouselRoot extends Component<
     return transform;
   }
 
-  getReminderIndex() {
+  getIndex() {
     const { items, selectedIndex } = this.state;
 
     if (items.length === 0) {
@@ -399,7 +399,7 @@ class CarouselRoot extends Component<
       return true;
     }
 
-    return index === this.getReminderIndex();
+    return index === this.getIndex();
   }
 
   renderModal(isSmall: boolean, ComponentItems: any[]) {

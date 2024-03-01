@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `onIndexChange` to return reminder from absolute selected index.
+- `onIndexChange` to return correct index.
 
 ## [3.28.1] - 2024-02-21
 
