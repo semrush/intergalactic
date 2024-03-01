@@ -1,17 +1,32 @@
 import dayjs from 'dayjs';
 
-const formatterCache = {};
+const DDMMYYFormattersCache = {};
 
-export const getLocaleDate = (date, locale) => {
-  if (formatterCache[locale] === undefined) {
-    formatterCache[locale] = new Intl.DateTimeFormat(locale, {
+export const formatDDMMYY = (date, locale) => {
+  if (DDMMYYFormattersCache[locale] === undefined) {
+    DDMMYYFormattersCache[locale] = new Intl.DateTimeFormat(locale, {
       day: 'numeric',
       month: 'short',
       year: 'numeric',
     });
   }
 
-  const formatter = formatterCache[locale];
+  const formatter = DDMMYYFormattersCache[locale];
+
+  return formatter.format(dayjs(date).toDate());
+};
+
+const MMYYYYFormattersCache = {};
+
+export const formatMMYY = (date, locale) => {
+  if (MMYYYYFormattersCache[locale] === undefined) {
+    MMYYYYFormattersCache[locale] = new Intl.DateTimeFormat(locale, {
+      month: 'long',
+      year: 'numeric',
+    });
+  }
+
+  const formatter = MMYYYYFormattersCache[locale];
 
   return formatter.format(dayjs(date).toDate());
 };

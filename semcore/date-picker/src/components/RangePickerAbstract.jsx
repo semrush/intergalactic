@@ -8,6 +8,7 @@ import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 import includesDate from '../utils/includesDate';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 
 import style from '../style/date-picker.shadow.css';
 
@@ -52,6 +53,7 @@ class RangePickerAbstract extends Component {
   };
 
   popperRef = React.createRef();
+  unitRefs = {};
 
   navigateStep;
   keyDiff;
@@ -118,7 +120,6 @@ class RangePickerAbstract extends Component {
       }, 0);
     }
 
-    if (e.target !== e.currentTarget) return;
     const day = this.keyDiff[key];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
@@ -141,6 +142,9 @@ class RangePickerAbstract extends Component {
       return displayedPeriod;
     };
 
+    if (place === 'popper' && e.code === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      return this.handleApplyClick();
+    }
     if (place === 'popper' && e.code === 'Space' && highlighted.length) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
@@ -149,6 +153,7 @@ class RangePickerAbstract extends Component {
       }
       e.preventDefault();
     }
+    let changedDate = undefined;
     if (day) {
       if (INTERACTION_TAGS.includes(e.target.tagName)) return;
       if (highlighted.length) {
@@ -160,19 +165,29 @@ class RangePickerAbstract extends Component {
               .add(day, this.keyStep)
               .toDate(),
           ];
+          changedDate = next_highlighted[1];
         } else {
           next_highlighted = [
             dayjs(highlighted[0])
               .add(day, this.keyStep)
               .toDate(),
           ];
+          changedDate = next_highlighted[0];
         }
         this.handlers.highlighted(next_highlighted);
         this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
       } else {
-        this.handlers.highlighted([displayedPeriod ? displayedPeriod : dayjs().toDate()]);
+        const highlighted = [displayedPeriod ? displayedPeriod : dayjs().toDate()];
+        this.handlers.highlighted(highlighted);
+        changedDate = highlighted[0];
       }
       e.preventDefault();
+
+      if (changedDate) {
+        const formatter = this.keyStep === 'month' ? formatMMYY : formatDDMMYY;
+        const formattedDate = formatter(changedDate, this.asProps.locale);
+        this.unitRefs[formattedDate]?.focus();
+      }
     }
   };
 
@@ -240,30 +255,33 @@ class RangePickerAbstract extends Component {
       onKeyDown: this.handlerKeyDown('popper'),
       children: (
         <>
-          <Flex>
-            <Box mr={2}>
-              <Picker.Header>
-                <Picker.Prev />
-                <Picker.Title />
-              </Picker.Header>
-              <Picker.Calendar />
-            </Box>
-            <Box ml={2}>
-              <Picker.Header>
-                <Picker.Title />
-                <Picker.Next />
-              </Picker.Header>
-              <Picker.Calendar />
-            </Box>
+          <Flex direction='row-reverse'>
             {periods.length > 0 && (
               <>
-                <Divider m='-16px 16px' orientation='vertical' h='auto' />
                 <Flex direction='column'>
                   <Picker.Period />
                   <Flex mt='auto'>{buttons}</Flex>
                 </Flex>
+                <Divider m='-16px 16px' orientation='vertical' h='auto' />
               </>
             )}
+            <Flex>
+              <Box mr={2}>
+                <Picker.Header>
+                  <Picker.Prev />
+                  <Picker.Title />
+                </Picker.Header>
+                <Picker.Calendar />
+              </Box>
+              <Box ml={2}>
+                <Picker.Header>
+                  {/* biome-ignore lint/a11y/useValidAriaValues: */}
+                  <Picker.Title aria-live={undefined} />
+                  <Picker.Next />
+                </Picker.Header>
+                <Picker.Calendar />
+              </Box>
+            </Flex>
           </Flex>
           {periods.length === 0 && (
             <>
@@ -325,6 +343,7 @@ class RangePickerAbstract extends Component {
       onHighlightedChange,
       onVisibleChange,
       preselectedValue,
+      getI18nText,
     } = this.asProps;
 
     return {
@@ -339,6 +358,9 @@ class RangePickerAbstract extends Component {
       onVisibleChange,
       value: preselectedValue.length ? preselectedValue : value,
       onChange: this.handleChange,
+      unitRefs: this.unitRefs,
+      getI18nText,
+      actionsDescribing: index === 0 ? 'range' : null,
     };
   }
 
@@ -359,11 +381,15 @@ class RangePickerAbstract extends Component {
     };
   }
 
+  handleApplyClick = () => {
+    const { value, preselectedValue } = this.asProps;
+    return this.handleApply(preselectedValue.length ? preselectedValue : value);
+  };
   getApplyProps() {
     const { value, getI18nText, preselectedValue } = this.asProps;
     return {
       getI18nText,
-      onClick: () => this.handleApply(preselectedValue.length ? preselectedValue : value),
+      onClick: this.handleApplyClick,
     };
   }
 

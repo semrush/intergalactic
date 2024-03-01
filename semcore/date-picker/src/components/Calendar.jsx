@@ -5,7 +5,9 @@ import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
 import includesDate from '../utils/includesDate';
-import { getLocaleDate } from '../utils/formatDate';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 import style from '../style/calendar.shadow.css';
 
@@ -39,10 +41,12 @@ class CalendarWeekDaysRoot extends Component {
 
     let date = dayjs().locale(locale, getDayJSLocaleParams(locale)).startOf('week');
     return range(7, () => {
-      const weekday = new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date.valueOf());
+      const short = new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date.valueOf());
+      const long = new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date.valueOf());
       date = date.add(1, 'day');
       return {
-        children: weekday,
+        children: short,
+        abbr: long,
       };
     });
   }
@@ -64,9 +68,9 @@ class CalendarWeekDaysRoot extends Component {
   }
 }
 
-function CalendarWeekUnit(props) {
+function CalendarWeekUnit({ styles, abbr }) {
   const SWeekDay = Root;
-  return sstyled(props.styles)(<SWeekDay render={Box} />);
+  return sstyled(styles)(<SWeekDay abbr={abbr} render={Box} />);
 }
 
 function resolveHighlighting(date, unit, highlighted) {
@@ -128,7 +132,7 @@ class CalendarAbstract extends Component {
     const disabled = _disabled.some(includesDate(date, unit));
 
     return {
-      date: getLocaleDate(date, locale),
+      date: this.formatter(date, locale),
       children: '',
       startSelected: selecting.startSelected,
       endSelected: selecting.endSelected,
@@ -184,14 +188,74 @@ class CalendarAbstract extends Component {
 
     fire(this, 'onHighlightedChange', highlighted.length ? [highlighted[0]] : []);
   };
+
+  getUnitProps({ date }) {
+    const { unitRefs } = this.asProps;
+    return {
+      ref: (node) => {
+        if (!date) return;
+        unitRefs[date] = node;
+      },
+    };
+  }
+
+  formatter = formatDDMMYY;
+  describeValue() {
+    const { locale, getI18nText, actionsDescribing } = this.asProps;
+    const value = this.asProps.value || [];
+    const compare = this.asProps.compare || [];
+
+    if (!actionsDescribing) return null;
+
+    const t = (key, date) =>
+      getI18nText(key, date ? { date: this.formatter(date, locale) } : undefined);
+
+    let description = '';
+    if (value.length === 1 || compare.length === 1) {
+      description += t('selectingStarted') + '. ';
+    } else if (value.length === 2 || compare.length === 2) {
+      description += t('selectingFinished') + '. ';
+    }
+
+    if (actionsDescribing === 'range') {
+      if (value[0] || value[1]) description += t('dateRange') + ' ';
+      if (value[0]) description += t('fromDate', value[0]) + ', ';
+      if (value[1]) description += t('toDate', value[1]) + '. ';
+    } else if (actionsDescribing === 'range-compare') {
+      if (compare.length === 1) {
+        description += t('dateRange2') + ' ';
+        if (compare[0]) description += t('fromDate', value[0]) + ', ';
+        if (compare[1]) description += t('toDate', value[1]) + '. ';
+      } else {
+        if (value[0] || value[1]) description += t('dateRange1') + ' ';
+        if (value[0]) description += t('fromDate', value[0]) + ', ';
+        if (value[1]) description += t('toDate', value[1]) + '. ';
+        if (compare.length > 0) {
+          description += t('dateRange2') + ' ';
+          if (compare[0]) description += t('fromDate', compare[0]) + ', ';
+          if (compare[1]) description += t('toDate', compare[1]) + '. ';
+        }
+      }
+    }
+
+    return description;
+  }
 }
 
-function CalendarUnit({ styles, date }) {
+function CalendarUnit({ styles, date, outdated, disabled }) {
   const SCalendarUnit = Root;
   return sstyled(styles)(
-    <SCalendarUnit render={Box} tag='button' aria-hidden={!date} aria-label={date} tabIndex={-1} />,
+    <SCalendarUnit
+      use:disabled={disabled || outdated || !date}
+      render={Box}
+      tag='button'
+      type='button'
+      aria-hidden={!date}
+      aria-label={date}
+    />,
   );
 }
+CalendarUnit.enhance = [keyboardFocusEnhance()];
 
 class CalendarDaysRoot extends CalendarAbstract {
   static displayName = 'CalendarDays';
@@ -261,13 +325,17 @@ class CalendarDaysRoot extends CalendarAbstract {
     const SCalendar = Root;
     const SGridDays = 'div';
     const { Children, styles, locale } = this.asProps;
+    const description = this.describeValue();
 
     return sstyled(styles)(
-      <SCalendar render={Box} aria-hidden='true'>
+      <SCalendar render={Box}>
         <CalendarWeekDays locale={locale} />
         <SGridDays onMouseLeave={this.handleMouseLeave}>
           <Children />
         </SGridDays>
+        <ScreenReaderOnly>
+          <span aria-live='polite'>{description}</span>
+        </ScreenReaderOnly>
       </SCalendar>,
     );
   }
@@ -288,6 +356,7 @@ class CalendarMonthsRoot extends CalendarAbstract {
     return range(12, () => {
       const month = this.createUnit({ date }, 'month');
       month.children = new Intl.DateTimeFormat(locale, { month: 'short' }).format(date.valueOf());
+      month.abbr = new Intl.DateTimeFormat(locale, { month: 'long' }).format(date.valueOf());
       date = date.add(1, 'month');
       return month;
     });
@@ -299,16 +368,22 @@ class CalendarMonthsRoot extends CalendarAbstract {
     };
   }
 
+  formatter = formatMMYY;
+
   render() {
     const SCalendar = Root;
     const SGridMonths = 'div';
     const { Children, styles } = this.asProps;
+    const description = this.describeValue();
 
     return sstyled(styles)(
       <SCalendar render={Box}>
         <SGridMonths onMouseLeave={this.handleMouseLeave}>
           <Children />
         </SGridMonths>
+        <ScreenReaderOnly>
+          <span aria-live='polite'>{description}</span>
+        </ScreenReaderOnly>
       </SCalendar>,
     );
   }
