@@ -30,9 +30,12 @@ function getOptions(min, max, step = 1) {
   });
 }
 
+const defaultPopperOffset = [-8, 4];
+
 class ItemPicker extends Component {
   static defaultProps = {
     placeholder: '00',
+    offset: defaultPopperOffset,
   };
 
   inputRef = React.createRef();

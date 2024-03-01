@@ -13,7 +13,7 @@ tabs: Design('informer'), Example('informer-code')
 
 :::
 
-## Interactive Icon as Tooltip Trigger
+## Interactive icon as tooltip trigger
 
 You can use an Icon as a Trigger for Tooltip
 
