@@ -15,7 +15,7 @@ export default {
   ...Theme,
   Layout: () => {
     return h(Theme.Layout, null, {
-      'sidebar-nav-before': () => h(PreferenceSwitch),
+      'nav-screen-content-after': () => h(PreferenceSwitch),
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-top': () => h(PageTopTabs),
       'not-found': () => h(Page404),
