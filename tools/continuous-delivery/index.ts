@@ -7,24 +7,17 @@ import { syncCheck } from './src/syncCheck';
 import { formatMarkdown, log } from './src/utils';
 import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
 import { publishReleaseNotes } from './src/publishReleaseNotes';
-import { collectTarballs } from './src/collectTarballs';
-import { downloadTarballs } from './src/downloadTarballs';
-import { unpackTarballs } from './src/unpackTarballs';
-import { patchVersionsFromPrereleaseToRelease } from './src/patchVersionsFromPrereleaseToRelease';
-import { republishTarballs } from './src/republishTarballs';
-import { commitVersionsPatch } from './src/commitVersionsPatch';
 import {
-  removeBetaVersionFromReleaseChangelog,
   updateReleaseChangelog,
   patchReleaseChangelog,
   serializeReleaseChangelog,
   getReleaseChangelog,
 } from '@semcore/changelog-handler';
 import semver from 'semver';
-import { publishIntergalacticRelease } from './src/intg-release/publishRelease';
 import { GitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
 import * as process from 'process';
+import { closeTasks } from './src/intg-release/closeTasks';
 
 export const initPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -102,36 +95,22 @@ export const publishPrerelease = async () => {
 };
 
 export const publishRelease = async () => {
-  const unlockedRelease = await getUnlockedPrerelease('semcore/ui/package.json', log);
-  if (!unlockedRelease) {
-    log('No unlocked prerelease found.');
-    return;
+  const updatedPackages = await GitUtils.getUpdatedPackages();
+  const versionTag = await GitUtils.getCurrentTag();
+  const version = versionTag?.slice(1);
+
+  // all semcore/* + intergalactic
+  await NpmUtils.publish(updatedPackages.concat('intergalactic'), false);
+
+  // 8) Close tasks in clickup
+  if (!process.argv.includes('--dry-run') && version) {
+    await closeTasks(version);
   }
-  const npmData = await fetchFromNpm();
-  const packages = await collectPackages(npmData);
-  const tarballUrls = await collectTarballs(unlockedRelease);
-  const tarballPaths = await downloadTarballs(tarballUrls, '.tmp/prerelease');
-  const packagesPaths = await unpackTarballs(tarballPaths);
-  const versionPatches = await patchVersionsFromPrereleaseToRelease(packagesPaths, packages);
-  await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
 
-  const releaseChangelog = await getReleaseChangelog();
+  if (!process.argv.includes('--dry-run') && version) {
+    const releaseChangelog = await getReleaseChangelog();
 
-  await removeBetaVersionFromReleaseChangelog(releaseChangelog.changelogs);
-
-  /** publish intergalactic */
-  await publishIntergalacticRelease();
-  /** publish intergalactic */
-
-  await republishTarballs(packagesPaths);
-  if (!process.argv.includes('--dry-run')) {
-    await commitVersionsPatch();
-  }
-  if (!process.argv.includes('--dry-run')) {
-    await publishReleaseNotes(
-      releaseChangelog.package.version,
-      releaseChangelog.changelogs.slice(0, 1),
-    );
+    await publishReleaseNotes(version, releaseChangelog.changelogs.slice(0, 1));
   }
 };
 
