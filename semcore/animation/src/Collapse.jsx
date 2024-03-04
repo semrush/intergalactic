@@ -31,7 +31,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
       if (onAnimationStart) onAnimationStart(event);
       if (overflowHidden) {
         overflowRef.current = window.getComputedStyle(event.currentTarget).overflow;
-        event.currentTarget.style.overflow = 'hidden';
+        event.currentTarget.style.overflow = 'clip';
       }
 
       if (props.visible) event.currentTarget.style.height = `${event.currentTarget.scrollHeight}px`;
