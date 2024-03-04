@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.1] - 2024-03-04
+
+### Added
+
+- Handler for scrolling to the column header after focusing.
+
 ## [4.28.0] - 2024-02-29
 
 ### Added

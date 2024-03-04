@@ -56,6 +56,12 @@ class Head extends Component<AsProps> {
     }
   };
 
+  handleColumnFocus = (event: React.FocusEvent) => {
+    setTimeout(() => {
+      event.target.scrollIntoView();
+    }, 0);
+  };
+
   renderColumns(columns: Column[], width: number) {
     return columns.map((column) => this.renderColumn(column, width));
   }
@@ -114,6 +120,7 @@ class Head extends Component<AsProps> {
         style={style}
         hidden={hidden}
         aria-sort={ariaSortValue}
+        onFocus={this.handleColumnFocus}
       >
         {isGroup ? (
           <>
