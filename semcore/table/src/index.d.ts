@@ -85,6 +85,12 @@ export type StickyHeadProps = ScrollAreaProps & {
   bottom?: string | number;
   /** Handler that is called when the fixed position is changed */
   onFixed?: (positionFixed: string) => void;
+
+  /**
+   * If enabled, header will be rendered without portal to the end of table container
+   * @default false
+   */
+  disablePortal?: boolean;
 };
 
 /** @deprecated */

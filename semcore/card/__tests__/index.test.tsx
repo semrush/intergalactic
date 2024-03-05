@@ -5,6 +5,7 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup, render, screen, userEvent } from '@semcore/testing-utils/testing-library';
 
 import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 import SettingsM from '@semcore/icon/Settings/m';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -31,7 +32,7 @@ describe('Card', () => {
   test.concurrent('Renders correctly Tittle/Description', async ({ task }) => {
     const component = (
       <Card>
-        <Card.Title hint='test'>Title</Card.Title>
+        <Card.Title hintAfter='test'>Title</Card.Title>
         <Card.Description>Description</Card.Description>
         Content
       </Card>
@@ -55,7 +56,7 @@ describe('Card', () => {
   test.concurrent('Renders correctly Tittle with hint', async ({ task }) => {
     const component = (
       <Card>
-        <Card.Title hint>Title</Card.Title>
+        <Card.Title hintAfter>Title</Card.Title>
       </Card>
     );
 
@@ -82,7 +83,7 @@ describe('Card', () => {
     const component = (
       <Card>
         <Card.Header>
-          <Card.Title hint={tooltipContent}>Card heading</Card.Title>
+          <Card.Title hintAfter={tooltipContent}>Card heading</Card.Title>
           <SettingsM
             style={{ float: 'right' }}
             color='stone'
@@ -100,13 +101,13 @@ describe('Card', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should support keyboard navigation to the Hint', async ({ expect }) => {
+  test.sequential('should support keyboard navigation to the Hint', async ({ expect }) => {
     const tooltipContent = 'Some tooltip content';
 
     render(
       <Card>
         <Card.Header>
-          <Card.Title hint={tooltipContent} tag='h4' inline my={0}>
+          <Card.Title hintAfter={tooltipContent} tag='h4' inline my={0}>
             Card heading
           </Card.Title>
         </Card.Header>
@@ -118,5 +119,31 @@ describe('Card', () => {
     const hints = await screen.findAllByText(tooltipContent);
 
     expect(hints).toHaveLength(1);
+  });
+
+  test.concurrent('Renders correctly innerHint', async ({ task }) => {
+    const component = (
+      <Card>
+        <Card.Title innerHint='test'>Title</Card.Title>
+        <Card.Description>Description</Card.Description>
+        Content
+      </Card>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Renders innerHint in a predictable layout', async ({ task }) => {
+    const component = (
+      <Card>
+        <Flex justifyContent='space-between'>
+          <Card.Title innerHint='test'>Title</Card.Title>
+          Right controls
+        </Flex>
+        <Card.Description>Description</Card.Description>
+        Content
+      </Card>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

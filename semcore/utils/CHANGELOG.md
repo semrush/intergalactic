@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.4] - 2024-02-28
+
+### Fixed
+
+- Attribute `attr` was not appling to components.
+
 ## [4.20.3] - 2024-02-08
 
 ### Fixed

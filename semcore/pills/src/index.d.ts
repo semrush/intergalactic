@@ -26,11 +26,11 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
     /** Default value for the selected pill */
     defaultValue?: T;
     /** Sets semantic role for corresponding behavior,
-     * when set to `radio` pressing left and right arrows
+     * when set to `auto` pressing left and right arrows
      * selects corresponding sibling pill.
      *
-     * It's recommended to use `radio` behavior in forms
-     * while `tabs` behavior for navigation and layout.
+     * It's recommended to use `auto` behavior in forms
+     * while `manual` behavior for navigation and layout.
      * @default tabs
      */
     behavior?: /** @deprecated use `manual` */

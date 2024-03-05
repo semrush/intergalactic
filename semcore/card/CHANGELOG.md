@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.0] - 2024-02-23
+
+### Changed
+
+- `Card.Title` prop `hint` renamed to `hintAfter`.
+
+### Added
+
+- `Card.Title` `innerHint` prop.
+
 ## [5.25.2] - 2024-02-21
 
 ### Changed
@@ -412,7 +422,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Made `<Card.Title />` `hint` available for screen readers.
+- Made `<Card. Title />` `hint` available for screen readers.
 
 ## [4.3.3] - 2023-03-22
 

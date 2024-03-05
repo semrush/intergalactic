@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.3] - 2024-03-01
+
+### Fixed
+
+- Order in layers for `Tag.Close` component for correct handling `onClick` events.
+
 ## [5.27.2] - 2024-02-21
 
 ### Changed
