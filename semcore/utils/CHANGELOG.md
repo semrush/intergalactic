@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- SyncScroll errors.
+- Errors in console.
 
 ## [4.20.4] - 2024-02-28
 
