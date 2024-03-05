@@ -1,6 +1,7 @@
 ---
 title: Tags
 tabName: Design
+tabs: Design('filter-tags'), Example('filter-tags-code')
 ---
 
 ::: tip

@@ -1,6 +1,7 @@
 ---
 title: SERP Features
 tabName: Design
+tabs: Design('filter-serp-featuers'), Example('filter-serp-featuers-code')
 ---
 
 ::: tip
