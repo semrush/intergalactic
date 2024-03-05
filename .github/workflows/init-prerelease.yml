@@ -1,10 +1,8 @@
 name: init-prerelease
 on:
-  pull_request:
   workflow_dispatch:
     branch:
       - master
-      - release/test
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
