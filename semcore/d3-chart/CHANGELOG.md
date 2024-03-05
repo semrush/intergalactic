@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.1] - 2024-03-05
+
+### Fixed
+
+- Double reading label on `LegentItem` checkbox.
+
 ## [3.31.0] - 2024-03-01
 
 ### Added
