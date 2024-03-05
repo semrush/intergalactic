@@ -100,13 +100,13 @@ class LegendItemRoot extends Component<
 
   render() {
     const SLegendItem = Root;
-    const { styles, Children, shape } = this.asProps;
+    const { styles, Children, shape, label } = this.asProps;
 
     // @ts-ignore
     const disabled = StaticShapes.includes(shape);
 
     return sstyled(styles)(
-      <SLegendItem render={Flex} disabled={disabled}>
+      <SLegendItem render={Flex} disabled={disabled} aria-label={label}>
         <Children />
       </SLegendItem>,
     );
@@ -126,7 +126,6 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     Children,
     children: hasChildren,
     onKeyUp,
-    label,
     patterns,
   } = props;
 
@@ -150,7 +149,6 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           checked={checked}
           theme={checked ? color : undefined}
           onKeyUp={onKeyUp}
-          aria-label={label}
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>
