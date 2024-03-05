@@ -1,3 +1,8 @@
+.searchInput {
+  margin-bottom: var(--intergalactic-spacing-4x);
+  max-width: 400px;
+}
+
 .filters {
   margin-bottom: var(--intergalactic-spacing-4x);
   display: flex;
