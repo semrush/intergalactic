@@ -31,7 +31,7 @@ const group = {
   accordion: {
 
     title: 'Accordion',
-    route: '/intergalactic/table-group/table-controls//table-controls#accordion',
+    route: '/intergalactic/table-group/table-controls/table-controls#accordion',
     disabled: false,
     type: 'table',
 
