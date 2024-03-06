@@ -1,5 +1,5 @@
 import ts from 'typescript';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import { resolve as resolvePath } from 'path';
 import { readFile } from 'fs/promises';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';

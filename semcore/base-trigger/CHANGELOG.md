@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.27.0] - 2024-03-04
+
+### Changed
+
+- Tag for `ButtonTrigger` is `button` instead of `div`.
+
 ## [4.26.6] - 2024-03-01
 
 ### Changed
