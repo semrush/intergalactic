@@ -1,3 +1,84 @@
+## [15.67.0-prerelease.0] - 2024-03-06
+
+### @semcore/base-trigger
+
+- **Changed** Tag for `ButtonTrigger` is `button` instead of `div`.
+- **Fixed** In some rare cases `FilterTrigger` may share it's ref between component instances.
+
+### @semcore/carousel
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/checkbox
+
+- **Fixed** Double reading `aria-label` in checkbox without label.
+
+### @semcore/color-picker
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/d3-chart
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/data-table
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/date-picker
+
+- **Changed** Use `event.key` instead of `event.code`.
+- **Fixed** Style for today (current) date border.
+
+### @semcore/icon
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/inline-edit
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/inline-input
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/input-tags
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/pills
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/scroll-area
+
+- **Added** Scroll to focused element in scroll area.
+
+### @semcore/switch
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tab-panel
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tag
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tooltip
+
+- **Fixed** VoiceOver was not reading the tooltip content in Safari.
+- **Changed** `aria-live` container that announces the tooltip content was moved from tooltip inner container with `display: contents` to tooltip popper wrapper.
+
+### @semcore/utils
+
+- **Fixed** Errors in console.
+
+### @semcore/wizard
+
+- **Changed** Use `event.key` instead of `event.code`.
+
 ## [15.66.0] - 2024-03-01
 
 ### @semcore/animation
