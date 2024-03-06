@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.0] - 2024-02-29
+
+### Added
+
+- `disablePortal` prop to `Table.StickyHead`.
+
+### Changed
+
+- Sortable focused headers cell now shows sorting icon.
+
+## [4.27.3] - 2024-02-27
+
+### Fixed
+
+- Calculation of column widths to properly render Skeleton after the first paint.
+
+## [4.27.2] - 2024-02-23
+
+### Fixed
+
+- Virtual scroll in table - setup row size observer in `requestAnimationFrame`.
+
 ## [4.27.1] - 2024-02-21
 
 ### Changed

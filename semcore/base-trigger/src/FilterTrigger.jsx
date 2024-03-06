@@ -57,11 +57,9 @@ class RootFilterTrigger extends Component {
   handleStopPropagation = (e) => e.stopPropagation();
 
   handleClear = () => {
-    setTimeout(() => {
-      if (document.activeElement === document.body) {
-        setFocus(this.asProps.triggerRef.current);
-      }
-    }, 0);
+    requestAnimationFrame(() => {
+      setFocus(this.asProps.triggerRef.current);
+    });
   };
 
   render() {
@@ -137,8 +135,9 @@ class RootFilterTrigger extends Component {
               disabled={disabled}
               id={`igc-${uid}-filter-trigger-clear`}
               aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
+              aria-label={getI18nText('clear')}
             >
-              <FilterTrigger.Addon tag={Close} aria-label={getI18nText('clear')} />
+              <FilterTrigger.Addon tag={Close} />
             </SFilterTrigger>
           )}
         </NeighborLocation>

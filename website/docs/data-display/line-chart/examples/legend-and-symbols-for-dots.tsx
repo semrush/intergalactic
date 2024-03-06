@@ -64,7 +64,7 @@ const Demo = () => {
   return (
     <Card w={'550px'}>
       <Card.Header pt={4}>
-        <Card.Title tag={'h4'} m={0} hint={'Chart about ...'} inline={true}>
+        <Card.Title tag={'h4'} m={0} innerHint={'Chart about ...'} inline={true}>
           Chart legend
         </Card.Title>
       </Card.Header>

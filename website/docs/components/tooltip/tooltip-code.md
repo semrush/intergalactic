@@ -65,7 +65,7 @@ You can use a single tooltip for multiple reference elements. This allows you to
 
 :::
 
-## Interactive Icon as Tooltip Trigger
+## Interactive icon as tooltip trigger
 
 You can use an Icon as a Trigger for Tooltip
 

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.19.0] - 2024-03-01
+
+### Changed
+
+- `Collapse` now uses `clip` instead of `hidden` for the overflow property as `overflow: hidden` was breaking position sticky of children elements.
+
 ## [2.18.3] - 2024-02-21
 
 ### Changed

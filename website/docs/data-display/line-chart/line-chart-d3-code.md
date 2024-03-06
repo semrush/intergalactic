@@ -95,6 +95,18 @@ To get curved lines, transfer `curve` property with the required rounding method
 
 :::
 
+## Dots partial display
+
+You can pass function to `display` prop of `Dots` component to control which dots should be displayed.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/dots-display-function.tsx';
+</script>
+
+:::
+
 ## Legend and symbols for dots
 
 To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property. With this property enabled lines become dashed and change dots to different symbols.

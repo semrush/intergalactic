@@ -5,7 +5,17 @@ import valuesParser from 'postcss-value-parser';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { processTokens, tokensToCss, tokensToJson, writeIfChanged } from './utils';
+import { processTokens, tokensToCss, tokensToJson } from './utils';
+
+export const writeIfChanged = async (path: string, content: string) => {
+  try {
+    const originalContent = await fs.readFile(path, 'utf-8');
+    if (originalContent.replace(/[\s\n]/g, '') === content.replace(/[\s\n]/g, '')) {
+      return;
+    }
+  } catch {}
+  await fs.writeFile(path, content);
+};
 
 const defaultTheme = 'light';
 const themes = ['light', 'dark'];

@@ -32,19 +32,19 @@ STitle[position='top'] {
 
 STitle[position='bottom'] {
   text-anchor: middle;
-  alignment-baseline: hanging;
+  dominant-baseline: hanging;
 }
 
 STitle[position='right'] {
   transform: rotate(-90deg);
-  alignment-baseline: middle;
+  dominant-baseline: middle;
   text-anchor: middle;
 }
 
 STitle[position='left'] {
   transform: rotate(-90deg);
   text-anchor: middle;
-  alignment-baseline: middle;
+  dominant-baseline: middle;
 }
 STitle[position='right'][verticalWritingMode],
 STitle[position='left'][verticalWritingMode] {
@@ -60,29 +60,29 @@ STick[position='top'] {
 STick[position='bottom'] {
   transform: translateY(12px);
   text-anchor: middle;
-  alignment-baseline: hanging;
+  dominant-baseline: hanging;
 }
 
 STick[position='right'] {
   transform: translateX(16px);
   text-anchor: start;
-  alignment-baseline: middle;
+  dominant-baseline: middle;
 }
 
 STick[position='left'] {
   transform: translateX(-16px);
   text-anchor: end;
-  alignment-baseline: middle;
+  dominant-baseline: middle;
 }
 
 STick[position='custom_0'] {
   transform: translateY(12px);
   text-anchor: middle;
-  alignment-baseline: hanging;
+  dominant-baseline: hanging;
 }
 
 STick[position='custom_1'] {
   transform: translateX(-16px);
   text-anchor: end;
-  alignment-baseline: middle;
+  dominant-baseline: middle;
 }

@@ -8,6 +8,7 @@ import { localizedMessages } from '../translations/__intergalactic-dynamic-local
 
 import style from '../style/date-picker.shadow.css';
 import includesDate from '../utils/includesDate';
+import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 
 const INTERACTION_TAGS = ['INPUT'];
 const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
@@ -40,6 +41,7 @@ class PickerAbstract extends Component {
   };
 
   popperRef = React.createRef();
+  unitRefs = {};
 
   navigateStep;
   keyDiff;
@@ -108,7 +110,6 @@ class PickerAbstract extends Component {
       }, 0);
     }
 
-    if (e.target !== e.currentTarget) return;
     const day = this.keyDiff[e.code];
 
     const getCurrentHighlightedDay = (day) => {
@@ -135,6 +136,9 @@ class PickerAbstract extends Component {
         this.handlers.highlighted([current_day]);
         this.handlers.displayedPeriod(current_day);
         e.preventDefault();
+        const formatter = this.keyStep === 'month' ? formatMMYY : formatDDMMYY;
+        const formattedDate = formatter(current_day, this.asProps.locale);
+        this.unitRefs[formattedDate]?.focus();
       }
     }
   };
@@ -196,8 +200,16 @@ class PickerAbstract extends Component {
   }
 
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, highlighted, onVisibleChange, onChange } =
-      this.asProps;
+    const {
+      locale,
+      displayedPeriod,
+      disabled,
+      value,
+      highlighted,
+      onVisibleChange,
+      onChange,
+      getI18nText,
+    } = this.asProps;
     return {
       locale,
       displayedPeriod,
@@ -207,6 +219,9 @@ class PickerAbstract extends Component {
       value: [value, value],
       renderOutdated: true,
       onVisibleChange,
+      unitRefs: this.unitRefs,
+      getI18nText,
+      actionsDescribing: null,
     };
   }
 

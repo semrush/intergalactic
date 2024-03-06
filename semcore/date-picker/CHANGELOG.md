@@ -2,6 +2,33 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.0] - 2024-02-28
+
+### Fixed
+
+- Keyboard navigation was not working in calendars of `DateRangeComparator` and `MonthDateRangeComparator` components.
+- Paddings of `DateRangeComparator` and `MonthDateRangeComparator` periods presets (from `0` to `8px`).
+- Removed Input trigger invalid `aria` attributes.
+
+### Changed
+
+- Calendars now are focusable by keyboard, focus order of default (unwrapped) popper is changed to put periods presets and apply/clear button first.
+- Assistive technologies now announce navigated calendar cell and period.
+- Assistive technologies now announce what date ranges will be selected.
+- New `Cmd+Enter`/`Ctrl+Enter` keyboard shortcut to apply selected date ranges.
+
+## [4.29.2] - 2024-02-27
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.4 ~> 4.26.5]).
+
+## [4.29.1] - 2024-02-26
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.3 ~> 4.26.4]).
+
 ## [4.29.0] - 2024-02-22
 
 ### Changed

@@ -13,5 +13,12 @@
   "prev": "Previous period",
   "next": "Next period",
   "input": "Date field",
-  "compare": "Compare to"
+  "compare": "Compare to",
+  "fromDate": "From {date}",
+  "toDate": "To {date}",
+  "dateRange": "Date range",
+  "dateRange1": "First date range",
+  "dateRange2": "Second date range",
+  "selectingStarted": "Started selecting",
+  "selectingFinished": "Selected"
 }

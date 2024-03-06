@@ -249,17 +249,6 @@ SButton[neighborLocation='both'],
 SButton[neighborLocation='left'] {
   position: relative;
 
-  SButton+& {
-    &:after {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      width: 1px;
-      height: calc(100% + 2px);
-    }
-  }
-
   &:after {
     background-color: var(--intergalactic-text-primary-invert, #ffffff);
   }
@@ -269,6 +258,16 @@ SButton[neighborLocation='left'] {
       background-color: var(--intergalactic-border-primary, #c4c7cf);
     }
   }
+}
+
+SButton+SButton[neighborLocation='both']:after,
+SButton+SButton[neighborLocation='left']:after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 1px;
+  height: calc(100% + 2px);
 }
 
 SSpin {

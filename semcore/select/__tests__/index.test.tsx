@@ -130,6 +130,34 @@ describe('Select Trigger', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({
+    expect,
+  }) => {
+    const spyChange = vi.fn();
+
+    const component = (
+      <Select onChange={spyChange}>
+        <Select.Trigger tag={'button'} data-testid='buttonTrigger' />
+        <Select.Popper>
+          <Select.Option value={1}>Option1</Select.Option>
+          <Select.Option value={2}>Option2</Select.Option>
+          <Select.Option value={3}>Option3</Select.Option>
+        </Select.Popper>
+      </Select>
+    );
+
+    const { getByTestId } = render(component);
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('buttonTrigger')).toHaveFocus();
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Space]');
+
+    expect(spyChange).toHaveBeenCalledWith(1, expect.anything());
+  });
+
   test.concurrent('Should support tag as string', async ({ task }) => {
     const component = (
       <Select defaultValue='Test'>

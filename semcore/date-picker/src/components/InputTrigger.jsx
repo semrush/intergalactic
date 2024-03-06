@@ -24,11 +24,12 @@ class InputTriggerRoot extends Component {
       id,
       role,
       'aria-haspopup': ariaHasPopup,
+      'aria-expanded': ariaExpanded,
       'aria-label': ariaLabel,
       style,
       ...otherProps
     } = this.asProps;
-    return otherProps;
+    return { ...otherProps, ariaHasPopup };
   }
   getDateRangeProps() {
     const {
@@ -37,10 +38,11 @@ class InputTriggerRoot extends Component {
       role,
       'aria-haspopup': ariaHasPopup,
       'aria-label': ariaLabel,
+      'aria-expanded': ariaExpanded,
       style,
       ...otherProps
     } = this.asProps;
-    return otherProps;
+    return { ...otherProps, ariaHasPopup };
   }
 
   render() {
@@ -72,13 +74,15 @@ class SingleDateInputRoot extends Component {
   };
 
   getMaskedInputProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, w, ...otherProps } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, w, ariaHasPopup, ...otherProps } =
+      this.asProps;
 
     return {
       date: value,
       onDateChange: onChange,
       onDisplayedPeriodChange,
       locale,
+      'aria-haspopup': 'true',
       ...otherProps,
     };
   }
@@ -88,7 +92,11 @@ class SingleDateInputRoot extends Component {
     const SSingleDateInput = Root;
 
     return sstyled(styles)(
-      <SSingleDateInput render={InputMask} ref={forwardRef} __excludeProps={['onChange', 'style']}>
+      <SSingleDateInput
+        render={InputMask}
+        ref={forwardRef}
+        __excludeProps={['onChange', 'style', 'aria-expanded']}
+      >
         <NeighborLocation>
           <Children />
         </NeighborLocation>
@@ -171,7 +179,14 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ...otherProps } = this.asProps;
+    const {
+      value,
+      locale,
+      onDisplayedPeriodChange,
+      ariaHasPopup,
+
+      ...otherProps
+    } = this.asProps;
 
     return assignProps(
       {
@@ -182,12 +197,13 @@ class DateRangeRoot extends Component {
         locale,
         flex: 1,
         onDisplayedPeriodChange,
+        'aria-haspopup': ariaHasPopup,
       },
       otherProps,
     );
   }
   getToMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ...otherProps } = this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, ...otherProps } = this.asProps;
 
     return assignProps(
       {
@@ -198,6 +214,7 @@ class DateRangeRoot extends Component {
         locale,
         flex: 1,
         onDisplayedPeriodChange,
+        'aria-haspopup': ariaHasPopup,
       },
       otherProps,
     );
@@ -215,7 +232,7 @@ class DateRangeRoot extends Component {
     const { Children, styles, w } = this.asProps;
 
     return sstyled(styles)(
-      <SDateRange render={InputMask} __excludeProps={['onChange', 'value']} w={w}>
+      <SDateRange render={InputMask} __excludeProps={['onChange', 'value', 'aria-expanded']} w={w}>
         <Children />
       </SDateRange>,
     );

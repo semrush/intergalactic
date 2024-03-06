@@ -63,7 +63,7 @@ describe('Carousel', () => {
 
     const container = getByTestId('container');
     fireEvent.keyDown(container, { key: 'ArrowLeft' });
-    expect(spy).toHaveBeenCalledWith(-1);
+    expect(spy).toHaveBeenCalledWith(1);
     fireEvent.keyDown(container, { key: 'ArrowRight' });
     expect(spy).toHaveBeenCalledWith(0);
   });
@@ -203,7 +203,7 @@ describe('Carousel.Prev', () => {
     fireEvent.click(prev);
 
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(-1);
+    expect(spy).toHaveBeenCalledWith(1);
   });
 
   test('Should not support call onIndexChange for bounded property', () => {

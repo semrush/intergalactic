@@ -1,3 +1,169 @@
+## [15.66.0] - 2024-03-01
+
+### @semcore/animation
+
+- **Changed** `Collapse` now uses `clip` instead of `hidden` for the overflow property as `overflow: hidden` was breaking position sticky of children elements.
+
+### @semcore/button
+
+- **Fixed** Old themization with `@semcore/babel-plugin-react-semcore` wasn't working.
+
+### @semcore/card
+
+- **Changed** `Card.Title` prop `hint` renamed to `hintAfter`.
+- **Added** `Card.Title` `innerHint` prop.
+
+### @semcore/carousel
+
+- **Fixed** `onIndexChange` to return correct index.
+
+### @semcore/d3-chart
+
+- **Added** `Line.Dots` and `Area.Dots` components `display` prop now accepts function that allows developers to granularly control which dots should be displayed.
+- **Fixed** a11y module "Skip to content after plot" link was not working in some cases.
+- **Fixed** view of Line.Area with `null` in data.
+
+### @semcore/data-table
+
+- **Added** `disablePortal` prop to `Table.StickyHead`.
+- **Changed** Sortable focused headers cell now shows sorting icon.
+- **Fixed** Calculation of column widths to properly render Skeleton after the first paint.
+
+### @semcore/date-picker
+
+- **Fixed** Keyboard navigation was not working in calendars of `DateRangeComparator` and `MonthDateRangeComparator` components.
+- **Fixed** Paddings of `DateRangeComparator` and `MonthDateRangeComparator` periods presets (from `0` to `8px`).
+- **Fixed** Removed Input trigger invalid `aria` attributes.
+- **Changed** Calendars now are focusable by keyboard, focus order of default (unwrapped) popper is changed to put periods presets and apply/clear button first.
+- **Changed** Assistive technologies now announce navigated calendar cell and period.
+- **Changed** Assistive technologies now announce what date ranges will be selected.
+- **Changed** New `Cmd+Enter`/`Ctrl+Enter` keyboard shortcut to apply selected date ranges.
+
+### @semcore/dropdown-menu
+
+- **Fixed** selection item by keypress `Space` when button trigger is used.
+- **Fixed** Allowed to `Tab` navigate from focusables inside of an item if the item was highlighted right before the focusable was focused.
+- **Fixed** Disabled `DropdownMenu.Nesting` was opening nested menu by `Tab` key pressing.
+
+### @semcore/icon
+
+- **Added** New `CollapseAlt`, `ExpandAlt` and `CheckDouble` icons.
+- **Changed** `Check` icon.
+
+### @semcore/pills
+
+- **Fixed** View of `keyboardFocused` Pill.
+- **Added** Focus border for focused Pills without default value.
+
+### @semcore/tag
+
+- **Fixed** Order in layers for `Tag.Close` component for correct handling `onClick` events.
+
+### @semcore/time-picker
+
+- **Fixed** TimePicker dropdowns had unexpected visual horizontal offset.
+
+### @semcore/utils
+
+- **Fixed** Attribute `attr` was not appling to components.
+
+## [15.66.0] - 2024-03-01
+
+### @semcore/animation
+
+- **Changed** `Collapse` now uses `clip` instead of `hidden` for the overflow property as `overflow: hidden` was breaking position sticky of children elements.
+
+### @semcore/button
+
+- **Fixed** Old themization with `@semcore/babel-plugin-react-semcore` wasn't working.
+
+### @semcore/card
+
+- **Changed** `Card.Title` prop `hint` renamed to `hintAfter`.
+- **Added** `Card.Title` `innerHint` prop.
+
+### @semcore/carousel
+
+- **Fixed** `onIndexChange` to return correct index.
+
+### @semcore/d3-chart
+
+- **Added** `Line.Dots` and `Area.Dots` components `display` prop now accepts function that allows developers to granularly control which dots should be displayed.
+- **Fixed** a11y module "Skip to content after plot" link was not working in some cases.
+- **Fixed** view of Line.Area with `null` in data.
+
+### @semcore/data-table
+
+- **Added** `disablePortal` prop to `Table.StickyHead`.
+- **Changed** Sortable focused headers cell now shows sorting icon.
+- **Fixed** Calculation of column widths to properly render Skeleton after the first paint.
+
+### @semcore/date-picker
+
+- **Fixed** Keyboard navigation was not working in calendars of `DateRangeComparator` and `MonthDateRangeComparator` components.
+- **Fixed** Paddings of `DateRangeComparator` and `MonthDateRangeComparator` periods presets (from `0` to `8px`).
+- **Fixed** Removed Input trigger invalid `aria` attributes.
+- **Changed** Calendars now are focusable by keyboard, focus order of default (unwrapped) popper is changed to put periods presets and apply/clear button first.
+- **Changed** Assistive technologies now announce navigated calendar cell and period.
+- **Changed** Assistive technologies now announce what date ranges will be selected.
+- **Changed** New `Cmd+Enter`/`Ctrl+Enter` keyboard shortcut to apply selected date ranges.
+
+### @semcore/dropdown-menu
+
+- **Fixed** selection item by keypress `Space` when button trigger is used.
+- **Fixed** Allowed to `Tab` navigate from focusables inside of an item if the item was highlighted right before the focusable was focused.
+- **Fixed** Disabled `DropdownMenu.Nesting` was opening nested menu by `Tab` key pressing.
+
+### @semcore/icon
+
+- **Added** New `CollapseAlt`, `ExpandAlt` and `CheckDouble` icons.
+- **Changed** `Check` icon.
+
+### @semcore/pills
+
+- **Fixed** View of `keyboardFocused` Pill.
+- **Added** Focus border for focused Pills without default value.
+
+### @semcore/tag
+
+- **Fixed** Order in layers for `Tag.Close` component for correct handling `onClick` events.
+
+### @semcore/time-picker
+
+- **Fixed** TimePicker dropdowns had unexpected visual horizontal offset.
+
+### @semcore/utils
+
+- **Fixed** Attribute `attr` was not appling to components.
+
+## [15.65.2] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** A11y in Firefox for clear button in FilterTrigger.
+
+### @semcore/d3-chart
+
+- **Fixed** paddings on X axis in Firefox.
+
+### @semcore/pagination
+
+- **Fixed** Pressing tab in pagination input was causing input to clear.
+
+## [15.65.1] - 2024-02-26
+
+### @semcore/base-trigger
+
+- **Fixed** Returning focus on trigger after clear `FilterTrigger`.
+
+### @semcore/data-table
+
+- **Fixed** Virtual scroll in table - setup row size observer in `requestAnimationFrame`.
+
+### @semcore/input-tags
+
+- **Fixed** Height for `InputTag` with size `l` (from 44px to 40px, like our other `large` components).
+
 ## [15.65.0] - 2024-02-22
 
 ### @semcore/base-trigger
