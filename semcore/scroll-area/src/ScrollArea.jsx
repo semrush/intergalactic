@@ -123,7 +123,9 @@ class ScrollAreaRoot extends Component {
 
   handleFocusIn = (e) => {
     setTimeout(() => {
-      e.target.scrollIntoView();
+      if (typeof e.target.scrollIntoView === 'function') {
+        e.target.scrollIntoView();
+      }
     }, 0);
   };
 
