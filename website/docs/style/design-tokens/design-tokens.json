@@ -1280,7 +1280,7 @@
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
     "description": "Color for marking the cell with the current date, month or year in the date-picker.",
-    "components": []
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-hover",

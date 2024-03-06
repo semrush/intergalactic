@@ -231,6 +231,25 @@ describe('Checkbox', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent(
+    'Only CheckMark should have aria-label from root aria-label',
+    async ({ expect }) => {
+      const { getByTestId } = render(
+        <Checkbox aria-label={'test aria label'} data-testid={'checkboxContainer'}>
+          <Checkbox.Value>
+            <Checkbox.Value.Control data-testid={'checkboxControl'} />
+            <Checkbox.Value.CheckMark data-testid={'checkboxCheckMark'} />
+          </Checkbox.Value>
+        </Checkbox>,
+      );
+
+      expect(getByTestId('checkboxCheckMark')).toHaveAttribute('aria-label', 'test aria label');
+
+      expect(getByTestId('checkboxContainer')).not.toHaveAttribute('aria-label', 'test aria label');
+      expect(getByTestId('checkboxControl')).not.toHaveAttribute('aria-label', 'test aria label');
+    },
+  );
+
   test('a11y', async () => {
     const { container } = render(
       <Checkbox>

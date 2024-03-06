@@ -136,7 +136,3 @@ STooltip[data-popper-placement^='right'] SArrow {
     border-bottom-color: transparent !important;
   }
 }
-
-STooltipContent {
-  display: contents;
-}

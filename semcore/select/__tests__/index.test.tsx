@@ -350,7 +350,7 @@ describe('Select Trigger', () => {
       act(() => {
         vi.runAllTimers();
       });
-      expect(document.activeElement?.tagName).toBe('DIV');
+      expect(document.activeElement?.tagName).toBe('BUTTON');
 
       vi.useRealTimers();
     },

@@ -6,6 +6,7 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import Portal from '@semcore/portal';
 
 import style from './style/tooltip.shadow.css';
 
@@ -115,20 +116,24 @@ function TooltipTrigger(props) {
 }
 
 function TooltipPopper(props) {
-  const { Children, styles, theme, resolveColor } = props;
+  const { Children, styles, theme, resolveColor, disablePortal, ignorePortalsStacking } = props;
   const STooltip = Root;
   const SArrow = Box;
-  const STooltipContent = 'span';
 
   return sstyled(styles)(
-    <>
-      <STooltip render={Popper.Popper} role='tooltip' use:theme={resolveColor(theme)}>
-        <STooltipContent aria-live={theme === 'warning' ? 'assertive' : 'polite'}>
+    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
+      <div aria-live={theme === 'warning' ? 'assertive' : 'polite'}>
+        <STooltip
+          render={Popper.Popper}
+          use:disablePortal
+          role='tooltip'
+          use:theme={resolveColor(theme)}
+        >
           <Children />
-        </STooltipContent>
-        <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
-      </STooltip>
-    </>,
+          <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
+        </STooltip>
+      </div>
+    </Portal>,
   );
 }
 
