@@ -2,8 +2,8 @@ import ts from 'typescript';
 
 const hideGenerics = {
   'Intergalactic.InternalTypings.EfficientOmit': 1,
-  'Omit': 1,
-}
+  Omit: 1,
+};
 
 export const extractDependenciesList = (typingsParts) => {
   const dependencies = typingsParts
@@ -227,7 +227,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
               if (i !== 0) result.push(', ');
               result.push(traverse(typeArguments[i]));
             }
-            return result; 
+            return result;
           }
           const result = [...name, '<'];
           for (let i = 0; i < typeArguments.length; i++) {
