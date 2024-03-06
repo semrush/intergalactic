@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.1] - 2024-03-01
+
+### Fixed
+
+- Style for today (current) date border.
+
 ## [4.30.0] - 2024-02-28
 
 ### Fixed
