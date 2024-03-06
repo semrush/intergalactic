@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.2] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [4.30.1] - 2024-03-01
 
 ### Fixed

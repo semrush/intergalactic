@@ -122,7 +122,7 @@ class Value extends Component {
   }
 
   handleKeyDown = (event) => {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       this.handlers.checked(!this.asProps.checked, event);
     }

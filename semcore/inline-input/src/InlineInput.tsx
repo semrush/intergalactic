@@ -247,11 +247,11 @@ class InlineInputBase extends Component<RootAsProps> {
 
   handleKeyDown = (event: React.KeyboardEvent) => {
     const { onConfirm, onCancel } = this.asProps;
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       onConfirm?.(this.inputRef.current?.value ?? '', event);
       this.lastHandledKeyboardEvent = Date.now();
     }
-    if (event.code === 'Escape') {
+    if (event.key === 'Escape') {
       onCancel?.(this.initValue, event);
       this.lastHandledKeyboardEvent = Date.now();
     }
@@ -320,7 +320,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
 
   const handleKeydown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.code === 'Enter' || event.code === 'Space') {
+      if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         event.stopPropagation();
         handleConfirm(event);
@@ -372,7 +372,7 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
 
   const handleKeydown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.code === 'Enter' || event.code === 'Space') {
+      if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         event.stopPropagation();
         handleCancel(event);

@@ -315,8 +315,7 @@ class CarouselRoot extends Component<
   };
 
   bindHandlerKeydownControl = (direction: 'left' | 'right') => (e: React.KeyboardEvent) => {
-    const { code } = e;
-    if (code === 'Enter' || code === 'Space') {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       this.bindHandlerClick(direction)();
     }

@@ -188,7 +188,7 @@ describe('Tag', () => {
       </Tag>,
     );
 
-    fireEvent.keyDown(getByTestId('close'), { code: 'Enter' });
+    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -202,7 +202,7 @@ describe('Tag', () => {
       </Tag>,
     );
 
-    fireEvent.keyDown(getByTestId('close'), { code: 'Enter' });
+    fireEvent.keyDown(getByTestId('close'), { key: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 

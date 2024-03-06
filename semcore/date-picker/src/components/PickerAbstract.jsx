@@ -11,7 +11,7 @@ import includesDate from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 
 const INTERACTION_TAGS = ['INPUT'];
-const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
 
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
@@ -95,7 +95,7 @@ class PickerAbstract extends Component {
 
   handlerKeyDown = (place) => (e) => {
     const { value, displayedPeriod, highlighted, disabled: _disabled, visible } = this.asProps;
-    const key = e.code;
+    const key = e.key;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
@@ -110,7 +110,7 @@ class PickerAbstract extends Component {
       }, 0);
     }
 
-    const day = this.keyDiff[e.code];
+    const day = this.keyDiff[e.key];
 
     const getCurrentHighlightedDay = (day) => {
       const current_day = day.toDate();
@@ -118,7 +118,7 @@ class PickerAbstract extends Component {
       return isDisabledDay ? null : current_day;
     };
 
-    if (place === 'popper' && (e.key === 'Space' || (e.key === 'Enter' && highlighted.length))) {
+    if (place === 'popper' && (e.key === ' ' || (e.key === 'Enter' && highlighted.length))) {
       this.handlers.value(highlighted[0]);
       e.preventDefault();
     }

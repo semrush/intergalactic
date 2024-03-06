@@ -95,8 +95,8 @@ class RootTag extends Component {
   }
 
   handleKeyDown = (event) => {
-    switch (event.code) {
-      case 'Space':
+    switch (event.key) {
+      case ' ':
       case 'Enter':
         if (this.asProps.onClick) {
           event.preventDefault();
@@ -164,7 +164,7 @@ function Close(props) {
         return props.onKeyDown(event);
       }
 
-      if (props.onClick && (event.code === 'Enter' || event.code === 'Space')) {
+      if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
         props.onClick(event);
       }
