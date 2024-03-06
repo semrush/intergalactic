@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.7] - 2024-03-06
+
+### Fixed
+
+- In some rare cases `FilterTrigger` may share it's ref between component instances.
+
 ## [4.26.6] - 2024-03-01
 
 ### Changed

@@ -46,13 +46,13 @@ class RootFilterTrigger extends Component {
     }),
     uniqueIDEnhancement(),
   ];
-  static defaultProps = {
+  static defaultProps = () => ({
     includeInputProps: filterTriggerInputProps,
     i18n: localizedMessages,
     locale: 'en',
     triggerRef: React.createRef(),
     role: 'group',
-  };
+  });
 
   handleStopPropagation = (e) => e.stopPropagation();
 
