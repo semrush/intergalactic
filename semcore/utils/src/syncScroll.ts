@@ -1,14 +1,14 @@
 import canUseDOM from './canUseDOM';
 
 export default function syncScroll() {
-  const refs = new Map();
+  const refs = new Map<string, null | HTMLElement>();
 
   function handlerScroll(event: any) {
     const scrolledNode = event.currentTarget;
     if (!canUseDOM()) return;
     window.requestAnimationFrame(() => {
       refs.forEach((node) => {
-        if (scrolledNode !== node) {
+        if (scrolledNode !== node && node) {
           node.removeEventListener('scroll', handlerScroll);
           syncScrollPosition(scrolledNode, node);
           window.requestAnimationFrame(() => {
