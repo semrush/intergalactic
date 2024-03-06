@@ -1,5 +1,10 @@
 import ts from 'typescript';
 
+const hideGenerics = {
+  'Intergalactic.InternalTypings.EfficientOmit': 1,
+  'Omit': 1,
+}
+
 export const extractDependenciesList = (typingsParts) => {
   const dependencies = typingsParts
     .filter((part) => typeof part === 'object')
@@ -209,11 +214,31 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         const { typeName, typeArguments } = node as Omit<ts.TypeReferenceNode, 'typeName'> & {
           typeName: ts.BinaryExpression & { escapedText: string };
         };
+        if (typeArguments) {
+          let name = [typeName.escapedText];
+          if (typeName.left && typeName.right) {
+            name = [traverse(typeName.left), '.', traverse(typeName.right)];
+          }
+          const stringifiedName = name.flat().join('');
+          if (hideGenerics[stringifiedName]) {
+            const maxArgLength = hideGenerics[stringifiedName];
+            const result = [];
+            for (let i = 0; i < typeArguments.length && i < maxArgLength; i++) {
+              if (i !== 0) result.push(', ');
+              result.push(traverse(typeArguments[i]));
+            }
+            return result; 
+          }
+          const result = [...name, '<'];
+          for (let i = 0; i < typeArguments.length; i++) {
+            if (i !== 0) result.push(', ');
+            result.push(traverse(typeArguments[i]));
+          }
+          result.push('>');
+          return result;
+        }
         if (typeName.left && typeName.right) {
           return [traverse(typeName.left), '.', traverse(typeName.right)];
-        }
-        if (typeArguments) {
-          return [typeName.escapedText, '<', typeArguments.map((arg) => traverse(arg)), '>'];
         }
         if (typeName.escapedText !== undefined) {
           const genericReference = genericsMap[typeName.escapedText];
