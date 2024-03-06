@@ -61,6 +61,7 @@ class CheckboxRoot extends Component {
       indeterminate,
       hoistDisabled: this.hoistDisabled,
       rootDisabled: this.props.disabled,
+      ['aria-label']: this.asProps['aria-label'],
     };
   }
 
@@ -71,7 +72,14 @@ class CheckboxRoot extends Component {
       <SLabel
         render={Box}
         tag='label'
-        __excludeProps={['onChange', 'indeterminate', 'checked', 'checkedDefault', 'label']}
+        __excludeProps={[
+          'onChange',
+          'indeterminate',
+          'checked',
+          'checkedDefault',
+          'label',
+          'aria-label',
+        ]}
       >
         {hasChildren ? (
           <Children />
