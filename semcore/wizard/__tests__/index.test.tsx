@@ -142,7 +142,7 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.keyDown(getByTestId('second-step'), { code: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(getByTestId('second-step'), { key: 'Enter', keyCode: 13 });
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 

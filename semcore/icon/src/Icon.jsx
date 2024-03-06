@@ -44,7 +44,7 @@ function Icon(props, ref) {
       return propsEnhance.onKeyDown(event);
     }
 
-    if (interactive && propsEnhance.onClick && (event.code === 'Enter' || event.code === 'Space')) {
+    if (interactive && propsEnhance.onClick && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       propsEnhance.onClick(event);
     }
