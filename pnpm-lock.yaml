@@ -724,7 +724,7 @@ importers:
         specifier: 4.27.1-prerelease.1
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.20.6-prerelease.1
+        specifier: 5.20.6-prerelease.3
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.20.5-prerelease.1
@@ -1009,7 +1009,7 @@ importers:
         specifier: 5.19.4-prerelease.1
         version: link:../flex-box
       '@semcore/scroll-area':
-        specifier: 5.20.6-prerelease.1
+        specifier: 5.20.6-prerelease.3
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.20.5-prerelease.1
@@ -1684,7 +1684,7 @@ importers:
         specifier: 4.20.5-prerelease.1
         version: link:../input
       '@semcore/scroll-area':
-        specifier: 5.20.6-prerelease.1
+        specifier: 5.20.6-prerelease.3
         version: link:../scroll-area
       '@semcore/tag':
         specifier: 5.27.4-prerelease.1
@@ -2232,7 +2232,7 @@ importers:
         specifier: 4.18.5-prerelease.1
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.22.2-prerelease.1
+        specifier: 4.22.2-prerelease.2
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.19.4-prerelease.1
@@ -2551,7 +2551,7 @@ importers:
         specifier: 4.27.1-prerelease.1
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.20.6-prerelease.1
+        specifier: 5.20.6-prerelease.3
         version: link:../scroll-area
       '@semcore/typography':
         specifier: 5.26.4-prerelease.1
@@ -2650,7 +2650,7 @@ importers:
         specifier: 4.20.5-prerelease.1
         version: link:../input
       '@semcore/select':
-        specifier: 4.32.6-prerelease.1
+        specifier: 4.32.6-prerelease.2
         version: link:../select
       '@semcore/utils':
         specifier: 4.20.5-prerelease.1
@@ -2779,7 +2779,7 @@ importers:
         specifier: 3.31.1-prerelease.1
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.28.1-prerelease.1
+        specifier: 4.28.1-prerelease.2
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.30.2-prerelease.1
@@ -2797,7 +2797,7 @@ importers:
         specifier: 4.19.7-prerelease.1
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.22.2-prerelease.1
+        specifier: 4.22.2-prerelease.2
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.19.4-prerelease.1
@@ -2854,7 +2854,7 @@ importers:
         specifier: 5.20.6-prerelease.1
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.23.4-prerelease.1
+        specifier: 4.23.4-prerelease.2
         version: link:../input-tags
       '@semcore/link':
         specifier: 5.22.4-prerelease.1
@@ -2902,10 +2902,10 @@ importers:
         specifier: 6.22.4-prerelease.1
         version: link:../radio
       '@semcore/scroll-area':
-        specifier: 5.20.6-prerelease.1
+        specifier: 5.20.6-prerelease.3
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.32.6-prerelease.1
+        specifier: 4.32.6-prerelease.2
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.26.5-prerelease.1
@@ -2941,7 +2941,7 @@ importers:
         specifier: 5.19.7-prerelease.1
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.32.1-prerelease.1
+        specifier: 4.32.1-prerelease.2
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.21.0-prerelease.1
