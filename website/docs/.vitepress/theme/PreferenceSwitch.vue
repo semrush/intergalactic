@@ -57,7 +57,7 @@ function useToggleFn(
   font-weight: 700;
 }
 .option:hover:not(.highlited), .option:focus:not(.highlited) {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
   background-color: var(--vp-c-default-soft);
 }
 .divider {
