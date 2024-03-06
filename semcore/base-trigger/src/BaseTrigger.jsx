@@ -71,10 +71,10 @@ class RootBaseTrigger extends Component {
 
 function Text(props) {
   const SText = Root;
-  const { children, styles, empty, placeholder, tag } = props;
+  const { children, styles, empty, placeholder } = props;
 
   return sstyled(styles)(
-    <SText render={Box} display-placeholder={empty} tag={tag}>
+    <SText render={Box} display-placeholder={empty}>
       {empty ? placeholder : children}
     </SText>,
   );
@@ -82,8 +82,8 @@ function Text(props) {
 
 function Addon(props) {
   const SAddon = Root;
-  const { styles, tag } = props;
-  return sstyled(styles)(<SAddon render={Box} tag={tag} />);
+  const { styles } = props;
+  return sstyled(styles)(<SAddon render={Box} />);
 }
 
 const BaseTrigger = createComponent(RootBaseTrigger, {
