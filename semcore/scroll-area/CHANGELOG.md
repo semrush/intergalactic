@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.20.6-prerelease.3] - 2024-03-06
+## [5.20.6] - 2024-03-06
 
 ### Added
 
