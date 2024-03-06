@@ -121,6 +121,12 @@ class ScrollAreaRoot extends Component {
     }
   };
 
+  handleFocusIn = (e) => {
+    setTimeout(() => {
+      e.target.scrollIntoView();
+    }, 0);
+  };
+
   toggleShadow = (scroll, maxScroll, orientation) => {
     const roundedScroll = Math.round(scroll);
     const roundedMaxScroll = Math.round(maxScroll);
@@ -184,6 +190,8 @@ class ScrollAreaRoot extends Component {
     if (this.$container) {
       this.observer?.observe(this.$container);
     }
+
+    this.$inner?.addEventListener('focusin', this.handleFocusIn);
   }
 
   componentDidUpdate() {
@@ -192,6 +200,7 @@ class ScrollAreaRoot extends Component {
 
   componentWillUnmount() {
     this.observer?.disconnect();
+    this.$inner?.removeEventListener('focusin', this.handleFocusIn);
   }
 
   render() {

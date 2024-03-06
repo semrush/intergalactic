@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.6] - 2024-03-06
+
+### Added
+
+- Scroll to focused element in scroll area.
+
 ## [5.20.5] - 2024-03-01
 
 ### Changed
