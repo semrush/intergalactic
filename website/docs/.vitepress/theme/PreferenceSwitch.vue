@@ -49,9 +49,16 @@ function useToggleFn(
   font-size: 14px;
   font-weight: 500;
   padding: 4px 0;
+  width: 100%;
+  text-align: left;
+  border-radius: 6px;
 }
 .option.highlited {
   font-weight: 700;
+}
+.option:hover:not(.highlited), .option:focus:not(.highlited) {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-default-soft);
 }
 .divider {
   border-bottom: 1px solid var(--vp-c-divider);
@@ -61,6 +68,9 @@ function useToggleFn(
   font-weight: 500;
   font-size: 14px;
   color: var(--vp-code-link-color);
+}
+.details:hover {
+  text-decoration: underline;
 }
 .paddings {
   padding-left: 24px;
