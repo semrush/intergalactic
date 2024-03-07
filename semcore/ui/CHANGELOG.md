@@ -1,3 +1,21 @@
+## [15.67.1] - 2024-03-07
+
+### @semcore/animation
+
+- **Fixed** `Collapse` animation was not working with `preserveNode` prop.
+
+### @semcore/d3-chart
+
+- **Added** Logic to define X and Y axis for a11y summary in Bar charts.
+
+### @semcore/date-picker
+
+- **Fixed** Rolled back change format of `date` property in children render function of `MonthPicker` and `MonthRangePicker` components.
+
+### @semcore/scroll-area
+
+- **Added** Check that focused element is outside scroll area container before scroll to them.
+
 ## [15.67.0] - 2024-03-06
 
 ### @semcore/base-trigger
