@@ -523,7 +523,7 @@ importers:
         version: link:../divider
       '@semcore/dropdown':
         specifier: 4.19.7
-        version: link:../dropdown
+        version: 4.19.7(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.19.4
         version: link:../flex-box
@@ -630,7 +630,7 @@ importers:
         specifier: 5.19.4
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.20.5
+        specifier: 5.21.0-prerelease.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.20.5
@@ -791,7 +791,7 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.27.0
+        specifier: 4.27.1-prerelease.2
         version: link:../base-trigger
       '@semcore/button':
         specifier: 5.20.5
@@ -806,7 +806,7 @@ importers:
         specifier: 4.18.5
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.19.7
+        specifier: 4.20.0-prerelease.2
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.19.4
@@ -972,8 +972,8 @@ importers:
         specifier: 5.19.4
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.20.4
-        version: 5.20.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.21.0-prerelease.2
+        version: link:../popper
       '@semcore/utils':
         specifier: 4.20.5
         version: link:../utils
@@ -1003,7 +1003,7 @@ importers:
         specifier: ^2.17.5
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.19.7
+        specifier: 4.20.0-prerelease.2
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.19.4
@@ -1183,7 +1183,7 @@ importers:
         specifier: 4.27.1
         version: link:../icon
       '@semcore/popper':
-        specifier: 5.20.5
+        specifier: 5.21.0-prerelease.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.20.5
@@ -2220,7 +2220,7 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.27.0
+        specifier: 4.27.1-prerelease.2
         version: link:../base-trigger
       '@semcore/checkbox':
         specifier: 7.22.3
@@ -2232,7 +2232,7 @@ importers:
         specifier: 4.18.5
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.22.3
+        specifier: 4.23.0-prerelease.2
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.19.4
@@ -2650,7 +2650,7 @@ importers:
         specifier: 4.20.5
         version: link:../input
       '@semcore/select':
-        specifier: 4.32.7
+        specifier: 4.32.8-prerelease.2
         version: link:../select
       '@semcore/utils':
         specifier: 4.20.5
@@ -2684,7 +2684,7 @@ importers:
         specifier: 5.19.4
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.20.5
+        specifier: 5.21.0-prerelease.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.20.5
@@ -2746,7 +2746,7 @@ importers:
         specifier: 4.18.5
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: 4.27.0
+        specifier: 4.27.1-prerelease.2
         version: link:../base-trigger
       '@semcore/breadcrumbs':
         specifier: 5.24.3
@@ -2776,13 +2776,13 @@ importers:
         specifier: 3.18.5
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.31.2
+        specifier: 3.32.0-prerelease.2
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 4.28.2
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.30.3
+        specifier: 4.30.4-prerelease.2
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.18.5
@@ -2794,10 +2794,10 @@ importers:
         specifier: 3.27.4
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: 4.19.7
+        specifier: 4.20.0-prerelease.2
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.22.3
+        specifier: 4.23.0-prerelease.2
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.19.4
@@ -2809,7 +2809,7 @@ importers:
         specifier: 4.23.3
         version: link:../errors
       '@semcore/feature-popover':
-        specifier: 4.25.6
+        specifier: 4.26.0-prerelease.2
         version: link:../feature-popover
       '@semcore/feedback-form':
         specifier: 6.20.3
@@ -2887,7 +2887,7 @@ importers:
         specifier: 5.20.4
         version: link:../pills
       '@semcore/popper':
-        specifier: 5.20.5
+        specifier: 5.21.0-prerelease.2
         version: link:../popper
       '@semcore/portal':
         specifier: 3.17.5
@@ -2905,7 +2905,7 @@ importers:
         specifier: 5.20.7
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.32.7
+        specifier: 4.32.8-prerelease.2
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.26.6
@@ -2941,10 +2941,10 @@ importers:
         specifier: 5.19.7
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.32.2
+        specifier: 4.32.3-prerelease.2
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: 6.21.1
+        specifier: 6.22.0-prerelease.2
         version: link:../tooltip
       '@semcore/typography':
         specifier: 5.26.4
@@ -8277,6 +8277,21 @@ packages:
       '@semcore/core': link:semcore/core
       '@semcore/flex-box': 5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/portal': 3.17.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@semcore/dropdown@4.19.7(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-HsH5xkALSo9ASiZBx88OOS7G8+Nv/gNH76olf4hoVtGazxjXztim1xO7flC/AUblrP8N11UaBoXI8PT5hwmhJw==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/popper': 5.20.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)

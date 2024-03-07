@@ -1,3 +1,13 @@
+## [15.68.0-prerelease.0] - 2024-03-07
+
+### @semcore/base-trigger
+
+- **Fixed** Behavior in forms was broken.
+
+### @semcore/popper
+
+- **Fixed** In controlled mode popper was infinitely returning focus to trigger on close attempt.
+
 ## [15.67.1] - 2024-03-07
 
 ### @semcore/animation
