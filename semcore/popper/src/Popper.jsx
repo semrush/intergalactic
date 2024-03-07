@@ -433,6 +433,7 @@ function Trigger(props) {
       setTimeout(() => {
         if (activeRef.current) return;
         if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
+        if (focusSourceRef.current !== 'keyboard') return;
 
         setFocus(triggerRef.current);
       }, 1);
