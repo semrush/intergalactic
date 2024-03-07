@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Check that element is outside scroll area container before focus to them.
+- Check that focused element is outside scroll area container before scroll to them.
 
 ## [5.20.6] - 2024-03-06
 
