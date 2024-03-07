@@ -1,6 +1,18 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
+import {
+  Bar,
+  ResponsiveContainer,
+  XAxis,
+  Plot,
+  YAxis,
+  makeDataHintsContainer,
+} from '@semcore/ui/d3-chart';
+
+const dataHintsContainer = makeDataHintsContainer();
+
+dataHintsContainer.fields.horizontalAxes.add('date_chart');
+dataHintsContainer.fields.verticalAxes.add('download');
 
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);
@@ -25,14 +37,23 @@ const Demo = () => {
 
   return (
     <ResponsiveContainer h={300} onResize={setSize}>
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Plot
+        data={data}
+        scale={[xScale, yScale]}
+        width={width}
+        height={height}
+        dataHints={dataHintsContainer}
+      >
         <YAxis ticks={yScale.ticks(4)}>
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
         <XAxis>
           <XAxis.Ticks>
-            {({ value, index }) => ({ children: index % 2 === 0 ? getDate(value) : '' })}
+            {({ value, index }) => ({
+              children: index % 2 === 0 ? getDate(value) : '',
+              value: getDate(value), // need this for correct a11y summary text
+            })}
           </XAxis.Ticks>
         </XAxis>
         <Bar x='date_chart' y='download' />
