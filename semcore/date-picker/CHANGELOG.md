@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.3] - 2024-03-07
+
+### Fixed
+
+- Rolled back change format of `date` property in children render function of `MonthPicker` and `MonthRangePicker` components.
+
 ## [4.30.2] - 2024-03-05
 
 ### Changed
