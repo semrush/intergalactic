@@ -7,26 +7,23 @@ tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('di
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import Divider from 'intergalactic/divider'; 
-import { Flex } from 'intergalactic/flex-box'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import React from 'react';
+import Divider from 'intergalactic/divider';
+import { Flex } from 'intergalactic/flex-box';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const USE = ['primary', 'secondary']; 
-const THEMES = ['default', 'invert']; 
-const ORIENTATIONS = ['horizontal', 'vertical']; 
+const USE = ['primary', 'secondary'];
+const THEMES = ['default', 'invert'];
+const ORIENTATIONS = ['horizontal', 'vertical'];
 
 const LayoutPreview = (props) => (
   <Flex justifyContent='center' alignItems='center' w={200} h={100} p={5}>
-
     {props.children}
-
   </Flex>
-); 
+);
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-
     const { radio } = createGroupWidgets('Divider');
 
     const use = radio({
@@ -51,10 +48,9 @@ const App = PlaygroundGeneration(
     });
 
     return <Divider use={use} theme={theme} wMin={200} orientation={orientation} />;
-
-  }, 
-  { LayoutPreview }, 
-); 
+  },
+  { LayoutPreview },
+);
 </script>
 
 :::
@@ -65,14 +61,14 @@ const App = PlaygroundGeneration(
 
 ## Types
 
-Divider has two types: `primary` and `secondary` . Secondary type helps to separate and show the connection between two parts of the content.
+Divider has two types: `primary` and `secondary`. Secondary type helps to separate and show the connection between two parts of the content.
 
 Table: Divider types
 
 | Type       | Appearance              | Styles                                      |
 | ---------- | ----------------------- | ------------------------------------------- |
-| `primary` | ![](static/solid.png)   | `border: 1px solid var(--border-primary)` |
-| `secondary` | ![](static/dashed.png)  | `border: 1px dashed var(--border-primary)` |
+| `primary`  | ![](static/solid.png)   | `border: 1px solid var(--border-primary)`   |
+| `secondary`| ![](static/dashed.png)  | `border: 1px dashed var(--border-primary)`  |
 
 ## Orientation
 
@@ -91,8 +87,8 @@ Table: Divider themes
 
 | Theme   | Appearance                   | Styles                                            |
 | ------- | ---------------------------- | ------------------------------------------------- |
-| Default | ![](static/default-theme.png) | `border: 1px solid var(--border-primary)` |
-| Invert  | ![](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert)` |
+| Default | ![](static/default-theme.png) | `border: 1px solid var(--border-primary)`        |
+| Invert  | ![](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert)`|
 
 ## Usage in UX/UI
 
@@ -104,3 +100,4 @@ Table: Divider usage
 | ------- | -------------------------------- |
 | Contact information needs to be visually separated from the form.                                                        | ![](static/use-1.png) |
 | Separate information about a report's data visually from the form, but maintain its connection to the form. | ![](static/use-2.png) |
+

@@ -12,7 +12,7 @@ import NoticeGlobal from 'intergalactic/notice-global';
 
 <TypesView type="NoticeGlobalProps" :types={...types} />
 
-## NoticeGlobal. Content
+## NoticeGlobal.Content
 
 The component is inherited from `Box` and is used to insert content in the notification.
 
@@ -21,7 +21,7 @@ import NoticeGlobal from 'intergalactic/notice';
 <NoticeGlobal.Content />;
 ```
 
-## NoticeGlobal. CloseIcon
+## NoticeGlobal.CloseIcon
 
 The component is inherited from `Box` and is used to insert the close cross.
 
@@ -30,4 +30,4 @@ import NoticeGlobal from 'intergalactic/notice';
 <NoticeGlobal.CloseIcon />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

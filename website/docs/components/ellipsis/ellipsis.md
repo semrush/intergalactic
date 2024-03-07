@@ -7,43 +7,36 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import Ellipsis from 'intergalactic/ellipsis'; 
-import { Box } from 'intergalactic/flex-box'; 
-import { Text } from '@semcore/typography'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import React from 'react';
+import Ellipsis from 'intergalactic/ellipsis';
+import { Box } from 'intergalactic/flex-box';
+import { Text } from '@semcore/typography';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration((preview) => {
-  const { radio, text } = preview('Dropdown'); 
+  const { radio, text } = preview('Dropdown');
 
   const trim = radio({
-
     key: 'trim',
     defaultValue: 'end',
     label: 'Trimming type',
     options: ['end', 'middle'],
-
-  }); 
+  });
 
   const tooltip = radio({
-
     key: 'tooltip',
     defaultValue: true,
     label: 'Show tooltip',
     options: [true, false],
-
-  }); 
+  });
 
   const maxLine = text({
-
     key: 'maxLine',
     defaultValue: 1,
     label: 'Rows count in multiline mode',
-
-  }); 
+  });
 
   return (
-
     <Box w={400}>
       <Ellipsis trim={trim} tooltip={tooltip} maxLine={maxLine}>
         <Text>
@@ -55,9 +48,8 @@ const App = PlaygroundGeneration((preview) => {
         </Text>
       </Ellipsis>
     </Box>
-
-  ); 
-}); 
+  );
+});
 </script>
 
 :::
@@ -68,24 +60,24 @@ const App = PlaygroundGeneration((preview) => {
 
 **Use this component in the following situations:**
 
-* You need to keep the text from wrapping to a new line.
-* You need to truncate the text at a certain line.
-* The text is user-entered or dynamic and it's difficult to know how much space to allocate, for example, for [InlineInput](/components/inline-input/inline-input) width.
+- You need to keep the text from wrapping to a new line.
+- You need to truncate the text at a certain line.
+- The text is user-entered or dynamic and it's difficult to know how much space to allocate, for example, for [InlineInput](/components/inline-input/inline-input) width.
 
 **Avoid the following:**
 
-* Truncating an error or validation message, or other notifications.
-* Hiding content when there is enough space for it.
-* Using the ellipsis component as a punctuation mark at the end of a sentence.
+- Truncating an error or validation message, or other notifications.
+- Hiding content when there is enough space for it.
+- Using the ellipsis component as a punctuation mark at the end of a sentence.
 
 ## Appearance
 
-To include an ellipsis, use `…` (HTML symbol `&hellip;` ).
+To include an ellipsis, use `…` (HTML symbol `&hellip;`).
 
 **Shortcuts:**
 
-* OS X: `Opt + ;`
-* Win: `alt + 0133`
+- OS X: `Opt + ;`
+- Win: `alt + 0133`
 
 ## Types
 
@@ -95,16 +87,8 @@ Table: Ellipsis types
 
 | Type     | Appearance example                                                                                                       | Description                                                                                                                                                                                                                                                           |
 | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `End` | 
-
-![](static/ellipsis-end.png) ![ellipsis at the end with tooltip](static/ellipsis-end-tooltp.png)
-
-      | Truncates the end of the text string. It's the most common case. Use an ellipsis at the end of a text string or paragraph to indicate that there is more content, or to shorten a long text string.                                                                   |
-| `Middle` | 
-
-![](static/ellipsis-middle.png) ![ellipsis at the middle with tooltip](static/ellipsis-middle-tooltp.png)
-
- | Truncates the middle of the text string. Use when several text strings have different beginnings and/or endings but the exact same middle characters. Can also be used to shorten a phrase or text string when the end of a string can't be truncated by an ellipsis. |
+| `End`    | ![](static/ellipsis-end.png) ![ellipsis at the end with tooltip](static/ellipsis-end-tooltp.png)      | Truncates the end of the text string. It's the most common case. Use an ellipsis at the end of a text string or paragraph to indicate that there is more content, or to shorten a long text string.                                                                   |
+| `Middle` | ![](static/ellipsis-middle.png) ![ellipsis at the middle with tooltip](static/ellipsis-middle-tooltp.png) | Truncates the middle of the text string. Use when several text strings have different beginnings and/or endings but the exact same middle characters. Can also be used to shorten a phrase or text string when the end of a string can't be truncated by an ellipsis. |
 
 ## Tooltip
 
@@ -147,3 +131,4 @@ To show more data in a limited space you can truncate the [Card](/components/car
 To show more data in a limited space you can truncate paragraphs at the end. In this case, a tooltip with the full paragraph on hover is unnecessary.
 
 ![](static/ellipsis-pharagraph.png)
+

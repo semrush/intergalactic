@@ -9,7 +9,7 @@ import FigmaM from '@semcore/icon/color/Figma/m';
 import GitHubM from '@semcore/icon/color/GitHub/m';
 import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
 import EditM from '@semcore/icon/Edit/m';
-import WarningM from 'intergalactic/icon/Warning/m';
+import WarningM from '@semcore/icon/Warning/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
 import RouterLink from './RouterLink';

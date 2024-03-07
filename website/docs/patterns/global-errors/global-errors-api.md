@@ -14,27 +14,27 @@ import Error from 'intergalactic/errors';
 
 <TypesView type="ErrorsProps" :types={...types} />
 
-## Error. Title
+## Error.Title
 
-Error name. Extends for `<Box/>` .
+Error name. Extends for `<Box/>`.
 
 ```jsx
 import Error from 'intergalactic/errors';
 <Error.Title />;
 ```
 
-## Error. Description
+## Error.Description
 
-Error description. Extends for `<Box/>` .
+Error description. Extends for `<Box/>`.
 
 ```jsx
 import Error from 'intergalactic/errors';
 <Error.Description />;
 ```
 
-## Error. Controls
+## Error.Controls
 
-Container for controls. Extends for `<Box/>` .
+Container for controls. Extends for `<Box/>`.
 
 ```jsx
 import Error from 'intergalactic/errors';
@@ -96,4 +96,4 @@ import { ProjectNotFound } from 'intergalactic/errors';
 
 <TypesView type="ProjectNotFoundProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

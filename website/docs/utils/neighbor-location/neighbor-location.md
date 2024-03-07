@@ -22,9 +22,9 @@ neighbors.
 
 For example, you can group together:
 
-* [Button](/components/button/button)
-* [Input](/components/input/input)
-* [Select](/components/select/select)
+- [Button](/components/button/button)
+- [Input](/components/input/input)
+- [Select](/components/select/select)
 
 You may also need a `flex-box` to align the components. For more information, see
 the [Flex-box and indent system](/layout/box-system/box-system).
@@ -48,7 +48,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouped-buttons.tsx'; 
+  export Demo from './examples/grouped-buttons.tsx';
 </script>
 
 :::
@@ -58,7 +58,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouped-input-and-button.tsx'; 
+  export Demo from './examples/grouped-input-and-button.tsx';
 </script>
 
 :::
@@ -68,7 +68,7 @@ Don’t group tertiary buttons this way.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouped-input-and-select.tsx'; 
+  export Demo from './examples/grouped-input-and-select.tsx';
 </script>
 
 :::
@@ -82,7 +82,7 @@ You can group input, select, and button.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouped-input, -select, -and-button.tsx'; 
+  export Demo from './examples/grouped-input,-select,-and-button.tsx';
 </script>
 
 :::
@@ -93,14 +93,13 @@ By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pa
 
 ::: tip
 For the correct type mapping in the TC, you must also pass the interface.
- `<NeighborLocation<FlexProps> tag={Flex} w={200}/>`
-
+`<NeighborLocation<FlexProps> tag={Flex} w={200}/>`
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/adding-a-wrapper.tsx'; 
+  export Demo from './examples/adding-a-wrapper.tsx';
 </script>
 
 :::
@@ -108,7 +107,6 @@ For the correct type mapping in the TC, you must also pass the interface.
 ## Using a custom component
 
 You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>`
-
 and
 then the `neighborLocation` prop will come to your component.
 
@@ -119,7 +117,8 @@ You can use the render function or the element will be cloned.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/using-a-custom-component.tsx'; 
+  export Demo from './examples/using-a-custom-component.tsx';
 </script>
 
 :::
+

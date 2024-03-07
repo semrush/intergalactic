@@ -77,6 +77,7 @@ const rootPath = resolvePath(__dirname, '../../..');
 
 export const resolveSemcoreSources = async (path) => {
   if (path.startsWith('@semcore/ui/')) path = `@semcore/${path.substring('@semcore/ui/'.length)}`;
+  if (path.startsWith('intergalactic/')) path = `@semcore/${path.substring('intergalactic/'.length)}`;
   const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
   const componentName = path.split('/')[1];
   const subPath = path.split('/').slice(2).join('/');

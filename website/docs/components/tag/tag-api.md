@@ -8,29 +8,29 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 <TypesView type="TagProps" :types={...types} />
 
-## Tag. Addon
+## Tag.Addon
 
 The addon inside the tag (most commonly an icon) sets the correct indents depending on the size.
 
-It takes all the properties of the `Box` .
+It takes all the properties of the `Box`.
 
 ```jsx
 import Tag from 'intergalactic/tag';
 <Tag.Addon />;
 ```
 
-## Tag. Text
+## Tag.Text
 
 This ordinary text sets the appropriate indents depending on the size. If a simple text without addons is used in the Tag, it will turn into `Tag.Text` automatically.
 
-It takes all the properties of the `Box` .
+It takes all the properties of the `Box`.
 
 ```jsx
 import Tag from 'intergalactic/tag';
 <Tag.Text />;
 ```
 
-## Tag. Close
+## Tag.Close
 
 Cross icon automatically adjusts to the selected theme and size.
 
@@ -41,7 +41,7 @@ import Tag from 'intergalactic/tag';
 <Tag.Close />;
 ```
 
-## Tag. Circle
+## Tag.Circle
 
 A special addon for round elements inside a tag (most often a picture) places the correct indents depending on the size.
 
@@ -52,4 +52,4 @@ import Tag from 'intergalactic/tag';
 <Tag.Circle />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

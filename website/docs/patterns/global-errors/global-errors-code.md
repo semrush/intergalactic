@@ -10,7 +10,7 @@ Both graphics and texts are already included in ready-to-use templates. The loca
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example-of-using-templates.tsx'; 
+  export Demo from './examples/example-of-using-templates.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ You can create any error page. In the `Error` package, you will find the `getIco
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example-of-using-a-custom-error.tsx'; 
+  export Demo from './examples/example-of-using-a-custom-error.tsx';
 </script>
 
 :::

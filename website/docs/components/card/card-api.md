@@ -5,32 +5,32 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 
 ## Card
 
-It's just a `Box` .
+It's just a `Box`.
 
 ```jsx
 import Card from 'intergalactic/card';
 <Card />;
 ```
 
-## Card. Header
+## Card.Header
 
-It's just a `Box` , with pre-installed paddings. Contains `Card.Title` and `Card.Description` .
+It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
 
 ```jsx
 import Card from 'intergalactic/card';
 <Card.Header />;
 ```
 
-## Card. Body
+## Card.Body
 
-It's just a `Box` , with pre-installed paddings.
+It's just a `Box`, with pre-installed paddings.
 
 ```jsx
 import Card from 'intergalactic/card';
 <Card.Body />;
 ```
 
-## Card. Title
+## Card.Title
 
 The card title is able to display the tip.
 
@@ -41,7 +41,7 @@ import Card from 'intergalactic/card';
 
 <TypesView type="TitleProps" :types={...types} />
 
-## Card. Description
+## Card.Description
 
 Has all properties as the [Text](/style/typography/typography-api#a9dffb).
 
@@ -50,4 +50,4 @@ import Card from 'intergalactic/card';
 <Card.Description />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

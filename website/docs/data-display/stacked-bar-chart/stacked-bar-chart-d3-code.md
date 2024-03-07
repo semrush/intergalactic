@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx'; 
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::
@@ -26,24 +26,24 @@ Use `scaleBand` and `scaleLinear` for creating bar charts. See [d3 Ordinal Scale
 
 ## Stacked bar chart
 
-To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>` .
+To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/stacked-bar-chart.tsx'; 
+  export Demo from './examples/stacked-bar-chart.tsx';
 </script>
 
 :::
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx'; 
+  export Demo from './examples/legend-and-pattern-fill.tsx';
 </script>
 
 :::

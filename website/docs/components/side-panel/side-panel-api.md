@@ -13,7 +13,7 @@ import SidePanel from 'intergalactic/side-panel';
 
 <TypesView type="SidePanelProps" :types={...types} />
 
-## SidePanel. Overlay
+## SidePanel.Overlay
 
 ```jsx
 import SidePanel from 'intergalactic/side-panel';
@@ -22,7 +22,7 @@ import SidePanel from 'intergalactic/side-panel';
 
 This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
 
-## SidePanel. Panel
+## SidePanel.Panel
 
 ```jsx
 import SidePanel from 'intergalactic/side-panel';
@@ -33,7 +33,7 @@ This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) and [FocusLock]
 
 <TypesView type="SidePanelPanelProps" :types={...types} />
 
-## SidePanel. Close
+## SidePanel.Close
 
 ```jsx
 import SidePanel from 'intergalactic/side-panel';
@@ -42,4 +42,4 @@ import SidePanel from 'intergalactic/side-panel';
 
 This is a wrap over the [Box](/layout/box-system/box-api#a3cfce) component.
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

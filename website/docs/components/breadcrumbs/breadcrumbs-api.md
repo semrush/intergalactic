@@ -14,7 +14,7 @@ import Breadcrumbs from 'intergalactic/breadcrumbs';
 
 <TypesView type="BreadcrumbsProps" :types={...types} />
 
-## Breadcrumbs. Item
+## Breadcrumbs.Item
 
 A page in a hierarchical navigation structure, with the `a` tag by default, if inactive. **The active item is usually the last one in the link hierarchy**.
 
@@ -25,4 +25,4 @@ import Breadcrumbs from 'intergalactic/breadcrumbs';
 
 <TypesView type="BreadcrumbsItemProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

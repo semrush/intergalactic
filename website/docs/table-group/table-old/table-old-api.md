@@ -12,7 +12,7 @@ import Table from 'intergalactic/table';
 
 <TypesView type="TableProps" :types={...types} />
 
-## Table. Row
+## Table.Row
 
 ```jsx
 import Table from 'intergalactic/table';
@@ -21,7 +21,7 @@ import Table from 'intergalactic/table';
 
 <TypesView type="TableRowProps" :types={...types} />
 
-## Table. Cell
+## Table.Cell
 
 ```jsx
 import Table from 'intergalactic/table';
@@ -30,7 +30,7 @@ import Table from 'intergalactic/table';
 
 <TypesView type="TableCellRowProps" :types={...types} />
 
-## Table. CellHead
+## Table.CellHead
 
 ```jsx
 import Table from 'intergalactic/table';
@@ -39,7 +39,7 @@ import Table from 'intergalactic/table';
 
 <TypesView type="TableCellHeadProps" :types={...types} />
 
-## Table. StickyHead
+## Table.StickyHead
 
 ```jsx
 import Table from 'intergalactic/table';
@@ -51,4 +51,4 @@ import Table from 'intergalactic/table';
 
 <TypesView type="StickyHeadProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

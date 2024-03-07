@@ -14,7 +14,7 @@ import Breakpoints from 'intergalactic/breakpoints';
 <Breakpoints />;
 ```
 
-## Breakpoints. Context
+## Breakpoints.Context
 
 Is the React context.
 

@@ -12,22 +12,22 @@ import InputMask from 'intergalactic/input-mask';
 
 The API is the same as [Input](/components/input/input-api).
 
-## InputMask. Value
+## InputMask.Value
 
 ```js
-import InputMask from 'intergalactic/input-mask'; <
-InputMask.Value / > ;
+import InputMask from 'intergalactic/input-mask';
+<InputMask.Value />;
 ```
 
 <TypesView type="InputMaskValueProps" :types={...types} />
 
-## InputMask. Addon
+## InputMask.Addon
 
 ```js
-import InputMask from 'intergalactic/input-mask'; <
-InputMask.Addon / > ;
+import InputMask from 'intergalactic/input-mask';
+<InputMask.Addon />;
 ```
 
-The API is the same as [Input. Addon](/components/input/input-api).
+The API is the same as [Input.Addon](/components/input/input-api).
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

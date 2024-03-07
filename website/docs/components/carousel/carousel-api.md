@@ -12,16 +12,16 @@ import Carousel from 'intergalactic/carousel';
 
 <TypesView type="CarouselProps" :types={...types} />
 
-## Carousel. Container
+## Carousel.Container
 
-`Carousel.Container` is a wrap over `Carousel.Item` . `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
+`Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
 ```jsx
 import Carousel from 'intergalactic/carousel';
 <Carousel.Container />;
 ```
 
-## Carousel. Item
+## Carousel.Item
 
 `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
@@ -30,7 +30,7 @@ import Carousel from 'intergalactic/carousel';
 <Carousel.Item />;
 ```
 
-## Carousel. Indicators
+## Carousel.Indicators
 
 Component view for default dots. It doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
@@ -39,7 +39,7 @@ import Carousel from 'intergalactic/carousel';
 <Carousel.Indicators />;
 ```
 
-## Carousel. Prev, Carousel. Next
+## Carousel.Prev, Carousel.Next
 
 Component view for default Chevron icons. It doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
@@ -49,4 +49,4 @@ import Carousel from 'intergalactic/carousel';
 <Carousel.Next />
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

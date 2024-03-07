@@ -12,14 +12,12 @@ Please note that histogram chart and [bar chart](/data-display/bar-chart/bar-cha
 
 ## D3 API
 
-## Chart. Histogram
+## Chart.Histogram
 
 For Horizontal view, you should pass `true` into `invertAxis` prop
 
 ```js
-import {
-    Chart
-} from 'intergalactic/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="HistogramChartProps" :types={...types} />
@@ -28,4 +26,4 @@ import {
 
 All properties for the histogram chart developed with D3 you can find in the [bar chart guide](/data-display/bar-chart/bar-chart-api).
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

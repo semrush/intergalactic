@@ -16,7 +16,7 @@ Example of the table with [Accordion](/components/accordion/accordion).
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-with-accordion.tsx'; 
+  export Demo from './examples/table-with-accordion.tsx';
 </script>
 
 :::
@@ -26,7 +26,7 @@ Example of the table with [Accordion](/components/accordion/accordion).
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-with-fixed-header.tsx'; 
+  export Demo from './examples/table-with-fixed-header.tsx';
 </script>
 
 :::
@@ -38,7 +38,7 @@ You can use secondary table for compact displaying small amount of data inside w
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/secondary-table.tsx'; 
+  export Demo from './examples/secondary-table.tsx';
 </script>
 
 :::
@@ -48,7 +48,7 @@ You can use secondary table for compact displaying small amount of data inside w
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-with-skeleton.tsx'; 
+  export Demo from './examples/table-with-skeleton.tsx';
 </script>
 
 :::
@@ -60,7 +60,8 @@ These states for widgets are described in detail in [Widget empty state](/compon
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-with-no-data.tsx'; 
+  export Demo from './examples/table-with-no-data.tsx';
 </script>
 
 :::
+

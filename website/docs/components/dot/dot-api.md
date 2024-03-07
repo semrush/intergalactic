@@ -13,4 +13,4 @@ import Dot from 'intergalactic/dot';
 
 <TypesView type="DotProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

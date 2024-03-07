@@ -14,13 +14,13 @@ Charts are a complex component that cannot be applied in a single line. That's w
 
 ## Concept
 
-* We want to provide you with a convenient way to use the imperative d3 style with React's declarative approach.
-* All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
-* We try to provide access to each SVG node, so you could modify it if needed.
+- We want to provide you with a convenient way to use the imperative d3 style with React's declarative approach.
+- All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
+- We try to provide access to each SVG node, so you could modify it if needed.
 
-Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>` , you will get an SVG ( `<line d = {...}>` ). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
+Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
 
-When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>` . So all properties you pass to <Line. Dots/> will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
+When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>`. So all properties you pass to <Line.Dots/> will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
 
 For a point change in the properties of each specific dot, you need to pass a function that will be called at each dot with the calculated properties of this dot:
 
@@ -38,7 +38,7 @@ For a point change in the properties of each specific dot, you need to pass a fu
 You also can put functions into single elements if your properties are calculated dynamically.
 :::
 
-Since many SVG elements don't support nesting, they are rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>` , but draws them one after another:
+Since many SVG elements don't support nesting, they are rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
 
 ```jsx
 <Line>
@@ -52,7 +52,7 @@ CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/d
 
 Any SVG container must have absolute values for its size.
 
-See [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale` , as well as their `range` and `domain` .
+See [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as their `range` and `domain`.
 
 ::: tip
 The `range` of the horizontal `scale` is inverted, so that the axes origin is at the bottom left corner.
@@ -61,7 +61,7 @@ The `range` of the horizontal `scale` is inverted, so that the axes origin is at
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/base.tsx'; 
+  export Demo from './examples/base.tsx';
 </script>
 
 :::
@@ -75,7 +75,7 @@ That's why values in `scale.range ()` are set with a shift.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/paddings-&-margins.tsx'; 
+  export Demo from './examples/paddings-&-margins.tsx';
 </script>
 
 :::
@@ -84,21 +84,21 @@ That's why values in `scale.range ()` are set with a shift.
 
 When you pass `scale` to the root component it also sets the coordinate axes. However, you still need to specify them for them to render.
 
-* `XAxis/YAxis` are the axis lines.
-* `ticks` are the values on the axis.
+- `XAxis/YAxis` are the axis lines.
+- `ticks` are the values on the axis.
 
 It is also possible to have multiple axes with different positions.
 
 You can get the number of ticks from the `scale.ticks` or `scale.domain` method. To calculate an approximate number of ticks, divide the chart size by the size of a one tick.
 
 ::: tip
-According to the design guide, `YAxis` is hidden by default `(hide = true)` .
+According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/axes.tsx'; 
+  export Demo from './examples/axes.tsx';
 </script>
 
 :::
@@ -107,7 +107,7 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)` .
 
 You can change the values and properties on the axis by passing a function.
 
-The default tag is `<text/>` , but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
+The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
 
 ::: tip
 The function arguments contain calculated XY coordinates that you can use to shift the object as needed.
@@ -116,7 +116,7 @@ The function arguments contain calculated XY coordinates that you can use to shi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/axis-values.tsx'; 
+  export Demo from './examples/axis-values.tsx';
 </script>
 
 :::
@@ -126,13 +126,13 @@ The function arguments contain calculated XY coordinates that you can use to shi
 Additional lines are formed in the same way as ticks.
 
 ::: tip
-To make things easier, ticks can be specified on the `Axis` component itself, and it will be automatically passed to `<Axis.Ticks/>` and `<Axis.Grid/>` .
+To make things easier, ticks can be specified on the `Axis` component itself, and it will be automatically passed to `<Axis.Ticks/>` and `<Axis.Grid/>`.
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional-lines.tsx'; 
+  export Demo from './examples/additional-lines.tsx';
 </script>
 
 :::
@@ -142,26 +142,26 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 Axis titles are formed in the same way as ticks and additional lines.
 
 ::: tip
-By default, the title is set to the right for the Oy axis, and at the top for the Ox axis. However, you can change this condition by passing the desired location to `position` : `right` , `top` , `left` , or `bottom` .
+By default, the title is set to the right for the Oy axis, and at the top for the Ox axis. However, you can change this condition by passing the desired location to `position`: `right`, `top`, `left`, or `bottom`.
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-import { Bar, XAxis, Plot, YAxis } from 'intergalactic/d3-chart'; 
-  export Demo from './examples/axes-titles.tsx'; 
+import { Bar, XAxis, Plot, YAxis } from 'intergalactic/d3-chart';
+  export Demo from './examples/axes-titles.tsx';
 </script>
 
 :::
 
 ## Tooltip
 
-You can add a tooltip to the chart, for which you can set `Title` and `Footer` .
+You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip.tsx'; 
+  export Demo from './examples/tooltip.tsx';
 </script>
 
 :::
@@ -181,7 +181,7 @@ For SVG charts to display correctly on responsive layouts, you need to dynamical
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/adaptive-chart.tsx'; 
+  export Demo from './examples/adaptive-chart.tsx';
 </script>
 
 :::
@@ -193,7 +193,7 @@ Refer to [Chart legend](/data-display/chart-legend/chart-legend), for a guide on
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/chart-legend.tsx'; 
+  export Demo from './examples/chart-legend.tsx';
 </script>
 
 :::
@@ -203,7 +203,7 @@ Refer to [Chart legend](/data-display/chart-legend/chart-legend), for a guide on
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/reference-line.tsx'; 
+  export Demo from './examples/reference-line.tsx';
 </script>
 
 :::
@@ -219,7 +219,7 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/synchronous-charts.tsx'; 
+  export Demo from './examples/synchronous-charts.tsx';
 </script>
 
 :::
@@ -229,7 +229,7 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/export-to-image.tsx'; 
+  export Demo from './examples/export-to-image.tsx';
 </script>
 
 :::
@@ -247,7 +247,7 @@ To enable visual patterns on chart, simply add `pattern` prop to the chart compo
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/pattern-fill.tsx'; 
+  export Demo from './examples/pattern-fill.tsx';
 </script>
 
 :::
@@ -284,7 +284,7 @@ You can enforce use of build-in patterns by using it's names. The list of availa
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/enforcing-patterns.tsx'; 
+  export Demo from './examples/enforcing-patterns.tsx';
 </script>
 
 :::
@@ -298,22 +298,19 @@ The fill data is used for rendering charts like an `Area` while symbol data is n
 ::: sandbox 
 
 <script  lang="tsx">
-import React from 'react'; 
-import { Chart, Pattern } from 'intergalactic/d3-chart'; 
+import React from 'react';
+import { Chart, Pattern } from 'intergalactic/d3-chart';
 
 const customPattern: Pattern = {
   fill: {
-
     viewBox: '0 0 21 20',
     children: (
       <>
         <path d='M9.17 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .951.69h3.461c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.839-.197-1.54-1.118l1.07-3.292a1 1 0 0 0-.363-1.118L3.1 8.72c-.784-.57-.381-1.81.587-1.81H7.15a1 1 0 0 0 .95-.69l1.07-3.292Z' />
       </>
     ),
-
-  }, 
+  },
   symbol: {
-
     viewBox: '0 0 33 32',
     size: [16.41, 15.66],
     children: (
@@ -321,13 +318,11 @@ const customPattern: Pattern = {
         <path d='M15.049.927c.3-.921 1.603-.921 1.902 0l2.866 8.82a1 1 0 0 0 .95.69h9.274c.97 0 1.372 1.24.588 1.81l-7.502 5.45a1 1 0 0 0-.364 1.119l2.866 8.82c.3.92-.755 1.687-1.539 1.117l-7.502-5.45a1 1 0 0 0-1.176 0l-7.502 5.45c-.784.57-1.838-.196-1.54-1.118l2.867-8.82a1 1 0 0 0-.364-1.117l-7.502-5.451c-.784-.57-.381-1.81.588-1.81h9.273a1 1 0 0 0 .951-.69L15.05.927Z' />
       </>
     ),
-
-  }, 
+  },
 }
 
 const Demo = () => {
   return (
-
     <Chart.Line
       data={data}
       plotWidth={500}
@@ -338,18 +333,15 @@ const Demo = () => {
       showDots
       showTooltip
     />
-
-  ); 
-}; 
+  );
+};
 
 const data = Array(20)
   .fill({})
   .map((d, i) => ({
-
     x: i,
     y1: Math.random() * 10,
-
-  })); 
+  }));
 </script>
 
 :::
@@ -359,7 +351,7 @@ You can also provide a list of patterns.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-patterns.tsx'; 
+  export Demo from './examples/custom-patterns.tsx';
 </script>
 
 :::
@@ -375,7 +367,8 @@ You can access `PatternFill` and `PatternSymbol` components for low level use.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/low-level-components-use.tsx'; 
+  export Demo from './examples/low-level-components-use.tsx';
 </script>
 
 :::
+

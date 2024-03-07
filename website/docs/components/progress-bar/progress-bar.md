@@ -7,26 +7,23 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import ProgressBar from 'intergalactic/progress-bar'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import React from 'react';
+import ProgressBar from 'intergalactic/progress-bar';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const SIZES = ['l', 'm', 's']; 
+const SIZES = ['l', 'm', 's'];
 
 const Preview = (preview) => {
-  const { radio, text, select } = preview('ProgressBar'); 
+  const { radio, text, select } = preview('ProgressBar');
 
   const size = radio({
-
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
     options: SIZES,
-
-  }); 
+  });
 
   const theme = select({
-
     key: 'theme',
     defaultValue: 'invert',
     label: 'Theme',
@@ -40,29 +37,24 @@ const Preview = (preview) => {
         value: 'dark',
       },
     ],
-
-  }); 
+  });
 
   const duration = text({
-
     key: 'duration',
     defaultValue: 1000,
     label: 'Duration',
-
-  }); 
+  });
 
   const value = text({
-
     key: 'value',
     defaultValue: 50,
     label: 'Value',
+  });
 
-  }); 
+  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} />;
+};
 
-  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} />; 
-}; 
-
-const App = PlaygroundGeneration(Preview, {filterProps: ['w']}); 
+const App = PlaygroundGeneration(Preview, {filterProps: ['w']});
 </script>
 
 :::
@@ -79,7 +71,7 @@ In general, the progress bar doesn't obstruct the functionality of the product. 
 
 ## Component composition
 
-ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value` .
+ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value`.
 
 ![](static/progressbar-composition.png)
 
@@ -91,20 +83,20 @@ Table: ProgressBar sizes and styles
 
 | Size (height in px) | Appearance example   | Border-radius token     | Where to use        |
 | ------------------- | -------------------- | ----------------------- | ------------------- |
-| S (4px)    | ![](static/size-s.png) | `--rounded-medium` | Use in widgets inside reports/products.                               |
-| M (8px)    | ![](static/size-m.png) | `--rounded-medium` | Use inside the product.                                               |
+| S (4px)    | ![](static/size-s.png) | `--rounded-medium`  | Use in widgets inside reports/products.                               |
+| M (8px)    | ![](static/size-m.png) | `--rounded-medium`  | Use inside the product.                                               |
 | L (12px)    | ![](static/size-l.png) | `--rounded-medium` | Use in modal windows or the start screen. |
 
 ## Themes
 
-ProgressBar offers two themes: `dark` and `invert` , which are suitable for light and dark/colored backgrounds respectively. Both themes use the `--progress-bar-value` token for color with a gradient pattern to indicate progress.
+ProgressBar offers two themes: `dark` and `invert`, which are suitable for light and dark/colored backgrounds respectively. Both themes use the `--progress-bar-value` token for color with a gradient pattern to indicate progress.
 
 Table: ProgressBar themes
 
 | Theme  | Appearance example       | Background token            |
 | ------ | ------------------------ | --------------------------- |
-| Invert | ![](static/size-l.png)   | `--progress-bar-bg` |
-| Dark   | ![](static/dark-theme.png) | `--progress-bar-bg-invert` |
+| Invert | ![](static/size-l.png)   | `--progress-bar-bg`         |
+| Dark   | ![](static/dark-theme.png) | `--progress-bar-bg-invert`|
 
 ## ProgressBar with counter
 
@@ -136,15 +128,15 @@ If it isn’t possible to perform the action immediately, display the success st
 
 ### Animation
 
-The progress value is always animated with `ease-in` .
+The progress value is always animated with `ease-in`.
 
 ## Usage in UX/UI
 
 ### When to use ProgressBar
 
-* To visualize a long process that doesn't block working with data.
-* When you need to visualize a short process, but it is essential to show how much is left until the end of the process, such as uploading multiple files.
-* If the process is long and blocks working with data, but the user needs to know when the process will end.
+- To visualize a long process that doesn't block working with data.
+- When you need to visualize a short process, but it is essential to show how much is left until the end of the process, such as uploading multiple files.
+- If the process is long and blocks working with data, but the user needs to know when the process will end.
 
 ::: tip
 In certain cases, you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take or to create the illusion of the user approaching the end of the process.
@@ -158,14 +150,15 @@ When scrolling, the progress bar can be pinned, remaining visible above all comp
 
 ### Avoid Using ProgressBar
 
-* For short actions that take less than 5 seconds, consider using [Spin](/components/spin/spin) instead.
-* To display steps, such as when filling out a form.
+- For short actions that take less than 5 seconds, consider using [Spin](/components/spin/spin) instead.
+- To display steps, such as when filling out a form.
 
 ### Specific cases
 
-* If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
-* If the exact or approximate loading time isn’t known, wait for 3 seconds and display the fake progress.
-* In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
-* If the download process is expected to be long, visualize the progress immediately.
-* If the exact or approximate loading time is unknown, wait for 3 seconds and display the fake progress.
-* For very fast loading, set the minimum time for displaying the progress bar to 3 seconds to avoid interface "blinking."
+- If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
+- If the exact or approximate loading time isn’t known, wait for 3 seconds and display the fake progress.
+- In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
+- If the download process is expected to be long, visualize the progress immediately.
+- If the exact or approximate loading time is unknown, wait for 3 seconds and display the fake progress.
+- For very fast loading, set the minimum time for displaying the progress bar to 3 seconds to avoid interface "blinking."
+

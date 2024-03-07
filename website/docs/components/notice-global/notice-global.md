@@ -7,28 +7,25 @@ tabs: Design('notice-global'), A11y('notice-global-a11y'), API('notice-global-ap
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
+import React from 'react';
 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import NoticeGlobal from 'intergalactic/notice-global'; 
-import { Box } from 'intergalactic/flex-box'; 
+import NoticeGlobal from 'intergalactic/notice-global';
+import { Box } from 'intergalactic/flex-box';
 
-const THEME = ['danger', 'info', 'neutral', 'success', 'warning']; 
+const THEME = ['danger', 'info', 'neutral', 'success', 'warning'];
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>
-
     {props.children}
-
   </Box>
-); 
+);
 
 const Preview = (preview) => {
-  const { bool, select, radio, text, empty, onChange } = preview('Notice'); 
+  const { bool, select, radio, text, empty, onChange } = preview('Notice');
 
   const theme = select({
-
     key: 'theme',
     label: 'Theme',
     defaultValue: 'neutral',
@@ -36,43 +33,33 @@ const Preview = (preview) => {
       name: value,
       value,
     })),
-
-  }); 
+  });
 
   const closable = bool({
-
     key: 'closable',
     defaultValue: true,
     label: 'Close Icon',
-
-  }); 
+  });
 
   const msg = text({
-
     key: 'text',
     defaultValue: 'You can place here your message.',
     label: 'Text',
-
-  }); 
+  });
 
   const hidden = empty({
-
     key: 'hidden',
     defaultValue: false,
-
-  }); 
+  });
 
   function handlerClose() {
-
     onChange('hidden', true);
     setTimeout(() => {
       onChange('hidden', false);
     }, 2000);
-
   }
 
   return (
-
     <NoticeGlobal
       theme={theme}
       hidden={hidden}
@@ -81,11 +68,10 @@ const Preview = (preview) => {
     >
       <NoticeGlobal.Content>{msg}</NoticeGlobal.Content>
     </NoticeGlobal>
+  );
+};
 
-  ); 
-}; 
-
-const App = PlaygroundGeneration(Preview, { LayoutPreview }); 
+const App = PlaygroundGeneration(Preview, { LayoutPreview });
 </script>
 
 :::
@@ -107,9 +93,9 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 **Use the global notice to communicate the following:**
 
-* Special viewing modes of a page, product, or site (for example, pertaining to admin or other rights on the page).
-* Notifications about outdated browser versions.
-* Messages related to the entire site's operations, such as downgrades, technical work, and other similar events.
+- Special viewing modes of a page, product, or site (for example, pertaining to admin or other rights on the page).
+- Notifications about outdated browser versions.
+- Messages related to the entire site's operations, such as downgrades, technical work, and other similar events.
 
 ## Component composition
 
@@ -118,7 +104,7 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 Component consists of the following:
 
 1. `NoticeGlobal.Content`
-2. `NoticeGlobal.CloseIcon` (optional); 
+2. `NoticeGlobal.CloseIcon` (optional);
 
 ## Styles
 
@@ -134,7 +120,7 @@ Component consists of the following:
 
 ### Neutral
 
-This theme is suitable for neutral messages about the entire website. The Notice background color uses `--bg-primary-muted` token.
+This theme is suitable for neutral messages about the entire website.The Notice background color uses `--bg-primary-muted` token.
 
 ![](static/gnotice-neutral.png)
 
@@ -164,8 +150,8 @@ Use this theme to convey serious error or problem messages concerning the entire
 
 ## Placement in the interface
 
-* Always position this notice above the main website header.
-* Stretch the notice to cover the full width of the screen.
+- Always position this notice above the main website header.
+- Stretch the notice to cover the full width of the screen.
 
 ![](static/placement.png)
 
@@ -179,10 +165,10 @@ When the global notice appears, it shifts the entire page down.
 
 As the notice is a temporary message, it should have a preset "lifespan." The "lifespan" can be determined by the following rules:
 
-* Number of days (for example, during an experiment).
-* Number of user sessions.
-* Events (for example, completion of works, bug fixes, moving features out of beta).
-* User actions as triggers (for example, installing something, viewing specific content, fixing an error).
+- Number of days (for example, during an experiment).
+- Number of user sessions.
+- Events (for example, completion of works, bug fixes, moving features out of beta).
+- User actions as triggers (for example, installing something, viewing specific content, fixing an error).
 
 ### Hiding
 
@@ -190,13 +176,13 @@ When user hides the notice, the entire page moves up to the height of the closed
 
 NoticeGlobal can be hide by:
 
-* Clicking on the `Close` icon.
-* Clicking on the link that triggers the re-opening condition (for example, "Ask me later, " "Never show again, " etc.).
-* If there is no `Close` icon or hide link, the user can't manually hide such notice. It will be hidden according to the conditions set by the service (after a certain time, a certain number of sessions, after clicking on the trigger, etc.).
+- Clicking on the `Close` icon.
+- Clicking on the link that triggers the re-opening condition (for example, "Ask me later," "Never show again," etc.).
+- If there is no `Close` icon or hide link, the user can't manually hide such notice. It will be hidden according to the conditions set by the service (after a certain time, a certain number of sessions, after clicking on the trigger, etc.).
 
 ### Animation
 
-By clicking on the closing icon or closing link, the notice shall smoothly close with a `fade-out` effect lasting `250ms` . The page content moves up to the notice's position within `250ms` .
+By clicking on the closing icon or closing link, the notice shall smoothly close with a `fade-out` effect lasting `250ms`. The page content moves up to the notice's position within `250ms`.
 
 ## Custom notice
 
@@ -220,10 +206,11 @@ Avoid displaying more than one global message at a time. Below is an example of 
 
 In situations where a user on the site has two or more global messages to display, prioritize them accordingly.
 
-* Give higher priority to messages that require a response from the user or contain controls to close or exit a special mode.
-* Messages without controls inside should have lower priority. Display them after a user has interacted with a higher priority message.
+- Give higher priority to messages that require a response from the user or contain controls to close or exit a special mode.
+- Messages without controls inside should have lower priority. Display them after a user has interacted with a higher priority message.
 
 ## Usage in UX/UI
 
-* You can use global notices to notify about the following: website mode (for example, admin), system status (error, failure, end of works).
-* Keep the messages concise, so they don't obscure other widgets or report functionality. Try to convey the message's meaning to users in just one line.
+- You can use global notices to notify about the following: website mode (for example, admin), system status (error, failure, end of works).
+- Keep the messages concise, so they don't obscure other widgets or report functionality. Try to convey the message's meaning to users in just one line.
+

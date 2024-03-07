@@ -7,24 +7,23 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import Pills from '@semcore/pills'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
-import LikeM from 'intergalactic/icon/Like/m'; 
-import LikeL from 'intergalactic/icon/Like/l'; 
+import React from 'react';
+import Pills from '@semcore/pills';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import LikeM from 'intergalactic/icon/Like/m';
+import LikeL from 'intergalactic/icon/Like/l';
 
 // LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
-//   'LikeOutline'; 
+//   'LikeOutline';
 
 const SIZE_ADDON = {
-  s: <LikeM />, 
-  m: <LikeM />, 
-  l: <LikeL />, 
-}; 
+  s: <LikeM />,
+  m: <LikeM />,
+  l: <LikeL />,
+};
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-
     const { bool, radio, empty, onChange } = createGroupWidgets('Pill');
 
     const size = radio({
@@ -68,14 +67,11 @@ const App = PlaygroundGeneration(
         <Pills.Item value={3}>Pill 3</Pills.Item>
       </Pills>
     );
-
-  }, 
+  },
   {
-
     filterProps: ['onChange'],
-
-  }, 
-); 
+  },
+);
 </script>
 
 :::
@@ -84,8 +80,8 @@ const App = PlaygroundGeneration(
 
 **Pills** is a component designed for:
 
-* Switching between states, such as tabs, views, or screens with uniform content.
-* Filtering data in lists, tables, and charts.
+- Switching between states, such as tabs, views, or screens with uniform content.
+- Filtering data in lists, tables, and charts.
 
 ## Component composition
 
@@ -137,8 +133,8 @@ Table: States for adding new item case in Pills
 
 In some products, pills can act as a block with shared metrics. Their differences from the default pills are:
 
-* Increased height due to content.
-* Additional controls inside, usually for adding/moving data by clicking on a link.
+- Increased height due to content.
+- Additional controls inside, usually for adding/moving data by clicking on a link.
 
 ![](static/pills-summary.png)
 
@@ -152,29 +148,29 @@ Table: States for Pills
 | Normal/Active                          | ![](static/normal_active.png)  |
 | Hover                                  | ![](static/hover.png)          |
 | Disabled                               | ![](static/disabled.png)       |
-| Disabled `Pills.Item` | ![](static/disabled-pill.png)  |
+| Disabled `Pills.Item`                  | ![](static/disabled-pill.png)  |
 | Loading                                | ![](static/loading.png)        |
 
 ## Usage in UX/UI
 
 Pills are used for:
 
-* Actions with data: filtering, sorting, navigation (displaying data chunks).
-* Changing the view/presentation of data.
+- Actions with data: filtering, sorting, navigation (displaying data chunks).
+- Changing the view/presentation of data.
 
 Pills can be used in:
 
-* Lists; 
-* [Tables](/table-group/data-table/data-table); 
-* [Charts](/data-display/chart-controls/chart-controls); 
-* Local filters in widgets, etc.
+- Lists;
+- [Tables](/table-group/data-table/data-table);
+- [Charts](/data-display/chart-controls/chart-controls);
+- Local filters in widgets, etc.
 
 ### Number of pills
 
 The minimum number of pills in the component is 2, and the maximum is unlimited. However, keep in mind that it might be challenging for the user to navigate the selection with too many items. In such cases, you can:
 
-* Collapse pills into a [DropdownMenu](/components/dropdown-menu/dropdown-menu) with an `Ellipsis` icon; 
-* Use [Select](/components/select/select) instead.
+- Collapse pills into a [DropdownMenu](/components/dropdown-menu/dropdown-menu) with an `Ellipsis` icon;
+- Use [Select](/components/select/select) instead.
 
 ![](static/pills-collapse.png)
 
@@ -194,6 +190,7 @@ If words are too long, you can shorten them into abbreviations that users can un
 
 ![](static/pills-name-yes-no.png)
 
-Don’t use a single `Pills.Item` :
+Don’t use a single `Pills.Item`:
 
 ![](static/pills-one-yes-no.png)
+

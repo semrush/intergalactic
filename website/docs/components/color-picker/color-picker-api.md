@@ -15,7 +15,7 @@ import ColorPicker from 'intergalactic/color-picker';
 
 <TypesView type="ColorPickerProps" :types={...types} />
 
-## ColorPicker. Trigger
+## ColorPicker.Trigger
 
 The wrap over the `<Dropdown.Trigger/>` component.
 
@@ -24,7 +24,7 @@ import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker.Trigger />;
 ```
 
-## ColorPicker. Popper
+## ColorPicker.Popper
 
 The wrap over the `<Dropdown.Popper/>` component.
 
@@ -33,9 +33,9 @@ import ColorPicker from 'intergalactic/color-picker';
 <ColorPicker.Popper />;
 ```
 
-## ColorPicker. Colors
+## ColorPicker.Colors
 
-Group of ColorPicker. Items.
+Group of ColorPicker.Items.
 
 ```jsx
 import ColorPicker from 'intergalactic/color-picker';
@@ -44,9 +44,9 @@ import ColorPicker from 'intergalactic/color-picker';
 
 <TypesView type="ColorsProps" :types={...types} />
 
-## ColorPicker. Item
+## ColorPicker.Item
 
-One unit of `<ColorPicker.Colors />` . ColorPicker. Item is a swatch preview that allows a user to see what color is currently selected.
+One unit of `<ColorPicker.Colors />`. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
 import ColorPicker from 'intergalactic/color-picker';
@@ -66,9 +66,9 @@ import { PaletteManager } from 'intergalactic/color-picker';
 
 <TypesView type="PaletteManagerProps" :types={...types} />
 
-## PaletteManager. Colors
+## PaletteManager.Colors
 
-Group of PaletteManager. Items.
+Group of PaletteManager.Items.
 
 ```jsx
 import { PaletteManager } from 'intergalactic/color-picker';
@@ -77,9 +77,9 @@ import { PaletteManager } from 'intergalactic/color-picker';
 
 <TypesView type="ColorsCustomProps" :types={...types} />
 
-## PaletteManager. Item
+## PaletteManager.Item
 
-One unit of `<PaletteManager.Colors />` . PaletteManager. Item is a swatch preview that allows a user to see what color is currently selected.
+One unit of `<PaletteManager.Colors />`. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
 import { PaletteManager } from 'intergalactic/color-picker';
@@ -88,7 +88,7 @@ import { PaletteManager } from 'intergalactic/color-picker';
 
 <TypesView type="ItemProps" :types={...types} />
 
-## ColorPicker. InputColor
+## ColorPicker.InputColor
 
 Input for adding colors in hexadecimal format.
 
@@ -99,4 +99,4 @@ import { PaletteManager } from 'intergalactic/color-picker';
 
 <TypesView type="InputColorProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

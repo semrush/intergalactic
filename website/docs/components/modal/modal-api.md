@@ -13,7 +13,7 @@ import Modal from 'intergalactic/modal';
 
 <TypesView type="ModalProps" :types={...types} />
 
-## Modal. Overlay
+## Modal.Overlay
 
 Component which represents the background. Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
@@ -22,7 +22,7 @@ import Modal from 'intergalactic/modal';
 <Modal.Overlay />;
 ```
 
-## Modal. Window
+## Modal.Window
 
 Component which represents the modal window itself. Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
@@ -31,7 +31,7 @@ import Modal from 'intergalactic/modal';
 <Modal.Window />;
 ```
 
-## Modal. Close
+## Modal.Close
 
 Component which represents the closing icon. The component is the `CloseS` icon with the configured styles. Has all properties as [BoxProps](/layout/box-system/box-api) prop and [IconProps](/style/icon/icon-api) prop does.
 
@@ -40,7 +40,7 @@ import Modal from 'intergalactic/modal';
 <Modal.Close />;
 ```
 
-## Modal. Title
+## Modal.Title
 
 Component which represents the title. It adds `aria-labelledby` attribute to modal window. Has all properties as [TextProps](/style/typography/typography-api) prop does.
 
@@ -49,4 +49,4 @@ import Modal from 'intergalactic/modal';
 <Modal.Title />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

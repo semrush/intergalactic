@@ -6,35 +6,27 @@ tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Exam
 
 ## D3 API
 
-## Chart. Area
+## Chart.Area
 
 ```js
-import {
-    Chart
-} from 'intergalactic/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="AreaChartProps" :types={...types} />
 
 ## Area
 
-It have children components `Dots, Null` .
+It have children components `Dots, Null`.
 
 ```js
-import {
-    Area
-} from 'intergalactic/d3-chart';
+import { Area } from 'intergalactic/d3-chart';
 
-<
-Area >
-    <
-    Area.Dots / >
-    <
-    Area.Null / >
-    <
-    /Area>;
+<Area>
+  <Area.Dots />
+  <Area.Null />
+</Area>;
 ```
 
 <TypesView type="AreaProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

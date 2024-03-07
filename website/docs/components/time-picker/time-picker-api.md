@@ -12,7 +12,7 @@ import Timepicker from 'intergalactic/time-picker';
 
 <TypesView type="TimePickerProps" :types={...types} />
 
-## TimePicker. Hours, TimePicker. Minutes
+## TimePicker.Hours, TimePicker.Minutes
 
 <TypesView type="TimePickerItemProps" :types={...types} />
 
@@ -24,7 +24,7 @@ import Timepicker from 'intergalactic/time-picker';
 </Timepicker>;
 ```
 
-## TimePicker. Format
+## TimePicker.Format
 
 <TypesView type="TimePickerFormatProps" :types={...types} />
 
@@ -33,13 +33,13 @@ import Timepicker from 'intergalactic/time-picker';
 <Timepicker.Format />;
 ```
 
-## TimePicker. Separator
+## TimePicker.Separator
 
-It is a usual `span` -element, it takes the HTML-attributes available for it.
+It is a usual `span`-element, it takes the HTML-attributes available for it.
 
 ```jsx
 import Timepicker from 'intergalactic/time-picker';
 <Timepicker.Separator />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

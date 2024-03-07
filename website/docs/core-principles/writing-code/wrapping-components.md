@@ -29,7 +29,7 @@ import Button from 'intergalactic/button';
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/the- `tag` -property.tsx'; 
+  export Demo from './examples/the-`tag`-property.tsx';
 </script>
 
 :::
@@ -55,18 +55,19 @@ Use the special utility `makeWrapper` to wrap components. It does nothing in run
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/making-wrappers.tsx'; 
+  export Demo from './examples/making-wrappers.tsx';
 </script>
 
 :::
 
 ## Complex components wrappers
 
-Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data` . For such components, special wrapping utilities are provided. 
+Some components props are generic, for example `Select` component has generic `value` and `DataTable` has generic `data`. For such components, special wrapping utilities are provided. 
+
 
 It available for the following components:
 
-1. `wrapDataTable`,   `wrapDataTableRow`,  `wrapDataTableCell` for [DataTable](/table-group/data-table/data-table).
+1. `wrapDataTable`, `wrapDataTableRow`, `wrapDataTableCell` for [DataTable](/table-group/data-table/data-table).
 2. `wrapAccordion` for [Accordion](/components/accordion/accordion).
 3. `wrapPills` for [Pills](/components/pills/pills).
 4. `wrapRadioGroup` for [Radio](/components/radio/radio).
@@ -79,7 +80,8 @@ It available for the following components:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/complex-components-wrappers.tsx'; 
+  export Demo from './examples/complex-components-wrappers.tsx';
 </script>
 
 :::
+

@@ -13,7 +13,7 @@ import Switch from 'intergalactic/switch';
 
 <TypesView type="SwitchProps" :types={...types} />
 
-## Switch. Value
+## Switch.Value
 
 ```jsx
 import Switch from 'intergalactic/switch';
@@ -22,7 +22,7 @@ import Switch from 'intergalactic/switch';
 
 <TypesView type="SwitchValueProps" :types={...types} />
 
-## Switch. Addon
+## Switch.Addon
 
 ```jsx
 import Switch from 'intergalactic/switch';
@@ -31,4 +31,4 @@ import Switch from 'intergalactic/switch';
 
 <TypesView type="SwitchAddonProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -7,92 +7,77 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
-import Link from 'intergalactic/link'; 
-import CheckM from 'intergalactic/icon/Check/m'; 
-import ArrowRightM from 'intergalactic/icon/ArrowRight/m'; 
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Link from 'intergalactic/link';
+import CheckM from 'intergalactic/icon/Check/m';
+import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const SIZE = [
-  { value: '100', name: '100 = 12px' }, 
-  { value: '200', name: '200 = 14px' }, 
-  { value: '300', name: '300 = 16px' }, 
-  { value: '400', name: '400 = 19px' }, 
-  { value: '500', name: '500 = 25px' }, 
-  { value: '600', name: '600 = 33px' }, 
-  { value: '700', name: '700 = 36px' }, 
-  { value: '800', name: '800 = 48px' }, 
-]; 
+  { value: '100', name: '100 = 12px' },
+  { value: '200', name: '200 = 14px' },
+  { value: '300', name: '300 = 16px' },
+  { value: '400', name: '400 = 19px' },
+  { value: '500', name: '500 = 25px' },
+  { value: '600', name: '600 = 33px' },
+  { value: '700', name: '700 = 36px' },
+  { value: '800', name: '800 = 48px' },
+];
 
 const Preview = (preview) => {
-  const { bool, select, radio, text } = preview('Button'); 
+  const { bool, select, radio, text } = preview('Button');
 
   const size = select({
-
     key: 'size',
     defaultValue: '300',
     label: 'Size',
     options: SIZE,
-
-  }); 
+  });
 
   const color = text({
-
     key: 'color',
     label: 'Color',
     defaultValue: '',
     placeholder: '',
-
-  }); 
+  });
 
   const active = bool({
-
     key: 'active',
     defaultValue: false,
     label: 'Active',
-
-  }); 
+  });
 
   // const noWrap = bool({
-  //   key: 'noWrap', 
-  //   defaultValue: true, 
-  //   label: 'NoWrap', 
-  // }); 
+  //   key: 'noWrap',
+  //   defaultValue: true,
+  //   label: 'NoWrap',
+  // });
 
   const disabled = bool({
-
     key: 'disabled',
     defaultValue: false,
     label: 'Disabled',
-
-  }); 
+  });
 
   const beforeIcon = bool({
-
     key: 'before',
     defaultValue: false,
     label: 'AddonLeft',
-
-  }); 
+  });
 
   const afterIcon = bool({
-
     key: 'after',
     defaultValue: false,
     label: 'AddonRight',
-
-  }); 
+  });
 
   const child = text({
-
     key: 'children',
     defaultValue: 'Link',
     label: 'Text',
-
-  }); 
+  });
 
   const renderIcon = (position) => {
-
     switch (position) {
       case 'before':
         return <CheckM />;
@@ -101,20 +86,17 @@ const Preview = (preview) => {
       default:
         return false;
     }
-
-  }; 
+  };
 
   return (
-
     <Link color={color} size={size} disabled={disabled} active={active} href='#'>
       {beforeIcon && <Link.Addon>{renderIcon('before')}</Link.Addon>}
       {beforeIcon || afterIcon ? <Link.Text>{child}</Link.Text> : child}
       {afterIcon && <Link.Addon>{renderIcon('after')}</Link.Addon>}
     </Link>
-
-  ); 
-}; 
-const App = PlaygroundGeneration(Preview); 
+  );
+};
+const App = PlaygroundGeneration(Preview);
 </script>
 
 :::
@@ -137,14 +119,14 @@ const App = PlaygroundGeneration(Preview);
 
 You can add addons before and after the link text. Addons always have a 4px margin from the link text.
 
-* The icon should represent the action that will be performed by the link.
-* If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/spin) component.
+- The icon should represent the action that will be performed by the link.
+- If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/spin) component.
 
 Table: Link text and addon sizes and margins
 
 | Text size                               | Appearance example     | Icon size |
 | --------------------------------------- | ---------------------- | --------- |
-| 12-16px ( `--fs-100` - `--fs-300` tokens)  | ![](static/link-m.png) | M         |
+| 12-16px (`--fs-100`-`--fs-300` tokens)  | ![](static/link-m.png) | M         |
 | 20px and bigger (from `--fs-400` token) | ![](static/link-l.png) | L         |
 
 ## Interaction
@@ -166,31 +148,11 @@ Hided this section because it's for the dark theme.
 
 | State         | Appearance                                               | Description                                                                                                                                                                                   | Cursor    |
 | ------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| Normal        | 
-
-![normal](static/default-invert.png)
-
-                     | Link has `--blue-200` color, without underline.                                                                                                                                               | `pointer` |
-| Active/hover  | 
-
-![hover](static/hover-active-invert.png)
-
-                 | Link changes its color to `--blue-300` . A solid underline appears. If the link is used together with the icon, then the icon changes its color with the text – they have the same active zone. | `pointer` |
-| Disabled      | 
-
-![hover](static/disabled-invert.png)
-
-                     | he component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                     | `pointer` |
-| visited       | 
-
-![visited](static/default-invert-visited.png)
-
-            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
-| visited hover | 
-
-![visited-hover](static/hover-active-invert-visited.png)
-
- | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
+| Normal        | ![normal](static/default-invert.png)                     | Link has `--blue-200` color, without underline.                                                                                                                                               | `pointer` |
+| Active/hover  | ![hover](static/hover-active-invert.png)                 | Link changes its color to `--blue-300`. A solid underline appears. If the link is used together with the icon, then the icon changes its color with the text – they have the same active zone. | `pointer` |
+| Disabled      | ![hover](static/disabled-invert.png)                     | he component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                     | `pointer` |
+| visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
+| visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
 
 ## Links on a dark and colored background
 
@@ -232,7 +194,7 @@ In lists, it is recommended to make the entire line a link to reduce visual clut
 
 ![](static/name-example-6.png)
 
-If a link spans two lines, ensure that the cursor remains consistent throughout the interline area by using `display: block` .
+If a link spans two lines, ensure that the cursor remains consistent throughout the interline area by using `display: block`.
 
 ![](static/name-example-7.png)
 
@@ -240,8 +202,8 @@ If a link spans two lines, ensure that the cursor remains consistent throughout 
 
 For links placed in one line, maintain a margin between them that is a multiple of 4px:
 
-* 20px for sufficient space
-* 12px for limited space
+- 20px for sufficient space
+- 12px for limited space
 
 ![](static/link-margin.png)
 
@@ -251,8 +213,8 @@ For links placed in one line, maintain a margin between them that is a multiple 
 Find detailed information on the hint link in the [Typography guide](/style/typography/typography#hints_hint_links).
 :::
 
-* Default link is suitable for internal and external transitions, reloading the page, updating data in a small block/widget, and clickable email.
-* Hint link is recommended for updating data in a table row, opening a modal window, opening a dropdown, opening an accordion, opening the full text on the same page, and tooltip on click/hover.
+- Default link is suitable for internal and external transitions, reloading the page, updating data in a small block/widget, and clickable email.
+- Hint link is recommended for updating data in a table row, opening a modal window, opening a dropdown, opening an accordion, opening the full text on the same page, and tooltip on click/hover.
 
 Table: How to choose what type of link you should use
 
@@ -272,8 +234,8 @@ Table: How to choose what type of link you should use
 
 ## Links in tables
 
-* If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/button).
-* In table rows, use 14px links. If the link is a URL leading to an external page, include the `LinkExternal` icon with M size and `--icon-secondary-neutral` color next to it. Ensure it has a `margin-left: var(--spacing-1x)`.
+- If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/button).
+- In table rows, use 14px links. If the link is a URL leading to an external page, include the `LinkExternal` icon with M size and `--icon-secondary-neutral` color next to it. Ensure it has a `margin-left: var(--spacing-1x)`.
 
 ![](static/table-yes-no.png)
 
@@ -293,13 +255,14 @@ Table: Cases for appearance of external links
 
 ### Styles
 
-* Use the `LinkExternal` icon with M size and `--icon-secondary-neutral` color to indicate the transition to an external resource.
-* The icon should always have a `margin-left: var(--spacing-1x)`.
-* When hovering over the icon, it changes color to the darker one with CSS filter.
-* If necessary, you can use link styles to highlight the external resource icon.
+- Use the `LinkExternal` icon with M size and `--icon-secondary-neutral` color to indicate the transition to an external resource.
+- The icon should always have a `margin-left: var(--spacing-1x)`.
+- When hovering over the icon, it changes color to the darker one with CSS filter.
+- If necessary, you can use link styles to highlight the external resource icon.
 
 ## Usage in UX/UI
 
 Avoid using the link component for text that doesn't lead to another page or perform an action to prevent misleading users.
 
 ![](static/yes-no-link.png)
+

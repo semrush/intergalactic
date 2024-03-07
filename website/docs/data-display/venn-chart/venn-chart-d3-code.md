@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx'; 
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::
@@ -22,13 +22,13 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 A Venn chart allows you to see all kinds of intersections between two or more data sets.
 
-* `Circle` are a component for circles.
-* `Intersection` is for intersections between the circles.
+- `Circle` are a component for circles.
+- `Intersection` is for intersections between the circles.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/venn.tsx'; 
+  export Demo from './examples/venn.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ If you want to change the intersection styles, you can add additional styles to 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-intersection-styles.tsx'; 
+  export Demo from './examples/custom-intersection-styles.tsx';
 </script>
 
 :::
@@ -52,19 +52,19 @@ You can also change the orientation and stacking order of the circles.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/setting-orientation.tsx'; 
+  export Demo from './examples/setting-orientation.tsx';
 </script>
 
 :::
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx'; 
+  export Demo from './examples/legend-and-pattern-fill.tsx';
 </script>
 
 :::

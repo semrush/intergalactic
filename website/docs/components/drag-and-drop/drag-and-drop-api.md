@@ -15,7 +15,7 @@ import DnD from 'intergalactic/drag-and-drop;
 
 <TypesView type="DragAndDropProps" :types={...types} />
 
-## DnD. Draggable
+## DnD.Draggable
 
 The element, which will be dragged.
 
@@ -28,7 +28,7 @@ import DnD from 'intergalactic/drag-and-drop;
 
 <TypesView type="DraggableProps" :types={...types} />
 
-## DnD. DropZone
+## DnD.DropZone
 
 The area, to which the dragged element will be placed.
 
@@ -41,4 +41,4 @@ import DnD from 'intergalactic/drag-and-drop;
 
 Takes the same properties, as [Box](/layout/box-system/box-api#a3cfce).
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

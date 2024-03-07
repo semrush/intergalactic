@@ -19,7 +19,7 @@ import Dropdown from 'intergalactic/dropdown';
 
 <TypesView type="DropdownProps" :types={...types} />
 
-## Dropdown. Trigger
+## Dropdown.Trigger
 
 The wrap over the `<Popper.Trigger/>` component.
 
@@ -30,7 +30,7 @@ import Dropdown from 'intergalactic/dropdown';
 
 <TypesView type="PopperTriggerProps" :types={...types} />
 
-## Dropdown. Popper
+## Dropdown.Popper
 
 The wrap over the `<Popper.Popper/>` component.
 
@@ -41,4 +41,4 @@ import Dropdown from 'intergalactic/dropdown';
 
 <TypesView type="PopperPopperProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

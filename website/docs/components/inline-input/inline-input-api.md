@@ -14,9 +14,9 @@ import InlineInput from 'intergalactic/inline-input';
 
 <TypesView type="InlineInputProps" :types={...types} />
 
-## InlineInput. Value
+## InlineInput.Value
 
-This component represents the native `tag`  `input` and accepts all its properties, such as `value` and `onChange` .
+This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
 ```jsx
 import InlineInput from 'intergalactic/inline-input';
@@ -25,7 +25,7 @@ import InlineInput from 'intergalactic/inline-input';
 
 <TypesView type="InlineInputValueProps" :types={...types} />
 
-## InlineInput. Addon
+## InlineInput.Addon
 
 The addon inside the container (most often it is an icon or short text) places the correct indent units depending on the size.
 
@@ -36,11 +36,11 @@ import InlineInput from 'intergalactic/inline-input';
 <InlineInput.Addon />;
 ```
 
-## InlineInput. ConfirmControl
+## InlineInput.ConfirmControl
 
-The addon with hint tooltip and icon. By default is displayed with middle-size Check icon. Addon click triggers `InlineInput`  `onConfirm` callback.
+The addon with hint tooltip and icon. By default is displayed with middle-size Check icon. Addon click triggers `InlineInput` `onConfirm` callback.
 
-When `loading` property is provided to `InlineInput` , `InlineInput.ConfirmControl` icon replaced with spinner.
+When `loading` property is provided to `InlineInput`, `InlineInput.ConfirmControl` icon replaced with spinner.
 
 ```jsx
 import InlineInput from 'intergalactic/inline-input';
@@ -49,9 +49,9 @@ import InlineInput from 'intergalactic/inline-input';
 
 <TypesView type="InlineInputConfirmControlProps" :types={...types} />
 
-## InlineInput. CancelControl
+## InlineInput.CancelControl
 
-The addon with hint tooltip and icon. By default is displayed with middle-size Close icon. Addon click triggers `InlineInput`  `onCancel` callback.
+The addon with hint tooltip and icon. By default is displayed with middle-size Close icon. Addon click triggers `InlineInput` `onCancel` callback.
 
 ```jsx
 import InlineInput from 'intergalactic/inline-input';
@@ -60,4 +60,4 @@ import InlineInput from 'intergalactic/inline-input';
 
 <TypesView type="InlineInputCancelControlProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

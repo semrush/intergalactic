@@ -10,19 +10,19 @@ Dynamic search searches as soon as at least one character is entered into the in
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/dynamic_search.tsx'; 
+  export Demo from './examples/dynamic_search.tsx';
 </script>
 
 :::
 
 ## Search by button
 
-Slow but accurate user assistant, searches by button or by pressing `Enter` .
+Slow but accurate user assistant, searches by button or by pressing `Enter`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/search-by-button.tsx'; 
+  export Demo from './examples/search-by-button.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ An extremely rare dynamic search, we use it when fine-tuning of this filter is n
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/search-with-select.tsx'; 
+  export Demo from './examples/search-with-select.tsx';
 </script>
 
 :::

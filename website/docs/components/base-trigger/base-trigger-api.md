@@ -9,9 +9,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 Basic trigger-button for all dropdowns.
 
 ```js
-import {
-    BaseTrigger
-} from 'intergalactic/base-trigger';
+import { BaseTrigger } from 'intergalactic/base-trigger';
 ```
 
 <TypesView type="BaseTriggerProps" :types={...types} />
@@ -21,9 +19,7 @@ import {
 Button-trigger with the `ChevronDownM` icon.
 
 ```js
-import {
-    ButtonTrigger
-} from 'intergalactic/base-trigger';
+import { ButtonTrigger } from 'intergalactic/base-trigger';
 ```
 
 <TypesView type="ButtonTriggerProps" :types={...types} />
@@ -33,9 +29,7 @@ import {
 This trigger looks like a link with the `ChevronDownM` icon.
 
 ```js
-import {
-    LinkTrigger
-} from 'intergalactic/base-trigger';
+import { LinkTrigger } from 'intergalactic/base-trigger';
 ```
 
 <TypesView type="LinkTriggerProps" :types={...types} />
@@ -45,11 +39,9 @@ import {
 Trigger for filters.
 
 ```js
-import {
-    FilterTrigger
-} from 'intergalactic/base-trigger';
+import { FilterTrigger } from 'intergalactic/base-trigger';
 ```
 
 <TypesView type="FilterTriggerProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

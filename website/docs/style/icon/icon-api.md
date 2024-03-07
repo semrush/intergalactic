@@ -13,4 +13,4 @@ import IconNameSize from 'intergalactic/icon/iconName/size';
 
 <TypesView type="IconProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

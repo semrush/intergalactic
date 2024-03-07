@@ -13,16 +13,16 @@ import ScrollArea from 'intergalactic/scroll-area';
 
 <TypesView type="ScrollAreaProps" :types={...types} />
 
-## ScrollArea. Container
+## ScrollArea.Container
 
-This is a wrap over the content to calculate its size. It takes all properties of `Box` .
+This is a wrap over the content to calculate its size. It takes all properties of `Box`.
 
 ```jsx
 import ScrollArea from 'intergalactic/scroll-area';
 <ScrollArea.Container />;
 ```
 
-## ScrollArea. Bar
+## ScrollArea.Bar
 
 ```jsx
 import ScrollArea from 'intergalactic/scroll-area';
@@ -31,13 +31,13 @@ import ScrollArea from 'intergalactic/scroll-area';
 
 <TypesView type="ScrollBarProps" :types={...types} />
 
-## ScrollArea. Bar. Slider
+## ScrollArea.Bar.Slider
 
-Stylized div. It takes all properties of `Box` .
+Stylized div. It takes all properties of `Box`.
 
 ```jsx
 import ScrollArea from 'intergalactic/scroll-area';
 <ScrollArea.Bar.Slider />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

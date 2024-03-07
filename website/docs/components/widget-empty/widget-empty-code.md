@@ -15,7 +15,7 @@ The locale can be passed directly to the component or wrap your application in `
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/nodata_example.tsx'; 
+  export Demo from './examples/nodata_example.tsx';
 </script>
 
 :::
@@ -25,19 +25,19 @@ The locale can be passed directly to the component or wrap your application in `
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/nothingfound_example.tsx'; 
+  export Demo from './examples/nothingfound_example.tsx';
 </script>
 
 :::
 
 ## Error example
 
-The template already includes the `title` and the `icon` . You only need to provide the `description` and additional elements if necessary.
+The template already includes the `title` and the `icon`. You only need to provide the `description` and additional elements if necessary.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/error_example.tsx'; 
+  export Demo from './examples/error_example.tsx';
 </script>
 
 :::
@@ -51,7 +51,7 @@ To get the link to the [illustration](/style/illustration/illustration), use the
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_examples.tsx'; 
+  export Demo from './examples/custom_examples.tsx';
 </script>
 
 :::
@@ -61,7 +61,7 @@ You can find other examples of custom messages you can create with the WidgetEmp
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-examples.tsx'; 
+  export Demo from './examples/custom-examples.tsx';
 </script>
 
 :::

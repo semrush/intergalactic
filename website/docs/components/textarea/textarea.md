@@ -7,20 +7,19 @@ tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('t
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
+import React from 'react';
 
-import TextareaReact from 'intergalactic/textarea'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import TextareaReact from 'intergalactic/textarea';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const SIZES = ['m', 'l']; 
-const STATES = ['normal', 'invalid', 'valid']; 
-const RESIZE = ['none', 'vertical', 'horizontal', 'both']; 
+const SIZES = ['m', 'l'];
+const STATES = ['normal', 'invalid', 'valid'];
+const RESIZE = ['none', 'vertical', 'horizontal', 'both'];
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
-  const { bool, radio, select } = createGroupWidgets('Textarea'); 
+  const { bool, radio, select } = createGroupWidgets('Textarea');
 
   const size = select({
-
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
@@ -28,11 +27,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-
-  }); 
+  });
 
   const state = select({
-
     key: 'state',
     defaultValue: 'normal',
     label: 'State',
@@ -40,11 +37,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-
-  }); 
+  });
 
   const min = select({
-
     key: 'min',
     defaultValue: 2,
     label: 'Min rows',
@@ -52,11 +47,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: i + 1,
       value: i + 1,
     })),
-
-  }); 
+  });
 
   const max = select({
-
     key: 'max',
     defaultValue: 10,
     label: 'Max rows',
@@ -64,11 +57,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: i + 1,
       value: i + 1,
     })),
-
-  }); 
+  });
 
   const resize = select({
-
     key: 'resize',
     defaultValue: 'none',
     label: 'Resize',
@@ -76,27 +67,21 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-
-  }); 
+  });
 
   const disabled = bool({
-
     key: 'disabled',
     defaultValue: false,
     label: 'Disabled',
-
-  }); 
+  });
 
   const readOnly = bool({
-
     key: 'readOnly',
     defaultValue: false,
     label: 'Read-only',
-
-  }); 
+  });
 
   return (
-
     <TextareaReact
       size={size}
       resize={resize}
@@ -107,9 +92,8 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       maxRows={max}
       placeholder='Placeholder'
     />
-
-  ); 
-}); 
+  );
+});
 </script>
 
 :::
@@ -147,16 +131,8 @@ Table: Textarea with counter
 
 | Size (height in px for one row of text) | Input with label       | Input without label    |
 | ------------------- | ------------------------------------------ | ---------------------- |
-| M (28px)            | 
-
-![](static/counter-M.png) | ![](static/counter-inner-M.png)
-
- |
-| L (40px)            | 
-
-![](static/counter-L.png) | ![](static/counter-inner-L.png)
-
- |
+| M (28px)            | ![](static/counter-M.png) | ![](static/counter-inner-M.png) |
+| L (40px)            | ![](static/counter-L.png) | ![](static/counter-inner-L.png) |
 
 ## Interaction
 
@@ -166,23 +142,12 @@ Table: Textarea states
 
 | State   | Normal          | Focus      | Disabled           | Read-only      |
 | ------- | --------------- | ---------- | ------------------ | -------------- |
-| Normal  | 
-
-![](static/m.png)         | ![](static/m-focus.png)   | ![](static/m-disabled.png) | ![](static/m-readonly.png)
-
- |
-| Valid   | 
-
-![](static/m-valid.png)     | ![](static/m-valid-focus.png)
-
-       |               |            |
-| Invalid | 
-
-![](static/m-invalid.png) | ![](static/m-invalid-focus.png)
-
- |              |         |
+| Normal  | ![](static/m.png)         | ![](static/m-focus.png)   | ![](static/m-disabled.png) | ![](static/m-readonly.png) |
+| Valid   | ![](static/m-valid.png)     | ![](static/m-valid-focus.png)       |               |            |
+| Invalid | ![](static/m-invalid.png) | ![](static/m-invalid-focus.png) |              |         |
 
 ## Usage in UX/UI
 
-* Use the Textarea when users need to input a substantial amount of data. For short inputs with 1-3 words, use the [Input](/components/input/input) component instead.
-* Provide a descriptive name for the textarea so that users understand the type of data they should enter.
+- Use the Textarea when users need to input a substantial amount of data. For short inputs with 1-3 words, use the [Input](/components/input/input) component instead.
+- Provide a descriptive name for the textarea so that users understand the type of data they should enter.
+

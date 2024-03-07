@@ -14,22 +14,22 @@ import InlineEdit from 'intergalactic/inline-edit';
 
 <TypesView type="InlineEditProps" :types={...types} />
 
-## InlineEdit. View
+## InlineEdit.View
 
-All children of `InlineEdit.View` is displayed when `editable` property of `InlineEdit` is set to `false` . When `editable` property is set to `true` , children elements still persist in DOM, but hidden via css opacity.
+All children of `InlineEdit.View` is displayed when `editable` property of `InlineEdit` is set to `false`. When `editable` property is set to `true`, children elements still persist in DOM, but hidden via css opacity.
 
 ```jsx
 import InlineEdit from 'intergalactic/inline-edit';
 <InlineEdit.View />;
 ```
 
-## InlineEdit. Edit
+## InlineEdit.Edit
 
-All children of `InlineEdit.Edit` is displayed when `editable` property of `InlineEdit` is set to `true` .
+All children of `InlineEdit.Edit` is displayed when `editable` property of `InlineEdit` is set to `true`.
 
 ```jsx
 import InlineEdit from 'intergalactic/inline-edit';
 <InlineEdit.Edit />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

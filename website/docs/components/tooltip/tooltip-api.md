@@ -11,4 +11,4 @@ import Tooltip from 'intergalactic/tooltip';
 
 <TypesView type="TooltipProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

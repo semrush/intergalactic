@@ -15,17 +15,17 @@ Example below shows how to implement equal margins between form components.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/box.tsx'; 
+  export Demo from './examples/box.tsx';
 </script>
 
 :::
 
-Example below shows how a component creates indents using dynamically generated classes. Thus, you can get this class generated into the component by passing it to `tag` .
+Example below shows how a component creates indents using dynamically generated classes. Thus, you can get this class generated into the component by passing it to `tag`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/box.tsx'; 
+  export Demo from './examples/box.tsx';
 </script>
 
 :::
@@ -39,7 +39,7 @@ Example below shows how Flex component takes all properties of a Box component.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/flex.tsx'; 
+  export Demo from './examples/flex.tsx';
 </script>
 
 :::
@@ -51,23 +51,24 @@ The spacing system helps maintain a vertical and horizontal rhythms in the inter
 In addition, vertical and horizontal rhythms help maintain visual hierarchy on the page, structure components and blocks according their importance to the user.
 
 ::: tip
-**Use 4 as the multiple of all the indents**. It is a main denominator of our design system ( `scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/design-tokens).
+**Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/design-tokens).
 :::
 
 Here is a table with [spacing tokens](/style/design-tokens/design-tokens) we use in our design system.
 
 | Token name      | Value in px | Value in rem | Value as a multiple of 4 |
 | --------------- | ----------- | ------------ | ------------------------ |
-| `--spacing-05x` | 2           | 0.125        | 0, 5                      |
-| `--spacing-1x` | 4           | 0.25         | 1                        |
-| `--spacing-2x` | 8           | 0.5          | 2                        |
-| `--spacing-3x` | 12          | 0.75         | 3                        |
-| `--spacing-4x` | 16          | 1            | 4                        |
-| `--spacing-5x` | 20          | 1.25         | 5                        |
-| `--spacing-6x` | 24          | 1.5          | 6                        |
-| `--spacing-8x` | 32          | 2            | 8                        |
+| `--spacing-05x` | 2           | 0.125        | 0,5                      |
+| `--spacing-1x`  | 4           | 0.25         | 1                        |
+| `--spacing-2x`  | 8           | 0.5          | 2                        |
+| `--spacing-3x`  | 12          | 0.75         | 3                        |
+| `--spacing-4x`  | 16          | 1            | 4                        |
+| `--spacing-5x`  | 20          | 1.25         | 5                        |
+| `--spacing-6x`  | 24          | 1.5          | 6                        |
+| `--spacing-8x`  | 32          | 2            | 8                        |
 | `--spacing-10x` | 40          | 2.5          | 10                       |
 | `--spacing-14x` | 56          | 3.5          | 14                       |
 | `--spacing-20x` | 80          | 5            | 20                       |
 | `--spacing-24x` | 96          | 6            | 24                       |
 | `--spacing-30x` | 120         | 7.5          | 30                       |
+

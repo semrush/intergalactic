@@ -15,9 +15,9 @@ import Input from 'intergalactic/input';
 
 <TypesView type="InputProps" :types={...types} />
 
-## Input. Value
+## Input.Value
 
-This component represents the native `tag`  `input` and accepts all its properties, such as `value` and `onChange` .
+This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
 ```jsx
 import Input from 'intergalactic/input';
@@ -26,9 +26,9 @@ import Input from 'intergalactic/input';
 
 <TypesView type="InputValueProps" :types={...types} />
 
-## Input. Addon
+## Input.Addon
 
-The addon inside the input (most often it is an icon) places the correct indent units depending on the size. The addon can be `interactive` .
+The addon inside the input (most often it is an icon) places the correct indent units depending on the size. The addon can be `interactive`.
 
 When you click on Addon, the focus shifts to the input. You can cancel this by returning the `return false` in the `onMouseDown` handler.
 
@@ -39,4 +39,4 @@ import Input from 'intergalactic/input';
 
 <TypesView type="InputAddonProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

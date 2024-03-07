@@ -1,6 +1,6 @@
 ---
 title: DataTable
-tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'), Changelog('data-table-changelog')
+tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'),  Changelog('data-table-changelog')
 ---
 
 ## DataTable
@@ -12,7 +12,7 @@ import DataTable from 'intergalactic/data-table';
 
 <TypesView type="DataTableProps" :types={...types} />
 
-## DataTable. Head
+## DataTable.Head
 
 ```jsx
 import DataTable from 'intergalactic/data-table';
@@ -21,7 +21,7 @@ import DataTable from 'intergalactic/data-table';
 
 <TypesView type="DataTableHeadProps" :types={...types} />
 
-## DataTable. Column
+## DataTable.Column
 
 ```jsx
 import DataTable from 'intergalactic/data-table';
@@ -30,7 +30,7 @@ import DataTable from 'intergalactic/data-table';
 
 <TypesView type="DataTableColumnProps" :types={...types} />
 
-## DataTable. Body
+## DataTable.Body
 
 ```jsx
 import DataTable from 'intergalactic/data-table';
@@ -39,7 +39,7 @@ import DataTable from 'intergalactic/data-table';
 
 It's a wrapper over a [Box](/layout/box-system/box-api#a3cfce) component.
 
-## DataTable. Row
+## DataTable.Row
 
 ```jsx
 import DataTable from 'intergalactic/data-table';
@@ -48,7 +48,7 @@ import DataTable from 'intergalactic/data-table';
 
 <TypesView type="DataTableRowProps" :types={...types} />
 
-## DataTable. Cell
+## DataTable.Cell
 
 ```jsx
 import DataTable from 'intergalactic/data-table';
@@ -57,4 +57,4 @@ import DataTable from 'intergalactic/data-table';
 
 <TypesView type="DataTableCellProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

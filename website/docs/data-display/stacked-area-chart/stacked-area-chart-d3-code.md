@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx'; 
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::
@@ -25,33 +25,33 @@ If you need to display a part-to-whole ratio – use the `<StackedArea/>` and `<
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/stacked-area.tsx'; 
+  export Demo from './examples/stacked-area.tsx';
 </script>
 
 :::
 
 ## Edge cases
 
-* If a part of the chart has no data – use a dashed line to draw that period.
-* If the data has only one value – display it as a dot.
-* Two consecutively known values will automatically be displayed as the `StackedArea` component.
+- If a part of the chart has no data – use a dashed line to draw that period.
+- If the data has only one value – display it as a dot.
+- Two consecutively known values will automatically be displayed as the `StackedArea` component.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/edge-cases.tsx'; 
+  export Demo from './examples/edge-cases.tsx';
 </script>
 
 :::
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx'; 
+  export Demo from './examples/legend-and-pattern-fill.tsx';
 </script>
 
 :::

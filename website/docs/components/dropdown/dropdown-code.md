@@ -17,7 +17,7 @@ The component API is completely identical to [intergalactic/popper](/utils/poppe
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx'; 
+  export Demo from './examples/basic_usage.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ The component API is completely identical to [intergalactic/popper](/utils/poppe
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/focus_interaction.tsx'; 
+  export Demo from './examples/focus_interaction.tsx';
 </script>
 
 :::

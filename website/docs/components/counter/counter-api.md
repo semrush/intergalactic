@@ -21,4 +21,4 @@ import { AnimatedNumber } from 'intergalactic/counter';
 
 <TypesView type="AnimatedNumberBaseProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

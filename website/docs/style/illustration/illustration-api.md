@@ -13,4 +13,4 @@ import IllustrationName from 'intergalactic/illustration/illustrationName';
 
 ## getIllustrationPath
 
-To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg` .
+To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.

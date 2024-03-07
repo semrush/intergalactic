@@ -7,51 +7,42 @@ tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
-import SpinContainer from 'intergalactic/spin-container'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
-import Input from 'intergalactic/input'; 
-import { Box } from 'intergalactic/flex-box'; 
+import React from 'react';
+import SpinContainer from 'intergalactic/spin-container';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Input from 'intergalactic/input';
+import { Box } from 'intergalactic/flex-box';
 
 const playground = (createGroupWidgets) => {
-  const { bool, radio, text, select } = createGroupWidgets('SpinContainer'); 
+  const { bool, radio, text, select } = createGroupWidgets('SpinContainer');
 
   const loading = bool({
-
     key: 'loading',
     defaultValue: true,
     label: 'Loading',
-
-  }); 
+  });
 
   const theme = radio({
-
     key: 'theme',
     defaultValue: 'dark',
     label: 'Theme',
     options: ['dark', 'invert'],
-
-  }); 
+  });
 
   const size = select({
-
     key: 'size',
     defaultValue: 'xxl',
     label: 'Size',
     options: ['xs', 's', 'm', 'l', 'xl', 'xxl'],
-
-  }); 
+  });
 
   const background = text({
-
     key: 'background',
     defaultValue: '',
     label: 'Overlay color',
-
-  }); 
+  });
 
   return (
-
     <SpinContainer
       loading={loading}
       theme={theme}
@@ -75,11 +66,10 @@ const playground = (createGroupWidgets) => {
         </Input>
       </Box>
     </SpinContainer>
+  );
+};
 
-  ); 
-}; 
-
-const App = PlaygroundGeneration(playground); 
+const App = PlaygroundGeneration(playground);
 </script>
 
 :::
@@ -90,7 +80,8 @@ const App = PlaygroundGeneration(playground);
 
 ## Appearance
 
-* The [Spin](/components/spin/spin) is consistently positioned in the center of the SpinContainer.
-* To create an overlay under the SpinContainer, use the `--overlay-limitation-secondary token`.
+- The [Spin](/components/spin/spin) is consistently positioned in the center of the SpinContainer.
+- To create an overlay under the SpinContainer, use the `--overlay-limitation-secondary token`.
 
 ![](static/spincontainer-dropdown.png)
+

@@ -11,4 +11,4 @@ import Flags from 'intergalactic/flags';
 
 <TypesView type="FlagsProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

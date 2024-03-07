@@ -13,16 +13,16 @@ import ProductHead from 'intergalactic/product-head';
 <ProductHead />;
 ```
 
-## ProductHead. Row
+## ProductHead.Row
 
-The header is divided into lines with components. They are divided from each other with equal paddings – `my={2}` .
+The header is divided into lines with components. They are divided from each other with equal paddings – `my={2}`.
 
 ```jsx
 import ProductHead from 'intergalactic/product-head';
 <ProductHead.Row />;
 ```
 
-## ProductHead. Links
+## ProductHead.Links
 
 The component for setting the paddings between the links.
 
@@ -31,7 +31,7 @@ import ProductHead from 'intergalactic/product-head';
 <ProductHead.Links />;
 ```
 
-## ProductHead. Buttons
+## ProductHead.Buttons
 
 The component for setting the paddings between the buttons.
 
@@ -60,7 +60,7 @@ import { Info } from 'intergalactic/product-head';
 <Info />;
 ```
 
-## Info. Item
+## Info.Item
 
 One unit with the information on the project or global filter.
 
@@ -71,4 +71,4 @@ import { Info } from 'intergalactic/product-head';
 
 <TypesView type="InfoItemProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

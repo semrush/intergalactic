@@ -13,4 +13,4 @@ import Ellipsis from 'intergalactic/ellipsis';
 
 <TypesView type="EllipsisProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

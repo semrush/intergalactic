@@ -25,10 +25,10 @@ import { List } from 'intergalactic/typography';
 
 <TypesView type="ListProps" :types={...types} />
 
-## List. Item
+## List.Item
 
-A list item tagged with `li` . It's possible to set a custom marker.
-Also, it is possible to customise content with `<List.Item.Content />` ; 
+A list item tagged with `li`. It's possible to set a custom marker.
+Also, it is possible to customise content with `<List.Item.Content />`;
 
 ```jsx
 import { List } from 'intergalactic/typography';
@@ -52,7 +52,7 @@ import { Blockquote } from 'intergalactic/typography';
 
 ## Hint
 
-The hint is very similar to [Link](/components/link/link) and has a similar structure from `Addon` + `Text` .
+The hint is very similar to [Link](/components/link/link) and has a similar structure from `Addon` + `Text`.
 
 ```jsx
 import { Hint } from 'intergalactic/typography';
@@ -69,7 +69,7 @@ import { Hint } from 'intergalactic/typography';
 A wrapper component required to add styles to native tags.
 
 ::: tip
-Note that the component is in another package `intergalactic/format-text` .
+Note that the component is in another package `intergalactic/format-text`.
 :::
 
 ```jsx
@@ -79,4 +79,4 @@ import FormatText from 'intergalactic/format-text';
 
 <TypesView type="FormatTextProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

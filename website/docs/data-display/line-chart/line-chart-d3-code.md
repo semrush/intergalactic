@@ -13,7 +13,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx'; 
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::
@@ -25,32 +25,32 @@ Line charts are displayed using the `Line` component. `Dots` are the dots on the
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/line.tsx'; 
+  export Demo from './examples/line.tsx';
 </script>
 
 :::
 
 ## Line with area
 
-To get line with area, define `y0` and `y1` in `Line.Area` props and in the `data` .
+To get line with area, define `y0` and `y1` in `Line.Area` props and in the `data`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/line-with-area.tsx'; 
+  export Demo from './examples/line-with-area.tsx';
 </script>
 
 :::
 
 ## Hover line
 
-* The `HoverLine` component is responsible for the hover effect. Use it with line charts.
-* You can set the orientation of the component using the `vertical` and `horizontal` properties.
+- The `HoverLine` component is responsible for the hover effect. Use it with line charts.
+- You can set the orientation of the component using the `vertical` and `horizontal` properties.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/hover-line.tsx'; 
+  export Demo from './examples/hover-line.tsx';
 </script>
 
 :::
@@ -62,7 +62,7 @@ You can add a tooltip to any element of a chart. The internal content can be eas
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tooltip.tsx'; 
+  export Demo from './examples/tooltip.tsx';
 </script>
 
 :::
@@ -72,13 +72,13 @@ You can add a tooltip to any element of a chart. The internal content can be eas
 Use `scaleTime` for calculating intermediate date values. See the [d3 Time Scales documentation](https://github.com/d3/d3-scale#time-scales) for more information.
 
 ::: tip
-If you already have the tick values, you can use `scaleLine` .
+If you already have the tick values, you can use `scaleLine`.
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/time.tsx'; 
+  export Demo from './examples/time.tsx';
 </script>
 
 :::
@@ -90,7 +90,7 @@ To get curved lines, transfer `curve` property with the required rounding method
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/curve.tsx'; 
+  export Demo from './examples/curve.tsx';
 </script>
 
 :::
@@ -102,7 +102,7 @@ You can pass function to `display` prop of `Dots` component to control which dot
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/dots-display-function.tsx'; 
+  export Demo from './examples/dots-display-function.tsx';
 </script>
 
 :::
@@ -111,12 +111,12 @@ You can pass function to `display` prop of `Dots` component to control which dot
 
 To make data available without relying only on colors (for example, for different kinds of colorblind and high-contrast modes), use the `patterns` property. With this property enabled lines become dashed and change dots to different symbols.
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-symbols-for-dots.tsx'; 
+  export Demo from './examples/legend-and-symbols-for-dots.tsx';
 </script>
 
 :::
@@ -128,7 +128,7 @@ If exact values of specific point is not available, you can pass `interpolateVal
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/interpolation.tsx'; 
+  export Demo from './examples/interpolation.tsx';
 </script>
 
 :::

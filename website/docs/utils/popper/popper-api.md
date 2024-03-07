@@ -15,7 +15,7 @@ import Popper from 'intergalactic/popper';
 
 <TypesView type="PopperProps" :types={...types} />
 
-## Popper. Trigger
+## Popper.Trigger
 
 The element to which `<Popper.Popper/>` will be attached.
 
@@ -26,9 +26,9 @@ import Popper from 'intergalactic/popper';
 
 <TypesView type="PopperTriggerProps" :types={...types} />
 
-## Popper. Popper
+## Popper.Popper
 
-The element which will be attached to `<Popper.Trigger/>` .
+The element which will be attached to `<Popper.Trigger/>`.
 
 ```jsx
 import Popper from 'intergalactic/popper';
@@ -37,4 +37,4 @@ import Popper from 'intergalactic/popper';
 
 <TypesView type="PopperPopperProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

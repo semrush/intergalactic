@@ -28,7 +28,7 @@ import { DateRangePicker, MonthRangePicker } from 'intergalactic/date-picker';
 
 <TypesView type="DateRangePickerProps" :types={...types} />
 
-## DatePicker. Trigger and DateRangePicker. Trigger
+## DatePicker.Trigger and DateRangePicker.Trigger
 
 Trigger input, exists by default. `DateRangePicker` has the same interface.
 
@@ -39,7 +39,7 @@ import { DatePicker } from 'intergalactic/date-picker';
 
 <TypesView type="BaseTriggerProps" :types={...types} />
 
-## DateRangePicker. Period
+## DateRangePicker.Period
 
 Component for rendering the configurable periods.
 
@@ -62,7 +62,7 @@ import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 
 <TypesView type="CalendarProps" :types={...types} />
 
-## Calendar. Unit
+## Calendar.Unit
 
 The unit inside the calendar.
 
@@ -76,8 +76,8 @@ import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 
 ## DateRangeComparator
 
-Same api for `MonthDateRangeComparator` .
+Same api for `MonthDateRangeComparator`.
 
 <TypesView type="DateRangeComparatorProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

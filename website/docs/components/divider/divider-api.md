@@ -13,4 +13,4 @@ import Divider from 'intergalactic/divider';
 
 <TypesView type="DividerProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

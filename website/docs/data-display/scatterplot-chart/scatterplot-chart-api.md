@@ -6,12 +6,11 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 
 ## D3 API
 
-## Chart. ScatterPlot
+
+## Chart.ScatterPlot
 
 ```js
-import {
-    Chart
-} from 'intergalactic/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="ScatterPlotChartProps" :types={...types} />
@@ -19,14 +18,11 @@ import {
 ## ScatterPlot
 
 ```js
-import {
-    ScatterPlot
-} from 'intergalactic/d3-chart';
+import { ScatterPlot } from 'intergalactic/d3-chart';
 
-<
-ScatterPlot / > ;
+<ScatterPlot />;
 ```
 
 <TypesView type="ScatterPlotProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

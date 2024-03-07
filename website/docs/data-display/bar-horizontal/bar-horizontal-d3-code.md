@@ -13,19 +13,19 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx'; 
+  export Demo from './examples/basic-usage.tsx';
 </script>
 
 :::
 
 ## Horizontal bar
 
-You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear` . See more about `scaleBand` and `scaleLiner` in the [Bar chart guide](/data-display/bar-chart/bar-chart-d3-code#addc35).
+You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart guide](/data-display/bar-chart/bar-chart-d3-code#addc35).
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/horizontal-bar.tsx'; 
+  export Demo from './examples/horizontal-bar.tsx';
 </script>
 
 :::
@@ -37,14 +37,14 @@ To draw the values of the bars, pass the function to `<Bar/>` to receive all req
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/bar-labels.tsx'; 
+  export Demo from './examples/bar-labels.tsx';
 </script>
 
 :::
 
 ## Grouped horizontal bars
 
-To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>` .
+To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>`.
 
 ::: tip
 The `<GroupBar.HorizontalBar/>` component is a customized `<HorizontalBar/>` that has the same API.
@@ -53,7 +53,7 @@ The `<GroupBar.HorizontalBar/>` component is a customized `<HorizontalBar/>` tha
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouped-horizontal-bars.tsx'; 
+  export Demo from './examples/grouped-horizontal-bars.tsx';
 </script>
 
 :::
@@ -65,19 +65,19 @@ Use the `<Bar.Background/>` and `<HorizontalBar.Background/>` components if you 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/background.tsx'; 
+  export Demo from './examples/background.tsx';
 </script>
 
 :::
 
 ## Legend and pattern fill
 
-Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}` .
+Note that for ChartLegend `patterns` property works only with default `shape={'Checkbox'}`.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/legend-and-pattern-fill.tsx'; 
+  export Demo from './examples/legend-and-pattern-fill.tsx';
 </script>
 
 :::

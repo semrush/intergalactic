@@ -12,7 +12,7 @@ import Pagination from 'intergalactic/pagination';
 
 <TypesView type="PaginationProps" :types={...types} />
 
-## Pagination. FirstPage
+## Pagination.FirstPage
 
 Takes all the properties of the button.
 
@@ -21,7 +21,7 @@ import Pagination from 'intergalactic/pagination';
 <Pagination.FirstPage />;
 ```
 
-## Pagination. NextPage
+## Pagination.NextPage
 
 Takes all the properties of the button.
 
@@ -30,7 +30,7 @@ import Pagination from 'intergalactic/pagination';
 <Pagination.NextPage />;
 ```
 
-## Pagination. PageInput
+## Pagination.PageInput
 
 ```jsx
 import Pagination from 'intergalactic/pagination';
@@ -39,7 +39,7 @@ import Pagination from 'intergalactic/pagination';
 
 <TypesView type="PageInputProps" :types={...types} />
 
-## Pagination. PageInput. Value
+## Pagination.PageInput.Value
 
 ```jsx
 import Pagination from 'intergalactic/pagination';
@@ -48,7 +48,7 @@ import Pagination from 'intergalactic/pagination';
 
 <TypesView type="InputValueProps" :types={...types} />
 
-## Pagination. PrevPage
+## Pagination.PrevPage
 
 Takes all the properties of the button.
 
@@ -57,7 +57,7 @@ import Pagination from 'intergalactic/pagination';
 <Pagination.PrevPage />;
 ```
 
-## Pagination. TotalPages
+## Pagination.TotalPages
 
 ```jsx
 import Pagination from 'intergalactic/pagination';
@@ -66,4 +66,4 @@ import Pagination from 'intergalactic/pagination';
 
 <TypesView type="TotalPagesProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

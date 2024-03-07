@@ -15,7 +15,7 @@ import ProgressBar from 'intergalactic/progress-bar';
 
 <TypesView type="ProgressBarProps" :types={...types} />
 
-## ProgressBar. Value
+## ProgressBar.Value
 
 The component responsible for the progress bar value.
 
@@ -26,4 +26,4 @@ import ProgressBar from 'intergalactic/progress-bar';
 
 <TypesView type="ValueProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

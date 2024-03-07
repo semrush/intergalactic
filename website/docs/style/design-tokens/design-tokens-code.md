@@ -10,7 +10,7 @@ Design tokens are recommended when creating a custom component to ensure a consi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/tokens-with-custom-component.tsx'; 
+  export Demo from './examples/tokens-with-custom-component.tsx';
 </script>
 
 :::
@@ -22,34 +22,31 @@ Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-t
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
+import React from 'react';
 import 'intergalactic/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
-import Button from 'intergalactic/button'; 
-import { Box } from 'intergalactic/flex-box'; 
-import CheckM from '@semcore/icon/Check/m'; 
-import cx from 'classnames'; 
-import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils'; 
-import styles from './processor.module.css'; 
-import Copy from '@components/Copy'; 
+import Button from 'intergalactic/button';
+import { Box } from 'intergalactic/flex-box';
+import CheckM from '@semcore/icon/Check/m';
+import cx from 'classnames';
+import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
+import styles from './processor.module.css';
+import Copy from '@components/Copy';
 
 const FileInput = ({ id, onFile, multiple, accept }) => {
-  const [dragging, setDragging] = React.useState(false); 
+  const [dragging, setDragging] = React.useState(false);
 
-  const handleDragStart = React.useCallback(() => setDragging(true), []); 
-  const handleDragEnd = React.useCallback(() => setDragging(false), []); 
+  const handleDragStart = React.useCallback(() => setDragging(true), []);
+  const handleDragEnd = React.useCallback(() => setDragging(false), []);
   React.useEffect(() => {
-
     window.addEventListener('dragstart', handleDragStart);
     window.addEventListener('dragend', handleDragEnd);
     return () => {
       window.removeEventListener('dragstart', handleDragStart);
       window.removeEventListener('dragend', handleDragEnd);
     };
-
-  }, []); 
+  }, []);
 
   return (
-
     <div className={cx(styles.dropzone, dragging && styles.dropzoneDragging)}>
       <div />
       <div className={styles.dropzoneInner}>
@@ -69,47 +66,39 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
         onChange={(event) => onFile([...(event.target.files ?? [])])}
       />
     </div>
-
-  ); 
-}; 
+  );
+};
 const readFile = (file) =>
   new Promise((resolve, reject) => {
-
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
     reader.onerror = () => reject(reader.error);
     reader.readAsText(file);
-
-  }); 
+  });
 
 const DesignTokensProcessor = () => {
-  const [baseTokens, setBaseTokens] = React.useState(null); 
-  const [designTokens, setDesignTokens] = React.useState(null); 
+  const [baseTokens, setBaseTokens] = React.useState(null);
+  const [designTokens, setDesignTokens] = React.useState(null);
   const handleBaseTokensFile = React.useCallback(async (files) => {
-
     try {
       setBaseTokens(JSON.parse(await readFile(files[0])));
     } catch (err) {
       console.error(err);
       setBaseTokens(null);
     }
-
-  }, []); 
+  }, []);
   const handleDesignTokensFile = React.useCallback(async (files) => {
-
     try {
       setDesignTokens(JSON.parse(await readFile(files[0])));
     } catch (err) {
       console.error(err);
       setDesignTokens(null);
     }
-
-  }, []); 
-  const handleChangeBaseTokensFile = React.useCallback(() => setBaseTokens(null), []); 
-  const handleChangeDesignTokensFile = React.useCallback(() => setDesignTokens(null), []); 
+  }, []);
+  const handleChangeBaseTokensFile = React.useCallback(() => setBaseTokens(null), []);
+  const handleChangeDesignTokensFile = React.useCallback(() => setDesignTokens(null), []);
 
   const { css, json, error } = React.useMemo(() => {
-
     if (!designTokens) return {};
     try {
       const { processedTokens } = processTokens(baseTokens || {}, designTokens, 'intergalactic');
@@ -122,11 +111,9 @@ const DesignTokensProcessor = () => {
     } catch (error) {
       return { error };
     }
-
-  }, [baseTokens, designTokens]); 
+  }, [baseTokens, designTokens]);
 
   return (
-
     <div className={styles.container}>
       <Box mb={2}>
         <label htmlFor='base-tokens-file'>Base tokens JSON file:</label>
@@ -214,11 +201,10 @@ const DesignTokensProcessor = () => {
         </div>
       )}
     </div>
+  );
+};
 
-  ); 
-}; 
-
-const App = DesignTokensProcessor; 
+const App = DesignTokensProcessor;
 </script>
 
 :::

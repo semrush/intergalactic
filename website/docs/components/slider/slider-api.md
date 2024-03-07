@@ -13,21 +13,21 @@ import Slider from 'intergalactic/slider';
 
 <TypesView type="SliderProps" :types={...types} />
 
-## Slider. Bar
+## Slider.Bar
 
 ```jsx
 import Slider from 'intergalactic/slider';
 <Slider.Bar />;
 ```
 
-## Slider. Knob
+## Slider.Knob
 
 ```jsx
 import Slider from 'intergalactic/slider';
 <Slider.Knob />;
 ```
 
-## Slider. Options & Slider. Item
+## Slider.Options & Slider.Item
 
 ```jsx
 import Slider from 'intergalactic/slider';
@@ -36,4 +36,4 @@ import Slider from 'intergalactic/slider';
 </Slider.Options>;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

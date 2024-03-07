@@ -8,7 +8,7 @@ tabs: Design('validation-form'), A11y('validation-form-a11y'), Example('validati
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/form-validation-example-by- `unfocus` .tsx'; 
+  export Demo from './examples/form-validation-example-by-`unfocus`.tsx';
 </script>
 
 :::

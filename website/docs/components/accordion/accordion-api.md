@@ -13,7 +13,7 @@ import Accordion from 'intergalactic/accordion';
 
 <TypesView type="AccordionProps" :types={...types} />
 
-## Accordion. Item
+## Accordion.Item
 
 ```jsx
 import { Accordion } from 'intergalactic/accordion';
@@ -23,7 +23,7 @@ import { Accordion } from 'intergalactic/accordion';
 
 <TypesView type="AccordionItemProps" :types={...types} />
 
-## Accordion. Item. Toggle
+## Accordion.Item.Toggle
 
 ```jsx
 import { Accordion } from 'intergalactic/accordion';
@@ -33,7 +33,7 @@ import { Accordion } from 'intergalactic/accordion';
 
 Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
-## Accordion. Item. Collapse
+## Accordion.Item.Collapse
 
 ```jsx
 import { Accordion } from 'intergalactic/accordion';
@@ -45,7 +45,7 @@ import { Accordion } from 'intergalactic/accordion';
 
 Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
-## Accordion. Item. Chevron
+## Accordion.Item.Chevron
 
 ```jsx
 import { Accordion } from 'intergalactic/accordion';
@@ -55,4 +55,4 @@ import { Accordion } from 'intergalactic/accordion';
 
 Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

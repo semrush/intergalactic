@@ -26,7 +26,7 @@ import Radio from 'intergalactic/radio';
 
 <TypesView type="RadioProps" :types={...types} />
 
-## Radio. Value
+## Radio.Value
 
 ```jsx
 import Radio from 'intergalactic/radio';
@@ -35,11 +35,11 @@ import Radio from 'intergalactic/radio';
 
 <TypesView type="RadioValueProps" :types={...types} />
 
-## Radio. Text
+## Radio.Text
 
 ```jsx
 import Radio from 'intergalactic/radio';
 <Radio.Text />;
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

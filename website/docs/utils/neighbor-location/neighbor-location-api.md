@@ -16,7 +16,7 @@ import NeighborLocation from 'intergalactic/neighbor-location';
 
 <TypesView type="NeighborLocationProps" :types={...types} />
 
-## NeighborLocation. Detect
+## NeighborLocation.Detect
 
 Component for detect neighbors.
 
@@ -28,4 +28,4 @@ import NeighborLocation from 'intergalactic/neighbor-location';
 
 <TypesView type="NeighborItemProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

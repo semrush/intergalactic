@@ -12,7 +12,7 @@ import Notice from 'intergalactic/notice';
 
 <TypesView type="NoticeProps" :types={...types} />
 
-## Notice. Label
+## Notice.Label
 
 The component is inherited from `Box` and is used to insert a label in the left part of the notification, usually it is an icon.
 
@@ -21,7 +21,7 @@ import Notice from 'intergalactic/notice';
 <Notice.label />;
 ```
 
-## Notice. Actions
+## Notice.Actions
 
 The component is inherited from `Box` and is used to insert control components in the lower part of the notification, usually it is a button or a group of buttons.
 
@@ -30,7 +30,7 @@ import Notice from 'intergalactic/notice';
 <Notice.Actions />;
 ```
 
-## Notice. Content
+## Notice.Content
 
 The component is inherited from `Box` and is used to insert content in the notification.
 
@@ -39,7 +39,7 @@ import Notice from 'intergalactic/notice';
 <Notice.Content />;
 ```
 
-## Notice. CloseIcon
+## Notice.CloseIcon
 
 The component is inherited from `Box` and is used to insert the close cross.
 
@@ -59,4 +59,4 @@ import { NoticeSmart } from 'intergalactic/notice';
 
 <TypesView type="NoticeSmartProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

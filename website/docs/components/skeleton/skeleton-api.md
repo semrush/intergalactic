@@ -13,7 +13,7 @@ import Skeleton from 'intergalactic/skeleton';
 
 <TypesView type="SkeletonProps" :types={...types} />
 
-## Skeleton. Text
+## Skeleton.Text
 
 ```jsx
 import Skeleton from 'intergalactic/skeleton';
@@ -86,4 +86,4 @@ import { VennChartSkeleton } from 'intergalactic/skeleton';
 import { RadialTreeChartSkeleton } from 'intergalactic/skeleton';
 ```
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -6,31 +6,22 @@ tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tr
 
 ## D3 API
 
-It have children component `Title` .
+It have children component `Title`.
 
 ```js
-import {
-    RadialTree
-} from 'intergalactic/d3-chart';
+import { RadialTree } from 'intergalactic/d3-chart';
 
-<
-RadialTree >
-    <
-    RadialTree.Radian >
-    <
-    RadialTree.Radian.Label / >
-    <
-    RadialTree.Radian.Line / >
-    <
-    RadialTree.Radian.Cap / >
-    <
-    RadialTree.Radian.Icon / >
-    <
-    /RadialTree.Radian> <
-    RadialTree.Title > < /RadialTree.Title> <
-    /RadialTree>;
+<RadialTree>
+  <RadialTree.Radian>
+    <RadialTree.Radian.Label />
+    <RadialTree.Radian.Line />
+    <RadialTree.Radian.Cap />
+    <RadialTree.Radian.Icon />
+  </RadialTree.Radian>
+  <RadialTree.Title></RadialTree.Title>
+</RadialTree>;
 ```
 
 <TypesView type="RadialTreeProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

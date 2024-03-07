@@ -6,12 +6,10 @@ tabs: Design('bar-chart'), A11y('bar-chart-a11y'), API('bar-chart-api'), Example
 
 ## D3 API
 
-## Chart. Bar
+## Chart.Bar
 
 ```js
-import {
-    Chart
-} from 'intergalactic/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="BarChartProps" :types={...types} />
@@ -19,11 +17,9 @@ import {
 ## Bar
 
 ```js
-import {
-    Bar
-} from 'intergalactic/d3-chart';
+import { Bar } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="BarProps" :types={...types} />
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -3,8 +3,8 @@
 </p>
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
-[![version](https://img.shields.io/npm/v/intergalactic.svg)](https://www.npmjs.com/package/intergalactic)
-[![downloads](https://img.shields.io/npm/dt/intergalactic.svg)](https://www.npmjs.com/package/intergalactic)
+[![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
+[![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
 Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
 
@@ -12,34 +12,32 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 
 ## Features ✨
 
-* 56+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
-* High-quality React components out of the box
-* Written in TypeScript with predictable static types
-* Whole package of design resources and development tools
-* Powerful collection of charts
-* Theme customization in every detail (find details in the [Design tokens guide](https://developer.semrush.com/intergalactic/style/design-tokens/))
+- 56+ components for your design (you can also find them in the [Figma Community](https://www.figma.com/@semrush))
+- High-quality React components out of the box
+- Written in TypeScript with predictable static types
+- Whole package of design resources and development tools
+- Powerful collection of charts
+- Theme customization in every detail (find details in the [Design tokens guide](https://developer.semrush.com/intergalactic/style/design-tokens/))
 
 ## Browser Support
 
-* Google Chrome
-* Mozilla Firefox
-* Opera
-* Microsoft Edge
-* Safari (two last versions)
+- Google Chrome
+- Mozilla Firefox
+- Opera
+- Microsoft Edge
+- Safari (two last versions)
 
 ## Installation 🛠
 
 ```sh
 pnpm add intergalactic
 ```
-
 or
-
 ```sh
 npm install intergalactic
 ```
 
-After the installation, all components will be available at `intergalactic/{{component_name}}` .
+After the installation, all components will be available at `intergalactic/{{component_name}}`.
 
 ## How to contribute to the project
 
@@ -49,15 +47,15 @@ After the installation, all components will be available at `intergalactic/{{com
 
 Thanks to all contributors, you are so awesome! ❤️
 
-* [Roman Lysov](https://github.com/lsroman)
-* [Michael Sereniti](https://github.com/msereniti)
-* [Julia Mnizhek](https://github.com/j-mnizhek)
-* [Ilia Brauer](https://github.com/ilyabrower)
-* [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
-* [Ruslan Gaiazov](https://github.com/freeyoungstrong)
-* [Elena Khaas](https://github.com/elenakhaas)
-* [Tatana Iliukhina](https://github.com/tatana-I)
-* and many others from Semrush team
+- [Roman Lysov](https://github.com/lsroman)
+- [Michael Sereniti](https://github.com/msereniti)
+- [Julia Mnizhek](https://github.com/j-mnizhek)
+- [Ilia Brauer](https://github.com/ilyabrower)
+- [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
+- [Ruslan Gaiazov](https://github.com/freeyoungstrong)
+- [Elena Khaas](https://github.com/elenakhaas)
+- [Tatana Iliukhina](https://github.com/tatana-I)
+- and many others from Semrush team
 
 ### I found a bug! 🕵️‍
 

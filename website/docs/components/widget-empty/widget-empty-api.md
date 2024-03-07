@@ -39,6 +39,6 @@ import { Error } from 'intergalactic/widget-empty';
 
 ## Images
 
-You can find all the possible images for the component in the [Illustration](/style/illustration/illustration-api#getillustrationpath) component. To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg` .
+You can find all the possible images for the component in the [Illustration](/style/illustration/illustration-api#getillustrationpath) component. To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.
 
-<script setup>import { data as types } from '@types.data.ts'; </script>
+<script setup>import { data as types } from '@types.data.ts';</script>
