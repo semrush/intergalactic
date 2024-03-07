@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.28.6-prerelease.2] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/modal` [4.28.4 ~> 4.28.5]).
+
 ## [2.28.5] - 2024-03-05
 
 ### Changed

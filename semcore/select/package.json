@@ -1,7 +1,7 @@
 {
   "name": "@semcore/select",
   "description": "Semrush Select Component",
-  "version": "4.32.6",
+  "version": "4.32.7-prerelease.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
     "@semcore/base-trigger": "4.27.0",
     "@semcore/checkbox": "7.22.3",
     "@semcore/divider": "4.18.5",
-    "@semcore/dropdown-menu": "4.22.2",
+    "@semcore/dropdown-menu": "4.22.3-prerelease.2",
     "@semcore/flex-box": "5.19.4",
     "@semcore/icon": "4.27.1",
     "@semcore/input": "4.20.5",
