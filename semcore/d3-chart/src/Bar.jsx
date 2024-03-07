@@ -80,6 +80,7 @@ class BarRoot extends Component {
       transparent,
       maxBarSize = Infinity,
       patterns,
+      dataHintsHandler,
     } = this.asProps;
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
@@ -105,9 +106,10 @@ class BarRoot extends Component {
     });
 
     if (groupKey) {
-      this.asProps.dataHintsHandler.describeGroupedValues(groupKey, y);
+      dataHintsHandler.describeGroupedValues(groupKey, y);
     } else {
-      this.asProps.dataHintsHandler.describeValueEntity(`${i}.${y}`, groupKey ?? d[x]);
+      dataHintsHandler.describeValueEntity(`${i}.${y}`, groupKey ?? d[x]);
+      dataHintsHandler.specifyDataRowFields(x, y);
     }
 
     return (

@@ -32,7 +32,10 @@ const Demo = () => {
         </YAxis>
         <XAxis>
           <XAxis.Ticks>
-            {({ value, index }) => ({ children: index % 2 === 0 ? getDate(value) : '' })}
+            {({ value, index }) => ({
+              children: index % 2 === 0 ? getDate(value) : '',
+              value: getDate(value),
+            })}
           </XAxis.Ticks>
         </XAxis>
         <Bar x='date_chart' y='download' />
