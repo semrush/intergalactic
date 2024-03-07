@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.7] - 2024-03-07
+
+### Added
+
+- Check that focused element is outside scroll area container before scroll to them.
+
 ## [5.20.6] - 2024-03-06
 
 ### Added

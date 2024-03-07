@@ -124,7 +124,20 @@ class ScrollAreaRoot extends Component {
   handleFocusIn = (e) => {
     setTimeout(() => {
       if (typeof e.target.scrollIntoView === 'function') {
-        e.target.scrollIntoView();
+        const viewPort = this.$container?.getBoundingClientRect();
+        const element = e.target.getBoundingClientRect();
+
+        if (viewPort) {
+          const inViewPort =
+            element.top >= viewPort.top &&
+            element.bottom <= viewPort.bottom &&
+            element.left >= viewPort.left &&
+            element.right <= viewPort.right;
+
+          if (!inViewPort) {
+            e.target.scrollIntoView();
+          }
+        }
       }
     }, 0);
   };
