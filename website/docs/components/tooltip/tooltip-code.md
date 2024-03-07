@@ -23,6 +23,12 @@ As previously mentioned, the tooltip is a styled version of [popper](/utils/popp
 2. Use `Tooltip` when the trigger has a visible name and the content consists of a single text sentence. It may also include interactive elements.
 3. Use `InformationDropdown` when the trigger has a visible name and the content provides a significant amount of additional information. It may contain numerous interactive elements.
 
+Alongside `Tooltip` there are `Hint` and `InformationDropdown` components exported. By using correct component, you will enhance end interface accessibility. 
+
+1. Use `Hint` when content in popper is short and not interactive.
+2. Use `Tooltip` when content contains any interactive elements but text length is not long.
+3. Use `InformationDropdown` when content is long or contains a lot of interactive elements.
+
 ::: sandbox
 
 <script lang="tsx">

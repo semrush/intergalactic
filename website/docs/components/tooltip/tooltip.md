@@ -155,8 +155,8 @@ Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
 Component consists of the following:
 
-- `Hint`
-- `title` attribute for the component which Hint component wraps
+* `Hint`
+* `title` attribute for the component which Hint component wraps
 
 ### Tooltip
 
@@ -174,9 +174,9 @@ Component consists of the following:
 
 Component consists of the following:
 
-- `DescriptionTooltip.Trigger`
-- `DescriptionTooltip.Popper`
-- `DescriptionTooltip.Title`
+* `DescriptionTooltip.Trigger`
+* `DescriptionTooltip.Popper`
+* `DescriptionTooltip.Title`
 
 ## Themes
 
@@ -296,8 +296,8 @@ DescriptionTooltip can contain both unformatted and formatted large text, images
 
 Main recommendations:
 
-- Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
-- Ensure that the tooltip does not overlap important information for the user.
+* Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
+* Ensure that the tooltip does not overlap important information for the user.
 
 ::: tip
 For complex content and forms, use [DropdownMenu](/components/dropdown-menu/dropdown-menu).
