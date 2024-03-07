@@ -132,7 +132,8 @@ class CalendarAbstract extends Component {
     const disabled = _disabled.some(includesDate(date, unit));
 
     return {
-      date: this.formatter(date, locale),
+      date: formatDDMMYY(date, locale),
+      dateKey: this.formatter(date, locale),
       children: '',
       startSelected: selecting.startSelected,
       endSelected: selecting.endSelected,
@@ -189,12 +190,12 @@ class CalendarAbstract extends Component {
     fire(this, 'onHighlightedChange', highlighted.length ? [highlighted[0]] : []);
   };
 
-  getUnitProps({ date }) {
+  getUnitProps({ dateKey }) {
     const { unitRefs } = this.asProps;
     return {
       ref: (node) => {
-        if (!date) return;
-        unitRefs[date] = node;
+        if (!dateKey) return;
+        unitRefs[dateKey] = node;
       },
     };
   }
