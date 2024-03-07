@@ -40,6 +40,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     [props.visible],
   );
 
+  const visibleRef = React.useRef(props.visible);
+  visibleRef.current = props.visible;
   const handleAnimationEnd = React.useCallback((event) => {
     if (event.currentTarget !== event.target) return;
     if (onAnimationEnd) onAnimationEnd(event);
@@ -47,7 +49,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
 
     setTimeout(() => {
       if (!element) return;
-      element.style.height = 'auto';
+      if (visibleRef.current) element.style.height = 'auto';
+      if (!visibleRef.current) element.style.height = `${0}px`;
       if (overflowHidden) {
         element.style.overflow = overflowRef.current;
       }
