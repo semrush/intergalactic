@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.27.1] - 2024-03-07
+
+### Fixed
+
+- Behavior in forms was broken.
+
 ## [4.27.0] - 2024-03-04
 
 ### Changed

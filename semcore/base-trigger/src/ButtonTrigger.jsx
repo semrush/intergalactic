@@ -42,7 +42,7 @@ class RootButtonTrigger extends Component {
     const { Children, styles, loading, empty } = this.asProps;
 
     return sstyled(styles)(
-      <Root render={BaseTrigger} tag={'button'}>
+      <Root render={BaseTrigger} tag='button' type='button'>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         <SButtonAddon>
           {loading ? <SButtonTriggerSpin size='xs' theme={false} /> : <ChevronDown />}
