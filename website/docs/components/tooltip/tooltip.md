@@ -7,33 +7,50 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ::: react-view
 
 <script lang="tsx">
-import React from 'react';
+import React from 'react'; 
 
-import Button from 'intergalactic/button';
-import Tooltip from 'intergalactic/tooltip';
-import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Button from 'intergalactic/button'; 
+import Tooltip, { Hint, InformationDropdown } from 'intergalactic/tooltip'; 
+import { Box, Flex } from 'intergalactic/flex-box'; 
+import { Text } from 'intergalactic/typography'; 
+import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
+import Link from 'intergalactic/link'; 
 
 const PLACEMENT = [
-  'top-start',
-  'top',
-  'top-end',
-  'right-start',
-  'right',
-  'right-end',
-  'bottom-start',
-  'bottom',
-  'bottom-end',
-  'left-start',
-  'left',
-  'left-end',
-];
+  'top-start', 
+  'top', 
+  'top-end', 
+  'right-start', 
+  'right', 
+  'right-end', 
+  'bottom-start', 
+  'bottom', 
+  'bottom-end', 
+  'left-start', 
+  'left', 
+  'left-end', 
+]; 
 
-const EVENT = ['hover', 'click', 'focus'];
+const EVENT = ['hover', 'click', 'focus']; 
+const components = [Hint, Tooltip, InformationDropdown]; 
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
-  const { radio, select } = createGroupWidgets('Tooltip');
+  const { radio, select } = createGroupWidgets('Tooltip'); 
+
+  const component = select({
+
+    key: 'component',
+    defaultValue: 'Tooltip',
+    label: 'Component',
+    options: components.map((component) => ({
+      name: component.displayName,
+      value: component.displayName,
+    })),
+
+  }); 
 
   const placement = select({
+
     key: 'placement',
     defaultValue: 'top',
     label: 'Placement',
@@ -41,9 +58,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  });
+
+  }); 
 
   const theme = select({
+
     key: 'theme',
     defaultValue: 'default',
     label: 'Theme',
@@ -61,18 +80,62 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         value: 'invert',
       },
     ],
-  });
 
-  return (
-    <Tooltip
-      title='Hey there! I am just a tooltip, not a magic genie, but I am here to sprinkle some knowledge on you!'
-      placement={placement}
-      theme={theme}
-    >
-      <Button>Button</Button>
-    </Tooltip>
-  );
-});
+  }); 
+
+  if (component === 'Hint') {
+
+    return (
+      <Hint
+        title='Hint may contain short text only'
+        placement={placement}
+        theme={theme}
+      >
+        <Button>Button</Button>
+      </Hint>
+    );
+
+  } else if (component === 'InformationDropdown') {
+
+    return (
+      <InformationDropdown
+        placement={placement}
+        theme={theme}
+      >
+        <InformationDropdown.Trigger>
+          <Button>Button</Button>
+        </InformationDropdown.Trigger>
+        <InformationDropdown.Popper>
+          <Text size={400}>Information dropdown</Text>
+          <Box my={2}>
+            Information dropdown should be used when a lot of content is needed to be displayed.
+          </Box>
+          <Box mb={2}>It may contain many paragraphs, and many interactive element</Box>
+          <Box>
+            Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing
+            industries for previewing layouts and visual mockups.
+          </Box>
+        </InformationDropdown.Popper>
+      </InformationDropdown>
+    );
+
+  } else {
+
+    return (
+      <Tooltip
+        placement={placement}
+        theme={theme}
+      >
+        <Tooltip.Trigger><Button>Button</Button></Tooltip.Trigger>
+        <Tooltip.Popper>
+          Tooltip may contain icons, <Link href='https://semrush.com'>links</Link> and other elements.
+          On the other hand, it's content shouldn't be too long.
+        </Tooltip.Popper>
+      </Tooltip>
+    );
+
+  }
+}); 
 </script>
 
 :::
@@ -83,9 +146,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
-- Tooltip appears only when hovering over the trigger.
-- It includes an arrow pointing to the trigger.
-- Tooltip contains only hints and additional information.
+* Tooltip appears only when hovering over the trigger.
+* It includes an arrow pointing to the trigger.
+* Tooltip contains only hints and additional information.
 
 ## Component composition
 
@@ -93,13 +156,13 @@ Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
 Component consists of the following:
 
-- `Tooltip.Trigger`
-- `Tooltip.Popper`
-- `Tooltip.Title`
+* `Tooltip.Trigger`
+* `Tooltip.Popper`
+* `Tooltip.Title`
 
 ## Themes
 
-Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
+Tooltip has three themes: `default` , `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert` , and the background color changes accordingly.
 
 ::: tip
 Starting from [version 3.1.0](/components/tooltip/tooltip-changelog), you can set your own custom theme and change the background color.
@@ -109,9 +172,9 @@ Table: Tooltip themes
 
 | Theme   | Appearance example              | Styles      |
 | ------- | ------------------------------- | ----------- |
-| `default` | ![](static/default-theme.png) | `background-color: var(--tooltip-default)`, `border: 1px solid var(--border-secondary)`, `box-shadow: var(--box-shadow-popper)`     |
-| `invert`  | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
-| `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
+| `default` | ![](static/default-theme.png) | `background-color: var(--tooltip-default)` , `border: 1px solid var(--border-secondary)` , `box-shadow: var(--box-shadow-popper)` |
+| `invert` | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)` , `border: 1px solid var(--border-tooltip-invert)` , `box-shadow: var(--box-shadow-popper)` |
+| `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)` , `border: 1px solid var(--border-danger-active)` , `box-shadow: var(--box-shadow-popper)` |
 
 ## Maximum width and offset
 
@@ -138,7 +201,7 @@ The content area of the tooltip has a default padding of 12px.
 ![](static/tooltip-button.png)
 
 ::: tip
-It's recommended to use a font size of 14px (`--fs-200`, `--lh-200` tokens) for the title in non-advertising messages.
+It's recommended to use a font size of 14px ( `--fs-200` , `--lh-200` tokens) for the title in non-advertising messages.
 :::
 
 The image inside the tooltip has a size of 130px * 130px.
@@ -155,21 +218,21 @@ To improve readability, it is recommended to use specific margins between labels
 
 The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api).
 
-The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top`.
+The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top` .
 
 #### Placement properties
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/placement-properties.tsx';
+  export Demo from './examples/placement-properties.tsx'; 
 </script>
 
 :::
 
 ## Interaction
 
-For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon), [Link](/components/link/link), [Button](/components/button/button), etc.
+For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon),  [Link](/components/link/link),  [Button](/components/button/button), etc.
 
 ### Appearance and hiding
 
@@ -184,10 +247,10 @@ Table: Tooltip's appearance and hiding
 
 Default values for tooltip appearance and hiding:
 
-- Appearance: `100ms`
-- Hiding: `50ms`
+* Appearance: `100ms`
+* Hiding: `50ms`
 
-If the tooltip has interactive elements inside, the hiding time should be increased to `100ms`.
+If the tooltip has interactive elements inside, the hiding time should be increased to `100ms` .
 
 ## Content
 
@@ -197,9 +260,9 @@ Tooltip usually contains unformatted text.
 
 In some cases (for example, for advertising purposes), you can format the text and add other components to the tooltip:
 
-- [Button](/components/button/button), [Link](/components/link/link), etc.
-- Image
-- Different background color
+* [Button](/components/button/button), [Link](/components/link/link), etc.
+* Image
+* Different background color
 
 **Remember, the tooltip should only contain hints and tips.**
 
@@ -211,8 +274,8 @@ In some cases (for example, for advertising purposes), you can format the text a
 
 Main recommendations:
 
-- Use the tooltip to show hints and additional information, such as text, formatted text, lists, links, buttons, and small images.
-- Ensure that the tooltip does not overlap important information for the user.
+* Use the tooltip to show hints and additional information, such as text, formatted text, lists, links, buttons, and small images.
+* Ensure that the tooltip does not overlap important information for the user.
 
 ::: tip
 For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/dropdown-menu).
@@ -239,4 +302,3 @@ For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/dro
 **Ensure that the tooltip does not prevent users from interacting with nearby triggers.**
 
 ![](static/tooltip-hover-yes-no.png)
-

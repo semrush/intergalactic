@@ -8,7 +8,7 @@ tabs: Design('summary'), Example('summary-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/default-summary-example.tsx';
+  export Demo from './examples/default-summary-example.tsx'; 
 </script>
 
 :::
@@ -20,33 +20,36 @@ In case your report layout demands it, you have the option to vertically arrange
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Tooltip from 'intergalactic/tooltip';
-import Skeleton from 'intergalactic/skeleton';
-import 'intergalactic/utils/style/var.css';
-import { AnimatedNumber } from 'intergalactic/counter/src';
+import React, { useEffect, useState } from 'react'; 
+import { Box, Flex } from 'intergalactic/flex-box'; 
+import { Text } from 'intergalactic/typography'; 
+import { Hint } from 'intergalactic/tooltip'; 
+import Skeleton from 'intergalactic/skeleton'; 
+import 'intergalactic/utils/style/var.css'; 
+import { AnimatedNumber } from 'intergalactic/counter/src'; 
 
 const Demo = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
   useEffect(() => {
+
     const timer = setInterval(() => {
       setLoading(!loading);
     }, 2000);
     return () => {
       clearInterval(timer);
     };
-  }, [loading]);
+
+  }, [loading]); 
 
   return (
+
     <Flex direction='column' style={{ overflow: 'hidden' }}>
       <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
-        <Tooltip title='Keyword' wMax='100%'>
+        <Hint title='Keyword' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Keyword
           </Text>
-        </Tooltip>
+        </Hint>
         {!loading && (
           <>
             <Text size={100} color='gray-500' tag='p'>
@@ -79,11 +82,11 @@ const Demo = () => {
         </Skeleton>
       </Box>
       <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
-        <Tooltip title='Traffic' wMax='100%'>
+        <Hint title='Traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic
           </Text>
-        </Tooltip>
+        </Hint>
         {!loading && (
           <>
             <Text size={100} color='gray-500' tag='p'>
@@ -112,11 +115,11 @@ const Demo = () => {
         </Skeleton>
       </Box>
       <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
-        <Tooltip title='Traffic cost' wMax='100%'>
+        <Hint title='Traffic cost' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic cost
           </Text>
-        </Tooltip>
+        </Hint>
         {!loading && (
           <>
             <Text size={100} color='gray-500' tag='p'>
@@ -145,11 +148,11 @@ const Demo = () => {
         </Skeleton>
       </Box>
       <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
-        <Tooltip title='Branded traffic' wMax='100%'>
+        <Hint title='Branded traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Branded traffic
           </Text>
-        </Tooltip>
+        </Hint>
         {!loading && (
           <>
             <Text size={100} color='gray-500' tag='p'>
@@ -181,11 +184,11 @@ const Demo = () => {
         </Skeleton>
       </Box>
       <Box h={92} w={146}>
-        <Tooltip title='Non-branded traffic' wMax='100%'>
+        <Hint title='Non-branded traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Non-branded traffic
           </Text>
-        </Tooltip>
+        </Hint>
         {!loading && (
           <>
             <Text size={100} color='gray-500' tag='p'>
@@ -216,9 +219,9 @@ const Demo = () => {
         </Skeleton>
       </Box>
     </Flex>
-  );
-};
 
+  ); 
+}; 
 
 </script>
 
@@ -231,7 +234,7 @@ If the metrics are wider than the page's maximum width, a good approach is to or
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/summary-with-minitrend.tsx';
+  export Demo from './examples/summary-with-minitrend.tsx'; 
 </script>
 
 :::
@@ -241,7 +244,7 @@ If the metrics are wider than the page's maximum width, a good approach is to or
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/summary-with-error.tsx';
+  export Demo from './examples/summary-with-error.tsx'; 
 </script>
 
 :::

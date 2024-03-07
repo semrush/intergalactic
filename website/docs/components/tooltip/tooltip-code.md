@@ -17,6 +17,12 @@ The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper
 
 As previously mentioned, the tooltip is essentially a styled version of [intergalactic/popper](/utils/popper/popper) and functions in the same way.
 
+Alongside `Tooltip` there are `Hint` and `InformationDropdown` components exported. By using correct component, you will enhance end interface accessibility. 
+
+1. Use `Hint` when content in popper is short and not interactive.
+2. Use `Tooltip` when content contains any interactive elements but text length is not long.
+3. Use `InformationDropdown` when content is long or contains a lot of interactive elements.
+
 ::: sandbox
 
 <script lang="tsx">
