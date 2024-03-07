@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.3] - 2024-03-07
+
+### Changed
+
+- Logic to define groupName for a11y summary (for `grouped-values` dataType).
+
 ## [3.31.2] - 2024-03-07
 
 ### Added
