@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.2] - 2024-03-07
+
+### Added
+
+- Logic to define X and Y axis for a11y summary in Bar charts.
+
 ## [3.31.1] - 2024-03-05
 
 ### Changed
