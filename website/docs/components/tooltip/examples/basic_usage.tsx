@@ -6,27 +6,27 @@ import Link from 'intergalactic/link';
 
 const Demo = () => (
   <Flex gap={4} flexWrap>
-    <Hint title='Hint may contain short text only' tag={Link}>
+    <Hint title='Hint may contain short text only.' tag={Link}>
       Hint
     </Hint>
     <Tooltip>
       <Tooltip.Trigger tag={Link}>Tooltip</Tooltip.Trigger>
       <Tooltip.Popper>
         Tooltip may contain icons, <Link href='https://semrush.com'>links</Link> and other elements.
-        On the other hand, it's content shouldn't be too long.
+        Be brief, add only one sentence for its content.
       </Tooltip.Popper>
     </Tooltip>
     <InformationDropdown>
       <InformationDropdown.Trigger tag={Link}>Information dropdown</InformationDropdown.Trigger>
       <InformationDropdown.Popper>
-        <Text size={400}>Information dropdown</Text>
-        <Box my={2}>
-          Information dropdown should be used when a lot of content is needed to be displayed.
-        </Box>
-        <Box mb={2}>It may contain many paragraphs, and many interactive element</Box>
+        <Text size={200} bold>
+          Information dropdown
+        </Text>
+        <Box my={2}>Use it to show a lot of content.</Box>
+        <Box mb={2}>It may contain several paragraphs, and interactive elements.</Box>
         <Box>
-          Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing
-          industries for previewing layouts and visual mockups.
+          Use this tooltip type for elements that already have a visible name, but need to tell the
+          user additional information and contains more than one sentence.
         </Box>
       </InformationDropdown.Popper>
     </InformationDropdown>
