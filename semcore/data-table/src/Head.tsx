@@ -147,8 +147,16 @@ class Head extends Component<AsProps> {
     const SHead = Root;
     const SHeadWrapper = Box as any;
     const SScrollArea = ScrollArea as any;
-    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky, disabledScroll } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      columnsChildren,
+      onResize,
+      $scrollRef,
+      sticky,
+      disabledScroll,
+      hidden,
+    } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
 
@@ -169,7 +177,12 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
+          <SScrollArea.Container
+            ref={$scrollRef}
+            disabledScroll={disabledScroll}
+            role='rowgroup'
+            tabIndex={hidden ? -1 : 0}
+          >
             <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
