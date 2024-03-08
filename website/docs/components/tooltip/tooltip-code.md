@@ -46,7 +46,7 @@ The code below replicates the functionality of `Hint` example above.
 :::
 
 
-## Accessibility
+## Popper trigger accessibility
 
 To ensure accessibility for assistive technologies, set the `aria-describedby` attribute on the trigger, referencing the popper. Therefore, it's necessary to merge nested focusable elements (like links or interactive icons) using the `tag` prop. If you intend to include focusable elements within the trigger, **you must set** the trigger's `aria-describedby` to `undefined` and assign the focusable element's `aria-describedby` to the value you get from the children render function.
 

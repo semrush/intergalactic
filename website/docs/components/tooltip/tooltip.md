@@ -112,7 +112,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
           </Box>
           <Box mb={2}>It may contain several paragraphs, and interactive elements.</Box>
           <Box>
-            Use this tooltip type for elements that already have a visible name, but need to tell the user additional information and contains more than one sentence.
+            Use this tooltip type for elements that already have a visible name, but need to tell the user additional information.
           </Box>
         </InformationDropdown.Popper>
       </InformationDropdown>

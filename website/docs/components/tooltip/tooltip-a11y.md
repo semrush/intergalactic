@@ -15,33 +15,39 @@ Table: Keyboard support
 | ----- | ------------------- |
 | `Esc` | Closes the tooltip. |
 
-### Hint Roles and attributes
+### Focus behavior
 
-The list below describes roles and attributes that tooltip component has.
+1. For `Hint`, the popper is not focusable.
+2. In the case of `Tooltip`, the popper becomes focusable if it contains any focusable elements.
+3. With `InformationDropdown`, the popper is always focusable and automatically receives focus when opened.
 
-Table: Roles and attributes
+### Hint attributes
 
-| Role      | Attribute                 | Element  | Usage                                                                                                                                                                                                                                                             |
-| --------- | ------------------------- | -------- | -------------------------------------------------------------------- |
-|           | `aria-hidden`             | popper   | Hint popper is hidden from assistive technologies.                   |
-|           | `aria-label`              | trigger  | Being applied to trigger contains text equal to text in popper.      |
+The list below describes attributes that `Hint` component has.
 
-### Tooltip Roles and attributes
+Table: Hint attributes
 
-The list below describes roles and attributes that tooltip component has.
+| Attribute                 | Element  | Usage                                                                                                                                                                                                                                                             |
+| ------------------------- | -------- | -------------------------------------------------------------------- |
+| `aria-hidden`             | popper   | `Hint` popper is hidden from assistive technologies.                   |
+| `aria-label`              | trigger  | The applied trigger text matches the text in the popper.  |
+
+### Tooltip roles and attributes
+
+The list below describes roles and attributes that `Tooltip` component has.
 
 Table: Roles and attributes
 
 | Role      | Attribute                 | Element                                                   | Usage                                                                                                                                                                                                                                                             |
 | --------- | ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tooltip` |                           | `div`                                                     | It's a contextual text bubble that displays a description for an element that appears on pointer hover or keyboard focus.                                                                                                                                         |
-|           | `aria-describedby`        | trigger                                                   | Allows assistive technologies to announce a trigger description by popper content. If you need to set it on another element, checkout [the accessability example](/components/tooltip/tooltip-code#accessability).                                                |
+|           | `aria-describedby`        | trigger                                                   | Allows assistive technologies to announce a trigger description by popper content. If you need to set it on another element, checkout [the accessability example](/components/tooltip/tooltip-code#popper-trigger-accessibility).                                                |
 |           | `aria-live="polite"`      | Implicit on `div`                                         | Used to keep component accessible with browsers and screen readers that doesn't support `aria-describedby`. Assistive technologies will announce popper content when it's opened or changed.                                                                      |
 |           | `aria-live="assertive"`   | Implicit on `div` (only for tooltip with `warning` theme) | Same to `aria-live="polite"`. |
 
-### InformationDropdown Roles and attributes
+### InformationDropdown roles and attributes
 
-The list below describes roles and attributes that tooltip component has.
+The list below describes roles and attributes that `InformationDropdown` component has.
 
 Table: Roles and attributes
 
@@ -50,12 +56,6 @@ Table: Roles and attributes
 | `tooltip` |                           | `div`                                                     | It's a contextual text bubble that displays a description for an element that appears on pointer hover or keyboard focus.  |
 |           | `aria-haspopup`           | trigger                                                   | Helps assistive technologies to indicate that trigger has corresponding dropdown.                                          |
 |           | `aria-expanded`           | trigger                                                   | Added when popper is visible. Helps assistive technologies to indicate that opened dropdown.                               |
-
-### Focus behavior
-
-1. `Hint` – popper is not focusable.
-2. `Tooltip` – popper is focusable if contains any focusable elements.
-3. `DropdownMenu` – popper is always focusable and receives autofocus on open.
 
 ## Considerations for developers
 
