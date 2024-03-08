@@ -27,7 +27,7 @@ class ScrollAreaRoot extends Component {
   static displayName = 'ScrollArea';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()];
 
   static defaultProps = () => ({
     container: React.createRef(),
@@ -134,7 +134,7 @@ class ScrollAreaRoot extends Component {
             element.left >= viewPort.left &&
             element.right <= viewPort.right;
 
-          if (!inViewPort) {
+          if (!inViewPort && this.asProps.keyboardFocused) {
             e.target.scrollIntoView();
           }
         }
