@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import ScrollArea from '@semcore/ui/scroll-area';
+import ScrollArea from 'intergalactic/scroll-area';
 ```
 
 <details>

@@ -17,7 +17,8 @@
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "paths": {
-      "@semcore/ui/*": ["../../semcore/*"]
+      "@semcore/ui/*": ["../../semcore/*"],
+      "intergalactic/*": ["../../semcore/*"]
     },
     "typeRoots": ["types"]
   },

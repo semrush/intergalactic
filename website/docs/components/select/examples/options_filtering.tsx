@@ -1,5 +1,5 @@
 import React from 'react';
-import Select, { InputSearch } from '@semcore/ui/select';
+import Select, { InputSearch } from 'intergalactic/select';
 
 const data = Array(26)
   .fill(0)

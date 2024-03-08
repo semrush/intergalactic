@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Modal from '@semcore/ui/modal';
+import Modal from 'intergalactic/modal';
 ```
 
 <details>

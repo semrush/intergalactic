@@ -1,6 +1,6 @@
 import React from 'react';
-import FullscreenModal from '@semcore/ui/fullscreen-modal';
-import Button from '@semcore/ui/button';
+import FullscreenModal from 'intergalactic/fullscreen-modal';
+import Button from 'intergalactic/button';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBar from '@semcore/ui/progress-bar';
+import ProgressBar from 'intergalactic/progress-bar';
 
 const Demo = () => {
   return (

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Radio, { RadioGroup } from 'intergalactic/radio';
 ```
 
 <details>

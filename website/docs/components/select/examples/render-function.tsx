@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
+import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
 
 const options = Array(5)
   .fill('')

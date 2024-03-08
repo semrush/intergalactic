@@ -1,9 +1,9 @@
 import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
-import DataTable from '@semcore/ui/data-table';
+import { Flex } from 'intergalactic/flex-box';
+import DropdownMenu from 'intergalactic/dropdown-menu';
+import Button from 'intergalactic/button';
+import FileExportM from 'intergalactic/icon/FileExport/m';
+import DataTable from 'intergalactic/data-table';
 
 const extensions = ['png', 'jpeg', 'webp'];
 

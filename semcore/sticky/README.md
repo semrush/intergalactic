@@ -11,13 +11,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Sticky from '@semcore/ui/sticky';
+import Sticky from 'intergalactic/sticky';
 ```
 
 <details>

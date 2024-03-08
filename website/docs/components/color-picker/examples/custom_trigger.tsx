@@ -1,7 +1,7 @@
 import React from 'react';
-import ColorPicker from '@semcore/ui/color-picker';
-import Input from '@semcore/ui/input';
-import { Box } from '@semcore/ui/flex-box';
+import ColorPicker from 'intergalactic/color-picker';
+import Input from 'intergalactic/input';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#C695FF');

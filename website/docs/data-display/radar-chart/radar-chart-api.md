@@ -7,7 +7,7 @@ tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code'
 ## D3 API
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar/>;
 ```
@@ -17,7 +17,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ## Radar.Axis
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar.Axis/>;
 ```
@@ -27,7 +27,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ## Radar.Axis.Labels
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar.Axis.Labels/>;
 ```
@@ -37,7 +37,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ## Radar.Axis.Ticks
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar.Axis.Ticks/>;
 ```
@@ -47,7 +47,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ## Radar.Polygon
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar.Polygon/>;
 ```
@@ -57,7 +57,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ## Radar.Polygon.Line
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar.Polygon.Line/>;
 ```
@@ -67,7 +67,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ## Radar.Polygon.Dots
 
 ```js
-import { Radar } from '@semcore/ui/d3-chart';
+import { Radar } from 'intergalactic/d3-chart';
 
 <Radar.Polygon.Dots/>;
 ```

@@ -1,6 +1,6 @@
 import React from 'react';
-import Tooltip from '@semcore/ui/tooltip';
-import IconInfo from '@semcore/ui/icon/Info/m';
+import Tooltip from 'intergalactic/tooltip';
+import IconInfo from 'intergalactic/icon/Info/m';
 
 const Demo = () => {
   return (

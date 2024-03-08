@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Slider from '@semcore/ui/slider';
+import Slider from 'intergalactic/slider';
 ```
 
 <details>

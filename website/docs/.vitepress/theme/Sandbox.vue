@@ -9,28 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { createRoot as createReactRoot } from 'react-dom/client'
 import lzString from 'lz-string';
 import { isolateStyles } from './isolateStyles';
+import { preferSemcoreUi } from './preferences';
 const { compressToBase64: lzCompressToBase64 } = lzString;
 
 (globalThis as any).createReactRoot = createReactRoot;
-
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
-const htmlCode = atob(codeEncoded!);
-const rawCode = atob(rawCodeEncoded!);
-const hideCode = hideCodeEncoded === 'true';
-
-
-onMounted(() => {
-  if (!playgroundId) return;
-  const wrapper = document.querySelector(`#${playgroundId}`) as HTMLDivElement | undefined;
-  if (!wrapper) return;
-  let element = stylesIsolation ? isolateStyles(wrapper) : wrapper;
-
-  globalThis[`render_${playgroundId}`]?.(element)
-})
 
 const dataToLzCompressedJson = (data) => {
   /**
@@ -47,53 +33,77 @@ const dataToLzCompressedJson = (data) => {
   return base64;
 };
 
-const dependencies = {};
-const lines = rawCode!.split('\n');
-for (const line of lines) {
-  for (const quote of ["'", '"']) {
-    const importStatementStart = line.indexOf(`from ${quote}`);
-    if (importStatementStart === -1) continue;
-    if (line[importStatementStart - 1] !== ' ' && importStatementStart !== 0) continue;
-    const importStatementPart = line.substring(importStatementStart + `from ${quote}`.length);
-    const importStatementEnd = importStatementPart.indexOf(quote);
-    let dependency = importStatementPart.substring(0, importStatementEnd);
-    if (dependency.startsWith('@')) {
-      dependency = dependency.split('/').slice(0, 2).join('/');
-    } else {
-      dependency = dependency.split('/')[0];
-    }
-    dependencies[dependency] = 'latest';
-    break;
+const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
+const htmlCode = computed(() => {
+  let code = atob(codeEncoded!);
+  if (preferSemcoreUi.value) {
+    code = code.replace(/;intergalactic\//g, ";@semcore/ui/")
   }
-}
+  return code;
+});
+const codesandboxUrl = computed(() => {
+  let code = rawCode;
+  if (preferSemcoreUi.value) {
+    code = code.replace(/'intergalactic\//g, "'@semcore/ui/")
+  }
+  const dependencies = {};
+  const lines = code!.split('\n');
+  for (const line of lines) {
+    for (const quote of ["'", '"']) {
+      const importStatementStart = line.indexOf(`from ${quote}`);
+      if (importStatementStart === -1) continue;
+      if (line[importStatementStart - 1] !== ' ' && importStatementStart !== 0) continue;
+      const importStatementPart = line.substring(importStatementStart + `from ${quote}`.length);
+      const importStatementEnd = importStatementPart.indexOf(quote);
+      let dependency = importStatementPart.substring(0, importStatementEnd);
+      if (dependency.startsWith('@')) {
+        dependency = dependency.split('/').slice(0, 2).join('/');
+      } else {
+        dependency = dependency.split('/')[0];
+      }
+      dependencies[dependency] = 'latest';
+      break;
+    }
+  }
 
-const codesandboxParameters = dataToLzCompressedJson({
-  files: {
-    'package.json': {
-      content: {
-        dependencies: {
-          ...dependencies,
-          react: '18',
-          'react-dom': '18',
-          '@semcore/core': 'latest',
+  const codesandboxParameters = dataToLzCompressedJson({
+    files: {
+      'package.json': {
+        content: {
+          dependencies: {
+            ...dependencies,
+            react: '18',
+            'react-dom': '18',
+          },
         },
       },
-    },
-    'src/index.tsx': {
-      content: `import React from "react";
+      'src/index.tsx': {
+        content: `import React from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 
 const root = createRoot(document.getElementById("root"));
 root.render(<App />);
 `,
+      },
+      'src/App.tsx': {
+        content: code + '\n\nexport const App = () => <Demo />;\n',
+      },
     },
-    'src/App.tsx': {
-      content: rawCode + '\n\nexport const App = () => <Demo />;\n',
-    },
-  },
-});
+  });
 
-const codesandboxUrl = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${codesandboxParameters}`;
+  return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${codesandboxParameters}`;
+})
 
+let rawCode = atob(rawCodeEncoded!);
+const hideCode = hideCodeEncoded === 'true';
+
+onMounted(() => {
+  if (!playgroundId) return;
+  const wrapper = document.querySelector(`#${playgroundId}`) as HTMLDivElement | undefined;
+  if (!wrapper) return;
+  let element = stylesIsolation ? isolateStyles(wrapper) : wrapper;
+
+  globalThis[`render_${playgroundId}`]?.(element)
+})
 </script>

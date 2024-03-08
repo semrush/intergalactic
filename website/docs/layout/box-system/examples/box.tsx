@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
+import { Box } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
 
 const Demo = () => (
   <div>

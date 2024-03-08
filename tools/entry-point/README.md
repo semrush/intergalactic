@@ -1,7 +1,7 @@
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
-[![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
-[![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
+[![version](https://img.shields.io/npm/v/intergalactic.svg)](https://www.npmjs.com/package/intergalactic)
+[![downloads](https://img.shields.io/npm/dt/intergalactic.svg)](https://www.npmjs.com/package/intergalactic)
 
 Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
 

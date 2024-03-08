@@ -1,7 +1,7 @@
 import React from 'react';
-import Flags, { iso2Name } from '@semcore/ui/flags';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
+import Flags, { iso2Name } from 'intergalactic/flags';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => (
   <Flex flexWrap>

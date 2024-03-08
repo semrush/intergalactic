@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
+import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
 
 const Demo = () => (
   <LinkExternalM

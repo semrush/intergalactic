@@ -9,7 +9,7 @@ tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tr
 It have children component `Title`.
 
 ```js
-import { RadialTree } from '@semcore/ui/d3-chart';
+import { RadialTree } from 'intergalactic/d3-chart';
 
 <RadialTree>
   <RadialTree.Radian>

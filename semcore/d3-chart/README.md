@@ -13,7 +13,7 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ import {
   HoverRect,
   minMax,
   colors,
-} from '@semcore/ui/d3-chart';
+} from 'intergalactic/d3-chart';
 ```
 
 <details>

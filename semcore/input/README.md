@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Input from '@semcore/ui/input';
+import Input from 'intergalactic/input';
 ```
 
 <details>

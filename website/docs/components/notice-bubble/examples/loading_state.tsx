@@ -1,8 +1,8 @@
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
-import Button from '@semcore/ui/button';
-import Spin from '@semcore/ui/spin';
-import { Flex } from '@semcore/ui/flex-box';
+import { NoticeBubbleContainer, NoticeBubbleManager } from 'intergalactic/notice-bubble';
+import Button from 'intergalactic/button';
+import Spin from 'intergalactic/spin';
+import { Flex } from 'intergalactic/flex-box';
 
 const manager = new NoticeBubbleManager();
 

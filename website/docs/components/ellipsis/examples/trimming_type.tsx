@@ -1,6 +1,6 @@
 import React from 'react';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Box } from '@semcore/ui/flex-box';
+import Ellipsis from 'intergalactic/ellipsis';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (

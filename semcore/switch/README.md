@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Switch from '@semcore/ui/switch';
+import Switch from 'intergalactic/switch';
 ```
 
 <details>

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import InlineEdit from '@semcore/ui/inline-edit';
+import InlineEdit from 'intergalactic/inline-edit';
 ```
 
 <details>

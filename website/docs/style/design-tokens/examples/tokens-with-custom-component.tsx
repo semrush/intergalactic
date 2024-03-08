@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import Switch from '@semcore/ui/switch';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import Button from 'intergalactic/button';
+import Switch from 'intergalactic/switch';
+import { Box, Flex } from 'intergalactic/flex-box';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 
 const styles = `

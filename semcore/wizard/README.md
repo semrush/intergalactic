@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Wizard from '@semcore/ui/wizard';
+import Wizard from 'intergalactic/wizard';
 ```
 
 <details>

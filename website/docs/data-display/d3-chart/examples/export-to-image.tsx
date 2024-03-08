@@ -1,10 +1,10 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/button';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
+import { Line, minMax, Plot, XAxis, YAxis } from 'intergalactic/d3-chart';
+import { Flex } from 'intergalactic/flex-box';
+import DropdownMenu from 'intergalactic/dropdown-menu';
+import Button from 'intergalactic/button';
+import FileExportM from 'intergalactic/icon/FileExport/m';
 
 const extensions = ['png', 'jpeg', 'webp'];
 

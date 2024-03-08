@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import ProgressBar from '@semcore/ui/progress-bar';
+import ProgressBar from 'intergalactic/progress-bar';
 ```
 
 <details>

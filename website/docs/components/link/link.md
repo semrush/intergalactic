@@ -9,9 +9,9 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 <script lang="tsx">
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Link from '@semcore/ui/link';
-import CheckM from '@semcore/ui/icon/Check/m';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import Link from 'intergalactic/link';
+import CheckM from 'intergalactic/icon/Check/m';
+import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const SIZE = [
   { value: '100', name: '100 = 12px' },

@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import SpinContainer from '@semcore/ui/spin-container';
+import DataTable from 'intergalactic/data-table';
+import SpinContainer from 'intergalactic/spin-container';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);

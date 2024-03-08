@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Divider from '@semcore/ui/divider';
+import Divider from 'intergalactic/divider';
 ```
 
 <details>

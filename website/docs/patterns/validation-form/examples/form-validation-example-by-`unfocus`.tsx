@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import Input from '@semcore/ui/input';
-import Tooltip from '@semcore/ui/tooltip';
-import Button from '@semcore/ui/button';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from 'intergalactic/typography';
+import Input from 'intergalactic/input';
+import Tooltip from 'intergalactic/tooltip';
+import Button from 'intergalactic/button';
+import { Box, Flex } from 'intergalactic/flex-box';
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 

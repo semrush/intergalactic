@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from '@semcore/ui/card';
-import { Text } from '@semcore/ui/typography';
-import SettingsM from '@semcore/ui/icon/Settings/m';
-import DataTable from '@semcore/ui/data-table';
+import Card from 'intergalactic/card';
+import { Text } from 'intergalactic/typography';
+import SettingsM from 'intergalactic/icon/Settings/m';
+import DataTable from 'intergalactic/data-table';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const data = [

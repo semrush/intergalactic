@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from '@semcore/ui/card';
-import { Text } from '@semcore/ui/typography';
-import Ellipsis from '@semcore/ui/ellipsis';
-import { Flex } from '@semcore/ui/flex-box';
+import Card from 'intergalactic/card';
+import { Text } from 'intergalactic/typography';
+import Ellipsis from 'intergalactic/ellipsis';
+import { Flex } from 'intergalactic/flex-box';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 

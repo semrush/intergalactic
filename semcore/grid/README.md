@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Grid from '@semcore/ui/grid';
+import Grid from 'intergalactic/grid';
 ```
 
 <details>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Flex } from '@semcore/ui/flex-box';
-import Tooltip from '@semcore/ui/tooltip';
-import Input from '@semcore/ui/input';
-import Button from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
+import { Flex } from 'intergalactic/flex-box';
+import Tooltip from 'intergalactic/tooltip';
+import Input from 'intergalactic/input';
+import Button from 'intergalactic/button';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const { register, handleSubmit, errors, reset } = useForm({

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/ui/d3-chart';
+import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 import { curveCardinal } from 'd3-shape';
 
 const Demo = () => {
