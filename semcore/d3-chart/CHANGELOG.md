@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Logic to define groupName for a11y summary (for `grouped-values` dataType).
+- Improve generation a11y summary for `StackBar`.
 
 ## [3.31.2] - 2024-03-07
 
