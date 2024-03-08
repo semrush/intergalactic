@@ -74,6 +74,7 @@ const codesandboxUrl = computed(() => {
             ...dependencies,
             react: '18',
             'react-dom': '18',
+            '@types/react': '18',
           },
         },
       },
