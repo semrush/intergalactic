@@ -88,8 +88,11 @@ class RangePickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          this.handlers.visible(false);
-          this.handlers.displayedPeriod(getEndDate([value[0] ?? undefined, value[1] ?? undefined]));
+          if (value[0] !== null || value[1] !== null) {
+            this.handlers.displayedPeriod(
+              getEndDate([value[0] ?? undefined, value[1] ?? undefined]),
+            );
+          }
         },
       ],
     };
@@ -203,6 +206,7 @@ class RangePickerAbstract extends Component {
     const [startDate, endDate = startDate] = value;
     this.handleChange([]);
     this.handlers.value([startDate, endDate]);
+    this.handlers.visible(false);
   };
 
   handleChange = (date) => {
@@ -388,7 +392,7 @@ class RangePickerAbstract extends Component {
     return this.handleApply(preselectedValue.length ? preselectedValue : value);
   };
   getApplyProps() {
-    const { value, getI18nText, preselectedValue } = this.asProps;
+    const { getI18nText } = this.asProps;
     return {
       getI18nText,
       onClick: this.handleApplyClick,
