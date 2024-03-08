@@ -8,7 +8,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 It's just a `Box`.
 
 ```jsx
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 <Card />;
 ```
 
@@ -17,7 +17,7 @@ import Card from '@semcore/ui/card';
 It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
 
 ```jsx
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 <Card.Header />;
 ```
 
@@ -26,7 +26,7 @@ import Card from '@semcore/ui/card';
 It's just a `Box`, with pre-installed paddings.
 
 ```jsx
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 <Card.Body />;
 ```
 
@@ -35,7 +35,7 @@ import Card from '@semcore/ui/card';
 The card title is able to display the tip.
 
 ```jsx
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 <Card.Title />;
 ```
 
@@ -46,7 +46,7 @@ import Card from '@semcore/ui/card';
 Has all properties as the [Text](/style/typography/typography-api#a9dffb).
 
 ```jsx
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 <Card.Description />;
 ```
 

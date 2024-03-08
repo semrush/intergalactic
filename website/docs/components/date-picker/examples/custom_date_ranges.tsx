@@ -1,6 +1,6 @@
 import React from 'react';
-import { DateRangePicker } from '@semcore/ui/date-picker';
-import { Flex, Box } from '@semcore/ui/flex-box';
+import { DateRangePicker } from 'intergalactic/date-picker';
+import { Flex, Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const pastYear = new Date();

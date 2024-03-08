@@ -1,9 +1,9 @@
 import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Textarea from '@semcore/ui/textarea';
-import Counter from '@semcore/ui/counter';
-import { ScreenReaderOnly } from '@semcore/ui/utils/lib/ScreenReaderOnly';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import Textarea from 'intergalactic/textarea';
+import Counter from 'intergalactic/counter';
+import { ScreenReaderOnly } from 'intergalactic/utils/lib/ScreenReaderOnly';
 
 const Demo = () => (
   <Flex direction='column' w={350}>

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Flags, { iso2Name, iso3iso2 } from '@semcore/ui/flags';
+import Flags, { iso2Name, iso3iso2 } from 'intergalactic/flags';
 ```
 
 <details>

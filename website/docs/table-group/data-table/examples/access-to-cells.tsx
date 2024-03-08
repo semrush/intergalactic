@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Link from '@semcore/ui/link';
+import DataTable from 'intergalactic/data-table';
+import Link from 'intergalactic/link';
 
 const Demo = () => {
   return (

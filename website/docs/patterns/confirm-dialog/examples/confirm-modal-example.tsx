@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import { Flex } from '@semcore/ui/flex-box';
-import Modal from '@semcore/ui/modal';
-import { Text, List } from '@semcore/ui/typography';
-import Input from '@semcore/ui/input';
-import Tooltip from '@semcore/ui/tooltip';
-import '@semcore/ui/utils/style/var.css';
+import Button from 'intergalactic/button';
+import { Flex } from 'intergalactic/flex-box';
+import Modal from 'intergalactic/modal';
+import { Text, List } from 'intergalactic/typography';
+import Input from 'intergalactic/input';
+import Tooltip from 'intergalactic/tooltip';
+import 'intergalactic/utils/style/var.css';
 
 const warningBlockStyles = {
   background: 'var(--red-50)',

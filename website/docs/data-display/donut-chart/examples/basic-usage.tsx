@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   return (

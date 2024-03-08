@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from '@semcore/ui/link';
-import CheckM from '@semcore/ui/icon/Check/m';
-import ChevronRightM from '@semcore/ui/icon/ChevronRight/m';
+import Link from 'intergalactic/link';
+import CheckM from 'intergalactic/icon/Check/m';
+import ChevronRightM from 'intergalactic/icon/ChevronRight/m';
 
 const Demo = () => {
   return (

@@ -17,7 +17,7 @@ Please note that histogram chart and [bar chart](/data-display/bar-chart/bar-cha
 For Horizontal view, you should pass `true` into `invertAxis` prop
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="HistogramChartProps" :types={...types} />

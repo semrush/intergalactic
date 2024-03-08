@@ -1,9 +1,9 @@
 import React from 'react';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import Dropdown from '@semcore/ui/dropdown';
-import Button from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
+import { FilterTrigger } from 'intergalactic/base-trigger';
+import Dropdown from 'intergalactic/dropdown';
+import Button from 'intergalactic/button';
+import { Text } from 'intergalactic/typography';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [filters, setFilters] = React.useState(0);

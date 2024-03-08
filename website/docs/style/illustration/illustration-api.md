@@ -8,7 +8,7 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 Any illustration can be obtained using a template.
 
 ```js
-import IllustrationName from '@semcore/ui/illustration/illustrationName';
+import IllustrationName from 'intergalactic/illustration/illustrationName';
 ```
 
 ## getIllustrationPath

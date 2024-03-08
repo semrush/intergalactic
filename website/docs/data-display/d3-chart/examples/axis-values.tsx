@@ -1,6 +1,20 @@
 import React from 'react';
-import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
+import { Plot, Line, XAxis, YAxis, minMax } from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import Icon from '@semcore/icon/Video/m';
+
+const size = 16;
+const TickFormatter = ({ value, x, y }) => {
+  return (
+    <foreignObject
+      transform={`translate(${x - size / 2},${y + 8})`}
+      width={`${size}px`}
+      height={`${size}px`}
+    >
+      {value === 10 ? 'V' : <Icon />}
+    </foreignObject>
+  );
+};
 
 const Demo = () => {
   const MARGIN = 60;
@@ -18,7 +32,11 @@ const Demo = () => {
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <XAxis>
-        <XAxis.Ticks ticks={xScale.ticks()} />
+        <XAxis.Ticks ticks={xScale.ticks()}>
+          {({ value, x, y, index }) => ({
+            children: index % 2 === 0 ? value : <TickFormatter value={value} x={x} y={y} />,
+          })}
+        </XAxis.Ticks>
       </XAxis>
       <YAxis>
         <YAxis.Ticks ticks={yScale.ticks(5)}>

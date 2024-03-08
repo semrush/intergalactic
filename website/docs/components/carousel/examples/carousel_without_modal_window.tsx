@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Carousel from '@semcore/ui/carousel';
+import { Box, Flex } from 'intergalactic/flex-box';
+import Carousel from 'intergalactic/carousel';
 
 const images = [
   'https://picsum.photos/id/1023/600/400',

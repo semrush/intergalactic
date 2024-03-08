@@ -1,7 +1,7 @@
 import React from 'react';
-import Counter from '@semcore/ui/counter';
-import Button from '@semcore/ui/button';
-import SettingsM from '@semcore/ui/icon/Settings/m';
+import Counter from 'intergalactic/counter';
+import Button from 'intergalactic/button';
+import SettingsM from 'intergalactic/icon/Settings/m';
 
 const Demo = () => (
   <>

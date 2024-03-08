@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Select from '@semcore/ui/select';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import Counter from '@semcore/ui/counter';
-import Tooltip from '@semcore/ui/tooltip';
-import InputTags from '@semcore/ui/input-tags/';
-import Button from '@semcore/ui/button';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import Select from 'intergalactic/select';
+import { ButtonTrigger } from 'intergalactic/base-trigger';
+import Counter from 'intergalactic/counter';
+import Tooltip from 'intergalactic/tooltip';
+import InputTags from 'intergalactic/input-tags/';
+import Button from 'intergalactic/button';
 
 const Demo = () => {
   const defaultValues = {

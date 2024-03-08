@@ -1,9 +1,9 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import DataTable from '@semcore/ui/data-table';
-import Accordion from '@semcore/ui/accordion';
-import { Flex } from '@semcore/ui/flex-box';
-import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
+import DataTable from 'intergalactic/data-table';
+import Accordion from 'intergalactic/accordion';
+import { Flex } from 'intergalactic/flex-box';
+import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from 'intergalactic/d3-chart';
 
 const RowAccordion = React.forwardRef(function (
   { value, collapse = {}, ...props }: any,

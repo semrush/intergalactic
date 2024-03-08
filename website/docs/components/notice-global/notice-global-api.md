@@ -6,7 +6,7 @@ tabs: Design('notice-global'), A11y('notice-global-a11y'), API('notice-global-ap
 ## Notice
 
 ```jsx
-import NoticeGlobal from '@semcore/ui/notice-global';
+import NoticeGlobal from 'intergalactic/notice-global';
 <NoticeGlobal />;
 ```
 
@@ -17,7 +17,7 @@ import NoticeGlobal from '@semcore/ui/notice-global';
 The component is inherited from `Box` and is used to insert content in the notification.
 
 ```jsx
-import NoticeGlobal from '@semcore/ui/notice';
+import NoticeGlobal from 'intergalactic/notice';
 <NoticeGlobal.Content />;
 ```
 
@@ -26,7 +26,7 @@ import NoticeGlobal from '@semcore/ui/notice';
 The component is inherited from `Box` and is used to insert the close cross.
 
 ```jsx
-import NoticeGlobal from '@semcore/ui/notice';
+import NoticeGlobal from 'intergalactic/notice';
 <NoticeGlobal.CloseIcon />;
 ```
 

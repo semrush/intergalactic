@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import ProgressBar from '@semcore/ui/progress-bar';
+import DataTable from 'intergalactic/data-table';
+import ProgressBar from 'intergalactic/progress-bar';
 
 const Demo = () => {
   return (

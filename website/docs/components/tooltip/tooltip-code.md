@@ -5,17 +5,17 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ---
 
 ::: warning
-:warning: If you require customizing the tooltip behavior, please refer to the [@semcore/ui/popper](/utils/popper/popper) documentation.
+:warning: If you require customizing the tooltip behavior, please refer to the [intergalactic/popper](/utils/popper/popper) documentation.
 :::
 
-The tooltip component is a wrap over [@semcore/ui/popper](/utils/popper/popper) with additional features:
+The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper) with additional features:
 
 - Stylization and themes for the popper.
 - Displaying the arrow of the popper.
 
 ## Basic usage
 
-As previously mentioned, the tooltip is essentially a styled version of [@semcore/ui/popper](/utils/popper/popper) and functions in the same way.
+As previously mentioned, the tooltip is essentially a styled version of [intergalactic/popper](/utils/popper/popper) and functions in the same way.
 
 ::: sandbox
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import InlineInput from '@semcore/ui/inline-input';
-import InlineEdit from '@semcore/ui/inline-edit';
-import EditM from '@semcore/ui/icon/Edit/m';
-import { Text } from '@semcore/ui/typography';
+import InlineInput from 'intergalactic/inline-input';
+import InlineEdit from 'intergalactic/inline-edit';
+import EditM from 'intergalactic/icon/Edit/m';
+import { Text } from 'intergalactic/typography';
 
 const Example = () => {
   const [title, setTitle] = React.useState('The Adventures of the Intergalactic Whale');

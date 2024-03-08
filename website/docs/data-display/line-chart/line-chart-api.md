@@ -9,7 +9,7 @@ tabs: Design('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Exam
 ## Chart.Line
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="LineChartProps" :types={...types} />
@@ -19,7 +19,7 @@ import { Chart } from '@semcore/ui/d3-chart';
 It have children components `Dots, Null`.
 
 ```js
-import { Line } from '@semcore/ui/d3-chart';
+import { Line } from 'intergalactic/d3-chart';
 
 <Line>
   <Line.Dots />

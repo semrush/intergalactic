@@ -1,6 +1,6 @@
 import React from 'react';
-import { MonthPicker, MonthRangePicker } from '@semcore/ui/date-picker';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import { MonthPicker, MonthRangePicker } from 'intergalactic/date-picker';
+import { Box, Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState(new Date());

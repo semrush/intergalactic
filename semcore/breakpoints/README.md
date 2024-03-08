@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Breakpoints from '@semcore/ui/breakpoints';
+import Breakpoints from 'intergalactic/breakpoints';
 ```
 
 <details>

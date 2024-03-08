@@ -103,11 +103,10 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 
 :::
 
-## Axis values
+## Axis values (formatters and custom components)
 
 You can change the values and properties on the axis by passing a function.
-
-The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
+If your function return simple (just formatted) value, we will render it inside `text` element, otherwise, you should manually add `foreignObject` and calculate `translate` for them.
 
 ::: tip
 The function arguments contain calculated XY coordinates that you can use to shift the object as needed.
@@ -148,7 +147,7 @@ By default, the title is set to the right for the Oy axis, and at the top for th
 ::: sandbox
 
 <script lang="tsx">
-import { Bar, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
+import { Bar, XAxis, Plot, YAxis } from 'intergalactic/d3-chart';
   export Demo from './examples/axes-titles.tsx';
 </script>
 
@@ -299,7 +298,7 @@ The fill data is used for rendering charts like an `Area` while symbol data is n
 
 <script  lang="tsx">
 import React from 'react';
-import { Chart, Pattern } from '@semcore/ui/d3-chart';
+import { Chart, Pattern } from 'intergalactic/d3-chart';
 
 const customPattern: Pattern = {
   fill: {

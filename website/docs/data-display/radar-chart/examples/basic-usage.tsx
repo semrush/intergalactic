@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, colors } from '@semcore/ui/d3-chart';
+import { Chart, colors } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   return <Chart.Radar data={data} groupKey={'categories'} plotWidth={400} plotHeight={400} />;

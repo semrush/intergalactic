@@ -1,11 +1,11 @@
 import React from 'react';
-import FeedbackForm from '@semcore/ui/feedback-form';
-import Input from '@semcore/ui/input';
-import InputNumber from '@semcore/ui/input-number';
-import Radio, { RadioGroup } from '@semcore/ui/radio';
-import Select from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
+import FeedbackForm from 'intergalactic/feedback-form';
+import Input from 'intergalactic/input';
+import InputNumber from 'intergalactic/input-number';
+import Radio, { RadioGroup } from 'intergalactic/radio';
+import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 type Data = {
   title: string;

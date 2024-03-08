@@ -13,7 +13,7 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import {
   DateRangePicker,
   MonthPicker,
   MonthRangePicker,
-} from '@semcore/ui/date-picker';
+} from 'intergalactic/date-picker';
 ```
 
 <details>

@@ -1,7 +1,7 @@
 import React from 'react';
-import Tooltip from '@semcore/ui/tooltip';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Link from '@semcore/ui/link';
+import Tooltip from 'intergalactic/tooltip';
+import { Box, Flex } from 'intergalactic/flex-box';
+import Link from 'intergalactic/link';
 
 const Demo = () => (
   <Flex>

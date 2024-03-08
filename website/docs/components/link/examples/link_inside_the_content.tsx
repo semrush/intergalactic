@@ -1,8 +1,8 @@
 import React from 'react';
-import FormatText from '@semcore/ui/format-text';
-import { List } from '@semcore/ui/typography';
-import Link from '@semcore/ui/link';
-import EditM from '@semcore/ui/icon/Edit/m';
+import FormatText from 'intergalactic/format-text';
+import { List } from 'intergalactic/typography';
+import Link from 'intergalactic/link';
+import EditM from 'intergalactic/icon/Edit/m';
 
 class Demo extends React.PureComponent {
   render() {

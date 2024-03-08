@@ -1,4 +1,4 @@
-import { render, cleanup, act } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
@@ -250,6 +250,33 @@ describe('DataTable', () => {
         },
       }),
     ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should focus to body (skip head) if head is hidden', async ({ task }) => {
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head hidden>
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
+          </DataTable.Head>
+          <DataTable.Body data-testid={'tableBody'} />
+        </DataTable>
+      </div>
+    );
+
+    const { getAllByRole } = render(component);
+
+    await userEvent.keyboard('[Tab]');
+
+    const groups = getAllByRole('rowgroup');
+    const head = groups[0];
+    const body = groups[1];
+
+    expect(head).not.toHaveFocus();
+    expect(body).toHaveFocus();
   });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */

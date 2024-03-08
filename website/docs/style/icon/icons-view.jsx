@@ -5,10 +5,10 @@ import algoliasearch from 'algoliasearch/lite';
 import { Flex } from '@semcore/flex-box';
 
 import IconGroup, { IconGroups, ListIcons } from './icon-group';
-import Input from '@semcore/ui/input';
-import { Text } from '@semcore/ui/typography';
-import SearchM from '@semcore/ui/icon/Search/m';
-import CloseM from '@semcore/ui/icon/Close/m';
+import Input from 'intergalactic/input';
+import { Text } from 'intergalactic/typography';
+import SearchM from 'intergalactic/icon/Search/m';
+import CloseM from 'intergalactic/icon/Close/m';
 import staticFiles from '@static';
 import { algoliaConfig } from '../../../algoliaConfig';
 

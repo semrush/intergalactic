@@ -30,6 +30,6 @@ class StickyRoot extends Component<IStickyProps> {
 
 const Sticky = createComponent(StickyRoot) as <T>(props: IStickyProps & T) => React.ReactElement;
 /**
- * @deprecated Please, use package `@semcore/ui/flex-box` instead. Package `@semcore/sticky` will be removed in the next major release
+ * @deprecated Please, use package `intergalactic/flex-box` instead. Package `@semcore/sticky` will be removed in the next major release
  */
 export default Sticky;

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import { Text } from '@semcore/ui/typography';
-import Select from '@semcore/ui/select';
-import Divider from '@semcore/ui/divider';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-import InputNumber from '@semcore/ui/input-number';
+import { Flex } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
+import { FilterTrigger } from 'intergalactic/base-trigger';
+import { Text } from 'intergalactic/typography';
+import Select from 'intergalactic/select';
+import Divider from 'intergalactic/divider';
+import NeighborLocation from 'intergalactic/neighbor-location';
+import InputNumber from 'intergalactic/input-number';
 
 const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }) => {
   const minRange = 0;

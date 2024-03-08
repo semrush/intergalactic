@@ -1,6 +1,6 @@
 import React from 'react';
-import ColorPicker from '@semcore/ui/color-picker';
-import Tooltip from '@semcore/ui/tooltip';
+import ColorPicker from 'intergalactic/color-picker';
+import Tooltip from 'intergalactic/tooltip';
 
 const colors = [
   '#A7AB38',

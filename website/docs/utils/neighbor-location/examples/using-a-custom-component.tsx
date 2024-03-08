@@ -1,5 +1,5 @@
 import React from 'react';
-import NeighborLocation from '@semcore/ui/neighbor-location';
+import NeighborLocation from 'intergalactic/neighbor-location';
 
 const CustomComponent: React.FC<{ neighborLocation?: string }> = ({ neighborLocation }) => {
   return <span>{neighborLocation}</span>;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hint } from '@semcore/ui/typography';
+import { Hint } from 'intergalactic/typography';
 
 const Demo = () => {
   /**
