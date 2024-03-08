@@ -45,6 +45,7 @@ import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import LikeM from '@semcore/icon/Like/m';
 import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
+import Icon from '@semcore/icon/Video/m';
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 
@@ -128,15 +129,53 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test.sequential('should support change tag YAxis.Ticks', () => {
+  test.sequential('should support custom component as axis value', () => {
     const { queryByTestId } = render(
       <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
-        <YAxis ticks={[0]}>
-          <YAxis.Ticks data-testid='test' tag='foreignObject' />
+        <YAxis ticks={[0]} data-testid='axis'>
+          <YAxis.Ticks data-testid='tick'>
+            {() => {
+              return {
+                children: <foreignObject>some custom value</foreignObject>,
+              };
+            }}
+          </YAxis.Ticks>
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test')!.tagName).toBe('foreignObject');
+
+    expect(queryByTestId('tick')).toBeFalsy(); // because we replace current tick value with custom children element
+    expect(queryByTestId('axis').nextSibling).toHaveTextContent('some custom value');
+  });
+
+  test.sequential('should render correct custom component as axis value', async ({ task }) => {
+    const size = 16;
+    const TickFormatter = ({ value, x, y }: any) => {
+      return (
+        <foreignObject
+          transform={`translate(${x - size / 2},${y + 8})`}
+          width={`${size}px`}
+          height={`${size}px`}
+        >
+          <Icon />
+        </foreignObject>
+      );
+    };
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={100} height={140}>
+        <XAxis>
+          <XAxis.Ticks>
+            {({ value, x, y, index }: any) => ({
+              children: index === 1 ? <TickFormatter value={value} x={x} y={y} /> : value,
+            })}
+          </XAxis.Ticks>
+        </XAxis>
+        <YAxis />
+      </Plot>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
