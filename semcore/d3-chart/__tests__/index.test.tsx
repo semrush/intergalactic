@@ -128,15 +128,23 @@ describe('YAxis', () => {
     expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test.sequential('should support change tag YAxis.Ticks', () => {
+  test.sequential('should support custom component as axis value', () => {
     const { queryByTestId } = render(
       <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
-        <YAxis ticks={[0]}>
-          <YAxis.Ticks data-testid='test' tag='foreignObject' />
+        <YAxis ticks={[0]} data-testid='axis'>
+          <YAxis.Ticks data-testid='tick'>
+            {({ value, x, y }) => {
+              return {
+                children: <foreignObject>some custom value</foreignObject>,
+              };
+            }}
+          </YAxis.Ticks>
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test')!.tagName).toBe('foreignObject');
+
+    expect(queryByTestId('tick')).toBeFalsy(); // because we replace current tick value with custom children element
+    expect(queryByTestId('axis').nextSibling).toHaveTextContent('some custom value');
   });
 });
 
