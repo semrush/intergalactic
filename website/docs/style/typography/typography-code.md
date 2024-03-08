@@ -39,7 +39,7 @@ Using the example below, you can easily create lists with custom bullets.
 
 ## Native typography tags
 
-To style native tags, use the `FormatText` component from the `@semcore/ui/format-text` package.
+To style native tags, use the `FormatText` component from the `intergalactic/format-text` package.
 
 It's acceptable to style third-party HTML. However, in other cases, we recommend using the `Text` component.
 

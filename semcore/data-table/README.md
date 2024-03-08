@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import DataTable from '@semcore/ui/data-table';
+import DataTable from 'intergalactic/data-table';
 ```
 
 <details>

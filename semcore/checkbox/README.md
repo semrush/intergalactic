@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 ```
 
 <details>

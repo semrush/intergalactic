@@ -86,7 +86,9 @@ Our documentation website's foundation has undergone several iterations and may 
 
 ### Publishing Process
 
-Each component is published as a distinct npm package, while a special `@semcore/ui` package re-exports them collectively. The complex publishing process is fully automated through our CI/CD pipeline.
+The main way to deliver components is `intergalactic` npm package.
+
+Also each component is published as a distinct npm package, while a special `@semcore/ui` package re-exports them collectively. The complex publishing process is fully automated through our CI/CD pipeline.
 
 ### Default Theme
 

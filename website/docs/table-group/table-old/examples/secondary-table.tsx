@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 
 const data = [
   {

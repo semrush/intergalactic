@@ -13,7 +13,7 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ npm install @semcore/ui
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { semcoreI18nVitePlugin } from '@semcore/ui/i18n-unplugin';
+import { semcoreI18nVitePlugin } from 'intergalactic/i18n-unplugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -40,7 +40,7 @@ export default defineConfig({
 ### Webpack
 
 ```js
-var { semcoreI18nWebpackPlugin } = require('@semcore/ui/i18n-unplugin');
+var { semcoreI18nWebpackPlugin } = require('intergalactic/i18n-unplugin');
 
 module.exports = {
   // ...
@@ -52,7 +52,7 @@ module.exports = {
 ### Rollup & esbuild
 
 ```js
-import { semcoreI18nRollupPlugin, semcoreI18nEsbuildPlugin } from '@semcore/ui/i18n-unplugin';
+import { semcoreI18nRollupPlugin, semcoreI18nEsbuildPlugin } from 'intergalactic/i18n-unplugin';
 // ...
 ```
 

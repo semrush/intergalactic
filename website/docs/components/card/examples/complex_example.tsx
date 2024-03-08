@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from '@semcore/ui/card';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
-import Close from '@semcore/ui/icon/Close/m';
-import Select from '@semcore/ui/select';
-import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Card from 'intergalactic/card';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
+import Close from 'intergalactic/icon/Close/m';
+import Select from 'intergalactic/select';
+import { LinkTrigger } from 'intergalactic/base-trigger';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const options = Array(6)

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Plot, Venn, colors } from '@semcore/ui/d3-chart';
-import { Text } from '@semcore/ui/typography';
+import { Plot, Venn, colors } from 'intergalactic/d3-chart';
+import { Text } from 'intergalactic/typography';
 
 const data = {
   G: 200,

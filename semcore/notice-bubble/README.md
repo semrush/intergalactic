@@ -13,7 +13,7 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ import NoticeBubbleManager, {
   NoticeBubbleContainer,
   NoticeBubble,
   NoticeBubbleWarning,
-} from '@semcore/ui/notice-bubble';
+} from 'intergalactic/notice-bubble';
 ```
 
 <details>

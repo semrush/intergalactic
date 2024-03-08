@@ -8,10 +8,10 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 
 <script lang="tsx">
 import React from 'react';
-import InputTags from '@semcore/ui/input-tags';
+import InputTags from 'intergalactic/input-tags';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import CheckM from '@semcore/ui/icon/Check/m';
+import CheckM from 'intergalactic/icon/Check/m';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, HoverRect } from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Flex, Box } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import { Flex, Box } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const MARGIN = 40;

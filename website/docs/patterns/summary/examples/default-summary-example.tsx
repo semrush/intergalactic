@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
-import '@semcore/ui/utils/style/var.css';
-import { AnimatedNumber } from '@semcore/ui/counter/src';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import Tooltip from 'intergalactic/tooltip';
+import 'intergalactic/utils/style/var.css';
+import { AnimatedNumber } from 'intergalactic/counter/src';
 
 const Demo = () => {
   React.useEffect(() => {

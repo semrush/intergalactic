@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import FeedbackForm from '@semcore/ui/feedback-form';
+import FeedbackForm from 'intergalactic/feedback-form';
 ```
 
 <details>

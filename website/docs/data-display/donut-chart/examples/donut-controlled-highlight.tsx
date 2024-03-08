@@ -1,7 +1,7 @@
 import React from 'react';
-import { Donut, Plot } from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
-import Checkbox from '@semcore/ui/checkbox';
+import { Donut, Plot } from 'intergalactic/d3-chart';
+import { Flex } from 'intergalactic/flex-box';
+import Checkbox from 'intergalactic/checkbox';
 
 const data = { a: 3, b: 1, c: 2 };
 

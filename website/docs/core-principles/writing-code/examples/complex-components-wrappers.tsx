@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable, { wrapDataTable } from '@semcore/ui/data-table';
-import Card from '@semcore/ui/card';
+import DataTable, { wrapDataTable } from 'intergalactic/data-table';
+import Card from 'intergalactic/card';
 
 const CardDataTable = wrapDataTable<{ title: string }>(({ title, ...restProps }) => {
   return (

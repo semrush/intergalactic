@@ -9,7 +9,7 @@ tabs: Design('neighbor-location'), API('neighbor-location-api'), Changelog('neig
 Root wrapper-component doesn't create a node but provides a context for defining neighbors.
 
 ```jsx
-import NeighborLocation from '@semcore/ui/neighbor-location';
+import NeighborLocation from 'intergalactic/neighbor-location';
 
 <NeighborLocation />;
 ```
@@ -21,7 +21,7 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 Component for detect neighbors.
 
 ```jsx
-import NeighborLocation from '@semcore/ui/neighbor-location';
+import NeighborLocation from 'intergalactic/neighbor-location';
 
 <NeighborLocation.Detect />;
 ```

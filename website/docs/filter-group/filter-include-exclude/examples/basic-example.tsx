@@ -1,11 +1,11 @@
 import React from 'react';
-import Dropdown from '@semcore/ui/dropdown';
-import { Flex } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import { Text } from '@semcore/ui/typography';
-import Radio, { RadioGroup } from '@semcore/ui/radio';
-import Textarea from '@semcore/ui/textarea';
+import Dropdown from 'intergalactic/dropdown';
+import { Flex } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
+import { FilterTrigger } from 'intergalactic/base-trigger';
+import { Text } from 'intergalactic/typography';
+import Radio, { RadioGroup } from 'intergalactic/radio';
+import Textarea from 'intergalactic/textarea';
 
 const Demo = () => {
   const [filters, setFilters] = React.useState(false);

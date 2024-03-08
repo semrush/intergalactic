@@ -1,6 +1,6 @@
 import React from 'react';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import Dropdown from '@semcore/ui/dropdown';
+import { ButtonTrigger } from 'intergalactic/base-trigger';
+import Dropdown from 'intergalactic/dropdown';
 
 const Demo = () => (
   <Dropdown interaction={'focus'}>

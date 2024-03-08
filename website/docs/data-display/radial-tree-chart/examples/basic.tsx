@@ -1,9 +1,9 @@
 import React from 'react';
-import { Plot, RadialTree } from '@semcore/ui/d3-chart';
+import { Plot, RadialTree } from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import LikeM from '@semcore/ui/icon/Like/m';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
+import LikeM from 'intergalactic/icon/Like/m';
+import { Flex } from 'intergalactic/flex-box';
+import Select from 'intergalactic/select';
 
 const movies = [
   { label: 'Action', key: 'action', color: '#008ff8' },

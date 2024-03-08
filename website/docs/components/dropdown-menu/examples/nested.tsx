@@ -1,7 +1,7 @@
 import React from 'react';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import ChevronRightIcon from '@semcore/ui/icon/ChevronRight/m';
+import DropdownMenu from 'intergalactic/dropdown-menu';
+import { ButtonTrigger } from 'intergalactic/base-trigger';
+import ChevronRightIcon from 'intergalactic/icon/ChevronRight/m';
 
 const Demo = () => {
   return (

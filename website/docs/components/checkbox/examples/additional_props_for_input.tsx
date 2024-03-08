@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 
 const Demo = () => {
   return (

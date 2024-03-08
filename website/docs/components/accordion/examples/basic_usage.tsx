@@ -1,7 +1,7 @@
 import React from 'react';
-import Accordion from '@semcore/ui/accordion';
-import { Text } from '@semcore/ui/typography';
-import { Flex, Box } from '@semcore/ui/flex-box';
+import Accordion from 'intergalactic/accordion';
+import { Text } from 'intergalactic/typography';
+import { Flex, Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [value, onChange] = React.useState([0]);

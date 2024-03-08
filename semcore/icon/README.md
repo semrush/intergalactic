@@ -13,15 +13,15 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import BaseIcon from '@semcore/ui/icon';
+import BaseIcon from 'intergalactic/icon';
 
-import CloseM from '@semcore/ui/icon/Close/m';
+import CloseM from 'intergalactic/icon/Close/m';
 ```
 
 <details>

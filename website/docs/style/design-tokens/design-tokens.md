@@ -5,7 +5,7 @@ tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in 
 ---
 
 ::: tip
-Design tokens are available for use from **@semcore/ui@13.5.0** version.
+Design tokens are available for use from **intergalactic@13.5.0** version.
 :::
 
 ## Description

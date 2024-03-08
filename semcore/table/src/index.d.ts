@@ -105,7 +105,7 @@ export type TableRowProps = BoxProps & {
 };
 
 /**
- * @deprecated Please, use package `@semcore/ui/data-table` instead. Package `@semcore/table` is deprecated.
+ * @deprecated Please, use package `intergalactic/data-table` instead. Package `@semcore/table` is deprecated.
  */
 declare const Table: Intergalactic.Component<'table', TableProps, TableCtx> & {
   Head: Intergalactic.Component<'thead', BoxProps>;
@@ -117,7 +117,7 @@ declare const Table: Intergalactic.Component<'table', TableProps, TableCtx> & {
 };
 
 /**
- * @deprecated Please, use package `@semcore/ui/data-table` instead. Package `@semcore/table` is deprecated.
+ * @deprecated Please, use package `intergalactic/data-table` instead. Package `@semcore/table` is deprecated.
  */
 declare const Consumer: React.Consumer<ITableCtx>;
 

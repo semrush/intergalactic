@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable, { DataTableSort } from '@semcore/ui/data-table';
+import DataTable, { DataTableSort } from 'intergalactic/data-table';
 
 const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);

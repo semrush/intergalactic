@@ -1,11 +1,11 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import InputMask, { getAfterPositionValue } from '@semcore/ui/input-mask';
-import Select, { InputSearch } from '@semcore/ui/select';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-import Flag, { iso2Name } from '@semcore/ui/flags';
-import { Text } from '@semcore/ui/typography';
-import CloseM from '@semcore/ui/icon/Close/m';
+import Input from 'intergalactic/input';
+import InputMask, { getAfterPositionValue } from 'intergalactic/input-mask';
+import Select, { InputSearch } from 'intergalactic/select';
+import NeighborLocation from 'intergalactic/neighbor-location';
+import Flag, { iso2Name } from 'intergalactic/flags';
+import { Text } from 'intergalactic/typography';
+import CloseM from 'intergalactic/icon/Close/m';
 
 const CountryCodes = {
   AF: { name: 'Afghanistan', dial_code: '+93', code: 'AF' },

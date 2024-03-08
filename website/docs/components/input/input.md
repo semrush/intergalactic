@@ -8,11 +8,11 @@ tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code
 
 <script lang="tsx">
 import React from 'react';
-import Input from '@semcore/ui/input';
+import Input from 'intergalactic/input';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import CheckM from '@semcore/ui/icon/Check/m';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import CheckM from 'intergalactic/icon/Check/m';
+import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import SidePanel from '@semcore/ui/side-panel';
+import SidePanel from 'intergalactic/side-panel';
 ```
 
 <details>

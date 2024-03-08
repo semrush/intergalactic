@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
-import WarningM from '@semcore/ui/icon/Warning/m';
-import { AnimatedNumber } from '@semcore/ui/counter/src';
-import '@semcore/ui/utils/style/var.css';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import Tooltip from 'intergalactic/tooltip';
+import WarningM from 'intergalactic/icon/Warning/m';
+import { AnimatedNumber } from 'intergalactic/counter/src';
+import 'intergalactic/utils/style/var.css';
 
 const Demo = () => {
   React.useEffect(() => {

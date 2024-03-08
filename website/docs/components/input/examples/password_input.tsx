@@ -1,10 +1,10 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import ShowYesM from '@semcore/ui/icon/ShowYes/m';
-import ShowNoM from '@semcore/ui/icon/ShowNo/m';
-import Button from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
+import Input from 'intergalactic/input';
+import ShowYesM from 'intergalactic/icon/ShowYes/m';
+import ShowNoM from 'intergalactic/icon/ShowNo/m';
+import Button from 'intergalactic/button';
+import { Text } from 'intergalactic/typography';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [type, setType] = React.useState('password');

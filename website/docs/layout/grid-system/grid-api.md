@@ -7,7 +7,7 @@ tabs: Design('grid-system'), API('grid-api'), Grid system('grid-code'), Changelo
 ## Row
 
 ```jsx
-import { Row } from '@semcore/ui/grid';
+import { Row } from 'intergalactic/grid';
 <Row />;
 ```
 
@@ -16,7 +16,7 @@ import { Row } from '@semcore/ui/grid';
 ## Col
 
 ```jsx
-import { Col } from '@semcore/ui/grid';
+import { Col } from 'intergalactic/grid';
 <Col />;
 ```
 

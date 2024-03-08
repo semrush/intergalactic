@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from '@semcore/ui/link';
+import Link from 'intergalactic/link';
 
 class Demo extends React.PureComponent {
   render() {

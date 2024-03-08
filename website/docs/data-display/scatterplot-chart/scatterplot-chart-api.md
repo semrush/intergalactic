@@ -10,7 +10,7 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 ## Chart.ScatterPlot
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="ScatterPlotChartProps" :types={...types} />
@@ -18,7 +18,7 @@ import { Chart } from '@semcore/ui/d3-chart';
 ## ScatterPlot
 
 ```js
-import { ScatterPlot } from '@semcore/ui/d3-chart';
+import { ScatterPlot } from 'intergalactic/d3-chart';
 
 <ScatterPlot />;
 ```

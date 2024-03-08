@@ -1,8 +1,8 @@
 import React from 'react';
-import Checkbox from '@semcore/ui/checkbox';
-import Tooltip from '@semcore/ui/tooltip';
-import InfoM from '@semcore/ui/icon/Info/m';
-import Link from '@semcore/ui/link';
+import Checkbox from 'intergalactic/checkbox';
+import Tooltip from 'intergalactic/tooltip';
+import InfoM from 'intergalactic/icon/Info/m';
+import Link from 'intergalactic/link';
 
 function noop(e) {
   e.preventDefault();

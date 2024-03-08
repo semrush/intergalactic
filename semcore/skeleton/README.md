@@ -13,7 +13,7 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ import Skeleton, {
   ScatterPlotChartSkeleton,
   BubbleChartSkeleton,
   RadialTreeChartSkeleton,
-} from '@semcore/ui/skeleton';
+} from 'intergalactic/skeleton';
 ```
 
 <details>
