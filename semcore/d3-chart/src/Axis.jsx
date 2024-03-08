@@ -245,7 +245,6 @@ function Ticks(props) {
     indexScale,
     dataHintsHandler,
     children,
-    size,
   } = props;
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
@@ -264,19 +263,7 @@ function Ticks(props) {
   }
 
   return ticks.map((value, i) => {
-    const { x, y } = pos(scale, value, position);
-    let displayValue =
-      typeof children === 'function'
-        ? children({ value, x, y, index: i, size })
-        : renderValue(value);
-
-    if (typeof displayValue === 'object' && 'children' in displayValue) {
-      displayValue = displayValue.children;
-    }
-
-    if (React.isValidElement(displayValue)) {
-      return displayValue;
-    }
+    const displayValue = renderValue(value);
 
     return sstyled(styles)(
       <STick
@@ -289,8 +276,7 @@ function Ticks(props) {
         index={i}
         position={positionClass}
         hide={hide}
-        x={x}
-        y={y}
+        {...pos(scale, value, position)}
       >
         {displayValue}
       </STick>,
