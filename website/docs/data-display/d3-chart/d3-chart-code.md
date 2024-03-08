@@ -103,10 +103,11 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 
 :::
 
-## Axis values (formatters and custom components)
+## Axis values
 
 You can change the values and properties on the axis by passing a function.
-If your function return simple (just formatted) value, we will render it inside `text` element, otherwise, you should manually add `foreignObject` and calculate `translate` for them.
+
+The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
 
 ::: tip
 The function arguments contain calculated XY coordinates that you can use to shift the object as needed.
