@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.8] - 2024-03-08
+
+### Fixed
+
+- Unexpected scroll after mouse clicks.
+
 ## [5.20.7] - 2024-03-07
 
 ### Added
