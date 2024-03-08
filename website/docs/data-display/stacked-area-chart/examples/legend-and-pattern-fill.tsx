@@ -9,10 +9,10 @@ import {
   makeDataHintsContainer,
   LegendItem,
   ChartLegend,
-} from '@semcore/ui/d3-chart';
+} from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Flex, Box } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import { Flex, Box } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 import { curveCardinal } from 'd3-shape';
 import resolveColor from '@semcore/utils/lib/color';
 

@@ -8,7 +8,7 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 Wrapper over the checkbox with the `label` tag.
 
 ```jsx
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 <Checkbox />;
 ```
 
@@ -19,7 +19,7 @@ import Checkbox from '@semcore/ui/checkbox';
 Represents `input[type=checkbox]` and `span` with an icon.
 
 ```jsx
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 <Checkbox.Value />;
 ```
 
@@ -28,7 +28,7 @@ import Checkbox from '@semcore/ui/checkbox';
 Represents `input[type=checkbox]` 
 
 ```jsx
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 <Checkbox.Value.Control />;
 ```
 
@@ -37,7 +37,7 @@ import Checkbox from '@semcore/ui/checkbox';
 Represents `span` in `Checkbox.Value`.
 
 ```jsx
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 <Checkbox.Value.CheckMark />;
 ```
 
@@ -45,10 +45,10 @@ import Checkbox from '@semcore/ui/checkbox';
 
 ## Checkbox.Text
 
-It is the customized `Text` from `@semcore/ui/typography`, depending on the size.
+It is the customized `Text` from `intergalactic/typography`, depending on the size.
 
 ```jsx
-import Checkbox from '@semcore/ui/checkbox';
+import Checkbox from 'intergalactic/checkbox';
 <Checkbox.Text />;
 ```
 

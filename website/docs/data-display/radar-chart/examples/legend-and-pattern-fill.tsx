@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Radar, colors, LegendItem, ChartLegend } from '@semcore/ui/d3-chart';
+import { Plot, Radar, colors, LegendItem, ChartLegend } from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 const Demo = () => {

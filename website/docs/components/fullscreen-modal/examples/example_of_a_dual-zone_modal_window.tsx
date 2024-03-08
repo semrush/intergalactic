@@ -1,10 +1,10 @@
 import React from 'react';
-import FullscreenModal from '@semcore/ui/fullscreen-modal';
-import { Text } from '@semcore/ui/typography';
-import Button from '@semcore/ui/button';
-import Divider from '@semcore/ui/divider';
-import ArrowLeftM from '@semcore/ui/icon/ArrowLeft/m';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import FullscreenModal from 'intergalactic/fullscreen-modal';
+import { Text } from 'intergalactic/typography';
+import Button from 'intergalactic/button';
+import Divider from 'intergalactic/divider';
+import ArrowLeftM from 'intergalactic/icon/ArrowLeft/m';
+import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

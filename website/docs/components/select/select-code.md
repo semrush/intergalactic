@@ -5,10 +5,10 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ---
 
 ::: tip
-If you need to customize the dropdown menu's behavior, please refer to the [@semcore/ui/popper](/utils/popper/popper) documentation.
+If you need to customize the dropdown menu's behavior, please refer to the [intergalactic/popper](/utils/popper/popper) documentation.
 :::
 
-The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
+The Select component serves as a wrapper over [intergalactic/dropdown-menu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
 
 ## Basic usage
 
@@ -62,7 +62,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 
 ## DropdownMenu customization
 
-Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
+Similar to [intergalactic/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`

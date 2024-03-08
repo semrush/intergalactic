@@ -1,6 +1,6 @@
 import React from 'react';
-import Error, { getIconPath } from '@semcore/ui/errors';
-import Button from '@semcore/ui/button';
+import Error, { getIconPath } from 'intergalactic/errors';
+import Button from 'intergalactic/button';
 
 const Demo = () => (
   <Error icon={getIconPath('confirmation')}>

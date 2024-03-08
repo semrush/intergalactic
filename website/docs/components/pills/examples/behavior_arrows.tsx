@@ -1,7 +1,7 @@
 import React from 'react';
-import Pills from '@semcore/ui/pills';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import Pills from 'intergalactic/pills';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   return (

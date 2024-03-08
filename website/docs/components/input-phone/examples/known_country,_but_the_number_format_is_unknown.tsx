@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import Flag from '@semcore/ui/flags';
-import CloseM from '@semcore/ui/icon/Close/m';
+import Input from 'intergalactic/input';
+import Flag from 'intergalactic/flags';
+import CloseM from 'intergalactic/icon/Close/m';
 
 const Demo = () => {
   const [value, setValue] = React.useState('+1');

@@ -6,7 +6,7 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 ## Wizard
 
 ```jsx
-import Wizard from '@semcore/ui/wizard';
+import Wizard from 'intergalactic/wizard';
 <Wizard />;
 ```
 
@@ -15,7 +15,7 @@ import Wizard from '@semcore/ui/wizard';
 ## Wizard.Sidebar
 
 ```jsx
-import Wizard from '@semcore/ui/wizard';
+import Wizard from 'intergalactic/wizard';
 <Wizard.Sidebar />;
 ```
 
@@ -24,7 +24,7 @@ import Wizard from '@semcore/ui/wizard';
 ## Wizard.Step
 
 ```jsx
-import Wizard from '@semcore/ui/wizard';
+import Wizard from 'intergalactic/wizard';
 <Wizard.Step />;
 ```
 
@@ -33,7 +33,7 @@ import Wizard from '@semcore/ui/wizard';
 ## Wizard.Stepper
 
 ```jsx
-import Wizard from '@semcore/ui/wizard';
+import Wizard from 'intergalactic/wizard';
 <Wizard.Stepper />;
 ```
 

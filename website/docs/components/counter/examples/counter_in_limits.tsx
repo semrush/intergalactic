@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
-import ProgressBar from '@semcore/ui/progress-bar';
-import WarningM from '@semcore/ui/icon/Warning/m';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
+import ProgressBar from 'intergalactic/progress-bar';
+import WarningM from 'intergalactic/icon/Warning/m';
 
 const Demo = () => (
   <Flex direction='column' w={350}>

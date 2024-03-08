@@ -9,7 +9,7 @@ tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Exam
 ## Chart.Venn
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="VennChartProps" :types={...types} />
@@ -19,7 +19,7 @@ import { Chart } from '@semcore/ui/d3-chart';
 It have children components `Circle`, `Intersection`.
 
 ```js
-import { Venn } from '@semcore/ui/d3-chart';
+import { Venn } from 'intergalactic/d3-chart';
 
 <Venn>
   <Venn.Circle />

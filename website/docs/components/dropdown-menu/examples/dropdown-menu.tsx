@@ -1,11 +1,11 @@
 import React from 'react';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/button';
-import Link from '@semcore/ui/link';
-import { Text } from '@semcore/ui/typography';
-import Notice from '@semcore/ui/notice';
-import SpinContainer from '@semcore/ui/spin-container';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
+import DropdownMenu from 'intergalactic/dropdown-menu';
+import Button from 'intergalactic/button';
+import Link from 'intergalactic/link';
+import { Text } from 'intergalactic/typography';
+import Notice from 'intergalactic/notice';
+import SpinContainer from 'intergalactic/spin-container';
+import FileExportM from 'intergalactic/icon/FileExport/m';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);

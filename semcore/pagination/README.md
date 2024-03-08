@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Pagination from '@semcore/ui/pagination';
+import Pagination from 'intergalactic/pagination';
 ```
 
 <details>

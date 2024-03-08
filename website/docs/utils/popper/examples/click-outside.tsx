@@ -1,5 +1,5 @@
 import React from 'react';
-import Popper from '@semcore/ui/popper';
+import Popper from 'intergalactic/popper';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 

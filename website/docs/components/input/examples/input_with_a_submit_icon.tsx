@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import CheckM from '@semcore/ui/icon/Check/m';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
+import Input from 'intergalactic/input';
+import CheckM from 'intergalactic/icon/Check/m';
+import { Text } from 'intergalactic/typography';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [focus, setFocus] = React.useState(false);

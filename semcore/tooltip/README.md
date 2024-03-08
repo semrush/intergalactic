@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Tooltip from '@semcore/ui/tooltip';
+import Tooltip from 'intergalactic/tooltip';
 ```
 
 <details>

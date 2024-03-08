@@ -9,7 +9,7 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 The wrapping with paddings. Not responsive (so far), but can be dragged.
 
 ```jsx
-import ProductHead from '@semcore/ui/product-head';
+import ProductHead from 'intergalactic/product-head';
 <ProductHead />;
 ```
 
@@ -18,7 +18,7 @@ import ProductHead from '@semcore/ui/product-head';
 The header is divided into lines with components. They are divided from each other with equal paddings – `my={2}`.
 
 ```jsx
-import ProductHead from '@semcore/ui/product-head';
+import ProductHead from 'intergalactic/product-head';
 <ProductHead.Row />;
 ```
 
@@ -27,7 +27,7 @@ import ProductHead from '@semcore/ui/product-head';
 The component for setting the paddings between the links.
 
 ```jsx
-import ProductHead from '@semcore/ui/product-head';
+import ProductHead from 'intergalactic/product-head';
 <ProductHead.Links />;
 ```
 
@@ -36,7 +36,7 @@ import ProductHead from '@semcore/ui/product-head';
 The component for setting the paddings between the buttons.
 
 ```jsx
-import ProductHead from '@semcore/ui/product-head';
+import ProductHead from 'intergalactic/product-head';
 <ProductHead.Buttons />;
 ```
 
@@ -45,7 +45,7 @@ import ProductHead from '@semcore/ui/product-head';
 The header’ heading component
 
 ```jsx
-import { Title } from '@semcore/ui/product-head';
+import { Title } from 'intergalactic/product-head';
 <Title />;
 ```
 
@@ -56,7 +56,7 @@ import { Title } from '@semcore/ui/product-head';
 The component for output of the information on the project and the global filters of the report. The information is divided with a vertical line.
 
 ```jsx
-import { Info } from '@semcore/ui/product-head';
+import { Info } from 'intergalactic/product-head';
 <Info />;
 ```
 
@@ -65,7 +65,7 @@ import { Info } from '@semcore/ui/product-head';
 One unit with the information on the project or global filter.
 
 ```jsx
-import { Info } from '@semcore/ui/product-head';
+import { Info } from 'intergalactic/product-head';
 <Info.Item />;
 ```
 

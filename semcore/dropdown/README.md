@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Dropdown from '@semcore/ui/dropdown';
+import Dropdown from 'intergalactic/dropdown';
 ```
 
 <details>

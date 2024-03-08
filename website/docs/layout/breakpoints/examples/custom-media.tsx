@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBreakpoints } from '@semcore/ui/breakpoints';
+import { createBreakpoints } from 'intergalactic/breakpoints';
 
 const MEDIA = [
   '(max-width: 300px)',

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Counter from '@semcore/ui/counter';
+import Counter from 'intergalactic/counter';
 ```
 
 <details>

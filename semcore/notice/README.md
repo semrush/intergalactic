@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Notice, { NoticeSmart } from '@semcore/ui/notice';
+import Notice, { NoticeSmart } from 'intergalactic/notice';
 ```
 
 <details>

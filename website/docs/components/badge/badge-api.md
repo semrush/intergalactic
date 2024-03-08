@@ -6,7 +6,7 @@ tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code
 ## Badge
 
 ```jsx
-import Badge from '@semcore/ui/badge';
+import Badge from 'intergalactic/badge';
 <Badge />;
 ```
 

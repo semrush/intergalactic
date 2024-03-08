@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import InputMask from '@semcore/ui/input-mask';
+import InputMask from 'intergalactic/input-mask';
 ```
 
 <details>

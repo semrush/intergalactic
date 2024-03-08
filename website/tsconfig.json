@@ -19,7 +19,8 @@
       "utils/*": ["src/utils/*"],
       "@semcore/*": ["../semcore/*"],
       "@semcore/ui/*": ["../semcore/*"],
-      "@semcore/ui/utils/lib/*": ["../semcore/utils/src/*"]
+      "@semcore/ui/utils/lib/*": ["../semcore/utils/src/*"],
+      "intergalactic/*": ["../semcore/*"]
     }
   },
   "include": ["src", "docs", "types", "algoliaConfig.ts"]

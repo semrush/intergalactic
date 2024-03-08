@@ -1,8 +1,8 @@
 import React from 'react';
-import DnD from '@semcore/ui/drag-and-drop';
-import Badge from '@semcore/ui/badge';
-import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
-import TabPanel from '@semcore/ui/tab-panel';
+import DnD from 'intergalactic/drag-and-drop';
+import Badge from 'intergalactic/badge';
+import LinkedInM from 'intergalactic/icon/LinkedIn/m';
+import TabPanel from 'intergalactic/tab-panel';
 
 const icons = {
   social: (

@@ -9,7 +9,7 @@ tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Exam
 ## Chart.Area
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="AreaChartProps" :types={...types} />
@@ -19,7 +19,7 @@ import { Chart } from '@semcore/ui/d3-chart';
 It have children components `Dots, Null`.
 
 ```js
-import { Area } from '@semcore/ui/d3-chart';
+import { Area } from 'intergalactic/d3-chart';
 
 <Area>
   <Area.Dots />

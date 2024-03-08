@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import SidePanel from '@semcore/ui/side-panel';
+import Button from 'intergalactic/button';
+import SidePanel from 'intergalactic/side-panel';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

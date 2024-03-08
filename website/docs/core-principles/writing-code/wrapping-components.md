@@ -7,7 +7,7 @@ title: Wrapping components
 Intergalactic components are built with polymorphic typings, that means that you can provide `tag` property that will redefine allowed properties list.
 
 ```tsx
-import Button from '@semcore/ui/button';
+import Button from 'intergalactic/button';
 <Button
   href="">
 // Error: Property 'href' does not exist on type... // [!code error]
@@ -37,7 +37,7 @@ import Button from '@semcore/ui/button';
 The `tag` property is not included in the component's props, so you can't make wrappers by simple using that.
 
 ```tsx
-import Select, { SelectProps } from '@semcore/ui/select'
+import Select, { SelectProps } from 'intergalactic/select'
 
 const WrappedSelect = ({
   tag, // Property tag does not exist on type SelectProps. // [!code error]

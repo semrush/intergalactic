@@ -13,14 +13,14 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import MailSentReact from '@semcore/ui/illustration/MailSent';
-import MailSentSVG from '@semcore/ui/illustration/svg/MailSent.svg';
+import MailSentReact from 'intergalactic/illustration/MailSent';
+import MailSentSVG from 'intergalactic/illustration/svg/MailSent.svg';
 ```
 
 <details>

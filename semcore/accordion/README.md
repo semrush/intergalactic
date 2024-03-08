@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Accordion from '@semcore/ui/accordion';
+import Accordion from 'intergalactic/accordion';
 ```
 
 <details>

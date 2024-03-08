@@ -9,8 +9,8 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 <script lang="tsx">
 import React from 'react';
 
-import Button from '@semcore/ui/button';
-import Tooltip from '@semcore/ui/tooltip';
+import Button from 'intergalactic/button';
+import Tooltip from 'intergalactic/tooltip';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [

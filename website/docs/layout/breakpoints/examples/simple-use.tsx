@@ -1,6 +1,6 @@
 import React from 'react';
-import Breakpoints from '@semcore/ui/breakpoints';
-import Button from '@semcore/ui/button';
+import Breakpoints from 'intergalactic/breakpoints';
+import Button from 'intergalactic/button';
 
 const buttonSizes = ['m', 'l'] as const;
 

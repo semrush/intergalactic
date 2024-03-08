@@ -1,6 +1,6 @@
 import React from 'react';
-import InputTags from '@semcore/ui/input-tags';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
+import InputTags from 'intergalactic/input-tags';
+import DropdownMenu from 'intergalactic/dropdown-menu';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
 

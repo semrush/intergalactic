@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from '@semcore/ui/link';
-import HomeM from '@semcore/ui/icon/Home/m';
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import Link from 'intergalactic/link';
+import HomeM from 'intergalactic/icon/Home/m';
+import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const Demo = () => {
   return (

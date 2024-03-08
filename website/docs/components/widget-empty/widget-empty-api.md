@@ -9,7 +9,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 This component is used for displaying message for "empty" states in the widgets.
 
 ```jsx
-import WidgetEmpty from '@semcore/ui/widget-empty';
+import WidgetEmpty from 'intergalactic/widget-empty';
 <WidgetEmpty />;
 ```
 
@@ -20,7 +20,7 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 Use this state to display "No data" message.
 
 ```jsx
-import { NoData } from '@semcore/ui/widget-empty';
+import { NoData } from 'intergalactic/widget-empty';
 <NoData />;
 ```
 
@@ -31,7 +31,7 @@ import { NoData } from '@semcore/ui/widget-empty';
 Use this state to display error message.
 
 ```jsx
-import { Error } from '@semcore/ui/widget-empty';
+import { Error } from 'intergalactic/widget-empty';
 <Error />;
 ```
 

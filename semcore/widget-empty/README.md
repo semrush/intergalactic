@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import WidgetEmpty, { NoData, Error } from '@semcore/ui/widget-empty';
+import WidgetEmpty, { NoData, Error } from 'intergalactic/widget-empty';
 ```
 
 <details>
