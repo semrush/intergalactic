@@ -36,6 +36,12 @@ export type BaseTriggerProps = BoxProps &
     /**
      * Sets disabled state to trigger
      */
+    empty: false;
+    /**
+     * Display the dropdowns chevron icon
+     * @default true
+     */
+    chevron?: boolean;
     disabled?: boolean;
     /** Trigger theme
      * @deprecated
