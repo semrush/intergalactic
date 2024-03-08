@@ -106,13 +106,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
           <Button>Button</Button>
         </InformationDropdown.Trigger>
         <InformationDropdown.Popper>
-          <Text size={200} bold>Information dropdown</Text>
+          <Text size={200} bold>Additional information</Text>
           <Box my={2}>
-            Use it to show a lot of content.
+            Use this tooltip type for elements that already have a visible name, and you need to show a lot of additional information.
           </Box>
-          <Box mb={2}>It may contain several paragraphs, and interactive elements.</Box>
-          <Box>
-            Use this tooltip type for elements that already have a visible name, but need to tell the user additional information.
+          <Box mb={2}>It may contain several paragraphs and interactive elements (for example, <Link href='https://semrush.com'>links</Link>).
           </Box>
         </InformationDropdown.Popper>
       </InformationDropdown>
@@ -127,7 +125,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       >
         <Tooltip.Trigger><Button>Button</Button></Tooltip.Trigger>
         <Tooltip.Popper>
-          Tooltip may contain icons, <Link href='https://semrush.com'>links</Link> and other elements.
+          Default tooltip may contain formatted tex, icons, <Link href='https://semrush.com'>links</Link> and other elements.
           Be brief, add only one sentence for its content.
         </Tooltip.Popper>
       </Tooltip>
@@ -151,6 +149,17 @@ Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
 ## Component composition
 
+### Hint
+
+![](static/hint-composition.png)
+
+Component consists of the following:
+
+- `Hint`
+- `title` attribute for the component which Hint component wraps
+
+### Tooltip
+
 ![](static/tooltip-composition.png)
 
 Component consists of the following:
@@ -158,6 +167,16 @@ Component consists of the following:
 * `Tooltip.Trigger`
 * `Tooltip.Popper`
 * `Tooltip.Title`
+
+### DescriptionTooltip
+
+![](static/description-tooltip-composition.png)
+
+Component consists of the following:
+
+- `DescriptionTooltip.Trigger`
+- `DescriptionTooltip.Popper`
+- `DescriptionTooltip.Title`
 
 ## Themes
 
@@ -253,17 +272,21 @@ If the tooltip has interactive elements inside, the hiding time should be increa
 
 ## Content
 
-Tooltip usually contains unformatted text.
+### Hint
+
+Hint contains only unformatted short text.
+
+![](static/hint.png)
+
+### Tooltip
+
+Tooltip can contain both unformatted and formatted single sentence of text, links, icons, and other interactive elements.
 
 ![](static/tooltip-basic.png)
 
-In some cases (for example, for advertising purposes), you can format the text and add other components to the tooltip:
+### DescriptionTooltip
 
-* [Button](/components/button/button), [Link](/components/link/link), etc.
-* Image
-* Different background color
-
-**Remember, the tooltip should only contain hints and tips.**
+DescriptionTooltip can contain both unformatted and formatted large text, images, links and other interactive elements.
 
 ![](static/tooltip-advanced.png)
 
@@ -273,18 +296,18 @@ In some cases (for example, for advertising purposes), you can format the text a
 
 Main recommendations:
 
-* Use the tooltip to show hints and additional information, such as text, formatted text, lists, links, buttons, and small images.
-* Ensure that the tooltip does not overlap important information for the user.
+- Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
+- Ensure that the tooltip does not overlap important information for the user.
 
 ::: tip
-For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/dropdown-menu).
+For complex content and forms, use [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 :::
 
 **If the tooltip trigger conveys information about a new feature, avoid duplicating the trigger text in the tooltip title.** The title may not be necessary if the trigger text already explains the tooltip content.
 
 ![](static/tooltip-trigger-yes-no.png)
 
-**When the trigger isn’t clear enough, add a title to the tooltip.** Additionally, include a title when the trigger doesn't adequately explain the topic of the tooltip. For example, you can describe additional conditions in the header or expand on the trigger's idea.
+**When the trigger isn’t clear enough, add a clear title to the tooltip.** Additionally, include a title when the trigger doesn't adequately explain the topic of the tooltip. For example, you can describe additional conditions in the header or expand on the trigger's idea.
 
 ![](static/tooltip-trigger2-yes-no.png)
 

@@ -12,22 +12,19 @@ const Demo = () => (
     <Tooltip>
       <Tooltip.Trigger tag={Link}>Tooltip</Tooltip.Trigger>
       <Tooltip.Popper>
-        Tooltip may contain icons, <Link href='https://semrush.com'>links</Link> and other elements.
+        Default tooltip may contain formatted tex, icons, <Link href='https://semrush.com'>links</Link> and other elements.
         Be brief, add only one sentence for its content.
       </Tooltip.Popper>
     </Tooltip>
     <InformationDropdown>
-      <InformationDropdown.Trigger tag={Link}>Information dropdown</InformationDropdown.Trigger>
+      <InformationDropdown.Trigger tag={Link}>Additional information</InformationDropdown.Trigger>
       <InformationDropdown.Popper>
-        <Text size={200} bold>
-          Information dropdown
-        </Text>
-        <Box my={2}>Use it to show a lot of content.</Box>
-        <Box mb={2}>It may contain several paragraphs, and interactive elements.</Box>
-        <Box>
-          Use this tooltip type for elements that already have a visible name, but need to tell the
-          user additional information.
-        </Box>
+        <Text size={200} bold>Additional information</Text>
+          <Box my={2}>
+            Use this tooltip type for elements that already have a visible name, and you need to show a lot of additional information.
+          </Box>
+          <Box mb={2}>It may contain several paragraphs and interactive elements (for example, <Link href='https://semrush.com'>links</Link>).
+          </Box>
       </InformationDropdown.Popper>
     </InformationDropdown>
     <input />
