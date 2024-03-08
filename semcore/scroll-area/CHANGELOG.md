@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Scrolling after mouse interaction shouldn't occur.
+- Unexpected scroll after mouse clicks.
 
 ## [5.20.7] - 2024-03-07
 
