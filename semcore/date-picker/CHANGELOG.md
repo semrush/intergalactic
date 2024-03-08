@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.5] - 2024-03-08
+
+### Fixed
+
+- In month date range pickers the second calendar was not usable from the keyboard.
+
 ## [4.30.4] - 2024-03-07
 
 ### Changed
