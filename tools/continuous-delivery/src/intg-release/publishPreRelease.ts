@@ -36,7 +36,7 @@ const publishPreRelease = async () => {
     log('Not a tag. Skip publish prerelease.');
     return;
   }
-  if (currentTag !== versionFromTag) {
+  if (version !== versionFromTag) {
     log(`Errors in calculated version. Calculated version is ${version}.`);
     return;
   }
