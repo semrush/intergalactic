@@ -462,7 +462,7 @@ export const sideBarConfig: SidebarConfig = [
           },
           {
             link: '/data-display/chart-legend/chart-legend',
-            activeMatch: '/data-display/chart-legend/chart-legend/',
+            activeMatch: '/data-display/chart-legend/',
             text: 'Chart legend',
           },
           {
@@ -471,7 +471,7 @@ export const sideBarConfig: SidebarConfig = [
           },
           {
             link: '/data-display/area-chart/area-chart',
-            activeMatch: '/data-display/area-chart/area-chart/',
+            activeMatch: '/data-display/area-chart/',
             text: 'Area chart',
           },
           {
@@ -655,10 +655,12 @@ export const sideBarConfig: SidebarConfig = [
           },
           {
             link: '/filter-group/filter-serp-features/filter-serp-features',
+            activeMatch: '/filter-group/filter-serp-features/',
             text: 'SERP Features',
           },
           {
             link: '/filter-group/filter-tags/filter-tags',
+            activeMatch: '/filter-group/filter-tags/',
             text: 'Tags',
           },
         ],

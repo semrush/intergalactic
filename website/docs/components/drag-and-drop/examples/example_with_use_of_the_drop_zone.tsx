@@ -1,7 +1,7 @@
 import React from 'react';
-import DnD from '@semcore/ui/drag-and-drop';
-import Card from '@semcore/ui/card';
-import { Row, Col } from '@semcore/ui/grid';
+import DnD from 'intergalactic/drag-and-drop';
+import Card from 'intergalactic/card';
+import { Row, Col } from 'intergalactic/grid';
 
 const titles = { backlink: 'Backlink', keyword: 'Keyword', seo: 'On Page SEO' };
 const Demo = () => {

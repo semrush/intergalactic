@@ -1,71 +1,121 @@
-## [15.66.0] - 2024-03-01
-
-### @semcore/animation
-
-- **Changed** `Collapse` now uses `clip` instead of `hidden` for the overflow property as `overflow: hidden` was breaking position sticky of children elements.
-
-### @semcore/button
-
-- **Fixed** Old themization with `@semcore/babel-plugin-react-semcore` wasn't working.
-
-### @semcore/card
-
-- **Changed** `Card.Title` prop `hint` renamed to `hintAfter`.
-- **Added** `Card.Title` `innerHint` prop.
-
-### @semcore/carousel
-
-- **Fixed** `onIndexChange` to return correct index.
-
-### @semcore/d3-chart
-
-- **Added** `Line.Dots` and `Area.Dots` components `display` prop now accepts function that allows developers to granularly control which dots should be displayed.
-- **Fixed** a11y module "Skip to content after plot" link was not working in some cases.
-- **Fixed** view of Line.Area with `null` in data.
+## [15.68.1] - 2024-03-08
 
 ### @semcore/data-table
 
-- **Added** `disablePortal` prop to `Table.StickyHead`.
-- **Changed** Sortable focused headers cell now shows sorting icon.
-- **Fixed** Calculation of column widths to properly render Skeleton after the first paint.
+- **Changed** Don't focus hidden DataTable.Head.
+
+### @semcore/scroll-area
+
+- **Fixed** Unexpected scroll after mouse clicks.
+
+## [15.68.0] - 2024-03-07
+
+### @semcore/base-trigger
+
+- **Fixed** Behavior in forms was broken.
+
+### @semcore/popper
+
+- **Fixed** In controlled mode popper was infinitely returning focus to trigger on close attempt.
+
+## [15.67.1] - 2024-03-07
+
+### @semcore/animation
+
+- **Fixed** `Collapse` animation was not working with `preserveNode` prop.
+
+### @semcore/d3-chart
+
+- **Added** Logic to define X and Y axis for a11y summary in Bar charts.
 
 ### @semcore/date-picker
 
-- **Fixed** Keyboard navigation was not working in calendars of `DateRangeComparator` and `MonthDateRangeComparator` components.
-- **Fixed** Paddings of `DateRangeComparator` and `MonthDateRangeComparator` periods presets (from `0` to `8px`).
-- **Fixed** Removed Input trigger invalid `aria` attributes.
-- **Changed** Calendars now are focusable by keyboard, focus order of default (unwrapped) popper is changed to put periods presets and apply/clear button first.
-- **Changed** Assistive technologies now announce navigated calendar cell and period.
-- **Changed** Assistive technologies now announce what date ranges will be selected.
-- **Changed** New `Cmd+Enter`/`Ctrl+Enter` keyboard shortcut to apply selected date ranges.
+- **Fixed** Rolled back change format of `date` property in children render function of `MonthPicker` and `MonthRangePicker` components.
 
-### @semcore/dropdown-menu
+### @semcore/scroll-area
 
-- **Fixed** selection item by keypress `Space` when button trigger is used.
-- **Fixed** Allowed to `Tab` navigate from focusables inside of an item if the item was highlighted right before the focusable was focused.
-- **Fixed** Disabled `DropdownMenu.Nesting` was opening nested menu by `Tab` key pressing.
+- **Added** Check that focused element is outside scroll area container before scroll to them.
+
+## [15.67.0] - 2024-03-06
+
+### @semcore/base-trigger
+
+- **Changed** Tag for `ButtonTrigger` is `button` instead of `div`.
+- **Fixed** In some rare cases `FilterTrigger` may share it's ref between component instances.
+
+### @semcore/carousel
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/checkbox
+
+- **Fixed** Double reading `aria-label` in checkbox without label.
+
+### @semcore/color-picker
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/d3-chart
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/data-table
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/date-picker
+
+- **Changed** Use `event.key` instead of `event.code`.
+- **Fixed** Style for today (current) date border.
 
 ### @semcore/icon
 
-- **Added** New `CollapseAlt`, `ExpandAlt` and `CheckDouble` icons.
-- **Changed** `Check` icon.
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/inline-edit
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/inline-input
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/input-tags
+
+- **Changed** Use `event.key` instead of `event.code`.
 
 ### @semcore/pills
 
-- **Fixed** View of `keyboardFocused` Pill.
-- **Added** Focus border for focused Pills without default value.
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/scroll-area
+
+- **Added** Scroll to focused element in scroll area.
+
+### @semcore/switch
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tab-panel
+
+- **Changed** Use `event.key` instead of `event.code`.
 
 ### @semcore/tag
 
-- **Fixed** Order in layers for `Tag.Close` component for correct handling `onClick` events.
+- **Changed** Use `event.key` instead of `event.code`.
 
-### @semcore/time-picker
+### @semcore/tooltip
 
-- **Fixed** TimePicker dropdowns had unexpected visual horizontal offset.
+- **Fixed** VoiceOver was not reading the tooltip content in Safari.
+- **Changed** `aria-live` container that announces the tooltip content was moved from tooltip inner container with `display: contents` to tooltip popper wrapper.
 
 ### @semcore/utils
 
-- **Fixed** Attribute `attr` was not appling to components.
+- **Fixed** Errors in console.
+
+### @semcore/wizard
+
+- **Changed** Use `event.key` instead of `event.code`.
 
 ## [15.66.0] - 2024-03-01
 

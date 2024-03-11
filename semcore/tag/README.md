@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Tag from '@semcore/ui/tag';
+import Tag from 'intergalactic/tag';
 ```
 
 <details>

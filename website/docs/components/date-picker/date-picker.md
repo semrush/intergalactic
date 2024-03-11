@@ -14,7 +14,7 @@ import {
   DateRangePicker,
   MonthPicker,
   MonthRangePicker,
-} from '@semcore/ui/date-picker';
+} from 'intergalactic/date-picker';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const d = new Date();

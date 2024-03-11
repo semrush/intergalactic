@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.23.6] - 2024-03-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/scroll-area` [5.20.7 ~> 5.20.8]).
+
+## [4.23.5] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/scroll-area` [5.20.6 ~> 5.20.7]).
+
+## [4.23.4] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [4.23.3] - 2024-03-01
 
 ### Changed

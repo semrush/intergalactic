@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Spin from '@semcore/ui/spin';
+import DataTable from 'intergalactic/data-table';
+import Spin from 'intergalactic/spin';
 
 const Demo = () => {
   return (

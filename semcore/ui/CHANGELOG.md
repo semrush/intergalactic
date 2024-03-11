@@ -1,3 +1,122 @@
+## [15.68.1] - 2024-03-08
+
+### @semcore/data-table
+
+- **Changed** Don't focus hidden DataTable.Head.
+
+### @semcore/scroll-area
+
+- **Fixed** Unexpected scroll after mouse clicks.
+
+## [15.68.0] - 2024-03-07
+
+### @semcore/base-trigger
+
+- **Fixed** Behavior in forms was broken.
+
+### @semcore/popper
+
+- **Fixed** In controlled mode popper was infinitely returning focus to trigger on close attempt.
+
+## [15.67.1] - 2024-03-07
+
+### @semcore/animation
+
+- **Fixed** `Collapse` animation was not working with `preserveNode` prop.
+
+### @semcore/d3-chart
+
+- **Added** Logic to define X and Y axis for a11y summary in Bar charts.
+
+### @semcore/date-picker
+
+- **Fixed** Rolled back change format of `date` property in children render function of `MonthPicker` and `MonthRangePicker` components.
+
+### @semcore/scroll-area
+
+- **Added** Check that focused element is outside scroll area container before scroll to them.
+
+## [15.67.0] - 2024-03-06
+
+### @semcore/base-trigger
+
+- **Changed** Tag for `ButtonTrigger` is `button` instead of `div`.
+- **Fixed** In some rare cases `FilterTrigger` may share it's ref between component instances.
+
+### @semcore/carousel
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/checkbox
+
+- **Fixed** Double reading `aria-label` in checkbox without label.
+
+### @semcore/color-picker
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/d3-chart
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/data-table
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/date-picker
+
+- **Changed** Use `event.key` instead of `event.code`.
+- **Fixed** Style for today (current) date border.
+
+### @semcore/icon
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/inline-edit
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/inline-input
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/input-tags
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/pills
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/scroll-area
+
+- **Added** Scroll to focused element in scroll area.
+
+### @semcore/switch
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tab-panel
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tag
+
+- **Changed** Use `event.key` instead of `event.code`.
+
+### @semcore/tooltip
+
+- **Fixed** VoiceOver was not reading the tooltip content in Safari.
+- **Changed** `aria-live` container that announces the tooltip content was moved from tooltip inner container with `display: contents` to tooltip popper wrapper.
+
+### @semcore/utils
+
+- **Fixed** Errors in console.
+
+### @semcore/wizard
+
+- **Changed** Use `event.key` instead of `event.code`.
+
 ## [15.66.0] - 2024-03-01
 
 ### @semcore/animation

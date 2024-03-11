@@ -1,20 +1,23 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Tooltip from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { LinkTrigger } from '@semcore/ui/base-trigger';
+import DataTable from 'intergalactic/data-table';
+import Tooltip from 'intergalactic/tooltip';
+import { Text } from 'intergalactic/typography';
+import DropdownMenu from 'intergalactic/dropdown-menu';
+import { LinkTrigger } from 'intergalactic/base-trigger';
 
 const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name='keyword'>
-          <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-            <Text noWrap>
-              Keyword <Text color='text-secondary'>(1 - 100)</Text>
-            </Text>
-          </Tooltip>
+        <DataTable.Column
+          name='keyword'
+          tag={Tooltip}
+          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
+          tabIndex={0}
+        >
+          <Text noWrap>
+            Keyword <Text color='text-secondary'>(1 - 100)</Text>
+          </Text>
         </DataTable.Column>
         <DataTable.Column name='kd'>
           <DropdownMenu>
@@ -29,15 +32,21 @@ const Demo = () => {
             </DropdownMenu.Menu>
           </DropdownMenu>
         </DataTable.Column>
-        <DataTable.Column name='cpc'>
-          <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-            CPC
-          </Tooltip>
+        <DataTable.Column
+          name='cpc'
+          tag={Tooltip}
+          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
+          tabIndex={0}
+        >
+          CPC
         </DataTable.Column>
-        <DataTable.Column name='vol'>
-          <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-            Vol.
-          </Tooltip>
+        <DataTable.Column
+          name='vol'
+          tag={Tooltip}
+          title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on."
+          tabIndex={0}
+        >
+          Vol.
         </DataTable.Column>
       </DataTable.Head>
       <DataTable.Body />

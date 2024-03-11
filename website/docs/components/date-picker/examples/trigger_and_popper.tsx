@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker } from '@semcore/ui/date-picker';
+import { DatePicker } from 'intergalactic/date-picker';
 
 const Demo = () => {
   return (

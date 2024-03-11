@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import NotificationM from '@semcore/ui/icon/Notification/m';
-import Dot from '@semcore/ui/dot';
-import { AnimatedNumber } from '@semcore/ui/counter';
+import Button from 'intergalactic/button';
+import NotificationM from 'intergalactic/icon/Notification/m';
+import Dot from 'intergalactic/dot';
+import { AnimatedNumber } from 'intergalactic/counter';
 
 const Demo = () => (
   <Button aria-label='Open notifications'>

@@ -27,7 +27,7 @@ class ScrollAreaRoot extends Component {
   static displayName = 'ScrollArea';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()];
 
   static defaultProps = () => ({
     container: React.createRef(),
@@ -121,6 +121,27 @@ class ScrollAreaRoot extends Component {
     }
   };
 
+  handleFocusIn = (e) => {
+    setTimeout(() => {
+      if (typeof e.target.scrollIntoView === 'function') {
+        const viewPort = this.$container?.getBoundingClientRect();
+        const element = e.target.getBoundingClientRect();
+
+        if (viewPort) {
+          const inViewPort =
+            element.top >= viewPort.top &&
+            element.bottom <= viewPort.bottom &&
+            element.left >= viewPort.left &&
+            element.right <= viewPort.right;
+
+          if (!inViewPort && this.asProps.keyboardFocused) {
+            e.target.scrollIntoView();
+          }
+        }
+      }
+    }, 0);
+  };
+
   toggleShadow = (scroll, maxScroll, orientation) => {
     const roundedScroll = Math.round(scroll);
     const roundedMaxScroll = Math.round(maxScroll);
@@ -184,6 +205,8 @@ class ScrollAreaRoot extends Component {
     if (this.$container) {
       this.observer?.observe(this.$container);
     }
+
+    this.$inner?.addEventListener('focusin', this.handleFocusIn);
   }
 
   componentDidUpdate() {
@@ -192,6 +215,7 @@ class ScrollAreaRoot extends Component {
 
   componentWillUnmount() {
     this.observer?.disconnect();
+    this.$inner?.removeEventListener('focusin', this.handleFocusIn);
   }
 
   render() {

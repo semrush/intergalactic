@@ -11,7 +11,7 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ## Select
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select />;
 ```
 
@@ -22,14 +22,14 @@ import Select from '@semcore/ui/select';
 It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger).
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Trigger />;
 ```
 
 ## Select.Menu
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Menu />;
 ```
 
@@ -38,14 +38,14 @@ import Select from '@semcore/ui/select';
 It is a wrap over the `<Input.Value/>`.
 
 ```jsx
-import { InputSearch } from '@semcore/ui/select';
+import { InputSearch } from 'intergalactic/select';
 <InputSearch />;
 ```
 
 ## Select.Option
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Option />;
 ```
 
@@ -54,21 +54,21 @@ import Select from '@semcore/ui/select';
 ## Select.OptionHint
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.OptionHint />;
 ```
 
 ## Select.OptionTitle
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.OptionTitle />;
 ```
 
 ## Select.OptionCheckbox
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.OptionCheckbox />;
 ```
 
@@ -77,7 +77,7 @@ import Select from '@semcore/ui/select';
 ## Select.Option.Checkbox
 
 ```jsx
-import Select from '@semcore/ui/select';
+import Select from 'intergalactic/select';
 <Select.Option.Checkbox />;
 ```
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import Modal from '@semcore/ui/modal';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
-import Input from '@semcore/ui/input';
-import Tooltip from '@semcore/ui/tooltip';
+import Button from 'intergalactic/button';
+import Modal from 'intergalactic/modal';
+import { Text } from 'intergalactic/typography';
+import { Box } from 'intergalactic/flex-box';
+import Input from 'intergalactic/input';
+import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

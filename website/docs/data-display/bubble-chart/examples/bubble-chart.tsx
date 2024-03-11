@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plot, Bubble, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { Plot, Bubble, XAxis, YAxis } from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Text } from '@semcore/ui/typography';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const MARGIN = 40;

@@ -1,6 +1,6 @@
 import React from 'react';
-import InputTags from '@semcore/ui/input-tags';
-import Tooltip from '@semcore/ui/tooltip';
+import InputTags from 'intergalactic/input-tags';
+import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => {
   const inputValueRef = React.useRef<HTMLInputElement>();

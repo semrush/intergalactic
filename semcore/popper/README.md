@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Popper from '@semcore/ui/popper';
+import Popper from 'intergalactic/popper';
 ```
 
 <details>

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import FullscreenModal from 'intergalactic/fullscreen-modal';
 ```
 
 <details>

@@ -7,7 +7,7 @@ tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('s
 ## Skeleton
 
 ```jsx
-import Skeleton from '@semcore/ui/skeleton';
+import Skeleton from 'intergalactic/skeleton';
 <Skeleton />;
 ```
 
@@ -16,7 +16,7 @@ import Skeleton from '@semcore/ui/skeleton';
 ## Skeleton.Text
 
 ```jsx
-import Skeleton from '@semcore/ui/skeleton';
+import Skeleton from 'intergalactic/skeleton';
 <Skeleton.Text />;
 ```
 
@@ -25,7 +25,7 @@ import Skeleton from '@semcore/ui/skeleton';
 ## LineChartSkeleton
 
 ```jsx
-import { LineChartSkeleton } from '@semcore/ui/skeleton';
+import { LineChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 <TypesView type="LineChartSkeletonProps" :types={...types} />
@@ -33,7 +33,7 @@ import { LineChartSkeleton } from '@semcore/ui/skeleton';
 ## AreaChartSkeleton
 
 ```jsx
-import { AreaChartSkeleton } from '@semcore/ui/skeleton';
+import { AreaChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 <TypesView type="AreaChartSkeletonProps" :types={...types} />
@@ -41,7 +41,7 @@ import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 ## BarChartSkeleton
 
 ```jsx
-import { BarChartSkeleton } from '@semcore/ui/skeleton';
+import { BarChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 <TypesView type="BarChartSkeletonProps" :types={...types} />
@@ -49,7 +49,7 @@ import { BarChartSkeleton } from '@semcore/ui/skeleton';
 ## HistogramChartSkeleton
 
 ```jsx
-import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
+import { HistogramChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 <TypesView type="HistogramChartSkeletonProps" :types={...types} />
@@ -57,7 +57,7 @@ import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 ## DonutChartSkeleton
 
 ```jsx
-import { DonutChartSkeleton } from '@semcore/ui/skeleton';
+import { DonutChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 <TypesView type="DonutChartSkeletonProps" :types={...types} />
@@ -65,25 +65,25 @@ import { DonutChartSkeleton } from '@semcore/ui/skeleton';
 ## BubbleChartSkeleton
 
 ```jsx
-import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
+import { BubbleChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 ## ScatterPlotChartSkeleton
 
 ```jsx
-import { ScatterPlotChartSkeleton } from '@semcore/ui/skeleton';
+import { ScatterPlotChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 ## VennChartSkeleton
 
 ```jsx
-import { VennChartSkeleton } from '@semcore/ui/skeleton';
+import { VennChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 ## RadialTreeChartSkeleton
 
 ```jsx
-import { RadialTreeChartSkeleton } from '@semcore/ui/skeleton';
+import { RadialTreeChartSkeleton } from 'intergalactic/skeleton';
 ```
 
 <script setup>import { data as types } from '@types.data.ts';</script>

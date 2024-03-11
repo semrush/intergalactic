@@ -1,9 +1,9 @@
 import React from 'react';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import Select from '@semcore/ui/select';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
+import { FilterTrigger } from 'intergalactic/base-trigger';
+import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import { Box } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
 
 const options = Array(6)
   .fill(0)

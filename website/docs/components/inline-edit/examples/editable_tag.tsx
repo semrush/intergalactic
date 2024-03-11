@@ -1,7 +1,7 @@
 import React from 'react';
-import InlineInput from '@semcore/ui/inline-input';
-import InlineEdit from '@semcore/ui/inline-edit';
-import Tag from '@semcore/ui/tag';
+import InlineInput from 'intergalactic/inline-input';
+import InlineEdit from 'intergalactic/inline-edit';
+import Tag from 'intergalactic/tag';
 
 const Demo = () => {
   const [value, setValue] = React.useState('Default tag');

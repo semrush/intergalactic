@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import { LinkTrigger } from '@semcore/ui/base-trigger';
+import Select from 'intergalactic/select';
+import { LinkTrigger } from 'intergalactic/base-trigger';
 
 const options = Array(6)
   .fill('')

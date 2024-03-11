@@ -1,7 +1,7 @@
 import React from 'react';
-import Pills from '@semcore/ui/pills';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
+import Pills from 'intergalactic/pills';
+import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
+import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
 
 const Demo = () => {
   const [choice, setChoice] = React.useState(null);

@@ -13,7 +13,7 @@ import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import style from '../style/date-picker.shadow.css';
 
 const INTERACTION_TAGS = ['INPUT'];
-const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
 
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
@@ -105,7 +105,7 @@ class RangePickerAbstract extends Component {
 
   handlerKeyDown = (place) => (e) => {
     const { displayedPeriod, highlighted, preselectedValue, visible } = this.asProps;
-    const key = e.code;
+    const key = e.key;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
@@ -142,10 +142,10 @@ class RangePickerAbstract extends Component {
       return displayedPeriod;
     };
 
-    if (place === 'popper' && e.code === 'Enter' && (e.metaKey || e.ctrlKey)) {
+    if (place === 'popper' && e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       return this.handleApplyClick();
     }
-    if (place === 'popper' && e.code === 'Space' && highlighted.length) {
+    if (place === 'popper' && e.key === ' ' && highlighted.length) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {

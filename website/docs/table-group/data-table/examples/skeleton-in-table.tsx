@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Skeleton from '@semcore/ui/skeleton';
+import DataTable from 'intergalactic/data-table';
+import Skeleton from 'intergalactic/skeleton';
 
 function getSkeleton() {
   return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({

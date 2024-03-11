@@ -89,7 +89,7 @@ To enable column sorting:
 
 <script lang="tsx">
 import React from "react";
-import DataTable, { DataTableSort } from "@semcore/ui/data-table";
+import DataTable, { DataTableSort } from "intergalactic/data-table";
 
 type SortableColumn = Exclude<keyof typeof data[0], "keyword">;
 
@@ -329,7 +329,7 @@ To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)`.
 
 ## Accordion inside table
 
-Extend table functionality using the `@semcore/ui/accordion` component. This allows you to add accordions to table rows.
+Extend table functionality using the `intergalactic/accordion` component. This allows you to add accordions to table rows.
 
 1. Wrap the table in the `Accordion` component.
 2. Replace the tag in `DataTable.Row` with our extended tag using `Accordion.Item`.

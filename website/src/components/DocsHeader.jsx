@@ -9,7 +9,7 @@ import FigmaM from '@semcore/icon/color/Figma/m';
 import GitHubM from '@semcore/icon/color/GitHub/m';
 import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
 import EditM from '@semcore/icon/Edit/m';
-import WarningM from '@semcore/ui/icon/Warning/m';
+import WarningM from '@semcore/icon/Warning/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
 import RouterLink from './RouterLink';
@@ -111,7 +111,7 @@ export default function (props) {
               <Link
                 size={300}
                 target='_blank'
-                href={'https://www.npmjs.com/package/@semcore/ui'}
+                href={'https://www.npmjs.com/package/intergalactic'}
                 onClick={() =>
                   logEvent('npm_btn:click', {
                     group,

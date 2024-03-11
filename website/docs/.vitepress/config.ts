@@ -108,18 +108,18 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      {
-        text: 'Roadmap',
-        link: 'https://github.com/orgs/semrush/projects/3/views/2',
-        target: '_blank',
-      },
+      // {
+      //   text: 'Roadmap',
+      //   link: 'https://github.com/orgs/semrush/projects/3/views/2',
+      //   target: '_blank',
+      // },
       {
         text: 'Releases',
         link: 'https://github.com/semrush/intergalactic/releases',
         target: '_blank',
       },
       {
-        text: 'Report a bug / Discuss feature',
+        text: 'Requests & Issues',
         link: 'https://github.com/semrush/intergalactic/issues',
         target: '_blank',
       },

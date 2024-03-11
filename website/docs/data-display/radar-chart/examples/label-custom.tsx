@@ -1,8 +1,8 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { Plot, Radar, getLabelOffsetPosition } from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
-import Tag from '@semcore/ui/tag';
+import { Plot, Radar, getLabelOffsetPosition } from 'intergalactic/d3-chart';
+import { Flex } from 'intergalactic/flex-box';
+import Tag from 'intergalactic/tag';
 
 const Demo = () => {
   const width = 250;

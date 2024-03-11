@@ -7,7 +7,7 @@ tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('di
 ## Divider
 
 ```jsx
-import Divider from '@semcore/ui/divider';
+import Divider from 'intergalactic/divider';
 <Divider />;
 ```
 

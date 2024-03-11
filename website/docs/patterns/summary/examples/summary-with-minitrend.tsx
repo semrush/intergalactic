@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import Tooltip from 'intergalactic/tooltip';
 import chart from '../static/chart.svg';
-import '@semcore/ui/utils/style/var.css';
+import 'intergalactic/utils/style/var.css';
 
 const Demo = () => {
   React.useEffect(() => {

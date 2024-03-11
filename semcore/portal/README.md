@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Portal, { PortalProvider } from '@semcore/ui/portal';
+import Portal, { PortalProvider } from 'intergalactic/portal';
 ```
 
 <details>

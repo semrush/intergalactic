@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 import {
   Line,
   minMax,
@@ -8,8 +8,8 @@ import {
   YAxis,
   ChartLegend,
   makeDataHintsContainer,
-} from '@semcore/ui/d3-chart';
-import { Flex } from '@semcore/ui/flex-box';
+} from 'intergalactic/d3-chart';
+import { Flex } from 'intergalactic/flex-box';
 import { scaleLinear } from 'd3-scale';
 
 const dataHints = makeDataHintsContainer();

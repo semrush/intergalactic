@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import { DatePicker } from '@semcore/ui/date-picker';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import { DatePicker } from 'intergalactic/date-picker';
 import TimePicker from '@semcore/time-picker';
-import Checkbox from '@semcore/ui/checkbox';
-import Button from '@semcore/ui/button';
+import Checkbox from 'intergalactic/checkbox';
+import Button from 'intergalactic/button';
 
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);

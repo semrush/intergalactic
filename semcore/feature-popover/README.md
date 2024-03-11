@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import FeaturePopover from '@semcore/ui/feature-popover';
+import FeaturePopover from 'intergalactic/feature-popover';
 ```
 
 <details>

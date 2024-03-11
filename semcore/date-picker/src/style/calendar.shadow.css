@@ -89,7 +89,7 @@ SCalendarUnit[today] {
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     box-sizing: border-box;
-    border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+    border: 1px solid var(--intergalactic-date-picker-cell-current, #8a8e9b);
   }
 }
 

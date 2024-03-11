@@ -6,7 +6,7 @@ tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog
 ## Table
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table />;
 ```
 
@@ -15,7 +15,7 @@ import Table from '@semcore/ui/table';
 ## Table.Row
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table.Row />;
 ```
 
@@ -24,7 +24,7 @@ import Table from '@semcore/ui/table';
 ## Table.Cell
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table.Cell />;
 ```
 
@@ -33,7 +33,7 @@ import Table from '@semcore/ui/table';
 ## Table.CellHead
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table.CellHead />;
 ```
 
@@ -42,7 +42,7 @@ import Table from '@semcore/ui/table';
 ## Table.StickyHead
 
 ```jsx
-import Table from '@semcore/ui/table';
+import Table from 'intergalactic/table';
 <Table>
   <Table.StickyHead />
   <Table.Head />

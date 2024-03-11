@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import TimePicker from '@semcore/ui/time-picker';
+import TimePicker from 'intergalactic/time-picker';
 ```
 
 <details>

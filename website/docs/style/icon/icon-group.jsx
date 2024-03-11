@@ -1,10 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 
-import Tooltip from '@semcore/ui/tooltip';
-import { Col, Row } from '@semcore/ui/grid';
+import Tooltip from 'intergalactic/tooltip';
+import { Col, Row } from 'intergalactic/grid';
 import Pills from '@semcore/pills';
-import OutsideClick from '@semcore/ui/outside-click';
+import OutsideClick from 'intergalactic/outside-click';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
 
@@ -71,7 +71,7 @@ class PanelChangeIcon extends PureComponent {
     const haveSizeIcon = filterIcons.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
-    const importText = `import ${includeName} from '@semcore/ui/icon${includeGroupName}/${name}${includeSize}'`;
+    const importText = `import ${includeName} from 'intergalactic/icon${includeGroupName}/${name}${includeSize}'`;
 
     return (
       <Copy copiedToast='Copied!' toCopy={importText} key={index} trigger='click'>

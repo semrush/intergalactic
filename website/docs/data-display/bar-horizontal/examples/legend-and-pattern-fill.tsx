@@ -7,10 +7,10 @@ import {
   HoverRect,
   makeDataHintsContainer,
   ChartLegend,
-} from '@semcore/ui/d3-chart';
+} from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 
 const dataHints = makeDataHintsContainer();
 

@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.32.0] - 2024-03-07
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/popper` [5.20.5 ~> 5.21.0]).
+
+## [3.31.2] - 2024-03-07
+
+### Added
+
+- Logic to define X and Y axis for a11y summary in Bar charts.
+
+## [3.31.1] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [3.31.0] - 2024-03-01
 
 ### Added

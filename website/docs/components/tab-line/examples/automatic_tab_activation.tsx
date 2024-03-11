@@ -1,8 +1,8 @@
 import React from 'react';
-import TabLine from '@semcore/ui/tab-line';
-import Badge from '@semcore/ui/badge';
-import Tooltip from '@semcore/ui/tooltip';
-import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
+import TabLine from 'intergalactic/tab-line';
+import Badge from 'intergalactic/badge';
+import Tooltip from 'intergalactic/tooltip';
+import LinkedInM from 'intergalactic/icon/LinkedIn/m';
 
 const Demo = () => {
   const [value, setValue] = React.useState(0);
