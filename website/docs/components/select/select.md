@@ -68,6 +68,14 @@ Table: Trigger button states
 | Invalid       | ![](static/primary-invalid.png)           | ![](static/inline-select-invalid.png)     | ![](static/inline-select-invalid.png)       |
 | Disabled      | ![](static/primary-disabled.png)         | ![](static/inline-select-disabled.png)   | ![](static/tertiary-select-disabled.png)   |
 
+When the value of the trigger isn't known while the select is loading, center the Spin within it.
+
+Table: Trigger button loading state for the unknown value in the trigger
+
+| State         | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)        | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)          | LinkTrigger with the color of text    |
+| ------------- | -------------------- | -------------------- | ------------------------------------- |
+| Loading       | ![](static/primary-loading-center.png) | ![](static/inline-select-loading-center.png) | ![](static/tertiary-select-loading-center.png) |
+
 ## Trigger content
 
 The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/badge) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/dot) should be placed in the upper right corner of the trigger.

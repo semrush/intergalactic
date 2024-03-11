@@ -114,6 +114,15 @@ The example below shows one of the ways to implement filtering.
 
 :::
 
+## Loading state
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/loading_state.tsx';
+</script>
+
+:::
 ## Advanced filtering control
 
 To get more control over the parts of `InputSearch` component, you can use children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.

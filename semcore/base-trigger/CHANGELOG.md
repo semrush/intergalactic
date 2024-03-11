@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.0] - 2024-03-07
+
+### Added
+
+- ButtonTrigger got `chevron` prop that controls display of chevron icon.
+
 ## [4.27.1] - 2024-03-07
 
 ### Fixed

@@ -24,6 +24,9 @@ class RootButtonTrigger extends Component {
       onChangeOf: ['value'],
     }),
   ];
+  static defaultProps = {
+    chevron: true,
+  };
 
   getTextProps() {
     return {
@@ -39,14 +42,16 @@ class RootButtonTrigger extends Component {
   render() {
     const SButtonAddon = ButtonTrigger.Addon;
     const SButtonTriggerSpin = Spin;
-    const { Children, styles, loading, empty } = this.asProps;
+    const { Children, styles, loading, chevron, empty } = this.asProps;
 
     return sstyled(styles)(
       <Root render={BaseTrigger} tag='button' type='button'>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
-        <SButtonAddon>
-          {loading ? <SButtonTriggerSpin size='xs' theme={false} /> : <ChevronDown />}
-        </SButtonAddon>
+        {(chevron || loading) && (
+          <SButtonAddon>
+            {loading ? <SButtonTriggerSpin size='xs' theme={false} /> : <ChevronDown />}
+          </SButtonAddon>
+        )}
       </Root>,
     );
   }
