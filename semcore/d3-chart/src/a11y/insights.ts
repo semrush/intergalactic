@@ -530,8 +530,9 @@ export const extractDataInsights = (
       for (let i = 0; i < data.length; i++) {
         const row = data[i];
         const key = allRowsIds[i];
+        const groupKeyValue = getPropByPath(row, groupKeys[0]) as string;
         groupedValues[key] = groupedValues[key] ?? {
-          groupName: getPropByPath(row, groupKeys[0]) as string,
+          groupName: hints.titles.getHorizontalAxesTitle?.(groupKeyValue) ?? groupKeyValue,
           rows: [],
         };
         groupedValues[key].rows.push(row);
