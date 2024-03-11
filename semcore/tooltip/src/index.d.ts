@@ -70,7 +70,7 @@ declare const Hint: Intergalactic.Component<'div', HintProps, TooltipTriggerCont
   Popper: Intergalactic.Component<'div', HintPopperProps, TooltipContext>;
 };
 
-export type InformationDropdownProps = Intergalactic.InternalTypings.EfficientOmit<
+export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmit<
   PopperProps,
   'interaction'
 > &
@@ -88,14 +88,14 @@ export type InformationDropdownProps = Intergalactic.InternalTypings.EfficientOm
     interaction?: 'hover' | 'click';
   };
 
-declare const InformationDropdown: Intergalactic.Component<
+declare const DescriptionTooltip: Intergalactic.Component<
   'div',
-  InformationDropdownProps,
+  DescriptionTooltipProps,
   TooltipTriggerContext
 > & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
-  Popper: Intergalactic.Component<'div', InformationDropdownProps, TooltipContext>;
+  Popper: Intergalactic.Component<'div', DescriptionTooltipProps, TooltipContext>;
 };
 
 export default Tooltip;
-export { Hint, InformationDropdown };
+export { Hint, DescriptionTooltip };

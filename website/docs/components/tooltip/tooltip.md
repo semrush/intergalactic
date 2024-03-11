@@ -10,7 +10,7 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 import React from 'react'; 
 
 import Button from 'intergalactic/button'; 
-import Tooltip, { Hint, InformationDropdown } from 'intergalactic/tooltip'; 
+import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip'; 
 import { Box, Flex } from 'intergalactic/flex-box'; 
 import { Text } from 'intergalactic/typography'; 
 import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
@@ -32,7 +32,7 @@ const PLACEMENT = [
 ]; 
 
 const EVENT = ['hover', 'click', 'focus']; 
-const components = [Hint, Tooltip, InformationDropdown]; 
+const components = [Hint, Tooltip, DescriptionTooltip]; 
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
   const { radio, select } = createGroupWidgets('Tooltip'); 
@@ -95,25 +95,25 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       </Hint>
     );
 
-  } else if (component === 'InformationDropdown') {
+  } else if (component === 'DescriptionTooltip') {
 
     return (
-      <InformationDropdown
+      <DescriptionTooltip
         placement={placement}
         theme={theme}
       >
-        <InformationDropdown.Trigger>
+        <DescriptionTooltip.Trigger>
           <Button>Button</Button>
-        </InformationDropdown.Trigger>
-        <InformationDropdown.Popper>
+        </DescriptionTooltip.Trigger>
+        <DescriptionTooltip.Popper>
           <Text size={200} bold>Additional information</Text>
           <Box my={2}>
             Use this tooltip type for elements that already have a visible name, and you need to show a lot of additional information.
           </Box>
           <Box mb={2}>It may contain several paragraphs and interactive elements (for example, <Link href='https://semrush.com'>links</Link>).
           </Box>
-        </InformationDropdown.Popper>
-      </InformationDropdown>
+        </DescriptionTooltip.Popper>
+      </DescriptionTooltip>
     );
 
   } else {

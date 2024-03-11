@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip, { Hint, InformationDropdown } from 'intergalactic/tooltip';
+import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip';
 import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
@@ -17,9 +17,9 @@ const Demo = () => (
         sentence for its content.
       </Tooltip.Popper>
     </Tooltip>
-    <InformationDropdown>
-      <InformationDropdown.Trigger tag={Link}>Additional information</InformationDropdown.Trigger>
-      <InformationDropdown.Popper>
+    <DescriptionTooltip>
+      <DescriptionTooltip.Trigger tag={Link}>Additional information</DescriptionTooltip.Trigger>
+      <DescriptionTooltip.Popper>
         <Text size={200} bold>
           Additional information
         </Text>
@@ -31,8 +31,8 @@ const Demo = () => (
           It may contain several paragraphs and interactive elements (for example,{' '}
           <Link href='https://semrush.com'>links</Link>).
         </Box>
-      </InformationDropdown.Popper>
-    </InformationDropdown>
+      </DescriptionTooltip.Popper>
+    </DescriptionTooltip>
     <input />
   </Flex>
 );

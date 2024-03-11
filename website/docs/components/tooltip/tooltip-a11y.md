@@ -19,7 +19,7 @@ Table: Keyboard support
 
 1. For `Hint`, the popper is not focusable.
 2. In the case of `Tooltip`, the popper becomes focusable if it contains any focusable elements.
-3. With `InformationDropdown`, the popper is always focusable and automatically receives focus when opened.
+3. With `DescriptionTooltip`, the popper is always focusable and automatically receives focus when opened.
 
 ### Hint attributes
 
@@ -45,9 +45,9 @@ Table: Roles and attributes
 |           | `aria-live="polite"` | Implicit on `div` | Used to keep component accessible with browsers and screen readers that doesn't support `aria-describedby` . Assistive technologies will announce popper content when it's opened or changed.                                                                      |
 |           | `aria-live="assertive"` | Implicit on `div` (only for tooltip with `warning` theme) | Same to `aria-live="polite"` . |
 
-### InformationDropdown roles and attributes
+### DescriptionTooltip roles and attributes
 
-The list below describes roles and attributes that `InformationDropdown` component has.
+The list below describes roles and attributes that `DescriptionTooltip` component has.
 
 Table: Roles and attributes
 

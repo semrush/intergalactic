@@ -4,7 +4,7 @@ import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { axe } from '@semcore/testing-utils/axe';
 
-import Tooltip, { Hint, InformationDropdown } from '../src';
+import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
 describe('Tooltip', () => {
   beforeEach(cleanup);
@@ -244,12 +244,12 @@ describe('TooltipBase', () => {
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
-    test('InformationDropdown', async () => {
+    test('DescriptionTooltip', async () => {
       const { container } = render(
-        <InformationDropdown visible disablePortal>
-          <InformationDropdown.Trigger tag='button'>trigger</InformationDropdown.Trigger>
-          <InformationDropdown.Popper>text</InformationDropdown.Popper>
-        </InformationDropdown>,
+        <DescriptionTooltip visible disablePortal>
+          <DescriptionTooltip.Trigger tag='button'>trigger</DescriptionTooltip.Trigger>
+          <DescriptionTooltip.Popper>text</DescriptionTooltip.Popper>
+        </DescriptionTooltip>,
       );
 
       const results = await axe(container);

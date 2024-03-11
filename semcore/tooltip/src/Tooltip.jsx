@@ -177,8 +177,8 @@ class HintRoot extends TooltipRoot {
   }
 }
 
-class InformationDropdownRoot extends TooltipRoot {
-  static displayName = 'InformationDropdown';
+class DescriptionTooltipRoot extends TooltipRoot {
+  static displayName = 'DescriptionTooltip';
   static style = style;
   static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];
   static defaultProps = {
@@ -187,7 +187,7 @@ class InformationDropdownRoot extends TooltipRoot {
     interaction: 'click',
   };
   popperRef = React.createRef();
-  subcomponents = [InformationDropdown.Trigger.displayName, InformationDropdown.Popper.displayName];
+  subcomponents = [DescriptionTooltip.Trigger.displayName, DescriptionTooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
       <Hint.Trigger {...props}>
@@ -246,8 +246,8 @@ export const Tooltip = createComponent(
   },
 );
 
-export const InformationDropdown = createComponent(
-  InformationDropdownRoot,
+export const DescriptionTooltip = createComponent(
+  DescriptionTooltipRoot,
   {
     Trigger: TooltipTrigger,
     Popper: TooltipPopper,

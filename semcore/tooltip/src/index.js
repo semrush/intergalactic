@@ -1,1 +1,1 @@
-export { default, Hint, InformationDropdown } from './Tooltip';
+export { default, Hint, DescriptionTooltip } from './Tooltip';

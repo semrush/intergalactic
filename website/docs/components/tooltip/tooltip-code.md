@@ -10,18 +10,18 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 
 The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper) with additional features:
 
-- Stylization and themes for the popper.
-- Adding arrow for the popper to point to its trigger.
+* Stylization and themes for the popper.
+* Adding arrow for the popper to point to its trigger.
 
 ## Basic usage
 
 As previously mentioned, the tooltip is a styled version of [popper](/utils/popper/popper) and operates similarly.
 
-`Tooltip` contains `Hint` and `InformationDropdown` components. By using correct component, you will enhance end interface accessibility. 
+`Tooltip` contains `Hint` and `InformationDescriptionTooltips. By using correct component, you will enhance end interface accessibility. 
 
 1. Use `Hint` if the trigger lacks a visible name. Content should be brief and non-interactive.
 2. Use `Tooltip` when the trigger has a visible name and the content consists of a single text sentence. It may also include interactive elements.
-3. Use `InformationDropdown` when the trigger has a visible name and the content provides a significant amount of additional information. It may contain numerous interactive elements.
+3. Use `DescriptionTooltip` when the trigger has a visible name and the content provides a significant amount of additional information. It may contain numerous interactive elements.
 
 Alongside `Tooltip` there are `Hint` and `InformationDropdown` components exported. By using correct component, you will enhance end interface accessibility. 
 
@@ -32,7 +32,7 @@ Alongside `Tooltip` there are `Hint` and `InformationDropdown` components export
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from './examples/basic_usage.tsx'; 
 </script>
 
 :::
@@ -46,11 +46,10 @@ The code below replicates the functionality of `Hint` example above.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/title.tsx';
+  export Demo from './examples/title.tsx'; 
 </script>
 
 :::
-
 
 ## Popper trigger accessibility
 
@@ -59,11 +58,10 @@ To ensure accessibility for assistive technologies, set the `aria-describedby` a
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/nested.tsx';
+  export Demo from './examples/nested.tsx'; 
 </script>
 
 :::
-
 
 ## Singleton
 
@@ -72,7 +70,7 @@ You can use a single tooltip for multiple reference elements. This allows you to
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/singleton.tsx';
+  export Demo from './examples/singleton.tsx'; 
 </script>
 
 :::
@@ -84,7 +82,7 @@ You can use an interactive icon as a Tooltip's trigger.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/info_icon.tsx';
+  export Demo from './examples/info_icon.tsx'; 
 </script>
 
 :::
@@ -96,7 +94,7 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/ignore_portal_stacking.tsx';
+  export Demo from './examples/ignore_portal_stacking.tsx'; 
 </script>
 
 :::
