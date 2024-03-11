@@ -128,13 +128,13 @@ class ScrollAreaRoot extends Component {
         const element = e.target.getBoundingClientRect();
 
         if (viewPort) {
-          const notInViewPort =
+          const outOfViewport =
             element.top >= viewPort.bottom ||
             element.bottom <= viewPort.top ||
             element.left >= viewPort.right ||
             element.right <= viewPort.left;
 
-          if (notInViewPort && this.asProps.keyboardFocused) {
+          if (outOfViewport && this.asProps.keyboardFocused) {
             e.target.scrollIntoView({
               block: 'nearest',
               inline: 'nearest',

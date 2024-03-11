@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.20.9] - 2024-03-11
 
-### Change
+### Fixed
 
-- Check that focused (clicked) element is outside scroll area container in both directions (top-bottom and left-right) before scroll to them.
+- Unexpected scroll in some corner cases.
 
 ## [5.20.8] - 2024-03-08
 
