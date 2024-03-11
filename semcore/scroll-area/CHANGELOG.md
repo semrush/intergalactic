@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Change
 
-- Check that focused (clicked) element is  outside scroll area container in both directions (top-bottom and left-right) before scroll to them.
+- Check that focused (clicked) element is outside scroll area container in both directions (top-bottom and left-right) before scroll to them.
 
 ## [5.20.8] - 2024-03-08
 

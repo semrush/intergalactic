@@ -129,10 +129,10 @@ class ScrollAreaRoot extends Component {
 
         if (viewPort) {
           const notInViewPort =
-            (element.top >= viewPort.bottom) ||
-            (element.bottom <= viewPort.top) ||
-            (element.left >= viewPort.right) ||
-            (element.right <= viewPort.left);
+            element.top >= viewPort.bottom ||
+            element.bottom <= viewPort.top ||
+            element.left >= viewPort.right ||
+            element.right <= viewPort.left;
 
           if (notInViewPort && this.asProps.keyboardFocused) {
             e.target.scrollIntoView({
