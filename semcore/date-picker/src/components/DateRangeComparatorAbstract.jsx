@@ -215,21 +215,23 @@ class DateRangeComparatorAbstract extends Component {
     const day = this.keyDiff[key];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
-      const [left_period, right_period] = next_highlighted;
+      const [startPeriod, endPeriod] = next_highlighted;
+      const highlightedPeriod = endPeriod || startPeriod;
 
-      const monthDisplayedPeriod = displayedPeriod?.getMonth();
-      const period = right_period || left_period;
+      let displayedPeriodNormalized = displayedPeriod?.getDate();
+      let highlightedPeriodNormalized = highlightedPeriod?.getDate();
+      if (this.navigateStep === 'month') {
+        displayedPeriodNormalized = displayedPeriod?.getMonth();
+        highlightedPeriodNormalized = highlightedPeriod?.getMonth();
+      }
+      if (this.navigateStep === 'year') {
+        displayedPeriodNormalized = displayedPeriod?.getYear();
+        highlightedPeriodNormalized = highlightedPeriod?.getYear();
+      }
+      const offset = highlightedPeriodNormalized - displayedPeriodNormalized;
 
-      if (period) {
-        if (!monthDisplayedPeriod) {
-          return period;
-        }
-
-        if (period.getMonth() - monthDisplayedPeriod > 1) {
-          return DateRangeComparatorAbstract.subtract(period, 1, 'month');
-        } else if (period.getMonth() - monthDisplayedPeriod < 0) {
-          return period;
-        }
+      if (offset < 0 || offset > 1) {
+        return highlightedPeriod;
       }
       return displayedPeriod;
     };
