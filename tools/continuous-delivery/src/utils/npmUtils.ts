@@ -58,6 +58,12 @@ export class NpmUtils {
   }
 
   private static async publishSemcoreUi(pnpmOptions: string) {
+    log('Building reexports...');
+    execSync('pnpm --filter @semcore/ui run build', {
+      encoding: 'utf-8',
+      stdio: ['inherit', 'inherit', 'inherit'],
+    });
+    log('Building reexports done.');
     log('Publishing @semcore/ui...');
     execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
       encoding: 'utf-8',
