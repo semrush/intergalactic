@@ -1,15 +1,64 @@
 name: publish-unlocked-release
 on:
   push:
-    branches: [master]
-    paths: .ci/.unlocked-releases.txt
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
   workflow_dispatch:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+      - name: Install Node.js
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4.0.0
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Cache build
+        uses: actions/cache@v4.0.0
+        id: cache-build
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: |
+          pnpm build
   publish-unlocked-release:
     runs-on: ubuntu-latest
+    needs: [build]
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
@@ -71,7 +120,6 @@ jobs:
         run: pnpm --filter intergalactic-migrate run build && pnpm publish-release
   publish-website:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     needs: publish-unlocked-release
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
@@ -104,3 +152,14 @@ jobs:
           git checkout -b website/release
           git push --force --set-upstream origin website/release
           git push origin website/release --force
+  create-pr:
+    runs-on: ubuntu-latest
+    needs: publish-unlocked-release
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+      - name: create pull request
+        run: gh pr create -B $GITHUB_HEAD_REF -H master --title 'Merge release tag into master' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
