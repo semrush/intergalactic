@@ -1,3 +1,13 @@
+## [15.68.1] - 2024-03-08
+
+### @semcore/data-table
+
+- **Changed** Don't focus hidden DataTable.Head.
+
+### @semcore/scroll-area
+
+- **Fixed** Unexpected scroll after mouse clicks.
+
 ## [15.68.0] - 2024-03-07
 
 ### @semcore/base-trigger

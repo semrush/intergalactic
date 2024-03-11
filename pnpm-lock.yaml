@@ -724,7 +724,7 @@ importers:
         specifier: 4.27.1
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.20.7
+        specifier: 5.20.8
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.20.5
@@ -1009,7 +1009,7 @@ importers:
         specifier: 5.19.4
         version: link:../flex-box
       '@semcore/scroll-area':
-        specifier: 5.20.7
+        specifier: 5.20.8
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.20.5
@@ -1684,7 +1684,7 @@ importers:
         specifier: 4.20.5
         version: link:../input
       '@semcore/scroll-area':
-        specifier: 5.20.7
+        specifier: 5.20.8
         version: link:../scroll-area
       '@semcore/tag':
         specifier: 5.27.4
@@ -2232,7 +2232,7 @@ importers:
         specifier: 4.18.5
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.23.0
+        specifier: 4.23.1
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.19.4
@@ -2551,7 +2551,7 @@ importers:
         specifier: 4.27.1
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.20.7
+        specifier: 5.20.8
         version: link:../scroll-area
       '@semcore/typography':
         specifier: 5.26.4
@@ -2650,7 +2650,7 @@ importers:
         specifier: 4.20.5
         version: link:../input
       '@semcore/select':
-        specifier: 4.32.8
+        specifier: 4.32.9
         version: link:../select
       '@semcore/utils':
         specifier: 4.20.5
@@ -2779,7 +2779,7 @@ importers:
         specifier: 3.32.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.28.2
+        specifier: 4.28.3
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.30.4
@@ -2797,7 +2797,7 @@ importers:
         specifier: 4.20.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.23.0
+        specifier: 4.23.1
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.19.4
@@ -2854,7 +2854,7 @@ importers:
         specifier: 5.20.6
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.23.5
+        specifier: 4.23.6
         version: link:../input-tags
       '@semcore/link':
         specifier: 5.22.4
@@ -2902,10 +2902,10 @@ importers:
         specifier: 6.22.4
         version: link:../radio
       '@semcore/scroll-area':
-        specifier: 5.20.7
+        specifier: 5.20.8
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.32.8
+        specifier: 4.32.9
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.26.6
@@ -2941,7 +2941,7 @@ importers:
         specifier: 5.19.7
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.32.3
+        specifier: 4.32.4
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.22.0
