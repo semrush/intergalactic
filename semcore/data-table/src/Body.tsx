@@ -19,7 +19,7 @@ const getCellsByColumn = (cells: NestedCells): RowData => {
 const displayContents = { display: 'contents' };
 
 type AsProps = {
-  rows: NestedCells[];
+  rows: NestedCells[][];
   columns: Column[];
   $scrollRef: ReturnType<ReturnType<typeof syncScroll>>;
   onResize: ResizeObserverCallback;
@@ -28,6 +28,11 @@ type AsProps = {
   use: 'primary' | 'secondary';
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
+  rowsRendering?: (props: {
+    rows: NestedCells[][];
+    columns: Column[];
+    renderRow: (row: Cell[], details: { dataIndex: number; nested: boolean }) => React.ReactNode;
+  }) => React.ReactNode;
   disabledScroll?: boolean;
   uid?: string;
 };
@@ -130,7 +135,11 @@ class Body extends Component<AsProps, State> {
 
   renderRow(
     cells: NestedCells,
-    { dataIndex, topOffset, nested }: { dataIndex: number; topOffset?: number; nested: boolean },
+    {
+      dataIndex,
+      topOffset,
+      nested = false,
+    }: { dataIndex: number; topOffset?: number; nested: boolean },
   ) {
     const SRow = Box;
     const { styles, rowPropsLayers, uniqueKey, virtualScroll } = this.asProps;
@@ -264,6 +273,7 @@ class Body extends Component<AsProps, State> {
       onResize,
       onScroll,
       disabledScroll,
+      rowsRendering,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -281,9 +291,15 @@ class Body extends Component<AsProps, State> {
 
     const body = sstyled(styles)(
       <SBody render={Box}>
-        {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
-        {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
-        {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
+        {rowsRendering ? (
+          rowsRendering({ rows, columns, renderRow: this.renderRow.bind(this) }) || null
+        ) : (
+          <>
+            {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
+            {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
+            {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
+          </>
+        )}
       </SBody>,
     );
 

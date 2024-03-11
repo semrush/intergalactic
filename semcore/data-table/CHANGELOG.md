@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.0] - 2024-03-11
+
+### Added
+
+- `rowsRendering` prop to `DataTable.Body` for low level control over rows rendering. Especially it allows to use custom virtual rendering.
+
 ## [4.28.4] - 2024-03-11
 
 ### Changed

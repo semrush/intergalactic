@@ -146,6 +146,12 @@ export type DataTableBodyProps = BoxProps & {
    * @default { tollerance: 2 }
    */
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
+  /** Allows to redefine rows renderning for a very deep and even fragile customization like building custom virtual scrolling */
+  rowsRendering?: (props: {
+    rows: DataTableRow[];
+    columns: Column[];
+    renderRow: (row: DataTableRow, details: { dataIndex: number }) => React.ReactNode;
+  }) => React.ReactNode;
   /**
    * Called every time user scrolls area
    */

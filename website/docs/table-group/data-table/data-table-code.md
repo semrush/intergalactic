@@ -380,11 +380,24 @@ We use the [example with the table above](/table-group/data-table/data-table#tab
 ## Virtual scroll in table
 
 Enable scroll virtualization using the `virtualScroll` property.
+Note that built-in virtualization support tables with fixed-height rows only.
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/virtual-scroll-in-table.tsx';
+</script>
+
+:::
+
+## Custom rows rendering
+
+If built-in virtualization does not meet your requirements, you can implement your own virtualization using `rowsRendering` prop.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-rows-rendering.tsx';
 </script>
 
 :::
