@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.20.9] - 2024-03-11
+
+### Fixed
+
+- Unexpected scroll in some corner cases.
+
 ## [5.20.8] - 2024-03-08
 
 ### Fixed
