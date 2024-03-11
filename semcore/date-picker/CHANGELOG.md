@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.31.0] - 2024-03-08
+
+### Changed
+
+- Selected date range now is immediately represented in input trigger even before clicking the apply button.
+- While typings date range in input trigger, the calendar changes displayed period to a typed one.
+
 ## [4.30.5] - 2024-03-08
 
 ### Fixed
