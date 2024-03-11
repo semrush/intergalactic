@@ -34,14 +34,13 @@ export type BaseTriggerProps = BoxProps &
      */
     placeholder?: React.ReactNode;
     /**
-     * Sets disabled state to trigger
-     */
-    empty: false;
-    /**
      * Display the dropdowns chevron icon
      * @default true
      */
     chevron?: boolean;
+    /**
+     * Sets disabled state to trigger
+     */
     disabled?: boolean;
     /** Trigger theme
      * @deprecated
