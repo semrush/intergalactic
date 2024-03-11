@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.23.2] - 2024-03-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [5.20.8 ~> 5.20.9]).
+
 ## [4.23.1] - 2024-03-08
 
 ### Changed

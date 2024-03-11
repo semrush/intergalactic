@@ -1,3 +1,19 @@
+## [15.69.0] - 2024-03-11
+
+### @semcore/base-trigger
+
+- **Added** ButtonTrigger got `chevron` prop that controls display of chevron icon.
+
+### @semcore/date-picker
+
+- **Changed** Selected date range now is immediately represented in input trigger even before clicking the apply button.
+- **Changed** While typings date range in input trigger, the calendar changes displayed period to a typed one.
+- **Fixed** In month date range pickers the second calendar was not usable from the keyboard.
+
+### @semcore/scroll-area
+
+- **Fixed** Unexpected scroll in some corner cases.
+
 ## [15.68.1] - 2024-03-08
 
 ### @semcore/data-table
