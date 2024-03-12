@@ -1,3 +1,14 @@
+## [15.70.0] - 2024-03-12
+
+### @semcore/d3-chart
+
+- **Added** Feature to render custom components (in foreignObject) as axis tick value.
+
+### @semcore/data-table
+
+- **Added** `withScrollBar` prop to enable scrolling in `DataTable.Head`.
+- **Added** `renderRows` prop to `DataTable.Body` for low level control over rows rendering. Especially it allows to use custom virtual rendering.
+
 ## [15.69.0] - 2024-03-11
 
 ### @semcore/base-trigger
