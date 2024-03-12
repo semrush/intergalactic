@@ -109,8 +109,11 @@ export type DataTableHeadProps = BoxProps & {
   /** Hidden header */
   hidden?: boolean;
 
-  /** Disabled scroll */
+  /** Disabled scroll (as action) */
   disabledScroll?: boolean;
+
+  /** Enable scroll bar element in header */
+  withScrollBar?: boolean;
 };
 
 /** @deprecated */

@@ -20,6 +20,7 @@ const ariaSort = {
   desc: 'descending',
   asc: 'ascending',
 } as const;
+const displayContents = { display: 'contents' };
 
 type AsProps = {
   $onSortClick: (name: string, event: React.MouseEvent | React.KeyboardEvent) => void;
@@ -31,6 +32,7 @@ type AsProps = {
   disabledScroll?: boolean;
   ['data-ui-name']: string;
   uid?: string;
+  withScrollBar?: boolean;
 };
 
 class Head extends Component<AsProps> {
@@ -147,6 +149,7 @@ class Head extends Component<AsProps> {
     const SHead = Root;
     const SHeadWrapper = Box as any;
     const SScrollArea = ScrollArea as any;
+    const SScrollAreaBar = ScrollArea.Bar as any;
     const {
       Children,
       styles,
@@ -155,6 +158,7 @@ class Head extends Component<AsProps> {
       $scrollRef,
       sticky,
       disabledScroll,
+      withScrollBar,
       hidden,
     } = this.asProps;
 
@@ -187,6 +191,20 @@ class Head extends Component<AsProps> {
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </SScrollArea.Container>
+          {Boolean(withScrollBar) && (
+            <div style={displayContents} role='rowgroup'>
+              <div style={displayContents} role='row'>
+                <div style={displayContents} role='cell'>
+                  <SScrollAreaBar
+                    orientation='horizontal'
+                    left={`${offsetLeftSum}px`}
+                    right={`${offsetRightSum}px`}
+                    offsetSum={`${offsetLeftSum + offsetRightSum}px`}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </SScrollArea>
         {Children.origin}
       </SHeadWrapper>,
