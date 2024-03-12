@@ -60,27 +60,6 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     return getBubbleChartValueScale(data, 'value');
   }
 
-  get scaledValues(): ScaledValues {
-    const { data, plotWidth, plotHeight } = this.asProps;
-    const values: ScaledValues = { x: [], y: [] };
-
-    const xValueScale = (plotWidth / plotHeight) * this.getValueScale(data.map((d) => d.x));
-    const yValueScale = (plotHeight / plotWidth) * this.getValueScale(data.map((d) => d.y));
-
-    data.forEach((item) => {
-      const x = item.x;
-      const y = item.y;
-      const scaledValue = this.valueScale(item.value);
-
-      values.x.push(x - scaledValue / xValueScale);
-      values.x.push(x + scaledValue / xValueScale);
-      values.y.push(y - scaledValue / yValueScale);
-      values.y.push(y + scaledValue / yValueScale);
-    });
-
-    return values;
-  }
-
   get xScale() {
     const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
 
@@ -90,7 +69,37 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
 
     const range = [marginY, plotWidth - this.plotPadding];
 
-    return scaleLinear([Math.min(...this.scaledValues.x), Math.max(...this.scaledValues.x)], range);
+    const miniestValue = data.reduce(
+      (acc, item) => {
+        if (item.x - item.value < acc.xMin) {
+          acc.xMin = item.x - item.value;
+          acc.value = item.value;
+        }
+        return acc;
+      },
+      { value: data[0].value, xMin: data[0].x - data[0].value },
+    ).value;
+    const maxestValue = data.reduce(
+      (acc, item) => {
+        if (item.value + item.x > acc.xMax) {
+          acc.xMax = item.value + item.x;
+          acc.value = item.value;
+        }
+        return acc;
+      },
+      { value: data[0].value, xMax: data[0].value + data[0].x },
+    ).value;
+
+    let xMin = Math.min(...data.map((d) => d.x));
+    let xMax = Math.max(...data.map((d) => d.x));
+    const domainWidh = Math.abs(xMax - xMin);
+    const pixelRactio = domainWidh / Math.abs(range[0] - range[1]);
+    const minShift = this.valueScale(miniestValue) * pixelRactio;
+    const maxShift = this.valueScale(maxestValue) * pixelRactio;
+    xMin -= minShift * 2;
+    xMax += maxShift * 2;
+
+    return scaleLinear().domain([xMin, xMax]).range(range);
   }
 
   get yScale(): ScaleLinear<any, any> {
@@ -102,7 +111,37 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
 
     const range = [plotHeight - marginX, this.plotPadding];
 
-    return scaleLinear([Math.min(...this.scaledValues.y), Math.max(...this.scaledValues.y)], range);
+    const miniestValue = data.reduce(
+      (acc, item) => {
+        if (item.y - item.value < acc.yMin) {
+          acc.yMin = item.y - item.value;
+          acc.value = item.value;
+        }
+        return acc;
+      },
+      { value: data[0].value, yMin: data[0].y - data[0].value },
+    ).value;
+    const maxestValue = data.reduce(
+      (acc, item) => {
+        if (item.value + item.y > acc.yMax) {
+          acc.yMax = item.value + item.y;
+          acc.value = item.value;
+        }
+        return acc;
+      },
+      { value: data[0].value, yMax: data[0].value + data[0].y },
+    ).value;
+
+    let yMin = Math.min(...data.map((d) => d.y));
+    let yMax = Math.max(...data.map((d) => d.y));
+    const domainWidh = Math.abs(yMax - yMin);
+    const pixelRactio = domainWidh / Math.abs(range[0] - range[1]);
+    const minShift = this.valueScale(miniestValue) * pixelRactio;
+    const maxShift = this.valueScale(maxestValue) * pixelRactio;
+    yMin -= minShift * 2;
+    yMax += maxShift * 2;
+
+    return scaleLinear().domain([yMin, yMax]).range(range);
   }
 
   defaultLegendProps() {

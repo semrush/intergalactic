@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.34.0] - 2024-03-12
+
+### Changed
+
+- Improved `Chart.Bubble` plot scaling to better fit bubbles and reduce plot empty space.
+
 ## [3.33.0] - 2024-03-12
 
 ### Added
