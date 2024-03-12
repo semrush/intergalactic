@@ -17,7 +17,7 @@ const Demo = () => {
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body
-        rowsRendering={({ rows, renderRow }) => {
+        renderRows={({ rows, renderRow }) => {
           const rowRenderer = ({
             key,
             index,

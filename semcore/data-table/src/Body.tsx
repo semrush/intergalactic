@@ -28,7 +28,7 @@ type AsProps = {
   use: 'primary' | 'secondary';
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
-  rowsRendering?: (props: {
+  renderRows?: (props: {
     rows: NestedCells[][];
     columns: Column[];
     renderRow: (row: Cell[], details: { dataIndex: number; nested: boolean }) => React.ReactNode;
@@ -273,7 +273,7 @@ class Body extends Component<AsProps, State> {
       onResize,
       onScroll,
       disabledScroll,
-      rowsRendering,
+      renderRows,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -291,8 +291,8 @@ class Body extends Component<AsProps, State> {
 
     const body = sstyled(styles)(
       <SBody render={Box}>
-        {rowsRendering ? (
-          rowsRendering({ rows, columns, renderRow: this.renderRow.bind(this) }) || null
+        {renderRows ? (
+          renderRows({ rows, columns, renderRow: this.renderRow.bind(this) }) || null
         ) : (
           <>
             {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
