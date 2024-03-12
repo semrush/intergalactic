@@ -10,7 +10,7 @@ import { GitUtils } from '../utils/gitUtils';
 
 const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
-const publishPreRelease = async () => {
+const updateIntergalacticChangelog = async () => {
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
@@ -44,9 +44,14 @@ const publishPreRelease = async () => {
   // 4) Update version in package.json
   packageJson.version = currentTag;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
-
-  // 5) Publish package
-  await publishTarball(packageJson.name, dirname, true);
 };
 
-export { publishPreRelease };
+const setIntergalacticPrereleaseVersion = async (prerelease: string) => {
+  const packageJsonFilePath = path.resolve(dirname, 'package.json');
+  const packageJson = fs.readJSONSync(packageJsonFilePath);
+
+  packageJson.version = `${packageJson.version}-${prerelease}`;
+  fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
+};
+
+export { updateIntergalacticChangelog, setIntergalacticPrereleaseVersion };
