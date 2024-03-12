@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Prop `withScrollBar` for enable scroll in `DataTable.Head`.
+- Prop `withScrollBar` to enable scrolling in `DataTable.Head`.
 
 ## [4.28.4] - 2024-03-11
 
