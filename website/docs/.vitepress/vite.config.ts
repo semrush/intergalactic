@@ -7,7 +7,6 @@ import { resolve as resolvePath } from 'path';
 import { unpluginIcons } from './unplugins/unplugin-icons';
 import { unpluginStatic } from './unplugins/unplugin-static';
 import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
-import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
 import { fileURLToPath, URL } from 'url';
 
 export const viteConfig = defineConfig({
@@ -53,7 +52,6 @@ export const viteConfig = defineConfig({
     unpluginIcons.vite({}),
     unpluginStatic.vite({}),
     unpluginIllustrations.vite({}),
-    unpluginCrutches.vite({}),
     createUnplugin<{}>(() => ({
       name: 'typescript-data-resolver',
       async resolveId(id) {

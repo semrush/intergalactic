@@ -54,8 +54,6 @@
     "@semcore/builder": "workspace:*",
     "@semcore/changelog-handler": "workspace:*",
     "@semcore/continuous-delivery": "workspace:*",
-    "intergalactic-migrate": "workspace:*",
-    "intergalactic": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
     "@semcore/esbuild-plugin-semcore": "workspace:*",
@@ -76,6 +74,8 @@
     "fs-extra": "9.1.0",
     "husky": "8.0.0",
     "inquirer": "6.3.1",
+    "intergalactic": "workspace:*",
+    "intergalactic-migrate": "workspace:*",
     "jsdom": "22.1.0",
     "lint-staged": "10.2.9",
     "picocolors": "1.0.0",
@@ -116,7 +116,8 @@
   "pnpm": {
     "patchedDependencies": {
       "react-hook-form@6.10.1": "patches/react-hook-form@6.10.1.patch",
-      "parse-es-import@0.6.0": "patches/parse-es-import@0.6.0.patch"
+      "parse-es-import@0.6.0": "patches/parse-es-import@0.6.0.patch",
+      "react-virtualized@9.22.3": "patches/react-virtualized@9.22.3.patch"
     }
   }
 }
