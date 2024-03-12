@@ -530,7 +530,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added accessability needed aria label.
+- Added accessibility needed aria label.
 
 ## [3.1.4] - 2022-10-24
 

@@ -37,7 +37,7 @@ export type BarProps = Context & {
    * The maximum width of each Bar
    */
   maxBarSize?: number;
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 
