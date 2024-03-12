@@ -14,13 +14,6 @@ const updateIntergalacticChangelog = async () => {
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
-  const packages = Object.keys(deps);
-
-  // 1) Copy all built code
-  await copyLib(packages);
-
-  // 2) Set deps from all components to root intergalactic package
-  await updateExternalDeps(packageJson, packages);
 
   // 3) Update changelog
   const { version, changelogs } = await updateReleaseChangelog(packageJson, deps);
@@ -54,4 +47,18 @@ const setIntergalacticPrereleaseVersion = async (prerelease: string) => {
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 };
 
-export { updateIntergalacticChangelog, setIntergalacticPrereleaseVersion };
+const generateIntergalacticCodeBeforePublish = async () => {
+  const packageJsonFilePath = path.resolve(dirname, 'package.json');
+  const packageJson = fs.readJSONSync(packageJsonFilePath);
+  const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
+  const packages = Object.keys(deps);
+
+  await copyLib(packages);
+  await updateExternalDeps(packageJson, packages);
+};
+
+export {
+  updateIntergalacticChangelog,
+  setIntergalacticPrereleaseVersion,
+  generateIntergalacticCodeBeforePublish,
+};

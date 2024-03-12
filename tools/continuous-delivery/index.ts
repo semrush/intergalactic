@@ -21,7 +21,8 @@ import { closeTasks } from './src/intg-release/closeTasks';
 import {
   updateIntergalacticChangelog,
   setIntergalacticPrereleaseVersion,
-} from './src/intg-release/updateIntergalacticChangelog';
+  generateIntergalacticCodeBeforePublish,
+} from './src/intg-release/publishUtils';
 
 export const initPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -44,16 +45,7 @@ export const initPrerelease = async () => {
       }),
     );
     await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
-
-    try {
-      await updateReleaseChangelog();
-    } catch(e: unknown) {
-      if (e instanceof Error) {
-        log(e.message);
-      }
-
-      throw e;
-    }
+    await updateReleaseChangelog();
 
     if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
       const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
@@ -80,15 +72,7 @@ export const initPrerelease = async () => {
       versionPatches.push(patch);
     }
 
-    try {
-      await updateIntergalacticChangelog();
-    } catch(e: unknown) {
-      if (e instanceof Error) {
-      log(e.message);
-      }
-
-      throw e;
-    }
+    await updateIntergalacticChangelog();
 
     await GitUtils.initNewPrerelease(versionPatches);
   }
@@ -114,6 +98,7 @@ export const publishPrerelease = async () => {
   );
 
   await setIntergalacticPrereleaseVersion(prerelease);
+  await generateIntergalacticCodeBeforePublish();
   log('Updated versions to prerelease.');
 
   await NpmUtils.publish(updatedPackages.concat('intergalactic'), true);
@@ -123,6 +108,8 @@ export const publishRelease = async () => {
   const updatedPackages = await GitUtils.getUpdatedPackages();
   const versionTag = await GitUtils.getCurrentTag();
   const version = versionTag?.slice(1);
+
+  await generateIntergalacticCodeBeforePublish();
 
   // all semcore/* + intergalactic
   await NpmUtils.publish(updatedPackages.concat('intergalactic'), false);
