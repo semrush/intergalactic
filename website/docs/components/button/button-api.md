@@ -4,7 +4,7 @@ tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-
 ---
 
 ## Button
-
+x`zx`
 Modified button component (`type=button` by default), it can do `loading` and add Addons to itself 💪
 
 ```jsx

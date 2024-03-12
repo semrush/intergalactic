@@ -8,7 +8,7 @@ tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-
 
 <script lang="tsx">
 import React from 'react';
-
+`zx`zx
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import Button from 'intergalactic/button';

@@ -4,7 +4,7 @@ tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-
 ---
 
 ## Addons
-
+`zx`zx
 Addons can be installed either by passing the required `tag` to the `addonLeft`/`addonRight` property or by unrending `Button.Addon`/`Button.Text` into the component body. The examples below are the same.
 
 ::: sandbox
