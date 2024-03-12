@@ -39,17 +39,17 @@ function createElementRender() {
       },
     );
 
+    const mergedChildren = mergedProps.children;
+
     if (typeof children === 'function') {
-      const _child = mergedProps.children;
       mergedProps = assignProps(children(mergedProps), mergedProps);
       children = mergedProps.children;
-      mergedProps.children = _child;
     }
 
     const Tag = typeof render === 'string' ? mergedProps.tag || render : render;
 
     if (childrenPosition === 'inside') {
-      mergedProps.children = children === undefined ? mergedProps.children : children;
+      mergedProps.children = children === undefined ? mergedChildren : children;
     }
 
     if (!Tag) {
