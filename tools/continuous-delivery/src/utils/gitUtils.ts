@@ -1,4 +1,5 @@
 import Git from 'simple-git';
+import { execSync } from 'child_process';
 import { log, prerelaseSuffix } from '../utils';
 import { VersionPatch } from '../makeVersionPatches';
 import { NpmUtils } from './npmUtils';
@@ -35,10 +36,11 @@ export class GitUtils {
   }
 
   public static async getCurrentTag(): Promise<string | null> {
-    const tags = await git.tags();
-    const latestTag = tags.latest ?? null;
+    const tag = execSync('git describe --tags --abbrev=0', {
+      encoding: 'utf-8',
+    });
 
-    return latestTag;
+    return tag.trim();
   }
 
   public static async getPrerelease(): Promise<string | null> {
