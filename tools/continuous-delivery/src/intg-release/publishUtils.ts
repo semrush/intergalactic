@@ -7,7 +7,7 @@ import Git from 'simple-git';
 import { log } from '../utils';
 import { updateExternalDeps } from './updateExternalDeps';
 import { GitUtils } from '../utils/gitUtils';
-import {updateComponentsVersions} from "./updateComponentsVersions";
+import { updateComponentsVersions } from './updateComponentsVersions';
 
 const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
@@ -18,7 +18,7 @@ const updateIntergalacticChangelog = async () => {
   const packages = Object.keys(deps);
 
   // 3) Update changelog
-  const { version} = await updateReleaseChangelog(packageJson, deps);
+  const { version } = await updateReleaseChangelog(packageJson, deps);
 
   updateComponentsVersions(packages, path.resolve(dirname, 'components.json'));
 
