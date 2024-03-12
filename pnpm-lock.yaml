@@ -23,6 +23,9 @@ patchedDependencies:
   react-hook-form@6.10.1:
     hash: jxraglplq2tfs5abx45wc74mnq
     path: patches/react-hook-form@6.10.1.patch
+  react-virtualized@9.22.3:
+    hash: gbxc3pzinlxu2yolhjue4gwtqq
+    path: patches/react-virtualized@9.22.3.patch
 
 importers:
 
@@ -3746,6 +3749,9 @@ importers:
       react-is:
         specifier: 17.0.1
         version: 17.0.1
+      react-virtualized:
+        specifier: 9.22.3
+        version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@18.2.0)(react@18.2.0)
       styled-components:
         specifier: 5.3.5
         version: 5.3.5(@babel/core@7.19.1)(react-dom@18.2.0)(react-is@17.0.1)(react@18.2.0)
@@ -4035,7 +4041,7 @@ importers:
         version: 1.8.7(react-dom@18.2.0)(react@18.2.0)
       react-virtualized:
         specifier: 9.22.3
-        version: 9.22.3(react-dom@18.2.0)(react@18.2.0)
+        version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@18.2.0)(react@18.2.0)
       reflect-metadata:
         specifier: 0.1.13
         version: 0.1.13
@@ -22315,7 +22321,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-virtualized@9.22.3(react-dom@18.2.0)(react@18.2.0):
+  /react-virtualized@9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-MKovKMxWTcwPSxE1kK1HcheQTWfuCxAuBoSTf2gwyMM21NdX/PXUhnoP8Uc5dRKd+nKm8v41R36OellhdCpkrw==}
     peerDependencies:
       react: ^15.3.0 || ^16.0.0-alpha
@@ -22330,6 +22336,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-lifecycles-compat: 3.0.4
     dev: false
+    patched: true
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
