@@ -2780,7 +2780,7 @@ importers:
         version: link:../counter
       '@semcore/d3-chart':
         specifier: 3.32.0
-        version: link:../d3-chart
+        version: 3.32.0(@semcore/core@semcore+core)(d3-selection@2.0.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@semcore/data-table':
         specifier: 4.28.3
         version: 4.28.3(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
@@ -8314,6 +8314,38 @@ packages:
       '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@semcore/d3-chart@3.32.0(@semcore/core@semcore+core)(d3-selection@2.0.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-tsZ8EUlLkPxC7mD/lRWTkTNVfcmRKVX6cDydI5ynMXXfRY6nPWnzxIfsgtkekhQkbZcPQRLcjfmXKOAhTpd3JQ==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@formatjs/intl': 2.3.0(typescript@5.1.6)
+      '@semcore/animation': 2.19.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/core': link:semcore/core
+      '@semcore/divider': 4.18.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.19.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/popper': 5.21.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.20.5(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@types/d3-shape': 3.1.1
+      '@upsetjs/venn.js': 1.4.2
+      d3-array: 3.1.6
+      d3-interpolate: 3.0.1
+      d3-polygon: 3.0.1
+      d3-scale: 4.0.2
+      d3-shape: 3.2.0
+      d3-time: 3.1.0
+      d3-time-format: 4.1.0
+      d3-transition: 3.0.1(d3-selection@2.0.0)
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - d3-selection
+      - typescript
     dev: false
 
   /@semcore/data-table@4.28.3(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
@@ -15369,6 +15401,7 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: false
 
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
@@ -22804,7 +22837,7 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
     dependencies:
-      glob: 7.2.3
+      glob: 7.1.4
 
   /roarr@7.21.0:
     resolution: {integrity: sha512-d1rPLcHmQID3GsA3p9d5vKSZYlvrTWhjbmeg9DT5DcPoLpH85VzPmkLkGKhQv376+dfkApaHwNbpYEwDB77Ibg==}
