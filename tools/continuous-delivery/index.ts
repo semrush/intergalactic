@@ -44,7 +44,16 @@ export const initPrerelease = async () => {
       }),
     );
     await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
-    await updateReleaseChangelog();
+
+    try {
+      await updateReleaseChangelog();
+    } catch(e: unknown) {
+      if (e instanceof Error) {
+        log(e.message);
+      }
+
+      throw e;
+    }
 
     if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
       const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
@@ -71,7 +80,15 @@ export const initPrerelease = async () => {
       versionPatches.push(patch);
     }
 
-    await updateIntergalacticChangelog();
+    try {
+      await updateIntergalacticChangelog();
+    } catch(e: unknown) {
+      if (e instanceof Error) {
+      log(e.message);
+      }
+
+      throw e;
+    }
 
     await GitUtils.initNewPrerelease(versionPatches);
   }
