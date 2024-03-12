@@ -3749,9 +3749,6 @@ importers:
       react-is:
         specifier: 17.0.1
         version: 17.0.1
-      react-virtualized:
-        specifier: 9.22.3
-        version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@18.2.0)(react@18.2.0)
       styled-components:
         specifier: 5.3.5
         version: 5.3.5(@babel/core@7.19.1)(react-dom@18.2.0)(react-is@17.0.1)(react@18.2.0)
