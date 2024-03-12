@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Opportunity to render custom components (in foreignObject) as axis tick value.
+- Feature to render custom components (in foreignObject) as axis tick value.
 
 ## [3.32.0] - 2024-03-07
 
