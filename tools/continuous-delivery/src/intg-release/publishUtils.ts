@@ -7,6 +7,7 @@ import Git from 'simple-git';
 import { log } from '../utils';
 import { updateExternalDeps } from './updateExternalDeps';
 import { GitUtils } from '../utils/gitUtils';
+import {updateComponentsVersions} from "./updateComponentsVersions";
 
 const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
@@ -14,28 +15,15 @@ const updateIntergalacticChangelog = async () => {
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
+  const packages = Object.keys(deps);
 
   // 3) Update changelog
-  const { version, changelogs } = await updateReleaseChangelog(packageJson, deps);
-  const currentVTag = await GitUtils.getCurrentTag();
-  const currentTag = currentVTag?.slice(1);
-  const versionFromTag = currentTag?.split('-')[0];
+  const { version} = await updateReleaseChangelog(packageJson, deps);
 
-  if (version === null) {
-    log('No changes from previous version was found. Skip publish prerelease.');
-    return;
-  }
-  if (currentTag === undefined) {
-    log('Not a tag. Skip publish prerelease.');
-    return;
-  }
-  if (version !== versionFromTag) {
-    log(`Errors in calculated version. Calculated version is ${version}.`);
-    return;
-  }
+  updateComponentsVersions(packages, path.resolve(dirname, 'components.json'));
 
   // 4) Update version in package.json
-  packageJson.version = currentTag;
+  packageJson.version = version;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 };
 
