@@ -245,6 +245,7 @@ function Ticks(props) {
     indexScale,
     dataHintsHandler,
     children,
+    childrenPosition = 'inside',
   } = props;
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
@@ -270,7 +271,7 @@ function Ticks(props) {
         aria-hidden
         key={i}
         render='text'
-        childrenPosition='inside'
+        childrenPosition={childrenPosition}
         __excludeProps={['data', 'scale', 'format', 'value']}
         value={value}
         index={i}
