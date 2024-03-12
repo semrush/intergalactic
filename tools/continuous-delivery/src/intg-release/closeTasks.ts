@@ -1,20 +1,15 @@
 import Git from 'simple-git';
-import { log } from '../utils';
-import fetch from 'node-fetch';
+import { log, prerelaseSuffix } from '../utils';
 import * as crypto from 'crypto';
 
 const git = Git();
 
 export const closeTasks = async (version: string) => {
-  const tags = await git.tags();
-  const latestTag = tags.latest;
-
-  if (!latestTag) {
-    log('No latest tag, skip');
-    return;
-  }
-
-  const logs = await git.log({ from: latestTag });
+  const tags = await git.tags(['v*', '--sort', 'creatordate']);
+  const releaseTags = tags.all.filter((tag) => !tag.includes(prerelaseSuffix));
+  const currentReleaseTagIndex = releaseTags.findIndex((tag) => tag === `v${version}`);
+  const prevReleaseTag = releaseTags[currentReleaseTagIndex - 1];
+  const logs = await git.log({ from: prevReleaseTag });
   const regexp = new RegExp(/\[(.*?)\]/gi);
   const taskIds = logs.all
     .map((item) => {

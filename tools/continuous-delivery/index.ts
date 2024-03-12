@@ -18,6 +18,10 @@ import { GitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
 import * as process from 'process';
 import { closeTasks } from './src/intg-release/closeTasks';
+import {
+  updateIntergalacticChangelog,
+  setIntergalacticPrereleaseVersion,
+} from './src/intg-release/updateIntergalacticChangelog';
 
 export const initPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -67,6 +71,8 @@ export const initPrerelease = async () => {
       versionPatches.push(patch);
     }
 
+    await updateIntergalacticChangelog();
+
     await GitUtils.initNewPrerelease(versionPatches);
   }
 };
@@ -89,9 +95,11 @@ export const publishPrerelease = async () => {
       };
     }),
   );
+
+  await setIntergalacticPrereleaseVersion(prerelease);
   log('Updated versions to prerelease.');
 
-  await NpmUtils.publish(updatedPackages, true);
+  await NpmUtils.publish(updatedPackages.concat('intergalactic'), true);
 };
 
 export const publishRelease = async () => {
