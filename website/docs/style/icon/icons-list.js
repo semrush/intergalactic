@@ -745,6 +745,23 @@ const iconsList = {
       ],
     },
     {
+      name: 'ShareAlt',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: [
+        'action',
+        'share',
+        'поделиться',
+        'arrow',
+        'стрелка',
+        'right',
+        'право',
+        'направо',
+        'шаринг',
+        'sharing',
+      ],
+    },
+    {
       name: 'ShowNo',
       size: ['l', 'm'],
       group: 'Action',
