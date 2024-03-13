@@ -53,6 +53,12 @@ class DropdownMenuRoot extends Component {
         (visible) => {
           if (!visible) {
             this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
+          } else {
+            setTimeout(() => {
+              const selectedItem = this.itemProps.find((item) => item.selected);
+              if (!selectedItem || this.asProps.highlightedIndex !== null) return;
+              this.handlers.highlightedIndex(this.itemProps.indexOf(selectedItem));
+            }, 0);
           }
         },
       ],
