@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
+import DataTable from 'intergalactic/data-table';
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 
 const cache = new CellMeasurerCache({
