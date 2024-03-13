@@ -19,7 +19,7 @@ const createSource = (prefix = 'ui-kit-'): ContextType => ({ value: 1, prefix })
 
 export const useUID = (prefix?: string): string => {
   const context = register.get<ContextType>('uid-context', createSource(prefix));
-  const [uid] = React.useState<number>(context.value++);
+  const [uid] = React.useId ? [React.useId()] : React.useState<number>(context.value++);
 
   useEnhancedEffect(() => {
     register.set<ContextType>('uid-context', context);
