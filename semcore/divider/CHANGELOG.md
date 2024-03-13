@@ -320,7 +320,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Role `separator` and `aria-orientation` were added for better accessability.
+- Role `separator` and `aria-orientation` were added for better accessibility.
 
 ## [3.2.21] - 2023-05-03
 

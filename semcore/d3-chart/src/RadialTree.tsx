@@ -650,7 +650,7 @@ export type RadialTreeRadianCapProps = {
   transparent?: boolean;
   ['data-radial-animation']?: `${string}-cap-circle`;
   ['data-radian-index']?: number;
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 

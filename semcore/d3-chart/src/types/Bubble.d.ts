@@ -27,7 +27,7 @@ export type BubbleProps = Context & {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 

@@ -36,7 +36,7 @@ export type RadarProps = Context & {
    * @example Math.PI/3
    * */
   angleOffset?: number;
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 
