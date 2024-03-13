@@ -3,6 +3,7 @@ import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip';
 import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
+import Button from 'intergalactic/button';
 
 const Demo = () => (
   <Flex gap={4} flexWrap>
@@ -18,7 +19,7 @@ const Demo = () => (
       </Tooltip.Popper>
     </Tooltip>
     <DescriptionTooltip>
-      <DescriptionTooltip.Trigger tag={Link}>Additional information</DescriptionTooltip.Trigger>
+      <DescriptionTooltip.Trigger tag={Button}>Additional information</DescriptionTooltip.Trigger>
       <DescriptionTooltip.Popper>
         <Text size={200} bold>
           Additional information
