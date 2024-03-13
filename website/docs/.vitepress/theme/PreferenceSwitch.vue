@@ -39,7 +39,7 @@ function useToggleFn(
   <button class="option" :class="{ highlited: !preferSemcoreUi, paddings: props.paddings }" @click="toggleSemcoreUiPacakge(false)">intergalactic</button>
   <button class="option" :class="{ highlited: preferSemcoreUi, paddings: props.paddings }" @click="toggleSemcoreUiPacakge(true)">@semcore/ui</button>
   <div class="divider" :class="{ negativeMargins: props.paddings }" ></div>
-  <a class="details" :class="{ paddings: props.paddings }"  href="/get-started-guide/dev-starter-guide/dev-starter-guide#semcore-ui-package">About API preference</a>
+  <a class="details" :class="{ paddings: props.paddings }"  href="/intergalactic/get-started-guide/dev-starter-guide/dev-starter-guide#semcore-ui-package">About API preference</a>
 </template>
 
 <style scoped>
