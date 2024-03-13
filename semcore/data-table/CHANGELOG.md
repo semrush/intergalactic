@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.0] - 2024-03-14
+
+### Changed
+
+- Pass `offset...` props to `ScrollArea` instead of custom styling in table.
+
 ## [4.29.0] - 2024-03-12
 
 ### Added
