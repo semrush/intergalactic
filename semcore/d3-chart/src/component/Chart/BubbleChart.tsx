@@ -60,88 +60,64 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     return getBubbleChartValueScale(data, 'value');
   }
 
+  calculateDomain(key: 'x' | 'y', range: [number, number]) {
+    const { data } = this.asProps;
+    const miniestValue = data.reduce(
+      (acc, item) => {
+        if (item[key] - item.value < acc.min) {
+          acc.min = item[key] - item.value;
+          acc.value = item.value;
+        }
+        return acc;
+      },
+      { value: data[0].value, min: data[0][key] - data[0].value },
+    ).value;
+    const maxestValue = data.reduce(
+      (acc, item) => {
+        if (item.value + item[key] > acc.max) {
+          acc.max = item.value + item.x;
+          acc.value = item.value;
+        }
+        return acc;
+      },
+      { value: data[0].value, max: data[0].value + data[0][key] },
+    ).value;
+
+    let min = Math.min(...data.map((d) => d[key]));
+    let max = Math.max(...data.map((d) => d[key]));
+    const pixelRactio = Math.abs(max - min) / Math.abs(range[0] - range[1]);
+    const minValueShift = this.valueScale(miniestValue) * pixelRactio;
+    const maxValueShift = this.valueScale(maxestValue) * pixelRactio;
+    min -= minValueShift * 2;
+    max += maxValueShift * 2;
+
+    return [min, max] as [min: number, max: number];
+  }
+
   get xScale() {
-    const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
+    const { xScale, marginY = 30, plotWidth } = this.asProps;
 
     if (xScale) {
       return xScale;
     }
 
-    const range = [marginY, plotWidth - this.plotPadding];
+    const range = [marginY, plotWidth - this.plotPadding] as [number, number];
+    const domain = this.calculateDomain('x', range);
 
-    const miniestValue = data.reduce(
-      (acc, item) => {
-        if (item.x - item.value < acc.xMin) {
-          acc.xMin = item.x - item.value;
-          acc.value = item.value;
-        }
-        return acc;
-      },
-      { value: data[0].value, xMin: data[0].x - data[0].value },
-    ).value;
-    const maxestValue = data.reduce(
-      (acc, item) => {
-        if (item.value + item.x > acc.xMax) {
-          acc.xMax = item.value + item.x;
-          acc.value = item.value;
-        }
-        return acc;
-      },
-      { value: data[0].value, xMax: data[0].value + data[0].x },
-    ).value;
-
-    let xMin = Math.min(...data.map((d) => d.x));
-    let xMax = Math.max(...data.map((d) => d.x));
-    const domainWidh = Math.abs(xMax - xMin);
-    const pixelRactio = domainWidh / Math.abs(range[0] - range[1]);
-    const minShift = this.valueScale(miniestValue) * pixelRactio;
-    const maxShift = this.valueScale(maxestValue) * pixelRactio;
-    xMin -= minShift * 2;
-    xMax += maxShift * 2;
-
-    return scaleLinear().domain([xMin, xMax]).range(range);
+    return scaleLinear().domain(domain).range(range);
   }
 
   get yScale(): ScaleLinear<any, any> {
-    const { yScale, marginX = 30, plotHeight, data } = this.asProps;
+    const { yScale, marginX = 30, plotHeight } = this.asProps;
 
     if (yScale) {
       return yScale;
     }
 
-    const range = [plotHeight - marginX, this.plotPadding];
+    const range = [plotHeight - marginX, this.plotPadding] as [number, number];
+    const domain = this.calculateDomain('y', range);
 
-    const miniestValue = data.reduce(
-      (acc, item) => {
-        if (item.y - item.value < acc.yMin) {
-          acc.yMin = item.y - item.value;
-          acc.value = item.value;
-        }
-        return acc;
-      },
-      { value: data[0].value, yMin: data[0].y - data[0].value },
-    ).value;
-    const maxestValue = data.reduce(
-      (acc, item) => {
-        if (item.value + item.y > acc.yMax) {
-          acc.yMax = item.value + item.y;
-          acc.value = item.value;
-        }
-        return acc;
-      },
-      { value: data[0].value, yMax: data[0].value + data[0].y },
-    ).value;
-
-    let yMin = Math.min(...data.map((d) => d.y));
-    let yMax = Math.max(...data.map((d) => d.y));
-    const domainWidh = Math.abs(yMax - yMin);
-    const pixelRactio = domainWidh / Math.abs(range[0] - range[1]);
-    const minShift = this.valueScale(miniestValue) * pixelRactio;
-    const maxShift = this.valueScale(maxestValue) * pixelRactio;
-    yMin -= minShift * 2;
-    yMax += maxShift * 2;
-
-    return scaleLinear().domain([yMin, yMax]).range(range);
+    return scaleLinear().domain(domain).range(range);
   }
 
   defaultLegendProps() {
