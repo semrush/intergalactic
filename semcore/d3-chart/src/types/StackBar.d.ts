@@ -21,7 +21,7 @@ export type StackBarProps = Context & {
    */
   maxBarSize?: number;
 
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 

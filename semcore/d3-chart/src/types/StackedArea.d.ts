@@ -16,7 +16,7 @@ export type StackedAreaProps = Context & {
   /** @deprecated */
   stack?: any;
 
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 
