@@ -20,12 +20,14 @@ const createSource = (prefix = 'ui-kit-'): ContextType => ({ value: 1, prefix })
 export const useUID = (prefix?: string): string => {
   const context = register.get<ContextType>('uid-context', createSource(prefix));
   const [uid] = React.useId ? [React.useId()] : React.useState<number>(context.value++);
+  const trimmedUid =
+    String(uid).startsWith(':') && String(uid).endsWith(':') ? String(uid).slice(1, -1) : uid;
 
   useEnhancedEffect(() => {
     register.set<ContextType>('uid-context', context);
-  }, [uid]);
+  }, [trimmedUid]);
 
-  return (context.prefix ?? '') + uid;
+  return (context.prefix ?? '') + trimmedUid;
 };
 
 export default (prefix?: string) => {
