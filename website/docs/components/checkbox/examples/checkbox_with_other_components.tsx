@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from 'intergalactic/checkbox';
-import Tooltip from 'intergalactic/tooltip';
+import { Hint } from 'intergalactic/tooltip';
 import InfoM from 'intergalactic/icon/Info/m';
 import Link from 'intergalactic/link';
 
@@ -13,7 +13,7 @@ const Demo = () => (
     {[0, 1, 2].map((item) => (
       <div key={item}>
         <Checkbox mb={3} label={`Note ${item + 1}`} />
-        <Tooltip
+        <Hint
           title='There is information about point.'
           placement='right-start'
           ml={1}
