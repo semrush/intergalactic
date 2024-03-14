@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
+import Tooltip from '@semcore/tooltip';
 import NeighborLocation from '@semcore/neighbor-location';
 import Dot from '@semcore/dot';
 import Close from '@semcore/icon/Close/m';
@@ -62,6 +63,32 @@ class RootFilterTrigger extends Component {
     });
   };
 
+  renderCloseButton = () => {
+    const SFilterTrigger = BaseTrigger;
+    const { styles, empty, onClear, size, disabled, getI18nText, uid, id } = this.asProps;
+
+    if (empty) return null;
+
+    return sstyled(styles)(
+      <SFilterTrigger
+        tag='button'
+        type='button'
+        size={size}
+        empty={empty}
+        selected
+        onClick={callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation)}
+        onKeyDown={this.handleStopPropagation}
+        disabled={disabled}
+        data-testid={'test'}
+        id={`igc-${uid}-filter-trigger-clear`}
+        aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
+        aria-label={getI18nText('clear')}
+      >
+        <FilterTrigger.Addon tag={Close} />
+      </SFilterTrigger>,
+    );
+  };
+
   render() {
     const SWrapper = Root;
     const SFilterTrigger = BaseTrigger;
@@ -69,16 +96,14 @@ class RootFilterTrigger extends Component {
       Children,
       styles,
       empty,
-      onClear,
       size,
       placeholder,
       active,
       disabled,
       getI18nText,
       includeInputProps,
-      uid,
-      id,
       triggerRef,
+      clearHint,
     } = this.asProps;
 
     const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
@@ -123,23 +148,12 @@ class RootFilterTrigger extends Component {
             )}
             {empty && <FilterTrigger.Addon tag={ChevronDown} />}
           </SFilterTrigger>
-          {!empty && (
-            <SFilterTrigger
-              tag='button'
-              type='button'
-              size={size}
-              empty={empty}
-              selected
-              onClick={callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation)}
-              onKeyDown={this.handleStopPropagation}
-              disabled={disabled}
-              id={`igc-${uid}-filter-trigger-clear`}
-              aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
-              aria-label={getI18nText('clear')}
-            >
-              <FilterTrigger.Addon tag={Close} />
-            </SFilterTrigger>
-          )}
+          {!empty &&
+            (clearHint ? (
+              <Tooltip title={clearHint}>{this.renderCloseButton()}</Tooltip>
+            ) : (
+              this.renderCloseButton()
+            ))}
         </NeighborLocation>
       </SWrapper>,
     );
