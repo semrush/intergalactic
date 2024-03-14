@@ -27,6 +27,10 @@ export type CalendarProps = BoxProps & {
    * */
   disabled?: (Date | (Date | false)[] | string)[];
   /**
+   * Error message when user attempts to input a disabled date
+   * */
+  disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+  /**
    * @ignore
    * */
   highlighted?: DateConstructorParams[];
@@ -114,6 +118,10 @@ export type DatePickerProps = Intergalactic.InternalTypings.EfficientOmit<
      * */
     disabled?: (Date | (Date | false)[] | string)[];
     /**
+     * Error message when user attempts to input a disabled date
+     * */
+    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+    /**
      * Date for showing the necessary month
      * @default new Date()
      * */
@@ -176,6 +184,10 @@ export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
      * Array of dates blocked for selection
      * */
     disabled?: (Date | (Date | false)[] | string)[];
+    /**
+     * Error message when user attempts to input a disabled date
+     * */
+    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
     /**
      * Date for showing the necessary month
      * @default new Date()
@@ -483,7 +495,10 @@ declare const MonthRangePicker: Intergalactic.Component<
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export type DateRangeComparatorProps = DropdownProps &
+export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOmit<
+  DropdownProps,
+  'disabled'
+> &
   WithI18nEnhanceProps & {
     /**
      * Selected date ranges
@@ -512,6 +527,10 @@ export type DateRangeComparatorProps = DropdownProps &
      * Array of dates blocked for selection
      * */
     disabled?: (Date | (Date | false)[] | string)[];
+    /**
+     * Error message when user attempts to input a disabled date
+     * */
+    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
     /**
      * Date for showing the necessary month
      * @default new Date()

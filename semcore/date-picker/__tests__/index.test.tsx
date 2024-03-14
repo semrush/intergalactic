@@ -3,6 +3,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { Box } from '@semcore/flex-box';
 
 import {
   DatePicker,
@@ -137,6 +138,21 @@ describe('DateRangePicker', () => {
         <DatePicker.ButtonTrigger size='l' />
         <DatePicker.Popper />
       </DatePicker>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.only('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
+    const component = (
+      <Box w={200} h={200}>
+        <DatePicker
+          value={new Date('January 1, 2021 00:00:00')}
+          disabled={[new Date('January 1, 2021 00:00:00')]}
+        >
+          <DatePicker.Trigger disablePortal />
+          <DatePicker.Popper />
+        </DatePicker>
+      </Box>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });

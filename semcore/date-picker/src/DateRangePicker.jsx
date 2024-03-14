@@ -87,6 +87,7 @@ class DateRangePickerRoot extends RangePickerAbstract {
       onDisplayedPeriodChange,
       locale,
       disabled,
+      disabledErrorText,
       size,
       getI18nText,
     } = this.asProps;
@@ -102,6 +103,7 @@ class DateRangePickerRoot extends RangePickerAbstract {
       locale,
       w: size === 'm' ? 270 : 300,
       disabledDates: disabled,
+      disabledErrorText,
       children: () => <InputTrigger.DateRange />,
       getI18nText,
     };
