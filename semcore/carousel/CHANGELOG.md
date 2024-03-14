@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.29.0] - 2024-03-14
+
+### Added
+
+- `keyboardFocusEnhance` to Carousel component.
+- `tabIndex = -1` to Buttons in Carousel.
+
 ## [3.28.3] - 2024-03-05
 
 ### Changed
