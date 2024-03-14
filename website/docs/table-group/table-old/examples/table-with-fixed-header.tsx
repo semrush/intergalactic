@@ -3,7 +3,7 @@ import Spin from 'intergalactic/spin';
 import ScrollArea from 'intergalactic/scroll-area';
 import { Text } from 'intergalactic/typography';
 import Table from 'intergalactic/table';
-import Tooltip from 'intergalactic/tooltip';
+import { Hint } from 'intergalactic/tooltip';
 import Checkbox from 'intergalactic/checkbox';
 import Link from 'intergalactic/link';
 
@@ -98,22 +98,22 @@ const Demo = () => {
                 </Checkbox>
               </Table.CellHead>
               <Table.CellHead width='200'>
-                <Tooltip title='Lorem ipsum'>
-                  <span>
+                <Hint title='Lorem ipsum'>
+                  <span tabIndex={0}>
                     Keyword <Text color='text-secondary'>(1 - 100)</Text>
                   </span>
-                </Tooltip>
+                </Hint>
               </Table.CellHead>
 
               {Object.keys(data[0])
                 .slice(1)
                 .map((name) => (
                   <Table.CellHead width='200' align='right'>
-                    <Tooltip title='Lorem ipsum'>
-                      <span>
+                    <Hint title='Lorem ipsum'>
+                      <span tabIndex={0}>
                         {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
                       </span>
-                    </Tooltip>
+                    </Hint>
                   </Table.CellHead>
                 ))}
             </Table.Row>

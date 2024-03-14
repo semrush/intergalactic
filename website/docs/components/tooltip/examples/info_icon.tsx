@@ -5,7 +5,12 @@ import IconInfo from 'intergalactic/icon/Info/m';
 const Demo = () => {
   return (
     <Tooltip>
-      <Tooltip.Trigger tag={IconInfo} interactive={true} aria-label='Hint' />
+      <Tooltip.Trigger
+        tag={IconInfo}
+        color={'--intergalactic-icon-secondary-neutral'}
+        interactive={true}
+        aria-label='Hint'
+      />
       <Tooltip.Popper>Content for tooltip</Tooltip.Popper>
     </Tooltip>
   );
