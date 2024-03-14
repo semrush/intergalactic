@@ -75,6 +75,8 @@ export type FilterTriggerProps = BaseTriggerProps & {
   includeInputProps?: string[];
   /** Normal `ref` prop refers to FilterTrigger wrapper while `triggerRef` refers explicitly to trigger button */
   triggerRef?: React.Ref<HTMLButtonElement>;
+  /** To add tooltip with this text to clear button */
+  clearHint?: string;
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
