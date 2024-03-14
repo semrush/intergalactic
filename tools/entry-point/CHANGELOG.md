@@ -2381,7 +2381,7 @@
 
 ### @semcore/pills
 
-- **Added** Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+- **Added** Added `behavior` prop for better accessibility in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
 
 ### @semcore/utils
 
@@ -2464,7 +2464,7 @@
 
 ### @semcore/divider
 
-- **Changed** Role `separator` and `aria-orientation` were added for better accessability.
+- **Changed** Role `separator` and `aria-orientation` were added for better accessibility.
 
 ### @semcore/portal
 
@@ -3918,7 +3918,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** Fixed `FilterTrigger` accessability.
+- **Fixed** Fixed `FilterTrigger` accessibility.
 
 ### @semcore/checkbox
 
@@ -4007,7 +4007,7 @@
 
 ### @semcore/inline-input
 
-- **Added** Added accessability needed aria label.
+- **Added** Added accessibility needed aria label.
 
 ### @semcore/input-mask
 

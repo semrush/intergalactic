@@ -7,7 +7,7 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ::: react-view
 
 <script lang="tsx">
-import React from 'react'; 
+import React from 'react';
 
 import Button from 'intergalactic/button'; 
 import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip'; 
@@ -38,7 +38,6 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const { radio, select } = createGroupWidgets('Tooltip'); 
 
   const component = select({
-
     key: 'component',
     defaultValue: 'Tooltip',
     label: 'Component',
@@ -46,11 +45,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: component.displayName,
       value: component.displayName,
     })),
-
   }); 
 
   const placement = select({
-
     key: 'placement',
     defaultValue: 'top',
     label: 'Placement',
@@ -58,11 +55,8 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-
   }); 
-
   const theme = select({
-
     key: 'theme',
     defaultValue: 'default',
     label: 'Theme',
@@ -80,11 +74,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         value: 'invert',
       },
     ],
-
   }); 
 
   if (component === 'Hint') {
-
     return (
       <Hint
         title='Hint may contain short text only.'
@@ -96,7 +88,6 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     );
 
   } else if (component === 'DescriptionTooltip') {
-
     return (
       <DescriptionTooltip
         placement={placement}
@@ -115,9 +106,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     );
-
   } else {
-
     return (
       <Tooltip
         placement={placement}
@@ -130,7 +119,6 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         </Tooltip.Popper>
       </Tooltip>
     );
-
   }
 }); 
 </script>
@@ -143,9 +131,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
-* Tooltip appears only when hovering over the trigger.
-* It includes an arrow pointing to the trigger.
-* Tooltip contains only hints and additional information.
+- Tooltip appears only when hovering over the trigger.
+- It includes an arrow pointing to the trigger.
+- Tooltip contains only hints and additional information.
 
 ## Component composition
 
@@ -155,8 +143,8 @@ Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
 Component consists of the following:
 
-* `Hint`
-* `title` attribute for the component which Hint component wraps
+- `Hint`
+- `title` attribute for the component which Hint component wraps
 
 ### Tooltip
 
@@ -164,9 +152,9 @@ Component consists of the following:
 
 Component consists of the following:
 
-* `Tooltip.Trigger`
-* `Tooltip.Popper`
-* `Tooltip.Title`
+- `Tooltip.Trigger`
+- `Tooltip.Popper`
+- `Tooltip.Title`
 
 ### DescriptionTooltip
 
@@ -174,13 +162,13 @@ Component consists of the following:
 
 Component consists of the following:
 
-* `DescriptionTooltip.Trigger`
-* `DescriptionTooltip.Popper`
-* `DescriptionTooltip.Title`
+- `DescriptionTooltip.Trigger`
+- `DescriptionTooltip.Popper`
+- `DescriptionTooltip.Title`
 
 ## Themes
 
-Tooltip has three themes: `default` , `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert` , and the background color changes accordingly.
+Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
 
 ::: tip
 Starting from [version 3.1.0](/components/tooltip/tooltip-changelog), you can set your own custom theme and change the background color.
@@ -190,9 +178,9 @@ Table: Tooltip themes
 
 | Theme   | Appearance example              | Styles      |
 | ------- | ------------------------------- | ----------- |
-| `default` | ![](static/default-theme.png) | `background-color: var(--tooltip-default)` , `border: 1px solid var(--border-secondary)` , `box-shadow: var(--box-shadow-popper)` |
-| `invert` | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)` , `border: 1px solid var(--border-tooltip-invert)` , `box-shadow: var(--box-shadow-popper)` |
-| `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)` , `border: 1px solid var(--border-danger-active)` , `box-shadow: var(--box-shadow-popper)` |
+| `default` | ![](static/default-theme.png) | `background-color: var(--tooltip-default)`, `border: 1px solid var(--border-secondary)`, `box-shadow: var(--box-shadow-popper)` |
+| `invert` | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
+| `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
 
 ## Maximum width and offset
 
@@ -219,7 +207,7 @@ The content area of the tooltip has a default padding of 12px.
 ![](static/tooltip-button.png)
 
 ::: tip
-It's recommended to use a font size of 14px ( `--fs-200` , `--lh-200` tokens) for the title in non-advertising messages.
+It's recommended to use a font size of 14px (`--fs-200`, `--lh-200` tokens) for the title in non-advertising messages.
 :::
 
 The image inside the tooltip has a size of 130px * 130px.
@@ -236,21 +224,21 @@ To improve readability, it is recommended to use specific margins between labels
 
 The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api).
 
-The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top` .
+The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top`.
 
 #### Placement properties
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/placement-properties.tsx'; 
+  export Demo from './examples/placement-properties.tsx';
 </script>
 
 :::
 
 ## Interaction
 
-For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon),  [Link](/components/link/link),  [Button](/components/button/button), etc.
+For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon), [Link](/components/link/link), [Button](/components/button/button), etc.
 
 ### Appearance and hiding
 
@@ -265,10 +253,10 @@ Table: Tooltip's appearance and hiding
 
 Default values for tooltip appearance and hiding:
 
-* Appearance: `100ms`
-* Hiding: `50ms`
+- Appearance: `100ms`
+- Hiding: `50ms`
 
-If the tooltip has interactive elements inside, the hiding time should be increased to `100ms` .
+If the tooltip has interactive elements inside, the hiding time should be increased to `100ms`.
 
 ## Content
 
@@ -296,8 +284,8 @@ DescriptionTooltip can contain both unformatted and formatted large text, images
 
 Main recommendations:
 
-* Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
-* Ensure that the tooltip does not overlap important information for the user.
+- Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
+- Ensure that the tooltip does not overlap important information for the user.
 
 ::: tip
 For complex content and forms, use [DropdownMenu](/components/dropdown-menu/dropdown-menu).

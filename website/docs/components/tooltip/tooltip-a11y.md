@@ -41,7 +41,7 @@ Table: Roles and attributes
 | Role      | Attribute                 | Element                                                   | Usage                                                                                                                                                                                                                                                             |
 | --------- | ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tooltip` |                           | `div` | It's a contextual text bubble that displays a description for an element that appears on pointer hover or keyboard focus.                                                                                                                                         |
-|           | `aria-describedby` | trigger                                                   | Allows assistive technologies to announce a trigger description by popper content. If you need to set it on another element, checkout [the accessability example](/components/tooltip/tooltip-code#popper-trigger-accessibility).                                                |
+|           | `aria-describedby` | trigger                                                   | Allows assistive technologies to announce a trigger description by popper content. If you need to set it on another element, checkout [the accessibility example](/components/tooltip/tooltip-code#popper-trigger-accessibility).                                                |
 |           | `aria-live="polite"` | Implicit on `div` | Used to keep component accessible with browsers and screen readers that doesn't support `aria-describedby` . Assistive technologies will announce popper content when it's opened or changed.                                                                      |
 |           | `aria-live="assertive"` | Implicit on `div` (only for tooltip with `warning` theme) | Same to `aria-live="polite"` . |
 
@@ -59,9 +59,9 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-* When open, tooltips shouldn't block a user from performing any task on the page.
-* Tooltips shouldn't be revealed until a short time has passed (~1-5 seconds).
-* Whenever possible, use descriptive text on your form fields that does need to be activated by a focus or hover event. Tooltips can be problematic for some assistive technologies (AT) devices.
+- When open, tooltips shouldn't block a user from performing any task on the page.
+- Tooltips shouldn't be revealed until a short time has passed (~1-5 seconds).
+- Whenever possible, use descriptive text on your form fields that does need to be activated by a focus or hover event. Tooltips can be problematic for some assistive technologies (AT) devices.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-tooltips).
 

@@ -591,7 +591,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed `FilterTrigger` accessability.
+- Fixed `FilterTrigger` accessibility.
 
 ## [3.2.5] - 2022-10-28
 
