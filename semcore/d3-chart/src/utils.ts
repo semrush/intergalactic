@@ -260,3 +260,47 @@ export const getBubbleChartValueScale = (data: any[], key: string) => {
 export const getScatterPlotRadius = (valueKey?: string): number => {
   return valueKey !== undefined ? 12 : 5.5;
 };
+
+type BubbleChartDataItem = {
+  value: number;
+  x: number;
+  y: number;
+};
+
+export const calculateBubbleDomain = (
+  data: Array<BubbleChartDataItem>,
+  key: 'x' | 'y',
+  range: [number, number],
+): [min: number, max: number] => {
+  const miniestValue = data.reduce(
+    (acc, item) => {
+      if (item[key] - item.value < acc.min) {
+        acc.min = item[key] - item.value;
+        acc.value = item.value;
+      }
+      return acc;
+    },
+    { value: data[0].value, min: data[0][key] - data[0].value },
+  ).value;
+  const maxestValue = data.reduce(
+    (acc, item) => {
+      if (item.value + item[key] > acc.max) {
+        acc.max = item.value + item.x;
+        acc.value = item.value;
+      }
+      return acc;
+    },
+    { value: data[0].value, max: data[0].value + data[0][key] },
+  ).value;
+
+  let [min, max] = minMax(data, key);
+
+  const pixelRactio = Math.abs(max - min) / Math.abs(range[0] - range[1]);
+  const valueScale = getBubbleChartValueScale(data, 'value');
+  const minValueShift = valueScale(miniestValue) * pixelRactio;
+  const maxValueShift = valueScale(maxestValue) * pixelRactio;
+  min -= minValueShift * 2;
+  max += maxValueShift * 2;
+
+  return [min, max];
+};
