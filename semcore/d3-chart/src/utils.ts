@@ -295,10 +295,10 @@ export const calculateBubbleDomain = (
 
   let [min, max] = minMax(data, key);
 
-  const pixelRactio = Math.abs(max - min) / Math.abs(range[0] - range[1]);
+  const pixelRatio = Math.abs(max - min) / Math.abs(range[0] - range[1]);
   const valueScale = getBubbleChartValueScale(data, 'value');
-  const minValueShift = valueScale(miniestValue) * pixelRactio;
-  const maxValueShift = valueScale(maxestValue) * pixelRactio;
+  const minValueShift = valueScale(miniestValue) * pixelRatio;
+  const maxValueShift = valueScale(maxestValue) * pixelRatio;
   min -= minValueShift * 2;
   max += maxValueShift * 2;
 
