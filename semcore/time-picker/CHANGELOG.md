@@ -20,12 +20,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version prepatch update due to children dependencies update (`@semcore/select` [4.32.7 ~> 4.32.8]).
 
-## [4.32.3-prerelease.2] - 2024-03-07
-
-### Changed
-
-- Version prepatch update due to children dependencies update (`@semcore/select` [4.32.7 ~> 4.32.8]).
-
 ## [4.32.2] - 2024-03-07
 
 ### Changed

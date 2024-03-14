@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.21.0-prerelease.2] - 2024-03-07
-
-### Fixed
-
-- In controlled mode popper was infinitely returning focus to trigger on close attempt.
-
 ## [5.20.5] - 2024-03-07
 
 ### Changed

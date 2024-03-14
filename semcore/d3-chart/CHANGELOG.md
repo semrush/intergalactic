@@ -14,12 +14,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/popper` [5.20.5 ~> 5.21.0]).
 
-## [3.32.0-prerelease.2] - 2024-03-07
-
-### Changed
-
-- Version preminor update due to children dependencies update (`@semcore/popper` [5.20.5 ~> 5.21.0]).
-
 ## [3.31.3] - 2024-03-07
 
 ### Changed

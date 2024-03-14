@@ -20,12 +20,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/dropdown` [4.19.7 ~> 4.20.0]).
 
-## [4.23.0-prerelease.2] - 2024-03-07
-
-### Changed
-
-- Version preminor update due to children dependencies update (`@semcore/dropdown` [4.19.7 ~> 4.20.0]).
-
 ## [4.22.3] - 2024-03-07
 
 ### Changed

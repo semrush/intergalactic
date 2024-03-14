@@ -14,12 +14,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Behavior in forms was broken.
 
-## [4.27.1-prerelease.2] - 2024-03-07
-
-### Fixed
-
-- Behavior in forms was broken.
-
 ## [4.27.0] - 2024-03-04
 
 ### Changed
