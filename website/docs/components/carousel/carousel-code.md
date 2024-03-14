@@ -33,7 +33,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 
 :::
 
-## Carousel with focusable Indicators only
+## Carousel without prev/next buttons
 
 ::: sandbox
 

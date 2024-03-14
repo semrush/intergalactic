@@ -4,10 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.29.0] - 2024-03-14
 
-### Added
+### Changed
 
-- `keyboardFocusEnhance` to Carousel component.
-- `tabIndex = -1` to Buttons in Carousel.
+- The whole Carousel is focusable and prev/next buttons not focusable.
 
 ## [3.28.3] - 2024-03-05
 
