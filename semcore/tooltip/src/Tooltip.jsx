@@ -118,13 +118,15 @@ function TooltipPopper(props) {
     disablePortal,
     ignorePortalsStacking,
     'aria-live': ariaLive,
+    zIndex,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
+  const STooltipPortalledWrapper = 'div';
 
   return sstyled(styles)(
     <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-      <div aria-live={ariaLive}>
+      <STooltipPortalledWrapper aria-live={ariaLive} zIndex={zIndex}>
         <STooltip
           render={Popper.Popper}
           use:disablePortal
@@ -134,7 +136,7 @@ function TooltipPopper(props) {
           <Children />
           <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
         </STooltip>
-      </div>
+      </STooltipPortalledWrapper>
     </Portal>,
   );
 }

@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
 
+### Fixed
+
+- Tooltips `z-index` was lower than `z-index` of all other floating elements..
+
 ## [6.22.0] - 2024-03-07
 
 ### Changed
