@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.21.0] - 2024-03-13
+
+### Fixed
+
+- `useUID` hook was producing different ids on SSR and client. Now it uses `React.useId` if it's available.
+
 ## [4.20.5] - 2024-03-04
 
 ### Fixed
