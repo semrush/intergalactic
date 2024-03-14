@@ -157,6 +157,8 @@ class ViewInfo extends Component {
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handlerMouseLeave)}
       >
         <SDismiss
+          tag='button'
+          type='button'
           title={getI18nText('close')}
           onClick={this.handlerClose}
           aria-label={getI18nText('close')}
