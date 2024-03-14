@@ -20,5 +20,6 @@
   "dateRange1": "First date range",
   "dateRange2": "Second date range",
   "selectingStarted": "Started selecting",
-  "selectingFinished": "Selected"
+  "selectingFinished": "Selected",
+  "disallowedDate": "Date is not allowed."
 }
