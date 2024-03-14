@@ -125,8 +125,8 @@ class ScrollAreaRoot extends Component {
     setTimeout(() => {
       const { keyboardFocused, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
-      if (typeof e.target.scrollIntoView === 'function') {
-        const viewPort = this.$container?.getBoundingClientRect();
+      if (this.$container && typeof this.$container.scrollTo === 'function') {
+        const viewPort = this.$container.getBoundingClientRect();
         const element = e.target.getBoundingClientRect();
 
         const offset = {
