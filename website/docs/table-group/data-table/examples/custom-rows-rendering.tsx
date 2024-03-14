@@ -10,8 +10,8 @@ const cache = new CellMeasurerCache({
 const Demo = () => {
   return (
     <DataTable data={data}>
-      <DataTable.Head wMin={1000}>
-        <DataTable.Column name='keyword' children='Keyword' fixed='left' />
+      <DataTable.Head>
+        <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='tags' children='Tags' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
