@@ -209,6 +209,32 @@ describe('DropdownMenu', () => {
     });
   });
 
+  test.only.concurrent('highlights selected item', async ({ expect }) => {
+    let highlightedIndex: number | undefined = undefined;
+
+    const component = render(
+      <DropdownMenu
+        placement='right'
+        onHighlightedIndexChange={(i) => {
+          highlightedIndex = i;
+        }}
+      >
+        <DropdownMenu.Trigger tag='button' data-testid='dd-trigger'>
+          Trigger
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+          <DropdownMenu.Item selected>Item 3</DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    const trigger = component.getByTestId('dd-trigger');
+    await userEvent.click(trigger);
+    await new Promise((resolve) => setTimeout(resolve, 1));
+    await expect(highlightedIndex).toBe(2);
+  });
   test.sequential('arrows open/close', async ({ expect }) => {
     let visible = undefined;
     render(
