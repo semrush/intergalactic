@@ -1,3 +1,34 @@
+## [15.71.0] - 2024-03-15
+
+### @semcore/carousel
+
+- **Changed** The whole Carousel is focusable and prev/next buttons not focusable.
+
+### @semcore/d3-chart
+
+- **Changed** Improved `Chart.Bubble` plot scaling to better fit bubbles and reduce plot empty space.
+
+### @semcore/dropdown-menu
+
+- **Changed** Highlight initially selected item after opening dropdown.
+
+### @semcore/icon
+
+- **Added** New `ShareAlt` icon.
+
+### @semcore/notice-bubble
+
+- **Changed** Close button now uses `button` tag (instead of `div` before).
+
+### @semcore/tooltip
+
+- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
+- **Fixed** Tooltips `z-index` was lower than `z-index` of all other floating elements..
+
+### @semcore/utils
+
+- **Fixed** `useUID` hook was producing different ids on SSR and client. Now it uses `React.useId` if it's available.
+
 ## [15.70.0] - 2024-03-12
 
 ### @semcore/d3-chart
