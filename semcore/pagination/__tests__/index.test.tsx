@@ -406,4 +406,50 @@ describe('Pagination.PageInput.Value', () => {
       expect(InputValue.value).toBe('1');
     },
   );
+
+  test.concurrent(
+    'Should change value in input after change it in input and click to total pages',
+    async () => {
+      const Component = () => {
+        const [currentPage, setCurrentPage] = React.useState(1);
+
+        return (
+          <>
+            <Pagination
+              currentPage={currentPage}
+              onCurrentPageChange={setCurrentPage}
+              totalPages={100}
+            >
+              <Pagination.PageInput>
+                <Pagination.PageInput.Value data-testid='value' />
+                <Pagination.PageInput.Addon
+                  data-testid={'selectPageButton'}
+                  tag={Return}
+                  interactive
+                />
+              </Pagination.PageInput>
+              <Pagination.TotalPages data-testid={'totalPagesValue'} />
+            </Pagination>
+          </>
+        );
+      };
+
+      const { getByTestId } = render(<Component />);
+
+      const InputValue = getByTestId('value') as HTMLInputElement;
+      const TotalPages = getByTestId('totalPagesValue') as HTMLElement;
+
+      await userEvent.keyboard('[Tab]');
+      expect(InputValue).toHaveFocus();
+
+      await userEvent.keyboard('13');
+      expect(InputValue.value).toBe('13');
+
+      await userEvent.keyboard('[Enter]');
+      expect(InputValue.value).toBe('13');
+
+      await userEvent.click(TotalPages);
+      expect(InputValue.value).toBe('100');
+    },
+  );
 });

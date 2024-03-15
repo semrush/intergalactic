@@ -96,10 +96,9 @@ class PaginationRoot extends Component {
   };
 
   handlePageValueBlur = () => {
-    const { currentPage } = this.asProps;
-
     setTimeout(() => {
       if (this.pageInputAddonRef.current !== document.activeElement) {
+        const { currentPage } = this.asProps;
         this.setState({ dirtyCurrentPage: currentPage });
       }
     }, 0);
