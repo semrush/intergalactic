@@ -2235,7 +2235,7 @@ importers:
         specifier: 4.19.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.24.0
+        specifier: 4.24.1
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.20.0
@@ -2653,7 +2653,7 @@ importers:
         specifier: 4.21.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.33.0
+        specifier: 4.33.1
         version: link:../select
       '@semcore/utils':
         specifier: 4.21.0

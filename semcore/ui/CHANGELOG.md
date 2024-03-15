@@ -1,3 +1,13 @@
+## [15.71.1] - 2024-03-15
+
+### @semcore/dropdown-menu
+
+- **Fixed** `Enter` or `Space` keypress on focusable element inside of DropdownMenu was causing last highlighted item to be clicked.
+
+### @semcore/pagination
+
+- **Fixed** Values in Input after keyboard navigation.
+
 ## [15.71.0] - 2024-03-15
 
 ### @semcore/carousel
