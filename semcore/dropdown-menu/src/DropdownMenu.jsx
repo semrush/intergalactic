@@ -182,7 +182,7 @@ class DropdownMenuRoot extends Component {
       }
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current) {
+        if (this.highlightedItemRef.current && highlightedIndex !== null) {
           e.stopPropagation();
           e.preventDefault();
           this.highlightedItemRef.current.click();

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.1] - 2024-03-15
+
+### Fixed
+
+- `Enter` or `Space` keypress on focusable element inside of DropdownMenu was causing last highlighted item to be clicked.
+
 ## [4.24.0] - 2024-03-13
 
 ### Changed
