@@ -55,6 +55,7 @@ jobs:
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           pnpm build
+          pnpm upload-static
   static-lint:
     runs-on: ubuntu-latest
     needs: build
