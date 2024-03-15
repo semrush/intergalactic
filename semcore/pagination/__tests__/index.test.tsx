@@ -361,49 +361,85 @@ describe('Pagination.PageInput.Value', () => {
     expect(spy).toBeCalledWith(totalPages);
   });
 
-  test.concurrent(
-    'Should stay value in input after moving focus to addon element by keyboard and change value in input to currentValue after moving focus by any element expect Input.Addon',
-    async () => {
-      const { getByTestId } = render(
+  test('Should stay value in input after moving focus to addon element by keyboard and change value in input to currentValue after moving focus by any element expect Input.Addon', async () => {
+    const { getByTestId } = render(
+      <>
+        <Pagination currentPage={1} totalPages={100}>
+          <Pagination.PageInput>
+            <Pagination.PageInput.Value data-testid='value' />
+            <Pagination.PageInput.Addon data-testid={'selectPageButton'} tag={Return} interactive />
+          </Pagination.PageInput>
+        </Pagination>
+        <Button data-testid={'testButton'}>test button</Button>
+      </>,
+    );
+
+    const InputValue = getByTestId('value') as HTMLInputElement;
+
+    await userEvent.keyboard('[Tab]');
+    expect(InputValue).toHaveFocus();
+
+    await userEvent.keyboard('123');
+    expect(InputValue.value).toBe('123');
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('selectPageButton')).toHaveFocus();
+    expect(InputValue.value).toBe('123');
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('testButton')).toHaveFocus();
+    expect(InputValue.value).toBe('1');
+
+    await userEvent.click(InputValue);
+    expect(InputValue).toHaveFocus();
+
+    await userEvent.keyboard('23');
+    expect(InputValue.value).toBe('123'); // because we already has 1 in input
+
+    await userEvent.keyboard('{Shift>}[Tab]');
+    expect(InputValue.value).toBe('1');
+  });
+
+  test('Should change value in input after change it in input and click to total pages', async () => {
+    const Component = () => {
+      const [currentPage, setCurrentPage] = React.useState(1);
+
+      return (
         <>
-          <Pagination currentPage={1} totalPages={100}>
+          <Pagination
+            currentPage={currentPage}
+            onCurrentPageChange={setCurrentPage}
+            totalPages={100}
+          >
             <Pagination.PageInput>
-              <Pagination.PageInput.Value data-testid='value' />
+              <Pagination.PageInput.Value data-testid='paginationValue' />
               <Pagination.PageInput.Addon
                 data-testid={'selectPageButton'}
                 tag={Return}
                 interactive
               />
             </Pagination.PageInput>
+            <Pagination.TotalPages data-testid={'totalPagesValue'} />
           </Pagination>
-          <Button data-testid={'testButton'}>test button</Button>
-        </>,
+        </>
       );
+    };
 
-      const InputValue = getByTestId('value') as HTMLInputElement;
+    const { getByTestId } = render(<Component />);
 
-      await userEvent.keyboard('[Tab]');
-      expect(InputValue).toHaveFocus();
+    const InputValue = getByTestId('paginationValue') as HTMLInputElement;
+    const TotalPages = getByTestId('totalPagesValue') as HTMLElement;
 
-      await userEvent.keyboard('123');
-      expect(InputValue.value).toBe('123');
+    await userEvent.keyboard('[Tab]');
+    expect(InputValue).toHaveFocus();
 
-      await userEvent.keyboard('[Tab]');
-      expect(getByTestId('selectPageButton')).toHaveFocus();
-      expect(InputValue.value).toBe('123');
+    await userEvent.keyboard('13');
+    expect(InputValue.value).toBe('13');
 
-      await userEvent.keyboard('[Tab]');
-      expect(getByTestId('testButton')).toHaveFocus();
-      expect(InputValue.value).toBe('1');
+    await userEvent.keyboard('[Enter]');
+    expect(InputValue.value).toBe('13');
 
-      await userEvent.click(InputValue);
-      expect(InputValue).toHaveFocus();
-
-      await userEvent.keyboard('23');
-      expect(InputValue.value).toBe('123'); // because we already has 1 in input
-
-      await userEvent.keyboard('{Shift>}[Tab]');
-      expect(InputValue.value).toBe('1');
-    },
-  );
+    await userEvent.click(TotalPages);
+    expect(InputValue.value).toBe('100');
+  });
 });
