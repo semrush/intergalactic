@@ -21,7 +21,7 @@ class WidgetEmpty extends Component {
       <SWidgetEmpty render={Flex}>
         {isNode(icon) && (
           <SImage aria-hidden='true'>
-            {typeof icon === 'string' ? <img src={icon} alt='widget empty icon' /> : icon}
+            {typeof icon === 'string' ? <img src={icon} alt='' /> : icon}
           </SImage>
         )}
         <Children />
