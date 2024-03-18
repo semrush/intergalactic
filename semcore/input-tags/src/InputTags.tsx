@@ -153,6 +153,7 @@ class InputTags extends Component<IInputTagsProps> {
     if (!container || target !== container) return;
     const hasTags = this.tagsRefs.some(Boolean);
     if (hasTags) return;
+    if (event.relatedTarget === this.inputRef.current) return;
     this.moveFocusToInput(event);
   };
 
