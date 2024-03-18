@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `Select.Option.Checkbox` wasn't visually checked in dev strict mode.
+- `Select.Option.Checkbox` visual displaying.
 
 ## [4.33.0] - 2024-03-15
 
