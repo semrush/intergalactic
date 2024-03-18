@@ -7,7 +7,12 @@ import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
 import { setRef } from '@semcore/utils/lib/ref';
-import { useFocusLock, isFocusInside, setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import {
+  useFocusLock,
+  isFocusInside,
+  setFocus,
+  syntheticEvents,
+} from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -484,6 +489,19 @@ function PopperPopper(props) {
 
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
+  const propagateFocusLockSyntheticEvent = React.useCallback(
+    (event) => {
+      event.stopPropagation();
+      if (!disablePortal) return;
+      const syntheticEvent = new Event(syntheticEvents[event.type], {
+        bubbles: true,
+      });
+      syntheticEvent.target = event.target;
+      syntheticEvent.relatedTarget = event.relatedTarget;
+      ref.current?.dispatchEvent(syntheticEvent);
+    },
+    [disablePortal],
+  );
 
   useFocusLock(
     ref,
@@ -545,11 +563,11 @@ function PopperPopper(props) {
           onMouseOver={stopPropagation}
           onMouseOut={stopPropagation}
           onMouseUp={stopPropagation}
-          onKeyDown={stopPropagation}
+          onKeyDown={propagateFocusLockSyntheticEvent}
           onKeyPress={stopPropagation}
           onKeyUp={stopPropagation}
           onFocus={stopPropagation}
-          onBlur={stopPropagation}
+          onBlur={propagateFocusLockSyntheticEvent}
           onChange={stopPropagation}
           onInput={stopPropagation}
           onInvalid={stopPropagation}
