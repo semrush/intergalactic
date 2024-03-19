@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.1] - 2024-03-19
+
+### Changed
+
+- `List.Item` is `block` element by default.
+
 ## [5.27.0] - 2024-03-15
 
 ### Changed
