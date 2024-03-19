@@ -17,10 +17,8 @@ const unsafeSetFocus = (
     activeElement &&
     previousActiveElement &&
     previousActiveElement.compareDocumentPosition(activeElement) &
-      Node.DOCUMENT_POSITION_PRECEDING &&
-    !(
-      previousActiveElement.compareDocumentPosition(activeElement) & Node.DOCUMENT_POSITION_CONTAINS
-    )
+      Node.DOCUMENT_POSITION_FOLLOWING &&
+    previousActiveElement.compareDocumentPosition(activeElement) & Node.DOCUMENT_POSITION_CONTAINS
   ) {
     target = focusable[focusable.length - 1];
   }
