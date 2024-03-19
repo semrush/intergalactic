@@ -19,6 +19,11 @@ export type ScrollAreaProps = BoxProps & {
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Tab index that is being bypassed to the scroll container. */
   tabIndex?: number | null;
+
+  topOffset?: number;
+  rightOffset?: number;
+  bottomOffset?: number;
+  leftOffset?: number;
 };
 
 /** @deprecated */

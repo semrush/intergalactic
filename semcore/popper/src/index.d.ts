@@ -14,6 +14,7 @@ import { BoxProps } from '@semcore/flex-box';
 import { ScaleProps } from '@semcore/animation';
 import { NeighborLocationProps } from '@semcore/neighbor-location';
 import { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type eventInteraction = {
   trigger: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
@@ -101,6 +102,7 @@ export type PopperTriggerProps = BoxProps & {
 /** @deprecated */
 export interface IPopperPopperProps extends PopperPopperProps, UnknownProperties {}
 export type PopperPopperProps = BoxProps &
+  KeyboardFocusProps &
   NeighborLocationProps & {
     /**
      * Disabled focus trap, autofocus and focus return

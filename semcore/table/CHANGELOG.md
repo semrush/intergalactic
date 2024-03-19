@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.27.1] - 2024-03-11
+
+### Fixed
+
+- Table head row height calculation when `disablePortal` prop provided.
+
 ## [4.27.0] - 2024-03-15
 
 ### Changed

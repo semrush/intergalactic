@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `data-table` layout shift on the first render
 
+### Changed
+
+- Keyboard navigation in table with fixed columns.
+
 ## [4.30.0] - 2024-03-15
 
 ### Changed
