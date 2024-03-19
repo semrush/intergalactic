@@ -13,7 +13,6 @@ SShadowVertical {
     position: absolute;
     display: none;
     pointer-events: none;
-    z-index: 1;
   }
 }
 
@@ -58,6 +57,14 @@ SShadowHorizontal[position='end'] {
   }
 }
 
+SShadowHorizontal[leftOffset]:before {
+  left: var(--leftOffset);
+}
+
+SShadowHorizontal[rightOffset]:after {
+  right: var(--rightOffset);
+}
+
 SShadowVertical {
 
   &:before,
@@ -97,6 +104,14 @@ SShadowVertical[position='end'] {
     background: var(--intergalactic-scroll-area-shadow-bottom,
     linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
+}
+
+SShadowVertical[topOffset]:before {
+  top: var(--topOffset);
+}
+
+SShadowVertical[bottomOffset]:after {
+  bottom: var(--bottomOffset);
 }
 
 SContainer {

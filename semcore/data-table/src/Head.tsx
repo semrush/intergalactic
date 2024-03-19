@@ -10,8 +10,6 @@ import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 
-import scrollStyles from './style/scroll-area.shadow.css';
-
 const SORTING_ICON = {
   desc: SortDesc,
   asc: SortAsc,
@@ -29,7 +27,6 @@ type AsProps = {
   columnsChildren: Column[];
   onResize: ResizeObserverCallback;
   sticky: boolean;
-  disabledScroll?: boolean;
   ['data-ui-name']: string;
   uid?: string;
   withScrollBar?: boolean;
@@ -148,8 +145,6 @@ class Head extends Component<AsProps> {
   render() {
     const SHead = Root;
     const SHeadWrapper = Box as any;
-    const SScrollArea = ScrollArea as any;
-    const SScrollAreaBar = ScrollArea.Bar as any;
     const {
       Children,
       styles,
@@ -157,7 +152,6 @@ class Head extends Component<AsProps> {
       onResize,
       $scrollRef,
       sticky,
-      disabledScroll,
       withScrollBar,
       hidden,
     } = this.asProps;
@@ -174,38 +168,27 @@ class Head extends Component<AsProps> {
 
     return sstyled(styles)(
       <SHeadWrapper sticky={sticky}>
-        <SScrollArea
-          styles={scrollStyles}
-          left-offset={`${offsetLeftSum}px`}
-          right-offset={`${offsetRightSum}px`}
+        <ScrollArea
+          leftOffset={offsetLeftSum}
+          rightOffset={offsetRightSum}
           shadow
           onResize={onResize}
         >
-          <SScrollArea.Container
-            ref={$scrollRef}
-            disabledScroll={disabledScroll}
-            role='rowgroup'
-            tabIndex={hidden ? -1 : 0}
-          >
+          <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={hidden ? -1 : 0}>
             <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
-          </SScrollArea.Container>
+          </ScrollArea.Container>
           {Boolean(withScrollBar) && (
             <div style={displayContents} role='rowgroup'>
               <div style={displayContents} role='row'>
                 <div style={displayContents} role='cell'>
-                  <SScrollAreaBar
-                    orientation='horizontal'
-                    left={`${offsetLeftSum}px`}
-                    right={`${offsetRightSum}px`}
-                    offsetSum={`${offsetLeftSum + offsetRightSum}px`}
-                  />
+                  <ScrollArea.Bar orientation='horizontal' />
                 </div>
               </div>
             </div>
           )}
-        </SScrollArea>
+        </ScrollArea>
         {Children.origin}
       </SHeadWrapper>,
     );

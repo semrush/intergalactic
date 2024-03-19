@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.22.0] - 2024-03-19
+
+### Added
+
+- Feature `offset`.
+
 ## [5.21.0] - 2024-03-15
 
 ### Changed
