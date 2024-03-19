@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.0] - 2024-03-18
+
+### Fixed
+
+- It wasn't possible to move focus back from the empty input-tags container with `Shift+Tab`.
+
 ## [4.24.0] - 2024-03-15
 
 ### Changed
