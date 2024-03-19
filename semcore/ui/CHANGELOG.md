@@ -1,3 +1,52 @@
+## [15.72.0] - 2024-03-19
+
+### @semcore/data-table
+
+- **Fixed** `data-table` layout shift on the first render
+- **Changed** Keyboard navigation in table with fixed columns.
+
+### @semcore/dropdown-menu
+
+- **Fixed** `Enter` or `Space` keypress on focusable element inside of DropdownMenu was causing last highlighted item to be clicked.
+
+### @semcore/input-tags
+
+- **Fixed** It wasn't possible to move focus back from the empty input-tags container with `Shift+Tab`.
+
+### @semcore/notice-bubble
+
+- **Fixed** Enforced that close button now uses `button` tag by default.
+
+### @semcore/pagination
+
+- **Fixed** Values in Input after keyboard navigation.
+
+### @semcore/popper
+
+- **Changed** Popper focus ring is rounded now.
+
+### @semcore/scroll-area
+
+- **Added** Feature `offset`.
+
+### @semcore/select
+
+- **Fixed** `Select.Option.Checkbox` visual displaying.
+
+### @semcore/tooltip
+
+- **Removed** `undefined` role from `Tooltip.Trigger`.
+- **Fixed** Removed `aria-live` from trigger and added it to popper.
+
+### @semcore/typography
+
+- **Changed** `List.Item` is `block` element by default.
+
+### @semcore/widget-empty
+
+- **Fixed** Added widget empty image default width and height.
+- **Fixed** Widget empty image alt set to empty string to hide it from screen readers.
+
 ## [15.71.0] - 2024-03-15
 
 ### @semcore/carousel
