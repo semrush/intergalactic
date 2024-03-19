@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.24.0] - 2024-03-19
+
+### Removed
+
+- `undefined` role from `Tooltip.Trigger`.
+
 ## [6.23.0] - 2024-03-07
 
 ### Added

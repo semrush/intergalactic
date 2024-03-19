@@ -103,7 +103,7 @@ function TooltipTrigger(props) {
   const STrigger = Root;
 
   return sstyled(styles)(
-    <STrigger render={Popper.Trigger} role={undefined}>
+    <STrigger render={Popper.Trigger}>
       <Children />
     </STrigger>,
   );
