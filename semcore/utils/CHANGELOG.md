@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Condition to check on which element to move focus to in a locked container.
+- Focus order for poppers opened from other poppers.
 
 ## [4.21.0] - 2024-03-13
 
