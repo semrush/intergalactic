@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Pass `offset...` props to `ScrollArea` instead of custom styling in table.
+- Keyboard navigation in table with fixed columns.
 
 ## [4.29.0] - 2024-03-12
 
