@@ -296,8 +296,7 @@ class Body extends Component<AsProps, State> {
         ) : (
           <>
             {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
-            {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
-            {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
+            {virtualScroll ? this.renderVirtualizedRows(rows) : this.renderRows(rows)}
           </>
         )}
       </SBody>,
