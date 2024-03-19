@@ -158,7 +158,6 @@ class ViewInfo extends Component {
       >
         <SDismiss
           type='button'
-          data-fuck
           title={getI18nText('close')}
           onClick={this.handlerClose}
           aria-label={getI18nText('close')}
