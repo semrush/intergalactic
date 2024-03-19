@@ -23,6 +23,7 @@ import CarouselType, {
 import { BoxProps } from '@semcore/flex-box';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
 import { createBreakpoints } from '@semcore/breakpoints';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowLeft: 'left',
@@ -32,6 +33,7 @@ const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
 const enhance = {
   uid: uniqueIDEnhancement(),
   getI18nText: i18nEnhance(localizedMessages),
+  keyboardFocusEnhance: keyboardFocusEnhance(),
 };
 const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
@@ -58,6 +60,7 @@ class CarouselRoot extends Component<
   static enhance = Object.values(enhance);
 
   defaultItemsCount = 0;
+  refCarousel = React.createRef<HTMLElement>();
   refContainer = React.createRef<HTMLElement>();
   refModalContainer = React.createRef<HTMLElement>();
   _touchStartCoord = -1;
@@ -74,7 +77,15 @@ class CarouselRoot extends Component<
 
   uncontrolledProps() {
     return {
-      index: null,
+      index: [
+        null,
+        (_index: number) => {
+          this.refCarousel.current?.blur();
+          setTimeout(() => {
+            this.refCarousel.current?.focus();
+          }, 0);
+        },
+      ],
     };
   }
 
@@ -115,11 +126,36 @@ class CarouselRoot extends Component<
   }
 
   handlerKeyDown = (e: React.KeyboardEvent) => {
+    const firstSlide = 1;
+    const lastSlide = this.state.items.length + 1;
+
     switch (e.key) {
       case 'ArrowLeft':
       case 'ArrowRight': {
         e.preventDefault();
         this.transformItem(MAP_TRANSFORM[e.key]);
+        break;
+      }
+      case 'Home': {
+        e.preventDefault();
+        this.slideToValue(firstSlide);
+        break;
+      }
+      case 'End': {
+        e.preventDefault();
+        this.slideToValue(lastSlide);
+        break;
+      }
+    }
+
+    if (e.metaKey) {
+      // like home or end
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        this.slideToValue(firstSlide);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        this.slideToValue(lastSlide);
       }
     }
   };
@@ -333,6 +369,7 @@ class CarouselRoot extends Component<
       onKeyDown: this.bindHandlerKeydownControl('left'),
       disabled,
       label: getI18nText('prev'),
+      tabIndex: -1,
     };
   }
 
@@ -349,6 +386,7 @@ class CarouselRoot extends Component<
       onKeyDown: this.bindHandlerKeydownControl('right'),
       disabled,
       label: getI18nText('next'),
+      tabIndex: -1,
     };
   }
 
@@ -485,9 +523,9 @@ class CarouselRoot extends Component<
         render={Box}
         role='group'
         onKeyDown={this.handlerKeyDown}
-        tabIndex={0}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
+        ref={this.refCarousel}
       >
         {Controls.length === 0 ? (
           <>
@@ -589,7 +627,7 @@ class Item extends Component<CarouselItemProps> {
 }
 
 const Prev = (props: CarouselButtonProps) => {
-  const { styles, children, Children, label, top = 0, inverted } = props;
+  const { styles, children, Children, label, top = 0, inverted, tabIndex } = props;
   const SPrev = Root;
   const SPrevButton = Button;
   const [isActive, setIsActive] = React.useState(false);
@@ -612,6 +650,7 @@ const Prev = (props: CarouselButtonProps) => {
           use={'tertiary'}
           active={isActive}
           size={'l'}
+          tabIndex={tabIndex}
         />
       )}
     </SPrev>,
@@ -619,7 +658,7 @@ const Prev = (props: CarouselButtonProps) => {
 };
 
 const Next = (props: CarouselButtonProps) => {
-  const { styles, children, Children, label, top = 0, inverted } = props;
+  const { styles, children, Children, label, top = 0, inverted, tabIndex } = props;
   const SNext = Root;
   const SNextButton = Button;
   const [isActive, setIsActive] = React.useState(false);
@@ -642,6 +681,7 @@ const Next = (props: CarouselButtonProps) => {
           use={'tertiary'}
           active={isActive}
           size={'l'}
+          tabIndex={tabIndex}
         />
       )}
     </SNext>,

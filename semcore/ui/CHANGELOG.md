@@ -1,3 +1,34 @@
+## [15.71.0] - 2024-03-15
+
+### @semcore/carousel
+
+- **Changed** The whole Carousel is focusable and prev/next buttons not focusable.
+
+### @semcore/d3-chart
+
+- **Changed** Improved `Chart.Bubble` plot scaling to better fit bubbles and reduce plot empty space.
+
+### @semcore/dropdown-menu
+
+- **Changed** Highlight initially selected item after opening dropdown.
+
+### @semcore/icon
+
+- **Added** New `ShareAlt` icon.
+
+### @semcore/notice-bubble
+
+- **Changed** Close button now uses `button` tag (instead of `div` before).
+
+### @semcore/tooltip
+
+- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
+- **Fixed** Tooltips `z-index` was lower than `z-index` of all other floating elements..
+
+### @semcore/utils
+
+- **Fixed** `useUID` hook was producing different ids on SSR and client. Now it uses `React.useId` if it's available.
+
 ## [15.70.0] - 2024-03-12
 
 ### @semcore/d3-chart
@@ -2367,7 +2398,7 @@
 
 ### @semcore/pills
 
-- **Added** Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+- **Added** Added `behavior` prop for better accessibility in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
 
 ### @semcore/utils
 
@@ -2450,7 +2481,7 @@
 
 ### @semcore/divider
 
-- **Changed** Role `separator` and `aria-orientation` were added for better accessability.
+- **Changed** Role `separator` and `aria-orientation` were added for better accessibility.
 
 ### @semcore/portal
 
@@ -3904,7 +3935,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** Fixed `FilterTrigger` accessability.
+- **Fixed** Fixed `FilterTrigger` accessibility.
 
 ### @semcore/checkbox
 
@@ -3993,7 +4024,7 @@
 
 ### @semcore/inline-input
 
-- **Added** Added accessability needed aria label.
+- **Added** Added accessibility needed aria label.
 
 ### @semcore/input-mask
 

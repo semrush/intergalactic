@@ -92,7 +92,7 @@ const useUniqueIdHookMock = (React: ReactT) => {
 const useFocusLockHook = (
   React: ReactT,
   trapRef: React.RefObject<HTMLElement>,
-  autoFocus: boolean,
+  autoFocus: boolean | 'enforced',
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
   disabled = false,
   focusMaster = false,
@@ -196,7 +196,7 @@ const useFocusLockHook = (
     const focusableChildren = Array.from(trapRef.current.children).flatMap((node) =>
       getFocusableIn(node as HTMLElement),
     );
-    if (focusableChildren.length === 0) return;
+    if (focusableChildren.length === 0 && autoFocus !== 'enforced') return;
 
     document.body.addEventListener('focusout', handleFocusOut as any);
     document.body.addEventListener('mousedown', handleMouseEvent);

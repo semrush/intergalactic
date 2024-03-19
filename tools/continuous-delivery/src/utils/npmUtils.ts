@@ -25,6 +25,10 @@ export class NpmUtils {
     log(`pnpm options "${pnpmOptions}".`);
 
     if (nonSemcoreUiPatches.length !== 0) {
+      if (!prerelease && !process.argv.includes('--dry-run')) {
+        await NpmUtils.uploadStatic(pnpmFilter);
+      }
+
       await this.publishComponents(pnpmFilter, pnpmOptions);
     }
     if (hasSemcoreUi) {
@@ -40,15 +44,16 @@ export class NpmUtils {
     log('Lockfile updated.');
   }
 
+  public static async uploadStatic(pnpmFilter: string) {
+    log('Uploading static files...');
+    execSync(`pnpm ${pnpmFilter} run upload-static`, {
+      encoding: 'utf-8',
+      stdio: ['inherit', 'inherit', 'inherit'],
+    });
+    log('Static upload done.');
+  }
+
   private static async publishComponents(pnpmFilter: string, pnpmOptions: string) {
-    if (!process.argv.includes('--dry-run')) {
-      log('Uploading static files...');
-      execSync(`pnpm ${pnpmFilter} run upload-static`, {
-        encoding: 'utf-8',
-        stdio: ['inherit', 'inherit', 'inherit'],
-      });
-      log('Static upload done.');
-    }
     log('Publishing to registry...');
     execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
       encoding: 'utf-8',

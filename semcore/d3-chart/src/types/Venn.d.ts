@@ -19,7 +19,7 @@ export type VennProps = Context &
      * @default (circle1, circle2) => circle2.radius - circle1.radius
      */
     orientationOrder?: (c1: number, c2: number) => number;
-    /** Enables charts patterns that enhances charts accessability */
+    /** Enables charts patterns that enhances charts accessibility */
     patterns?: PatternsConfig;
   };
 

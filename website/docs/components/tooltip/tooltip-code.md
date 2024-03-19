@@ -11,11 +11,17 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper) with additional features:
 
 - Stylization and themes for the popper.
-- Displaying the arrow of the popper.
+- Adding arrow for the popper to point to its trigger.
 
 ## Basic usage
 
-As previously mentioned, the tooltip is essentially a styled version of [intergalactic/popper](/utils/popper/popper) and functions in the same way.
+As previously mentioned, the tooltip is a styled version of [popper](/utils/popper/popper) and operates similarly.
+
+`Tooltip` contains `Hint` and `DescriptionTooltip`. By using correct component, you will enhance end interface accessibility. 
+
+1. Use `Hint` if the trigger lacks a visible name. Content should be brief and non-interactive.
+2. Use `Tooltip` when the trigger has a visible name and the content consists of a single text sentence. It may also include interactive elements.
+3. Use `DescriptionTooltip` when the trigger has a visible name and the content provides a significant amount of additional information. It may contain numerous interactive elements.
 
 ::: sandbox
 
@@ -27,9 +33,9 @@ As previously mentioned, the tooltip is essentially a styled version of [interga
 
 ## Title
 
-To simplify code, the component includes a `title` property where you can pass the content for the popper. This helps reduce code volume .
+To simplify code, the component has a `title` property or passing content to the popper, reducing code volume.
 
-The code below replicates the functionality of the previous example.
+The code below replicates the functionality of `Hint` example above.
 
 ::: sandbox
 
@@ -39,10 +45,9 @@ The code below replicates the functionality of the previous example.
 
 :::
 
+## Popper trigger accessibility
 
-## Accessability
-
-To make use of Tooltip accessible for assistive tocologies, the `aria-describedby` is being set on the trigger that refers to the popper. That's why you need to merge nested focusable elements (such links or interactive icons) with the `tag` prop. If you want to put focusable elements inside of the trigger, you **must** set the trigger `aria-describedby` to `undefined` and set the focusable element `aria-describedby` to the value that you can get from the children render function.
+To ensure accessibility for assistive technologies, set the `aria-describedby` attribute on the trigger, referencing the popper. Therefore, it's necessary to merge nested focusable elements (like links or interactive icons) using the `tag` prop. If you intend to include focusable elements within the trigger, **you must set** the trigger's `aria-describedby` to `undefined` and assign the focusable element's `aria-describedby` to the value you get from the children render function.
 
 ::: sandbox
 
@@ -51,7 +56,6 @@ To make use of Tooltip accessible for assistive tocologies, the `aria-describedb
 </script>
 
 :::
-
 
 ## Singleton
 
@@ -65,9 +69,9 @@ You can use a single tooltip for multiple reference elements. This allows you to
 
 :::
 
-## Interactive icon as tooltip trigger
+## Icon as trigger
 
-You can use an Icon as a Trigger for Tooltip
+You can use an interactive icon as a Tooltip's trigger.
 
 ::: sandbox
 

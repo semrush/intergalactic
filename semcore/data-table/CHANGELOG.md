@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.30.0] - 2024-03-14
+## [4.31.0] - 2024-03-19
 
 ### Changed
 
 - Keyboard navigation in table with fixed columns.
+
+## [4.30.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
 
 ## [4.29.0] - 2024-03-12
 

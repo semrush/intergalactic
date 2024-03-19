@@ -12,9 +12,9 @@ Table: Keyboard support
 
 | Key                             | Function                                                                                                                                                            |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Moves focus through interactive elements in the carousel. Rotation control, previous slide, and next slide buttons precede the slide content in the `Tab` sequence. |
+| `Tab` | Moves focus to the carousel. |
 | `Shift + Tab` | Moves focus to the previous focusable element.                                                                                                                      |
-| `Enter` , `Left Arrow` , `Right Arrow` | Display next or previous slide in the carousel.                                                                                                                     |
+| `Left Arrow` , `Right Arrow` | Display next or previous slide in the carousel.                                                                                                                     |
 
 ### Roles and attributes
 
@@ -30,19 +30,6 @@ Table: Roles and attributes
 |            | `aria-current="active"` | `div` | `aria-current` state on an element indicates that this element represents the current item within a container or set of related elements. |
 |            | `aria-label="Previous"` | `button` | Defines a string value that labels button that opens previous list item. It is a required for buttons without text content.  |
 |            | `aria-label="Next"` | `button` | Defines a string value that labels button that opens next list item. It is a required for buttons without text content.  |
-
-## Considerations for developers and designers
-
-### Roles and attributes
-
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
-
-Table: Attributes
-
-| Attribute         | Element | Usage                                                                                                                                                                 |
-| ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-label="Previous"` | `button` | Defines a string value that labels button that opens previous list item. It is a required for buttons without text content. You can change the `aria-label` for this button to specify the list item.  |
-| `aria-label="Next"` | `button` | Defines a string value that labels button that opens next list item. It is a required for buttons without text content. You can change the `aria-label` for this button to specify the list item.  |
 
 ## Resources
 

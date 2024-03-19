@@ -1,8 +1,35 @@
+## [15.71.0] - 2024-03-15
+
+### @semcore/carousel
+
+- **Changed** The whole Carousel is focusable and prev/next buttons not focusable.
+
+### @semcore/d3-chart
+
+- **Changed** Improved `Chart.Bubble` plot scaling to better fit bubbles and reduce plot empty space.
+
+### @semcore/dropdown-menu
+
+- **Changed** Highlight initially selected item after opening dropdown.
+
+### @semcore/icon
+
+- **Added** New `ShareAlt` icon.
+
+### @semcore/notice-bubble
+
+- **Changed** Close button now uses `button` tag (instead of `div` before).
+
+### @semcore/tooltip
+
+- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
+- **Fixed** Tooltips `z-index` was lower than `z-index` of all other floating elements..
+
+### @semcore/utils
+
+- **Fixed** `useUID` hook was producing different ids on SSR and client. Now it uses `React.useId` if it's available.
+
 ## [15.70.0] - 2024-03-12
-
-### @semcore/base-trigger
-
-- **Added** ButtonTrigger got `chevron` prop that controls display of chevron icon.
 
 ### @semcore/d3-chart
 
@@ -12,16 +39,6 @@
 
 - **Added** `withScrollBar` prop to enable scrolling in `DataTable.Head`.
 - **Added** `renderRows` prop to `DataTable.Body` for low level control over rows rendering. Especially it allows to use custom virtual rendering.
-
-### @semcore/date-picker
-
-- **Changed** Selected date range now is immediately represented in input trigger even before clicking the apply button.
-- **Changed** While typings date range in input trigger, the calendar changes displayed period to a typed one.
-- **Fixed** In month date range pickers the second calendar was not usable from the keyboard.
-
-### @semcore/scroll-area
-
-- **Fixed** Unexpected scroll in some corner cases.
 
 ## [15.69.0] - 2024-03-11
 
@@ -2381,7 +2398,7 @@
 
 ### @semcore/pills
 
-- **Added** Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+- **Added** Added `behavior` prop for better accessibility in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
 
 ### @semcore/utils
 
@@ -2464,7 +2481,7 @@
 
 ### @semcore/divider
 
-- **Changed** Role `separator` and `aria-orientation` were added for better accessability.
+- **Changed** Role `separator` and `aria-orientation` were added for better accessibility.
 
 ### @semcore/portal
 
@@ -3918,7 +3935,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** Fixed `FilterTrigger` accessability.
+- **Fixed** Fixed `FilterTrigger` accessibility.
 
 ### @semcore/checkbox
 
@@ -4007,7 +4024,7 @@
 
 ### @semcore/inline-input
 
-- **Added** Added accessability needed aria label.
+- **Added** Added accessibility needed aria label.
 
 ### @semcore/input-mask
 

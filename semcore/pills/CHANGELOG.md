@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.21.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.19.4 ~> 5.20.0], `@semcore/neighbor-location` [4.17.5 ~> 4.18.0], `@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
 ## [5.20.4] - 2024-03-05
 
 ### Changed
@@ -359,7 +365,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+- Added `behavior` prop for better accessibility in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
 
 ## [4.5.0] - 2023-05-22
 

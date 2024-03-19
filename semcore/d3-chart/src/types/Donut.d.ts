@@ -25,7 +25,7 @@ export type DonutProps = Context & {
    * @default 0
    */
   paddingAngle?: number;
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
 };
 
