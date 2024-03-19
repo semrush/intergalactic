@@ -316,7 +316,7 @@ function Option(props) {
   const { styles, Children } = props;
 
   return sstyled(styles)(
-    <SSelectOption render={DropdownMenu.Item} {...props}>
+    <SSelectOption render={DropdownMenu.Item}>
       <optionPropsContext.Provider value={props}>
         <Children />
       </optionPropsContext.Provider>
