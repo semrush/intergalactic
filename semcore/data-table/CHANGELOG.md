@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.31.0] - 2024-03-19
 
-### Changed
+### Fixed
 
-- Render table body in the first render.
+- `data-table` layout shift on the first render
 
 ## [4.30.0] - 2024-03-15
 
