@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "Semrush Modal Component",
-  "version": "4.29.0",
+  "version": "4.29.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "@semcore/icon": "4.28.0",
     "@semcore/outside-click": "3.18.0",
     "@semcore/portal": "3.18.0",
-    "@semcore/typography": "5.27.0",
+    "@semcore/typography": "5.27.1",
     "@semcore/utils": "4.21.0"
   },
   "peerDependencies": {
