@@ -50,24 +50,31 @@ class TooltipRoot extends Component {
   }
 
   getTriggerProps() {
-    const { uid, visible, theme, liveRegion } = this.asProps;
-
+    const { uid, visible } = this.asProps;
     const popperId = visible ? `igc-${uid}-popper` : undefined;
+
+    return {
+      'aria-describedby': popperId,
+      popperId,
+    };
+  }
+
+  getPopperProps() {
+    const {
+      theme,
+      uid,
+      liveRegion,
+      disablePortal,
+      ignorePortalsStacking,
+      interaction,
+      resolveColor,
+    } = this.asProps;
+
     let ariaLive = theme === 'warning' ? 'assertive' : 'polite';
     if (!liveRegion) {
       ariaLive = undefined;
     }
 
-    return {
-      'aria-describedby': popperId,
-      popperId,
-      'aria-live': ariaLive,
-    };
-  }
-
-  getPopperProps() {
-    const { theme, uid, disablePortal, ignorePortalsStacking, interaction, resolveColor } =
-      this.asProps;
     return {
       id: `igc-${uid}-popper`,
       theme,
@@ -76,6 +83,7 @@ class TooltipRoot extends Component {
       interaction,
       resolveColor,
       role: 'tooltip',
+      'aria-live': ariaLive,
     };
   }
 
