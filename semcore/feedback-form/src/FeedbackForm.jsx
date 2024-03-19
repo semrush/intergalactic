@@ -133,7 +133,7 @@ function Item({ Children, tag, uid, ...props }) {
             }}
             {...tooltipProps}
           >
-            <Tooltip.Trigger inline={false}>
+            <Tooltip.Trigger inline={false} role={undefined}>
               {tag && <ItemRoot render={tag} {...inputProps} />}
               {typeof Children.origin === 'function' &&
                 Children.origin({
