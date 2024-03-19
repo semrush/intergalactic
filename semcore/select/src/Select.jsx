@@ -312,15 +312,15 @@ function Trigger({
 
 const optionPropsContext = React.createContext({});
 function Option(props) {
-  const Root = DropdownMenu.Item;
+  const SSelectOption = Root;
   const { styles, Children } = props;
 
   return sstyled(styles)(
-    <Root render={DropdownMenu.Item} {...props}>
+    <SSelectOption render={DropdownMenu.Item} {...props}>
       <optionPropsContext.Provider value={props}>
         <Children />
       </optionPropsContext.Provider>
-    </Root>,
+    </SSelectOption>,
   );
 }
 
