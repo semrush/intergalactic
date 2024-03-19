@@ -554,11 +554,11 @@ function PopperPopper(props) {
           onMouseOver={stopPropagation}
           onMouseOut={stopPropagation}
           onMouseUp={stopPropagation}
-          onKeyDown={propagateFocusLockSyntheticEvent}
+          onKeyDown={disablePortal ? propagateFocusLockSyntheticEvent : stopPropagation}
           onKeyPress={stopPropagation}
           onKeyUp={stopPropagation}
           onFocus={stopPropagation}
-          onBlur={propagateFocusLockSyntheticEvent}
+          onBlur={disablePortal ? propagateFocusLockSyntheticEvent : stopPropagation}
           onChange={stopPropagation}
           onInput={stopPropagation}
           onInvalid={stopPropagation}
