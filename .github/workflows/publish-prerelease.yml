@@ -96,6 +96,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/illustration/svg/*.svg
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
       - name: Install dependencies
         run: |
@@ -206,6 +207,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/illustration/svg/*.svg
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
       - name: Install restored dependencies
         run: |
