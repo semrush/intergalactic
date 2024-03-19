@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.0] - 2024-03-18
+
+### Fixed
+
+- Added widget empty image default width and height.
+- Widget empty image alt set to empty string to hide it from screen readers.
+
 ## [4.19.0] - 2024-03-15
 
 ### Changed
