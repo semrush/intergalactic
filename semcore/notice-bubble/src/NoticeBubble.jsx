@@ -132,7 +132,7 @@ class ViewInfo extends Component {
 
   render() {
     const SBubble = Flex;
-    const SDismiss = 'div';
+    const SDismiss = 'button';
     const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
@@ -157,7 +157,6 @@ class ViewInfo extends Component {
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handlerMouseLeave)}
       >
         <SDismiss
-          tag='button'
           type='button'
           title={getI18nText('close')}
           onClick={this.handlerClose}
