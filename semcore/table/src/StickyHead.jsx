@@ -57,8 +57,8 @@ function getOffsetWidth(node) {
   return node.getBoundingClientRect().width;
 }
 
-function calculateWidthTh(nodeTable) {
-  const thead = nodeTable?.getElementsByTagName('thead')[0];
+function calculateWidthTh(nodeTable, disablePortal = false) {
+  const thead = nodeTable?.getElementsByTagName('thead')[disablePortal ? 1 : 0];
   if (!nodeTable || !thead) return [];
   const listTrInsideHead = thead.getElementsByTagName('tr');
   // listWidthTh = [tr: {Array [width th, ...]}, ...]
@@ -141,13 +141,13 @@ function Head(props, ref) {
   const { children, ...other } = props;
   const refTable = React.useRef(null);
   const { self, styles: tableStyles } = React.useContext(ContextTable);
-  const { tableDOM } = React.useContext(StickyHeadContext);
-  const [listWidthTh, setListWidthTh] = React.useState(calculateWidthTh(tableDOM));
+  const { tableDOM, disablePortal } = React.useContext(StickyHeadContext);
+  const [listWidthTh, setListWidthTh] = React.useState(calculateWidthTh(tableDOM, disablePortal));
 
   setRef(ref, refTable.current);
 
   const updateWithTh = () => {
-    setListWidthTh(calculateWidthTh(tableDOM));
+    setListWidthTh(calculateWidthTh(tableDOM, disablePortal));
   };
 
   React.useEffect(() => {
