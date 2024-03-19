@@ -1,5 +1,7 @@
 import React from 'react';
+// @ts-ignore
 import DropdownMenu from 'intergalactic/dropdown-menu';
+// @ts-ignore
 import { ButtonTrigger } from 'intergalactic/base-trigger';
 
 const Demo = () => {

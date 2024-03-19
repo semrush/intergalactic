@@ -496,8 +496,11 @@ function PopperPopper(props) {
       const syntheticEvent = new Event(syntheticEvents[event.type], {
         bubbles: true,
       });
-      syntheticEvent.target = event.target;
-      syntheticEvent.relatedTarget = event.relatedTarget;
+      // In JSDom event properties are read-only
+      if (Object.getOwnPropertyDescriptor(event, 'target').writable) {
+        syntheticEvent.target = event.target;
+        syntheticEvent.relatedTarget = event.relatedTarget;
+      }
       ref.current?.dispatchEvent(syntheticEvent);
     },
     [disablePortal],
