@@ -2,9 +2,7 @@ SBubble,
 SView {
   position: relative;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
-  padding: var(--intergalactic-spacing-3x, 12px)
-    calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-1x, 4px))
-    var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px) calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-1x, 4px)) var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-3x, 12px);
   width: 100%;
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
@@ -15,6 +13,7 @@ SView {
   &[type='info'] {
     background: var(--intergalactic-bg-primary-invert, #191b23);
   }
+
   &[type='warning'] {
     background: var(--intergalactic-bg-primary-critical, #ff4953);
   }
@@ -38,6 +37,8 @@ SDismiss {
   top: 0;
   padding: var(--intergalactic-spacing-2x, 8px);
   color: var(--intergalactic-text-primary-invert, #ffffff);
+  border: 0;
+  background: transparent;
 
   &:hover {
     color: var(--intergalactic-control-primary-invert-active, #e0e1e9);
@@ -55,6 +56,7 @@ SNoticeBubble {
     width: calc(100% - var(--intergalactic-spacing-6x, 24px));
   }
 }
+
 SNoticeBubble[disablePortal] {
   position: sticky;
   margin-left: auto;
@@ -71,6 +73,7 @@ SMessage a {
     max-height: 0;
     overflow: hidden;
   }
+
   to {
     transform: translate(0, 0);
     max-height: 100vh;
@@ -84,6 +87,7 @@ SMessage a {
     overflow: hidden;
     opacity: 1;
   }
+
   to {
     max-height: 0;
     overflow: hidden;
