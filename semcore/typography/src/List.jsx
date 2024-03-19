@@ -37,13 +37,14 @@ class ItemRoot extends Component {
     const SItem = Root;
     const { styles, children, marker: markerNode, Children } = this.asProps;
     const SMarker = 'span';
+    const SContent = 'div';
 
     const isAdvancedMode = isAdvanceMode(Children, [List.Item.Content.displayName]);
 
     return sstyled(styles)(
       <SItem render={Text} tag='li' role='listitem'>
         {isNode(markerNode) && <SMarker aria-hidden='true'>{markerNode}</SMarker>}
-        {isAdvancedMode ? <Children /> : <List.Item.Content>{children}</List.Item.Content>}
+        {isAdvancedMode ? <Children /> : <SContent>{children}</SContent>}
       </SItem>,
     );
   }

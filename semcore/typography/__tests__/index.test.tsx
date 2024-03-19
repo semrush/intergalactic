@@ -247,6 +247,20 @@ describe('List', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test('Default List.Item should have display block for content', async ({ task }) => {
+    const component = (
+      <List>
+        <List.Item marker={null} data-testid={'itemToCheck'}>
+          List item
+        </List.Item>
+      </List>
+    );
+
+    const { getByTestId } = render(component);
+
+    expect(getComputedStyle(getByTestId('itemToCheck').children[0]).display).toBe('block');
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <>
