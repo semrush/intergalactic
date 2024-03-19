@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <div>
       <DropdownMenu visible>
-        <DropdownMenu.Trigger tag={ButtonTrigger}>Disabled portal</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger tag={ButtonTrigger}>Enabled portal</DropdownMenu.Trigger>
         <DropdownMenu.Popper p={5} data-testid='popper'>
           <input data-testid='input-in-popper' />
         </DropdownMenu.Popper>
