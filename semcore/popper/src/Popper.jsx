@@ -489,22 +489,18 @@ function PopperPopper(props) {
 
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
-  const propagateFocusLockSyntheticEvent = React.useCallback(
-    (event) => {
-      event.stopPropagation();
-      if (!disablePortal) return;
-      const syntheticEvent = new Event(syntheticEvents[event.type], {
-        bubbles: true,
-      });
-      Object.defineProperty(syntheticEvent, 'target', { writable: false, value: event.target });
-      Object.defineProperty(syntheticEvent, 'relatedTarget', {
-        writable: false,
-        value: event.relatedTarget,
-      });
-      ref.current?.dispatchEvent(syntheticEvent);
-    },
-    [disablePortal],
-  );
+  const propagateFocusLockSyntheticEvent = React.useCallback((event) => {
+    event.stopPropagation();
+    const syntheticEvent = new Event(syntheticEvents[event.type], {
+      bubbles: true,
+    });
+    Object.defineProperty(syntheticEvent, 'target', { writable: false, value: event.target });
+    Object.defineProperty(syntheticEvent, 'relatedTarget', {
+      writable: false,
+      value: event.relatedTarget,
+    });
+    ref.current?.dispatchEvent(syntheticEvent);
+  }, []);
 
   useFocusLock(
     ref,
@@ -566,11 +562,11 @@ function PopperPopper(props) {
           onMouseOver={stopPropagation}
           onMouseOut={stopPropagation}
           onMouseUp={stopPropagation}
-          onKeyDown={propagateFocusLockSyntheticEvent}
+          onKeyDown={disablePortal ? propagateFocusLockSyntheticEvent : stopPropagation}
           onKeyPress={stopPropagation}
           onKeyUp={stopPropagation}
           onFocus={stopPropagation}
-          onBlur={propagateFocusLockSyntheticEvent}
+          onBlur={disablePortal ? propagateFocusLockSyntheticEvent : stopPropagation}
           onChange={stopPropagation}
           onInput={stopPropagation}
           onInvalid={stopPropagation}
