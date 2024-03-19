@@ -10,7 +10,7 @@ const Demo = () => {
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Trigger tag={ButtonTrigger}>Disabled portal</DropdownMenu.Trigger>
         <DropdownMenu.Popper p={5} data-testid='popper'>
-          <input />
+          <input data-testid='input-in-popper' />
         </DropdownMenu.Popper>
       </DropdownMenu>
       <input />
