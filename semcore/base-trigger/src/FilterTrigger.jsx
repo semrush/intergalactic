@@ -79,6 +79,7 @@ class RootFilterTrigger extends Component {
       uid,
       id,
       triggerRef,
+      state,
     } = this.asProps;
 
     const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
@@ -113,6 +114,7 @@ class RootFilterTrigger extends Component {
             disabled={disabled}
             ref={triggerRef}
             animationsDisabled
+            state={state}
             {...controlProps}
           >
             {addonTextChildren(
