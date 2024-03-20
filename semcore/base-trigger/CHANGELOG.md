@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.29.1] - 2024-03-20
 
-### Added 
+### Added
 
 - `state` prop for `FilterTrigger`.
 
