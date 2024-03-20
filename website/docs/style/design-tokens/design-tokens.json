@@ -2561,7 +2561,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "tooltip"]
+    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "popper", "tooltip"]
   },
   {
     "name": "--intergalactic-modal-rounded",
