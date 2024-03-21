@@ -3,9 +3,9 @@ title: InlineEdit
 tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), Example('inline-edit-code'), Changelog('inline-edit-changelog')
 ---
 
-## Simple use
+## Basic usage
 
-In most simplest situation `<InlineEdit />` could be used to make some primitive elements editable.
+You can use `<InlineEdit />` to make simple text editable.
 
 ::: sandbox
 
@@ -17,7 +17,7 @@ In most simplest situation `<InlineEdit />` could be used to make some primitive
 
 ## Editable tag
 
-As far as `<InlineEdit />` is very flexible, it could be used with almost any children elements (out of example both in `<InlineEdit.View />` and `<InlineEdit.Edit />`).
+As far as `<InlineEdit />` is flexible, it could be used with almost any children elements (out of example both in `<InlineEdit.View />` and `<InlineEdit.Edit />`).
 
 ::: sandbox
 
