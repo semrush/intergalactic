@@ -130,7 +130,7 @@ function TooltipPopper(props) {
   } = props;
   const STooltip = Root;
   const SArrow = Box;
-  const STooltipPortalledWrapper = 'div';
+  const STooltipPortalledWrapper = Box;
 
   return sstyled(styles)(
     <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
