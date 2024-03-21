@@ -13,7 +13,7 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ import Error, {
   PageError,
   PageNotFound,
   ProjectNotFound,
-} from '@semcore/ui/errors';
+} from 'intergalactic/errors';
 ```
 
 <details>

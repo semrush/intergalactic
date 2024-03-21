@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import { Flex, Box } from '@semcore/ui/flex-box';
+import { Flex, Box } from 'intergalactic/flex-box';
 ```
 
 <details>

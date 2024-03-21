@@ -1,5 +1,5 @@
 import React from 'react';
-import { PatternFill, PatternSymbol, getPatternSymbolSize } from '@semcore/ui/d3-chart';
+import { PatternFill, PatternSymbol, getPatternSymbolSize } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   const patterns = 'zigzag';

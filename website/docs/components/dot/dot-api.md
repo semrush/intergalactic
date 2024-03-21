@@ -7,7 +7,7 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 ## Dot
 
 ```jsx
-import Dot from '@semcore/ui/dot';
+import Dot from 'intergalactic/dot';
 <Dot aria-label="..." />;
 ```
 

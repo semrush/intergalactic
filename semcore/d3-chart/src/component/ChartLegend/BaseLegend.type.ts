@@ -33,6 +33,6 @@ export type LegendProps = BoxProps &
      */
     items: LegendItem[];
 
-    /** Enables charts patterns that enhances charts accessability */
+    /** Enables charts patterns that enhances charts accessibility */
     patterns?: PatternsConfig;
   };

@@ -7,7 +7,6 @@ import { resolve as resolvePath } from 'path';
 import { unpluginIcons } from './unplugins/unplugin-icons';
 import { unpluginStatic } from './unplugins/unplugin-static';
 import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
-import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
 import { fileURLToPath, URL } from 'url';
 
 export const viteConfig = defineConfig({
@@ -17,7 +16,12 @@ export const viteConfig = defineConfig({
     createUnplugin<{}>(() => ({
       name: 'semcore-resolve',
       async resolveId(id) {
-        if (!id.includes('@semcore') && !id.includes('/semcore/')) return null;
+        if (
+          !id.includes('@semcore') &&
+          !id.includes('/semcore/') &&
+          !id.startsWith('intergalactic/')
+        )
+          return null;
         if (id.endsWith('.md')) return null;
         return await resolveSemcoreSources(id);
       },
@@ -48,7 +52,6 @@ export const viteConfig = defineConfig({
     unpluginIcons.vite({}),
     unpluginStatic.vite({}),
     unpluginIllustrations.vite({}),
-    unpluginCrutches.vite({}),
     createUnplugin<{}>(() => ({
       name: 'typescript-data-resolver',
       async resolveId(id) {
@@ -65,6 +68,10 @@ export const viteConfig = defineConfig({
       {
         find: /^.*\/VPSidebarItem\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPSidebarItem.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPNavBarMenu\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPNavBarMenu.vue', import.meta.url)),
       },
     ],
   },

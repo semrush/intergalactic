@@ -88,4 +88,4 @@ export const prerelaseSuffix = 'prerelease';
  * case of unsuccessful publish
  * @default 0
  */
-export const prereleaseBaseIndex = 1;
+export const prereleaseBaseIndex = 2;

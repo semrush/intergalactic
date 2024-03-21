@@ -2,6 +2,53 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.31.0] - 2024-03-19
+
+### Fixed
+
+- `data-table` layout shift on the first render
+
+### Changed
+
+- Keyboard navigation in table with fixed columns.
+
+## [4.30.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
+## [4.29.0] - 2024-03-12
+
+### Added
+
+- `withScrollBar` prop to enable scrolling in `DataTable.Head`.
+- `renderRows` prop to `DataTable.Body` for low level control over rows rendering. Especially it allows to use custom virtual rendering.
+
+## [4.28.4] - 2024-03-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [5.20.8 ~> 5.20.9]).
+
+## [4.28.3] - 2024-03-07
+
+### Changed
+
+- Don't focus hidden DataTable.Head.
+
+## [4.28.2] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/scroll-area` [5.20.6 ~> 5.20.7]).
+
+## [4.28.1] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [4.28.0] - 2024-02-29
 
 ### Added

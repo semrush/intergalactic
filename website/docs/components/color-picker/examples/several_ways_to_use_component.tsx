@@ -1,5 +1,5 @@
 import React from 'react';
-import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
+import ColorPicker, { PaletteManager } from 'intergalactic/color-picker';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#98848D');

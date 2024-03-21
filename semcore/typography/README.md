@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import { Text, Blockquote, List, Hint } from '@semcore/ui/typography';
+import { Text, Blockquote, List, Hint } from 'intergalactic/typography';
 ```
 
 <details>

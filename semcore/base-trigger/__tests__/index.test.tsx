@@ -2,12 +2,14 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, userEvent } from '@semcore/testing-utils/testing-library';
+import Spin from '@semcore/spin';
+import NeighborLocation from '@semcore/neighbor-location';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
-import NeighborLocation from '@semcore/neighbor-location';
+import { Flex } from '@semcore/flex-box';
 
 describe('BaseTrigger', () => {
   beforeEach(cleanup);
@@ -112,6 +114,36 @@ describe('ButtonTrigger', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Renders correctly without chevron', async ({ task }) => {
+    const component = (
+      <>
+        <ButtonTrigger chevron={false}>Button</ButtonTrigger>
+        <ButtonTrigger chevron={false}>
+          <Spin size='xs' mx={4} />
+        </ButtonTrigger>
+      </>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should work as button with labels', async ({ expect }) => {
+    const component = (
+      <>
+        <label htmlFor={'trigger'} id={'label'} data-testid={'label'}>
+          Test for button
+        </label>
+        <ButtonTrigger id={'trigger'} data-testid={'buttonTrigger'}>
+          Button
+        </ButtonTrigger>
+      </>
+    );
+    const { getByTestId } = render(component);
+    await userEvent.click(getByTestId('label'));
+
+    expect(getByTestId('buttonTrigger')).toHaveFocus();
   });
 });
 

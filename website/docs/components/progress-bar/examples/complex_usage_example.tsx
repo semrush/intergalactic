@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import ProgressBar from '@semcore/ui/progress-bar';
+import { Box } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import ProgressBar from 'intergalactic/progress-bar';
 
 const Demo = () => {
   const [value, setValue] = React.useState(0);

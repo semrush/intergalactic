@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import FormatText from '@semcore/ui/format-text';
+import FormatText from 'intergalactic/format-text';
 ```
 
 <details>

@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Carousel from '@semcore/ui/carousel';
+import Carousel from 'intergalactic/carousel';
 ```
 
 <details>

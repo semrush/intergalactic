@@ -11,10 +11,10 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Button from '@semcore/ui/button';
-import CheckM from '@semcore/ui/icon/Check/m';
+import Button from 'intergalactic/button';
+import CheckM from 'intergalactic/icon/Check/m';
 
-import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const SIZES = ['m', 'l'];
 const USE = ['primary', 'secondary', 'tertiary'];

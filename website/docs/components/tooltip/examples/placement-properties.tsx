@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-import Tooltip from '@semcore/ui/tooltip';
-import { Placement } from '@semcore/ui/popper';
+import { Box } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
+import Tooltip from 'intergalactic/tooltip';
+import { Placement } from 'intergalactic/popper';
 
 const styleBox = {
   display: 'grid',

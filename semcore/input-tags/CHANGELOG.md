@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.0] - 2024-03-18
+
+### Fixed
+
+- It wasn't possible to move focus back from the empty input-tags container with `Shift+Tab`.
+
+## [4.24.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/input` [4.20.5 ~> 4.21.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
+## [4.23.7] - 2024-03-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [5.20.8 ~> 5.20.9]).
+
+## [4.23.6] - 2024-03-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/scroll-area` [5.20.7 ~> 5.20.8]).
+
+## [4.23.5] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/scroll-area` [5.20.6 ~> 5.20.7]).
+
+## [4.23.4] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [4.23.3] - 2024-03-01
 
 ### Changed

@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.34.0] - 2024-03-18
+
+### Fixed
+
+- `Select.Option.Checkbox` visual displaying.
+
+## [4.33.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/base-trigger` [4.28.0 ~> 4.29.0], `@semcore/checkbox` [7.22.3 ~> 7.23.0], `@semcore/divider` [4.18.5 ~> 4.19.0], `@semcore/dropdown-menu` [4.23.2 ~> 4.24.0], `@semcore/flex-box` [5.19.4 ~> 5.20.0], `@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/input` [4.20.5 ~> 4.21.0], `@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
+## [4.32.10] - 2024-03-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.27.1 ~> 4.28.0], `@semcore/dropdown-menu` [4.23.1 ~> 4.23.2]).
+
+## [4.32.9] - 2024-03-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown-menu` [4.23.0 ~> 4.23.1]).
+
+## [4.32.8] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.27.0 ~> 4.27.1], `@semcore/dropdown-menu` [4.22.3 ~> 4.23.0]).
+
+## [4.32.7] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown-menu` [4.22.2 ~> 4.22.3]).
+
+## [4.32.6] - 2024-03-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.26.6 ~> 4.27.0], `@semcore/checkbox` [7.22.2 ~> 7.22.3], `@semcore/divider` [4.18.4 ~> 4.18.5], `@semcore/dropdown-menu` [4.22.1 ~> 4.22.2], `@semcore/flex-box` [5.19.3 ~> 5.19.4], `@semcore/icon` [4.27.0 ~> 4.27.1], `@semcore/input` [4.20.4 ~> 4.20.5], `@semcore/utils` [4.20.4 ~> 4.20.5], `@semcore/core` [2.17.4 ~> 2.17.5]).
+
 ## [4.32.5] - 2024-03-01
 
 ### Changed

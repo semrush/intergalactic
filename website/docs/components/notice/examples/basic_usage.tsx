@@ -1,11 +1,11 @@
 import React from 'react';
-import Notice from '@semcore/ui/notice';
-import CloseAltM from '@semcore/ui/icon/Close/m';
-import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
-import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
-import Question from '@semcore/ui/icon/Question/m';
-import Button from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
+import Notice from 'intergalactic/notice';
+import CloseAltM from 'intergalactic/icon/Close/m';
+import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
+import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
+import Question from 'intergalactic/icon/Question/m';
+import Button from 'intergalactic/button';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
   <Notice>

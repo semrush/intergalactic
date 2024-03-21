@@ -6,10 +6,10 @@ import {
   XAxis,
   ChartLegend,
   makeDataHintsContainer,
-} from '@semcore/ui/d3-chart';
+} from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Flex } from '@semcore/ui/flex-box';
-import Card from '@semcore/ui/card';
+import { Flex } from 'intergalactic/flex-box';
+import Card from 'intergalactic/card';
 
 const dataHints = makeDataHintsContainer();
 

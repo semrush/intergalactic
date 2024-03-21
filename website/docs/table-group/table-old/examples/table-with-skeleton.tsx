@@ -1,9 +1,9 @@
 import React from 'react';
-import Table from '@semcore/ui/table';
-import Skeleton from '@semcore/ui/skeleton';
-import Checkbox from '@semcore/ui/checkbox';
-import Tooltip from '@semcore/ui/tooltip';
-import { Text } from '@semcore/ui/typography';
+import Table from 'intergalactic/table';
+import Skeleton from 'intergalactic/skeleton';
+import Checkbox from 'intergalactic/checkbox';
+import { Hint } from 'intergalactic/tooltip';
+import { Text } from 'intergalactic/typography';
 
 const data = [
   {
@@ -37,21 +37,21 @@ const Demo = () => (
           </Checkbox>
         </Table.CellHead>
         <Table.CellHead>
-          <Tooltip title='Lorem ipsum'>
-            <span>
+          <Hint title='Lorem ipsum'>
+            <span tabIndex={0}>
               Keyword <Text color='text-secondary'>(1 - 100)</Text>
             </span>
-          </Tooltip>
+          </Hint>
         </Table.CellHead>
         {Object.keys(data[0])
           .slice(1)
           .map((name) => (
             <Table.CellHead>
-              <Tooltip title='Lorem ipsum'>
-                <span>
+              <Hint title='Lorem ipsum'>
+                <span tabIndex={0}>
                   {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
                 </span>
-              </Tooltip>
+              </Hint>
             </Table.CellHead>
           ))}
       </Table.Row>

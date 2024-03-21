@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.29.0] - 2024-03-14
+
+### Changed
+
+- The whole Carousel is focusable and prev/next buttons not focusable.
+
+## [3.28.3] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [3.28.2] - 2024-03-01
 
 ### Fixed

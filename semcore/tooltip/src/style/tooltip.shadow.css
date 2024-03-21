@@ -137,6 +137,11 @@ STooltip[data-popper-placement^='right'] SArrow {
   }
 }
 
-STooltipContent {
-  display: contents;
+STooltipPortalledWrapper {
+  position: relative;
+  z-index: var(--intergalactic-z-index-tooltip, 800);
+}
+
+STooltipPortalledWrapper[zIndex] {
+  z-index: var(--zIndex);
 }

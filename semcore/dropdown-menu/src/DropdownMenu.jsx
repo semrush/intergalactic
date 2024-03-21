@@ -53,6 +53,12 @@ class DropdownMenuRoot extends Component {
         (visible) => {
           if (!visible) {
             this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
+          } else {
+            setTimeout(() => {
+              const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
+              if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;
+              this.handlers.highlightedIndex(selectedItemIndex);
+            }, 0);
           }
         },
       ],
@@ -176,7 +182,7 @@ class DropdownMenuRoot extends Component {
       }
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current) {
+        if (this.highlightedItemRef.current && highlightedIndex !== null) {
           e.stopPropagation();
           e.preventDefault();
           this.highlightedItemRef.current.click();

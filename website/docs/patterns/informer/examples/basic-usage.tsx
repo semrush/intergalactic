@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
+import { Text } from 'intergalactic/typography';
+import { Hint } from 'intergalactic/tooltip';
 
-import InfoM from '@semcore/ui/icon/Info/m';
-import InfoL from '@semcore/ui/icon/Info/l';
+import InfoM from 'intergalactic/icon/Info/m';
+import InfoL from 'intergalactic/icon/Info/l';
 
 class Demo extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class Demo extends React.Component {
       <>
         <div>
           <Text size={700}>Text</Text>
-          <Tooltip
+          <Hint
             title='Awesome hint text'
             tag={InfoL}
             ml='4px'
@@ -21,7 +21,7 @@ class Demo extends React.Component {
         </div>
         <div>
           <Text size={600}>Text</Text>
-          <Tooltip
+          <Hint
             title='Awesome hint text'
             tag={InfoL}
             ml='4px'
@@ -31,7 +31,7 @@ class Demo extends React.Component {
         </div>
         <div>
           <Text size={500}>Text</Text>
-          <Tooltip
+          <Hint
             title='Awesome hint text'
             tag={InfoM}
             ml='4px'
@@ -42,7 +42,7 @@ class Demo extends React.Component {
         <div>
           <div>
             <Text size={400}>Text</Text>
-            <Tooltip
+            <Hint
               title='Awesome hint text'
               tag={InfoM}
               ml='4px'
@@ -52,7 +52,7 @@ class Demo extends React.Component {
           </div>
           <div />
           <Text size={300}>Text</Text>
-          <Tooltip
+          <Hint
             title='Awesome hint text'
             tag={InfoM}
             ml='4px'
@@ -62,7 +62,7 @@ class Demo extends React.Component {
         </div>
         <div>
           <Text size={200}>Text</Text>
-          <Tooltip
+          <Hint
             title='Awesome hint text'
             tag={InfoM}
             ml='4px'
@@ -72,7 +72,7 @@ class Demo extends React.Component {
         </div>
         <div>
           <Text size={100}>Text</Text>
-          <Tooltip
+          <Hint
             title='Awesome hint text'
             tag={InfoM}
             ml='4px'

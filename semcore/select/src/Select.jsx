@@ -135,7 +135,6 @@ class RootSelect extends Component {
     const { value } = this.asProps;
     const selected = isSelectedOption(value, props.value);
     const other = {};
-    this._optionSelected = selected;
 
     if (selected) {
       other.ref = this.handleOptionNode;
@@ -166,16 +165,11 @@ class RootSelect extends Component {
     }, 30);
   };
 
-  getOptionCheckboxProps(props) {
+  getOptionCheckboxProps() {
     const { size, resolveColor } = this.asProps;
-    const hasOption = props.value === undefined;
-    const optionProps = hasOption ? {} : this.getOptionProps(props);
-    const selected = this._optionSelected;
-    this._optionSelected = null;
+
     return {
-      ...optionProps,
       size,
-      selected,
       resolveColor,
     };
   }
@@ -316,7 +310,31 @@ function Trigger({
   );
 }
 
-function Checkbox(props) {
+const optionPropsContext = React.createContext({});
+function Option(props) {
+  const SSelectOption = Root;
+  const { styles, Children } = props;
+
+  return sstyled(styles)(
+    <SSelectOption render={DropdownMenu.Item}>
+      <optionPropsContext.Provider value={props}>
+        <Children />
+      </optionPropsContext.Provider>
+    </SSelectOption>,
+  );
+}
+
+function Checkbox(providedProps) {
+  const optionProps = React.useContext(optionPropsContext);
+  const props = React.useMemo(
+    () => ({
+      selected: optionProps?.selected,
+      disabled: optionProps?.disabled,
+      size: optionProps?.size,
+      ...(providedProps || {}),
+    }),
+    [providedProps, optionProps],
+  );
   const [SOptionCheckbox, componentProps] = useBox(props, props.forwardRef);
   const { size, theme, selected, resolveColor, indeterminate } = props;
   const styles = sstyled(props.styles);
@@ -324,8 +342,8 @@ function Checkbox(props) {
   const { className, style } = styles.cn('SOptionCheckbox', {
     size,
     'use:theme': resolveColor(theme),
-    checked: selected,
     indeterminate,
+    selected,
   });
 
   return (
@@ -358,7 +376,7 @@ const Select = createComponent(
     List: DropdownMenu.List,
     Menu: DropdownMenu.Menu,
     Option: [
-      DropdownMenu.Item,
+      Option,
       {
         Addon: DropdownMenu.Item.Addon,
         Checkbox,

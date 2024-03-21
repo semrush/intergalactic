@@ -1,8 +1,8 @@
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
-import Button from '@semcore/ui/button';
-import WarningM from '@semcore/ui/icon/Warning/m';
-import ReloadM from '@semcore/ui/icon/Reload/m';
+import { NoticeBubbleContainer, NoticeBubbleManager } from 'intergalactic/notice-bubble';
+import Button from 'intergalactic/button';
+import WarningM from 'intergalactic/icon/Warning/m';
+import ReloadM from 'intergalactic/icon/Reload/m';
 
 const manager = new NoticeBubbleManager();
 

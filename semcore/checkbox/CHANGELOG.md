@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.23.1] - 2024-03-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/typography` [5.27.0 ~> 5.27.1]).
+
+## [7.23.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.20.5 ~> 4.21.0]).
+
+## [7.22.3] - 2024-03-05
+
+### Fixed
+
+- Double reading `aria-label` in checkbox without label.
+
 ## [7.22.2] - 2024-03-01
 
 ### Changed

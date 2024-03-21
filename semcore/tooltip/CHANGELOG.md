@@ -2,6 +2,50 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.24.0] - 2024-03-19
+
+### Removed
+
+- `undefined` role from `Tooltip.Trigger`.
+
+## [6.23.1] - 2024-03-19
+
+### Fixed
+
+- Removed `aria-live` from trigger and added it to popper.
+
+## [6.23.0] - 2024-03-07
+
+### Added
+
+- Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
+
+### Fixed
+
+- Tooltips `z-index` was lower than `z-index` of all other floating elements..
+
+## [6.22.0] - 2024-03-07
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/popper` [5.20.5 ~> 5.21.0]).
+
+## [6.21.1] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.20.4 ~> 5.20.5]).
+
+## [6.21.0] - 2024-03-05
+
+### Fixed
+
+- VoiceOver was not reading the tooltip content in Safari.
+
+### Changed
+
+- `aria-live` container that announces the tooltip content was moved from tooltip inner container with `display: contents` to tooltip popper wrapper.
+
 ## [6.20.3] - 2024-03-01
 
 ### Changed

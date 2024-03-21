@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Select from '@semcore/ui/select';
-import { ButtonTrigger, LinkTrigger } from '@semcore/ui/base-trigger';
+import { Flex } from 'intergalactic/flex-box';
+import Select from 'intergalactic/select';
+import { ButtonTrigger, LinkTrigger } from 'intergalactic/base-trigger';
 
 const options = Array(6)
   .fill('')

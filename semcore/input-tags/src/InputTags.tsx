@@ -153,6 +153,7 @@ class InputTags extends Component<IInputTagsProps> {
     if (!container || target !== container) return;
     const hasTags = this.tagsRefs.some(Boolean);
     if (hasTags) return;
+    if (event.relatedTarget === this.inputRef.current) return;
     this.moveFocusToInput(event);
   };
 
@@ -255,7 +256,7 @@ function InputTag(props: any) {
   const STag = Root;
 
   const onKeyDown = (event: React.KeyboardEvent) => {
-    if (props.onClick && (event.code === 'Enter' || event.code === 'Space')) {
+    if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       props.onClick(event);
 

@@ -2,11 +2,53 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.31.1] - 2024-03-06
+## [3.35.1] - 2024-03-21
 
 ### Fixed
 
 - background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
+
+## [3.35.0] - 2024-03-19
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/popper` [5.22.0 ~> 5.23.0]).
+
+## [3.34.0] - 2024-03-12
+
+### Changed
+
+- Improved `Chart.Bubble` plot scaling to better fit bubbles and reduce plot empty space.
+
+## [3.33.0] - 2024-03-12
+
+### Added
+
+- Feature to render custom components (in foreignObject) as axis tick value.
+
+## [3.32.0] - 2024-03-07
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/popper` [5.20.5 ~> 5.21.0]).
+
+## [3.31.3] - 2024-03-07
+
+### Changed
+
+- Improve generation a11y summary for `StackBar`.
+
+## [3.31.2] - 2024-03-07
+
+### Added
+
+- Logic to define X and Y axis for a11y summary in Bar charts.
+
+## [3.31.1] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
 
 ## [3.31.0] - 2024-03-01
 

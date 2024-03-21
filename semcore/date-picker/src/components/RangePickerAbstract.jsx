@@ -13,7 +13,7 @@ import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import style from '../style/date-picker.shadow.css';
 
 const INTERACTION_TAGS = ['INPUT'];
-const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
 
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
@@ -88,8 +88,11 @@ class RangePickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          this.handlers.visible(false);
-          this.handlers.displayedPeriod(getEndDate([value[0] ?? undefined, value[1] ?? undefined]));
+          if (value[0] !== null || value[1] !== null) {
+            this.handlers.displayedPeriod(
+              getEndDate([value[0] ?? undefined, value[1] ?? undefined]),
+            );
+          }
         },
       ],
     };
@@ -105,7 +108,7 @@ class RangePickerAbstract extends Component {
 
   handlerKeyDown = (place) => (e) => {
     const { displayedPeriod, highlighted, preselectedValue, visible } = this.asProps;
-    const key = e.code;
+    const key = e.key;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
       e.stopPropagation();
@@ -123,29 +126,31 @@ class RangePickerAbstract extends Component {
     const day = this.keyDiff[key];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
-      const [left_period, right_period] = next_highlighted;
+      const [startPeriod, endPeriod] = next_highlighted;
+      const highlightedPeriod = endPeriod || startPeriod;
 
-      const monthDisplayedPeriod = displayedPeriod?.getMonth();
-      const period = right_period || left_period;
+      let displayedPeriodNormalized = displayedPeriod?.getDate();
+      let highlightedPeriodNormalized = highlightedPeriod?.getDate();
+      if (this.navigateStep === 'month') {
+        displayedPeriodNormalized = displayedPeriod?.getMonth();
+        highlightedPeriodNormalized = highlightedPeriod?.getMonth();
+      }
+      if (this.navigateStep === 'year') {
+        displayedPeriodNormalized = displayedPeriod?.getYear();
+        highlightedPeriodNormalized = highlightedPeriod?.getYear();
+      }
+      const offset = highlightedPeriodNormalized - displayedPeriodNormalized;
 
-      if (period) {
-        if (!monthDisplayedPeriod) {
-          return period;
-        }
-
-        if (period.getMonth() - monthDisplayedPeriod > 1) {
-          return RangePickerAbstract.subtract(period, 1, 'month');
-        } else if (period.getMonth() - monthDisplayedPeriod < 0) {
-          return period;
-        }
+      if (offset < 0 || offset > 1) {
+        return highlightedPeriod;
       }
       return displayedPeriod;
     };
 
-    if (place === 'popper' && e.code === 'Enter' && (e.metaKey || e.ctrlKey)) {
+    if (place === 'popper' && e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       return this.handleApplyClick();
     }
-    if (place === 'popper' && e.code === 'Space' && highlighted.length) {
+    if (place === 'popper' && e.key === ' ' && highlighted.length) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
@@ -201,6 +206,7 @@ class RangePickerAbstract extends Component {
     const [startDate, endDate = startDate] = value;
     this.handleChange([]);
     this.handlers.value([startDate, endDate]);
+    this.handlers.visible(false);
   };
 
   handleChange = (date) => {
@@ -386,7 +392,7 @@ class RangePickerAbstract extends Component {
     return this.handleApply(preselectedValue.length ? preselectedValue : value);
   };
   getApplyProps() {
-    const { value, getI18nText, preselectedValue } = this.asProps;
+    const { getI18nText } = this.asProps;
     return {
       getI18nText,
       onClick: this.handleApplyClick,

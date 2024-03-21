@@ -8,8 +8,8 @@ tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('d
 
 <script lang="tsx">
 import React from 'react';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
-import Dropdown from '@semcore/ui/dropdown';
+import { ButtonTrigger } from 'intergalactic/base-trigger';
+import Dropdown from 'intergalactic/dropdown';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [

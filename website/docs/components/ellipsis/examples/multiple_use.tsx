@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
+import DataTable from 'intergalactic/data-table';
+import Ellipsis, { useResizeObserver } from 'intergalactic/ellipsis';
 
 const Demo = () => {
   const containerRef = React.useRef(null);

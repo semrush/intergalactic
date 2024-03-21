@@ -41,6 +41,29 @@ describe('Dropdown', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('popper focused styles', async ({ task }) => {
+    const component = (
+      <div style={{ width: 150, height: 60 }}>
+        <Dropdown disablePortal visible>
+          <Dropdown.Trigger>
+            <button type='button'>default dropdown</button>
+          </Dropdown.Trigger>
+          <Dropdown.Popper keyboardFocused data-ui-name='popper'>
+            <div>text</div>
+          </Dropdown.Popper>
+        </Dropdown>
+      </div>
+    );
+
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '[data-ui-name="popper"]',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
+  });
+
   test.skip('should not loose focus by Tab after opened', async ({ expect }) => {
     const spy = vi.fn();
     const { getByTestId } = render(

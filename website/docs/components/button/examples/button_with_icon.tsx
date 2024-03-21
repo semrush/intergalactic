@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@semcore/ui/button';
-import CheckM from '@semcore/ui/icon/Check/m';
+import Button from 'intergalactic/button';
+import CheckM from 'intergalactic/icon/Check/m';
 
 const Demo = () => {
   return (

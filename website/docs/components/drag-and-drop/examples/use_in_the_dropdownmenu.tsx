@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import DnD from '@semcore/ui/drag-and-drop';
+import Select from 'intergalactic/select';
+import DnD from 'intergalactic/drag-and-drop';
 
 const initialOptions = Array(6)
   .fill(0)

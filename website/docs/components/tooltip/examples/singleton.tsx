@@ -1,6 +1,6 @@
 import React from 'react';
-import Tooltip from '@semcore/ui/tooltip';
-import Select from '@semcore/ui/select';
+import Tooltip from 'intergalactic/tooltip';
+import Select from 'intergalactic/select';
 
 const options = Array(50)
   .fill('')

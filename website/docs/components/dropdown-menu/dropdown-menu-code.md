@@ -5,10 +5,10 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 ---
 
 ::: warning
-:warning: If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/popper)
+:warning: If you need to customize your work with the dropdown menu, please refer to the documentation [intergalactic/popper](/utils/popper/popper)
 :::
 
-The component is a wrap over [@semcore/ui/dropdown](/components/dropdown/dropdown) with the following logic:
+The component is a wrap over [intergalactic/dropdown](/components/dropdown/dropdown) with the following logic:
 
 - Display of the list of options in a dropdown window
 - Scrolling the list of options using the keyboard

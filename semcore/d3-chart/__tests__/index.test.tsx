@@ -45,6 +45,7 @@ import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import LikeM from '@semcore/icon/Like/m';
 import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
+import Icon from '@semcore/icon/Video/m';
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 
@@ -185,6 +186,42 @@ describe('XAxis', () => {
     expect(eventEmitter.emit).toHaveBeenCalledTimes(2); //onMouseMoveRoot, onMouseLeaveChart
     (window.requestAnimationFrame as any).mockRestore();
   });
+
+  test.concurrent(
+    'should support to render custom components as Axis tick value',
+    async ({ task }) => {
+      const size = 16;
+      const TickFormatter = (props: any): any => {
+        if (props.value === 0) {
+          return 'INIT';
+        }
+
+        return (
+          <foreignObject
+            transform={`translate(${props.x - size / 2},${props.y + 8})`}
+            width={`${size}px`}
+            height={`${size}px`}
+          >
+            {props.value === 10 ? 'V' : <Icon />}
+          </foreignObject>
+        );
+      };
+
+      const component = (
+        <Plot data={data} scale={[xScale, yScale]} width={120} height={130}>
+          <XAxis>
+            <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition={'below'}>
+              {({ value, x, y, index }: any) => ({
+                children: index === 3 ? value : <TickFormatter value={value} x={x} y={y} />,
+              })}
+            </XAxis.Ticks>
+          </XAxis>
+        </Plot>
+      );
+
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 });
 
 describe('utils', () => {

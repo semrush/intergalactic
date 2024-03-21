@@ -27,7 +27,7 @@ class ScrollAreaRoot extends Component {
   static displayName = 'ScrollArea';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()];
 
   static defaultProps = () => ({
     container: React.createRef(),
@@ -121,6 +121,39 @@ class ScrollAreaRoot extends Component {
     }
   };
 
+  handleFocusIn = (e) => {
+    setTimeout(() => {
+      const { keyboardFocused, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
+
+      if (this.$container && typeof this.$container.scrollTo === 'function') {
+        const viewPort = this.$container.getBoundingClientRect();
+        const element = e.target.getBoundingClientRect();
+
+        const offset = {
+          top: topOffset ?? 0,
+          left: leftOffset ?? 0,
+          right: rightOffset ?? 0,
+          bottom: bottomOffset ?? 0,
+        };
+
+        if (viewPort) {
+          const outOfViewport =
+            Math.floor(element.top) >= viewPort.bottom - offset.bottom ||
+            Math.floor(element.bottom) <= viewPort.top + offset.top ||
+            Math.floor(element.left) >= viewPort.right - offset.right ||
+            Math.floor(element.right) <= viewPort.left + offset.left;
+
+          if (outOfViewport && keyboardFocused) {
+            this.$container.scrollTo({
+              top: element.top + this.$container.scrollTop - offset.top - viewPort.top,
+              left: element.left + this.$container.scrollLeft - offset.left - viewPort.left,
+            });
+          }
+        }
+      }
+    }, 0);
+  };
+
   toggleShadow = (scroll, maxScroll, orientation) => {
     const roundedScroll = Math.round(scroll);
     const roundedMaxScroll = Math.round(maxScroll);
@@ -165,13 +198,16 @@ class ScrollAreaRoot extends Component {
   }
 
   getBarProps() {
-    const { container, orientation, uid } = this.asProps;
+    const { container, orientation, uid, leftOffset, rightOffset } = this.asProps;
+
     return {
       container,
       orientation,
       uid,
       horizontalBarRef: this.horizontalBarRef,
       verticalBarRef: this.verticalBarRef,
+      leftOffset,
+      rightOffset,
     };
   }
 
@@ -184,6 +220,8 @@ class ScrollAreaRoot extends Component {
     if (this.$container) {
       this.observer?.observe(this.$container);
     }
+
+    this.$inner?.addEventListener('focusin', this.handleFocusIn);
   }
 
   componentDidUpdate() {
@@ -192,13 +230,24 @@ class ScrollAreaRoot extends Component {
 
   componentWillUnmount() {
     this.observer?.disconnect();
+    this.$inner?.removeEventListener('focusin', this.handleFocusIn);
   }
 
   render() {
     const SScrollArea = Root;
     const SShadowVertical = BoxWithoutPosition;
     const SShadowHorizontal = BoxWithoutPosition;
-    const { Children, styles, orientation, tabIndex, forcedAdvancedMode } = this.asProps;
+    const {
+      Children,
+      styles,
+      orientation,
+      tabIndex,
+      forcedAdvancedMode,
+      leftOffset,
+      rightOffset,
+      topOffset,
+      bottomOffset,
+    } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
     const advancedMode =
@@ -212,8 +261,6 @@ class ScrollAreaRoot extends Component {
         onScroll={this.handleScroll}
         __excludeProps={['tabIndex']}
       >
-        {shadowVertical && <SShadowVertical position={shadowVertical} />}
-        {shadowHorizontal && <SShadowHorizontal position={shadowHorizontal} />}
         {advancedMode ? (
           <Children />
         ) : (
@@ -228,6 +275,20 @@ class ScrollAreaRoot extends Component {
               <ScrollArea.Bar orientation='vertical' />
             )}
           </>
+        )}
+        {shadowVertical && (
+          <SShadowVertical
+            position={shadowVertical}
+            topOffset={topOffset ? `${topOffset}px` : undefined}
+            bottomOffset={bottomOffset ? `${bottomOffset}px` : undefined}
+          />
+        )}
+        {shadowHorizontal && (
+          <SShadowHorizontal
+            position={shadowHorizontal}
+            leftOffset={leftOffset ? `${leftOffset}px` : undefined}
+            rightOffset={rightOffset ? `${rightOffset}px` : undefined}
+          />
         )}
       </SScrollArea>,
     );

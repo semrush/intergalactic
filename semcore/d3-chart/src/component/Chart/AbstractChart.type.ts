@@ -55,7 +55,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    */
   plotHeight: number;
 
-  /** Enables charts patterns that enhances charts accessability */
+  /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
   /**
    * Margin (for Y axis points) from left side of chart container to Y axis

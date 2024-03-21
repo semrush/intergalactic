@@ -1,6 +1,6 @@
 import React from 'react';
-import Pagination from '@semcore/ui/pagination';
-import { Text } from '@semcore/ui/typography';
+import Pagination from 'intergalactic/pagination';
+import { Text } from 'intergalactic/typography';
 
 const pageCount = 122360;
 

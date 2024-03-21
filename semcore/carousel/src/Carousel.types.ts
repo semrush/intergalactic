@@ -90,6 +90,7 @@ export type CarouselButtonProps = IRootComponentProps &
   BoxProps & {
     label?: string;
     inverted?: boolean;
+    tabIndex?: number;
   };
 
 export type CarouselIndicatorsProps = IRootComponentProps &

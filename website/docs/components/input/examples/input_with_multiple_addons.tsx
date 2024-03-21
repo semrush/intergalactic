@@ -1,12 +1,12 @@
 import React from 'react';
-import Input from '@semcore/ui/input';
-import Link from '@semcore/ui/link';
-import CloseM from '@semcore/ui/icon/Close/m';
-import ShowYesM from '@semcore/ui/icon/ShowYes/m';
-import ShowNoM from '@semcore/ui/icon/ShowNo/m';
-import { Text } from '@semcore/ui/typography';
-import { Box } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
+import Input from 'intergalactic/input';
+import Link from 'intergalactic/link';
+import CloseM from 'intergalactic/icon/Close/m';
+import ShowYesM from 'intergalactic/icon/ShowYes/m';
+import ShowNoM from 'intergalactic/icon/ShowNo/m';
+import { Text } from 'intergalactic/typography';
+import { Box } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

@@ -1,7 +1,7 @@
 import React from 'react';
-import Select from '@semcore/ui/select';
-import { Flex } from '@semcore/ui/flex-box';
-import Flags, { iso2Name } from '@semcore/ui/flags';
+import Select from 'intergalactic/select';
+import { Flex } from 'intergalactic/flex-box';
+import Flags, { iso2Name } from 'intergalactic/flags';
 
 const formatName = (name) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 

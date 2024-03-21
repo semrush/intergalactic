@@ -2,6 +2,55 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.1] - 2024-03-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/typography` [5.27.0 ~> 5.27.1], `@semcore/checkbox` [7.23.0 ~> 7.23.1]).
+
+## [4.32.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/base-trigger` [4.28.0 ~> 4.29.0], `@semcore/button` [5.20.5 ~> 5.21.0], `@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/checkbox` [7.22.3 ~> 7.23.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
+## [4.31.0] - 2024-03-08
+
+### Changed
+
+- Selected date range now is immediately represented in input trigger even before clicking the apply button.
+- While typings date range in input trigger, the calendar changes displayed period to a typed one.
+
+## [4.30.5] - 2024-03-08
+
+### Fixed
+
+- In month date range pickers the second calendar was not usable from the keyboard.
+
+## [4.30.4] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.27.0 ~> 4.27.1]).
+
+## [4.30.3] - 2024-03-07
+
+### Fixed
+
+- Rolled back change format of `date` property in children render function of `MonthPicker` and `MonthRangePicker` components.
+
+## [4.30.2] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
+## [4.30.1] - 2024-03-01
+
+### Fixed
+
+- Style for today (current) date border.
+
 ## [4.30.0] - 2024-02-28
 
 ### Fixed

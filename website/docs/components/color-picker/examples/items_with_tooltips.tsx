@@ -1,6 +1,6 @@
 import React from 'react';
-import ColorPicker from '@semcore/ui/color-picker';
-import Tooltip from '@semcore/ui/tooltip';
+import ColorPicker from 'intergalactic/color-picker';
+import { Hint } from 'intergalactic/tooltip';
 
 const colors = [
   '#A7AB38',
@@ -22,7 +22,7 @@ const Demo = () => {
       <ColorPicker.Popper>
         <ColorPicker.Colors>
           {colors.map((color) => (
-            <Tooltip title={color} key={color} tag={ColorPicker.Item} value={color} />
+            <Hint title={color} key={color} tag={ColorPicker.Item} value={color} />
           ))}
         </ColorPicker.Colors>
       </ColorPicker.Popper>

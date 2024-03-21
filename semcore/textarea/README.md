@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Textarea from '@semcore/ui/textarea';
+import Textarea from 'intergalactic/textarea';
 ```
 
 <details>

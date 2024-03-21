@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.22.0] - 2024-03-19
+
+### Added
+
+- Feature `offset`.
+
+## [5.21.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/flex-box` [5.19.4 ~> 5.20.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
+## [5.20.9] - 2024-03-11
+
+### Fixed
+
+- Unexpected scroll in some corner cases.
+
+## [5.20.8] - 2024-03-08
+
+### Fixed
+
+- Unexpected scroll after mouse clicks.
+
+## [5.20.7] - 2024-03-07
+
+### Added
+
+- Check that focused element is outside scroll area container before scroll to them.
+
+## [5.20.6] - 2024-03-06
+
+### Added
+
+- Scroll to focused element in scroll area.
+
 ## [5.20.5] - 2024-03-01
 
 ### Changed

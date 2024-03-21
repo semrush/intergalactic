@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import { Hint } from 'intergalactic/tooltip';
 import chart from '../static/chart.svg';
-import '@semcore/ui/utils/style/var.css';
+import 'intergalactic/utils/style/var.css';
 
 const Demo = () => {
   React.useEffect(() => {
@@ -45,11 +45,11 @@ const Demo = () => {
   return (
     <Flex flexWrap className='container'>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Potential Organic Traffic' wMax='100%'>
+        <Hint title='Potential Organic Traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Potential Organic Traffic
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
@@ -71,11 +71,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='CPC' wMax='100%'>
+        <Hint title='CPC' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             CPC
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
@@ -97,11 +97,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Competition' wMax='100%'>
+        <Hint title='Competition' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Competition
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
@@ -120,11 +120,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4}>
-        <Tooltip title='Non-branded traffic' wMax='100%'>
+        <Hint title='Non-branded traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Non-branded traffic
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           all time
         </Text>
@@ -143,11 +143,11 @@ const Demo = () => {
           <Text size={100} color='green-500' mr={2} tag='p'>
             +13
           </Text>
-          <Tooltip title='Jun 10 14.9%'>
+          <Hint title='Jun 10 14.9%'>
             <Text tabIndex={0}>
               <img src={chart} alt='chart' />
             </Text>
-          </Tooltip>
+          </Hint>
         </Flex>
       </Box>
     </Flex>

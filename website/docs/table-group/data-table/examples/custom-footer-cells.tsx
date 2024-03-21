@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import DataTable from 'intergalactic/data-table';
+import { Box, Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (

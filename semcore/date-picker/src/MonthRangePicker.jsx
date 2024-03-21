@@ -89,8 +89,19 @@ class MonthRangePickerRoot extends RangePickerAbstract {
   }
 
   getTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
-      this.asProps;
+    const {
+      visible,
+      preselectedValue,
+      onChange,
+      onDisplayedPeriodChange,
+      locale,
+      disabled,
+      size,
+      getI18nText,
+    } = this.asProps;
+    const value = visible
+      ? [preselectedValue[0] || this.asProps.value[0], preselectedValue[1] || this.asProps.value[1]]
+      : this.asProps.value;
 
     return {
       ...super.getButtonTriggerProps(),

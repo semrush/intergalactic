@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
+import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   const [[width, height], setSize] = React.useState([0, 0]);
@@ -32,7 +32,10 @@ const Demo = () => {
         </YAxis>
         <XAxis>
           <XAxis.Ticks>
-            {({ value, index }) => ({ children: index % 2 === 0 ? getDate(value) : '' })}
+            {({ value, index }) => ({
+              children: index % 2 === 0 ? getDate(value) : '',
+              value: getDate(value),
+            })}
           </XAxis.Ticks>
         </XAxis>
         <Bar x='date_chart' y='download' />

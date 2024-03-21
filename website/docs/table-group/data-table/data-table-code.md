@@ -1,30 +1,31 @@
 ---
 title: DataTable
 fileSource: data-table
-tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'),  Changelog('data-table-changelog')
+tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'), Changelog('data-table-changelog')
 ---
 
 The DataTable component simplifies the creation of tabular data. It uses CSS flex for layout and does not rely on native tables.
 
 ## Simple usage example
 
-To create a table, provide columns with titles using `<DataTable.Column name={name}/>` and data with `data={data}`.
+To create a table, provide columns with titles using `<DataTable.Column name={name}/>` and data with `data={data}` .
 
 ::: tip
 `<DataTable.Column/>` must be a child component of `<DataTable.Head/>`
+
 :::
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/base.tsx';
+  export Demo from './examples/base.tsx'; 
 </script>
 
 :::
 
 ## Scroll in table
 
-`<DataTable/>`, `<DataTable.Head/>`, and `<DataTable.Body/>` are inherited from the Box component and accept all its parameters. `<DataTable/>` serves as a container for `<DataTable.Head/>` and `<DataTable.Body/>` where scrolling is implemented.
+`<DataTable/>` , `<DataTable.Head/>` , and `<DataTable.Body/>` are inherited from the Box component and accept all its parameters. `<DataTable/>` serves as a container for `<DataTable.Head/>` and `<DataTable.Body/>` where scrolling is implemented.
 
 ::: tip
 If horizontal scrolling is not visible, try reducing the window size
@@ -35,7 +36,7 @@ By default, scrolling is displayed at the bottom of the table, but it can also b
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/scroll-in-table.tsx';
+  export Demo from './examples/scroll-in-table.tsx'; 
 </script>
 
 :::
@@ -47,19 +48,19 @@ You can insert tooltips, selectors, and other components into the table header u
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/customizing-header.tsx';
+  export Demo from './examples/customizing-header.tsx'; 
 </script>
 
 :::
 
 ## Column sizes
 
-Columns are inherited from the `Flex` component and accept its parameters, such as `flex`, `wMin`, and `wMax`, to adjust the column width.
+Columns are inherited from the `Flex` component and accept its parameters, such as `flex` , `wMin` , and `wMax` , to adjust the column width.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/column-sizes.tsx';
+  export Demo from './examples/column-sizes.tsx'; 
 </script>
 
 :::
@@ -71,7 +72,7 @@ Columns and cells inherit properties from the `Flex` component, so you can use `
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/column-alignment.tsx';
+  export Demo from './examples/column-alignment.tsx'; 
 </script>
 
 :::
@@ -88,17 +89,20 @@ To enable column sorting:
 ::: sandbox
 
 <script lang="tsx">
-import React from "react";
-import DataTable, { DataTableSort } from "@semcore/ui/data-table";
+import React from "react"; 
+import DataTable, { DataTableSort } from "intergalactic/data-table"; 
 
-type SortableColumn = Exclude<keyof typeof data[0], "keyword">;
+type SortableColumn = Exclude<keyof typeof data[0], "keyword">; 
 
 const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>([
+
     "kd",
     "desc"
-  ]);
+
+  ]); 
   const sortedData = React.useMemo(
+
     () =>
       [...data].sort((aRow, bRow) => {
         const [prop, sortDirection] = sort;
@@ -109,15 +113,19 @@ const Demo = () => {
         else return b - a;
       }),
     [sort]
-  );
-  const numberFormat = React.useMemo(() => new Intl.NumberFormat("en-US"), []);
+
+  ); 
+  const numberFormat = React.useMemo(() => new Intl. NumberFormat("en-US"), []); 
   const currencyFormat = React.useMemo(
+
     () =>
       new Intl.NumberFormat("en-US", { currency: "USD", style: "currency" }),
     []
-  );
+
+  ); 
 
   return (
+
     <DataTable data={sortedData} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
         <DataTable.Column name="keyword" children="Keyword" justifyContent="left" sortable />
@@ -143,41 +151,52 @@ const Demo = () => {
         </DataTable.Cell>
       </DataTable.Body>
     </DataTable>
-  );
-};
+
+  ); 
+}; 
 
 const data = [
   {
+
     keyword: "ebay buy",
     kd: 77.8,
     cpc: 1.25,
     vol: 32500000
-  },
+
+  }, 
   {
+
     keyword: "www.ebay.com",
     kd: 11.2,
     cpc: 3.4,
     vol: 65457920
-  },
+
+  }, 
   {
+
     keyword: "www.ebay.com",
     kd: 10,
     cpc: 0.65,
     vol: 47354640
-  },
+
+  }, 
   {
+
     keyword: "ebay buy",
     kd: -1,
     cpc: 0,
     vol: -1
-  },
+
+  }, 
   {
+
     keyword: "ebay buy",
     kd: 75.89,
     cpc: 0,
     vol: 21644290
+
   }
-];
+]; 
 
 </script>
 
@@ -196,14 +215,14 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/fixed-header.tsx';
+  export Demo from './examples/fixed-header.tsx'; 
 </script>
 
 :::
 
 ## Fixed columns
 
-To fix table columns, use the `fixed` property with `<DataTable.Column/>`.
+To fix table columns, use the `fixed` property with `<DataTable.Column/>` .
 
 ::: tip
 If fixed columns are not visible in the example below, try reducing the window size.
@@ -212,7 +231,7 @@ If fixed columns are not visible in the example below, try reducing the window s
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/fixed-columns.tsx';
+  export Demo from './examples/fixed-columns.tsx'; 
 </script>
 
 :::
@@ -228,7 +247,7 @@ Create a multi-level header by nesting columns within each other.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/multi-level-header.tsx';
+  export Demo from './examples/multi-level-header.tsx'; 
 </script>
 
 :::
@@ -240,7 +259,7 @@ Components added to `<DataTable.Head/>` will be inserted at the end of the heade
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional-elements-in-header.tsx';
+  export Demo from './examples/additional-elements-in-header.tsx'; 
 </script>
 
 :::
@@ -252,25 +271,25 @@ Move the table header outside of the table using a portal. All functionality wil
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/header-separation.tsx';
+  export Demo from './examples/header-separation.tsx'; 
 </script>
 
 :::
 
 ## Access to rows
 
-To apply properties to a table row, use `<DataTable.Row/>`. You can use multiple `<DataTable.Row/>` to separate the business logic.
+To apply properties to a table row, use `<DataTable.Row/>` . You can use multiple `<DataTable.Row/>` to separate the business logic.
 
 ::: tip
-`<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>`. Do not wrap it in higher-order components, and using styled components (for example, `` styled(DataTable.Row)`...` ``) is not allowed.
+`<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>` . Do not wrap it in higher-order components, and using styled components (for example, ` ` styled(DataTable.Row)` ... ` ` `) is not allowed.
 :::
 
-You can provide `data` property for `<DataTable.Row/>`. It is not used in the component runtime but improves strict typings.
+You can provide `data` property for `<DataTable.Row/>` . It is not used in the component runtime but improves strict typings.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access-to-rows.tsx';
+  export Demo from './examples/access-to-rows.tsx'; 
 </script>
 
 :::
@@ -279,26 +298,26 @@ You can provide `data` property for `<DataTable.Row/>`. It is not used in the co
 
 Define `<DataTable.Cell/>` with the appropriate `name={name}` to apply properties to a table cell. You can use multiple `<DataTable.Cell/>` for different business logic.
 
-`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>`. Do not wrap it in higher-order components, and using styled components ((for example, `` styled(DataTable.Cell)`...` ``)) is not allowed.
+`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>` . Do not wrap it in higher-order components, and using styled components ((for example, ` ` styled(DataTable.Cell)` ... ` ` `)) is not allowed.
 
-You can provide `data` property for `<DataTable.Cell/>`. It is not used in the component runtime but improves strict typings.
+You can provide `data` property for `<DataTable.Cell/>` . It is not used in the component runtime but improves strict typings.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access-to-cells.tsx';
+  export Demo from './examples/access-to-cells.tsx'; 
 </script>
 
 :::
 
 ## Access to set of cells
 
-To apply properties to multiple table cells, define `<DataTable.Cell />` with their names listed using `/`.
+To apply properties to multiple table cells, define `<DataTable.Cell />` with their names listed using `/` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access-to-set-of-cells.tsx';
+  export Demo from './examples/access-to-set-of-cells.tsx'; 
 </script>
 
 :::
@@ -310,26 +329,26 @@ Components added to `<DataTable.Body/>` will be inserted at the end of the table
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
+  export Demo from './examples/adding-additional-elements-to-table-body.tsx'; 
 </script>
 
 :::
 
 ## Custom footer cells
 
-To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)`.
+To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-footer-cells.tsx';
+  export Demo from './examples/custom-footer-cells.tsx'; 
 </script>
 
 :::
 
 ## Accordion inside table
 
-Extend table functionality using the `@semcore/ui/accordion` component. This allows you to add accordions to table rows.
+Extend table functionality using the `intergalactic/accordion` component. This allows you to add accordions to table rows.
 
 1. Wrap the table in the `Accordion` component.
 2. Replace the tag in `DataTable.Row` with our extended tag using `Accordion.Item`.
@@ -341,7 +360,7 @@ Extend table functionality using the `@semcore/ui/accordion` component. This all
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/accordion-inside-table.tsx';
+  export Demo from './examples/accordion-inside-table.tsx'; 
 </script>
 
 :::
@@ -356,7 +375,7 @@ We use the [example with the accordion above](/table-group/data-table/data-table
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-in-table.tsx';
+  export Demo from './examples/table-in-table.tsx'; 
 </script>
 
 :::
@@ -372,7 +391,7 @@ We use the [example with the table above](/table-group/data-table/data-table#tab
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-in-table-with-fixed-column.tsx';
+  export Demo from './examples/table-in-table-with-fixed-column.tsx'; 
 </script>
 
 :::
@@ -380,11 +399,24 @@ We use the [example with the table above](/table-group/data-table/data-table#tab
 ## Virtual scroll in table
 
 Enable scroll virtualization using the `virtualScroll` property.
+Note that built-in virtualization support tables with fixed-height rows only.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/virtual-scroll-in-table.tsx';
+  export Demo from './examples/virtual-scroll-in-table.tsx'; 
+</script>
+
+:::
+
+## Custom rows rendering
+
+If built-in virtualization does not meet your requirements, you can implement your own virtualization using `renderRows` prop.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-rows-rendering.tsx'; 
 </script>
 
 :::
@@ -396,19 +428,19 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/download-status.tsx';
+  export Demo from './examples/download-status.tsx'; 
 </script>
 
 :::
 
 ## Skeleton in table
 
-Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>`.
+Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/skeleton-in-table.tsx';
+  export Demo from './examples/skeleton-in-table.tsx'; 
 </script>
 
 :::
@@ -420,7 +452,7 @@ Merge two or more columns by changing the table data and using `/` to combine co
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/columns-merging.tsx';
+  export Demo from './examples/columns-merging.tsx'; 
 </script>
 
 :::
@@ -432,7 +464,7 @@ Merge two or more rows by adding a special grouping key to the table data.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/rows-merging.tsx';
+  export Demo from './examples/rows-merging.tsx'; 
 </script>
 
 :::
@@ -444,7 +476,7 @@ Use the secondary table for compactly displaying a small amount of data.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/secondary-table.tsx';
+  export Demo from './examples/secondary-table.tsx'; 
 </script>
 
 :::
@@ -456,7 +488,7 @@ Export the table to an image.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/export-in-image.tsx';
+  export Demo from './examples/export-in-image.tsx'; 
 </script>
 
 :::
@@ -468,7 +500,7 @@ Reduce table cel  paddings by adding the `compact` property.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/compact.tsx';
+  export Demo from './examples/compact.tsx'; 
 </script>
 
 :::
@@ -480,7 +512,7 @@ Add borders to columns by passing the `vBorders` property to specific columns.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/borders.tsx';
+  export Demo from './examples/borders.tsx'; 
 </script>
 
 :::
@@ -496,8 +528,7 @@ Be cautious with columns with a `wMax` property, as the sort icon may overlap th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/сolumn-expand.tsx';
+  export Demo from './examples/сolumn-expand.tsx'; 
 </script>
 
 :::
-

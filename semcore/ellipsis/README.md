@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import Ellipsis from '@semcore/ui/ellipsis';
+import Ellipsis from 'intergalactic/ellipsis';
 ```
 
 <details>

@@ -1,7 +1,7 @@
 import React from 'react';
-import InputMask from '@semcore/ui/input-mask';
-import { Text } from '@semcore/ui/typography';
-import { Flex } from '@semcore/ui/flex-box';
+import InputMask from 'intergalactic/input-mask';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (

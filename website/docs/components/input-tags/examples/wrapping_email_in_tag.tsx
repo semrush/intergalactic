@@ -1,6 +1,6 @@
 import React from 'react';
-import InputTags from '@semcore/ui/input-tags';
-import Select from '@semcore/ui/select';
+import InputTags from 'intergalactic/input-tags';
+import Select from 'intergalactic/select';
 
 const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 

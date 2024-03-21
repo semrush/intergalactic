@@ -1,19 +1,19 @@
 import React from 'react';
-import { Text } from '@semcore/ui/typography';
-import Link from '@semcore/ui/link';
-import Button from '@semcore/ui/button';
-import Tooltip from '@semcore/ui/tooltip';
-import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
-import ChatM from '@semcore/ui/icon/Chat/m';
-import BookM from '@semcore/ui/icon/Book/m';
-import MathPlusM from '@semcore/ui/icon/MathPlus/m';
-import SettingsM from '@semcore/ui/icon/Settings/m';
-import InfoM from '@semcore/ui/icon/Info/m';
-import Breadcrumbs from '@semcore/ui/breadcrumbs';
-import TabLine from '@semcore/ui/tab-line';
-import Select from '@semcore/ui/select';
+import { Text } from 'intergalactic/typography';
+import Link from 'intergalactic/link';
+import Button from 'intergalactic/button';
+import { Hint } from 'intergalactic/tooltip';
+import ChevronDownM from 'intergalactic/icon/ChevronDown/m';
+import ChatM from 'intergalactic/icon/Chat/m';
+import BookM from 'intergalactic/icon/Book/m';
+import MathPlusM from 'intergalactic/icon/MathPlus/m';
+import SettingsM from 'intergalactic/icon/Settings/m';
+import InfoM from 'intergalactic/icon/Info/m';
+import Breadcrumbs from 'intergalactic/breadcrumbs';
+import TabLine from 'intergalactic/tab-line';
+import Select from 'intergalactic/select';
 
-import Header, { Info, Title } from '@semcore/ui/product-head';
+import Header, { Info, Title } from 'intergalactic/product-head';
 
 const Demo = () => {
   return (
@@ -101,12 +101,9 @@ const Demo = () => {
             </Info.Item>
             <Info.Item label='Data:'>
               Fresh
-              <Tooltip
-                title='Some more details why data is fresh'
-                style={{ display: 'inline-flex' }}
-              >
+              <Hint title='Some more details why data is fresh' style={{ display: 'inline-flex' }}>
                 <InfoM ml={1} color='gray-300' cursor='help' />
-              </Tooltip>
+              </Hint>
             </Info.Item>
             <Info.Item>
               <Info.Item.Label>Last update:</Info.Item.Label>1 hour ago

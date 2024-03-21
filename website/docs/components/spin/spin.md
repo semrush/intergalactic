@@ -8,9 +8,9 @@ tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-change
 
 <script lang="tsx">
 import React from 'react';
-import Spin from '@semcore/ui/spin';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
+import Spin from 'intergalactic/spin';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['xs', 's', 'm', 'l', 'xl', 'xxl'];

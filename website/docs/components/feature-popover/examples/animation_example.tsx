@@ -1,8 +1,8 @@
 import React from 'react';
-import FeaturePopover from '@semcore/ui/feature-popover';
-import Button from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
-import { Flex, Box } from '@semcore/ui/flex-box';
+import FeaturePopover from 'intergalactic/feature-popover';
+import Button from 'intergalactic/button';
+import { Text } from 'intergalactic/typography';
+import { Flex, Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(true);

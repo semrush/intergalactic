@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Tooltip from '@semcore/ui/tooltip';
-import WarningM from '@semcore/ui/icon/Warning/m';
-import { AnimatedNumber } from '@semcore/ui/counter/src';
-import '@semcore/ui/utils/style/var.css';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import { Hint } from 'intergalactic/tooltip';
+import WarningM from 'intergalactic/icon/Warning/m';
+import { AnimatedNumber } from 'intergalactic/counter/src';
+import 'intergalactic/utils/style/var.css';
 
 const Demo = () => {
   React.useEffect(() => {
@@ -46,11 +46,11 @@ const Demo = () => {
   return (
     <Flex flexWrap className='container'>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Keyword' wMax='100%'>
+        <Hint title='Keyword' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Keyword
           </Text>
-        </Tooltip>
+        </Hint>
         <Flex alignItems='baseline'>
           <Text
             size={500}
@@ -69,11 +69,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Traffic' wMax='100%'>
+        <Hint title='Traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic
           </Text>
-        </Tooltip>
+        </Hint>
         <Flex mt={2} alignItems='center'>
           <WarningM color='gray-300' />
           <Text
@@ -89,11 +89,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Traffic cost' wMax='100%'>
+        <Hint title='Traffic cost' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic cost
           </Text>
-        </Tooltip>
+        </Hint>
         <Flex mt={2} alignItems='center'>
           <WarningM color='gray-300' />
           <Text
@@ -109,11 +109,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4}>
-        <Tooltip title='Branded traffic' wMax='100%'>
+        <Hint title='Branded traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Branded traffic
           </Text>
-        </Tooltip>
+        </Hint>
         <Flex mt={2} alignItems='center'>
           <WarningM color='gray-300' />
           <Text

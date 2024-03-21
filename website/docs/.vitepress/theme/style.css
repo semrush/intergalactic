@@ -637,7 +637,7 @@ img {
   color: inherit;
 }
 
-.vp-doc a:not([class]) {
+.vp-doc a {
   text-decoration: none;
 }
 

@@ -10,8 +10,6 @@ import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 
-import scrollStyles from './style/scroll-area.shadow.css';
-
 const SORTING_ICON = {
   desc: SortDesc,
   asc: SortAsc,
@@ -20,6 +18,7 @@ const ariaSort = {
   desc: 'descending',
   asc: 'ascending',
 } as const;
+const displayContents = { display: 'contents' };
 
 type AsProps = {
   $onSortClick: (name: string, event: React.MouseEvent | React.KeyboardEvent) => void;
@@ -28,9 +27,9 @@ type AsProps = {
   columnsChildren: Column[];
   onResize: ResizeObserverCallback;
   sticky: boolean;
-  disabledScroll?: boolean;
   ['data-ui-name']: string;
   uid?: string;
+  withScrollBar?: boolean;
 };
 
 class Head extends Component<AsProps> {
@@ -43,7 +42,7 @@ class Head extends Component<AsProps> {
   };
 
   bindHandlerKeyDown = (name: string) => (event: React.KeyboardEvent) => {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       this.asProps.$onSortClick(name, event);
     }
@@ -146,9 +145,16 @@ class Head extends Component<AsProps> {
   render() {
     const SHead = Root;
     const SHeadWrapper = Box as any;
-    const SScrollArea = ScrollArea as any;
-    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky, disabledScroll } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      columnsChildren,
+      onResize,
+      $scrollRef,
+      sticky,
+      withScrollBar,
+      hidden,
+    } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
 
@@ -162,19 +168,27 @@ class Head extends Component<AsProps> {
 
     return sstyled(styles)(
       <SHeadWrapper sticky={sticky}>
-        <SScrollArea
-          styles={scrollStyles}
-          left-offset={`${offsetLeftSum}px`}
-          right-offset={`${offsetRightSum}px`}
+        <ScrollArea
+          leftOffset={offsetLeftSum}
+          rightOffset={offsetRightSum}
           shadow
           onResize={onResize}
         >
-          <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
+          <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={hidden ? -1 : 0}>
             <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
-          </SScrollArea.Container>
-        </SScrollArea>
+          </ScrollArea.Container>
+          {Boolean(withScrollBar) && (
+            <div style={displayContents} role='rowgroup'>
+              <div style={displayContents} role='row'>
+                <div style={displayContents} role='cell'>
+                  <ScrollArea.Bar orientation='horizontal' />
+                </div>
+              </div>
+            </div>
+          )}
+        </ScrollArea>
         {Children.origin}
       </SHeadWrapper>,
     );

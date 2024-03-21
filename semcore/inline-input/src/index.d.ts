@@ -55,7 +55,7 @@ export type InlineInputProps = BoxProps & {
    * defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
-  onBlurBehavior?: 'cancel' | 'confirm';
+  onBlurBehavior?: 'cancel' | 'confirm' | 'none';
   locale?: string;
 };
 

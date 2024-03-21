@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/utils` [4.20.5 ~> 4.21.0]).
+
+## [4.28.0] - 2024-03-07
+
+### Added
+
+- ButtonTrigger got `chevron` prop that controls display of chevron icon.
+
+## [4.27.1] - 2024-03-07
+
+### Fixed
+
+- Behavior in forms was broken.
+
+## [4.27.0] - 2024-03-04
+
+### Changed
+
+- Tag for `ButtonTrigger` is `button` instead of `div`.
+
+## [4.26.7] - 2024-03-06
+
+### Fixed
+
+- In some rare cases `FilterTrigger` may share it's ref between component instances.
+
 ## [4.26.6] - 2024-03-01
 
 ### Changed
@@ -567,7 +597,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed `FilterTrigger` accessability.
+- Fixed `FilterTrigger` accessibility.
 
 ## [3.2.5] - 2022-10-28
 

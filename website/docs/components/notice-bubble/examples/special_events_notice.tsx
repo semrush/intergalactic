@@ -1,7 +1,7 @@
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/ui/notice-bubble';
-import Button from '@semcore/ui/button';
-import MailSent from '@semcore/ui/illustration/MailSent';
+import { NoticeBubbleContainer, NoticeBubbleManager } from 'intergalactic/notice-bubble';
+import Button from 'intergalactic/button';
+import MailSent from 'intergalactic/illustration/MailSent';
 
 const manager = new NoticeBubbleManager();
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '@semcore/ui/card';
+import Card from 'intergalactic/card';
 import {
   LineChartSkeleton,
   AreaChartSkeleton,
@@ -10,7 +10,7 @@ import {
   RadialTreeChartSkeleton,
   HistogramChartSkeleton,
   DonutChartSkeleton,
-} from '@semcore/ui/skeleton';
+} from 'intergalactic/skeleton';
 
 const Demo = () => {
   return (

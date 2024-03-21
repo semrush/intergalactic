@@ -14,7 +14,7 @@ import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import style from '../style/date-picker.shadow.css';
 
 const INTERACTION_TAGS = ['INPUT'];
-const INTERACTION_KEYS = ['ArrowDown', 'Enter', 'Space'];
+const INTERACTION_KEYS = ['ArrowDown', 'Enter', ' '];
 const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
 
 const getLatestDate = (...dateRanges) => {
@@ -195,7 +195,7 @@ class DateRangeComparatorAbstract extends Component {
 
   handleKeydownDown = (place) => (e) => {
     const { displayedPeriod, preselectedValue, visible, focusedRange } = this.asProps;
-    const key = e.code;
+    const key = e.key;
     const highlighted =
       focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
 
@@ -215,26 +215,28 @@ class DateRangeComparatorAbstract extends Component {
     const day = this.keyDiff[key];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
-      const [left_period, right_period] = next_highlighted;
+      const [startPeriod, endPeriod] = next_highlighted;
+      const highlightedPeriod = endPeriod || startPeriod;
 
-      const monthDisplayedPeriod = displayedPeriod?.getMonth();
-      const period = right_period || left_period;
+      let displayedPeriodNormalized = displayedPeriod?.getDate();
+      let highlightedPeriodNormalized = highlightedPeriod?.getDate();
+      if (this.navigateStep === 'month') {
+        displayedPeriodNormalized = displayedPeriod?.getMonth();
+        highlightedPeriodNormalized = highlightedPeriod?.getMonth();
+      }
+      if (this.navigateStep === 'year') {
+        displayedPeriodNormalized = displayedPeriod?.getYear();
+        highlightedPeriodNormalized = highlightedPeriod?.getYear();
+      }
+      const offset = highlightedPeriodNormalized - displayedPeriodNormalized;
 
-      if (period) {
-        if (!monthDisplayedPeriod) {
-          return period;
-        }
-
-        if (period.getMonth() - monthDisplayedPeriod > 1) {
-          return DateRangeComparatorAbstract.subtract(period, 1, 'month');
-        } else if (period.getMonth() - monthDisplayedPeriod < 0) {
-          return period;
-        }
+      if (offset < 0 || offset > 1) {
+        return highlightedPeriod;
       }
       return displayedPeriod;
     };
 
-    if (place === 'popper' && e.code === 'Space' && highlighted.length) {
+    if (place === 'popper' && e.key === ' ' && highlighted.length) {
       const highlightedDate = highlighted[1] || highlighted[0];
 
       if (!this.isDisabled(highlightedDate)) {
@@ -242,7 +244,7 @@ class DateRangeComparatorAbstract extends Component {
       }
       e.preventDefault();
     }
-    if (place === 'popper' && e.code === 'Enter' && (e.metaKey || e.ctrlKey)) {
+    if (place === 'popper' && e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       return this.handleApplyClick();
     }
     let changedDate = undefined;

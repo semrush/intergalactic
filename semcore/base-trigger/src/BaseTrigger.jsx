@@ -41,7 +41,7 @@ class RootBaseTrigger extends Component {
 
   render() {
     const SBaseTrigger = Root;
-    const SInner = 'div';
+    const SInner = 'span';
     const SInvalidPattern = InvalidStateBox;
     const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
 
@@ -82,7 +82,8 @@ function Text(props) {
 
 function Addon(props) {
   const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} />);
+  const { styles } = props;
+  return sstyled(styles)(<SAddon render={Box} />);
 }
 
 const BaseTrigger = createComponent(RootBaseTrigger, {

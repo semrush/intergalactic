@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from '@semcore/ui/slider';
+import Slider from 'intergalactic/slider';
 
 const Demo = () => {
   const [value, setValue] = React.useState('medium');

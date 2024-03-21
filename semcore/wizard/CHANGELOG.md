@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.29.1] - 2024-03-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/modal` [4.29.0 ~> 4.29.1]).
+
+## [2.29.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/flex-box` [5.19.4 ~> 5.20.0], `@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/modal` [4.28.5 ~> 4.29.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
+## [2.28.6] - 2024-03-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/modal` [4.28.4 ~> 4.28.5]).
+
+## [2.28.5] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [2.28.4] - 2024-03-01
 
 ### Changed

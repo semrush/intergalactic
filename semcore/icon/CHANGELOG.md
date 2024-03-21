@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.0] - 2024-03-12
+
+### Added
+
+- New `ShareAlt` icon.
+
+## [4.27.1] - 2024-03-05
+
+### Changed
+
+- Use `event.key` instead of `event.code`.
+
 ## [4.27.0] - 2024-02-28
 
 ### Added

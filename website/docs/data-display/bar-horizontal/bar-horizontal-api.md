@@ -11,7 +11,7 @@ tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal
 For Horizontal view, you should pass `true` into `invertAxis` prop
 
 ```js
-import { Chart } from '@semcore/ui/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="BarChartProps" :types={...types} />
@@ -21,7 +21,7 @@ import { Chart } from '@semcore/ui/d3-chart';
 Horizontal chart Bar.
 
 ```js
-import { HorizontalBar } from '@semcore/ui/d3-chart';
+import { HorizontalBar } from 'intergalactic/d3-chart';
 ```
 
 <TypesView type="HorizontalBarProps" :types={...types} />
@@ -31,7 +31,7 @@ import { HorizontalBar } from '@semcore/ui/d3-chart';
 It have children components `Bar, HorizontalBar`.
 
 ```js
-import { GroupBar } from '@semcore/ui/d3-chart';
+import { GroupBar } from 'intergalactic/d3-chart';
 
 <GroupBar>
   <GroupBar.Bar />

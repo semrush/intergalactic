@@ -13,13 +13,13 @@
 ## Install
 
 ```sh
-npm install @semcore/ui
+npm install intergalactic
 ```
 
 ## Usage
 
 ```jsx
-import { Animation, Transform, FadeInOut, Collapse } from '@semcore/ui/animation';
+import { Animation, Transform, FadeInOut, Collapse } from 'intergalactic/animation';
 ```
 
 <details>

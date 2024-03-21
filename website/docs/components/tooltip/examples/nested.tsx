@@ -1,16 +1,16 @@
 import React from 'react';
-import Tooltip from '@semcore/ui/tooltip';
-import { Box, Flex } from '@semcore/ui/flex-box';
-import Link from '@semcore/ui/link';
+import Tooltip from 'intergalactic/tooltip';
+import { Box, Flex } from 'intergalactic/flex-box';
+import Link from 'intergalactic/link';
 
 const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
       <Tooltip>
         <Tooltip.Trigger aria-describedby={undefined}>
-          {({ popperId }) => <Link aria-describedby={popperId}>Hello world</Link>}
+          {({ popperId }) => <Link aria-describedby={popperId}>Tooltip trigger</Link>}
         </Tooltip.Trigger>
-        <Tooltip.Popper>Hello, stranger</Tooltip.Popper>
+        <Tooltip.Popper>Hello, stranger!</Tooltip.Popper>
       </Tooltip>
     </Box>
   </Flex>
