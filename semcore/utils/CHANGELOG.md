@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.21.1] - 2024-03-22
+
+### Fixed
+
+- Attribute `inert` was not appling to components.
+
 ## [4.21.0] - 2024-03-13
 
 ### Fixed
