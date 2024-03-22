@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.19.0] - 2024-03-20
+
+### Added
+
+- `AccessLogIn` illustration.
+
 ## [2.18.0] - 2024-03-15
 
 ### Changed
