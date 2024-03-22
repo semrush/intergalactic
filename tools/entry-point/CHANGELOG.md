@@ -1,3 +1,22 @@
+## [15.73.0] - 2024-03-22
+
+### @semcore/d3-chart
+
+- **Fixed** Errors in children render functions.
+- **Changed** `DotCircle` size in Tooltip from 12px to 8px.
+
+### @semcore/icon
+
+- **Added** New `ChartBarStackedColumn` icon.
+
+### @semcore/illustration
+
+- **Added** `AccessLogIn` illustration.
+
+### @semcore/tooltip
+
+- **Fixed** Error about `zIndex` in DOM element.
+
 ## [15.72.0] - 2024-03-19
 
 ### @semcore/data-table
