@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.24.1] - 2024-03-21
+
+### Fixed
+
+- Error about `zIndex` in DOM element.
+
 ## [6.24.0] - 2024-03-19
 
 ### Removed
