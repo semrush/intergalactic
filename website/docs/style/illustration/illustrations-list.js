@@ -141,6 +141,10 @@ const illustartionsList = {
       group: 'Errors',
     },
     {
+      name: 'AccessLogIn',
+      group: 'Errors',
+    },
+    {
       name: 'Blocked',
       group: 'Errors',
     },
