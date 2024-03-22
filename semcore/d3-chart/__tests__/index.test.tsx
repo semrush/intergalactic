@@ -192,17 +192,15 @@ describe('XAxis', () => {
     async ({ task }) => {
       const size = 16;
       const TickFormatter = (props: any): any => {
-        if (props.value === 0) {
-          return 'INIT';
-        }
-
         return (
           <foreignObject
             transform={`translate(${props.x - size / 2},${props.y + 8})`}
             width={`${size}px`}
             height={`${size}px`}
           >
-            {props.value === 10 ? 'V' : <Icon />}
+            {props.index === 3 && props.value}
+            {props.value === 0 && 'INIT'}
+            {props.index !== 3 && props.value !== 0 && (props.value === 10 ? 'V' : <Icon />)}
           </foreignObject>
         );
       };
@@ -212,7 +210,7 @@ describe('XAxis', () => {
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks(5)} childrenPosition={'below'}>
               {({ value, x, y, index }: any) => ({
-                children: index === 3 ? value : <TickFormatter value={value} x={x} y={y} />,
+                children: <TickFormatter value={value} x={x} y={y} index={index} />,
               })}
             </XAxis.Ticks>
           </XAxis>
