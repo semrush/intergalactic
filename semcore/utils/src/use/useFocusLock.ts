@@ -115,12 +115,13 @@ const useFocusLockHook = (
       }, 0);
       if (lastUserInteractionRef.current === 'mouse') return;
       Promise.resolve().then(() => {
-        if (!trapRef.current) return;
+        const trapRefElement = trapRef.current;
+        if (!trapRefElement) return;
         const currentFocusMaster = focusMastersStack[focusMastersStack.length - 1];
-        if (currentFocusMaster && currentFocusMaster !== trapRef.current) return;
+        if (currentFocusMaster && currentFocusMaster !== trapRefElement) return;
         const trapNodes = currentFocusMaster
-          ? [trapRef.current]
-          : [trapRef.current, ...focusLockAllTraps];
+          ? [trapRefElement]
+          : [trapRefElement, ...focusLockAllTraps];
         if (isFocusInside(trapNodes, focusMovedTo)) return;
         if (
           typeof returnFocusTo === 'object' &&
@@ -129,11 +130,13 @@ const useFocusLockHook = (
         )
           return;
 
-        if (focusCameFrom) {
-          setFocus(trapRef.current, focusCameFrom, focusMovedTo);
-        }
+        setTimeout(() => {
+          if (focusCameFrom) {
+            setFocus(trapRefElement, focusCameFrom, focusMovedTo);
+          }
 
-        onFocusOut?.(event);
+          onFocusOut?.(event);
+        }, 0);
       });
     },
     [onFocusOut],
@@ -198,10 +201,10 @@ const useFocusLockHook = (
     );
     if (focusableChildren.length === 0 && autoFocus !== 'enforced') return;
 
-    document.body.addEventListener('focusout', handleFocusOut as any);
-    document.body.addEventListener('mousedown', handleMouseEvent);
-    document.body.addEventListener('touchstart', handleMouseEvent);
-    document.body.addEventListener('keydown', handleKeyboardEvent);
+    document.body.addEventListener('focusout', handleFocusOut as any, { capture: true });
+    document.body.addEventListener('mousedown', handleMouseEvent, { capture: true });
+    document.body.addEventListener('touchstart', handleMouseEvent, { capture: true });
+    document.body.addEventListener('keydown', handleKeyboardEvent, { capture: true });
 
     if (autoFocus)
       setFocus(
@@ -210,10 +213,10 @@ const useFocusLockHook = (
       );
 
     return () => {
-      document.body.removeEventListener('focusout', handleFocusOut as any);
-      document.body.removeEventListener('mousedown', handleMouseEvent);
-      document.body.removeEventListener('touchstart', handleMouseEvent);
-      document.body.removeEventListener('keydown', handleKeyboardEvent);
+      document.body.removeEventListener('focusout', handleFocusOut as any, { capture: true });
+      document.body.removeEventListener('mousedown', handleMouseEvent, { capture: true });
+      document.body.removeEventListener('touchstart', handleMouseEvent, { capture: true });
+      document.body.removeEventListener('keydown', handleKeyboardEvent, { capture: true });
       returnFocus();
       autoTriggerRef.current = null;
     };
