@@ -2,7 +2,7 @@
 title: Figma libraries
 ---
 
-## What Figma libraries do we have?
+## Introduction to our libraries
 
 ::: loom_video https://www.loom.com/share/32ac37f7d13046308cab7095d05bcdcb :::
 
@@ -12,12 +12,11 @@ title: Figma libraries
 
 ## Core libraries
 
-Feel free to use our Figma libraries:
-
 - Design tokens: **[Internal](https://www.figma.com/file/3oPFz95uakNgr0diY7k5dW/Design-Tokens)**, **[Public](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens)**
 - Core components: **[Internal](https://www.figma.com/file/pird5k22HfjGRUzZUfW1Qf/%E2%9D%96-New-Components), [Public](https://www.figma.com/community/file/1085155066176261708)**
 - Interface icons: **[Internal](https://www.figma.com/file/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons), [Public](https://www.figma.com/community/file/1104055318873511031)**
 - Charts: **[Internal](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/1104055641569356920)**
+- Table components: **[Internal](https://www.figma.com/file/R3kShIAwBMr9K5XSqXuQ3R/%E2%9C%A8-Table-components?type=design&t=n91YMTeTXAEyz6Cp-6), [Public](https://www.figma.com/community/file/1274029407972533900/semrush-table-components-library)**
 
 ::: loom_video https://www.loom.com/share/593126f16b494b719949649d1d7fa331 :::
 
@@ -25,7 +24,7 @@ Feel free to use our Figma libraries:
 
 ::: loom_video https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6 :::
 
-## Start designing with our Figma libraries
+## Start designing with our libraries
 
 How to start designing with the Intergalactic Design System Figma libraries? Where you should start from?
 
