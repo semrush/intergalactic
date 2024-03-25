@@ -11,22 +11,24 @@ const meadiaQueries = [
 
 const mockedScreenQuery = '(max-width: 700px)';
 const noop: any = () => {};
-const realMatchMedia = window.matchMedia;
-window.matchMedia = (query): any => {
-  if (meadiaQueries.includes(query)) {
-    return {
-      matches: query === mockedScreenQuery,
-      meadia: query,
-      onchange: null,
-      addListener: noop,
-      removeListener: noop,
-      addEventListener: noop,
-      removeEventListener: noop,
-      dispatchEvent: noop,
-    };
-  }
-  return realMatchMedia(query);
-};
+if (globalThis.window) {
+  const realMatchMedia = window.matchMedia;
+  window.matchMedia = (query): any => {
+    if (meadiaQueries.includes(query)) {
+      return {
+        matches: query === mockedScreenQuery,
+        meadia: query,
+        onchange: null,
+        addListener: noop,
+        removeListener: noop,
+        addEventListener: noop,
+        removeEventListener: noop,
+        dispatchEvent: noop,
+      };
+    }
+    return realMatchMedia(query);
+  };
+}
 
 const Breakpoints = createBreakpoints(meadiaQueries);
 
