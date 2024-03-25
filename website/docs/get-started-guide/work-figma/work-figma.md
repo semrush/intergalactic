@@ -44,6 +44,7 @@ In addition, we offer libraries for internal use, which are accessible solely to
 
 - UX/UI patterns with common modules and patterns we use across different Semrush products: **[UX Patterns](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-Patterns)**
 - Filter patterns: **[Filter patterns](https://www.figma.com/file/F4eeHJhChJZ4jGPDwl0uLT/%F0%9F%92%A0-Filters?type=design&t=sdNtVYO1eawmYT2y-6)**
+- All images for [Flags](/components/flags/flags) component: **[Flags](https://www.figma.com/file/DjWsMXmFfCMxtiyNtoYjRO/%F0%9F%94%8D-Flags?type=design&t=n91YMTeTXAEyz6Cp-6)**
 - UI illustrations: **[UI Illustration](https://www.figma.com/file/0eyXfQt4cbmx5y8L5oddeo/%F0%9F%91%A9%E2%80%8D%F0%9F%8E%A4-UI-illustrations)**
 - Marketing illustrations: **[Illustration](https://www.figma.com/file/UbJFnas5a8uAVlubA8RtmU/Illustration)**
 - Basic components and templates for product landings: **[Product Landings](https://www.figma.com/file/K02X01Nb0LuGuHTzsaE5DK/Product-landings-library)**
