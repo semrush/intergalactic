@@ -27,12 +27,7 @@ const PortalContext = register.get(
 function Portal(props: IFunctionProps<IPortalProps>) {
   const { Children, disablePortal, ignorePortalsStacking } = props;
   const container = React.useContext(PortalContext);
-  const initialMountNode = React.useMemo(() => {
-    if (!ignorePortalsStacking) return getNodeByRef(container);
-    if (canUseDOM()) return document.body;
-    return null;
-  }, [ignorePortalsStacking, container]);
-  const [mountNode, setMountNode] = React.useState(initialMountNode);
+  const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
   React.useEffect(() => {
     if (disablePortal) return;

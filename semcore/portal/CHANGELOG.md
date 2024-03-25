@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.19.0] - 2024-03-25
+
+### Fixed
+
+- Portal hydration errors in nextjs and astro.
+
 ## [3.18.0] - 2024-03-15
 
 ### Changed
