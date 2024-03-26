@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Api to control portal mount node with `mountNode` and `onMountNodeChange` props.
+- Api to get know if the portal is mounted (`onMount` prop).
 
 ## [3.19.0] - 2024-03-25
 

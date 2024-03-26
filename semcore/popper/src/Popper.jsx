@@ -493,9 +493,8 @@ function PopperPopper(props) {
     event.nativeEvent.stopImmediatePropagation();
     ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));
   }, []);
-  const [portalMountNode, setPortalMountNode] = React.useState(null);
 
-  const portalMounted = Boolean(portalMountNode) || disablePortal;
+  const [portalMounted, setPortalMounted] = React.useState(disablePortal);
   useFocusLock(
     ref,
     autoFocus,
@@ -535,8 +534,7 @@ function PopperPopper(props) {
     <Portal
       disablePortal={disablePortal}
       ignorePortalsStacking={ignorePortalsStacking}
-      mountNode={portalMountNode}
-      onMountNodeChange={setPortalMountNode}
+      onMount={setPortalMounted}
     >
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper

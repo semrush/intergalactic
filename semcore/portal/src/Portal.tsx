@@ -17,9 +17,8 @@ export type PortalProps = {
   disablePortal?: boolean;
   /** Disabled attaching portals to the parent portals and enabling attaching directly to document.body */
   ignorePortalsStacking?: boolean;
-  /** Controls under which node protal should be mounted */
-  mountNode?: Element | null;
-  onMountNodeChange?: (node: Element | null) => void;
+  /** Called when portal mount state changes */
+  onMount?: (mounted: boolean) => void;
 };
 
 const PortalContext = register.get(
@@ -29,22 +28,19 @@ const PortalContext = register.get(
 );
 
 function Portal(props: PortalProps & { Children: React.FC }) {
-  const { Children, disablePortal, ignorePortalsStacking } = props;
+  const { Children, disablePortal, ignorePortalsStacking, onMount } = props;
   const container = React.useContext(PortalContext);
-  const [mountNode, setMountNode] = useUncontrolledProp(
-    props.mountNode ?? null,
-    null,
-    props.onMountNodeChange,
-  );
+  const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
   React.useEffect(() => {
     if (disablePortal) return;
+    onMount?.(true);
     if (ignorePortalsStacking) {
       setMountNode(canUseDOM() ? document.body : null);
       return;
     }
     setMountNode(getNodeByRef(container));
-  }, [container, disablePortal]);
+  }, [container, disablePortal, onMount]);
 
   if (disablePortal) {
     return <Children />;
