@@ -11,7 +11,7 @@ import {
   useFocusLock,
   isFocusInside,
   setFocus,
-  syntheticEvents,
+  makeFocusLockSyntheticEvent,
 } from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
@@ -490,16 +490,8 @@ function PopperPopper(props) {
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
   const propagateFocusLockSyntheticEvent = React.useCallback((event) => {
-    event.stopPropagation();
-    const syntheticEvent = new Event(syntheticEvents[event.type], {
-      bubbles: true,
-    });
-    Object.defineProperty(syntheticEvent, 'target', { writable: false, value: event.target });
-    Object.defineProperty(syntheticEvent, 'relatedTarget', {
-      writable: false,
-      value: event.relatedTarget,
-    });
-    ref.current?.dispatchEvent(syntheticEvent);
+    event.nativeEvent.stopImmediatePropagation();
+    ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));
   }, []);
 
   useFocusLock(
@@ -562,11 +554,11 @@ function PopperPopper(props) {
           onMouseOver={stopPropagation}
           onMouseOut={stopPropagation}
           onMouseUp={stopPropagation}
-          onKeyDown={disablePortal ? propagateFocusLockSyntheticEvent : stopPropagation}
+          onKeyDown={propagateFocusLockSyntheticEvent}
           onKeyPress={stopPropagation}
           onKeyUp={stopPropagation}
           onFocus={stopPropagation}
-          onBlur={disablePortal ? propagateFocusLockSyntheticEvent : stopPropagation}
+          onBlur={propagateFocusLockSyntheticEvent}
           onChange={stopPropagation}
           onInput={stopPropagation}
           onInvalid={stopPropagation}

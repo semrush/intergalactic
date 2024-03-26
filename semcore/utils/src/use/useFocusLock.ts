@@ -14,9 +14,30 @@ export { isFocusInside, setFocus };
 
 const focusBordersConsumers = new Set();
 
-export const syntheticEvents = {
+const syntheticEvents = {
   blur: 'focusout-intergalactic-focus-lock-synthetic',
   keydown: 'keydown-intergalactic-focus-lock-synthetic',
+};
+/**
+ * Synthetic event are special events that always bypass all propagation guards and reaches focus lock event listeners.
+ * You should always prevent native event propagation in order to prevent focus enforcing double calls.
+ */
+export const makeFocusLockSyntheticEvent = (baseEvent: Event) => {
+  const event = baseEvent as any;
+  const type = event.type as keyof typeof syntheticEvents;
+  if (!(type in syntheticEvents)) {
+    const supported = Object.keys(syntheticEvents).join(', ');
+    throw new Error(`Unable to make synthetic event for ${type}, ${supported} are supported`);
+  }
+  const syntheticEvent = new Event(syntheticEvents[type], {
+    bubbles: true,
+  });
+  Object.defineProperty(syntheticEvent, 'target', { writable: false, value: event.target });
+  Object.defineProperty(syntheticEvent, 'relatedTarget', {
+    writable: false,
+    value: event.relatedTarget,
+  });
+  return syntheticEvent;
 };
 
 const useFocusBorders = (React: ReactT, disabled?: boolean) => {
