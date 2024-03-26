@@ -1,3 +1,36 @@
+## [15.74.0] - 2024-03-26
+
+### @semcore/date-picker
+
+- **Added** `DateRangeComparator` and `MonthDateRangeComparator` missing translations.
+
+### @semcore/dropdown-menu
+
+- **Fixed** After second reopen of dropdown menu, the second item was highlighted instead of the first one.
+
+### @semcore/illustration
+
+- **Changed** `DeletedPage` illustration was updated according to new style.
+
+### @semcore/notice
+
+- **Changed** `role` was changed from `status` to `region`.
+- **Added** Default `aria-label` ("Notification" in English and translated for other locales accordingly).
+
+### @semcore/popper
+
+- **Fixed** Focus lock with `disablePortal` prop.
+
+### @semcore/portal
+
+- **Added** Api to get know if the portal is mounted (`onMount` prop).
+- **Fixed** Portal hydration errors in nextjs and astro.
+
+### @semcore/utils
+
+- **Fixed** Attribute `inert` was not appling to components.
+- **Fixed** Focus order for poppers opened from other poppers.
+
 ## [15.73.0] - 2024-03-22
 
 ### @semcore/d3-chart
