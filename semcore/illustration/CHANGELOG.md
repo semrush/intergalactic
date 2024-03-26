@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.20.0] - 2024-03-26
+
+### Changed
+
+- `DeletedPage` illustration was updated according to new style.
+
 ## [2.19.0] - 2024-03-20
 
 ### Added
