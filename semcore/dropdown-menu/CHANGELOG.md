@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.2] - 2024-03-26
+
+### Fixed
+
+- After second reopen of dropdown menu, the second item was highlighted instead of the first one.
+
 ## [4.24.1] - 2024-03-15
 
 ### Fixed
