@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.35.2] - 2024-03-21
+
+### Fixed
+
+- Errors in children render functions.
+
+## [3.35.1] - 2024-03-20
+
+### Changed
+
+- `DotCircle` size in Tooltip from 12px to 8px.
+
 ## [3.35.0] - 2024-03-19
 
 ### Changed

@@ -12,5 +12,13 @@
   "last12Months": "过去 12 个月",
   "prev": "上一个时段",
   "next": "下一时段",
-  "input": "日期字段"
+  "input": "日期字段",
+  "compare": "比较",
+  "fromDate": "从 {date}",
+  "toDate": "至 {date}",
+  "dateRange": "日期范围",
+  "dateRange1": "第一个日期范围",
+  "dateRange2": "第二个日期范围",
+  "selectingStarted": "已开始选择",
+  "selectingFinished": "已选定"
 }

@@ -264,7 +264,7 @@ function Ticks(props) {
   }
 
   return ticks.map((value, i) => {
-    const displayValue = renderValue(value);
+    const displayValue = typeof children === 'function' ? undefined : renderValue(value);
 
     return sstyled(styles)(
       <STick

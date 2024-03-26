@@ -12,5 +12,13 @@
   "last12Months": "Son 12 ay",
   "prev": "Önceki dönem",
   "next": "Sonraki dönem",
-  "input": "Tarih alanı"
+  "input": "Tarih alanı",
+  "compare": "Şuna göre karşılaştır",
+  "fromDate": "{date} adresinden",
+  "toDate": "{date} tarihine kadar",
+  "dateRange": "Tarih aralığı",
+  "dateRange1": "İlk tarih aralığı",
+  "dateRange2": "İkinci tarih aralığı",
+  "selectingStarted": "Seçmeye başladım",
+  "selectingFinished": "Seçildi"
 }

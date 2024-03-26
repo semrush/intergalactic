@@ -176,7 +176,7 @@ Zero counts as data. 0 ≠ n/a.
 
 Do not display bars for ranges without values. When hovering over such ranges, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
-![](static/histogram-partially.png)
+![](static/na.png)
 
 ![](static/hor-partially.png)
 
