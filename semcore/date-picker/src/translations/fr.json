@@ -12,5 +12,13 @@
   "last12Months": "12 derniers mois",
   "prev": "Période précédente",
   "next": "Période suivante",
-  "input": "Champ de date"
+  "input": "Champ de date",
+  "compare": "Comparer à",
+  "fromDate": "Du {date}",
+  "toDate": "Au {date}",
+  "dateRange": "Plage de dates",
+  "dateRange1": "Première plage de dates",
+  "dateRange2": "Deuxième plage de dates",
+  "selectingStarted": "Début de la sélection",
+  "selectingFinished": "Sélectionné"
 }
