@@ -1,7 +1,7 @@
 {
   "name": "@semcore/base-trigger",
   "description": "Semrush BaseTrigger Component",
-  "version": "4.30.0",
+  "version": "4.30.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,12 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/dot": "5.19.0",
-    "@semcore/flex-box": "5.20.0",
-    "@semcore/icon": "4.29.0",
-    "@semcore/neighbor-location": "4.18.0",
-    "@semcore/spin": "5.19.0",
-    "@semcore/utils": "4.21.0"
+    "@semcore/dot": "5.19.1",
+    "@semcore/flex-box": "5.20.1",
+    "@semcore/icon": "4.29.1",
+    "@semcore/neighbor-location": "4.18.1",
+    "@semcore/spin": "5.19.1",
+    "@semcore/utils": "4.21.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
