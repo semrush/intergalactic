@@ -14,6 +14,32 @@ export { isFocusInside, setFocus };
 
 const focusBordersConsumers = new Set();
 
+const syntheticEvents = {
+  blur: 'focusout-intergalactic-focus-lock-synthetic',
+  keydown: 'keydown-intergalactic-focus-lock-synthetic',
+};
+/**
+ * Synthetic event are special events that always bypass all propagation guards and reaches focus lock event listeners.
+ * You should always prevent native event propagation in order to prevent focus enforcing double calls.
+ */
+export const makeFocusLockSyntheticEvent = (baseEvent: Event) => {
+  const event = baseEvent as any;
+  const type = event.type as keyof typeof syntheticEvents;
+  if (!(type in syntheticEvents)) {
+    const supported = Object.keys(syntheticEvents).join(', ');
+    throw new Error(`Unable to make synthetic event for ${type}, ${supported} are supported`);
+  }
+  const syntheticEvent = new Event(syntheticEvents[type], {
+    bubbles: true,
+  });
+  Object.defineProperty(syntheticEvent, 'target', { writable: false, value: event.target });
+  Object.defineProperty(syntheticEvent, 'relatedTarget', {
+    writable: false,
+    value: event.relatedTarget,
+  });
+  return syntheticEvent;
+};
+
 const useFocusBorders = (React: ReactT, disabled?: boolean) => {
   useUniqueIdHookMock(React);
   React.useEffect(() => {
@@ -107,7 +133,6 @@ const useFocusLockHook = (
     (event: Event & { relatedTarget?: HTMLElement; target?: HTMLElement }) => {
       const focusCameFrom = event.target;
       const focusMovedTo = event.relatedTarget;
-
       setTimeout(() => {
         if (!focusCameFrom) return;
         if (autoTriggerRef.current) return;
@@ -199,9 +224,11 @@ const useFocusLockHook = (
     if (focusableChildren.length === 0 && autoFocus !== 'enforced') return;
 
     document.body.addEventListener('focusout', handleFocusOut as any);
+    document.body.addEventListener(syntheticEvents.blur, handleFocusOut as any);
     document.body.addEventListener('mousedown', handleMouseEvent);
     document.body.addEventListener('touchstart', handleMouseEvent);
     document.body.addEventListener('keydown', handleKeyboardEvent);
+    document.body.addEventListener(syntheticEvents.keydown, handleKeyboardEvent);
 
     if (autoFocus)
       setFocus(
@@ -211,9 +238,11 @@ const useFocusLockHook = (
 
     return () => {
       document.body.removeEventListener('focusout', handleFocusOut as any);
+      document.body.removeEventListener(syntheticEvents.blur, handleFocusOut as any);
       document.body.removeEventListener('mousedown', handleMouseEvent);
       document.body.removeEventListener('touchstart', handleMouseEvent);
       document.body.removeEventListener('keydown', handleKeyboardEvent);
+      document.body.removeEventListener(syntheticEvents.keydown, handleKeyboardEvent);
       returnFocus();
       autoTriggerRef.current = null;
     };
