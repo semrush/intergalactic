@@ -27,10 +27,6 @@ export type CalendarProps = BoxProps & {
    * */
   disabled?: (Date | (Date | false)[] | string)[];
   /**
-   * Error message when user attempts to input a disabled date
-   * */
-  disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
-  /**
    * @ignore
    * */
   highlighted?: DateConstructorParams[];
