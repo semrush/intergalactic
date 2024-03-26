@@ -521,7 +521,36 @@ function PopperPopper(props) {
   }, [animationCtx, ignorePortalsStacking]);
 
   return sstyled(styles)(
-    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
+    <Portal
+      disablePortal={disablePortal}
+      ignorePortalsStacking={ignorePortalsStacking}
+      onClick={stopPropagation}
+      onContextMenu={stopPropagation}
+      onDoubleClick={stopPropagation}
+      onDrag={stopPropagation}
+      onDragEnd={stopPropagation}
+      onDragEnter={stopPropagation}
+      onDragExit={stopPropagation}
+      onDragLeave={stopPropagation}
+      onDragOver={stopPropagation}
+      onDragStart={stopPropagation}
+      onDrop={stopPropagation}
+      onMouseDown={stopPropagation}
+      onMouseMove={stopPropagation}
+      onMouseOver={stopPropagation}
+      onMouseOut={stopPropagation}
+      onMouseUp={stopPropagation}
+      onKeyDown={stopPropagation}
+      onKeyPress={stopPropagation}
+      onKeyUp={stopPropagation}
+      onFocus={stopPropagation}
+      onBlur={stopPropagation}
+      onChange={stopPropagation}
+      onInput={stopPropagation}
+      onInvalid={stopPropagation}
+      onReset={stopPropagation}
+      onSubmit={stopPropagation}
+    >
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={Scale}
@@ -529,32 +558,6 @@ function PopperPopper(props) {
           visible={visible}
           duration={[duration, duration / 2]}
           ref={ref}
-          onClick={stopPropagation}
-          onContextMenu={stopPropagation}
-          onDoubleClick={stopPropagation}
-          onDrag={stopPropagation}
-          onDragEnd={stopPropagation}
-          onDragEnter={stopPropagation}
-          onDragExit={stopPropagation}
-          onDragLeave={stopPropagation}
-          onDragOver={stopPropagation}
-          onDragStart={stopPropagation}
-          onDrop={stopPropagation}
-          onMouseDown={stopPropagation}
-          onMouseMove={stopPropagation}
-          onMouseOver={stopPropagation}
-          onMouseOut={stopPropagation}
-          onMouseUp={stopPropagation}
-          onKeyDown={stopPropagation}
-          onKeyPress={stopPropagation}
-          onKeyUp={stopPropagation}
-          onFocus={stopPropagation}
-          onBlur={stopPropagation}
-          onChange={stopPropagation}
-          onInput={stopPropagation}
-          onInvalid={stopPropagation}
-          onReset={stopPropagation}
-          onSubmit={stopPropagation}
         >
           <PortalProvider value={ref}>
             <Children />
