@@ -9,17 +9,18 @@ test.describe('Popper', () => {
     await page.setContent(htmlContent);
     await page.mouse.click(1, 1);
 
+    await page.keyboard.press('Tab');
+
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
+      await page.waitForFunction(() => {
+        const focusedElement = document.activeElement;
+        return (
+          focusedElement?.matches('[data-testid="popper"]') ||
+          focusedElement?.matches('[data-testid="input-in-popper"]')
+        );
+      });
     }
-
-    await page.waitForFunction(() => {
-      const focusedElement = document.activeElement;
-      return (
-        focusedElement?.matches('[data-testid="popper"]') ||
-        focusedElement?.matches('[data-testid="input-in-popper"]')
-      );
-    });
   });
   test('Focus lock with disablePortal', async ({ page }) => {
     const standPath = 'semcore/popper/__tests__/stands/disablePortal.tsx';
@@ -28,16 +29,17 @@ test.describe('Popper', () => {
     await page.setContent(htmlContent);
     await page.mouse.click(1, 1);
 
+    await page.keyboard.press('Tab');
+
     for (let i = 0; i < 50; i++) {
       await page.keyboard.press('Tab');
+      await page.waitForFunction(() => {
+        const focusedElement = document.activeElement;
+        return (
+          focusedElement?.matches('[data-testid="popper"]') ||
+          focusedElement?.matches('[data-testid="input-in-popper"]')
+        );
+      });
     }
-
-    await page.waitForFunction(() => {
-      const focusedElement = document.activeElement;
-      return (
-        focusedElement?.matches('[data-testid="popper"]') ||
-        focusedElement?.matches('[data-testid="input-in-popper"]')
-      );
-    });
   });
 });
