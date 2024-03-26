@@ -8,6 +8,7 @@ import createComponent, {
 } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
+import { useUncontrolledProp } from '@semcore/utils/lib/use/useUncontrolledProp';
 
 /** @deprecated */
 export interface IPortalProps extends PortalProps, UnknownProperties {}
@@ -16,6 +17,9 @@ export type PortalProps = {
   disablePortal?: boolean;
   /** Disabled attaching portals to the parent portals and enabling attaching directly to document.body */
   ignorePortalsStacking?: boolean;
+  /** Controls under which node protal should be mounted */
+  mountNode?: Element | null;
+  onMountNodeChange?: (node: Element | null) => void;
 };
 
 const PortalContext = register.get(
@@ -24,10 +28,14 @@ const PortalContext = register.get(
   React.createContext<NodeByRef>((canUseDOM() ? document.body : null) as any),
 );
 
-function Portal(props: IFunctionProps<IPortalProps>) {
+function Portal(props: PortalProps & { Children: React.FC }) {
   const { Children, disablePortal, ignorePortalsStacking } = props;
   const container = React.useContext(PortalContext);
-  const [mountNode, setMountNode] = React.useState<Element | null>(null);
+  const [mountNode, setMountNode] = useUncontrolledProp(
+    props.mountNode ?? null,
+    null,
+    props.onMountNodeChange,
+  );
 
   React.useEffect(() => {
     if (disablePortal) return;

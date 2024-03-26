@@ -493,12 +493,14 @@ function PopperPopper(props) {
     event.nativeEvent.stopImmediatePropagation();
     ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));
   }, []);
+  const [portalMountNode, setPortalMountNode] = React.useState(null);
 
+  const portalMounted = Boolean(portalMountNode) || disablePortal;
   useFocusLock(
     ref,
     autoFocus,
     triggerRef,
-    !visible || disableEnforceFocus,
+    !visible || disableEnforceFocus || !portalMounted,
     focusMaster,
     handleFocusOut,
   );
@@ -530,7 +532,12 @@ function PopperPopper(props) {
   }, [animationCtx, ignorePortalsStacking]);
 
   return sstyled(styles)(
-    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
+    <Portal
+      disablePortal={disablePortal}
+      ignorePortalsStacking={ignorePortalsStacking}
+      mountNode={portalMountNode}
+      onMountNodeChange={setPortalMountNode}
+    >
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={Scale}

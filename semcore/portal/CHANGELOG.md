@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.0] - 2024-03-26
+
+### Added
+
+- Api to control portal mount node with `mountNode` and `onMountNodeChange` props.
+
 ## [3.19.0] - 2024-03-25
 
 ### Fixed
