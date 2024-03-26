@@ -21,5 +21,8 @@
   "dateRange2": "Second date range",
   "selectingStarted": "Started selecting",
   "selectingFinished": "Selected",
-  "disallowedDate": "Date is not allowed."
+  "unavailableDate": "Please select an available date.",
+  "unavailableMonth": "Please select an available month.",
+  "unavailableEndDate": "Please select an available due date.",
+  "unavailableEndMonth": "Please select an available due month."
 }
