@@ -172,13 +172,22 @@ const useFocusLockHook = (
   const returnFocus = React.useCallback(() => {
     const trapNode = trapRef.current;
     if (trapNode && !isFocusInside(trapNode)) return;
+    const focusMastersStackCount = focusMastersStack.length;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
-      setTimeout(() => setFocus(returnFocusNode, trapNode), 0);
+      setTimeout(() => {
+        if (focusMastersStackCount !== focusMastersStack.length) {
+          setFocus(returnFocusNode, trapNode);
+        }
+      }, 0);
     }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
-      setTimeout(() => setFocus(autoTrigger, trapNode), 0);
+      setTimeout(() => {
+        if (focusMastersStackCount !== focusMastersStack.length) {
+          setFocus(autoTrigger, trapNode);
+        }
+      }, 0);
     }
   }, [returnFocusTo]);
   React.useEffect(() => {
@@ -191,29 +200,7 @@ const useFocusLockHook = (
       focusLockAllTraps.delete(node);
     };
   }, [disabled]);
-  React.useEffect(() => {
-    if (typeof trapRef !== 'object' || trapRef === null) return;
-    if (disabled) return;
-    if (!canUseDOM()) return;
-    if (!trapRef.current) return;
-    const focusableChildren = Array.from(trapRef.current.children).flatMap((node) =>
-      getFocusableIn(node as HTMLElement),
-    );
-    if (focusableChildren.length === 0) return;
 
-    if (focusMaster) {
-      focusMastersStack.push(trapRef.current);
-    }
-
-    return () => {
-      if (!focusMaster) return;
-      if (focusMastersStack[focusMastersStack.length - 1] === trapRef.current) {
-        focusMastersStack.pop();
-      } else {
-        focusMastersStack.splice(focusMastersStack.indexOf(trapRef.current!), 1);
-      }
-    };
-  }, [disabled, focusMaster]);
   React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM()) return;
@@ -247,6 +234,30 @@ const useFocusLockHook = (
       autoTriggerRef.current = null;
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
+
+  React.useEffect(() => {
+    if (typeof trapRef !== 'object' || trapRef === null) return;
+    if (disabled) return;
+    if (!canUseDOM()) return;
+    if (!trapRef.current) return;
+    const focusableChildren = Array.from(trapRef.current.children).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
+    if (focusableChildren.length === 0) return;
+
+    if (focusMaster) {
+      focusMastersStack.push(trapRef.current);
+    }
+
+    return () => {
+      if (!focusMaster) return;
+      if (focusMastersStack[focusMastersStack.length - 1] === trapRef.current) {
+        focusMastersStack.pop();
+      } else {
+        focusMastersStack.splice(focusMastersStack.indexOf(trapRef.current!), 1);
+      }
+    };
+  }, [disabled, focusMaster]);
 
   useUniqueIdHookMock(React);
   React.useEffect(() => {
