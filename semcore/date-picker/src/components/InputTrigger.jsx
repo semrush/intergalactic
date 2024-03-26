@@ -75,24 +75,31 @@ class SingleDateInputRoot extends Component {
     defaultDisabledDateInputAttempt: false,
   };
   state = {
-    error: null,
+    errorText: null,
+    showError: false,
   };
   uncontrolledProps() {
     return {
       disabledDateInputAttempt: [
         null,
         (date) => {
-          let error = null;
+          let errorText = this.state.errorText;
+          let showError = false;
           if (date !== null) {
-            error = this.asProps.disabledErrorText;
-            if (error === undefined) {
-              error = this.asProps.getI18nText('disallowedDate');
+            errorText = this.asProps.disabledErrorText;
+            if (errorText === undefined) {
+              let key = 'unavailableDate';
+              if (this.asProps.parts && !this.asProps.parts.day) {
+                key = 'unavailableMonth';
+              }
+              errorText = this.asProps.getI18nText(key);
             }
-            if (typeof error === 'function') {
-              error = error(date);
+            if (typeof errorText === 'function') {
+              errorText = errorText(date);
             }
+            showError = true;
           }
-          this.setState({ error });
+          this.setState({ errorText, showError });
         },
       ],
     };
@@ -120,17 +127,18 @@ class SingleDateInputRoot extends Component {
 
   render() {
     const { Children, forwardRef, styles, state } = this.asProps;
-    const { error } = this.state;
+    const { errorText, showError } = this.state;
     const SSingleDateInput = Root;
 
     return sstyled(styles)(
       <SSingleDateInput
         render={InputMask}
         tag={Tooltip}
-        title={error}
+        placement='top-start'
+        title={errorText}
         theme='warning'
-        visible={Boolean(error)}
-        state={error ? 'invalid' : state}
+        visible={showError}
+        state={showError ? 'invalid' : state}
         ref={forwardRef}
         __excludeProps={['onChange', 'style', 'aria-expanded']}
       >
@@ -156,24 +164,38 @@ class DateRangeRoot extends Component {
     defaultDisabledDateInputAttempt: false,
   };
   state = {
-    error: null,
+    errorText: null,
+    showError: false,
+    lastChangedInput: 'from',
   };
   uncontrolledProps() {
     return {
       disabledDateInputAttempt: [
         null,
         (date) => {
-          let error = null;
+          let errorText = this.state.errorText;
+          let showError = false;
           if (date !== null) {
-            error = this.asProps.disabledErrorText;
-            if (error === undefined) {
-              error = this.asProps.getI18nText('disallowedDate');
+            errorText = this.asProps.disabledErrorText;
+            if (errorText === undefined) {
+              let key = 'unavailableDate';
+              if (this.asProps.parts && !this.asProps.parts.day) {
+                key = 'unavailableMonth';
+              }
+              if (this.state.lastChangedInput === 'to') {
+                key = 'unavailableEndDate';
+                if (this.asProps.parts && !this.asProps.parts.day) {
+                  key = 'unavailableEndMonth';
+                }
+              }
+              errorText = this.asProps.getI18nText(key);
             }
-            if (typeof error === 'function') {
-              error = error(date);
+            if (typeof errorText === 'function') {
+              errorText = errorText(date);
             }
+            showError = true;
           }
-          this.setState({ error });
+          this.setState({ errorText, showError });
         },
       ],
     };
@@ -203,6 +225,7 @@ class DateRangeRoot extends Component {
   handleFromKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
+    this.setState({ lastChangedInput: 'from' });
 
     if (
       event.key === 'ArrowRight' &&
@@ -218,6 +241,7 @@ class DateRangeRoot extends Component {
   handleToKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
+    this.setState({ lastChangedInput: 'to' });
 
     if (event.key === 'Backspace' && !this.toRef.current.value) {
       const value = this.fromRef.current.value;
@@ -297,16 +321,17 @@ class DateRangeRoot extends Component {
   render() {
     const SDateRange = Root;
     const { Children, styles, w, state } = this.asProps;
-    const { error } = this.state;
+    const { errorText, showError, lastChangedInput } = this.state;
 
     return sstyled(styles)(
       <SDateRange
         render={InputMask}
         tag={Tooltip}
-        title={error}
+        placement={lastChangedInput === 'to' ? 'top-end' : 'top-start'}
+        title={errorText}
         theme='warning'
-        visible={Boolean(error)}
-        state={error ? 'invalid' : state}
+        visible={showError}
+        state={showError ? 'invalid' : state}
         __excludeProps={['onChange', 'value', 'aria-expanded']}
         w={w}
       >
