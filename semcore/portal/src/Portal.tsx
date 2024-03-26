@@ -1,11 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import createComponent, {
-  IFunctionProps,
-  register,
-  UnknownProperties,
-  Intergalactic,
-} from '@semcore/core';
+import createComponent, { register, UnknownProperties, Intergalactic } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
 
@@ -16,6 +11,8 @@ export type PortalProps = {
   disablePortal?: boolean;
   /** Disabled attaching portals to the parent portals and enabling attaching directly to document.body */
   ignorePortalsStacking?: boolean;
+  /** Called when portal mount state changes */
+  onMount?: (mounted: boolean) => void;
 };
 
 const PortalContext = register.get(
@@ -24,24 +21,20 @@ const PortalContext = register.get(
   React.createContext<NodeByRef>((canUseDOM() ? document.body : null) as any),
 );
 
-function Portal(props: IFunctionProps<IPortalProps>) {
-  const { Children, disablePortal, ignorePortalsStacking } = props;
+function Portal(props: PortalProps & { Children: React.FC }) {
+  const { Children, disablePortal, ignorePortalsStacking, onMount } = props;
   const container = React.useContext(PortalContext);
-  const initialMountNode = React.useMemo(() => {
-    if (!ignorePortalsStacking) return getNodeByRef(container);
-    if (canUseDOM()) return document.body;
-    return null;
-  }, [ignorePortalsStacking, container]);
-  const [mountNode, setMountNode] = React.useState(initialMountNode);
+  const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
   React.useEffect(() => {
     if (disablePortal) return;
+    onMount?.(true);
     if (ignorePortalsStacking) {
       setMountNode(canUseDOM() ? document.body : null);
       return;
     }
     setMountNode(getNodeByRef(container));
-  }, [container, disablePortal]);
+  }, [container, disablePortal, onMount]);
 
   if (disablePortal) {
     return <Children />;

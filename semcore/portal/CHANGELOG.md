@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.0] - 2024-03-26
+
+### Added
+
+- Api to get know if the portal is mounted (`onMount` prop).
+
+## [3.19.0] - 2024-03-25
+
+### Fixed
+
+- Portal hydration errors in nextjs and astro.
+
 ## [3.18.0] - 2024-03-15
 
 ### Changed
