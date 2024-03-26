@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Attribute `inert` was not appling to components.
 - Focus order for poppers opened from other poppers.
 
 ## [4.21.0] - 2024-03-13
