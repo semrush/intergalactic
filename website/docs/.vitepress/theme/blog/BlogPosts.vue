@@ -11,7 +11,7 @@ const { allPosts: posts } = usePosts()
     :features="posts.map(post => ({
       icon: post.image ? { src: `/blog/${post.image}`, width: 400 } : undefined,
       title: post.title,
-      details: post.excerpt + ' (' + post.date.string + ')',
+      details: post.excerpt + ' ' + post.date.string,
       link: `/blog/${post.slug}/`,
     }))"
   />

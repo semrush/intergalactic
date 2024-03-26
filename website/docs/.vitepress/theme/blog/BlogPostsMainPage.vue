@@ -16,10 +16,20 @@ import BlogPosts from './BlogPosts.vue'
   position: relative;
   padding: 0 24px;
 }
+.blog-posts-main-page-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.blog-posts-main-page .VPFeatures {
+  padding: 0px;
+}
 
 @media (min-width: 640px) {
   .blog-posts-main-page {
     padding: 0 48px;
+  }
+  .blog-posts-main-page-title {
+    font-size: 32px;
   }
 }
 
@@ -37,6 +47,5 @@ import BlogPosts from './BlogPosts.vue'
 .blog-posts-main-page-title {
   margin-top: 70px;
   margin-bottom: 20px;
-  font-weight: 500;
 }
 </style>
