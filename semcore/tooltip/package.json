@@ -15,7 +15,8 @@
   "dependencies": {
     "@semcore/utils": "4.22.0",
     "@semcore/flex-box": "5.21.0",
-    "@semcore/popper": "5.25.0"
+    "@semcore/popper": "5.25.0",
+    "@semcore/portal": "3.21.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
