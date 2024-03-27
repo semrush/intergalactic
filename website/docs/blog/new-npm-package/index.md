@@ -1,6 +1,6 @@
 ---
 title: Introducing new intergalactic npm package
-date: 2024-03-11
+date: 2024-03-27
 ---
 
 We're thrilled to introduce the `intergalactic` npm package, a next step of package delivery evolution of Semrush's design system.
@@ -56,6 +56,6 @@ npm uninstall @semcore/ui
 
 We have tested the migration and usage of components through intergalactic on several projects with excellent results. In case if you encounter any issues, please feel free to open an issue on [GitHub](https://github.com/semrush/intergalactic/issues/new/choose).
 
-Publish date: _2024-03-11_.
+Publish date: _2024-03-27_.
 
 [View all blog posts](/blog/)
