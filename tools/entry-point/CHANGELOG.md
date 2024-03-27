@@ -1,3 +1,9 @@
+## [15.75.1] - 2024-03-27
+
+### @semcore/tooltip
+
+- **Fixed** Added missing portal component dependency.
+
 ## [15.75.0] - 2024-03-27
 
 ### @semcore/utils

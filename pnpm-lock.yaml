@@ -420,7 +420,7 @@ importers:
         specifier: 4.30.0
         version: link:../icon
       '@semcore/tooltip':
-        specifier: 6.25.0
+        specifier: 6.25.1
         version: link:../tooltip
       '@semcore/typography':
         specifier: 5.29.0
@@ -923,7 +923,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.28.0
+        specifier: 5.28.1
         version: link:../card
       '@semcore/core':
         specifier: ^2.17.5
@@ -1061,7 +1061,7 @@ importers:
         specifier: 5.21.0
         version: link:../flex-box
       '@semcore/tooltip':
-        specifier: 6.25.0
+        specifier: 6.25.1
         version: link:../tooltip
       '@semcore/utils':
         specifier: 4.22.0
@@ -1223,7 +1223,7 @@ importers:
         specifier: 7.21.0
         version: link:../spin-container
       '@semcore/tooltip':
-        specifier: 6.25.0
+        specifier: 6.25.1
         version: link:../tooltip
       '@semcore/utils':
         specifier: 4.22.0
@@ -1560,7 +1560,7 @@ importers:
         specifier: 5.20.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 6.25.0
+        specifier: 6.25.1
         version: link:../tooltip
       '@semcore/utils':
         specifier: 4.22.0
