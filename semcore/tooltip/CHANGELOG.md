@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.25.1] - 2024-03-27
+
+### Fixed
+
+- Added missing portal component dependency.
+
 ## [6.25.0] - 2024-03-27
 
 ### Changed
