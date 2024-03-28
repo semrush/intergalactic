@@ -5,7 +5,7 @@ date: 2024-03-27
 
 We're thrilled to introduce the `intergalactic` npm package, a next step of package delivery evolution of Semrush's design system.
 
-![Hero](./intergalactic-hero.png)
+<img alt="Hero" :src="'/intergalactic/blog/new-npm-package/hero.png'" />
 
 ## Why we did it
 
