@@ -174,7 +174,7 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={-1}>
+          <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={-1} zIndex={2}>
             <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
