@@ -9,7 +9,7 @@ const { allPosts: posts } = usePosts()
 <template>
   <VPFeatures
     :features="posts.map(post => ({
-      icon: post.image ? { src: `/blog/${post.image}`, width: 400 } : undefined,
+      icon: { src: `/blog/${post.slug}/hero.png`, width: 400 } as any,
       title: post.title,
       details: post.excerpt + '<br /><br />' + post.date.string,
       link: `/blog/${post.slug}/`,
