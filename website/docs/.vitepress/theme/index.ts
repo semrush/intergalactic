@@ -10,6 +10,8 @@ import Page404 from './Page404.vue';
 import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
 import PreferenceSwitch from './PreferenceSwitch.vue';
+import BlogPosts from './blog/BlogPosts.vue';
+import BlogPostsMainPage from './blog/BlogPostsMainPage.vue';
 
 export default {
   ...Theme,
@@ -27,5 +29,7 @@ export default {
     app.component('Sandbox', Sandbox);
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
+    app.component('BlogPosts', BlogPosts);
+    app.component('BlogPostsMainPage', BlogPostsMainPage);
   },
 };
