@@ -56,6 +56,4 @@ npm uninstall @semcore/ui
 
 We have tested the migration and usage of components through intergalactic on several projects with excellent results. In case if you encounter any issues, please feel free to open an issue on [GitHub](https://github.com/semrush/intergalactic/issues/new/choose).
 
-Publish date: _2024-03-27_.
-
 [View all blog posts](/blog/)
