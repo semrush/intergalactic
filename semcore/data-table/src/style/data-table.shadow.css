@@ -350,6 +350,7 @@ SCell[use='secondary'] {
 
 SCell[fixed] {
   position: sticky;
+  z-index: 1;
 }
 
 SCell[theme='muted'] {
