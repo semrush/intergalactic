@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.33.2] - 2024-03-28
+
+### Fixed
+
+- Displaying elements with `position=relative` in table with fixed columns.
+
+## [4.33.1] - 2024-03-28
+
+### Fixed
+
+- Made Table.Header unfocusable.
+
+## [4.33.0] - 2024-03-27
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.21.1 ~> 4.22.0], `@semcore/core` [2.18.1 ~> 2.19.0]).
+
 ## [4.32.1] - 2024-03-26
 
 ### Changed

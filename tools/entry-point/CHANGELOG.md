@@ -1,3 +1,23 @@
+## [15.75.2] - 2024-03-29
+
+### @semcore/data-table
+
+- **Fixed** Displaying elements with `position=relative` in table with fixed columns.
+- **Fixed** Made Table.Header unfocusable.
+
+## [15.75.1] - 2024-03-27
+
+### @semcore/tooltip
+
+- **Fixed** Added missing portal component dependency.
+
+## [15.75.0] - 2024-03-27
+
+### @semcore/utils
+
+- **Fixed** Lot of disallowed attributes were appling to DOM nodes.
+- **Fixed** Little (~10%) render performance improvement.
+
 ## [15.74.0] - 2024-03-26
 
 ### @semcore/date-picker
