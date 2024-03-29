@@ -25,7 +25,7 @@ function Dots(props) {
     scale,
     duration = 500,
     transparent,
-    radius: radiusBase = 6,
+    radius: radiusBase = 4,
     resolveColor,
     patterns,
   } = props;
@@ -78,7 +78,7 @@ function Dots(props) {
       typeof display === 'function'
         ? display(i, i === activeIndex, !isPrev && !isNext)
         : display || i === activeIndex || (!isPrev && !isNext);
-    const radius = radiusBase * (active ? 8 / 6 : 1);
+    const radius = radiusBase * (active ? 5 / 4 : 1);
     if (!d3.defined()(d)) return acc;
     if (!visible) return acc;
 

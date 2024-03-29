@@ -128,7 +128,7 @@ Display dots on lines when data points either are few or collected irregularly.
 
 | Example                                  | Styles                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![Area chart with dots.](static/dots.png) | Dot has size **8px * 8px** and **border: 2px solid var(--chart-grid-border)**. On hover, dot expand to **12px * 12px**. |
+| ![Area chart with dots.](static/dots.png) | Dot has size **8px * 8px** and **border: 1px solid var(--chart-grid-border)**. On hover, dot expand to **10px * 10px**. |
 
 ## Interaction
 
