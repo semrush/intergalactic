@@ -161,8 +161,6 @@ jobs:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - name: create pull request
         run: |
-          RELEASE_BRANCH="release/${{ github.ref_name }}"
-          git checkout -b $RELEASE_BRANCH ${{ github.ref_name }}
-          gh pr create -B 'master' -H $RELEASE_BRANCH --title 'Merge release tag into master' --body 'Created by Github action'
+          gh pr create -B 'master' -H ${{ github.ref_name }} --title 'Merge release tag into master' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
