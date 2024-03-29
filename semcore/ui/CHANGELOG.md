@@ -1,3 +1,10 @@
+## [15.75.2] - 2024-03-29
+
+### @semcore/data-table
+
+- **Fixed** Displaying elements with `position=relative` in table with fixed columns.
+- **Fixed** Made Table.Header unfocusable.
+
 ## [15.75.1] - 2024-03-27
 
 ### @semcore/tooltip
