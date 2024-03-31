@@ -6,6 +6,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
+import { Box } from '@semcore/flex-box';
 
 export function parseValueWithMinMax(
   value,
@@ -26,29 +27,36 @@ class InputNumber extends Component {
   };
 
   inputRef = React.createRef();
-  inputHandlersRef = React.createRef();
+  numberInputRef = React.createRef();
+  valueRef = React.createRef();
 
   increment = (event) => {
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.min || '0';
-    this.inputRef.current?.stepUp?.();
-    this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
+    if (this.numberInputRef.current?.value === '')
+      this.numberInputRef.current.value = this.numberInputRef.current.min || '0';
+    this.numberInputRef.current?.stepUp?.();
+
+    this.valueRef.current.setValue(this.numberInputRef.current.value, event);
   };
 
   decrement = (event) => {
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.max || '0';
-    this.inputRef.current?.stepDown?.();
-    this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
+    if (this.numberInputRef.current?.value === '')
+      this.numberInputRef.current.value = this.numberInputRef.current.max || '0';
+    this.numberInputRef.current?.stepDown?.();
+
+    this.valueRef.current.setValue(this.numberInputRef.current.value, event);
   };
 
   getValueProps() {
+    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
+
     return {
       ref: this.inputRef,
-      inputHandlerRefs: this.inputHandlersRef,
+      valueRef: this.valueRef,
+      numberInputRef: this.numberInputRef,
       increment: this.increment,
       decrement: this.decrement,
+      numberFormatter,
     };
   }
 
@@ -70,17 +78,78 @@ class InputNumber extends Component {
 
 class Value extends Component {
   static defaultProps = {
-    defaultValue: '',
+    value: '',
     step: 1,
   };
 
-  inputRef = React.createRef();
+  valueInputRef = React.createRef();
 
-  uncontrolledProps() {
-    return {
-      value: null,
+  constructor(props) {
+    super(props);
+
+    const { parsedValue, displayValue } = this.valueParser(
+      props.value,
+      Value.defaultProps.value,
+      '',
+    );
+
+    this.state = {
+      value: parsedValue,
+      displayValue,
     };
   }
+
+  get separatorDecimal() {
+    const { numberFormatter } = this.props;
+
+    return numberFormatter.format(11.11).replace(/\d/g, '');
+  }
+
+  get separatorThousands() {
+    const { numberFormatter } = this.props;
+
+    return numberFormatter.format(1111).replace(/\d/g, '');
+  }
+
+  valueParser = (value, prevValue, prevDisplayValue) => {
+    const { numberFormatter } = this.props;
+
+    const stringNumber = value
+      .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
+      .replace(this.separatorDecimal, '.');
+
+    if (
+      stringNumber[stringNumber.length - 1] === '.' &&
+      !Number.isNaN(Number(prevValue)) &&
+      !stringNumber.slice(0, -1).includes('.')
+    ) {
+      if (value.length > prevValue.length) {
+        // type new value
+        return {
+          parsedValue: prevValue + this.separatorDecimal,
+          displayValue: numberFormatter.format(prevValue) + this.separatorDecimal,
+        };
+      } else {
+        // backspace value
+        return {
+          parsedValue: stringNumber,
+          displayValue: value,
+        };
+      }
+    }
+
+    if (Number.isNaN(Number(stringNumber))) {
+      return {
+        parsedValue: prevValue,
+        displayValue: prevDisplayValue,
+      };
+    }
+
+    return {
+      parsedValue: stringNumber,
+      displayValue: numberFormatter.format(stringNumber),
+    };
+  };
 
   round(value, step) {
     const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
@@ -90,13 +159,22 @@ class Value extends Component {
   }
 
   handleValidation = (event) => {
-    const { value, min, max, step } = this.asProps;
+    const { value, min, max, step, numberInputRef } = this.asProps;
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
-    if (Number.isNaN(event.currentTarget.valueAsNumber)) {
+    if (Number.isNaN(value) || Number.isNaN(numberInputRef.current?.valueAsNumber)) {
       event.currentTarget.value = '';
-      this.handlers.value('', event);
+      const prevValue = this.state.value;
+      this.setState({ value: '', displayValue: '' }, () => {
+        if (prevValue !== this.state.value) {
+          this.asProps.onChange(this.state.value, event);
+        }
+      });
     } else {
-      let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
+      let numberValue = parseValueWithMinMax(
+        Number.parseFloat(numberInputRef.current?.valueAsNumber),
+        min,
+        max,
+      );
       const rounded = this.round(numberValue % step, step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
@@ -106,21 +184,23 @@ class Value extends Component {
         }
       }
       const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
-      this.handlers.value(String(numberValueRounded), event);
+      this.setState({ value: String(numberValueRounded) }, () =>
+        this.asProps.onChange(this.state.value, event),
+      );
     }
   };
 
   // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
   componentDidMount() {
-    this.inputRef.current?.addEventListener('wheel', this.handleWheel);
+    this.valueInputRef.current?.addEventListener('wheel', this.handleWheel);
   }
   componentWillUnmount() {
-    this.inputRef.current?.removeEventListener('wheel', this.handleWheel);
+    this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
   }
 
   handleWheel = (event) => {
-    if (event.target !== this.inputRef.current) return;
-    if (document.activeElement !== this.inputRef.current) return;
+    if (event.target !== this.valueInputRef.current) return;
+    if (document.activeElement !== this.valueInputRef.current) return;
     event.preventDefault();
     if (event.wheelDelta > 0) {
       this.asProps.increment(event);
@@ -129,28 +209,144 @@ class Value extends Component {
     }
   };
 
+  handleChange = (event) => {
+    const value = event.currentTarget.value;
+
+    this.setValue(value, event);
+
+    return false;
+  };
+
+  setValue = (newValue, event) => {
+    const prevValue = this.state.value;
+    this.setState(
+      (state) => {
+        const { parsedValue, displayValue } = this.valueParser(
+          newValue,
+          state.value,
+          state.displayValue,
+        );
+
+        return {
+          value: parsedValue,
+          displayValue,
+        };
+      },
+      () => {
+        if (prevValue !== this.state.value) {
+          this.asProps.onChange(this.state.value, event);
+        }
+      },
+    );
+  };
+
+  handleKeyDown = (event) => {
+    const element = event.currentTarget;
+    const value = element.value;
+    const length = value.length;
+
+    if (
+      element.selectionStart !== length &&
+      (event.key === 'Backspace' ||
+        event.key === this.separatorDecimal ||
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
+    ) {
+      const afterSelection = value.slice(element.selectionEnd);
+
+      requestAnimationFrame(() => {
+        const newValue = this.state.displayValue;
+        const index = newValue.lastIndexOf(afterSelection);
+        const selectionStart = index;
+        const selectionEnd = index;
+
+        element.setSelectionRange(selectionStart, selectionEnd);
+      });
+    }
+
+    // For correct moving cursor with skip separatorThousands.
+    // Examples:
+    // - Press ArrowLeft: `12,3|4 -> 12|,34`
+    // - Press ArrowRight: `1|,55 -> 1,5|5`
+    const cursorIndex = 2;
+
+    if (
+      event.key === 'ArrowLeft' &&
+      value[element.selectionStart - cursorIndex] === this.separatorThousands
+    ) {
+      event.preventDefault();
+      element.setSelectionRange(
+        element.selectionStart - cursorIndex,
+        element.selectionEnd - cursorIndex,
+      );
+      return;
+    }
+    if (event.key === 'ArrowRight' && value[element.selectionStart] === this.separatorThousands) {
+      event.preventDefault();
+      element.setSelectionRange(
+        element.selectionStart + cursorIndex,
+        element.selectionEnd + cursorIndex,
+      );
+      return;
+    }
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.decrement(event);
+      return;
+    }
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.increment(event);
+      return;
+    }
+  };
+
+  handleClick = (event) => {
+    const element = event.target;
+    const value = element.value;
+
+    if (value[element.selectionStart - 1] === this.separatorThousands) {
+      element.setSelectionRange(element.selectionStart - 1, element.selectionEnd - 1);
+    }
+  };
+
   render() {
     const SValue = Root;
+    const SNumberInput = Root;
     const SValueHidden = 'div';
-    const { styles, inputHandlerRefs, value, min, max } = this.asProps;
+    const { styles, min, max, numberInputRef, valueRef } = this.asProps;
+    const { value, displayValue } = this.state;
 
-    inputHandlerRefs.current = this.handlers;
+    valueRef.current = {
+      setValue: this.setValue,
+    };
 
     return sstyled(styles)(
       <>
         <SValue
           render={Input.Value}
-          type='number'
           autoComplete='off'
           onBlur={this.handleValidation}
+          use:onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+          onClick={this.handleClick}
+          ref={this.valueInputRef}
+          use:value={displayValue}
+          disableUncontrolledValueChange={true}
+        />
+        <input
+          type={'number'}
+          ref={numberInputRef}
+          hidden
+          autoComplete='off'
           onInvalid={this.handleValidation}
-          ref={this.inputRef}
+          value={value}
           aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}
         />
         {/* the next hidden div is necessary for the screen reader to report the value
-        in the input, because after validation the value can change to the `min` or `max` 
+        in the input, because after validation the value can change to the `min` or `max`
         if entered less than `min` or more than `max` */}
         <SValueHidden aria-live='polite' aria-atomic={true}>
           {value}

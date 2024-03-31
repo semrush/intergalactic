@@ -120,15 +120,21 @@ class Input extends Component {
 }
 
 class Value extends Component {
-  static defaultProps = {
-    defaultValue: '',
+  static defaultProps = (props) => {
+    return props.disableUncontrolledValueChange
+      ? {}
+      : {
+          defaultValue: '',
+        };
   };
   static enhance = [keyboardFocusEnhance(), autoFocusEnhance()];
 
   uncontrolledProps() {
-    return {
-      value: (e) => e.target.value,
-    };
+    return this.props.disableUncontrolledValueChange
+      ? {}
+      : {
+          value: (e) => e.target.value,
+        };
   }
 
   render() {

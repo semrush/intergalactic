@@ -1658,6 +1658,9 @@ importers:
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
+      '@semcore/flex-box':
+        specifier: 5.20.0
+        version: link:../flex-box
       '@semcore/input':
         specifier: 4.21.0
         version: link:../input

@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import InputNumber from '../src';
@@ -13,10 +13,10 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value='' onChange={spy} />
+        <InputNumber.Value data-testid='input1' value='' onChange={spy} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
+    const input = getByTestId('input1');
     fireEvent.change(input, { target: { value: '123' } });
     expect(spy).toBeCalledWith('123', expect.anything());
   });
@@ -25,22 +25,56 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value='' onChange={spy} />
+        <InputNumber.Value data-testid='input2' value='' onChange={spy} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
+    const input = getByTestId('input2');
     fireEvent.change(input, { target: { value: '123.4' } });
     expect(spy).toBeCalledWith('123.4', expect.anything());
+  });
+
+  test.concurrent('Should accept format in int numbers', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input3' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input3');
+    await userEvent.keyboard('[Tab]');
+    expect(input).toHaveFocus();
+    await userEvent.keyboard('12345');
+    expect(spy).toBeCalledWith('12345', expect.anything());
+
+    expect(input.value).toBe('12,345');
+  });
+
+  test.sequential('Should accept float numbers', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input4' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input4');
+    await userEvent.keyboard('[Tab]');
+    expect(input).toHaveFocus();
+    await userEvent.keyboard('12345.4');
+    expect(spy).toBeCalledWith('12345.4', expect.anything());
+
+    expect(input.value).toBe('12,345.4');
   });
 
   test.sequential('Should correct round float numbers with step less than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value='0.26' onChange={spy} step={0.1} />
+        <InputNumber.Value data-testid='input5' value='0.26' onChange={spy} step={0.1} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
+    const input = getByTestId('input5');
     fireEvent.blur(input);
     expect(spy).toBeCalledWith('0.3', expect.anything());
   });
@@ -49,23 +83,23 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value='42.2' onChange={spy} step={5} />
+        <InputNumber.Value data-testid='input6' value='42.2' onChange={spy} step={5} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
+    const input = getByTestId('input6');
     fireEvent.blur(input);
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
-  test.sequential('Should not accept letters', () => {
+  test.concurrent('Should not accept letters', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value='' onChange={spy} />
+        <InputNumber.Value data-testid='input7' value='' onChange={spy} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
-    fireEvent.change(input, { target: { value: 'YOU SHELL NOT PASS' } });
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('YOU SHELL NOT PASS');
     expect(spy).not.toBeCalled();
   });
 
@@ -73,10 +107,10 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value={'100000'} max={10} onChange={spy} />
+        <InputNumber.Value data-testid='input8' value={'100000'} max={10} onChange={spy} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
+    const input = getByTestId('input8');
     fireEvent.blur(input);
     expect(spy).toBeCalledWith('10', expect.anything());
   });
@@ -85,10 +119,10 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' value={'199'} min={200} onChange={spy} />
+        <InputNumber.Value data-testid='input9' value={'199'} min={200} onChange={spy} />
       </InputNumber>,
     );
-    const input = getByTestId('input');
+    const input = getByTestId('input9');
     fireEvent.blur(input);
     expect(spy).toBeCalledWith('200', expect.anything());
   });
@@ -97,7 +131,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid='input' defaultValue={'0'} onChange={spy} />
+        <InputNumber.Value data-testid='input10' defaultValue={'0'} onChange={spy} />
         <InputNumber.Controls data-testid='controls' />
       </InputNumber>,
     );
