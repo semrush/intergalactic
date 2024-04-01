@@ -23,7 +23,7 @@ Our charts feature properties that enable pattern fills for charts with areas to
 - `patterns` property for `Plot`
 - `patterns` property `ChartLegend` (works only with `shape={'Checkbox'}`)
 
-Refer to [our live examples](/data-display/d3-chart/d3-chart-code#pattern-fill), for more details on the feature usage.
+Refer to [our live examples](/data-display/stacked-area-chart/stacked-area-chart-d3-code#legend-and-pattern-fill), for more details on the feature usage.
 
 ![](static/symbols.png) ![](static/stroke-dasarrays.png)
 

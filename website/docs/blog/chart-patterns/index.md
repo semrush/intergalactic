@@ -3,20 +3,23 @@ title: Colorblind and low vision support for our charts
 date: 2024-04-02
 ---
 
-We're thrilled to introduce the `intergalactic` npm package, a next step of package delivery evolution of Semrush's design system.
+We’re super excited to share that we’ve recently added support for colorblind and low vision modes to our beloved D3 chart library. It's already available in the [d3-chart](/data-display/d3-chart/d3-chart) component starting from [version 3.26.0](/data-display/d3-chart/d3-chart-changelog#_3-26-0-2024-01-25).
 
-## Why we did it
+## What's the point
 
-Historically, our design system provided components as separate packages, such as `@semcore/button` . This approach offered developers the flexibility to update individual components without affecting the entire library, an invaluable feature for managing bugs. However, as our library grew, we recognized the need for a more integrated solution.
+Creating the library with the goal of making big and complex data visually clear is something we’re really passionate about. It’s super important to us that everyone can access and understand visualizations made with our charts, no matter the conditions or the mode they’re using.
 
-The fragmentation of component versions could lead to unexpected bugs, which were challenging to debug due to the interconnected nature of our core, utility sets, and other underlying components. Although we previously launched the `@semcore/ui` package, which depended on and re-exported all component packages. It was solving the problem but it fell short in supporting less popular frameworks like Astro and Remix due to their complex package re-exporting schemes.
+We’ve put a lot of thought into our color scheme for charts, complete with a [bunch of design tokens](/data-display/color-palette/color-palette#categorical-order) to use. But we know that sometimes, colors alone might not do the trick. That’s why we’re bringing in patterns and non-color markers to the mix. This way, whether users're colorblind, have low vision, or just prefer high-contrast modes, they’ll find reading charts a breeze.
 
-To solve this issue, we've put the build artifacts of all components into a single package. This change not only accelerates library installation and new release publishing but also ensures compatibility with frameworks that previously faced integration difficulties.
+## How to use it
 
-## Package name
+Our charts now come with `pattern` properties that let you enable pattern fills for those charts with areas that need a bit of filling in, or switch up solid lines for dashed ones. Plus, we’re adding symbols in place of the usual points for charts that are all about those lines.
 
-To facilitate a smooth transition and maintain backward compatibility, we've introduced this as a new npm package named `intergalactic` , thanks to [Dan Helfman](https://github.com/witten), who graciously agreed to transfer the rights to the package name to us.
+To enable patterns for your chart use the following properties:
 
-The `@semcore/ui` package and individual component packages will continue to be available up-to-date until at least the end of Q2 2024.
+- `patterns` property for `Plot`
+- `patterns` property `ChartLegend` (works only with `shape={'Checkbox'}`)
+
+You can check this feature in every chart playground inside their documentation. Besides, you always can refer to the live examples for complex cases of different chart types in their documentation. For example, [this one for the stacked area chart](/data-display/stacked-area-chart/stacked-area-chart-d3-code#legend-and-pattern-fill).
 
 [View all posts](/blog/)
