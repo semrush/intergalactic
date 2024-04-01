@@ -1,11 +1,9 @@
 ---
-title: Introducing new intergalactic npm package
-date: 2024-03-27
+title: Colorblind and low vision support for our charts
+date: 2024-04-02
 ---
 
 We're thrilled to introduce the `intergalactic` npm package, a next step of package delivery evolution of Semrush's design system.
-
-<img alt="Hero" :src="'/intergalactic/blog/new-npm-package/hero.png'" />
 
 ## Why we did it
 
@@ -20,40 +18,5 @@ To solve this issue, we've put the build artifacts of all components into a sing
 To facilitate a smooth transition and maintain backward compatibility, we've introduced this as a new npm package named `intergalactic` , thanks to [Dan Helfman](https://github.com/witten), who graciously agreed to transfer the rights to the package name to us.
 
 The `@semcore/ui` package and individual component packages will continue to be available up-to-date until at least the end of Q2 2024.
-
-## Documentation toggler
-
-<video controls autoplay loop width="100%">
-  <source src="./toggler.mp4" type="video/mp4">
-</video>
-
-To enhance the documentation experience for those not prepared to switch packages, we have added a toggle in the top navigation bar.
-
-This affects the imports in all code examples.
-
-## Migration
-
-Migrating to intergalactic is designed to be as seamless as possible. To simplify the process, we've published a migration tool that automatically replaces all imports from the `@semcore/*` scope with the correct imports from `intergalactic` .
-
-Migration example:
-
-::: code-group
-
-```sh [pnpm]
-pnpm add intergalactic
-npx intergalactic-migrate
-pnpm remove @semcore/ui
-
-```
-
-```sh [npm]
-npm install intergalactic
-npx intergalactic-migrate
-npm uninstall @semcore/ui
-```
-
-:::
-
-We have tested the migration and usage of components through intergalactic on several projects with excellent results. In case if you encounter any issues, please feel free to open an issue on [GitHub](https://github.com/semrush/intergalactic/issues/new/choose).
 
 [View all posts](/blog/)

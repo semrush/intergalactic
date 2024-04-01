@@ -1,5 +1,5 @@
 ---
-title: Intergalactic blog
+title: Intergalactic news
 ---
 
 <BlogPosts />
