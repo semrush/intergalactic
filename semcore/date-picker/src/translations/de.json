@@ -12,5 +12,13 @@
   "last12Months": "Letzte 12 Monate",
   "prev": "Voriger Zeitraum",
   "next": "Nächster Zeitraum",
-  "input": "Datumsfeld"
+  "input": "Datumsfeld",
+  "compare": "Vergleichen mit",
+  "fromDate": "Vom {date}",
+  "toDate": "Bis {date}",
+  "dateRange": "Datumsbereich",
+  "dateRange1": "Erster Datumsbereich",
+  "dateRange2": "Zweiter Datumsbereich",
+  "selectingStarted": "Auswahl begonnen",
+  "selectingFinished": "Ausgewählt"
 }

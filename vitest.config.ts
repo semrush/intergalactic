@@ -39,6 +39,10 @@ export default defineConfig({
         find: /^@semcore\/([\w-]*)$/,
         replacement: resolvePath(__dirname, 'semcore/$1/src'),
       },
+      {
+        find: /^intergalactic\/([\w-]*)$/,
+        replacement: resolvePath(__dirname, 'semcore/$1/src'),
+      },
     ],
   },
   test: {
@@ -57,6 +61,7 @@ export default defineConfig({
       'semcore/*/__tests__/**/*.vo-test.ts',
       'semcore/*/__tests__/**/*.browser-test.ts',
       'semcore/*/__tests__/**/*.browser-test.tsx',
+      'semcore/*/__tests__/**/stands',
       '**/__fixtures__',
       'tools/icon-transform-svg',
       '**/*.d.ts',

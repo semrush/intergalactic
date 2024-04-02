@@ -12,5 +12,13 @@
   "last12Months": "Afgelopen 12 maanden",
   "prev": "Vorige periode",
   "next": "Volgende periode",
-  "input": "Datumveld"
+  "input": "Datumveld",
+  "compare": "Vergelijken met",
+  "fromDate": "Van {date}",
+  "toDate": "Tot {date}",
+  "dateRange": "Datumbereik",
+  "dateRange1": "Eerste datumbereik",
+  "dateRange2": "Tweede datumbereik",
+  "selectingStarted": "Begonnen met selecteren",
+  "selectingFinished": "Geselecteerd"
 }

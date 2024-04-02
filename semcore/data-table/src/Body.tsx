@@ -318,7 +318,7 @@ class Body extends Component<AsProps, State> {
             <div style={displayContents} role='row'>
               <div style={displayContents} role='cell'>
                 <ScrollArea.Bar orientation='horizontal' position={'sticky'} bottom={0} />
-                <ScrollArea.Bar orientation='vertical' w={'12px'} />
+                <ScrollArea.Bar orientation='vertical' w={'12px'} zIndex={2} />
               </div>
             </div>
           </div>

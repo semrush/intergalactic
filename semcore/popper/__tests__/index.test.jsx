@@ -165,7 +165,7 @@ describe('focus control', () => {
   test('auto focus', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
-      <Popper visible>
+      <Popper visible disablePortal>
         <Popper.Popper autoFocus data-testid='popper'>
           <input />
         </Popper.Popper>
@@ -185,7 +185,7 @@ describe('focus control', () => {
         <input />
         <input />
         <input />
-        <Popper visible>
+        <Popper visible disablePortal>
           <Popper.Popper data-testid='popper'>
             <div tabIndex={0} />
           </Popper.Popper>
@@ -219,7 +219,7 @@ describe('focus control', () => {
         <input />
         <input />
         <input />
-        <Popper visible>
+        <Popper visible disablePortal>
           <Popper.Popper autoFocus data-testid='popper'>
             <div tabIndex={0} data-testid='div-1' />
             <div tabIndex={0} data-testid='div-2' />
@@ -261,7 +261,7 @@ describe('focus control', () => {
       hidePopper = () => setVisible(false);
 
       return (
-        <Popper visible={visible} onVisibleChange={() => {}}>
+        <Popper visible={visible} disablePortal onVisibleChange={() => {}}>
           <Popper.Trigger data-testid='trigger' tabIndex={0}>
             trigger
           </Popper.Trigger>
@@ -307,7 +307,7 @@ describe('focus control', () => {
     const { getByTestId } = render(
       <>
         <input data-testid='input-before-popper' />
-        <Popper interaction='focus'>
+        <Popper disablePortal interaction='focus'>
           <Popper.Trigger data-testid='trigger'>
             <div tabIndex={0} data-testid='focusable-in-trigger' />
           </Popper.Trigger>
