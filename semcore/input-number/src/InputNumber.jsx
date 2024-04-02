@@ -27,24 +27,23 @@ class InputNumber extends Component {
   };
 
   inputRef = React.createRef();
-  numberInputRef = React.createRef();
   valueRef = React.createRef();
 
   increment = (event) => {
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (this.numberInputRef.current?.value === '')
-      this.numberInputRef.current.value = this.numberInputRef.current.min || '0';
-    this.numberInputRef.current?.stepUp?.();
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.min || '0';
+    this.inputRef.current?.stepUp?.();
 
-    this.valueRef.current.setValue(this.numberInputRef.current.value, event);
+    this.valueRef.current.setValue(this.inputRef.current.value, event);
   };
 
   decrement = (event) => {
-    if (this.numberInputRef.current?.value === '')
-      this.numberInputRef.current.value = this.numberInputRef.current.max || '0';
-    this.numberInputRef.current?.stepDown?.();
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.max || '0';
+    this.inputRef.current?.stepDown?.();
 
-    this.valueRef.current.setValue(this.numberInputRef.current.value, event);
+    this.valueRef.current.setValue(this.inputRef.current.value, event);
   };
 
   getValueProps() {
@@ -53,7 +52,6 @@ class InputNumber extends Component {
     return {
       ref: this.inputRef,
       valueRef: this.valueRef,
-      numberInputRef: this.numberInputRef,
       increment: this.increment,
       decrement: this.decrement,
       numberFormatter,
@@ -82,6 +80,7 @@ class Value extends Component {
     step: 1,
   };
 
+  numberInputRef = React.createRef();
   valueInputRef = React.createRef();
 
   constructor(props) {
@@ -159,19 +158,23 @@ class Value extends Component {
   }
 
   handleValidation = (event) => {
-    const { value, min, max, step, numberInputRef } = this.asProps;
+    const { value } = this.state;
+    const { min, max, step } = this.asProps;
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
-    if (Number.isNaN(value) || Number.isNaN(numberInputRef.current?.valueAsNumber)) {
+    if (
+      !this.numberInputRef.current ||
+      Number.isNaN(value) ||
+      Number.isNaN(this.numberInputRef.current.valueAsNumber)
+    ) {
       event.currentTarget.value = '';
-      const prevValue = this.state.value;
       this.setState({ value: '', displayValue: '' }, () => {
-        if (prevValue !== this.state.value) {
+        if (value !== this.state.value) {
           this.asProps.onChange(this.state.value, event);
         }
       });
     } else {
       let numberValue = parseValueWithMinMax(
-        Number.parseFloat(numberInputRef.current?.valueAsNumber),
+        Number.parseFloat(this.numberInputRef.current?.valueAsNumber),
         min,
         max,
       );
@@ -198,6 +201,22 @@ class Value extends Component {
     this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const value = this.asProps.value;
+    if (prevState.value !== value) {
+      const { parsedValue, displayValue } = this.valueParser(
+        value,
+        prevState.value,
+        prevState.displayValue,
+      );
+
+      this.setState({
+        value: parsedValue,
+        displayValue,
+      });
+    }
+  }
+
   handleWheel = (event) => {
     if (event.target !== this.valueInputRef.current) return;
     if (document.activeElement !== this.valueInputRef.current) return;
@@ -212,7 +231,19 @@ class Value extends Component {
   handleChange = (event) => {
     const value = event.currentTarget.value;
 
-    this.setValue(value, event);
+    if (value === '-') {
+      this.setState(
+        {
+          value,
+          displayValue: value,
+        },
+        () => {
+          this.asProps.onChange(value, event);
+        },
+      );
+    } else {
+      this.setValue(value, event);
+    }
 
     return false;
   };
@@ -291,12 +322,12 @@ class Value extends Component {
 
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      this.decrement(event);
+      this.asProps.decrement(event);
       return;
     }
     if (event.key === 'ArrowUp') {
       event.preventDefault();
-      this.increment(event);
+      this.asProps.increment(event);
       return;
     }
   };
@@ -311,10 +342,9 @@ class Value extends Component {
   };
 
   render() {
-    const SValue = Root;
-    const SNumberInput = Root;
+    const SInput = Root;
     const SValueHidden = 'div';
-    const { styles, min, max, numberInputRef, valueRef } = this.asProps;
+    const { styles, min, max, valueRef } = this.asProps;
     const { value, displayValue } = this.state;
 
     valueRef.current = {
@@ -323,20 +353,11 @@ class Value extends Component {
 
     return sstyled(styles)(
       <>
-        <SValue
-          render={Input.Value}
-          autoComplete='off'
-          onBlur={this.handleValidation}
-          use:onChange={this.handleChange}
-          onKeyDown={this.handleKeyDown}
-          onClick={this.handleClick}
-          ref={this.valueInputRef}
-          use:value={displayValue}
-          disableUncontrolledValueChange={true}
-        />
-        <input
+        <SInput
+          render={Box}
+          tag={'input'}
           type={'number'}
-          ref={numberInputRef}
+          ref={this.numberInputRef}
           hidden
           autoComplete='off'
           onInvalid={this.handleValidation}
@@ -344,6 +365,17 @@ class Value extends Component {
           aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}
+        />
+        <Input.Value
+          autoComplete='off'
+          onBlur={this.handleValidation}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+          onClick={this.handleClick}
+          ref={this.valueInputRef}
+          value={displayValue}
+          disableUncontrolledValueChange={true}
+          inputmode='numeric'
         />
         {/* the next hidden div is necessary for the screen reader to report the value
         in the input, because after validation the value can change to the `min` or `max`
