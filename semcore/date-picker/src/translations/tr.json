@@ -20,5 +20,9 @@
   "dateRange1": "İlk tarih aralığı",
   "dateRange2": "İkinci tarih aralığı",
   "selectingStarted": "Seçmeye başladım",
-  "selectingFinished": "Seçildi"
+  "selectingFinished": "Seçildi",
+  "unavailableDate": "Lütfen uygun bir tarih seçin.",
+  "unavailableMonth": "Lütfen uygun bir ay seçin.",
+  "unavailableEndDate": "Lütfen uygun bir son tarih seçin.",
+  "unavailableEndMonth": "Lütfen uygun bir vade ayı seçin."
 }

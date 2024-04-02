@@ -20,5 +20,9 @@
   "dateRange1": "Eerste datumbereik",
   "dateRange2": "Tweede datumbereik",
   "selectingStarted": "Begonnen met selecteren",
-  "selectingFinished": "Geselecteerd"
+  "selectingFinished": "Geselecteerd",
+  "unavailableDate": "Selecteer een beschikbare datum.",
+  "unavailableMonth": "Selecteer een beschikbare maand.",
+  "unavailableEndDate": "Selecteer een beschikbare vervaldatum.",
+  "unavailableEndMonth": "Selecteer een beschikbare eindmaand."
 }

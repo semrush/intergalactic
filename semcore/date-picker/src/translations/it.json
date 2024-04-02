@@ -20,5 +20,9 @@
   "dateRange1": "Primo intervallo temporale",
   "dateRange2": "Secondo intervallo temporale",
   "selectingStarted": "Inizia selezionando",
-  "selectingFinished": "Selezionato"
+  "selectingFinished": "Selezionato",
+  "unavailableDate": "Seleziona una data disponibile.",
+  "unavailableMonth": "Seleziona un mese disponibile.",
+  "unavailableEndDate": "Seleziona una data di scadenza disponibile.",
+  "unavailableEndMonth": "Seleziona un mese di scadenza disponibile."
 }

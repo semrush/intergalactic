@@ -20,5 +20,9 @@
   "dateRange1": "Première plage de dates",
   "dateRange2": "Deuxième plage de dates",
   "selectingStarted": "Début de la sélection",
-  "selectingFinished": "Sélectionné"
+  "selectingFinished": "Sélectionné",
+  "unavailableDate": "Veuillez sélectionner une date disponible.",
+  "unavailableMonth": "Veuillez sélectionner un mois disponible.",
+  "unavailableEndDate": "Veuillez sélectionner une date d'échéance disponible.",
+  "unavailableEndMonth": "Veuillez sélectionner un mois d'échéance disponible."
 }

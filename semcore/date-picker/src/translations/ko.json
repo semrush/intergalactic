@@ -20,5 +20,9 @@
   "dateRange1": "첫 번째 날짜 범위",
   "dateRange2": "두 번째 날짜 범위",
   "selectingStarted": "선택이 시작되었습니다",
-  "selectingFinished": "선택되었습니다"
+  "selectingFinished": "선택되었습니다",
+  "unavailableDate": "가능한 날짜를 선택하세요.",
+  "unavailableMonth": "가능한 달을 선택하세요.",
+  "unavailableEndDate": "가능한 마감일을 선택하세요.",
+  "unavailableEndMonth": "가능한 마감월을 선택하세요."
 }

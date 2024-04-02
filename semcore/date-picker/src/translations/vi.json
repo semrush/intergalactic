@@ -20,5 +20,9 @@
   "dateRange1": "Khoảng thời gian đầu tiên",
   "dateRange2": "Khoảng thời gian thứ hai",
   "selectingStarted": "Bắt đầu chọn",
-  "selectingFinished": "Đã chọn"
+  "selectingFinished": "Đã chọn",
+  "unavailableDate": "Vui lòng chọn một ngày có sẵn.",
+  "unavailableMonth": "Vui lòng chọn một tháng có sẵn.",
+  "unavailableEndDate": "Vui lòng chọn một ngày đến hạn có sẵn.",
+  "unavailableEndMonth": "Vui lòng chọn một tháng đến hạn có sẵn."
 }
