@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.28.1] - 2024-04-02
+
+### Fixed
+
+- Added missing translations of default aria label.
+
 ## [5.28.0] - 2024-03-27
 
 ### Changed
