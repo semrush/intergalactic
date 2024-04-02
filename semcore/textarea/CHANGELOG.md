@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.21.1] - 2024-04-02
+
+### Fixed
+
+- Copying a textarea node with computed styles for calculating rows.
+
 ## [5.21.0] - 2024-03-27
 
 ### Changed
