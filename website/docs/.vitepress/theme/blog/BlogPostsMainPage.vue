@@ -24,6 +24,10 @@ import BlogPosts from './BlogPosts.vue'
   padding: 0px;
 }
 
+.box > .VPImage {
+  width: 100%;
+}
+
 @media (min-width: 640px) {
   .blog-posts-main-page {
     padding: 0 48px;
