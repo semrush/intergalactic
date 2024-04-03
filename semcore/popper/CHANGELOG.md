@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Propagation events from portal.
+- Select with `disabpledPortal` inside a label was opening second time after selecting the option.
 
 ## [5.25.0] - 2024-03-27
 
