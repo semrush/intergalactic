@@ -163,14 +163,14 @@ export const serialize = (
   const dataRangeSummary = intl.formatList(
     dataRange.map((range) => {
       const from =
-        valuesFormatter?.(range.from, range.label!) ??
+        valuesFormatter?.(range.from, range.label) ??
         defaultValueFormatter(intl, range.from, {
           siblingsTimeMark: range.to,
           datesWithTime,
           maxListSymbols,
         });
       const to =
-        valuesFormatter?.(range.to, range.label!) ??
+        valuesFormatter?.(range.to, range.label) ??
         defaultValueFormatter(intl, range.to, {
           siblingsTimeMark: range.from,
           datesWithTime,
@@ -179,7 +179,7 @@ export const serialize = (
 
       return intl.formatMessage(
         { id: range.label ? 'additional-axe' : 'additional-axe-no-label' },
-        { from, to, label: titlesFormatter?.(range.label!) ?? range.label },
+        { from, to, label: titlesFormatter?.(range.label) ?? range.label },
       );
     }),
   );

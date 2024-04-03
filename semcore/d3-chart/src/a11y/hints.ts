@@ -65,14 +65,14 @@ export type DataSummarizationConfig = {
   disable: boolean;
   override: string | undefined;
   additionalFields: string[];
-  titlesFormatter?: (key: string | number) => string | undefined;
-  valuesFormatter?: (value: unknown, key: string | number) => string | undefined;
+  titlesFormatter?: (key: string | number | null) => string | undefined;
+  valuesFormatter?: (value: unknown, key: string | number | null) => string | undefined;
 };
 export type PartialDataSummarizationConfig = DeepPartial<
   Omit<DataSummarizationConfig, 'titlesFormatter' | 'valuesFormatter'>
 > & {
-  titlesFormatter?: (key: string | number) => string | undefined;
-  valuesFormatter?: (value: unknown, key: string | number) => string | undefined;
+  titlesFormatter?: (key: string | number | null) => string | undefined;
+  valuesFormatter?: (value: unknown, key: string | number | null) => string | undefined;
 };
 
 export const makeDataHintsContainer = (): DataStructureHints => ({
