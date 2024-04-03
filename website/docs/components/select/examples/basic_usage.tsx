@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex } from 'intergalactic/flex-box';
 import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
 
 const options = Array(6)
   .fill('')
@@ -11,8 +12,11 @@ const options = Array(6)
   }));
 
 const Demo = () => (
-  <Flex>
-    <Select options={options} placeholder='Select option' m='auto' />
+  <Flex direction='column'>
+    <Text tag='label' size={200} htmlFor='basic-select'>
+      Basic select
+    </Text>
+    <Select mt={2} mr='auto' options={options} placeholder='Select option' id='basic-select' />
   </Flex>
 );
 

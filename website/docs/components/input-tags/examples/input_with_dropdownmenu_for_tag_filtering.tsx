@@ -1,6 +1,8 @@
 import React from 'react';
 import InputTags from 'intergalactic/input-tags';
 import DropdownMenu from 'intergalactic/dropdown-menu';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
 
@@ -33,30 +35,39 @@ const Demo = () => {
   const tagsFilter = tagsSelect.filter((tag) => tag.includes(valueInput));
 
   return (
-    <DropdownMenu
-      interaction='focus'
-      size='l'
-      visible={visible}
-      onVisibleChange={(visible) => setVisible(visible)}
-    >
-      <DropdownMenu.Trigger tag={InputTags} w={200} size='l' onRemove={onRemoveLastTag}>
-        {tags.map((tag, i) => (
-          <InputTags.Tag key={i} theme='primary'>
-            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-            <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
-          </InputTags.Tag>
-        ))}
-        <InputTags.Value value={valueInput} onChange={onChangeValue} aria-label='input with tags' />
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Menu>
-        {tagsFilter.map((tag, i) => (
-          <DropdownMenu.Item key={i} onClick={() => onSelectTag(tag)}>
-            {tag}
-          </DropdownMenu.Item>
-        ))}
-        {!tagsFilter.length && <DropdownMenu.ItemHint>Not found</DropdownMenu.ItemHint>}
-      </DropdownMenu.Menu>
-    </DropdownMenu>
+    <Flex direction='column'>
+      <Text tag='label' size={200} htmlFor='secondary-social-medias'>
+        Secondary social medias
+      </Text>
+      <DropdownMenu
+        interaction='focus'
+        size='l'
+        visible={visible}
+        onVisibleChange={(visible) => setVisible(visible)}
+      >
+        <DropdownMenu.Trigger tag={InputTags} mt={2} w={200} size='l' onRemove={onRemoveLastTag}>
+          {tags.map((tag, i) => (
+            <InputTags.Tag key={i} theme='primary'>
+              <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+              <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
+            </InputTags.Tag>
+          ))}
+          <InputTags.Value
+            value={valueInput}
+            onChange={onChangeValue}
+            id='secondary-social-medias'
+          />
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          {tagsFilter.map((tag, i) => (
+            <DropdownMenu.Item key={i} onClick={() => onSelectTag(tag)}>
+              {tag}
+            </DropdownMenu.Item>
+          ))}
+          {!tagsFilter.length && <DropdownMenu.ItemHint>Not found</DropdownMenu.ItemHint>}
+        </DropdownMenu.Menu>
+      </DropdownMenu>
+    </Flex>
   );
 };
 

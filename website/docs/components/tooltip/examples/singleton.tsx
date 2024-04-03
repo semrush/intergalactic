@@ -1,6 +1,8 @@
 import React from 'react';
 import Tooltip from 'intergalactic/tooltip';
 import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const options = Array(50)
   .fill('')
@@ -16,26 +18,31 @@ const TooltipContent = () => {
 const SelectWithTooltip = React.memo(
   ({ setTooltipIndex }: { setTooltipIndex: (number) => void }) => {
     return (
-      <Select onHighlightedIndexChange={setTooltipIndex}>
-        <Select.Trigger placeholder='Select option' />
-        <Select.Menu>
-          <Tooltip timeout={[0, 50]} placement='right'>
-            {options.map((option, index) => (
-              <Select.Option
-                onMouseEnter={() => setTooltipIndex(index)}
-                value={option}
-                key={index}
-                tag={Tooltip.Trigger}
-              >
-                {option}
-              </Select.Option>
-            ))}
-            <Tooltip.Popper w={200}>
-              <TooltipContent />
-            </Tooltip.Popper>
-          </Tooltip>
-        </Select.Menu>
-      </Select>
+      <Flex direction='column'>
+        <Text tag='label' size={200} htmlFor='select-with-tooltips'>
+          Select with tooltips
+        </Text>
+        <Select onHighlightedIndexChange={setTooltipIndex}>
+          <Select.Trigger placeholder='Select option' mt={2} mr='auto' id='select-with-tooltips' />
+          <Select.Menu>
+            <Tooltip timeout={[0, 50]} placement='right'>
+              {options.map((option, index) => (
+                <Select.Option
+                  onMouseEnter={() => setTooltipIndex(index)}
+                  value={option}
+                  key={index}
+                  tag={Tooltip.Trigger}
+                >
+                  {option}
+                </Select.Option>
+              ))}
+              <Tooltip.Popper w={200}>
+                <TooltipContent />
+              </Tooltip.Popper>
+            </Tooltip>
+          </Select.Menu>
+        </Select>
+      </Flex>
     );
   },
   () => true,

@@ -1,6 +1,8 @@
 import React from 'react';
 import InputTags from 'intergalactic/input-tags';
 import Tooltip from 'intergalactic/tooltip';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const inputValueRef = React.useRef<HTMLInputElement>();
@@ -53,31 +55,36 @@ const Demo = () => {
   };
 
   return (
-    <InputTags size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-      {tags.map((tag, idx) => (
-        <Tooltip key={idx}>
-          <Tooltip.Trigger
-            tag={InputTags.Tag}
-            theme='primary'
-            editable
-            data-id={idx}
-            onClick={handleEditTag}
-            onKeyDown={handleTagKeyDown}
-          >
-            <InputTags.Tag.Text tabIndex={0}>{tag}</InputTags.Tag.Text>
-            <InputTags.Tag.Close onClick={handleCloseTag} />
-          </Tooltip.Trigger>
-          <Tooltip.Popper>tag</Tooltip.Popper>
-        </Tooltip>
-      ))}
-      <InputTags.Value
-        value={value}
-        onChange={setValue}
-        onKeyDown={handleInputKeyDown}
-        ref={inputValueRef}
-        aria-label='Input with tags'
-      />
-    </InputTags>
+    <Flex direction='column'>
+      <Text tag='label' size={200} htmlFor='add-new-social-media'>
+        Essential social medias
+      </Text>
+      <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+        {tags.map((tag, idx) => (
+          <Tooltip key={idx}>
+            <Tooltip.Trigger
+              tag={InputTags.Tag}
+              theme='primary'
+              editable
+              data-id={idx}
+              onClick={handleEditTag}
+              onKeyDown={handleTagKeyDown}
+            >
+              <InputTags.Tag.Text tabIndex={0}>{tag}</InputTags.Tag.Text>
+              <InputTags.Tag.Close onClick={handleCloseTag} />
+            </Tooltip.Trigger>
+            <Tooltip.Popper>tag</Tooltip.Popper>
+          </Tooltip>
+        ))}
+        <InputTags.Value
+          value={value}
+          onChange={setValue}
+          onKeyDown={handleInputKeyDown}
+          ref={inputValueRef}
+          id='add-new-social-media'
+        />
+      </InputTags>
+    </Flex>
   );
 };
 

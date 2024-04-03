@@ -3,6 +3,7 @@ import Slider from 'intergalactic/slider';
 import InputNumber from 'intergalactic/input-number';
 import Tooltip from 'intergalactic/tooltip';
 import { Box } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const [value, setValue] = React.useState(51);
@@ -23,7 +24,20 @@ const Demo = () => {
   return (
     <>
       <Box w={140}>
-        <Slider mb={3} value={value} onChange={setValue} step={1} min={min} max={max}>
+        <Text tag='label' size={200} htmlFor='numberic-slider'>
+          Target users count
+        </Text>
+        <Slider
+          id='numberic-slider'
+          name='slider-count'
+          mt={4}
+          mb={3}
+          value={value}
+          onChange={setValue}
+          step={1}
+          min={min}
+          max={max}
+        >
           <Slider.Bar />
           <Slider.Knob />
         </Slider>
@@ -36,7 +50,12 @@ const Demo = () => {
         placement='right'
       >
         <InputNumber mt={4} w={140} size='m' state={error ? 'invalid' : 'normal'}>
-          <InputNumber.Value step={1} value={value.toString()} onChange={handleInput} />
+          <InputNumber.Value
+            step={1}
+            value={value.toString()}
+            onChange={handleInput}
+            name='slider-input'
+          />
           <InputNumber.Controls showControls />
         </InputNumber>
       </Tooltip>

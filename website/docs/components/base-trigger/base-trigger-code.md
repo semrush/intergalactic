@@ -9,7 +9,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/buttontrigger.tsx';
+  export Demo from './examples/buttontrigger.tsx'; 
 </script>
 
 :::
@@ -23,7 +23,7 @@ Check examples in the [FilterTrigger documentation](/components/filter-trigger/f
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/filtertrigger.tsx';
+  export Demo from './examples/linktrigger.tsx'; 
 </script>
 
 :::

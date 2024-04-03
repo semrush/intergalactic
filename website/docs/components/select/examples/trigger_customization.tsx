@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex } from 'intergalactic/flex-box';
 import Select from 'intergalactic/select';
 import { ButtonTrigger, LinkTrigger } from 'intergalactic/base-trigger';
+import { Text } from 'intergalactic/typography';
 
 const options = Array(6)
   .fill('')
@@ -12,10 +13,24 @@ const options = Array(6)
   }));
 
 const Demo = () => (
-  <Flex>
-    {/* ButtonTrigger is the default trigger */}
-    <Select tag={ButtonTrigger} options={options} placeholder='Select option' m='auto' />
-    <Select tag={LinkTrigger} options={options} placeholder='Select option' m='auto' />
+  <Flex gap={2} flexWrap>
+    <Flex direction='column'>
+      <Text tag='label' size={200} htmlFor='button-trigger-select'>
+        Button trigger select
+      </Text>
+      {/* ButtonTrigger is the default trigger */}
+      <Select
+        tag={ButtonTrigger}
+        options={options}
+        id='button-trigger-select'
+        placeholder='Select option'
+        mt={2}
+        mr='auto'
+      />
+    </Flex>
+    <Flex direction='column'>
+      <Select tag={LinkTrigger} options={options} placeholder='Select option' mt={2} mr='auto' />
+    </Flex>
   </Flex>
 );
 
