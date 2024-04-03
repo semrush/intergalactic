@@ -488,7 +488,10 @@ function PopperPopper(props) {
   const ref = React.useRef(null);
 
   // https://github.com/facebook/react/issues/11387
-  const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
+  const stopPropagation = React.useCallback((event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  }, []);
   const propagateFocusLockSyntheticEvent = React.useCallback((event) => {
     event.nativeEvent.stopImmediatePropagation();
     ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));
