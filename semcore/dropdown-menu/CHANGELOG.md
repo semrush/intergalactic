@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.1] - 2024-04-03
+
+### Fixed
+
+- Menu item was displaying highlighted ring when dropdown is opened by mouse interaction.
+
 ## [4.25.0] - 2024-03-27
 
 ### Changed
