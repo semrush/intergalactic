@@ -6,7 +6,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
-import { Box } from '@semcore/flex-box';
 import { forkRef } from '@semcore/utils/lib/ref';
 
 export function parseValueWithMinMax(
@@ -146,7 +145,7 @@ class Value extends Component {
 
     return {
       parsedValue: stringNumber,
-      displayValue: numberFormatter.format(stringNumber),
+      displayValue: stringNumber === '' ? '' : numberFormatter.format(stringNumber),
     };
   };
 

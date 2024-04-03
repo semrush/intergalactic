@@ -41,7 +41,7 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
 
-    const input: HTMLInputElement = getByTestId('input3');
+    const input = getByTestId('input3') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '12345' } });
     expect(spy).toBeCalledWith('12345', expect.anything());
     expect(input.value).toBe('12,345');
@@ -55,7 +55,7 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
 
-    const input: HTMLInputElement = getByTestId('input4');
+    const input = getByTestId('input4') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '12345.4' } });
     expect(spy).toBeCalledWith('12345.4', expect.anything());
     expect(input.value).toBe('12,345.4');
