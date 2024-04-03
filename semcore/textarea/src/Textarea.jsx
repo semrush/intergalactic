@@ -55,8 +55,19 @@ class Textarea extends Component {
 
     const previousRows = node.rows;
     const clonnedNode = node.cloneNode(true);
+    const computedStyle = window.getComputedStyle(node);
 
-    clonnedNode.style.visibility = 'hidden';
+    for (let i = 0; i < computedStyle.length; i++) {
+      const key = computedStyle.item(i);
+
+      clonnedNode.style.setProperty(
+        key,
+        computedStyle.getPropertyValue(key),
+        computedStyle.getPropertyPriority(key),
+      );
+    }
+
+    clonnedNode.style.setProperty('visibility', 'hidden', 'important');
 
     document.body.appendChild(clonnedNode);
 
