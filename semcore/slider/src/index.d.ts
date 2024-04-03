@@ -53,8 +53,14 @@ export type SliderProps<Value extends SliderValue = SliderValue> = BoxProps &
      * Disable element
      */
     disabled?: boolean;
-
+    /**
+     * Slider options
+     */
     options?: SliderOption<Value>[];
+    /**
+     * Form name of hidden input element
+     */
+    name?: string;
   };
 
 type SliderOptionsProps = FlexProps;

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.22.0] - 2024-03-28
+
+### Fixed
+
+- Referencing `label` tag support.
+
 ## [4.21.0] - 2024-04-15
 
 ### Changed

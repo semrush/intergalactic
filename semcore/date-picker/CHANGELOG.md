@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.38.2] - 2024-04-03
+
+### Fixed
+
+- Input trigger referencing `label` tag support.
+- Default `aria-label` for the second input of date range trigger.
+
 ## [4.38.0] - 2024-04-12
 
 ### Added
@@ -11,11 +18,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Added missing translations for input trigger error tooltip.
-
-## [4.37.2] - 2024-04-15
-
-### Fixed
-
 - Input trigger text was little trimmed at the end.
 
 ## [4.37.1] - 2024-04-12
