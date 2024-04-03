@@ -153,6 +153,7 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   > & {
     Trigger: Intergalactic.Component<'div', DropdownMenuItemProps>;
+    Item: Intergalactic.Component<'div', DropdownMenuItemProps>;
     Addon: typeof Box;
   };
 };
