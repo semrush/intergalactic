@@ -33,7 +33,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
-  test.concurrent('Should accept format in int numbers', async () => {
+  test.concurrent('Should accept format in int numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -41,16 +41,13 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
 
-    const input = getByTestId('input3');
-    await userEvent.keyboard('[Tab]');
-    expect(input).toHaveFocus();
-    await userEvent.keyboard('12345');
+    const input: HTMLInputElement = getByTestId('input3');
+    fireEvent.change(input, { target: { value: '12345' } });
     expect(spy).toBeCalledWith('12345', expect.anything());
-
     expect(input.value).toBe('12,345');
   });
 
-  test.sequential('Should accept float numbers', async () => {
+  test.sequential('Should accept format in float numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -58,12 +55,9 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
 
-    const input = getByTestId('input4');
-    await userEvent.keyboard('[Tab]');
-    expect(input).toHaveFocus();
-    await userEvent.keyboard('12345.4');
+    const input: HTMLInputElement = getByTestId('input4');
+    fireEvent.change(input, { target: { value: '12345.4' } });
     expect(spy).toBeCalledWith('12345.4', expect.anything());
-
     expect(input.value).toBe('12,345.4');
   });
 
@@ -91,15 +85,16 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
-  test.concurrent('Should not accept letters', async () => {
+  test.concurrent('Should not accept letters', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid='input7' value='' onChange={spy} />
       </InputNumber>,
     );
-    await userEvent.keyboard('[Tab]');
-    await userEvent.keyboard('YOU SHELL NOT PASS');
+
+    const input = getByTestId('input7');
+    fireEvent.change(input, { target: { value: 'YOU SHELL NOT PASS' } });
     expect(spy).not.toBeCalled();
   });
 

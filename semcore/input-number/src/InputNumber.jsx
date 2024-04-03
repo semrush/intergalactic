@@ -7,6 +7,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
 import { Box } from '@semcore/flex-box';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 export function parseValueWithMinMax(
   value,
@@ -50,7 +51,7 @@ class InputNumber extends Component {
     const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
 
     return {
-      ref: this.inputRef,
+      inputNumberRef: this.inputRef,
       valueRef: this.valueRef,
       increment: this.increment,
       decrement: this.decrement,
@@ -80,7 +81,6 @@ class Value extends Component {
     step: 1,
   };
 
-  numberInputRef = React.createRef();
   valueInputRef = React.createRef();
 
   constructor(props) {
@@ -159,12 +159,12 @@ class Value extends Component {
 
   handleValidation = (event) => {
     const { value } = this.state;
-    const { min, max, step } = this.asProps;
+    const { min, max, step, inputNumberRef } = this.asProps;
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
     if (
-      !this.numberInputRef.current ||
+      !inputNumberRef.current ||
       Number.isNaN(value) ||
-      Number.isNaN(this.numberInputRef.current.valueAsNumber)
+      Number.isNaN(inputNumberRef.current.valueAsNumber)
     ) {
       event.currentTarget.value = '';
       this.setState({ value: '', displayValue: '' }, () => {
@@ -174,7 +174,7 @@ class Value extends Component {
       });
     } else {
       let numberValue = parseValueWithMinMax(
-        Number.parseFloat(this.numberInputRef.current?.valueAsNumber),
+        Number.parseFloat(inputNumberRef.current?.valueAsNumber),
         min,
         max,
       );
@@ -342,9 +342,9 @@ class Value extends Component {
   };
 
   render() {
-    const SInput = Root;
+    const SValue = Root;
     const SValueHidden = 'div';
-    const { styles, min, max, valueRef } = this.asProps;
+    const { styles, min, max, step, valueRef, forwardRef, inputNumberRef } = this.asProps;
     const { value, displayValue } = this.state;
 
     valueRef.current = {
@@ -353,29 +353,32 @@ class Value extends Component {
 
     return sstyled(styles)(
       <>
-        <SInput
-          render={Box}
-          tag={'input'}
+        <SValue
+          render={Input.Value}
+          autoComplete='off'
+          onBlur={this.handleValidation}
+          use:onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+          onClick={this.handleClick}
+          use:ref={this.valueInputRef}
+          use:value={displayValue}
+          disableUncontrolledValueChange={true}
+          inputmode='numeric'
+        />
+        <input
           type={'number'}
-          ref={this.numberInputRef}
+          ref={forkRef(forwardRef, inputNumberRef)}
           hidden
           autoComplete='off'
           onInvalid={this.handleValidation}
           value={value}
+          readOnly={true}
           aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}
-        />
-        <Input.Value
-          autoComplete='off'
-          onBlur={this.handleValidation}
-          onChange={this.handleChange}
-          onKeyDown={this.handleKeyDown}
-          onClick={this.handleClick}
-          ref={this.valueInputRef}
-          value={displayValue}
-          disableUncontrolledValueChange={true}
-          inputmode='numeric'
+          min={min}
+          max={max}
+          step={step}
         />
         {/* the next hidden div is necessary for the screen reader to report the value
         in the input, because after validation the value can change to the `min` or `max`
