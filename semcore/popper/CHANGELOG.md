@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.1] - 2024-09-04
+
+### Fixed
+
+- Holding mouse over a place where popper appear was preventing popper from disappear back.
+- Fast keyboard navigation over multiple closely placed poppers was causing multiple poppers to stay open.
+
 ## [5.26.0] - 2024-03-27
 
 ### Fixed
