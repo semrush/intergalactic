@@ -53,6 +53,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
+  cigaretteChart: {
+    title: 'Cigarette chart',
+    route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
+    disabled: false,
+    type: 'charts',
+  },
   bubble: {
     title: 'Bubble chart',
     route: '/intergalactic/data-display/bubble-chart/bubble-chart',
@@ -331,6 +337,12 @@ const group = {
   donut: {
     title: 'Donut Pie chart',
     route: '/intergalactic/data-display/donut-chart/donut-chart',
+    disabled: false,
+    type: 'charts',
+  },
+  cigaretteChart: {
+    title: 'Cigarette chart',
+    route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
     disabled: false,
     type: 'charts',
   },
