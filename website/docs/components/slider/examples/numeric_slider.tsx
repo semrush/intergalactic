@@ -30,7 +30,7 @@ const Demo = () => {
         <Slider
           id='numberic-slider'
           name='slider-count'
-          mt={4}
+          mt={2}
           mb={3}
           value={value}
           onChange={setValue}

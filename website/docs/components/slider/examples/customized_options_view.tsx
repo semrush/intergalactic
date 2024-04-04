@@ -7,11 +7,11 @@ const Demo = () => {
 
   return (
     <div>
-      <Text tag='label' size={200} htmlFor='floppa-slider'>
+      <Text tag='label' size={300} htmlFor='floppa-slider'>
         Floppa kind
       </Text>
       <Slider
-        mt={4}
+        mt={2}
         id='floppa-slider'
         name='floppa'
         w={200}

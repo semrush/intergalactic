@@ -30,6 +30,7 @@ const Demo = () => {
           options={options}
           placeholder='Select option'
           m='auto'
+          w='100%'
         />
       </Flex>
 
@@ -45,6 +46,7 @@ const Demo = () => {
           options={options}
           placeholder='Select option'
           m='auto'
+          w='100%'
         />
       </Flex>
     </Flex>

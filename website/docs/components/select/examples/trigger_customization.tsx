@@ -13,7 +13,7 @@ const options = Array(6)
   }));
 
 const Demo = () => (
-  <Flex gap={2} flexWrap>
+  <Flex gap={4} flexWrap direction='column'>
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='button-trigger-select'>
         Button trigger select
@@ -26,6 +26,7 @@ const Demo = () => (
         placeholder='Select option'
         mt={2}
         mr='auto'
+        w='100%'
       />
     </Flex>
     <Flex direction='column'>

@@ -7,11 +7,11 @@ const Demo = () => {
 
   return (
     <div>
-      <Text tag='label' size={200} htmlFor='options-slider'>
+      <Text tag='label' size={300} htmlFor='options-slider'>
         Updates frequency
       </Text>
       <Slider
-        mt={4}
+        mt={2}
         id='options-slider'
         name='options'
         value={value}

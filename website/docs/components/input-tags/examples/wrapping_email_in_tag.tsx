@@ -48,7 +48,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='add-email'>
+      <Text tag='label' size={300} htmlFor='add-email'>
         Participants
       </Text>
       <Select interaction='focus' onChange={handleSelect}>

@@ -56,8 +56,8 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='add-new-social-media'>
-        Essential social medias
+      <Text tag='label' size={300} htmlFor='add-new-social-media'>
+        Social media
       </Text>
       <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => (
