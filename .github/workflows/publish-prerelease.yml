@@ -156,7 +156,7 @@ jobs:
         id: test
         run: |
           pnpm upload-static
-          pnpm test:docker run
+          pnpm test:docker run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'

@@ -140,7 +140,7 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test:docker run
+        run: pnpm test:docker run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'

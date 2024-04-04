@@ -142,7 +142,7 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.only('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
+  test('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
     const component = (
       <Box w={200} h={200}>
         <DatePicker
@@ -296,12 +296,11 @@ describe('DateRangePicker', () => {
     vi.useRealTimers();
   });
 
-  test('Should not select disabled date from the keyboard', async ({ expect }) => {
+  test.sequential('Should not select disabled date from the keyboard', async ({ expect }) => {
     mockDate('2023-12-20T12:00:00.808Z');
     const onPreselectedValueChange = vi.fn();
     const { getByTestId, getByText } = render(
       <DateRangePicker
-        visible
         disabled={[new Date('2023-12-28')]}
         defaultDisplayedPeriod={new Date()}
         onPreselectedValueChange={onPreselectedValueChange}
@@ -311,10 +310,13 @@ describe('DateRangePicker', () => {
       </DateRangePicker>,
     );
 
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('[ArrowDown]');
+
     expect(getByText('December 2023')).toBeTruthy();
     expect(getByText('January 2024')).toBeTruthy();
-
-    await userEvent.keyboard('[Tab]');
 
     expect(getByTestId('dd_popper')).toHaveFocus();
 
@@ -327,10 +329,10 @@ describe('DateRangePicker', () => {
     await userEvent.keyboard('[ArrowRight]'); // 2023-12-28
     await userEvent.keyboard('[Space]');
 
-    expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't call second time - 28 is disabled date
+    expect(onPreselectedValueChange).toBeCalledTimes(1); // shouldn't be called the second time - 28 is disabled date
   });
 
-  test.only('Should change month after select new date from the keyboard', async ({ expect }) => {
+  test('Should change month after select new date from the keyboard', async ({ expect }) => {
     mockDate('2023-12-20T12:00:00.808Z');
 
     const { getByTestId, getByText } = render(

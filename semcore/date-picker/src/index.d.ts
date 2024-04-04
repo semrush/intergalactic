@@ -10,6 +10,7 @@ import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import { InputMaskValueProps } from '@semcore/input-mask';
 import Checkbox from '@semcore/checkbox';
+import { TooltipProps } from '@semcore/tooltip';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -287,19 +288,21 @@ export type DatePickerHandlers = {
 
 /** @deprecated */
 export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
-export type BaseInputTriggerProps = InputProps & {
-  /**
-   * Date input placeholder characters
-   * @default { year: 'Y'; month: 'M'; day: 'D' }
-   */
-  placeholders?: { year: string; month: string; day: string };
-  locale?: string;
-  onDisplayedPeriodChange?: (date: Date) => void;
-};
-export type InputTriggerProps = BaseInputTriggerProps & {
-  value?: Date;
-  onChange?: (date: Date, event: ChangeEvent) => void;
-};
+export type BaseInputTriggerProps = InputProps &
+  TooltipProps & {
+    /**
+     * Date input placeholder characters
+     * @default { year: 'Y'; month: 'M'; day: 'D' }
+     */
+    placeholders?: { year: string; month: string; day: string };
+    locale?: string;
+    onDisplayedPeriodChange?: (date: Date) => void;
+  };
+export type InputTriggerProps = BaseInputTriggerProps &
+  TooltipProps & {
+    value?: Date;
+    onChange?: (date: Date, event: ChangeEvent) => void;
+  };
 
 export type RangeInputTriggerProps = BaseInputTriggerProps & {
   value?: Date[];
