@@ -51,7 +51,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
             semcore/illustration/svg/*.svg
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -97,7 +97,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
             semcore/illustration/svg/*.svg
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -145,7 +145,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
             semcore/illustration/svg/*.svg
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install restored dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -208,7 +208,7 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
             semcore/illustration/svg/*.svg
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install restored dependencies
         run: |
           pnpm install
