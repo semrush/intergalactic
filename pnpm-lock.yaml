@@ -44,14 +44,14 @@ importers:
         specifier: 3.10.1
         version: 3.10.1
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@jridgewell/set-array':
         specifier: ^1.1.2
         version: 1.1.2
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/babel-plugin-react-semcore':
         specifier: workspace:*
         version: link:tools/babel-plugin-react-semcore
@@ -102,7 +102,7 @@ importers:
         version: 2.0.0(vite@3.2.7)
       '@vitest/browser':
         specifier: 1.3.0
-        version: 1.3.0(playwright@1.25.1)(vitest@1.3.0)(webdriverio@8.24.3)
+        version: 1.3.0(playwright@1.43.0)(vitest@1.3.0)(webdriverio@8.24.3)
       '@vitest/ui':
         specifier: 1.3.0
         version: 1.3.0(vitest@1.3.0)
@@ -149,8 +149,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       playwright:
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -222,11 +222,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -315,11 +315,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -473,11 +473,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -547,11 +547,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -740,11 +740,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/accordion':
         specifier: '*'
         version: link:../accordion
@@ -843,11 +843,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -905,11 +905,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/button':
         specifier: '*'
         version: link:../button
@@ -945,11 +945,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/badge':
         specifier: '*'
         version: link:../badge
@@ -988,11 +988,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1028,11 +1028,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/base-trigger':
         specifier: 4.26.1
         version: 4.26.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
@@ -1527,11 +1527,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1641,11 +1641,11 @@ importers:
         version: 5.1.2
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1765,11 +1765,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1811,11 +1811,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2028,11 +2028,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/badge':
         specifier: '*'
         version: link:../badge
@@ -2155,11 +2155,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2260,11 +2260,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2359,11 +2359,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2474,11 +2474,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2666,11 +2666,11 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@guidepup/playwright':
-        specifier: 0.6.1
-        version: 0.6.1(@playwright/test@1.25.1)
+        specifier: 0.13.2
+        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
       '@playwright/test':
-        specifier: 1.25.1
-        version: 1.25.1
+        specifier: 1.43.0
+        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -4062,7 +4062,7 @@ importers:
         version: 1.2.0
       vitest:
         specifier: ^0.34.1
-        version: 0.34.5(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.25.1)(webdriverio@8.24.3)
+        version: 0.34.5(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.43.0)(webdriverio@8.24.3)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -6592,6 +6592,16 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: false
 
+  /@derhuerst/http-basic@8.2.4:
+    resolution: {integrity: sha512-F9rL9k9Xjf5blCz8HsJRO4diy111cayL2vkY2XE4r4t3n0yPXVYy3KD3nJ1qbrSn9743UWSXH4IwuCa/HWlGFw==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      caseless: 0.12.0
+      concat-stream: 2.0.0
+      http-response-object: 3.0.2
+      parse-cache-control: 1.0.1
+    dev: true
+
   /@docsearch/css@3.5.2:
     resolution: {integrity: sha512-SPiDHaWKQZpwR2siD0KQUwlStvIAnEyK6tAE2h2Wuoq8ue9skzhlyVQ1ddzOxX6khULnAALDiR/isSF3bnuciA==}
     dev: true
@@ -7188,13 +7198,25 @@ packages:
     resolution: {integrity: sha512-FHeWY46tocHzFRXHr6J8X/EHIJJ3CPgtR9A0iS0ETL/GovsadpVo40934F2pvs40AINeGlRXzXD4rwadPsWUcg==}
     dev: true
 
-  /@guidepup/playwright@0.6.1(@playwright/test@1.25.1):
-    resolution: {integrity: sha512-3nItcGdIPjO11j6KuvPbs5gsZqkp/LUFEYK/BRUcIUalxpZMw7KWPe9pNa40J9nKyi41T9qepxsq5Qx2Dbm1ZA==}
-    peerDependencies:
-      '@playwright/test': ^1.17.1
+  /@guidepup/guidepup@0.22.3:
+    resolution: {integrity: sha512-0SbPyjoCgYQYPCjWJgQDUrfw1HgSIjVJ6k/UvTUV7FvMPv22LVS40g2P2ScObx2H+apMJGPTja8Tx1uoWZw9JQ==}
     dependencies:
-      '@guidepup/guidepup': 0.13.1
-      '@playwright/test': 1.25.1
+      ffmpeg-static: 5.2.0
+      regedit: 5.1.2
+      semver: 7.5.4
+      shelljs: 0.8.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@guidepup/playwright@0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0):
+    resolution: {integrity: sha512-oIoF7paP8l5SxGmehqreGhiEuE5HoQ4B/qO3JfZzQH2PykF4eCrqijmOLLOAZOJFyG8+8KicVprg4GCsXhoeVQ==}
+    peerDependencies:
+      '@guidepup/guidepup': ^0.22.1
+      '@playwright/test': ^1.40.1
+    dependencies:
+      '@guidepup/guidepup': 0.22.3
+      '@playwright/test': 1.43.0
     dev: true
 
   /@hapi/hoek@9.3.0:
@@ -7590,13 +7612,12 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@playwright/test@1.25.1:
-    resolution: {integrity: sha512-IJ4X0yOakXtwkhbnNzKkaIgXe6df7u3H3FnuhI9Jqh+CdO0e/lYQlDLYiyI9cnXK8E7UAppAWP+VqAv6VX7HQg==}
-    engines: {node: '>=14'}
+  /@playwright/test@1.43.0:
+    resolution: {integrity: sha512-Ebw0+MCqoYflop7wVKj711ccbNlrwTBCtjY5rlbiY9kHL2bCYxq+qltK6uPsVBGGAOb033H2VO0YobcQVxoW7Q==}
+    engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@types/node': 17.0.45
-      playwright-core: 1.25.1
+      playwright: 1.43.0
     dev: true
 
   /@polka/url@1.0.0-next.24:
@@ -7662,7 +7683,7 @@ packages:
       '@previewjs/vfs': 2.1.0
       express: 4.18.2
       pino: 8.16.2
-      playwright: 1.40.0
+      playwright: 1.43.0
       typescript: 5.3.2
     transitivePeerDependencies:
       - '@swc/core'
@@ -10064,12 +10085,17 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
+  /@types/node@10.17.60:
+    resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
+    dev: true
+
   /@types/node@12.0.2:
     resolution: {integrity: sha512-5tabW/i+9mhrfEOUcLDu2xBPsHJ+X5Orqy9FKpale3SjDA17j5AEpYq5vfy3oAeAHGcvANRCO3NV3d2D6q3NiA==}
     dev: false
 
   /@types/node@17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+    dev: false
 
   /@types/node@18.16.15:
     resolution: {integrity: sha512-fv9H0101Lom0m76x5UekmudO0Vu611ElbTCLOeSbyX5WM6sme3gJ10PHP83pA1/eXbZpnDoTkeY40jykH38ptQ==}
@@ -10358,7 +10384,7 @@ packages:
       vue: 3.3.7(typescript@5.1.6)
     dev: true
 
-  /@vitest/browser@1.3.0(playwright@1.25.1)(vitest@1.3.0)(webdriverio@8.24.3):
+  /@vitest/browser@1.3.0(playwright@1.43.0)(vitest@1.3.0)(webdriverio@8.24.3):
     resolution: {integrity: sha512-ezDONeREC4Jc4fc4uGe8FKzwMVMWfoGdJspJ/mHIT0I7RUNRHSR11IcJr4MVD0iavTTiXYb4xjD8VqTTT5rZrQ==}
     peerDependencies:
       playwright: '*'
@@ -10375,7 +10401,7 @@ packages:
     dependencies:
       '@vitest/utils': 1.3.0
       magic-string: 0.30.5
-      playwright: 1.25.1
+      playwright: 1.43.0
       sirv: 2.0.4
       vitest: 1.3.0(@types/node@18.16.15)(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)
       webdriverio: 8.24.3(typescript@5.1.6)
@@ -12881,6 +12907,16 @@ packages:
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
+  /concat-stream@2.0.0:
+    resolution: {integrity: sha512-MWufYdFw53ccGjCA+Ol7XJYpAlW6/prSMzuPOTRnJGcGzuhLn4Scrz7qf6o8bROZ514ltazcIFJZevcfbo0x7A==}
+    engines: {'0': node >= 6.0}
+    dependencies:
+      buffer-from: 1.1.2
+      inherits: 2.0.4
+      readable-stream: 3.6.2
+      typedarray: 0.0.6
+    dev: true
+
   /config-chain@1.1.13:
     resolution: {integrity: sha512-qj+f8APARXHrM0hraqXYb2/bOVSV4PvJQlNZ/DVj0QrmNM2q2euizkeuVckQ57J+W0mRH6Hvi+k50M4Jul2VRQ==}
     dependencies:
@@ -14260,6 +14296,11 @@ packages:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
 
+  /env-paths@2.2.1:
+    resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
+    engines: {node: '>=6'}
+    dev: true
+
   /envinfo@7.10.0:
     resolution: {integrity: sha512-ZtUjZO6l5mwTHvc1L9+1q5p/R3wTopcfqMW8r5t8SJSKqeVI/LtajORwRFEKpEFuekjD0VBjwu1HMxL4UalIRw==}
     engines: {node: '>=4'}
@@ -15383,6 +15424,19 @@ packages:
   /fflate@0.8.2:
     resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
 
+  /ffmpeg-static@5.2.0:
+    resolution: {integrity: sha512-WrM7kLW+do9HLr+H6tk7LzQ7kPqbAgLjdzNE32+u3Ff11gXt9Kkkd2nusGFrlWMIe+XaA97t+I8JS7sZIrvRgA==}
+    engines: {node: '>=16'}
+    requiresBuild: true
+    dependencies:
+      '@derhuerst/http-basic': 8.2.4
+      env-paths: 2.2.1
+      https-proxy-agent: 5.0.1
+      progress: 2.0.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /figma-api@1.11.0:
     resolution: {integrity: sha512-inGRug909pPeLqcCcjMwXGnxcJjMVeAXk/kLLjlo2y/IjYURgX56u7HUqUrmASmSUqQB9BVuz/PlK9KRDWkiPA==}
     dependencies:
@@ -15854,7 +15908,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /fsevents@2.3.3:
@@ -16800,6 +16853,12 @@ packages:
       - debug
     dev: true
 
+  /http-response-object@3.0.2:
+    resolution: {integrity: sha512-bqX0XTF6fnXSQcEJ2Iuyr75yVakyjIDCqroJQ/aHfSdlM743Cwqoi2nDYMzLGWUcuTWGWy8AAvOKXTfiv6q9RA==}
+    dependencies:
+      '@types/node': 10.17.60
+    dev: true
+
   /http-signature@1.2.0:
     resolution: {integrity: sha512-CAbnr6Rz4CYQkLYUtSNXxQPUH2gK8f3iWexVlsnMeD+GjlsQ0Xsy1cOX+mN3dtxYomRy21CiOzU8Uhw6OwncEQ==}
     engines: {node: '>=0.8', npm: '>=1.3.7'}
@@ -16903,6 +16962,10 @@ packages:
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+
+  /if-async@3.7.4:
+    resolution: {integrity: sha512-BFEH2mZyeF6KZKaKLVPZ0wMjIiWOdjvZ7zbx8ENec0qfZhJwKFbX/4jKM5LTKyJEc/GOqUKiiJ2IFKT9yWrZqA==}
+    dev: true
 
   /ignore-by-default@1.0.1:
     resolution: {integrity: sha512-Ius2VYcGNk7T90CppJqcIkS5ooHUZyIQK+ClZfMfMNFEF9VSE73Fq+906u/CWu92x4gzZMWOwfFYckPObzdEbA==}
@@ -20772,6 +20835,10 @@ packages:
     dependencies:
       callsites: 3.1.0
 
+  /parse-cache-control@1.0.1:
+    resolution: {integrity: sha512-60zvsJReQPX5/QP0Kzfd/VrpjScIQ7SHBW6bFCYfEP+fp0Eppr1SHhIO5nd1PjZtvclzSzES9D/p5nFJurwfWg==}
+    dev: true
+
   /parse-es-import@0.6.0(patch_hash=es5kxqeif6ghjeazo562grsbqa):
     resolution: {integrity: sha512-9JS+ahgEGKEYQZX4sIkGoqKlCgjMR50554STGFwIrh7tqmEJqejA2yDPxuW1jlw5Ug79+2BTfWNPkuCUBzeISQ==}
     dependencies:
@@ -21044,24 +21111,16 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
 
-  /playwright-core@1.25.1:
-    resolution: {integrity: sha512-lSvPCmA2n7LawD2Hw7gSCLScZ+vYRkhU8xH0AapMyzwN+ojoDqhkH/KIEUxwNu2PjPoE/fcE0wLAksdOhJ2O5g==}
-    engines: {node: '>=14'}
-    hasBin: true
-
   /playwright-core@1.40.0:
     resolution: {integrity: sha512-fvKewVJpGeca8t0ipM56jkVSU6Eo0RmFvQ/MaCQNDYm+sdvKkMBBWTE1FdeMqIdumRaXXjZChWHvIzCGM/tA/Q==}
     engines: {node: '>=16'}
     hasBin: true
     dev: false
 
-  /playwright@1.25.1:
-    resolution: {integrity: sha512-kOlW7mllnQ70ALTwAor73q/FhdH9EEXLUqjdzqioYLcSVC4n4NBfDqeCikGuayFZrLECLkU6Hcbziy/szqTXSA==}
-    engines: {node: '>=14'}
+  /playwright-core@1.43.0:
+    resolution: {integrity: sha512-iWFjyBUH97+pUFiyTqSLd8cDMMOS0r2ZYz2qEsPjH8/bX++sbIJT35MSwKnp1r/OQBAqC5XO99xFbJ9XClhf4w==}
+    engines: {node: '>=16'}
     hasBin: true
-    requiresBuild: true
-    dependencies:
-      playwright-core: 1.25.1
 
   /playwright@1.40.0:
     resolution: {integrity: sha512-gyHAgQjiDf1m34Xpwzaqb76KgfzYrhK7iih+2IzcOCoZWr/8ZqmdBw+t0RU85ZmfJMgtgAiNtBQ/KS2325INXw==}
@@ -21072,6 +21131,15 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
+
+  /playwright@1.43.0:
+    resolution: {integrity: sha512-SiOKHbVjTSf6wHuGCbqrEyzlm6qvXcv7mENP+OZon1I07brfZLGdfWV0l/efAzVx7TF3Z45ov1gPEkku9q25YQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.43.0
+    optionalDependencies:
+      fsevents: 2.3.2
 
   /please-upgrade-node@3.2.0:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
@@ -23164,6 +23232,15 @@ packages:
       type-fest: 0.6.0
     dev: true
 
+  /readable-stream@1.0.34:
+    resolution: {integrity: sha512-ok1qVCJuRkNmvebYikljxJA/UEsKwLl2nI1OmaqAu4/UE+h0wKCHok4XkL/gvi39OacXvw59RJUOFUkDib2rHg==}
+    dependencies:
+      core-util-is: 1.0.3
+      inherits: 2.0.4
+      isarray: 0.0.1
+      string_decoder: 0.10.31
+    dev: true
+
   /readable-stream@1.1.14:
     resolution: {integrity: sha512-+MeVjFf4L44XUkhM1eYbD8fyEsxcV81pqMSR5gblfcLCHfZvbrqy4/qYHE+/R5HoBUT11WV5O08Cr1n3YXkWVQ==}
     dependencies:
@@ -23282,6 +23359,17 @@ packages:
   /reflect-metadata@0.1.13:
     resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
     dev: false
+
+  /regedit@5.1.2:
+    resolution: {integrity: sha512-pQpWqO/I40bMNoMO9kTQx3e5iK542kYcB/Z8X3Y7Hcri6ydc4KZ9ByUsEWFkBRMcwo+2irHuNK5s+pMGPr6VPw==}
+    dependencies:
+      debug: 4.3.4(supports-color@5.5.0)
+      if-async: 3.7.4
+      stream-slicer: 0.0.6
+      through2: 0.6.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /regenerate-unicode-properties@10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}
@@ -23867,7 +23955,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: false
 
   /send@0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
@@ -24450,6 +24537,10 @@ packages:
 
   /stream-shift@1.0.1:
     resolution: {integrity: sha512-AiisoFqQ0vbGcZgQPY1cdP2I76glaVA/RauYR4G4thNFgkTqr90yXTo4LYX60Jl+sIlPNHHdGSwo01AvbKUSVQ==}
+
+  /stream-slicer@0.0.6:
+    resolution: {integrity: sha512-QsY0LbweYE5L+e+iBQgtkM5WUIf7+kCMA/m2VULv8rEEDDnlDPsPvOHH4nli6uaZOKQEt64u65h0l/eeZo7lCw==}
+    dev: true
 
   /stream-transform@3.2.2:
     resolution: {integrity: sha512-DHZQPNxvjU2qdQlGcpitn8pkJHQVTqdshtgXaLz6Vc5VCAognbGuuwGS5ugeqGVnyw8j4h89QcV8cwm0D1+V0A==}
@@ -25107,6 +25198,13 @@ packages:
       xtend: 4.0.2
     dev: true
 
+  /through2@0.6.5:
+    resolution: {integrity: sha512-RkK/CCESdTKQZHdmKICijdKKsCRVHs5KsLZ6pACAmF/1GPUQhonHSXWNERctxEp7RmvjdNbZTL5z9V7nSCXKcg==}
+    dependencies:
+      readable-stream: 1.0.34
+      xtend: 4.0.2
+    dev: true
+
   /through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
     dependencies:
@@ -25460,6 +25558,10 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
+
+  /typedarray@0.0.6:
+    resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
+    dev: true
 
   /typescript-plugin-css-modules@2.2.0(typescript@5.1.6):
     resolution: {integrity: sha512-bJoX+jyJkKsB3IJa7Ot7y7dMO8p7P8ZirT9sfyJ3wivzdYVdXpaIoc/ZW4Kts870++LVIpWyLOx3bWSGjVV/9w==}
@@ -26253,10 +26355,10 @@ packages:
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
       redent: 3.0.0
-      vitest: 0.34.6(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.25.1)(webdriverio@8.24.3)
+      vitest: 0.34.6(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.43.0)(webdriverio@8.24.3)
     dev: true
 
-  /vitest@0.34.5(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.25.1)(webdriverio@8.24.3):
+  /vitest@0.34.5(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.43.0)(webdriverio@8.24.3):
     resolution: {integrity: sha512-CPI68mmnr2DThSB3frSuE5RLm9wo5wU4fbDrDwWQQB1CWgq9jQVoQwnQSzYAjdoBOPoH2UtXpOgHVge/uScfZg==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -26290,7 +26392,7 @@ packages:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
       '@types/node': 18.16.15
-      '@vitest/browser': 1.3.0(playwright@1.25.1)(vitest@1.3.0)(webdriverio@8.24.3)
+      '@vitest/browser': 1.3.0(playwright@1.43.0)(vitest@1.3.0)(webdriverio@8.24.3)
       '@vitest/expect': 0.34.5
       '@vitest/runner': 0.34.5
       '@vitest/snapshot': 0.34.5
@@ -26307,7 +26409,7 @@ packages:
       magic-string: 0.30.1
       pathe: 1.1.1
       picocolors: 1.0.0
-      playwright: 1.25.1
+      playwright: 1.43.0
       std-env: 3.3.3
       strip-literal: 1.0.1
       tinybench: 2.5.0
@@ -26326,7 +26428,7 @@ packages:
       - terser
     dev: false
 
-  /vitest@0.34.6(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.25.1)(webdriverio@8.24.3):
+  /vitest@0.34.6(@vitest/browser@1.3.0)(@vitest/ui@1.3.0)(jsdom@22.1.0)(playwright@1.43.0)(webdriverio@8.24.3):
     resolution: {integrity: sha512-+5CALsOvbNKnS+ZHMXtuUC7nL8/7F1F2DnHGjSsszX8zCjWSSviphCb/NuS9Nzf4Q03KyyDRBAXhF/8lffME4Q==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -26360,7 +26462,7 @@ packages:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
       '@types/node': 18.16.15
-      '@vitest/browser': 1.3.0(playwright@1.25.1)(vitest@1.3.0)(webdriverio@8.24.3)
+      '@vitest/browser': 1.3.0(playwright@1.43.0)(vitest@1.3.0)(webdriverio@8.24.3)
       '@vitest/expect': 0.34.6
       '@vitest/runner': 0.34.6
       '@vitest/snapshot': 0.34.6
@@ -26377,7 +26479,7 @@ packages:
       magic-string: 0.30.5
       pathe: 1.1.2
       picocolors: 1.0.0
-      playwright: 1.25.1
+      playwright: 1.43.0
       std-env: 3.7.0
       strip-literal: 1.0.1
       tinybench: 2.6.0
@@ -26422,7 +26524,7 @@ packages:
         optional: true
     dependencies:
       '@types/node': 18.16.15
-      '@vitest/browser': 1.3.0(playwright@1.25.1)(vitest@1.3.0)(webdriverio@8.24.3)
+      '@vitest/browser': 1.3.0(playwright@1.43.0)(vitest@1.3.0)(webdriverio@8.24.3)
       '@vitest/expect': 1.3.0
       '@vitest/runner': 1.3.0
       '@vitest/snapshot': 1.3.0

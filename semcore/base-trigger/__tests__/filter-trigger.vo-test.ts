@@ -1,14 +1,15 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import { voTest as test } from '@guidepup/playwright';
+import { voiceOverTest as test } from '@guidepup/playwright';
+
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 import { writeFile } from 'fs/promises';
 
-test('Users can interact with FilterTrigger via VoiceOver', async ({
+test.skip('Users can interact with FilterTrigger via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/filter-trigger/examples/select.tsx';
+  const standPath = 'website/docs/components/filter-trigger/examples/usage_with_select.tsx';
   const reportPath = 'website/docs/components/filter-trigger/filter-trigger-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');

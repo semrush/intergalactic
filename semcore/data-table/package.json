@@ -20,8 +20,8 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@semcore/testing-utils": "1.0.0",
-    "@guidepup/playwright": "0.6.1",
-    "@playwright/test": "1.25.1",
+    "@guidepup/playwright": "0.13.2",
+    "@playwright/test": "1.43.0",
     "@semcore/base-trigger": "*",
     "@semcore/dropdown-menu": "*",
     "@semcore/typography": "*",
