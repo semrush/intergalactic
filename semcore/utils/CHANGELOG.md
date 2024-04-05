@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.22.1] - 2024-04-05
+
+### Added
+
+- Added option `keyboardFocusEnhance` to control should the enhance make components focusable.
+
+## [4.22.0] - 2024-03-20
+
+### Fixed
+
+- Lot of disallowed attributes were appling to DOM nodes.
+- Little (~10%) render performance improvement.
+
+## [4.21.1] - 2024-03-19
+
+### Fixed
+
+- Attribute `inert` was not appling to components.
+- Focus order for poppers opened from other poppers.
+
 ## [4.21.0] - 2024-03-13
 
 ### Fixed

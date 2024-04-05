@@ -162,6 +162,10 @@
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
 }
 
+.custom-block {
+  border-radius: 6px;
+}
+
 .dark {
   --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
@@ -465,7 +469,7 @@ td {
   border-radius: 6px;
 }
 
-img {
+img, video {
   border-radius: 6px;
 }
 
@@ -1004,4 +1008,13 @@ img {
   --vp-sidebar-bg-color: var(--vp-c-bg-alt);
   --docsearch-modal-background: var(--vp-c-bg-elv);
   --docsearch-container-background: rgba(25, 27, 35, 0.6);
+}
+
+.vp-doc .VPFeature h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.vp-doc .VPFeature {
+  text-decoration: none;
 }

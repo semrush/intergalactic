@@ -12,5 +12,13 @@
   "last12Months": "12 tháng qua",
   "prev": "Giai đoạn trước",
   "next": "Giai đoạn tới",
-  "input": "Trường ngày tháng"
+  "input": "Trường ngày tháng",
+  "compare": "So với",
+  "fromDate": "Từ {date}",
+  "toDate": "Đến {date}",
+  "dateRange": "Phạm vi ngày",
+  "dateRange1": "Khoảng thời gian đầu tiên",
+  "dateRange2": "Khoảng thời gian thứ hai",
+  "selectingStarted": "Bắt đầu chọn",
+  "selectingFinished": "Đã chọn"
 }

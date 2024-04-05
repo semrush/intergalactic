@@ -48,3 +48,19 @@ The 'Breakpoints.mediaList.matches()' will return the intex of the first matchin
 </script>
 
 :::
+
+## Mocking
+
+You can mock global media queries for testing purposes.
+
+::: warning
+It will work if you use `createBreakpoints` function only.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/mocking.tsx';
+</script>
+
+:::
