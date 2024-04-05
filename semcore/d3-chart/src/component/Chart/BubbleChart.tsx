@@ -17,7 +17,9 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
     return data.map((_, index) => index.toString());
   }
 
-  get defaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
+  protected override getDefaultDataDefinitions(): Array<
+    LegendItem & { columns: React.ReactNode[] }
+  > {
     const { legendProps, data } = this.props;
 
     return data.map((item, index) => {
