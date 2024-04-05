@@ -45,7 +45,7 @@
     "@babel/runtime": "7.17.9",
     "@biomejs/biome": "1.2.2",
     "@crowdin/cli": "3.10.1",
-    "@guidepup/playwright": "0.6.1",
+    "@guidepup/playwright": "0.13.2",
     "@jridgewell/set-array": "^1.1.2",
     "@playwright/test": "1.25.1",
     "@semcore/babel-plugin-react-semcore": "workspace:*",
