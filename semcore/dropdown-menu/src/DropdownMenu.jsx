@@ -566,7 +566,7 @@ function Trigger({ keyboardFocused, onKeyboardFocusedStateChange }) {
 
   return <Root render={Dropdown.Trigger} aria-haspopup='true' />;
 }
-Trigger.enhance = [keyboardFocusEnhance()];
+Trigger.enhance = [keyboardFocusEnhance(false)];
 
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
