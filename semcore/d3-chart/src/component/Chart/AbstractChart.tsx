@@ -22,7 +22,8 @@ type ChartState = {
 export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
-> extends Component<T, {}, ChartState> {
+  E = {},
+> extends Component<T, {}, ChartState, E> {
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
@@ -89,16 +90,33 @@ export abstract class AbstractChart<
       if (legendData && 'columns' in legendData) {
         dataDefinition.columns = legendData.columns || [];
       } else if (!Array.isArray(data)) {
-        const value = (data instanceof Map ? data.get(key) : Number(data[key])) ?? 0;
-        const total = Object.values(data).reduce<number>((sum, i) => sum + Number(i), 0);
-        const percent = ((value / total) * 100).toFixed(2);
+        let value: number | undefined = undefined;
+        let dataValue = data[key];
+
+        if (data instanceof Map) {
+          dataValue = data.get(key);
+        }
+
+        if (dataValue !== interpolateValue) {
+          value = Number(dataValue);
+        }
+
+        // const value = (data instanceof Map ? data.get(key) : Number(data[key])) ?? 0;
+        const total = Object.values(data).reduce<number>((sum, i) => {
+          if (i !== interpolateValue) {
+            return sum + Number(i);
+          }
+
+          return sum;
+        }, 0);
+        const percent = value !== undefined ? ((value / total) * 100).toFixed(2) : undefined;
 
         dataDefinition.columns = [
           <Text key={`${key}_percent`} use={'secondary'}>
-            {percent}%
+            {percent !== undefined ? `${percent}%` : ''}
           </Text>,
           <Text key={`${key}_value`} use={'primary'}>
-            {value}
+            {value ?? 'n/a'}
           </Text>,
         ];
       }

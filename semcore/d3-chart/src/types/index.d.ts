@@ -100,3 +100,4 @@ export * from './component/Chart/DonutChart.type';
 export * from './component/Chart/VennChart.type';
 export * from './component/Chart/RadarChart.type';
 export * from './component/Chart/ScatterPlotChart.type';
+export * from './component/Chart/CigaretteChart.type';
