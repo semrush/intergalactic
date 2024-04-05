@@ -7,6 +7,7 @@ import { BubbleChart } from './BubbleChart';
 import { DonutChart } from './DonutChart';
 import { VennChart } from './VennChart';
 import { RadarChart } from './RadarChart';
+import { CigaretteChart } from './CigaretteChart';
 
 export default {
   Line: LineChart,
@@ -18,4 +19,5 @@ export default {
   Donut: DonutChart,
   Venn: VennChart,
   Radar: RadarChart,
+  Cigarette: CigaretteChart,
 };

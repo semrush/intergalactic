@@ -96,7 +96,7 @@ class HoverLineRoot extends Hover {
 
   render() {
     const SHoverLine = this.Element;
-    const { styles, x, y, data, scale } = this.asProps;
+    const { styles, x, y, data, scale, hideHoverLine } = this.asProps;
     const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
@@ -104,6 +104,10 @@ class HoverLineRoot extends Hover {
     const yRange = yScale.range();
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
+
+    if (hideHoverLine) {
+      return null;
+    }
 
     return sstyled(styles)(
       <>
@@ -139,7 +143,7 @@ class HoverRectRoot extends Hover {
 
   render() {
     const SHoverRect = this.Element;
-    const { styles, x, y, data, scale } = this.asProps;
+    const { styles, x, y, data, scale, hideHoverLine } = this.asProps;
     const { xIndex, yIndex } = this.state;
     const [xScale, yScale] = scale;
 
@@ -147,6 +151,10 @@ class HoverRectRoot extends Hover {
     const yRange = yScale.range();
     const xBand = scaleToBand(xScale);
     const yBand = scaleToBand(yScale);
+
+    if (hideHoverLine) {
+      return null;
+    }
 
     return sstyled(styles)(
       <>
