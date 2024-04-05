@@ -50,7 +50,7 @@ Table: Breadcrumbs styles
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
-| Link                | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
+| Link                | `font-size: var(--fs-200)`, `color: var(--text-secondary)`, `cursor: pointer`, no `line-height`. |
 | `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                              |
 
 ### Margins
@@ -73,8 +73,8 @@ Table: Breadcrumbs states
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
-| Normal | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
-| Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
+| Normal | `font-size: var(--fs-200)`, `color: var(--text-secondary)`, `cursor: pointer`, no `line-height`. |
+| Hover  | `color: var(--text-primary)` + underline                                       |
 | Active | `color: var(--text-primary)`, `cursor: default`                                         |
 
 ## Usage in UX/UI
