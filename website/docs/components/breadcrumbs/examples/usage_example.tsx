@@ -4,7 +4,6 @@ import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => (
   <Breadcrumbs tag='nav'>
-    <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
     <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
     <Breadcrumbs.Item href='#'>semrush.com</Breadcrumbs.Item>
     <Tooltip
