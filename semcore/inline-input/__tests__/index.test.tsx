@@ -143,7 +143,7 @@ describe('InlineInput', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.only.concurrent('on blur behavior', () => {
+  test.concurrent('on blur behavior', () => {
     vi.useFakeTimers();
     const spyCancel = vi.fn();
     const spyConfirm = vi.fn();

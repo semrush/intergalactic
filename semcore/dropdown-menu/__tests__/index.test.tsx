@@ -209,7 +209,7 @@ describe('DropdownMenu', () => {
     });
   });
 
-  test.only.concurrent('highlights selected item', async ({ expect }) => {
+  test.concurrent('highlights selected item', async ({ expect }) => {
     let highlightedIndex: number | undefined = undefined;
 
     const component = render(
