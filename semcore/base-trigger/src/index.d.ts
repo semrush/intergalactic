@@ -5,6 +5,9 @@ import { DotProps } from '@semcore/dot';
 import { NeighborItemProps } from '@semcore/neighbor-location';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { WithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import { Options } from '@popperjs/core/lib/types';
+
+type Placement = Options['placement'];
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
@@ -77,6 +80,8 @@ export type FilterTriggerProps = BaseTriggerProps & {
   triggerRef?: React.Ref<HTMLButtonElement>;
   /** To add tooltip with this text to clear button */
   clearHint?: string;
+  /** placement of clear tooltip */
+  clearHintPlacement?: Placement;
 };
 
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
