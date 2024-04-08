@@ -20,9 +20,5 @@
   "dateRange1": "Primer rango de fechas",
   "dateRange2": "Segundo rango de fechas",
   "selectingStarted": "Has empezado a seleccionar",
-  "selectingFinished": "Seleccionado",
-  "unavailableDate": "Selecciona una fecha disponible.",
-  "unavailableMonth": "Selecciona un mes disponible.",
-  "unavailableEndDate": "Selecciona una fecha de vencimiento disponible.",
-  "unavailableEndMonth": "Selecciona un mes de vencimiento disponible."
+  "selectingFinished": "Seleccionado"
 }

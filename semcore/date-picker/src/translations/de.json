@@ -20,9 +20,5 @@
   "dateRange1": "Erster Datumsbereich",
   "dateRange2": "Zweiter Datumsbereich",
   "selectingStarted": "Auswahl begonnen",
-  "selectingFinished": "Ausgewählt",
-  "unavailableDate": "Bitte wählen Sie ein verfügbares Datum aus.",
-  "unavailableMonth": "Bitte wählen Sie einen verfügbaren Monat aus.",
-  "unavailableEndDate": "Bitte wählen Sie ein verfügbares Fälligkeitsdatum aus.",
-  "unavailableEndMonth": "Bitte wählen Sie einen verfügbaren Fälligkeitsmonat aus."
+  "selectingFinished": "Ausgewählt"
 }
