@@ -10,6 +10,8 @@ SImage {
   align-items: flex-end;
   justify-content: center;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
+  width: 80px;
+  height: 80px;
 }
 
 STitle {
@@ -27,10 +29,10 @@ SDescription {
   max-width: 400px;
 }
 
-STitle + SDescription {
+STitle+SDescription {
   margin-top: var(--intergalactic-spacing-1x, 4px);
 }
 
-SDescription + SDescription {
+SDescription+SDescription {
   margin-top: var(--intergalactic-spacing-2x, 8px);
 }

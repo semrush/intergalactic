@@ -5,7 +5,7 @@ import EditM from 'intergalactic/icon/Edit/m';
 import { Text } from 'intergalactic/typography';
 
 const Example = () => {
-  const [title, setTitle] = React.useState('The Adventures of the Intergalactic Whale');
+  const [title, setTitle] = React.useState('The Adventures of Intergalactic Whale');
   const [editingTitle, setEditingTitle] = React.useState(false);
   const [savingTitle, setSavingTitle] = React.useState(false);
   const stopEditing = () => setEditingTitle(false);
@@ -21,10 +21,10 @@ const Example = () => {
 
   return (
     <>
-      <Text tag='h1' mb={2}>
+      <Text tag='h4' mb={2}>
         <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
           <InlineEdit.View pr={5}>
-            {title} <EditM />
+            {title} <EditM ml={1} />
           </InlineEdit.View>
           <InlineEdit.Edit>
             <InlineInput onConfirm={handleTitle} onCancel={stopEditing} loading={savingTitle}>

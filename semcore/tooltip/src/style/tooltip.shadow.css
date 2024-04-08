@@ -136,3 +136,12 @@ STooltip[data-popper-placement^='right'] SArrow {
     border-bottom-color: transparent !important;
   }
 }
+
+STooltipPortalledWrapper {
+  position: relative;
+  z-index: var(--intergalactic-z-index-tooltip, 800);
+}
+
+STooltipPortalledWrapper[zIndex] {
+  z-index: var(--zIndex);
+}

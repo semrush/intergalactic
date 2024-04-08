@@ -49,7 +49,7 @@ class RootNotice extends Component {
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme, use, resolveColor } = this.asProps;
+    const { Children, styles, hidden, theme, use, resolveColor, getI18nText } = this.asProps;
     const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
@@ -69,8 +69,9 @@ class RootNotice extends Component {
         visible={!hidden}
         use:theme={useTheme}
         backgroundColor={color}
-        role='status'
+        role='region'
         aria-live={isAssertive ? 'assertive' : 'polite'}
+        aria-label={getI18nText('notification')}
       >
         <Children />
       </SNotice>,

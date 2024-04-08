@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
 import Button from 'intergalactic/button';
-import Tooltip from 'intergalactic/tooltip';
+import { Hint } from 'intergalactic/tooltip';
 import ChevronDownM from 'intergalactic/icon/ChevronDown/m';
 import ChatM from 'intergalactic/icon/Chat/m';
 import BookM from 'intergalactic/icon/Book/m';
@@ -101,12 +101,9 @@ const Demo = () => {
             </Info.Item>
             <Info.Item label='Data:'>
               Fresh
-              <Tooltip
-                title='Some more details why data is fresh'
-                style={{ display: 'inline-flex' }}
-              >
+              <Hint title='Some more details why data is fresh' style={{ display: 'inline-flex' }}>
                 <InfoM ml={1} color='gray-300' cursor='help' />
-              </Tooltip>
+              </Hint>
             </Info.Item>
             <Info.Item>
               <Info.Item.Label>Last update:</Info.Item.Label>1 hour ago

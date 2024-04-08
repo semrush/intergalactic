@@ -279,16 +279,59 @@ class ScrollBarRoot extends Component {
 
   render() {
     const SScrollBar = Root;
-    const { styles, uid } = this.asProps;
+    const { styles, uid, position, container, orientation } = this.asProps;
     const { visibleScroll } = this.state;
+
+    let { leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
     if (!visibleScroll) {
       return null;
     }
 
+    let offsetSum = 0;
+
+    if (orientation === 'horizontal') {
+      if (leftOffset) offsetSum += leftOffset;
+      if (rightOffset) offsetSum += rightOffset;
+
+      if (position === 'sticky' && container.current) {
+        const { left, right } = container.current.getBoundingClientRect();
+
+        if (leftOffset) {
+          leftOffset += left;
+        }
+
+        if (rightOffset) {
+          rightOffset += right;
+        }
+      }
+    }
+
+    if (orientation === 'vertical') {
+      if (topOffset) offsetSum += topOffset;
+      if (bottomOffset) offsetSum += bottomOffset;
+
+      if (position === 'sticky' && container.current) {
+        const { top, bottom } = container.current.getBoundingClientRect();
+
+        if (topOffset) {
+          topOffset += top;
+        }
+
+        if (bottomOffset) {
+          bottomOffset += bottom;
+        }
+      }
+    }
+
     return sstyled(styles)(
       <SScrollBar
         render={Box}
+        left={orientation === 'horizontal' && leftOffset ? `${leftOffset}px` : undefined}
+        right={orientation === 'horizontal' && rightOffset ? `${rightOffset}px` : undefined}
+        top={orientation === 'vertical' && topOffset ? `${topOffset}px` : undefined}
+        bottom={orientation === 'vertical' && bottomOffset ? `${bottomOffset}px` : undefined}
+        offsetSum={`${offsetSum}px`}
         role='scrollbar'
         ref={this.refBar}
         aria-valuemin={0}

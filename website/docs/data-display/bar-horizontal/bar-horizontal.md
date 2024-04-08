@@ -174,8 +174,6 @@ Show "No more results" with a 32px margin below values and text with `--text-sec
 
 ![](static/no-more-bar-horizontal.png)
 
-![](static/no-more-2.png)
-
 ### Null values
 
 If all values on the chart are zero, display zero in the tooltips.

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
-import Tooltip from 'intergalactic/tooltip';
+import { Hint } from 'intergalactic/tooltip';
 import 'intergalactic/utils/style/var.css';
 import { AnimatedNumber } from 'intergalactic/counter/src';
 
@@ -45,11 +45,11 @@ const Demo = () => {
   return (
     <Flex flexWrap className='container'>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Keyword' wMax='100%'>
+        <Hint title='Keyword' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Keyword
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
@@ -71,11 +71,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Traffic' wMax='100%'>
+        <Hint title='Traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
@@ -101,11 +101,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Tooltip title='Traffic cost' wMax='100%'>
+        <Hint title='Traffic cost' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic cost
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
@@ -127,11 +127,11 @@ const Demo = () => {
         </Flex>
       </Box>
       <Box w={160} mb={4}>
-        <Tooltip title='Non-branded traffic' wMax='100%'>
+        <Hint title='Non-branded traffic' wMax='100%'>
           <Text size={200} tag='p' noWrap tabIndex={0}>
             Non-branded traffic
           </Text>
-        </Tooltip>
+        </Hint>
         <Text size={100} color='gray-500' tag='p'>
           all time
         </Text>

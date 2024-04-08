@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.0] - 2024-03-27
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.21.1 ~> 4.22.0], `@semcore/button` [5.21.1 ~> 5.22.0], `@semcore/breakpoints` [1.20.1 ~> 1.21.0]).
+
+## [3.30.1] - 2024-03-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.21.0 ~> 4.21.1], `@semcore/button` [5.21.0 ~> 5.21.1], `@semcore/breakpoints` [1.20.0 ~> 1.20.1]).
+
+## [3.30.0] - 2024-03-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.28.0 ~> 4.29.0]).
+
+## [3.29.0] - 2024-03-14
+
+### Changed
+
+- The whole Carousel is focusable and prev/next buttons not focusable.
+
 ## [3.28.3] - 2024-03-05
 
 ### Changed

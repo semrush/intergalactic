@@ -8,7 +8,7 @@ test.describe('Tooltip', () => {
 
     await page.setContent(htmlContent);
 
-    const trigger = await page.locator('text=Trigger');
+    const trigger = await page.locator('text=Hint');
     const triggerRect = (await trigger.boundingBox())!;
 
     await page.mouse.move(
