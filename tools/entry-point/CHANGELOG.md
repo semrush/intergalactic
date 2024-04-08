@@ -1,8 +1,156 @@
+## [15.75.2] - 2024-03-29
+
+### @semcore/data-table
+
+- **Fixed** Displaying elements with `position=relative` in table with fixed columns.
+- **Fixed** Made Table.Header unfocusable.
+
+## [15.75.1] - 2024-03-27
+
+### @semcore/tooltip
+
+- **Fixed** Added missing portal component dependency.
+
+## [15.75.0] - 2024-03-27
+
+### @semcore/utils
+
+- **Fixed** Lot of disallowed attributes were appling to DOM nodes.
+- **Fixed** Little (~10%) render performance improvement.
+
+## [15.74.0] - 2024-03-26
+
+### @semcore/date-picker
+
+- **Added** `DateRangeComparator` and `MonthDateRangeComparator` missing translations.
+
+### @semcore/dropdown-menu
+
+- **Fixed** After second reopen of dropdown menu, the second item was highlighted instead of the first one.
+
+### @semcore/illustration
+
+- **Changed** `DeletedPage` illustration was updated according to new style.
+
+### @semcore/notice
+
+- **Changed** `role` was changed from `status` to `region`.
+- **Added** Default `aria-label` ("Notification" in English and translated for other locales accordingly).
+
+### @semcore/popper
+
+- **Fixed** Focus lock with `disablePortal` prop.
+
+### @semcore/portal
+
+- **Added** Api to get know if the portal is mounted (`onMount` prop).
+- **Fixed** Portal hydration errors in nextjs and astro.
+
+### @semcore/utils
+
+- **Fixed** Attribute `inert` was not appling to components.
+- **Fixed** Focus order for poppers opened from other poppers.
+
+## [15.73.0] - 2024-03-22
+
+### @semcore/d3-chart
+
+- **Fixed** Errors in children render functions.
+- **Changed** `DotCircle` size in Tooltip from 12px to 8px.
+
+### @semcore/icon
+
+- **Added** New `ChartBarStackedColumn` icon.
+
+### @semcore/illustration
+
+- **Added** `AccessLogIn` illustration.
+
+### @semcore/tooltip
+
+- **Fixed** Error about `zIndex` in DOM element.
+
+## [15.72.0] - 2024-03-19
+
+### @semcore/data-table
+
+- **Fixed** `data-table` layout shift on the first render
+- **Changed** Keyboard navigation in table with fixed columns.
+
+### @semcore/dropdown-menu
+
+- **Fixed** `Enter` or `Space` keypress on focusable element inside of DropdownMenu was causing last highlighted item to be clicked.
+
+### @semcore/input-tags
+
+- **Fixed** It wasn't possible to move focus back from the empty input-tags container with `Shift+Tab`.
+
+### @semcore/notice-bubble
+
+- **Fixed** Enforced that close button now uses `button` tag by default.
+
+### @semcore/pagination
+
+- **Fixed** Values in Input after keyboard navigation.
+
+### @semcore/popper
+
+- **Changed** Popper focus ring is rounded now.
+
+### @semcore/scroll-area
+
+- **Added** Feature `offset`.
+
+### @semcore/select
+
+- **Fixed** `Select.Option.Checkbox` visual displaying.
+
+### @semcore/tooltip
+
+- **Removed** `undefined` role from `Tooltip.Trigger`.
+- **Fixed** Removed `aria-live` from trigger and added it to popper.
+
+### @semcore/typography
+
+- **Changed** `List.Item` is `block` element by default.
+
+### @semcore/widget-empty
+
+- **Fixed** Added widget empty image default width and height.
+- **Fixed** Widget empty image alt set to empty string to hide it from screen readers.
+
+## [15.71.0] - 2024-03-15
+
+### @semcore/carousel
+
+- **Changed** The whole Carousel is focusable and prev/next buttons not focusable.
+
+### @semcore/d3-chart
+
+- **Changed** Improved `Chart.Bubble` plot scaling to better fit bubbles and reduce plot empty space.
+
+### @semcore/dropdown-menu
+
+- **Changed** Highlight initially selected item after opening dropdown.
+
+### @semcore/icon
+
+- **Added** New `ShareAlt` icon.
+
+### @semcore/notice-bubble
+
+- **Changed** Close button now uses `button` tag (instead of `div` before).
+
+### @semcore/tooltip
+
+- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
+- **Fixed** Tooltips `z-index` was lower than `z-index` of all other floating elements..
+
+### @semcore/utils
+
+- **Fixed** `useUID` hook was producing different ids on SSR and client. Now it uses `React.useId` if it's available.
+
 ## [15.70.0] - 2024-03-12
-
-### @semcore/base-trigger
-
-- **Added** ButtonTrigger got `chevron` prop that controls display of chevron icon.
 
 ### @semcore/d3-chart
 
@@ -12,16 +160,6 @@
 
 - **Added** `withScrollBar` prop to enable scrolling in `DataTable.Head`.
 - **Added** `renderRows` prop to `DataTable.Body` for low level control over rows rendering. Especially it allows to use custom virtual rendering.
-
-### @semcore/date-picker
-
-- **Changed** Selected date range now is immediately represented in input trigger even before clicking the apply button.
-- **Changed** While typings date range in input trigger, the calendar changes displayed period to a typed one.
-- **Fixed** In month date range pickers the second calendar was not usable from the keyboard.
-
-### @semcore/scroll-area
-
-- **Fixed** Unexpected scroll in some corner cases.
 
 ## [15.69.0] - 2024-03-11
 
@@ -2381,7 +2519,7 @@
 
 ### @semcore/pills
 
-- **Added** Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+- **Added** Added `behavior` prop for better accessibility in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
 
 ### @semcore/utils
 
@@ -2464,7 +2602,7 @@
 
 ### @semcore/divider
 
-- **Changed** Role `separator` and `aria-orientation` were added for better accessability.
+- **Changed** Role `separator` and `aria-orientation` were added for better accessibility.
 
 ### @semcore/portal
 
@@ -3918,7 +4056,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** Fixed `FilterTrigger` accessability.
+- **Fixed** Fixed `FilterTrigger` accessibility.
 
 ### @semcore/checkbox
 
@@ -4007,7 +4145,7 @@
 
 ### @semcore/inline-input
 
-- **Added** Added accessability needed aria label.
+- **Added** Added accessibility needed aria label.
 
 ### @semcore/input-mask
 

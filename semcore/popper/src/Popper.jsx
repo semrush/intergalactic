@@ -7,7 +7,12 @@ import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
 import { setRef } from '@semcore/utils/lib/ref';
-import { useFocusLock, isFocusInside, setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import {
+  useFocusLock,
+  isFocusInside,
+  setFocus,
+  makeFocusLockSyntheticEvent,
+} from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -483,13 +488,20 @@ function PopperPopper(props) {
   const ref = React.useRef(null);
 
   // https://github.com/facebook/react/issues/11387
-  const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
+  const stopPropagation = React.useCallback((event) => {
+    event.stopPropagation();
+  }, []);
+  const propagateFocusLockSyntheticEvent = React.useCallback((event) => {
+    event.nativeEvent.stopImmediatePropagation();
+    ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));
+  }, []);
 
+  const [portalMounted, setPortalMounted] = React.useState(disablePortal);
   useFocusLock(
     ref,
     autoFocus,
     triggerRef,
-    !visible || disableEnforceFocus,
+    !visible || disableEnforceFocus || !portalMounted,
     focusMaster,
     handleFocusOut,
   );
@@ -521,7 +533,11 @@ function PopperPopper(props) {
   }, [animationCtx, ignorePortalsStacking]);
 
   return sstyled(styles)(
-    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
+    <Portal
+      disablePortal={disablePortal}
+      ignorePortalsStacking={ignorePortalsStacking}
+      onMount={setPortalMounted}
+    >
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={Scale}
@@ -545,11 +561,11 @@ function PopperPopper(props) {
           onMouseOver={stopPropagation}
           onMouseOut={stopPropagation}
           onMouseUp={stopPropagation}
-          onKeyDown={stopPropagation}
+          onKeyDown={propagateFocusLockSyntheticEvent}
           onKeyPress={stopPropagation}
           onKeyUp={stopPropagation}
           onFocus={stopPropagation}
-          onBlur={stopPropagation}
+          onBlur={propagateFocusLockSyntheticEvent}
           onChange={stopPropagation}
           onInput={stopPropagation}
           onInvalid={stopPropagation}

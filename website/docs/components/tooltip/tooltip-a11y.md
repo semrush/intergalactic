@@ -15,25 +15,52 @@ Table: Keyboard support
 | ----- | ------------------- |
 | `Esc` | Closes the tooltip. |
 
-### Roles and attributes
+### Focus behavior
 
-The list below describes roles and attributes that component already has.
+1. For `Hint`, the popper is not focusable.
+2. In the case of `Tooltip`, the popper becomes focusable if it contains any focusable elements.
+3. With `DescriptionTooltip`, the popper is always focusable and automatically receives focus when opened.
+
+### Hint attributes
+
+The list below describes attributes that `Hint` component has.
+
+Table: Hint attributes
+
+| Attribute                 | Element  | Usage                                                                                                                                                                                                                                                             |
+| ------------------------- | -------- | -------------------------------------------------------------------- |
+| `aria-hidden` | popper   | `Hint` popper is hidden from assistive technologies.                   |
+| `aria-label` | trigger  | The applied trigger text matches the text in the popper.  |
+
+### Tooltip roles and attributes
+
+The list below describes roles and attributes that `Tooltip` component has.
 
 Table: Roles and attributes
 
 | Role      | Attribute                 | Element                                                   | Usage                                                                                                                                                                                                                                                             |
 | --------- | ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tooltip` |                           | `div`                                                     | It's a contextual text bubble that displays a description for an element that appears on pointer hover or keyboard focus.                                                                                                                                         |
-|           | `aria-live="polite"`      | Implicit on `div`                                         | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle.                                                  |
-|           | `aria-live="assertive"`   | Implicit on `div` (only for tooltip with `warning` theme) | Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. Should only be used for time-sensitive/critical notifications that absolutely require the user's immediate attention. |
-|           | `aria-describedby`        | trigger                                                   | Added automatically. If you need to set it on another element, checkout [the accessability example](/components/tooltip/tooltip-code#accessability).                                                                                                              |
+| `tooltip` |                           | `div` | It's a contextual text bubble that displays a description for an element that appears on pointer hover or keyboard focus.                                                                                                                                         |
+|           | `aria-describedby` | trigger                                                   | Allows assistive technologies to announce a trigger description by popper content. If you need to set it on another element, checkout [the accessibility example](/components/tooltip/tooltip-code#popper-trigger-accessibility).                                                |
+|           | `aria-live="polite"` | Implicit on `div` | Used to keep component accessible with browsers and screen readers that doesn't support `aria-describedby` . Assistive technologies will announce popper content when it's opened or changed.                                                                      |
+|           | `aria-live="assertive"` | Implicit on `div` (only for tooltip with `warning` theme) | Same to `aria-live="polite"` . |
+
+### DescriptionTooltip roles and attributes
+
+The list below describes roles and attributes that `DescriptionTooltip` component has.
+
+Table: Roles and attributes
+
+| Role      | Attribute                 | Element                                                   | Usage                                                                                                                      |
+| --------- | ------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `tooltip` |                           | `div` | It's a contextual text bubble that displays a description for an element that appears on pointer hover or keyboard focus.  |
+|           | `aria-haspopup` | trigger                                                   | Helps assistive technologies to indicate that trigger has corresponding dropdown.                                          |
+|           | `aria-expanded` | trigger                                                   | Added when popper is visible. Helps assistive technologies to indicate that opened dropdown.                               |
 
 ## Considerations for developers
 
-- Tooltips shouldn't receive focus. The focus should remain on the field, button, or link the tooltip is about.
 - When open, tooltips shouldn't block a user from performing any task on the page.
 - Tooltips shouldn't be revealed until a short time has passed (~1-5 seconds).
-- Depending on the tooltip option you choose, there may be additional ARIA tags you should apply. Add `aria-describedby="example1"` on an input field and link it to a related section with a matching ID selector `id="example1"`.
 - Whenever possible, use descriptive text on your form fields that does need to be activated by a focus or hover event. Tooltips can be problematic for some assistive technologies (AT) devices.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-tooltips).

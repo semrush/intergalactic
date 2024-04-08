@@ -8,9 +8,9 @@ const Demo = () => (
     <Box m='auto' p={5}>
       <Tooltip>
         <Tooltip.Trigger aria-describedby={undefined}>
-          {({ popperId }) => <Link aria-describedby={popperId}>Hello world</Link>}
+          {({ popperId }) => <Link aria-describedby={popperId}>Tooltip trigger</Link>}
         </Tooltip.Trigger>
-        <Tooltip.Popper>Hello, stranger</Tooltip.Popper>
+        <Tooltip.Popper>Hello, stranger!</Tooltip.Popper>
       </Tooltip>
     </Box>
   </Flex>

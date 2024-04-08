@@ -4,7 +4,7 @@ import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { axe } from '@semcore/testing-utils/axe';
 
-import Tooltip from '../src';
+import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
 describe('Tooltip', () => {
   beforeEach(cleanup);
@@ -222,15 +222,38 @@ describe('TooltipBase', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async () => {
-    const { container } = render(
-      <Tooltip visible disablePortal>
-        <Tooltip.Trigger tag='button'>trigger</Tooltip.Trigger>
-        <Tooltip.Popper>text tooltip</Tooltip.Popper>
-      </Tooltip>,
-    );
+  describe('a11y', () => {
+    test('Hint', async () => {
+      const { container } = render(
+        <Hint title='text' visible disablePortal tag='a'>
+          trigger
+        </Hint>,
+      );
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+    test('Tooltip', async () => {
+      const { container } = render(
+        <Tooltip visible disablePortal>
+          <Tooltip.Trigger tag='button'>trigger</Tooltip.Trigger>
+          <Tooltip.Popper>text</Tooltip.Popper>
+        </Tooltip>,
+      );
+
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+    test('DescriptionTooltip', async () => {
+      const { container } = render(
+        <DescriptionTooltip visible disablePortal>
+          <DescriptionTooltip.Trigger tag='button'>trigger</DescriptionTooltip.Trigger>
+          <DescriptionTooltip.Popper>text</DescriptionTooltip.Popper>
+        </DescriptionTooltip>,
+      );
+
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
   });
 });

@@ -78,6 +78,30 @@ export const initPrerelease = async () => {
   }
 };
 
+export const uploadStatic = async () => {
+  const updatedPackages = await GitUtils.getUpdatedPackages();
+  const prerelease = await GitUtils.getPrerelease();
+
+  if (prerelease === null) {
+    log('No prerelease info in current tag. Skip.');
+    process.exit();
+  }
+
+  log('Update versions to prerelease...');
+  await updateVersions(
+    updatedPackages.map((pack) => {
+      return {
+        name: pack,
+        prerelease,
+      };
+    }),
+  );
+
+  const pnpmFilter = updatedPackages.map((pack) => `--filter ${pack}`).join(' ');
+
+  await NpmUtils.uploadStatic(pnpmFilter);
+};
+
 export const publishPrerelease = async () => {
   const updatedPackages = await GitUtils.getUpdatedPackages();
   const prerelease = await GitUtils.getPrerelease();

@@ -815,14 +815,12 @@ export const sideBarConfig: SidebarConfig = [
   {
     items: [
       {
-        text: 'Bugs and requests',
-        collapsed: true,
-        items: [
-          {
-            link: '/bug-reporting/report-bug/report-bug',
-            text: 'Bug reporting',
-          },
-        ],
+        link: '/blog/',
+        text: 'Intergalactic news',
+      },
+      {
+        link: '/bug-reporting/report-bug/report-bug',
+        text: 'Bug reporting',
       },
       {
         text: 'Terms',

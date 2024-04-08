@@ -11,10 +11,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     steps:
       - uses: actions/checkout@v4.1.1
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
@@ -47,14 +50,14 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/illustration/svg/*.svg
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
-        run: |
-          pnpm build
+        run: pnpm build
   static-lint:
     runs-on: ubuntu-latest
     needs: build
@@ -93,6 +96,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/illustration/svg/*.svg
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
       - name: Install dependencies
         run: |
@@ -102,9 +106,13 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     needs: build
+    env:
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.1
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          fetch-depth: 0
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
@@ -136,6 +144,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/illustration/svg/*.svg
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
       - name: Install restored dependencies
         run: |
@@ -145,7 +154,9 @@ jobs:
         run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test:docker run
+        run: |
+          pnpm upload-static
+          pnpm test:docker run
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
@@ -196,6 +207,7 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
+            semcore/illustration/svg/*.svg
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-4
       - name: Install restored dependencies
         run: |

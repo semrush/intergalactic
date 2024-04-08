@@ -2,11 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.29.0] - 2024-03-14
+## [4.32.0] - 2024-04-09
 
 ### Added
 
 - `clearHint` prop to `FilterTrigger`.
+- `clearHintPosition` prop to `FilterTrigger`
+
+## [4.31.0] - 2024-03-27
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.21.1 ~> 4.22.0]).
+
+## [4.30.1] - 2024-03-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.21.0 ~> 4.21.1]).
+
+## [4.30.0] - 2024-03-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.28.0 ~> 4.29.0]).
+
+## [4.29.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.27.1 ~> 4.28.0], `@semcore/utils` [4.20.5 ~> 4.21.0]).
 
 ## [4.28.0] - 2024-03-07
 

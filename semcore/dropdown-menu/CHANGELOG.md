@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.1] - 2024-04-03
+
+### Fixed
+
+- Menu item was displaying highlighted ring when dropdown is opened by mouse interaction.
+
+## [4.25.0] - 2024-03-27
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.22.1 ~> 4.23.0], `@semcore/utils` [4.21.1 ~> 4.22.0], `@semcore/core` [2.18.1 ~> 2.19.0]).
+
+## [4.24.2] - 2024-03-26
+
+### Fixed
+
+- After second reopen of dropdown menu, the second item was highlighted instead of the first one.
+
+## [4.24.1] - 2024-03-15
+
+### Fixed
+
+- `Enter` or `Space` keypress on focusable element inside of DropdownMenu was causing last highlighted item to be clicked.
+
+## [4.24.0] - 2024-03-13
+
+### Changed
+
+- Highlight initially selected item after opening dropdown.
+
 ## [4.23.2] - 2024-03-11
 
 ### Changed

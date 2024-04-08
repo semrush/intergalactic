@@ -1789,6 +1789,7 @@
       "base-trigger",
       "breadcrumbs",
       "button",
+      "carousel",
       "checkbox",
       "color-picker",
       "d3-chart",
@@ -2560,7 +2561,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "tooltip"]
+    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "popper", "tooltip"]
   },
   {
     "name": "--intergalactic-modal-rounded",
@@ -2705,7 +2706,7 @@
     "type": "other",
     "rawValue": "800",
     "computedValue": "800",
-    "components": []
+    "components": ["tooltip"]
   },
   {
     "name": "--intergalactic-z-index-notice-bubble",

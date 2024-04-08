@@ -1,7 +1,0 @@
-SShadowHorizontal:before {
-  left: var(--left-offset) !important;
-}
-
-SShadowHorizontal:after {
-  right: var(--right-offset) !important;
-}

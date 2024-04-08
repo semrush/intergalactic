@@ -2,6 +2,37 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.22.0] - 2024-03-27
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.20.1 ~> 5.21.0], `@semcore/illustration` [2.20.0 ~> 2.21.0], `@semcore/utils` [4.21.1 ~> 4.22.0], `@semcore/core` [2.18.1 ~> 2.19.0]).
+
+## [4.21.1] - 2024-03-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.20.0 ~> 5.20.1], `@semcore/illustration` [2.19.0 ~> 2.20.0], `@semcore/utils` [4.21.0 ~> 4.21.1], `@semcore/core` [2.18.0 ~> 2.18.1]).
+
+## [4.21.0] - 2024-03-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/illustration` [2.18.0 ~> 2.19.0]).
+
+## [4.20.0] - 2024-03-18
+
+### Fixed
+
+- Added widget empty image default width and height.
+- Widget empty image alt set to empty string to hide it from screen readers.
+
+## [4.19.0] - 2024-03-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.19.4 ~> 5.20.0], `@semcore/illustration` [2.17.6 ~> 2.18.0], `@semcore/utils` [4.20.5 ~> 4.21.0], `@semcore/core` [2.17.5 ~> 2.18.0]).
+
 ## [4.18.6] - 2024-03-06
 
 ### Changed
