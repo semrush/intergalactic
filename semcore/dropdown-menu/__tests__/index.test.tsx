@@ -88,7 +88,9 @@ describe('DropdownMenu', () => {
         <DropdownMenu.List>
           <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
           <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-          <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
+          <DropdownMenu.Item highlighted {...({ keyboardFocused: true } as any)}>
+            highlighted
+          </DropdownMenu.Item>
         </DropdownMenu.List>
       </DropdownMenu>
     );
@@ -209,7 +211,7 @@ describe('DropdownMenu', () => {
     });
   });
 
-  test.only.concurrent('highlights selected item', async ({ expect }) => {
+  test.concurrent('highlights selected item', async ({ expect }) => {
     let highlightedIndex: number | undefined = undefined;
 
     const component = render(
