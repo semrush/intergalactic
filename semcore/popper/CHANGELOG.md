@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.0] - 2024-03-27
+
+### Fixed
+
+- Select and similar components with disabled portal were not working properly being wrapped into `label` tag.
+
 ## [5.25.0] - 2024-03-27
 
 ### Changed

@@ -260,7 +260,20 @@ class Popper extends Component {
   };
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
+  lastPopperClick = 0;
   bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
+    if (component === 'trigger' && action === 'onClick') {
+      const trigger = this.triggerRef.current;
+      const triggerClick = hasParent(e.target, trigger);
+      const associatedLabels = [...(trigger?.labels || [])];
+      const popperInsideOfLabel = associatedLabels.some((label) =>
+        hasParent(this.popperRef.current, label),
+      );
+
+      if (triggerClick && popperInsideOfLabel && Date.now() - this.lastPopperClick < 100) {
+        return;
+      }
+    }
     const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
     if (
@@ -368,6 +381,7 @@ class Popper extends Component {
       popper: this.popper,
       disableEnforceFocus,
       handleFocusOut: this.handlePopperFocusOut,
+      onClick: this.handlePopperClick,
     };
   }
 
@@ -376,6 +390,10 @@ class Popper extends Component {
     if (hasParent(event.target, this.triggerRef.current)) return;
 
     this.bindHandlerChangeVisibleWithTimer(false, 'popper', 'onBlur')(event);
+  };
+
+  handlePopperClick = () => {
+    this.lastPopperClick = Date.now();
   };
 
   setContext() {
