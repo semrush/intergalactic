@@ -75,9 +75,10 @@ export type KeyboardFocusEnhanceHook = (props: {
   onBlur: () => void;
 };
 
-const keyboardFocusEnhance = (): KeyboardFocusEnhanceHook => {
+const keyboardFocusEnhance = (makeFocusable = true): KeyboardFocusEnhanceHook => {
   return (props) => {
-    const { tabIndex = 0, disabled, autoFocus } = props;
+    const { disabled, autoFocus } = props;
+    const tabIndex = props.tabIndex ?? (makeFocusable ? 0 : undefined);
     const [keyboardFocused, setKeyboardFocused] = React.useState(false);
     const focusSourceRef = useFocusSource();
     const ref = React.useRef<HTMLElement>(null);
