@@ -12,12 +12,11 @@ test.describe('Tooltip', () => {
     const triggerRect = (await trigger.boundingBox())!;
 
     await page.mouse.move(
-      triggerRect.x + triggerRect.width / 2 - 1,
-      triggerRect.y + triggerRect.height / 2 - 1,
-    );
-    await page.mouse.move(
       triggerRect.x + triggerRect.width / 2,
       triggerRect.y + triggerRect.height / 2,
+      {
+        steps: 5,
+      },
     );
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
