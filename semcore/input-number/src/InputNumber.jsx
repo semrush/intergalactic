@@ -82,6 +82,8 @@ class Value extends Component {
 
   valueInputRef = React.createRef();
 
+  cursorPosition = -1;
+
   constructor(props) {
     super(props);
 
@@ -186,9 +188,8 @@ class Value extends Component {
         }
       }
       const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
-      this.setState({ value: String(numberValueRounded) }, () =>
-        this.asProps.onChange(this.state.value, event),
-      );
+
+      this.setValue(String(numberValueRounded), event);
     }
   };
 
@@ -270,6 +271,12 @@ class Value extends Component {
     );
   };
 
+  handleKeyUp = (event) => {
+    if (event.key === 'Shift') {
+      this.cursorPosition = -1;
+    }
+  };
+
   handleKeyDown = (event) => {
     const element = event.currentTarget;
     const value = element.value;
@@ -299,24 +306,88 @@ class Value extends Component {
     // - Press ArrowRight: `1|,55 -> 1,5|5`
     const cursorIndex = 2;
 
-    if (
-      event.key === 'ArrowLeft' &&
-      value[element.selectionStart - cursorIndex] === this.separatorThousands
-    ) {
-      event.preventDefault();
-      element.setSelectionRange(
-        element.selectionStart - cursorIndex,
-        element.selectionEnd - cursorIndex,
-      );
-      return;
+    if (event.shiftKey && this.cursorPosition === -1) {
+      this.cursorPosition = element.selectionStart;
     }
-    if (event.key === 'ArrowRight' && value[element.selectionStart] === this.separatorThousands) {
-      event.preventDefault();
-      element.setSelectionRange(
-        element.selectionStart + cursorIndex,
-        element.selectionEnd + cursorIndex,
-      );
-      return;
+
+    if (this.cursorPosition !== -1) {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+
+        if (
+          element.selectionStart <= this.cursorPosition &&
+          element.selectionEnd === this.cursorPosition
+        ) {
+          element.setSelectionRange(
+            value[element.selectionStart - cursorIndex] === this.separatorThousands
+              ? element.selectionStart - cursorIndex
+              : element.selectionStart - 1,
+            element.selectionEnd,
+          );
+          return;
+        } else {
+          element.setSelectionRange(
+            element.selectionStart,
+            value[element.selectionEnd - cursorIndex] === this.separatorThousands
+              ? element.selectionEnd - cursorIndex
+              : element.selectionEnd - 1,
+          );
+          return;
+        }
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+
+        if (
+          element.selectionEnd >= this.cursorPosition &&
+          element.selectionStart === this.cursorPosition
+        ) {
+          element.setSelectionRange(
+            element.selectionStart,
+            value[element.selectionEnd] === this.separatorThousands
+              ? element.selectionEnd + cursorIndex
+              : element.selectionEnd + 1,
+          );
+          return;
+        } else {
+          element.setSelectionRange(
+            value[element.selectionStart] === this.separatorThousands
+              ? element.selectionStart + cursorIndex
+              : element.selectionStart + 1,
+            element.selectionEnd,
+          );
+          return;
+        }
+      }
+    } else {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        const nextPosition = element.selectionStart - 1;
+
+        element.setSelectionRange(
+          value[element.selectionStart - cursorIndex] === this.separatorThousands
+            ? element.selectionStart - cursorIndex
+            : nextPosition,
+          value[element.selectionStart - cursorIndex] === this.separatorThousands
+            ? element.selectionStart - cursorIndex
+            : nextPosition,
+        );
+        return;
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        const nextPosition = element.selectionEnd + 1;
+
+        event.preventDefault();
+        element.setSelectionRange(
+          value[element.selectionEnd] === this.separatorThousands
+            ? element.selectionEnd + cursorIndex
+            : nextPosition,
+          value[element.selectionEnd] === this.separatorThousands
+            ? element.selectionEnd + cursorIndex
+            : nextPosition,
+        );
+        return;
+      }
     }
 
     if (event.key === 'ArrowDown') {
@@ -358,11 +429,15 @@ class Value extends Component {
           onBlur={this.handleValidation}
           use:onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
+          onKeyUp={this.handleKeyUp}
           onClick={this.handleClick}
           use:ref={this.valueInputRef}
           use:value={displayValue}
           disableUncontrolledValueChange={true}
-          inputmode='numeric'
+          inputMode='numeric'
+          aria-valuenow={value}
+          aria-valuemin={min}
+          aria-valuemax={max}
         />
         <input
           type={'number'}
