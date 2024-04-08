@@ -101,7 +101,6 @@ export abstract class AbstractChart<
           value = Number(dataValue);
         }
 
-        // const value = (data instanceof Map ? data.get(key) : Number(data[key])) ?? 0;
         const total = Object.values(data).reduce<number>((sum, i) => {
           if (i !== interpolateValue) {
             return sum + Number(i);
@@ -115,7 +114,7 @@ export abstract class AbstractChart<
           <Text key={`${key}_percent`} use={'secondary'}>
             {percent !== undefined ? `${percent}%` : ''}
           </Text>,
-          <Text key={`${key}_value`} use={'primary'}>
+          <Text key={`${key}_value`} use={value ? 'primary' : 'secondary'}>
             {value ?? 'n/a'}
           </Text>,
         ];
@@ -321,6 +320,10 @@ export abstract class AbstractChart<
 
     if (value === undefined || value === interpolateValue) {
       return 'n/a';
+    }
+
+    if (value === null) {
+      return '0';
     }
 
     if (value instanceof Date) {

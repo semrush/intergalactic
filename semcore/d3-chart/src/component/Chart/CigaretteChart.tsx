@@ -100,7 +100,7 @@ class CigaretteChartComponent extends AbstractChart<
         {(invertAxis ? dataDefinitions : [...dataDefinitions].reverse()).map((item, index) => {
           const value = data[item.id];
 
-          if (!item.checked || value === interpolateValue) {
+          if (!item.checked || value === interpolateValue || value === null) {
             return null;
           }
 
@@ -242,7 +242,7 @@ class CigaretteChartComponent extends AbstractChart<
 
     if (invertAxis) {
       return sstyled(styles)(
-        <SChart render={Flex} gap={5} direction={'column'}>
+        <SChart render={Flex} gap={6} direction={'column'} __excludeProps={['onClick', 'data']}>
           <Flex direction={'column'}>
             {header}
             <Plot
@@ -263,7 +263,7 @@ class CigaretteChartComponent extends AbstractChart<
     }
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5}>
+      <SChart render={Flex} gap={6} __excludeProps={['onClick', 'data']}>
         <Plot
           data={data}
           scale={[this.xScale, this.yScale]}
