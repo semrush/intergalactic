@@ -35,7 +35,7 @@ class CigaretteBarRoot extends Component<any> {
   handleClick = (e: React.SyntheticEvent) => {
     const { onClick, dataKey } = this.asProps;
 
-    if (onClick) {
+    if (onClick && e.currentTarget.tagName === 'path') {
       e.stopPropagation();
 
       onClick(dataKey, e);
