@@ -1,13 +1,12 @@
 import React from 'react';
-import { Chart, interpolateValue } from '@semcore/d3-chart';
-import { Box } from 'intergalactic/flex-box';
+import { Chart } from '@semcore/d3-chart';
 
 type KEY = string;
 
 class Demo extends React.PureComponent {
   handleClick = (key: KEY, e: React.SyntheticEvent) => {
-      // biome-ignore lint/suspicious/noConsoleLog:
-      console.log('click', key);
+    // biome-ignore lint/suspicious/noConsoleLog:
+    console.log('click', key);
   };
 
   render() {
