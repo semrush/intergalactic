@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.0] - 2024-03-27
+
+### Added
+
+- Api to customize a11y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
+
 ## [3.36.0] - 2024-03-27
 
 ### Changed
