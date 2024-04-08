@@ -104,6 +104,7 @@ class RootFilterTrigger extends Component {
       includeInputProps,
       triggerRef,
       clearHint,
+      clearHintPlacement,
     } = this.asProps;
 
     const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
@@ -150,7 +151,9 @@ class RootFilterTrigger extends Component {
           </SFilterTrigger>
           {!empty &&
             (clearHint ? (
-              <Tooltip title={clearHint}>{this.renderCloseButton()}</Tooltip>
+              <Tooltip title={clearHint} placement={clearHintPlacement}>
+                {this.renderCloseButton()}
+              </Tooltip>
             ) : (
               this.renderCloseButton()
             ))}
