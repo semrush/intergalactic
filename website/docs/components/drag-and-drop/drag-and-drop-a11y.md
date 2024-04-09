@@ -42,6 +42,17 @@ Text message for assistive technologies that will be read when the user interact
 | Item is grabbing      | `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}` |
 | Item is dropped       | `${itemText} dropped, final position is ${index + 1} of ${itemsCount}` |
 
+If grabbed item or zone to drop has `zoneName`, messages will be like in the follow table.
+
+| Action                                          | Message template                                                                           |
+|-------------------------------------------------|--------------------------------------------------------------------------------------------|
+| Item was just grabbed                           | `${itemText} grabbed, current position is ${itemPosition} of ${itemsCount} in ${zoneName}` |
+| Item is grabbing over area with another items   | `Grabbing ${itemText}, drop position is ${itemPosition} of ${itemsCount} in ${zoneName}`   |
+| Item is grabbing over area without any items    | `Grabbing ${itemText}, drop in ${zoneName}`                                                |
+| Item is dropped in drop zone with another items | `${itemText} dropped, final position is ${itemPosition} of ${itemsCount} in ${zoneName}`   |
+| Item is dropped in drop zone without any items  | `${itemText} dropped in ${zoneName}`                                                       |
+
+
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
