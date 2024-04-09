@@ -1,3 +1,37 @@
+## [15.76.0] - 2024-04-09
+
+### @semcore/d3-chart
+
+- **Added** Api to customize a11y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
+
+### @semcore/date-picker
+
+- **Changed** Error tooltip appears on user attempt to input disabled date in date input.
+- **Added** `disabledErrorText` prop to control error in tooltip.
+- **Fixed** Types of `disabled` prop of `DateRangeComparator` and `MonthDateRangeComparator`.
+
+### @semcore/dropdown-menu
+
+- **Added** `DropdownMenu.Nesting.Item` for more granular control over nested dropdown menus.
+- **Fixed** Menu item was displaying highlighted ring when dropdown is opened by mouse interaction.
+
+### @semcore/popper
+
+- **Fixed** Holding mouse over a place where popper appear was preventing popper from disappear back.
+- **Fixed** Fast keyboard navigation over multiple closely placed poppers was causing multiple poppers to stay open.
+- **Fixed** Select and similar components with disabled portal were not working properly being wrapped into `label` tag.
+- **Fixed** Holding mouse over a place where popper appear was preventing popper from disappear back.
+- **Fixed** Fast keyboard navigation over multiple closely placed poppers was causing multiple poppers to stay open.
+- **Fixed** Select with `disabpledPortal` inside a label was opening second time after selecting the option.
+
+### @semcore/textarea
+
+- **Fixed** Copying a textarea node with computed styles for calculating rows.
+
+### @semcore/utils
+
+- **Added** Added option `keyboardFocusEnhance` to control should the enhance make components focusable.
+
 ## [15.75.2] - 2024-03-29
 
 ### @semcore/data-table
