@@ -17,8 +17,7 @@
     "@semcore/icon": "4.30.0",
     "@semcore/neighbor-location": "4.19.0",
     "@semcore/spin": "5.20.0",
-    "@semcore/utils": "4.22.0",
-    "@semcore/tooltip": "6.22.0"
+    "@semcore/utils": "4.22.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
@@ -34,6 +33,7 @@
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/testing-utils": "1.0.0",
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@semcore/tooltip": "6.22.0"
   }
 }

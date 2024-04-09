@@ -6,8 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `clearHint` prop to `FilterTrigger`.
-- `clearHintPosition` prop to `FilterTrigger`
+- composition api for `FilterTrigger`.
 
 ## [4.31.0] - 2024-03-27
 

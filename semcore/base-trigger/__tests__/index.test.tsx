@@ -9,6 +9,7 @@ import NeighborLocation from '@semcore/neighbor-location';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
+import Tooltip from '@semcore/tooltip';
 
 describe('BaseTrigger', () => {
   beforeEach(cleanup);
@@ -199,7 +200,16 @@ describe('FilterTrigger', () => {
   });
 
   test.concurrent('Should support clearHint', async ({ task }) => {
-    const component = <FilterTrigger clearHint={'clear trigger hint text'} empty={false} />;
+    const component = (
+      <FilterTrigger empty={false}>
+        <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
+        <FilterTrigger.Clear>
+          <Tooltip title={'clear trigger hint text'}>
+            <FilterTrigger.Clear.Button data-testid={'test'} />
+          </Tooltip>
+        </FilterTrigger.Clear>
+      </FilterTrigger>
+    );
 
     const { getByText, getByTestId } = render(component);
 

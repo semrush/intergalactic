@@ -2,7 +2,6 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
-import Tooltip from '@semcore/tooltip';
 import NeighborLocation from '@semcore/neighbor-location';
 import Dot from '@semcore/dot';
 import Close from '@semcore/icon/Close/m';
@@ -18,6 +17,8 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
+import findComponent from '@semcore/utils/lib/findComponent';
+import logger from '@semcore/utils/lib/logger';
 
 const filterTriggerInputProps = [
   ...inputProps,
@@ -63,53 +64,52 @@ class RootFilterTrigger extends Component {
     });
   };
 
-  renderCloseButton = () => {
-    const SFilterTrigger = BaseTrigger;
-    const { styles, empty, onClear, size, disabled, getI18nText, uid, id } = this.asProps;
+  getTriggerButtonProps() {
+    const { empty, size, placeholder, active, disabled, includeInputProps, triggerRef } =
+      this.asProps;
 
-    if (empty) return null;
+    return {
+      size,
+      placeholder,
+      empty,
+      selected: !empty,
+      active,
+      disabled,
+      includeInputProps,
+      triggerRef,
+    };
+  }
 
-    return sstyled(styles)(
-      <SFilterTrigger
-        tag='button'
-        type='button'
-        size={size}
-        empty={empty}
-        selected
-        onClick={callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation)}
-        onKeyDown={this.handleStopPropagation}
-        disabled={disabled}
-        data-testid={'test'}
-        id={`igc-${uid}-filter-trigger-clear`}
-        aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
-        aria-label={getI18nText('clear')}
-      >
-        <FilterTrigger.Addon tag={Close} />
-      </SFilterTrigger>,
-    );
-  };
+  getClearButtonProps() {
+    const { empty, onClear, size, disabled, getI18nText, uid } = this.asProps;
+
+    return {
+      size,
+      empty,
+      onClick: callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation),
+      onKeyDown: this.handleStopPropagation,
+      disabled,
+      id: `igc-${uid}-filter-trigger-clear`,
+      getI18nText,
+    };
+  }
 
   render() {
     const SWrapper = Root;
-    const SFilterTrigger = BaseTrigger;
-    const {
-      Children,
-      styles,
-      empty,
-      size,
-      placeholder,
-      active,
-      disabled,
-      getI18nText,
-      includeInputProps,
-      triggerRef,
-      clearHint,
-      clearHintPlacement,
-    } = this.asProps;
+    const { Children, styles, getI18nText, empty } = this.asProps;
 
     const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
 
-    const [controlProps] = getInputProps(this.asProps, includeInputProps);
+    const ClearButton = findComponent(Children, ['FilterTrigger.Clear']);
+    const TriggerButton = findComponent(Children, ['FilterTrigger.TriggerButton']);
+
+    if (ClearButton && !TriggerButton) {
+      logger.warn(
+        true,
+        `Don't set ClearButton without TriggerButton wrapper for content in FilterTrigger. Example: https://developer.semrush.com/intergalactic/components/filter-trigger/filter-trigger-code#hint-for-clear-button`,
+        this.asProps['data-ui-name'],
+      );
+    }
 
     return sstyled(styles)(
       <SWrapper
@@ -127,39 +127,102 @@ class RootFilterTrigger extends Component {
         use:aria-labelledby={undefined}
       >
         <NeighborLocation>
-          <SFilterTrigger
-            tag='button'
-            type='button'
-            w='100%'
-            size={size}
-            placeholder={placeholder}
-            empty={empty}
-            selected={!empty}
-            active={active}
-            disabled={disabled}
-            ref={triggerRef}
-            animationsDisabled
-            {...controlProps}
-          >
-            {addonTextChildren(
-              Children,
-              FilterTrigger.Text,
-              [FilterTrigger.Addon, FilterTrigger.Counter],
-              empty,
-            )}
-            {empty && <FilterTrigger.Addon tag={ChevronDown} />}
-          </SFilterTrigger>
-          {!empty &&
-            (clearHint ? (
-              <Tooltip title={clearHint} placement={clearHintPlacement}>
-                {this.renderCloseButton()}
-              </Tooltip>
-            ) : (
-              this.renderCloseButton()
-            ))}
+          {TriggerButton ?? (
+            <FilterTrigger.TriggerButton>
+              <Children />
+            </FilterTrigger.TriggerButton>
+          )}
+          {!empty && (ClearButton ?? <FilterTrigger.Clear.Button />)}
         </NeighborLocation>
       </SWrapper>,
     );
+  }
+}
+
+class TriggerButton extends Component {
+  static displayName = 'TriggerButton';
+  static style = style;
+
+  render() {
+    const SFilterTrigger = Root;
+    const {
+      Children,
+      styles,
+      empty,
+      size,
+      placeholder,
+      active,
+      disabled,
+      includeInputProps,
+      triggerRef,
+    } = this.asProps;
+
+    const [controlProps] = getInputProps(this.asProps, includeInputProps);
+
+    return sstyled(styles)(
+      <SFilterTrigger
+        render={BaseTrigger}
+        tag='button'
+        type='button'
+        w='100%'
+        size={size}
+        placeholder={placeholder}
+        empty={empty}
+        selected={!empty}
+        active={active}
+        disabled={disabled}
+        ref={triggerRef}
+        animationsDisabled
+        {...controlProps}
+      >
+        {addonTextChildren(
+          Children,
+          FilterTrigger.Text,
+          [FilterTrigger.Addon, FilterTrigger.Counter],
+          empty,
+        )}
+        {empty && <FilterTrigger.Addon tag={ChevronDown} />}
+      </SFilterTrigger>,
+    );
+  }
+}
+
+class ClearButton extends Component {
+  static displayName = 'ClearButton';
+  static style = style;
+
+  render() {
+    const SFilterTrigger = Root;
+    const { styles, empty, size, disabled, getI18nText, uid, id } = this.asProps;
+
+    if (empty) return null;
+
+    return sstyled(styles)(
+      <SFilterTrigger
+        render={BaseTrigger}
+        tag='button'
+        type='button'
+        size={size}
+        empty={empty}
+        selected
+        disabled={disabled}
+        id={`igc-${uid}-filter-trigger-clear`}
+        aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
+        aria-label={getI18nText('clear')}
+      >
+        <FilterTrigger.Addon tag={Close} />
+      </SFilterTrigger>,
+    );
+  }
+}
+
+class ClearButtonContainer extends Component {
+  static displayName = 'ClearButtonContainer';
+
+  render() {
+    const { Children } = this.asProps;
+
+    return <Children />;
   }
 }
 
@@ -174,6 +237,8 @@ const FilterTrigger = createComponent(
     Text: BaseTrigger.Text,
     Addon: BaseTrigger.Addon,
     Counter,
+    TriggerButton,
+    Clear: [ClearButtonContainer, { Button: ClearButton }],
   },
   {
     parent: BaseTrigger,
