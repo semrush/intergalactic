@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.0] - 2024-04-03
+
+### Added
+
+- `DropdownMenu.Nesting.Item` for more granular control over nested dropdown menus.
+
 ## [4.25.1] - 2024-04-03
 
 ### Fixed
