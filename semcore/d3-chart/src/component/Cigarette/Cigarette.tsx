@@ -4,7 +4,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from '../../createElement';
 import { roundedPath } from '../../utils';
 import { PatternFill } from '../../Pattern';
-import { callAllEventHandlers } from 'intergalactic/utils/lib/assignProps';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 class CigaretteBarRoot extends Component<any> {
   static displayName = 'Cigarette.BarItem';
