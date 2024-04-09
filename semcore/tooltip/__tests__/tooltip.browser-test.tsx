@@ -14,6 +14,9 @@ test.describe('Tooltip', () => {
     await page.mouse.move(
       triggerRect.x + triggerRect.width / 2,
       triggerRect.y + triggerRect.height / 2,
+      {
+        steps: 5,
+      },
     );
 
     await new Promise((resolve) => setTimeout(resolve, 1000));

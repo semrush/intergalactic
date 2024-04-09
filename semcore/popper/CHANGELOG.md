@@ -2,6 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.1] - 2024-09-04
+
+### Fixed
+
+- Holding mouse over a place where popper appear was preventing popper from disappear back.
+- Fast keyboard navigation over multiple closely placed poppers was causing multiple poppers to stay open.
+
+## [5.26.0] - 2024-03-27
+
+### Fixed
+
+- Select and similar components with disabled portal were not working properly being wrapped into `label` tag.
+
+## [5.25.2] - 2024-04-03
+
+### Fixed
+
+- Holding mouse over a place where popper appear was preventing popper from disappear back.
+- Fast keyboard navigation over multiple closely placed poppers was causing multiple poppers to stay open.
+
+## [5.25.1] - 2024-04-03
+
+### Fixed
+
+- Select with `disabpledPortal` inside a label was opening second time after selecting the option.
+
 ## [5.25.0] - 2024-03-27
 
 ### Changed

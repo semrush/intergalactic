@@ -143,3 +143,7 @@ SFooter {
 SPeriodsList {
   padding: var(--intergalactic-spacing-4x, 16px);
 }
+
+STooltip {
+  padding: var(--intergalactic-spacing-3x, 12px);
+}
