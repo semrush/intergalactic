@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from './testing-library';
+import { promises as fs } from 'fs';
 
 import playwright from 'playwright';
 
@@ -90,6 +91,8 @@ export const snapshot = async (
             </div>
         </body>
     </html>`;
+
+  await fs.writeFile('index.html', html, 'utf8');
 
   await page.setContent(html);
   const mainElement = await page.$(options.selector! || 'body');
