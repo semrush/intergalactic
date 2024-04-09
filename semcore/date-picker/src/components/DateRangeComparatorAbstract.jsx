@@ -372,6 +372,7 @@ class DateRangeComparatorAbstract extends Component {
       onDisplayedPeriodChange,
       locale,
       disabled,
+      disabledErrorText,
       size,
       getI18nText,
       focusedRange,
@@ -386,6 +387,7 @@ class DateRangeComparatorAbstract extends Component {
       locale,
       w: size === 'm' ? 300 : 330,
       disabledDates: disabled,
+      disabledErrorText,
       children: this.getRangeInput(),
       getI18nText,
       onFocus: () => {
@@ -401,6 +403,7 @@ class DateRangeComparatorAbstract extends Component {
       onDisplayedPeriodChange,
       locale,
       disabled,
+      disabledErrorText,
       size,
       getI18nText,
       focusedRange,
@@ -419,6 +422,7 @@ class DateRangeComparatorAbstract extends Component {
       disabledDates: disabled,
       children: this.getRangeInput(),
       getI18nText,
+      disabledErrorText,
       onFocus: () => {
         this.handlers.focusedRange('compare');
         return false;
