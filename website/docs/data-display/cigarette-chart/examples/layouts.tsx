@@ -6,14 +6,14 @@ import { Text } from '@semcore/typography';
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Flex gap={8}>
+      <Flex gap={15} flexWrap="wrap">
         <Chart.Cigarette
           data={data}
           plotWidth={280}
           plotHeight={28}
           header={
-            <Text size={700} bold>
-              Total
+            <Text size={500} bold mb={2}>
+              Total value
             </Text>
           }
           showLegend={true}
@@ -27,8 +27,8 @@ class Demo extends React.PureComponent {
           plotHeight={200}
           invertAxis={false}
           header={
-            <Text size={700} bold>
-              Total
+            <Text size={500} bold>
+              Total value
             </Text>
           }
           showLegend={true}
@@ -40,11 +40,11 @@ class Demo extends React.PureComponent {
 }
 
 const data = {
-  a: 3524,
-  b: 1344,
-  c: 6135,
-  d: 1456,
-  e: 1823,
+  Cats: 3524,
+  Dogs: 1344,
+  Capybaras: 6135,
+  Hamsters: 1456,
+  Birds: 1823,
 };
 
 export default Demo;
