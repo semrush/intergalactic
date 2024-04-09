@@ -67,6 +67,21 @@ describe('Ellipsis', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test('Renders correctly with multiline and very long words', async ({ task }) => {
+    const component = (
+      <Box w={200}>
+        <Ellipsis maxLine={3}>
+          Lorem ipsum dolor sit,
+          veryLongWordVeryLongWordVeryLongWordVeryLongWordVeryLongWordVeryLongWordVeryLongWordVeryLongWord
+          consectetur adipisicing elit. Asperiores atque autem commodi, doloribus ex harum inventore
+          modi praesentium quam ratione reprehenderit rerum tempore voluptas. Aliquam eos expedita
+          illo quasi unde!
+        </Ellipsis>
+      </Box>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('Renders correctly with trim in the middle', async ({ task }) => {
     const originalResizeObserver = global.ResizeObserver;
     const unFake = fakeTemporaryBlock({ width: 10 });

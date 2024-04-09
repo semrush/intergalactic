@@ -24,6 +24,7 @@ SEllipsis[maxLine] {
   -webkit-box-orient: vertical;
   overflow: hidden;
   white-space: normal;
+  overflow-wrap: break-word;
 }
 
 STail {
