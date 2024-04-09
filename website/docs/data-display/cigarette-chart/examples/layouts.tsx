@@ -6,7 +6,7 @@ import { Text } from '@semcore/typography';
 class Demo extends React.PureComponent {
   render() {
     return (
-      <Flex gap={15} flexWrap="wrap">
+      <Flex gap={15} flexWrap='wrap'>
         <Chart.Cigarette
           data={data}
           plotWidth={280}
