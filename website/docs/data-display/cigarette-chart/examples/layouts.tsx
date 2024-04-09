@@ -10,8 +10,9 @@ class Demo extends React.PureComponent {
         <Chart.Cigarette
           data={data}
           plotWidth={280}
+          plotHeight={28}
           header={
-            <Text size={'700'} bold>
+            <Text size={700} bold>
               Total
             </Text>
           }
@@ -22,10 +23,11 @@ class Demo extends React.PureComponent {
 
         <Chart.Cigarette
           data={data}
+          plotWidth={44}
           plotHeight={200}
           invertAxis={false}
           header={
-            <Text size={'700'} bold>
+            <Text size={700} bold>
               Total
             </Text>
           }

@@ -3,7 +3,9 @@ import { Intergalactic } from '@semcore/core';
 import { BaseChartProps } from './AbstractChart.type';
 import { interpolateValue } from '../../utils';
 
-export type CigaretteChartData = Record<string, number | typeof interpolateValue>;
+type DataKey = string;
+
+export type CigaretteChartData = Record<DataKey, number | typeof interpolateValue>;
 
 export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   BaseChartProps<CigaretteChartData>,
@@ -13,6 +15,7 @@ export type CigaretteChartProps = Intergalactic.InternalTypings.EfficientOmit<
   tooltipViewType?: 'all' | 'single';
   header?: React.ReactNode;
   duration?: number;
+  onClick?: (key: DataKey, event: React.SyntheticEvent) => void;
 };
 
 export type CigaretteChartType = Intergalactic.Component<'div', CigaretteChartProps>;
