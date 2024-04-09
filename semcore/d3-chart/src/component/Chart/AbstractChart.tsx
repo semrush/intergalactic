@@ -443,7 +443,7 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns } = this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig } = this.asProps;
 
     return sstyled(styles)(
       <SChart render={Flex} gap={5}>
@@ -454,6 +454,7 @@ export abstract class AbstractChart<
           width={plotWidth}
           height={plotHeight}
           dataHints={this.dataHints}
+          a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
         >
           {this.renderAxis()}

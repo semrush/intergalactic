@@ -5,6 +5,8 @@ import Icon from '@semcore/icon';
 import { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
 import { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import { PatternsConfig } from '../../Pattern';
+// @ts-ignore
+import { PlotSummarizerConfig } from '../../Plot';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -122,6 +124,10 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Function for format text for tooltip
    */
   tooltipValueFormatter?: (value?: unknown) => string;
+  /**
+   * Config for a11y summary
+   */
+  a11yAltTextConfig?: PlotSummarizerConfig;
 } /**
  * By default, we show the Legend for all charts with more the one data item.
  * For hide the Legend, you should set showLegend prop to `false`.
