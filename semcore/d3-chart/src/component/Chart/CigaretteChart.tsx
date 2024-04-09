@@ -109,7 +109,7 @@ class CigaretteChartComponent extends AbstractChart<
               Math.max(this.valueScale(this.valueScale.domain()[0]), this.valueScale(0)),
           );
           const height = scaleToBand(this.categoryScale).bandwidth() - 4;
-          const width = value === 0 ? 0 : Math.max(absWidth, wMin) - wMin;
+          const width = value === 0 ? 0 : Math.max(absWidth, wMin * 2) - wMin;
           const y = 2;
           const x = index === 0 ? 0 : this.offset;
           const r = height < 28 ? 2 : 4;
@@ -236,7 +236,8 @@ class CigaretteChartComponent extends AbstractChart<
 
   override render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns, invertAxis } = this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns, invertAxis, a11yAltTextConfig } =
+      this.asProps;
 
     const header = this.renderHeader();
 
@@ -252,6 +253,7 @@ class CigaretteChartComponent extends AbstractChart<
               height={plotHeight}
               dataHints={this.dataHints}
               patterns={patterns}
+              a11yAltTextConfig={a11yAltTextConfig}
             >
               {this.renderTooltip()}
               {this.renderChart()}
@@ -271,6 +273,7 @@ class CigaretteChartComponent extends AbstractChart<
           height={plotHeight}
           dataHints={this.dataHints}
           patterns={patterns}
+          a11yAltTextConfig={a11yAltTextConfig}
         >
           {this.renderTooltip()}
           {this.renderChart()}

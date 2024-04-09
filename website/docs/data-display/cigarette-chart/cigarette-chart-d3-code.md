@@ -55,3 +55,13 @@ Show null and not available data in the legend and tooltip but not on the chart.
 </script>
 
 :::
+
+## Custom a11y
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-a11y.tsx';
+</script>
+
+:::
