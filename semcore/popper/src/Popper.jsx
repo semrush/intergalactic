@@ -50,6 +50,13 @@ const useUpdatePopperEveryFrame = (popperRef) => {
   return handleAnimationFrame;
 };
 
+let lastMouseMove = 0;
+if (canUseDOM()) {
+  document.addEventListener('mousemove', () => {
+    lastMouseMove = Date.now();
+  });
+}
+
 const MODIFIERS_OPTIONS = [
   'offset',
   'preventOverflow',
@@ -274,6 +281,13 @@ class Popper extends Component {
         return;
       }
     }
+    /**
+     * When popper appears right under mouse that doesn't move, it gets undesired onMouseEnter event.
+     * That may cause hover interaction poppers to display two closely placed poppers.
+     * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
+     */
+    if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+
     const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
     if (
@@ -283,6 +297,19 @@ class Popper extends Component {
       focusAction
     ) {
       return;
+    }
+    if (!visible) {
+      /**
+       * When sibling popovers triggers with hover/focus interactions are navigated fast,
+       * sometimes focus moves into closing popovers and prevents it from closing. It may cause
+       * multiple popovers to be opened at the same time.
+       */
+      setTimeout(() => {
+        const node = this.popperRef.current;
+        if (node?.getAttribute('tabindex') === '0') {
+          node.setAttribute('tabindex', '-1');
+        }
+      }, 0);
     }
     const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
