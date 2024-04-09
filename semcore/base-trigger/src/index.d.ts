@@ -5,9 +5,9 @@ import { DotProps } from '@semcore/dot';
 import { NeighborItemProps } from '@semcore/neighbor-location';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { WithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
-import { Options } from '@popperjs/core/lib/types';
+import { TooltipProps } from '@semcore/tooltip';
 
-type Placement = Options['placement'];
+type Placement = TooltipProps['placement'];
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
