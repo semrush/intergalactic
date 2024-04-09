@@ -205,7 +205,7 @@ class CigaretteChartComponent extends AbstractChart<
                       <Flex
                         justifyContent='space-between'
                         key={item.id}
-                        style={{ opacity: item.id === dataKey ? 1 : 0.5 }}
+                        style={{ opacity: item.id === dataKey ? 1 : 0.3 }}
                       >
                         <HoverRect.Tooltip.Dot mr={4} color={item.color}>
                           {item.label}

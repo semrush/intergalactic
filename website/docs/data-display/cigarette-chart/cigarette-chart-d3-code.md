@@ -36,6 +36,8 @@ tabs: Design('cigarette-chart'), A11y('cigarette-chart-a11y'), API('cigarette-ch
 
 ## No value for some key
 
+Show null and not available data in the legend and tooltip but not on the chart.
+
 ::: sandbox
 
 <script lang="tsx">

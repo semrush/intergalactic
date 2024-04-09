@@ -45,16 +45,16 @@ Chart can be displayed using horizontal or vertical layout.
 
 ![](static/cigarette-legend-vertical.png)
 
-## Main metric
+## Total value
 
-- You can place the largest or main value next to the chart.
-- Always name the metric.
+- You can place the largest or total value next to the chart.
+- Always name the value.
 
 ![](static/cigarette-legend-vertical.png)
 
-### Metric styles
+### Styles
 
-- Use 24px (`--fs-500`) size, `--bold` font-weight and `--text-primary` color for the metric text.
+- Use 24px (`--fs-500`) size, `--bold` font-weight and `--text-primary` color for the value text.
 - For the description text use 12px (`--fs-100`) size and `--text-secondary` color.
 - Center them inside the chart vertically and horizontally.
 
