@@ -10,7 +10,9 @@ class Demo extends React.PureComponent {
   };
 
   render() {
-    return <Chart.Cigarette data={data} plotWidth={300} onClick={this.handleClick} />;
+    return (
+      <Chart.Cigarette data={data} plotWidth={300} plotHeight={28} onClick={this.handleClick} />
+    );
   }
 }
 
