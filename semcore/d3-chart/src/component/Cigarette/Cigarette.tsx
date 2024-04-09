@@ -18,6 +18,8 @@ class CigaretteBarRoot extends Component<any> {
     defaultHovered: false,
   };
 
+  refElement = React.createRef<SVGPathElement>();
+
   uncontrolledProps() {
     return {
       hovered: false,
@@ -26,10 +28,12 @@ class CigaretteBarRoot extends Component<any> {
 
   handleMouseMove = () => {
     this.handlers.hovered(true);
+    this.setCursor('pointer');
   };
 
   handleMouseLeave = () => {
     this.handlers.hovered(false);
+    this.setCursor('auto');
   };
 
   handleClick = (e: React.SyntheticEvent) => {
@@ -41,6 +45,14 @@ class CigaretteBarRoot extends Component<any> {
       onClick(dataKey, e);
 
       return false;
+    }
+  };
+
+  setCursor = (value: 'pointer' | 'auto') => {
+    const { onClick } = this.asProps;
+
+    if (onClick) {
+      this.refElement.current?.style.setProperty('cursor', value);
     }
   };
 
@@ -87,7 +99,6 @@ class CigaretteBarRoot extends Component<any> {
     const {
       styles,
       color,
-      x,
       data,
       dataKey,
       index,
@@ -109,6 +120,7 @@ class CigaretteBarRoot extends Component<any> {
       <React.Fragment key={`horizontal-bar-${index}`}>
         {sstyled(styles)(
           <SBar
+            ref={this.refElement}
             aria-hidden
             render='path'
             clipPath={`url(#${uid})`}
