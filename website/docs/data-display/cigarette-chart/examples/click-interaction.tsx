@@ -1,19 +1,15 @@
 import React from 'react';
-import { Chart } from '@semcore/d3-chart';
+import { Chart } from 'intergalactic/d3-chart';
 
 type KEY = string;
 
-class Demo extends React.PureComponent {
-  handleClick = (key: KEY, e: React.SyntheticEvent) => {
+function Demo() {
+  const handleClick = (key: KEY, e: React.SyntheticEvent) => {
     // biome-ignore lint/suspicious/noConsoleLog:
     console.log('click', key);
   };
 
-  render() {
-    return (
-      <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} onClick={this.handleClick} />
-    );
-  }
+  return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} onClick={handleClick} />;
 }
 
 const data: { [key: KEY]: number } = {

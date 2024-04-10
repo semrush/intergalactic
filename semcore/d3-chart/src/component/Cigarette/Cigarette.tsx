@@ -114,8 +114,6 @@ class CigaretteBarRoot extends Component<any> {
 
     const dSvg = this.getRect();
 
-    this.asProps.dataHintsHandler.describeValueEntity(dataKey, '');
-
     return (
       <React.Fragment key={`horizontal-bar-${index}`}>
         {sstyled(styles)(
