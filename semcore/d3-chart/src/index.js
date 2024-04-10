@@ -1,6 +1,7 @@
 export { default as Plot } from './Plot';
 export { ChartLegend, ChartLegendTable } from './component/ChartLegend';
 export { default as Chart } from './component/Chart';
+export { default as CigaretteBar } from './component/Cigarette/Cigarette';
 export { XAxis, YAxis } from './Axis';
 
 export { default as Line } from './Line';
@@ -31,6 +32,7 @@ export {
   getBubbleChartValueScale,
   getScatterPlotRadius,
   calculateBubbleDomain,
+  scaleToBand,
 } from './utils';
 export { colors } from './color';
 
