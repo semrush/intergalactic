@@ -5,6 +5,8 @@ import { Box } from '@semcore/flex-box';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+// @ts-ignore
+import Link from '@semcore/link';
 
 function fakeTemporaryBlock(rect: any) {
   const originalCreateElement = global.document.createElement;
@@ -37,6 +39,32 @@ function fakeBoundingClientRect(rect: any) {
     });
   };
 }
+
+const mockResizeObserver = (rect: { width?: number; height?: number }) => {
+  const originalResizeObserver = global.ResizeObserver;
+  const unFakeTemporaryBlock = fakeTemporaryBlock({ width: 10 });
+
+  class ResizeObserver {
+    private cb: any;
+
+    constructor(cb: any) {
+      this.cb = cb;
+    }
+
+    observe() {
+      this.cb([{ contentRect: rect }]);
+    }
+    unobserve() {}
+    disconnect() {}
+  }
+
+  global.ResizeObserver = ResizeObserver;
+
+  return () => {
+    unFakeTemporaryBlock();
+    global.ResizeObserver = originalResizeObserver;
+  };
+};
 
 describe('Ellipsis', () => {
   beforeEach(cleanup);
@@ -83,25 +111,7 @@ describe('Ellipsis', () => {
   });
 
   test('Renders correctly with trim in the middle', async ({ task }) => {
-    const originalResizeObserver = global.ResizeObserver;
-    const unFake = fakeTemporaryBlock({ width: 10 });
-
-    class ResizeObserver {
-      private cb: any;
-
-      constructor(cb: any) {
-        this.cb = cb;
-      }
-
-      observe() {
-        this.cb([{ contentRect: { width: 200 } }]);
-      }
-      unobserve() {}
-      disconnect() {}
-    }
-
-    global.ResizeObserver = ResizeObserver;
-
+    const unfakeResizeObserver = mockResizeObserver({ width: 200 });
     const component = (
       <Box w={200}>
         <Ellipsis trim='middle'>
@@ -113,9 +123,50 @@ describe('Ellipsis', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    unfakeResizeObserver();
+  });
 
-    unFake();
-    global.ResizeObserver = originalResizeObserver;
+  describe('Renders correctly with link', () => {
+    test('Link tag={Ellipsis} at least displayed', async ({ task }) => {
+      const unfakeResizeObserver = mockResizeObserver({ width: 200 });
+      const component = (
+        <Box w={200}>
+          <Link tag={Ellipsis} trim='middle' href='https://developer.semrush.com/intergalactic/'>
+            https://developer.semrush.com/intergalactic/
+          </Link>
+        </Box>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+      unfakeResizeObserver();
+    });
+    test('Ellipsis tag={Link.Text}', async ({ task }) => {
+      const unfakeResizeObserver = mockResizeObserver({ width: 200 });
+      const component = (
+        <Box w={200}>
+          <Link inline href='https://developer.semrush.com/intergalactic/'>
+            <Ellipsis tag={Link.Text} trim='middle'>
+              https://developer.semrush.com/intergalactic/
+            </Ellipsis>
+          </Link>
+        </Box>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+      unfakeResizeObserver();
+    });
+    test('Link.Text tag={Ellipsis}', async ({ task }) => {
+      const unfakeResizeObserver = mockResizeObserver({ width: 200 });
+      const component = (
+        <Box w={200}>
+          <Link inline href='https://developer.semrush.com/intergalactic/'>
+            <Link.Text tag={Ellipsis} trim='middle'>
+              https://developer.semrush.com/intergalactic/
+            </Link.Text>
+          </Link>
+        </Box>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+      unfakeResizeObserver();
+    });
   });
 
   test.skip('Show tooltip', async () => {

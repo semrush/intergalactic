@@ -15,6 +15,11 @@ function reactToText(node: React.ReactNode): string {
   const props: { children?: React.ReactNode } = (node as any).props ? (node as any).props : {};
 
   if (!props || !props.children) {
+    const typeOrigin = (node as any).type?.origin;
+    if (typeof typeOrigin === 'string') {
+      return typeOrigin;
+    }
+
     return '';
   }
 
