@@ -40,7 +40,7 @@ function fakeBoundingClientRect(rect: any) {
   };
 }
 
-const mockResizeObserver = (rect) => {
+const mockResizeObserver = (rect: { width?: number; height?: number }) => {
   const originalResizeObserver = global.ResizeObserver;
   const unFakeTemporaryBlock = fakeTemporaryBlock({ width: 10 });
 
