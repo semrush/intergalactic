@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.1] - 2024-04-10
+
+### Added
+
+- Missing `@semcore/tooltip` dependency in `@semcore/date-picker` package.
+
 ## [4.36.0] - 2024-03-14
 
 ### Changed

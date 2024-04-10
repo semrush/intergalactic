@@ -24,6 +24,7 @@
     "@semcore/neighbor-location": "4.19.0",
     "@semcore/typography": "5.29.0",
     "@semcore/checkbox": "7.24.0",
+    "@semcore/tooltip": "6.25.1",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
