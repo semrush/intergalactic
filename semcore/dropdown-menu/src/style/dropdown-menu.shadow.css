@@ -123,3 +123,16 @@ SDropdownMenuNesting[highlighted] {
   z-index: 1;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
 }
+
+SDropdownNestingItem[size='l'],
+SDropdownNestingItem[size='m'] {
+  padding-right: 0;
+}
+
+SDropdownNestingItem SDropdownMenuItem {
+  width: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  min-height: auto;
+}
