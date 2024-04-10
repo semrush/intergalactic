@@ -257,7 +257,7 @@ const group = {
     type: 'charts',
   },
   miniTrend: {
-    title: 'Mini chart',
+    title: 'Mini trend',
     route: '/intergalactic/data-display/mini-chart/mini-chart',
     disabled: false,
     type: 'charts',
