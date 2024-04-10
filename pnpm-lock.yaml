@@ -826,6 +826,9 @@ importers:
       '@semcore/neighbor-location':
         specifier: 4.19.0
         version: link:../neighbor-location
+      '@semcore/tooltip':
+        specifier: 6.25.1
+        version: link:../tooltip
       '@semcore/typography':
         specifier: 5.29.0
         version: link:../typography
