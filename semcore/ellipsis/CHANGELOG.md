@@ -2,13 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.22.2] - 2024-04-09
+## [2.22.3] - 2024-04-09
 
 ### Fixed
 
 - Very longs words were not wrapped in multiline ellipsis.
 - Rendering `Ellipsis` with tag `Link` wasn't displayed correctly.
 - Attempting to render `Link tag={Ellipsis}` was causing empty node rendered.
+
+## [2.22.2] - 2024-04-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.22.0 ~> 4.22.1], `@semcore/core` [2.19.0 ~> 2.19.1]).
 
 ## [2.22.1] - 2024-03-27
 
