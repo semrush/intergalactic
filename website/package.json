@@ -96,8 +96,5 @@
     "unified": "10.1.2",
     "vite": "^4.4.9",
     "vitepress": "1.0.0-rc.24"
-  },
-  "resolutions": {
-    "ansi-regex": "5.0.1"
   }
 }
