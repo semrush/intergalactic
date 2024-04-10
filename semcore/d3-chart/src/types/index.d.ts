@@ -1,6 +1,8 @@
 // Utils
 // @ts-ignore
 import { interpolateValue as intValue } from './utils';
+// @ts-ignore
+import { scaleToBand as stb } from './utils';
 
 export declare const interpolateValue: typeof intValue;
 export declare function minMax(data: any, key: string | number): any;
@@ -9,6 +11,8 @@ export declare function calculateBubbleDomain(
   key: 'x' | 'y',
   range: [number, number],
 ): [min: number, max: number];
+
+export declare const scaleToBans: typeof stb;
 
 export { makeDataHintsContainer } from './a11y/hints';
 
@@ -104,3 +108,6 @@ export * from './component/Chart/VennChart.type';
 export * from './component/Chart/RadarChart.type';
 export * from './component/Chart/ScatterPlotChart.type';
 export * from './component/Chart/CigaretteChart.type';
+
+// @ts-ignore
+export { default as CigaretteBar } from './component/Cigarette/Cigarette';

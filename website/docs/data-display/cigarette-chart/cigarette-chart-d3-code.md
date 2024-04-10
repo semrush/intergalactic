@@ -65,3 +65,13 @@ Show null and not available data in the legend and tooltip but not on the chart.
 </script>
 
 :::
+
+## Advanced usage
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/advanced-usage.tsx';
+</script>
+
+:::
