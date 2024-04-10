@@ -90,10 +90,25 @@ You can see the list of available methods in the [API](/components/dropdown-menu
 
 ## Nested dropdown menus
 
+You can use `DropdownMenu.Nesting` and `DropdownMenu.Nesting.Trigger` to create basic nested menus.
+Refer to this example to see needed components structure.
+
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/nested.tsx';
+</script>
+
+:::
+
+## Nested dropdowns with focusable elements
+
+If you want to put focusable elements in dropdown items that also contain nesting, you need to use more complex structure with `DropdownMenu.Nesting.Item`. 
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/nested-with-focusables.tsx';
 </script>
 
 :::

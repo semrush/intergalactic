@@ -385,8 +385,8 @@ const Select = createComponent(
     OptionTitle: DropdownMenu.ItemTitle,
     OptionHint: DropdownMenu.ItemHint,
     Divider,
-    InputSearch: InputSearchWrapper,
-    Input: InputSearchWrapper,
+    InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
+    Input: [InputSearchWrapper, InputSearch._______childrenComponents],
   },
   { parent: DropdownMenu, context: selectContext },
 );
