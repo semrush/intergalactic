@@ -1,3 +1,23 @@
+## [15.76.1] - 2024-04-10
+
+### @semcore/date-picker
+
+- **Added** Missing `@semcore/tooltip` dependency in `@semcore/date-picker` package.
+
+### @semcore/ellipsis
+
+- **Fixed** Very longs words were not wrapped in multiline ellipsis.
+- **Fixed** Rendering `Ellipsis` with tag `Link` wasn't displayed correctly.
+- **Fixed** Attempting to render `Link tag={Ellipsis}` was causing empty node rendered.
+
+### @semcore/select
+
+- **Fixed** `Select.InputSearch.Value` was undefined.
+
+### @semcore/utils
+
+- **Fixed** Fixed internal mechanism of converting React nodes into text string of it's content.
+
 ## [15.76.0] - 2024-04-09
 
 ### @semcore/d3-chart
