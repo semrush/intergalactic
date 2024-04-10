@@ -33,6 +33,7 @@ type AsPropsMiddle = {
   tooltipProps: TooltipProps;
   children?: React.ReactNode;
   advanceMode?: boolean;
+  tag?: React.ElementType;
 };
 
 type EllipsisProps = BoxProps &
@@ -180,6 +181,8 @@ class RootEllipsis extends Component<AsProps> {
       containerRect,
       containerRef,
       includeTooltipProps,
+      children,
+      ...other
     } = this.asProps;
     const { visible } = this.state;
     const advancedContent = findComponent(Children, [(Ellipsis as any).Content.displayName]);
@@ -199,6 +202,7 @@ class RootEllipsis extends Component<AsProps> {
           containerRef={containerRef}
           tooltipProps={tooltipProps}
           advanceMode={advanceMode}
+          {...other}
         >
           <Children />
         </EllipsisMiddle>,
@@ -217,7 +221,7 @@ class RootEllipsis extends Component<AsProps> {
           {advanceMode ? (
             <Children />
           ) : (
-            <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+            <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
               <Children />
             </SEllipsis>
           )}
@@ -229,7 +233,7 @@ class RootEllipsis extends Component<AsProps> {
         {advanceMode ? (
           <Children />
         ) : (
-          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine} {...other}>
             <Children />
           </SEllipsis>
         )}
@@ -254,6 +258,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     tooltipProps,
     children,
     advanceMode,
+    ...otherProps
   } = props;
   const resizeElement = React.useRef<HTMLDivElement>(null);
   const [dimension, setDimension] = React.useState<{ fontSize: string; symbolWidth: number }>({
@@ -281,7 +286,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
 
   const STail = 'span';
   const SBeginning = 'span';
-  const SContainerMiddle = Box;
+  const SContainerMiddle = props.tag || Box;
   const SAdvancedModeContainerMiddle = Tooltip;
   const displayedSymbols = React.useMemo(
     () => Math.round(blockWidth / dimension.symbolWidth),
@@ -328,7 +333,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     ) as any;
   }
   return sstyled(styles)(
-    <SContainerMiddle ref={containerRef ?? resizeElement}>
+    <SContainerMiddle {...otherProps} ref={containerRef ?? resizeElement}>
       <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
       <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
     </SContainerMiddle>,
