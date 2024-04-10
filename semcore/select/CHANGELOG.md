@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.2] - 2024-04-10
+
+### Fixed
+
+- `Select.InputSearch.Value` was undefined.
+
 ## [4.36.1] - 2024-04-09
 
 ### Changed
