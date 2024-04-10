@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, PlotSummarizerConfig } from '@semcore/d3-chart';
+import { Chart, PlotSummarizerConfig } from 'intergalactic/d3-chart';
 const data = {
   Cats: 3524,
   Dogs: 1344,
@@ -18,18 +18,16 @@ const a11yAltTextConfig: PlotSummarizerConfig = {
   },
 };
 
-class Demo extends React.PureComponent {
-  render() {
-    return (
-      <Chart.Cigarette
-        data={data}
-        plotWidth={400}
-        plotHeight={28}
-        showLegend={true}
-        a11yAltTextConfig={a11yAltTextConfig}
-      />
-    );
-  }
+function Demo() {
+  return (
+    <Chart.Cigarette
+      data={data}
+      plotWidth={400}
+      plotHeight={28}
+      showLegend={true}
+      a11yAltTextConfig={a11yAltTextConfig}
+    />
+  );
 }
 
 export default Demo;

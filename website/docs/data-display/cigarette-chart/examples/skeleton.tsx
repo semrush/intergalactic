@@ -1,14 +1,12 @@
 import React from 'react';
-import Skeleton from '@semcore/skeleton';
+import Skeleton from 'intergalactic/skeleton';
 
-class Demo extends React.PureComponent {
-  render() {
-    return (
-      <Skeleton>
-        <Skeleton.Text height={24} />
-      </Skeleton>
-    );
-  }
+function Demo() {
+  return (
+    <Skeleton>
+      <Skeleton.Text height={24} />
+    </Skeleton>
+  );
 }
 
 export default Demo;

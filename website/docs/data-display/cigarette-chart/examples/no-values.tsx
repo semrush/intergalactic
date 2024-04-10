@@ -1,10 +1,8 @@
 import React from 'react';
-import { Chart, interpolateValue } from '@semcore/d3-chart';
+import { Chart, interpolateValue } from 'intergalactic/d3-chart';
 
-class Demo extends React.PureComponent {
-  render() {
-    return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} showLegend={true} />;
-  }
+function Demo() {
+  return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} showLegend={true} />;
 }
 
 const data: Record<string, number | typeof interpolateValue> = {
