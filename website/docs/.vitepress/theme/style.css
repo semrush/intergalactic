@@ -474,9 +474,9 @@ img, video {
 }
 
 .playground-runtime {
-  padding-top: 40px;
+  padding-top: 16px;
   margin-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 16px;
   margin-bottom: -5px;
   border-radius: 6px;
   padding-left: 4px;
@@ -487,8 +487,8 @@ img, video {
 
 @media (min-width: 640px) {
   .playground-runtime {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
