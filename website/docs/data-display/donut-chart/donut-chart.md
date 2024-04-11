@@ -46,7 +46,7 @@ const App = PlaygroundGeneration((preview) => {
 
   const innerRadius = text({
     key: 'innerRadius',
-    defaultValue: 100,
+    defaultValue: 60,
     label: 'Inner Radius',
   });
 
@@ -64,8 +64,8 @@ const App = PlaygroundGeneration((preview) => {
 
   const chartProps: DonutChartProps = {
     data,
-    plotWidth: 300,
-    plotHeight: 300,
+    plotWidth: 200,
+    plotHeight: 200,
     direction,
     showTooltip,
     showXAxis,
@@ -80,6 +80,7 @@ const App = PlaygroundGeneration((preview) => {
 
   if (showLegend) {
     chartProps.legendProps = legendProps;
+    chartProps.showLegend = true;
   } else {
     chartProps.showLegend = false;
   }
