@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.38.0] - 2024-04-12
+
+### Added
+
+- `Cigarette` chart.
+
 ## [3.37.4] - 2024-04-12
 
 ### Fixed
