@@ -284,6 +284,31 @@ describe('Select Trigger', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+  test('multiselect a11y', async () => {
+    vi.useFakeTimers();
+    const options = [
+      {
+        value: '1',
+        children: 'Option 1',
+        label: 'Option 1',
+      },
+      {
+        value: '2',
+        children: 'Option 2',
+        label: 'Option 2',
+      },
+    ];
+    const { container } = render(
+      <Select visible value={['2']} disablePortal multiselect options={options} />,
+    );
+    act(() => {
+      vi.runAllTimers();
+    });
+    vi.useRealTimers();
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 
   test.concurrent('focus position preserve with mouse navigation', async () => {
     vi.useFakeTimers();
