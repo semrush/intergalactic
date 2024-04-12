@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.37.3] - 2024-04-12
+## [3.37.4] - 2024-04-12
 
 ### Fixed
 
 - Dot's size for line, aria and bar charts.
+
+## [3.37.3] - 2024-04-12
+
+### Fixed
+
+- background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
 
 ## [3.37.2] - 2024-04-12
 

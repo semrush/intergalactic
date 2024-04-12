@@ -48,17 +48,7 @@ const Demo = () => {
           Chart legend
         </Card.Title>
       </Card.Header>
-      <Card.Body tag={Flex} direction='row'>
-        <ChartLegend
-          direction={'column'}
-          wMin={100}
-          items={legendItems}
-          onChangeVisibleItem={handleChangeVisible}
-          onMouseEnterItem={handleMouseEnter}
-          onMouseLeaveItem={handleMouseLeave}
-          dataHints={dataHints}
-          patterns
-        />
+      <Card.Body tag={Flex} direction='row' gap={5}>
         <Plot width={width} height={height} data={data} dataHints={dataHints} patterns>
           <Donut innerRadius={height / 2 - 50}>
             {legendItems.map((item, index) => {
@@ -76,6 +66,16 @@ const Demo = () => {
             })}
           </Donut>
         </Plot>
+        <ChartLegend
+          direction={'column'}
+          wMin={100}
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+          dataHints={dataHints}
+          patterns
+        />
       </Card.Body>
     </Card>
   );
