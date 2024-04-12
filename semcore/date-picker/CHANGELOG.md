@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.1] - 2024-04-12
+
+### Changed
+
+- Input trigger now resizes to fit the content on mount and on blur.
+
+### Fixed
+
+- On some locale in which formatted dates are longer than the input trigger, date text was overflowing the input container.
+
 ## [4.36.1] - 2024-04-10
 
 ### Added
