@@ -204,7 +204,7 @@ describe('FilterTrigger', () => {
       <FilterTrigger empty={false}>
         <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
         <Tooltip title={'clear trigger hint text'}>
-          <FilterTrigger.Clear.Button data-testid={'test'} />
+          <FilterTrigger.ClearButton data-testid={'test'} />
         </Tooltip>
       </FilterTrigger>
     );
