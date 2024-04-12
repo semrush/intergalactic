@@ -7,19 +7,20 @@ function findComponent(
   Children: any,
   names: string[],
   recursively?: boolean,
+  limit = 100,
 ): Exclude<ReactNode, boolean | null | undefined> | undefined {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   return React.Children.toArray(children).find((child) => {
     if (React.isValidElement(child)) {
       if (child.type === React.Fragment) {
-        return findComponent(child.props.children, names, recursively);
+        return findComponent(child.props.children, names, recursively, limit);
       }
       // @ts-ignore
       const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
       const result = !!inheritedNames.find((name: string) => names.includes(name));
 
-      if (!result && child.props.children && recursively) {
-        return findComponent(child.props.children, names, recursively);
+      if (!result && child.props.children && recursively && limit > 0) {
+        return findComponent(child.props.children, names, recursively, limit - 1);
       }
 
       return result;
