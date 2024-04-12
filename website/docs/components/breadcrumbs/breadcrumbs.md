@@ -14,9 +14,9 @@ import Breadcrumbs from 'intergalactic/breadcrumbs';
 const App = PlaygroundGeneration(() => {
   return (
     <Breadcrumbs>
-      <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
       <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
-      <Breadcrumbs.Item active>semrush.com</Breadcrumbs.Item>
+      <Breadcrumbs.Item href='#'>semrush.com</Breadcrumbs.Item>
+      <Breadcrumbs.Item active>Position Tracking</Breadcrumbs.Item>
     </Breadcrumbs>
   );
 });
@@ -50,7 +50,7 @@ Table: Breadcrumbs styles
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
-| Link                | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
+| Link                | `font-size: var(--fs-200)`, `color: var(--text-secondary)`, `cursor: pointer`, no `line-height`. |
 | `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                              |
 
 ### Margins
@@ -61,7 +61,7 @@ Margins between the links inside the breadcrumbs is 8px.
 
 ## Long links truncation
 
-If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
+If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), items are collapsed into `ellipsis`.
 
 ![](static/ellipsis.png)
 
@@ -73,16 +73,15 @@ Table: Breadcrumbs states
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
-| Normal | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
-| Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
+| Normal | `font-size: var(--fs-200)`, `color: var(--text-secondary)`, `cursor: pointer`, no `line-height`. |
+| Hover  | `color: var(--text-primary)` + underline                                       |
 | Active | `color: var(--text-primary)`, `cursor: default`                                         |
 
 ## Usage in UX/UI
 
 The recommended order of the navigation levels in the breadcrumbs:
 
-1. The first link is **Dashboard**. It leads to the screen with widgets for various products.
-2. The second link is the **product's Projects and/or the product's home page**.
-3. The third link is the **Name of the project**.
-4. The fourth link is the **Name of the product**.
+1. The first link is the **product's Projects and/or the product's home page**.
+2. The second link is the **Name of the project**.
+3. The third link is the **Name of the product**.
 

@@ -36,10 +36,41 @@ describe('Tag', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Renders without focus ring when non interactive', async ({ task }) => {
+    const component = (
+      <Tag id='non-interactive-tag' keyboardFocused>
+        <Tag.Text>Tag name</Tag.Text>
+        <Tag.Close />
+      </Tag>
+    );
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#non-interactive-tag',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
+  });
+  test.concurrent('Renders with focus ring when interactive', async ({ task }) => {
+    const component = (
+      <Tag id='interactive-tag' keyboardFocused interactive>
+        <Tag.Text>Tag name</Tag.Text>
+        <Tag.Close />
+      </Tag>
+    );
+    await expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#interactive-tag',
+        },
+      }),
+    ).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Renders correctly with keyboardFocused', async ({ task }) => {
     const component = themes.flatMap((theme) =>
       colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color} keyboardFocused>
+        <Tag key={`${theme}-${color}`} theme={theme} color={color} keyboardFocused interactive>
           <Tag.Text>Tag name</Tag.Text>
         </Tag>
       )),
@@ -51,7 +82,7 @@ describe('Tag', () => {
   test.concurrent('Renders text correctly with keyboardFocused', async ({ task }) => {
     const component = themes.flatMap((theme) =>
       colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color}>
+        <Tag key={`${theme}-${color}`} theme={theme} color={color} interactive>
           <Tag.Text keyboardFocused>Tag name</Tag.Text>
           <Tag.Close />
         </Tag>

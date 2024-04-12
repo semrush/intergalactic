@@ -102,6 +102,10 @@ export type PlotSummarizerConfig = {
   /** Additional field for extra text description to the data
    * **/
   additionalFields?: string[];
+  /** Allows to format titles (e.g. axes) in alt text and data table */
+  titlesFormatter?: (key: string | number | null) => string | undefined;
+  /** Allows to format values in alt text and data table */
+  valuesFormatter?: (value: unknown, key: string | number | null) => string | undefined;
 };
 
 /** @deprecated */

@@ -14,6 +14,7 @@ const Demo = () => {
         </DropdownMenu.Popper>
       </DropdownMenu>
       <input />
+      <input />
     </div>
   );
 };
