@@ -58,6 +58,9 @@ class PaginationRoot extends Component {
   static style = style;
   static enhance = [i18nEnhance(localizedMessages)];
 
+  nextPageButtonRef = React.createRef();
+  prevPageButtonRef = React.createRef();
+
   state = {
     // Crutch, so as not to take out `dirtyCurrentPage` in props
     dirtyCurrentPage: undefined,
@@ -78,6 +81,21 @@ class PaginationRoot extends Component {
     }
   }
 
+  returnLostFocus = () => {
+    setTimeout(() => {
+      if (document.activeElement !== document.body) return;
+
+      const prevPageButton = this.prevPageButtonRef.current;
+      const nextPageButton = this.nextPageButtonRef.current;
+
+      if (prevPageButton && !prevPageButton.disabled) {
+        prevPageButton.focus();
+      } else if (nextPageButton && !nextPageButton.disabled) {
+        nextPageButton.focus();
+      }
+    }, 0);
+  };
+
   handlePageChange = (currentPage) => {
     currentPage = Number(currentPage);
     if (Number.isNaN(currentPage)) {
@@ -85,6 +103,7 @@ class PaginationRoot extends Component {
     }
     this.handlers.currentPage(currentPage);
     this.setState({ dirtyCurrentPage: undefined });
+    this.returnLostFocus();
   };
 
   handlePageValueChange = (value) => {
@@ -140,6 +159,7 @@ class PaginationRoot extends Component {
       disabled,
       onClick: () => this.handlePageChange(currentPage - 1),
       getI18nText,
+      ref: this.nextPageButtonRef,
     };
   };
 
@@ -151,6 +171,7 @@ class PaginationRoot extends Component {
       disabled,
       onClick: () => this.handlePageChange(currentPage + 1),
       getI18nText,
+      ref: this.prevPageButtonRef,
     };
   };
 
