@@ -41,3 +41,13 @@ Filter trigger contains two elements in the wrapper – button that opens dropdo
 </script>
 
 :::
+
+## Hint for clear button
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/hint_for_clear_button.tsx';
+</script>
+
+:::

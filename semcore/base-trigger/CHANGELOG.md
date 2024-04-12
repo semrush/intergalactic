@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.0] - 2024-04-09
+
+### Added
+
+- composition api for `FilterTrigger`.
+
 ## [4.31.2] - 2024-04-10
 
 ### Changed
