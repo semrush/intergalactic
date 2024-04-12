@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.4] - 2024-04-12
+
+### Fixed
+
+- Dot's size for line, aria and bar charts.
+
 ## [3.37.3] - 2024-04-12
 
 ### Fixed
