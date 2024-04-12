@@ -22,7 +22,8 @@ type ChartState = {
 export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
-> extends Component<T, {}, ChartState> {
+  E = {},
+> extends Component<T, {}, ChartState, E> {
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
@@ -40,7 +41,7 @@ export abstract class AbstractChart<
   protected dataHints = makeDataHintsContainer();
 
   public state: ChartState = {
-    dataDefinitions: this.defaultDataDefinitions,
+    dataDefinitions: this.getDefaultDataDefinitions(),
     highlightedLine: -1,
     withTrend: false,
   };
@@ -59,11 +60,11 @@ export abstract class AbstractChart<
 
   public componentDidUpdate(prevProps: T) {
     if (prevProps.data !== this.props.data || prevProps.legendProps !== this.props.legendProps) {
-      this.setState({ dataDefinitions: this.defaultDataDefinitions });
+      this.setState({ dataDefinitions: this.getDefaultDataDefinitions() });
     }
   }
 
-  protected get defaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
+  protected getDefaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
     const { data, legendProps } = this.props;
 
     return this.dataKeys.map((key, index) => {
@@ -89,16 +90,32 @@ export abstract class AbstractChart<
       if (legendData && 'columns' in legendData) {
         dataDefinition.columns = legendData.columns || [];
       } else if (!Array.isArray(data)) {
-        const value = (data instanceof Map ? data.get(key) : Number(data[key])) ?? 0;
-        const total = Object.values(data).reduce<number>((sum, i) => sum + Number(i), 0);
-        const percent = ((value / total) * 100).toFixed(2);
+        let value: number | undefined = undefined;
+        let dataValue = data[key];
+
+        if (data instanceof Map) {
+          dataValue = data.get(key);
+        }
+
+        if (dataValue !== interpolateValue) {
+          value = Number(dataValue);
+        }
+
+        const total = Object.values(data).reduce<number>((sum, i) => {
+          if (i !== interpolateValue) {
+            return sum + Number(i);
+          }
+
+          return sum;
+        }, 0);
+        const percent = value !== undefined ? ((value / total) * 100).toFixed(2) : undefined;
 
         dataDefinition.columns = [
           <Text key={`${key}_percent`} use={'secondary'}>
-            {percent}%
+            {percent !== undefined ? `${percent}%` : ''}
           </Text>,
-          <Text key={`${key}_value`} use={'primary'}>
-            {value}
+          <Text key={`${key}_value`} use={value ? 'primary' : 'secondary'}>
+            {value ?? 'n/a'}
           </Text>,
         ];
       }
@@ -305,6 +322,10 @@ export abstract class AbstractChart<
       return 'n/a';
     }
 
+    if (value === null) {
+      return '0';
+    }
+
     if (value instanceof Date) {
       return value.toDateString();
     }
@@ -340,6 +361,8 @@ export abstract class AbstractChart<
       items: dataDefinitions,
       size: lProps.size,
       shape: lProps.shape,
+      w: lProps.w,
+      h: lProps.h,
       patterns,
       direction:
         lProps.direction ?? (direction === 'row' || direction === 'row-reverse' ? 'column' : 'row'),
@@ -420,7 +443,7 @@ export abstract class AbstractChart<
 
   public render() {
     const SChart = Root;
-    const { styles, plotWidth, plotHeight, data, patterns } = this.asProps;
+    const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig } = this.asProps;
 
     return sstyled(styles)(
       <SChart render={Flex} gap={5}>
@@ -431,6 +454,7 @@ export abstract class AbstractChart<
           width={plotWidth}
           height={plotHeight}
           dataHints={this.dataHints}
+          a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
         >
           {this.renderAxis()}
