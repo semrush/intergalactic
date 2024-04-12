@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.2] - 2024-04-11
+
+### Fixed
+
+- DropdownMenu with input in the trigger was not highting current items when focus comes to input with mouse click.
+
 ## [4.26.1] - 2024-04-10
 
 ### Changed
