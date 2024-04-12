@@ -10,6 +10,7 @@ import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import { InputMaskValueProps } from '@semcore/input-mask';
 import Checkbox from '@semcore/checkbox';
+import { TooltipProps } from '@semcore/tooltip';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -114,6 +115,10 @@ export type DatePickerProps = Intergalactic.InternalTypings.EfficientOmit<
      * */
     disabled?: (Date | (Date | false)[] | string)[];
     /**
+     * Error message when user attempts to input a disabled date
+     * */
+    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+    /**
      * Date for showing the necessary month
      * @default new Date()
      * */
@@ -177,6 +182,10 @@ export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
      * */
     disabled?: (Date | (Date | false)[] | string)[];
     /**
+     * Error message when user attempts to input a disabled date
+     * */
+    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+    /**
      * Date for showing the necessary month
      * @default new Date()
      * */
@@ -185,11 +194,6 @@ export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
      * To be activated upon changing the current shown month
      * */
     onDisplayedPeriodChange?: (date: Date) => void;
-    /**
-     * Component size
-     * @default m
-     */
-    size?: 'm' | 'l' | 'xl';
     /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
@@ -279,19 +283,21 @@ export type DatePickerHandlers = {
 
 /** @deprecated */
 export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
-export type BaseInputTriggerProps = InputProps & {
-  /**
-   * Date input placeholder characters
-   * @default { year: 'Y'; month: 'M'; day: 'D' }
-   */
-  placeholders?: { year: string; month: string; day: string };
-  locale?: string;
-  onDisplayedPeriodChange?: (date: Date) => void;
-};
-export type InputTriggerProps = BaseInputTriggerProps & {
-  value?: Date;
-  onChange?: (date: Date, event: ChangeEvent) => void;
-};
+export type BaseInputTriggerProps = InputProps &
+  TooltipProps & {
+    /**
+     * Date input placeholder characters
+     * @default { year: 'Y'; month: 'M'; day: 'D' }
+     */
+    placeholders?: { year: string; month: string; day: string };
+    locale?: string;
+    onDisplayedPeriodChange?: (date: Date) => void;
+  };
+export type InputTriggerProps = BaseInputTriggerProps &
+  TooltipProps & {
+    value?: Date;
+    onChange?: (date: Date, event: ChangeEvent) => void;
+  };
 
 export type RangeInputTriggerProps = BaseInputTriggerProps & {
   value?: Date[];
@@ -483,7 +489,10 @@ declare const MonthRangePicker: Intergalactic.Component<
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export type DateRangeComparatorProps = DropdownProps &
+export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOmit<
+  DropdownProps,
+  'disabled'
+> &
   WithI18nEnhanceProps & {
     /**
      * Selected date ranges
@@ -513,6 +522,10 @@ export type DateRangeComparatorProps = DropdownProps &
      * */
     disabled?: (Date | (Date | false)[] | string)[];
     /**
+     * Error message when user attempts to input a disabled date
+     * */
+    disabledErrorText?: ((attemptedDate: Date) => string) | string | null;
+    /**
      * Date for showing the necessary month
      * @default new Date()
      * */
@@ -521,11 +534,6 @@ export type DateRangeComparatorProps = DropdownProps &
      * To be activated upon changing the current shown month
      * */
     onDisplayedPeriodChange?: (date: Date) => void;
-    /**
-     * Component size
-     * @default m
-     */
-    size?: 'm' | 'l' | 'xl';
     /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */

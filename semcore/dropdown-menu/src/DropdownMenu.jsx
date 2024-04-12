@@ -130,6 +130,9 @@ class DropdownMenuRoot extends Component {
         return;
       }
     }
+    if (e.key.startsWith('Arrow') && !this.state.keyboardFocused) {
+      this.setState({ keyboardFocused: true });
+    }
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
       const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
       const focusable = getFocusableIn(item);
@@ -327,6 +330,9 @@ class DropdownMenuRoot extends Component {
       visible,
       onNestedVisibleChange: this.handleNestedVisibleChange,
     };
+  };
+  getNestingItemProps = () => {
+    return this.getNestingTriggerProps();
   };
 
   getItemHintProps() {
@@ -537,6 +543,13 @@ function NestingTrigger(props) {
   );
 }
 
+function NestingItem(props) {
+  const { styles } = props;
+  const SDropdownNestingItem = Root;
+
+  return sstyled(styles)(<SDropdownNestingItem render={NestingTrigger} tabIndex={-1} />);
+}
+
 function Addon(props) {
   const [SDropdownMenuItemAddon, { className, ...other }] = useBox(props, props.forwardRef);
   const styles = sstyled(props.styles);
@@ -576,7 +589,7 @@ const DropdownMenu = createComponent(
     List,
     Menu,
     Item: [Item, { Addon }],
-    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
+    Nesting: [Nesting, { Trigger: NestingTrigger, Addon, Item: NestingItem }],
     ItemTitle: Title,
     ItemHint: Hint,
   },

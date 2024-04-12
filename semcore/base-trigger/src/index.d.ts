@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties, Intergalactic, Root } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { DotProps } from '@semcore/dot';
 import { NeighborItemProps } from '@semcore/neighbor-location';
@@ -96,6 +96,8 @@ declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> 
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
   Counter: Intergalactic.Component<'div', BoxProps & DotProps>;
+  TriggerButton: typeof BaseTrigger;
+  ClearButton: typeof BaseTrigger;
 };
 
 export default BaseTrigger;

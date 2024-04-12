@@ -96,8 +96,9 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       onDisplayedPeriodChange,
       locale,
       disabled,
-      size,
+      disabledErrorText,
       getI18nText,
+      animationsDisabled,
     } = this.asProps;
     const value = visible
       ? [preselectedValue[0] || this.asProps.value[0], preselectedValue[1] || this.asProps.value[1]]
@@ -109,11 +110,12 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 215 : 235,
       parts: dateParts,
       disabledDates: disabled,
+      disabledErrorText,
       children: () => <InputTrigger.DateRange />,
       getI18nText,
+      animationsDisabled,
     };
   }
 

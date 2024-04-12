@@ -372,10 +372,11 @@ class DateRangeComparatorAbstract extends Component {
       onDisplayedPeriodChange,
       locale,
       disabled,
-      size,
+      disabledErrorText,
       getI18nText,
       focusedRange,
       preselectedValue,
+      animationsDisabled,
     } = this.asProps;
 
     return {
@@ -384,14 +385,14 @@ class DateRangeComparatorAbstract extends Component {
       onChange: (value) => this.handlers.preselectedValue(value),
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 300 : 330,
       disabledDates: disabled,
+      disabledErrorText,
       children: this.getRangeInput(),
       getI18nText,
       onFocus: () => {
         this.handlers.focusedRange('value');
-        return false;
       },
+      animationsDisabled,
     };
   }
 
@@ -401,11 +402,12 @@ class DateRangeComparatorAbstract extends Component {
       onDisplayedPeriodChange,
       locale,
       disabled,
-      size,
+      disabledErrorText,
       getI18nText,
       focusedRange,
       preselectedCompare,
       compareToggle,
+      animationsDisabled,
     } = this.asProps;
 
     return {
@@ -415,14 +417,14 @@ class DateRangeComparatorAbstract extends Component {
       onChange: (value) => this.handlers.preselectedCompare(value),
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 300 : 330,
       disabledDates: disabled,
       children: this.getRangeInput(),
       getI18nText,
+      disabledErrorText,
       onFocus: () => {
         this.handlers.focusedRange('compare');
-        return false;
       },
+      animationsDisabled,
     };
   }
 

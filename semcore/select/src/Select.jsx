@@ -246,12 +246,7 @@ class RootSelect extends Component {
           <Select.Menu>
             {options.map((option, index) => {
               return (
-                <Select.Option
-                  key={option.value}
-                  id={`igc-${uid}-option-${index}`}
-                  aria-selected={value === option.value}
-                  {...option}
-                >
+                <Select.Option key={option.value} id={`igc-${uid}-option-${index}`} {...option}>
                   {multiselect && <Select.Option.Checkbox />}
                   {option.children}
                 </Select.Option>
@@ -351,9 +346,7 @@ function Checkbox(providedProps) {
       {...componentProps}
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
-      role='checkbox'
       tabIndex={-1}
-      aria-checked={selected}
     />
   );
 }
@@ -385,8 +378,8 @@ const Select = createComponent(
     OptionTitle: DropdownMenu.ItemTitle,
     OptionHint: DropdownMenu.ItemHint,
     Divider,
-    InputSearch: InputSearchWrapper,
-    Input: InputSearchWrapper,
+    InputSearch: [InputSearchWrapper, InputSearch._______childrenComponents],
+    Input: [InputSearchWrapper, InputSearch._______childrenComponents],
   },
   { parent: DropdownMenu, context: selectContext },
 );

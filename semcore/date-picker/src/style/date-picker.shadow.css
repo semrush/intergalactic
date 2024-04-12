@@ -53,6 +53,16 @@ SButton SInner {
 SInputMask {
   color: var(--intergalactic-text-primary, #191b23);
   line-height: normal;
+  padding-right: var(--intergalactic-spacing-2x, 8px);
+  transition: width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease, min-width calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
+}
+
+SInputMask[animationsDisabled] {
+  transition: none;
+}
+
+SInputMask SValue {
+  letter-spacing: 0;
 }
 
 SIndicator {
@@ -79,6 +89,16 @@ SRangeIndicator[disabled] {
 SHumanizedDate {
   position: absolute;
   pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+SMask {
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 SSingleDateInput SValue,
@@ -142,4 +162,18 @@ SFooter {
 
 SPeriodsList {
   padding: var(--intergalactic-spacing-4x, 16px);
+}
+
+STooltip {
+  padding: var(--intergalactic-spacing-3x, 12px);
+}
+
+SCompareToggle {
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion) {
+  SInputMask {
+    transition: none;
+  }
 }

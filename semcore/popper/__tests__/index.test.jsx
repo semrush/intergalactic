@@ -31,6 +31,7 @@ describe('Popper', () => {
       </Popper>,
     );
 
+    fireEvent.mouseMove(getByTestId('reference'));
     fireEvent.mouseEnter(getByTestId('reference'));
     // because wait call onVisibleChange
     act(() => {

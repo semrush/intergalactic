@@ -7,6 +7,7 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import { Box } from '@semcore/flex-box';
 
 describe('DropdownMenu', () => {
   beforeEach(cleanup);
@@ -301,6 +302,7 @@ describe('DropdownMenu', () => {
     expect(highlightedIndex).toBe(null);
     expect(getByTestId('delete-2')).toHaveFocus();
   });
+
   describe.sequential('opens nested menu', () => {
     test.sequential('by tab', async ({ expect }) => {
       const { getByTestId } = render(
@@ -329,6 +331,44 @@ describe('DropdownMenu', () => {
       await userEvent.keyboard('[ArrowDown]');
       await userEvent.keyboard('[Tab]');
       expect(getByTestId('item-2-2')).toBeTruthy();
+    });
+    describe.sequential('opens nested menu with Nesting.Item', () => {
+      test.sequential('by tab', async ({ expect }) => {
+        const { getByTestId } = render(
+          <DropdownMenu placement='right'>
+            <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
+            <DropdownMenu.Menu>
+              <DropdownMenu.Nesting>
+                <DropdownMenu placement='right' interaction='hover'>
+                  <DropdownMenu.Nesting.Item>
+                    <Box mr={1}>item</Box>
+                    <Box mr={1} tabIndex={0}>
+                      focusable 1
+                    </Box>
+                    <Box mr={1} tabIndex={0}>
+                      focusable 2
+                    </Box>
+                    <DropdownMenu.Trigger tag={DropdownMenu.Nesting.Trigger}>
+                      {'>'}
+                    </DropdownMenu.Trigger>
+                  </DropdownMenu.Nesting.Item>
+                  <DropdownMenu.Menu>
+                    <DropdownMenu.Item data-testid='nested-item'>Nested item</DropdownMenu.Item>
+                  </DropdownMenu.Menu>
+                </DropdownMenu>
+              </DropdownMenu.Nesting>
+            </DropdownMenu.Menu>
+          </DropdownMenu>,
+        );
+
+        await userEvent.keyboard('[Tab]');
+        await userEvent.keyboard('[Enter]');
+        await userEvent.keyboard('[ArrowDown]');
+        await userEvent.keyboard('[Tab]');
+        await userEvent.keyboard('[Tab]');
+        await userEvent.keyboard('[Tab]');
+        expect(getByTestId('nested-item')).toBeTruthy();
+      });
     });
     test.sequential('by enter', async ({ expect }) => {
       const { getByTestId } = render(

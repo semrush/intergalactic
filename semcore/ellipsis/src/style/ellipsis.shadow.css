@@ -24,6 +24,13 @@ SEllipsis[maxLine] {
   -webkit-box-orient: vertical;
   overflow: hidden;
   white-space: normal;
+  overflow-wrap: break-word;
+}
+
+SContainerMiddle> :has(SBeginning),
+SContainerMiddle> :has(STail) {
+  display: flex;
+  width: 100%;
 }
 
 STail {

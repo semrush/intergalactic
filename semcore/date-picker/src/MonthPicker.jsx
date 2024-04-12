@@ -52,8 +52,16 @@ class MonthPickerRoot extends PickerAbstract {
   }
 
   getTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
-      this.asProps;
+    const {
+      value,
+      onChange,
+      onDisplayedPeriodChange,
+      locale,
+      disabled,
+      disabledErrorText,
+      getI18nText,
+      animationsDisabled,
+    } = this.asProps;
 
     return {
       ...super.getButtonTriggerProps(),
@@ -61,11 +69,12 @@ class MonthPickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 120 : 135,
       parts: dateParts,
       disabledDates: disabled,
+      disabledErrorText,
       children: () => <InputTrigger.SingleDateInput />,
       getI18nText,
+      animationsDisabled,
     };
   }
 

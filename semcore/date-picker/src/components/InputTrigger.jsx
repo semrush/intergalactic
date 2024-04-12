@@ -1,22 +1,28 @@
 import React from 'react';
 import BaseTrigger from '@semcore/base-trigger';
 import InputMask from '@semcore/input-mask';
+import Tooltip from '@semcore/tooltip';
 import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
 import createComponent, { Root, sstyled, Component } from '@semcore/core';
 import NeighborLocation from '@semcore/neighbor-location';
 import includesDate from '../utils/includesDate';
 import dayjs from 'dayjs';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from '../style/date-picker.shadow.css';
 import assignProps from '@semcore/utils/lib/assignProps';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
 const defaultPlaceholders = { year: 'Y', month: 'M', day: 'D' };
+const exampleDate = new Date(2000, 4, 29);
 
 class InputTriggerRoot extends Component {
   static displayName = 'InputTrigger';
   static style = style;
+  static defaultProps = {
+    duration: 300,
+  };
 
   getSingleDateInputProps() {
     const {
@@ -71,6 +77,42 @@ class SingleDateInputRoot extends Component {
         <SingleDateInput.MaskedInput />
       </>
     ),
+    defaultDisabledDateInputAttempt: false,
+  };
+  state = {
+    errorText: null,
+    showError: false,
+  };
+  uncontrolledProps() {
+    return {
+      disabledDateInputAttempt: [
+        null,
+        (date) => {
+          let errorText = this.state.errorText;
+          let showError = false;
+          if (date !== null) {
+            errorText = this.asProps.disabledErrorText;
+            if (errorText === undefined) {
+              let key = 'unavailableDate';
+              if (this.asProps.parts && !this.asProps.parts.day) {
+                key = 'unavailableMonth';
+              }
+              errorText = this.asProps.getI18nText(key);
+            }
+            if (typeof errorText === 'function') {
+              errorText = errorText(date);
+            }
+            showError = true;
+          }
+          this.setState({ errorText, showError });
+        },
+      ],
+    };
+  }
+
+  handleDisabledDateInputAttemptChange = (value) => {
+    if (value === this.asProps.disabledDateInputAttempt) return;
+    this.handlers.disabledDateInputAttempt(value);
   };
 
   getMaskedInputProps() {
@@ -83,17 +125,25 @@ class SingleDateInputRoot extends Component {
       onDisplayedPeriodChange,
       locale,
       'aria-haspopup': 'true',
+      onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
       ...otherProps,
     };
   }
 
   render() {
-    const { Children, forwardRef, styles } = this.asProps;
+    const { Children, forwardRef, styles, state } = this.asProps;
+    const { errorText, showError } = this.state;
     const SSingleDateInput = Root;
 
     return sstyled(styles)(
       <SSingleDateInput
         render={InputMask}
+        tag={Tooltip}
+        placement='top-start'
+        title={errorText}
+        theme='warning'
+        visible={showError}
+        state={showError ? 'invalid' : state}
         ref={forwardRef}
         __excludeProps={['onChange', 'style', 'aria-expanded']}
       >
@@ -116,7 +166,46 @@ class DateRangeRoot extends Component {
         <DateRange.ToMaskedInput />
       </>
     ),
+    defaultDisabledDateInputAttempt: false,
   };
+  state = {
+    containerFocused: false,
+    errorText: null,
+    showError: false,
+    lastChangedInput: 'from',
+  };
+  uncontrolledProps() {
+    return {
+      disabledDateInputAttempt: [
+        null,
+        (date) => {
+          let errorText = this.state.errorText;
+          let showError = false;
+          if (date !== null) {
+            errorText = this.asProps.disabledErrorText;
+            if (errorText === undefined) {
+              let key = 'unavailableDate';
+              if (this.asProps.parts && !this.asProps.parts.day) {
+                key = 'unavailableMonth';
+              }
+              if (this.state.lastChangedInput === 'to') {
+                key = 'unavailableEndDate';
+                if (this.asProps.parts && !this.asProps.parts.day) {
+                  key = 'unavailableEndMonth';
+                }
+              }
+              errorText = this.asProps.getI18nText(key);
+            }
+            if (typeof errorText === 'function') {
+              errorText = errorText(date);
+            }
+            showError = true;
+          }
+          this.setState({ errorText, showError });
+        },
+      ],
+    };
+  }
 
   fromRef = React.createRef();
   toRef = React.createRef();
@@ -142,6 +231,7 @@ class DateRangeRoot extends Component {
   handleFromKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
+    this.setState({ lastChangedInput: 'from' });
 
     if (
       event.key === 'ArrowRight' &&
@@ -157,6 +247,7 @@ class DateRangeRoot extends Component {
   handleToKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
+    this.setState({ lastChangedInput: 'to' });
 
     if (event.key === 'Backspace' && !this.toRef.current.value) {
       const value = this.fromRef.current.value;
@@ -176,6 +267,10 @@ class DateRangeRoot extends Component {
         this.fromRef.current.setSelectionRange(value.length, value.length);
       }, 0);
     }
+  };
+  handleDisabledDateInputAttemptChange = (value) => {
+    if (value === this.asProps.disabledDateInputAttempt) return;
+    this.handlers.disabledDateInputAttempt(value);
   };
 
   getFromMaskedInputProps() {
@@ -198,6 +293,8 @@ class DateRangeRoot extends Component {
         flex: 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
+        onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
+        containerFocused: this.state.containerFocused,
       },
       otherProps,
     );
@@ -215,6 +312,8 @@ class DateRangeRoot extends Component {
         flex: 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
+        onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
+        containerFocused: this.state.containerFocused,
       },
       otherProps,
     );
@@ -226,13 +325,32 @@ class DateRangeRoot extends Component {
       fulfilled: !!(value && (value[0] || value[1])),
     };
   }
+  handleFocus = () => {
+    this.setState({ containerFocused: true });
+  };
+  handleBlur = () => {
+    this.setState({ containerFocused: false });
+  };
 
   render() {
     const SDateRange = Root;
-    const { Children, styles, w } = this.asProps;
+    const { Children, styles, w, state } = this.asProps;
+    const { errorText, showError, lastChangedInput } = this.state;
 
     return sstyled(styles)(
-      <SDateRange render={InputMask} __excludeProps={['onChange', 'value', 'aria-expanded']} w={w}>
+      <SDateRange
+        render={InputMask}
+        tag={Tooltip}
+        placement={lastChangedInput === 'to' ? 'top-end' : 'top-start'}
+        title={errorText}
+        theme='warning'
+        visible={showError}
+        state={showError ? 'invalid' : state}
+        __excludeProps={['onChange', 'value', 'aria-expanded']}
+        w={w}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+      >
         <Children />
       </SDateRange>,
     );
@@ -287,12 +405,18 @@ const MaskedInput = ({
   forwardRef,
   placeholders = defaultPlaceholders,
   labelPrefix = 'Date',
+  onMaskPipeBlock,
+  containerFocused,
+  animationsDisabled,
 
   __excludeProps,
 
   Root: _root,
   ...otherProps
 }) => {
+  const ref = React.useRef();
+  const [width, setWidth] = React.useState(undefined);
+
   if (
     placeholders.year.length !== 1 ||
     placeholders.month.length !== 1 ||
@@ -306,8 +430,7 @@ const MaskedInput = ({
   }
 
   const { sep, order } = React.useMemo(() => {
-    const exampleDate = new Date(2000, 4, 29);
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     const dateTimeFormat = new Intl.DateTimeFormat(locale, options);
 
     let sep = undefined;
@@ -360,6 +483,7 @@ const MaskedInput = ({
     },
     [order, allowedParts],
   );
+
   const [internalValue, setInternalValue] = React.useState(outer);
   const value = React.useMemo(() => stringifyValue(internalValue), [stringifyValue, internalValue]);
 
@@ -386,6 +510,7 @@ const MaskedInput = ({
       }
 
       if (placeholdersOnly) {
+        onMaskPipeBlock?.(null);
         return '';
       }
 
@@ -458,11 +583,15 @@ const MaskedInput = ({
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
 
         if (disabledDates?.some(includesDate(dayjs(date), 'date'))) {
+          onMaskPipeBlock?.(date);
           return false;
         }
 
         if (allowedParts.day) {
-          if (date.getDate() !== parseInt(day, 10)) return false;
+          if (date.getDate() !== parseInt(day, 10)) {
+            onMaskPipeBlock?.(date);
+            return false;
+          }
         }
       }
 
@@ -473,9 +602,10 @@ const MaskedInput = ({
         if (part === 'day') result.push(day);
       }
 
+      onMaskPipeBlock?.(null);
       return { value: result.join(sep), indexesOfPipedChars };
     },
-    [placeholders, sep, order, allowedParts, disabledDates],
+    [placeholders, sep, order, allowedParts, disabledDates, onMaskPipeBlock],
   );
 
   const handleChange = React.useCallback(
@@ -564,19 +694,68 @@ const MaskedInput = ({
     return new Intl.DateTimeFormat(locale, {
       year: allowedParts.year ? 'numeric' : undefined,
       month: allowedParts.month ? 'short' : undefined,
-      day: allowedParts.day ? '2-digit' : undefined,
+      day: allowedParts.day ? 'numeric' : undefined,
     }).format(outerDate);
   }, [outerValue, locale, allowedParts]);
+
+  useEnhancedEffect(() => {
+    if (!ref.current) return;
+    const stringsToMeasure = humanizedDate ? [humanizedDate, mask] : [mask];
+    const widths = [];
+    const measureSpan = document.createElement('span');
+    const computedStyle = window.getComputedStyle(ref.current);
+    const typographyRelatedStyles = [
+      'height',
+      'font-size',
+      'font-family',
+      'font-weight',
+      'font-style',
+      'line-height',
+      'letter-spacing',
+      'text-transform',
+      'word-spacing',
+    ];
+    for (const style of typographyRelatedStyles) {
+      measureSpan.style[style] = computedStyle[style];
+    }
+    measureSpan.style.position = 'absolute';
+    measureSpan.style.visibility = 'hidden';
+    document.body.appendChild(measureSpan);
+    for (const string of stringsToMeasure) {
+      measureSpan.innerHTML = string;
+      widths.push(measureSpan.offsetWidth);
+    }
+    measureSpan.remove();
+    const maxWidth = Math.max(...widths);
+    setWidth(maxWidth);
+  }, [locale, humanizedDate, allowedParts, mask]);
 
   const SHumanizedDate = 'div';
   const handleInputRef = React.useCallback(
     (node) => {
+      ref.current = node;
       if (!node || node.tagName !== 'INPUT') return;
       if (typeof forwardRef === 'function') forwardRef(node);
       else forwardRef.current = node;
     },
     [forwardRef],
   );
+
+  const [appliedWidth, setAppliedWidth] = React.useState(width);
+  const [innerFocused, setInnerFocused] = React.useState(false);
+  const focused = containerFocused ?? innerFocused;
+  const handleFocus = React.useCallback((event) => {
+    otherProps.onFocus?.(event);
+    setInnerFocused(true);
+  }, []);
+  const handleBlur = React.useCallback((event) => {
+    otherProps.onBlur?.(event);
+    setInnerFocused(false);
+  }, []);
+  useEnhancedEffect(() => {
+    if (focused) return;
+    setAppliedWidth(width);
+  }, [width, focused]);
 
   return sstyled(styles)(
     <InputMask.Value
@@ -585,12 +764,18 @@ const MaskedInput = ({
       aliases={aliases}
       maskOnlySymbols={maskOnlySymbols}
       placeholder={mask}
+      w={appliedWidth}
+      wMin={appliedWidth}
       {...otherProps}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      focused={focused}
       ref={handleInputRef}
       pipe={pipeMask}
       value={value ?? ''}
       onChange={handleChange}
       noHumanizedDate={!humanizedDate}
+      animationsDisabled={animationsDisabled}
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,
