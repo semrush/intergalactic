@@ -36,11 +36,11 @@ const Demo = () => {
                 </FilterTrigger.Counter>
               )}
             </FilterTrigger.TriggerButton>
-            <FilterTrigger.Clear>
+            {Boolean(filters) && (
               <Tooltip title={'Clear value'}>
-                <FilterTrigger.Clear.Button />
+                <FilterTrigger.ClearButton />
               </Tooltip>
-            </FilterTrigger.Clear>
+            )}
           </Dropdown.Trigger>
           <Dropdown.Popper p={5}>
             <Button

@@ -203,11 +203,9 @@ describe('FilterTrigger', () => {
     const component = (
       <FilterTrigger empty={false}>
         <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
-        <FilterTrigger.Clear>
-          <Tooltip title={'clear trigger hint text'}>
-            <FilterTrigger.Clear.Button data-testid={'test'} />
-          </Tooltip>
-        </FilterTrigger.Clear>
+        <Tooltip title={'clear trigger hint text'}>
+          <FilterTrigger.Clear.Button data-testid={'test'} />
+        </Tooltip>
       </FilterTrigger>
     );
 

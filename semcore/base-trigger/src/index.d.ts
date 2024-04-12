@@ -97,14 +97,7 @@ declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> 
   Addon: typeof BaseTrigger.Addon;
   Counter: Intergalactic.Component<'div', BoxProps & DotProps>;
   TriggerButton: typeof BaseTrigger;
-  Clear: Intergalactic.Component<
-    'div',
-    {
-      children?: React.ReactNode;
-    }
-  > & {
-    Button: typeof BaseTrigger;
-  };
+  ClearButton: typeof BaseTrigger;
 };
 
 export default BaseTrigger;

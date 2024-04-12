@@ -6,27 +6,34 @@ import getOriginChildren from './getOriginChildren';
 function findComponent(
   Children: any,
   names: string[],
+  recursively?: boolean,
 ): Exclude<ReactNode, boolean | null | undefined> | undefined {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   return React.Children.toArray(children).find((child) => {
     if (React.isValidElement(child)) {
       if (child.type === React.Fragment) {
-        return findComponent(child.props.children, names);
+        return findComponent(child.props.children, names, recursively);
       }
       // @ts-ignore
       const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
-      return !!inheritedNames.find((name: string) => names.includes(name));
+      const result = !!inheritedNames.find((name: string) => names.includes(name));
+
+      if (!result && child.props.children && recursively) {
+        return findComponent(child.props.children, names, recursively);
+      }
+
+      return result;
     }
   });
 }
 
-export function isAdvanceMode(Children: any, name: string[]) {
+export function isAdvanceMode(Children: any, name: string[], recursively?: boolean) {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   if (!children) return false;
   if (typeof children === 'function') {
     return true;
   }
-  return !!findComponent(children, name);
+  return !!findComponent(children, name, recursively);
 }
 
 export function findAllComponents(Children: any, names: string[]): ReactElement[] {

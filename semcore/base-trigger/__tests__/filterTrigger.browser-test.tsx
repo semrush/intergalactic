@@ -29,7 +29,7 @@ test.describe('FilterTrigger', () => {
     await page.keyboard.press('Tab');
 
     const clearButtonLocator = await page.locator(
-      'button[data-ui-name="FilterTrigger.Clear.Button"]',
+      'button[data-ui-name="FilterTrigger.ClearButton"]',
     );
 
     await expect(clearButtonLocator).toBeFocused();

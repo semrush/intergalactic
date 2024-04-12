@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled, CHILDREN_COMPONENT } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -17,8 +17,8 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
-import findComponent from '@semcore/utils/lib/findComponent';
-import logger from '@semcore/utils/lib/logger';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import getOriginChildren from '@semcore/utils/src/getOriginChildren';
 
 const filterTriggerInputProps = [
   ...inputProps,
@@ -96,20 +96,17 @@ class RootFilterTrigger extends Component {
 
   render() {
     const SWrapper = Root;
-    const { Children, styles, getI18nText, empty } = this.asProps;
+    const { Children, styles, getI18nText, empty, forcedAdvancedMode } = this.asProps;
 
     const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
 
-    const ClearButton = findComponent(Children, ['FilterTrigger.Clear']);
-    const TriggerButton = findComponent(Children, ['FilterTrigger.TriggerButton']);
-
-    if (ClearButton && !TriggerButton) {
-      logger.warn(
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(
+        Children,
+        [FilterTrigger.TriggerButton.displayName, FilterTrigger.ClearButton.displayName],
         true,
-        `Don't set ClearButton without TriggerButton wrapper for content in FilterTrigger. Example: https://developer.semrush.com/intergalactic/components/filter-trigger/filter-trigger-code#hint-for-clear-button`,
-        this.asProps['data-ui-name'],
       );
-    }
 
     return sstyled(styles)(
       <SWrapper
@@ -127,12 +124,16 @@ class RootFilterTrigger extends Component {
         use:aria-labelledby={undefined}
       >
         <NeighborLocation>
-          {TriggerButton ?? (
-            <FilterTrigger.TriggerButton>
-              <Children />
-            </FilterTrigger.TriggerButton>
+          {advancedMode ? (
+            <Children />
+          ) : (
+            <>
+              <FilterTrigger.TriggerButton>
+                <Children />
+              </FilterTrigger.TriggerButton>
+              {!empty && <FilterTrigger.ClearButton />}
+            </>
           )}
-          {!empty && (ClearButton ?? <FilterTrigger.Clear.Button />)}
         </NeighborLocation>
       </SWrapper>,
     );
@@ -216,16 +217,6 @@ class ClearButton extends Component {
   }
 }
 
-class ClearButtonContainer extends Component {
-  static displayName = 'ClearButtonContainer';
-
-  render() {
-    const { Children } = this.asProps;
-
-    return <Children />;
-  }
-}
-
 function Counter(props) {
   const SCounter = Root;
   return sstyled(props.styles)(<SCounter render={BaseTrigger.Addon} tag={Dot} />);
@@ -238,7 +229,7 @@ const FilterTrigger = createComponent(
     Addon: BaseTrigger.Addon,
     Counter,
     TriggerButton,
-    Clear: [ClearButtonContainer, { Button: ClearButton }],
+    ClearButton,
   },
   {
     parent: BaseTrigger,
