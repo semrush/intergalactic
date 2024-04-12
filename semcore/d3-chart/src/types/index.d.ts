@@ -1,6 +1,9 @@
 // Utils
+// @ts-ignore
+import { interpolateValue as intValue } from './utils';
+
+export declare const interpolateValue: typeof intValue;
 export declare function minMax(data: any, key: string | number): any;
-export declare const interpolateValue: Symbol;
 export declare function calculateBubbleDomain(
   data: Array<{ value: number; x: number; y: number }>,
   key: 'x' | 'y',
@@ -100,3 +103,4 @@ export * from './component/Chart/DonutChart.type';
 export * from './component/Chart/VennChart.type';
 export * from './component/Chart/RadarChart.type';
 export * from './component/Chart/ScatterPlotChart.type';
+export * from './component/Chart/CigaretteChart.type';

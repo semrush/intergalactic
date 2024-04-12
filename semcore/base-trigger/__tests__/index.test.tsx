@@ -9,7 +9,7 @@ import NeighborLocation from '@semcore/neighbor-location';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
-import { Flex } from '@semcore/flex-box';
+import Tooltip from '@semcore/tooltip';
 
 describe('BaseTrigger', () => {
   beforeEach(cleanup);
@@ -197,6 +197,28 @@ describe('FilterTrigger', () => {
         },
       }),
     ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should support clearHint', async ({ task }) => {
+    const component = (
+      <FilterTrigger empty={false}>
+        <FilterTrigger.TriggerButton>Some button content</FilterTrigger.TriggerButton>
+        <Tooltip title={'clear trigger hint text'}>
+          <FilterTrigger.ClearButton data-testid={'test'} />
+        </Tooltip>
+      </FilterTrigger>
+    );
+
+    const { getByText, getByTestId } = render(component);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    expect(getByTestId('test')).toHaveFocus();
+
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    expect(getByText('clear trigger hint text')).toBeTruthy();
   });
 });
 

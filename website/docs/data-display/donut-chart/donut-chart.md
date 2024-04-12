@@ -46,7 +46,7 @@ const App = PlaygroundGeneration((preview) => {
 
   const innerRadius = text({
     key: 'innerRadius',
-    defaultValue: 100,
+    defaultValue: 60,
     label: 'Inner Radius',
   });
 
@@ -64,8 +64,8 @@ const App = PlaygroundGeneration((preview) => {
 
   const chartProps: DonutChartProps = {
     data,
-    plotWidth: 300,
-    plotHeight: 300,
+    plotWidth: 200,
+    plotHeight: 200,
     direction,
     showTooltip,
     showXAxis,
@@ -80,6 +80,7 @@ const App = PlaygroundGeneration((preview) => {
 
   if (showLegend) {
     chartProps.legendProps = legendProps;
+    chartProps.showLegend = true;
   } else {
     chartProps.showLegend = false;
   }
@@ -185,7 +186,7 @@ Wrap long labels to the next line for clarity.
 
 ### Metric styles
 
-- Use 24px (`--fs-500`) size and `--text-primary` color for the metric text.
+- Use 24px (`--fs-500`) size, `--bold` font-weight and `--text-primary` color for the metric text.
 - For the description text use 12px (`--fs-100`) size and `--text-secondary` color.
 - Center them inside the chart vertically and horizontally.
 
@@ -203,13 +204,9 @@ Table: Metric examples in Donut and Semi donut charts
 
 ## Interaction
 
-Table: Donut chart interaction
+When hovering over a sector, `outerRadius` increases by 8px. For a clickable sector the cursor changes to `pointer`.
 
-|             | Appearance examples                                                                                               | Styles                                                                                                                                   |
-| ----------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| **default** | ![](static/donut-big.png)                                                                   |                                                                                                                                          |
-| **hover**   | ![](static/donut-hover-big.png) ![](static/donut-hover-small.png)     | When hovering over a sector, `outerRadius` increases by 8px. For a clickable sector the cursor changes to `pointer`.                     |
-| **active**  | ![](static/donut-active-big.png) ![](static/donut-active-small.png) | The `outerRadius` of the active sector is increased by 8px. In the legend, the elements related to the inactive sectors get 30% opacity. |
+![](static/donut-hover-big.png) ![](static/donut-hover-small.png)
 
 ## Tooltip
 

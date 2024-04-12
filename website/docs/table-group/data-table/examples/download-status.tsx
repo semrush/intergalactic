@@ -22,6 +22,7 @@ const Demo = () => {
       </DataTable.Head>
       <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
         <DataTable.Body />
+        <SpinContainer.Overlay />
       </SpinContainer>
     </DataTable>
   );

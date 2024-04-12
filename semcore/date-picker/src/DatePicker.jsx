@@ -63,8 +63,8 @@ export class DatePickerRoot extends PickerAbstract {
       locale,
       disabled,
       disabledErrorText,
-      size,
       getI18nText,
+      animationsDisabled,
     } = this.asProps;
 
     return {
@@ -73,11 +73,11 @@ export class DatePickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 145 : 160,
       disabledDates: disabled,
       disabledErrorText,
       children: () => <InputTrigger.SingleDateInput />,
       getI18nText,
+      animationsDisabled,
     };
   }
 

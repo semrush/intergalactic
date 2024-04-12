@@ -311,7 +311,7 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef} role='rowgroup'>
+          <ScrollArea.Container ref={$scrollRef} role='rowgroup' focusRingTopOffset={'3px'}>
             {body}
           </ScrollArea.Container>
           <div style={displayContents} role='rowgroup'>

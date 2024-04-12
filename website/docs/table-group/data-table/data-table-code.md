@@ -220,6 +220,18 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 
 :::
 
+## Fixed header with table loading state
+
+For correct components overlapping, use the `SpinContainer` component with `SpinContainer.Overlay` but without `SpinContainer.Content`.
+ 
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/fixed-header-with-spin-overlay.tsx'; 
+</script>
+
+:::
+
 ## Fixed columns
 
 To fix table columns, use the `fixed` property with `<DataTable.Column/>` .

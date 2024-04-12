@@ -130,6 +130,9 @@ class DropdownMenuRoot extends Component {
         return;
       }
     }
+    if (e.key.startsWith('Arrow') && !this.state.keyboardFocused) {
+      this.setState({ keyboardFocused: true });
+    }
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
       const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
       const focusable = getFocusableIn(item);

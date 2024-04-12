@@ -59,8 +59,8 @@ class MonthPickerRoot extends PickerAbstract {
       locale,
       disabled,
       disabledErrorText,
-      size,
       getI18nText,
+      animationsDisabled,
     } = this.asProps;
 
     return {
@@ -69,12 +69,12 @@ class MonthPickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 120 : 135,
       parts: dateParts,
       disabledDates: disabled,
       disabledErrorText,
       children: () => <InputTrigger.SingleDateInput />,
       getI18nText,
+      animationsDisabled,
     };
   }
 

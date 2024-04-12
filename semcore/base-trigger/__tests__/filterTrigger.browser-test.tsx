@@ -19,7 +19,7 @@ test.describe('FilterTrigger', () => {
     await expect(popperLocator).toHaveCount(0);
 
     const triggerLocator = await page.locator(
-      '[data-ui-name="Select.Trigger"] [data-ui-name="Select.Trigger"]',
+      '[data-ui-name="Select.Trigger"] [data-ui-name="FilterTrigger.TriggerButton"]',
     );
 
     await expect(triggerLocator).toBeFocused();
@@ -28,7 +28,9 @@ test.describe('FilterTrigger', () => {
 
     await page.keyboard.press('Tab');
 
-    const clearButtonLocator = await page.locator('button[data-ui-name="BaseTrigger"]');
+    const clearButtonLocator = await page.locator(
+      'button[data-ui-name="FilterTrigger.ClearButton"]',
+    );
 
     await expect(clearButtonLocator).toBeFocused();
     await expect(page).toHaveScreenshot();
