@@ -3273,7 +3273,7 @@
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
     "description": "Use it to indicate voids, missing or some other data.",
-    "components": ["d3-chart"]
+    "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-null",
@@ -3329,7 +3329,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Default background color of a bar in the BarChart.",
-    "components": []
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-period-bg",
