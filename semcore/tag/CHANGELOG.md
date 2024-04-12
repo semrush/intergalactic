@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.30.3] - 2024-04-11
+
+### Fixed
+
+- Focused tag was rendering focus ring even if it wasn't marked as interactive.
+
 ## [5.30.2] - 2024-04-10
 
 ### Changed
