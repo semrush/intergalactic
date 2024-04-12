@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.24.3] - 2024-04-11
+
+### Fixed
+
+- Type of `value` in `Radio` item component.
+
 ## [6.24.2] - 2024-04-10
 
 ### Changed
