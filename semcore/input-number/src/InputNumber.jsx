@@ -329,7 +329,9 @@ class Value extends Component {
           element.setSelectionRange(
             value[element.selectionStart - cursorIndex] === this.separatorThousands
               ? element.selectionStart - cursorIndex
-              : element.selectionStart - 1,
+              : element.selectionStart - 1 >= 0
+              ? element.selectionStart - 1
+              : 0,
             element.selectionEnd,
           );
           return;
@@ -369,7 +371,7 @@ class Value extends Component {
     } else {
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        const nextPosition = element.selectionStart - 1;
+        const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
 
         element.setSelectionRange(
           value[element.selectionStart - cursorIndex] === this.separatorThousands
@@ -417,6 +419,10 @@ class Value extends Component {
     if (value[element.selectionStart - 1] === this.separatorThousands) {
       element.setSelectionRange(element.selectionStart - 1, element.selectionEnd - 1);
     }
+  };
+
+  handleBlur = () => {
+    this.cursorPosition = -1;
   };
 
   render() {
