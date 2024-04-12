@@ -1,3 +1,17 @@
+## [15.77.0] - 2024-04-12
+
+### @semcore/dropdown-menu
+
+- **Fixed** DropdownMenu with input in the trigger was not highting current items when focus comes to input with mouse click.
+
+### @semcore/select
+
+- **Fixed** Multiselect interactions were not annotated properly by screen readers when select was used with `options` prop.
+
+### @semcore/tag
+
+- **Fixed** Focused tag was rendering focus ring even if it wasn't marked as interactive.
+
 ## [15.76.1] - 2024-04-10
 
 ### @semcore/date-picker
