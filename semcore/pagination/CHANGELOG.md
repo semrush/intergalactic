@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.0] - 2024-04-12
+
+### Fixed
+
+- Component was loosing browser focus after reaching the last of first page with keyboard navigation.
+
 ## [4.31.2] - 2024-04-10
 
 ### Changed
