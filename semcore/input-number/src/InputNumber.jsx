@@ -275,12 +275,20 @@ class Value extends Component {
     if (event.key === 'Shift') {
       this.cursorPosition = -1;
     }
+
+    const element = event.currentTarget;
+
+    element.role = 'input';
   };
 
   handleKeyDown = (event) => {
     const element = event.currentTarget;
     const value = element.value;
     const length = value.length;
+
+    // we need this dirty hack for screen readers, because they couldn't read full value in input after adding there ','.
+    // so, we change role to `region` here and back to `input` in handleKeyUp
+    element.role = 'region';
 
     if (
       element.selectionStart !== length &&
@@ -433,16 +441,12 @@ class Value extends Component {
           onClick={this.handleClick}
           use:ref={this.valueInputRef}
           use:value={displayValue}
-          disableUncontrolledValueChange={true}
-          inputMode='numeric'
-          aria-valuenow={value}
-          aria-valuemin={min}
-          aria-valuemax={max}
+          inputMode='decimal'
         />
         <input
           type={'number'}
           ref={forkRef(forwardRef, inputNumberRef)}
-          hidden
+          hidden={true}
           autoComplete='off'
           onInvalid={this.handleValidation}
           value={value}
