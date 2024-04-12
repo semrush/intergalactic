@@ -12,7 +12,7 @@ export type RadioValue = string | number | boolean;
 export interface IRadioProps extends RadioProps, UnknownProperties {}
 export type RadioProps = BoxProps & {
   /** Radio item value **/
-  value?: string;
+  value?: RadioValue;
 
   /** Radio item checked flag **/
   checked?: boolean;
