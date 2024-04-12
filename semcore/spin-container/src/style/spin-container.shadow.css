@@ -5,10 +5,10 @@ SSpinContainer {
   overflow: hidden;
 }
 
-/* SContent {
+SContent {
   z-index: 0;
   position: relative;
-} */
+}
 
 SOverlay {
   z-index: 1;
