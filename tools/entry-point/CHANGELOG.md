@@ -1,3 +1,9 @@
+## [15.77.1] - 2024-04-12
+
+### @semcore/popper
+
+- **Fixed** In some cases popper mouseenter was unexpectedly ignored.
+
 ## [15.77.0] - 2024-04-12
 
 ### @semcore/dropdown-menu
