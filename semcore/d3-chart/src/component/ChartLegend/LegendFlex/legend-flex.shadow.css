@@ -1,5 +1,6 @@
 SLegendFlex[direction='row'] {
-  align-items: center;
+  align-items: flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 8px 16px;
 }

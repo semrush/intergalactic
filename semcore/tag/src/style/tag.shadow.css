@@ -13,7 +13,7 @@ STag {
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
 
-  &:has(SText:focus) {
+  &[interactive]:has(SText:focus) {
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
 
@@ -52,12 +52,12 @@ STag {
   }
 }
 
-STag[keyboardFocused] {
+STag[interactive][keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   z-index: 1;
 }
 
-STag[keyboardFocused]:has(:focus) {
+STag[interactive][keyboardFocused]:has(:focus) {
   box-shadow: none;
 }
 
@@ -182,7 +182,7 @@ SText {
   position: relative;
 }
 
-SText[keyboardFocused] {
+STag[interactive] SText[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   z-index: 1;
 }

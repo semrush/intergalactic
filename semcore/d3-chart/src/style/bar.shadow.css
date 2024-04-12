@@ -26,5 +26,5 @@ SBar[transparent] {
 }
 
 SBackground {
-  fill: var(--intergalactic-chart-palette-order-other-data, #c4c7cf);
+  fill: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
 }

@@ -50,12 +50,8 @@ const useUpdatePopperEveryFrame = (popperRef) => {
   return handleAnimationFrame;
 };
 
+let mouseMoveListenerAdded = false;
 let lastMouseMove = 0;
-if (canUseDOM()) {
-  document.addEventListener('mousemove', () => {
-    lastMouseMove = Date.now();
-  });
-}
 
 const MODIFIERS_OPTIONS = [
   'offset',
@@ -201,6 +197,19 @@ class Popper extends Component {
       this.popperRef.current,
       this.getPopperOptions(),
     );
+  }
+
+  componentDidMount() {
+    if (canUseDOM() && !mouseMoveListenerAdded) {
+      mouseMoveListenerAdded = true;
+      document.addEventListener(
+        'mousemove',
+        () => {
+          lastMouseMove = Date.now();
+        },
+        { capture: true },
+      );
+    }
   }
 
   componentDidUpdate(prevProps) {

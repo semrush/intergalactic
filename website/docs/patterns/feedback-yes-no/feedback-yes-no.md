@@ -8,7 +8,17 @@ tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback
 
 **FeedbackYesNo** represents a feedback collection pattern. This pattern consists of the [Notice](/components/notice/notice) and [Feedback form](/components/feedback/feedback). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
 
-## Component appearance
+## Styles
+
+Show [Feedback illustration](/style/illustration/illustration) on the left to the text.
+
+![](static/feedback-yes-no.png)
+
+### Margins and paddings
+
+![](static/feedback-yes-no-sizes.png)
+
+## Appearance behavior
 
 There are two potential variants for the notice to appear:
 
@@ -17,7 +27,7 @@ There are two potential variants for the notice to appear:
 
 The length of a session is determined by the Product Owner or UX designer of the product. It might be defined as a time interval, the next page load, or an update of company data.
 
-## Location
+### Location
 
 Typically, this component is positioned at the top of a report or product.
 
@@ -26,18 +36,6 @@ Typically, this component is positioned at the top of a report or product.
 It is also could be placed next to the feature for which feedback is desired.
 
 ![](static/send-feedback-notice-next-to-feature.png)
-
-## Styles
-
-![](static/feedback-yes-no.png)
-
-- The notice's height is 72px.
-- Preceding the text, include the [Feedback illustration](/style/illustration/illustration). The image dimensions are 40px x 40px.
-- The "Ask me later" button is designed as a button with `use="tertiary"` and `theme="info"`, not as a link.
-
-### Margins and paddings
-
-![](static/feedback-yes-no-sizes.png)
 
 ## Form behavior
 
@@ -62,7 +60,7 @@ Refer to the comprehensive behavior description of the feedback dropdown in the 
 - Pressing the "Yes" or "No" button reverts it to its normal state.
 - The notice remains visible.
 
-## Closing and appearing of the notice
+## Closing behavior
 
 ### "Ask me later" button
 
@@ -71,39 +69,17 @@ Refer to the comprehensive behavior description of the feedback dropdown in the 
 3. Over `500ms`, the product/report content shifts upwards.
 4. The notice reappears in the user's next session.
 
-### Close icon
+### Close button
 
-The `Close` icon is optional.
+The `Close` button is optional.
 
 Display this element if the report or product offers an alternate method for sending feedback (such as a "Send Feedback" link next to the settings).
 
-- The first option involves having the `Close` icon always present within the notice.
-- The second option (**recommended**) entails the `Close` icon appearing after clicking "Ask me later" and upon reopening the notice in the second session (which could be the second, third, or subsequent sessions).
+- The first option involves having the `Close` button always present within the notice.
+- The second option (**recommended**) entails the `Close` button appearing after clicking "Ask me later" and upon reopening the notice in the second session (which could be the second, third, or subsequent sessions).
 
 ## Remembering states
 
 1. If the user submits feedback, the notice will no longer appear to them.
 2. Storing this status in the user's profile is advisable, in order to avoid being intrusive.
 3. It is permissible to use local storage for saving the closing and appearing statuses.
-
-## Events arrangement
-
-Table: Events arrangement
-
-| Description                                                          | Action        | Label               | Value       |
-| -------------------------------------------------------------------- | ------------- | ------------------- | ----------- |
-| Clicked the button `Yes`                                             | FeedbackYesNo | Click `Yes`         |             |
-| Feedback sending                                                     | FeedbackYesNo | Send `Feedback`     | `yes_click` |
-| Feedback sending                                                     | FeedbackYesNo | Send `Feedback`     | `no_click`  |
-| Clicked the button `No`                                              | FeedbackYesNo | Click `No`          |             |
-| Clicked `Сancel` button in the dropdown                              | FeedbackYesNo | Click `Cancel`      |             |
-| Block showing                                                        | FeedbackYesNo | Show                |             |
-| Closing by clicking the `Close` icon                                 | FeedbackYesNo | Close               |             |
-| Clicked `Ask me later`                                               | FeedbackYesNo | Click Ask           |             |
-| Appearance of an error in the input for the comment text             | FeedbackYesNo | No valid Comment    |             |
-| Appearance of an error in the input for the email                    | FeedbackYesNo | No valid Email      |             |
-| Error of empty email                                                 | FeedbackYesNo | Empty Email         |             |
-| Error of empty comment                                               | FeedbackYesNo | Empty Comment       |             |
-| Appearance of the [red notice](/components/notice/notice) on wrong sending | FeedbackYesNo | Error Send          |             |
-| Click email for communication `You can also send us an email...`     | FeedbackYesNo | Click Email Support |             |
-

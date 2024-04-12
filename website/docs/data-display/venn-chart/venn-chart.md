@@ -47,8 +47,8 @@ const App = PlaygroundGeneration((preview) => {
 
   const chartProps: VennChartProps = {
     data,
-    plotWidth: 300,
-    plotHeight: 300,
+    plotWidth: 200,
+    plotHeight: 200,
     direction,
     showTooltip,
     showXAxis,
@@ -60,6 +60,7 @@ const App = PlaygroundGeneration((preview) => {
 
   if (showLegend) {
     chartProps.legendProps = legendProps;
+    chartProps.showLegend = true;
   } else {
     chartProps.showLegend = false;
   }
