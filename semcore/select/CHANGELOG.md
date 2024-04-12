@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.0] - 2024-04-10
+
+### Fixed
+
+- Multiselect interactions were not annotated properly by screen readers when select was used with `options` prop.
+
+## [4.36.2] - 2024-04-10
+
+### Fixed
+
+- `Select.InputSearch.Value` was undefined.
+
+## [4.36.1] - 2024-04-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.31.0 ~> 4.31.1], `@semcore/checkbox` [7.24.0 ~> 7.24.1], `@semcore/divider` [4.20.0 ~> 4.20.1], `@semcore/dropdown-menu` [4.25.0 ~> 4.26.0], `@semcore/flex-box` [5.21.0 ~> 5.21.1], `@semcore/icon` [4.30.0 ~> 4.30.1], `@semcore/input` [4.22.0 ~> 4.22.1], `@semcore/utils` [4.22.0 ~> 4.22.1], `@semcore/core` [2.19.0 ~> 2.19.1]).
+
 ## [4.36.0] - 2024-03-27
 
 ### Changed

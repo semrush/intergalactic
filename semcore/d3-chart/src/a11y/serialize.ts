@@ -54,7 +54,7 @@ const isReactComponent = (obj: any) =>
 
 const guessNumberAsTimestampMinDate = new Date('1975').getTime();
 
-export const formatValue = (
+export const defaultValueFormatter = (
   intl: Intl,
   value: unknown,
   {
@@ -69,7 +69,7 @@ export const formatValue = (
 ): string => {
   if (typeof value === 'number') {
     if (value >= guessNumberAsTimestampMinDate) {
-      return formatValue(intl, new Date(value), {
+      return defaultValueFormatter(intl, new Date(value), {
         siblingsTimeMark,
         maxListSymbols,
         datesWithTime,
@@ -91,7 +91,7 @@ export const formatValue = (
 
   if (Array.isArray(value)) {
     const formattedValues = value.map((subValue) =>
-      formatValue(intl, subValue, { siblingsTimeMark, maxListSymbols, datesWithTime }),
+      defaultValueFormatter(intl, subValue, { siblingsTimeMark, maxListSymbols, datesWithTime }),
     );
 
     return formatLimitedSizeList(formattedValues, intl, maxListSymbols);
@@ -120,7 +120,7 @@ const formatValuesList = (
   const result = values.slice(0, limit).map(({ value: rawValue, label }) => {
     if (rawValue === undefined) return label;
 
-    const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
+    const value = defaultValueFormatter(intl, rawValue, { datesWithTime, maxListSymbols });
 
     if (String(value) === String(label)) return value;
 
@@ -143,6 +143,8 @@ export const serialize = (
     clustersLimit,
     valuesLimit,
     groupsLimit,
+    titlesFormatter,
+    valuesFormatter,
   }: DataSummarizationConfig,
   {
     locale,
@@ -160,20 +162,24 @@ export const serialize = (
 
   const dataRangeSummary = intl.formatList(
     dataRange.map((range) => {
-      const from = formatValue(intl, range.from, {
-        siblingsTimeMark: range.to,
-        datesWithTime,
-        maxListSymbols,
-      });
-      const to = formatValue(intl, range.to, {
-        siblingsTimeMark: range.from,
-        datesWithTime,
-        maxListSymbols,
-      });
+      const from =
+        valuesFormatter?.(range.from, range.label) ??
+        defaultValueFormatter(intl, range.from, {
+          siblingsTimeMark: range.to,
+          datesWithTime,
+          maxListSymbols,
+        });
+      const to =
+        valuesFormatter?.(range.to, range.label) ??
+        defaultValueFormatter(intl, range.to, {
+          siblingsTimeMark: range.from,
+          datesWithTime,
+          maxListSymbols,
+        });
 
       return intl.formatMessage(
         { id: range.label ? 'additional-axe' : 'additional-axe-no-label' },
-        { from, to, label: range.label },
+        { from, to, label: titlesFormatter?.(range.label) ?? range.label },
       );
     }),
   );
@@ -197,35 +203,44 @@ export const serialize = (
       const secondaryTrends: (TrendNode | GeneralTrendNode)[] = insights.filter(
         (insight) => insight !== primaryTrend,
       );
+      const summaryDataKey = entitiesCount !== 1 ? primaryTrend.label ?? dataKey : '';
       const mainSummary: string = intl.formatMessage(
         { id: 'time-series-general-trend' },
         {
-          dataKey: entitiesCount !== 1 ? primaryTrend.label ?? dataKey : '',
+          dataKey: titlesFormatter?.(summaryDataKey) ?? summaryDataKey,
           trend: intl.formatMessage({ id: `trend-${primaryTrend.change.strength}` }),
-          from: intl.formatNumber(primaryTrend.change.from),
-          to: intl.formatNumber(primaryTrend.change.to),
+          from:
+            valuesFormatter?.(primaryTrend.change.from, dataKey) ??
+            intl.formatNumber(primaryTrend.change.from),
+          to:
+            valuesFormatter?.(primaryTrend.change.to, dataKey) ??
+            intl.formatNumber(primaryTrend.change.to),
         },
       );
-      const secondarylSummaries = secondaryTrends.map((trend) =>
+      const secondarySummaries = secondaryTrends.map((trend) =>
         intl.formatMessage(
           { id: 'time-series-local-trend' },
           {
             trend: intl.formatMessage({ id: `trend-${trend.change.strength}` }),
-            from: formatValue(intl, trend.from, {
-              siblingsTimeMark: trend.to,
-              datesWithTime,
-              maxListSymbols,
-            }),
-            to: formatValue(intl, trend.to, {
-              siblingsTimeMark: trend.from,
-              datesWithTime,
-              maxListSymbols,
-            }),
+            from:
+              valuesFormatter?.(trend.from, trend.dataKey) ??
+              defaultValueFormatter(intl, trend.from, {
+                siblingsTimeMark: trend.to,
+                datesWithTime,
+                maxListSymbols,
+              }),
+            to:
+              valuesFormatter?.(trend.to, trend.dataKey) ??
+              defaultValueFormatter(intl, trend.to, {
+                siblingsTimeMark: trend.from,
+                datesWithTime,
+                maxListSymbols,
+              }),
           },
         ),
       );
 
-      if (secondarylSummaries.length === 0) {
+      if (secondarySummaries.length === 0) {
         return mainSummary;
       }
 
@@ -235,14 +250,18 @@ export const serialize = (
         },
         {
           general: mainSummary,
-          locals: formatLimitedSizeList(secondarylSummaries, intl, 400, false),
+          locals: formatLimitedSizeList(secondarySummaries, intl, 400, false),
         },
       );
     });
 
     const summary = intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
-      { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
+      {
+        entities,
+        entitiesList: intl.formatList(entitiesList),
+        label: titlesFormatter?.(dataTitle!) ?? dataTitle,
+      },
     );
 
     if (dataRangeSummary.length > 0) {
@@ -267,7 +286,11 @@ export const serialize = (
             { count: entitiesCount, maxSize, minSize },
           );
     const entitiesList = biggestClusters.map((clusterInsight) => {
-      const labels = formatLimitedSizeList(clusterInsight.labels, intl, maxListSymbols);
+      const labels = formatLimitedSizeList(
+        clusterInsight.labels.map((label) => titlesFormatter?.(label as string) ?? label),
+        intl,
+        maxListSymbols,
+      );
       const anonymous =
         clusterInsight.labels.length === 0 || labels === String(clusterInsight.size);
 
@@ -279,10 +302,14 @@ export const serialize = (
           relativeSize: intl.formatMessage({ id: `relative-size-${clusterInsight.relativeSize}` }),
           labels,
           size: clusterInsight.size,
-          x: intl.formatNumber(clusterInsight.center.x),
-          xLabel: clusterInsight.center.xLabel,
-          y: intl.formatNumber(clusterInsight.center.y),
-          yLabel: clusterInsight.center.yLabel,
+          x:
+            valuesFormatter?.(clusterInsight.center.x, clusterInsight.labels as any) ??
+            intl.formatNumber(clusterInsight.center.x),
+          xLabel: titlesFormatter?.(clusterInsight.center.xLabel) ?? clusterInsight.center.xLabel,
+          y:
+            valuesFormatter?.(clusterInsight.center.y, clusterInsight.labels as any) ??
+            intl.formatNumber(clusterInsight.center.y),
+          yLabel: titlesFormatter?.(clusterInsight.center.yLabel) ?? clusterInsight.center.yLabel,
         },
       );
     });
@@ -294,7 +321,11 @@ export const serialize = (
 
     const summary = intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
-      { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
+      {
+        entities,
+        entitiesList: intl.formatList(entitiesList),
+        label: titlesFormatter?.(dataTitle!) ?? dataTitle,
+      },
     );
 
     if (dataRangeSummary.length > 0) {
@@ -314,7 +345,7 @@ export const serialize = (
 
     return intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
-      { entities, entitiesList: entitiesList, label: dataTitle },
+      { entities, entitiesList: entitiesList, label: titlesFormatter?.(dataTitle!) ?? dataTitle },
     );
   } else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
     const groupInsights = insights as ComparisonNode[];
@@ -350,12 +381,16 @@ export const serialize = (
       );
     }
 
-    const sumamry = intl.formatMessage(
+    const summary = intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
-      { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
+      {
+        entities,
+        entitiesList: intl.formatList(entitiesList),
+        label: titlesFormatter?.(dataTitle!) ?? dataTitle,
+      },
     );
 
-    return sumamry;
+    return summary;
   }
 
   return null;

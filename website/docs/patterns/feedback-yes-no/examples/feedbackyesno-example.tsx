@@ -96,7 +96,7 @@ class Feedback extends React.PureComponent<{
           </Flex>
         </Box>
         <FeedbackForm.Notice hidden={status === 'failed'}>
-          You can also send us an email to <Link>backlink.audit@semrush.com</Link>
+          You can also send us an email to <Link>some.team@domain.com</Link>
         </FeedbackForm.Notice>
         <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
           Your message has not been sent.
@@ -144,7 +144,7 @@ class FeedbackYesNo extends React.PureComponent {
           <FeedbackIllustration />
         </Notice.Label>
         <Notice.Content>
-          <Text mr={4}>Do you find our On Page SEO Checker reports useful?</Text>
+          <Text mr={4}>Do you find our Design System useful?</Text>
           <Box mt={2} inline>
             <Dropdown>
               <Dropdown.Trigger>

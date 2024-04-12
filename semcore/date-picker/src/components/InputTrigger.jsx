@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseTrigger from '@semcore/base-trigger';
 import InputMask from '@semcore/input-mask';
+import Tooltip from '@semcore/tooltip';
 import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
 import createComponent, { Root, sstyled, Component } from '@semcore/core';
@@ -71,6 +72,42 @@ class SingleDateInputRoot extends Component {
         <SingleDateInput.MaskedInput />
       </>
     ),
+    defaultDisabledDateInputAttempt: false,
+  };
+  state = {
+    errorText: null,
+    showError: false,
+  };
+  uncontrolledProps() {
+    return {
+      disabledDateInputAttempt: [
+        null,
+        (date) => {
+          let errorText = this.state.errorText;
+          let showError = false;
+          if (date !== null) {
+            errorText = this.asProps.disabledErrorText;
+            if (errorText === undefined) {
+              let key = 'unavailableDate';
+              if (this.asProps.parts && !this.asProps.parts.day) {
+                key = 'unavailableMonth';
+              }
+              errorText = this.asProps.getI18nText(key);
+            }
+            if (typeof errorText === 'function') {
+              errorText = errorText(date);
+            }
+            showError = true;
+          }
+          this.setState({ errorText, showError });
+        },
+      ],
+    };
+  }
+
+  handleDisabledDateInputAttemptChange = (value) => {
+    if (value === this.asProps.disabledDateInputAttempt) return;
+    this.handlers.disabledDateInputAttempt(value);
   };
 
   getMaskedInputProps() {
@@ -83,17 +120,25 @@ class SingleDateInputRoot extends Component {
       onDisplayedPeriodChange,
       locale,
       'aria-haspopup': 'true',
+      onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
       ...otherProps,
     };
   }
 
   render() {
-    const { Children, forwardRef, styles } = this.asProps;
+    const { Children, forwardRef, styles, state } = this.asProps;
+    const { errorText, showError } = this.state;
     const SSingleDateInput = Root;
 
     return sstyled(styles)(
       <SSingleDateInput
         render={InputMask}
+        tag={Tooltip}
+        placement='top-start'
+        title={errorText}
+        theme='warning'
+        visible={showError}
+        state={showError ? 'invalid' : state}
         ref={forwardRef}
         __excludeProps={['onChange', 'style', 'aria-expanded']}
       >
@@ -116,7 +161,45 @@ class DateRangeRoot extends Component {
         <DateRange.ToMaskedInput />
       </>
     ),
+    defaultDisabledDateInputAttempt: false,
   };
+  state = {
+    errorText: null,
+    showError: false,
+    lastChangedInput: 'from',
+  };
+  uncontrolledProps() {
+    return {
+      disabledDateInputAttempt: [
+        null,
+        (date) => {
+          let errorText = this.state.errorText;
+          let showError = false;
+          if (date !== null) {
+            errorText = this.asProps.disabledErrorText;
+            if (errorText === undefined) {
+              let key = 'unavailableDate';
+              if (this.asProps.parts && !this.asProps.parts.day) {
+                key = 'unavailableMonth';
+              }
+              if (this.state.lastChangedInput === 'to') {
+                key = 'unavailableEndDate';
+                if (this.asProps.parts && !this.asProps.parts.day) {
+                  key = 'unavailableEndMonth';
+                }
+              }
+              errorText = this.asProps.getI18nText(key);
+            }
+            if (typeof errorText === 'function') {
+              errorText = errorText(date);
+            }
+            showError = true;
+          }
+          this.setState({ errorText, showError });
+        },
+      ],
+    };
+  }
 
   fromRef = React.createRef();
   toRef = React.createRef();
@@ -142,6 +225,7 @@ class DateRangeRoot extends Component {
   handleFromKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
+    this.setState({ lastChangedInput: 'from' });
 
     if (
       event.key === 'ArrowRight' &&
@@ -157,6 +241,7 @@ class DateRangeRoot extends Component {
   handleToKeydown = (event) => {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
+    this.setState({ lastChangedInput: 'to' });
 
     if (event.key === 'Backspace' && !this.toRef.current.value) {
       const value = this.fromRef.current.value;
@@ -176,6 +261,10 @@ class DateRangeRoot extends Component {
         this.fromRef.current.setSelectionRange(value.length, value.length);
       }, 0);
     }
+  };
+  handleDisabledDateInputAttemptChange = (value) => {
+    if (value === this.asProps.disabledDateInputAttempt) return;
+    this.handlers.disabledDateInputAttempt(value);
   };
 
   getFromMaskedInputProps() {
@@ -198,6 +287,7 @@ class DateRangeRoot extends Component {
         flex: 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
+        onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
       },
       otherProps,
     );
@@ -215,6 +305,7 @@ class DateRangeRoot extends Component {
         flex: 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
+        onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
       },
       otherProps,
     );
@@ -229,10 +320,21 @@ class DateRangeRoot extends Component {
 
   render() {
     const SDateRange = Root;
-    const { Children, styles, w } = this.asProps;
+    const { Children, styles, w, state } = this.asProps;
+    const { errorText, showError, lastChangedInput } = this.state;
 
     return sstyled(styles)(
-      <SDateRange render={InputMask} __excludeProps={['onChange', 'value', 'aria-expanded']} w={w}>
+      <SDateRange
+        render={InputMask}
+        tag={Tooltip}
+        placement={lastChangedInput === 'to' ? 'top-end' : 'top-start'}
+        title={errorText}
+        theme='warning'
+        visible={showError}
+        state={showError ? 'invalid' : state}
+        __excludeProps={['onChange', 'value', 'aria-expanded']}
+        w={w}
+      >
         <Children />
       </SDateRange>,
     );
@@ -287,6 +389,7 @@ const MaskedInput = ({
   forwardRef,
   placeholders = defaultPlaceholders,
   labelPrefix = 'Date',
+  onMaskPipeBlock,
 
   __excludeProps,
 
@@ -386,6 +489,7 @@ const MaskedInput = ({
       }
 
       if (placeholdersOnly) {
+        onMaskPipeBlock?.(null);
         return '';
       }
 
@@ -458,11 +562,15 @@ const MaskedInput = ({
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
 
         if (disabledDates?.some(includesDate(dayjs(date), 'date'))) {
+          onMaskPipeBlock?.(date);
           return false;
         }
 
         if (allowedParts.day) {
-          if (date.getDate() !== parseInt(day, 10)) return false;
+          if (date.getDate() !== parseInt(day, 10)) {
+            onMaskPipeBlock?.(date);
+            return false;
+          }
         }
       }
 
@@ -473,9 +581,10 @@ const MaskedInput = ({
         if (part === 'day') result.push(day);
       }
 
+      onMaskPipeBlock?.(null);
       return { value: result.join(sep), indexesOfPipedChars };
     },
-    [placeholders, sep, order, allowedParts, disabledDates],
+    [placeholders, sep, order, allowedParts, disabledDates, onMaskPipeBlock],
   );
 
   const handleChange = React.useCallback(

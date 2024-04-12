@@ -50,6 +50,13 @@ const useUpdatePopperEveryFrame = (popperRef) => {
   return handleAnimationFrame;
 };
 
+let lastMouseMove = 0;
+if (canUseDOM()) {
+  document.addEventListener('mousemove', () => {
+    lastMouseMove = Date.now();
+  });
+}
+
 const MODIFIERS_OPTIONS = [
   'offset',
   'preventOverflow',
@@ -260,7 +267,27 @@ class Popper extends Component {
   };
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
+  lastPopperClick = 0;
   bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
+    if (component === 'trigger' && action === 'onClick') {
+      const trigger = this.triggerRef.current;
+      const triggerClick = hasParent(e.target, trigger);
+      const associatedLabels = [...(trigger?.labels || [])];
+      const popperInsideOfLabel = associatedLabels.some((label) =>
+        hasParent(this.popperRef.current, label),
+      );
+
+      if (triggerClick && popperInsideOfLabel && Date.now() - this.lastPopperClick < 100) {
+        return;
+      }
+    }
+    /**
+     * When popper appears right under mouse that doesn't move, it gets undesired onMouseEnter event.
+     * That may cause hover interaction poppers to display two closely placed poppers.
+     * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
+     */
+    if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+
     const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
     if (
@@ -270,6 +297,19 @@ class Popper extends Component {
       focusAction
     ) {
       return;
+    }
+    if (!visible) {
+      /**
+       * When sibling popovers triggers with hover/focus interactions are navigated fast,
+       * sometimes focus moves into closing popovers and prevents it from closing. It may cause
+       * multiple popovers to be opened at the same time.
+       */
+      setTimeout(() => {
+        const node = this.popperRef.current;
+        if (node?.getAttribute('tabindex') === '0') {
+          node.setAttribute('tabindex', '-1');
+        }
+      }, 0);
     }
     const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
@@ -368,6 +408,7 @@ class Popper extends Component {
       popper: this.popper,
       disableEnforceFocus,
       handleFocusOut: this.handlePopperFocusOut,
+      onClick: this.handlePopperClick,
     };
   }
 
@@ -376,6 +417,10 @@ class Popper extends Component {
     if (hasParent(event.target, this.triggerRef.current)) return;
 
     this.bindHandlerChangeVisibleWithTimer(false, 'popper', 'onBlur')(event);
+  };
+
+  handlePopperClick = () => {
+    this.lastPopperClick = Date.now();
   };
 
   setContext() {
@@ -488,7 +533,9 @@ function PopperPopper(props) {
   const ref = React.useRef(null);
 
   // https://github.com/facebook/react/issues/11387
-  const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
+  const stopPropagation = React.useCallback((event) => {
+    event.stopPropagation();
+  }, []);
   const propagateFocusLockSyntheticEvent = React.useCallback((event) => {
     event.nativeEvent.stopImmediatePropagation();
     ref.current?.dispatchEvent(makeFocusLockSyntheticEvent(event));

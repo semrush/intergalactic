@@ -16,3 +16,9 @@ const { allPosts: posts } = usePosts()
     }))"
   />
 </template>
+
+<style>
+.vp-doc .VPFeatures {
+  padding: 24px 0px;
+}
+</style>

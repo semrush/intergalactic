@@ -1,15 +1,17 @@
 {
   "packageManager": "pnpm@8.7.6",
   "scripts": {
-    "start": "pnpm playground",
+    "dev": "pnpm --filter @semcore/playground run start",
+    "start": "pnpm --filter @semcore/playground run start",
     "build": "pnpm run clean && pnpm --filter @semcore/core run build && pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/dropdown run build && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/core --filter !@semcore/illustration --filter !@semcore/dropdown --filter !@semcore/ui --filter !intergalactiс-migrate run build",
     "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/utils/theme/processor.ts",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
     "install-n-test": "pnpm install && pnpm test",
-    "install-n-browser-test": "pnpm install && pnpm playwright test --config playwright.browser.config.ts",
+    "install-n-browser-test": "pnpm install && pnpm browser-test",
     "test": "vitest",
     "test:setup": "docker build -t intergalactic-playwright -f playwright.dockerfile .",
     "test:docker": "pnpm run-in-docker pnpm install-n-test",
+    "browser-test": "pnpm playwright test --config playwright.browser.config.ts",
     "browser-test:docker": "pnpm run-in-docker pnpm install-n-browser-test",
     "test:types": "vitest typecheck",
     "vo-test:setup": "npx @guidepup/setup",
@@ -24,7 +26,6 @@
     "build:illustration": "pnpm --filter @semcore/illustration run build",
     "clean": "rm -rf semcore/*/lib && pnpm clean:icon && pnpm clean:illustration",
     "clean:icon": "pnpm --filter @semcore/icon run clean",
-    "playground": "pnpm --filter @semcore/playground run start",
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",
     "format": "biome format ./semcore ./tools ./website ./.ci --config-path . --write",
     "format-changelogs": "tsm --require=./.ci/tsm-filter-warnings.js ./tools/continuous-delivery/bin/format-changelogs.ts",
@@ -108,7 +109,8 @@
     "braces": "3.0.2",
     "@babel/runtime": "7.19.0",
     "@babel/core": "7.19.1",
-    "axe-core": "4.4.0"
+    "axe-core": "4.4.0",
+    "ansi-regex": "5.0.1"
   },
   "engines": {
     "node": ">=16"

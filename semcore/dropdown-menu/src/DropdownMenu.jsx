@@ -15,6 +15,7 @@ import style from './style/dropdown-menu.shadow.css';
 import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -32,6 +33,7 @@ class DropdownMenuRoot extends Component {
 
   state = {
     focusLockItemIndex: null,
+    keyboardFocused: false,
   };
 
   popperRef = React.createRef();
@@ -128,6 +130,9 @@ class DropdownMenuRoot extends Component {
         return;
       }
     }
+    if (e.key.startsWith('Arrow') && !this.state.keyboardFocused) {
+      this.setState({ keyboardFocused: true });
+    }
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
       const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
       const focusable = getFocusableIn(item);
@@ -200,6 +205,9 @@ class DropdownMenuRoot extends Component {
   handleTriggerKeyboardFocus = () => {
     if (this.ignoreTriggerKeyboardFocusUntil > Date.now()) return false;
   };
+  handleTriggerKeyboardFocusedStateChange = (keyboardFocused) => {
+    this.setState({ keyboardFocused });
+  };
 
   getTriggerProps() {
     const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
@@ -215,6 +223,7 @@ class DropdownMenuRoot extends Component {
       onKeyDown: this.bindHandlerKeyDown('trigger'),
       ref: this.triggerRef,
       onKeyboardFocus: this.handleTriggerKeyboardFocus,
+      onKeyboardFocusedStateChange: this.handleTriggerKeyboardFocusedStateChange,
     };
   }
 
@@ -266,6 +275,7 @@ class DropdownMenuRoot extends Component {
       ref,
       index,
       handleFocusOut: this.handleItemFocusOut,
+      keyboardFocused: this.state.keyboardFocused,
     };
   }
 
@@ -320,6 +330,9 @@ class DropdownMenuRoot extends Component {
       visible,
       onNestedVisibleChange: this.handleNestedVisibleChange,
     };
+  };
+  getNestingItemProps = () => {
+    return this.getNestingTriggerProps();
   };
 
   getItemHintProps() {
@@ -454,7 +467,16 @@ function Menu(props) {
   );
 }
 
-function Item({ styles, label, triggerRef, focusLock, disabled, highlighted, handleFocusOut }) {
+function Item({
+  styles,
+  label,
+  triggerRef,
+  focusLock,
+  disabled,
+  highlighted,
+  handleFocusOut,
+  keyboardFocused,
+}) {
   const SDropdownMenuItem = Root;
   const ref = React.useRef();
 
@@ -467,7 +489,7 @@ function Item({ styles, label, triggerRef, focusLock, disabled, highlighted, han
       role='menuitem'
       tabIndex={-1}
       id={label}
-      use:highlighted={!disabled && highlighted}
+      use:highlighted={!disabled && highlighted && keyboardFocused}
     />,
   );
 }
@@ -521,6 +543,13 @@ function NestingTrigger(props) {
   );
 }
 
+function NestingItem(props) {
+  const { styles } = props;
+  const SDropdownNestingItem = Root;
+
+  return sstyled(styles)(<SDropdownNestingItem render={NestingTrigger} tabIndex={-1} />);
+}
+
 function Addon(props) {
   const [SDropdownMenuItemAddon, { className, ...other }] = useBox(props, props.forwardRef);
   const styles = sstyled(props.styles);
@@ -542,9 +571,15 @@ function Title(props) {
   return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant='title' />);
 }
 
-function Trigger() {
+function Trigger({ keyboardFocused, onKeyboardFocusedStateChange }) {
+  React.useEffect(
+    () => onKeyboardFocusedStateChange(keyboardFocused),
+    [keyboardFocused, onKeyboardFocusedStateChange],
+  );
+
   return <Root render={Dropdown.Trigger} aria-haspopup='true' />;
 }
+Trigger.enhance = [keyboardFocusEnhance(false)];
 
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
@@ -554,7 +589,7 @@ const DropdownMenu = createComponent(
     List,
     Menu,
     Item: [Item, { Addon }],
-    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
+    Nesting: [Nesting, { Trigger: NestingTrigger, Addon, Item: NestingItem }],
     ItemTitle: Title,
     ItemHint: Hint,
   },

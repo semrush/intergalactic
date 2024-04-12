@@ -209,6 +209,7 @@ describe('TooltipBase', () => {
       </Tooltip>,
     );
 
+    fireEvent.mouseMove(getByTestId('trigger'));
     fireEvent.mouseEnter(getByTestId('trigger'));
     act(() => {
       vi.runAllTimers();
