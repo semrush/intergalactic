@@ -133,7 +133,7 @@ Table: Stacked bar chart with dots and non-curved lines
 
 | Example                                  | Styles                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![area chart with dots](static/dots.png) | Dot has size **8px * 8px** and **border: 2px solid var(--chart-grid-border)**. On hover, dot expand to **12px * 12px**. |
+| ![area chart with dots](static/dots.png) | Dot has size **8px * 8px** and **border: 1px solid var(--chart-grid-border)**. On hover, dot expand to **10px * 10px**. |
 
 ## Interaction
 
