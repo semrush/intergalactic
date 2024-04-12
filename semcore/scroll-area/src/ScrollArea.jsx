@@ -297,9 +297,24 @@ class ScrollAreaRoot extends Component {
 
 function ContainerRoot(props) {
   const SContainer = Root;
-  const { Children, styles, $refInner } = props;
+  const {
+    Children,
+    styles,
+    $refInner,
+    focusRingTopOffset = 0,
+    focusRingRightOffset = 0,
+    focusRingBottomOffset = 0,
+    focusRingLeftOffset = 0,
+  } = props;
   return sstyled(styles)(
-    <SContainer render={Box} tabIndex={0}>
+    <SContainer
+      render={Box}
+      tabIndex={0}
+      focusRingTopOffset={focusRingTopOffset}
+      focusRingRightOffset={focusRingRightOffset}
+      focusRingBottomOffset={focusRingBottomOffset}
+      focusRingLeftOffset={focusRingLeftOffset}
+    >
       <div ref={$refInner}>
         <Children />
       </div>

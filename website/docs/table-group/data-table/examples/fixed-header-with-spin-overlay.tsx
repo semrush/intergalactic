@@ -1,6 +1,7 @@
 import React from 'react';
 import DataTable from 'intergalactic/data-table';
 import SpinContainer from 'intergalactic/spin-container';
+import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);
@@ -14,12 +15,14 @@ const Demo = () => {
   }, [loading]);
   return (
     <DataTable data={data}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
+      <Box position='sticky' top={0} zIndex={2}>
+        <DataTable.Head>
+          <DataTable.Column name='keyword' children='Keyword' />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
+        </DataTable.Head>
+      </Box>
       <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
         <DataTable.Body />
         <SpinContainer.Overlay />
