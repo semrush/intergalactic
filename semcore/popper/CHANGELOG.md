@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.26.4] - 2024-04-15
 
-### Fixed
+### Changed
 
-- `role` in Trigger, depending on the tag.
+- The default trigger `role` is `combobox` if an input is used as the trigger, and button otherwise.
 
 ## [5.26.3] - 2024-04-12
 
