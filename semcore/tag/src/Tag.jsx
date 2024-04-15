@@ -119,7 +119,6 @@ class RootTag extends Component {
       resolveColor,
       id: outerId,
       uid,
-      onKeyDown,
     } = this.asProps;
     const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
@@ -131,7 +130,7 @@ class RootTag extends Component {
         use:interactive={!disabled && interactive}
         role={interactive ? 'button' : undefined}
         tag-color={resolveColor(color)}
-        onKeyDown={callAllEventHandlers(onKeyDown, this.handleKeyDown)}
+        onKeyDown={this.handleKeyDown}
         use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
