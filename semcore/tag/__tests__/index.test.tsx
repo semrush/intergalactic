@@ -240,11 +240,11 @@ describe('Tag', () => {
   test.concurrent('should work as Button from keyboard', async ({ expect }) => {
     const onClick = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onClick={onClick} data-testid={'tag'}>
+      <Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
         some tag
       </Tag>,
     );
-    const tag = getByTestId('tag');
+    const tag = getByTestId('tagAsButton');
     await userEvent.keyboard('[Tab]');
 
     expect(tag).toHaveFocus();
