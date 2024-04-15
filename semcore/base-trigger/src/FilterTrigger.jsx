@@ -18,7 +18,6 @@ import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import getOriginChildren from '@semcore/utils/src/getOriginChildren';
 
 const filterTriggerInputProps = [
   ...inputProps,

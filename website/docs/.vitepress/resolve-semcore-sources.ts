@@ -84,6 +84,10 @@ export const resolveSemcoreSources = async (path) => {
   const subPath = path.split('/').slice(2).join('/');
   let modifiedSubPath = subPath;
 
+  if (modifiedSubPath.startsWith('src/')) {
+    throw new Error('Imports from /src will not work for end users, do not use such imports.');
+  }
+
   if (
     !rootFiles.includes(subPath) &&
     !(generatedComponents.includes(componentName) && subPath) &&
