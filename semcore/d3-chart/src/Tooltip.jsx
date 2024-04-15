@@ -33,8 +33,8 @@ class TooltipRoot extends Component {
 
   getTriggerProps() {
     // TODO: как то убрать
-    const { x, y } = this.asProps;
-    return { x, y };
+    const { x, y, hideHoverLine } = this.asProps;
+    return { x, y, hideHoverLine };
   }
 
   getPopperProps() {

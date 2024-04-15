@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.22.0] - 2024-03-27
+
+### Changed
+
+- Allowed to use `SpinContainer.Overlay` without `SpinContainer.Content`.
+
 ## [7.21.2] - 2024-04-10
 
 ### Changed

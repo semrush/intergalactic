@@ -139,6 +139,10 @@ SContainer[keyboardFocused]:focus::after {
   display: block;
   content: '';
   inset: 0;
+  top: var(--focusRingTopOffset);
+  right: var(--focusRingRightOffset);
+  bottom: var(--focusRingBottomOffset);
+  left: var(--focusRingLeftOffset);
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   pointer-events: none;
   z-index: 2;
