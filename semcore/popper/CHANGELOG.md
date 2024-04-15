@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.1] - 2024-04-15
+
+### Changed
+
+- The default trigger `role` is `combobox` if an input is used as the trigger, and button otherwise.
+
 ## [5.27.0] - 2024-04-15
 
 ### Changed

@@ -50,6 +50,15 @@ const useUpdatePopperEveryFrame = (popperRef) => {
   return handleAnimationFrame;
 };
 
+export const isInputTriggerTag = (tag) => {
+  if (typeof tag === 'string') return tag.toLowerCase().includes('input');
+  if (typeof tag === 'object' && tag !== null && typeof tag.displayName === 'string')
+    return tag.displayName.toLowerCase().includes('input');
+  if (typeof tag === 'object' && tag !== null && typeof tag.render?.displayName === 'string')
+    return tag.render.displayName.toLowerCase().includes('input');
+  return false;
+};
+
 let mouseMoveListenerAdded = false;
 let lastMouseMove = 0;
 
@@ -467,7 +476,7 @@ class Popper extends Component {
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
-  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef } = props;
+  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef, tag: Tag } = props;
 
   const triggerRef = React.useRef();
 
@@ -499,12 +508,14 @@ function Trigger(props) {
     };
   }, [active]);
 
+  const hasInputTrigger = isInputTriggerTag(Tag);
+
   return (
     <>
       <STrigger
         render={Box}
         inline
-        role='button'
+        role={hasInputTrigger ? 'combobox' : 'button'}
         aria-haspopup={true}
         ref={triggerRef}
         onFocus={handleFocus}
