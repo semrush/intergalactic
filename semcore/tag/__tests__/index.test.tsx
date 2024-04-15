@@ -237,7 +237,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test.concurrent('should work as Button from keyboard', async ({ expect }) => {
+  test('should work as Button from keyboard', async ({ expect }) => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
@@ -256,7 +256,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test.concurrent('should call keydwon callback once per key down', async ({ expect }) => {
+  test('should call keydwon callback once per key down', async ({ expect }) => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
       <Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
