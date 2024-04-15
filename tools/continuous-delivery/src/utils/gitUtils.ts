@@ -3,7 +3,6 @@ import { execSync } from 'child_process';
 import { log, prerelaseSuffix } from '../utils';
 import { VersionPatch } from '../makeVersionPatches';
 import { NpmUtils } from './npmUtils';
-import {a} from "vitest/dist/suite-xGC-mxBC";
 
 const git = Git();
 
@@ -103,7 +102,7 @@ export class GitUtils {
 
     await git.tag(['-f', tagName]);
 
-    return tag;
+    return tagName;
   }
 
   private static async pull(branch: string) {
@@ -127,9 +126,12 @@ export class GitUtils {
   }
 
   private static async getTag(startStr: string): Promise<string | null> {
-    const tag = execSync(`git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `, {
-      encoding: 'utf-8',
-    });
+    const tag = execSync(
+      `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `,
+      {
+        encoding: 'utf-8',
+      },
+    );
 
     return tag.trim();
   }
