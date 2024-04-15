@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.30.4] - 2024-04-15
+
+### Fixed
+
+- Interactive tags were calling keyDown event handler twice.
+
 ## [5.30.3] - 2024-04-11
 
 ### Fixed

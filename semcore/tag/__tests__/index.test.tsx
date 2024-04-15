@@ -256,6 +256,25 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
+  test.only.concurrent('should call keydwon callback once per key down', async ({ expect }) => {
+    const onKeyDown = vi.fn();
+    const { getByTestId } = render(
+      <Tag interactive onKeyDown={onKeyDown} data-testid={'tag'}>
+        some tag
+      </Tag>,
+    );
+    const tag = getByTestId('tag');
+    await userEvent.keyboard('[Tab]');
+
+    expect(tag).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+    await userEvent.keyboard('[Space]');
+    expect(onKeyDown).toHaveBeenCalledTimes(2);
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <>
