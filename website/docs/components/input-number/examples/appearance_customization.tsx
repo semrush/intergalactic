@@ -11,11 +11,9 @@ const Demo = () => {
 
   const decrement = React.useCallback(() => {
     inputRef.current.stepDown();
-    setValue(inputRef.current.value);
   }, []);
   const increment = React.useCallback(() => {
     inputRef.current.stepUp();
-    setValue(inputRef.current.value);
   }, []);
 
   return (

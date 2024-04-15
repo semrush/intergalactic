@@ -76,9 +76,9 @@ class Value extends Component {
 
   uncontrolledProps() {
     return {
-      displayValue: '',
+      displayValue: null,
       value: [
-        '',
+        null,
         (newValue) => {
           const { value: prevValue, displayValue: prevDisplayValue } = this.asProps;
 
@@ -189,11 +189,16 @@ class Value extends Component {
   componentDidMount() {
     this.valueInputRef.current?.addEventListener('wheel', this.handleWheel);
 
-    const { inputRef } = this.asProps;
+    const { inputRef, value } = this.asProps;
 
     if (inputRef.current) {
       inputRef.current.stepUp = this.stepUp;
       inputRef.current.stepDown = this.stepDown;
+    }
+
+    if (value !== '') {
+      const { displayValue } = this.valueParser(value, '', '');
+      this.handlers.displayValue(displayValue);
     }
   }
   componentWillUnmount() {
@@ -213,8 +218,11 @@ class Value extends Component {
 
   handleChange = (event) => {
     const value = event.currentTarget.value;
+    const digits = /[0-9,.-]+/.test(value);
 
-    this.handlers.value(value, event);
+    if (digits || value === '') {
+      this.handlers.value(value, event);
+    }
 
     return false;
   };
@@ -375,13 +383,13 @@ class Value extends Component {
   };
 
   stepUp = (event) => {
-    const { max, min, step, value } = this.asProps;
+    const { max = Number.MAX_SAFE_INTEGER, min, step, value } = this.asProps;
 
     let numberValue;
 
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
     if (value === '') {
-      numberValue = min || '0';
+      numberValue = min ?? 0;
     } else {
       numberValue = Number.parseFloat(value);
     }
@@ -394,12 +402,12 @@ class Value extends Component {
   };
 
   stepDown = (event) => {
-    const { min, max, step, value } = this.asProps;
+    const { max, min = Number.MIN_SAFE_INTEGER, step, value } = this.asProps;
 
     let numberValue;
 
     if (value === '') {
-      numberValue = max || '0';
+      numberValue = max ?? 0;
     } else {
       numberValue = Number.parseFloat(value);
     }
