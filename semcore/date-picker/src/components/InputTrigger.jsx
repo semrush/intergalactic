@@ -14,7 +14,6 @@ import style from '../style/date-picker.shadow.css';
 import assignProps from '@semcore/utils/lib/assignProps';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
-const defaultPlaceholders = { year: 'Y', month: 'M', day: 'D' };
 const exampleDate = new Date(2000, 4, 29);
 
 class InputTriggerRoot extends Component {
@@ -403,11 +402,12 @@ const MaskedInput = ({
   parts: allowedParts = defaultAllowedParts,
   disabledDates,
   forwardRef,
-  placeholders = defaultPlaceholders,
+  placeholders: providedPlaceholders,
   labelPrefix = 'Date',
   onMaskPipeBlock,
   containerFocused,
   animationsDisabled,
+  getI18nText,
 
   __excludeProps,
 
@@ -416,6 +416,16 @@ const MaskedInput = ({
 }) => {
   const ref = React.useRef();
   const [width, setWidth] = React.useState(undefined);
+
+  const placeholders = React.useMemo(() => {
+    if (providedPlaceholders) return providedPlaceholders;
+
+    return {
+      year: getI18nText('placeholder-years'),
+      month: getI18nText('placeholder-months'),
+      day: getI18nText('placeholder-days'),
+    };
+  }, [providedPlaceholders, getI18nText]);
 
   if (
     placeholders.year.length !== 1 ||

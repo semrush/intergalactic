@@ -20,5 +20,12 @@
   "dateRange1": "Första datumintervall",
   "dateRange2": "Andra datumintervall",
   "selectingStarted": "Började välja",
-  "selectingFinished": "Valt"
+  "selectingFinished": "Valt",
+  "unavailableDate": "Välj ett tillgängligt datum.",
+  "unavailableMonth": "Välj en tillgänglig månad.",
+  "unavailableEndDate": "Välj ett tillgängligt förfallodatum.",
+  "unavailableEndMonth": "Välj en tillgänglig förfallomånad.",
+  "placeholder-days": "D",
+  "placeholder-months": "M",
+  "placeholder-years": "Å"
 }
