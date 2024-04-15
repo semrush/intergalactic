@@ -27,31 +27,20 @@ class InputNumber extends Component {
   };
 
   inputRef = React.createRef();
-  valueRef = React.createRef();
 
   increment = (event) => {
-    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.min || '0';
-    this.inputRef.current?.stepUp?.();
-
-    this.valueRef.current.setValue(this.inputRef.current.value, event);
+    this.inputRef.current?.stepUp?.(event);
   };
 
   decrement = (event) => {
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.max || '0';
-    this.inputRef.current?.stepDown?.();
-
-    this.valueRef.current.setValue(this.inputRef.current.value, event);
+    this.inputRef.current?.stepDown?.(event);
   };
 
   getValueProps() {
     const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
 
     return {
-      inputNumberRef: this.inputRef,
-      valueRef: this.valueRef,
+      inputRef: this.inputRef,
       increment: this.increment,
       decrement: this.decrement,
       numberFormatter,
@@ -76,7 +65,8 @@ class InputNumber extends Component {
 
 class Value extends Component {
   static defaultProps = {
-    value: '',
+    defaultValue: '',
+    defaultDisplayValue: '',
     step: 1,
   };
 
@@ -84,18 +74,31 @@ class Value extends Component {
 
   cursorPosition = -1;
 
-  constructor(props) {
-    super(props);
+  uncontrolledProps() {
+    return {
+      displayValue: '',
+      value: [
+        '',
+        (newValue) => {
+          const { value: prevValue, displayValue: prevDisplayValue } = this.asProps;
 
-    const { parsedValue, displayValue } = this.valueParser(
-      props.value,
-      Value.defaultProps.value,
-      '',
-    );
+          if (newValue === '-') {
+            this.handlers.displayValue(newValue);
 
-    this.state = {
-      value: parsedValue,
-      displayValue,
+            return newValue;
+          } else {
+            const { parsedValue, displayValue } = this.valueParser(
+              newValue,
+              prevValue,
+              prevDisplayValue,
+            );
+
+            this.handlers.displayValue(displayValue);
+
+            return parsedValue;
+          }
+        },
+      ],
     };
   }
 
@@ -159,26 +162,15 @@ class Value extends Component {
   }
 
   handleValidation = (event) => {
-    const { value } = this.state;
-    const { min, max, step, inputNumberRef } = this.asProps;
+    const { value, displayValue, min, max, step } = this.asProps;
+    const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
-    if (
-      !inputNumberRef.current ||
-      Number.isNaN(value) ||
-      Number.isNaN(inputNumberRef.current.valueAsNumber)
-    ) {
+
+    if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
-      this.setState({ value: '', displayValue: '' }, () => {
-        if (value !== this.state.value) {
-          this.asProps.onChange(this.state.value, event);
-        }
-      });
+      this.handlers.value('', event);
     } else {
-      let numberValue = parseValueWithMinMax(
-        Number.parseFloat(inputNumberRef.current?.valueAsNumber),
-        min,
-        max,
-      );
+      let numberValue = parseValueWithMinMax(Number.parseFloat(parsedValue), min, max);
       const rounded = this.round(numberValue % step, step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
@@ -189,32 +181,23 @@ class Value extends Component {
       }
       const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
 
-      this.setValue(String(numberValueRounded), event);
+      this.handlers.value(String(numberValueRounded), event);
     }
   };
 
   // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
   componentDidMount() {
     this.valueInputRef.current?.addEventListener('wheel', this.handleWheel);
+
+    const { inputRef } = this.asProps;
+
+    if (inputRef.current) {
+      inputRef.current.stepUp = this.stepUp;
+      inputRef.current.stepDown = this.stepDown;
+    }
   }
   componentWillUnmount() {
     this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const value = this.asProps.value;
-    if (prevState.value !== value) {
-      const { parsedValue, displayValue } = this.valueParser(
-        value,
-        prevState.value,
-        prevState.displayValue,
-      );
-
-      this.setState({
-        value: parsedValue,
-        displayValue,
-      });
-    }
   }
 
   handleWheel = (event) => {
@@ -222,53 +205,18 @@ class Value extends Component {
     if (document.activeElement !== this.valueInputRef.current) return;
     event.preventDefault();
     if (event.wheelDelta > 0) {
-      this.asProps.increment(event);
+      this.stepUp(event);
     } else if (event.wheelDelta < 0) {
-      this.asProps.decrement(event);
+      this.stepDown(event);
     }
   };
 
   handleChange = (event) => {
     const value = event.currentTarget.value;
 
-    if (value === '-') {
-      this.setState(
-        {
-          value,
-          displayValue: value,
-        },
-        () => {
-          this.asProps.onChange(value, event);
-        },
-      );
-    } else {
-      this.setValue(value, event);
-    }
+    this.handlers.value(value, event);
 
     return false;
-  };
-
-  setValue = (newValue, event) => {
-    const prevValue = this.state.value;
-    this.setState(
-      (state) => {
-        const { parsedValue, displayValue } = this.valueParser(
-          newValue,
-          state.value,
-          state.displayValue,
-        );
-
-        return {
-          value: parsedValue,
-          displayValue,
-        };
-      },
-      () => {
-        if (prevValue !== this.state.value) {
-          this.asProps.onChange(this.state.value, event);
-        }
-      },
-    );
   };
 
   handleKeyUp = (event) => {
@@ -402,12 +350,12 @@ class Value extends Component {
 
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      this.asProps.decrement(event);
+      this.stepDown(event);
       return;
     }
     if (event.key === 'ArrowUp') {
       event.preventDefault();
-      this.asProps.increment(event);
+      this.stepUp(event);
       return;
     }
   };
@@ -421,19 +369,52 @@ class Value extends Component {
     }
   };
 
-  handleBlur = () => {
+  handleBlur = (event) => {
     this.cursorPosition = -1;
+    this.handleValidation(event);
+  };
+
+  stepUp = (event) => {
+    const { max, min, step, value } = this.asProps;
+
+    let numberValue;
+
+    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
+    if (value === '') {
+      numberValue = min || '0';
+    } else {
+      numberValue = Number.parseFloat(value);
+    }
+
+    if (!Number.isNaN(numberValue)) {
+      const newValue = numberValue + step <= max ? numberValue + step : max;
+
+      this.handlers.value(newValue.toString(), event);
+    }
+  };
+
+  stepDown = (event) => {
+    const { min, max, step, value } = this.asProps;
+
+    let numberValue;
+
+    if (value === '') {
+      numberValue = max || '0';
+    } else {
+      numberValue = Number.parseFloat(value);
+    }
+
+    if (!Number.isNaN(numberValue)) {
+      const newValue = numberValue - step >= min ? numberValue - step : min;
+
+      this.handlers.value(newValue.toString(), event);
+    }
   };
 
   render() {
     const SValue = Root;
     const SValueHidden = 'div';
-    const { styles, min, max, step, valueRef, forwardRef, inputNumberRef } = this.asProps;
-    const { value, displayValue } = this.state;
-
-    valueRef.current = {
-      setValue: this.setValue,
-    };
+    const { styles, min, max, step, forwardRef, inputRef, value, displayValue } = this.asProps;
 
     return sstyled(styles)(
       <>
@@ -445,19 +426,9 @@ class Value extends Component {
           onKeyDown={this.handleKeyDown}
           onKeyUp={this.handleKeyUp}
           onClick={this.handleClick}
-          use:ref={this.valueInputRef}
+          use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
           use:value={displayValue}
           inputMode='decimal'
-        />
-        <input
-          type={'number'}
-          ref={forkRef(forwardRef, inputNumberRef)}
-          hidden={true}
-          autoComplete='off'
-          onInvalid={this.handleValidation}
-          value={value}
-          readOnly={true}
-          aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}
           min={min}
