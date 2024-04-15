@@ -15,6 +15,7 @@
     "@semcore/checkbox": "7.25.0",
     "@semcore/divider": "4.21.0",
     "@semcore/dropdown-menu": "4.27.0",
+    "@semcore/popper": "5.26.3",
     "@semcore/flex-box": "5.22.0",
     "@semcore/icon": "4.31.0",
     "@semcore/input": "4.23.0",

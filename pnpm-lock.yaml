@@ -2253,6 +2253,9 @@ importers:
       '@semcore/input':
         specifier: 4.23.0
         version: link:../input
+      '@semcore/popper':
+        specifier: 5.26.3
+        version: link:../popper
       '@semcore/utils':
         specifier: 4.23.0
         version: link:../utils
