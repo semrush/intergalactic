@@ -9,6 +9,7 @@ import NeighborLocation from '@semcore/neighbor-location';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
+// @ts-ignore
 import Tooltip from '@semcore/tooltip';
 
 describe('BaseTrigger', () => {
