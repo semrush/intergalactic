@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.26.4] - 2024-04-15
+## [5.27.1] - 2024-04-15
 
 ### Changed
 
 - The default trigger `role` is `combobox` if an input is used as the trigger, and button otherwise.
+
+## [5.27.0] - 2024-04-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.21.2 ~> 2.22.0], `@semcore/flex-box` [5.21.2 ~> 5.22.0], `@semcore/neighbor-location` [4.19.2 ~> 4.20.0], `@semcore/outside-click` [3.19.2 ~> 3.20.0], `@semcore/utils` [4.22.2 ~> 4.23.0], `@semcore/core` [2.19.2 ~> 2.20.0]).
 
 ## [5.26.3] - 2024-04-12
 
