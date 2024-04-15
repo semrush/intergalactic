@@ -256,14 +256,14 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
-  test.only.concurrent('should call keydwon callback once per key down', async ({ expect }) => {
+  test.concurrent('should call keydwon callback once per key down', async ({ expect }) => {
     const onKeyDown = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onKeyDown={onKeyDown} data-testid={'tag'}>
+      <Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
         some tag
       </Tag>,
     );
-    const tag = getByTestId('tag');
+    const tag = getByTestId('tagKeyboardTest');
     await userEvent.keyboard('[Tab]');
 
     expect(tag).toHaveFocus();
