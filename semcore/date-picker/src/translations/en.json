@@ -24,5 +24,8 @@
   "unavailableDate": "Please select an available date.",
   "unavailableMonth": "Please select an available month.",
   "unavailableEndDate": "Please select an available due date.",
-  "unavailableEndMonth": "Please select an available due month."
+  "unavailableEndMonth": "Please select an available due month.",
+  "placeholder-days": "D",
+  "placeholder-months": "M",
+  "placeholder-years": "Y"
 }
