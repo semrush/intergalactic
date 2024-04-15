@@ -1,3 +1,44 @@
+## [15.78.0] - 2024-04-15
+
+### @semcore/base-trigger
+
+- **Added** composition api for `FilterTrigger`.
+
+### @semcore/d3-chart
+
+- **Added** `Cigarette` chart.
+- **Fixed** Dot's size for line, aria and bar charts.
+- **Fixed** background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
+
+### @semcore/data-table
+
+- **Changed** Table body focus ring top border got little offset to prevent overlapping with fixed (sticky) header.
+
+### @semcore/date-picker
+
+- **Changed** Input trigger now resizes to fit the content on mount and on blur.
+- **Fixed** On some locale in which formatted dates are longer than the input trigger, date text was overflowing the input container.
+
+### @semcore/pagination
+
+- **Fixed** Component was loosing browser focus after reaching the last of first page with keyboard navigation.
+
+### @semcore/radio
+
+- **Fixed** Type of `value` in `Radio` item component.
+
+### @semcore/scroll-area
+
+- **Added** `focusRingTopOffset`, `focusRingRightOffset`, `focusRingBottomOffset` and `focusRingLeftOffset` props.
+
+### @semcore/spin-container
+
+- **Changed** Allowed to use `SpinContainer.Overlay` without `SpinContainer.Content`.
+
+### @semcore/utils
+
+- **Added** Api in internal mechanism for recursive search of child elements.
+
 ## [15.77.1] - 2024-04-12
 
 ### @semcore/popper
