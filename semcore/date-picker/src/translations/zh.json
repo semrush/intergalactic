@@ -20,5 +20,12 @@
   "dateRange1": "第一个日期范围",
   "dateRange2": "第二个日期范围",
   "selectingStarted": "已开始选择",
-  "selectingFinished": "已选定"
+  "selectingFinished": "已选定",
+  "unavailableDate": "请选择可用日期。",
+  "unavailableMonth": "请选择可用月份。",
+  "unavailableEndDate": "请选择一个可用的截止日期。",
+  "unavailableEndMonth": "请选择可用到期月份。",
+  "placeholder-days": "日",
+  "placeholder-months": "月",
+  "placeholder-years": "年"
 }
