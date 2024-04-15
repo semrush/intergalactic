@@ -3,6 +3,7 @@ import { execSync } from 'child_process';
 import { log, prerelaseSuffix } from '../utils';
 import { VersionPatch } from '../makeVersionPatches';
 import { NpmUtils } from './npmUtils';
+import {a} from "vitest/dist/suite-xGC-mxBC";
 
 const git = Git();
 
@@ -85,19 +86,22 @@ export class GitUtils {
   }
 
   private static async createPrereleaseTag(patch: VersionPatch) {
-    const prerelease = await GitUtils.getPrerelease();
+    const tagNamePrefix = `v${patch.to}-${prerelaseSuffix}.`;
 
-    let tag = `v${patch.to}-${prerelaseSuffix}.0`;
+    const tag = await GitUtils.getTag(tagNamePrefix);
+    const prerelease = tag?.split('-')[1] ?? null;
+
+    let tagName = tagNamePrefix + '0';
 
     if (prerelease !== null) {
       const currentItem = Number(prerelease.split('.')[1]);
 
       if (!Number.isNaN(currentItem)) {
-        tag = `v${patch.to}-${prerelaseSuffix}.${currentItem + 1}`;
+        tagName = `${tagNamePrefix}${currentItem + 1}`;
       }
     }
 
-    await git.tag(['-f', tag]);
+    await git.tag(['-f', tagName]);
 
     return tag;
   }
@@ -120,5 +124,13 @@ export class GitUtils {
       await git.push('origin', branch, { '--follow-tags': null });
       log('Pushed to git origin.');
     }
+  }
+
+  private static async getTag(startStr: string): Promise<string | null> {
+    const tag = execSync(`git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `, {
+      encoding: 'utf-8',
+    });
+
+    return tag.trim();
   }
 }
