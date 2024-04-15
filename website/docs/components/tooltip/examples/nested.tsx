@@ -7,7 +7,7 @@ const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
       <Tooltip>
-        <Tooltip.Trigger aria-describedby={undefined}>
+        <Tooltip.Trigger aria-describedby={undefined} role={undefined}>
           {({ popperId }) => <Link aria-describedby={popperId}>Tooltip trigger</Link>}
         </Tooltip.Trigger>
         <Tooltip.Popper>Hello, stranger!</Tooltip.Popper>
