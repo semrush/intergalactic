@@ -1085,27 +1085,27 @@
     },
     "date-picker": {
       "cell": {
-        "value": "{gray.white}",
+        "value": "rgba(30, 34, 49, 1)",
         "type": "color",
         "description": "Default date-picker cell background."
       },
       "cell-current": {
-        "value": "{gray.200}",
+        "value": "{gray.700}",
         "type": "color",
         "description": "Color for marking the cell with the current date, month or year in the date-picker."
       },
       "cell-hover": {
-        "value": "{gray.100}",
+        "value": "{gray.600}",
         "type": "color",
         "description": "Hover state of the default date-picker cell background."
       },
       "cell-range": {
-        "value": "{blue.100}",
+        "value": "{blue.700}",
         "type": "color",
         "description": "Background for the cell which is included in the date range in the date-picker."
       },
       "cell-range-hover": {
-        "value": "{blue.200}",
+        "value": "{blue.600}",
         "type": "color",
         "description": "Hover state of the background for the cell which is included in the date range in the date-picker."
       },

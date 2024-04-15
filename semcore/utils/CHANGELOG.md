@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.23.1] - 2024-04-15
+
+### Fixed
+
+- Date picker related design tokens in dark mode.
+
 ## [4.23.0] - 2024-04-12
 
 ### Added
