@@ -126,13 +126,19 @@ export class GitUtils {
   }
 
   private static async getTag(startStr: string): Promise<string | null> {
-    const tag = execSync(
-      `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `,
-      {
-        encoding: 'utf-8',
-      },
-    );
+    try {
+      const tag = execSync(
+        `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `,
+        {
+          encoding: 'utf-8',
+        },
+      );
 
-    return tag.trim();
+      return tag.trim();
+    } catch (e) {
+      // biome-ignore lint/suspicious/noConsoleLog:
+      console.warn(e);
+      return null;
+    }
   }
 }
