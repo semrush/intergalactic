@@ -60,7 +60,7 @@ declare const ScrollBar: Intergalactic.Component<'div', ScrollBarProps, ScrollBa
 };
 
 declare const ScrollArea: Intergalactic.Component<'div', ScrollAreaProps, ScrollAreaContext> & {
-  Container: Intergalactic.ForwardRefComponent<'div', ScrollAreaContainerProps>;
+  Container: Intergalactic.Component<'div', ScrollAreaContainerProps>;
   Bar: typeof ScrollBar;
 };
 

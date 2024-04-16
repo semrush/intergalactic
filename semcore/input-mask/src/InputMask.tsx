@@ -75,6 +75,11 @@ export type InputMaskValueProps = InputValueProps & {
    * @default `{_: true}`
    */
   maskOnlySymbols?: Record<string, boolean>;
+
+  /**
+   * Overrids width of the input field
+   */
+  inputW?: string | number;
 };
 
 type InputMaskCtx = {
@@ -327,6 +332,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
       Children,
       forwardRef,
       uid,
+      inputW,
       ...otherProps
     } = this.asProps;
 
@@ -374,6 +380,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
                   ref={ref}
                   onFocus={this.onFocus}
                   value={value}
+                  w={inputW}
                   wMin={this.state.maskWidth}
                   aria-describedby={`hint-${uid}`}
                   {...controlProps}

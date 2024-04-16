@@ -142,6 +142,26 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test('Should render placeholder correctly', async ({ task }) => {
+    const component = (
+      <DatePicker>
+        <DatePicker.Trigger />
+        <DatePicker.Popper />
+      </DatePicker>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test('Should render localized placeholder correctly', async ({ task }) => {
+    const component = (
+      <DatePicker locale='ja'>
+        <DatePicker.Trigger />
+        <DatePicker.Popper />
+      </DatePicker>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
     const component = (
       <Box w={200} h={200}>

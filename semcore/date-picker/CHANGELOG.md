@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.38.0] - 2024-04-12
+
+### Added
+
+- Input trigger placeholder now is localized out of the box based on `locale` prop.
+
+### Fixed
+
+- Added missing translations for input trigger error tooltip.
+- Input trigger text was little trimmed at the end.
+
 ## [4.37.1] - 2024-04-12
 
 ### Changed

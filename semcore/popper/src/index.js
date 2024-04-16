@@ -1,1 +1,1 @@
-export { default } from './Popper';
+export { default, isInputTriggerTag } from './Popper';
