@@ -16,7 +16,6 @@ SSlider {
     border-radius: var(--intergalactic-progress-bar-rounded, 6px);
     background-color: var(--intergalactic-border-secondary, #e0e1e9);
   }
-
   &:hover:before {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
@@ -26,8 +25,7 @@ SSlider {
   }
 }
 
-SSlider[keyboardFocused] SKnob,
-SKnob:focus {
+SSlider[keyboardFocused] SKnob {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
@@ -63,14 +61,11 @@ SKnob {
   cursor: pointer;
   transform: translate(-50%, -50%);
   transition: calc(var(--intergalactic-duration-control, 200) * 1ms) left ease-in-out;
-  padding-block: 0;
-  padding-inline: 0;
 
   &:hover {
     border-color: var(--intergalactic-control-primary-info-hover, #006dca);
   }
 }
-
 
 SInput {
   position: absolute;

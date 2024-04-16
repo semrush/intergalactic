@@ -1,31 +1,22 @@
 import React from 'react';
 import Slider from 'intergalactic/slider';
-import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const [value, setValue] = React.useState('medium');
 
   return (
-    <div>
-      <Text tag='label' size={300} htmlFor='options-slider'>
-        Updates frequency
-      </Text>
-      <Slider
-        mt={2}
-        id='options-slider'
-        name='options'
-        value={value}
-        onChange={setValue}
-        step={1}
-        min={1}
-        max={3}
-        options={[
-          { label: 'Low', value: 'low' },
-          { label: 'Medium', value: 'medium' },
-          { label: 'High', value: 'high' },
-        ]}
-      />
-    </div>
+    <Slider
+      value={value}
+      onChange={setValue}
+      step={1}
+      min={1}
+      max={3}
+      options={[
+        { value: 'small', label: 'Small' },
+        { value: 'medium', label: 'Medium' },
+        { value: 'big', label: 'Big' },
+      ]}
+    />
   );
 };
 

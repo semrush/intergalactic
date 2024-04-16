@@ -47,11 +47,10 @@ class SliderRoot extends Component {
   }
 
   getKnobProps() {
-    const { min, max, disabled, options, id } = this.asProps;
+    const { min, max, disabled, options } = this.asProps;
 
     return {
       value: this.getNumericValue(),
-      id,
       min,
       max,
       disabled,
@@ -164,16 +163,28 @@ class SliderRoot extends Component {
     return resolvedIndex + (min ?? 0);
   };
 
+  resolveLabel = (numericValue) => {
+    const { min, options } = this.asProps;
+    if (!options) return undefined;
+    const option = options[numericValue - (min ?? 0)];
+
+    return reactToText(option?.label);
+  };
+
   render() {
     const SSlider = Root;
     const SInput = Box;
-    const { Children, styles, value, name, id } = this.asProps;
+    const { Children, styles, value, min, max, name, options } = this.asProps;
+
+    const defaultMin = options ? 0 : undefined;
+    const defaultMax = options ? options.length : undefined;
+    const numericValue = this.getNumericValue();
+    const label = this.resolveLabel(numericValue);
 
     return sstyled(styles)(
       <>
         <SSlider
           render={Box}
-          use:id={undefined}
           ref={this.handleRef}
           onMouseDown={this.handleMouseMove}
           onTouchMove={this.handleMouseMove}
@@ -181,9 +192,15 @@ class SliderRoot extends Component {
           onTouchEnd={this.handleMouseEnd}
           onDragStart={this.handleDragStart}
           onKeyDown={this.handleKeyDown}
+          role='slider'
+          aria-orientation='horizontal'
+          aria-valuemin={min ?? defaultMin}
+          aria-valuemax={max ?? defaultMax}
+          aria-valuetext={label}
+          aria-valuenow={numericValue}
         >
           <Children />
-          <SInput tag='input' type='hidden' value={value ?? ''} name={name} aria-hidden id={id} />
+          <SInput tag='input' type='hidden' value={value ?? ''} name={name} aria-hidden />
         </SSlider>
       </>,
     );
@@ -199,29 +216,10 @@ function Bar(props) {
 
 function Knob(props) {
   const SKnob = Root;
-  const { styles, value, min, max, options } = props;
-  const defaultMin = options ? 0 : undefined;
-  const defaultMax = options ? options.length : undefined;
-  const label = React.useMemo(() => {
-    if (!options) return undefined;
-    const option = options[value - (min ?? 0)];
-
-    return reactToText(option?.label);
-  }, [options, min, value]);
+  const { styles, value, min, max } = props;
 
   return sstyled(styles)(
-    <SKnob
-      render={Box}
-      left={`${convertValueToPercent(value, min, max)}%`}
-      tag='button'
-      type='button'
-      role='slider'
-      aria-orientation='horizontal'
-      aria-valuemin={min ?? defaultMin}
-      aria-valuemax={max ?? defaultMax}
-      aria-valuetext={label}
-      aria-valuenow={value}
-    />,
+    <SKnob render={Box} left={`${convertValueToPercent(value, min, max)}%`} />,
   );
 }
 
