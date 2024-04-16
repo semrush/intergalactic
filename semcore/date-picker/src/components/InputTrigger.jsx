@@ -774,7 +774,7 @@ const MaskedInput = ({
       aliases={aliases}
       maskOnlySymbols={maskOnlySymbols}
       placeholder={mask}
-      w={appliedWidth}
+      inputW={appliedWidth}
       wMin={appliedWidth}
       {...otherProps}
       onFocus={handleFocus}
