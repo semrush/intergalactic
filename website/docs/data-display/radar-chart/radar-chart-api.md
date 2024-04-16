@@ -4,7 +4,9 @@ fileSource: d3-chart
 tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
-## D3 API
+## D3 chart
+
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ```js
 import { Radar } from 'intergalactic/d3-chart';

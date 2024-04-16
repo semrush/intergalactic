@@ -236,7 +236,9 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 ## Initial data loading
 
-Use [Skeleton](/components/skeleton/skeleton) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
+For the initial loading of the charts, use skeleton components that are specified for all complex charts right inside them, or use [Skeleton](/components/skeleton/skeleton) for simple charts. 
+
+Note that, if a chart has a title, it should be displayed while the chart is loading.
 
 ## Pattern fill
 

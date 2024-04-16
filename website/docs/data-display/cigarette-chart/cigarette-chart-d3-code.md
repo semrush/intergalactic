@@ -16,6 +16,8 @@ tabs: Design('cigarette-chart'), A11y('cigarette-chart-a11y'), API('cigarette-ch
 
 ## Layouts
 
+To change the layout of the chart from horizontal to vertical, just set `invertAxis={false}`.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -24,7 +26,21 @@ tabs: Design('cigarette-chart'), A11y('cigarette-chart-a11y'), API('cigarette-ch
 
 :::
 
+## Tooltip type
+
+In the tooltip, you can display the values of all chart sectors or just one of them.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/tooltip-type.tsx';
+</script>
+
+:::
+
 ## Click interaction
+
+You can add some click interaction for the chart sectors.
 
 ::: sandbox
 
@@ -46,7 +62,9 @@ Show null and not available data in the legend and tooltip but not on the chart.
 
 :::
 
-## Skeleton
+## Initial data loading
+
+Use [Skeleton](/components/skeleton/skeleton) for the initial chart loading.
 
 ::: sandbox
 
@@ -56,7 +74,9 @@ Show null and not available data in the legend and tooltip but not on the chart.
 
 :::
 
-## Custom a11y
+## Custom accessible text
+
+You can set `a11yAltTextConfig` if you need accessible text that differs from the default one.
 
 ::: sandbox
 
