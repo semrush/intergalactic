@@ -2,6 +2,7 @@ import React from 'react';
 import Select from 'intergalactic/select';
 import { Flex } from 'intergalactic/flex-box';
 import Notice from 'intergalactic/notice';
+import { Text } from 'intergalactic/typography';
 
 const options = Array(12)
   .fill('')
@@ -14,9 +15,12 @@ const noticeStyle = {
 };
 
 const Demo = () => (
-  <Flex>
+  <Flex direction='column'>
+    <Text tag='label' size={200} htmlFor='customized-dropdown-select'>
+      Customized dropdown
+    </Text>
     <Select placeholder={'Select something'}>
-      <Select.Trigger m='auto' />
+      <Select.Trigger mt={2} mr='auto' id='customized-dropdown-select' />
       <Select.Popper>
         <Select.List hMax='240px'>
           {options.map((option, index) => (

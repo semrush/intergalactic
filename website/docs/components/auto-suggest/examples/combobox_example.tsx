@@ -20,9 +20,9 @@ const Demo = () => {
         Select release time
       </Text>
       <Box mt={2}>
-        <Select id='release-time-picker' interaction='focus' onChange={setValue} value={value}>
+        <Select interaction='focus' onChange={setValue} value={value}>
           <Select.Trigger tag={Input}>
-            {() => <Input.Value value={value} onChange={setValue} />}
+            {() => <Input.Value value={value} onChange={setValue} id='release-time-picker' />}
           </Select.Trigger>
           <Select.Menu>
             {options.map((option) => (

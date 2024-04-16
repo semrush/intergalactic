@@ -5,28 +5,28 @@ const Example = () => {
   return (
     <div>
       <InlineInput state='valid'>
-        <InlineInput.Value />
+        <InlineInput.Value aria-label='valid state inline input' />
         <InlineInput.ConfirmControl />
         <InlineInput.CancelControl />
       </InlineInput>
       <br />
       <br />
       <InlineInput state='invalid'>
-        <InlineInput.Value />
+        <InlineInput.Value aria-label='invalid state inline input' />
         <InlineInput.ConfirmControl />
         <InlineInput.CancelControl />
       </InlineInput>
       <br />
       <br />
       <InlineInput disabled>
-        <InlineInput.Value />
+        <InlineInput.Value aria-label='disabled state inline input' />
         <InlineInput.ConfirmControl />
         <InlineInput.CancelControl />
       </InlineInput>
       <br />
       <br />
       <InlineInput loading>
-        <InlineInput.Value />
+        <InlineInput.Value aria-label='loading state inline input' />
         <InlineInput.ConfirmControl />
         <InlineInput.CancelControl />
       </InlineInput>

@@ -1,24 +1,28 @@
 import React from 'react';
 import Input from 'intergalactic/input';
+import Flag from 'intergalactic/flags';
 import CloseM from 'intergalactic/icon/Close/m';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = React.useState('+');
+  const [value, setValue] = React.useState('+1');
   return (
     <Flex direction='column'>
-      <Text tag='label' htmlFor='basic-example' size={200} mr={2}>
+      <Text tag='label' size={200} htmlFor='phone-number'>
         Phone number
       </Text>
       <Input w={180} mt={2}>
-        <Input.Value id='basic-example' value={value} onChange={(v) => setValue(v)} />
-        {value.length > 1 && (
+        <Input.Addon>
+          <Flag iso2='US' />
+        </Input.Addon>
+        <Input.Value value={value} onChange={(v) => setValue(v)} id='phone-number' />
+        {Number.parseInt(value, 10) > 2 && (
           <Input.Addon
             tag={CloseM}
             interactive
             aria-label='Clear field'
-            onClick={() => setValue('+')}
+            onClick={() => setValue('+1')}
           />
         )}
       </Input>

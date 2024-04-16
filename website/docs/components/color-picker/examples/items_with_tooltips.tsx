@@ -1,6 +1,8 @@
 import React from 'react';
 import ColorPicker from 'intergalactic/color-picker';
 import { Hint } from 'intergalactic/tooltip';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const colors = [
   '#A7AB38',
@@ -17,16 +19,21 @@ const colors = [
 
 const Demo = () => {
   return (
-    <ColorPicker>
-      <ColorPicker.Trigger />
-      <ColorPicker.Popper>
-        <ColorPicker.Colors>
-          {colors.map((color) => (
-            <Hint title={color} key={color} tag={ColorPicker.Item} value={color} />
-          ))}
-        </ColorPicker.Colors>
-      </ColorPicker.Popper>
-    </ColorPicker>
+    <Flex direction='column'>
+      <Text tag='label' size={200} htmlFor='cake-color'>
+        Cake color
+      </Text>
+      <ColorPicker>
+        <ColorPicker.Trigger mt={2} id='main-theme-color' />
+        <ColorPicker.Popper>
+          <ColorPicker.Colors>
+            {colors.map((color) => (
+              <Hint title={color} key={color} tag={ColorPicker.Item} value={color} />
+            ))}
+          </ColorPicker.Colors>
+        </ColorPicker.Popper>
+      </ColorPicker>
+    </Flex>
   );
 };
 

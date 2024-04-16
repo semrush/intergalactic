@@ -34,7 +34,7 @@ class InputTriggerRoot extends Component {
       style,
       ...otherProps
     } = this.asProps;
-    return { ...otherProps, ariaHasPopup };
+    return { ...otherProps, ariaHasPopup, inputId: id };
   }
   getDateRangeProps() {
     const {
@@ -47,7 +47,7 @@ class InputTriggerRoot extends Component {
       style,
       ...otherProps
     } = this.asProps;
-    return { ...otherProps, ariaHasPopup };
+    return { ...otherProps, ariaHasPopup, inputId: id };
   }
 
   render() {
@@ -58,7 +58,7 @@ class InputTriggerRoot extends Component {
       <SInputTrigger
         render={Box}
         aria-label={getI18nText('input')}
-        __excludeProps={['onChange', 'value', 'role']}
+        __excludeProps={['onChange', 'value', 'role', 'id']}
       >
         <Children />
       </SInputTrigger>,
@@ -299,7 +299,11 @@ class DateRangeRoot extends Component {
     );
   }
   getToMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, ...otherProps } = this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, inputId, ...otherProps } =
+      this.asProps;
+    const ariaLabel = this.asProps.getI18nText('toDate', {
+      date: this.asProps.getI18nText('input'),
+    });
 
     return assignProps(
       {
@@ -310,6 +314,7 @@ class DateRangeRoot extends Component {
         locale,
         flex: 1,
         onDisplayedPeriodChange,
+        'aria-label': ariaLabel,
         'aria-haspopup': ariaHasPopup,
         onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
         containerFocused: this.state.containerFocused,
@@ -408,6 +413,7 @@ const MaskedInput = ({
   containerFocused,
   animationsDisabled,
   getI18nText,
+  inputId,
 
   __excludeProps,
 
@@ -776,6 +782,7 @@ const MaskedInput = ({
       placeholder={mask}
       inputW={appliedWidth}
       wMin={appliedWidth}
+      id={inputId}
       {...otherProps}
       onFocus={handleFocus}
       onBlur={handleBlur}
