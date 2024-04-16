@@ -1,3 +1,30 @@
+## [15.79.0] - 2024-04-16
+
+### @semcore/date-picker
+
+- **Added** Input trigger placeholder now is localized out of the box based on `locale` prop.
+- **Fixed** Added missing translations for input trigger error tooltip.
+- **Fixed** Input trigger text was little trimmed at the end.
+- **Fixed** Component display in dark mode.
+- **Fixed** Input trigger referencing `label` tag support.
+- **Fixed** Default `aria-label` for the second input of date range trigger.
+
+### @semcore/input-mask
+
+- **Added** `inputW` prop to override the width of the input field.
+
+### @semcore/input-number
+
+- **Added** Beautiful number formatting.
+
+### @semcore/popper
+
+- **Changed** The default trigger `role` is `combobox` if an input is used as the trigger, and button otherwise.
+
+### @semcore/utils
+
+- **Fixed** Date picker related design tokens in dark mode.
+
 ## [15.78.0] - 2024-04-15
 
 ### @semcore/base-trigger
