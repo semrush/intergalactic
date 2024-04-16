@@ -1,6 +1,6 @@
 SReferenceLine {
   fill: none;
-  stroke: var(--chart-grid-y-accent-hover-line, #a9abb6);
+  stroke: var(--intergalactic-chart-grid-y-accent-hover-line, #a9abb6);
 }
 
 STitle {
