@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.38.1] - 2024-04-16
+
+### Fixed
+
+- stroke color for ReferenceLine from `--intergalactic-chart-grid-x-axis` to `--intergalactic-chart-grid-y-accent-hover-line`.
+
 ## [3.38.0] - 2024-04-12
 
 ### Added
