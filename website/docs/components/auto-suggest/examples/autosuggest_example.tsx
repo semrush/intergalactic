@@ -53,7 +53,7 @@ const Demo = () => {
         Your website
       </Text>
       <Box mt={2}>
-        <Select id='website-autosuggest' interaction='focus' onChange={setQuery} value={query}>
+        <Select interaction='focus' onChange={setQuery} value={query}>
           <Select.Trigger tag={Input}>
             {() => (
               <Input.Value
@@ -61,6 +61,7 @@ const Demo = () => {
                 role='combobox'
                 placeholder='Type domain or URL'
                 onChange={setQuery}
+                id='website-autosuggest'
               />
             )}
           </Select.Trigger>

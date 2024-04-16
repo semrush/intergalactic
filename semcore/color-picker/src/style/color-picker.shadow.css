@@ -95,6 +95,9 @@ SDefaultTrigger {
   align-items: center;
   outline: none;
   cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
 }
 
 SDefaultTrigger[keyboardFocused] {

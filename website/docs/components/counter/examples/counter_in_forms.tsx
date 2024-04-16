@@ -19,11 +19,11 @@ const Demo = () => (
           <ScreenReaderOnly>maximum</ScreenReaderOnly>
         </Counter>
       </Text>
-      <Text size={200} color='text-secondary' id='limited-text-field'>
+      <Text size={200} color='text-secondary'>
         optional
       </Text>
     </Flex>
-    <Textarea placeholder='Placeholder' />
+    <Textarea placeholder='Placeholder' id='limited-text-field' />
   </Flex>
 );
 

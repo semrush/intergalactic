@@ -10,9 +10,9 @@ const Example = () => {
       onConfirm={console.log}
     >
       <InlineInput.Addon htmlFor='basic-example' tag='label'>
-        user name:
+        User name:
       </InlineInput.Addon>
-      <InlineInput.Value id='basic-example' defaultValue='Hello world' />
+      <InlineInput.Value id='basic-example' defaultValue='John Doe' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>

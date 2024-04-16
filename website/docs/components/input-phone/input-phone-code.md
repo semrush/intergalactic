@@ -26,7 +26,7 @@ In certain countries, there may be multiple valid formats for phone numbers. The
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/known_country,_but_the_number_format_is_unknown.tsx';
+  export Demo from './examples/known_country_but_the_number_format_is_unknown.tsx';
 </script>
 
 :::

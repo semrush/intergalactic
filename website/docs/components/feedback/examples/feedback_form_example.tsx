@@ -38,16 +38,21 @@ const validate = (values: Data) => {
 
 const Demo = () => (
   <FeedbackForm validate={validate} p={1} onSubmit={() => ({})}>
-    <FeedbackForm.Item name='title'>
-      {({ input }) => {
-        const { state, className, ...other } = input;
-        return (
-          <Input state={state} className={className} m='0 0 16px'>
-            <Input.Value {...other} placeholder='Activity title' />
-          </Input>
-        );
-      }}
-    </FeedbackForm.Item>
+    <label htmlFor='acitivty'>
+      <Text bold mb='8px' tag='p' size={200}>
+        Activity
+      </Text>
+      <FeedbackForm.Item name='title'>
+        {({ input }) => {
+          const { state, className, ...other } = input;
+          return (
+            <Input state={state} className={className} m='0 0 16px'>
+              <Input.Value {...other} placeholder='Activity title' id='acitivty' />
+            </Input>
+          );
+        }}
+      </FeedbackForm.Item>
+    </label>
 
     <label htmlFor='campaign'>
       <Text bold mb='8px' tag='p' size={200}>

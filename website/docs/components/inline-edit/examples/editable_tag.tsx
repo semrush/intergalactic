@@ -24,7 +24,7 @@ const Demo = () => {
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput onConfirm={handleValue} onCancel={resetEditable}>
-            <InlineInput.Value defaultValue={value} autoFocus />
+            <InlineInput.Value defaultValue={value} autoFocus aria-label='editable tag' />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>
