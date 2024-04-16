@@ -1,3 +1,4 @@
+import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import { extent, bisector, Numeric } from 'd3-array';
 import {
   scaleQuantize,
@@ -11,12 +12,6 @@ import {
   scaleSqrt,
 } from 'd3-scale';
 import React from 'react';
-
-const CONSTANT = {
-  VIRTUAL_ELEMENT: Symbol('VIRTUAL_ELEMENT'),
-} as const;
-
-export { CONSTANT };
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
@@ -338,3 +333,20 @@ export const calculateBubbleDomain = (
 
   return [min, max];
 };
+
+interface PlotEventEmitterEmit {
+  (event: 'setTooltipVisible', visible: boolean): void;
+  (event: 'setTooltipPosition', x: number, y: number): void;
+}
+type Unsubscribe = () => void;
+interface PlotEventEmitterSubscribe {
+  (event: 'setTooltipVisible', callback: (visible: boolean) => void): Unsubscribe;
+  (event: 'setTooltipPosition', callback: (x: number, y: number) => void): Unsubscribe;
+}
+type PlotEventEmitter = {
+  new (): {
+    emit: PlotEventEmitterEmit;
+    subscribe: PlotEventEmitterSubscribe;
+  };
+};
+export const PlotEventEmitter = EventEmitter as any as PlotEventEmitter;

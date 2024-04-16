@@ -3,14 +3,7 @@ import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
-import {
-  scaleOfBandwidth,
-  getIndexFromData,
-  eventToPoint,
-  invert,
-  CONSTANT,
-  scaleToBand,
-} from './utils';
+import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, scaleToBand } from './utils';
 
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
@@ -25,10 +18,6 @@ class Hover extends Component {
 
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
-  generateGetBoundingClientRect(x = 0, y = 0) {
-    return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
-  }
-
   handlerMouseMoveRoot = trottle((e) => {
     const { eventEmitter, data, scale, x, y, rootRef, patterns } = this.asProps;
     const { clientX, clientY } = e;
@@ -41,20 +30,11 @@ class Hover extends Component {
     const yIndex =
       y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex, patterns };
-    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(
-      clientX,
-      clientY,
-    );
-    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
 
     this.setState(state, () => {
-      eventEmitter.emit(
-        'onTooltipVisible',
-        xIndex !== null || yIndex !== null,
-        {},
-        state,
-        this.virtualElement,
-      );
+      eventEmitter.emit('setTooltipPosition', clientX, clientY);
+      eventEmitter.emit('setTooltipRenderingProps', {}, state);
+      eventEmitter.emit('setTooltipVisible', xIndex !== null || yIndex !== null);
     });
   });
 
@@ -65,7 +45,7 @@ class Hover extends Component {
       patterns: this.asProps.patterns,
     };
     this.setState(state, () => {
-      this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, state);
+      this.asProps.eventEmitter.emit('setTooltipVisible', false);
     });
   });
 
@@ -111,6 +91,7 @@ class HoverLineRoot extends Hover {
 
     return sstyled(styles)(
       <>
+        hi
         {xIndex !== null ? (
           <SHoverLine
             aria-hidden
