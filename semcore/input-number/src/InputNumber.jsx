@@ -6,6 +6,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 export function parseValueWithMinMax(
   value,
@@ -26,29 +27,23 @@ class InputNumber extends Component {
   };
 
   inputRef = React.createRef();
-  inputHandlersRef = React.createRef();
 
   increment = (event) => {
-    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.min || '0';
-    this.inputRef.current?.stepUp?.();
-    this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
+    this.inputRef.current?.stepUp?.(event);
   };
 
   decrement = (event) => {
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.max || '0';
-    this.inputRef.current?.stepDown?.();
-    this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
+    this.inputRef.current?.stepDown?.(event);
   };
 
   getValueProps() {
+    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
+
     return {
-      ref: this.inputRef,
-      inputHandlerRefs: this.inputHandlersRef,
+      inputRef: this.inputRef,
       increment: this.increment,
       decrement: this.decrement,
+      numberFormatter,
     };
   }
 
@@ -71,16 +66,93 @@ class InputNumber extends Component {
 class Value extends Component {
   static defaultProps = {
     defaultValue: '',
+    defaultDisplayValue: '',
     step: 1,
   };
 
-  inputRef = React.createRef();
+  valueInputRef = React.createRef();
+
+  cursorPosition = -1;
 
   uncontrolledProps() {
     return {
-      value: null,
+      displayValue: null,
+      value: [
+        null,
+        (newValue) => {
+          const { value: prevValue, displayValue: prevDisplayValue } = this.asProps;
+
+          if (newValue === '-') {
+            this.handlers.displayValue(newValue);
+
+            return newValue;
+          } else {
+            const { parsedValue, displayValue } = this.valueParser(
+              newValue,
+              prevValue,
+              prevDisplayValue,
+            );
+
+            this.handlers.displayValue(displayValue);
+
+            return parsedValue;
+          }
+        },
+      ],
     };
   }
+
+  get separatorDecimal() {
+    const { numberFormatter } = this.props;
+
+    return numberFormatter.format(11.11).replace(/\d/g, '');
+  }
+
+  get separatorThousands() {
+    const { numberFormatter } = this.props;
+
+    return numberFormatter.format(1111).replace(/\d/g, '');
+  }
+
+  valueParser = (value, prevValue, prevDisplayValue) => {
+    const { numberFormatter } = this.props;
+
+    const stringNumber = value
+      .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
+      .replace(this.separatorDecimal, '.');
+
+    if (
+      stringNumber[stringNumber.length - 1] === '.' &&
+      !Number.isNaN(Number(prevValue)) &&
+      !stringNumber.slice(0, -1).includes('.')
+    ) {
+      if (value.length > prevValue.length) {
+        // type new value
+        return {
+          parsedValue: prevValue + this.separatorDecimal,
+          displayValue: numberFormatter.format(prevValue) + this.separatorDecimal,
+        };
+      } else {
+        // backspace value
+        return {
+          parsedValue: stringNumber,
+          displayValue: value,
+        };
+      }
+    }
+
+    if (Number.isNaN(Number(stringNumber))) {
+      return {
+        parsedValue: prevValue,
+        displayValue: prevDisplayValue,
+      };
+    }
+
+    return {
+      parsedValue: stringNumber,
+      displayValue: stringNumber === '' ? '' : numberFormatter.format(stringNumber),
+    };
+  };
 
   round(value, step) {
     const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
@@ -90,13 +162,15 @@ class Value extends Component {
   }
 
   handleValidation = (event) => {
-    const { value, min, max, step } = this.asProps;
+    const { value, displayValue, min, max, step } = this.asProps;
+    const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
-    if (Number.isNaN(event.currentTarget.valueAsNumber)) {
+
+    if (Number.isNaN(value) || Number.isNaN(Number.parseFloat(parsedValue))) {
       event.currentTarget.value = '';
       this.handlers.value('', event);
     } else {
-      let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
+      let numberValue = parseValueWithMinMax(Number.parseFloat(parsedValue), min, max);
       const rounded = this.round(numberValue % step, step);
       if (rounded !== 0) {
         if (rounded >= step / 2) {
@@ -106,51 +180,259 @@ class Value extends Component {
         }
       }
       const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
+
       this.handlers.value(String(numberValueRounded), event);
     }
   };
 
   // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
   componentDidMount() {
-    this.inputRef.current?.addEventListener('wheel', this.handleWheel);
+    this.valueInputRef.current?.addEventListener('wheel', this.handleWheel);
+
+    const { inputRef, value } = this.asProps;
+
+    if (inputRef.current) {
+      inputRef.current.stepUp = this.stepUp;
+      inputRef.current.stepDown = this.stepDown;
+    }
+
+    if (value !== '') {
+      const { displayValue } = this.valueParser(value, '', '');
+      this.handlers.displayValue(displayValue);
+    }
   }
   componentWillUnmount() {
-    this.inputRef.current?.removeEventListener('wheel', this.handleWheel);
+    this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
   }
 
   handleWheel = (event) => {
-    if (event.target !== this.inputRef.current) return;
-    if (document.activeElement !== this.inputRef.current) return;
+    if (event.target !== this.valueInputRef.current) return;
+    if (document.activeElement !== this.valueInputRef.current) return;
     event.preventDefault();
     if (event.wheelDelta > 0) {
-      this.asProps.increment(event);
+      this.stepUp(event);
     } else if (event.wheelDelta < 0) {
-      this.asProps.decrement(event);
+      this.stepDown(event);
+    }
+  };
+
+  handleChange = (event) => {
+    const value = event.currentTarget.value;
+    const digits = /[0-9,.-]+/.test(value);
+
+    if (digits || value === '') {
+      this.handlers.value(value, event);
+    }
+
+    return false;
+  };
+
+  handleKeyUp = (event) => {
+    if (event.key === 'Shift') {
+      this.cursorPosition = -1;
+    }
+
+    const element = event.currentTarget;
+
+    element.role = 'input';
+  };
+
+  handleKeyDown = (event) => {
+    const element = event.currentTarget;
+    const value = element.value;
+    const length = value.length;
+
+    // we need this dirty hack for screen readers, because they couldn't read full value in input after adding there ','.
+    // so, we change role to `region` here and back to `input` in handleKeyUp
+    element.role = 'region';
+
+    if (
+      element.selectionStart !== length &&
+      (event.key === 'Backspace' ||
+        event.key === this.separatorDecimal ||
+        ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key))
+    ) {
+      const afterSelection = value.slice(element.selectionEnd);
+
+      requestAnimationFrame(() => {
+        const newValue = this.state.displayValue;
+        const index = newValue.lastIndexOf(afterSelection);
+        const selectionStart = index;
+        const selectionEnd = index;
+
+        element.setSelectionRange(selectionStart, selectionEnd);
+      });
+    }
+
+    // For correct moving cursor with skip separatorThousands.
+    // Examples:
+    // - Press ArrowLeft: `12,3|4 -> 12|,34`
+    // - Press ArrowRight: `1|,55 -> 1,5|5`
+    const cursorIndex = 2;
+
+    if (event.shiftKey && this.cursorPosition === -1) {
+      this.cursorPosition = element.selectionStart;
+    }
+
+    switch (event.key) {
+      case 'ArrowLeft': {
+        event.preventDefault();
+        this.moveSelectionLeft(element, cursorIndex);
+        break;
+      }
+      case 'ArrowRight': {
+        event.preventDefault();
+        this.moveSelectionRight(element, cursorIndex);
+        break;
+      }
+      case 'ArrowDown': {
+        event.preventDefault();
+        this.stepDown(event);
+        break;
+      }
+      case 'ArrowUp': {
+        event.preventDefault();
+        this.stepUp(event);
+        break;
+      }
+    }
+  };
+
+  moveSelectionLeft = (element, cursorIndex) => {
+    const value = element.value;
+    const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
+
+    const cursorPosition =
+      value[element.selectionStart - cursorIndex] === this.separatorThousands
+        ? element.selectionStart - cursorIndex
+        : nextPosition;
+
+    if (this.cursorPosition === -1) {
+      // without shift
+      element.setSelectionRange(cursorPosition, cursorPosition);
+    } else {
+      if (
+        element.selectionStart <= this.cursorPosition &&
+        element.selectionEnd === this.cursorPosition
+      ) {
+        element.setSelectionRange(cursorPosition, element.selectionEnd);
+      } else {
+        element.setSelectionRange(
+          element.selectionStart,
+          value[element.selectionEnd - cursorIndex] === this.separatorThousands
+            ? element.selectionEnd - cursorIndex
+            : element.selectionEnd - 1,
+        );
+      }
+    }
+  };
+
+  moveSelectionRight = (element, cursorIndex) => {
+    const value = element.value;
+    const nextPosition = element.selectionEnd + 1;
+
+    const cursorPosition =
+      value[element.selectionEnd] === this.separatorThousands
+        ? element.selectionEnd + cursorIndex
+        : nextPosition;
+
+    if (this.cursorPosition === -1) {
+      // without shift
+      element.setSelectionRange(cursorPosition, cursorPosition);
+    } else {
+      if (
+        element.selectionEnd >= this.cursorPosition &&
+        element.selectionStart === this.cursorPosition
+      ) {
+        element.setSelectionRange(element.selectionStart, cursorPosition);
+      } else {
+        element.setSelectionRange(
+          value[element.selectionStart] === this.separatorThousands
+            ? element.selectionStart + cursorIndex
+            : element.selectionStart + 1,
+          element.selectionEnd,
+        );
+      }
+    }
+  };
+
+  handleClick = (event) => {
+    const element = event.target;
+    const value = element.value;
+
+    if (value[element.selectionStart - 1] === this.separatorThousands) {
+      element.setSelectionRange(element.selectionStart - 1, element.selectionEnd - 1);
+    }
+  };
+
+  handleBlur = (event) => {
+    this.cursorPosition = -1;
+    this.handleValidation(event);
+  };
+
+  stepUp = (event) => {
+    const { max = Number.MAX_SAFE_INTEGER, min, step, value } = this.asProps;
+
+    let numberValue;
+
+    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
+    if (value === '') {
+      numberValue = min ?? 0;
+    } else {
+      numberValue = Number.parseFloat(value);
+    }
+
+    if (!Number.isNaN(numberValue)) {
+      const newValue = numberValue + step <= max ? numberValue + step : max;
+
+      this.handlers.value(newValue.toString(), event);
+    }
+  };
+
+  stepDown = (event) => {
+    const { max, min = Number.MIN_SAFE_INTEGER, step, value } = this.asProps;
+
+    let numberValue;
+
+    if (value === '') {
+      numberValue = max ?? 0;
+    } else {
+      numberValue = Number.parseFloat(value);
+    }
+
+    if (!Number.isNaN(numberValue)) {
+      const newValue = numberValue - step >= min ? numberValue - step : min;
+
+      this.handlers.value(newValue.toString(), event);
     }
   };
 
   render() {
     const SValue = Root;
     const SValueHidden = 'div';
-    const { styles, inputHandlerRefs, value, min, max } = this.asProps;
-
-    inputHandlerRefs.current = this.handlers;
+    const { styles, min, max, step, forwardRef, inputRef, value, displayValue } = this.asProps;
 
     return sstyled(styles)(
       <>
         <SValue
           render={Input.Value}
-          type='number'
           autoComplete='off'
           onBlur={this.handleValidation}
-          onInvalid={this.handleValidation}
-          ref={this.inputRef}
-          aria-valuenow={value}
+          use:onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+          onKeyUp={this.handleKeyUp}
+          onClick={this.handleClick}
+          use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
+          use:value={displayValue}
+          inputMode='decimal'
           aria-valuemin={min}
           aria-valuemax={max}
+          min={min}
+          max={max}
+          step={step}
         />
         {/* the next hidden div is necessary for the screen reader to report the value
-        in the input, because after validation the value can change to the `min` or `max` 
+        in the input, because after validation the value can change to the `min` or `max`
         if entered less than `min` or more than `max` */}
         <SValueHidden aria-live='polite' aria-atomic={true}>
           {value}

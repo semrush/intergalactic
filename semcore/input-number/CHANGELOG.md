@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.24.0] - 2024-04-02
+
+### Added
+
+- Beautiful number formatting.
+
 ## [5.23.0] - 2024-04-15
 
 ### Changed
