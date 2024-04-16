@@ -32,7 +32,6 @@ const Demo = () => {
       <ReferenceLine
         value={dataBar[3].category}
         strokeDasharray='3 3'
-        strokeWidth='0.5'
         width='100'
       >
         <ReferenceLine.Background endValue={dataBar[4].category} />
