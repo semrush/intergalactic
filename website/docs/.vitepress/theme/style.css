@@ -564,6 +564,10 @@ img, video {
   color: var(--vp-c-indigo-1) !important;
 }
 
+.vp-doc .documentation-sandbox p {
+  margin: inherit;
+}
+
 /* To remove double underline from the links in the sandboxes */
 .vp-doc .documentation-sandbox a:not([class]):hover,
 .vp-doc a:not([class]):active {

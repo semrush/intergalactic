@@ -237,14 +237,14 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test.concurrent('should work as Button from keyboard', async ({ expect }) => {
+  test('should work as Button from keyboard', async ({ expect }) => {
     const onClick = vi.fn();
     const { getByTestId } = render(
-      <Tag interactive onClick={onClick} data-testid={'tag'}>
+      <Tag interactive onClick={onClick} data-testid={'tagAsButton'}>
         some tag
       </Tag>,
     );
-    const tag = getByTestId('tag');
+    const tag = getByTestId('tagAsButton');
     await userEvent.keyboard('[Tab]');
 
     expect(tag).toHaveFocus();
@@ -254,6 +254,25 @@ describe('Tag', () => {
 
     await userEvent.keyboard('[Space]');
     expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  test('should call keydwon callback once per key down', async ({ expect }) => {
+    const onKeyDown = vi.fn();
+    const { getByTestId } = render(
+      <Tag interactive onKeyDown={onKeyDown} data-testid={'tagKeyboardTest'}>
+        some tag
+      </Tag>,
+    );
+    const tag = getByTestId('tagKeyboardTest');
+    await userEvent.keyboard('[Tab]');
+
+    expect(tag).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+    await userEvent.keyboard('[Space]');
+    expect(onKeyDown).toHaveBeenCalledTimes(2);
   });
 
   test('a11y', async () => {

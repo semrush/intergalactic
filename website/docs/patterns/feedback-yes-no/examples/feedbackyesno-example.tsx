@@ -107,7 +107,7 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackYesNo extends React.PureComponent {
-  state = { status: 'default', visible: true };
+  state = { status: 'default', visible: true, feedbackType: null };
   timeout: any;
   onSubmit = () => {
     this.requestServer('success', 1000);
@@ -127,8 +127,14 @@ class FeedbackYesNo extends React.PureComponent {
     clearTimeout(this.timeout);
   }
 
+  handleChangeDdVisible = (feedbackType: string) => (visible: boolean) => {
+    this.setState({
+      feedbackType: visible ? feedbackType : null,
+    });
+  };
+
   render() {
-    const { status, visible } = this.state;
+    const { status, visible, feedbackType } = this.state;
 
     return (
       <Notice
@@ -146,9 +152,9 @@ class FeedbackYesNo extends React.PureComponent {
         <Notice.Content>
           <Text mr={4}>Do you find our Design System useful?</Text>
           <Box mt={2} inline>
-            <Dropdown>
+            <Dropdown onVisibleChange={this.handleChangeDdVisible('yes')}>
               <Dropdown.Trigger>
-                <Button>
+                <Button active={feedbackType === 'yes'}>
                   <Button.Addon>
                     <ThumbUpM />
                   </Button.Addon>
@@ -165,9 +171,9 @@ class FeedbackYesNo extends React.PureComponent {
                 )}
               </Dropdown.Popper>
             </Dropdown>
-            <Dropdown>
+            <Dropdown onVisibleChange={this.handleChangeDdVisible('no')}>
               <Dropdown.Trigger ml={2}>
-                <Button>
+                <Button active={feedbackType === 'no'}>
                   <Button.Addon>
                     <ThumbDownM />
                   </Button.Addon>
