@@ -274,97 +274,85 @@ class Value extends Component {
       this.cursorPosition = element.selectionStart;
     }
 
-    if (this.cursorPosition !== -1) {
-      if (event.key === 'ArrowLeft') {
+    switch (event.key) {
+      case 'ArrowLeft': {
         event.preventDefault();
-
-        if (
-          element.selectionStart <= this.cursorPosition &&
-          element.selectionEnd === this.cursorPosition
-        ) {
-          element.setSelectionRange(
-            value[element.selectionStart - cursorIndex] === this.separatorThousands
-              ? element.selectionStart - cursorIndex
-              : element.selectionStart - 1 >= 0
-              ? element.selectionStart - 1
-              : 0,
-            element.selectionEnd,
-          );
-          return;
-        } else {
-          element.setSelectionRange(
-            element.selectionStart,
-            value[element.selectionEnd - cursorIndex] === this.separatorThousands
-              ? element.selectionEnd - cursorIndex
-              : element.selectionEnd - 1,
-          );
-          return;
-        }
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-
-        if (
-          element.selectionEnd >= this.cursorPosition &&
-          element.selectionStart === this.cursorPosition
-        ) {
-          element.setSelectionRange(
-            element.selectionStart,
-            value[element.selectionEnd] === this.separatorThousands
-              ? element.selectionEnd + cursorIndex
-              : element.selectionEnd + 1,
-          );
-          return;
-        } else {
-          element.setSelectionRange(
-            value[element.selectionStart] === this.separatorThousands
-              ? element.selectionStart + cursorIndex
-              : element.selectionStart + 1,
-            element.selectionEnd,
-          );
-          return;
-        }
+        this.moveSelectionLeft(element, cursorIndex);
+        break;
       }
+      case 'ArrowRight': {
+        event.preventDefault();
+        this.moveSelectionRight(element, cursorIndex);
+        break;
+      }
+      case 'ArrowDown': {
+        event.preventDefault();
+        this.stepDown(event);
+        break;
+      }
+      case 'ArrowUp': {
+        event.preventDefault();
+        this.stepUp(event);
+        break;
+      }
+    }
+  };
+
+  moveSelectionLeft = (element, cursorIndex) => {
+    const value = element.value;
+    const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
+
+    const cursorPosition =
+      value[element.selectionStart - cursorIndex] === this.separatorThousands
+        ? element.selectionStart - cursorIndex
+        : nextPosition;
+
+    if (this.cursorPosition === -1) {
+      // without shift
+      element.setSelectionRange(cursorPosition, cursorPosition);
     } else {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
-
+      if (
+        element.selectionStart <= this.cursorPosition &&
+        element.selectionEnd === this.cursorPosition
+      ) {
+        element.setSelectionRange(cursorPosition, element.selectionEnd);
+      } else {
         element.setSelectionRange(
-          value[element.selectionStart - cursorIndex] === this.separatorThousands
-            ? element.selectionStart - cursorIndex
-            : nextPosition,
-          value[element.selectionStart - cursorIndex] === this.separatorThousands
-            ? element.selectionStart - cursorIndex
-            : nextPosition,
+          element.selectionStart,
+          value[element.selectionEnd - cursorIndex] === this.separatorThousands
+            ? element.selectionEnd - cursorIndex
+            : element.selectionEnd - 1,
         );
-        return;
-      }
-      if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        const nextPosition = element.selectionEnd + 1;
-
-        event.preventDefault();
-        element.setSelectionRange(
-          value[element.selectionEnd] === this.separatorThousands
-            ? element.selectionEnd + cursorIndex
-            : nextPosition,
-          value[element.selectionEnd] === this.separatorThousands
-            ? element.selectionEnd + cursorIndex
-            : nextPosition,
-        );
-        return;
       }
     }
+  };
 
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      this.stepDown(event);
-      return;
-    }
-    if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      this.stepUp(event);
-      return;
+  moveSelectionRight = (element, cursorIndex) => {
+    const value = element.value;
+    const nextPosition = element.selectionEnd + 1;
+
+    const cursorPosition =
+      value[element.selectionEnd] === this.separatorThousands
+        ? element.selectionEnd + cursorIndex
+        : nextPosition;
+
+    if (this.cursorPosition === -1) {
+      // without shift
+      element.setSelectionRange(cursorPosition, cursorPosition);
+    } else {
+      if (
+        element.selectionEnd >= this.cursorPosition &&
+        element.selectionStart === this.cursorPosition
+      ) {
+        element.setSelectionRange(element.selectionStart, cursorPosition);
+      } else {
+        element.setSelectionRange(
+          value[element.selectionStart] === this.separatorThousands
+            ? element.selectionStart + cursorIndex
+            : element.selectionStart + 1,
+          element.selectionEnd,
+        );
+      }
     }
   };
 
