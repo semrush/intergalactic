@@ -29,11 +29,7 @@ const Demo = () => {
       <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
       <ReferenceLine title='Top data' position='top' value={9} />
       <ReferenceLine title='Bottom data' position='bottom' value={3} />
-      <ReferenceLine
-        value={dataBar[3].category}
-        strokeDasharray='3 3'
-        width='100'
-      >
+      <ReferenceLine value={dataBar[3].category} strokeDasharray='3 3' width='100'>
         <ReferenceLine.Background endValue={dataBar[4].category} />
       </ReferenceLine>
     </Plot>
