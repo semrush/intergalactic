@@ -160,6 +160,8 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - name: create pull request
-        run: gh pr create -B master -H $GITHUB_HEAD_REF --title="Merge release tag into master" --body="Created by Github action"
+        run: |
+          git checkout -b release/${{ GITHUB_HEAD_REF }}
+          gh pr create -B master -H release/${{ GITHUB_HEAD_REF }} --title 'Merge release tag into master' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
