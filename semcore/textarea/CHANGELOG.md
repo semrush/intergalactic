@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version minor update due to children dependencies update (`@semcore/utils` [4.22.2 ~> 4.23.0], `@semcore/flex-box` [5.21.2 ~> 5.22.0], `@semcore/core` [2.19.2 ~> 2.20.0]).
 
+## [5.21.3] - 2024-04-15
+
+### Fixed
+
+- Textarea background in dark mode.
+
 ## [5.21.2] - 2024-04-10
 
 ### Changed
