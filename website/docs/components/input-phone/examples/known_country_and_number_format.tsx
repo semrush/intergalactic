@@ -1,345 +1,346 @@
 import React from 'react';
 import Input from 'intergalactic/input';
-import InputMask, { getAfterPositionValue } from 'intergalactic/input-mask';
+import InputMask from 'intergalactic/input-mask';
 import Select, { InputSearch } from 'intergalactic/select';
 import NeighborLocation from 'intergalactic/neighbor-location';
-import Flag, { iso2Name } from 'intergalactic/flags';
+import Flag from 'intergalactic/flags';
 import { Text } from 'intergalactic/typography';
 import CloseM from 'intergalactic/icon/Close/m';
+import { Box, Flex } from 'intergalactic/flex-box';
 
-const CountryCodes = {
-  AF: { name: 'Afghanistan', dial_code: '+93', code: 'AF' },
-  AX: { name: 'Åland Islands', dial_code: '+358', code: 'AX' },
-  AL: { name: 'Albania', dial_code: '+355', code: 'AL' },
-  DZ: { name: 'Algeria', dial_code: '+213', code: 'DZ' },
-  AS: { name: 'American Samoa', dial_code: '+1684', code: 'AS' },
-  AD: { name: 'Andorra', dial_code: '+376', code: 'AD' },
-  AO: { name: 'Angola', dial_code: '+244', code: 'AO' },
-  AI: { name: 'Anguilla', dial_code: '+1264', code: 'AI' },
-  AQ: { name: 'Antarctica', dial_code: '+672', code: 'AQ' },
-  AG: { name: 'Antigua and Barbuda', dial_code: '+1268', code: 'AG' },
-  AR: { name: 'Argentina', dial_code: '+54', code: 'AR' },
-  AM: { name: 'Armenia', dial_code: '+374', code: 'AM' },
-  AW: { name: 'Aruba', dial_code: '+297', code: 'AW' },
-  AU: { name: 'Australia', dial_code: '+61', code: 'AU' },
-  AT: { name: 'Austria', dial_code: '+43', code: 'AT' },
-  AZ: { name: 'Azerbaijan', dial_code: '+994', code: 'AZ' },
-  BS: { name: 'Bahamas', dial_code: '+1242', code: 'BS' },
-  BH: { name: 'Bahrain', dial_code: '+973', code: 'BH' },
-  BD: { name: 'Bangladesh', dial_code: '+880', code: 'BD' },
-  BB: { name: 'Barbados', dial_code: '+1246', code: 'BB' },
-  BY: { name: 'Belarus', dial_code: '+375', code: 'BY' },
-  BE: { name: 'Belgium', dial_code: '+32', code: 'BE' },
-  BZ: { name: 'Belize', dial_code: '+501', code: 'BZ' },
-  BJ: { name: 'Benin', dial_code: '+229', code: 'BJ' },
-  BM: { name: 'Bermuda', dial_code: '+1441', code: 'BM' },
-  BT: { name: 'Bhutan', dial_code: '+975', code: 'BT' },
-  BO: { name: 'Bolivia, Plurinational State of bolivia', dial_code: '+591', code: 'BO' },
-  BA: { name: 'Bosnia and Herzegovina', dial_code: '+387', code: 'BA' },
-  BW: { name: 'Botswana', dial_code: '+267', code: 'BW' },
-  BV: { name: 'Bouvet Island', dial_code: '+47', code: 'BV' },
-  BR: { name: 'Brazil', dial_code: '+55', code: 'BR' },
-  IO: { name: 'British Indian Ocean Territory', dial_code: '+246', code: 'IO' },
-  BN: { name: 'Brunei Darussalam', dial_code: '+673', code: 'BN' },
-  BG: { name: 'Bulgaria', dial_code: '+359', code: 'BG' },
-  BF: { name: 'Burkina Faso', dial_code: '+226', code: 'BF' },
-  BI: { name: 'Burundi', dial_code: '+257', code: 'BI' },
-  KH: { name: 'Cambodia', dial_code: '+855', code: 'KH' },
-  CM: { name: 'Cameroon', dial_code: '+237', code: 'CM' },
-  CA: { name: 'Canada', dial_code: '+1', code: 'CA' },
-  CV: { name: 'Cape Verde', dial_code: '+238', code: 'CV' },
-  KY: { name: 'Cayman Islands', dial_code: '+ 345', code: 'KY' },
-  CF: { name: 'Central African Republic', dial_code: '+236', code: 'CF' },
-  TD: { name: 'Chad', dial_code: '+235', code: 'TD' },
-  CL: { name: 'Chile', dial_code: '+56', code: 'CL' },
-  CN: { name: 'China', dial_code: '+86', code: 'CN' },
-  CX: { name: 'Christmas Island', dial_code: '+61', code: 'CX' },
-  CC: { name: 'Cocos (Keeling) Islands', dial_code: '+61', code: 'CC' },
-  CO: { name: 'Colombia', dial_code: '+57', code: 'CO' },
-  KM: { name: 'Comoros', dial_code: '+269', code: 'KM' },
-  CG: { name: 'Congo', dial_code: '+242', code: 'CG' },
-  CD: { name: 'Congo, The Democratic Republic of the Congo', dial_code: '+243', code: 'CD' },
-  CK: { name: 'Cook Islands', dial_code: '+682', code: 'CK' },
-  CR: { name: 'Costa Rica', dial_code: '+506', code: 'CR' },
-  CI: { name: "Cote d'Ivoire", dial_code: '+225', code: 'CI' },
-  HR: { name: 'Croatia', dial_code: '+385', code: 'HR' },
-  CU: { name: 'Cuba', dial_code: '+53', code: 'CU' },
-  CY: { name: 'Cyprus', dial_code: '+357', code: 'CY' },
-  CZ: { name: 'Czech Republic', dial_code: '+420', code: 'CZ' },
-  DK: { name: 'Denmark', dial_code: '+45', code: 'DK' },
-  DJ: { name: 'Djibouti', dial_code: '+253', code: 'DJ' },
-  DM: { name: 'Dominica', dial_code: '+1767', code: 'DM' },
-  DO: { name: 'Dominican Republic', dial_code: '+1849', code: 'DO' },
-  EC: { name: 'Ecuador', dial_code: '+593', code: 'EC' },
-  EG: { name: 'Egypt', dial_code: '+20', code: 'EG' },
-  SV: { name: 'El Salvador', dial_code: '+503', code: 'SV' },
-  GQ: { name: 'Equatorial Guinea', dial_code: '+240', code: 'GQ' },
-  ER: { name: 'Eritrea', dial_code: '+291', code: 'ER' },
-  EE: { name: 'Estonia', dial_code: '+372', code: 'EE' },
-  ET: { name: 'Ethiopia', dial_code: '+251', code: 'ET' },
-  FK: { name: 'Falkland Islands (Malvinas)', dial_code: '+500', code: 'FK' },
-  FO: { name: 'Faroe Islands', dial_code: '+298', code: 'FO' },
-  FJ: { name: 'Fiji', dial_code: '+679', code: 'FJ' },
-  FI: { name: 'Finland', dial_code: '+358', code: 'FI' },
-  FR: { name: 'France', dial_code: '+33', code: 'FR' },
-  GF: { name: 'French Guiana', dial_code: '+594', code: 'GF' },
-  PF: { name: 'French Polynesia', dial_code: '+689', code: 'PF' },
-  TF: { name: 'French Southern Territories', dial_code: '+262', code: 'TF' },
-  GA: { name: 'Gabon', dial_code: '+241', code: 'GA' },
-  GM: { name: 'Gambia', dial_code: '+220', code: 'GM' },
-  GE: { name: 'Georgia', dial_code: '+995', code: 'GE' },
-  DE: { name: 'Germany', dial_code: '+49', code: 'DE' },
-  GH: { name: 'Ghana', dial_code: '+233', code: 'GH' },
-  GI: { name: 'Gibraltar', dial_code: '+350', code: 'GI' },
-  GR: { name: 'Greece', dial_code: '+30', code: 'GR' },
-  GL: { name: 'Greenland', dial_code: '+299', code: 'GL' },
-  GD: { name: 'Grenada', dial_code: '+1473', code: 'GD' },
-  GP: { name: 'Guadeloupe', dial_code: '+590', code: 'GP' },
-  GU: { name: 'Guam', dial_code: '+1671', code: 'GU' },
-  GT: { name: 'Guatemala', dial_code: '+502', code: 'GT' },
-  GG: { name: 'Guernsey', dial_code: '+44', code: 'GG' },
-  GN: { name: 'Guinea', dial_code: '+224', code: 'GN' },
-  GW: { name: 'Guinea-Bissau', dial_code: '+245', code: 'GW' },
-  GY: { name: 'Guyana', dial_code: '+592', code: 'GY' },
-  HT: { name: 'Haiti', dial_code: '+509', code: 'HT' },
-  HM: { name: 'Heard Island and Mcdonald Islands', dial_code: '+0', code: 'HM' },
-  VA: { name: 'Holy See (Vatican City State)', dial_code: '+379', code: 'VA' },
-  HN: { name: 'Honduras', dial_code: '+504', code: 'HN' },
-  HK: { name: 'Hong Kong', dial_code: '+852', code: 'HK' },
-  HU: { name: 'Hungary', dial_code: '+36', code: 'HU' },
-  IS: { name: 'Iceland', dial_code: '+354', code: 'IS' },
-  IN: { name: 'India', dial_code: '+91', code: 'IN' },
-  ID: { name: 'Indonesia', dial_code: '+62', code: 'ID' },
-  IR: { name: 'Iran, Islamic Republic of Persian Gulf', dial_code: '+98', code: 'IR' },
-  IQ: { name: 'Iraq', dial_code: '+964', code: 'IQ' },
-  IE: { name: 'Ireland', dial_code: '+353', code: 'IE' },
-  IM: { name: 'Isle of Man', dial_code: '+44', code: 'IM' },
-  IL: { name: 'Israel', dial_code: '+972', code: 'IL' },
-  IT: { name: 'Italy', dial_code: '+39', code: 'IT' },
-  JM: { name: 'Jamaica', dial_code: '+1876', code: 'JM' },
-  JP: { name: 'Japan', dial_code: '+81', code: 'JP' },
-  JE: { name: 'Jersey', dial_code: '+44', code: 'JE' },
-  JO: { name: 'Jordan', dial_code: '+962', code: 'JO' },
-  KZ: { name: 'Kazakhstan', dial_code: '+7', code: 'KZ' },
-  KE: { name: 'Kenya', dial_code: '+254', code: 'KE' },
-  KI: { name: 'Kiribati', dial_code: '+686', code: 'KI' },
-  KP: { name: "Korea, Democratic People's Republic of Korea", dial_code: '+850', code: 'KP' },
-  KR: { name: 'Korea, Republic of South Korea', dial_code: '+82', code: 'KR' },
-  XK: { name: 'Kosovo', dial_code: '+383', code: 'XK' },
-  KW: { name: 'Kuwait', dial_code: '+965', code: 'KW' },
-  KG: { name: 'Kyrgyzstan', dial_code: '+996', code: 'KG' },
-  LA: { name: 'Laos', dial_code: '+856', code: 'LA' },
-  LV: { name: 'Latvia', dial_code: '+371', code: 'LV' },
-  LB: { name: 'Lebanon', dial_code: '+961', code: 'LB' },
-  LS: { name: 'Lesotho', dial_code: '+266', code: 'LS' },
-  LR: { name: 'Liberia', dial_code: '+231', code: 'LR' },
-  LY: { name: 'Libyan Arab Jamahiriya', dial_code: '+218', code: 'LY' },
-  LI: { name: 'Liechtenstein', dial_code: '+423', code: 'LI' },
-  LT: { name: 'Lithuania', dial_code: '+370', code: 'LT' },
-  LU: { name: 'Luxembourg', dial_code: '+352', code: 'LU' },
-  MO: { name: 'Macao', dial_code: '+853', code: 'MO' },
-  MK: { name: 'Macedonia', dial_code: '+389', code: 'MK' },
-  MG: { name: 'Madagascar', dial_code: '+261', code: 'MG' },
-  MW: { name: 'Malawi', dial_code: '+265', code: 'MW' },
-  MY: { name: 'Malaysia', dial_code: '+60', code: 'MY' },
-  MV: { name: 'Maldives', dial_code: '+960', code: 'MV' },
-  ML: { name: 'Mali', dial_code: '+223', code: 'ML' },
-  MT: { name: 'Malta', dial_code: '+356', code: 'MT' },
-  MH: { name: 'Marshall Islands', dial_code: '+692', code: 'MH' },
-  MQ: { name: 'Martinique', dial_code: '+596', code: 'MQ' },
-  MR: { name: 'Mauritania', dial_code: '+222', code: 'MR' },
-  MU: { name: 'Mauritius', dial_code: '+230', code: 'MU' },
-  YT: { name: 'Mayotte', dial_code: '+262', code: 'YT' },
-  MX: { name: 'Mexico', dial_code: '+52', code: 'MX' },
-  FM: { name: 'Micronesia, Federated States of Micronesia', dial_code: '+691', code: 'FM' },
-  MD: { name: 'Moldova', dial_code: '+373', code: 'MD' },
-  MC: { name: 'Monaco', dial_code: '+377', code: 'MC' },
-  MN: { name: 'Mongolia', dial_code: '+976', code: 'MN' },
-  ME: { name: 'Montenegro', dial_code: '+382', code: 'ME' },
-  MS: { name: 'Montserrat', dial_code: '+1664', code: 'MS' },
-  MA: { name: 'Morocco', dial_code: '+212', code: 'MA' },
-  MZ: { name: 'Mozambique', dial_code: '+258', code: 'MZ' },
-  MM: { name: 'Myanmar', dial_code: '+95', code: 'MM' },
-  NA: { name: 'Namibia', dial_code: '+264', code: 'NA' },
-  NR: { name: 'Nauru', dial_code: '+674', code: 'NR' },
-  NP: { name: 'Nepal', dial_code: '+977', code: 'NP' },
-  NL: { name: 'Netherlands', dial_code: '+31', code: 'NL' },
-  AN: { name: 'Netherlands Antilles', dial_code: '+599', code: 'AN' },
-  NC: { name: 'New Caledonia', dial_code: '+687', code: 'NC' },
-  NZ: { name: 'New Zealand', dial_code: '+64', code: 'NZ' },
-  NI: { name: 'Nicaragua', dial_code: '+505', code: 'NI' },
-  NE: { name: 'Niger', dial_code: '+227', code: 'NE' },
-  NG: { name: 'Nigeria', dial_code: '+234', code: 'NG' },
-  NU: { name: 'Niue', dial_code: '+683', code: 'NU' },
-  NF: { name: 'Norfolk Island', dial_code: '+672', code: 'NF' },
-  MP: { name: 'Northern Mariana Islands', dial_code: '+1670', code: 'MP' },
-  NO: { name: 'Norway', dial_code: '+47', code: 'NO' },
-  OM: { name: 'Oman', dial_code: '+968', code: 'OM' },
-  PK: { name: 'Pakistan', dial_code: '+92', code: 'PK' },
-  PW: { name: 'Palau', dial_code: '+680', code: 'PW' },
-  PS: { name: 'Palestinian Territory, Occupied', dial_code: '+970', code: 'PS' },
-  PA: { name: 'Panama', dial_code: '+507', code: 'PA' },
-  PG: { name: 'Papua New Guinea', dial_code: '+675', code: 'PG' },
-  PY: { name: 'Paraguay', dial_code: '+595', code: 'PY' },
-  PE: { name: 'Peru', dial_code: '+51', code: 'PE' },
-  PH: { name: 'Philippines', dial_code: '+63', code: 'PH' },
-  PN: { name: 'Pitcairn', dial_code: '+64', code: 'PN' },
-  PL: { name: 'Poland', dial_code: '+48', code: 'PL' },
-  PT: { name: 'Portugal', dial_code: '+351', code: 'PT' },
-  PR: { name: 'Puerto Rico', dial_code: '+1939', code: 'PR' },
-  QA: { name: 'Qatar', dial_code: '+974', code: 'QA' },
-  RO: { name: 'Romania', dial_code: '+40', code: 'RO' },
-  RU: { name: 'Russia', dial_code: '+7', code: 'RU' },
-  RW: { name: 'Rwanda', dial_code: '+250', code: 'RW' },
-  RE: { name: 'Reunion', dial_code: '+262', code: 'RE' },
-  BL: { name: 'Saint Barthelemy', dial_code: '+590', code: 'BL' },
-  SH: { name: 'Saint Helena, Ascension and Tristan Da Cunha', dial_code: '+290', code: 'SH' },
-  KN: { name: 'Saint Kitts and Nevis', dial_code: '+1869', code: 'KN' },
-  LC: { name: 'Saint Lucia', dial_code: '+1758', code: 'LC' },
-  MF: { name: 'Saint Martin', dial_code: '+590', code: 'MF' },
-  PM: { name: 'Saint Pierre and Miquelon', dial_code: '+508', code: 'PM' },
-  VC: { name: 'Saint Vincent and the Grenadines', dial_code: '+1784', code: 'VC' },
-  WS: { name: 'Samoa', dial_code: '+685', code: 'WS' },
-  SM: { name: 'San Marino', dial_code: '+378', code: 'SM' },
-  ST: { name: 'Sao Tome and Principe', dial_code: '+239', code: 'ST' },
-  SA: { name: 'Saudi Arabia', dial_code: '+966', code: 'SA' },
-  SN: { name: 'Senegal', dial_code: '+221', code: 'SN' },
-  RS: { name: 'Serbia', dial_code: '+381', code: 'RS' },
-  SC: { name: 'Seychelles', dial_code: '+248', code: 'SC' },
-  SL: { name: 'Sierra Leone', dial_code: '+232', code: 'SL' },
-  SG: { name: 'Singapore', dial_code: '+65', code: 'SG' },
-  SK: { name: 'Slovakia', dial_code: '+421', code: 'SK' },
-  SI: { name: 'Slovenia', dial_code: '+386', code: 'SI' },
-  SB: { name: 'Solomon Islands', dial_code: '+677', code: 'SB' },
-  SO: { name: 'Somalia', dial_code: '+252', code: 'SO' },
-  ZA: { name: 'South Africa', dial_code: '+27', code: 'ZA' },
-  SS: { name: 'South Sudan', dial_code: '+211', code: 'SS' },
-  GS: { name: 'South Georgia and the South Sandwich Islands', dial_code: '+500', code: 'GS' },
-  ES: { name: 'Spain', dial_code: '+34', code: 'ES' },
-  LK: { name: 'Sri Lanka', dial_code: '+94', code: 'LK' },
-  SD: { name: 'Sudan', dial_code: '+249', code: 'SD' },
-  SR: { name: 'Suriname', dial_code: '+597', code: 'SR' },
-  SJ: { name: 'Svalbard and Jan Mayen', dial_code: '+47', code: 'SJ' },
-  SZ: { name: 'Swaziland', dial_code: '+268', code: 'SZ' },
-  SE: { name: 'Sweden', dial_code: '+46', code: 'SE' },
-  CH: { name: 'Switzerland', dial_code: '+41', code: 'CH' },
-  SY: { name: 'Syrian Arab Republic', dial_code: '+963', code: 'SY' },
-  TW: { name: 'Taiwan', dial_code: '+886', code: 'TW' },
-  TJ: { name: 'Tajikistan', dial_code: '+992', code: 'TJ' },
-  TZ: { name: 'Tanzania, United Republic of Tanzania', dial_code: '+255', code: 'TZ' },
-  TH: { name: 'Thailand', dial_code: '+66', code: 'TH' },
-  TL: { name: 'Timor-Leste', dial_code: '+670', code: 'TL' },
-  TG: { name: 'Togo', dial_code: '+228', code: 'TG' },
-  TK: { name: 'Tokelau', dial_code: '+690', code: 'TK' },
-  TO: { name: 'Tonga', dial_code: '+676', code: 'TO' },
-  TT: { name: 'Trinidad and Tobago', dial_code: '+1868', code: 'TT' },
-  TN: { name: 'Tunisia', dial_code: '+216', code: 'TN' },
-  TR: { name: 'Turkey', dial_code: '+90', code: 'TR' },
-  TM: { name: 'Turkmenistan', dial_code: '+993', code: 'TM' },
-  TC: { name: 'Turks and Caicos Islands', dial_code: '+1649', code: 'TC' },
-  TV: { name: 'Tuvalu', dial_code: '+688', code: 'TV' },
-  UG: { name: 'Uganda', dial_code: '+256', code: 'UG' },
-  UA: { name: 'Ukraine', dial_code: '+380', code: 'UA' },
-  AE: { name: 'United Arab Emirates', dial_code: '+971', code: 'AE' },
-  GB: { name: 'United Kingdom', dial_code: '+44', code: 'GB' },
-  US: { name: 'United States', dial_code: '+1', code: 'US' },
-  UY: { name: 'Uruguay', dial_code: '+598', code: 'UY' },
-  UZ: { name: 'Uzbekistan', dial_code: '+998', code: 'UZ' },
-  VU: { name: 'Vanuatu', dial_code: '+678', code: 'VU' },
-  VE: { name: 'Venezuela, Bolivarian Republic of Venezuela', dial_code: '+58', code: 'VE' },
-  VN: { name: 'Vietnam', dial_code: '+84', code: 'VN' },
-  VG: { name: 'Virgin Islands, British', dial_code: '+1284', code: 'VG' },
-  VI: { name: 'Virgin Islands, U.S.', dial_code: '+1340', code: 'VI' },
-  WF: { name: 'Wallis and Futuna', dial_code: '+681', code: 'WF' },
-  YE: { name: 'Yemen', dial_code: '+967', code: 'YE' },
-  ZM: { name: 'Zambia', dial_code: '+260', code: 'ZM' },
-  ZW: { name: 'Zimbabwe', dial_code: '+263', code: 'ZW' },
+const countries = {
+  AF: { name: 'Afghanistan', prefix: '+93' },
+  AX: { name: 'Åland Islands', prefix: '+358' },
+  AL: { name: 'Albania', prefix: '+355' },
+  DZ: { name: 'Algeria', prefix: '+213' },
+  AS: { name: 'American Samoa', prefix: '+1684' },
+  AD: { name: 'Andorra', prefix: '+376' },
+  AO: { name: 'Angola', prefix: '+244' },
+  AI: { name: 'Anguilla', prefix: '+1264' },
+  AQ: { name: 'Antarctica', prefix: '+672' },
+  AG: { name: 'Antigua and Barbuda', prefix: '+1268' },
+  AR: { name: 'Argentina', prefix: '+54' },
+  AM: { name: 'Armenia', prefix: '+374' },
+  AW: { name: 'Aruba', prefix: '+297' },
+  AU: { name: 'Australia', prefix: '+61' },
+  AT: { name: 'Austria', prefix: '+43' },
+  AZ: { name: 'Azerbaijan', prefix: '+994' },
+  BS: { name: 'Bahamas', prefix: '+1242' },
+  BH: { name: 'Bahrain', prefix: '+973' },
+  BD: { name: 'Bangladesh', prefix: '+880' },
+  BB: { name: 'Barbados', prefix: '+1246' },
+  BY: { name: 'Belarus', prefix: '+375' },
+  BE: { name: 'Belgium', prefix: '+32' },
+  BZ: { name: 'Belize', prefix: '+501' },
+  BJ: { name: 'Benin', prefix: '+229' },
+  BM: { name: 'Bermuda', prefix: '+1441' },
+  BT: { name: 'Bhutan', prefix: '+975' },
+  BO: { name: 'Bolivia, Plurinational State of bolivia', prefix: '+591' },
+  BA: { name: 'Bosnia and Herzegovina', prefix: '+387' },
+  BW: { name: 'Botswana', prefix: '+267' },
+  BV: { name: 'Bouvet Island', prefix: '+47' },
+  BR: { name: 'Brazil', prefix: '+55' },
+  IO: { name: 'British Indian Ocean Territory', prefix: '+246' },
+  BN: { name: 'Brunei Darussalam', prefix: '+673' },
+  BG: { name: 'Bulgaria', prefix: '+359' },
+  BF: { name: 'Burkina Faso', prefix: '+226' },
+  BI: { name: 'Burundi', prefix: '+257' },
+  KH: { name: 'Cambodia', prefix: '+855' },
+  CM: { name: 'Cameroon', prefix: '+237' },
+  CA: { name: 'Canada', prefix: '+1' },
+  CV: { name: 'Cape Verde', prefix: '+238' },
+  KY: { name: 'Cayman Islands', prefix: '+ 345' },
+  CF: { name: 'Central African Republic', prefix: '+236' },
+  TD: { name: 'Chad', prefix: '+235' },
+  CL: { name: 'Chile', prefix: '+56' },
+  CN: { name: 'China', prefix: '+86' },
+  CX: { name: 'Christmas Island', prefix: '+61' },
+  CC: { name: 'Cocos (Keeling) Islands', prefix: '+61' },
+  CO: { name: 'Colombia', prefix: '+57' },
+  KM: { name: 'Comoros', prefix: '+269' },
+  CG: { name: 'Congo', prefix: '+242' },
+  CD: { name: 'Congo, The Democratic Republic of the Congo', prefix: '+243' },
+  CK: { name: 'Cook Islands', prefix: '+682' },
+  CR: { name: 'Costa Rica', prefix: '+506' },
+  CI: { name: "Cote d'Ivoire", prefix: '+225' },
+  HR: { name: 'Croatia', prefix: '+385' },
+  CU: { name: 'Cuba', prefix: '+53' },
+  CY: { name: 'Cyprus', prefix: '+357' },
+  CZ: { name: 'Czech Republic', prefix: '+420' },
+  DK: { name: 'Denmark', prefix: '+45' },
+  DJ: { name: 'Djibouti', prefix: '+253' },
+  DM: { name: 'Dominica', prefix: '+1767' },
+  DO: { name: 'Dominican Republic', prefix: '+1849' },
+  EC: { name: 'Ecuador', prefix: '+593' },
+  EG: { name: 'Egypt', prefix: '+20' },
+  SV: { name: 'El Salvador', prefix: '+503' },
+  GQ: { name: 'Equatorial Guinea', prefix: '+240' },
+  ER: { name: 'Eritrea', prefix: '+291' },
+  EE: { name: 'Estonia', prefix: '+372' },
+  ET: { name: 'Ethiopia', prefix: '+251' },
+  FK: { name: 'Falkland Islands (Malvinas)', prefix: '+500' },
+  FO: { name: 'Faroe Islands', prefix: '+298' },
+  FJ: { name: 'Fiji', prefix: '+679' },
+  FI: { name: 'Finland', prefix: '+358' },
+  FR: { name: 'France', prefix: '+33' },
+  GF: { name: 'French Guiana', prefix: '+594' },
+  PF: { name: 'French Polynesia', prefix: '+689' },
+  TF: { name: 'French Southern Territories', prefix: '+262' },
+  GA: { name: 'Gabon', prefix: '+241' },
+  GM: { name: 'Gambia', prefix: '+220' },
+  GE: { name: 'Georgia', prefix: '+995' },
+  DE: { name: 'Germany', prefix: '+49' },
+  GH: { name: 'Ghana', prefix: '+233' },
+  GI: { name: 'Gibraltar', prefix: '+350' },
+  GR: { name: 'Greece', prefix: '+30' },
+  GL: { name: 'Greenland', prefix: '+299' },
+  GD: { name: 'Grenada', prefix: '+1473' },
+  GP: { name: 'Guadeloupe', prefix: '+590' },
+  GU: { name: 'Guam', prefix: '+1671' },
+  GT: { name: 'Guatemala', prefix: '+502' },
+  GG: { name: 'Guernsey', prefix: '+44' },
+  GN: { name: 'Guinea', prefix: '+224' },
+  GW: { name: 'Guinea-Bissau', prefix: '+245' },
+  GY: { name: 'Guyana', prefix: '+592' },
+  HT: { name: 'Haiti', prefix: '+509' },
+  HM: { name: 'Heard Island and Mcdonald Islands', prefix: '+0' },
+  VA: { name: 'Holy See (Vatican City State)', prefix: '+379' },
+  HN: { name: 'Honduras', prefix: '+504' },
+  HK: { name: 'Hong Kong', prefix: '+852' },
+  HU: { name: 'Hungary', prefix: '+36' },
+  IS: { name: 'Iceland', prefix: '+354' },
+  IN: { name: 'India', prefix: '+91' },
+  ID: { name: 'Indonesia', prefix: '+62' },
+  IR: { name: 'Iran, Islamic Republic of Persian Gulf', prefix: '+98' },
+  IQ: { name: 'Iraq', prefix: '+964' },
+  IE: { name: 'Ireland', prefix: '+353' },
+  IM: { name: 'Isle of Man', prefix: '+44' },
+  IL: { name: 'Israel', prefix: '+972' },
+  IT: { name: 'Italy', prefix: '+39' },
+  JM: { name: 'Jamaica', prefix: '+1876' },
+  JP: { name: 'Japan', prefix: '+81' },
+  JE: { name: 'Jersey', prefix: '+44' },
+  JO: { name: 'Jordan', prefix: '+962' },
+  KZ: { name: 'Kazakhstan', prefix: '+7' },
+  KE: { name: 'Kenya', prefix: '+254' },
+  KI: { name: 'Kiribati', prefix: '+686' },
+  KP: { name: "Korea, Democratic People's Republic of Korea", prefix: '+850' },
+  KR: { name: 'Korea, Republic of South Korea', prefix: '+82' },
+  XK: { name: 'Kosovo', prefix: '+383' },
+  KW: { name: 'Kuwait', prefix: '+965' },
+  KG: { name: 'Kyrgyzstan', prefix: '+996' },
+  LA: { name: 'Laos', prefix: '+856' },
+  LV: { name: 'Latvia', prefix: '+371' },
+  LB: { name: 'Lebanon', prefix: '+961' },
+  LS: { name: 'Lesotho', prefix: '+266' },
+  LR: { name: 'Liberia', prefix: '+231' },
+  LY: { name: 'Libyan Arab Jamahiriya', prefix: '+218' },
+  LI: { name: 'Liechtenstein', prefix: '+423' },
+  LT: { name: 'Lithuania', prefix: '+370' },
+  LU: { name: 'Luxembourg', prefix: '+352' },
+  MO: { name: 'Macao', prefix: '+853' },
+  MK: { name: 'Macedonia', prefix: '+389' },
+  MG: { name: 'Madagascar', prefix: '+261' },
+  MW: { name: 'Malawi', prefix: '+265' },
+  MY: { name: 'Malaysia', prefix: '+60' },
+  MV: { name: 'Maldives', prefix: '+960' },
+  ML: { name: 'Mali', prefix: '+223' },
+  MT: { name: 'Malta', prefix: '+356' },
+  MH: { name: 'Marshall Islands', prefix: '+692' },
+  MQ: { name: 'Martinique', prefix: '+596' },
+  MR: { name: 'Mauritania', prefix: '+222' },
+  MU: { name: 'Mauritius', prefix: '+230' },
+  YT: { name: 'Mayotte', prefix: '+262' },
+  MX: { name: 'Mexico', prefix: '+52' },
+  FM: { name: 'Micronesia, Federated States of Micronesia', prefix: '+691' },
+  MD: { name: 'Moldova', prefix: '+373' },
+  MC: { name: 'Monaco', prefix: '+377' },
+  MN: { name: 'Mongolia', prefix: '+976' },
+  ME: { name: 'Montenegro', prefix: '+382' },
+  MS: { name: 'Montserrat', prefix: '+1664' },
+  MA: { name: 'Morocco', prefix: '+212' },
+  MZ: { name: 'Mozambique', prefix: '+258' },
+  MM: { name: 'Myanmar', prefix: '+95' },
+  NA: { name: 'Namibia', prefix: '+264' },
+  NR: { name: 'Nauru', prefix: '+674' },
+  NP: { name: 'Nepal', prefix: '+977' },
+  NL: { name: 'Netherlands', prefix: '+31' },
+  AN: { name: 'Netherlands Antilles', prefix: '+599' },
+  NC: { name: 'New Caledonia', prefix: '+687' },
+  NZ: { name: 'New Zealand', prefix: '+64' },
+  NI: { name: 'Nicaragua', prefix: '+505' },
+  NE: { name: 'Niger', prefix: '+227' },
+  NG: { name: 'Nigeria', prefix: '+234' },
+  NU: { name: 'Niue', prefix: '+683' },
+  NF: { name: 'Norfolk Island', prefix: '+672' },
+  MP: { name: 'Northern Mariana Islands', prefix: '+1670' },
+  NO: { name: 'Norway', prefix: '+47' },
+  OM: { name: 'Oman', prefix: '+968' },
+  PK: { name: 'Pakistan', prefix: '+92' },
+  PW: { name: 'Palau', prefix: '+680' },
+  PS: { name: 'Palestinian Territory, Occupied', prefix: '+970' },
+  PA: { name: 'Panama', prefix: '+507' },
+  PG: { name: 'Papua New Guinea', prefix: '+675' },
+  PY: { name: 'Paraguay', prefix: '+595' },
+  PE: { name: 'Peru', prefix: '+51' },
+  PH: { name: 'Philippines', prefix: '+63' },
+  PN: { name: 'Pitcairn', prefix: '+64' },
+  PL: { name: 'Poland', prefix: '+48' },
+  PT: { name: 'Portugal', prefix: '+351' },
+  PR: { name: 'Puerto Rico', prefix: '+1939' },
+  QA: { name: 'Qatar', prefix: '+974' },
+  RO: { name: 'Romania', prefix: '+40' },
+  RU: { name: 'Russia', prefix: '+7' },
+  RW: { name: 'Rwanda', prefix: '+250' },
+  RE: { name: 'Reunion', prefix: '+262' },
+  BL: { name: 'Saint Barthelemy', prefix: '+590' },
+  SH: { name: 'Saint Helena, Ascension and Tristan Da Cunha', prefix: '+290' },
+  KN: { name: 'Saint Kitts and Nevis', prefix: '+1869' },
+  LC: { name: 'Saint Lucia', prefix: '+1758' },
+  MF: { name: 'Saint Martin', prefix: '+590' },
+  PM: { name: 'Saint Pierre and Miquelon', prefix: '+508' },
+  VC: { name: 'Saint Vincent and the Grenadines', prefix: '+1784' },
+  WS: { name: 'Samoa', prefix: '+685' },
+  SM: { name: 'San Marino', prefix: '+378' },
+  ST: { name: 'Sao Tome and Principe', prefix: '+239' },
+  SA: { name: 'Saudi Arabia', prefix: '+966' },
+  SN: { name: 'Senegal', prefix: '+221' },
+  RS: { name: 'Serbia', prefix: '+381' },
+  SC: { name: 'Seychelles', prefix: '+248' },
+  SL: { name: 'Sierra Leone', prefix: '+232' },
+  SG: { name: 'Singapore', prefix: '+65' },
+  SK: { name: 'Slovakia', prefix: '+421' },
+  SI: { name: 'Slovenia', prefix: '+386' },
+  SB: { name: 'Solomon Islands', prefix: '+677' },
+  SO: { name: 'Somalia', prefix: '+252' },
+  ZA: { name: 'South Africa', prefix: '+27' },
+  SS: { name: 'South Sudan', prefix: '+211' },
+  GS: { name: 'South Georgia and the South Sandwich Islands', prefix: '+500' },
+  ES: { name: 'Spain', prefix: '+34' },
+  LK: { name: 'Sri Lanka', prefix: '+94' },
+  SD: { name: 'Sudan', prefix: '+249' },
+  SR: { name: 'Suriname', prefix: '+597' },
+  SJ: { name: 'Svalbard and Jan Mayen', prefix: '+47' },
+  SZ: { name: 'Swaziland', prefix: '+268' },
+  SE: { name: 'Sweden', prefix: '+46' },
+  CH: { name: 'Switzerland', prefix: '+41' },
+  SY: { name: 'Syrian Arab Republic', prefix: '+963' },
+  TW: { name: 'Taiwan', prefix: '+886' },
+  TJ: { name: 'Tajikistan', prefix: '+992' },
+  TZ: { name: 'Tanzania, United Republic of Tanzania', prefix: '+255' },
+  TH: { name: 'Thailand', prefix: '+66' },
+  TL: { name: 'Timor-Leste', prefix: '+670' },
+  TG: { name: 'Togo', prefix: '+228' },
+  TK: { name: 'Tokelau', prefix: '+690' },
+  TO: { name: 'Tonga', prefix: '+676' },
+  TT: { name: 'Trinidad and Tobago', prefix: '+1868' },
+  TN: { name: 'Tunisia', prefix: '+216' },
+  TR: { name: 'Turkey', prefix: '+90' },
+  TM: { name: 'Turkmenistan', prefix: '+993' },
+  TC: { name: 'Turks and Caicos Islands', prefix: '+1649' },
+  TV: { name: 'Tuvalu', prefix: '+688' },
+  UG: { name: 'Uganda', prefix: '+256' },
+  UA: { name: 'Ukraine', prefix: '+380' },
+  AE: { name: 'United Arab Emirates', prefix: '+971' },
+  GB: { name: 'United Kingdom', prefix: '+44' },
+  US: { name: 'United States', prefix: '+1' },
+  UY: { name: 'Uruguay', prefix: '+598' },
+  UZ: { name: 'Uzbekistan', prefix: '+998' },
+  VU: { name: 'Vanuatu', prefix: '+678' },
+  VE: { name: 'Venezuela, Bolivarian Republic of Venezuela', prefix: '+58' },
+  VN: { name: 'Vietnam', prefix: '+84' },
+  VG: { name: 'Virgin Islands, British', prefix: '+1284' },
+  VI: { name: 'Virgin Islands, U.S.', prefix: '+1340' },
+  WF: { name: 'Wallis and Futuna', prefix: '+681' },
+  YE: { name: 'Yemen', prefix: '+967' },
+  ZM: { name: 'Zambia', prefix: '+260' },
+  ZW: { name: 'Zimbabwe', prefix: '+263' },
 };
 
-const listActuallyCountryCodes = Object.keys(CountryCodes)
-  .filter((iso2) => iso2Name[iso2])
-  .reduce((acc, iso2) => {
-    return { ...acc, [CountryCodes[iso2].name]: CountryCodes[iso2] };
-  }, {});
-
 const Demo = () => {
-  const inputMaskRef = React.useRef(null);
-  const [filter, setFilterValue] = React.useState('');
-  const [option, setOption] = React.useState(listActuallyCountryCodes['Zimbabwe']);
-  const [value, setValue] = React.useState(option.dial_code);
-  const [valueMask, setValueMask] = React.useState(`${option.dial_code} (___)___-____`);
-
-  React.useEffect(() => {
-    setValueMask(`${option.dial_code} (___)___-____`);
-  }, [option]);
-
-  React.useEffect(() => {
-    if (value === valueMask) {
-      const position = getAfterPositionValue(value);
-      inputMaskRef?.current.setSelectionRange(position, position);
-    }
-  }, [value, valueMask]);
+  const inputRef = React.useRef(null);
+  const [countryFilter, setCountryFilterValue] = React.useState('');
+  const [country, setCountry] = React.useState<keyof typeof countries>('ZW');
+  const prefix = countries[country].prefix;
+  const [phoneNumber, setPhoneNumber] = React.useState(prefix);
+  const [phoneMask, setPhoneMask] = React.useState(`${prefix} (___)___-____`);
 
   return (
-    <NeighborLocation controlsLength={2}>
-      <Select
-        value={option}
-        onChange={(value) => {
-          const country = listActuallyCountryCodes[value];
+    <Flex direction='column'>
+      <Text tag='label' htmlFor='phone-number-with-country-select' size={200} mr={2}>
+        Phone number
+      </Text>
+      <Box mt={2}>
+        <NeighborLocation controlsLength={2}>
+          <Select
+            value={country}
+            onChange={(country) => {
+              setCountry(country);
+              const prefix = countries[country].prefix;
+              setPhoneNumber(prefix);
+              setPhoneMask(`${prefix} (___)___-____`);
+              setTimeout(() => {
+                inputRef?.current.focus();
+              }, 1);
+            }}
+          >
+            <Select.Trigger>
+              <Select.Trigger.Addon mr={0}>
+                <Flag iso2={country} />
+              </Select.Trigger.Addon>
+            </Select.Trigger>
 
-          setOption(country);
-          setValue(country.dial_code);
-          inputMaskRef?.current.focus();
-        }}
-      >
-        <Select.Trigger>
-          <Select.Trigger.Addon mr={0}>
-            <Flag iso2={option.code} />
-          </Select.Trigger.Addon>
-        </Select.Trigger>
+            <Select.Popper>
+              <>
+                <InputSearch
+                  placeholder='Search'
+                  value={countryFilter}
+                  onChange={setCountryFilterValue}
+                />
 
-        <Select.Popper>
-          <>
-            <InputSearch placeholder='Search' value={filter} onChange={setFilterValue} />
-
-            <Select.List hMax='240px' w='232px'>
-              {Object.keys(listActuallyCountryCodes)
-                .filter((countryName) => countryName.toLowerCase().includes(filter))
-                .map((countryName) => (
-                  <Select.Option key={countryName} value={countryName}>
-                    <Text size={200} mr={2} flex='0 0 auto'>
-                      <Flag iso2={listActuallyCountryCodes[countryName].code} />
-                    </Text>
-                    <Text size={200} mr={2}>
-                      {countryName}
-                    </Text>
-                    <Text size={200} color='text-secondary'>
-                      {listActuallyCountryCodes[countryName].dial_code}
-                    </Text>
-                  </Select.Option>
-                ))}
-            </Select.List>
-          </>
-        </Select.Popper>
-      </Select>
-      <InputMask w={210}>
-        <InputMask.Value
-          title={'phone number'}
-          ref={inputMaskRef}
-          value={value}
-          onChange={setValue}
-          mask={valueMask.replace(/_/g, '9')}
-        />
-        {value !== valueMask && (
-          <Input.Addon
-            tag={CloseM}
-            aria-label='Clear value'
-            interactive
-            onClick={() => setValue(option.dial_code)}
-          />
-        )}
-      </InputMask>
-    </NeighborLocation>
+                <Select.List hMax='240px' w='232px'>
+                  {Object.keys(countries)
+                    .filter((country) =>
+                      countries[country].name.toLowerCase().includes(countryFilter),
+                    )
+                    .map((country) => (
+                      <Select.Option key={country} value={country}>
+                        <Text size={200} mr={2} flex='0 0 auto'>
+                          <Flag iso2={country as keyof typeof countries} />
+                        </Text>
+                        <Text size={200} mr={2}>
+                          {countries[country].name}
+                        </Text>
+                        <Text size={200} color='text-secondary'>
+                          {countries[country].prefix}
+                        </Text>
+                      </Select.Option>
+                    ))}
+                </Select.List>
+              </>
+            </Select.Popper>
+          </Select>
+          <InputMask w={210}>
+            <InputMask.Value
+              title={'phone number'}
+              id='phone-number-with-country-select'
+              ref={inputRef}
+              value={phoneNumber}
+              onChange={setPhoneNumber}
+              mask={phoneMask.replace(/_/g, '9')}
+            />
+            {phoneNumber !== phoneMask && (
+              <Input.Addon
+                tag={CloseM}
+                aria-label='Clear value'
+                interactive
+                onClick={() => setPhoneNumber(prefix)}
+              />
+            )}
+          </InputMask>
+        </NeighborLocation>
+      </Box>
+    </Flex>
   );
 };
 

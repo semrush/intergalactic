@@ -1,3 +1,4 @@
+import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import { extent, bisector, Numeric } from 'd3-array';
 import {
   scaleQuantize,
@@ -11,12 +12,6 @@ import {
   scaleSqrt,
 } from 'd3-scale';
 import React from 'react';
-
-const CONSTANT = {
-  VIRTUAL_ELEMENT: Symbol('VIRTUAL_ELEMENT'),
-} as const;
-
-export { CONSTANT };
 
 export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGElement) => {
   const node = (event.currentTarget || event.target) as HTMLElement;
@@ -136,14 +131,48 @@ export const getIndexFromData = <
   value: number,
 ) => {
   // detect line chart
-  if ('invert' in scale && typeof scale.invert === 'function') {
+  if ('invert' in scale && typeof scale.invert === 'function' && Array.isArray(data)) {
     const bisect = bisector((d: { [key: string]: number }) => d[key]).center;
     return bisect(data, value);
   }
   // detect bar chart
-  else if ('step' in scale && typeof scale.step !== 'undefined') {
+  else if ('step' in scale && typeof scale.step !== 'undefined' && Array.isArray(data)) {
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
+  }
+  // detect cigarette chart
+  else if ('invert' in scale && typeof scale.invert === 'function' && !Array.isArray(data)) {
+    const keys = Object.keys(data);
+    const domain = keys.map((key, index) => {
+      return keys.slice(0, index).reduce((acc, item) => {
+        if (data[item] !== interpolateValue) {
+          acc = acc + data[item];
+        }
+
+        return acc;
+      }, 0);
+    });
+
+    let key = null;
+
+    const lastKeyIndex = keys.length - 1;
+
+    if (value > domain[lastKeyIndex]) {
+      key = keys[lastKeyIndex];
+    } else {
+      for (let i = 0; i < lastKeyIndex; i++) {
+        if (i === 0 && value < domain[i]) {
+          break;
+        }
+
+        if (value > domain[i] && value < domain[i + 1]) {
+          key = keys[i];
+          break;
+        }
+      }
+    }
+
+    return key;
   } else {
     console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
     return null;
@@ -304,3 +333,17 @@ export const calculateBubbleDomain = (
 
   return [min, max];
 };
+
+interface PlotEventEmitterEmit {
+  (event: 'setTooltipVisible', visible: boolean): void;
+  (event: 'setTooltipPosition', x: number, y: number): void;
+}
+type Unsubscribe = () => void;
+interface PlotEventEmitterSubscribe {
+  (event: 'setTooltipVisible', callback: (visible: boolean) => void): Unsubscribe;
+  (event: 'setTooltipPosition', callback: (x: number, y: number) => void): Unsubscribe;
+}
+export const PlotEventEmitter = EventEmitter as typeof EventEmitter<
+  PlotEventEmitterEmit,
+  PlotEventEmitterSubscribe
+>;

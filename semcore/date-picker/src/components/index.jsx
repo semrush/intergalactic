@@ -20,7 +20,7 @@ export function InputTrigger() {
     <Root
       render={Dropdown.Trigger}
       tag={InputTriggerBase}
-      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value']}
+      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value', 'id']}
     />
   );
 }

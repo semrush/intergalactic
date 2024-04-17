@@ -30,7 +30,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
   export Demo from './examples/card_layout_for_tables.tsx';
 </script>
 
-::: --> -->
+::: -->
 
 ## Truncating text with ellipsis
 

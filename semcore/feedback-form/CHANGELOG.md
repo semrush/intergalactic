@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.24.1] - 2024-04-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.23.0 ~> 5.23.1], `@semcore/utils` [4.23.0 ~> 4.23.1], `@semcore/core` [2.20.0 ~> 2.20.1]).
+
+## [6.24.0] - 2024-04-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.22.2 ~> 5.23.0], `@semcore/spin-container` [7.21.2 ~> 7.22.0], `@semcore/utils` [4.22.2 ~> 4.23.0], `@semcore/core` [2.19.2 ~> 2.20.0]).
+
+## [6.23.4] - 2024-04-15
+
+### Fixed
+
+- Form footer display in dark mode.
+
 ## [6.23.3] - 2024-04-10
 
 ### Changed

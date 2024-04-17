@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.34.1] - 2024-04-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.23.0 ~> 4.23.1], `@semcore/core` [2.20.0 ~> 2.20.1]).
+
+## [4.34.0] - 2024-04-09
+
+### Changed
+
+- Table body focus ring top border got little offset to prevent overlapping with fixed (sticky) header.
+
 ## [4.33.4] - 2024-04-10
 
 ### Changed

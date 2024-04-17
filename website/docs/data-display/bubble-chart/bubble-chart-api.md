@@ -4,8 +4,9 @@ fileSource: d3-chart
 tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-## D3 API
+## D3 chart
 
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ## Chart.Bubble
 

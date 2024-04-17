@@ -24,7 +24,7 @@ function RangeInput(props) {
       data-name='SComparatorRangeInput'
       render={Box}
       tag={InputTriggerBase}
-      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value']}
+      __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value', 'id']}
     >
       <InputTriggerBase.DateRange>
         <SRangeIndicator range={props.range} disabled={props.disabled} w={12} h={12} ml={2} />

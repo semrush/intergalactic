@@ -59,6 +59,8 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 ## Initial data loading
 
+Use `BubbleChartSkeleton` for the initial chart loading.
+
 ::: sandbox
 
 <script lang="tsx">

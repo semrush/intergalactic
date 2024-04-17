@@ -2,6 +2,46 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.0] - 2024-04-16
+
+### Changed
+
+- Plot `eventEmitter` prop now is strongly typed.
+
+### Added
+
+- `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+
+## [3.38.1] - 2024-04-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.22.0 ~> 2.22.1], `@semcore/popper` [5.27.0 ~> 5.27.1], `@semcore/utils` [4.23.0 ~> 4.23.1], `@semcore/core` [2.20.0 ~> 2.20.1]).
+
+## [3.38.0] - 2024-04-12
+
+### Added
+
+- `Cigarette` chart.
+
+## [3.37.4] - 2024-04-12
+
+### Fixed
+
+- Dot's size for line, aria and bar charts.
+
+## [3.37.3] - 2024-04-12
+
+### Fixed
+
+- background color for Bar chart from `--intergalactic-chart-palette-order-other-data` to `--intergalactic-chart-grid-bar-chart-base-bg`.
+
+## [3.37.2] - 2024-04-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.26.2 ~> 5.26.3]).
+
 ## [3.37.1] - 2024-04-10
 
 ### Changed

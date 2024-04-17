@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.1] - 2024-04-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.23.0 ~> 4.23.1]).
+
+## [4.32.0] - 2024-04-09
+
+### Added
+
+- composition api for `FilterTrigger`.
+
 ## [4.31.2] - 2024-04-10
 
 ### Changed

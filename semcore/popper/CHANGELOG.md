@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.28.0] - 2024-04-16
+
+### Added
+
+- Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+
+## [5.27.1] - 2024-04-15
+
+### Changed
+
+- The default trigger `role` is `combobox` if an input is used as the trigger, and button otherwise.
+
+## [5.27.0] - 2024-04-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.21.2 ~> 2.22.0], `@semcore/flex-box` [5.21.2 ~> 5.22.0], `@semcore/neighbor-location` [4.19.2 ~> 4.20.0], `@semcore/outside-click` [3.19.2 ~> 3.20.0], `@semcore/utils` [4.22.2 ~> 4.23.0], `@semcore/core` [2.19.2 ~> 2.20.0]).
+
+## [5.26.3] - 2024-04-12
+
+### Fixed
+
+- In some cases popper mouseenter was unexpectedly ignored.
+
 ## [5.26.2] - 2024-04-10
 
 ### Changed

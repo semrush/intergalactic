@@ -1,6 +1,7 @@
 import React from 'react';
 import { DateRangePicker } from 'intergalactic/date-picker';
-import { Flex, Box } from 'intergalactic/flex-box';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const pastYear = new Date();
@@ -16,19 +17,25 @@ const Demo = () => {
     { children: 'Last Year', value: [pastYear, new Date()] },
   ];
   return (
-    <Flex>
-      <Box mr={5} mb={5}>
+    <Flex gap={5} flexWrap>
+      <Flex direction='column'>
+        <Text tag='label' size={200} htmlFor='customized-periods'>
+          Customized periods
+        </Text>
         <DateRangePicker periods={periods}>
-          <DateRangePicker.Trigger />
+          <DateRangePicker.Trigger mt={2} id='customized-periods' />
           <DateRangePicker.Popper />
         </DateRangePicker>
-      </Box>
-      <Box>
+      </Flex>
+      <Flex direction='column'>
+        <Text tag='label' size={200} htmlFor='normal-periods'>
+          Normal periods
+        </Text>
         <DateRangePicker>
-          <DateRangePicker.Trigger />
+          <DateRangePicker.Trigger mt={2} id='normal-periods' />
           <DateRangePicker.Popper />
         </DateRangePicker>
-      </Box>
+      </Flex>
     </Flex>
   );
 };

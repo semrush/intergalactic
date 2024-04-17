@@ -1,6 +1,8 @@
 import React from 'react';
 import Select from 'intergalactic/select';
 import DnD from 'intergalactic/drag-and-drop';
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
 
 const initialOptions = Array(6)
   .fill(0)
@@ -26,25 +28,30 @@ const Demo = () => {
   );
 
   return (
-    <Select multiselect>
-      <Select.Trigger />
-      <Select.Menu>
-        {({ highlightedIndex }) => {
-          return (
-            <DnD onDnD={handleDnD} customFocus={highlightedIndex}>
-              {options.map((option, idx) => {
-                const { value, title } = option;
-                return (
-                  <DnD.Draggable tag={Select.Option} value={value} key={idx} pr={5}>
-                    {title}
-                  </DnD.Draggable>
-                );
-              })}
-            </DnD>
-          );
-        }}
-      </Select.Menu>
-    </Select>
+    <Flex direction='column'>
+      <Text tag='label' size={200} htmlFor='controlled-order-select'>
+        Controlled order select
+      </Text>
+      <Select multiselect>
+        <Select.Trigger mt={2} mr='auto' id='controlled-order-select' />
+        <Select.Menu>
+          {({ highlightedIndex }) => {
+            return (
+              <DnD onDnD={handleDnD} customFocus={highlightedIndex}>
+                {options.map((option, idx) => {
+                  const { value, title } = option;
+                  return (
+                    <DnD.Draggable tag={Select.Option} value={value} key={idx} pr={5}>
+                      {title}
+                    </DnD.Draggable>
+                  );
+                })}
+              </DnD>
+            );
+          }}
+        </Select.Menu>
+      </Select>
+    </Flex>
   );
 };
 

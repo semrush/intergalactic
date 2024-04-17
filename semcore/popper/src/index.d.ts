@@ -88,6 +88,10 @@ export type PopperProps = OutsideClickProps &
      * @default `true` (`false` in Tooltip)
      */;
     focusLoop?: boolean;
+    /**
+     * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
+     */
+    explicitTriggerSet?: boolean;
   };
 
 /** @deprecated */

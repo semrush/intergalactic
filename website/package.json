@@ -1,6 +1,6 @@
 {
   "name": "@semrush/website",
-  "version": "1.35.7",
+  "version": "1.36.1",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
     "markdown-it-table-captions": "^1.0.4",
+    "medium-zoom": "^1.1.0",
     "nanoid": "3.3.4",
     "node-fetch": "^3.3.1",
     "normalize.css": "8.0.1",

@@ -48,12 +48,19 @@ export type ScrollBarContext = ScrollBarProps & {
   getSliderProps: PropGetterFn;
 };
 
+export type ScrollAreaContainerProps = BoxProps & {
+  focusRingTopOffset?: string;
+  focusRingRightOffset?: string;
+  focusRingBottomOffset?: string;
+  focusRingLeftOffset?: string;
+};
+
 declare const ScrollBar: Intergalactic.Component<'div', ScrollBarProps, ScrollBarContext> & {
   Slider: typeof Box;
 };
 
 declare const ScrollArea: Intergalactic.Component<'div', ScrollAreaProps, ScrollAreaContext> & {
-  Container: typeof Box;
+  Container: Intergalactic.Component<'div', ScrollAreaContainerProps>;
   Bar: typeof ScrollBar;
 };
 

@@ -50,6 +50,7 @@ const App = PlaygroundGeneration((preview) => {
 
   if (showLegend) {
     chartProps.legendProps = legendProps;
+    chartProps.showLegend = true;
   } else {
     chartProps.showLegend = false;
   }

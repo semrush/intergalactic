@@ -8,6 +8,7 @@ STextarea {
   box-sizing: border-box;
   font-family: inherit;
   resize: var(--resize);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 
   &:read-only {
     background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);

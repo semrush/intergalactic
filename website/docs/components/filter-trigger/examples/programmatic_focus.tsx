@@ -21,7 +21,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='another-filter-trigger' size={300}>
+      <Text tag='label' htmlFor='another-filter-trigger' size={200}>
         Filter trigger with options
       </Text>
       <Box mt={2}>

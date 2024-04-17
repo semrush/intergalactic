@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled, CHILDREN_COMPONENT } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -17,6 +17,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 const filterTriggerInputProps = [
   ...inputProps,
@@ -62,28 +63,49 @@ class RootFilterTrigger extends Component {
     });
   };
 
-  render() {
-    const SWrapper = Root;
-    const SFilterTrigger = BaseTrigger;
-    const {
-      Children,
-      styles,
-      empty,
-      onClear,
+  getTriggerButtonProps() {
+    const { empty, size, placeholder, active, disabled, includeInputProps, triggerRef } =
+      this.asProps;
+
+    return {
       size,
       placeholder,
+      empty,
+      selected: !empty,
       active,
       disabled,
-      getI18nText,
       includeInputProps,
-      uid,
-      id,
       triggerRef,
-    } = this.asProps;
+    };
+  }
+
+  getClearButtonProps() {
+    const { empty, onClear, size, disabled, getI18nText, uid } = this.asProps;
+
+    return {
+      size,
+      empty,
+      onClick: callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation),
+      onKeyDown: this.handleStopPropagation,
+      disabled,
+      id: `igc-${uid}-filter-trigger-clear`,
+      getI18nText,
+    };
+  }
+
+  render() {
+    const SWrapper = Root;
+    const { Children, styles, getI18nText, empty, forcedAdvancedMode } = this.asProps;
 
     const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
 
-    const [controlProps] = getInputProps(this.asProps, includeInputProps);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(
+        Children,
+        [FilterTrigger.TriggerButton.displayName, FilterTrigger.ClearButton.displayName],
+        true,
+      );
 
     return sstyled(styles)(
       <SWrapper
@@ -101,47 +123,95 @@ class RootFilterTrigger extends Component {
         use:aria-labelledby={undefined}
       >
         <NeighborLocation>
-          <SFilterTrigger
-            tag='button'
-            type='button'
-            w='100%'
-            size={size}
-            placeholder={placeholder}
-            empty={empty}
-            selected={!empty}
-            active={active}
-            disabled={disabled}
-            ref={triggerRef}
-            animationsDisabled
-            {...controlProps}
-          >
-            {addonTextChildren(
-              Children,
-              FilterTrigger.Text,
-              [FilterTrigger.Addon, FilterTrigger.Counter],
-              empty,
-            )}
-            {empty && <FilterTrigger.Addon tag={ChevronDown} />}
-          </SFilterTrigger>
-          {!empty && (
-            <SFilterTrigger
-              tag='button'
-              type='button'
-              size={size}
-              empty={empty}
-              selected
-              onClick={callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation)}
-              onKeyDown={this.handleStopPropagation}
-              disabled={disabled}
-              id={`igc-${uid}-filter-trigger-clear`}
-              aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
-              aria-label={getI18nText('clear')}
-            >
-              <FilterTrigger.Addon tag={Close} />
-            </SFilterTrigger>
+          {advancedMode ? (
+            <Children />
+          ) : (
+            <>
+              <FilterTrigger.TriggerButton>
+                <Children />
+              </FilterTrigger.TriggerButton>
+              {!empty && <FilterTrigger.ClearButton />}
+            </>
           )}
         </NeighborLocation>
       </SWrapper>,
+    );
+  }
+}
+
+class TriggerButton extends Component {
+  static displayName = 'TriggerButton';
+  static style = style;
+
+  render() {
+    const SFilterTrigger = Root;
+    const {
+      Children,
+      styles,
+      empty,
+      size,
+      placeholder,
+      active,
+      disabled,
+      includeInputProps,
+      triggerRef,
+    } = this.asProps;
+
+    const [controlProps] = getInputProps(this.asProps, includeInputProps);
+
+    return sstyled(styles)(
+      <SFilterTrigger
+        render={BaseTrigger}
+        tag='button'
+        type='button'
+        w='100%'
+        size={size}
+        placeholder={placeholder}
+        empty={empty}
+        selected={!empty}
+        active={active}
+        disabled={disabled}
+        ref={triggerRef}
+        animationsDisabled
+        {...controlProps}
+      >
+        {addonTextChildren(
+          Children,
+          FilterTrigger.Text,
+          [FilterTrigger.Addon, FilterTrigger.Counter],
+          empty,
+        )}
+        {empty && <FilterTrigger.Addon tag={ChevronDown} />}
+      </SFilterTrigger>,
+    );
+  }
+}
+
+class ClearButton extends Component {
+  static displayName = 'ClearButton';
+  static style = style;
+
+  render() {
+    const SFilterTrigger = Root;
+    const { styles, empty, size, disabled, getI18nText, uid, id } = this.asProps;
+
+    if (empty) return null;
+
+    return sstyled(styles)(
+      <SFilterTrigger
+        render={BaseTrigger}
+        tag='button'
+        type='button'
+        size={size}
+        empty={empty}
+        selected
+        disabled={disabled}
+        id={`igc-${uid}-filter-trigger-clear`}
+        aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
+        aria-label={getI18nText('clear')}
+      >
+        <FilterTrigger.Addon tag={Close} />
+      </SFilterTrigger>,
     );
   }
 }
@@ -157,6 +227,8 @@ const FilterTrigger = createComponent(
     Text: BaseTrigger.Text,
     Addon: BaseTrigger.Addon,
     Counter,
+    TriggerButton,
+    ClearButton,
   },
   {
     parent: BaseTrigger,

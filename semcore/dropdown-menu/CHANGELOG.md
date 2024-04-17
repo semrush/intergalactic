@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.27.1] - 2024-04-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.24.0 ~> 4.24.1], `@semcore/utils` [4.23.0 ~> 4.23.1], `@semcore/core` [2.20.0 ~> 2.20.1]).
+
+## [4.27.0] - 2024-04-15
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.23.3 ~> 4.24.0], `@semcore/scroll-area` [5.23.2 ~> 5.24.0], `@semcore/utils` [4.22.2 ~> 4.23.0], `@semcore/core` [2.19.2 ~> 2.20.0]).
+
+## [4.26.3] - 2024-04-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.23.2 ~> 4.23.3]).
+
 ## [4.26.2] - 2024-04-11
 
 ### Fixed

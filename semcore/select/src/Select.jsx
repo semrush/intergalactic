@@ -15,6 +15,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import { isInputTriggerTag } from '@semcore/popper';
 
 import style from './style/select.shadow.css';
 
@@ -265,15 +266,6 @@ class RootSelect extends Component {
   }
 }
 
-const isInputTriggerTag = (tag) => {
-  if (typeof tag === 'string') return tag.toLowerCase().includes('input');
-  if (typeof tag === 'object' && tag !== null && typeof tag.displayName === 'string')
-    return tag.displayName.toLowerCase().includes('input');
-  if (typeof tag === 'object' && tag !== null && typeof tag.render?.displayName === 'string')
-    return tag.render.displayName.toLowerCase().includes('input');
-  return false;
-};
-
 function Trigger({
   Children,
   name,
@@ -292,7 +284,6 @@ function Trigger({
       tag={Tag}
       placeholder={getI18nText('selectPlaceholder')}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
-      role={(hasInputTrigger && 'combobox') || undefined}
     >
       {addonTextChildren(
         Children,

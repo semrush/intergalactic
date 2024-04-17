@@ -11,7 +11,14 @@ const options = Array(6)
   }));
 
 const Demo = () => (
-  <Select tag={LinkTrigger} options={options} placeholder='Select an option' m='auto' />
+  <Select
+    tag={LinkTrigger}
+    options={options}
+    id='link-trigger-select'
+    placeholder='Select an option'
+    mt={2}
+    mr='auto'
+  />
 );
 
 export default Demo;

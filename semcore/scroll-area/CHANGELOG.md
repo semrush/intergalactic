@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.24.1] - 2024-04-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.23.0 ~> 4.23.1], `@semcore/flex-box` [5.22.0 ~> 5.22.1], `@semcore/core` [2.20.0 ~> 2.20.1]).
+
+## [5.24.0] - 2024-03-27
+
+### Added
+
+- `focusRingTopOffset`, `focusRingRightOffset`, `focusRingBottomOffset` and `focusRingLeftOffset` props.
+
 ## [5.23.2] - 2024-04-10
 
 ### Changed

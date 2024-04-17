@@ -10,7 +10,9 @@ Histogram chart is based on the [bar chart](/data-display/bar-chart/bar-chart), 
 Please note that histogram chart and [bar chart](/data-display/bar-chart/bar-chart) are used in the various cases. Check out the guides for more information.
 :::
 
-## D3 API
+## D3 chart
+
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ## Chart.Histogram
 

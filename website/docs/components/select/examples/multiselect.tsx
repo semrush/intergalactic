@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex } from 'intergalactic/flex-box';
 import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
 
 const options = Array(20)
   .fill('')
@@ -11,8 +12,11 @@ const options = Array(20)
   }));
 
 const Demo = () => (
-  <Flex>
-    <Select options={options} multiselect m='auto' />
+  <Flex direction='column'>
+    <Text tag='label' size={200} htmlFor='multiselect-select'>
+      Multiselect
+    </Text>
+    <Select mt={2} mr='auto' id='multiselect-select' options={options} multiselect />
   </Flex>
 );
 

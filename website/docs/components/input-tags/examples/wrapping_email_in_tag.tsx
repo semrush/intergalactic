@@ -1,6 +1,8 @@
 import React from 'react';
 import InputTags from 'intergalactic/input-tags';
 import Select from 'intergalactic/select';
+import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
 
 const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 
@@ -45,35 +47,42 @@ const Demo = () => {
   };
 
   return (
-    <Select interaction='focus' onChange={handleSelect}>
-      <Select.Trigger
-        tag={InputTags}
-        size='l'
-        onAppend={handleAppendTags}
-        onRemove={handleRemoveTag}
-      >
-        {tags.map((tag, idx) => (
-          <InputTags.Tag
-            key={idx}
-            theme='primary'
-            color={isValidEmail(tag) ? 'green-500' : 'red-500'}
-          >
-            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-            <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
-          </InputTags.Tag>
-        ))}
-        <InputTags.Value
-          placeholder='bob@company.com, johndoe@domain.com'
-          value={value}
-          onChange={handleChange}
-        />
-      </Select.Trigger>
-      {value && (
-        <Select.Menu>
-          <Select.Option value={value}>{value}</Select.Option>
-        </Select.Menu>
-      )}
-    </Select>
+    <Flex direction='column'>
+      <Text tag='label' size={300} htmlFor='add-email'>
+        Participants
+      </Text>
+      <Select interaction='focus' onChange={handleSelect}>
+        <Select.Trigger
+          tag={InputTags}
+          mt={2}
+          size='l'
+          onAppend={handleAppendTags}
+          onRemove={handleRemoveTag}
+        >
+          {tags.map((tag, idx) => (
+            <InputTags.Tag
+              key={idx}
+              theme='primary'
+              color={isValidEmail(tag) ? 'green-500' : 'red-500'}
+            >
+              <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+              <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
+            </InputTags.Tag>
+          ))}
+          <InputTags.Value
+            id='add-email'
+            placeholder='bob@company.com, johndoe@domain.com'
+            value={value}
+            onChange={handleChange}
+          />
+        </Select.Trigger>
+        {value && (
+          <Select.Menu>
+            <Select.Option value={value}>{value}</Select.Option>
+          </Select.Menu>
+        )}
+      </Select>
+    </Flex>
   );
 };
 

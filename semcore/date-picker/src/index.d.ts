@@ -195,11 +195,6 @@ export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
      * */
     onDisplayedPeriodChange?: (date: Date) => void;
     /**
-     * Component size
-     * @default m
-     */
-    size?: 'm' | 'l' | 'xl';
-    /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */
     highlighted?: DateConstructorParams[];
@@ -539,11 +534,6 @@ export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOm
      * To be activated upon changing the current shown month
      * */
     onDisplayedPeriodChange?: (date: Date) => void;
-    /**
-     * Component size
-     * @default m
-     */
-    size?: 'm' | 'l' | 'xl';
     /**
      * The selected date, accepts everything which is accepted by `new Date()`
      * */

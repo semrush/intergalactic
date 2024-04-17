@@ -469,14 +469,15 @@ td {
   border-radius: 6px;
 }
 
-img, video {
+img,
+video {
   border-radius: 6px;
 }
 
 .playground-runtime {
-  padding-top: 40px;
+  padding-top: 16px;
   margin-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 16px;
   margin-bottom: -5px;
   border-radius: 6px;
   padding-left: 4px;
@@ -487,8 +488,8 @@ img, video {
 
 @media (min-width: 640px) {
   .playground-runtime {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -562,6 +563,10 @@ img, video {
 
 .vp-doc a[class]:hover {
   color: var(--vp-c-indigo-1) !important;
+}
+
+.vp-doc .documentation-sandbox p {
+  margin: inherit;
 }
 
 /* To remove double underline from the links in the sandboxes */
@@ -1017,4 +1022,12 @@ img, video {
 
 .vp-doc .VPFeature {
   text-decoration: none;
+}
+
+.medium-zoom-overlay {
+  z-index: 30;
+}
+
+.medium-zoom-image--opened {
+  z-index: 31;
 }

@@ -20,5 +20,12 @@
   "dateRange1": "Pierwszy zakres dat",
   "dateRange2": "Drugi zakres dat",
   "selectingStarted": "Rozpoczęto wybieranie",
-  "selectingFinished": "Wybrano"
+  "selectingFinished": "Wybrano",
+  "unavailableDate": "Wybierz dostępną datę.",
+  "unavailableMonth": "Wybierz dostępny miesiąc.",
+  "unavailableEndDate": "Wybierz dostępną datę zakończenia.",
+  "unavailableEndMonth": "Wybierz dostępny miesiąc zakończenia.",
+  "placeholder-days": "D",
+  "placeholder-months": "M",
+  "placeholder-years": "R"
 }
