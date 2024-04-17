@@ -91,7 +91,6 @@ class HoverLineRoot extends Hover {
 
     return sstyled(styles)(
       <>
-        hi
         {xIndex !== null ? (
           <SHoverLine
             aria-hidden

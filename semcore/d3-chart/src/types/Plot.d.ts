@@ -32,7 +32,7 @@ export type PlotProps = Context &
     /** Enables charts patterns that enhances charts accessibility */
     patterns?: PatternsConfig;
 
-    eventEmitter?: PlotEventEmitter;
+    eventEmitter?: InstanceType<typeof PlotEventEmitter>;
   };
 
 export type PlotSummarizerConfig = {

@@ -343,10 +343,7 @@ interface PlotEventEmitterSubscribe {
   (event: 'setTooltipVisible', callback: (visible: boolean) => void): Unsubscribe;
   (event: 'setTooltipPosition', callback: (x: number, y: number) => void): Unsubscribe;
 }
-type PlotEventEmitter = {
-  new (): {
-    emit: PlotEventEmitterEmit;
-    subscribe: PlotEventEmitterSubscribe;
-  };
-};
-export const PlotEventEmitter = EventEmitter as any as PlotEventEmitter;
+export const PlotEventEmitter = EventEmitter as typeof EventEmitter<
+  PlotEventEmitterEmit,
+  PlotEventEmitterSubscribe
+>;
