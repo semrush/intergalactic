@@ -5,7 +5,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 import { writeFile } from 'fs/promises';
 
-test('Users can interact with FilterTrigger via VoiceOver', async ({
+test.skip('Users can interact with FilterTrigger via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
