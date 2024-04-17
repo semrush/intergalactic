@@ -7,7 +7,7 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { polygonContains } from 'd3-polygon';
 import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
-import { CONSTANT, eventToPoint, getChartDefaultColorName, measureText } from './utils';
+import { eventToPoint, getChartDefaultColorName, measureText } from './utils';
 import Tooltip from './Tooltip';
 import { PatternFill, PatternSymbol, getPatternSymbolSize } from './Pattern';
 
@@ -417,24 +417,20 @@ class AxisRoot extends Component {
     };
   }
 
-  handlerTooltipVisible = (_visible, _anchorProps, { index }) => {
-    this.setState({
-      activeLineIndex: index,
-    });
+  handleTooltipRenderingProps = (_anchorProps, { index }) => {
+    this.setState({ activeLineIndex: index });
   };
 
   componentDidMount() {
     const { eventEmitter } = this.asProps;
     this.unsubscribeTooltipVisible = eventEmitter.subscribe(
-      'onTooltipVisible',
-      this.handlerTooltipVisible,
+      'setTooltipRenderingProps',
+      this.handleTooltipRenderingProps,
     );
   }
 
   componentWillUnmount() {
-    if (this.unsubscribeTooltipVisible) {
-      this.unsubscribeTooltipVisible();
-    }
+    this.unsubscribeTooltipVisible?.();
   }
 
   render() {
@@ -584,41 +580,20 @@ class Hover extends Component {
     const centerX = point[0] - diam / 2;
     const centerY = point[1] - diam / 2;
     const { clientX, clientY } = e;
-    // @ts-ignore
-    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(
-      clientX,
-      clientY,
-    );
-    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
 
     const index = this.getIndex([centerX, centerY]);
 
-    this.setState(
-      {
-        index,
-      },
-      () => {
-        eventEmitter.emit(
-          'onTooltipVisible',
-          index !== null,
-          {},
-          { index, patterns },
-          this.virtualElement,
-        );
-      },
-    );
+    this.setState({ index }, () => {
+      eventEmitter.emit('setTooltipPosition', clientX, clientY);
+      eventEmitter.emit('setTooltipRenderingProps', {}, { index, patterns });
+      eventEmitter.emit('setTooltipVisible', index !== null);
+    });
   });
 
   handlerMouseLeaveRoot = trottle(() => {
-    const { patterns } = this.asProps;
-    this.setState(
-      {
-        index: null,
-      },
-      () => {
-        this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, { index: null, patterns });
-      },
-    );
+    this.setState({ index: null }, () => {
+      this.asProps.eventEmitter.emit('setTooltipVisible', false);
+    });
   });
 
   componentDidMount() {

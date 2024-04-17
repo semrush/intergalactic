@@ -1,6 +1,6 @@
 // Utils
 // @ts-ignore
-import { interpolateValue as intValue } from './utils';
+import { interpolateValue as intValue, PlotEventEmitter } from './utils';
 
 export declare const interpolateValue: typeof intValue;
 export declare function minMax(data: any, key: string | number): any;
@@ -9,6 +9,7 @@ export declare function calculateBubbleDomain(
   key: 'x' | 'y',
   range: [number, number],
 ): [min: number, max: number];
+export { PlotEventEmitter };
 
 export { makeDataHintsContainer } from './a11y/hints';
 

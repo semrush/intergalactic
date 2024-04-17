@@ -1,10 +1,9 @@
 import React from 'react';
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import { getBubbleChartValueScale, CONSTANT, measureText } from './utils';
+import { getBubbleChartValueScale, measureText } from './utils';
 import Tooltip from './Tooltip';
 import { PatternFill } from './Pattern';
 
@@ -21,17 +20,16 @@ class BubbleRoot extends Component {
     markedCross: true,
   };
 
-  virtualElement = canUseDOM() ? document.createElement('div') : {};
-
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX: x, clientY: y }) => {
+  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX, clientY }) => {
     const { eventEmitter } = this.asProps;
-    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, tooltipProps, this.virtualElement);
+
+    eventEmitter.emit('setTooltipPosition', clientX, clientY);
+    eventEmitter.emit('setTooltipRenderingProps', props, tooltipProps);
+    eventEmitter.emit('setTooltipVisible', visible);
   };
 
   animationCircle() {
