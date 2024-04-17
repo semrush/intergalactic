@@ -17,8 +17,8 @@
     "@semcore/utils": "4.23.1"
   },
   "devDependencies": {
-    "@guidepup/playwright": "0.6.1",
-    "@playwright/test": "1.25.1",
+    "@guidepup/playwright": "0.13.2",
+    "@playwright/test": "1.43.0",
     "@semcore/testing-utils": "1.0.0",
     "@types/react": "18.0.21"
   },
