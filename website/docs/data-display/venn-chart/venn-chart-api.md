@@ -4,7 +4,9 @@ fileSource: d3-chart
 tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Examples('venn-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-## D3 API
+## D3 chart
+
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ## Chart.Venn
 

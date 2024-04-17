@@ -4,8 +4,9 @@ fileSource: d3-chart
 tabs: Design('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-## D3 API
+## D3 chart
 
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ## Chart.Area
 
