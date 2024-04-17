@@ -22,6 +22,7 @@ test('Users can interact with Accordion via VoiceOver', async ({
   await voiceOver.act();
   expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
   await voiceOver.next();
+  await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Section 2 collapsed button');
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
