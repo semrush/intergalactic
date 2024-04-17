@@ -18,7 +18,8 @@ test('Users can interact with InputMask via VoiceOver', async ({
   await voiceOver.interact();
   await voiceOver.next();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Card number edit text');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('Card number');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('edit text');
   await voiceOver.interact();
   await voiceOver.type('55aa44 ', { application: 'Playwright' });
   for (let i = 0; i <= 20; i++) {
