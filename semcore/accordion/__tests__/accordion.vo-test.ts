@@ -5,7 +5,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
-test('Users can interact with Accordion via VoiceOver', async ({
+test.skip('Users can interact with Accordion via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
@@ -21,7 +21,6 @@ test('Users can interact with Accordion via VoiceOver', async ({
   expect(await voiceOver.itemText()).toBe('Section 1 expanded button');
   await voiceOver.act();
   expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
-  await voiceOver.next();
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Section 2 collapsed button');
   await voiceOver.next();

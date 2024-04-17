@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
   reportSlowTests: null,
   workers: 1,
   timeout: 2 * 60 * 1000,
-  testMatch: /accordion\.vo-test.ts(x){0,1}$/,
+  testMatch: /\.vo-test.ts(x){0,1}$/,
   projects: [
     {
       name: 'webkit',
