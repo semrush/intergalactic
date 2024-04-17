@@ -469,7 +469,8 @@ td {
   border-radius: 6px;
 }
 
-img, video {
+img,
+video {
   border-radius: 6px;
 }
 
@@ -1021,4 +1022,12 @@ img, video {
 
 .vp-doc .VPFeature {
   text-decoration: none;
+}
+
+.medium-zoom-overlay {
+  z-index: 30;
+}
+
+.medium-zoom-image--opened {
+  z-index: 31;
 }
