@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.0] - 2024-04-16
+
+### Changed
+
+- Plot `eventEmitter` prop now is strongly typed.
+
+### Added
+
+- `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+
 ## [3.38.1] - 2024-04-16
 
 ### Changed

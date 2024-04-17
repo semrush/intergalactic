@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.28.0] - 2024-04-16
+
+### Added
+
+- Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+
 ## [5.27.1] - 2024-04-15
 
 ### Changed
