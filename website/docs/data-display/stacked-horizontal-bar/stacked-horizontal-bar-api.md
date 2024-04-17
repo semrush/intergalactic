@@ -4,8 +4,9 @@ fileSource: d3-chart
 tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-## D3 API
+## D3 chart
 
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ## Chart.Bar
 
