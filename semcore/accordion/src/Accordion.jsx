@@ -126,14 +126,6 @@ class Toggle extends Component {
         event.currentTarget.click();
       }
     }
-    switch (event.key) {
-      case 'Enter':
-      case ' ': {
-        if (this.toggleRef.current === event.target) {
-          event.currentTarget.click();
-        }
-      }
-    }
   };
 
   render() {
