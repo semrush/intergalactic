@@ -115,12 +115,22 @@ class Toggle extends Component {
 
   toggleRef = React.createRef();
 
-  handleKeyDown = (e) => {
-    switch (e.key) {
+  handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      if (this.toggleRef.current === event.target) {
+        event.currentTarget.click();
+      }
+    } else if (event.key === ' ') {
+      event.preventDefault();
+      if (this.toggleRef.current === event.target) {
+        event.currentTarget.click();
+      }
+    }
+    switch (event.key) {
       case 'Enter':
       case ' ': {
-        if (this.toggleRef.current === e.target) {
-          e.currentTarget.click();
+        if (this.toggleRef.current === event.target) {
+          event.currentTarget.click();
         }
       }
     }
