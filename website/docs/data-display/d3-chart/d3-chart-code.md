@@ -210,7 +210,7 @@ Refer to [Chart legend](/data-display/chart-legend/chart-legend), for a guide on
 
 ## Synchronous charts
 
-You can pass a common `eventEmitter` to synchronize the charts.
+You can pass a single `eventEmitter` to synchronize the charts.
 
 ::: tip
 Be careful when choosing the `scale` for the axis, since it's common across different charts.
@@ -220,6 +220,18 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 <script lang="tsx">
   export Demo from './examples/synchronous-charts.tsx';
+</script>
+
+:::
+
+## Tooltip control
+
+To control over tooltip visibility and targeted position, imperatively call plot's event emitter.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/tooltip-control.tsx';
 </script>
 
 :::
@@ -236,7 +248,9 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 ## Initial data loading
 
-Use [Skeleton](/components/skeleton/skeleton) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
+For the initial loading of the charts, use skeleton components that are specified for all complex charts right inside them, or use [Skeleton](/components/skeleton/skeleton) for simple charts. 
+
+Note that, if a chart has a title, it should be displayed while the chart is loading.
 
 ## Pattern fill
 

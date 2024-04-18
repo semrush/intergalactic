@@ -136,7 +136,6 @@ export class GitUtils {
 
       return tag.trim();
     } catch (e) {
-      // biome-ignore lint/suspicious/noConsoleLog:
       console.warn(e);
       return null;
     }

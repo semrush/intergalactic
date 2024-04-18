@@ -31,7 +31,6 @@ function Demo() {
           </Text>
         }
         showLegend={true}
-        tooltipViewType='single'
       />
     </Flex>
   );

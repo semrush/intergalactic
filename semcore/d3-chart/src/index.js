@@ -31,6 +31,7 @@ export {
   getBubbleChartValueScale,
   getScatterPlotRadius,
   calculateBubbleDomain,
+  PlotEventEmitter,
 } from './utils';
 export { colors } from './color';
 

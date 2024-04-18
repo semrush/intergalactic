@@ -4,9 +4,13 @@ fileSource: d3-chart
 tabs: Design('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
 ---
 
-## D3 API
+## D3 chart
 
-It have children component `Title`.
+For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
+
+## RadialTree
+
+This chart has children `Title` component.
 
 ```js
 import { RadialTree } from 'intergalactic/d3-chart';

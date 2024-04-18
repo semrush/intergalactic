@@ -81,6 +81,8 @@ If required, you can assign your own color to Scatter plot.
 
 ## Initial data loading
 
+Use `ScatterPlotChartSkeleton` for the initial chart loading.
+
 ::: sandbox
 
 <script lang="tsx">

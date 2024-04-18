@@ -1,5 +1,4 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue';
 import Theme from 'vitepress/theme';
 import './style.css';
 import Sandbox from './Sandbox.vue';
@@ -12,6 +11,9 @@ import DocFooter from './DocFooter.vue';
 import PreferenceSwitch from './PreferenceSwitch.vue';
 import BlogPosts from './blog/BlogPosts.vue';
 import BlogPostsMainPage from './blog/BlogPostsMainPage.vue';
+import mediumZoom from 'medium-zoom';
+import { h, onMounted, watch, nextTick } from 'vue';
+import { useRoute } from 'vitepress';
 
 export default {
   ...Theme,
@@ -31,5 +33,18 @@ export default {
     app.component('TypesView', TypesView);
     app.component('BlogPosts', BlogPosts);
     app.component('BlogPostsMainPage', BlogPostsMainPage);
+  },
+  setup() {
+    const route = useRoute();
+    const initZoom = () => {
+      mediumZoom('.main img', { background: 'var(--vp-c-bg)' });
+    };
+    onMounted(() => {
+      initZoom();
+    });
+    watch(
+      () => route.path,
+      () => nextTick(() => initZoom()),
+    );
   },
 };

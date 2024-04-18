@@ -1,5 +1,6 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import { voTest as test } from '@guidepup/playwright';
+import { voiceOverTest as test } from '@guidepup/playwright';
+
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
@@ -8,7 +9,8 @@ test('Users can interact with Carousel via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/carousel/examples/dots.tsx';
+  const standPath =
+    'website/docs/components/carousel/examples/carousel_with_default_indicators.tsx';
   const reportPath = 'website/docs/components/carousel/carousel-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
@@ -20,7 +22,7 @@ test('Users can interact with Carousel via VoiceOver', async ({
   expect(await voiceOver.itemText()).toBe('Beauty of Nature image carousel');
   await voiceOver.interact();
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('list 3 items');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('list Beauty of Nature 3 items');
   await voiceOver.next();
   expect(await voiceOver.lastSpokenPhrase()).toContain('1 of 3');
   await voiceOver.next();
