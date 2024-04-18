@@ -22,7 +22,7 @@ const Demo = () => {
 
   return (
     <>
-      <Flex direction="row" gap={4}>
+      <Flex direction='row' gap={4}>
         <Slider mb={4} value={value} onChange={setValue} step={1} min={min} max={max}>
           <Slider.Bar />
           <Slider.Knob />
