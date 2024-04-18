@@ -768,7 +768,7 @@ video {
   --vp-c-yellow-soft: #ff642d24;
 
   /* semantic */
-  --vp-backdrop-bg-color: #00000099;
+  --vp-backdrop-bg-color: rgba(25, 27, 35, 0.6);
   --vp-badge-danger-bg: var(--vp-c-danger-soft);
   --vp-badge-danger-text: var(--vp-c-danger-1);
   --vp-badge-info-bg: var(--vp-c-default-soft);
@@ -922,7 +922,7 @@ video {
   --vp-c-yellow-soft: #ff642d33;
 
   /* semantic */
-  --vp-backdrop-bg-color: #00000099;
+  --vp-backdrop-bg-color: rgba(25, 27, 35, 0.6);
   --vp-badge-danger-bg: var(--vp-c-danger-soft);
   --vp-badge-danger-text: var(--vp-c-danger-1);
   --vp-badge-info-bg: var(--vp-c-default-soft);
@@ -1026,6 +1026,7 @@ video {
 
 .medium-zoom-overlay {
   z-index: 30;
+  background: var(--vp-backdrop-bg-color) !important;
 }
 
 .medium-zoom-image--opened {
