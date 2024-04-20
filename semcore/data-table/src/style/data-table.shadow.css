@@ -90,11 +90,11 @@ SColumn[sortable] {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
 
-  &[justifyContent='right'] SSortWrapper {
-    position: absolute;
-    right: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  &[justifyContent='right'][active] SSortWrapper {
+    position: relative;
   }
-  &[justifyContent='right']:hover SSortWrapper, &[justifyContent='right']:focus SSortWrapper, &[justifyContent='right'][active] SSortWrapper {
+  &[justifyContent='right'][active='false']:hover SSortWrapper, &[justifyContent='right'][active='false']:focus SSortWrapper {
+    position: absolute;
     right: var(--intergalactic-spacing-3x, 12px);
   }
 
@@ -161,7 +161,7 @@ SCell[borderRight] {
 }
 
 SSortWrapper {
-  flex-shrink: 99999;
+  flex-shrink: 1;
   position: relative;
   flex-basis: 0;
   min-height: 16px;
