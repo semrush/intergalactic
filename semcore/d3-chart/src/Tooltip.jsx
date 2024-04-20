@@ -4,7 +4,7 @@ import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/utils/lib/findComponent';
 import createElement from './createElement';
-import { CONSTANT, getChartDefaultColorName } from './utils';
+import { getChartDefaultColorName } from './utils';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 import style from './style/tooltip.shadow.css';
@@ -32,7 +32,6 @@ class TooltipRoot extends Component {
   handlerCancel = () => false;
 
   getTriggerProps() {
-    // TODO: как то убрать
     const { x, y, hideHoverLine } = this.asProps;
     return { x, y, hideHoverLine };
   }
@@ -52,32 +51,38 @@ class TooltipRoot extends Component {
     };
   }
 
+  virtualElementPosition = { x: 0, y: 0 };
+  virtualTriggerElement = null;
+  unsubscribe = [];
   componentDidMount() {
-    const { eventEmitter, rootRef } = this.asProps;
-    this.unsubscribeTooltipVisible = eventEmitter.subscribe(
-      'onTooltipVisible',
-      (visible, anchorProps, tooltipProps, node) => {
-        this.setState(
-          {
-            anchorProps,
-            tooltipProps,
-            $visible: visible,
-          },
-          () => {
-            if (node && (node[CONSTANT.VIRTUAL_ELEMENT] || rootRef.current.contains(node))) {
-              this?.setPopperTrigger(node);
-              this.popper.current?.update();
-            }
-          },
-        );
-      },
+    const { eventEmitter } = this.asProps;
+    this.unsubscribe.push(
+      eventEmitter.subscribe('setTooltipRenderingProps', (anchorProps, tooltipProps) => {
+        this.setState({ anchorProps, tooltipProps });
+      }),
+      eventEmitter.subscribe('setTooltipVisible', (visible) =>
+        this.setState({ $visible: visible }),
+      ),
+      eventEmitter.subscribe('setTooltipPosition', (x, y) => {
+        this.virtualElementPosition.x = x;
+        this.virtualElementPosition.y = y;
+        if (this.virtualTriggerElement === null) {
+          this.virtualTriggerElement = {};
+          setTimeout(() => {
+            this.setPopperTrigger(this.virtualTriggerElement);
+          }, 0);
+        }
+        this.virtualTriggerElement.getBoundingClientRect = () => {
+          const { x, y } = this.virtualElementPosition;
+          return { width: 0, height: 0, top: y, right: x, bottom: y, left: x };
+        };
+        this.popper.current?.update();
+      }),
     );
   }
 
   componentWillUnmount() {
-    if (this.unsubscribeTooltipVisible) {
-      this.unsubscribeTooltipVisible();
-    }
+    this.unsubscribe.forEach((unsubscribe) => unsubscribe());
   }
 
   render() {
@@ -98,6 +103,7 @@ class TooltipRoot extends Component {
           onFirstUpdate={this.handlerCancel}
           onOutsideClick={this.handlerCancel}
           interaction='none'
+          explicitTriggerSet
           offset={8}
           flip={{ allowedAutoPlacements: ['left', 'right'] }}
         >

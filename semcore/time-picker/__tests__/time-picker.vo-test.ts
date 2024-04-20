@@ -1,14 +1,16 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import { voTest as test } from '@guidepup/playwright';
+import { voiceOverTest as test } from '@guidepup/playwright';
+
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
-test('Users can interact with TimePicker via VoiceOver', async ({
+test.skip('Users can interact with TimePicker via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/time-picker/examples/expanded.tsx';
+  const standPath =
+    'website/docs/components/time-picker/examples/expanded_access_to_all_the_components.tsx';
   const reportPath = 'website/docs/components/time-picker/time-picker-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');

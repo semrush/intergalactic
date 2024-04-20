@@ -1,9 +1,17 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Bar, HoverLine, HoverRect, Line, XAxis, Plot, YAxis } from 'intergalactic/d3-chart';
-import EventEmitter from 'intergalactic/utils/lib/eventEmitter';
+import {
+  Bar,
+  HoverLine,
+  HoverRect,
+  Line,
+  XAxis,
+  Plot,
+  YAxis,
+  PlotEventEmitter,
+} from 'intergalactic/d3-chart';
 
-const eventEmitter = new EventEmitter();
+const eventEmitter = new PlotEventEmitter();
 
 const Demo = () => {
   const [width, height] = [600, 300];

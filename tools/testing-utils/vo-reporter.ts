@@ -1,10 +1,11 @@
 import { readFile } from 'fs/promises';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import os from 'os';
-import { VoiceOver } from '@guidepup/guidepup/lib/macOS/VoiceOver/VoiceOver';
+import { VoiceOverPlaywright } from '@guidepup/playwright/lib/voiceOverTest';
 import { CommandOptions } from '@guidepup/guidepup';
 
 const darwin2macos: Record<number, string> = {
+  23: 'Sonoma 14',
   22: 'Ventura 13',
   21: 'Monterey 12',
   20: 'Big Sur 11',
@@ -41,139 +42,153 @@ const getOsName = () => {
   return systemName;
 };
 
-export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
-  const actionsLog: string[] = [];
+export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOverPlaywright) => {
+  await baseVoiceOver.stop();
+  await baseVoiceOver.start({ capture: 'initial' });
 
-  let prevSpokenPhrase = await baseVoiceOver.lastSpokenPhrase();
-  let prevItemTextLog = await baseVoiceOver.itemTextLog();
-  const reportStateChange = async () => {
-    const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
-    const itemTextLog = await baseVoiceOver.itemTextLog();
-    if (spokenPhrase && spokenPhrase !== prevSpokenPhrase) {
-      actionsLog.push(`Screen reader says "${spokenPhrase}".`);
-    }
-    if (itemTextLog && itemTextLog !== prevItemTextLog) {
-      actionsLog.push(`Screen reader see element "${itemTextLog}".`);
-    }
-    prevSpokenPhrase = spokenPhrase;
-    prevItemTextLog = itemTextLog;
-  };
+  // const actionsLog: string[] = [];
 
-  const voiceOverWrapper: Omit<
-    VoiceOver,
-    'mouse' | 'keyboard' | 'cursor' | 'caption' | 'lastSpokenPhrase' | 'itemText'
-  > & {
-    lastSpokenPhrase: (options?: CommandOptions) => Promise<string>;
-    itemText: (options?: CommandOptions) => Promise<string>;
-  } = {
-    commander: baseVoiceOver.commander,
-    detect: async () => {
-      const result = await baseVoiceOver.detect();
-      const resultString = result ? 'it is supported' : 'it is not supported';
-      actionsLog.push(
-        `Screen reader checked is it supported on current os (${getOsName()}): ${resultString}.`,
-      );
-      return result;
-    },
-    default: async () => {
-      const result = await baseVoiceOver.default();
-      const resultString = result ? 'it is' : "it's not";
-      actionsLog.push(`Screen reader checked is it default system screen reader: ${resultString}.`);
+  // let prevSpokenPhrase = await baseVoiceOver.lastSpokenPhrase();
+  // let prevItemTextLog = await baseVoiceOver.itemTextLog();
+  // const reportStateChange = async () => {
+  //   const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
+  //   const itemTextLog = await baseVoiceOver.itemTextLog();
+  //   if (spokenPhrase && spokenPhrase !== prevSpokenPhrase) {
+  //     actionsLog.push(`Screen reader says "${spokenPhrase}".`);
+  //   }
+  //   if (itemTextLog && itemTextLog !== prevItemTextLog) {
+  //     actionsLog.push(`Screen reader see element "${itemTextLog}".`);
+  //   }
+  //   prevSpokenPhrase = spokenPhrase;
+  //   prevItemTextLog = itemTextLog;
+  // };
 
-      return result;
-    },
-    start: async (options) => {
-      actionsLog.push('Screen reader is turning on.');
-      const result = await baseVoiceOver.start(options);
-      return result;
-    },
-    stop: async (options) => {
-      actionsLog.push('Screen reader is turning off.');
-      return baseVoiceOver.stop(options);
-    },
-    previous: async (options) => {
-      actionsLog.push('Screen reader goes to the previous element.');
-      const result = await baseVoiceOver.previous(options);
-      await reportStateChange();
-      return result;
-    },
-    next: async (options) => {
-      actionsLog.push('Screen reader goes to the next element.');
-      const result = await baseVoiceOver.next(options);
-      await reportStateChange();
-      return result;
-    },
-    act: async (options) => {
-      actionsLog.push('Screen reader triggers element default action.');
-      const result = await baseVoiceOver.act(options);
-      await reportStateChange();
-      return result;
-    },
-    interact: async (options) => {
-      actionsLog.push('Screen reader goes into the active element.');
-      const result = await baseVoiceOver.interact(options);
-      await reportStateChange();
-      return result;
-    },
-    stopInteracting: async (options) => {
-      actionsLog.push('Screen reader goes out of active element.');
-      const result = await baseVoiceOver.stopInteracting(options);
-      await reportStateChange();
-      return result;
-    },
-    press: async (key, options) => {
-      actionsLog.push(`Screen reader presses the "${key}" button.`);
-      const result = await baseVoiceOver.press(key, options);
-      await reportStateChange();
-      return result;
-    },
-    type: async (text, options) => {
-      actionsLog.push(`Screen reader types "${text}".`);
-      const result = await baseVoiceOver.type(text, options);
-      await reportStateChange();
-      return result;
-    },
-    perform: async (command, options) => {
-      if (typeof command === 'object' && 'description' in command) {
-        if (!command.description) {
-          throw new Error(
-            'Performing keyboard commands without description is restricted via VoiceOver reporter',
-          );
-        }
-        actionsLog.push(`Screen reader performs "${command.description}".`);
-      } else {
-        const commandName = (baseVoiceOver.commander.commands as any)[command as any];
-        actionsLog.push(`Screen reader performs "${commandName}".`);
-      }
+  // const voiceOverWrapper: Omit<
+  //   VoiceOverPlaywright,
+  //   'mouse' | 'keyboard' | 'cursor' | 'caption' | 'lastSpokenPhrase' | 'itemText'
+  // > & {
+  //   lastSpokenPhrase: (options?: CommandOptions) => Promise<string>;
+  //   itemText: (options?: CommandOptions) => Promise<string>;
+  // } = {
+  //   commanderCommands: baseVoiceOver.commanderCommands,
+  //   detect: async () => {
+  //     const result = await baseVoiceOver.detect();
+  //     const resultString = result ? 'it is supported' : 'it is not supported';
+  //     actionsLog.push(
+  //       `Screen reader checked is it supported on current os (${getOsName()}): ${resultString}.`,
+  //     );
+  //     return result;
+  //   },
+  //   default: async () => {
+  //     const result = await baseVoiceOver.default();
+  //     const resultString = result ? 'it is' : "it's not";
+  //     actionsLog.push(`Screen reader checked is it default system screen reader: ${resultString}.`);
 
-      const result = await baseVoiceOver.perform(command, options);
-      await reportStateChange();
-      return result;
-    },
-    click: async (options) => {
-      let action = `Screen reader clicks with ${options?.button ?? 'left'} mouse button.`;
-      if (options?.clickCount && options.clickCount > 1) {
-        action += ` ${options.clickCount} times`;
-      }
-      actionsLog.push(action);
+  //     return result;
+  //   },
+  //   start: async (options) => {
+  //     actionsLog.push('Screen reader is turning on.');
+  //     const result = await baseVoiceOver.start(options);
+  //     return result;
+  //   },
+  //   stop: async (options) => {
+  //     actionsLog.push('Screen reader is turning off.');
+  //     return baseVoiceOver.stop(options);
+  //   },
+  //   previous: async (options) => {
+  //     actionsLog.push('Screen reader goes to the previous element.');
+  //     const result = await baseVoiceOver.previous(options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   next: async (options) => {
+  //     actionsLog.push('Screen reader goes to the next element.');
+  //     const result = await baseVoiceOver.next(options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   act: async (options) => {
+  //     actionsLog.push('Screen reader triggers element default action.');
+  //     const result = await baseVoiceOver.act(options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   interact: async (options) => {
+  //     actionsLog.push('Screen reader goes into the active element.');
+  //     const result = await baseVoiceOver.interact(options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   stopInteracting: async (options) => {
+  //     actionsLog.push('Screen reader goes out of active element.');
+  //     const result = await baseVoiceOver.stopInteracting(options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   press: async (key, options) => {
+  //     actionsLog.push(`Screen reader presses the "${key}" button.`);
+  //     const result = await baseVoiceOver.press(key, options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   type: async (text, options) => {
+  //     actionsLog.push(`Screen reader types "${text}".`);
+  //     const result = await baseVoiceOver.type(text, options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   perform: async (command, options) => {
+  //     if (typeof command === 'object' && 'description' in command) {
+  //       if (!command.description) {
+  //         throw new Error(
+  //           'Performing keyboard commands without description is restricted via VoiceOver reporter',
+  //         );
+  //       }
+  //       actionsLog.push(`Screen reader performs "${command.description}".`);
+  //     } else {
+  //       const commandName = (baseVoiceOver.commanderCommands as any)[command as any];
+  //       actionsLog.push(`Screen reader performs "${commandName}".`);
+  //     }
 
-      const result = await baseVoiceOver.click(options);
-      await reportStateChange();
-      return result;
-    },
-    lastSpokenPhrase: async (options) => {
-      const result = await baseVoiceOver.lastSpokenPhrase(options);
-      await reportStateChange();
-      return result;
-    },
-    itemText: async (options) => {
-      const result = await baseVoiceOver.itemText(options);
-      await reportStateChange();
-      return result;
-    },
-    spokenPhraseLog: baseVoiceOver.spokenPhraseLog,
-    itemTextLog: baseVoiceOver.itemTextLog,
-  };
+  //     const result = await baseVoiceOver.perform(command, options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   click: async (options) => {
+  //     let action = `Screen reader clicks with ${options?.button ?? 'left'} mouse button.`;
+  //     if (options?.clickCount && options.clickCount > 1) {
+  //       action += ` ${options.clickCount} times`;
+  //     }
+  //     actionsLog.push(action);
+
+  //     const result = await baseVoiceOver.click(options);
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   lastSpokenPhrase: async () => {
+  //     const result = await baseVoiceOver.lastSpokenPhrase();
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   itemText: async () => {
+  //     const result = await baseVoiceOver.itemText();
+  //     await reportStateChange();
+  //     return result;
+  //   },
+  //   spokenPhraseLog: baseVoiceOver.spokenPhraseLog,
+  //   itemTextLog: baseVoiceOver.itemTextLog,
+  //   navigateToWebContent: async () => {
+  //     const result = await baseVoiceOver.navigateToWebContent();
+  //     actionsLog.push('Screen reader navigates to the web content.');
+  //     return result;
+  //   },
+  //   keyboardCommands: 1 as any,
+  //   takeCursorScreenshot: 1 as any,
+  //   copyLastSpokenPhrase: 1 as any,
+  //   saveLastSpokenPhrase: 1 as any,
+  //   clearSpokenPhraseLog: 1 as any,
+  //   clearItemTextLog: 1 as any,
+  // };
 
   const getReport = async (standFilePath: string) => {
     const exampleFileRelativePath = resolveRelativePath(
@@ -181,7 +196,7 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       standFilePath,
     );
     const standUrl = `https://github.com/semrush/intergalactic/blob/master/${exampleFileRelativePath}`;
-    const actionsList = actionsLog.map((log, index) => `${index + 1}. ${log}`).join('\n');
+    const actionsList = (await baseVoiceOver.spokenPhraseLog()).join('\n');
 
     return `**Running screen reader against [this file](${standUrl}).**
 
@@ -191,13 +206,13 @@ ${actionsList}
 `;
   };
   return {
-    voiceOver: voiceOverWrapper,
+    voiceOver: baseVoiceOver,
     getReport,
   };
 };
 
 export const getReportHeader = async () => {
-  const intergalacticPacakgeFile = await readFile(
+  const intergalacticPackageFile = await readFile(
     resolvePath('./semcore/ui/package.json'),
     'utf-8',
   );
@@ -205,19 +220,19 @@ export const getReportHeader = async () => {
     resolvePath(require.resolve('react'), '../package.json'),
     'utf-8',
   );
-  const playwrightPacakgeFile = await readFile(
+  const playwrightPackageFile = await readFile(
     resolvePath(require.resolve('playwright'), '../package.json'),
     'utf-8',
   );
-  const guidepupPacakgeFile = await readFile(
+  const guidepupPackageFile = await readFile(
     resolvePath(require.resolve('@guidepup/guidepup'), '../../package.json'),
     'utf-8',
   );
 
-  const { version: intergalacticVersion } = JSON.parse(intergalacticPacakgeFile);
+  const { version: intergalacticVersion } = JSON.parse(intergalacticPackageFile);
   const { version: reactVersion } = JSON.parse(reactPackageFile);
-  const { version: playwrightVersion } = JSON.parse(playwrightPacakgeFile);
-  const { version: guidepupVersion } = JSON.parse(guidepupPacakgeFile);
+  const { version: playwrightVersion } = JSON.parse(playwrightPackageFile);
+  const { version: guidepupVersion } = JSON.parse(guidepupPackageFile);
 
   return `## Automated screen reader testing
 

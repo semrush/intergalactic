@@ -210,7 +210,7 @@ Refer to [Chart legend](/data-display/chart-legend/chart-legend), for a guide on
 
 ## Synchronous charts
 
-You can pass a common `eventEmitter` to synchronize the charts.
+You can pass a single `eventEmitter` to synchronize the charts.
 
 ::: tip
 Be careful when choosing the `scale` for the axis, since it's common across different charts.
@@ -220,6 +220,18 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 <script lang="tsx">
   export Demo from './examples/synchronous-charts.tsx';
+</script>
+
+:::
+
+## Tooltip control
+
+To control over tooltip visibility and targeted position, imperatively call plot's event emitter.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/tooltip-control.tsx';
 </script>
 
 :::
