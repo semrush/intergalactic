@@ -252,11 +252,27 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   setVarStyle(columns: Column[]) {
-    for (const column of columns) {
-      if (column.setVar) {
-        this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
-      }
+    const animations = columns
+      .flatMap((column) => column.props.ref.current?.getAnimations())
+      .filter((a) => a !== undefined) as Animation[];
+
+    let animationPromise: Promise<Animation[] | void> = Promise.resolve();
+
+    if (animations.length > 0) {
+      animationPromise = Promise.all(
+        animations.map((animation) => {
+          return animation.finished;
+        }),
+      );
     }
+
+    animationPromise.then(() => {
+      for (const column of columns) {
+        if (column.setVar) {
+          this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
+        }
+      }
+    });
   }
 
   childrenToColumns(

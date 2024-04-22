@@ -41,6 +41,8 @@ SColumn {
     outline: none;
     box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
+
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease;
 }
 
 SColumn[hidden] {
@@ -85,6 +87,7 @@ SColumn[groupHead] {
 
 SColumn[sortable] {
   cursor: pointer;
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease;
 
   &[use='primary']:hover, &[use='primary']:focus {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
@@ -166,7 +169,7 @@ SSortWrapper {
   flex-basis: 0;
   min-height: 16px;
   opacity: 0;
-  transition: all calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease;
 }
 
 SSortWrapper:before {
@@ -334,6 +337,7 @@ SCell {
   overflow: hidden;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease;
 }
 
 SCell[use='primary'] {
