@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.0] - 2024-04-22
+
+### Changed
+
+- Removed `aria-hidden=true` from image wrapper (as image has `alt=""` and already hidden from screen readers).
+- Added role `status`.
+
 ## [4.23.1] - 2024-04-16
 
 ### Changed

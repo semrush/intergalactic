@@ -18,11 +18,9 @@ class WidgetEmpty extends Component {
     const SImage = 'div';
 
     return sstyled(styles)(
-      <SWidgetEmpty render={Flex}>
+      <SWidgetEmpty render={Flex} role='status'>
         {isNode(icon) && (
-          <SImage aria-hidden='true'>
-            {typeof icon === 'string' ? <img src={icon} alt='' /> : icon}
-          </SImage>
+          <SImage>{typeof icon === 'string' ? <img src={icon} alt='' /> : icon}</SImage>
         )}
         <Children />
       </SWidgetEmpty>,
