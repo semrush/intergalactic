@@ -494,7 +494,7 @@ video {
 }
 
 .vp-doc div[class*='language-'] {
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .vp-doc div[class*='language-'],
@@ -511,6 +511,13 @@ video {
 
 .code-wrapper {
   position: relative;
+}
+
+.vp-doc div[class*='language-'] code {
+  max-height: 500px;
+  width: 100%;
+  position: relative;
+  overflow: auto;
 }
 
 .open-codesandbox {

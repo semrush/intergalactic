@@ -7,6 +7,7 @@ import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from './style/drag-and-drop.shadow.css';
 import { DropZoneProps } from './index';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 type AsProps = {
   /**
@@ -63,6 +64,7 @@ type State = {
   previewSwap: number | null;
   hideHoverEffect: boolean;
   a11yHint: string | null;
+  scaledIndex: number | null;
 };
 
 class DragAndDropRoot extends Component<AsProps, {}, State> {
@@ -81,6 +83,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     previewSwap: null,
     hideHoverEffect: false, // https://stackoverflow.com/questions/67118739/hover-effect-reset-when-hovering-over-other-letters
     a11yHint: null,
+    scaledIndex: null,
   };
 
   handleItemDragStart = (index: number) => {
@@ -95,7 +98,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
-    const itemPosition = zonedItems.findIndex((i) => i?.id === currentItem.id);
+    const itemPosition = zonedItems.findIndex(
+      (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
+    );
+
     const a11yHint = getI18nText(zoneName ? 'grabbedWithZone' : 'grabbed', {
       itemText,
       itemPosition: itemPosition + 1,
@@ -116,6 +122,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({
       dragging: null,
       previewSwap: null,
+      scaledIndex: null,
       // hideHoverEffect: true
     });
   };
@@ -142,7 +149,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
-    const itemPosition = zonedItems.findIndex((i) => i?.id === currentItem.id);
+    const itemPosition = zonedItems.findIndex(
+      (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
+    );
 
     const i18nKey = !zoneName
       ? 'grabbing'
@@ -163,7 +172,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   getSwapPreview = (index: number) => {
     if (!this.state.dragging) return null;
     if (this.state.previewSwap === null) return null;
-    if (this.state.items[this.state.previewSwap]?.draggingAllowed === false) return null;
+    // if (this.state.items[this.state.previewSwap]?.draggingAllowed === false) return null;
     if (this.state.previewSwap === index)
       return this.state.items[this.state.dragging.index]?.children;
     if (this.state.previewSwap !== null && index === this.state.dragging.index)
@@ -184,7 +193,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
-    const itemPosition = zonedItems.findIndex((i) => i?.id === currentItem.id);
+    const itemPosition = zonedItems.findIndex(
+      (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
+    );
 
     const i18nKey = !zoneName
       ? 'dropped'
@@ -199,7 +210,13 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       zoneName: zoneName || '',
     });
 
-    this.setState({ a11yHint, dragging: null, previewSwap: null, hideHoverEffect: true });
+    this.setState({
+      a11yHint,
+      dragging: null,
+      previewSwap: null,
+      scaledIndex: null,
+      hideHoverEffect: true,
+    });
     if (dragging && items[dragging.index]) {
       const fromNode = items[dragging.index];
       if (fromNode) {
@@ -226,17 +243,28 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   };
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
     if (event.key === ' ') {
+      // if (event.target !== this.state.items[index]?.node) return;
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
         const previewSwap = this.state.previewSwap;
+        const prevIndex = this.state.dragging.index;
         this.handleItemDrop(index);
-        this.setState({ dragging: null, previewSwap: null, hideHoverEffect: true });
-        setTimeout(() => {
+        this.setState({
+          dragging: null,
+          previewSwap: null,
+          scaledIndex: null,
+          hideHoverEffect: true,
+        });
+
+        requestAnimationFrame(() => {
+          const prevIndexNode = this.state.items[prevIndex]?.node;
+          if (prevIndexNode !== document.activeElement) return;
           this.state.items[previewSwap as any]?.node.focus();
-        }, 0);
-      } else {
+        });
+      } else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
+        this.setState({ scaledIndex: index });
       }
       return false;
     } else if (event.key === 'Escape' && this.state.dragging) {
@@ -244,13 +272,40 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       event.stopPropagation();
       const { getI18nText } = this.asProps;
       const a11yHint = getI18nText('discarded');
-      this.setState({ a11yHint, dragging: null, previewSwap: null, hideHoverEffect: true });
+      this.setState({
+        a11yHint,
+        dragging: null,
+        previewSwap: null,
+        scaledIndex: null,
+        hideHoverEffect: true,
+      });
       return false;
+    } else if (event.key.startsWith('Arrow')) {
+      const item = this.state.items[index];
+      if (item?.node !== document.activeElement) return;
+      event.preventDefault();
+      requestAnimationFrame(() => {
+        if (item?.node !== document.activeElement) return;
+        const rects = this.state.items
+          .map((item) => item?.node.getBoundingClientRect()!)
+          .map((rect): { top: number; right: number; bottom: number; left: number } => ({
+            top: Math.round(rect.top),
+            right: Math.round(rect.right),
+            bottom: Math.round(rect.bottom),
+            left: Math.round(rect.left),
+          }));
+        let nextIndex = findNextRectangleIndex(rects, rects[index], event.key as DirectionArrows);
+        if (nextIndex === -1) {
+          const indexDiff = event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 1;
+          nextIndex = index + indexDiff;
+        }
+        this.state.items[nextIndex]?.node.focus();
+      });
     }
   };
   handleItemFocus = (index: number) => {
     if (!this.state.dragging) return;
-    this.setState({ previewSwap: index });
+    this.setState({ previewSwap: index, scaledIndex: index });
   };
 
   makeItemDragStartHandler = (index: number) => () => this.handleItemDragStart(index);
@@ -271,6 +326,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       onKeyDown: this.makeItemKeyDownHandler(index),
       onFocus: this.makeItemFocusHandler(index),
       dropPreview: index === this.state.previewSwap,
+      scaled: index === this.state.scaledIndex,
+      // dragged: index === this.state.dragging?.index,
       dark: this.asProps.theme === 'dark',
       swapPreview: this.getSwapPreview(index),
       hideHoverEffect: this.state.hideHoverEffect,
@@ -316,7 +373,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (customFocus === undefined) return undefined;
     let itemIndex = customFocus;
     if (typeof itemIndex === 'string') {
-      itemIndex = this.state.items.findIndex((item) => item?.id === itemIndex);
+      itemIndex = this.state.items.findIndex((item) => item?.id === customFocus);
     }
     if (itemIndex === -1 || typeof itemIndex !== 'number') return undefined;
     return itemIndex;
@@ -391,10 +448,72 @@ const Draggable = (props: any) => {
   }, [index, resolvedChildren, attach, detach, id]);
 
   return sstyled(styles)(
-    <SDraggable render={Box} ref={ref} draggable={!noDrag} tabIndex={0} placement={placement}>
+    <SDraggable render={Box} ref={ref} draggable={!noDrag} placement={placement}>
       {swapPreview ? swapPreview : <Children />}
     </SDraggable>,
   );
+};
+Draggable.enhance = [keyboardFocusEnhance()];
+
+type DirectionArrows = 'ArrowRight' | 'ArrowLeft' | 'ArrowUp' | 'ArrowDown';
+const findNextRectangleIndex = <
+  Rectangle extends { top: number; right: number; bottom: number; left: number },
+>(
+  rectangles: (Rectangle | undefined)[],
+  current: Rectangle,
+  direction: DirectionArrows,
+): number => {
+  let candidate: Rectangle | null = null;
+  let minDistance: number = Infinity;
+
+  for (let i = 0; i < rectangles.length; i++) {
+    const rect = rectangles[i];
+    if (!rect) continue;
+    if (rect === current) continue;
+
+    const verticallyOverlaps = current.top <= rect.bottom && current.bottom >= rect.top;
+    const horizontallyOverlaps = current.left <= rect.right && current.right >= rect.left;
+
+    if (!verticallyOverlaps && !horizontallyOverlaps) continue;
+
+    switch (direction) {
+      case 'ArrowRight': {
+        if (!verticallyOverlaps) continue;
+        const distance = rect.left - current.right;
+        if (distance < 0 || distance >= minDistance) continue;
+        candidate = rect;
+        minDistance = distance;
+        break;
+      }
+      case 'ArrowLeft': {
+        if (!verticallyOverlaps) continue;
+        const distance = current.left - rect.right;
+        if (distance < 0 || distance >= minDistance) continue;
+        candidate = rect;
+        minDistance = distance;
+        break;
+      }
+      case 'ArrowUp': {
+        if (!horizontallyOverlaps) continue;
+        const distance = current.top - rect.bottom;
+
+        if (distance < 0 || distance >= minDistance) continue;
+        candidate = rect;
+        minDistance = distance;
+        break;
+      }
+      case 'ArrowDown': {
+        if (!horizontallyOverlaps) continue;
+        const distance = rect.top - current.bottom;
+        if (distance < 0 || distance >= minDistance) continue;
+        candidate = rect;
+        minDistance = distance;
+        break;
+      }
+    }
+  }
+
+  return rectangles.indexOf(candidate!);
 };
 
 const DropZone = (props: DropZoneProps) => {
