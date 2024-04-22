@@ -371,6 +371,7 @@
       "fullscreen-modal",
       "pills",
       "side-panel",
+      "slider",
       "switch",
       "tab-panel",
       "time-picker",
@@ -1936,6 +1937,7 @@
       "product-head",
       "radio",
       "side-panel",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -1999,7 +2001,7 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker"]
+    "components": ["base-trigger", "date-picker", "slider"]
   },
   {
     "name": "--intergalactic-medium",
@@ -2073,6 +2075,7 @@
       "pills",
       "product-head",
       "radio",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2205,6 +2208,7 @@
       "notice-global",
       "radio",
       "select",
+      "slider",
       "tag",
       "wizard"
     ]
