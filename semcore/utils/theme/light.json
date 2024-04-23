@@ -2289,7 +2289,12 @@
         "period-bg": {
           "value": "rgba({gray.200}, 0.2)",
           "type": "color",
-          "description": "Use for highlighting the period on the chart grid."
+          "description": "Use for highlighting a period on the chart grid."
+        },
+        "period-pattern": {
+          "value": "rgba({gray.800}, 0.15)",
+          "type": "color",
+          "description": "Stripe color for diagonal pattern background."
         },
         "border": {
           "value": "{gray.white}",
