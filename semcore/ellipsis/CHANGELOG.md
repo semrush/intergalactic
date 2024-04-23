@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.24.0] - 2024-04-23
+
+### Changed
+
+- `cursorAnchoring` added to the list of props that are passed to the build-in tooltip.
+
 ## [2.23.1] - 2024-04-16
 
 ### Changed
