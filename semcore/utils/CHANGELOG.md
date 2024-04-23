@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.0] - 2024-04-17
+
+### Added
+
+- New token for the color of stripes in the diagonal chart grid pattern: `--intergalactic-chart-grid-period-pattern`.
+
+## [4.23.2] - 2024-04-17
+
+### Fixed
+
+- Typings of event emitter util.
+
 ## [4.23.1] - 2024-04-15
 
 ### Fixed

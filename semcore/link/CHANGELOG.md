@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.0] - 2024-04-22
+
+### Changed
+
+- Disabled link now will always have empty href attribute.
+- Removed `aria-disabled` and `disabled` DOM attributes from Link as it was violating the specs.
+
 ## [5.25.1] - 2024-04-16
 
 ### Changed

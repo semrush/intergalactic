@@ -178,7 +178,7 @@ class Head extends Component<AsProps> {
         borderRight={isGroup ? false : column.borderRight}
         active={isGroup ? false : column.active}
         group={isGroup}
-        tabIndex={column.sortable && 0}
+        tabIndex={column.sortable ? 0 : undefined}
         __excludeProps={['hidden']}
         {...column.props}
         ref={this.refColumn(column)}

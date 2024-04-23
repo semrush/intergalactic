@@ -245,7 +245,7 @@ function ContainerSticky(props, ref) {
       inner={() => tableDOM}
       {...other}
     >
-      <ScrollAreaSmart.Container className='_master-scroll' ref={setRefContainer}>
+      <ScrollAreaSmart.Container className='_master-scroll' ref={setRefContainer} tabIndex={-1}>
         {typeof children === 'function' ? (
           children({ Head: HeadCore })
         ) : (

@@ -73,7 +73,7 @@ export type ListContext = {
 
 /** @deprecated */
 export interface IHintProps extends HintProps, UnknownProperties {}
-export type HintProps = TextProps &
+export type TypographyHintProps = TextProps &
   KeyboardFocusProps & {
     /** The value responsible for the activity of the element
      * @default false
@@ -86,6 +86,9 @@ export type HintProps = TextProps &
     /** Right addon hint  */
     addonRight?: React.ElementType;
   };
+
+/** @deprecated use `TypographyHintProps` instead */
+export type HintProps = TypographyHintProps;
 
 /** @deprecated */
 export interface IBlockquoteProps extends BlockquoteProps, UnknownProperties {}
