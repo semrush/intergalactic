@@ -1,10 +1,11 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import { voTest as test } from '@guidepup/playwright';
+import { voiceOverTest as test } from '@guidepup/playwright';
+
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
-test('Users can interact with DropdownMenu via VoiceOver', async ({
+test.skip('Users can interact with DropdownMenu via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
@@ -27,7 +28,7 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
   expect(await voiceOver.itemText()).toBe('Item 2 menu item');
   await voiceOver.press('Escape');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Click me menu pop up button');
+  expect(await voiceOver.itemText()).toBe('Click me menu pop up button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

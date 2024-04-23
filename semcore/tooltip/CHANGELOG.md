@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.27.0] - 2024-04-22
+
+### Changed
+
+- Renamed types `HintProps` to `TooltipHintProps` and `HintPopperProps` to `TooltipHintPopperProps`. Old names are preserved and deprecated.
+
 ## [6.26.1] - 2024-04-16
 
 ### Changed

@@ -16,7 +16,7 @@ import { Hint } from 'intergalactic/tooltip';
 <Hint />;
 ```
 
-<TypesView type="HintProps" :types={...types} />
+<TypesView type="TooltipHintProps" :types={...types} />
 
 ```jsx
 import { DescriptionTooltip } from 'intergalactic/tooltip';

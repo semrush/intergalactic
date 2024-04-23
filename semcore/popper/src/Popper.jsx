@@ -370,7 +370,7 @@ class Popper extends Component {
   };
 
   getTriggerProps() {
-    const { visible, interaction, disableEnforceFocus } = this.asProps;
+    const { visible, interaction, disableEnforceFocus, explicitTriggerSet } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -378,7 +378,7 @@ class Popper extends Component {
       visible,
     );
     return {
-      ref: this.createTriggerRef,
+      ref: explicitTriggerSet ? undefined : this.createTriggerRef,
       active: visible,
       interaction,
       ...interactionProps,

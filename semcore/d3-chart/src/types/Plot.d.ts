@@ -3,6 +3,7 @@ import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { Context } from './context';
 import { DataStructureHints } from './a11y/hints';
 import { PatternsConfig } from './Pattern';
+import { PlotEventEmitter } from './utils';
 
 /** @deprecated */
 export interface IPlotProps extends PlotProps, UnknownProperties {}
@@ -31,8 +32,7 @@ export type PlotProps = Context &
     /** Enables charts patterns that enhances charts accessibility */
     patterns?: PatternsConfig;
 
-    /** @deprecated */
-    eventEmitter?: unknown;
+    eventEmitter?: InstanceType<typeof PlotEventEmitter>;
   };
 
 export type PlotSummarizerConfig = {

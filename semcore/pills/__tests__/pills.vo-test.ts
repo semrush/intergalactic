@@ -1,18 +1,20 @@
 import { expect } from '@semcore/testing-utils/playwright';
-import { voTest as test } from '@guidepup/playwright';
+import { voiceOverTest as test } from '@guidepup/playwright';
+
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
-  const standPath = 'website/docs/components/pills/examples/basic.tsx';
+  const standPath = 'website/docs/components/pills/examples/basic_example.tsx';
   const reportPath = 'website/docs/components/pills/pills-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
-  await page.setContent(htmlContent);
+  await page.setContent('<p>Stand:</>' + htmlContent);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
+  await voiceOver.next();
 
   expect(await voiceOver.lastSpokenPhrase()).toBe('Like radio button, 1 of 3');
   await voiceOver.next();
