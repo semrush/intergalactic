@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.22.0] - 2024-04-22
+
+### Changed
+
+- Slider options text now has secondary color and smaller font size by default.
+
 ## [4.21.1] - 2024-04-16
 
 ### Changed
