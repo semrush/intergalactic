@@ -8,6 +8,8 @@ import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProp
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { SORT_ICON_WIDTH } from './Head';
+import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -87,6 +89,9 @@ class Body extends Component<AsProps, State> {
           style: React.CSSProperties;
         };
 
+        const columnWMin = column?.props?.wMin;
+        const columnWMax = column?.props?.wMax;
+
         let props: CellProps = {
           name: cell.name,
           children: <>{cell.data}</>,
@@ -96,6 +101,11 @@ class Body extends Component<AsProps, State> {
           borderRight: lastColumn?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
+            minWidth: columnWMin,
+            maxWidth:
+              columnWMax && column?.sortable
+                ? `calc(${SORT_ICON_WIDTH}px + ${cssToIntDefault(columnWMax.toString())}px)`
+                : columnWMax,
           },
         };
         if (name !== undefined && value !== undefined) {

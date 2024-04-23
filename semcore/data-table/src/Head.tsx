@@ -11,6 +11,8 @@ import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 
+export const SORT_ICON_WIDTH = 20;
+
 const SORTING_ICON = {
   desc: SortDesc,
   asc: SortAsc,
@@ -119,15 +121,14 @@ class Head extends Component<AsProps> {
       document.body.removeChild(clonedColumn);
 
       const defaultNodeWidth = this.defaultMinWidths.get(node) ?? 0;
-      const sortWidth = 20;
 
       if (computedWidth >= defaultNodeWidth) {
-        node.style.setProperty('min-width', defaultNodeWidth + sortWidth + 'px');
+        node.style.setProperty('min-width', defaultNodeWidth + SORT_ICON_WIDTH + 'px');
       } else {
         const freeSpace = defaultNodeWidth - computedWidth;
 
-        if (freeSpace < sortWidth) {
-          node.style.setProperty('min-width', computedWidth + sortWidth + 'px');
+        if (freeSpace < SORT_ICON_WIDTH) {
+          node.style.setProperty('min-width', computedWidth + SORT_ICON_WIDTH + 'px');
         }
       }
     } else if (this.defaultMinWidths.has(node)) {
