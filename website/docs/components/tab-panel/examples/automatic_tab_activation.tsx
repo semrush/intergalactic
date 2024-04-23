@@ -5,28 +5,24 @@ const Demo = () => {
   const [value, onChange] = React.useState(1);
   return (
     <>
-      <TabPanel value={value} onChange={onChange} behavior='auto' aria-label='Page'>
+      <TabPanel value={value} onChange={onChange} behavior='auto' aria-label='Animals'>
         <TabPanel.Item value={1} aria-controls='tab-panel-1'>
-          Overview
+          Cats
         </TabPanel.Item>
         <TabPanel.Item value={2} aria-controls='tab-panel-2'>
-          Issues
+          Dogs
         </TabPanel.Item>
         <TabPanel.Item value={3} aria-controls='tab-panel-3'>
-          Progress
-        </TabPanel.Item>
-        <TabPanel.Item value={4} disabled>
-          Disabled
+          Birds
         </TabPanel.Item>
       </TabPanel>
       {
         [
           <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
-            <h3>Overview</h3>
+            <h3>Cats</h3>
             <p>
-              The important achievement of Apollo was demonstrating that humanity isn't forever
-              chained to this planet and our visions go rather further than that and our
-              opportunities are unlimited.
+              They are the only creatures that can simultaneously demand your attention and ignore
+              you completely, while plotting world domination from the top of the refrigerator.
             </p>
           </div>,
           <div
@@ -36,10 +32,10 @@ const Demo = () => {
             aria-labelledby='tab-label-2'
             tabIndex={-1}
           >
-            <h3>Issues</h3>
+            <h3>Dogs</h3>
             <p>
-              Never limit yourself because of others' limited imagination; never limit others
-              because of your own limited imagination.
+              They are the eternal optimists who believe that every stranger is a potential friend
+              and every walk is an adventure, even if it's just to the mailbox.
             </p>
           </div>,
           <div
@@ -49,11 +45,10 @@ const Demo = () => {
             aria-labelledby='tab-label-3'
             tabIndex={-1}
           >
-            <h3>Progress</h3>
+            <h3>Birds</h3>
             <p>
-              After Apollo 17, America stopped looking towards the next horizon. The United States
-              had become a space-faring nation, but threw it away. We have sacrificed space
-              exploration for space exploitation, which is interesting but scarcely visionary.
+              They are the tiny dinosaurs who sing like they're auditioning for Broadway and have a
+              knack for leaving 'gifts' on freshly washed cars.
             </p>
           </div>,
         ][value - 1]
