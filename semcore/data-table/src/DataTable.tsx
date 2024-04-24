@@ -253,7 +253,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
   setVarStyle(columns: Column[]) {
     const animations = columns
-      .flatMap((column) => column.props.ref.current?.getAnimations())
+      .flatMap((column) => column.props.ref.current?.getAnimations?.())
       .filter((a) => a !== undefined) as Animation[];
 
     let animationPromise: Promise<Animation[] | void> = Promise.resolve();
