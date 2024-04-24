@@ -4,7 +4,7 @@ fileSource: tab-panel
 tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
-Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be shortened with an ellipsis. You can also place the `TabPanel.Item` within other components.
+Try resizing the page to see how the tabs adjust. If the text in a tab is too long, it will be truncated with an `ellipsis`. You can also place the `TabPanel.Item` within other components.
 
 ::: tip
 Make sure to provide a tooltip with full text for tabs with text truncated with an `ellipsis`.
