@@ -4,15 +4,21 @@ import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => (
   <Breadcrumbs tag='nav'>
-    <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
-    <Breadcrumbs.Item href='#'>semrush.com</Breadcrumbs.Item>
     <Tooltip
       tag={Breadcrumbs.Item}
       active={false}
       href='#'
-      title="Very-very long title, you can't even imagine how long it is."
+      title="Projects"
     >
-      Very-very long title, you can't even imagine how long it is
+      Projects
+    </Tooltip>
+    <Tooltip
+      tag={Breadcrumbs.Item}
+      active={false}
+      href='#'
+      title="This title is longer than a giraffe's neck, I bet it's been doing neck workouts!"
+    >
+      This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
     </Tooltip>
     <Breadcrumbs.Item active>Current page</Breadcrumbs.Item>
   </Breadcrumbs>

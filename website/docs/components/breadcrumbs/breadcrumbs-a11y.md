@@ -22,15 +22,19 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role    | Attribute                 | Element | Usage                                                                                                                                                             |
-| ------- | ------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `group` |                           |         | The `group` role identifies a set of user interface objects that isn’t intended to be included in a page summary or table of contents by assistive technologies. |
-|         | `aria-label="Breadcrumbs"` | `div`   | Provides a label for the group of links that describes the type of navigation provided.                                                                             |
-|         | `aria-current="page"`     | `a`     | Applied to the last link in the set to indicate that it represents the current page.                                                                              |
+| Attribute                  | Element | Usage                                                                                                                                                    |
+| -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                            | `nav`   | The `nav` element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents. |
+| `aria-label="Breadcrumbs"` | `div`   | Provides a label for the group of links that describes the type of navigation provided.                                                                  |
+| `aria-current="page"`      | `a`     | Applied to the last link in the set to indicate that it represents the current page.                                                                     |
+
+## Considerations for designers & developers
+
+Don't forget to check that long text in links is truncated with an `ellipsis`, and the full text is displayed in a tooltip when there isn't enough space.
 
 ## Resources
 
-- [W3 breadcrumbs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/breadcrumb/index.html) has detailed information about the accordion accessible behavior.
+- [W3 breadcrumbs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/breadcrumb/index.html) has detailed information about the breadcrumbs accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html) gives recommendations for the accessible components.
 
 ## Other recommendations
