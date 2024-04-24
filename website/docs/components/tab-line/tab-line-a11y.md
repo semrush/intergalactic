@@ -49,7 +49,7 @@ Table: Roles and attributes
 ## Resources
 
 - [W3 tabs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html) has detailed information about the tabs accessible behavior.
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs) describes the core recommendations for the components.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs) describes the core recommendations for the tabs.
 
 ## Other recommendations
 
