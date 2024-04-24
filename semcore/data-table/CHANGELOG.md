@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Sort icon behaviour.
+- If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
 
 ## [4.34.2] - 2024-04-22
 

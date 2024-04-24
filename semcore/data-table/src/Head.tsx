@@ -54,13 +54,13 @@ class Head extends Component<AsProps> {
     }
   };
 
-  refSort = (active: boolean) => (ref: HTMLElement | null) => {
+  makeSortRefHandler = (active: boolean) => (ref: HTMLElement | null) => {
     if (ref) {
       this.sortWrapperRefs.set(ref, active);
     }
   };
 
-  refColumn = (column: Column) => (ref: HTMLElement | null) => {
+  makeColumnRefHandler = (column: Column) => (ref: HTMLElement | null) => {
     setRef(column.props.ref, ref);
     if (column.props.forwardRef) {
       setRef(column.props.forwardRef, ref);
@@ -91,6 +91,8 @@ class Head extends Component<AsProps> {
         }
       });
 
+      clonedColumn.style.setProperty('visibility', 'hidden', 'important');
+
       const styles = [
         'display',
         'flex',
@@ -111,7 +113,6 @@ class Head extends Component<AsProps> {
         );
       });
 
-      clonedColumn.style.setProperty('visibility', 'hidden', 'important');
       clonedColumn.style.setProperty('width', 'fit-content', 'important');
 
       document.body.appendChild(clonedColumn);
@@ -182,7 +183,7 @@ class Head extends Component<AsProps> {
         tabIndex={column.sortable ? 0 : undefined}
         __excludeProps={['hidden']}
         {...column.props}
-        ref={this.refColumn(column)}
+        ref={this.makeColumnRefHandler(column)}
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,
@@ -213,7 +214,7 @@ class Head extends Component<AsProps> {
           <>
             {column.props.children}
             {column.sortable ? (
-              <SSortWrapper ref={this.refSort(column.active)}>
+              <SSortWrapper ref={this.makeSortRefHandler(column.active)}>
                 <SSortIcon active={column.active} />
               </SSortWrapper>
             ) : null}
