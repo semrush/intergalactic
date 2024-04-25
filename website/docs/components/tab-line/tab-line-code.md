@@ -49,7 +49,7 @@ You can set `behavior='manual'` on TabLine to change how tab content is activate
 
 ## Custom indents
 
-You may have noticed that the TabLine component doesn't have default margins at the edges. To make the TabLine fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabLine component like this:
+Since the TabLine component doesn't have default margins at the edges, to make it fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabLine component like this:
 
 ```typescript
 <Box p={5}>
