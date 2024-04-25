@@ -46,7 +46,7 @@ By default, the component switches content manually when switching tabs.
 
 ## Custom indents
 
-You may have noticed that the TabPanel component doesn't have default margins at the edges. To make the TabPanel fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabPanel component like this:
+Since the TabPanel component doesn't have default margins at the edges, to make it fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabPanel component like this:
 
 ```typescript
 <Box p={5}>
