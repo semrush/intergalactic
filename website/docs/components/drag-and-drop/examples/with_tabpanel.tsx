@@ -50,10 +50,13 @@ const Demo = () => {
   const handleDnD = React.useCallback(
     ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
       setTabs((tabs) => {
-        const from = tabs[fromIndex];
-        tabs[fromIndex] = tabs[toIndex];
-        tabs[toIndex] = from;
-        return [...tabs];
+        const newTabs = [...tabs];
+        const shift = fromIndex < toIndex ? 1 : -1;
+        for (let i = fromIndex; i !== toIndex; i += shift) {
+          newTabs[i] = tabs[i + shift];
+        }
+        newTabs[toIndex] = tabs[fromIndex];
+        return newTabs;
       });
     },
     [],

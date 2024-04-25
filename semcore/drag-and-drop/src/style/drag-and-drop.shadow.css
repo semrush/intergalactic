@@ -6,6 +6,7 @@ SDraggable[draggable] {
   -webkit-user-select: none;
   user-select: none;
 
+
   &::before {
     content: '';
     position: absolute;
@@ -35,12 +36,7 @@ SDraggable[placement='top']::before {
   height: 20px;
 }
 
-SDraggable[placement='top'] {
-  /* padding-top: var(--intergalactic-spacing-4x, 16px); */
-}
-
 SDraggable[placement='right'] {
-  /* padding-right: var(--intergalactic-spacing-4x, 16px); */
 
   &::before {
     right: 0;
@@ -48,7 +44,6 @@ SDraggable[placement='right'] {
 }
 
 SDraggable[placement='bottom'] {
-  /* padding-bottom: var(--intergalactic-spacing-4x, 16px); */
 
   &::before {
     bottom: 0;
@@ -56,7 +51,6 @@ SDraggable[placement='bottom'] {
 }
 
 SDraggable[placement='left'] {
-  /* padding-left: var(--intergalactic-spacing-4x, 16px); */
 
   &::before {
     left: 0;
@@ -85,8 +79,6 @@ SDraggable[placement='left']::before {
 
 SDropZone {
   position: relative;
-  border: 1px dashed var(--intergalactic-border-primary, #c4c7cf);
-  border-radius: var(--intergalactic-surface-rounded, 6px);
 }
 
 SDropZone[dropPreview],
@@ -94,9 +86,6 @@ SDraggable[dropPreview] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 }
 
-SDraggable[scaled] {
-  scale: 0.95;
-}
 
 SDropZone[dark][dropPreview],
 SDraggable[dark][dropPreview] {
@@ -120,6 +109,32 @@ SDraggable[keyboardFocused]:focus:after {
   pointer-events: none;
 }
 
+
+SDraggable[keyboardDragging] {
+  scale: 1.1;
+
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  box-shadow: var(--intergalactic-box-shadow-dnd, 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)) !important;
+
+
+  &::before {
+    display: block;
+  }
+
+  &[hideHoverEffect]::before {
+    display: block;
+  }
+}
+
+SDraggable[keyboardDragging][reversedScaling] {
+  scale: 0.95;
+}
+
+SDraggable[animatedScaling] {
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+}
+
+
 SA11yHint {
   position: absolute;
   /* disable-tokens-validator */
@@ -127,4 +142,10 @@ SA11yHint {
   height: 1px;
   width: 1px;
   clip: rect(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  SDraggable {
+    transition: none;
+  }
 }

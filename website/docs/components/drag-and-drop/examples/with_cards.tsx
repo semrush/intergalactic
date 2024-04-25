@@ -17,7 +17,7 @@ const Widget: React.FC<{ title: string }> = ({ title }) => {
   const data = React.useMemo(() => {
     const random = stableRandom(title.length);
     const dateFormatter = new Intl.DateTimeFormat('en', { month: 'numeric', day: 'numeric' });
-    return Array(2)
+    return Array(3)
       .fill(0)
       .map((_, i) => ({
         date: dateFormatter.format(new Date(Date.now() - 1000 * 60 * 60 * 24 * 3 * i)),
@@ -26,7 +26,7 @@ const Widget: React.FC<{ title: string }> = ({ title }) => {
   }, [title]);
 
   return (
-    <Card w={240}>
+    <Card w={240} h={300}>
       <Card.Header>
         <Card.Title>{title}</Card.Title>
       </Card.Header>
@@ -63,9 +63,11 @@ const Demo = () => {
     ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
       setWidgets((widgets) => {
         const newWidgets = [...widgets];
-        const swap = widgets[fromIndex];
-        newWidgets[fromIndex] = widgets[toIndex];
-        newWidgets[toIndex] = swap;
+        const shift = fromIndex < toIndex ? 1 : -1;
+        for (let i = fromIndex; i !== toIndex; i += shift) {
+          newWidgets[i] = widgets[i + shift];
+        }
+        newWidgets[toIndex] = widgets[fromIndex];
         return newWidgets;
       });
     },
@@ -82,10 +84,13 @@ const Demo = () => {
                 alignItems='center'
                 gap={1}
                 justifyContent='center'
-                w={240}
-                h={278}
+                h={300}
                 direction='column'
                 p={5}
+                style={{
+                  border: '1px dashed var(--intergalactic-border-primary, #c4c7cf)',
+                  borderRadius: '6px',
+                }}
               >
                 <Text color='text-secondary'>
                   <MathPlusL />
@@ -104,7 +109,7 @@ const Demo = () => {
         const widget = widgetsSetup.find((widget) => widget.id === id)!;
 
         return (
-          <DnD.Draggable placement='top' key={id} aria-label={`${widget.title} widget`}>
+          <DnD.Draggable placement='top' key={id} aria-label={`${widget.title} widget`} h='100%'>
             <Widget title={widget.title} />
           </DnD.Draggable>
         );

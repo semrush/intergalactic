@@ -32,9 +32,11 @@ const Demo = () => {
     ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
       setSortedSections((sections) => {
         const newSections = [...sections];
-        const swap = newSections[fromIndex];
-        newSections[fromIndex] = newSections[toIndex];
-        newSections[toIndex] = swap;
+        const shift = fromIndex < toIndex ? 1 : -1;
+        for (let i = fromIndex; i !== toIndex; i += shift) {
+          newSections[i] = sections[i + shift];
+        }
+        newSections[toIndex] = sections[fromIndex];
         return newSections;
       });
     },

@@ -42,9 +42,11 @@ const Demo = () => {
     ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
       setSortedData((data) => {
         const newData = [...data];
-        const swap = newData[fromIndex];
-        newData[fromIndex] = newData[toIndex];
-        newData[toIndex] = swap;
+        const shift = fromIndex < toIndex ? 1 : -1;
+        for (let i = fromIndex; i !== toIndex; i += shift) {
+          newData[i] = data[i + shift];
+        }
+        newData[toIndex] = data[fromIndex];
         return newData;
       });
     },

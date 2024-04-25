@@ -61,10 +61,12 @@ type State = {
     index: number;
     initialItemsRects: Array<{ x: number; y: number; width: number; height: number } | undefined>;
   };
-  previewSwap: number | null;
+  dragOver: number | null;
   hideHoverEffect: boolean;
   a11yHint: string | null;
-  scaledIndex: number | null;
+  keyboardDraggingIndex: number | null;
+  animatedScaling: number | null;
+  reversedScaling: boolean;
 };
 
 class DragAndDropRoot extends Component<AsProps, {}, State> {
@@ -80,10 +82,12 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   state: State = {
     items: [],
     dragging: null,
-    previewSwap: null,
+    dragOver: null,
     hideHoverEffect: false, // https://stackoverflow.com/questions/67118739/hover-effect-reset-when-hovering-over-other-letters
     a11yHint: null,
-    scaledIndex: null,
+    keyboardDraggingIndex: null,
+    animatedScaling: null,
+    reversedScaling: false,
   };
 
   handleItemDragStart = (index: number) => {
@@ -121,9 +125,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     event.preventDefault();
     this.setState({
       dragging: null,
-      previewSwap: null,
-      scaledIndex: null,
-      // hideHoverEffect: true
+      dragOver: null,
+      reversedScaling: false,
+      keyboardDraggingIndex: null,
     });
   };
   handleItemDragOver = (event: DragEvent) => {
@@ -166,17 +170,29 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       zoneName: zoneName || '',
     });
 
-    if (itemIndex === this.state.dragging?.index) this.setState({ previewSwap: null, a11yHint });
-    else this.setState({ previewSwap: itemIndex, a11yHint });
+    if (itemIndex === this.state.dragging?.index) this.setState({ dragOver: null, a11yHint });
+    else this.setState({ dragOver: itemIndex, a11yHint });
   };
+  get preview() {
+    const dragging = this.state.dragging?.index;
+    const dragOver = this.state.dragOver;
+
+    if (typeof dragging !== 'number' || typeof dragOver !== 'number') return {};
+    const result: Record<number, number> = {};
+    const shift = dragging < dragOver ? 1 : -1;
+    for (let i = dragging; i !== dragOver; i += shift) {
+      result[i] = i + shift;
+    }
+
+    result[dragOver] = dragging;
+    return result;
+  }
   getSwapPreview = (index: number) => {
     if (!this.state.dragging) return null;
-    if (this.state.previewSwap === null) return null;
-    // if (this.state.items[this.state.previewSwap]?.draggingAllowed === false) return null;
-    if (this.state.previewSwap === index)
-      return this.state.items[this.state.dragging.index]?.children;
-    if (this.state.previewSwap !== null && index === this.state.dragging.index)
-      return this.state.items[this.state.previewSwap]?.children;
+
+    const previewIndex = this.preview[index];
+    if (typeof previewIndex !== 'number') return null;
+    return this.state.items[previewIndex]?.children;
   };
   handleItemDrop = (index: number) => {
     const { onDnD, getI18nText } = this.asProps;
@@ -213,9 +229,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({
       a11yHint,
       dragging: null,
-      previewSwap: null,
-      scaledIndex: null,
+      dragOver: null,
+      keyboardDraggingIndex: null,
       hideHoverEffect: true,
+      reversedScaling: false,
     });
     if (dragging && items[dragging.index]) {
       const fromNode = items[dragging.index];
@@ -241,30 +258,69 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (!this.state.hideHoverEffect) return;
     this.setState({ hideHoverEffect: false });
   };
+  updateItemScaling = () => {
+    const firstItemNode = this.state.items[0]?.node;
+    if (!firstItemNode) return;
+    if (this.state.reversedScaling) return;
+
+    const firstItemRect = firstItemNode.getBoundingClientRect();
+    let reversedScaling = false;
+    let parent = firstItemNode.parentElement;
+    while (parent && parent !== document.body) {
+      const computedStyle = getComputedStyle(parent);
+      const rect = parent.getBoundingClientRect();
+      if (computedStyle.overflow !== 'visible') {
+        if (
+          rect.left >= firstItemRect.left ||
+          rect.right <= firstItemRect.right ||
+          rect.top >= firstItemRect.top ||
+          rect.bottom <= firstItemRect.bottom
+        ) {
+          reversedScaling = true;
+          break;
+        }
+      } else {
+        if (
+          rect.left < firstItemRect.left &&
+          rect.right > firstItemRect.right &&
+          rect.top < firstItemRect.top &&
+          rect.bottom > firstItemRect.bottom
+        ) {
+          break;
+        }
+      }
+      parent = parent.parentElement;
+    }
+
+    if (this.state.reversedScaling !== reversedScaling) {
+      this.setState({ reversedScaling });
+    }
+  };
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
     if (event.key === ' ') {
-      // if (event.target !== this.state.items[index]?.node) return;
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
-        const previewSwap = this.state.previewSwap;
+        const dragOver = this.state.dragOver;
         const prevIndex = this.state.dragging.index;
         this.handleItemDrop(index);
         this.setState({
           dragging: null,
-          previewSwap: null,
-          scaledIndex: null,
+          dragOver: null,
+          keyboardDraggingIndex: null,
+          animatedScaling: index,
           hideHoverEffect: true,
         });
 
         requestAnimationFrame(() => {
           const prevIndexNode = this.state.items[prevIndex]?.node;
           if (prevIndexNode !== document.activeElement) return;
-          this.state.items[previewSwap as any]?.node.focus();
+          this.state.items[dragOver as any]?.node.focus();
         });
       } else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
-        this.setState({ scaledIndex: index });
+        this.setState({ keyboardDraggingIndex: index, animatedScaling: index });
+        this.updateItemScaling();
       }
       return false;
     } else if (event.key === 'Escape' && this.state.dragging) {
@@ -275,12 +331,15 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       this.setState({
         a11yHint,
         dragging: null,
-        previewSwap: null,
-        scaledIndex: null,
+        dragOver: null,
+        keyboardDraggingIndex: null,
         hideHoverEffect: true,
       });
       return false;
     } else if (event.key.startsWith('Arrow')) {
+      if (this.state.animatedScaling !== null) {
+        this.setState({ animatedScaling: null });
+      }
       const item = this.state.items[index];
       if (item?.node !== document.activeElement) return;
       event.preventDefault();
@@ -305,7 +364,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   };
   handleItemFocus = (index: number) => {
     if (!this.state.dragging) return;
-    this.setState({ previewSwap: index, scaledIndex: index });
+    this.setState({ dragOver: index, keyboardDraggingIndex: index });
+    this.updateItemScaling();
   };
 
   makeItemDragStartHandler = (index: number) => () => this.handleItemDragStart(index);
@@ -325,12 +385,13 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       onMouseMove: this.handleItemMouseMove,
       onKeyDown: this.makeItemKeyDownHandler(index),
       onFocus: this.makeItemFocusHandler(index),
-      dropPreview: index === this.state.previewSwap,
-      scaled: index === this.state.scaledIndex,
-      // dragged: index === this.state.dragging?.index,
+      dropPreview: index === this.state.dragOver,
+      keyboardDragging: index === this.state.keyboardDraggingIndex,
+      reversedScaling: this.state.reversedScaling,
       dark: this.asProps.theme === 'dark',
       swapPreview: this.getSwapPreview(index),
       hideHoverEffect: this.state.hideHoverEffect,
+      animatedScaling: index === this.state.animatedScaling,
     };
   }
 
