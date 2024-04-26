@@ -6,95 +6,134 @@ SDraggable[draggable] {
   -webkit-user-select: none;
   user-select: none;
 
-  &::after {
+
+  &::before {
     content: '';
     position: absolute;
     display: none;
-    background-image: radial-gradient(
-      circle at center,
-      var(--intergalactic-icon-primary-neutral, #6c6e79) 1px,
-      transparent 0
-    );
+    pointer-events: none;
+    background-image: radial-gradient(circle at center,
+    var(--intergalactic-icon-primary-neutral, #6c6e79) 1px,
+    transparent 0);
     background-size: 6px 6px;
     background-position: 2px 2px;
     background-repeat: repeat repeat;
   }
 
-  &:hover::after {
+  &:hover::before {
     display: block;
   }
-  &[hideHoverEffect]::after {
+
+  &[hideHoverEffect]::before {
     display: none;
   }
 }
 
-SDraggable[placement='top']::after {
+SDraggable[placement='top']::before {
   top: 0;
   left: 0;
   width: 100%;
   height: 20px;
 }
 
-SDraggable[placement='top'] {
-  padding-top: var(--intergalactic-spacing-4x, 16px);
-}
-
 SDraggable[placement='right'] {
-  padding-right: var(--intergalactic-spacing-4x, 16px);
-  &::after {
+
+  &::before {
     right: 0;
   }
 }
 
 SDraggable[placement='bottom'] {
-  padding-bottom: var(--intergalactic-spacing-4x, 16px);
 
-  &::after {
+  &::before {
     bottom: 0;
   }
 }
 
 SDraggable[placement='left'] {
-  padding-left: var(--intergalactic-spacing-4x, 16px);
 
-  &::after {
+  &::before {
     left: 0;
   }
 }
 
-SDraggable[placement='top']::after,
-SDraggable[placement='right']::after,
-SDraggable[placement='left']::after {
+SDraggable[placement='top']::before,
+SDraggable[placement='right']::before,
+SDraggable[placement='left']::before {
   top: 0;
 }
 
-SDraggable[placement='top']::after,
-SDraggable[placement='bottom']::after {
+SDraggable[placement='top']::before,
+SDraggable[placement='bottom']::before {
   left: 0;
   width: 100%;
   height: 16px;
 }
 
-SDraggable[placement='right']::after,
-SDraggable[placement='left']::after {
+SDraggable[placement='right']::before,
+SDraggable[placement='left']::before {
   top: 0;
   width: 16px;
   height: 100%;
 }
 
 SDropZone {
-  border: 1px dashed var(--intergalactic-border-primary, #c4c7cf);
-  border-radius: var(--intergalactic-surface-rounded, 6px);
+  position: relative;
 }
 
 SDropZone[dropPreview],
 SDraggable[dropPreview] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 }
+
+
 SDropZone[dark][dropPreview],
 SDraggable[dark][dropPreview] {
   background-color: var(--intergalactic-bg-primary-invert-active, #484a54);
 }
+
+SDraggable:focus {
+  outline: none;
+}
+
+SDraggable[keyboardFocused]:focus {
+  box-shadow: none;
+}
+
+SDraggable[keyboardFocused]:focus:after {
+  position: absolute;
+  display: block;
+  content: '';
+  inset: 3px;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  pointer-events: none;
+}
+
+
+SDraggable[keyboardDragging] {
+  scale: 1.1;
+
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  box-shadow: var(--intergalactic-box-shadow-dnd, 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)) !important;
+
+
+  &::before {
+    display: block;
+  }
+
+  &[hideHoverEffect]::before {
+    display: block;
+  }
+}
+
+SDraggable[keyboardDragging][reversedScaling] {
+  scale: 0.95;
+}
+
+SDraggable[animatedScaling] {
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+}
+
 
 SA11yHint {
   position: absolute;
@@ -103,4 +142,10 @@ SA11yHint {
   height: 1px;
   width: 1px;
   clip: rect(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  SDraggable {
+    transition: none;
+  }
 }

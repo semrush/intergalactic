@@ -71,3 +71,15 @@ For more control over the container and tooltip, you can use the `Ellipsis.Conte
 </script>
 
 :::
+
+## Cursor anchoring
+
+If tooltip size is smaller than the container, you can anchor tooltip position to the cursor.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/tooltip-cursor-anchoring.tsx';
+</script>
+
+:::

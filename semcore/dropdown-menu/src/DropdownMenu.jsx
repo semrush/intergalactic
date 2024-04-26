@@ -275,7 +275,7 @@ class DropdownMenuRoot extends Component {
       ref,
       index,
       handleFocusOut: this.handleItemFocusOut,
-      keyboardFocused: this.state.keyboardFocused,
+      triggerKeyboardFocused: this.state.keyboardFocused,
     };
   }
 
@@ -475,7 +475,7 @@ function Item({
   disabled,
   highlighted,
   handleFocusOut,
-  keyboardFocused,
+  triggerKeyboardFocused,
 }) {
   const SDropdownMenuItem = Root;
   const ref = React.useRef();
@@ -489,7 +489,7 @@ function Item({
       role='menuitem'
       tabIndex={-1}
       id={label}
-      use:highlighted={!disabled && highlighted && keyboardFocused}
+      use:highlighted={!disabled && highlighted && triggerKeyboardFocused}
     />,
   );
 }

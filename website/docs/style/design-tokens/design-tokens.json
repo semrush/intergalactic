@@ -13,6 +13,7 @@
       "counter",
       "d3-chart",
       "data-table",
+      "drag-and-drop",
       "dropdown",
       "flex-box",
       "fullscreen-modal",
@@ -595,7 +596,6 @@
       "d3-chart",
       "date-picker",
       "divider",
-      "drag-and-drop",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -1745,7 +1745,7 @@
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 12px 40px 0px rgba({gray.800}, 0.16)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
     "description": "Shadow for show that element are being drag-and-drop.",
-    "components": []
+    "components": ["drag-and-drop"]
   },
   {
     "name": "--intergalactic-box-shadow-modal",
@@ -1796,6 +1796,7 @@
       "d3-chart",
       "data-table",
       "date-picker",
+      "drag-and-drop",
       "dropdown-menu",
       "fullscreen-modal",
       "icon",
@@ -2335,7 +2336,6 @@
       "carousel",
       "color-picker",
       "date-picker",
-      "drag-and-drop",
       "errors",
       "feature-popover",
       "feedback-form",
@@ -2557,7 +2557,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
-    "components": ["card", "carousel", "drag-and-drop", "feedback-form", "notice"]
+    "components": ["card", "carousel", "feedback-form", "notice"]
   },
   {
     "name": "--intergalactic-popper-rounded",
@@ -3413,7 +3413,7 @@
     "rawValue": "100",
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": ["data-table"]
+    "components": ["data-table", "drag-and-drop"]
   },
   {
     "name": "--intergalactic-duration-switch",

@@ -92,6 +92,10 @@ export type PopperProps = OutsideClickProps &
      * If enabled, you will need to use setTrigger function from children rendering function to set popper trigger.
      */
     explicitTriggerSet?: boolean;
+    /**
+     * If set, popper will be placed near the place mouse cursor entered the trigger
+     */
+    cursorAnchoring?: boolean;
   };
 
 /** @deprecated */

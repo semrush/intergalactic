@@ -1,3 +1,22 @@
+## [15.80.0] - 2024-04-22
+
+### @semcore/accordion
+
+- **Fixed** Pressing `Space` on focused `Accordion.Item.Toggle` was causing the page to scroll.
+
+### @semcore/d3-chart
+
+- **Changed** Plot `eventEmitter` prop now is strongly typed.
+- **Added** `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+
+### @semcore/popper
+
+- **Added** Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+
+### @semcore/utils
+
+- **Fixed** Typings of event emitter util.
+
 ## [15.79.0] - 2024-04-16
 
 ### @semcore/date-picker
