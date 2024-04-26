@@ -11,9 +11,11 @@ import {
   arrow,
 } from '@popperjs/core';
 import arrowOffset from './arrowOffset';
+import { cursorAnchoringModifier } from './modifiers/cursorAnchoring';
 
 const defaultModifiers = [
   eventListeners,
+  cursorAnchoringModifier,
   popperOffsets,
   computeStyles,
   applyStyles,
