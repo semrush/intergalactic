@@ -33,6 +33,7 @@ type AsProps = {
   ['data-ui-name']: string;
   uid?: string;
   withScrollBar?: boolean;
+  disabledWidthAnimation?: boolean;
 };
 
 class Head extends Component<AsProps> {
@@ -235,7 +236,7 @@ class Head extends Component<AsProps> {
       $scrollRef,
       sticky,
       withScrollBar,
-      hidden,
+      disabledWidthAnimation,
     } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
@@ -249,7 +250,7 @@ class Head extends Component<AsProps> {
     );
 
     return sstyled(styles)(
-      <SHeadWrapper sticky={sticky}>
+      <SHeadWrapper sticky={sticky} disabledWidthAnimation={disabledWidthAnimation}>
         <ScrollArea
           leftOffset={offsetLeftSum}
           rightOffset={offsetRightSum}

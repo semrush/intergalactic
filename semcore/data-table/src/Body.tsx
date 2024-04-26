@@ -36,6 +36,7 @@ type AsProps = {
   }) => React.ReactNode;
   disabledScroll?: boolean;
   uid?: string;
+  disabledWidthAnimation?: boolean;
 };
 
 type State = {
@@ -279,6 +280,7 @@ class Body extends Component<AsProps, State> {
       onScroll,
       disabledScroll,
       renderRows,
+      disabledWidthAnimation,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -294,7 +296,7 @@ class Body extends Component<AsProps, State> {
     }
 
     const body = sstyled(styles)(
-      <SBody render={Box}>
+      <SBody render={Box} disabledWidthAnimation={disabledWidthAnimation}>
         {renderRows ? (
           renderRows({ rows, columns, renderRow: this.renderRow.bind(this) }) || null
         ) : (

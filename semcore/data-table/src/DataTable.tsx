@@ -114,6 +114,9 @@ export type DataTableHeadProps = BoxProps & {
 
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
+
+  /** Disabled animation for changing width */
+  disabledWidthAnimation?: boolean;
 };
 
 /** @deprecated */
@@ -161,6 +164,9 @@ export type DataTableBodyProps = BoxProps & {
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Disabled scroll */
   disabledScroll?: boolean;
+
+  /** Disabled animation for changing width */
+  disabledWidthAnimation?: boolean;
 };
 
 /** @deprecated */
