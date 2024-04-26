@@ -48,10 +48,10 @@ The last item in the breadcrumbs is always non-clickable.
 
 Table: Breadcrumbs styles
 
-| Element             | Styles                                                                              |
-| ------------------- | ----------------------------------------------------------------------------------- |
-| Link                | `font-size: var(--fs-200)`, `color: var(--text-secondary)`, `cursor: pointer`, no `line-height`. |
-| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                              |
+| Element             | Styles                                                                                                      |
+| ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Link                | `font-size: var(--fs-200)`, `line-height: var(--lh-200)`, `color: var(--text-secondary)`, `cursor: pointer` |
+| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`                                                                      |
 
 ### Margins
 
@@ -61,9 +61,13 @@ Margins between the links inside the breadcrumbs is 8px.
 
 ## Long links truncation
 
-If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), items are collapsed into `ellipsis`.
+If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), items are truncated into `ellipsis`.
 
 ![](static/ellipsis.png)
+
+::: tip
+Don't forget to check whether the full text is displayed in a tooltip. [Refer to our example](/components/breadcrumbs/breadcrumbs-code#breadcrumbs-item-truncation).
+:::
 
 ## Interaction
 
@@ -71,11 +75,11 @@ If there isn’t enough place for the breadcrumbs (screen is too small or the te
 
 Table: Breadcrumbs states
 
-| State  | Styles                                                                                    |
-| ------ | ----------------------------------------------------------------------------------------- |
-| Normal | `font-size: var(--fs-200)`, `color: var(--text-secondary)`, `cursor: pointer`, no `line-height`. |
-| Hover  | `color: var(--text-primary)` + underline                                       |
-| Active | `color: var(--text-primary)`, `cursor: default`                                         |
+| State  | Styles                                                                                                      |
+| ------ | ----------------------------------------------------------------------------------------------------------- |
+| Normal | `font-size: var(--fs-200)`, `line-height: var(--lh-200)`, `color: var(--text-secondary)`, `cursor: pointer` |
+| Hover  | `color: var(--text-primary)`, `text-decoration: underline`  |
+| Active | `color: var(--text-primary)`                                |
 
 ## Usage in UX/UI
 
@@ -84,4 +88,3 @@ The recommended order of the navigation levels in the breadcrumbs:
 1. The first link is the **product's Projects and/or the product's home page**.
 2. The second link is the **Name of the project**.
 3. The third link is the **Name of the product**.
-
