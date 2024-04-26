@@ -49,7 +49,7 @@ SLink[keyboardFocused] {
   outline-width: 3px;
 }
 
-SLink[disabled] {
+SLink[visually-disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   /* Disable link interactions */

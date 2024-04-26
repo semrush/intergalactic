@@ -3,9 +3,9 @@ title: Breadcrumbs
 tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-## Usage example
+## Breadcrumbs item truncation
 
-Try shrinking the page and see how the navigation shrinks. You can also wrap `<Breadcrumbs.Item />` to other components.
+Try resizing the page to see how the links adjust. If the text in a link is too long, it will be truncated with an ellipsis. You can also place the `<Breadcrumbs.Item />` within other components.
 
 ::: sandbox
 
@@ -17,7 +17,7 @@ Try shrinking the page and see how the navigation shrinks. You can also wrap `<B
 
 ## Redefining a tag
 
-You can redefine the `<Breadcrumbs tag.Item />`. This is necessary, for example, to use `Link` from `react-router`.
+You can redefine `tag` for the `<Breadcrumbs.Item />`. This is necessary, for example, to use `Link` from `react-router`.
 
 ::: sandbox
 

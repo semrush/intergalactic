@@ -31,14 +31,15 @@ class RootLink extends Component {
 
   render() {
     const SLink = Root;
-    const { Children, styles, noWrap, addonLeft, addonRight, color, resolveColor, disabled } =
+    const { Children, styles, noWrap, addonLeft, addonRight, color, resolveColor, disabled, href } =
       this.asProps;
 
     return sstyled(styles)(
       <SLink
         role='link'
         tabIndex={disabled ? -1 : 0}
-        aria-disabled={!!disabled}
+        use:href={disabled ? undefined : href}
+        visually-disabled={disabled}
         render={Text}
         text-color={resolveColor(color)}
         tag='a'
