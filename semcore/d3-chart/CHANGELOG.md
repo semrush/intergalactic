@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.1] - 2024-04-26
+
+### Fixed
+
+- `duration` prop on `Chart` component.
+
 ## [3.39.0] - 2024-04-16
 
 ### Changed

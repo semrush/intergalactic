@@ -493,10 +493,6 @@ video {
   }
 }
 
-.vp-doc div[class*='language-'] {
-  /* overflow: auto; */
-}
-
 .vp-doc div[class*='language-'],
 .vp-block {
   border-radius: 6px;

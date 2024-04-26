@@ -315,7 +315,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         requestAnimationFrame(() => {
           const prevIndexNode = this.state.items[prevIndex]?.node;
           if (prevIndexNode !== document.activeElement) return;
-          this.state.items[dragOver as any]?.node.focus();
+          this.state.items[dragOver!]?.node.focus();
         });
       } else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
