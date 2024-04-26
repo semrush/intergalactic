@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.22.2] - 2024-04-25
+
+### Fixed
+
+- `minRows` prop behaviour.
+
 ## [5.22.1] - 2024-04-16
 
 ### Changed
