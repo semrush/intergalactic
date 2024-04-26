@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.0] - 2024-04-22
+
+### Fixed
+
+- Focus ring styles.
+- Dropzone was draggable by keyboard.
+- Screen readers were announcing wrong items' position.
+- There were a visual glitch right after item drop.
+
+### Changed
+
+- Removed additional padding that was added to the draggable element.
+- Keyboard arrows navigation better works with built-in arrows navigation of base components and better works with items grid placement.
+
 ## [3.30.1] - 2024-04-16
 
 ### Changed

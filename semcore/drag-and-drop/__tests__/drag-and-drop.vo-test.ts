@@ -9,7 +9,7 @@ test.skip('Users can interact with DragAndDrop via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/drag-and-drop/examples/use_in_tabpanel.tsx';
+  const standPath = 'website/docs/components/drag-and-drop/examples/with_tabpanel.tsx';
   const reportPath = 'website/docs/components/drag-and-drop/drag-and-drop-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
