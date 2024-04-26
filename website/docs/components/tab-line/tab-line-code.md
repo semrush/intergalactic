@@ -24,7 +24,7 @@ You can add icons, badges, counters as addons to the left or right of the text i
 
 ## Automatic tab activation
 
-By default, the component switches content automatically when switching tabs.
+By default, tabs are switched automatically when selected.
 
 ::: sandbox
 
