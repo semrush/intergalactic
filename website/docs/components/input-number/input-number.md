@@ -42,7 +42,7 @@ const Preview = (preview) => {
 
   const value = empty({ key: 'value', defaultValue: '' });
   const min = text({ key: 'min', defaultValue: 0, label: 'Min' });
-  const max = text({ key: 'max', defaultValue: 100, label: 'Max' });
+  const max = text({ key: 'max', defaultValue: 100000, label: 'Max' });
   const step = text({ key: 'step', defaultValue: 1, label: 'Step' });
   const showControls = bool({
     key: 'showControls',
