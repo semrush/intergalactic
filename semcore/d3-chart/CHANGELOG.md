@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.1] - 2024-04-26
+
+### Fixed
+
+- `duration` prop on `Chart` component.
+
 ## [3.39.0] - 2024-04-16
 
 ### Changed
@@ -11,6 +17,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+
+## [3.38.2] - 2024-04-16
+
+### Fixed
+
+- stroke color for ReferenceLine from `--intergalactic-chart-grid-x-axis` to `--intergalactic-chart-grid-y-accent-hover-line`.
 
 ## [3.38.1] - 2024-04-16
 

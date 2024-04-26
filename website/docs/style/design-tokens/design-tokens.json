@@ -13,6 +13,7 @@
       "counter",
       "d3-chart",
       "data-table",
+      "drag-and-drop",
       "dropdown",
       "flex-box",
       "fullscreen-modal",
@@ -371,6 +372,7 @@
       "fullscreen-modal",
       "pills",
       "side-panel",
+      "slider",
       "switch",
       "tab-panel",
       "time-picker",
@@ -594,7 +596,6 @@
       "d3-chart",
       "date-picker",
       "divider",
-      "drag-and-drop",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -1744,7 +1745,7 @@
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 12px 40px 0px rgba({gray.800}, 0.16)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
     "description": "Shadow for show that element are being drag-and-drop.",
-    "components": []
+    "components": ["drag-and-drop"]
   },
   {
     "name": "--intergalactic-box-shadow-modal",
@@ -1795,6 +1796,7 @@
       "d3-chart",
       "data-table",
       "date-picker",
+      "drag-and-drop",
       "dropdown-menu",
       "fullscreen-modal",
       "icon",
@@ -1936,6 +1938,7 @@
       "product-head",
       "radio",
       "side-panel",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -1999,7 +2002,7 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker"]
+    "components": ["base-trigger", "date-picker", "slider"]
   },
   {
     "name": "--intergalactic-medium",
@@ -2073,6 +2076,7 @@
       "pills",
       "product-head",
       "radio",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2205,6 +2209,7 @@
       "notice-global",
       "radio",
       "select",
+      "slider",
       "tag",
       "wizard"
     ]
@@ -2331,7 +2336,6 @@
       "carousel",
       "color-picker",
       "date-picker",
-      "drag-and-drop",
       "errors",
       "feature-popover",
       "feedback-form",
@@ -2553,7 +2557,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
-    "components": ["card", "carousel", "drag-and-drop", "feedback-form", "notice"]
+    "components": ["card", "carousel", "feedback-form", "notice"]
   },
   {
     "name": "--intergalactic-popper-rounded",
@@ -3336,8 +3340,16 @@
     "type": "color",
     "rawValue": "rgba({gray.200}, 0.2)",
     "computedValue": "rgba(196, 199, 207, 0.2)",
-    "description": "Use for highlighting the period on the chart grid.",
+    "description": "Use for highlighting a period on the chart grid.",
     "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-period-pattern",
+    "type": "color",
+    "rawValue": "rgba({gray.800}, 0.15)",
+    "computedValue": "rgba(25, 27, 35, 0.15)",
+    "description": "Stripe color for diagonal pattern background.",
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-border",
@@ -3401,7 +3413,7 @@
     "rawValue": "100",
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": []
+    "components": ["drag-and-drop"]
   },
   {
     "name": "--intergalactic-duration-switch",

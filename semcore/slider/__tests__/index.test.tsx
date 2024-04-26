@@ -75,6 +75,23 @@ describe('Slider', () => {
       ),
     ).toMatchImageSnapshot(task);
   });
+  test.concurrent('Should render options', async ({ task }) => {
+    expect(
+      await snapshot(
+        <Slider
+          value={'small'}
+          step={1}
+          min={1}
+          max={3}
+          options={[
+            { value: 'small', label: 'Small' },
+            { value: 'medium', label: 'Medium' },
+            { value: 'big', label: 'Big' },
+          ]}
+        />,
+      ),
+    ).toMatchImageSnapshot(task);
+  });
 
   test.concurrent('Should support onChange callback with keyboard', async () => {
     const spy = vi.fn();

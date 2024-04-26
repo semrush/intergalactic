@@ -16,6 +16,7 @@ SSlider {
     border-radius: var(--intergalactic-progress-bar-rounded, 6px);
     background-color: var(--intergalactic-border-secondary, #e0e1e9);
   }
+
   &:hover:before {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
@@ -71,4 +72,12 @@ SInput {
   position: absolute;
   top: -100px;
   left: -100px;
+}
+
+SSliderOptions {
+  padding-top: var(--intergalactic-spacing-05x, 2px);
+  color: var(--intergalactic-text-secondary, #6c6e79);
+  font-size: var(--intergalactic-fs-200, 14px);
+  font-weight: var(--intergalactic-regular, 400);
+  line-height: var(--intergalactic-lh-200, 142%);
 }

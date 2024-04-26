@@ -695,8 +695,10 @@
   --intergalactic-chart-grid-bar-chart-hover: rgba(196, 199, 207, 0.3);
   /* Default background color of a bar in the BarChart. */
   --intergalactic-chart-grid-bar-chart-base-bg: #e0e1e9;
-  /* Use for highlighting the period on the chart grid. */
+  /* Use for highlighting a period on the chart grid. */
   --intergalactic-chart-grid-period-bg: rgba(196, 199, 207, 0.2);
+  /* Stripe color for diagonal pattern background. */
+  --intergalactic-chart-grid-period-pattern: rgba(25, 27, 35, 0.15);
   /* Border for distinguishing data sets and chart dots on the chart grid. */
   --intergalactic-chart-grid-border: #ffffff;
   /* Background color for the clickable date on the X-axis of the chart grid. */

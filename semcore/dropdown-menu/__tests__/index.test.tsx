@@ -89,7 +89,7 @@ describe('DropdownMenu', () => {
         <DropdownMenu.List>
           <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
           <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-          <DropdownMenu.Item highlighted {...({ keyboardFocused: true } as any)}>
+          <DropdownMenu.Item highlighted {...({ triggerKeyboardFocused: true } as any)}>
             highlighted
           </DropdownMenu.Item>
         </DropdownMenu.List>
