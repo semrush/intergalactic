@@ -45,7 +45,10 @@ declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipConte
   Popper: Intergalactic.Component<'div', TooltipProps, TooltipContext>;
 };
 
-export type HintProps = Intergalactic.InternalTypings.EfficientOmit<PopperProps, 'interaction'> &
+export type TooltipHintProps = Intergalactic.InternalTypings.EfficientOmit<
+  PopperProps,
+  'interaction'
+> &
   PopperTriggerProps & {
     /**
      * Tooltip text
@@ -63,7 +66,15 @@ export type HintProps = Intergalactic.InternalTypings.EfficientOmit<PopperProps,
      */
     interaction?: 'hover' | 'focus';
   };
-export type HintPopperProps = Intergalactic.InternalTypings.EfficientOmit<HintProps, 'title'>;
+export type TooltipHintPopperProps = Intergalactic.InternalTypings.EfficientOmit<
+  HintProps,
+  'title'
+>;
+
+/** @deprecated, use `TooltipHintProps` instead */
+export type HintProps = TooltipHintProps;
+/** @deprecated, use `TooltipHintPopperProps` instead */
+export type HintPopperProps = TooltipHintPopperProps;
 
 declare const Hint: Intergalactic.Component<'div', HintProps, TooltipTriggerContext> & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;

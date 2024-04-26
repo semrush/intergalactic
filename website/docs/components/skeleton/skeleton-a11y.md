@@ -21,9 +21,7 @@ Table: Roles & attributes
 
 ## Considerations for developers and designers
 
-- Don't use heading markup for skeleton "bones" that replace headings, as this can be confusing for screen reader users who navigate the page using landmarks.
-- Since the skeleton is a visual element, make sure the image replacements for it are marked as decorative (using `aria-hidden="true"`) and hidden from screen reader users.
-- It's important to let screen readers access the text behind a skeleton loader.
+- When displaying skeleton in place of a heading, avoid semantic heading markup, as this can make navigation confusing for screen reader users.
 
 ## Resources
 

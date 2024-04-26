@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.34.2] - 2024-04-22
+
+### Fixed
+
+- Warning in console about invalid value of `tabIndex` attribute.
+
 ## [4.34.1] - 2024-04-16
 
 ### Changed

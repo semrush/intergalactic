@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.31.1] - 2024-04-22
+
+### Changed
+
+- Made table sticky head scroll container unfocusable by default.
+
 ## [4.30.1] - 2024-04-16
 
 ### Changed

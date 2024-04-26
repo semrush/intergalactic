@@ -372,6 +372,7 @@
       "fullscreen-modal",
       "pills",
       "side-panel",
+      "slider",
       "switch",
       "tab-panel",
       "time-picker",
@@ -1937,6 +1938,7 @@
       "product-head",
       "radio",
       "side-panel",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2000,7 +2002,7 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker"]
+    "components": ["base-trigger", "date-picker", "slider"]
   },
   {
     "name": "--intergalactic-medium",
@@ -2074,6 +2076,7 @@
       "pills",
       "product-head",
       "radio",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2206,6 +2209,7 @@
       "notice-global",
       "radio",
       "select",
+      "slider",
       "tag",
       "wizard"
     ]
@@ -3336,8 +3340,16 @@
     "type": "color",
     "rawValue": "rgba({gray.200}, 0.2)",
     "computedValue": "rgba(196, 199, 207, 0.2)",
-    "description": "Use for highlighting the period on the chart grid.",
+    "description": "Use for highlighting a period on the chart grid.",
     "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-period-pattern",
+    "type": "color",
+    "rawValue": "rgba({gray.800}, 0.15)",
+    "computedValue": "rgba(25, 27, 35, 0.15)",
+    "description": "Stripe color for diagonal pattern background.",
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-border",
