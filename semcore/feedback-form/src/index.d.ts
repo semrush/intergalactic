@@ -5,6 +5,8 @@ import Button from '@semcore/button';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
 
+import { FiveStarFormType } from './component/five-star-form/FiveStartForm.type';
+
 /** @deprecated */
 export type IFeedbackForm = FeedbackFormProps;
 export type FeedbackFormProps = FormProps & {
@@ -33,3 +35,5 @@ declare const FeedbackForm: Intergalactic.Component<'form', FeedbackFormProps> &
 };
 
 export default FeedbackForm;
+
+export { FiveStarFormType };

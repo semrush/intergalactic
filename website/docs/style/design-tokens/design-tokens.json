@@ -596,6 +596,7 @@
       "date-picker",
       "divider",
       "drag-and-drop",
+      "feedback-form",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -646,6 +647,7 @@
       "base-trigger",
       "checkbox",
       "color-picker",
+      "feedback-form",
       "inline-input",
       "input",
       "input-tags",
@@ -2456,7 +2458,7 @@
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "components": ["d3-chart"]
+    "components": ["d3-chart", "feedback-form"]
   },
   {
     "name": "--intergalactic-rounded-large",
@@ -3349,7 +3351,7 @@
     "rawValue": "rgba({gray.800}, 0.15)",
     "computedValue": "rgba(25, 27, 35, 0.15)",
     "description": "Stripe color for diagonal pattern background.",
-    "components": ["d3-chart"]
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-border",

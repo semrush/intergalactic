@@ -1,0 +1,43 @@
+SSliderRating SStar:hover {
+  cursor: pointer;
+  transform: scale(1.45);
+  transition: all 200ms ease-out;
+}
+
+SSliderRating[readonly] SStar:hover {
+  cursor: default;
+  transform: none;
+  transition: none;
+}
+
+SStar[filled]:active {
+  animation: wobble 0.8s ease-in-out;
+}
+
+SSplash {
+  visibility: hidden;
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  background: #FDC23C;
+  border-radius: 9999px;
+}
+
+SSplash[blink] {
+  animation-name: show-hide;
+  animation-delay: 200ms;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes show-hide {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}

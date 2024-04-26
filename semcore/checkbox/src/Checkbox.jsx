@@ -46,11 +46,12 @@ class CheckboxRoot extends Component {
   }
 
   getValueProps() {
-    const { size, state, theme, onChange, defaultChecked, checked, disabled, indeterminate } =
+    const { size, state, theme, onChange, defaultChecked, checked, disabled, indeterminate, id } =
       this.asProps;
     const { hoistedDisabled } = this.state;
 
     return {
+      id,
       size,
       disabled: disabled ?? hoistedDisabled,
       state,
@@ -79,6 +80,7 @@ class CheckboxRoot extends Component {
           'checkedDefault',
           'label',
           'aria-label',
+          'id',
         ]}
       >
         {hasChildren ? (

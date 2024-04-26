@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.25.2] - 2024-04-29
+
+### Added
+
+- Pass `id` prop to checkbox input.
+
 ## [7.25.1] - 2024-04-16
 
 ### Changed
