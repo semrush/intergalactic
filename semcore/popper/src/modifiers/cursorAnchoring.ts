@@ -31,7 +31,7 @@ export const cursorAnchoringModifier: Modifier<'cursorAnchoring', Options> = {
       const offsetParent = getOffsetParent(elements.popper);
       const offsetParentRect =
         offsetParent === window ? getWindowRect() : offsetParent.getBoundingClientRect();
-      const mouseX = mouseEnterCursorPositionRef.current?.x;
+      const mouseX = mouseEnterCursorPositionRef?.current?.x;
       if (mouseX === undefined) return;
       const width = Math.min(rects.reference.width, rects.popper.width);
       const x = clamp(
