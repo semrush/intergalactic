@@ -39,7 +39,7 @@ const validate = (values: Data) => {
 const Demo = () => (
   <FeedbackForm validate={validate} p={1} onSubmit={() => ({})}>
     <label htmlFor='acitivty'>
-      <Text bold mb='8px' tag='p' size={200}>
+      <Text mb={2} tag='p' size={200}>
         Activity
       </Text>
       <FeedbackForm.Item name='title'>
@@ -55,7 +55,7 @@ const Demo = () => (
     </label>
 
     <label htmlFor='campaign'>
-      <Text bold mb='8px' tag='p' size={200}>
+      <Text mb={2} tag='p' size={200}>
         Campaign
       </Text>
       <FeedbackForm.Item name='campaign'>
@@ -78,7 +78,7 @@ const Demo = () => (
     </label>
 
     <label htmlFor='day'>
-      <Text bold mb={2} tag='p' size={200}>
+      <Text mb={2} tag='p' size={200}>
         Day
       </Text>
       <FeedbackForm.Item name='day'>
