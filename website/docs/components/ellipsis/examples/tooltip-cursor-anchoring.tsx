@@ -5,7 +5,7 @@ import { Box } from 'intergalactic/flex-box';
 const Demo = () => {
   return (
     <Box>
-      <Ellipsis trim='middle' cursorAnchoring='horizontal'>
+      <Ellipsis trim='middle' cursorAnchoring>
         <Ellipsis.Content w={500}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
           doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore

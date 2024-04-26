@@ -89,6 +89,7 @@ class Popper extends Component {
     timeout: 0,
     excludeRefs: [],
     focusLoop: true,
+    cursorAnchoring: false,
   };
 
   static enhance = [
@@ -185,13 +186,15 @@ class Popper extends Component {
       name: 'computeStyles',
       options: { gpuAcceleration: false },
     });
-    modifiersOptions.push({
-      name: 'cursorAnchoring',
-      options: {
-        cursorAnchoring: this.asProps.cursorAnchoring,
-        mouseEnterCursorPositionRef: this.mouseEnterCursorPositionRef,
-      },
-    });
+    if (this.asProps.cursorAnchoring) {
+      modifiersOptions.push({
+        name: 'cursorAnchoring',
+        options: {
+          cursorAnchoring: this.asProps.cursorAnchoring,
+          mouseEnterCursorPositionRef: this.mouseEnterCursorPositionRef,
+        },
+      });
+    }
 
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
 
