@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.0] - 2024-04-22
+
+### Fixed
+
+- It was loosing browser focus with DragAndDrop component integration.
+
 ## [4.27.2] - 2024-04-22
 
 ### Changed

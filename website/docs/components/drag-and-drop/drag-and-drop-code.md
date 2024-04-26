@@ -4,32 +4,52 @@ fileSource: drag-and-drop
 tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
 ---
 
-## Use in the DropdownMenu
+## Select with drag & drop
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/use_in_the_dropdownmenu.tsx';
+  export Demo from './examples/with_select.tsx'; 
 </script>
 
 :::
 
-## Use in TabPanel
+## Cards with drag & drop
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/use_in_tabpanel.tsx';
+  export Demo from './examples/with_cards.tsx'; 
 </script>
 
 :::
 
-## Example with use of the drop zone
+## TabPanel with drag & drop
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/example_with_use_of_the_drop_zone.tsx';
+  export Demo from './examples/with_tabpanel.tsx'; 
+</script>
+
+:::
+
+## Secondary DataTable with drag & drop
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/with_secondary_table.tsx'; 
+</script>
+
+:::
+
+## Primary DataTable with drag & drop
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/with_primary_table.tsx'; 
 </script>
 
 :::
