@@ -24,6 +24,7 @@ import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { hasParent } from '@semcore/utils/lib/hasParent';
+import getOffsetParent from '@popperjs/core/lib/dom-utils/getOffsetParent';
 
 import createPopper from './createPopper';
 
@@ -88,6 +89,7 @@ class Popper extends Component {
     timeout: 0,
     excludeRefs: [],
     focusLoop: true,
+    cursorAnchoring: false,
   };
 
   static enhance = [
@@ -147,6 +149,7 @@ class Popper extends Component {
   }
 
   state = { ignoreTriggerFocusUntil: 0 };
+  mouseEnterCursorPositionRef = { current: null };
 
   createTriggerRef = (ref) => {
     if (ref && this.triggerRef.current !== ref) {
@@ -183,6 +186,15 @@ class Popper extends Component {
       name: 'computeStyles',
       options: { gpuAcceleration: false },
     });
+    if (this.asProps.cursorAnchoring) {
+      modifiersOptions.push({
+        name: 'cursorAnchoring',
+        options: {
+          cursorAnchoring: this.asProps.cursorAnchoring,
+          mouseEnterCursorPositionRef: this.mouseEnterCursorPositionRef,
+        },
+      });
+    }
 
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
 
@@ -232,6 +244,7 @@ class Popper extends Component {
       'computeStyles',
       'eventListeners',
       'onFirstUpdate',
+      'cursorAnchoring',
     ];
     if (
       this.popper.current &&
@@ -305,6 +318,10 @@ class Popper extends Component {
      * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
      */
     if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+
+    if (action === 'onMouseEnter') {
+      this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };
+    }
 
     const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);

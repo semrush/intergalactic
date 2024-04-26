@@ -86,6 +86,7 @@ const defaultTooltipProps = [
   'computeStyles',
   'eventListeners',
   'onFirstUpdate',
+  'cursorAnchoring',
 ];
 
 const createMeasurerElement = (element: HTMLDivElement) => {

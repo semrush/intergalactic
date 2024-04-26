@@ -42,6 +42,39 @@ test.describe('Popper', () => {
       });
     }
   });
+  test('cursor anchoring', async ({ page }) => {
+    const standPath = 'semcore/popper/__tests__/stands/cursorAnchoring.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const trigger = await page.locator('[data-testid="trigger"]');
+    const popper = await page.locator('[data-testid="popper"]');
+
+    const triggerRect = (await trigger.boundingBox())!;
+    const triggerRightBottomCorner = [
+      triggerRect.x + triggerRect.width,
+      triggerRect.y + triggerRect.height,
+    ];
+    const triggerLeftBottomCorner = [triggerRect.x, triggerRect.y + triggerRect.height];
+
+    await page.mouse.move(triggerRightBottomCorner[0] + 10, triggerRightBottomCorner[1] + 10);
+    await page.mouse.move(triggerRightBottomCorner[0] - 10, triggerRightBottomCorner[1] - 10, {
+      steps: 10,
+    });
+
+    let popperRect = (await popper.boundingBox())!;
+    expect(popperRect.x).toBeGreaterThan(triggerRect.x + triggerRect.width * (4 / 5));
+
+    await page.mouse.move(triggerLeftBottomCorner[0] - 10, triggerLeftBottomCorner[1] + 10);
+    await new Promise((r) => setTimeout(r, 1000));
+    await page.mouse.move(triggerLeftBottomCorner[0] + 10, triggerLeftBottomCorner[1] - 10, {
+      steps: 10,
+    });
+
+    popperRect = (await popper.boundingBox())!;
+    expect(popperRect.x).toBeLessThan(triggerRect.x + triggerRect.width * (1 / 5));
+  });
   test.describe('label', () => {
     test('referenced', async ({ page }) => {
       const standPath = 'semcore/popper/__tests__/stands/label-referenced.tsx';
