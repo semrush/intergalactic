@@ -1,14 +1,20 @@
-import getOffsetParent from '@popperjs/core/lib/dom-utils/getOffsetParent';
+import { getOffsetParent } from '../utils/getOffsetParent';
+import { Modifier } from '@popperjs/core';
 
-const clamp = (value, boundary1, boundary2) => {
+const clamp = (value: number, boundary1: number, boundary2: number) => {
   const min = Math.min(boundary1, boundary2);
   const max = Math.max(boundary1, boundary2);
   return Math.min(Math.max(value, min), max);
 };
 
+type Options = {
+  cursorAnchoring: true;
+  mouseEnterCursorPositionRef: { current: { x: number; y: number } };
+};
+
 const getWindowRect = () => ({ x: 0, y: 0, width: window.innerWidth, height: window.innerHeight });
 
-export const cursorAnchoringModifier = {
+export const cursorAnchoringModifier: Modifier<'cursorAnchoring', Options> = {
   name: 'cursorAnchoring',
   phase: 'beforeRead',
   enabled: true,
