@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiveStarForm } from 'intergalactic/feedback-form';
+import FeedbackForm, { FiveStarForm } from 'intergalactic/feedback-form';
 import Link from 'intergalactic/link';
 import { Text } from 'intergalactic/typography';
 

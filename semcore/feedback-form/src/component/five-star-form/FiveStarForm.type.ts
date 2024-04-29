@@ -11,7 +11,7 @@ export type FormConfigItem = {
   label: typeof Text | string;
   type: 'input' | 'checkbox' | 'textarea';
   description?: typeof Text | string;
-  validate?: (value: any) => Error | undefined;
+  validate?: (value: any) => Error | string | undefined;
 };
 
 export type FiveStarFormProps = Intergalactic.InternalTypings.EfficientOmit<

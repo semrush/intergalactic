@@ -18,7 +18,7 @@ import Textarea from '@semcore/textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { FeedbackItem } from '../feedback-item/FeedbackItem';
 import { SubmitButton } from '../submit-button/SubmitButton';
-import { FiveStarFormProps, FiveStarFormType, FormConfigItem } from './FiveStartForm.type';
+import { FiveStarFormProps, FiveStarFormType, FormConfigItem } from './FiveStarForm.type';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
 import Input from '@semcore/input';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -66,7 +66,7 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
 
   manager = new NoticeBubbleManager();
 
-  focusDecorator = createFocusDecorator<Record<string, any>>();
+  private focusDecorator = createFocusDecorator<Record<string, any>>();
 
   getItemProps() {
     const { validateOnBlur } = this.asProps;
@@ -335,11 +335,12 @@ function Header(props: any) {
   );
 }
 
-const FiveStarForm: typeof FiveStarFormType = createComponent(FiveStarFormRoot, {
-  Header,
-  Item: FeedbackItem,
-  Checkbox: CheckboxButton,
-  Submit: SubmitButton,
-});
+const FiveStarForm: typeof FiveStarFormType & { validate: typeof FiveStarFormRoot.validate } =
+  createComponent(FiveStarFormRoot, {
+    Header,
+    Item: FeedbackItem,
+    Checkbox: CheckboxButton,
+    Submit: SubmitButton,
+  });
 
 export default FiveStarForm;
