@@ -75,6 +75,10 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "/semcore/feedback-form/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/fullscreen-modal/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
