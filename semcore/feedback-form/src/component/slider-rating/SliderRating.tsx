@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled, Intergalactic } from '@semcore/core';
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 type SliderRatingProps = {
   value: number;
@@ -24,9 +25,14 @@ type SplashProps = BoxProps & {
   top: string;
 };
 
+const MIN = 1;
+const MAX = 5;
+
 class SliderRatingRoot extends Component<SliderRatingProps, State> {
   static displayName = 'SliderRating';
   static style = style;
+
+  static enhance = [keyboardFocusEnhance()];
 
   state: State = {
     hoveredIndex: -1,
@@ -34,16 +40,10 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
   };
 
   handleClick = (newValue: number) => (e: React.SyntheticEvent<SVGElement>) => {
-    const { onChange, readonly, value } = this.asProps;
+    const { readonly } = this.asProps;
 
-    if (!readonly && onChange) {
-      onChange(newValue);
-
-      if (newValue <= value) {
-        this.setState({ clickedIndex: newValue });
-      } else {
-        this.setState({ clickedIndex: -1 });
-      }
+    if (!readonly) {
+      this.setValue(newValue);
     }
   };
 
@@ -75,13 +75,63 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
     };
   }
 
+  setValue = (newValue: number) => {
+    const { onChange, value } = this.asProps;
+
+    if (onChange) {
+      onChange(newValue);
+    }
+
+    if (newValue <= value) {
+      this.setState({ clickedIndex: newValue });
+    } else {
+      this.setState({ clickedIndex: -1 });
+    }
+  };
+
+  handleKeyDown = (event: React.KeyboardEvent) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) return;
+    event.preventDefault();
+
+    if (event.key === 'Enter') {
+      const { hoveredIndex } = this.state;
+
+      this.setValue(hoveredIndex + 1);
+    } else {
+      const { value } = this.asProps;
+      const { hoveredIndex } = this.state;
+
+      const direction = event.key === 'ArrowLeft' ? -1 : 1;
+      let newValue = hoveredIndex === -1 ? value + direction : hoveredIndex + 1 + direction;
+
+      if (newValue > MAX) newValue = MAX;
+      if (newValue < MIN) newValue = MIN;
+
+      this.setState({ hoveredIndex: newValue - 1 });
+    }
+  };
+
   render() {
-    const { styles } = this.asProps;
+    const { styles, value } = this.asProps;
+    const { hoveredIndex } = this.state;
     const SSliderRating = Root;
 
+    const label = value ? value : hoveredIndex === -1 ? 'Not set' : hoveredIndex + 1;
+
     return sstyled(styles)(
-      <SSliderRating render={Flex} gap={1} onMouseLeave={this.handleMouseLeave}>
-        {new Array(5).fill(null).map((_, index) => {
+      <SSliderRating
+        render={Flex}
+        gap={1}
+        onMouseLeave={this.handleMouseLeave}
+        onKeyDown={this.handleKeyDown}
+        role='slider'
+        aria-orientation='horizontal'
+        aria-valuemin={MIN}
+        aria-valuemax={MAX}
+        aria-valuetext={label}
+        aria-valuenow={hoveredIndex + 1}
+      >
+        {new Array(MAX).fill(null).map((_, index) => {
           return (
             <Box key={index} position={'relative'}>
               <SliderRating.Star />

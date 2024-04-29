@@ -228,7 +228,11 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
           <Notice.Content style={{ display: 'flex', alignItems: 'center' }}>
             <Text mr={3}>{notificationText}</Text>
             <Notice.Actions mt={0}>
-              <SliderRating value={rating} onChange={this.handleChangeRating} />
+              <SliderRating
+                value={rating}
+                onChange={this.handleChangeRating}
+                aria-label={notificationText}
+              />
             </Notice.Actions>
             {learnMoreLink && (
               <Link ml={3} href={learnMoreLink}>
