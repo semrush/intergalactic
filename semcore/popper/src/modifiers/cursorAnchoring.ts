@@ -1,4 +1,4 @@
-import getOffsetParent from '@popperjs/core/lib/dom-utils/getOffsetParent';
+import { getOffsetParent } from '../utils/getOffsetParent';
 import { Modifier } from '@popperjs/core';
 
 const clamp = (value: number, boundary1: number, boundary2: number) => {
