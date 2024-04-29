@@ -13,7 +13,7 @@ SHeadWrapper {
   position: relative;
 }
 
-SHeadWrapper[disabledWidthAnimation] {
+SHeadWrapper[animationsDisabled] {
   SColumn {
     transition: none;
   }
@@ -330,7 +330,7 @@ SRow[positioned] {
   position: absolute;
 }
 
-SBody[disabledWidthAnimation] SCell {
+SBody[animationsDisabled] SCell {
   transition: none;
 }
 

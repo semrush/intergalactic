@@ -115,8 +115,8 @@ export type DataTableHeadProps = BoxProps & {
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
 
-  /** Disabled animation for changing width */
-  disabledWidthAnimation?: boolean;
+  /** Disables column width change animation **/
+  animationsDisabled?: boolean;
 };
 
 /** @deprecated */
@@ -165,8 +165,8 @@ export type DataTableBodyProps = BoxProps & {
   /** Disabled scroll */
   disabledScroll?: boolean;
 
-  /** Disabled animation for changing width */
-  disabledWidthAnimation?: boolean;
+  /** Disables column width change animation **/
+  animationsDisabled?: boolean;
 };
 
 /** @deprecated */
