@@ -205,7 +205,9 @@ class Popper extends Component {
         this.observer?.observe(this.popperRef.current);
         if (this.asProps.disablePortal) return;
         let parent = this.popperRef.current?.parentElement;
-        while (parent) {
+        const traversingLimit = 10;
+        for (let i = 0; i < traversingLimit; i++) {
+          if (!parent) break;
           this.observer?.observe(parent);
           if (parent === document.body) break;
           parent = parent.parentElement;
