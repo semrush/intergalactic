@@ -1,7 +1,7 @@
 {
   "learnMore": "Learn more",
   "formTitle": "Feedback form",
-  "submitButton": "sendFeedback",
+  "submitButton": "Send feedback",
   "successMessage": "Thank you for your feedback!",
   "errorMessage": "Something went wrong. Please try again or contact us at email."
 }
