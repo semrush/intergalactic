@@ -24,7 +24,6 @@ import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { hasParent } from '@semcore/utils/lib/hasParent';
-import getOffsetParent from '@popperjs/core/lib/dom-utils/getOffsetParent';
 
 import createPopper from './createPopper';
 
