@@ -172,21 +172,16 @@ const useFocusLockHook = (
   const returnFocus = React.useCallback(() => {
     const trapNode = trapRef.current;
     if (trapNode && !isFocusInside(trapNode)) return;
-    const focusMastersStackCount = focusMastersStack.length;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
       setTimeout(() => {
-        if (focusMastersStackCount !== focusMastersStack.length) {
-          setFocus(returnFocusNode, trapNode);
-        }
+        setFocus(returnFocusNode, trapNode);
       }, 0);
     }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
       setTimeout(() => {
-        if (focusMastersStackCount !== focusMastersStack.length) {
-          setFocus(autoTrigger, trapNode);
-        }
+        setFocus(autoTrigger, trapNode);
       }, 0);
     }
   }, [returnFocusTo]);
@@ -217,12 +212,14 @@ const useFocusLockHook = (
     document.body.addEventListener('keydown', handleKeyboardEvent);
     document.body.addEventListener(syntheticEvents.keydown, handleKeyboardEvent);
 
-    if (autoFocus)
-      setFocus(
-        trapRef.current,
-        typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
-      );
-
+    if (autoFocus) {
+      setTimeout(() => {
+        setFocus(
+          trapRef.current!,
+          typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
+        );
+      }, 0);
+    }
     return () => {
       document.body.removeEventListener('focusout', handleFocusOut as any);
       document.body.removeEventListener(syntheticEvents.blur, handleFocusOut as any);

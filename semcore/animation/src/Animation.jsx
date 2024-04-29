@@ -65,7 +65,9 @@ class Animation extends Component {
 
   onAnimationEnd = (event) => {
     this.animationSupported = true;
-    event.stopPropagation();
+    this.handleAnimationEnd();
+  };
+  handleAnimationEnd = () => {
     if (!this.asProps.visible && !this.props.preserveNode) {
       this.setState({ render: false });
     }
@@ -82,7 +84,7 @@ class Animation extends Component {
     const duration = this.asProps.animationsDisabled ? 0 : this.asProps.duration + 100;
     setTimeout(() => {
       if (this.animationSupported) return;
-      this.onAnimationEnd({ stopPropagation: () => {} });
+      this.handleAnimationEnd();
     }, duration + delay);
   };
   componentDidMount() {
