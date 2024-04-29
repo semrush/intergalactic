@@ -8,8 +8,7 @@ import { axe } from '@semcore/testing-utils/axe';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import propsForElement from '@semcore/utils/lib/propsForElement';
-import FeedbackForm from '../src';
-import exp from 'node:constants';
+import FeedbackForm, { FiveStarForm } from '../src';
 
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
@@ -176,4 +175,31 @@ describe('FeedbackForm.Item', () => {
 
   shouldSupportClassName(Item, FeedbackForm);
   shouldSupportRef(Item, FeedbackForm);
+});
+
+describe('3-star FeedbackForm', () => {
+  beforeEach(cleanup);
+
+  test('Should not submit if invalid', async ({ expect }) => {
+    const required = (value) => (value ? undefined : 'Required');
+    const onSubmit = vi.fn();
+
+    const { getByText } = render(
+      <FiveStarForm
+        initialValues={{ input: '' }}
+        onSubmit={onSubmit}
+        formConfig={[{ key: 'input', label: 'test input', type: 'input', validate: required }]}
+        visible
+        rating={3}
+      />,
+    );
+
+    const Input = getByText('test input');
+
+    await userEvent.click(Input);
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
 });
