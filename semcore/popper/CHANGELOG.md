@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.29.0] - 2024-04-23
+
+### Added
+
+- `cursorAnchoring` prop that allows to make popper appear near the cursor if trigger is bigger than popper.
+
 ## [5.28.0] - 2024-04-16
 
 ### Added
