@@ -1,6 +1,7 @@
 import React from 'react';
 import { ROW_GROUP } from './DataTable';
 import { Property } from 'csstype';
+import { FlexProps } from '@semcore/flex-box';
 
 export type PseudoChildPropsGetter = (
   props: { [propName: string]: unknown },
@@ -32,23 +33,21 @@ export type Column<
   props: {
     name: string;
     ref: React.RefObject<HTMLElement>;
-  } & Partial<{
-    flex: Property.Flex;
-    justifyContent: Property.JustifyContent;
-    alignItems: Property.AlignItems;
-    onClick: (event: React.MouseEvent) => void;
-    onKeyDown: (event: React.KeyboardEvent) => void;
-    forwardRef: React.Ref<HTMLElement>;
-    style: React.CSSProperties;
-    fixed: 'left' | 'right';
-    children: React.ReactNode[];
-    resizable: boolean;
-    sortable: boolean | SortDirection;
-    sortDirection: SortDirection;
-    vBorders: boolean;
-    borderLeft: Property.BorderLeft;
-    borderRight: Property.BorderLeft;
-  }> &
+  } & FlexProps &
+    Partial<{
+      flex: Property.Flex;
+      onClick: (event: React.MouseEvent) => void;
+      onKeyDown: (event: React.KeyboardEvent) => void;
+      forwardRef: React.Ref<HTMLElement>;
+      style: React.CSSProperties;
+      fixed: 'left' | 'right';
+      resizable: boolean;
+      sortable: boolean | SortDirection;
+      sortDirection: SortDirection;
+      vBorders: boolean;
+      borderLeft: Property.BorderLeft;
+      borderRight: Property.BorderLeft;
+    }> &
     Props;
   columns: Column[];
   parentColumns: Column[];

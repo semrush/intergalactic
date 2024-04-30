@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.0] - 2024-04-26
+
+### Changed
+
+- If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
+
 ## [4.34.3] - 2024-04-22
 
 ### Fixed

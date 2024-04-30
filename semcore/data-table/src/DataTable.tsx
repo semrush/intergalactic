@@ -114,6 +114,9 @@ export type DataTableHeadProps = BoxProps & {
 
   /** Enable scroll bar element in header */
   withScrollBar?: boolean;
+
+  /** Disables column width change animation **/
+  animationsDisabled?: boolean;
 };
 
 /** @deprecated */
@@ -161,6 +164,9 @@ export type DataTableBodyProps = BoxProps & {
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Disabled scroll */
   disabledScroll?: boolean;
+
+  /** Disables column width change animation **/
+  animationsDisabled?: boolean;
 };
 
 /** @deprecated */
@@ -252,11 +258,27 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   setVarStyle(columns: Column[]) {
-    for (const column of columns) {
-      if (column.setVar) {
-        this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
-      }
+    const animations = columns
+      .flatMap((column) => column.props.ref.current?.getAnimations?.())
+      .filter((a) => a !== undefined) as Animation[];
+
+    let animationPromise: Promise<Animation[] | void> = Promise.resolve();
+
+    if (animations.length > 0) {
+      animationPromise = Promise.all(
+        animations.map((animation) => {
+          return animation.finished;
+        }),
+      );
     }
+
+    animationPromise.then(() => {
+      for (const column of columns) {
+        if (column.setVar) {
+          this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
+        }
+      }
+    });
   }
 
   childrenToColumns(
