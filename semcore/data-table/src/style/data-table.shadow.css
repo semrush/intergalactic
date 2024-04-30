@@ -13,6 +13,12 @@ SHeadWrapper {
   position: relative;
 }
 
+SHeadWrapper[animationsDisabled] {
+  SColumn {
+    transition: none;
+  }
+}
+
 SHeadWrapper[sticky] {
   position: sticky;
   top: 0;
@@ -41,6 +47,8 @@ SColumn {
     outline: none;
     box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
+
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, min-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out, max-width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
 SColumn[hidden] {
@@ -90,11 +98,11 @@ SColumn[sortable] {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
 
-  &[justifyContent='right'] SSortWrapper {
-    position: absolute;
-    right: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  &[justifyContent='right'][active] SSortWrapper {
+    position: relative;
   }
-  &[justifyContent='right']:hover SSortWrapper, &[justifyContent='right']:focus SSortWrapper, &[justifyContent='right'][active] SSortWrapper {
+  &[justifyContent='right'][active='false']:hover SSortWrapper, &[justifyContent='right'][active='false']:focus SSortWrapper {
+    position: absolute;
     right: var(--intergalactic-spacing-3x, 12px);
   }
 
@@ -161,12 +169,12 @@ SCell[borderRight] {
 }
 
 SSortWrapper {
-  flex-shrink: 99999;
+  flex-shrink: 1;
   position: relative;
   flex-basis: 0;
   min-height: 16px;
   opacity: 0;
-  transition: all calc(var(--intergalactic-duration-medium, 300) * 1ms) ease;
+  transition: all calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
 SSortWrapper:before {
@@ -322,6 +330,10 @@ SRow[positioned] {
   position: absolute;
 }
 
+SBody[animationsDisabled] SCell {
+  transition: none;
+}
+
 SCell {
   display: flex;
   flex: 1;
@@ -334,6 +346,7 @@ SCell {
   overflow: hidden;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
 }
 
 SCell[use='primary'] {

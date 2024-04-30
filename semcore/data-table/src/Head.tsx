@@ -9,6 +9,9 @@ import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
+import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
+
+export const SORT_ICON_WIDTH = 20;
 
 const SORTING_ICON = {
   desc: SortDesc,
@@ -30,12 +33,16 @@ type AsProps = {
   ['data-ui-name']: string;
   uid?: string;
   withScrollBar?: boolean;
+  animationsDisabled?: boolean;
 };
 
 class Head extends Component<AsProps> {
   columns: Column[] = [];
 
   static displayName: string;
+
+  sortWrapperRefs = new Map<Node, boolean>();
+  defaultMinWidths = new Map<Node, number>();
 
   bindHandlerSortClick = (name: string) => (event: React.MouseEvent) => {
     this.asProps.$onSortClick(name, event);
@@ -48,10 +55,86 @@ class Head extends Component<AsProps> {
     }
   };
 
-  refColumn = (props: Column['props']) => (ref: HTMLElement) => {
-    setRef(props.ref, ref);
-    if (props.forwardRef) {
-      setRef(props.forwardRef, ref);
+  makeSortRefHandler = (active: boolean) => (ref: HTMLElement | null) => {
+    if (ref) {
+      this.sortWrapperRefs.set(ref, active);
+    }
+  };
+
+  makeColumnRefHandler = (column: Column) => (ref: HTMLElement | null) => {
+    setRef(column.props.ref, ref);
+    if (column.props.forwardRef) {
+      setRef(column.props.forwardRef, ref);
+    }
+
+    if (ref && ref.getAttribute('scope') === 'col') {
+      this.calculateMinWidth(ref, column);
+    }
+  };
+
+  calculateMinWidth = (node: HTMLElement, column: Column) => {
+    if (
+      !this.defaultMinWidths.has(node) &&
+      (column.props.wMin || column.props.wMax || column.props.w)
+    ) {
+      const computedStyle = window.getComputedStyle(node);
+
+      this.defaultMinWidths.set(node, cssToIntDefault(computedStyle.getPropertyValue('width')));
+    }
+
+    if (column.active) {
+      const clonedColumn = document.createElement('div');
+      const computedStyle = window.getComputedStyle(node);
+
+      node.childNodes.forEach((node) => {
+        if (!this.sortWrapperRefs.get(node)) {
+          clonedColumn.append(node.cloneNode(true));
+        }
+      });
+
+      clonedColumn.style.setProperty('visibility', 'hidden', 'important');
+
+      const styles = [
+        'display',
+        'flex',
+        'margin',
+        'padding',
+        'background',
+        'font-style',
+        'font-width',
+        'font-size',
+        'font-weight',
+      ];
+
+      styles.forEach((key) => {
+        clonedColumn.style.setProperty(
+          key,
+          computedStyle.getPropertyValue(key),
+          computedStyle.getPropertyPriority(key),
+        );
+      });
+
+      clonedColumn.style.setProperty('width', 'fit-content', 'important');
+
+      document.body.appendChild(clonedColumn);
+
+      const computedWidth = Math.floor(clonedColumn.getBoundingClientRect().width);
+
+      document.body.removeChild(clonedColumn);
+
+      const defaultNodeWidth = this.defaultMinWidths.get(node) ?? 0;
+
+      if (computedWidth >= defaultNodeWidth) {
+        node.style.setProperty('min-width', defaultNodeWidth + SORT_ICON_WIDTH + 'px');
+      } else {
+        const freeSpace = defaultNodeWidth - computedWidth;
+
+        if (freeSpace < SORT_ICON_WIDTH) {
+          node.style.setProperty('min-width', computedWidth + SORT_ICON_WIDTH + 'px');
+        }
+      }
+    } else if (this.defaultMinWidths.has(node)) {
+      node.style.setProperty('min-width', this.defaultMinWidths.get(node) + 'px');
     }
   };
 
@@ -101,7 +184,7 @@ class Head extends Component<AsProps> {
         tabIndex={column.sortable ? 0 : undefined}
         __excludeProps={['hidden']}
         {...column.props}
-        ref={this.refColumn(column.props)}
+        ref={this.makeColumnRefHandler(column)}
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,
@@ -132,7 +215,7 @@ class Head extends Component<AsProps> {
           <>
             {column.props.children}
             {column.sortable ? (
-              <SSortWrapper>
+              <SSortWrapper ref={this.makeSortRefHandler(column.active)}>
                 <SSortIcon active={column.active} />
               </SSortWrapper>
             ) : null}
@@ -153,7 +236,7 @@ class Head extends Component<AsProps> {
       $scrollRef,
       sticky,
       withScrollBar,
-      hidden,
+      animationsDisabled,
     } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
@@ -167,7 +250,7 @@ class Head extends Component<AsProps> {
     );
 
     return sstyled(styles)(
-      <SHeadWrapper sticky={sticky}>
+      <SHeadWrapper sticky={sticky} animationsDisabled={animationsDisabled}>
         <ScrollArea
           leftOffset={offsetLeftSum}
           rightOffset={offsetRightSum}

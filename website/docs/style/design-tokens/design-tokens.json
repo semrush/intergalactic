@@ -3397,7 +3397,7 @@
     "rawValue": "300",
     "computedValue": "300",
     "description": "Should be used for more complex effects (such as Modal)",
-    "components": ["data-table", "date-picker"]
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-duration-fast",
@@ -3413,7 +3413,7 @@
     "rawValue": "100",
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": ["drag-and-drop"]
+    "components": ["data-table", "drag-and-drop"]
   },
   {
     "name": "--intergalactic-duration-switch",
