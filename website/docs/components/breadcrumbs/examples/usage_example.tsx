@@ -3,8 +3,8 @@ import Breadcrumbs from 'intergalactic/breadcrumbs';
 import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => (
-  <Breadcrumbs tag='nav'>
-    <Tooltip tag={Breadcrumbs.Item} active={false} href='#' title='Projects'>
+  <Breadcrumbs>
+    <Tooltip tag={Breadcrumbs.Item} active={false} href='#' title='Projects' role={'link'}>
       Projects
     </Tooltip>
     <Tooltip
@@ -12,6 +12,7 @@ const Demo = () => (
       active={false}
       href='#'
       title="This title is longer than a giraffe's neck, I bet it's been doing neck workouts!"
+      role={'link'}
     >
       This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
     </Tooltip>

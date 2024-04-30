@@ -14,7 +14,7 @@ class Breadcrumbs extends Component {
   static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     separator: <SSeparator />,
-    tag: 'div',
+    tag: 'nav',
     i18n: localizedMessages,
     locale: 'en',
   };
@@ -29,32 +29,41 @@ class Breadcrumbs extends Component {
 
   render() {
     const SBreadcrumbs = Root;
-    const { styles, getI18nText } = this.asProps;
+    const SOl = 'ol';
+    const { styles, getI18nText, Children } = this.asProps;
     return sstyled(styles)(
-      <SBreadcrumbs render={Box} aria-label={getI18nText('breadcrumbs')} role='group' />,
+      <SBreadcrumbs render={Box} aria-label={getI18nText('breadcrumbs')}>
+        <SOl>
+          <Children />
+        </SOl>
+      </SBreadcrumbs>,
     );
   }
 }
 
 class Item extends Component {
-  static defaultProps({ active }) {
-    return {
-      disabled: active,
-      tag: 'a',
-      locale: 'en',
-    };
-  }
+  static defaultProps = {
+    tag: 'a',
+    locale: 'en',
+  };
 
   static enhance = [keyboardFocusEnhance()];
 
   render() {
     const SBreadcrumbsItem = Root;
-    const { styles, separator, active } = this.asProps;
+    const { styles, separator, active, disabled, href } = this.asProps;
     const SSeparator = 'div';
+    const SLi = 'li';
 
     return sstyled(styles)(
       <>
-        <SBreadcrumbsItem render={Box} aria-current={active ? 'page' : undefined} />
+        <SLi>
+          <SBreadcrumbsItem
+            render={Box}
+            use:href={!active && !disabled ? href : undefined}
+            aria-current={active ? 'page' : undefined}
+          />
+        </SLi>
         <SSeparator aria-hidden='true'>{separator}</SSeparator>
       </>,
     );
