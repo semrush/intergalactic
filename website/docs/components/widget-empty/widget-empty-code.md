@@ -6,7 +6,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 ## NoData example
 
-The template already includes the title. You only need to provide the data type and description.
+The template already includes a `title` and default `description`, you only need to specify the [illustration](/style/illustration/illustration) `type`. You can provide a custom `description` and additional elements, if you need.
 
 ::: tip
 The locale can be passed directly to the component or wrap your application in `I18nProvider` from the `@react-semocre/utils` package, as shown in the example below.
@@ -20,19 +20,9 @@ The locale can be passed directly to the component or wrap your application in `
 
 :::
 
-## NothingFound example
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/nothingfound_example.tsx';
-</script>
-
-:::
-
 ## Error example
 
-The template already includes the `title` and the `icon`. You only need to provide the `description` and additional elements if necessary.
+The template already includes default `title`, `icon` and `description`. You can provide a custom `description` and additional elements if you need.
 
 ::: sandbox
 
