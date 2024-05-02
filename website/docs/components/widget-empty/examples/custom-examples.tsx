@@ -7,9 +7,7 @@ const Demo = () => {
     <div>
       <Card mt={4}>
         <Card.Header>
-          <Card.Title>
-            Congratulations!
-          </Card.Title>
+          <Card.Title>Congratulations!</Card.Title>
         </Card.Header>
         <Card.Body>
           <WidgetEmpty icon={getIconPath('good')}>
@@ -20,9 +18,7 @@ const Demo = () => {
       </Card>
       <Card mt={4}>
         <Card.Header>
-          <Card.Title>
-            Keep going!
-          </Card.Title>
+          <Card.Title>Keep going!</Card.Title>
         </Card.Header>
         <Card.Body>
           <WidgetEmpty icon={getIconPath('nexttime')}>

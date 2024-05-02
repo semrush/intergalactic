@@ -43,9 +43,7 @@ const Demo = () => {
         </Card>
         <Card mt={4}>
           <Card.Header>
-            <Card.Title>
-              Nothing found
-            </Card.Title>
+            <Card.Title>Nothing found</Card.Title>
           </Card.Header>
           <Card.Body>
             <NoData type='nothing-found'>
