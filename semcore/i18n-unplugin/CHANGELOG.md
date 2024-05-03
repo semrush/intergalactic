@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.17.15] - 2024-04-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [2.20.2 ~> 2.21.0]).
+
+## [0.17.14] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [0.17.13] - 2024-04-16
 
 ### Changed

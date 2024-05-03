@@ -57,7 +57,7 @@ class PlotRoot extends Component {
   };
 
   setContext() {
-    const { scale, data, width, height, locale, resolveColor, patterns } = this.asProps;
+    const { scale, data, width, height, locale, resolveColor, patterns, duration } = this.asProps;
 
     const yScaleDomain = scale?.[1]?.domain?.();
     if (yScaleDomain?.length && data?.length) {
@@ -78,6 +78,7 @@ class PlotRoot extends Component {
         dataHintsHandler: this.dataHintsHandler,
         resolveColor,
         patterns,
+        duration,
       },
     };
   }

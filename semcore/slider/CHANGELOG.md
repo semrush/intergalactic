@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Slider options text now has secondary color and smaller font size by default.
 
+## [4.21.2] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.22.1 ~> 5.22.2], `@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [4.21.1] - 2024-04-16
 
 ### Changed
