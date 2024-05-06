@@ -4,19 +4,31 @@ import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
 import Button from 'intergalactic/button';
+import FileExportM from 'intergalactic/icon/FileExport/m'
+import CheckAltM from 'intergalactic/icon/CheckAlt/m'
 
 const Demo = () => (
   <Flex gap={4} flexWrap>
-    <Hint title='Hint may contain short text only.' tag={Link}>
-      Hint
+    <Hint title='Export to PDF'>
+      <Button>
+        <Button.Addon>
+          <FileExportM />
+        </Button.Addon>
+      </Button>
     </Hint>
-    <Tooltip>
-      <Tooltip.Trigger tag={Link}>Tooltip</Tooltip.Trigger>
-      <Tooltip.Popper>
-        Default tooltip may contain formatted tex, icons,{' '}
-        <Link href='https://semrush.com'>links</Link> and other elements. Be brief, add only one
-        sentence for its content.
-      </Tooltip.Popper>
+    <Hint title='You confirmed your email' role='image'>
+      <CheckAltM />
+    </Hint>
+    <Hint title='You confirmed your email' aria-hidden={false} tag={CheckAltM} />
+    <Tooltip tag={Link} href='https://google.com' title='Default tooltip contains short text explaining something about the trigger.'>
+      Tooltip
+    </Tooltip>
+    <Tooltip title='Default tooltip contains short text explaining something about the trigger.'>
+      <Button aria-label='Export to PDF'>
+        <Button.Addon>
+          <FileExportM />
+        </Button.Addon>
+      </Button>
     </Tooltip>
     <DescriptionTooltip>
       <DescriptionTooltip.Trigger tag={Button}>Additional information</DescriptionTooltip.Trigger>

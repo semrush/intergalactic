@@ -15,10 +15,6 @@ The tooltip component is a wrap over [intergalactic/popper](/utils/popper/popper
 
 ## Basic usage
 
-As previously mentioned, the tooltip is a styled version of [popper](/utils/popper/popper) and operates similarly.
-
-`Tooltip` contains `Hint` and `DescriptionTooltip`. By using correct component, you will enhance end interface accessibility. 
-
 1. Use `Hint` if the trigger lacks a visible name. Content should be brief and non-interactive.
 2. Use `Tooltip` when the trigger has a visible name and the content consists of a single text sentence. It may also include interactive elements.
 3. Use `DescriptionTooltip` when the trigger has a visible name and the content provides a significant amount of additional information. It may contain numerous interactive elements.
