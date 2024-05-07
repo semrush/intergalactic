@@ -6,7 +6,7 @@ import Link from 'intergalactic/link';
 import Button from 'intergalactic/button';
 import FileExportM from 'intergalactic/icon/FileExport/m';
 import CheckAltM from 'intergalactic/icon/CheckAlt/m';
-import InfoM from 'intergalactic/icon/Info/m'
+import InfoM from 'intergalactic/icon/Info/m';
 
 const Demo = () => (
   <Flex gap={4} flexWrap>
