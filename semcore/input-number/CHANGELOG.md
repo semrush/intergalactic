@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.25.1] - 2024-05-08
+
+### Fixed
+
+- Controlled mode.
+
 ## [5.25.0] - 2024-04-29
 
 ### Changed
