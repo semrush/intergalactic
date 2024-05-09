@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.0] - 2024-05-09
+
+### Added
+
+- `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+
 ## [4.39.0] - 2024-04-29
 
 ### Changed
