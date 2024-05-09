@@ -1,6 +1,5 @@
 import React from 'react';
-// @ts-ignore
-import { CHILDREN_COMPONENT } from '@semcore/core';
+import { CHILDREN_COMPONENT } from './core';
 
 function getOriginChildren(Children: any): any {
   if (React.isValidElement(Children.origin) && Children.origin.type[CHILDREN_COMPONENT]) {
