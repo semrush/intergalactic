@@ -92,18 +92,18 @@ Show this message when:
 ![](static/no-data-button.png)
 
 ::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#nodata-example). Refer to the [documentation WidhetEmpty](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#nodata-example). Refer to the [WidgetEmpty documentation](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
 :::
 
 ## Nothing found
 
-Display this state when the user has been searching or applying a filter in the table, and nothing is found.
+Display this state when the user has been searching or filtering data, and nothing was found.
 
 ::: tip
 In this state, save the active state of the sorted column.
 :::
 
-Include a control, such as a "Clear Filters" button, to help the user correct the situation.
+Include a control, such as a "Clear filters" button, to help the user correct the situation.
 
 ![](static/nothing-found-button.png)
 
@@ -126,7 +126,7 @@ Table: Examples of "Something went wrong" state
 | We don't know about the problem yet        | ![](static/error-not-known.png) |
 
 ::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#error-example). Refer to the [documentation WidhetEmpty](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#error-example). Refer to the [WidgetEmpty documentation](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
 :::
 
 ## Message text
