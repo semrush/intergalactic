@@ -108,10 +108,10 @@ class Popper extends Component {
     },
     hover: {
       trigger: [
-        ['onMouseEnter', 'onKeyboardFocus'],
+        ['onMouseEnter', 'onKeyboardFocus', 'onTouchStart'],
         ['onMouseLeave', 'onBlur'],
       ],
-      popper: [['onMouseEnter', 'onFocusCapture'], ['onMouseLeave']],
+      popper: [['onMouseEnter', 'onFocusCapture', 'onTouchStart'], ['onMouseLeave']],
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
