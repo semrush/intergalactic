@@ -15,13 +15,13 @@ Table: Basic rules for table states
 |                                                       | First screen                                                | Scrolling the page  |
 | ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | Example with [ProgressBar](/components/progress-bar/progress-bar) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
-| Example with [Spin](/components/spin/spin)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
+| Example with [SpinContainer](/components/spin-container/spin-container)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
 
 ::: tip
 Avoid changing the table height when it's switched between states.
 :::
 
-## Skeleton
+## Initial loading
 
 Display the structure of the page and data using the [Skeleton](/components/skeleton/skeleton) when loading data for the first time. Show the skeleton for the first three-five rows, not the entire table.
 
@@ -39,7 +39,7 @@ Omit [Pagination](/components/pagination/pagination) when loading the table for 
 
 ![](static/skeleton-secondary.png)
 
-## ProgressBar
+## Long loading
 
 If data gathering takes more than 1 minute, use the [ProgressBar](/components/progress-bar/progress-bar) to indicate that data is being collected. The progress bar should be sticky and centered relative to the scrolling screen.
 
@@ -49,9 +49,9 @@ When scrolling the table, fix the progress bar to the table header while keeping
 
 ![](static/table-sticky-2.png)
 
-## Loading
+## Loading filtered or sorted data
 
-Use [Spin](/components/spin/spin) when filtering, sorting, or searching data. If data loading is fast, skip this state.
+Use [SpinContainer](/components/spin-container/spin-container) when filtering, sorting, or searching data. If data loading is fast, skip this state.
 
 **Use it when:**
 
@@ -154,13 +154,13 @@ Keep the header for all empty states of the table, including sorting icons.
 
 ![](static/cell-na-tooltip.png)
 
-### Data uploading in cell
+### Data loading in cell
 
 ::: tip
 Use [Skeleton](/components/skeleton/skeleton) when loading the table for the first time.
 :::
 
-When loading content in one or more cells, show the [Spin](/components/spin/spin) of XS size.
+When loading content in one or several cells, show the [Spin](/components/spin/spin) of XS size.
 
 ![](static/cell-loading.png)
 
