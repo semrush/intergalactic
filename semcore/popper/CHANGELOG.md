@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.29.1] - 2024-04-26
+
+### Fixed
+
+- Page resizing was causing popper to move to the wrong position.
+
 ## [5.29.0] - 2024-04-23
 
 ### Added
