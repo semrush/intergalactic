@@ -1,10 +1,7 @@
 import React from 'react';
-// @ts-ignore
-import assignProps from '@semcore/utils/lib/assignProps';
-// @ts-ignore
-import pick from '@semcore/utils/lib/pick';
-// @ts-ignore
-import logger from '@semcore/utils/lib/logger';
+import assignProps from '../../assignProps';
+import pick from '../../pick';
+import logger from '../../logger';
 
 function assign(target: any, source: any) {
   return Object.defineProperties(
