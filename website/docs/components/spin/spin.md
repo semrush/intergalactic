@@ -111,9 +111,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 ## Description
 
-**Spin** is a component used to display the loading state of a page, section, or widget when the system does not have an exact data loading time.
+**Spin** is a component used to display the loading state of a single element, such as a [table cell](/table-group/table-states/table-states#data-loading-in-cell).
 
-To display Spin around any component, use [SpinContainer](/components/spin-container/spin-container).
+For loading whole tables, forms, widgets and other complex components, use [SpinContainer](/components/spin-container/spin-container).
 
 ::: tip
 This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
