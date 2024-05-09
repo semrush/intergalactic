@@ -134,6 +134,24 @@ test.describe('Popper', () => {
       await expect(option3Locator).toHaveCount(0);
     });
   });
+  test('page resizing', async ({ page }) => {
+    const standPath = 'semcore/popper/__tests__/stands/page-resizing.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const popper = await page.locator('text=Popper');
+    const popperY = (await popper.boundingBox())!.y;
+
+    const resizeButton = await page.locator('text=Change height');
+    await resizeButton.click();
+
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
+    const newPopperY = (await popper.boundingBox())!.y;
+
+    expect(Math.round(newPopperY)).toBeCloseTo(Math.round(popperY));
+  });
   test.describe('hover interaction', () => {
     test('with mouse', async ({ page }) => {
       const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';

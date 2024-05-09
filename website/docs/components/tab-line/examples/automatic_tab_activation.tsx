@@ -20,7 +20,11 @@ const Demo = () => {
           <Badge bg='green-400'>new</Badge>
         </TabLine.Item.Addon>
       </TabLine.Item>
-      <Tooltip title="Progress isn't available during collecting process" placement='top'>
+      <Tooltip
+        title="Progress isn't available during collecting process"
+        placement='top'
+        role='tab'
+      >
         <TabLine.Item disabled value={3}>
           Progress
         </TabLine.Item>

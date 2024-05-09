@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Poppers with `interaction=hover` were not opening on touch devices.
 
+## [5.29.1] - 2024-04-26
+
+### Fixed
+
+- Page resizing was causing popper to move to the wrong position.
+
 ## [5.29.0] - 2024-04-23
 
 ### Added
