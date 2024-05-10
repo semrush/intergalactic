@@ -37,15 +37,25 @@ const fetchData = async (query) => {
 };
 
 const Demo = () => {
+  const [visible, setVisible] = React.useState(false);
   const [query, setQuery] = React.useState('');
   const [suggestions, setSuggestions] = React.useState([]);
   const loadSuggestions = React.useCallback(
-    debounce((query) => fetchData(query).then((suggestions) => setSuggestions(suggestions)), 300),
+    debounce(
+      (query: string) => fetchData(query).then((suggestions) => setSuggestions(suggestions)),
+      300,
+    ),
     [],
   );
   React.useEffect(() => {
     loadSuggestions(query);
   }, [query]);
+
+  const handleKeyDown = React.useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Backspace') {
+      setVisible(true);
+    }
+  }, []);
 
   return (
     <>
@@ -53,7 +63,13 @@ const Demo = () => {
         Your website
       </Text>
       <Box mt={2}>
-        <Select interaction='focus' onChange={setQuery} value={query}>
+        <Select
+          interaction='focus'
+          onChange={setQuery}
+          value={query}
+          visible={visible}
+          onVisibleChange={setVisible}
+        >
           <Select.Trigger tag={Input}>
             {() => (
               <Input.Value
@@ -61,6 +77,7 @@ const Demo = () => {
                 role='combobox'
                 placeholder='Type domain or URL'
                 onChange={setQuery}
+                onKeyDown={handleKeyDown}
                 id='website-autosuggest'
               />
             )}
