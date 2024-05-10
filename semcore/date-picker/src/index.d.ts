@@ -293,11 +293,12 @@ export type BaseInputTriggerProps = InputProps &
     locale?: string;
     onDisplayedPeriodChange?: (date: Date) => void;
   };
-export type InputTriggerProps = BaseInputTriggerProps &
-  TooltipProps & {
-    value?: Date;
-    onChange?: (date: Date, event: ChangeEvent) => void;
-  };
+export type InputTriggerProps = BaseInputTriggerProps & {
+  value?: Date;
+  onChange?: (date: Date, event: ChangeEvent) => void;
+  /** Flag to show or hide error state (and tooltip with error message) on Input */
+  showError?: boolean;
+};
 
 export type RangeInputTriggerProps = BaseInputTriggerProps & {
   value?: Date[];
