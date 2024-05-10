@@ -1,62 +1,68 @@
-## [15.81.0] - 2024-04-29
-
-### @semcore/d3-chart
-
-- **Fixed** `duration` prop on `Chart` component.
+## [15.82.0] - 2024-05-10
 
 ### @semcore/data-table
 
-- **Fixed** Warning in console about invalid value of `tabIndex` attribute.
+- **Changed** If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
 
-### @semcore/drag-and-drop
+### @semcore/date-picker
 
-- **Fixed** Focus ring styles.
-- **Fixed** Dropzone was draggable by keyboard.
-- **Fixed** Screen readers were announcing wrong items' position.
-- **Fixed** There were a visual glitch right after item drop.
-- **Changed** Removed additional padding that was added to the draggable element.
-- **Changed** Keyboard arrows navigation better works with built-in arrows navigation of base components and better works with items grid placement.
+- **Added** `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- **Added** Render children in `MonthDateRangeComparator.RangeCalendar`.
 
-### @semcore/dropdown-menu
+### @semcore/input
 
-- **Fixed** It was loosing browser focus with DragAndDrop component integration.
+- **Fixed** `disabled` input was not loosing focused styles when it was disabled.
+- **Changed** `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
 
-### @semcore/ellipsis
+### @semcore/input-number
 
-- **Changed** `cursorAnchoring` added to the list of props that are passed to the build-in tooltip.
-
-### @semcore/link
-
-- **Changed** Disabled link now will always have empty href attribute.
-- **Changed** Removed `aria-disabled` and `disabled` DOM attributes from Link as it was violating the specs.
+- **Fixed** Controlled mode.
 
 ### @semcore/popper
 
-- **Added** `cursorAnchoring` prop that allows to make popper appear near the cursor if trigger is bigger than popper.
+- **Fixed** Poppers with `interaction=hover` were not opening on touch devices.
+- **Fixed** Page resizing was causing popper to move to the wrong position.
 
-### @semcore/slider
+### @semcore/tab-line
 
-- **Changed** Slider options text now has secondary color and smaller font size by default.
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
 
-### @semcore/textarea
+### @semcore/tab-panel
 
-- **Fixed** `minRows` prop behaviour.
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
 
-### @semcore/tooltip
+## [15.82.0] - 2024-05-10
 
-- **Changed** Renamed types `HintProps` to `TooltipHintProps` and `HintPopperProps` to `TooltipHintPopperProps`. Old names are preserved and deprecated.
+### @semcore/data-table
 
-### @semcore/typography
+- **Changed** If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
 
-- **Changed** Renamed types `HintProps` to `TypographyHintProps`. Old name is preserved and deprecated.
+### @semcore/date-picker
 
-### @semcore/utils
+- **Added** `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- **Added** Render children in `MonthDateRangeComparator.RangeCalendar`.
 
-- **Added** New token for the color of stripes in the diagonal chart grid pattern: `--intergalactic-chart-grid-period-pattern`.
+### @semcore/input
 
-### @semcore/widget-empty
+- **Fixed** `disabled` input was not loosing focused styles when it was disabled.
+- **Changed** `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
 
-- **Changed** Added role `status`.
+### @semcore/input-number
+
+- **Fixed** Controlled mode.
+
+### @semcore/popper
+
+- **Fixed** Poppers with `interaction=hover` were not opening on touch devices.
+- **Fixed** Page resizing was causing popper to move to the wrong position.
+
+### @semcore/tab-line
+
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
+
+### @semcore/tab-panel
+
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
 
 ## [15.80.0] - 2024-04-22
 
