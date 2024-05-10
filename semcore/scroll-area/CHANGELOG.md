@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.26.0] - 2024-05-10
+
+### Added
+
+- Auto resizing for `ScrollArea` if the parent element changes its size.
+
 ## [5.25.0] - 2024-04-29
 
 ### Changed

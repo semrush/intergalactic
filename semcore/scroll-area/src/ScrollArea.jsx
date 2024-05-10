@@ -71,10 +71,25 @@ class ScrollAreaRoot extends Component {
     if (!this.$container || !this.$wrapper) return size;
     const { scrollWidth, scrollHeight } = this.$container;
     const style = window.getComputedStyle(this.$wrapper);
-    const maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
-    const maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
+    const parent = this.$wrapper.parentElement;
+    const parentRect = parent?.getBoundingClientRect() ?? { width: 0, height: 0 };
+    const { wMax, hMax } = this.asProps;
+
+    if (wMax) this.$wrapper.style.setProperty('max-width', `${wMax}px`);
+    if (hMax) this.$wrapper.style.setProperty('max-height', `${hMax}px`);
+
+    let maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
+    let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth) {
+      if (parent.scrollWidth > parentRect.width) {
+        const diff = parent.scrollWidth - parentRect.width;
+
+        maxWidth = maxWidth - diff;
+
+        this.$wrapper.style.setProperty('max-width', `${maxWidth}px`);
+      }
+
       if (scrollWidth > maxWidth) {
         size.width = `${maxWidth}px`;
       } else {
@@ -83,6 +98,14 @@ class ScrollAreaRoot extends Component {
     }
 
     if (maxHeight) {
+      if (parent.scrollHeight > parentRect.height) {
+        const diff = parent.scrollHeight - parentRect.height;
+
+        maxHeight = maxHeight - diff;
+
+        this.$wrapper.style.setProperty('max-height', `${maxHeight}px`);
+      }
+
       if (scrollHeight > maxHeight) {
         size.height = `${maxHeight}px`;
       } else {
