@@ -53,7 +53,6 @@ class TabPanelRoot extends Component {
       onClick: this.handleClick(props.value),
       onKeyDown: this.handleKeyDown(props.value),
       tabIndex: isSelected ? 0 : -1,
-      'aria-posinset': index + 1,
       'aria-selected': isSelected,
     };
   }
