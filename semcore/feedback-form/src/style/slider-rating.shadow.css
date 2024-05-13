@@ -1,7 +1,10 @@
+SSliderRating SStar {
+  transition: all 200ms ease-out;
+}
+
 SSliderRating SStar:hover {
   cursor: pointer;
   transform: scale(1.3);
-  transition: all 200ms ease-out;
 }
 
 SSliderRating[keyboardFocused] {

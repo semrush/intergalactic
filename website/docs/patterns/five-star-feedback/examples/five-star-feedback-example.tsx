@@ -1,5 +1,5 @@
 import React from 'react';
-import FeedbackForm, { FiveStarForm } from 'intergalactic/feedback-form';
+import FeedbackForm, { FeedbackRating } from 'intergalactic/feedback-form';
 import Link from 'intergalactic/link';
 import { Text } from 'intergalactic/typography';
 
@@ -71,11 +71,11 @@ class FeedbackLink extends React.PureComponent<{}, State> {
     const { status, rating, visible, notificationVisible } = this.state;
 
     return (
-      <FiveStarForm
+      <FeedbackRating
         notificationVisible={notificationVisible}
         notificationText={'Do you like it?'}
         learnMoreLink={'http://google.com'}
-        Header={<FiveStarForm.Header>Some header for modal</FiveStarForm.Header>}
+        Header={<FeedbackRating.Header>Modal title</FeedbackRating.Header>}
         submitText={'Send feedback'}
         initialValues={initValue}
         rating={rating}
@@ -104,13 +104,13 @@ class FeedbackLink extends React.PureComponent<{}, State> {
             key: 'description',
             label: 'If there anything we could improve?',
             type: 'textarea',
-            validate: FiveStarForm.validate.description('please, set description'),
+            validate: FeedbackRating.validate.description('Please share your ideas.'),
           },
           {
             key: 'email',
             label: 'Reply-to email',
             type: 'input',
-            validate: FiveStarForm.validate.email('Set correct email'),
+            validate: FeedbackRating.validate.email('Set correct email'),
             description: (
               <Text size={200} color='--intergalactic-text-secondary'>
                 We will only use this email to respond to you on your feedback.{' '}
