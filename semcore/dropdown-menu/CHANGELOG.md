@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.1] - 2024-05-13
+
+### Fixed
+
+- In some cases React error "Uncaught TypeError: destroy is not a function" was thrown.
+
 ## [4.29.0] - 2024-05-10
 
 ### Changed

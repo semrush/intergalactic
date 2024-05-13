@@ -572,10 +572,9 @@ function Title(props) {
 }
 
 function Trigger({ keyboardFocused, onKeyboardFocusedStateChange }) {
-  React.useEffect(
-    () => onKeyboardFocusedStateChange(keyboardFocused),
-    [keyboardFocused, onKeyboardFocusedStateChange],
-  );
+  React.useEffect(() => {
+    onKeyboardFocusedStateChange(keyboardFocused);
+  }, [keyboardFocused, onKeyboardFocusedStateChange]);
 
   return <Root render={Dropdown.Trigger} aria-haspopup='true' />;
 }
