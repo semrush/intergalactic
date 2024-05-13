@@ -15,7 +15,7 @@ export type FormConfigItem = {
   validate?: (value: any) => Error | string | undefined;
 };
 
-export type FiveStarFormProps = Intergalactic.InternalTypings.EfficientOmit<
+export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   FeedbackFormProps,
   'initialValues' | 'loading'
 > & {
@@ -47,11 +47,11 @@ export type FiveStarFormProps = Intergalactic.InternalTypings.EfficientOmit<
   initialValues: Record<string, any> & { rating: number };
 };
 
-declare const FiveStarFormType: Intergalactic.Component<'form', FiveStarFormProps> & {
+declare const FeedbackRatingType: Intergalactic.Component<'form', FeedbackRatingProps> & {
   Item: Intergalactic.Component<'div', FieldProps<any, any>>;
   Submit: typeof Button;
   Checkbox: typeof Checkbox;
   Header: typeof Text;
 };
 
-export { FiveStarFormType };
+export { FeedbackRatingType };

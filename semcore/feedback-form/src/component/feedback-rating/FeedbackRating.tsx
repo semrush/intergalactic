@@ -18,7 +18,7 @@ import Textarea from '@semcore/textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { FeedbackItem } from '../feedback-item/FeedbackItem';
 import { SubmitButton } from '../submit-button/SubmitButton';
-import { FiveStarFormProps, FiveStarFormType, FormConfigItem } from './FiveStarForm.type';
+import { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './FeedbackRating.type';
 import CheckboxButton from '../checkbox-button/CheckboxButton';
 import Input from '@semcore/input';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
@@ -33,7 +33,7 @@ type State = {
   error: boolean;
 };
 
-class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances> {
+class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhances> {
   static displayName = 'FiveStarForm';
   static style = {};
 
@@ -89,7 +89,7 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
       fn(e);
     };
 
-  componentDidUpdate(prevProps: Readonly<FiveStarFormProps>) {
+  componentDidUpdate(prevProps: Readonly<FeedbackRatingProps>) {
     const { status, getI18nText } = this.asProps;
 
     if (prevProps.status !== status) {
@@ -112,14 +112,14 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
     const initialValue = this.props.initialValues[config.key];
 
     return (
-      <FiveStarForm.Item
+      <FeedbackRating.Item
         name={config.key}
         initialValue={initialValue}
         type={'checkbox'}
         key={config.key}
       >
         {({ input }) => (
-          <FiveStarForm.Checkbox
+          <FeedbackRating.Checkbox
             {...input}
             id={config.key}
             name={config.key}
@@ -127,7 +127,7 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
             onChange={this.handleChange(input.onChange)}
           />
         )}
-      </FiveStarForm.Item>
+      </FeedbackRating.Item>
     );
   };
 
@@ -147,7 +147,7 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
       <Flex tag='label' mt={4} direction='column' htmlFor={config.key} key={config.key}>
         {label}
 
-        <FiveStarForm.Item
+        <FeedbackRating.Item
           name={config.key}
           validate={config.validate}
           initialValue={initialValue}
@@ -181,7 +181,7 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
             }
             return null;
           }}
-        </FiveStarForm.Item>
+        </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
             {typeof config.description === 'string' ? (
@@ -275,11 +275,11 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
                     title={getI18nText('formTitle')}
                     wMax={320}
                   >
-                    <FiveStarForm.Item name={'rating'} initialValue={rating}>
+                    <FeedbackRating.Item name={'rating'} initialValue={rating}>
                       {({ input }) => {
                         return <input {...input} type='hidden' />;
                       }}
-                    </FiveStarForm.Item>
+                    </FeedbackRating.Item>
 
                     {formConfig.map((formConfigItem) => {
                       switch (formConfigItem.type) {
@@ -308,11 +308,11 @@ class FiveStarFormRoot extends Component<FiveStarFormProps, {}, State, Enhances>
                     )}
 
                     <Flex mt={4} justifyContent={'center'}>
-                      <FiveStarForm.Submit
+                      <FeedbackRating.Submit
                         loading={status !== 'loading' ? api.submitting : status === 'loading'}
                       >
                         {submitText ?? getI18nText('submitButton')}
-                      </FiveStarForm.Submit>
+                      </FeedbackRating.Submit>
                     </Flex>
                   </Box>
                 </SpinContainer>,
@@ -335,12 +335,12 @@ function Header(props: any) {
   );
 }
 
-const FiveStarForm: typeof FiveStarFormType & { validate: typeof FiveStarFormRoot.validate } =
-  createComponent(FiveStarFormRoot, {
+const FeedbackRating: typeof FeedbackRatingType & { validate: typeof FeedbackRatingRoot.validate } =
+  createComponent(FeedbackRatingRoot, {
     Header,
     Item: FeedbackItem,
     Checkbox: CheckboxButton,
     Submit: SubmitButton,
   });
 
-export default FiveStarForm;
+export default FeedbackRating;

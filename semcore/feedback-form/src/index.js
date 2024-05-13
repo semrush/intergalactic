@@ -1,5 +1,5 @@
-import { default as FiveStarForm } from './component/five-star-form/FiveStarForm';
+import { default as FeedbackRating } from './component/feedback-rating/FeedbackRating';
 
 export { default } from './FeedbackForm';
 
-export { FiveStarForm };
+export { FeedbackRating };
