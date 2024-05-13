@@ -1,6 +1,6 @@
 SSliderRating SStar:hover {
   cursor: pointer;
-  transform: scale(1.45);
+  transform: scale(1.3);
   transition: all 200ms ease-out;
 }
 
