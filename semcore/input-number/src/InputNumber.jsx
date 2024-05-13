@@ -63,7 +63,7 @@ class InputNumber extends Component {
   }
 }
 
-class Value extends Component {
+export class Value extends Component {
   static defaultProps = {
     defaultValue: '',
     defaultDisplayValue: '',
@@ -73,6 +73,22 @@ class Value extends Component {
   valueInputRef = React.createRef();
 
   cursorPosition = -1;
+
+  constructor(props) {
+    super(props);
+
+    this.stepUp = this.stepUp.bind(this);
+    this.moveSelectionRight = this.moveSelectionRight.bind(this);
+    this.moveSelectionLeft = this.moveSelectionLeft.bind(this);
+    this.valueParser = this.valueParser.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
+    this.handleWheel = this.handleWheel.bind(this);
+  }
 
   uncontrolledProps() {
     return {
@@ -114,7 +130,7 @@ class Value extends Component {
     return numberFormatter.format(1111).replace(/\d/g, '');
   }
 
-  valueParser = (value, prevValue, prevDisplayValue) => {
+  valueParser(value, prevValue, prevDisplayValue) {
     const { numberFormatter } = this.props;
 
     const stringNumber = value
@@ -152,7 +168,7 @@ class Value extends Component {
       parsedValue: stringNumber,
       displayValue: stringNumber === '' ? '' : numberFormatter.format(stringNumber),
     };
-  };
+  }
 
   round(value, step) {
     const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
@@ -161,7 +177,7 @@ class Value extends Component {
       : Number.parseFloat(value).toPrecision(countDecimals);
   }
 
-  handleValidation = (event) => {
+  handleValidation(event) {
     const { value, displayValue, min, max, step } = this.asProps;
     const { parsedValue } = this.valueParser(event.currentTarget.value, value, displayValue);
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
@@ -183,7 +199,7 @@ class Value extends Component {
 
       this.handlers.value(String(numberValueRounded), event);
     }
-  };
+  }
 
   // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
   componentDidMount() {
@@ -217,7 +233,7 @@ class Value extends Component {
     this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
   }
 
-  handleWheel = (event) => {
+  handleWheel(event) {
     if (event.target !== this.valueInputRef.current) return;
     if (document.activeElement !== this.valueInputRef.current) return;
     event.preventDefault();
@@ -226,9 +242,9 @@ class Value extends Component {
     } else if (event.wheelDelta < 0) {
       this.stepDown(event);
     }
-  };
+  }
 
-  handleChange = (event) => {
+  handleChange(event) {
     const value = event.currentTarget.value;
     const digits = /[0-9,.-]+/.test(value);
 
@@ -237,9 +253,9 @@ class Value extends Component {
     }
 
     return false;
-  };
+  }
 
-  handleKeyUp = (event) => {
+  handleKeyUp(event) {
     if (event.key === 'Shift') {
       this.cursorPosition = -1;
     }
@@ -247,9 +263,9 @@ class Value extends Component {
     const element = event.currentTarget;
 
     element.role = 'input';
-  };
+  }
 
-  handleKeyDown = (event) => {
+  handleKeyDown(event) {
     const element = event.currentTarget;
     const value = element.value;
     const length = value.length;
@@ -308,9 +324,9 @@ class Value extends Component {
         break;
       }
     }
-  };
+  }
 
-  moveSelectionLeft = (element, cursorIndex) => {
+  moveSelectionLeft(element, cursorIndex) {
     const value = element.value;
     const nextPosition = element.selectionStart - 1 >= 0 ? element.selectionStart - 1 : 0;
 
@@ -337,9 +353,9 @@ class Value extends Component {
         );
       }
     }
-  };
+  }
 
-  moveSelectionRight = (element, cursorIndex) => {
+  moveSelectionRight(element, cursorIndex) {
     const value = element.value;
     const nextPosition = element.selectionEnd + 1;
 
@@ -366,23 +382,23 @@ class Value extends Component {
         );
       }
     }
-  };
+  }
 
-  handleClick = (event) => {
+  handleClick(event) {
     const element = event.target;
     const value = element.value;
 
     if (value[element.selectionStart - 1] === this.separatorThousands) {
       element.setSelectionRange(element.selectionStart - 1, element.selectionEnd - 1);
     }
-  };
+  }
 
-  handleBlur = (event) => {
+  handleBlur(event) {
     this.cursorPosition = -1;
     this.handleValidation(event);
-  };
+  }
 
-  stepUp = (event) => {
+  stepUp(event) {
     const { max = Number.MAX_SAFE_INTEGER, min, step, value } = this.asProps;
 
     let numberValue;
@@ -399,9 +415,9 @@ class Value extends Component {
 
       this.handlers.value(newValue.toString(), event);
     }
-  };
+  }
 
-  stepDown = (event) => {
+  stepDown(event) {
     const { max, min = Number.MIN_SAFE_INTEGER, step, value } = this.asProps;
 
     let numberValue;
@@ -417,7 +433,7 @@ class Value extends Component {
 
       this.handlers.value(newValue.toString(), event);
     }
-  };
+  }
 
   render() {
     const SValue = Root;

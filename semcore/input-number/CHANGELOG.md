@@ -14,6 +14,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version minor update due to children dependencies update (`@semcore/input` [4.23.2 ~> 4.24.0], `@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/flex-box` [5.22.2 ~> 5.23.0], `@semcore/core` [2.20.2 ~> 2.21.0]).
 
+## [5.24.2] - 2024-05-13
+
+### Changed
+
+- Methods in `InputNumber.Value` class for use them in extended classes.
+
 ## [5.24.1] - 2024-04-22
 
 ### Changed
