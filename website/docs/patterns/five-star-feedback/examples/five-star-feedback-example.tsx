@@ -112,7 +112,7 @@ class FeedbackLink extends React.PureComponent<{}, State> {
             type: 'input',
             validate: FiveStarForm.validate.email('Set correct email'),
             description: (
-              <Text lineHeight='18px' size={200} color='#6c6e79'>
+              <Text size={200} color='--intergalactic-text-secondary'>
                 We will only use this email to respond to you on your feedback.{' '}
                 <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                   Privacy Policy
