@@ -15,8 +15,10 @@ import {
   DecrementIcon,
   parseValueWithMinMax,
   InputNumberValueProps,
+  InputNumberValue,
 } from '@semcore/input-number';
 import { IRootComponentHandlers } from '@semcore/core';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 type OnConfirm = (
   value: string,
@@ -91,10 +93,14 @@ const pointInsideOfRect = ({
   return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
 };
 
-class InlineInputBase extends Component<RootAsProps> {
+const enhance = {
+  getI18nText: i18nEnhance(localizedMessages),
+};
+
+class InlineInputBase extends Component<RootAsProps, {}, {}, typeof enhance> {
   static displayName = 'InlineInput';
 
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = Object.values(enhance);
   static defaultProps = {
     state: 'normal',
     onBlurBehavior: 'confirm',
@@ -109,7 +115,6 @@ class InlineInputBase extends Component<RootAsProps> {
 
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
-  inputHandlersRef = React.createRef<IRootComponentHandlers>();
   initValue = '';
   lastMouseDownPosition: { x: number; y: number } | null = null;
   lastHandledKeyboardEvent = -1;
@@ -172,30 +177,27 @@ class InlineInputBase extends Component<RootAsProps> {
     };
   }
 
-  increment = (event: React.SyntheticEvent | WheelEvent) => {
-    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.min || '0';
-    this.inputRef.current?.stepUp?.();
-    this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
+  increment = (number: number) => {
+    this.inputRef.current?.stepUp?.(number);
   };
 
-  decrement = (event: React.SyntheticEvent | WheelEvent) => {
-    if (this.inputRef.current?.value === '')
-      this.inputRef.current.value = this.inputRef.current.max || '0';
-    this.inputRef.current?.stepDown?.();
-    this.inputHandlersRef.current?.value(this.inputRef.current?.value, event);
+  decrement = (number: number) => {
+    this.inputRef.current?.stepDown?.(number);
   };
+
   getNumberValueProps() {
+    const numberFormatter = new Intl.NumberFormat(this.asProps.locale, { style: 'decimal' });
+
     return {
-      ref: this.inputRef,
-      inputHandlerRefs: this.inputHandlersRef,
+      inputRef: this.inputRef,
       increment: this.increment,
       decrement: this.decrement,
+      numberFormatter,
       onFocus: this.bindHandlerValueFocused(true),
       onBlur: this.bindHandlerValueFocused(false),
     };
   }
+
   getNumberControlsProps() {
     const { getI18nText } = this.asProps;
     return {
@@ -411,87 +413,36 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
   ) as React.ReactElement;
 };
 
-class NumberValue extends Component<NumberValueAsProps> {
+class NumberValue extends InputNumberValue {
   static defaultProps = {
     defaultValue: '',
+    defaultDisplayValue: '',
     step: 1,
-  };
-
-  inputRef = React.createRef<HTMLInputElement>();
-
-  uncontrolledProps() {
-    return {
-      value: null,
-    };
-  }
-
-  round(value: number, step: number): number {
-    const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
-    return countDecimals === 0 ? value : Number.parseFloat(value.toPrecision(countDecimals));
-  }
-
-  handleValidation = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    const { value, min, max, step = 1 } = this.asProps;
-    const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
-    if (Number.isNaN(event.currentTarget.valueAsNumber)) {
-      event.currentTarget.value = '';
-      this.handlers.value('', event);
-    } else if (value !== undefined) {
-      let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
-      const rounded = this.round(numberValue % step, step);
-      if (rounded !== 0) {
-        if (rounded >= step / 2) {
-          numberValue += step - rounded;
-        } else if (Math.abs(rounded) < step) {
-          numberValue -= rounded;
-        }
-      }
-      const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
-      this.handlers.value(String(numberValueRounded), event);
-    }
-  };
-
-  // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
-  componentDidMount() {
-    this.inputRef.current?.addEventListener('wheel', this.handleWheel);
-  }
-  componentWillUnmount() {
-    this.inputRef.current?.removeEventListener('wheel', this.handleWheel);
-  }
-
-  handleWheel = (event: WheelEvent) => {
-    if (event.target !== this.inputRef.current) return;
-    if (document.activeElement !== this.inputRef.current) return;
-    event.preventDefault();
-    if (event.deltaY < 0 && this.asProps.increment) {
-      this.asProps.increment(event);
-    } else if (event.deltaY > 0 && this.asProps.decrement) {
-      this.asProps.decrement(event);
-    }
   };
 
   render() {
     const SValue = Root;
     const SValueHidden = 'div';
-    const { styles, inputHandlerRefs, value, min, max } = this.asProps;
-
-    if (inputHandlerRefs) {
-      // @ts-ignore
-      inputHandlerRefs.current = this.handlers;
-    }
+    const { styles, min, max, step, forwardRef, inputRef, value, displayValue } = this.asProps;
 
     return sstyled(styles)(
       <>
         <SValue
           render={Input.Value}
-          type='number'
           autoComplete='off'
           onBlur={this.handleValidation}
-          onInvalid={this.handleValidation}
-          ref={this.inputRef}
-          aria-valuenow={value}
+          use:onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+          onKeyUp={this.handleKeyUp}
+          onClick={this.handleClick}
+          use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
+          use:value={displayValue}
+          inputMode='decimal'
           aria-valuemin={min}
           aria-valuemax={max}
+          min={min}
+          max={max}
+          step={step}
         />
         {/* the next hidden div is necessary for the screen reader to report the value
         in the input, because after validation the value can change to the `min` or `max`
