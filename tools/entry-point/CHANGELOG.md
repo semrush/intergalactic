@@ -1,35 +1,12 @@
-## [15.82.0] - 2024-05-10
+## [15.82.1] - 2024-05-13
 
-### @semcore/data-table
+### @semcore/dropdown-menu
 
-- **Changed** If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
-
-### @semcore/date-picker
-
-- **Added** `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
-- **Added** Render children in `MonthDateRangeComparator.RangeCalendar`.
-
-### @semcore/input
-
-- **Fixed** `disabled` input was not loosing focused styles when it was disabled.
-- **Changed** `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
-
-### @semcore/input-number
-
-- **Fixed** Controlled mode.
+- **Fixed** In some cases React error "Uncaught TypeError: destroy is not a function" was thrown.
 
 ### @semcore/popper
 
-- **Fixed** Poppers with `interaction=hover` were not opening on touch devices.
-- **Fixed** Page resizing was causing popper to move to the wrong position.
-
-### @semcore/tab-line
-
-- **Removed** Unnecessary `aria-posinset` attribute on each tab.
-
-### @semcore/tab-panel
-
-- **Removed** Unnecessary `aria-posinset` attribute on each tab.
+- **Fixed** Hovering popper trigger with `interaction=hover` wasn't trigger it to open in test environment.
 
 ## [15.82.0] - 2024-05-10
 

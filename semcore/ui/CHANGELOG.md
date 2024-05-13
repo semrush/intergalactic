@@ -1,3 +1,13 @@
+## [15.82.1] - 2024-05-13
+
+### @semcore/dropdown-menu
+
+- **Fixed** In some cases React error "Uncaught TypeError: destroy is not a function" was thrown.
+
+### @semcore/popper
+
+- **Fixed** Hovering popper trigger with `interaction=hover` wasn't trigger it to open in test environment.
+
 ## [15.82.0] - 2024-05-10
 
 ### @semcore/data-table
