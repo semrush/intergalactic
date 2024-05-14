@@ -1,6 +1,6 @@
 import { CSSProperties, Ref } from 'react';
 import cn from 'classnames';
-import { sstyled } from '@semcore/core';
+import { sstyled } from './core';
 import { forkRef } from './ref';
 
 export function callAllEventHandlers(...fns: Array<Function | undefined>) {

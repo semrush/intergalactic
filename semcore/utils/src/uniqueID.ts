@@ -1,6 +1,5 @@
 import React from 'react';
-// @ts-ignore
-import { UnknownProperties, register } from '@semcore/core';
+import { UnknownProperties, register } from './core';
 import useEnhancedEffect from './use/useEnhancedEffect';
 
 type ContextType = {

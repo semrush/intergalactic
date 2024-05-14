@@ -1,5 +1,5 @@
 import React from 'react';
-import { CONTEXT_COMPONENT } from '../index';
+import { CONTEXT_COMPONENT } from '../types/symbols';
 
 export const CHILDREN_COMPONENT = Symbol('CHILDREN_COMPONENT');
 const CHILDREN_SELF = Symbol('CHILDREN_SELF');
