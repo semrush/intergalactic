@@ -172,16 +172,21 @@ const useFocusLockHook = (
   const returnFocus = React.useCallback(() => {
     const trapNode = trapRef.current;
     if (trapNode && !isFocusInside(trapNode)) return;
+    const focusMastersStackCount = focusMastersStack.length;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
       setTimeout(() => {
-        setFocus(returnFocusNode, trapNode);
+        if (focusMastersStackCount !== focusMastersStack.length) {
+          setFocus(returnFocusNode, trapNode);
+        }
       }, 0);
     }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
       setTimeout(() => {
-        setFocus(autoTrigger, trapNode);
+        if (focusMastersStackCount !== focusMastersStack.length) {
+          setFocus(autoTrigger, trapNode);
+        }
       }, 0);
     }
   }, [returnFocusTo]);
