@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.1] - 2024-04-30
+
+### Fixed
+
+- `disabled` input was not loosing focused styles when it was disabled.
+
+### Changed
+
+- `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
+
 ## [4.24.0] - 2024-04-29
 
 ### Changed

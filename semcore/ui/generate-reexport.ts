@@ -9,7 +9,7 @@ const dirname = path.resolve(filename, '..');
 
 const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
 
-const EXPORT_DEFAULT_REG = /export ({ default|default)/gm;
+const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
 
 const hasExportDefault = async (dependency: string) => {
   const require = createRequire(import.meta.url);

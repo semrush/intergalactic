@@ -108,10 +108,10 @@ class Popper extends Component {
     },
     hover: {
       trigger: [
-        ['onMouseEnter', 'onKeyboardFocus'],
+        ['onMouseEnter', 'onKeyboardFocus', 'onTouchStart'],
         ['onMouseLeave', 'onBlur'],
       ],
-      popper: [['onMouseEnter', 'onFocusCapture'], ['onMouseLeave']],
+      popper: [['onMouseEnter', 'onFocusCapture', 'onTouchStart'], ['onMouseLeave']],
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
@@ -203,6 +203,15 @@ class Popper extends Component {
       onFirstUpdate: callAllEventHandlers(onFirstUpdate, () => {
         this.observer?.observe(this.triggerRef.current);
         this.observer?.observe(this.popperRef.current);
+        if (this.asProps.disablePortal) return;
+        let parent = this.popperRef.current?.parentElement;
+        const traversingLimit = 10;
+        for (let i = 0; i < traversingLimit; i++) {
+          if (!parent) break;
+          this.observer?.observe(parent);
+          if (parent === document.body) break;
+          parent = parent.parentElement;
+        }
       }),
       modifiers: modifiersMerge,
     };
@@ -316,7 +325,8 @@ class Popper extends Component {
      * That may cause hover interaction poppers to display two closely placed poppers.
      * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
      */
-    if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+    if (component === 'popper' && action === 'onMouseEnter' && Date.now() - lastMouseMove > 100)
+      return;
 
     if (action === 'onMouseEnter') {
       this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };
