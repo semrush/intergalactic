@@ -41,7 +41,9 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>
-        <DescriptionTooltip.Trigger tag={HintLink}>Additional information</DescriptionTooltip.Trigger>
+        <DescriptionTooltip.Trigger tag={HintLink}>
+          Additional information
+        </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper>
           <Text tag='p' bold mb={1}>
             Additional information

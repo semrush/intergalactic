@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box'
+import { Flex } from 'intergalactic/flex-box';
 import { DescriptionTooltip } from 'intergalactic/tooltip';
-import Link from 'intergalactic/link'
+import Link from 'intergalactic/link';
 import InfoM from 'intergalactic/icon/Info/m';
 import InfoL from 'intergalactic/icon/Info/l';
 
@@ -13,7 +13,7 @@ const Demo = () => (
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
           tag={InfoL}
-          interactive 
+          interactive
           aria-label='Additional information'
           color='--intergalactic-icon-secondary-neutral'
         />
@@ -36,7 +36,7 @@ const Demo = () => (
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
           tag={InfoM}
-          interactive 
+          interactive
           aria-label='Additional information'
           color='--intergalactic-icon-secondary-neutral'
         />
