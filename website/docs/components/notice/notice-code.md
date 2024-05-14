@@ -27,5 +27,5 @@ It is an example that showcases the functionality of the [NoticeSmart](/componen
 
 ## Custom notice
 
-You have the flexibility to construct custom notices by utilizing individual components. For an example, refer to [Feedback collection](/patterns/feedback-collection/feedback-collection-code).
+You have the flexibility to construct custom notices by utilizing individual components. For an example, refer to [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code).
 

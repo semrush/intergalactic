@@ -1,12 +1,11 @@
 ---
-title: Feedback collection
-a11y: AA
-tabs: Design('feedback-collection'), A11y('feedback-collection-a11y'), Example('feedback-collection-code')
+title: FeedbackYesNo
+tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## What pattern has
 
-FeedbackYesNo pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
+FeedbackYesNo form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
 - [Notice](/components/notice/notice-a11y)
 - [Button](/components/button/button-a11y)
