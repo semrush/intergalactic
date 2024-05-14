@@ -19,12 +19,6 @@ type StarProps = BoxProps & {
   filled?: boolean;
 };
 
-type SplashProps = BoxProps & {
-  blink?: boolean;
-  left: string;
-  top: string;
-};
-
 const MIN = 1;
 const MAX = 5;
 
@@ -63,15 +57,6 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
       filled: value ? index + 1 <= value || index <= hoveredIndex : index <= hoveredIndex,
       onClick: this.handleClick(index + 1),
       onMouseEnter: readonly ? undefined : this.handleMouseEnder(index),
-    };
-  }
-
-  getSplashProps(_: any, index: number) {
-    const { value } = this.asProps;
-    const { clickedIndex } = this.state;
-
-    return {
-      blink: clickedIndex > -1 ? index + 1 > (value - 1) * 5 && index + 1 <= value * 5 : false,
     };
   }
 
@@ -135,11 +120,6 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
           return (
             <Box key={index} position={'relative'}>
               <SliderRating.Star />
-              <SliderRating.Splash left={'1px'} top={'0px'} />
-              <SliderRating.Splash left={'17px'} top={'0px'} />
-              <SliderRating.Splash left={'21px'} top={'14px'} />
-              <SliderRating.Splash left={'9px'} top={'22px'} />
-              <SliderRating.Splash left={'-3px'} top={'14px'} />
             </Box>
           );
         })}
@@ -177,18 +157,10 @@ function Star(props: StarProps) {
 }
 Star.displayName = 'Star';
 
-function Splash(props: SplashProps) {
-  const SSplash = Root;
-  return sstyled(props.styles)(<SSplash render={Box} />);
-}
-Splash.displayName = 'Splash';
-
 const SliderRating = createComponent(SliderRatingRoot, {
   Star,
-  Splash,
 }) as Intergalactic.Component<typeof Flex, SliderRatingProps> & {
   Star: Intergalactic.Component<typeof Box, StarProps>;
-  Splash: Intergalactic.Component<typeof Box, SplashProps>;
 };
 
 export default SliderRating;

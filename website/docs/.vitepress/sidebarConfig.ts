@@ -697,14 +697,9 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Export',
           },
           {
-            link: '/patterns/five-star-feedback/five-star-feedback',
-            activeMatch: '/patterns/five-star-feedback/',
-            text: 'FiveStarFeedback',
-          },
-          {
-            link: '/patterns/feedback-yes-no/feedback-yes-no',
-            activeMatch: '/patterns/feedback-yes-no/',
-            text: 'FeedbackYesNo',
+            link: '/patterns/feedback-collection/feedback-collection',
+            activeMatch: '/patterns/feedback-collection/',
+            text: 'Feedback collection',
           },
           {
             link: '/patterns/form/form',
