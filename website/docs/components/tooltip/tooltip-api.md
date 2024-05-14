@@ -4,11 +4,13 @@ fileSource: tooltip
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
-`Tooltip` package contains three components: `Tooltip`, `Hint` and `DescriptionTooltip`. Use the correct component to ensure best usability and accessibility. 
+`Tooltip` package contains three components for different use cases:
+
+1. Use `Hint` if you only need to display element's label on hover/focus.
+2. Use `Tooltip` to display additional information for an interactive element on hover/focus (e.g. a short description for a button or a link).
+3. Use `DescriptionTooltip` for the [Informer pattern](../../patterns/informer/informer), i.e. if the trigger's only function is to show the tooltip, or if your tooltip must contain several paragraphs and/or interactive elements. This type of tooltip is triggered by click/Enter/Space.
 
 ## Tooltip
-
-Use `Tooltip` to display additional information for a trigger with a visible name.
 
 ```jsx
 import Tooltip from 'intergalactic/tooltip';
@@ -19,8 +21,6 @@ import Tooltip from 'intergalactic/tooltip';
 
 ## Hint
 
-Use `Hint` to display a label for a trigger without a visible name.
-
 ```jsx
 import { Hint } from 'intergalactic/tooltip';
 <Hint />;
@@ -29,8 +29,6 @@ import { Hint } from 'intergalactic/tooltip';
 <TypesView type="TooltipHintProps" :types={...types} />
 
 ## DescriptionTooltip
-
-Use `DescriptionTooltip` for the [Informer pattern](../../patterns/informer/informer) (i.e. if the trigger's only function is to show the tooltip), or if your tooltip must contain interactive elements.
 
 ```jsx
 import { DescriptionTooltip } from 'intergalactic/tooltip';

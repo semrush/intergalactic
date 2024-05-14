@@ -186,7 +186,7 @@ We have specific styles for highlighting quotes in paragraphs.
 
 ## Hints (hint links)
 
-Text can be wrapped in a hint link (pseudo-link), creating an inactive control that triggers events on the page without reloading. This pseudo-link is usually used for hints.
+Text can be wrapped in a hint link (pseudo-link) component, creating a control that triggers events on the page without reloading it. This pseudo-link is usually used to show and hide [tooltips](../../components/tooltip/tooltip) or parts of the UI.
 
 ![](static/hint-link.png)
 

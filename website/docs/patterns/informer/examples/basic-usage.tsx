@@ -1,88 +1,60 @@
 import React from 'react';
 import { Text } from 'intergalactic/typography';
-import { Hint } from 'intergalactic/tooltip';
-
+import { Flex } from 'intergalactic/flex-box'
+import { DescriptionTooltip } from 'intergalactic/tooltip';
+import Link from 'intergalactic/link'
 import InfoM from 'intergalactic/icon/Info/m';
 import InfoL from 'intergalactic/icon/Info/l';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <>
-        <div>
-          <Text size={700}>Text</Text>
-          <Hint
-            title='Awesome hint text'
-            tag={InfoL}
-            ml='4px'
-            color='gray-300'
-            interactive={true}
-          />
-        </div>
-        <div>
-          <Text size={600}>Text</Text>
-          <Hint
-            title='Awesome hint text'
-            tag={InfoL}
-            ml='4px'
-            color='gray-300'
-            interactive={true}
-          />
-        </div>
-        <div>
-          <Text size={500}>Text</Text>
-          <Hint
-            title='Awesome hint text'
-            tag={InfoM}
-            ml='4px'
-            color='gray-300'
-            interactive={true}
-          />
-        </div>
-        <div>
-          <div>
-            <Text size={400}>Text</Text>
-            <Hint
-              title='Awesome hint text'
-              tag={InfoM}
-              ml='4px'
-              color='gray-300'
-              interactive={true}
-            />
-          </div>
-          <div />
-          <Text size={300}>Text</Text>
-          <Hint
-            title='Awesome hint text'
-            tag={InfoM}
-            ml='4px'
-            color='gray-300'
-            interactive={true}
-          />
-        </div>
-        <div>
-          <Text size={200}>Text</Text>
-          <Hint
-            title='Awesome hint text'
-            tag={InfoM}
-            ml='4px'
-            color='gray-300'
-            interactive={true}
-          />
-        </div>
-        <div>
-          <Text size={100}>Text</Text>
-          <Hint
-            title='Awesome hint text'
-            tag={InfoM}
-            ml='4px'
-            color='gray-300'
-            interactive={true}
-          />
-        </div>
-      </>
-    );
-  }
-}
+const Demo = () => (
+  <>
+    <Flex gap={1} mb={4} alignItems='center'>
+      <Text size={700}>Text</Text>
+      <DescriptionTooltip>
+        <DescriptionTooltip.Trigger
+          tag={InfoL}
+          interactive 
+          aria-label='Additional information'
+          color='--intergalactic-icon-secondary-neutral'
+        />
+        <DescriptionTooltip.Popper>
+          <Text tag='p' bold mb={1}>
+            Additional information
+          </Text>
+          <Text tag='p' mb={3}>
+            Use this tooltip type if you need to show a lot of supplementary information.
+          </Text>
+          <Text tag='p'>
+            It may contain several paragraphs and interactive elements (for example,{' '}
+            <Link href='https://semrush.com'>links</Link>).
+          </Text>
+        </DescriptionTooltip.Popper>
+      </DescriptionTooltip>
+    </Flex>
+    <Flex gap={1} alignItems='center'>
+      <Text size={200}>Text</Text>
+      <DescriptionTooltip>
+        <DescriptionTooltip.Trigger
+          tag={InfoM}
+          interactive 
+          aria-label='Additional information'
+          color='--intergalactic-icon-secondary-neutral'
+        />
+        <DescriptionTooltip.Popper>
+          <Text tag='p' bold mb={1}>
+            Additional information
+          </Text>
+          <Text tag='p' mb={3}>
+            Use this tooltip type if you need to show a lot of supplementary information.
+          </Text>
+          <Text tag='p'>
+            It may contain several paragraphs and interactive elements (for example,{' '}
+            <Link href='https://semrush.com'>links</Link>).
+          </Text>
+        </DescriptionTooltip.Popper>
+      </DescriptionTooltip>
+    </Flex>
+  </>
+);
 
 export default Demo;
