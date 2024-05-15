@@ -73,9 +73,9 @@ class FeedbackLink extends React.PureComponent<{}, State> {
     return (
       <FeedbackRating
         notificationVisible={notificationVisible}
-        notificationText={'Is it working well for you??'}
+        notificationText={'Is it working well for you?'}
         learnMoreLink={'http://google.com'}
-        Header={<FeedbackRating.Header>Modal title</FeedbackRating.Header>}
+        Header={<FeedbackRating.Header>Feedback form title</FeedbackRating.Header>}
         submitText={'Send feedback'}
         initialValues={initValue}
         rating={rating}

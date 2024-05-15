@@ -20,6 +20,8 @@ FeedbackRating form pattern consists of several components that have their own a
 
 See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
+## Considerations for designers & developers
+
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
