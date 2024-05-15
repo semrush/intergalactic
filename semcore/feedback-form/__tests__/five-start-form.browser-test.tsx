@@ -5,7 +5,7 @@ import { waitFor } from '@testing-library/react';
 test.describe('5-star Feedback form', () => {
   test('simple use case', async ({ page }) => {
     const standPath =
-      'website/docs/patterns/five-star-feedback/examples/five-star-feedback-example.tsx';
+      'website/docs/patterns/feedback-rating/examples/feedback-rating-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -37,7 +37,7 @@ test.describe('5-star Feedback form', () => {
 
   test('default validation', async ({ page }) => {
     const standPath =
-      'website/docs/patterns/five-star-feedback/examples/five-star-feedback-example.tsx';
+      'website/docs/patterns/feedback-rating/examples/feedback-rating-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

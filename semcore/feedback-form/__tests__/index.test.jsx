@@ -8,7 +8,7 @@ import { axe } from '@semcore/testing-utils/axe';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import propsForElement from '@semcore/utils/lib/propsForElement';
-import FeedbackForm, { FiveStarForm } from '../src';
+import FeedbackForm, { FeedbackRating } from '../src';
 
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
@@ -177,7 +177,7 @@ describe('FeedbackForm.Item', () => {
   shouldSupportRef(Item, FeedbackForm);
 });
 
-describe('3-star FeedbackForm', () => {
+describe('5-star FeedbackForm', () => {
   beforeEach(cleanup);
 
   test('Should not submit if invalid', async ({ expect }) => {
@@ -185,7 +185,7 @@ describe('3-star FeedbackForm', () => {
     const onSubmit = vi.fn();
 
     const { getByText } = render(
-      <FiveStarForm
+      <FeedbackRating
         initialValues={{ input: '' }}
         onSubmit={onSubmit}
         formConfig={[{ key: 'input', label: 'test input', type: 'input', validate: required }]}
