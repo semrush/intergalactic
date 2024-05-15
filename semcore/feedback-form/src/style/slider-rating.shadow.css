@@ -19,6 +19,17 @@ SStar[filled]:active {
   animation: wobble 0.8s ease-in-out;
 }
 
+SStar path {
+  fill: transparent;
+  stroke: var(--gray-300, #A9ABB6);
+  stroke-width: 2;
+}
+
+SStar[filled] path {
+  stroke-width: 0;
+  fill: var(--yellow-200, #FDC23C);
+}
+
 SSplash {
   visibility: hidden;
   width: 4px;

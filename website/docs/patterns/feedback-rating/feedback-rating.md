@@ -1,7 +1,7 @@
 ---
 title: FiveStarFeedback
 fileSource: feedback-form
-tabs: Design('five-star-feedback'), A11y('five-star-feedback-a11y'), Example('five-star-feedback-code')
+tabs: Design('feedback-rating'), Example('feedback-rating-code')
 ---
 
 ## Description
