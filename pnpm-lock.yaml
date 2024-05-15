@@ -565,18 +565,9 @@ importers:
 
   semcore/core:
     dependencies:
-      '@reshadow/core':
-        specifier: 0.0.1-alpha.74
-        version: 0.0.1-alpha.74
       '@semcore/utils':
         specifier: 4.24.0
         version: link:../utils
-      classnames:
-        specifier: 2.2.6
-        version: 2.2.6
-      hoist-non-react-statics:
-        specifier: 3.3.2
-        version: 3.3.2
       react:
         specifier: 16.8 - 18
         version: 18.2.0
@@ -587,9 +578,6 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
-      '@types/classnames':
-        specifier: 2.2.6
-        version: 2.2.6
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -3044,6 +3032,9 @@ importers:
       '@phytonmk/nano-css':
         specifier: 5.3.7
         version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@reshadow/core':
+        specifier: 0.0.1-alpha.74
+        version: 0.0.1-alpha.74
       classnames:
         specifier: 2.2.6
         version: 2.2.6

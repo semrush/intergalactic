@@ -139,17 +139,19 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
 
       return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
-    if (color.startsWith('{') && color.split('.').length === 2 && color.endsWith('}')) {
-      const [group, index] = color.substring(1, color.length - 1).split('.');
-      const resolvedColor = (base as any)[group][index].value;
+    if (color.startsWith('{') && color.split('.').length > 0 && color.endsWith('}')) {
+      const path = color.substring(1, color.length - 1);
+      const resolvedColor =
+        getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
       return resolvedColor;
     }
-    if (color.startsWith('$') && color.split('.').length === 2) {
-      const [group, index] = color.substring(1).split('.');
-      const resolvedColor = (base as any)[group]?.[index]?.value ?? values[`${group}-${index}`];
+    if (color.startsWith('$') && color.split('.').length > 0) {
+      const path = color.substring(1);
+      const resolvedColor =
+        getByPath(base as any, path)?.value ?? values[path.split('.').join('-')];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found`);
       }
@@ -263,4 +265,13 @@ export const tokensToJson = (tokens: { name: string; value: string; description:
     themeFile[token.name] = token.value;
   }
   return JSON.stringify(themeFile, null, 2) + '\n';
+};
+
+const getByPath = (obj: any, path: string) => {
+  const parts = path.split('.');
+  let result = obj;
+  for (const part of parts) {
+    result = result?.[part];
+  }
+  return result;
 };
