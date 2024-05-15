@@ -1,3 +1,9 @@
+## [15.82.2] - 2024-05-15
+
+### @semcore/d3-chart
+
+- **Fixed** Exporting from `@semcore/ui` package.
+
 ## [15.82.1] - 2024-05-15
 
 ### @semcore/data-table
