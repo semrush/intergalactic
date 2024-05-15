@@ -50,7 +50,7 @@ Notice includes the following mandatory elements:
 
 ### NoticeBubble
 
-![](static/feedback-rating-success-notice.png)
+![](static/feedback-rating-success.png)
 
 Use [Success pattern for NoticeBubble](/components/notice-bubble/notice-bubble-code#success-notice).
 

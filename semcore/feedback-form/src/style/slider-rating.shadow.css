@@ -1,5 +1,5 @@
 SSliderRating SStar {
-  transition: all 200ms ease-out;
+  transition: all calc(var(--intergalactic-duration-control, 200) * 1ms) ease-out;
 }
 
 SSliderRating SStar:hover {
