@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForkRef } from '../ref';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 function notUsingNativeAutoFocus(autoFocus: any) {
   return typeof autoFocus === 'boolean' || typeof autoFocus === 'number';

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.30.1] - 2024-05-13
+
+### Fixed
+
+- Hovering popper trigger with `interaction=hover` wasn't trigger it to open in test environment.
+
 ## [5.30.0] - 2024-04-29
 
 ### Fixed
