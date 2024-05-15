@@ -1,6 +1,6 @@
 import { isInPeriod, isValidSchedule } from './cronTabScheduler';
 
-export default (date, unit) => (disabled_day) => {
+export const includesDate = (date, unit) => (disabled_day) => {
   if (Array.isArray(disabled_day)) {
     const MAX_DATE_TIMESTAMP = 8640000000000000;
     const [start, end] = disabled_day;

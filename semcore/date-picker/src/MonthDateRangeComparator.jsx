@@ -71,6 +71,11 @@ class MonthDateRangeComparatorRoot extends RangeComparatorAbstract {
     ArrowDown: 3,
   };
 
+  triggerFormattingProps = {
+    month: 'short',
+    year: 'numeric',
+  };
+
   getTitleProps(props, index) {
     const { displayedPeriod, locale } = this.asProps;
     return {
@@ -83,6 +88,29 @@ class MonthDateRangeComparatorRoot extends RangeComparatorAbstract {
 
   getRangeInput() {
     return <MonthDateRangeComparator.RangeInput.DateRange />;
+  }
+
+  getRangeCalendarProps() {
+    return {
+      children: (
+        <>
+          <Flex direction='column'>
+            <MonthDateRangeComparator.CalendarHeader tag={Flex}>
+              <MonthDateRangeComparator.Prev />
+              <MonthDateRangeComparator.Title />
+            </MonthDateRangeComparator.CalendarHeader>
+            <MonthDateRangeComparator.Calendar />
+          </Flex>
+          <Flex direction='column'>
+            <MonthDateRangeComparator.CalendarHeader tag={Flex}>
+              <MonthDateRangeComparator.Title />
+              <MonthDateRangeComparator.Next />
+            </MonthDateRangeComparator.CalendarHeader>
+            <MonthDateRangeComparator.Calendar />
+          </Flex>
+        </>
+      ),
+    };
   }
 
   getValueDateRangeProps() {
@@ -182,28 +210,10 @@ function CompareDateRange(props) {
 }
 
 function RangeCalendar(props) {
-  const { Root: SRangeCalendar, styles, Children, children: hasChildren } = props;
-
-  if (hasChildren) {
-    return <Children />;
-  }
-
+  const { Root: SRangeCalendar, Children, styles } = props;
   return sstyled(styles)(
     <SRangeCalendar render={Flex} gap={8}>
-      <Flex direction='column'>
-        <MonthDateRangeComparator.CalendarHeader tag={Flex}>
-          <MonthDateRangeComparator.Prev />
-          <MonthDateRangeComparator.Title />
-        </MonthDateRangeComparator.CalendarHeader>
-        <MonthDateRangeComparator.Calendar />
-      </Flex>
-      <Flex direction='column'>
-        <MonthDateRangeComparator.CalendarHeader tag={Flex}>
-          <MonthDateRangeComparator.Title />
-          <MonthDateRangeComparator.Next />
-        </MonthDateRangeComparator.CalendarHeader>
-        <MonthDateRangeComparator.Calendar />
-      </Flex>
+      <Children />
     </SRangeCalendar>,
   );
 }
