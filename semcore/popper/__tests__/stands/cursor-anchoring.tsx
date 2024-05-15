@@ -4,9 +4,10 @@ import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => {
   return (
-    <Tooltip cursorAnchoring='horizontal'>
+    <Tooltip cursorAnchoring>
       <Tooltip.Trigger
         data-testid='trigger'
+        // @ts-ignore
         style={{
           border: '1px dashed black',
           borderRadius: 10,

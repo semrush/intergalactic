@@ -325,7 +325,8 @@ class Popper extends Component {
      * That may cause hover interaction poppers to display two closely placed poppers.
      * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
      */
-    if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+    if (component === 'popper' && action === 'onMouseEnter' && Date.now() - lastMouseMove > 100)
+      return;
 
     if (action === 'onMouseEnter') {
       this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };

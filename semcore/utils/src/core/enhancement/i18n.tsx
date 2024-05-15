@@ -1,6 +1,5 @@
 import React from 'react';
-// @ts-ignore
-import { Context } from '@semcore/utils/lib/enhances/WithI18n';
+import { Context } from '../../enhances/WithI18n';
 
 function i18nAppLocaleEnhance() {
   return {

@@ -1,6 +1,5 @@
 import React, { ReactElement, ReactNode } from 'react';
-// @ts-ignore
-import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
+import { CHILDREN_COMPONENT, INHERITED_NAME } from './core';
 import getOriginChildren from './getOriginChildren';
 
 function findComponent(
