@@ -86,7 +86,7 @@ const GENERATOR = {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
         continue;
       }
-      if (['reshadow.d.ts'].includes(util)) {
+      if (util.endsWith('.d.js')) {
         continue;
       }
 
