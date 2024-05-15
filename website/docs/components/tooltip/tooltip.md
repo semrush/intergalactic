@@ -15,6 +15,7 @@ import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography'; 
 import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
 import Link from 'intergalactic/link'; 
+import FileExportM from 'intergalactic/icon/FileExport/m';
 
 const PLACEMENT = [
   'top-start', 
@@ -79,11 +80,15 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   if (component === 'Hint') {
     return (
       <Hint
-        title='Hint may contain short text only.'
+        title='Export to PDF'
         placement={placement}
         theme={theme}
       >
-        <Button>Button</Button>
+        <Button>
+          <Button.Addon>
+            <FileExportM />
+          </Button.Addon>
+        </Button>
       </Hint>
     );
 
@@ -94,15 +99,15 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         theme={theme}
       >
         <DescriptionTooltip.Trigger>
-          <Button>Button</Button>
+          <Button>Additional information</Button>
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper>
-          <Text size={200} bold>Additional information</Text>
-          <Box my={2}>
-            Use this tooltip type for elements that already have a visible name, and you need to show a lot of additional information.
-          </Box>
-          <Box mb={2}>It may contain several paragraphs and interactive elements (for example, <Link href='https://semrush.com'>links</Link>).
-          </Box>
+          <Text tag='p' mb={1} bold>Additional information</Text>
+          <Text tag='p' mb={3}>
+            Use this tooltip type when you need to show a lot of additional information.
+          </Text>
+          <Text tag='p'>It may contain several paragraphs and interactive elements (for example, <Link href='https://semrush.com'>links</Link>).
+          </Text>
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
     );
@@ -111,12 +116,11 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       <Tooltip
         placement={placement}
         theme={theme}
+        title='Default tooltip contains additional information about the feature.'
       >
-        <Tooltip.Trigger><Button>Button</Button></Tooltip.Trigger>
-        <Tooltip.Popper>
-          Default tooltip may contain formatted tex, icons, <Link href='https://semrush.com'>links</Link> and other elements.
-          Be brief, add only one sentence for its content.
-        </Tooltip.Popper>
+        <Button>
+          Button
+        </Button>
       </Tooltip>
     );
   }
@@ -131,40 +135,19 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
-- Tooltip appears only when hovering over the trigger.
-- It includes an arrow pointing to the trigger.
-- Tooltip contains only hints and additional information.
+- Tooltip usually appears when hovering over the trigger (except for the [Informer pattern](../../patterns/informer/informer)).
+- It has an arrow pointing to the trigger.
+- Tooltip only provides additional information about the feature, it doesn't contain any settings or commands.
 
 ## Component composition
 
-### Hint
-
-![](static/hint-composition.png)
-
-Component consists of the following:
-
-- `Hint`
-- `title` attribute for the component which Hint component wraps
-
-### Tooltip
+It's useful to keep in mind that in code tooltips consist of two main parts: 
+- Trigger — the element that should be hovered, clicked on, etc, to show the tooltip,
+- Popper — the tooltip itself, i.e. the container for tooltip content.
 
 ![](static/tooltip-composition.png)
 
-Component consists of the following:
-
-- `Tooltip.Trigger`
-- `Tooltip.Popper`
-- `Tooltip.Title`
-
-### DescriptionTooltip
-
-![](static/description-tooltip-composition.png)
-
-Component consists of the following:
-
-- `DescriptionTooltip.Trigger`
-- `DescriptionTooltip.Popper`
-- `DescriptionTooltip.Title`
+Trigger and Popper behave differently depending on which component is used in the code — `Tooltip`, `Hint` or `DescriptionTooltip`, and you should choose the appropriate component according to your use case. Read about the differences in [Interaction](#interaction) and [Content](#content).
 
 ## Themes
 
@@ -242,12 +225,10 @@ For the tooltip trigger, you can use formatted text, table headers, or interacti
 
 ### Appearance and hiding
 
-Table: Tooltip's appearance and hiding
+`Hint` and `Tooltip` appear on hover and hide when cursor leaves both the trigger and the popper. If the trigger is focusable, they also appear on focus and hide on unfocus or Esc.
+![](static/hover-2.png)
 
-| Hidden    |                                |
-| --------- | ------------------------------ |
-| Cursor leaves the trigger                                                  | ![](static/hover-1.png) |
-| Cursor leaves the trigger or the tooltip itself (for tooltip with control) | ![](static/hover-2.png) |
+`DescriptionTooltip` appears on click or Space/Enter, and hides when user clicks or moves focus outside of both trigger and popper, or presses Esc.
 
 ### Delay of appearance and hiding
 
@@ -260,25 +241,15 @@ If the tooltip has interactive elements inside, the hiding time should be increa
 
 ## Content
 
-### Hint
+Tooltip content is closely related to its behaviour, so you should choose the appropriate component depending on what you intend to show inside the tooltip.
 
-Hint contains only unformatted short text.
+Table: Tooltip content
 
-![](static/hint.png)
-
-### Tooltip
-
-Tooltip can contain both unformatted and formatted single sentence of text, links, icons, and other interactive elements.
-
-![](static/tooltip-basic.png)
-
-### DescriptionTooltip
-
-DescriptionTooltip can contain both unformatted and formatted large text, images, links and other interactive elements.
-
-![](static/tooltip-advanced.png)
-
-![](static/tooltip-advanced-2.png)
+| Component            | Tooltip function                                                                                                                             | Content |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `Hint`               | Show a label for an interactive element without visible text                                                                                 | Very short unformatted text reflecting an action or element's name, e.g. "Export", "Settings" ![](static/hint.png) |
+| `Tooltip`            | Show additional information about an element with a visible label                                                                            | Short unformatted text, preferably no more than one sentence. ![](static/tooltip-basic.png) |
+| `DescriptionTooltip` | Show information that's related not to the trigger itself, but to another element or the feature in general ([Informer pattern](../../patterns/informer/informer))  | Any amount of text, formatted or unformatted. Can include images, links, buttons and other element. ![](static/tooltip-advanced-2.png) |
 
 ## Usage in UX/UI
 
