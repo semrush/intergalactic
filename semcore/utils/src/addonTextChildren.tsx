@@ -1,5 +1,5 @@
 import React from 'react';
-import { CHILDREN_COMPONENT, INHERITED_NAME } from './core';
+import { CHILDREN_COMPONENT, INHERITED_NAME } from './core/index';
 import getOriginChildren from './getOriginChildren';
 import isNode from './isNode';
 
