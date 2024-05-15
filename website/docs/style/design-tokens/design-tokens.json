@@ -270,7 +270,7 @@
     "rawValue": "{yellow.200}",
     "computedValue": "#fdc23c",
     "description": "Active (selected) state of the secondary background of the information you want to highlight.",
-    "components": []
+    "components": ["feedback-form"]
   },
   {
     "name": "--intergalactic-bg-secondary-advertising",
@@ -1171,6 +1171,7 @@
       "breadcrumbs",
       "card",
       "carousel",
+      "feedback-form",
       "format-text",
       "fullscreen-modal",
       "inline-input",

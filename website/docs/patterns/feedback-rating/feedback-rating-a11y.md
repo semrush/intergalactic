@@ -1,13 +1,14 @@
 ---
-title: FeedbackYesNo
-tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+title: FeedbackRating
+tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback-rating-code')
 ---
 
 ## What pattern has
 
-FeedbackYesNo form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
+FeedbackRating form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
 - [Notice](/components/notice/notice-a11y)
+- [NoticeBubble](/components/notice-bubble/notice-bubble-a11y)
 - [Button](/components/button/button-a11y)
 - [Typography](/style/typography/typography-a11y)
 - [Dropdown](/components/dropdown/dropdown-a11y)

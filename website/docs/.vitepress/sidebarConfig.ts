@@ -699,7 +699,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/patterns/feedback-rating/feedback-rating',
             activeMatch: '/patterns/feedback-rating/',
-            text: 'Feedback rating',
+            text: 'FeedbackRating',
           },
           {
             link: '/patterns/feedback-yes-no/feedback-yes-no',

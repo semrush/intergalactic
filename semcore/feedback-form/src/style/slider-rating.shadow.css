@@ -1,7 +1,10 @@
+SSliderRating SStar {
+  transition: all 200ms ease-out;
+}
+
 SSliderRating SStar:hover {
   cursor: pointer;
   transform: scale(1.3);
-  transition: all 200ms ease-out;
 }
 
 SSliderRating[keyboardFocused] {
@@ -21,39 +24,11 @@ SStar[filled]:active {
 
 SStar path {
   fill: transparent;
-  stroke: var(--gray-300, #A9ABB6);
+  stroke: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   stroke-width: 2;
 }
 
 SStar[filled] path {
   stroke-width: 0;
-  fill: var(--yellow-200, #FDC23C);
-}
-
-SSplash {
-  visibility: hidden;
-  width: 4px;
-  height: 4px;
-  position: absolute;
-  background: #FDC23C;
-  border-radius: 9999px;
-}
-
-SSplash[blink] {
-  animation-name: show-hide;
-  animation-delay: 200ms;
-  animation-duration: 200ms;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes show-hide {
-  0% {
-    visibility: hidden;
-  }
-  50% {
-    visibility: visible;
-  }
-  100% {
-    visibility: hidden;
-  }
+  fill: var(--intergalactic-bg-secondary-highlight-active, #fdc23c);
 }

@@ -73,9 +73,9 @@ class FeedbackLink extends React.PureComponent<{}, State> {
     return (
       <FeedbackRating
         notificationVisible={notificationVisible}
-        notificationText={'Do you like it?'}
+        notificationText={'Is it working well for you??'}
         learnMoreLink={'http://google.com'}
-        Header={<FeedbackRating.Header>Some header for modal</FeedbackRating.Header>}
+        Header={<FeedbackRating.Header>Modal title</FeedbackRating.Header>}
         submitText={'Send feedback'}
         initialValues={initValue}
         rating={rating}
@@ -104,7 +104,7 @@ class FeedbackLink extends React.PureComponent<{}, State> {
             key: 'description',
             label: 'If there anything we could improve?',
             type: 'textarea',
-            validate: FeedbackRating.validate.description('please, set description'),
+            validate: FeedbackRating.validate.description('Please share your ideas.'),
           },
           {
             key: 'email',
@@ -112,7 +112,7 @@ class FeedbackLink extends React.PureComponent<{}, State> {
             type: 'input',
             validate: FeedbackRating.validate.email('Set correct email'),
             description: (
-              <Text lineHeight='18px' size={200} color='#6c6e79'>
+              <Text size={200} color='--intergalactic-text-secondary'>
                 We will only use this email to respond to you on your feedback.{' '}
                 <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                   Privacy Policy
