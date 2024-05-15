@@ -24,11 +24,11 @@ SStar[filled]:active {
 
 SStar path {
   fill: transparent;
-  stroke: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+  stroke: var(--intergalactic-slider-rating-normal, #a9abb6);
   stroke-width: 2;
 }
 
 SStar[filled] path {
   stroke-width: 0;
-  fill: var(--intergalactic-bg-secondary-highlight-active, #fdc23c);
+  fill: var(--intergalactic-slider-rating-hover-active, #fdc23c);
 }

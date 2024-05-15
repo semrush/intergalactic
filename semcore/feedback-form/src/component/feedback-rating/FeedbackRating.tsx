@@ -5,6 +5,7 @@ import createFocusDecorator from 'final-form-focus';
 import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Notice from '@semcore/notice';
 import CloseAltM from '@semcore/icon/Close/m';
 import CheckM from '@semcore/icon/Check/m';
@@ -22,11 +23,12 @@ import { FeedbackRatingProps, FeedbackRatingType, FormConfigItem } from './Feedb
 import CheckboxButton from '../checkbox-button/CheckboxButton';
 import Input from '@semcore/input';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import style from '../../style/feedback-rating.shadow.css';
 
 type Enhances = {
   getI18nText: ReturnType<typeof useI18n>;
+  uid: ReturnType<typeof uniqueIDEnhancement>;
 };
 
 type State = {
@@ -35,9 +37,9 @@ type State = {
 
 class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhances> {
   static displayName = 'FiveStarForm';
-  static style = {};
+  static style = style;
 
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
 
   static defaultProps = {
     onSubmit: () => {},
@@ -67,6 +69,18 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
   manager = new NoticeBubbleManager();
 
   private focusDecorator = createFocusDecorator<Record<string, any>>();
+
+  get headerId() {
+    const { uid } = this.asProps;
+
+    return `${uid}-feedback-rating-header`;
+  }
+
+  getHeaderProps() {
+    return {
+      id: this.headerId,
+    };
+  }
 
   getItemProps() {
     const { validateOnBlur } = this.asProps;
@@ -117,6 +131,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
         initialValue={initialValue}
         type={'checkbox'}
         key={config.key}
+        tag={'li'}
       >
         {({ input }) => (
           <FeedbackRating.Checkbox
@@ -216,12 +231,19 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
       notificationVisible,
       onNotificationClose,
       getI18nText,
+      errorFeedbackEmail,
       ...other
     } = this.asProps;
 
+    const SFeedbackRating = Root;
+    const checkboxFields = formConfig.filter((item) => item.type === 'checkbox');
+    const textFields = formConfig.filter(
+      (item) => item.type === 'textarea' || item.type === 'input',
+    );
+
     return sstyled(styles)(
       <Root render={Box}>
-        <Notice visible={notificationVisible}>
+        <Notice visible={notificationVisible} aria-label={'Leave feedback'}>
           <Notice.Label mt={1} mr={2} aria-hidden={true}>
             <FeedbackIllustration />
           </Notice.Label>
@@ -245,7 +267,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
           </Notice.CloseIcon>
         </Notice>
 
-        <Modal visible={visible} onClose={this.handelCloseModal} p={0}>
+        <SFeedbackRating render={Modal} visible={visible} onClose={this.handelCloseModal} p={0}>
           <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
               sstyled(styles)(
@@ -281,35 +303,31 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
                       }}
                     </FeedbackRating.Item>
 
-                    {formConfig.map((formConfigItem) => {
-                      switch (formConfigItem.type) {
-                        case 'checkbox': {
-                          return this.renderCheckbox(formConfigItem);
-                        }
-                        case 'textarea':
-                        case 'input': {
-                          return this.renderTextField(formConfigItem);
-                        }
-                        default: {
-                          const type: never = formConfigItem.type;
+                    <div role={'group'} aria-labelledby={this.headerId}>
+                      <ul>
+                        {checkboxFields.map((formConfigItem) =>
+                          this.renderCheckbox(formConfigItem),
+                        )}
+                      </ul>
+                    </div>
 
-                          return null;
-                        }
-                      }
-                    })}
+                    {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 
                     {this.state.error && (
                       <Notice theme={'warning'} mt={4} mb={4}>
                         <Notice.Label>
                           <WarnM />
                         </Notice.Label>
-                        <Notice.Content>{getI18nText('errorMessage')}</Notice.Content>
+                        <Notice.Content>
+                          {getI18nText('errorMessage', { email: errorFeedbackEmail })}
+                        </Notice.Content>
                       </Notice>
                     )}
 
                     <Flex mt={4} justifyContent={'center'}>
                       <FeedbackRating.Submit
                         loading={status !== 'loading' ? api.submitting : status === 'loading'}
+                        size={'l'}
                       >
                         {submitText ?? getI18nText('submitButton')}
                       </FeedbackRating.Submit>
@@ -319,7 +337,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
               )
             }
           </Form>
-        </Modal>
+        </SFeedbackRating>
 
         <NoticeBubbleContainer manager={this.manager} />
       </Root>,

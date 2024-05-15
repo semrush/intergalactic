@@ -45,6 +45,8 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   formConfig: FormConfigItem[];
 
   initialValues: Record<string, any> & { rating: number };
+
+  errorFeedbackEmail: string;
 };
 
 declare const FeedbackRatingType: Intergalactic.Component<'form', FeedbackRatingProps> & {

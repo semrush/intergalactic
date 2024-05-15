@@ -1,7 +1,5 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-
-import { Root } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -28,8 +26,6 @@ const TooltipProps = [
 
 export function FeedbackItem({ Children, tag, uid, ...props }: any) {
   const tooltipProps = pick(props, TooltipProps);
-  const ItemRoot = Root;
-
   const lastErrorRef = React.useRef(undefined);
 
   return (
@@ -56,8 +52,7 @@ export function FeedbackItem({ Children, tag, uid, ...props }: any) {
             }}
             {...tooltipProps}
           >
-            <Tooltip.Trigger inline={false} role={undefined}>
-              {tag && <ItemRoot render={tag} {...inputProps} />}
+            <Tooltip.Trigger inline={false} role={undefined} tag={tag} {...(tag ? inputProps : {})}>
               {typeof Children.origin === 'function' &&
                 Children.origin({
                   input: inputProps,
