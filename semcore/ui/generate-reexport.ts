@@ -93,6 +93,9 @@ const GENERATOR = {
         console.log('[debug]: skipped util');
         continue;
       }
+      if (['reshadow', 'reshadow.d.ts'].includes(util)) {
+        continue;
+      }
 
       const utilNameWithoutExtention = util.replace(/\.(d\.)?(t|j)s$/, '');
 
