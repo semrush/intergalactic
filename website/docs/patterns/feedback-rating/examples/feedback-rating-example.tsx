@@ -84,6 +84,7 @@ class FeedbackLink extends React.PureComponent<{}, State> {
         onNotificationClose={this.handleCloseNotification}
         status={status}
         onSubmit={this.onSubmit}
+        errorFeedbackEmail={''}
         formConfig={[
           {
             key: 'option1',
