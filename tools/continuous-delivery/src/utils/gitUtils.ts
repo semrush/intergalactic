@@ -6,8 +6,8 @@ import { NpmUtils } from './npmUtils';
 
 const git = Git();
 
-export class GitUtils {
-  public static async initNewPrerelease(versionPatches: VersionPatch[]) {
+export const gitUtils = {
+  initNewPrerelease: async (versionPatches: VersionPatch[]) => {
     const semcoreUiPatch = versionPatches.find((item) => item.package.name === '@semcore/ui');
 
     if (semcoreUiPatch) {
@@ -15,13 +15,13 @@ export class GitUtils {
       await git.checkout(['-b', newPrereleaseBranch]);
 
       await NpmUtils.updateLockFile();
-      await GitUtils.commitNewPrerelease(versionPatches);
-      const tag = await GitUtils.createPrereleaseTag(semcoreUiPatch);
-      await GitUtils.push(tag);
+      await gitUtils.commitNewPrerelease(versionPatches);
+      const tag = await gitUtils.createPrereleaseTag(semcoreUiPatch);
+      await gitUtils.push(tag);
     }
-  }
+  },
 
-  public static async getUpdatedPackages() {
+  getUpdatedPackages: async () => {
     const diff = await git.diffSummary('HEAD^1');
     const components: string[] = [];
 
@@ -33,38 +33,38 @@ export class GitUtils {
     });
 
     return components;
-  }
+  },
 
-  public static async getCurrentTag(): Promise<string | null> {
+  getCurrentTag: async (): Promise<string | null> => {
     const tag = execSync('git describe --tags --abbrev=0', {
       encoding: 'utf-8',
     });
 
     return tag.trim();
-  }
+  },
 
-  public static async getPrerelease(): Promise<string | null> {
-    const latestTag = await GitUtils.getCurrentTag();
+  getPrerelease: async (): Promise<string | null> => {
+    const latestTag = await gitUtils.getCurrentTag();
 
     if (!latestTag || !latestTag.includes(prerelaseSuffix)) {
       return null;
     }
 
     return latestTag.split('-')[1];
-  }
+  },
 
-  private static alreadyHasCommit = false;
+  alreadyHasCommit: false,
 
-  private static async commitOrAmend(message: string) {
-    if (GitUtils.alreadyHasCommit) {
+  commitOrAmend: async (message: string) => {
+    if (gitUtils.alreadyHasCommit) {
       await git.commit(message, ['--amend', '--no-edit']);
     } else {
       await git.commit(message, []);
-      GitUtils.alreadyHasCommit = true;
+      gitUtils.alreadyHasCommit = true;
     }
-  }
+  },
 
-  private static async commitNewPrerelease(versionPatches: VersionPatch[]) {
+  commitNewPrerelease: async (versionPatches: VersionPatch[]) => {
     let commitMessage = '[chore] bumped';
     if (versionPatches.length === 1) {
       commitMessage += ' version of ';
@@ -78,16 +78,16 @@ export class GitUtils {
       log('Committing changes...');
       if (!process.argv.includes('--dry-run')) {
         await git.add('.');
-        await GitUtils.commitOrAmend(commitMessage);
+        await gitUtils.commitOrAmend(commitMessage);
       }
       log('Changes committed.');
     }
-  }
+  },
 
-  private static async createPrereleaseTag(patch: VersionPatch) {
+  createPrereleaseTag: async (patch: VersionPatch) => {
     const tagNamePrefix = `v${patch.to}-${prerelaseSuffix}.`;
 
-    const tag = await GitUtils.getTag(tagNamePrefix);
+    const tag = await gitUtils.getTag(tagNamePrefix);
     const prerelease = tag?.split('-')[1] ?? null;
 
     let tagName = tagNamePrefix + '0';
@@ -103,9 +103,9 @@ export class GitUtils {
     await git.tag(['-f', tagName]);
 
     return tagName;
-  }
+  },
 
-  private static async pull(branch: string) {
+  pull: async (branch: string) => {
     log('Rebasing on git origin...');
     try {
       await git.pull('origin', branch, { '--rebase': 'true' });
@@ -115,17 +115,17 @@ export class GitUtils {
       throw err;
     }
     log('Rebased on git origin.');
-  }
+  },
 
-  private static async push(branch: string) {
+  push: async (branch: string) => {
     if (!process.argv.includes('--dry-run')) {
       log('Pushing to git origin...');
       await git.push('origin', branch, { '--follow-tags': null });
       log('Pushed to git origin.');
     }
-  }
+  },
 
-  private static async getTag(startStr: string): Promise<string | null> {
+  getTag: async (startStr: string): Promise<string | null> => {
     try {
       const tag = execSync(
         `git describe --tags --abbrev=0 --match "${startStr}*" $(git rev-list --tags --max-count=1) `,
@@ -139,5 +139,5 @@ export class GitUtils {
       console.warn(e);
       return null;
     }
-  }
-}
+  },
+};

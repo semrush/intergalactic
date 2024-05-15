@@ -86,6 +86,9 @@ const GENERATOR = {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
         continue;
       }
+      if (['reshadow.d.ts'].includes(util)) {
+        continue;
+      }
 
       const utilNameWithoutExtention = util.replace(/\.(d\.)?(t|j)s$/, '');
 
