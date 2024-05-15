@@ -1,4 +1,4 @@
-import { UnknownProperties } from './UnknownProperties';
+import type { UnknownProperties } from './UnknownProperties';
 
 export * from './Component';
 
