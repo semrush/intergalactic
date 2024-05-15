@@ -86,9 +86,7 @@ const GENERATOR = {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
         continue;
       }
-      // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-      console.log('[debug util name]', util);
-      if (['reshadow.d.ts'].includes(util)) {
+      if (util.endsWith('.d.js')) {
         continue;
       }
 
