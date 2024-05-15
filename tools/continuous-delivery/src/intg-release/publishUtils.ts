@@ -6,7 +6,7 @@ import { publishTarball } from './publishTarball';
 import Git from 'simple-git';
 import { log } from '../utils';
 import { updateExternalDeps } from './updateExternalDeps';
-import { GitUtils } from '../utils/gitUtils';
+import { gitUtils } from '../utils/gitUtils';
 import { updateComponentsVersions } from './updateComponentsVersions';
 
 const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');

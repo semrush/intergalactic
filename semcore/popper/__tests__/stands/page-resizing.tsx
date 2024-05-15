@@ -22,6 +22,7 @@ const Demo = () => {
         </DescriptionTooltip>
       </Flex>
 
+      {/* @ts-ignore */}
       <Button onClick={() => setVisible(!visible)}>Change height</Button>
 
       {visible ? <Box m={10}>some dynamic block that is loaded</Box> : null}

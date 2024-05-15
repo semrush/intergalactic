@@ -17,7 +17,6 @@ export async function sendMessageAboutRelease(version: string, lastVersionChange
     log('Sent message to internal Slack.');
     log('Release note is published.');
   } catch (error) {
-    // biome-ignore lint/suspicious/noConsoleLog:
     console.error(error);
   }
 }

@@ -14,7 +14,7 @@ import {
   getReleaseChangelog,
 } from '@semcore/changelog-handler';
 import semver from 'semver';
-import { GitUtils } from './src/utils/gitUtils';
+import { gitUtils } from './src/utils/gitUtils';
 import { NpmUtils } from './src/utils/npmUtils';
 import * as process from 'process';
 import { closeTasks } from './src/intg-release/closeTasks';
@@ -75,13 +75,13 @@ export const initPrerelease = async () => {
 
     await updateIntergalacticChangelog();
 
-    await GitUtils.initNewPrerelease(versionPatches);
+    await gitUtils.initNewPrerelease(versionPatches);
   }
 };
 
 export const uploadStatic = async () => {
-  const updatedPackages = await GitUtils.getUpdatedPackages();
-  const prerelease = await GitUtils.getPrerelease();
+  const updatedPackages = await gitUtils.getUpdatedPackages();
+  const prerelease = await gitUtils.getPrerelease();
 
   if (prerelease === null) {
     log('No prerelease info in current tag. Skip.');
@@ -104,8 +104,8 @@ export const uploadStatic = async () => {
 };
 
 export const publishPrerelease = async () => {
-  const updatedPackages = await GitUtils.getUpdatedPackages();
-  const prerelease = await GitUtils.getPrerelease();
+  const updatedPackages = await gitUtils.getUpdatedPackages();
+  const prerelease = await gitUtils.getPrerelease();
 
   if (prerelease === null) {
     log('No prerelease info in current tag. Skip.');
@@ -130,8 +130,8 @@ export const publishPrerelease = async () => {
 };
 
 export const publishRelease = async () => {
-  const updatedPackages = await GitUtils.getUpdatedPackages();
-  const versionTag = await GitUtils.getCurrentTag();
+  const updatedPackages = await gitUtils.getUpdatedPackages();
+  const versionTag = await gitUtils.getCurrentTag();
   const version = versionTag?.slice(1);
 
   await generateIntergalacticCodeBeforePublish();

@@ -16,6 +16,7 @@ const Demo = () => {
       <div>
         <label htmlFor='select'>Label</label>
       </div>
+      {/* @ts-ignore */}
       <Select placeholder={'Select something'} options={options} id='select' />
     </div>
   );
