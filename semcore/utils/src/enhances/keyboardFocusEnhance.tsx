@@ -1,6 +1,6 @@
 import React from 'react';
 import assignProps from '../assignProps';
-import { UnknownProperties } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 /** @deprecated */
 export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import createHoc from '../createHoc';
 import { internalSetState } from '../uncontroll';
 import fire from '../fire';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 /** @deprecated */
 export interface IEnhancedWithKeyboardFocusInjectedProps

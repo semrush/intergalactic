@@ -13,7 +13,7 @@ const makeMessageTitle = (dateFrom: string, dateTo: string) => {
   );
   const formattedEndDate = endDate.format('DD MMMM YYYY');
 
-  return `:whale: Semcore updates from ${formattedStartDate} to ${formattedEndDate}`;
+  return `:whale: Intergalactic updates from ${formattedStartDate} to ${formattedEndDate}`;
 };
 
 const filterByDate = (changelogs: Changelog[], startDate: string, endDate: string) =>

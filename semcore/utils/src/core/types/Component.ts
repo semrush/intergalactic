@@ -3,9 +3,11 @@ import React, {
   ForwardRefExoticComponent,
   PureComponent,
   ReactNode,
+  RefAttributes,
   RefObject,
 } from 'react';
-import { IStyledProps } from './styled';
+import { IStyledProps } from '../styled';
+import { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 
 /** @deprecated */
 type KnownKeys<T> = {
@@ -294,3 +296,32 @@ export const wrapIntergalacticComponent = <
   Component['__context'],
   Component['__additionalContext']
 > => wrapper as any;
+
+export type PropsAndRef<T, Ctx, UCProps> = PropsWithRenderFnChildren<T, Ctx, UCProps> &
+  RefAttributes<unknown>;
+export type ForwardRefComponent<T, Ctx, UCProps> = ForwardRefExoticComponent<
+  PropsAndRef<T, Ctx, UCProps>
+>;
+type ComponentOrProps<T, Context, UCProps> = T extends [infer ParentProps, infer ChildProps]
+  ? ComponentType<ParentProps, ChildProps, Context, UCProps>
+  : ForwardRefComponent<T, Context, UCProps>;
+
+export type ComponentType<
+  ComponentProps,
+  ChildComponentProps = {},
+  ContextType = {},
+  UCProps = {},
+  FNType = null,
+> = (FNType extends null
+  ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
+  : FNType & { displayName: string }) & {
+  [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
+} & {
+  [CORE_COMPONENT]: boolean;
+  [CREATE_COMPONENT]: () => ComponentType<
+    ComponentProps,
+    ChildComponentProps,
+    ContextType,
+    UCProps
+  >;
+};

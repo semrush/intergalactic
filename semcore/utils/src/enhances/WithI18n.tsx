@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };

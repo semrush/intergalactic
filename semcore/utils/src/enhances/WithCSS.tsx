@@ -3,7 +3,7 @@ import { NanoOptions } from '@phytonmk/nano-css';
 import { CssLikeObject } from '@phytonmk/nano-css/types/common';
 import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 const getStylesheet = () => CSSinJS().raw;
 

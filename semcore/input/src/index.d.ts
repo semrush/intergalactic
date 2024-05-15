@@ -45,7 +45,7 @@ export type InputValueProps = BoxProps &
      */
     onChange?: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;
     /**
-     * Sets the input to the disabled state
+     * @deprecated Set `disabled` on `Input` instead.
      * */
     disabled?: boolean;
     /**

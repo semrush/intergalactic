@@ -182,7 +182,12 @@ function CompareDateRange(props) {
 }
 
 function RangeCalendar(props) {
-  const { Root: SRangeCalendar, styles } = props;
+  const { Root: SRangeCalendar, styles, Children, children: hasChildren } = props;
+
+  if (hasChildren) {
+    return <Children />;
+  }
+
   return sstyled(styles)(
     <SRangeCalendar render={Flex} gap={8}>
       <Flex direction='column'>

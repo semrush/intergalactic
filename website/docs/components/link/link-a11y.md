@@ -16,6 +16,17 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Enter`       | Activates the link.                            |
 
+### Roles & attributes
+
+The list below describes roles and attributes that the component already has.
+
+Table: Roles and attributes
+
+| Role   | Attribute      | Element       | Usage                                                 |
+| ------ | -------------- | ------------- | ----------------------------------------------------- |
+| `link` |                | `a`, `img` | Identifies the element as a link.        |
+|        | `tabIndex="0"` | `a`, `img` | Includes the link element in the page `Tab` sequence. |
+
 ## Considerations for developers
 
 ### Roles & attributes
@@ -24,12 +35,14 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 Table: Roles and attributes
 
-| Role   | Attribute      | Element       | Usage                                                 |
-| ------ | -------------- | ------------- | ----------------------------------------------------- |
-| `link` |                | `span`, `img` | Identifies the `span`/`img` element as a link.        |
-|        | `tabIndex="0"` | `span`, `img` | Includes the link element in the page `Tab` sequence. |
-|        | `alt`          | `img`         | Defines the accessible name of the link.              |
-|        | `aria-label`   | `span`        | Defines the accessible name of the link.              |
+| Attribute      | Element       | Usage                                                      |
+| -------------- | ------------- | ---------------------------------------------------------- |
+| `aria-label`   | `a`           | Defines the accessible name of a link.                     |
+| `alt`          | `img`         | Defines the accessible name of an image used as a link.    |
+
+### Contrast
+
+When choosing a color for your links, ensure that the contrast ratio between the link and its background is at least 4.5:1, and the contrast ratio between the link and the surrounding text is at least 3:1.
 
 ### External link
 

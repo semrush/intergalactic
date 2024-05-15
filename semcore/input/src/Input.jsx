@@ -36,7 +36,7 @@ class Input extends Component {
     }
   };
 
-  bindHandlerValueFocused = (focused) => () => this.setState({ focused });
+  bindHandleValueFocused = (focused) => () => this.setState({ focused });
 
   getAddonProps() {
     const { disabled, size } = this.asProps;
@@ -68,8 +68,8 @@ class Input extends Component {
       size,
       disabled,
       state,
-      onFocus: this.bindHandlerValueFocused(true),
-      onBlur: this.bindHandlerValueFocused(false),
+      onFocus: this.bindHandleValueFocused(true),
+      onBlur: this.bindHandleValueFocused(false),
       role,
       placeholder,
       'aria-haspopup': ariaHaspopup,
@@ -79,6 +79,12 @@ class Input extends Component {
       'aria-owns': ariaOwns,
       'aria-activedescendant': ariaActivedescendant,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.disabled !== this.asProps.disabled && this.asProps.disabled) {
+      this.setState({ focused: false });
+    }
   }
 
   render() {

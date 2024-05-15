@@ -6,9 +6,9 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 ## Description
 
-**WidgetEmpty** is a component designed to display messages in widgets.
+**WidgetEmpty** is a component designed to display empty states in widgets.
 
-Widgets have "empty" states, when there is no data to show. In such cases, the WidgetEmpty component informs the user why there is no data and provides guidance on how to address the situation.
+The WidgetEmpty component informs the user why there is no data (e.g. due to applied filters, tool not having been set up yet, or a system error) and provides guidance on how to address the situation.
 
 ## Composition and styles
 
@@ -23,7 +23,7 @@ Component consists of the following:
 
 ## Styles
 
-We recommend to add maximum 400px width for the "empty" state message to ensure readability.
+We recommend restricting maximum width of the message text to 400px to ensure readability.
 
 ![](static/medium-nothing.png)
 
@@ -42,44 +42,47 @@ Table: WidgetEmpty styles
 
 ![](static/margins-scheme-2.png)
 
-## Widget sizes
+## Widget size
 
-The height of the widget in the "empty" state is usually the same as the height of the widget with data.
+Normally, widget's height doesn't change in the empty state and stays the same as in the normal state with data.
 
-The content of the "empty" state is centered both horizontally and vertically in relation to the widget content.
+The content of the empty state is centered both horizontally and vertically inside the widget.
 
-### Minimum height (for edge cases)
+### Reducing the height (in edge cases)
 
-In some cases, the height of the widget with the "empty" state needs to be reduced to save space on the page. In such cases, the widget's minimum height is set to 188px. The title becomes the description, and it is recommended to keep it to one sentence.
+In some cases, widget's height needs to be reduced in the empty state to save space on the page. In such cases, you can hide the description line and display the whole message using only the title. It's recommended to keep it to one sentence.
 
 ![](static/big-extra-empty.png)
 
 ![](static/medium-extra-empty.png)
 
-## Button names
+### Widgets with small width
 
-<!-- 1. If the WidgetEmpty's description starts with "Try" and only the problem area should be updated, then call the button "Try again". -->
-1. If the whole page should be refreshed, then call the button "Reload page."
-2. If the widget should be refreshed, then call the button "Reload."
+If your widget's width is less than 300px, you can use the compact version of the state:
+* hide the illustration,
+* display the title using description styles,
+* move the description text into an [Informer](../../patterns/informer/informer),
+* display a link instead of the button.
+
+![](static/small-empty.png)
 
 ## State types
 
-The list of "empty" states in the widgets includes:
+Some common empty states in widgets are:
 
-- No data
-- Nothing found
-- No more results
-- Product isn't set up
+- No data / Nothing found
 - Something went wrong (has a specific version: "Cannot filter data")
+- Product isn't set up
+- No more results
 
 ## No data
 
 Use this state when there is no data or the system cannot display it for some reason. If the widget has a title, it should also be displayed in this state. In this case, display the following:
 
-- An illustration corresponding to the type of data in the widget.
-- A message specifying that there is no data or providing user actions to obtain it.
-- An optional button to help users remedy the situation.
-- Optional filters to help remedy the situation.
+- An illustration (use one of the [Chart type or Data type illustrations](../../style/illustration/illustration) to represent the kind of data that's normally displayed in the widget).
+- A message specifying why there's no data and what can be done to obtain it.
+- Optionally: a button to help remedy the situation in one click (for example, clear filters).
+- Optionally: filters to help remedy the situation.
 
 Table: No data message examples
 
@@ -88,19 +91,17 @@ Table: No data message examples
 | ![](static/big-empty.png)         | ![](static/medium-empty.png)         | Title: "Nothing found". Description: {Hint message}. |
 | ![](static/big-empty-filters.png) | ![](static/medium-empty-filters.png) | Title: "Nothing found". Description: {Hint message}. |
 
-**Be brief.** Avoid excessive text in these states. Two or three short sentences are sufficient.
-
-If your widget has a width less than 300px, you may display only the title with styles of the description text and hide the description behind an `Info` icon of size M.
-
-![](static/small-empty.png)
+::: tip
+Be brief — avoid excessive text in these states. Two or three short sentences are sufficient.
+:::
 
 ### Nothing found
 
-This specific state is used when there are no data results in a search, table, or page. Display the following:
+This is a variation of the `No data` state that's used when there are no search results in a widget, table or page. Display the following:
 
-- A universal illustration.
-- A text message specifying that there is no data based on the user's request.
-- An optional button to help remedy the situation.
+- The `NothingFound` illustration.
+- A text message specifying that nothing was found based on the user's request.
+- Optionally: a button to clear filters or otherwise try to remedy the situation in one click.
 
 Table: Nothing found message examples
 
@@ -108,21 +109,17 @@ Table: Nothing found message examples
 | ------------------- | ------------------ | -------- |
 | ![](static/big-nothing.png) | ![](static/medium-nothing.png) | Title: "Nothing found". Description: "Try changing your filters". |
 
-If the widget has a width less than 300px, you may display only the title with styles of the description text and hide the description behind an `Info` icon of size M.
-
-![](static/small-nothing.png)
-
 ## Something went wrong
 
-Use this state when something went wrong at the backend. Either the product team is unaware of the issue, or they are aware and informing the user about it.
+Use this state when something went wrong in the system. Display the appropriate variation of the state depending on whether the team is aware of the issue.
 
-### We know there are problems at the backend
+### We know there are problems in the system
 
 Display the following:
 
 - An illustration.
-- A text message specifying what the user should do.
-- An additional button (recommended).
+- A text message specifying that we're working on the issue and asking the user to try again later.
+- Recommended: a helpful button (e.g. to reload the widget or the whole page).
 
 Table: Something went wrong message examples
 
@@ -130,17 +127,13 @@ Table: Something went wrong message examples
 | ------------------ | --------------------------- | ------- |
 | ![](static/big-error.png) | ![](static/medium-error.png) | Title: "Something went wrong". Description: "We are aware of the issue and are working to fix it. Please try again later". |
 
-If your widget has a width less than 300px, you may display only the title with styles of the description text and hide the description behind an `Info` icon of size M.
-
-![](static/small-error.png)
-
-### We don’t know there are problems at the backend
+### We don’t know there are problems in the system
 
 Display the following:
 
 - An illustration.
-- A text message specifying what the user should set up.
-- An additional button (recommended).
+- A text message about what happened and what the user can do (e.g. contact the support team).
+- Recommended: a helpful button (e.g. to reload the widget or the whole page).
 
 Table: Something went wrong message examples
 
@@ -148,9 +141,11 @@ Table: Something went wrong message examples
 | ------------- | --------------------- | ---------- |
 | ![](static/big-error-2.png) | ![](static/medium-error-2.png) | Title: "Something went wrong". Description: "Please try again later. If the problem persists, contact us at {email}" |
 
-If your widget has a width less than 300px, you may display only the title with styles of the description text and hide the description behind an `Info` icon of size M.
+### Button name
 
-![](static/small-error-2.png)
+<!-- 1. If the WidgetEmpty's description starts with "Try" and only the problem area should be updated, then call the button "Try again". -->
+1. If the button refreshes the whole page, call it "Reload page."
+2. If the button refreshes only this widget, call it simply "Reload."
 
 ## Custom messages
 
@@ -168,10 +163,6 @@ Table: Custom message examples
 | Large widget   | Medium widget        | Text      |
 | -------------- | -------------------- | --------- |
 | ![](static/big-error-filter.png) | ![](static/medium-error-filter.png) | Title: "Cannot {filter/search/sort} data". Description: "{Provide helpful information for the user to deal with the situation}". |
-
-If your widget has a width less than 300px, you may display only the title with styles of the description text and hide the description behind an `Info` icon of size M.
-
-![](static/small-error-filter.png)
 
 ### Set up your product
 
@@ -192,15 +183,11 @@ Table: Set up your product message examples
 | ---------------------- | ---------------- | ------------ |
 | ![](static/big-set-up.png) | ![](static/medium-set-up.png) | Title: "Set up your {Name Tool}". Description: {Hint message}. |
 
-If your widget has a width less than 300px, you may display only the title with styles of the description text and hide the description behind an `Info` icon of size M.
-
-![](static/small-set-up.png)
-
 ### No more results
 
-This state is used when there is a small amount of data in the widget, typically in widgets with tables, text, or other data.
+This state is used when there is a small amount of data in the widget, typically with tables, text, or other data.
 
-Add the text: "No more results" and center it both vertically and horizontally.
+Add the text: "No more results" after the data and center it horizontally.
 
 ![](static/no-more-results.png)
 

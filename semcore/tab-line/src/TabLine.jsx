@@ -101,7 +101,6 @@ class TabLineRoot extends Component {
       selected: isSelected,
       onClick: this.bindHandlerClick(props.value),
       tabIndex: isSelected ? 0 : -1,
-      'aria-posinset': index + 1,
       'aria-selected': isSelected,
       ref: (node) => {
         this.itemRefs[props.value] = node;

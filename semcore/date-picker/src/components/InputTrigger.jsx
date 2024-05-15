@@ -77,6 +77,7 @@ class SingleDateInputRoot extends Component {
       </>
     ),
     defaultDisabledDateInputAttempt: false,
+    showError: true,
   };
   state = {
     errorText: null,
@@ -115,8 +116,16 @@ class SingleDateInputRoot extends Component {
   };
 
   getMaskedInputProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, w, ariaHasPopup, ...otherProps } =
-      this.asProps;
+    const {
+      value,
+      onChange,
+      onDisplayedPeriodChange,
+      locale,
+      w,
+      ariaHasPopup,
+      showError,
+      ...otherProps
+    } = this.asProps;
 
     return {
       date: value,
@@ -130,8 +139,9 @@ class SingleDateInputRoot extends Component {
   }
 
   render() {
-    const { Children, forwardRef, styles, state } = this.asProps;
-    const { errorText, showError } = this.state;
+    const { Children, forwardRef, styles, state, showError: showErrorProps } = this.asProps;
+    const { errorText, showError: showErrorState } = this.state;
+    const showError = showErrorState && showErrorProps;
     const SSingleDateInput = Root;
 
     return sstyled(styles)(
@@ -166,6 +176,7 @@ class DateRangeRoot extends Component {
       </>
     ),
     defaultDisabledDateInputAttempt: false,
+    showError: true,
   };
   state = {
     containerFocused: false,
@@ -273,14 +284,8 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const {
-      value,
-      locale,
-      onDisplayedPeriodChange,
-      ariaHasPopup,
-
-      ...otherProps
-    } = this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, showError, ...otherProps } =
+      this.asProps;
 
     return assignProps(
       {
@@ -299,8 +304,15 @@ class DateRangeRoot extends Component {
     );
   }
   getToMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange, ariaHasPopup, inputId, ...otherProps } =
-      this.asProps;
+    const {
+      value,
+      locale,
+      onDisplayedPeriodChange,
+      ariaHasPopup,
+      inputId,
+      showError,
+      ...otherProps
+    } = this.asProps;
     const ariaLabel = this.asProps.getI18nText('toDate', {
       date: this.asProps.getI18nText('input'),
     });
@@ -338,8 +350,9 @@ class DateRangeRoot extends Component {
 
   render() {
     const SDateRange = Root;
-    const { Children, styles, w, state } = this.asProps;
-    const { errorText, showError, lastChangedInput } = this.state;
+    const { Children, styles, w, state, showError: showErrorProps } = this.asProps;
+    const { errorText, lastChangedInput, showError: showErrorState } = this.state;
+    const showError = showErrorState && showErrorProps;
 
     return sstyled(styles)(
       <SDateRange

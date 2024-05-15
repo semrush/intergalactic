@@ -35,7 +35,7 @@ if (!commitTitle) {
 
 if (!commitTitle.startsWith('[') || !commitTitle.includes(']')) {
   outputError(
-    `Should be in format "[scope] change description"${pc.gray(
+    `Should be in format "[scope] change description" or "[xxxxxxxxx][scope] change description"${pc.gray(
       ', e.g. "[button] added blockchain support"]',
     )}`,
   );
@@ -45,8 +45,25 @@ if (!commitTitle.includes('] ')) {
   outputError(`Missing in "] " in message of format "[scope${pc.red('] ')}change description" `);
 }
 
-const scope = commitTitle.substring(1, commitTitle.indexOf('] '));
-const description = commitTitle.substring(commitTitle.indexOf('] ') + 3);
+let taskId: null | string = null;
+let scope: null | string = null;
+let description: null | string = null;
+
+if (commitTitle.includes('][')) {
+  taskId = commitTitle.substring(1, commitTitle.indexOf(']['));
+  scope = commitTitle.substring(
+    commitTitle.indexOf('][') + 2,
+    commitTitle.indexOf('] ', commitTitle.indexOf('][')),
+  );
+  description = commitTitle.substring(commitTitle.indexOf('] ', commitTitle.indexOf('][')) + 2);
+} else {
+  scope = commitTitle.substring(1, commitTitle.indexOf('] '));
+  description = commitTitle.substring(commitTitle.indexOf('] ') + 3);
+}
+
+if (taskId && taskId.length !== 9) {
+  outputError(`Got task id "${taskId}" in message while it's expected to be 9 characters long`);
+}
 
 if (!scope) {
   outputError('Got empty scope in message of format "[scope] change description"');

@@ -76,7 +76,11 @@ const App = PlaygroundGeneration(playground);
 
 ## Description
 
-**SpinContainer** is a component designed to display the [Spin](/components/spin/spin) around a component, widget, or page.
+**SpinContainer** is a component designed to display the loading state of a form, table, or page, when the exact load time is unknown.
+
+::: tip
+This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
+:::
 
 ## Appearance
 

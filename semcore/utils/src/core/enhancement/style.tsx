@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-ignore
 import { sstyled } from '../styled';
 import { STATIC_COMPONENT } from './staticChildren';
 

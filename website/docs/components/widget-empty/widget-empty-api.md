@@ -4,20 +4,9 @@ fileSource: widget-empty
 tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
-## WidgetEmpty
-
-This component is used for displaying message for "empty" states in the widgets.
-
-```jsx
-import WidgetEmpty from 'intergalactic/widget-empty';
-<WidgetEmpty />;
-```
-
-<TypesView type="WidgetEmptyProps" :types={...types} />
-
 ## NoData
 
-Use this state to display "No data" message.
+Use this state to display "No data" (including "Nothing found") empty states.
 
 ```jsx
 import { NoData } from 'intergalactic/widget-empty';
@@ -28,7 +17,7 @@ import { NoData } from 'intergalactic/widget-empty';
 
 ## Error
 
-Use this state to display error message.
+Use this state to display error messages.
 
 ```jsx
 import { Error } from 'intergalactic/widget-empty';
@@ -36,6 +25,17 @@ import { Error } from 'intergalactic/widget-empty';
 ```
 
 <TypesView type="WidgetErrorProps" :types={...types} />
+
+## WidgetEmpty
+
+Use this component to display customized empty states.
+
+```jsx
+import WidgetEmpty from 'intergalactic/widget-empty';
+<WidgetEmpty />;
+```
+
+<TypesView type="WidgetEmptyProps" :types={...types} />
 
 ## Images
 

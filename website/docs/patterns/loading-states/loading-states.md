@@ -6,7 +6,7 @@ title: Loading states
 
 These components are employed to manage user expectations:
 
-- [Spin](/components/spin/spin)
+- [SpinContainer](/components/spin-container/spin-container) / [Spin](/components/spin/spin)
 - [Skeleton](/components/skeleton/skeleton)
 - [ProgressBar](/components/progress-bar/progress-bar)
 
@@ -30,10 +30,6 @@ In all other circumstances, implement [Skeleton](/components/skeleton/skeleton) 
 
 A delay of `600ms` should be incorporated before the skeleton becomes visible across all products. This delay mitigates flickering during transitions between products.
 
-### Spin as user interface feedback
-
-[Spin](/components/spin/spin) should solely be employed when users interact with clickable interface elements on the page.
-
 ## Usage rules
 
 ### Skeleton
@@ -42,11 +38,11 @@ A delay of `600ms` should be incorporated before the skeleton becomes visible ac
 
 - Initial data loading.
 - Displaying the structure of loading pages and data.
-- Uploading new data.
+- Loading new data.
 
 ![](static/loading-skeleton.png)
 
-### Spin
+### SpinContainer
 
 **Use it while:**
 
@@ -55,10 +51,14 @@ A delay of `600ms` should be incorporated before the skeleton becomes visible ac
 - Conducting data searches.
 
 ::: tip
-If the download process is rapid, this state can be omitted.
+If the loading process is rapid, this state can be omitted.
 :::
 
-![](static/spin.png)
+![](static/sticky-loading-1.png)
+
+### Spin
+
+You can use [Spin](/components/spin/spin) instead of [SpinContainer](/components/spin-container/spin-container) when you need to show a loading state of a single element, such as a [table cell](/table-group/table-states/table-states#data-loading-in-cell).
 
 ### ProgressBar
 

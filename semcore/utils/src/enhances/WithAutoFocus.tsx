@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import createHoc from '../createHoc';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 /** @deprecated */
 export interface IEnhancedWithAutoFocusProps
