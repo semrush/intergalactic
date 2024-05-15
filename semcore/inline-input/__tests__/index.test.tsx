@@ -90,7 +90,7 @@ const makePlayground = () => (
       <InlineInput.Addon tag={'label'} htmlFor='number-example'>
         enter score:
       </InlineInput.Addon>
-      <InlineInput.NumberValue id={'number-example'} defaultValue={100} />
+      <InlineInput.NumberValue id={'number-example'} defaultValue={'100'} />
       <InlineInput.NumberControls showControls />
     </InlineInput>
   </>
