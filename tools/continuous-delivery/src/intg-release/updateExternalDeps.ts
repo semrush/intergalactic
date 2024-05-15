@@ -44,5 +44,8 @@ export async function updateExternalDeps(packageJson: Record<string, any>, packa
     ...externalDependencies,
   };
 
-  await fs.writeFile(path.resolve(releasePackageDir, 'package.json'), JSON.stringify(packageJson));
+  await fs.writeFile(
+    path.resolve(releasePackageDir, 'package.json'),
+    JSON.stringify(packageJson, null, 2) + '\n',
+  );
 }
