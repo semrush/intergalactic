@@ -87,7 +87,7 @@ const GENERATOR = {
         continue;
       }
       // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-      console.log('[debug util name]', util)
+      console.log('[debug util name]', util);
       if (['reshadow.d.ts'].includes(util)) {
         continue;
       }
