@@ -1,11 +1,8 @@
 module.exports = function (babel, opts = {}) {
   return {
-    presets: [
-      '@babel/preset-typescript',
-      ['@babel/preset-env', { modules: false, ...opts.env }],
-      '@babel/preset-react',
-    ],
+    presets: [['@babel/preset-env', { modules: false, ...opts.env }], '@babel/preset-react'],
     plugins: [
+      ['@babel/plugin-transform-typescript', { isTSX: true }],
       ['@semcore/babel-plugin-root', opts.root],
       '@semcore/babel-plugin-styles',
       '@babel/plugin-proposal-export-default-from',

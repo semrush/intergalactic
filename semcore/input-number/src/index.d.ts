@@ -1,5 +1,5 @@
 import React from 'react';
-import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import { Intergalactic, PropGetterFn, UnknownProperties, Component } from '@semcore/core';
 import { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
 
 export type InputNumberValue = string;
@@ -34,6 +34,13 @@ export type InputNumberValueProps = InputValueProps & {
   /** Called when the input value changes, it returns its current value in numeric format */
   onChange?: (value: InputNumberValue, event?: React.SyntheticEvent<HTMLInputElement>) => void;
   locale?: string;
+
+  displayValue?: string;
+
+  /** Internal ref for the input */
+  inputRef?: React.Ref<HTMLInputElement>;
+  /** Internal prop from parent */
+  numberFormatter?: Intl.NumberFormat;
 };
 
 /** @deprecated */
@@ -65,4 +72,20 @@ declare const IncrementIcon: React.FC;
 declare const DecrementIcon: React.FC;
 declare const parseValueWithMinMax: (value: number, min?: number, max?: number) => number;
 
-export { IncrementIcon, DecrementIcon, parseValueWithMinMax };
+declare class InputNumberValueComponent extends Component<InputNumberValueProps> {
+  valueInputRef: React.Ref<HTMLInputElement>;
+
+  stepUp(): void;
+  moveSelectionRight(): void;
+  moveSelectionLeft(): void;
+  valueParser(): void;
+  handleBlur(): void;
+  handleChange(): void;
+  handleClick(): void;
+  handleKeyDown(): void;
+  handleKeyUp(): void;
+  handleValidation(): void;
+  handleWheel(): void;
+}
+
+export { IncrementIcon, DecrementIcon, parseValueWithMinMax, InputNumberValueComponent };

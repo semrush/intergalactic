@@ -13,9 +13,8 @@ import Input from '@semcore/input';
 import {
   IncrementIcon,
   DecrementIcon,
-  parseValueWithMinMax,
   InputNumberValueProps,
-  InputNumberValue,
+  InputNumberValueComponent,
 } from '@semcore/input-number';
 import { IRootComponentHandlers } from '@semcore/core';
 import { forkRef } from '@semcore/utils/lib/ref';
@@ -45,6 +44,7 @@ type RootAsProps = {
   styles?: React.CSSProperties;
   Children: React.FC;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+  locale?: string;
 };
 
 type AddonAsProps = {
@@ -413,7 +413,7 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
   ) as React.ReactElement;
 };
 
-class NumberValue extends InputNumberValue {
+class NumberValue extends InputNumberValueComponent {
   static defaultProps = {
     defaultValue: '',
     defaultDisplayValue: '',
@@ -424,6 +424,8 @@ class NumberValue extends InputNumberValue {
     const SValue = Root;
     const SValueHidden = 'div';
     const { styles, min, max, step, forwardRef, inputRef, value, displayValue } = this.asProps;
+    const ref =
+      inputRef && forwardRef ? forkRef(this.valueInputRef, inputRef, forwardRef) : undefined;
 
     return sstyled(styles)(
       <>
@@ -435,7 +437,7 @@ class NumberValue extends InputNumberValue {
           onKeyDown={this.handleKeyDown}
           onKeyUp={this.handleKeyUp}
           onClick={this.handleClick}
-          use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
+          use:ref={ref}
           use:value={displayValue}
           inputMode='decimal'
           aria-valuemin={min}

@@ -78,6 +78,7 @@ export class Value extends Component {
     super(props);
 
     this.stepUp = this.stepUp.bind(this);
+    this.stepDown = this.stepDown.bind(this);
     this.moveSelectionRight = this.moveSelectionRight.bind(this);
     this.moveSelectionLeft = this.moveSelectionLeft.bind(this);
     this.valueParser = this.valueParser.bind(this);
