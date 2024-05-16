@@ -13,11 +13,11 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Component     | Role / element | Attribute   | Description |
-| ------------- | -------------- | --------------------------------------------------------- | ----------- |
+| Component / element | Role | Attribute   | Description |
+| ------------------- | -------------- | --------------------------------------------------------- | ----------- |
 | `WidgetEmpty` | `status`       | implicit `aria-live="polite"` and ` aria-atomic="true"`   | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive `aria-live="polite"` attribute. The screen reader will speak changes whenever the user is idle. |
-| `Image`       |                | `aria-hidden='true'`                                      | `aria-hidden='true'` removes the image from the accessibility tree.  |
-|               | `img`          | `alt=''` | Decorative images do not need to be announced by the screen reader, so the `alt` attribute should be empty. |
+| `Image`       |                | `aria-hidden='true'`                                      | Removes the image from the accessibility tree.  |
+| `img`         |          | `alt=''` | Decorative images do not need to be announced by the screen reader, so the `alt` attribute should be empty. |
 
 ## Considerations for designers
 
