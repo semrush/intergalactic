@@ -6,7 +6,7 @@ tabs: Design('flags'), A11y('flags-a11y'), API('flags-api'), Changelog('flags-ch
 
 ## Considerations for developers
 
-`Flags` doesn't have the `aria-label` attribute by default to avoid double reading when it's accompanied by the country name.
+The `Flags` component doesn't have an `aria-label` by default to avoid double reading when it's accompanied by the country name.
 
 If you use `Flags` without the full country name, you should set the following attributes to the component:
 
