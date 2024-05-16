@@ -382,7 +382,7 @@ class DateRangeRoot extends Component {
 
   render() {
     const SDateRange = Root;
-    const { Children, styles, w, state, showError: showErrorProps } = this.asProps;
+    const { Children, styles, w, state, showError: showErrorProps, popoverVisible } = this.asProps;
     const { errorText, lastChangedInput, showError: showErrorState } = this.state;
     const showError = showErrorState && showErrorProps;
 
@@ -639,7 +639,7 @@ const MaskedInput = ({
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
 
       if (fulfilled) {
-        const date = new Date();
+        const date = new Date(0, 0, 0, 0, 0, 0, 0);
         date.setFullYear(allowedParts.year ? parseInt(year, 10) : 0);
         date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
@@ -691,7 +691,7 @@ const MaskedInput = ({
         !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
-        const date = new Date();
+        const date = new Date(0, 0, 0, 0, 0, 0, 0);
         date.setFullYear(allowedParts.year ? parseInt(year, 10) : 0);
         date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
@@ -707,7 +707,7 @@ const MaskedInput = ({
       }
 
       if (yearFulfilled && allowedParts.year) {
-        const date = new Date();
+        const date = new Date(0, 0, 0, 0, 0, 0, 0);
         date.setFullYear(parseInt(year, 10));
         if (monthFulfilled && allowedParts.month) {
           date.setMonth(parseInt(month, 10) - 1);
