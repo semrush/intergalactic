@@ -50,20 +50,7 @@ class DropdownMenuRoot extends Component {
   uncontrolledProps() {
     return {
       highlightedIndex: null,
-      visible: [
-        null,
-        (visible) => {
-          if (!visible) {
-            this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
-          } else {
-            setTimeout(() => {
-              const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
-              if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;
-              this.handlers.highlightedIndex(selectedItemIndex);
-            }, 0);
-          }
-        },
-      ],
+      visible: null,
     };
   }
 
@@ -392,15 +379,29 @@ class DropdownMenuRoot extends Component {
 
     if (this.itemProps[newIndex]?.disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
+    } else if (!this.itemProps[newIndex]) {
+      this.handlers.highlightedIndex(0, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
     }
   }
 
-  componentDidUpdate() {
-    if (!this.asProps.visible) {
-      this.handlers.highlightedIndex(null);
-      this.highlightedItemRef.current = null;
+  componentDidUpdate(prevProps) {
+    if (this.asProps.visible !== prevProps.visible) {
+      if (!this.asProps.visible) {
+        this.handlers.highlightedIndex(null);
+        this.highlightedItemRef.current = null;
+        this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
+        if (document.activeElement === document.body || isFocusInside(this.popperRef.current)) {
+          setFocus(this.triggerRef.current);
+        }
+      } else {
+        setTimeout(() => {
+          const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
+          if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;
+          this.handlers.highlightedIndex(selectedItemIndex);
+        }, 0);
+      }
     }
     if (
       (this.state.focusLockItemIndex !== this.asProps.highlightedIndex || !this.asProps.visible) &&

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tooltip",
   "description": "Semrush Tooltip Component",
-  "version": "6.28.1",
+  "version": "6.30.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,10 +13,10 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/utils": "4.24.0",
-    "@semcore/flex-box": "5.23.0",
-    "@semcore/popper": "5.30.1",
-    "@semcore/portal": "3.23.0"
+    "@semcore/utils": "4.25.0",
+    "@semcore/flex-box": "5.24.0",
+    "@semcore/popper": "5.32.0",
+    "@semcore/portal": "3.24.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

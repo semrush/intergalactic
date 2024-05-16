@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.30.1] - 2024-05-13
+## [5.32.0] - 2024-05-16
+
+### Fixed
+
+- Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
+
+## [5.31.0] - 2024-05-16
 
 ### Fixed
 

@@ -1,4 +1,10 @@
-## [15.82.1] - 2024-05-15
+## [15.84.0] - 2024-05-16
+
+### @semcore/popper
+
+- **Fixed** Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
+
+## [15.83.1] - 2024-05-16
 
 ### @semcore/data-table
 

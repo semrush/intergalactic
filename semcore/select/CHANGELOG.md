@@ -2,7 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.39.2] - 2024-05-15
+## [4.41.0] - 2024-04-29
+
+### Changed
+
+- Removed mechanism that returns focus to the trigger after items selecting as it was moved to underlying `DropdownMenu`.
+
+## [4.40.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown-menu` [4.29.2 ~> 4.30.0], `@semcore/popper` [5.31.0 ~> 5.32.0]).
+
+## [4.39.3] - 2024-05-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [4.28.0 ~> 4.29.0], `@semcore/popper` [5.29.0 ~> 5.30.0], `@semcore/input` [4.24.0 ~> 4.24.1]).
+
+## [4.39.1] - 2024-05-10
 
 ### Changed
 
