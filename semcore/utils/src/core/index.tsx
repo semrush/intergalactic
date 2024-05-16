@@ -402,8 +402,8 @@ function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentTyp
   return Component as any;
 }
 
-export * from './types';
-export * from './styled';
+export * from './types/index';
+export * from './styled/index';
 export * from './register';
 export {
   createBaseComponent,

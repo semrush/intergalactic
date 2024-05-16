@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.0] - 2024-05-15
+
+### Added
+
+- `utils/core` that represents content of `@semcore/core` package (that now just reexports `utils/core`).
+
 ## [4.24.0] - 2024-04-17
 
 ### Added

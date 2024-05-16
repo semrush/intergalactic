@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.2] - 2024-05-15
+
+### Fixed
+
+- If currently highlighted item was hidden (e.g. with filtering), items keyboard navigation was not working.
+
 ## [4.29.1] - 2024-05-13
 
 ### Fixed

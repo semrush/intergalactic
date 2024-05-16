@@ -6,7 +6,7 @@ import React, {
   RefAttributes,
   RefObject,
 } from 'react';
-import { IStyledProps } from '../styled';
+import { IStyledProps } from '../styled/index';
 import { CORE_COMPONENT, CREATE_COMPONENT } from './symbols';
 
 /** @deprecated */
