@@ -392,6 +392,8 @@ class DropdownMenuRoot extends Component {
 
     if (this.itemProps[newIndex]?.disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
+    } else if (!this.itemProps[newIndex]) {
+      this.handlers.highlightedIndex(0, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
     }

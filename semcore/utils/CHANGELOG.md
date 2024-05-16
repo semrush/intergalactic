@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.25.0] - 2024-05-15
+## [4.26.0] - 2024-05-16
 
 ### Added
 
 - New tokens for the icon color in SliderRating component: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+
+## [4.25.0] - 2024-05-15
+
+### Added
+
+- `utils/core` that represents content of `@semcore/core` package (that now just reexports `utils/core`).
 
 ## [4.24.0] - 2024-04-17
 
