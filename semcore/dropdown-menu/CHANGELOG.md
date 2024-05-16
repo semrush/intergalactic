@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.31.0] - 2024-04-29
+
+### Changed
+
+- Added mechanism to return focus to the trigger after closing the dropdown menu after item's interaction.
+
 ## [4.30.0] - 2024-05-16
 
 ### Changed
