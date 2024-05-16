@@ -1,32 +1,16 @@
-## [15.83.0] - 2024-05-16
-
-### @semcore/d3-chart
-
-- **Fixed** Exporting from `@semcore/ui` package.
-
-### @semcore/dropdown-menu
-
-- **Fixed** If currently highlighted item was hidden (e.g. with filtering), items keyboard navigation was not working.
-
-### @semcore/utils
-
-- **Added** `utils/core` that represents content of `@semcore/core` package (that now just reexports `utils/core`).
-
-## [15.82.1] - 2024-05-15
-
-### @semcore/d3-chart
-
-- **Fixed** Exporting from `@semcore/ui` package.
-
-### @semcore/dropdown-menu
-
-- **Fixed** In some cases React error "Uncaught TypeError: destroy is not a function" was thrown.
+## [15.84.0] - 2024-05-16
 
 ### @semcore/popper
 
-- **Fixed** Hovering popper trigger with `interaction=hover` wasn't trigger it to open in test environment.
+- **Fixed** Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
 
-## [15.82.0] - 2024-05-15
+## [15.84.0] - 2024-05-16
+
+### @semcore/popper
+
+- **Fixed** Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
+
+## [15.83.1] - 2024-05-16
 
 ### @semcore/data-table
 
