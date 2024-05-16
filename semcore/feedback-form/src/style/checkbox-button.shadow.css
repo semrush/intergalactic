@@ -6,6 +6,7 @@ SCheckboxButton {
   label {
     width: 100%;
     padding: var(--intergalactic-spacing-3x, 12px);
+    box-sizing: border-box;
   }
 }
 
