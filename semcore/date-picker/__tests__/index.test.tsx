@@ -3,7 +3,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 
 import {
   DatePicker,

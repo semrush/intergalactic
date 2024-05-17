@@ -296,7 +296,7 @@ export type BaseInputTriggerProps = InputProps &
 export type InputTriggerProps = BaseInputTriggerProps & {
   value?: Date;
   onChange?: (date: Date, event: ChangeEvent) => void;
-  /** Flag to show or hide error state (and tooltip with error message) on Input */
+  /** @deprecated Set `disabledErrorText={null}` on the picker Root instead */
   showError?: boolean;
 };
 
