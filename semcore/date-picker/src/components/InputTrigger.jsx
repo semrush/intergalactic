@@ -6,7 +6,8 @@ import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
 import createComponent, { Root, sstyled, Component } from '@semcore/core';
 import NeighborLocation from '@semcore/neighbor-location';
-import includesDate from '../utils/includesDate';
+import { datesIntersects } from '../utils/datesIntersects';
+import { includesDate } from '../utils/includesDate';
 import dayjs from 'dayjs';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
@@ -21,6 +22,7 @@ class InputTriggerRoot extends Component {
   static style = style;
   static defaultProps = {
     duration: 300,
+    popoverVisible: true,
   };
 
   getSingleDateInputProps() {
@@ -102,7 +104,7 @@ class SingleDateInputRoot extends Component {
             if (typeof errorText === 'function') {
               errorText = errorText(date);
             }
-            showError = true;
+            showError = this.asProps.disabledErrorText !== null;
           }
           this.setState({ errorText, showError });
         },
@@ -110,7 +112,7 @@ class SingleDateInputRoot extends Component {
     };
   }
 
-  handleDisabledDateInputAttemptChange = (value) => {
+  handleInputMaskPipeBlock = (value) => {
     if (value === this.asProps.disabledDateInputAttempt) return;
     this.handlers.disabledDateInputAttempt(value);
   };
@@ -133,7 +135,7 @@ class SingleDateInputRoot extends Component {
       onDisplayedPeriodChange,
       locale,
       'aria-haspopup': 'true',
-      onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
+      onMaskPipeBlock: this.handleInputMaskPipeBlock,
       ...otherProps,
     };
   }
@@ -209,7 +211,7 @@ class DateRangeRoot extends Component {
             if (typeof errorText === 'function') {
               errorText = errorText(date);
             }
-            showError = true;
+            showError = this.asProps.disabledErrorText !== null;
           }
           this.setState({ errorText, showError });
         },
@@ -278,7 +280,7 @@ class DateRangeRoot extends Component {
       }, 0);
     }
   };
-  handleDisabledDateInputAttemptChange = (value) => {
+  handleInputMaskPipeBlock = (value) => {
     if (value === this.asProps.disabledDateInputAttempt) return;
     this.handlers.disabledDateInputAttempt(value);
   };
@@ -297,7 +299,7 @@ class DateRangeRoot extends Component {
         flex: 1,
         onDisplayedPeriodChange,
         'aria-haspopup': ariaHasPopup,
-        onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
+        onMaskPipeBlock: this.handleInputMaskPipeBlock,
         containerFocused: this.state.containerFocused,
       },
       otherProps,
@@ -328,7 +330,7 @@ class DateRangeRoot extends Component {
         onDisplayedPeriodChange,
         'aria-label': ariaLabel,
         'aria-haspopup': ariaHasPopup,
-        onMaskPipeBlock: this.handleDisabledDateInputAttemptChange,
+        onMaskPipeBlock: this.handleInputMaskPipeBlock,
         containerFocused: this.state.containerFocused,
       },
       otherProps,
@@ -348,9 +350,39 @@ class DateRangeRoot extends Component {
     this.setState({ containerFocused: false });
   };
 
+  updateDisabledDateInputAttempt = (value) => {
+    const { disabledDates } = this.asProps;
+
+    let invalid = false;
+    if (value) {
+      if (value[0] && value[1])
+        invalid = disabledDates.some(datesIntersects([value[0], value[1]], 'month'));
+      else if (value[0]) invalid = disabledDates.some(includesDate(dayjs(value[0]), 'date'));
+      else if (value[1]) invalid = disabledDates.some(includesDate(dayjs(value[1]), 'date'));
+    }
+
+    if (invalid) {
+      const invalidValue = this.state.lastChangedInput === 'to' ? value[1] : value[0];
+      setTimeout(() => {
+        if (value === this.asProps.disabledDateInputAttempt) return;
+        this.handlers.disabledDateInputAttempt(invalidValue);
+      }, 0);
+    }
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.value !== this.asProps.value) {
+      this.updateDisabledDateInputAttempt(this.asProps.value);
+    }
+  }
+
+  componentDidMount() {
+    this.updateDisabledDateInputAttempt(this.asProps.value);
+  }
+
   render() {
     const SDateRange = Root;
-    const { Children, styles, w, state, showError: showErrorProps } = this.asProps;
+    const { Children, styles, w, state, showError: showErrorProps, popoverVisible } = this.asProps;
     const { errorText, lastChangedInput, showError: showErrorState } = this.state;
     const showError = showErrorState && showErrorProps;
 
@@ -358,10 +390,11 @@ class DateRangeRoot extends Component {
       <SDateRange
         render={InputMask}
         tag={Tooltip}
+        ignorePortalsStacking
         placement={lastChangedInput === 'to' ? 'top-end' : 'top-start'}
         title={errorText}
         theme='warning'
-        visible={showError}
+        visible={showError && popoverVisible}
         state={showError ? 'invalid' : state}
         __excludeProps={['onChange', 'value', 'aria-expanded']}
         w={w}
@@ -606,7 +639,7 @@ const MaskedInput = ({
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
 
       if (fulfilled) {
-        const date = new Date();
+        const date = new Date(0, 0, 0, 0, 0, 0, 0);
         date.setFullYear(allowedParts.year ? parseInt(year, 10) : 0);
         date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
@@ -658,7 +691,7 @@ const MaskedInput = ({
         !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
-        const date = new Date();
+        const date = new Date(0, 0, 0, 0, 0, 0, 0);
         date.setFullYear(allowedParts.year ? parseInt(year, 10) : 0);
         date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
@@ -674,7 +707,7 @@ const MaskedInput = ({
       }
 
       if (yearFulfilled && allowedParts.year) {
-        const date = new Date();
+        const date = new Date(0, 0, 0, 0, 0, 0, 0);
         date.setFullYear(parseInt(year, 10));
         if (monthFulfilled && allowedParts.month) {
           date.setMonth(parseInt(month, 10) - 1);
