@@ -14,6 +14,7 @@ const Demo = () => (
         role='image'
         aria-label={iso2Name[country]}
         mr={1}
+        mb={3}
       />
     ))}
     {countries.map((country) => (
