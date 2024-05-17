@@ -36,6 +36,7 @@ const Demo = () => {
         <Tooltip
           title='You can disable the tab to indicate that data is either being collected or unavailable.'
           placement='top'
+          role='tab'
         >
           <TabLine.Item value={4} disabled>
             <TabLine.Item.Addon>
