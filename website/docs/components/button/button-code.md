@@ -15,7 +15,7 @@ Addons can be installed either by passing the required `tag` to the `addonLeft`/
 
 :::
 
-## Button with Icon
+## Button with icon
 
 To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 
@@ -26,6 +26,14 @@ To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 </script>
 
 :::
+
+## Button as link
+
+<!-- Guys, don't forgat to add example and short description for this case. -->
+
+## Link as button
+
+Refer to [Link as button example](/components/link/link-code#link-as-button).
 
 ## Button accessibility
 
