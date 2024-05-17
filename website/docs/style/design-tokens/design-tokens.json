@@ -1925,6 +1925,7 @@
     "description": "Use with font-size-200.",
     "components": [
       "base-trigger",
+      "breadcrumbs",
       "button",
       "checkbox",
       "d3-chart",
@@ -1957,7 +1958,6 @@
     "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
-      "breadcrumbs",
       "d3-chart",
       "data-table",
       "format-text",

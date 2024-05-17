@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.1] - 2024-05-17
+
+### Fixed
+
+- Line height, changed from `lh-100` to `lh-200` (from 133% to 142%).
+
 ## [5.31.0] - 2024-05-17
 
 ### Changed
