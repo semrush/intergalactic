@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.1] - 2024-05-16
+
+### Fixed
+
+- `ThemeProvider` wasn't working.
+
+## [4.26.0] - 2024-04-29
+
+### Fixed
+
+- In some cases focus was not returned after focus lock was released.
+
+## [4.25.0] - 2024-05-15
+
+### Added
+
+- `utils/core` that represents content of `@semcore/core` package (that now just reexports `utils/core`).
+
 ## [4.24.0] - 2024-04-17
 
 ### Added

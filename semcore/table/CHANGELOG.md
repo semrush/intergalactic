@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.31.1] - 2024-04-22
+## [4.33.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/icon` [4.33.0 ~> 4.34.0], `@semcore/flex-box` [5.24.0 ~> 5.25.0], `@semcore/scroll-area` [5.26.0 ~> 5.27.0], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.32.0] - 2024-05-16
 
 ### Changed
 
 - Made table sticky head scroll container unfocusable by default.
+
+## [4.30.2] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/icon` [4.31.1 ~> 4.31.2], `@semcore/flex-box` [5.22.1 ~> 5.22.2], `@semcore/scroll-area` [5.24.1 ~> 5.24.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
 
 ## [4.30.1] - 2024-04-16
 

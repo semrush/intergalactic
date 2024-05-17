@@ -5,10 +5,15 @@ import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
 
 const Highlight = ({ highlight, children }) => {
-  let html = children.toLowerCase();
+  let html = children;
   if (highlight) {
-    const re = new RegExp(highlight.toLowerCase(), 'g');
-    html = html.replace(re, `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`);
+    try {
+      const re = new RegExp(highlight.toLowerCase(), 'g');
+      html = html.replace(
+        re,
+        `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`,
+      );
+    } catch (e) {}
   }
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
@@ -23,43 +28,73 @@ const debounce = (func, timeout) => {
   };
 };
 
-const fetchData = async (query) => {
+const fakeFetch = async (query) => {
   if (!query) return [];
-  const response = await fetch(`https://suggestions.semrush.com/?type=domain&q=${query}`);
-  if (response.ok) {
-    const data = await response.json();
-    if (data.results.length === 0) return [];
-    return data.results.map((item) => item.value).map((value) => ({ value, title: value }));
-  } else {
-    const error = await response.json();
-    console.error(error);
-  }
+
+  return [
+    'persian',
+    'maine coon',
+    'ragdoll',
+    'sphynx',
+    'siamese',
+    'bengal',
+    'british shorthair',
+    'abyssinian',
+    'birman',
+    'oriental shorthair',
+    'scottish fold',
+    'devon rex',
+    'norwegian forest',
+    'siberian',
+    'russian blue',
+    'savannah',
+    'american shorthair',
+    'exotic shorthair',
+    'ragamuffin',
+    'balinese',
+  ]
+    .filter((breed) => breed.toLowerCase().includes(query.toLowerCase()))
+    .map((value) => ({ value, title: value }));
 };
 
 const Demo = () => {
+  const [visible, setVisible] = React.useState(false);
   const [query, setQuery] = React.useState('');
   const [suggestions, setSuggestions] = React.useState([]);
   const loadSuggestions = React.useCallback(
-    debounce((query) => fetchData(query).then((suggestions) => setSuggestions(suggestions)), 300),
+    debounce(
+      (query: string) => fakeFetch(query).then((suggestions) => setSuggestions(suggestions)),
+      300,
+    ),
     [],
   );
   React.useEffect(() => {
     loadSuggestions(query);
   }, [query]);
+  const handleSelect = React.useCallback((x) => {
+    setQuery(x);
+    setVisible(false);
+  }, []);
 
   return (
     <>
       <Text tag='label' size={200} htmlFor='website-autosuggest'>
-        Your website
+        Your pet breed
       </Text>
       <Box mt={2}>
-        <Select interaction='focus' onChange={setQuery} value={query}>
+        <Select
+          interaction='focus'
+          onChange={handleSelect}
+          value={query}
+          visible={visible}
+          onVisibleChange={setVisible}
+        >
           <Select.Trigger tag={Input}>
             {() => (
               <Input.Value
                 value={query}
                 role='combobox'
-                placeholder='Type domain or URL'
+                placeholder='Type breed name'
                 onChange={setQuery}
                 id='website-autosuggest'
               />

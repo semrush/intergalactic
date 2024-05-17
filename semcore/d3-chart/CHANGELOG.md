@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.42.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.24.0 ~> 2.25.0], `@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [3.41.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/popper` [5.31.0 ~> 5.32.0]).
+
+## [3.40.2] - 2024-05-14
+
+### Fixed
+
+- Exporting from `@semcore/ui` package.
+
+## [3.40.0] - 2024-05-10
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/popper` [5.29.0 ~> 5.30.0]).
+
+## [3.39.1] - 2024-04-26
+
+### Fixed
+
+- `duration` prop on `Chart` component.
+
 ## [3.39.0] - 2024-04-16
 
 ### Changed

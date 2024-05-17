@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.33.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.24.0 ~> 2.25.0], `@semcore/flex-box` [5.24.0 ~> 5.25.0], `@semcore/neighbor-location` [4.22.0 ~> 4.23.0], `@semcore/outside-click` [3.22.0 ~> 3.23.0], `@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [5.32.0] - 2024-05-16
+
+### Fixed
+
+- Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
+
+## [5.31.0] - 2024-05-16
+
+### Fixed
+
+- Hovering popper trigger with `interaction=hover` wasn't trigger it to open in test environment.
+
+## [5.30.0] - 2024-04-29
+
+### Fixed
+
+- Poppers with `interaction=hover` were not opening on touch devices.
+
+## [5.29.1] - 2024-04-26
+
+### Fixed
+
+- Page resizing was causing popper to move to the wrong position.
+
+## [5.29.0] - 2024-04-23
+
+### Added
+
+- `cursorAnchoring` prop that allows to make popper appear near the cursor if trigger is bigger than popper.
+
 ## [5.28.0] - 2024-04-16
 
 ### Added

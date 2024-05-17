@@ -2,6 +2,34 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/flex-box` [5.24.0 ~> 5.25.0], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.25.0] - 2024-05-16
+
+### Fixed
+
+- `disabled` input was not loosing focused styles when it was disabled.
+
+### Changed
+
+- `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
+
+## [4.24.0] - 2024-04-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/flex-box` [5.22.2 ~> 5.23.0], `@semcore/core` [2.20.2 ~> 2.21.0]).
+
+## [4.23.2] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/flex-box` [5.22.1 ~> 5.22.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [4.23.1] - 2024-04-16
 
 ### Changed

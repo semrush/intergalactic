@@ -4,10 +4,25 @@ import TabPanel from 'intergalactic/tab-panel';
 const Demo = () => {
   const [value, onChange] = React.useState(1);
   return (
-    <>
-      <TabPanel value={value} onChange={onChange} aria-label='Animals'>
-        <TabPanel.Item value={1} aria-controls='tab-panel-1'>
-          Cats
+    <TabPanel onChange={setValue} value={value} aria-label='Page'>
+      <TabPanel.Item value={0}>Overview</TabPanel.Item>
+      <TabPanel.Item value={1}>Issues</TabPanel.Item>
+      <TabPanel.Item value={2}>
+        <TabPanel.Item.Addon>
+          <LinkedInM />
+        </TabPanel.Item.Addon>
+        <TabPanel.Item.Text>LinkedIn</TabPanel.Item.Text>
+        <TabPanel.Item.Addon>
+          <Badge bg='bg-primary-success'>new</Badge>
+        </TabPanel.Item.Addon>
+      </TabPanel.Item>
+      <Tooltip
+        title="Progress isn't available during collecting process"
+        placement='top'
+        role='tab'
+      >
+        <TabPanel.Item disabled value={3}>
+          Progress
         </TabPanel.Item>
         <TabPanel.Item value={2} aria-controls='tab-panel-2'>
           Dogs

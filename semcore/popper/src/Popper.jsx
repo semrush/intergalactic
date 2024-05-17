@@ -88,6 +88,7 @@ class Popper extends Component {
     timeout: 0,
     excludeRefs: [],
     focusLoop: true,
+    cursorAnchoring: false,
   };
 
   static enhance = [
@@ -107,10 +108,10 @@ class Popper extends Component {
     },
     hover: {
       trigger: [
-        ['onMouseEnter', 'onKeyboardFocus'],
+        ['onMouseEnter', 'onKeyboardFocus', 'onTouchStart'],
         ['onMouseLeave', 'onBlur'],
       ],
-      popper: [['onMouseEnter', 'onFocusCapture'], ['onMouseLeave']],
+      popper: [['onMouseEnter', 'onFocusCapture', 'onTouchStart'], ['onMouseLeave']],
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
@@ -128,6 +129,7 @@ class Popper extends Component {
   triggerRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
+  lastPopperReference = null;
 
   constructor(props) {
     super(props);
@@ -147,6 +149,7 @@ class Popper extends Component {
   }
 
   state = { ignoreTriggerFocusUntil: 0 };
+  mouseEnterCursorPositionRef = { current: null };
 
   createTriggerRef = (ref) => {
     if (ref && this.triggerRef.current !== ref) {
@@ -183,6 +186,15 @@ class Popper extends Component {
       name: 'computeStyles',
       options: { gpuAcceleration: false },
     });
+    if (this.asProps.cursorAnchoring) {
+      modifiersOptions.push({
+        name: 'cursorAnchoring',
+        options: {
+          cursorAnchoring: this.asProps.cursorAnchoring,
+          mouseEnterCursorPositionRef: this.mouseEnterCursorPositionRef,
+        },
+      });
+    }
 
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
 
@@ -192,6 +204,15 @@ class Popper extends Component {
       onFirstUpdate: callAllEventHandlers(onFirstUpdate, () => {
         this.observer?.observe(this.triggerRef.current);
         this.observer?.observe(this.popperRef.current);
+        if (this.asProps.disablePortal) return;
+        let parent = this.popperRef.current?.parentElement;
+        const traversingLimit = 10;
+        for (let i = 0; i < traversingLimit; i++) {
+          if (!parent) break;
+          this.observer?.observe(parent);
+          if (parent === document.body) break;
+          parent = parent.parentElement;
+        }
       }),
       modifiers: modifiersMerge,
     };
@@ -202,7 +223,7 @@ class Popper extends Component {
     if (this.asProps.__disablePopper) return;
 
     this.popper.current = createPopper(
-      this.triggerRef.current,
+      this.lastPopperReference ?? this.triggerRef.current,
       this.popperRef.current,
       this.getPopperOptions(),
     );
@@ -232,6 +253,7 @@ class Popper extends Component {
       'computeStyles',
       'eventListeners',
       'onFirstUpdate',
+      'cursorAnchoring',
     ];
     if (
       this.popper.current &&
@@ -304,7 +326,12 @@ class Popper extends Component {
      * That may cause hover interaction poppers to display two closely placed poppers.
      * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
      */
-    if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+    if (component === 'popper' && action === 'onMouseEnter' && Date.now() - lastMouseMove > 100)
+      return;
+
+    if (action === 'onMouseEnter') {
+      this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };
+    }
 
     const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
@@ -329,14 +356,15 @@ class Popper extends Component {
         }
       }, 0);
     }
-    const currentTarget = e?.currentTarget;
+
+    this.lastPopperReference = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       clearTimeout(this.timerMultiTrigger);
       // instance popper is not here yet because the popperRef did not have time to come
       this.timerMultiTrigger = setTimeout(() => {
-        if (visible && component === 'trigger' && this.popper.current && currentTarget) {
-          if (this.popper.current.state.elements.reference !== currentTarget) {
-            this.popper.current.state.elements.reference = currentTarget;
+        if (visible && component === 'trigger' && this.popper.current && this.lastPopperReference) {
+          if (this.popper.current.state.elements.reference !== this.lastPopperReference) {
+            this.popper.current.state.elements.reference = this.lastPopperReference;
             // for update
             this.popper.current.setOptions({});
           }
@@ -363,10 +391,17 @@ class Popper extends Component {
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
     const latency = visible ? timeoutConfig[0] : timeoutConfig[1];
     clearTimeout(this.timer);
-    this.timer = setTimeout(() => {
-      handlers.visible(visible, e);
+    if (this.asProps.visible) {
+      this.timer = setTimeout(() => {
+        handlers.visible(visible, e);
+      }, latency);
       cb();
-    }, latency);
+    } else {
+      this.timer = setTimeout(() => {
+        handlers.visible(visible, e);
+        cb();
+      }, latency);
+    }
   };
 
   getTriggerProps() {

@@ -1,6 +1,5 @@
 import React from 'react';
-// @ts-ignore
-import { sstyled } from '../styled';
+import { sstyled } from '../styled/index';
 import { STATIC_COMPONENT } from './staticChildren';
 
 export const STYLES_CONTEXT = Symbol('STYLES_CONTEXT');

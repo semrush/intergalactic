@@ -4,16 +4,25 @@ import TabLine from 'intergalactic/tab-line';
 const Demo = () => {
   const [value, onChange] = React.useState(1);
   return (
-    <>
-      <TabLine value={value} onChange={onChange} aria-label='Animals'>
-        <TabLine.Item value={1} aria-controls='tab-panel-1'>
-          Cats
-        </TabLine.Item>
-        <TabLine.Item value={2} aria-controls='tab-panel-2'>
-          Dogs
-        </TabLine.Item>
-        <TabLine.Item value={3} aria-controls='tab-panel-3'>
-          Birds
+    <TabLine onChange={setValue} value={value} aria-label='Page'>
+      <TabLine.Item value={0}>Overview</TabLine.Item>
+      <TabLine.Item value={1}>Issues</TabLine.Item>
+      <TabLine.Item value={2}>
+        <TabLine.Item.Addon>
+          <LinkedInM />
+        </TabLine.Item.Addon>
+        <TabLine.Item.Text>LinkedIn</TabLine.Item.Text>
+        <TabLine.Item.Addon>
+          <Badge bg='green-400'>new</Badge>
+        </TabLine.Item.Addon>
+      </TabLine.Item>
+      <Tooltip
+        title="Progress isn't available during collecting process"
+        placement='top'
+        role='tab'
+      >
+        <TabLine.Item disabled value={3}>
+          Progress
         </TabLine.Item>
       </TabLine>
       {

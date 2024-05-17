@@ -74,12 +74,14 @@ class Textarea extends Component {
     const lh = cssToIntDefault(getComputedStyle(clonnedNode).getPropertyValue('line-height'));
 
     clonnedNode.rows = minRows;
+    clonnedNode.style.setProperty('height', 'fit-content');
 
     const computed = Math.floor(clonnedNode.scrollHeight / lh);
 
     document.body.removeChild(clonnedNode);
 
     if (computed === previousRows) {
+      node.rows = computed;
       return;
     }
     if (computed <= minRows) {
