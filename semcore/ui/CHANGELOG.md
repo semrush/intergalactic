@@ -1,3 +1,22 @@
+## [15.85.0] - 2024-05-17
+
+### @semcore/animation
+
+- **Changed** Added fallback for `onAnimationEnd` callback to be triggered even if the environment doesn't support animations.
+
+### @semcore/dropdown-menu
+
+- **Changed** Added mechanism to return focus to the trigger after closing the dropdown menu after item's interaction.
+
+### @semcore/select
+
+- **Changed** Removed mechanism that returns focus to the trigger after items selecting as it was moved to underlying `DropdownMenu`.
+
+### @semcore/utils
+
+- **Fixed** `ThemeProvider` wasn't working.
+- **Fixed** In some cases focus was not returned after focus lock was released.
+
 ## [15.84.0] - 2024-05-16
 
 ### @semcore/popper
