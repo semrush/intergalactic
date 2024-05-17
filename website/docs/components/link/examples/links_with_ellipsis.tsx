@@ -3,7 +3,7 @@ import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import Divider from 'intergalactic/divider';
 import Link from 'intergalactic/link';
-import EditM from 'intergalactic/icon/Edit/m';
+import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
 
 class Demo extends React.PureComponent {
   render() {
@@ -21,7 +21,7 @@ class Demo extends React.PureComponent {
               </Text>
             </Link.Text>
             <Link.Addon>
-              <EditM />
+              <LinkExternalM />
             </Link.Addon>
           </Flex>
         </Link>
