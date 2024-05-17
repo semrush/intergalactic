@@ -9,8 +9,8 @@ test.describe('AutoSuggest', () => {
     await page.setContent(htmlContent);
 
     await page.keyboard.press('Tab');
-    await page.keyboard.type('S');
-    await page.waitForSelector('text=spotify.com');
+    await page.keyboard.type('a');
+    await page.waitForSelector('text=persian');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
