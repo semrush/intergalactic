@@ -50,20 +50,7 @@ class DropdownMenuRoot extends Component {
   uncontrolledProps() {
     return {
       highlightedIndex: null,
-      visible: [
-        null,
-        (visible) => {
-          if (!visible) {
-            this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
-          } else {
-            setTimeout(() => {
-              const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
-              if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;
-              this.handlers.highlightedIndex(selectedItemIndex);
-            }, 0);
-          }
-        },
-      ],
+      visible: null,
     };
   }
 
@@ -275,7 +262,7 @@ class DropdownMenuRoot extends Component {
       ref,
       index,
       handleFocusOut: this.handleItemFocusOut,
-      keyboardFocused: this.state.keyboardFocused,
+      triggerKeyboardFocused: this.state.keyboardFocused,
     };
   }
 
@@ -392,15 +379,29 @@ class DropdownMenuRoot extends Component {
 
     if (this.itemProps[newIndex]?.disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
+    } else if (!this.itemProps[newIndex]) {
+      this.handlers.highlightedIndex(0, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
     }
   }
 
-  componentDidUpdate() {
-    if (!this.asProps.visible) {
-      this.handlers.highlightedIndex(null);
-      this.highlightedItemRef.current = null;
+  componentDidUpdate(prevProps) {
+    if (this.asProps.visible !== prevProps.visible) {
+      if (!this.asProps.visible) {
+        this.handlers.highlightedIndex(null);
+        this.highlightedItemRef.current = null;
+        this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
+        if (document.activeElement === document.body || isFocusInside(this.popperRef.current)) {
+          setFocus(this.triggerRef.current);
+        }
+      } else {
+        setTimeout(() => {
+          const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
+          if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;
+          this.handlers.highlightedIndex(selectedItemIndex);
+        }, 0);
+      }
     }
     if (
       (this.state.focusLockItemIndex !== this.asProps.highlightedIndex || !this.asProps.visible) &&
@@ -475,7 +476,7 @@ function Item({
   disabled,
   highlighted,
   handleFocusOut,
-  keyboardFocused,
+  triggerKeyboardFocused,
 }) {
   const SDropdownMenuItem = Root;
   const ref = React.useRef();
@@ -489,7 +490,7 @@ function Item({
       role='menuitem'
       tabIndex={-1}
       id={label}
-      use:highlighted={!disabled && highlighted && keyboardFocused}
+      use:highlighted={!disabled && highlighted && triggerKeyboardFocused}
     />,
   );
 }
@@ -572,10 +573,9 @@ function Title(props) {
 }
 
 function Trigger({ keyboardFocused, onKeyboardFocusedStateChange }) {
-  React.useEffect(
-    () => onKeyboardFocusedStateChange(keyboardFocused),
-    [keyboardFocused, onKeyboardFocusedStateChange],
-  );
+  React.useEffect(() => {
+    onKeyboardFocusedStateChange(keyboardFocused);
+  }, [keyboardFocused, onKeyboardFocusedStateChange]);
 
   return <Root render={Dropdown.Trigger} aria-haspopup='true' />;
 }

@@ -1,13 +1,15 @@
 import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-// @ts-ignore
-import { useForkRef } from '@semcore/utils/lib/ref';
-// @ts-ignore
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
-// @ts-ignore
-import _assignProps from '@semcore/utils/lib/assignProps';
 
-import { Component, PropsWithRenderFnChildren, wrapIntergalacticComponent } from './Component';
+import { useForkRef } from '../ref';
+import useEnhancedEffect from '../use/useEnhancedEffect';
+import _assignProps from '../assignProps';
+
+import {
+  Component,
+  PropsWithRenderFnChildren,
+  wrapIntergalacticComponent,
+} from './types/Component';
 import register from './register';
 
 import childrenEnhancement, { CHILDREN_COMPONENT } from './enhancement/Children';
@@ -26,14 +28,15 @@ import enhanceEnhancement from './enhancement/enhance';
 import styleEnhancement from './enhancement/style';
 import bindHandlerEnhancement from './enhancement/bindHandler';
 import i18nAppLocaleEnhance from './enhancement/i18n';
-
-const CORE_COMPONENT = Symbol('CORE_COMPONENT');
-const CORE_INSTANCE = Symbol('CORE_INSTANCE');
-const CORE_AS_PROPS = Symbol('CORE_AS_PROPS');
-const CORE_INIT = Symbol('CORE_INIT');
-const CONTEXT_COMPONENT = Symbol('CONTEXT_COMPONENT');
-const CREATE_COMPONENT = Symbol('CREATE_COMPONENT');
-const PARENT_COMPONENTS = Symbol('PARENT_COMPONENTS');
+import {
+  CORE_AS_PROPS,
+  CORE_INIT,
+  PARENT_COMPONENTS,
+  CORE_INSTANCE,
+  CORE_COMPONENT,
+  CREATE_COMPONENT,
+  CONTEXT_COMPONENT,
+} from './types/symbols';
 
 function isEmptyObject(obj: any) {
   return (
@@ -399,12 +402,8 @@ function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentTyp
   return Component as any;
 }
 
-export type UnknownProperties = {
-  [key: string]: unknown;
-};
-
-export * from './Component';
-export * from './styled';
+export * from './types/index';
+export * from './styled/index';
 export * from './register';
 export {
   createBaseComponent,
@@ -419,4 +418,5 @@ export {
   ROOT_COMPONENT,
   assignProps,
 };
+
 export default createComponent;

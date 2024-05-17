@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.24.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.24.0 ~> 5.25.0], `@semcore/neighbor-location` [4.22.0 ~> 4.23.0], `@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.23.0] - 2024-05-16
+
+### Removed
+
+- Unnecessary `aria-posinset` attribute on each tab.
+
+## [4.22.0] - 2024-04-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.22.2 ~> 5.23.0], `@semcore/neighbor-location` [4.20.2 ~> 4.21.0], `@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/core` [2.20.2 ~> 2.21.0]).
+
+## [4.21.2] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.22.1 ~> 5.22.2], `@semcore/neighbor-location` [4.20.1 ~> 4.20.2], `@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [4.21.1] - 2024-04-16
 
 ### Changed

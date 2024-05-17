@@ -1,4 +1,4 @@
-import { sstyled } from '@semcore/core';
+import { sstyled } from './core/index';
 import React from 'react';
 import { useForkRef } from './ref';
 import useEnhancedEffect from './use/useEnhancedEffect';

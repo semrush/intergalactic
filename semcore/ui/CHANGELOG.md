@@ -1,3 +1,130 @@
+## [15.85.0] - 2024-05-17
+
+### @semcore/animation
+
+- **Changed** Added fallback for `onAnimationEnd` callback to be triggered even if the environment doesn't support animations.
+
+### @semcore/dropdown-menu
+
+- **Changed** Added mechanism to return focus to the trigger after closing the dropdown menu after item's interaction.
+
+### @semcore/select
+
+- **Changed** Removed mechanism that returns focus to the trigger after items selecting as it was moved to underlying `DropdownMenu`.
+
+### @semcore/utils
+
+- **Fixed** `ThemeProvider` wasn't working.
+- **Fixed** In some cases focus was not returned after focus lock was released.
+
+## [15.84.0] - 2024-05-16
+
+### @semcore/popper
+
+- **Fixed** Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
+
+## [15.83.1] - 2024-05-16
+
+### @semcore/data-table
+
+- **Changed** If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
+
+### @semcore/date-picker
+
+- **Added** `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- **Added** Render children in `MonthDateRangeComparator.RangeCalendar`.
+
+### @semcore/input
+
+- **Fixed** `disabled` input was not loosing focused styles when it was disabled.
+- **Changed** `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
+
+### @semcore/input-number
+
+- **Fixed** Controlled mode.
+
+### @semcore/popper
+
+- **Fixed** Poppers with `interaction=hover` were not opening on touch devices.
+- **Fixed** Page resizing was causing popper to move to the wrong position.
+
+### @semcore/tab-line
+
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
+
+### @semcore/tab-panel
+
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
+
+## [15.80.0] - 2024-04-22
+
+### @semcore/accordion
+
+- **Fixed** Pressing `Space` on focused `Accordion.Item.Toggle` was causing the page to scroll.
+
+### @semcore/d3-chart
+
+- **Fixed** `duration` prop on `Chart` component.
+- **Changed** Plot `eventEmitter` prop now is strongly typed.
+- **Added** `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+- **Fixed** stroke color for ReferenceLine from `--intergalactic-chart-grid-x-axis` to `--intergalactic-chart-grid-y-accent-hover-line`.
+
+### @semcore/data-table
+
+- **Fixed** Warning in console about invalid value of `tabIndex` attribute.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Focus ring styles.
+- **Fixed** Dropzone was draggable by keyboard.
+- **Fixed** Screen readers were announcing wrong items' position.
+- **Fixed** There were a visual glitch right after item drop.
+- **Changed** Removed additional padding that was added to the draggable element.
+- **Changed** Keyboard arrows navigation better works with built-in arrows navigation of base components and better works with items grid placement.
+
+### @semcore/dropdown-menu
+
+- **Fixed** It was loosing browser focus with DragAndDrop component integration.
+
+### @semcore/ellipsis
+
+- **Changed** `cursorAnchoring` added to the list of props that are passed to the build-in tooltip.
+
+### @semcore/link
+
+- **Changed** Disabled link now will always have empty href attribute.
+- **Changed** Removed `aria-disabled` and `disabled` DOM attributes from Link as it was violating the specs.
+
+### @semcore/popper
+
+- **Added** `cursorAnchoring` prop that allows to make popper appear near the cursor if trigger is bigger than popper.
+- **Added** Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+
+### @semcore/slider
+
+- **Changed** Slider options text now has secondary color and smaller font size by default.
+
+### @semcore/textarea
+
+- **Fixed** `minRows` prop behaviour.
+
+### @semcore/tooltip
+
+- **Changed** Renamed types `HintProps` to `TooltipHintProps` and `HintPopperProps` to `TooltipHintPopperProps`. Old names are preserved and deprecated.
+
+### @semcore/typography
+
+- **Changed** Renamed types `HintProps` to `TypographyHintProps`. Old name is preserved and deprecated.
+
+### @semcore/utils
+
+- **Added** New token for the color of stripes in the diagonal chart grid pattern: `--intergalactic-chart-grid-period-pattern`.
+- **Fixed** Typings of event emitter util.
+
+### @semcore/widget-empty
+
+- **Changed** Added role `status`.
+
 ## [15.79.0] - 2024-04-16
 
 ### @semcore/date-picker
