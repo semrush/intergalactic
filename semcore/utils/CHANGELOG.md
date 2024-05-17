@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.26.2] - 2024-05-17
+
+### Fixed
+
+- `ThemeProvider` wasn't working with Storybook.
+
 ## [4.26.1] - 2024-05-16
 
 ### Fixed

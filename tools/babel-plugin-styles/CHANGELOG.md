@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.9.3] - 2024-02-01
+
+### Fixed
+
+- Supported latest changes in `core` and `utils` packages.
+
 ## [1.9.2] - 2024-02-01
 
 ### Changed
