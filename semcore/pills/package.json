@@ -1,7 +1,7 @@
 {
   "name": "@semcore/pills",
   "description": "Semrush Pills Component",
-  "version": "5.25.0",
+  "version": "5.26.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.24.0",
-    "@semcore/neighbor-location": "4.22.0",
-    "@semcore/utils": "4.25.0"
+    "@semcore/flex-box": "5.25.0",
+    "@semcore/neighbor-location": "4.23.0",
+    "@semcore/utils": "4.26.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
