@@ -70,6 +70,29 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
     return <DateRangeComparator.RangeInput.DateRange />;
   }
 
+  getRangeCalendarProps() {
+    return {
+      children: (
+        <>
+          <Flex direction='column'>
+            <DateRangeComparator.CalendarHeader tag={Flex}>
+              <DateRangeComparator.Prev />
+              <DateRangeComparator.Title />
+            </DateRangeComparator.CalendarHeader>
+            <DateRangeComparator.Calendar />
+          </Flex>
+          <Flex direction='column'>
+            <DateRangeComparator.CalendarHeader tag={Flex}>
+              <DateRangeComparator.Title />
+              <DateRangeComparator.Next />
+            </DateRangeComparator.CalendarHeader>
+            <DateRangeComparator.Calendar />
+          </Flex>
+        </>
+      ),
+    };
+  }
+
   getPopperProps() {
     return {
       ...super.getPopperProps(),
@@ -149,23 +172,10 @@ function CompareDateRange(props) {
 }
 
 function RangeCalendar(props) {
-  const { Root: SRangeCalendar, styles } = props;
+  const { Root: SRangeCalendar, Children, styles } = props;
   return sstyled(styles)(
     <SRangeCalendar render={Flex} gap={8}>
-      <Flex direction='column'>
-        <DateRangeComparator.CalendarHeader tag={Flex}>
-          <DateRangeComparator.Prev />
-          <DateRangeComparator.Title />
-        </DateRangeComparator.CalendarHeader>
-        <DateRangeComparator.Calendar />
-      </Flex>
-      <Flex direction='column'>
-        <DateRangeComparator.CalendarHeader tag={Flex}>
-          <DateRangeComparator.Title />
-          <DateRangeComparator.Next />
-        </DateRangeComparator.CalendarHeader>
-        <DateRangeComparator.Calendar />
-      </Flex>
+      <Children />
     </SRangeCalendar>,
   );
 }

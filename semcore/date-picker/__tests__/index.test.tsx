@@ -3,7 +3,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 
 import {
   DatePicker,
@@ -512,7 +512,22 @@ describe('DateRangeComparator', () => {
               <DateRangeComparator.CompareDateRange aria-label='date-range to' />
             </DateRangeComparator.Header>
             <DateRangeComparator.Body>
-              <DateRangeComparator.RangeCalendar />
+              <DateRangeComparator.RangeCalendar>
+                <Flex direction='column'>
+                  <DateRangeComparator.CalendarHeader tag={Flex}>
+                    <DateRangeComparator.Prev />
+                    <DateRangeComparator.Title />
+                  </DateRangeComparator.CalendarHeader>
+                  <DateRangeComparator.Calendar />
+                </Flex>
+                <Flex direction='column'>
+                  <DateRangeComparator.CalendarHeader tag={Flex}>
+                    <DateRangeComparator.Title />
+                    <DateRangeComparator.Next />
+                  </DateRangeComparator.CalendarHeader>
+                  <DateRangeComparator.Calendar />
+                </Flex>
+              </DateRangeComparator.RangeCalendar>
               <DateRangeComparator.Periods>
                 <DateRangeComparator.Periods.Divider />
                 <DateRangeComparator.Periods.Column>
