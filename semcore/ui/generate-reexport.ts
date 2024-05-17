@@ -24,7 +24,7 @@ const hasExportDefault = async (dependency: string) => {
     let module: string | null = null;
     while (dependencyDir.split('/').length > 2) {
       const dependencyPkgJson = path.resolve(dependencyDir, 'package.json');
-      if (await fs.exists(dependencyPkgJson)) {
+      if (await fs.pathExists(dependencyPkgJson)) {
         const pkgJson = await fs.readJson(dependencyPkgJson);
         module = pkgJson.module;
         if (module) break;
@@ -43,7 +43,8 @@ const hasExportDefault = async (dependency: string) => {
 
     return ast.some((node: any) => {
       if (node.type === 'ExportNamedDeclaration') {
-        if (node.specifiers.some((specifier) => specifier.exported.name === 'default')) return true;
+        if (node.specifiers.some((specifier: any) => specifier.exported.name === 'default'))
+          return true;
       }
 
       return node.type === 'ExportDefaultDeclaration';
