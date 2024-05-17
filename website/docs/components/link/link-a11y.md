@@ -22,12 +22,13 @@ The list below describes roles and attributes that the component already has.
 
 Table: Roles and attributes
 
-| Role   | Attribute      | Element       | Usage                                                 |
-| ------ | -------------- | ------------- | ----------------------------------------------------- |
-| `link` |                | `a`, `img` | Identifies the element as a link.        |
-|        | `tabIndex="0"` | `a`, `img` | Includes the link element in the page `Tab` sequence. |
+| Component / element | Role   | Attribute     | Usage                              |
+| ------------------- | ------ | ------------- | ---------------------------------- |
+| `Link` | `link` |                | Identifies the element as a link.              |
+|        |        | `tabIndex="0"` | Includes the link element in the page `Tab` sequence. |
+|        |        | `tabIndex="-1"` | Removes the link from the page `Tab` sequence. This attribute is added to the link when the `disabled` property is set. |
 
-## Considerations for developers
+## Considerations for designers & developers
 
 ### Roles & attributes
 
@@ -35,10 +36,10 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 Table: Roles and attributes
 
-| Attribute      | Element       | Usage                                                      |
-| -------------- | ------------- | ---------------------------------------------------------- |
-| `aria-label`   | `a`           | Defines the accessible name of a link.                     |
-| `alt`          | `img`         | Defines the accessible name of an image used as a link.    |
+| Component / element | Attribute     | Usage                              |
+| ------------------- | ------------- | ---------------------------------- |
+| `Link` | `aria-label`   | Defines the accessible name of a link without visible text. [Check example](/components/link/link-code#link-without-visible-text).|
+| `img` | `alt`   | Defines the accessible name of an image used as a link. |
 
 ### Contrast
 
@@ -46,24 +47,7 @@ When choosing a color for your links, ensure that the contrast ratio between the
 
 ### External link
 
-For the external link add `LinkExternal` icon, it helps indicating that a hyperlink goes to a different domain. In case, when this icon is used alone as a link, it must be correctly identified by assistive technology and have a valid alternative text.
-
-### Combine adjacent links into a single link
-
-When presenting multiple links to the same location next to each other, it can create a poor experience for assistive technology users. Instead, wrap all elements in the same anchor tag to create a larger target area and a single entry for screen reader and keyboard-only users. When using this method, images within the anchor tag should have a null alt attribute.
-
-### Emulating link
-
-Developers should use the `a` tag when creating links because it has built-in accessibility features. These features include keyboard focusability, screen reader compatibility, and a default pointer cursor.
-
-While it's possible to create link-like behavior with other elements like `div` or `span` and JavaScript click listeners, it requires extra care, and we do recommend use the `a` tag. If developers choose to use emulated links, they must include the following:
-
-- Add `tabindex=”0”` so that the link becomes keyboard focusable
-- Add `role=”link”` so that assistive technology recognizes the element as a link
-- Add the styling `cursor: pointer` so that mouse users will recognize the element as a link.
-- If there is no text in the link, it is necessary to use aria-label with a link description.
-
-Find more information in the [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#combine-adjacent-links).
+For the external link add `LinkExternal` icon, it helps indicating that a hyperlink goes to a different domain. In case, when this icon is used alone as a link, it must be correctly identified by assistive technology and have a valid alternative text. [Check example](/components/link/link-code#link-without-visible-text).
 
 ## Other recommendations
 
