@@ -45,12 +45,7 @@ export const contextThemeEnhance = (getAvailable?: (props: any) => boolean | und
 const themeContext = React.createContext<Tokens | null>(null);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
-  const {
-    tokens: providedTokens = {},
-    children,
-    tag: Tag = "div",
-    ...restProps
-  } = props as any;
+  const { tokens: providedTokens = {}, children, tag: Tag = 'div', ...restProps } = props as any;
   const contextTokens = React.useContext(themeContext);
   const tokens = React.useMemo(
     () => (contextTokens === null ? providedTokens : { ...contextTokens, ...providedTokens }),
@@ -59,7 +54,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
 
   return (
     <themeContext.Provider value={tokens}>
-      <Tag {...restProps} style={tokens}>{children}</Tag>
+      <Tag {...restProps} style={tokens}>
+        {children}
+      </Tag>
     </themeContext.Provider>
   ) as any;
 };
