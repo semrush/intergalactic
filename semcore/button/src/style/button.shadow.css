@@ -51,13 +51,13 @@ SButton[disabled] {
 }
 
 SButton[size='m'] {
-  height: 28px;
+  height: var(--intergalactic-form-control-m, 28px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SButton[size='l'] {
-  height: 40px;
+  height: var(--intergalactic-form-control-m, 28px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
