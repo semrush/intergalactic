@@ -2188,7 +2188,7 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "Large size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-spacing-05x",

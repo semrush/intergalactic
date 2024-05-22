@@ -57,7 +57,7 @@ SButton[size='m'] {
 }
 
 SButton[size='l'] {
-  height: var(--intergalactic-form-control-m, 28px);
+  height: var(--intergalactic-form-control-l, 40px);
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
