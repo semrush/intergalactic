@@ -214,7 +214,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
 
   render() {
     const {
-      Header,
+      header,
       submitText,
       formConfig,
       notificationText,
@@ -282,10 +282,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {
-                    // @ts-ignore
-                    Header
-                  }
+                  {header as any}
 
                   <Box
                     tag='form'

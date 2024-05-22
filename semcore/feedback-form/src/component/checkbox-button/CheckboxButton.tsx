@@ -9,11 +9,14 @@ class CheckboxButtonRoot extends Component<CheckboxProps> {
   static style = style;
 
   render() {
-    const { styles, ...other } = this.asProps;
+    const { styles, id, label, ...other } = this.asProps;
     const SCheckboxButton = Root;
     return sstyled(styles)(
       <SCheckboxButton render={Box} __excludeProps={['onChange', 'id']}>
-        <Checkbox {...other} />
+        <Checkbox {...other}>
+          <Checkbox.Value id={id} />
+          <Checkbox.Text>{label}</Checkbox.Text>
+        </Checkbox>
       </SCheckboxButton>,
     );
   }

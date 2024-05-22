@@ -4,7 +4,7 @@ import Tooltip from '@semcore/tooltip';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
-const TooltipProps = [
+const deafultTooltipPropsList = [
   'title',
   'theme',
   'strategy',
@@ -24,8 +24,14 @@ const TooltipProps = [
   'onFirstUpdate',
 ];
 
-export function FeedbackItem({ Children, tag, uid, ...props }: any) {
-  const tooltipProps = pick(props, TooltipProps);
+export function FeedbackItem({
+  Children,
+  tag,
+  uid,
+  tooltipProps: tooltipPropsList = deafultTooltipPropsList,
+  ...props
+}: any) {
+  const tooltipProps = pick(props, tooltipPropsList);
   const lastErrorRef = React.useRef(undefined);
 
   return (

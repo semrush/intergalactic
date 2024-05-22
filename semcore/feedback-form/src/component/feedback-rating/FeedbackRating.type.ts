@@ -38,7 +38,7 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   onVisibleChange: (visible: boolean, rating: number) => void;
 
   /** header of modal with form */
-  Header: React.ReactNode;
+  header: React.ReactNode;
   /** text for submit button of form */
   submitText?: string;
   /** config for form fields */
@@ -47,10 +47,19 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   initialValues: Record<string, any> & { rating: number };
 
   errorFeedbackEmail: string;
+
+  locale?: string;
+};
+
+export type FeedbackRatingItemProps = FieldProps<any, any> & {
+  /**
+   * Allows to override which passed props will be passed to the Tooltip component.
+   */
+  tooltipProps?: string[];
 };
 
 declare const FeedbackRatingType: Intergalactic.Component<'form', FeedbackRatingProps> & {
-  Item: Intergalactic.Component<'div', FieldProps<any, any>>;
+  Item: Intergalactic.Component<'div', FeedbackRatingItemProps>;
   Submit: typeof Button;
   Checkbox: typeof Checkbox;
   Header: typeof Text;
