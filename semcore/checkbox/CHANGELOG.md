@@ -20,6 +20,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version minor update due to children dependencies update (`@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/typography` [5.30.2 ~> 5.31.0]).
 
+## [7.26.0] - 2024-04-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/typography` [5.30.2 ~> 5.31.0]).
+
 ## [7.25.2] - 2024-04-22
 
 ### Changed
