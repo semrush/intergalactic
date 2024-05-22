@@ -1,3 +1,13 @@
+## [15.88.0] - 2024-05-22
+
+### @semcore/feedback-form
+
+- **Added** New `FeedbackRating` component.
+
+### @semcore/utils
+
+- **Added** New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+
 ## [15.86.0] - 2024-05-17
 
 ### @semcore/breadcrumbs
