@@ -67,6 +67,7 @@ export const useFocusSource = () => {
 export type KeyboardFocusEnhanceHook = (props: {
   tabIndex?: number;
   disabled?: boolean;
+  loading?: boolean;
   autoFocus?: boolean;
 }) => {
   tabIndex: number;
