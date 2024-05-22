@@ -18,7 +18,7 @@ Show [Feedback illustration](/style/illustration/illustration) on the left to th
 
 ![](static/feedback-yes-no-sizes.png)
 
-## Appearance behavior
+## Behavior
 
 There are two potential variants for the notice to appear:
 
