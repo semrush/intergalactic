@@ -48,8 +48,8 @@ describe('Flags', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Flags />
-        <Flags iso2='AA' />
-        <Flags iso3='AAA' />
+        <Flags iso2={'AA' as any} />
+        <Flags iso3={'AAA' as any} />
       </snapshot.ProxyProps>
     );
 
