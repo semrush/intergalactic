@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.2] - 2024-05-22
+
+### Fixed
+
+- Providing value as number (instead of string) was throwing an error.
+
 ## [5.27.1] - 2024-05-17
 
 ### Changed
