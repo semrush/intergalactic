@@ -59,7 +59,7 @@ const Demo = () => {
       notificationVisible={notificationVisible}
       notificationText={'Is it working well for you?'}
       learnMoreLink={'http://google.com'}
-      Header={<FeedbackRating.Header>Feedback form title</FeedbackRating.Header>}
+      header={<FeedbackRating.Header>Feedback form title</FeedbackRating.Header>}
       submitText={'Send feedback'}
       initialValues={initValue}
       rating={rating}
