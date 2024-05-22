@@ -129,6 +129,7 @@ class Popper extends Component {
   triggerRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
+  lastPopperReference = null;
 
   constructor(props) {
     super(props);
@@ -222,7 +223,7 @@ class Popper extends Component {
     if (this.asProps.__disablePopper) return;
 
     this.popper.current = createPopper(
-      this.triggerRef.current,
+      this.lastPopperReference ?? this.triggerRef.current,
       this.popperRef.current,
       this.getPopperOptions(),
     );
@@ -355,14 +356,15 @@ class Popper extends Component {
         }
       }, 0);
     }
-    const currentTarget = e?.currentTarget;
+
+    this.lastPopperReference = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       clearTimeout(this.timerMultiTrigger);
       // instance popper is not here yet because the popperRef did not have time to come
       this.timerMultiTrigger = setTimeout(() => {
-        if (visible && component === 'trigger' && this.popper.current && currentTarget) {
-          if (this.popper.current.state.elements.reference !== currentTarget) {
-            this.popper.current.state.elements.reference = currentTarget;
+        if (visible && component === 'trigger' && this.popper.current && this.lastPopperReference) {
+          if (this.popper.current.state.elements.reference !== this.lastPopperReference) {
+            this.popper.current.state.elements.reference = this.lastPopperReference;
             // for update
             this.popper.current.setOptions({});
           }
@@ -389,10 +391,17 @@ class Popper extends Component {
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
     const latency = visible ? timeoutConfig[0] : timeoutConfig[1];
     clearTimeout(this.timer);
-    this.timer = setTimeout(() => {
-      handlers.visible(visible, e);
+    if (this.asProps.visible) {
+      this.timer = setTimeout(() => {
+        handlers.visible(visible, e);
+      }, latency);
       cb();
-    }, latency);
+    } else {
+      this.timer = setTimeout(() => {
+        handlers.visible(visible, e);
+        cb();
+      }, latency);
+    }
   };
 
   getTriggerProps() {

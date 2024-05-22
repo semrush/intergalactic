@@ -217,12 +217,14 @@ const useFocusLockHook = (
     document.body.addEventListener('keydown', handleKeyboardEvent);
     document.body.addEventListener(syntheticEvents.keydown, handleKeyboardEvent);
 
-    if (autoFocus)
-      setFocus(
-        trapRef.current,
-        typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
-      );
-
+    if (autoFocus) {
+      setTimeout(() => {
+        setFocus(
+          trapRef.current!,
+          typeof returnFocusTo === 'object' ? returnFocusTo?.current : document.body,
+        );
+      }, 0);
+    }
     return () => {
       document.body.removeEventListener('focusout', handleFocusOut as any);
       document.body.removeEventListener(syntheticEvents.blur, handleFocusOut as any);

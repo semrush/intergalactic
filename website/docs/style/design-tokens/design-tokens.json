@@ -1944,6 +1944,7 @@
     "description": "Use with font-size-200.",
     "components": [
       "base-trigger",
+      "breadcrumbs",
       "button",
       "checkbox",
       "d3-chart",
@@ -1976,7 +1977,6 @@
     "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
-      "breadcrumbs",
       "d3-chart",
       "data-table",
       "format-text",
@@ -2199,7 +2199,7 @@
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
     "description": "Default size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-form-control-l",
@@ -2207,7 +2207,7 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "Large size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-spacing-05x",

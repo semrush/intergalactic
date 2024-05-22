@@ -1,32 +1,50 @@
-## [15.83.0] - 2024-05-16
+## [15.86.0] - 2024-05-17
 
-### @semcore/d3-chart
+### @semcore/breadcrumbs
 
-- **Fixed** Exporting from `@semcore/ui` package.
+- **Fixed** Line height, changed from `lh-100` to `lh-200` (from 133% to 142%).
 
-### @semcore/dropdown-menu
+### @semcore/date-picker
 
-- **Fixed** If currently highlighted item was hidden (e.g. with filtering), items keyboard navigation was not working.
+- **Fixed** `RangeCalendar` customized children rendering layout.
+- **Fixed** `MonthDateRangeComparator` trigger was formatting dates in trigger as dd/mm/yyyy instead of mm/yyyy.
+- **Fixed** `disabledErrorText={null}` wasn't hiding error tooltip.
+- **Fixed** In range pickers it was still possible to select range with disabled date.
+- **Fixed** Hours and minutes of dates, selected from input trigger was containing current time instead of 00:00.
+- **Fixed** `disabled` prop types.
+- **Fixed** Unchecking "Compare to" checkbox in date range comparators wasn't clearing a date range to compare.
+- **Added** Exports for `DateRangeComparatorValue` and `DateRangeComparatorFocusRange` types.
 
 ### @semcore/utils
 
-- **Added** `utils/core` that represents content of `@semcore/core` package (that now just reexports `utils/core`).
+- **Fixed** `ThemeProvider` wasn't working with Storybook.
 
-## [15.82.1] - 2024-05-15
+## [15.85.0] - 2024-05-17
 
-### @semcore/d3-chart
+### @semcore/animation
 
-- **Fixed** Exporting from `@semcore/ui` package.
+- **Changed** Added fallback for `onAnimationEnd` callback to be triggered even if the environment doesn't support animations.
 
 ### @semcore/dropdown-menu
 
-- **Fixed** In some cases React error "Uncaught TypeError: destroy is not a function" was thrown.
+- **Changed** Added mechanism to return focus to the trigger after closing the dropdown menu after item's interaction.
+
+### @semcore/select
+
+- **Changed** Removed mechanism that returns focus to the trigger after items selecting as it was moved to underlying `DropdownMenu`.
+
+### @semcore/utils
+
+- **Fixed** `ThemeProvider` wasn't working.
+- **Fixed** In some cases focus was not returned after focus lock was released.
+
+## [15.84.0] - 2024-05-16
 
 ### @semcore/popper
 
-- **Fixed** Hovering popper trigger with `interaction=hover` wasn't trigger it to open in test environment.
+- **Fixed** Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
 
-## [15.82.0] - 2024-05-15
+## [15.83.1] - 2024-05-16
 
 ### @semcore/data-table
 

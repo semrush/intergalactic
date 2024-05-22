@@ -2,11 +2,35 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.26.0] - 2024-05-16
+## [4.27.0] - 2024-05-16
 
 ### Added
 
-- New tokens for the icon color in SliderRating component: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+- New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+
+## [4.26.3] - 2024-05-21
+
+### Fixed
+
+- When form controls were getting loading state, they might not loose focus visual state.
+
+## [4.26.2] - 2024-05-17
+
+### Fixed
+
+- `ThemeProvider` wasn't working with Storybook.
+
+## [4.26.1] - 2024-05-16
+
+### Fixed
+
+- `ThemeProvider` wasn't working.
+
+## [4.26.0] - 2024-04-29
+
+### Fixed
+
+- In some cases focus was not returned after focus lock was released.
 
 ## [4.25.0] - 2024-05-15
 

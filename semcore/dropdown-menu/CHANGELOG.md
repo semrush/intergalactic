@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.31.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.29.0 ~> 4.29.1], `@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [4.31.0] - 2024-04-29
+
+### Changed
+
+- Added mechanism to return focus to the trigger after closing the dropdown menu after item's interaction.
+
+## [4.30.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.27.0 ~> 4.28.0]).
+
 ## [4.29.2] - 2024-05-15
 
 ### Fixed

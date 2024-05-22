@@ -26,7 +26,7 @@ export type CalendarProps = BoxProps & {
    * Array of dates blocked for selection
    * Accepts the date or the range of dates for specifying infinity ([Date | false, Date | false]), crontab(6,7)
    * */
-  disabled?: (Date | (Date | false)[] | string)[];
+  disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
   /**
    * @ignore
    * */
@@ -113,7 +113,7 @@ export type DatePickerProps = Intergalactic.InternalTypings.EfficientOmit<
     /**
      * Array of dates blocked for selection
      * */
-    disabled?: (Date | (Date | false)[] | string)[];
+    disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
     /**
      * Error message when user attempts to input a disabled date
      * */
@@ -180,7 +180,7 @@ export type DateRangePickerProps = Intergalactic.InternalTypings.EfficientOmit<
     /**
      * Array of dates blocked for selection
      * */
-    disabled?: (Date | (Date | false)[] | string)[];
+    disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
     /**
      * Error message when user attempts to input a disabled date
      * */
@@ -296,7 +296,7 @@ export type BaseInputTriggerProps = InputProps &
 export type InputTriggerProps = BaseInputTriggerProps & {
   value?: Date;
   onChange?: (date: Date, event: ChangeEvent) => void;
-  /** Flag to show or hide error state (and tooltip with error message) on Input */
+  /** @deprecated Set `disabledErrorText={null}` on the picker Root instead */
   showError?: boolean;
 };
 
@@ -490,6 +490,12 @@ declare const MonthRangePicker: Intergalactic.Component<
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
+export type DateRangeComparatorFocusRange = 'value' | 'compare';
+export type DateRangeComparatorValue = {
+  value?: DateConstructorParams[];
+  compare?: DateConstructorParams[];
+};
+
 export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOmit<
   DropdownProps,
   'disabled'
@@ -498,11 +504,11 @@ export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOm
     /**
      * Selected date ranges
      * */
-    value?: { value?: DateConstructorParams[]; compare?: DateConstructorParams[] };
+    value?: DateRangeComparatorValue;
     /**
      * Default value for selected date ranges
      * */
-    defaultValue?: { value?: DateConstructorParams[]; compare?: DateConstructorParams[] };
+    defaultValue?: DateRangeComparatorValue;
     /**
      * Default value date for showing the necessary month
      * */
@@ -521,7 +527,7 @@ export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOm
     /**
      * Array of dates blocked for selection
      * */
-    disabled?: (Date | (Date | false)[] | string)[];
+    disabled?: (DateConstructorParams | (DateConstructorParams | false)[] | string)[];
     /**
      * Error message when user attempts to input a disabled date
      * */
@@ -578,11 +584,11 @@ export type DateRangeComparatorProps = Intergalactic.InternalTypings.EfficientOm
     /**
      * Controls which date range is focused.
      */
-    focusedRange?: 'value' | 'compare';
+    focusedRange?: DateRangeComparatorFocusRange;
     /**
      * Called when user focuses or is focused on some of the date ranges.
      */
-    onFocusedRangeChange?: (focusedRange: 'value' | 'compare') => void;
+    onFocusedRangeChange?: (focusedRange: DateRangeComparatorFocusRange) => void;
     /**
      * Remove the 'Reset' button
      * */
