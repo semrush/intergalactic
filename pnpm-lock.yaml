@@ -3425,6 +3425,69 @@ importers:
 
   tools/entry-point:
     dependencies:
+      '@babel/runtime':
+        specifier: 7.19.0
+        version: 7.19.0
+      '@formatjs/intl':
+        specifier: 2.3.0
+        version: 2.3.0(typescript@5.1.6)
+      '@phytonmk/nano-css':
+        specifier: 5.3.7
+        version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@popperjs/core':
+        specifier: 2.11.5
+        version: 2.11.5
+      '@reshadow/core':
+        specifier: 0.0.1-alpha.74
+        version: 0.0.1-alpha.74
+      '@types/d3-shape':
+        specifier: ^3.1.0
+        version: 3.1.1
+      '@upsetjs/venn.js':
+        specifier: 1.4.2
+        version: 1.4.2
+      classnames:
+        specifier: 2.2.6
+        version: 2.2.6
+      csstype:
+        specifier: 3.0.8
+        version: 3.0.8
+      d3-array:
+        specifier: 3.1.6
+        version: 3.1.6
+      d3-interpolate:
+        specifier: 3.0.1
+        version: 3.0.1
+      d3-polygon:
+        specifier: ^3.0.1
+        version: 3.0.1
+      d3-scale:
+        specifier: 4.0.2
+        version: 4.0.2
+      d3-shape:
+        specifier: 3.2.0
+        version: 3.2.0
+      d3-time:
+        specifier: 3.1.0
+        version: 3.1.0
+      d3-time-format:
+        specifier: 4.1.0
+        version: 4.1.0
+      d3-transition:
+        specifier: 3.0.1
+        version: 3.0.1(d3-selection@2.0.0)
+      dayjs:
+        specifier: 1.8.36
+        version: 1.8.36
+      final-form:
+        specifier: 4.20.7
+        version: 4.20.7
+      final-form-focus:
+        specifier: 1.1.2
+        version: 1.1.2(final-form@4.20.7)
+      hoist-non-react-statics:
+        specifier: 3.3.2
+        version: 3.3.2
       intergalactic-migrate:
         specifier: 0.0.0
         version: link:../intg-release-migrator
@@ -3434,6 +3497,15 @@ importers:
       react-dom:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
+      react-final-form:
+        specifier: 6.5.9
+        version: 6.5.9(final-form@4.20.7)(react@18.2.0)
+      text-mask-core:
+        specifier: 5.1.2
+        version: 5.1.2
+      unplugin:
+        specifier: 1.2.0
+        version: 1.2.0
 
   tools/esbuild-plugin-semcore:
     dependencies:
