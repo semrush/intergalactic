@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.0] - 2024-05-23
+
+### Added
+
+- Live region "Loading…" announcement for assistive technologies.
+- "Loading…" aria-label.
+- `locale` prop.
+
+### Changed
+
+- `aria-atomic` attribute moved to inner `foreignObject` element.
+
 ## [5.26.0] - 2024-05-22
 
 ### Changed
