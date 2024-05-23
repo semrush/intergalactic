@@ -1,11 +1,9 @@
 import React from 'react';
 
-export const ScreenReaderOnly: React.FC<{ children: React.ReactNode; id?: string }> = ({
-  children,
-  id,
-}) => {
+export const ScreenReaderOnly = (props: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
+      {...props}
       style={{
         position: 'absolute',
         width: 1,
@@ -17,10 +15,7 @@ export const ScreenReaderOnly: React.FC<{ children: React.ReactNode; id?: string
         whiteSpace: 'nowrap',
         borderWidth: 0,
       }}
-      id={id}
-    >
-      {children}
-    </span>
+    />
   );
 };
 ScreenReaderOnly.displayName = 'ScreenReaderOnlyRoot';
