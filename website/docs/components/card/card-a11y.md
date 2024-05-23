@@ -8,16 +8,8 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 
 - Make sure you have tabbing focus indicators for all elements that should be controlled.
 - Ensure all text within the card is in the reading order and accessible to screen reader users.
-- If the image is meaningful and informational for the user, set the `alt` text as a descriptive alternative for the image.
-- If the image is decorative, set `alt=""`, so it will be ignored by assistive technologies, such as screen readers.
-- Avoid using generic strings like photo, image, or icon as `alt` values, as they don’t communicate valuable content to the user. Be as descriptive as possible.
-- You can add `class="visuallyhidden"` with descriptive text to give more context to a button or link's purpose.
-
-Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html).
-
-## Resources
-
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html) gives core recommendations for the accessible card components.
+- If the card has a title, make sure that the title has the appropriate heading level. For example, if your card follows an `<h2>` heading, the title of the card should use an `<h3>` tag. [See the example](./card-code#basic-example).
+- Add an appropriate ARIA landmark role (for example, `region`) and an `aria-label` to the card if it represents an important part of the page. This allows screen reader users navigate easily between different parts of the interface. [See the example](./card-code#basic-example).
 
 ## Other recommendations
 
