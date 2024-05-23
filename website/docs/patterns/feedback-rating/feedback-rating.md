@@ -16,7 +16,7 @@ This pattern includes:
 - Modal window with a form for specifying feedback.
 - [NoticeBubble](/components/notice-bubble/notice-bubble-code#success-notice) for providing the success state after sending the data.
 
-### Notice
+## Notice
 
 ![](static/feedback-rating-notice.png)
 
@@ -31,7 +31,7 @@ Notice includes the following mandatory elements:
 
 ![](static/feedback-rating-notice-link.png)
 
-### Modal window with feedback form
+## Modal window with feedback form
 
 ![](static/feedback-rating-modal.png)
 
@@ -48,7 +48,7 @@ Notice includes the following mandatory elements:
 - **Input for entering an email for a response.** The default label is "Reply-to email", but you can change the text if necessary. The input is pre-filled with the user's email, the user can clear it.
 - **Policy text.** Default text: "We will only use this email to respond to you on your feedback. Privacy Policy".
 
-### NoticeBubble
+## NoticeBubble
 
 ![](static/feedback-rating-success.png)
 
@@ -56,24 +56,24 @@ Use [Success pattern for NoticeBubble](/components/notice-bubble/notice-bubble-c
 
 For the text use "Thank you for your feedback!".
 
-### Interaction with form
+## Interaction with form
 
 Table: Interaction with form inputs
 
-| Input    | Description |
-| -------- | ----------- |
-| **Group of checkboxes with suggestions** | Optional to select. Users can select any number of suggestions. |
-| **Textarea for optional text feedback** | Optional to fill. If user filled the textarea with a fewer than any 3 characters, then highlight the textarea with an invalid state and show a tooltip with the message how to fix this situation. Button is not disabled. You can set the message in the tooltip if necessary. ![](static/feedback-rating-textarea-invalid.png) |
-| **Input for email** | Optional to fill. If the user clears the input, they get no errors or something that can block the form's submission. |
+| Input                                    | Description                                                                                                                                                                                                                                                                                                                      |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Group of checkboxes with suggestions** | Optional to select. Users can select any number of suggestions.                                                                                                                                                                                                                                                                  |
+| **Textarea for optional text feedback**  | Optional to fill. If user filled the textarea with a fewer than any 3 characters, then highlight the textarea with an invalid state and show a tooltip with the message how to fix this situation. Button is not disabled. You can set the message in the tooltip if necessary. ![](static/feedback-rating-textarea-invalid.png) |
+| **Input for email**                      | Optional to fill. If the user clears the input, they get no errors or something that can block the form's submission.                                                                                                                                                                                                            |
 
-### States
+## States
 
 The form can be submitted without filling in any additional information (for example, immediately after it appears).
 
 Table: Feedback Rating form states
 
-| State        | Description | Appearance example |
-| ------------ | ----------- | ------------------ |
-| **Loading**  | Triggered after clicking on the "Send feedback" button or maybe triggered while the initial loading of the form. | ![](static/feedback-rating-loading.png) |
-| **Error**    | Triggered if the data was not sent for some reason. The notification appears in the form above the “Send feedback” button with the default text: “Something went wrong. Please try again or contact us at {email} ". Set the {email} by yourself. | ![](static/feedback-rating-error.png) |
-| **Success**  | Shown after feedback data was successfully submitted.	 | ![](static/feedback-rating-success-notice.png) |
+| State       | Description                                                                                                                                                                                                                                       | Appearance example                             |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| **Loading** | Triggered after clicking on the "Send feedback" button or maybe triggered while the initial loading of the form.                                                                                                                                  | ![](static/feedback-rating-loading.png)        |
+| **Error**   | Triggered if the data was not sent for some reason. The notification appears in the form above the “Send feedback” button with the default text: “Something went wrong. Please try again or contact us at {email} ". Set the {email} by yourself. | ![](static/feedback-rating-error.png)          |
+| **Success** | Shown after feedback data was successfully submitted.                                                                                                                                                                                             | ![](static/feedback-rating-success-notice.png) |
