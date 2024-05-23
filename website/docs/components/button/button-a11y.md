@@ -22,24 +22,13 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role     | Attribute              | Element    | Usage                                                                                                                                       |
-| -------- | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `button` |                        | `div`, `a` | Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`. |
-|          | `tabIndex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it doesn't have a `href` attribute.                          |
-|          | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button isn’t pressed.                                                       |
-|          | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                                           |
+| Component / element | Attribute                                               | Usage                                                                                                                                                                   |
+| ------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `button`            |                                                         | Identifies the element as a button. |
+| `button`            | `aria-busy="true"`        | **Applies to button with `loading` prop.** Indicates that button is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update.     |
+| `button`            | `aria-disabled="true"` | **Applies to button with `disabled` prop.** Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.                                                                    |
 
 ## Considerations for developers
-
-- A `<button>` tag doesn't need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
-- Ensure visual labels and programmatic labels match.
-- Just like links, you can add `class="visuallyhidden"` with descriptive text to give more context to the button's purpose.
-- Usually, SVG icons should be hidden from screen readers on a button that has a text label.
-- You can use `<input type="image">` to make a graphical button. It takes a `src` and `alt` attribute just like traditional images.
-- Button states are important, not just button styling! If you are only toggling classes to visually manage state of your components, you are likely not appropriately conveying that state to users of assistive technologies.
-- If there is no text in the button, it is necessary to add aria-label with a button description.
-
-Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html).
 
 ### Roles and attributes
 
@@ -47,10 +36,10 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 Table: Attributes
 
-| Attribute         | Element | Usage                                                                                                                                                                 |
-| ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is a required for buttons without text content.                                                     |
-| `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is a required for buttons without text content. |
+| Component / element | Attribute         | Usage                                                                                                                                                             |
+| ------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `button` | `aria-label`      | Defines a string value that labels an interactive element. **It is a required for buttons without visible text content.**                                                     |
+| `button` | `aria-labelledby` | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. **It is a required for buttons without visible text content.** |
 
 ## Resources
 
