@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.0] - 2024-05-21
+
+### Changed
+
+- Now buttons of `s` and `l` size is based on `--intergalactic-form-control-m` and `--intergalactic-form-control-l` design token respectively (with no change in size in default theme).
+
 ## [5.26.1] - 2024-05-17
 
 ### Changed

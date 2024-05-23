@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.28.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/input` [4.26.1 ~> 4.27.0], `@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/flex-box` [5.25.1 ~> 5.26.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [5.27.2] - 2024-05-22
+
+### Fixed
+
+- Providing value as number (instead of string) was throwing an error.
+
 ## [5.27.1] - 2024-05-17
 
 ### Changed
