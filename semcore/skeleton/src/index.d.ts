@@ -20,6 +20,8 @@ export type SkeletonProps = BoxProps &
      * @default invert
      */
     theme?: 'dark' | 'invert';
+
+    locale?: string;
   };
 
 /** @deprecated */

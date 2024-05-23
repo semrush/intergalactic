@@ -1,3 +1,27 @@
+## [15.88.0] - 2024-05-22
+
+### @semcore/button
+
+- **Changed** Now buttons of `s` and `l` size is based on `--intergalactic-form-control-m` and `--intergalactic-form-control-l` design token respectively (with no change in size in default theme).
+
+### @semcore/feedback-form
+
+- **Added** New `FeedbackRating` component.
+
+### @semcore/flags
+
+- **Removed** `aria-label` from the flag component as it was duplicating country name commonly placed near the flag.
+- **Added** `FlagsIso2` and `FlagsIso3` types export.
+
+### @semcore/input-number
+
+- **Fixed** Providing value as number (instead of string) was throwing an error.
+
+### @semcore/utils
+
+- **Added** New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+- **Fixed** When form controls were getting loading state, they might not loose focus visual state.
+
 ## [15.86.0] - 2024-05-17
 
 ### @semcore/breadcrumbs

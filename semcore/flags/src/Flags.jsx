@@ -99,7 +99,6 @@ function Flags(props, ref) {
         className,
       )}
       data-capital-letters={capitalLetters}
-      aria-label={countryName || undefined}
       {...other}
     />,
   );

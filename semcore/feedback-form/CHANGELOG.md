@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.28.0] - 2024-05-22
+
+### Added
+
+- New `FeedbackRating` component.
+
 ## [6.27.1] - 2024-05-17
 
 ### Changed

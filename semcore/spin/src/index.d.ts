@@ -19,6 +19,8 @@ export type SpinProps = BoxProps & {
    * otherwise only horizontal alignment will occur.
    * */
   centered?: boolean;
+
+  locale?: string;
 };
 
 declare const Spin: Intergalactic.Component<'div', SpinProps>;

@@ -32,6 +32,12 @@ class SpinContainerRoot extends Component {
     };
   }
 
+  getContentProps() {
+    const { loading } = this.asProps;
+
+    return { inert: loading ? '' : undefined };
+  }
+
   render() {
     const SSpinContainer = Root;
     const { styles, Children, loading, forcedAdvancedMode } = this.asProps;
