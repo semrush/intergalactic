@@ -5,7 +5,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 
 ## Card
 
-It's just a `Box`.
+It's just a [Box](../../layout/box-system/box-api#box).
 
 ```jsx
 import Card from 'intergalactic/card';
@@ -14,7 +14,7 @@ import Card from 'intergalactic/card';
 
 ## Card.Header
 
-It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
+It's just a [Box](../../layout/box-system/box-api#box), with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
 
 ```jsx
 import Card from 'intergalactic/card';
@@ -23,7 +23,7 @@ import Card from 'intergalactic/card';
 
 ## Card.Body
 
-It's just a `Box`, with pre-installed paddings.
+It's just a [Box](../../layout/box-system/box-api#box), with pre-installed paddings.
 
 ```jsx
 import Card from 'intergalactic/card';
