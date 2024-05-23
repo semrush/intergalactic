@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.0] - 2024-05-23
+
+### Changed
+
+- `ScreenReaderOnly` now passed all props to the inner `span` element as DOM attributes.
+
+## [4.27.0] - 2024-05-16
+
+### Added
+
+- New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+
+## [4.26.3] - 2024-05-21
+
+### Fixed
+
+- When form controls were getting loading state, they might not loose focus visual state.
+
 ## [4.26.2] - 2024-05-17
 
 ### Fixed
