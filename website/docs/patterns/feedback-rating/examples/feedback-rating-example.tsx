@@ -55,7 +55,6 @@ const Demo = () => {
 
   return (
     <FeedbackRating
-      locale='de'
       notificationVisible={notificationVisible}
       notificationText={'Is it working well for you?'}
       learnMoreLink={'http://google.com'}
