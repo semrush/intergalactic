@@ -1,3 +1,34 @@
+## [15.88.0] - 2024-05-22
+
+### @semcore/feedback-form
+
+- **Added** New `FeedbackRating` component.
+
+### @semcore/utils
+
+- **Added** New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+
+## [15.86.0] - 2024-05-17
+
+### @semcore/breadcrumbs
+
+- **Fixed** Line height, changed from `lh-100` to `lh-200` (from 133% to 142%).
+
+### @semcore/date-picker
+
+- **Fixed** `RangeCalendar` customized children rendering layout.
+- **Fixed** `MonthDateRangeComparator` trigger was formatting dates in trigger as dd/mm/yyyy instead of mm/yyyy.
+- **Fixed** `disabledErrorText={null}` wasn't hiding error tooltip.
+- **Fixed** In range pickers it was still possible to select range with disabled date.
+- **Fixed** Hours and minutes of dates, selected from input trigger was containing current time instead of 00:00.
+- **Fixed** `disabled` prop types.
+- **Fixed** Unchecking "Compare to" checkbox in date range comparators wasn't clearing a date range to compare.
+- **Added** Exports for `DateRangeComparatorValue` and `DateRangeComparatorFocusRange` types.
+
+### @semcore/utils
+
+- **Fixed** `ThemeProvider` wasn't working with Storybook.
+
 ## [15.85.0] - 2024-05-17
 
 ### @semcore/animation
