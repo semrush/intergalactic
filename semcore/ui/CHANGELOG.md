@@ -1,3 +1,26 @@
+## [15.89.0] - 2024-05-23
+
+### @semcore/skeleton
+
+- **Added** Live region "Loading…" announcement for assistive technologies.
+- **Added** "Loading…" aria-label.
+- **Added** `locale` prop.
+- **Changed** `aria-atomic` attribute moved to inner `foreignObject` element.
+
+### @semcore/spin
+
+- **Added** Live region "Loading…" announcement for assistive technologies.
+- **Added** "Loading…" aria-label.
+- **Added** `locale` prop.
+
+### @semcore/spin-container
+
+- **Changed** Content inside of loading container is unavailable for interacting now.
+
+### @semcore/utils
+
+- **Changed** `ScreenReaderOnly` now passed all props to the inner `span` element as DOM attributes.
+
 ## [15.88.0] - 2024-05-22
 
 ### @semcore/feedback-form
