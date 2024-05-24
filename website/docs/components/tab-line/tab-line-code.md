@@ -12,7 +12,7 @@ Make sure to provide a tooltip with full text for tabs with text truncated with 
 
 ## TabLine item with addons
 
-You can add icons, badges, counters as addons to the left or right of the text in the item.
+You can add icons, badges, and counters as addons to the left or right of the text in the item. Additionally, you can place the `<TabPanel.Item />` within other components.
 
 ::: sandbox
 
@@ -24,7 +24,7 @@ You can add icons, badges, counters as addons to the left or right of the text i
 
 ## Automatic tab activation
 
-By default, tabs are switched automatically when selected. You can also place the `<TabLine.Item />` within other components.
+By default, tabs are switched automatically when selected.
 
 ::: sandbox
 
@@ -46,7 +46,6 @@ You can set `behavior='manual'` on TabLine to change the tab activation method t
 
 :::
 
-
 ## Custom indents
 
 Since the TabLine component doesn't have default margins at the edges, to make it fill the entire width of its parent block (which may have its own margins), you can set the desired `padding` and `margin` for the TabLine component like this:
@@ -56,4 +55,3 @@ Since the TabLine component doesn't have default margins at the edges, to make i
   <TabLine px={5} mx="-20px" />
 </Box>
 ```
-
