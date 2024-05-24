@@ -17,7 +17,22 @@ const Demo = () => {
             <DateRangeComparator.CompareDateRange />
           </DateRangeComparator.Header>
           <DateRangeComparator.Body>
-            <DateRangeComparator.RangeCalendar />
+            <DateRangeComparator.RangeCalendar>
+              <Flex direction='column'>
+                <DateRangeComparator.CalendarHeader tag={Flex}>
+                  <DateRangeComparator.Prev />
+                  <DateRangeComparator.Title />
+                </DateRangeComparator.CalendarHeader>
+                <DateRangeComparator.Calendar />
+              </Flex>
+              <Flex direction='column'>
+                <DateRangeComparator.CalendarHeader tag={Flex}>
+                  <DateRangeComparator.Title />
+                  <DateRangeComparator.Next />
+                </DateRangeComparator.CalendarHeader>
+                <DateRangeComparator.Calendar />
+              </Flex>
+            </DateRangeComparator.RangeCalendar>
             <DateRangeComparator.Periods>
               <DateRangeComparator.Periods.Divider />
               <DateRangeComparator.Periods.Column>

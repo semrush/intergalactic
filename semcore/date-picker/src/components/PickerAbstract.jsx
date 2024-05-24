@@ -7,7 +7,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 
 import style from '../style/date-picker.shadow.css';
-import includesDate from '../utils/includesDate';
+import { includesDate } from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 
 const INTERACTION_TAGS = ['INPUT'];

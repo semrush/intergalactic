@@ -211,12 +211,6 @@ class RootSelect extends Component {
     this.handlers.value(newValue, e);
     if (!multiselect) {
       this.handlers.visible(false);
-      setTimeout(() => {
-        if (interaction !== 'focus') {
-          setFocus(this.triggerRef.current);
-          return;
-        }
-      }, 0);
     }
   };
 

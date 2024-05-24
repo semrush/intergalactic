@@ -29,6 +29,50 @@ describe('Modal', () => {
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
+  test.sequential('should mount on open', () => {
+    const spy = vi.fn();
+    const Component = () => {
+      const [visible, setVisible] = React.useState(false);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setVisible(true)} data-testid='open-modal'>
+            Open modal
+          </Button>
+          <Modal visible={visible} onClose={spy}>
+            <div data-testid='modal-content'>Hello world</div>
+          </Modal>
+        </React.Fragment>
+      );
+    };
+    const { getByTestId } = render(<Component />);
+    fireEvent.click(getByTestId('open-modal'));
+    expect(getByTestId('modal-content')).toBeTruthy();
+  });
+
+  test.sequential('should unmount on close', async () => {
+    const spy = vi.fn();
+    const Component = () => {
+      const [visible, setVisible] = React.useState(true);
+      return (
+        <React.Fragment>
+          <Button onClick={() => setVisible(true)} data-testid='open-modal'>
+            Open modal
+          </Button>
+          <Modal visible={visible} onClose={spy} animationsDisabled>
+            <div data-testid='modal-content'>Hello world</div>
+            <Button onClick={() => setVisible(false)} data-testid='close-modal'>
+              Close modal
+            </Button>
+          </Modal>
+        </React.Fragment>
+      );
+    };
+    const { getByTestId, queryByText } = render(<Component />);
+    fireEvent.click(getByTestId('close-modal'));
+    await new Promise((r) => setTimeout(r, 0));
+    expect(queryByText('Hello world')).toBeNull();
+  });
+
   test.concurrent('should support onClose for OutsideClick', async ({ expect }) => {
     const spy = vi.fn();
     const { getByTestId } = render(

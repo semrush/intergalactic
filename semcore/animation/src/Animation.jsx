@@ -52,10 +52,11 @@ class Animation extends Component {
     render: this.props.visible || this.props.preserveNode,
     wasInvisible: !this.props.visible,
   };
-
+  animationSupported = false;
   animationContext = makeAnimationContextValue();
 
   onAnimationStart = () => {
+    this.animationSupported = true;
     const { animationsDisabled, parentAnimationContext } = this.asProps;
     const duration = animationsDisabled ? [0, 0] : propToArray(this.asProps.duration);
     const animationContext = parentAnimationContext ?? this.animationContext;
@@ -63,7 +64,10 @@ class Animation extends Component {
   };
 
   onAnimationEnd = (event) => {
-    event.stopPropagation();
+    this.animationSupported = true;
+    this.handleAnimationEnd();
+  };
+  handleAnimationEnd = () => {
     if (!this.asProps.visible && !this.props.preserveNode) {
       this.setState({ render: false });
     }
@@ -71,6 +75,26 @@ class Animation extends Component {
     const animationContext = parentAnimationContext ?? this.animationContext;
     animationContext.onAnimationEndSubscribers.forEach((callback) => callback());
   };
+
+  animationEventFallback = () => {
+    if (!this.state.render) return;
+    if (this.animationSupported) return;
+    const delayArr = this.asProps.animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
+    const delay = this.asProps.visible ? delayArr[0] : delayArr[1];
+    const duration = this.asProps.animationsDisabled ? 0 : this.asProps.duration + 100;
+    setTimeout(() => {
+      if (this.animationSupported) return;
+      this.handleAnimationEnd();
+    }, duration + delay);
+  };
+  componentDidMount() {
+    this.animationEventFallback();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.visible !== this.props.visible || prevState.render !== this.state.render) {
+      this.animationEventFallback();
+    }
+  }
 
   render() {
     const SAnimation = Root;

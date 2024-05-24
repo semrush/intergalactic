@@ -596,6 +596,7 @@
       "d3-chart",
       "date-picker",
       "divider",
+      "feedback-form",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -646,6 +647,7 @@
       "base-trigger",
       "checkbox",
       "color-picker",
+      "feedback-form",
       "inline-input",
       "input",
       "input-tags",
@@ -1460,6 +1462,22 @@
     "components": ["skeleton"]
   },
   {
+    "name": "--intergalactic-slider-rating-normal",
+    "type": "color",
+    "rawValue": "{icon.secondary.neutral}",
+    "computedValue": "#a9abb6",
+    "description": "Icon color for the SliderRating component in its normal state.",
+    "components": ["feedback-form"]
+  },
+  {
+    "name": "--intergalactic-slider-rating-hover-active",
+    "type": "color",
+    "rawValue": "{yellow.200}",
+    "computedValue": "#fdc23c",
+    "description": "Icon color for the SliderRating component in its hovered and active states.",
+    "components": ["feedback-form"]
+  },
+  {
     "name": "--intergalactic-table-th-primary-cell",
     "type": "color",
     "rawValue": "{gray.50}",
@@ -1798,6 +1816,7 @@
       "date-picker",
       "drag-and-drop",
       "dropdown-menu",
+      "feedback-form",
       "fullscreen-modal",
       "icon",
       "inline-edit",
@@ -1925,6 +1944,7 @@
     "description": "Use with font-size-200.",
     "components": [
       "base-trigger",
+      "breadcrumbs",
       "button",
       "checkbox",
       "d3-chart",
@@ -1957,7 +1977,6 @@
     "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
-      "breadcrumbs",
       "d3-chart",
       "data-table",
       "format-text",
@@ -2180,7 +2199,7 @@
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
     "description": "Default size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-form-control-l",
@@ -2188,7 +2207,7 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "Large size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-spacing-05x",
@@ -2456,7 +2475,7 @@
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "components": ["d3-chart"]
+    "components": ["d3-chart", "feedback-form"]
   },
   {
     "name": "--intergalactic-rounded-large",
@@ -3437,7 +3456,7 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for small controls like Checkbox or Radio.",
-    "components": ["checkbox", "radio", "slider", "tab-line"]
+    "components": ["checkbox", "feedback-form", "radio", "slider", "tab-line"]
   },
   {
     "name": "--intergalactic-duration-modal",

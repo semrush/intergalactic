@@ -4,7 +4,7 @@ import isBetween from 'dayjs/plugin/isBetween';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
-import includesDate from '../utils/includesDate';
+import { includesDate } from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';

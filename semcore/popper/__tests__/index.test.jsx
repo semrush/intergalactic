@@ -233,6 +233,8 @@ describe('focus control', () => {
       </div>,
     );
 
+    await new Promise((r) => setTimeout(r, 0));
+
     const popperElement = getByTestId('popper');
     const div1Element = getByTestId('div-1');
     const div2Element = getByTestId('div-2');
@@ -280,6 +282,10 @@ describe('focus control', () => {
       </div>,
     );
 
+    act(() => {
+      vi.runAllTimers();
+    });
+
     expect(getByTestId('popper')).toHaveFocus();
 
     act(() => {
@@ -291,11 +297,8 @@ describe('focus control', () => {
     act(() => {
       vi.runAllTimers();
     });
+    expect(getByTestId('focusable-in-popper')).toHaveFocus();
     act(() => hidePopper());
-    act(() => {
-      vi.runAllTimers();
-    });
-    fireEvent.animationEnd(getByTestId('popper'));
     act(() => {
       vi.runAllTimers();
     });
@@ -324,8 +327,14 @@ describe('focus control', () => {
     expect(getByTestId('input-before-popper')).toHaveFocus();
     vi.useFakeTimers();
     fireEvent.keyDown(getByTestId('input-before-popper'), { key: 'Tab' });
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => getByTestId('focusable-in-trigger').focus());
-    fireEvent.focusIn(getByTestId('input-before-popper'));
+    expect(getByTestId('focusable-in-trigger')).toHaveFocus();
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => {
       vi.runAllTimers();
     });
@@ -336,11 +345,11 @@ describe('focus control', () => {
     act(() => {
       vi.runAllTimers();
     });
-    act(() => fireEvent.animationEnd(getByTestId('popper')));
     act(() => {
       vi.runAllTimers();
     });
-    expect(document.activeElement.nodeName).toBe('DIV');
+
+    expect(getByTestId('focusable-in-trigger')).toHaveFocus();
     vi.useRealTimers();
   });
 });

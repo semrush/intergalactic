@@ -11,19 +11,13 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 The list below describes roles and attributes that component already has.
 
-| Attribute            | Element | Usage                                                                                                                        |
-| -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `aria-hidden="true"` | `img`   | Hides images from the assistive technologies, because this element is auxiliary and shouldn't be played by a screen reader. |
+Table: Roles and attributes
 
-## Considerations for developers
-
-### Roles and attributes
-
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
-
-| Attribute            | Element           | Usage                                                                                                                                                                                                            |
-| -------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
+| Component / element | Role | Attribute   | Description |
+| ------------------- | -------------- | --------------------------------------------------------- | ----------- |
+| `WidgetEmpty` | `status`       | implicit `aria-live="polite"` and ` aria-atomic="true"`   | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive `aria-live="polite"` attribute. The screen reader will speak changes whenever the user is idle. |
+| `Image`       |                | `aria-hidden='true'`                                      | Removes the image from the accessibility tree.  |
+| `img`         |          | `alt=''` | Decorative images do not need to be announced by the screen reader, so the `alt` attribute should be empty. |
 
 ## Considerations for designers
 

@@ -117,7 +117,7 @@ class Value extends Component {
   valueParser = (value, prevValue, prevDisplayValue) => {
     const { numberFormatter } = this.props;
 
-    const stringNumber = value
+    const stringNumber = String(value)
       .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
       .replace(this.separatorDecimal, '.');
 

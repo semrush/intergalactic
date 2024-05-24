@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.25.0] - 2024-05-21
+
+### Removed
+
+- `aria-label` from the flag component as it was duplicating country name commonly placed near the flag.
+
+### Added
+
+- `FlagsIso2` and `FlagsIso3` types export.
+
+## [4.24.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [4.24.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
 ## [4.23.0] - 2024-05-16
 
 ### Changed

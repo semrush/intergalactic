@@ -19,7 +19,7 @@ SSeparator {
 SBreadcrumbsItem {
   position: relative;
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-200, 142%);
   color: var(--intergalactic-text-secondary, #6c6e79);
   text-decoration: none;
   box-sizing: border-box;

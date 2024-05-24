@@ -15,13 +15,13 @@ describe('Flags', () => {
     expect(getByTestId('flags').classList[1]).toMatch(/^flag-western-sahara-/);
   });
 
-  test.skip('Should support className with name country and ,', () => {
+  test('Should support className with name country and ,', () => {
     const { getByTestId } = render(<Flags data-testid='flags' iso2='BQ' />);
 
     expect(getByTestId('flags').classList[1]).toMatch(/flag-bonaire--sint-eustatius-and-saba-/);
   });
 
-  test.skip('Should correctly render', () => {
+  test('Should correctly render', () => {
     const { getByTestId } = render(
       <>
         <Flags data-testid='flags' iso2='af' />
@@ -35,7 +35,7 @@ describe('Flags', () => {
     expect(getByTestId('flags3').classList[1]).toMatch(/flag-afghanistan-/);
   });
 
-  test.skip('Should set styles', () => {
+  test('Should set styles', () => {
     render(<Flags data-testid='flags' iso2='af' />);
 
     const link = document.querySelectorAll('[class*=_css-style-flags]')[0];
@@ -44,19 +44,19 @@ describe('Flags', () => {
     expect(link.tagName).toBe('LINK');
   });
 
-  // test.skip('Should support no name country', async ({ task }) => {
-  //   const component = (
-  //     <snapshot.ProxyProps style={{ margin: 5 }}>
-  //       <Flags />
-  //       <Flags iso2='AA' />
-  //       <Flags iso3='AAA' />
-  //     </snapshot.ProxyProps>
-  //   );
+  test.skip('Should support no name country', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Flags />
+        <Flags iso2={'AA' as any} />
+        <Flags iso3={'AAA' as any} />
+      </snapshot.ProxyProps>
+    );
 
-  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  // });
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
 
-  test.skip('a11y', async () => {
+  test('a11y', async () => {
     const { container } = render(<Flags />);
 
     const results = await axe(container);

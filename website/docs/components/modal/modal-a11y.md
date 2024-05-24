@@ -38,11 +38,11 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles & attributes
 
-| Role | Attribute    | Element | Usage                                                                                                                                                   |
-| ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dialog` |        | `div` | Identifies the element that serves as the dialog container. |
+| Role | Attribute    | Usage                                                                                                                                                   |
+| ---- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dialog` |        | Identifies the element that serves as the dialog container. |
 |          | `aria-labelledby="IDREF"` | Gives the dialog an accessible name by referring to the element that provides the dialog title. |
-|      | `aria-modal="true"` | `div` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). |
+|      | `aria-modal="true"` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). |
 
 ## Considerations for designers & developers
 
