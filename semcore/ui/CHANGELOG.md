@@ -1,3 +1,13 @@
+## [15.90.0] - 2024-05-24
+
+### @semcore/date-picker
+
+- **Fixed** Range pickers with disabled dates were throwing an error in console after selecting a range.
+
+### @semcore/popper
+
+- **Fixed** In some cases the second open of any popper was breaking the positioning engine.
+
 ## [15.89.0] - 2024-05-23
 
 ### @semcore/skeleton
