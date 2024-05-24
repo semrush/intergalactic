@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.45.0] - 2024-05-24
+## [4.46.0] - 2024-05-24
 
 ### Fixed
 
 - Range pickers with disabled dates were throwing an error in console after selecting a range.
+
+## [4.45.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/base-trigger` [4.36.0 ~> 4.37.0], `@semcore/button` [5.27.0 ~> 5.28.0], `@semcore/checkbox` [7.29.0 ~> 7.30.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
 
 ## [4.44.0] - 2024-05-22
 
