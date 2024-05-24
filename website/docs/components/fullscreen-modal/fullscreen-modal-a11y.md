@@ -25,11 +25,14 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles & attributes
 
-| Role | Attribute    | Element | Usage                                                                                                                                                   |
-| ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dialog` |        | `div` | Identifies the element that serves as the dialog container. Gets this role from [Modal](/components/modal/modal). |
-|          | `aria-labelledby="IDREF"` | Gives the dialog an accessible name by referring to the element that provides the dialog title. |
-|      | `aria-modal="true"` | `div` | Tells assistive technologies that the windows underneath the current dialog are not available for interaction (inert). Gets this attribute from [Modal](/components/modal/modal). |
+| Component    | Attribute | Usage                                                                                                                                                   |
+| ------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FullscreenModal`         | `role="dialog"`            | Identifies the element that serves as the dialog container. Gets this role from [Modal](/components/modal/modal). |
+| `FullscreenModal`         | `aria-modal="true"`        | Tells assistive technologies that the content underneath the current dialog isn't available for interaction (inert). Gets this attribute from [Modal](/components/modal/modal). |
+| `FullscreenModal`         | `aria-labelledby="IDREF"`  | Gives the dialog an accessible name by referring to the content of `FullscreenModal.Title`. |
+| `FullscreenModal`         | `aria-describedby="IDREF"` | Gives the dialog an accessible description by referring to the content of `FullscreenModal.Description`. |
+| `FullscreenModal.Close`   | `aria-label="Close"`       | Sets an accessible name for the button that closes the dialog. |
+| `FullscreenModal.Section` |  | Implemented using HTML `<section>` to serve as a `region` landmark. Note that you should add an `aria-label` to provide access to the landmark. |
 
 ## Considerations for designers & developers
 
@@ -39,15 +42,19 @@ The list below will help you to keep in mind the necessary attributes to make ou
 
 Table: Attributes
 
-| Attribute         | Element | Usage                                                                                                                                                                 |
-| ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-describedby="IDREF"`      | `div`   | Gives the dialog an accessible description by referring to the dialog content that describes the primary message or purpose of the dialog. |
+| Component                   | Attribute         | Usage                                                                                                                                                                 |
+| --------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FullscreenModal.Section`   | `aria-label`                  | Set an accessible name for the section so that it can be used as a landmark. |
 
-### Headings
+### Main heading
 
 By default, `FullscreenModal.Title` in our Modal component is marked as `h2`. Since there is no strict WCAG recommendation on this, we've made this decision for the following reason: Modal windows are usually part of the page and don't have a separate URL, so to keep consistency within the page, it's recommended to have only one `h1` tag on the page. Having more than one `h1` tag per page can confuse users of assistive technology.
 
 However, if your modal window has a separate URL, you can mark `FullscreenModal.Title` as `h1`.
+
+### Nested headings
+
+Make sure that headings inside the `FullscreenModal` follow the overall heading hierarchy. For example, if the `FullscreenModal.Title` is marked as `h2`, then the following heading inside the modal should be marked as `h3`, and so on.
 
 ## Resources
 
