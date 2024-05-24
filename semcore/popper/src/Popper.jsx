@@ -357,7 +357,10 @@ class Popper extends Component {
       }, 0);
     }
 
-    this.lastPopperReference = e?.currentTarget;
+    const target = e?.currentTarget;
+    if (target && target instanceof HTMLElement) {
+      this.lastPopperReference = target;
+    }
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       clearTimeout(this.timerMultiTrigger);
       // instance popper is not here yet because the popperRef did not have time to come
