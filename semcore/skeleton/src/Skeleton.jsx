@@ -5,7 +5,6 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-import Portal from '@semcore/portal';
 
 import style from './style/skeleton.shadow.css';
 
