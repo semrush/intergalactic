@@ -1,3 +1,15 @@
+## [15.91.0] - 2024-05-27
+
+### @semcore/d3-chart
+
+- **Changed** `Line.Area` got an option `autoInterpolate` that allows to disable auto interpolation of all missing values.
+- **Changed** `Line.Area` data now accepts `interpolateValue` symbol that allows spot interpolation of values if `autoInterpolate` set to `false`.
+
+### @semcore/popper
+
+- **Fixed** Switching popper trigger was causing a glitch during the close animation.
+- **Fixed** Focusing popper might break next popper opening.
+
 ## [15.90.1] - 2024-05-27
 
 ### @semcore/skeleton
