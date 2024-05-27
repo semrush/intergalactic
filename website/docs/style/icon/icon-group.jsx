@@ -8,8 +8,7 @@ import Copy from '@components/Copy';
 import styles from './styles.module.css';
 import { preferSemcoreUi } from '../../.vitepress/theme/preferences';
 
-
-const iconLetterToNumericSize = { l: 24, m: 16 }
+const iconLetterToNumericSize = { l: 24, m: 16 };
 
 const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
   const iconSize = iconLetterToNumericSize[size] || '';
@@ -28,7 +27,7 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
     const importText = `import ${includeName} from '${lib}/icon${includeGroupName}/${name}${includeSize}'`;
 
     return importText;
-  }, [name, size, filterIcons.size])
+  }, [name, size, filterIcons.size]);
 
   if (action === 'download') {
     includeGroupName = haveGroupName ? `${groupName}` : 'icon';
@@ -60,7 +59,6 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
     );
   }
 
-
   return (
     <Copy copiedToast='Copied!' toCopy={getImportText} trigger='click'>
       <div className={styles.previewChangeIcon}>
@@ -72,7 +70,7 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
       </div>
     </Copy>
   );
-}
+};
 
 const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, onClose }) => {
   const [action, setAction] = React.useState('copy');
@@ -80,20 +78,11 @@ const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, onClose }) => {
 
   return (
     <div className={styles.panelIcon} ref={ref}>
-      <OutsideClick
-        onOutsideClick={onClose}
-        excludeRefs={[ref]}
-      />
+      <OutsideClick onOutsideClick={onClose} excludeRefs={[ref]} />
       <Row>
-        <Col
-          style={{ display: 'flex', flexDirection: 'column', marginRight: 40, }}
-        >
+        <Col style={{ display: 'flex', flexDirection: 'column', marginRight: 40 }}>
           <b>{name}</b>
-          <Pills
-            value={action}
-            style={{ marginTop: 13 }}
-            onChange={setAction}
-          >
+          <Pills value={action} style={{ marginTop: 13 }} onChange={setAction}>
             <Pills.Item value='copy'>Copy import</Pills.Item>
             <Pills.Item value='download'>Download SVG</Pills.Item>
           </Pills>
@@ -105,7 +94,7 @@ const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, onClose }) => {
               .size.map((size) => {
                 return (
                   <DownloadIconButton
-                  key={size}
+                    key={size}
                     size={size}
                     name={name}
                     action={action}
@@ -113,7 +102,7 @@ const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, onClose }) => {
                     icon={Icon}
                   />
                 );
-            })}
+              })}
           </div>
         </Col>
       </Row>
@@ -126,12 +115,14 @@ export const ListIcons = ({ data, icons, json }) => {
 
   return (
     <div className={styles.list}>
-       {showPanel && <IconDetailsPanel
-        name={showPanel}
-        icon={icons[showPanel]}
-        json={json}
-        onClose={() => setShowPanel(null)}
-      />}
+      {showPanel && (
+        <IconDetailsPanel
+          name={showPanel}
+          icon={icons[showPanel]}
+          json={json}
+          onClose={() => setShowPanel(null)}
+        />
+      )}
       {data.map((icon) => {
         const Icon = icons[icon.name];
         if (!Icon) {
