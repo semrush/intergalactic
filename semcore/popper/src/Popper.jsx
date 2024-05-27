@@ -222,8 +222,10 @@ class Popper extends Component {
     if (!this.triggerRef.current || !this.popperRef.current) return;
     if (this.asProps.__disablePopper) return;
 
+    const lastPopperReferenceMounted = Boolean(this.lastPopperReference?.parentElement);
+
     this.popper.current = createPopper(
-      this.lastPopperReference ?? this.triggerRef.current,
+      lastPopperReferenceMounted ? this.lastPopperReference : this.triggerRef.current,
       this.popperRef.current,
       this.getPopperOptions(),
     );
