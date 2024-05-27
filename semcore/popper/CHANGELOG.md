@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.2] - 2024-05-27
+
+### Fixed
+
+- Focusing popper might break next popper opening.
+
 ## [5.35.1] - 2024-05-24
 
 ### Fixed

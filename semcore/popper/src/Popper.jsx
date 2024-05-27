@@ -358,7 +358,7 @@ class Popper extends Component {
     }
 
     const target = e?.currentTarget;
-    if (target && target instanceof HTMLElement) {
+    if (component === 'trigger' && target && target instanceof HTMLElement) {
       this.lastPopperReference = target;
     }
     this.handlerChangeVisibleWithTimer(visible, e, () => {
