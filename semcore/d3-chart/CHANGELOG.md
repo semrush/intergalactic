@@ -9,6 +9,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `Line.Area` got an option `autoInterpolate` that allows to disable auto interpolation of all missing values.
 - `Line.Area` data now accepts `interpolateValue` symbol that allows spot interpolation of values if `autoInterpolate` set to `false`.
 
+## [3.44.2] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.1 ~> 5.35.2]).
+
 ## [3.44.1] - 2024-05-24
 
 ### Changed
