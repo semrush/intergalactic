@@ -1,3 +1,9 @@
+## [15.90.1] - 2024-05-27
+
+### @semcore/skeleton
+
+- **Fixed** Dependency on `@semcore/portal` when Skeleton installed as a separate package.
+
 ## [15.90.0] - 2024-05-24
 
 ### @semcore/date-picker
