@@ -78,6 +78,7 @@ export class DatePickerRoot extends PickerAbstract {
       children: () => <InputTrigger.SingleDateInput />,
       getI18nText,
       animationsDisabled,
+      unit: this.keyStep,
     };
   }
 
