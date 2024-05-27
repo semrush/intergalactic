@@ -31,13 +31,13 @@ SNull[hide] {
   display: none;
 }
 
-SAria {
+SLineArea {
   transition-property: d;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
   opacity: 0.3;
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
 }
-SAria[color] {
+SLineArea[color] {
   fill: var(--color);
 }

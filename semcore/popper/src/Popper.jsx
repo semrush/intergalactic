@@ -222,8 +222,10 @@ class Popper extends Component {
     if (!this.triggerRef.current || !this.popperRef.current) return;
     if (this.asProps.__disablePopper) return;
 
+    const lastPopperReferenceMounted = Boolean(this.lastPopperReference?.parentElement);
+
     this.popper.current = createPopper(
-      this.lastPopperReference ?? this.triggerRef.current,
+      lastPopperReferenceMounted ? this.lastPopperReference : this.triggerRef.current,
       this.popperRef.current,
       this.getPopperOptions(),
     );
@@ -357,7 +359,10 @@ class Popper extends Component {
       }, 0);
     }
 
-    this.lastPopperReference = e?.currentTarget;
+    const target = e?.currentTarget;
+    if (component === 'trigger' && target && target instanceof HTMLElement) {
+      this.lastPopperReference = target;
+    }
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       clearTimeout(this.timerMultiTrigger);
       // instance popper is not here yet because the popperRef did not have time to come

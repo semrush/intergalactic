@@ -6,7 +6,8 @@ import cx from 'classnames';
 const Copy = (props) => {
   const [view, setView] = React.useState(undefined);
   const handleClick = React.useCallback(async () => {
-    await navigator.clipboard.writeText(props.toCopy);
+    const toCopy = typeof props.toCopy === 'function' ? props.toCopy() : props.toCopy;
+    await navigator.clipboard.writeText(toCopy);
 
     setView(props.copiedToast ?? 'Copied! You are awesome!');
   }, [props.copiedToast, props.toCopy, props.onClick]);

@@ -75,6 +75,7 @@ class MonthPickerRoot extends PickerAbstract {
       children: () => <InputTrigger.SingleDateInput />,
       getI18nText,
       animationsDisabled,
+      unit: this.keyStep,
     };
   }
 

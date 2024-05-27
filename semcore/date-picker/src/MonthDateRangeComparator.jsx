@@ -28,6 +28,7 @@ function RangeInput(props) {
       render={Box}
       tag={InputTriggerBase}
       parts={dateParts}
+      unit='month'
       __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value', 'id']}
     >
       <InputTriggerBase.DateRange>

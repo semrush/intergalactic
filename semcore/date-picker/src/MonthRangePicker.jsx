@@ -116,6 +116,7 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       children: () => <InputTrigger.DateRange />,
       getI18nText,
       animationsDisabled,
+      unit: this.keyStep,
     };
   }
 

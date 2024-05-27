@@ -356,9 +356,11 @@ class DateRangeRoot extends Component {
     let invalid = false;
     if (value) {
       if (value[0] && value[1])
-        invalid = disabledDates.some(datesIntersects([value[0], value[1]], 'month'));
-      else if (value[0]) invalid = disabledDates.some(includesDate(dayjs(value[0]), 'date'));
-      else if (value[1]) invalid = disabledDates.some(includesDate(dayjs(value[1]), 'date'));
+        invalid = disabledDates.some(datesIntersects([value[0], value[1]], this.asProps.unit));
+      else if (value[0])
+        invalid = disabledDates.some(includesDate(dayjs(value[0]), this.asProps.unit));
+      else if (value[1])
+        invalid = disabledDates.some(includesDate(dayjs(value[1]), this.asProps.unit));
     }
 
     if (invalid) {

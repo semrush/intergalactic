@@ -24,6 +24,7 @@ function RangeInput(props) {
       data-name='SComparatorRangeInput'
       render={Box}
       tag={InputTriggerBase}
+      unit='date'
       __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value', 'id']}
     >
       <InputTriggerBase.DateRange>
