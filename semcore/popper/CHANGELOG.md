@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.3] - 2024-05-27
+
+### Fixed
+
+- Switching popper trigger was causing a glitch during the close animation.
+
 ## [5.35.2] - 2024-05-27
 
 ### Fixed
