@@ -8,102 +8,88 @@ import Button from 'intergalactic/button';
 import FileDownloadM from 'intergalactic/icon/FileDownload/m';
 import CopyM from 'intergalactic/icon/Copy/m';
 import styles from './styles.module.css';
+import { preferSemcoreUi } from '../../.vitepress/theme/preferences';
 
-function modalLayout() {
-  if (!document) return false;
-  let node = document.getElementById('modal-layout');
-  if (!node) {
-    node = document.createElement('div');
-    node.id = 'modal-layout';
-    document.body.appendChild(node);
-  }
-  return node;
-}
+const IllustrationDetailsPanel = ({ onClose, name }) => {
+  const getImportText = React.useCallback(() => {
+    const lib = preferSemcoreUi.value ? '@semcore/ui' : 'intergalactic';
+    const importText = `import ${name} from '${lib}/illustration/${name}'`;
 
-class PanelChangeIllustration extends PureComponent {
-  render() {
-    const { name } = this.props;
-    const importText = `import ${name} from 'intergalactic/illustration/${name}'`;
-    const url = `semcore/illustration/svg/${name}.svg`;
+    return importText;
+  }, [name])
+  const repoPath = `semcore/illustration/svg/${name}.svg`;
+  const ref = React.useRef(null);
 
-    return (
-      <div className={styles.panelIllustration}>
-        <OutsideClick
-          onOutsideClick={() => {
-            const node = modalLayout();
-            if (!node) return;
-            ReactDOM.unmountComponentAtNode(node);
-          }}
-          excludeRefs={modalLayout() ? [modalLayout()] : []}
-        />
-        <Row alignItems='center'>
-          <span className={styles.nameIllustration}>{name}</span>
-          <Copy copiedToast='Copied' toCopy={importText} trigger='click'>
-            <Button size='m' theme='muted' use='tertiary' mr={4}>
-              <Button.Addon>
-                <CopyM />
-              </Button.Addon>
-              <Button.Text>Copy import</Button.Text>
-            </Button>
-          </Copy>
-          <Button
-            size='m'
-            theme='muted'
-            use='tertiary'
-            tag='a'
-            rel='noopener noreferrer'
-            download={url}
-            target='_blank'
-            href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
-          >
+  return (
+    <div className={styles.panelIllustration} ref={ref}>
+      <OutsideClick
+        onOutsideClick={onClose}
+        excludeRefs={[ref]}
+      />
+      <Row alignItems='center'>
+        <span className={styles.nameIllustration}>{name}</span>
+        <Copy copiedToast='Copied' toCopy={getImportText} trigger='click'>
+          <Button size='m' theme='muted' use='tertiary' mr={4}>
             <Button.Addon>
-              <FileDownloadM />
+              <CopyM />
             </Button.Addon>
-            <Button.Text>Download SVG</Button.Text>
+            <Button.Text>Copy import</Button.Text>
           </Button>
-        </Row>
-      </div>
-    );
-  }
-}
-
-export const ListIllustrations = ({ data, illustrations, json }) => (
-  <div className={styles.list}>
-    {data.map((illustration, index) => {
-      const Illustration = illustrations[illustration.name];
-      if (!Illustration) {
-        throw new Error(
-          `Illustration ${illustration.name} was not founded in import from @illustrations`,
-        );
-      }
-
-      return (
-        // biome-ignore lint/a11y/useKeyWithClickEvents:
-        <div
-          className={styles.previewIllustration}
-          tabIndex={0}
-          key={index}
-          data-name={illustration.name}
-          onClick={() => {
-            const node = modalLayout();
-            if (!node) return;
-            ReactDOM.render(
-              <PanelChangeIllustration
-                name={illustration.name}
-                icon={illustrations[illustration.name]}
-                json={json}
-              />,
-              node,
-            );
-          }}
+        </Copy>
+        <Button
+          size='m'
+          theme='muted'
+          use='tertiary'
+          tag='a'
+          rel='noopener noreferrer'
+          download={repoPath}
+          target='_blank'
+          href={`https://github.com/semrush/intergalactic/raw/master/${repoPath}?inline=false`}
         >
-          <Illustration width={80} height={80} />
-          <span>{illustration.name}</span>
-        </div>
-      );
-    })}
-  </div>
-);
+          <Button.Addon>
+            <FileDownloadM />
+          </Button.Addon>
+          <Button.Text>Download SVG</Button.Text>
+        </Button>
+      </Row>
+    </div>
+  );
+};
+
+export const ListIllustrations = ({ data, illustrations, json }) => {
+  const [showPanel, setShowPanel] = React.useState(null);
+  
+  return (
+    <div className={styles.list}>
+      {showPanel && <IllustrationDetailsPanel
+        name={showPanel}
+        onClose={() => setShowPanel(null)}
+      />}
+      {data.map((illustration, index) => {
+        const Illustration = illustrations[illustration.name];
+        if (!Illustration) {
+          throw new Error(
+            `Illustration ${illustration.name} was not founded in import from @illustrations`,
+          );
+        }
+
+        return (
+          // biome-ignore lint/a11y/useKeyWithClickEvents:
+          <div
+            className={styles.previewIllustration}
+            tabIndex={0}
+            key={index}
+            data-name={illustration.name}
+            onClick={() => setShowPanel(illustration.name)}
+          >
+            <Illustration width={80} height={80} />
+            <span>{illustration.name}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const Context = React.createContext();
 

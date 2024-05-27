@@ -1,5 +1,4 @@
-import * as ReactDOM from 'react-dom';
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import Tooltip from 'intergalactic/tooltip';
 import { Col, Row } from 'intergalactic/grid';
@@ -7,134 +6,133 @@ import Pills from '@semcore/pills';
 import OutsideClick from 'intergalactic/outside-click';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
+import { preferSemcoreUi } from '../../.vitepress/theme/preferences';
 
-// 😩
-function modalLayout() {
-  if (!document) return false;
-  let node = document.getElementById('modal-layout');
-  if (!node) {
-    node = document.createElement('div');
-    node.id = 'modal-layout';
-    document.body.appendChild(node);
-  }
-  return node;
-}
 
-class PanelChangeIcon extends PureComponent {
-  state = { action: 'copy' };
-  get SIZE() {
-    return { L: 24, M: 16 };
-  }
+const iconLetterToNumericSize = { l: 24, m: 16 }
 
-  renderIconSize = (size, index) => {
-    const { name, json: dataIcons, icon: Icon } = this.props;
-    const { action } = this.state;
+const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
+  const iconSize = iconLetterToNumericSize[size] || '';
+  let nameSvg = `${name}/${size}`;
 
-    const iconSize = this.SIZE[size.toUpperCase()] || '';
-    let nameSvg = `${name}/${size}`;
+  const filterIcons = dataIcons.icons.filter((icon) => icon.name === name)[0];
+  const groupName = filterIcons.group.toLowerCase();
+  const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
+  let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
-    const filterIcons = dataIcons.icons.filter((icon) => icon.name === name)[0];
-    const groupName = filterIcons.group.toLowerCase();
-    const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
-    let includeGroupName = haveGroupName ? `/${groupName}` : '';
-
-    if (action === 'download') {
-      includeGroupName = haveGroupName ? `${groupName}` : 'icon';
-      // external
-      if (Number(size) === 20) {
-        nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
-      }
-
-      const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
-      return (
-        <Tooltip title='Download!' key={index}>
-          <div className={styles.previewChangeIcon}>
-            <a
-              className={styles.areaLink}
-              rel='noopener noreferrer'
-              download={url}
-              target='_blank'
-              href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
-              data-container='body'
-              data-original-title='Download'
-            />
-            <Icon width={20} height={20} />
-            <span className={styles.iconSizes}>
-              <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
-              {` (${iconSize}x${iconSize}px)`}
-            </span>
-          </div>
-        </Tooltip>
-      );
-    }
-
+  const getImportText = React.useCallback(() => {
+    const lib = preferSemcoreUi.value ? '@semcore/ui' : 'intergalactic';
     const haveSizeIcon = filterIcons.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
-    const importText = `import ${includeName} from 'intergalactic/icon${includeGroupName}/${name}${includeSize}'`;
+    const importText = `import ${includeName} from '${lib}/icon${includeGroupName}/${name}${includeSize}'`;
 
+    return importText;
+  }, [name, size, filterIcons.size])
+
+  if (action === 'download') {
+    includeGroupName = haveGroupName ? `${groupName}` : 'icon';
+    // external
+    if (Number(size) === 20) {
+      nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
+    }
+
+    const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
     return (
-      <Copy copiedToast='Copied!' toCopy={importText} key={index} trigger='click'>
+      <Tooltip title='Download!'>
         <div className={styles.previewChangeIcon}>
+          <a
+            className={styles.areaLink}
+            rel='noopener noreferrer'
+            download={url}
+            target='_blank'
+            href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
+            data-container='body'
+            data-original-title='Download'
+          />
           <Icon width={20} height={20} />
           <span className={styles.iconSizes}>
             <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
             {` (${iconSize}x${iconSize}px)`}
           </span>
         </div>
-      </Copy>
-    );
-  };
-
-  render() {
-    const { name, json: dataIcons } = this.props;
-    const { action } = this.state;
-
-    return (
-      <div className={styles.panelIcon}>
-        <OutsideClick
-          onOutsideClick={() => {
-            const node = modalLayout();
-            if (!node) return;
-            ReactDOM.unmountComponentAtNode(node);
-          }}
-          excludeRefs={modalLayout() ? [modalLayout()] : []}
-        />
-        <Row>
-          <Col
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginRight: 40,
-            }}
-          >
-            <b>{name}</b>
-            <Pills
-              value={action}
-              style={{ marginTop: 13 }}
-              onChange={(value) => this.setState({ action: value })}
-            >
-              <Pills.Item value='copy'>Copy import</Pills.Item>
-              <Pills.Item value='download'>Download SVG</Pills.Item>
-            </Pills>
-          </Col>
-          <Col>
-            <div className={styles.panelIconList}>
-              {dataIcons.icons
-                .filter((icon) => icon.name === name)[0]
-                .size.map(this.renderIconSize)}
-            </div>
-          </Col>
-        </Row>
-      </div>
+      </Tooltip>
     );
   }
+
+
+  return (
+    <Copy copiedToast='Copied!' toCopy={getImportText} trigger='click'>
+      <div className={styles.previewChangeIcon}>
+        <Icon width={20} height={20} />
+        <span className={styles.iconSizes}>
+          <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
+          {` (${iconSize}x${iconSize}px)`}
+        </span>
+      </div>
+    </Copy>
+  );
 }
 
+const IconDetailsPanel = ({ name, json: dataIcons, icon: Icon, onClose }) => {
+  const [action, setAction] = React.useState('copy');
+  const ref = React.useRef(null);
+
+  return (
+    <div className={styles.panelIcon} ref={ref}>
+      <OutsideClick
+        onOutsideClick={onClose}
+        excludeRefs={[ref]}
+      />
+      <Row>
+        <Col
+          style={{ display: 'flex', flexDirection: 'column', marginRight: 40, }}
+        >
+          <b>{name}</b>
+          <Pills
+            value={action}
+            style={{ marginTop: 13 }}
+            onChange={setAction}
+          >
+            <Pills.Item value='copy'>Copy import</Pills.Item>
+            <Pills.Item value='download'>Download SVG</Pills.Item>
+          </Pills>
+        </Col>
+        <Col>
+          <div className={styles.panelIconList}>
+            {dataIcons.icons
+              .filter((icon) => icon.name === name)[0]
+              .size.map((size) => {
+                return (
+                  <DownloadIconButton
+                  key={size}
+                    size={size}
+                    name={name}
+                    action={action}
+                    dataIcons={dataIcons}
+                    icon={Icon}
+                  />
+                );
+            })}
+          </div>
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
 export const ListIcons = ({ data, icons, json }) => {
+  const [showPanel, setShowPanel] = React.useState(null);
+
   return (
     <div className={styles.list}>
-      {data.map((icon, index) => {
+       {showPanel && <IconDetailsPanel
+        name={showPanel}
+        icon={icons[showPanel]}
+        json={json}
+        onClose={() => setShowPanel(null)}
+      />}
+      {data.map((icon) => {
         const Icon = icons[icon.name];
         if (!Icon) {
           throw new Error(`Icon ${icon.name} was not founded in import from @icons`);
@@ -145,16 +143,9 @@ export const ListIcons = ({ data, icons, json }) => {
           <div
             className={styles.previewIcon}
             tabIndex={0}
-            key={index}
+            key={icon.name}
             data-name={icon.name}
-            onClick={() => {
-              const node = modalLayout();
-              if (!node) return;
-              ReactDOM.render(
-                <PanelChangeIcon name={icon.name} icon={icons[icon.name]} json={json} />,
-                node,
-              );
-            }}
+            onClick={() => setShowPanel(icon.name)}
           >
             <Icon width={20} height={20} />
             <span>{icon.name}</span>
