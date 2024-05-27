@@ -1,10 +1,8 @@
 import React from 'react';
 import TabPanel from 'intergalactic/tab-panel';
-import Tooltip from 'intergalactic/tooltip';
 import FacebookM from 'intergalactic/icon/Facebook/m';
 import InstagramM from 'intergalactic/icon/Instagram/m';
 import TwitterM from 'intergalactic/icon/Twitter/m';
-import LinkedInM from 'intergalactic/icon/LinkedIn/m';
 import Badge from 'intergalactic/badge';
 
 const Demo = () => {
@@ -33,17 +31,6 @@ const Demo = () => {
           </TabPanel.Item.Addon>
           <TabPanel.Item.Text>Twitter</TabPanel.Item.Text>
         </TabPanel.Item>
-        <Tooltip
-          title='You can disable the tab to indicate that data is either being collected or unavailable.'
-          placement='top'
-        >
-          <TabPanel.Item value={4} disabled>
-            <TabPanel.Item.Addon>
-              <LinkedInM />
-            </TabPanel.Item.Addon>
-            <TabPanel.Item.Text>LinkedIn</TabPanel.Item.Text>
-          </TabPanel.Item>
-        </Tooltip>
       </TabPanel>
       {
         [

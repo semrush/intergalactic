@@ -12,12 +12,23 @@ Make sure to provide a tooltip with full text for tabs with text truncated with 
 
 ## TabPanel item with addons
 
-You can add icons, badges, and counters as addons to the left or right of the text in the item. Additionally, you can place the `<TabPanel.Item />` within other components.
-
+You can add icons, badges, and counters as addons to the left or right of the text in the item.
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/tab_panel_item_addons.tsx';
+</script>
+
+:::
+
+## Disabled TabPanel item
+
+Use `disabled` property to make `<TabPanel.Item />` disabled. Always add `Hint` tooltip to explain why this item is disabled.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/disabled_tab_panel_item.tsx';
 </script>
 
 :::

@@ -1,10 +1,8 @@
 import React from 'react';
 import TabLine from 'intergalactic/tab-line';
-import Tooltip from 'intergalactic/tooltip';
 import FacebookM from 'intergalactic/icon/Facebook/m';
 import InstagramM from 'intergalactic/icon/Instagram/m';
 import TwitterM from 'intergalactic/icon/Twitter/m';
-import LinkedInM from 'intergalactic/icon/LinkedIn/m';
 import Badge from 'intergalactic/badge';
 
 const Demo = () => {
@@ -33,18 +31,6 @@ const Demo = () => {
           </TabLine.Item.Addon>
           <TabLine.Item.Text>Twitter</TabLine.Item.Text>
         </TabLine.Item>
-        <Tooltip
-          title='You can disable the tab to indicate that data is either being collected or unavailable.'
-          placement='top'
-          role='tab'
-        >
-          <TabLine.Item value={4} disabled>
-            <TabLine.Item.Addon>
-              <LinkedInM />
-            </TabLine.Item.Addon>
-            <TabLine.Item.Text>LinkedIn</TabLine.Item.Text>
-          </TabLine.Item>
-        </Tooltip>
       </TabLine>
       {
         [
