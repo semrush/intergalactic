@@ -16,16 +16,13 @@ const IllustrationDetailsPanel = ({ onClose, name }) => {
     const importText = `import ${name} from '${lib}/illustration/${name}'`;
 
     return importText;
-  }, [name])
+  }, [name]);
   const repoPath = `semcore/illustration/svg/${name}.svg`;
   const ref = React.useRef(null);
 
   return (
     <div className={styles.panelIllustration} ref={ref}>
-      <OutsideClick
-        onOutsideClick={onClose}
-        excludeRefs={[ref]}
-      />
+      <OutsideClick onOutsideClick={onClose} excludeRefs={[ref]} />
       <Row alignItems='center'>
         <span className={styles.nameIllustration}>{name}</span>
         <Copy copiedToast='Copied' toCopy={getImportText} trigger='click'>
@@ -58,13 +55,12 @@ const IllustrationDetailsPanel = ({ onClose, name }) => {
 
 export const ListIllustrations = ({ data, illustrations, json }) => {
   const [showPanel, setShowPanel] = React.useState(null);
-  
+
   return (
     <div className={styles.list}>
-      {showPanel && <IllustrationDetailsPanel
-        name={showPanel}
-        onClose={() => setShowPanel(null)}
-      />}
+      {showPanel && (
+        <IllustrationDetailsPanel name={showPanel} onClose={() => setShowPanel(null)} />
+      )}
       {data.map((illustration, index) => {
         const Illustration = illustrations[illustration.name];
         if (!Illustration) {
