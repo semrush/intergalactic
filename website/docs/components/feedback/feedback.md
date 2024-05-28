@@ -8,7 +8,7 @@ tabs: Design('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), 
 
 **Feedback** component is the form for sending feedback or suggestions about the product. In most cases it opens from the "Send feedback" link or button.
 
-Based on this component, other patterns for collecting feedback have been assembled: [FeedbackRating](/patterns/feedback-rating/feedback-rating) and [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no).
+Based on this component, other patterns for collecting feedback are built: [FeedbackRating](/patterns/feedback-rating/feedback-rating) and [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no).
 
 ::: info
 When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/product-head), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/links-order).

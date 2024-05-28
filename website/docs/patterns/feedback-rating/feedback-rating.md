@@ -10,10 +10,11 @@ tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback
 
 Use it when you need to collect user's feedback after they performed specific step or used specific feature in the interface.
 
-This pattern includes:
+This pattern is built with:
 
+- [Feedback form](/components/feedback/feedback).
 - [Notice](/components/notice/notice) with `info` theme and `SliderRating` that triggers modal window.
-- Modal window with a form for specifying feedback.
+- [Modal window](/components/modal/modal) with a form for specifying feedback.
 - [NoticeBubble](/components/notice-bubble/notice-bubble-code#success-notice) for providing the success state after sending the data.
 
 ## Notice
