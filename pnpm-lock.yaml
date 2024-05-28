@@ -625,7 +625,7 @@ importers:
         specifier: 5.27.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.35.2
+        specifier: 5.35.3
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.0
@@ -970,7 +970,7 @@ importers:
         specifier: 5.27.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.35.2
+        specifier: 5.35.3
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.0
@@ -1001,7 +1001,7 @@ importers:
         specifier: ^2.17.5
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.31.2
+        specifier: 4.31.3
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.27.0
@@ -1181,7 +1181,7 @@ importers:
         specifier: 4.36.0
         version: link:../icon
       '@semcore/popper':
-        specifier: 5.35.2
+        specifier: 5.35.3
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.0
@@ -2263,7 +2263,7 @@ importers:
         specifier: 4.26.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.33.2
+        specifier: 4.33.3
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.27.0
@@ -2275,7 +2275,7 @@ importers:
         specifier: 4.28.0
         version: link:../input
       '@semcore/popper':
-        specifier: 5.35.2
+        specifier: 5.35.3
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.0
@@ -2684,7 +2684,7 @@ importers:
         specifier: 4.28.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.43.2
+        specifier: 4.43.3
         version: link:../select
       '@semcore/utils':
         specifier: 4.28.0
@@ -2718,7 +2718,7 @@ importers:
         specifier: 5.27.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.35.2
+        specifier: 5.35.3
         version: link:../popper
       '@semcore/portal':
         specifier: 3.27.0
