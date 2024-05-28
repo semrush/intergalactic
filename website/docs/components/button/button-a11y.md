@@ -16,17 +16,16 @@ Table: Keyboard support
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
 | `Enter`, `Space` | Activates the button.                          |
 
-### Roles & attributes
+### Attributes
 
-The list below describes roles and attributes that component already has.
+The list below describes attributes that component already has.
 
-Table: Roles and attributes
+Table: Attributes
 
-| Component / element | Attribute                                               | Usage                                                                                                                                                                   |
-| ------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `button`            |                                                         | Identifies the element as a button. |
-| `button`            | `aria-busy="true"`        | **Applies to button with `loading` prop.** Indicates that button is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update.     |
-| `button`            | `aria-disabled="true"` | **Applies to button with `disabled` prop.** Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.                                                                    |
+| Attribute                                               | Usage                                                                                                                                                                   |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-busy="true"`        | **Applies to button with `loading` prop.** Indicates that button is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update.     |
+| `aria-disabled="true"` | **Applies to button with `disabled` prop.** Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.                                                                    |
 
 ## Considerations for developers
 
@@ -39,7 +38,7 @@ Table: Attributes
 | Component / element | Attribute         | Usage                                                                                                                                                             |
 | ------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `button` | `aria-label`      | Defines a string value that labels an interactive element. **It is a required for buttons without visible text content.**                                                     |
-| `button` | `aria-labelledby` | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. **It is a required for buttons without visible text content.** |
+| `button` | `aria-labelledby` | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. **It is required for buttons without visible text content.** |
 
 ## Resources
 
