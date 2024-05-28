@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.27.1] - 2024-05-27
+
+### Fixed
+
+- Dependency on `@semcore/portal` when Skeleton installed as a separate package.
+
 ## [5.27.0] - 2024-05-23
 
 ### Added

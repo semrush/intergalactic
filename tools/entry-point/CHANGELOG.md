@@ -1,26 +1,57 @@
+## [15.90.2] - 2024-05-27
+
+### @semcore/popper
+
+- **Fixed** Focusing popper might break next popper opening.
+
+## [15.90.1] - 2024-05-27
+
+### @semcore/skeleton
+
+- **Fixed** Dependency on `@semcore/portal` when Skeleton installed as a separate package.
+
+## [15.90.0] - 2024-05-24
+
+### @semcore/date-picker
+
+- **Fixed** Range pickers with disabled dates were throwing an error in console after selecting a range.
+
+### @semcore/popper
+
+- **Fixed** In some cases the second open of any popper was breaking the positioning engine.
+
+## [15.89.0] - 2024-05-23
+
+### @semcore/skeleton
+
+- **Added** Live region "Loading…" announcement for assistive technologies.
+- **Added** "Loading…" aria-label.
+- **Added** `locale` prop.
+- **Changed** `aria-atomic` attribute moved to inner `foreignObject` element.
+
+### @semcore/spin
+
+- **Added** Live region "Loading…" announcement for assistive technologies.
+- **Added** "Loading…" aria-label.
+- **Added** `locale` prop.
+
+### @semcore/spin-container
+
+- **Changed** Content inside of loading container is unavailable for interacting now.
+
+### @semcore/utils
+
+- **Changed** `ScreenReaderOnly` now passed all props to the inner `span` element as DOM attributes.
+
 ## [15.88.0] - 2024-05-22
-
-### @semcore/button
-
-- **Changed** Now buttons of `s` and `l` size is based on `--intergalactic-form-control-m` and `--intergalactic-form-control-l` design token respectively (with no change in size in default theme).
 
 ### @semcore/feedback-form
 
 - **Added** New `FeedbackRating` component.
 
-### @semcore/flags
-
-- **Removed** `aria-label` from the flag component as it was duplicating country name commonly placed near the flag.
-- **Added** `FlagsIso2` and `FlagsIso3` types export.
-
-### @semcore/input-number
-
-- **Fixed** Providing value as number (instead of string) was throwing an error.
-
 ### @semcore/utils
 
 - **Added** New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
-- **Fixed** When form controls were getting loading state, they might not loose focus visual state.
 
 ## [15.86.0] - 2024-05-17
 
