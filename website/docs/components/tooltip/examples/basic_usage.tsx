@@ -13,13 +13,14 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       Hint:
       <Hint title='Export to PDF'>
-        <Button>
-          <Button.Addon>
-            <FileExportM />
-          </Button.Addon>
-        </Button>
+        <Button addonLeft={FileExportM} />
       </Hint>
-      <Hint title='You confirmed your email' aria-hidden={false} tag={CheckAltM} />
+      <Hint
+        title='You confirmed your email'
+        aria-hidden={false}
+        tag={CheckAltM}
+        color='var(--intergalactic-icon-primary-success)'
+      />
     </Flex>
     <Flex gap={4} alignItems='center'>
       Tooltip:
@@ -31,11 +32,7 @@ const Demo = () => (
         Tooltip
       </Tooltip>
       <Tooltip title='Default tooltip contains short text explaining something about the trigger.'>
-        <Button aria-label='Export to PDF'>
-          <Button.Addon>
-            <FileExportM />
-          </Button.Addon>
-        </Button>
+        <Button aria-label='Export to PDF' addonLeft={FileExportM} />
       </Tooltip>
     </Flex>
     <Flex gap={4} alignItems='center'>
@@ -44,8 +41,8 @@ const Demo = () => (
         <DescriptionTooltip.Trigger tag={HintLink}>
           Additional information
         </DescriptionTooltip.Trigger>
-        <DescriptionTooltip.Popper>
-          <Text tag='p' bold mb={1}>
+        <DescriptionTooltip.Popper aria-labelledby='tooltip-title'>
+          <Text tag='p' bold mb={1} id='tooltip-title'>
             Additional information
           </Text>
           <Text tag='p' mb={3}>
@@ -58,9 +55,14 @@ const Demo = () => (
         </DescriptionTooltip.Popper>
       </DescriptionTooltip>
       <DescriptionTooltip>
-        <DescriptionTooltip.Trigger tag={InfoM} interactive aria-label='Additional information' />
-        <DescriptionTooltip.Popper>
-          <Text tag='p' bold mb={1}>
+        <DescriptionTooltip.Trigger
+          tag={InfoM}
+          color='var(--intergalactic-icon-secondary-neutral)'
+          interactive
+          aria-label='Additional information'
+        />
+        <DescriptionTooltip.Popper aria-labelledby='icon-tooltip-title'>
+          <Text tag='p' bold mb={1} id='icon-tooltip-title'>
             Additional information
           </Text>
           <Text tag='p' mb={3}>

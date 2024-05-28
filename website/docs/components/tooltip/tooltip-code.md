@@ -28,7 +28,6 @@ Use the appropriate component depending on your case. See [Tooltip API](tooltip-
 ## Nested trigger accessibility
 
 This example shows how to ensure accessibility if you decide to nest focusable elements instead of merging them with `Trigger`. [Read more about Tooltip accessibility](./tooltip-a11y#recommended-attributes).
-<!-- For best accessibility it's highly recommended to merge focusable elements (like links or interactive icons) with the trigger using the `tag` prop. If you decide to nest instead of merging, **you must set** the trigger's `aria-describedby` and `role` to `undefined`, and instead assign the nested element's `aria-describedby` to the value you get from the children render function. -->
 
 ::: sandbox
 

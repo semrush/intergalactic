@@ -9,34 +9,34 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 <script lang="tsx">
 import React from 'react';
 
-import Button from 'intergalactic/button'; 
-import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip'; 
-import { Box, Flex } from 'intergalactic/flex-box'; 
-import { Text } from 'intergalactic/typography'; 
-import PlaygroundGeneration from '@components/PlaygroundGeneration'; 
-import Link from 'intergalactic/link'; 
+import Button from 'intergalactic/button';
+import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip';
+import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from 'intergalactic/typography';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Link from 'intergalactic/link';
 import FileExportM from 'intergalactic/icon/FileExport/m';
 
 const PLACEMENT = [
-  'top-start', 
-  'top', 
-  'top-end', 
-  'right-start', 
-  'right', 
-  'right-end', 
-  'bottom-start', 
-  'bottom', 
-  'bottom-end', 
-  'left-start', 
-  'left', 
-  'left-end', 
-]; 
+  'top-start',
+  'top',
+  'top-end',
+  'right-start',
+  'right',
+  'right-end',
+  'bottom-start',
+  'bottom',
+  'bottom-end',
+  'left-start',
+  'left',
+  'left-end',
+];
 
-const EVENT = ['hover', 'click', 'focus']; 
-const components = [Hint, Tooltip, DescriptionTooltip]; 
+const EVENT = ['hover', 'click', 'focus'];
+const components = [Hint, Tooltip, DescriptionTooltip];
 
 const App = PlaygroundGeneration((createGroupWidgets) => {
-  const { radio, select } = createGroupWidgets('Tooltip'); 
+  const { radio, select } = createGroupWidgets('Tooltip');
 
   const component = select({
     key: 'component',
@@ -46,7 +46,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: component.displayName,
       value: component.displayName,
     })),
-  }); 
+  });
 
   const placement = select({
     key: 'placement',
@@ -56,7 +56,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       name: value,
       value,
     })),
-  }); 
+  });
   const theme = select({
     key: 'theme',
     defaultValue: 'default',
@@ -75,7 +75,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         value: 'invert',
       },
     ],
-  }); 
+  });
 
   if (component === 'Hint') {
     return (
@@ -124,7 +124,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       </Tooltip>
     );
   }
-}); 
+});
 </script>
 
 :::
@@ -141,9 +141,9 @@ Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
 ## Component composition
 
-It's useful to keep in mind that in code tooltips consist of two main parts: 
+It's useful to keep in mind that in code tooltips consist of two main parts:
 - Trigger — the element that should be hovered, clicked on, etc, to show the tooltip,
-- Popper — the tooltip itself, i.e. the container for tooltip content.
+- Popper — the tooltip itself, that is, the container for tooltip content.
 
 ![](static/tooltip-composition.png)
 
@@ -199,7 +199,7 @@ The image inside the tooltip has a size of 130px * 130px.
 
 ### Data margins
 
-To improve readability, it is recommended to use specific margins between labels and values inside the tooltip. Detailed recommendations for tooltip margins can be found in [Data visualization](/data-display/d3-chart/d3-chart#tooltip) and [Summary](/patterns/summary/summary#difference_value).
+To improve readability, it's recommended to use specific margins between labels and values inside the tooltip. Detailed recommendations for tooltip margins can be found in [Data visualization](/data-display/d3-chart/d3-chart#tooltip) and [Summary](/patterns/summary/summary#difference_value).
 
 ![](static/tooltip-margins.png)
 
@@ -209,7 +209,7 @@ The tooltip is built using the [Popper.js](https://popper.js.org/) library, allo
 
 The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top`.
 
-#### Placement properties
+### Placement properties
 
 ::: sandbox
 
@@ -241,14 +241,14 @@ If the tooltip has interactive elements inside, the hiding time should be increa
 
 ## Content
 
-Tooltip content is closely related to its behaviour, so you should choose the appropriate component depending on what you intend to show inside the tooltip.
+Tooltip content is closely related to its behavior, so you should choose the appropriate component depending on what you intend to show inside the tooltip.
 
 Table: Tooltip content
 
-| Component            | Tooltip function                                                                                                                             | Content |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `Hint`               | Show a label for an interactive element without visible text                                                                                 | Very short unformatted text reflecting an action or element's name, e.g. "Export", "Settings" ![](static/hint.png) |
-| `Tooltip`            | Show additional information about an element with a visible label                                                                            | Short unformatted text, preferably no more than one sentence. ![](static/tooltip-basic.png) |
+| Component | Tooltip function | Content |
+| --------- | ---------------- | ------- |
+| `Hint` | Show a label for an interactive element without visible text | Very short unformatted text reflecting an action or element's name, for example, "Export", "Settings". ![](static/hint.png) |
+| `Tooltip` | Show additional information about an element with a visible label | Short unformatted text, preferably no more than one sentence. ![](static/tooltip-basic.png) |
 | `DescriptionTooltip` | Show information that's related not to the trigger itself, but to another element or the feature in general ([Informer pattern](../../patterns/informer/informer))  | Any amount of text, formatted or unformatted. Can include images, links, buttons and other element. ![](static/tooltip-advanced-2.png) |
 
 ## Usage in UX/UI
@@ -256,7 +256,7 @@ Table: Tooltip content
 Main recommendations:
 
 - Use the tooltip to show hints and additional information only. Avoid adding complex functionality inside it.
-- Ensure that the tooltip does not overlap important information for the user.
+- Ensure that the tooltip doesn't overlap important information for the user.
 
 ::: tip
 For complex content and forms, use [DropdownMenu](/components/dropdown-menu/dropdown-menu).
@@ -280,6 +280,6 @@ For complex content and forms, use [DropdownMenu](/components/dropdown-menu/drop
 
 ![](static/tooltip-content-yes-no.png)
 
-**Ensure that the tooltip does not prevent users from interacting with nearby triggers.**
+**Ensure that the tooltip doesn't prevent users from interacting with nearby triggers.**
 
 ![](static/tooltip-hover-yes-no.png)
