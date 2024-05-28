@@ -299,15 +299,16 @@ class Popper extends Component {
     return handlers;
   }
 
-  handlerKeyDown = (e) => {
+  makeKeyDownHandler = (component) => (e) => {
     const { visible } = this.asProps;
     if (visible && e.key === 'Escape') {
       e.stopPropagation();
 
-      this.bindHandlerChangeVisibleWithTimer(false)(e);
+      this.bindHandlerChangeVisibleWithTimer(false, component, 'onKeyDown')(e);
     }
   };
-  bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
+  bindHandlerKeyDown = (onKeyDown, component) =>
+    callAllEventHandlers(onKeyDown, this.makeKeyDownHandler(component));
 
   lastPopperClick = 0;
   bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
@@ -377,7 +378,7 @@ class Popper extends Component {
       }, 0);
     });
     const ignoringDuration = 2000;
-    if (!visible && ['onClick', 'onBlur'].includes(action)) {
+    if (!visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
       this.setState({
         ignoreTriggerFocusUntil: now + ignoringDuration,
       });
@@ -422,7 +423,7 @@ class Popper extends Component {
       active: visible,
       interaction,
       ...interactionProps,
-      onKeyDown: this.bindHandlerKeyDown(onKeyDown),
+      onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'trigger'),
       disableEnforceFocus,
       popperRef: this.popperRef,
       onBlur: callAllEventHandlers(this.handleTriggerBlur, interactionProps.onBlur),
@@ -459,7 +460,7 @@ class Popper extends Component {
       interaction,
       disablePortal,
       ...interactionProps,
-      onKeyDown: this.bindHandlerKeyDown(onKeyDown),
+      onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'popper'),
       placement,
       duration,
       animationsDisabled,
