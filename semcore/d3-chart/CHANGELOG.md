@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.45.0] - 2024-05-27
+
+### Changed
+
+- `Line.Area` got an option `autoInterpolate` that allows to disable auto interpolation of all missing values.
+- `Line.Area` data now accepts `interpolateValue` symbol that allows spot interpolation of values if `autoInterpolate` set to `false`.
+
+## [3.44.2] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.1 ~> 5.35.2]).
+
+## [3.44.1] - 2024-05-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.0 ~> 5.35.1]).
+
+## [3.44.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.26.0 ~> 2.27.0], `@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
 ## [3.43.0] - 2024-05-22
 
 ### Changed
