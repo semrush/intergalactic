@@ -8,7 +8,7 @@ tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-
 Addons can be added:
 
 - By passing the required `tag` to the `addonLeft`/`addonRight` property.
-- By unrending `Button.Addon`/`Button.Text` into the component body.
+- By nesting `Button.Addon`/`Button.Text` into the component body.
 
 ::: sandbox
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'intergalactic/button';
+import Badge from '@semcore/ui/badge';
 import CheckM from 'intergalactic/icon/Check/m';
-import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const Demo = () => {
   return (
@@ -10,7 +10,7 @@ const Demo = () => {
       <Button ml={2}>
         <Button.Text>Button</Button.Text>
         <Button.Addon>
-          <ArrowRightM />
+          <Badge bg='green-400'>new</Badge>
         </Button.Addon>
       </Button>
     </>
