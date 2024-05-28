@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.1] - 2024-05-27
+
+### Fixed
+
+- `getNodeByRef` issue that was causing errors in console when clicking on `Chart.Bubble`.
+
+## [4.28.0] - 2024-05-23
+
+### Changed
+
+- `ScreenReaderOnly` now passed all props to the inner `span` element as DOM attributes.
+
 ## [4.27.0] - 2024-05-16
 
 ### Added

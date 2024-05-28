@@ -72,6 +72,7 @@ export function getNodeByRef(ref: NodeByRef): Element | null {
   const node = getRef(ref);
   if (!node) return null;
   if (node.nodeType === 1) return node;
+  if (Object.keys(node).length === 1 && 'getBoundingClientRect' in node) return null;
 
   return findDOMNode(node) as Element;
 }

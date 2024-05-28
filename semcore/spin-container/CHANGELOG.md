@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.27.0] - 2024-05-23
+
+### Changed
+
+- Content inside of loading container is unavailable for interacting now.
+
 ## [7.26.0] - 2024-05-22
 
 ### Changed

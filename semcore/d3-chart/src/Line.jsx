@@ -136,7 +136,7 @@ function Null(props) {
 function Area(props) {
   const uid = useUID();
   const {
-    Element: SAria,
+    Element: SLineArea,
     styles,
     data,
     hide,
@@ -149,27 +149,54 @@ function Area(props) {
     curve = curveCardinal,
     area,
     patterns,
+    autoInterpolate = true,
   } = props;
   const [xScale, yScale] = scale;
-  const dataToArea = area ?? data.filter((d) => definedData(y0, y1)(d));
+  const dataToArea = React.useMemo(() => {
+    if (area) return area;
+    const chunked = data.reduce(
+      (acc, d) => {
+        if (d[y0] === interpolateValue || d[y1] === interpolateValue) return acc;
+        if (definedData(y0, y1)(d)) {
+          acc[acc.length - 1].push(d);
+        } else if (acc[acc.length - 1].length > 0) {
+          acc.push([]);
+        }
+        return acc;
+      },
+      [[]],
+    );
+    if (autoInterpolate) {
+      return [chunked.flat()];
+    }
 
-  const d3 = d3Area()
-    .curve(curve)
-    .x((data) => xScale(data[x]))
-    .y0((data) => yScale(data[y0]))
-    .y1((data) => yScale(data[y1]));
+    return chunked;
+  }, [data, y0, y1, area, autoInterpolate]);
 
-  return sstyled(styles)(
-    <SAria
-      aria-hidden
-      clipPath={`url(#${uid})`}
-      render='path'
-      hide={hide}
-      color={color}
-      d={d3(dataToArea)}
-      use:duration={`${duration}ms`}
-      patterns={patterns}
-    />,
+  return (
+    <>
+      {dataToArea.map((chunk, index) => {
+        const d3 = d3Area()
+          .curve(curve)
+          .x((data) => xScale(data[x]))
+          .y0((data) => yScale(data[y0]))
+          .y1((data) => yScale(data[y1]));
+
+        return sstyled(styles)(
+          <SLineArea
+            key={`${chunk.length}-${index}`}
+            aria-hidden
+            clipPath={`url(#${uid})`}
+            render='path'
+            hide={hide}
+            color={color}
+            d={d3(chunk)}
+            use:duration={`${duration}ms`}
+            patterns={patterns}
+          />,
+        );
+      })}
+    </>
   );
 }
 

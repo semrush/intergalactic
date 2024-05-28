@@ -24,8 +24,10 @@ export const datesIntersects =
             unit,
             '[]',
           )) ||
-        (dateFrom && dateTo && start.isBetween(dayjs(dateFrom), dayjs(dateTo), unit, '[]')) ||
-        (dateFrom && dateTo && end.isBetween(dayjs(dateFrom), dayjs(dateTo), unit, '[]'))
+        (dateFrom &&
+          dateTo &&
+          dayjs(start).isBetween(dayjs(dateFrom), dayjs(dateTo), unit, '[]')) ||
+        (dateFrom && dateTo && dayjs(end).isBetween(dayjs(dateFrom), dayjs(dateTo), unit, '[]'))
       );
     }
     if (isValidSchedule(disabled_day)) {
