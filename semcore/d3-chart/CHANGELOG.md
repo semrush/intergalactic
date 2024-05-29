@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.46.0] - 2024-05-29
+
+### Added
+
+- `ReferenceLine.Stripes` component.
+
 ## [3.45.1] - 2024-05-28
 
 ### Fixed
