@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.34.0] - 2024-05-28
+
+### Fixed
+
+- `Tooltip` (`DescriptionTooltip` and `Hint` as well) with click interactions wasn't opening by keyboard interaction if trigger was not a button or icon.
+
+## [6.33.3] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.2 ~> 5.35.3]).
+
 ## [6.33.2] - 2024-05-27
 
 ### Changed
