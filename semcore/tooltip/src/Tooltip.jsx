@@ -213,6 +213,16 @@ class DescriptionTooltipRoot extends TooltipRoot {
       }, 0);
     }
   };
+  handleTriggerKeyDown = (event) => {
+    if (this.asProps.interaction !== 'click') return;
+    if (event.key === ' ' && ['INPUT', 'TEXTAREA'].includes(event.target.tagName)) return;
+    if (event.key === 'Enter' && event.target.tagName === 'TEXTAREA') return;
+
+    if (['Enter', ' '].includes(event.key)) {
+      event.preventDefault();
+      this.handlers.visible(true);
+    }
+  };
 
   getTriggerProps() {
     const props = super.getTriggerProps();
@@ -221,7 +231,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       'aria-haspopup': !(this.asProps.disabled || props.disabled),
       'aria-expanded': this.asProps.visible,
       'aria-describedby': undefined,
-      onKeyDownCapture: this.handleTriggerKeyDown,
+      onKeyDown: this.handleTriggerKeyDown,
     };
   }
 

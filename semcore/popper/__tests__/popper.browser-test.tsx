@@ -23,7 +23,7 @@ test.describe('Popper', () => {
     }
   });
   test('Focus lock with disablePortal', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/disablePortal.tsx';
+    const standPath = 'semcore/popper/__tests__/stands/disable-portal.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -43,7 +43,7 @@ test.describe('Popper', () => {
     }
   });
   test('cursor anchoring', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/cursorAnchoring.tsx';
+    const standPath = 'semcore/popper/__tests__/stands/cursor-anchoring.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -132,6 +132,63 @@ test.describe('Popper', () => {
       await option1Locator.click();
 
       await expect(option3Locator).toHaveCount(0);
+    });
+  });
+  test('page resizing', async ({ page }) => {
+    const standPath = 'semcore/popper/__tests__/stands/page-resizing.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const popper = await page.locator('text=Popper');
+    const popperY = (await popper.boundingBox())!.y;
+
+    const resizeButton = await page.locator('text=Change height');
+    await resizeButton.click();
+
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
+    const newPopperY = (await popper.boundingBox())!.y;
+
+    expect(Math.round(newPopperY)).toBeCloseTo(Math.round(popperY));
+  });
+  test.describe('hover interaction', () => {
+    test('with mouse', async ({ page }) => {
+      const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const triggerLocator = await page.locator('text=Trigger');
+      const popperLocator = await page.locator('text=Popper');
+
+      const triggerRect = (await triggerLocator.boundingBox())!;
+
+      await page.mouse.move(
+        triggerRect.x + triggerRect.width / 2,
+        triggerRect.y + triggerRect.height / 2,
+        { steps: 5 },
+      );
+
+      await expect(popperLocator).toHaveCount(1);
+    });
+    test('with touch', async ({ page }) => {
+      const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';
+      const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+      await page.setContent(htmlContent);
+
+      const triggerLocator = await page.locator('text=Trigger');
+      const popperLocator = await page.locator('text=Popper');
+
+      const triggerRect = (await triggerLocator.boundingBox())!;
+
+      await page.touchscreen.tap(
+        triggerRect.x + triggerRect.width / 2,
+        triggerRect.y + triggerRect.height / 2,
+      );
+
+      await expect(popperLocator).toHaveCount(1);
     });
   });
 });

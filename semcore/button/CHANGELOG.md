@@ -2,7 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.24.0] - 2024-04-29
+## [5.28.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/spin` [5.25.0 ~> 5.26.0], `@semcore/utils` [4.27.0 ~> 4.28.0]).
+
+## [5.27.0] - 2024-05-21
+
+### Changed
+
+- Now buttons of `s` and `l` size is based on `--intergalactic-form-control-m` and `--intergalactic-form-control-l` design token respectively (with no change in size in default theme).
+
+## [5.26.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.26.1 ~> 4.26.2]).
+
+## [5.26.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1]).
+
+## [5.25.0] - 2024-05-16
 
 ### Changed
 

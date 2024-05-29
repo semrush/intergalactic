@@ -90,8 +90,6 @@ function getOuterRadius({ size, halfsize }) {
   return minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
 }
 
-const gradToRad = (grad) => (grad * Math.PI) / 180;
-
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
@@ -198,24 +196,28 @@ class DonutRoot extends Component {
     }
   };
 
+  animationTimeout = null;
   animationUpdatePie = () => {
-    const { duration, d3Arc, halfsize, d3ArcOut } = this.asProps;
-    this.canAnimatedHover = false;
-    if (duration > 0) {
-      transitionAnglePie({
-        selector: `#${this.id} [data-ui-name="Donut.Pie"]`,
-        duration,
-        arcs: this.arcs,
-        halfsize,
-        d3Arc,
-        d3ArcOut,
-        activeIndexPie: this.activeIndexPie,
-      }).on('end', () => {
+    clearTimeout(this.animationTimeout);
+    this.animationTimeout = setTimeout(() => {
+      const { duration, d3Arc, halfsize, d3ArcOut } = this.asProps;
+      this.canAnimatedHover = false;
+      if (duration > 0) {
+        transitionAnglePie({
+          selector: `#${this.id} [data-ui-name="Donut.Pie"]`,
+          duration,
+          arcs: this.arcs,
+          halfsize,
+          d3Arc,
+          d3ArcOut,
+          activeIndexPie: this.activeIndexPie,
+        }).on('end', () => {
+          this.canAnimatedHover = true;
+        });
+      } else {
         this.canAnimatedHover = true;
-      });
-    } else {
-      this.canAnimatedHover = true;
-    }
+      }
+    }, 0);
   };
 
   getPieProps(props, index) {

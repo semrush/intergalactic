@@ -30,7 +30,6 @@ export const publishReleaseNotes = async (version: string, lastVersionChangelogs
     await fs.rm('./.github-release-notes.txt');
     log('Published release note.');
   } catch (error) {
-    // biome-ignore lint/suspicious/noConsoleLog:
     console.error(error);
   }
 };

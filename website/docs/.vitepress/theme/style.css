@@ -564,6 +564,10 @@ video {
 
 /* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
+h2[class] {
+  font-weight: var(--intergalactic-bold);
+}
+
 .vp-doc a[class]:hover {
   color: var(--vp-c-indigo-1) !important;
 }

@@ -17,7 +17,7 @@ import {
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 import { formatDDMMYY } from './utils/formatDate';
-import includesDate from './utils/includesDate';
+import { includesDate } from './utils/includesDate';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export class DatePickerRoot extends PickerAbstract {
@@ -78,6 +78,7 @@ export class DatePickerRoot extends PickerAbstract {
       children: () => <InputTrigger.SingleDateInput />,
       getI18nText,
       animationsDisabled,
+      unit: this.keyStep,
     };
   }
 

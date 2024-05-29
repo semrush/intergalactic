@@ -2,7 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.40.0] - 2024-04-29
+## [2.44.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/icon` [4.35.0 ~> 4.36.0], `@semcore/flex-box` [5.26.0 ~> 5.27.0], `@semcore/animation` [2.26.0 ~> 2.27.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [2.43.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/icon` [4.34.1 ~> 4.35.0], `@semcore/flex-box` [5.25.1 ~> 5.26.0], `@semcore/animation` [2.25.1 ~> 2.26.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [2.42.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/icon` [4.34.0 ~> 4.34.1], `@semcore/flex-box` [5.25.0 ~> 5.25.1], `@semcore/animation` [2.25.0 ~> 2.25.1], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [2.42.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/icon` [4.33.0 ~> 4.34.0], `@semcore/flex-box` [5.24.0 ~> 5.25.0], `@semcore/animation` [2.24.0 ~> 2.25.0], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [2.41.0] - 2024-05-16
 
 ### Changed
 

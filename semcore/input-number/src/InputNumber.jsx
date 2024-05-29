@@ -117,7 +117,7 @@ class Value extends Component {
   valueParser = (value, prevValue, prevDisplayValue) => {
     const { numberFormatter } = this.props;
 
-    const stringNumber = value
+    const stringNumber = String(value)
       .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
       .replace(this.separatorDecimal, '.');
 
@@ -201,6 +201,18 @@ class Value extends Component {
       this.handlers.displayValue(displayValue);
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.value !== this.props.value) {
+      const { displayValue } = this.valueParser(
+        this.props.value,
+        prevProps.value,
+        prevProps.displayValue,
+      );
+      this.handlers.displayValue(displayValue);
+    }
+  }
+
   componentWillUnmount() {
     this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
   }

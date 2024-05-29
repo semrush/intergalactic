@@ -9,6 +9,7 @@ import { localizedMessages } from '../translations/__intergalactic-dynamic-local
 import shortDateRangeFormat from '../utils/shortDateRangeFormat';
 import Checkbox from '@semcore/checkbox';
 import { LinkTrigger } from '@semcore/base-trigger';
+import { includesDate } from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 
 import style from '../style/date-picker.shadow.css';
@@ -136,6 +137,8 @@ class DateRangeComparatorAbstract extends Component {
             this.handlers.preselectedCompare(undefined);
             this.handlers.compareToggle(undefined);
             this.handlers.focusedRange('value');
+          } else {
+            this.handlers.compareToggle(!!this.asProps.value?.compare?.length);
           }
 
           const { value, displayedPeriod } = this.asProps;
@@ -192,6 +195,12 @@ class DateRangeComparatorAbstract extends Component {
     this.handlers.value({ value, compare });
     this.handlers.visible(false);
   };
+
+  isDisabled(date) {
+    const { disabled } = this.asProps;
+
+    return disabled.some(includesDate(dayjs(date), 'date'));
+  }
 
   handleKeydownDown = (place) => (e) => {
     const { displayedPeriod, preselectedValue, visible, focusedRange } = this.asProps;
@@ -337,15 +346,19 @@ class DateRangeComparatorAbstract extends Component {
     };
   }
 
+  triggerFormattingProps = {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  };
+
   getTriggerProps({ placeholder = 'Select date ranges', separator = 'vs.' }) {
     const { locale, visible } = this.asProps;
     const value = this.asProps.value?.value;
     const compare = this.asProps.value?.compare;
     const formattingProps = {
       locale,
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
+      ...this.triggerFormattingProps,
     };
     let children = placeholder;
     if (value?.[0] && value?.[1]) {
@@ -377,9 +390,11 @@ class DateRangeComparatorAbstract extends Component {
       focusedRange,
       preselectedValue,
       animationsDisabled,
+      visible,
     } = this.asProps;
 
     return {
+      popoverVisible: visible,
       focused: focusedRange === 'value' ? true : undefined,
       value: preselectedValue ?? value?.value,
       onChange: (value) => this.handlers.preselectedValue(value),
@@ -408,9 +423,11 @@ class DateRangeComparatorAbstract extends Component {
       preselectedCompare,
       compareToggle,
       animationsDisabled,
+      visible,
     } = this.asProps;
 
     return {
+      popoverVisible: visible,
       focused: focusedRange === 'compare' ? true : undefined,
       disabled: !(compareToggle ?? value?.compare?.length),
       value: preselectedCompare ?? value?.compare,
@@ -433,7 +450,7 @@ class DateRangeComparatorAbstract extends Component {
 
     return {
       getI18nText,
-      checked: compareToggle ?? value?.compare?.length,
+      checked: compareToggle,
       onChange: (checked) => {
         if (checked) {
           this.handlers.compareToggle(true);
@@ -441,6 +458,7 @@ class DateRangeComparatorAbstract extends Component {
         } else {
           this.handlers.compareToggle(false);
           this.handlers.focusedRange('value');
+          this.handlers.preselectedCompare([]);
         }
       },
     };
