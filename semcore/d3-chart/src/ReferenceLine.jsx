@@ -1,5 +1,6 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';
 
@@ -99,6 +100,7 @@ const titleSideToProps = {
 class ReferenceLineRoot extends Component {
   static displayName = 'ReferenceLine';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
   static defaultProps = {
     position: 'left',
   };
@@ -111,6 +113,11 @@ class ReferenceLineRoot extends Component {
   getBackgroundProps() {
     const { position, value } = this.asProps;
     return { position, value };
+  }
+
+  getStripesProps() {
+    const { position, value, uid } = this.asProps;
+    return { position, value, uid };
   }
 
   render() {
@@ -167,9 +174,36 @@ function Background(props) {
   );
 }
 
+const diagonalGap = 8;
+const gap = Math.sqrt(diagonalGap ** 2 + diagonalGap ** 2);
+const gap12 = gap * (1 / 2);
+const gap32 = gap * (3 / 2);
+const path = `M-${gap},-${gap12} L${gap},${gap32} M-${gap12},-${gap} L${gap32},${gap}`;
+function Stripes(props) {
+  const { Element: SStripes, styles, scale, position, value, endValue, uid } = props;
+  const SStripesPatternPath = 'path';
+  const positionProps = rectDirection2props[side2direction[position]];
+  const patternId = `${uid}-pattern`;
+
+  return sstyled(styles)(
+    <g>
+      <SStripes
+        render='rect'
+        childrenPosition='inside'
+        fill={`url(#${patternId})`}
+        {...positionProps(scale, value, endValue)}
+      />
+      <pattern id={patternId} patternUnits='userSpaceOnUse' width={gap} height={gap}>
+        <SStripesPatternPath d={path} />
+      </pattern>
+    </g>,
+  );
+}
+
 const ReferenceLine = createElement(ReferenceLineRoot, {
   Title,
   Background,
+  Stripes,
 });
 
 export default ReferenceLine;
