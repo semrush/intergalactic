@@ -36,9 +36,12 @@ export type ReferenceLineBackgroundProps = Context & {
   endValue?: number | string;
 };
 
+export type ReferenceLineStripesProps = ReferenceLineBackgroundProps;
+
 declare const ReferenceLine: IntergalacticD3Component<'line', ReferenceLineProps, Context> & {
   Title: IntergalacticD3Component<'text', ReferenceLineTitleProps, Context>;
   Background: IntergalacticD3Component<'rect', ReferenceLineBackgroundProps, Context>;
+  Stripes: IntergalacticD3Component<'rect', ReferenceLineStripesProps, Context>;
 };
 
 export default ReferenceLine;

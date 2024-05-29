@@ -2436,7 +2436,9 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <ReferenceLine title='Left data' value={data[0].category} />
+          <ReferenceLine title='Left data' value={data[0].category}>
+            <ReferenceLine.Stripes endValue={data[1].category} />
+          </ReferenceLine>
           <ReferenceLine title='Right data' position='right' value={data[1].category} />
           <ReferenceLine title='Top data' position='top' value={900000} />
           <ReferenceLine title='Bottom data' position='bottom' value={300000} />

@@ -25,7 +25,9 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ReferenceLine title='Left data' value={dataBar[0].category} />
+      <ReferenceLine title='Left data' value={dataBar[0].category}>
+        <ReferenceLine.Stripes endValue={dataBar[1].category} />
+      </ReferenceLine>
       <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
       <ReferenceLine title='Top data' position='top' value={9} />
       <ReferenceLine title='Bottom data' position='bottom' value={3} />

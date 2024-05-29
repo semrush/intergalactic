@@ -3368,7 +3368,7 @@
     "rawValue": "rgba({gray.800}, 0.15)",
     "computedValue": "rgba(25, 27, 35, 0.15)",
     "description": "Stripe color for diagonal pattern background.",
-    "components": []
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-border",
