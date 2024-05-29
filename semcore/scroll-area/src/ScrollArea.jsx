@@ -72,6 +72,8 @@ class ScrollAreaRoot extends Component {
     const { scrollWidth, scrollHeight } = this.$container;
     const style = window.getComputedStyle(this.$wrapper);
     const parent = this.$wrapper.parentElement;
+    const parentStyle = parent ? window.getComputedStyle(parent) : null;
+    const notInAnimation = parentStyle?.getPropertyValue('animation-name') === 'none';
     const parentRect = parent?.getBoundingClientRect() ?? { width: 0, height: 0 };
     const { wMax, hMax } = this.asProps;
 
@@ -82,7 +84,7 @@ class ScrollAreaRoot extends Component {
     let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth) {
-      if (parent.scrollWidth > parentRect.width) {
+      if (parent.scrollWidth > parentRect.width && notInAnimation) {
         const diff = parent.scrollWidth - parentRect.width;
 
         maxWidth = maxWidth - diff;
@@ -98,7 +100,7 @@ class ScrollAreaRoot extends Component {
     }
 
     if (maxHeight) {
-      if (parent.scrollHeight > parentRect.height) {
+      if (parent.scrollHeight > parentRect.height && notInAnimation) {
         const diff = parent.scrollHeight - parentRect.height;
 
         maxHeight = maxHeight - diff;
