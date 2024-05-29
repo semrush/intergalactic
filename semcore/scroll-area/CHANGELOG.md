@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Auto resizing for `ScrollArea` if the parent element changes its size.
 
+## [5.29.1] - 2024-05-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.28.0 ~> 4.28.1], `@semcore/flex-box` [5.27.0 ~> 5.27.1], `@semcore/core` [2.25.0 ~> 2.25.1]).
+
 ## [5.29.0] - 2024-05-23
 
 ### Changed
