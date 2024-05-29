@@ -4,9 +4,8 @@ SBreadcrumbs {
   padding: 0;
   margin: 0;
 
-  SOl {
-    display: flex;
-    align-items: center;
+  SListContainer {
+    display: contents;
     list-style: none;
     overflow: hidden;
     margin: 0;
@@ -22,7 +21,7 @@ SBreadcrumbs {
       }
     }
 
-    SLi {
+    SListItem {
       overflow: hidden;
 
 

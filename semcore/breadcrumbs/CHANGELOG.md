@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.33.1] - 2024-04-30
+
+### Changed
+
+- Added `nav` tag for breadcrumbs container.
+- Added default `a` tag for breadcrumb item.
+- Wrapped breadcrumb items in an `ol` list.
+
 ## [5.33.0] - 2024-05-23
 
 ### Changed
@@ -31,12 +39,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version minor update due to children dependencies update (`@semcore/utils` [4.23.2 ~> 4.24.0]).
-
-## [5.29.1] - 2024-04-30
-
-### Fixed
-
-- Some a11y improvements.
 
 ## [5.29.0] - 2024-04-29
 

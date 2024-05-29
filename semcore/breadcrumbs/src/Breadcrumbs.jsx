@@ -29,13 +29,13 @@ class Breadcrumbs extends Component {
 
   render() {
     const SBreadcrumbs = Root;
-    const SOl = 'ol';
+    const SListContainer = 'ol';
     const { styles, getI18nText, Children } = this.asProps;
     return sstyled(styles)(
       <SBreadcrumbs render={Box} aria-label={getI18nText('breadcrumbs')}>
-        <SOl>
+        <SListContainer>
           <Children />
-        </SOl>
+        </SListContainer>
       </SBreadcrumbs>,
     );
   }
@@ -53,17 +53,17 @@ class Item extends Component {
     const SBreadcrumbsItem = Root;
     const { styles, separator, active, disabled, href } = this.asProps;
     const SSeparator = 'div';
-    const SLi = 'li';
+    const SListItem = 'li';
 
     return sstyled(styles)(
       <>
-        <SLi>
+        <SListItem>
           <SBreadcrumbsItem
             render={Box}
             use:href={!active && !disabled ? href : undefined}
             aria-current={active ? 'page' : undefined}
           />
-        </SLi>
+        </SListItem>
         <SSeparator aria-hidden='true'>{separator}</SSeparator>
       </>,
     );
