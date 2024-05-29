@@ -1215,6 +1215,18 @@
         "description": "Inverted version of the default color for the Skeleton."
       }
     },
+    "slider-rating": {
+      "normal": {
+        "value": "{icon.secondary.neutral}",
+        "type": "color",
+        "description": "Icon color for the SliderRating component in its normal state."
+      },
+      "hover-active": {
+        "value": "{yellow.200}",
+        "type": "color",
+        "description": "Icon color for the SliderRating component in its hovered and active states."
+      }
+    },
     "table": {
       "th": {
         "primary": {

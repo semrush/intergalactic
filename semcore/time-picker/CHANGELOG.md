@@ -2,7 +2,55 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.39.1] - 2024-05-10
+## [4.43.3] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [4.43.2 ~> 4.43.3]).
+
+## [4.43.2] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [4.43.1 ~> 4.43.2]).
+
+## [4.43.1] - 2024-05-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [4.43.0 ~> 4.43.1]).
+
+## [4.43.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.27.0 ~> 5.28.0], `@semcore/flex-box` [5.26.0 ~> 5.27.0], `@semcore/input` [4.27.0 ~> 4.28.0], `@semcore/select` [4.42.0 ~> 4.43.0], `@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [4.42.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.26.1 ~> 5.27.0], `@semcore/flex-box` [5.25.1 ~> 5.26.0], `@semcore/input` [4.26.1 ~> 4.27.0], `@semcore/select` [4.41.1 ~> 4.42.0], `@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [4.41.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.26.0 ~> 5.26.1], `@semcore/flex-box` [5.25.0 ~> 5.25.1], `@semcore/input` [4.26.0 ~> 4.26.1], `@semcore/select` [4.41.0 ~> 4.41.1], `@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [4.41.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.25.0 ~> 5.26.0], `@semcore/flex-box` [5.24.0 ~> 5.25.0], `@semcore/input` [4.25.0 ~> 4.26.0], `@semcore/select` [4.40.0 ~> 4.41.0], `@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.40.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/select` [4.39.3 ~> 4.40.0]).
+
+## [4.39.3] - 2024-05-16
 
 ### Changed
 

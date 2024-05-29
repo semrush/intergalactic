@@ -1,0 +1,21 @@
+SCheckboxButton {
+  margin-top: var(--intergalactic-spacing-2x, 8px);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+
+  label {
+    width: 100%;
+    padding: var(--intergalactic-spacing-3x, 12px);
+    box-sizing: border-box;
+  }
+}
+
+SCheckboxButton:hover, SCheckboxButton[checked] {
+  cursor: pointer;
+  border-color: var(--intergalactic-border-info-active, #006dca);
+  background-color: rgba(0, 143, 248, 0.10);
+}
+
+SCheckboxButton[checked]:hover {
+  background-color: rgba(0, 143, 248, 0.20);
+}

@@ -75,6 +75,13 @@ export type LineAreaProps = Omit<LineProps, 'transparent'> & {
    * Optional data for render area
    */
   area?: Array<{ [key: string]: number }>;
+
+  /**
+   * If disabled, area will not be rendered if corresponding position data is null. That case you use
+   * `interpolateValue` symbol for spot data interpolation.
+   * @default true
+   */
+  autoInterpolate?: boolean;
 };
 
 declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {

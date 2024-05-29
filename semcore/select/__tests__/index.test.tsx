@@ -333,9 +333,6 @@ describe('Select Trigger', () => {
       vi.runAllTimers();
     });
     act(() => {
-      fireEvent.animationEnd(getByTestId('menu'));
-    });
-    act(() => {
       vi.runAllTimers();
     });
     expect(getByTestId('trigger')).toHaveFocus();
@@ -343,8 +340,38 @@ describe('Select Trigger', () => {
     vi.useRealTimers();
   });
 
-  test.concurrent(
+  test.sequential(
     'focus position preserve with mouse navigation and interaction=focus',
+    async () => {
+      vi.useFakeTimers();
+      const { getByTestId } = render(
+        <Select value={['2']} disablePortal interaction='focus'>
+          <Select.Trigger aria-label='Select trigger' data-testid='trigger' tag='input' />
+          <Select.Menu data-testid='menu'>
+            <Select.Option value='1'>Option 1</Select.Option>
+            <Select.Option value='2' data-testid='option-2'>
+              Option 2
+            </Select.Option>
+          </Select.Menu>
+        </Select>,
+      );
+      act(() => getByTestId('trigger').focus());
+      act(() => {
+        vi.runAllTimers();
+      });
+      act(() => getByTestId('option-2').focus());
+      fireEvent.click(getByTestId('option-2'));
+      act(() => {
+        vi.runAllTimers();
+      });
+      expect(getByTestId('trigger')).toHaveFocus();
+
+      vi.useRealTimers();
+    },
+  );
+
+  test.sequential(
+    'focus position preserve with keyboard navigation and interaction=focus',
     async () => {
       vi.useFakeTimers();
       const { getByTestId } = render(
@@ -360,65 +387,28 @@ describe('Select Trigger', () => {
           </Select.Menu>
         </Select>,
       );
+      act(() => {
+        vi.runAllTimers();
+      });
+      fireEvent.keyDown(document.body, { key: 'Tab' });
       act(() => getByTestId('input-in-trigger').focus());
       act(() => {
         vi.runAllTimers();
       });
-      act(() => getByTestId('option-2').focus());
-      fireEvent.click(getByTestId('option-2'));
+      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
+      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
       act(() => {
         vi.runAllTimers();
       });
       act(() => {
-        fireEvent.animationEnd(getByTestId('menu'));
-      });
-      act(() => {
         vi.runAllTimers();
       });
-      expect(document.activeElement?.tagName).toBe('BUTTON');
+
+      expect(getByTestId('input-in-trigger')).toHaveFocus();
 
       vi.useRealTimers();
     },
   );
-
-  test('focus position preserve with keyboard navigation and interaction=focus', async () => {
-    vi.useFakeTimers();
-    const { getByTestId } = render(
-      <Select value={['2']} disablePortal interaction='focus'>
-        <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
-          <input data-testid='input-in-trigger' />
-        </Select.Trigger>
-        <Select.Menu data-testid='menu'>
-          <Select.Option value='1'>Option 1</Select.Option>
-          <Select.Option value='2' data-testid='option-2'>
-            Option 2
-          </Select.Option>
-        </Select.Menu>
-      </Select>,
-    );
-    act(() => {
-      vi.runAllTimers();
-    });
-    fireEvent.keyDown(document.body, { key: 'Tab' });
-    act(() => getByTestId('input-in-trigger').focus());
-    act(() => {
-      vi.runAllTimers();
-    });
-    fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
-    fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => {
-      fireEvent.animationEnd(getByTestId('menu'));
-    });
-    act(() => {
-      vi.runAllTimers();
-    });
-    expect(document.activeElement?.tagName).toBe('INPUT');
-
-    vi.useRealTimers();
-  });
 });
 
 describe('Option.Checkbox', () => {
@@ -476,13 +466,13 @@ describe('InputSearch', () => {
   test.concurrent('should renders correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 200 }}>
-        <Select>
+        <Select visible disablePortal>
           <InputSearch />
         </Select>
-        <Select>
+        <Select visible disablePortal>
           <InputSearch defaultValue='test' />
         </Select>
-        <Select size='l'>
+        <Select size='l' visible disablePortal>
           <InputSearch />
         </Select>
       </div>

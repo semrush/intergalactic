@@ -24,6 +24,7 @@ function RangeInput(props) {
       data-name='SComparatorRangeInput'
       render={Box}
       tag={InputTriggerBase}
+      unit='date'
       __excludeProps={['role', 'aria-haspopup', 'aria-expanded', 'onChange', 'value', 'id']}
     >
       <InputTriggerBase.DateRange>
@@ -68,6 +69,29 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
 
   getRangeInput() {
     return <DateRangeComparator.RangeInput.DateRange />;
+  }
+
+  getRangeCalendarProps() {
+    return {
+      children: (
+        <>
+          <Flex direction='column'>
+            <DateRangeComparator.CalendarHeader tag={Flex}>
+              <DateRangeComparator.Prev />
+              <DateRangeComparator.Title />
+            </DateRangeComparator.CalendarHeader>
+            <DateRangeComparator.Calendar />
+          </Flex>
+          <Flex direction='column'>
+            <DateRangeComparator.CalendarHeader tag={Flex}>
+              <DateRangeComparator.Title />
+              <DateRangeComparator.Next />
+            </DateRangeComparator.CalendarHeader>
+            <DateRangeComparator.Calendar />
+          </Flex>
+        </>
+      ),
+    };
   }
 
   getPopperProps() {
@@ -149,23 +173,10 @@ function CompareDateRange(props) {
 }
 
 function RangeCalendar(props) {
-  const { Root: SRangeCalendar, styles } = props;
+  const { Root: SRangeCalendar, Children, styles } = props;
   return sstyled(styles)(
     <SRangeCalendar render={Flex} gap={8}>
-      <Flex direction='column'>
-        <DateRangeComparator.CalendarHeader tag={Flex}>
-          <DateRangeComparator.Prev />
-          <DateRangeComparator.Title />
-        </DateRangeComparator.CalendarHeader>
-        <DateRangeComparator.Calendar />
-      </Flex>
-      <Flex direction='column'>
-        <DateRangeComparator.CalendarHeader tag={Flex}>
-          <DateRangeComparator.Title />
-          <DateRangeComparator.Next />
-        </DateRangeComparator.CalendarHeader>
-        <DateRangeComparator.Calendar />
-      </Flex>
+      <Children />
     </SRangeCalendar>,
   );
 }

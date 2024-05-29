@@ -1,4 +1,4 @@
-import { UnknownProperties } from '@semcore/core';
+import { UnknownProperties } from './core/index';
 import { FC, ReactNode } from 'react';
 
 /** @deprecated */

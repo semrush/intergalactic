@@ -129,6 +129,7 @@ class Popper extends Component {
   triggerRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
+  lastPopperReference = null;
 
   constructor(props) {
     super(props);
@@ -221,8 +222,10 @@ class Popper extends Component {
     if (!this.triggerRef.current || !this.popperRef.current) return;
     if (this.asProps.__disablePopper) return;
 
+    const lastPopperReferenceMounted = Boolean(this.lastPopperReference?.parentElement);
+
     this.popper.current = createPopper(
-      this.triggerRef.current,
+      lastPopperReferenceMounted ? this.lastPopperReference : this.triggerRef.current,
       this.popperRef.current,
       this.getPopperOptions(),
     );
@@ -296,15 +299,16 @@ class Popper extends Component {
     return handlers;
   }
 
-  handlerKeyDown = (e) => {
+  makeKeyDownHandler = (component) => (e) => {
     const { visible } = this.asProps;
     if (visible && e.key === 'Escape') {
       e.stopPropagation();
 
-      this.bindHandlerChangeVisibleWithTimer(false)(e);
+      this.bindHandlerChangeVisibleWithTimer(false, component, 'onKeyDown')(e);
     }
   };
-  bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
+  bindHandlerKeyDown = (onKeyDown, component) =>
+    callAllEventHandlers(onKeyDown, this.makeKeyDownHandler(component));
 
   lastPopperClick = 0;
   bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
@@ -325,7 +329,8 @@ class Popper extends Component {
      * That may cause hover interaction poppers to display two closely placed poppers.
      * That check ensures that onMouseEnter means mouse entered the popper, not popper entered the mouse.
      */
-    if (action === 'onMouseEnter' && Date.now() - lastMouseMove > 100) return;
+    if (component === 'popper' && action === 'onMouseEnter' && Date.now() - lastMouseMove > 100)
+      return;
 
     if (action === 'onMouseEnter') {
       this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };
@@ -354,14 +359,18 @@ class Popper extends Component {
         }
       }, 0);
     }
-    const currentTarget = e?.currentTarget;
+
+    const target = e?.currentTarget;
+    if (component === 'trigger' && target && target instanceof HTMLElement) {
+      this.lastPopperReference = target;
+    }
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       clearTimeout(this.timerMultiTrigger);
       // instance popper is not here yet because the popperRef did not have time to come
       this.timerMultiTrigger = setTimeout(() => {
-        if (visible && component === 'trigger' && this.popper.current && currentTarget) {
-          if (this.popper.current.state.elements.reference !== currentTarget) {
-            this.popper.current.state.elements.reference = currentTarget;
+        if (visible && component === 'trigger' && this.popper.current && this.lastPopperReference) {
+          if (this.popper.current.state.elements.reference !== this.lastPopperReference) {
+            this.popper.current.state.elements.reference = this.lastPopperReference;
             // for update
             this.popper.current.setOptions({});
           }
@@ -369,7 +378,7 @@ class Popper extends Component {
       }, 0);
     });
     const ignoringDuration = 2000;
-    if (!visible && ['onClick', 'onBlur'].includes(action)) {
+    if (!visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
       this.setState({
         ignoreTriggerFocusUntil: now + ignoringDuration,
       });
@@ -388,10 +397,17 @@ class Popper extends Component {
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
     const latency = visible ? timeoutConfig[0] : timeoutConfig[1];
     clearTimeout(this.timer);
-    this.timer = setTimeout(() => {
-      handlers.visible(visible, e);
+    if (this.asProps.visible) {
+      this.timer = setTimeout(() => {
+        handlers.visible(visible, e);
+      }, latency);
       cb();
-    }, latency);
+    } else {
+      this.timer = setTimeout(() => {
+        handlers.visible(visible, e);
+        cb();
+      }, latency);
+    }
   };
 
   getTriggerProps() {
@@ -407,7 +423,7 @@ class Popper extends Component {
       active: visible,
       interaction,
       ...interactionProps,
-      onKeyDown: this.bindHandlerKeyDown(onKeyDown),
+      onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'trigger'),
       disableEnforceFocus,
       popperRef: this.popperRef,
       onBlur: callAllEventHandlers(this.handleTriggerBlur, interactionProps.onBlur),
@@ -444,7 +460,7 @@ class Popper extends Component {
       interaction,
       disablePortal,
       ...interactionProps,
-      onKeyDown: this.bindHandlerKeyDown(onKeyDown),
+      onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'popper'),
       placement,
       duration,
       animationsDisabled,

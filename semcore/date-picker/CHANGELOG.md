@@ -2,6 +2,53 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.0] - 2024-05-24
+
+### Fixed
+
+- Range pickers with disabled dates were throwing an error in console after selecting a range.
+
+## [4.45.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/base-trigger` [4.36.0 ~> 4.37.0], `@semcore/button` [5.27.0 ~> 5.28.0], `@semcore/checkbox` [7.29.0 ~> 7.30.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [4.44.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/base-trigger` [4.35.1 ~> 4.36.0], `@semcore/button` [5.26.1 ~> 5.27.0], `@semcore/checkbox` [7.28.1 ~> 7.29.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [4.43.0] - 2024-05-09
+
+### Fixed
+
+- `RangeCalendar` customized children rendering layout.
+- `MonthDateRangeComparator` trigger was formatting dates in trigger as dd/mm/yyyy instead of mm/yyyy.
+- `disabledErrorText={null}` wasn't hiding error tooltip.
+- In range pickers it was still possible to select range with disabled date.
+- Hours and minutes of dates, selected from input trigger was containing current time instead of 00:00.
+- `disabled` prop types.
+- Unchecking "Compare to" checkbox in date range comparators wasn't clearing a date range to compare.
+
+### Added
+
+- Exports for `DateRangeComparatorValue` and `DateRangeComparatorFocusRange` types.
+
+## [4.42.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/base-trigger` [4.34.0 ~> 4.35.0], `@semcore/button` [5.25.0 ~> 5.26.0], `@semcore/checkbox` [7.27.0 ~> 7.28.0], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.41.0] - 2024-05-16
+
+### Added
+
+- `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- Render children in `MonthDateRangeComparator.RangeCalendar`.
+
 ## [4.40.0] - 2024-05-09
 
 ### Added

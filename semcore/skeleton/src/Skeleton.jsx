@@ -2,6 +2,9 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 import style from './style/skeleton.shadow.css';
 
@@ -13,6 +16,7 @@ const MAP_COLOR_THEME = {
 class SkeletonRoot extends Component {
   static displayName = 'Skeleton';
   static style = style;
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     width: '100%',
     height: '100%',
@@ -21,7 +25,7 @@ class SkeletonRoot extends Component {
 
   render() {
     const SSkeleton = Root;
-    const { Children, styles, duration, hidden, style } = this.asProps;
+    const { Children, styles, duration, hidden, getI18nText } = this.asProps;
 
     if (hidden) return null;
 
@@ -30,10 +34,13 @@ class SkeletonRoot extends Component {
         render={Box}
         durationAnim={`${duration}ms`}
         aria-busy='true'
-        aria-atomic='true'
-        aria-hidden='true'
-        alt=''
+        aria-label={getI18nText('loading')}
       >
+        <foreignObject x='0' y='0' width='0' height='0'>
+          <ScreenReaderOnly aria-live='polite' role='status' aria-atomic='true'>
+            {getI18nText('loading')}
+          </ScreenReaderOnly>
+        </foreignObject>
         <Children />
       </SSkeleton>,
     );
