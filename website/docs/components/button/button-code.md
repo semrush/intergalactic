@@ -42,9 +42,9 @@ If there is no visible text in the button, it is necessary to add an `aria-label
 
 :::
 
-## Button with loading spinner
+## Button with loading state
 
-You could add `loading` prop to the `Button` or manually add `Addon` with `Spin` it you need the button text to remain visible.
+You could add a `loading` prop to the `Button` or manually add an `Addon` with `Spin` if you need the button text to remain visible.
 
 ::: sandbox
 
