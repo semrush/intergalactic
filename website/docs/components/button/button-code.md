@@ -27,13 +27,9 @@ To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 
 :::
 
-## Button as link
-
-<!-- Guys, don't forgat to add example and short description for this case. -->
-
 ## Link as button
 
-Refer to [Link as button example](/components/link/link-code#link-as-button).
+To create a button that acts like a link, refer to the [Link as button example](/components/link/link-code#link-as-button).
 
 ## Button accessibility
 
