@@ -5,12 +5,12 @@ import Spin from 'intergalactic/spin';
 const Demo = () => {
   return (
     <>
-      <Button loading>Some loading state</Button>{' '}
+      <Button loading>Loading</Button>{' '}
       <Button disabled>
         <Button.Addon>
           <Spin size='xs' />
         </Button.Addon>
-        <Button.Text>Some loading state</Button.Text>
+        <Button.Text>Loading</Button.Text>
       </Button>
     </>
   );
