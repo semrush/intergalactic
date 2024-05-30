@@ -1,3 +1,32 @@
+## [15.92.0] - 2024-05-28
+
+### @semcore/d3-chart
+
+- **Fixed** Donut chart animation glitching on data change.
+
+### @semcore/popper
+
+- **Fixed** Closing popper with `Esc` and `interaction=focus` might cause immediate reopen.
+
+### @semcore/tooltip
+
+- **Fixed** `Tooltip` (`DescriptionTooltip` and `Hint` as well) with click interactions wasn't opening by keyboard interaction if trigger was not a button or icon.
+
+### @semcore/utils
+
+- **Fixed** `getNodeByRef` issue that was causing errors in console when clicking on `Chart.Bubble`.
+
+## [15.91.0] - 2024-05-27
+
+### @semcore/d3-chart
+
+- **Changed** `Line.Area` got an option `autoInterpolate` that allows to disable auto interpolation of all missing values.
+- **Changed** `Line.Area` data now accepts `interpolateValue` symbol that allows spot interpolation of values if `autoInterpolate` set to `false`.
+
+### @semcore/popper
+
+- **Fixed** Switching popper trigger was causing a glitch during the close animation.
+
 ## [15.90.2] - 2024-05-27
 
 ### @semcore/popper
