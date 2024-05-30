@@ -642,9 +642,11 @@ const MaskedInput = ({
 
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        date.setFullYear(allowedParts.year ? parseInt(year, 10) : 0);
-        date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
-        date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
+        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
+        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
+        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+
+        date.setFullYear(yearParsed, monthParsed, dayParsed);
 
         if (disabledDates?.some(includesDate(dayjs(date), 'date'))) {
           onMaskPipeBlock?.(date);
@@ -694,9 +696,11 @@ const MaskedInput = ({
       const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
       if (fulfilled) {
         const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        date.setFullYear(allowedParts.year ? parseInt(year, 10) : 0);
-        date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
-        date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
+        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
+        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
+        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+
+        date.setFullYear(yearParsed, monthParsed, dayParsed);
 
         onDateChange(date);
         lastKnownOuterValue.current = { year, month, day };
