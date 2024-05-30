@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
+import { Hint } from '@semcore/tooltip';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
@@ -31,8 +32,18 @@ class RootLink extends Component {
 
   render() {
     const SLink = Root;
-    const { Children, styles, noWrap, addonLeft, addonRight, color, resolveColor, disabled, href } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      noWrap,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      color,
+      resolveColor,
+      disabled,
+      href,
+      children: hasChildren,
+    } = this.asProps;
 
     return sstyled(styles)(
       <SLink
@@ -47,9 +58,26 @@ class RootLink extends Component {
         use:noWrap={false}
         ref={this.containerRef}
       >
-        {addonLeft ? <Link.Addon tag={addonLeft} /> : null}
-        {addonTextChildren(Children, Link.Text, Link.Addon)}
-        {addonRight ? <Link.Addon tag={addonRight} /> : null}
+        {hasChildren ? (
+          <>
+            {AddonLeft ? <Link.Addon tag={AddonLeft} /> : null}
+            {addonTextChildren(Children, Link.Text, Link.Addon)}
+            {AddonRight ? <Link.Addon tag={AddonRight} /> : null}
+          </>
+        ) : (
+          <>
+            {AddonLeft ? (
+              <Link.Addon tag={Hint} title={this.asProps['aria-label']}>
+                <AddonLeft />
+              </Link.Addon>
+            ) : null}
+            {AddonRight ? (
+              <Link.Addon tag={Hint} title={this.asProps['aria-label']}>
+                <AddonRight />
+              </Link.Addon>
+            ) : null}
+          </>
+        )}
       </SLink>,
     );
   }
