@@ -45,7 +45,15 @@ Refer to [Button as link example](/components/button/button-code#button-as-link)
 
 ## Link as button
 
-<!-- Guys, don't forgat to add example and short description for this case. -->
+Links can be displayed as buttons.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/link_as_button.tsx';
+</script>
+
+:::
 
 ## Link with ellipsis
 
