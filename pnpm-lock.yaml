@@ -380,6 +380,9 @@ importers:
       '@semcore/spin':
         specifier: 5.26.1
         version: link:../spin
+      '@semcore/tooltip':
+        specifier: 6.34.0
+        version: link:../tooltip
       '@semcore/utils':
         specifier: 4.28.1
         version: link:../utils
