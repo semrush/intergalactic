@@ -4,7 +4,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';
 
-import style from './style/reference-line.shadow.css';
+import style from './style/reference.shadow.css';
 
 const side2direction = {
   left: 'vertical',
@@ -100,7 +100,6 @@ const titleSideToProps = {
 class ReferenceLineRoot extends Component {
   static displayName = 'ReferenceLine';
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
   static defaultProps = {
     position: 'left',
   };
@@ -113,11 +112,6 @@ class ReferenceLineRoot extends Component {
   getBackgroundProps() {
     const { position, value } = this.asProps;
     return { position, value };
-  }
-
-  getStripesProps() {
-    const { position, value, uid } = this.asProps;
-    return { position, value, uid };
   }
 
   render() {
@@ -160,9 +154,8 @@ function Title(props) {
     />,
   );
 }
-
 function Background(props) {
-  const { Element: SBackground, styles, scale, position, value, endValue } = props;
+  const { Element: SBackground, styles, scale, position = 'left', value, endValue } = props;
   const positionProps = rectDirection2props[side2direction[position]];
 
   return sstyled(styles)(
@@ -173,6 +166,7 @@ function Background(props) {
     />,
   );
 }
+Background.style = style;
 
 const diagonalGap = 8;
 const gap = Math.sqrt(diagonalGap ** 2 + diagonalGap ** 2);
@@ -180,7 +174,7 @@ const gap12 = gap * (1 / 2);
 const gap32 = gap * (3 / 2);
 const path = `M-${gap},-${gap12} L${gap},${gap32} M-${gap12},-${gap} L${gap32},${gap}`;
 function Stripes(props) {
-  const { Element: SStripes, styles, scale, position, value, endValue, uid } = props;
+  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid } = props;
   const SStripesPatternPath = 'path';
   const positionProps = rectDirection2props[side2direction[position]];
   const patternId = `${uid}-pattern`;
@@ -199,11 +193,14 @@ function Stripes(props) {
     </g>,
   );
 }
+Stripes.style = style;
+Stripes.enhance = [uniqueIDEnhancement()];
 
-const ReferenceLine = createElement(ReferenceLineRoot, {
+export const ReferenceLine = createElement(ReferenceLineRoot, {
   Title,
   Background,
   Stripes,
 });
 
-export default ReferenceLine;
+export const ReferenceBackground = createElement(Background);
+export const ReferenceStripes = createElement(Stripes);

@@ -27,6 +27,8 @@ import {
   Area,
   StackedArea,
   ReferenceLine,
+  ReferenceStripes,
+  ReferenceBackground,
   Radar,
   ChartLegend,
   ChartLegendTable,
@@ -2436,9 +2438,8 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <ReferenceLine title='Left data' value={data[0].category}>
-            <ReferenceLine.Stripes endValue={data[1].category} />
-          </ReferenceLine>
+          <ReferenceLine title='Left data' value={data[0].category} />
+          <ReferenceStripes value={data[0].category} endValue={data[1].category} />
           <ReferenceLine title='Right data' position='right' value={data[1].category} />
           <ReferenceLine title='Top data' position='top' value={900000} />
           <ReferenceLine title='Bottom data' position='bottom' value={300000} />
@@ -2448,9 +2449,8 @@ describe('d3 charts visual regression', () => {
             strokeWidth='0.5'
             title='Mobile data'
             width='100'
-          >
-            <ReferenceLine.Background width='100' />
-          </ReferenceLine>
+          />
+          <ReferenceBackground value={data[3].category} width='100' />
         </Plot>
       );
     };
