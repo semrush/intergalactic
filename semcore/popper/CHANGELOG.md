@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.4] - 2024-05-28
+
+### Fixed
+
+- Closing popper with `Esc` and `interaction=focus` might cause immediate reopen.
+
 ## [5.35.3] - 2024-05-27
 
 ### Fixed
