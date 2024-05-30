@@ -15,6 +15,7 @@
     "@semcore/flex-box": "5.27.1",
     "@semcore/neighbor-location": "4.25.1",
     "@semcore/spin": "5.26.1",
+    "@semcore/tooltip": "6.34.0",
     "@semcore/utils": "4.28.1"
   },
   "peerDependencies": {

@@ -41,3 +41,15 @@ If there is no visible text in the button, it is necessary to add an `aria-label
 </script>
 
 :::
+
+## Button with loading spinner
+
+You could add `loading` prop to the `Button` or manually add `Addon` with `Spin` it you need the button text to remain visible.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/button_with_loading.tsx';
+</script>
+
+:::

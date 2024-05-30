@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.29.0] - 2024-05-30
+
+### Added
+
+- `Hint` for Button with addon and without text.
+
 ## [5.28.1] - 2024-05-28
 
 ### Changed

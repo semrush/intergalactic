@@ -1,6 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import { Hint } from '@semcore/tooltip';
 import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
@@ -63,8 +64,9 @@ class RootButton extends Component {
       disabled = loading,
       size,
       neighborLocation,
-      addonLeft,
-      addonRight,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      children: hasChildren,
     } = this.asProps;
     const useTheme = use && theme ? `${use}-${theme}` : false;
 
@@ -84,9 +86,26 @@ class RootButton extends Component {
               aria-disabled={disabled}
             >
               <SInner tag='span' loading={loading}>
-                {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
-                {addonTextChildren(Children, Button.Text, Button.Addon)}
-                {addonRight ? <Button.Addon tag={addonRight} /> : null}
+                {hasChildren ? (
+                  <>
+                    {AddonLeft ? <Button.Addon tag={AddonLeft} /> : null}
+                    {addonTextChildren(Children, Button.Text, Button.Addon)}
+                    {AddonRight ? <Button.Addon tag={AddonRight} /> : null}
+                  </>
+                ) : (
+                  <>
+                    {AddonLeft ? (
+                      <Button.Addon tag={Hint} title={this.asProps['aria-label']}>
+                        <AddonLeft />
+                      </Button.Addon>
+                    ) : null}
+                    {AddonRight ? (
+                      <Button.Addon tag={Hint} title={this.asProps['aria-label']}>
+                        <AddonRight />
+                      </Button.Addon>
+                    ) : null}
+                  </>
+                )}
               </SInner>
               {loading && (
                 <SSpin tag='span'>
