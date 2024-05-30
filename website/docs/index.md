@@ -35,7 +35,7 @@ features:
     link: /style/icon/icon
     linkText: Explore
   - title: Filter patterns
-    details: Design patterns to help users filter the data
+    details: Design patterns to help users filter their data
     link: /filter-group/filter-rules/filter-rules
     linkText: Explore
   - title: UX patterns
