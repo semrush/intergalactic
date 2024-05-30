@@ -1,5 +1,8 @@
+# Recommends using contracted forms of verbs with 'not'
+
 extends: substitution
 message: "It's okay to use the contracted form '%s' instead of '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/english/#contractions"
 level: suggestion
 ignorecase: true
 action:

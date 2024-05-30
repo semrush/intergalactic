@@ -1,0 +1,94 @@
+# Checks that team names are capitalized correctly
+
+extends: substitution
+message: "Capitalize 'Team' in team names. '%s', not '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/wording/#team-names"
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  Academy team: Academy Team
+  Admin team: Admin Team
+  Amber team: Amber Team
+  (?:a|A)pplication (?:s|S)ecurity team: Application Security Team
+  Asteria team: Asteria Team
+  Avocado team: Avocado Team
+  Azure team: Azure Team
+  Black team: Black Team
+  Blue team: Blue Team
+  Cherry team: Cherry Team
+  Click(?:h|H)ouse team: ClickHouse Team
+  Cobalt team: Cobalt Team
+  Coffee team: Coffee Team
+  Core team: Core Team
+  Cream team: Cream Team
+  Crimson team: Crimson Team
+  Custom (?:s|S)olutions team: Custom Solutions Team
+  (?:c|C)ustomer (?:s|S)uccess team: Customer Success Team
+  (?:c|C)ustomer (?:s|S)upport Team: Customer Support Team
+  (?:d|D)ata (?:a|A)nalytics team: Data Analytics Team
+  #Data Delivery & DWH Team
+  #Data Lab Team
+  #Data Science Team
+  (?:Dca|DCA) team: DCA Team
+  Deep (?:p|P)urple team: Deep Purple Team
+  (?:Ds|DS) team: DS Team
+  Education team: Education Team
+  Force team: Force Team
+  Fraud team: Fraud Team
+  Frozen team: Frozen Team
+  Ginger team: Ginger Team
+  (?:Gkt|GKT) team: GKT Team
+  Diamond team: Diamond Team
+  Honey team: Honey Team
+  (?:i|i)nfrastructure (?:s|S)ecurity team: Infrastructure Security Team
+  Iris team: Iris Team
+  Ivory team: Ivory Team
+  Khaki team: Khaki Team
+  Kind team: Kind Team
+  (?:l|L)egal team: Legal Team
+  Light team: Light Team
+  Lion team: Lion Team
+  (?:Lux|LUX) team: LUX Team
+  Mango team: Mango Team
+  Maroon team: Maroon Team
+  Melon team: Melon Team
+  (?:Metal|METAL) team: METAL Team
+  Midnight team: Midnight Team
+  Navy team: Navy Team
+  Neon team: Neon Team
+  Ninja team: Ninja Team
+  Onyx team: Onyx Team
+  Orange team: Orange Team
+  Papyrus team: Papyrus Team
+  Phantom team: Phantom Team
+  Protos team: Protos Team
+  Pistachio teamp: Pistachio Team
+  Raspberry team: Raspberry Team
+  Red team: Red Team
+  Rock team: Rock Team
+  Ruby team: Ruby Team
+  Samurai team: Samurai Team
+  Seo(?:q|Q)uake Team: SeoQuake Team
+  Shadow team: Shadow Team
+  Shield team: Shield Team
+  Silver team: Silver Team
+  Sky team: Sky Team
+  (?:Slide|SLIDE team): SLIDE Team
+  Small team: Small Team
+  Snow team: Snow Team
+  Solar team: Solar Team
+  (?:Sox|SOX) team: SOX Team
+  (?:Sre|SRE) team: SRE Team
+  Sys(?:o|O)?ps team: SysOps Team
+  System (?:a|A)dmins team: System Admins Team
+  (?:t|T)echnical (?:w|W)riters team: Technical Writers Team
+  Tiger team: Tiger Team
+  Tomato team: Tomato Team
+  (?:UI-Kit|UI Kit) team: UI Kit Team
+  UX/UI team: UX/UI Team
+  Umbrella team: Umbrella Team
+  White team: White Team
+  Wire team: Wire Team
+  Yellow team: Yellow Team

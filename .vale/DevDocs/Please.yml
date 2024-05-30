@@ -1,0 +1,10 @@
+# Recommends to avoid please in technical docs
+extends: existence
+message: "Avoid using '%s' in technical documentation. It's excessive."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/general/#politeness"
+ignorecase: true
+action:
+  name: remove
+level: warning
+tokens:
+  - please

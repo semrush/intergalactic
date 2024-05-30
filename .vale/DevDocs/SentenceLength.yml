@@ -1,0 +1,9 @@
+# Checks that sentences don't exceed 30 words
+
+extends: occurrence
+message: "To make the text easier to read, use fewer than 30 words in this sentence."
+scope: sentence
+link:
+level: suggestion
+max: 30
+token: \b(\w+)\b

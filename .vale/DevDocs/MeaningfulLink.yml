@@ -1,0 +1,20 @@
+# Checks that links have meaningful text
+
+extends: existence
+message: "Use meaningful link text rather than '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/formatting/#links"
+level: error
+scope: raw
+nonword: true
+ignorecase: true
+tokens:
+  - \[here\]\(.*\)
+  - \[this\]\(.*\)
+  - \[this page\]\(.*\)
+  - \[this link\]\(.*\)
+  - \[link\]\(.*\)
+  - \[click here\]\(.*\)
+  - \[click this\]\(.*\)
+  - \[click that\]\(.*\)
+  - \[тут\]\(.*\) # To be deleted later when there are no docs in Russian left
+  - \[тыц\]\(.*\) # To be deleted later when there are no docs in Russian left

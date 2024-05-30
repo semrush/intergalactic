@@ -1,0 +1,9 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/wording/#master-and-slave"
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  slave: secondary|replica|worker

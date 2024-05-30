@@ -1,0 +1,70 @@
+# Suggests preferred spelling for selected words.
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/wordlist/"
+level: error
+ignorecase: false
+action:
+  name: replace
+swap:
+  '(?:Clickhouse|clickhouse)': ClickHouse
+  '(?:Javascript|javascript)': JavaScript
+  '(?:Typescript|typescript)': TypeScript
+  '(?:k8s|kubernetes)': Kubernetes
+  '(?:Macos|MacOS)': macOS
+  '(?:Nginx|nginx)': NGINX
+  '(?:SEMrush2|Semrush2)': semrush2
+  '(?:Yaml-file|yaml file|YML file)': YAML file
+  Ajax: AJAX
+  url: URL
+  sla: SLA
+  slo: SLO
+  sli: SLI
+  '(?:Bff|bff)': BFF
+  '(?:Mongo DB|Mongodb)': MongoDB
+  Npm: npm
+  '(?:Jwt|jwt|JWT tokens?|JSON Web Tokens?)': JWT
+  Postgres: PostgreSQL
+  '(?:oauth|Oauth)': OAuth
+  '(?:Swagger|Open API)': OpenAPI
+  CloudSQL: Cloud SQL
+  HTTPs: HTTPS
+  '(?:NodeJS|nodejs|Nodejs)': Node.js
+  '(?:OPSgenie|OpsGenie)': Opsgenie
+  crowdin : Crowdin
+  '(?:BORG|borg)': Borg
+  OKTA: Okta
+  JIRA: Jira
+  '(?:Mysql|My SQL)': MySQL
+  '(?:Openvpn|Open VPN)': OpenVPN
+  a11y: A11y|A11Y
+  '(?:elasticsearch|ElasticSearch)': Elasticsearch
+  eslint: ESLint
+  prometheus: Prometheus
+  allure: Allure
+  sre: SRE
+  # popular terms not to be matched in code
+  '(?<!\S)(?:api|Api)(?!\w)(?![.-]\w)': API
+  '(?<!\S)html(?!\w)(?![.-]\w)': HTML
+  '(?<!\S)css(?!\w)(?![.-]\w)': CSS
+  '(?<!\S)json(?!\w)(?![.-]\w)': JSON
+  '(?<!\S)(?:semrush|SEMrush)(?!\w)(?![.-]\w)': Semrush
+  '(?<!\S)(?:Gost|gost)(?!\w)(?![.-]\w)': GOST
+  '(?<!\S)(?:Prod|prod)(?!\w)(?![.-]\w)': Production|PROD
+  '(?<!\S)rc(?!\w)(?![.-]\w)': RC
+  '(?<!\S)(?:Gitlab|gitlab)(?!\w)(?![.-]\w)': GitLab
+  '(?<!\S)(?:Github|github)(?!\w)(?![.-]\w)': GitHub
+  # to be added with the () exception
+  #  udh: UDH
+  #  ubs: UBS
+  #  gcp: GCP
+  #  gcs: GCS
+  #  gke: GKE
+  #  gce: GCE
+  #  agk: AGK
+  #  drt: DRT
+  #  db: DB
+  #  sso: SSO
+  #  gap: GAP
+  #  gar: GAR

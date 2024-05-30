@@ -1,21 +1,19 @@
+# Suggests preferred spelling for selected words.
+
 extends: substitution
 message: "Use '%s' instead of '%s'."
-level: warning
-ignorecase: false
+link: "https://technical-writers.pages.semrush.net/styleguide/style/wordlist/"
+level: error
+ignorecase: true
 action:
   name: replace
 swap:
-  Api: API
-  api: API
-  css: CSS
-  Css: CSS
   e-mail: email
-  E-mail: Email
   data are: data is
-  Javascript: JavaScript
-  javascript: JavaScript
-  Macos: macOS
-  MacOS: macOS
-  SEMrush: Semrush
-  semrush: Semrush
+  side bar: sidebar
+  search bar: searchbar
   in order to: to
+  repo: repository
+  #  config: configuration // may generate false positive results
+  '(?:meta data|meta-data)': metadata
+  '(?:cronjob|cron-job|CRON job)': cron job

@@ -1,7 +1,12 @@
+# Checks that US English is used
+
 extends: substitution
 message: "Use the US spelling: '%s' instead of '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/english/#american-english"
 level: error
 ignorecase: true
+action:
+  name: replace
 swap:
   analogue: analog
   analyse: analyze
