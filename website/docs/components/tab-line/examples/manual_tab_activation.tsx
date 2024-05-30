@@ -19,7 +19,7 @@ const Demo = () => {
       </TabLine>
       {
         [
-          <div id='tab-panel-0' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
+          <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
             <h3>Cats</h3>
             <p>
               They are the only creatures that can simultaneously demand your attention and ignore
