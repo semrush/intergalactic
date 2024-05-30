@@ -47,6 +47,10 @@ Refer to [Button as link example](/components/button/button-code#button-as-link)
 
 Links can be displayed as buttons.
 
+::: tip
+If you need to display disabled link as a `Button` you should remove `href` prop by yourself.
+:::
+
 ::: sandbox
 
 <script lang="tsx">
