@@ -21,7 +21,7 @@ export { default as Radar, getLabelOffsetPosition } from './Radar';
 export { default as Tooltip } from './Tooltip';
 
 export { default as ResponsiveContainer } from './ResponsiveContainer';
-export { default as ReferenceLine } from './ReferenceLine';
+export { ReferenceLine, ReferenceBackground, ReferenceStripes } from './Reference';
 
 export { HoverLine, HoverRect } from './Hover';
 
