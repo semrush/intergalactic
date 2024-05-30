@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.2] - 2024-05-30
+
+### Fixed
+
+- Some dates might shift the month when entered in the input trigger.
+
 ## [4.46.1] - 2024-05-28
 
 ### Changed
