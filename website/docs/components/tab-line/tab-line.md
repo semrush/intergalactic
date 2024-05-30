@@ -53,21 +53,20 @@ const App = PlaygroundGeneration(
 
     return (
       <TabLine defaultValue={0} underlined={underlined} size={size} behavior={behavior}>
-        <TabLine.Item value={0}>All</TabLine.Item>
-        <TabLine.Item value={1}>Overview</TabLine.Item>
-        <TabLine.Item value={2}>Issues</TabLine.Item>
-        <TabLine.Item disabled={disabled} value={3}>
+        <TabLine.Item value={0}>Overview</TabLine.Item>
+        <TabLine.Item value={1}>Issues</TabLine.Item>
+        <TabLine.Item disabled={disabled} value={2}>
           Progress
         </TabLine.Item>
-        <TabLine.Item value={4}>
+        <TabLine.Item value={3}>
           {addon
             ? [
-                <TabLine.Item.Text key={1}>Statistics</TabLine.Item.Text>,
+                <TabLine.Item.Text key={1}>Analytics</TabLine.Item.Text>,
                 <TabLine.Item.Addon key={2}>
                   <Badge bg='bg-primary-success'>new</Badge>
                 </TabLine.Item.Addon>,
               ]
-            : 'Statistics'}
+            : 'Analytics'}
         </TabLine.Item>
       </TabLine>
     );
