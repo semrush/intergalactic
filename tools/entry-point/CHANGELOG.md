@@ -1,3 +1,9 @@
+## [15.92.1] - 2024-05-30
+
+### @semcore/date-picker
+
+- **Fixed** Some dates might shift the month when entered in the input trigger.
+
 ## [15.92.0] - 2024-05-28
 
 ### @semcore/d3-chart
