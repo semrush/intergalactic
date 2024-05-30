@@ -1679,6 +1679,9 @@ importers:
       '@semcore/flex-box':
         specifier: 5.27.1
         version: link:../flex-box
+      '@semcore/tooltip':
+        specifier: 6.34.0
+        version: 6.34.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/typography':
         specifier: 5.35.1
         version: link:../typography
@@ -3828,7 +3831,7 @@ importers:
     dependencies:
       '@axe-core/playwright':
         specifier: ^4.9.0
-        version: 4.9.0(playwright-core@1.43.0)
+        version: 4.9.1(playwright-core@1.43.0)
       '@babel/core':
         specifier: 7.19.1
         version: 7.19.1
@@ -4469,8 +4472,8 @@ packages:
       '@ast-grep/napi-win32-x64-msvc': 0.13.0
     dev: false
 
-  /@axe-core/playwright@4.9.0(playwright-core@1.43.0):
-    resolution: {integrity: sha512-Q1Lz75dNsX38jof+aev7RficDMdH/HLOLySkDdXR0fUoeFcLdw4UNgDO2CNNP4CTpoesEdfYRdd6VmDXjhBgbA==}
+  /@axe-core/playwright@4.9.1(playwright-core@1.43.0):
+    resolution: {integrity: sha512-8m4WZbZq7/aq7ZY5IG8GqV+ZdvtGn/iJdom+wBg+iv/3BAOBIfNQtIu697a41438DzEEyptXWmC3Xl5Kx/o9/g==}
     peerDependencies:
       playwright-core: '>= 1.0.0'
     dependencies:
@@ -7800,7 +7803,7 @@ packages:
       '@previewjs/core': 28.0.2(@types/node@18.16.15)(esbuild@0.14.29)
       '@previewjs/plugin-react': 15.0.1(@types/node@18.16.15)(esbuild@0.14.29)(vite@4.5.0)
       globby: 13.2.2
-      playwright: 1.43.0
+      playwright: 1.40.0
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -21255,10 +21258,26 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
 
+  /playwright-core@1.40.0:
+    resolution: {integrity: sha512-fvKewVJpGeca8t0ipM56jkVSU6Eo0RmFvQ/MaCQNDYm+sdvKkMBBWTE1FdeMqIdumRaXXjZChWHvIzCGM/tA/Q==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: false
+
   /playwright-core@1.43.0:
     resolution: {integrity: sha512-iWFjyBUH97+pUFiyTqSLd8cDMMOS0r2ZYz2qEsPjH8/bX++sbIJT35MSwKnp1r/OQBAqC5XO99xFbJ9XClhf4w==}
     engines: {node: '>=16'}
     hasBin: true
+
+  /playwright@1.40.0:
+    resolution: {integrity: sha512-gyHAgQjiDf1m34Xpwzaqb76KgfzYrhK7iih+2IzcOCoZWr/8ZqmdBw+t0RU85ZmfJMgtgAiNtBQ/KS2325INXw==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.40.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
 
   /playwright@1.43.0:
     resolution: {integrity: sha512-SiOKHbVjTSf6wHuGCbqrEyzlm6qvXcv7mENP+OZon1I07brfZLGdfWV0l/efAzVx7TF3Z45ov1gPEkku9q25YQ==}

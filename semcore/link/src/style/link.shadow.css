@@ -41,6 +41,14 @@ SLink {
   &[enableVisited]:visited:hover {
     color: var(--intergalactic-text-link-visited, #8649e1);
   }
+
+  & SText {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    transition: border-bottom-color 0.15s ease-in-out;
+    display: inline;
+  }
 }
 
 SLink[keyboardFocused] {
@@ -80,13 +88,6 @@ SLink SAddon {
   &:not(:only-child):last-child {
     margin-left: var(--intergalactic-spacing-1x, 4px);
   }
-}
-
-SText {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: transparent;
-  transition: border-bottom-color 0.15s ease-in-out;
 }
 
 SLink[text-color] {
