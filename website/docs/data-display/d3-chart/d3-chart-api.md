@@ -98,6 +98,6 @@ import { ReferenceLine } from 'intergalactic/d3-chart';
 
 <TypesView type="ReferenceLineTitleProps" :types={...types} />
 
-<TypesView type="ReferenceLineBackgroundProps" :types={...types} />
+<TypesView type="ReferenceBackgroundProps" :types={...types} />
 
-<TypesView type="ReferenceLineStripesProps" :types={...types} />
+<TypesView type="ReferenceStripesProps" :types={...types} />

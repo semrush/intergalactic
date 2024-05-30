@@ -65,8 +65,7 @@ export * from './ScatterPlot';
 export { default as Bubble } from './Bubble';
 export * from './Bubble';
 
-export { default as ReferenceLine } from './ReferenceLine';
-export * from './ReferenceLine';
+export * from './Reference';
 
 export { default as Venn } from './Venn';
 export * from './Venn';

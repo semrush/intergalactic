@@ -6,7 +6,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `ReferenceLine.Stripes` component.
+- `ReferenceStripes` component.
+- `ReferenceBackground` component (previously `ReferenceLine.Background`).
+
+### Changed
+
+- `ReferenceLine.Background` deprecated in favor of `ReferenceBackground`.
 
 ## [3.45.1] - 2024-05-28
 
