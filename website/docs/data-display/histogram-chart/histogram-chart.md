@@ -89,7 +89,7 @@ Histogram vs. Bar Chart
 
 - Histograms visually represent data distribution probability.
 - Columns are usually the same width for clarity.
-:::
+  :::
 
 ## Appearance
 
@@ -98,16 +98,6 @@ Histogram vs. Bar Chart
 The upper part of the bar should have `border-radius: 2px`.
 
 ![](static/histogram.png)
-
-![](static/histogram-stack.png)
-
-### Horizontal histogram chart
-
-Bars should have `border-radius: 2px` for the top-right and bottom-right corners. 
-
-![](static/histogram-horizontal.png)
-
-![](static/histogram-horizontal-stack.png)
 
 ### Color usage
 
@@ -158,8 +148,6 @@ Display a single bar for single-range data.
 
 ![](static/na.png)
 
-![](static/no-more-histogram-chart.png)
-
 ### Null values
 
 Show zero in tooltips for all-zero data.
@@ -170,15 +158,11 @@ Zero counts as data. 0 ≠ n/a.
 
 ![](static/null-histogram-chart.png)
 
-![](static/null-horizontal.png)
-
 ### No data
 
 Do not display bars for ranges without values. When hovering over such ranges, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/na.png)
-
-![](static/hor-partially.png)
 
 ## Initial data loading
 
@@ -187,8 +171,6 @@ Show [Skeleton](/components/skeleton/skeleton) during initial loading. If the ch
 Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/vert-skeleton.png)
-
-![](static/hor-skeleton.png)
 
 ## Usage in UX/UI
 
