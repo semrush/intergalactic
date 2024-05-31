@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.2] - 2024-05-30
+
+### Fixed
+
+- Some dates might shift the month when entered in the input trigger.
+
+## [4.46.1] - 2024-05-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.28.0 ~> 4.28.1], `@semcore/base-trigger` [4.37.0 ~> 4.37.1], `@semcore/button` [5.28.0 ~> 5.28.1], `@semcore/checkbox` [7.30.0 ~> 7.30.1], `@semcore/tooltip` [6.33.3 ~> 6.34.0], `@semcore/core` [2.25.0 ~> 2.25.1]).
+
 ## [4.46.0] - 2024-05-24
 
 ### Fixed

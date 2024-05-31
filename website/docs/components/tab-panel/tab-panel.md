@@ -48,12 +48,12 @@ const App = PlaygroundGeneration(
         <TabPanel.Item value={4}>
           {addon
             ? [
-                <TabPanel.Item.Text key={1}>Statistics</TabPanel.Item.Text>,
+                <TabPanel.Item.Text key={1}>Analytics</TabPanel.Item.Text>,
                 <TabPanel.Item.Addon key={2}>
                   <Badge bg='bg-primary-success'>new</Badge>
                 </TabPanel.Item.Addon>,
               ]
-            : 'Statistics'}
+            : 'Analytics'}
         </TabPanel.Item>
       </TabPanel>
     );

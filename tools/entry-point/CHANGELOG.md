@@ -1,3 +1,27 @@
+## [15.92.1] - 2024-05-30
+
+### @semcore/date-picker
+
+- **Fixed** Some dates might shift the month when entered in the input trigger.
+
+## [15.92.0] - 2024-05-28
+
+### @semcore/d3-chart
+
+- **Fixed** Donut chart animation glitching on data change.
+
+### @semcore/popper
+
+- **Fixed** Closing popper with `Esc` and `interaction=focus` might cause immediate reopen.
+
+### @semcore/tooltip
+
+- **Fixed** `Tooltip` (`DescriptionTooltip` and `Hint` as well) with click interactions wasn't opening by keyboard interaction if trigger was not a button or icon.
+
+### @semcore/utils
+
+- **Fixed** `getNodeByRef` issue that was causing errors in console when clicking on `Chart.Bubble`.
+
 ## [15.91.0] - 2024-05-27
 
 ### @semcore/d3-chart
