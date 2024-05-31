@@ -64,6 +64,7 @@ class InputNumber extends Component {
 }
 
 class Value extends Component {
+  static style = style;
   static defaultProps = {
     defaultValue: '',
     defaultDisplayValue: '',
@@ -484,6 +485,7 @@ function Controls(props) {
     </SControls>,
   );
 }
+Controls.style = style;
 
 export default createComponent(InputNumber, {
   Value,
