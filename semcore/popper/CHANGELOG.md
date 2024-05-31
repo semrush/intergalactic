@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.5] - 2024-05-31
+
+### Fixed
+
+- Combobox pattern wasn't working out of the box with mouse interactions.
+
 ## [5.35.4] - 2024-05-28
 
 ### Fixed
