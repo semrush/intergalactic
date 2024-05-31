@@ -382,10 +382,6 @@ class Popper extends Component {
       this.setState({
         ignoreTriggerFocusUntil: now + ignoringDuration,
       });
-    } else if (now < this.state.ignoreTriggerFocusUntil + ignoringDuration) {
-      this.setState({
-        ignoreTriggerFocusUntil: 0,
-      });
     }
   };
 
@@ -432,7 +428,9 @@ class Popper extends Component {
 
   handleTriggerBlur = () => {
     setTimeout(() => {
-      this.setState({ ignoreTriggerFocusUntil: 0 });
+      if (!this.asProps.visible) {
+        this.setState({ ignoreTriggerFocusUntil: 0 });
+      }
     }, 0);
   };
 
