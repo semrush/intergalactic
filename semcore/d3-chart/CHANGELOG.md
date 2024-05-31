@@ -2,6 +2,79 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.45.1] - 2024-05-28
+
+### Fixed
+
+- Donut chart animation glitching on data change.
+
+## [3.45.0] - 2024-05-27
+
+### Changed
+
+- `Line.Area` got an option `autoInterpolate` that allows to disable auto interpolation of all missing values.
+- `Line.Area` data now accepts `interpolateValue` symbol that allows spot interpolation of values if `autoInterpolate` set to `false`.
+
+## [3.44.2] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.1 ~> 5.35.2]).
+
+## [3.44.1] - 2024-05-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.0 ~> 5.35.1]).
+
+## [3.44.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.26.0 ~> 2.27.0], `@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [3.43.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.25.1 ~> 2.26.0], `@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [3.42.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.25.0 ~> 2.25.1], `@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [3.42.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.24.0 ~> 2.25.0], `@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [3.41.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/popper` [5.31.0 ~> 5.32.0]).
+
+## [3.40.2] - 2024-05-14
+
+### Fixed
+
+- Exporting from `@semcore/ui` package.
+
+## [3.40.0] - 2024-05-10
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/popper` [5.29.0 ~> 5.30.0]).
+
+## [3.39.1] - 2024-04-26
+
+### Fixed
+
+- `duration` prop on `Chart` component.
+
 ## [3.39.0] - 2024-04-16
 
 ### Changed
@@ -11,6 +84,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+
+## [3.38.2] - 2024-04-16
+
+### Fixed
+
+- stroke color for ReferenceLine from `--intergalactic-chart-grid-x-axis` to `--intergalactic-chart-grid-y-accent-hover-line`.
 
 ## [3.38.1] - 2024-04-16
 

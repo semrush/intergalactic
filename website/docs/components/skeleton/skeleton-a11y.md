@@ -12,18 +12,16 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles & attributes
 
-| Attribute            | Element           | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `aria-busy="true"`   | Implicit on `svg` | The `aria-busy` state indicates an element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. When multiple parts of a live region need to be loaded before changes are announced to the user, set `aria-busy="true"` until loading is complete. Then set to `aria-busy="false"`. This prevents assistive technologies from announcing changes before updates are done. |
-| `aria-hidden="true"` | Implicit on `svg` | The `aria-hidden` hides SVG image from assistive technologies. |
-| `aria-atomic="true"` |                   | In ARIA live regions, the global `aria-atomic` attribute indicates whether assistive technologies such as a screen reader will present all, or only parts of.    |
-| `alt=''` | Implicit on `svg` | Empty `alt` attribute helps to avoid reading image as a text, since skeleton's SVG do not convey any meaningful information to assistive technologies. |
+| Attribute               | Element              | Usage                                                                                                                                                                                    |
+| ----------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-busy="true"`      | Implicit on `svg`    | The `aria-busy` state indicates an element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. |
+| `aria-label="Loading…"` | Implicit on `svg`    | The `aria-label` attribute sets the element description that will be announced by the assistive technologies.                                                                            |
+
+Skeleton is an `svg` element. It contains `foreignObject` with a `span` element inside. The `span` element has a `role="status"`, `aria-atomic="true"` and `aria-live="polite"` attribute. These attributes are used to inform assistive technologies about the loading state.
 
 ## Considerations for developers and designers
 
-- Don't use heading markup for skeleton "bones" that replace headings, as this can be confusing for screen reader users who navigate the page using landmarks.
-- Since the skeleton is a visual element, make sure the image replacements for it are marked as decorative (using `aria-hidden="true"`) and hidden from screen reader users.
-- It's important to let screen readers access the text behind a skeleton loader.
+- When displaying skeleton in place of a heading, avoid semantic heading markup, as this can make navigation confusing for screen reader users.
 
 ## Resources
 

@@ -1,31 +1,60 @@
 import React from 'react';
 import TabPanel from 'intergalactic/tab-panel';
-import Badge from 'intergalactic/badge';
-import Tooltip from 'intergalactic/tooltip';
-import LinkedInM from 'intergalactic/icon/LinkedIn/m';
 
 const Demo = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
+
   return (
-    <TabPanel onChange={setValue} value={value} aria-label='Page'>
-      <TabPanel.Item value={0}>Overview</TabPanel.Item>
-      <TabPanel.Item value={1}>Issues</TabPanel.Item>
-      <TabPanel.Item value={2}>
-        <TabPanel.Item.Addon>
-          <LinkedInM />
-        </TabPanel.Item.Addon>
-        <TabPanel.Item.Text>LinkedIn</TabPanel.Item.Text>
-        <TabPanel.Item.Addon>
-          <Badge bg='bg-primary-success'>new</Badge>
-        </TabPanel.Item.Addon>
-      </TabPanel.Item>
-      <Tooltip title="Progress isn't available during collecting process" placement='top'>
-        <TabPanel.Item disabled value={3}>
-          Progress
+    <>
+      <TabPanel onChange={setValue} value={value} aria-label='Animals'>
+        <TabPanel.Item value={1} aria-controls='tab-panel-1'>
+          Cats
         </TabPanel.Item>
-      </Tooltip>
-      <TabPanel.Item value={4}>Statistics</TabPanel.Item>
-    </TabPanel>
+        <TabPanel.Item value={2} aria-controls='tab-panel-2'>
+          Dogs
+        </TabPanel.Item>
+        <TabPanel.Item value={3} aria-controls='tab-panel-3'>
+          Birds
+        </TabPanel.Item>
+      </TabPanel>
+      {
+        [
+          <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
+            <h3>Cats</h3>
+            <p>
+              They are the only creatures that can simultaneously demand your attention and ignore
+              you completely, while plotting world domination from the top of the refrigerator.
+            </p>
+          </div>,
+          <div
+            id='tab-panel-2'
+            aria-hidden='true'
+            role='tabpanel'
+            aria-labelledby='tab-label-2'
+            tabIndex={-1}
+          >
+            <h3>Dogs</h3>
+            <p>
+              They are the eternal optimists who believe that every stranger is a potential friend
+              and every walk is an adventure, even if it's just to the mailbox.
+            </p>
+          </div>,
+          <div
+            id='tab-panel-3'
+            aria-hidden='true'
+            role='tabpanel'
+            aria-labelledby='tab-label-3'
+            tabIndex={-1}
+          >
+            <h3>Birds</h3>
+            <p>
+              They are the tiny dinosaurs who sing like they're auditioning for Broadway and have a
+              knack for leaving 'gifts' on freshly washed cars.
+            </p>
+          </div>,
+        ][value - 1]
+      }
+    </>
   );
 };
 

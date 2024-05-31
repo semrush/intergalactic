@@ -3,13 +3,14 @@ import fs from 'fs-extra';
 import glob from 'fast-glob';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import { Parser } from 'acorn';
+import acornJSX from 'acorn-jsx';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
 const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
-
-const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
+const JSXParser = Parser.extend(acornJSX());
 
 const hasExportDefault = async (dependency: string) => {
   const require = createRequire(import.meta.url);
@@ -23,8 +24,8 @@ const hasExportDefault = async (dependency: string) => {
     let module: string | null = null;
     while (dependencyDir.split('/').length > 2) {
       const dependencyPkgJson = path.resolve(dependencyDir, 'package.json');
-      if (fs.existsSync(dependencyPkgJson)) {
-        const pkgJson = fs.readJsonSync(dependencyPkgJson);
+      if (await fs.pathExists(dependencyPkgJson)) {
+        const pkgJson = await fs.readJson(dependencyPkgJson);
         module = pkgJson.module;
         if (module) break;
       }
@@ -34,8 +35,20 @@ const hasExportDefault = async (dependency: string) => {
     if (!module) return true;
 
     const dependencyES6EntryPath = path.resolve(`${dependencyDir}/${module}`);
-    const ES6EntryContent = fs.readFileSync(dependencyES6EntryPath, 'utf8');
-    return ES6EntryContent.match(EXPORT_DEFAULT_REG) !== null;
+    const es6EntryContent = await fs.readFile(dependencyES6EntryPath, 'utf8');
+    const { body: ast } = JSXParser.parse(es6EntryContent, {
+      ecmaVersion: 2021,
+      sourceType: 'module',
+    }) as any;
+
+    return ast.some((node: any) => {
+      if (node.type === 'ExportNamedDeclaration') {
+        if (node.specifiers.some((specifier: any) => specifier.exported.name === 'default'))
+          return true;
+      }
+
+      return node.type === 'ExportDefaultDeclaration';
+    });
   }
 };
 
@@ -84,6 +97,12 @@ const GENERATOR = {
     for (const util of utils) {
       if (util.endsWith('.css')) {
         await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
+        continue;
+      }
+      if (util.endsWith('.d.js')) {
+        continue;
+      }
+      if (['reshadow', 'reshadow.d.ts'].includes(util)) {
         continue;
       }
 

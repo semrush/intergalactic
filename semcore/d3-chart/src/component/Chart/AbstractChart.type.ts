@@ -128,6 +128,11 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Config for a11y summary
    */
   a11yAltTextConfig?: PlotSummarizerConfig;
+
+  /**
+   * Animations duration, set 0 to disable animations
+   */
+  duration?: number;
 } /**
  * By default, we show the Legend for all charts with more the one data item.
  * For hide the Legend, you should set showLegend prop to `false`.

@@ -13,6 +13,7 @@
       "counter",
       "d3-chart",
       "data-table",
+      "drag-and-drop",
       "dropdown",
       "flex-box",
       "fullscreen-modal",
@@ -371,6 +372,7 @@
       "fullscreen-modal",
       "pills",
       "side-panel",
+      "slider",
       "switch",
       "tab-panel",
       "time-picker",
@@ -594,7 +596,7 @@
       "d3-chart",
       "date-picker",
       "divider",
-      "drag-and-drop",
+      "feedback-form",
       "fullscreen-modal",
       "inline-input",
       "input",
@@ -645,6 +647,7 @@
       "base-trigger",
       "checkbox",
       "color-picker",
+      "feedback-form",
       "inline-input",
       "input",
       "input-tags",
@@ -1459,6 +1462,22 @@
     "components": ["skeleton"]
   },
   {
+    "name": "--intergalactic-slider-rating-normal",
+    "type": "color",
+    "rawValue": "{icon.secondary.neutral}",
+    "computedValue": "#a9abb6",
+    "description": "Icon color for the SliderRating component in its normal state.",
+    "components": ["feedback-form"]
+  },
+  {
+    "name": "--intergalactic-slider-rating-hover-active",
+    "type": "color",
+    "rawValue": "{yellow.200}",
+    "computedValue": "#fdc23c",
+    "description": "Icon color for the SliderRating component in its hovered and active states.",
+    "components": ["feedback-form"]
+  },
+  {
     "name": "--intergalactic-table-th-primary-cell",
     "type": "color",
     "rawValue": "{gray.50}",
@@ -1744,7 +1763,7 @@
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 12px 40px 0px rgba({gray.800}, 0.16)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
     "description": "Shadow for show that element are being drag-and-drop.",
-    "components": []
+    "components": ["drag-and-drop"]
   },
   {
     "name": "--intergalactic-box-shadow-modal",
@@ -1795,7 +1814,9 @@
       "d3-chart",
       "data-table",
       "date-picker",
+      "drag-and-drop",
       "dropdown-menu",
+      "feedback-form",
       "fullscreen-modal",
       "icon",
       "inline-edit",
@@ -1923,6 +1944,7 @@
     "description": "Use with font-size-200.",
     "components": [
       "base-trigger",
+      "breadcrumbs",
       "button",
       "checkbox",
       "d3-chart",
@@ -1936,6 +1958,7 @@
       "product-head",
       "radio",
       "side-panel",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -1954,7 +1977,6 @@
     "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
-      "breadcrumbs",
       "d3-chart",
       "data-table",
       "format-text",
@@ -1999,7 +2021,7 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker"]
+    "components": ["base-trigger", "date-picker", "slider"]
   },
   {
     "name": "--intergalactic-medium",
@@ -2073,6 +2095,7 @@
       "pills",
       "product-head",
       "radio",
+      "slider",
       "switch",
       "tab-line",
       "tab-panel",
@@ -2176,7 +2199,7 @@
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
     "description": "Default size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-form-control-l",
@@ -2184,7 +2207,7 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "Large size of the controls.",
-    "components": ["input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-spacing-05x",
@@ -2205,6 +2228,7 @@
       "notice-global",
       "radio",
       "select",
+      "slider",
       "tag",
       "wizard"
     ]
@@ -2331,7 +2355,6 @@
       "carousel",
       "color-picker",
       "date-picker",
-      "drag-and-drop",
       "errors",
       "feature-popover",
       "feedback-form",
@@ -2452,7 +2475,7 @@
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "components": ["d3-chart"]
+    "components": ["d3-chart", "feedback-form"]
   },
   {
     "name": "--intergalactic-rounded-large",
@@ -2553,7 +2576,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
-    "components": ["card", "carousel", "drag-and-drop", "feedback-form", "notice"]
+    "components": ["card", "carousel", "feedback-form", "notice"]
   },
   {
     "name": "--intergalactic-popper-rounded",
@@ -3336,8 +3359,16 @@
     "type": "color",
     "rawValue": "rgba({gray.200}, 0.2)",
     "computedValue": "rgba(196, 199, 207, 0.2)",
-    "description": "Use for highlighting the period on the chart grid.",
+    "description": "Use for highlighting a period on the chart grid.",
     "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-period-pattern",
+    "type": "color",
+    "rawValue": "rgba({gray.800}, 0.15)",
+    "computedValue": "rgba(25, 27, 35, 0.15)",
+    "description": "Stripe color for diagonal pattern background.",
+    "components": []
   },
   {
     "name": "--intergalactic-chart-grid-border",
@@ -3385,7 +3416,7 @@
     "rawValue": "300",
     "computedValue": "300",
     "description": "Should be used for more complex effects (such as Modal)",
-    "components": ["data-table", "date-picker"]
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-duration-fast",
@@ -3401,7 +3432,7 @@
     "rawValue": "100",
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": []
+    "components": ["data-table", "drag-and-drop"]
   },
   {
     "name": "--intergalactic-duration-switch",
@@ -3425,7 +3456,7 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for small controls like Checkbox or Radio.",
-    "components": ["checkbox", "radio", "slider", "tab-line"]
+    "components": ["checkbox", "feedback-form", "radio", "slider", "tab-line"]
   },
   {
     "name": "--intergalactic-duration-modal",

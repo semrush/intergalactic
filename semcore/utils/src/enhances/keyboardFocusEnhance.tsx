@@ -1,6 +1,6 @@
 import React from 'react';
 import assignProps from '../assignProps';
-import { UnknownProperties } from '@semcore/core';
+import { UnknownProperties } from '../core';
 
 /** @deprecated */
 export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}
@@ -67,6 +67,7 @@ export const useFocusSource = () => {
 export type KeyboardFocusEnhanceHook = (props: {
   tabIndex?: number;
   disabled?: boolean;
+  loading?: boolean;
   autoFocus?: boolean;
 }) => {
   tabIndex: number;
@@ -77,7 +78,8 @@ export type KeyboardFocusEnhanceHook = (props: {
 
 const keyboardFocusEnhance = (makeFocusable = true): KeyboardFocusEnhanceHook => {
   return (props) => {
-    const { disabled, autoFocus } = props;
+    const { autoFocus } = props;
+    const disabled = props.disabled || props.loading;
     const tabIndex = props.tabIndex ?? (makeFocusable ? 0 : undefined);
     const [keyboardFocused, setKeyboardFocused] = React.useState(false);
     const focusSourceRef = useFocusSource();

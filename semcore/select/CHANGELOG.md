@@ -2,6 +2,84 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.4] - 2024-05-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.37.0 ~> 4.37.1], `@semcore/checkbox` [7.30.0 ~> 7.30.1], `@semcore/divider` [4.26.0 ~> 4.26.1], `@semcore/dropdown-menu` [4.33.3 ~> 4.33.4], `@semcore/popper` [5.35.3 ~> 5.35.4], `@semcore/flex-box` [5.27.0 ~> 5.27.1], `@semcore/icon` [4.36.0 ~> 4.36.1], `@semcore/input` [4.28.0 ~> 4.28.1], `@semcore/utils` [4.28.0 ~> 4.28.1], `@semcore/core` [2.25.0 ~> 2.25.1]).
+
+## [4.43.3] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [4.33.2 ~> 4.33.3], `@semcore/popper` [5.35.2 ~> 5.35.3]).
+
+## [4.43.2] - 2024-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [4.33.1 ~> 4.33.2], `@semcore/popper` [5.35.1 ~> 5.35.2]).
+
+## [4.43.1] - 2024-05-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [4.33.0 ~> 4.33.1], `@semcore/popper` [5.35.0 ~> 5.35.1]).
+
+## [4.43.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/base-trigger` [4.36.0 ~> 4.37.0], `@semcore/checkbox` [7.29.0 ~> 7.30.0], `@semcore/divider` [4.25.0 ~> 4.26.0], `@semcore/dropdown-menu` [4.32.0 ~> 4.33.0], `@semcore/popper` [5.34.0 ~> 5.35.0], `@semcore/flex-box` [5.26.0 ~> 5.27.0], `@semcore/icon` [4.35.0 ~> 4.36.0], `@semcore/input` [4.27.0 ~> 4.28.0], `@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [4.42.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/base-trigger` [4.35.1 ~> 4.36.0], `@semcore/checkbox` [7.28.1 ~> 7.29.0], `@semcore/divider` [4.24.1 ~> 4.25.0], `@semcore/dropdown-menu` [4.31.1 ~> 4.32.0], `@semcore/popper` [5.33.1 ~> 5.34.0], `@semcore/flex-box` [5.25.1 ~> 5.26.0], `@semcore/icon` [4.34.1 ~> 4.35.0], `@semcore/input` [4.26.1 ~> 4.27.0], `@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [4.41.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.35.0 ~> 4.35.1], `@semcore/checkbox` [7.28.0 ~> 7.28.1], `@semcore/divider` [4.24.0 ~> 4.24.1], `@semcore/dropdown-menu` [4.31.0 ~> 4.31.1], `@semcore/popper` [5.33.0 ~> 5.33.1], `@semcore/flex-box` [5.25.0 ~> 5.25.1], `@semcore/icon` [4.34.0 ~> 4.34.1], `@semcore/input` [4.26.0 ~> 4.26.1], `@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [4.41.0] - 2024-04-29
+
+### Changed
+
+- Removed mechanism that returns focus to the trigger after items selecting as it was moved to underlying `DropdownMenu`.
+
+## [4.40.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown-menu` [4.29.2 ~> 4.30.0], `@semcore/popper` [5.31.0 ~> 5.32.0]).
+
+## [4.39.3] - 2024-05-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [4.28.0 ~> 4.29.0], `@semcore/popper` [5.29.0 ~> 5.30.0], `@semcore/input` [4.24.0 ~> 4.24.1]).
+
+## [4.39.1] - 2024-05-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [4.28.0 ~> 4.29.0], `@semcore/popper` [5.29.0 ~> 5.30.0], `@semcore/input` [4.24.0 ~> 4.24.1]).
+
+## [4.39.0] - 2024-04-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/base-trigger` [4.32.2 ~> 4.33.0], `@semcore/checkbox` [7.25.2 ~> 7.26.0], `@semcore/divider` [4.21.2 ~> 4.22.0], `@semcore/dropdown-menu` [4.27.2 ~> 4.28.0], `@semcore/popper` [5.28.0 ~> 5.29.0], `@semcore/flex-box` [5.22.2 ~> 5.23.0], `@semcore/icon` [4.31.2 ~> 4.32.0], `@semcore/input` [4.23.2 ~> 4.24.0], `@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/core` [2.20.2 ~> 2.21.0]).
+
+## [4.38.2] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.32.1 ~> 4.32.2], `@semcore/checkbox` [7.25.1 ~> 7.25.2], `@semcore/divider` [4.21.1 ~> 4.21.2], `@semcore/dropdown-menu` [4.27.1 ~> 4.27.2], `@semcore/popper` [5.27.1 ~> 5.28.0], `@semcore/flex-box` [5.22.1 ~> 5.22.2], `@semcore/icon` [4.31.1 ~> 4.31.2], `@semcore/input` [4.23.1 ~> 4.23.2], `@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [4.38.1] - 2024-04-16
 
 ### Changed

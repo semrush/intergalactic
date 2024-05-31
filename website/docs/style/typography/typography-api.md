@@ -62,7 +62,7 @@ import { Hint } from 'intergalactic/typography';
 </Hint>;
 ```
 
-<TypesView type="HintProps" :types={...types} />
+<TypesView type="TypographyHintProps" :types={...types} />
 
 ## FormatText
 

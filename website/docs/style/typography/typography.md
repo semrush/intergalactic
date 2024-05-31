@@ -81,14 +81,14 @@ Only change font styles, not the markup.
 
 Table: Heading styles for mobile devices
 
-| 0px – 768px                        | 768px – ∞                           |
-| ---------------------------------- | ----------------------------------- |
-| H1 (36/40) – `--fs-700`, `--lh-700` | H1 (48/56) – `--fs-800`, `--lh-800` |
-| H2 (32/40) – `--fs-600`, `--lh-600` | H2 (36/40) – `--fs-700`, `--lh-700`  |
-| H3 (24/28) – `--fs-500`, `--lh-500` | H3 (32/40) – `--fs-600`, `--lh-600`  |
-| H4 (20/24) – `--fs-400`, `--lh-400` | H4 (24/28) – `--fs-500`, `--lh-500`  |
-| H5 (16/24) – `--fs-300`, `--lh-300` | H5 (20/24) – `--fs-400`, `--lh-400`  |
-| H6 (14/20) – `--fs-200`, `--lh-200` | H6 (16/24) – `--fs-300`, `--lh-300`  |
+| 0px – 768px                    | 768px – ∞                       |
+| ------------------------------ | ------------------------------- |
+| 36/40 – `--fs-700`, `--lh-700` | 48/56 – `--fs-800`, `--lh-800`  |
+| 32/40 – `--fs-600`, `--lh-600` | 36/40 – `--fs-700`, `--lh-700`  |
+| 24/28 – `--fs-500`, `--lh-500` | 32/40 – `--fs-600`, `--lh-600`  |
+| 20/24 – `--fs-400`, `--lh-400` | 24/28 – `--fs-500`, `--lh-500`  |
+| 16/24 – `--fs-300`, `--lh-300` | 20/24 – `--fs-400`, `--lh-400`  |
+| 14/20 – `--fs-200`, `--lh-200` | 16/24 – `--fs-300`, `--lh-300`  |
 
 ## Paragraph
 
@@ -186,7 +186,7 @@ We have specific styles for highlighting quotes in paragraphs.
 
 ## Hints (hint links)
 
-Text can be wrapped in a hint link (pseudo-link), creating an inactive control that triggers events on the page without reloading. This pseudo-link is usually used for hints.
+Text can be wrapped in a hint link (pseudo-link) component, creating a control that triggers events on the page without reloading it. This pseudo-link is usually used to show and hide [tooltips](../../components/tooltip/tooltip) or parts of the UI.
 
 ![](static/hint-link.png)
 

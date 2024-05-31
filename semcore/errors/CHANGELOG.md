@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.1] - 2024-05-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.28.0 ~> 5.28.1], `@semcore/utils` [4.28.0 ~> 4.28.1], `@semcore/core` [2.25.0 ~> 2.25.1]).
+
+## [4.32.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.27.0 ~> 5.28.0], `@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [4.31.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.26.1 ~> 5.27.0], `@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [4.30.1] - 2024-05-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.26.0 ~> 5.26.1], `@semcore/utils` [4.26.1 ~> 4.26.2], `@semcore/core` [2.23.0 ~> 2.23.1]).
+
+## [4.30.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.25.0 ~> 5.26.0], `@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.29.0] - 2024-05-16
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.23.2 ~> 5.24.0], `@semcore/typography` [5.30.2 ~> 5.31.0], `@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/core` [2.20.2 ~> 2.21.0]).
+
+## [4.27.2] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.23.1 ~> 5.23.2], `@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [4.27.1] - 2024-04-16
 
 ### Changed

@@ -8,6 +8,8 @@ import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProp
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { SORT_ICON_WIDTH } from './Head';
+import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -34,6 +36,7 @@ type AsProps = {
   }) => React.ReactNode;
   disabledScroll?: boolean;
   uid?: string;
+  animationsDisabled?: boolean;
 };
 
 type State = {
@@ -87,6 +90,9 @@ class Body extends Component<AsProps, State> {
           style: React.CSSProperties;
         };
 
+        const columnWMin = column?.props?.wMin;
+        const columnWMax = column?.props?.wMax;
+
         let props: CellProps = {
           name: cell.name,
           children: <>{cell.data}</>,
@@ -96,8 +102,11 @@ class Body extends Component<AsProps, State> {
           borderRight: lastColumn?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
-            minWidth: column?.props?.wMin,
-            maxWidth: column?.props?.wMax,
+            minWidth: columnWMin,
+            maxWidth:
+              columnWMax && column?.sortable
+                ? `calc(${SORT_ICON_WIDTH}px + ${cssToIntDefault(columnWMax.toString())}px)`
+                : columnWMax,
           },
         };
         if (name !== undefined && value !== undefined) {
@@ -271,6 +280,7 @@ class Body extends Component<AsProps, State> {
       onScroll,
       disabledScroll,
       renderRows,
+      animationsDisabled,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -286,7 +296,7 @@ class Body extends Component<AsProps, State> {
     }
 
     const body = sstyled(styles)(
-      <SBody render={Box}>
+      <SBody render={Box} animationsDisabled={animationsDisabled}>
         {renderRows ? (
           renderRows({ rows, columns, renderRow: this.renderRow.bind(this) }) || null
         ) : (

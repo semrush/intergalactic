@@ -323,6 +323,10 @@
   --intergalactic-skeleton-bg: rgba(224, 225, 233, 0.8);
   /* Inverted version of the default color for the Skeleton. */
   --intergalactic-skeleton-bg-invert: rgba(255, 255, 255, 0.3);
+  /* Icon color for the SliderRating component in its normal state. */
+  --intergalactic-slider-rating-normal: #a9abb6;
+  /* Icon color for the SliderRating component in its hovered and active states. */
+  --intergalactic-slider-rating-hover-active: #fdc23c;
   /* Background of the header cell in the primary Table. */
   --intergalactic-table-th-primary-cell: #f4f5f9;
   /* Background of the hovered header cell in the primary Table. */
@@ -695,8 +699,10 @@
   --intergalactic-chart-grid-bar-chart-hover: rgba(196, 199, 207, 0.3);
   /* Default background color of a bar in the BarChart. */
   --intergalactic-chart-grid-bar-chart-base-bg: #e0e1e9;
-  /* Use for highlighting the period on the chart grid. */
+  /* Use for highlighting a period on the chart grid. */
   --intergalactic-chart-grid-period-bg: rgba(196, 199, 207, 0.2);
+  /* Stripe color for diagonal pattern background. */
+  --intergalactic-chart-grid-period-pattern: rgba(25, 27, 35, 0.15);
   /* Border for distinguishing data sets and chart dots on the chart grid. */
   --intergalactic-chart-grid-border: #ffffff;
   /* Background color for the clickable date on the X-axis of the chart grid. */

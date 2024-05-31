@@ -2,6 +2,84 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.2] - 2024-05-30
+
+### Fixed
+
+- Some dates might shift the month when entered in the input trigger.
+
+## [4.46.1] - 2024-05-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.28.0 ~> 4.28.1], `@semcore/base-trigger` [4.37.0 ~> 4.37.1], `@semcore/button` [5.28.0 ~> 5.28.1], `@semcore/checkbox` [7.30.0 ~> 7.30.1], `@semcore/tooltip` [6.33.3 ~> 6.34.0], `@semcore/core` [2.25.0 ~> 2.25.1]).
+
+## [4.46.0] - 2024-05-24
+
+### Fixed
+
+- Range pickers with disabled dates were throwing an error in console after selecting a range.
+
+## [4.45.0] - 2024-05-23
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.27.0 ~> 4.28.0], `@semcore/base-trigger` [4.36.0 ~> 4.37.0], `@semcore/button` [5.27.0 ~> 5.28.0], `@semcore/checkbox` [7.29.0 ~> 7.30.0], `@semcore/core` [2.24.0 ~> 2.25.0]).
+
+## [4.44.0] - 2024-05-22
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.26.2 ~> 4.27.0], `@semcore/base-trigger` [4.35.1 ~> 4.36.0], `@semcore/button` [5.26.1 ~> 5.27.0], `@semcore/checkbox` [7.28.1 ~> 7.29.0], `@semcore/core` [2.23.1 ~> 2.24.0]).
+
+## [4.43.0] - 2024-05-09
+
+### Fixed
+
+- `RangeCalendar` customized children rendering layout.
+- `MonthDateRangeComparator` trigger was formatting dates in trigger as dd/mm/yyyy instead of mm/yyyy.
+- `disabledErrorText={null}` wasn't hiding error tooltip.
+- In range pickers it was still possible to select range with disabled date.
+- Hours and minutes of dates, selected from input trigger was containing current time instead of 00:00.
+- `disabled` prop types.
+- Unchecking "Compare to" checkbox in date range comparators wasn't clearing a date range to compare.
+
+### Added
+
+- Exports for `DateRangeComparatorValue` and `DateRangeComparatorFocusRange` types.
+
+## [4.42.0] - 2024-05-17
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.25.0 ~> 4.26.1], `@semcore/base-trigger` [4.34.0 ~> 4.35.0], `@semcore/button` [5.25.0 ~> 5.26.0], `@semcore/checkbox` [7.27.0 ~> 7.28.0], `@semcore/core` [2.22.0 ~> 2.23.0]).
+
+## [4.41.0] - 2024-05-16
+
+### Added
+
+- `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- Render children in `MonthDateRangeComparator.RangeCalendar`.
+
+## [4.40.0] - 2024-05-09
+
+### Added
+
+- `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- Render children in `MonthDateRangeComparator.RangeCalendar`.
+
+## [4.39.0] - 2024-04-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.23.2 ~> 4.24.0], `@semcore/base-trigger` [4.32.2 ~> 4.33.0], `@semcore/button` [5.23.2 ~> 5.24.0], `@semcore/typography` [5.30.2 ~> 5.31.0], `@semcore/checkbox` [7.25.2 ~> 7.26.0], `@semcore/tooltip` [6.26.2 ~> 6.27.0], `@semcore/core` [2.20.2 ~> 2.21.0]).
+
+## [4.38.1] - 2024-04-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.23.1 ~> 4.23.2], `@semcore/base-trigger` [4.32.1 ~> 4.32.2], `@semcore/button` [5.23.1 ~> 5.23.2], `@semcore/checkbox` [7.25.1 ~> 7.25.2], `@semcore/core` [2.20.1 ~> 2.20.2]).
+
 ## [4.38.0] - 2024-04-12
 
 ### Added

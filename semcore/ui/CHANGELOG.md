@@ -1,3 +1,241 @@
+## [15.92.1] - 2024-05-30
+
+### @semcore/date-picker
+
+- **Fixed** Some dates might shift the month when entered in the input trigger.
+
+## [15.92.0] - 2024-05-28
+
+### @semcore/d3-chart
+
+- **Fixed** Donut chart animation glitching on data change.
+
+### @semcore/popper
+
+- **Fixed** Closing popper with `Esc` and `interaction=focus` might cause immediate reopen.
+
+### @semcore/tooltip
+
+- **Fixed** `Tooltip` (`DescriptionTooltip` and `Hint` as well) with click interactions wasn't opening by keyboard interaction if trigger was not a button or icon.
+
+### @semcore/utils
+
+- **Fixed** `getNodeByRef` issue that was causing errors in console when clicking on `Chart.Bubble`.
+
+## [15.91.0] - 2024-05-27
+
+### @semcore/d3-chart
+
+- **Changed** `Line.Area` got an option `autoInterpolate` that allows to disable auto interpolation of all missing values.
+- **Changed** `Line.Area` data now accepts `interpolateValue` symbol that allows spot interpolation of values if `autoInterpolate` set to `false`.
+
+### @semcore/popper
+
+- **Fixed** Switching popper trigger was causing a glitch during the close animation.
+
+## [15.90.2] - 2024-05-27
+
+### @semcore/popper
+
+- **Fixed** Focusing popper might break next popper opening.
+
+## [15.90.1] - 2024-05-27
+
+### @semcore/skeleton
+
+- **Fixed** Dependency on `@semcore/portal` when Skeleton installed as a separate package.
+
+## [15.90.0] - 2024-05-24
+
+### @semcore/date-picker
+
+- **Fixed** Range pickers with disabled dates were throwing an error in console after selecting a range.
+
+### @semcore/popper
+
+- **Fixed** In some cases the second open of any popper was breaking the positioning engine.
+
+## [15.89.0] - 2024-05-23
+
+### @semcore/skeleton
+
+- **Added** Live region "Loading…" announcement for assistive technologies.
+- **Added** "Loading…" aria-label.
+- **Added** `locale` prop.
+- **Changed** `aria-atomic` attribute moved to inner `foreignObject` element.
+
+### @semcore/spin
+
+- **Added** Live region "Loading…" announcement for assistive technologies.
+- **Added** "Loading…" aria-label.
+- **Added** `locale` prop.
+
+### @semcore/spin-container
+
+- **Changed** Content inside of loading container is unavailable for interacting now.
+
+### @semcore/utils
+
+- **Changed** `ScreenReaderOnly` now passed all props to the inner `span` element as DOM attributes.
+
+## [15.88.0] - 2024-05-22
+
+### @semcore/feedback-form
+
+- **Added** New `FeedbackRating` component.
+
+### @semcore/utils
+
+- **Added** New design tokens: `--intergalactic-slider-rating-normal` and `--intergalactic-slider-rating-hover-active`.
+
+## [15.86.0] - 2024-05-17
+
+### @semcore/breadcrumbs
+
+- **Fixed** Line height, changed from `lh-100` to `lh-200` (from 133% to 142%).
+
+### @semcore/date-picker
+
+- **Fixed** `RangeCalendar` customized children rendering layout.
+- **Fixed** `MonthDateRangeComparator` trigger was formatting dates in trigger as dd/mm/yyyy instead of mm/yyyy.
+- **Fixed** `disabledErrorText={null}` wasn't hiding error tooltip.
+- **Fixed** In range pickers it was still possible to select range with disabled date.
+- **Fixed** Hours and minutes of dates, selected from input trigger was containing current time instead of 00:00.
+- **Fixed** `disabled` prop types.
+- **Fixed** Unchecking "Compare to" checkbox in date range comparators wasn't clearing a date range to compare.
+- **Added** Exports for `DateRangeComparatorValue` and `DateRangeComparatorFocusRange` types.
+
+### @semcore/utils
+
+- **Fixed** `ThemeProvider` wasn't working with Storybook.
+
+## [15.85.0] - 2024-05-17
+
+### @semcore/animation
+
+- **Changed** Added fallback for `onAnimationEnd` callback to be triggered even if the environment doesn't support animations.
+
+### @semcore/dropdown-menu
+
+- **Changed** Added mechanism to return focus to the trigger after closing the dropdown menu after item's interaction.
+
+### @semcore/select
+
+- **Changed** Removed mechanism that returns focus to the trigger after items selecting as it was moved to underlying `DropdownMenu`.
+
+### @semcore/utils
+
+- **Fixed** `ThemeProvider` wasn't working.
+- **Fixed** In some cases focus was not returned after focus lock was released.
+
+## [15.84.0] - 2024-05-16
+
+### @semcore/popper
+
+- **Fixed** Using singleton popper with a visibility delay set was causing popper to change position trigger with a delay.
+
+## [15.83.1] - 2024-05-16
+
+### @semcore/data-table
+
+- **Changed** If sorted column is too narrow to fit sorting item, the column slightly increases it's width.
+
+### @semcore/date-picker
+
+- **Added** `showError` property to `*Comparator.ValueDateRange` and `*Comparator.CompareDateRange` components.
+- **Added** Render children in `MonthDateRangeComparator.RangeCalendar`.
+
+### @semcore/input
+
+- **Fixed** `disabled` input was not loosing focused styles when it was disabled.
+- **Changed** `disabled` prop was deprecated on `Input.Value` to avoid confusion with `disabled` prop on `Input` component.
+
+### @semcore/input-number
+
+- **Fixed** Controlled mode.
+
+### @semcore/popper
+
+- **Fixed** Poppers with `interaction=hover` were not opening on touch devices.
+- **Fixed** Page resizing was causing popper to move to the wrong position.
+
+### @semcore/tab-line
+
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
+
+### @semcore/tab-panel
+
+- **Removed** Unnecessary `aria-posinset` attribute on each tab.
+
+## [15.80.0] - 2024-04-22
+
+### @semcore/accordion
+
+- **Fixed** Pressing `Space` on focused `Accordion.Item.Toggle` was causing the page to scroll.
+
+### @semcore/d3-chart
+
+- **Fixed** `duration` prop on `Chart` component.
+- **Changed** Plot `eventEmitter` prop now is strongly typed.
+- **Added** `PlotEventEmitter` class that allows to create typed event emitter for imperative control over chart tooltip.
+- **Fixed** stroke color for ReferenceLine from `--intergalactic-chart-grid-x-axis` to `--intergalactic-chart-grid-y-accent-hover-line`.
+
+### @semcore/data-table
+
+- **Fixed** Warning in console about invalid value of `tabIndex` attribute.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Focus ring styles.
+- **Fixed** Dropzone was draggable by keyboard.
+- **Fixed** Screen readers were announcing wrong items' position.
+- **Fixed** There were a visual glitch right after item drop.
+- **Changed** Removed additional padding that was added to the draggable element.
+- **Changed** Keyboard arrows navigation better works with built-in arrows navigation of base components and better works with items grid placement.
+
+### @semcore/dropdown-menu
+
+- **Fixed** It was loosing browser focus with DragAndDrop component integration.
+
+### @semcore/ellipsis
+
+- **Changed** `cursorAnchoring` added to the list of props that are passed to the build-in tooltip.
+
+### @semcore/link
+
+- **Changed** Disabled link now will always have empty href attribute.
+- **Changed** Removed `aria-disabled` and `disabled` DOM attributes from Link as it was violating the specs.
+
+### @semcore/popper
+
+- **Added** `cursorAnchoring` prop that allows to make popper appear near the cursor if trigger is bigger than popper.
+- **Added** Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+
+### @semcore/slider
+
+- **Changed** Slider options text now has secondary color and smaller font size by default.
+
+### @semcore/textarea
+
+- **Fixed** `minRows` prop behaviour.
+
+### @semcore/tooltip
+
+- **Changed** Renamed types `HintProps` to `TooltipHintProps` and `HintPopperProps` to `TooltipHintPopperProps`. Old names are preserved and deprecated.
+
+### @semcore/typography
+
+- **Changed** Renamed types `HintProps` to `TypographyHintProps`. Old name is preserved and deprecated.
+
+### @semcore/utils
+
+- **Added** New token for the color of stripes in the diagonal chart grid pattern: `--intergalactic-chart-grid-period-pattern`.
+- **Fixed** Typings of event emitter util.
+
+### @semcore/widget-empty
+
+- **Changed** Added role `status`.
+
 ## [15.79.0] - 2024-04-16
 
 ### @semcore/date-picker

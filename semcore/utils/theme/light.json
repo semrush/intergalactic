@@ -1215,6 +1215,18 @@
         "description": "Inverted version of the default color for the Skeleton."
       }
     },
+    "slider-rating": {
+      "normal": {
+        "value": "{icon.secondary.neutral}",
+        "type": "color",
+        "description": "Icon color for the SliderRating component in its normal state."
+      },
+      "hover-active": {
+        "value": "{yellow.200}",
+        "type": "color",
+        "description": "Icon color for the SliderRating component in its hovered and active states."
+      }
+    },
     "table": {
       "th": {
         "primary": {
@@ -2289,7 +2301,12 @@
         "period-bg": {
           "value": "rgba({gray.200}, 0.2)",
           "type": "color",
-          "description": "Use for highlighting the period on the chart grid."
+          "description": "Use for highlighting a period on the chart grid."
+        },
+        "period-pattern": {
+          "value": "rgba({gray.800}, 0.15)",
+          "type": "color",
+          "description": "Stripe color for diagonal pattern background."
         },
         "border": {
           "value": "{gray.white}",
