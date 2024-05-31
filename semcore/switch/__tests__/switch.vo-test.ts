@@ -17,7 +17,7 @@ test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: p
 
   expect(await voiceOver.lastSpokenPhrase()).toBe('Enabled on switch');
   await voiceOver.act();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('off Disabled switch');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Disabled off switch');
   await voiceOver.stopInteracting();
   await voiceOver.interact();
   expect(await voiceOver.lastSpokenPhrase()).toBe('Disabled off switch');

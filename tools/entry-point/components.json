@@ -13,7 +13,7 @@
   "@semcore/core": "2.25.1",
   "@semcore/counter": "3.26.1",
   "@semcore/data-table": "4.39.1",
-  "@semcore/date-picker": "4.46.1",
+  "@semcore/date-picker": "4.46.2",
   "@semcore/divider": "4.26.1",
   "@semcore/dot": "5.26.1",
   "@semcore/drag-and-drop": "3.35.1",
