@@ -57,7 +57,7 @@ class NoticeGlobalRoot extends Component {
         visible={!hidden}
         use:theme={useTheme}
         backgroundColor={color}
-        role='status'
+        role='region'
         aria-live={isAssertive ? 'assertive' : 'polite'}
       >
         {advancedMode ? (
