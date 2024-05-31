@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.34.1] - 2024-05-31
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.35.4 ~> 5.35.5]).
+
 ## [6.34.0] - 2024-05-28
 
 ### Fixed

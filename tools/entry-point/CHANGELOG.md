@@ -1,3 +1,21 @@
+## [15.93.0] - 2024-05-31
+
+### @semcore/feedback-form
+
+- **Added** Max width for feedback rating modal by default to `320px`.
+
+### @semcore/inline-input
+
+- **Added** Beautiful number formatting in `InlineInput.NumberValue`.
+
+### @semcore/input-number
+
+- **Fixed** Internal api to make it usable in `InlineInput`.
+
+### @semcore/popper
+
+- **Fixed** Combobox pattern wasn't working out of the box with mouse interactions.
+
 ## [15.92.1] - 2024-05-30
 
 ### @semcore/date-picker

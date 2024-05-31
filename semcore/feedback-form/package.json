@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "Semrush Feedback Form Component",
-  "version": "6.29.1",
+  "version": "6.29.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -26,7 +26,7 @@
     "@semcore/flex-box": "5.27.1",
     "@semcore/notice": "5.34.1",
     "@semcore/spin-container": "7.27.1",
-    "@semcore/tooltip": "6.34.0",
+    "@semcore/tooltip": "6.34.1",
     "@semcore/utils": "4.28.1",
     "final-form-focus": "1.1.2",
     "react-final-form": "6.5.9"
