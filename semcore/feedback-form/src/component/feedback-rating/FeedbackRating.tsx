@@ -36,7 +36,7 @@ type State = {
 };
 
 class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhances> {
-  static displayName = 'FiveStarForm';
+  static displayName = 'FeedbackRatingForm';
   static style = style;
 
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
@@ -277,6 +277,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
                   size='xl'
                   loading={status !== 'loading' ? api.submitting : status === 'loading'}
                   p={10}
+                  wMax={320}
                 >
                   <Flex justifyContent='center'>
                     <SliderRating value={rating} readonly={true} />

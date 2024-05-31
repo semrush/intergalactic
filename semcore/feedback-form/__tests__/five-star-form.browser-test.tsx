@@ -30,7 +30,7 @@ test.describe('5-star Feedback form', () => {
 
     await expect(page).toHaveScreenshot();
 
-    const submit = await page.locator('[data-ui-name="FiveStarForm.Submit"]');
+    const submit = await page.locator('[data-ui-name="FeedbackRatingForm.Submit"]');
 
     await submit.click();
 
