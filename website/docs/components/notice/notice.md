@@ -115,12 +115,12 @@ It must fulfill four criteria to be considered a notice. Let's compare it to [No
 
 Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
-| Criteria         | Notice | NoticeBubble | NoticeGlobal |
-| ---------------- | ------ | ------------ | ------------ |
-| Refers to the entire website      | ❌     | ✅ ❌        | ✅           |
-| **Global**: Refers to pages, blocks, or large components rather than specific elements | ✅     | ✅ ❌        | ✅           |
-| **Important**: Missing the notice may result in missed opportunities or loss of data | ✅     | ❌           | ✅           |
-| **Temporary**: Appears and disappears under certain conditions, not a default block element         | ✅     | ✅           | ✅           |
+| Criteria                                                                                    | Notice | NoticeBubble | NoticeGlobal |
+| ------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
+| Refers to the entire website                                                                | ❌     | ✅ ❌        | ✅           |
+| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        | ✅           |
+| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           | ✅           |
+| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           | ✅           |
 
 **The notice message can be either:**
 
@@ -142,9 +142,9 @@ Component consists of the following:
 
 Table: Notice content examples
 
-|           | Appearance example |
-| --------- | -------------------|
-| Notice with minimum possible elements | ![](static/notice-minimal.png) |
+|                                       | Appearance example                                               |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| Notice with minimum possible elements | ![](static/notice-minimal.png)                                   |
 | Notice with maximum possible elements | ![](static/notice-monster.png) ![](static/notice-max-button.png) |
 
 ## Sizes, paddings and margins
@@ -174,16 +174,17 @@ We recommend to set the maximum width of the notice message to 650-800px.
 
 Table: Notice themes
 
-| Theme | Appearance example |
-| ----- | ------------------ |
-| **Info**: Used for neutral messages, information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). | ![](static/info.png) |
-| **Success**: Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. | ![](static/success.png) |
-| **Warning**: Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. |![](static/warning.png) |
-| **Danger**: Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. | ![](static/danger.png) |
+| Theme                                                                                                                                                                                                                                                            | Appearance example      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| **Muted**: Used for regular messages and hints.                                                                                                                                                                                                                  | ![](static/muted.png)   |
+| **Info**: Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). | ![](static/info.png)    |
+| **Success**: Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example.                                                                                                                       | ![](static/success.png) |
+| **Warning**: Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures.                                                                                                              | ![](static/warning.png) |
+| **Danger**: Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss.                                                                                                                              | ![](static/danger.png)  |
 
-## Placement in the interface
+## Placement in interface
 
-### On the page
+### On page
 
 If the notice is applicable to the entire product, position it in the product header (below the breadcrumbs) and let it inherit the width of the content section. For more information about paddings and margins, refer to the [ProductHead](/components/product-head/product-head).
 
@@ -195,13 +196,13 @@ Avoid placing multiple notices on the page simultaneously.
 
 If the message pertains solely to the content of a specific tab within the product, position the notice beneath the [TabLine](/components/tab-line/tab-line).
 
-### Inside the widget
+### Inside widget
 
 If the notice is associated with a widget, position it inside the widget. The exact placement will depend on the context. Generally, in such cases, the notice should inherit the width of the content section of the widget.
 
 ![](static/notice-block-yes-no.png)
 
-### Inside the component
+### Inside component
 
 If the notice only relates to the component, position it at the top or bottom of the component and let it inherit the width of the component.
 
@@ -251,7 +252,7 @@ The advertising notice differs from the default notice through the inclusion of 
 ![](static/notice-advertising-pic-button.png)
 
 ::: tip
-Please refrain from using an advertising notice for an "empty" state on a page or inside a component.
+Avoid using an advertising notice for an "empty" state on a page or inside a component.
 :::
 
 ![](static/notice-no.png)
@@ -286,4 +287,3 @@ An error related to a temporary failure. In this case, a notice with `warning` t
 A notice appearing on top of the interface to indicate the completion of a hidden process. It's advised to avoid this and use [NoticeBubble](/components/notice-bubble/notice-bubble) instead in such cases.
 
 ![](static/notice-use-2-yes-no.png)
-
