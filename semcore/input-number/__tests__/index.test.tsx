@@ -149,10 +149,10 @@ describe('InputNumber', () => {
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid='input11' defaultValue={'0'} onChange={spy} />
-        <InputNumber.Controls data-testid='controls' />
+        <InputNumber.Controls data-testid='controls2' />
       </InputNumber>,
     );
-    const controls = getByTestId('controls');
+    const controls = getByTestId('controls2');
     const input = getByTestId('input11') as HTMLInputElement;
 
     await userEvent.keyboard('[Tab]');
