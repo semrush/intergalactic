@@ -67,6 +67,7 @@ semcore/illustration/**/*.d.ts
 !semcore/icon/FeauturedImage/**
 !semcore/icon/FeauturedVideo/**
 .pnpm-store
+.vale
 
 # Playwright
 test-results
