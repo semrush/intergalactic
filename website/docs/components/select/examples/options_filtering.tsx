@@ -23,7 +23,7 @@ const Demo = () => {
         Options filtering
       </Text>
       <Select placeholder='Select value'>
-        <Select.Trigger id='options-filtering-select' mr='auto' mt={2} />
+        <Select.Trigger id='options-filtering-select' mr='auto' mt={2} aria-controls={undefined} />
         <Select.Popper>
           {({ highlightedIndex }) => (
             <>

@@ -222,12 +222,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -315,12 +309,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -476,12 +464,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -550,12 +532,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -731,12 +707,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/accordion':
         specifier: '*'
         version: link:../accordion
@@ -837,12 +807,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -899,12 +863,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/button':
         specifier: '*'
         version: link:../button
@@ -939,12 +897,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/badge':
         specifier: '*'
         version: link:../badge
@@ -982,12 +934,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1022,12 +968,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/base-trigger':
         specifier: 4.26.1
         version: 4.26.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
@@ -1551,12 +1491,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1665,12 +1599,6 @@ importers:
         specifier: 5.1.2
         version: 5.1.2
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1792,12 +1720,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1838,12 +1760,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2055,12 +1971,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/badge':
         specifier: '*'
         version: link:../badge
@@ -2182,12 +2092,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2290,12 +2194,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2389,12 +2287,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2504,12 +2396,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -2696,12 +2582,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@guidepup/playwright':
-        specifier: 0.13.2
-        version: 0.13.2(@guidepup/guidepup@0.22.3)(@playwright/test@1.43.0)
-      '@playwright/test':
-        specifier: 1.43.0
-        version: 1.43.0
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -3946,9 +3826,15 @@ importers:
 
   tools/testing-utils:
     dependencies:
+      '@axe-core/playwright':
+        specifier: ^4.9.0
+        version: 4.9.0(playwright-core@1.43.0)
       '@babel/core':
         specifier: 7.19.1
         version: 7.19.1
+      '@playwright/test':
+        specifier: 1.43.0
+        version: 1.43.0
       '@previewjs/plugin-react':
         specifier: ^15.0.1
         version: 15.0.1(@types/node@18.16.15)(esbuild@0.14.29)(vite@4.5.0)
@@ -4581,6 +4467,15 @@ packages:
       '@ast-grep/napi-win32-arm64-msvc': 0.13.0
       '@ast-grep/napi-win32-ia32-msvc': 0.13.0
       '@ast-grep/napi-win32-x64-msvc': 0.13.0
+    dev: false
+
+  /@axe-core/playwright@4.9.0(playwright-core@1.43.0):
+    resolution: {integrity: sha512-Q1Lz75dNsX38jof+aev7RficDMdH/HLOLySkDdXR0fUoeFcLdw4UNgDO2CNNP4CTpoesEdfYRdd6VmDXjhBgbA==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
+    dependencies:
+      axe-core: 4.4.0
+      playwright-core: 1.43.0
     dev: false
 
   /@babel/cli@7.12.0(@babel/core@7.19.1):
@@ -7727,7 +7622,6 @@ packages:
     hasBin: true
     dependencies:
       playwright: 1.43.0
-    dev: true
 
   /@polka/url@1.0.0-next.24:
     resolution: {integrity: sha512-2LuNTFBIO0m7kKIQvvPHN6UE63VjpmL9rnEEaOOaiSPbZK+zUOYIzBAWcED+3XYzhYsd/0mD57VdxAEqqV52CQ==}
@@ -7906,7 +7800,7 @@ packages:
       '@previewjs/core': 28.0.2(@types/node@18.16.15)(esbuild@0.14.29)
       '@previewjs/plugin-react': 15.0.1(@types/node@18.16.15)(esbuild@0.14.29)(vite@4.5.0)
       globby: 13.2.2
-      playwright: 1.40.0
+      playwright: 1.43.0
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -21361,26 +21255,10 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
 
-  /playwright-core@1.40.0:
-    resolution: {integrity: sha512-fvKewVJpGeca8t0ipM56jkVSU6Eo0RmFvQ/MaCQNDYm+sdvKkMBBWTE1FdeMqIdumRaXXjZChWHvIzCGM/tA/Q==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dev: false
-
   /playwright-core@1.43.0:
     resolution: {integrity: sha512-iWFjyBUH97+pUFiyTqSLd8cDMMOS0r2ZYz2qEsPjH8/bX++sbIJT35MSwKnp1r/OQBAqC5XO99xFbJ9XClhf4w==}
     engines: {node: '>=16'}
     hasBin: true
-
-  /playwright@1.40.0:
-    resolution: {integrity: sha512-gyHAgQjiDf1m34Xpwzaqb76KgfzYrhK7iih+2IzcOCoZWr/8ZqmdBw+t0RU85ZmfJMgtgAiNtBQ/KS2325INXw==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      playwright-core: 1.40.0
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: false
 
   /playwright@1.43.0:
     resolution: {integrity: sha512-SiOKHbVjTSf6wHuGCbqrEyzlm6qvXcv7mENP+OZon1I07brfZLGdfWV0l/efAzVx7TF3Z45ov1gPEkku9q25YQ==}

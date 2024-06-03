@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { selectOption } from './utils';
 
 test.describe('FilterTrigger', () => {
   test('Focus control', async ({ page, browserName }) => {
@@ -8,13 +9,7 @@ test.describe('FilterTrigger', () => {
 
     await page.setContent(htmlContent);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await page.waitForSelector('[data-ui-name="Select.Menu"]');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+    await selectOption(page);
     const popperLocator = await page.locator('[data-ui-name="Select.Menu"]');
     await expect(popperLocator).toHaveCount(0);
 

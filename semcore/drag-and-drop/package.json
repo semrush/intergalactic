@@ -28,8 +28,6 @@
     "directory": "semcore/drag-and-drop"
   },
   "devDependencies": {
-    "@guidepup/playwright": "0.13.2",
-    "@playwright/test": "1.43.0",
     "@semcore/badge": "*",
     "@semcore/icon": "*",
     "@semcore/testing-utils": "1.0.0",
