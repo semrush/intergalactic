@@ -230,8 +230,11 @@ class Value extends Component {
   };
 
   handleChange = (event) => {
-    const value = event.currentTarget.value;
-    const digits = /[0-9,.-]+/.test(value);
+    const value = event.currentTarget.value
+      .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
+      .replace(this.separatorDecimal, '.');
+
+    const digits = /[0-9.-]+/.test(value);
 
     if (digits || value === '') {
       this.handlers.value(value, event);
