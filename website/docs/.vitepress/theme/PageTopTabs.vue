@@ -81,26 +81,10 @@
   border-color: var(--vp-c-divider);
 }
 
-.page-top-tabs-tab[data-current=true] {
+.page-top-tabs-tab[data-current=true]:not(.page-top-tabs-tab[data-current=true] ~ .page-top-tabs-tab[data-current=true]) {
   border-color: var(--vp-c-brand);
 }
 
-/* 
-.VPFeature {
-  flex: 1;
-}
-
-.VPFeature[data-current="true"] {
-  border-color: var(--vp-c-brand);
-}
-
-.page-top-tabs-content .VPFeature {
-  border-radius: 6px;
-}
-
-.page-top-tabs-content .VPFeature .box {
-  padding: 12px;
-} */
 </style>
 <script setup>
 import { computed } from 'vue'
