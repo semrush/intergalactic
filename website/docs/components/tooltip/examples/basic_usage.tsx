@@ -19,15 +19,16 @@ const Demo = () => (
       >
         Keywords
       </Tooltip>
-      <Tooltip title='Default tooltip contains short text explaining something about the trigger.'>
-        <Button aria-label='Export to PDF' addonLeft={FileExportM} />
-      </Tooltip>
+      <Tooltip
+        title='Default tooltip contains short text explaining something about the trigger.'
+        tag={Button}
+        aria-label='Export to PDF'
+        addonLeft={FileExportM}
+      />
     </Flex>
     <Flex gap={4} alignItems='center'>
       Hint:
-      <Hint title='Export to PDF'>
-        <Button addonLeft={FileExportM} />
-      </Hint>
+      <Hint title='Export to PDF' tag={Button} addonLeft={FileExportM} />
       <Hint
         title='You confirmed your email'
         aria-hidden={false}

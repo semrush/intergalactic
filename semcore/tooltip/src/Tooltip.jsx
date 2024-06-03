@@ -13,7 +13,6 @@ import style from './style/tooltip.shadow.css';
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
 const defaultProps = {
-  theme: 'default',
   placement: 'top',
   interaction: 'hover',
   timeout: [100, 50],
@@ -36,7 +35,8 @@ class TooltipRoot extends Component {
   subcomponents = [Tooltip.Trigger.displayName, Tooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      <Tooltip.Trigger {...props}>
+      {/* biome-ignore lint/a11y/useValidAriaValues: */}
+      <Tooltip.Trigger {...props} aria-haspopup={undefined}>
         <Children />
       </Tooltip.Trigger>
       <Tooltip.Popper>{title}</Tooltip.Popper>
@@ -56,6 +56,7 @@ class TooltipRoot extends Component {
     return {
       'aria-describedby': popperId,
       popperId,
+      role: undefined,
     };
   }
 
@@ -160,7 +161,8 @@ class HintRoot extends TooltipRoot {
   subcomponents = [Hint.Trigger.displayName, Hint.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      <Hint.Trigger {...props}>
+      {/* biome-ignore lint/a11y/useValidAriaValues: */}
+      <Hint.Trigger {...props} aria-haspopup={undefined}>
         <Children />
       </Hint.Trigger>
       <Hint.Popper>{title}</Hint.Popper>
@@ -200,7 +202,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
   subcomponents = [DescriptionTooltip.Trigger.displayName, DescriptionTooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      <Hint.Trigger {...props}>
+      <Hint.Trigger {...props} aria-haspopup='dialog'>
         <Children />
       </Hint.Trigger>
       <Hint.Popper>{title}</Hint.Popper>
@@ -240,6 +242,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
     return {
       ...props,
       ref: this.popperRef,
+      role: 'dialog',
     };
   }
 }
