@@ -115,12 +115,16 @@ class Value extends Component {
     return numberFormatter.format(1111).replace(/\d/g, '');
   }
 
+  getFormattedValue = (value) => {
+    return value
+      .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
+      .replace(this.separatorDecimal, '.');
+  };
+
   valueParser = (value, prevValue, prevDisplayValue) => {
     const { numberFormatter } = this.props;
 
-    const stringNumber = String(value)
-      .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
-      .replace(this.separatorDecimal, '.');
+    const stringNumber = this.getFormattedValue(String(value));
 
     if (
       stringNumber[stringNumber.length - 1] === '.' &&
@@ -230,9 +234,7 @@ class Value extends Component {
   };
 
   handleChange = (event) => {
-    const value = event.currentTarget.value
-      .replace(new RegExp(`[${this.separatorThousands}]`, 'g'), '')
-      .replace(this.separatorDecimal, '.');
+    const value = this.getFormattedValue(event.currentTarget.value);
 
     const digits = /[0-9.-]+/.test(value);
 
