@@ -143,7 +143,7 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('-1', expect.anything());
   });
 
-  test.concurrent('Should support inputs up/down buttons click with formatted number', async () => {
+  test('Should support inputs up/down buttons click with formatted number', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
