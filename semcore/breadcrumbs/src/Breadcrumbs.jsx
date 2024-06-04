@@ -28,6 +28,7 @@ class Breadcrumbs extends Component {
   }
 
   render() {
+    const SBreadcrumbs = Root;
     const SListContainer = 'ol';
     const { styles, getI18nText, Children } = this.asProps;
     return sstyled(styles)(
