@@ -200,10 +200,10 @@ class DescriptionTooltipRoot extends TooltipRoot {
   subcomponents = [DescriptionTooltip.Trigger.displayName, DescriptionTooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      <Hint.Trigger {...props}>
+      <DescriptionTooltip.Trigger {...props}>
         <Children />
-      </Hint.Trigger>
-      <Hint.Popper>{title}</Hint.Popper>
+      </DescriptionTooltip.Trigger>
+      <DescriptionTooltip.Popper>{title}</DescriptionTooltip.Popper>
     </>
   );
   handlePopperVisibleChange = (visible) => {
