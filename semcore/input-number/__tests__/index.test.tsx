@@ -33,7 +33,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
-  test.concurrent('Should accept format in int numbers', () => {
+  test.concurrent('Should accept format in int numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -42,8 +42,10 @@ describe('InputNumber', () => {
     );
 
     const input = getByTestId('input3') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '12345' } });
-    expect(spy).toBeCalledWith('12345', expect.anything());
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('12345');
+
+    expect(spy).lastCalledWith('12345', expect.anything());
     expect(input.value).toBe('12,345');
   });
 
@@ -139,6 +141,30 @@ describe('InputNumber', () => {
     fireEvent.click(arrowDown); // 0
     fireEvent.click(arrowDown); // -1
     expect(spy).lastCalledWith('-1', expect.anything());
+  });
+
+  test.concurrent('Should support inputs up/down buttons click with formatted number', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input11' defaultValue={'0'} onChange={spy} />
+        <InputNumber.Controls data-testid='controls2' />
+      </InputNumber>,
+    );
+    const controls = getByTestId('controls2');
+    const input = getByTestId('input11') as HTMLInputElement;
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('12345');
+
+    const arrowUp = controls.querySelectorAll('button')[0];
+    await userEvent.click(arrowUp);
+    expect(spy).lastCalledWith('12346', expect.anything());
+    const arrowDown = controls.querySelectorAll('button')[1];
+    await userEvent.click(arrowDown); // 12345
+    await userEvent.click(arrowDown); // 12344
+    expect(spy).lastCalledWith('12344', expect.anything());
+    expect(input.value).toBe('12,344');
   });
 
   test.concurrent('Should support sizes', async ({ task }) => {
