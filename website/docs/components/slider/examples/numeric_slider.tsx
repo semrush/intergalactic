@@ -30,7 +30,7 @@ const Demo = () => {
         <Slider
           id='slider-represantation'
           aria-label='Number slider representation'
-          mb={3}
+          mb={4}
           value={value}
           onChange={setValue}
           step={1}
