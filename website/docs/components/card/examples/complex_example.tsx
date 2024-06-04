@@ -26,21 +26,11 @@ const Demo = () => (
           <Text size={200} color='text-secondary' mr={2}>
             Optional info about data
           </Text>
-          <Close
-            color='icon-secondary-neutral'
-            ml='auto'
-            interactive
-            aria-label='Close card'
-          />
+          <Close color='icon-secondary-neutral' ml='auto' interactive aria-label='Close card' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>
-        <Select
-          tag={LinkTrigger}
-          options={options}
-          placeholder='Select'
-          mr={4}
-        />
+        <Select tag={LinkTrigger} options={options} placeholder='Select' mr={4} />
         This is an optional additional information or insights.
       </Card.Description>
     </Card.Header>
