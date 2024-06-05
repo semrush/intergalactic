@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.29.3] - 2024-06-05
+
+### Fixed
+
+- Children type for `FeedbackForm.Item`.
+
 ## [6.29.2] - 2024-05-30
 
 ### Added
