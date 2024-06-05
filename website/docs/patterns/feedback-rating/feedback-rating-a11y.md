@@ -3,16 +3,21 @@ title: FeedbackRating
 tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback-rating-code')
 ---
 
-<!-- ### Roles and attributes
+## What component has
+
+### Roles and attributes
 
 The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Component       | Role      | Attribute                     |
-| --------------- | --------- | ----------------------------- |
-| `Notice`        | `region`  | `aria-live="Leave feedback"`  |
-| `SliderRating`  | `slider`  | `aria-live={notificationText}`| -->
+| Component          | Role     | Attribute                                                                                   |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------- |
+| `Notice`           | `region` | `aria-label="Leave feedback"`                                                               |
+| `Notice.Label`     |          | `aria-hidden={true}`                                                                        |
+| `Notice.CloseIcon` | `button` | `aria-label` comes from [Notice](/components/notice/notice-a11y).                           |
+| `SliderRating`     | `slider` | `aria-label={notificationText}`                                                             |
+| `SliderRating`     | `slider` | All aria attributes are the same as those the [Slider](/components/slider/slider-a11y) has. |
 
 FeedbackRating form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
