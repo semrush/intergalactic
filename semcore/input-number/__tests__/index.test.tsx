@@ -167,6 +167,55 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,344');
   });
 
+  test.concurrent('Should not call onChange if the value ends with `-`', async () => {
+    const spy = vi.fn();
+    render(
+      <InputNumber>
+        <InputNumber.Value defaultValue={'0'} onChange={spy} />
+      </InputNumber>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('-');
+    expect(spy).not.toBeCalled();
+
+    await userEvent.keyboard('1');
+    expect(spy).lastCalledWith('-1', expect.anything());
+
+    await userEvent.keyboard('[Backspace]');
+    expect(spy).toBeCalledTimes(1);
+
+    await userEvent.keyboard('[Backspace]');
+    expect(spy).lastCalledWith('', expect.anything());
+  });
+
+  test.concurrent('Should not call onChange if the value ends with `.`', async () => {
+    const spy = vi.fn();
+    render(
+      <InputNumber>
+        <InputNumber.Value defaultValue={'0'} onChange={spy} />
+      </InputNumber>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('1');
+    expect(spy).lastCalledWith('1', expect.anything());
+
+    await userEvent.keyboard('.');
+    expect(spy).toBeCalledTimes(1);
+
+    await userEvent.keyboard('2');
+    expect(spy).lastCalledWith('1.2', expect.anything());
+
+    await userEvent.keyboard('[Backspace]');
+    expect(spy).toBeCalledTimes(2);
+
+    await userEvent.keyboard('[Backspace]');
+    expect(spy).lastCalledWith('1', expect.anything());
+  });
+
   test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <React.Fragment>
