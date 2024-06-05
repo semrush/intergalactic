@@ -32,6 +32,14 @@ Notice includes the following mandatory elements:
 
 ![](static/feedback-rating-notice-link.png)
 
+### Notice behavior requirements
+
+- If the user has closed the Notice, do not show it to them again.
+- The Notice is displayed until the user closes it using the `Close` button, submits the feedback form, or until the set time expires.
+- Avoid displaying multiple Notices in a single product simultaneously.
+- Also, avoid showing the next Notice immediately after the user has closed the previous one.
+- Avoid displaying a Notice and a FeaturePopover simultaneously on the page to prevent cognitive overload.
+
 ## Modal window with feedback form
 
 ![](static/feedback-rating-modal.png)
