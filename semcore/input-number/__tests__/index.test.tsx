@@ -167,7 +167,7 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,344');
   });
 
-  test.concurrent('Should not call onChange if the value ends with `-`', async () => {
+  test('Should not call onChange if the value ends with `-`', async () => {
     const spy = vi.fn();
     render(
       <InputNumber>
@@ -190,7 +190,7 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('', expect.anything());
   });
 
-  test.concurrent('Should not call onChange if the value ends with `.`', async () => {
+  test('Should not call onChange if the value ends with `.`', async () => {
     const spy = vi.fn();
     render(
       <InputNumber>
