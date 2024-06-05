@@ -57,6 +57,7 @@ class RootLink extends Component {
         noWrapText={noWrap}
         use:noWrap={false}
         ref={this.containerRef}
+        __excludeProps={['disabled', 'aria-disabled']}
       >
         {hasChildren ? (
           <>
