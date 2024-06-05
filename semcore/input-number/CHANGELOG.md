@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Incorrect increment/dicrement in formatted Number Inputs.
+- Removed onChange handler for the value that ends with `-` and `.` as in native input with `type="number"`.
 
 ## [5.29.2] - 2024-05-14
 

@@ -235,13 +235,17 @@ class Value extends Component {
 
   handleChange = (event) => {
     const value = this.getFormattedValue(event.currentTarget.value);
+
+    if (value.endsWith('.') || value.endsWith('-')) {
+      this.handlers.displayValue(value);
+      return false;
+    }
+
     const digits = /[0-9.-]+/.test(value);
 
     if (digits || value === '') {
       this.handlers.value(value, event);
     }
-
-    return false;
   };
 
   handleKeyUp = (event) => {
