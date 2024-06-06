@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.28.2] - 2024-06-04
+
+### Fixed
+
+- Type definition for Input's `placeholder` prop.
+
 ## [4.28.1] - 2024-05-28
 
 ### Changed

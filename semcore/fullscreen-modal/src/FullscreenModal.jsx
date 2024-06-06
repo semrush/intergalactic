@@ -108,7 +108,7 @@ function Body(props) {
 
 function Section(props) {
   const SSection = Root;
-  return sstyled(props.styles)(<SSection render={Box} />);
+  return sstyled(props.styles)(<SSection render={Box} tag={'section'} />);
 }
 
 function Footer(props) {
