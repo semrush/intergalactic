@@ -13,6 +13,8 @@ export type PortalProps = {
   ignorePortalsStacking?: boolean;
   /** Called when portal mount state changes */
   onMount?: (mounted: boolean) => void;
+
+  portalRendering?: 'prepend' | 'append';
 };
 
 const PortalContext = register.get(
@@ -21,8 +23,18 @@ const PortalContext = register.get(
   React.createContext<NodeByRef>((canUseDOM() ? document.body : null) as any),
 );
 
+const key = 'intergalactic-portal-prepend-mount-node';
+const prependMountNode = (mountNode: Element) => {
+  const firstChildren = mountNode.children[0];
+  if ((firstChildren as HTMLElement)?.dataset?.portal === key) return firstChildren as HTMLElement;
+  const node = document.createElement('div');
+  node.dataset.portal = key;
+  mountNode.prepend(node);
+  return node as HTMLElement;
+};
+
 function Portal(props: PortalProps & { Children: React.FC }) {
-  const { Children, disablePortal, ignorePortalsStacking, onMount } = props;
+  const { Children, disablePortal, ignorePortalsStacking, onMount, portalRendering } = props;
   const container = React.useContext(PortalContext);
   const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
@@ -30,11 +42,21 @@ function Portal(props: PortalProps & { Children: React.FC }) {
     if (disablePortal) return;
     onMount?.(true);
     if (ignorePortalsStacking) {
-      setMountNode(canUseDOM() ? document.body : null);
+      if (!canUseDOM()) return;
+      let mountNode = document.body;
+      if (portalRendering === 'prepend') {
+        mountNode = prependMountNode(mountNode);
+      }
+      setMountNode(document.body);
       return;
     }
-    setMountNode(getNodeByRef(container));
-  }, [container, disablePortal, onMount]);
+
+    let mountNode = getNodeByRef(container);
+    if (portalRendering === 'prepend' && mountNode) {
+      mountNode = prependMountNode(mountNode);
+    }
+    setMountNode(mountNode);
+  }, [container, disablePortal, onMount, portalRendering]);
 
   if (disablePortal) {
     return <Children />;

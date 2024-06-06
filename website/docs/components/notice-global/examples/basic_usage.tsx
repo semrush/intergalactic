@@ -4,23 +4,24 @@ import NoticeGlobal from 'intergalactic/notice-global';
 import Button from 'intergalactic/button';
 import Select from 'intergalactic/select';
 
+const themes = ['neutral', 'info', 'success', 'warning', 'danger'];
+const options = themes.map((theme) => ({
+  value: theme,
+  children: theme,
+}));
+
 const Demo = () => {
   const defaultTheme = 'neutral';
   const [theme, setTheme] = React.useState(defaultTheme);
   const [visible, setVisible] = React.useState(false);
-  const themes = ['neutral', 'info', 'success', 'warning', 'danger'];
-  const options = themes.map((x) => ({
-    value: x,
-    children: x,
-  }));
 
   return (
     <>
-      <Button onClick={() => setVisible(!visible)}>
+      <Button onClick={() => setVisible(!visible)} mr={3}>
         {visible ? 'Close' : 'Open'} NoticeGlobal
       </Button>
-      <Select options={options} defaultValue={defaultTheme} onChange={setTheme} ml={3} />
-      <Portal>
+      <Select options={options} defaultValue={defaultTheme} onChange={setTheme} />
+      <Portal portalRendering='prepend'>
         <NoticeGlobal
           hidden={!visible}
           theme={theme}
@@ -43,5 +44,4 @@ const Demo = () => {
     </>
   );
 };
-
 export default Demo;

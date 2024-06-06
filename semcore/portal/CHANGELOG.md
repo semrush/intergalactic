@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.28.0] - 2024-06-06
+
+### Added
+
+- `portalRendering` prop that allows to control should portalled node be prepended or appended to the portal container.
+
 ## [3.27.1] - 2024-05-28
 
 ### Changed

@@ -27,6 +27,7 @@ Table: Roles & attributes
 
 - Elements with the `aria-live` attribute are automatically announced only when their content changes. So, if you want your notice to be announced automatically, you should initially create an empty element and then update its content.
 - Avoid showing more than one `NoticeGlobal` at once. If you absolutely have to do it (especially if they have the same `theme`), make sure they all have different accessible names so they can be easily distinguished when navigating the landmarks.
+- When rendering `NoticeGlobal` with portal, use `<Portal portalRendering='prepend'>` to place the notice at the beginning of the body. This way, the notice will be announced first when the user navigates to the page.
 
 ## Other recommendations
 
