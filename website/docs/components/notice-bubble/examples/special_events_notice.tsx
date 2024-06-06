@@ -11,7 +11,7 @@ const Demo = () => {
       children: 'Your post is on the way - we will take care!',
       icon: <MailSent />,
       initialAnimation: true,
-      duration: 3000,
+      duration: 10000,
     });
   };
 

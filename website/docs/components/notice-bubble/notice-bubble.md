@@ -91,36 +91,41 @@ Table: Use cases for NoticeBubble types
 
 ## Animation
 
-- The notification slides in from the right edge and closes with a `fade` effect.
-- The alert automatically closes after 5 seconds on a timer. The delay value can be adjusted depending on the amount of text in the alert.
-- Optionally, certain notifications can be left until the user manually closes them.
+The notification slides in from the right edge of the viewport and closes with a `fade` effect.
 
 ## Usage in UX/UI
 
-### General
+::: tip
+Minimize the number of notifications to prevent banner blindness and irritation among users.
+:::
 
-- To prevent "banner blindness" and irritation among users, it is essential to minimize the number of notifications.
-- Users can close the notification by clicking on the `Close` icon in the upper-right corner.
-- If the notification is closed automatically by a timer, hovering the mouse over it (`onMouseEnter`) will reset the timer, and it will start counting down again to the closing.
--The "Undo" button allows users to cancel a completed action. Upon clicking it, a message with the text "Undone!" will briefly appear in the notification. This state remains active for 2 seconds.
-- If the undone process takes time, display an intermediate state with a spinner (within the same notice) and the corresponding text. Once the process is successfully completed, confirm it with the message "Undone!". When the loading state is closed, consider the undone notice to be closed as well, specifically it shouldn't appear additionally.
+### Appearance duration and closing
+
+- Users can close the notice by clicking on the **Close** button in the upper-right corner.
+- If there are *no* interactive elements in the notice beside the **Close** button, hide the notice automatically after 4–10 seconds, depending on the amount of text inside.
+- If there are interactive elements in the notice beside the **Close** button, don't hide the notice until it becomes irrelevant, or the user closes it or interacts with one of its interactive elements.
+- If the notice is closed automatically by a timer, hovering the mouse over it (`onMouseEnter`) will reset the timer, and the countdown will start again after moving the mouse away from the notice.
 
 ### Several notices at a time
 
 ::: tip
-Note that you can choose to show several notices at a time if necessary, but use this option thoughtfully.
+You can show several notices at a time if necessary, but use this option thoughtfully.
 :::
 
-- It is recommended to display only one notification at a time for two primary reasons. Firstly, having multiple messages can hide valuable screen workspace, and secondly, they may scatter the user's focus of attention. If multiple messages are shown simultaneously, there is a likelihood that they will not be read.
+- It is recommended to display only one notification at a time for two primary reasons. Firstly, having multiple messages can hide valuable screen workspace, and secondly, they may scatter user's focus of attention. If multiple messages are shown simultaneously, it's likely they won't be read.
 - If several actions are performed simultaneously by the system, they overlap each other in the same way as user actions, so only the last message will be visible.
 
-### Notice about lost connection
+### "Undo" notice
+
+- The "Undo" button allows users to cancel a completed action. Upon clicking it, an "Undone" message will briefly appear in the notification. This state remains active for 2 seconds.
+- If the undoing process takes time, display an intermediate state with a spinner (within the same notice) and the corresponding text. Once the process is successfully completed, confirm it with the "Undone" message. Don't show the "Undone" message if the user closed the notice while it was in the loading state.
+
+### "Lost connection" notice
 
 - This type of notification appears as soon as the network connection is lost. It is commonly used in products that allow users to continue working with content even without network access.
 - This notification acts as a separate alert and has the highest priority. Therefore, when it appears, all other user and system notifications appear below it. Each subsequent notification will overlap the previous one.
-- The notice automatically closes when the connection is restored and cannot be closed manually by the user.
+- The notice automatically closes when the connection is restored.
 - There are two options for this notice type:
-
-1. For interfaces that can monitor the network connection themselves, use a notification without a button.
-2. For interfaces that cannot monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.
+    1. For interfaces that can monitor the network connection themselves, use a notification without a button.
+    2. For interfaces that cannot monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.
 
