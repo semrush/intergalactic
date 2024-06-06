@@ -3,46 +3,58 @@ SBreadcrumbs {
   align-items: center;
   padding: 0;
   margin: 0;
-  list-style: none;
-}
 
-SSeparator {
-  margin: 0 var(--intergalactic-spacing-2x, 8px);
-  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  display: flex;
+  SListContainer {
+    display: contents;
+    list-style: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 
-  &:last-child {
-    display: none;
-  }
-}
+    SSeparator {
+      margin: 0 var(--intergalactic-spacing-2x, 8px);
+      color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+      display: flex;
 
-SBreadcrumbsItem {
-  position: relative;
-  font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 142%);
-  color: var(--intergalactic-text-secondary, #6c6e79);
-  text-decoration: none;
-  box-sizing: border-box;
-  outline: none;
-  cursor: pointer;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+      &:last-child {
+        display: none;
+      }
+    }
 
-  &:hover {
-    text-decoration: underline;
-    color: var(--intergalactic-text-primary, #191b23);
-  }
-}
+    SListItem {
+      overflow: hidden;
 
-SBreadcrumbsItem[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-}
 
-SBreadcrumbsItem[active] {
-  color: var(--intergalactic-text-primary, #191b23);
-  cursor: default;
-  &:hover {
-    text-decoration: none;
+      SBreadcrumbsItem {
+        width: 100%;
+        display: block;
+        position: relative;
+        font-size: var(--intergalactic-fs-200, 14px);
+        line-height: var(--intergalactic-lh-200, 142%);
+        color: var(--intergalactic-text-secondary, #6c6e79);
+        text-decoration: none;
+        cursor: pointer;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:hover {
+          text-decoration: underline;
+          color: var(--intergalactic-text-primary, #191b23);
+        }
+      }
+
+      SBreadcrumbsItem[keyboardFocused] {
+        box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+      }
+
+      SBreadcrumbsItem[active] {
+        color: var(--intergalactic-text-primary, #191b23);
+        cursor: default;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
