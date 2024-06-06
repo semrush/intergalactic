@@ -579,6 +579,11 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   margin: inherit;
 }
 
+.vp-doc ol[class] {
+  padding: 0;
+  margin: 0;
+}
+
 .vp-doc .documentation-sandbox p {
   margin: inherit;
 }
