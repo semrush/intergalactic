@@ -572,6 +572,11 @@ h2[class] {
   color: var(--vp-c-indigo-1) !important;
 }
 
+.vp-doc ol[class] {
+  padding: 0;
+  margin: 0;
+}
+
 .vp-doc .documentation-sandbox p {
   margin: inherit;
 }

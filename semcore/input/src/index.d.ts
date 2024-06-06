@@ -57,6 +57,10 @@ export type InputValueProps = BoxProps &
      * @default m
      */
     size?: InputSize;
+    /**
+     * Placeholder for input
+     */
+    placeholder?: string;
   };
 
 /** @deprecated */
