@@ -84,10 +84,10 @@ const validateDecl = (
 };
 
 type Options = {
-  tokensSource?: string;
-  include?: string[];
-  exclude?: string[];
-  prefix?: string;
+  tokensSource: string;
+  include: string[];
+  exclude: string[];
+  prefix: string;
 };
 
 const defaultOptions = {
@@ -101,13 +101,13 @@ const meta = {
   url: 'https://developer.semrush.com/intergalactic/style/design-tokens/design-tokens#stylelint-plugin',
 };
 
-const rule: Rule = (enabled: boolean, providedOptions: Options = {}) => {
+const rule: Rule = (enabled: boolean, providedOptions: Partial<Options> = {}) => {
   if (!enabled) return () => {};
 
   const options = { ...defaultOptions, ...providedOptions };
   const tokensSource = isAbsolutePath(options.tokensSource)
     ? options.tokensSource
-    : resolvePath(process.cwd(), options.tokensSource!);
+    : resolvePath(process.cwd(), options.tokensSource);
   const designTokens = require(tokensSource);
   const designTokensList = [...Object.keys(designTokens), ...options.include].filter(
     (token) => !options.exclude.includes(token),
