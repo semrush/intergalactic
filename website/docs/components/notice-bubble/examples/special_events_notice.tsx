@@ -8,7 +8,7 @@ const manager = new NoticeBubbleManager();
 const Demo = () => {
   const handleClick = () => {
     manager.add({
-      children: 'Your post is on the way - we will take care!',
+      children: 'Your post is on its way, and we will take great care of it!',
       icon: <MailSent />,
       initialAnimation: true,
       duration: 10000,
