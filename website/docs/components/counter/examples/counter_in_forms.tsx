@@ -9,21 +9,23 @@ const Demo = () => (
   <Flex direction='column' w={350}>
     <Flex mb={2} justifyContent='space-between'>
       <Text size={200} tag='label' htmlFor='limited-text-field'>
-        Label <ScreenReaderOnly>characters limit</ScreenReaderOnly>
+        Project description
         <Counter ml={1}>
           {0}
-          <ScreenReaderOnly>characters</ScreenReaderOnly>
           <span aria-hidden='true'>/</span>
           <ScreenReaderOnly>of</ScreenReaderOnly>
           {150}
-          <ScreenReaderOnly>maximum</ScreenReaderOnly>
+          <ScreenReaderOnly>allowed characters</ScreenReaderOnly>
         </Counter>
       </Text>
       <Text size={200} color='text-secondary'>
         optional
       </Text>
     </Flex>
-    <Textarea placeholder='Placeholder' id='limited-text-field' />
+    <Textarea
+      placeholder='The goal of your project, required resources, and so on'
+      id='limited-text-field'
+    />
   </Flex>
 );
 

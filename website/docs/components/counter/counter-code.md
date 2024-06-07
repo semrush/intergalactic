@@ -44,7 +44,7 @@ As design guide recommends, the counter changes color to orange and then red whe
 
 ## Counter and typography
 
-The text counters shall be implemented using [Typography](/style/typography/typography) without using the `Counter` component.
+Plain text counters should be implemented using [Typography](/style/typography/typography), without the `Counter` component.
 
 ::: sandbox
 
@@ -56,7 +56,7 @@ The text counters shall be implemented using [Typography](/style/typography/typo
 
 ## Counter in Pills
 
-As you can see, there are text counters inside [Pills](/components/pills/pills). Implement them via [Typography](/style/typography/typography), as well, without using the `Counter` component.
+Counters inside [Pills](/components/pills/pills) are implemented using [Typography](/style/typography/typography), without the `Counter` component.
 
 ::: sandbox
 
@@ -68,7 +68,7 @@ As you can see, there are text counters inside [Pills](/components/pills/pills).
 
 ## Counter in limits
 
-Implement the text counters in limits using [Typography](/style/typography/typography) without using the `Counter` component.
+Displaying limits is done using [Typography](/style/typography/typography), without the `Counter` component.
 
 ::: sandbox
 
@@ -80,7 +80,7 @@ Implement the text counters in limits using [Typography](/style/typography/typog
 
 ## Counter in Dot
 
-The `Dot` component can also contain a text counter. For more information, see the [Dot](/components/dot/dot).
+The `Dot` component also contains a text counter. For more information, refer to [Dot](/components/dot/dot).
 
 ::: sandbox
 
