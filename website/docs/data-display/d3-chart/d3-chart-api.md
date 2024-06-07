@@ -87,3 +87,17 @@ type Pattern = {
 ```
 
 <TypesView type="Pattern" :types={...types} />
+
+## ReferenceLine
+
+```js
+import { ReferenceLine } from 'intergalactic/d3-chart';
+```
+
+<TypesView type="ReferenceLineProps" :types={...types} />
+
+<TypesView type="ReferenceLineTitleProps" :types={...types} />
+
+<TypesView type="ReferenceBackgroundProps" :types={...types} />
+
+<TypesView type="ReferenceStripesProps" :types={...types} />

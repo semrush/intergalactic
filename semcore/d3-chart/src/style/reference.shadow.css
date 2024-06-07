@@ -33,3 +33,11 @@ STitle[position='left'] {
 SBackground {
   fill: var(--intergalactic-chart-grid-period-bg, rgba(196, 199, 207, 0.2));
 }
+SStripes {
+  fill: var(--fill);
+}
+
+SStripesPatternPath {
+  stroke: var(--intergalactic-chart-grid-period-pattern, rgba(25, 27, 35, 0.15));
+  stroke-width: 1px;
+}

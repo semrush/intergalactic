@@ -1,0 +1,30 @@
+{
+  "name": "@semcore/stylelint-plugin",
+  "description": "Semrush Intergalactic stylelint plugin",
+  "version": "0.0.1",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder --source=ts",
+    "test": "echo \"no tests\""
+  },
+  "dependencies": {
+    "js-levenshtein": "^1.1.6",
+    "postcss-value-parser": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/stylelint-plugin"
+  },
+  "devDependencies": {
+    "@types/js-levenshtein": "^1.1.3",
+    "postcss": "8.4.38",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}

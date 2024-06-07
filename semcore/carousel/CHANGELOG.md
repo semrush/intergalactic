@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.2] - 2024-06-06
+
+### Fixed
+
+- Button styles because DOM for `Button` with only addons has been changed.
+
 ## [3.37.1] - 2024-05-28
 
 ### Changed
