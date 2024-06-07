@@ -88,7 +88,12 @@ class RootButton extends Component {
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
     return sstyled(styles)(
-      <Hint tag={Button.Addon} title={hintContent} timeout={[250, 50]}>
+      <Hint
+        tag={Button.Addon}
+        title={hintContent}
+        timeout={[250, 50]}
+        __excludeProps={['aria-label']}
+      >
         {AddonLeft && <AddonLeft />}
         {AddonRight && <AddonRight />}
       </Hint>,
