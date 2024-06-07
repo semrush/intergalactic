@@ -74,7 +74,7 @@ SNext {
   cursor: pointer;
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
-  SPrevButton svg:only-child, SNextButton svg:only-child {
+  SPrevButton span:has(> svg:only-child), SNextButton span:has(> svg:only-child) {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }

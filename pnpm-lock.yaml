@@ -201,7 +201,7 @@ importers:
         specifier: 2.27.1
         version: link:../animation
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -380,6 +380,9 @@ importers:
       '@semcore/spin':
         specifier: 5.26.1
         version: link:../spin
+      '@semcore/tooltip':
+        specifier: 6.34.3
+        version: link:../tooltip
       '@semcore/utils':
         specifier: 4.28.1
         version: link:../utils
@@ -412,8 +415,8 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/tooltip':
-        specifier: 6.34.0
-        version: 6.34.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.34.3
+        version: link:../tooltip
       '@semcore/typography':
         specifier: 5.35.1
         version: link:../typography
@@ -440,7 +443,7 @@ importers:
         specifier: 1.27.1
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -502,7 +505,7 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -511,8 +514,8 @@ importers:
         specifier: 4.26.1
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.31.4
-        version: 4.31.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.31.6
+        version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.27.1
         version: link:../flex-box
@@ -520,7 +523,7 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/utils':
         specifier: 4.28.1
@@ -601,7 +604,7 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.35.5
+        specifier: 5.35.6
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.1
@@ -695,7 +698,7 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.29.1
+        specifier: 5.30.0
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.28.1
@@ -759,7 +762,7 @@ importers:
         specifier: 4.37.1
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.30.1
@@ -771,8 +774,8 @@ importers:
         specifier: 4.26.1
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.31.4
-        version: 4.31.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.31.6
+        version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.27.1
         version: link:../flex-box
@@ -780,17 +783,17 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/input-mask':
-        specifier: 5.29.1
+        specifier: 5.29.2
         version: link:../input-mask
       '@semcore/neighbor-location':
         specifier: 4.25.1
         version: link:../neighbor-location
       '@semcore/tooltip':
-        specifier: 6.34.0
-        version: 6.34.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.34.3
+        version: link:../tooltip
       '@semcore/typography':
         specifier: 5.35.1
         version: link:../typography
@@ -876,7 +879,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.34.1
+        specifier: 5.35.0
         version: link:../card
       '@semcore/core':
         specifier: ^2.17.5
@@ -922,7 +925,7 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.35.5
+        specifier: 5.35.6
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.1
@@ -947,13 +950,13 @@ importers:
         specifier: ^2.17.5
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.31.5
+        specifier: 4.31.6
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/scroll-area':
-        specifier: 5.29.1
+        specifier: 5.30.0
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.28.1
@@ -996,8 +999,8 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/tooltip':
-        specifier: 6.34.0
-        version: 6.34.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.34.3
+        version: link:../tooltip
       '@semcore/utils':
         specifier: 4.28.1
         version: link:../utils
@@ -1072,7 +1075,7 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1121,7 +1124,7 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/popper':
-        specifier: 5.35.5
+        specifier: 5.35.6
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.1
@@ -1143,7 +1146,7 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.30.1
@@ -1161,10 +1164,10 @@ importers:
         specifier: 2.27.1
         version: link:../illustration
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/link':
-        specifier: 5.30.1
+        specifier: 5.31.0
         version: link:../link
       '@semcore/modal':
         specifier: 4.37.1
@@ -1182,7 +1185,7 @@ importers:
         specifier: 5.26.1
         version: link:../textarea
       '@semcore/tooltip':
-        specifier: 6.34.1
+        specifier: 6.34.3
         version: link:../tooltip
       '@semcore/typography':
         specifier: 5.35.1
@@ -1510,16 +1513,16 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.29.2
+        specifier: 5.29.3
         version: link:../input-number
       '@semcore/spin':
         specifier: 5.26.1
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 6.34.1
+        specifier: 6.34.3
         version: link:../tooltip
       '@semcore/utils':
         specifier: 4.28.1
@@ -1581,7 +1584,7 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/neighbor-location':
         specifier: 4.25.1
@@ -1615,7 +1618,7 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/utils':
         specifier: 4.28.1
@@ -1640,10 +1643,10 @@ importers:
         specifier: ^2.17.5
         version: link:../core
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/scroll-area':
-        specifier: 5.29.1
+        specifier: 5.30.0
         version: link:../scroll-area
       '@semcore/tag':
         specifier: 5.36.1
@@ -1679,6 +1682,9 @@ importers:
       '@semcore/flex-box':
         specifier: 5.27.1
         version: link:../flex-box
+      '@semcore/tooltip':
+        specifier: 6.34.3
+        version: link:../tooltip
       '@semcore/typography':
         specifier: 5.35.1
         version: link:../typography
@@ -1913,7 +1919,7 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1925,10 +1931,10 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/link':
-        specifier: 5.30.1
+        specifier: 5.31.0
         version: link:../link
       '@semcore/typography':
         specifier: 5.35.1
@@ -2167,7 +2173,7 @@ importers:
         specifier: 4.26.1
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.33.5
+        specifier: 4.33.6
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.27.1
@@ -2176,10 +2182,10 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/popper':
-        specifier: 5.35.5
+        specifier: 5.35.6
         version: link:../popper
       '@semcore/utils':
         specifier: 4.28.1
@@ -2375,6 +2381,28 @@ importers:
         specifier: 18.0.21
         version: 18.0.21
 
+  semcore/stylelint-plugin:
+    dependencies:
+      js-levenshtein:
+        specifier: ^1.1.6
+        version: 1.1.6
+      postcss-value-parser:
+        specifier: ^4.2.0
+        version: 4.2.0
+    devDependencies:
+      '@types/js-levenshtein':
+        specifier: ^1.1.3
+        version: 1.1.3
+      postcss:
+        specifier: 8.4.38
+        version: 8.4.38
+      stylelint:
+        specifier: ^16.6.1
+        version: 16.6.1(typescript@5.1.6)
+      stylelint-config-standard:
+        specifier: ^36.0.0
+        version: 36.0.0(stylelint@16.6.1)
+
   semcore/switch:
     dependencies:
       '@semcore/core':
@@ -2471,7 +2499,7 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.29.1
+        specifier: 5.30.0
         version: link:../scroll-area
       '@semcore/typography':
         specifier: 5.35.1
@@ -2558,7 +2586,7 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.28.1
+        specifier: 5.29.0
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2567,10 +2595,10 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.28.1
+        specifier: 4.28.2
         version: link:../input
       '@semcore/select':
-        specifier: 4.43.5
+        specifier: 4.43.6
         version: link:../select
       '@semcore/utils':
         specifier: 4.28.1
@@ -2598,7 +2626,7 @@ importers:
         specifier: 5.27.1
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.35.5
+        specifier: 5.35.6
         version: link:../popper
       '@semcore/portal':
         specifier: 3.27.1
@@ -3828,7 +3856,7 @@ importers:
     dependencies:
       '@axe-core/playwright':
         specifier: ^4.9.0
-        version: 4.9.0(playwright-core@1.43.0)
+        version: 4.9.1(playwright-core@1.43.0)
       '@babel/core':
         specifier: 7.19.1
         version: 7.19.1
@@ -4469,8 +4497,8 @@ packages:
       '@ast-grep/napi-win32-x64-msvc': 0.13.0
     dev: false
 
-  /@axe-core/playwright@4.9.0(playwright-core@1.43.0):
-    resolution: {integrity: sha512-Q1Lz75dNsX38jof+aev7RficDMdH/HLOLySkDdXR0fUoeFcLdw4UNgDO2CNNP4CTpoesEdfYRdd6VmDXjhBgbA==}
+  /@axe-core/playwright@4.9.1(playwright-core@1.43.0):
+    resolution: {integrity: sha512-8m4WZbZq7/aq7ZY5IG8GqV+ZdvtGn/iJdom+wBg+iv/3BAOBIfNQtIu697a41438DzEEyptXWmC3Xl5Kx/o9/g==}
     peerDependencies:
       playwright-core: '>= 1.0.0'
     dependencies:
@@ -4533,7 +4561,6 @@ packages:
     dependencies:
       '@babel/highlight': 7.22.20
       chalk: 2.4.2
-    dev: false
 
   /@babel/compat-data@7.21.0:
     resolution: {integrity: sha512-gMuZsmsgxk/ENC3O/fRw5QY8A9/uxQbbCEypnLIiYYc/qVJtEV7ouxC3EllIIwNzMqAQee5tanFabWsUOutS7g==}
@@ -4911,7 +4938,6 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
-    dev: false
 
   /@babel/parser@7.21.3:
     resolution: {integrity: sha512-lobG0d7aOfQRXh8AyklEAgZGvA4FShxo6xQbUrrT/cNBPUdIDojlokwJsQyCC/eKia7ifqM0yP+2DRZ4WKw2RQ==}
@@ -6237,6 +6263,15 @@ packages:
       '@csstools/css-tokenizer': 2.2.1
     dev: false
 
+  /@csstools/css-parser-algorithms@2.6.3(@csstools/css-tokenizer@2.3.1):
+    resolution: {integrity: sha512-xI/tL2zxzEbESvnSxwFgwvy5HS00oCXxL4MLs6HUiDcYfwowsoQaABKxUElp1ARITrINzBnsECOc1q0eg2GOrA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-tokenizer': ^2.3.1
+    dependencies:
+      '@csstools/css-tokenizer': 2.3.1
+    dev: true
+
   /@csstools/css-tokenizer@2.1.1:
     resolution: {integrity: sha512-GbrTj2Z8MCTUv+52GE0RbFGM527xuXZ0Xa5g0Z+YN573uveS4G0qi6WNOMyz3yrFM/jaILTTwJ0+umx81EzqfA==}
     engines: {node: ^14 || ^16 || >=18}
@@ -6247,6 +6282,11 @@ packages:
     engines: {node: ^14 || ^16 || >=18}
     dev: false
 
+  /@csstools/css-tokenizer@2.3.1:
+    resolution: {integrity: sha512-iMNHTyxLbBlWIfGtabT157LH9DUx9X8+Y3oymFEuMj8HNc+rpE3dPFGFgHjpKfjeFDjLjYIAIhXPGvS2lKxL9g==}
+    engines: {node: ^14 || ^16 || >=18}
+    dev: true
+
   /@csstools/media-query-list-parser@2.1.1(@csstools/css-parser-algorithms@2.2.0)(@csstools/css-tokenizer@2.1.1):
     resolution: {integrity: sha512-pUjtFbaKbiFNjJo8pprrIaXLvQvWIlwPiFnRI4sEnc4F0NIGTOsw8kaJSR3CmZAKEvV8QYckovgAnWQC0bgLLQ==}
     engines: {node: ^14 || ^16 || >=18}
@@ -6256,6 +6296,17 @@ packages:
     dependencies:
       '@csstools/css-parser-algorithms': 2.2.0(@csstools/css-tokenizer@2.1.1)
       '@csstools/css-tokenizer': 2.1.1
+    dev: true
+
+  /@csstools/media-query-list-parser@2.1.11(@csstools/css-parser-algorithms@2.6.3)(@csstools/css-tokenizer@2.3.1):
+    resolution: {integrity: sha512-uox5MVhvNHqitPP+SynrB1o8oPxPMt2JLgp5ghJOWf54WGQ5OKu47efne49r1SWqs3wRP8xSWjnO9MBKxhB1dA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^2.6.3
+      '@csstools/css-tokenizer': ^2.3.1
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.6.3(@csstools/css-tokenizer@2.3.1)
+      '@csstools/css-tokenizer': 2.3.1
     dev: true
 
   /@csstools/media-query-list-parser@2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
@@ -6596,6 +6647,15 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: false
 
+  /@csstools/selector-specificity@3.1.1(postcss-selector-parser@6.1.0):
+    resolution: {integrity: sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss-selector-parser: ^6.0.13
+    dependencies:
+      postcss-selector-parser: 6.1.0
+    dev: true
+
   /@derhuerst/http-basic@8.2.4:
     resolution: {integrity: sha512-F9rL9k9Xjf5blCz8HsJRO4diy111cayL2vkY2XE4r4t3n0yPXVYy3KD3nJ1qbrSn9743UWSXH4IwuCa/HWlGFw==}
     engines: {node: '>=6.0.0'}
@@ -6650,6 +6710,10 @@ packages:
       search-insights: 2.8.2
     transitivePeerDependencies:
       - '@algolia/client-search'
+    dev: true
+
+  /@dual-bundle/import-meta-resolve@4.1.0:
+    resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
     dev: true
 
   /@eggjs/yauzl@2.11.0:
@@ -7303,7 +7367,7 @@ packages:
       jest-util: 29.5.0
       jest-validate: 29.5.0
       jest-watcher: 29.5.0
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       pretty-format: 29.5.0
       slash: 3.0.0
       strip-ansi: 6.0.1
@@ -7461,7 +7525,7 @@ packages:
       jest-haste-map: 29.5.0
       jest-regex-util: 29.4.3
       jest-util: 29.5.0
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       pirates: 4.0.5
       slash: 3.0.0
       write-file-atomic: 4.0.2
@@ -7800,7 +7864,7 @@ packages:
       '@previewjs/core': 28.0.2(@types/node@18.16.15)(esbuild@0.14.29)
       '@previewjs/plugin-react': 15.0.1(@types/node@18.16.15)(esbuild@0.14.29)(vite@4.5.0)
       globby: 13.2.2
-      playwright: 1.43.0
+      playwright: 1.40.0
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -8295,20 +8359,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/animation@2.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-lUUXPzARShku59fDQ0jagAUnLVcdCuYVJqrGJh3sRfyG/U1s+34gHH2eg3JDu6fVR7Hvb48nIwV19vRFbGW6DQ==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/badge@4.25.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-62V1hL4qqYtBqrLpMmdk6ygdOMQzy3Z14lIzmBSUMxV75fMMvIZaazkJV6ljHOa7bjJAK+BviP/Uv9uHQOrZFA==}
     peerDependencies:
@@ -8663,21 +8713,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/dropdown@4.31.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Vye7VjgMCEm+qh9uubFpsK6Z5FPavjKbXecG0P+xSp26UA8cGQBiyDj6DEsuXXk3+DXPyiEJw4XxxmuwCAS7gg==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/popper': 5.35.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/ellipsis@2.27.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-RHwO+ZK3xBSLIGqkVW+tcoYlb6JhP1BZ0ugo7Z/+4ZIehChbP1YWukt3lyWG+4GLz0pcZgW+KxNPeSU+s/u9MA==}
     peerDependencies:
@@ -8827,21 +8862,6 @@ packages:
     dependencies:
       '@semcore/core': 2.24.0(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.27.0(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@semcore/flex-box@5.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-GpJdG8QnYHK3w8f0OoirNiaz47FptUh1dA5Qr5oxA+kSOHXdMKeoglA6zzEacTAKmEW3kepAAQlpSYHQq4ZPJw==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
       classnames: 2.2.6
       csstype: 3.0.8
       react: 18.2.0
@@ -9143,19 +9163,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/neighbor-location@4.25.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5jlxhfL/32DIjqjSKRLtHwD7JjRovB4EY8m0qCsNH/Q2UiWUXInk6eQGQuNZnbFPD85RH3QhHTJV2QAsDO/qfg==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/notice-bubble@5.32.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UowMuLLFQRlihdOMVLpjPPJP6FQq/Tml3PBy69q417Jfjj5qu/FS8WNSN0o1kKw+wAJWsm8Hh0Ge0Er0EX3hoQ==}
     peerDependencies:
@@ -9232,19 +9239,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/outside-click@3.25.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-FOSRyryaNJZmJ58oXGFsfHPRUDOzzKXjMQ7b6tdRdV8chf+QCGK9qOkby3XyG+/QYrJG7q/3fSDZm5MFtKFfyw==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/pagination@4.36.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-yxsI5R9wNrVLt2iw3GXwS78Sp7Jkd2/yxO5J5/nbB9A3dM8tRL6p00ViaGopFB1d2747eUzqa/C6IpaNsBLpJA==}
     peerDependencies:
@@ -9317,25 +9311,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/popper@5.35.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-BjT6+ixRlIU2hWZICpMLsVPbz9lGH+k8Vrf0Ml62Ebv/JeVBIiBiciEK8j471qT+/qYUYs1AjdjKWqdIBZo2YA==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@popperjs/core': 2.11.5
-      '@semcore/animation': 2.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location': 4.25.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/outside-click': 3.25.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/portal': 3.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/portal@3.17.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-loy3TjJ3uOkRwB6GwyPg7++DrjBW+6ypTFoDvXc4B2J0kkSSiVTC83b5kbo0/NdP+7BWDYvzrGR6KPvo5UWFew==}
     peerDependencies:
@@ -9371,19 +9346,6 @@ packages:
     dependencies:
       '@semcore/core': 2.24.0(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.27.0(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@semcore/portal@3.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-hVPe2dH3BB/GXBtlz3PAczS/PFwYCf8sZm4hDEJYvseGEWt6rqguohtiyF5tMBEuL/cabFjNVNZzJA3gPpdsPg==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -9712,22 +9674,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@semcore/tooltip@6.34.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-muetZ/vDdvQtptQh5TpY6dHg7PA92cXWrhM9LRoL03/p1f4SRRW7J0ne+c9bb+5mTIeX78GcuAm6iFWxM5SVmg==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/popper': 5.35.4(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/portal': 3.27.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.28.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/typography@5.34.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-pLI3PwTZdcngStgWEcqDUHrYImBlDchv4o250QqtnSo1SavgN5V0Z1PtRoKrnlITqCuWqFgbnVUBhaIWBK4oRQ==}
     peerDependencies:
@@ -9793,21 +9739,6 @@ packages:
 
   /@semcore/utils@4.27.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-/Jc36c2kI/mp/Iah0ekZp5w3QuWRJAVaxoM+5Wm7ZGzy2tmgSuOHrPYATps0O03qKTYFFs9IaraNJokDs1pbjA==}
-    peerDependencies:
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@reshadow/core': 0.0.1-alpha.74
-      classnames: 2.2.6
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@semcore/utils@4.28.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-chUoPRE6V1Q2Ea/dvWehIpMhvq59gs4vq6EqZC2csRZyu5bNzT6eYYE26ctofQ6VKr3ChOJg73Qfxo6aZ/N/4Q==}
     peerDependencies:
       react: 16.8 - 18
       react-dom: 16.8 - 18
@@ -10206,6 +10137,10 @@ packages:
     dependencies:
       jest-matcher-utils: 27.5.1
       pretty-format: 27.5.1
+
+  /@types/js-levenshtein@1.1.3:
+    resolution: {integrity: sha512-jd+Q+sD20Qfu9e2aEXogiO3vpOC1PYJOUdyN9gvs4Qrvkg4wF43L5OhqrPeokdv8TL0/mXoYfpkcoGZMNN2pkQ==}
+    dev: true
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
@@ -10735,7 +10670,7 @@ packages:
       '@babel/parser': 7.21.3
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: false
 
   /@vue/compiler-core@3.3.7:
@@ -10744,7 +10679,7 @@ packages:
       '@babel/parser': 7.23.0
       '@vue/shared': 3.3.7
       estree-walker: 2.0.2
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /@vue/compiler-dom@3.3.4:
@@ -10772,8 +10707,8 @@ packages:
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
       magic-string: 0.30.5
-      postcss: 8.4.33
-      source-map-js: 1.0.2
+      postcss: 8.4.38
+      source-map-js: 1.2.0
     dev: false
 
   /@vue/compiler-sfc@3.3.7:
@@ -10787,8 +10722,8 @@ packages:
       '@vue/shared': 3.3.7
       estree-walker: 2.0.2
       magic-string: 0.30.5
-      postcss: 8.4.33
-      source-map-js: 1.0.2
+      postcss: 8.4.38
+      source-map-js: 1.2.0
     dev: true
 
   /@vue/compiler-ssr@3.3.4:
@@ -11726,7 +11661,7 @@ packages:
       num2fraction: 1.2.2
       picocolors: 0.2.1
       postcss: 7.0.39
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /available-typed-arrays@1.0.5:
@@ -13198,6 +13133,22 @@ packages:
       path-type: 4.0.0
     dev: true
 
+  /cosmiconfig@9.0.0(typescript@5.1.6):
+    resolution: {integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=4.9.5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      env-paths: 2.2.1
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      parse-json: 5.2.0
+      typescript: 5.1.6
+    dev: true
+
   /crc-32@1.2.2:
     resolution: {integrity: sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==}
     engines: {node: '>=0.8'}
@@ -13289,6 +13240,11 @@ packages:
     engines: {node: '>=12.22'}
     dev: true
 
+  /css-functions-list@3.2.2:
+    resolution: {integrity: sha512-c+N0v6wbKVxTu5gOBBFkr9BEdBWaqqjQeiJ8QvSRIJOf+UxlJh930m8e6/WNeODIK0mYLFkoONrnj16i2EcvfQ==}
+    engines: {node: '>=12 || >=16'}
+    dev: true
+
   /css-has-pseudo@0.10.0:
     resolution: {integrity: sha512-Z8hnfsZu4o/kt+AuFzeGpLVhFOGO9mluyHBaA2bA8aCGTwah5sT3WV/fTHH8UNZUytOIImuGPrl/prlb4oX4qQ==}
     engines: {node: '>=6.0.0'}
@@ -13364,7 +13320,7 @@ packages:
     dependencies:
       camelize: 1.0.1
       css-color-keywords: 1.0.0
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /css-tree@1.1.3:
@@ -13379,7 +13335,7 @@ packages:
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
     dependencies:
       mdn-data: 2.0.28
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: false
 
   /css-tree@2.3.1:
@@ -13387,7 +13343,7 @@ packages:
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
     dependencies:
       mdn-data: 2.0.30
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /css-value@0.0.1:
@@ -15468,7 +15424,7 @@ packages:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 6.0.2
       merge2: 1.4.1
-      micromatch: 4.0.5
+      micromatch: 4.0.7
     dev: true
 
   /fast-glob@3.3.2:
@@ -15618,6 +15574,13 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.0.4
+    dev: true
+
+  /file-entry-cache@9.0.0:
+    resolution: {integrity: sha512-6MgEugi8p2tiUhqO7GnPsmbCCzj0YRCwwaTbpGRyKZesjRSzkqkAE9fPp7V2yMs5hwfgbQLgdvSSkGNg1s5Uvw==}
+    engines: {node: '>=18'}
+    dependencies:
+      flat-cache: 5.0.0
     dev: true
 
   /file-type@10.11.0:
@@ -15797,12 +15760,24 @@ packages:
       rimraf: 3.0.2
     dev: true
 
+  /flat-cache@5.0.0:
+    resolution: {integrity: sha512-JrqFmyUl2PnPi1OvLyTVHnQvwQ0S+e6lGSwu8OkAZlSaNIZciTY2H/cOOROxsBA1m/LZNHDsqAgDZt6akWcjsQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      flatted: 3.3.1
+      keyv: 4.5.4
+    dev: true
+
   /flatted@3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
   /flatted@3.2.9:
     resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
+
+  /flatted@3.3.1:
+    resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
+    dev: true
 
   /flatten@1.0.3:
     resolution: {integrity: sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==}
@@ -15874,7 +15849,7 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       cross-spawn: 7.0.3
-      signal-exit: 4.0.2
+      signal-exit: 4.1.0
 
   /forever-agent@0.6.1:
     resolution: {integrity: sha512-j0KLYPhm6zeac4lz3oJ3o65qvgQCcPubiyotZrXqEaG4hNagNYO8qdlUrX5vwqv9ohqeT/Z3j6+yW067yWWdUw==}
@@ -16977,7 +16952,7 @@ packages:
       http-proxy: 1.18.1
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
-      micromatch: 4.0.5
+      micromatch: 4.0.7
     transitivePeerDependencies:
       - debug
     dev: true
@@ -17114,6 +17089,11 @@ packages:
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
+
+  /ignore@5.3.1:
+    resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
+    engines: {node: '>= 4'}
+    dev: true
 
   /image-size@0.5.5:
     resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
@@ -18062,7 +18042,7 @@ packages:
       jest-runner: 29.5.0
       jest-util: 29.5.0
       jest-validate: 29.5.0
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       parse-json: 5.2.0
       pretty-format: 29.5.0
       slash: 3.0.0
@@ -18140,7 +18120,7 @@ packages:
       jest-regex-util: 29.4.3
       jest-util: 29.5.0
       jest-worker: 29.5.0
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.3
@@ -18181,7 +18161,7 @@ packages:
       '@types/stack-utils': 2.0.1
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       pretty-format: 29.5.0
       slash: 3.0.0
       stack-utils: 2.0.6
@@ -18433,6 +18413,11 @@ packages:
   /js-base64@2.6.4:
     resolution: {integrity: sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ==}
 
+  /js-levenshtein@1.1.6:
+    resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -18483,7 +18468,7 @@ packages:
       chalk: 4.1.2
       flow-parser: 0.206.0
       graceful-fs: 4.2.11
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       neo-async: 2.6.2
       node-dir: 0.1.17
       recast: 0.21.5
@@ -18708,6 +18693,10 @@ packages:
 
   /known-css-properties@0.27.0:
     resolution: {integrity: sha512-uMCj6+hZYDoffuvAJjFAPz56E9uoowFHmTkqRtRq5WyC5Q6Cu/fTZKNQpX/RbzChBYLLl3lo8CjFZBAZXq9qFg==}
+    dev: true
+
+  /known-css-properties@0.31.0:
+    resolution: {integrity: sha512-sBPIUGTNF0czz0mwGGUoKKJC8Q7On1GPbCSFPfyEsfHb2DyBG0Y4QtV+EVWpINSaiGKZblDNuF5AezxSgOhesQ==}
     dev: true
 
   /ky@0.33.3:
@@ -19353,6 +19342,11 @@ packages:
     resolution: {integrity: sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==}
     dev: false
 
+  /meow@13.2.0:
+    resolution: {integrity: sha512-pxQJQzB6djGPXh08dacEloMFopsOqGVRKFPYvPOt9XDZ1HasbgDZA74CJGreSU4G3Ak7EFJGoiH2auq+yXISgA==}
+    engines: {node: '>=18'}
+    dev: true
+
   /meow@3.7.0:
     resolution: {integrity: sha512-TNdwZs0skRlpPpCUK25StC4VH+tP5GgeY1HQOOGP+lQ2xtdkN2VtT/5tiX9k3IWpkBPV9b3LsAWXn4GGi/PrSA==}
     engines: {node: '>=0.10.0'}
@@ -19487,7 +19481,7 @@ packages:
       jest-regex-util: 27.5.1
       jest-util: 27.5.1
       jest-worker: 27.5.1
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       node-abort-controller: 3.1.1
       nullthrows: 1.1.1
       walker: 1.0.8
@@ -20067,6 +20061,13 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.1
 
+  /micromatch@4.0.7:
+    resolution: {integrity: sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==}
+    engines: {node: '>=8.6'}
+    dependencies:
+      braces: 3.0.2
+      picomatch: 2.3.1
+
   /mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
@@ -20275,12 +20276,6 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: false
-
-  /nanoid@3.3.6:
-    resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-    dev: true
 
   /nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
@@ -21019,7 +21014,7 @@ packages:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
     engines: {node: '>=8'}
     dependencies:
-      '@babel/code-frame': 7.18.6
+      '@babel/code-frame': 7.22.13
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
@@ -21147,6 +21142,10 @@ packages:
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
+  /picocolors@1.0.1:
+    resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+    dev: true
+
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
@@ -21255,10 +21254,26 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
 
+  /playwright-core@1.40.0:
+    resolution: {integrity: sha512-fvKewVJpGeca8t0ipM56jkVSU6Eo0RmFvQ/MaCQNDYm+sdvKkMBBWTE1FdeMqIdumRaXXjZChWHvIzCGM/tA/Q==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: false
+
   /playwright-core@1.43.0:
     resolution: {integrity: sha512-iWFjyBUH97+pUFiyTqSLd8cDMMOS0r2ZYz2qEsPjH8/bX++sbIJT35MSwKnp1r/OQBAqC5XO99xFbJ9XClhf4w==}
     engines: {node: '>=16'}
     hasBin: true
+
+  /playwright@1.40.0:
+    resolution: {integrity: sha512-gyHAgQjiDf1m34Xpwzaqb76KgfzYrhK7iih+2IzcOCoZWr/8ZqmdBw+t0RU85ZmfJMgtgAiNtBQ/KS2325INXw==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.40.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
 
   /playwright@1.43.0:
     resolution: {integrity: sha512-SiOKHbVjTSf6wHuGCbqrEyzlm6qvXcv7mENP+OZon1I07brfZLGdfWV0l/efAzVx7TF3Z45ov1gPEkku9q25YQ==}
@@ -21310,7 +21325,7 @@ packages:
     resolution: {integrity: sha512-clkFxk/9pcdb4Vkn0hAHq3YnxBQ2p0CGD1dy24jN+reBck+EWxMbxSUqN4Yj7t0w8csl87K6p0gxBe1utkJsYA==}
     dependencies:
       postcss: 7.0.39
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
     dev: false
 
   /postcss-attribute-case-insensitive@6.0.2(postcss@8.4.33):
@@ -21769,7 +21784,7 @@ packages:
       postcss: '8'
     dependencies:
       postcss: 8.4.33
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.1
     dev: false
@@ -22329,13 +22344,22 @@ packages:
     resolution: {integrity: sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==}
     dev: true
 
-  /postcss-safe-parser@6.0.0(postcss@8.4.24):
+  /postcss-safe-parser@6.0.0(postcss@8.4.33):
     resolution: {integrity: sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.3.3
     dependencies:
-      postcss: 8.4.24
+      postcss: 8.4.33
+    dev: true
+
+  /postcss-safe-parser@7.0.0(postcss@8.4.38):
+    resolution: {integrity: sha512-ovehqRNVCpuFzbXoTb4qLtyzK3xn3t/CUBxOs8LsnQjQrShaB4lKiHoVqY8ANaC0hBMHq5QVWk77rwGklFUDrg==}
+    engines: {node: '>=18.0'}
+    peerDependencies:
+      postcss: ^8.4.31
+    dependencies:
+      postcss: 8.4.38
     dev: true
 
   /postcss-selector-matches@4.0.0:
@@ -22384,6 +22408,14 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
+
+  /postcss-selector-parser@6.1.0:
+    resolution: {integrity: sha512-UMz42UD0UY0EApS0ZL9o1XnLhSTtvvvLe5Dc2H2O56fvRZi+KulDyf5ctDhhtYJBGKStV2FL1fy6253cmLgqVQ==}
+    engines: {node: '>=4'}
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+    dev: true
 
   /postcss-svgo@5.1.0(postcss@8.4.33):
     resolution: {integrity: sha512-D75KsH1zm5ZrHyxPakAxJWtkyXew5qwS70v56exwvw542d9CRtTo78K0WeFxZB4G7JXKKMbEZtZayTGdIky/eA==}
@@ -22449,30 +22481,21 @@ packages:
       picocolors: 0.2.1
       source-map: 0.6.1
 
-  /postcss@8.4.24:
-    resolution: {integrity: sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg==}
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: 3.3.6
-      picocolors: 1.0.0
-      source-map-js: 1.0.2
-    dev: true
-
   /postcss@8.4.33:
     resolution: {integrity: sha512-Kkpbhhdjw2qQs2O2DGX+8m5OVqEcbB9HRBvuYM9pgrjEFUg30A9LmXNlTAUj4S9kgtGyrMbTzVjH7E+s5Re2yg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
 
-  /postcss@8.4.35:
-    resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
+  /postcss@8.4.38:
+    resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
 
   /posthtml-attrs-parser@0.1.1:
     resolution: {integrity: sha512-ZFZfTIb74uHFdn80+7DyP+qrryDX/Bb7Q2rUaByh6iUJ1HlKGSxkChKORpwIUHjChJDzcKEtnyXxzXzcjpH9CQ==}
@@ -23937,7 +23960,7 @@ packages:
     dependencies:
       chokidar: 3.5.1
       immutable: 4.3.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /sax@1.2.4:
@@ -24254,6 +24277,7 @@ packages:
   /signal-exit@4.0.2:
     resolution: {integrity: sha512-MY2/qGx4enyjprQnFaZsHib3Yadh3IXyV2C321GY0pjGfVBu4un0uDJkwgdxqO+Rdx8JMT8IfJIRwbYVz3Ob3Q==}
     engines: {node: '>=14'}
+    dev: true
 
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
@@ -24424,8 +24448,8 @@ packages:
       is-plain-obj: 1.1.0
     dev: true
 
-  /source-map-js@1.0.2:
-    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
+  /source-map-js@1.2.0:
+    resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
 
   /source-map-resolve@0.5.3:
@@ -24973,6 +24997,25 @@ packages:
       stylelint: 15.9.0
     dev: true
 
+  /stylelint-config-recommended@14.0.0(stylelint@16.6.1):
+    resolution: {integrity: sha512-jSkx290CglS8StmrLp2TxAppIajzIBZKYm3IxT89Kg6fGlxbPiTiyH9PS5YUuVAFwaJLl1ikiXX0QWjI0jmgZQ==}
+    engines: {node: '>=18.12.0'}
+    peerDependencies:
+      stylelint: ^16.0.0
+    dependencies:
+      stylelint: 16.6.1(typescript@5.1.6)
+    dev: true
+
+  /stylelint-config-standard@36.0.0(stylelint@16.6.1):
+    resolution: {integrity: sha512-3Kjyq4d62bYFp/Aq8PMKDwlgUyPU4nacXsjDLWJdNPRUgpuxALu1KnlAHIj36cdtxViVhXexZij65yM0uNIHug==}
+    engines: {node: '>=18.12.0'}
+    peerDependencies:
+      stylelint: ^16.1.0
+    dependencies:
+      stylelint: 16.6.1(typescript@5.1.6)
+      stylelint-config-recommended: 14.0.0(stylelint@16.6.1)
+    dev: true
+
   /stylelint@15.9.0:
     resolution: {integrity: sha512-sXtAZi64CllWr6A+8ymDWnlIaYwuAa7XRmGnJxLQXFNnLjd3Izm4HAD+loKVaZ7cpK6SLxhAUX1lwPJKGCn0mg==}
     engines: {node: ^14.13.1 || >=16.0.0}
@@ -25005,10 +25048,10 @@ packages:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.24
+      postcss: 8.4.33
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.1
-      postcss-safe-parser: 6.0.0(postcss@8.4.24)
+      postcss-safe-parser: 6.0.0(postcss@8.4.33)
       postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
@@ -25021,6 +25064,55 @@ packages:
       write-file-atomic: 5.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /stylelint@16.6.1(typescript@5.1.6):
+    resolution: {integrity: sha512-yNgz2PqWLkhH2hw6X9AweV9YvoafbAD5ZsFdKN9BvSDVwGvPh+AUIrn7lYwy1S7IHmtFin75LLfX1m0D2tHu8Q==}
+    engines: {node: '>=18.12.0'}
+    hasBin: true
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.6.3(@csstools/css-tokenizer@2.3.1)
+      '@csstools/css-tokenizer': 2.3.1
+      '@csstools/media-query-list-parser': 2.1.11(@csstools/css-parser-algorithms@2.6.3)(@csstools/css-tokenizer@2.3.1)
+      '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.1.0)
+      '@dual-bundle/import-meta-resolve': 4.1.0
+      balanced-match: 2.0.0
+      colord: 2.9.3
+      cosmiconfig: 9.0.0(typescript@5.1.6)
+      css-functions-list: 3.2.2
+      css-tree: 2.3.1
+      debug: 4.3.4(supports-color@5.5.0)
+      fast-glob: 3.3.2
+      fastest-levenshtein: 1.0.16
+      file-entry-cache: 9.0.0
+      global-modules: 2.0.0
+      globby: 11.1.0
+      globjoin: 0.1.4
+      html-tags: 3.3.1
+      ignore: 5.3.1
+      imurmurhash: 0.1.4
+      is-plain-object: 5.0.0
+      known-css-properties: 0.31.0
+      mathml-tag-names: 2.1.3
+      meow: 13.2.0
+      micromatch: 4.0.7
+      normalize-path: 3.0.0
+      picocolors: 1.0.1
+      postcss: 8.4.38
+      postcss-resolve-nested-selector: 0.1.1
+      postcss-safe-parser: 7.0.0(postcss@8.4.38)
+      postcss-selector-parser: 6.1.0
+      postcss-value-parser: 4.2.0
+      resolve-from: 5.0.0
+      string-width: 4.2.3
+      strip-ansi: 7.1.0
+      supports-hyperlinks: 3.0.0
+      svg-tags: 1.0.0
+      table: 6.8.2
+      write-file-atomic: 5.0.1
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /stylis@4.1.3:
@@ -25115,6 +25207,17 @@ packages:
 
   /table@6.8.1:
     resolution: {integrity: sha512-Y4X9zqrCftUhMeH2EptSSERdVKt/nEdijTOacGD/97EKjhQ/Qs8RTlEGABSJNNN8lac9kheH+af7yAkEWlgneA==}
+    engines: {node: '>=10.0.0'}
+    dependencies:
+      ajv: 8.12.0
+      lodash.truncate: 4.4.2
+      slice-ansi: 4.0.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+    dev: true
+
+  /table@6.8.2:
+    resolution: {integrity: sha512-w2sfv80nrAh2VCbqR5AK27wswXhqcck2AhfnNW76beQXskGZ1V12GwS//yYVa3d3fcvAip2OUnbDAjW2k3v9fA==}
     engines: {node: '>=10.0.0'}
     dependencies:
       ajv: 8.12.0
@@ -26296,7 +26399,7 @@ packages:
     dependencies:
       '@types/node': 18.16.15
       esbuild: 0.15.18
-      postcss: 8.4.33
+      postcss: 8.4.38
       resolve: 1.22.2
       rollup: 2.79.1
     optionalDependencies:
@@ -26333,7 +26436,7 @@ packages:
     dependencies:
       '@types/node': 18.16.15
       esbuild: 0.18.20
-      postcss: 8.4.33
+      postcss: 8.4.38
       rollup: 3.29.2
     optionalDependencies:
       fsevents: 2.3.3
@@ -26368,7 +26471,7 @@ packages:
     dependencies:
       '@types/node': 18.16.15
       esbuild: 0.18.20
-      postcss: 8.4.33
+      postcss: 8.4.38
       rollup: 3.29.2
     optionalDependencies:
       fsevents: 2.3.3
@@ -26403,7 +26506,7 @@ packages:
     dependencies:
       '@types/node': 18.16.15
       esbuild: 0.19.12
-      postcss: 8.4.35
+      postcss: 8.4.38
       rollup: 4.12.0
     optionalDependencies:
       fsevents: 2.3.3
