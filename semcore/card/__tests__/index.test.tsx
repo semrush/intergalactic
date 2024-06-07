@@ -101,7 +101,7 @@ describe('Card', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.sequential('should support keyboard navigation to the Hint', async ({ expect }) => {
+  test.sequential('should support keyboard navigation to the Tooltip', async ({ expect }) => {
     const tooltipContent = 'Some tooltip content';
 
     render(
@@ -115,6 +115,7 @@ describe('Card', () => {
     );
 
     await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
 
     const hints = await screen.findAllByText(tooltipContent);
 

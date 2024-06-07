@@ -412,8 +412,8 @@ importers:
         specifier: 4.36.1
         version: link:../icon
       '@semcore/tooltip':
-        specifier: 6.34.0
-        version: 6.34.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.34.1
+        version: link:../tooltip
       '@semcore/typography':
         specifier: 5.35.1
         version: link:../typography
