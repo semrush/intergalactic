@@ -1,5 +1,5 @@
 import React from 'react';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/utils/lib/core';
 import Popper, {
   PopperContext,
   PopperProps,
@@ -91,13 +91,27 @@ export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmi
     interaction?: 'hover' | 'click';
   };
 
+/**
+ * DescriptionTooltipPopper must have an accessible name (aria-dialog-name).
+ * It should describe popper content.
+ */
+type DescriptionTooltipPopperAriaProps = Intergalactic.RequireAtLeastOne<{
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  title?: string;
+}>;
+
 declare const DescriptionTooltip: Intergalactic.Component<
   'div',
   DescriptionTooltipProps,
   TooltipTriggerContext
 > & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
-  Popper: Intergalactic.Component<'div', DescriptionTooltipProps, TooltipContext>;
+  Popper: Intergalactic.Component<
+    'div',
+    DescriptionTooltipProps & DescriptionTooltipPopperAriaProps,
+    TooltipContext
+  >;
 };
 
 export default Tooltip;
