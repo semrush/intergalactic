@@ -1,21 +1,16 @@
 import React from 'react';
 import Button from 'intergalactic/button';
+import Badge from '@semcore/ui/badge';
 import CheckM from 'intergalactic/icon/Check/m';
-import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
 
 const Demo = () => {
   return (
     <>
-      <Button addonLeft={CheckM} addonRight={ArrowRightM}>
-        Button
-      </Button>
+      <Button addonLeft={CheckM}>Button</Button>
       <Button ml={2}>
-        <Button.Addon>
-          <CheckM />
-        </Button.Addon>
         <Button.Text>Button</Button.Text>
         <Button.Addon>
-          <ArrowRightM />
+          <Badge bg='--intergalactic-control-primary-success'>new</Badge>
         </Button.Addon>
       </Button>
     </>

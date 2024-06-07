@@ -2,7 +2,7 @@ import React from 'react';
 import FormatText from 'intergalactic/format-text';
 import { List } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
-import EditM from 'intergalactic/icon/Edit/m';
+import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
 
 class Demo extends React.PureComponent {
   render() {
@@ -13,12 +13,12 @@ class Demo extends React.PureComponent {
             The Intergalactic Design System is so cutting-edge that even black holes are jealous of
             its sleek interface,{' '}
             <Link href='#' inline noWrap={false}>
-              <Link.Addon>
-                <EditM />
-              </Link.Addon>
               <Link.Text>look at them</Link.Text>
+              <Link.Addon>
+                <LinkExternalM />
+              </Link.Addon>
             </Link>
-            !
+            .
           </p>
           <p>
             Aliens from distant galaxies use it to{' '}

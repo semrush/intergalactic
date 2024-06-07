@@ -22,15 +22,12 @@ export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperPro
     theme?: 'default' | 'warning' | 'invert';
 
     /**
-     * Tooltip should have only one interaction - `hover`. You shouldn't use it with another interactions.
-     * We'll delete this prop in next major release.
+     * Hover interaction means that popper will be shown on mouse hover or keyboard focus.
+     * Click interactions means that popper will be shown on mouse click or keyboard Space/Enter keydown.
+     * Focus interaction means that popper will be shown on mouse or keyboard focus.
+     * @default hover
      */
-    interaction?:
-      | 'hover'
-      | 'click' /** @deprecated */
-      | 'focus' /** @deprecated */
-      | 'none' /** @deprecated */
-      | eventInteraction /** @deprecated */;
+    interaction?: 'hover' | 'click' | 'focus' | 'none' | eventInteraction;
   };
 
 export type TooltipTriggerContext = PopperContext & {
@@ -58,13 +55,7 @@ export type TooltipHintProps = Intergalactic.InternalTypings.EfficientOmit<
      * Tooltip theme. You can use the default themes or create your own
      * @default default
      */
-    theme?: 'default' | 'warning' | 'invert';
-
-    /**
-     * Tooltip should have only one interaction - `hover`. You shouldn't use it with another interactions.
-     * We'll delete this prop in next major release.
-     */
-    interaction?: 'hover' | 'focus';
+    theme?: 'default' | 'invert';
   };
 export type TooltipHintPopperProps = Intergalactic.InternalTypings.EfficientOmit<
   HintProps,
@@ -93,8 +84,9 @@ export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmi
     theme?: 'default' | 'warning' | 'invert';
 
     /**
-     * Tooltip should have only one interaction - `hover`. You shouldn't use it with another interactions.
-     * We'll delete this prop in next major release.
+     * Hover interaction means that popper will be shown on mouse hover or keyboard focus.
+     * Click interactions means that popper will be shown on mouse click or keyboard Space/Enter keydown.
+     * @default click
      */
     interaction?: 'hover' | 'click';
   };

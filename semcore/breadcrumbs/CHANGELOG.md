@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.33.2] - 2024-06-04
+
+### Changed
+
+- Added `nav` tag for breadcrumbs container.
+- Added default `a` tag for breadcrumb item.
+- Wrapped breadcrumb items in an `ol` list.
+
 ## [5.33.1] - 2024-05-28
 
 ### Changed

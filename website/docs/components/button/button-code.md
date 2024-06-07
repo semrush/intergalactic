@@ -5,7 +5,10 @@ tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-
 
 ## Addons
 
-Addons can be installed either by passing the required `tag` to the `addonLeft`/`addonRight` property or by unrending `Button.Addon`/`Button.Text` into the component body. The examples below are the same.
+Addons can be added:
+
+- By passing the required `tag` to the `addonLeft`/`addonRight` property.
+- By nesting `Button.Addon`/`Button.Text` into the component body.
 
 ::: sandbox
 
@@ -15,9 +18,9 @@ Addons can be installed either by passing the required `tag` to the `addonLeft`/
 
 :::
 
-## Button with Icon
+## Button with icon
 
-To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
+To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`.
 
 ::: sandbox
 
@@ -27,7 +30,11 @@ To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 
 :::
 
-## Button accessibility
+## Link as button
+
+To create a button that acts like a link, refer to the [Link as button example](/components/link/link-code#link-as-button).
+
+## Button with no visible text
 
 If there is no visible text in the button, it is necessary to add an `aria-label` with a short description of an action this button performs.
 
@@ -35,6 +42,18 @@ If there is no visible text in the button, it is necessary to add an `aria-label
 
 <script lang="tsx">
   export Demo from './examples/button_accessibility.tsx';
+</script>
+
+:::
+
+## Button with loading state
+
+You could add a `loading` prop to the `Button` or manually add an `Addon` with `Spin` if you need the button text to remain visible.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/button_with_loading.tsx';
 </script>
 
 :::

@@ -1,4 +1,10 @@
-import { FormProps, FieldProps } from 'react-final-form';
+import {
+  FormProps,
+  FieldProps,
+  FieldInputProps,
+  FieldMetaState,
+  FieldRenderProps,
+} from 'react-final-form';
 
 import { Intergalactic } from '@semcore/core';
 import Button from '@semcore/button';
@@ -27,7 +33,11 @@ export type FeedbackFormProps = FormProps & {
 };
 
 declare const FeedbackForm: Intergalactic.Component<'form', FeedbackFormProps> & {
-  Item: Intergalactic.Component<'div', FieldProps<any, any>>;
+  Item: Intergalactic.Component<
+    'div',
+    FieldProps<any, any>,
+    { input: FieldInputProps<any> & { state: 'normal' | 'invalid' }; meta: FieldMetaState<any> }
+  >;
   Success: typeof Box;
   Submit: typeof Button;
   Cancel: typeof Button;
