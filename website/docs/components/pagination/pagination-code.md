@@ -3,7 +3,7 @@ title: Pagination
 tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
-### Basic usage
+## Basic usage
 
 ::: sandbox
 
@@ -13,7 +13,7 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 :::
 
-### Extended usage
+## Extended usage
 
 ::: sandbox
 
