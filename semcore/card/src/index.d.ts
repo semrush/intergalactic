@@ -7,7 +7,7 @@ import { Text, TextProps } from '@semcore/typography';
 export interface ITitleProps extends TitleProps, UnknownProperties {}
 export type TitleProps = TextProps & {
   /**
-   * Content of the tooltip that is displayed when hovering over the info icon in the end of title.
+   * Content of the tooltip that is displayed when hovering over the info icon in the end of title. Use it if you don't need Title with Ellipsis.
    */
   innerHint?: React.ReactNode;
   /**
@@ -19,6 +19,10 @@ export type TitleProps = TextProps & {
    * @deprecated
    */
   hint?: React.ReactNode;
+  /** Aria-label for the InnerHint icon */
+  innerHintAriaLabel?: string;
+  /** Aria-label for the HintAfter icon */
+  hintAfterAriaLabel?: string;
 };
 
 declare const Card: Intergalactic.Component<'div', BoxProps> & {

@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.34.2] - 2024-05-31
+## [6.34.3] - 2024-05-31
 
 ### Fixed
 
@@ -14,6 +14,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - `aria-haspopup` of `DescriptionTooltip` changed to `dialog`.
+
+## [6.34.2] - 2024-06-04
+
+### Fixed
+
+- `DescriptionTooltip` default children.
 
 ## [6.34.1] - 2024-05-31
 

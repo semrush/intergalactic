@@ -564,12 +564,19 @@ video {
 
 /* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
-h2[class] {
-  font-weight: var(--intergalactic-bold);
+h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
+  font-weight: var(--intergalactic-bold, 700);
 }
 
 .vp-doc a[class]:hover {
   color: var(--vp-c-indigo-1) !important;
+}
+
+.vp-doc h1[class], .vp-doc h2[class], .vp-doc h3[class], .vp-doc h4[class], .vp-doc h5[class], .vp-doc h6[class] {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  margin: inherit;
 }
 
 .vp-doc ol[class] {

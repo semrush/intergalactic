@@ -72,5 +72,6 @@
   "@semcore/utils": "4.28.1",
   "@semcore/widget-empty": "4.28.1",
   "@semcore/wizard": "2.37.1",
-  "@semcore/i18n-unplugin": "0.17.21"
+  "@semcore/i18n-unplugin": "0.17.21",
+  "@semcore/stylelint-plugin": "0.0.1"
 }

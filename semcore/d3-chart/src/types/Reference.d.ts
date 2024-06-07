@@ -27,8 +27,19 @@ export type ReferenceLineTitleProps = Context & {
 export interface IReferenceLineBackgroundProps
   extends ReferenceLineBackgroundProps,
     UnknownProperties {}
-export type ReferenceLineBackgroundProps = Context & {
-  /** The position of the axis relative reference line */
+export type ReferenceBackgroundProps = Context & {
+  /** The position relative the `value` */
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  /** Value element of data */
+  value?: any;
+  /** Value of the background end */
+  endValue?: number | string;
+};
+/** @deprecated use ReferenceBackgroundProps instead **/
+export type ReferenceLineBackgroundProps = ReferenceBackgroundProps;
+
+export type ReferenceStripesProps = Context & {
+  /** The position relative the `value` */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value?: any;
@@ -36,9 +47,24 @@ export type ReferenceLineBackgroundProps = Context & {
   endValue?: number | string;
 };
 
-declare const ReferenceLine: IntergalacticD3Component<'line', ReferenceLineProps, Context> & {
+export declare const ReferenceLine: IntergalacticD3Component<
+  'line',
+  ReferenceLineProps,
+  Context
+> & {
   Title: IntergalacticD3Component<'text', ReferenceLineTitleProps, Context>;
+  /**
+   * @deprecated use `ReferenceBackground` instead.
+   */
   Background: IntergalacticD3Component<'rect', ReferenceLineBackgroundProps, Context>;
 };
-
-export default ReferenceLine;
+export declare const ReferenceBackground: IntergalacticD3Component<
+  'rect',
+  ReferenceLineBackgroundProps,
+  Context
+>;
+export declare const ReferenceStripes: IntergalacticD3Component<
+  'rect',
+  ReferenceStripesProps,
+  Context
+>;
