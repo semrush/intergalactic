@@ -12,7 +12,7 @@
 }
 .card:hover {
   cursor: pointer;
-  border: 2px solid var(--intergalactic-border-info-active);
+  border: 2px solid var(--vp-c-brand-1);
   box-shadow: var(--intergalactic-box-shadow-card);
   transition: all ease-in-out 100ms;
   text-decoration: underline;

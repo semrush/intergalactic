@@ -13,9 +13,9 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 :::
 
-<!-- ## Two addons
+## Two addons
 
-Let's remove this example?
+**Folks, let's remove this example?**
 
 ::: sandbox
 
@@ -23,4 +23,4 @@ Let's remove this example?
   export Demo from './examples/two_addons.tsx';
 </script>
 
-::: -->
+:::
