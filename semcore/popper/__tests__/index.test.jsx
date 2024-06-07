@@ -167,7 +167,7 @@ describe('focus control', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Popper visible disablePortal>
-        <Popper.Popper autoFocus data-testid='popper' tabIndex={0}>
+        <Popper.Popper autoFocus data-testid='popper'>
           <input />
         </Popper.Popper>
       </Popper>,
@@ -187,7 +187,7 @@ describe('focus control', () => {
         <input />
         <input />
         <Popper visible disablePortal>
-          <Popper.Popper data-testid='popper' tabIndex={0}>
+          <Popper.Popper data-testid='popper'>
             <div tabIndex={0} />
           </Popper.Popper>
         </Popper>
@@ -221,7 +221,7 @@ describe('focus control', () => {
         <input />
         <input />
         <Popper visible disablePortal>
-          <Popper.Popper autoFocus data-testid='popper' tabIndex={0}>
+          <Popper.Popper autoFocus data-testid='popper'>
             <div tabIndex={0} data-testid='div-1' />
             <div tabIndex={0} data-testid='div-2' />
             <div tabIndex={0} data-testid='div-3' />
@@ -268,7 +268,7 @@ describe('focus control', () => {
           <Popper.Trigger data-testid='trigger' tabIndex={0}>
             trigger
           </Popper.Trigger>
-          <Popper.Popper autoFocus data-testid='popper' tabIndex={0}>
+          <Popper.Popper autoFocus data-testid='popper'>
             <div tabIndex={0} data-testid='focusable-in-popper'>
               popper
             </div>
@@ -307,7 +307,7 @@ describe('focus control', () => {
     vi.useRealTimers();
   });
 
-  test('focus follow', async ({ expect }) => {
+  test('focus follow', () => {
     const { getByTestId } = render(
       <>
         <input data-testid='input-before-popper' />
@@ -315,7 +315,7 @@ describe('focus control', () => {
           <Popper.Trigger data-testid='trigger'>
             <div tabIndex={0} data-testid='focusable-in-trigger' />
           </Popper.Trigger>
-          <Popper.Popper autoFocus data-testid='popper' tabIndex={0}>
+          <Popper.Popper autoFocus data-testid='popper'>
             <div tabIndex={0}>button</div>
           </Popper.Popper>
         </Popper>
@@ -323,16 +323,33 @@ describe('focus control', () => {
       </>,
     );
 
-    await userEvent.keyboard('[Tab]');
+    act(() => getByTestId('input-before-popper').focus());
     expect(getByTestId('input-before-popper')).toHaveFocus();
-
-    await userEvent.keyboard('[Tab]');
+    vi.useFakeTimers();
+    fireEvent.keyDown(getByTestId('input-before-popper'), { key: 'Tab' });
+    act(() => {
+      vi.runAllTimers();
+    });
+    act(() => getByTestId('focusable-in-trigger').focus());
     expect(getByTestId('focusable-in-trigger')).toHaveFocus();
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    act(() => {
+      vi.runAllTimers();
+    });
+    act(() => {
+      vi.runAllTimers();
+    });
+
     expect(getByTestId('popper')).toHaveFocus();
 
-    await userEvent.keyboard('[Escape]');
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    fireEvent.keyDown(getByTestId('popper'), { key: 'Escape' });
+    act(() => {
+      vi.runAllTimers();
+    });
+    act(() => {
+      vi.runAllTimers();
+    });
+
     expect(getByTestId('focusable-in-trigger')).toHaveFocus();
+    vi.useRealTimers();
   });
 });

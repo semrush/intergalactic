@@ -685,7 +685,7 @@ function PopperPopper(props) {
   );
 }
 
-PopperPopper.enhance = [keyboardFocusEnhance(false)];
+PopperPopper.enhance = [keyboardFocusEnhance()];
 
 export default createComponent(Popper, {
   Trigger,

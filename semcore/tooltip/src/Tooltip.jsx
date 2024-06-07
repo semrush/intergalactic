@@ -85,6 +85,7 @@ class TooltipRoot extends Component {
       resolveColor,
       role: 'tooltip',
       'aria-live': ariaLive,
+      tabIndex: -1,
     };
   }
 
