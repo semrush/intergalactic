@@ -84,8 +84,6 @@ If a link has no visible text, it is important to add [Tooltip](/components/tool
 
 ## Disabled link
 
-<!-- Guys, don't forgat to update the example and add short description for this case. -->
-
 ::: sandbox
 
 <script lang="tsx">
