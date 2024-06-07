@@ -19,6 +19,28 @@ Intergalactic Design System has:
 
 These sets form the default theme of the design system.
 
+## Stylelint plugin
+
+The stylelint plugin help developers avoid mistakes in design token names. It's part of [intergalactic npm package](https://www.npmjs.com/package/intergalactic) but also might be installed as [a separate package](https://www.npmjs.com/package/@semcore/stylelint-plugin).
+
+```json
+// .stylelintrc.json
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["intergalactic/stylelint-plugin"],
+  "rules": {
+		"intergalactic/design-tokens": true
+	}
+}
+```
+
+### Available options
+
+- `include` - adds custom design tokens to the list of allowed tokens.
+- `exclude` - removes design tokens from the list of allowed tokens.
+- `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
+- `tokensPrefix` - design tokens (default is `--intergalactic-`). Only css variables with this prefix are considered as design tokens.
+
 ## Base tokens (palette)
 
 The list of base tokens is our palette. It was built with [Huetone tool](https://huetone.ardov.me/) (learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).

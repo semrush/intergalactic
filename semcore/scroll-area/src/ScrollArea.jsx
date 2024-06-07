@@ -65,16 +65,43 @@ class ScrollAreaRoot extends Component {
     this.$wrapper = findDOMNode(node);
   };
 
+  setStyleSizeProperty = (element, propertyKey, value) => {
+    let propertyValue = value;
+
+    if (typeof value === 'number') {
+      propertyValue = value < 1 ? `${100 * value}%` : `${value}px`;
+    }
+
+    element.style.setProperty(propertyKey, propertyValue);
+  };
+
   // for max height/width
   calculateSizeContainer() {
     const size = { width: '', height: '' };
     if (!this.$container || !this.$wrapper) return size;
     const { scrollWidth, scrollHeight } = this.$container;
     const style = window.getComputedStyle(this.$wrapper);
-    const maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
-    const maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
+    const parent = this.$wrapper.parentElement;
+    const parentRect = parent?.getBoundingClientRect() ?? { width: 0, height: 0 };
+    const { wMax, hMax } = this.asProps;
+
+    if (wMax) this.setStyleSizeProperty(this.$wrapper, 'max-width', wMax);
+    if (hMax) this.setStyleSizeProperty(this.$wrapper, 'max-height', hMax);
+
+    let maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
+    let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth) {
+      if (parent.scrollWidth > parentRect.width) {
+        const diff = parent.scrollWidth - parentRect.width;
+
+        if (diff < maxWidth) {
+          maxWidth = maxWidth - diff;
+
+          this.$wrapper.style.setProperty('max-width', `${maxWidth}px`);
+        }
+      }
+
       if (scrollWidth > maxWidth) {
         size.width = `${maxWidth}px`;
       } else {
@@ -83,6 +110,16 @@ class ScrollAreaRoot extends Component {
     }
 
     if (maxHeight) {
+      if (parent.scrollHeight > parentRect.height) {
+        const diff = parent.scrollHeight - parentRect.height;
+
+        if (diff < maxHeight) {
+          maxHeight = maxHeight - diff;
+
+          this.$wrapper.style.setProperty('max-height', `${maxHeight}px`);
+        }
+      }
+
       if (scrollHeight > maxHeight) {
         size.height = `${maxHeight}px`;
       } else {

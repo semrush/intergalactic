@@ -4,10 +4,6 @@ fileSource: card
 tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
-::: tip
-In the last major update, component was divided into two parts: `Header` and `Body`. It was done to make it easier to use the component. Also, `Card` now has a white background.
-:::
-
 ## Description
 
 **Card** is a component for visually grouping data and other components into widgets.

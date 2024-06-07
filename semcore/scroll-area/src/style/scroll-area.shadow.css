@@ -21,7 +21,6 @@ SShadowHorizontal {
   &:before,
   &:after {
     top: 0;
-    display: block;
     width: 5px;
     height: 100%;
   }
@@ -30,12 +29,14 @@ SShadowHorizontal {
 SShadowHorizontal[position='median'] {
   &:before {
     left: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-left,
     linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 
   &:after {
     right: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-right,
     linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
@@ -44,6 +45,7 @@ SShadowHorizontal[position='median'] {
 SShadowHorizontal[position='start'] {
   &:before {
     left: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-left,
     linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
@@ -52,6 +54,7 @@ SShadowHorizontal[position='start'] {
 SShadowHorizontal[position='end'] {
   &:after {
     right: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-right,
     linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
@@ -70,7 +73,6 @@ SShadowVertical {
   &:before,
   &:after {
     left: 0;
-    display: block;
     width: 100%;
     height: 5px;
   }
@@ -79,12 +81,14 @@ SShadowVertical {
 SShadowVertical[position='median'] {
   &:before {
     top: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-top,
     linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
 
   &:after {
     bottom: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-bottom,
     linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
@@ -93,6 +97,7 @@ SShadowVertical[position='median'] {
 SShadowVertical[position='start'] {
   &:before {
     top: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-top,
     linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }
@@ -101,6 +106,7 @@ SShadowVertical[position='start'] {
 SShadowVertical[position='end'] {
   &:after {
     bottom: 0;
+    display: block;
     background: var(--intergalactic-scroll-area-shadow-bottom,
     linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%));
   }

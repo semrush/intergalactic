@@ -1,6 +1,13 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Plot, ReferenceLine, XAxis, YAxis } from 'intergalactic/d3-chart';
+import {
+  Plot,
+  ReferenceLine,
+  ReferenceStripes,
+  ReferenceBackground,
+  XAxis,
+  YAxis,
+} from 'intergalactic/d3-chart';
 
 const Demo = () => {
   const MARGIN = 40;
@@ -26,12 +33,11 @@ const Demo = () => {
         <XAxis.Ticks />
       </XAxis>
       <ReferenceLine title='Left data' value={dataBar[0].category} />
+      <ReferenceStripes value={dataBar[0].category} endValue={dataBar[1].category} />
       <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
       <ReferenceLine title='Top data' position='top' value={9} />
       <ReferenceLine title='Bottom data' position='bottom' value={3} />
-      <ReferenceLine value={dataBar[3].category} strokeDasharray='3 3' width='100'>
-        <ReferenceLine.Background endValue={dataBar[4].category} />
-      </ReferenceLine>
+      <ReferenceBackground value={dataBar[3].category} endValue={dataBar[4].category} />
     </Plot>
   );
 };

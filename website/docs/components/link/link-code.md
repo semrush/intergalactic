@@ -3,7 +3,7 @@ title: Link
 tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
-## Link inside the content
+## Link in text
 
 By default, links are displayed as `inline-block` and don’t wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
 
@@ -39,7 +39,23 @@ Links can be colored for specific purposes. You can apply a specific color to li
 
 :::
 
-## Links with ellipsis
+## Link as button
+
+You can display a link as a button.
+
+::: tip
+If you need to display disabled link as a `Button` you should remove `href` prop by yourself.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/link_as_button.tsx';
+</script>
+
+:::
+
+## Link with ellipsis
 
 There are two moments you need to consider when using link with addons and ellipsis:
 
@@ -54,14 +70,24 @@ There are two moments you need to consider when using link with addons and ellip
 
 :::
 
-## Accessibility
+## Link without visible text
 
-If a link has no visible text, it is important to add an aria-label attribute with a description of the link for accessibility purposes.
+If a link has no visible text, it is important to add [Tooltip](/components/tooltip/tooltip-code) and an `aria-label` attribute with a description of the link for accessibility purposes.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/accessibility.tsx';
+  export Demo from './examples/link_without_text.tsx';
+</script>
+
+:::
+
+## Disabled link
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/link_disabled.tsx';
 </script>
 
 :::
