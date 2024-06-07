@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.34.3] - 2024-05-31
+
+### Fixed
+
+- Merging tooltip with Button component was breaking the button styles.
+- Removed `aria-haspopup` and `role` from triggers of `Hint` and `Tooltip`.
+- Removed `interaction` property from types of `Hint`.
+- Removed warning theme from types of `Hint`.
+
+### Changed
+
+- `aria-haspopup` of `DescriptionTooltip` changed to `dialog`.
+
 ## [6.34.2] - 2024-06-04
 
 ### Fixed
