@@ -278,6 +278,14 @@ export namespace Intergalactic {
   export type Tag = InternalTypings.ComponentTag;
   export type DomProps<Tag extends keyof JSX.IntrinsicElements> =
     InternalTypings.InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>;
+
+  export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
+    T,
+    Exclude<keyof T, Keys>
+  > &
+    {
+      [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
+    }[Keys];
 }
 
 export const wrapIntergalacticComponent = <
