@@ -103,9 +103,9 @@ Table: Switch sizes and styles
 
 | Switch size (height in px) | Appearance example and margins   | Styles       |
 | -------------------------- | -------------------------------- | ------------ |
-| M (12px)   | ![](static/switch-on-text-m-1.png) ![](static/switch-on-text-m-2.png)   | `font-size: var(--fs-100)`, margin between the control and the text is 8px  |
-| L (20px)   | ![](static/switch-on-text-l-1.png) ![](static/switch-on-text-l-2.png)   | `font-size: var(--fs-200)`, margin between the control and the text is 8px |
-| XL (24px)  | ![](static/switch-on-text-xl-1.png) ![](static/switch-on-text-xl-2.png) | `font-size: var(--fs-300)`, margin between the control and the text is 8px |
+| M (12px)   | ![](static/switch-on-text-m.png)   | `font-size: var(--fs-100)`, margin between the control and the text is 8px  |
+| L (20px)   | ![](static/switch-on-text-l.png)   | `font-size: var(--fs-200)`, margin between the control and the text is 8px |
+| XL (24px)  | ![](static/switch-on-text-xl.png) | `font-size: var(--fs-300)`, margin between the control and the text is 8px |
 
 ## Themes
 
