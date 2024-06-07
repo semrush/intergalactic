@@ -1,9 +1,10 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';
 
-import style from './style/reference-line.shadow.css';
+import style from './style/reference.shadow.css';
 
 const side2direction = {
   left: 'vertical',
@@ -153,9 +154,8 @@ function Title(props) {
     />,
   );
 }
-
 function Background(props) {
-  const { Element: SBackground, styles, scale, position, value, endValue } = props;
+  const { Element: SBackground, styles, scale, position = 'left', value, endValue } = props;
   const positionProps = rectDirection2props[side2direction[position]];
 
   return sstyled(styles)(
@@ -166,10 +166,41 @@ function Background(props) {
     />,
   );
 }
+Background.style = style;
 
-const ReferenceLine = createElement(ReferenceLineRoot, {
+const diagonalGap = 8;
+const gap = Math.sqrt(diagonalGap ** 2 + diagonalGap ** 2);
+const gap12 = gap * (1 / 2);
+const gap32 = gap * (3 / 2);
+const path = `M-${gap},-${gap12} L${gap},${gap32} M-${gap12},-${gap} L${gap32},${gap}`;
+function Stripes(props) {
+  const { Element: SStripes, styles, scale, position = 'left', value, endValue, uid } = props;
+  const SStripesPatternPath = 'path';
+  const positionProps = rectDirection2props[side2direction[position]];
+  const patternId = `${uid}-pattern`;
+
+  return sstyled(styles)(
+    <g>
+      <SStripes
+        render='rect'
+        childrenPosition='inside'
+        fill={`url(#${patternId})`}
+        {...positionProps(scale, value, endValue)}
+      />
+      <pattern id={patternId} patternUnits='userSpaceOnUse' width={gap} height={gap}>
+        <SStripesPatternPath d={path} />
+      </pattern>
+    </g>,
+  );
+}
+Stripes.style = style;
+Stripes.enhance = [uniqueIDEnhancement()];
+
+export const ReferenceLine = createElement(ReferenceLineRoot, {
   Title,
   Background,
+  Stripes,
 });
 
-export default ReferenceLine;
+export const ReferenceBackground = createElement(Background);
+export const ReferenceStripes = createElement(Stripes);
