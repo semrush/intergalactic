@@ -249,7 +249,9 @@ describe('TooltipBase', () => {
       const { container } = render(
         <DescriptionTooltip visible disablePortal>
           <DescriptionTooltip.Trigger tag='button'>trigger</DescriptionTooltip.Trigger>
-          <DescriptionTooltip.Popper>text</DescriptionTooltip.Popper>
+          <DescriptionTooltip.Popper aria-label={'required aria label'}>
+            text
+          </DescriptionTooltip.Popper>
         </DescriptionTooltip>,
       );
 

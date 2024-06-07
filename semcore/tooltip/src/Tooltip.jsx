@@ -227,11 +227,12 @@ class DescriptionTooltipRoot extends TooltipRoot {
   };
 
   getTriggerProps() {
+    const { disabled, visible } = this.asProps;
     const props = super.getTriggerProps();
     return {
       ...props,
-      'aria-haspopup': !(this.asProps.disabled || props.disabled),
-      'aria-expanded': this.asProps.visible,
+      'aria-haspopup': !(disabled || props.disabled) ? 'dialog' : 'false',
+      'aria-expanded': visible,
       'aria-describedby': undefined,
       onKeyDown: this.handleTriggerKeyDown,
     };
