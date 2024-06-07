@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
+import { Hint } from '@semcore/tooltip';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
@@ -19,20 +20,71 @@ class RootLink extends Component {
   static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
   containerRef = React.createRef();
 
+  state = {
+    ariaLabelledByContent: '',
+  };
+
   componentDidMount() {
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
         this.containerRef.current && !hasLabels(this.containerRef.current),
-        `'aria-label' or 'aria-labelledby' are required props for links without text content`,
+        `'title' or 'aria-label' or 'aria-labelledby' are required props for links without text content`,
         this.asProps['data-ui-name'] || RootLink.displayName,
       );
     }
+
+    if (this.asProps['aria-labelledby']) {
+      setTimeout(() => {
+        this.setState({
+          ariaLabelledByContent:
+            document.getElementById(this.asProps['aria-labelledby'])?.textContent ?? '',
+        });
+      }, 0);
+    }
+  }
+
+  renderChildren() {
+    const { Children, styles, addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
+
+    return sstyled(styles)(
+      <>
+        {AddonLeft ? <Link.Addon tag={AddonLeft} /> : null}
+        {addonTextChildren(Children, Link.Text, Link.Addon)}
+        {AddonRight ? <Link.Addon tag={AddonRight} /> : null}
+      </>,
+    );
+  }
+
+  renderOnlyAddons() {
+    const {
+      styles,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      title,
+      ['aria-label']: ariaLabel,
+    } = this.asProps;
+
+    const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
+
+    return sstyled(styles)(
+      <Link.Addon tag={Hint} title={hintContent} timeout={[250, 50]}>
+        {AddonLeft && <AddonLeft />}
+        {AddonRight && <AddonRight />}
+      </Link.Addon>,
+    );
   }
 
   render() {
     const SLink = Root;
-    const { Children, styles, noWrap, addonLeft, addonRight, color, resolveColor, disabled, href } =
-      this.asProps;
+    const {
+      styles,
+      noWrap,
+      color,
+      resolveColor,
+      disabled,
+      href,
+      children: hasChildren,
+    } = this.asProps;
 
     return sstyled(styles)(
       <SLink
@@ -46,10 +98,9 @@ class RootLink extends Component {
         noWrapText={noWrap}
         use:noWrap={false}
         ref={this.containerRef}
+        __excludeProps={['disabled', 'aria-disabled']}
       >
-        {addonLeft ? <Link.Addon tag={addonLeft} /> : null}
-        {addonTextChildren(Children, Link.Text, Link.Addon)}
-        {addonRight ? <Link.Addon tag={addonRight} /> : null}
+        {hasChildren ? this.renderChildren() : this.renderOnlyAddons()}
       </SLink>,
     );
   }
