@@ -101,11 +101,11 @@ The switch includes a text label, which can be added to one or both of the state
 
 Table: Switch sizes and styles
 
-| Switch size (height in px) | Appearance example and margins   | Styles       |
-| -------------------------- | -------------------------------- | ------------ |
-| M (12px)   | ![](static/switch-on-text-m.png)   | `font-size: var(--fs-100)`, margin between the control and the text is 8px  |
-| L (20px)   | ![](static/switch-on-text-l.png)   | `font-size: var(--fs-200)`, margin between the control and the text is 8px |
-| XL (24px)  | ![](static/switch-on-text-xl.png) | `font-size: var(--fs-300)`, margin between the control and the text is 8px |
+| Switch size (height in px) | Appearance example and margins    | Styles                                                                     |
+| -------------------------- | --------------------------------- | -------------------------------------------------------------------------- |
+| M (12px)                   | ![](static/switch-on-text-m.png)  | `font-size: var(--fs-100)`, margin between the control and the text is 8px |
+| L (20px)                   | ![](static/switch-on-text-l.png)  | `font-size: var(--fs-200)`, margin between the control and the text is 8px |
+| XL (24px)                  | ![](static/switch-on-text-xl.png) | `font-size: var(--fs-300)`, margin between the control and the text is 8px |
 
 ## Themes
 
@@ -113,9 +113,9 @@ The Switch component offers two themes: `info` and `success`.
 
 Table: Switch themes
 
-| Theme     | Appearance example         | Usage                       |
-| --------- | -------------------------- | --------------------------- |
-| `info`    | ![](static/on-info.png)    | Default theme.              |
+| Theme     | Appearance example         | Usage                                                          |
+| --------- | -------------------------- | -------------------------------------------------------------- |
+| `info`    | ![](static/on-info.png)    | Default theme.                                                 |
 | `success` | ![](static/on-success.png) | Theme for highlighting a positive enabled state of the switch. |
 
 ## Icon inside Switch.Value
@@ -133,10 +133,10 @@ Table: Icon inside the Switch.Value
 
 Table: Switch states
 
-| State   | Appearance example      | Styles        |
-| ------- | ----------------------- | ------------- |
-| Normal   | ![](static/off.png)     | `background: var(--control-switch-bg)`   |
-| Checked | ![](static/on-success.png) ![](static/on-info.png)    | `background: var(--control-primary-success)` or `background: var(--control-primary-info)`.           |
+| State    | Appearance example                                        | Styles                                                                                                              |
+| -------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Normal   | ![](static/off.png)                                       | `background: var(--control-switch-bg)`                                                                              |
+| Checked  | ![](static/on-success.png) ![](static/on-info.png)        | `background: var(--control-primary-success)` or `background: var(--control-primary-info)`.                          |
 | Disabled | ![](static/disabled.png) ![](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/design-tokens) token. |
 
 ## Usage in UX/UI
@@ -148,4 +148,3 @@ For clear actions when using the toggle, **use positive language for text labels
 When making labels, use action verbs like "Send by email" to clearly indicate the switch's purpose.
 
 But, in cases with limited interface space or when the label is part of a switch group (specifically in settings), it's okay to use labels without verbs.
-
