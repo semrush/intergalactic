@@ -6,6 +6,8 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 
 ## Considerations for developers
 
+<!-- Update this section after updates in the component. -->
+
 Don't forget to add `aria-label` for this element so it can be read by assistive technologies.
 
 | Component | Attribute                    | Usage                                                          |

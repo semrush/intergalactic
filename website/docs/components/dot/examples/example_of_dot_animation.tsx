@@ -14,7 +14,7 @@ const Demo = () => {
   const handleClick = React.useCallback(() => setDotVisible(false), []);
 
   return (
-    <Button onClick={handleClick} aria-label='Read notifications'>
+    <Button onClick={handleClick} aria-label='Notifications'>
       <NotificationM />
       <Dot up hidden={!dotVisible} size='l' aria-label='You have notifications to read' />
     </Button>
