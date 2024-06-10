@@ -1,6 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import { Hint } from '@semcore/tooltip';
 import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
@@ -26,6 +27,10 @@ class RootButton extends Component {
   };
   containerRef = React.createRef();
 
+  state = {
+    ariaLabelledByContent: '',
+  };
+
   getTextProps() {
     const { size } = this.asProps;
     return {
@@ -44,10 +49,55 @@ class RootButton extends Component {
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
         this.containerRef.current && !hasLabels(this.containerRef.current),
-        `'aria-label' or 'aria-labelledby' are required props for buttons without text content`,
-        this.asProps['data-ui-name'] || Button.displayName,
+        `'title' or 'aria-label' or 'aria-labelledby' are required props for buttons without text content`,
+        this.asProps['data-ui-name'] || RootButton.displayName,
       );
     }
+
+    if (this.asProps['aria-labelledby']) {
+      setTimeout(() => {
+        this.setState({
+          ariaLabelledByContent:
+            document.getElementById(this.asProps['aria-labelledby'])?.textContent ?? '',
+        });
+      }, 0);
+    }
+  }
+
+  renderChildren() {
+    const { Children, styles, addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
+
+    return sstyled(styles)(
+      <>
+        {AddonLeft ? <Button.Addon tag={AddonLeft} /> : null}
+        {addonTextChildren(Children, Button.Text, Button.Addon)}
+        {AddonRight ? <Button.Addon tag={AddonRight} /> : null}
+      </>,
+    );
+  }
+
+  renderOnlyAddons() {
+    const {
+      styles,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      title,
+      ['aria-label']: ariaLabel,
+    } = this.asProps;
+
+    const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
+
+    return sstyled(styles)(
+      <Hint
+        tag={Button.Addon}
+        title={hintContent}
+        timeout={[250, 50]}
+        __excludeProps={['aria-label']}
+      >
+        {AddonLeft && <AddonLeft />}
+        {AddonRight && <AddonRight />}
+      </Hint>,
+    );
   }
 
   render() {
@@ -55,7 +105,6 @@ class RootButton extends Component {
     const SInner = Box;
     const SSpin = Box;
     const {
-      Children,
       styles,
       use,
       theme = typeof use === 'string' && MAP_USE_DEFAULT_THEME[use],
@@ -63,8 +112,7 @@ class RootButton extends Component {
       disabled = loading,
       size,
       neighborLocation,
-      addonLeft,
-      addonRight,
+      children: hasChildren,
     } = this.asProps;
     const useTheme = use && theme ? `${use}-${theme}` : false;
 
@@ -84,9 +132,7 @@ class RootButton extends Component {
               aria-disabled={disabled}
             >
               <SInner tag='span' loading={loading}>
-                {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
-                {addonTextChildren(Children, Button.Text, Button.Addon)}
-                {addonRight ? <Button.Addon tag={addonRight} /> : null}
+                {hasChildren ? this.renderChildren() : this.renderOnlyAddons()}
               </SInner>
               {loading && (
                 <SSpin tag='span'>
