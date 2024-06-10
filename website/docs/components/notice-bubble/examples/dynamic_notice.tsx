@@ -4,6 +4,8 @@ import Button from 'intergalactic/button';
 import WarningM from 'intergalactic/icon/Warning/m';
 import ReloadM from 'intergalactic/icon/Reload/m';
 import Spin from 'intergalactic/spin';
+import { Flex } from 'intergalactic/flex-box';
+
 const manager = new NoticeBubbleManager();
 
 let notice = null;
@@ -12,20 +14,22 @@ const Demo = () => {
   const tryAgain = async () => {
     if (!notice) return;
     notice.update({
-      icon: <Spin size='xs' />,
-      children: 'Loading...',
+      icon: null,
+      children: (
+        <Flex justifyContent='center' gap={1}>
+          <Spin size='xs' theme='invert' />
+          Loading...
+        </Flex>
+      ),
       action: null,
     });
     await new Promise((resolve) => setTimeout(resolve, 1500));
     notice.update({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
-      icon: <WarningM color='orange-400' />,
+      icon: <WarningM color='--intergalactic-icon-primary-warning' />,
       action: (
-        <Button theme='invert' onClick={tryAgain}>
-          <Button.Addon>
-            <ReloadM />
-          </Button.Addon>
-          <Button.Text>Try again</Button.Text>
+        <Button theme='invert' onClick={tryAgain} addonLeft={ReloadM}>
+          Try again
         </Button>
       ),
     });
@@ -37,13 +41,10 @@ const Demo = () => {
     }
     notice = manager.add({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
-      icon: <WarningM color='orange-400' />,
+      icon: <WarningM color='--intergalactic-icon-primary-warning' />,
       action: (
-        <Button theme='invert' onClick={tryAgain}>
-          <Button.Addon>
-            <ReloadM />
-          </Button.Addon>
-          <Button.Text>Try again</Button.Text>
+        <Button theme='invert' onClick={tryAgain} addonLeft={ReloadM}>
+          Try again
         </Button>
       ),
       initialAnimation: true,

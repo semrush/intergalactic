@@ -10,16 +10,13 @@ const Demo = () => {
     manager.add({
       children: 'Server connection lost. Check your internet connection and reload the page.',
       action: (
-        <Button theme='invert'>
-          <Button.Addon>
-            <ReloadM />
-          </Button.Addon>
-          <Button.Text>Reload the page</Button.Text>
+        <Button theme='invert' addonLeft={ReloadM}>
+          Reload the page
         </Button>
       ),
       type: 'warning',
       initialAnimation: true,
-      duration: 3000,
+      duration: 0,
     });
   };
 
