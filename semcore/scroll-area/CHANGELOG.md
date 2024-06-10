@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.30.1] - 2024-06-10
+
+### Fixed
+
+- Auto resizing for `ScrollArea` should work only if pass prop `wMax` or `hMax` to the container.
+
 ## [5.30.0] - 2024-05-29
 
 ### Added
