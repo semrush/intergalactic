@@ -13,7 +13,8 @@ STooltip {
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 }
 
-STooltip[theme='default'] {
+/* stylelint-disable-next-line no-duplicate-selectors */
+STooltip {
   background-color: var(--intergalactic-tooltip-default, #ffffff);
   border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
@@ -45,9 +46,11 @@ SArrow {
   }
 }
 
-SArrow[theme='default'] {
+/* stylelint-disable-next-line no-duplicate-selectors */
+SArrow {
   border-color: var(--intergalactic-border-secondary, #e0e1e9);
 
+  /* stylelint-disable-next-line no-duplicate-selectors */
   &:before {
     border-color: var(--intergalactic-tooltip-default, #ffffff);
   }

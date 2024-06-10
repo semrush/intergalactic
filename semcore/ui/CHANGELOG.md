@@ -1,3 +1,67 @@
+## [15.94.0] - 2024-06-07
+
+### @semcore/breadcrumbs
+
+- **Changed** Added `nav` tag for breadcrumbs container.
+- **Changed** Added default `a` tag for breadcrumb item.
+- **Changed** Wrapped breadcrumb items in an `ol` list.
+
+### @semcore/button
+
+- **Added** `Hint` for Button with addon and without text.
+
+### @semcore/card
+
+- **Changed** `Tooltip` to `DescriptionTooltip` for hints in card title.
+
+### @semcore/carousel
+
+- **Fixed** Button styles because DOM for `Button` with only addons has been changed.
+
+### @semcore/d3-chart
+
+- **Added** `ReferenceStripes` component.
+- **Added** `ReferenceBackground` component (previously `ReferenceLine.Background`).
+- **Changed** `ReferenceLine.Background` deprecated in favor of `ReferenceBackground`.
+
+### @semcore/feedback-form
+
+- **Fixed** Children type for `FeedbackForm.Item`.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Tag for `FullscreenModal.Section` is `section` instead of `div`.
+
+### @semcore/input
+
+- **Fixed** Type definition for Input's `placeholder` prop.
+
+### @semcore/input-number
+
+- **Fixed** Incorrect increment/dicrement in formatted Number Inputs.
+- **Fixed** Removed onChange handler call for the value that ends with `-` and `.` as in native input with `type="number"`.
+
+### @semcore/link
+
+- **Added** `Hint` for Link with addon and without text.
+
+### @semcore/popper
+
+- **Fixed** Programmatically opened popper were getting `tabIndex={0}` even without focusable elements inside.
+
+### @semcore/scroll-area
+
+- **Added** Auto resizing for `ScrollArea` if the parent element changes its size.
+
+### @semcore/tooltip
+
+- **Fixed** Merging tooltip with Button component was breaking the button styles.
+- **Fixed** Removed `aria-haspopup` and `role` from triggers of `Hint` and `Tooltip`.
+- **Fixed** Removed `interaction` property from types of `Hint`.
+- **Fixed** Removed warning theme from types of `Hint`.
+- **Changed** `aria-haspopup` of `DescriptionTooltip` changed to `dialog`.
+- **Fixed** `DescriptionTooltip` default children.
+
 ## [15.93.0] - 2024-05-31
 
 ### @semcore/feedback-form

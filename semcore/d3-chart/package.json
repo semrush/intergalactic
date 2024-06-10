@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.45.2",
+  "version": "3.46.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -21,7 +21,7 @@
     "@semcore/animation": "2.27.1",
     "@semcore/divider": "4.26.1",
     "@semcore/flex-box": "5.27.1",
-    "@semcore/popper": "5.35.5",
+    "@semcore/popper": "5.35.6",
     "@semcore/utils": "4.28.1",
     "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.2",

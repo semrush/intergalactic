@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.6] - 2024-05-31
+
+### Fixed
+
+- Programmatically opened popper were getting `tabIndex={0}` even without focusable elements inside.
+
 ## [5.35.5] - 2024-05-31
 
 ### Fixed
