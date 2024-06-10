@@ -84,9 +84,9 @@ Table: Counter themes
 | Theme     | Appearance examples      | Styles    | Usage           |
 | --------- | ------------------------ | --------- | --------------- |
 | default        | ![](static/secondary.png) ![](static/textarea.png) | `background-color: var(--bg-primary-neutral)`, `border: 1px solid var(--border-primary)`, `color: var(--text-secondary)` | Use inside secondary controls and next to various types of inputs. |                                                                    |
-| `light-blue`     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to focus on the selected values.                    |
-| `orange`         | ![](static/orange.png)     | `background-color: var(--bg-primary-warning)`, `color: var(--text-invert)`                                                | Use to display the reached limit.                                  |
-| `red`            | ![](static/red.png)           | `background-color: var(--bg-primary-critical)`, `color: var(--text-invert)`                                               | Use to display the over-limit.                                     |
+| `light-blue`     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to indicate the number of selected values.                    |
+| `orange`         | ![](static/orange.png)     | `background-color: var(--bg-primary-warning)`, `color: var(--text-invert)`                                                | Use to display a reached or almost reached limit.                                  |
+| `red`            | ![](static/red.png)           | `background-color: var(--bg-primary-critical)`, `color: var(--text-invert)`                                               | Use to display an exceeded limit.                                     |
 | `white` (invert) | ![](static/invert.png)     | `background-color: var(--bg-primary-neutral)`, `color: var(--text-primary)`                                               | Use inside primary controls with a bright/dark background color.   |
 
 ## Text counters
