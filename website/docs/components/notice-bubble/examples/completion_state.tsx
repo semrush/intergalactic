@@ -11,12 +11,12 @@ const Demo = () => {
     manager.add({
       children: (
         <Flex justifyContent='center' alignItems='center' gap={1}>
-          <CheckM color='green-400' />
+          <CheckM color='--intergalactic-icon-primary-success' />
           Undone
         </Flex>
       ),
       initialAnimation: true,
-      duration: 3000,
+      duration: 4000,
     });
   };
 
