@@ -14,7 +14,7 @@ const Demo = () => {
         </>
       ),
       initialAnimation: true,
-      duration: 3000,
+      duration: 0,
     });
   };
 
