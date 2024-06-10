@@ -12,7 +12,7 @@ const Demo = () => {
       children: 'Server connection lost. Reconnecting...',
       type: 'warning',
       initialAnimation: true,
-      duration: 3000,
+      duration: 10000,
     });
   };
 

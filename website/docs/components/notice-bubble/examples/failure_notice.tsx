@@ -10,17 +10,14 @@ const Demo = () => {
   const handleClick = () => {
     manager.add({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
-      icon: <WarningM color='orange-400' />,
+      icon: <WarningM color='--intergalactic-icon-primary-warning' />,
       action: (
-        <Button theme='invert'>
-          <Button.Addon>
-            <ReloadM />
-          </Button.Addon>
-          <Button.Text>Reload the page</Button.Text>
+        <Button theme='invert' addonLeft={ReloadM}>
+          Reload the page
         </Button>
       ),
       initialAnimation: true,
-      duration: 3000,
+      duration: 0,
     });
   };
 
