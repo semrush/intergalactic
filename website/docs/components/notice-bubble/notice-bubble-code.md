@@ -3,7 +3,9 @@ title: NoticeBubble
 tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-code'), Changelog('notice-bubble-changelog')
 ---
 
-Please note that each example uses its own instance of `NoticeBubbleManager`, which can lead to the overlaying of notices from different examples.
+::: tip
+Each example uses its own instance of `NoticeBubbleManager`, which is why notices from different examples can overlay each other.
+:::
 
 ## Basic notice
 
@@ -49,16 +51,6 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 :::
 
-## Loading state
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/loading_state.tsx';
-</script>
-
-:::
-
 ## Completion state
 
 ::: sandbox
@@ -89,7 +81,7 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 :::
 
-## Dynamic notice (for success/failure states)
+## Notice with loading state
 
 ::: sandbox
 
