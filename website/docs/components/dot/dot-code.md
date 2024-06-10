@@ -4,9 +4,9 @@ fileSource: dot
 tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Changelog('dot-changelog')
 ---
 
-## Example of dot animation
+## Dot animation
 
-For the animation of appearance and hiding, it is correct not to delete an element from DOM, but to pass the `hidden` value.
+To animate the appearance and hiding of an element, it is better to pass a `hidden` value rather than delete the element from the DOM.
 
 ::: sandbox
 

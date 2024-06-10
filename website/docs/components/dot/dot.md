@@ -20,14 +20,14 @@ const Preview = (preview) => {
 
   const size = radio({
     key: 'size',
-    defaultValue: 'm',
+    defaultValue: 'l',
     label: 'Size',
     options: SIZES,
   });
 
   const up = bool({
     key: 'up',
-    defaultValue: false,
+    defaultValue: `up`,
     label: 'Up',
   });
 
