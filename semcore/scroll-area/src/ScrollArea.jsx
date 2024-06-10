@@ -92,7 +92,7 @@ class ScrollAreaRoot extends Component {
     let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth) {
-      if (parent.scrollWidth > parentRect.width) {
+      if (wMax && parent.scrollWidth > parentRect.width) {
         const diff = parent.scrollWidth - parentRect.width;
 
         if (diff < maxWidth) {
@@ -110,7 +110,7 @@ class ScrollAreaRoot extends Component {
     }
 
     if (maxHeight) {
-      if (parent.scrollHeight > parentRect.height) {
+      if (hMax && parent.scrollHeight > parentRect.height) {
         const diff = parent.scrollHeight - parentRect.height;
 
         if (diff < maxHeight) {
