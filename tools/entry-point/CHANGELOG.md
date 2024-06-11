@@ -1,3 +1,9 @@
+## [15.94.1] - 2024-06-10
+
+### @semcore/scroll-area
+
+- **Fixed** Auto resizing for `ScrollArea` should work only if pass prop `wMax` or `hMax` to the container.
+
 ## [15.94.0] - 2024-06-07
 
 ### @semcore/breadcrumbs
