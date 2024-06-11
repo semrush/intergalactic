@@ -13,12 +13,12 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 :::
 
-## Outer label
+## External label
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/outer_label.tsx';
+  export Demo from './examples/external_label.tsx';
 </script>
 
 :::

@@ -19,10 +19,9 @@ Table: Keyboard support
 
 The list below describes roles and attributes that component already has.
 
-| Component      | Role     | Attribute                   | Usage                                                                                                                                                                       |
-| -------------- | -------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Switch.Value` | `switch` | `aria-checked="true/false"` | Indicates whether the switch is on or off.                                                                                                                                  |
-| `Switch.Addon` |          | `aria-hidden="true"`        | Removes the text labels that appear next to the switch from the accessible name of the switch. This helps to prevent redundant announcement of the state by screen readers. |
+| Component      | Role     | Attribute                   | Usage                                      |
+| -------------- | -------- | --------------------------- | ------------------------------------------ |
+| `Switch.Value` | `switch` | `aria-checked="true/false"` | Indicates whether the switch is on or off. |
 
 ## Considerations for designers
 
@@ -31,17 +30,17 @@ The list below describes roles and attributes that component already has.
 
 ## Considerations for developers
 
-You can add optional labels to your toggles, just make sure the label element includes an `id` and the toggle button includes an `aria-labelledby` tag that match.
+You can add an external label to the Switch, just make sure the label and `Switch.Value` are connected through `id`. Refer to [External label exmaple](/components/switch/switch-code#outer-label).
 
-### Roles and attributes
+<!-- ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
 Table: Attributes
 
-| Component      | Attribute         | Usage                                                                                                          |
-| -------------- | ----------------- | -------------------------------------------------------------------------------------------------------------- |
-| `Switch.Value` | `aria-labelledby` | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. |
+| Component      | Attribute | Usage                |
+| -------------- | --------- | -------------------- |
+| `Switch.Addon` | `aria-hidden="true"` | Removes the text labels that appear next to the switch from the accessible name of the switch. This helps to prevent redundant announcement of the state by screen readers. | -->
 
 ## Other recommendations
 
