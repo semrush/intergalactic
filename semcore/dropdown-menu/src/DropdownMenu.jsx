@@ -387,7 +387,7 @@ class DropdownMenuRoot extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.asProps.visible !== prevProps.visible) {
+    if (this.asProps.visible !== prevProps.visible && prevProps.visible !== undefined) {
       if (!this.asProps.visible) {
         this.handlers.highlightedIndex(null);
         this.highlightedItemRef.current = null;

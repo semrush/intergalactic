@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.33.8] - 2024-06-11
+
+### Fixed
+
+- DropdownMenu was getting unexpected autofocus if nothing else on page is focused.
+
 ## [4.33.7] - 2024-06-10
 
 ### Changed
