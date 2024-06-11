@@ -6,7 +6,7 @@ import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
-  const standPath = 'website/docs/components/switch/examples/two_addons.tsx';
+  const standPath = 'website/docs/components/switch/examples/basic_example.tsx';
   const reportPath = 'website/docs/components/switch/switch-a11y-report.md';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -15,12 +15,12 @@ test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: p
   await voiceOver.interact();
   await voiceOver.next();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Enabled on switch');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('On Receive updates');
   await voiceOver.act();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Disabled off switch');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Off Receive updates');
   await voiceOver.stopInteracting();
   await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Disabled off switch');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('On Receive updates');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 
