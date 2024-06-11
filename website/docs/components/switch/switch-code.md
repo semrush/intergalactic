@@ -13,6 +13,16 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 :::
 
+## Visual clue
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/basic_example_with_icon.tsx';
+</script>
+
+:::
+
 ## External label
 
 ::: sandbox
