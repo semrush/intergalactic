@@ -15,7 +15,7 @@ const Demo = () => {
       ),
       action: <Button theme='invert'>Undo</Button>,
       initialAnimation: true,
-      duration: 3000,
+      duration: 0,
     });
   };
 
