@@ -41,7 +41,7 @@ const App = PlaygroundGeneration(
     const before = text({
       key: 'before',
       label: 'AddonLeft',
-      defaultValue: 'Off',
+      defaultValue: '',
     });
 
     const after = text({

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.28.0] - 2024-06-11
+
+### Changed
+
+- set as deprecated `hidden` property on Switch.Addon.
+
+### Removed
+
+- `aria-checked` from Switch.Value.
+- `aria-labelledby` from Switch.Value.
+- `aria-hidden` from Switch.Addon.
+
 ## [5.27.1] - 2024-05-28
 
 ### Changed
