@@ -387,7 +387,8 @@ class DropdownMenuRoot extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.asProps.visible !== prevProps.visible && prevProps.visible !== undefined) {
+    const visibilityChanged = this.asProps.visible !== prevProps.visible;
+    if (visibilityChanged && prevProps.visible !== undefined) {
       if (!this.asProps.visible) {
         this.handlers.highlightedIndex(null);
         this.highlightedItemRef.current = null;
@@ -397,7 +398,7 @@ class DropdownMenuRoot extends Component {
         }
       }
     }
-    if (this.asProps.visible !== prevProps.visible) {
+    if (visibilityChanged && this.asProps.visible) {
       setTimeout(() => {
         const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
         if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;

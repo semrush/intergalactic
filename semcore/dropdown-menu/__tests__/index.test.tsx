@@ -239,12 +239,7 @@ describe('DropdownMenu', () => {
     await expect(highlightedIndex).toBe(2);
   });
   test.sequential("doesn't autofocus trigger when closed on just rerender", async ({ expect }) => {
-    let rerender: (() => void) | undefined = undefined;
-
     const Component = () => {
-      const [, set] = React.useState(0);
-      rerender = () => set((v) => v + 1);
-
       return (
         <DropdownMenu>
           <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
@@ -261,7 +256,7 @@ describe('DropdownMenu', () => {
     const component = render(<Component />);
 
     await new Promise((resolve) => setTimeout(resolve, 1));
-    rerender();
+    component.rerender(<Component />);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(component.getByTestId('dd-button-trigger')).not.toHaveFocus();
   });
