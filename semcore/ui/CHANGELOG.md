@@ -1,3 +1,36 @@
+## [15.95.0] - 2024-06-12
+
+### @semcore/carousel
+
+- **Fixed** Display of zoomed item after transition from the last item to the first one in the cyclic scroll.
+
+### @semcore/dropdown-menu
+
+- **Fixed** DropdownMenu was getting unexpected autofocus if nothing else on page is focused.
+
+### @semcore/feedback-form
+
+- **Fixed** `aria-label` for the `Notice` in `FeedbackRating`.
+
+### @semcore/icon
+
+- **Changed** `Facebook` icon according to the latest Facebook logo guidelines.
+
+### @semcore/notice-bubble
+
+- **Fixed** Fixed case when `NoticeBubble` was resized and mouse left it without any mouse move so `NoticeBubble` didn't hide automatically.
+
+### @semcore/switch
+
+- **Changed** Set as deprecated `hidden` property on Switch.Addon to avoid use two `Addons` in `Switch`.
+- **Removed** `aria-checked` from Switch.Value.
+- **Removed** `aria-labelledby` from Switch.Value.
+- **Removed** `aria-hidden` from Switch.Addon.
+
+### @semcore/utils
+
+- **Fixed** errors in imports with `intergalactic/utils/lib/*`.
+
 ## [15.94.1] - 2024-06-10
 
 ### @semcore/scroll-area
