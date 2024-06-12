@@ -82,10 +82,10 @@ The radio button has two sizes: M and L. The text label is always positioned to 
 
 Table: Radio button sizes
 
-| Size (px)        | Appearance example     |
-| ---------------- | ---------------------- |
-| M (16px \* 16px) | ![](static/size-m.png) |
-| L (20px \* 20px) | ![](static/size-l.png) |
+| Size (px)       | Appearance example     |
+| --------------- | ---------------------- |
+| M (16px x 16px) | ![](static/size-m.png) |
+| L (20px x 20px) | ![](static/size-l.png) |
 
 ### Margins
 
@@ -93,10 +93,10 @@ The spacing between options may differ based on the context in which they are us
 
 Table: Radio button margins
 
-| Size (px)        | Margins                                          |
-| ---------------- | ------------------------------------------------ |
-| M (16px \* 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
-| L (20px \* 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
+| Size (px)       | Margins                                          |
+| --------------- | ------------------------------------------------ |
+| M (16px x 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
+| L (20px x 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
 
 ## Radio button with a paragraph
 
@@ -106,8 +106,8 @@ Table: Radio button with a paragraph of text
 
 | Radio button size (px) | Paragraph size (px)                      | Appearance example          |
 | ---------------------- | ---------------------------------------- | --------------------------- |
-| M (16px \* 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
-| L (20px \* 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
+| M (16px x 16px)        | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
+| L (20px x 20px)        | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
 ## Radio button with Info icon
 
