@@ -235,9 +235,10 @@ class RangePickerAbstract extends Component {
   }
 
   getButtonTriggerProps() {
-    const { value, size } = this.asProps;
+    const { value, size, visible } = this.asProps;
 
     return {
+      popoverVisible: visible,
       size,
       empty: !value[0] && !value[1],
       onKeyDown: this.handlerKeyDown('trigger'),

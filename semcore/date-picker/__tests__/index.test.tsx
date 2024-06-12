@@ -162,7 +162,27 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
+  test('Should show error tooltip when inputed date is not allowed and datePicker is opening', async ({
+    task,
+  }) => {
+    const component = (
+      <Box w={200} h={200}>
+        <DatePicker
+          value={new Date('January 1, 2021 00:00:00')}
+          disabled={[new Date('January 1, 2021 00:00:00')]}
+          visible
+        >
+          <DatePicker.Trigger disablePortal />
+          <DatePicker.Popper />
+        </DatePicker>
+      </Box>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test('Should not show error tooltip when inputed date is not allowed and datePicker is closing', async ({
+    task,
+  }) => {
     const component = (
       <Box w={200} h={200}>
         <DatePicker

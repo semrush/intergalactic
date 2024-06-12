@@ -141,7 +141,14 @@ class SingleDateInputRoot extends Component {
   }
 
   render() {
-    const { Children, forwardRef, styles, state, showError: showErrorProps } = this.asProps;
+    const {
+      Children,
+      forwardRef,
+      styles,
+      state,
+      showError: showErrorProps,
+      popoverVisible,
+    } = this.asProps;
     const { errorText, showError: showErrorState } = this.state;
     const showError = showErrorState && showErrorProps;
     const SSingleDateInput = Root;
@@ -153,7 +160,7 @@ class SingleDateInputRoot extends Component {
         placement='top-start'
         title={errorText}
         theme='warning'
-        visible={showError}
+        visible={showError && popoverVisible}
         state={showError ? 'invalid' : state}
         ref={forwardRef}
         __excludeProps={['onChange', 'style', 'aria-expanded']}
