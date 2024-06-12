@@ -1,7 +1,8 @@
 {
-  "learnMore": "Learn more",
-  "formTitle": "Feedback form",
+  "leaveFeedback": "Geri bildirim ver",
+  "learnMore": "Daha fazla öğren",
+  "formTitle": "Geri bildirim formu",
   "submitButton": "Geri bildirim gönder",
-  "successMessage": "Thank you for your feedback!",
-  "errorMessage": "Something went wrong. Please try again or contact us at email."
+  "successMessage": "Geri bildiriminiz için teşekkür ederiz!",
+  "errorMessage": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin veya {email} adresinden bizimle iletişime geçin."
 }

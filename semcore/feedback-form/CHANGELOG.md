@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- i18n token in `FeedbackRating` Notice.
+- `aria-label` for the `Notice` in `FeedbackRating`.
 
 ## [6.29.3] - 2024-06-05
 
