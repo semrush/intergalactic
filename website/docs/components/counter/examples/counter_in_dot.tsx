@@ -8,7 +8,7 @@ import { Hint } from 'intergalactic/tooltip';
 const notificationsCount = 18;
 
 const Demo = () => (
-  <Hint tag={Button} title='Notifications' aria-label={`${notificationsCount} notifications`}>
+  <Hint tag={Button} title={`${notificationsCount} notifications`}>
     <Button.Addon>
       <NotificationM />
       <Dot up>
