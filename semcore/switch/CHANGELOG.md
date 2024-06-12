@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- set as deprecated `hidden` property on Switch.Addon for avoid use two `Addons` in `Switch`.
+- Set as deprecated `hidden` property on Switch.Addon to avoid use two `Addons` in `Switch`.
 
 ### Removed
 
