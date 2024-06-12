@@ -1,7 +1,8 @@
 {
-  "learnMore": "Learn more",
-  "formTitle": "Feedback form",
+  "leaveFeedback": "フィードバックを送る",
+  "learnMore": "詳細情報",
+  "formTitle": "フィードバックのフォーム",
   "submitButton": "フィードバックを送信",
-  "successMessage": "Thank you for your feedback!",
-  "errorMessage": "Something went wrong. Please try again or contact us at email."
+  "successMessage": "フィードバックをお送りいただき、ありがとうございます！",
+  "errorMessage": "エラーが発生しました。もう一度お試しいただくか、{email}までお問い合わせください。"
 }
