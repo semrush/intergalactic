@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.0] - 2024-06-11
+
+### Changed
+
+- `Facebook` icon according to the latest Facebook logo guidelines.
+
 ## [4.36.1] - 2024-05-28
 
 ### Changed
