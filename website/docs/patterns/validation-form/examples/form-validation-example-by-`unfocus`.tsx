@@ -100,11 +100,7 @@ class Demo extends React.Component {
 
                     return (
                       <Tooltip>
-                        <Tooltip.Popper
-                          id='form-email-error'
-                          theme='warning'
-                          visible={showError}
-                        >
+                        <Tooltip.Popper id='form-email-error' theme='warning' visible={showError}>
                           {meta.error}
                         </Tooltip.Popper>
                         <Input
