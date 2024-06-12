@@ -19,8 +19,11 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={() => setLoading(!loading)} mb={3}>
-        {loading ? 'Stop loading' : 'Load data'}
+      <Button onClick={() => setLoading(true)} mb={3} mr={2}>
+        Load data
+      </Button>
+      <Button onClick={() => setLoading(false)} mb={3}>
+        Stop loading
       </Button>
       <DataTable data={data}>
         <DataTable.Head>
