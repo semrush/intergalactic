@@ -38,7 +38,10 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
-    "components": ["base-trigger", "pills"]
+    "components": [
+      "base-trigger",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-neutral-active",
@@ -46,7 +49,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the primary background of the interface which contains the main data and information.",
-    "components": ["flags"]
+    "components": [
+      "flags"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-info",
@@ -54,7 +59,10 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Accent background of the message with regular information.",
-    "components": ["base-trigger", "notice-global"]
+    "components": [
+      "base-trigger",
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-success",
@@ -62,7 +70,9 @@
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
     "description": "Accent background of the message or banner with information about the successful result.",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-critical",
@@ -70,7 +80,11 @@
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
     "description": "Accent background of a message or a banner with a critical information.",
-    "components": ["counter", "notice-bubble", "notice-global"]
+    "components": [
+      "counter",
+      "notice-bubble",
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-warning",
@@ -78,7 +92,10 @@
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
     "description": "Accent background of a message or a banner with a warning information.",
-    "components": ["counter", "notice-global"]
+    "components": [
+      "counter",
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-highlight",
@@ -86,7 +103,9 @@
     "rawValue": "{yellow.100}",
     "computedValue": "#fce081",
     "description": "Accent background of the information you want to highlight.",
-    "components": ["feature-popover"]
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-advertising",
@@ -102,7 +121,9 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Accented muted background for a message with regular information.",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-invert",
@@ -110,7 +131,9 @@
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
     "description": "Inverted version of the primary background of the interface that contains the main data and information.",
-    "components": ["notice-bubble"]
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-invert-hover",
@@ -126,7 +149,9 @@
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
     "description": "Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information.",
-    "components": ["drag-and-drop"]
+    "components": [
+      "drag-and-drop"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral",
@@ -134,7 +159,13 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Secondary background of the interface which contains the main data and information.",
-    "components": ["d3-chart", "drag-and-drop", "input", "textarea", "time-picker"]
+    "components": [
+      "d3-chart",
+      "drag-and-drop",
+      "input",
+      "textarea",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
@@ -142,7 +173,10 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
-    "components": ["color-picker", "time-picker"]
+    "components": [
+      "color-picker",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-active",
@@ -150,7 +184,10 @@
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
     "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
-    "components": ["flags", "time-picker"]
+    "components": [
+      "flags",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-info",
@@ -158,7 +195,9 @@
     "rawValue": "{blue.50}",
     "computedValue": "#e9f7ff",
     "description": "Secondary background of a message with regular information.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-info-hover",
@@ -182,7 +221,9 @@
     "rawValue": "{green.50}",
     "computedValue": "#dbfee8",
     "description": "Secondary background of the message with success information you want to accent.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-success-hover",
@@ -206,7 +247,9 @@
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
     "description": "Secondary background of the message with critical information you want to accent.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-critical-hover",
@@ -230,7 +273,9 @@
     "rawValue": "{orange.50}",
     "computedValue": "#fff3d9",
     "description": "Secondary background of the message with warning information you want to accent.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-warning-hover",
@@ -310,7 +355,10 @@
     "rawValue": "rgba({blue.400}, 0.2)",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Focusing values in the input.",
-    "components": ["date-picker", "time-picker"]
+    "components": [
+      "date-picker",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-text-primary",
@@ -386,7 +434,13 @@
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
     "description": "Placeholder text only.",
-    "components": ["base-trigger", "inline-input", "input", "input-mask", "textarea"]
+    "components": [
+      "base-trigger",
+      "inline-input",
+      "input",
+      "input-mask",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -452,7 +506,14 @@
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
     "description": "Link text.",
-    "components": ["base-trigger", "button", "format-text", "link", "pagination", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "button",
+      "format-text",
+      "link",
+      "pagination",
+      "tab-panel"
+    ]
   },
   {
     "name": "--intergalactic-text-link-hover-active",
@@ -460,7 +521,12 @@
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
-    "components": ["base-trigger", "format-text", "link", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "format-text",
+      "link",
+      "tab-panel"
+    ]
   },
   {
     "name": "--intergalactic-text-link-invert",
@@ -468,7 +534,9 @@
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
     "description": "Inverted version of the link text. Use on dark background only.",
-    "components": ["notice-bubble"]
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-text-link-invert-hover",
@@ -484,7 +552,9 @@
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
     "description": "Visited link text.",
-    "components": ["link"]
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-hint",
@@ -492,7 +562,10 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Hint link text.",
-    "components": ["d3-chart", "format-text"]
+    "components": [
+      "d3-chart",
+      "format-text"
+    ]
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
@@ -500,7 +573,11 @@
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
     "description": "Hover and active states of the hint link text.",
-    "components": ["format-text", "side-panel", "typography"]
+    "components": [
+      "format-text",
+      "side-panel",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-text-hint-invert",
@@ -524,7 +601,9 @@
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
     "description": "Secondary text. Use with font-size ≥20px.",
-    "components": ["typography"]
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-text-large-info",
@@ -532,7 +611,9 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Link text with font-size ≥20px.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-text-large-info-hover-active",
@@ -635,7 +716,9 @@
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
     "description": "Subtle secondary border in the informational message.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-info-active",
@@ -663,7 +746,9 @@
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
     "description": "Subtle secondary border in the successful message and input field.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-success-active",
@@ -671,7 +756,12 @@
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
     "description": "Active border in the focused input field with valid state.",
-    "components": ["base-trigger", "inline-input", "input", "textarea"]
+    "components": [
+      "base-trigger",
+      "inline-input",
+      "input",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-border-critical",
@@ -679,7 +769,9 @@
     "rawValue": "{red.200}",
     "computedValue": "#ffaeb5",
     "description": "Subtle secondary border in the critical message and invalid input field.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-critical-active",
@@ -703,7 +795,9 @@
     "rawValue": "{orange.200}",
     "computedValue": "#ffb26e",
     "description": "Subtle secondary border in the warning message.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-warning-active",
@@ -719,7 +813,11 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
-    "components": ["button", "divider", "spin"]
+    "components": [
+      "button",
+      "divider",
+      "spin"
+    ]
   },
   {
     "name": "--intergalactic-border-secondary-invert",
@@ -735,7 +833,9 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Border of the Tooltip with dark theme.",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-border-table-accent",
@@ -743,7 +843,9 @@
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
     "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-border-date-picker-range-comparison",
@@ -759,7 +861,11 @@
     "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
     "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
     "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
-    "components": ["flex-box", "textarea", "utils"]
+    "components": [
+      "flex-box",
+      "textarea",
+      "utils"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-bg",
@@ -767,7 +873,9 @@
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
     "description": "Subtle background of the Switch control.",
-    "components": ["switch"]
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-info",
@@ -775,7 +883,15 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Background of the regular primary control.",
-    "components": ["button", "checkbox", "dropdown-menu", "radio", "select", "slider", "switch"]
+    "components": [
+      "button",
+      "checkbox",
+      "dropdown-menu",
+      "radio",
+      "select",
+      "slider",
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-info-hover",
@@ -783,7 +899,10 @@
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
     "description": "Hover state of the regular primary control.",
-    "components": ["button", "slider"]
+    "components": [
+      "button",
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-info-active",
@@ -791,7 +910,9 @@
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
     "description": "Active (selected) state of the regular primary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-success",
@@ -799,7 +920,10 @@
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
     "description": "Background of the primary control with successful theme.",
-    "components": ["button", "switch"]
+    "components": [
+      "button",
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-success-hover",
@@ -807,7 +931,9 @@
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
     "description": "Hover state of the primary control with successful theme.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-success-active",
@@ -815,7 +941,9 @@
     "rawValue": "{green.600}",
     "computedValue": "#055345",
     "description": "Active (selected) state of the primary control with successful theme.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-critical",
@@ -823,7 +951,10 @@
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
     "description": "Background of the primary control with danger theme.",
-    "components": ["button", "checkbox"]
+    "components": [
+      "button",
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-critical-hover",
@@ -831,7 +962,9 @@
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
     "description": "Hover state of the primary control with danger theme.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-critical-active",
@@ -839,7 +972,9 @@
     "rawValue": "{red.600}",
     "computedValue": "#8e0016",
     "description": "Active (selected) state of the primary control with danger theme.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-brand",
@@ -871,7 +1006,9 @@
     "rawValue": "{violet.600}",
     "computedValue": "#5925ab",
     "description": "Hover state of the advertising primary control.",
-    "components": ["wizard"]
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
@@ -879,7 +1016,9 @@
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
     "description": "Active (selected) state of the advertising primary control.",
-    "components": ["wizard"]
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
@@ -887,7 +1026,9 @@
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
     "description": "Background of the advertising primary control.",
-    "components": ["wizard"]
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert",
@@ -895,7 +1036,9 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Inverted background of the primary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert-hover",
@@ -903,7 +1046,9 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover state of the inverted primary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert-active",
@@ -911,7 +1056,10 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the inverted primary control.",
-    "components": ["button", "notice-bubble"]
+    "components": [
+      "button",
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
@@ -919,7 +1067,9 @@
     "rawValue": "rgba({gray.400}, 0.1)",
     "computedValue": "rgba(138, 142, 155, 0.1)",
     "description": "Background of the regular secondary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
@@ -927,7 +1077,9 @@
     "rawValue": "rgba({gray.400}, 0.2)",
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular secondary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
@@ -935,7 +1087,9 @@
     "rawValue": "rgba({gray.400}, 0.3)",
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular secondary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-info",
@@ -943,7 +1097,11 @@
     "rawValue": "rgba({blue.400}, 0.1)",
     "computedValue": "rgba(0, 143, 248, 0.1)",
     "description": "Background of the accent secondary control.",
-    "components": ["base-trigger", "button", "pills"]
+    "components": [
+      "base-trigger",
+      "button",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
@@ -951,7 +1109,10 @@
     "rawValue": "rgba({blue.400}, 0.2)",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Hover state of the accent secondary control.",
-    "components": ["base-trigger", "button"]
+    "components": [
+      "base-trigger",
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
@@ -959,7 +1120,10 @@
     "rawValue": "rgba({blue.400}, 0.3)",
     "computedValue": "rgba(0, 143, 248, 0.3)",
     "description": "Active (selected) state of the accent secondary control.",
-    "components": ["base-trigger", "button"]
+    "components": [
+      "base-trigger",
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-invert",
@@ -967,7 +1131,9 @@
     "rawValue": "rgba({gray.white}, 0.05)",
     "computedValue": "rgba(255, 255, 255, 0.05)",
     "description": "Background of the inverted version of the secondary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-invert-hover",
@@ -975,7 +1141,9 @@
     "rawValue": "rgba({gray.white}, 0.1)",
     "computedValue": "rgba(255, 255, 255, 0.1)",
     "description": "Hover state of the inverted version of the secondary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-invert-active",
@@ -983,7 +1151,9 @@
     "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Active (selected) state of the inverted version of the secondary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral",
@@ -991,7 +1161,9 @@
     "rawValue": "rgba({gray.400}, 0)",
     "computedValue": "rgba(138, 142, 155, 0)",
     "description": "Background of the regular tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral-hover",
@@ -999,7 +1171,9 @@
     "rawValue": "rgba({gray.400}, 0.2)",
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral-active",
@@ -1007,7 +1181,9 @@
     "rawValue": "rgba({gray.400}, 0.3)",
     "computedValue": "rgba(138, 142, 155, 0.3)",
     "description": "Active (selected) state of the regular tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info",
@@ -1015,7 +1191,9 @@
     "rawValue": "rgba({blue.400}, 0)",
     "computedValue": "rgba(0, 143, 248, 0)",
     "description": "Background of the accent and link-lookalike tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info-hover",
@@ -1023,7 +1201,9 @@
     "rawValue": "rgba({blue.400}, 0.2)",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Hover state of the accent and link-lookalike tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info-active",
@@ -1031,7 +1211,9 @@
     "rawValue": "rgba({blue.400}, 0.3)",
     "computedValue": "rgba(0, 143, 248, 0.3)",
     "description": "Active (selected) state of the accent and link-lookalike tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-invert",
@@ -1039,7 +1221,9 @@
     "rawValue": "rgba({gray.white}, 0)",
     "computedValue": "rgba(255, 255, 255, 0)",
     "description": "Background of the inverted version of the tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
@@ -1047,7 +1231,9 @@
     "rawValue": "rgba({gray.white}, 0.1)",
     "computedValue": "rgba(255, 255, 255, 0.1)",
     "description": "Hover state of the inverted version of the tertiary control.",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-invert-active",
@@ -1055,7 +1241,10 @@
     "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
-    "components": ["button", "modal"]
+    "components": [
+      "button",
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
@@ -1079,7 +1268,10 @@
     "rawValue": "#565861",
     "computedValue": "#565861",
     "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.",
-    "components": ["fullscreen-modal", "notice"]
+    "components": [
+      "fullscreen-modal",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-info",
@@ -1103,7 +1295,9 @@
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
     "description": "Primary success icon.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-success-hover-active",
@@ -1111,7 +1305,9 @@
     "rawValue": "#037E68",
     "computedValue": "#037E68",
     "description": "Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-critical",
@@ -1119,7 +1315,9 @@
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
     "description": "Primary critical icon.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-critical-hover-active",
@@ -1127,7 +1325,9 @@
     "rawValue": "#CC3A42",
     "computedValue": "#CC3A42",
     "description": "Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-warning",
@@ -1135,7 +1335,11 @@
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
     "description": "Primary warning icon.",
-    "components": ["button", "dot", "notice"]
+    "components": [
+      "button",
+      "dot",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-warning-hover-active",
@@ -1143,7 +1347,10 @@
     "rawValue": "#CC5024",
     "computedValue": "#CC5024",
     "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.",
-    "components": ["button", "notice"]
+    "components": [
+      "button",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-invert",
@@ -1151,7 +1358,11 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary icon.",
-    "components": ["carousel", "modal", "notice-global"]
+    "components": [
+      "carousel",
+      "modal",
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
@@ -1159,7 +1370,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Hover and active (selected) states of the inverted version of the primary icon.",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
@@ -1219,7 +1432,9 @@
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
     "description": "Secondary success icon.",
-    "components": ["inline-input"]
+    "components": [
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-success-hover-active",
@@ -1227,7 +1442,9 @@
     "rawValue": "#049B75",
     "computedValue": "#049B75",
     "description": "Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.",
-    "components": ["inline-input"]
+    "components": [
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
@@ -1275,7 +1492,9 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Default date-picker cell background.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-current",
@@ -1283,7 +1502,9 @@
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
     "description": "Color for marking the cell with the current date, month or year in the date-picker.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-hover",
@@ -1291,7 +1512,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Hover state of the default date-picker cell background.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-range",
@@ -1299,7 +1522,9 @@
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
     "description": "Background for the cell which is included in the date range in the date-picker.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-range-hover",
@@ -1307,7 +1532,9 @@
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
     "description": "Hover state of the background for the cell which is included in the date range in the date-picker.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
@@ -1315,7 +1542,9 @@
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
     "description": "Active (selected) date-picker cell background.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
@@ -1323,7 +1552,9 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Hover for the active (selected) date-picker cell background.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
@@ -1339,7 +1570,9 @@
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
     "description": "Active (selected) date-picker cell background for comparison periods.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-comparison-active-hover",
@@ -1347,7 +1580,9 @@
     "rawValue": "{violet.600}",
     "computedValue": "#5925ab",
     "description": "Hover for the active (selected) date-picker cell background for comparison periods.",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
@@ -1363,7 +1598,9 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover state of the default background color for the list item in the dropdown-menu.",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
@@ -1371,7 +1608,10 @@
     "rawValue": "rgba({blue.100}, 0.7)",
     "computedValue": "rgba(196, 229, 254, 0.7)",
     "description": "Active (selected) state of the default background color for the list item in the dropdown-menu.",
-    "components": ["dropdown-menu", "select"]
+    "components": [
+      "dropdown-menu",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
@@ -1379,15 +1619,20 @@
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
     "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu.",
-    "components": ["dropdown-menu", "select"]
+    "components": [
+      "dropdown-menu",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
     "type": "color",
-    "rawValue": "rgba({yellow.100}, 0.3)",
-    "computedValue": "rgba(252, 224, 129, 0.3)",
+    "rawValue": "{bg.primary.highlight}",
+    "computedValue": "#fce081",
     "description": "Color of the outer border of the FeaturePopover.Spot.",
-    "components": []
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg",
@@ -1395,7 +1640,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Background color of the ProgressBar.",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
@@ -1411,7 +1658,9 @@
     "rawValue": "rgba({gray.white}, 0.2)",
     "computedValue": "rgba(255, 255, 255, 0.2)",
     "description": "Inverted version of the background color of the ProgressBar.",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert-hover",
@@ -1427,7 +1676,9 @@
     "rawValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
     "computedValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
     "description": "Value with gradient for the ProgressBar.",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
@@ -1435,7 +1686,9 @@
     "rawValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
     "computedValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
     "description": "Null value gradient for the ProgressBar.",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-value-bg",
@@ -1443,7 +1696,9 @@
     "rawValue": "#000000",
     "computedValue": "#000000",
     "description": "Base value background for the ProgressBar. It is used to create gradients for the values.",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-skeleton-bg",
@@ -1451,7 +1706,10 @@
     "rawValue": "rgba({gray.100}, 0.8)",
     "computedValue": "rgba(224, 225, 233, 0.8)",
     "description": "Default color for the Skeleton.",
-    "components": ["mini-chart", "skeleton"]
+    "components": [
+      "mini-chart",
+      "skeleton"
+    ]
   },
   {
     "name": "--intergalactic-skeleton-bg-invert",
@@ -1459,7 +1717,9 @@
     "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Inverted version of the default color for the Skeleton.",
-    "components": ["skeleton"]
+    "components": [
+      "skeleton"
+    ]
   },
   {
     "name": "--intergalactic-slider-rating-normal",
@@ -1467,7 +1727,9 @@
     "rawValue": "{icon.secondary.neutral}",
     "computedValue": "#a9abb6",
     "description": "Icon color for the SliderRating component in its normal state.",
-    "components": ["feedback-form"]
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-slider-rating-hover-active",
@@ -1475,7 +1737,9 @@
     "rawValue": "{yellow.200}",
     "computedValue": "#fdc23c",
     "description": "Icon color for the SliderRating component in its hovered and active states.",
-    "components": ["feedback-form"]
+    "components": [
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-table-th-primary-cell",
@@ -1483,7 +1747,9 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Background of the header cell in the primary Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-primary-cell-hover",
@@ -1491,7 +1757,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Background of the hovered header cell in the primary Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
@@ -1499,7 +1767,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Background of the active header cell in the primary Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
@@ -1507,7 +1777,9 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Background of the header cell in the secondary Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-gradient",
@@ -1547,7 +1819,9 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Background of the unread cell in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-actions-accordion",
@@ -1563,7 +1837,9 @@
     "rawValue": "{blue.50}",
     "computedValue": "#e9f7ff",
     "description": "Background of the selected cell in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-selected-hover",
@@ -1571,7 +1847,9 @@
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
     "description": "Background of the hovered selected cell in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-selected-active",
@@ -1579,7 +1857,9 @@
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
     "description": "Background of the active selected cell in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-new",
@@ -1587,7 +1867,9 @@
     "rawValue": "{green.50}",
     "computedValue": "#dbfee8",
     "description": "Background of the cell with new information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-new-hover",
@@ -1595,7 +1877,9 @@
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
     "description": "Background of the hovered cell with new information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-new-active",
@@ -1603,7 +1887,9 @@
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
     "description": "Background of the active cell with new information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-critical",
@@ -1611,7 +1897,9 @@
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
     "description": "Background of the cell with critical information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-critical-hover",
@@ -1619,7 +1907,9 @@
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
     "description": "Background of the hovered cell with critical information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-critical-active",
@@ -1627,7 +1917,9 @@
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
     "description": "Background of the active cell with critical information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-warning",
@@ -1635,7 +1927,9 @@
     "rawValue": "{orange.50}",
     "computedValue": "#fff3d9",
     "description": "Background of the cell with warning information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-warning-hover",
@@ -1643,7 +1937,9 @@
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
     "description": "Background of the hovered cell with warning information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-warning-active",
@@ -1651,7 +1947,9 @@
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
     "description": "Background of the active cell with warning information in the Table.",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-brand-primary",
@@ -1747,7 +2045,9 @@
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)",
     "description": "Default shadow of the Card.",
-    "components": ["card"]
+    "components": [
+      "card"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-card-hover",
@@ -1763,7 +2063,9 @@
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 12px 40px 0px rgba({gray.800}, 0.16)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
     "description": "Shadow for show that element are being drag-and-drop.",
-    "components": ["drag-and-drop"]
+    "components": [
+      "drag-and-drop"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-modal",
@@ -1771,7 +2073,9 @@
     "rawValue": "0px 3px 8px 0px rgba({gray.800}, 0.2)",
     "computedValue": "0px 3px 8px 0px rgba(25, 27, 35, 0.2)",
     "description": "Default shadow if the Modal window.",
-    "components": ["modal"]
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-popper",
@@ -1779,7 +2083,13 @@
     "rawValue": "0px 1px 12px 0px rgba({gray.800}, 0.15)",
     "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
     "description": "Default shadow of all Poppers, Dropdowns and Tooltips.",
-    "components": ["d3-chart", "dropdown", "feature-popover", "side-panel", "tooltip"]
+    "components": [
+      "d3-chart",
+      "dropdown",
+      "feature-popover",
+      "side-panel",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline",
@@ -1787,7 +2097,10 @@
     "rawValue": "rgba({blue.400}, 0.5)",
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
-    "components": ["format-text", "link"]
+    "components": [
+      "format-text",
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
@@ -1845,7 +2158,14 @@
     "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
     "description": "Keyboard focus styles for elements with invalid state.",
-    "components": ["base-trigger", "checkbox", "inline-input", "input", "radio", "textarea"]
+    "components": [
+      "base-trigger",
+      "checkbox",
+      "inline-input",
+      "input",
+      "radio",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
@@ -1853,7 +2173,11 @@
     "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.5)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
     "description": "Keyboard focus styles for elements with valid state.",
-    "components": ["inline-input", "input", "textarea"]
+    "components": [
+      "inline-input",
+      "input",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-invert",
@@ -1877,7 +2201,10 @@
     "rawValue": "117%",
     "computedValue": "117%",
     "description": "Use with font-size-800.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-700",
@@ -1885,7 +2212,11 @@
     "rawValue": "110%",
     "computedValue": "110%",
     "description": "Use with font-size-700.",
-    "components": ["errors", "format-text", "typography"]
+    "components": [
+      "errors",
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-600",
@@ -1893,7 +2224,10 @@
     "rawValue": "125%",
     "computedValue": "125%",
     "description": "Use with font-size-600.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-500",
@@ -1901,7 +2235,12 @@
     "rawValue": "117%",
     "computedValue": "117%",
     "description": "Use with font-size-500.",
-    "components": ["format-text", "fullscreen-modal", "modal", "typography"]
+    "components": [
+      "format-text",
+      "fullscreen-modal",
+      "modal",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-400",
@@ -1909,7 +2248,11 @@
     "rawValue": "120%",
     "computedValue": "120%",
     "description": "Use with font-size-400.",
-    "components": ["format-text", "product-head", "typography"]
+    "components": [
+      "format-text",
+      "product-head",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-300",
@@ -1994,7 +2337,12 @@
     "rawValue": "600",
     "computedValue": "600",
     "description": "Semi-bold font weight.",
-    "components": ["errors", "modal", "product-head", "typography"]
+    "components": [
+      "errors",
+      "modal",
+      "product-head",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-bold",
@@ -2021,7 +2369,11 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker", "slider"]
+    "components": [
+      "base-trigger",
+      "date-picker",
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-medium",
@@ -2047,14 +2399,19 @@
     "rawValue": "10px",
     "computedValue": "10px",
     "description": "Use only for text in Badge component.",
-    "components": ["badge", "counter", "d3-chart", "dot"]
+    "components": [
+      "badge",
+      "counter",
+      "d3-chart",
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-fs-100",
     "type": "fontSizes",
     "rawValue": "12px",
     "computedValue": "12px",
-    "description": "Use with caution for text in additional messages. Always check its contrast and readability.",
+    "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability.",
     "components": [
       "counter",
       "d3-chart",
@@ -2072,7 +2429,6 @@
     "type": "fontSizes",
     "rawValue": "14px",
     "computedValue": "14px",
-    "description": "Use for text in regular messages.",
     "components": [
       "badge",
       "base-trigger",
@@ -2113,7 +2469,6 @@
     "type": "fontSizes",
     "rawValue": "16px",
     "computedValue": "16px",
-    "description": "Use for H6 with bold font-weight, and for text in regular messages.",
     "components": [
       "base-trigger",
       "button",
@@ -2142,40 +2497,54 @@
     "type": "fontSizes",
     "rawValue": "20px",
     "computedValue": "20px",
-    "description": "Use for H5 and subtitles.",
-    "components": ["format-text", "product-head", "typography"]
+    "components": [
+      "format-text",
+      "product-head",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-500",
     "type": "fontSizes",
     "rawValue": "24px",
     "computedValue": "24px",
-    "description": "Use for H4.",
-    "components": ["format-text", "fullscreen-modal", "modal", "typography"]
+    "components": [
+      "format-text",
+      "fullscreen-modal",
+      "modal",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-600",
     "type": "fontSizes",
     "rawValue": "32px",
     "computedValue": "32px",
-    "description": "Use for H3.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-700",
     "type": "fontSizes",
     "rawValue": "36px",
     "computedValue": "36px",
-    "description": "Use for H2.",
-    "components": ["errors", "format-text", "typography"]
+    "components": [
+      "errors",
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-800",
     "type": "fontSizes",
     "rawValue": "48px",
     "computedValue": "48px",
-    "description": "Use for H1.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-compact",
@@ -2199,7 +2568,13 @@
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
     "description": "Default size of the controls.",
-    "components": ["button", "input", "input-tags", "pills", "time-picker"]
+    "components": [
+      "button",
+      "input",
+      "input-tags",
+      "pills",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-form-control-l",
@@ -2207,7 +2582,13 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "Large size of the controls.",
-    "components": ["button", "input", "input-tags", "pills", "time-picker"]
+    "components": [
+      "button",
+      "input",
+      "input-tags",
+      "pills",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-spacing-05x",
@@ -2422,7 +2803,14 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "40px",
-    "components": ["errors", "feedback-form", "fullscreen-modal", "modal", "side-panel", "wizard"]
+    "components": [
+      "errors",
+      "feedback-form",
+      "fullscreen-modal",
+      "modal",
+      "side-panel",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-spacing-14x",
@@ -2430,7 +2818,9 @@
     "rawValue": "{scale-indent}*14",
     "computedValue": "56px",
     "description": "56px",
-    "components": ["side-panel"]
+    "components": [
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-spacing-20x",
@@ -2438,7 +2828,10 @@
     "rawValue": "{scale-indent}*20",
     "computedValue": "80px",
     "description": "80px",
-    "components": ["errors", "fullscreen-modal"]
+    "components": [
+      "errors",
+      "fullscreen-modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-24x",
@@ -2468,21 +2861,28 @@
     "type": "borderRadius",
     "rawValue": "4px",
     "computedValue": "4px",
-    "components": ["checkbox"]
+    "components": [
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-rounded-medium",
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "components": ["d3-chart", "feedback-form"]
+    "components": [
+      "d3-chart",
+      "feedback-form"
+    ]
   },
   {
     "name": "--intergalactic-rounded-large",
     "type": "borderRadius",
     "rawValue": "12px",
     "computedValue": "12px",
-    "components": ["radio"]
+    "components": [
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-rounded-extra-large",
@@ -2497,7 +2897,10 @@
     "rawValue": "{rounded-small}",
     "computedValue": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
-    "components": ["checkbox", "select"]
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-badge-rounded",
@@ -2505,7 +2908,9 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
-    "components": ["badge"]
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-chart-rounded",
@@ -2513,7 +2918,9 @@
     "rawValue": "{rounded-extra-small}",
     "computedValue": "2px",
     "description": "Use for rounding big and small charts like bar, histogram and others.",
-    "components": ["mini-chart"]
+    "components": [
+      "mini-chart"
+    ]
   },
   {
     "name": "--intergalactic-counter-rounded",
@@ -2521,7 +2928,10 @@
     "rawValue": "{rounded-large}",
     "computedValue": "12px",
     "description": "Use for rounding Counter.",
-    "components": ["counter", "dot"]
+    "components": [
+      "counter",
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-tag-rounded",
@@ -2529,7 +2939,9 @@
     "rawValue": "{rounded-extra-large}",
     "computedValue": "24px",
     "description": "Use for rounding Tag.",
-    "components": ["tag"]
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-switch-rounded",
@@ -2537,7 +2949,9 @@
     "rawValue": "{rounded-extra-large}",
     "computedValue": "24px",
     "description": "Use for rounding Switch.",
-    "components": ["switch"]
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-rounded",
@@ -2568,7 +2982,11 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
-    "components": ["mini-chart", "progress-bar", "slider"]
+    "components": [
+      "mini-chart",
+      "progress-bar",
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-surface-rounded",
@@ -2576,7 +2994,12 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
-    "components": ["card", "carousel", "feedback-form", "notice"]
+    "components": [
+      "card",
+      "carousel",
+      "feedback-form",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-popper-rounded",
@@ -2584,7 +3007,14 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "popper", "tooltip"]
+    "components": [
+      "d3-chart",
+      "dropdown",
+      "feature-popover",
+      "notice-bubble",
+      "popper",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-modal-rounded",
@@ -2592,7 +3022,10 @@
     "rawValue": "{rounded-large}",
     "computedValue": "12px",
     "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).",
-    "components": ["modal", "wizard"]
+    "components": [
+      "modal",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-disabled-opacity",
@@ -2663,7 +3096,10 @@
     "rawValue": "rgba({gray.800}, 0.7)",
     "computedValue": "rgba(25, 27, 35, 0.7)",
     "description": "Use for cover the content under the modal dialogs.",
-    "components": ["modal", "side-panel"]
+    "components": [
+      "modal",
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-overlay-secondary",
@@ -2671,7 +3107,10 @@
     "rawValue": "rgba({gray.800}, 0.4)",
     "computedValue": "rgba(25, 27, 35, 0.4)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
-    "components": ["modal", "spin-container"]
+    "components": [
+      "modal",
+      "spin-container"
+    ]
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
@@ -2687,35 +3126,46 @@
     "rawValue": "rgba({gray.white}, 0.85)",
     "computedValue": "rgba(255, 255, 255, 0.85)",
     "description": "Use as a secondary cover of the content under the messages about limitations.",
-    "components": ["spin-container"]
+    "components": [
+      "spin-container"
+    ]
   },
   {
     "name": "--intergalactic-z-index-deep",
     "type": "other",
     "rawValue": "-999",
     "computedValue": "-999",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-z-index-overlay",
     "type": "other",
     "rawValue": "500",
     "computedValue": "500",
-    "components": ["d3-chart", "side-panel"]
+    "components": [
+      "d3-chart",
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-z-index-modal",
     "type": "other",
     "rawValue": "600",
     "computedValue": "600",
-    "components": ["modal"]
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-z-index-popper",
     "type": "other",
     "rawValue": "700",
     "computedValue": "700",
-    "components": ["popper"]
+    "components": [
+      "popper"
+    ]
   },
   {
     "name": "--intergalactic-z-index-dropdown",
@@ -2729,14 +3179,18 @@
     "type": "other",
     "rawValue": "800",
     "computedValue": "800",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-z-index-notice-bubble",
     "type": "other",
     "rawValue": "999",
     "computedValue": "999",
-    "components": ["notice-bubble"]
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-default",
@@ -2744,7 +3198,9 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Default Tooltip background.",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-warning",
@@ -2752,7 +3208,9 @@
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
     "description": "Warning Tooltip background.",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-invert",
@@ -2760,7 +3218,9 @@
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
     "description": "Inverted version of the default Tooltip background.",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-neighbor-location-neutral",
@@ -2784,7 +3244,9 @@
     "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-right",
@@ -2792,7 +3254,9 @@
     "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-top",
@@ -2800,7 +3264,9 @@
     "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Top-to-bottom fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-bottom",
@@ -2808,7 +3274,9 @@
     "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Bottom-to-top fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-left",
@@ -2816,7 +3284,9 @@
     "rawValue": "linear-gradient(to right, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-right",
@@ -2824,7 +3294,9 @@
     "rawValue": "linear-gradient(to left, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-bottom",
@@ -2832,7 +3304,9 @@
     "rawValue": "linear-gradient(to top, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-top",
@@ -2840,7 +3314,9 @@
     "rawValue": "linear-gradient(to bottom, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
     "description": "Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-bar-background",
@@ -2848,7 +3324,9 @@
     "rawValue": "rgba({gray.800}, 0.3)",
     "computedValue": "rgba(25, 27, 35, 0.3)",
     "description": "Background color for ScrollBar.",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-gray-normal",
@@ -2968,7 +3446,9 @@
     "rawValue": "{gray.white}, 0.15",
     "computedValue": "rgba(255, 255, 255, 0.15)",
     "description": "Primary white tag.",
-    "components": ["tag"]
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
@@ -3096,7 +3576,10 @@
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
     "description": "1 color in the default list of colors for charts.",
-    "components": ["d3-chart", "mini-chart"]
+    "components": [
+      "d3-chart",
+      "mini-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-2",
@@ -3104,7 +3587,9 @@
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
     "description": "2 color in the default list of colors for charts.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-3",
@@ -3160,7 +3645,9 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "9 color in the default list of colors for charts.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-10",
@@ -3304,7 +3791,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Use it to show null value.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-line",
@@ -3312,7 +3801,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Default chart grid line.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
@@ -3320,7 +3811,9 @@
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
     "description": "X-axis line on the chart grid.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-y-accent-hover-line",
@@ -3328,7 +3821,9 @@
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
     "description": "Accent line for the hover state on the chart grid.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
@@ -3336,7 +3831,9 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Text label on the chart grid.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-hover",
@@ -3344,7 +3841,9 @@
     "rawValue": "rgba({gray.200}, 0.3)",
     "computedValue": "rgba(196, 199, 207, 0.3)",
     "description": "Background color for the hover state of a bar on the chart grid.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-base-bg",
@@ -3352,7 +3851,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Default background color of a bar in the BarChart.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-period-bg",
@@ -3360,7 +3861,9 @@
     "rawValue": "rgba({gray.200}, 0.2)",
     "computedValue": "rgba(196, 199, 207, 0.2)",
     "description": "Use for highlighting a period on the chart grid.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-period-pattern",
@@ -3368,7 +3871,9 @@
     "rawValue": "rgba({gray.800}, 0.15)",
     "computedValue": "rgba(25, 27, 35, 0.15)",
     "description": "Stripe color for diagonal pattern background.",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-border",
@@ -3376,7 +3881,10 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Border for distinguishing data sets and chart dots on the chart grid.",
-    "components": ["d3-chart", "mini-chart"]
+    "components": [
+      "d3-chart",
+      "mini-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-x-axis-accent-period-active",
@@ -3400,7 +3908,9 @@
     "rawValue": "500",
     "computedValue": "500",
     "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)",
-    "components": ["mini-chart"]
+    "components": [
+      "mini-chart"
+    ]
   },
   {
     "name": "--intergalactic-duration-slow",
@@ -3416,7 +3926,9 @@
     "rawValue": "300",
     "computedValue": "300",
     "description": "Should be used for more complex effects (such as Modal)",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-duration-fast",
@@ -3432,7 +3944,10 @@
     "rawValue": "100",
     "computedValue": "100",
     "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
-    "components": ["data-table", "drag-and-drop"]
+    "components": [
+      "data-table",
+      "drag-and-drop"
+    ]
   },
   {
     "name": "--intergalactic-duration-switch",
@@ -3440,7 +3955,9 @@
     "rawValue": "{duration.extra-fast}",
     "computedValue": "100",
     "description": "Use for small controls like Switch or Slider.",
-    "components": ["switch"]
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-duration-popper",
@@ -3456,7 +3973,13 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for small controls like Checkbox or Radio.",
-    "components": ["checkbox", "feedback-form", "radio", "slider", "tab-line"]
+    "components": [
+      "checkbox",
+      "feedback-form",
+      "radio",
+      "slider",
+      "tab-line"
+    ]
   },
   {
     "name": "--intergalactic-duration-modal",
@@ -3472,7 +3995,9 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for Accordion.",
-    "components": ["accordion"]
+    "components": [
+      "accordion"
+    ]
   },
   {
     "name": "--intergalactic-duration-counter",
