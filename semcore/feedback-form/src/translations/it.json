@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Lascia un feedback",
   "learnMore": "Scopri di più",
   "formTitle": "Modulo di feedback",
   "submitButton": "Invia feedback",
   "successMessage": "Grazie per il tuo feedback!",
-  "errorMessage": "Si è verificato un errore. Prova di nuovo o contattaci via e-mail."
+  "errorMessage": "Si è verificato un errore. Prova di nuovo o contattaci all'indirizzo {email}."
 }
