@@ -14,13 +14,13 @@ test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: p
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
   await voiceOver.next();
+  await voiceOver.previous();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('On Receive updates');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Receive updates on switch');
   await voiceOver.act();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Off Receive updates');
-  await voiceOver.stopInteracting();
-  await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('On Receive updates');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('off Receive updates switch');
+  await voiceOver.act();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('on Receive updates switch');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 
