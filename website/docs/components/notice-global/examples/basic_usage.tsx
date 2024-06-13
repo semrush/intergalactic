@@ -1,10 +1,10 @@
 import React from 'react';
 import Portal from 'intergalactic/portal';
-import NoticeGlobal from 'intergalactic/notice-global';
+import NoticeGlobal, { NoticeGlobalTheme } from 'intergalactic/notice-global';
 import Button from 'intergalactic/button';
 import Select from 'intergalactic/select';
 
-const themes = ['neutral', 'info', 'success', 'warning', 'danger'];
+const themes = ['neutral', 'info', 'success', 'warning', 'danger'] as const;
 const options = themes.map((theme) => ({
   value: theme,
   children: theme,
@@ -12,7 +12,7 @@ const options = themes.map((theme) => ({
 
 const Demo = () => {
   const defaultTheme = 'neutral';
-  const [theme, setTheme] = React.useState(defaultTheme);
+  const [theme, setTheme] = React.useState<NoticeGlobalTheme>(defaultTheme);
   const [visible, setVisible] = React.useState(false);
 
   return (
