@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.94.0",
+  "version": "15.95.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,

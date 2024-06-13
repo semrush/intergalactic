@@ -1,6 +1,7 @@
 import Git from 'simple-git';
 import { log, prerelaseSuffix } from '../utils';
 import * as crypto from 'crypto';
+import { allowedScopes } from '../utils/allowedScopes';
 
 const git = Git();
 
@@ -11,19 +12,21 @@ export const closeTasks = async (version: string) => {
   const prevReleaseTag = releaseTags[currentReleaseTagIndex - 1];
   const logs = await git.log({ from: prevReleaseTag });
   const regexp = new RegExp(/\[(.*?)\]/gi);
-  const taskIds = logs.all
-    .map((item) => {
-      const result = [...item.message.matchAll(regexp)][0];
+  const taskIds = new Set<string>();
+  const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
+  const allAllowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponents];
 
-      if (result?.[1]) {
-        return result[1];
-      }
+  logs.all.forEach((item) => {
+    const result = [...item.message.matchAll(regexp)][0];
 
-      return undefined;
-    })
-    .filter(Boolean);
+    if (result?.[1] && !allAllowedScopes.includes(result[1])) {
+      taskIds.add(result[1]);
+    }
+  });
 
-  log(`Tasks to close: [${taskIds.join(' ; ')}]`);
+  const taskIdsArray = [...taskIds];
+
+  log(`Tasks to close: [${taskIdsArray.join(' ; ')}]`);
 
   try {
     const closeTasksUrl = process.env['INTERGALACTIC_BOT_CLOSE_TASKS_URL'];
@@ -36,7 +39,7 @@ export const closeTasks = async (version: string) => {
     }
 
     const body = JSON.stringify({
-      taskIds,
+      taskIds: taskIdsArray,
       fixVersion: version,
     });
 

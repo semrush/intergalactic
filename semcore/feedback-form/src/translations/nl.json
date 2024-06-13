@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Feedback geven",
   "learnMore": "Lees meer",
   "formTitle": "Feedback formulier",
   "submitButton": "Feedback sturen",
   "successMessage": "Bedankt voor je feedback!",
-  "errorMessage": "Er is iets fout gegaan. Probeer het opnieuw of neem contact met ons op via e-mail."
+  "errorMessage": "Er is iets fout gegaan. Probeer het opnieuw of neem contact met ons op via {email}."
 }
