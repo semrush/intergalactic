@@ -16,8 +16,10 @@ const Demo = () => {
 
   return (
     <Hint tag={Button} onClick={handleClick} title='Notifications'>
-      <NotificationM />
-      <Dot up hidden={!dotVisible} size='l' />
+      <Button.Addon>
+        <NotificationM />
+        <Dot up hidden={!dotVisible} size='l' />
+      </Button.Addon>
     </Hint>
   );
 };
