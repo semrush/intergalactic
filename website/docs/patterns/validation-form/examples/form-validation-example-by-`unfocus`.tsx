@@ -7,8 +7,8 @@ import { Box, Flex } from 'intergalactic/flex-box';
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
-const required = (value) => (value ? undefined : 'Required');
-const email = (value) => (value?.includes('@') ? undefined : 'Enter email');
+const required = (value) => (value ? undefined : 'Please fill in this field.');
+const email = (value) => (value?.includes('@') ? undefined : 'Please enter valid email.');
 
 class Demo extends React.Component {
   focusDecorator: any;
@@ -34,10 +34,9 @@ class Demo extends React.Component {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
-                        <Tooltip animationsDisabled>
+                        <Tooltip>
                           <Tooltip.Popper
                             theme='warning'
-                            placement='top'
                             id='form-first-name-error'
                             visible={showError}
                           >
@@ -64,10 +63,9 @@ class Demo extends React.Component {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
-                        <Tooltip animationsDisabled>
+                        <Tooltip>
                           <Tooltip.Popper
                             theme='warning'
-                            placement='top'
                             id='form-last-name-error'
                             visible={showError}
                           >
@@ -101,13 +99,8 @@ class Demo extends React.Component {
                     const showError = Boolean(meta.touched && meta.active && meta.error);
 
                     return (
-                      <Tooltip animationsDisabled>
-                        <Tooltip.Popper
-                          id='form-email-error'
-                          theme='warning'
-                          placement='right'
-                          visible={showError}
-                        >
+                      <Tooltip>
+                        <Tooltip.Popper id='form-email-error' theme='warning' visible={showError}>
                           {meta.error}
                         </Tooltip.Popper>
                         <Input

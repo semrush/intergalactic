@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Wyślij opinię",
   "learnMore": "Dowiedz się więcej",
   "formTitle": "Formularz opinii",
   "submitButton": "Wyślij opinię",
   "successMessage": "Dziękujemy za opinię!",
-  "errorMessage": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami pod adresem e-mail."
+  "errorMessage": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami pod adresem {email}."
 }

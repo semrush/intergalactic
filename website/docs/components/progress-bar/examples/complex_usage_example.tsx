@@ -3,18 +3,15 @@ import { Box } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import ProgressBar from 'intergalactic/progress-bar';
 
+const maxValue = 2000;
+
 const Demo = () => {
   const [value, setValue] = React.useState(0);
 
   React.useEffect(() => {
     const timerFetch = setInterval(() => {
-      setValue((value) => {
-        if (value < 100) {
-          return value + 20;
-        }
-        return 0;
-      });
-    }, 1000);
+      setValue((value) => (value < maxValue ? value + 400 : 0));
+    }, 2000);
     return () => {
       clearInterval(timerFetch);
     };
@@ -23,9 +20,14 @@ const Demo = () => {
   return (
     <div>
       <Box mb={1}>
-        <Text size={200}>{value ? `${20 * value}/2000` : 'progress...'}</Text>
+        <Text size={200}>{value ? `${value}/${maxValue}` : 'Starting...'}</Text>
       </Box>
-      <ProgressBar tabIndex={0} value={value} aria-label='Infinite emails processing' />
+      <ProgressBar
+        tabIndex={0}
+        value={(value / maxValue) * 100}
+        aria-valuetext={`${value} of ${maxValue}`}
+        aria-label='Infinite emails processing'
+      />
     </div>
   );
 };

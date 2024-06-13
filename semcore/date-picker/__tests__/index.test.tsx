@@ -162,7 +162,9 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
+  test('Should not show error tooltip when inputed date is not allowed and datePicker is closing', async ({
+    task,
+  }) => {
     const component = (
       <Box w={200} h={200}>
         <DatePicker

@@ -43,7 +43,14 @@ export type SwitchValueProps = BoxProps &
 
 /** @deprecated */
 export interface ISwitchAddonProps extends SwitchAddonProps, UnknownProperties {}
-export type SwitchAddonProps = BoxProps & NeighborItemProps & {};
+export type SwitchAddonProps = BoxProps &
+  NeighborItemProps & {
+    /** @deprecated
+     * You shouldn't use Switch with two addons if one of them has hidden prop.
+     * Just use one Addon with text which could be read as On or Off.
+     * */
+    hidden?: boolean;
+  };
 
 /** @deprecated */
 export interface ISwitchContext extends SwitchContext, UnknownProperties {}
