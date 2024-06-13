@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.3] - 2024-06-13
+
+### Fixed
+
+- Incorrect display of `ScrollArea.Bar` after reducing the parent size.
+
 ## [4.40.2] - 2024-06-12
 
 ### Changed
