@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.3] - 2024-06-13
+
+### Fixed
+
+- Now `string` is not an allowed value for theme prop.
+
 ## [5.34.2] - 2024-06-12
 
 ### Changed

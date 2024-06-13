@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.44.3] - 2024-06-12
+
+### Changed
+
+- Role from `status` to `region`.
+
+### Fixed
+
+- Now `string` is not an allowed value for theme prop.
+
 ## [2.44.2] - 2024-06-12
 
 ### Changed
