@@ -21,7 +21,7 @@ const Demo = () => {
         {visible ? 'Close' : 'Open'} NoticeGlobal
       </Button>
       <Select options={options} defaultValue={defaultTheme} onChange={setTheme} />
-      <Portal portalRendering='prepend'>
+      <Portal>
         <NoticeGlobal
           hidden={!visible}
           theme={theme}
