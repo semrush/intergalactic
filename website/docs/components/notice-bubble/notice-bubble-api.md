@@ -19,7 +19,7 @@ Manager is a storage of all notice instances, it is able to add, delete and upda
 import { NoticeBubbleContainer } from 'intergalactic/notice-bubble';
 ```
 
-Container - div in the body via the portal (`React.Portal`). It is inserted once in any part of the application and subscribes to Manager updates (`NoticeBubbleManager`). Later, notices will be rendered to it.
+Container is a `div` created in the `body` using `React.Portal`. It is inserted once in any part of the application and subscribes to Manager updates (`NoticeBubbleManager`). Later, notices will be rendered to it.
 
 <TypesView type="NoticeBubbleContainerProps" :types={...types} />
 

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.0] - 2024-06-10
+
+### Fixed
+
+- Fixed case when `NoticeBubble` was resized and mouse left it without any mouse move so `NoticeBubble` didn't hide automatically.
+
 ## [5.33.1] - 2024-05-28
 
 ### Changed

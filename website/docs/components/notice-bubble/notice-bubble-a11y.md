@@ -10,13 +10,11 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 
 Table: Keyboard support
 
-| Key           | Function                                                                                                                                                            |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`         | Moves focus to the next focusable element. When focus is on the last focusable element in the dialog, moves focus to the first focusable element in the dialog.     |
-| `Shift + Tab` | Moves focus to the previous focusable element. When focus is on the first focusable element in the dialog, moves focus to the last focusable element in the dialog. |
-| `Esc`         | Closes the dialog.                                                                                                                                                  |
-| `Command + S` | (Mac only) Save the contents of the notes message when focused.                                                                                                     |
-| `Control + S` | (Windows only) Save the contents of the notes message when focused.                                                                                                 |
+| Key           | Function                              |
+| ------------- | ------------------------------------- |
+| `Tab`         | Moves focus to the next focusable element. After the last focusable element in the dialog, moves focus to the next focusable element outside of the dialog. |
+| `Shift + Tab` | Moves focus to the previous focusable element. After the first focusable element in the dialog, moves focus to the previous focusable element outside of the dialog. |
+| `Esc`         | Closes the dialog. |
 
 ### Roles & attributes
 
@@ -32,28 +30,10 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
-
-1. The accessible label for the alert dialog is set to its heading.
-2. The dialog's prompt is referenced via `aria-describedby` to ensure that the user is immediately aware of the prompt.
-3. Automatically set focus to the first focusable element inside the dialog. Usually it is the least destructive action. It helps prevent users from accidentally confirming the destructive action, which cannot be undone.
-
-### Roles & attributes
-
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
-
-Table: Roles and attributes
-
-| Role        | Attribute                  | Element | Usage                                                                                                                                                        |
-| ----------- | -------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `alertdialog` |                            | `div`   | Identifies the element that serves as the alert dialog container.                                                                                            |
-|             | `aria-labelledby="IDREF"`  | `div`   | Gives the alert dialog an accessible name by referring to the element that provides the alert dialog title.                                                  |
-|             | `aria-describedby="IDREF"` | `div`   | Gives the alert dialog an accessible description by referring to the alert dialog content that describes the primary message or purpose of the alert dialog. |
-|             | `aria-modal="true"`        | `div`   | Tells assistive technologies that the windows underneath the current alert dialog are not available for interaction (inert).                                 |
-
-## Resources
-
-[W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) has detailed information about the alerts accessible behavior.
+- Elements with the `aria-live` attribute, `status` role or `alert` role are automatically announced only when their content changes. So, if you want your content to be announced automatically, you should initially create an empty element and then update its content.
+- Don't trap keyboard focus in the `NoticeBubble`. Users should be able to navigate in and out freely.
+- If keyboard focus was in the `NoticeBubble`, after closing it set focus back on the element that triggered the notice. If that element doesn't exist anymore, set focus on its parent landmark.
+- If your `NoticeBubble` has interactive elements beside the **Close** button, set keyboard focus on the first non-destructive interactive element when the `NoticeBubble` appears.
 
 ## Other recommendations
 

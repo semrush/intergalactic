@@ -2,6 +2,7 @@ import React from 'react';
 import NotificationM from 'intergalactic/icon/Notification/m';
 import Button from 'intergalactic/button';
 import Dot from 'intergalactic/dot';
+import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [dotVisible, setDotVisible] = React.useState(true);
@@ -14,10 +15,10 @@ const Demo = () => {
   const handleClick = React.useCallback(() => setDotVisible(false), []);
 
   return (
-    <Button onClick={handleClick} aria-label='Read notifications'>
+    <Hint tag={Button} onClick={handleClick} title='Notifications'>
       <NotificationM />
-      <Dot up hidden={!dotVisible} size='l' aria-label='You have notifications to read' />
-    </Button>
+      <Dot up hidden={!dotVisible} size='l' />
+    </Hint>
   );
 };
 

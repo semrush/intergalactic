@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.29.4] - 2024-06-10
+
+### Fixed
+
+- `aria-label` for the `Notice` in `FeedbackRating`.
+
 ## [6.29.3] - 2024-06-05
 
 ### Fixed

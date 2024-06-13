@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.34.4] - 2024-06-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.28.1 ~> 4.28.2], `@semcore/flex-box` [5.27.1 ~> 5.27.2], `@semcore/popper` [5.35.6 ~> 5.35.7], `@semcore/portal` [3.27.1 ~> 3.27.2], `@semcore/core` [2.25.1 ~> 2.25.2]).
+
+## [6.34.3] - 2024-05-31
+
+### Fixed
+
+- Merging tooltip with Button component was breaking the button styles.
+- Removed `aria-haspopup` and `role` from triggers of `Hint` and `Tooltip`.
+- Removed `interaction` property from types of `Hint`.
+- Removed warning theme from types of `Hint`.
+
+### Changed
+
+- `aria-haspopup` of `DescriptionTooltip` changed to `dialog`.
+
+## [6.34.2] - 2024-06-04
+
+### Fixed
+
+- `DescriptionTooltip` default children.
+
 ## [6.34.1] - 2024-05-31
 
 ### Changed

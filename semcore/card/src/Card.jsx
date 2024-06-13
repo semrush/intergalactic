@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import Tooltip from '@semcore/tooltip';
+import { DescriptionTooltip } from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
 
 import style from './style/card.shadow.css';
@@ -36,23 +36,23 @@ class CardRoot extends Component {
 }
 
 function Title(props) {
-  const { styles, innerHint, Children } = props;
+  const { styles, innerHint, Children, innerHintAriaLabel, hintAfterAriaLabel } = props;
   const hintAfter = props.hintAfter || props.hint;
   const STitle = Root;
   const SIcon = InfoM;
-  const STooltip = Tooltip;
+  const STooltip = DescriptionTooltip;
   return sstyled(styles)(
     <>
       <STitle render={Text}>
         <Children />
         {innerHint && (
-          <STooltip ml={1} title={innerHint}>
+          <STooltip ml={1} title={innerHint} aria-label={innerHintAriaLabel}>
             <SIcon interactive />
           </STooltip>
         )}
       </STitle>
       {hintAfter && (
-        <STooltip title={hintAfter}>
+        <STooltip title={hintAfter} aria-label={hintAfterAriaLabel}>
           <SIcon interactive />
         </STooltip>
       )}

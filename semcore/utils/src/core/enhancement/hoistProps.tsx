@@ -1,10 +1,7 @@
 import React from 'react';
-// @ts-ignore
-import assignProps from '@semcore/utils/lib/assignProps';
-// @ts-ignore
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
-// @ts-ignore
-import pick from '@semcore/utils/lib/pick';
+import assignProps from '../../assignProps';
+import useEnhancedEffect from '../../use/useEnhancedEffect';
+import pick from '../../pick';
 
 export const HOIST_CONTEXT = Symbol('HOIST_CONTEXT');
 const HOIST_SELF = Symbol('HOIST_SELF');

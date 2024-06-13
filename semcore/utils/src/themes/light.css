@@ -304,7 +304,7 @@
   /* Hover state for the selected state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-selected-hover: #c4e5fe;
   /* Color of the outer border of the FeaturePopover.Spot. */
-  --intergalactic-feature-popover-dot-outer-border: rgba(252, 224, 129, 0.3);
+  --intergalactic-feature-popover-dot-outer-border: #fce081;
   /* Background color of the ProgressBar. */
   --intergalactic-progress-bar-bg: #e0e1e9;
   /* Hover state of the background color of the ProgressBar. */
@@ -443,21 +443,14 @@
   --intergalactic-medium: 500;
   /* Use only for text in Badge component. */
   --intergalactic-fs-50: 10px;
-  /* Use with caution for text in additional messages. Always check its contrast and readability. */
+  /* Use this font-size with caution for text in some additional messages. Always check its contrast and readability. */
   --intergalactic-fs-100: 12px;
-  /* Use for text in regular messages. */
   --intergalactic-fs-200: 14px;
-  /* Use for H6 with bold font-weight, and for text in regular messages. */
   --intergalactic-fs-300: 16px;
-  /* Use for H5 and subtitles. */
   --intergalactic-fs-400: 20px;
-  /* Use for H4. */
   --intergalactic-fs-500: 24px;
-  /* Use for H3. */
   --intergalactic-fs-600: 32px;
-  /* Use for H2. */
   --intergalactic-fs-700: 36px;
-  /* Use for H1. */
   --intergalactic-fs-800: 48px;
   /* Compact letter spacing. */
   --intergalactic-compact: 0.3;
