@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.3] - 2024-06-10
+
+### Fixed
+
+- Display of zoomed item after transition from the last item to the first one in the cyclic scroll.
+
 ## [3.37.2] - 2024-06-06
 
 ### Fixed

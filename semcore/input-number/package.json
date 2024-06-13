@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-number",
   "description": "Semrush InputNumber Component",
-  "version": "5.29.3",
+  "version": "5.29.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/input": "4.28.2",
-    "@semcore/utils": "4.28.1",
-    "@semcore/flex-box": "5.27.1"
+    "@semcore/input": "4.28.3",
+    "@semcore/utils": "4.28.2",
+    "@semcore/flex-box": "5.27.2"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

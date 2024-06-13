@@ -16,7 +16,7 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 
 ## Customizing the bar
 
-By default, you should use `<ProgressBar/>`. However, if you need to customize the progress bar using the `ProgressBar.Value` element, you can achieve it in the following manner:
+By default, you should use `<ProgressBar/>`. However, you can customize progress bar appearance using the `theme` property and the `ProgressBar.Value` component.
 
 ::: sandbox
 

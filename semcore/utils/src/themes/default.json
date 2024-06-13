@@ -151,7 +151,7 @@
   "--intergalactic-dropdown-menu-item-hover": "#f4f5f9",
   "--intergalactic-dropdown-menu-item-selected": "rgba(196, 229, 254, 0.7)",
   "--intergalactic-dropdown-menu-item-selected-hover": "#c4e5fe",
-  "--intergalactic-feature-popover-dot-outer-border": "rgba(252, 224, 129, 0.3)",
+  "--intergalactic-feature-popover-dot-outer-border": "#fce081",
   "--intergalactic-progress-bar-bg": "#e0e1e9",
   "--intergalactic-progress-bar-bg-hover": "#c4c7cf",
   "--intergalactic-progress-bar-bg-invert": "rgba(255, 255, 255, 0.2)",
