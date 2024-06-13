@@ -11,7 +11,9 @@ const Demo = () => {
   return (
     <>
       <AnimatedNumber value={value} />
-      <Button onClick={handleClick}>rerender</Button>
+      <Button onClick={handleClick} mt={2}>
+        Rerender value
+      </Button>
     </>
   );
 };
