@@ -2,17 +2,7 @@ import React from 'react';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 import { Intergalactic } from '@semcore/core';
-
-type AnimatedNumberProps = {
-  /** Animates number change, receives value between 0 and 1 and returns value in range from 0 to 1, e.g. for linear easing pass (t) => t */
-  easing?: (t: number) => number;
-  /** Stringify number, receives a fraction value */
-  formatValue?: (value: number) => string;
-  duration?: number;
-  delay?: number;
-  initValue?: number;
-  value: number;
-};
+import { AnimatedNumberBaseProps } from './index';
 
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 const defaultFormatValue = (value: number) => value.toFixed(2);
@@ -71,4 +61,4 @@ export const AnimatedNumber = ((props) => {
       {formatValue(value)}
     </Tag>
   );
-}) as Intergalactic.Component<'div', AnimatedNumberProps>;
+}) as Intergalactic.Component<'div', AnimatedNumberBaseProps>;
