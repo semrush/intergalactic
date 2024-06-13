@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tab-line",
   "description": "Semrush TabLine Component",
-  "version": "4.26.1",
+  "version": "4.26.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.27.1",
-    "@semcore/neighbor-location": "4.25.1",
-    "@semcore/utils": "4.28.1"
+    "@semcore/flex-box": "5.27.2",
+    "@semcore/neighbor-location": "4.25.2",
+    "@semcore/utils": "4.28.2"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
