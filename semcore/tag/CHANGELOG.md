@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.37.0] - 2024-06-13
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.28.2 ~> 4.29.0], `@semcore/icon` [4.37.0 ~> 4.38.0], `@semcore/flex-box` [5.27.2 ~> 5.28.0], `@semcore/core` [2.25.2 ~> 2.26.0]).
+
 ## [5.36.2] - 2024-06-12
 
 ### Changed
