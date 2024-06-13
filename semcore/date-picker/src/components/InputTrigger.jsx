@@ -84,6 +84,7 @@ class SingleDateInputRoot extends Component {
   state = {
     errorText: null,
     showError: false,
+    focused: false,
   };
   uncontrolledProps() {
     return {
@@ -111,6 +112,14 @@ class SingleDateInputRoot extends Component {
       ],
     };
   }
+
+  handleFocus = () => {
+    this.setState({ focused: true });
+  };
+
+  handleBlur = () => {
+    this.setState({ focused: false });
+  };
 
   handleInputMaskPipeBlock = (value) => {
     if (value === this.asProps.disabledDateInputAttempt) return;
@@ -149,7 +158,7 @@ class SingleDateInputRoot extends Component {
       showError: showErrorProps,
       popoverVisible,
     } = this.asProps;
-    const { errorText, showError: showErrorState } = this.state;
+    const { errorText, showError: showErrorState, focused } = this.state;
     const showError = showErrorState && showErrorProps;
     const SSingleDateInput = Root;
 
@@ -160,9 +169,11 @@ class SingleDateInputRoot extends Component {
         placement='top-start'
         title={errorText}
         theme='warning'
-        visible={showError && popoverVisible}
+        visible={showError && (popoverVisible || focused)}
         state={showError ? 'invalid' : state}
         ref={forwardRef}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
         __excludeProps={['onChange', 'style', 'aria-expanded']}
       >
         <NeighborLocation>
@@ -392,7 +403,7 @@ class DateRangeRoot extends Component {
   render() {
     const SDateRange = Root;
     const { Children, styles, w, state, showError: showErrorProps, popoverVisible } = this.asProps;
-    const { errorText, lastChangedInput, showError: showErrorState } = this.state;
+    const { errorText, lastChangedInput, showError: showErrorState, containerFocused } = this.state;
     const showError = showErrorState && showErrorProps;
 
     return sstyled(styles)(
@@ -403,7 +414,7 @@ class DateRangeRoot extends Component {
         placement={lastChangedInput === 'to' ? 'top-end' : 'top-start'}
         title={errorText}
         theme='warning'
-        visible={showError && popoverVisible}
+        visible={showError && (popoverVisible || containerFocused)}
         state={showError ? 'invalid' : state}
         __excludeProps={['onChange', 'value', 'aria-expanded']}
         w={w}
