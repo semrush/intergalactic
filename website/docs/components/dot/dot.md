@@ -20,14 +20,14 @@ const Preview = (preview) => {
 
   const size = radio({
     key: 'size',
-    defaultValue: 'm',
+    defaultValue: 'l',
     label: 'Size',
     options: SIZES,
   });
 
   const up = bool({
     key: 'up',
-    defaultValue: false,
+    defaultValue: `up`,
     label: 'Up',
   });
 
@@ -45,14 +45,14 @@ const Preview = (preview) => {
 
   return (
     <Button>
-      <Button.Text alignItems='center'>Notification</Button.Text>
+      <Button.Text alignItems='center'>Notifications</Button.Text>
       {up ? (
-        <Dot up={up} size={size} hidden={hidden} aria-label='You have unread notification'>
+        <Dot up={up} size={size} hidden={hidden}>
           {value ? value : null}
         </Dot>
       ) : (
         <Button.Addon>
-          <Dot size={size} hidden={hidden} aria-label='You have unread notification'>
+          <Dot size={size} hidden={hidden}>
             {value ? value : null}
           </Dot>
         </Button.Addon>
@@ -91,15 +91,15 @@ The component has two sizes: M and L.
 
 Table: Dot sizes
 
-| Size                    | Margins | Usage         |
-| ----------------------- | ---------- | ---------------------------------------------------- |
-| M    | ![](static/dot-m.png)     | Use it to mark text items inside the list.               |
-|      | ![](static/s-margins.png)      |     |
-|      | ![](static/mc-notifications-yes.png) | Use it to mark images/controls inside the list.     |
-| L    | ![](static/dot-l.png)                      | Use it to mark controls from the outside.           |
-|      | ![](static/l-margins.png)  |                                                         |
-| L with a counter inside | ![](static/dot-on.png)                    | Use it to mark controls from the outside and show the number of updates. |
-|      | ![](static/xl-margins.png)        |                                                                             |
+| Size                    | Margins                              | Usage                                                                    |
+| ----------------------- | ------------------------------------ | ------------------------------------------------------------------------ |
+| M                       | ![](static/dot-m.png)                | Use it to mark text items inside the list.                               |
+|                         | ![](static/s-margins.png)            |                                                                          |
+|                         | ![](static/mc-notifications-yes.png) | Use it to mark images/controls inside the list.                          |
+| L                       | ![](static/dot-l.png)                | Use it to mark controls from the outside.                                |
+|                         | ![](static/l-margins.png)            |                                                                          |
+| L with a counter inside | ![](static/dot-on.png)               | Use it to mark controls from the outside and show the number of updates. |
+|                         | ![](static/xl-margins.png)           |                                                                          |
 
 ## Location
 
@@ -123,10 +123,10 @@ When the dot has a counter, it increases in size accordingly.
 
 Table: Dot with and without a counter
 
-|                   | Appearance example                        |
-| ----------------- | ----------------------------------------- |
-| without a counter | ![](static/button.png) |
-| with a counter    | ![](static/counter.png)   |
+|                   | Appearance example      |
+| ----------------- | ----------------------- |
+| without a counter | ![](static/button.png)  |
+| with a counter    | ![](static/counter.png) |
 
 If there is one update, show a dot without a counter inside.
 
@@ -166,4 +166,3 @@ Table: Interaction with Dot
 |                                             | after the user **has clicked** on all new items of the list.  |
 | The dot disappears from an item in the list | after the user **has hovered** a new item of the list.        |
 |                                             | after the user **has clicked** on a new item of the list.     |
-
