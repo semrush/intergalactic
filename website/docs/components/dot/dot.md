@@ -44,15 +44,15 @@ const Preview = (preview) => {
   });
 
   return (
-    <Button>
+    <Button aria-label='You have unread notification'>
       <Button.Text alignItems='center'>Notifications</Button.Text>
       {up ? (
-        <Dot up={up} size={size} hidden={hidden} aria-label='You have unread notification'>
+        <Dot up={up} size={size} hidden={hidden}>
           {value ? value : null}
         </Dot>
       ) : (
         <Button.Addon>
-          <Dot size={size} hidden={hidden} aria-label='You have unread notification'>
+          <Dot size={size} hidden={hidden}>
             {value ? value : null}
           </Dot>
         </Button.Addon>
