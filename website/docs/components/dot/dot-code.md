@@ -18,4 +18,4 @@ To animate the appearance and hiding of an element, it is better to pass a `hidd
 
 ## Dot with counter
 
-Refer to [Counter in dot example](/components/counter/counter-code#counter-in-dot).
+Refer to the [Counter in dot example](/components/counter/counter-code#counter-in-dot).
