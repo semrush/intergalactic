@@ -9,9 +9,25 @@ const maxSymbols = 150;
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
+  const [valueLength, setValueLength] = React.useState(0);
   const [theme, setTheme] = React.useState<string>('');
   const handleChange = React.useCallback((value: string) => {
     setValue(value);
+  }, []);
+
+  const valueTimer = React.useRef<number>();
+
+  React.useEffect(() => {
+    if (valueTimer.current) {
+      window.clearTimeout(valueTimer.current);
+    }
+
+    valueTimer.current = window.setTimeout(() => {
+      setValueLength(value.length);
+    }, 1000);
+  }, [value]);
+
+  React.useEffect(() => {
     if (value.length >= 140) {
       if (value.length <= maxSymbols) {
         setTheme('warning');
@@ -21,14 +37,16 @@ const Demo = () => {
     } else {
       setTheme('');
     }
-  }, []);
+  }, [value]);
 
   return (
     <Flex direction='column' w={350}>
       <Flex mb={2} justifyContent='space-between'>
-        <Text size={200} tag='label' htmlFor='limited-text-field' id={'label-for-textarea'}>
-          Project description
-          <Counter ml={1} theme={theme}>
+        <Flex>
+          <Text size={200} tag='label' htmlFor='limited-text-field'>
+            Project description
+          </Text>
+          <Counter ml={1} theme={theme} id={'counter-for-textarea'}>
             {value.length}
             <span aria-hidden='true'>/</span>
             <ScreenReaderOnly>of</ScreenReaderOnly>
@@ -37,17 +55,24 @@ const Demo = () => {
             {theme === 'warning' && <ScreenReaderOnly>Limit is almost reached</ScreenReaderOnly>}
             {theme === 'danger' && <ScreenReaderOnly>Limit is exceeded</ScreenReaderOnly>}
           </Counter>
-        </Text>
-        <Text size={200} color='text-secondary'>
+        </Flex>
+        <Text size={200} color='text-secondary' id={'optional-for-textarea'}>
           optional
         </Text>
       </Flex>
       <Textarea
         placeholder='The goal of your project, required resources, and so on'
         id='limited-text-field'
-        aria-describedby='label-for-textarea'
+        aria-describedby='optional-for-textarea counter-for-textarea'
         onChange={handleChange}
       />
+      <ScreenReaderOnly aria-live={'polite'} aria-atomic={true}>
+        {valueLength} of {maxSymbols} allowed characters
+        {valueLength >= 140 && valueLength <= 150 && (
+          <ScreenReaderOnly>Limit is almost reached</ScreenReaderOnly>
+        )}
+        {valueLength > 150 && <ScreenReaderOnly>Limit is exceeded</ScreenReaderOnly>}
+      </ScreenReaderOnly>
     </Flex>
   );
 };
