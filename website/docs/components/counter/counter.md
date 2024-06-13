@@ -15,10 +15,9 @@ const SIZES = ['m', 'l', 'xl'];
 
 const THEME = [
   '',
-  'bg-primary-warning',
-  'bg-primary-critical',
-  'bg-primary-info',
-  'bg-primary-neutral',
+  'warning',
+  'danger',
+  'info'
 ];
 
 const Preview = (preview) => {

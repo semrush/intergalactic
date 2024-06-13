@@ -54,7 +54,7 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Accent background of the message with regular information.",
-    "components": ["base-trigger", "notice-global"]
+    "components": ["base-trigger", "counter", "notice-global"]
   },
   {
     "name": "--intergalactic-bg-primary-success",
@@ -428,7 +428,6 @@
     "description": "Inverted version of the primary text.",
     "components": [
       "button",
-      "counter",
       "date-picker",
       "dot",
       "notice-bubble",

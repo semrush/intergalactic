@@ -89,3 +89,13 @@ The `Dot` component also contains a text counter. For more information, refer to
 </script>
 
 :::
+
+## Animated number
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/animated_number.tsx';
+</script>
+
+:::

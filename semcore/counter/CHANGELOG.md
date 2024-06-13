@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.26.2] - 2024-06-13
+
+### Fixed
+
+- Using `theme` property with typed values instead of css-variables.
+
 ## [3.26.1] - 2024-05-28
 
 ### Changed
