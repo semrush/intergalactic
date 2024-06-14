@@ -1,3 +1,34 @@
+## [15.96.0] - 2024-06-13
+
+### @semcore/counter
+
+- **Fixed** Using `theme` property with typed values instead of css-variables.
+
+### @semcore/data-table
+
+- **Fixed** Incorrect display of `ScrollArea.Bar` after reducing the parent size.
+
+### @semcore/date-picker
+
+- **Fixed** Show popover with error message only for opened or focused `DatePicker`.
+
+### @semcore/feature-popover
+
+- **Changed** style for `FeaturePopover.Spot` background-color from `--intergalactic-bg-highlight-results` to `--intergalactic-feature-popover-dot-outer-border`.
+
+### @semcore/notice
+
+- **Fixed** Now `string` is not an allowed value for theme prop.
+
+### @semcore/notice-global
+
+- **Changed** Role from `status` to `region`.
+- **Fixed** Now `string` is not an allowed value for theme prop.
+
+### @semcore/utils
+
+- **Changed** value for `--intergalactic-feature-popover-dot-outer-border` token.
+
 ## [15.95.0] - 2024-06-12
 
 ### @semcore/carousel

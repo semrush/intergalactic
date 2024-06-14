@@ -1,7 +1,7 @@
 {
   "name": "@semcore/popper",
   "description": "Semrush Popper Component",
-  "version": "5.35.7",
+  "version": "5.36.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,12 +13,12 @@
   },
   "dependencies": {
     "@popperjs/core": "2.11.5",
-    "@semcore/animation": "2.27.2",
-    "@semcore/flex-box": "5.27.2",
-    "@semcore/neighbor-location": "4.25.2",
-    "@semcore/outside-click": "3.25.2",
-    "@semcore/portal": "3.27.2",
-    "@semcore/utils": "4.28.2"
+    "@semcore/animation": "2.28.0",
+    "@semcore/flex-box": "5.28.0",
+    "@semcore/neighbor-location": "4.26.0",
+    "@semcore/outside-click": "3.26.0",
+    "@semcore/portal": "3.28.0",
+    "@semcore/utils": "4.29.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
