@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.2] - 2024-06-14
+
+### Fixed
+
+- Dropdown with any `interaction` except `none` should be opened by pressing `Enter` or `Space`.
+
 ## [4.32.1] - 2024-06-14
 
 ### Fixed
