@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.1] - 2024-06-14
+
+### Added
+
+- Possibility to open `focusable` popper by click on it (if the trigger is already focused).
+
 ## [5.36.0] - 2024-06-13
 
 ### Changed
