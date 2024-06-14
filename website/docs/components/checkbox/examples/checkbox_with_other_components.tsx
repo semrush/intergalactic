@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flex } from 'intergalactic/flex-box';
 import Checkbox from 'intergalactic/checkbox';
 import { Hint } from 'intergalactic/tooltip';
 import InfoM from 'intergalactic/icon/Info/m';
@@ -11,10 +12,10 @@ function noop(e) {
 const Demo = () => (
   <>
     {[0, 1, 2].map((item) => (
-      <div key={item}>
-        <Checkbox mb={3} label={`Note ${item + 1}`} />
+      <Flex key={item}>
+        <Checkbox mb={3} label={`Option ${item + 1}`} />
         <Hint
-          title='There is information about point.'
+          title='Place an additional information here!'
           placement='right-start'
           ml={1}
           tag={InfoM}
@@ -22,21 +23,21 @@ const Demo = () => (
           interactive
           aria-label='Additional info'
         />
-      </div>
+      </Flex>
     ))}
 
     {[3, 4, 5].map((item) => (
-      <div key={item}>
+      <Flex key={item}>
         <Checkbox mb={3}>
           <Checkbox.Value />
           <Checkbox.Text>
-            {`Note ${item + 1}`}{' '}
+            {`Option ${item + 1}`}{' '}
             <Link href='#' onClick={noop}>
-              Link to somewhere
+              Learn more
             </Link>
           </Checkbox.Text>
         </Checkbox>
-      </div>
+      </Flex>
     ))}
   </>
 );

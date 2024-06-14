@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flex } from 'intergalactic/flex-box';
 import Checkbox from 'intergalactic/checkbox';
 
 const Demo = () => {
@@ -18,17 +19,17 @@ const Demo = () => {
 
   return (
     <>
-      <div>
+      <Flex>
         <Checkbox
           mb={3}
-          label='Select all'
+          label='Options group'
           onChange={handleGroupChange}
           indeterminate={checked.includes(false) && checked.includes(true)}
           checked={checked.includes(true)}
         />
-      </div>
+      </Flex>
       {checked.map((value, index) => (
-        <div key={index}>
+        <Flex key={index} ml={6}>
           <Checkbox
             mb={3}
             key={index}
@@ -36,7 +37,7 @@ const Demo = () => {
             onChange={handleItemChange(index)}
             label={`Option ${index + 1}`}
           />
-        </div>
+        </Flex>
       ))}
     </>
   );
