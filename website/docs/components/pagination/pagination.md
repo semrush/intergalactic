@@ -91,7 +91,7 @@ We provide some recommendations for the table size:
 | ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
 | ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
 | ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
-| ![](static/steps.png)              | When the input is in focus, a clickable `Return` icon with M size appears. By clicking it or pressing `Enter`, the user moves to the entered page. |
+| ![](static/steps.png)              | Page input allows the user to enter a specific page, and after the user presses `Enter`, the entered page opens. |
 
 The current page should always be displayed in the input:
 

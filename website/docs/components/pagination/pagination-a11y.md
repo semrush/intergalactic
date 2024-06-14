@@ -26,9 +26,7 @@ Table: Roles & attributes
 | Component | Role/tag  | Attribute                         |
 | --------- | ----- |--------------------------------- |
 | `Pagination` | `nav` | `aria-label="pagination"`         |
-| `Pagination.FirstPage` | `button` | `aria-label="First page"`         |without visible text.                                                                     |
-| `Pagination.PrevPage` | `button` | `aria-label="Previous page"` |
-| `Pagination.NextPage` | `button` | `aria-label="Next page"` |
+| `Pagination.FirstPage` | `button` | `aria-label="First page"`         |
 | `Pagination.TotalPages` | `button` | `aria-label="Last page {number}"` |
 
 ## Considerations for designers & developers
