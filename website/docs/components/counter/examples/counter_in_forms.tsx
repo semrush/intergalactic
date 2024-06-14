@@ -42,7 +42,7 @@ const Demo = () => {
   return (
     <Flex direction='column' w={350}>
       <Flex mb={2} justifyContent='space-between'>
-        <Flex>
+        <Flex alignItems={'center'}>
           <Text size={200} tag='label' htmlFor='limited-text-field'>
             Project description
           </Text>
