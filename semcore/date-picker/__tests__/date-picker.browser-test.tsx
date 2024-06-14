@@ -1,5 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
+import { mockDate, RealDate } from './utils';
 
 test.describe('DatePicker', () => {
   test('single date', async ({ page }) => {
@@ -33,7 +34,13 @@ test.describe('DatePicker', () => {
 
     await page.setContent(htmlContent);
 
-    // date picker calendar contains title with the current month that will invaldiate screenshots every 30 days
+    await page.evaluateHandle(() => {
+      window.global = window;
+      // @ts-ignore
+      window.RealDate = window.Date;
+    });
+    await page.evaluateHandle(mockDate, '2024-06-13T12:00:00.808Z');
+
     const datePicker = await page.locator('[data-ui-name="DatePicker.Trigger"]');
     const screenshotsClip = (await datePicker.first().boundingBox())!;
     screenshotsClip.x -= 4;
@@ -42,9 +49,9 @@ test.describe('DatePicker', () => {
     screenshotsClip.height += 600;
 
     await page.keyboard.press('Tab');
-    await page.keyboard.type('05');
+    await page.keyboard.type('06');
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });
-    await page.keyboard.type('18');
+    await page.keyboard.type('20');
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });
     await page.keyboard.type('2024');
     await expect(page).toHaveScreenshot({ clip: screenshotsClip });

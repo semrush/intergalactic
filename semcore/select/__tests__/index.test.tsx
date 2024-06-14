@@ -104,6 +104,26 @@ describe('Select Trigger', () => {
     },
   );
 
+  test.concurrent(
+    'should not open popper by keypress enter if interaction not click',
+    async ({ expect }) => {
+      const spy = vi.fn();
+      render(
+        <Select onVisibleChange={spy} interaction={'none'}>
+          <Select.Trigger />
+          <Select.Popper>
+            <Select.Option value='1' />
+            <Select.Option value='2' />
+          </Select.Popper>
+        </Select>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Enter]');
+      expect(spy).not.toBeCalled();
+    },
+  );
+
   test.concurrent('Call onVisibleChange for click in Option when value selected', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
