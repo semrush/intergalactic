@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Deixar feedback",
   "learnMore": "Saiba mais",
   "formTitle": "Formulário de comentários",
   "submitButton": "Enviar comentário",
   "successMessage": "Agradecemos pelos comentários!",
-  "errorMessage": "Algo deu errado. Tente novamente ou entre em contato conosco pelo e-mail."
+  "errorMessage": "Algo deu errado. Tente novamente ou entre em contato conosco pelo e-mail {email}."
 }

@@ -14,7 +14,7 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import NoticeGlobal from 'intergalactic/notice-global';
 import { Box } from 'intergalactic/flex-box';
 
-const THEME = ['danger', 'info', 'neutral', 'success', 'warning'];
+const THEME = ['neutral', 'info', 'success', 'warning', 'danger'];
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>
@@ -103,8 +103,8 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 Component consists of the following:
 
-1. `NoticeGlobal.Content`
-2. `NoticeGlobal.CloseIcon` (optional);
+1. `NoticeGlobal.Content`;
+2. `NoticeGlobal.CloseIcon` (optional).
 
 ## Styles
 

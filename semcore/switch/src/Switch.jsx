@@ -153,10 +153,6 @@ class Value extends Component {
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
     const color = resolveColor(theme);
 
-    const labelledBy = inputProps.checked
-      ? `igc-${uid}-switch-addon-left`
-      : `igc-${uid}-switch-addon-right`;
-
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
@@ -175,8 +171,6 @@ class Value extends Component {
                 type='checkbox'
                 ref={forwardRef}
                 role='switch'
-                aria-labelledby={labelledBy}
-                aria-checked={inputProps.checked}
                 aria-readonly={inputProps.disabled}
                 {...inputProps}
                 onClick={callAllEventHandlers(this.handlerInputClick, inputProps.click)}
@@ -205,7 +199,6 @@ function Addon(props) {
             render={Box}
             tag='span'
             neighborLocation={neighborLocation}
-            aria-hidden='true'
             id={`igc-${uid}-switch-addon-${neighborLocation}`}
           />,
         )

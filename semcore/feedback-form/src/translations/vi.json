@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Gửi góp ý",
   "learnMore": "Tìm hiểu thêm",
   "formTitle": "Biểu mẫu Phản hồi",
   "submitButton": "Gửi góp ý",
   "successMessage": "Cảm ơn góp ý của bạn!",
-  "errorMessage": "Đã xảy ra sự cố. Hãy thử lại hoặc liên hệ với chúng tôi qua email."
+  "errorMessage": "Đã xảy ra sự cố. Hãy thử lại hoặc liên hệ với chúng tôi qua {email}."
 }

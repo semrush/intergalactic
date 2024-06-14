@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "留言反馈",
   "learnMore": "了解更多",
-  "formTitle": "Feedback form",
+  "formTitle": "反馈表格",
   "submitButton": "发送反馈",
   "successMessage": "感谢您的反馈！",
-  "errorMessage": "Something went wrong. Please try again or contact us at email."
+  "errorMessage": "出错了。请重试或通过 {email} 联系我们。"
 }

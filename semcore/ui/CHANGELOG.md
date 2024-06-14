@@ -1,3 +1,73 @@
+## [15.96.0] - 2024-06-13
+
+### @semcore/counter
+
+- **Fixed** Using `theme` property with typed values instead of css-variables.
+
+### @semcore/data-table
+
+- **Fixed** Incorrect display of `ScrollArea.Bar` after reducing the parent size.
+
+### @semcore/date-picker
+
+- **Fixed** Show popover with error message only for opened or focused `DatePicker`.
+
+### @semcore/feature-popover
+
+- **Changed** style for `FeaturePopover.Spot` background-color from `--intergalactic-bg-highlight-results` to `--intergalactic-feature-popover-dot-outer-border`.
+
+### @semcore/notice
+
+- **Fixed** Now `string` is not an allowed value for theme prop.
+
+### @semcore/notice-global
+
+- **Changed** Role from `status` to `region`.
+- **Fixed** Now `string` is not an allowed value for theme prop.
+
+### @semcore/utils
+
+- **Changed** value for `--intergalactic-feature-popover-dot-outer-border` token.
+
+## [15.95.0] - 2024-06-12
+
+### @semcore/carousel
+
+- **Fixed** Display of zoomed item after transition from the last item to the first one in the cyclic scroll.
+
+### @semcore/dropdown-menu
+
+- **Fixed** DropdownMenu was getting unexpected autofocus if nothing else on page is focused.
+
+### @semcore/feedback-form
+
+- **Fixed** `aria-label` for the `Notice` in `FeedbackRating`.
+
+### @semcore/icon
+
+- **Changed** `Facebook` icon according to the latest Facebook logo guidelines.
+
+### @semcore/notice-bubble
+
+- **Fixed** Fixed case when `NoticeBubble` was resized and mouse left it without any mouse move so `NoticeBubble` didn't hide automatically.
+
+### @semcore/switch
+
+- **Changed** Set as deprecated `hidden` property on Switch.Addon to avoid use two `Addons` in `Switch`.
+- **Removed** `aria-checked` from Switch.Value.
+- **Removed** `aria-labelledby` from Switch.Value.
+- **Removed** `aria-hidden` from Switch.Addon.
+
+### @semcore/utils
+
+- **Fixed** errors in imports with `intergalactic/utils/lib/*`.
+
+## [15.94.1] - 2024-06-10
+
+### @semcore/scroll-area
+
+- **Fixed** Auto resizing for `ScrollArea` should work only if pass prop `wMax` or `hMax` to the container.
+
 ## [15.94.0] - 2024-06-07
 
 ### @semcore/breadcrumbs

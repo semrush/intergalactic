@@ -144,9 +144,10 @@ class PickerAbstract extends Component {
   };
 
   getButtonTriggerProps() {
-    const { value, size } = this.asProps;
+    const { value, size, visible } = this.asProps;
 
     return {
+      popoverVisible: visible,
       size,
       empty: !value,
       onKeyDown: this.handlerKeyDown('trigger'),
