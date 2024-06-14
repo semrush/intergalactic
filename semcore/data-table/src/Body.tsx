@@ -290,6 +290,7 @@ class Body extends Component<AsProps, State> {
       disabledScroll,
       renderRows,
       animationsDisabled,
+      forwardRef,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -325,6 +326,11 @@ class Body extends Component<AsProps, State> {
       return <SBodyWrapper>{body}</SBodyWrapper>;
     }
 
+    const scrollContainerRefs = [$scrollRef, this.scrollContainerRef];
+    if (forwardRef) {
+      scrollContainerRefs.push(forwardRef);
+    }
+
     return (
       <SBodyWrapper>
         <ScrollArea
@@ -335,7 +341,7 @@ class Body extends Component<AsProps, State> {
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
           <ScrollArea.Container
-            ref={forkRef($scrollRef, this.scrollContainerRef)}
+            ref={forkRef(...scrollContainerRefs)}
             role='rowgroup'
             focusRingTopOffset={'3px'}
           >

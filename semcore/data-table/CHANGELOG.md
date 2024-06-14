@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.4] - 2024-06-14
+
+### Added
+
+- Possibility to pass `ref` property to `Datatable.Body` and set it to a real table body container - `Scroll.Containter`.
+
 ## [4.40.3] - 2024-06-13
 
 ### Fixed
