@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.28.1] - 2024-06-14
+
+### Fixed
+
+- Error about `foreignObject` on elements other than `svg`.
+
 ## [5.28.0] - 2024-06-13
 
 ### Changed
