@@ -92,6 +92,25 @@ describe('Dropdown', () => {
     expect(spy).toBeCalledWith(false, expect.anything());
   });
 
+  test.concurrent(
+    'should not open popper by keypress enter if interaction not click',
+    async ({ expect }) => {
+      const spy = vi.fn();
+      render(
+        <Dropdown onVisibleChange={spy} interaction={'none'}>
+          <Dropdown.Trigger>
+            <div tabIndex={0}>Select trigger</div>
+          </Dropdown.Trigger>
+          <Dropdown.Popper p={4}>Content</Dropdown.Popper>
+        </Dropdown>,
+      );
+
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('[Enter]');
+      expect(spy).not.toBeCalled();
+    },
+  );
+
   test('a11y', async () => {
     const { container } = render(
       <Dropdown visible disablePortal>
