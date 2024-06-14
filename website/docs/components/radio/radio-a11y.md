@@ -13,9 +13,9 @@ Table: Keyboard support
 
 | Key                                                   | Function                                                                                                                                                                                                                                              |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                                                 | Moves focus to the checked `radio` button in the `radiogroup`. If a `radio` button isn’t checked, focus moves to the first `radio` button in the group.                                                                                               |
+| `Tab`                                                 | Moves focus to the checked `radio` button in the `radiogroup`. If a `radio` button isn’t checked, focus moves to the first `radio` button in the group. In case the focus is already on a `radio` button, the next `Tab` press will move the focus to the next focusable element on the page outside the `radiogroup`.                                                                                               |
 | `Shift + Tab`                                         | Moves focus to the previous focusable element.                                                                                                                                                                                                        |
-| `Up Arrow`, `Down Arrow`, `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous radio button in the group. If focus is on the last/first radio button, moves focus to the first/last radio button respectively. The state of the previously checked radio button is changed to unchecked. |
+| `Up Arrow`, `Down Arrow`, `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous `radio` button in the group. If focus is on the last/first `radio` button, moves focus to the first/last `radio` button respectively. The state of the previously checked `radio` button is changed to unchecked. |
 
 ### Roles and attributes
 
