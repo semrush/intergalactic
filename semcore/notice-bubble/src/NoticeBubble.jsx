@@ -13,9 +13,11 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
+import Button from '@semcore/button';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/notice-bubble.shadow.css';
-import { forkRef } from '@semcore/utils/lib/ref';
+import { forkRef, useForkRef } from '@semcore/utils/lib/ref';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
@@ -56,10 +58,10 @@ class NoticeBubbleContainerRoot extends Component {
     warnings: [],
   };
 
-  constructor(props) {
-    super(props);
-    props.manager.counter = 0;
-    this._unsubscribe = props.manager.addListener(this.handleChange);
+  componentDidMount() {
+    const { manager } = this.asProps;
+    manager.counter = 0;
+    this._unsubscribe = manager.addListener(this.handleChange);
   }
 
   componentWillUnmount = () => {
@@ -82,7 +84,13 @@ class NoticeBubbleContainerRoot extends Component {
 
     return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
-        <SNoticeBubble render={Box} role='alert' aria-live='assertive' ref={ref}>
+        <SNoticeBubble
+          render={Box}
+          ref={ref}
+          tag='section'
+          role='region'
+          aria-label={getI18nText('notification')}
+        >
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
           <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
@@ -91,6 +99,15 @@ class NoticeBubbleContainerRoot extends Component {
     );
   }
 }
+
+const FocusLock = React.forwardRef((props, outerRef) => {
+  const { focusLock, ...other } = props;
+  const innerRef = React.useRef();
+  useFocusLock(innerRef, false, 'auto', !focusLock, true);
+  const ref = useForkRef(outerRef, innerRef);
+
+  return <Flex ref={ref} {...other} />;
+});
 
 class ViewInfo extends Component {
   timer = null;
@@ -145,8 +162,8 @@ class ViewInfo extends Component {
   };
 
   render() {
-    const SBubble = Flex;
-    const SDismiss = 'button';
+    const SBubble = FocusLock;
+    const SDismiss = Button;
     const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
@@ -164,7 +181,6 @@ class ViewInfo extends Component {
 
     return sstyled(styles)(
       <SBubble
-        role='alert'
         {...other}
         ref={forkRef(forwardRef, this.ref)}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
@@ -172,22 +188,23 @@ class ViewInfo extends Component {
       >
         <SDismiss
           type='button'
-          title={getI18nText('close')}
-          onClick={this.handleClose}
+          use='tertiary'
+          theme='muted'
           aria-label={getI18nText('close')}
+          onClick={this.handleClose}
         >
           <CloseIcon />
         </SDismiss>
         {isNode(icon) ? (
           <>
             {icon}
-            <SContent>
+            <SContent role='alert' aria-live='polite'>
               <SMessage>{children}</SMessage>
               {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
             </SContent>
           </>
         ) : (
-          <SContent>
+          <SContent role='alert' aria-live='polite'>
             <SMessage>{children}</SMessage>
             {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
           </SContent>

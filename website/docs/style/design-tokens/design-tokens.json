@@ -2412,6 +2412,7 @@
       "feature-popover",
       "format-text",
       "fullscreen-modal",
+      "notice-bubble",
       "notice-global",
       "wizard"
     ]

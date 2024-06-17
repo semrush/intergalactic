@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import FormattedTypeString from './FormattedTypeString.vue';
 
-const { type, types } = defineProps({ type: String, types: Object })
+const { type, types } = defineProps({ type: String, types: Object });
 if (!types[type]) {
   throw new Error(`Unable to render type ${type} view. Probably you forgot to add
 \<script setup\>

@@ -3,10 +3,12 @@ import { resolve as resolvePath } from 'path';
 import { readFile } from 'fs/promises';
 import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
+import { serializeClassDeclaration } from './classes';
 
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
+  const classesDec: ts.ClassDeclaration[] = [];
   fileDeclaration.forEachChild((child) => {
     if (child.kind === ts.SyntaxKind.InterfaceDeclaration) {
       const isExported = child.modifiers?.some(
@@ -26,18 +28,30 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
         typesDec.push(child as ts.TypeAliasDeclaration);
       }
     }
+    if (child.kind === ts.SyntaxKind.ClassDeclaration) {
+      const isExported = child.modifiers?.some(
+        (modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword,
+      );
+
+      if (isExported) {
+        classesDec.push(child as ts.ClassDeclaration);
+      }
+    }
   });
 
   const types = typesDec.map((type) => serializeTypeDeclaration(type));
   const interfaces = interfaceDec.map((int) => serializeInterfaceDeclaration(int));
+  const classes = classesDec.map((cls) => serializeClassDeclaration(cls));
 
   return {
     filepath,
     types,
     interfaces,
+    classes,
   };
 };
 
+// const x = {
 export default {
   watch: [
     resolvePath(__dirname, '../../../semcore/**/*.d.ts'),
@@ -62,7 +76,7 @@ export default {
       );
       const typings = {};
       for (const file of serialized) {
-        for (const typing of [...file.types, ...file.interfaces]) {
+        for (const typing of [...file.types, ...file.interfaces, ...file.classes]) {
           if (typings[typing.name]) {
             const duplicateFilepath = typings[typing.name].filepath;
 
@@ -87,6 +101,7 @@ export default {
           .filter(Boolean);
         typings[typing].dependencyFiles = dependencyFiles;
       }
+      // console.log(typings['NoticeBubbleManager'].declaration.properties)
       return typings;
     } catch (err) {
       // biome-ignore lint/suspicious/noConsoleLog:
@@ -97,3 +112,9 @@ export default {
     }
   },
 };
+
+// import glob from 'fast-glob';
+
+// await x.load(...await Promise.all(x.watch.map((path) => glob(path, { ignore: ['**/node_modules/**']}))))
+
+// await x.load(['semcore/notice-bubble/src/index.d.ts'])
