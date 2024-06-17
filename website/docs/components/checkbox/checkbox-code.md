@@ -3,6 +3,10 @@ title: Checkbox
 tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
+## Checkbox group
+
+<!-- Here will be example -->
+
 ## Partial selection
 
 When one or more options are selected from the list, the master checkbox gets an `indeterminate` (mixed) state.

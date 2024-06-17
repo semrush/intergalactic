@@ -16,7 +16,7 @@ const Demo = () => (
         <Checkbox mb={3} label={`Option ${item + 1}`} />
         <Hint
           title='Place an additional information here!'
-          placement='right-start'
+          placement='right'
           ml={1}
           tag={InfoM}
           color='icon-secondary-neutral'
