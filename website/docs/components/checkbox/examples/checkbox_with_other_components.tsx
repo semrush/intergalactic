@@ -11,30 +11,30 @@ function noop(e) {
 
 const Demo = () => (
   <>
-      <Flex>
-        <Checkbox mb={3} label="Option 1" />
-        <Hint
-          title='Place an additional information here!'
-          placement='right'
-          ml={1}
-          tag={InfoM}
-          color='icon-secondary-neutral'
-          interactive
-          aria-label='Additional info'
-        />
-      </Flex>
+    <Flex>
+      <Checkbox mb={3} label='Option 1' />
+      <Hint
+        title='Place an additional information here!'
+        placement='right'
+        ml={1}
+        tag={InfoM}
+        color='icon-secondary-neutral'
+        interactive
+        aria-label='Additional info'
+      />
+    </Flex>
 
-      <Flex>
-        <Checkbox mb={3}>
-          <Checkbox.Value />
-          <Checkbox.Text>
-            Option 2
-            <Link ml={2} href='#' onClick={noop}>
-              Learn more
-            </Link>
-          </Checkbox.Text>
-        </Checkbox>
-      </Flex>
+    <Flex>
+      <Checkbox mb={3}>
+        <Checkbox.Value />
+        <Checkbox.Text>
+          Option 2
+          <Link ml={2} href='#' onClick={noop}>
+            Learn more
+          </Link>
+        </Checkbox.Text>
+      </Checkbox>
+    </Flex>
   </>
 );
 
