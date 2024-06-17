@@ -88,7 +88,8 @@ class NoticeBubbleContainerRoot extends Component {
           render={Box}
           ref={ref}
           tag='section'
-          role='region'
+          role='status'
+          aria-live='polite'
           aria-label={getI18nText('notification')}
         >
           <Children />
@@ -198,13 +199,13 @@ class ViewInfo extends Component {
         {isNode(icon) ? (
           <>
             {icon}
-            <SContent role='alert' aria-live='polite'>
+            <SContent>
               <SMessage>{children}</SMessage>
               {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
             </SContent>
           </>
         ) : (
-          <SContent role='alert' aria-live='polite'>
+          <SContent>
             <SMessage>{children}</SMessage>
             {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
           </SContent>
