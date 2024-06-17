@@ -9,7 +9,7 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 ## Partial selection
 
-When one or more options are selected from the list, the master checkbox gets an `indeterminate` (mixed) state.
+When one or more options are selected from the list, the parent checkbox gets an `indeterminate` (mixed) state.
 
 ::: sandbox
 
