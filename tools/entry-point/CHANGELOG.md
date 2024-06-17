@@ -1,3 +1,14 @@
+## [15.96.1] - 2024-06-14
+
+### @semcore/dropdown
+
+- **Fixed** Dropdown with any `interaction` except `none` should be opened by pressing `Enter` or `Space`.
+- **Fixed** Dropdown with `interaction='none'` shouldn't be opened by pressing `Enter` or `Space`.
+
+### @semcore/popper
+
+- **Added** Possibility to open `focusable` popper by click on it (if the trigger is already focused).
+
 ## [15.96.0] - 2024-06-13
 
 ### @semcore/counter
