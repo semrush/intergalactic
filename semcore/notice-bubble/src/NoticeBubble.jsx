@@ -198,13 +198,13 @@ class ViewInfo extends Component {
         {isNode(icon) ? (
           <>
             {icon}
-            <SContent role='alert' aria-live='polite'>
+            <SContent role='status' aria-live='polite'>
               <SMessage>{children}</SMessage>
               {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
             </SContent>
           </>
         ) : (
-          <SContent role='alert' aria-live='polite'>
+          <SContent role='status' aria-live='polite'>
             <SMessage>{children}</SMessage>
             {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
           </SContent>
