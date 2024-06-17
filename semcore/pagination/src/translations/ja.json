@@ -1,14 +1,9 @@
 {
   "prevPageLabel": "前へ",
-  "prevPageDescription": "前のページ {pageNumber}",
   "nextPageLabel": "次へ",
-  "nextPageDescription": "次のページ {pageNumber}",
   "pageInputLabel": "ページ：",
   "totalPagesLabel": "/",
   "pagination": "ページ分割",
   "firstPage": "最初のページ",
-  "currentPage": "現在のページ",
-  "confirm": "ページ番号を確認",
-  "lastPage": "最後のページ#{lastPageNumber}",
-  "goToPage": "ページ{pageNumber}"
+  "lastPage": "最後のページ#{lastPageNumber}"
 }

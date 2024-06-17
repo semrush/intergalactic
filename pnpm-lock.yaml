@@ -1936,6 +1936,9 @@ importers:
       '@semcore/link':
         specifier: 5.32.0
         version: link:../link
+      '@semcore/tooltip':
+        specifier: 6.35.1
+        version: link:../tooltip
       '@semcore/typography':
         specifier: 5.36.0
         version: link:../typography

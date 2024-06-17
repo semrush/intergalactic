@@ -1,14 +1,9 @@
 {
   "prevPageLabel": "Vorige",
-  "prevPageDescription": "Vorige pagina {pageNumber}",
   "nextPageLabel": "Volgende",
-  "nextPageDescription": "Volgende pagina {pageNumber}",
   "pageInputLabel": "Pagina:",
   "totalPagesLabel": "van",
   "pagination": "Paginering",
   "firstPage": "Eerste pagina",
-  "currentPage": "Huidige pagina",
-  "confirm": "Paginanummer bevestigen",
-  "lastPage": "Laatste pagina #{lastPageNumber}",
-  "goToPage": "Pagina {pageNumber}"
+  "lastPage": "Laatste pagina #{lastPageNumber}"
 }
