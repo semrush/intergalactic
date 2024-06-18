@@ -19,7 +19,7 @@ function StylesPlugin({ types: t }, opts) {
     }
   }
 
-  function importProcessing(p, ident, cssPath) {
+  function importProcessing(p, ident, cssPath, usageScope = '@semcore') {
     const code = fs
       .readFileSync(cssPath)
       .toString()
@@ -32,7 +32,7 @@ function StylesPlugin({ types: t }, opts) {
           t.Identifier(ident),
           t.TaggedTemplateExpression(
             t.MemberExpression(
-              addNamed(p, 'sstyled', '@semcore/utils/lib/core/index'),
+              addNamed(p, 'sstyled', `${usageScope}/utils/lib/core/index`),
               t.Identifier('insert'),
             ),
             t.TemplateLiteral(
@@ -182,7 +182,8 @@ function StylesPlugin({ types: t }, opts) {
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
-              importProcessing(p, specifier.local.name, cssPath);
+              const usageScope = state.opts.scopeName;
+              importProcessing(p, specifier.local.name, cssPath, usageScope);
               p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
             }
           });

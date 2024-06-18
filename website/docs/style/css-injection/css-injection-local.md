@@ -40,6 +40,26 @@ Add a new rule to your `webpack-config` :
         }, ]
     }
 ```
+::: warning
+For `intergalactic` we don't recomended to use it, but you could, if you add `scopeName` as a parameter to babel-plugin
+:::
+```javascript
+    {
+        test: /\.js$/,
+        include: /\/node_modules\/intergalactic\//, // <- set correct path
+        enforce: 'pre',
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              ['@semcore/babel-plugin-styles', { 
+                scopeName: 'intergalactic' // <- add this
+              }]
+            ],
+          },
+        }, ]
+    }
+```
 
 ### Step three
 
