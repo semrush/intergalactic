@@ -101,17 +101,22 @@ type DescriptionTooltipPopperAriaProps = Intergalactic.RequireAtLeastOne<{
   title?: string;
 }>;
 
+export type DescriptionTooltipPopperProps = DescriptionTooltipProps &
+  DescriptionTooltipPopperAriaProps & {
+    /**
+     * Popper in DescriptionTooltip should have role `dialog`.
+     * @default 'dialog'
+     */
+    role?: 'dialog';
+  };
+
 declare const DescriptionTooltip: Intergalactic.Component<
   'div',
   DescriptionTooltipProps,
   TooltipTriggerContext
 > & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
-  Popper: Intergalactic.Component<
-    'div',
-    DescriptionTooltipProps & DescriptionTooltipPopperAriaProps,
-    TooltipContext
-  >;
+  Popper: Intergalactic.Component<'div', DescriptionTooltipPopperProps, TooltipContext>;
 };
 
 export default Tooltip;

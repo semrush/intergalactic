@@ -45,7 +45,12 @@ class TooltipRoot extends Component {
 
   uncontrolledProps() {
     return {
-      visible: null,
+      visible: [
+        null,
+        (visible) => {
+          this.handlePopperVisibleChange?.(visible);
+        },
+      ],
     };
   }
 
@@ -102,7 +107,7 @@ class TooltipRoot extends Component {
     );
 
     return (
-      <Root render={Popper} onVisibleChange={this.handlePopperVisibleChange}>
+      <Root render={Popper}>
         {advancedMode ? <Children /> : this.defaultChildren(title, Children, other)}
       </Root>
     );
@@ -269,6 +274,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       ...props,
       ref: this.popperRef,
       role: 'dialog',
+      tabIndex: 0,
     };
   }
 }
