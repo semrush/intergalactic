@@ -23333,7 +23333,7 @@ packages:
       stacktrace-parser: 0.1.10
       use-sync-external-store: 1.2.0(react@18.2.0)
       whatwg-fetch: 3.6.2
-      ws: 6.2.2
+      ws: 6.2.3
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@babel/core'
@@ -27392,8 +27392,8 @@ packages:
       signal-exit: 4.0.2
     dev: true
 
-  /ws@6.2.2:
-    resolution: {integrity: sha512-zmhltoSR8u1cnDsD43TX59mzoMZsLKqUweyYBAIvTngR3shc0W6aOZylZmq/7hqyVxPdi+5Ud2QInblgyE72fw==}
+  /ws@6.2.3:
+    resolution: {integrity: sha512-jmTjYU0j60B+vHey6TfR3Z7RD61z/hmxBS3VMSGIrroOWXQEneK1zNuotOUrGyBHQj0yrpsLHPWtigEFd13ndA==}
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
