@@ -71,7 +71,7 @@ class RootNotice extends Component {
         backgroundColor={color}
         role='region'
         aria-live={isAssertive ? 'assertive' : 'polite'}
-        aria-label={getI18nText('notification')}
+        aria-label={getI18nText(isAssertive ? 'criticalNotification' : 'notification')}
       >
         <Children />
       </SNotice>,
