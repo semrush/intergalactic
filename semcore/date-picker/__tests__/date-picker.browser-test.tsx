@@ -32,14 +32,14 @@ test.describe('DatePicker', () => {
     const standPath = 'website/docs/components/date-picker/examples/disabled_dates.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-    await page.setContent(htmlContent);
-
     await page.evaluateHandle(() => {
       window.global = window;
       // @ts-ignore
       window.RealDate = window.Date;
     });
     await page.evaluateHandle(mockDate, '2024-06-13T12:00:00.808Z');
+
+    await page.setContent(htmlContent);
 
     const datePicker = await page.locator('[data-ui-name="DatePicker.Trigger"]');
     const screenshotsClip = (await datePicker.first().boundingBox())!;
