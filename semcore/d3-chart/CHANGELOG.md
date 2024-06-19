@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.48.0] - 2024-06-19
+
+### Added
+
+- `onClick` handler for `HoverRect.Tooltip`.
+- `onClickHoverRect` and `onClickBar` handlers for `Chart.Bar`.
+- `barIndex` and `barKey` values for `onClick` handler for `Bar` and `HorizontalBar`.
+
 ## [3.47.1] - 2024-06-14
 
 ### Changed
