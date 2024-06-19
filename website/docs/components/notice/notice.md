@@ -142,10 +142,10 @@ Component consists of the following:
 
 Table: Notice content examples
 
-|                                       | Appearance example                                               |
-| ------------------------------------- | ---------------------------------------------------------------- |
-| Notice with minimum possible elements | ![](static/notice-minimal.png)                                   |
-| Notice with maximum possible elements | ![](static/notice-monster.png) ![](static/notice-max-button.png) |
+|                                       | Appearance example             |
+| ------------------------------------- | ------------------------------ |
+| Notice with minimum possible elements | ![](static/notice-minimal.png) |
+| Notice with maximum possible elements | ![](static/notice-monster.png) |
 
 ## Sizes, paddings and margins
 
