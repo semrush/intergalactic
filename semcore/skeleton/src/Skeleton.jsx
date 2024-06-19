@@ -23,9 +23,19 @@ class SkeletonRoot extends Component {
     duration: 2000,
   };
 
+  screenReaderContent() {
+    const { getI18nText } = this.asProps;
+
+    return (
+      <ScreenReaderOnly aria-live='polite' role='status' aria-atomic='true'>
+        {getI18nText('loading')}
+      </ScreenReaderOnly>
+    );
+  }
+
   render() {
     const SSkeleton = Root;
-    const { Children, styles, duration, hidden, getI18nText } = this.asProps;
+    const { Children, styles, duration, hidden, getI18nText, tag } = this.asProps;
 
     if (hidden) return null;
 
@@ -36,11 +46,13 @@ class SkeletonRoot extends Component {
         aria-busy='true'
         aria-label={getI18nText('loading')}
       >
-        <foreignObject x='0' y='0' width='0' height='0'>
-          <ScreenReaderOnly aria-live='polite' role='status' aria-atomic='true'>
-            {getI18nText('loading')}
-          </ScreenReaderOnly>
-        </foreignObject>
+        {tag === 'svg' ? (
+          <foreignObject x='0' y='0' width='0' height='0'>
+            {this.screenReaderContent()}
+          </foreignObject>
+        ) : (
+          this.screenReaderContent()
+        )}
         <Children />
       </SSkeleton>,
     );
