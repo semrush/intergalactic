@@ -17,32 +17,24 @@ const Demo = () => {
     <Flex direction='column' gap={3}>
       <NoticeSmart
         label={<QuestionAltM />}
-        aria-label='Report limited'
+        aria-label='New tool was launched'
         closable
         onClose={() => setFirstHidden(true)}
         hidden={firstHidden}
       >
-        The report is limited to the last 2,000 posts. Adjust the filters above to get the data you
-        need.
+        <Text size={300} bold tag='div' mb={1}>
+          New tool was launched
+        </Text>
+        Hi there! There a cool new tool was launched. Take a look!
       </NoticeSmart>
       <NoticeSmart
         theme='muted'
         label={<QuestionAltM />}
-        aria-label='Subscription expired'
         closable
         onClose={() => setSecondHidden(true)}
         hidden={secondHidden}
       >
-        <Text size={300} bold tag='div' mb={1}>
-          Your subscription has expired
-        </Text>
-        <Text size={200}>
-          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
-        </Text>
+        It’s just a regular message or hint.
       </NoticeSmart>
       <NoticeSmart
         theme='success'
@@ -52,25 +44,25 @@ const Demo = () => {
         hidden={thirdHidden}
         actions={
           <Button use='primary' theme='success'>
-            Reconnect
+            Learn more
           </Button>
         }
       >
         <Text size={300} bold tag='div' mb={1}>
-          Reconnect your locations to see a deep-dive Insights Report
+          We've released a cool new feature!
         </Text>
         <Text size={200}>
-          Switch to the new Google Connector to access the report right away. Stay tuned for more
-          Google-powered insightsto arrive in the future!
+          Unveiling a breakthrough feature, our latest product enhancement redefines the user
+          experience with unparalleled innovation and functionality.
         </Text>
       </NoticeSmart>
       <NoticeSmart theme='warning' label={<WarningM />}>
-        Once you click Regenerate, the article will be rewritten. The previous version cannot be
-        restored.
-      </NoticeSmart>
-      <NoticeSmart theme='danger'>
         The Link Building tool is under maintenance. Starting new campaigns is temporarily
         unavailable, but you can continue working with your existing Link Building campaigns.
+      </NoticeSmart>
+      <NoticeSmart theme='danger'>
+        Once you click Regenerate, the article will be rewritten. The previous version cannot be
+        restored.
       </NoticeSmart>
     </Flex>
   );
