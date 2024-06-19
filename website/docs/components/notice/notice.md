@@ -17,7 +17,7 @@ import { Box } from 'intergalactic/flex-box';
 import Button from 'intergalactic/button';
 import QuestionAltM from 'intergalactic/icon/Question/m';
 
-const THEME = ['danger', 'warning', 'success', 'info'];
+const THEME = ['danger', 'warning', 'success', 'info', 'muted'];
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>

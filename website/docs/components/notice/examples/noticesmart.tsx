@@ -11,6 +11,7 @@ import Button from 'intergalactic/button';
 const Demo = () => {
   const [firstHidden, setFirstHidden] = React.useState(false);
   const [secondHidden, setSecondHidden] = React.useState(false);
+  const [thirdHidden, setThirdHidden] = React.useState(false);
 
   return (
     <Flex direction='column' gap={3}>
@@ -25,11 +26,30 @@ const Demo = () => {
         need.
       </NoticeSmart>
       <NoticeSmart
-        theme='success'
-        label={<ThumbUpM />}
+        theme='muted'
+        label={<QuestionAltM />}
+        aria-label='Subscription expired'
         closable
         onClose={() => setSecondHidden(true)}
         hidden={secondHidden}
+      >
+        <Text size={300} bold tag='div' mb={1}>
+          Your subscription has expired
+        </Text>
+        <Text size={200}>
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          To unlock your projects, please upgrade your subscription.Please tell us how to improve
+          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
+          its debut becoming the biggest film of all time in. The reports are based on the data from
+          the Russian Federation and the CIS.
+        </Text>
+      </NoticeSmart>
+      <NoticeSmart
+        theme='success'
+        label={<ThumbUpM />}
+        closable
+        onClose={() => setThirdHidden(true)}
+        hidden={thirdHidden}
         actions={
           <Button use='primary' theme='success'>
             Reconnect
