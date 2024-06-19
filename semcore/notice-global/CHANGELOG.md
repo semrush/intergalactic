@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.45.0] - 2024-06-19
+
+### Changed
+
+- Notice with `warning` and `danger` themes now has aria-label "Critical Notification" (other teams has "Notification" as before).
+- Close button aria-label now is "Close Notification" instead of "Close".
+
 ## [2.44.3] - 2024-06-12
 
 ### Changed
