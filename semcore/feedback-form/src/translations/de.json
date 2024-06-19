@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Feedback geben",
   "learnMore": "Mehr erfahren",
   "formTitle": "Feedback-Formular",
   "submitButton": "Feedback senden",
   "successMessage": "Vielen Dank für Ihr Feedback!",
-  "errorMessage": "Es ist ein Fehler aufgetreten. Versuchen Sie es erneut oder kontaktieren Sie uns unter E-mail."
+  "errorMessage": "Es ist ein Fehler aufgetreten. Versuchen Sie es erneut oder kontaktieren Sie uns unter {email}."
 }

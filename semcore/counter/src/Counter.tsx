@@ -4,13 +4,15 @@ import { Box } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/counter.shadow.css';
+import { CounterProps } from './index';
 
-class Counter extends Component<{
-  theme: 'warning' | 'danger' | string;
-  resolveColor: (color: string) => string;
-}> {
+const enhance = {
+  resolveColor: resolveColorEnhance(),
+};
+
+class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
   static displayName = 'Counter';
-  static enhance = [resolveColorEnhance()];
+  static enhance = Object.values(enhance);
 
   static style = style;
 

@@ -8,8 +8,8 @@ import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
-  <Notice>
-    <Notice.Label mt={1} mr={2} aria-hidden={true}>
+  <Notice aria-label='Feedback'>
+    <Notice.Label mr={2}>
       <Question />
     </Notice.Label>
     <Notice.Content style={{ display: 'flex', alignItems: 'center' }}>

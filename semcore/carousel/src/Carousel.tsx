@@ -586,10 +586,14 @@ class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
 
   componentDidMount() {
-    const { toggleItem } = this.props;
+    const { toggleItem, transform } = this.props;
     const refItem = this.refItem.current;
 
     toggleItem && refItem && toggleItem({ node: refItem });
+
+    if (transform && refItem) {
+      refItem.style.transform = `translateX(${transform}%)`;
+    }
   }
 
   componentWillUnmount() {

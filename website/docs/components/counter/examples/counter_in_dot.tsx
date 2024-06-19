@@ -3,24 +3,25 @@ import Button from 'intergalactic/button';
 import NotificationM from 'intergalactic/icon/Notification/m';
 import Dot from 'intergalactic/dot';
 import { AnimatedNumber } from 'intergalactic/counter';
+import { Hint } from 'intergalactic/tooltip';
+
+const notificationsCount = 18;
 
 const Demo = () => (
-  <Button aria-label='Open notifications'>
+  <Hint tag={Button} title={`${notificationsCount} notifications`}>
     <Button.Addon>
       <NotificationM />
-      <Dot up aria-labelledby='notifications-counter'>
+      <Dot up>
         <AnimatedNumber
-          id='notifications-counter'
-          aria-label='You have 18 unread notifications'
           initValue={10}
-          value={18}
+          value={notificationsCount}
           duration={1000}
           delay={500}
           formatValue={(x) => Math.round(x).toString()}
         />
       </Dot>
     </Button.Addon>
-  </Button>
+  </Hint>
 );
 
 export default Demo;

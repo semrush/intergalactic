@@ -15,10 +15,9 @@ const SIZES = ['m', 'l', 'xl'];
 
 const THEME = [
   '',
-  'bg-primary-warning',
-  'bg-primary-critical',
-  'bg-primary-info',
-  'bg-primary-neutral',
+  'warning',
+  'danger',
+  'info'
 ];
 
 const Preview = (preview) => {
@@ -84,14 +83,14 @@ Table: Counter themes
 | Theme     | Appearance examples      | Styles    | Usage           |
 | --------- | ------------------------ | --------- | --------------- |
 | default        | ![](static/secondary.png) ![](static/textarea.png) | `background-color: var(--bg-primary-neutral)`, `border: 1px solid var(--border-primary)`, `color: var(--text-secondary)` | Use inside secondary controls and next to various types of inputs. |                                                                    |
-| `light-blue`     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to focus on the selected values.                    |
-| `orange`         | ![](static/orange.png)     | `background-color: var(--bg-primary-warning)`, `color: var(--text-invert)`                                                | Use to display the reached limit.                                  |
-| `red`            | ![](static/red.png)           | `background-color: var(--bg-primary-critical)`, `color: var(--text-invert)`                                               | Use to display the over-limit.                                     |
+| `light-blue`     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to indicate the number of selected values.                    |
+| `orange`         | ![](static/orange.png)     | `background-color: var(--bg-primary-warning)`, `color: var(--text-invert)`                                                | Use to display a reached or almost reached limit.                                  |
+| `red`            | ![](static/red.png)           | `background-color: var(--bg-primary-critical)`, `color: var(--text-invert)`                                               | Use to display an exceeded limit.                                     |
 | `white` (invert) | ![](static/invert.png)     | `background-color: var(--bg-primary-neutral)`, `color: var(--text-primary)`                                               | Use inside primary controls with a bright/dark background color.   |
 
 ## Text counters
 
-The size of text counters is determined by the typography used in the element where the numeric value is being displayed. Typically, these counters are positioned near widget or table titles, within text, and other relevant locations. Additional examples can be found in the [Example tab](/components/counter/counter-code).
+The size of text counters is determined by the typography used in the element where the numeric value is being displayed. Typically, these counters are positioned near widget or table titles, within text, and other relevant locations. Additional examples can be found on the [Example page](/components/counter/counter-code).
 
 _For example, the counter in the table title has the same text size as the title itself._
 

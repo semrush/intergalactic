@@ -8,11 +8,14 @@
       <th>Description</th>
     </tr>
     <tr v-for="prop in types[type].declaration.properties">
-      <td>{{ prop.name }}</td>
+      <td :class="{ 'types-deprecated-property-name': prop.params.deprecated }">{{ prop.name }}</td>
       <td>
         <FormattedTypeString :type="prop.type" :types="types" />
       </td>
-      <td>{{ prop.description }}</td>
+      <td>
+        <span v-if="prop.params.deprecated" class="types-deprecated-tag">Deprecated</span>  
+        {{ prop.description }}
+      </td>
     </tr>
   </table>
 </template>
@@ -20,7 +23,7 @@
 <script setup lang="ts">
 import FormattedTypeString from './FormattedTypeString.vue';
 
-const { type, types } = defineProps({ type: String, types: Object })
+const { type, types } = defineProps({ type: String, types: Object });
 if (!types[type]) {
   throw new Error(`Unable to render type ${type} view. Probably you forgot to add
 \<script setup\>

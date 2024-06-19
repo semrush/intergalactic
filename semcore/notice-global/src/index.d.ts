@@ -3,7 +3,7 @@ import { Flex } from '@semcore/flex-box';
 import { IconProps } from '@semcore/icon';
 import { FadeInOutProps } from '@semcore/animation';
 
-export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral' | string;
+export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral';
 
 /** @deprecated */
 export interface INoticeGlobalProps extends NoticeGlobalProps, UnknownProperties {}

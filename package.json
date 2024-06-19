@@ -100,7 +100,8 @@
     "yaml": "2.1.1"
   },
   "lint-staged": {
-    "*.{css}": "pnpm lint:css --fix"
+    "*.{css}": "pnpm lint:css --fix",
+    "*": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/lint-internals.ts"
   },
   "resolutions": {
     "csstype": "3.0.8",

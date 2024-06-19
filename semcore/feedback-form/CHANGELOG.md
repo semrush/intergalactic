@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.29.5] - 2024-06-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.30.2 ~> 7.31.0], `@semcore/button` [5.29.1 ~> 5.30.0], `@semcore/notice` [5.34.2 ~> 5.34.3], `@semcore/utils` [4.28.2 ~> 4.29.0], `@semcore/core` [2.25.2 ~> 2.26.0]).
+
+## [6.29.4] - 2024-06-10
+
+### Fixed
+
+- `aria-label` for the `Notice` in `FeedbackRating`.
+
 ## [6.29.3] - 2024-06-05
 
 ### Fixed

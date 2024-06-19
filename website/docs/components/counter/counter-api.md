@@ -14,6 +14,8 @@ import Counter from 'intergalactic/counter';
 
 ## AnimatedNumber
 
+The component which will render some value with animation from initValue (0 by default).
+
 ```jsx
 import { AnimatedNumber } from 'intergalactic/counter';
 <AnimatedNumber />;
