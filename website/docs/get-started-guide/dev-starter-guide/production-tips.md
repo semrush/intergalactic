@@ -80,9 +80,9 @@ There are two ways to implement SSR.
 
 ### SSR via sstyled.getStyles function
 
-This method will work for you if you're not using the @semcore/shadow-loader package (see [CSS extract](/internal/production/#a5c869)).
+This method will work for you if you're not using the **@semcore/shadow-loader** package (see [CSS extract](/internal/production/#a5c869)).
 
-Use the @semcore/ui/core package and the `sstyled.getStyles` function which will return `style` tags with all the necessary styles:
+Use the **@semcore/ui/core** package and the `sstyled.getStyles` function which will return `style` tags with all the necessary styles:
 
 ```jsx
 import React from 'react';
@@ -106,7 +106,7 @@ const html = `
 
 ### SSR via style extract
 
-This method will work for you if you are using the @semcore/shadow-loader package (see [CSS extract](/internal/production/#a5c869)).
+This method will work for you if you are using the **@semcore/shadow-loader** package (see [CSS extract](/internal/production/#a5c869)).
 
 If you use `CSS-extract`, it should already be configured. If you don't use it, go to the [CSS extract](/internal/production/#a5c869) section and follow the steps described. Once you've done that, all component styles will be collected in a separate chunk that needs to be included in HTML generated on the server.
 
@@ -131,7 +131,7 @@ This problem is solved by the following configuration for `webpack-node-external
 
 We often reuse some of our components inside others to avoid duplicating styles and logic. Each component is a separate package, and sometimes different versions of the same components may end up included in a bundle.
 
-Package managers like npm or Yarn are aimed at solving this problem by optimizing the tree of dependencies, making it more flat. Unfortunately, they don't always succeed 🤷‍♂️
+Package managers like `npm` or `yarn` are aimed at solving this problem by optimizing the tree of dependencies, making it more flat. Unfortunately, they don't always succeed.
 
 When the lock-files have already been created, updating or installing new packages may lead to duplication of components not included in `package.json` and increase the bundle size.
 
@@ -147,4 +147,4 @@ npx update-by-scope @semcore
 
 > Eliminating duplicates helps reduce the bundle size by **~30%** on average.
 
-Use these commands regularly and monitor the size of your bundle with [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) 👀
+Use these commands regularly and monitor the size of your bundle with [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer).
