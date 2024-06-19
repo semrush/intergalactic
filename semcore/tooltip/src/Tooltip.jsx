@@ -45,7 +45,12 @@ class TooltipRoot extends Component {
 
   uncontrolledProps() {
     return {
-      visible: null,
+      visible: [
+        null,
+        (visible) => {
+          this.handlePopperVisibleChange?.(visible);
+        },
+      ],
     };
   }
 
@@ -69,6 +74,7 @@ class TooltipRoot extends Component {
       ignorePortalsStacking,
       interaction,
       resolveColor,
+      visible,
     } = this.asProps;
 
     let ariaLive = theme === 'warning' ? 'assertive' : 'polite';
@@ -85,6 +91,7 @@ class TooltipRoot extends Component {
       resolveColor,
       role: 'tooltip',
       'aria-live': ariaLive,
+      visible,
     };
   }
 
@@ -100,7 +107,7 @@ class TooltipRoot extends Component {
     );
 
     return (
-      <Root render={Popper} onVisibleChange={this.handlePopperVisibleChange}>
+      <Root render={Popper}>
         {advancedMode ? <Children /> : this.defaultChildren(title, Children, other)}
       </Root>
     );
@@ -120,6 +127,7 @@ function TooltipTrigger(props) {
 
 function TooltipPopper(props) {
   const {
+    visible,
     Children,
     styles,
     theme,
@@ -128,10 +136,31 @@ function TooltipPopper(props) {
     ignorePortalsStacking,
     'aria-live': ariaLive,
     zIndex,
+    role,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
   const STooltipPortalledWrapper = Box;
+
+  const popperRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (role === 'dialog' && visible && process.env.NODE_ENV !== 'production') {
+      const hasTitle = (node) => {
+        if (node.hasAttribute('aria-label')) return true;
+        if (node.hasAttribute('aria-labelledby')) return true;
+        if (node.hasAttribute('title')) return true;
+
+        return false;
+      };
+
+      logger.warn(
+        popperRef.current && !hasTitle(popperRef.current),
+        `'title' or 'aria-label' or 'aria-labelledby' are required props`,
+        props['data-ui-name'] || DescriptionTooltipRoot.Popper.displayName,
+      );
+    }
+  }, [visible, role]);
 
   return sstyled(styles)(
     <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
@@ -141,6 +170,7 @@ function TooltipPopper(props) {
           use:disablePortal
           use:theme={resolveColor(theme)}
           use:aria-live={undefined}
+          ref={popperRef}
         >
           <Children />
           <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
@@ -244,6 +274,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       ...props,
       ref: this.popperRef,
       role: 'dialog',
+      tabIndex: 0,
     };
   }
 }
