@@ -3,6 +3,18 @@ title: Checkbox
 tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
+## Common use case
+
+Usually you should combine checkbox controls into group.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
+
+:::
+
 ## Partial selection
 
 Make sure to follow the guide's instructions on checkbox spacing.
