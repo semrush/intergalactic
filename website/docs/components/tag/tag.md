@@ -17,7 +17,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
   const size = radio({
     key: 'size',
-    defaultValue: 'm',
+    defaultValue: 'l',
     label: 'Size',
     options: ['m', 'l', 'xl'],
   });

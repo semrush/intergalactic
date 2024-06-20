@@ -3,7 +3,7 @@ import Tag from 'intergalactic/tag';
 import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
-  const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
+  const [tags, setTags] = React.useState(['Facebook', 'Twitter (X)', 'Instagram']);
 
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget.parentElement;
@@ -16,7 +16,7 @@ const Demo = () => {
   return (
     <Box>
       {tags.map((tag, idx) => (
-        <Tag theme='primary' interactive data-id={idx} key={idx} mr={1}>
+        <Tag theme='primary' size='l' interactive data-id={idx} key={idx} mr={1}>
           <Tag.Text>{tag}</Tag.Text>
           <Tag.Close onClick={handleEditTag} />
         </Tag>
