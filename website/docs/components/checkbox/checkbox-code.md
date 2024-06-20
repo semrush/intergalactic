@@ -5,7 +5,7 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 ## Checkbox group
 
-Usually you should combine checkbox controls into group.
+You can wrap checkbox controls into group using `<fieldset>` and adding `<legend>`.
 
 ::: sandbox
 
