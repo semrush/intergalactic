@@ -3379,6 +3379,12 @@ const iconsList = {
       ],
     },
     {
+      name: 'OrganicCarousel',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['organic', 'carousel', 'card', 'serp', 'карточка', 'карусель'],
+    },
+    {
       name: 'Packaging',
       size: ['l', 'm'],
       group: 'Misc',
@@ -3434,6 +3440,23 @@ const iconsList = {
       ],
     },
     {
+      name: 'PopularStores',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'popular',
+        'store',
+        'shop',
+        'commerce',
+        'buy',
+        'serp',
+        'популярный',
+        'продукт',
+        'магазин',
+        'купить',
+      ],
+    },
+    {
       name: 'Printing',
       size: ['l', 'm'],
       group: 'Misc',
@@ -3478,6 +3501,12 @@ const iconsList = {
         'сердце',
         'линия',
       ],
+    },
+    {
+      name: 'QuestionsAnswers',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['question', 'answer', 'faq', 'book', 'serp', 'вопросы', 'ответы', 'книга'],
     },
     {
       name: 'Recreation',
