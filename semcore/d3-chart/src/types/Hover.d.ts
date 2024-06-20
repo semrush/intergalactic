@@ -1,7 +1,8 @@
+import React from 'react';
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
-import { TooltipChartProps, TooltipTypeBase } from './Tooltip';
+import { TooltipTypeBase } from './Tooltip';
 import { BoxProps } from '@semcore/flex-box';
 import { IntergalacticD3Component } from './Plot';
 
@@ -15,7 +16,13 @@ export type HoverProps = Context & {
 };
 
 type HoverTooltip = (<X, Y>(
-  props: TooltipChartProps & {
+  props: {
+    /** Field name from `data` array item for the XAxis */
+    x?: X;
+    /** Field name from `data` array item for the YAxis */
+    y?: Y;
+    /** Handle click by trigger has an index - it is an index of the data array. */
+    onClick?: (index: number, e: React.SyntheticEvent) => void;
     children: (props: {
       /** Index in `data` array of the current item */
       xIndex: X extends string ? number : never;
