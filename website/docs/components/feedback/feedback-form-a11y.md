@@ -8,16 +8,16 @@ tabs: Design('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), 
 
 Feedback pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
-- [Notice](/components/notice/notice-a11y)
 - [Button](/components/button/button-a11y)
-- [Typography](/style/typography/typography-a11y)
+- [Checkbox](/components/checkbox/checkbox-a11y)
 - [Dropdown](/components/dropdown/dropdown-a11y)
-- [Textarea](/components/textarea/textarea-a11y)
 - [Input](/components/input/input-a11y)
 - [Link](/components/link/link-a11y)
-- [Checkbox](/components/checkbox/checkbox-a11y)
+- [Notice](/components/notice/notice-a11y)
 - [Radio](/components/radio/radio-a11y)
 - [Select](/components/select/select-a11y)
+- [Textarea](/components/textarea/textarea-a11y)
+- [Typography](/style/typography/typography-a11y)
 
 ## Considerations for developers
 
