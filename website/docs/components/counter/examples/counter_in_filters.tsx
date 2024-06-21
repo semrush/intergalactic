@@ -6,7 +6,7 @@ const Demo = () => (
   <FilterTrigger>
     <FilterTrigger.Text>Link to website</FilterTrigger.Text>
     <FilterTrigger.Addon>
-      <Counter theme='bg-primary-info'>
+      <Counter theme='info'>
         <AnimatedNumber value={500} delay={1000} formatValue={(x) => Math.round(x).toString()} />
       </Counter>
     </FilterTrigger.Addon>
