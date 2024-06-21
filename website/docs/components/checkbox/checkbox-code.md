@@ -5,7 +5,15 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 ## Checkbox group
 
-<!-- Here will be example -->
+You can wrap checkbox controls into group using `<fieldset>` and adding `<legend>`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
+
+:::
 
 ## Partial selection
 

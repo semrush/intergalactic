@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from 'intergalactic/flex-box';
 import Checkbox from 'intergalactic/checkbox';
-import { Hint } from 'intergalactic/tooltip';
+import { DescriptionTooltip } from 'intergalactic/tooltip';
 import InfoM from 'intergalactic/icon/Info/m';
 import Link from 'intergalactic/link';
 
@@ -13,15 +13,18 @@ const Demo = () => (
   <>
     <Flex>
       <Checkbox mb={3} label='Option 1' />
-      <Hint
-        title='Place an additional information here!'
-        placement='right'
-        ml={1}
-        tag={InfoM}
-        color='icon-secondary-neutral'
-        interactive
-        aria-label='Additional info'
-      />
+      <DescriptionTooltip placement='right'>
+        <DescriptionTooltip.Trigger
+          ml={1}
+          tag={InfoM}
+          color='icon-secondary-neutral'
+          interactive
+          aria-label='Additional info'
+        />
+        <DescriptionTooltip.Popper aria-label={'Additional info about checkbox item'}>
+          Place an additional information here!
+        </DescriptionTooltip.Popper>
+      </DescriptionTooltip>
     </Flex>
 
     <Flex>
