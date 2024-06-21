@@ -47,7 +47,12 @@ const Demo = () => (
           const { state, className, ...other } = input;
           return (
             <Input state={state} className={className}>
-              <Input.Value {...other} placeholder='Activity title' id='acitivty' autocomplete="off" />
+              <Input.Value
+                {...other}
+                placeholder='Activity title'
+                id='acitivty'
+                autocomplete='off'
+              />
             </Input>
           );
         }}
@@ -86,7 +91,7 @@ const Demo = () => (
           const { state, className, ...other } = input;
           return (
             <InputNumber state={state} className={className}>
-              <InputNumber.Value id='day' {...other} placeholder='Enter day' autocomplete="off" />
+              <InputNumber.Value id='day' {...other} placeholder='Enter day' autocomplete='off' />
             </InputNumber>
           );
         }}

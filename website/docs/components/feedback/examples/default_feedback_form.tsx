@@ -8,7 +8,6 @@ import ChatM from 'intergalactic/icon/Chat/m';
 import Textarea from 'intergalactic/textarea';
 import { Text } from 'intergalactic/typography';
 import Button from 'intergalactic/button';
-import {ButtonTrigger} from 'intergalactic/base-trigger';
 
 const validate = {
   description: (value = '') => {
@@ -145,13 +144,18 @@ class FeedbackLink extends React.PureComponent {
       <Dropdown>
         <Dropdown.Trigger size={200}>
           <Button theme={'info'} use={'tertiary'}>
-          <Button.Addon>
-            <ChatM />
-          </Button.Addon>
-          <Button.Text>Send feedback</Button.Text>
+            <Button.Addon>
+              <ChatM />
+            </Button.Addon>
+            <Button.Text>Send feedback</Button.Text>
           </Button>
         </Dropdown.Trigger>
-        <Dropdown.Popper role={'dialog'} aria-label={'Feedback form'} aria-modal={'true'} tabIndex={-1}>
+        <Dropdown.Popper
+          role={'dialog'}
+          aria-label={'Feedback form'}
+          aria-modal={'true'}
+          tabIndex={-1}
+        >
           {(_props, { visible }) => (
             <Feedback
               status={status}

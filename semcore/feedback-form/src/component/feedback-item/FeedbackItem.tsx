@@ -66,9 +66,7 @@ export function FeedbackItem({
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper w={'100%'}>
-              {meta.error ?? lastErrorRef.current}
-            </Tooltip.Popper>
+            <Tooltip.Popper w={'100%'}>{meta.error ?? lastErrorRef.current}</Tooltip.Popper>
           </Tooltip>
         );
       }}

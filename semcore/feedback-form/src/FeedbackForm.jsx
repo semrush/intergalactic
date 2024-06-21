@@ -7,7 +7,6 @@ import Button from '@semcore/button';
 import SpinContainer from '@semcore/spin-container';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
-import Portal from '@semcore/portal';
 
 import { FeedbackItem } from './component/feedback-item/FeedbackItem';
 import { SubmitButton } from './component/submit-button/SubmitButton';
@@ -57,29 +56,27 @@ class FeedbackForm extends Component {
 
     return (
       <Form decorators={[this.focusDecorator]} {...other}>
-          {(api) =>
-            sstyled(styles)(
-              // <Portal>
-                <SpinContainer
-                  background={background}
-                  theme={theme}
-                  size='xl'
-                  loading={loading === undefined ? api.submitting : loading}
-                >
-                  <SFeedbackForm
-                    tag='form'
-                    noValidate
-                    method='POST'
-                    ref={forwardRef}
-                    {...other}
-                    onSubmit={api.handleSubmit}
-                  >
-                    {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
-                  </SFeedbackForm>
-                </SpinContainer>
-              // </Portal>
-            )
-          }
+        {(api) =>
+          sstyled(styles)(
+            <SpinContainer
+              background={background}
+              theme={theme}
+              size='xl'
+              loading={loading === undefined ? api.submitting : loading}
+            >
+              <SFeedbackForm
+                tag='form'
+                noValidate
+                method='POST'
+                ref={forwardRef}
+                {...other}
+                onSubmit={api.handleSubmit}
+              >
+                {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
+              </SFeedbackForm>
+            </SpinContainer>,
+          )
+        }
       </Form>
     );
   }
