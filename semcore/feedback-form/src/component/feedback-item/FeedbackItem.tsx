@@ -66,7 +66,7 @@ export function FeedbackItem({
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper id={uid} ignorePortalsStacking>
+            <Tooltip.Popper w={'100%'}>
               {meta.error ?? lastErrorRef.current}
             </Tooltip.Popper>
           </Tooltip>
