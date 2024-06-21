@@ -1,7 +1,8 @@
 {
+  "leaveFeedback": "Ge feedback",
   "learnMore": "Läs mer",
   "formTitle": "Feedbackformulär",
   "submitButton": "Skicka feedback",
   "successMessage": "Tack för din feedback!",
-  "errorMessage": "Något gick fel. Försök igen eller kontakta oss via e-post."
+  "errorMessage": "Något gick fel. Försök igen eller kontakta oss via {email}."
 }

@@ -15,6 +15,7 @@ import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 
 import style from './style/notice-bubble.shadow.css';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
@@ -93,16 +94,19 @@ class NoticeBubbleContainerRoot extends Component {
 
 class ViewInfo extends Component {
   timer = null;
+  ref = React.createRef();
 
   componentDidMount() {
     const { duration } = this.props;
     if (duration) {
-      this.timer = new Timer(this.handlerClose, duration);
+      this.timer = new Timer(this.handleClose, duration);
+      document.body.addEventListener('mousemove', this.handleBodyMouseMove);
     }
   }
 
   componentWillUnmount() {
     this.clearTimer();
+    document.body.removeEventListener('mousemove', this.handleBodyMouseMove);
   }
 
   clearTimer() {
@@ -112,22 +116,32 @@ class ViewInfo extends Component {
     }
   }
 
-  handlerClose = (e) => {
-    // because call not only click
+  handleClose = (e) => {
+    // because it might be called not only from the close icon click
     fire(this, 'onClose', e);
     this.clearTimer();
   };
 
-  handlerMouseEnter = () => {
-    if (this.timer) {
-      this.timer.pause();
-    }
+  handleMouseEnter = () => {
+    if (!this.timer) return;
+    this.timer.pause();
   };
 
-  handlerMouseLeave = () => {
-    if (this.timer) {
-      this.timer.resume();
-    }
+  handleMouseLeave = () => {
+    if (!this.timer) return;
+    this.timer.resume();
+  };
+
+  handleBodyMouseMove = (event) => {
+    if (!this.timer?.paused) return;
+    const rect = this.ref.current.getBoundingClientRect();
+    const mouseInRect =
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom;
+    if (mouseInRect) return;
+    this.timer.resume();
   };
 
   render() {
@@ -152,14 +166,14 @@ class ViewInfo extends Component {
       <SBubble
         role='alert'
         {...other}
-        ref={forwardRef}
-        onMouseEnter={callAllEventHandlers(onMouseEnter, this.handlerMouseEnter)}
-        onMouseLeave={callAllEventHandlers(onMouseLeave, this.handlerMouseLeave)}
+        ref={forkRef(forwardRef, this.ref)}
+        onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
+        onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
       >
         <SDismiss
           type='button'
           title={getI18nText('close')}
-          onClick={this.handlerClose}
+          onClick={this.handleClose}
           aria-label={getI18nText('close')}
         >
           <CloseIcon />

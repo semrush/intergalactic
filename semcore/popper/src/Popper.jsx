@@ -114,7 +114,7 @@ class Popper extends Component {
       popper: [['onMouseEnter', 'onFocusCapture', 'onTouchStart'], ['onMouseLeave']],
     },
     focus: {
-      trigger: [['onFocus'], ['onBlur']],
+      trigger: [['onFocus', 'onClick'], ['onBlur']],
       // to intercept faster than onBlur on the trigger
       popper: [['onFocusCapture'], ['onBlur']],
     },

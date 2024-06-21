@@ -1051,3 +1051,17 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
 .medium-zoom-image--opened {
   z-index: 31;
 }
+
+.types-deprecated-property-name {
+  text-decoration: line-through;
+  color: var(--intergalactic-text-secondary);
+}
+.types-deprecated-tag {
+  color: var(--vp-c-danger-3);
+  border: 1px solid var(--vp-c-danger-3);
+  background-color: var(--vp-c-danger-soft);
+  border-radius: 4px;
+  padding: 0px 8px; 
+  display: inline-block;
+  margin-right: 10px;
+}

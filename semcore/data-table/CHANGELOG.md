@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.3] - 2024-06-13
+
+### Fixed
+
+- Incorrect display of `ScrollArea.Bar` after reducing the parent size.
+
+## [4.40.2] - 2024-06-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.36.1 ~> 4.37.0], `@semcore/utils` [4.28.1 ~> 4.28.2], `@semcore/core` [2.25.1 ~> 2.25.2]).
+
 ## [4.40.1] - 2024-06-10
 
 ### Changed

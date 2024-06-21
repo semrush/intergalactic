@@ -12,27 +12,22 @@ See detailed information about the keyboard support for the all clickable elemen
 
 ### Roles & attributes
 
-::: tip
-Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
-:::
-
 The list below describes roles and attributes that component already has.
 
 Table: Roles & attributes
 
-| Role   | Attribute               | Element                                                            | Usage                                                                                                                                                                                                                               |
-| ------ | ----------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `status` |                         | `div`                                                              | Defines a live region containing advisory information for the user that isn’t important enough to be an `alert`.                                                                                                                   |
-|        | `aria-live="polite"`    | Implicit on `div`                                                  | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle.                    |
-|        | `aria-live="assertive"` | Implicit on `div` (for message with `warning` and `danger` themes) | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
+| Component          | Attribute                          | Usage                                                                                                                                                                                                                               |
+| ------------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Notice`           | `role="region"`                    | Defines an ARIA landmark and allows users to navigate to the component easily and to have it listed in a summary of the page. |
+| `Notice`           | `aria-label="Notification"`        | Defines a default accessible name for the region. |
+| `Notice`           | `aria-live="polite"`               | Defines a region which receives updates that are important for the user to receive, but not so rapid as to be annoying. The screen reader will speak changes whenever the user is idle.                    |
+| `Notice`           | `aria-live="assertive"` (only for `warning` and `danger` themes) | Tells assistive technologies to interrupt other processes to provide users with immediate notification of container changes. |
+| `Notice.CloseIcon` | `aria-label="Close notification"`  | Defines the default accessible name for the **Close** button. |
 
 ## Considerations for developers
 
-Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
-
-## Resources
-
-[W3 modal alert example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/alert/alert.html) and [W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) have detailed information about the `alert` accessible behavior.
+- Elements with the `aria-live` attribute are automatically announced only when their content changes. So, if you want your notice to be announced automatically, you should initially create an empty element and then update its content.
+- Avoid showing more than one `Notice` on the same page at once. If you absolutely have to do it (especially if they have the same `theme`), make sure they all have different accessible names so they can be easily distinguished when navigating the landmarks.
 
 ## Other recommendations
 

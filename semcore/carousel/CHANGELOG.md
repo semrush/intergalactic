@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.38.0] - 2024-06-13
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.28.2 ~> 4.29.0], `@semcore/button` [5.29.1 ~> 5.30.0], `@semcore/breakpoints` [1.27.2 ~> 1.28.0]).
+
+## [3.37.3] - 2024-06-10
+
+### Fixed
+
+- Display of zoomed item after transition from the last item to the first one in the cyclic scroll.
+
 ## [3.37.2] - 2024-06-06
 
 ### Fixed

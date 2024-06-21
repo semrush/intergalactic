@@ -3,7 +3,7 @@ import { Box, BoxProps } from '@semcore/flex-box';
 import { IconProps } from '@semcore/icon';
 import { FadeInOutProps } from '@semcore/animation';
 
-export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | string;
+export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info';
 export type NoticeUse = 'primary' | 'secondary';
 
 /** @deprecated */
