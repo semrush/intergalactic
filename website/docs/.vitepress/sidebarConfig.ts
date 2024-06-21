@@ -18,6 +18,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/get-started-guide/dev-starter-guide/dev-starter-guide',
             text: 'For developers',
+            activeMatch: '/get-started-guide/dev-starter-guide/',
           },
           {
             link: '/get-started-guide/dis-starter-guide/dis-starter-guide',

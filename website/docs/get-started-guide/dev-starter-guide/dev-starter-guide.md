@@ -1,5 +1,6 @@
 ---
 title: For developers
+tabs: Get started('dev-starter-guide'), For production('production-tips')
 ---
 
 ## Introduction
