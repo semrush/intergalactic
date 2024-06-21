@@ -141,45 +141,51 @@ Component consists of the following:
 
 Table: Tag sizes and paddings
 
-Size (height in px) | Paddings                                       |
-| ----------------- | ---------------------------------------------- |
-| M (20px)          | ![](static/tag-M.png) ![](static/tag2-M.png)   |
-| L (28px)          | ![](static/tag-L.png) ![](static/tag2-L.png)   |
-| XL (40px)         | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
+| Size (height in px) | Paddings                                       |
+| ------------------- | ---------------------------------------------- |
+| M (20px)            | ![](static/tag-M.png) ![](static/tag2-M.png)   |
+| L (28px)            | ![](static/tag-L.png) ![](static/tag2-L.png)   |
+| XL (40px)           | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
 
 ## Themes
 
 The component offers several themes for tags.
 
-| Tag theme     | Appearance example            | Description     |
-| ------------- | ----------------------------- | --------------- |
-| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background color for all states and color for icon inside the tag is calculated with CSS filter). |
-| `primary` with `color:"white"`    | ![](static/primary-invert.png)     | An inversion of the `primary` tag meant for dark or colored backgrounds.|
-| `secondary`                       | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required. Border color and color for icon inside the tag is calculated with CSS filter. |
-| `secondary` with `color:"white"`  | ![](static/secondary-invert.png) | An inversion of the `secondary` tag suitable for dark or colored backgrounds.|
-| `additional`                      | ![](static/additional.png)             | Ideal for special tags that are added to other tags. Border color and color for icon inside the tag is calculated with CSS filter. |
-| `additional` with `color:"white"` | ![](static/additional-invert.png)      | An inversion of the `additional` theme used for special tags that are added to other tags. |
+Table: Tag themes
+
+| Tag theme                         | Appearance example                | Description                                                                                                                                                                                                                     |
+| --------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `primary`                         | ![](static/primary.png)           | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500`. |
+| `primary` with `color:"white"`    | ![](static/primary-invert.png)    | An inversion of the `primary` tag meant for dark or colored backgrounds.                                                                                                                                                        |
+| `secondary`                       | ![](static/secondary.png)         | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required.                                                                                                       |
+| `secondary` with `color:"white"`  | ![](static/secondary-invert.png)  | An inversion of the `secondary` tag suitable for dark or colored backgrounds.                                                                                                                                                   |
+| `additional`                      | ![](static/additional.png)        | Ideal for special tags that are added to other tags.                                                                                                                                                                            |
+| `additional` with `color:"white"` | ![](static/additional-invert.png) | An inversion of the `additional` theme used for special tags that are added to other tags.                                                                                                                                      |
+
+### Tag colors
+
+To change tag color use colors with 500 tone from [our base color tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they have the necessary contrast between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
 
 ## Interaction
 
 Table: Tag states
 
-| Tag theme                        | States                                                                |
-| -------------------------------- | --------------------------------------------------------------------- |
-| `primary`                        | ![](static/default-color-example.png)            |
-| `primary` with `color:"white"`   | ![](static/invert-states.png)             |
-| `secondary`                      | ![](static/secondary-states.png)               |
+| Tag theme                        | States                                  |
+| -------------------------------- | --------------------------------------- |
+| `primary`                        | ![](static/default-color-example.png)   |
+| `primary` with `color:"white"`   | ![](static/invert-states.png)           |
+| `secondary`                      | ![](static/secondary-states.png)        |
 | `secondary` with `color:"white"` | ![](static/secondary-invert-states.png) |
 
 ## Tag for adding other tags
 
 Users can create tags using tags with the `additional` theme.
 
-| State  | Appearance example                  | Styles    |
-| ------ | ----------------------------------- | --------- |
+| State  | Appearance example     | Styles                                                                                                                      |
+| ------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Normal | ![](static/normal.png) | `color: var(--text-secondary)`, `background-color: var(--tag-secondary-normal)`, `border: 1px dotted var(--border-primary)` |
-| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                         |
-| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                         |
+| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                       |
+| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                       |
 
 This tag opens [InlineInput](/components/inline-input/inline-input), and you can add a [mask label](/components/input-mask/input-mask) to guide the user on what to type into the input.
 
@@ -215,11 +221,11 @@ Unfortunately, this solution can be found in several places so far.
 
 Table: Margins between tags
 
-Size (height in px) | Margins                 |
-| --------- | ------------------------------- |
-| M (20px)  | ![](static/tag-margins-M.png)   |
-| L (28px)  | ![](static/tag-margins-L.png)   |
-| XL (40px) | ![](static/tag-margins-XL.png)  |
+| Size (height in px) | Margins                        |
+| ------------------- | ------------------------------ |
+| M (20px)            | ![](static/tag-margins-M.png)  |
+| L (28px)            | ![](static/tag-margins-L.png)  |
+| XL (40px)           | ![](static/tag-margins-XL.png) |
 
 <!-- @## Tag and other components
 
@@ -239,4 +245,3 @@ Use tags for visual marking of objects, fast recognition and navigation.
 ### Example of usage in table
 
 ![](static/tag-table-pic.png)
-

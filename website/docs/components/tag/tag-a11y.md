@@ -17,16 +17,27 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element.                                    |
 | `Enter`       | Toggles `active` state for interactive tag or removes tag by `Close` icon button. |
 
+### Roles and attributes
+
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+Table: Roles and attributes
+
+| Component | Role | Attribute         | Usage           |
+| ------------------- | ------ | ----------------- | -------------------------------------------------------------------------------------------------------- | 
+|`Tag`  |  |`tabIndex="-1"` | Removes the tag from the page `Tab` sequence. This attribute is added to the noninteractive tag. |
+|`Tag` with `interactive` property | `button` |       | Defines an intercative tag as a button.  |
+| `Tag.Close` | `button` | `aria-label="Remove"` | Defines an icon as a button and adds label to it for assistive technologies. |
+
 ## Considerations for developers
 
-- Make sure screenreader reads your tags list as a group.
+- Make sure screenreader reads your tags list as a group. Refer to [Grouping tags example](link will be here).
 - Interactive tags that are used as a button for filtering content should also follow the accessibility guidelines for [Button](/components/button/button-a11y).
-- Make sure that any function accessible by hovering with a mouse is also available using only the keyboard.
 
 ## Considerations for designers
 
 - Tag text should be clear and concise.
-- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast).
+- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast). Refer to [section about Tag colors](/components/tag/tag#tag-colors).
 - Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y).
 
 ## Resources
