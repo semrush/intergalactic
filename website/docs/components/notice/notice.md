@@ -17,7 +17,7 @@ import { Box } from 'intergalactic/flex-box';
 import Button from 'intergalactic/button';
 import QuestionAltM from 'intergalactic/icon/Question/m';
 
-const THEME = ['danger', 'warning', 'success', 'info'];
+const THEME = ['info', 'muted', 'success', 'warning', 'danger'];
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>
@@ -142,10 +142,10 @@ Component consists of the following:
 
 Table: Notice content examples
 
-|                                       | Appearance example                                               |
-| ------------------------------------- | ---------------------------------------------------------------- |
-| Notice with minimum possible elements | ![](static/notice-minimal.png)                                   |
-| Notice with maximum possible elements | ![](static/notice-monster.png) ![](static/notice-max-button.png) |
+|                                       | Appearance example             |
+| ------------------------------------- | ------------------------------ |
+| Notice with minimum possible elements | ![](static/notice-minimal.png) |
+| Notice with maximum possible elements | ![](static/notice-monster.png) |
 
 ## Sizes, paddings and margins
 

@@ -62,6 +62,19 @@ SNotice[theme='success'] {
   }
 }
 
+SNotice[theme='muted'] {
+  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  border-color: var(--intergalactic-border-secondary, #e0e1e9);
+
+  & SCloseIcon {
+    color: var(--intergalactic-icon-primary-neutral, #6c6e79);
+
+    &:hover {
+      color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
+    }
+  }
+}
+
 SContent {
   flex: 1 1 auto;
   width: 100%;
@@ -92,6 +105,10 @@ SLabel[theme='warning'] {
 
 SLabel[theme='success'] {
   color: var(--intergalactic-icon-primary-success, #009f81);
+}
+
+SLabel[theme='muted'] {
+  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 }
 
 SLabel[theme='custom'] {

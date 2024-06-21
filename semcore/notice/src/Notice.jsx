@@ -13,7 +13,7 @@ import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import style from './style/notice.shadow.css';
 
 function isCustomTheme(theme) {
-  return !['danger', 'warning', 'success', 'info'].includes(theme);
+  return !['danger', 'warning', 'success', 'info', 'muted'].includes(theme);
 }
 
 class RootNotice extends Component {

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.0] - 2024-06-19
+
+### Added
+
+- `muted` theme support.
+
 ## [5.34.3] - 2024-06-13
 
 ### Fixed
