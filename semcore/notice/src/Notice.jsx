@@ -54,6 +54,11 @@ class RootNotice extends Component {
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
+    let ariaLive = isAssertive ? 'assertive' : 'polite';
+    if (theme === 'neutral') {
+      ariaLive = undefined;
+    }
+
     if (use === 'primary') {
       logger.warn(
         true,
@@ -70,8 +75,8 @@ class RootNotice extends Component {
         use:theme={useTheme}
         backgroundColor={color}
         role='region'
-        aria-live={isAssertive ? 'assertive' : 'polite'}
-        aria-label={getI18nText('notification')}
+        aria-live={ariaLive}
+        aria-label={getI18nText(isAssertive ? 'criticalNotification' : 'notification')}
       >
         <Children />
       </SNotice>,

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.29.1] - 2024-06-19
+
+### Fixed
+
+- Incorrect calculation of text width with font settings: `font-feature-settings` or `font-variant-numeric`.
+
 ## [2.29.0] - 2024-06-13
 
 ### Changed

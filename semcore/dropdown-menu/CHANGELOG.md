@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.34.2] - 2024-06-14
+
+### Fixed
+
+- `highlightedIndex` type wasn't accepting `null`.
+
 ## [4.34.1] - 2024-06-14
 
 ### Changed

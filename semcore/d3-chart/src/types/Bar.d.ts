@@ -1,3 +1,4 @@
+import React from 'react';
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { IntergalacticD3Component } from './Plot';
@@ -30,7 +31,12 @@ export type BarProps = Context & {
   /**
    * Bar click handler
    */
-  onClick?: (data: { [key: string]: string | number }, event: Event) => void;
+  onClick?: (
+    data: { [key: string]: string | number | Date },
+    event: React.SyntheticEvent,
+    barIndex: number,
+    barKey: string,
+  ) => void;
   /** Enables element transparency */
   transparent?: boolean;
   /**

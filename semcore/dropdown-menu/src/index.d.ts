@@ -21,16 +21,16 @@ export type DropdownMenuProps = DropdownProps & {
   /**
    * Index of the element selected by default
    */
-  defaultHighlightedIndex?: number;
+  defaultHighlightedIndex?: number | null;
   /**
    * Index of the selected item
    */
-  highlightedIndex?: number;
+  highlightedIndex?: number | null;
   /**
    * Callback for highlightedIndex change
    * highlightedIndex -  Index of the selected item
    */
-  onHighlightedIndexChange?: (highlightedIndex: number) => void;
+  onHighlightedIndexChange?: (highlightedIndex: number | null) => void;
   locale?: string;
 };
 
