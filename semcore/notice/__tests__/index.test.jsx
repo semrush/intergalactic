@@ -49,6 +49,8 @@ describe('Notice', () => {
         <Notice theme='danger'>Text Notice</Notice>
         <br />
         <Notice theme='warning'>Text Notice</Notice>
+        <br />
+        <Notice theme='muted'>Text Notice</Notice>
       </>
     );
 
@@ -114,6 +116,10 @@ describe('Notice.Label', () => {
         <Notice theme='warning'>
           <Notice.Label>Lab</Notice.Label>
         </Notice>
+        <br />
+        <Notice theme='muted'>
+          <Notice.Label>Lab</Notice.Label>
+        </Notice>
       </>
     );
 
@@ -137,6 +143,8 @@ describe('NoticeSmart', () => {
         <NoticeSmart theme='danger'>Text NoticeSmart</NoticeSmart>
         <br />
         <NoticeSmart theme='warning'>Text NoticeSmart</NoticeSmart>
+        <br />
+        <NoticeSmart theme='muted'>Text NoticeSmart</NoticeSmart>
       </>
     );
 
