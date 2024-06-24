@@ -1,3 +1,4 @@
+import React from 'react';
 import Popper, { PopperProps, PopperTriggerProps } from '@semcore/popper';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
@@ -13,6 +14,8 @@ export type TooltipChartProps = PopperProps &
     x?: string;
     /** Field name from `data` array item for the YAxis */
     y?: string;
+    /** Handle click by trigger has an index - it is an index of the data array. */
+    onClick?: (index: number, e: React.SyntheticEvent) => void;
   };
 
 /** @deprecated */

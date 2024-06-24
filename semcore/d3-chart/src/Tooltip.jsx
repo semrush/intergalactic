@@ -85,8 +85,17 @@ class TooltipRoot extends Component {
     this.unsubscribe.forEach((unsubscribe) => unsubscribe());
   }
 
+  handleTriggerClick = (e) => {
+    const { onClick } = this.asProps;
+    const { xIndex, yIndex } = this.state.tooltipProps;
+
+    const index = xIndex ?? yIndex;
+
+    onClick?.(index, e);
+  };
+
   render() {
-    const { Children, children, tag, forcedAdvancedMode, ...other } = this.asProps;
+    const { Children, children, tag, forcedAdvancedMode, onClick, ...other } = this.asProps;
 
     const advancedMode =
       forcedAdvancedMode ||
@@ -115,7 +124,7 @@ class TooltipRoot extends Component {
               <Children />
             ) : (
               <>
-                {tag && <Tooltip.Trigger tag={tag} />}
+                {tag && <Tooltip.Trigger tag={tag} onClick={this.handleTriggerClick} />}
                 <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
               </>
             );
