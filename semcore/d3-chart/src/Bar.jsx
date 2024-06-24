@@ -95,7 +95,7 @@ class BarRoot extends Component {
       yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y])) +
       offset[1] -
       calcPartBarY(d[y], hMin, height);
-    const handleClick = (event) => onClick?.(d, event);
+    const handleClick = (event) => onClick?.(d, event, i, y);
     const dSvg = getRect({
       x: barX,
       y: barY,
