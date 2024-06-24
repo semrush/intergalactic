@@ -213,7 +213,7 @@ describe('DropdownMenu', () => {
   });
 
   test.concurrent('highlights selected item', async ({ expect }) => {
-    let highlightedIndex: number | undefined = undefined;
+    let highlightedIndex: number | null = null;
 
     const component = render(
       <DropdownMenu
@@ -284,7 +284,7 @@ describe('DropdownMenu', () => {
     expect(visible).toBe(false);
   });
   test.sequential('focus lock highlites next item on focus out', async ({ expect }) => {
-    let highlightedIndex: number | undefined = undefined;
+    let highlightedIndex: number | null = null;
     const { getByTestId } = render(
       <DropdownMenu
         placement='right'

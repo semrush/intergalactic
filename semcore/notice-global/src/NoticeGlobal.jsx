@@ -43,8 +43,17 @@ class NoticeGlobalRoot extends Component {
 
   render() {
     const SNoticeGlobal = Root;
-    const { Children, styles, hidden, theme, closable, onClose, forcedAdvancedMode, resolveColor } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      hidden,
+      theme,
+      closable,
+      onClose,
+      forcedAdvancedMode,
+      resolveColor,
+      getI18nText,
+    } = this.asProps;
     const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
@@ -60,6 +69,7 @@ class NoticeGlobalRoot extends Component {
         backgroundColor={color}
         role='region'
         aria-live={isAssertive ? 'assertive' : 'polite'}
+        aria-label={getI18nText(isAssertive ? 'criticalNotification' : 'notification')}
       >
         {advancedMode ? (
           <Children />

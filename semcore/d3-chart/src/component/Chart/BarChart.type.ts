@@ -1,3 +1,4 @@
+import React from 'react';
 import { Intergalactic } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
@@ -9,7 +10,9 @@ type TrendItem = {
   y: number;
 };
 
-export type BarChartData = Array<Record<string, string | number | Date>>;
+type BarKey = string;
+
+export type BarChartData = Array<Record<BarKey, string | number | Date>>;
 
 export type BarChartProps = BaseChartProps<BarChartData> & {
   groupKey: string;
@@ -17,6 +20,12 @@ export type BarChartProps = BaseChartProps<BarChartData> & {
   yScale?: ScaleLinear<any, any>;
   type?: 'stack' | 'group';
   trend?: Record<LegendItemKey, TrendItem[]>;
+
+  /** Handle click by `HoverRect`. `index` is an index of the data array. */
+  onClickHoverRect?: (index: number, e: React.SyntheticEvent) => void;
+
+  /** Handle click by Bar. */
+  onClickBar?: (barItem: number, barKey: BarKey, e: React.SyntheticEvent) => void;
 };
 
 export type BarChartType = Intergalactic.Component<typeof Flex, BarChartProps>;
