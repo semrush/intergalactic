@@ -13,7 +13,7 @@ const Demo = () => {
         value={value}
         onChange={(v) => setValue(v)}
       >
-        <Text tag='p' id='radioGroup' size={200}>
+        <Text id='radioGroup' size={200}>
           Select dog breed
         </Text>
         <Flex mt={2} direction={'column'}>
