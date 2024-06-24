@@ -2,11 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.35.0] - 2024-06-18
+## [5.35.0] - 2024-06-19
 
 ### Changed
 
 - Notice with `warning` and `danger` themes now has aria-label "Critical Notification" (other teams has "Notification" as before).
+
+### Added
+
+- `muted` theme support.
 
 ## [5.34.3] - 2024-06-13
 
