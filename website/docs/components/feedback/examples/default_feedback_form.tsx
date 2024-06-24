@@ -63,22 +63,17 @@ class Feedback extends React.PureComponent<{
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
               }}
-              tag={Textarea}
-              // autoFocus={true}
-              h={80}
-              // onChange={this.handleChange(input.onChange)}
-              id='suggestions'
-            />
-            {/*  {({ input }) => (*/}
-            {/*    <Textarea*/}
-            {/*      {...input}*/}
-            {/*      autoFocus*/}
-            {/*      h={80}*/}
-            {/*      onChange={this.handleChange(input.onChange)}*/}
-            {/*      id='suggestions'*/}
-            {/*    />*/}
-            {/*  )}*/}
-            {/*</FeedbackForm.Item>*/}
+            >
+              {({ input }) => (
+                <Textarea
+                  {...input}
+                  autoFocus
+                  h={80}
+                  onChange={this.handleChange(input.onChange)}
+                  id='suggestions'
+                />
+              )}
+            </FeedbackForm.Item>
           </Flex>
           <Flex tag='label' mt={4} direction='column' htmlFor='email'>
             <Text mb={2} size={200}>
