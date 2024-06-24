@@ -106,7 +106,7 @@ function Cancel(props) {
 }
 
 function Notice(props) {
-  const { styles, theme = 'bg-secondary-neutral', use = 'secondary' } = props;
+  const { styles, theme = 'muted', use = 'secondary' } = props;
   const SNotice = Root;
   return sstyled(styles)(<SNotice render={NoticeSmart} theme={theme} use={use} />);
 }
