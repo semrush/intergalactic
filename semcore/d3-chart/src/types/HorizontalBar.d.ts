@@ -1,3 +1,4 @@
+import React from 'react';
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { BarContext, BackgroundProps } from './Bar';
@@ -21,6 +22,15 @@ export type HorizontalBarProps = Context & {
    * @default 2
    */
   r?: number | number[];
+  /**
+   * Bar click handler
+   */
+  onClick?: (
+    data: { [key: string]: string | number | Date },
+    event: React.SyntheticEvent,
+    barIndex: number,
+    barKey: string,
+  ) => void;
   /** Enables element transparency */
   transparent?: boolean;
   /**

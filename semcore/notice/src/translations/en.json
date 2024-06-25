@@ -1,4 +1,5 @@
 {
   "notification": "Notification",
+  "criticalNotification": "Critical notification",
   "close": "Close notification"
 }

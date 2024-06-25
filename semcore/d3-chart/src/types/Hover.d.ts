@@ -1,3 +1,4 @@
+import React from 'react';
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
@@ -20,6 +21,8 @@ type HoverTooltip = (<X, Y>(
     x?: X;
     /** Field name from `data` array item for the YAxis */
     y?: Y;
+    /** Handle click by trigger has an index - it is an index of the data array. */
+    onClick?: (index: number, e: React.SyntheticEvent) => void;
     children: (props: {
       /** Index in `data` array of the current item */
       xIndex: X extends string ? number : never;

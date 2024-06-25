@@ -65,6 +65,7 @@ export default defineConfig({
       '.idea',
       '.git',
       '.cache',
+      'tools/*/__tests__/utils.ts'
     ],
     environment: 'jsdom',
     setupFiles: resolvePath(__dirname, 'tools/testing-utils/setupTests'),

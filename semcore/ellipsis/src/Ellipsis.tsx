@@ -101,6 +101,9 @@ const createMeasurerElement = (element: HTMLDivElement) => {
   temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
   temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
   temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
+  temporaryElement.style.fontFeatureSettings =
+    styleElement.getPropertyValue('font-feature-settings');
+  temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
 
   temporaryElement.innerHTML = element.innerHTML;
   return temporaryElement;

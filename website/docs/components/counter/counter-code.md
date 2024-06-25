@@ -30,9 +30,7 @@ Don't forget to place counters inside the `Addon` to create correct margins.
 
 ## Counter in forms
 
-::: tip
-As the [design guide recommends](./counter#usage-in-ux-ui), the counter changes color to orange when the limit is reached, and then to red when the limit is exceeded. This rule isn’t implemented in the example.
-:::
+As the [design guide recommends](./counter#usage-in-ux-ui), the counter changes color to orange shortly before the limit is reached, and then to red when the limit is exceeded.
 
 ::: sandbox
 
@@ -91,6 +89,8 @@ The `Dot` component also contains a text counter. For more information, refer to
 :::
 
 ## Animated number
+
+The `AnimatedNumber` component allows showing numeric value changes with animation.
 
 ::: sandbox
 

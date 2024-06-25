@@ -80,6 +80,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
             y={invertAxis ? groupKey : item.id}
             key={item.id}
             color={item.color}
+            onClick={this.handleClickBar}
           />
           {this.renderTrend(item.id)}
         </>
@@ -96,6 +97,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
               const commonBarComponentProps: BarProps = {
                 color: item.color,
                 transparent: highlightedLine !== -1 && highlightedLine !== index,
+                onClick: this.handleClickBar,
               };
 
               if (invertAxis) {
@@ -122,6 +124,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
               const commonBarComponentProps: BarProps = {
                 color: item.color,
                 transparent: highlightedLine !== -1 && highlightedLine !== index,
+                onClick: this.handleClickBar,
               };
 
               if (invertAxis) {
@@ -142,7 +145,8 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis } = this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis, onClickHoverRect } =
+      this.asProps;
     const { dataDefinitions } = this.state;
 
     if (!showTooltip) {
@@ -154,6 +158,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
         x={invertAxis ? undefined : groupKey}
         y={invertAxis ? groupKey : undefined}
         wMin={100}
+        onClick={onClickHoverRect}
       >
         {({ xIndex, yIndex }: any) => {
           const index = invertAxis ? yIndex : xIndex;
@@ -191,6 +196,19 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
       </HoverRect.Tooltip>
     );
   }
+
+  private handleClickBar = (
+    _data: BarChartData[0],
+    e: React.SyntheticEvent,
+    barIndex: number,
+    barKey: string,
+  ) => {
+    const { onClickBar } = this.asProps;
+
+    if (onClickBar) {
+      onClickBar(barIndex, barKey, e);
+    }
+  };
 
   private get categoryScale() {
     const {

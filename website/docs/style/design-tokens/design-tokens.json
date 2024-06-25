@@ -134,7 +134,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Secondary background of the interface which contains the main data and information.",
-    "components": ["d3-chart", "drag-and-drop", "input", "textarea", "time-picker"]
+    "components": ["d3-chart", "drag-and-drop", "input", "notice", "textarea", "time-picker"]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
@@ -624,6 +624,7 @@
       "data-table",
       "date-picker",
       "dropdown",
+      "notice",
       "slider",
       "tooltip"
     ]
