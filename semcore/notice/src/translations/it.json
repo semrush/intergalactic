@@ -1,4 +1,5 @@
 {
   "notification": "Notifica",
+  "criticalNotification": "Notifica critica",
   "close": "Chiudi la notifica"
 }

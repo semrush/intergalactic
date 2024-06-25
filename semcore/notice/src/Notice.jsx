@@ -13,7 +13,7 @@ import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import style from './style/notice.shadow.css';
 
 function isCustomTheme(theme) {
-  return !['danger', 'warning', 'success', 'info'].includes(theme);
+  return !['danger', 'warning', 'success', 'info', 'muted'].includes(theme);
 }
 
 class RootNotice extends Component {
@@ -76,7 +76,7 @@ class RootNotice extends Component {
         backgroundColor={color}
         role='region'
         aria-live={ariaLive}
-        aria-label={getI18nText('notification')}
+        aria-label={getI18nText(isAssertive ? 'criticalNotification' : 'notification')}
       >
         <Children />
       </SNotice>,
