@@ -38,6 +38,7 @@ type AsProps = {
   disabledScroll?: boolean;
   uid?: string;
   animationsDisabled?: boolean;
+  scrollContainerRef: React.Ref<HTMLDivElement>;
 };
 
 type State = {
@@ -290,7 +291,7 @@ class Body extends Component<AsProps, State> {
       disabledScroll,
       renderRows,
       animationsDisabled,
-      forwardRef,
+      scrollContainerRef,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -327,8 +328,8 @@ class Body extends Component<AsProps, State> {
     }
 
     const scrollContainerRefs = [$scrollRef, this.scrollContainerRef];
-    if (forwardRef) {
-      scrollContainerRefs.push(forwardRef);
+    if (scrollContainerRef) {
+      scrollContainerRefs.push(scrollContainerRef);
     }
 
     return (

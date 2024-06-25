@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Possibility to pass `ref` property to `Datatable.Body` and set it to a real table body container - `Scroll.Containter`.
+- Possibility to pass `scrollContainerRef` property to `Datatable.Body` and set it to a real table body container - `Scroll.Containter`.
 
 ## [4.40.3] - 2024-06-13
 
