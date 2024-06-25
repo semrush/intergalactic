@@ -137,7 +137,7 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger size={200}>
+        <Dropdown.Trigger>
           <Button theme={'info'} use={'tertiary'}>
             <Button.Addon>
               <ChatM />
