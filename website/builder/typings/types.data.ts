@@ -51,7 +51,6 @@ const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: stri
   };
 };
 
-// const x = {
 export default {
   watch: [
     resolvePath(__dirname, '../../../semcore/**/*.d.ts'),
@@ -101,7 +100,6 @@ export default {
           .filter(Boolean);
         typings[typing].dependencyFiles = dependencyFiles;
       }
-      // console.log(typings['NoticeBubbleManager'].declaration.properties)
       return typings;
     } catch (err) {
       // biome-ignore lint/suspicious/noConsoleLog:
@@ -112,9 +110,3 @@ export default {
     }
   },
 };
-
-// import glob from 'fast-glob';
-
-// await x.load(...await Promise.all(x.watch.map((path) => glob(path, { ignore: ['**/node_modules/**']}))))
-
-// await x.load(['semcore/notice-bubble/src/index.d.ts'])
