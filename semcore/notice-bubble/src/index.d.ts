@@ -118,6 +118,8 @@ declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
     uid: string;
     update: (props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>) => boolean;
     remove: () => boolean;
+    ref: React.RefObject<HTMLDivElement>;
+    focus: () => void;
   };
   /**
    * Updates notice by uid.
