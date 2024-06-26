@@ -41,7 +41,7 @@ class RadioGroupRoot extends Component {
     const { Children } = this.asProps;
 
     return (
-      <Root render={Flex} direction='column' role='radiogroup' __excludeProps={['onChange']}>
+      <Root render={Flex} direction='column' role='group' __excludeProps={['onChange']}>
         <Children />
       </Root>
     );
@@ -256,7 +256,7 @@ const RadioMark = (props) => {
   const { theme, styles, resolveColor, state, checked } = props;
 
   return sstyled(styles)(
-    <SValue render={Box} tag='div' use:theme={resolveColor(theme)}>
+    <SValue render={Box} tag='div' use:theme={resolveColor(theme)} aria-hidden={true}>
       {state === 'invalid' && !checked && <SInvalidPattern />}
     </SValue>,
   );

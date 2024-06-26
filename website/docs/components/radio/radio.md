@@ -40,7 +40,7 @@ const App = PlaygroundGeneration(
 
     const children = text({
       key: 'children',
-      defaultValue: 'Label text',
+      defaultValue: 'Value 2',
       label: 'Children',
     });
 
@@ -82,10 +82,10 @@ The radio button has two sizes: M and L. The text label is always positioned to 
 
 Table: Radio button sizes
 
-| Size (px)        | Appearance example      |
-| ---------------- | ----------------------- |
-| M (16px * 16px) | ![](static/size-m.png)   |
-| L (20px * 20px) | ![](static/size-l.png)   |
+| Size (px)       | Appearance example     |
+| --------------- | ---------------------- |
+| M (16px x 16px) | ![](static/size-m.png) |
+| L (20px x 20px) | ![](static/size-l.png) |
 
 ### Margins
 
@@ -93,10 +93,10 @@ The spacing between options may differ based on the context in which they are us
 
 Table: Radio button margins
 
-| Size (px)        | Margins                                         |
-| ---------------- | ----------------------------------------------- |
-| M (16px * 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
-| L (20px * 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
+| Size (px)       | Margins                                          |
+| --------------- | ------------------------------------------------ |
+| M (16px x 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
+| L (20px x 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
 
 ## Radio button with a paragraph
 
@@ -104,10 +104,10 @@ All radio button sizes can be used with the corresponding text paragraphs.
 
 Table: Radio button with a paragraph of text
 
-| Radio button size (px) | Paragraph size (px)     | Appearance example                          |
-| ---------------------- | ----------------------- | ------------------------------------------- |
-| M (16px * 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
-| L (20px * 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
+| Radio button size (px) | Paragraph size (px)                      | Appearance example          |
+| ---------------------- | ---------------------------------------- | --------------------------- |
+| M (16px x 16px)        | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
+| L (20px x 20px)        | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
 ## Radio button with Info icon
 
@@ -144,12 +144,12 @@ Note, that the radio button text active zone shouldn't include a link.
 
 Table: Radio button states
 
-|           | Appearance                           |
-| --------- | ------------------------------------ |
-| Normal    | ![](static/radiobutton-default.png)  |
-| Checked   | ![](static/radiobutton-checked.png)  |
-| Invalid   | ![](static/radiobutton-invalid.png)  |
-| Disabled  | ![](static/radiobutton-disabled.png) |
+| State    | Appearance                           |
+| -------- | ------------------------------------ |
+| Normal   | ![](static/radiobutton-default.png)  |
+| Checked  | ![](static/radiobutton-checked.png)  |
+| Invalid  | ![](static/radiobutton-invalid.png)  |
+| Disabled | ![](static/radiobutton-disabled.png) |
 
 ## Usage in UX/UI
 
@@ -157,4 +157,3 @@ Table: Radio button states
 - **Use positive language for radio button labels** to clarify the action taken when the radio button is enabled.
 - Use radio buttons only for binary settings (when you need to select one of them).
 - This control is most often used in lists of settings. In filters, we recommend using the [Pills](/components/pills/pills) component instead of radio buttons.
-
