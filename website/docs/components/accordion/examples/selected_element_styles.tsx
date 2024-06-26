@@ -33,7 +33,6 @@ const Demo = () => {
             {({ selected }) => (
               <>
                 <Accordion.Item.Toggle
-                  tag={Flex}
                   alignItems='center'
                   className={cn(
                     'styled-accordion-item',
@@ -41,7 +40,9 @@ const Demo = () => {
                   )}
                 >
                   <Accordion.Item.Chevron mr={2} />
-                  <Text size={200} tag='h3' my={0}>{`Section ${index + 1}`}</Text>
+                  <Accordion.Item.ToggleButton my={0}>{`Section ${
+                    index + 1
+                  }`}</Accordion.Item.ToggleButton>
                 </Accordion.Item.Toggle>
                 <Accordion.Item.Collapse>
                   <Box p='12px 32px'>{`Hello Section ${index + 1}`}</Box>
