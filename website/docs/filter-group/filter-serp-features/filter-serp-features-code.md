@@ -1,7 +1,7 @@
 ---
 title: Example
 tabName: Example
-tabs: Design('filter-serp-featuers'), Example('filter-serp-featuers-code')
+tabs: Design('filter-serp-features'), Example('filter-serp-features-code')
 ---
 
 ## Basic example
