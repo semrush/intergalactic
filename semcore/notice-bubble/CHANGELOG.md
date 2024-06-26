@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.0] - 2024-06-11
+
+### Added
+
+- Notice bubble manager `.add()` method now returns `ref` and `focus()`.
+
 ## [5.35.0] - 2024-06-13
 
 ### Changed

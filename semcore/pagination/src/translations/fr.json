@@ -1,14 +1,9 @@
 {
   "prevPageLabel": "Préc.",
-  "prevPageDescription": "Page précédente {pageNumber}",
   "nextPageLabel": "Suivant",
-  "nextPageDescription": "Page suivante {pageNumber}",
   "pageInputLabel": "Page :",
   "totalPagesLabel": "sur",
   "pagination": "Pagination",
   "firstPage": "Première page",
-  "currentPage": "Page actuelle",
-  "confirm": "Confirmer le numéro de la page",
-  "lastPage": "Dernière page #{lastPageNumber}",
-  "goToPage": "Page {pageNumber}"
+  "lastPage": "Dernière page #{lastPageNumber}"
 }

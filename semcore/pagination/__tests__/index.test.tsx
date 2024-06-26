@@ -185,39 +185,12 @@ describe('Pagination.PageInput', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support view icon', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pagination currentPage={1} totalPages={1234}>
-          <Pagination.PageInput>
-            <Pagination.PageInput.Value />
-            <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
-          </Pagination.PageInput>
-        </Pagination>
-        <Pagination currentPage={1} totalPages={1234}>
-          <Pagination.PageInput {...{ focused: true }}>
-            <Pagination.PageInput.Value id='page-number' />
-            <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
-          </Pagination.PageInput>
-        </Pagination>
-      </snapshot.ProxyProps>
-    );
-    await expect(
-      await snapshot(component, {
-        actions: {
-          focus: '#page-number',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('Should not cut up to 3 digits', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1234} totalPages={1234}>
           <Pagination.PageInput {...{ focused: true }}>
             <Pagination.PageInput.Value id='page-number' />
-            <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
           </Pagination.PageInput>
         </Pagination>
       </snapshot.ProxyProps>
@@ -367,6 +340,7 @@ describe('Pagination.PageInput.Value', () => {
         <Pagination currentPage={1} totalPages={100}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value data-testid='value' />
+            {/* @ts-ignore */}
             <Pagination.PageInput.Addon data-testid={'selectPageButton'} tag={Return} interactive />
           </Pagination.PageInput>
         </Pagination>
@@ -413,11 +387,6 @@ describe('Pagination.PageInput.Value', () => {
           >
             <Pagination.PageInput>
               <Pagination.PageInput.Value data-testid='paginationValue' />
-              <Pagination.PageInput.Addon
-                data-testid={'selectPageButton'}
-                tag={Return}
-                interactive
-              />
             </Pagination.PageInput>
             <Pagination.TotalPages data-testid={'totalPagesValue'} />
           </Pagination>
