@@ -1,3 +1,59 @@
+## [15.97.0] - 2024-06-26
+
+### @semcore/breadcrumbs
+
+- **Fixed** `box-shadow` displaying on focused item.
+
+### @semcore/d3-chart
+
+- **Added** `onClick` handler for `HoverRect.Tooltip`.
+- **Added** `onClickHoverRect` and `onClickBar` handlers for `Chart.Bar`.
+- **Added** `barIndex` and `barKey` values for `onClick` handler for `Bar` and `HorizontalBar`.
+
+### @semcore/data-table
+
+- **Added** `catch` for errors in animation promises in headers.
+- **Added** Possibility to pass `scrollContainerRef` property to `Datatable.Body` and set it to a real table body container - `Scroll.Containter`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** `highlightedIndex` type wasn't accepting `null`.
+
+### @semcore/ellipsis
+
+- **Fixed** Incorrect calculation of text width with font settings: `font-feature-settings` or `font-variant-numeric`.
+
+### @semcore/icon
+
+- **Changed** `Report`, `PopularProducts`, `AddressPack`, `ChatQuestion` icons according to our icon design guidelines.
+- **Added** New `OrganicCarousel`, `PopularStores` and `QuestionsAnswers` icons.
+
+### @semcore/notice
+
+- **Changed** Notice with `warning` and `danger` themes now has aria-label "Critical Notification" (other teams has "Notification" as before).
+- **Added** `muted` theme support.
+
+### @semcore/notice-bubble
+
+- **Added** Notice bubble manager `.add()` method now returns `ref` and `focus()`.
+
+### @semcore/notice-global
+
+- **Changed** Notice with `warning` and `danger` themes now has aria-label "Critical Notification" (other teams has "Notification" as before).
+- **Changed** Close button aria-label now is "Close Notification" instead of "Close".
+
+### @semcore/pagination
+
+- **Changed** Hide `Addon` with confirmation icon in pagination input.
+
+### @semcore/skeleton
+
+- **Fixed** Error about `foreignObject` on elements other than `svg`.
+
+### @semcore/utils
+
+- **Added** Utility type `RequireAtLeastOne` in Intergalactic namespace.
+
 ## [15.96.1] - 2024-06-14
 
 ### @semcore/dropdown
