@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.38.1] - 2024-06-26
+
+### Fixed
+
+- `aria-*` props didn't pass to the `Trigger` in the `Filter.Trigger`.
+
 ## [4.38.0] - 2024-06-13
 
 ### Changed
