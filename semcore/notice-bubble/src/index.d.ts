@@ -40,7 +40,7 @@ export interface INoticeBubbleInfoProps extends NoticeBubbleInfoProps, UnknownPr
 export type NoticeBubbleInfoProps = NoticeBubbleProps & {
   readonly type?: 'info';
   /**
-   * Notice display duration.
+   * Notice display duration. Set to 0 to disable auto-close.
    */
   duration?: number;
   /**
@@ -48,6 +48,13 @@ export type NoticeBubbleInfoProps = NoticeBubbleProps & {
    * @default false
    */
   initialAnimation?: boolean;
+  /**
+   * Use it for complex notices with important controls.
+   * If enabled, browser focus will be locked in the notice
+   * until it's closed. After close focus should return to the element
+   * where it was placed before notice appear.
+   */
+  focusLock?: boolean;
 };
 
 /** @deprecated */
@@ -63,6 +70,13 @@ export type NoticeBubbleWarningProps = NoticeBubbleProps & {
    * @default false
    */
   initialAnimation?: boolean;
+  /**
+   * Use it for complex notices with important controls.
+   * If enabled, browser focus will be locked in the notice
+   * until it's closed. After close focus should return to the element
+   * where it was placed before notice appear.
+   */
+  focusLock?: boolean;
 };
 
 /** @deprecated */
@@ -92,12 +106,15 @@ export type NoticeBubbleManagerClass = {
 /**
  * @deprecated use `NoticeBubbleManager` instead.
  * */
-declare const NoticeBubble: Intergalactic.Component<'div', NoticeBubbleInfoProps>;
+export declare const NoticeBubble: Intergalactic.Component<'div', NoticeBubbleInfoProps>;
 /**
  * @deprecated use `NoticeBubbleManager` instead.
  * */
-declare const NoticeBubbleWarning: Intergalactic.Component<'div', NoticeBubbleWarningProps>;
-declare const NoticeBubbleContainer: Intergalactic.Component<'div', NoticeBubbleContainerProps> & {
+export declare const NoticeBubbleWarning: Intergalactic.Component<'div', NoticeBubbleWarningProps>;
+export declare const NoticeBubbleContainer: Intergalactic.Component<
+  'div',
+  NoticeBubbleContainerProps
+> & {
   /**
    * @deprecated use `NoticeBubbleManager` instead.
    * */
@@ -108,7 +125,7 @@ declare const NoticeBubbleContainer: Intergalactic.Component<'div', NoticeBubble
    * */
   Warning: typeof NoticeBubbleWarning;
 };
-declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
+export declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
   /**
    * Creates and shows a notice.
    * */
@@ -130,15 +147,8 @@ declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
   remove(uid: string): boolean;
 }
 
-declare const noticeBubbleDefaultManager: NoticeBubbleManager;
+export declare const noticeBubbleDefaultManager: NoticeBubbleManager;
 
-export {
-  NoticeBubbleContainer,
-  NoticeBubble,
-  NoticeBubbleWarning,
-  NoticeBubbleManager,
-  noticeBubbleDefaultManager,
-};
 /**
  * @deprecated Use `import { noticeBubbleDefaultManager } from ...` instead
  */
