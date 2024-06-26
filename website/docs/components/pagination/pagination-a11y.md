@@ -21,20 +21,17 @@ See detailed information about the keyboard support for the buttons, links, inpu
 
 The list below describes roles and attributes that component already has.
 
-Table: Attributes
+Table: Roles & attributes
 
-| Attribute                         | Element  | Usage                                                                                                         |
-| --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-|                                   | `nav`    | In order to let AT users recognize that there is a pagination, we should wrap the links in a `<nav>` element. |
-| `aria-label="pagination"`         | `nav`    | Describes the type of navigation.                                                                             |
-| `aria-current="page"`             | `input`  | Points to the current page. This will tell AT that the focused input is pointing to the current page.         |
-| `aria-label="Page {number}"`      | `button` | Describes the meaning of the "Prev" and "Next" buttons.                                                       |
-| `aria-label="First page"`         | `button` | Describes the meaning of the "<<" button.                                                                     |
-| `aria-label="Last page {number}"` | `button` | Describes the meaning of the "{number}" link.                                                                 |
+| Component | Role/tag  | Attribute                         |
+| --------- | ----- |--------------------------------- |
+| `Pagination` | `nav` | `aria-label="pagination"`         |
+| `Pagination.FirstPage` | `button` | `aria-label="First page"`         |
+| `Pagination.TotalPages` | `button` | `aria-label="Last page {number}"` |
 
-## Resources
+## Considerations for designers & developers
 
-[A11y style guide documentation](https://a11y-style-guide.com/style-guide/section-navigation.html) has detailed information about the accessible pagination best practices.
+Avoid inserting the `Pagination` component inside tables, as the navigation (`nav` tag) cannot be inserted inside other tags.
 
 ## Other recommendations
 
