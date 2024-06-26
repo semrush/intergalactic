@@ -17,6 +17,7 @@
     "@semcore/icon": "4.38.0",
     "@semcore/input": "4.29.0",
     "@semcore/link": "5.32.0",
+    "@semcore/tooltip": "6.35.1",
     "@semcore/typography": "5.36.0",
     "@semcore/utils": "4.29.0"
   },

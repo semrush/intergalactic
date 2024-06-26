@@ -1,17 +1,18 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
-import Return from '@semcore/icon/Return/m';
+import { Hint } from '@semcore/tooltip';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/pagination.shadow.css';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 function formatThousands(value) {
   const main = String(value);
@@ -130,6 +131,7 @@ class PaginationRoot extends Component {
     return finalValue <= 0 ? 1 : finalValue;
   };
 
+  /** @deprecated */
   handlePageInputIconClick = () => {
     const dirtyCurrentPage = this.getDirtyCurrentPage();
     this.handlePageChange(dirtyCurrentPage);
@@ -182,6 +184,7 @@ class PaginationRoot extends Component {
     };
   };
 
+  /** @deprecated */
   getPageInputAddonProps = () => {
     return {
       onClick: this.handlePageInputIconClick,
@@ -217,19 +220,35 @@ class PaginationRoot extends Component {
 
   render() {
     const SPagination = Root;
-    const { Children, getI18nText } = this.asProps;
+    const { Children, getI18nText, currentPage } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPagination render={Box} tag='nav' aria-label={getI18nText('pagination')}>
+      <SPagination render={Flex} tag='nav' aria-label={getI18nText('pagination')}>
         <Children />
+        <ScreenReaderOnly aria-live={'polite'} role={'status'}>
+          {getI18nText('pageInputLabel')} {currentPage}
+        </ScreenReaderOnly>
       </SPagination>,
     );
   }
 }
 
 class FirstPage extends Component {
-  static defaultProps = () => ({
-    children: <Button.Addon tag={ChevronDoubleLeft} />,
-  });
+  static defaultProps = (props) => {
+    const hintContent = props.getI18nText('firstPage');
+
+    return {
+      children: (
+        <Button.Addon
+          tag={Hint}
+          title={hintContent}
+          timeout={[250, 50]}
+          __excludeProps={['aria-label']}
+        >
+          <ChevronDoubleLeft />
+        </Button.Addon>
+      ),
+    };
+  };
 
   render() {
     const { getI18nText } = this.asProps;
@@ -245,13 +264,7 @@ class PrevPage extends Component {
 
   render() {
     const SPrevPage = Root;
-    const { currentPage, getI18nText } = this.asProps;
-    return sstyled(this.asProps.styles)(
-      <SPrevPage
-        render={Button}
-        aria-label={getI18nText('prevPageDescription', { pageNumber: currentPage - 1 })}
-      />,
-    );
+    return sstyled(this.asProps.styles)(<SPrevPage render={Button} />);
   }
 }
 class NextPage extends Component {
@@ -261,15 +274,7 @@ class NextPage extends Component {
 
   render() {
     const SNextPage = Root;
-    const { currentPage, getI18nText } = this.asProps;
-    return sstyled(this.asProps.styles)(
-      <SNextPage
-        render={Button}
-        use='primary'
-        theme='info'
-        aria-label={getI18nText('nextPageDescription', { pageNumber: currentPage + 1 })}
-      />,
-    );
+    return sstyled(this.asProps.styles)(<SNextPage render={Button} use='primary' theme='info' />);
   }
 }
 
@@ -295,6 +300,7 @@ class TotalPages extends Component {
             render={Link}
             tag='button'
             type='button'
+            role={undefined}
             aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
           />
         )}
@@ -305,15 +311,8 @@ class TotalPages extends Component {
 
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
-  const { getI18nText } = props;
 
-  return sstyled(props.styles)(
-    <SPageInputValue
-      render={Input.Value}
-      aria-label={getI18nText('currentPage')}
-      aria-current='page'
-    />,
-  );
+  return sstyled(props.styles)(<SPageInputValue render={Input.Value} />);
 };
 
 const PageInputAddon = (props) => {
@@ -338,14 +337,7 @@ class PageInput extends Component {
           {Children.origin ? (
             <Children />
           ) : (
-            <>
-              <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
-              <Pagination.PageInput.Addon
-                tag={Return}
-                interactive
-                aria-label={getI18nText('confirm')}
-              />
-            </>
+            <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
           )}
         </SPageInput>
       </>,
