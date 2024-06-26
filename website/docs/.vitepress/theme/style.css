@@ -576,7 +576,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  margin: inherit;
+  margin: 0;
 }
 
 .vp-doc ol[class] {
@@ -1061,7 +1061,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   border: 1px solid var(--vp-c-danger-3);
   background-color: var(--vp-c-danger-soft);
   border-radius: 4px;
-  padding: 0px 8px; 
+  padding: 0px 8px;
   display: inline-block;
   margin-right: 10px;
 }
