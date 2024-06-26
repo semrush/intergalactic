@@ -1,4 +1,5 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test';
+import { testPlanFilter } from "allure-playwright/testplan";
 
 const config: PlaywrightTestConfig = {
   testMatch: /\.axe-test.ts(x){0,1}$/,
@@ -6,7 +7,8 @@ const config: PlaywrightTestConfig = {
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 4,
-  reporter: 'list',
+  grep: testPlanFilter(),
+  reporter: process.env.CI ? 'dot' : [["line"], ["allure-playwright"]],
   use: {
     trace: 'on-first-retry',
     video: 'on-first-retry',

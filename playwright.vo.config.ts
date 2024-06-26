@@ -1,5 +1,6 @@
 import { devices, PlaywrightTestConfig } from '@playwright/test';
 import { screenReaderConfig } from '@guidepup/playwright';
+import { testPlanFilter } from "allure-playwright/testplan";
 
 const config: PlaywrightTestConfig = {
   ...screenReaderConfig,
@@ -8,6 +9,8 @@ const config: PlaywrightTestConfig = {
   timeout: 2 * 60 * 1000,
   testMatch: /\.vo-test.ts(x){0,1}$/,
   retries: process.env.CI ? 2 : 0,
+  grep: testPlanFilter(),
+  reporter: process.env.CI ? 'dot' : [["line"], ["allure-playwright"]],
   projects: [
     {
       name: 'webkit',
