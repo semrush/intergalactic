@@ -95,6 +95,7 @@ export default function ({ icons, old, json }) {
           <IconGroup title='Format' />
           <IconGroup title='Map' />
           <IconGroup title='AI' />
+          <IconGroup title='SERP Features' />
           <IconGroup title='Misc' />
           {!old && <IconGroup title='Brand' />}
           <IconGroup title='Color' />
