@@ -227,7 +227,7 @@ function Options({ styles, options, Children }) {
   const SSliderOptions = Root;
 
   return sstyled(styles)(
-    <SSliderOptions render={Flex} justifyContent='space-between'>
+    <SSliderOptions render={Flex} mt={1} justifyContent='space-between'>
       {(options ?? []).map((option) => (
         <Children key={option.value} x={option.value}>
           {option.label}
