@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.39.1] - 2024-06-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.36.0 ~> 5.36.1]).
+
+## [4.39.0] - 2024-06-12
+
+### Changed
+
+- style for `FeaturePopover.Spot` background-color from `--intergalactic-bg-highlight-results` to `--intergalactic-feature-popover-dot-outer-border`.
+
 ## [4.38.7] - 2024-06-12
 
 ### Changed

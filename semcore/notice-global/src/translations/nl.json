@@ -1,3 +1,5 @@
 {
-  "close": "Sluiten"
+  "notification": "Melding",
+  "criticalNotification": "Belangrijke melding",
+  "close": "Kennisgeving sluiten"
 }

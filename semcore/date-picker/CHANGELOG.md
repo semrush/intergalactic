@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.6] - 2024-06-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.32.0 ~> 4.32.2]).
+
+## [4.46.5] - 2024-06-13
+
+### Fixed
+
+- Show popover with error message only for opened or focused `DatePicker`.
+
 ## [4.46.4] - 2024-06-12
 
 ### Changed

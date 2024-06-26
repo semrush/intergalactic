@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.0] - 2024-06-19
+
+### Added
+
+- Utility type `RequireAtLeastOne` in Intergalactic namespace.
+
+## [4.29.0] - 2024-06-12
+
+### Changed
+
+- value for `--intergalactic-feature-popover-dot-outer-border` token.
+
 ## [4.28.2] - 2024-06-11
 
 ### Fixed

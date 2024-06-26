@@ -4,6 +4,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 import { Box, Flex } from '@semcore/flex-box';
+import { mockDate, RealDate } from './utils';
 
 import {
   DatePicker,
@@ -13,24 +14,6 @@ import {
   MonthDateRangeComparator,
 } from '../src';
 
-const RealDate = global.Date;
-
-// https://github.com/facebook/jest/issues/2234#issuecomment-384884729
-function mockDate(isoDate: any) {
-  (global as any).Date = class extends RealDate {
-    constructor(...theArgs: any[]) {
-      super();
-      if (theArgs.length) {
-        return new (RealDate as any)(...theArgs);
-      }
-      return new RealDate(isoDate);
-    }
-
-    static now() {
-      return new RealDate(isoDate).getTime();
-    }
-  };
-}
 describe('DatePicker', () => {
   beforeEach(() => {
     global.Date = RealDate;
@@ -162,7 +145,9 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should show error tooltip when inputed date is not allowed', async ({ task }) => {
+  test('Should not show error tooltip when inputed date is not allowed and datePicker is closing', async ({
+    task,
+  }) => {
     const component = (
       <Box w={200} h={200}>
         <DatePicker

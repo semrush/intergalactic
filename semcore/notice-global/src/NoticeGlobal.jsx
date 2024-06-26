@@ -10,6 +10,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/notice-global.shadow.css';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info', 'neutral'].includes(theme);
@@ -42,8 +43,17 @@ class NoticeGlobalRoot extends Component {
 
   render() {
     const SNoticeGlobal = Root;
-    const { Children, styles, hidden, theme, closable, onClose, forcedAdvancedMode, resolveColor } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      hidden,
+      theme,
+      closable,
+      onClose,
+      forcedAdvancedMode,
+      resolveColor,
+      getI18nText,
+    } = this.asProps;
     const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
@@ -57,8 +67,9 @@ class NoticeGlobalRoot extends Component {
         visible={!hidden}
         use:theme={useTheme}
         backgroundColor={color}
-        role='status'
+        role='region'
         aria-live={isAssertive ? 'assertive' : 'polite'}
+        aria-label={getI18nText(isAssertive ? 'criticalNotification' : 'notification')}
       >
         {advancedMode ? (
           <Children />
@@ -84,6 +95,7 @@ function CloseIcon({ styles, getI18nText }) {
     <SCloseIcon render={Box} tag={Close} interactive aria-label={getI18nText('close')} />,
   );
 }
+CloseIcon.enhance = [keyboardFocusEnhance()];
 
 const NoticeGlobal = createComponent(NoticeGlobalRoot, {
   Content,

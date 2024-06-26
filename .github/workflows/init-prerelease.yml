@@ -6,11 +6,31 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
+  check-exist-pr:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: check-not-merged-pr
+        run: |
+          prs=$(gh pr list \
+            --base 'master' \
+            --json title \
+            -A semrush-ci-whale \
+            -S 'Merge release tag into master' \
+            --jq 'length')
+          if ((prs > 0)); then
+            echo "Merge exist PR with last release to the master first"
+            exit 1
+          fi
   init-prerelease:
     runs-on: ubuntu-latest
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
+    needs:
+      - check-exist-pr
     steps:
       - uses: actions/checkout@v4.1.1
         with:

@@ -12,7 +12,7 @@ export const closeTasks = async (version: string) => {
   const prevReleaseTag = releaseTags[currentReleaseTagIndex - 1];
   const logs = await git.log({ from: prevReleaseTag });
   const regexp = new RegExp(/\[(.*?)\]/gi);
-  const taskIds = new Set();
+  const taskIds = new Set<string>();
   const { specialScopes, toolsComponents, semcoreComponents } = await allowedScopes();
   const allAllowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponents];
 
@@ -24,7 +24,9 @@ export const closeTasks = async (version: string) => {
     }
   });
 
-  log(`Tasks to close: [${[...taskIds].join(' ; ')}]`);
+  const taskIdsArray = [...taskIds];
+
+  log(`Tasks to close: [${taskIdsArray.join(' ; ')}]`);
 
   try {
     const closeTasksUrl = process.env['INTERGALACTIC_BOT_CLOSE_TASKS_URL'];
@@ -37,7 +39,7 @@ export const closeTasks = async (version: string) => {
     }
 
     const body = JSON.stringify({
-      taskIds,
+      taskIds: taskIdsArray,
       fixVersion: version,
     });
 

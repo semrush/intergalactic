@@ -7,6 +7,7 @@ import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
+import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
@@ -37,6 +38,7 @@ type AsProps = {
   disabledScroll?: boolean;
   uid?: string;
   animationsDisabled?: boolean;
+  scrollContainerRef: React.Ref<HTMLDivElement>;
 };
 
 type State = {
@@ -52,6 +54,7 @@ class Body extends Component<AsProps, State> {
     scrollOffset: 0,
   };
 
+  scrollContainerRef = React.createRef<HTMLDivElement>();
   firstRowRef = React.createRef<HTMLDivElement>();
   firstRowResizeObserver: ResizeObserver | null = null;
 
@@ -261,6 +264,13 @@ class Body extends Component<AsProps, State> {
     }
   };
 
+  handleBodyTransitionEnd = trottle(() => {
+    /**
+     * We need this to recalculate ScrollArea sizes after end of transition
+     */
+    this.forceUpdate();
+  });
+
   componentWillUnmount() {
     this.firstRowResizeObserver?.disconnect();
   }
@@ -281,6 +291,7 @@ class Body extends Component<AsProps, State> {
       disabledScroll,
       renderRows,
       animationsDisabled,
+      scrollContainerRef,
     } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
@@ -296,7 +307,11 @@ class Body extends Component<AsProps, State> {
     }
 
     const body = sstyled(styles)(
-      <SBody render={Box} animationsDisabled={animationsDisabled}>
+      <SBody
+        render={Box}
+        animationsDisabled={animationsDisabled}
+        onTransitionEnd={this.handleBodyTransitionEnd}
+      >
         {renderRows ? (
           renderRows({ rows, columns, renderRow: this.renderRow.bind(this) }) || null
         ) : (
@@ -312,6 +327,11 @@ class Body extends Component<AsProps, State> {
       return <SBodyWrapper>{body}</SBodyWrapper>;
     }
 
+    const scrollContainerRefs = [$scrollRef, this.scrollContainerRef];
+    if (scrollContainerRef) {
+      scrollContainerRefs.push(scrollContainerRef);
+    }
+
     return (
       <SBodyWrapper>
         <ScrollArea
@@ -321,7 +341,11 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef} role='rowgroup' focusRingTopOffset={'3px'}>
+          <ScrollArea.Container
+            ref={forkRef(...scrollContainerRefs)}
+            role='rowgroup'
+            focusRingTopOffset={'3px'}
+          >
             {body}
           </ScrollArea.Container>
           <div style={displayContents} role='rowgroup'>

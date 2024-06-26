@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.34.2] - 2024-06-14
+
+### Fixed
+
+- `highlightedIndex` type wasn't accepting `null`.
+
+## [4.34.1] - 2024-06-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.32.0 ~> 4.32.2]).
+
+## [4.34.0] - 2024-06-13
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.31.7 ~> 4.32.0], `@semcore/utils` [4.28.2 ~> 4.29.0], `@semcore/core` [2.25.2 ~> 2.26.0]).
+
 ## [4.33.8] - 2024-06-11
 
 ### Fixed

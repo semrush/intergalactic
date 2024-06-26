@@ -1156,7 +1156,7 @@
     },
     "feature-popover": {
       "dot-outer-border": {
-        "value": "rgba({yellow.100}, 0.3)",
+        "value": "{bg.primary.highlight}",
         "type": "color",
         "description": "Color of the outer border of the FeaturePopover.Spot."
       }
@@ -1552,42 +1552,35 @@
     "fs-100": {
       "value": "12px",
       "type": "fontSizes",
-      "description": "Use with caution for text in additional messages. Always check its contrast and readability."
+      "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability."
     },
     "fs-200": {
       "value": "14px",
-      "type": "fontSizes",
-      "description": "Use for text in regular messages."
+      "type": "fontSizes"
     },
     "fs-300": {
       "value": "16px",
-      "type": "fontSizes",
-      "description": "Use for H6 with bold font-weight, and for text in regular messages."
+      "type": "fontSizes"
     },
     "fs-400": {
       "value": "20px",
-      "type": "fontSizes",
-      "description": "Use for H5 and subtitles."
+      "type": "fontSizes"
     },
     "fs-500": {
       "value": "24px",
-      "type": "fontSizes",
-      "description": "Use for H4."
+      "type": "fontSizes"
     },
     "fs-600": {
       "value": "32px",
-      "type": "fontSizes",
-      "description": "Use for H3."
+      "type": "fontSizes"
     },
     "fs-700": {
       "value": "36px",
-      "type": "fontSizes",
-      "description": "Use for H2."
+      "type": "fontSizes"
     },
     "fs-800": {
       "value": "48px",
-      "type": "fontSizes",
-      "description": "Use for H1."
+      "type": "fontSizes"
     },
     "compact": {
       "value": "0.3",

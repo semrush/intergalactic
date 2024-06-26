@@ -1,4 +1,5 @@
 {
   "notification": "通知",
+  "criticalNotification": "重要な通知",
   "close": "通知を閉じる"
 }

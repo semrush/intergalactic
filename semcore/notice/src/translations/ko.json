@@ -1,4 +1,5 @@
 {
   "notification": "알림",
+  "criticalNotification": "중요 알림",
   "close": "알림 닫기"
 }

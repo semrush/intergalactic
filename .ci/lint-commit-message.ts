@@ -55,8 +55,8 @@ if (commitTitle.includes('][')) {
   description = commitTitle.substring(commitTitle.indexOf('] ') + 3);
 }
 
-if (taskId && taskId.length !== 9) {
-  outputError(`Got task id "${taskId}" in message while it's expected to be 9 characters long`);
+if (taskId && (taskId.length < 7 || taskId.length > 9)) {
+  outputError(`Got task id "${taskId}" in message while it's expected to be 7-9 characters long`);
 }
 
 if (!scope) {

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.29.1] - 2024-06-19
+
+### Fixed
+
+- Incorrect calculation of text width with font settings: `font-feature-settings` or `font-variant-numeric`.
+
+## [2.29.0] - 2024-06-13
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.28.2 ~> 4.29.0], `@semcore/core` [2.25.2 ~> 2.26.0]).
+
 ## [2.28.3] - 2024-06-12
 
 ### Changed

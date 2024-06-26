@@ -82,7 +82,7 @@ class Dropdown extends Component {
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
     if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
 
-    if (['Enter', ' '].includes(e.key)) {
+    if (['Enter', ' '].includes(e.key) && interaction !== 'none') {
       e.preventDefault();
       this.handlers.visible(true);
     }

@@ -49,14 +49,17 @@ SText {
   display: inline;
 }
 
+SCounter[theme='info'] {
+  border-color: transparent;
+  background: var(--intergalactic-bg-primary-info, #008ff8);
+}
+
 SCounter[theme='warning'] {
   border-color: transparent;
   background: var(--intergalactic-bg-primary-warning, #ff642d);
-  color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
 SCounter[theme='danger'] {
   border-color: transparent;
   background: var(--intergalactic-bg-primary-critical, #ff4953);
-  color: var(--intergalactic-text-primary-invert, #ffffff);
 }

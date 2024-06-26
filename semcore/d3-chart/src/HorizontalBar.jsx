@@ -62,6 +62,7 @@ class HorizontalBarRoot extends Component {
       maxBarSize = Infinity,
       resolveColor,
       patterns,
+      onClick,
     } = this.asProps;
 
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
@@ -77,6 +78,7 @@ class HorizontalBarRoot extends Component {
       xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) +
       offset[0] -
       calcPartBarX(d[x], wMin, width);
+    const handleClick = (event) => onClick?.(d, event, i, x);
     const dSvg = getHorizontalRect({
       x: barX,
       y: barY,
@@ -99,7 +101,7 @@ class HorizontalBarRoot extends Component {
             aria-hidden
             render='path'
             clipPath={`url(#${uid})`}
-            __excludeProps={['data', 'scale', 'value', 'offset']}
+            __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
             childrenPosition='above'
             value={d}
             index={i}
@@ -112,6 +114,7 @@ class HorizontalBarRoot extends Component {
             width={width}
             height={height}
             d={dSvg}
+            onClickCapture={handleClick}
             use:duration={`${duration}ms`}
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
