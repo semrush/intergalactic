@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.1] - 2024-06-24
+
+### Fixed
+
+- `box-shadow` displaying on focused item.
+
 ## [5.34.0] - 2024-06-13
 
 ### Changed
