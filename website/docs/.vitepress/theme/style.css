@@ -661,8 +661,8 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   margin: 24px 0 16px 0;
 }
 
-.vp-doc a[class]:hover {
-  color: inherit;
+.vp-doc a[class], .vp-doc a[class]:hover, .vp-doc a[class]:active, .vp-doc a[class]:visited {
+  color: var(--vp-c-indigo-2);
 }
 
 .vp-doc a {

@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.35.1] - 2024-06-26
+## [5.36.1] - 2024-06-26
 
 ### Changed
 
@@ -11,6 +11,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Flex component `Accordion.Item.ToggleButton` with role `button`.
+
+## [5.36.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/utils` [4.29.0 ~> 4.30.0]).
 
 ## [5.35.0] - 2024-06-13
 

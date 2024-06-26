@@ -3,9 +3,21 @@ title: Checkbox
 tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
+## Checkbox group
+
+You can wrap checkbox controls into group using `<fieldset>` and adding `<legend>`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
+
+:::
+
 ## Partial selection
 
-Make sure to follow the guide's instructions on checkbox spacing.
+When one or more options are selected from the list, the parent checkbox gets an `indeterminate` (mixed) state.
 
 ::: sandbox
 
@@ -17,6 +29,8 @@ Make sure to follow the guide's instructions on checkbox spacing.
 
 ## Checkbox with other components
 
+You can place other components next to the `Checkbox` or inside the `Checkbox.Text` components.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -27,8 +41,9 @@ Make sure to follow the guide's instructions on checkbox spacing.
 
 ## Additional props for input
 
-`Checkbox.Value` is made of a check-mark div and a hidden input-tag. When you pass props to Checkbox.Value, it passes specific set of them to input props and all others goes to check-mark div.
-If you need more control over input-tag, you can pass props to Checkbox.Value.Control.
+`Checkbox.Value` is made of a `CheckMark` div and a hidden input. When you pass props to `Checkbox.Value`, it passes specific set of them to input props and all others goes to `CheckMark` div. 
+
+For more control over the input, you can pass props to `Checkbox.Value.Control`.
 
 ::: warning
 :rotating_light: `Checkbox.Value.CheckMark` should always be the next element after `Checkbox.Value.Control` in DOM.

@@ -1,14 +1,9 @@
 {
   "prevPageLabel": "Trước",
-  "prevPageDescription": "Trang trước {pageNumber}",
   "nextPageLabel": "Tiếp",
-  "nextPageDescription": "Trang tiếp theo {pageNumber}",
   "pageInputLabel": "Trang:",
   "totalPagesLabel": "của",
   "pagination": "Phân trang",
   "firstPage": "Trang đầu",
-  "currentPage": "Trang hiện tại",
-  "confirm": "Xác nhận số trang",
-  "lastPage": "Trang cuối #{lastPageNumber}",
-  "goToPage": "Trang {pageNumber}"
+  "lastPage": "Trang cuối #{lastPageNumber}"
 }

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.39.0] - 2024-06-19
+
+### Changed
+
+- Hide `Addon` with confirmation icon in pagination input.
+
 ## [4.38.0] - 2024-06-13
 
 ### Changed
