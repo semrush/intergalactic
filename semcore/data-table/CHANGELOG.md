@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.5] - 2024-06-25
+
+### Added
+
+- `catch` for errors in animation promises in headers.
+
 ## [4.40.4] - 2024-06-14
 
 ### Added
