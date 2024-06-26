@@ -30,9 +30,17 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-If you use `group` role to group checkbox buttons, add a common label and connect it through `aria-labelledby`. Refer to the [Checkbox group example](/components/checkbox/checkbox-code#checkbox-group).
+### Grouping with fieldset
 
-### Roles and attributes
+You can group `Checkbox` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Refer to the [Checkbox group example](/components/checkbox/checkbox-code#checkbox-group).
+
+Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of checkbox buttons.
+
+### Grouping with group role
+
+If you use `group` role to group checkbox buttons, add a common label and connect it through `aria-labelledby`.
+
+#### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
@@ -42,10 +50,6 @@ Table: Roles and attributes
 | ------- | --------------------------- | --------------------------------------------------------------------- |
 | `group` |                             | Identifies the `div` element as a group container for the checkboxes. |
 |         | `aria-labelledby="[IDREF]"` | Refers to the element that contains the label of the checkbox group.  |
-
-### Grouping with fieldset
-
-You can also group `Checkbox` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of checkbox buttons.
 
 ## Resources
 
