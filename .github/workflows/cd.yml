@@ -101,6 +101,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: errata-ai/vale-action@reviewdog
+        with:
+          files: website/docs
   unit-tests:
     runs-on: ubuntu-latest
     needs: build
