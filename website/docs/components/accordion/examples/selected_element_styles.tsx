@@ -33,7 +33,6 @@ const Demo = () => {
             {({ selected }) => (
               <>
                 <Accordion.Item.Toggle
-                  alignItems='center'
                   className={cn(
                     'styled-accordion-item',
                     selected && 'styled-accordion-item-selected',
