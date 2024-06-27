@@ -64,10 +64,19 @@ class RootFilterTrigger extends Component {
   };
 
   getTriggerButtonProps() {
-    const { empty, size, placeholder, active, disabled, includeInputProps, triggerRef } =
-      this.asProps;
+    const {
+      empty,
+      size,
+      placeholder,
+      active,
+      disabled,
+      includeInputProps,
+      triggerRef,
+      'data-ui-name': dataUiName,
+      ...other
+    } = this.asProps;
 
-    const [controlProps] = getInputProps(this.asProps, includeInputProps);
+    const [controlProps] = getInputProps(other, includeInputProps);
 
     return {
       size,
