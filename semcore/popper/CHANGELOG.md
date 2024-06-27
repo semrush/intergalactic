@@ -120,7 +120,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+- Low level `explicitTriggerSet` API for more granular control over which element will be used as popper trigger.
 
 ## [5.27.1] - 2024-04-15
 
@@ -236,7 +236,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `focusLoop` api that controls how browser focus behaves when goes out of popper.
+- `focusLoop` API that controls how browser focus behaves when goes out of popper.
 
 ### Changed
 
@@ -324,7 +324,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Internal api to enable new focus lock scope.
+- Internal API to enable new focus lock scope.
 
 ## [5.11.0] - 2023-12-04
 
@@ -562,7 +562,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Fixed corner case of focus return with `interaction=focus`.
-- Added `disableEnforceFocus` api prop.
+- Added `disableEnforceFocus` API prop.
 
 ## [4.18.0] - 2023-06-06
 
@@ -773,7 +773,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Removed aria attributes that were breaking components a11y.
+- Removed aria attributes that were breaking components A11y.
 
 ## [4.11.29] - 2022-08-30
 
@@ -968,7 +968,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Add functionality for stop propagation of events from the `<Popper.Popper/>`, more details [here](https://github.com/facebook/react/issues/11387).
+- Add functionality for stop propagation of events from the `<Popper.Popper/>`, more details [in the React repository issue](https://github.com/facebook/react/issues/11387).
 
 ## [4.4.2] - 2020-09-08
 
@@ -1050,7 +1050,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

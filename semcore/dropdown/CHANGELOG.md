@@ -598,7 +598,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- `aria-controls` and `aria-expanded` HTML attributes wasn't applied on closed dropdown.
 
 ## [3.4.15] - 2023-03-22
 
@@ -805,7 +805,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

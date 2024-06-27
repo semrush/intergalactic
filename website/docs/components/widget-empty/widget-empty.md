@@ -8,7 +8,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 **WidgetEmpty** is a component designed to display empty states in widgets.
 
-The WidgetEmpty component informs the user why there is no data (e.g. due to applied filters, tool not having been set up yet, or a system error) and provides guidance on how to address the situation.
+The WidgetEmpty component informs the user why there is no data (for example due to applied filters, tool not having been set up yet, or a system error) and provides guidance on how to address the situation.
 
 ## Composition and styles
 
@@ -119,7 +119,7 @@ Display the following:
 
 - An illustration.
 - A text message specifying that we're working on the issue and asking the user to try again later.
-- Recommended: a helpful button (e.g. to reload the widget or the whole page).
+- Recommended: a helpful button (for example to reload the widget or the whole page).
 
 Table: Something went wrong message examples
 
@@ -132,8 +132,8 @@ Table: Something went wrong message examples
 Display the following:
 
 - An illustration.
-- A text message about what happened and what the user can do (e.g. contact the support team).
-- Recommended: a helpful button (e.g. to reload the widget or the whole page).
+- A text message about what happened and what the user can do (for example contact the support team).
+- Recommended: a helpful button (for example to reload the widget or the whole page).
 
 Table: Something went wrong message examples
 

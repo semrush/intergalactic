@@ -30,7 +30,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added support variables in html.
+- Added support variables in HTML.
 
 ## [1.0.0-4] - 2021-08-11
 

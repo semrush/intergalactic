@@ -174,7 +174,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Api to customize a11y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
+- API to customize A11y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
 
 ## [3.36.0] - 2024-03-27
 
@@ -228,13 +228,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Improve generation a11y summary for `StackBar`.
+- Improve generation A11y summary for `StackBar`.
 
 ## [3.31.2] - 2024-03-07
 
 ### Added
 
-- Logic to define X and Y axis for a11y summary in Bar charts.
+- Logic to define X and Y axis for A11y summary in Bar charts.
 
 ## [3.31.1] - 2024-03-05
 
@@ -250,7 +250,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- a11y module "Skip to content after plot" link was not working in some cases.
+- A11y module "Skip to content after plot" link was not working in some cases.
 
 ## [3.30.2] - 2024-02-28
 
@@ -268,7 +268,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- a11y module "Skip to content after plot" link was not working in some cases.
+- A11y module "Skip to content after plot" link was not working in some cases.
 
 ## [3.29.0] - 2024-02-16
 
@@ -322,7 +322,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `patterns` api that enhances charts accessibility.
+- `patterns` API that enhances charts accessibility.
 
 ## [3.25.1] - 2024-01-25
 
@@ -872,7 +872,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added correct display when there is no data in a11y table.
+- Added correct display when there is no data in A11y table.
 
 ## [2.13.2] - 2023-03-24
 
@@ -914,7 +914,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Much improved a11y summary generation for `Radar` chart.
+- Much improved A11y summary generation for `Radar` chart.
 
 ## [2.10.0] - 2023-03-07
 
@@ -1050,7 +1050,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Supported semi-async internationalization of text in a11y module.
+- Supported semi-async internationalization of text in A11y module.
 
 ## [2.6.1] - 2022-12-13
 
@@ -1154,7 +1154,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Ensured a11y module do not break mouse interactions.
+- Ensured A11y module do not break mouse interactions.
 
 ## [2.3.6] - 2022-10-04
 
@@ -1178,7 +1178,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Changed paths in css files to relative.
+- Changed paths in CSS files to relative.
 
 ## [2.3.2] - 2022-08-30
 
@@ -1241,7 +1241,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Exclude props from html for `Tooltip.Dot`
+- Exclude props from HTML for `Tooltip.Dot`
 - Recalculate position for `Dot` after update scale
 - Optimization render `Dot`
 

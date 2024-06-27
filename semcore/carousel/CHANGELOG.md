@@ -562,7 +562,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed carousel html roles.
+- Fixed carousel HTML roles.
 
 ## [2.2.29] - 2023-03-28
 
@@ -705,7 +705,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `style` folder with css in build folder `lib`.
+- Added `style` folder with CSS in build folder `lib`.
 
 ## [1.1.1] - 2020-12-28
 

@@ -537,7 +537,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added css property `isolation` to container.
+- Added CSS property `isolation` to container.
 
 ## [4.3.3] - 2022-10-28
 
@@ -673,7 +673,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added alternative api for inserting `Addon`.
+- Added alternative API for inserting `Addon`.
 
 ## [3.1.0] - 2020-09-30
 
@@ -725,7 +725,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность опционально подключать адаптивность
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -760,7 +760,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [2.0.5] - 2019-07-20
 

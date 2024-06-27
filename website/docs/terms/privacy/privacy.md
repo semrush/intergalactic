@@ -37,7 +37,7 @@ This Privacy Policy is effective as of the date first set forth above. We may up
 
 1. The European Data Protection Law, for individuals (“data subjects”) in the European Economic Area (EEA) and the United Kingdom (UK) or when the European Data Protection Law otherwise applies;
 2. For individuals residing in the State of California, the California Consumer Privacy Act 2018 (CCPA);
-3. For individuals residing in other jurisdictions, the applicable legislation on personal data protection (e.g., LGPD – Lei Geral de Protecao de Dados in Brazil).
+3. For individuals residing in other jurisdictions, the applicable legislation on personal data protection (for example, LGPD – Lei Geral de Protecao de Dados in Brazil).
 
 “Privacy Policy” refers to this Privacy Policy.
 
@@ -59,7 +59,7 @@ We may collect data, including personal data, about you as you use our websites 
 
 #### 3.1.1. Account registration
 
-If you register with the Services through our website at [https://www.semrush.com/](https://www.semrush.com/), or through a separate subscription agreement with us, then as part of such registration we will ask you to provide certain personal data, including your name, your company name, your email address and password. If you create an account or log into the Services using third-party services, such as Google, we will receive your name and email address as permitted by your profile settings on the third-party service in order to authenticate you. The information we receive when you authenticate through a third-party service depends on the settings, permissions and privacy policy controlled by that third-party service. You should always check the privacy settings and notices in the relevant third-party services to understand what data may be disclosed to us or shared with our Services.
+If you register with the Services through our website at [https://www.semrush.com/](https://www.semrush.com/), or through a separate subscription agreement with us, then as part of such registration we will ask you to provide certain personal data, including your name, your company name, your email address and password. If you create an account or log into the Services using third-party services, such as Google, we will receive your name and email address as permitted by your profile settings on the third-party service to authenticate you. The information we receive when you authenticate through a third-party service depends on the settings, permissions and privacy policy controlled by that third-party service. You should always check the privacy settings and notices in the relevant third-party services to understand what data may be disclosed to us or shared with our Services.
 
 #### 3.1.2. Communication with Semrush
 
@@ -99,7 +99,7 @@ Like many other commercial websites, we use certain technologies, such as tools 
 
 #### 3.3.1. Device and Usage Data
 
-When users come to our websites, we may track, collect, and aggregate information indicating, among other things, which pages of our websites were visited, the order in which they were visited, when they were visited, and which hyperlinks were clicked. We also collect information from the URLs from which you linked to our websites. Collecting such information may involve logging the IP address, operating system and browser software used by each user of the websites. We may be able to determine from an IP address a user’s Internet Service Provider and the geographic location of his or her point of connectivity.
+When users come to our websites, we may track, collect, and aggregate information indicating, among other things, which pages of our websites were visited, the order in which they were visited, when they were visited, and which hyperlinks were clicked. We also collect information from the URLs from which you linked to our websites. Collecting such information may involve logging the IP address, operating system and browser software used by each user of the websites. We may be able to determine from an IP address a user’s Internet Service Provider and the geographic location of their or their point of connectivity.
 
 #### 3.3.2. Third-Party Widgets
 
@@ -109,7 +109,7 @@ Some of our Services contain widgets and social media features, such as the Face
 
 Mailbox integration means an integration of Semrush tools with Gmail and/or Microsoft (Outlook, Exchange Online, Office365) accounts (jointly and individually referred to as “Mailbox account”) via API. Some of our tools may ask your permission to integrate your Mailbox account with.
 
-In order to enhance your removal requests or outreach emails experience for your productivity and monitoring purposes you can grant us access to your Mailbox account via API only if you voluntarily decide to give us the permission to integrate our tools with your mail account and to choose which email account you would like to connect with our tools.
+to enhance your removal requests or outreach emails experience for your productivity and monitoring purposes you can grant us access to your Mailbox account via API only if you voluntarily decide to give us the permission to integrate our tools with your mail account and to choose which email account you would like to connect with our tools.
 
 Due to this integration:
 
@@ -126,7 +126,7 @@ After the integration we will be able to store in our database in the encrypted 
 - Recipient(s) and sender of emails;
 - Metadata: time/day of email sending, delivering, opening, replying, email status.
 
-Notwithstanding anything herein to the contrary, we will use the data received via Mailbox integration only to provide you with the features mentioned above in order to enhance your email experience for productivity purposes and for monitoring purposes. We may also transfer data received via Mailbox integration as necessary to comply with applicable law or as a part of a merger, acquisition, or sale of assets with notice to users. All other transfers or sales of the user data received via Mailbox integration are prohibited.
+Notwithstanding anything herein to the contrary, we will use the data received via Mailbox integration only to provide you with the features mentioned above to enhance your email experience for productivity purposes and for monitoring purposes. We may also transfer data received via Mailbox integration as necessary to comply with applicable law or as a part of a merger, acquisition, or sale of assets with notice to users. All other transfers or sales of the user data received via Mailbox integration are prohibited.
 
 We will not use the data received via Mailbox integration for any other purposes except providing you with services inside of our tools, specifically we will not use the data received via Mailbox integration for any advertising purposes, including retargeting, personalized or internet-based advertising.
 All the data received via Mailbox integration will be processed only at the software level.
@@ -183,9 +183,9 @@ We use the personal data we collect, described above, as follows:
 
 As necessary for certain legitimate interests, including:
 
-- If we have not entered into a contract with you, to operate and administer our websites, to provide you with content you access and request (e.g., to download content from our websites), and to respond to your requests for our Services (including sharing your personal data with our resellers as necessary to respond to your request for the Services in an efficient manner and facilitate the sale of our Services, as described in the ‘[How We Share Your Personal Data](https://www.semrush.com/company/legal/privacy-policy/#5)’ section below);
+- If we have not entered into a contract with you, to operate and administer our websites, to provide you with content you access and request (for example, to download content from our websites), and to respond to your requests for our Services (including sharing your personal data with our resellers as necessary to respond to your request for the Services in an efficient manner and facilitate the sale of our Services, as described in the ‘[How We Share Your Personal Data](https://www.semrush.com/company/legal/privacy-policy/#5)’ section below);
 - To manage our relationship with you, which includes sending administrative information to you, for example, information regarding the website and changes to our terms, conditions, and policies, and responding to you requests or communicating with you;
-- To analyze trends and track your usage of and interactions with our websites and Services in order to improve or enhance your experience by providing you with more relevant content and service offerings and help us develop new products and services (including to increase our Service’s functionality, product features, and user-friendliness).
+- To analyze trends and track your usage of and interactions with our websites and Services to improve or enhance your experience by providing you with more relevant content and service offerings and help us develop new products and services (including to increase our Service’s functionality, product features, and user-friendliness).
 - To prevent fraud or criminal activities, misuse of our products or services and ensure the security of our IT systems, architecture and networks;
 - To (a) comply with legal obligations and legal process; (b) respond to requests from public and government authorities, including public and government authorities outside your country of residence; (c) enforce our Terms of Service; (d) protect our operations; (e) protect our rights, privacy, safety of property, and/or that of you or others; and (f) allow us to pursue available remedies or limit the damages that we may sustain.
 - If you ask us to delete your data or to be removed from our marketing lists and we are required to fulfill your request, to keep basic data to identify you and prevent further unwanted processing.
@@ -196,7 +196,7 @@ Where required by law we will only send you marketing information if you consent
 
 ## 5. How We Share Your Personal Data
 
-Semrush will not sell, rent, lease or otherwise provide your personal data to others, except in order to provide you with the products and services you request and as further described below, or with your permission or as required by applicable law.
+Semrush will not sell, rent, lease or otherwise provide your personal data to others, except to provide you with the products and services you request and as further described below, or with your permission or as required by applicable law.
 
 ### Service Providers
 
@@ -208,7 +208,7 @@ We may share your data with our affiliates for administrative purposes; for help
 
 - SEMRUSH RU LIMITED, Company address: 196006, St. Petersburg, Zastavskaya str. 22, building A, office n. 618, Russia, identification number: 7810453178 / KPP 781001001, Company number: 1137847340036
 - SEMRUSH SM LIMITED, with registered office at 196006, St. Petersburg, Zastavskaya str. 22, building A, office n. 613, Russia, identification number: 7810687391 / KPP 781001001, Company number: 1177847182853
-- Semrush CY LTD, registration No. HE 324428, Griva Digeni and Kolonakiou corner, Grosvenor tower, 2nd and 3rd floor, 3107 Neapolis, Limassol, Cyprus
+- Semrush CY LTD, registration No. they 324428, Griva Digeni and Kolonakiou corner, Grosvenor tower, 2nd and 3rd floor, 3107 Neapolis, Limassol, Cyprus
 - Semrush CZ s.r.o., registration No. 04464800, Na Hřebenech II 1718/10, Nusle, 140 00 Praha, Czech Republic
 
 ### Resellers or Distributors
@@ -217,7 +217,7 @@ When you request Services from us or inquiry about the Services, we may share yo
 
 ### Social networking websites
 
-Where permissible according to applicable law we may use certain limited personal data about you, such as your email address, to hash it and to share it with social network websites, such as Facebook or Google, to generate leads, drive traffic to our websites or otherwise promote our products or Services. The social network websites with which we may share your personal data are not controlled or supervised by us. Therefore, any questions regarding how your social network websites service provider processes your personal data should be directed to such provider.
+Where permissible according to applicable law we may use certain limited personal data about you, such as your email address, to hash it and to share it with social network websites, such as Facebook or Google, to generate leads, drive traffic to our websites or otherwise promote our products or Services. The social network websites with which we may share your personal data is not controlled or supervised by us. Therefore, any questions regarding how your social network websites service provider processes your personal data should be directed to such provider.
 
 ### Business Transfers
 
@@ -259,7 +259,7 @@ This section applies to individuals in the EEA or the UK.
 
 Semrush Inc., Semrush CZ c.r.o. and Semrush RU Limited are joint controllers for your personal data collected when you use our websites and the Services. For the purposes of the GDPR and equivalent provisions of other applicable data protection laws, Semrush Inc. is established in the EEA through Semrush CZ s.r.o. (with registered office at Na Hřebenech II 1718/10, Nusle, 140 00 Praha, Czech Republic). Semrush RU Limited has appointed Semrush CZ s.r.o. as its representative in the EEA pursuant to Article 27 of the GDPR. Any requests concerning this Privacy Policy should be directed at Semrush Inc. Please read the Contact Information section of this Privacy Policy for information about how to contact us.
 
-Some of our Affiliates process your personal data as data processors on our behalf and pursuant to our instructions in order to assist us in meeting business operations needs and to perform certain services and functions, such as engineering, sales and marketing. Please refer to the “How We Share Your Personal Data” section above for more information about how we may share your personal data.
+Some of our Affiliates process your personal data as data processors on our behalf and pursuant to our instructions to assist us in meeting business operations needs and to perform certain services and functions, such as engineering, sales and marketing. Please refer to the “How We Share Your Personal Data” section above for more information about how we may share your personal data.
 
 ### Lawful Bases for Processing
 

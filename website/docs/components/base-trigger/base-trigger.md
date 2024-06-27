@@ -69,7 +69,7 @@ This type has separate detailed [FilterTrigger guide](/components/filter-trigger
 
 ### LinkTrigger
 
-LinkTrigger has the styles of [Link](/components/link/link).
+LinkTrigger has the styles of [Link component](/components/link/link).
 
 Table: LinkTrigger sizes
 

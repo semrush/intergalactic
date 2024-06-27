@@ -28,7 +28,7 @@ Component consists of the following:
 * Container for items: `Carousel.Container`
 * Slide item: `Carousel.Item`. Slide contains image, video or another type of information
 * Slides' indicators or previews (optional): `Carousel.Indicators`
-* Navigation buttons: `Carousel.Prev`,  `Carousel.Next`
+* Navigation buttons: `Carousel.Prev`, `Carousel.Next`
 
 ## Appearance
 
@@ -82,8 +82,8 @@ Table: Slides number indicators states
 
 | State               | Styles                                                                                             |
 | ------------------- | -------------------------------------------------------------------------------------------------- |
-| Default + Disabled  | Use `--icon-secondary-neutral` token  for color, and `--disabled-opacity` token for opacity.|
-| Hover               | Use `--icon-secondary-neutral` token  for color, and `calc(2 * var(--intergalactic-disabled-opacity, 0.3))` for opacity.          |
+| Default + Disabled  | Use `--icon-secondary-neutral` token for color, and `--disabled-opacity` token for opacity.|
+| Hover               | Use `--icon-secondary-neutral` token for color, and `calc(2 * var(--intergalactic-disabled-opacity, 0.3))` for opacity.          |
 | Active              | Use `--icon-secondary-neutral` token for color.                             |
 
 ## Animation

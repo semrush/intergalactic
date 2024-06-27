@@ -16,7 +16,7 @@ tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example
 ::: tip
 **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
 
-Use accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
+Use accordion to collapse additional information (sometimes functions) to save space and time for the user.
 
 Use dropdown primarily to hide additional features and sometimes additional information.
 :::

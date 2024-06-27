@@ -488,7 +488,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Improvements for a11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
+- Improvements for A11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
 
 ## [2.4.12] - 2023-04-14
 

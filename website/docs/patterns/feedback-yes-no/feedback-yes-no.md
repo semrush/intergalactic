@@ -83,5 +83,5 @@ Display this element if the report or product offers an alternate method for sen
 ## Remembering states
 
 1. If the user submits feedback, the notice will no longer appear to them.
-2. Storing this status in the user's profile is advisable, in order to avoid being intrusive.
+2. Storing this status in the user's profile is advisable, to avoid being intrusive.
 3. It is permissible to use local storage for saving the closing and appearing statuses.

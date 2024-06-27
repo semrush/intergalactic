@@ -76,7 +76,7 @@ import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 
 ## DateRangeComparator
 
-Same api for `MonthDateRangeComparator`.
+Same API for `MonthDateRangeComparator`.
 
 <TypesView type="DateRangeComparatorProps" :types={...types} />
 

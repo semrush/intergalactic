@@ -765,7 +765,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Animation styles moved to css file and now available for theming.
+- Animation styles moved to CSS file and now available for theming.
 
 ## [4.0.14] - 2022-08-23
 
@@ -875,7 +875,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- generate css without collapsing property `margin`
+- generate CSS without collapsing property `margin`
 
 ## [2.0.5] - 2020-09-08
 
@@ -922,7 +922,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

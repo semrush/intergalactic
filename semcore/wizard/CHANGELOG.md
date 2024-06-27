@@ -683,7 +683,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed api
+- Changed API
 
 ## [1.0.0-prerelease.10] - 2022-06-01
 

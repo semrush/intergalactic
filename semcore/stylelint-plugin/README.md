@@ -36,7 +36,7 @@ npm install intergalactic
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
 - `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
-- `tokensPrefix` - design tokens (default is `--intergalactic-`). Only css variables with this prefix are considered as design tokens.
+- `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
 ### Alternative usage
 
