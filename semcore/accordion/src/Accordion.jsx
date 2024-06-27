@@ -15,6 +15,7 @@ class RootAccordion extends Component {
   static style = style;
   static defaultProps = {
     defaultValue: [],
+    compact: true,
   };
   static enhance = [
     cssVariableEnhance({
@@ -45,13 +46,14 @@ class RootAccordion extends Component {
   };
 
   getItemProps({ value }) {
-    const { value: selectedValue, duration } = this.asProps;
+    const { value: selectedValue, duration, compact } = this.asProps;
     const selected = Array.isArray(selectedValue)
       ? selectedValue.includes(value)
       : selectedValue === value;
     return {
       selected,
       duration,
+      compact,
       $handleInteraction: this.handleToggleInteraction,
     };
   }
@@ -74,8 +76,9 @@ export class RootItem extends Component {
   };
 
   getToggleProps() {
-    const { value, uid, selected, disabled } = this.asProps;
+    const { value, uid, selected, disabled, compact } = this.asProps;
     return {
+      compact,
       disabled,
       onClick: disabled ? undefined : this.handleClick,
       id: `igc-${uid}-${value}-toggle`,

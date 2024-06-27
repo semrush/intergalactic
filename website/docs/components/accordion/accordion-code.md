@@ -29,14 +29,14 @@ Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will br
 
 :::
 
-## Custom trigger
+## With background
 
-You can add your own styles to the trigger or change its `tag`.
+Pass `compact={false}` to disable compact mode.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_trigger.tsx';
+  export Demo from './examples/non_compact.tsx';
 </script>
 
 :::
