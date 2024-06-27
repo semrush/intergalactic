@@ -22,18 +22,18 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role   | Attribute               | Element                                                      | Usage                                                                                                                                                                                                                               |
-| ------ | ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `alert`  |                         | `div`  | Identifies the element as the container where alert content will be added or updated.                                                                                                                                               |
-|        | `aria-live="assertive"` | Implicit on `div` | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
-|        | `aria-atomic="true"`    | Implicit on `div`                                            | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to use the entire content of the alert element as the alert message even if only a portion of it has changed.  |
+| Component                 | Attribute                                     | Usage                                                                                                                                                                                                                               |
+| ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NoticeBubbleContainer`   | `role="region"`, `aria-label="Notifications"` | Defines a landmark, so that users can easily navigate to it and access elements inside. |
+| `NoticeBubbleContainer`   | `aria-live="polite"`                          | Instructs the screen reader to announce changes inside the container whenever the user is idle. |
+| `Bubble.Content`          | `role="alert"` (only with `type="warning"`)   | Instructs the screen reader to announce the changes immediately, interrupting other processes. |
 
 ## Considerations for developers
 
-- Elements with the `aria-live` attribute, `status` role or `alert` role are automatically announced only when their content changes. So, if you want your content to be announced automatically, you should initially create an empty element and then update its content.
+- Elements with the `aria-live` attribute or `status` role are automatically announced only when their content changes. So, if you want your content to be announced automatically, you should initially create an empty element and then update its content.
 - Don't trap keyboard focus in the `NoticeBubble`. Users should be able to navigate in and out freely.
 - If keyboard focus was in the `NoticeBubble`, after closing it set focus back on the element that triggered the notice. If that element doesn't exist anymore, set focus on its parent landmark.
-- If your `NoticeBubble` has interactive elements beside the **Close** button, set keyboard focus on the first non-destructive interactive element when the `NoticeBubble` appears.
+- If your `NoticeBubble` has interactive elements beside the **Close** button, set keyboard focus on the first non-destructive interactive element when the `NoticeBubble` appears ([example](./notice-bubble-code.md#focus-management)).
 
 ## Other recommendations
 
