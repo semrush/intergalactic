@@ -13,7 +13,7 @@ const Demo = () => {
         Clearable input
       </Text>
       <Box mt={2}>
-        <Input w={240}>
+        <Input w={320}>
           <Input.Value
             placeholder='Type something to clear something'
             value={value}
@@ -24,7 +24,7 @@ const Demo = () => {
             <Input.Addon
               tag={CloseM}
               interactive
-              aria-label='Clear field'
+              aria-label='Clear'
               onClick={() => setValue('')}
             />
           )}
