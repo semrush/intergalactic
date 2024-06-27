@@ -204,7 +204,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [4.22.0] - 2024-01-19
 
@@ -602,7 +602,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+- Improvements for A11y. Hidden controls because they are accessible via the keyboard.
 
 ## [3.5.27] - 2023-04-14
 
@@ -738,7 +738,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed `<InlineInput />` api to make it more consistent with other components.
+- Changed `<InlineInput />` API to make it more consistent with other components.
 
 ## [1.0.0] - 2022-03-30
 

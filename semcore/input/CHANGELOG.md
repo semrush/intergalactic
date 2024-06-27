@@ -599,7 +599,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Fixed `Input.Addon` css classes were missing during server-side rendering.
+- Fixed `Input.Addon` CSS classes were missing during server-side rendering.
 
 ## [3.0.9] - 2022-07-22
 
@@ -745,7 +745,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -803,7 +803,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ### Changed
 

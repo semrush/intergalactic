@@ -72,7 +72,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- composition api for `FilterTrigger`.
+- composition API for `FilterTrigger`.
 
 ## [4.31.2] - 2024-04-10
 
@@ -917,7 +917,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

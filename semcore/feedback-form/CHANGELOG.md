@@ -174,7 +174,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `validateOnBlur=false` behaviour.
+- `validateOnBlur=false` behavior.
 
 ## [6.19.0] - 2024-02-01
 
@@ -580,7 +580,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added a11y error binding to field.
+- Added A11y error binding to field.
 
 ## [5.4.3] - 2023-03-24
 
@@ -660,7 +660,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added aria attributes for better a11y.
+- Added aria attributes for better A11y.
 
 ## [5.1.11] - 2022-08-30
 
@@ -838,7 +838,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

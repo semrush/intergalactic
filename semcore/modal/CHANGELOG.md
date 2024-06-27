@@ -186,7 +186,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [4.25.0] - 2024-01-19
 
@@ -654,7 +654,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+- Added `Modal.Title` component and `aria-labelledby` property for better A11y.
 
 ## [3.3.6] - 2023-01-11
 
@@ -869,7 +869,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -922,7 +922,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [1.1.4] - 2019-07-17
 

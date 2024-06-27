@@ -662,7 +662,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added alternative api for inserting `Addon`.
+- Added alternative API for inserting `Addon`.
 
 ## [3.1.1] - 2020-09-08
 
@@ -674,8 +674,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Вернули свойсво `noWrap={true}` для управления css свойством `white-space` компонента `<Link>`
-- Вернули свойсво `inline` для управления css свойством `display` компонента `<Link>`
+- Вернули свойсво `noWrap={true}` для управления CSS свойством `white-space` компонента `<Link>`
+- Вернули свойсво `inline` для управления CSS свойством `display` компонента `<Link>`
 
 ## [3.0.2] - 2020-07-09
 
@@ -739,7 +739,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
