@@ -35,6 +35,7 @@
     "lint:es": "biome check ./semcore ./tools ./website ./.ci --config-path .",
     "lint:ts": "tsc --noEmit && cd website && tsc --noEmit",
     "lint:css": "stylelint **/*.css",
+    "lint:docs": "vale website/docs",
     "prepare": "husky install",
     "postinstall": "pnpm --filter @semcore/ui run clear && pnpm run git:setup",
     "i18n:submit": "pnpm crowdin upload",
