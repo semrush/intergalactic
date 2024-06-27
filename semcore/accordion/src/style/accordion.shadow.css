@@ -16,6 +16,14 @@ SItemToggle[keyboardFocused]:not([tabIndex='-1'])::after {
   z-index: 3;
 }
 
+SItemToggle:not(SItemToggle[compact]) {
+  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+}
+SItemToggle:not(SItemToggle[compact]):hover {
+  background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
+}
+
 SItemToggle[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;

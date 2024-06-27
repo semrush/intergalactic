@@ -63,6 +63,26 @@ describe('Accordion', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Should compact={false} render correctly', async ({ task }) => {
+    const component = (
+      <Accordion defaultValue={[0, 2]} compact={false}>
+        {Array(4)
+          .fill('')
+          .map((_, index) => (
+            <Accordion.Item value={index} disabled={index === 3} key={index}>
+              <Accordion.Item.Toggle keyboardFocused={index === 1}>
+                <Accordion.Item.Chevron />
+                Item {index}
+              </Accordion.Item.Toggle>
+              <Accordion.Item.Collapse>Content of item {index}</Accordion.Item.Collapse>
+            </Accordion.Item>
+          ))}
+      </Accordion>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Should support uncontrolled mode with single expandable item', () => {
     const spy = vi.fn();
     const { getByText } = render(

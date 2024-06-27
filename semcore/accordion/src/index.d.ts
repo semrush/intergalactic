@@ -26,6 +26,12 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
   /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
+
+  /**
+   * Changes the visual appearance of the component
+   * @default true
+   */
+  compact?: boolean;
 };
 
 export interface IAccordionProps<T extends AccordionValue = AccordionValue>
@@ -53,6 +59,10 @@ export type AccordionItemProps = {
   /** Animation duration
    * @default 350 */
   duration?: number;
+  /**
+   * Changes the visual appearance of the item
+   */
+  compact?: boolean;
 };
 
 /** @deprecated */
@@ -74,6 +84,10 @@ export type ChevronItemProps = BoxProps & {
    * @default m
    */
   size?: 'm' | 'l';
+  /**
+   * Changes the visual appearance of the item
+   */
+  compact?: boolean;
 };
 
 type IntergalacticAccordionComponent<PropsExtending = {}> = (<
