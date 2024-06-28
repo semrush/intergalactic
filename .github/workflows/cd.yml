@@ -380,11 +380,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: zulu
-          java-version: 22
+#      - name: Set up JDK
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: zulu
+#          java-version: 22
       - name: Install Node.js
         uses: actions/setup-node@v4.0.1
         with:
@@ -417,8 +417,9 @@ jobs:
       - name: Generate report
         run: |
           pnpm allure generate allure-results --clean -o allure-report
-      - name: Publish report
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Save allure report as artifacts
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          name: allure-report
+          path: allure-report/data/suites.csv
+          retention-days: 3
