@@ -8,6 +8,7 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import ScrollArea from '../src';
 
 describe('ScrollArea', () => {
+describe('ScrollArea common', () => {
   beforeEach(cleanup);
 
   shouldSupportClassName(ScrollArea);
@@ -58,4 +59,5 @@ describe('ScrollArea.Container', () => {
 
   shouldSupportClassName(ScrollArea.Container, ScrollArea);
   shouldSupportRef(ScrollArea.Container, ScrollArea);
+});
 });

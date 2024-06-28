@@ -10,11 +10,8 @@ import { axe } from '@semcore/testing-utils/axe';
 import Pills from '../src';
 import { Intergalactic } from '@semcore/core';
 import { assertType } from 'vitest';
-import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import ThumbDownM from '@semcore/icon/ThumbDown/m';
-import { Box } from '@semcore/flex-box';
 
-describe('PillGroup', () => {
+describe('Pill', () => {
   describe('types', () => {
     const any: any = null;
     test('props nesting', () => {

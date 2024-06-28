@@ -1,8 +1,8 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
-test.describe('5-star Feedback form', () => {
-  test('simple use case', async ({ page, browserName }) => {
+test.describe('FeedbackForm', () => {
+  test('simple use case of 5-star Feedback form', async ({ page, browserName }) => {
     // TODO: in firefox and webkit headless mod textarea auto focus is very unstable
     if (browserName === 'webkit') return;
     if (browserName === 'firefox') return;
@@ -41,7 +41,7 @@ test.describe('5-star Feedback form', () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test('default validation', async ({ page }) => {
+  test('default validation of 5-star Feedback form', async ({ page }) => {
     const standPath = 'website/docs/patterns/feedback-rating/examples/feedback-rating-example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 

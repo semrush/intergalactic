@@ -1,7 +1,7 @@
 import { expect, getAccessibilityViolations, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
-test.describe('Dropdown-menu', () => {
+test.describe('DropdownMenu', () => {
   test('Basic usage', async ({ page }) => {
     const standPath = 'website/docs/components/dropdown-menu/examples/basic.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
