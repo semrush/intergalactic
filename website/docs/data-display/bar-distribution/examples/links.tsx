@@ -3,6 +3,7 @@ import { Plot, DistributionBar } from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
+import Link from 'intergalactic/link';
 
 const Demo = () => {
   const MARGIN = 30;
@@ -44,7 +45,11 @@ const Demo = () => {
         <DistributionBar.Annotation>
           <DistributionBar.Label />
           <DistributionBar.Percent />
-          <DistributionBar.Value />
+          <DistributionBar.Value tag={Link} href="https://semrush.com">
+            {({ formatted }) => {
+              return <>~{formatted}</>
+            }}
+          </DistributionBar.Value>
         </DistributionBar.Annotation>
         <DistributionBar.Bar>
           <DistributionBar.Bar.Background />

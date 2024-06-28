@@ -32,6 +32,7 @@ SBackground {
 SBarAnnotation {
   display: flex;
   justify-content: space-between;
+  padding: var(--intergalactic-spacing-1x, 4px) 0;
 }
 SBarLabel {
   color: var(--intergalactic-text-primary, #191b23);
@@ -45,6 +46,7 @@ SBarValue {
   display: flex;
   justify-content: flex-end;
   color: var(--intergalactic-text-link, #006dca);
+  text-align: right;
 }
 SDistributionBarHoverRect {
   fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));

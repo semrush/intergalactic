@@ -8,9 +8,11 @@ import { PatternFill } from './Pattern';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import Tooltip from './Tooltip';
 import { eventToPoint } from './utils';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 import style from './style/bar.shadow.css';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { Box } from '@semcore/flex-box';
 
 export const MIN_WIDTH = 4;
 
@@ -27,8 +29,14 @@ class DistributionBarRoot extends Component {
     duration: 500,
     wMin: MIN_WIDTH,
     locale: 'en',
+    color: 'chart-palette-order-1',
   };
 
+  getBarProps(_props, index) {
+    return {
+      index,
+    };
+  }
   getBarBackgroundProps(_props, index) {
     const { data, scale, size } = this.asProps;
     const bar = this.computeBarData(data[index], index);
@@ -44,7 +52,7 @@ class DistributionBarRoot extends Component {
   }
 
   getBarFillProps(_props, index) {
-    const { data } = this.asProps;
+    const { data, uid, patterns, color, transparent, hide } = this.asProps;
     const bar = this.computeBarData(data[index], index);
     return {
       x: bar.x,
@@ -52,7 +60,12 @@ class DistributionBarRoot extends Component {
       height: barHeight,
       width: bar.width,
       i: index,
+      uid,
       resolveColor: this.asProps.resolveColor,
+      patterns,
+      color,
+      transparent,
+      hide,
     };
   }
   getAnnotationProps(_props, index) {
@@ -60,7 +73,7 @@ class DistributionBarRoot extends Component {
     const bar = this.computeBarData(data[index], index);
     return {
       y: bar.y,
-      height: 20,
+      height: barHeight * 2,
       width: size[0],
     };
   }
@@ -100,15 +113,17 @@ class DistributionBarRoot extends Component {
     const domain = scale[0].domain();
     const percent = value / domain[1];
     const formatter = this.getPercentFormatter();
+    const formatted = formatter.format(percent);
 
-    return { children: formatter.format(percent) };
+    return { children: formatted, formatted, percent };
   }
   getValueProps(_props, index) {
     const { data, x } = this.asProps;
     const value = data[index][x];
     const formatter = this.getValueFormatter();
+    const formatted = formatter.format(value);
 
-    return { children: formatter.format(value) };
+    return { children: formatted, formatted, value };
   }
 
   getHoverProps(_props, index) {
@@ -125,27 +140,15 @@ class DistributionBarRoot extends Component {
     };
   }
 
-  computeBarData(d, index) {
+  computeBarData(d) {
     const {
-      styles,
-      color,
       x,
       y,
       scale,
-      hide,
       offset: offsetProps,
-      uid,
-      duration,
       wMin,
       height: heightProps,
-      onMouseMove,
-      onMouseLeave,
-      groupKey,
-      transparent,
       maxBarSize = Infinity,
-      resolveColor,
-      patterns,
-      Children,
       size,
     } = this.asProps;
 
@@ -183,10 +186,7 @@ class DistributionBarRoot extends Component {
   renderBars() {
     const { data } = this.asProps;
 
-    return data.map((_, i) => {
-      const index = data.length - i - 1;
-      return this.renderBar(data[index], index);
-    });
+    return data.map(this.renderBar.bind(this));
   }
 
   render() {
@@ -212,31 +212,63 @@ class DistributionBarRoot extends Component {
 }
 
 function Annotation(props) {
-  const { Children, y, height, width } = props;
+  const { Children, y, height, width, styles } = props;
   const SBarAnnotation = 'div';
-  return sstyled(props.styles)(
-    <foreignObject x='0' y={y - 20} height={height} width={width}>
+  return sstyled(styles)(
+    <foreignObject x='0' y={y - barHeight} height={height} width={width}>
       <SBarAnnotation>
         <Children />
       </SBarAnnotation>
     </foreignObject>,
   );
 }
+const excludeProps = ['data', 'scale', 'value', 'offset'];
 function Label(props) {
   const SBarLabel = Root;
-  return sstyled(props.styles)(<SBarLabel render='div' />);
+  const { styles, Children } = props;
+  return sstyled(styles)(
+    <SBarLabel render={Box} __excludeProps={excludeProps}>
+      <Children />
+    </SBarLabel>,
+  );
 }
 function Percent(props) {
   const SBarPercent = Root;
-  return sstyled(props.styles)(<SBarPercent render='div' />);
+  const { styles, Children } = props;
+  return sstyled(styles)(
+    <SBarPercent render={Box} __excludeProps={excludeProps}>
+      <Children />
+    </SBarPercent>,
+  );
 }
 function Value(props) {
   const SBarValue = Root;
-  return sstyled(props.styles)(<SBarValue render='div' />);
+  const { styles, Children } = props;
+  return sstyled(styles)(
+    <SBarValue render={Box} __excludeProps={excludeProps}>
+      <Children />
+    </SBarValue>,
+  );
 }
+
+const BarContext = React.createContext({});
 function Bar(props) {
-  const { Children } = props;
-  return <Children />;
+  const { Children, index, onClick, transparent, hide } = props;
+  const onClickHandler = React.useCallback(
+    (event) => {
+      onClick?.(index, event);
+    },
+    [onClick, index],
+  );
+  const contextValue = React.useMemo(
+    () => ({ onClick: onClickHandler, transparent, hide }),
+    [onClickHandler, transparent, hide],
+  );
+  return (
+    <BarContext.Provider value={contextValue}>
+      <Children />
+    </BarContext.Provider>
+  );
 }
 function BarFill(props) {
   const {
@@ -247,16 +279,14 @@ function BarFill(props) {
     y,
     width,
     height,
-    hide,
     uid,
     duration,
-    onMouseMove,
-    onMouseLeave,
-    groupKey,
     resolveColor,
     patterns,
     i,
   } = props;
+
+  const barProps = React.useContext(BarContext);
 
   return (
     <>
@@ -268,17 +298,16 @@ function BarFill(props) {
           __excludeProps={['data', 'scale', 'value', 'offset']}
           childrenPosition='above'
           index={i}
-          hide={hide}
           color={resolveColor(color)}
           pattern={patterns ? `url(#${uid}-${i}-pattern)` : undefined}
-          transparent={transparent}
           x={x}
           y={y}
           width={width}
           height={height}
           use:duration={`${duration}ms`}
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
+          onClick={callAllEventHandlers(props.onClick, barProps.onClick)}
+          transparent={barProps.transparent || props.transparent}
+          hide={barProps.hide || props.hide}
         />,
       )}
       {patterns && (
@@ -296,6 +325,7 @@ function BarBackground(props) {
   const { Element: SBackground, styles, scale, y, x, height } = props;
   const [xScale] = scale;
   const xRange = xScale.range();
+  const barProps = React.useContext(BarContext);
 
   return sstyled(styles)(
     <SBackground
@@ -306,6 +336,7 @@ function BarBackground(props) {
       height={height}
       x={x}
       y={y}
+      transparent={barProps.transparent}
     />,
   );
 }
@@ -386,14 +417,15 @@ class Hover extends Component {
     const { index } = this.state;
     const SDistributionBarHoverRect = this.Element;
 
-    const bar = index !== null ? getBarData(index) : null;
+    if (index === null) return null;
+    const bar = getBarData(index);
     return sstyled(styles)(
       <SDistributionBarHoverRect
         render='rect'
-        x={bar?.x ?? 0}
-        y={bar?.y ?? 0}
-        width={bar?.fullWidth ?? 0}
-        height={bar?.height ?? 0}
+        x={bar.x}
+        y={bar.y + bar.height - barHeight - hoverOffset * 2}
+        width={bar.fullWidth}
+        height={barHeight + hoverOffset * 2}
       />,
     );
   }

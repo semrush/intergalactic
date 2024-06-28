@@ -4,6 +4,7 @@ import {
   LineChartSkeleton,
   AreaChartSkeleton,
   BarChartSkeleton,
+  DistributionBarChartSkeleton,
   VennChartSkeleton,
   ScatterPlotChartSkeleton,
   BubbleChartSkeleton,
@@ -66,6 +67,15 @@ const Demo = () => {
         </Card.Header>
         <Card.Body>
           <BarChartSkeleton layout='vertical' />
+        </Card.Body>
+      </Card>
+
+      <Card mb={5}>
+        <Card.Header>
+          <Card.Title>DistributionBarChart skeleton</Card.Title>
+        </Card.Header>
+        <Card.Body>
+          <DistributionBarChartSkeleton />
         </Card.Body>
       </Card>
 

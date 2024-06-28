@@ -1,4 +1,3 @@
-
 ---
 title: Distribution bar chart
 fileSource: d3-chart
@@ -11,7 +10,13 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Basic usage
 
-tbd
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
+
+:::
 
 ## Advanced usage
 
@@ -19,6 +24,26 @@ tbd
 
 <script lang="tsx">
   export Demo from './examples/advanced_usage.tsx';
+</script>
+
+:::
+
+## With links
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/links.tsx';
+</script>
+
+:::
+
+## Clickable bars
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/clickable.tsx';
 </script>
 
 :::

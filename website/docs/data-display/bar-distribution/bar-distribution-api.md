@@ -8,4 +8,26 @@ tabs: Design('bar-distribution'), A11y('bar-distribution-a11y'), API('bar-distri
 
 For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
-tbd
+## Chart.DistributionBar
+
+
+```js
+import { Chart } from 'intergalactic/d3-chart';
+```
+
+<TypesView type="DistributionBarChartProps" :types={...types} />
+
+
+## DistributionBar
+
+
+```js
+import { DistributionBar } from 'intergalactic/d3-chart';
+
+<DistributionBar />;
+```
+
+
+<TypesView type="DistributionBarProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>
