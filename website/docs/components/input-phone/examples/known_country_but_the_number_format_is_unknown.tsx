@@ -21,7 +21,7 @@ const Demo = () => {
           <Input.Addon
             tag={CloseM}
             interactive
-            aria-label='Clear field'
+            aria-label='Clear'
             onClick={() => setValue('+1')}
           />
         )}
