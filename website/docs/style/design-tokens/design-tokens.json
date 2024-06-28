@@ -460,7 +460,15 @@
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
     "description": "Link text.",
-    "components": ["base-trigger", "button", "format-text", "link", "pagination", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "button",
+      "d3-chart",
+      "format-text",
+      "link",
+      "pagination",
+      "tab-panel"
+    ]
   },
   {
     "name": "--intergalactic-text-link-hover-active",

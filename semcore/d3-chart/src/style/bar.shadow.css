@@ -28,3 +28,24 @@ SBar[transparent] {
 SBackground {
   fill: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
 }
+
+SBarAnnotation {
+  display: flex;
+  justify-content: space-between;
+}
+SBarLabel {
+  color: var(--intergalactic-text-primary, #191b23);
+  margin-right: auto;
+}
+SBarPercent {
+  color: var(--intergalactic-text-secondary, #6c6e79);
+}
+SBarValue {
+  min-width: 100px;
+  display: flex;
+  justify-content: flex-end;
+  color: var(--intergalactic-text-link, #006dca);
+}
+SDistributionBarHoverRect {
+  fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
+}
