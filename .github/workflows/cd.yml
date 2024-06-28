@@ -141,6 +141,7 @@ jobs:
         with:
           path: |
             allure-results
+          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -205,6 +206,7 @@ jobs:
         with:
           path: |
             allure-results
+          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -285,6 +287,7 @@ jobs:
         with:
           path: |
             allure-results
+          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -348,6 +351,7 @@ jobs:
         with:
           path: |
             allure-results
+          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -395,20 +399,13 @@ jobs:
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Restore cached build
+      - name: Restore cache test results
         uses: actions/cache@v4.0.0
-        id: cache-build
+        id: cache-test-results
         with:
           path: |
-            semcore/*/lib
-            tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
-            semcore/illustration/**/*.js
-            semcore/illustration/**/*.mjs
-            semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+            allure-results
+          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
