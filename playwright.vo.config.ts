@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
   testMatch: /\.vo-test.ts(x){0,1}$/,
   retries: process.env.CI ? 2 : 0,
   grep: testPlanFilter(),
-  reporter: [["list"], ["allure-playwright"]],
+  reporter: [["list"], ["allure-playwright", {resultsDir: 'allure-results-vo'}]],
   projects: [
     {
       name: 'webkit',

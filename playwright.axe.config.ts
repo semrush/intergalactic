@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 4,
   grep: testPlanFilter(),
-  reporter: [["list"], ["allure-playwright"]],
+  reporter: [["list"], ["allure-playwright", {resultsDir: 'allure-results-axe'}]],
   use: {
     trace: 'on-first-retry',
     video: 'on-first-retry',

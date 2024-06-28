@@ -140,7 +140,7 @@ jobs:
         id: cache-test-results
         with:
           path: |
-            allure-results
+            allure-results-unit
           key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
@@ -205,7 +205,7 @@ jobs:
         id: cache-test-results
         with:
           path: |
-            allure-results
+            allure-results-vo
           key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
@@ -286,7 +286,7 @@ jobs:
         id: cache-test-results
         with:
           path: |
-            allure-results
+            allure-results-browser
           key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
@@ -350,7 +350,7 @@ jobs:
         id: cache-test-results
         with:
           path: |
-            allure-results
+            allure-results-axe
           key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
@@ -404,13 +404,21 @@ jobs:
         id: cache-test-results
         with:
           path: |
-            allure-results
+            allure-results-unit
+            allure-results-vo
+            allure-results-browser
+            allure-results-axe
           key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
       - name: Generate report
         run: |
+          mkdir allure-results
+          mv allure-results-unit/* allure-results/
+          mv allure-results-vo/* allure-results/
+          mv allure-results-browser/* allure-results/
+          mv allure-results-axe/* allure-results/
           pnpm allure generate allure-results --clean -o allure-report
       - name: Save allure report as artifacts
         uses: actions/upload-artifact@v3
