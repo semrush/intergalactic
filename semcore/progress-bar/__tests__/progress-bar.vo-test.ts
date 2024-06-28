@@ -3,7 +3,7 @@ import { expect, voiceOverTest as test } from '@semcore/testing-utils/playwright
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('ProgressBar', () => {
-  test('Users can interact with ProgressBar via VoiceOver', async ({page, voiceOver}) => {
+  test('Users can interact with ProgressBar via VoiceOver', async ({ page, voiceOver }) => {
     const standPath = 'website/docs/components/progress-bar/examples/complex_usage_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 

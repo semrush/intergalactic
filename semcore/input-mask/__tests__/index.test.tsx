@@ -16,42 +16,42 @@ describe('InputMask', () => {
     shouldSupportClassName(InputMask);
     shouldSupportRef(InputMask);
 
-    test.concurrent('Should renders correctly', async ({task}) => {
-      const Component = ({value = ''}) => (
-          <InputMask size='l' mb={4}>
-            <InputMask.Value
-                mask='99 99'
-                title='4-digit number'
-                placeholder='__ __'
-                data-testid='input'
-                includeInputProps={['data-testid']}
-                defaultValue={value}
-            />
-          </InputMask>
+    test.concurrent('Should renders correctly', async ({ task }) => {
+      const Component = ({ value = '' }) => (
+        <InputMask size='l' mb={4}>
+          <InputMask.Value
+            mask='99 99'
+            title='4-digit number'
+            placeholder='__ __'
+            data-testid='input'
+            includeInputProps={['data-testid']}
+            defaultValue={value}
+          />
+        </InputMask>
       );
 
-      const {getByTestId} = render(<Component/>);
+      const { getByTestId } = render(<Component />);
       const input = getByTestId('input') as HTMLInputElement;
       fireEvent.focus(input);
-      fireEvent.change(input, {target: {value: '333'}});
+      fireEvent.change(input, { target: { value: '333' } });
 
       expect(input.value).toBe('33 3');
-      await expect(await snapshot(<Component value={input.value}/>)).toMatchImageSnapshot(task);
+      await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
     });
 
     test.sequential('should correctly work with `Backspace`', async () => {
       const Component = () => (
-          <InputMask size='l' mb={4}>
-            <InputMask.Value
-                mask='+234 (999)999-999'
-                title='4-digit number'
-                data-testid='input'
-                includeInputProps={['data-testid']}
-            />
-          </InputMask>
+        <InputMask size='l' mb={4}>
+          <InputMask.Value
+            mask='+234 (999)999-999'
+            title='4-digit number'
+            data-testid='input'
+            includeInputProps={['data-testid']}
+          />
+        </InputMask>
       );
 
-      const {getByTestId} = render(<Component/>);
+      const { getByTestId } = render(<Component />);
       const input = getByTestId('input') as HTMLInputElement;
 
       await userEvent.keyboard('[Tab]');
@@ -79,37 +79,37 @@ describe('InputMask', () => {
         return value;
       };
       const Component = () => (
-          <InputMask size='l' mb={4}>
-            <InputMask.Value
-                mask='9999'
-                value='6000'
-                title='4-digit number below 5000'
-                data-testid='input'
-                pipe={pipe}
-                includeInputProps={['data-testid']}
-            />
-          </InputMask>
+        <InputMask size='l' mb={4}>
+          <InputMask.Value
+            mask='9999'
+            value='6000'
+            title='4-digit number below 5000'
+            data-testid='input'
+            pipe={pipe}
+            includeInputProps={['data-testid']}
+          />
+        </InputMask>
       );
 
-      const {getByTestId} = render(<Component/>);
+      const { getByTestId } = render(<Component />);
       const input = getByTestId('input') as HTMLInputElement;
 
       expect(input.value).toBe('6000');
     });
 
     test('a11y', async () => {
-      const {container} = render(
-          <>
-            <label htmlFor='input_mask'>Expire date</label>
-            <InputMask size='l' mb={4}>
-              <InputMask.Value
-                  mask='99 99'
-                  title='4-digit number'
-                  placeholder='__ __'
-                  id='input_mask'
-              />
-            </InputMask>
-          </>,
+      const { container } = render(
+        <>
+          <label htmlFor='input_mask'>Expire date</label>
+          <InputMask size='l' mb={4}>
+            <InputMask.Value
+              mask='99 99'
+              title='4-digit number'
+              placeholder='__ __'
+              id='input_mask'
+            />
+          </InputMask>
+        </>,
       );
 
       const results = await axe(container);
@@ -124,6 +124,6 @@ describe('InputMask', () => {
       title: 'test mask',
       includeInputProps: ['data-testid'],
     });
-    shouldSupportRef(InputMask.Value, InputMask, {title: 'test mask'});
+    shouldSupportRef(InputMask.Value, InputMask, { title: 'test mask' });
   });
 });

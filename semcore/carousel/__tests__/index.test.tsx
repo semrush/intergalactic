@@ -40,15 +40,15 @@ describe('Carousel', () => {
     test('Should support control mode', () => {
       const spy = vi.fn();
 
-      const {rerender} = render(
-          <Carousel index={0} onIndexChange={spy}>
-            <Container/>
-          </Carousel>,
+      const { rerender } = render(
+        <Carousel index={0} onIndexChange={spy}>
+          <Container />
+        </Carousel>,
       );
       rerender(
-          <Carousel index={1} onIndexChange={spy}>
-            <Container/>
-          </Carousel>,
+        <Carousel index={1} onIndexChange={spy}>
+          <Container />
+        </Carousel>,
       );
       expect(spy).not.toHaveBeenCalled();
     });
@@ -56,38 +56,38 @@ describe('Carousel', () => {
     test('Should support work with keyboard', () => {
       const spy = vi.fn();
 
-      const {getByTestId} = render(
-          <Carousel onIndexChange={spy}>
-            <Container data-testid='container'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel onIndexChange={spy}>
+          <Container data-testid='container' />
+        </Carousel>,
       );
 
       const container = getByTestId('container');
-      fireEvent.keyDown(container, {key: 'ArrowLeft'});
+      fireEvent.keyDown(container, { key: 'ArrowLeft' });
       expect(spy).toHaveBeenCalledWith(1);
-      fireEvent.keyDown(container, {key: 'ArrowRight'});
+      fireEvent.keyDown(container, { key: 'ArrowRight' });
       expect(spy).toHaveBeenCalledWith(0);
     });
 
     test('Should support work control mod with keyboard', () => {
       const spy = vi.fn();
 
-      const {rerender, getByTestId} = render(
-          <Carousel index={0} onIndexChange={spy}>
-            <Container data-testid='container'/>
-          </Carousel>,
+      const { rerender, getByTestId } = render(
+        <Carousel index={0} onIndexChange={spy}>
+          <Container data-testid='container' />
+        </Carousel>,
       );
 
       const container = getByTestId('container');
-      fireEvent.keyDown(container, {key: 'ArrowLeft'});
+      fireEvent.keyDown(container, { key: 'ArrowLeft' });
       expect(spy).toHaveBeenCalledWith(1);
 
       rerender(
-          <Carousel index={1} onIndexChange={spy}>
-            <Container data-testid='container'/>
-          </Carousel>,
+        <Carousel index={1} onIndexChange={spy}>
+          <Container data-testid='container' />
+        </Carousel>,
       );
-      fireEvent.keyDown(container, {key: 'ArrowRight'});
+      fireEvent.keyDown(container, { key: 'ArrowRight' });
       expect(spy).toHaveBeenCalledWith(0);
     });
   });
@@ -114,11 +114,11 @@ describe('Carousel', () => {
 
     test('Should support call onIndexChange after click', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel onIndexChange={spy}>
-            <Container/>
-            <Indicators/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel onIndexChange={spy}>
+          <Container />
+          <Indicators />
+        </Carousel>,
       );
       const next = getByTestId('indicator-1');
       fireEvent.click(next);
@@ -129,11 +129,11 @@ describe('Carousel', () => {
 
     test('Should not support call onIndexChange after click in same control', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel onIndexChange={spy}>
-            <Container/>
-            <Indicators/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel onIndexChange={spy}>
+          <Container />
+          <Indicators />
+        </Carousel>,
       );
       const next = getByTestId('indicator-1');
       fireEvent.click(next);
@@ -144,12 +144,12 @@ describe('Carousel', () => {
 
     test('Should support right change index with Prev button', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel onIndexChange={spy}>
-            <Container/>
-            <Indicators/>
-            <Carousel.Prev data-testid='prev'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel onIndexChange={spy}>
+          <Container />
+          <Indicators />
+          <Carousel.Prev data-testid='prev' />
+        </Carousel>,
       );
       const prev = getByTestId('prev');
       const next = getByTestId('indicator-0');
@@ -159,14 +159,14 @@ describe('Carousel', () => {
       expect(spy).toHaveBeenCalledWith(0);
     });
 
-    test.concurrent('Should support right change index with Next button', ({expect}) => {
+    test.concurrent('Should support right change index with Next button', ({ expect }) => {
       const spy = vi.fn();
-      const {rerender, getByTestId} = render(
-          <Carousel index={1} onIndexChange={spy}>
-            <Container/>
-            <Indicators/>
-            <Carousel.Next data-testid='next'/>
-          </Carousel>,
+      const { rerender, getByTestId } = render(
+        <Carousel index={1} onIndexChange={spy}>
+          <Container />
+          <Indicators />
+          <Carousel.Next data-testid='next' />
+        </Carousel>,
       );
       const next = getByTestId('next');
       const prev = getByTestId('indicator-1');
@@ -174,11 +174,11 @@ describe('Carousel', () => {
 
       expect(spy).toHaveBeenCalledWith(0);
       rerender(
-          <Carousel index={0} onIndexChange={spy}>
-            <Container/>
-            <Indicators/>
-            <Carousel.Next data-testid='next'/>
-          </Carousel>,
+        <Carousel index={0} onIndexChange={spy}>
+          <Container />
+          <Indicators />
+          <Carousel.Next data-testid='next' />
+        </Carousel>,
       );
       fireEvent.click(prev);
 
@@ -194,11 +194,11 @@ describe('Carousel', () => {
 
     test('Should support call onIndexChange after click', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel onIndexChange={spy}>
-            <Container/>
-            <Carousel.Prev data-testid='prev'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel onIndexChange={spy}>
+          <Container />
+          <Carousel.Prev data-testid='prev' />
+        </Carousel>,
       );
       const prev = getByTestId('prev');
       fireEvent.click(prev);
@@ -209,11 +209,11 @@ describe('Carousel', () => {
 
     test('Should not support call onIndexChange for bounded property', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel bounded onIndexChange={spy}>
-            <Container/>
-            <Carousel.Prev data-testid='prev'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel bounded onIndexChange={spy}>
+          <Container />
+          <Carousel.Prev data-testid='prev' />
+        </Carousel>,
       );
       const prev = getByTestId('prev');
       fireEvent.click(prev);
@@ -224,11 +224,11 @@ describe('Carousel', () => {
     test('Should support control mode and click', () => {
       const spy = vi.fn();
 
-      const {getByTestId} = render(
-          <Carousel index={0} onIndexChange={spy}>
-            <Container/>
-            <Carousel.Prev data-testid='prev'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel index={0} onIndexChange={spy}>
+          <Container />
+          <Carousel.Prev data-testid='prev' />
+        </Carousel>,
       );
 
       const prev = getByTestId('prev');
@@ -247,11 +247,11 @@ describe('Carousel', () => {
 
     test('Should support call onIndexChange after click', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel onIndexChange={spy}>
-            <Container/>
-            <Carousel.Next data-testid='next'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel onIndexChange={spy}>
+          <Container />
+          <Carousel.Next data-testid='next' />
+        </Carousel>,
       );
       const next = getByTestId('next');
       fireEvent.click(next);
@@ -262,11 +262,11 @@ describe('Carousel', () => {
 
     test('Should not support call onIndexChange for bounded property', () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
-          <Carousel bounded onIndexChange={spy}>
-            <Container/>
-            <Carousel.Prev data-testid='next'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel bounded onIndexChange={spy}>
+          <Container />
+          <Carousel.Prev data-testid='next' />
+        </Carousel>,
       );
       const next = getByTestId('next');
       fireEvent.click(next);
@@ -277,11 +277,11 @@ describe('Carousel', () => {
     test('Should support control mode and click', () => {
       const spy = vi.fn();
 
-      const {getByTestId} = render(
-          <Carousel index={1} onIndexChange={spy}>
-            <Container/>
-            <Carousel.Next data-testid='next'/>
-          </Carousel>,
+      const { getByTestId } = render(
+        <Carousel index={1} onIndexChange={spy}>
+          <Container />
+          <Carousel.Next data-testid='next' />
+        </Carousel>,
       );
 
       const next = getByTestId('next');
@@ -297,17 +297,17 @@ describe('Carousel', () => {
         'https://picsum.photos/id/1024/600/400',
         'https://picsum.photos/id/1025/600/400',
       ];
-      const {getByTestId, container} = render(
-          <Carousel>
-            <Container>
-              {images.map((url) => (
-                  <Carousel.Item tag='img' key={url} src={url} w={100}/>
-              ))}
-            </Container>
-            <Indicators/>
-            <Carousel.Prev data-testid='prev'/>
-            <Carousel.Next data-testid='next'/>
-          </Carousel>,
+      const { getByTestId, container } = render(
+        <Carousel>
+          <Container>
+            {images.map((url) => (
+              <Carousel.Item tag='img' key={url} src={url} w={100} />
+            ))}
+          </Container>
+          <Indicators />
+          <Carousel.Prev data-testid='prev' />
+          <Carousel.Next data-testid='next' />
+        </Carousel>,
       );
 
       const next = getByTestId('next');
@@ -322,7 +322,7 @@ describe('Carousel', () => {
   });
 
   describe('Carousel visual regression', () => {
-    test.concurrent('image indicators', async ({task}) => {
+    test.concurrent('image indicators', async ({ task }) => {
       const images = [
         'https://picsum.photos/id/1023/600/400',
         'https://picsum.photos/id/1024/600/400',
@@ -332,38 +332,38 @@ describe('Carousel', () => {
       const imageWidth = width - 75;
 
       const component = (
-          <Carousel w={width} defaultIndex={1}>
-            <Flex alignItems='center'>
-              <Carousel.Prev/>
-              <Box style={{overflow: 'hidden'}}>
-                <Carousel.Container>
-                  {images.map((url) => (
-                      <Carousel.Item tag='img' key={url} src={url} w={imageWidth}/>
-                  ))}
-                </Carousel.Container>
-              </Box>
-              <Carousel.Next/>
-            </Flex>
-            <Carousel.Indicators>
-              {({items}) =>
-                  items.map((indicatorProps, index) => (
-                      <Carousel.Indicator
-                          {...indicatorProps}
-                          tag='img'
-                          key={images[index]}
-                          src={images[index]}
-                          w={100}
-                          h={100}
-                      />
-                  ))
-              }
-            </Carousel.Indicators>
-          </Carousel>
+        <Carousel w={width} defaultIndex={1}>
+          <Flex alignItems='center'>
+            <Carousel.Prev />
+            <Box style={{ overflow: 'hidden' }}>
+              <Carousel.Container>
+                {images.map((url) => (
+                  <Carousel.Item tag='img' key={url} src={url} w={imageWidth} />
+                ))}
+              </Carousel.Container>
+            </Box>
+            <Carousel.Next />
+          </Flex>
+          <Carousel.Indicators>
+            {({ items }) =>
+              items.map((indicatorProps, index) => (
+                <Carousel.Indicator
+                  {...indicatorProps}
+                  tag='img'
+                  key={images[index]}
+                  src={images[index]}
+                  w={100}
+                  h={100}
+                />
+              ))
+            }
+          </Carousel.Indicators>
+        </Carousel>
       );
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
-    test.concurrent('dot indicators', async ({task}) => {
+    test.concurrent('dot indicators', async ({ task }) => {
       const images = [
         'https://picsum.photos/id/1023/600/400',
         'https://picsum.photos/id/1024/600/400',
@@ -373,20 +373,20 @@ describe('Carousel', () => {
       const imageWidth = width - 75;
 
       const component = (
-          <Carousel w={width} defaultIndex={1}>
-            <Flex alignItems='center'>
-              <Carousel.Prev/>
-              <Box style={{overflow: 'hidden'}}>
-                <Carousel.Container>
-                  {images.map((url) => (
-                      <Carousel.Item tag='img' key={url} src={url} w={imageWidth}/>
-                  ))}
-                </Carousel.Container>
-              </Box>
-              <Carousel.Next/>
-            </Flex>
-            <Carousel.Indicators/>
-          </Carousel>
+        <Carousel w={width} defaultIndex={1}>
+          <Flex alignItems='center'>
+            <Carousel.Prev />
+            <Box style={{ overflow: 'hidden' }}>
+              <Carousel.Container>
+                {images.map((url) => (
+                  <Carousel.Item tag='img' key={url} src={url} w={imageWidth} />
+                ))}
+              </Carousel.Container>
+            </Box>
+            <Carousel.Next />
+          </Flex>
+          <Carousel.Indicators />
+        </Carousel>
       );
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);

@@ -10,14 +10,14 @@ describe('Tooltip', () => {
   describe('Tooltip common', () => {
     beforeEach(cleanup);
 
-    test.concurrent('Renders correctly', async ({task}) => {
+    test.concurrent('Renders correctly', async ({ task }) => {
       const component = (
-        <div style={{width: '100px', height: '100px'}}>
+        <div style={{ width: '100px', height: '100px' }}>
           <Tooltip visible disablePortal>
             <Tooltip.Trigger>
               <button type='button'>Test</button>
             </Tooltip.Trigger>
-            <Tooltip.Popper style={{opacity: 1}}>text text text</Tooltip.Popper>
+            <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
           </Tooltip>
         </div>
       );
@@ -25,14 +25,14 @@ describe('Tooltip', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Renders correctly with warning theme', async ({task}) => {
+    test.concurrent('Renders correctly with warning theme', async ({ task }) => {
       const component = (
-        <div style={{width: '100px', height: '100px'}}>
+        <div style={{ width: '100px', height: '100px' }}>
           <Tooltip visible disablePortal theme='warning'>
             <Tooltip.Trigger>
               <button type='button'>Test</button>
             </Tooltip.Trigger>
-            <Tooltip.Popper style={{opacity: 1}}>text text text</Tooltip.Popper>
+            <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
           </Tooltip>
         </div>
       );
@@ -40,14 +40,14 @@ describe('Tooltip', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Renders correctly with invert theme', async ({task}) => {
+    test.concurrent('Renders correctly with invert theme', async ({ task }) => {
       const component = (
-        <div style={{width: '100px', height: '100px'}}>
+        <div style={{ width: '100px', height: '100px' }}>
           <Tooltip visible disablePortal theme='invert'>
             <Tooltip.Trigger>
               <button type='button'>Test</button>
             </Tooltip.Trigger>
-            <Tooltip.Popper style={{opacity: 1}}>text text text</Tooltip.Popper>
+            <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
           </Tooltip>
         </div>
       );
@@ -55,14 +55,14 @@ describe('Tooltip', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.skip('Renders correctly with custom theme', async ({task}) => {
+    test.skip('Renders correctly with custom theme', async ({ task }) => {
       const component = (
-        <div style={{width: '100px', height: '100px'}}>
+        <div style={{ width: '100px', height: '100px' }}>
           <Tooltip visible disablePortal>
             <Tooltip.Trigger>
               <button type='button'>Test</button>
             </Tooltip.Trigger>
-            <Tooltip.Popper style={{opacity: 1}} theme='green'>
+            <Tooltip.Popper style={{ opacity: 1 }} theme='green'>
               text text text
             </Tooltip.Popper>
           </Tooltip>
@@ -77,9 +77,9 @@ describe('Tooltip', () => {
     beforeEach(cleanup);
 
     test('should support custom className', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Tooltip>
-          <Tooltip.Trigger data-testid='trigger' className='more-than one-class'/>
+          <Tooltip.Trigger data-testid='trigger' className='more-than one-class' />
         </Tooltip>,
       );
 
@@ -87,9 +87,9 @@ describe('Tooltip', () => {
     });
 
     test('should support custom attributes', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Tooltip>
-          <Tooltip.Trigger data-testid='trigger' name='trigger'/>
+          <Tooltip.Trigger data-testid='trigger' name='trigger' />
         </Tooltip>,
       );
 
@@ -100,7 +100,7 @@ describe('Tooltip', () => {
       const ref = React.createRef();
       render(
         <Tooltip>
-          <Tooltip.Trigger tag='button' ref={ref}/>
+          <Tooltip.Trigger tag='button' ref={ref} />
         </Tooltip>,
       );
       expect(ref.current.nodeName).toBe('BUTTON');
@@ -114,7 +114,7 @@ describe('Tooltip', () => {
           </Tooltip.Trigger>
         </Tooltip>
       );
-      const {getByTestId} = render(component);
+      const { getByTestId } = render(component);
 
       expect(getByTestId('child')).toBeTruthy();
     });
@@ -124,10 +124,10 @@ describe('Tooltip', () => {
     beforeEach(cleanup);
 
     test('should support custom className', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Tooltip visible>
-          <Tooltip.Trigger/>
-          <Tooltip.Popper data-testid='popper' className='more-than one-class'/>
+          <Tooltip.Trigger />
+          <Tooltip.Popper data-testid='popper' className='more-than one-class' />
         </Tooltip>,
       );
 
@@ -135,10 +135,10 @@ describe('Tooltip', () => {
     });
 
     test('should support custom attributes', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Tooltip visible>
-          <Tooltip.Trigger/>
-          <Tooltip.Popper data-testid='popper' name='popper'/>
+          <Tooltip.Trigger />
+          <Tooltip.Popper data-testid='popper' name='popper' />
         </Tooltip>,
       );
 
@@ -149,8 +149,8 @@ describe('Tooltip', () => {
       const ref = React.createRef();
       render(
         <Tooltip visible>
-          <Tooltip.Trigger/>
-          <Tooltip.Popper ref={ref}/>
+          <Tooltip.Trigger />
+          <Tooltip.Popper ref={ref} />
         </Tooltip>,
       );
       expect(ref.current.nodeName).toBe('DIV');
@@ -159,14 +159,14 @@ describe('Tooltip', () => {
     test('should support children', async () => {
       const component = (
         <Tooltip visible>
-          <Tooltip.Trigger/>
+          <Tooltip.Trigger />
           <Tooltip.Popper>
             <p>test popper content</p>
           </Tooltip.Popper>
         </Tooltip>
       );
 
-      const {getAllByText} = render(component);
+      const { getAllByText } = render(component);
 
       expect(getAllByText('test popper content', {})).toHaveLength(1);
     });
@@ -176,8 +176,8 @@ describe('Tooltip', () => {
         <Tooltip visible>
           {() => (
             <>
-              <Tooltip.Trigger/>
-              <Tooltip.Popper/>
+              <Tooltip.Trigger />
+              <Tooltip.Popper />
             </>
           )}
         </Tooltip>
@@ -195,14 +195,14 @@ describe('Tooltip', () => {
 
     test('should support ref', () => {
       const ref = React.createRef();
-      render(<Tooltip ref={ref} tag='button' title='test'/>);
+      render(<Tooltip ref={ref} tag='button' title='test' />);
       expect(ref.current.nodeName).toBe('BUTTON');
     });
 
     test('open/hide', () => {
       vi.useFakeTimers();
       const spy = vi.fn();
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Tooltip title='Test test test' disablePortal onVisibleChange={spy}>
           <button type='button' data-testid='trigger'>
             trigger
@@ -226,7 +226,7 @@ describe('Tooltip', () => {
 
     describe('a11y', () => {
       test('Hint', async () => {
-        const {container} = render(
+        const { container } = render(
           <Hint title='text' visible disablePortal tag='a'>
             trigger
           </Hint>,
@@ -236,7 +236,7 @@ describe('Tooltip', () => {
         expect(results).toHaveNoViolations();
       });
       test('Tooltip', async () => {
-        const {container} = render(
+        const { container } = render(
           <Tooltip visible disablePortal>
             <Tooltip.Trigger tag='button'>trigger</Tooltip.Trigger>
             <Tooltip.Popper>text</Tooltip.Popper>
@@ -247,7 +247,7 @@ describe('Tooltip', () => {
         expect(results).toHaveNoViolations();
       });
       test('DescriptionTooltip', async () => {
-        const {container} = render(
+        const { container } = render(
           <DescriptionTooltip visible disablePortal>
             <DescriptionTooltip.Trigger tag='button'>trigger</DescriptionTooltip.Trigger>
             <DescriptionTooltip.Popper aria-label={'required aria label'}>

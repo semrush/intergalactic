@@ -22,55 +22,55 @@ describe('ProgressBar', () => {
           <p>Test</p>
         </ProgressBar>
       );
-      const {getByTestId} = render(component);
+      const { getByTestId } = render(component);
       expect(getByTestId('parent').children.length).toEqual(3);
     });
 
-    test.concurrent('Renders correctly', async ({task}) => {
+    test.concurrent('Renders correctly', async ({ task }) => {
       const component = (
-        <snapshot.ProxyProps style={{margin: 5, width: '200px'}}>
-          <ProgressBar/>
-          <ProgressBar value={0}/>
-          <ProgressBar value={50}/>
-          <ProgressBar value={100}/>
+        <snapshot.ProxyProps style={{ margin: 5, width: '200px' }}>
+          <ProgressBar />
+          <ProgressBar value={0} />
+          <ProgressBar value={50} />
+          <ProgressBar value={100} />
         </snapshot.ProxyProps>
       );
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support dark view', async ({task}) => {
+    test.concurrent('Should support dark view', async ({ task }) => {
       const component = (
-        <div style={{width: '200px', padding: '10px', background: 'black'}}>
-          <ProgressBar value={50} theme='dark'/>
+        <div style={{ width: '200px', padding: '10px', background: 'black' }}>
+          <ProgressBar value={50} theme='dark' />
         </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support size props', async ({task}) => {
+    test.concurrent('Should support size props', async ({ task }) => {
       const component = (
-        <div style={{width: '200px'}}>
-          <ProgressBar value={50} size='l'/>
-          <br/>
-          <ProgressBar value={50} size='m'/>
-          <br/>
-          <ProgressBar value={50} size='s'/>
+        <div style={{ width: '200px' }}>
+          <ProgressBar value={50} size='l' />
+          <br />
+          <ProgressBar value={50} size='m' />
+          <br />
+          <ProgressBar value={50} size='s' />
         </div>
       );
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support custom theme', async ({task}) => {
+    test.concurrent('Should support custom theme', async ({ task }) => {
       const component = (
-        <div style={{width: '200px'}}>
+        <div style={{ width: '200px' }}>
           <ProgressBar
             value={undefined}
             theme='linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)'
           />
-          <br/>
-          <ProgressBar value={undefined} theme='yellow'/>
+          <br />
+          <ProgressBar value={undefined} theme='yellow' />
         </div>
       );
 
@@ -81,16 +81,15 @@ describe('ProgressBar', () => {
     shouldSupportClassName(ProgressBar.Value, ProgressBar);
     shouldSupportRef(ProgressBar.Value, ProgressBar);
 
-    test.concurrent('Should support custom theme', async ({task}) => {
+    test.concurrent('Should support custom theme', async ({ task }) => {
       const component = (
-        <div style={{width: '200px'}}>
+        <div style={{ width: '200px' }}>
           <ProgressBar value={50}>
-            <ProgressBar.Value
-              theme='linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)'/>
+            <ProgressBar.Value theme='linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)' />
           </ProgressBar>
-          <br/>
+          <br />
           <ProgressBar value={50}>
-            <ProgressBar.Value theme='yellow'/>
+            <ProgressBar.Value theme='yellow' />
           </ProgressBar>
         </div>
       );

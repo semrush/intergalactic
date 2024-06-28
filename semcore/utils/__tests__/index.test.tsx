@@ -22,32 +22,32 @@ describe('Utils', () => {
 
     test.concurrent('Utils assignProps other prop', () => {
       const result1 = assignProps(
-          {
-            test: 1,
-          },
-          {
-            test: 2,
-          },
+        {
+          test: 1,
+        },
+        {
+          test: 2,
+        },
       );
       const result2 = assignProps(
-          {
-            test: 1,
-          },
-          {},
+        {
+          test: 1,
+        },
+        {},
       );
       const result3 = assignProps(
-          {},
-          {
-            test: 2,
-          },
+        {},
+        {
+          test: 2,
+        },
       );
       const result4 = assignProps(
-          {
-            test: undefined,
-          },
-          {
-            test: 2,
-          },
+        {
+          test: undefined,
+        },
+        {
+          test: 2,
+        },
       );
       // first obj overwrite second obj
       expect(result1.test).toEqual(1);
@@ -59,40 +59,40 @@ describe('Utils', () => {
 
     test.concurrent('Utils assignProps style', () => {
       const result1 = assignProps(
-          {
-            style: {
-              margin: 1,
-              paddingTop: 1,
-            },
+        {
+          style: {
+            margin: 1,
+            paddingTop: 1,
           },
-          {
-            style: {
-              margin: 2,
-              paddingBottom: 1,
-            },
+        },
+        {
+          style: {
+            margin: 2,
+            paddingBottom: 1,
           },
+        },
       );
 
       const result2 = assignProps(
-          {
-            style: {},
+        {
+          style: {},
+        },
+        {
+          style: {
+            margin: 2,
           },
-          {
-            style: {
-              margin: 2,
-            },
-          },
+        },
       );
 
       const result3 = assignProps(
-          {
-            style: {
-              margin: 1,
-            },
+        {
+          style: {
+            margin: 1,
           },
-          {
-            style: {},
-          },
+        },
+        {
+          style: {},
+        },
       );
 
       // first obj overwrite second obj
@@ -108,40 +108,40 @@ describe('Utils', () => {
 
     test.concurrent('Utils assignProps className', () => {
       const result1 = assignProps(
-          {
-            className: 'test1',
-          },
-          {
-            className: 'test2',
-          },
+        {
+          className: 'test1',
+        },
+        {
+          className: 'test2',
+        },
       );
       const result2 = assignProps(
-          {
-            className: 'test1',
-          },
-          {},
+        {
+          className: 'test1',
+        },
+        {},
       );
       const result3 = assignProps(
-          {},
-          {
-            className: 'test2',
-          },
+        {},
+        {
+          className: 'test2',
+        },
       );
       const result4 = assignProps(
-          {
-            className: '',
-          },
-          {
-            className: 'test2',
-          },
+        {
+          className: '',
+        },
+        {
+          className: 'test2',
+        },
       );
       const result5 = assignProps(
-          {
-            className: 'test1',
-          },
-          {
-            className: '',
-          },
+        {
+          className: 'test1',
+        },
+        {
+          className: '',
+        },
       );
       // class concat
       expect(result1.className).toEqual('test1 test2');
@@ -154,28 +154,28 @@ describe('Utils', () => {
     test.concurrent('Utils assignProps ref', () => {
       const spy1 = vi.fn();
       const result1 = assignProps(
-          {
-            ref: spy1,
-          },
-          {
-            ref: spy1,
-          },
+        {
+          ref: spy1,
+        },
+        {
+          ref: spy1,
+        },
       );
 
       const spy2 = vi.fn();
       const result2 = assignProps(
-          {
-            ref: spy2,
-          },
-          {},
+        {
+          ref: spy2,
+        },
+        {},
       );
 
       const spy3 = vi.fn();
       const result3 = assignProps(
-          {},
-          {
-            ref: spy3,
-          },
+        {},
+        {
+          ref: spy3,
+        },
       );
 
       result1.ref();
@@ -192,28 +192,28 @@ describe('Utils', () => {
     test.concurrent('Utils assignProps handler', () => {
       const spy1 = vi.fn();
       const result1 = assignProps(
-          {
-            onClick: spy1,
-          },
-          {
-            onClick: spy1,
-          },
+        {
+          onClick: spy1,
+        },
+        {
+          onClick: spy1,
+        },
       );
 
       const spy2 = vi.fn();
       const result2 = assignProps(
-          {
-            onClick: spy2,
-          },
-          {},
+        {
+          onClick: spy2,
+        },
+        {},
       );
 
       const spy3 = vi.fn();
       const result3 = assignProps(
-          {},
-          {
-            onClick: spy3,
-          },
+        {},
+        {
+          onClick: spy3,
+        },
       );
 
       result1.onClick();
@@ -230,28 +230,28 @@ describe('Utils', () => {
     test.concurrent('Utils assignHandlers', () => {
       const spy1 = vi.fn();
       const result1: any = assignHandlers(
-          {
-            onClick: spy1,
-          },
-          {
-            onClick: spy1,
-          },
+        {
+          onClick: spy1,
+        },
+        {
+          onClick: spy1,
+        },
       );
 
       const spy2 = vi.fn();
       const result2 = assignHandlers(
-          {
-            onClick: spy2,
-          },
-          {},
+        {
+          onClick: spy2,
+        },
+        {},
       );
 
       const spy3 = vi.fn();
       const result3: any = assignHandlers(
-          {},
-          {
-            onClick: spy3,
-          },
+        {},
+        {
+          onClick: spy3,
+        },
       );
 
       result1.onClick();
@@ -263,12 +263,12 @@ describe('Utils', () => {
       expect(result3.onClick).not.toEqual(spy3);
     });
 
-    test.concurrent('CSS in JS', async ({task}) => {
-      const CSSJS = ({css}: any) => {
+    test.concurrent('CSS in JS', async ({ task }) => {
+      const CSSJS = ({ css }: any) => {
         const className = useCss(css);
-        return <div className={className}/>;
+        return <div className={className} />;
       };
-      const component = <CSSJS css={{background: 'red', width: '20px', height: '20px'}}/>;
+      const component = <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />;
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
@@ -277,16 +277,20 @@ describe('Utils', () => {
       // because nano singleton
       vi.resetModules();
       // TODO: resolve "Invalid hook call" issue
-      const {default: useCss, getStylesheet, Provider} = require(`${__dirname}/../src/use/useCss`);
-      const CSSJS = ({css}: any) => {
+      const {
+        default: useCss,
+        getStylesheet,
+        Provider,
+      } = require(`${__dirname}/../src/use/useCss`);
+      const CSSJS = ({ css }: any) => {
         const className = useCss(css);
-        return <div className={className}/>;
+        return <div className={className} />;
       };
       const component = (
-          /* For server render emulation */
-          <Provider value={{client: false}}>
-            <CSSJS css={{background: 'red', width: '20px', height: '20px'}}/>
-          </Provider>
+        /* For server render emulation */
+        <Provider value={{ client: false }}>
+          <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />
+        </Provider>
       );
 
       ReactDOM.render(component, document.createElement('div'));
@@ -364,14 +368,14 @@ describe('Utils', () => {
   describe('Utils interpolate', () => {
     test.concurrent('Should interpolate variable with equal name', () => {
       const Template = '{name}, dont turn this rape into a murder';
-      expect(interpolate(Template, {name: 'Sarah'})).toBe(
-          'Sarah, dont turn this rape into a murder',
+      expect(interpolate(Template, { name: 'Sarah' })).toBe(
+        'Sarah, dont turn this rape into a murder',
       );
     });
 
     test.concurrent('Should interpolate more then one variable', () => {
       const Template = '{a}{b}{c}';
-      expect(interpolate(Template, {a: 'A', b: 'B', c: 'C'})).toBe('ABC');
+      expect(interpolate(Template, { a: 'A', b: 'B', c: 'C' })).toBe('ABC');
     });
 
     test.concurrent('Should not fail if variable for template is not specified', () => {
@@ -381,8 +385,8 @@ describe('Utils', () => {
 
     test.concurrent('Should mirror HTML tags', () => {
       const Template = '{name}';
-      expect(interpolate(Template, {name: `<script>console.log('oh my!')</script>`})).toBe(
-          `&lt;script&gt;console.log('oh my!')&lt;/script&gt;`,
+      expect(interpolate(Template, { name: `<script>console.log('oh my!')</script>` })).toBe(
+        `&lt;script&gt;console.log('oh my!')&lt;/script&gt;`,
       );
     });
   });
@@ -418,11 +422,11 @@ describe('Utils', () => {
     test.concurrent('support react component', () => {
       expect(reactToText(<div>component</div>)).toBe('component');
       expect(
-          reactToText(
-              <>
-                <span>multi</span> <span>component</span>
-              </>,
-          ),
+        reactToText(
+          <>
+            <span>multi</span> <span>component</span>
+          </>,
+        ),
       ).toBe('multi component');
     });
   });
@@ -481,30 +485,30 @@ describe('Utils', () => {
     beforeEach(cleanup);
 
     test.concurrent(
-        'keyboardFocus should return keyboardFocused to false if component is disabled',
-        () => {
-          const enhance = keyboardFocusEnhance();
+      'keyboardFocus should return keyboardFocused to false if component is disabled',
+      () => {
+        const enhance = keyboardFocusEnhance();
 
-          const {result, rerender} = renderHook<
-              ReturnType<KeyboardFocusEnhanceHook>,
-              { disabled: boolean }
-          >(enhance, {initialProps: {disabled: false}});
+        const { result, rerender } = renderHook<
+          ReturnType<KeyboardFocusEnhanceHook>,
+          { disabled: boolean }
+        >(enhance, { initialProps: { disabled: false } });
 
-          act(() => {
-            // @ts-ignore
-            result.current.onFocus({});
-          });
+        act(() => {
+          // @ts-ignore
+          result.current.onFocus({});
+        });
 
-          expect(result.current.keyboardFocused).toBe(true);
+        expect(result.current.keyboardFocused).toBe(true);
 
-          rerender({disabled: true});
+        rerender({ disabled: true });
 
-          expect(result.current.keyboardFocused).toBe(false);
+        expect(result.current.keyboardFocused).toBe(false);
 
-          rerender({disabled: false});
+        rerender({ disabled: false });
 
-          expect(result.current.keyboardFocused).toBe(false);
-        },
+        expect(result.current.keyboardFocused).toBe(false);
+      },
     );
   });
 });

@@ -65,23 +65,23 @@ describe('DataTable', () => {
       test('props nesting', () => {
         const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
 
-        assertType<JSX.Element>(<DataTable tag={Link} href='https://google.com' xProp1={1}/>);
+        assertType<JSX.Element>(<DataTable tag={Link} href='https://google.com' xProp1={1} />);
         // @ts-expect-error
-        assertType<JSX.Element>(<DataTable href='https://google.com'/>);
+        assertType<JSX.Element>(<DataTable href='https://google.com' />);
       });
       test('typed data', () => {
         assertType<JSX.Element>(
-            <DataTable<{ a: number; b: number; c: number }[]> data={[{a: 1, b: 2, c: 3}]}/>,
+          <DataTable<{ a: number; b: number; c: number }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
         );
         assertType<JSX.Element>(
-            // @ts-expect-error
-            <DataTable<{ a: string; b: string; c: string }[]> data={[{a: 1, b: 2, c: 3}]}/>,
+          // @ts-expect-error
+          <DataTable<{ a: string; b: string; c: string }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
         );
       });
       test('data&uniqueKey relation', () => {
-        assertType<JSX.Element>(<DataTable data={[{a: 1, b: 2, c: 3}]} uniqueKey='a'/>);
+        assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='a' />);
         // @ts-expect-error
-        assertType<JSX.Element>(<DataTable data={[{a: 1, b: 2, c: 3}]} uniqueKey='f'/>);
+        assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='f' />);
       });
     });
 
@@ -90,185 +90,185 @@ describe('DataTable', () => {
     shouldSupportClassName(DataTable);
     shouldSupportRef(DataTable);
 
-    test.concurrent('renders correctly', async ({task}) => {
+    test.concurrent('renders correctly', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Customizing the header', async ({task}) => {
+    test.concurrent('Customizing the header', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword'>
-                  <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                    <Text noWrap>
-                      Keyword <Text color='gray60'>(1 – 100)</Text>
-                    </Text>
-                  </Tooltip>
-                </DataTable.Column>
-                <DataTable.Column name='kd'>
-                  <DropdownMenu>
-                    <DropdownMenu.Trigger tag={LinkTrigger} color='gray20'>
-                      KD,%
-                    </DropdownMenu.Trigger>
-                    <DropdownMenu.Menu>
-                      <DropdownMenu.Item>Options 1</DropdownMenu.Item>
-                      <DropdownMenu.Item>Options 2</DropdownMenu.Item>
-                    </DropdownMenu.Menu>
-                  </DropdownMenu>
-                </DataTable.Column>
-                <DataTable.Column name='cpc'>
-                  <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                    CPC
-                  </Tooltip>
-                </DataTable.Column>
-                <DataTable.Column name='vol'>
-                  <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                    Vol.
-                  </Tooltip>
-                </DataTable.Column>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword'>
+                <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
+                  <Text noWrap>
+                    Keyword <Text color='gray60'>(1 – 100)</Text>
+                  </Text>
+                </Tooltip>
+              </DataTable.Column>
+              <DataTable.Column name='kd'>
+                <DropdownMenu>
+                  <DropdownMenu.Trigger tag={LinkTrigger} color='gray20'>
+                    KD,%
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Menu>
+                    <DropdownMenu.Item>Options 1</DropdownMenu.Item>
+                    <DropdownMenu.Item>Options 2</DropdownMenu.Item>
+                  </DropdownMenu.Menu>
+                </DropdownMenu>
+              </DataTable.Column>
+              <DataTable.Column name='cpc'>
+                <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
+                  CPC
+                </Tooltip>
+              </DataTable.Column>
+              <DataTable.Column name='vol'>
+                <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
+                  Vol.
+                </Tooltip>
+              </DataTable.Column>
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('The size of the columns', async ({task}) => {
+    test.concurrent('The size of the columns', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto'/>
-                <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100}/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto' />
+              <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100} />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('The alignment of the columns', async ({task}) => {
+    test.concurrent('The alignment of the columns', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword'>
-                  Keyword
-                  <br/>
-                  Keyword
-                </DataTable.Column>
-                <DataTable.Column name='kd' children='KD,%' justifyContent='flex-end'/>
-                <DataTable.Column name='cpc' children='CPC' justifyContent='flex-end'/>
-                <DataTable.Column
-                    name='vol'
-                    children='Vol.'
-                    justifyContent='flex-end'
-                    alignItems='flex-end'
-                />
-              </DataTable.Head>
-              <DataTable.Body>
-                <DataTable.Cell name='keyword' data={data}>
-                  {(props, row) => {
-                    return {
-                      children: (
-                          <>
-                            {row[props.name]}
-                            <br/>
-                            {row[props.name]}
-                          </>
-                      ),
-                    };
-                  }}
-                </DataTable.Cell>
-              </DataTable.Body>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword'>
+                Keyword
+                <br />
+                Keyword
+              </DataTable.Column>
+              <DataTable.Column name='kd' children='KD,%' justifyContent='flex-end' />
+              <DataTable.Column name='cpc' children='CPC' justifyContent='flex-end' />
+              <DataTable.Column
+                name='vol'
+                children='Vol.'
+                justifyContent='flex-end'
+                alignItems='flex-end'
+              />
+            </DataTable.Head>
+            <DataTable.Body>
+              <DataTable.Cell name='keyword' data={data}>
+                {(props, row) => {
+                  return {
+                    children: (
+                      <>
+                        {row[props.name]}
+                        <br />
+                        {row[props.name]}
+                      </>
+                    ),
+                  };
+                }}
+              </DataTable.Cell>
+            </DataTable.Body>
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Sorting', async ({task}) => {
+    test.concurrent('Sorting', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data} sort={['kd', 'desc']} onSortChange={vi.fn()}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%' sortable id='row'/>
-                <DataTable.Column name='cpc' children='CPC' sortable/>
-                <DataTable.Column name='vol' children='Vol.' sortable/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data} sort={['kd', 'desc']} onSortChange={vi.fn()}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' sortable id='row' />
+              <DataTable.Column name='cpc' children='CPC' sortable />
+              <DataTable.Column name='vol' children='Vol.' sortable />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
 
       await expect(
-          await snapshot(component, {
-            actions: {
-              hover: '#row',
-            },
-          }),
+        await snapshot(component, {
+          actions: {
+            hover: '#row',
+          },
+        }),
       ).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Sorting by keyboard', async ({task}) => {
+    test.concurrent('Sorting by keyboard', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data} onSortChange={vi.fn()}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%' sortable id='row'/>
-                <DataTable.Column name='cpc' children='CPC' sortable/>
-                <DataTable.Column name='vol' children='Vol.' sortable/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data} onSortChange={vi.fn()}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' sortable id='row' />
+              <DataTable.Column name='cpc' children='CPC' sortable />
+              <DataTable.Column name='vol' children='Vol.' sortable />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
 
       await expect(
-          await snapshot(component, {
-            actions: {
-              focus: '#row',
-            },
-          }),
+        await snapshot(component, {
+          actions: {
+            focus: '#row',
+          },
+        }),
       ).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should focus to body (skip head) if head is hidden', async ({task}) => {
+    test.concurrent('Should focus to body (skip head) if head is hidden', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head hidden>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body data-testid={'tableBody'}/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head hidden>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body data-testid={'tableBody'} />
+          </DataTable>
+        </div>
       );
 
-      const {getAllByRole} = render(component);
+      const { getAllByRole } = render(component);
 
       await userEvent.keyboard('[Tab]');
 
@@ -281,397 +281,397 @@ describe('DataTable', () => {
     });
 
     /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
-    test.skip('Fixed columns', async ({task}) => {
+    test.skip('Fixed columns', async ({ task }) => {
       const component = (
-          <div style={{width: 500}}>
-            <DataTable data={data}>
-              <DataTable.Head wMin={800}>
-                <DataTable.Column name='keyword' children='Keyword' fixed='left'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.' fixed='right'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 500 }}>
+          <DataTable data={data}>
+            <DataTable.Head wMin={800}>
+              <DataTable.Column name='keyword' children='Keyword' fixed='left' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' fixed='right' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Multi-level header', async ({task}) => {
+    test.concurrent('Multi-level header', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column>
-                  Organic Sessions
-                  <DataTable.Column name='kd' children='KD,%'/>
-                  <DataTable.Column name='cpc' children='CPC'/>
-                  <DataTable.Column name='vol' children='Vol.'/>
-                </DataTable.Column>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column>
+                Organic Sessions
+                <DataTable.Column name='kd' children='KD,%' />
+                <DataTable.Column name='cpc' children='CPC' />
+                <DataTable.Column name='vol' children='Vol.' />
+              </DataTable.Column>
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Adding additional elements to the header', async ({task}) => {
+    test.concurrent('Adding additional elements to the header', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-                <ProgressBar value={40} size='s' style={{borderRadius: 0}}>
-                  <ProgressBar.Value style={{borderRadius: 0}}/>
-                </ProgressBar>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+              <ProgressBar value={40} size='s' style={{ borderRadius: 0 }}>
+                <ProgressBar.Value style={{ borderRadius: 0 }} />
+              </ProgressBar>
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
     /** Currently screenshot service unable to execute js and portals needs to run js for dom manipulations */
-    test.skip('Header separation', async ({task}) => {
+    test.skip('Header separation', async ({ task }) => {
       const Component = () => {
         const portalRef = React.useRef(null);
         return (
-            <div style={{width: 800}}>
-              <div style={{border: '1px solid'}} ref={portalRef}/>
-              <Divider my={5}/>
-              <DataTable style={{border: '1px solid'}} data={data}>
-                <PortalProvider value={portalRef}>
-                  <Portal>
-                    <DataTable.Head>
-                      <DataTable.Column name='keyword' children='Keyword'/>
-                      <DataTable.Column name='kd' children='KD,%'/>
-                      <DataTable.Column name='cpc' children='CPC'/>
-                      <DataTable.Column name='vol' children='Vol.'/>
-                    </DataTable.Head>
-                  </Portal>
-                </PortalProvider>
-                <DataTable.Body/>
-              </DataTable>
-            </div>
+          <div style={{ width: 800 }}>
+            <div style={{ border: '1px solid' }} ref={portalRef} />
+            <Divider my={5} />
+            <DataTable style={{ border: '1px solid' }} data={data}>
+              <PortalProvider value={portalRef}>
+                <Portal>
+                  <DataTable.Head>
+                    <DataTable.Column name='keyword' children='Keyword' />
+                    <DataTable.Column name='kd' children='KD,%' />
+                    <DataTable.Column name='cpc' children='CPC' />
+                    <DataTable.Column name='vol' children='Vol.' />
+                  </DataTable.Head>
+                </Portal>
+              </PortalProvider>
+              <DataTable.Body />
+            </DataTable>
+          </div>
         );
       };
-      await expect(await snapshot(<Component/>)).toMatchImageSnapshot(task);
+      await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Access to Row', async ({task}) => {
+    test.concurrent('Access to Row', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body>
-                <DataTable.Row>
-                  {(props, row) => {
-                    return {
-                      theme: row['kd'] === '-' ? 'warning' : props.theme,
-                    };
-                  }}
-                </DataTable.Row>
-                <DataTable.Row>
-                  {(props, row, index) => {
-                    return {
-                      style: {
-                        cursor: 'pointer',
-                      },
-                      onClick: () => {
-                        alert(`Click row
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body>
+              <DataTable.Row>
+                {(props, row) => {
+                  return {
+                    theme: row['kd'] === '-' ? 'warning' : props.theme,
+                  };
+                }}
+              </DataTable.Row>
+              <DataTable.Row>
+                {(props, row, index) => {
+                  return {
+                    style: {
+                      cursor: 'pointer',
+                    },
+                    onClick: () => {
+                      alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(row, null, '  ')};
                   index: ${index};`);
+                    },
+                  };
+                }}
+              </DataTable.Row>
+            </DataTable.Body>
+          </DataTable>
+        </div>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    });
+
+    test.concurrent('Access to Cell', async ({ task }) => {
+      const component = (
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body>
+              <DataTable.Cell name='keyword' data={data}>
+                {(props, row) => {
+                  return {
+                    children: <>[{row[props.name]}]</>,
+                  };
+                }}
+              </DataTable.Cell>
+              <DataTable.Cell name='keyword'>
+                {() => {
+                  return {
+                    style: {
+                      fontWeight: 700,
+                    },
+                  };
+                }}
+              </DataTable.Cell>
+            </DataTable.Body>
+          </DataTable>
+        </div>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    });
+
+    test.skip.concurrent('Access to a set of cells', async ({ task }) => {
+      const component = (
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body>
+              <DataTable.Cell name='keyword/kd/cpc/vol'>
+                {(props, row) => {
+                  return {
+                    children: ['-', '$0', 'n/a'].includes((row as any)[props.name]) ? (
+                      <Spin />
+                    ) : (
+                      props.children
+                    ),
+                  };
+                }}
+              </DataTable.Cell>
+            </DataTable.Body>
+          </DataTable>
+        </div>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    });
+
+    test.concurrent('Adding additional elements to the table body', async ({ task }) => {
+      const component = (
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body>
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '90px',
+                  left: 0,
+                  bottom: 0,
+                  background: 'rgba(255, 0, 0, 0.2)',
+                  zIndex: 2,
+                }}
+              />
+            </DataTable.Body>
+          </DataTable>
+        </div>
+      );
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    });
+
+    test.concurrent('Accordion in the table', async ({ task }) => {
+      const RowAccordion = React.forwardRef(function (
+        { value, collapse = {}, ...props }: any,
+        ref: React.Ref<HTMLDivElement>,
+      ) {
+        return (
+          <Accordion.Item value={value} ref={ref}>
+            <Accordion.Item.Toggle {...props} />
+            <Accordion.Item.Collapse {...collapse} />
+          </Accordion.Item>
+        );
+      });
+
+      const component = (
+        <div style={{ width: 800 }}>
+          <Accordion value={[1, 2]} onChange={vi.fn}>
+            <DataTable data={data}>
+              <DataTable.Head>
+                <DataTable.Column name='keyword' children='Keyword' />
+                <DataTable.Column name='kd' children='KD,%' />
+                <DataTable.Column name='cpc' children='CPC' />
+                <DataTable.Column name='vol' children='Vol.' />
+              </DataTable.Head>
+              <DataTable.Body>
+                <DataTable.Row tag={RowAccordion}>
+                  {(_props, _row, index) => {
+                    return {
+                      value: index,
+                      active: [1, 2].includes(index),
+                      collapse: {
+                        children: (
+                          <Box
+                            style={{
+                              padding: '12px 32px',
+                              borderBottom: `1px solid ${resolveColor('stone')}`,
+                            }}
+                          >
+                            {`Section ${index + 1}`}
+                          </Box>
+                        ),
                       },
                     };
                   }}
                 </DataTable.Row>
-              </DataTable.Body>
-            </DataTable>
-          </div>
-      );
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    });
-
-    test.concurrent('Access to Cell', async ({task}) => {
-      const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body>
-                <DataTable.Cell name='keyword' data={data}>
-                  {(props, row) => {
-                    return {
-                      children: <>[{row[props.name]}]</>,
-                    };
-                  }}
-                </DataTable.Cell>
                 <DataTable.Cell name='keyword'>
-                  {() => {
+                  {(props) => {
                     return {
-                      style: {
-                        fontWeight: 700,
-                      },
-                    };
-                  }}
-                </DataTable.Cell>
-              </DataTable.Body>
-            </DataTable>
-          </div>
-      );
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    });
-
-    test.skip.concurrent('Access to a set of cells', async ({task}) => {
-      const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body>
-                <DataTable.Cell name='keyword/kd/cpc/vol'>
-                  {(props, row) => {
-                    return {
-                      children: ['-', '$0', 'n/a'].includes((row as any)[props.name]) ? (
-                          <Spin/>
-                      ) : (
-                          props.children
+                      children: (
+                        <Flex alignItems='center'>
+                          <Accordion.Item.Chevron color='stone' mr={2} />
+                          {props.children}
+                        </Flex>
                       ),
                     };
                   }}
                 </DataTable.Cell>
               </DataTable.Body>
             </DataTable>
-          </div>
+          </Accordion>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Adding additional elements to the table body', async ({task}) => {
+    test.concurrent('Table in table', async ({ task }) => {
+      const RowAccordion = React.forwardRef(function (
+        { value, collapse = {}, ...props }: any,
+        ref: React.Ref<HTMLDivElement>,
+      ) {
+        return (
+          <Accordion.Item value={value} ref={ref}>
+            <Accordion.Item.Toggle {...props} />
+            <Accordion.Item.Collapse {...collapse} />
+          </Accordion.Item>
+        );
+      });
+
       const component = (
-          <div style={{width: 800}}>
+        <div style={{ width: 800 }}>
+          <Accordion value={[1, 2]} onChange={vi.fn}>
             <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
+              <DataTable.Head wMin={800}>
+                <DataTable.Column name='keyword' children='Keyword' fixed='left' />
+                <DataTable.Column name='kd' children='KD,%' />
+                <DataTable.Column name='cpc' children='CPC' />
+                <DataTable.Column name='vol' children='Vol.' />
               </DataTable.Head>
               <DataTable.Body>
-                <div
-                    style={{
-                      position: 'absolute',
-                      width: '100%',
-                      height: '90px',
-                      left: 0,
-                      bottom: 0,
-                      background: 'rgba(255, 0, 0, 0.2)',
-                      zIndex: 2,
-                    }}
-                />
+                <DataTable.Row tag={RowAccordion}>
+                  {(props, row, index) => {
+                    return {
+                      value: index,
+                      active: [1, 2].includes(index),
+                      collapse: {
+                        children: (
+                          <DataTable data={data} zIndex={2}>
+                            <DataTable.Head hidden>
+                              <DataTable.Column name='keyword' fixed='left' />
+                              <DataTable.Column name='kd' />
+                              <DataTable.Column name='cpc' />
+                              <DataTable.Column name='vol' />
+                            </DataTable.Head>
+                            <DataTable.Body />
+                          </DataTable>
+                        ),
+                      },
+                    };
+                  }}
+                </DataTable.Row>
+                <DataTable.Cell name='keyword'>
+                  {(props) => {
+                    return {
+                      children: (
+                        <Flex alignItems='center'>
+                          <Accordion.Item.Chevron color='stone' mr={2} />
+                          {props.children}
+                        </Flex>
+                      ),
+                    };
+                  }}
+                </DataTable.Cell>
               </DataTable.Body>
             </DataTable>
-          </div>
+          </Accordion>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Accordion in the table', async ({task}) => {
-      const RowAccordion = React.forwardRef(function (
-          {value, collapse = {}, ...props}: any,
-          ref: React.Ref<HTMLDivElement>,
-      ) {
-        return (
-            <Accordion.Item value={value} ref={ref}>
-              <Accordion.Item.Toggle {...props} />
-              <Accordion.Item.Collapse {...collapse} />
-            </Accordion.Item>
-        );
-      });
-
+    test.concurrent('Download status', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <Accordion value={[1, 2]} onChange={vi.fn}>
-              <DataTable data={data}>
-                <DataTable.Head>
-                  <DataTable.Column name='keyword' children='Keyword'/>
-                  <DataTable.Column name='kd' children='KD,%'/>
-                  <DataTable.Column name='cpc' children='CPC'/>
-                  <DataTable.Column name='vol' children='Vol.'/>
-                </DataTable.Head>
-                <DataTable.Body>
-                  <DataTable.Row tag={RowAccordion}>
-                    {(_props, _row, index) => {
-                      return {
-                        value: index,
-                        active: [1, 2].includes(index),
-                        collapse: {
-                          children: (
-                              <Box
-                                  style={{
-                                    padding: '12px 32px',
-                                    borderBottom: `1px solid ${resolveColor('stone')}`,
-                                  }}
-                              >
-                                {`Section ${index + 1}`}
-                              </Box>
-                          ),
-                        },
-                      };
-                    }}
-                  </DataTable.Row>
-                  <DataTable.Cell name='keyword'>
-                    {(props) => {
-                      return {
-                        children: (
-                            <Flex alignItems='center'>
-                              <Accordion.Item.Chevron color='stone' mr={2}/>
-                              {props.children}
-                            </Flex>
-                        ),
-                      };
-                    }}
-                  </DataTable.Cell>
-                </DataTable.Body>
-              </DataTable>
-            </Accordion>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body tag={SpinContainer} loading={true} />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Table in table', async ({task}) => {
-      const RowAccordion = React.forwardRef(function (
-          {value, collapse = {}, ...props}: any,
-          ref: React.Ref<HTMLDivElement>,
-      ) {
-        return (
-            <Accordion.Item value={value} ref={ref}>
-              <Accordion.Item.Toggle {...props} />
-              <Accordion.Item.Collapse {...collapse} />
-            </Accordion.Item>
-        );
-      });
-
-      const component = (
-          <div style={{width: 800}}>
-            <Accordion value={[1, 2]} onChange={vi.fn}>
-              <DataTable data={data}>
-                <DataTable.Head wMin={800}>
-                  <DataTable.Column name='keyword' children='Keyword' fixed='left'/>
-                  <DataTable.Column name='kd' children='KD,%'/>
-                  <DataTable.Column name='cpc' children='CPC'/>
-                  <DataTable.Column name='vol' children='Vol.'/>
-                </DataTable.Head>
-                <DataTable.Body>
-                  <DataTable.Row tag={RowAccordion}>
-                    {(props, row, index) => {
-                      return {
-                        value: index,
-                        active: [1, 2].includes(index),
-                        collapse: {
-                          children: (
-                              <DataTable data={data} zIndex={2}>
-                                <DataTable.Head hidden>
-                                  <DataTable.Column name='keyword' fixed='left'/>
-                                  <DataTable.Column name='kd'/>
-                                  <DataTable.Column name='cpc'/>
-                                  <DataTable.Column name='vol'/>
-                                </DataTable.Head>
-                                <DataTable.Body/>
-                              </DataTable>
-                          ),
-                        },
-                      };
-                    }}
-                  </DataTable.Row>
-                  <DataTable.Cell name='keyword'>
-                    {(props) => {
-                      return {
-                        children: (
-                            <Flex alignItems='center'>
-                              <Accordion.Item.Chevron color='stone' mr={2}/>
-                              {props.children}
-                            </Flex>
-                        ),
-                      };
-                    }}
-                  </DataTable.Cell>
-                </DataTable.Body>
-              </DataTable>
-            </Accordion>
-          </div>
-      );
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    });
-
-    test.concurrent('Download status', async ({task}) => {
-      const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body tag={SpinContainer} loading={true}/>
-            </DataTable>
-          </div>
-      );
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    });
-
-    test.concurrent('Skeleton in the table', async ({task}) => {
+    test.concurrent('Skeleton in the table', async ({ task }) => {
       function getSkeleton() {
         return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
           name: c,
           data: (
-              <Skeleton height={17}>
-                <Skeleton.Text y='5' width='60%'/>
-              </Skeleton>
+            <Skeleton height={17}>
+              <Skeleton.Text y='5' width='60%' />
+            </Skeleton>
           ),
         }));
       }
 
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body rows={[getSkeleton(), getSkeleton(), getSkeleton()]}/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body rows={[getSkeleton(), getSkeleton(), getSkeleton()]} />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Merging columns', async ({task}) => {
+    test.concurrent('Merging columns', async ({ task }) => {
       const data = [
         {
           keyword: 'ebay buy',
@@ -704,22 +704,22 @@ describe('DataTable', () => {
       ];
 
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Row merging', async ({task}) => {
+    test.concurrent('Row merging', async ({ task }) => {
       const data = [
         {
           keyword: 'ebay buy',
@@ -759,22 +759,22 @@ describe('DataTable', () => {
       ];
 
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Row and Column merging', async ({task}) => {
+    test.concurrent('Row and Column merging', async ({ task }) => {
       const data = [
         {
           keyword: 'ebay buy',
@@ -811,39 +811,39 @@ describe('DataTable', () => {
       ];
 
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Secondary table', async ({task}) => {
+    test.concurrent('Secondary table', async ({ task }) => {
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data} use='secondary' sort={['kd', 'desc']}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%' sortable/>
-                <DataTable.Column name='cpc' children='CPC'/>
-                <DataTable.Column name='vol' children='Vol.'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data} use='secondary' sort={['kd', 'desc']}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' sortable />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Hover of grouped rows', async ({task}) => {
+    test.concurrent('Hover of grouped rows', async ({ task }) => {
       const data = [
         {
           keyword: 'www.ebay.com',
@@ -859,35 +859,35 @@ describe('DataTable', () => {
       ];
 
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
       );
 
       await expect(
-          await snapshot(component, {
-            actions: {
-              hover: '[data-ui-name="DefinitionTable.Body"] [data-ui-name="Flex"]',
-            },
-          }),
+        await snapshot(component, {
+          actions: {
+            hover: '[data-ui-name="DefinitionTable.Body"] [data-ui-name="Flex"]',
+          },
+        }),
       ).toMatchImageSnapshot(task);
       await expect(
-          await snapshot(component, {
-            actions: {
-              hover:
-                  '[data-ui-name="DefinitionTable.Body"] [data-ui-name="group-cell"] [data-ui-name="Flex"]',
-            },
-          }),
+        await snapshot(component, {
+          actions: {
+            hover:
+              '[data-ui-name="DefinitionTable.Body"] [data-ui-name="group-cell"] [data-ui-name="Flex"]',
+          },
+        }),
       ).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Active state for row', async ({task}) => {
+    test.concurrent('Active state for row', async ({ task }) => {
       const data = [...Array(12).keys()].map(() => ({
         keyword: 'www.ebay.com',
         kd: '11.2',
@@ -909,24 +909,24 @@ describe('DataTable', () => {
       ];
 
       const component = (
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-              </DataTable.Head>
-              <DataTable.Body>
-                <DataTable.Row>
-                  {(props, row, index) => {
-                    return {
-                      active: Boolean(index % 2),
-                      theme: theme_index[index] as DataTableTheme,
-                    };
-                  }}
-                </DataTable.Row>
-              </DataTable.Body>
-            </DataTable>
-          </div>
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+            </DataTable.Head>
+            <DataTable.Body>
+              <DataTable.Row>
+                {(props, row, index) => {
+                  return {
+                    active: Boolean(index % 2),
+                    theme: theme_index[index] as DataTableTheme,
+                  };
+                }}
+              </DataTable.Row>
+            </DataTable.Body>
+          </DataTable>
+        </div>
       );
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -934,13 +934,13 @@ describe('DataTable', () => {
 
     test('a11y', async () => {
       vi.useFakeTimers();
-      const {container} = render(
-          <DataTable data={[{keyword: 123}]}>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' children='KD,%'/>
-            </DataTable.Head>
-            <DataTable.Body/>
-          </DataTable>,
+      const { container } = render(
+        <DataTable data={[{ keyword: 123 }]}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' children='KD,%' />
+          </DataTable.Head>
+          <DataTable.Body />
+        </DataTable>,
       );
       act(() => {
         vi.runAllTimers();
@@ -967,16 +967,16 @@ describe('DataTable', () => {
         },
       ];
 
-      const {container} = render(
-          <div style={{width: 800}}>
-            <DataTable data={data}>
-              <DataTable.Head>
-                <DataTable.Column name='keyword' children='Keyword'/>
-                <DataTable.Column name='kd' children='KD,%'/>
-              </DataTable.Head>
-              <DataTable.Body/>
-            </DataTable>
-          </div>,
+      const { container } = render(
+        <div style={{ width: 800 }}>
+          <DataTable data={data}>
+            <DataTable.Head>
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>,
       );
 
       act(() => {
@@ -991,21 +991,21 @@ describe('DataTable', () => {
 
   describe('DataTable.Column', () => {
     test.concurrent('Should support set flex after rerender', () => {
-      const {getByTestId, rerender} = render(
-          <DataTable data={[]}>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' data-testid='column' flex={0}/>
-              <DataTable.Column name='kd'/>
-            </DataTable.Head>
-          </DataTable>,
+      const { getByTestId, rerender } = render(
+        <DataTable data={[]}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' data-testid='column' flex={0} />
+            <DataTable.Column name='kd' />
+          </DataTable.Head>
+        </DataTable>,
       );
       expect(getByTestId('column').style.flex).toBe('0 0px');
       rerender(
-          <DataTable data={[]}>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' data-testid='column' flex={0}/>
-            </DataTable.Head>
-          </DataTable>,
+        <DataTable data={[]}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' data-testid='column' flex={0} />
+          </DataTable.Head>
+        </DataTable>,
       );
       expect(getByTestId('column').style.flex).toBe('0 0px');
     });
@@ -1013,12 +1013,12 @@ describe('DataTable', () => {
     test.concurrent('Should support ref', () => {
       const spy = vi.fn();
       render(
-          <DataTable data={[]}>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' ref={spy}/>
-              <DataTable.Column name='kd'/>
-            </DataTable.Head>
-          </DataTable>,
+        <DataTable data={[]}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' ref={spy} />
+            <DataTable.Column name='kd' />
+          </DataTable.Head>
+        </DataTable>,
       );
       expect(spy).toBeCalled();
     });

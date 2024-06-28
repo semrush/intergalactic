@@ -16,7 +16,7 @@ describe('Notice', () => {
     shouldSupportRef(Notice);
 
     test.concurrent('Should support custom attributes', () => {
-      const {getByTestId} = render(<Notice data-testid='notice' name='notice'/>);
+      const { getByTestId } = render(<Notice data-testid='notice' name='notice' />);
       expect(getByTestId('notice').attributes['name'].value).toBe('notice');
     });
 
@@ -26,7 +26,7 @@ describe('Notice', () => {
           <p data-testid='child'>Test</p>
         </Notice>
       );
-      const {getByTestId} = render(component);
+      const { getByTestId } = render(component);
       expect(getByTestId('child')).toBeTruthy();
     });
 
@@ -36,21 +36,21 @@ describe('Notice', () => {
           <Notice.CloseIcon data-testid='close'>Close Icon</Notice.CloseIcon>
         </Notice>
       );
-      const {getByTestId} = render(component);
+      const { getByTestId } = render(component);
       expect(getByTestId('close')).toBeTruthy();
     });
 
-    test.concurrent('Should support theme', async ({task}) => {
+    test.concurrent('Should support theme', async ({ task }) => {
       const component = (
         <>
           <Notice>Text Notice</Notice>
-          <br/>
+          <br />
           <Notice theme='success'>Text Notice</Notice>
-          <br/>
+          <br />
           <Notice theme='danger'>Text Notice</Notice>
-          <br/>
+          <br />
           <Notice theme='warning'>Text Notice</Notice>
-          <br/>
+          <br />
           <Notice theme='muted'>Text Notice</Notice>
         </>
       );
@@ -58,7 +58,7 @@ describe('Notice', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support custom theme', async ({task}) => {
+    test.concurrent('Should support custom theme', async ({ task }) => {
       const component = (
         <>
           <Notice theme='#feebc5'>
@@ -69,7 +69,7 @@ describe('Notice', () => {
                 <button type='button'>Wow, so cool!</button>
               </Notice.Actions>
             </Notice.Content>
-            <Notice.CloseIcon/>
+            <Notice.CloseIcon />
           </Notice>
         </>
       );
@@ -77,11 +77,11 @@ describe('Notice', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should correctly render', async ({task}) => {
+    test.concurrent('Should correctly render', async ({ task }) => {
       const component = (
         <Notice>
           <Notice.Label>
-            <div style={{width: '16px', height: '16px', background: 'orange'}}/>
+            <div style={{ width: '16px', height: '16px', background: 'orange' }} />
           </Notice.Label>
           <Notice.Content>
             Look at this cool notice!
@@ -89,7 +89,7 @@ describe('Notice', () => {
               <button type='button'>Wow, so cool!</button>
             </Notice.Actions>
           </Notice.Content>
-          <Notice.CloseIcon/>
+          <Notice.CloseIcon />
         </Notice>
       );
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -99,25 +99,25 @@ describe('Notice', () => {
   describe('Notice.Label', () => {
     beforeEach(cleanup);
 
-    test.concurrent('Should support theme', async ({task}) => {
+    test.concurrent('Should support theme', async ({ task }) => {
       const component = (
         <>
           <Notice>
             <Notice.Label>Lab</Notice.Label>
           </Notice>
-          <br/>
+          <br />
           <Notice theme='success'>
             <Notice.Label>Lab</Notice.Label>
           </Notice>
-          <br/>
+          <br />
           <Notice theme='danger'>
             <Notice.Label>Lab</Notice.Label>
           </Notice>
-          <br/>
+          <br />
           <Notice theme='warning'>
             <Notice.Label>Lab</Notice.Label>
           </Notice>
-          <br/>
+          <br />
           <Notice theme='muted'>
             <Notice.Label>Lab</Notice.Label>
           </Notice>
@@ -134,17 +134,17 @@ describe('Notice', () => {
     shouldSupportClassName(NoticeSmart);
     shouldSupportRef(NoticeSmart);
 
-    test.concurrent('Should support theme props', async ({task}) => {
+    test.concurrent('Should support theme props', async ({ task }) => {
       const component = (
         <>
           <NoticeSmart>Text NoticeSmart</NoticeSmart>
-          <br/>
+          <br />
           <NoticeSmart theme='success'>Text NoticeSmart</NoticeSmart>
-          <br/>
+          <br />
           <NoticeSmart theme='danger'>Text NoticeSmart</NoticeSmart>
-          <br/>
+          <br />
           <NoticeSmart theme='warning'>Text NoticeSmart</NoticeSmart>
-          <br/>
+          <br />
           <NoticeSmart theme='muted'>Text NoticeSmart</NoticeSmart>
         </>
       );
@@ -152,10 +152,10 @@ describe('Notice', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should correctly render', async ({task}) => {
+    test.concurrent('Should correctly render', async ({ task }) => {
       const component = (
         <NoticeSmart
-          label={<div style={{width: '16px', height: '16px', background: 'orange'}}/>}
+          label={<div style={{ width: '16px', height: '16px', background: 'orange' }} />}
           actions={<button type='button'>Wow, so cool!</button>}
           closable
         >
@@ -166,7 +166,7 @@ describe('Notice', () => {
     });
 
     test('a11y', async () => {
-      const {container} = render(
+      const { container } = render(
         <NoticeSmart label='label' actions='actions' closable>
           Text NoticeSmart
         </NoticeSmart>,

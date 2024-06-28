@@ -5,14 +5,17 @@ import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test.describe('Slider', () => {
-  test('Users can interact with Slider via VoiceOver', async ({page, voiceOver: pureVoiceOver}) => {
+  test('Users can interact with Slider via VoiceOver', async ({
+    page,
+    voiceOver: pureVoiceOver,
+  }) => {
     const standPath = 'website/docs/components/slider/examples/slider_with_options.tsx';
     const reportPath = 'website/docs/components/slider/slider-a11y-report.md';
 
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.reload();
     await page.setContent(htmlContent);
-    const {voiceOver, getReport} = await makeVoiceOverReporter(pureVoiceOver);
+    const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
     await voiceOver.interact();
 
     expect(await voiceOver.itemText()).toBe('Medium slider');

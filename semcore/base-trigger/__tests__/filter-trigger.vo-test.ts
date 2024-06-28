@@ -5,17 +5,18 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/v
 import { writeFile } from 'fs/promises';
 
 test.describe('BaseTrigger', () => {
-  test.skip('Users can interact with FilterTrigger via VoiceOver', async ({
-                                                                            page,
-                                                                            voiceOver: pureVoiceOver,
-                                                                          }) => {
+  test('Users can interact with FilterTrigger via VoiceOver', async ({
+    page,
+    voiceOver: pureVoiceOver,
+  }) => {
+    test.skip();
     const standPath = 'website/docs/components/filter-trigger/examples/usage_with_select.tsx';
     const reportPath = 'website/docs/components/filter-trigger/filter-trigger-a11y-report.md';
 
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.reload();
     await page.setContent(htmlContent);
-    const {voiceOver, getReport} = await makeVoiceOverReporter(pureVoiceOver);
+    const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
     await voiceOver.interact();
 
     await voiceOver.next();

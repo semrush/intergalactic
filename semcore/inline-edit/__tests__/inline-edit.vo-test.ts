@@ -5,17 +5,18 @@ import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test.describe('InlineEdit', () => {
-  test.skip('Users can interact with Slider via VoiceOver', async ({
-                                                                     page,
-                                                                     voiceOver: pureVoiceOver,
-                                                                   }) => {
+  test('Users can interact with Slider via VoiceOver', async ({
+    page,
+    voiceOver: pureVoiceOver,
+  }) => {
+    test.skip();
     const standPath = 'website/docs/components/inline-edit/examples/simple_use.tsx';
     const reportPath = 'website/docs/components/inline-edit/inline-edit-a11y-report.md';
 
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.reload();
     await page.setContent(htmlContent);
-    const {voiceOver, getReport} = await makeVoiceOverReporter(pureVoiceOver);
+    const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
     await voiceOver.interact();
     expect(await voiceOver.itemText()).toContain('Author');
     await voiceOver.next();
@@ -23,17 +24,17 @@ test.describe('InlineEdit', () => {
     await voiceOver.act();
     expect(await voiceOver.lastSpokenPhrase()).toContain('edit text');
     expect(await voiceOver.lastSpokenPhrase()).toContain(
-        'Press Enter to apply value, press Escape to discard changes',
+      'Press Enter to apply value, press Escape to discard changes',
     );
     for (let i = 0; i < 12; i++) {
-      await voiceOver.press('Backspace', {application: 'Playwright'});
+      await voiceOver.press('Backspace', { application: 'Playwright' });
     }
     await voiceOver.type('Algernon');
-    await voiceOver.press('Enter', {application: 'Playwright'});
+    await voiceOver.press('Enter', { application: 'Playwright' });
     expect(await voiceOver.lastSpokenPhrase()).toContain('Algernon');
     await voiceOver.act();
     await voiceOver.type('Hello world?');
-    await voiceOver.press('Escape', {application: 'Playwright'});
+    await voiceOver.press('Escape', { application: 'Playwright' });
     expect(await voiceOver.lastSpokenPhrase()).toContain('Algernon');
 
     const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));

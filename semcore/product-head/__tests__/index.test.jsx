@@ -44,21 +44,21 @@ describe('ProductHead', () => {
       </ProductHead>
     );
 
-    test.concurrent('Render correctly', async ({task}) => {
+    test.concurrent('Render correctly', async ({ task }) => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Render correctly for tablet', async ({task}) => {
-      await expect(await snapshot(component, {width: 766})).toMatchImageSnapshot(task);
+    test.concurrent('Render correctly for tablet', async ({ task }) => {
+      await expect(await snapshot(component, { width: 766 })).toMatchImageSnapshot(task);
     });
   });
 
   describe('Title', () => {
     beforeEach(cleanup);
 
-    test.concurrent('Renders correctly if not enough space', async ({task}) => {
+    test.concurrent('Renders correctly if not enough space', async ({ task }) => {
       const component = (
-        <snapshot.ProxyProps style={{margin: 5, width: '200px'}}>
+        <snapshot.ProxyProps style={{ margin: 5, width: '200px' }}>
           <Title>Tool Name for: Domain.com</Title>
           <Title toolName='Tool Name for:'>Domain.com</Title>
         </snapshot.ProxyProps>
@@ -67,7 +67,7 @@ describe('ProductHead', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Renders correctly Title.Tool', async ({task}) => {
+    test.concurrent('Renders correctly Title.Tool', async ({ task }) => {
       const component = (
         <Title>
           <Title.Tool>Tool Name for:</Title.Tool>
@@ -81,9 +81,9 @@ describe('ProductHead', () => {
   describe('Info', () => {
     beforeEach(cleanup);
 
-    test.concurrent('Renders correctly when item alone', async ({task}) => {
+    test.concurrent('Renders correctly when item alone', async ({ task }) => {
       const component = (
-        <snapshot.ProxyProps style={{margin: 5}}>
+        <snapshot.ProxyProps style={{ margin: 5 }}>
           <Info>
             <Info.Item label='Location:'>United States</Info.Item>
           </Info>
@@ -98,9 +98,9 @@ describe('ProductHead', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Renders correctly when items two', async ({task}) => {
+    test.concurrent('Renders correctly when items two', async ({ task }) => {
       const component = (
-        <snapshot.ProxyProps style={{margin: 5}}>
+        <snapshot.ProxyProps style={{ margin: 5 }}>
           <Info>
             <Info.Item label='Location:'>United States</Info.Item>
             <Info.Item>

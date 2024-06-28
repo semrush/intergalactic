@@ -4,9 +4,9 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('DataTable', () => {
   test('Users can interact with DataTable virtual scroll via VoiceOver', async ({
-                                                                                  page,
-                                                                                  voiceOver,
-                                                                                }) => {
+    page,
+    voiceOver,
+  }) => {
     const standPath = 'website/docs/table-group/data-table/examples/virtual-scroll-in-table.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -19,7 +19,7 @@ test.describe('DataTable', () => {
       await voiceOver.press('Control+Option+ArrowDown');
     }
     expect((await voiceOver.lastSpokenPhrase()).replace(/[,.\s]/g, ' ')).toContain(
-        'row 6 of 10 000 #5',
+      'row 6 of 10 000 #5',
     );
   });
 });

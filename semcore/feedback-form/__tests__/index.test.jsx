@@ -20,9 +20,9 @@ describe('FeedbackForm', () => {
     test.concurrent('Should call onSubmit', () => {
       const onSubmit = vi.fn();
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeedbackForm onSubmit={onSubmit}>
-          <FeedbackForm.Item name='input'>{({input}) => <input {...input} />}</FeedbackForm.Item>
+          <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
           <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
         </FeedbackForm>,
       );
@@ -35,10 +35,10 @@ describe('FeedbackForm', () => {
       const required = (value) => (value ? undefined : 'Required');
       const onSubmit = vi.fn();
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeedbackForm onSubmit={onSubmit}>
           <FeedbackForm.Item name='input' validate={required}>
-            {({input}) => <input {...input} />}
+            {({ input }) => <input {...input} />}
           </FeedbackForm.Item>
           <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
         </FeedbackForm>,
@@ -48,10 +48,10 @@ describe('FeedbackForm', () => {
       expect(onSubmit).toHaveBeenCalledTimes(0);
     });
 
-    test.concurrent('Should correct render form', async ({task}) => {
+    test.concurrent('Should correct render form', async ({ task }) => {
       const component = (
         <FeedbackForm>
-          <FeedbackForm.Item name='input'>{({input}) => <input {...input} />}</FeedbackForm.Item>
+          <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
           <FeedbackForm.Submit>Send feedback</FeedbackForm.Submit>
           <FeedbackForm.Cancel>Cancel</FeedbackForm.Cancel>
         </FeedbackForm>
@@ -60,7 +60,7 @@ describe('FeedbackForm', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should correct render notice', async ({task}) => {
+    test.concurrent('Should correct render notice', async ({ task }) => {
       const component = (
         <FeedbackForm>
           <FeedbackForm.Notice>You can also send us an email.</FeedbackForm.Notice>
@@ -71,19 +71,19 @@ describe('FeedbackForm', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should correct render feedback success', async ({task}) => {
+    test.concurrent('Should correct render feedback success', async ({ task }) => {
       const component = <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
 
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should correct render spinner', async ({task}) => {
+    test.concurrent('Should correct render spinner', async ({ task }) => {
       const component = (
         <FeedbackForm loading>
           LOADING
-          <br/>
+          <br />
           LOADING
-          <br/>
+          <br />
           LOADING
         </FeedbackForm>
       );
@@ -91,13 +91,13 @@ describe('FeedbackForm', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should correct work props for spinner theme', async ({task}) => {
+    test.concurrent('Should correct work props for spinner theme', async ({ task }) => {
       const component = (
         <FeedbackForm loading background='#878dfd85' theme='invert'>
           LOADING
-          <br/>
+          <br />
           LOADING
-          <br/>
+          <br />
           LOADING
         </FeedbackForm>
       );
@@ -105,14 +105,14 @@ describe('FeedbackForm', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test('Should work with validationOnBlur=true (default behaviour)', async ({expect}) => {
+    test('Should work with validationOnBlur=true (default behaviour)', async ({ expect }) => {
       const required = (value) => (value ? undefined : 'Required');
       const onSubmit = vi.fn();
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeedbackForm onSubmit={onSubmit}>
           <FeedbackForm.Item name='description' validate={required}>
-            {({input, meta}) => <input data-testid={'input'} {...input} />}
+            {({ input, meta }) => <input data-testid={'input'} {...input} />}
           </FeedbackForm.Item>
           <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
         </FeedbackForm>,
@@ -125,14 +125,14 @@ describe('FeedbackForm', () => {
       expect(Input.attributes.state.value).toBe('invalid');
     });
 
-    test('Should work with validationOnBlur=false', async ({expect}) => {
+    test('Should work with validationOnBlur=false', async ({ expect }) => {
       const required = (value) => (value ? undefined : 'Required');
       const onSubmit = vi.fn();
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeedbackForm onSubmit={onSubmit} validateOnBlur={false}>
           <FeedbackForm.Item name='description' validate={required}>
-            {({input, meta}) => <input data-testid={'input'} {...input} />}
+            {({ input, meta }) => <input data-testid={'input'} {...input} />}
           </FeedbackForm.Item>
           <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
         </FeedbackForm>,
@@ -149,11 +149,11 @@ describe('FeedbackForm', () => {
     });
 
     test('a11y', async () => {
-      const {container} = render(
+      const { container } = render(
         <FeedbackForm>
           <label htmlFor='suggestions'>Tell us your suggestion or report an issue</label>
           <FeedbackForm.Item name='input'>
-            {({input}) => <input id='suggestions' {...input} />}
+            {({ input }) => <input id='suggestions' {...input} />}
           </FeedbackForm.Item>
           <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
         </FeedbackForm>,
@@ -181,15 +181,15 @@ describe('FeedbackForm', () => {
   describe('5-star FeedbackForm', () => {
     beforeEach(cleanup);
 
-    test('Should not submit if invalid', async ({expect}) => {
+    test('Should not submit if invalid', async ({ expect }) => {
       const required = (value) => (value ? undefined : 'Required');
       const onSubmit = vi.fn();
 
-      const {getByText} = render(
+      const { getByText } = render(
         <FeedbackRating
-          initialValues={{input: ''}}
+          initialValues={{ input: '' }}
           onSubmit={onSubmit}
-          formConfig={[{key: 'input', label: 'test input', type: 'input', validate: required}]}
+          formConfig={[{ key: 'input', label: 'test input', type: 'input', validate: required }]}
           visible
           rating={3}
         />,

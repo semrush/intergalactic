@@ -21,7 +21,7 @@ describe('Radio', () => {
     shouldSupportRef(Radio.Text, Radio);
 
     test.concurrent('Should support custom attributes on the input', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Radio>
           <Radio.Value
             includeInputProps={['data-testid', ...inputProps]}
@@ -34,23 +34,23 @@ describe('Radio', () => {
       expect(getByTestId('input').attributes['name'].value).toBe('radio');
     });
 
-    test.concurrent('Should support sizes', async ({task}) => {
+    test.concurrent('Should support sizes', async ({ task }) => {
       const component = (
         <snapshot.ProxyProps m='5px'>
           <Radio size='l'>
-            <Radio.Value/>
+            <Radio.Value />
             <Radio.Text>Test quest</Radio.Text>
           </Radio>
           <Radio size='m'>
-            <Radio.Value/>
+            <Radio.Value />
             <Radio.Text>Test quest</Radio.Text>
           </Radio>
           <Radio size='l'>
-            <Radio.Value checked/>
+            <Radio.Value checked />
             <Radio.Text>Test quest</Radio.Text>
           </Radio>
           <Radio size='m'>
-            <Radio.Value checked/>
+            <Radio.Value checked />
             <Radio.Text>Test quest</Radio.Text>
           </Radio>
         </snapshot.ProxyProps>
@@ -59,11 +59,11 @@ describe('Radio', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support custom text color', async ({task}) => {
+    test.concurrent('Should support custom text color', async ({ task }) => {
       const component = (
         <snapshot.ProxyProps m='5px'>
           <Radio>
-            <Radio.Value/>
+            <Radio.Value />
             <Radio.Text color='text-critical'>Test quest</Radio.Text>
           </Radio>
         </snapshot.ProxyProps>
@@ -72,26 +72,26 @@ describe('Radio', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support normal state', async ({task}) => {
+    test.concurrent('Should support normal state', async ({ task }) => {
       const component = (
         <snapshot.ProxyProps m='5px'>
           <Radio>
-            <Radio.Value/>
+            <Radio.Value />
           </Radio>
           <Radio disabled>
-            <Radio.Value/>
+            <Radio.Value />
           </Radio>
           <Radio>
-            <Radio.Value keyboardFocused/>
+            <Radio.Value keyboardFocused />
           </Radio>
           <Radio checked>
-            <Radio.Value/>
+            <Radio.Value />
           </Radio>
           <Radio>
-            <Radio.Value checked disabled/>
+            <Radio.Value checked disabled />
           </Radio>
           <Radio>
-            <Radio.Value checked keyboardFocused/>
+            <Radio.Value checked keyboardFocused />
           </Radio>
         </snapshot.ProxyProps>
       );
@@ -99,26 +99,26 @@ describe('Radio', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support invalid state', async ({task}) => {
+    test.concurrent('Should support invalid state', async ({ task }) => {
       const component = (
         <snapshot.ProxyProps m='5px'>
           <Radio state='invalid'>
-            <Radio.Value/>
+            <Radio.Value />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value disabled/>
+            <Radio.Value disabled />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value keyboardFocused/>
+            <Radio.Value keyboardFocused />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value checked/>
+            <Radio.Value checked />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value checked disabled/>
+            <Radio.Value checked disabled />
           </Radio>
           <Radio state='invalid'>
-            <Radio.Value checked keyboardFocused/>
+            <Radio.Value checked keyboardFocused />
           </Radio>
         </snapshot.ProxyProps>
       );
@@ -126,20 +126,20 @@ describe('Radio', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support theme', async ({task}) => {
+    test.concurrent('Should support theme', async ({ task }) => {
       const component = (
         <snapshot.ProxyProps m='5px'>
           <Radio theme='yellow-400'>
-            <Radio.Value/>
+            <Radio.Value />
           </Radio>
           <Radio theme='yellow-400'>
-            <Radio.Value checked/>
+            <Radio.Value checked />
           </Radio>
           <Radio state='invalid' theme='yellow-400'>
-            <Radio.Value/>
+            <Radio.Value />
           </Radio>
           <Radio state='invalid' theme='yellow-400'>
-            <Radio.Value checked/>
+            <Radio.Value checked />
           </Radio>
         </snapshot.ProxyProps>
       );
@@ -149,9 +149,9 @@ describe('Radio', () => {
 
     test('Should support change of state "checked" on click in label', async () => {
       const spy = vi.fn();
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Radio data-testid='label'>
-          <Radio.Value onChange={spy}/>
+          <Radio.Value onChange={spy} />
         </Radio>,
       );
 
@@ -164,10 +164,10 @@ describe('Radio', () => {
     beforeEach(cleanup);
 
     test.concurrent('Should transfer name to Radio', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup name='test'>
           <Radio>
-            <Radio.Value includeInputProps={['data-testid', ...inputProps]} data-testid='radio'/>
+            <Radio.Value includeInputProps={['data-testid', ...inputProps]} data-testid='radio' />
           </Radio>
         </RadioGroup>,
       );
@@ -179,7 +179,7 @@ describe('Radio', () => {
       const onChange = vi.fn();
       const onChangeRadio = vi.fn();
       const value = 'test';
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup onChange={onChange}>
           <Radio>
             <Radio.Value
@@ -201,7 +201,7 @@ describe('Radio', () => {
       const onChange = vi.fn();
       const onChangeRadio = vi.fn(() => false);
       const value = 'test';
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup onChange={onChange}>
           <Radio>
             <Radio.Value
@@ -220,7 +220,7 @@ describe('Radio', () => {
     });
 
     test.concurrent('Should support initial value in Radio.Value', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup name='test' value='1'>
           <Radio>
             <Radio.Value
@@ -242,16 +242,16 @@ describe('Radio', () => {
     });
 
     test.concurrent('Should support initial value in Radio', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup name='test' value='2'>
           <Radio value={'1'}>
             <Radio.Value>
-              <Radio.Value.Control data-testid='radioControl'/>
+              <Radio.Value.Control data-testid='radioControl' />
             </Radio.Value>
           </Radio>
           <Radio value={'2'}>
             <Radio.Value>
-              <Radio.Value.Control data-testid='radioControlSecond'/>
+              <Radio.Value.Control data-testid='radioControlSecond' />
             </Radio.Value>
           </Radio>
         </RadioGroup>,
@@ -261,27 +261,27 @@ describe('Radio', () => {
       expect(getByTestId('radioControlSecond').checked).toBeTruthy();
     });
 
-    test.concurrent('Should support invalid state with RadioGroup', async ({task}) => {
+    test.concurrent('Should support invalid state with RadioGroup', async ({ task }) => {
       const component = (
         <RadioGroup>
           <snapshot.ProxyProps m='5px'>
             <Radio state='invalid'>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
             <Radio state='invalid'>
-              <Radio.Value disabled/>
+              <Radio.Value disabled />
             </Radio>
             <Radio state='invalid'>
-              <Radio.Value keyboardFocused/>
+              <Radio.Value keyboardFocused />
             </Radio>
             <Radio state='invalid'>
-              <Radio.Value checked/>
+              <Radio.Value checked />
             </Radio>
             <Radio state='invalid'>
-              <Radio.Value checked disabled/>
+              <Radio.Value checked disabled />
             </Radio>
             <Radio state='invalid'>
-              <Radio.Value checked keyboardFocused/>
+              <Radio.Value checked keyboardFocused />
             </Radio>
           </snapshot.ProxyProps>
         </RadioGroup>
@@ -290,31 +290,31 @@ describe('Radio', () => {
       await expect(await snapshot(component)).toMatchImageSnapshot(task);
     });
 
-    test.concurrent('Should support sizes', async ({task}) => {
+    test.concurrent('Should support sizes', async ({ task }) => {
       const component = (
         <snapshot.ProxyProps m='5px'>
           <RadioGroup size='l'>
             <Radio>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
             <Radio>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
           </RadioGroup>
           <RadioGroup size='m'>
             <Radio>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
             <Radio size='l'>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
           </RadioGroup>
           <RadioGroup>
             <Radio size='m'>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
             <Radio size='l'>
-              <Radio.Value/>
+              <Radio.Value />
             </Radio>
           </RadioGroup>
         </snapshot.ProxyProps>
@@ -325,15 +325,15 @@ describe('Radio', () => {
 
     test.concurrent(
       'Should support change size when set property in Radio.Value',
-      async ({task}) => {
+      async ({ task }) => {
         const component = (
           <snapshot.ProxyProps m='5px'>
             <RadioGroup>
               <Radio>
-                <Radio.Value/>
+                <Radio.Value />
               </Radio>
               <Radio size='l'>
-                <Radio.Value/>
+                <Radio.Value />
               </Radio>
             </RadioGroup>
           </snapshot.ProxyProps>
@@ -342,10 +342,10 @@ describe('Radio', () => {
       },
     );
 
-    test('should support disabled prop', async ({expect}) => {
+    test('should support disabled prop', async ({ expect }) => {
       const spy = vi.fn();
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup onChange={spy}>
           {[1, 2, 3].map((i) => {
             return (
@@ -374,10 +374,10 @@ describe('Radio', () => {
       expect(spy).not.toBeCalledWith('2', expect.anything());
     });
 
-    test('should support different types of value', async ({expect}) => {
+    test('should support different types of value', async ({ expect }) => {
       const spy = vi.fn();
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <RadioGroup onChange={spy}>
           {[1, '2', true].map((i, index) => {
             return (
@@ -406,14 +406,14 @@ describe('Radio', () => {
     });
 
     test('a11y', async () => {
-      const {container} = render(
+      const { container } = render(
         <RadioGroup name='radio' value='1'>
           <Radio>
-            <Radio.Value value='1'/>
+            <Radio.Value value='1' />
             <Radio.Text>1</Radio.Text>
           </Radio>
           <Radio>
-            <Radio.Value value='2'/>
+            <Radio.Value value='2' />
             <Radio.Text>2</Radio.Text>
           </Radio>
         </RadioGroup>,

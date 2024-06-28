@@ -10,9 +10,9 @@ describe('FeaturePopover', () => {
     beforeEach(cleanup);
 
     test('should support custom className', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeaturePopover>
-          <FeaturePopover.Trigger data-testid='trigger' className='more-than one-class'/>
+          <FeaturePopover.Trigger data-testid='trigger' className='more-than one-class' />
         </FeaturePopover>,
       );
 
@@ -20,9 +20,9 @@ describe('FeaturePopover', () => {
     });
 
     test('should support custom attributes', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeaturePopover>
-          <FeaturePopover.Trigger data-testid='trigger' name='trigger'/>
+          <FeaturePopover.Trigger data-testid='trigger' name='trigger' />
         </FeaturePopover>,
       );
 
@@ -33,7 +33,7 @@ describe('FeaturePopover', () => {
       const ref = React.createRef();
       render(
         <FeaturePopover>
-          <FeaturePopover.Trigger tag='button' ref={ref}/>
+          <FeaturePopover.Trigger tag='button' ref={ref} />
         </FeaturePopover>,
       );
       expect(ref.current.nodeName).toBe('BUTTON');
@@ -47,7 +47,7 @@ describe('FeaturePopover', () => {
           </FeaturePopover.Trigger>
         </FeaturePopover>
       );
-      const {getByTestId} = render(component);
+      const { getByTestId } = render(component);
 
       expect(getByTestId('child')).toBeTruthy();
     });
@@ -57,9 +57,9 @@ describe('FeaturePopover', () => {
     beforeEach(cleanup);
 
     test('should support custom className', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeaturePopover visible>
-          <FeaturePopover.Popper data-testid='trigger' className='more-than one-class'/>
+          <FeaturePopover.Popper data-testid='trigger' className='more-than one-class' />
         </FeaturePopover>,
       );
 
@@ -67,9 +67,9 @@ describe('FeaturePopover', () => {
     });
 
     test('should support custom attributes', () => {
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <FeaturePopover visible>
-          <FeaturePopover.Popper data-testid='trigger' name='trigger'/>
+          <FeaturePopover.Popper data-testid='trigger' name='trigger' />
         </FeaturePopover>,
       );
 
@@ -80,7 +80,7 @@ describe('FeaturePopover', () => {
       const ref = React.createRef();
       render(
         <FeaturePopover visible>
-          <FeaturePopover.Popper tag='div' ref={ref}/>
+          <FeaturePopover.Popper tag='div' ref={ref} />
         </FeaturePopover>,
       );
       expect(ref.current.nodeName).toBe('DIV');
@@ -94,12 +94,12 @@ describe('FeaturePopover', () => {
           </FeaturePopover.Popper>
         </FeaturePopover>
       );
-      const {getByTestId} = render(component);
+      const { getByTestId } = render(component);
 
       expect(getByTestId('child')).toBeTruthy();
     });
 
-    test.concurrent('visual regression', async ({task}) => {
+    test.concurrent('visual regression', async ({ task }) => {
       const component = (
         <div
           style={{
@@ -110,12 +110,11 @@ describe('FeaturePopover', () => {
             justifyContent: 'flex-end',
           }}
         >
-          <FeaturePopover onVisibleChange={() => {
-          }} visible disablePortal>
+          <FeaturePopover onVisibleChange={() => {}} visible disablePortal>
             <FeaturePopover.Trigger>
-              <div style={{position: 'relative'}}>
+              <div style={{ position: 'relative' }}>
                 Open Popover
-                <FeaturePopover.Spot/>
+                <FeaturePopover.Spot />
               </div>
             </FeaturePopover.Trigger>
             <FeaturePopover.Popper closeIcon wMax={350}>

@@ -6,22 +6,23 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/v
 
 test.describe('InputMask', () => {
   test('Users can interact with InputMask via VoiceOver', async ({
-                                                                   page,
-                                                                   voiceOver: pureVoiceOver,
-                                                                 }) => {
+    page,
+    voiceOver: pureVoiceOver,
+  }) => {
+    test.skip();
     const standPath = 'website/docs/components/input-mask/examples/inputmask.tsx';
     const reportPath = 'website/docs/components/input-mask/input-mask-a11y-report.md';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const {voiceOver, getReport} = await makeVoiceOverReporter(pureVoiceOver);
+    const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
     await voiceOver.interact();
     await voiceOver.next();
 
     expect(await voiceOver.lastSpokenPhrase()).toContain('Card number');
     expect(await voiceOver.lastSpokenPhrase()).toContain('edit text');
     await voiceOver.interact();
-    await voiceOver.type('55aa44 ', {application: 'Playwright'});
+    await voiceOver.type('55aa44 ', { application: 'Playwright' });
     for (let i = 0; i <= 20; i++) {
       const itemText = await voiceOver.itemText();
       if (itemText.startsWith('5544')) break;

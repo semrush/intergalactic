@@ -6,15 +6,15 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/v
 
 test.describe('DataTable', () => {
   test('Users can interact with DataTable via VoiceOver', async ({
-                                                                   page,
-                                                                   voiceOver: pureVoiceOver,
-                                                                 }) => {
+    page,
+    voiceOver: pureVoiceOver,
+  }) => {
     const standPath = 'website/docs/table-group/data-table/examples/base.tsx';
     const reportPath = 'website/docs/table-group/data-table/data-table-a11y-report.md';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const {voiceOver, getReport} = await makeVoiceOverReporter(pureVoiceOver);
+    const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
     await voiceOver.interact();
 
     await voiceOver.interact();

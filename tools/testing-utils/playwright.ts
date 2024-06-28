@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import type { Page } from 'playwright';
-import { test } from '@playwright/test';
-import { voiceOverTest } from '@guidepup/playwright';
+import { test as base } from '@playwright/test';
+import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
 import { allure } from 'allure-playwright';
 import type { TestInfo } from 'playwright/types/test';
 
@@ -17,7 +17,7 @@ export const getAccessibilityViolations: GetAccessibilityViolations = async ({ p
 };
 
 // biome-ignore lint/correctness/noEmptyPattern:
-const beforeEachTests = async ({}, testInfo: TestInfo) => {
+const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
   let suit = 'unknown';
   const testFilePath = testInfo.titlePath[0] ?? '';
 
@@ -32,11 +32,25 @@ const beforeEachTests = async ({}, testInfo: TestInfo) => {
   await allure.parentSuite(testInfo.titlePath[1]);
   await allure.suite(suit);
   await allure.subSuite(testInfo.title);
+
+  await use();
 };
 
-test.beforeEach(beforeEachTests);
-voiceOverTest.beforeEach(beforeEachTests);
+const test = base.extend<{ testHook: void }>({
+  testHook: [
+    beforeEachTests,
+    { auto: true },
+  ],
+});
+
+const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
+  testHook: [
+    beforeEachTests,
+    { auto: true },
+  ],
+});
+
 
 export * from '@playwright/test';
 export * from '@guidepup/playwright';
-export { AxeBuilder };
+export { AxeBuilder, test, voiceOverTest };
