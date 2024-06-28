@@ -137,11 +137,11 @@ jobs:
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Cache test results
         uses: actions/cache@v4.0.0
-        id: cache-test-results
+        id: cache-unit-test-results
         with:
           path: |
             allure-results-unit
-          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: test-unit-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -202,11 +202,11 @@ jobs:
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Cache test results
         uses: actions/cache@v4.0.0
-        id: cache-test-results
+        id: cache-vo-test-results
         with:
           path: |
             allure-results-vo
-          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: test-vo-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -283,11 +283,11 @@ jobs:
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Cache test results
         uses: actions/cache@v4.0.0
-        id: cache-test-results
+        id: cache-browser-test-results
         with:
           path: |
             allure-results-browser
-          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: test-browser-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -347,11 +347,11 @@ jobs:
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Cache test results
         uses: actions/cache@v4.0.0
-        id: cache-test-results
+        id: cache-axe-test-results
         with:
           path: |
             allure-results-axe
-          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: test-axe-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -401,14 +401,32 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Restore cache test results
         uses: actions/cache@v4.0.0
-        id: cache-test-results
+        id: cache-unit-test-results
         with:
           path: |
             allure-results-unit
+          key: test-unit-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Restore cache test results
+        uses: actions/cache@v4.0.0
+        id: cache-vo-test-results
+        with:
+          path: |
             allure-results-vo
+          key: test-vo-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Restore cache test results
+        uses: actions/cache@v4.0.0
+        id: cache-browser-test-results
+        with:
+          path: |
             allure-results-browser
+          key: test-browser-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+      - name: Restore cache test results
+        uses: actions/cache@v4.0.0
+        id: cache-axe-test-results
+        with:
+          path: |
             allure-results-axe
-          key: test-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
+          key: test-axe-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
