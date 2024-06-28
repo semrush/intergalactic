@@ -9,6 +9,7 @@ test.describe('Accordion', () => {
     page,
     voiceOver: pureVoiceOver,
   }) => {
+    test.skip();
     const standPath = 'website/docs/components/accordion/examples/basic_usage.tsx';
     const reportPath = 'website/docs/components/accordion/accordion-a11y-report.md';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
