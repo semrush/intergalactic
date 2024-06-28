@@ -13,8 +13,8 @@ const Demo = () => {
       <Text tag='label' htmlFor='count-example' size={200}>
         Input with symbols counter
       </Text>
-      <Box mt={2}>
-        <Input w={240}>
+      <Box mt={2} mb={4}>
+        <Input w={320}>
           <Input.Value
             placeholder='Count some words right here'
             value={value}
@@ -27,13 +27,11 @@ const Demo = () => {
           </Input.Addon>
         </Input>
       </Box>
-      <br />
-      <br />
       <Text tag='label' htmlFor='badge-example' size={200}>
         Input with badge
       </Text>
       <Box mt={2}>
-        <Input w={240}>
+        <Input w={320}>
           <Input.Value placeholder='Wow! Such input. So new.' id='badge-example' />
           <Input.Addon>
             <Badge bg='green-300'>new</Badge>

@@ -24,7 +24,7 @@ const Demo = () => {
         Input with loading state
       </Text>
       <Box mt={2}>
-        <Input w={240}>
+        <Input w={300}>
           <Input.Value
             id='loading-example'
             placeholder='Type something to see world spinning...'
