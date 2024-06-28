@@ -156,7 +156,7 @@ class TriggerButton extends Component {
 
   render() {
     const SFilterTrigger = Root;
-    const { Children, styles, empty, triggerRef, ...other } = this.asProps;
+    const { Children, styles, empty, triggerRef } = this.asProps;
 
     return sstyled(styles)(
       <SFilterTrigger
@@ -168,7 +168,6 @@ class TriggerButton extends Component {
         selected={!empty}
         ref={triggerRef}
         animationsDisabled
-        {...other}
       >
         {addonTextChildren(
           Children,
