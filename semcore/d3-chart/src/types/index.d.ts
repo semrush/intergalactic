@@ -38,6 +38,9 @@ export * from './Bar';
 export { default as HorizontalBar } from './HorizontalBar';
 export * from './HorizontalBar';
 
+export { default as DistributionBar } from './DistributionBar';
+export * from './DistributionBar';
+
 export { default as GroupBar } from './GroupBar';
 export * from './GroupBar';
 

@@ -46,9 +46,9 @@ const Demo = () => {
           <DistributionBar.Percent />
           <DistributionBar.Value />
         </DistributionBar.Annotation>
-        <DistributionBar.Bar>
+        <DistributionBar.Bar onClick={(barIndex) => alert(`Bar ${barIndex} clicked`)}>
           <DistributionBar.Bar.Background />
-          <DistributionBar.Bar.Fill />
+          <DistributionBar.Bar.Fill/>
         </DistributionBar.Bar>
       </DistributionBar>
     </Plot>
