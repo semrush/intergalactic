@@ -21,12 +21,7 @@ const Demo = () => {
             id='clear-example'
           />
           {value && (
-            <Input.Addon
-              tag={CloseM}
-              interactive
-              aria-label='Clear'
-              onClick={() => setValue('')}
-            />
+            <Input.Addon tag={CloseM} interactive aria-label='Clear' onClick={() => setValue('')} />
           )}
         </Input>
       </Box>
