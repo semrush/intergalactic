@@ -8,3 +8,4 @@ dist
 email
 semcore/chart/src/style/chart.shadow.css
 **/lcov-report/**
+allure-report

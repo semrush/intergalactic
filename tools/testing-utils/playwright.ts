@@ -37,19 +37,12 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
 };
 
 const test = base.extend<{ testHook: void }>({
-  testHook: [
-    beforeEachTests,
-    { auto: true },
-  ],
+  testHook: [beforeEachTests, { auto: true }],
 });
 
 const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
-  testHook: [
-    beforeEachTests,
-    { auto: true },
-  ],
+  testHook: [beforeEachTests, { auto: true }],
 });
-
 
 export * from '@playwright/test';
 export * from '@guidepup/playwright';
