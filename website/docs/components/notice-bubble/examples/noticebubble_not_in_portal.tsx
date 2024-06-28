@@ -24,7 +24,7 @@ const Demo = () => {
     >
       <div style={{ height: '800px' }}>
         <NoticeBubbleContainer manager={manager} disablePortal={true} />
-        <Button onClick={handleClick}>Show basic notice</Button>
+        <Button onClick={handleClick} m={5}>Show basic notice</Button>
       </div>
     </div>
   );
