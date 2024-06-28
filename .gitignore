@@ -74,5 +74,5 @@ test-results
 playwright-report
 
 # Allure
-allure-results
+allure-results*
 allure-report
