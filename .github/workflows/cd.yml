@@ -416,7 +416,7 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Generate report
         run: |
-          allure generate allure-results --clean -o allure-report
+          pnpm allure generate allure-results --clean -o allure-report
       - name: Publish report
         uses: peaceiris/actions-gh-pages@v4
         with:
