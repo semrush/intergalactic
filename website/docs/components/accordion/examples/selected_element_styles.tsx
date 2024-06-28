@@ -1,7 +1,6 @@
 import React from 'react';
 import Accordion from 'intergalactic/accordion';
-import { Text } from 'intergalactic/typography';
-import { Box, Flex } from 'intergalactic/flex-box';
+import { Box } from 'intergalactic/flex-box';
 
 const cn = (...classes: any[]) => classes.filter(Boolean).join(' ');
 
@@ -10,18 +9,20 @@ const Demo = () => {
     <>
       <style>
         {`
-          .styled-accordion-item {
+          /* In this example we are forced to use more specific css-selectors to override the default Vitepress styles */
+          .vp-doc h3.styled-accordion-item {
             background-color: var(--intergalactic-bg-secondary-neutral);
             padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-3x);
             color: var(--intergalactic-text-primary);
+            margin-bottom: var(--intergalactic-spacing-05x);
           }
-          .styled-accordion-item:first-of-type {
+          .vp-doc h3.styled-accordion-item:first-of-type {
             border-radius: var(--intergalactic-control-rounded) var(--intergalactic-control-rounded) 0 0;
           }
-          .styled-accordion-item:last-of-type {
+          .vp-doc h3.styled-accordion-item:last-of-type {
             border-radius: 0 0 var(--intergalactic-control-rounded) var(--intergalactic-control-rounded);
           }
-          .styled-accordion-item-selected {
+          .vp-doc h3.styled-accordion-item-selected {
             background-color: var(--intergalactic-bg-secondary-neutral-hover);
             color: #000;
           }

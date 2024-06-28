@@ -576,7 +576,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  margin: 0;
+  margin: unset;
 }
 
 .vp-doc ol[class] {
@@ -657,7 +657,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   background-color: var(--vp-c-bg-elv);
 }
 
-.vp-doc h3 {
+.vp-doc h3:not([class]) {
   margin: 24px 0 16px 0;
 }
 
