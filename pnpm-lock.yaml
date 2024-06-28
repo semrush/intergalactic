@@ -113,6 +113,9 @@ importers:
       allure-playwright:
         specifier: 3.0.0-beta.3
         version: 3.0.0-beta.3
+      allure-vitest:
+        specifier: 3.0.0-beta.3
+        version: 3.0.0-beta.3
       csv:
         specifier: 6.2.0
         version: 6.2.0
@@ -11309,6 +11312,12 @@ packages:
 
   /allure-playwright@3.0.0-beta.3:
     resolution: {integrity: sha512-4TD2IZbSRWrDdO6OtAdRt5UHOWphAscGeLG1yhTK8NvWNIhJPD+3xUets9KEEs5822Lp1Sd/3EcPjxWxJlVwpw==}
+    dependencies:
+      allure-js-commons: 3.0.0-beta.3
+    dev: true
+
+  /allure-vitest@3.0.0-beta.3:
+    resolution: {integrity: sha512-pmelG0x42QgYgNwjFYD5H5xiH46lHpaAuTp9WewLZhyEjISJxzT5KWqWzcxLuM+N3ARmfpl2rgR/5nGsQl+mBg==}
     dependencies:
       allure-js-commons: 3.0.0-beta.3
     dev: true

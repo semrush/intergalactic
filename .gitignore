@@ -72,3 +72,6 @@ semcore/illustration/**/*.d.ts
 # Playwright
 test-results
 playwright-report
+
+# Allure
+allure-results

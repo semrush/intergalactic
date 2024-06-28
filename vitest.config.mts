@@ -1,5 +1,4 @@
-/// <reference types="vitest" />
-
+import AllureReporter from 'allure-vitest/reporter';
 import { defineConfig } from 'vitest/config';
 import babel from 'vite-plugin-babel';
 import { resolve as resolvePath } from 'path';
@@ -62,13 +61,15 @@ export default defineConfig({
       '**/*.d.ts',
       'node_modules',
       'dist',
+      'allure-results',
       '.idea',
       '.git',
       '.cache',
       'tools/*/__tests__/utils.ts'
     ],
     environment: 'jsdom',
-    setupFiles: resolvePath(__dirname, 'tools/testing-utils/setupTests'),
+    setupFiles: ['allure-vitest/setup', resolvePath(__dirname, 'tools/testing-utils/setupTests')],
+    reporters: ["default", new AllureReporter({})],
   },
   define: {
     'globalThis.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
