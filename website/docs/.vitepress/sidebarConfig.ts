@@ -501,6 +501,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Stacked horizontal bar chart',
           },
           {
+            link: '/data-display/bar-distribution/bar-distribution',
+            activeMatch: '/data-display/bar-distribution/',
+            text: 'Distribution bar chart',
+          },
+          {
             link: '/data-display/bubble-chart/bubble-chart',
             activeMatch: '/data-display/bubble-chart/',
             text: 'Bubble chart',

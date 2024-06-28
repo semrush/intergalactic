@@ -58,13 +58,13 @@ export const PlaygroundWrapper: React.FC = () => {
 
 export const App: React.FC = () => {
   return (
-    <StrictMode>
-      <div>
-        <Nav />
-        <main className='intergalactic-playground_playground-view'>
-          <PlaygroundWrapper />
-        </main>
-      </div>
-    </StrictMode>
+    // <StrictMode>
+    <div>
+      <Nav />
+      <main className='intergalactic-playground_playground-view'>
+        <PlaygroundWrapper />
+      </main>
+    </div>
+    // </StrictMode>
   );
 };
