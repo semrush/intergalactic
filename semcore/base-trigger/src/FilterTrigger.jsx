@@ -64,8 +64,19 @@ class RootFilterTrigger extends Component {
   };
 
   getTriggerButtonProps() {
-    const { empty, size, placeholder, active, disabled, includeInputProps, triggerRef } =
-      this.asProps;
+    const {
+      empty,
+      size,
+      placeholder,
+      active,
+      disabled,
+      includeInputProps,
+      triggerRef,
+      'data-ui-name': dataUiName,
+      ...other
+    } = this.asProps;
+
+    const [controlProps] = getInputProps(other, includeInputProps);
 
     return {
       size,
@@ -74,8 +85,8 @@ class RootFilterTrigger extends Component {
       selected: !empty,
       active,
       disabled,
-      includeInputProps,
       triggerRef,
+      ...controlProps,
     };
   }
 
@@ -145,19 +156,7 @@ class TriggerButton extends Component {
 
   render() {
     const SFilterTrigger = Root;
-    const {
-      Children,
-      styles,
-      empty,
-      size,
-      placeholder,
-      active,
-      disabled,
-      includeInputProps,
-      triggerRef,
-    } = this.asProps;
-
-    const [controlProps] = getInputProps(this.asProps, includeInputProps);
+    const { Children, styles, empty, triggerRef } = this.asProps;
 
     return sstyled(styles)(
       <SFilterTrigger
@@ -165,15 +164,10 @@ class TriggerButton extends Component {
         tag='button'
         type='button'
         w='100%'
-        size={size}
-        placeholder={placeholder}
         empty={empty}
         selected={!empty}
-        active={active}
-        disabled={disabled}
         ref={triggerRef}
         animationsDisabled
-        {...controlProps}
       >
         {addonTextChildren(
           Children,
