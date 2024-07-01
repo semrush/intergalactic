@@ -489,7 +489,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed internal imports after babel transformation were causing "named import from json" errors in some bundlers.
+- Fixed internal imports after babel transformation were causing "named import from JSON" errors in some bundlers.
 
 ## [3.3.4] - 2023-01-09
 
@@ -753,7 +753,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

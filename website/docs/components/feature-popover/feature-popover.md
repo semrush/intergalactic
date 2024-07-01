@@ -200,7 +200,7 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 - FeaturePopover for a new function should be shown for no more than a month.
 - FeaturePopover should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show FeaturePopover on the element in the table. Don’t distract the user.
 - **Don’t show FeaturePopover if the user has already interacted with the advertised item.**
-- FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", don’t show this message to him again.
+- FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", don’t show this message to them again.
 
 ## Recommendations for copy
 

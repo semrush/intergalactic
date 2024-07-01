@@ -604,7 +604,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- [A11y] added `role="switch"` and support the Enter or Space key for used to toggle between a checked or unchecked
+- [A11Y] added `role="switch"` and support the Enter or Space key for used to toggle between a checked or unchecked
 positions.
 - [TS] Rewrite code from TS to JS.
 
@@ -669,7 +669,7 @@ positions.
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

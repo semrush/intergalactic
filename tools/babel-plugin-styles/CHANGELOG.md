@@ -24,9 +24,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Removed `postcss-combine-duplicated-selectors` as far as it was breaking css injection processing.
-- Removed `cssnano` due to [poor support of css rules merging](https://github.com/cssnano/cssnano/issues/805).
-- Added `csso` as a main css optimization package.
+- Removed `postcss-combine-duplicated-selectors` as far as it was breaking CSS injection processing.
+- Removed `cssnano` due to [poor support of CSS rules merging](https://github.com/cssnano/cssnano/issues/805).
+- Added `csso` as a main CSS optimization package.
 
 ## [1.8.1] - 2023-01-27
 
@@ -44,13 +44,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Put all css `:hover` selectors into `@media(hover: hover)` block.
+- Put all CSS `:hover` selectors into `@media(hover: hover)` block.
 
 ## [1.6.0] - 2022-09-31
 
 ### Added
 
-- Added support of `--intergalactic-*` css variables.
+- Added support of `--intergalactic-*` CSS variables.
 
 ## [1.5.0] - 2022-09-31
 
@@ -93,7 +93,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed recursive css variables resolving
+- Fixed recursive CSS variables resolving
 
 ## [1.1.2] - 2022-02-16
 
@@ -105,7 +105,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Supported nested css variables in css variables fallback
+- Supported nested CSS variables in CSS variables fallback
 
 ## [1.1.0] - 2022-01-10
 

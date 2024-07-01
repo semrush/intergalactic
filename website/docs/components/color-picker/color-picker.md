@@ -185,7 +185,7 @@ To help users fix the invalid input, add the following message to the tooltip: "
 Components that you can use as a trigger for the ColorPicker:
 
 - [Input](/components/input/input)
-- [Link](/components/link/link)
+- [Link component](/components/link/link)
 - [Select](/components/select/select)
 
 ![](static/color-picker-triggers.png)

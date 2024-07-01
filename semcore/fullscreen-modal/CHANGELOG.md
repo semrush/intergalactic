@@ -734,7 +734,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added dependency on `@semcore/modal`. Component use `<Modal>` for initialization.
-- Added properties `visible`, `closable`, `duration`, about them can you read in [API](/components/fullscreen-modal/fullscreen-modal-api/#a5f727)
+- Added properties `visible`, `closable`, `duration`, about them can you read in [API](/components/fullscreen-modal/fullscreen-modal-API/#a5f727)
 
 ## [1.1.2] - 2020-09-08
 

@@ -110,7 +110,7 @@ Table: ARIA roles
 
 ### General requirements
 
-- Images should be described in text in such a way that screen reader can adequately describe the content of the picture. Use appropriate `alt` text. Alternative text can be as long as it needs to be in order to sufficiently describe the image, but it's recommended to keep it concise and not too long for better user experience.
+- Images should be described in text in such a way that screen reader can adequately describe the content of the picture. Use appropriate `alt` text. Alternative text can be as long as it needs to be to sufficiently describe the image, but it's recommended to keep it concise and not too long for better user experience.
 - Provide a text alternative to the audio content.
 - Add names to all elements of controls and information entry (such as `Search` or `Submit`).
 - Synchronize subtitles with audio in videos content.

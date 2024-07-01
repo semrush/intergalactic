@@ -145,7 +145,7 @@ Info icon should have `margin-left: 4px`.
 
 ## Checkbox with a link inside
 
-Text label may contain a [Link](/components/link/link).
+Text label may contain a [Link component](/components/link/link).
 
 ![](static/link.png)
 

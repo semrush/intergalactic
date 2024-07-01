@@ -133,10 +133,10 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**Button** is a control component that performs an action on the page. Compared to [Link](/components/link/link), it's an accent control or call-to-action for performing actions on the page.
+**Button** is a control component that performs an action on the page. Compared to [Link component](/components/link/link), it's an accent control or call-to-action for performing actions on the page.
 
 ::: tip
-In some cases, you can use the button as a [Link](/components/link/link) that leads to another page.
+In some cases, you can use the button as a [Link component](/components/link/link) that leads to another page.
 :::
 
 ## Component composition

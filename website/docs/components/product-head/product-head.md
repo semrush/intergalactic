@@ -8,7 +8,7 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 
 **ProductHead** is a comprehensive composed component that contains all common controls, CTAs, and filters for data filtering in the product's reports.
 
-It is always positioned below the main Semrush header and search bar.
+It is always positioned below the main Semrush header and searchbar.
 
 ## Component composition
 

@@ -151,7 +151,7 @@ You can put the following addons before and after the text inside the list item:
 - [Flag](/components/flags/flags),
 - [Badge](/components/badge/badge),
 - user picture or avatar,
-- control such as [Link](/components/link/link), [Button](/components/button/button) or [Switch](/components/switch/switch).
+- control such as [Link component](/components/link/link), [Button](/components/button/button) or [Switch](/components/switch/switch).
 
 ### Addon before the text
 

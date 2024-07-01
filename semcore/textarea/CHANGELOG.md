@@ -54,7 +54,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `minRows` prop behaviour.
+- `minRows` prop behavior.
 
 ## [5.22.2] - 2024-04-22
 
@@ -644,7 +644,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.5.1] - 2019-12-16
 
@@ -656,7 +656,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -702,7 +702,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [2.2.0] - 2019-07-05
 
@@ -721,7 +721,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Добавлено css-свойство `font-family: inherit;`
+- Добавлено CSS-свойство `font-family: inherit;`
 
 ## [2.0.2-prerelease.10] - 2019-03-11
 
@@ -737,7 +737,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Убрано свойство `fullWidth`
 - Убрано свойство `inputRef`
 - Убрано свойство `focused`
-- Добавлено свойство css `width: 100%;`
+- Добавлено свойство CSS `width: 100%;`
 
 ### Added
 

@@ -26,7 +26,7 @@ Follow these steps to submit your changes:
 
 1. Fork the repository.
 2. Apply and commit your changes to your fork.
-3. Add a note to the appropriate changelog file (e.g., `semcore/button/CHANGELOG.md`) for each change. Use the date when the changes were made for the new note.
+3. Add a note to the appropriate changelog file (for example, `semcore/button/CHANGELOG.md`) for each change. Use the date when the changes were made for the new note.
 4. Open a pull request to the main repository.
 
 We appreciate your contributions and will review your pull request as soon as possible. Your efforts make a difference!
@@ -37,7 +37,7 @@ We have a robust playground designed for developing components. To get started:
 
 1. Run `pnpm start` and navigate to `http://localhost:2077` in your browser to access the playground.
 2. On the documentation website, copy example code by clicking the copy icon in the top-right corner of a code snippet. For instance, you can use [the Input component example](https://developer.semrush.com/intergalactic/components/input/input-code/#loading_state_in_the_input).
-3. Create a playground page using your favorite code editor (e.g., `vi tools/playground/examples/input.tsx`) and paste the example code there.
+3. Create a playground page using your favorite code editor (for example, `vi tools/playground/examples/input.tsx`) and paste the example code there.
 4. Return to `http://localhost:2077` and reload the page. The link to `input.tsx` will appear in the top panel. Edit the playground page code, and after making changes, reload the page to see your modifications.
 
 ## Tests
@@ -92,7 +92,7 @@ Also each component is published as a distinct npm package, while a special `@se
 
 ### Default Theme
 
-We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `semcore/utils/src/themes/default.css`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (e.g., `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
+We rely on a [set of design tokens](https://www.figma.com/community/file/1274028958101796491/Semrush---Design-Tokens) to generate CSS variables (refer to `semcore/utils/src/themes/default.css`). Although all components use these variables, for users it's not mandatory to declare them at the root level of the page. For proper component display, CSS variables' default theme is always included as a fallback value in the `var` function (for example, `color: var(--intergalactic-text-secondary, #6c6e79);`). After modifying the name of any CSS variable in component styles, running the `pnpm process-theme` command is necessary. This command updates the fallback value in `var` function and is integrated into the pre-commit hook.
 
 ### Performance Considerations
 
@@ -202,7 +202,7 @@ SLink {
 }
 ```
 
-This CSS file uses nesting and contains selectors targeting tag names used within the component code (e.g., `SLink`).
+This CSS file uses nesting and contains selectors targeting tag names used within the component code (for example, `SLink`).
 
 Here's how the plugin works:
 
