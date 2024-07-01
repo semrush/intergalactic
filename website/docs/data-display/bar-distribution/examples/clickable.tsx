@@ -3,6 +3,7 @@ import { Plot, DistributionBar } from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
+import { Chart } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   const MARGIN = 30;
@@ -22,36 +23,45 @@ const Demo = () => {
     .paddingOuter(0.2);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-
-      <DistributionBar x='value' y='category'>
-        <DistributionBar.Hover />
-        <DistributionBar.Tooltip>
-          {({ index }) => {
-            return {
-              children: (
-                <>
-                  <DistributionBar.Tooltip.Title>{data[index].category}</DistributionBar.Tooltip.Title>
-                  <Flex justifyContent='space-between'>
-                    <DistributionBar.Tooltip.Dot mr={4}>Bar</DistributionBar.Tooltip.Dot>
-                    <Text bold>{data[index].value}</Text>
-                  </Flex>
-                </>
-              ),
-            };
-          }}
-        </DistributionBar.Tooltip>
-        <DistributionBar.Annotation>
-          <DistributionBar.Label />
-          <DistributionBar.Percent />
-          <DistributionBar.Value />
-        </DistributionBar.Annotation>
-        <DistributionBar.Bar onClick={(barIndex) => alert(`Bar ${barIndex} clicked`)}>
-          <DistributionBar.Bar.Background />
-          <DistributionBar.Bar.Fill/>
-        </DistributionBar.Bar>
-      </DistributionBar>
-    </Plot>
+    <Flex flexWrap gap={5}>
+      <Chart.DistributionBar
+        y={'category'}
+        x={'value'}
+        data={data}
+        plotWidth={500}
+        plotHeight={450}
+        onClickBar={(barIndex) => alert(`Bar ${barIndex} clicked`)}
+      />
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <DistributionBar x='value' y='category'>
+          <DistributionBar.Hover />
+          <DistributionBar.Tooltip>
+            {({ index }) => {
+              return {
+                children: (
+                  <>
+                    <DistributionBar.Tooltip.Title>{data[index].category}</DistributionBar.Tooltip.Title>
+                    <Flex justifyContent='space-between'>
+                      <DistributionBar.Tooltip.Dot mr={4}>Bar</DistributionBar.Tooltip.Dot>
+                      <Text bold>{data[index].value}</Text>
+                    </Flex>
+                  </>
+                ),
+              };
+            }}
+          </DistributionBar.Tooltip>
+          <DistributionBar.Annotation>
+            <DistributionBar.Label />
+            <DistributionBar.Percent />
+            <DistributionBar.Value />
+          </DistributionBar.Annotation>
+          <DistributionBar.Bar onClick={(barIndex) => alert(`Bar ${barIndex} clicked`)}>
+            <DistributionBar.Bar.Background />
+            <DistributionBar.Bar.Fill/>
+          </DistributionBar.Bar>
+        </DistributionBar>
+      </Plot>
+    </Flex>
   );
 };
 

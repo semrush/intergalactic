@@ -337,6 +337,7 @@ function BarBackground(props) {
       x={x}
       y={y}
       transparent={barProps.transparent}
+      onClick={callAllEventHandlers(props.onClick, barProps.onClick)}
     />,
   );
 }
@@ -371,7 +372,7 @@ class Hover extends Component {
   }
 
   handlerMouseMoveRoot = trottle((e) => {
-    const { eventEmitter, size, rootRef, patterns } = this.asProps;
+    const { eventEmitter, rootRef, patterns } = this.asProps;
     const point = eventToPoint(e, rootRef.current);
     const { clientX, clientY } = e;
 

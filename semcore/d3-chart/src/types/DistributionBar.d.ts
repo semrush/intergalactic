@@ -54,23 +54,7 @@ export type DistributionBarFillProps = BoxProps & {
   transparent?: boolean;
   hide?: boolean;
 };
-declare const Fill: IntergalacticD3Component<'rect', DistributionBarFillProps, Context>;
-
-export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
-  Tag extends Intergalactic.Tag = typeof Box,
->(
-  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
-    Tag,
-    TooltipProps,
-    ChildrenRenderProps & TooltipChartContext
-  >,
-) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<
-    Intergalactic.Tag,
-    Intergalactic.Tag,
-    TooltipProps
-  > &
-  TooltipTypeBase;
+type Fill = IntergalacticD3Component<'rect', DistributionBarFillProps, Context>;
 
 declare const DistributionBar: IntergalacticD3Component<'g', DistributionBarProps, BarContext> & {
   Hover: Hover;
