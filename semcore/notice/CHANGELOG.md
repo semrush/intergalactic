@@ -712,7 +712,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Improved performance. Removed one component wrapper.
 - The style processing system has been changed.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
-- [A11y] added role for `Alert` and aria-label for `Close`.
+- [A11Y] added role for `Alert` and aria-label for `Close`.
 
 ## [3.0.0] - 2021-03-15
 
@@ -780,7 +780,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.4.0] - 2019-12-12
 

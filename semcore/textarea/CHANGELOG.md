@@ -644,7 +644,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.5.1] - 2019-12-16
 
@@ -721,7 +721,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Добавлено css-свойство `font-family: inherit;`
+- Добавлено CSS-свойство `font-family: inherit;`
 
 ## [2.0.2-prerelease.10] - 2019-03-11
 

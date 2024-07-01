@@ -12,7 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Using `theme` property with typed values instead of css-variables.
+- Using `theme` property with typed values instead of CSS-variables.
 
 ## [3.26.2] - 2024-06-12
 

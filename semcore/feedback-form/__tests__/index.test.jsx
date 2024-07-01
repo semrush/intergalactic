@@ -104,7 +104,7 @@ describe('FeedbackForm', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should work with validationOnBlur=true (default behaviour)', async ({ expect }) => {
+  test('Should work with validationOnBlur=true (default behavior)', async ({ expect }) => {
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 

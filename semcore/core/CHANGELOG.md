@@ -645,7 +645,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Изменено свойство с `css` на `styles`
+- Изменено свойство с `CSS` на `styles`
 
 ## [0.0.1-13] - 2020-05-19
 

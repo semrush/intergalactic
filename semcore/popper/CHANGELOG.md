@@ -773,7 +773,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Removed aria attributes that were breaking components A11y.
+- Removed aria attributes that were breaking components A11Y.
 
 ## [4.11.29] - 2022-08-30
 

@@ -644,7 +644,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `role="alert"` attributes to increase support for A11y.
+- Added `role="alert"` attributes to increase support for A11Y.
 
 ## [3.1.4] - 2022-08-11
 
@@ -769,7 +769,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Убран некорректный импорт из `widget-empty/src`, ломающий проверку типов `typescript`
+- Убран некорректный импорт из `widget-empty/src`, ломающий проверку типов `TypeScript`
 
 ## [2.0.0] - 2020-06-17
 

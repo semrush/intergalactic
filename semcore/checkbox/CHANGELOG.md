@@ -569,7 +569,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added missing `aria-checked` A11y attribute.
+- Added missing `aria-checked` A11Y attribute.
 
 ## [6.0.11] - 2022-08-30
 
@@ -681,7 +681,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Переименовали сбилженные файлы с 'sm.style.css' -> 'style.css'
+- Переименовали сбилженные файлы с `sm.style.css` -> `style.css`
 
 ## [4.4.0] - 2020-02-12
 
@@ -693,7 +693,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [4.3.0] - 2019-12-12
 

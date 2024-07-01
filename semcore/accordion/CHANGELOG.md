@@ -851,7 +851,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Поправили вызов `onChange` для `Accordion`
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ### Added
 

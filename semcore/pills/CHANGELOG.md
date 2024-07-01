@@ -166,7 +166,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- `Tab` click will not move by Pills with `behaviour=manual`.
+- `Tab` click will not move by Pills with `behavior=manual`.
 
 ## [5.17.0] - 2024-01-19
 
@@ -719,7 +719,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.2.0] - 2019-12-12
 

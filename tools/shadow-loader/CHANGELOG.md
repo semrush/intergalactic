@@ -18,7 +18,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Changed hash file from the global index to stable of css content.
+- Changed hash file from the global index to stable of CSS content.
 
 ## [1.0.3] - 2020-10-20
 

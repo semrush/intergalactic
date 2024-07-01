@@ -571,7 +571,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added screen reader notification of input value and aria attributes for better A11y.
+- Added screen reader notification of input value and aria attributes for better A11Y.
 
 ## [4.0.14] - 2022-08-23
 
@@ -626,7 +626,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] added aria-label for buttons in `InputNumber.Controls`
+- [A11Y] added aria-label for buttons in `InputNumber.Controls`
 
 ## [3.0.1] - 2020-05-31
 

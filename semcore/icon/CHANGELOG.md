@@ -944,7 +944,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Update icons `SEMrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush`.
+- Update icons `Semrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush`.
 
 ## [2.8.0] - 2021-02-11
 
@@ -956,7 +956,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added new color icon `Github`.
+- Added new color icon `GitHub`.
 
 ## [2.6.0] - 2020-12-23
 
