@@ -5,7 +5,7 @@ import InputNumber from 'intergalactic/input-number';
 import Radio, { RadioGroup } from 'intergalactic/radio';
 import Select from 'intergalactic/select';
 import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import { Flex, Box } from 'intergalactic/flex-box';
 
 type Data = {
   title: string;
@@ -38,7 +38,7 @@ const validate = (values: Data) => {
 
 const Demo = () => (
   <FeedbackForm validate={validate} p={1} onSubmit={() => ({})}>
-    <label htmlFor='acitivty'>
+    <Box tag={'label'} htmlFor='acitivty'>
       <Text mb={2} tag='p' size={200}>
         Activity
       </Text>
@@ -46,22 +46,27 @@ const Demo = () => (
         {({ input }) => {
           const { state, className, ...other } = input;
           return (
-            <Input state={state} className={className} m='0 0 16px'>
-              <Input.Value {...other} placeholder='Activity title' id='acitivty' />
+            <Input state={state} className={className}>
+              <Input.Value
+                {...other}
+                placeholder='Activity title'
+                id='acitivty'
+                autoComplete='off'
+              />
             </Input>
           );
         }}
       </FeedbackForm.Item>
-    </label>
+    </Box>
 
-    <label htmlFor='campaign'>
+    <Box tag={'label'} htmlFor='campaign' mt={4}>
       <Text mb={2} tag='p' size={200}>
         Campaign
       </Text>
       <FeedbackForm.Item name='campaign'>
         {({ input }) => (
           <Select onChange={input.onChange} state={input.state} placeholder='Select campaign'>
-            <Select.Trigger id='campaign' {...input} m='0 0 16px' />
+            <Select.Trigger id='campaign' {...input} />
             <Select.Menu>
               {Array(4)
                 .fill(0)
@@ -75,9 +80,9 @@ const Demo = () => (
           </Select>
         )}
       </FeedbackForm.Item>
-    </label>
+    </Box>
 
-    <label htmlFor='day'>
+    <Box tag={'label'} htmlFor='day' mt={4}>
       <Text mb={2} tag='p' size={200}>
         Day
       </Text>
@@ -86,12 +91,12 @@ const Demo = () => (
           const { state, className, ...other } = input;
           return (
             <InputNumber state={state} className={className}>
-              <InputNumber.Value id='day' {...other} placeholder='Enter day' />
+              <InputNumber.Value id='day' {...other} placeholder='Enter day' autoComplete='off' />
             </InputNumber>
           );
         }}
       </FeedbackForm.Item>
-    </label>
+    </Box>
 
     <FeedbackForm.Item name='call'>
       {({ input }) => (

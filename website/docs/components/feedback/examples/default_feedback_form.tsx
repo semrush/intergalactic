@@ -7,6 +7,7 @@ import Dropdown from 'intergalactic/dropdown';
 import ChatM from 'intergalactic/icon/Chat/m';
 import Textarea from 'intergalactic/textarea';
 import { Text } from 'intergalactic/typography';
+import Button from 'intergalactic/button';
 
 const validate = {
   description: (value = '') => {
@@ -87,7 +88,7 @@ class Feedback extends React.PureComponent<{
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight='18px' size={200} color='#6c6e79'>
+            <Text size={200} color='text-secondary'>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
@@ -136,13 +137,20 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger tag={Link} size={200}>
-          <Link.Addon>
-            <ChatM />
-          </Link.Addon>
-          <Link.Text>Send feedback</Link.Text>
+        <Dropdown.Trigger>
+          <Button theme={'info'} use={'tertiary'}>
+            <Button.Addon>
+              <ChatM />
+            </Button.Addon>
+            <Button.Text>Send feedback</Button.Text>
+          </Button>
         </Dropdown.Trigger>
-        <Dropdown.Popper>
+        <Dropdown.Popper
+          role={'dialog'}
+          aria-label={'Feedback form'}
+          aria-modal={'true'}
+          tabIndex={-1}
+        >
           {(_props, { visible }) => (
             <Feedback
               status={status}

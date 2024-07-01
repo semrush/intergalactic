@@ -34,7 +34,7 @@ const Demo = () => {
         onClose={() => setSecondHidden(true)}
         hidden={secondHidden}
       >
-        It’s just a regular message or hint.
+        It's just a regular message or hint.
       </NoticeSmart>
       <NoticeSmart
         theme='success'
