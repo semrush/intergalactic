@@ -58,10 +58,6 @@ export type AccordionItemProps = {
   /** Animation duration
    * @default 350 */
   duration?: number;
-  /**
-   * Changes the visual appearance of the item
-   */
-  compact?: boolean;
 };
 
 /** @deprecated */
@@ -80,10 +76,6 @@ export type ChevronItemProps = BoxProps & {
    * @default m
    */
   size?: 'm' | 'l';
-  /**
-   * Changes the visual appearance of the item
-   */
-  compact?: boolean;
 };
 
 type IntergalacticAccordionComponent<PropsExtending = {}> = (<
