@@ -69,7 +69,7 @@
 
 ### @semcore/counter
 
-- **Fixed** Using `theme` property with typed values instead of css-variables.
+- **Fixed** Using `theme` property with typed values instead of CSS-variables.
 
 ### @semcore/data-table
 
@@ -567,7 +567,7 @@
 
 ### @semcore/d3-chart
 
-- **Added** API to customize A11y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
+- **Added** API to customize A11Y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
 
 ### @semcore/date-picker
 
@@ -742,7 +742,7 @@
 
 ### @semcore/tooltip
 
-- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle A11y specific cases.
+- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle A11Y specific cases.
 - **Fixed** Tooltips `z-index` was lower than `z-index` of all other floating elements..
 
 ### @semcore/utils
@@ -804,7 +804,7 @@
 
 ### @semcore/d3-chart
 
-- **Added** Logic to define X and Y axis for A11y summary in Bar charts.
+- **Added** Logic to define X and Y axis for A11Y summary in Bar charts.
 
 ### @semcore/date-picker
 
@@ -917,7 +917,7 @@
 ### @semcore/d3-chart
 
 - **Added** `Line.Dots` and `Area.Dots` components `display` prop now accepts function that allows developers to granularly control which dots should be displayed.
-- **Fixed** A11y module "Skip to content after plot" link was not working in some cases.
+- **Fixed** A11Y module "Skip to content after plot" link was not working in some cases.
 - **Fixed** view of Line.Area with `null` in data.
 
 ### @semcore/data-table
@@ -968,7 +968,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** A11y in Firefox for clear button in FilterTrigger.
+- **Fixed** A11Y in Firefox for clear button in FilterTrigger.
 
 ### @semcore/d3-chart
 
@@ -1017,7 +1017,7 @@
 - **Changed** Removed wrongly added deprecation messages about `ReferenceLine` `value` props.
 - **Changed** Added `valueEnd` prop to `ReferenceLine.Background` component that allows to specify background width by chart value.
 - **Fixed** `patterns` prop was missing in multiple chart types.
-- **Changed** A11y module links are clickable by `Space` now (along with `Enter` as before).
+- **Changed** A11Y module links are clickable by `Space` now (along with `Enter` as before).
 
 ## [15.61.0] - 2024-02-21
 
@@ -1255,7 +1255,7 @@
 
 ### @semcore/pills
 
-- **Changed** `Tab` click will not move by Pills with `behaviour=manual`.
+- **Changed** `Tab` click will not move by Pills with `behavior=manual`.
 
 ### @semcore/utils
 
@@ -2731,7 +2731,7 @@
 
 ### @semcore/data-table
 
-- **Changed** Moved `role="rowgroup"` on focusable scroll areas to match automatic A11y checks.
+- **Changed** Moved `role="rowgroup"` on focusable scroll areas to match automatic A11Y checks.
 
 ### @semcore/scroll-area
 
@@ -3366,11 +3366,11 @@
 
 ### @semcore/inline-edit
 
-- **Fixed** Improvements for A11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
+- **Fixed** Improvements for A11Y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
 
 ### @semcore/inline-input
 
-- **Fixed** Improvements for A11y. Hidden controls because they are accessible via the keyboard.
+- **Fixed** Improvements for A11Y. Hidden controls because they are accessible via the keyboard.
 
 ### @semcore/input
 
@@ -3590,11 +3590,11 @@
 
 ### @semcore/d3-chart
 
-- **Fixed** Added correct display when there is no data in A11y table.
+- **Fixed** Added correct display when there is no data in A11Y table.
 
 ### @semcore/feedback-form
 
-- **Fixed** Added A11y error binding to field.
+- **Fixed** Added A11Y error binding to field.
 
 ### @semcore/utils
 
@@ -3752,7 +3752,7 @@
 
 ### @semcore/d3-chart
 
-- **Changed** Much improved A11y summary generation for `Radar` chart.
+- **Changed** Much improved A11Y summary generation for `Radar` chart.
 
 ### @semcore/date-picker
 
@@ -4225,7 +4225,7 @@
 
 ### @semcore/modal
 
-- **Added** Added `Modal.Title` component and `aria-labelledby` property for better A11y.
+- **Added** Added `Modal.Title` component and `aria-labelledby` property for better A11Y.
 
 ### @semcore/notice-bubble
 
@@ -4316,7 +4316,7 @@
 
 ### @semcore/ellipsis
 
-- **Fixed** Remove react warning with non-html props.
+- **Fixed** Remove react warning with non-HTML props.
 
 ### @semcore/format-text
 
@@ -4395,7 +4395,7 @@
 
 ### @semcore/d3-chart
 
-- **Changed** Supported semi-async internationalization of text in A11y module.
+- **Changed** Supported semi-async internationalization of text in A11Y module.
 
 ### @semcore/format-text
 
@@ -4846,7 +4846,7 @@
 
 ### @semcore/checkbox
 
-- **Fixed** Added missing `aria-checked` A11y attribute.
+- **Fixed** Added missing `aria-checked` A11Y attribute.
 
 ### @semcore/color-picker
 
@@ -4858,7 +4858,7 @@
 
 ### @semcore/d3-chart
 
-- **Fixed** Ensured A11y module do not break mouse interactions.
+- **Fixed** Ensured A11Y module do not break mouse interactions.
 - **Fixed** Fixed issue with uninitialized styles in some charts.
 
 ### @semcore/data-table
@@ -4915,7 +4915,7 @@
 ### @semcore/popper
 
 - **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
-- **Fixed** Removed aria attributes that were breaking components A11y.
+- **Fixed** Removed aria attributes that were breaking components A11Y.
 
 ### @semcore/radio
 
@@ -5038,7 +5038,7 @@
 
 ### @semcore/feedback-form
 
-- **Added** Added aria attributes for better A11y.
+- **Added** Added aria attributes for better A11Y.
 
 ### @semcore/fullscreen-modal
 
@@ -5069,7 +5069,7 @@
 
 ### @semcore/tooltip
 
-- **Added** Added `aria-live` attribute for better A11y.
+- **Added** Added `aria-live` attribute for better A11Y.
 
 ### @semcore/utils
 
@@ -5113,7 +5113,7 @@
 
 - **Changed** Updated translations.
 - **Added** Added Turkish language support.
-- **Added** Added `role="alert"` attributes to increase support for A11y.
+- **Added** Added `role="alert"` attributes to increase support for A11Y.
 
 ### @semcore/flags
 
@@ -5130,7 +5130,7 @@
 
 ### @semcore/input-number
 
-- **Added** Added screen reader notification of input value and aria attributes for better A11y.
+- **Added** Added screen reader notification of input value and aria attributes for better A11Y.
 
 ### @semcore/link
 
@@ -6333,7 +6333,7 @@
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 - **Changed** [TS] rewrite code from TS to JS.
-- **Changed** [A11y] added role for Alert and aria-label for Close.
+- **Changed** [A11Y] added role for Alert and aria-label for Close.
 
 ### @semcore/spin-container
 
@@ -6354,11 +6354,11 @@
 
 ### @semcore/carousel
 
-- **Added** [A11y] Added support to work Carousel. Next, Carousel. Prev with keyboard.
+- **Added** [A11Y] Added support to work Carousel. Next, Carousel. Prev with keyboard.
 
 ### @semcore/data-table
 
-- **Added** [A11y] Added support keyboard for sortable column.
+- **Added** [A11Y] Added support keyboard for sortable column.
 
 ### @semcore/date-picker
 
@@ -6412,7 +6412,7 @@
 ### @semcore/modal
 
 - **Changed** [TS] rewrite code from ts to js.
-- **Changed** [A11y] added role for Window and aria-label for Close and Window.
+- **Changed** [A11Y] added role for Window and aria-label for Close and Window.
 
 ### @semcore/notice
 
@@ -6420,7 +6420,7 @@
 - **Changed** Improved performance. Removed one component wrapper.
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-- **Changed** [A11y] added role for Alert and aria-label for Close.
+- **Changed** [A11Y] added role for Alert and aria-label for Close.
 
 ### @semcore/pills
 
@@ -6465,7 +6465,7 @@
 
 ### @semcore/table
 
-- **Added** [A11y] Added support keyboard for sortable column.
+- **Added** [A11Y] Added support keyboard for sortable column.
 
 ### @semcore/tag
 
@@ -6486,7 +6486,7 @@
 - **BREAK** Replaced internal representation with native input(type=number).
 - **BREAK** Changed type for value to string.
 - **Fixed** Fixed the js problem with the remainder of division.
-- **Added** [A11y] added aria-label for buttons in `InputNumber.Controls`
+- **Added** [A11Y] added aria-label for buttons in `InputNumber.Controls`
 
 ### @semcore/accordion
 
@@ -6563,7 +6563,7 @@
 
 ### @semcore/switch
 
-- **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or unchecked
+- **Changed** [A11Y] added `role="switch"` and support the Enter or Space key for used to toggle between a checked or unchecked
 - **Changed** [TS] Rewrite code from TS to JS.
 
 ### @semcore/tab-line

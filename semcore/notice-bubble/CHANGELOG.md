@@ -839,7 +839,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - The style processing system has been changed.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 - [TS] rewrite code from TS to JS.
-- [A11y] added role for `Alert` and aria-label for `Close`.
+- [A11Y] added role for `Alert` and aria-label for `Close`.
 
 ## [2.1.1] - 2021-04-28
 

@@ -601,7 +601,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Moved `role="rowgroup"` on focusable scroll areas to match automatic A11y checks.
+- Moved `role="rowgroup"` on focusable scroll areas to match automatic A11Y checks.
 
 ## [3.9.7] - 2023-06-14
 
@@ -942,7 +942,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] Added support keyboard for sortable column.
+- [A11Y] Added support keyboard for sortable column.
 
 ## [1.4.2] - 2021-03-17
 
@@ -972,7 +972,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed `css` styles for DataTable include class name `use`.
+- Fixed `CSS` styles for DataTable include class name `use`.
 
 ## [1.2.0] - 2020-12-09
 

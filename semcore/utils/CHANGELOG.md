@@ -1086,7 +1086,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Появилась возможность оптицонально подключать адаптивность
 - Появилась возможность изолировать стили даже в пределах одной страницы
 - Добавлена функция `CSSinJS` для работы с CSS в JS и SSR
-- Добавлена функция `injectStyle` для вставки стилей кита в `html`
+- Добавлена функция `injectStyle` для вставки стилей кита в `HTML`
 
 ### Changed
 
@@ -1223,7 +1223,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена проблема производительности css-in-js при dev сборках
+- Исправлена проблема производительности `css-in-js` при dev сборках
 
 ## [2.0.2] - 2019-02-08
 

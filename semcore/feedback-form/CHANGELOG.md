@@ -580,7 +580,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added A11y error binding to field.
+- Added A11Y error binding to field.
 
 ## [5.4.3] - 2023-03-24
 
@@ -660,7 +660,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added aria attributes for better A11y.
+- Added aria attributes for better A11Y.
 
 ## [5.1.11] - 2022-08-30
 

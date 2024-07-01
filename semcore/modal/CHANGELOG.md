@@ -654,7 +654,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `Modal.Title` component and `aria-labelledby` property for better A11y.
+- Added `Modal.Title` component and `aria-labelledby` property for better A11Y.
 
 ## [3.3.6] - 2023-01-11
 
@@ -789,7 +789,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - [TS] rewrite code from ts to js.
-- [A11y] added role for `Window` and aria-label for `Close` and `Window`.
+- [A11Y] added role for `Window` and aria-label for `Close` and `Window`.
 
 ## [2.3.1] - 2021-04-28
 
@@ -863,7 +863,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.4.0] - 2019-12-12
 

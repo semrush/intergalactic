@@ -683,7 +683,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] Added support to work `Carousel.Next, Carousel.Prev` with keyboard.
+- [A11Y] Added support to work `Carousel.Next, Carousel.Prev` with keyboard.
 
 ## [1.4.0] - 2021-04-26
 

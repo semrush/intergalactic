@@ -776,7 +776,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] Added support keyboard for sortable column.
+- [A11Y] Added support keyboard for sortable column.
 
 ## [2.2.1] - 2021-03-31
 
@@ -901,7 +901,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.3.1] - 2019-12-13
 

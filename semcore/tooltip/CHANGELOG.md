@@ -193,7 +193,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle A11y specific cases.
+- Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle A11Y specific cases.
 
 ### Fixed
 
@@ -742,7 +742,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `aria-live` attribute for better A11y.
+- Added `aria-live` attribute for better A11Y.
 
 ## [5.0.12] - 2022-08-30
 
@@ -879,7 +879,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [3.4.0] - 2019-12-12
 
