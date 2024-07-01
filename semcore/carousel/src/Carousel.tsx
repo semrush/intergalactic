@@ -441,6 +441,7 @@ class CarouselRoot extends Component<
 
   renderModal(isSmall: boolean, ComponentItems: any[]) {
     const SModalContainer = Root;
+    const SModalBox = Box;
     const {
       styles,
       uid,
@@ -461,7 +462,7 @@ class CarouselRoot extends Component<
       >
         <Flex direction={isSmall ? 'column' : 'row'}>
           {!isSmall && <Carousel.Prev inverted={true} />}
-          <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
+          <SModalBox>
             <SModalContainer
               render={Box}
               role='list'
@@ -486,7 +487,7 @@ class CarouselRoot extends Component<
                 );
               })}
             </SModalContainer>
-          </Box>
+          </SModalBox>
           {isSmall ? (
             <Flex justifyContent={'center'} mt={2}>
               <Carousel.Prev inverted={true} />
@@ -503,6 +504,7 @@ class CarouselRoot extends Component<
 
   render() {
     const SCarousel = Root;
+    const SContentBox = Box;
     const {
       styles,
       Children,
@@ -531,14 +533,14 @@ class CarouselRoot extends Component<
           <>
             <Flex>
               <Carousel.Prev />
-              <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
+              <SContentBox>
                 <Carousel.Container
                   aria-roledescription={ariaRoledescription}
                   aria-label={ariaLabel}
                 >
                   <Children />
                 </Carousel.Container>
-              </Box>
+              </SContentBox>
               <Carousel.Next />
             </Flex>
             {indicators === 'default' && <Carousel.Indicators />}

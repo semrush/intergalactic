@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.1] - 2024-07-01
+
+### Changed
+
+- Border radius to token instead of hardcoded value.
+
 ## [3.39.0] - 2024-06-26
 
 ### Changed
