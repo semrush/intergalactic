@@ -5,7 +5,7 @@ tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code
 
 ## Unknown country and number format
 
-The input field is pre-filled with the value: `+`.
+The input is pre-filled with the value: `+`.
 
 ::: sandbox
 
@@ -17,7 +17,7 @@ The input field is pre-filled with the value: `+`.
 
 ## Known country, but the number format is unknown
 
-The input field has a preset value: "+ {country code}". However, if it is possible to enter phone numbers from multiple countries, a country select option should be provided instead of a static flag.
+The input has a preset value: "+ {country code}". However, if it is possible to enter phone numbers from multiple countries, a country select option should be provided instead of a static flag.
 
 ::: tip
 In certain countries, there may be multiple valid formats for phone numbers. Therefore, it is sometimes safer to remove the format mask to avoid restricting user input.
@@ -33,7 +33,7 @@ In certain countries, there may be multiple valid formats for phone numbers. The
 
 ## Known country and number format
 
-The input field includes the country code as a preset value: "+ {country code}". Additionally, it has the required format mask.
+The input includes the country code as a preset value: "+ {country code}". Additionally, it has the required format mask.
 
 This option is suitable when collecting phone numbers from users in one or a limited number of countries.
 
