@@ -89,7 +89,7 @@ class DistributionBarChartComponent extends AbstractChart<
 
     return scaleBand()
       .range([plotHeight - marginY, marginY])
-      .domain([...data].reverse().map((d) => d[y]) as string[])
+      .domain([...data].reverse().map((d) => d[y]) as any)
       .paddingInner(0.6)
       .paddingOuter(0.2);
   }
