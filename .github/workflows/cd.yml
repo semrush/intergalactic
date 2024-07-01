@@ -2,8 +2,17 @@ name: cd
 on:
   pull_request:
   workflow_dispatch:
+    inputs:
+      ALLURE_JOB_RUN_ID:
+        description: ALLURE_JOB_RUN_ID service parameter. Leave blank.
   push:
     branches: [master]
+env:
+  ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
+  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+  ALLURE_ENDPOINT: ${{ secrets.ALLURE_ENDPOINT }}
+  ALLURE_PROJECT_ID: ${{ secrets.ALLURE_PROJECT_ID }}
+  ALLURE_RESULTS: allure-results*
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -145,12 +154,18 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Install allurectl
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
       - name: Test setup
         id: test-setup
         run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test:docker run -- --allowOnly=false
+        run: allurectl watch -- pnpm test:docker run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
@@ -210,6 +225,12 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Install allurectl
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
@@ -220,7 +241,7 @@ jobs:
         with:
           timeout_minutes: 40
           max_attempts: 3
-          command: pnpm run vo-test:ci
+          command: allurectl watch -- pnpm run vo-test:ci
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.a11y-testing.outcome != 'success'
@@ -291,10 +312,16 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Install allurectl
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
       - name: Browser testing
         id: browser-testing
         run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+          allurectl watch -- docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
@@ -355,10 +382,16 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Install allurectl
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
       - name: Axe testing
         id: axe-testing
         run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.axe.config.ts"
+          allurectl watch -- docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.axe.config.ts"
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.axe-testing.outcome != 'success'
