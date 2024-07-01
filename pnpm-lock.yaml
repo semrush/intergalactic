@@ -212,6 +212,9 @@ importers:
       '@semcore/icon':
         specifier: 4.39.1
         version: link:../icon
+      '@semcore/typography':
+        specifier: 5.37.0
+        version: link:../typography
       '@semcore/utils':
         specifier: 4.30.0
         version: link:../utils

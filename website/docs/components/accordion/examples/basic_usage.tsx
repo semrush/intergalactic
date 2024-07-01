@@ -13,7 +13,7 @@ const Demo = () => {
           <Accordion.Item.Toggle pb={2}>
             <Flex alignItems='center'>
               <Accordion.Item.Chevron mr={2} />
-              <Text size={300} tag='h3' my={0}>{`Section ${index + 1}`}</Text>
+              <Text size={300} my={0}>{`Section ${index + 1}`}</Text>
             </Flex>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>
