@@ -1,8 +1,8 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
-test.describe('AutoSuggest', () => {
-  test('Keyboard Navigation', async ({ page }) => {
+test.describe('Select', () => {
+  test('AutoSuggest Keyboard Navigation', async ({ page }) => {
     const standPath = 'website/docs/components/auto-suggest/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
@@ -21,7 +21,7 @@ test.describe('AutoSuggest', () => {
 
     await expect(page).toHaveScreenshot();
   });
-  test('Mouse Navigation', async ({ page }) => {
+  test('AutoSuggest Mouse Navigation', async ({ page }) => {
     const standPath = 'website/docs/components/auto-suggest/examples/autosuggest_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 

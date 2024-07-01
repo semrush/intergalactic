@@ -2,8 +2,8 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { selectOption } from './utils';
 
-test.describe('FilterTrigger', () => {
-  test('Focus control', async ({ page, browserName }) => {
+test.describe('BaseTrigger', () => {
+  test('FilterTrigger Focus control', async ({ page, browserName }) => {
     const standPath = 'website/docs/components/filter-trigger/examples/usage_with_select.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
