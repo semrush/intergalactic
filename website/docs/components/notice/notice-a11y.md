@@ -19,7 +19,7 @@ Table: Roles & attributes
 | Component          | Attribute                          | Usage                                                                                                                                                                                                                               |
 | ------------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Notice`           | `role="region"`                    | Defines an ARIA landmark and allows users to navigate to the component easily and to have it listed in a summary of the page. |
-| `Notice`           | `aria-label="Notification"`        | Defines a default accessible name for the region. |
+| `Notice`           | `aria-label`                       | Defines a default accessible name for the region: `"Notification"` for **info**, **success** and **warning** themes, and `"Critical notification"` for **danger** theme. |
 | `Notice`           | `aria-live="polite"`               | Defines a region which receives updates that are important for the user to receive, but not so rapid as to be annoying. The screen reader will speak changes whenever the user is idle.                    |
 | `Notice`           | `aria-live="assertive"` (only for `warning` and `danger` themes) | Tells assistive technologies to interrupt other processes to provide users with immediate notification of container changes. |
 | `Notice.CloseIcon` | `aria-label="Close notification"`  | Defines the default accessible name for the **Close** button. |
