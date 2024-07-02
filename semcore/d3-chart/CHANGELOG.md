@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.49.0] - 2024-06-28
+
+### Added
+
+- `DistributionBar` chart.
+
 ## [3.48.0] - 2024-06-19
 
 ### Added

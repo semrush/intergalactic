@@ -1,5 +1,6 @@
 import { LineChart } from './LineChart';
 import { BarChart } from './BarChart';
+import { DistributionBarChart } from './DistributionBarChart';
 import { HistogramChart } from './HistogramChart';
 import { ScatterPlotChart } from './ScatterPlotChart';
 import { AreaChart } from './AreaChart';
@@ -20,4 +21,5 @@ export default {
   Venn: VennChart,
   Radar: RadarChart,
   Cigarette: CigaretteChart,
+  DistributionBar: DistributionBarChart,
 };
