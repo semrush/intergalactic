@@ -10,7 +10,7 @@ const Demo = () => {
     <React.Fragment>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
       <SidePanel visible={visible} onClose={() => setVisible(false)}>
-        <SidePanel.Panel mt={20}>
+        <SidePanel.Panel aria-label='Blah-blah-blah'>
           <Text size={300} tag='p'>
             Waba-laba-dub-dub!
             <Button mt={3}>I'm just a button</Button>

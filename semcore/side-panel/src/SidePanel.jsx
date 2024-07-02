@@ -11,9 +11,13 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import Button from '@semcore/button';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
+import logger from '@semcore/utils/lib/logger';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/side-panel.shadow.css';
 
@@ -27,6 +31,7 @@ class RootSidePanel extends Component {
       map: Number.parseInt,
       prop: 'duration',
     }),
+    i18nEnhance(localizedMessages),
   ];
   static defaultProps = {
     placement: 'right',
@@ -86,7 +91,15 @@ class RootSidePanel extends Component {
   }
 
   getPanelProps() {
-    const { placement, visible, closable, duration, animationsDisabled } = this.asProps;
+    const {
+      placement,
+      visible,
+      closable,
+      duration,
+      animationsDisabled,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+    } = this.asProps;
 
     return {
       visible,
@@ -98,12 +111,15 @@ class RootSidePanel extends Component {
       onOutsideClick: this.handleOutsideClick,
       onKeyDown: this.handleSidebarKeyDown,
       animationsDisabled,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
     };
   }
 
   getCloseProps() {
     return {
       onClick: this.handleIconCloseClick,
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
@@ -148,6 +164,14 @@ function Panel(props) {
 
   useFocusLock(sidebarRef, true, 'auto', !visible, true);
 
+  const hasLabel = Boolean(props['aria-label'] || props['aria-labelledby']);
+
+  logger.warn(
+    !hasLabel,
+    "'aria-label' or 'aria-labelledby' are required for SidePanel component",
+    props['data-ui-name'] || Panel.displayName,
+  );
+
   return sstyled(styles)(
     <>
       {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
@@ -157,6 +181,7 @@ function Panel(props) {
         initialAnimation={true}
         slideOrigin={placement}
         ref={sidebarRef}
+        role='dialog'
       >
         <PortalProvider value={sidebarRef}>
           {closable && <SidePanel.Close />}
@@ -175,14 +200,21 @@ function Panel(props) {
 
 function Footer(props) {
   const SFooter = Root;
-  return sstyled(props.styles)(<SFooter render={Flex} />);
+  return sstyled(props.styles)(<SFooter render={Flex} tag='footer' />);
 }
 
-function Close({ styles, children, Children }) {
+function Close({ styles, children: hasChildren, Children, getI18nText }) {
   const SClose = Root;
   return sstyled(styles)(
-    <SClose render={Box} tag='button'>
-      {children ? <Children /> : <CloseIcon title='Close' />}
+    <SClose
+      render={Button}
+      aria-label={getI18nText('close')}
+      use='tertiary'
+      theme='muted'
+      type='button'
+      addonLeft={hasChildren ? undefined : CloseIcon}
+    >
+      {hasChildren ? <Children /> : null}
     </SClose>,
   );
 }
@@ -199,9 +231,9 @@ function Back(props) {
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={Box}>
-      <ArrowLeft />
-      <SBackText>
+    <SBack render={Button} use='tertiary' theme='muted' type='button'>
+      <Button.Addon tag={ArrowLeft} />
+      <SBackText render={Button.Text}>
         <Children />
       </SBackText>
     </SBack>,
@@ -210,6 +242,7 @@ function Back(props) {
 
 function Body(props) {
   const SBody = Root;
+
   return sstyled(props.styles)(<SBody render={Box} />);
 }
 
@@ -217,7 +250,7 @@ function Header(props) {
   const SHeader = Root;
   const { Children, styles, title } = props;
   return sstyled(styles)(
-    <SHeader render={Box}>
+    <SHeader render={Box} tag='header'>
       {title && <SidePanel.Title children={title} />}
       <Children />
     </SHeader>,
