@@ -134,7 +134,15 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Secondary background of the interface which contains the main data and information.",
-    "components": ["d3-chart", "drag-and-drop", "input", "notice", "textarea", "time-picker"]
+    "components": [
+      "accordion",
+      "d3-chart",
+      "drag-and-drop",
+      "input",
+      "notice",
+      "textarea",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
@@ -142,7 +150,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
-    "components": ["color-picker", "time-picker"]
+    "components": ["accordion", "color-picker", "time-picker"]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-active",
@@ -2269,6 +2277,7 @@
     "computedValue": "8px",
     "description": "8px",
     "components": [
+      "accordion",
       "base-trigger",
       "breadcrumbs",
       "button",
@@ -2313,6 +2322,7 @@
     "computedValue": "12px",
     "description": "12px",
     "components": [
+      "accordion",
       "base-trigger",
       "button",
       "carousel",

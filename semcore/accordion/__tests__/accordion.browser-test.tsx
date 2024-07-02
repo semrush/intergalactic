@@ -34,7 +34,7 @@ test.describe('Accordion', () => {
   });
 
   test('Handles with keyboard and custom trigger', async ({ page }) => {
-    const standPath = 'website/docs/components/accordion/examples/custom_trigger.tsx';
+    const standPath = 'website/docs/components/accordion/examples/non_compact.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -50,7 +50,7 @@ test.describe('Accordion', () => {
 
     await page.setContent(htmlContent);
 
-    const section1Header = await page.locator('text=Section 1');
+    const section1Header = await page.locator('text=Section 1', { hasNotText: 'Hello Section 1' });
 
     await expect(page).toHaveScreenshot();
 

@@ -29,14 +29,14 @@ Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will br
 
 :::
 
-## Custom trigger
+## Primary
 
-You can add your own styles to the trigger or change its `tag`.
+Pass `use='primary'` to enable the primary view.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_trigger.tsx';
+  export Demo from './examples/non_compact.tsx';
 </script>
 
 :::
