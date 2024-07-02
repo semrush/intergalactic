@@ -17,7 +17,7 @@ const Demo = () => {
     <>
       <InlineEdit w={150} editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View>
-          <Tag interactive>
+          <Tag interactive size='l'>
             <Tag.Text>{value}</Tag.Text>
           </Tag>
         </InlineEdit.View>

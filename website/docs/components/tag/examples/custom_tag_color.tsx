@@ -1,13 +1,13 @@
 import React from 'react';
 import Tag from 'intergalactic/tag';
-import SmileSadM from 'intergalactic/icon/SmileSad/m';
+import SmileHappyM from 'intergalactic/icon/SmileHappy/m';
 
 const Demo = () => {
   return (
     <>
-      <Tag theme='primary' color='red-500'>
+      <Tag size='l' theme='primary' color='violet-500'>
         <Tag.Addon>
-          <SmileSadM />
+          <SmileHappyM />
         </Tag.Addon>
         <Tag.Text>Tag</Tag.Text>
       </Tag>
