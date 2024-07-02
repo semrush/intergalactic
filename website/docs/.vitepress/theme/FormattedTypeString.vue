@@ -9,6 +9,15 @@
 
   <dialog ref="dialog" @click="handleDialogClick">
     <TypesView :type="subTypeModal.referenceTo" :types="types" v-if="subTypeModal && types[subTypeModal.referenceTo]" />
+    <div v-if="subTypeModal && !types[subTypeModal.referenceTo]">
+      <h3 class="types-viewer-name">External type</h3>
+      <div>
+        Type <code>{{ subTypeModal.displayText }}</code> is external and not available in the documentation preview.
+      </div>
+      <div>
+        You still can inspect it in <a .href="`https://github.com/search?q=repo%3Asemrush%2Fintergalactic%20${encodeURIComponent(subTypeModal.referenceTo)}&type=code`" target="_blank">the source code</a>.
+      </div>
+    </div>
     <button @click="handleDialogClose" aria-label="close dialog" class="close-dialog">✕</button>
   </dialog>
 </template>
