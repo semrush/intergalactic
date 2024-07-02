@@ -1,0 +1,32 @@
+# Suggests preferred spelling for selected words.
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: false
+action:
+  name: replace
+swap:
+  '(?:Javascript|javascript)': JavaScript
+  '(?:Typescript|typescript)': TypeScript
+  '(?:Yaml-file|yaml file|YML file)': YAML file
+  Ajax: AJAX
+  url: URL
+  sla: SLA
+  slo: SLO
+  sli: SLI
+  '(?:Bff|bff)': BFF
+  Npm: npm
+  HTTPs: HTTPS
+  '(?:NodeJS|nodejs|Nodejs)': Node.js
+  crowdin : Crowdin
+  a11y: A11y|A11Y
+  eslint: ESLint
+  # popular terms not to be matched in code
+  '(?<!\S)(?:api|Api)(?!\w)(?![.-]\w)': API
+  '(?<!\S)html(?!\w)(?![.-]\w)': HTML
+  '(?<!\S)css(?!\w)(?![.-]\w)': CSS
+  '(?<!\S)json(?!\w)(?![.-]\w)': JSON
+  '(?<!\S)(?:semrush|SEMrush)(?!\w)(?![.-]\w)': Semrush
+  '(?<!\S)(?:Prod|prod)(?!\w)(?![.-]\w)': Production|PROD
+  '(?<!\S)(?:Github|github)(?!\w)(?![.-]\w)': GitHub

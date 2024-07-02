@@ -1,0 +1,8 @@
+# Suggests to remove an extra space
+extends: existence
+message: "Remove the extra space in '%s'."
+level: error
+nonword: true
+tokens:
+  - '[\w.?!,\(\)\-":] {2,}[\w.?!,\(\)\-":]'
+  - '[\w.?!,\(\)\-":]. {2,}'

@@ -1,0 +1,9 @@
+# Recommends to avoid unnecessary value judgments in technical docs
+extends: existence
+message: "Avoid using '%s' in technical documentation."
+ignorecase: true
+action:
+  name: remove
+level: warning
+tokens:
+  - '\b(?:eas(?:y|ily)|simpl(?:e|y)|obvious(?:ly)?)\b'

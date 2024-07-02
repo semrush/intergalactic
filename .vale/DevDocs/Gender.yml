@@ -1,0 +1,22 @@
+# Suggests gender-neutral pronouns
+extends: substitution
+message: "Use gender-neutral pronouns when you talk about any person. Use '%s' instead of '%s'."
+level: error
+ignorecase: true
+# nonword: true
+action:
+  name: replace
+swap:
+  he: they
+  him: them
+  his: their
+  she: they
+  her: their
+  hers: theirs
+  s/he: they
+  he/she: they
+  she/he: they
+  he or she: they
+  she or he: they
+# Temporarily off. When it's on and the `nonword` option is `true`, Vale finds `he` and `his` in `the` and `this`.
+#  '\B\(s\)he\b': they

@@ -1,0 +1,43 @@
+# Checks that US English is used
+
+extends: substitution
+message: "Use the US spelling: '%s' instead of '%s'."
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  analogue: analog
+  analyse: analyze
+  authorise: authorize
+  authorised: authorized
+  authorisation: authorization
+  authorising: authorizing
+  behaviour: behavior
+  catalogue: catalog
+  categorise: categorize
+  categorised: categorized
+  centre: center
+  colour: color
+  dialogue: dialog
+  enrol: enroll
+  favourite: favorite
+  flavour: flavor
+  grey: gray
+  labour: labor
+  licence: license
+  metre: meter
+  neighbour: neighbor
+  normalise: normalize
+  optimise: optimize
+  optimised: optimized
+  optimising: optimizing
+  organise: organize
+  programme: program
+  realise: realize
+  realised: realized
+  recognise: recognize
+  recognised: recognized
+  routeing: routing
+  standardise: standardize
+  standardised: standardized

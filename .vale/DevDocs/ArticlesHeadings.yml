@@ -1,0 +1,12 @@
+message: "Consider removing the '%s' article from the heading for readability."
+extends: existence
+ignorecase: true
+action:
+  name: remove
+scope:
+  - heading
+level: suggestion
+tokens:
+  - a
+  - an
+  - the

@@ -1,0 +1,8 @@
+extends: substitution
+message: "Use '%s' instead of '%s'. For branch names, use code font."
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  master: primary|main|controller
