@@ -40,12 +40,13 @@ SBarLabel {
 }
 SBarPercent {
   color: var(--intergalactic-text-secondary, #6c6e79);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 SBarValue {
-  min-width: 100px;
+  min-width: 52px;
   display: flex;
   justify-content: flex-end;
-  color: var(--intergalactic-text-link, #006dca);
+  color: var(--intergalactic-text-primary, #191b23);
   text-align: right;
 }
 SDistributionBarHoverRect {
