@@ -4,7 +4,6 @@ import { Box } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 import style from './style/skeleton.shadow.css';
 
@@ -23,16 +22,6 @@ class SkeletonRoot extends Component {
     duration: 2000,
   };
 
-  screenReaderContent() {
-    const { getI18nText } = this.asProps;
-
-    return (
-      <ScreenReaderOnly aria-live='polite' role='status' aria-atomic='true'>
-        {getI18nText('loading')}
-      </ScreenReaderOnly>
-    );
-  }
-
   render() {
     const SSkeleton = Root;
     const { Children, styles, duration, hidden, getI18nText, tag } = this.asProps;
@@ -45,16 +34,7 @@ class SkeletonRoot extends Component {
         durationAnim={`${duration}ms`}
         aria-busy='true'
         aria-label={getI18nText('loading')}
-      >
-        {tag === 'svg' ? (
-          <foreignObject x='0' y='0' width='0' height='0'>
-            {this.screenReaderContent()}
-          </foreignObject>
-        ) : (
-          this.screenReaderContent()
-        )}
-        <Children />
-      </SSkeleton>,
+      />,
     );
   }
 }
