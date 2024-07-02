@@ -50,7 +50,7 @@ const WrappedSelect = ({
 
 ## Making wrappers
 
-Use the special utility `makeWrapper` to wrap components. It does nothing in runtime but ensures correct typings in Typescript.
+Use the special utility `wrapIntergalacticComponent` to wrap components. It does nothing in runtime but ensures correct typings in Typescript.
 
 ::: sandbox
 
