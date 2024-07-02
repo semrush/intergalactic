@@ -5,7 +5,7 @@ tabs: Design('filter-serp-features'), Example('filter-serp-features-code')
 ---
 
 ::: tip
-**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).**
+General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).
 :::
 
 ## Description
