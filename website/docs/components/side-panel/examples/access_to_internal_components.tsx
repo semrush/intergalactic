@@ -11,7 +11,7 @@ const Demo = () => {
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
       <SidePanel closable={false} visible={visible} onClose={() => setVisible(false)}>
         <SidePanel.Overlay>
-          <SidePanel.Panel mt={20}>
+          <SidePanel.Panel aria-label='Blah-blah-blah'>
             <SidePanel.Close />
             <Text size={300} tag='p'>
               Waba-laba-dub-dub!
