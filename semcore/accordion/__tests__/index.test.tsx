@@ -63,9 +63,9 @@ describe('Accordion', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should compact={false} render correctly', async ({ task }) => {
+  test.concurrent('Should render primary use correctly', async ({ task }) => {
     const component = (
-      <Accordion defaultValue={[0, 2]} compact={false}>
+      <Accordion defaultValue={[0, 2]} use='primary'>
         {Array(4)
           .fill('')
           .map((_, index) => (
