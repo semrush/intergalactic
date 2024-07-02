@@ -4,6 +4,10 @@ tabName: Example
 tabs: Design('filter-serp-featuers'), Example('filter-serp-featuers-code')
 ---
 
-## Basic example
+::: sandbox
 
-@example basic
+<script lang="tsx">
+  export Demo from './examples/serp-filter.tsx';
+</script>
+
+:::
