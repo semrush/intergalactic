@@ -119,6 +119,10 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "/semcore/side-panel/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/skeleton/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },

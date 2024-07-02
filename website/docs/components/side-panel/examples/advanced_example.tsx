@@ -8,8 +8,7 @@ const Demo = () => {
   return (
     <>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
-      <SidePanel visible={visible} onClose={() => setVisible(false)} mt={20}>
-        <SidePanel.Close />
+      <SidePanel visible={visible} onClose={() => setVisible(false)} aria-label='My side panel'>
         <SidePanel.Header>
           <SidePanel.Back>Go to Tool Name</SidePanel.Back>
           <SidePanel.Title>Heading 6, 16px</SidePanel.Title>

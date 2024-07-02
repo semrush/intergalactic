@@ -62,37 +62,41 @@ SClose {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  display: inline-flex;
-  right: 0;
-  top: 0;
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-3x, 12px)
-    var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-3x, 12px);
+  right: var(--intergalactic-spacing-3x, 12px);
+  top: var(--intergalactic-spacing-3x, 12px);
+}
+SClose[size="m"] SAddon {
+  margin: 0 1px;
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  border: none;
-  background: none;
-  outline: none;
-
-  &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
-  }
 }
 
 SClose[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
-SBack {
+SBack[size="m"] {
   display: flex;
   align-items: center;
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
   margin-bottom: var(--intergalactic-spacing-1x, 4px);
-  cursor: pointer;
+  height: auto;
+  min-width: auto;
+  width: 100%;
 
   &:hover {
     color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
+}
+SBack[size="m"] SInner {
+  justify-content: flex-start;
+}
+SBack[size="m"] SInner SAddon:first-child {
+  margin-left: 0;
+}
+SBack[size="m"] SInner SText:last-child {
+  margin-right: 0;
 }
 
 SBackText {
