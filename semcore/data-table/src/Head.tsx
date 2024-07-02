@@ -216,7 +216,7 @@ class Head extends Component<AsProps> {
             {column.props.children}
             {column.sortable ? (
               <SSortWrapper ref={this.makeSortRefHandler(column.active)}>
-                <SSortIcon active={column.active} />
+                <SSortIcon />
               </SSortWrapper>
             ) : null}
           </>

@@ -63,9 +63,9 @@ ${obj.name}.displayName = '${obj.name}'
 export default createBaseComponent(${obj.name})
       `,
     templateDTS: () => `
-import React from 'react';
 import { IconProps } from '@semcore/icon';
-declare const _default: <T>(props: IconProps & T) => React.ReactElement;
+import { Intergalactic } from '@semcore/utils/lib/core';
+declare const _default: Intergalactic.Component<'svg', IconProps>;
 export default _default;
       `,
     transformer: () => {
