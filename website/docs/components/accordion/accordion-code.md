@@ -29,9 +29,9 @@ Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will br
 
 :::
 
-## With background
+## Primary
 
-Pass `compact={false}` to disable compact mode.
+Pass `use='primary'` to enable the primary view.
 
 ::: sandbox
 

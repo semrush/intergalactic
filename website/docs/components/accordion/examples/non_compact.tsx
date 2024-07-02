@@ -5,7 +5,7 @@ import { Flex, Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (
-    <Accordion compact={false}>
+    <Accordion use='primary'>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.ToggleButton pb={2}>

@@ -29,9 +29,9 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
 
   /**
    * Changes the visual appearance of the component
-   * @default true
+   * @default secondary
    */
-  compact?: boolean;
+  use?: 'primary' | 'secondary';
 };
 
 export interface IAccordionProps<T extends AccordionValue = AccordionValue>
