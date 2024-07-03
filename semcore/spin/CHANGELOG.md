@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.29.0] - 2024-06-20
+
+### Changed
+
+- Removed inner `foreignObject` element with `aria-live` element as it doesn't work properly with the newest screen readers.
+
 ## [5.28.0] - 2024-06-26
 
 ### Changed
