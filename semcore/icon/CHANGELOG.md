@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.0] - 2024-07-03
+
+### Changed
+
+- Type for each Icon to `Intergalactic.Component<'svg', IconProps>`.
+
 ## [4.39.1] - 2024-06-25
 
 ### Changed
