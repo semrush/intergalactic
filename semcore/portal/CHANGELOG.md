@@ -96,7 +96,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Api to get know if the portal is mounted (`onMount` prop).
+- API to get know if the portal is mounted (`onMount` prop).
 
 ## [3.19.0] - 2024-03-25
 
@@ -541,7 +541,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность опционально подключать адаптивность
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

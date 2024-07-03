@@ -663,7 +663,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added alternative api for inserting `Addon`.
+- Added alternative API for inserting `Addon`.
 
 ## [3.0.3] - 2020-09-08
 
@@ -705,13 +705,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.4.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 - Добавлено прокидываение классов на `Spin` внутри кнопки
@@ -765,7 +765,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [2.1.8] - 2019-07-24
 
@@ -840,7 +840,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Убрано свойство `fullWidth`
 - Убрано свойство `inputRef`
 - Убраны стили для не используемых тем
-- Добавленно свойство css `vertical-align: middle;`
+- Добавленно свойство CSS `vertical-align: middle;`
 
 ### Added
 

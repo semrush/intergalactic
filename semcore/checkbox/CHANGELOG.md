@@ -186,7 +186,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [7.19.0] - 2024-01-19
 
@@ -569,7 +569,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added missing `aria-checked` a11y attribute.
+- Added missing `aria-checked` A11Y attribute.
 
 ## [6.0.11] - 2022-08-30
 
@@ -681,7 +681,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Переименовали сбилженные файлы с 'sm.style.css' -> 'style.css'
+- Переименовали сбилженные файлы с `sm.style.css` -> `style.css`
 
 ## [4.4.0] - 2020-02-12
 
@@ -693,13 +693,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [4.3.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
