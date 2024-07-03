@@ -167,6 +167,9 @@ export type DataTableBodyProps = BoxProps & {
 
   /** Disables column width change animation **/
   animationsDisabled?: boolean;
+
+  /** Ref for table body container */
+  scrollContainerRef?: React.Ref<HTMLDivElement>;
 };
 
 /** @deprecated */

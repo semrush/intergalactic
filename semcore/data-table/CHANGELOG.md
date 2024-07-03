@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.6] - 2024-07-02
+
+### Added
+
+- Types for `scrollContainerRef` in `Datatable.Body`.
+
 ## [4.40.5] - 2024-06-25
 
 ### Added
