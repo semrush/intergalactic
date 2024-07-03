@@ -1,10 +1,15 @@
 import React from 'react';
 import { Text } from 'intergalactic/typography';
 import Input from 'intergalactic/input';
+import Checkbox from 'intergalactic/checkbox';
+import Radio, { RadioGroup } from 'intergalactic/radio';
+import Textarea from 'intergalactic/textarea';
+import Select from 'intergalactic/select';
+import { DatePicker } from 'intergalactic/date-picker';
 import Tooltip from 'intergalactic/tooltip';
 import Button from 'intergalactic/button';
 import { Box, Flex } from 'intergalactic/flex-box';
-import { Field, Form } from 'react-final-form';
+import { Field, FieldInputProps, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
 const required = (value) => (value ? undefined : 'Please fill in this field.');
@@ -21,7 +26,11 @@ class Demo extends React.Component {
   render() {
     return (
       <Box w={500}>
-        <Form decorators={[this.focusDecorator]} onSubmit={(data) => alert(JSON.stringify(data))}>
+        <Form
+          decorators={[this.focusDecorator]}
+          validateOnBlur={false}
+          onSubmit={(data) => alert(JSON.stringify(data))}
+        >
           {({ handleSubmit, invalid }) => (
             <form onSubmit={handleSubmit}>
               <Flex mb={4}>
@@ -120,6 +129,174 @@ class Demo extends React.Component {
                   }}
                 </Field>
               </Flex>
+
+              <Flex mb={4}>
+                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Select option
+                </Text>
+                <Field name='someSelect' validate={required}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper id='form-select-error' theme='warning' visible={showError}>
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <Tooltip.Trigger>
+                          <Select
+                            value={input.value === '' ? undefined : input.value}
+                            size={'l'}
+                            placeholder={'Select something'}
+                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                            onChange={(value, event) => {
+                              Object.defineProperty(event.target, 'value', {
+                                writable: false,
+                                value,
+                              });
+
+                              input.onChange(event);
+                            }}
+                          >
+                            <Select.Trigger onBlur={(e) => input.onBlur(e)} />
+                            <Select.Popper>
+                              <Select.Option value={1}>Option 1</Select.Option>
+                              <Select.Option value={2}>Option 2</Select.Option>
+                              <Select.Option value={3}>Option 3</Select.Option>
+                            </Select.Popper>
+                          </Select>
+                        </Tooltip.Trigger>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
+                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Choose one item
+                </Text>
+                <Field name='radio' type={'radio'} validate={required}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper id='form-radio-error' theme='warning' visible={showError}>
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <RadioGroup
+                          size='l'
+                          {...input}
+                          tag={Tooltip.Trigger}
+                          state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          onChange={(value, e) => input.onChange(e)}
+                        >
+                          <Radio label='Value 1' mb={3} value='1' />
+                          <Radio label='Value 2' mb={3} value='2' />
+                        </RadioGroup>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
+                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Enter some text
+                </Text>
+                <Field name='textarea' validate={required} defaultValue={'some text not too long'}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper
+                          id='form-textarea-error'
+                          theme='warning'
+                          visible={showError}
+                        >
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <Tooltip.Trigger>
+                          <Textarea
+                            {...input}
+                            h={80}
+                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          >
+                            {input.value}
+                          </Textarea>
+                        </Tooltip.Trigger>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
+                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Enter date
+                </Text>
+                <Field name='date' validate={required}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper id='form-date-error' theme='warning' visible={showError}>
+                          {meta.error}
+                        </Tooltip.Popper>
+
+                        <DatePicker
+                          value={input.value}
+                          size={'l'}
+                          onChange={(e) => input.onChange(e)}
+                        >
+                          <Tooltip.Trigger>
+                            <DatePicker.Trigger
+                              {...input}
+                              state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                            />
+                          </Tooltip.Trigger>
+                          <DatePicker.Popper />
+                        </DatePicker>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
+                <Field
+                  name='confirm'
+                  type={'checkbox'}
+                  validate={(value) => (value === true ? undefined : 'Please confirm')}
+                >
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper id='form-confirm-error' theme='warning' visible={showError}>
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <Checkbox
+                          {...input}
+                          state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          size={'l'}
+                          onChange={(value, e) => input.onChange(e)}
+                        >
+                          <Checkbox.Text tag={Text} w={100} textAlign='right' size={300} mr={3}>
+                            Confirm
+                          </Checkbox.Text>
+                          <Checkbox.Value />
+                        </Checkbox>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
               <Button ml='112px' size='l' use='primary' theme='success' type='submit'>
                 <Button.Text>Submit</Button.Text>
               </Button>
