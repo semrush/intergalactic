@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.40.6] - 2024-07-03
+## [4.40.7] - 2024-07-03
 
 ### Fixed
 
 - `SortIcon` usage - removed unused prop `active`.
+
+## [4.40.6] - 2024-07-02
+
+### Added
+
+- Types for `scrollContainerRef` in `Datatable.Body`.
 
 ## [4.40.5] - 2024-06-25
 
@@ -607,7 +613,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Moved `role="rowgroup"` on focusable scroll areas to match automatic a11y checks.
+- Moved `role="rowgroup"` on focusable scroll areas to match automatic A11Y checks.
 
 ## [3.9.7] - 2023-06-14
 
@@ -948,7 +954,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] Added support keyboard for sortable column.
+- [A11Y] Added support keyboard for sortable column.
 
 ## [1.4.2] - 2021-03-17
 
@@ -966,7 +972,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `style` folder with css in build folder `lib`.
+- Added `style` folder with CSS in build folder `lib`.
 
 ## [1.3.0] - 2020-12-17
 
@@ -978,7 +984,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed `css` styles for DataTable include class name `use`.
+- Fixed `CSS` styles for DataTable include class name `use`.
 
 ## [1.2.0] - 2020-12-09
 
@@ -994,7 +1000,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Replace special characters in column names because they apply as css variables.
+- Replace special characters in column names because they apply as CSS variables.
 
 ## [1.0.0] - 2020-11-20
 
@@ -1006,7 +1012,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Set size width column in css variable `Table`
+- Set size width column in CSS variable `Table`
 
 ## [0.0.1-5] - 2020-10-30
 

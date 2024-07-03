@@ -90,7 +90,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Api in internal mechanism for recursive search of child elements.
+- API in internal mechanism for recursive search of child elements.
 
 ## [4.22.2] - 2024-04-09
 
@@ -225,7 +225,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - New `--intergalactic-border-critical-pattern` token for marking controls invalid state.
-- Fixed output of css utils.
+- Fixed output of CSS utils.
 
 ## [4.13.0] - 2023-11-24
 
@@ -280,7 +280,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Internal api for design tokens resolving.
+- Internal API for design tokens resolving.
 
 ## [4.8.4] - 2023-10-13
 
@@ -441,7 +441,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Animations in complex components (e.g. `FilterTrigger`) might not be finished.
+- Animations in complex components (for example `FilterTrigger`) might not be finished.
 
 ## [3.53.2] - 2023-06-07
 
@@ -608,7 +608,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Put all css `:hover` selectors into `@media(hover: hover)` block.
+- Put all CSS `:hover` selectors into `@media(hover: hover)` block.
 
 ## [3.45.0] - 2023-01-09
 
@@ -845,7 +845,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Revert move .d.ts files because typescript does not see types on import.
+- Revert move .d.ts files because TypeScript does not see types on import.
 
 ## [3.23.1] - 2020-10-06
 
@@ -1082,11 +1082,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивность
 - Появилась возможность изолировать стили даже в пределах одной страницы
 - Добавлена функция `CSSinJS` для работы с CSS в JS и SSR
-- Добавлена функция `injectStyle` для вставки стилей кита в `html`
+- Добавлена функция `injectStyle` для вставки стилей кита в `HTML`
 
 ### Changed
 
@@ -1153,7 +1153,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Все утилиты переписаны на typescript
+- Все утилиты переписаны на TypeScript
 - Удалены validAttr.js, withAnalytics.js, index.js, createConnector.js, getSizeText.js, setStateIfNeeded.js
 - Переменные с размером текста в `style/var.css` приведены в соответствие с типографикой
 
@@ -1190,7 +1190,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Добавлена возможность серверного рендера css
+- Добавлена возможность серверного рендера CSS
 
 ### Changed
 
@@ -1223,7 +1223,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена проблема производительности css-in-js при dev сборках
+- Исправлена проблема производительности `css-in-js` при dev сборках
 
 ## [2.0.2] - 2019-02-08
 
@@ -1284,7 +1284,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - хелпер функция для локализации `getL10n`
-- хелпер функция для возврата числовых значений из css `cssToIntDefault`
+- хелпер функция для возврата числовых значений из CSS `cssToIntDefault`
 - хелпер функция для отправки событий в GA `withAnalytics`
 
 ## [1.1.3] - 2018-08-30

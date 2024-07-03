@@ -216,7 +216,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed components css output of complex selectors.
+- Fixed components CSS output of complex selectors.
 
 ## [2.8.0] - 2023-10-27
 
@@ -645,7 +645,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Изменено свойство с `css` на `styles`
+- Изменено свойство с `CSS` на `styles`
 
 ## [0.0.1-13] - 2020-05-19
 

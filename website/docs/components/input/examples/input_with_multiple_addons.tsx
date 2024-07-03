@@ -18,7 +18,7 @@ const Demo = () => {
         Your password
       </Text>
       <Box mt={2}>
-        <Input w={360}>
+        <Input w={320}>
           <Input.Value
             defaultValue='I_like_cats'
             type={type}
@@ -32,7 +32,7 @@ const Demo = () => {
               pl={2}
               pr={1}
               interactive
-              aria-label='Clear password field'
+              aria-label='Clear'
               onClick={() => setValue('')}
             />
           )}

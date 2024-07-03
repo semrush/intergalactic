@@ -658,7 +658,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
 }
 
 .vp-doc h3 {
-  margin: 24px 0 16px 0;
+  margin: 24px 0 16px 0 !important;
 }
 
 .vp-doc a[class], .vp-doc a[class]:hover, .vp-doc a[class]:active, .vp-doc a[class]:visited {

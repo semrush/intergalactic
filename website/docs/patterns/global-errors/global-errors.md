@@ -315,7 +315,7 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 
   - Your IP address: \{84.52.114.132\}
 
-  - Requested URL: \{example.url/foo\}
+  - Requested URL: \{example.URL/foo\}
 
   - Error reference number: 1001
 

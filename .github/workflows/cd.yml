@@ -96,6 +96,15 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm --filter intergalactic-migrate run build && pnpm lint
+  docs-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - uses: errata-ai/vale-action@reviewdog
+        name: Run Vale
+        continue-on-error: true
+        with:
+          files: README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md website/docs
   unit-tests:
     runs-on: ubuntu-latest
     needs: build
