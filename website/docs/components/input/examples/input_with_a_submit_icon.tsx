@@ -13,14 +13,14 @@ const Demo = () => {
         Input with submit button
       </Text>
       <Box mt={2}>
-        <Input w={240}>
+        <Input w={320}>
           <Input.Value
-            placeholder='Focus right here'
+            placeholder='Write something'
             onBlur={() => setFocus(false)}
             onFocus={() => setFocus(true)}
             id='submit-example'
           />
-          {focus && <Input.Addon interactive tag={CheckM} aria-label='Submit field value' />}
+          {focus && <Input.Addon interactive tag={CheckM} aria-label='Submit' />}
         </Input>
       </Box>
     </>
