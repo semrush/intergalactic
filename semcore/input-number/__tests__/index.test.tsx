@@ -79,6 +79,22 @@ describe('InputNumber', () => {
     expect(input.value).toBe('0.01');
   });
 
+  test.sequential('Should not accept numbers with two decimal separators', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input444' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input444') as HTMLInputElement;
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('0.01.');
+
+    expect(spy).toBeCalledWith('0.01', expect.anything());
+    expect(input.value).toBe('0.01');
+  });
+
   test.sequential('Should correct round float numbers with step less than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
