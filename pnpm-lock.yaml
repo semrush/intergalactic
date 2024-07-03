@@ -14,7 +14,7 @@ overrides:
   braces: 3.0.2
   '@babel/runtime': 7.19.0
   '@babel/core': 7.19.1
-  axe-core: 4.4.0
+  axe-core: 4.9.1
   ansi-regex: 5.0.1
 
 patchedDependencies:
@@ -3858,7 +3858,7 @@ importers:
   tools/testing-utils:
     dependencies:
       '@axe-core/playwright':
-        specifier: ^4.9.0
+        specifier: ^4.9.1
         version: 4.9.1(playwright-core@1.43.0)
       '@babel/core':
         specifier: 7.19.1
@@ -3888,8 +3888,8 @@ importers:
         specifier: 14.5.1
         version: 14.5.1(@testing-library/dom@8.20.0)
       axe-core:
-        specifier: 4.4.0
-        version: 4.4.0
+        specifier: 4.9.1
+        version: 4.9.1
       babel-jest:
         specifier: 29.0.1
         version: 29.0.1(@babel/core@7.19.1)
@@ -4505,7 +4505,7 @@ packages:
     peerDependencies:
       playwright-core: '>= 1.0.0'
     dependencies:
-      axe-core: 4.4.0
+      axe-core: 4.9.1
       playwright-core: 1.43.0
     dev: false
 
@@ -11677,8 +11677,8 @@ packages:
   /aws4@1.12.0:
     resolution: {integrity: sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==}
 
-  /axe-core@4.4.0:
-    resolution: {integrity: sha512-btWy2rze3NnxSSxb7LtNhPYYFrRoFBfjiGzmSc/5Hu47wApO2KNXjP/w7Nv2Uz/Fyr/pfEiwOkcXhDxu0jz5FA==}
+  /axe-core@4.9.1:
+    resolution: {integrity: sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==}
     engines: {node: '>=4'}
 
   /axios@0.21.2:
@@ -26574,7 +26574,7 @@ packages:
       vitest: '>=0.16.0'
     dependencies:
       aria-query: 5.1.3
-      axe-core: 4.4.0
+      axe-core: 4.9.1
       chalk: 5.2.0
       dom-accessibility-api: 0.5.16
       lodash-es: 4.17.21
