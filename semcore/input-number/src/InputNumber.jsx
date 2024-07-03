@@ -276,7 +276,7 @@ class Value extends Component {
     element.role = 'region';
 
     // we could press dot second time - prevent this '1.5.'
-    if (event.key === this.separatorDecimal && value.indexOf('.') !== -1) {
+    if (event.key === this.separatorDecimal && value.indexOf(this.separatorDecimal) !== -1) {
       event.preventDefault();
       event.stopPropagation();
       return;
