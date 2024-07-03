@@ -1,0 +1,17 @@
+# Checks that links have meaningful text
+
+extends: existence
+message: "Use meaningful link text rather than '%s'."
+level: error
+scope: raw
+nonword: true
+ignorecase: true
+tokens:
+  - \[here\]\(.*\)
+  - \[this\]\(.*\)
+  - \[this page\]\(.*\)
+  - \[this link\]\(.*\)
+  - \[link\]\(.*\)
+  - \[click here\]\(.*\)
+  - \[click this\]\(.*\)
+  - \[click that\]\(.*\)
