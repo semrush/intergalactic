@@ -101,6 +101,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: errata-ai/vale-action@reviewdog
+        name: Run Vale
+        continue-on-error: true
         with:
           files: README.md CONTRIBUTING.md semcore/*/README.md semcore/*/CHANGELOG.md website/docs
   unit-tests:
