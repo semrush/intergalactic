@@ -42,7 +42,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added support of `--intergalactic-*` css variables.
+- Added support of `--intergalactic-*` CSS variables.
 
 ## [4.3.0] - 2022-09-31
 
@@ -96,7 +96,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added replace variables var.css for support theme.
+- Added replace variables `var.css` for support theme.
 
 ## [4.0.1] - 2021-04-30
 

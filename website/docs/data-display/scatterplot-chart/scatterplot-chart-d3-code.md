@@ -20,7 +20,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ::: tip
 For all the following examples, scale is calculated taking into account synthetic data.
-You can see the mathematics, used in `Change.Scatterplot` to calculate common scale, in [our github repo](https://github.com/semrush/intergalactic/blob/master/semcore/d3-chart/src/component/Chart/ScatterPlotChart.tsx#L31).
+You can see the mathematics, used in `Change.Scatterplot` to calculate common scale, in [our GitHub repository](https://github.com/semrush/intergalactic/blob/master/semcore/d3-chart/src/component/Chart/ScatterPlotChart.tsx#L31).
 :::
 
 ## Scatter plot

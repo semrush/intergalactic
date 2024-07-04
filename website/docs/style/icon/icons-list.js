@@ -590,6 +590,23 @@ const iconsList = {
       tags: ['pause', 'stop', 'пауза', 'стоп'],
     },
     {
+      name: 'Power',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: [
+        'power',
+        'switch',
+        'on',
+        'off',
+        'electricity',
+        'energy',
+        'включить',
+        'выключить',
+        'зажигание',
+        'электричество',
+      ],
+    },
+    {
       name: 'Reload',
       size: ['l', 'm'],
       group: 'Action',

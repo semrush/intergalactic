@@ -1,0 +1,12 @@
+# Checks that there are no Latin terms and abbreviations
+extends: substitution
+message: "Avoid Latin words and expressions. Use '%s' instead of '%s'."
+ignorecase: true
+level: error
+nonword: true
+action:
+  name: replace
+swap:
+  # Regular spellchecker adds a comma after e.g./i.e.
+  '\b(?:eg|e\.g\.)': for example|such as
+  '\b(?:ie|i\.e\.)': that's|namely|specifically

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.0] - 2024-07-03
+
+### Changed
+
+- Type for each Icon to `Intergalactic.Component<'svg', IconProps>`.
+
+## [4.40.0] - 2024-07-02
+
+### Added
+
+- New `Power` icon.
+
 ## [4.39.1] - 2024-06-25
 
 ### Changed
@@ -443,7 +455,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Removed duplication custom css class.
+- Removed duplication custom CSS class.
 
 ## [3.15.3] - 2023-06-27
 
@@ -916,7 +928,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Remove from html for svg don't used attributes.
+- Remove from HTML for svg don't used attributes.
 - Added `propsForElement` for set props to svg.
 
 ## [2.11.0] - 2021-07-05
@@ -944,7 +956,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Update icons `SEMrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush`.
+- Update icons `Semrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush`.
 
 ## [2.8.0] - 2021-02-11
 
@@ -956,7 +968,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added new color icon `Github`.
+- Added new color icon `GitHub`.
 
 ## [2.6.0] - 2020-12-23
 
@@ -1082,7 +1094,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -1186,7 +1198,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Добавленно свойство css `box-sizing: content-box;` для исправления проблем с паддингом в некоторых браузерах
+- Добавленно свойство CSS `box-sizing: content-box;` для исправления проблем с паддингом в некоторых браузерах
 
 ## [1.2.1] - 2018-11-27
 

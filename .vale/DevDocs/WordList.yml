@@ -1,0 +1,18 @@
+# Suggests preferred spelling for selected words.
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  e-mail: email
+  data are: data is
+  side bar: sidebar
+  search bar: searchbar
+  in order to: to
+  repo: repository
+  #  config: configuration // may generate false positive results
+  '(?:meta data|meta-data)': metadata
+  '(?:cronjob|cron-job|CRON job)': cron job

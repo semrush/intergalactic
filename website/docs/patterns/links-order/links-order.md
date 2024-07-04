@@ -24,5 +24,5 @@ Table: Links order in ProductHead
 | **Send feedback**                                           | Opens dropdown with feedback form.                                                  | ![](static/link12.png) |
 
 ::: tip
-For more information about link styles, refer to the [Link](/components/link/link).
+For more information about link styles, refer to the [Link component](/components/link/link).
 :::

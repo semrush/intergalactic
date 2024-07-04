@@ -12,7 +12,7 @@ Feedback pattern consists of several components that have their own accessibilit
 - [Checkbox](/components/checkbox/checkbox-a11y)
 - [Dropdown](/components/dropdown/dropdown-a11y)
 - [Input](/components/input/input-a11y)
-- [Link](/components/link/link-a11y)
+- [Link component](/components/link/link-a11y)
 - [Notice](/components/notice/notice-a11y)
 - [Radio](/components/radio/radio-a11y)
 - [Select](/components/select/select-a11y)

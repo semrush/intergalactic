@@ -31,7 +31,9 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 :::
 
-## Undo action
+## Focus management
+
+In this example keyboard focus is automatically set on the first interactive element in the bubble.
 
 ::: sandbox
 
@@ -82,6 +84,8 @@ Parent should have `position: relative` and `overflow` with scroll.
 :::
 
 ## Notice with loading state
+
+Activate the **Try again** button in the notice to see the loading state.
 
 ::: sandbox
 
