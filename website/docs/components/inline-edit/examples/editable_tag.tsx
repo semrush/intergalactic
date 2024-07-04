@@ -16,11 +16,9 @@ const Demo = () => {
   return (
     <>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View pr={2}>
-          <Tag interactive size='l'>
-            <Tag.Text>{value}</Tag.Text>
-            <Tag.Close onClick={(e) => e.stopPropagation()} />
-          </Tag>
+        <InlineEdit.View pr={2} tag={Tag} interactive size='l'>
+          <Tag.Text>{value}</Tag.Text>
+          <Tag.Close onClick={(e) => e.stopPropagation()} />
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput onConfirm={handleValue} onCancel={resetEditable}>

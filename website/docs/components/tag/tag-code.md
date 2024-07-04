@@ -32,6 +32,19 @@ We recommend to use colors with 500 tone since they have the necessary contrast 
 
 :::
 
+## Grouping tags
+
+If you need to render few tags, you should wrap them into `ui` with `role=group` and set also `aria-label`.
+Each tag should be `li`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/grouping_tags.tsx';
+</script>
+
+:::
+
 ## Adding tag
 
 ::: sandbox

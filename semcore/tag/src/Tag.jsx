@@ -71,6 +71,7 @@ class RootTag extends Component {
     return {
       tabIndex: focusable === 'text' && interactive ? 0 : -1,
       id: `${id}-text`,
+      role: focusable === 'text' && interactive ? 'button' : undefined,
     };
   }
   handleCloseMount = () => {
@@ -128,7 +129,7 @@ class RootTag extends Component {
         render={Box}
         id={id}
         use:interactive={!disabled && interactive}
-        role={interactive ? 'button' : undefined}
+        // role={interactive ? 'listitem' : undefined}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
         use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
