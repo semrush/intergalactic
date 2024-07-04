@@ -332,7 +332,7 @@ const Demo = () => {
             {phoneNumber !== phoneMask && (
               <Input.Addon
                 tag={CloseM}
-                aria-label='Clear value'
+                aria-label='Clear'
                 interactive
                 onClick={() => setPhoneNumber(prefix)}
               />

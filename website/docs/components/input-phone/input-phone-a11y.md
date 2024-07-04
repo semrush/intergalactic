@@ -4,9 +4,10 @@ a11y: AA
 tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
 ---
 
-This component consists of Input and Select elements, so feel free to check their detailed documentation regarding accessibility:
+This pattern is built with Input, InputMask and Select components. For the detailed documentation regarding accessibility, refer to their documentation:
 
 - [Input](/components/input/input-a11y)
+- [InputMask](/components/input-mask/input-mask-a11y)
 - [Select](/components/select/select-a11y)
 
 ## Other recommendations

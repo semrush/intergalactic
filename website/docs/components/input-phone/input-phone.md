@@ -5,7 +5,7 @@ tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code
 
 ## Description
 
-**Input** is a component designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/input-mask). This input field ensures that users can enter their phone numbers correctly without any uncertainty about the format.
+**InputPhone** is a pattern designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/input-mask). This input ensures that users can enter their phone numbers correctly without any uncertainty about the format.
 
 ### Recommendations for using this input
 
@@ -18,7 +18,7 @@ In a [study conducted by Baymard Research](https://baymard.com/blog/input-maskin
 
 ## Appearance
 
-The appearance of the phone number input can vary based on:
+The appearance of the InputPhone can vary based on:
 
 - User's country and/or number format
 - Whether phone numbers from the same country are required
@@ -31,7 +31,7 @@ Table: InputPhone variants
 | Known country but unknown phone number format | ![](static/input-phone-2.png) |
 | Known country and phone number format | ![](static/input-phone-3.png) |
 
-When the user's country is known, it's important to display the flag of the country in the input field. This helps users navigate through the entered data more easily, as seen in the [Form guide](/patterns/form/form).
+When the user's country is known, it's important to display the flag of the country in the input. This helps users navigate through the entered data more easily, as seen in the [Form guide](/patterns/form/form).
 
 ::: tip
 Be sure to add the label "Phone number" to the input. Especially if there are no visual indications of the mask type, country code, or format,
@@ -51,10 +51,6 @@ Table: Sizes of InputPhone's hint text
 | L (40px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/inputphone-help-text-l.png) | ![](static/inputphone-help-text-margin-l.png) |
 
 ## Interaction
-
-::: tip
-here are characters entered in the input, a "clear all" button will appear.
-:::
 
 ### Important points for cases when the user's country and phone format can be determined
 
@@ -99,7 +95,7 @@ Table: States for the case when both country and phone number format are known
 
 ## Usage in UX/UI
 
-To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the phone number input field as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
+To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the InputPhone as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
 
 ![](static/size-yes-no.png)
 
