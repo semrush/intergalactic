@@ -3,7 +3,7 @@ import { Component, Root, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import AnimatedClipPath from './AnimatedClipPath';
-import { scaleToBand } from './utils';
+import { roundedPath, scaleToBand } from './utils';
 import { PatternFill } from './Pattern';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import Tooltip from './Tooltip';
@@ -17,7 +17,7 @@ import { Box } from '@semcore/flex-box';
 export const MIN_WIDTH = 4;
 
 const barHeight = 20;
-const hoverOffset = 4;
+const hoverOffset = 6;
 
 class DistributionBarRoot extends Component {
   static displayName = 'DistributionBar';
@@ -30,6 +30,7 @@ class DistributionBarRoot extends Component {
     wMin: MIN_WIDTH,
     locale: 'en',
     color: 'chart-palette-order-1',
+    radius: 2,
   };
 
   getBarProps(_props, index) {
@@ -38,7 +39,7 @@ class DistributionBarRoot extends Component {
     };
   }
   getBarBackgroundProps(_props, index) {
-    const { data, scale, size } = this.asProps;
+    const { data, scale, radius } = this.asProps;
     const bar = this.computeBarData(data[index], index);
 
     return {
@@ -48,11 +49,12 @@ class DistributionBarRoot extends Component {
       y: bar.y + bar.height - barHeight - hoverOffset,
       height: barHeight,
       width: bar.fullWidth,
+      radius,
     };
   }
 
   getBarFillProps(_props, index) {
-    const { data, uid, patterns, color, transparent, hide } = this.asProps;
+    const { data, uid, patterns, color, transparent, hide, scale, radius } = this.asProps;
     const bar = this.computeBarData(data[index], index);
     return {
       x: bar.x,
@@ -66,6 +68,8 @@ class DistributionBarRoot extends Component {
       color,
       transparent,
       hide,
+      scale,
+      radius,
     };
   }
   getAnnotationProps(_props, index) {
@@ -157,7 +161,7 @@ class DistributionBarRoot extends Component {
     const absWidth = xScale(d[x]);
     const bandHeight = heightProps || scaleToBand(yScale).bandwidth();
     const height = Math.min(bandHeight, maxBarSize);
-    const width = Math.max(absWidth, wMin);
+    const width = absWidth === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + bandHeight / 2 - height / 2 + offset[1];
 
     return {
@@ -284,7 +288,18 @@ function BarFill(props) {
     resolveColor,
     patterns,
     i,
+    scale,
+    radius,
   } = props;
+  const [xScale] = scale;
+  const xRange = xScale.range();
+  const backgroundWidth = xRange[1] - xRange[0];
+  const pathD = React.useMemo(() => {
+    if (backgroundWidth - radius > width) {
+      return roundedPath(x, y, width, height, radius);
+    }
+    return roundedPath(x, y, width, height, radius, false, true, false, true);
+  }, [x, y, height, width, radius]);
 
   const barProps = React.useContext(BarContext);
 
@@ -293,7 +308,8 @@ function BarFill(props) {
       {sstyled(styles)(
         <SBar
           aria-hidden
-          render='rect'
+          render='path'
+          d={pathD}
           clipPath={`url(#${uid})`}
           __excludeProps={['data', 'scale', 'value', 'offset']}
           childrenPosition='above'
@@ -322,15 +338,20 @@ function BarFill(props) {
   );
 }
 function BarBackground(props) {
-  const { Element: SBackground, styles, scale, y, x, height } = props;
+  const { Element: SBackground, styles, scale, y, x, height, radius } = props;
   const [xScale] = scale;
   const xRange = xScale.range();
+  const width = xRange[1] - xRange[0];
+  const pathD = React.useMemo(() => {
+    return roundedPath(x, y, width, height, radius, false, true, false, true);
+  }, [x, y, height, width, radius]);
   const barProps = React.useContext(BarContext);
 
   return sstyled(styles)(
     <SBackground
       aria-hidden
-      render='rect'
+      render='path'
+      d={pathD}
       childrenPosition='above'
       width={xRange[1] - xRange[0]}
       height={height}

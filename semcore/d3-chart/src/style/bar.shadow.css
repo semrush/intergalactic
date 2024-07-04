@@ -25,8 +25,15 @@ SBar[transparent] {
   opacity: 0.3;
 }
 
+SBar[onClick] {
+  cursor: pointer;
+}
+
 SBackground {
   fill: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
+}
+SBackground[onClick] {
+  cursor: pointer;
 }
 
 SBarAnnotation {
@@ -37,6 +44,8 @@ SBarAnnotation {
 SBarLabel {
   color: var(--intergalactic-text-primary, #191b23);
   margin-right: auto;
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 SBarPercent {
   color: var(--intergalactic-text-secondary, #6c6e79);

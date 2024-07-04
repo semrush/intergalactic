@@ -14,6 +14,11 @@ export type DistributionBarProps = Context & {
   y?: string;
   /** Line color */
   color?: string;
+  /**
+   * Bars rounded corners
+   * @default 2
+   */
+  radius?: number;
   /** Animation duration in ms
    * @default 500
    */

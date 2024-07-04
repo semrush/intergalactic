@@ -47,7 +47,7 @@ const Demo = () => {
           <DistributionBar.Percent />
           <DistributionBar.Value tag={Link} href="https://semrush.com">
             {({ formatted }) => {
-              return <>~{formatted}</>
+              return <Link.Text>~{formatted}</Link.Text>
             }}
           </DistributionBar.Value>
         </DistributionBar.Annotation>
