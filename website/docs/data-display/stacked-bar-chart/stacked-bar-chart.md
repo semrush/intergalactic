@@ -86,9 +86,9 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Appearance
 
-In a stacked bar chart, columns have no gaps between value segments. Select contrasting colors for visibility.
+In a stacked bar chart, bars have no gaps between value segments. Select contrasting colors for visibility.
 
-Aim for at least a 20% margin between columns to avoid clutter.
+Aim for at least a 20% margin between bars to avoid clutter.
 
 ![stacked bar chart](static/stacked-bar-chart.png)
 
@@ -98,7 +98,7 @@ Stick to the [designated chart palette](/data-display/color-palette/color-palett
 
 ## Interaction
 
-Hovering highlights a column with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
 ![stacked bar chart](static/stacked-bar-chart-hover.png)
 

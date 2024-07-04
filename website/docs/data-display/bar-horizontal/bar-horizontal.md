@@ -98,11 +98,9 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Appearance
 
-Bars should have `border-radius: 2px` for the top-right and bottom-right corners. 
-
 ![](static/one-cat.png)
 
-For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between columns to avoid clutter.
+For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between bars to avoid clutter.
 
 ![](static/two-cat.png)
 
@@ -157,7 +155,7 @@ Use legends for multiple categories.
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the columns margin on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
 
 Table: Horizontal bar chart interaction
 

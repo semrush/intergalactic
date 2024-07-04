@@ -112,7 +112,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 ![](static/example-3.png)
 
 ::: tip
-Consider using the [horizontal bar chart](/data-display/bar-horizontal/bar-horizontal), as it makes it easier to fit category names within the columns.
+Consider using the [horizontal bar chart](/data-display/bar-horizontal/bar-horizontal), as it makes it easier to fit category names within the bars.
 :::
 
 ## Appearance
@@ -121,7 +121,7 @@ The upper part of the bar should have `border-radius: 2px`.
 
 ![](/data-display/bar-chart/static/bar-chart.png)
 
-For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between columns to avoid clutter.
+For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between bars to avoid clutter.
 
 ![](/data-display/bar-chart/static/bar-chart-2.png)
 
@@ -167,7 +167,7 @@ Trend lines can help identify overall patterns but may clutter simple charts. If
 
 ## Interaction
 
-Hovering highlights a column with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. For trend lines, display corresponding points on hover.
 
 Table: Bar chart interaction
 
@@ -202,7 +202,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display columns for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Do not display bars for data points without values. When hovering over such data points, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/partially-trash.png)
 
@@ -218,11 +218,11 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ### Start the axes from zero
 
-When comparing columns, we are actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
+When comparing bars, we are actually comparing their lengths. If we don’t start the axis from zero, it creates a visual illusion. Take a look at the charts below. In the incorrect example, the axis doesn't start from zero, making it appear as though the value on the right is almost half as large as the value on the left. However, this is not accurate.
 
 ![](static/deception-yes-no.png)
 
-If the values are very large and close to each other, the difference between the columns may not be noticeable. In such cases, we recommend using a line chart.
+If the values are very large and close to each other, the difference between the bars may not be noticeable. In such cases, we recommend using a line chart.
 
 ![](static/example-2-yes-no.png)
 
@@ -230,7 +230,7 @@ For such cases, you can add the possibility to switch the data display from a ba
 
 ![](static/type.png)
 
-### Sorting of columns
+### Sorting of bars
 
 Consider a logical order for the values on the axes. For instance, arrange them from the largest value to the smallest, or, if they represent months, from January to December, etc.
 
@@ -238,29 +238,10 @@ Consider a logical order for the values on the axes. For instance, arrange them 
 
 ### Chart as an entry point
 
-Sometimes, the chart provides an overall view, and detailed data can be accessed through interaction. There are two common scenarios:
+Sometimes, the chart provides an overall view, and detailed data can be accessed through interaction.
 
-#### Detailed information in another report
+For example, clicking on a bar opens the corresponding report. The bar should have the `hover` state. For clarity, you can add a "Click to view details" message to the chart's tooltip.
 
-In this case, clicking on a column opens the corresponding report. The column should show a `hover` state. For clarity, you can add a "Click to view details" message to the chart's tooltip.
+Upon hovering, the bar or bars are highlighted with `--chart-grid-bar-chart-hover`.
 
-Upon hovering, the column or columns are highlighted with `--chart-grid-bar-chart-hover`.
-
-Table: Detailed information in another report
-
-| Vertical bar chart example  | Horizontal bar chart example |
-| --------------------------- | ---------------------------- |
-| ![](static/interactive.png) | ![](static/hor-hover-3.png)  |
-
-#### Detailed information in the table below
-
-In this case, clicking on the date or column reveals detailed information and changes the period in the table to match the selected date.
-
-Hovering over a clickable date changes its background to `--chart-grid-period-bg`. When active, the clickable date's text color changes to `--text-invert` and its background color to `--chart-x-axis-accent-period-active`.
-
-Table: Detailed information in the table below
-
-| Vertical bar chart example     | Horizontal bar chart example       |
-| ------------------------------ | ---------------------------------- |
-| ![](static/interactive-2.png)  | ![](static/hor-widget-example.png) |
-
+![](static/interactive.png)
