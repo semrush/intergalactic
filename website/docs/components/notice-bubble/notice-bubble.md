@@ -78,8 +78,9 @@ Table: Use cases for NoticeBubble types
 ![](static/noticeBubble2.png)
 
 - The alert has a fixed width of 300px.
-- Container has paddings `12px 28px 12px 12px`.
-- There is an 8px margin between the button and the text.
+- Container has `12px 36px 12px 12px` paddings.
+- The **Close** button has absolute position with 8px top and right margins.
+- The gap between the text and any action buttons below it is 8px.
 - If there is a spinner preceding the text, then the margin between the spinner and the text is 4px (use [Spin](/components/spin/spin) with XS size).
 - In the loading and success states, the margin between the spinner/icon and the text is also 4px.
 - For the loading state, use [Spin](/components/spin/spin) with XS size.

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.0] - 2024-06-11
+
+### Added
+
+- Notice bubble manager `.add()` method now returns `ref` and `focus()`.
+
 ## [5.35.0] - 2024-06-13
 
 ### Changed
@@ -759,7 +765,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Animation styles moved to css file and now available for theming.
+- Animation styles moved to CSS file and now available for theming.
 
 ## [4.0.14] - 2022-08-23
 
@@ -833,7 +839,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - The style processing system has been changed.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 - [TS] rewrite code from TS to JS.
-- [A11y] added role for `Alert` and aria-label for `Close`.
+- [A11Y] added role for `Alert` and aria-label for `Close`.
 
 ## [2.1.1] - 2021-04-28
 
@@ -869,7 +875,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- generate css without collapsing property `margin`
+- generate CSS without collapsing property `margin`
 
 ## [2.0.5] - 2020-09-08
 
@@ -916,7 +922,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

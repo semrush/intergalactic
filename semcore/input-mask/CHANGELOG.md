@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/input` [4.29.0 ~> 4.30.0], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [5.30.0] - 2024-06-13
 
 ### Changed
@@ -334,7 +340,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+- Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected HTML form validation errors.
 
 ## [5.5.0] - 2023-08-23
 
@@ -541,7 +547,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Fixed displaying of addons placed on the end (right in ltr languages) of input.
-- Fixed mask underlay position desynchronization with html input content;
+- Fixed mask underlay position desynchronization with HTML input content;
 - Hidden placeholders and mask from real DOM to exclude it from copied content.
 
 ## [4.2.0] - 2022-10-07
@@ -555,7 +561,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Fixed addon placed before input value may be overlayed by input value.
-- Fixed previously broken in previous version backward compatibility of piping api.
+- Fixed previously broken in previous version backward compatibility of piping API.
 
 ## [4.1.1] - 2022-10-04
 
@@ -652,7 +658,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -686,7 +692,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [1.0.0] - 2019-07-26
 

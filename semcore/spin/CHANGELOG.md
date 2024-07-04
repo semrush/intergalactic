@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.29.0] - 2024-06-20
+
+### Changed
+
+- Removed inner `foreignObject` element with `aria-live` element as it doesn't work properly with the newest screen readers.
+
+## [5.28.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [5.27.0] - 2024-06-13
 
 ### Changed
@@ -574,7 +586,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность опционально подключать адаптивность
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

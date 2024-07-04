@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.39.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/utils` [4.29.0 ~> 4.30.0]).
+
+## [4.38.1] - 2024-06-26
+
+### Fixed
+
+- `aria-*` props didn't pass to the `Trigger` in the `Filter.Trigger`.
+
 ## [4.38.0] - 2024-06-13
 
 ### Changed
@@ -66,7 +78,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- composition api for `FilterTrigger`.
+- composition API for `FilterTrigger`.
 
 ## [4.31.2] - 2024-04-10
 
@@ -138,7 +150,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- A11y in Firefox for clear button in FilterTrigger.
+- A11Y in Firefox for clear button in FilterTrigger.
 
 ## [4.26.4] - 2024-02-23
 
@@ -893,7 +905,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Переименовали сбилженные файлы с 'sm.style.css' -> 'style.css'
+- Переименовали сбилженные файлы с `sm.style.css` -> `style.css`
 
 ## [1.4.0] - 2020-02-12
 
@@ -905,13 +917,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.3.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

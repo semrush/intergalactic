@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.29.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/spin` [5.27.0 ~> 5.28.0], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/animation` [2.28.0 ~> 2.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [7.28.0] - 2024-06-13
 
 ### Changed
@@ -524,7 +530,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed scollable spin-container (e.g. in `data-table`).
+- Fixed scollable spin-container (for example in `data-table`).
 
 ## [5.0.5] - 2022-04-03
 
@@ -603,7 +609,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -645,7 +651,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправленно css свойство `display` c `inline-block` на `block`
+- Исправленно CSS свойство `display` c `inline-block` на `block`
 
 ## [2.0.1] - 2019-05-21
 

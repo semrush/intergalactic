@@ -1,0 +1,9 @@
+# Checks that there are no end-of-line whitespaces
+
+extends: existence
+message: "Remove whitespace characters at the end of the line."
+link:
+level: warning
+scope: raw
+raw:
+  - " +\n"

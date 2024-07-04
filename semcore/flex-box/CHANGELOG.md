@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.29.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [5.28.0] - 2024-06-13
 
 ### Changed
@@ -234,7 +240,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `display` css property as prop to `Box` component.
+- `display` CSS property as prop to `Box` component.
 
 ## [5.7.5] - 2023-10-06
 
@@ -494,7 +500,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `gap`, `rowGap` and `columnGap` css properties support for `Flex` component.
+- Added `gap`, `rowGap` and `columnGap` CSS properties support for `Flex` component.
 
 ## [4.4.3] - 2021-10-20
 
@@ -533,7 +539,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- [Box] Added change css styles after change value by props `top, left, right, bottom`.
+- [Box] Added change CSS styles after change value by props `top, left, right, bottom`.
 
 ## [4.3.0] - 2020-12-17
 
@@ -617,7 +623,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -662,7 +668,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - У `Flex` переименовано свойство `flex` -> `flexWrap`
-- У `Flex` свойства `alignItems`, `alignContent`, `justifyContent` теперь принимают значения соответствующие значениям в css
+- У `Flex` свойства `alignItems`, `alignContent`, `justifyContent` теперь принимают значения соответствующие значениям в CSS
 
 ### Added
 

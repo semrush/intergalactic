@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/base-trigger` [4.38.0 ~> 4.39.0], `@semcore/button` [5.30.0 ~> 5.31.0], `@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/checkbox` [7.31.0 ~> 7.32.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [4.46.6] - 2024-06-14
 
 ### Changed
@@ -368,21 +374,21 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- `preselectedValue` and `onPreselectedValueChange` API to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 
 ## [4.21.0] - 2023-12-07
 
 ### Added
 
-- `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- `preselectedValue` and `onPreselectedValueChange` API to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 
 ## [4.21.0-prerelease.10] - 2023-12-07
 
 ### Added
 
-- `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- `preselectedValue` and `onPreselectedValueChange` API to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 
 ## [4.20.2] - 2023-12-15
@@ -1230,13 +1236,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.3.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -1324,7 +1330,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [1.0.0-4] - 2019-07-25
 

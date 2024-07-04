@@ -6,7 +6,7 @@ tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code
 
 ## Password input
 
-Button with the `ShowYes` icon enables the password display. `ShowNo` hides the password and shows bullets, respectively.
+Button with the `ShowYes` button enables the password display. `ShowNo` hides the password and shows bullets, respectively.
 
 ::: sandbox
 
@@ -16,9 +16,11 @@ Button with the `ShowYes` icon enables the password display. `ShowNo` hides the 
 
 :::
 
-## Loading state in the input
+## Loading state
 
-If the input is in a loading state while searching, sending, or entering data dynamically, add a [spin](/components/spin/spin) to the right addon. The [spin](/components/spin/spin) takes the place of the icon that is normally in the addon slot. During this time, the input may also be `disabled`.
+If the input is in a loading state while searching, sending, or entering data dynamically, add our [Spin](/components/spin/spin) to the right addon. 
+
+<!-- During this time, the input may also be `disabled`. -->
 
 ::: sandbox
 
@@ -28,7 +30,7 @@ If the input is in a loading state while searching, sending, or entering data dy
 
 :::
 
-## Input with the clearing ability
+## Input with clearing ability
 
 The input field may have a clickable `Close` icon inside it to clear the entered value. This icon is only visible when there is some typed text or values in the input field, regardless of its status.
 
@@ -40,13 +42,9 @@ The input field may have a clickable `Close` icon inside it to clear the entered
 
 :::
 
-## Input with a submit icon
+## Input with submit button inside
 
-In the focused state, a clickable send/confirm icon can be placed inside the input alongside the typed text. It is only visible when the input is `focused`.
-
-::: tip
-Please note that this is an outdated pattern. Now we use it only in the input inside the [pagination](/components/pagination/pagination).
-:::
+You can place submit button inside the input as the right addon. It is only visible when the input has `focused` state.
 
 ::: sandbox
 
@@ -56,7 +54,7 @@ Please note that this is an outdated pattern. Now we use it only in the input in
 
 :::
 
-## Input with a text addon
+## Input with text addon
 
 You can add text to the input as an addon that the user cannot modify. This can be useful when you need a fixed placeholder text in the input.
 
@@ -82,7 +80,7 @@ When stacking two addons, the indents of the adjacent addons should be divided i
 
 ## Input with other component inside
 
-You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input field. All input sizes have the same size for badges.
+You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input.
 
 ::: sandbox
 

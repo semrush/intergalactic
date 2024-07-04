@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.30.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/checkbox` [7.31.0 ~> 7.32.0], `@semcore/notice-bubble` [5.35.0 ~> 5.36.0], `@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/button` [5.30.0 ~> 5.31.0], `@semcore/notice` [5.34.3 ~> 5.35.0], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [6.29.5] - 2024-06-13
 
 ### Changed
@@ -168,7 +174,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `validateOnBlur=false` behaviour.
+- `validateOnBlur=false` behavior.
 
 ## [6.19.0] - 2024-02-01
 
@@ -574,7 +580,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added a11y error binding to field.
+- Added A11Y error binding to field.
 
 ## [5.4.3] - 2023-03-24
 
@@ -654,7 +660,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added aria attributes for better a11y.
+- Added aria attributes for better A11Y.
 
 ## [5.1.11] - 2022-08-30
 
@@ -832,7 +838,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
