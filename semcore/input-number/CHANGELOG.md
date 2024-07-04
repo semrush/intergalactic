@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.1] - 2024-07-03
+
+### Fixed
+
+- Display the correct value after pressing `0` after the decimal separator.
+
 ## [5.31.0] - 2024-06-26
 
 ### Changed

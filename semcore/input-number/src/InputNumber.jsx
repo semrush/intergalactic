@@ -153,9 +153,17 @@ class Value extends Component {
       };
     }
 
+    let displayValue = '';
+
+    if (stringNumber.startsWith('0.0') && stringNumber.endsWith('0')) {
+      displayValue = stringNumber;
+    } else if (stringNumber !== '') {
+      displayValue = numberFormatter.format(stringNumber);
+    }
+
     return {
       parsedValue: stringNumber,
-      displayValue: stringNumber === '' ? '' : numberFormatter.format(stringNumber),
+      displayValue: displayValue,
     };
   };
 
@@ -266,6 +274,13 @@ class Value extends Component {
     // we need this dirty hack for screen readers, because they couldn't read full value in input after adding there ','.
     // so, we change role to `region` here and back to `input` in handleKeyUp
     element.role = 'region';
+
+    // we could press dot second time - prevent this '1.5.'
+    if (event.key === this.separatorDecimal && value.indexOf(this.separatorDecimal) !== -1) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
 
     if (
       element.selectionStart !== length &&
