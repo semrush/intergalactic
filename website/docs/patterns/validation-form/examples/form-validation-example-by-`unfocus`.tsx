@@ -25,7 +25,7 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <Box w={500}>
+      <Box w={400}>
         <Form
           decorators={[this.focusDecorator]}
           validateOnBlur={false}
@@ -34,7 +34,7 @@ class Demo extends React.Component {
           {({ handleSubmit, invalid }) => (
             <form onSubmit={handleSubmit}>
               <Flex mb={4}>
-                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='1 0 auto'>
+                <Text w={80} size={300} mr={3} mt={2} flex='1 0 auto'>
                   Name
                 </Text>
                 <Flex justifyContent='space-between'>
@@ -99,9 +99,10 @@ class Demo extends React.Component {
                   </Field>
                 </Flex>
               </Flex>
+
               <Flex mb={4}>
-                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
-                  Your email
+                <Text w={80} size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Email
                 </Text>
                 <Field name='email' validate={email}>
                   {({ input, meta }) => {
@@ -131,111 +132,8 @@ class Demo extends React.Component {
               </Flex>
 
               <Flex mb={4}>
-                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
-                  Select option
-                </Text>
-                <Field name='someSelect' validate={required}>
-                  {({ input, meta }) => {
-                    const showError = Boolean(meta.touched && meta.active && meta.error);
-
-                    return (
-                      <Tooltip>
-                        <Tooltip.Popper id='form-select-error' theme='warning' visible={showError}>
-                          {meta.error}
-                        </Tooltip.Popper>
-                        <Tooltip.Trigger>
-                          <Select
-                            value={input.value === '' ? undefined : input.value}
-                            size={'l'}
-                            placeholder={'Select something'}
-                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
-                            onChange={(value, event) => {
-                              Object.defineProperty(event.target, 'value', {
-                                writable: false,
-                                value,
-                              });
-
-                              input.onChange(event);
-                            }}
-                          >
-                            <Select.Trigger onBlur={(e) => input.onBlur(e)} />
-                            <Select.Popper>
-                              <Select.Option value={1}>Option 1</Select.Option>
-                              <Select.Option value={2}>Option 2</Select.Option>
-                              <Select.Option value={3}>Option 3</Select.Option>
-                            </Select.Popper>
-                          </Select>
-                        </Tooltip.Trigger>
-                      </Tooltip>
-                    );
-                  }}
-                </Field>
-              </Flex>
-
-              <Flex mb={4}>
-                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
-                  Choose one item
-                </Text>
-                <Field name='radio' type={'radio'} validate={required}>
-                  {({ input, meta }) => {
-                    const showError = Boolean(meta.touched && meta.active && meta.error);
-
-                    return (
-                      <Tooltip>
-                        <Tooltip.Popper id='form-radio-error' theme='warning' visible={showError}>
-                          {meta.error}
-                        </Tooltip.Popper>
-                        <RadioGroup
-                          size='l'
-                          {...input}
-                          tag={Tooltip.Trigger}
-                          state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
-                          onChange={(value, e) => input.onChange(e)}
-                        >
-                          <Radio label='Value 1' mb={3} value='1' />
-                          <Radio label='Value 2' mb={3} value='2' />
-                        </RadioGroup>
-                      </Tooltip>
-                    );
-                  }}
-                </Field>
-              </Flex>
-
-              <Flex mb={4}>
-                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
-                  Enter some text
-                </Text>
-                <Field name='textarea' validate={required} defaultValue={'some text not too long'}>
-                  {({ input, meta }) => {
-                    const showError = Boolean(meta.touched && meta.active && meta.error);
-
-                    return (
-                      <Tooltip>
-                        <Tooltip.Popper
-                          id='form-textarea-error'
-                          theme='warning'
-                          visible={showError}
-                        >
-                          {meta.error}
-                        </Tooltip.Popper>
-                        <Tooltip.Trigger>
-                          <Textarea
-                            {...input}
-                            h={80}
-                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
-                          >
-                            {input.value}
-                          </Textarea>
-                        </Tooltip.Trigger>
-                      </Tooltip>
-                    );
-                  }}
-                </Field>
-              </Flex>
-
-              <Flex mb={4}>
-                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
-                  Enter date
+                <Text w={80} size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Date
                 </Text>
                 <Field name='date' validate={required}>
                   {({ input, meta }) => {
@@ -267,6 +165,111 @@ class Demo extends React.Component {
               </Flex>
 
               <Flex mb={4}>
+                <Text w={80} size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Daytime
+                </Text>
+                <Field name='someSelect' validate={required}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper id='form-select-error' theme='warning' visible={showError}>
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <Tooltip.Trigger>
+                          <Select
+                            value={input.value === '' ? undefined : input.value}
+                            size={'l'}
+                            placeholder={'Select'}
+                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                            onChange={(value, event) => {
+                              Object.defineProperty(event.target, 'value', {
+                                writable: false,
+                                value,
+                              });
+
+                              input.onChange(event);
+                            }}
+                          >
+                            <Select.Trigger onBlur={(e) => input.onBlur(e)} />
+                            <Select.Popper>
+                              <Select.Option value={1}>Morning</Select.Option>
+                              <Select.Option value={2}>Afternoon</Select.Option>
+                              <Select.Option value={3}>Evening</Select.Option>
+                            </Select.Popper>
+                          </Select>
+                        </Tooltip.Trigger>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
+                <Text w={80} size={300} mr={3} flex='0 0 auto'>
+                  Visit purpose
+                </Text>
+                <Field name='radio' type={'radio'} validate={required}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper id='form-radio-error' theme='warning' visible={showError}>
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <RadioGroup
+                          size='l'
+                          {...input}
+                          tag={Tooltip.Trigger}
+                          state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          onChange={(value, e) => input.onChange(e)}
+                        >
+                          <Radio label='Regular' mb={3} value='1' />
+                          <Radio label='Special (I will provide details below)' mb={3} value='2' />
+                        </RadioGroup>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
+                <Text w={80} size={300} mr={3} mt={2} flex='0 0 auto'>
+                  Comment
+                </Text>
+                <Field name='textarea' validate={required}>
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip>
+                        <Tooltip.Popper
+                          id='form-textarea-error'
+                          theme='warning'
+                          visible={showError}
+                        >
+                          {meta.error}
+                        </Tooltip.Popper>
+                        <Tooltip.Trigger>
+                          <Textarea
+                            {...input}
+                            h={80}
+                            size='l'
+                            placeholder='Add details'
+                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          >
+                            {input.value}
+                          </Textarea>
+                        </Tooltip.Trigger>
+                      </Tooltip>
+                    );
+                  }}
+                </Field>
+              </Flex>
+
+              <Flex mb={4}>
                 <Field
                   name='confirm'
                   type={'checkbox'}
@@ -284,12 +287,13 @@ class Demo extends React.Component {
                           {...input}
                           state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           size={'l'}
+                          ml='92px'
                           onChange={(value, e) => input.onChange(e)}
                         >
-                          <Checkbox.Text tag={Text} w={100} textAlign='right' size={300} mr={3}>
-                            Confirm
-                          </Checkbox.Text>
                           <Checkbox.Value />
+                          <Checkbox.Text tag={Text} size={300}>
+                            I confirm that I have filled out this strange form.
+                          </Checkbox.Text>
                         </Checkbox>
                       </Tooltip>
                     );
@@ -297,7 +301,7 @@ class Demo extends React.Component {
                 </Field>
               </Flex>
 
-              <Button ml='112px' size='l' use='primary' theme='success' type='submit'>
+              <Button ml='92px' size='l' use='primary' theme='success' type='submit'>
                 <Button.Text>Submit</Button.Text>
               </Button>
             </form>
