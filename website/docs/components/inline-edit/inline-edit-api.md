@@ -16,7 +16,7 @@ import InlineEdit from 'intergalactic/inline-edit';
 
 ## InlineEdit.View
 
-All children of `InlineEdit.View` is displayed when `editable` property of `InlineEdit` is set to `false`. When `editable` property is set to `true`, children elements still persist in DOM, but hidden via css opacity.
+All children of `InlineEdit.View` is displayed when `editable` property of `InlineEdit` is set to `false`. When `editable` property is set to `true`, children elements still persist in DOM, but hidden via CSS opacity.
 
 ```jsx
 import InlineEdit from 'intergalactic/inline-edit';

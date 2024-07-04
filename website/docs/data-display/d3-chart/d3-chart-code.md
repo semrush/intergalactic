@@ -388,11 +388,11 @@ You can access `PatternFill` and `PatternSymbol` components for low level use.
 
 ## A11y formatting
 
-You can provide formatting functions that will control a11y module generated summary and data table content. 
+You can provide formatting functions that will control A11y module generated summary and data table content. 
 
 ::: tip
 
-Click on this tip (to place focus on it) and press `Tab` to navigate to the chart until you see the a11y module.
+Click on this tip (to place focus on it) and press `Tab` to navigate to the chart until you see the A11y module.
 
 :::
 

@@ -116,7 +116,7 @@ If you add a new icon to the library, make sure to add it in all necessary sizes
 
 ![](static/name-color.png)
 
-4. Each icon should be tagged in their master component description, with a list of tags, matching [this JSON](https://github.com/semrush/intergalactic/blob/master/website/docs/style/icon/components/icons-list.js) (to make it possible to search for an icon on the design system website).
+4. Each icon should be tagged in their primary component description, with a list of tags, matching [this JSON](https://github.com/semrush/intergalactic/blob/master/website/docs/style/icon/components/icons-list.js) (to make it possible to search for an icon on the design system website).
 
 ![](static/icon-tags.png)
 

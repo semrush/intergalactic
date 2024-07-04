@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.1] - 2024-07-01
+
+### Changed
+
+- Border radius to token instead of hardcoded value.
+
 ## [3.39.0] - 2024-06-26
 
 ### Changed
@@ -562,7 +568,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed carousel html roles.
+- Fixed carousel HTML roles.
 
 ## [2.2.29] - 2023-03-28
 
@@ -683,7 +689,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] Added support to work `Carousel.Next, Carousel.Prev` with keyboard.
+- [A11Y] Added support to work `Carousel.Next, Carousel.Prev` with keyboard.
 
 ## [1.4.0] - 2021-04-26
 
@@ -705,7 +711,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `style` folder with css in build folder `lib`.
+- Added `style` folder with CSS in build folder `lib`.
 
 ## [1.1.1] - 2020-12-28
 

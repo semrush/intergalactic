@@ -599,7 +599,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Fixed `Input.Addon` css classes were missing during server-side rendering.
+- Fixed `Input.Addon` CSS classes were missing during server-side rendering.
 
 ## [3.0.9] - 2022-07-22
 
@@ -721,7 +721,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Переименовали сбилженные файлы с 'sm.style.css' -> 'style.css'
+- Переименовали сбилженные файлы с `sm.style.css` -> `style.css`
 
 ## [1.7.0] - 2020-02-12
 
@@ -739,13 +739,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.6.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -803,7 +803,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ### Changed
 
@@ -847,7 +847,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Добавлено css-свойство `font-family: inherit;`
+- Добавлено CSS-свойство `font-family: inherit;`
 
 ## [1.1.0] - 2019-05-14
 

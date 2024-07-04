@@ -52,7 +52,7 @@ import { Blockquote } from 'intergalactic/typography';
 
 ## Hint
 
-The hint is very similar to [Link](/components/link/link) and has a similar structure from `Addon` + `Text`.
+The hint is very similar to [Link component](/components/link/link) and has a similar structure from `Addon` + `Text`.
 
 ```jsx
 import { Hint } from 'intergalactic/typography';
