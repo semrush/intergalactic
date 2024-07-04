@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.2] - 2024-06-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.38.0 ~> 4.39.0], `@semcore/checkbox` [7.31.0 ~> 7.32.0], `@semcore/divider` [4.27.0 ~> 4.28.0], `@semcore/dropdown-menu` [4.34.1 ~> 4.34.2], `@semcore/popper` [5.36.1 ~> 5.37.0], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/input` [4.29.0 ~> 4.30.0], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [4.44.1] - 2024-06-14
 
 ### Changed
@@ -840,7 +846,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- `aria-controls` and `aria-expanded` HTML attributes wasn't applied on closed dropdown.
 - `aria-activedescendant` was applied to selected option but not on focused one.
 - Option keys are now based on option value.
 - Removed unexpected tabIndex=-1.
@@ -1280,7 +1286,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

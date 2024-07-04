@@ -7,9 +7,9 @@ const Demo = () => {
   return (
     <>
       <Text tag='label' htmlFor='permanent-placeholder-l-example' size={300}>
-        Input with L size and permanent placeholder text
+        Input with permanent text
       </Text>
-      <Box mt={2}>
+      <Box mt={2} mb={4}>
         <Input size='l' w={300}>
           <Input.Addon pr='3px' id='permanent-placeholder-l-addon'>
             <Text color='text-secondary'>Permanent text:</Text>
@@ -21,10 +21,8 @@ const Demo = () => {
           />
         </Input>
       </Box>
-      <br />
-      <br />
       <Text tag='label' htmlFor='permanent-placeholder-m-example' size={200}>
-        Input with M size and permanent placeholder text
+        Input with permanent text
       </Text>
       <Box mt={2}>
         <Input size='m' w={300}>

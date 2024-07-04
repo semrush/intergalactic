@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.27.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0]).
+
 ## [2.26.0] - 2024-06-13
 
 ### Changed
@@ -210,7 +216,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed components css output of complex selectors.
+- Fixed components CSS output of complex selectors.
 
 ## [2.8.0] - 2023-10-27
 
@@ -639,7 +645,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Изменено свойство с `css` на `styles`
+- Изменено свойство с `CSS` на `styles`
 
 ## [0.0.1-13] - 2020-05-19
 

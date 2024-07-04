@@ -2,7 +2,8 @@ SBubble,
 SView {
   position: relative;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
-  padding: var(--intergalactic-spacing-3x, 12px) calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-1x, 4px)) var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px);
+  padding-right: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px));
   width: 100%;
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
@@ -35,12 +36,15 @@ SDismiss {
   position: absolute;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-2x, 8px);
-  color: var(--intergalactic-text-primary-invert, #ffffff);
+  padding: var(--intergalactic-spacing-2x, 8px) 0;
+  margin: var(--intergalactic-spacing-1x, 4px);
+  flex-shrink: 0;
   border: 0;
   background: transparent;
-
-  &:hover {
+  & svg {
+    color: var(--intergalactic-text-primary-invert, #ffffff);
+  }
+  &:hover svg {
     color: var(--intergalactic-control-primary-invert-active, #e0e1e9);
   }
 }

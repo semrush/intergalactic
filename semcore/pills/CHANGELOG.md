@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.30.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/neighbor-location` [4.26.0 ~> 4.27.0], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [5.29.0] - 2024-06-13
 
 ### Changed
@@ -160,7 +166,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- `Tab` click will not move by Pills with `behaviour=manual`.
+- `Tab` click will not move by Pills with `behavior=manual`.
 
 ## [5.17.0] - 2024-01-19
 
@@ -531,7 +537,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added css property `isolation` to container.
+- Added CSS property `isolation` to container.
 
 ## [4.3.3] - 2022-10-28
 
@@ -667,7 +673,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added alternative api for inserting `Addon`.
+- Added alternative API for inserting `Addon`.
 
 ## [3.1.0] - 2020-09-30
 
@@ -713,13 +719,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.2.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность опционально подключать адаптивность
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -754,7 +760,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [2.0.5] - 2019-07-20
 

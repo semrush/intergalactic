@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.39.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.28.0 ~> 2.29.0], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [4.38.0] - 2024-06-13
 
 ### Changed
@@ -180,7 +186,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [4.25.0] - 2024-01-19
 
@@ -648,7 +654,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+- Added `Modal.Title` component and `aria-labelledby` property for better A11Y.
 
 ## [3.3.6] - 2023-01-11
 
@@ -783,7 +789,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - [TS] rewrite code from ts to js.
-- [A11y] added role for `Window` and aria-label for `Close` and `Window`.
+- [A11Y] added role for `Window` and aria-label for `Close` and `Window`.
 
 ## [2.3.1] - 2021-04-28
 
@@ -857,13 +863,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.4.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
@@ -916,7 +922,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера CSS на сервере
 
 ## [1.1.4] - 2019-07-17
 

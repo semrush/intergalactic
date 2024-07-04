@@ -1,0 +1,9 @@
+# Recommends to avoid please in technical docs
+extends: existence
+message: "Avoid using '%s' in technical documentation. It's excessive."
+ignorecase: true
+action:
+  name: remove
+level: warning
+tokens:
+  - please

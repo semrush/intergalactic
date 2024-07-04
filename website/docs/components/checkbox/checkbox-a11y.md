@@ -10,11 +10,11 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 Table: Keyboard support
 
-| Key           | Function                                               |
-| ------------- | ------------------------------------------------------ |
-| `Tab`         | Moves focus to the next focusable element.             |
-| `Shift + Tab` | Moves focus to the previous focusable element.         |
-| `Space`       | Toggles checkbox between checked and unchecked states. |
+| Key           | Function                                                                                                         |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`         | Moves focus to the next focusable element.                                                                       |
+| `Shift + Tab` | Moves focus to the previous focusable element.                                                                   |
+| `Space`       | Toggles checkbox between checked and unchecked states, and between `indeterminate` (mixed) and unchecked states. |
 
 ### Roles and attributes
 
@@ -22,28 +22,34 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role       | Attribute              | Element | Usage                                                                                                                                                                                                                                                                                                                                                                                 |
-| ---------- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `checkbox` |                        | `div`   | Identifies the div element as a checkbox. The child text content of this `div` provides the accessible name of the checkbox.                                                                                                                                                                                                                                                          |
-|            | `tabIndex="0"`         | `div`   | Includes the checkbox in the page `Tab` sequence.                                                                                                                                                                                                                                                                                                                                     |
-|            | `aria-invalid`         | `input` | Turns to `true` if `state=invalid` is provided.                                                                                                                                                                                                                                                                                                                                     |
+| Component        | Role                                             | Attribute              | Usage                                                                                                                      |
+| ---------------- | ------------------------------------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Checkbox.Value` | `checkbox` implicit on `<input type="checkbox">` |                        | Identifies the element as a checkbox. The child text content of this element provides the accessible name of the checkbox. |
+| `Checkbox.Value` |                                                  | `tabIndex="0"`         | Includes the checkbox in the page `Tab` sequence.                                                                          |
+| `Checkbox.Value` |                                                  | `aria-invalid="false"` | Turns to `true` if `state="invalid"` is provided.                                                                          |
 
 ## Considerations for developers
 
-- The `<fieldset>` surrounds the entire grouping of checkboxes or radio buttons. The `<legend>` provides a description for the grouping.
-- Some assistive technology reads the legend text for each `fieldset`, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.
+### Grouping with fieldset
 
-Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons).
+You can group `Checkbox` controls using the `<fieldset>` tag. The `<legend>` tag describes the grouping. Refer to the [Checkbox group example](/components/checkbox/checkbox-code#checkbox-group).
 
-### Roles and attributes
+Some assistive technologies read the `<legend>` text, so it should be brief and descriptive. This helps users understand the question they are answering with the group of checkbox buttons.
+
+### Grouping with group role
+
+If you use `group` role to group checkbox buttons, add a common label and connect it through `aria-labelledby`.
+
+#### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
-Table: Roles
+Table: Roles and attributes
 
-| Role    | Element | Usage                                                                 |
-| ------- | ------- | --------------------------------------------------------------------- |
-| `group` | `div`   | Identifies the `div` element as a group container for the checkboxes. |
+| Role    | Attribute                   | Usage                                                                 |
+| ------- | --------------------------- | --------------------------------------------------------------------- |
+| `group` |                             | Identifies the `div` element as a group container for the checkboxes. |
+|         | `aria-labelledby="[IDREF]"` | Refers to the element that contains the label of the checkbox group.  |
 
 ## Resources
 

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [3.38.0] - 2024-06-13
 
 ### Changed
@@ -728,7 +734,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added dependency on `@semcore/modal`. Component use `<Modal>` for initialization.
-- Added properties `visible`, `closable`, `duration`, about them can you read in [API](/components/fullscreen-modal/fullscreen-modal-api/#a5f727)
+- Added properties `visible`, `closable`, `duration`, about them can you read in [API](/components/fullscreen-modal/fullscreen-modal-API/#a5f727)
 
 ## [1.1.2] - 2020-09-08
 

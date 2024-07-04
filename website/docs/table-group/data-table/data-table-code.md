@@ -399,7 +399,7 @@ Export the table to an image.
 
 ## Compact
 
-Reduce table cel  paddings by adding the `compact` property.
+Reduce table cel paddings by adding the `compact` property.
 
 ::: sandbox
 

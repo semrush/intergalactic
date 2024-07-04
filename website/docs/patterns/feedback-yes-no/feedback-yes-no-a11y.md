@@ -11,7 +11,7 @@ FeedbackYesNo form pattern consists of several components that have their own ac
 - [Dropdown](/components/dropdown/dropdown-a11y)
 - [Textarea](/components/textarea/textarea-a11y)
 - [Input](/components/input/input-a11y)
-- [Link](/components/link/link-a11y)
+- [Link component](/components/link/link-a11y)
 - [Feedback form](/components/feedback/feedback-form-a11y)
 - [Form](/patterns/form/form-a11y)
 

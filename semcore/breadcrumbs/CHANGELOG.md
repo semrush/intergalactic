@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.1] - 2024-06-24
+
+### Fixed
+
+- `box-shadow` displaying on focused item.
+
 ## [5.34.0] - 2024-06-13
 
 ### Changed
@@ -692,7 +698,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Remove set css property `max-width` for `Breadcrumbs.Item`
+- Remove set CSS property `max-width` for `Breadcrumbs.Item`
 
 ## [2.0.2] - 2020-09-08
 
@@ -716,13 +722,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.2.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

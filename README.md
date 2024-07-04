@@ -50,6 +50,7 @@ Thanks to all contributors, you are so awesome! ❤️
 - [Roman Lysov](https://github.com/lsroman)
 - [Michael Sereniti](https://github.com/msereniti)
 - [Julia Mnizhek](https://github.com/j-mnizhek)
+- [Sheila Sheikh](https://github.com/sheila-semrush)
 - [Ilia Brauer](https://github.com/ilyabrower)
 - [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
 - [Ruslan Gaiazov](https://github.com/freeyoungstrong)

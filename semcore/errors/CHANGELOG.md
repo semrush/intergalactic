@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.30.0 ~> 5.31.0], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [4.34.0] - 2024-06-13
 
 ### Changed
@@ -180,7 +186,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [4.19.0] - 2024-01-19
 
@@ -638,7 +644,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `role="alert"` attributes to increase support for a11y.
+- Added `role="alert"` attributes to increase support for A11Y.
 
 ## [3.1.4] - 2022-08-11
 
@@ -763,7 +769,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Убран некорректный импорт из `widget-empty/src`, ломающий проверку типов `typescript`
+- Убран некорректный импорт из `widget-empty/src`, ломающий проверку типов `TypeScript`
 
 ## [2.0.0] - 2020-06-17
 
@@ -798,7 +804,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

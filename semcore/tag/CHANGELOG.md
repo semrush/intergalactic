@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.38.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/icon` [4.38.0 ~> 4.39.1], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [5.37.0] - 2024-06-13
 
 ### Changed
@@ -588,7 +594,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed css variable design tokens.
+- Fixed CSS variable design tokens.
 
 ## [4.4.3] - 2022-12-27
 
@@ -600,7 +606,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed css syntax error.
+- Fixed CSS syntax error.
 
 ## [4.4.1] - 2022-12-19
 
@@ -832,7 +838,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added alternative api for inserting `Addon`.
+- Added alternative API for inserting `Addon`.
 
 ### Changed
 
@@ -854,13 +860,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.2.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
