@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.0] - 2024-06-28
+
+### Added
+
+- `CigarettePackChartSkeleton` component.
+
 ## [5.30.0] - 2024-07-12
 
 ### Added

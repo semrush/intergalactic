@@ -7,7 +7,7 @@ import { PatternsConfig } from './Pattern';
 import { BoxProps } from '@semcore/flex-box';
 import { TooltipType } from './Tooltip';
 
-export type DistributionBarProps = Context & {
+export type CigarettesPackProps = Context & {
   /** Field name from `data` array item for the XAxis */
   x?: string;
   /** Field name from `data` array item for the YAxis */
@@ -29,39 +29,39 @@ export type DistributionBarProps = Context & {
   patterns?: PatternsConfig;
 };
 
-export type DistributionHoverProps = BoxProps;
-type Hover = IntergalacticD3Component<'rect', DistributionHoverProps, Context>;
-export type DistributionAnnotationProps = BoxProps;
-type Annotation = IntergalacticD3Component<'foreignObject', DistributionAnnotationProps, Context>;
-export type DistributionLabelProps = BoxProps;
-type Label = IntergalacticD3Component<'div', DistributionLabelProps, Context>;
-export type DistributionPercentProps = BoxProps;
-export type DistributionPercentContext = { formatted: string; percent: number };
+export type CigarettePackHoverProps = BoxProps;
+type Hover = IntergalacticD3Component<'rect', CigarettePackHoverProps, Context>;
+export type CigarettePackAnnotationProps = BoxProps;
+type Annotation = IntergalacticD3Component<'foreignObject', CigarettePackAnnotationProps, Context>;
+export type CigarettePackLabelProps = BoxProps;
+type Label = IntergalacticD3Component<'div', CigarettePackLabelProps, Context>;
+export type CigarettePackPercentProps = BoxProps;
+export type CigarettePackPercentContext = { formatted: string; percent: number };
 type Percent = IntergalacticD3Component<
   'div',
-  DistributionPercentProps,
-  Context & DistributionPercentContext
+  CigarettePackPercentProps,
+  Context & CigarettePackPercentContext
 >;
-export type DistributionValueProps = BoxProps;
-export type DistributionValueContext = { formatted: string; value: number };
+export type CigarettePackValueProps = BoxProps;
+export type CigarettePackValueContext = { formatted: string; value: number };
 type Value = IntergalacticD3Component<
   'div',
-  DistributionValueProps,
-  Context & DistributionValueContext
+  CigarettePackValueProps,
+  Context & CigarettePackValueContext
 >;
-export type DistributionBarBarProps = {};
-type Bar = IntergalacticD3Component<'g', DistributionBarBarProps, Context>;
-export type DistributionBarBackgroundProps = BoxProps;
+export type CigarettesPackBarProps = {};
+type Bar = IntergalacticD3Component<'g', CigarettesPackBarProps, Context>;
+export type CigarettesPackBackgroundProps = BoxProps;
 type Background = IntergalacticD3Component<'rect', BackgroundProps, Context>;
-export type DistributionBarFillProps = BoxProps & {
+export type CigarettesPackFillProps = BoxProps & {
   patterns?: PatternsConfig;
   color?: string;
   transparent?: boolean;
   hide?: boolean;
 };
-type Fill = IntergalacticD3Component<'rect', DistributionBarFillProps, Context>;
+type Fill = IntergalacticD3Component<'rect', CigarettesPackFillProps, Context>;
 
-declare const DistributionBar: IntergalacticD3Component<'g', DistributionBarProps, BarContext> & {
+declare const CigarettesPack: IntergalacticD3Component<'g', CigarettesPackProps, BarContext> & {
   Hover: Hover;
   Annotation: Annotation;
   Label: Label;
@@ -77,4 +77,4 @@ declare const DistributionBar: IntergalacticD3Component<'g', DistributionBarProp
   }>;
 };
 
-export default DistributionBar;
+export default CigarettesPack;

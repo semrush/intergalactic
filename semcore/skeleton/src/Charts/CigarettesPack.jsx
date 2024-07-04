@@ -4,10 +4,10 @@ import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 
 const patternBase64 = preval`
-module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/distribution-bar-chart.svg'))
+module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/cigarettes-pack-chart.svg'))
 `;
 
-const DistributionBarChartSkeleton = (props) => {
+const CigarettesPackChartSkeleton = (props) => {
   const SChartSkeleton = Root;
   return sstyled(styles)(
     <SChartSkeleton
@@ -20,4 +20,4 @@ const DistributionBarChartSkeleton = (props) => {
   );
 };
 
-export default createComponent(DistributionBarChartSkeleton);
+export default createComponent(CigarettesPackChartSkeleton);

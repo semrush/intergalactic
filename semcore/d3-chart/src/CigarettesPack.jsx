@@ -19,8 +19,8 @@ export const MIN_WIDTH = 4;
 const barHeight = 20;
 const hoverOffset = 6;
 
-class DistributionBarRoot extends Component {
-  static displayName = 'DistributionBar';
+class CigarettesPackRoot extends Component {
+  static displayName = 'CigarettesPack';
   static enhance = [uniqueIDEnhancement()];
   static style = style;
 
@@ -174,7 +174,7 @@ class DistributionBarRoot extends Component {
   }
 
   renderBar(d, i) {
-    const SDistributionBarGroup = this.Element;
+    const SCigarettesPackGroup = this.Element;
     const { styles, groupKey } = this.asProps;
     const { x, y } = this.computeBarData(d, i);
 
@@ -182,7 +182,7 @@ class DistributionBarRoot extends Component {
 
     return (
       <React.Fragment key={`horizontal-bar-${i}`}>
-        {sstyled(styles)(<SDistributionBarGroup render='g' />)}
+        {sstyled(styles)(<SCigarettesPackGroup render='g' />)}
       </React.Fragment>
     );
   }
@@ -437,12 +437,12 @@ class Hover extends Component {
     const { styles, getBarData, render } = this.asProps;
     if (!render) return null;
     const { index } = this.state;
-    const SDistributionBarHoverRect = this.Element;
+    const SCigarettesPackHoverRect = this.Element;
 
     if (index === null) return null;
     const bar = getBarData(index);
     return sstyled(styles)(
-      <SDistributionBarHoverRect
+      <SCigarettesPackHoverRect
         render='rect'
         x={bar.x}
         y={bar.y + bar.height - barHeight - hoverOffset * 2}
@@ -453,19 +453,15 @@ class Hover extends Component {
   }
 }
 
-const DistributionBarTooltip = (props) => {
+const CigarettesPackTooltip = (props) => {
   if (!props.render) return null;
-  const SDistributionBarRadarTooltip = Root;
+  const SCigarettesPackRadarTooltip = Root;
   return sstyled(props.styles)(
-    <SDistributionBarRadarTooltip
-      render={Tooltip}
-      tag={DistributionBar.Hover}
-      excludeAnchorProps
-    />,
+    <SCigarettesPackRadarTooltip render={Tooltip} tag={CigarettesPack.Hover} excludeAnchorProps />,
   );
 };
 
-const DistributionBar = createElement(DistributionBarRoot, {
+const CigarettesPack = createElement(CigarettesPackRoot, {
   Annotation,
   Label,
   Percent,
@@ -478,7 +474,7 @@ const DistributionBar = createElement(DistributionBarRoot, {
     },
   ],
   Hover,
-  Tooltip: [DistributionBarTooltip, Tooltip._______childrenComponents],
+  Tooltip: [CigarettesPackTooltip, Tooltip._______childrenComponents],
 });
 
-export default DistributionBar;
+export default CigarettesPack;

@@ -6,7 +6,7 @@ export { XAxis, YAxis } from './Axis';
 export { default as Line } from './Line';
 
 export { default as Bar } from './Bar';
-export { default as DistributionBar } from './DistributionBar';
+export { default as CigarettesPack } from './CigarettesPack';
 export { default as HorizontalBar } from './HorizontalBar';
 export { default as GroupBar } from './GroupBar';
 export { default as StackBar } from './StackBar';

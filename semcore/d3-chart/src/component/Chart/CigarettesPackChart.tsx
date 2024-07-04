@@ -2,20 +2,20 @@ import React from 'react';
 import createComponent from '@semcore/core';
 import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
 import {
-  DistributionBarChartData,
-  DistributionBarChartProps,
-  DistributionBarChartType,
-} from './DistributionBarChart.type';
+  CigarettesPackChartData,
+  CigarettesPackChartProps,
+  CigarettesPackChartType,
+} from './CigarettesPackChart.type';
 import { scaleBand, scaleLinear } from 'd3-scale';
 // @ts-ignore
-import { DistributionBar } from '../..';
+import { CigarettesPack } from '../..';
 import { AbstractChart } from './AbstractChart';
 
-class DistributionBarChartComponent extends AbstractChart<
-  DistributionBarChartData,
-  DistributionBarChartProps
+class CigarettesPackChartComponent extends AbstractChart<
+  CigarettesPackChartData,
+  CigarettesPackChartProps
 > {
-  static displayName = 'Chart.DistributionBar';
+  static displayName = 'Chart.CigarettesPack';
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
     showXAxis: false,
@@ -40,23 +40,23 @@ class DistributionBarChartComponent extends AbstractChart<
     const { x, y, onClickHoverRect, onClickBar } = this.asProps;
 
     return (
-      <DistributionBar x={x} y={y}>
-        {this.renderDistributionTooltip()}
-        <DistributionBar.Hover onClick={onClickHoverRect} />
-        <DistributionBar.Annotation>
-          <DistributionBar.Label />
-          <DistributionBar.Percent />
-          <DistributionBar.Value />
-        </DistributionBar.Annotation>
-        <DistributionBar.Bar onClick={onClickBar}>
-          <DistributionBar.Bar.Background />
-          <DistributionBar.Bar.Fill />
-        </DistributionBar.Bar>
-      </DistributionBar>
+      <CigarettesPack x={x} y={y}>
+        {this.renderCigarettePackTooltip()}
+        <CigarettesPack.Hover onClick={onClickHoverRect} />
+        <CigarettesPack.Annotation>
+          <CigarettesPack.Label />
+          <CigarettesPack.Percent />
+          <CigarettesPack.Value />
+        </CigarettesPack.Annotation>
+        <CigarettesPack.Bar onClick={onClickBar}>
+          <CigarettesPack.Bar.Background />
+          <CigarettesPack.Bar.Fill />
+        </CigarettesPack.Bar>
+      </CigarettesPack>
     );
   }
 
-  protected renderDistributionTooltip(): React.ReactNode {
+  protected renderCigarettePackTooltip(): React.ReactNode {
     const { data, x, y, showTooltip } = this.asProps;
 
     if (!showTooltip) {
@@ -64,19 +64,19 @@ class DistributionBarChartComponent extends AbstractChart<
     }
 
     return (
-      <DistributionBar.Tooltip wMin={100}>
+      <CigarettesPack.Tooltip wMin={100}>
         {({ index }: any) => {
           return {
             children: (
               <>
-                <DistributionBar.Tooltip.Title>{data[index][y]}</DistributionBar.Tooltip.Title>
+                <CigarettesPack.Tooltip.Title>{data[index][y]}</CigarettesPack.Tooltip.Title>
 
-                <DistributionBar.Tooltip.Dot>{data[index][x]}</DistributionBar.Tooltip.Dot>
+                <CigarettesPack.Tooltip.Dot>{data[index][x]}</CigarettesPack.Tooltip.Dot>
               </>
             ),
           };
         }}
-      </DistributionBar.Tooltip>
+      </CigarettesPack.Tooltip>
     );
   }
 
@@ -103,6 +103,6 @@ class DistributionBarChartComponent extends AbstractChart<
   }
 }
 
-export const DistributionBarChart: DistributionBarChartType = createComponent(
-  DistributionBarChartComponent,
+export const CigarettesPackChart: CigarettesPackChartType = createComponent(
+  CigarettesPackChartComponent,
 );

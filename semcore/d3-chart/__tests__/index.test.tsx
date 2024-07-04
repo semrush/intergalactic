@@ -22,7 +22,7 @@ import {
   Line,
   Donut,
   HorizontalBar,
-  DistributionBar,
+  CigarettesPack,
   GroupBar,
   minMax,
   Area,
@@ -2640,7 +2640,7 @@ describe('d3 charts visual regression', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should render distribution bar chart', async ({ task }) => {
+  test.concurrent('should render cigarettes pack chart', async ({ task }) => {
     const data = [
       {
         category: 'Schema.org (Microdata)',
@@ -2681,35 +2681,35 @@ describe('d3 charts visual regression', () => {
 
       return (
         <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <DistributionBar x='value' y='category'>
-            <DistributionBar.Hover />
-            <DistributionBar.Tooltip>
+          <CigarettesPack x='value' y='category'>
+            <CigarettesPack.Hover />
+            <CigarettesPack.Tooltip>
               {({ index }: any) => {
                 return {
                   children: (
                     <>
-                      <DistributionBar.Tooltip.Title>
+                      <CigarettesPack.Tooltip.Title>
                         {data[index].category}
-                      </DistributionBar.Tooltip.Title>
+                      </CigarettesPack.Tooltip.Title>
                       <Flex justifyContent='space-between'>
-                        <DistributionBar.Tooltip.Dot mr={4}>Bar</DistributionBar.Tooltip.Dot>
+                        <CigarettesPack.Tooltip.Dot mr={4}>Bar</CigarettesPack.Tooltip.Dot>
                         <Text bold>{data[index].value}</Text>
                       </Flex>
                     </>
                   ),
                 };
               }}
-            </DistributionBar.Tooltip>
-            <DistributionBar.Annotation>
-              <DistributionBar.Label />
-              <DistributionBar.Percent />
-              <DistributionBar.Value />
-            </DistributionBar.Annotation>
-            <DistributionBar.Bar>
-              <DistributionBar.Bar.Background />
-              <DistributionBar.Bar.Fill />
-            </DistributionBar.Bar>
-          </DistributionBar>
+            </CigarettesPack.Tooltip>
+            <CigarettesPack.Annotation>
+              <CigarettesPack.Label />
+              <CigarettesPack.Percent />
+              <CigarettesPack.Value />
+            </CigarettesPack.Annotation>
+            <CigarettesPack.Bar>
+              <CigarettesPack.Bar.Background />
+              <CigarettesPack.Bar.Fill />
+            </CigarettesPack.Bar>
+          </CigarettesPack>
         </Plot>
       );
     };

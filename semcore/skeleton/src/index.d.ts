@@ -79,7 +79,7 @@ declare const VennChartSkeleton: typeof Skeleton;
 declare const BubbleChartSkeleton: typeof Skeleton;
 declare const ScatterPlotChartSkeleton: typeof Skeleton;
 declare const RadialTreeChartSkeleton: typeof Skeleton;
-declare const DistributionBarChartSkeleton: typeof Skeleton;
+declare const CigarettesPackChartSkeleton: typeof Skeleton;
 
 export default Skeleton;
 export {
@@ -92,5 +92,5 @@ export {
   BubbleChartSkeleton,
   ScatterPlotChartSkeleton,
   RadialTreeChartSkeleton,
-  DistributionBarChartSkeleton,
+  CigarettesPackChartSkeleton,
 };

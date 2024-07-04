@@ -1,7 +1,7 @@
 ---
-title: Distribution bar chart
+title: Cigarettes pack chart
 fileSource: d3-chart
-tabs: Design('bar-distribution'), A11y('bar-distribution-a11y'), API('bar-distribution-api'), Examples('bar-distribution-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('cigarettes-pack'), A11y('cigarettes-pack-a11y'), API('cigarettes-pack-api'), Examples('cigarettes-pack-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip

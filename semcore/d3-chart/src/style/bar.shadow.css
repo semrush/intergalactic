@@ -58,6 +58,6 @@ SBarValue {
   color: var(--intergalactic-text-primary, #191b23);
   text-align: right;
 }
-SDistributionBarHoverRect {
+SCigarettesPackHoverRect {
   fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
 }

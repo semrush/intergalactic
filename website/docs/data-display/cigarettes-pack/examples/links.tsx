@@ -1,8 +1,9 @@
 import React from 'react';
-import { Plot, DistributionBar } from 'intergalactic/d3-chart';
+import { Plot, CigarettesPack } from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
+import Link from 'intergalactic/link';
 
 const Demo = () => {
   const MARGIN = 30;
@@ -11,9 +12,7 @@ const Demo = () => {
 
   const sum = data.reduce((acc, d) => acc + d.value, 0);
 
-  const xScale = scaleLinear()
-    .range([0, width])
-    .domain([0, sum]);
+  const xScale = scaleLinear().range([0, width]).domain([0, sum]);
 
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
@@ -23,34 +22,39 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-
-      <DistributionBar x='value' y='category'>
-        <DistributionBar.Hover />
-        <DistributionBar.Tooltip>
+      <CigarettesPack x='value' y='category'>
+        <CigarettesPack.Hover />
+        <CigarettesPack.Tooltip>
           {({ index }) => {
             return {
               children: (
                 <>
-                  <DistributionBar.Tooltip.Title>{data[index].category}</DistributionBar.Tooltip.Title>
+                  <CigarettesPack.Tooltip.Title>
+                    {data[index].category}
+                  </CigarettesPack.Tooltip.Title>
                   <Flex justifyContent='space-between'>
-                    <DistributionBar.Tooltip.Dot mr={4}>Bar</DistributionBar.Tooltip.Dot>
+                    <CigarettesPack.Tooltip.Dot mr={4}>Bar</CigarettesPack.Tooltip.Dot>
                     <Text bold>{data[index].value}</Text>
                   </Flex>
                 </>
               ),
             };
           }}
-        </DistributionBar.Tooltip>
-        <DistributionBar.Annotation>
-          <DistributionBar.Label />
-          <DistributionBar.Percent />
-          <DistributionBar.Value />
-        </DistributionBar.Annotation>
-        <DistributionBar.Bar>
-          <DistributionBar.Bar.Background />
-          <DistributionBar.Bar.Fill />
-        </DistributionBar.Bar>
-      </DistributionBar>
+        </CigarettesPack.Tooltip>
+        <CigarettesPack.Annotation>
+          <CigarettesPack.Label />
+          <CigarettesPack.Percent />
+          <CigarettesPack.Value tag={Link} href='https://semrush.com'>
+            {({ formatted }) => {
+              return <Link.Text>~{formatted}</Link.Text>;
+            }}
+          </CigarettesPack.Value>
+        </CigarettesPack.Annotation>
+        <CigarettesPack.Bar>
+          <CigarettesPack.Bar.Background />
+          <CigarettesPack.Bar.Fill />
+        </CigarettesPack.Bar>
+      </CigarettesPack>
     </Plot>
   );
 };
