@@ -22,7 +22,7 @@ Table: Roles & attributes
 | `NoticeGlobal`            | `aria-label`                                                     | Defines a default accessible name for the region: `"Notification"` for **info**, **success** and **warning** themes, and `"Critical notification"` for **danger** theme. |
 | `NoticeGlobal`            | `aria-live="polite"`                                             | Defines a region which receives updates that are important for the user to receive, but not so rapid as to be annoying. The screen reader will speak changes whenever the user is idle. |
 | `NoticeGlobal`            | `aria-live="assertive"` (only for `warning` and `danger` themes) | Tells assistive technologies to interrupt other processes to provide users with immediate notification of container changes. |
-| `NoticeGlobal.CloseIcon`  | `aria-label="Close"`                                             | Defines the default accessible name for the **Close** button. |
+| `NoticeGlobal.CloseIcon`  | `aria-label="Close notification"`                                             | Defines the default accessible name for the **Close** button. |
 
 ## Considerations for developers
 
