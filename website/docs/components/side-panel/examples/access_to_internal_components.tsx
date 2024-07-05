@@ -11,12 +11,12 @@ const Demo = () => {
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
       <SidePanel closable={false} visible={visible} onClose={() => setVisible(false)}>
         <SidePanel.Overlay>
-          <SidePanel.Panel aria-label='Blah-blah-blah'>
+          <SidePanel.Panel aria-label='Taking the stage'>
             <SidePanel.Close />
             <Text size={300} tag='p'>
-              Waba-laba-dub-dub!
-              <Button mt={3}>I'm just a button</Button>
+              Taking the Stage: Trends and Strategies for 2024 and Beyond
             </Text>
+            <Button mt={3}>Read more</Button>
           </SidePanel.Panel>
         </SidePanel.Overlay>
       </SidePanel>

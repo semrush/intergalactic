@@ -4,10 +4,6 @@ fileSource: side-panel
 tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
-::: tip
-In the [2.0.0 version](/components/side-panel/side-panel-changelog), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
-:::
-
 ## Description
 
 **SidePanel** is a component used for displaying sliding panels with content. It can also be referred to as a panel or drawer.
@@ -64,7 +60,7 @@ Table: SidePanel with and without overlay
 
 ### Width
 
-SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
+SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
 
 ### Container
 
@@ -94,8 +90,8 @@ Table: SidePanel.Header styles
 
 | Appearance example     | Styles         |
 | ---------------------- | -------------- |
-| ![](static/header.png) | `height: 52px`, `padding-bottom: var(--spacing-1x)`, `align-items: center`, `border-bottom: 1px solid var(–-border-primary)` |
-| ![](static/closeIcon.png)   | The `Close` icon has an L size and uses `--icon-secondary-neutral` token for color. The click zone of the icon is `48px * 48px`.   |
+| ![](static/header.png) | `height: 52px`, `align-items: center`, <br>`padding-top: var(--spacing-1x)`, <br>`padding-bottom: var(--spacing-1x)`, <br>`border-bottom: 1px solid var(–-border-primary)` |
+| ![](static/closeIcon.png)   | The **Close** button has an L size and an L size icon inside. The icon uses `--icon-secondary-neutral` token for color. The click zone of the button is `48px * 48px`.   |
 
 ### Content
 
@@ -149,7 +145,7 @@ Always disable page scroll for SidePanel with an overlay.
 You can close the panel with:
 
 - CTA control;
-- `Close` icon;
+- **Close** button;
 - Clicking outside the area of the panel (at overlay), optional;
 - `Esc` key.
 
@@ -161,14 +157,14 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 ### What happens when the browser window size changes
 
-- SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
+- SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
 - On a 320px screen, SidePanel should not occupy more than 80% of the screen width so that the user can click outside of it and close it.
 
 ![](static/320-width.png)
 
 ## Edge cases
 
-SidePanel should have a header in all cases.
+SidePanel should have a header in all states.
 
 ### Initial load
 
