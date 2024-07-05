@@ -59,6 +59,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
+    cigarettePackChart: {
+    title: 'Cigarette pack bar chart',
+    route: '/intergalactic/data-display/cigarette-pack/cigarette-pack',
+    disabled: false,
+    type: 'charts',
+  },
   bubble: {
     title: 'Bubble chart',
     route: '/intergalactic/data-display/bubble-chart/bubble-chart',
@@ -346,6 +352,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
+    cigarettePackChart: {
+    title: 'Cigarette pack bar chart',
+    route: '/intergalactic/data-display/cigarette-pack/cigarette-pack',
+    disabled: false,
+    type: 'charts',
+  },
   barStacked: {
     title: 'Stacked bar chart',
     route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
@@ -464,6 +476,12 @@ const group = {
     title: 'Stacked histogram chart',
     route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
     disabled: true,
+    type: 'charts',
+  },
+    cigarettePackChart: {
+    title: 'Cigarette pack bar chart',
+    route: '/intergalactic/data-display/cigarette-pack/cigarette-pack',
+    disabled: false,
     type: 'charts',
   },
   bubble: {
@@ -795,4 +813,3 @@ const App = function (props) {
 </script>
 
 :::
-
