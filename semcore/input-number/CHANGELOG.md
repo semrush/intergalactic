@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.1] - 2024-07-03
+
+### Fixed
+
+- Display the correct value after pressing `0` after the decimal separator.
+
+## [5.31.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/input` [4.29.0 ~> 4.30.0], `@semcore/utils` [4.29.0 ~> 4.30.0], `@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [5.30.0] - 2024-06-13
 
 ### Changed
@@ -25,7 +37,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Internal api to make it usable in `InlineInput`.
+- Internal API to make it usable in `InlineInput`.
 
 ## [5.29.1] - 2024-05-28
 
@@ -565,7 +577,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added screen reader notification of input value and aria attributes for better a11y.
+- Added screen reader notification of input value and aria attributes for better A11Y.
 
 ## [4.0.14] - 2022-08-23
 
@@ -620,7 +632,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- [A11y] added aria-label for buttons in `InputNumber.Controls`
+- [A11Y] added aria-label for buttons in `InputNumber.Controls`
 
 ## [3.0.1] - 2020-05-31
 
@@ -672,7 +684,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

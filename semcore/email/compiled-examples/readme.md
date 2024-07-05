@@ -9,6 +9,6 @@ Note from @phytonmk:
 > I put compiled examples here for backward capability
 > of documentation site that previously contained
 > that examples in itself. In best cases package should
-> have nodejs api and work so fast that html compilation
+> have Node.js API and work so fast that HTML compilation
 > becomes the part of documentation site compilation
 > process.

@@ -36,11 +36,11 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
           fetch-depth: 0
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 8.7.6
           run_install: false
       - uses: actions/setup-node@v4.0.1
       - name: Get pnpm store directory

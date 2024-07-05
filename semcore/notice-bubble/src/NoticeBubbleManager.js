@@ -1,5 +1,7 @@
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import React from 'react';
 
 const EVENT_NAME = 'CHANGE';
 
@@ -34,9 +36,12 @@ class NoticeBubbleManager {
 
   add(props) {
     const uid = this.counter++;
+    const ref = React.createRef();
+    const focus = () => setTimeout(() => setFocus(ref.current), 0);
     const item = this.createItem({
       uid,
       visible: props.initialAnimation ? true : undefined,
+      forwardRef: ref,
       ...props,
     });
     this.items.push(item);
@@ -45,6 +50,8 @@ class NoticeBubbleManager {
       uid,
       update: this.update.bind(this, uid),
       remove: this.remove.bind(this, uid),
+      ref,
+      focus,
     };
   }
 

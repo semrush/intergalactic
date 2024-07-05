@@ -83,6 +83,10 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
             if (result.length > 1) result.push('; ');
             result.push(member);
           }
+          if (members.length > 0) {
+            result.unshift(' ');
+            result.push(' ');
+          }
         }
         result.push('}');
         return result;
@@ -98,13 +102,38 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         return result;
       }
       case ts.SyntaxKind.PropertySignature: {
-        const signature = serializeProperty(node as ts.PropertySignature, genericsMap);
-        const result = [signature.name];
-        if (signature.isOptional) {
-          result.push('?');
-        }
+        const property = node as ts.PropertySignature;
+        const name = String((property as { name?: ts.Identifier }).name!.escapedText);
+        const isOptional = property.questionToken !== undefined;
+        const result: string[] = [name];
+        if (isOptional) result.push('?');
         result.push(': ');
-        result.push(signature.type);
+        result.push(traverse(property.type));
+        return result;
+      }
+      case ts.SyntaxKind.MethodDeclaration: {
+        const method = node as ts.MethodDeclaration;
+        const name = String((method as { name?: ts.Identifier }).name!.escapedText);
+        const isOptional = method.questionToken !== undefined;
+        const result = [name];
+        if (method.parameters.length === 0) {
+          result.push('()');
+        } else {
+          const params = method.parameters.map((param) => traverse(param));
+          result.push('(');
+          for (let i = 0; i < params.length; i++) {
+            if (i !== 0) result.push(', ');
+            result.push(params[i]);
+          }
+          result.push(')');
+        }
+        if (isOptional) result.push('?');
+        result.push(': ');
+        if (method.body) {
+          result.push('{ ... }');
+        } else {
+          result.push(traverse(method.type));
+        }
         return result;
       }
       case ts.SyntaxKind.ParenthesizedType:
@@ -274,8 +303,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
       }
     }
 
-    console.error(node);
-    throw new Error(`Unable to handle ${ts.SyntaxKind[node.kind]}`);
+    throw new Error(`Unable to handle ${ts.SyntaxKind[node?.kind]}`);
   };
 
   const nestedList = [traverse(node)];
@@ -292,13 +320,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
   return joinedList;
 };
 
-export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap) => {
-  const name = (propertyDeclaration as { name?: ts.Identifier }).name!.escapedText;
-  const isOptional = propertyDeclaration.questionToken !== undefined;
-  const type = serializeTsNode(propertyDeclaration.type!, genericsMap);
-  const dependencies = extractDependenciesList(type);
-
-  const jsDoc = (propertyDeclaration as { jsDoc?: ts.JSDoc[] }).jsDoc ?? [];
+const serializeJSDoc = (jsDoc: ts.JSDoc[], dependencies: string[], genericsMap) => {
   const description = jsDoc.map((jsDocBlock) => jsDocBlock.comment).join('\n');
   const params = Object.fromEntries(
     jsDoc
@@ -329,6 +351,37 @@ export const serializeProperty = (propertyDeclaration: ts.PropertySignature, gen
         return [paramName, paramValue];
       }),
   );
+
+  return { description, params };
+};
+
+export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap) => {
+  const name = (propertyDeclaration as { name?: ts.Identifier }).name!.escapedText;
+  const isOptional = propertyDeclaration.questionToken !== undefined;
+  const type = serializeTsNode(propertyDeclaration.type!, genericsMap, []);
+  const dependencies = extractDependenciesList(type);
+
+  const jsDoc = (propertyDeclaration as { jsDoc?: ts.JSDoc[] }).jsDoc ?? [];
+  const { description, params } = serializeJSDoc(jsDoc, dependencies, genericsMap);
+
+  return {
+    name,
+    isOptional,
+    type,
+    description,
+    params,
+    dependencies,
+  };
+};
+
+export const serializeMethod = (propertyDeclaration: ts.MethodDeclaration, genericsMap) => {
+  const name = (propertyDeclaration as { name?: ts.Identifier }).name!.escapedText;
+  const isOptional = propertyDeclaration.questionToken !== undefined;
+  const type = serializeTsNode(propertyDeclaration, genericsMap, []);
+  const dependencies = extractDependenciesList(type);
+
+  const jsDoc = (propertyDeclaration as { jsDoc?: ts.JSDoc[] }).jsDoc ?? [];
+  const { description, params } = serializeJSDoc(jsDoc, dependencies, genericsMap);
 
   return {
     name,

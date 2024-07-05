@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.29.0] - 2024-06-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.28.0 ~> 5.29.0], `@semcore/core` [2.26.0 ~> 2.27.0]).
+
 ## [2.28.0] - 2024-06-13
 
 ### Changed
@@ -518,7 +524,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added available for export function `getIllustrationPath` to get url of illustrations.
+- Added available for export function `getIllustrationPath` to get URL of illustrations.
 
 ## [1.1.0] - 2022-09-21
 

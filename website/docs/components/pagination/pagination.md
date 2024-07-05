@@ -70,11 +70,11 @@ Component consists of the following:
 
 ![](static/margins.png)
 
-The margin from the table to the pagination is consistently 16px.
+The margin from the table to the pagination is 16px.
 
 ![](static/margin-top.png)
 
-## Number of the rows
+## Number of rows
 
 We provide some recommendations for the table size:
 
@@ -91,7 +91,7 @@ We provide some recommendations for the table size:
 | ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
 | ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
 | ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
-| ![](static/steps.png)              | When the input is in focus, a clickable `Return` icon with M size appears. By clicking it or pressing `Enter`, the user moves to the entered page. |
+| ![](static/steps.png)              | Page input allows the user to enter a specific page, and after the user presses `Enter`, the entered page opens. |
 
 The current page should always be displayed in the input:
 
@@ -103,19 +103,19 @@ The link at the end of the pagination shows the total number of pages. The user 
 
 ## States and cases
 
-### User is on the first page
+### First page
 
 In this case, the "First page" button and the "Previous" button are `disabled`.
 
 ![](static/first-page.png)
 
-### User is on the last page
+### Last page
 
 The "Next page" button becomes `disabled`, and the link to the last page appears as plain text.
 
 ![](static/last-page.png)
 
-### User enters a value that exceeds the number of pages
+### Value exceeding number of pages
 
 In this case, there should be no error shown; instead, the user should be moved to the last page.
 
@@ -123,31 +123,30 @@ In this case, there should be no error shown; instead, the user should be moved 
 
 Use this state only when there is some data, and there might be more data.
 
+![](static/one-page.png)
+
 ::: tip
 If there is no data or the filter is applied, pagination shouldn't be displayed. Instead, the table should contain a message indicating that there is no data.
 :::
-
-![](static/one-page.png)
 
 ![](static/empty-yes-no.png)
 
 ### Page loading
 
-During loading, don’t display pagination.
+Avoid displaying pagination while loading the table or other related data.
 
 ## Additional states
 
-### Select for choosing the number of rows
+### Select for choosing rows number
 
 After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
 
-Use only these values for the select: 10, 20, 50, 100.
+We recommend using these values for the select: 10, 20, 50, 100.
 
 ![](static/page-select.png)
 
-### Impossible to calculate the exact number of pages
+### Impossible to calculate exact number of pages
 
 In this case, add the `tilde (≈)` to the number of pages and change the link displaying the number of all pages to plain text.
 
 ![](static/undefined-number.png)
-

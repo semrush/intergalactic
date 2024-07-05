@@ -14,11 +14,11 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 8.7.6
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -43,11 +43,11 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 8.7.6
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache

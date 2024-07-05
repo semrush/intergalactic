@@ -9,7 +9,7 @@ const Demo = () => {
           <Radio.Value.Control data-test-id={'TEST_ID'} />
           <Radio.Value.RadioMark />
         </Radio.Value>
-        <Radio.Text>Value</Radio.Text>
+        <Radio.Text>First value</Radio.Text>
       </Radio>
       <Radio mb={3} value={'2'} label={'Second value'} />
     </RadioGroup>
