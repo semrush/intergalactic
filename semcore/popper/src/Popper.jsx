@@ -312,8 +312,16 @@ class Popper extends Component {
 
   lastPopperClick = 0;
   bindHandlerChangeVisibleWithTimer = (visible, component, action) => (e) => {
+    const trigger = this.triggerRef.current;
+    if (component === 'trigger' && action === 'onBlur') {
+      const focused = e.relatedTarget;
+      const blurred = e.target;
+      if (focused && blurred && hasParent(focused, trigger) && hasParent(blurred, trigger)) {
+        return;
+      }
+    }
+
     if (component === 'trigger' && action === 'onClick') {
-      const trigger = this.triggerRef.current;
       const triggerClick = hasParent(e.target, trigger);
       const associatedLabels = [...(trigger?.labels || [])];
       const popperInsideOfLabel = associatedLabels.some((label) =>

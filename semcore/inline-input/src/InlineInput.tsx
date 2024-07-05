@@ -381,7 +381,7 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
 
   if (props.disabled) {
     return sstyled(props.styles)(
-      <SAddon render={Box}>{hasChildren ? <Children /> : <CloseM disabled />}</SAddon>,
+      <SAddon render={Box}>{hasChildren ? <Children /> : <CloseM />}</SAddon>,
     ) as React.ReactElement;
   }
 
