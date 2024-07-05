@@ -1,3 +1,48 @@
+## [15.98.0] - 2024-07-05
+
+### @semcore/accordion
+
+- **Changed** `Accordion.Item.Toggle` can have only `h*` tag, `h3` tag is default.
+- **Added** Flex component `Accordion.Item.ToggleButton` with role `button`.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Incorrect focus of the last item in Breadcrumbs.
+
+### @semcore/carousel
+
+- **Changed** Border radius to token instead of hardcoded value.
+
+### @semcore/data-table
+
+- **Fixed** `SortIcon` usage - removed unused prop `active`.
+- **Added** Types for `scrollContainerRef` in `Datatable.Body`.
+
+### @semcore/icon
+
+- **Changed** Type for each Icon to `Intergalactic.Component<'svg', IconProps>`.
+- **Added** New `Power` icon.
+
+### @semcore/input-number
+
+- **Fixed** Display the correct value after pressing `0` after the decimal separator.
+
+### @semcore/popper
+
+- **Fixed** Fixed edge case when popper trigger contains multiple focusable elements and navigation between them was causing popper to close until browser focus wasn't moved out of trigger.
+
+### @semcore/skeleton
+
+- **Changed** Removed inner `foreignObject` element with `aria-live` element as it doesn't work properly with the newest screen readers.
+
+### @semcore/spin
+
+- **Changed** Removed inner `foreignObject` element with `aria-live` element as it doesn't work properly with the newest screen readers.
+
+### @semcore/tooltip
+
+- **Fixed** `max-width` size in line with figma design.
+
 ## [15.97.0] - 2024-06-26
 
 ### @semcore/breadcrumbs
