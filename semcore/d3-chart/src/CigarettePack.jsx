@@ -19,8 +19,8 @@ export const MIN_WIDTH = 4;
 const barHeight = 20;
 const hoverOffset = 6;
 
-class CigarettesPackRoot extends Component {
-  static displayName = 'CigarettesPack';
+class CigarettePackRoot extends Component {
+  static displayName = 'CigarettePack';
   static enhance = [uniqueIDEnhancement()];
   static style = style;
 
@@ -174,7 +174,7 @@ class CigarettesPackRoot extends Component {
   }
 
   renderBar(d, i) {
-    const SCigarettesPackGroup = this.Element;
+    const SCigarettePackGroup = this.Element;
     const { styles, groupKey } = this.asProps;
     const { x, y } = this.computeBarData(d, i);
 
@@ -182,7 +182,7 @@ class CigarettesPackRoot extends Component {
 
     return (
       <React.Fragment key={`horizontal-bar-${i}`}>
-        {sstyled(styles)(<SCigarettesPackGroup render='g' />)}
+        {sstyled(styles)(<SCigarettePackGroup render='g' />)}
       </React.Fragment>
     );
   }
@@ -437,12 +437,12 @@ class Hover extends Component {
     const { styles, getBarData, render } = this.asProps;
     if (!render) return null;
     const { index } = this.state;
-    const SCigarettesPackHoverRect = this.Element;
+    const SCigarettePackHoverRect = this.Element;
 
     if (index === null) return null;
     const bar = getBarData(index);
     return sstyled(styles)(
-      <SCigarettesPackHoverRect
+      <SCigarettePackHoverRect
         render='rect'
         x={bar.x}
         y={bar.y + bar.height - barHeight - hoverOffset * 2}
@@ -453,15 +453,15 @@ class Hover extends Component {
   }
 }
 
-const CigarettesPackTooltip = (props) => {
+const CigarettePackTooltip = (props) => {
   if (!props.render) return null;
-  const SCigarettesPackRadarTooltip = Root;
+  const SCigarettePackRadarTooltip = Root;
   return sstyled(props.styles)(
-    <SCigarettesPackRadarTooltip render={Tooltip} tag={CigarettesPack.Hover} excludeAnchorProps />,
+    <SCigarettePackRadarTooltip render={Tooltip} tag={CigarettePack.Hover} excludeAnchorProps />,
   );
 };
 
-const CigarettesPack = createElement(CigarettesPackRoot, {
+const CigarettePack = createElement(CigarettePackRoot, {
   Annotation,
   Label,
   Percent,
@@ -474,7 +474,7 @@ const CigarettesPack = createElement(CigarettesPackRoot, {
     },
   ],
   Hover,
-  Tooltip: [CigarettesPackTooltip, Tooltip._______childrenComponents],
+  Tooltip: [CigarettePackTooltip, Tooltip._______childrenComponents],
 });
 
-export default CigarettesPack;
+export default CigarettePack;

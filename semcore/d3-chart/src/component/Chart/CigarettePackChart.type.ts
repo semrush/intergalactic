@@ -6,9 +6,9 @@ import { BaseChartProps } from './AbstractChart.type';
 
 type BarKey = string;
 
-export type CigarettesPackChartData = Array<Record<BarKey, number>>;
+export type CigarettePackChartData = Array<Record<BarKey, number>>;
 
-export type CigarettesPackChartProps = BaseChartProps<CigarettesPackChartData> & {
+export type CigarettePackChartProps = BaseChartProps<CigarettePackChartData> & {
   x: string;
   y: string;
   xScale?: ScaleBand<any> | ScaleTime<any, any>;
@@ -21,7 +21,4 @@ export type CigarettesPackChartProps = BaseChartProps<CigarettesPackChartData> &
   onClickBar?: (barItem: number, e: React.SyntheticEvent) => void;
 };
 
-export type CigarettesPackChartType = Intergalactic.Component<
-  typeof Flex,
-  CigarettesPackChartProps
->;
+export type CigarettePackChartType = Intergalactic.Component<typeof Flex, CigarettePackChartProps>;

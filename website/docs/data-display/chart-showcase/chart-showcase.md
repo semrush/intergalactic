@@ -54,7 +54,7 @@ const group = {
     type: 'charts',
   },
   cigaretteChart: {
-    title: 'Cigarettes chart',
+    title: 'Cigarette chart',
     route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
     disabled: false,
     type: 'charts',
@@ -341,7 +341,7 @@ const group = {
     type: 'charts',
   },
   cigaretteChart: {
-    title: 'Cigarettes chart',
+    title: 'Cigarette chart',
     route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
     disabled: false,
     type: 'charts',

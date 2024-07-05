@@ -501,9 +501,9 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Stacked horizontal bar chart',
           },
           {
-            link: '/data-display/cigarettes-pack/cigarettes-pack',
-            activeMatch: '/data-display/cigarettes-pack/',
-            text: 'Cigarettes pack chart',
+            link: '/data-display/cigarette-pack/cigarette-pack',
+            activeMatch: '/data-display/cigarette-pack/',
+            text: 'Cigarette pack chart',
           },
           {
             link: '/data-display/bubble-chart/bubble-chart',
@@ -513,7 +513,7 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/data-display/cigarette-chart/cigarette-chart',
             activeMatch: '/data-display/cigarette-chart/',
-            text: 'Cigarettes chart',
+            text: 'Cigarette chart',
           },
           {
             link: '/data-display/donut-chart/donut-chart',

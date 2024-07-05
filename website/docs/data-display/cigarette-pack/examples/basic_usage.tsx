@@ -3,7 +3,7 @@ import { Chart } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   return (
-    <Chart.CigarettesPack y={'category'} x={'value'} data={data} plotWidth={500} plotHeight={450} />
+    <Chart.CigarettePack y={'category'} x={'value'} data={data} plotWidth={500} plotHeight={450} />
   );
 };
 

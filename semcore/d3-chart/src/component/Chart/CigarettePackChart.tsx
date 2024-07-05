@@ -2,20 +2,20 @@ import React from 'react';
 import createComponent from '@semcore/core';
 import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
 import {
-  CigarettesPackChartData,
-  CigarettesPackChartProps,
-  CigarettesPackChartType,
-} from './CigarettesPackChart.type';
+  CigarettePackChartData,
+  CigarettePackChartProps,
+  CigarettePackChartType,
+} from './CigarettePackChart.type';
 import { scaleBand, scaleLinear } from 'd3-scale';
 // @ts-ignore
-import { CigarettesPack } from '../..';
+import { CigarettePack } from '../..';
 import { AbstractChart } from './AbstractChart';
 
-class CigarettesPackChartComponent extends AbstractChart<
-  CigarettesPackChartData,
-  CigarettesPackChartProps
+class CigarettePackChartComponent extends AbstractChart<
+  CigarettePackChartData,
+  CigarettePackChartProps
 > {
-  static displayName = 'Chart.CigarettesPack';
+  static displayName = 'Chart.CigarettePack';
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
     showXAxis: false,
@@ -40,19 +40,19 @@ class CigarettesPackChartComponent extends AbstractChart<
     const { x, y, onClickHoverRect, onClickBar } = this.asProps;
 
     return (
-      <CigarettesPack x={x} y={y}>
+      <CigarettePack x={x} y={y}>
         {this.renderCigarettePackTooltip()}
-        <CigarettesPack.Hover onClick={onClickHoverRect} />
-        <CigarettesPack.Annotation>
-          <CigarettesPack.Label />
-          <CigarettesPack.Percent />
-          <CigarettesPack.Value />
-        </CigarettesPack.Annotation>
-        <CigarettesPack.Bar onClick={onClickBar}>
-          <CigarettesPack.Bar.Background />
-          <CigarettesPack.Bar.Fill />
-        </CigarettesPack.Bar>
-      </CigarettesPack>
+        <CigarettePack.Hover onClick={onClickHoverRect} />
+        <CigarettePack.Annotation>
+          <CigarettePack.Label />
+          <CigarettePack.Percent />
+          <CigarettePack.Value />
+        </CigarettePack.Annotation>
+        <CigarettePack.Bar onClick={onClickBar}>
+          <CigarettePack.Bar.Background />
+          <CigarettePack.Bar.Fill />
+        </CigarettePack.Bar>
+      </CigarettePack>
     );
   }
 
@@ -64,19 +64,19 @@ class CigarettesPackChartComponent extends AbstractChart<
     }
 
     return (
-      <CigarettesPack.Tooltip wMin={100}>
+      <CigarettePack.Tooltip wMin={100}>
         {({ index }: any) => {
           return {
             children: (
               <>
-                <CigarettesPack.Tooltip.Title>{data[index][y]}</CigarettesPack.Tooltip.Title>
+                <CigarettePack.Tooltip.Title>{data[index][y]}</CigarettePack.Tooltip.Title>
 
-                <CigarettesPack.Tooltip.Dot>{data[index][x]}</CigarettesPack.Tooltip.Dot>
+                <CigarettePack.Tooltip.Dot>{data[index][x]}</CigarettePack.Tooltip.Dot>
               </>
             ),
           };
         }}
-      </CigarettesPack.Tooltip>
+      </CigarettePack.Tooltip>
     );
   }
 
@@ -103,6 +103,6 @@ class CigarettesPackChartComponent extends AbstractChart<
   }
 }
 
-export const CigarettesPackChart: CigarettesPackChartType = createComponent(
-  CigarettesPackChartComponent,
+export const CigarettePackChart: CigarettePackChartType = createComponent(
+  CigarettePackChartComponent,
 );

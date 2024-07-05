@@ -22,7 +22,7 @@ import {
   Line,
   Donut,
   HorizontalBar,
-  CigarettesPack,
+  CigarettePack,
   GroupBar,
   minMax,
   Area,
@@ -2640,7 +2640,7 @@ describe('d3 charts visual regression', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should render cigarettes pack chart', async ({ task }) => {
+  test.concurrent('should render cigarette pack chart', async ({ task }) => {
     const data = [
       {
         category: 'Schema.org (Microdata)',
@@ -2681,35 +2681,35 @@ describe('d3 charts visual regression', () => {
 
       return (
         <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <CigarettesPack x='value' y='category'>
-            <CigarettesPack.Hover />
-            <CigarettesPack.Tooltip>
+          <CigarettePack x='value' y='category'>
+            <CigarettePack.Hover />
+            <CigarettePack.Tooltip>
               {({ index }: any) => {
                 return {
                   children: (
                     <>
-                      <CigarettesPack.Tooltip.Title>
+                      <CigarettePack.Tooltip.Title>
                         {data[index].category}
-                      </CigarettesPack.Tooltip.Title>
+                      </CigarettePack.Tooltip.Title>
                       <Flex justifyContent='space-between'>
-                        <CigarettesPack.Tooltip.Dot mr={4}>Bar</CigarettesPack.Tooltip.Dot>
+                        <CigarettePack.Tooltip.Dot mr={4}>Bar</CigarettePack.Tooltip.Dot>
                         <Text bold>{data[index].value}</Text>
                       </Flex>
                     </>
                   ),
                 };
               }}
-            </CigarettesPack.Tooltip>
-            <CigarettesPack.Annotation>
-              <CigarettesPack.Label />
-              <CigarettesPack.Percent />
-              <CigarettesPack.Value />
-            </CigarettesPack.Annotation>
-            <CigarettesPack.Bar>
-              <CigarettesPack.Bar.Background />
-              <CigarettesPack.Bar.Fill />
-            </CigarettesPack.Bar>
-          </CigarettesPack>
+            </CigarettePack.Tooltip>
+            <CigarettePack.Annotation>
+              <CigarettePack.Label />
+              <CigarettePack.Percent />
+              <CigarettePack.Value />
+            </CigarettePack.Annotation>
+            <CigarettePack.Bar>
+              <CigarettePack.Bar.Background />
+              <CigarettePack.Bar.Fill />
+            </CigarettePack.Bar>
+          </CigarettePack>
         </Plot>
       );
     };

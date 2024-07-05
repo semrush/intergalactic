@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, CigarettesPack } from 'intergalactic/d3-chart';
+import { Plot, CigarettePack } from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
@@ -21,35 +21,33 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <CigarettesPack x='value' y='category'>
-        <CigarettesPack.Hover />
-        <CigarettesPack.Tooltip>
+      <CigarettePack x='value' y='category'>
+        <CigarettePack.Hover />
+        <CigarettePack.Tooltip>
           {({ index }) => {
             return {
               children: (
                 <>
-                  <CigarettesPack.Tooltip.Title>
-                    {data[index].category}
-                  </CigarettesPack.Tooltip.Title>
+                  <CigarettePack.Tooltip.Title>{data[index].category}</CigarettePack.Tooltip.Title>
                   <Flex justifyContent='space-between'>
-                    <CigarettesPack.Tooltip.Dot mr={4}>Bar</CigarettesPack.Tooltip.Dot>
+                    <CigarettePack.Tooltip.Dot mr={4}>Bar</CigarettePack.Tooltip.Dot>
                     <Text bold>{data[index].value}</Text>
                   </Flex>
                 </>
               ),
             };
           }}
-        </CigarettesPack.Tooltip>
-        <CigarettesPack.Annotation>
-          <CigarettesPack.Label />
-          <CigarettesPack.Percent />
-          <CigarettesPack.Value />
-        </CigarettesPack.Annotation>
-        <CigarettesPack.Bar>
-          <CigarettesPack.Bar.Background />
-          <CigarettesPack.Bar.Fill />
-        </CigarettesPack.Bar>
-      </CigarettesPack>
+        </CigarettePack.Tooltip>
+        <CigarettePack.Annotation>
+          <CigarettePack.Label />
+          <CigarettePack.Percent />
+          <CigarettePack.Value />
+        </CigarettePack.Annotation>
+        <CigarettePack.Bar>
+          <CigarettePack.Bar.Background />
+          <CigarettePack.Bar.Fill />
+        </CigarettePack.Bar>
+      </CigarettePack>
     </Plot>
   );
 };

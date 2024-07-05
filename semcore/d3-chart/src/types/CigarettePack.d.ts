@@ -7,7 +7,7 @@ import { PatternsConfig } from './Pattern';
 import { BoxProps } from '@semcore/flex-box';
 import { TooltipType } from './Tooltip';
 
-export type CigarettesPackProps = Context & {
+export type CigarettePackProps = Context & {
   /** Field name from `data` array item for the XAxis */
   x?: string;
   /** Field name from `data` array item for the YAxis */
@@ -49,19 +49,19 @@ type Value = IntergalacticD3Component<
   CigarettePackValueProps,
   Context & CigarettePackValueContext
 >;
-export type CigarettesPackBarProps = {};
-type Bar = IntergalacticD3Component<'g', CigarettesPackBarProps, Context>;
-export type CigarettesPackBackgroundProps = BoxProps;
+export type CigarettePackBarProps = {};
+type Bar = IntergalacticD3Component<'g', CigarettePackBarProps, Context>;
+export type CigarettePackBackgroundProps = BoxProps;
 type Background = IntergalacticD3Component<'rect', BackgroundProps, Context>;
-export type CigarettesPackFillProps = BoxProps & {
+export type CigarettePackFillProps = BoxProps & {
   patterns?: PatternsConfig;
   color?: string;
   transparent?: boolean;
   hide?: boolean;
 };
-type Fill = IntergalacticD3Component<'rect', CigarettesPackFillProps, Context>;
+type Fill = IntergalacticD3Component<'rect', CigarettePackFillProps, Context>;
 
-declare const CigarettesPack: IntergalacticD3Component<'g', CigarettesPackProps, BarContext> & {
+declare const CigarettePack: IntergalacticD3Component<'g', CigarettePackProps, BarContext> & {
   Hover: Hover;
   Annotation: Annotation;
   Label: Label;
@@ -77,4 +77,4 @@ declare const CigarettesPack: IntergalacticD3Component<'g', CigarettesPackProps,
   }>;
 };
 
-export default CigarettesPack;
+export default CigarettePack;

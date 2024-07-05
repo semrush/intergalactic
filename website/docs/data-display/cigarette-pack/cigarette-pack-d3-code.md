@@ -1,7 +1,7 @@
 ---
-title: Cigarettes pack chart
+title: Cigarette pack chart
 fileSource: d3-chart
-tabs: Design('cigarettes-pack'), A11y('cigarettes-pack-a11y'), API('cigarettes-pack-api'), Examples('cigarettes-pack-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('cigarette-pack'), A11y('cigarette-pack-a11y'), API('cigarette-pack-api'), Examples('cigarette-pack-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
