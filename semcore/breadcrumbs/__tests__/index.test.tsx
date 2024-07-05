@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Breadcrumbs from '../src';
@@ -61,6 +61,31 @@ describe('Breadcrumbs', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should not be focusable last item', async ({ task }) => {
+    const component = (
+      <Breadcrumbs>
+        <Breadcrumbs.Item data-testid='dashboard'>Dashboard</Breadcrumbs.Item>
+        <Breadcrumbs.Item data-testid='projects'>Projects</Breadcrumbs.Item>
+        <Breadcrumbs.Item data-testid='site' active>
+          semrush.com
+        </Breadcrumbs.Item>
+      </Breadcrumbs>
+    );
+
+    const { getByTestId } = render(component);
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('dashboard')).toHaveFocus();
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('projects')).toHaveFocus();
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('dashboard')).not.toHaveFocus();
+    expect(getByTestId('projects')).not.toHaveFocus();
+    expect(getByTestId('site')).not.toHaveFocus();
   });
 
   test('a11y', async () => {

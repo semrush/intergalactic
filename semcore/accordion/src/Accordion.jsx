@@ -1,7 +1,8 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
+import { Text } from '@semcore/typography';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -79,7 +80,16 @@ export class RootItem extends Component {
       disabled,
       onClick: disabled ? undefined : this.handleClick,
       id: `igc-${uid}-${value}-toggle`,
-      role: 'button',
+      tag: 'h3',
+      size: 300,
+    };
+  }
+
+  getToggleButtonProps() {
+    const { value, uid, selected, disabled } = this.asProps;
+    return {
+      disabled,
+      id: `igc-${uid}-${value}-toggle-button`,
       'aria-expanded': selected ? 'true' : 'false',
       'aria-controls': `igc-${uid}-${value}-collapse`,
     };
@@ -92,7 +102,7 @@ export class RootItem extends Component {
       duration,
       id: `igc-${uid}-${value}-collapse`,
       role: 'region',
-      'aria-labelledby': `igc-${uid}-${value}-toggle`,
+      'aria-labelledby': `igc-${uid}-${value}-toggle-button`,
     };
   }
 
@@ -135,7 +145,7 @@ class Toggle extends Component {
     return sstyled(styles)(
       <SItemToggle
         ref={this.toggleRef}
-        render={Box}
+        render={Text}
         onKeyDown={this.handleKeyDown}
         aria-disabled={disabled ? 'true' : undefined}
       />,
@@ -150,6 +160,13 @@ function Chevron(props) {
   return sstyled(styles)(<SItemChevron render={size === 'l' ? ChevronRightL : ChevronRightM} />);
 }
 
+function ToggleButton(props) {
+  const { styles, size } = props;
+
+  const SToggleButton = Root;
+  return sstyled(styles)(<SToggleButton render={Flex} role={'button'} {...props} />);
+}
+
 function Collapse(props) {
   const { selected } = props;
   return <Root render={CollapseAnimate} visible={selected} interactive />;
@@ -158,6 +175,7 @@ function Collapse(props) {
 const Item = createComponent(RootItem, {
   Toggle,
   Chevron,
+  ToggleButton,
   Collapse,
 });
 
