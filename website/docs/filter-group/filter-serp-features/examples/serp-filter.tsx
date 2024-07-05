@@ -186,6 +186,7 @@ const Demo = () => {
                     hMax={'224px'}
                     wMin={'224px'}
                     wMax={'260px'}
+                    p={0}
                     id='search-list'
                     orientation={'vertical'}
                   >
