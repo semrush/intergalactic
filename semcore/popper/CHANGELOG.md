@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.37.1] - 2024-07-04
+
+### Fixed
+
+- Fixed edge case when popper trigger contains multiple focusable elements and navigation between them was causing popper to close until browser focus wasn't moved out of trigger.
+
 ## [5.37.0] - 2024-06-26
 
 ### Changed

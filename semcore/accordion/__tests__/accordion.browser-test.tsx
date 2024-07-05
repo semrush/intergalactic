@@ -50,7 +50,7 @@ test.describe('Accordion', () => {
 
     await page.setContent(htmlContent);
 
-    const section1Header = await page.locator('text=Section 1');
+    const section1Header = await page.locator('text=Section 1', { hasNotText: 'Hello Section 1' });
 
     await expect(page).toHaveScreenshot();
 
