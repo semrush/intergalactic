@@ -224,11 +224,20 @@ class Demo extends React.Component {
                           size='l'
                           {...input}
                           tag={Tooltip.Trigger}
-                          state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           onChange={(value, e) => input.onChange(e)}
                         >
-                          <Radio label='Regular' mb={3} value='1' />
-                          <Radio label='Special (I will provide details below)' mb={3} value='2' />
+                          <Radio
+                            label='Regular'
+                            mb={3}
+                            value='1'
+                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          />
+                          <Radio
+                            label='Special (I will provide details below)'
+                            mb={3}
+                            value='2'
+                            state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
+                          />
                         </RadioGroup>
                       </Tooltip>
                     );
