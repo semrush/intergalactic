@@ -39,7 +39,7 @@ The stylelint plugin help developers avoid mistakes in design token names. It's 
 - `include` - adds custom design tokens to the list of allowed tokens.
 - `exclude` - removes design tokens from the list of allowed tokens.
 - `tokensSource` - path to the file with design tokens. Default is `intergalactic/utils/lib/themes/default.json`.
-- `tokensPrefix` - design tokens (default is `--intergalactic-`). Only css variables with this prefix are considered as design tokens.
+- `tokensPrefix` - design tokens (default is `--intergalactic-`). Only CSS variables with this prefix are considered as design tokens.
 
 ## Base tokens (palette)
 
@@ -135,7 +135,7 @@ In this case, you need to take more steps.
 
 ### Step two. Connect the new theme to the components in code
 
-This is where the magic of converting the json file with tokens into a new theme for the design system components begins.
+This is where the magic of converting the JSON file with tokens into a new theme for the design system components begins.
 
 We recommend you to check:
 

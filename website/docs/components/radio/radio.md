@@ -123,7 +123,7 @@ Info icon should have `margin-left: 4px`.
 
 ## Radio button with a link inside
 
-Text label may contain a [Link](/components/link/link).
+Text label may contain a [Link component](/components/link/link).
 
 ![](static/link.png)
 

@@ -127,7 +127,7 @@ Table: States for adding new item case in Pills
 | ------ | ----------------------------------- |
 | Normal | ![](static/pills-add-normal.png)    |
 | Hover  | ![](static/pills-add-hover.png)     |
-| Active | ![](static/pills-add-active.png)    |
+<!-- | Active | ![](static/pills-add-active.png)    | -->
 
 ### Pills as summary
 

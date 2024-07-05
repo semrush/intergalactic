@@ -186,7 +186,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [4.19.0] - 2024-01-19
 
@@ -644,7 +644,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `role="alert"` attributes to increase support for a11y.
+- Added `role="alert"` attributes to increase support for A11Y.
 
 ## [3.1.4] - 2022-08-11
 
@@ -769,7 +769,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Убран некорректный импорт из `widget-empty/src`, ломающий проверку типов `typescript`
+- Убран некорректный импорт из `widget-empty/src`, ломающий проверку типов `TypeScript`
 
 ## [2.0.0] - 2020-06-17
 
@@ -804,7 +804,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 
