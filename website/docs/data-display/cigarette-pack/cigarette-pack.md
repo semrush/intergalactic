@@ -1,5 +1,5 @@
 ---
-title: Cigarette pack chart
+title: Cigarette pack bar chart
 fileSource: d3-chart
 tabs: Design('cigarette-pack'), A11y('cigarette-pack-a11y'), API('cigarette-pack-api'), Examples('cigarette-pack-d3-code'), Changelog('d3-chart-changelog')
 ---
