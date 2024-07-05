@@ -150,9 +150,10 @@ class Demo extends React.Component {
                           size={'l'}
                           onChange={(e) => input.onChange(e)}
                         >
-                          <Tooltip.Trigger>
+                          <Tooltip.Trigger w={'100%'}>
                             <DatePicker.Trigger
                               {...input}
+                              w={'100%'}
                               state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                             />
                           </Tooltip.Trigger>
@@ -177,7 +178,7 @@ class Demo extends React.Component {
                         <Tooltip.Popper id='form-select-error' theme='warning' visible={showError}>
                           {meta.error}
                         </Tooltip.Popper>
-                        <Tooltip.Trigger>
+                        <Tooltip.Trigger w={'100%'}>
                           <Select
                             value={input.value === '' ? undefined : input.value}
                             size={'l'}
@@ -192,7 +193,7 @@ class Demo extends React.Component {
                               input.onChange(event);
                             }}
                           >
-                            <Select.Trigger onBlur={(e) => input.onBlur(e)} />
+                            <Select.Trigger w={'100%'} onBlur={(e) => input.onBlur(e)} />
                             <Select.Popper>
                               <Select.Option value={1}>Morning</Select.Option>
                               <Select.Option value={2}>Afternoon</Select.Option>
@@ -252,7 +253,7 @@ class Demo extends React.Component {
                         >
                           {meta.error}
                         </Tooltip.Popper>
-                        <Tooltip.Trigger>
+                        <Tooltip.Trigger w={'100%'}>
                           <Textarea
                             {...input}
                             h={80}
