@@ -129,7 +129,6 @@ class RootTag extends Component {
         render={Box}
         id={id}
         use:interactive={!disabled && interactive}
-        // role={interactive ? 'listitem' : undefined}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
         use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
