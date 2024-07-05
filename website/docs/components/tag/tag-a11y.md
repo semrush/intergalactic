@@ -38,7 +38,7 @@ Table: Roles and attributes
 
 - Tag text should be clear and concise.
 - Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast). Refer to [section about Tag colors](/components/tag/tag#tag-colors).
-- Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link component](/components/link/link-a11y).
+- Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y).
 
 ## Resources
 
