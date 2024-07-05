@@ -24,7 +24,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 8.7.6
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -74,7 +74,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 8.7.6
           run_install: false
       - uses: actions/setup-node@v4.0.1
       - name: Get pnpm store directory
@@ -132,7 +132,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 8.7.6
           run_install: false
       - uses: actions/setup-node@v4.0.1
       - name: Get pnpm store directory
