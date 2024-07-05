@@ -39,7 +39,6 @@ SBackground[onClick] {
 SBarAnnotation {
   display: flex;
   justify-content: space-between;
-  padding: var(--intergalactic-spacing-1x, 4px) 0;
 }
 SBarLabel {
   color: var(--intergalactic-text-primary, #191b23);
@@ -50,12 +49,16 @@ SBarLabel {
 SBarPercent {
   color: var(--intergalactic-text-secondary, #6c6e79);
   margin-right: var(--intergalactic-spacing-2x, 8px);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 SBarValue {
   min-width: 52px;
   display: flex;
   justify-content: flex-end;
   color: var(--intergalactic-text-primary, #191b23);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
   text-align: right;
 }
 SCigarettePackHoverRect {

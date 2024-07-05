@@ -17,7 +17,7 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([...data].reverse().map((d) => d.category))
     .paddingInner(0.6)
-    .paddingOuter(0.2);
+    .paddingOuter(0.6);
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>

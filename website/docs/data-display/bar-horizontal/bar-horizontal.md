@@ -69,7 +69,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
-**Key points for using bar chart:**
+**Key points for using Horizontal bar chart:**
 
 - Ensure the chart's axes are understandable. Label them if needed.
 - Use simple color schemes. Highlight categories only when needed.
@@ -83,14 +83,19 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Usage
 
-**Use horizontal bars when:**
+**Use Horizontal bar chart when:**
 
 - Categories have long names, like country names.
-- Comparing more than 10 categories.
+- Comparing less than 10 categories.
 - Each category's value needs labeling.
 - Showing category distribution in order.
 
-**Avoid horizontal bars when:**
+**Use [Cigarette pack bar chart](/data-display/cigarette-pack/cigarette-pack) instead of Horizontal bar chart when:**
+
+- Categories have or may have in localization long names.
+- Interface is narrow, and you need to preserve horizontal space for other information.
+
+**Avoid using Horizontal bar chart when:**
 
 - Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
 - Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
@@ -138,14 +143,14 @@ Allocate space for category labels on both sides of the chart.
 
 ## Category labels
 
-- Y-axis labels should match the primary text color for clarity (use `--text-primary` token).
+- Y-axis labels use the primary text color (`--text-primary` token).
 - Use `ellipsis` for long labels, with tooltips showing the full name.
 
 ![](static/label.png)
 
 ## Legend
 
-Legends are unnecessary for a single-category bar chart; clear chart naming is usually enough.
+Legend is unnecessary for a single-category bar chart; clear chart naming is usually enough.
 
 ![](static/hor-bar-example.png)
 
@@ -186,7 +191,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display bars for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Do not display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/na.png)
 

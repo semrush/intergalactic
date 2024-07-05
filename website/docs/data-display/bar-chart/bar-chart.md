@@ -151,7 +151,7 @@ Explore alternative solutions for skewed data in the [article from Tom Hopper](h
 
 ## Legend
 
-Legends are unnecessary for a single-category bar chart; clear chart naming is usually enough.
+Legend is unnecessary for a single-category bar chart; clear chart naming is usually enough.
 
 ![](static/legend.png)
 
