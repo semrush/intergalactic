@@ -167,7 +167,7 @@ Table: Tooltip themes
 
 ## Maximum width and offset
 
-By default, the Tooltip has a maximum width of 250px, but you can set a different width if needed.
+By default, the Tooltip has a maximum width of 228px, but you can set a different width if needed.
 
 ### Offset and arrow placement
 
