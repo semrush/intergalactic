@@ -64,9 +64,12 @@ SClose {
   z-index: 1;
   right: var(--intergalactic-spacing-05x, 2px);
   top: var(--intergalactic-spacing-05x, 2px);
-  padding: var(--intergalactic-spacing-1x, 4px) 0;
+}
+SClose[size] {
+  height: auto;
 }
 SClose[size] SAddon {
+  padding: calc(var(--intergalactic-spacing-3x, 12px) + var(--intergalactic-spacing-05x, 2px) + 1px) 0;
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
 }
 
