@@ -1519,7 +1519,7 @@ importers:
         specifier: 4.30.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.31.1
+        specifier: 5.31.2
         version: link:../input-number
       '@semcore/spin':
         specifier: 5.29.0

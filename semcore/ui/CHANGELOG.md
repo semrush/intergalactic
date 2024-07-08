@@ -1,3 +1,9 @@
+## [15.98.1] - 2024-07-08
+
+### @semcore/input-number
+
+- **Fixed** Display correct value with different decimal values.
+
 ## [15.98.0] - 2024-07-05
 
 ### @semcore/accordion
