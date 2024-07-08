@@ -69,7 +69,7 @@ SClose[size] {
   height: auto;
 }
 SClose[size] SAddon {
-  padding: calc(var(--intergalactic-spacing-3x, 12px) + var(--intergalactic-spacing-05x, 2px) + 1px) 0;
+  padding: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px) + 1px) 0;
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
 }
 
@@ -97,6 +97,10 @@ SBack[size="m"] SInner {
 }
 SBack SText {
   display: block;
+}
+
+SBack[size] SText {
+  margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
 SBackText {

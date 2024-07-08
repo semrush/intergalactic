@@ -93,21 +93,20 @@ export const snapshot = async (
 
   await page.setContent(html);
   const mainElement = await page.$(options.selector! || 'body');
-  if (options.actions?.active) {
-    const element = await page.$(options.actions.active);
-    await element?.click();
-  }
-  if (options.actions?.hover) {
-    const element = await page.$(options.actions.hover);
-    await element?.hover();
-  }
-  if (options.actions?.focus) {
-    const element = await page.$(options.actions.focus);
-    await element?.focus();
-  }
+
   if (options.width && options.height)
     await page.setViewportSize({ width: options.width, height: options.height });
   await page.waitForLoadState('networkidle');
+
+  if (options.actions?.active) {
+    await page.click(options.actions.active);
+  }
+  if (options.actions?.hover) {
+    await page.hover(options.actions.hover);
+  }
+  if (options.actions?.focus) {
+    await page.focus(options.actions.focus);
+  }
   const boundingBox = await mainElement?.boundingBox();
   const pageSize = await page.viewportSize();
   const clip = {

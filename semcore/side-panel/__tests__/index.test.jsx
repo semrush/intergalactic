@@ -177,6 +177,17 @@ describe('SidePanel', () => {
     ).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Close icon should support focus', async ({ task }) => {
+    await expect(
+      await snapshot(
+        <SidePanel disablePortal visible>
+          <SidePanel.Close id='close' keyboardFocused />
+        </SidePanel>,
+        { selector: 'body', width: 320, height: 100, actions: { focus: '#close' } },
+      ),
+    ).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Back icon should support hover', async ({ task }) => {
     await expect(
       await snapshot(
