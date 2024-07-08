@@ -69,7 +69,7 @@ export default defineConfig({
     ],
     environment: 'jsdom',
     setupFiles: ['allure-vitest/setup', resolvePath(__dirname, 'tools/testing-utils/setupTests')],
-    reporters: ["default", new AllureReporter()],
+    reporters: ["default", new AllureReporter({})],
   },
   define: {
     'globalThis.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
