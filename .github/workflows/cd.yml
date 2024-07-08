@@ -2,17 +2,8 @@ name: cd
 on:
   pull_request:
   workflow_dispatch:
-    inputs:
-      ALLURE_JOB_RUN_ID:
-        description: ALLURE_JOB_RUN_ID service parameter. Leave blank.
   push:
     branches: [master]
-env:
-  ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
-  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
-  ALLURE_ENDPOINT: ${{ secrets.ALLURE_ENDPOINT }}
-  ALLURE_PROJECT_ID: ${{ secrets.ALLURE_PROJECT_ID }}
-  ALLURE_RESULTS: allure-results*
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
@@ -144,28 +135,15 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-unit-test-results
-        with:
-          path: |
-            allure-results-unit
-          key: test-unit-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-      - name: Install allurectl
-        uses: allure-framework/setup-allurectl@v1
-        with:
-          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
-          allure-token: ${{ secrets.ALLURE_TOKEN }}
-          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
       - name: Test setup
         id: test-setup
         run: pnpm test:setup
       - name: Test
         id: test
-        run: allurectl watch -- pnpm test:docker run -- --allowOnly=false
+        run: pnpm test:docker run -- --allowOnly=false
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.test.outcome != 'success'
@@ -215,22 +193,9 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-vo-test-results
-        with:
-          path: |
-            allure-results-vo
-          key: test-vo-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-      - name: Install allurectl
-        uses: allure-framework/setup-allurectl@v1
-        with:
-          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
-          allure-token: ${{ secrets.ALLURE_TOKEN }}
-          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
@@ -241,7 +206,7 @@ jobs:
         with:
           timeout_minutes: 40
           max_attempts: 3
-          command: allurectl watch -- pnpm run vo-test:ci
+          command: pnpm run vo-test:ci
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.a11y-testing.outcome != 'success'
@@ -269,59 +234,15 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: Install Node.js
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: 20
       - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        id: pnpm-install
         with:
           version: 8
           run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4.0.0
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Restore cached build
-        uses: actions/cache@v4.0.0
-        id: cache-build
-        with:
-          path: |
-            semcore/*/lib
-            tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
-            semcore/illustration/**/*.js
-            semcore/illustration/**/*.mjs
-            semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-browser-test-results
-        with:
-          path: |
-            allure-results-browser
-          key: test-browser-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Install dependencies
-        run: |
-          pnpm install --frozen-lockfile
-      - name: Install allurectl
-        uses: allure-framework/setup-allurectl@v1
-        with:
-          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
-          allure-token: ${{ secrets.ALLURE_TOKEN }}
-          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
+
       - name: Browser testing
         id: browser-testing
         run: |
-          allurectl watch -- docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
         continue-on-error: true
       - name: Save test results as artifacts
         if: steps.browser-testing.outcome != 'success'
@@ -333,147 +254,3 @@ jobs:
       - name: Fail if test step actually failed
         if: steps.browser-testing.outcome != 'success'
         run: exit 1
-  axe-tests:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
-      - name: Install Node.js
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: 20
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4.0.0
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Restore cached build
-        uses: actions/cache@v4.0.0
-        id: cache-build
-        with:
-          path: |
-            semcore/*/lib
-            tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
-            semcore/illustration/**/*.js
-            semcore/illustration/**/*.mjs
-            semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-axe-test-results
-        with:
-          path: |
-            allure-results-axe
-          key: test-axe-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Install dependencies
-        run: |
-          pnpm install --frozen-lockfile
-      - name: Install allurectl
-        uses: allure-framework/setup-allurectl@v1
-        with:
-          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
-          allure-token: ${{ secrets.ALLURE_TOKEN }}
-          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
-      - name: Axe testing
-        id: axe-testing
-        run: |
-          allurectl watch -- docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.axe.config.ts"
-        continue-on-error: true
-      - name: Save test results as artifacts
-        if: steps.axe-testing.outcome != 'success'
-        uses: actions/upload-artifact@v3
-        with:
-          name: axe-testing-failure-output
-          path: test-results
-          retention-days: 3
-      - name: Fail if test step actually failed
-        if: steps.axe-testing.outcome != 'success'
-        run: exit 1
-  allure-report:
-    runs-on: ubuntu-latest
-    needs:
-      - unit-tests
-      - a11y-tests
-      - browser-tests
-      - axe-tests
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
-      - name: Install Node.js
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: 20
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4.0.0
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Restore cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-unit-test-results
-        with:
-          path: |
-            allure-results-unit
-          key: test-unit-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Restore cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-vo-test-results
-        with:
-          path: |
-            allure-results-vo
-          key: test-vo-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Restore cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-browser-test-results
-        with:
-          path: |
-            allure-results-browser
-          key: test-browser-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Restore cache test results
-        uses: actions/cache@v4.0.0
-        id: cache-axe-test-results
-        with:
-          path: |
-            allure-results-axe
-          key: test-axe-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-5
-      - name: Install dependencies
-        run: |
-          pnpm install --frozen-lockfile
-      - name: Generate report
-        run: |
-          mkdir allure-results
-          mv allure-results-unit/* allure-results/
-          mv allure-results-vo/* allure-results/
-          mv allure-results-browser/* allure-results/
-          mv allure-results-axe/* allure-results/
-          pnpm allure generate allure-results --clean -o allure-report
-      - name: Save allure report as artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: allure-report/data/suites.csv
-          retention-days: 3

@@ -20,7 +20,7 @@
     "vo-test:setup": "npx @guidepup/setup",
     "vo-test": "playwright test --config playwright.vo.config.ts",
     "vo-test:ci": "pnpm tsm --require=./.ci/tsm-filter-warnings.js ./.ci/vo-tests-ci.ts",
-    "run-in-docker": "docker run -e PLAYWRIGHT_ARGS= --rm --network host -v $(pwd)/package.json:/work/package.json -v $(pwd)/playwright.browser.config.ts:/work/playwright.browser.config.ts -v $(pwd)/playwright.axe.config.ts:/work/playwright.axe.config.ts -v $(pwd)/allure-results:/work/allure-results/ -v $(pwd)/allure-results-unit:/work/allure-results-unit/ -v $(pwd)/allure-results-axe:/work/allure-results-axe/ -v $(pwd)/allure-results-browser:/work/allure-results-browser/ -v $(pwd)/allure-results-vo:/work/allure-results-vo/ -v $(pwd)/semcore:/work/semcore/ -v $(pwd)/tools:/work/tools/ -v $(pwd)/website:/work/website/ -v $(pwd)/test-results:/work/test-results/ -w /work/ intergalactic-playwright",
+    "run-in-docker": "docker run -e PLAYWRIGHT_ARGS= --rm --network host -v $(pwd)/package.json:/work/package.json -v $(pwd)/playwright.browser.config.ts:/work/playwright.browser.config.ts -v $(pwd)/playwright.axe.config.ts:/work/playwright.axe.config.ts -v $(pwd)/allure-results:/work/allure-results/ -v $(pwd)/semcore:/work/semcore/ -v $(pwd)/tools:/work/tools/ -v $(pwd)/website:/work/website/ -v $(pwd)/test-results:/work/test-results/ -w /work/ intergalactic-playwright",
     "website": "pnpm --dir website start",
     "lint": "pnpm lint:es && pnpm lint-changelogs && pnpm lint:ts",
     "lint-changelogs": "pnpm --filter @semcore/changelog-handler run lint-changelogs",
