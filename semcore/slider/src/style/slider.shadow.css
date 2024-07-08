@@ -4,6 +4,8 @@ SSlider {
   box-sizing: border-box;
   cursor: pointer;
   padding-top: var(--intergalactic-spacing-5x, 20px);
+  border: none;
+  background-color: transparent;
 
   &:before {
     content: '';

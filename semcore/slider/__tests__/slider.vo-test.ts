@@ -14,17 +14,17 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
   await page.setContent(htmlContent);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
-
-  expect(await voiceOver.itemText()).toBe('Medium slider');
+  await voiceOver.next();
+  expect(await voiceOver.itemText()).toContain('Data chunk size slider');
   await voiceOver.interact();
   expect(await voiceOver.lastSpokenPhrase()).toBe('In slider');
   await voiceOver.press('Control+Option+ArrowLeft');
-  expect(await voiceOver.itemText()).toBe('Small slider');
+  expect(await voiceOver.itemText()).toContain('Small Data chunk size');
   await voiceOver.press('Control+Option+ArrowRight');
   await voiceOver.press('Control+Option+ArrowRight');
-  expect(await voiceOver.itemText()).toBe('Big slider');
+  expect(await voiceOver.itemText()).toContain('Big Data chunk size');
   await voiceOver.stopInteracting();
-  expect(await voiceOver.itemText()).toBe('Big slider');
+  expect(await voiceOver.itemText()).toContain('Big Data chunk size');
   expect(await voiceOver.lastSpokenPhrase()).toBe('Out of slider');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
