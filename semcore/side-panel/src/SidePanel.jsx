@@ -182,6 +182,7 @@ function Panel(props) {
         slideOrigin={placement}
         ref={sidebarRef}
         role='dialog'
+        aria-modal='true'
       >
         <PortalProvider value={sidebarRef}>
           {closable && <SidePanel.Close />}
@@ -212,6 +213,7 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
       use='tertiary'
       theme='muted'
       type='button'
+      size='l'
       addonLeft={hasChildren ? undefined : CloseIcon}
     >
       {hasChildren ? <Children /> : null}
@@ -227,13 +229,13 @@ function Title(props) {
 
 function Back(props) {
   const SBack = Root;
-  const SBackText = Text;
+  const SBackText = Button.Text;
   const { Children, styles } = props;
 
   return sstyled(styles)(
     <SBack render={Button} use='tertiary' theme='muted' type='button'>
       <Button.Addon tag={ArrowLeft} />
-      <SBackText render={Button.Text}>
+      <SBackText>
         <Children />
       </SBackText>
     </SBack>,

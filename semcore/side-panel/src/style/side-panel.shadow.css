@@ -62,11 +62,11 @@ SClose {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  right: var(--intergalactic-spacing-3x, 12px);
-  top: var(--intergalactic-spacing-3x, 12px);
+  right: var(--intergalactic-spacing-05x, 2px);
+  top: var(--intergalactic-spacing-05x, 2px);
+  padding: var(--intergalactic-spacing-1x, 4px) 0;
 }
-SClose[size="m"] SAddon {
-  margin: 0 1px;
+SClose[size] SAddon {
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
 }
 
@@ -80,10 +80,10 @@ SBack[size="m"] {
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
-  margin-bottom: var(--intergalactic-spacing-1x, 4px);
   height: auto;
   min-width: auto;
-  width: 100%;
+  max-width: 100%;
+  margin-left: calc(var(--intergalactic-spacing-2x, 8px) * -1 + 1px);
 
   &:hover {
     color: var(--intergalactic-text-hint-hover-active, #484a54);
@@ -92,11 +92,8 @@ SBack[size="m"] {
 SBack[size="m"] SInner {
   justify-content: flex-start;
 }
-SBack[size="m"] SInner SAddon:first-child {
-  margin-left: 0;
-}
-SBack[size="m"] SInner SText:last-child {
-  margin-right: 0;
+SBack SText {
+  display: block;
 }
 
 SBackText {
@@ -121,7 +118,7 @@ STitle {
 SHeader {
   padding-left: var(--intergalactic-spacing-6x, 24px);
   padding-bottom: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-14x, 56px);
+  padding-right: var(--intergalactic-spacing-6x, 24px);
   padding-top: var(--intergalactic-spacing-1x, 4px);
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
   box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary, #c4c7cf);
@@ -138,7 +135,7 @@ SBody {
   height: 100%;
   overflow: auto;
   padding-left: var(--intergalactic-spacing-6x, 24px);
-  padding-bottom: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-10x, 40px);
+  padding-bottom:var(--intergalactic-spacing-4x, 16px);
+  padding-right: var(--intergalactic-spacing-6x, 24px);
   padding-top: var(--intergalactic-spacing-4x, 16px);
 }
