@@ -3,9 +3,21 @@ title: Checkbox
 tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
+## Checkbox group
+
+You can wrap checkbox controls into group using `<fieldset>` and adding `<legend>`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/basic_usage.tsx';
+</script>
+
+:::
+
 ## Partial selection
 
-Make sure to follow the guide's instructions on checkbox spacing.
+When one or more options are selected from the list, the parent checkbox gets an `indeterminate` (mixed) state.
 
 ::: sandbox
 
@@ -16,6 +28,8 @@ Make sure to follow the guide's instructions on checkbox spacing.
 :::
 
 ## Checkbox with other components
+
+You can place other components next to the `Checkbox` or inside the `Checkbox.Text` components.
 
 ::: sandbox
 

@@ -167,7 +167,7 @@ Table: Tooltip themes
 
 ## Maximum width and offset
 
-By default, the Tooltip has a maximum width of 250px, but you can set a different width if needed.
+By default, the Tooltip has a maximum width of 228px, but you can set a different width if needed.
 
 ### Offset and arrow placement
 
@@ -221,7 +221,7 @@ The tooltip's position shouldn't change when scrolling the page, ensuring it rem
 
 ## Interaction
 
-For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon), [Link](/components/link/link), [Button](/components/button/button), etc.
+For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon), [Link component](/components/link/link), [Button](/components/button/button), etc.
 
 ### Appearance and hiding
 

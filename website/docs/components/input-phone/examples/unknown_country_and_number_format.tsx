@@ -18,6 +18,7 @@ const Demo = () => {
             tag={CloseM}
             interactive
             aria-label='Clear field'
+            color='icon-secondary-neutral'
             onClick={() => setValue('+')}
           />
         )}

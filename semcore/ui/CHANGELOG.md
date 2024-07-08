@@ -1,3 +1,54 @@
+## [15.98.1] - 2024-07-08
+
+### @semcore/input-number
+
+- **Fixed** Display correct value with different decimal values.
+
+## [15.98.0] - 2024-07-05
+
+### @semcore/accordion
+
+- **Changed** `Accordion.Item.Toggle` can have only `h*` tag, `h3` tag is default.
+- **Added** Flex component `Accordion.Item.ToggleButton` with role `button`.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Incorrect focus of the last item in Breadcrumbs.
+
+### @semcore/carousel
+
+- **Changed** Border radius to token instead of hardcoded value.
+
+### @semcore/data-table
+
+- **Fixed** `SortIcon` usage - removed unused prop `active`.
+- **Added** Types for `scrollContainerRef` in `Datatable.Body`.
+
+### @semcore/icon
+
+- **Changed** Type for each Icon to `Intergalactic.Component<'svg', IconProps>`.
+- **Added** New `Power` icon.
+
+### @semcore/input-number
+
+- **Fixed** Display the correct value after pressing `0` after the decimal separator.
+
+### @semcore/popper
+
+- **Fixed** Fixed edge case when popper trigger contains multiple focusable elements and navigation between them was causing popper to close until browser focus wasn't moved out of trigger.
+
+### @semcore/skeleton
+
+- **Changed** Removed inner `foreignObject` element with `aria-live` element as it doesn't work properly with the newest screen readers.
+
+### @semcore/spin
+
+- **Changed** Removed inner `foreignObject` element with `aria-live` element as it doesn't work properly with the newest screen readers.
+
+### @semcore/tooltip
+
+- **Fixed** `max-width` size in line with figma design.
+
 ## [15.97.0] - 2024-06-26
 
 ### @semcore/breadcrumbs
@@ -69,7 +120,7 @@
 
 ### @semcore/counter
 
-- **Fixed** Using `theme` property with typed values instead of css-variables.
+- **Fixed** Using `theme` property with typed values instead of CSS-variables.
 
 ### @semcore/data-table
 
@@ -211,7 +262,7 @@
 
 ### @semcore/input-number
 
-- **Fixed** Internal api to make it usable in `InlineInput`.
+- **Fixed** Internal API to make it usable in `InlineInput`.
 
 ### @semcore/popper
 
@@ -428,7 +479,7 @@
 ### @semcore/popper
 
 - **Added** `cursorAnchoring` prop that allows to make popper appear near the cursor if trigger is bigger than popper.
-- **Added** Low level `explicitTriggerSet` api for more granular control over which element will be used as popper trigger.
+- **Added** Low level `explicitTriggerSet` API for more granular control over which element will be used as popper trigger.
 
 ### @semcore/slider
 
@@ -436,7 +487,7 @@
 
 ### @semcore/textarea
 
-- **Fixed** `minRows` prop behaviour.
+- **Fixed** `minRows` prop behavior.
 
 ### @semcore/tooltip
 
@@ -486,7 +537,7 @@
 
 ### @semcore/base-trigger
 
-- **Added** composition api for `FilterTrigger`.
+- **Added** composition API for `FilterTrigger`.
 
 ### @semcore/d3-chart
 
@@ -521,7 +572,7 @@
 
 ### @semcore/utils
 
-- **Added** Api in internal mechanism for recursive search of child elements.
+- **Added** API in internal mechanism for recursive search of child elements.
 
 ## [15.77.1] - 2024-04-12
 
@@ -567,7 +618,7 @@
 
 ### @semcore/d3-chart
 
-- **Added** Api to customize a11y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
+- **Added** API to customize A11Y module values and titles formatting, see <https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code#a11y-formatting> for details.
 
 ### @semcore/date-picker
 
@@ -642,7 +693,7 @@
 
 ### @semcore/portal
 
-- **Added** Api to get know if the portal is mounted (`onMount` prop).
+- **Added** API to get know if the portal is mounted (`onMount` prop).
 - **Fixed** Portal hydration errors in nextjs and astro.
 
 ### @semcore/utils
@@ -742,7 +793,7 @@
 
 ### @semcore/tooltip
 
-- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle a11y specific cases.
+- **Added** Alongside `Tooltip` component, `Hint` and `InformationDropdown` components were added to better handle A11Y specific cases.
 - **Fixed** Tooltips `z-index` was lower than `z-index` of all other floating elements..
 
 ### @semcore/utils
@@ -804,7 +855,7 @@
 
 ### @semcore/d3-chart
 
-- **Added** Logic to define X and Y axis for a11y summary in Bar charts.
+- **Added** Logic to define X and Y axis for A11Y summary in Bar charts.
 
 ### @semcore/date-picker
 
@@ -917,7 +968,7 @@
 ### @semcore/d3-chart
 
 - **Added** `Line.Dots` and `Area.Dots` components `display` prop now accepts function that allows developers to granularly control which dots should be displayed.
-- **Fixed** a11y module "Skip to content after plot" link was not working in some cases.
+- **Fixed** A11Y module "Skip to content after plot" link was not working in some cases.
 - **Fixed** view of Line.Area with `null` in data.
 
 ### @semcore/data-table
@@ -968,7 +1019,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** A11y in Firefox for clear button in FilterTrigger.
+- **Fixed** A11Y in Firefox for clear button in FilterTrigger.
 
 ### @semcore/d3-chart
 
@@ -1017,7 +1068,7 @@
 - **Changed** Removed wrongly added deprecation messages about `ReferenceLine` `value` props.
 - **Changed** Added `valueEnd` prop to `ReferenceLine.Background` component that allows to specify background width by chart value.
 - **Fixed** `patterns` prop was missing in multiple chart types.
-- **Changed** A11y module links are clickable by `Space` now (along with `Enter` as before).
+- **Changed** A11Y module links are clickable by `Space` now (along with `Enter` as before).
 
 ## [15.61.0] - 2024-02-21
 
@@ -1147,7 +1198,7 @@
 
 ### @semcore/popper
 
-- **Added** `focusLoop` api that controls how browser focus behaves when goes out of popper.
+- **Added** `focusLoop` API that controls how browser focus behaves when goes out of popper.
 - **Changed** Invisible focus return and catch elements are removed that were used for keyboard users focus flow control. Instead, trigger may ignore focus event for a short time just after corresponding popper close.
 
 ### @semcore/tooltip
@@ -1185,7 +1236,7 @@
 
 ### @semcore/feedback-form
 
-- **Fixed** `validateOnBlur=false` behaviour.
+- **Fixed** `validateOnBlur=false` behavior.
 
 ### @semcore/flex-box
 
@@ -1243,7 +1294,7 @@
 
 ### @semcore/d3-chart
 
-- **Added** `patterns` api that enhances charts accessibility.
+- **Added** `patterns` API that enhances charts accessibility.
 
 ### @semcore/date-picker
 
@@ -1255,7 +1306,7 @@
 
 ### @semcore/pills
 
-- **Changed** `Tab` click will not move by Pills with `behaviour=manual`.
+- **Changed** `Tab` click will not move by Pills with `behavior=manual`.
 
 ### @semcore/utils
 
@@ -1272,7 +1323,7 @@
 
 ### @semcore/checkbox
 
-- **Changed** css selector specify to prevent rare edge case bug.
+- **Changed** CSS selector specify to prevent rare edge case bug.
 
 ### @semcore/date-picker
 
@@ -1280,11 +1331,11 @@
 
 ### @semcore/errors
 
-- **Changed** css selector specify to prevent rare edge case bug.
+- **Changed** CSS selector specify to prevent rare edge case bug.
 
 ### @semcore/inline-input
 
-- **Changed** css selector specify to prevent rare edge case bug.
+- **Changed** CSS selector specify to prevent rare edge case bug.
 
 ### @semcore/mini-chart
 
@@ -1292,11 +1343,11 @@
 
 ### @semcore/modal
 
-- **Changed** css selector specify to prevent rare edge case bug.
+- **Changed** CSS selector specify to prevent rare edge case bug.
 
 ### @semcore/radio
 
-- **Changed** css selector specify to prevent rare edge case bug.
+- **Changed** CSS selector specify to prevent rare edge case bug.
 
 ## [15.51.0] - 2024-01-19
 
@@ -1436,11 +1487,11 @@
 
 ### @semcore/date-picker
 
-- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` API to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
-- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` API to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
-- **Added** `preselectedValue` and `onPreselectedValueChange` api to `DatePickerRange` and `MonthRangePicker` components for more control over.
+- **Added** `preselectedValue` and `onPreselectedValueChange` API to `DatePickerRange` and `MonthRangePicker` components for more control over.
 - **Added** `preselectedValue`, `onPreselectedValueChange`, `preselectedCompare`, `onPreselectedCompareChange`, `compareToggle`, `onCompareToggleChange`, `focusedRange` and `onFocusedRangeChange` apis to `DateRangeComparator` and `MonthDateRangeComparator` components for more control over.
 - **Added** Set `displayedPeriod` from current `value` for each open of `Calendar`.
 
@@ -1509,7 +1560,7 @@
 
 ### @semcore/popper
 
-- **Added** Internal api to enable new focus lock scope.
+- **Added** Internal API to enable new focus lock scope.
 
 ### @semcore/select
 
@@ -1692,7 +1743,7 @@
 
 ### @semcore/core
 
-- **Fixed** Fixed components css output of complex selectors.
+- **Fixed** Fixed components CSS output of complex selectors.
 
 ### @semcore/icon
 
@@ -1806,7 +1857,7 @@
 
 ### @semcore/utils
 
-- **Added** Internal api for design tokens resolving.
+- **Added** Internal API for design tokens resolving.
 
 ## [15.29.0] - 2023-10-26
 
@@ -1857,7 +1908,7 @@
 
 ### @semcore/flex-box
 
-- **Added** `display` css property as prop to `Box` component.
+- **Added** `display` CSS property as prop to `Box` component.
 
 ### @semcore/notice-bubble
 
@@ -2230,7 +2281,7 @@
 
 ### @semcore/input-mask
 
-- **Fixed** Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+- **Fixed** Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected HTML form validation errors.
 
 ### @semcore/modal
 
@@ -2682,7 +2733,7 @@
 ### @semcore/icon
 
 - **Added** Added new `GoogleSheets` and `GoogleSlides` icons.
-- **Fixed** Removed duplication custom css class.
+- **Fixed** Removed duplication custom CSS class.
 
 ## [14.7.0] - 2023-06-23
 
@@ -2731,7 +2782,7 @@
 
 ### @semcore/data-table
 
-- **Changed** Moved `role="rowgroup"` on focusable scroll areas to match automatic a11y checks.
+- **Changed** Moved `role="rowgroup"` on focusable scroll areas to match automatic A11Y checks.
 
 ### @semcore/scroll-area
 
@@ -2868,7 +2919,7 @@
 
 ### @semcore/utils
 
-- **Fixed** Animations in complex components (e.g. `FilterTrigger`) might not be finished.
+- **Fixed** Animations in complex components (for example `FilterTrigger`) might not be finished.
 
 ## [14.1.0] - 2023-06-09
 
@@ -3017,7 +3068,7 @@
 ### @semcore/popper
 
 - **Fixed** Fixed corner case of focus return with `interaction=focus`.
-- **Fixed** Added `disableEnforceFocus` api prop.
+- **Fixed** Added `disableEnforceFocus` API prop.
 - **Changed** Updating `strategy`, `placement`, `offset`, `preventOverflow`, `arrow`, `flip`, `computeStyles`, `eventListeners` or `onFirstUpdate` props now triggers popper positioning update.
 
 ### @semcore/scroll-area
@@ -3317,7 +3368,7 @@
 
 ### @semcore/animation
 
-- **Fixed** Fixed collapse animations (e.g. used in `<Accordion />`) in Safari.
+- **Fixed** Fixed collapse animations (for example used in `<Accordion />`) in Safari.
 
 ### @semcore/data-table
 
@@ -3366,11 +3417,11 @@
 
 ### @semcore/inline-edit
 
-- **Fixed** Improvements for a11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
+- **Fixed** Improvements for A11Y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
 
 ### @semcore/inline-input
 
-- **Fixed** Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+- **Fixed** Improvements for A11Y. Hidden controls because they are accessible via the keyboard.
 
 ### @semcore/input
 
@@ -3481,7 +3532,7 @@
 
 ### @semcore/carousel
 
-- **Fixed** Fixed carousel html roles.
+- **Fixed** Fixed carousel HTML roles.
 
 ### @semcore/checkbox
 
@@ -3590,11 +3641,11 @@
 
 ### @semcore/d3-chart
 
-- **Fixed** Added correct display when there is no data in a11y table.
+- **Fixed** Added correct display when there is no data in A11Y table.
 
 ### @semcore/feedback-form
 
-- **Fixed** Added a11y error binding to field.
+- **Fixed** Added A11Y error binding to field.
 
 ### @semcore/utils
 
@@ -3656,12 +3707,12 @@
 
 ### @semcore/dropdown
 
-- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** `aria-controls` and `aria-expanded` HTML attributes wasn't applied on closed dropdown.
 
 ### @semcore/dropdown-menu
 
 - **Added** Added `z-index: 0` to `DropdownMenu.List` so that it doesn't overlap the focus border of neighboring elements.
-- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** `aria-controls` and `aria-expanded` HTML attributes wasn't applied on closed dropdown.
 - **Fixed** Navigating options with keyboard now doesn't trigger browser focus.
 - **Fixed** `aria-activedescendant` now is properly updated on keyboard navigation.
 
@@ -3675,7 +3726,7 @@
 
 ### @semcore/select
 
-- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** `aria-controls` and `aria-expanded` HTML attributes wasn't applied on closed dropdown.
 - **Fixed** `aria-activedescendant` was applied to selected option but not on focused one.
 - **Fixed** Option keys are now based on option value.
 - **Fixed** Removed unexpected tabIndex=-1.
@@ -3752,7 +3803,7 @@
 
 ### @semcore/d3-chart
 
-- **Changed** Much improved a11y summary generation for `Radar` chart.
+- **Changed** Much improved A11Y summary generation for `Radar` chart.
 
 ### @semcore/date-picker
 
@@ -4186,7 +4237,7 @@
 
 ### @semcore/utils
 
-- **Changed** Put all css `:hover` selectors into `@media(hover: hover)` block.
+- **Changed** Put all CSS `:hover` selectors into `@media(hover: hover)` block.
 
 ## [13.5.0] - 2023-01-19
 
@@ -4225,7 +4276,7 @@
 
 ### @semcore/modal
 
-- **Added** Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+- **Added** Added `Modal.Title` component and `aria-labelledby` property for better A11Y.
 
 ### @semcore/notice-bubble
 
@@ -4279,7 +4330,7 @@
 
 ### @semcore/flags
 
-- **Fixed** Fixed internal imports after babel transformation were causing "named import from json" errors in some bundlers.
+- **Fixed** Fixed internal imports after babel transformation were causing "named import from JSON" errors in some bundlers.
 
 ### @semcore/icon
 
@@ -4316,11 +4367,11 @@
 
 ### @semcore/ellipsis
 
-- **Fixed** Remove react warning with non-html props.
+- **Fixed** Remove react warning with non-HTML props.
 
 ### @semcore/format-text
 
-- **Fixed** Fixed css variable design tokens.
+- **Fixed** Fixed CSS variable design tokens.
 
 ### @semcore/notice-global
 
@@ -4328,7 +4379,7 @@
 
 ### @semcore/tag
 
-- **Fixed** Fixed css variable design tokens.
+- **Fixed** Fixed CSS variable design tokens.
 
 ## [13.2.10] - 2022-12-27
 
@@ -4385,7 +4436,7 @@
 
 ### @semcore/tag
 
-- **Fixed** Fixed css syntax error.
+- **Fixed** Fixed CSS syntax error.
 
 ## [13.2.7] - 2022-12-19
 
@@ -4395,11 +4446,11 @@
 
 ### @semcore/d3-chart
 
-- **Changed** Supported semi-async internationalization of text in a11y module.
+- **Changed** Supported semi-async internationalization of text in A11Y module.
 
 ### @semcore/format-text
 
-- **Fixed** Fixed syntax css.
+- **Fixed** Fixed syntax CSS.
 
 ### @semcore/illustration
 
@@ -4538,7 +4589,7 @@
 
 ### @semcore/dot
 
-- **Added** Added css property `isolation` to container.
+- **Added** Added CSS property `isolation` to container.
 
 ### @semcore/drag-and-drop
 
@@ -4601,7 +4652,7 @@
 
 ### @semcore/pills
 
-- **Added** Added css property `isolation` to container.
+- **Added** Added CSS property `isolation` to container.
 
 ### @semcore/portal
 
@@ -4846,7 +4897,7 @@
 
 ### @semcore/checkbox
 
-- **Fixed** Added missing `aria-checked` a11y attribute.
+- **Fixed** Added missing `aria-checked` A11Y attribute.
 
 ### @semcore/color-picker
 
@@ -4858,7 +4909,7 @@
 
 ### @semcore/d3-chart
 
-- **Fixed** Ensured a11y module do not break mouse interactions.
+- **Fixed** Ensured A11Y module do not break mouse interactions.
 - **Fixed** Fixed issue with uninitialized styles in some charts.
 
 ### @semcore/data-table
@@ -4887,7 +4938,7 @@
 - **Changed** Remove masks from all svg illustrations for WidgetEmpty component.
 - **Added** Added and changed fields `main`, `module` and `typings` in `package.json`.
 - **Added** Added missed illustrations and added missed id attribute for some illustrations.
-- **Added** Added available for export function `getIllustrationPath` to get url of illustrations.
+- **Added** Added available for export function `getIllustrationPath` to get URL of illustrations.
 
 ### @semcore/input
 
@@ -4897,11 +4948,11 @@
 ### @semcore/input-mask
 
 - **Fixed** Fixed displaying of addons placed on the end (right in ltr languages) of input.
-- **Fixed** Fixed mask underlay position desynchronization with html input content;
+- **Fixed** Fixed mask underlay position desynchronization with HTML input content;
 - **Fixed** Hidden placeholders and mask from real DOM to exclude it from copied content.
 - **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
 - **Fixed** Fixed addon placed before input value may be overlayed by input value.
-- **Fixed** Fixed previously broken in previous version backward compatibility of piping api.
+- **Fixed** Fixed previously broken in previous version backward compatibility of piping API.
 
 ### @semcore/notice
 
@@ -4915,7 +4966,7 @@
 ### @semcore/popper
 
 - **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
-- **Fixed** Removed aria attributes that were breaking components a11y.
+- **Fixed** Removed aria attributes that were breaking components A11Y.
 
 ### @semcore/radio
 
@@ -5030,7 +5081,7 @@
 
 ### @semcore/d3-chart
 
-- **Fixed** Changed paths in css files to relative.
+- **Fixed** Changed paths in CSS files to relative.
 
 ### @semcore/data-table
 
@@ -5038,7 +5089,7 @@
 
 ### @semcore/feedback-form
 
-- **Added** Added aria attributes for better a11y.
+- **Added** Added aria attributes for better A11Y.
 
 ### @semcore/fullscreen-modal
 
@@ -5069,7 +5120,7 @@
 
 ### @semcore/tooltip
 
-- **Added** Added `aria-live` attribute for better a11y.
+- **Added** Added `aria-live` attribute for better A11Y.
 
 ### @semcore/utils
 
@@ -5113,7 +5164,7 @@
 
 - **Changed** Updated translations.
 - **Added** Added Turkish language support.
-- **Added** Added `role="alert"` attributes to increase support for a11y.
+- **Added** Added `role="alert"` attributes to increase support for A11Y.
 
 ### @semcore/flags
 
@@ -5130,7 +5181,7 @@
 
 ### @semcore/input-number
 
-- **Added** Added screen reader notification of input value and aria attributes for better a11y.
+- **Added** Added screen reader notification of input value and aria attributes for better A11Y.
 
 ### @semcore/link
 
@@ -5144,7 +5195,7 @@
 
 ### @semcore/notice-bubble
 
-- **Changed** Animation styles moved to css file and now available for theming.
+- **Changed** Animation styles moved to CSS file and now available for theming.
 - **Added** Added role and aria-live attribute for better accessibility.
 
 ### @semcore/notice-global
@@ -5238,7 +5289,7 @@
 
 ### @semcore/input
 
-- **Changed** Fixed `Input.Addon` css classes were missing during server-side rendering.
+- **Changed** Fixed `Input.Addon` CSS classes were missing during server-side rendering.
 - **Fixed** Fixed the reaction when interacting with the keyboard for the correct work of other components with keyboard support.
 - **Fixed** Fixed applying `border-radius` for outline.
 
@@ -5269,7 +5320,7 @@
 - **Added** Added index to Bubble chart
 - **Added** Added property minimal height `hMin` for Bar (`<Bar hMin={...}/>`)
 - **Added** Added property `active` for `Donut.Pie`
-- **Fixed** Exclude props from html for `Tooltip.Dot`
+- **Fixed** Exclude props from HTML for `Tooltip.Dot`
 - **Fixed** Recalculate position for `Dot` after update scale
 - **Fixed** Optimization render `Dot`
 
@@ -5443,7 +5494,7 @@
 
 ### @semcore/chart
 
-- **BREAK** Removed css media rules.
+- **BREAK** Removed CSS media rules.
 
 ### @semcore/checkbox
 
@@ -5568,7 +5619,7 @@
 
 ### @semcore/inline-input
 
-- **Changed** Changed `<InlineInput />` api to make it more consistent with other components.
+- **Changed** Changed `<InlineInput />` API to make it more consistent with other components.
 
 ### @semcore/input-tags
 
@@ -5590,7 +5641,7 @@
 
 ### @semcore/spin-container
 
-- **Fixed** Fixed scollable spin-container (e.g. in `data-table`).
+- **Fixed** Fixed scollable spin-container (for example in `data-table`).
 
 ### @semcore/widget-empty
 
@@ -5718,7 +5769,7 @@
 
 ### @semcore/flex-box
 
-- **Added** Added gap, rowGap and columnGap css properties support for Flex component.
+- **Added** Added gap, rowGap and columnGap CSS properties support for Flex component.
 
 ### @semcore/icon
 
@@ -5753,7 +5804,7 @@
 
 ### @semcore/typography
 
-- **Fixed** Removed css specificity of props lineHeight/fontSize in `Text` component
+- **Fixed** Removed CSS specificity of props lineHeight/fontSize in `Text` component
 
 ### @semcore/widget-empty
 
@@ -6304,7 +6355,7 @@
 ### @semcore/icon
 
 - **Fixed** Fixed set style which render useBox.
-- **Changed** Remove from html for svg don't used attributes.
+- **Changed** Remove from HTML for svg don't used attributes.
 - **Changed** Added propsForElement for set props to svg.
 
 ### @semcore/notice-bubble
@@ -6333,7 +6384,7 @@
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 - **Changed** [TS] rewrite code from TS to JS.
-- **Changed** [A11y] added role for Alert and aria-label for Close.
+- **Changed** [A11Y] added role for Alert and aria-label for Close.
 
 ### @semcore/spin-container
 
@@ -6354,11 +6405,11 @@
 
 ### @semcore/carousel
 
-- **Added** [A11y] Added support to work Carousel. Next, Carousel. Prev with keyboard.
+- **Added** [A11Y] Added support to work Carousel. Next, Carousel. Prev with keyboard.
 
 ### @semcore/data-table
 
-- **Added** [A11y] Added support keyboard for sortable column.
+- **Added** [A11Y] Added support keyboard for sortable column.
 
 ### @semcore/date-picker
 
@@ -6412,7 +6463,7 @@
 ### @semcore/modal
 
 - **Changed** [TS] rewrite code from ts to js.
-- **Changed** [A11y] added role for Window and aria-label for Close and Window.
+- **Changed** [A11Y] added role for Window and aria-label for Close and Window.
 
 ### @semcore/notice
 
@@ -6420,7 +6471,7 @@
 - **Changed** Improved performance. Removed one component wrapper.
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-- **Changed** [A11y] added role for Alert and aria-label for Close.
+- **Changed** [A11Y] added role for Alert and aria-label for Close.
 
 ### @semcore/pills
 
@@ -6465,7 +6516,7 @@
 
 ### @semcore/table
 
-- **Added** [A11y] Added support keyboard for sortable column.
+- **Added** [A11Y] Added support keyboard for sortable column.
 
 ### @semcore/tag
 
@@ -6486,7 +6537,7 @@
 - **BREAK** Replaced internal representation with native input(type=number).
 - **BREAK** Changed type for value to string.
 - **Fixed** Fixed the js problem with the remainder of division.
-- **Added** [A11y] added aria-label for buttons in `InputNumber.Controls`
+- **Added** [A11Y] added aria-label for buttons in `InputNumber.Controls`
 
 ### @semcore/accordion
 
@@ -6563,7 +6614,7 @@
 
 ### @semcore/switch
 
-- **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or unchecked
+- **Changed** [A11Y] added `role="switch"` and support the Enter or Space key for used to toggle between a checked or unchecked
 - **Changed** [TS] Rewrite code from TS to JS.
 
 ### @semcore/tab-line
@@ -6794,11 +6845,11 @@
 ### @semcore/flex-box
 
 - **Fixed** [TS] Fixed type boxSize, value content-box set browser by default.
-- **Fixed** [Box] Added change css styles after change value by props top, left, right, bottom.
+- **Fixed** [Box] Added change CSS styles after change value by props top, left, right, bottom.
 
 ### @semcore/icon
 
-- **Changed** Update icons SEMrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush.
+- **Changed** Update icons Semrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush.
 
 ### @semcore/outside-click
 
@@ -6865,7 +6916,7 @@
 
 - **Added** Added support touch event for change to slide.
 - **Added** Added support control mod for change property index ``.
-- **Added** Added style folder with css in build folder lib.
+- **Added** Added style folder with CSS in build folder lib.
 - **Fixed** [ts] fixed all types of components inside package.
 
 ### @semcore/chart
@@ -6879,7 +6930,7 @@
 
 ### @semcore/data-table
 
-- **Added** Added style folder with css in build folder lib.
+- **Added** Added style folder with CSS in build folder lib.
 - **Fixed** Removed calculation min width head and body because this is caused bugs.
 
 ### @semcore/date-picker
@@ -6893,7 +6944,7 @@
 ### @semcore/icon
 
 - **Added** Added new icon VideoStop.
-- **Added** Added new color icon Github.
+- **Added** Added new color icon GitHub.
 - **Added** Added new icon GoogleAnalytics4 for 4 version.
 
 ### @semcore/input
@@ -6994,7 +7045,7 @@
 
 ### @semcore/data-table
 
-- **Fixed** Replace special characters in column names because they apply as css variables.
+- **Fixed** Replace special characters in column names because they apply as CSS variables.
 - **Changed** Added warning for deprecated prop 'sticky'.
 - **Changed** Replaced title prop with children parse for group column.
 
@@ -7059,7 +7110,7 @@
 ### @semcore/data-table
 
 - **Added** Set min-width for Head and Body, which calculate from width Cell
-- **Fixed** Set size width column in css variable Table
+- **Fixed** Set size width column in CSS variable Table
 
 ### @semcore/date-picker
 
@@ -7121,11 +7172,11 @@
 
 ### @semcore/breadcrumbs
 
-- **Fixed** Remove set css property max-width for Breadcrumbs. Item
+- **Fixed** Remove set CSS property max-width for Breadcrumbs. Item
 
 ### @semcore/button
 
-- **Added** Added alternative api for inserting Addon.
+- **Added** Added alternative API for inserting Addon.
 
 ### @semcore/chart
 
@@ -7175,15 +7226,15 @@
 
 ### @semcore/link
 
-- **Added** Added alternative api for inserting Addon.
+- **Added** Added alternative API for inserting Addon.
 
 ### @semcore/notice-bubble
 
-- **Fixed** generate css without collapsing property margin
+- **Fixed** generate CSS without collapsing property margin
 
 ### @semcore/pills
 
-- **Added** Added alternative api for inserting Addon.
+- **Added** Added alternative API for inserting Addon.
 - **Added** Added generic for better value and onChange typings
 - **Changed** Update @semcore/core version to ^1.8
 
@@ -7203,20 +7254,20 @@
 
 ### @semcore/tab-line
 
-- **Added** Added alternative api for inserting Addon.
+- **Added** Added alternative API for inserting Addon.
 - **Added** Added generic for better value and onChange typings
 - **Added** Animation for change position active Tab.
 - **Changed** Update @semcore/core version to ^1.8
 
 ### @semcore/tab-panel
 
-- **Added** Added alternative api for inserting Addon.
+- **Added** Added alternative API for inserting Addon.
 - **Added** Added generic for better value and onChange typings
 - **Changed** Update @semcore/core version to ^1.8
 
 ### @semcore/tag
 
-- **Added** Added alternative api for inserting Addon.
+- **Added** Added alternative API for inserting Addon.
 - **Changed** Removed neighbor-location package dependency
 
 ### @semcore/tooltip
@@ -7230,7 +7281,7 @@
 
 ### @semcore/utils
 
-- **Fixed** Revert move .d.ts files because typescript does not see types on import.
+- **Fixed** Revert move .d.ts files because TypeScript does not see types on import.
 - **Fixed** Change "any" type for createHoc function
 - **Changed** Build changed from rollup to babel
 - **Changed** Move .d.ts files from /lib to /lib/types directory

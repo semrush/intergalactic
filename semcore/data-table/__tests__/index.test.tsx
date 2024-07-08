@@ -526,6 +526,7 @@ describe('DataTable', () => {
                     return {
                       value: index,
                       active: [1, 2].includes(index),
+                      fontWeight: 'normal',
                       collapse: {
                         children: (
                           <Box
@@ -590,6 +591,7 @@ describe('DataTable', () => {
                     return {
                       value: index,
                       active: [1, 2].includes(index),
+                      fontWeight: 'normal',
                       collapse: {
                         children: (
                           <DataTable data={data} zIndex={2}>

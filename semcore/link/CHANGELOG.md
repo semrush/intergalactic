@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.33.1] - 2024-07-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [6.36.0 ~> 6.36.1]).
+
 ## [5.33.0] - 2024-06-26
 
 ### Changed
@@ -662,7 +668,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added alternative api for inserting `Addon`.
+- Added alternative API for inserting `Addon`.
 
 ## [3.1.1] - 2020-09-08
 
@@ -674,8 +680,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Вернули свойсво `noWrap={true}` для управления css свойством `white-space` компонента `<Link>`
-- Вернули свойсво `inline` для управления css свойством `display` компонента `<Link>`
+- Вернули свойсво `noWrap={true}` для управления CSS свойством `white-space` компонента `<Link>`
+- Вернули свойсво `inline` для управления CSS свойством `display` компонента `<Link>`
 
 ## [3.0.2] - 2020-07-09
 
@@ -703,7 +709,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Переименовали сбилженные файлы с 'sm.style.css' -> 'style.css'
+- Переименовали сбилженные файлы с `sm.style.css` -> `style.css`
 
 ## [2.4.0] - 2020-02-12
 
@@ -733,13 +739,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [2.2.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

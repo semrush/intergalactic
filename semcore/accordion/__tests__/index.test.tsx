@@ -50,7 +50,7 @@ describe('Accordion', () => {
           .fill('')
           .map((_, index) => (
             <Accordion.Item value={index} disabled={index === 3} key={index}>
-              <Accordion.Item.Toggle keyboardFocused={index === 1}>
+              <Accordion.Item.Toggle keyboardFocused={index === 1} fontWeight={'normal'}>
                 <Accordion.Item.Chevron />
                 Item {index}
               </Accordion.Item.Toggle>

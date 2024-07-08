@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.1] - 2024-06-27
+
+### Fixed
+
+- Notice only with `danger` theme has aria-label "Critical Notification" (`warning` theme gets "Notification" as all other themes).
+
+## [5.36.0] - 2024-07-05
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.39.1 ~> 4.41.0]).
+
 ## [5.35.0] - 2024-06-19
 
 ### Changed
@@ -712,7 +724,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Improved performance. Removed one component wrapper.
 - The style processing system has been changed.
 - Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
-- [A11y] added role for `Alert` and aria-label for `Close`.
+- [A11Y] added role for `Alert` and aria-label for `Close`.
 
 ## [3.0.0] - 2021-03-15
 
@@ -780,13 +792,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ## [1.4.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.2] - 2024-07-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input-number` [5.31.1 ~> 5.31.2]).
+
+## [4.37.1] - 2024-07-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.39.1 ~> 4.41.0], `@semcore/spin` [5.28.0 ~> 5.29.0], `@semcore/tooltip` [6.36.0 ~> 6.36.1], `@semcore/input-number` [5.31.0 ~> 5.31.1]).
+
 ## [4.37.0] - 2024-06-26
 
 ### Changed
@@ -204,7 +216,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- css selector specify to prevent rare edge case bug.
+- CSS selector specify to prevent rare edge case bug.
 
 ## [4.22.0] - 2024-01-19
 
@@ -602,7 +614,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+- Improvements for A11Y. Hidden controls because they are accessible via the keyboard.
 
 ## [3.5.27] - 2023-04-14
 
@@ -738,7 +750,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed `<InlineInput />` api to make it more consistent with other components.
+- Changed `<InlineInput />` API to make it more consistent with other components.
 
 ## [1.0.0] - 2022-03-30
 

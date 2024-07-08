@@ -1,7 +1,7 @@
 {
   "name": "@semcore/spin-container",
   "description": "Semrush SpinContainer Component",
-  "version": "7.29.0",
+  "version": "7.30.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "types": "lib/types/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@semcore/utils": "4.30.0",
-    "@semcore/spin": "5.28.0",
+    "@semcore/spin": "5.29.0",
     "@semcore/flex-box": "5.29.0",
     "@semcore/animation": "2.29.0"
   },

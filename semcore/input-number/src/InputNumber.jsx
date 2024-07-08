@@ -83,21 +83,15 @@ class Value extends Component {
         (newValue) => {
           const { value: prevValue, displayValue: prevDisplayValue } = this.asProps;
 
-          if (newValue === '-') {
-            this.handlers.displayValue(newValue);
+          const { parsedValue, displayValue } = this.valueParser(
+            newValue,
+            prevValue,
+            prevDisplayValue,
+          );
 
-            return newValue;
-          } else {
-            const { parsedValue, displayValue } = this.valueParser(
-              newValue,
-              prevValue,
-              prevDisplayValue,
-            );
+          this.handlers.displayValue(displayValue);
 
-            this.handlers.displayValue(displayValue);
-
-            return parsedValue;
-          }
+          return parsedValue;
         },
       ],
     };
@@ -126,26 +120,6 @@ class Value extends Component {
 
     const stringNumber = this.getFormattedValue(String(value));
 
-    if (
-      stringNumber[stringNumber.length - 1] === '.' &&
-      !Number.isNaN(Number(prevValue)) &&
-      !stringNumber.slice(0, -1).includes('.')
-    ) {
-      if (value.length > prevValue.length) {
-        // type new value
-        return {
-          parsedValue: prevValue + this.separatorDecimal,
-          displayValue: numberFormatter.format(prevValue) + this.separatorDecimal,
-        };
-      } else {
-        // backspace value
-        return {
-          parsedValue: stringNumber,
-          displayValue: value,
-        };
-      }
-    }
-
     if (Number.isNaN(Number(stringNumber))) {
       return {
         parsedValue: prevValue,
@@ -153,9 +127,18 @@ class Value extends Component {
       };
     }
 
+    let displayValue = '';
+
+    if (/\.[0-9]*0$/.test(stringNumber)) {
+      const [int, decimal] = stringNumber.split(this.separatorDecimal);
+      displayValue = numberFormatter.format(int) + this.separatorDecimal + decimal;
+    } else if (stringNumber !== '') {
+      displayValue = numberFormatter.format(stringNumber);
+    }
+
     return {
       parsedValue: stringNumber,
-      displayValue: stringNumber === '' ? '' : numberFormatter.format(stringNumber),
+      displayValue: displayValue,
     };
   };
 
@@ -235,10 +218,25 @@ class Value extends Component {
 
   handleChange = (event) => {
     const value = this.getFormattedValue(event.currentTarget.value);
+    const { numberFormatter, value: prevValue } = this.asProps;
 
-    if (value.endsWith('.') || value.endsWith('-')) {
+    if (value === '.' || value === '-') {
       this.handlers.displayValue(value);
       return false;
+    }
+
+    if (value.endsWith('-')) {
+      return false;
+    }
+
+    if (value.endsWith('.')) {
+      if (value.length > prevValue.length) {
+        this.handlers.displayValue(numberFormatter.format(value) + this.separatorDecimal);
+        return false;
+      } else {
+        this.handlers.displayValue(numberFormatter.format(value));
+        return false;
+      }
     }
 
     const digits = /[0-9.-]+/.test(value);
@@ -262,10 +260,25 @@ class Value extends Component {
     const element = event.currentTarget;
     const value = element.value;
     const length = value.length;
+    const { displayValue } = this.asProps;
 
     // we need this dirty hack for screen readers, because they couldn't read full value in input after adding there ','.
     // so, we change role to `region` here and back to `input` in handleKeyUp
     element.role = 'region';
+
+    // we could press dot second time - prevent this '1.5.'
+    if (event.key === this.separatorDecimal && value.indexOf(this.separatorDecimal) !== -1) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    if (event.key === 'Backspace' && value.endsWith(this.separatorDecimal)) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.handlers.displayValue(displayValue.slice(0, -1));
+      return false;
+    }
 
     if (
       element.selectionStart !== length &&

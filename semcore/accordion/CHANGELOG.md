@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.1] - 2024-06-26
+
+### Changed
+
+- `Accordion.Item.Toggle` can have only `h*` tag, `h3` tag is default.
+
+### Added
+
+- Flex component `Accordion.Item.ToggleButton` with role `button`.
+
 ## [5.36.0] - 2024-06-26
 
 ### Changed
@@ -851,12 +861,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Поправили вызов `onChange` для `Accordion`
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (`build.css`)
 
 ### Added
 
 - Добавлена адаптивность на маленьких экранах(<768px)
-- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность добавления различных стилистических тем через CSS переменные
 - Появилась возможность оптицонально подключать адаптивноссть
 - Появилась возможность изолировать стили даже в пределах одной страницы
 

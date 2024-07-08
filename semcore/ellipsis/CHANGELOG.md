@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.29.2] - 2024-07-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [6.36.0 ~> 6.36.1]).
+
 ## [2.29.1] - 2024-06-19
 
 ### Fixed
@@ -556,7 +562,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Remove react warning with non-html props.
+- Remove react warning with non-HTML props.
 
 ## [1.1.3] - 2022-12-19
 

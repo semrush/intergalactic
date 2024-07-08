@@ -8,6 +8,94 @@ import { Text } from 'intergalactic/typography';
 import CloseM from 'intergalactic/icon/Close/m';
 import { Box, Flex } from 'intergalactic/flex-box';
 
+const Demo = () => {
+  const inputRef = React.useRef(null);
+  const [countryFilter, setCountryFilterValue] = React.useState('');
+  const [country, setCountry] = React.useState<keyof typeof countries>('ZW');
+  const prefix = countries[country].prefix;
+  const [phoneNumber, setPhoneNumber] = React.useState(prefix);
+  const [phoneMask, setPhoneMask] = React.useState(`${prefix} (___)___-____`);
+
+  return (
+    <Flex direction='column'>
+      <Text tag='label' htmlFor='phone-number-with-country-select' size={200} mr={2}>
+        Phone number
+      </Text>
+      <Box mt={2}>
+        <NeighborLocation controlsLength={2}>
+          <Select
+            value={country}
+            onChange={(country) => {
+              setCountry(country);
+              const prefix = countries[country].prefix;
+              setPhoneNumber(prefix);
+              setPhoneMask(`${prefix} (___)___-____`);
+              setTimeout(() => {
+                inputRef?.current.focus();
+              }, 1);
+            }}
+          >
+            <Select.Trigger>
+              <Select.Trigger.Addon mr={0}>
+                <Flag iso2={country} />
+              </Select.Trigger.Addon>
+            </Select.Trigger>
+
+            <Select.Popper>
+              <>
+                <InputSearch
+                  placeholder='Search'
+                  value={countryFilter}
+                  onChange={setCountryFilterValue}
+                />
+
+                <Select.List hMax='240px' w='232px'>
+                  {Object.keys(countries)
+                    .filter((country) =>
+                      countries[country].name.toLowerCase().includes(countryFilter),
+                    )
+                    .map((country) => (
+                      <Select.Option key={country} value={country}>
+                        <Text size={200} mr={2} flex='0 0 auto'>
+                          <Flag iso2={country as keyof typeof countries} />
+                        </Text>
+                        <Text size={200} mr={2}>
+                          {countries[country].name}
+                        </Text>
+                        <Text size={200} color='text-secondary'>
+                          {countries[country].prefix}
+                        </Text>
+                      </Select.Option>
+                    ))}
+                </Select.List>
+              </>
+            </Select.Popper>
+          </Select>
+          <InputMask w={210}>
+            <InputMask.Value
+              title={'phone number'}
+              id='phone-number-with-country-select'
+              ref={inputRef}
+              value={phoneNumber}
+              onChange={setPhoneNumber}
+              mask={phoneMask.replace(/_/g, '9')}
+            />
+            {phoneNumber?.includes('(') && (
+              <Input.Addon
+                tag={CloseM}
+                aria-label='Clear value'
+                color='icon-secondary-neutral'
+                interactive
+                onClick={() => setPhoneNumber(prefix)}
+              />
+            )}
+          </InputMask>
+        </NeighborLocation>
+      </Box>
+    </Flex>
+  );
+};
+
 const countries = {
   AF: { name: 'Afghanistan', prefix: '+93' },
   AX: { name: 'Åland Islands', prefix: '+358' },
@@ -255,93 +343,6 @@ const countries = {
   YE: { name: 'Yemen', prefix: '+967' },
   ZM: { name: 'Zambia', prefix: '+260' },
   ZW: { name: 'Zimbabwe', prefix: '+263' },
-};
-
-const Demo = () => {
-  const inputRef = React.useRef(null);
-  const [countryFilter, setCountryFilterValue] = React.useState('');
-  const [country, setCountry] = React.useState<keyof typeof countries>('ZW');
-  const prefix = countries[country].prefix;
-  const [phoneNumber, setPhoneNumber] = React.useState(prefix);
-  const [phoneMask, setPhoneMask] = React.useState(`${prefix} (___)___-____`);
-
-  return (
-    <Flex direction='column'>
-      <Text tag='label' htmlFor='phone-number-with-country-select' size={200} mr={2}>
-        Phone number
-      </Text>
-      <Box mt={2}>
-        <NeighborLocation controlsLength={2}>
-          <Select
-            value={country}
-            onChange={(country) => {
-              setCountry(country);
-              const prefix = countries[country].prefix;
-              setPhoneNumber(prefix);
-              setPhoneMask(`${prefix} (___)___-____`);
-              setTimeout(() => {
-                inputRef?.current.focus();
-              }, 1);
-            }}
-          >
-            <Select.Trigger>
-              <Select.Trigger.Addon mr={0}>
-                <Flag iso2={country} />
-              </Select.Trigger.Addon>
-            </Select.Trigger>
-
-            <Select.Popper>
-              <>
-                <InputSearch
-                  placeholder='Search'
-                  value={countryFilter}
-                  onChange={setCountryFilterValue}
-                />
-
-                <Select.List hMax='240px' w='232px'>
-                  {Object.keys(countries)
-                    .filter((country) =>
-                      countries[country].name.toLowerCase().includes(countryFilter),
-                    )
-                    .map((country) => (
-                      <Select.Option key={country} value={country}>
-                        <Text size={200} mr={2} flex='0 0 auto'>
-                          <Flag iso2={country as keyof typeof countries} />
-                        </Text>
-                        <Text size={200} mr={2}>
-                          {countries[country].name}
-                        </Text>
-                        <Text size={200} color='text-secondary'>
-                          {countries[country].prefix}
-                        </Text>
-                      </Select.Option>
-                    ))}
-                </Select.List>
-              </>
-            </Select.Popper>
-          </Select>
-          <InputMask w={210}>
-            <InputMask.Value
-              title={'phone number'}
-              id='phone-number-with-country-select'
-              ref={inputRef}
-              value={phoneNumber}
-              onChange={setPhoneNumber}
-              mask={phoneMask.replace(/_/g, '9')}
-            />
-            {phoneNumber !== phoneMask && (
-              <Input.Addon
-                tag={CloseM}
-                aria-label='Clear value'
-                interactive
-                onClick={() => setPhoneNumber(prefix)}
-              />
-            )}
-          </InputMask>
-        </NeighborLocation>
-      </Box>
-    </Flex>
-  );
 };
 
 export default Demo;

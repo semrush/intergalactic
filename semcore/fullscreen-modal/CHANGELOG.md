@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.40.0] - 2024-07-05
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.39.1 ~> 4.41.0]).
+
 ## [3.39.0] - 2024-06-26
 
 ### Changed
@@ -734,7 +740,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added dependency on `@semcore/modal`. Component use `<Modal>` for initialization.
-- Added properties `visible`, `closable`, `duration`, about them can you read in [API](/components/fullscreen-modal/fullscreen-modal-api/#a5f727)
+- Added properties `visible`, `closable`, `duration`, about them can you read in [API](/components/fullscreen-modal/fullscreen-modal-API/#a5f727)
 
 ## [1.1.2] - 2020-09-08
 

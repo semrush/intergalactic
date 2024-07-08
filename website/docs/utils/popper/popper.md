@@ -22,7 +22,7 @@ The component can function in both `uncontrolled` and `controlled` modes.
 
 ## Events trigger
 
-Using the `interaction` prop, you can specify trigger events which are to be subscribed to in order to show and hide the popper.
+Using the `interaction` prop, you can specify trigger events which are to be subscribed to to show and hide the popper.
 
 When these events are activated, the `onVisibleChange` handler is called with the changed visibility value.
 
@@ -114,7 +114,7 @@ The second argument of the render-function will provide `handlers`, functions fo
 
 ## Disabled portal
 
-The popper is rendered in the end of the `body` and absolutely positioned. In order to render the `Popper` next to the `Trigger`, you need to specify `disablePortal`.
+The popper is rendered in the end of the `body` and absolutely positioned. to render the `Popper` next to the `Trigger`, you need to specify `disablePortal`.
 
 This is usually needed to optimize position recalculation when the `Trigger` is located in a block that scrolls separately from the page.
 
