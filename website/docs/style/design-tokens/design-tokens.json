@@ -1529,7 +1529,7 @@
     "name": "--intergalactic-table-td-cell-hover",
     "type": "color",
     "rawValue": "{gray.100}",
-    "computedValue": "rgb(240,240,244)",
+    "computedValue": "#f0f0f4",
     "description": "Background of the default hovered cell in the Table.",
     "components": []
   },
@@ -1537,7 +1537,7 @@
     "name": "--intergalactic-table-td-cell-active",
     "type": "color",
     "rawValue": "{gray.100}",
-    "computedValue": "rgb(249,249,251)",
+    "computedValue": "#e6e7ed",
     "description": "Background of the default active cell in the Table.",
     "components": []
   },
