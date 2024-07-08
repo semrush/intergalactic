@@ -69,7 +69,7 @@ class NoticeGlobalRoot extends Component {
         backgroundColor={color}
         role='region'
         aria-live={isAssertive ? 'assertive' : 'polite'}
-        aria-label={getI18nText(isAssertive ? 'criticalNotification' : 'notification')}
+        aria-label={getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification')}
       >
         {advancedMode ? (
           <Children />

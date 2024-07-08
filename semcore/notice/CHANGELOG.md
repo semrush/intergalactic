@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.1] - 2024-06-27
+
+### Fixed
+
+- Notice only with `danger` theme has aria-label "Critical Notification" (`warning` theme gets "Notification" as all other themes).
+
 ## [5.36.0] - 2024-07-05
 
 ### Changed
