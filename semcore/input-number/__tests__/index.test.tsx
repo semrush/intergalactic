@@ -284,9 +284,11 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('1.2', expect.anything());
 
     await userEvent.keyboard('[Backspace]');
+    expect(spy).lastCalledWith('1', expect.anything());
+
     await userEvent.keyboard('[Backspace]');
     expect(spy).lastCalledWith('', expect.anything());
-    expect(spy).toBeCalledTimes(3);
+    expect(spy).toBeCalledTimes(4);
   });
 
   test.concurrent('Should support sizes', async ({ task }) => {
