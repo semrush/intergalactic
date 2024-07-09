@@ -1,7 +1,7 @@
 {
   "name": "@semcore/spin",
   "description": "Semrush Spin Component",
-  "version": "5.28.0",
+  "version": "5.29.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "types": "lib/types/index.d.ts",
