@@ -5,6 +5,7 @@ import ShowNoM from 'intergalactic/icon/ShowNo/m';
 import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
+import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [type, setType] = React.useState('password');
@@ -22,14 +23,19 @@ const Demo = () => {
             type={type}
             id='password-example'
           />
-          <Input.Addon
-            aria-label={type === 'password' ? 'View password' : 'Hide password'}
-            tag={Button}
-            tabIndex={0}
-            onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
+          <Hint
+            title={type === 'password' ? 'View password' : 'Hide password'}
+            aria-label={undefined}
           >
-            {type === 'password' ? <ShowYesM /> : <ShowNoM />}
-          </Input.Addon>
+            <Input.Addon
+              aria-label={type === 'password' ? 'View password' : 'Hide password'}
+              mr='-1px'
+              tag={Button}
+              onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
+            >
+              {type === 'password' ? <ShowYesM /> : <ShowNoM />}
+            </Input.Addon>
+          </Hint>
         </Input>
       </Box>
     </>
