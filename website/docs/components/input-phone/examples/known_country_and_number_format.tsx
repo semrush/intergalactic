@@ -267,7 +267,13 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' htmlFor='phone-number-with-country-select' size={200} mr={2}>
+      <Text
+        tag='label'
+        htmlFor='phone-number-with-country-select'
+        id='phone-number-label'
+        size={200}
+        mr={2}
+      >
         Phone number
       </Text>
       <Box mt={2}>
@@ -284,13 +290,18 @@ const Demo = () => {
               }, 1);
             }}
           >
-            <Select.Trigger>
+            <Select.Trigger
+              aria-haspopup='dialog'
+              __excludeProps={['value', 'placeholder', 'role']}
+              aria-describedby='phone-number-label'
+              aria-label={`Select country. Current country is ${countries[country].name}`}
+            >
               <Select.Trigger.Addon mr={0}>
                 <Flag iso2={country} />
               </Select.Trigger.Addon>
             </Select.Trigger>
 
-            <Select.Popper>
+            <Select.Popper tabIndex={-1}>
               <>
                 <InputSearch
                   placeholder='Search'
@@ -298,14 +309,14 @@ const Demo = () => {
                   onChange={setCountryFilterValue}
                 />
 
-                <Select.List hMax='240px' w='232px'>
+                <Select.List hMax='240px' w='232px' aria-label={'Countries'}>
                   {Object.keys(countries)
                     .filter((country) =>
                       countries[country].name.toLowerCase().includes(countryFilter),
                     )
                     .map((country) => (
                       <Select.Option key={country} value={country}>
-                        <Text size={200} mr={2} flex='0 0 auto'>
+                        <Text size={200} mr={2} flex='0 0 auto' aria-hidden={'true'}>
                           <Flag iso2={country as keyof typeof countries} />
                         </Text>
                         <Text size={200} mr={2}>
@@ -322,7 +333,6 @@ const Demo = () => {
           </Select>
           <InputMask w={210}>
             <InputMask.Value
-              title={'phone number'}
               id='phone-number-with-country-select'
               ref={inputRef}
               value={phoneNumber}

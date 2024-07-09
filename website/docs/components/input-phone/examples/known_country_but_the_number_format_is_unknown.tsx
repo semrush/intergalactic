@@ -12,7 +12,7 @@ const Demo = () => {
       <Text tag='label' size={200} htmlFor='phone-number'>
         Phone number
       </Text>
-      <Input w={180} mt={2}>
+      <Input w={180} mt={2} aria-label='country detected USA'>
         <Input.Addon>
           <Flag iso2='US' />
         </Input.Addon>
