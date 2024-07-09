@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.3] - 2024-07-09
+
+### Fixed
+
+- Editing after removing decimal part.
+
 ## [5.31.2] - 2024-07-08
 
 ### Fixed
