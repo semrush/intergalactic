@@ -7,6 +7,11 @@ import Popper, {
   eventInteraction,
 } from '@semcore/popper';
 
+type ArrowCustom = {
+  arrowBgColor?: string;
+  arrowShadowColor?: string;
+};
+
 /** @deprecated */
 export interface ITooltipProps extends TooltipProps, UnknownProperties {}
 export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperProps, 'interaction'> &
@@ -39,7 +44,7 @@ export type TooltipContext = PopperContext & {};
 
 declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipContext> & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
-  Popper: Intergalactic.Component<'div', TooltipProps, TooltipContext>;
+  Popper: Intergalactic.Component<'div', TooltipProps & ArrowCustom, TooltipContext>;
 };
 
 export type TooltipHintProps = Intergalactic.InternalTypings.EfficientOmit<
@@ -69,7 +74,7 @@ export type HintPopperProps = TooltipHintPopperProps;
 
 declare const Hint: Intergalactic.Component<'div', HintProps, TooltipTriggerContext> & {
   Trigger: Intergalactic.Component<'div', PopperTriggerProps, TooltipTriggerContext>;
-  Popper: Intergalactic.Component<'div', HintPopperProps, TooltipContext>;
+  Popper: Intergalactic.Component<'div', HintPopperProps & ArrowCustom, TooltipContext>;
 };
 
 export type DescriptionTooltipProps = Intergalactic.InternalTypings.EfficientOmit<
@@ -102,7 +107,8 @@ type DescriptionTooltipPopperAriaProps = Intergalactic.RequireAtLeastOne<{
 }>;
 
 export type DescriptionTooltipPopperProps = DescriptionTooltipProps &
-  DescriptionTooltipPopperAriaProps & {
+  DescriptionTooltipPopperAriaProps &
+  ArrowCustom & {
     /**
      * Popper in DescriptionTooltip should have role `dialog`.
      * @default 'dialog'

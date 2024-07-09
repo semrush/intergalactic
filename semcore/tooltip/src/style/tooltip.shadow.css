@@ -72,6 +72,14 @@ SArrow[theme='warning'] {
   }
 }
 
+SArrow[bgColor] {
+  border-color: var(--bgColor);
+
+  &::before {
+    border-color: var(--shadowColor, --bgColor);
+  }
+}
+
 STooltip[data-popper-placement^='top'] SArrow {
   top: 100%;
 

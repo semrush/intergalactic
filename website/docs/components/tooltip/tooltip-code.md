@@ -60,3 +60,13 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 </script>
 
 :::
+
+## Custom background
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom_bg_color.tsx';
+</script>
+
+:::
