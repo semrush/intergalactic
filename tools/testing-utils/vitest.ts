@@ -1,5 +1,5 @@
-import {beforeEach} from 'vitest';
-import { label, feature, story, parentSuite, suite, subSuite } from "allure-js-commons";
+import { beforeEach } from 'vitest';
+import { label, feature, story, parentSuite, suite, subSuite } from 'allure-js-commons';
 
 beforeEach(async (context) => {
   const suit = 'Unit';
