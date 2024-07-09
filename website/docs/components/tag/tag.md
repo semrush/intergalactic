@@ -64,13 +64,13 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const imageIcon = bool({
     key: 'image Icon',
     defaultValue: false,
-    label: 'Image Addon',
+    label: 'Circle Addon',
   });
 
   const closeIcon = bool({
     key: 'close Icon',
     defaultValue: false,
-    label: 'Close Icon',
+    label: 'Close Button',
   });
 
   const interactive = bool({
@@ -108,7 +108,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
       {imageIcon && (
         <Tag.Circle>
-          <img src='https://picsum.photos/id/1025/28/28' alt='tag circle' />
+          <img src='https://picsum.photos/id/1025/28/28' />
         </Tag.Circle>
       )}
       <Tag.Text>Tag text</Tag.Text>
@@ -133,9 +133,9 @@ Tags are typically set either by the system or by the user.
 Component consists of the following:
 
 - `Tag.Text`
-- `Tag.Addon`: icon or any other small element before the text
-- `Tag.Close`
-- `Tag.Circle`: a circle image
+- `Tag.Addon` — an icon or some other small element before the text
+- `Tag.Close` — a button that removes the tag
+- `Tag.Circle` — a round addon, usually an image.
 
 ## Sizes and paddings
 

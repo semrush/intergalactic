@@ -4,14 +4,9 @@ import SmileHappyM from 'intergalactic/icon/SmileHappy/m';
 
 const Demo = () => {
   return (
-    <>
-      <Tag size='l' theme='primary' color='violet-500'>
-        <Tag.Addon>
-          <SmileHappyM />
-        </Tag.Addon>
-        <Tag.Text>Tag</Tag.Text>
-      </Tag>
-    </>
+    <Tag color='violet-500' size='l' addonLeft={SmileHappyM}>
+      Tag
+    </Tag>
   );
 };
 

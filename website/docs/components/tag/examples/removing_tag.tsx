@@ -3,7 +3,7 @@ import Tag from 'intergalactic/tag';
 import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
-  const [tags, setTags] = React.useState(['Facebook', 'Twitter (X)', 'Instagram']);
+  const [tags, setTags] = React.useState(['Facebook', 'X (Twitter)', 'Instagram']);
 
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget.parentElement;

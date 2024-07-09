@@ -20,7 +20,7 @@ You can add addons to the Tag component in two ways: by passing the desired tag 
 
 You can set custom color to the tag using `color` property and any color from [our base color tokens](/style/design-tokens/design-tokens#base-tokens-palette). 
 
-::: info
+::: tip
 We recommend to use colors with 500 tone since they have the necessary contrast between the text and background. Background color for all states and color for icon inside the tag is calculated with CSS filter.
 :::
 
@@ -34,8 +34,9 @@ We recommend to use colors with 500 tone since they have the necessary contrast 
 
 ## Grouping tags
 
-If you need to render few tags, you should wrap them into `ui` with `role=group` and set also `aria-label`.
-Each tag should be `li`.
+If you need to render several tags, combine them into a group with a meaningful accessible name.
+If the number of tags is less than 5, add `role="group"` to the parent element.
+If the number of tags is 5 or more, wrap them in a `ul` list, with each `Tag` as a `li` element.
 
 ::: sandbox
 

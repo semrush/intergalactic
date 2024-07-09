@@ -13,9 +13,9 @@ Table: Keyboard support
 
 | Key           | Function                                                                          |
 | ------------- | --------------------------------------------------------------------------------- |
-| `Tab`         | Moves keyboard focus to the interactive tag and its `Close` icon button.          |
-| `Shift + Tab` | Moves focus to the previous focusable element.                                    |
-| `Enter`       | Toggles `active` state for interactive tag or removes tag by `Close` icon button. |
+| `Tab`         | Moves keyboard focus to the next focusable element. <br>The main part of the tag is focusable only if the tag is interactive. <br>The **Close** button is always foculable if present.          |
+| <nobr>`Shift + Tab`</nobr> | Moves focus to the previous focusable element.                                    |
+| `Enter`       | Activates an interactive tag. <br>Alternatively, removes the tag if the **Close** button is focused. |
 
 ### Roles and attributes
 
@@ -31,7 +31,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-- Make sure screenreader reads your tags list as a group. Refer to [Grouping tags example](link will be here).
+- Make sure screenreader reads your tags list as a group. Refer to the [Grouping tags example](./tag-code.md#grouping-tags).
 - Interactive tags that are used as a button for filtering content should also follow the accessibility guidelines for [Button](/components/button/button-a11y).
 
 ## Considerations for designers
