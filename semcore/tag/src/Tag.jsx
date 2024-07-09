@@ -11,7 +11,6 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/tag.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const legacyThemeRecommendedMigration = {
   primary: {
@@ -89,7 +88,6 @@ class RootTag extends Component {
       id: `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
-      'aria-hidden': 'true',
       onMount: this.handleCloseMount,
       onUnmount: this.handleCloseUnmount,
     };
