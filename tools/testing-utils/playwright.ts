@@ -4,7 +4,6 @@ import { test as base } from '@playwright/test';
 import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
 import { allure } from 'allure-playwright';
 import type { TestInfo } from 'playwright/types/test';
-import {al} from 'vitest/dist/reporters-5f784f42';
 
 type GetAccessibilityViolations = (params: { page: Page }) => Promise<any[]>;
 
