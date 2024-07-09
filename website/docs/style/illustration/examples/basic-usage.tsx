@@ -1,8 +1,8 @@
 import React from 'react';
-import MailSentReact from 'intergalactic/illustration/MailSent';
+import MailSent from 'intergalactic/illustration/MailSent';
 
 const Demo = () => {
-  return <MailSentReact />;
+  return <MailSent />;
 };
 
 export default Demo;
