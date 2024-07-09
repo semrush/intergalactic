@@ -1,3 +1,13 @@
+## [15.98.2] - 2024-07-09
+
+### @semcore/input-number
+
+- **Fixed** Editing after removing decimal part.
+
+### @semcore/notice
+
+- **Fixed** Notice only with `danger` theme has aria-label "Critical Notification" (`warning` theme gets "Notification" as all other themes).
+
 ## [15.98.1] - 2024-07-08
 
 ### @semcore/input-number
