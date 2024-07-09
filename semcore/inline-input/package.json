@@ -1,7 +1,7 @@
 {
   "name": "@semcore/inline-input",
   "description": "Semrush Input Component",
-  "version": "4.37.0",
+  "version": "4.37.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@semcore/flex-box": "5.29.0",
-    "@semcore/icon": "4.39.1",
-    "@semcore/spin": "5.28.0",
-    "@semcore/tooltip": "6.36.0",
+    "@semcore/icon": "4.41.0",
+    "@semcore/spin": "5.29.0",
+    "@semcore/tooltip": "6.36.1",
     "@semcore/utils": "4.30.0",
-    "@semcore/input-number": "5.31.0",
+    "@semcore/input-number": "5.31.2",
     "@semcore/input": "4.30.0",
     "@semcore/core": "2.27.0"
   },

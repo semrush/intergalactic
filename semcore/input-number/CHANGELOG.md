@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.31.2] - 2024-07-08
+
+### Fixed
+
+- Display correct value with different decimal values.
+
 ## [5.31.1] - 2024-07-03
 
 ### Fixed
