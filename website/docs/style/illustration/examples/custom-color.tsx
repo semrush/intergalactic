@@ -1,13 +1,13 @@
 import React from 'react';
-import Feedback from 'intergalactic/illustration/Feedback';
+import MailSent from 'intergalactic/illustration/MailSent';
 import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (
     <Flex gap={5}>
-      <Feedback width={100} height={100} />
-      <Feedback width={100} height={100} color='#ff7ad1' />
-      <Feedback width={100} height={100} color='green-200' />
+      <MailSent />
+      <MailSent color='#ff7ad1' />
+      <MailSent color='violet-300' />
     </Flex>
   );
 };
