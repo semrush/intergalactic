@@ -104,11 +104,11 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ![](static/one-cat.png)
 
-For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between bars to avoid clutter.
+For the grouped bars aim for at least a 20% margin between bars in the group to avoid clutter.
 
 ![](static/two-cat.png)
 
-For more than 3-4 categories, consider using the [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or other chart type to present the data. Additionally, consider allowing users to switch chart types in the widget settings.
+For more than 3-4 categories, consider using the [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or other chart type to present data. Additionally, consider allowing users to switch chart types in the widget settings.
 
 ### Margins
 
