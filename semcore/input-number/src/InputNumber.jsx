@@ -234,7 +234,7 @@ class Value extends Component {
         this.handlers.displayValue(numberFormatter.format(value) + this.separatorDecimal);
         return false;
       } else {
-        this.handlers.displayValue(numberFormatter.format(value));
+        this.handlers.value(value.slice(0, -1), event);
         return false;
       }
     }

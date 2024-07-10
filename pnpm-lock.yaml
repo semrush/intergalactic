@@ -1176,7 +1176,7 @@ importers:
         specifier: 4.40.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.36.0
+        specifier: 5.36.1
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: 5.37.0
@@ -1519,7 +1519,7 @@ importers:
         specifier: 4.30.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.31.2
+        specifier: 5.31.3
         version: link:../input-number
       '@semcore/spin':
         specifier: 5.29.0
