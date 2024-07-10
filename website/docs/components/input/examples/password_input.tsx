@@ -24,11 +24,11 @@ const Demo = () => {
             id='password-example'
           />
           <Hint
-            title={type === 'password' ? 'View password' : 'Hide password'}
+            title={type === 'password' ? 'Show password' : 'Hide password'}
             aria-label={undefined}
           >
             <Input.Addon
-              aria-label={type === 'password' ? 'View password' : 'Hide password'}
+              aria-label={type === 'password' ? 'Show password' : 'Hide password'}
               mr='-1px'
               tag={Button}
               onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
