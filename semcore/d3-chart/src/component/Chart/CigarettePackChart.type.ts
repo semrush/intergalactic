@@ -6,7 +6,7 @@ import { BaseChartProps } from './AbstractChart.type';
 
 type BarKey = string;
 
-export type CigarettePackChartData = Array<Record<BarKey, number>>;
+export type CigarettePackChartData = Array<Record<BarKey, number | string>>;
 
 export type CigarettePackChartProps = BaseChartProps<CigarettePackChartData> & {
   x: string;
