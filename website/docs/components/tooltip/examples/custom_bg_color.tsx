@@ -9,11 +9,19 @@ const Demo = () => (
       Colored tooltip
     </Tooltip.Trigger>
     <Tooltip.Popper
-      arrowBgColor={'bg-secondary-advertising'}
-      arrowShadowColor={'bg-secondary-advertising'}
+      arrowBgColor={'bg-primary-advertising'}
+      arrowShadowColor={'border-tooltip-invert'}
       p={0}
     >
-      <Box style={{ background: 'bg-secondary-advertising' }} p={3}>
+      <Box
+        style={{
+          background: 'var(--intergalactic-bg-primary-advertising)',
+          color: 'var(--intergalactic-text-primary-invert)',
+          borderRadius: 'var(--intergalactic-popper-rounded)',
+          borderColor: 'var(--intergalactic-border-tooltip-invert)',
+        }}
+        p={3}
+      >
         Hey! I'm your colored tooltip!
       </Box>
     </Tooltip.Popper>
