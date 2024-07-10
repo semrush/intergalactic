@@ -180,7 +180,7 @@ function TooltipPopper(props) {
             data-popper-arrow
             use:theme={resolveColor(theme)}
             bgColor={arrowBgColor}
-            shadowColor={arrowShadowColor}
+            shadowColor={arrowShadowColor ?? arrowBgColor}
           />
         </STooltip>
       </STooltipPortalledWrapper>
