@@ -6,8 +6,8 @@ const Demo = () => {
   return (
     <Flex gap={5}>
       <Feedback width={100} height={100} />
-      <Feedback width={100} height={100} color='orange' />
-      <Feedback width={100} height={100} color='bg-primary-success' />
+      <Feedback width={100} height={100} color='#ff7ad1' />
+      <Feedback width={100} height={100} color='green-200' />
     </Flex>
   );
 };
