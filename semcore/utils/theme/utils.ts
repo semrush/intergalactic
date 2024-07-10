@@ -1,4 +1,5 @@
-import Color from 'colorjs.io';
+import ColorJS from 'colorjs.io';
+const Color = ColorJS as any;
 
 type ExtensionsInput = {
   'studio.tokens': {
