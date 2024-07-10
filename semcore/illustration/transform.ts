@@ -4,7 +4,7 @@ import svgToJsx from 'svg-to-jsx';
 import { Window } from 'happy-dom';
 import esbuild from 'esbuild';
 import ColorJSIO from 'colorjs.io';
-const Color = ColorJSIO;
+const Color = ColorJSIO as any;
 
 const illustrations = await fs.readdir('svg');
 
@@ -39,8 +39,10 @@ await Promise.all(
       }
       const color = element.getAttribute('fill') || element.getAttribute('stroke');
       if (color === 'none' || !color) return;
-      const saturation = new Color(color).to('hsl').coords[1];
-      if (saturation < 20) return;
+      if (String(color).toUpperCase() !== '#E0E1E9') {
+        const saturation = new Color(color).to('hsl').coords[1];
+        if (saturation < 20) return;
+      }
       if (illustrationColor === undefined) {
         illustrationColor = color;
       } else if (illustrationColor !== color) {
@@ -68,6 +70,7 @@ await Promise.all(
       }
     }
 
+    const prerenderLines: string[] = [];
     const props = [
       `fill = '${fill}'`,
       `width = '${width}'`,
@@ -79,6 +82,8 @@ await Promise.all(
         jsx = jsx.replace(`"${illustrationColor}"`, '{resolvedColor}');
       }
       props.push(`color = '${illustrationColor}'`);
+      prerenderLines.push('  const colorResolver = useColorResolver();');
+      prerenderLines.push('  const resolvedColor = colorResolver(color);');
     }
 
     const component = `
@@ -88,8 +93,7 @@ import { Box } from '@semcore/flex-box';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 const ${illustration} = ({${props.join(', ')}, ...props}, ref) => {
-  const colorResolver = useColorResolver();
-  const resolvedColor = colorResolver(color);
+${prerenderLines.join('\n')}
   return (
     <Box 
       ref={ref}
@@ -109,9 +113,29 @@ export default createBaseComponent(${illustration})
     `;
 
     const typesDeclaration = `
-import { Box } from '@semcore/flex-box';
-declare const _default: typeof Box;
-export default _default;    
+import { BoxProps } from '@semcore/flex-box';
+import { Intergalactic } from '@semcore/core';
+
+type IllustrationProps = BoxProps & {
+    /**
+     * Controls color of colorful illustrations
+     ** /
+    color?: string;
+    /**
+     * Changes background fill of the illustration
+     **/
+    fill?: string;
+    /**
+     * Width of the illustration
+     **/
+    width?: string | number;
+    /**
+     * Height of the illustration
+     **/
+    height?: string | number;
+}
+declare const Illustration: Intergalactic.Component<'svg', IllustrationProps>;
+export default Illustration;    
 `;
 
     const { code: cjs } = await esbuild.transform(component, {

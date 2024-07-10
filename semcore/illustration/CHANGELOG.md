@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `color` prop that allow to change primary color of colorful illustrations.
 
+### Fixed
+
+- Illustration components typings.
+
 ## [2.29.0] - 2024-06-26
 
 ### Changed
