@@ -1456,6 +1456,9 @@ importers:
       '@semcore/flex-box':
         specifier: 5.29.0
         version: link:../flex-box
+      colorjs.io:
+        specifier: 0.4.3
+        version: 0.4.3
       react:
         specifier: 16.8 - 18
         version: 18.2.0
