@@ -179,8 +179,8 @@ function TooltipPopper(props) {
           <SArrow
             data-popper-arrow
             use:theme={resolveColor(theme)}
-            bgColor={arrowBgColor}
-            shadowColor={arrowShadowColor ?? arrowBgColor}
+            bgColor={resolveColor(arrowBgColor)}
+            shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
           />
         </STooltip>
       </STooltipPortalledWrapper>
