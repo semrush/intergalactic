@@ -142,7 +142,7 @@ const View: React.FC<AsProps> = (props) => {
       tabIndex={0}
       role='button'
       aria-hidden={visible ? undefined : 'true'}
-      aria-label={`${props.getI18nText('tapToEdit')}:${textContent}`}
+      aria-label={`${props.getI18nText('tapToEdit')}: ${textContent}`}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handleKeyDown}
     />,
