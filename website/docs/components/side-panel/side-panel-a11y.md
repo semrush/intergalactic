@@ -26,7 +26,7 @@ Table: Default attributes
 | Component               | Attribute               | Usage                                       |
 | ----------------------- | ----------------------- | ---------------------------------------------- |
 | `SidePanel`             | `role="dialog"`         | Identifies the element that serves as the dialog container.     |
-| `SidePanel`             | `aria-modal="true"`     | Tells assistive technologies that the content underneath the current dialog is inert (not available for interaction). |
+| `SidePanel`             | `aria-modal="true"`     | Tells assistive technologies that the content underneath the current dialog is not available for interaction. |
 | `SidePanel.Close`       | `aria-label="Close"`    | Sets the default accessible name for the **Close** button.     |
 
 ## Considerations for developers and designers

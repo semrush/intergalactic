@@ -91,7 +91,7 @@ Table: SidePanel.Header styles
 | Appearance example     | Styles         |
 | ---------------------- | -------------- |
 | ![](static/header.png) | `height: 52px`, `align-items: center`, <br>`padding-top: var(--spacing-1x)`, <br>`padding-bottom: var(--spacing-1x)`, <br>`border-bottom: 1px solid var(–-border-primary)` |
-| ![](static/closeIcon.png)   | The **Close** button has an L size and an L size icon inside. The icon uses `--icon-secondary-neutral` token for color. The click zone of the button is `48px * 48px`.   |
+| ![](static/closeIcon.png)   | The **Close** button is a size L tertiary button with a size L icon inside. The dimensions of the button are `48px * 48px`. The color of the icon is `--icon-secondary-neutral`.   |
 
 ### Content
 
