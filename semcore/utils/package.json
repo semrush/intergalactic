@@ -13,23 +13,22 @@
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/core": "^2",
     "@semcore/testing-utils": "1.0.0",
-    "@types/chroma-js": "^2.4.0",
+    "@types/classnames": "2.2.6",
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/node": "^18.16.15",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
-    "chroma-js": "^2.4.2",
     "fast-glob": "3.2.11",
     "postcss": "8.4.33",
-    "@types/classnames": "2.2.6",
     "postcss-value-parser": "4.1.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "classnames": "2.2.6",
-    "hoist-non-react-statics": "3.3.2",
     "@phytonmk/nano-css": "5.3.7",
-    "@reshadow/core": "0.0.1-alpha.74"
+    "@reshadow/core": "0.0.1-alpha.74",
+    "classnames": "2.2.6",
+    "colorjs.io": "0.4.3",
+    "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
