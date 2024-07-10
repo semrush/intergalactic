@@ -1,50 +1,33 @@
 import React from 'react';
 import { Text } from 'intergalactic/typography';
+import { Flex } from 'intergalactic/flex-box';
+import Button from 'intergalactic/button';
 import Skeleton from 'intergalactic/skeleton';
 
-class Demo extends React.PureComponent {
-  width = 600;
-  height = 100;
-  timerFetch: any = -1;
-  timer: any = -1;
+const Demo = () => {
+  const [loading, setLoading] = React.useState(false);
 
-  state = { loading: true };
-
-  componentDidMount() {
-    this.timerFetch = setInterval(this.fetchData, 3000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerFetch);
-    clearInterval(this.timer);
-  }
-
-  fetchData = () => {
-    this.setState({ loading: false });
-    setTimeout(() => {
-      this.timer = this.setState({ loading: true });
-    }, 1000);
-  };
-
-  render() {
-    const { loading } = this.state;
-
-    return (
-      <div style={{ width: `${this.width}px`, height: `${this.height}px` }}>
+  return (
+    <>
+      <Flex gap={2} mb={3}>
+        <Button onClick={() => setLoading(true)}>Load data</Button>
+        <Button onClick={() => setLoading(false)}>Stop loading</Button>
+      </Flex>
+      <Flex role='status' aria-live='polite' h={80}>
         {!loading && (
-          <Text size={100}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae
-            distinctio doloremque, et id quae reiciendis repellat saepe sapiente sequi veritatis.
-            Adipisci, consequuntur excepturi nobis porro quas recusandae?
+          <Text size={200}>
+            The Egyptian pyramids are ancient masonry structures located in Egypt. Sources cite at
+            least 118 identified "Egyptian" pyramids. Approximately 80 pyramids were built within
+            the Kingdom of Kush, now located in the modern country of Sudan.
           </Text>
         )}
-        <Skeleton hidden={!loading} height={this.height}>
+        <Skeleton hidden={!loading}>
           <Skeleton.Text amount={2} />
           <Skeleton.Text y='40' width='60%' />
         </Skeleton>
-      </div>
-    );
-  }
-}
+      </Flex>
+    </>
+  );
+};
 
 export default Demo;
