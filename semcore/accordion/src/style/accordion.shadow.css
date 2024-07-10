@@ -16,11 +16,11 @@ SItemToggle[keyboardFocused]:not([tabIndex='-1'])::after {
   z-index: 3;
 }
 
-SItemToggle[use='secondary'] {
+SItemToggle[use='primary'] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
 }
-SItemToggle[use='secondary']:hover {
+SItemToggle[use='primary']:hover {
   background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
 }
 

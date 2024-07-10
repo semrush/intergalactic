@@ -142,11 +142,12 @@ class Toggle extends Component {
   };
 
   render() {
-    const { styles, disabled } = this.asProps;
+    const { styles, disabled, use } = this.asProps;
     const SItemToggle = Root;
 
     return sstyled(styles)(
       <SItemToggle
+        use={use}
         ref={this.toggleRef}
         render={Text}
         onKeyDown={this.handleKeyDown}
