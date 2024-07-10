@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version minor update due to children dependencies update (`@semcore/icon` [4.39.1 ~> 4.41.0]).
 
+## [5.38.1] - 2024-07-05
+
+### Changed
+
+- Roles for the container and tag content.
+
 ## [5.38.0] - 2024-06-26
 
 ### Changed

@@ -53,8 +53,8 @@ describe('Tag', () => {
   });
   test.concurrent('Renders with focus ring when interactive', async ({ task }) => {
     const component = (
-      <Tag id='interactive-tag' keyboardFocused interactive>
-        <Tag.Text>Tag name</Tag.Text>
+      <Tag id='interactive-tag' interactive>
+        <Tag.Text keyboardFocused>Tag name</Tag.Text>
         <Tag.Close />
       </Tag>
     );

@@ -607,6 +607,10 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--vp-c-indigo-1);
 }
 
+.vp-doc li[class] + li[class] {
+  margin: unset;
+}
+
 .dark .vp-doc a:not([class]):hover {
   color: var(--vp-c-indigo-2);
 }

@@ -11,7 +11,6 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/tag.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const legacyThemeRecommendedMigration = {
   primary: {
@@ -71,6 +70,7 @@ class RootTag extends Component {
     return {
       tabIndex: focusable === 'text' && interactive ? 0 : -1,
       id: `${id}-text`,
+      role: focusable === 'text' && interactive ? 'button' : undefined,
     };
   }
   handleCloseMount = () => {
@@ -88,7 +88,6 @@ class RootTag extends Component {
       id: `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
-      'aria-hidden': 'true',
       onMount: this.handleCloseMount,
       onUnmount: this.handleCloseUnmount,
     };
@@ -123,15 +122,17 @@ class RootTag extends Component {
     const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
 
+    const isInteractive = !disabled && interactive && focusable === 'container';
+
     return sstyled(styles)(
       <STag
         render={Box}
         id={id}
-        use:interactive={!disabled && interactive}
-        role={interactive ? 'button' : undefined}
+        use:interactive={isInteractive}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
-        use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
+        use:tabIndex={isInteractive ? 0 : -1}
+        role={isInteractive ? 'button' : undefined}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}
