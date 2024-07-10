@@ -122,14 +122,17 @@ class RootTag extends Component {
     const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
 
+    const isInteractive = !disabled && interactive && focusable === 'container';
+
     return sstyled(styles)(
       <STag
         render={Box}
         id={id}
-        use:interactive={!disabled && interactive}
+        use:interactive={isInteractive}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
-        use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
+        use:tabIndex={isInteractive ? 0 : -1}
+        role={isInteractive ? 'button' : undefined}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}

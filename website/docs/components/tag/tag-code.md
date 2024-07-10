@@ -35,13 +35,25 @@ We recommend to use colors with 500 tone since they have the necessary contrast 
 ## Grouping tags
 
 If you need to render several tags, combine them into a group with a meaningful accessible name.
+
+#### Less than 5 tags
 If the number of tags is less than 5, add `role="group"` to the parent element.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/grouping_tags_less.tsx';
+</script>
+
+:::
+##
+#### 5 tags or more
 If the number of tags is 5 or more, wrap them in a `ul` list, with each `Tag` as a `li` element.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/grouping_tags.tsx';
+  export Demo from './examples/grouping_tags_more.tsx';
 </script>
 
 :::
