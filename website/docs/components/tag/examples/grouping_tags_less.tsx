@@ -4,14 +4,14 @@ import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   return (
-    <Flex aria-label={'Social media'} gap={1}>
-      <Tag size={'l'} color={'blue-500'}>
+    <Flex role={'group'} aria-label={'Social media'} gap={1}>
+      <Tag size={'l'}>
         Instagram
       </Tag>
-      <Tag size={'l'} color={'blue-500'}>
+      <Tag size={'l'}>
         Facebook
       </Tag>
-      <Tag size={'l'} color={'blue-500'}>
+      <Tag size={'l'}>
         LinkedIn
       </Tag>
     </Flex>
