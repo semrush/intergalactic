@@ -15,12 +15,16 @@ SItemToggle[keyboardFocused]:not([tabIndex='-1'])::after {
   pointer-events: none;
   z-index: 3;
 }
-
-SItemToggle[use='primary'] {
+SItemToggle[use][use] {
+  color: var(--intergalactic-text-primary, #191b23);
+  font-weight: var(--intergalactic-regular, 400);
+}
+SItemToggle[use][use='primary'] {
   background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+  margin-bottom: var(--intergalactic-spacing-05x, 2px);
 }
-SItemToggle[use='primary']:hover {
+SItemToggle[use][use='primary']:hover {
   background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
 }
 

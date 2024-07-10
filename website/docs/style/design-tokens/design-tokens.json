@@ -327,6 +327,7 @@
     "computedValue": "#191b23",
     "description": "Primary text.",
     "components": [
+      "accordion",
       "base-trigger",
       "breadcrumbs",
       "button",
@@ -2029,7 +2030,7 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker", "slider"]
+    "components": ["accordion", "base-trigger", "date-picker", "slider"]
   },
   {
     "name": "--intergalactic-medium",
@@ -2217,6 +2218,7 @@
     "computedValue": "2px",
     "description": "2px",
     "components": [
+      "accordion",
       "base-trigger",
       "checkbox",
       "counter",

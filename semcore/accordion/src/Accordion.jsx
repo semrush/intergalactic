@@ -165,7 +165,7 @@ function Chevron(props) {
 }
 
 function ToggleButton(props) {
-  const { styles, size } = props;
+  const { styles } = props;
 
   const SToggleButton = Root;
   return sstyled(styles)(<SToggleButton render={Flex} role={'button'} {...props} />);
