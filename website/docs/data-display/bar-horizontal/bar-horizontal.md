@@ -85,21 +85,20 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Use Horizontal bar chart when:**
 
-- Categories have long names, like country names.
 - Comparing less than 10 categories.
 - Each category's value needs labeling.
 - Showing category distribution in order.
 
 **Use [Cigarette pack bar chart](/data-display/cigarette-pack/cigarette-pack) instead of Horizontal bar chart when:**
 
-- Categories have or may have in localization long names.
+- Categories have or may have long names in localization.
 - Interface is narrow, and you need to preserve horizontal space for other information.
 
 **Avoid using Horizontal bar chart when:**
 
 - Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
 - Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
-- Categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
+- All categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
 
 ## Appearance
 
@@ -173,7 +172,7 @@ Table: Horizontal bar chart interaction
 
 ### No more results
 
-Show "No more results" with a 32px margin below values and text with `--text-secondary` color.
+Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color.
 
 ![](static/no-more-bar-horizontal.png)
 

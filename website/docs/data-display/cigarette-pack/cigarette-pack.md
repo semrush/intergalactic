@@ -14,11 +14,13 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Usage
 
-**Use Cigarette pack bar chart instead of [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal) when:**
+**Use Cigarette pack bar chart when:**
 
-- Categories have or may have in localization long names.
-- Comparing less than 10 categories.
+- Categories have or may have long names in localization.
 - Interface is narrow, and you need to preserve horizontal space for other information.
+- Comparing less than 10 categories.
+- Each category's value needs labeling.
+- Showing category distribution in order.
 
 ![](static/cigarette-pack-example.png)
 
@@ -52,7 +54,7 @@ For the case with multiple categories, add a legend.
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability.
 
 ![](static/cigarette-pack-hover.png)
 
@@ -60,7 +62,7 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 ### No more results
 
-Show "No more results" with a 32px margin below values and text with `--text-secondary` color.
+Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color.
 
 ![](static/cigarette-pack-no-more.png)
 
