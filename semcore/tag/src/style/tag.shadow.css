@@ -13,8 +13,9 @@ STag {
   font-weight: var(--intergalactic-medium, 500);
   color: var(--tag-color);
 
-  &[interactive]:has(SText:focus) {
+  &[interactive][keyboardFocused] {
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    z-index: 1;
   }
 
   &::before {
@@ -52,18 +53,13 @@ STag {
   }
 }
 
-STag[interactive][keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  z-index: 1;
-}
-
 STag[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }
 
-STag[interactive] {
+STag[interactiveView] {
   cursor: pointer;
 }
 
@@ -117,8 +113,8 @@ STag[theme='primary'] {
     display: none;
   }
 
-  &[interactive]:hover,
-  &[interactive]:active,
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
   &[active] {
     &:before {
       opacity: 0.3;
@@ -132,8 +128,8 @@ STag[theme='additional'] {
     opacity: 0.01;
   }
 
-  &[interactive]:hover,
-  &[interactive]:active,
+  &[interactiveView]:hover,
+  &[interactiveView]:active,
   &[active] {
     &:before {
       opacity: 0.1;

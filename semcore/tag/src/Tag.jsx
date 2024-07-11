@@ -121,7 +121,7 @@ class RootTag extends Component {
     } = this.asProps;
     const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
-
+    const isInteractiveView = !disabled && interactive;
     const isInteractive = !disabled && interactive && focusable === 'container';
 
     return sstyled(styles)(
@@ -129,6 +129,7 @@ class RootTag extends Component {
         render={Box}
         id={id}
         use:interactive={isInteractive}
+        use:interactiveView={isInteractiveView}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
         use:tabIndex={isInteractive ? 0 : -1}
