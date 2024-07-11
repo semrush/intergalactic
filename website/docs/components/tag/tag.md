@@ -155,8 +155,8 @@ Table: Tag themes
 
 | Tag theme                         | Appearance example                | Description                                                                                                                                                                                                                     |
 | --------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `primary`                         | ![](static/primary.png)           | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500`. |
-| `primary` with `color:"white"`    | ![](static/primary-invert.png)    | An inversion of the `primary` tag meant for dark or colored backgrounds.                                                                                                                                                        |
+| `primary`                         | ![](static/primary.png)           | The `primary` theme of tag suitable for use on a light background. The default color is `--gray-500`. |
+| `primary` with `color:"white"`    | ![](static/primary-invert.png)    | An inversion of the `primary` tag is used on the dark or colored backgrounds.                                                                                                                                                        |
 | `secondary`                       | ![](static/secondary.png)         | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required.                                                                                                       |
 | `secondary` with `color:"white"`  | ![](static/secondary-invert.png)  | An inversion of the `secondary` tag suitable for dark or colored backgrounds.                                                                                                                                                   |
 | `additional`                      | ![](static/additional.png)        | Ideal for special tags that are added to other tags.                                                                                                                                                                            |
@@ -164,7 +164,9 @@ Table: Tag themes
 
 ### Tag colors
 
-To change tag color use colors with 500 tone from [our base color tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they have the necessary contrast between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
+To change tag color, use colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens-palette), since they are selected with the 60Lc contrast (according to APCA) between the text and background. Refer to [Custom color example](/components/tag/tag-code#custom-color).
+
+In the case where you use other colors to color the tag, make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast).
 
 ## Interaction
 

@@ -37,7 +37,8 @@ Table: Roles and attributes
 ## Considerations for designers
 
 - Tag text should be clear and concise.
-- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast). Refer to [section about Tag colors](/components/tag/tag#tag-colors).
+- We recommend you to use only colors with 500 tone from [our palette tokens](/style/design-tokens/design-tokens#base-tokens-palette). They are selected with the 60Lc contrast (according to APCA) between the text and background. Color applies to the text and automatically calculates other tag colors (background, icon color, states' styles).
+- In the case where you use other colors to color the tag, make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast).
 
 ## Resources
 
