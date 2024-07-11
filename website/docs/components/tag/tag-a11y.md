@@ -32,17 +32,16 @@ Table: Roles and attributes
 ## Considerations for developers
 
 - Make sure screenreader reads your tags list as a group. Refer to the [Grouping tags example](./tag-code.md#grouping-tags).
-- Interactive tags that are used as a button for filtering content should also follow the accessibility guidelines for [Button](/components/button/button-a11y).
+- Interactive tags that are used as a button or a link for filtering content should also follow the accessibility guidelines for [Button](/components/button/button-a11y) or [Link](/components/link/link-a11y), respectively.
 
 ## Considerations for designers
 
 - Tag text should be clear and concise.
 - Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast). Refer to [section about Tag colors](/components/tag/tag#tag-colors).
-- Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y).
 
 ## Resources
 
-To find more information on the ways to make your tags accessible by the keyboard and screen readers see [Creating accessible tag](https://a11y-guidelines.orange.com/en/web/components-examples/tags/).
+To find more information on the ways to make your tags accessible by the keyboard and screen readers, see [Creating accessible tag](https://a11y-guidelines.orange.com/en/web/components-examples/tags/).
 
 ## Other recommendations
 
