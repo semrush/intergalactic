@@ -1193,8 +1193,7 @@
       "inline-input",
       "input",
       "input-number",
-      "modal",
-      "side-panel"
+      "modal"
     ]
   },
   {
@@ -2221,6 +2220,7 @@
       "notice-global",
       "radio",
       "select",
+      "side-panel",
       "slider",
       "tag",
       "wizard"
@@ -2295,6 +2295,7 @@
       "radio",
       "scroll-area",
       "select",
+      "side-panel",
       "slider",
       "switch",
       "tab-line",
@@ -2424,7 +2425,7 @@
     "rawValue": "{scale-indent}*14",
     "computedValue": "56px",
     "description": "56px",
-    "components": ["side-panel"]
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-20x",

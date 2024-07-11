@@ -19,10 +19,20 @@ Table: Keyboard support
 
 See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_button_link_input_etc).
 
+### Default attributes
+
+Table: Default attributes
+
+| Component               | Attribute               | Usage                                       |
+| ----------------------- | ----------------------- | ---------------------------------------------- |
+| `SidePanel`             | `role="dialog"`         | Identifies the element that serves as the dialog container.     |
+| `SidePanel`             | `aria-modal="true"`     | Tells assistive technologies that the content underneath the current dialog is not available for interaction. |
+| `SidePanel.Close`       | `aria-label="Close"`    | Sets the default accessible name for the **Close** button.     |
+
 ## Considerations for developers and designers
 
-- Make sure to use correct heading tags and hierarchy for titles in SidePanel.
-- To make the experience consistent for screen reader users, treat the darkened background of an overlay as `disabled`.
+- It's required to set either the `aria-label` or the `aria-labelledby` attribute for the `SidePanel` component. If your `SidePanel` has a visible title, it's best to reference it in the `aria-labelledby` attribute.
+- Make sure to use correct heading tags and hierarchy for titles in `SidePanel`.
 
 ## Resources
 

@@ -97,7 +97,7 @@ export async function toMatchImageSnapshot(
     width,
     height,
     {
-      threshold: 0.1,
+      threshold: 0.05,
     },
   );
 

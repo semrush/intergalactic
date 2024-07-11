@@ -125,7 +125,7 @@ describe('NoticeBubble', () => {
       </>
     );
     await expect(
-      await snapshot(component, { actions: { hover: '#notice [title="Close"]' } }),
+      await snapshot(component, { actions: { hover: '#notice [aria-label="Close"]' } }),
     ).toMatchImageSnapshot(task);
   });
 
