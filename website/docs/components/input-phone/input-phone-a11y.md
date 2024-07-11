@@ -1,7 +1,7 @@
 ---
 title: InputPhone
 a11y: AA
-tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
+tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code'), Changelog('input-phone-changelog')
 ---
 
 This pattern is built with Input, InputMask and Select components. For the detailed documentation regarding accessibility, refer to their documentation:

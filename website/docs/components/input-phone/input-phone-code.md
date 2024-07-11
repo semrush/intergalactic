@@ -1,7 +1,13 @@
 ---
 title: InputPhone
-tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
+tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code'), Changelog('input-phone-changelog')
 ---
+
+This pattern is built with Input, InputMask and Select components. For their API, refer to their documentation:
+
+- [Input](/components/input/input-api)
+- [InputMask](/components/input-mask/input-mask-api)
+- [Select](/components/select/select-api)
 
 ## Unknown country and number format
 
