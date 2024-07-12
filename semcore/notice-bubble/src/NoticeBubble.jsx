@@ -15,6 +15,7 @@ import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 import Button from '@semcore/button';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { Hint } from '@semcore/tooltip';
 
 import style from './style/notice-bubble.shadow.css';
 import { forkRef, useForkRef } from '@semcore/utils/lib/ref';
@@ -164,10 +165,11 @@ class ViewInfo extends Component {
 
   render() {
     const SBubble = FocusLock;
-    const SDismiss = Button;
+    const SDismiss = Hint.Trigger;
     const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
+    const SIcon = Flex;
     const {
       forwardRef,
       styles,
@@ -188,18 +190,24 @@ class ViewInfo extends Component {
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
       >
-        <SDismiss
-          type='button'
-          use='tertiary'
-          theme='muted'
-          aria-label={getI18nText('close')}
-          onClick={this.handleClose}
-        >
-          <CloseIcon />
-        </SDismiss>
+        <Hint title={getI18nText('close')}>
+          <SDismiss
+            tag={Button}
+            type='button'
+            use='tertiary'
+            size='m'
+            theme='muted'
+            onClick={this.handleClose}
+            aria-label={getI18nText('close')}
+          >
+            <Button.Addon tag={CloseIcon} />
+          </SDismiss>
+          <Hint.Popper zIndex={1000} />
+        </Hint>
+
         {isNode(icon) ? (
           <>
-            {icon}
+            <SIcon>{icon}</SIcon>
             <SContent>
               <SMessage>{children}</SMessage>
               {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
