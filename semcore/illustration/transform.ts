@@ -30,7 +30,9 @@ await Promise.all(
       document.getElementById(oldId).setAttribute('id', newId);
       idReplacements[oldId] = newId;
     }
-    let illustrationColor: undefined | string;
+    let illustrationPrimaryColor: undefined | string;
+    let illustrationSecondaryColor: undefined | string;
+    let secondaryColorDarkness = Infinity;
     const traverseSvgChildren = (element: Element) => {
       if (element.tagName === 'MASK') return;
       for (let i = 0; i < element.children.length; i++) {
@@ -41,13 +43,20 @@ await Promise.all(
       if (color === 'none' || !color) return;
       if (String(color).toUpperCase() !== '#E0E1E9') {
         const saturation = new Color(color).to('hsl').coords[1];
-        if (saturation < 20) return;
+        if (saturation < 20) {
+          const darkness = new Color(color).to('hsl').coords[2];
+          if (darkness < secondaryColorDarkness) {
+            illustrationSecondaryColor = color;
+            secondaryColorDarkness = darkness;
+          }
+          return;
+        }
       }
-      if (illustrationColor === undefined) {
-        illustrationColor = color;
-      } else if (illustrationColor !== color) {
+      if (illustrationPrimaryColor === undefined) {
+        illustrationPrimaryColor = color;
+      } else if (illustrationPrimaryColor !== color) {
         throw new Error(
-          `Illustration ${illustration} has multiple fill colors: ${illustrationColor} and ${color}`,
+          `Illustration ${illustration} has multiple primary colors: ${illustrationPrimaryColor} and ${color}`,
         );
       }
     };
@@ -77,13 +86,22 @@ await Promise.all(
       `height = '${height}'`,
       `viewBox = '${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}'`,
     ];
-    if (illustrationColor) {
-      while (jsx.includes(`"${illustrationColor}"`)) {
-        jsx = jsx.replace(`"${illustrationColor}"`, '{resolvedColor}');
-      }
-      props.push(`color = '${illustrationColor}'`);
+    if (illustrationPrimaryColor || illustrationSecondaryColor) {
       prerenderLines.push('  const colorResolver = useColorResolver();');
-      prerenderLines.push('  const resolvedColor = colorResolver(color);');
+    }
+    if (illustrationPrimaryColor) {
+      while (jsx.includes(`"${illustrationPrimaryColor}"`)) {
+        jsx = jsx.replace(`"${illustrationPrimaryColor}"`, '{resolvedPrimaryColor}');
+      }
+      props.push(`primaryColor = '${illustrationPrimaryColor}'`);
+      prerenderLines.push('  const resolvedPrimaryColor = colorResolver(primaryColor);');
+    }
+    if (illustrationSecondaryColor) {
+      while (jsx.includes(`"${illustrationSecondaryColor}"`)) {
+        jsx = jsx.replace(`"${illustrationSecondaryColor}"`, '{resolvedSecondaryColor}');
+      }
+      props.push(`secondaryColor = '${illustrationSecondaryColor}'`);
+      prerenderLines.push('  const resolvedSecondaryColor = colorResolver(secondaryColor);');
     }
 
     const component = `
@@ -118,9 +136,13 @@ import { Intergalactic } from '@semcore/core';
 
 type IllustrationProps = BoxProps & {
     /**
-     * Controls color of colorful illustrations
-     ** /
-    color?: string;
+     * Main color of the illustration
+     **/
+    primaryColor?: string;
+    /**
+     * Secondary color of the illustration
+     **/
+    secondaryColor?: string;
     /**
      * Changes background fill of the illustration
      **/

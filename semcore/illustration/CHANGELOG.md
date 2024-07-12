@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `color` prop that allow to change primary color of colorful illustrations.
+- `primaryColor` and `secondaryColor` prop that allow to change primary color of illustrations.
 
 ### Fixed
 
