@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
@@ -49,6 +50,33 @@ class SkeletonSVG extends Component {
     duration: 2000,
   };
 
+  svgRef = React.createRef();
+
+  constructor(props) {
+    super(props);
+
+    if (canUseDOM() && props.observeParentSize) {
+      this.observer = new ResizeObserver(this.handleResize.bind(this));
+    }
+  }
+
+  componentDidMount() {
+    this.observer?.observe(this.svgRef.current?.parentElement);
+  }
+
+  componentWillUnmount() {
+    this.observer?.disconnect();
+  }
+
+  handleResize(data) {
+    const target = data[0].target;
+    const svg = this.svgRef.current;
+
+    if (target && svg) {
+      svg.setAttribute('width', '100%');
+    }
+  }
+
   setContext() {
     const { theme } = this.asProps;
     return {
@@ -64,6 +92,7 @@ class SkeletonSVG extends Component {
       <SSkeletonSVG
         render={Skeleton}
         tag='svg'
+        ref={this.svgRef}
         preserveAspectRatio='none'
         theme={theme}
         durationAnim={`${duration}ms`}
