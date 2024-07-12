@@ -20,7 +20,7 @@ Table: Keyboard support
 
 ### Roles and attributes
 
-For more information about accessibility of these patterns refer to the documentation of the used components:
+For more information about the accessibility of these patterns, refer to the documentation of the components used in them:
 
 * [Input](/components/input/input-a11y)
 * [Select](/components/select/select-a11y)
