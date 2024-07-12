@@ -80,6 +80,7 @@ class NoticeBubbleContainerRoot extends Component {
 
   render() {
     const SNoticeBubble = Root;
+    const SNoticeAriaLiveWrapper = 'div';
     const { Children, styles, disablePortal, getI18nText, ref } = this.asProps;
     const { notices, warnings } = this.state;
 
@@ -90,12 +91,13 @@ class NoticeBubbleContainerRoot extends Component {
           ref={ref}
           tag='section'
           role='region'
-          aria-live='polite'
           aria-label={getI18nText('notification')}
         >
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
-          <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
+          <SNoticeAriaLiveWrapper aria-live='polite'>
+            <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
+          </SNoticeAriaLiveWrapper>
         </SNoticeBubble>
       </Portal>,
     );

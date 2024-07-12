@@ -81,6 +81,10 @@ SMessage a {
   color: var(--intergalactic-text-link-invert, #8ecdff);
 }
 
+SNoticeAriaLiveWrapper {
+  display: content;
+}
+
 @keyframes enter {
   from {
     transform: translate(100%, 0);
