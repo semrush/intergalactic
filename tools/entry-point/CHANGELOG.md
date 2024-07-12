@@ -1,3 +1,50 @@
+## [15.99.0] - 2024-07-12
+
+### @semcore/accordion
+
+- **Added** `use` prop.
+
+### @semcore/data-table
+
+- **Fixed** View of Bottom horizontal scroll in table body.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Styles of ScrollContainer inner shadows.
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Plugin working with `intergalactic` package.
+
+### @semcore/icon
+
+- **Added** New `AdMiddle` and `PositionMiddle` icons.
+- **Fixed** A small positioning fix in `AdBottom` and `AdTop` icons (only size M).
+
+### @semcore/illustration
+
+- **Added** `primaryColor` and `secondaryColor` prop that allow to change primary color of illustrations.
+- **Fixed** Illustration components typings.
+
+### @semcore/side-panel
+
+- **Changed** Added `role="dialog"`, `aria-label` or `aria-labelledby` are required from now.
+- **Changed** Close icon is wrapped into Button with localized aria-label.
+- **Changed** `SidePanel.Back` is button now.
+- **Changed** `SidePanel.Header` and `SidePanel.Footer` are using semantic `header` and `footer` correspondingly.
+
+### @semcore/skeleton
+
+- **Added** `observeParentSize` property to observe changes in parent element.
+
+### @semcore/slider
+
+- **Changed** Container tag changed to `button`, so now it may be referenced by `label` tag.
+
+### @semcore/utils
+
+- **Fixed** Colors of tokens `--intergalactic-table-td-cell-hover` and `--intergalactic-table-td-cell-active` were different from the designed ones.
+
 ## [15.98.2] - 2024-07-09
 
 ### @semcore/input-number
