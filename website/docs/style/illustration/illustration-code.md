@@ -15,9 +15,6 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 
 ## Custom color
 
-For colorful illustrations, you can use the `color` prop to change the color of the illustration.
-
-
 ::: sandbox
 
 <script lang="tsx">
