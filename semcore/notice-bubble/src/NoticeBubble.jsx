@@ -191,6 +191,7 @@ class ViewInfo extends Component {
         ref={forkRef(forwardRef, this.ref)}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
+        role={type === 'warning' ? 'alert' : this.props.role}
       >
         <Hint title={getI18nText('close')}>
           <SDismiss
@@ -216,7 +217,7 @@ class ViewInfo extends Component {
             </SContent>
           </>
         ) : (
-          <SContent role={type === 'warning' ? 'alert' : undefined}>
+          <SContent>
             <SMessage>{children}</SMessage>
             {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
           </SContent>
