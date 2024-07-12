@@ -2,6 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.0] - 2024-07-02
+
+### Changed
+
+- Added `role="dialog"`, `aria-label` or `aria-labelledby` are required from now.
+- Close icon is wrapped into Button with localized aria-label.
+- `SidePanel.Back` is button now.
+- `SidePanel.Header` and `SidePanel.Footer` are using semantic `header` and `footer` correspondingly.
+
+## [3.38.0] - 2024-07-05
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.39.1 ~> 4.41.0]).
+
 ## [3.37.0] - 2024-06-26
 
 ### Changed

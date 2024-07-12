@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.3] - 2024-07-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input-number` [5.31.2 ~> 5.31.3]).
+
+## [4.37.2] - 2024-07-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input-number` [5.31.1 ~> 5.31.2]).
+
+## [4.37.1] - 2024-07-05
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.39.1 ~> 4.41.0], `@semcore/spin` [5.28.0 ~> 5.29.0], `@semcore/tooltip` [6.36.0 ~> 6.36.1], `@semcore/input-number` [5.31.0 ~> 5.31.1]).
+
 ## [4.37.0] - 2024-06-26
 
 ### Changed

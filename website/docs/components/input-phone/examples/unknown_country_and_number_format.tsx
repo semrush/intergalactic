@@ -14,7 +14,13 @@ const Demo = () => {
       <Input w={180} mt={2}>
         <Input.Value id='basic-example' value={value} onChange={(v) => setValue(v)} />
         {value.length > 1 && (
-          <Input.Addon tag={CloseM} interactive aria-label='Clear' onClick={() => setValue('+')} />
+          <Input.Addon
+            tag={CloseM}
+            interactive
+            aria-label='Clear'
+            color='icon-secondary-neutral'
+            onClick={() => setValue('+')}
+          />
         )}
       </Input>
     </Flex>

@@ -44,14 +44,14 @@ describe('SidePanel', () => {
 
   test('Should support closable false property', () => {
     const component = render(<SidePanel visible>Content</SidePanel>);
-    expect(component.queryByTitle('Close')).not.toBeNull();
+    expect(component.queryByLabelText('Close')).not.toBeNull();
 
     component.rerender(
       <SidePanel visible closable={false}>
         Content
       </SidePanel>,
     );
-    expect(component.queryByTitle('Close')).toBeNull();
+    expect(component.queryByLabelText('Close')).toBeNull();
   });
 
   test('Should support onClose for Esc keypress', () => {
@@ -90,7 +90,7 @@ describe('SidePanel', () => {
   test('Should support onClose for Sidebar.Close click', () => {
     const spy = vi.fn();
     const component = render(<SidePanel visible closable onClose={spy} />);
-    const closeNode = component.getByTitle('Close');
+    const closeNode = component.queryByLabelText('Close');
     fireEvent.click(closeNode);
     expect(spy).toBeCalledWith('onCloseClick', expect.any(Object));
   });
@@ -173,6 +173,17 @@ describe('SidePanel', () => {
           <SidePanel.Close id='close' />
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
+      ),
+    ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Close icon should support focus', async ({ task }) => {
+    await expect(
+      await snapshot(
+        <SidePanel disablePortal visible>
+          <SidePanel.Close id='close' keyboardFocused />
+        </SidePanel>,
+        { selector: 'body', width: 320, height: 100, actions: { focus: '#close' } },
       ),
     ).toMatchImageSnapshot(task);
   });

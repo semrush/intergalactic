@@ -32,9 +32,20 @@ Component consists of the following:
 - Collapsed areas with content (`Accordion.Item.Collapse`)
 - `Accordion.Item.Chevron`
 
-## Styles and sizes
+## Accordion types
 
-The `ChevronRight` icon could have M and L sizes and always has `margin-right: 8px` with all font sizes.
+Intergalactic Design System has two accordion types (`use` property in API):
+
+Table: Accordion types
+
+| Type       | Appearance example  | Description |
+| ------------------ | ------------------- | ----- |
+| `primary`    | ![](static/default-bg.png) | Main accent accordion. |
+| `secondary` | ![](static/default.png)    | Default non-accent accordion. |
+
+## Appearance
+
+The `ChevronRight` icon always has `margin-right: 8px` with all font sizes.
 
 ![](static/margins.png)
 
@@ -42,28 +53,24 @@ You can set the width of the accordion that is appropriate for the context.
 
 ![](static/max-width.png)
 
-::: tip
-You can set different styles for the trigger and collapsed content than the default ones described below.
-:::
-
-## Trigger
+### Trigger styles
 
 You are free to set link or button of any size you need as the accordion trigger.
 
-Table: Trigger appearance
+Table: Accordion trigger styles
 
-| Trigger type       | Appearance example  | Default styles      |
+| Type       | Appearance example  | Default styles      |
 | ------------------ | ------------------- | ------------------- |
-| Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.    |
-| Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
+| `secondary` | ![](static/default.png)    | Icon uses the `--icon-primary-neutral` token for color; text uses the `--text-primary` token for color.    |
+| `primary`    | ![](static/default-bg.png) | The default background color uses `--bg-secondary-neutral` token. |
 
-## Collapsed content
+### Collapsed content styles
 
 You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
 **Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
 
-### Margins and paddings
+#### Margins and paddings
 
 ![](static/item-margins1.png)
 

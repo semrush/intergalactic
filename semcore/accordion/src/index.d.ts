@@ -1,7 +1,8 @@
-import { BoxProps, FlexProps } from '@semcore/flex-box';
+import { BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import { CollapseProps } from '@semcore/animation';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { Text } from '@semcore/typography';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
 
@@ -25,6 +26,12 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
   /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
+
+  /**
+   * Changes the visual appearance of the component
+   * @default secondary
+   */
+  use?: 'primary' | 'secondary';
 };
 
 export interface IAccordionProps<T extends AccordionValue = AccordionValue>
@@ -63,7 +70,10 @@ export type AccordionItemContext = {
   selected?: boolean;
 };
 
-export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
+export type AccordionItemToggleProps = BoxProps &
+  KeyboardFocusProps & {
+    tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  };
 export type ChevronItemProps = BoxProps & {
   /**
    * Chevron size
@@ -94,7 +104,8 @@ declare const Accordion: IntergalacticAccordionComponent & {
     AccordionItemContext,
     [handlers: AccordionHandlers]
   > & {
-    Toggle: Intergalactic.Component<'div', AccordionItemToggleProps>;
+    Toggle: Intergalactic.Component<typeof Text, AccordionItemToggleProps>;
+    ToggleButton: Intergalactic.Component<typeof Flex, {}>;
     Chevron: Intergalactic.Component<'div', ChevronItemProps>;
     Collapse: Intergalactic.Component<'div', CollapseProps>;
   };

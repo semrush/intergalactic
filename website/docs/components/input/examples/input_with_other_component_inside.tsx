@@ -21,9 +21,12 @@ const Demo = () => {
             onChange={(v) => setValue(v)}
             maxLength={10}
             id='count-example'
+            aria-describedby='chars-counter'
           />
           <Input.Addon>
-            <Tag size='m'>{value.length}/10</Tag>
+            <Tag size='m' id='chars-counter'>
+              {value.length}/10
+            </Tag>
           </Input.Addon>
         </Input>
       </Box>

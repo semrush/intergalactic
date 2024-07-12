@@ -191,4 +191,39 @@ test.describe('Popper', () => {
       await expect(popperLocator).toHaveCount(1);
     });
   });
+  test('works well with multiple focusables inside of trigger', async ({ page }) => {
+    const standPath = 'semcore/popper/__tests__/stands/multiple-focusables-in-trigger.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const firstInput = await page.locator('input[data-position="before"]');
+    const secondInput = await page.locator('input[data-position="after"]');
+    firstInput.focus();
+
+    const optionLocator = await page.locator('text=Option 1');
+    await expect(optionLocator).toHaveCount(0);
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Tab');
+
+    await expect(optionLocator).toHaveCount(1);
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Tab');
+
+    await expect(optionLocator).toHaveCount(1);
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Tab');
+
+    await expect(optionLocator).toHaveCount(1);
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Tab');
+
+    await expect(optionLocator).toHaveCount(0);
+
+    await expect(secondInput).toBeFocused();
+  });
 });

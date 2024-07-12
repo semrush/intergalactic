@@ -3,6 +3,7 @@ import { Field } from 'react-final-form';
 import Tooltip from '@semcore/tooltip';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { assignProps } from '@semcore/utils/lib/core';
 
 const deafultTooltipPropsList = [
   'title',
@@ -40,12 +41,17 @@ export function FeedbackItem({
         const showError = other.validateOnBlur === false ? meta.submitFailed : true;
         const invalid = meta.invalid && meta.touched;
         const errorState = showError && invalid;
-        const inputProps = {
-          ...input,
-          state: errorState ? 'invalid' : 'normal',
-          'aria-invalid': errorState ? true : false,
-          'aria-errormessage': uid,
-        };
+        const popperId = `${uid}-error-description`;
+        const inputProps = assignProps(
+          {
+            ...other,
+            state: errorState ? 'invalid' : 'normal',
+            'aria-invalid': errorState ? true : false,
+            'aria-errormessage': popperId,
+            'aria-describedby': errorState && meta.active ? popperId : undefined,
+          },
+          input,
+        );
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
@@ -66,7 +72,7 @@ export function FeedbackItem({
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper id={uid} ignorePortalsStacking>
+            <Tooltip.Popper w={'100%'} id={popperId}>
               {meta.error ?? lastErrorRef.current}
             </Tooltip.Popper>
           </Tooltip>

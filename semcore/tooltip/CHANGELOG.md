@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.36.1] - 2024-07-05
+
+### Fixed
+
+- `max-width` size in line with figma design.
+
 ## [6.36.0] - 2024-06-26
 
 ### Changed

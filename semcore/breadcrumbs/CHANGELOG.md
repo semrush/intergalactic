@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.2] - 2024-07-04
+
+### Fixed
+
+- Incorrect focus of the last item in Breadcrumbs.
+
 ## [5.34.1] - 2024-06-24
 
 ### Fixed

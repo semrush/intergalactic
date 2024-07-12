@@ -12,3 +12,13 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 </script>
 
 :::
+
+## Custom color
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-color.tsx';
+</script>
+
+:::

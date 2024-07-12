@@ -79,6 +79,48 @@ describe('InputNumber', () => {
     expect(input.value).toBe('0.01');
   });
 
+  test.sequential(
+    'Should accept format in hundredths fractions numbers with difficult values',
+    async () => {
+      const spy = vi.fn();
+      const { getByTestId } = render(
+        <InputNumber>
+          <InputNumber.Value data-testid='input4444' value='' onChange={spy} />
+        </InputNumber>,
+      );
+
+      const input = getByTestId('input4444') as HTMLInputElement;
+      await userEvent.keyboard('[Tab]');
+      await userEvent.keyboard('1234.01');
+
+      expect(spy).toBeCalledWith('1234.01', expect.anything());
+      expect(input.value).toBe('1,234.01');
+    },
+  );
+
+  test.sequential('Should continue to edit after delete decimal part', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input4455' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input4455') as HTMLInputElement;
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('123.1');
+
+    expect(spy).toBeCalledWith('123.1', expect.anything());
+    expect(input.value).toBe('123.1');
+
+    await userEvent.keyboard('[Backspace]');
+    expect(spy).toBeCalledWith('123', expect.anything());
+
+    await userEvent.keyboard('.2');
+    expect(spy).toBeCalledWith('123.2', expect.anything());
+    expect(input.value).toBe('123.2');
+  });
+
   test.sequential('Should not accept numbers with two decimal separators', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -242,10 +284,11 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('1.2', expect.anything());
 
     await userEvent.keyboard('[Backspace]');
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).lastCalledWith('1', expect.anything());
 
     await userEvent.keyboard('[Backspace]');
-    expect(spy).lastCalledWith('1', expect.anything());
+    expect(spy).lastCalledWith('', expect.anything());
+    expect(spy).toBeCalledTimes(4);
   });
 
   test.concurrent('Should support sizes', async ({ task }) => {

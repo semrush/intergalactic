@@ -50,6 +50,26 @@ describe('Accordion', () => {
           .fill('')
           .map((_, index) => (
             <Accordion.Item value={index} disabled={index === 3} key={index}>
+              <Accordion.Item.Toggle keyboardFocused={index === 1} fontWeight={'normal'}>
+                <Accordion.Item.Chevron />
+                Item {index}
+              </Accordion.Item.Toggle>
+              <Accordion.Item.Collapse>Content of item {index}</Accordion.Item.Collapse>
+            </Accordion.Item>
+          ))}
+      </Accordion>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should render primary use correctly', async ({ task }) => {
+    const component = (
+      <Accordion defaultValue={[0, 2]} use='primary'>
+        {Array(4)
+          .fill('')
+          .map((_, index) => (
+            <Accordion.Item value={index} disabled={index === 3} key={index}>
               <Accordion.Item.Toggle keyboardFocused={index === 1}>
                 <Accordion.Item.Chevron />
                 Item {index}

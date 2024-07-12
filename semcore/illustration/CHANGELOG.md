@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.30.0] - 2024-07-09
+
+### Added
+
+- `primaryColor` and `secondaryColor` prop that allow to change primary color of illustrations.
+
+### Fixed
+
+- Illustration components typings.
+
 ## [2.29.0] - 2024-06-26
 
 ### Changed

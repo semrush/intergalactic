@@ -1,7 +1,8 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
+import { Text } from '@semcore/typography';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -15,6 +16,7 @@ class RootAccordion extends Component {
   static style = style;
   static defaultProps = {
     defaultValue: [],
+    use: 'secondary',
   };
   static enhance = [
     cssVariableEnhance({
@@ -45,13 +47,14 @@ class RootAccordion extends Component {
   };
 
   getItemProps({ value }) {
-    const { value: selectedValue, duration } = this.asProps;
+    const { value: selectedValue, duration, use } = this.asProps;
     const selected = Array.isArray(selectedValue)
       ? selectedValue.includes(value)
       : selectedValue === value;
     return {
       selected,
       duration,
+      use,
       $handleInteraction: this.handleToggleInteraction,
     };
   }
@@ -74,12 +77,22 @@ export class RootItem extends Component {
   };
 
   getToggleProps() {
-    const { value, uid, selected, disabled } = this.asProps;
+    const { value, uid, selected, disabled, use } = this.asProps;
     return {
+      use,
       disabled,
       onClick: disabled ? undefined : this.handleClick,
       id: `igc-${uid}-${value}-toggle`,
-      role: 'button',
+      tag: 'h3',
+      size: 300,
+    };
+  }
+
+  getToggleButtonProps() {
+    const { value, uid, selected, disabled } = this.asProps;
+    return {
+      disabled,
+      id: `igc-${uid}-${value}-toggle-button`,
       'aria-expanded': selected ? 'true' : 'false',
       'aria-controls': `igc-${uid}-${value}-collapse`,
     };
@@ -92,7 +105,7 @@ export class RootItem extends Component {
       duration,
       id: `igc-${uid}-${value}-collapse`,
       role: 'region',
-      'aria-labelledby': `igc-${uid}-${value}-toggle`,
+      'aria-labelledby': `igc-${uid}-${value}-toggle-button`,
     };
   }
 
@@ -129,13 +142,14 @@ class Toggle extends Component {
   };
 
   render() {
-    const { styles, disabled } = this.asProps;
+    const { styles, disabled, use } = this.asProps;
     const SItemToggle = Root;
 
     return sstyled(styles)(
       <SItemToggle
+        use={use}
         ref={this.toggleRef}
-        render={Box}
+        render={Text}
         onKeyDown={this.handleKeyDown}
         aria-disabled={disabled ? 'true' : undefined}
       />,
@@ -150,6 +164,13 @@ function Chevron(props) {
   return sstyled(styles)(<SItemChevron render={size === 'l' ? ChevronRightL : ChevronRightM} />);
 }
 
+function ToggleButton(props) {
+  const { styles } = props;
+
+  const SToggleButton = Root;
+  return sstyled(styles)(<SToggleButton render={Flex} role={'button'} {...props} />);
+}
+
 function Collapse(props) {
   const { selected } = props;
   return <Root render={CollapseAnimate} visible={selected} interactive />;
@@ -158,6 +179,7 @@ function Collapse(props) {
 const Item = createComponent(RootItem, {
   Toggle,
   Chevron,
+  ToggleButton,
   Collapse,
 });
 
