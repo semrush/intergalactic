@@ -87,7 +87,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 - Comparing less than 10 categories.
 - Each category's value needs labeling.
-- Showing category distribution in order.
+- Showing category distribution in the specific order.
 
 **Use [Cigarette pack bar chart](/data-display/cigarette-pack/cigarette-pack) instead of Horizontal bar chart when:**
 
@@ -172,7 +172,7 @@ Table: Horizontal bar chart interaction
 
 ### No more results
 
-Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color.
+Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color. Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ![](static/no-more-bar-horizontal.png)
 
@@ -204,7 +204,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ## Usage in UX/UI
 

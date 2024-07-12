@@ -109,4 +109,4 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/radial-tree-skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.

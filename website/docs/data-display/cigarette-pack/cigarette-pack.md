@@ -20,7 +20,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Interface is narrow, and you need to preserve horizontal space for other information.
 - Comparing less than 10 categories.
 - Each category's value needs labeling.
-- Showing category distribution in order.
+- Showing category distribution in the specific order.
 
 ![](static/cigarette-pack-example.png)
 
@@ -62,7 +62,7 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 ### No more results
 
-Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color.
+Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color. Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ![](static/cigarette-pack-no-more.png)
 
@@ -90,7 +90,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/cigarette-pack-skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ## Usage in UX/UI
 
