@@ -173,7 +173,6 @@ function TooltipPopper(props) {
           use:theme={resolveColor(theme)}
           use:aria-live={undefined}
           ref={popperRef}
-          __excludeProps={['arrowBgColor', 'arrowShadowColor']}
         >
           <Children />
           <SArrow

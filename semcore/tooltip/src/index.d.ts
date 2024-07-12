@@ -7,7 +7,7 @@ import Popper, {
   eventInteraction,
 } from '@semcore/popper';
 
-type ArrowCustom = {
+export type ArrowCustom = {
   arrowBgColor?: string;
   arrowShadowColor?: string;
 };

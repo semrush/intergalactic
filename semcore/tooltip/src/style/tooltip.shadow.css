@@ -72,7 +72,7 @@ SArrow[theme='warning'] {
   }
 }
 
-SArrow[bgColor][shadowColor] {
+SArrow[bgColor] {
   border-color: var(--shadowColor);
 
   &::before {
