@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.0] - 2024-07-05
+
+### Fixed
+
+- Close button shape wasn't square.
+- Warning notices announcement was read twice by NDVA.
+- Warning notices wasn't announced as alert by Voice Over.
+
+### Added
+
+- Close button tooltip.
+
 ## [5.38.0] - 2024-07-13
 
 ### Changed
