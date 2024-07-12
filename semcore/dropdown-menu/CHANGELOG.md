@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.34.4] - 2024-07-10
+
+### Fixed
+
+- Styles of ScrollContainer inner shadows.
+
 ## [4.34.3] - 2024-07-05
 
 ### Changed
