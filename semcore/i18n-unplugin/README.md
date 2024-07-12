@@ -23,13 +23,13 @@ npm install intergalactic
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { semcoreI18nVitePlugin } from 'intergalactic/i18n-unplugin';
+import { intergalacticI18nVitePlugin } from 'intergalactic/i18n-unplugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    semcoreI18nVitePlugin({
+    intergalacticI18nVitePlugin({
       bundleLocales: ['es'],
       includeLocales: ['en', 'es'],
     }),
@@ -40,11 +40,11 @@ export default defineConfig({
 ### Webpack
 
 ```js
-var { semcoreI18nWebpackPlugin } = require('intergalactic/i18n-unplugin');
+var { intergalacticI18nWebpackPlugin } = require('intergalactic/i18n-unplugin');
 
 module.exports = {
   // ...
-  plugins: [semcoreI18nWebpackPlugin()],
+  plugins: [intergalacticI18nWebpackPlugin()],
   // ...
 };
 ```
@@ -52,7 +52,7 @@ module.exports = {
 ### Rollup & esbuild
 
 ```js
-import { semcoreI18nRollupPlugin, semcoreI18nEsbuildPlugin } from 'intergalactic/i18n-unplugin';
+import { intergalacticI18nRollupPlugin, intergalacticI18nEsbuildPlugin } from 'intergalactic/i18n-unplugin';
 // ...
 ```
 

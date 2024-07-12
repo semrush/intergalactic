@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.18.0] - 2024-07-12
+
+### Fixed
+
+- Plugin working with `intergalactic` package.
+
 ## [0.17.24] - 2024-06-26
 
 ### Changed
