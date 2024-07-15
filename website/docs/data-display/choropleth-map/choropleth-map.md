@@ -5,7 +5,7 @@ tabName: Design
 disabled: true
 ---
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 

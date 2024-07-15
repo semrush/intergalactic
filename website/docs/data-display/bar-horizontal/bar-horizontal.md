@@ -61,7 +61,7 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
@@ -69,19 +69,11 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
-**Key points for using Horizontal bar chart:**
+We have a compact version of the horizontal bar chart — **[Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact)**. Use it when you need to save space in the interface, and the category names can be long (for example, in localization).
 
-- Ensure the chart's axes are understandable. Label them if needed.
-- Use simple color schemes. Highlight categories only when needed.
+![](static/hor-vs-compact.png)
 
-::: tip
-**Bar vs. Histogram Chart**
-
-- Bar charts categorize data qualitatively, showing how different categories compare.
-- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
-:::
-
-## Usage
+### Usage
 
 **Use Horizontal bar chart when:**
 
@@ -89,16 +81,18 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Each category's value needs labeling.
 - Showing category distribution in the specific order.
 
-**Use [Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact) instead of Horizontal bar chart when:**
-
-- Categories have or may have long names in localization.
-- Interface is narrow, and you need to preserve horizontal space for other information.
-
 **Avoid using Horizontal bar chart when:**
 
 - Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
 - Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
 - All categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
+
+::: info
+**Bar vs. Histogram Chart**
+
+- Bar charts categorize data qualitatively, showing how different categories compare.
+- Histograms organize data quantitatively, indicating how often values fall within certain ranges.
+:::
 
 ## Appearance
 
@@ -208,4 +202,9 @@ Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for 
 
 ## Usage in UX/UI
 
-See detailed information in the [Bar chart guide](/data-display/bar-chart/bar-chart#usage-in-ux-ui).
+**Key points for using Horizontal bar chart:**
+
+- Ensure the chart's axes are understandable. Label them if needed.
+- Use simple color schemes. Highlight categories only when needed.
+
+For the other detailed information, refer to the [Bar chart guide](/data-display/bar-chart/bar-chart#usage-in-ux-ui).

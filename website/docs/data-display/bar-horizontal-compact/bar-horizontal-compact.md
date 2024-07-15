@@ -4,15 +4,17 @@ fileSource: d3-chart
 tabs: Design('bar-horizontal-compact'), A11y('bar-horizontal-compact-a11y'), API('bar-horizontal-compact-api'), Examples('bar-horizontal-compact-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Compact horizontal bar chart** visualizes the distribution of values by category for a part-to-whole comparison.
+**Compact horizontal bar chart** is a compact version of the **[Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal)** that visualizes the distribution of values by category for a part-to-whole comparison.
 
-## Usage
+![](static/hor-vs-compact.png)
+
+### Usage
 
 **Use Compact horizontal bar chart when:**
 
@@ -21,6 +23,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Comparing less than 10 categories.
 - Each category's value needs labeling.
 - Showing category distribution in the specific order.
+- A category cannot have multiple values (to be stacked, in other words).
 
 ![](static/hor-bar-compact-example.png)
 

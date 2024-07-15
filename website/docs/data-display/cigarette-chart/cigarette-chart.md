@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabs: Design('cigarette-chart'), A11y('cigarette-chart-a11y'), API('cigarette-chart-api'), Examples('cigarette-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
