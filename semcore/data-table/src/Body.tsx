@@ -275,38 +275,17 @@ class Body extends Component<AsProps, State> {
     this.firstRowResizeObserver?.disconnect();
   }
 
-  render() {
+  renderBodyContent() {
     const SBody = Root;
-    const SBodyWrapper = Box;
     const SHeightHold = Box;
-    const {
-      Children,
-      styles,
-      rows,
-      columns,
-      $scrollRef,
-      virtualScroll,
-      onResize,
-      onScroll,
-      disabledScroll,
-      renderRows,
-      animationsDisabled,
-      scrollContainerRef,
-    } = this.asProps;
 
-    const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
-
-    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
+    const { styles, rows, columns, virtualScroll, renderRows, animationsDisabled } = this.asProps;
 
     const rowHeight = this.getRowHeight();
     const holdHeight =
       rowHeight !== undefined && virtualScroll ? rowHeight * rows.length : undefined;
 
-    if (virtualScroll && columnsInitialized && !rowHeight) {
-      requestAnimationFrame(this.setupRowSizeObserver);
-    }
-
-    const body = sstyled(styles)(
+    return sstyled(styles)(
       <SBody
         render={Box}
         animationsDisabled={animationsDisabled}
@@ -322,9 +301,35 @@ class Body extends Component<AsProps, State> {
         )}
       </SBody>,
     );
+  }
+
+  render() {
+    const SBodyWrapper = Box;
+    const SScrollArea = Root;
+    const {
+      Children,
+      styles,
+      columns,
+      $scrollRef,
+      virtualScroll,
+      onResize,
+      onScroll,
+      disabledScroll,
+      scrollContainerRef,
+    } = this.asProps;
+
+    const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
+
+    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
+
+    const rowHeight = this.getRowHeight();
+
+    if (virtualScroll && columnsInitialized && !rowHeight) {
+      requestAnimationFrame(this.setupRowSizeObserver);
+    }
 
     if (disabledScroll) {
-      return <SBodyWrapper>{body}</SBodyWrapper>;
+      return <SBodyWrapper>{this.renderBodyContent()}</SBodyWrapper>;
     }
 
     const scrollContainerRefs = [$scrollRef, this.scrollContainerRef];
@@ -332,9 +337,10 @@ class Body extends Component<AsProps, State> {
       scrollContainerRefs.push(scrollContainerRef);
     }
 
-    return (
+    return sstyled(styles)(
       <SBodyWrapper>
-        <ScrollArea
+        <SScrollArea
+          render={ScrollArea}
           shadow
           leftOffset={offsetLeftSum}
           rightOffset={offsetRightSum}
@@ -346,14 +352,13 @@ class Body extends Component<AsProps, State> {
             role='rowgroup'
             focusRingTopOffset={'3px'}
           >
-            {body}
+            {this.renderBodyContent()}
           </ScrollArea.Container>
           <div style={displayContents} role='rowgroup'>
             <div style={displayContents} role='row'>
               <div style={displayContents} role='cell'>
                 <ScrollArea.Bar
                   orientation='horizontal'
-                  position={'sticky'}
                   bottom={0}
                   container={this.scrollContainerRef}
                 />
@@ -361,9 +366,9 @@ class Body extends Component<AsProps, State> {
               </div>
             </div>
           </div>
-        </ScrollArea>
+        </SScrollArea>
         {Children.origin}
-      </SBodyWrapper>
+      </SBodyWrapper>,
     );
   }
 }
