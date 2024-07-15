@@ -271,6 +271,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       'aria-haspopup': !(disabled || props.disabled) ? 'dialog' : 'false',
       'aria-expanded': visible,
       'aria-describedby': undefined,
+      'aria-controls': visible ? `igc-${this.asProps.uid}-popper` : undefined,
       onKeyDown: this.handleTriggerKeyDown,
     };
   }
