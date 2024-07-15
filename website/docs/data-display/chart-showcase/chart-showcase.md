@@ -59,9 +59,9 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-    cigarettePackChart: {
-    title: 'Cigarette pack bar chart',
-    route: '/intergalactic/data-display/cigarette-pack/cigarette-pack',
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },
@@ -352,9 +352,9 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-    cigarettePackChart: {
-    title: 'Cigarette pack bar chart',
-    route: '/intergalactic/data-display/cigarette-pack/cigarette-pack',
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },
@@ -478,9 +478,9 @@ const group = {
     disabled: true,
     type: 'charts',
   },
-    cigarettePackChart: {
-    title: 'Cigarette pack bar chart',
-    route: '/intergalactic/data-display/cigarette-pack/cigarette-pack',
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },

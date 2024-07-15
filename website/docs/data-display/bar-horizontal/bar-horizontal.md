@@ -89,7 +89,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 - Each category's value needs labeling.
 - Showing category distribution in the specific order.
 
-**Use [Cigarette pack bar chart](/data-display/cigarette-pack/cigarette-pack) instead of Horizontal bar chart when:**
+**Use [Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact) instead of Horizontal bar chart when:**
 
 - Categories have or may have long names in localization.
 - Interface is narrow, and you need to preserve horizontal space for other information.
