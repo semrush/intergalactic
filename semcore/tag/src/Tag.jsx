@@ -143,6 +143,107 @@ class RootTag extends Component {
   }
 }
 
+class RootTagContainer extends Component {
+  static displayName = 'TagContainer';
+  static style = style;
+
+  getTagProps() {
+    const { size, theme, color, disabled, active } = this.asProps;
+
+    return {
+      disabled,
+      size,
+      theme,
+      color,
+      active,
+    };
+  }
+
+  getCloseProps() {
+    const { size, theme, color, disabled, active } = this.asProps;
+
+    return {
+      disabled,
+      size,
+      theme,
+      color,
+      active,
+    };
+  }
+
+  render() {
+    const STagContainer = Root;
+    const { styles, Children } = this.asProps;
+
+    return sstyled(styles)(
+      <STagContainer render={Box}>
+        <Children />
+      </STagContainer>,
+    );
+  }
+}
+
+class RootCloseTagContainer extends Component {
+  static displayName = 'CloseTagContainer';
+  static style = style;
+
+  static defaultProps = () => {
+    return {
+      theme: 'primary',
+      color: 'gray-500',
+      size: 'm',
+      i18n: localizedMessages,
+      locale: 'en',
+      children: <CloseTagContainer.Close />,
+    };
+  };
+
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+    resolveColorEnhance(),
+    keyboardFocusEnhance(),
+  ];
+
+  handleKeyDown = (event) => {
+    const { onKeyDown, onClick } = this.asProps;
+
+    if (onKeyDown) {
+      return onKeyDown(event);
+    }
+
+    if (onClick && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      onClick(event);
+    }
+  };
+
+  getCloseProps() {
+    return {
+      onKeyDown: this.handleKeyDown,
+      tabIndex: -1,
+    };
+  }
+
+  render() {
+    const STagContainerClose = Root;
+    const { Children, styles, color, resolveColor } = this.asProps;
+
+    return sstyled(styles)(
+      <STagContainerClose
+        render={Box}
+        interactive={true}
+        interactiveView={true}
+        tag-color={resolveColor(color)}
+        onKeyDown={this.handleKeyDown}
+        use:tabIndex={0}
+      >
+        <Children />
+      </STagContainerClose>,
+    );
+  }
+}
+
 function Text(props) {
   const SText = Root;
   const { styles } = props;
@@ -193,6 +294,15 @@ const Tag = createComponent(RootTag, {
   Addon,
   Close,
   Circle,
+});
+
+const CloseTagContainer = createComponent(RootCloseTagContainer, {
+  Close,
+});
+
+export const TagContainer = createComponent(RootTagContainer, {
+  Tag,
+  Close: CloseTagContainer,
 });
 
 export default Tag;

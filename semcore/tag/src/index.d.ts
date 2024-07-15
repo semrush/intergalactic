@@ -83,8 +83,21 @@ export type TagTextProps = BoxProps & KeyboardFocusProps & {};
 declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
   Text: Intergalactic.Component<'div', TagTextProps>;
   Addon: Intergalactic.Component<'div', TagAddonProps>;
+  /**
+   * @deprecated For Tags with close button, you should use
+   * <TagContainer>
+   *     <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
+   *     <TagContainer.Close onClick={handleClose} />
+   * </TagContainer>
+   * */
   Close: Intergalactic.Component<'div', TagCloseProps>;
   Circle: Intergalactic.Component<'div', TagAddonProps>;
 };
 
+declare const TagContainer: Intergalactic.Component<'div', TagProps, TagContext> & {
+  Tag: Tag;
+  Close: Intergalactic.Component<'div', TagCloseProps>;
+};
+
 export default Tag;
+export { TagContainer };

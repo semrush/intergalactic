@@ -1,4 +1,4 @@
-STag {
+STag, STagContainerClose {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -53,7 +53,7 @@ STag {
   }
 }
 
-STag[disabled] {
+STag[disabled], STagContainerClose[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
@@ -63,7 +63,7 @@ STag[interactiveView] {
   cursor: pointer;
 }
 
-STag[size='m'] {
+STag[size='m'], STagContainerClose[size='m'] {
   height: 20px;
   min-width: 20px;
 
@@ -81,7 +81,7 @@ STag[size='m'] {
   }
 }
 
-STag[size='l'] {
+STag[size='l'], STagContainerClose[size='l'] {
   height: 28px;
   min-width: 28px;
 
@@ -91,7 +91,7 @@ STag[size='l'] {
   }
 }
 
-STag[size='xl'] {
+STag[size='xl'], STagContainerClose[size='xl'] {
   height: 40px;
   min-width: 40px;
 
@@ -101,7 +101,7 @@ STag[size='xl'] {
   }
 }
 
-STag[theme='primary'] {
+STag[theme='primary'], STagContainerClose[theme='primary'] {
   &::before {
     top: -1px;
     left: -1px;
@@ -122,8 +122,8 @@ STag[theme='primary'] {
   }
 }
 
-STag[theme='secondary'],
-STag[theme='additional'] {
+STag[theme='secondary'], STagContainerClose[theme='secondary'],
+STag[theme='additional'], STagContainerClose[theme='additional'] {
   &::before {
     opacity: 0.01;
   }
@@ -137,22 +137,22 @@ STag[theme='additional'] {
   }
 }
 
-STag[theme='secondary'],
-STag[theme='additional'],
-STag[theme='secondary-invert'],
-STag[theme='additional-invert'] {
+STag[theme='secondary'], STagContainerClose[theme='secondary'],
+STag[theme='additional'], STagContainerClose[theme='additional'],
+STag[theme='secondary-invert'], STagContainerClose[theme='secondary-invert'],
+STag[theme='additional-invert'], STagContainerClose[theme='additional-invert'] {
   &::after {
     opacity: 0.5;
   }
 }
 
-STag[theme='primary-invert'] {
+STag[theme='primary-invert'], STagContainerClose[theme='primary-invert'] {
   background-color: var(--intergalactic-tag-primary-white-normal, rgba(255, 255, 255, 0.15));
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-STag[theme='secondary-invert'],
-STag[theme='additional-invert'] {
+STag[theme='secondary-invert'], STagContainerClose[theme='secondary-invert'],
+STag[theme='additional-invert'], STagContainerClose[theme='additional-invert'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
@@ -248,5 +248,56 @@ SClose {
 
   &:hover path {
     opacity: 1;
+  }
+}
+
+STagContainer {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  STag {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: var(--intergalactic-spacing-05x, 2px);
+
+    &::before, &::after {
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-right: -1px;
+    }
+
+    SText {
+      padding-right: 0;
+    }
+  }
+
+  STagContainerClose {
+    cursor: pointer;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 20px;
+
+    &::before, &::after {
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &::before {
+      left: -1px;
+    }
+
+    svg path {
+      opacity: 0.5;
+    }
+
+    &:hover svg path {
+      opacity: 1;
+    }
   }
 }
