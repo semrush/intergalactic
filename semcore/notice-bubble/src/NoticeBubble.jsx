@@ -195,13 +195,16 @@ class ViewInfo extends Component {
       >
         <Hint title={getI18nText('close')}>
           <SDismiss
+            // biome-ignore lint/a11y/useValidAriaValues: <explanation>
+            aria-haspopup={undefined}
             tag={Button}
             type='button'
             use='tertiary'
             size='m'
-            theme='muted'
+            theme='invert'
             onClick={this.handleClose}
             aria-label={getI18nText('close')}
+            active={false}
           >
             <Button.Addon tag={CloseIcon} />
           </SDismiss>
