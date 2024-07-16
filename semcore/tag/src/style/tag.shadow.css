@@ -292,6 +292,11 @@ STagContainer {
       left: -1px;
     }
 
+    svg {
+      padding-left: 0;
+      padding-right: var(--intergalactic-spacing-2x, 8px);
+    }
+
     svg path {
       opacity: 0.5;
     }

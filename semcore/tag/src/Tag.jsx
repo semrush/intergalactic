@@ -147,10 +147,14 @@ class RootTagContainer extends Component {
   static displayName = 'TagContainer';
   static style = style;
 
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+
   getTagProps() {
-    const { size, theme, color, disabled, active } = this.asProps;
+    const { size, theme, color, disabled, active, uid, id: outerId } = this.asProps;
+    const id = outerId || `igc-${uid}-tag`;
 
     return {
+      id: `${id}-text`,
       disabled,
       size,
       theme,
@@ -160,7 +164,8 @@ class RootTagContainer extends Component {
   }
 
   getCloseProps() {
-    const { size, theme, color, disabled, active } = this.asProps;
+    const { size, theme, color, disabled, active, uid, id: outerId, getI18nText } = this.asProps;
+    const id = outerId || `igc-${uid}-tag`;
 
     return {
       disabled,
@@ -168,6 +173,9 @@ class RootTagContainer extends Component {
       theme,
       color,
       active,
+      id: `${id}-clear`,
+      'aria-labelledby': `${id}-clear ${id}-text`,
+      'aria-label': getI18nText('remove'),
     };
   }
 
@@ -198,12 +206,7 @@ class RootCloseTagContainer extends Component {
     };
   };
 
-  static enhance = [
-    i18nEnhance(localizedMessages),
-    uniqueIDEnhancement(),
-    resolveColorEnhance(),
-    keyboardFocusEnhance(),
-  ];
+  static enhance = [resolveColorEnhance(), keyboardFocusEnhance()];
 
   handleKeyDown = (event) => {
     const { onKeyDown, onClick } = this.asProps;
@@ -218,13 +221,6 @@ class RootCloseTagContainer extends Component {
     }
   };
 
-  getCloseProps() {
-    return {
-      onKeyDown: this.handleKeyDown,
-      tabIndex: -1,
-    };
-  }
-
   render() {
     const STagContainerClose = Root;
     const { Children, styles, color, resolveColor } = this.asProps;
@@ -232,11 +228,11 @@ class RootCloseTagContainer extends Component {
     return sstyled(styles)(
       <STagContainerClose
         render={Box}
+        tag={'button'}
         interactive={true}
         interactiveView={true}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
-        use:tabIndex={0}
       >
         <Children />
       </STagContainerClose>,
@@ -297,7 +293,7 @@ const Tag = createComponent(RootTag, {
 });
 
 const CloseTagContainer = createComponent(RootCloseTagContainer, {
-  Close,
+  Close: CloseM,
 });
 
 export const TagContainer = createComponent(RootTagContainer, {
