@@ -4,7 +4,7 @@ title: Punctuation and special symbols
 
 ## Dashes and hyphens
 
-### Em dash (—)
+### Em dash
 
 | Symbol       | HTML entity        |
 | :----------: | :----------------: |
@@ -12,3 +12,188 @@ title: Punctuation and special symbols
 
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
+
+![](/content/punctuation/static/emdash.jpg)
+
+### En dash
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &ndash;      | `&ndash;`          |
+
+* Use in a range of numbers, dates, and times
+* Use as a minus sign
+* Use to indicate an empty value in tables
+* Omit the spaces on both sides of the dash
+
+![](/content/punctuation/static/endash.jpg)
+
+### Hyphen
+
+| Symbol       | HTML entity   |
+| :----------: | :-----------: |
+| -            | `&hyphen;`    |
+
+* Use for telephone numbers and compound modifiers
+
+![](/content/punctuation/static/hyphen.jpg)
+
+### Non-breaking hyphen
+
+| Symbol       | HTML code          |
+| :----------: | :----------------: |
+| &#8209;      | `&#8209;`          |
+
+* Use to prevent unwanted line breaks
+
+![](/content/punctuation/static/nbhyphen.jpg)
+
+### Soft hyphen
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &shy;        | `&shy;`            |
+
+* Use to indicate where a hyphenated break is allowed. It’s invisible otherwise
+* Useful in scenarios when the same string is displayed in different layouts 
+
+![](/content/punctuation/static/softhyphen.jpg)
+
+## Non-breaking space
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &nbsp;       | `&nbsp;`           |
+
+* Use to keep the words "glued"
+> Use ⌥+space on MacOS to insert
+
+![](/content/punctuation/static/nbsp.jpg)
+
+
+## Quotation marks and apostrophe
+
+### Quotation marks
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &ldquo;      | `&ldquo;`          |
+| &rdquo;      | `&rdquo;`          |
+
+* Use double curly quotation marks
+* Include periods
+* Dashes, semicolons, exclamation points, and question marks go inside the quotation mark only if they relate to the quotation
+* Use when quoting UI text, if text formatting is not available
+
+![](/content/punctuation/static/quotationmarks.jpg)
+
+### Apostrophe
+
+| Symbol       | HTML code          |
+| :----------: | :----------------: |
+| &rsquo;      | `&rsquo;`          |
+
+* Use the curly style, just like for the quotation marks
+
+![](/content/punctuation/static/apostrophe.jpg)
+
+
+## Period
+
+* Use in numbered lists
+* Include in quotation marks and brackets
+* Use with shortened forms of words (mainly in table columns)
+
+![](/content/punctuation/static/period.jpg)
+
+**Omit:**
+* in headings
+* in placeholders
+* in checkboxes
+* in lists with bullets and icons
+* in tooltips that serve as labels for icons or display the element’s full name
+* after URLs
+
+![](/content/punctuation/static/noperiod.jpg)
+
+
+## Lists
+
+* No period:
+– bulleted lists (**But:** if there’s more than one sentence in a bullet—make all bullets end with periods)
+– lists with icons
+* Add period in:
+– numbered lists
+* Use sentence-style capitalization
+> Use numbered lists for a sequence of actions!
+
+![](/content/punctuation/static/list.jpg)
+
+
+## Special symbols
+
+### Ampersand
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &amp;        | `&amp;`            |
+
+* Enclose in spaces
+* Avoid. If there’s enough space—always use “and”
+
+![](/content/punctuation/static/ampersand.jpg)
+
+### Number sign
+
+| Symbol       | HTML code          |
+| :----------: | :----------------: |
+| &#35;        | `&#35;`            |
+
+* Omit the space after the sign
+
+![](/content/punctuation/static/number.jpg)
+
+### Percent sign
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &percnt;     | `&percnt;`         |
+
+* In a column name, use at the end of the name preceded by a space
+* Omit the space before the percent sign
+> Exception: German, French, Swedish languages
+
+![](/content/punctuation/static/percent.jpg)
+
+### Minus and plus signs
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &minus;      | `&minus;`          |
+| &plus;       | `&plus;`           |
+
+* Omit the spaces between the sign and a numeric value
+* Use the en dash for the minus sign
+* Use to show changes in metrics
+
+![](/content/punctuation/static/minusplus.jpg)
+
+### Slash
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &#8725;      | `&#8725;`          |
+
+* Omit the spaces around the sign
+
+![](/content/punctuation/static/slash.jpg)
+
+### Multiplication sign
+
+| Symbol       | HTML entity        |
+| :----------: | :----------------: |
+| &times;      | `&times;`          |
+
+* Avoid using the “x” letter
+
+![](/content/punctuation/static/apostrophe.jpg)
