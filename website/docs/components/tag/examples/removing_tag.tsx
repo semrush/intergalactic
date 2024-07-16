@@ -1,5 +1,5 @@
 import React from 'react';
-import Tag from 'intergalactic/tag';
+import Tag, { TagContainer } from 'intergalactic/tag';
 import { Box } from 'intergalactic/flex-box';
 
 const Demo = () => {
@@ -16,10 +16,12 @@ const Demo = () => {
   return (
     <Box>
       {tags.map((tag, idx) => (
-        <Tag theme='primary' size='l' interactive data-id={idx} key={idx} mr={1}>
-          <Tag.Text>{tag}</Tag.Text>
-          <Tag.Close onClick={handleEditTag} />
-        </Tag>
+        <TagContainer theme='primary' size='l' data-id={idx} key={idx} mr={1}>
+          <TagContainer.Tag>
+            <TagContainer.Tag.Text>{tag}</TagContainer.Tag.Text>
+          </TagContainer.Tag>
+          <TagContainer.Close onClick={handleEditTag} />
+        </TagContainer>
       ))}
     </Box>
   );
