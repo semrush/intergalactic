@@ -1,4 +1,5 @@
-import chroma from 'chroma-js';
+import ColorJS from 'colorjs.io';
+const Color = ColorJS as any;
 
 type ExtensionsInput = {
   'studio.tokens': {
@@ -25,9 +26,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
   const values: { [tokenName: string]: string } = {};
   const modifications: {
     [tokenName: string]: {
-      type: string;
+      type: 'lighten' | 'darken' | 'alpha';
       value: number;
-      space: string;
+      space: 'lch' | 'srgb' | 'p3' | 'hsl';
     }[];
   } = {};
   const types: { [tokenName: string]: string } = {};
@@ -217,19 +218,31 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       values[token] = resolveToken(values[token]);
     }
     for (const modification of modifications[token] ?? []) {
-      const color = chroma(values[token]);
-      if (modification.type === 'lighten') {
-        if (['hsl'].includes(modification.space)) {
-          const rgba = chroma(color.alpha(color.alpha() * modification.value));
-          const alpha = rgba.alpha();
-          const colorWithFullAlpha = rgba.alpha(1);
-          const rgb = chroma.average([colorWithFullAlpha, 'white'], 'rgb', [alpha, 1 - alpha]);
-          values[token] = rgb.css();
+      // refer to https://docs.tokens.studio/tokens/color-modifiers and https://github.com/tokens-studio/figma-plugin/tree/main/src/utils/color if extention is needed
+      let color = new Color(values[token]);
+
+      if (modification.space === 'hsl') {
+        if (modification.type === 'lighten') {
+          const lightness = color.hsl.l;
+          const difference = 100 - lightness;
+          color.set('hsl.l', Math.min(100, lightness + difference * modification.value));
         } else {
-          throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
+          throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
         }
       } else {
-        throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
+        throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
+      }
+
+      color = color.to('sRGB');
+
+      if (color.alpha !== 1) {
+        const r = Math.round(color.r * 255);
+        const g = Math.round(color.g * 255);
+        const b = Math.round(color.b * 255);
+        const a = color.alpha;
+        values[token] = `rgba(${r}, ${g}, ${b}, ${a})`;
+      } else {
+        values[token] = color.toString({ format: 'hex' });
       }
     }
   }

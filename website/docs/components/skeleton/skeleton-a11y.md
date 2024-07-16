@@ -8,20 +8,17 @@ tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('s
 
 ### Roles and attributes
 
-The list below describes roles and attributes that component already has.
-
 Table: Roles & attributes
 
-| Attribute               | Element              | Usage                                                                                                                                                                                    |
-| ----------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-busy="true"`      | Implicit on `svg`    | The `aria-busy` state indicates an element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. |
-| `aria-label="Loading…"` | Implicit on `svg`    | The `aria-label` attribute sets the element description that will be announced by the assistive technologies.                                                                            |
-
-Skeleton is an `svg` element. It contains `foreignObject` with a `span` element inside. The `span` element has a `role="status"`, `aria-atomic="true"` and `aria-live="polite"` attribute. These attributes are used to inform assistive technologies about the loading state.
+| Attribute               | Usage                                                      |
+| ----------------------- | ---------------------------------------------------------- |
+| `aria-busy="true"`      | Indicates that the element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. |
+| `aria-label="Loading…"` | Sets an accessible name for the element.                   |
 
 ## Considerations for developers and designers
 
-- When displaying skeleton in place of a heading, avoid semantic heading markup, as this can make navigation confusing for screen reader users.
+- When displaying `Skeleton` in place of a heading, avoid semantic heading markup, as this can make navigation confusing for screen reader users.
+- Place `Skeleton` inside a container with `role="status"` and `aria-live="polite"` attributes for the screen reader to announce the start of the loading process ([example](./skeleton-code#text-initial-loading)).
 
 ## Resources
 

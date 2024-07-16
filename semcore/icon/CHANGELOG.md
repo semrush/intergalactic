@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2024-07-12
+
+### Added
+
+- New `AdMiddle` and `PositionMiddle` icons.
+
+### Fixed
+
+- A small positioning fix in `AdBottom` and `AdTop` icons (only size M).
+
 ## [4.41.0] - 2024-07-03
 
 ### Changed

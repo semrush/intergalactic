@@ -47,9 +47,6 @@ const Demo = () => {
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <Line x='date_chart' y='download'>
-          <Line.Dots display />
-        </Line>
         <HoverLine.Tooltip x='date_chart' wMin={100}>
           {({ xIndex }) => {
             return {
@@ -57,6 +54,9 @@ const Demo = () => {
             };
           }}
         </HoverLine.Tooltip>
+        <Line x='date_chart' y='download'>
+          <Line.Dots display />
+        </Line>
       </Plot>
       <Plot
         data={data}

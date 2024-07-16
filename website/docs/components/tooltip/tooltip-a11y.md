@@ -85,10 +85,10 @@ Table: DescriptionTooltip default attributes
 
 | Component  | Attribute      | Usage                                                                       |
 | ---------- | -------------- | --------------------------------------------------------------------------- |
-| `Trigger`  | `aria-controls="IDREF"`      | Indicates which element this `Trigger` opens. |
-| `Trigger`  | `aria-expanded`              | Set to `true` when `Popper` is visible. Indicates that the popup is open. |
-| `Trigger`  | `aria-haspopup="true"`       | Indicates that the element triggers a popup. Will be changed to `dialog` in future updates. |
-| `Popper`   | `role="tooltip"`             | Indicates that this element is a tooltip. Will be changed to `dialog` in future updates. |
+| `Trigger`  | `aria-controls="IDREF"`     | Indicates which element this `Trigger` opens. |
+| `Trigger`  | `aria-expanded`             | Set to `true` when `Popper` is visible. Indicates that the popup is open. |
+| `Trigger`  | `aria-haspopup="dialog"`    | Indicates that the element triggers a dialog. |
+| `Popper`   | `role="dialog"`             | Identifies the element as a dialog, indicating to assistive technology that its content is grouped and separated from the rest of the page content.  |
 
 ## Other recommendations
 

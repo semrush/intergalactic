@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.9] - 2024-07-15
+
+### Fixed
+
+- View of ScrollArea shadows in table body.
+
+## [4.40.8] - 2024-07-12
+
+### Fixed
+
+- View of Bottom horizontal scroll in table body.
+
 ## [4.40.7] - 2024-07-03
 
 ### Fixed

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.38.0] - 2024-07-16
+
+### Added
+
+- `arrowBgColor` and `arrowShadowColor` properties for Tooltip.Popper.
+
+## [6.37.0] - 2024-07-13
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.30.0 ~> 4.31.0], `@semcore/flex-box` [5.29.0 ~> 5.30.0], `@semcore/popper` [5.37.1 ~> 5.38.0], `@semcore/portal` [3.29.0 ~> 3.30.0], `@semcore/core` [2.27.0 ~> 2.28.0]).
+
 ## [6.36.1] - 2024-07-05
 
 ### Fixed

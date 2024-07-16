@@ -11,6 +11,7 @@ import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
+import scrollStyles from './style/scroll-shadows.shadow.css';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -340,6 +341,7 @@ class Body extends Component<AsProps, State> {
           rightOffset={offsetRightSum}
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
+          styles={scrollStyles}
         >
           <ScrollArea.Container
             ref={forkRef(...scrollContainerRefs)}
@@ -351,7 +353,11 @@ class Body extends Component<AsProps, State> {
           <div style={displayContents} role='rowgroup'>
             <div style={displayContents} role='row'>
               <div style={displayContents} role='cell'>
-                <ScrollArea.Bar orientation='horizontal' position={'sticky'} bottom={0} />
+                <ScrollArea.Bar
+                  orientation='horizontal'
+                  bottom={0}
+                  container={this.scrollContainerRef}
+                />
                 <ScrollArea.Bar orientation='vertical' w={'12px'} zIndex={2} />
               </div>
             </div>

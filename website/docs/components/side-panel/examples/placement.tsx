@@ -28,12 +28,12 @@ const Demo = () => {
         visible={visible}
         onClose={() => setVisible(false)}
         placement={placement}
-        mt={placement === 'bottom' ? 0 : 20}
+        aria-label={`Here is a ${placement}-placed side panel`}
       >
         <Text size={300} tag='p'>
-          Waba-laba-dub-dub!
+          Taking the Stage: Trends and Strategies for 2024 and Beyond
         </Text>
-        <Button mt={3}>I'm just a button</Button>
+        <Button mt={3}>Read more</Button>
       </SidePanel>
     </React.Fragment>
   );

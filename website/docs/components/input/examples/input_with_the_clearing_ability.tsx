@@ -3,6 +3,7 @@ import Input from 'intergalactic/input';
 import CloseM from 'intergalactic/icon/Close/m';
 import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
+import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
@@ -21,7 +22,15 @@ const Demo = () => {
             id='clear-example'
           />
           {value && (
-            <Input.Addon tag={CloseM} interactive aria-label='Clear' onClick={() => setValue('')} />
+            <Input.Addon>
+              <Hint
+                interactive
+                title='Clear'
+                tag={CloseM}
+                onClick={() => setValue('')}
+                color='icon-secondary-neutral'
+              />
+            </Input.Addon>
           )}
         </Input>
       </Box>

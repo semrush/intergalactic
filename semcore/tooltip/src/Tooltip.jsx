@@ -137,6 +137,8 @@ function TooltipPopper(props) {
     'aria-live': ariaLive,
     zIndex,
     role,
+    arrowBgColor,
+    arrowShadowColor,
   } = props;
   const STooltip = Root;
   const SArrow = Box;
@@ -173,7 +175,12 @@ function TooltipPopper(props) {
           ref={popperRef}
         >
           <Children />
-          <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
+          <SArrow
+            data-popper-arrow
+            use:theme={resolveColor(theme)}
+            bgColor={resolveColor(arrowBgColor)}
+            shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
+          />
         </STooltip>
       </STooltipPortalledWrapper>
     </Portal>,

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.37.0] - 2024-07-02
+
+### Added
+
+- `use` prop.
+
 ## [5.36.1] - 2024-06-26
 
 ### Changed

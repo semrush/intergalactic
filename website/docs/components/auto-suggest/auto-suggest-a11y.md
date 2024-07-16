@@ -10,26 +10,21 @@ tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-c
 
 Table: Keyboard support
 
-| Key                            | Function                                                                                                                                  |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Moves focus to the next focusable element.                                                                                                |
-| `Shift + Tab` | Moves focus to the previous focusable element.                                                                                            |
-| `Space` , `Enter` , `Down Arrow` | When focus is on the AutoSuggest trigger, opens the dropdown with options.                                                                |
-| `Up Arrow` , `Down Arrow` | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
-| `Space` , `Enter` | Selects the option and closes the dropdown.                                                                                               |
-| `Esc` | Closes the dropdown and returns focus to the AutoSuggest trigger.                                                                         |
-
-See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
+| Key                            | Function                                                       |
+| ------------------------------ | -------------------------------------------------------------- |
+| `Tab` | Moves focus to the next focusable element.                                             |
+| `Shift + Tab` | Moves focus to the previous focusable element.                                 |
+| `Enter` | **When the dropdown is closed:** opens the dropdown. <br>**When the dropdown is open:** closes the dropdown. If an option was selected, applies its value to the input.  |
+| `Up Arrow` , <nobr>`Down Arrow`</nobr> | **When the dropdown is closed:** opens the dropdown. <br>**When the dropdown is open:** moves selection between the options in the list. If the last/first option is selected, moves selection to the first/last option respectively. |
+| `Esc` | Closes the dropdown. |
 
 ### Roles and attributes
 
-* For more information about the radio or checkbox list, see [Radio button](/components/radio/radio-a11y) and [Checkbox](/components/checkbox/checkbox-a11y) guides.
-* For information about the dropdown behavior, see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
-* Fo more information about the input behavior, refer to [Input](/components/input/input-a11y).
+For more information about the accessibility of these patterns, refer to the documentation of the components used in them:
 
-## Resources
-
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives recommendations for the accessible select menus and lists.
+* [Input](/components/input/input-a11y)
+* [Select](/components/select/select-a11y)
+* [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper)
 
 ## Other recommendations
 

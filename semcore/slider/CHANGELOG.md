@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.29.0] - 2024-06-26
+
+### Changed
+
+- Container tag changed to `button`, so now it may be referenced by `label` tag.
+
 ## [4.28.0] - 2024-06-26
 
 ### Changed
