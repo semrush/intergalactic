@@ -1,0 +1,7 @@
+SShadowHorizontal,
+SShadowVertical {
+  &:before,
+  &:after {
+    z-index: 1;
+  }
+}
