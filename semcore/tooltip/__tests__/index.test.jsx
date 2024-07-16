@@ -70,6 +70,23 @@ describe('Tooltip', () => {
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
+
+  test.concurrent('Renders correctly with changed color for arrow', async ({ task }) => {
+    const component = (
+      <div style={{ width: '100px', height: '100px' }}>
+        <Tooltip visible disablePortal>
+          <Tooltip.Trigger>
+            <button type='button'>Test</button>
+          </Tooltip.Trigger>
+          <Tooltip.Popper arrowBgColor={'green'} arrowShadowColor={'grey'}>
+            text text text
+          </Tooltip.Popper>
+        </Tooltip>
+      </div>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
 });
 
 describe('Tooltip.Trigger', () => {

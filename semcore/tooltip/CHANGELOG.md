@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.38.0] - 2024-07-16
+
+### Added
+
+- `arrowBgColor` and `arrowShadowColor` properties for Tooltip.Popper.
+
 ## [6.37.0] - 2024-07-13
 
 ### Changed

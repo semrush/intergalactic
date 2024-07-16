@@ -60,3 +60,15 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 </script>
 
 :::
+
+## Custom colors for background and arrow
+
+For some specific cases, you can color the Tooltip's arrow using the `arrowBgColor` property for its background and the `arrowShadowColor` property for its border. For example, if you have a colored illustration placed at the bottom of the Tooltip content, you might want to color the arrow to match the illustration's color.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom_bg_color.tsx';
+</script>
+
+:::
