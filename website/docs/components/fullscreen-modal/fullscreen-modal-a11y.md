@@ -27,8 +27,8 @@ Table: Roles & attributes
 
 | Component    | Attribute | Usage                                                                                                                                                   |
 | ------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `FullscreenModal`         | `role="dialog"`            | Identifies the element that serves as the dialog container. Gets this role from [Modal](/components/modal/modal). |
-| `FullscreenModal`         | `aria-modal="true"`        | Tells assistive technologies that the content underneath the current dialog isn't available for interaction (inert). Gets this attribute from [Modal](/components/modal/modal). |
+| `FullscreenModal`         | `role="dialog"`            | Identifies the element as a dialog, indicating to assistive technology that its content is grouped and separated from the rest of the page content. <br>Gets this role from [Modal](/components/modal/modal). |
+| `FullscreenModal`         | `aria-modal="true"`        | Tells assistive technologies that the content underneath the current dialog isn't available for interaction. <br>Gets this attribute from [Modal](/components/modal/modal). |
 | `FullscreenModal`         | `aria-labelledby="IDREF"`  | Gives the dialog an accessible name by referring to the content of `FullscreenModal.Title`. |
 | `FullscreenModal`         | `aria-describedby="IDREF"` | Gives the dialog an accessible description by referring to the content of `FullscreenModal.Description`. |
 | `FullscreenModal.Close`   | `aria-label="Close"`       | Sets an accessible name for the button that closes the dialog. |
