@@ -218,15 +218,6 @@ SColumn[use='secondary'] SSortWrapper:before {
 
 SBodyWrapper {
   position: relative;
-
-  SShadowHorizontal,
-  SShadowVertical {
-
-    &:before,
-    &:after {
-      z-index: 1;
-    }
-  }
 }
 
 SBody {

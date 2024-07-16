@@ -11,6 +11,7 @@ import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
+import scrollStyles from './style/scroll-shadows.shadow.css';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -275,17 +276,38 @@ class Body extends Component<AsProps, State> {
     this.firstRowResizeObserver?.disconnect();
   }
 
-  renderBodyContent() {
+  render() {
     const SBody = Root;
+    const SBodyWrapper = Box;
     const SHeightHold = Box;
+    const {
+      Children,
+      styles,
+      rows,
+      columns,
+      $scrollRef,
+      virtualScroll,
+      onResize,
+      onScroll,
+      disabledScroll,
+      renderRows,
+      animationsDisabled,
+      scrollContainerRef,
+    } = this.asProps;
 
-    const { styles, rows, columns, virtualScroll, renderRows, animationsDisabled } = this.asProps;
+    const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
+
+    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
 
     const rowHeight = this.getRowHeight();
     const holdHeight =
       rowHeight !== undefined && virtualScroll ? rowHeight * rows.length : undefined;
 
-    return sstyled(styles)(
+    if (virtualScroll && columnsInitialized && !rowHeight) {
+      requestAnimationFrame(this.setupRowSizeObserver);
+    }
+
+    const body = sstyled(styles)(
       <SBody
         render={Box}
         animationsDisabled={animationsDisabled}
@@ -301,35 +323,9 @@ class Body extends Component<AsProps, State> {
         )}
       </SBody>,
     );
-  }
-
-  render() {
-    const SBodyWrapper = Box;
-    const SScrollArea = Root;
-    const {
-      Children,
-      styles,
-      columns,
-      $scrollRef,
-      virtualScroll,
-      onResize,
-      onScroll,
-      disabledScroll,
-      scrollContainerRef,
-    } = this.asProps;
-
-    const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
-
-    const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
-
-    const rowHeight = this.getRowHeight();
-
-    if (virtualScroll && columnsInitialized && !rowHeight) {
-      requestAnimationFrame(this.setupRowSizeObserver);
-    }
 
     if (disabledScroll) {
-      return <SBodyWrapper>{this.renderBodyContent()}</SBodyWrapper>;
+      return <SBodyWrapper>{body}</SBodyWrapper>;
     }
 
     const scrollContainerRefs = [$scrollRef, this.scrollContainerRef];
@@ -337,22 +333,22 @@ class Body extends Component<AsProps, State> {
       scrollContainerRefs.push(scrollContainerRef);
     }
 
-    return sstyled(styles)(
+    return (
       <SBodyWrapper>
-        <SScrollArea
-          render={ScrollArea}
+        <ScrollArea
           shadow
           leftOffset={offsetLeftSum}
           rightOffset={offsetRightSum}
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
+          styles={scrollStyles}
         >
           <ScrollArea.Container
             ref={forkRef(...scrollContainerRefs)}
             role='rowgroup'
             focusRingTopOffset={'3px'}
           >
-            {this.renderBodyContent()}
+            {body}
           </ScrollArea.Container>
           <div style={displayContents} role='rowgroup'>
             <div style={displayContents} role='row'>
@@ -366,9 +362,9 @@ class Body extends Component<AsProps, State> {
               </div>
             </div>
           </div>
-        </SScrollArea>
+        </ScrollArea>
         {Children.origin}
-      </SBodyWrapper>,
+      </SBodyWrapper>
     );
   }
 }
