@@ -62,37 +62,45 @@ SClose {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  display: inline-flex;
-  right: 0;
-  top: 0;
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-3x, 12px)
-    var(--intergalactic-spacing-4x, 16px) var(--intergalactic-spacing-3x, 12px);
+  right: var(--intergalactic-spacing-05x, 2px);
+  top: var(--intergalactic-spacing-05x, 2px);
+}
+SClose[size] {
+  height: auto;
+}
+SClose[size] SAddon {
+  padding: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px) + 1px) 0;
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  border: none;
-  background: none;
-  outline: none;
-
-  &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
-  }
 }
 
 SClose[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
-SBack {
+SBack[size="m"] {
   display: flex;
   align-items: center;
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
-  margin-bottom: var(--intergalactic-spacing-1x, 4px);
-  cursor: pointer;
+  height: auto;
+  min-width: auto;
+  max-width: 100%;
+  margin-left: calc(var(--intergalactic-spacing-2x, 8px) * -1 + 1px);
 
   &:hover {
     color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
+}
+SBack[size="m"] SInner {
+  justify-content: flex-start;
+}
+SBack SText {
+  display: block;
+}
+
+SBack[size] SText {
+  margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
 SBackText {
@@ -117,7 +125,7 @@ STitle {
 SHeader {
   padding-left: var(--intergalactic-spacing-6x, 24px);
   padding-bottom: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-14x, 56px);
+  padding-right: var(--intergalactic-spacing-6x, 24px);
   padding-top: var(--intergalactic-spacing-1x, 4px);
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
   box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary, #c4c7cf);
@@ -134,7 +142,7 @@ SBody {
   height: 100%;
   overflow: auto;
   padding-left: var(--intergalactic-spacing-6x, 24px);
-  padding-bottom: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-10x, 40px);
+  padding-bottom:var(--intergalactic-spacing-4x, 16px);
+  padding-right: var(--intergalactic-spacing-6x, 24px);
   padding-top: var(--intergalactic-spacing-4x, 16px);
 }

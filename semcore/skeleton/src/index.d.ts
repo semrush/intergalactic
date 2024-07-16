@@ -22,6 +22,12 @@ export type SkeletonProps = BoxProps &
     theme?: 'dark' | 'invert';
 
     locale?: string;
+
+    /**
+     * Enable ResizeObserver for parent Element to recalculate skeleton size.
+     * @default false
+     */
+    observeParentSize?: boolean;
   };
 
 /** @deprecated */

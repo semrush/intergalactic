@@ -185,6 +185,8 @@ class SliderRoot extends Component {
       <>
         <SSlider
           render={Box}
+          tag='button'
+          type='button'
           ref={this.handleRef}
           onMouseDown={this.handleMouseMove}
           onTouchMove={this.handleMouseMove}
@@ -229,9 +231,7 @@ function Options({ styles, options, Children }) {
   return sstyled(styles)(
     <SSliderOptions render={Flex} justifyContent='space-between'>
       {(options ?? []).map((option) => (
-        <Children key={option.value} x={option.value}>
-          {option.label}
-        </Children>
+        <Children key={option.value}>{option.label}</Children>
       ))}
     </SSliderOptions>,
   );

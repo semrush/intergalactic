@@ -3,6 +3,7 @@ import Input from 'intergalactic/input';
 import CheckM from 'intergalactic/icon/Check/m';
 import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
+import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [focus, setFocus] = React.useState(false);
@@ -20,7 +21,11 @@ const Demo = () => {
             onFocus={() => setFocus(true)}
             id='submit-example'
           />
-          {focus && <Input.Addon interactive tag={CheckM} aria-label='Submit' />}
+          {focus && (
+            <Input.Addon>
+              <Hint interactive title='Submit' tag={CheckM} color='icon-secondary-success' />
+            </Input.Addon>
+          )}
         </Input>
       </Box>
     </>

@@ -9,7 +9,7 @@ const Demo = () => {
   return (
     <React.Fragment>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
-      <SidePanel visible={visible} onClose={() => setVisible(false)} mt={20}>
+      <SidePanel visible={visible} onClose={() => setVisible(false)} aria-label='Documentation'>
         <List size={300} marker={null}>
           {['Features', 'Pricing', 'Resources', 'Company', 'Extra tools'].map((name, i, arr) => (
             <React.Fragment key={i}>

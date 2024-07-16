@@ -16,6 +16,7 @@ class RootAccordion extends Component {
   static style = style;
   static defaultProps = {
     defaultValue: [],
+    use: 'secondary',
   };
   static enhance = [
     cssVariableEnhance({
@@ -46,13 +47,14 @@ class RootAccordion extends Component {
   };
 
   getItemProps({ value }) {
-    const { value: selectedValue, duration } = this.asProps;
+    const { value: selectedValue, duration, use } = this.asProps;
     const selected = Array.isArray(selectedValue)
       ? selectedValue.includes(value)
       : selectedValue === value;
     return {
       selected,
       duration,
+      use,
       $handleInteraction: this.handleToggleInteraction,
     };
   }
@@ -75,8 +77,9 @@ export class RootItem extends Component {
   };
 
   getToggleProps() {
-    const { value, uid, selected, disabled } = this.asProps;
+    const { value, uid, selected, disabled, use } = this.asProps;
     return {
+      use,
       disabled,
       onClick: disabled ? undefined : this.handleClick,
       id: `igc-${uid}-${value}-toggle`,
@@ -139,11 +142,12 @@ class Toggle extends Component {
   };
 
   render() {
-    const { styles, disabled } = this.asProps;
+    const { styles, disabled, use } = this.asProps;
     const SItemToggle = Root;
 
     return sstyled(styles)(
       <SItemToggle
+        use={use}
         ref={this.toggleRef}
         render={Text}
         onKeyDown={this.handleKeyDown}
@@ -161,7 +165,7 @@ function Chevron(props) {
 }
 
 function ToggleButton(props) {
-  const { styles, size } = props;
+  const { styles } = props;
 
   const SToggleButton = Root;
   return sstyled(styles)(<SToggleButton render={Flex} role={'button'} {...props} />);

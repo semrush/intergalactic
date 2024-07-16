@@ -3,8 +3,9 @@ SSlider {
   width: 140px;
   box-sizing: border-box;
   cursor: pointer;
-  outline: none;
   padding-top: var(--intergalactic-spacing-5x, 20px);
+  border: none;
+  background-color: transparent;
 
   &:before {
     content: '';
@@ -21,8 +22,11 @@ SSlider {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  &:active SKnob {
+  &:active SKnob, &:focus SKnob {
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  }
+  &:focus {
+    outline: none;
   }
 }
 

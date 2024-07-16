@@ -134,7 +134,15 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Secondary background of the interface which contains the main data and information.",
-    "components": ["d3-chart", "drag-and-drop", "input", "notice", "textarea", "time-picker"]
+    "components": [
+      "accordion",
+      "d3-chart",
+      "drag-and-drop",
+      "input",
+      "notice",
+      "textarea",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
@@ -142,7 +150,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
-    "components": ["color-picker", "time-picker"]
+    "components": ["accordion", "color-picker", "time-picker"]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-active",
@@ -319,6 +327,7 @@
     "computedValue": "#191b23",
     "description": "Primary text.",
     "components": [
+      "accordion",
       "base-trigger",
       "breadcrumbs",
       "button",
@@ -1193,8 +1202,7 @@
       "inline-input",
       "input",
       "input-number",
-      "modal",
-      "side-panel"
+      "modal"
     ]
   },
   {
@@ -1529,7 +1537,7 @@
     "name": "--intergalactic-table-td-cell-hover",
     "type": "color",
     "rawValue": "{gray.100}",
-    "computedValue": "rgb(240,240,244)",
+    "computedValue": "#f0f0f4",
     "description": "Background of the default hovered cell in the Table.",
     "components": []
   },
@@ -1537,7 +1545,7 @@
     "name": "--intergalactic-table-td-cell-active",
     "type": "color",
     "rawValue": "{gray.100}",
-    "computedValue": "rgb(249,249,251)",
+    "computedValue": "#e6e7ed",
     "description": "Background of the default active cell in the Table.",
     "components": []
   },
@@ -2021,7 +2029,7 @@
     "rawValue": "400",
     "computedValue": "400",
     "description": "Regular font weight.",
-    "components": ["base-trigger", "date-picker", "slider"]
+    "components": ["accordion", "base-trigger", "date-picker", "slider"]
   },
   {
     "name": "--intergalactic-medium",
@@ -2209,6 +2217,7 @@
     "computedValue": "2px",
     "description": "2px",
     "components": [
+      "accordion",
       "base-trigger",
       "checkbox",
       "counter",
@@ -2221,6 +2230,7 @@
       "notice-global",
       "radio",
       "select",
+      "side-panel",
       "slider",
       "tag",
       "wizard"
@@ -2269,6 +2279,7 @@
     "computedValue": "8px",
     "description": "8px",
     "components": [
+      "accordion",
       "base-trigger",
       "breadcrumbs",
       "button",
@@ -2295,6 +2306,7 @@
       "radio",
       "scroll-area",
       "select",
+      "side-panel",
       "slider",
       "switch",
       "tab-line",
@@ -2313,6 +2325,7 @@
     "computedValue": "12px",
     "description": "12px",
     "components": [
+      "accordion",
       "base-trigger",
       "button",
       "carousel",
@@ -2424,7 +2437,7 @@
     "rawValue": "{scale-indent}*14",
     "computedValue": "56px",
     "description": "56px",
-    "components": ["side-panel"]
+    "components": []
   },
   {
     "name": "--intergalactic-spacing-20x",

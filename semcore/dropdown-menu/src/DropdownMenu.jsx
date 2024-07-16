@@ -10,7 +10,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { hasParent } from '@semcore/utils/lib/hasParent';
 
-import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
 import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
@@ -439,7 +438,6 @@ function List(props) {
       role='menu'
       aria-labelledby={`igc-${uid}-trigger`}
       shadow={true}
-      styles={scrollStyles}
     />,
   );
 }
