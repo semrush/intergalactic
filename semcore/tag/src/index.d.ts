@@ -96,7 +96,7 @@ declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
 
 declare const TagContainer: Intergalactic.Component<'div', TagProps, TagContext> & {
   Tag: Tag;
-  Close: Intergalactic.Component<'div', TagCloseProps>;
+  Close: Intergalactic.Component<'button'>;
 };
 
 export default Tag;
