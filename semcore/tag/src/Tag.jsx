@@ -9,9 +9,9 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import log from '@semcore/utils/lib/logger';
 
 import style from './style/tag.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const legacyThemeRecommendedMigration = {
   primary: {
@@ -71,6 +71,7 @@ class RootTag extends Component {
     return {
       tabIndex: focusable === 'text' && interactive ? 0 : -1,
       id: `${id}-text`,
+      role: focusable === 'text' && interactive ? 'button' : undefined,
     };
   }
   handleCloseMount = () => {
@@ -88,7 +89,6 @@ class RootTag extends Component {
       id: `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
-      'aria-hidden': 'true',
       onMount: this.handleCloseMount,
       onUnmount: this.handleCloseUnmount,
     };
@@ -122,21 +122,121 @@ class RootTag extends Component {
     } = this.asProps;
     const { focusable } = this.state;
     const id = outerId || `igc-${uid}-tag`;
+    const isInteractiveView = !disabled && interactive;
+    const isInteractive = !disabled && interactive && focusable === 'container';
 
     return sstyled(styles)(
       <STag
         render={Box}
         id={id}
-        use:interactive={!disabled && interactive}
-        role={interactive ? 'button' : undefined}
+        use:interactive={isInteractive}
+        use:interactiveView={isInteractiveView}
         tag-color={resolveColor(color)}
         onKeyDown={this.handleKeyDown}
-        use:tabIndex={interactive && focusable === 'container' ? 0 : -1}
+        use:tabIndex={isInteractive ? 0 : -1}
+        role={isInteractive ? 'button' : undefined}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}
         {addonRight ? <Tag.Addon tag={addonRight} /> : null}
       </STag>,
+    );
+  }
+}
+
+class RootTagContainer extends Component {
+  static displayName = 'TagContainer';
+  static style = style;
+
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+
+  getTagProps() {
+    const { size, theme, color, disabled, active, uid, id: outerId } = this.asProps;
+    const id = outerId || `igc-${uid}-tag`;
+
+    return {
+      id: `${id}-text`,
+      disabled,
+      size,
+      theme,
+      color,
+      active,
+    };
+  }
+
+  getCloseProps() {
+    const { size, theme, color, disabled, active, uid, id: outerId, getI18nText } = this.asProps;
+    const id = outerId || `igc-${uid}-tag`;
+
+    return {
+      disabled,
+      size,
+      theme,
+      color,
+      active,
+      id: `${id}-clear`,
+      'aria-labelledby': `${id}-clear ${id}-text`,
+      'aria-label': getI18nText('remove'),
+    };
+  }
+
+  render() {
+    const STagContainer = Root;
+    const { styles, Children } = this.asProps;
+
+    return sstyled(styles)(
+      <STagContainer render={Box}>
+        <Children />
+      </STagContainer>,
+    );
+  }
+}
+
+class RootCloseTagContainer extends Component {
+  static displayName = 'CloseTagContainer';
+  static style = style;
+
+  static defaultProps = () => {
+    return {
+      theme: 'primary',
+      color: 'gray-500',
+      size: 'm',
+      i18n: localizedMessages,
+      locale: 'en',
+      children: <CloseTagContainer.Close />,
+    };
+  };
+
+  static enhance = [resolveColorEnhance(), keyboardFocusEnhance()];
+
+  handleKeyDown = (event) => {
+    const { onKeyDown, onClick } = this.asProps;
+
+    if (onKeyDown) {
+      return onKeyDown(event);
+    }
+
+    if (onClick && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      onClick(event);
+    }
+  };
+
+  render() {
+    const STagContainerClose = Root;
+    const { Children, styles, color, resolveColor } = this.asProps;
+
+    return sstyled(styles)(
+      <STagContainerClose
+        render={Box}
+        tag={'button'}
+        interactive={true}
+        interactiveView={true}
+        tag-color={resolveColor(color)}
+        onKeyDown={this.handleKeyDown}
+      >
+        <Children />
+      </STagContainerClose>,
     );
   }
 }
@@ -154,6 +254,13 @@ function Close(props) {
 
   React.useEffect(() => {
     props.onMount?.();
+
+    log.warn(
+      true,
+      'Tag.Close is deprecated and will be removed in the next major release. Please, use TagContainer and TagContainer.Close',
+      'Tag.Close',
+    );
+
     return () => props.onUnmount?.();
   }, []);
 
@@ -191,6 +298,15 @@ const Tag = createComponent(RootTag, {
   Addon,
   Close,
   Circle,
+});
+
+const CloseTagContainer = createComponent(RootCloseTagContainer, {
+  Close: CloseM,
+});
+
+export const TagContainer = createComponent(RootTagContainer, {
+  Tag,
+  Close: CloseTagContainer,
 });
 
 export default Tag;

@@ -15,15 +15,15 @@ const Demo = () => {
 
   return (
     <>
-      <InlineEdit w={150} editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View>
-          <Tag interactive>
-            <Tag.Text>{value}</Tag.Text>
-          </Tag>
+      <InlineEdit editable={editable} onEditableChange={setEditable}>
+        <InlineEdit.View pr={2} tag={Tag} interactive size='l'>
+          <Tag.Text>{value}</Tag.Text>
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput onConfirm={handleValue} onCancel={resetEditable}>
-            <InlineInput.Value defaultValue={value} />
+            <InlineInput.Value defaultValue={value} autoFocus aria-label='Tag name' />
+            <InlineInput.ConfirmControl />
+            <InlineInput.CancelControl />
           </InlineInput>
         </InlineEdit.Edit>
       </InlineEdit>

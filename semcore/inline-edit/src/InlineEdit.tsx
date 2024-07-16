@@ -111,7 +111,7 @@ const Edit: React.FC<AsProps> = (props) => {
       render={FadeInOut}
       visible={visible}
       duration={duration}
-      aria-hidden={!visible}
+      aria-hidden={visible ? undefined : 'true'}
       exiting={!visible}
       ref={ref}
     />,
@@ -141,8 +141,8 @@ const View: React.FC<AsProps> = (props) => {
       preserveNode
       tabIndex={0}
       role='button'
-      aria-hidden={!visible}
-      aria-label={`${props.getI18nText('tapToEdit')}:${textContent}`}
+      aria-hidden={visible ? undefined : 'true'}
+      aria-label={`${props.getI18nText('tapToEdit')}: ${textContent}`}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handleKeyDown}
     />,

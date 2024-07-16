@@ -4,7 +4,7 @@ import MathPlusM from 'intergalactic/icon/MathPlus/m';
 
 const Demo = () => {
   return (
-    <Tag interactive theme='additional' onClick={console.log}>
+    <Tag interactive size='l' theme='additional' onClick={console.log}>
       <Tag.Addon>
         <MathPlusM />
       </Tag.Addon>
