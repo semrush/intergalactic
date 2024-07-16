@@ -9,6 +9,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import log from '@semcore/utils/lib/logger';
 
 import style from './style/tag.shadow.css';
 
@@ -253,6 +254,13 @@ function Close(props) {
 
   React.useEffect(() => {
     props.onMount?.();
+
+    log.warn(
+      true,
+      'Tag.Close is deprecated and will be removed in the next major release. Please, use TagContainer and TagContainer.Close',
+      'Tag.Close',
+    );
+
     return () => props.onUnmount?.();
   }, []);
 
