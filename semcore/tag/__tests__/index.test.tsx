@@ -373,7 +373,7 @@ describe('TagContainer', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Renders text correctly with keyboardFocused', async ({ task }) => {
+  test.concurrent('Renders text correctly with focused close button', async ({ task }) => {
     const component = themes.flatMap((theme) =>
       colors.map((color) => (
         <TagContainer key={`${theme}-${color}`} theme={theme} color={color}>
