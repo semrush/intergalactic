@@ -1,4 +1,5 @@
-STag, STagContainerClose {
+STag,
+STagContainerClose {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -53,7 +54,8 @@ STag, STagContainerClose {
   }
 }
 
-STag[disabled], STagContainerClose[disabled] {
+STag[disabled],
+STagContainerClose[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
@@ -63,7 +65,8 @@ STag[interactiveView] {
   cursor: pointer;
 }
 
-STag[size='m'], STagContainerClose[size='m'] {
+STag[size='m'],
+STagContainerClose[size='m'] {
   height: 20px;
   min-width: 20px;
 
@@ -81,7 +84,8 @@ STag[size='m'], STagContainerClose[size='m'] {
   }
 }
 
-STag[size='l'], STagContainerClose[size='l'] {
+STag[size='l'],
+STagContainerClose[size='l'] {
   height: 28px;
   min-width: 28px;
 
@@ -91,9 +95,11 @@ STag[size='l'], STagContainerClose[size='l'] {
   }
 }
 
-STag[size='xl'], STagContainerClose[size='xl'] {
+STag[size='xl'],
+STagContainerClose[size='xl'] {
   height: 40px;
   min-width: 40px;
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
 
   & SText {
     font-size: var(--intergalactic-fs-300, 16px);
@@ -101,7 +107,8 @@ STag[size='xl'], STagContainerClose[size='xl'] {
   }
 }
 
-STag[theme='primary'], STagContainerClose[theme='primary'] {
+STag[theme='primary'],
+STagContainerClose[theme='primary'] {
   &::before {
     top: -1px;
     left: -1px;
@@ -122,8 +129,10 @@ STag[theme='primary'], STagContainerClose[theme='primary'] {
   }
 }
 
-STag[theme='secondary'], STagContainerClose[theme='secondary'],
-STag[theme='additional'], STagContainerClose[theme='additional'] {
+STag[theme='secondary'],
+STagContainerClose[theme='secondary'],
+STag[theme='additional'],
+STagContainerClose[theme='additional'] {
   &::before {
     opacity: 0.01;
   }
@@ -137,22 +146,29 @@ STag[theme='additional'], STagContainerClose[theme='additional'] {
   }
 }
 
-STag[theme='secondary'], STagContainerClose[theme='secondary'],
-STag[theme='additional'], STagContainerClose[theme='additional'],
-STag[theme='secondary-invert'], STagContainerClose[theme='secondary-invert'],
-STag[theme='additional-invert'], STagContainerClose[theme='additional-invert'] {
+STag[theme='secondary'],
+STagContainerClose[theme='secondary'],
+STag[theme='additional'],
+STagContainerClose[theme='additional'],
+STag[theme='secondary-invert'],
+STagContainerClose[theme='secondary-invert'],
+STag[theme='additional-invert'],
+STagContainerClose[theme='additional-invert'] {
   &::after {
     opacity: 0.5;
   }
 }
 
-STag[theme='primary-invert'], STagContainerClose[theme='primary-invert'] {
+STag[theme='primary-invert'],
+STagContainerClose[theme='primary-invert'] {
   background-color: var(--intergalactic-tag-primary-white-normal, rgba(255, 255, 255, 0.15));
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
-STag[theme='secondary-invert'], STagContainerClose[theme='secondary-invert'],
-STag[theme='additional-invert'], STagContainerClose[theme='additional-invert'] {
+STag[theme='secondary-invert'],
+STagContainerClose[theme='secondary-invert'],
+STag[theme='additional-invert'],
+STagContainerClose[theme='additional-invert'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
@@ -262,7 +278,8 @@ STagContainer {
     border-bottom-right-radius: 0;
     padding-right: var(--intergalactic-spacing-05x, 2px);
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-right: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
@@ -282,7 +299,8 @@ STagContainer {
     padding-right: 0;
     min-width: 20px;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-left: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -294,7 +312,7 @@ STagContainer {
 
     svg {
       padding-left: 0;
-      padding-right: var(--intergalactic-spacing-2x, 8px);
+      padding-right: var(--intergalactic-spacing-1x, 4px);
     }
 
     svg path {
@@ -304,5 +322,13 @@ STagContainer {
     &:hover svg path {
       opacity: 1;
     }
+  }
+
+  STagContainerClose[size='xl'] {
+    svg {
+      padding-left: var(--intergalactic-spacing-1x, 4px);
+      padding-right: var(--intergalactic-spacing-2x, 8px);
+    }
+
   }
 }
