@@ -15,25 +15,19 @@ const Demo = () => {
     day_week: 'Monday',
     emails: ['first@react.hook.form', 'first@react.hook.form'],
   };
-  const { handleSubmit, getValues, setValue, control, setError, errors, reset } = useForm({
+  const { handleSubmit, getValues, setValue, control, setError, errors } = useForm({
     defaultValues,
   });
   const [valueTag, setValueTag] = React.useState('');
 
-  const changeInputTagsValue = (value) => {
-    reset(defaultValues);
-    setValueTag(value);
-  };
-
   const onSubmit = (data) => {
-    reset(defaultValues);
     alert(JSON.stringify(data));
   };
 
   const handleAppendTags = (newTags) => {
     const tags = getValues('emails');
     if (newTags.some((tag) => !/.+@.+\..+/i.test(tag))) {
-      setError('emails', { message: "Email don't valid" });
+      setError('emails', { message: "Email isn't valid" });
       return;
     }
     if (tags.length + newTags.length > 5) {
@@ -41,14 +35,14 @@ const Demo = () => {
       return;
     }
     setValue('emails', [...tags, ...newTags]);
-    changeInputTagsValue('');
+    setValueTag('');
   };
 
   const handleRemoveTag = () => {
     const tags = getValues('emails');
     if (tags.length === 0) return;
     setValue('emails', tags.slice(0, -1));
-    changeInputTagsValue(`${tags.slice(-1)[0]} ${valueTag}`);
+    setValueTag(`${tags.slice(-1)[0]} ${valueTag}`);
   };
 
   const handleCloseTag = (e) => {
@@ -94,16 +88,14 @@ const Demo = () => {
             </Text>
             <Tooltip
               interaction='none'
-              placement='right'
+              placement='bottom'
               theme='warning'
               w='100%'
               animationsDisabled
+              visible={Boolean(errors['emails'])}
             >
-              <Tooltip.Popper id='form-emails-error' visible={Boolean(errors['emails'])}>
-                {String(errors['emails']?.[0])}
-              </Tooltip.Popper>
-              <InputTags
-                tag={Tooltip.Trigger}
+              <Tooltip.Trigger
+                tag={InputTags}
                 size='l'
                 state={errors['emails'] ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
@@ -117,8 +109,11 @@ const Demo = () => {
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
                   </InputTags.Tag>
                 ))}
-                <InputTags.Value value={valueTag} onChange={changeInputTagsValue} />
-              </InputTags>
+                <InputTags.Value value={valueTag} onChange={setValueTag} />
+              </Tooltip.Trigger>
+              <Tooltip.Popper id='form-emails-error'>
+                {String((errors['emails'] as any)?.message)}
+              </Tooltip.Popper>
             </Tooltip>
           </>
         )}
