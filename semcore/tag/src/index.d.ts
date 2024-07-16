@@ -89,6 +89,7 @@ declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
    *     <TagContainer.Tag.Text>Tag text</TagContainer.Tag.Text>
    *     <TagContainer.Close onClick={handleClose} />
    * </TagContainer>
+   * See example on https://developer.semrush.com/intergalactic/components/tag/tag-code#removing-tag
    * */
   Close: Intergalactic.Component<'div', TagCloseProps>;
   Circle: Intergalactic.Component<'div', TagAddonProps>;
