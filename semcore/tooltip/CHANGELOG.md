@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.39.0] - 2024-07-17
+
+### Added
+
+- `aria-controls` to `DescriptionTooltip.Trigger`.
+
 ## [6.38.0] - 2024-07-16
 
 ### Added
