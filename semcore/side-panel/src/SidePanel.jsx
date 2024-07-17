@@ -18,7 +18,10 @@ import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import logger from '@semcore/utils/lib/logger';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-
+import {
+  ZIndexStackingContextProvider,
+  useZIndexStacking,
+} from '@semcore/utils/lib/zIndexStacking';
 import style from './style/side-panel.shadow.css';
 
 class RootSidePanel extends Component {
@@ -145,7 +148,8 @@ function Overlay(props) {
   const overlayRef = React.useRef(null);
   usePreventScroll(props.visible, props.disablePreventScroll);
   useContextTheme(overlayRef, props.visible);
-  return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} />);
+  const zIndex = useZIndexStacking('z-index-modal');
+  return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} zIndex={zIndex} />);
 }
 
 function Panel(props) {
@@ -184,16 +188,18 @@ function Panel(props) {
         role='dialog'
         aria-modal='true'
       >
-        <PortalProvider value={sidebarRef}>
-          {closable && <SidePanel.Close />}
-          {advancedMode ? (
-            <Children />
-          ) : (
-            <SidePanel.Body>
+        <ZIndexStackingContextProvider designToken='z-index-modal'>
+          <PortalProvider value={sidebarRef}>
+            {closable && <SidePanel.Close />}
+            {advancedMode ? (
               <Children />
-            </SidePanel.Body>
-          )}
-        </PortalProvider>
+            ) : (
+              <SidePanel.Body>
+                <Children />
+              </SidePanel.Body>
+            )}
+          </PortalProvider>
+        </ZIndexStackingContextProvider>
       </SPanel>
     </>,
   );
