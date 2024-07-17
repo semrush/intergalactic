@@ -1,3 +1,21 @@
+## [15.100.0] - 2024-07-17
+
+### @semcore/data-table
+
+- **Fixed** View of ScrollArea shadows in table body.
+
+### @semcore/notice-bubble
+
+- **Fixed** Close button shape wasn't square.
+- **Fixed** Warning notices announcement was read twice by NDVA.
+- **Fixed** Warning notices wasn't announced as alert by Voice Over.
+- **Added** Close button tooltip.
+
+### @semcore/tooltip
+
+- **Added** `aria-controls` to `DescriptionTooltip.Trigger`.
+- **Added** `arrowBgColor` and `arrowShadowColor` properties for Tooltip.Popper.
+
 ## [15.99.0] - 2024-07-13
 
 ### @semcore/accordion
