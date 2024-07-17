@@ -13,7 +13,7 @@ title: Punctuation and special symbols
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
 
-![](/content/punctuation/static/emdash.jpg)
+![](/content/punctuation/static/emdash.png)
 
 ### En dash
 
@@ -26,7 +26,7 @@ title: Punctuation and special symbols
 * Use to indicate an empty value in tables
 * Omit the spaces on both sides of the dash
 
-![](/content/punctuation/static/endash.jpg)
+![](/content/punctuation/static/endash.png)
 
 ### Hyphen
 
@@ -36,7 +36,7 @@ title: Punctuation and special symbols
 
 * Use for telephone numbers and compound modifiers
 
-![](/content/punctuation/static/hyphen.jpg)
+![](/content/punctuation/static/hyphen.png)
 
 ### Non-breaking hyphen
 
@@ -46,7 +46,7 @@ title: Punctuation and special symbols
 
 * Use to prevent unwanted line breaks
 
-![](/content/punctuation/static/nbhyphen.jpg)
+![](/content/punctuation/static/nbhyphen.png)
 
 ### Soft hyphen
 
@@ -57,7 +57,7 @@ title: Punctuation and special symbols
 * Use to indicate where a hyphenated break is allowed. It’s invisible otherwise
 * Useful in scenarios when the same string is displayed in different layouts 
 
-![](/content/punctuation/static/softhyphen.jpg)
+![](/content/punctuation/static/softhyphen.png)
 
 ## Non-breaking space
 
@@ -68,7 +68,7 @@ title: Punctuation and special symbols
 * Use to keep the words "glued"
 > Use ⌥+space on MacOS to insert
 
-![](/content/punctuation/static/nbsp.jpg)
+![](/content/punctuation/static/nbsp.png)
 
 
 ## Quotation marks and apostrophe
@@ -85,7 +85,7 @@ title: Punctuation and special symbols
 * Dashes, semicolons, exclamation points, and question marks go inside the quotation mark only if they relate to the quotation
 * Use when quoting UI text, if text formatting is not available
 
-![](/content/punctuation/static/quotationmarks.jpg)
+![](/content/punctuation/static/quotationmarks.png)
 
 ### Apostrophe
 
@@ -95,7 +95,7 @@ title: Punctuation and special symbols
 
 * Use the curly style, just like for the quotation marks
 
-![](/content/punctuation/static/apostrophe.jpg)
+![](/content/punctuation/static/apostrophe.png)
 
 
 ## Period
@@ -104,7 +104,7 @@ title: Punctuation and special symbols
 * Include in quotation marks and brackets
 * Use with shortened forms of words (mainly in table columns)
 
-![](/content/punctuation/static/period.jpg)
+![](/content/punctuation/static/period.png)
 
 **Omit:**
 * in headings
@@ -114,7 +114,7 @@ title: Punctuation and special symbols
 * in tooltips that serve as labels for icons or display the element’s full name
 * after URLs
 
-![](/content/punctuation/static/noperiod.jpg)
+![](/content/punctuation/static/noperiod.png)
 
 
 ## Lists
@@ -127,7 +127,7 @@ title: Punctuation and special symbols
 * Use sentence-style capitalization
 > Use numbered lists for a sequence of actions!
 
-![](/content/punctuation/static/list.jpg)
+![](/content/punctuation/static/lists.png)
 
 
 ## Special symbols
@@ -141,7 +141,7 @@ title: Punctuation and special symbols
 * Enclose in spaces
 * Avoid. If there’s enough space—always use “and”
 
-![](/content/punctuation/static/ampersand.jpg)
+![](/content/punctuation/static/ampersand.png)
 
 ### Number sign
 
@@ -151,7 +151,7 @@ title: Punctuation and special symbols
 
 * Omit the space after the sign
 
-![](/content/punctuation/static/number.jpg)
+![](/content/punctuation/static/number.png)
 
 ### Percent sign
 
@@ -163,7 +163,7 @@ title: Punctuation and special symbols
 * Omit the space before the percent sign
 > Exception: German, French, Swedish languages
 
-![](/content/punctuation/static/percent.jpg)
+![](/content/punctuation/static/percent.png)
 
 ### Minus and plus signs
 
@@ -176,7 +176,7 @@ title: Punctuation and special symbols
 * Use the en dash for the minus sign
 * Use to show changes in metrics
 
-![](/content/punctuation/static/minusplus.jpg)
+![](/content/punctuation/static/minusplus.png)
 
 ### Slash
 
@@ -186,7 +186,7 @@ title: Punctuation and special symbols
 
 * Omit the spaces around the sign
 
-![](/content/punctuation/static/slash.jpg)
+![](/content/punctuation/static/slash.png)
 
 ### Multiplication sign
 
@@ -196,4 +196,4 @@ title: Punctuation and special symbols
 
 * Avoid using the “x” letter
 
-![](/content/punctuation/static/apostrophe.jpg)
+![](/content/punctuation/static/multiplication.png)
