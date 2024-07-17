@@ -6,7 +6,7 @@ const Example = () => {
     <div>
       <InlineInput>
         <InlineInput.Addon htmlFor='number-example' tag='label'>
-          Some score:
+          Number:
         </InlineInput.Addon>
         <InlineInput.NumberValue id='number-example' defaultValue={100} />
         <InlineInput.NumberControls />
