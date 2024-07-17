@@ -15,6 +15,7 @@ import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 import Button from '@semcore/button';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { Hint } from '@semcore/tooltip';
 
 import style from './style/notice-bubble.shadow.css';
 import { forkRef, useForkRef } from '@semcore/utils/lib/ref';
@@ -79,6 +80,7 @@ class NoticeBubbleContainerRoot extends Component {
 
   render() {
     const SNoticeBubble = Root;
+    const SNoticeAriaLiveWrapper = 'div';
     const { Children, styles, disablePortal, getI18nText, ref } = this.asProps;
     const { notices, warnings } = this.state;
 
@@ -89,12 +91,13 @@ class NoticeBubbleContainerRoot extends Component {
           ref={ref}
           tag='section'
           role='region'
-          aria-live='polite'
           aria-label={getI18nText('notification')}
         >
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
-          <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
+          <SNoticeAriaLiveWrapper aria-live='polite'>
+            <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
+          </SNoticeAriaLiveWrapper>
         </SNoticeBubble>
       </Portal>,
     );
@@ -164,10 +167,11 @@ class ViewInfo extends Component {
 
   render() {
     const SBubble = FocusLock;
-    const SDismiss = Button;
+    const SDismiss = Hint.Trigger;
     const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
+    const SIcon = Flex;
     const {
       forwardRef,
       styles,
@@ -187,26 +191,36 @@ class ViewInfo extends Component {
         ref={forkRef(forwardRef, this.ref)}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
+        role={type === 'warning' ? 'alert' : this.props.role}
       >
-        <SDismiss
-          type='button'
-          use='tertiary'
-          theme='muted'
-          aria-label={getI18nText('close')}
-          onClick={this.handleClose}
-        >
-          <CloseIcon />
-        </SDismiss>
+        <Hint title={getI18nText('close')}>
+          <SDismiss
+            // biome-ignore lint/a11y/useValidAriaValues: <explanation>
+            aria-haspopup={undefined}
+            tag={Button}
+            type='button'
+            use='tertiary'
+            size='m'
+            theme='invert'
+            onClick={this.handleClose}
+            aria-label={getI18nText('close')}
+            active={false}
+          >
+            <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
+          </SDismiss>
+          <Hint.Popper zIndex={1000} />
+        </Hint>
+
         {isNode(icon) ? (
           <>
-            {icon}
+            <SIcon>{icon}</SIcon>
             <SContent>
               <SMessage>{children}</SMessage>
               {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
             </SContent>
           </>
         ) : (
-          <SContent role={type === 'warning' ? 'alert' : undefined}>
+          <SContent>
             <SMessage>{children}</SMessage>
             {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
           </SContent>

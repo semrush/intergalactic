@@ -28,7 +28,7 @@ SContent {
 
 SMessage {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-100, 133%);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 
 SDismiss {
@@ -36,17 +36,21 @@ SDismiss {
   position: absolute;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-2x, 8px) 0;
-  margin: var(--intergalactic-spacing-1x, 4px);
+  margin-top: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-bottom: var(--intergalactic-spacing-2x, 8px);
   flex-shrink: 0;
   border: 0;
   background: transparent;
-  & svg {
-    color: var(--intergalactic-text-primary-invert, #ffffff);
-  }
-  &:hover svg {
-    color: var(--intergalactic-control-primary-invert-active, #e0e1e9);
-  }
+}
+SDismiss[use][use] {
+  /* height: auto; */
+  padding: 0 1px;
+}
+SIcon {
+  justify-content: center;
+  align-items: center;
+  height: var(--intergalactic-spacing-5x, 20px);
 }
 
 SNoticeBubble {
@@ -69,6 +73,10 @@ SNoticeBubble[disablePortal] {
 
 SMessage a {
   color: var(--intergalactic-text-link-invert, #8ecdff);
+}
+
+SNoticeAriaLiveWrapper {
+  display: content;
 }
 
 @keyframes enter {

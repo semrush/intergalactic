@@ -6,6 +6,7 @@ import Link from 'intergalactic/link';
 const manager = new NoticeBubbleManager();
 
 const Demo = () => {
+  const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     const { focus } = manager.add({
       children: (
@@ -16,13 +17,22 @@ const Demo = () => {
       action: <Button theme='invert'>Undo</Button>,
       initialAnimation: true,
       duration: 0,
+      onClose: () => {
+        setTimeout(() => {
+          if (document.activeElement === document.body) {
+            openButtonRef.current?.focus();
+          }
+        }, 500);
+      },
     });
     focus();
   };
 
   return (
     <>
-      <Button onClick={handleClick}>Show notice with undo action</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>
+        Show notice with undo action
+      </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );
