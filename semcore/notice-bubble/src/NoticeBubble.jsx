@@ -206,7 +206,7 @@ class ViewInfo extends Component {
             aria-label={getI18nText('close')}
             active={false}
           >
-            <Button.Addon tag={CloseIcon} />
+            <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
           </SDismiss>
           <Hint.Popper zIndex={1000} />
         </Hint>
