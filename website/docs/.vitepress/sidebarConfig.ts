@@ -511,9 +511,9 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Bubble chart',
           },
           {
-            link: '/data-display/cigarette-pack/cigarette-pack',
-            activeMatch: '/data-display/cigarette-pack/',
-            text: 'Cigarette pack bar chart',
+            link: '/data-display/compact-horizontal-bar/compact-horizontal-bar',
+            activeMatch: '/data-display/compact-horizontal-bar/',
+            text: 'Compact horizontal bar bar chart',
           },
           {
             link: '/data-display/donut-chart/donut-chart',

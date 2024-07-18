@@ -61,6 +61,6 @@ SBarValue {
   line-height: var(--intergalactic-lh-200, 142%);
   text-align: right;
 }
-SCigarettePackHoverRect {
+SCompactHorizontalBarHoverRect {
   fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
 }

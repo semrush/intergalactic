@@ -1,5 +1,5 @@
 ---
-title: Cigarette pack bar chart
+title: Compact horizontal bar bar chart
 fileSource: d3-chart
 tabs: Design('bar-horizontal-compact'), A11y('bar-horizontal-compact-a11y'), API('bar-horizontal-compact-api'), Examples('bar-horizontal-compact-d3-code'), Changelog('d3-chart-changelog')
 ---
@@ -8,26 +8,26 @@ tabs: Design('bar-horizontal-compact'), A11y('bar-horizontal-compact-a11y'), API
 
 For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
-## Chart.CigarettePack
+## Chart.CompactHorizontalBar
 
 
 ```js
 import { Chart } from 'intergalactic/d3-chart';
 ```
 
-<TypesView type="CigarettePackChartProps" :types={...types} />
+<TypesView type="CompactHorizontalBarChartProps" :types={...types} />
 
 
-## CigarettePack
+## CompactHorizontalBar
 
 
 ```js
-import { CigarettePack } from 'intergalactic/d3-chart';
+import { CompactHorizontalBar } from 'intergalactic/d3-chart';
 
-<CigarettePack />;
+<CompactHorizontalBar />;
 ```
 
 
-<TypesView type="CigarettePackProps" :types={...types} />
+<TypesView type="CompactHorizontalBarProps" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

@@ -1,5 +1,5 @@
 ---
-title: Cigarette pack bar chart
+title: Compact horizontal bar bar chart
 fileSource: d3-chart
 tabs: Design('bar-horizontal-compact'), A11y('bar-horizontal-compact-a11y'), API('bar-horizontal-compact-api'), Examples('bar-horizontal-compact-d3-code'), Changelog('d3-chart-changelog')
 ---
@@ -40,10 +40,22 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Clickable bars
 
+Basic use.
+
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/clickable.tsx';
+  export Demo from './examples/clickable_basic.tsx';
+</script>
+
+:::
+
+Advanced use.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/clickable_advanced.tsx';
 </script>
 
 :::

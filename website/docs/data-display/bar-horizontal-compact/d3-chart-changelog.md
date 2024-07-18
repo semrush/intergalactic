@@ -1,7 +1,7 @@
 ---
-title: Cigarette pack bar chart
+title: Compact horizontal bar bar chart
 fileSource: d3-chart
-tabs: Design('cigarette-pack'), A11y('cigarette-pack-a11y'), API('cigarette-pack-api'), Examples('cigarette-pack-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('compact-horizontal-bar'), A11y('compact-horizontal-bar-a11y'), API('compact-horizontal-bar-api'), Examples('compact-horizontal-bar-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 Common changelog of `d3-chart` package.

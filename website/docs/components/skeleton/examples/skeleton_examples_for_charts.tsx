@@ -4,7 +4,7 @@ import {
   LineChartSkeleton,
   AreaChartSkeleton,
   BarChartSkeleton,
-  CigarettePackChartSkeleton,
+  CompactHorizontalBarChartSkeleton,
   VennChartSkeleton,
   ScatterPlotChartSkeleton,
   BubbleChartSkeleton,
@@ -72,10 +72,10 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>CigarettePackChart skeleton</Card.Title>
+          <Card.Title>CompactHorizontalBarChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
-          <CigarettePackChartSkeleton />
+          <CompactHorizontalBarChartSkeleton />
         </Card.Body>
       </Card>
 

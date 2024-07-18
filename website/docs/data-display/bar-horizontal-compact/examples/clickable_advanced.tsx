@@ -1,9 +1,8 @@
 import React from 'react';
-import { Plot, CigarettePack } from 'intergalactic/d3-chart';
+import { Plot, CompactHorizontalBar } from 'intergalactic/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
-import { Chart } from 'intergalactic/d3-chart';
 
 const Demo = () => {
   const MARGIN = 30;
@@ -22,44 +21,38 @@ const Demo = () => {
 
   return (
     <Flex flexWrap gap={5}>
-      <Chart.CigarettePack
-        y={'category'}
-        x={'value'}
-        data={data}
-        plotWidth={500}
-        plotHeight={450}
-        onClickBar={(barIndex) => alert(`Bar ${barIndex} clicked`)}
-      />
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <CigarettePack x='value' y='category'>
-          <CigarettePack.Hover />
-          <CigarettePack.Tooltip>
+        <CompactHorizontalBar x='value' y='category'>
+          <CompactHorizontalBar.Hover />
+          <CompactHorizontalBar.Tooltip>
             {({ index }) => {
               return {
                 children: (
                   <>
-                    <CigarettePack.Tooltip.Title>
+                    <CompactHorizontalBar.Tooltip.Title>
                       {data[index].category}
-                    </CigarettePack.Tooltip.Title>
+                    </CompactHorizontalBar.Tooltip.Title>
                     <Flex justifyContent='space-between'>
-                      <CigarettePack.Tooltip.Dot mr={4}>Bar</CigarettePack.Tooltip.Dot>
+                      <CompactHorizontalBar.Tooltip.Dot mr={4}>
+                        Bar
+                      </CompactHorizontalBar.Tooltip.Dot>
                       <Text bold>{data[index].value}</Text>
                     </Flex>
                   </>
                 ),
               };
             }}
-          </CigarettePack.Tooltip>
-          <CigarettePack.Annotation>
-            <CigarettePack.Label />
-            <CigarettePack.Percent />
-            <CigarettePack.Value />
-          </CigarettePack.Annotation>
-          <CigarettePack.Bar onClick={(barIndex) => alert(`Bar ${barIndex} clicked`)}>
-            <CigarettePack.Bar.Background />
-            <CigarettePack.Bar.Fill />
-          </CigarettePack.Bar>
-        </CigarettePack>
+          </CompactHorizontalBar.Tooltip>
+          <CompactHorizontalBar.Annotation>
+            <CompactHorizontalBar.Label />
+            <CompactHorizontalBar.Percent />
+            <CompactHorizontalBar.Value />
+          </CompactHorizontalBar.Annotation>
+          <CompactHorizontalBar.Bar onClick={(barIndex) => alert(`Bar ${barIndex} clicked`)}>
+            <CompactHorizontalBar.Bar.Background />
+            <CompactHorizontalBar.Bar.Fill />
+          </CompactHorizontalBar.Bar>
+        </CompactHorizontalBar>
       </Plot>
     </Flex>
   );

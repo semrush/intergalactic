@@ -19,8 +19,8 @@ export const MIN_WIDTH = 4;
 const barHeight = 20;
 const hoverOffset = 6;
 
-class CigarettePackRoot extends Component {
-  static displayName = 'CigarettePack';
+class CompactHorizontalBarRoot extends Component {
+  static displayName = 'CompactHorizontalBar';
   static enhance = [uniqueIDEnhancement()];
   static style = style;
 
@@ -30,7 +30,6 @@ class CigarettePackRoot extends Component {
     wMin: MIN_WIDTH,
     locale: 'en',
     color: 'chart-palette-order-1',
-    radius: 2,
   };
 
   getBarProps(_props, index) {
@@ -39,7 +38,7 @@ class CigarettePackRoot extends Component {
     };
   }
   getBarBackgroundProps(_props, index) {
-    const { data, scale, radius } = this.asProps;
+    const { data, scale } = this.asProps;
     const bar = this.computeBarData(data[index], index);
 
     return {
@@ -49,12 +48,11 @@ class CigarettePackRoot extends Component {
       y: bar.y + bar.height - barHeight - hoverOffset,
       height: barHeight,
       width: bar.fullWidth,
-      radius,
     };
   }
 
   getBarFillProps(_props, index) {
-    const { data, uid, patterns, color, transparent, hide, scale, radius } = this.asProps;
+    const { data, uid, patterns, color, transparent, hide, scale } = this.asProps;
     const bar = this.computeBarData(data[index], index);
     return {
       x: bar.x,
@@ -69,7 +67,6 @@ class CigarettePackRoot extends Component {
       transparent,
       hide,
       scale,
-      radius,
     };
   }
   getAnnotationProps(_props, index) {
@@ -174,7 +171,7 @@ class CigarettePackRoot extends Component {
   }
 
   renderBar(d, i) {
-    const SCigarettePackGroup = this.Element;
+    const SCompactHorizontalBarGroup = this.Element;
     const { styles, groupKey } = this.asProps;
     const { x, y } = this.computeBarData(d, i);
 
@@ -182,7 +179,7 @@ class CigarettePackRoot extends Component {
 
     return (
       <React.Fragment key={`horizontal-bar-${i}`}>
-        {sstyled(styles)(<SCigarettePackGroup render='g' />)}
+        {sstyled(styles)(<SCompactHorizontalBarGroup render='g' />)}
       </React.Fragment>
     );
   }
@@ -289,11 +286,11 @@ function BarFill(props) {
     patterns,
     i,
     scale,
-    radius,
   } = props;
   const [xScale] = scale;
   const xRange = xScale.range();
   const backgroundWidth = xRange[1] - xRange[0];
+  const radius = 0; // left it here in case we will change our mind and return to rounded bars
   const pathD = React.useMemo(() => {
     if (backgroundWidth - radius > width) {
       return roundedPath(x, y, width, height, radius);
@@ -338,10 +335,11 @@ function BarFill(props) {
   );
 }
 function BarBackground(props) {
-  const { Element: SBackground, styles, scale, y, x, height, radius } = props;
+  const { Element: SBackground, styles, scale, y, x, height } = props;
   const [xScale] = scale;
   const xRange = xScale.range();
   const width = xRange[1] - xRange[0];
+  const radius = 0; // left it here in case we will change our mind and return to rounded bars
   const pathD = React.useMemo(() => {
     return roundedPath(x, y, width, height, radius, false, true, false, true);
   }, [x, y, height, width, radius]);
@@ -437,12 +435,12 @@ class Hover extends Component {
     const { styles, getBarData, render } = this.asProps;
     if (!render) return null;
     const { index } = this.state;
-    const SCigarettePackHoverRect = this.Element;
+    const SCompactHorizontalBarHoverRect = this.Element;
 
     if (index === null) return null;
     const bar = getBarData(index);
     return sstyled(styles)(
-      <SCigarettePackHoverRect
+      <SCompactHorizontalBarHoverRect
         render='rect'
         x={bar.x}
         y={bar.y + bar.height - barHeight - hoverOffset * 2}
@@ -453,15 +451,19 @@ class Hover extends Component {
   }
 }
 
-const CigarettePackTooltip = (props) => {
+const CompactHorizontalBarTooltip = (props) => {
   if (!props.render) return null;
-  const SCigarettePackRadarTooltip = Root;
+  const SCompactHorizontalBarRadarTooltip = Root;
   return sstyled(props.styles)(
-    <SCigarettePackRadarTooltip render={Tooltip} tag={CigarettePack.Hover} excludeAnchorProps />,
+    <SCompactHorizontalBarRadarTooltip
+      render={Tooltip}
+      tag={CompactHorizontalBar.Hover}
+      excludeAnchorProps
+    />,
   );
 };
 
-const CigarettePack = createElement(CigarettePackRoot, {
+const CompactHorizontalBar = createElement(CompactHorizontalBarRoot, {
   Annotation,
   Label,
   Percent,
@@ -474,7 +476,7 @@ const CigarettePack = createElement(CigarettePackRoot, {
     },
   ],
   Hover,
-  Tooltip: [CigarettePackTooltip, Tooltip._______childrenComponents],
+  Tooltip: [CompactHorizontalBarTooltip, Tooltip._______childrenComponents],
 });
 
-export default CigarettePack;
+export default CompactHorizontalBar;

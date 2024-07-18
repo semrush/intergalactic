@@ -38,8 +38,8 @@ export * from './Bar';
 export { default as HorizontalBar } from './HorizontalBar';
 export * from './HorizontalBar';
 
-export { default as CigarettePack } from './CigarettePack';
-export * from './CigarettePack';
+export { default as CompactHorizontalBar } from './CompactHorizontalBar';
+export * from './CompactHorizontalBar';
 
 export { default as GroupBar } from './GroupBar';
 export * from './GroupBar';

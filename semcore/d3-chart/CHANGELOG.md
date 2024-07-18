@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `CigarettePack` chart.
+- `CompactHorizontalBar` chart.
 
 ## [3.49.0] - 2024-07-13
 

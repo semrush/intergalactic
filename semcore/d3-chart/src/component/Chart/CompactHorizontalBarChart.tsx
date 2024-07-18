@@ -2,20 +2,20 @@ import React from 'react';
 import createComponent from '@semcore/core';
 import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
 import {
-  CigarettePackChartData,
-  CigarettePackChartProps,
-  CigarettePackChartType,
-} from './CigarettePackChart.type';
+  CompactHorizontalBarChartData,
+  CompactHorizontalBarChartProps,
+  CompactHorizontalBarChartType,
+} from './CompactHorizontalBarChart.type';
 import { scaleBand, scaleLinear } from 'd3-scale';
 // @ts-ignore
-import { CigarettePack } from '../..';
+import { CompactHorizontalBar } from '../..';
 import { AbstractChart } from './AbstractChart';
 
-class CigarettePackChartComponent extends AbstractChart<
-  CigarettePackChartData,
-  CigarettePackChartProps
+class CompactHorizontalBarChartComponent extends AbstractChart<
+  CompactHorizontalBarChartData,
+  CompactHorizontalBarChartProps
 > {
-  static displayName = 'Chart.CigarettePack';
+  static displayName = 'Chart.CompactHorizontalBar';
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
     showXAxis: false,
@@ -40,23 +40,23 @@ class CigarettePackChartComponent extends AbstractChart<
     const { x, y, onClickHoverRect, onClickBar } = this.asProps;
 
     return (
-      <CigarettePack x={x} y={y}>
-        {this.renderCigarettePackTooltip()}
-        <CigarettePack.Hover onClick={onClickHoverRect} />
-        <CigarettePack.Annotation>
-          <CigarettePack.Label />
-          <CigarettePack.Percent />
-          <CigarettePack.Value />
-        </CigarettePack.Annotation>
-        <CigarettePack.Bar onClick={onClickBar}>
-          <CigarettePack.Bar.Background />
-          <CigarettePack.Bar.Fill />
-        </CigarettePack.Bar>
-      </CigarettePack>
+      <CompactHorizontalBar x={x} y={y}>
+        {this.renderCompactHorizontalBarTooltip()}
+        <CompactHorizontalBar.Hover onClick={onClickHoverRect} />
+        <CompactHorizontalBar.Annotation>
+          <CompactHorizontalBar.Label />
+          <CompactHorizontalBar.Percent />
+          <CompactHorizontalBar.Value />
+        </CompactHorizontalBar.Annotation>
+        <CompactHorizontalBar.Bar onClick={onClickBar}>
+          <CompactHorizontalBar.Bar.Background />
+          <CompactHorizontalBar.Bar.Fill />
+        </CompactHorizontalBar.Bar>
+      </CompactHorizontalBar>
     );
   }
 
-  protected renderCigarettePackTooltip(): React.ReactNode {
+  protected renderCompactHorizontalBarTooltip(): React.ReactNode {
     const { data, x, y, showTooltip } = this.asProps;
 
     if (!showTooltip) {
@@ -64,19 +64,23 @@ class CigarettePackChartComponent extends AbstractChart<
     }
 
     return (
-      <CigarettePack.Tooltip wMin={100}>
+      <CompactHorizontalBar.Tooltip wMin={100}>
         {({ index }: any) => {
           return {
             children: (
               <>
-                <CigarettePack.Tooltip.Title>{data[index][y]}</CigarettePack.Tooltip.Title>
+                <CompactHorizontalBar.Tooltip.Title>
+                  {data[index][y]}
+                </CompactHorizontalBar.Tooltip.Title>
 
-                <CigarettePack.Tooltip.Dot>{data[index][x]}</CigarettePack.Tooltip.Dot>
+                <CompactHorizontalBar.Tooltip.Dot>
+                  {data[index][x]}
+                </CompactHorizontalBar.Tooltip.Dot>
               </>
             ),
           };
         }}
-      </CigarettePack.Tooltip>
+      </CompactHorizontalBar.Tooltip>
     );
   }
 
@@ -103,6 +107,6 @@ class CigarettePackChartComponent extends AbstractChart<
   }
 }
 
-export const CigarettePackChart: CigarettePackChartType = createComponent(
-  CigarettePackChartComponent,
+export const CompactHorizontalBarChart: CompactHorizontalBarChartType = createComponent(
+  CompactHorizontalBarChartComponent,
 );
