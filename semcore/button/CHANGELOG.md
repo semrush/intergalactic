@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Tokens for `Button` with `use="primary"` and `theme="warning"`: from `--intergalactic-icon-primary-warning` and --intergalactic-icon-primary-warning-hover-active to `--intergalactic-control-primary-brand`, `--intergalactic-control-primary-brand-hover` and `--intergalactic-control-primary-brand-active`.
+- Tokens for `Button` with `use="primary"` and `theme="warning"`: from `--intergalactic-icon-primary-warning` and `--intergalactic-icon-primary-warning-hover-active` to `--intergalactic-control-primary-brand`, `--intergalactic-control-primary-brand-hover` and `--intergalactic-control-primary-brand-active`.
 
 ## [5.33.0] - 2024-07-17
 
@@ -605,7 +605,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1]
-  , `@semcore/flex-box` [4.5.1 ~> 4.5.3]).
+, `@semcore/flex-box` [4.5.1 ~> 4.5.3]).
 
 ## [4.0.1] - 2022-05-19
 
