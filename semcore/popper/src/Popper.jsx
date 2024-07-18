@@ -430,16 +430,26 @@ class Popper extends Component {
       onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'trigger'),
       disableEnforceFocus,
       popperRef: this.popperRef,
-      onBlur: callAllEventHandlers(this.handleTriggerBlur, interactionProps.onBlur),
+      /** order of handlers is important here! */
+      onBlur: callAllEventHandlers(interactionProps.onBlur, this.handleTriggerBlur),
     };
   }
 
   handleTriggerBlur = () => {
-    setTimeout(() => {
-      if (!this.asProps.visible) {
-        this.setState({ ignoreTriggerFocusUntil: 0 });
-      }
-    }, 0);
+    const { timeout } = this.asProps;
+    const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
+    const delay = timeoutConfig[1];
+
+    clearTimeout(this.triggerBlurTimeout);
+    /** Need to call timeout with delay as for hiding */
+    this.triggerBlurTimeout = setTimeout(() => {
+      /** Need to check visible prop in next frame because this.asProps updates only after rerender */
+      requestAnimationFrame(() => {
+        if (!this.asProps.visible) {
+          this.setState({ ignoreTriggerFocusUntil: 0 });
+        }
+      });
+    }, delay);
   };
 
   getPopperProps() {

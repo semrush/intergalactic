@@ -226,4 +226,36 @@ test.describe('Popper', () => {
 
     await expect(secondInput).toBeFocused();
   });
+
+  test('Should open popper second time', async ({ page }) => {
+    const standPath = 'semcore/popper/__tests__/stands/focus-interaction.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    const before = page.locator('button[data-position="before"]');
+    await before.focus();
+
+    const popperLocator = page.locator('text=Some content in popper');
+    await expect(popperLocator).toHaveCount(0);
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Tab');
+
+    await expect(popperLocator).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Shift+Tab');
+
+    await expect(popperLocator).toHaveCount(0);
+    await expect(before).toBeFocused();
+    await expect(page).toHaveScreenshot();
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await page.keyboard.press('Tab');
+
+    await expect(popperLocator).toHaveCount(1);
+    await expect(page).toHaveScreenshot();
+  });
 });
