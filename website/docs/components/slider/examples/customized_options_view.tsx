@@ -30,7 +30,7 @@ const Demo = () => {
         >
           <Slider.Bar />
           <Slider.Knob />
-          <Slider.Options mt={3}>
+          <Slider.Options mt={2}>
             <Slider.Item style={{ transform: 'rotate(-45deg)' }} />
           </Slider.Options>
         </Slider>
