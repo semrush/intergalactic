@@ -64,9 +64,11 @@ Show an ["empty" state](/components/widget-empty/widget-empty) with the option t
 
 For the filter trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
 
+Table: Advanced filter states
+
 | State       | Appearance                                         |
 | ----------- | -------------------------------------------------- |
-| placeholder | ![filter default state](static/default.png)        |
+| Placeholder | ![filter default state](static/default.png)        |
 | Hover       | ![filter hover state](static/hover.png)            |
 | Active      | ![filter active state](static/advanced-filter.png) |
 
@@ -83,11 +85,12 @@ For the filter trigger use [Select](/components/select/select) and [FilterTrigge
 
 ## Tooltips
 
-|                                                                                                                                   | Appearance example                                       |
-| --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| While hovering over the button with the Close icon in the filled filter show the tooltip with the text: "Clear advanced filters". | ![filter tooltip](static/tooltip-1.png)                  |
-| While hovering over an open select, show a tooltip with the text: "Hide advanced filters".                                        | ![filter tooltip](static/advanced-filters-accordion.png) |
-| If the accordion needs a Close icon, then show a tooltip with the text: 'Hide".                                                   | ![filter tooltip](static/tooltip-2.png)                  |
+Table: Advanced filter tooltips
+
+|                                                                                                                                   | Appearance example                      |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| While hovering over the button with the Close icon in the filled filter show the tooltip with the text: "Clear advanced filters". | ![filter tooltip](static/tooltip-1.png) |
+| If the accordion needs a Close button, then show a tooltip with the text: 'Hide".                                                 | ![filter tooltip](static/tooltip-2.png) |
 
 ## Advanced filters in the dropdown
 
@@ -105,6 +108,8 @@ Advanced filters implemented in the dropdown must have:
 - Clicking the "Apply" button closes the dropdown, and the counter of the applied filters appears in the trigger.
 - The "Clear all" button clears all entered values.
 - The value entered in the input is applied by "Enter".
+
+Table: Opened filter examples
 
 | Case                         | Appearance example                                           |
 | ---------------------------- | ------------------------------------------------------------ |
@@ -131,10 +136,7 @@ Container in accordion has styles: `border: 1px solid var(--border-primary)`.
 - When applying any filter in the trigger, show a counter with the number of applied filters.
 - Usually this group of filters has no submit buttons like "Apply", "Clear all", "Cancel".
 
-| Case                                  | Appearance example                                            |
-| ------------------------------------- | ------------------------------------------------------------- |
-| Dynamically applied filter            | ![filter in accordion](static/advanced-filters-accordion.png) |
-| Filter applied by the "Apply" button. | ![filter in accordion](static/advanced-filters-apply.png)     |
+![filter in accordion](static/advanced-filters-apply.png)
 
 ### Filled filter
 
@@ -154,4 +156,3 @@ If you need to increase or decrease the margins between filters inside the form,
 Always visually separate filter triggers from the filters themselves. For example, use `border: 1px solid var(--border-primary)`.
 
 ![filter border](static/advanced-filters-dropdown2.png)
-

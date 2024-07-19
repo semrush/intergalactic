@@ -15,7 +15,7 @@ import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 const makeOptions = (options) => options.map((value) => ({ value, children: value }));
 
 const Filter = ({ closable, onClose, id, name, ...props }) => (
-  <Flex {...props} gap={4}>
+  <Flex {...props} gap={2}>
     <Flex flexWrap gap={4} tag='fieldset' m={0} p={0} style={{ border: 'none' }}>
       <ScreenReaderOnly>
         <Text tag='legend' size={200} mb={2}>
@@ -70,13 +70,11 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
     </Flex>
     {closable ? (
-      <TrashM
-        my={2}
-        color='icon-secondary-neutral'
-        interactive
-        aria-label={`Remove ${name}`}
-        onClick={onClose}
-      />
+      <Button use='tertiary' theme='muted' aria-label='Remove filter' onClick={onClose}>
+      <Button.Addon>
+        <TrashM />
+      </Button.Addon>
+    </Button>
     ) : null}
   </Flex>
 );
