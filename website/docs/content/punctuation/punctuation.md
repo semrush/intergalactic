@@ -4,33 +4,35 @@ title: Punctuation and special symbols
 
 <style>
     .dosdonts {
+        border-radius: var(--intergalactic-surface-rounded);
+    }
+    .dosdonts td, .dosdonts th {
         background: var(--intergalactic-bg-secondary-neutral);
         text-align: center;
-        font-size: var(--intergalactic-fs-200);
-        line-height: var(--intergalactic-lh-200);
-        border-radius: var(--intergalactic-surface-rounded);
     }
     .dosdonts tr:first-of-type {
         border-bottom: none;
     }
-    .dosdonts tr:first-of-type td {
+    .dosdonts th {
         border-top: var(--intergalactic-spacing-4x) solid var(--intergalactic-bg-secondary-neutral);
         padding-top: 0;
         font-size: var(--intergalactic-fs-400);
         line-height: var(--intergalactic-lh-400);
         font-weight: var(--intergalactic-bold);
     }
-    .dosdonts tr:last-of-type td {
+    .dosdonts td {
         border-bottom: var(--intergalactic-spacing-4x) solid var(--intergalactic-bg-secondary-neutral);
         padding: var(--intergalactic-spacing-6x) var(--intergalactic-spacing-10x) var(--intergalactic-spacing-6x);
+        font-size: var(--intergalactic-fs-200);
+        line-height: var(--intergalactic-lh-200);
     }
-    .dosdonts tr td:first-of-type {
+    .dosdonts tr *:first-of-type {
         border-right: 1px solid var(--intergalactic-border-secondary);
     }
-    .dosdonts tr:first-of-type td:first-of-type {
+    .dosdonts th:first-of-type {
         color: var(--intergalactic-text-critical);
     }
-    .dosdonts tr:first-of-type td:last-of-type {
+    .dosdonts th:last-of-type {
         color: var(--intergalactic-text-success);
     }
 </style>
@@ -48,8 +50,8 @@ title: Punctuation and special symbols
 
 <table class="dosdonts">
     <tr>
-        <td>Don't</td>
-        <td>Do</td>
+        <th>Don't</th>
+        <th>Do</th>
     </tr>
     <tr>
         <td>
