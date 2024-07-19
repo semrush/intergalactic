@@ -8,6 +8,7 @@ title: Punctuation and special symbols
         text-align: center;
         font-size: var(--intergalactic-fs-200);
         line-height: var(--intergalactic-lh-200);
+        border-radius: var(--intergalactic-surface-rounded);
     }
     .dosdonts tr:first-of-type {
         border-bottom: none;
