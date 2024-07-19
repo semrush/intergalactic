@@ -14,15 +14,15 @@ title: Punctuation and special symbols
         border-bottom: none;
     }
     .dosdonts tr:first-of-type td {
-        border-top: 16px solid var(--intergalactic-bg-secondary-neutral);
+        border-top: var(--intergalactic-spacing-4x) solid var(--intergalactic-bg-secondary-neutral);
         padding-top: 0;
         font-size: var(--intergalactic-fs-400);
         line-height: var(--intergalactic-lh-400);
         font-weight: var(--intergalactic-bold);
     }
     .dosdonts tr:last-of-type td {
-        border-bottom: 16px solid var(--intergalactic-bg-secondary-neutral);
-        padding: 24px 40px 24px;
+        border-bottom: var(--intergalactic-spacing-4x) solid var(--intergalactic-bg-secondary-neutral);
+        padding: var(--intergalactic-spacing-6x) var(--intergalactic-spacing-10x) var(--intergalactic-spacing-6x);
     }
     .dosdonts tr td:first-of-type {
         border-right: 1px solid var(--intergalactic-border-secondary);
