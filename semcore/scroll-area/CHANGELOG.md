@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.33.1] - 2024-07-22
+
+### Fixed
+
+- Glitches if the parent of scrollArea has a decimal height or width value.
+
 ## [5.33.0] - 2024-07-13
 
 ### Changed
