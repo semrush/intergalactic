@@ -111,7 +111,9 @@ class ScrollAreaRoot extends Component {
 
     if (maxHeight) {
       if (hMax && parent.scrollHeight > parentRect.height) {
-        const diff = parent.scrollHeight - parentRect.height;
+        /** even if height is like 100.486px we should round it to 100, not 101 */
+        const diff =
+          Math.round(parent.scrollHeight.toFixed(1)) - Math.round(parentRect.height.toFixed(1));
 
         if (diff < maxHeight) {
           maxHeight = maxHeight - diff;
@@ -119,7 +121,6 @@ class ScrollAreaRoot extends Component {
           this.$wrapper.style.setProperty('max-height', `${maxHeight}px`);
         }
       }
-
       if (scrollHeight > maxHeight) {
         size.height = `${maxHeight}px`;
       } else {
