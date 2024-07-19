@@ -64,7 +64,7 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
@@ -185,7 +185,7 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/bubble-chart-skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ## Usage in UX/UI
 

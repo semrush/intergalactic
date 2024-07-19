@@ -65,7 +65,7 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
@@ -115,7 +115,7 @@ Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the columns margin on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
 
 ![stacked bar chart](static/hover.png)
 
