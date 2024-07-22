@@ -14,8 +14,8 @@ Table: Keyboard support
 | ------------- | --------------------------------------------------------------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.                                                          |
 | `Shift + Tab` | Moves focus to the previous focusable element.                                                      |
-| `Enter`       | Opens edit mode (shows [InlineInput](/components/inline-input/inline-input-code)) for entering value. |
-| `Esc`         | Returns from edit mode to view mode.                                                                |
+| `Enter`       | Opens edit mode (shows [InlineInput](/components/inline-input/inline-input-code)) for entering a value. In edit mode, saves the entered data and returns to view mode. |
+| `Esc`         | Returns from edit mode to view mode and discards any entered data that wasn't submitted.                                                                |
 
 See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 

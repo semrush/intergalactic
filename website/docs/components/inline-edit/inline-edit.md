@@ -20,7 +20,7 @@ It's important to note that the example below serves merely as an illustration a
 
 ![](static/inline-edit.png)
 
-The placeholder's color aligns with that of a typical input element, using the `--text-placeholder` token. The text and icon have one clickable zone.
+The placeholder's color aligns with that of a typical input element, using the `--text-placeholder` token. The text and icon share a single clickable zone.
 
 ## Interaction
 

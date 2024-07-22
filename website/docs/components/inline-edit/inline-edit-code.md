@@ -5,7 +5,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 
 ## Basic usage
 
-Use `<InlineEdit />` to make simple text wrapped in [InlineInput](/components/inline-input/inline-input) editable.
+Use `<InlineEdit />` to make plain text wrapped in [InlineInput](/components/inline-input/inline-input) editable.
 
 ::: sandbox
 
