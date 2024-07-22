@@ -4,7 +4,7 @@ import InlineInput from 'intergalactic/inline-input';
 const Example = () => {
   return (
     <div>
-      <InlineInput>
+      <InlineInput w={200}>
         <InlineInput.Addon htmlFor='number-example' tag='label'>
           Number:
         </InlineInput.Addon>
