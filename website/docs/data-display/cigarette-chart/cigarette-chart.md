@@ -1,20 +1,20 @@
 ---
-title: Cigarette chart
+title: Cigarette bar chart
 fileSource: d3-chart
 tabs: Design('cigarette-chart'), A11y('cigarette-chart-a11y'), API('cigarette-chart-api'), Examples('cigarette-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Cigarette chart** shows parts of a whole by dividing a bar into proportional segments. Each segment represents a fraction, and the entire bar represents the total sum, always equaling 100%. Basically it serves the same function as [Donut chart](/data-display/donut-chart/donut-chart) does.
+**Cigarette bar chart** shows parts of a whole by dividing a bar into proportional segments. Each segment represents a fraction, and the entire bar represents the total sum, always equaling 100%. Basically it serves the same function as [Donut chart](/data-display/donut-chart/donut-chart) does.
 
-**Key points for using cigarette chart:**
+**Key points for using Cigarette bar chart:**
 
-- Cigarette charts are best for highlighting category proportions, not exact values.
+- Cigarette bar charts are best for highlighting category proportions, not exact values.
 - It can only show a few values clearly. With more values, segments become too small to be effective. For more than 5 categories, consider another chart type, like a [Bar chart](/data-display/bar-chart/bar-chart).
 
 ## Appearance
@@ -98,4 +98,4 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/cigarette-skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
