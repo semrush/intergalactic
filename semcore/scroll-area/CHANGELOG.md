@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.0] - 2024-07-22
+
+### Added
+
+- Property `observeParentSize` to enable recalculation if the parent of ScrollArea is resized
+
 ## [5.33.1] - 2024-07-22
 
 ### Fixed
