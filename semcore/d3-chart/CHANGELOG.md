@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.51.0] - 2024-07-22
+
+### Added
+
+- `minRadius` property to Venn.Chart.
+
 ## [3.50.0] - 2024-06-28
 
 ### Added
