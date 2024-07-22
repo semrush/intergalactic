@@ -1,3 +1,25 @@
+## [15.101.0] - 2024-07-19
+
+### @semcore/d3-chart
+
+- **Added** `CompactHorizontalBar` chart.
+
+### @semcore/popper
+
+- **Fixed** Popper not opening a second time with interaction `focus`.
+
+### @semcore/scroll-area
+
+- **Fixed** Glitches if the parent of scrollArea has a decimal height or width value.
+
+### @semcore/skeleton
+
+- **Added** `CompactHorizontalBarChartSkeleton` component.
+
+### @semcore/slider
+
+- **Changed** `margin-top` for Slider options.
+
 ## [15.100.0] - 2024-07-17
 
 ### @semcore/data-table

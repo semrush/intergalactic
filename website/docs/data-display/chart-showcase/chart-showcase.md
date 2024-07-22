@@ -54,8 +54,14 @@ const group = {
     type: 'charts',
   },
   cigaretteChart: {
-    title: 'Cigarette chart',
+    title: 'Cigarette bar chart',
     route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
+    disabled: false,
+    type: 'charts',
+  },
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },
@@ -341,8 +347,14 @@ const group = {
     type: 'charts',
   },
   cigaretteChart: {
-    title: 'Cigarette chart',
+    title: 'Cigarette bar chart',
     route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
+    disabled: false,
+    type: 'charts',
+  },
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },
@@ -464,6 +476,12 @@ const group = {
     title: 'Stacked histogram chart',
     route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
     disabled: true,
+    type: 'charts',
+  },
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
+    disabled: false,
     type: 'charts',
   },
   bubble: {
@@ -795,4 +813,3 @@ const App = function (props) {
 </script>
 
 :::
-

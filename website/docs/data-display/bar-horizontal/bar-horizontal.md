@@ -61,7 +61,7 @@ const App = PlaygroundGeneration((preview) => {
 
 :::
 
-::: tip
+::: info
 Basic data visualization rules are described in the [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
@@ -69,44 +69,40 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
-**Key points for using bar chart:**
+We have a compact version of the horizontal bar chart — **[Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact)**. Use it when you need to save space in the interface, and the category names can be long (for example, in localization).
 
-- Ensure the chart's axes are understandable. Label them if needed.
-- Use simple color schemes. Highlight categories only when needed.
+![](static/hor-vs-compact.png)
 
-::: tip
+### Usage
+
+**Use Horizontal bar chart when:**
+
+- Comparing less than 10 categories.
+- Each category's value needs labeling.
+- Showing category distribution in the specific order.
+
+**Avoid using Horizontal bar chart when:**
+
+- Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
+- Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
+- All categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
+
+::: info
 **Bar vs. Histogram Chart**
 
 - Bar charts categorize data qualitatively, showing how different categories compare.
 - Histograms organize data quantitatively, indicating how often values fall within certain ranges.
 :::
 
-## Usage
-
-**Use horizontal bars when:**
-
-- Categories have long names, like country names.
-- Comparing more than 10 categories.
-- Each category's value needs labeling.
-- Showing category distribution in order.
-
-**Avoid horizontal bars when:**
-
-- Displaying trends (use [Line chart](/data-display/line-chart/line-chart)).
-- Showing data over time (use [Bar chart](/data-display/bar-chart/bar-chart) or [Line chart](/data-display/line-chart/line-chart)).
-- Categories add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
-
 ## Appearance
-
-Bars should have `border-radius: 2px` for the top-right and bottom-right corners. 
 
 ![](static/one-cat.png)
 
-For the grouped bars maintain a 4px margin between them. Aim for at least a 20% margin between columns to avoid clutter.
+For the grouped bars aim for at least a 20% margin between bars in the group to avoid clutter.
 
 ![](static/two-cat.png)
 
-For more than 3-4 categories, consider using the [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or other chart type to present the data. Additionally, consider allowing users to switch chart types in the widget settings.
+For more than 3-4 categories, consider using the [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or other chart type to present data. Additionally, consider allowing users to switch chart types in the widget settings.
 
 ### Margins
 
@@ -140,14 +136,14 @@ Allocate space for category labels on both sides of the chart.
 
 ## Category labels
 
-- Y-axis labels should match the primary text color for clarity (use `--text-primary` token).
+- Y-axis labels use the primary text color (`--text-primary` token).
 - Use `ellipsis` for long labels, with tooltips showing the full name.
 
 ![](static/label.png)
 
 ## Legend
 
-Legends are unnecessary for a single-category bar chart; clear chart naming is usually enough.
+Legend is unnecessary for a single-category bar chart; clear chart naming is usually enough.
 
 ![](static/hor-bar-example.png)
 
@@ -157,7 +153,7 @@ Use legends for multiple categories.
 
 ## Interaction
 
-Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the columns margin on the top and bottom sides.
+Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus or clickability. The hover takes up half of the bars margin on the top and bottom sides.
 
 Table: Horizontal bar chart interaction
 
@@ -170,7 +166,7 @@ Table: Horizontal bar chart interaction
 
 ### No more results
 
-Show "No more results" with a 32px margin below values and text with `--text-secondary` color.
+Show "No more results" with the `--spacing-8x` margin below values and text with `--text-secondary` color. Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ![](static/no-more-bar-horizontal.png)
 
@@ -188,7 +184,7 @@ Zero counts as data. 0 ≠ n/a.
 
 ### No data
 
-Do not display bars for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
+Do not display value inside the bar for data points without values. When hovering over such bars, show a tooltip with the "n/a" value. Additionally, consider adding a message explaining the absence of data and providing information on when it will be available (if possible).
 
 ![](static/na.png)
 
@@ -202,8 +198,13 @@ Use the `--skeleton-bg` color token for the skeleton's background.
 
 ![](static/skeleton.png)
 
-Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other "empty states".
+Refer to [Error & n/a widget states](/components/widget-empty/widget-empty) for all other empty states.
 
 ## Usage in UX/UI
 
-See detailed information in the [Bar chart guide](/data-display/bar-chart/bar-chart#usage-in-ux-ui).
+**Key points for using Horizontal bar chart:**
+
+- Ensure the chart's axes are understandable. Label them if needed.
+- Use simple color schemes. Highlight categories only when needed.
+
+For the other detailed information, refer to the [Bar chart guide](/data-display/bar-chart/bar-chart#usage-in-ux-ui).
