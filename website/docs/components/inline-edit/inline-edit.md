@@ -26,7 +26,7 @@ The placeholder's color aligns with that of a typical input element, using the `
 
 - The user clicks the trigger, which opens an input of any type you need for your case ([InlineInput](/components/inline-input/inline-input), [Input](/components/input/input), [Textarea](/components/textarea/textarea), [Select](/components/select/select), [ColorPicker](/components/color-picker/color-picker) or [TimePicker](/components/time-picker/time-picker)).
 - The input gets immediate `focus`.
-- The user enters data and can submits it. Alternatively, the user can revert to view mode by using the **Cancel** button or the **Esc** key.
+- The user enters data and can submit it. Alternatively, the user can revert to view mode by using the **Cancel** button or the **Esc** key.
 - When the input loses `focus` (for instance, if the user switches to another screen), the `onBlur` event saves the entered value.
 
 Below is an example demonstrating how this component functions with one of the possible triggers.
