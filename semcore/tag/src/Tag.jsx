@@ -151,7 +151,7 @@ class RootTagContainer extends Component {
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
 
   getTagProps() {
-    const { size, theme, color, disabled, active, uid, id: outerId } = this.asProps;
+    const { size, theme, color, disabled, active, uid, id: outerId, interactive } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
 
     return {
@@ -161,6 +161,8 @@ class RootTagContainer extends Component {
       theme,
       color,
       active,
+      tag: 'button',
+      interactive,
     };
   }
 
