@@ -3,6 +3,7 @@ import Dropdown from 'intergalactic/dropdown';
 import Select from 'intergalactic/select';
 import Input from 'intergalactic/input';
 import MathPlusM from 'intergalactic/icon/MathPlus/m';
+import { Hint } from '@semcore/ui/tooltip';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import Divider from 'intergalactic/divider';
@@ -70,11 +71,13 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
     </Flex>
     {closable ? (
-      <Button use='tertiary' theme='muted' aria-label='Remove filter' onClick={onClose}>
-        <Button.Addon>
-          <TrashM />
-        </Button.Addon>
-      </Button>
+      <Hint title='Remove filter'>
+        <Button use='tertiary' theme='muted' onClick={onClose}>
+          <Button.Addon>
+            <TrashM />
+          </Button.Addon>
+        </Button>
+      </Hint>
     ) : null}
   </Flex>
 );
@@ -100,7 +103,7 @@ const Demo = () => {
   return (
     <Flex direction='column' gap={2}>
       <Text tag='label' htmlFor='advanced-filter' size={200}>
-        Advanced filter label
+        Filter label
       </Text>
       <Dropdown visible={visible} onVisibleChange={setVisible}>
         <Dropdown.Trigger
