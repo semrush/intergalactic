@@ -16,7 +16,7 @@ Table: Keyboard support
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Enter`       | Submits the entered value.                     |
 | `Backspace`   | Erases character or symbol before the cursor.  |
-| `Esc`         | Returns from edit mode to view mode.           |
+| `Esc`         | Discards changes and returns from edit mode to view mode.           |
 
 See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
