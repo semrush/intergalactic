@@ -29,41 +29,49 @@ export type CompactHorizontalBarProps = Context & {
   patterns?: PatternsConfig;
 };
 
+export type BarContext = {
+  /** Index in `data` array of the current items */
+  index: number;
+};
+
 export type CompactHorizontalBarHoverProps = BoxProps;
 type Hover = IntergalacticD3Component<'rect', CompactHorizontalBarHoverProps, Context>;
 export type CompactHorizontalBarAnnotationProps = BoxProps;
 type Annotation = IntergalacticD3Component<
   'foreignObject',
   CompactHorizontalBarAnnotationProps,
-  Context
+  Context & BarContext
 >;
 export type CompactHorizontalBarLabelProps = BoxProps;
-type Label = IntergalacticD3Component<'div', CompactHorizontalBarLabelProps, Context>;
+type Label = IntergalacticD3Component<'div', CompactHorizontalBarLabelProps, Context & BarContext>;
 export type CompactHorizontalBarPercentProps = BoxProps;
-export type CompactHorizontalBarPercentContext = { formatted: string; percent: number };
+export type CompactHorizontalBarPercentContext = {
+  formatted: string;
+  percent: number;
+} & BarContext;
 type Percent = IntergalacticD3Component<
   'div',
   CompactHorizontalBarPercentProps,
   Context & CompactHorizontalBarPercentContext
 >;
 export type CompactHorizontalBarValueProps = BoxProps;
-export type CompactHorizontalBarValueContext = { formatted: string; value: number };
+export type CompactHorizontalBarValueContext = { formatted: string; value: number } & BarContext;
 type Value = IntergalacticD3Component<
   'div',
   CompactHorizontalBarValueProps,
   Context & CompactHorizontalBarValueContext
 >;
 export type CompactHorizontalBarBarProps = {};
-type Bar = IntergalacticD3Component<'g', CompactHorizontalBarBarProps, Context>;
+type Bar = IntergalacticD3Component<'g', CompactHorizontalBarBarProps, Context & BarContext>;
 export type CompactHorizontalBarBackgroundProps = BoxProps;
-type Background = IntergalacticD3Component<'rect', BackgroundProps, Context>;
+type Background = IntergalacticD3Component<'rect', BackgroundProps, Context & BarContext>;
 export type CompactHorizontalBarFillProps = BoxProps & {
   patterns?: PatternsConfig;
   color?: string;
   transparent?: boolean;
   hide?: boolean;
 };
-type Fill = IntergalacticD3Component<'rect', CompactHorizontalBarFillProps, Context>;
+type Fill = IntergalacticD3Component<'rect', CompactHorizontalBarFillProps, Context & BarContext>;
 
 declare const CompactHorizontalBar: IntergalacticD3Component<
   'g',
@@ -79,10 +87,7 @@ declare const CompactHorizontalBar: IntergalacticD3Component<
     Background: Background;
     Fill: Fill;
   };
-  Tooltip: TooltipType<{
-    /** Index in `data` array of the current items */
-    index: number;
-  }>;
+  Tooltip: TooltipType<BarContext>;
 };
 
 export default CompactHorizontalBar;
