@@ -273,7 +273,7 @@ STagContainer {
   align-items: center;
   justify-content: center;
 
-  STag {
+  STag:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     padding-right: var(--intergalactic-spacing-05x, 2px);

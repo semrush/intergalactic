@@ -9,7 +9,7 @@ import createComponent, {
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps } from '@semcore/tag';
+import Tag, { TagProps, TagContainer } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
@@ -178,7 +178,7 @@ class InputTags extends Component<IInputTagsProps> {
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
-    const SListAriaWrapper = 'div';
+    const SListAriaWrapper = 'ul';
 
     return sstyled(styles)(
       <SInputTags
@@ -225,7 +225,6 @@ class Value extends Component<IInputTagsValueProps> {
     /* for display cursor */
     let magicOffset = 2;
     if (placeholder && (value === undefined || value === '')) {
-      // @ts-ignore
       spacerNode['innerText'] = placeholder;
       /* for [placeholder] {
           text-overflow: ellipsis;
@@ -252,32 +251,42 @@ class Value extends Component<IInputTagsValueProps> {
   }
 }
 
-function InputTag(props: any) {
+function InputTagContainer(props: any) {
   const STag = Root;
 
-  const onKeyDown = (event: React.KeyboardEvent) => {
-    if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault();
-      props.onClick(event);
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        props.onClick(event);
 
-      return false;
-    }
-  };
+        return false;
+      }
+    },
+    [props.onClick],
+  );
+  const interactive = props.ediable || props.onClick;
 
   return sstyled(props.styles)(
-    <STag data-value={props.value} render={Tag} onKeyDown={onKeyDown} />,
+    <STag
+      data-value={props.value}
+      render={TagContainer}
+      tag='li'
+      onKeyDown={onKeyDown}
+      interactive={interactive}
+    />,
   );
 }
 
 export default createComponent(InputTags, {
   Value,
   Tag: [
-    InputTag,
+    InputTagContainer,
     {
-      Text: Tag.Text,
-      Close: Tag.Close,
-      Addon: Tag.Addon,
-      Circle: Tag.Circle,
+      Text: TagContainer.Tag,
+      Close: TagContainer.Close,
+      Addon: TagContainer.Tag.Addon,
+      Circle: TagContainer.Tag.Circle,
     },
   ],
 }) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
