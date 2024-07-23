@@ -31,7 +31,7 @@ If you need to increase or decrease the margins between filters inside the form,
 
 ![](static/margins.png)
 
-Always visually separate submit buttons from the filters. For example, use `border: 1px solid var(--intergalactic-border-primary)`.
+You can visually separate submit buttons from the filters by using the following border style: `border: 1px solid var(--intergalactic-border-primary)`.
 
 ![](static/advanced-filters-dropdown2.png)
 
@@ -142,7 +142,7 @@ Wrap the filter form in a [SpinContainer](/components/spin-container/spin-contai
 
 ### Nothing found
 
-Show an ["empty" state](/components/widget-empty/widget-empty) with the option to update the filter.
+Show an [empty state](/components/widget-empty/widget-empty) with the option to update the filter.
 
 ![](static/nothing-found-advanced-filters.png)
 
