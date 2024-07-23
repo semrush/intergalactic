@@ -69,7 +69,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Horizontal bar chart** visualizes distribution of values by category for value comparison.
 
-We have a compact version of the horizontal bar chart — **[Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact)**. Use it when you need to save space in the interface, and the category names can be long (for example, in localization).
+We have a compact version of the horizontal bar chart — **[Compact horizontal bar chart](/data-display/bar-horizontal-compact/bar-horizontal-compact)**. Use it when values of all categories add up to 100%, and you need to save space in the interface, and the category names can be long (for example, in localization).
 
 ![](static/hor-vs-compact.png)
 
