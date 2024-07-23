@@ -25,25 +25,25 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </ScreenReaderOnly>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-strategy`} size={200}>
-            Strategy
+          <Text tag='label' htmlFor={`${id}-condition`} size={200}>
+            Condition
           </Text>
         </ScreenReaderOnly>
         <Select
           options={makeOptions(['Include', 'Exclude'])}
-          id={`${id}-strategy`}
+          id={`${id}-condition`}
           defaultValue={'Include'}
         />
       </Flex>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-entity`} size={200}>
-            Entity
+          <Text tag='label' htmlFor={`${id}-type`} size={200}>
+            Type
           </Text>
         </ScreenReaderOnly>
         <Select
           options={makeOptions(['Keyword', 'Backlink'])}
-          id={`${id}-enity`}
+          id={`${id}-type`}
           defaultValue={'Keyword'}
         />
       </Flex>

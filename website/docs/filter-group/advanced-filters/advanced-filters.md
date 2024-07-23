@@ -72,8 +72,8 @@ You can fix advanced filters implemented in the dropdown at the top of the page 
 
 Table: Opened filter examples
 
-| Case                         | Appearance example                                           |
-| ---------------------------- | ------------------------------------------------------------ |
+| Case                         | Appearance example                         |
+| ---------------------------- | ------------------------------------------ |
 | Separate filters             | ![](static/advanced-filters-dropdown.png)  |
 | Additional filter conditions | ![](static/advanced-filters-dropdown2.png) |
 
@@ -88,12 +88,11 @@ After applying the filter:
 
 ## Filters in accordion
 
-This filter expands, shifting down the page content. Use the following styles for accordion content: 
+This filter expands, shifting down the page content. Use the following styles for accordion content:
 
-``` css
+```css
 background-color: var(--intergalactic-bg-primary-neutral);
 border: 1px solid var(--intergalactic-border-primary);
-
 ```
 
 ![](static/advanced-filters-apply.png)
@@ -119,12 +118,12 @@ Table: Advanced filter states
 | Hover       | ![filter hover state](static/hover.png)            |
 | Active      | ![filter active state](static/advanced-filter.png) |
 
-- Dynamic filter application (no "Apply" button) is useful when loading data while applying the filter strongly affects the output. It is important to show the content to the user immediately when applying the filter, without waiting for confirmation from the "Apply" button.
+- Dynamic filter application (no "Apply" button) is useful when loading data while applying the filter strongly affects the output. It's important to show the content to the user immediately when applying the filter, without waiting for confirmation from the "Apply" button.
 - Filters are valid only within one report. However, they should be saved when returning to this report (within the same product) and when reloading the page.
 - When changing the base, date, or switching between reports, the values in advanced filters should be saved.
 - Filter settings are forwarded to the URL.
 
-### Clearing a filter group
+### Clearing filter group
 
 - The delete button appears in the filter form after applying filters and clears the entire group of filters.
 - The advanced filters-dependent page content is reloaded and overrides the applied values.
