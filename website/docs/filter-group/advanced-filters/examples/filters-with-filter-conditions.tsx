@@ -71,7 +71,7 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
     </Flex>
     {closable ? (
-      <Hint title='Remove filter'>
+      <Hint title='Remove filter' ignorePortalsStacking>
         <Button use='tertiary' theme='muted' onClick={onClose}>
           <Button.Addon>
             <TrashM />
