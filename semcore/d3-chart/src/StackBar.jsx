@@ -69,8 +69,16 @@ class StackBarRoot extends Component {
       const absHeight = Math.abs(
         yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[XY0] ?? 0)),
       );
-      this.offsetBars[seriesIndex][i] =
-        Number(d[y] - (d[XY0] ?? 0)) === 0 ? 0 : absHeight >= hMin ? 0 : d[y] > 0 ? hMin : -hMin;
+
+      const isEmptyValue = Number(d[y] - (d[XY0] ?? 0)) === 0;
+
+      if (isEmptyValue || absHeight >= hMin) {
+        this.offsetBars[seriesIndex][i] = 0;
+      } else {
+        const offsetValue = hMin - absHeight;
+        this.offsetBars[seriesIndex][i] = d[y] > 0 ? offsetValue : -offsetValue;
+      }
+
       return [0, offset];
     };
 
