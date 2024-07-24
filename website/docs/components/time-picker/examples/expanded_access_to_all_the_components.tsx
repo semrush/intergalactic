@@ -6,12 +6,12 @@ import { Box } from 'intergalactic/flex-box';
 const Demo = () => {
   return (
     <>
-      <Text tag='label' htmlFor='time-picker-hours' size={200}>
-        Your time
+      <Text tag='label' htmlFor='time-picker' size={200}>
+        Start time
       </Text>
       <Box mt={2}>
-        <TimePicker is12Hour>
-          <TimePicker.Hours id='time-picker-hours' />
+        <TimePicker is12Hour id='time-picker'>
+          <TimePicker.Hours />
           <TimePicker.Separator />
           <TimePicker.Minutes />
           <TimePicker.Format />
