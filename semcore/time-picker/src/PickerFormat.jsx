@@ -5,22 +5,39 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 
 class TimePickerFormat extends Component {
   static enhance = [keyboardFocusEnhance()];
+
+  state = {
+    ariaLabel: undefined,
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.meridiem !== this.props.meridiem) {
+      if (this.ariaLabelTimer) {
+        clearTimeout(this.ariaLabelTimer);
+      }
+
+      const { meridiem, getI18nText } = this.asProps;
+      this.setState({ ariaLabel: getI18nText('changedFormatNotice', { meridiem }) });
+      this.ariaLabelTimer = setTimeout(() => {
+        this.setState({ ariaLabel: undefined });
+      }, 2000);
+    }
+  }
+
   render() {
     const SPickerFormat = Root;
     const { Children, meridiem, styles, getI18nText } = this.asProps;
     const SPickerFormatText = 'span';
-
-    const label = getI18nText('format', { meridiem });
+    const describedby = getI18nText('formatToggler');
+    const { ariaLabel } = this.state;
 
     return sstyled(styles)(
       <SPickerFormat
         render={Box}
         type='button'
         tag='button'
-        role='switch'
-        aria-label={label}
-        aria-live='polite'
-        aria-atomic='true'
+        aria-describedby={describedby}
+        aria-label={ariaLabel}
       >
         {Children.origin ? <Children /> : <SPickerFormatText>{meridiem}</SPickerFormatText>}
       </SPickerFormat>,

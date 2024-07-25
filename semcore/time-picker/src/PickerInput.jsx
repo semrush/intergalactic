@@ -133,12 +133,7 @@ class ItemPicker extends Component {
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
         />
-        <Select.Menu
-          aria-hidden='true'
-          hMax={180}
-          role='listbox'
-          id={`picker-${this.field}-popper`}
-        >
+        <Select.Menu hMax={180} role='listbox' id={`picker-${this.field}-popper`}>
           {getOptions(min, max, step)}
         </Select.Menu>
       </Select>,
@@ -231,15 +226,6 @@ class Minutes extends ItemPicker {
       }
     }
     if (event.key === 'Enter') this.submitChanges(event);
-    if (event.key === 'ArrowRight') {
-      if (
-        currentTarget.selectionStart >= currentTarget.value.length &&
-        currentTarget.selectionStart === currentTarget.selectionEnd
-      ) {
-        event.preventDefault();
-        this.focusNext();
-      }
-    }
   };
 }
 

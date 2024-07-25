@@ -40,7 +40,7 @@ export function formatHoursTo12(hours /* hours by 24 */) {
 
   // if not (HH:00)
   if (nHours === 0) return 12; // 0 => 12 PM
-  if (nHours > 12) return nHours - 12; // 22 => 12 PM
+  if (nHours > 12) return nHours - 12; // 22 => 10 PM
 
   return hours;
 }
@@ -195,14 +195,12 @@ class TimePickerRoot extends Component {
   }
 
   getFormatProps() {
-    const { size, disabled, disablePortal, value, getI18nText } = this.asProps;
-    const valueFulfilled = value?.split(':').every((chunk) => chunk.length > 0);
+    const { size, disabled, disablePortal, getI18nText } = this.asProps;
 
     return {
       size,
       disabled,
       disablePortal,
-      ['aria-hidden']: !valueFulfilled,
       meridiem: this.meridiem,
       onClick: this.handleMeridiemClick,
       getI18nText,
@@ -212,12 +210,17 @@ class TimePickerRoot extends Component {
   render() {
     const STimePicker = Root;
     const { styles, Children, value, is12Hour, getI18nText } = this.asProps;
+    const [hours, minutes] = this.valueToTime(this.value);
+
     const label = value
-      ? getI18nText('title', { time: value, meridiem: is12Hour ? this.meridiem : '' })
+      ? getI18nText('title', {
+          time: `${hours}:${withLeadingZero(minutes)}`,
+          meridiem: is12Hour ? this.meridiem : '',
+        })
       : getI18nText('titleEmpty');
 
     return sstyled(styles)(
-      <STimePicker render={Input} aria-label={label} aria-valuenow={value || undefined}>
+      <STimePicker render={Input} aria-label={label} role='group'>
         <Children />
       </STimePicker>,
     );
