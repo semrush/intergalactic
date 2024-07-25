@@ -5,7 +5,16 @@ const defaultDesignThemeTokens = defaultDesignThemeJson as Record<string, string
 
 const zIndexStackingContext = React.createContext(0);
 
-export const useZIndexStacking = (designToken?: string) => {
+export type ZIndexDesignTokens =
+  | 'z-index-deep'
+  | 'z-index-overlay'
+  | 'z-index-modal'
+  | 'z-index-popper'
+  | 'z-index-dropdown'
+  | 'z-index-tooltip'
+  | 'z-index-notice-bubble';
+
+export const useZIndexStacking = (designToken?: ZIndexDesignTokens) => {
   const contextTokens = useContextTokens();
   const parentContextValue = React.useContext(zIndexStackingContext);
   const contextValue = React.useMemo(() => {

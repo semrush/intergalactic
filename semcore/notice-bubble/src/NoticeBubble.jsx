@@ -201,9 +201,9 @@ class ViewInfo extends Component {
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
         role={type === 'warning' ? 'alert' : this.props.role}
       >
-        <Hint title={getI18nText('close')} timeout={[0, 999999]}>
+        <Hint title={getI18nText('close')}>
           <SDismiss
-            // biome-ignore lint/a11y/useValidAriaValues: <explanation>
+            // biome-ignore lint/a11y/useValidAriaValues:
             aria-haspopup={undefined}
             tag={Button}
             type='button'
