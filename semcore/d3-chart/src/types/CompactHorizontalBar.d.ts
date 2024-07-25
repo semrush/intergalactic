@@ -1,7 +1,7 @@
 import React from 'react';
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
-import { BarContext, BackgroundProps } from './Bar';
+import { BackgroundProps } from './Bar';
 import { IntergalacticD3Component } from './Plot';
 import { PatternsConfig } from './Pattern';
 import { BoxProps } from '@semcore/flex-box';
