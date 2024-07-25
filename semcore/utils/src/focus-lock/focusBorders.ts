@@ -12,7 +12,8 @@ export const addFocusBorders = () => {
     focusBordersRefs.before.addEventListener('focus', (event) => {
       if (
         document.activeElement === focusBordersRefs.before &&
-        event.relatedTarget !== focusBordersRefs.after
+        event.relatedTarget !== focusBordersRefs.after && // prevent loop
+        event.relatedTarget // prevent initial focus
       ) {
         focusBordersRefs.after?.focus();
       }
@@ -27,7 +28,8 @@ export const addFocusBorders = () => {
     focusBordersRefs.after.addEventListener('focus', (event) => {
       if (
         document.activeElement === focusBordersRefs.after &&
-        event.relatedTarget !== focusBordersRefs.before
+        event.relatedTarget !== focusBordersRefs.before && // prevent loop
+        event.relatedTarget // prevent initial focus
       ) {
         focusBordersRefs.before?.focus();
       }
