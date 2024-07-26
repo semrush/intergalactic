@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.30.0] - 2024-07-23
+
+### Added
+
+- Support for design tokens in `theme` prop.
+
 ## [4.29.0] - 2024-07-13
 
 ### Changed
