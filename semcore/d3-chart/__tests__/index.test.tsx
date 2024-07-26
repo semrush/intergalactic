@@ -913,13 +913,13 @@ describe('Bar', () => {
   test.concurrent('should render StackBar chart correctly with custom hMin', async ({ task }) => {
     const yScale = scaleLinear()
       .range([height - MARGIN, MARGIN])
-      .domain([-10, 10]);
+      .domain([-4, 4]);
 
     const data = [
       { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
-      { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
-      { time: 3, stack1: -3, stack2: -2, stack3: -0.02 },
+      { time: 2, stack1: 1.5, stack2: 0.01, stack3: 1.3 },
+      { time: 3, stack1: -3, stack2: 0, stack3: -0.02 },
       { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
       { time: 5, stack1: -0.01, stack2: -0.02, stack3: -0.03 },
       { time: 6, stack1: 3, stack2: 1, stack3: 4 },
