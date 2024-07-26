@@ -29,7 +29,7 @@ export type CompactHorizontalBarProps = Context & {
   patterns?: PatternsConfig;
 };
 
-export type BarContext = {
+type BarContext = {
   /** Index in `data` array of the current items */
   index: number;
 };
