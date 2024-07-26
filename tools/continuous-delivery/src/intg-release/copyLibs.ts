@@ -61,6 +61,17 @@ async function makeIndexESM(componentName: string) {
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }
 
+async function makePackageJson(componentName: string) {
+  const packageJSON = await fs.readJSON(
+    path.resolve(dirname, '..', '..', 'semcore', componentName, 'package.json'),
+  );
+  const pathToWrite = path.resolve(dirname, componentName, 'package.json');
+
+  packageJSON.name = packageJSON.name.replace('@semcore', 'intergalactic');
+
+  await fs.writeJSON(pathToWrite, packageJSON, 'utf8');
+}
+
 async function copyIcon(name: string) {
   const iconsPath = path.resolve(dirname, '..', '..', 'semcore', name);
 
@@ -96,6 +107,7 @@ export async function copyLib(packages: string[]) {
       }
       case 'icon': {
         await copyIcon(name);
+        await makePackageJson(name);
         await makeIndexType(name);
         await makeIndexCJS(name);
         await makeIndexESM(name);
@@ -103,6 +115,7 @@ export async function copyLib(packages: string[]) {
       }
       case 'illustration': {
         await copyIcon(name);
+        await makePackageJson(name);
         await makeIndexType(name);
         await makeIndexCJS(name);
         await makeIndexESM(name);
@@ -114,6 +127,7 @@ export async function copyLib(packages: string[]) {
       }
       default: {
         await copyComponent(name, 'lib');
+        await makePackageJson(name);
         await makeIndexType(name);
         await makeIndexCJS(name);
         await makeIndexESM(name);
