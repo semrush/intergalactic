@@ -169,6 +169,7 @@ class InputTags extends Component<IInputTagsProps> {
     return {
       size: this.asProps.size,
       onClick: this.bindHandlerTagClick(editable),
+      interactive: editable,
       ref: (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
       },

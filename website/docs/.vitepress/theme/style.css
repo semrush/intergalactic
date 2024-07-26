@@ -604,7 +604,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--vp-c-indigo-1);
 }
 
-.vp-doc li[class] + li[class] {
+.vp-doc li[class] + li[class]:not([data-ui-name="InputTags.Tag"]) {
   margin: unset;
 }
 
