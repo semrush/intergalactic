@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Property `observeParentSize` to enable recalculation if the parent of ScrollArea is resized
+- Property `observeParentSize` to enable recalculation if the parent of ScrollArea is resized. Default value is `false`.
 
 ## [5.33.1] - 2024-07-22
 
