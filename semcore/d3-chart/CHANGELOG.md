@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `minRadius` property to Venn.Chart.
+- `index` to children render function of `CompactHorizontalBar` subcomponents.
 
 ## [3.50.0] - 2024-06-28
 
