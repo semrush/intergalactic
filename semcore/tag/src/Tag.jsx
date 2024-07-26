@@ -161,7 +161,7 @@ class RootTagContainer extends Component {
       theme,
       color,
       active,
-      tag: 'button',
+      tag: interactive ? 'button' : undefined,
       interactive,
     };
   }
