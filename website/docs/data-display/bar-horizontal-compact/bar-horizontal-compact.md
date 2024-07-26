@@ -18,6 +18,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 **Use Compact horizontal bar chart when:**
 
+- The values of all categories add up to 100%.
 - Categories have or may have long names in localization.
 - Interface is narrow, and you need to preserve horizontal space for other information.
 - Comparing less than 10 categories.

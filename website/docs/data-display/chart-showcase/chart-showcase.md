@@ -41,6 +41,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
+    disabled: false,
+    type: 'charts',
+  },
   histogram: {
     title: 'Histogram chart',
     route: '/intergalactic/data-display/histogram-chart/histogram-chart',
@@ -56,12 +62,6 @@ const group = {
   cigaretteChart: {
     title: 'Cigarette bar chart',
     route: '/intergalactic/data-display/cigarette-chart/cigarette-chart',
-    disabled: false,
-    type: 'charts',
-  },
-  horizontalBarCompact: {
-    title: 'Compact horizontal bar chart',
-    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },
@@ -148,6 +148,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
+    disabled: false,
+    type: 'charts',
+  },
   stackedHorizontalBar: {
     title: 'Stacked horizontal bar chart',
     route: '/intergalactic/data-display/stacked-horizontal-bar/stacked-horizontal-bar',
@@ -160,12 +166,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  stackedHistogram: {
-    title: 'Stacked histogram chart',
-    route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
-    disabled: true,
-    type: 'charts',
-  },
+  // stackedHistogram: {
+  //   title: 'Stacked histogram chart',
+  //   route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
+  //   disabled: true,
+  //   type: 'charts',
+  // },
   line: {
     title: 'Line chart',
     route: '/intergalactic/data-display/line-chart/line-chart',
@@ -352,12 +358,6 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  horizontalBarCompact: {
-    title: 'Compact horizontal bar chart',
-    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
-    disabled: false,
-    type: 'charts',
-  },
   barStacked: {
     title: 'Stacked bar chart',
     route: '/intergalactic/data-display/stacked-bar-chart/stacked-bar-chart',
@@ -367,6 +367,12 @@ const group = {
   horizontalBar: {
     title: 'Horizontal bar chart',
     route: '/intergalactic/data-display/bar-horizontal/bar-horizontal',
+    disabled: false,
+    type: 'charts',
+  },
+  horizontalBarCompact: {
+    title: 'Compact horizontal bar chart',
+    route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
     disabled: false,
     type: 'charts',
   },
@@ -388,12 +394,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  stackedHistogram: {
-    title: 'Stacked histogram chart',
-    route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
-    disabled: true,
-    type: 'charts',
-  },
+  // stackedHistogram: {
+  //   title: 'Stacked histogram chart',
+  //   route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
+  //   disabled: true,
+  //   type: 'charts',
+  // },
   funnel: {
     title: 'Funnel chart',
     route: '/intergalactic/data-display/funnel-chart/funnel-chart',
@@ -472,12 +478,12 @@ const group = {
     disabled: false,
     type: 'charts',
   },
-  stackedHistogram: {
-    title: 'Stacked histogram chart',
-    route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
-    disabled: true,
-    type: 'charts',
-  },
+  // stackedHistogram: {
+  //   title: 'Stacked histogram chart',
+  //   route: '/intergalactic/data-display/stacked-histogram/stacked-histogram',
+  //   disabled: true,
+  //   type: 'charts',
+  // },
   horizontalBarCompact: {
     title: 'Compact horizontal bar chart',
     route: '/intergalactic/data-display/bar-horizontal-compact/bar-horizontal-compact',
@@ -494,12 +500,6 @@ const group = {
     route: '/intergalactic/data-display/scatterplot-chart/scatterplot-chart',
     type: 'charts',
   },
-  heatmap: {
-    title: 'Heatmap',
-    route: '/intergalactic/data-display/heatmap/heatmap',
-    disabled: true,
-    type: 'charts',
-  },
   radar: {
     title: 'Radar chart',
     route: '/intergalactic/data-display/radar-chart/radar-chart',
@@ -509,6 +509,12 @@ const group = {
   radialTree: {
     title: 'Radial Tree chart',
     route: '/intergalactic/data-display/radial-tree-chart/radial-tree-chart',
+    type: 'charts',
+  },
+  heatmap: {
+    title: 'Heatmap',
+    route: '/intergalactic/data-display/heatmap/heatmap',
+    disabled: true,
     type: 'charts',
   },
   polar: {

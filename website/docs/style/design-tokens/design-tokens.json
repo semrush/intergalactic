@@ -2710,21 +2710,21 @@
     "type": "other",
     "rawValue": "500",
     "computedValue": "500",
-    "components": ["d3-chart", "side-panel"]
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-z-index-modal",
     "type": "other",
     "rawValue": "600",
     "computedValue": "600",
-    "components": ["modal"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-popper",
     "type": "other",
     "rawValue": "700",
     "computedValue": "700",
-    "components": ["popper"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-dropdown",
@@ -2738,14 +2738,14 @@
     "type": "other",
     "rawValue": "800",
     "computedValue": "800",
-    "components": ["tooltip"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-notice-bubble",
     "type": "other",
     "rawValue": "999",
     "computedValue": "999",
-    "components": ["notice-bubble"]
+    "components": []
   },
   {
     "name": "--intergalactic-tooltip-default",

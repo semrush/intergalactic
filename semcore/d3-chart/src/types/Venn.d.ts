@@ -21,6 +21,11 @@ export type VennProps = Context &
     orientationOrder?: (c1: number, c2: number) => number;
     /** Enables charts patterns that enhances charts accessibility */
     patterns?: PatternsConfig;
+    /**
+     * Fallback for minimum value radius
+     * @default 6
+     * */
+    minRadius?: number;
   };
 
 /** @deprecated */

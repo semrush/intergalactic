@@ -28,6 +28,10 @@ import { hasParent } from '@semcore/utils/lib/hasParent';
 import createPopper from './createPopper';
 
 import style from './style/popper.shadow.css';
+import {
+  useZIndexStacking,
+  ZIndexStackingContextProvider,
+} from '@semcore/utils/lib/zIndexStacking';
 
 function isObject(obj) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -608,6 +612,7 @@ function PopperPopper(props) {
     handleFocusOut,
   } = props;
   const ref = React.useRef(null);
+  const zIndex = useZIndexStacking('z-index-popper');
 
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => {
@@ -661,43 +666,46 @@ function PopperPopper(props) {
       onMount={setPortalMounted}
     >
       <NeighborLocation controlsLength={controlsLength}>
-        <SPopper
-          render={Scale}
-          animationsDisabled={animationsDisabled}
-          visible={visible}
-          duration={[duration, duration / 2]}
-          ref={ref}
-          onClick={stopPropagation}
-          onContextMenu={stopPropagation}
-          onDoubleClick={stopPropagation}
-          onDrag={stopPropagation}
-          onDragEnd={stopPropagation}
-          onDragEnter={stopPropagation}
-          onDragExit={stopPropagation}
-          onDragLeave={stopPropagation}
-          onDragOver={stopPropagation}
-          onDragStart={stopPropagation}
-          onDrop={stopPropagation}
-          onMouseDown={stopPropagation}
-          onMouseMove={stopPropagation}
-          onMouseOver={stopPropagation}
-          onMouseOut={stopPropagation}
-          onMouseUp={stopPropagation}
-          onKeyDown={propagateFocusLockSyntheticEvent}
-          onKeyPress={stopPropagation}
-          onKeyUp={stopPropagation}
-          onFocus={stopPropagation}
-          onBlur={propagateFocusLockSyntheticEvent}
-          onChange={stopPropagation}
-          onInput={stopPropagation}
-          onInvalid={stopPropagation}
-          onReset={stopPropagation}
-          onSubmit={stopPropagation}
-        >
-          <PortalProvider value={ref}>
-            <Children />
-          </PortalProvider>
-        </SPopper>
+        <ZIndexStackingContextProvider designToken='z-index-popper'>
+          <SPopper
+            render={Scale}
+            animationsDisabled={animationsDisabled}
+            visible={visible}
+            duration={[duration, duration / 2]}
+            ref={ref}
+            onClick={stopPropagation}
+            onContextMenu={stopPropagation}
+            onDoubleClick={stopPropagation}
+            onDrag={stopPropagation}
+            onDragEnd={stopPropagation}
+            onDragEnter={stopPropagation}
+            onDragExit={stopPropagation}
+            onDragLeave={stopPropagation}
+            onDragOver={stopPropagation}
+            onDragStart={stopPropagation}
+            onDrop={stopPropagation}
+            onMouseDown={stopPropagation}
+            onMouseMove={stopPropagation}
+            onMouseOver={stopPropagation}
+            onMouseOut={stopPropagation}
+            onMouseUp={stopPropagation}
+            onKeyDown={propagateFocusLockSyntheticEvent}
+            onKeyPress={stopPropagation}
+            onKeyUp={stopPropagation}
+            onFocus={stopPropagation}
+            onBlur={propagateFocusLockSyntheticEvent}
+            onChange={stopPropagation}
+            onInput={stopPropagation}
+            onInvalid={stopPropagation}
+            onReset={stopPropagation}
+            onSubmit={stopPropagation}
+            zIndex={zIndex}
+          >
+            <PortalProvider value={ref}>
+              <Children />
+            </PortalProvider>
+          </SPopper>
+        </ZIndexStackingContextProvider>
       </NeighborLocation>
     </Portal>,
   );

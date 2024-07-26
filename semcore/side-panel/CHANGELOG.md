@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.40.0] - 2024-07-17
+
+### Changed
+
+- Enabled `z-index` stacking.
+
 ## [3.39.0] - 2024-07-02
 
 ### Changed

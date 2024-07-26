@@ -67,6 +67,7 @@ class CompactHorizontalBarRoot extends Component {
       transparent,
       hide,
       scale,
+      index,
     };
   }
   getAnnotationProps(_props, index) {
@@ -76,6 +77,7 @@ class CompactHorizontalBarRoot extends Component {
       y: bar.y,
       height: barHeight * 2,
       width: size[0],
+      index,
     };
   }
 
@@ -85,6 +87,7 @@ class CompactHorizontalBarRoot extends Component {
 
     return {
       children: label,
+      index,
     };
   }
 
@@ -138,6 +141,7 @@ class CompactHorizontalBarRoot extends Component {
   getTooltipProps(_props, index) {
     return {
       render: index === 0,
+      index,
     };
   }
 
