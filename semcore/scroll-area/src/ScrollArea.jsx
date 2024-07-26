@@ -33,6 +33,7 @@ class ScrollAreaRoot extends Component {
     container: React.createRef(),
     inner: React.createRef(),
     tabIndex: 0,
+    observeParentSize: false,
   });
 
   $wrapper = null;
@@ -77,23 +78,32 @@ class ScrollAreaRoot extends Component {
 
   // for max height/width
   calculateSizeContainer() {
+    const { wMax, hMax, observeParentSize } = this.asProps;
     const size = { width: '', height: '' };
     if (!this.$container || !this.$wrapper) return size;
     const { scrollWidth, scrollHeight } = this.$container;
     const style = window.getComputedStyle(this.$wrapper);
     const parent = this.$wrapper.parentElement;
-    const parentRect = parent?.getBoundingClientRect() ?? { width: 0, height: 0 };
-    const { wMax, hMax } = this.asProps;
 
-    if (wMax) this.setStyleSizeProperty(this.$wrapper, 'max-width', wMax);
-    if (hMax) this.setStyleSizeProperty(this.$wrapper, 'max-height', hMax);
+    let parentRect = { width: 0, height: 0 };
+
+    if (observeParentSize) {
+      if (parent) {
+        parentRect = parent.getBoundingClientRect();
+      }
+
+      if (wMax) this.setStyleSizeProperty(this.$wrapper, 'max-width', wMax);
+      if (hMax) this.setStyleSizeProperty(this.$wrapper, 'max-height', hMax);
+    }
 
     let maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
     let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
     if (maxWidth) {
-      if (wMax && parent.scrollWidth > parentRect.width) {
-        const diff = parent.scrollWidth - parentRect.width;
+      if (observeParentSize && wMax && parent.scrollWidth > parentRect.width) {
+        /** even if width is like 100.486px we should round it to 100, not 101 */
+        const diff =
+          Math.round(parent.scrollWidth.toFixed(1)) - Math.round(parentRect.width.toFixed(1));
 
         if (diff < maxWidth) {
           maxWidth = maxWidth - diff;
@@ -110,7 +120,7 @@ class ScrollAreaRoot extends Component {
     }
 
     if (maxHeight) {
-      if (hMax && parent.scrollHeight > parentRect.height) {
+      if (observeParentSize && hMax && parent.scrollHeight > parentRect.height) {
         /** even if height is like 100.486px we should round it to 100, not 101 */
         const diff =
           Math.round(parent.scrollHeight.toFixed(1)) - Math.round(parentRect.height.toFixed(1));

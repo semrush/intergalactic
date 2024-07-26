@@ -80,3 +80,12 @@ SDivider[orientation='vertical'] {
   align-self: stretch;
   flex-shrink: 0;
 }
+
+SDivider[theme]:not([theme='default'], [theme='default']) {
+  &[use='primary'] {
+    background-color: var(--theme);
+  }
+  &[use='secondary'] {
+    background-image: linear-gradient(to right, var(--theme) 3px, transparent 1px);
+  }
+}
