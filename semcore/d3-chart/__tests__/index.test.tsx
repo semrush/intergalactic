@@ -684,6 +684,38 @@ describe('Venn', () => {
 
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
+
+  test.concurrent('should render venn width defaults min radius for item', async ({ task }) => {
+    const data = {
+      G: 2000,
+      F: 2000,
+      C: 5000,
+      U: 2,
+      'G/F': 1000,
+      'G/C': 1000,
+      'F/C': 1000,
+      'G/F/C': 1000,
+    };
+
+    const Component: React.FC = () => {
+      return (
+        <Plot height={300} width={400} data={data}>
+          <Venn>
+            <Venn.Circle dataKey='G' name='Good' />
+            <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />
+            <Venn.Circle dataKey='C' name='Cheap' color={colors['orange-04']} />
+            <Venn.Circle dataKey='U' name='Unknown' color={colors['pink-03']} />
+            <Venn.Intersection dataKey='G/F' name='Good & Fast' />
+            <Venn.Intersection dataKey='G/C' name='Good & Cheap' />
+            <Venn.Intersection dataKey='F/C' name='Fast & Cheap' />
+            <Venn.Intersection dataKey='G/F/C' name='Good & Fast & Cheap' />
+          </Venn>
+        </Plot>
+      );
+    };
+
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
+  });
 });
 
 describe('Bar', () => {
