@@ -32,7 +32,7 @@ export const useZIndexStacking = (designToken?: ZIndexDesignTokens) => {
   return contextValue;
 };
 export const ZIndexStackingContextProvider: React.FC<{
-  designToken: string;
+  designToken: ZIndexDesignTokens;
   children: React.ReactNode;
 }> = ({ designToken, children }) => {
   const contextValue = useZIndexStacking(designToken);
