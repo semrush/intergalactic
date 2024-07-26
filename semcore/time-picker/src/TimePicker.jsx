@@ -9,6 +9,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { ScreenReaderOnly } from 'intergalactic/utils/lib/ScreenReaderOnly';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -78,6 +79,7 @@ class TimePickerRoot extends Component {
     ),
     i18n: localizedMessages,
     locale: 'en',
+    defaultTitle: '',
   });
 
   hoursInputRef = React.createRef();
@@ -88,7 +90,19 @@ class TimePickerRoot extends Component {
   uncontrolledProps() {
     return {
       value: null,
+      title: null,
     };
+  }
+
+  componentDidMount() {
+    const { id, 'aria-describedby': ariaDescribedBy } = this.asProps;
+    const selector = `[for=${id}]`;
+    const titleElement =
+      document.querySelector(selector) ?? document.querySelector(`#${ariaDescribedBy}`);
+
+    if (titleElement) {
+      this.handlers.title(titleElement.textContent);
+    }
   }
 
   get value() {
@@ -209,20 +223,27 @@ class TimePickerRoot extends Component {
 
   render() {
     const STimePicker = Root;
-    const { styles, Children, value, is12Hour, getI18nText } = this.asProps;
+    const { styles, Children, value, is12Hour, getI18nText, title } = this.asProps;
     const [hours, minutes] = this.valueToTime(this.value);
 
     const label = value
-      ? getI18nText('title', {
+      ? `${title} ${getI18nText('title', {
           time: `${hours}:${withLeadingZero(minutes)}`,
           meridiem: is12Hour ? this.meridiem : '',
-        })
-      : getI18nText('titleEmpty');
+        })}`
+      : `${title} ${getI18nText('titleEmpty')}`;
 
     return sstyled(styles)(
-      <STimePicker render={Input} aria-label={label} role='group'>
-        <Children />
-      </STimePicker>,
+      <>
+        <STimePicker
+          render={Input}
+          role={'group'}
+          aria-label={label}
+          __excludeProps={['value', 'title']}
+        >
+          <Children />
+        </STimePicker>
+      </>,
     );
   }
 }

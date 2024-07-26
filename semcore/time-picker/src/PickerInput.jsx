@@ -124,18 +124,11 @@ class ItemPicker extends Component {
           neighborLocation={false}
           value={value}
           aria-label={this.getAriaLabel()}
-          role='combobox'
-          aria-autocomplete='list'
-          aria-expanded={visible ? 'true' : 'false'}
-          aria-haspopup='listbox'
-          aria-controls={`picker-${this.field}-popper`}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
         />
-        <Select.Menu hMax={180} role='listbox' id={`picker-${this.field}-popper`}>
-          {getOptions(min, max, step)}
-        </Select.Menu>
+        <Select.Menu hMax={180}>{getOptions(min, max, step)}</Select.Menu>
       </Select>,
     );
   }
