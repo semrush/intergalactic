@@ -25,16 +25,6 @@ Component vertical size is based on inherited text size. Horizontal size should 
 
 :::
 
-## States
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/states.tsx';
-</script>
-
-:::
-
 ## Number-only input
 
 ::: sandbox
