@@ -27,6 +27,8 @@ describe('Divider', () => {
         <Divider use='secondary' theme='default' />
         <Divider use='primary' theme='invert' />
         <Divider use='secondary' theme='invert' />
+        <Divider use='primary' theme='border-warning-active' />
+        <Divider use='secondary' theme='border-warning-active' />
       </snapshot.ProxyProps>
     );
 
