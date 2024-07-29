@@ -213,16 +213,14 @@ function Footer(props) {
 function Close({ styles, children: hasChildren, Children, getI18nText }) {
   const SClose = Root;
   return sstyled(styles)(
-    <SClose
-      render={Button}
-      aria-label={getI18nText('close')}
-      use='tertiary'
-      theme='muted'
-      type='button'
-      size='l'
-      addonLeft={hasChildren ? undefined : CloseIcon}
-    >
-      {hasChildren ? <Children /> : null}
+    <SClose render={Button} aria-label={getI18nText('close')} use='tertiary' theme='muted' size='l'>
+      {hasChildren ? (
+        <Children />
+      ) : (
+        <Button.Addon ml={'7px'} mr={'7px'}>
+          <CloseIcon />
+        </Button.Addon>
+      )}
     </SClose>,
   );
 }
