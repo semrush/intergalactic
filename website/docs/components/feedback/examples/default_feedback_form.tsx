@@ -39,6 +39,7 @@ class Feedback extends React.PureComponent<{
 }> {
   handleChange = (fn) => (_, e) => {
     fn(e);
+    this.props.onChange(e, e.currentTarget.id);
   };
 
   render() {
@@ -63,6 +64,7 @@ class Feedback extends React.PureComponent<{
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
               }}
+              validateOnBlur={value.description === '' ? false : true}
             >
               {({ input }) => (
                 <Textarea
@@ -79,7 +81,12 @@ class Feedback extends React.PureComponent<{
             <Text mb={2} size={200}>
               Reply-to email
             </Text>
-            <FeedbackForm.Item name='email' validate={validate.email} initialValue={value.email}>
+            <FeedbackForm.Item
+              name='email'
+              validate={validate.email}
+              initialValue={value.email}
+              validateOnBlur={value.email === '' ? false : true}
+            >
               {({ input }) => (
                 <Input state={input.state}>
                   <Input.Value {...input} onChange={this.handleChange(input.onChange)} id='email' />
