@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.1] - 2024-07-29
+
+### Added
+
+- Runtime check of required label in `Popper` component with role `dialog`.
+
 ## [5.39.0] - 2024-07-17
 
 ### Changed

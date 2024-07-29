@@ -4,7 +4,6 @@ import Popper, {
   PopperProps,
   PopperHandlers,
   PopperTriggerProps,
-  eventInteraction,
 } from '@semcore/popper';
 
 /** @deprecated */
@@ -31,6 +30,24 @@ export type DropdownHandlers = PopperHandlers & {};
 
 export type DropdownTriggerProps = PopperTriggerProps;
 
+/**
+ * DropdownPopper must have an accessible name (aria-dialog-name).
+ * It should describe popper content.
+ */
+type DropdownPopperAriaProps = Intergalactic.RequireAtLeastOne<{
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  title?: string;
+}>;
+
+export type DropdownPopperProps = DropdownPopperAriaProps & {
+  /**
+   * Popper in Dropdown should have role `dialog`.
+   * @default 'dialog'
+   */
+  role?: 'dialog';
+};
+
 declare const Dropdown: Intergalactic.Component<
   'div',
   DropdownProps,
@@ -38,7 +55,7 @@ declare const Dropdown: Intergalactic.Component<
   [handlers: DropdownHandlers]
 > & {
   Trigger: typeof Popper.Trigger;
-  Popper: typeof Popper.Popper;
+  Popper: Intergalactic.Component<typeof Popper.Popper, DropdownPopperProps>;
 };
 
 export default Dropdown;

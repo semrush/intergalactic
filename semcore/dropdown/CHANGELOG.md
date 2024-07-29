@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.0] - 2024-07-29
+
+### Added
+
+- Role `dialog` to the popper.
+
 ## [4.35.0] - 2024-07-26
 
 ### Changed

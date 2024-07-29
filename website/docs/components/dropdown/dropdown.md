@@ -59,7 +59,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       <Dropdown.Trigger>
         <ButtonTrigger>Trigger</ButtonTrigger>
       </Dropdown.Trigger>
-      <Dropdown.Popper>Hello there! I'm Dropdown's content</Dropdown.Popper>
+      <Dropdown.Popper aria-label="Popper description">Hello there! I'm Dropdown's content</Dropdown.Popper>
     </Dropdown>
   );
 });
