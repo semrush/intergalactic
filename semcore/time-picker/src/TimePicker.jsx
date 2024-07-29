@@ -9,7 +9,6 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from 'intergalactic/utils/lib/ScreenReaderOnly';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
