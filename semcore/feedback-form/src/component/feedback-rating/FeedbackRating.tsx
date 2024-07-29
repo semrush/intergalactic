@@ -276,8 +276,9 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
                   theme={theme}
                   size='xl'
                   loading={status !== 'loading' ? api.submitting : status === 'loading'}
-                  p={10}
-                  wMax={320}
+                  p={1}
+                  m={9}
+                  wMax={284}
                 >
                   <Flex justifyContent='center'>
                     <SliderRating value={rating} readonly={true} />

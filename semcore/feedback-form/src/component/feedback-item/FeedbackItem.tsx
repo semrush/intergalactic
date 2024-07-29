@@ -4,6 +4,7 @@ import Tooltip from '@semcore/tooltip';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { assignProps } from '@semcore/utils/lib/core';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 const deafultTooltipPropsList = [
   'title',
@@ -44,7 +45,7 @@ export function FeedbackItem({
         const popperId = `${uid}-error-description`;
         const inputProps = assignProps(
           {
-            ...other,
+            ...propsForElement(other),
             state: errorState ? 'invalid' : 'normal',
             'aria-invalid': errorState ? true : false,
             'aria-errormessage': popperId,

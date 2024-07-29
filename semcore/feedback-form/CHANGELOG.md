@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.33.1] - 2024-07-29
+
+### Fixed
+
+- View for close icon as a `Button` component.
+- React errors in console about `validationOnBlur` property.
+
 ## [6.33.0] - 2024-07-26
 
 ### Changed
