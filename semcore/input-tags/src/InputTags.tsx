@@ -11,6 +11,9 @@ import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { TagProps, TagContainer } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import Portal from '@semcore/portal';
 
 import style from './style/input-tag.shadow.css';
 
@@ -61,7 +64,7 @@ export type InputTagsContext = InputTagsProps & {
 class InputTags extends Component<IInputTagsProps> {
   static displayName = 'InputTags';
   static style = style;
-
+  static enhance = [uniqueIDEnhancement()];
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
@@ -175,6 +178,11 @@ class InputTags extends Component<IInputTagsProps> {
       },
     };
   }
+  getTagTextProps(_, index: number) {
+    return {
+      uid: `${this.asProps.uid}-${index}`,
+    };
+  }
 
   render() {
     const SInputTags = Root;
@@ -278,13 +286,25 @@ function InputTagContainer(props: any) {
     />,
   );
 }
+function InputTagContainerTag(props: any) {
+  const STag = Root;
+
+  return sstyled(props.styles)(
+    <>
+      {props.editable && <Portal><ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+        Press Enter to edit
+      </ScreenReaderOnly></Portal>}
+      <STag aria-describedby={props.editable ? `${props.uid}-description` : undefined} render={TagContainer.Tag} />
+    </>
+  );
+}
 
 export default createComponent(InputTags, {
   Value,
   Tag: [
     InputTagContainer,
     {
-      Text: TagContainer.Tag,
+      Text: InputTagContainerTag,
       Close: TagContainer.Close,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Tag.Circle,
