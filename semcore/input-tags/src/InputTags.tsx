@@ -291,11 +291,15 @@ function InputTagContainerTag(props: any) {
 
   return sstyled(props.styles)(
     <>
-      {props.editable && <Portal><ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-        Press Enter to edit
-      </ScreenReaderOnly></Portal>}
-      <STag aria-describedby={props.editable ? `${props.uid}-description` : undefined} render={TagContainer.Tag} />
-    </>
+      {true && (
+        <Portal>
+          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+            Press Enter to edit
+          </ScreenReaderOnly>
+        </Portal>
+      )}
+      <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
+    </>,
   );
 }
 
