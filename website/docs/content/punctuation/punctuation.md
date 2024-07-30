@@ -44,24 +44,24 @@ title: Punctuation and special symbols
 | Symbol       | HTML entity        |
 | :----------: | :----------------: |
 | &mdash;      | `&mdash;`          |
-
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
 
 <table class="dosdonts">
     <tr>
-        <th>Don't</th>
+        <th>Don’t</th>
         <th>Do</th>
     </tr>
     <tr>
         <td>
-            It makes us sound like Semrush &mdash; regardless of who the person behind the communication&nbsp;is.
+            It makes us sound like Semrush &mdash; regardless<br />of who the personbehind the communication is.
         </td>
         <td>
-            It makes us sound like Semrush&mdash;regardless of who the person behind the communication&nbsp;is.
+            It makes us sound like Semrush&mdash;regardless<br />of who the personbehind the communication is.
         </td>
     </tr>
 </table>
+<br />
 
 ### En dash
 
@@ -70,11 +70,40 @@ title: Punctuation and special symbols
 | &ndash;      | `&ndash;`          |
 
 * Use in a range of numbers, dates, and times
-* Use as a minus sign
 * Use to indicate an empty value in tables
 * Omit the spaces on both sides of the dash
 
-![](/content/punctuation/static/endash.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            100 – 100
+        </td>
+        <td>
+            100–1000
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Sep 5 — Oct 4, 2016
+        </td>
+        <td>
+            Sep 5–Oct 4, 2016
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Sep 5, 2016 – Jan 4, 2017
+        </td>
+        <td>
+            Sep 5, 2016–Jan 4, 2017
+        </td>
+    </tr>
+</table>
+<br />
 
 ### Hyphen
 
@@ -84,7 +113,29 @@ title: Punctuation and special symbols
 
 * Use for telephone numbers and compound modifiers
 
-![](/content/punctuation/static/hyphen.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            703–555–6593
+        </td>
+        <td>
+            703-555-6593
+        </td>
+    </tr>
+    <tr>
+        <td>
+            AI–powered
+        </td>
+        <td>
+            AI-powered
+        </td>
+    </tr>
+</table>
+<br />
 
 ### Non-breaking hyphen
 
@@ -94,7 +145,21 @@ title: Punctuation and special symbols
 
 * Use to prevent unwanted line breaks
 
-![](/content/punctuation/static/nbhyphen.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            Metrics like click-<br />through rate
+        </td>
+        <td>
+            Metrics like<br />click&#8209;through rate
+        </td>
+    </tr>
+</table>
+<br />
 
 ### Soft hyphen
 
@@ -105,7 +170,21 @@ title: Punctuation and special symbols
 * Use to indicate where a hyphenated break is allowed. It’s invisible otherwise
 * Useful in scenarios when the same string is displayed in different layouts 
 
-![](/content/punctuation/static/softhyphen.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            SEO-<br />friendly
+        </td>
+        <td>
+            SEO­<br />friendly
+        </td>
+    </tr>
+</table>
+<br />
 
 ## Non-breaking space
 
@@ -116,8 +195,21 @@ title: Punctuation and special symbols
 * Use to keep the words "glued"
 > Use ⌥+space on MacOS to insert
 
-![](/content/punctuation/static/nbsp.png)
-
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            Click here to<br /> subscribe
+        </td>
+        <td>
+            Click here<br />to&nbsp;subscribe
+        </td>
+    </tr>
+</table>
+<br />
 
 ## Quotation marks and apostrophe
 
@@ -129,11 +221,49 @@ title: Punctuation and special symbols
 | &rdquo;      | `&rdquo;`          |
 
 * Use double curly quotation marks
-* Include periods
+* Include periods inside the quotation marks
 * Dashes, semicolons, exclamation points, and question marks go inside the quotation mark only if they relate to the quotation
 * Use when quoting UI text, if text formatting is not available
 
-![](/content/punctuation/static/quotationmarks.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            "Project name"
+        </td>
+        <td>
+            “Project name”
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Search for “small business websites”.
+        </td>
+        <td>
+            Search for “small business websites.”
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Click “How can you help”?
+        </td>
+        <td>
+            Click “How can you help?”
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Enter the “My Profile” section
+        </td>
+        <td>
+            Enter the **My Profile** section
+        </td>
+    </tr>
+</table>
+<br />
 
 ### Apostrophe
 
@@ -143,8 +273,21 @@ title: Punctuation and special symbols
 
 * Use the curly style, just like for the quotation marks
 
-![](/content/punctuation/static/apostrophe.png)
-
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            What's new
+        </td>
+        <td>
+            What’s new
+        </td>
+    </tr>
+</table>
+<br />
 
 ## Period
 
@@ -152,7 +295,44 @@ title: Punctuation and special symbols
 * Include in quotation marks and brackets
 * Use with shortened forms of words (mainly in table columns)
 
-![](/content/punctuation/static/period.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            5. If the error persists, contact us
+        </td>
+        <td>
+            5. If the error persists, contact us.
+        </td>
+        <tr>
+        <td>
+            Click the edit button next to “Billing information”.
+        </td>
+        <td>
+            Click the edit button next to “Billing information.”
+        </td>
+            <tr>
+        <td>
+            Position → Pos
+        </td>
+        <td>
+            Position → Pos.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ==Cookie Policy.==
+        </td>
+        <td>
+            ==Cookie Policy==
+        </td>
+    </tr>
+    </tr>
+    </tr>
+</table>
 
 **Omit:**
 * in headings
@@ -162,8 +342,37 @@ title: Punctuation and special symbols
 * in tooltips that serve as labels for icons or display the element’s full name
 * after URLs
 
-![](/content/punctuation/static/noperiod.png)
-
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            ☑️ Remind later.
+        </td>
+        <td>
+            ☑️ Remind later
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ???
+        </td>
+        <td>
+            ???
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Your competitor https://rival.com.
+        </td>
+        <td>
+            Your competitor https://rival.com
+        </td>
+    </tr>
+</table>
+<br />
 
 ## Lists
 
@@ -172,11 +381,32 @@ title: Punctuation and special symbols
 – lists with icons
 * Add period in:
 – numbered lists
-* Use sentence-style capitalization
+* Use sentence case capitalization
 > Use numbered lists for a sequence of actions!
 
-![](/content/punctuation/static/lists.png)
-
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            Profile settings.
+        </td>
+        <td>
+            Profile settings
+        </td>
+        <tr>
+        <td>
+            1. Open the **Billing and Account** Tab
+        </td>
+        <td>
+            1. Open the Billing and Account Tab.
+        </td>
+    </tr>
+    </tr>
+</table>
+<br />
 
 ## Special symbols
 
@@ -189,7 +419,29 @@ title: Punctuation and special symbols
 * Enclose in spaces
 * Avoid. If there’s enough space—always use “and”
 
-![](/content/punctuation/static/ampersand.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            Plans&Pricing
+        </td>
+        <td>
+            Plans & Pricing
+        </td>
+        <tr>
+        <td>
+            Questions & Answers
+        </td>
+        <td>
+            Questions and Answers
+        </td>
+    </tr>
+    </tr>
+</table>
+<br />
 
 ### Number sign
 
@@ -199,7 +451,21 @@ title: Punctuation and special symbols
 
 * Omit the space after the sign
 
-![](/content/punctuation/static/number.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            # 1, # 3–6
+        </td>
+        <td>
+            #1, #3–6
+        </td>
+    </tr>
+</table>
+<br />
 
 ### Percent sign
 
@@ -211,7 +477,29 @@ title: Punctuation and special symbols
 * Omit the space before the percent sign
 > Exception: German, French, Swedish languages
 
-![](/content/punctuation/static/percent.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            %Traffic
+        </td>
+        <td>
+            Traffic %
+        </td>
+        <tr>
+        <td>
+            156 %
+        </td>
+        <td>
+            156%
+        </td>
+    </tr>
+    </tr>
+</table>
+<br />
 
 ### Minus and plus signs
 
@@ -221,10 +509,32 @@ title: Punctuation and special symbols
 | &plus;       | `&plus;`           |
 
 * Omit the spaces between the sign and a numeric value
-* Use the en dash for the minus sign
 * Use to show changes in metrics
+* If you cannot use the minus character for some reason, use the en dash
 
-![](/content/punctuation/static/minusplus.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            190 + countries
+        </td>
+        <td>
+            190&plus; countries
+        </td>
+        <tr>
+        <td>
+            -45%
+        </td>
+        <td>
+            &minus;45%
+        </td>
+    </tr>
+    </tr>
+</table>
+<br />
 
 ### Slash
 
@@ -234,7 +544,21 @@ title: Punctuation and special symbols
 
 * Omit the spaces around the sign
 
-![](/content/punctuation/static/slash.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            24 / 7 competitor tracking
+        </td>
+        <td>
+            24/7 competitor tracking
+        </td>
+    </tr>
+</table>
+<br />
 
 ### Multiplication sign
 
@@ -244,4 +568,17 @@ title: Punctuation and special symbols
 
 * Avoid using the “x” letter
 
-![](/content/punctuation/static/multiplication.png)
+<table class="dosdonts">
+    <tr>
+        <th>Don’t</th>
+        <th>Do</th>
+    </tr>
+    <tr>
+        <td>
+            1080 x 1920 px
+        </td>
+        <td>
+            1080 &times; 1920 px
+        </td>
+    </tr>
+</table>
