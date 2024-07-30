@@ -1072,3 +1072,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   overflow: auto;
   padding: 20px;
 }
+
+.vp-doc li[data-ui-name] + li[data-ui-name] {
+  margin-top: 2px;
+}
