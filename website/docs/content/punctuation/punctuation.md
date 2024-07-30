@@ -192,7 +192,7 @@ title: Punctuation and special symbols
 | :----------: | :----------------: |
 | &nbsp;       | `&nbsp;`           |
 
-* Use to keep the words "glued"
+* Use to keep the words “glued”
 > Use ⌥+space on MacOS to insert
 
 <table class="dosdonts">
@@ -272,6 +272,7 @@ title: Punctuation and special symbols
 | &rsquo;      | `&rsquo;`          |
 
 * Use the curly style, just like for the quotation marks
+> Use ⌥+' on MacOS to insert a curly apostrophe
 
 <table class="dosdonts">
     <tr>
@@ -353,14 +354,6 @@ title: Punctuation and special symbols
         </td>
         <td>
             ☑️ Remind later
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ???
-        </td>
-        <td>
-            ???
         </td>
     </tr>
     <tr>
