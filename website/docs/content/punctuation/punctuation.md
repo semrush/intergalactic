@@ -54,10 +54,10 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            It makes us sound like Semrush &mdash; regardless<br />of who the personbehind the communication is.
+            It makes us sound like Semrush &mdash; regardless<br />of who the person behind the communication is.
         </td>
         <td>
-            It makes us sound like Semrush&mdash;regardless<br />of who the personbehind the communication is.
+            It makes us sound like Semrush&mdash;regardless<br />of who the person behind the communication is.
         </td>
     </tr>
 </table>
