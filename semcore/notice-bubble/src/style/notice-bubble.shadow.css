@@ -56,7 +56,6 @@ SIcon {
 SNoticeBubble {
   width: 300px;
   position: fixed;
-  z-index: var(--intergalactic-z-index-notice-bubble, 999);
   right: var(--intergalactic-spacing-3x, 12px);
   top: var(--intergalactic-spacing-3x, 12px);
 

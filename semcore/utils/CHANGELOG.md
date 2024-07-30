@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.0] - 2024-07-17
+
+### Added
+
+- Internal apis to control nested `z-index` stacking.
+
 ## [4.31.0] - 2024-07-08
 
 ### Fixed

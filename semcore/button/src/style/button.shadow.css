@@ -92,15 +92,15 @@ SButton[theme='primary-success'] {
 
 SButton[theme='primary-warning'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
-  background-color: var(--intergalactic-icon-primary-warning, #ff642d);
+  background-color: var(--intergalactic-control-primary-brand, #ff642d);
 
   &:hover {
-    background-color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
+    background-color: var(--intergalactic-control-primary-brand-hover, #c33909);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
+    background-color: var(--intergalactic-control-primary-brand-active, #c33909);
   }
 }
 
