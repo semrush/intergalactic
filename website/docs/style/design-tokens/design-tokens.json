@@ -856,7 +856,7 @@
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
     "description": "Background of the primary brand colored control.",
-    "components": []
+    "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-brand-hover",
@@ -864,7 +864,7 @@
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
     "description": "Hover state of the primary brand colored control.",
-    "components": []
+    "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-brand-active",
@@ -872,7 +872,7 @@
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
     "description": "Active state of the primary brand colored control.",
-    "components": []
+    "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-advertising",
@@ -1144,7 +1144,7 @@
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
     "description": "Primary warning icon.",
-    "components": ["button", "dot", "notice"]
+    "components": ["dot", "notice"]
   },
   {
     "name": "--intergalactic-icon-primary-warning-hover-active",
@@ -1152,7 +1152,7 @@
     "rawValue": "#CC5024",
     "computedValue": "#CC5024",
     "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.",
-    "components": ["button", "notice"]
+    "components": ["notice"]
   },
   {
     "name": "--intergalactic-icon-primary-invert",
@@ -2710,21 +2710,21 @@
     "type": "other",
     "rawValue": "500",
     "computedValue": "500",
-    "components": ["d3-chart", "side-panel"]
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-z-index-modal",
     "type": "other",
     "rawValue": "600",
     "computedValue": "600",
-    "components": ["modal"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-popper",
     "type": "other",
     "rawValue": "700",
     "computedValue": "700",
-    "components": ["popper"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-dropdown",
@@ -2738,14 +2738,14 @@
     "type": "other",
     "rawValue": "800",
     "computedValue": "800",
-    "components": ["tooltip"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-notice-bubble",
     "type": "other",
     "rawValue": "999",
     "computedValue": "999",
-    "components": ["notice-bubble"]
+    "components": []
   },
   {
     "name": "--intergalactic-tooltip-default",

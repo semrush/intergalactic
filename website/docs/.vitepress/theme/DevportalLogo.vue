@@ -1,10 +1,9 @@
 <template>
-  <a href="https://developer.semrush.com/" class="devportal-logo" target="_blank"
-    aria-label="Go to Semrush Developer portal">
-    <img src="/devportal-logo.svg" width="30" height="30" class="devportal-logo" />
+  <a href="https://developer.semrush.com/" class="devportal-logo" target="_blank">
+    <img src="/devportal-logo.svg" width="30" height="30" class="devportal-logo" alt="Semrush Developer portal" />
     Developer
   </a>
-  <a .href="homeUrl" class="title intergalactic-logo" aria-label="Go to Intergalactic Design System main page">
+  <a .href="homeUrl" class="title intergalactic-logo" aria-label="Intergalactic Design System main page">
     Intergalactic
   </a>
 </template>

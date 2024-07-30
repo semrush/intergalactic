@@ -44,7 +44,6 @@ SOverlay {
   padding: var(--intergalactic-spacing-10x, 40px);
   background: var(--intergalactic-overlay-primary, rgba(25, 27, 35, 0.7));
   overflow: auto;
-  z-index: var(--intergalactic-z-index-modal, 600);
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {

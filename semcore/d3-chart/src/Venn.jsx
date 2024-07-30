@@ -19,6 +19,7 @@ class VennRoot extends Component {
     orientation: Math.PI / 2,
     orientationOrder: (c1, c2) => c2.radius - c1.radius,
     duration: 500,
+    minRadius: 6,
   };
   static enhance = [uniqueIDEnhancement()];
 
@@ -72,6 +73,7 @@ class VennRoot extends Component {
       color,
       uid: `${this.asProps.uid}-${index}`,
       patterns: this.asProps.patterns,
+      minRadius: this.asProps.minRadius,
     };
   }
 
@@ -130,8 +132,11 @@ function Circle({
   transparent,
   uid,
   patterns,
+  minRadius,
 }) {
   dataHintsHandler.describeValueEntity(dataKey, name);
+
+  const radius = data.radius < minRadius ? minRadius : data.radius;
 
   return (
     <>
@@ -143,7 +148,7 @@ function Circle({
           pattern={patterns ? `url(#${uid}-pattern)` : undefined}
           cx={data.x}
           cy={data.y}
-          r={data.radius}
+          r={radius}
           transparent={transparent}
           use:duration={`${duration}ms`}
         />,

@@ -7,7 +7,6 @@ SOverlay {
   margin: 0;
   display: flex;
   overflow: hidden;
-  z-index: var(--intergalactic-z-index-overlay, 500);
   background: var(--intergalactic-overlay-primary, rgba(25, 27, 35, 0.7));
   -webkit-overflow-scrolling: touch;
   color: var(--intergalactic-text-primary, #191b23);

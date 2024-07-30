@@ -20,6 +20,12 @@ export type ScrollAreaProps = BoxProps & {
   /** Tab index that is being bypassed to the scroll container. */
   tabIndex?: number | null;
 
+  /**
+   * Flag to enable resizing if the parent of ScrollArea is resized
+   * @default false
+   */
+  observeParentSize?: boolean;
+
   topOffset?: number;
   rightOffset?: number;
   bottomOffset?: number;
