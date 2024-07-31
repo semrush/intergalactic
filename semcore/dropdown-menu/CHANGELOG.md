@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.2] - 2024-07-31
+
+### Changed
+
+- Hidden scrollbars inside of listbox from screen readers to comply formal a11y requirements.
+
 ## [4.35.1] - 2024-07-30
 
 ### Changed
