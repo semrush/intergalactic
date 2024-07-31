@@ -1,12 +1,18 @@
 import React from 'react';
 import InputTags from 'intergalactic/input-tags';
-import Tooltip from 'intergalactic/tooltip';
+import Ellipsis from 'intergalactic/ellipsis';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
 const Demo = () => {
   const inputValueRef = React.useRef<HTMLInputElement>();
-  const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
+  const [tags, setTags] = React.useState([
+    'vk',
+    'fk',
+    'twitter',
+    'instagram',
+    'Some secret social network with a very long name',
+  ]);
   const [value, setValue] = React.useState('');
 
   const handleAppendTags = (newTags) => {
@@ -61,20 +67,21 @@ const Demo = () => {
       </Text>
       <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
         {tags.map((tag, idx) => (
-          <Tooltip key={idx}>
-            <Tooltip.Trigger
-              tag={InputTags.Tag}
-              theme='primary'
-              editable
-              data-id={idx}
-              onClick={handleEditTag}
-              onKeyDown={handleTagKeyDown}
-            >
-              <InputTags.Tag.Text tabIndex={0}>{tag}</InputTags.Tag.Text>
-              <InputTags.Tag.Close onClick={handleCloseTag} />
-            </Tooltip.Trigger>
-            <Tooltip.Popper>tag</Tooltip.Popper>
-          </Tooltip>
+          <InputTags.Tag
+            key={idx}
+            tag={InputTags.Tag}
+            theme='primary'
+            editable
+            data-id={idx}
+            onClick={handleEditTag}
+            onKeyDown={handleTagKeyDown}
+            active={false}
+          >
+            <InputTags.Tag.Text>
+              <Ellipsis wMax={100}>{tag}</Ellipsis>
+            </InputTags.Tag.Text>
+            <InputTags.Tag.Close onClick={handleCloseTag} />
+          </InputTags.Tag>
         ))}
         <InputTags.Value
           value={value}

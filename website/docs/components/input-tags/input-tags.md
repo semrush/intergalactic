@@ -37,12 +37,6 @@ const Preview = (preview) => {
     })),
   });
 
-  const disabled = bool({
-    key: 'disabled',
-    defaultValue: false,
-    label: 'Disabled',
-  });
-
   const readOnly = bool({
     key: 'readOnly',
     defaultValue: false,
@@ -94,7 +88,7 @@ const Preview = (preview) => {
           {closeTag && <InputTags.Tag.Close />}
         </InputTags.Tag>
       ) : null}
-      <InputTags.Value disabled={disabled} readOnly={readOnly} />
+      <InputTags.Value readOnly={readOnly} />
     </InputTags>
   );
 };
