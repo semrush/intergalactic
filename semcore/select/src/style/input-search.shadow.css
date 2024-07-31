@@ -12,4 +12,5 @@ SOutline {
   left: -1px;
   width: 100%;
   border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px) 0 0;
+  box-sizing: content-box;
 }
