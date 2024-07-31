@@ -15,7 +15,7 @@ const gtmKey = 'GTM-PP7RKT7';
 export default defineConfig({
   base: '/intergalactic/',
   outDir: resolvePath(__dirname, 'dist/intergalactic/'),
-  title: 'Intergalactic',
+  title: 'Intergalactic Design System',
   description: 'Design System',
   markdown: {
     config(md) {
