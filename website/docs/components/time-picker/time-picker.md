@@ -120,11 +120,9 @@ Upon focusing on a combobox, a list with all the possible options is opened. Whe
 The dropdown with the list is shifted to the left by 9px to accurately align the list items with the combobox figures.
 :::
 
-![](static/focus-1.png)
+![](static/focus-hours-minutes.png)
 
 The button allows the user to switch between AM and PM values with a click.
-
-![](static/focus-2.png)
 
 When the user navigates to a button with the `Tab` key, the button receives `focus` state.
 
