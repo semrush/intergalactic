@@ -6,7 +6,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 ## Description
 
-**Fullscreen modal** is a modal window that opens on top of the webpage. It blocks all functions of the parent page and has its own separate URL.
+**Fullscreen modal** is a modal dialog that opens on top of the webpage. It blocks all functions of the parent page and has its own separate URL.
 
 **Use fullscreen modal component when:**
 
@@ -17,7 +17,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 ## Appearance
 
-The fullscreen modal window includes:
+The fullscreen modal dialog includes:
 
 - Fixed header with a title and buttons for going back to the product page and closing the modal.
 - Content area.
@@ -25,44 +25,9 @@ The fullscreen modal window includes:
 
 ![](static/fullscreen-modal.png)
 
-### Header and footer width
-
-The header and footer of the modal window should be straightened to the full width of the browser window. If necessary, the content may have a fixed width (minimum or maximum).
-
-![](static/fullscreen-yes-no.png)
-
-## Header styles
-
-For the header of the fullscreen window use the following styles:
-
-- for title use text with 24px size (`--fs-500`, `--lh-500`) and `bold` font-weight;
-- for additional information next to the title use text with 12px size (`--fs-100`, `--lh-100`) and `--text-secondary` token for text color.
-- for return button use button with M size.
-- for window closing icon use `Close` icon with M size.
-
-::: tip
-Fix the header, while user scrolls the content of the window.
-:::
-
-### Sizes, margins and paddings
-
-![](static/header.png)
-
-![](static/header-padding.png)
-
-![](static/fullscreen-modal-divider.png)
-
-### Long title
-
-If the title of the window is too long, and doesn't fit into the space, collapse it into `ellipsis`.
-
-`Close` icon has `margin-left: var(--spacing-3x)`.
-
-![](static/long-heading.png)
-
 ## Content styles
 
-- For content title use text less than 20px (`--fs-500`) to maintain hierarchy in the content.
+- Use 20px (`--fs-500`) or smaller text sizes for headings in the content area to ensure correct hierarchy with the modal header.
 - You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
 
 Table: Content styles for single-zone and dual-zone modal windows
@@ -82,7 +47,7 @@ Table: Paddings for single-zone and dual-zone modal windows
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them should be placed with `align: left`.
-- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. We also recommend you to use a [default modal window](/components/modal/modal) in this case instead.
+- If there is only one zone for content in the modal window, it is necessary to center the content with `align: center` horizontally. We also recommend you to use the default [Modal](/components/modal/modal) component in this case instead.
 
 Table: Content alignment for single-zone and dual-zone modal windows
 
@@ -90,18 +55,12 @@ Table: Content alignment for single-zone and dual-zone modal windows
 | ------------------------- | ------------------------- |
 | ![](static/content-1.png) | ![](static/content-2.png) |
 
-## Footer styles
-
-Footer has the same paddings as the header has.
-
-![](static/footer-fixed.png)
-
 ## CTA buttons
 
-You can use buttons either M or L size depending on the context of the problem you are solving in such a modal window.
+You can use either size M or size L buttons, depending on your case.
 
 ::: tip
-Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
+The example below shows the default composition of the content, but depending on your case buttons can have different alignment.
 :::
 
 ![](static/footer-fixed2.png)
@@ -110,10 +69,10 @@ Note that the example below shows a default composition of the content. For exam
 
 Fullscreen modal window can be closed:
 
-- By clicking on the "Close" button;
-- By clicking on "CTA" or "Cancel" button;
-- With the `Esc` button;
-- With the back button in the browser (nothing changes on the parent page in this case).
+- Using the **Close** button in the header
+- Using the **CTA** or the **Cancel** button
+- By pressing the `Esc` key
+- With the browser's **Back** button (nothing changes on the parent page in this case).
 
 ::: tip
 When the fullscreen modal window is closed, focus always returns to its trigger.
@@ -123,13 +82,13 @@ When the fullscreen modal window is closed, focus always returns to its trigger.
 
 ### Loading
 
-When loading and reloading the content of the window, use [Spin](/components/spin/spin) with XL size.
+When loading and reloading the content of the window, use [SpinContainer](../spin-container/spin-container.md) with XXL size.
 
 ![](static/loading.png)
 
 ### Error
 
-If an error occurred during data loading, show the error message with the "Reload" button.
+If an error occurred during data loading, show an error message with the **Reload** button.
 
 For error messages use [Widget empty state](/components/widget-empty/widget-empty) component.
 
