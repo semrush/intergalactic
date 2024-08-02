@@ -19,8 +19,8 @@ Use [Modal dialogs](/components/modal/modal) to show important information or re
 
 **For example, you can use SidePanel as:**
 
-- A notification center for the whole website
-- A Help Center or News panel in products
+- A notification center for the whole website.
+- A Help Center or News panel in products.
 - "Panels" on mobile devices.
 
 ## Component composition
@@ -56,13 +56,15 @@ Table: SidePanel with and without overlay
 | Without overlay | ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
 | With overlay    | ![](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
-## Sizes and indents
+## Appearance
 
-### Width
+### Sizes and indents
+
+#### Width
 
 SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
 
-### Container
+#### Container
 
 **The component has a default padding.** It can be changed if necessary.
 
@@ -70,7 +72,7 @@ _It can be changed, for example, when using SidePanel on a small screen where yo
 
 ![](static/container-paddings.png)
 
-## Content styles
+### Content styles
 
 General recommendations for `SidePanel` content styles:
 
@@ -86,7 +88,7 @@ General recommendations for `SidePanel` content styles:
 
 ![](static/scroll.png)
 
-## Footer styles
+### Footer styles
 
 You can place common `SidePanel` controls in the footer.
 
@@ -132,10 +134,10 @@ SidePanel can be opened either by the user clicking on the corresponding trigger
 
 SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out`.
 
-### What happens when the browser window size changes
+**What happens when the browser window size changes:**
 
-- SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
-- On a 320px screen, SidePanel should not occupy more than 80% of the screen width so that the user can click outside of it and close it.
+- The SidePanel has a fixed width that doesn’t change when the browser window is resized. The default width of the panel is 260px, but you can change it if needed.
+- On a 320px screen, the SidePanel should not occupy more than 80% of the screen width to ensure that the user can click outside of it to close it.
 
 ![](static/320-width.png)
 
