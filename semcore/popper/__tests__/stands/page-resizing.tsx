@@ -18,7 +18,9 @@ const Demo = () => {
       <Flex>
         <DescriptionTooltip visible>
           <DescriptionTooltip.Trigger tag={Button}>Trigger</DescriptionTooltip.Trigger>
-          <DescriptionTooltip.Popper>Popper</DescriptionTooltip.Popper>
+          <DescriptionTooltip.Popper aria-label={'Popper description'}>
+            Popper
+          </DescriptionTooltip.Popper>
         </DescriptionTooltip>
       </Flex>
 

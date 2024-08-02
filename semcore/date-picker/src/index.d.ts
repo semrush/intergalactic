@@ -4,13 +4,14 @@ import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
 import Button, { ButtonProps } from '@semcore/button';
 import Divider from '@semcore/divider';
-import Dropdown, { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
+import { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
 import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import { InputMaskValueProps } from '@semcore/input-mask';
 import Checkbox from '@semcore/checkbox';
 import { TooltipProps } from '@semcore/tooltip';
+import Popper from '@semcore/popper';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -369,7 +370,7 @@ declare const DatePicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof InputTrigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
   Prev: typeof Button;
@@ -405,7 +406,7 @@ declare const DateRangePicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof RangeInputTrigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
   Prev: typeof Button;
@@ -442,7 +443,7 @@ declare const MonthPicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof InputTrigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
   Prev: typeof Button;
@@ -477,7 +478,7 @@ declare const MonthRangePicker: Intergalactic.Component<
     Text: typeof BaseTrigger.Text;
   };
   Trigger: typeof RangeInputTrigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: typeof Popper.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
   Prev: typeof Button;
@@ -630,7 +631,7 @@ declare const DateRangeComparator: Intergalactic.Component<
   DateRangeComparatorProps,
   DateRangeComparatorContext & CalendarDaysContext
 > & {
-  Popper: typeof Dropdown.Popper;
+  Popper: typeof Popper.Popper;
   Header: typeof Flex;
   Prev: typeof Button;
   Next: typeof Button;

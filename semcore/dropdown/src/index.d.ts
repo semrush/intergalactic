@@ -4,6 +4,7 @@ import Popper, {
   PopperProps,
   PopperHandlers,
   PopperTriggerProps,
+  PopperPopperProps,
 } from '@semcore/popper';
 
 /** @deprecated */
@@ -40,13 +41,14 @@ type DropdownPopperAriaProps = Intergalactic.RequireAtLeastOne<{
   title?: string;
 }>;
 
-export type DropdownPopperProps = DropdownPopperAriaProps & {
-  /**
-   * Popper in Dropdown should have role `dialog`.
-   * @default 'dialog'
-   */
-  role?: 'dialog';
-};
+export type DropdownPopperProps = PopperPopperProps &
+  DropdownPopperAriaProps & {
+    /**
+     * Popper in Dropdown should have role `dialog`.
+     * @default 'dialog'
+     */
+    role?: 'dialog';
+  };
 
 declare const Dropdown: Intergalactic.Component<
   'div',
@@ -55,7 +57,12 @@ declare const Dropdown: Intergalactic.Component<
   [handlers: DropdownHandlers]
 > & {
   Trigger: typeof Popper.Trigger;
-  Popper: Intergalactic.Component<typeof Popper.Popper, DropdownPopperProps>;
+  Popper: Intergalactic.Component<
+    'div',
+    DropdownPopperProps,
+    PopperContext,
+    [handlers: PopperHandlers]
+  >;
 };
 
 export default Dropdown;

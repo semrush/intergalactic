@@ -31,7 +31,7 @@ describe('Dropdown', () => {
           <Dropdown.Trigger>
             <button type='button'>default dropdown</button>
           </Dropdown.Trigger>
-          <Dropdown.Popper style={{ opacity: 1 }}>
+          <Dropdown.Popper aria-label={'Dropdown popper description'} style={{ opacity: 1 }}>
             <div>text</div>
           </Dropdown.Popper>
         </Dropdown>
@@ -48,7 +48,11 @@ describe('Dropdown', () => {
           <Dropdown.Trigger>
             <button type='button'>default dropdown</button>
           </Dropdown.Trigger>
-          <Dropdown.Popper keyboardFocused data-ui-name='popper'>
+          <Dropdown.Popper
+            aria-label={'Dropdown popper description'}
+            keyboardFocused
+            data-ui-name='popper'
+          >
             <div>text</div>
           </Dropdown.Popper>
         </Dropdown>
@@ -74,7 +78,9 @@ describe('Dropdown', () => {
               Select trigger
             </div>
           </Dropdown.Trigger>
-          <Dropdown.Popper p={4}>Content</Dropdown.Popper>
+          <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
+            Content
+          </Dropdown.Popper>
         </Dropdown>
       </>,
     );
@@ -101,7 +107,9 @@ describe('Dropdown', () => {
           <Dropdown.Trigger>
             <div tabIndex={0}>Select trigger</div>
           </Dropdown.Trigger>
-          <Dropdown.Popper p={4}>Content</Dropdown.Popper>
+          <Dropdown.Popper aria-label={'Dropdown popper description'} p={4}>
+            Content
+          </Dropdown.Popper>
         </Dropdown>,
       );
 
@@ -117,7 +125,7 @@ describe('Dropdown', () => {
         <Dropdown.Trigger tag='button' aria-label='default dropdown'>
           default dropdown
         </Dropdown.Trigger>
-        <Dropdown.Popper>
+        <Dropdown.Popper aria-label={'Dropdown popper description'}>
           <div>text</div>
         </Dropdown.Popper>
       </Dropdown>,
