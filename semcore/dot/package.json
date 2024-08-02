@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dot",
   "description": "Semrush Dot Component",
-  "version": "5.30.0",
+  "version": "5.30.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,10 +12,10 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/animation": "2.31.0",
-    "@semcore/flex-box": "5.31.0",
-    "@semcore/portal": "3.31.0",
-    "@semcore/utils": "4.32.0"
+    "@semcore/animation": "2.31.1",
+    "@semcore/flex-box": "5.31.1",
+    "@semcore/portal": "3.31.1",
+    "@semcore/utils": "4.32.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
