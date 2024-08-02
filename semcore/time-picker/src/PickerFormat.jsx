@@ -40,11 +40,9 @@ class TimePickerFormat extends Component {
         >
           {Children.origin ? <Children /> : <SPickerFormatText>{meridiem}</SPickerFormatText>}
         </SPickerFormat>
-        {changedFormatNotice && (
-          <ScreenReaderOnly role={'status'} aria-live={'polite'}>
-            {changedFormatNotice}
-          </ScreenReaderOnly>
-        )}
+        <ScreenReaderOnly role={'status'} aria-live={'polite'}>
+          {changedFormatNotice}
+        </ScreenReaderOnly>
         <ScreenReaderOnly aria-hidden={'true'} id={`${uid}_describe`}>
           {getI18nText('formatToggler')}
         </ScreenReaderOnly>
