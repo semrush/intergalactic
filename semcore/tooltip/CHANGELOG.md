@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.40.1] - 2024-07-29
+## [6.40.2] - 2024-08-02
 
 ### Changed
 
 - Runtime check of required label in `DescriptionTooltip` popper moved to `Popper` component.
+
+## [6.40.1] - 2024-07-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.32.0 ~> 4.32.1], `@semcore/flex-box` [5.31.0 ~> 5.31.1], `@semcore/popper` [5.39.0 ~> 5.39.1], `@semcore/portal` [3.31.0 ~> 3.31.1], `@semcore/core` [2.29.0 ~> 2.29.1]).
 
 ## [6.40.0] - 2024-07-17
 
