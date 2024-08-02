@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.40.1] - 2024-07-30
+
+### Fixed
+
+- Component `z-index`.
+
 ## [5.40.0] - 2024-07-17
 
 ### Changed

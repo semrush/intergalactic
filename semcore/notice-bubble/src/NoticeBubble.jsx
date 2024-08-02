@@ -49,7 +49,11 @@ const Notices = (props) => {
 class NoticeBubbleContainerRoot extends Component {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), contextThemeEnhance(), zIndexStackingEnhance()];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    contextThemeEnhance(),
+    zIndexStackingEnhance('z-index-notice-bubble'),
+  ];
   static defaultProps = {
     manager,
     i18n: localizedMessages,
