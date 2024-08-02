@@ -19,9 +19,9 @@ Use [Modal dialogs](/components/modal/modal) to show important information or re
 
 **For example, you can use SidePanel as:**
 
-- A notification center for the whole website.
-- A Help Center or News panel in products.
-- "Panels" on mobile devices.
+- A notification center for the whole website
+- A Help Center or News panel in products
+- "Panels" on mobile devices
 
 ## Component composition
 
