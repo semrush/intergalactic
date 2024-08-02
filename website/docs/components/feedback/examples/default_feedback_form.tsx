@@ -57,7 +57,7 @@ class Feedback extends React.PureComponent<{
               Tell us your suggestion or report an issue
             </Text>
             <FeedbackForm.Item
-              name='feedback'
+              name='description'
               validate={validate.description}
               initialValue={value.description}
               placement='left-start'
@@ -72,7 +72,7 @@ class Feedback extends React.PureComponent<{
                   autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
-                  id='suggestions'
+                  id='description'
                 />
               )}
             </FeedbackForm.Item>
