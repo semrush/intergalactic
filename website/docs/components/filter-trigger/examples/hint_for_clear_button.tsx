@@ -42,7 +42,7 @@ const Demo = () => {
               </Tooltip>
             )}
           </Dropdown.Trigger>
-          <Dropdown.Popper p={5}>
+          <Dropdown.Popper p={5} aria-label='Dropdown popper description'>
             <Button
               onClick={() => {
                 setFilters(filters + 1);

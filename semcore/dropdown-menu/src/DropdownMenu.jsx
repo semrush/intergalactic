@@ -451,7 +451,6 @@ function Menu(props) {
     interaction,
     autoFocus,
     animationsDisabled,
-    role = 'menu',
   } = props;
   const popperProps = {
     visible,
@@ -461,7 +460,7 @@ function Menu(props) {
     interaction,
     autoFocus,
     animationsDisabled,
-    role,
+    role: false,
   };
   return (
     <DropdownMenu.Popper {...popperProps}>

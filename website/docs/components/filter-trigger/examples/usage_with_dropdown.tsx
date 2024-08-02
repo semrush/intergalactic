@@ -34,7 +34,7 @@ const Demo = () => {
               </FilterTrigger.Counter>
             )}
           </Dropdown.Trigger>
-          <Dropdown.Popper p={5}>
+          <Dropdown.Popper aria-label='Dropdown popper description' p={5}>
             <Button
               onClick={() => {
                 setFilters(filters + 1);

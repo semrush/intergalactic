@@ -31,7 +31,7 @@ class Demo extends React.PureComponent {
     return (
       <Dropdown>
         <Dropdown.Trigger tag={Button}>Help me</Dropdown.Trigger>
-        <Dropdown.Popper w={290} p={4}>
+        <Dropdown.Popper w={290} p={4} aria-label='Dropdown popper description'>
           <SpinContainer loading={loading} size={'l'}>
             <Text size={100}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae
