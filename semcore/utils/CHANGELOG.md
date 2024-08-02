@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.1] - 2024-07-30
+
+### Fixed
+
+- `z-index` stacking for class components.
+
 ## [4.32.0] - 2024-07-17
 
 ### Added
