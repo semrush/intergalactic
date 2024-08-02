@@ -3,6 +3,6 @@
   "titleEmpty": "Select",
   "hours": "Hours",
   "minutes": "Minutes",
-  "formatToggler": "Toggle time period",
-  "changedFormatNotice": "Time format changed to {meridiem}"
+  "formatToggler": "Time period",
+  "changedFormatNotice": "Time period changed to {meridiem}"
 }
