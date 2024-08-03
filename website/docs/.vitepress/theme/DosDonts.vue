@@ -6,10 +6,10 @@
     </tr>
     <tr>
       <td>
-        It makes us sound like Semrush &mdash; regardless of who the person behind the communication&nbsp;is.
+        <slot name="dont"></slot>
       </td>
       <td>
-        It makes us sound like Semrush&mdash;regardless of who the person behind the communication&nbsp;is.
+        <slot name="do"></slot>
       </td>
     </tr>
   </table>

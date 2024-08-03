@@ -13,7 +13,10 @@ title: Punctuation and special symbols
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
 
-<DosDonts />
+<DosDonts>
+  <template #dont>It makes us sound like Semrush &mdash; regardless of who the person behind the communication&nbsp;is.</template>
+  <template #do>It makes us sound like Semrush&mdash;regardless of who the person behind the communication&nbsp;is.</template>
+</DosDonts>
 
 ### En dash
 
