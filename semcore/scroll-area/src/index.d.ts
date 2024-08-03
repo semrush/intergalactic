@@ -72,5 +72,7 @@ declare const ScrollArea: Intergalactic.Component<'div', ScrollAreaProps, Scroll
 
 declare const eventCalculate: any;
 
-export { eventCalculate };
+declare const hideScrollBarsFromScreenReadersContext: React.Context<boolean>;
+
+export { eventCalculate, hideScrollBarsFromScreenReadersContext };
 export default ScrollArea;
