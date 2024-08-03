@@ -14,11 +14,12 @@ import BlogPosts from './BlogPosts.vue'
 <style>
 .blog-posts-main-page {
   position: relative;
-  padding: 0 24px;
+  margin-top: 48px;
 }
-.blog-posts-main-page-title {
-  font-size: 24px;
+h2.blog-posts-main-page-title.blog-posts-main-page-title {
+  font-size: 32px;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 .blog-posts-main-page .VPFeatures {
   padding: 0px;
@@ -29,19 +30,11 @@ import BlogPosts from './BlogPosts.vue'
 }
 
 @media (min-width: 640px) {
-  .blog-posts-main-page {
-    padding: 0 48px;
-  }
   .blog-posts-main-page-title {
     font-size: 32px;
   }
 }
 
-@media (min-width: 960px) {
-  .blog-posts-main-page {
-    padding: 0 64px;
-  }
-}
 
 .blog-posts-main-page-container {
   margin: 0 auto;
