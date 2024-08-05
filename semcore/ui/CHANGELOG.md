@@ -1,3 +1,52 @@
+## [15.103.0] - 2024-08-05
+
+### @semcore/button
+
+- **Changed** Changed `loading` set spinner color setting. Instead of palette, hardcoded to `theme` and `use` props, color of text in button is used. Default color of this state visually preserved.
+
+### @semcore/dropdown
+
+- **Added** Role `dialog` to the popper.
+
+### @semcore/dropdown-menu
+
+- **Changed** Hidden scrollbars inside of listbox from screen readers to comply formal a11y requirements.
+
+### @semcore/feedback-form
+
+- **Fixed** View for close icon as a `Button` component.
+- **Fixed** React errors in console about `validationOnBlur` property.
+
+### @semcore/modal
+
+- **Changed** Close icon to `Button` component.
+
+### @semcore/popper
+
+- **Added** Runtime check of required label in `Popper` component with role `dialog`.
+
+### @semcore/scroll-area
+
+- **Add** Context to hide scrollbars from screen readers.
+
+### @semcore/select
+
+- **Fixed** Depending on css reset, a small visual gap might appear between `Select.InputSearch` right border and outer container.
+
+### @semcore/time-picker
+
+- **Changed** Fixed reading of dropdowns by Screen readers.
+- **Changed** Removed unnecessary `aria-hidden` props.
+- **Changed** Text in some `aria-label`.
+
+### @semcore/tooltip
+
+- **Changed** Runtime check of required label in `DescriptionTooltip` popper moved to `Popper` component.
+
+### @semcore/utils
+
+- **Fixed** In firefox focus lock with a single focusable element was allowing user focus to get our of the web page.
+
 ## [15.102.1] - 2024-07-30
 
 ### @semcore/button
