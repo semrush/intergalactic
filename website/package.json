@@ -1,6 +1,6 @@
 {
   "name": "@semrush/website",
-  "version": "1.36.10",
+  "version": "1.36.11",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -96,6 +96,6 @@
     "typescript": "5.1.6",
     "unified": "10.1.2",
     "vite": "^4.4.9",
-    "vitepress": "1.0.0-rc.24"
+    "vitepress": "1.3.1"
   }
 }

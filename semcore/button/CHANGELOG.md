@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.0] - 2024-07-31
+
+### Changed
+
+- Changed `loading` set spinner color setting. Instead of palette, hardcoded to `theme` and `use` props, color of text in button is used. Default color of this state visually preserved.
+
+## [5.34.1] - 2024-07-26
+
+### Fixed
+
+- Tokens for `Button` with `use="primary"` and `theme="warning"`: from `--intergalactic-icon-primary-warning` and `--intergalactic-icon-primary-warning-hover-active` to `--intergalactic-control-primary-brand`, `--intergalactic-control-primary-brand-hover` and `--intergalactic-control-primary-brand-active`.
+
+## [5.34.0] - 2024-07-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/tooltip` [6.39.1 ~> 6.40.0], `@semcore/utils` [4.31.0 ~> 4.32.0]).
+
 ## [5.33.0] - 2024-07-17
 
 ### Changed

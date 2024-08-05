@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.2] - 2024-07-31
+
+### Changed
+
+- Hidden scrollbars inside of listbox from screen readers to comply formal a11y requirements.
+
+## [4.35.1] - 2024-07-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.35.0 ~> 4.35.1], `@semcore/utils` [4.32.0 ~> 4.32.1], `@semcore/core` [2.29.0 ~> 2.29.1]).
+
+## [4.35.0] - 2024-07-26
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.34.1 ~> 4.35.0], `@semcore/scroll-area` [5.33.1 ~> 5.34.0], `@semcore/utils` [4.31.0 ~> 4.32.0], `@semcore/core` [2.28.0 ~> 2.29.0]).
+
 ## [4.34.5] - 2024-07-19
 
 ### Changed

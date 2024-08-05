@@ -1,3 +1,57 @@
+## [15.102.1] - 2024-07-30
+
+### @semcore/button
+
+- **Fixed** Tokens for `Button` with `use="primary"` and `theme="warning"`: from `--intergalactic-icon-primary-warning` and `--intergalactic-icon-primary-warning-hover-active` to `--intergalactic-control-primary-brand`, `--intergalactic-control-primary-brand-hover` and `--intergalactic-control-primary-brand-active`.
+
+### @semcore/notice-bubble
+
+- **Fixed** Component `z-index`.
+
+### @semcore/utils
+
+- **Fixed** `z-index` stacking for class components.
+
+## [15.102.0] - 2024-07-26
+
+### @semcore/d3-chart
+
+- **Added** `minRadius` property to Venn.Chart.
+- **Added** `index` to children render function of `CompactHorizontalBar` subcomponents.
+- **Added** Gaps between bars in StackBar chart.
+
+### @semcore/divider
+
+- **Added** Support for design tokens in `theme` prop.
+
+### @semcore/modal
+
+- **Changed** Enabled `z-index` stacking.
+
+### @semcore/notice-bubble
+
+- **Changed** Enabled `z-index` stacking.
+
+### @semcore/popper
+
+- **Changed** Enabled `z-index` stacking.
+
+### @semcore/scroll-area
+
+- **Added** Property `observeParentSize` to enable recalculation if the parent of ScrollArea is resized. Default value is `false`.
+
+### @semcore/side-panel
+
+- **Changed** Enabled `z-index` stacking.
+
+### @semcore/tooltip
+
+- **Changed** Enabled `z-index` stacking.
+
+### @semcore/utils
+
+- **Added** Internal apis to control nested `z-index` stacking.
+
 ## [15.101.0] - 2024-07-19
 
 ### @semcore/d3-chart
