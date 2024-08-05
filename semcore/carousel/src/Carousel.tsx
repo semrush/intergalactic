@@ -636,16 +636,9 @@ const Prev = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted, tabIndex } = props;
   const SPrev = Root;
   const SPrevButton = Button;
-  const [isActive, setIsActive] = React.useState(false);
-  const handleMouseEnter = React.useCallback(() => {
-    setIsActive(true);
-  }, []);
-  const handleMouseLeave = React.useCallback(() => {
-    setIsActive(false);
-  }, []);
 
   return sstyled(styles)(
-    <SPrev render={Box} top={top} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <SPrev render={Box} top={top}>
       {children ? (
         <Children />
       ) : (
@@ -654,7 +647,6 @@ const Prev = (props: CarouselButtonProps) => {
           aria-label={label}
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
-          active={isActive}
           size={'l'}
           tabIndex={tabIndex}
         />
@@ -667,16 +659,9 @@ const Next = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted, tabIndex } = props;
   const SNext = Root;
   const SNextButton = Button;
-  const [isActive, setIsActive] = React.useState(false);
-  const handleMouseEnter = React.useCallback(() => {
-    setIsActive(true);
-  }, []);
-  const handleMouseLeave = React.useCallback(() => {
-    setIsActive(false);
-  }, []);
 
   return sstyled(styles)(
-    <SNext render={Box} top={top} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <SNext render={Box} top={top}>
       {children ? (
         <Children />
       ) : (
@@ -685,7 +670,6 @@ const Next = (props: CarouselButtonProps) => {
           aria-label={label}
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
-          active={isActive}
           size={'l'}
           tabIndex={tabIndex}
         />

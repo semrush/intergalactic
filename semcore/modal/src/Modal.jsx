@@ -2,7 +2,7 @@ import React from 'react';
 import { FadeInOut, Slide } from '@semcore/animation';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
-import { Box } from '@semcore/flex-box';
+import Button from '@semcore/button';
 import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
 import fire from '@semcore/utils/lib/fire';
@@ -172,10 +172,22 @@ function Overlay(props) {
 
 function Close(props) {
   const SClose = Root;
-  const { Children, children: hasChildren, getI18nText } = props;
+  const { Children, children: hasChildren, getI18nText, ghost } = props;
   return sstyled(props.styles)(
-    <SClose render={Box} tag='button' tabIndex={0} aria-label={getI18nText('close')}>
-      {hasChildren ? <Children /> : <CloseIcon title={getI18nText('close')} />}
+    <SClose
+      render={Button}
+      use='tertiary'
+      size='l'
+      theme={ghost ? 'invert' : 'muted'}
+      aria-label={getI18nText('close')}
+    >
+      {hasChildren ? (
+        <Children />
+      ) : (
+        <Button.Addon ml={'7px'} mr={'7px'}>
+          <CloseIcon title={getI18nText('close')} />
+        </Button.Addon>
+      )}
     </SClose>,
   );
 }
