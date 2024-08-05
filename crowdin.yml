@@ -95,6 +95,10 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "/semcore/input-tags/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/modal/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
