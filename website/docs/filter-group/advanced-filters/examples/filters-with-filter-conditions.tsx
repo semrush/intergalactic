@@ -105,7 +105,7 @@ const Demo = () => {
       </Text>
       <Dropdown visible={visible} onVisibleChange={setVisible}>
         <Dropdown.Trigger
-          placeholder='No filter set'
+          placeholder='Advanced filters'
           id='advanced-filter'
           empty={!filtersCount}
           onClear={clearAll}

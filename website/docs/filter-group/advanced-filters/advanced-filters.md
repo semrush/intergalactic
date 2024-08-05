@@ -35,11 +35,15 @@ You can visually separate submit buttons from the filters by using the following
 
 ![](static/advanced-filters-dropdown2.png)
 
-## Counter
+### Counter
 
-The counter appears after applying the filter. It shows the number of filters applied within the advanced filters group.
+The [Counter](/components/counter/counter) appears after applying the filter. It shows the number of filters applied within the advanced filters group.
 
 ![](static/advanced-filter.png)
+
+### Remove filter button
+
+Refer to the [FilterTrigger](/components/filter-trigger/filter-trigger#default-filtertrigger) component, as it's used as the trigger in this pattern.
 
 ## Dropdown or accordion?
 
