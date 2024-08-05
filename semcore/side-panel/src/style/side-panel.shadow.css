@@ -62,6 +62,11 @@ SClose {
   z-index: 1;
   right: var(--intergalactic-spacing-2x, 8px);
   top: var(--intergalactic-spacing-2x, 8px);
+
+  & SAddon:only-child {
+    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+  }
 }
 
 SBack[size="m"] {
