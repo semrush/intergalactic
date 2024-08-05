@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.0] - 2024-07-31
+
+### Changed
+
+- Changed `loading` set spinner color setting. Instead of palette, hardcoded to `theme` and `use` props, color of text in button is used. Default color of this state visually preserved.
+
 ## [5.34.1] - 2024-07-26
 
 ### Fixed

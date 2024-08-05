@@ -3,8 +3,11 @@ import { findDOMNode } from 'react-dom';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { getNodeByRef } from '@semcore/utils/lib/ref';
+import contextEnhance from '@semcore/utils/lib/enhances/contextEnhance';
 
 import style from './style/scroll-bar.shadow.css';
+
+export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
 
 export const DEFAULT_SLIDER_SIZE = 50;
 
@@ -29,6 +32,9 @@ class ScrollBarRoot extends Component {
   static displayName = 'Bar';
 
   static style = style;
+  static enhance = [
+    contextEnhance(hideScrollBarsFromScreenReadersContext, 'hideFromScreenReaders'),
+  ];
 
   static defaultProps = () => {
     return {
@@ -279,7 +285,7 @@ class ScrollBarRoot extends Component {
 
   render() {
     const SScrollBar = Root;
-    const { styles, uid, position, container, orientation } = this.asProps;
+    const { styles, uid, position, container, orientation, hideFromScreenReaders } = this.asProps;
     const { visibleScroll } = this.state;
 
     let { leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
@@ -332,11 +338,12 @@ class ScrollBarRoot extends Component {
         top={orientation === 'vertical' && topOffset ? `${topOffset}px` : undefined}
         bottom={orientation === 'vertical' && bottomOffset ? `${bottomOffset}px` : undefined}
         offsetSum={`${offsetSum}px`}
-        role='scrollbar'
+        role={hideFromScreenReaders ? undefined : 'scrollbar'}
+        aria-hidden={hideFromScreenReaders ? 'true' : undefined}
         ref={this.refBar}
-        aria-valuemin={0}
-        aria-controls={`igc-${uid}-scroll-container`}
-        aria-orientation={this.getOrientation()}
+        aria-valuemin={hideFromScreenReaders ? undefined : 0}
+        aria-controls={hideFromScreenReaders ? undefined : `igc-${uid}-scroll-container`}
+        aria-orientation={hideFromScreenReaders ? undefined : this.getOrientation()}
         onMouseDown={this.handleMouseDownBar}
         orientation={this.getOrientation()}
       />,

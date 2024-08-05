@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.2] - 2024-07-31
+
+### Fixed
+
+- Depending on css reset, a small visual gap might appear between `Select.InputSearch` right border and outer container.
+
 ## [4.45.1] - 2024-07-30
 
 ### Changed
