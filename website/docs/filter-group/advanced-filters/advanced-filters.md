@@ -151,6 +151,6 @@ Show an [empty state](/components/widget-empty/widget-empty) with the option to 
 
 ## Tooltip
 
-If the accordion needs a Close button, then show a `Hint` with the text: 'Hide".
+If the accordion needs a Close button, then show a `Hint` with the text: "Hide".
 
 ![](static/tooltip-2.png)
