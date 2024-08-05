@@ -106,6 +106,7 @@ class Dropdown extends Component {
     return {
       id: `igc-${uid}-popper`,
       tabIndex: 0,
+      role: 'dialog',
       disablePortal,
       ignorePortalsStacking,
       ref: this.popperRef,

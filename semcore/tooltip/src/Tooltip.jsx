@@ -147,27 +147,8 @@ function TooltipPopper(props) {
   const SArrow = Box;
   const STooltipPortalledWrapper = Box;
 
-  const popperRef = React.useRef(null);
   const contextZIndex = useZIndexStacking('z-index-tooltip');
   const zIndex = props.zIndex || contextZIndex;
-
-  React.useEffect(() => {
-    if (role === 'dialog' && visible && process.env.NODE_ENV !== 'production') {
-      const hasTitle = (node) => {
-        if (node.hasAttribute('aria-label')) return true;
-        if (node.hasAttribute('aria-labelledby')) return true;
-        if (node.hasAttribute('title')) return true;
-
-        return false;
-      };
-
-      logger.warn(
-        popperRef.current && !hasTitle(popperRef.current),
-        `'title' or 'aria-label' or 'aria-labelledby' are required props`,
-        props['data-ui-name'] || DescriptionTooltipRoot.Popper.displayName,
-      );
-    }
-  }, [visible, role]);
 
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
@@ -178,7 +159,6 @@ function TooltipPopper(props) {
             use:disablePortal
             use:theme={resolveColor(theme)}
             use:aria-live={undefined}
-            ref={popperRef}
           >
             <Children />
             <SArrow

@@ -161,7 +161,7 @@ class FeedbackYesNo extends React.PureComponent {
                   <Button.Text>Yes</Button.Text>
                 </Button>
               </Dropdown.Trigger>
-              <Dropdown.Popper>
+              <Dropdown.Popper aria-label='Dropdown popper description'>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
@@ -180,7 +180,7 @@ class FeedbackYesNo extends React.PureComponent {
                   <Button.Text>No</Button.Text>
                 </Button>
               </Dropdown.Trigger>
-              <Dropdown.Popper>
+              <Dropdown.Popper aria-label='Dropdown popper description'>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
