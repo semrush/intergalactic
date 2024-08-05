@@ -3,7 +3,7 @@ import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Flex, useBox } from '@semcore/flex-box';
-import ScrollAreaComponent from '@semcore/scroll-area';
+import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -15,6 +15,12 @@ import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+
+const ListBoxContextProvider = ({ children }) => (
+  <hideScrollBarsFromScreenReadersContext.Provider value={true}>
+    {children}
+  </hideScrollBarsFromScreenReadersContext.Provider>
+);
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -432,13 +438,15 @@ function List(props) {
   const { uid } = props;
 
   return sstyled(props.styles)(
-    <SDropdownMenuList
-      render={ScrollAreaComponent}
-      tabIndex={null}
-      role='menu'
-      aria-labelledby={`igc-${uid}-trigger`}
-      shadow={true}
-    />,
+    <ListBoxContextProvider>
+      <SDropdownMenuList
+        render={ScrollAreaComponent}
+        tabIndex={null}
+        role='menu'
+        aria-labelledby={`igc-${uid}-trigger`}
+        shadow={true}
+      />
+    </ListBoxContextProvider>,
   );
 }
 
@@ -462,9 +470,11 @@ function Menu(props) {
     animationsDisabled,
   };
   return (
-    <DropdownMenu.Popper {...popperProps}>
-      <Root render={DropdownMenu.List} />
-    </DropdownMenu.Popper>
+    <ListBoxContextProvider>
+      <DropdownMenu.Popper {...popperProps}>
+        <Root render={DropdownMenu.List} />
+      </DropdownMenu.Popper>
+    </ListBoxContextProvider>
   );
 }
 
@@ -528,10 +538,16 @@ function NestingTrigger(props) {
 
   React.useEffect(() => {
     document.addEventListener('mouseover', handleMouseEvent, { capture: true });
-    document.addEventListener('keydown', handleKeyboardEvent, { capture: true });
+    document.addEventListener('keydown', handleKeyboardEvent, {
+      capture: true,
+    });
     return () => {
-      document.removeEventListener('mouseover', handleMouseEvent, { capture: true });
-      document.removeEventListener('keydown', handleKeyboardEvent, { capture: true });
+      document.removeEventListener('mouseover', handleMouseEvent, {
+        capture: true,
+      });
+      document.removeEventListener('keydown', handleKeyboardEvent, {
+        capture: true,
+      });
     };
   }, []);
 

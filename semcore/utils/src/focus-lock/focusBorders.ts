@@ -9,6 +9,17 @@ export const addFocusBorders = () => {
     focusBordersRefs.before.setAttribute('tabindex', '0');
     focusBordersRefs.before.style.position = 'fixed';
     focusBordersRefs.before.dataset.id = '__intergalactic-focus-border-before';
+    focusBordersRefs.before.addEventListener('focus', (event) => {
+      Promise.resolve().then(() => {
+        if (
+          document.activeElement === focusBordersRefs.before &&
+          event.relatedTarget !== focusBordersRefs.after && // prevent loop
+          event.relatedTarget // prevent initial focus
+        ) {
+          focusBordersRefs.after?.focus();
+        }
+      });
+    });
     document.body.prepend(focusBordersRefs.before);
   }
   if (!focusBordersRefs.after) {
@@ -16,6 +27,17 @@ export const addFocusBorders = () => {
     focusBordersRefs.after.setAttribute('tabindex', '0');
     focusBordersRefs.after.dataset.id = '__intergalactic-focus-border-after';
     focusBordersRefs.after.style.position = 'fixed';
+    focusBordersRefs.after.addEventListener('focus', (event) => {
+      Promise.resolve().then(() => {
+        if (
+          document.activeElement === focusBordersRefs.after &&
+          event.relatedTarget !== focusBordersRefs.before && // prevent loop
+          event.relatedTarget // prevent initial focus
+        ) {
+          focusBordersRefs.before?.focus();
+        }
+      });
+    });
     document.body.append(focusBordersRefs.after);
   }
 };

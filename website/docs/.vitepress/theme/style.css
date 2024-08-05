@@ -687,10 +687,6 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--vp-c-indigo-1) !important;
 }
 
-.shiki.github-dark {
-  background-color: #0C0E13 !important;
-}
-
 .vp-doc .custom-block {
   margin: 24px 0;
   font-size: var(--intergalactic-fs-300) !important;

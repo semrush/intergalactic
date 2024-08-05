@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.32.2] - 2024-07-22
+
+### Fixed
+
+- In firefox focus lock with a single focusable element was allowing user focus to get our of the web page.
+
 ## [4.32.1] - 2024-07-30
 
 ### Fixed
@@ -13,6 +19,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Internal apis to control nested `z-index` stacking.
+
+## [4.31.1] - 2024-07-22
+
+### Fixed
+
+- In firefox focus lock with a single focusable element was allowing user focus to get our of the web page.
 
 ## [4.31.0] - 2024-07-08
 
