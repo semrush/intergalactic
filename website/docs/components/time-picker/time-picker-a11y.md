@@ -11,13 +11,12 @@ tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), E
 
 Table: Keyboard support
 
-| Key                      | Function                                                                                                                                  |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Focus moves to the hour/minute select and opens the dropdown with hour/minute options.                                                    |
-| `Shift + Tab` | Focus moves to the previous focusable element.                                                                                            |
-| `Up Arrow` , `Down Arrow` | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
-| `Space` , `Enter` | Selects the option and closes the dropdown.                                                                                               |
-| `Esc` | Closes the dropdown and returns focus to the hour/minute select trigger.                                                                  |
+| Key                      | Function                                                                |
+| ------------------------ | ----------------------------------------------------------------------- |
+| `Tab`, <nobr>`Shift + Tab`</nobr>     | Moves focus to the next (previous) focusable element. <br/>First, the entire time picker is focused. Then, the focus moves to the hours combobox, followed by the minutes combobox, and finally the AM/PM button, if it's present. |
+| `Up Arrow` , `Down Arrow`             | Moves selection between dropdown options. If the last (first) option is selected, selection moves to the first (last) option cyclically. |
+| `Enter`                               | Applies the selected option and closes the dropdown.       |
+| `Esc`                                 | Closes the dropdown without changing the value. |
 
 ### Roles and attributes
 
@@ -25,22 +24,28 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role     | Attribute                | Element | Usage                                                                                                                                                                                                                        |
-| -------- | ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `switch` |                          | `div` | Identifies button for changing time format as a switch.                                                                                                                                                                      |
-|          | `aria-label` | `div` | Defines the accessible name of the input, button.                                                                                                                                                                            |
-|          | `aria-expanded="false"` | `div` | Indicates that the popup element isn’t displayed.                                                                                                                                                                           |
-|          | `aria-expanded="true"` | `div` | Indicates that the popup element is displayed.                                                                                                                                                                               |
-|          | `aria-autocomplete` | `div` | Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for a `combobox` , `searchbox` , or `textbox` and specifies how predictions will be presented if they are made. |
-|          | `aria-controls="#IDREF"` | `div` | Identifies the element that serves as the popup.                                                                                                                                                                             |
-|          | `aria-haspopup` | `div` | Indicates the availability and type of interactive popup element that can be triggered by the element on which the attribute is set.                                                                                         |
-|          | `aria-valuenow="NUMBER"` | `div` | Defines the current value for a widget.                                                                                                                                                                                      |
-
-For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#a9cbfb).
+| Component               | Attribute              | Usage                                                         |
+| --------------------    | ---------------------- | ------------------------------------------------------------- |
+| `TimePicker`            | `aria-label`           | Defines the accessible name of the entire `TimePicker`. Automatically includes the text from the label connected by the `for` attribute. |
+| `TimePicker`            | `role="group"`         | Defines a group of elements. |
+| `TimePicker.Hours`, `TimePicker.Minutes` | `aria-label="Hours"`, `aria-label="Minutes"` | Defines the accessible names for the comboboxes. |
+| `TimePicker.Hours`, `TimePicker.Minutes` | `role="combobox"`          | Identifies the element as a combobox—a text input combined with a list of options. |
+| `TimePicker.Hours`, `TimePicker.Minutes` | `aria-expanded`            | Indicates whether the dropdown is open. |
+| `TimePicker.Hours`, `TimePicker.Minutes` | `aria-autocomplete="list"` | Indicates that autocomplete is implemented by displaying a list of options during input. |
+| `TimePicker.Hours`, `TimePicker.Minutes` | `aria-controls="#IDREF"`   | Identifies the element that serves as the dropdown. |
+| `TimePicker.Hours`, `TimePicker.Minutes` | `aria-haspopup="listbox"`  | Indicates that the connected dropdown is a listbox.   |
+| `TimePicker.Separator`  | `aria-hidden`          | Hides the separator from assistive technology. |
+| `TimePicker.Format`     | `aria-describedby`     | Provides the button's description for assistive technology. |
+| `span`                  | `aria-live="polite"`, `role="status"`      | Announces the status message when the time period (AM/PM) is changed. |
 
 ## Resources
 
-Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
+`TimePicker` consists of several components that have their own accessibility guidelines:
+
+- [Combobox](../auto-suggest/auto-suggest-a11y.md)
+- [Button](../button/button-a11y.md)
+
+You can also read more about the dropdown behavior in [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper).
 
 ## Other recommendations
 

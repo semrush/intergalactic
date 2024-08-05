@@ -74,6 +74,11 @@ SPickerFormat {
     color: var(--intergalactic-text-secondary, #6c6e79);
     background-color: var(--intergalactic-bg-secondary-neutral-active, #c4c7cf);
   }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 SPickerFormat[size='m'] {

@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.0] - 2024-07-29
+
+### Changed
+
+- Fixed reading of dropdowns by Screen readers.
+- Removed unnecessary `aria-hidden` props.
+- Text in some `aria-label`.
+
 ## [4.46.1] - 2024-07-30
 
 ### Changed
