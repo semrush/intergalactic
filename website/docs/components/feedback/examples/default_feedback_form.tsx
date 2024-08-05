@@ -39,6 +39,7 @@ class Feedback extends React.PureComponent<{
 }> {
   handleChange = (fn) => (_, e) => {
     fn(e);
+    this.props.onChange(e, e.currentTarget.id);
   };
 
   render() {
@@ -56,13 +57,14 @@ class Feedback extends React.PureComponent<{
               Tell us your suggestion or report an issue
             </Text>
             <FeedbackForm.Item
-              name='feedback'
+              name='description'
               validate={validate.description}
-              initialValue={value.description}
+              initialValue={''}
               placement='left-start'
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
               }}
+              validateOnBlur={value.description === '' ? false : true}
             >
               {({ input }) => (
                 <Textarea
@@ -70,7 +72,7 @@ class Feedback extends React.PureComponent<{
                   autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
-                  id='suggestions'
+                  id='description'
                 />
               )}
             </FeedbackForm.Item>
@@ -79,7 +81,12 @@ class Feedback extends React.PureComponent<{
             <Text mb={2} size={200}>
               Reply-to email
             </Text>
-            <FeedbackForm.Item name='email' validate={validate.email} initialValue={value.email}>
+            <FeedbackForm.Item
+              name='email'
+              validate={validate.email}
+              initialValue={''}
+              validateOnBlur={value.email === '' ? false : true}
+            >
               {({ input }) => (
                 <Input state={input.state}>
                   <Input.Value {...input} onChange={this.handleChange(input.onChange)} id='email' />
