@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.2] - 2024-07-31
+
+### Fixed
+
+- Depending on css reset, a small visual gap might appear between `Select.InputSearch` right border and outer container.
+
+## [4.45.1] - 2024-07-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.42.0 ~> 4.42.1], `@semcore/checkbox` [7.34.0 ~> 7.34.1], `@semcore/divider` [4.30.0 ~> 4.30.1], `@semcore/dropdown-menu` [4.35.0 ~> 4.35.1], `@semcore/popper` [5.39.0 ~> 5.39.1], `@semcore/flex-box` [5.31.0 ~> 5.31.1], `@semcore/icon` [4.43.0 ~> 4.43.1], `@semcore/input` [4.32.0 ~> 4.32.1], `@semcore/utils` [4.32.0 ~> 4.32.1], `@semcore/core` [2.29.0 ~> 2.29.1]).
+
 ## [4.45.0] - 2024-07-26
 
 ### Changed

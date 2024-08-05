@@ -50,6 +50,7 @@ features:
     details: Principles and recommendations to help you build interface for all
     link: /core-principles/a11y/a11y
     linkText: Explore
+titleTemplate: false
 ---
 
 <BlogPostsMainPage />

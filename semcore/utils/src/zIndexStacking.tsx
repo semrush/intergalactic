@@ -40,10 +40,10 @@ export const ZIndexStackingContextProvider: React.FC<{
     <zIndexStackingContext.Provider value={contextValue}>{children}</zIndexStackingContext.Provider>
   );
 };
-export const zIndexStackingEnhance = () => {
+export const zIndexStackingEnhance = (designToken?: ZIndexDesignTokens) => {
   return (props: any) => {
     const { ...other } = props;
-    const parentZIndexStacking = useZIndexStacking();
+    const parentZIndexStacking = useZIndexStacking(designToken);
     return {
       ...other,
       parentZIndexStacking,
