@@ -68,13 +68,13 @@ The modal must have `min-width` of 320px for the desktop version.
 
 ## Interaction
 
-### Opening a modal
+### Opening modal
 
 When user opens the modal, keyboard focus should automatically go to the content of the modal. If the modal contains a form, the focus must go to the first input or interactive element.
 
 ![](static/focus.png)
 
-### Opening a modal over another modal
+### Opening modal over another modal
 
 ::: tip
 Display a modal over another modal only if no other solution fits your case. Refer to the [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal dialogs.
@@ -87,12 +87,12 @@ When opening a second modal on top of another modal:
 
 Table: Overlay styles for Modal
 
-| Tokens                               | Appearance example                          |
-| ------------------------------------ | ------------------------------------------- |
-| Default overlay background color is `--overlay-primary`. | ![](static/modal-overlay.png)               |
-| Second overlay appears when opening a modal on top of another modal, using `--overlay-secondary` background. | ![](static/second-modal.png) |
+| Tokens                                                                                                       | Appearance example            |
+| ------------------------------------------------------------------------------------------------------------ | ----------------------------- |
+| Default overlay background color is `--overlay-primary`.                                                     | ![](static/modal-overlay.png) |
+| Second overlay appears when opening a modal on top of another modal, using `--overlay-secondary` background. | ![](static/second-modal.png)  |
 
-### Closing the modal
+### Closing modal
 
 User closes the modal by using the following options:
 
@@ -106,9 +106,9 @@ User closes the modal by using the following options:
 After the modal is closed, the focus should always return to the trigger.
 :::
 
-If the potential consequences of accidentally closing the modal are significant, please alert the user about the potential loss of information.
+If the potential consequences of accidentally closing the modal are significant, alert the user about the potential loss of information.
 
-It is recommended to save the information entered by the user when closing and reopening the modal. If it isn’t possible to do so, inform users that their entered data will be lost upon closing the modal.
+It's recommended to save the information entered by the user when closing and reopening the modal. If it isn’t possible to do so, inform users that their entered data will be lost upon closing the modal.
 
 ### Loading
 
@@ -159,7 +159,7 @@ Avoid using modal dialogs on mobile devices. However, if you use modals on mobil
 
 ![](static/position-5-2.png)
 
-## Scrolling the modal
+## Scrolling modal
 
 If the height of the modal exceeds the height of the browser window, it should be positioned with a 40px margin from the top border.
 
@@ -168,7 +168,7 @@ If the height of the modal exceeds the height of the browser window, it should b
 ![](static/scroll-1.png)
 ![](static/scroll-2.png)
 
-### Scrolling content in the modal
+### Scrolling content in modal
 
 Individual elements inside the modal, such as tables, can be scrolled. The scrolling functionality is described in [ScrollArea](/components/scroll-area/scroll-area).
 
@@ -201,4 +201,3 @@ It is advisable to limit the usage of main buttons within the modal to a maximum
 **Avoid labeling the main button with generic words such as "OK" or "Yes".** Users may require additional time to comprehend the required action if the buttons and their functions are not clearly designated.
 
 ![](static/button-yes-no.png)
-
