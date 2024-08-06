@@ -32,11 +32,11 @@ Table: Card sizes
 
 ![](static/card-header.png)
 
-**Card.Header includes:**
+`Card.Header` includes:
 
-   1. Title (`margin-bottom: 8px`)
-   2. Optional additional information below the title (`margin-bottom: 8px`)
-   3. Optional general widget controls (for example, export or view settings)
+- Title
+- Optional additional information below the title (`margin-top: 8px`)
+- Optional general widget controls, such as **Export** or **Settings**
 
 ### Title
 
@@ -54,11 +54,11 @@ The card may have a description. It usually contains an explanation of what the 
 
 ## Card.Body
 
-**Card.Body includes:**
+`Card.Body` includes:
 
-   1. Optional top controls (for example, filters, buttons)
-   2. Content (`margin-top: 20px`)
-   3. Optional bottom controls (`margin-top: 20px`)
+- Optional top controls (for example, filters, buttons)
+- Content (`margin-top: 20px`)
+- Optional bottom controls (`margin-top: 20px`)
 
 ::: tip
 The presence of optional elements depends on the specific interface case.
