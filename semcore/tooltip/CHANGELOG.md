@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.40.2] - 2024-08-02
+
+### Changed
+
+- Runtime check of required label in `DescriptionTooltip` popper moved to `Popper` component.
+
 ## [6.40.1] - 2024-07-30
 
 ### Changed

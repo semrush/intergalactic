@@ -468,6 +468,7 @@ function Menu(props) {
     interaction,
     autoFocus,
     animationsDisabled,
+    role: false,
   };
   return (
     <ListBoxContextProvider>

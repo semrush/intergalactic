@@ -12,25 +12,11 @@ Table: Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
-| `Tab` | Moves focus to the next focusable element.     |
+| `Tab`         | Moves focus to the next focusable element.     |
 | `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Esc` | Closes the modal window.                       |
+| `Esc`         | Closes the modal. Refer to [Closing the modal](./modal.md#closing-the-modal) for more details. |
 
-See more about the focus behavior in the modal window in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_modal_window).
-
-### Closing modal window
-
-You can close the modal window by clicking on the following controls:
-
-* `Close` icon; 
-* CTA or "Cancel" button; 
-* `ESC` key; 
-* "Back" in the browser (nothing changes on the parent page); 
-* outside the container area.
-
-::: tip
-When the modal window is closed, the focus should always return to the trigger.
-:::
+See more about the focus behavior in the modal in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-modal-window).
 
 ### Roles & attributes
 
@@ -38,11 +24,12 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles & attributes
 
-| Attribute                  | Usage                                                                         |
-| -------------------------- | ----------------------------------------------------------------------------- |
-| `role="dialog"`            | Identifies the element as a dialog, indicating to assistive technology that its content is grouped and separated from the rest of the page content. |
-| `aria-labelledby="IDREF"`  | Gives the dialog an accessible name by referring to the element that provides the dialog title. |
-| `aria-modal="true"`        | Tells assistive technologies that the content underneath the current dialog isn't available for interaction. |
+| Component          | Attribute                  | Usage                                                                         |
+| ------------------ | -------------------------- | ----------------------------------------------------------------------------- |
+| `Modal.Window`     | `role="dialog"`            | Identifies the element as a dialog, indicating to assistive technology that its content is grouped and separated from the rest of the page content. |
+| `Modal.Window`     | `aria-labelledby="IDREF"`  | Gives the dialog an accessible name by referring to the content of `Modal.Title`. |
+| `Modal.Window`     | `aria-modal="true"`        | Tells assistive technologies that the content underneath the current dialog isn't available for interaction. |
+| `Modal.Close`      | `aria-label="Close"`       | Provides an accessible name for the **Close** button. |
 
 ## Considerations for designers & developers
 

@@ -5,14 +5,14 @@ tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code
 ---
 
 ::: tip
-For general recommendations on modal window content styles, refer to [Content in modal window](/patterns/modal-content/modal-content).
+For general recommendations on modal content styles, refer to [Content in modal window](/patterns/modal-content/modal-content).
 :::
 
 ## Description
 
-**Modal window** is a modal dialog that appears on top of the page, and shows an important information or request a response from the user.
+**Modal** is a dialog that appears on top of the page, and shows an important information or request a response from the user.
 
-It always disables user interaction with the main window but keeps it visible. The modal window remains on the screen until the user performs the required action or closes the window.
+It always disables user interaction with the main page content but keeps it visible. The modal dialog remains on the screen until the user performs the required action or closes the dialog.
 
 ::: tip
 _🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to prompt me to feed <!-- vale DevDocs.Gender = NO -->her<!-- vale DevDocs.Gender = NO -->. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at <!-- vale DevDocs.Gender = NO -->her<!-- vale DevDocs.Gender = NO -->. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task._
@@ -20,29 +20,29 @@ _🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to 
 Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 :::
 
-**Use modal window:**
+**Use modal:**
 
 - To show secondary data. _For example, settings, small forms to fill out, step-by-step actions, detailed information about any data._
 - To draw attention to a specific request or task. _For example, confirming an operation, adding data._
 - To focus on critical information that requires the user's attention. _For example, local news, limiting, deleting an element, or losing information._
 - To view enlarged image or video.
 
-**Don't use modal window:**
+**Don't use modal:**
 
 - To notify of an error in the interface or system.
 - To show content that is required for the user to complete the main task in the interface.
 
 ::: tip
-If you want to hide a lot of information in the modal window, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/fullscreen-modal) or even a separate page.
+If you want to display a lot of information in a modal, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/fullscreen-modal) or even a separate page.
 :::
 
-Don't show modals before the user has interacted with the interface. **Modal windows with information about limits are the exception in this case.**
+Don't show modals before the user has interacted with the interface, **except for showing information about limits.**
 
 ## Component composition
 
 ![](static/modal-composition.png)
 
-The Modal window consists of the following:
+The Modal of the following:
 
 - `Modal.Window`.
 - `Modal.Title`.
@@ -50,50 +50,17 @@ The Modal window consists of the following:
 - `Modal.Close`.
 - `Modal.Overlay`.
 
-## Modal window types
+## Modal types
 
-We have several modal window types in the design system:
+We have several modal dialog types in the design system:
 
 - default (it can be one- and two-zoned);
 - [Carousel](/components/carousel/carousel);
 - [FullscreenModal](/components/fullscreen-modal/fullscreen-modal), can also be one- or two-zoned.
 
-## Modal window styles
+## Modal width
 
-### Modal.Window (Container)
-
-Table: Container styles for Modal window
-
-| Styles                                                                 | Appearance example                                 |
-| ---------------------------------------------------------------------- | --------------------------------------- |
-| `border-radius: var(--rounded-large)`, `padding: var(--spacing-10x)` | ![](static/container.png) |
-
-### Modal.Close (Close button)
-
-Table: Close button styles for Modal window
-
-| Styles                                                                                                                                                 | Appearance example                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| `Close` icon uses M size, `--icon-secondary-neutral` token for the default color, and changes its color using CSS filter to the darker one in hover state. | ![](static/close-hover.png)           |
-| Paddings from top and right to the `Close` icon is 12px.                                                                                               | ![modal close button](static/close-button.png)                |
-| The target area is 48px * 48px.                                                                                                              | ![](static/close-hover-zone.png) |
-
-### Modal.Overlay
-
-Table: Overlay styles for Modal window
-
-| Tokens                                                                                        | Appearance example                                     |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `--overlay-primary`                                                                           | ![](static/modal-overlay.png)  |
-| Second overlay appears when opening a modal window inside another modal window, and uses `--overlay-secondary` token. | ![](static/second-modal.png) |
-
-::: tip
-Use a modal window inside another modal window only if no other solution fits your case. Refer to an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows.
-:::
-
-## Modal window size
-
-The modal window must have `min-width` of 320px for the desktop version.
+The modal must have `min-width` of 320px for the desktop version.
 
 ![](static/modal-min-width-1.png)
 
@@ -101,41 +68,55 @@ The modal window must have `min-width` of 320px for the desktop version.
 
 ## Interaction
 
-### Opening a window
+### Opening modal
 
-When user opens the window, keyboard focus should automatically go to the content of the modal window. If the modal window contains a form, the focus must go to the first input or interactive element.
+When user opens the modal, keyboard focus should automatically go to the content of the modal. If the modal contains a form, the focus must go to the first input or interactive element.
 
 ![](static/focus.png)
 
-### Opening window inside window
-
-When opening a modal window within another modal window, it is important not to close the previous modal window. Doing so can confuse users and create a sense that they are unable to navigate back to the previous window.
-
-### Closing window
-
-User closes the modal window by using the following options:
-
-- `Close` icon;
-- CTA or "Cancel" button;
-- `ESC` key;
-- "Back" button in the browser (nothing changes on the parent page in this case);
-- clicking outside the `Modal.Window` area.
+### Opening modal over another modal
 
 ::: tip
-When the modal window is closed, the focus should always return to the trigger.
+Display a modal over another modal only if no other solution fits your case. Refer to the [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal dialogs.
 :::
 
-If the potential consequences of accidentally closing the window are significant, please alert the user about the potential loss of information.
+When opening a second modal on top of another modal:
 
-It is recommended to save the information entered by the user when closing and reopening the modal window. If it isn’t possible to do so, inform users that their entered data will be lost upon closing the window.
+- It's important not to close the parent modal. Doing so can confuse users and create a sense that they can't navigate back to the previous modal.
+- Add an additional `--overlay-secondary` overlay covering the parent modal to make the modals hierarchy clear.
+
+Table: Overlay styles for Modal
+
+| Tokens                                                                                                       | Appearance example            |
+| ------------------------------------------------------------------------------------------------------------ | ----------------------------- |
+| Default overlay background color is `--overlay-primary`.                                                     | ![](static/modal-overlay.png) |
+| Second overlay appears when opening a modal on top of another modal, using `--overlay-secondary` background. | ![](static/second-modal.png)  |
+
+### Closing modal
+
+User closes the modal by using the following options:
+
+- **Close** button;
+- CTA or **Cancel** button;
+- `Esc` key;
+- **Back** button in the browser (nothing changes on the parent page in this case);
+- clicking outside the modal (clicking on the overlay).
+
+::: tip
+After the modal is closed, the focus should always return to the trigger.
+:::
+
+If the potential consequences of accidentally closing the modal are significant, alert the user about the potential loss of information.
+
+It's recommended to save the information entered by the user when closing and reopening the modal. If it isn’t possible to do so, inform users that their entered data will be lost upon closing the modal.
 
 ### Loading
 
-When loading or reloading content within the modal window, display the [Spin](/components/spin/spin) component over the content.
+When loading or reloading content in the modal, display the [SpinContainer](/components/spin-container/spin-container) component over the content.
 
 Spin styles for this scenario:
 
-- Use the largest size for the spinner inside the modal window — `XXL`.
+- Use the largest size for the spinner: `XXL`.
 - Center the spinner in relation to the content.
 - Optionally, add text to the spinner.
 
@@ -143,16 +124,16 @@ Spin styles for this scenario:
 
 ## Positioning
 
-The modal window is centered vertically and horizontally by default relative to the browser window.
+The modal is centered vertically and horizontally by default relative to the browser window.
 
 ![](static/position-1.png)
 
-If the content of the modal window requires a large size, modal window is positioned with 40px margins on all sides.
+If the content of the modal requires a large size, the modal is positioned with 40px margins on all sides.
 
 ![](static/position-2.png)
 ![](static/position-3.png)
 
-If the size of the modal window changes when the user interacts with it, it is recommended to anchor it to the top border with a 40px margin.
+If the size of the modal changes when the user interacts with it, it is recommended to anchor it to the top border with a 40px margin.
 
 ![](static/position-4-1.png)
 ![](static/position-4-2.png)
@@ -161,63 +142,62 @@ If the size of the modal window changes when the user interacts with it, it is r
 
 ### Vertically
 
-- When the height of the screen increases, the modal window remains unscaled and stays centered.
-- When reducing the screen height, the window continues to be centered as long as it fits within the visible area. Once it reaches the minimum distance from the upper and lower edges of the browser, the window extends beyond the lower border, and scrolling becomes necessary.
+- When the height of the screen increases, the modal remains unscaled and stays centered.
+- When reducing the screen height, the modal continues to be centered as long as it fits in the visible area. Once it reaches the minimum distance from the upper and lower edges of the browser, the modal extends beyond the lower border, and scrolling becomes necessary.
 
 ### Horizontally
 
-Currently, when the browser width is reduced to 320px, the modal window is proportionally scaled down while maintaining the margins to the 12px. Simultaneously, the window occupies a larger portion of the viewport, shrinking proportionally to match the size of the device screen.
+Currently, when the browser width is reduced to 320px, the Modal width is proportionally scaled down while maintaining the margins to the 12px. Simultaneously, the modal occupies a larger portion of the viewport, shrinking proportionally to match the size of the device screen.
 
-Refer to [examples](/components/modal/modal-code) of the modal window to see how modal changes to fit the screen.
+Refer to the [examples](/components/modal/modal-code) to see how the Modal changes to fit the screen.
 
 ::: tip
-_It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling._
+Avoid using modal dialogs on mobile devices. However, if you use modals on mobile devices, display a link to the parent page. If the modal requires scrolling due to the amount of content, then place the **Close** button both at the top and at the buttom of the modal, or fix it with the header when scrolling.
 
 [10 guidelines to consider when using overlays/modals](http://www.uxforthemasses.com/overlays/)
 :::
 
 ![](static/position-5-2.png)
 
-## Scrolling the window
+## Scrolling modal
 
-If the height of the modal window exceeds the height of the browser window, it should be positioned with a 40px margin from the top border.
+If the height of the modal exceeds the height of the browser window, it should be positioned with a 40px margin from the top border.
 
 **The content underneath the overlay shouldn't be scrollable.**
 
 ![](static/scroll-1.png)
 ![](static/scroll-2.png)
 
-### Scrolling content in the window
+### Scrolling content in modal
 
-Individual elements within the window, such as tables, can be scrolled. The scrolling functionality is described in [ScrollArea](/components/scroll-area/scroll-area).
+Individual elements inside the modal, such as tables, can be scrolled. The scrolling functionality is described in [ScrollArea](/components/scroll-area/scroll-area).
 
 ![](static/scroll-3.png)
 
 ### Fixed areas during scrolling
 
-If necessary, specific areas within the modal window can be fixed. For example, buttons within a window that contains a large amount of scrollable content.
+If necessary, certain areas of the modal, such as action buttons, can be fixed on the screen.
 
 ![](static/scroll-4.png)
 
-## Window title
+## Modal title
 
-When the modal window is intended to prompt a specific user action, provide a concise and clear title for the window, preferably consisting of no more than 3-4 words.
+When the modal is intended to prompt a specific user action, provide a concise and clear title for the modal, preferably consisting of no more than 3-4 words.
 
 ![](static/heading-yes-no-2.png)
 
-If the modal window is used for confirmation, the title should pose a question, and the action buttons should clearly answer that question.
+If the modal is used for confirmation, the title should pose a question, and the action buttons should clearly answer that question.
 
 ![](static/heading-yes-no.png)
 
-## Button usage in modal window
+## Button usage in modal
 
-The alignment of the buttons should follow the same centering as the title.
+The alignment of the buttons should be consistent with the title.
 
-It is advisable to limit the usage of main buttons within the modal window to a maximum of two.
+It is advisable to limit the usage of main buttons within the modal to a maximum of two.
 
 ![](static/buttons-yes-no.png)
 
-**Avoid labeling the main button as "OK".** Users may require additional time to comprehend the required action if the buttons and their functions are not clearly designated.
+**Avoid labeling the main button with generic words such as "OK" or "Yes".** Users may require additional time to comprehend the required action if the buttons and their functions are not clearly designated.
 
 ![](static/button-yes-no.png)
-

@@ -26,7 +26,7 @@ title: Punctuation and special symbols
         font-size: var(--intergalactic-fs-200);
         line-height: var(--intergalactic-lh-200);
     }
-    .dosdonts tr *:first-of-type {
+    .dosdonts tr td:first-of-type, .dosdonts tr th:first-of-type {
         border-right: 1px solid var(--intergalactic-border-secondary);
     }
     .dosdonts th:first-of-type {
@@ -34,6 +34,11 @@ title: Punctuation and special symbols
     }
     .dosdonts th:last-of-type {
         color: var(--intergalactic-text-success);
+    }
+    .dosdonts td p {
+        margin-top: 0;
+        margin-bottom: var(--intergalactic-spacing-2x);
+        line-height: var(--intergalactic-lh-200)
     }
 </style>
 
@@ -44,6 +49,7 @@ title: Punctuation and special symbols
 | Symbol       | HTML entity        |
 | :----------: | :----------------: |
 | &mdash;      | `&mdash;`          |
+
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
 
@@ -54,14 +60,15 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            It makes us sound like Semrush &mdash; regardless<br />of who the person behind the communication is.
+            It makes us sound like <nobr>Semrush &mdash; regardless</nobr>
+            of who the person behind the communication is.
         </td>
         <td>
-            It makes us sound like Semrush&mdash;regardless<br />of who the person behind the communication is.
+            It makes us sound like <nobr>Semrush&mdash;regardless</nobr>
+            of who the person behind the communication is.
         </td>
     </tr>
 </table>
-<br />
 
 ### En dash
 
@@ -80,30 +87,17 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            100 – 100
+            <p>100 &ndash; 100</p>
+            <p>Sep 5 &ndash; Oct 4, 2016</p>
+            <p>Sep 5, 2016 &ndash; Jan 4, 2017</p>
         </td>
         <td>
-            100–1000
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sep 5 — Oct 4, 2016
-        </td>
-        <td>
-            Sep 5–Oct 4, 2016
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sep 5, 2016 – Jan 4, 2017
-        </td>
-        <td>
-            Sep 5, 2016–Jan 4, 2017
+            <p>100&ndash;1000</p>
+            <p>Sep 5&ndash;Oct 4, 2016 </p>
+            <p>Sep 5, 2016&ndash;Jan 4, 2017</p>
         </td>
     </tr>
 </table>
-<br />
 
 ### Hyphen
 
@@ -120,22 +114,15 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            703–555–6593
+            <p>703&ndash;555&ndash;6593</p>
+            <p>AI&ndash;powered</p>
         </td>
         <td>
-            703-555-6593
-        </td>
-    </tr>
-    <tr>
-        <td>
-            AI–powered
-        </td>
-        <td>
-            AI-powered
+            <p>703-555-6593</p>
+            <p>AI-powered</p>
         </td>
     </tr>
 </table>
-<br />
 
 ### Non-breaking hyphen
 
@@ -159,7 +146,6 @@ title: Punctuation and special symbols
         </td>
     </tr>
 </table>
-<br />
 
 ### Soft hyphen
 
@@ -184,7 +170,6 @@ title: Punctuation and special symbols
         </td>
     </tr>
 </table>
-<br />
 
 ## Non-breaking space
 
@@ -193,7 +178,10 @@ title: Punctuation and special symbols
 | &nbsp;       | `&nbsp;`           |
 
 * Use to keep the words “glued”
-> Use ⌥+space on MacOS to insert
+
+::: tip
+Use ⌥+space on MacOS to insert
+:::
 
 <table class="dosdonts">
     <tr>
@@ -209,7 +197,6 @@ title: Punctuation and special symbols
         </td>
     </tr>
 </table>
-<br />
 
 ## Quotation marks and apostrophe
 
@@ -232,38 +219,19 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            "Project name"
+            <p>"Project name"</p>
+            <p>Search for “small business websites”.</p>
+            <p>Click “How can you help”?</p>
+            <p>Enter the “My Profile” section</p>
         </td>
         <td>
-            “Project name”
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Search for “small business websites”.
-        </td>
-        <td>
-            Search for “small business websites.”
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Click “How can you help”?
-        </td>
-        <td>
-            Click “How can you help?”
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Enter the “My Profile” section
-        </td>
-        <td>
-            Enter the **My Profile** section
+            <p>“Project name”</p>
+            <p>Search for “small business websites.”</p>
+            <p>Click “How can you help?”</p>
+            <p>Enter the <b>My Profile</b> section</p>
         </td>
     </tr>
 </table>
-<br />
 
 ### Apostrophe
 
@@ -272,7 +240,10 @@ title: Punctuation and special symbols
 | &rsquo;      | `&rsquo;`          |
 
 * Use the curly style, just like for the quotation marks
-> Use ⌥+' on MacOS to insert a curly apostrophe
+
+::: tip
+Use ⌥+' on MacOS to insert a curly apostrophe
+:::
 
 <table class="dosdonts">
     <tr>
@@ -288,7 +259,6 @@ title: Punctuation and special symbols
         </td>
     </tr>
 </table>
-<br />
 
 ## Period
 
@@ -303,35 +273,17 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            5. If the error persists, contact us
+            <p>5. If the error persists, contact us</p>
+            <p>Click the edit button next to “Billing information”.</p>
+            <p>Position → Pos</p>
+            <p>==Cookie Policy.==</p>
         </td>
         <td>
-            5. If the error persists, contact us.
+            <p>5. If the error persists, contact us.</p>
+            <p>Click the edit button next to “Billing information.”</p>
+            <p>Position → Pos.</p>
+            <p>==Cookie Policy==</p>
         </td>
-        <tr>
-        <td>
-            Click the edit button next to “Billing information”.
-        </td>
-        <td>
-            Click the edit button next to “Billing information.”
-        </td>
-            <tr>
-        <td>
-            Position → Pos
-        </td>
-        <td>
-            Position → Pos.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            ==Cookie Policy.==
-        </td>
-        <td>
-            ==Cookie Policy==
-        </td>
-    </tr>
-    </tr>
     </tr>
 </table>
 
@@ -350,18 +302,12 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            ☑️ Remind later.
+            <p>☑️ Remind later.</p>
+            <p>Your competitor https://rival.com.</p>
         </td>
         <td>
-            ☑️ Remind later
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Your competitor https://rival.com.
-        </td>
-        <td>
-            Your competitor https://rival.com
+            <p>☑️ Remind later</p>
+            <p>Your competitor https://rival.com</p>
         </td>
     </tr>
 </table>
@@ -369,13 +315,13 @@ title: Punctuation and special symbols
 
 ## Lists
 
-* No period:
-– bulleted lists (**But:** if there’s more than one sentence in a bullet—make all bullets end with periods)
-– lists with icons
-* Add period in:
-– numbered lists
+* No period in bulleted lists and lists with icons<br/>(**But:** if there’s more than one sentence in a bullet—make all bullets end with periods)
+* Add period in numbered lists
 * Use sentence case capitalization
-> Use numbered lists for a sequence of actions!
+
+::: tip
+Use numbered lists for a sequence of actions!
+:::
 
 <table class="dosdonts">
     <tr>
@@ -384,22 +330,15 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            Profile settings.
+            <p>Profile settings.</p>
+            <p>1. Open the <b>Billing and Account</b> Tab</p>
         </td>
         <td>
-            Profile settings
+            <p>Profile settings</p>
+            <p>1. Open the <b>Billing and Account</b> Tab.</p>
         </td>
-        <tr>
-        <td>
-            1. Open the **Billing and Account** Tab
-        </td>
-        <td>
-            1. Open the Billing and Account Tab.
-        </td>
-    </tr>
     </tr>
 </table>
-<br />
 
 ## Special symbols
 
@@ -419,22 +358,15 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            Plans&Pricing
+            <p>Plans&Pricing</p>
+            <p>Questions & Answers</p>
         </td>
         <td>
-            Plans & Pricing
+            <p>Plans & Pricing</p>
+            <p>Questions and Answers</p>
         </td>
-        <tr>
-        <td>
-            Questions & Answers
-        </td>
-        <td>
-            Questions and Answers
-        </td>
-    </tr>
     </tr>
 </table>
-<br />
 
 ### Number sign
 
@@ -458,7 +390,6 @@ title: Punctuation and special symbols
         </td>
     </tr>
 </table>
-<br />
 
 ### Percent sign
 
@@ -467,8 +398,8 @@ title: Punctuation and special symbols
 | &percnt;     | `&percnt;`         |
 
 * In a column name, use at the end of the name preceded by a space
-* Omit the space before the percent sign
-> Exception: German, French, Swedish languages
+* Omit the space before the percent sign<br>
+(**Exception:** German, French, Swedish languages)
 
 <table class="dosdonts">
     <tr>
@@ -477,22 +408,15 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            %Traffic
+            <p>%Traffic</p>
+            <p>156 %</p>
         </td>
         <td>
-            Traffic %
+            <p>Traffic %</p>
+            <p>156%</p>
         </td>
-        <tr>
-        <td>
-            156 %
-        </td>
-        <td>
-            156%
-        </td>
-    </tr>
     </tr>
 </table>
-<br />
 
 ### Minus and plus signs
 
@@ -512,22 +436,15 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            190 + countries
+            <p>190 + countries</p>
+            <p>-45%</p>
         </td>
         <td>
-            190&plus; countries
+            <p>190&plus; countries</p>
+            <p>&minus;45%</p>
         </td>
-        <tr>
-        <td>
-            -45%
-        </td>
-        <td>
-            &minus;45%
-        </td>
-    </tr>
     </tr>
 </table>
-<br />
 
 ### Slash
 
@@ -551,7 +468,6 @@ title: Punctuation and special symbols
         </td>
     </tr>
 </table>
-<br />
 
 ### Multiplication sign
 
@@ -568,7 +484,8 @@ title: Punctuation and special symbols
     </tr>
     <tr>
         <td>
-            1080 x 1920 px
+            1080 x<span style="font-size: 0">.</span> 1920 px
+            <!-- the period prevents Vitepress from converting x to &times; -->
         </td>
         <td>
             1080 &times; 1920 px

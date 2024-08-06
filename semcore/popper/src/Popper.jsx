@@ -24,6 +24,7 @@ import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { hasParent } from '@semcore/utils/lib/hasParent';
+import logger from '@semcore/utils/lib/logger';
 
 import createPopper from './createPopper';
 
@@ -610,6 +611,7 @@ function PopperPopper(props) {
     popper,
     focusMaster = false,
     handleFocusOut,
+    role,
   } = props;
   const ref = React.useRef(null);
   const zIndex = useZIndexStacking('z-index-popper');
@@ -658,6 +660,24 @@ function PopperPopper(props) {
       unsubscribeAnimationEnd();
     };
   }, [animationCtx, ignorePortalsStacking]);
+
+  React.useEffect(() => {
+    if (role === 'dialog' && visible && process.env.NODE_ENV !== 'production') {
+      const hasTitle = (node) => {
+        if (node.hasAttribute('aria-label')) return true;
+        if (node.hasAttribute('aria-labelledby')) return true;
+        if (node.hasAttribute('title')) return true;
+
+        return false;
+      };
+
+      logger.warn(
+        ref.current && !hasTitle(ref.current),
+        `'title' or 'aria-label' or 'aria-labelledby' are required props for popper with role dialog`,
+        props['data-ui-name'] || PopperPopper.displayName,
+      );
+    }
+  }, [visible, role]);
 
   return sstyled(styles)(
     <Portal

@@ -13,7 +13,9 @@ const Demo = () => (
       <Dropdown.Trigger id='dropdown-basic' mt={2} mr='auto' tag={ButtonTrigger}>
         Trigger
       </Dropdown.Trigger>
-      <Dropdown.Popper p={4}>Content</Dropdown.Popper>
+      <Dropdown.Popper p={4} aria-label='Dropdown popper description'>
+        Content
+      </Dropdown.Popper>
     </Dropdown>
   </Flex>
 );

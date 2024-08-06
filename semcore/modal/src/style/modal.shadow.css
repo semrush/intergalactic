@@ -18,6 +18,7 @@ SWindow {
     line-height: var(--intergalactic-lh-500, 117%);
     font-weight: var(--intergalactic-semi-bold, 600);
     margin-bottom: var(--intergalactic-spacing-2x, 8px);
+    margin-right: var(--intergalactic-spacing-4x, 16px);
   }
 
   STitle[color] {
@@ -54,32 +55,12 @@ SOverlay {
 SClose {
   display: inline-flex;
   position: absolute;
+  right: var(--intergalactic-spacing-2x, 8px);
+  top: var(--intergalactic-spacing-2x, 8px);
+}
+SClose[ghost] {
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-3x, 12px);
-  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  cursor: pointer;
-  z-index: 1;
-  border: none;
-  background: none;
-  outline: none;
-
-  &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
-  }
-}
-
-SClose[ghost] {
-  color: var(--intergalactic-icon-primary-invert, #ffffff);
-  border-radius: 4px;
-
-  &:hover {
-    background-color: var(--intergalactic-control-tertiary-invert-active, rgba(255, 255, 255, 0.3));
-  }
-}
-
-SClose[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 @media (max-width: 767px) {

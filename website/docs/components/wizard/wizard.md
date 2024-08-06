@@ -60,16 +60,15 @@ Table: Wizard content area styles
 | -------- | ------------------ |
 | Content area paddings | ![padding: 40px; background-color: var(--white); color: var(--gray-800); font-size: var(--fs-200); line-height: var(--lh-200); font-weight: 400;](static/wizard-paddings.png) |
 | Header styles | ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png) |
-| Icon for closing window | The `Close` icon uses L size, and `--icon-secondary-neutral` token for color. On hover, the color of the icon changes to the darker one using CSS filter. ![](static/close-paddings.png) |
 | Footer styles | For basic controls use L size. ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png) |
 
 ## Keyboard control
 
 - When opening a Wizard, the focus should move to it.
 - Users can move between interactive elements within the window using the `Tab` key.
-- The window can be closed with the `Esc` key.
+- The Wizard can be closed with the `Esc` key.
 
-When the fullscreen modal closes, the focus should return to the page. Refer to [Accessibility](/core-principles/a11y/a11y) guidelines.
+When the Wizard closes, the focus should return to the page. Refer to [Accessibility](/core-principles/a11y/a11y) guidelines.
 
 ## Wizard in Modal
 

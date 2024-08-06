@@ -1,6 +1,7 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import Dropdown, { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
+import Popper from '@semcore/popper';
 import { InputProps } from '@semcore/input';
 
 /** @deprecated */
@@ -165,7 +166,7 @@ declare const ColorPicker: Intergalactic.Component<
   [handlers: ColorPickerHandlers]
 > & {
   Trigger: typeof Dropdown.Trigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: typeof Popper.Popper;
   Item: Intergalactic.Component<'div', ItemProps>;
   Colors: Intergalactic.Component<'div', ColorsProps>;
 };

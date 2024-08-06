@@ -1,6 +1,6 @@
 {
   "name": "intergalactic",
-  "version": "15.102.1",
+  "version": "15.103.0",
   "license": "MIT",
   "dependencies": {
     "intergalactic-migrate": "0.0.0",

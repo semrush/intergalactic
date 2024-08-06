@@ -1064,7 +1064,7 @@
     "rawValue": "rgba({gray.white}, 0.3)",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
-    "components": ["button", "modal"]
+    "components": ["button"]
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
@@ -1160,7 +1160,7 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary icon.",
-    "components": ["carousel", "modal", "notice-global"]
+    "components": ["carousel", "notice-global"]
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
@@ -1185,7 +1185,6 @@
       "inline-input",
       "input",
       "input-number",
-      "modal",
       "side-panel",
       "switch"
     ]
@@ -1196,14 +1195,7 @@
     "rawValue": "#878992",
     "computedValue": "#878992",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
-    "components": [
-      "data-table",
-      "fullscreen-modal",
-      "inline-input",
-      "input",
-      "input-number",
-      "modal"
-    ]
+    "components": ["data-table", "fullscreen-modal", "inline-input", "input", "input-number"]
   },
   {
     "name": "--intergalactic-icon-secondary-info",
@@ -1831,7 +1823,6 @@
       "inline-input",
       "input",
       "input-tags",
-      "modal",
       "pills",
       "popper",
       "radio",
@@ -2366,6 +2357,7 @@
       "feature-popover",
       "feedback-form",
       "format-text",
+      "modal",
       "notice",
       "notice-global",
       "pagination",
