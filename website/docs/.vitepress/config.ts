@@ -131,12 +131,12 @@ export default defineConfig({
       {
         icon: 'github',
         link: 'https://github.com/semrush/intergalactic',
-        ariaLabel: 'Go to GitHub repository',
+        ariaLabel: 'GitHub repository',
       },
       {
         icon: { svg: figmaIcon },
         link: 'https://figma.com/@semrush',
-        ariaLabel: 'Go to Intergalactic Design System Figma libraries',
+        ariaLabel: 'Figma libraries',
       },
     ],
   },
