@@ -77,6 +77,14 @@ export const viteConfig = defineConfig({
         find: /^.*\/VPNavBarTitle\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPNavBarTitle.vue', import.meta.url)),
       },
+      {
+        find: /^.*\/VPSwitchAppearance\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPSwitchAppearance.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPSocialLinks\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPSocialLinks.vue', import.meta.url)),
+      },
     ],
   },
 });
