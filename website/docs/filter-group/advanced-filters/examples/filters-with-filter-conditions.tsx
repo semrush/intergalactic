@@ -3,6 +3,7 @@ import Dropdown from 'intergalactic/dropdown';
 import Select from 'intergalactic/select';
 import Input from 'intergalactic/input';
 import MathPlusM from 'intergalactic/icon/MathPlus/m';
+import { Hint } from '@semcore/ui/tooltip';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 import Divider from 'intergalactic/divider';
@@ -15,7 +16,7 @@ import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 const makeOptions = (options) => options.map((value) => ({ value, children: value }));
 
 const Filter = ({ closable, onClose, id, name, ...props }) => (
-  <Flex {...props} gap={4}>
+  <Flex {...props} gap={2}>
     <Flex flexWrap gap={4} tag='fieldset' m={0} p={0} style={{ border: 'none' }}>
       <ScreenReaderOnly>
         <Text tag='legend' size={200} mb={2}>
@@ -24,25 +25,25 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </ScreenReaderOnly>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-strategy`} size={200}>
-            Strategy
+          <Text tag='label' htmlFor={`${id}-condition`} size={200}>
+            Condition
           </Text>
         </ScreenReaderOnly>
         <Select
           options={makeOptions(['Include', 'Exclude'])}
-          id={`${id}-strategy`}
+          id={`${id}-condition`}
           defaultValue={'Include'}
         />
       </Flex>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-entity`} size={200}>
-            Entity
+          <Text tag='label' htmlFor={`${id}-type`} size={200}>
+            Type
           </Text>
         </ScreenReaderOnly>
         <Select
           options={makeOptions(['Keyword', 'Backlink'])}
-          id={`${id}-enity`}
+          id={`${id}-type`}
           defaultValue={'Keyword'}
         />
       </Flex>
@@ -70,13 +71,11 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
     </Flex>
     {closable ? (
-      <TrashM
-        my={2}
-        color='icon-secondary-neutral'
-        interactive
-        aria-label={`Remove ${name}`}
-        onClick={onClose}
-      />
+      <Button use='tertiary' theme='muted' onClick={onClose}>
+        <Button.Addon tag={Hint} title={'Remove filter'} ignorePortalsStacking>
+          <TrashM />
+        </Button.Addon>
+      </Button>
     ) : null}
   </Flex>
 );
@@ -102,11 +101,11 @@ const Demo = () => {
   return (
     <Flex direction='column' gap={2}>
       <Text tag='label' htmlFor='advanced-filter' size={200}>
-        Advanced filter label
+        Filter label
       </Text>
       <Dropdown visible={visible} onVisibleChange={setVisible}>
         <Dropdown.Trigger
-          placeholder='No filter set'
+          placeholder='Advanced filters'
           id='advanced-filter'
           empty={!filtersCount}
           onClear={clearAll}
