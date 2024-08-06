@@ -65,6 +65,7 @@ export default {
 .vp-tooltip-container:focus-within .vp-tooltip,
 .vp-tooltip-container > *:first-child:hover + .vp-tooltip {
   opacity: 1;
+  transition-delay: 200ms;
 }
 
 .VPMenu .vp-tooltip {
