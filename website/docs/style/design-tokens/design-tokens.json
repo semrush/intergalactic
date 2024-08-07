@@ -1184,7 +1184,6 @@
       "inline-input",
       "input",
       "input-number",
-      "side-panel",
       "switch"
     ]
   },
@@ -1194,7 +1193,7 @@
     "rawValue": "#878992",
     "computedValue": "#878992",
     "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
-    "components": ["data-table", "fullscreen-modal", "inline-input", "input", "input-number"]
+    "components": ["data-table", "inline-input", "input", "input-number"]
   },
   {
     "name": "--intergalactic-icon-secondary-info",
@@ -1826,7 +1825,6 @@
       "popper",
       "radio",
       "scroll-area",
-      "side-panel",
       "slider",
       "switch",
       "tab-line",
@@ -2220,7 +2218,6 @@
       "notice-global",
       "radio",
       "select",
-      "side-panel",
       "slider",
       "tag",
       "wizard"
