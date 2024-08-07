@@ -21,6 +21,8 @@
   padding-top: var(--intergalactic-spacing-4x, 16px);
   padding-bottom: var(--intergalactic-spacing-4x, 16px);
   background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  width: fit-content;
+  max-width: 100%;
 }
 .dosdonts th {
   background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
