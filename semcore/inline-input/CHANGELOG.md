@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Confirm and cancel controls now focusable and accessible from keyboard to satisfy formal a11y requirements.
+- Confirm and cancel controls now focusable and accessible from keyboard to satisfy formal A11y requirements.
 
 ### Removed
 
