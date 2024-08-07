@@ -612,6 +612,7 @@ function PopperPopper(props) {
     focusMaster = false,
     handleFocusOut,
     role,
+    zIndex: providedZIndex,
   } = props;
   const ref = React.useRef(null);
   const zIndex = useZIndexStacking('z-index-popper');
@@ -719,7 +720,7 @@ function PopperPopper(props) {
             onInvalid={stopPropagation}
             onReset={stopPropagation}
             onSubmit={stopPropagation}
-            zIndex={zIndex}
+            use:zIndex={providedZIndex ?? zIndex}
           >
             <PortalProvider value={ref}>
               <Children />
