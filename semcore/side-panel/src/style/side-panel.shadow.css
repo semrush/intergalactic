@@ -58,22 +58,15 @@ SPanel[placement='left'] {
 }
 
 SClose {
-  cursor: pointer;
   position: absolute;
   z-index: 1;
-  right: var(--intergalactic-spacing-05x, 2px);
-  top: var(--intergalactic-spacing-05x, 2px);
-}
-SClose[size] {
-  height: auto;
-}
-SClose[size] SAddon {
-  padding: calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px) + 1px) 0;
-  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-}
+  right: var(--intergalactic-spacing-2x, 8px);
+  top: var(--intergalactic-spacing-2x, 8px);
 
-SClose[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  & SAddon:only-child {
+    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+  }
 }
 
 SBack[size="m"] {
@@ -86,6 +79,7 @@ SBack[size="m"] {
   min-width: auto;
   max-width: 100%;
   margin-left: calc(var(--intergalactic-spacing-2x, 8px) * -1 + 1px);
+  margin-bottom: var(--intergalactic-spacing-1x, 4px);
 
   &:hover {
     color: var(--intergalactic-text-hint-hover-active, #484a54);
@@ -123,9 +117,9 @@ STitle {
 
 SHeader {
   padding-left: var(--intergalactic-spacing-6x, 24px);
-  padding-bottom: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-6x, 24px);
-  padding-top: var(--intergalactic-spacing-1x, 4px);
+  margin-bottom: var(--intergalactic-spacing-1x, 4px);
+  padding-right: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-4x, 16px));
+  margin-top: var(--intergalactic-spacing-1x, 4px);
   min-height: calc(var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-3x, 12px));
   box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary, #c4c7cf);
   box-sizing: border-box;

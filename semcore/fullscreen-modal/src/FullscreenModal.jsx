@@ -5,6 +5,7 @@ import { Flex, Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/l';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { Text } from '@semcore/typography';
+import Button from '@semcore/button';
 import fire from '@semcore/utils/lib/fire';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -120,7 +121,11 @@ function Close(props) {
   const SClose = Root;
   const { getI18nText } = props;
   return sstyled(props.styles)(
-    <SClose render={CloseIcon} interactive aria-label={getI18nText('close')} />,
+    <SClose render={Button} use='tertiary' size='l' theme='muted' aria-label={getI18nText('close')}>
+      <Button.Addon ml={'7px'} mr={'7px'}>
+        <CloseIcon title={getI18nText('close')} />
+      </Button.Addon>
+    </SClose>,
   );
 }
 

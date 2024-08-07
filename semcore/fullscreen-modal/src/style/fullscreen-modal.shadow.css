@@ -12,25 +12,16 @@ SFullscreenModal {
   padding: 0;
 }
 
-SClose,
+SClose {
+  position: absolute;
+  top: 17px;
+  right: 24px;
+}
+
 SBack {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-}
-
-SClose {
-  top: 17px;
-  right: 23px;
-  padding: var(--intergalactic-spacing-3x, 12px);
-  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-
-  &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
-  }
-}
-
-SBack {
   top: 8px;
   left: 32px;
   display: flex;
