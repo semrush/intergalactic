@@ -49,11 +49,13 @@ const DesignTokens = ({ tokens }) => {
   const componentsFilterOptions = React.useMemo(
     () => [
       { children: 'All components', label: 'All components', value: null },
-      ...components.map((component) => ({
-        children: component,
-        label: component,
-        value: component,
-      })),
+      ...components
+        .map((component) => ({
+          children: component,
+          label: component,
+          value: component,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
     ],
     [components],
   );
@@ -169,7 +171,9 @@ const DesignTokens = ({ tokens }) => {
                     <div>
                       <Link
                         target='_blank'
-                        href={`/intergalactic/components/${row[props.name][0]}/`}
+                        href={`/intergalactic/components/${row[props.name][0]}/${
+                          row[props.name][0]
+                        }`}
                       >
                         {row[props.name][0]}
                       </Link>
@@ -190,7 +194,7 @@ const DesignTokens = ({ tokens }) => {
                           <React.Fragment key={componentName}>
                             <Link
                               target='_blank'
-                              href={`/intergalactic/components/${componentName}/`}
+                              href={`/intergalactic/components/${componentName}/${componentName}`}
                             >
                               {componentName}
                             </Link>
