@@ -11,6 +11,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import InputNumber, { InputNumberValueProps } from '@semcore/input-number';
 import { IRootComponentHandlers } from '@semcore/core';
+import { hasParent } from '@semcore/utils/lib/hasParent';
 
 type OnConfirm = (
   value: string,
@@ -229,6 +230,7 @@ class InlineInputBase extends Component<RootAsProps> {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (!onBlurBehavior) return;
     if (Date.now() - this.lastHandledKeyboardEvent < 250) return;
+    if (hasParent(event.relatedTarget, this.rootRef.current!)) return;
 
     if (this.lastMouseDownPosition && this.rootRef.current) {
       const { x, y } = this.lastMouseDownPosition;
@@ -259,17 +261,11 @@ class InlineInputBase extends Component<RootAsProps> {
     const SInlineInput = Root;
     const SUnderline = 'div';
     const SInvalidPattern = InvalidStateBox;
-    const { Children, styles, getI18nText, state } = this.asProps;
+    const { Children, styles, state } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
-      <SInlineInput
-        render={Box}
-        ref={this.rootRef}
-        focused={focused}
-        onBlur={this.handleBlur}
-        aria-label={getI18nText('keyboardHint')}
-      >
+      <SInlineInput render={Box} ref={this.rootRef} focused={focused} onBlur={this.handleBlur}>
         <SUnderline>
           {state === 'invalid' && <SInvalidPattern />}
           <Children />
@@ -344,8 +340,8 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={(props.icon as any) ?? CheckM}
-            aria-hidden='true'
             role='button'
+            interactive
             onClick={handleConfirm}
             className={sConfirmIconStyles.className}
             style={sConfirmIconStyles.style}
@@ -396,8 +392,8 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={(props.icon as any) ?? CloseM}
-            aria-hidden='true'
             role='button'
+            interactive
             onClick={handleCancel}
             className={sCancelIconStyles.className}
             style={sCancelIconStyles.style}

@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.0] - 2024-07-25
+
+### Changed
+
+- Confirm and cancel controls now focusable and accessible from keyboard to satisfy formal A11y requirements.
+
+### Removed
+
+- Keyboard hint aria label.
+
 ## [4.40.2] - 2024-08-05
 
 ### Changed

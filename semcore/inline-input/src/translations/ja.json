@@ -1,5 +1,4 @@
 {
-  "keyboardHint": "Enterキーを押すと値が適用され、Escapeキーを押すと変更内容が破棄されます",
   "confirm": "保存",
   "discard": "取り消す"
 }

@@ -14,7 +14,7 @@ const Example = () => {
       <Text mr={2}>Author:</Text>
       <InlineEdit editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center' }} pr={2}>
-          {text} <EditM />
+          {text} <EditM color='icon-secondary-neutral' />
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput
