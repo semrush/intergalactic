@@ -4,6 +4,7 @@ import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 import SettingsM from 'intergalactic/icon/Settings/m';
 import Button from 'intergalactic/button';
+import { Hint } from 'intergalactic/tooltip';
 
 const tooltipContent =
   'When drawing comparisons between different classes of animals, an alternative unit is sometimes used for organisms: body length per second.';
@@ -15,7 +16,7 @@ const Demo = () => (
         <Card.Title innerHint={tooltipContent} tag='h3' id='card-title'>
           Fastest animals
         </Card.Title>
-        <Button addonLeft={SettingsM} use='tertiary' theme='muted' aria-label='Settings' />
+        <Hint tag={Button} addonLeft={SettingsM} use='tertiary' theme='muted' title='Settings' />
       </Flex>
       <Card.Description>
         This is a list of the fastest animals in the world, by types of animal.
