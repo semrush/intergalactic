@@ -289,8 +289,6 @@ for (const theme of themes) {
       }
     }
 
-    designTokensDocumentation.sort((a, b) => a.name.localeCompare(b.name));
-
     await writeIfChanged(
       resolvePath(dirname, '../../../website/docs/style/design-tokens/design-tokens.json'),
       JSON.stringify(designTokensDocumentation, null, 2) + '\n',

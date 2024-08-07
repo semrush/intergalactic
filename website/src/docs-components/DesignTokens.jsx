@@ -49,11 +49,13 @@ const DesignTokens = ({ tokens }) => {
   const componentsFilterOptions = React.useMemo(
     () => [
       { children: 'All components', label: 'All components', value: null },
-      ...components.map((component) => ({
-        children: component,
-        label: component,
-        value: component,
-      })),
+      ...components
+        .map((component) => ({
+          children: component,
+          label: component,
+          value: component,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
     ],
     [components],
   );
