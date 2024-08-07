@@ -2,46 +2,6 @@
 title: Punctuation and special symbols
 ---
 
-<style>
-    .dosdonts {
-        border-radius: var(--intergalactic-surface-rounded);
-    }
-    .dosdonts td, .dosdonts th {
-        background: var(--intergalactic-bg-secondary-neutral);
-        text-align: center;
-    }
-    .dosdonts tr:first-of-type {
-        border-bottom: none;
-    }
-    .dosdonts th {
-        border-top: var(--intergalactic-spacing-4x) solid var(--intergalactic-bg-secondary-neutral);
-        padding-top: 0;
-        font-size: var(--intergalactic-fs-400);
-        line-height: var(--intergalactic-lh-400);
-        font-weight: var(--intergalactic-bold);
-    }
-    .dosdonts td {
-        border-bottom: var(--intergalactic-spacing-4x) solid var(--intergalactic-bg-secondary-neutral);
-        padding: var(--intergalactic-spacing-6x) var(--intergalactic-spacing-10x) var(--intergalactic-spacing-6x);
-        font-size: var(--intergalactic-fs-200);
-        line-height: var(--intergalactic-lh-200);
-    }
-    .dosdonts tr td:first-of-type, .dosdonts tr th:first-of-type {
-        border-right: 1px solid var(--intergalactic-border-secondary);
-    }
-    .dosdonts th:first-of-type {
-        color: var(--intergalactic-text-critical);
-    }
-    .dosdonts th:last-of-type {
-        color: var(--intergalactic-text-success);
-    }
-    .dosdonts td p {
-        margin-top: 0;
-        margin-bottom: var(--intergalactic-spacing-2x);
-        line-height: var(--intergalactic-lh-200)
-    }
-</style>
-
 ## Dashes and hyphens
 
 ### Em dash
@@ -53,22 +13,16 @@ title: Punctuation and special symbols
 * Use sparingly in sentences in place of a comma or colon
 * Omit the spaces on both sides of the dash
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            It makes us sound like <nobr>Semrush &mdash; regardless</nobr>
-            of who the person behind the communication is.
-        </td>
-        <td>
-            It makes us sound like <nobr>Semrush&mdash;regardless</nobr>
-            of who the person behind the communication is.
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        It makes us sound like <nobr>Semrush &mdash; regardless</nobr>
+        of who the person behind the communication is.
+    </template>
+    <template #do>
+        It makes us sound like <nobr>Semrush&mdash;regardless</nobr>
+        of who the person behind the communication is.
+    </template>
+</DosDonts>
 
 ### En dash
 
@@ -80,24 +34,18 @@ title: Punctuation and special symbols
 * Use to indicate an empty value in tables
 * Omit the spaces on both sides of the dash
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>100 &ndash; 100</p>
-            <p>Sep 5 &ndash; Oct 4, 2016</p>
-            <p>Sep 5, 2016 &ndash; Jan 4, 2017</p>
-        </td>
-        <td>
-            <p>100&ndash;1000</p>
-            <p>Sep 5&ndash;Oct 4, 2016 </p>
-            <p>Sep 5, 2016&ndash;Jan 4, 2017</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>100 &ndash; 100</p>
+        <p>Sep 5 &ndash; Oct 4, 2016</p>
+        <p>Sep 5, 2016 &ndash; Jan 4, 2017</p>
+    </template>
+    <template #do>
+        <p>100&ndash;1000</p>
+        <p>Sep 5&ndash;Oct 4, 2016 </p>
+        <p>Sep 5, 2016&ndash;Jan 4, 2017</p>
+    </template>
+</DosDonts>
 
 ### Hyphen
 
@@ -107,22 +55,16 @@ title: Punctuation and special symbols
 
 * Use for telephone numbers and compound modifiers
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>703&ndash;555&ndash;6593</p>
-            <p>AI&ndash;powered</p>
-        </td>
-        <td>
-            <p>703-555-6593</p>
-            <p>AI-powered</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>703&ndash;555&ndash;6593</p>
+        <p>AI&ndash;powered</p>
+    </template>
+    <template #do>
+        <p>703-555-6593</p>
+        <p>AI-powered</p>
+    </template>
+</DosDonts>
 
 ### Non-breaking hyphen
 
@@ -132,20 +74,14 @@ title: Punctuation and special symbols
 
 * Use to prevent unwanted line breaks
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            Metrics like click-<br />through rate
-        </td>
-        <td>
-            Metrics like<br />click&#8209;through rate
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        Metrics like click-<br />through rate
+    </template>
+    <template #do>
+        Metrics like<br />click&#8209;through rate
+    </template>
+</DosDonts>
 
 ### Soft hyphen
 
@@ -156,20 +92,14 @@ title: Punctuation and special symbols
 * Use to indicate where a hyphenated break is allowed. It’s invisible otherwise
 * Useful in scenarios when the same string is displayed in different layouts 
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            SEO-<br />friendly
-        </td>
-        <td>
-            SEO­<br />friendly
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        SEO-<br />friendly
+    </template>
+    <template #do>
+        SEO­<br />friendly
+    </template>
+</DosDonts>
 
 ## Non-breaking space
 
@@ -183,20 +113,14 @@ title: Punctuation and special symbols
 Use ⌥+space on MacOS to insert
 :::
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            Click here to<br /> subscribe
-        </td>
-        <td>
-            Click here<br />to&nbsp;subscribe
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        Click here to<br /> subscribe
+    </template>
+    <template #do>
+        Click here<br />to&nbsp;subscribe
+    </template>
+</DosDonts>
 
 ## Quotation marks and apostrophe
 
@@ -212,26 +136,20 @@ Use ⌥+space on MacOS to insert
 * Dashes, semicolons, exclamation points, and question marks go inside the quotation mark only if they relate to the quotation
 * Use when quoting UI text, if text formatting is not available
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>"Project name"</p>
-            <p>Search for “small business websites”.</p>
-            <p>Click “How can you help”?</p>
-            <p>Enter the “My Profile” section</p>
-        </td>
-        <td>
-            <p>“Project name”</p>
-            <p>Search for “small business websites.”</p>
-            <p>Click “How can you help?”</p>
-            <p>Enter the <b>My Profile</b> section</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>"Project name"</p>
+        <p>Search for “small business websites”.</p>
+        <p>Click “How can you help”?</p>
+        <p>Enter the “My Profile” section</p>
+    </template>
+    <template #do>
+        <p>“Project name”</p>
+        <p>Search for “small business websites.”</p>
+        <p>Click “How can you help?”</p>
+        <p>Enter the <b>My Profile</b> section</p>
+    </template>
+</DosDonts>
 
 ### Apostrophe
 
@@ -245,20 +163,14 @@ Use ⌥+space on MacOS to insert
 Use ⌥+' on MacOS to insert a curly apostrophe
 :::
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            What's new
-        </td>
-        <td>
-            What’s new
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        What's new
+    </template>
+    <template #do>
+        What’s new
+    </template>
+</DosDonts>
 
 ## Period
 
@@ -266,26 +178,20 @@ Use ⌥+' on MacOS to insert a curly apostrophe
 * Include in quotation marks and brackets
 * Use with shortened forms of words (mainly in table columns)
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>5. If the error persists, contact us</p>
-            <p>Click the edit button next to “Billing information”.</p>
-            <p>Position → Pos</p>
-            <p>==Cookie Policy.==</p>
-        </td>
-        <td>
-            <p>5. If the error persists, contact us.</p>
-            <p>Click the edit button next to “Billing information.”</p>
-            <p>Position → Pos.</p>
-            <p>==Cookie Policy==</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>5. If the error persists, contact us</p>
+        <p>Click the edit button next to “Billing information”.</p>
+        <p>Position → Pos</p>
+        <p><u style="color: var(--intergalactic-text-link)">Cookie Policy.</u></p>
+    </template>
+    <template #do>
+        <p>5. If the error persists, contact us.</p>
+        <p>Click the edit button next to “Billing information.”</p>
+        <p>Position → Pos.</p>
+        <p><u style="color: var(--intergalactic-text-link)">Cookie Policy</u></p>
+    </template>
+</DosDonts>
 
 **Omit:**
 * in headings
@@ -295,23 +201,16 @@ Use ⌥+' on MacOS to insert a curly apostrophe
 * in tooltips that serve as labels for icons or display the element’s full name
 * after URLs
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>☑️ Remind later.</p>
-            <p>Your competitor https://rival.com.</p>
-        </td>
-        <td>
-            <p>☑️ Remind later</p>
-            <p>Your competitor https://rival.com</p>
-        </td>
-    </tr>
-</table>
-<br />
+<DosDonts>
+    <template #dont>
+        <p>☑️ Remind later.</p>
+        <p>Your competitor https://rival.com.</p>
+    </template>
+    <template #do>
+        <p>☑️ Remind later</p>
+        <p>Your competitor https://rival.com</p>
+    </template>
+</DosDonts>
 
 ## Lists
 
@@ -323,22 +222,16 @@ Use ⌥+' on MacOS to insert a curly apostrophe
 Use numbered lists for a sequence of actions!
 :::
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>Profile settings.</p>
-            <p>1. Open the <b>Billing and Account</b> Tab</p>
-        </td>
-        <td>
-            <p>Profile settings</p>
-            <p>1. Open the <b>Billing and Account</b> Tab.</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>Profile settings.</p>
+        <p>1. Open the <b>Billing and Account</b> Tab</p>
+    </template>
+    <template #do>
+        <p>Profile settings</p>
+        <p>1. Open the <b>Billing and Account</b> Tab.</p>
+    </template>
+</DosDonts>
 
 ## Special symbols
 
@@ -351,22 +244,16 @@ Use numbered lists for a sequence of actions!
 * Enclose in spaces
 * Avoid. If there’s enough space—always use “and”
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>Plans&Pricing</p>
-            <p>Questions & Answers</p>
-        </td>
-        <td>
-            <p>Plans & Pricing</p>
-            <p>Questions and Answers</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>Plans&Pricing</p>
+        <p>Questions & Answers</p>
+    </template>
+    <template #do>
+        <p>Plans & Pricing</p>
+        <p>Questions and Answers</p>
+    </template>
+</DosDonts>
 
 ### Number sign
 
@@ -376,20 +263,14 @@ Use numbered lists for a sequence of actions!
 
 * Omit the space after the sign
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            # 1, # 3–6
-        </td>
-        <td>
-            #1, #3–6
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        # 1, # 3–6
+    </template>
+    <template #do>
+        #1, #3–6
+    </template>
+</DosDonts>
 
 ### Percent sign
 
@@ -401,22 +282,16 @@ Use numbered lists for a sequence of actions!
 * Omit the space before the percent sign<br>
 (**Exception:** German, French, Swedish languages)
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>%Traffic</p>
-            <p>156 %</p>
-        </td>
-        <td>
-            <p>Traffic %</p>
-            <p>156%</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>%Traffic</p>
+        <p>156 %</p>
+    </template>
+    <template #do>
+        <p>Traffic %</p>
+        <p>156%</p>
+    </template>
+</DosDonts>
 
 ### Minus and plus signs
 
@@ -429,22 +304,16 @@ Use numbered lists for a sequence of actions!
 * Use to show changes in metrics
 * If you cannot use the minus character for some reason, use the en dash
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            <p>190 + countries</p>
-            <p>-45%</p>
-        </td>
-        <td>
-            <p>190&plus; countries</p>
-            <p>&minus;45%</p>
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        <p>190 + countries</p>
+        <p>-45%</p>
+    </template>
+    <template #do>
+        <p>190&plus; countries</p>
+        <p>&minus;45%</p>
+    </template>
+</DosDonts>
 
 ### Slash
 
@@ -454,20 +323,14 @@ Use numbered lists for a sequence of actions!
 
 * Omit the spaces around the sign
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            24 / 7 competitor tracking
-        </td>
-        <td>
-            24/7 competitor tracking
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        24 / 7 competitor tracking
+    </template>
+    <template #do>
+        24/7 competitor tracking
+    </template>
+</DosDonts>
 
 ### Multiplication sign
 
@@ -477,18 +340,12 @@ Use numbered lists for a sequence of actions!
 
 * Avoid using the “x” letter
 
-<table class="dosdonts">
-    <tr>
-        <th>Don’t</th>
-        <th>Do</th>
-    </tr>
-    <tr>
-        <td>
-            1080 x<span style="font-size: 0">.</span> 1920 px
-            <!-- the period prevents Vitepress from converting x to &times; -->
-        </td>
-        <td>
-            1080 &times; 1920 px
-        </td>
-    </tr>
-</table>
+<DosDonts>
+    <template #dont>
+        1080 x<span style="font-size: 0">.</span> 1920 px
+        <!-- the period prevents Vitepress from converting x to &times; -->
+    </template>
+    <template #do>
+        1080 &times; 1920 px        
+    </template>
+</DosDonts>

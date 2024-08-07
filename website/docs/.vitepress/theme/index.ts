@@ -11,6 +11,7 @@ import DocFooter from './DocFooter.vue';
 import PreferenceSwitch from './PreferenceSwitch.vue';
 import BlogPosts from './blog/BlogPosts.vue';
 import BlogPostsMainPage from './blog/BlogPostsMainPage.vue';
+import DosDonts from './DosDonts.vue';
 import mediumZoom from 'medium-zoom';
 import { h, onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
@@ -33,6 +34,7 @@ export default {
     app.component('TypesView', TypesView);
     app.component('BlogPosts', BlogPosts);
     app.component('BlogPostsMainPage', BlogPostsMainPage);
+    app.component('DosDonts', DosDonts);
   },
   setup() {
     const route = useRoute();
