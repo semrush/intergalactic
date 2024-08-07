@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .vp-tooltip-container {
   position: relative;
   display: inline-block;
@@ -68,9 +68,16 @@ export default {
   transition-delay: 200ms;
 }
 
-.VPMenu .vp-tooltip {
+.VPNavScreen .vp-tooltip {
   display: none;
 }
+.VPMenu:has(.vp-tooltip) {
+  overflow: visible;
+}
+.appearance-action:has(.vp-tooltip) {
+  margin-right: -2px;
+  display: flex;
+  align-items: center;
 
 .dark .vp-tooltip {
   color: var(--intergalactic-text-primary, #191b23);
