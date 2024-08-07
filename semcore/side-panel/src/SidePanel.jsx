@@ -218,7 +218,6 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
       aria-label={getI18nText('close')}
       use='tertiary'
       theme='muted'
-      type='button'
       size='l'
       addonLeft={hasChildren ? undefined : CloseIcon}
     >

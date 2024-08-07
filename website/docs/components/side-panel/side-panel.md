@@ -14,14 +14,14 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 - To keep the user in the context of the page (even if the SidePanel has an overlay).
 
 ::: tip
-Use [Modal windows](/components/modal/modal) to show important information or request a response from the user.
+Use [Modal dialogs](/components/modal/modal) to show important information or request a response from the user.
 :::
 
 **For example, you can use SidePanel as:**
 
-- A notification center for the whole website.
-- A Help Center or News panel in products.
-- "Panels" on mobile devices.
+- A notification center for the whole website
+- A Help Center or News panel in products
+- "Panels" on mobile devices
 
 ## Component composition
 
@@ -41,7 +41,7 @@ Component consists of the following:
 
 The trigger for opening the SidePanel can be the following:
 
-- A `News` icon in the main header of the website.
+- A **News** icon in the main header of the website.
 - Additional links in [ProductHead](/components/product-head/product-head).
 - Controls that hide additional information.
 - Charts that can be clicked to show additional information.
@@ -56,13 +56,15 @@ Table: SidePanel with and without overlay
 | Without overlay | ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
 | With overlay    | ![](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
-## Sizes and indents
+## Appearance
 
-### Width
+### Sizes and indents
+
+#### Width
 
 SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
 
-### Container
+#### Container
 
 **The component has a default padding.** It can be changed if necessary.
 
@@ -70,44 +72,25 @@ _It can be changed, for example, when using SidePanel on a small screen where yo
 
 ![](static/container-paddings.png)
 
-### SidePanel.Body margins
+### Content styles
 
-The padding between the title and content:
+General recommendations for `SidePanel` content styles:
+
+- Use a `--spacing-4x` (16px) padding between the title and the content:
 
 ![](static/content-paddings.png)
 
-## Default styles
-
-### Header
-
-For the panel's title, use 16px text (`--fs-300`, `--lh-300` tokens) with `font-weight: var(--bold)`.
-
-::: tip
-Pin the header when scrolling large content inside the SidePanel.
-:::
-
-Table: SidePanel.Header styles
-
-| Appearance example     | Styles         |
-| ---------------------- | -------------- |
-| ![](static/header.png) | `height: 52px`, `align-items: center`, <br>`padding-top: var(--spacing-1x)`, <br>`padding-bottom: var(--spacing-1x)`, <br>`border-bottom: 1px solid var(–-border-primary)` |
-| ![](static/closeIcon.png)   | The **Close** button is a size L tertiary button with a size L icon inside. The dimensions of the button are `48px * 48px`. The color of the icon is `--icon-secondary-neutral`.   |
-
-### Content
-
-General recommendations for SidePanel content styles:
-
-- Choose the text size for the panel to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/typography).
+- Choose the text size for the panel to maintain a hierarchy of headers in the content within `SidePanel`. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/typography).
 
 ![](static/hierarchy.png)
 
-- Always pin the header and the footer when scrolling the content of the SidePanel.
+- Always pin the header and the footer when scrolling the content of the `SidePanel`.
 
 ![](static/scroll.png)
 
-### Footer
+### Footer styles
 
-You can place common controls for SidePanel content in the footer.
+You can place common `SidePanel` controls in the footer.
 
 - Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar/progress-bar) can be placed there.
 - The recommended size of controls in the panel on the desktop is M. Depending on the context, use M or L controls in the panel on small screens.
@@ -115,13 +98,9 @@ You can place common controls for SidePanel content in the footer.
 Footer styles:
 
 ```css
-height: 44px;
 padding: var(--spacing-2x) 0;
 align-items: center;
-border-top: 1px solid var(–-border-primary);
 ```
-
-![](static/footer.png)
 
 ![](static/footer-paddings.png)
 
@@ -129,8 +108,8 @@ border-top: 1px solid var(–-border-primary);
 
 ### Placement in the interface
 
-- You can customize whether the SidePanel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
-- The focus remains inside the SidePanel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using  `Tab`.
+- You can customize whether the panel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
+- The focus remains inside the panel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using  `Tab`.
 
 ### Page scroll
 
@@ -155,32 +134,32 @@ SidePanel can be opened either by the user clicking on the corresponding trigger
 
 SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out`.
 
-### What happens when the browser window size changes
+**What happens when the browser window size changes:**
 
-- SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 260px. You can change it if necessary.
-- On a 320px screen, SidePanel should not occupy more than 80% of the screen width so that the user can click outside of it and close it.
+- The SidePanel has a fixed width that doesn’t change when the browser window is resized. The default width of the panel is 260px, but you can change it if needed.
+- On a 320px screen, the SidePanel should not occupy more than 80% of the screen width to ensure that the user can click outside of it to close it.
 
 ![](static/320-width.png)
 
 ## Edge cases
 
-SidePanel should have a header in all states.
+`SidePanel.Header` should be visible even in loading, empty and error states.
 
 ### Initial load
 
-At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/skeleton).
+At the initial load of the content, show the content structure with [Skeleton](/components/skeleton/skeleton).
 
 ![](static/side-panel-skeleton.png)
 
 ### Reloading
 
-When loading and reloading SidePanel content, show [Spin](/components/spin/spin) with XL size in the center.
+While loading or reloading content, show a [SpinContainer](/components/spin-container/spin-container) of XXL size.
 
 ![](static/spin.png)
 
 ### Error
 
-If an error occurs during data loading, show the corresponding message and the "Try again" button to reload the SidePanel content.
+If an error occurs during data loading, show a suitable message and a button to reload the content. Refer to [WidgetEmpty](../widget-empty/widget-empty.md#something-went-wrong) for more details.
 
 ![](static/error.png)
 

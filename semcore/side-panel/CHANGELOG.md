@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.41.0] - 2024-07-29
+
+### Changed
+
+- Color and margins for the Close button.
+
 ## [3.40.2] - 2024-08-05
 
 ### Changed
