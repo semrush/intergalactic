@@ -169,7 +169,9 @@ const DesignTokens = ({ tokens }) => {
                     <div>
                       <Link
                         target='_blank'
-                        href={`/intergalactic/components/${row[props.name][0]}/`}
+                        href={`/intergalactic/components/${row[props.name][0]}/${
+                          row[props.name][0]
+                        }`}
                       >
                         {row[props.name][0]}
                       </Link>
@@ -190,7 +192,7 @@ const DesignTokens = ({ tokens }) => {
                           <React.Fragment key={componentName}>
                             <Link
                               target='_blank'
-                              href={`/intergalactic/components/${componentName}/`}
+                              href={`/intergalactic/components/${componentName}/${componentName}`}
                             >
                               {componentName}
                             </Link>
