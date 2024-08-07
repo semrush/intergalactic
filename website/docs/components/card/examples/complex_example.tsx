@@ -6,6 +6,7 @@ import Close from 'intergalactic/icon/Close/m';
 import Select from 'intergalactic/select';
 import { LinkTrigger } from 'intergalactic/base-trigger';
 import Button from 'intergalactic/button';
+import { Hint } from 'intergalactic/tooltip';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const options = Array(6)
@@ -27,7 +28,7 @@ const Demo = () => (
           <Text size={200} color='text-secondary' mr={2}>
             Updated: Tue, Jun 1, 2021
           </Text>
-          <Button addonLeft={Close} use='tertiary' theme='muted' aria-label='Hide widget' />
+          <Hint tag={Button} addonLeft={Close} use='tertiary' theme='muted' title='Hide widget' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>
