@@ -1,13 +1,14 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Flex, Box } from '@semcore/flex-box';
-import Close from '@semcore/icon/Close/m';
+import { Flex } from '@semcore/flex-box';
+import CloseM from '@semcore/icon/Close/m';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import Button from '@semcore/button';
 
 import style from './style/notice-global.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -89,10 +90,19 @@ function Content({ styles }) {
   return sstyled(styles)(<SContent render={Flex} />);
 }
 
-function CloseIcon({ styles, getI18nText }) {
+function CloseIcon({ styles, children: hasChildren, Children, getI18nText }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
-    <SCloseIcon render={Box} tag={Close} interactive aria-label={getI18nText('close')} />,
+    <SCloseIcon
+      render={Button}
+      aria-label={getI18nText('close')}
+      use='tertiary'
+      theme='invert'
+      size='l'
+      addonLeft={hasChildren ? undefined : CloseM}
+    >
+      {hasChildren ? <Children /> : null}
+    </SCloseIcon>,
   );
 }
 CloseIcon.enhance = [keyboardFocusEnhance()];

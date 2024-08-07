@@ -68,4 +68,29 @@ describe('NoticeGlobal', () => {
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
+  test.concurrent('Should render close icon', async ({ task }) => {
+    const component = (
+      <>
+        <NoticeGlobal closable>Text NoticeGlobal</NoticeGlobal>
+        <br />
+        <NoticeGlobal theme='info' closable>
+          Text NoticeGlobal
+        </NoticeGlobal>
+        <br />
+        <NoticeGlobal theme='success' closable>
+          Text NoticeGlobal
+        </NoticeGlobal>
+        <br />
+        <NoticeGlobal theme='danger' closable>
+          Text NoticeGlobal
+        </NoticeGlobal>
+        <br />
+        <NoticeGlobal theme='warning' closable>
+          Text NoticeGlobal
+        </NoticeGlobal>
+      </>
+    );
+
+    await expect(await snapshot(component, { width: 800 })).toMatchImageSnapshot(task);
+  });
 });
