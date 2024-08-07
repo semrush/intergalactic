@@ -658,7 +658,8 @@ describe('Venn', () => {
       G: 200,
       F: 200,
       C: 500,
-      U: 20,
+      U: 2,
+      O: 0,
       'G/F': 100,
       'G/C': 100,
       'F/C': 100,
@@ -673,6 +674,7 @@ describe('Venn', () => {
             <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />
             <Venn.Circle dataKey='C' name='Cheap' color={colors['orange-04']} />
             <Venn.Circle dataKey='U' name='Unknown' color={colors['pink-03']} />
+            <Venn.Circle dataKey='O' name='Other' color={colors['red-03']} />
             <Venn.Intersection dataKey='G/F' name='Good & Fast' />
             <Venn.Intersection dataKey='G/C' name='Good & Cheap' />
             <Venn.Intersection dataKey='F/C' name='Fast & Cheap' />
