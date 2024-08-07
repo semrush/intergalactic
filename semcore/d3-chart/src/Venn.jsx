@@ -137,6 +137,7 @@ function Circle({
   dataHintsHandler.describeValueEntity(dataKey, name);
 
   const radius = data.radius < minRadius ? minRadius : data.radius;
+  if (data.radius === 0) return null;
 
   return (
     <>
