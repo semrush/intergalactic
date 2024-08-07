@@ -1,6 +1,6 @@
 SFeaturePopover {
   padding-top: var(--intergalactic-spacing-4x, 16px);
-  padding-right: var(--intergalactic-spacing-8x, 32px);
+  padding-right: var(--intergalactic-spacing-10x, 40px);
   padding-bottom: var(--intergalactic-spacing-4x, 16px);
   padding-left: var(--intergalactic-spacing-4x, 16px);
   border-radius: var(--intergalactic-popper-rounded, 6px);
@@ -8,6 +8,7 @@ SFeaturePopover {
   background-color: var(--intergalactic-bg-primary-highlight, #fce081);
   color: var(--intergalactic-text-primary, #191b23);
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
+  position: relative;
 }
 
 STrigger {
@@ -16,12 +17,14 @@ STrigger {
 
 SClose {
   position: absolute;
-  right: 0;
-  top: 0;
-  padding: var(--intergalactic-spacing-2x, 8px);
-  cursor: pointer;
-  color: var(--intergalactic-text-primary, #191b23);
-  font-size: 0;
+  z-index: 1;
+  right: var(--intergalactic-spacing-2x, 8px);
+  top: var(--intergalactic-spacing-2x, 8px);
+
+  & SAddon:only-child {
+    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
+  }
 }
 
 @keyframes showTrigger {

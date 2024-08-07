@@ -3,10 +3,11 @@ import { Animation } from '@semcore/animation';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
-import Close from '@semcore/icon/Close/m';
+import CloseIcon from '@semcore/icon/Close/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import Button from '@semcore/button';
 
 import style from './style/feature-popover.shadow.css';
 
@@ -117,7 +118,7 @@ class FeaturePopoverPopper extends Component {
 
   render() {
     const SFeaturePopover = Root;
-    const SClose = Close;
+    const SClose = Button;
     const {
       Children,
       styles,
@@ -141,7 +142,15 @@ class FeaturePopoverPopper extends Component {
         >
           <SFeaturePopover render={Box} aria-live='polite'>
             {closeIcon && (
-              <SClose interactive onClick={$onCloseClick} aria-label={getI18nText('close')} />
+              <SClose
+                aria-label={getI18nText('close')}
+                onClick={$onCloseClick}
+                use='tertiary'
+                theme='muted'
+                size='l'
+                addonLeft={CloseIcon}
+                type='button'
+              />
             )}
             <Children />
           </SFeaturePopover>
