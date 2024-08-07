@@ -5,6 +5,7 @@ import { Flex } from 'intergalactic/flex-box';
 import Close from 'intergalactic/icon/Close/m';
 import Select from 'intergalactic/select';
 import { LinkTrigger } from 'intergalactic/base-trigger';
+import Button from 'intergalactic/button';
 
 const tooltipContent = `Hey! Don't forget to place some useful information here.`;
 const options = Array(6)
@@ -24,9 +25,9 @@ const Demo = () => (
         </Flex>
         <Flex alignItems='center'>
           <Text size={200} color='text-secondary' mr={2}>
-            Optional info about data
+            Updated: Tue, Jun 1, 2021
           </Text>
-          <Close color='icon-secondary-neutral' ml='auto' interactive aria-label='Close card' />
+          <Button addonLeft={Close} use='tertiary' theme='muted' aria-label='Hide widget' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>
