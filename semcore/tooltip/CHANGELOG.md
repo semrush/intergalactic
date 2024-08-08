@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.40.3] - 2024-08-08
+
+### Fixed
+
+- `z-index` was too high (default value changed 1500 -> 800).
+
 ## [6.40.2] - 2024-08-02
 
 ### Changed
