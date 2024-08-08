@@ -9,8 +9,8 @@ SLine {
   stroke: var(--intergalactic-text-large-info, #008ff8);
 }
 
-SLine[color] {
-  stroke: var(--color);
+SLine[stroke] {
+  stroke: var(--stroke);
 }
 
 SLine[transparent] {
