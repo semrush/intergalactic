@@ -4,6 +4,7 @@ import InlineInput from 'intergalactic/inline-input';
 const Example = () => {
   return (
     <InlineInput
+      w={300}
       onBlurBehavior='cancel'
       onCancel={console.log}
       onChange={console.log}

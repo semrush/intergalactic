@@ -5,7 +5,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 
 ## Basic usage
 
-You can use `<InlineEdit />` to make simple text editable.
+Use `<InlineEdit />` to make plain text wrapped in [InlineInput](/components/inline-input/inline-input) editable.
 
 ::: sandbox
 
@@ -29,7 +29,7 @@ As far as `<InlineEdit />` is flexible, it could be used with almost any childre
 
 ## Pseudo network interaction
 
-Component stays simple to provide you a way to handle edited values in any needed way.
+In this example, the value entered in the input is stored on the backend.
 
 ::: sandbox
 

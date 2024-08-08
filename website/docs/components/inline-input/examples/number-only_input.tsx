@@ -4,9 +4,9 @@ import InlineInput from 'intergalactic/inline-input';
 const Example = () => {
   return (
     <div>
-      <InlineInput>
+      <InlineInput w={200}>
         <InlineInput.Addon htmlFor='number-example' tag='label'>
-          Some score:
+          Number:
         </InlineInput.Addon>
         <InlineInput.NumberValue id='number-example' defaultValue={100} />
         <InlineInput.NumberControls />

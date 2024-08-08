@@ -5,13 +5,13 @@ import EditM from 'intergalactic/icon/Edit/m';
 import { Text } from 'intergalactic/typography';
 
 const Example = () => {
-  const [title, setTitle] = React.useState('Lorem ipsum');
+  const [title, setTitle] = React.useState('The Adventures of Intergalactic Whale');
   const [editingTitle, setEditingTitle] = React.useState(false);
   const [savingTitle, setSavingTitle] = React.useState(false);
   const stopEditing = () => setEditingTitle(false);
   const handleTitle = (title) => {
     setSavingTitle(true);
-    /** Here we doing some network activities */
+    /** Here we are doing some network activities */
     setTimeout(() => {
       setTitle(title);
       setSavingTitle(false);
@@ -21,7 +21,7 @@ const Example = () => {
 
   return (
     <>
-      <Text tag='h1'>
+      <Text tag='h3' mb={2}>
         <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
           <InlineEdit.View pr={5}>
             {title} <EditM color='icon-secondary-neutral' />
@@ -35,11 +35,10 @@ const Example = () => {
           </InlineEdit.Edit>
         </InlineEdit>
       </Text>
-      dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-      sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Once upon a time in a distant galaxy far, far away, there existed a legendary creature known
+      as the Intergalactic Whale. This magnificent space-faring mammal was no ordinary whale. It had
+      the power to swim through the cosmic ocean, jumping from one star system to another with grace
+      and finesse.
     </>
   );
 };
