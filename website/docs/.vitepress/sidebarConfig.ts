@@ -124,6 +124,22 @@ export const sideBarConfig: SidebarConfig = [
         ],
       },
       {
+        text: 'Content',
+        collapsed: true,
+        items: [
+          {
+            link: '/content/punctuation/punctuation',
+            activeMatch: '/content/punctuation/',
+            text: 'Punctuation and special symbols',
+          },
+          {
+            link: '/content/date-format/date-format',
+            activeMatch: '/content/date-format/',
+            text: 'Date format',
+          },
+        ],
+      },
+      {
         text: 'Layout',
         collapsed: true,
         items: [
