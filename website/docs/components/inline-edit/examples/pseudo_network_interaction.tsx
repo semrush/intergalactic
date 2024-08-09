@@ -11,7 +11,7 @@ const Example = () => {
   const stopEditing = () => setEditingTitle(false);
   const handleTitle = (title) => {
     setSavingTitle(true);
-    /** Here we doing some network activities */
+    /** Here we are doing some network activities */
     setTimeout(() => {
       setTitle(title);
       setSavingTitle(false);
@@ -21,7 +21,7 @@ const Example = () => {
 
   return (
     <>
-      <Text tag='h4' mb={2}>
+      <Text tag='h3' mb={2}>
         <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
           <InlineEdit.View pr={5}>
             {title} <EditM ml={1} />

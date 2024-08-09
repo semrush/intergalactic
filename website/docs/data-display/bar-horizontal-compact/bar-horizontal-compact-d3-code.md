@@ -40,7 +40,7 @@ For core principles, concept description, API and changelog, refer to the [D3 ch
 
 ## Clickable bars
 
-Basic use.
+This is a basic example.
 
 ::: sandbox
 
@@ -50,7 +50,7 @@ Basic use.
 
 :::
 
-Advanced use.
+This is a more detailed example if you need to expand the component.
 
 ::: sandbox
 
