@@ -33,6 +33,10 @@ const illustartionsList = {
       group: 'States',
     },
     {
+      name: 'MechanismInside',
+      group: 'States',
+    },
+    {
       name: 'FunnelChart',
       group: 'Chart types',
     },
