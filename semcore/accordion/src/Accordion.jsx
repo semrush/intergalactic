@@ -142,7 +142,7 @@ class Toggle extends Component {
   };
 
   render() {
-    const { styles, disabled, use } = this.asProps;
+    const { styles, disabled, use, Children } = this.asProps;
     const SItemToggle = Root;
 
     return sstyled(styles)(
@@ -152,7 +152,11 @@ class Toggle extends Component {
         render={Text}
         onKeyDown={this.handleKeyDown}
         aria-disabled={disabled ? 'true' : undefined}
-      />,
+      >
+        <Item.ToggleButton>
+          <Children />
+        </Item.ToggleButton>
+      </SItemToggle>,
     );
   }
 }
@@ -168,7 +172,9 @@ function ToggleButton(props) {
   const { styles } = props;
 
   const SToggleButton = Root;
-  return sstyled(styles)(<SToggleButton render={Flex} role={'button'} {...props} />);
+  return sstyled(styles)(
+    <SToggleButton alignItems='center' render={Flex} role={'button'} {...props} />,
+  );
 }
 
 function Collapse(props) {

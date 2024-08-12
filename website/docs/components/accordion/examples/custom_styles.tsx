@@ -40,9 +40,7 @@ const Demo = () => {
                   )}
                 >
                   <Accordion.Item.Chevron mr={2} />
-                  <Accordion.Item.ToggleButton my={0}>{`Section ${
-                    index + 1
-                  }`}</Accordion.Item.ToggleButton>
+                  Section {index + 1}
                 </Accordion.Item.Toggle>
                 <Accordion.Item.Collapse>
                   <Box p='12px 32px'>{`Hello Section ${index + 1}`}</Box>
