@@ -131,7 +131,6 @@ function TooltipTrigger(props) {
 
 function TooltipPopper(props) {
   const {
-    visible,
     Children,
     styles,
     theme,
@@ -139,7 +138,6 @@ function TooltipPopper(props) {
     disablePortal,
     ignorePortalsStacking,
     'aria-live': ariaLive,
-    role,
     arrowBgColor,
     arrowShadowColor,
   } = props;
@@ -159,6 +157,7 @@ function TooltipPopper(props) {
             use:disablePortal
             use:theme={resolveColor(theme)}
             use:aria-live={undefined}
+            use:zIndex={undefined}
           >
             <Children />
             <SArrow
