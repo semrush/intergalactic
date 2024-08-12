@@ -53,7 +53,7 @@ title: Punctuation and special symbols
 | :----------: | :-----------: |
 | -            | `&hyphen;`    |
 
-* Use for telephone numbers and compound modifiers
+Use for telephone numbers and compound modifiers.
 
 <DosDonts>
     <template #dont>
@@ -72,7 +72,7 @@ title: Punctuation and special symbols
 | :----------: | :----------------: |
 | &#8209;      | `&#8209;`          |
 
-* Use to prevent unwanted line breaks
+Use to prevent unwanted line breaks.
 
 <DosDonts>
     <template #dont>
@@ -103,15 +103,11 @@ title: Punctuation and special symbols
 
 ## Non-breaking space
 
-| Symbol       | HTML entity        |
-| :----------: | :----------------: |
-| &nbsp;       | `&nbsp;`           |
+| Symbol       | HTML entity        | Windows shortcut | MacOS shortcut |
+| :----------: | :----------------: | :--------------: | :------------: |
+| &nbsp;       | `&nbsp;`           | `Alt` + `255`    | ⌥ `Space`      |
 
-* Use to keep the words “glued”
-
-::: tip
-Use ⌥+space on MacOS to insert
-:::
+Use to keep the words “glued.”
 
 <DosDonts>
     <template #dont>
@@ -126,10 +122,10 @@ Use ⌥+space on MacOS to insert
 
 ### Quotation marks
 
-| Symbol       | HTML entity        |
-| :----------: | :----------------: |
-| &ldquo;      | `&ldquo;`          |
-| &rdquo;      | `&rdquo;`          |
+| Symbol       | HTML entity        | Windows shortcut | MacOS shortcut |
+| :----------: | :----------------: | :--------------: | :------------: |
+| &ldquo;      | `&ldquo;`          | `Alt` + `0147`   | ⌥ [            |
+| &rdquo;      | `&rdquo;`          | `Alt` + `0148`   | ⌥ ⇧ [          |
 
 * Use double curly quotation marks
 * Include periods inside the quotation marks
@@ -153,15 +149,11 @@ Use ⌥+space on MacOS to insert
 
 ### Apostrophe
 
-| Symbol       | HTML code          |
-| :----------: | :----------------: |
-| &rsquo;      | `&rsquo;`          |
+| Symbol       | HTML code          | Windows shortcut | MacOS shortcut |
+| :----------: | :----------------: | :--------------: | :------------: |
+| &rsquo;      | `&rsquo;`          | `Alt` + `0146`   | ⌥ ⇧ ]          |
 
-* Use the curly style, just like for the quotation marks
-
-::: tip
-Use ⌥+' on MacOS to insert a curly apostrophe
-:::
+Use the curly style, just like for the quotation ‘a‘ ’marks
 
 <DosDonts>
     <template #dont>
@@ -203,12 +195,14 @@ Use ⌥+' on MacOS to insert a curly apostrophe
 
 <DosDonts>
     <template #dont>
-        <p>☑️ Remind later.</p>
-        <p>Your competitor https://rival.com.</p>
+        <img src="static/period-dont.png" style="margin: auto" />
+        <p><input type="checkbox"> Remind later.</p>
+        <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span>.</p>
     </template>
     <template #do>
-        <p>☑️ Remind later</p>
-        <p>Your competitor https://rival.com</p>
+        <img src="static/period-do.png" style="margin: auto" />
+        <p><input type="checkbox"> Remind later</p>
+        <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span></p>
     </template>
 </DosDonts>
 
@@ -218,7 +212,7 @@ Use ⌥+' on MacOS to insert a curly apostrophe
 * Add period in numbered lists
 * Use sentence case capitalization
 
-::: tip
+::: warning NOTE
 Use numbered lists for a sequence of actions!
 :::
 
@@ -261,7 +255,7 @@ Use numbered lists for a sequence of actions!
 | :----------: | :----------------: |
 | &#35;        | `&#35;`            |
 
-* Omit the space after the sign
+Omit the space after the sign.
 
 <DosDonts>
     <template #dont>
@@ -321,7 +315,7 @@ Use numbered lists for a sequence of actions!
 | :----------: | :----------------: |
 | &#8725;      | `&#8725;`          |
 
-* Omit the spaces around the sign
+Omit the spaces around the sign.
 
 <DosDonts>
     <template #dont>
@@ -338,7 +332,7 @@ Use numbered lists for a sequence of actions!
 | :----------: | :----------------: |
 | &times;      | `&times;`          |
 
-* Avoid using the “x” letter
+Avoid using the “x” letter.
 
 <DosDonts>
     <template #dont>
