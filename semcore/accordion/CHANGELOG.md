@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.38.3] - 2024-08-12
 
-### Changed
+### Added
 
-- Wrap toggle content with element with role `button` and `aria-attributes`.
+- `alignItems=center` property by default to the ToggleButton.
 
 ## [5.38.2] - 2024-08-05
 
