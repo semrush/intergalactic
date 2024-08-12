@@ -73,6 +73,10 @@ export const viteConfig = defineConfig({
         find: /^.*\/VPNavBarMenu\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPNavBarMenu.vue', import.meta.url)),
       },
+      {
+        find: /^.*\/VPNavBarTitle\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPNavBarTitle.vue', import.meta.url)),
+      },
     ],
   },
 });
