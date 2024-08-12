@@ -9,7 +9,7 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [text, setText] = React.useState(DEFAULT_TEXT);
   React.useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = window.setInterval(() => {
       if (text.length > 5000) {
         setText(DEFAULT_TEXT);
       } else {
@@ -17,7 +17,7 @@ const Demo = () => {
       }
     }, 1000);
     return () => {
-      clearInterval(timer);
+      window.clearInterval(timer);
     };
   }, [text]);
   return (
