@@ -1,3 +1,39 @@
+## [15.104.0] - 2024-08-12
+
+### @semcore/d3-chart
+
+- **Changed** Radial tree radian line wasn't applying provided color.
+- **Changed** Venn chart was rendering `0` data with minSize (not it's not rendered at all).
+
+### @semcore/fullscreen-modal
+
+- **Changed** Close icon to `Button` component.
+
+### @semcore/illustration
+
+- **Added** New `Configuration` illustration.
+
+### @semcore/inline-input
+
+- **Changed** Confirm and cancel controls now focusable and accessible from keyboard to satisfy formal A11y requirements.
+- **Removed** Keyboard hint aria label.
+
+### @semcore/pills
+
+- **Changed** Removed `aria-posinset` as it wasn't improving component accessibility.
+
+### @semcore/popper
+
+- **Fixed** Passing undefined to `zIndex` prop was removing default `zIndex` value.
+
+### @semcore/side-panel
+
+- **Changed** Color and margins for the Close button.
+
+### @semcore/tooltip
+
+- **Fixed** `z-index` was too high (default value changed 1500 -> 800).
+
 ## [15.103.0] - 2024-08-05
 
 ### @semcore/button
