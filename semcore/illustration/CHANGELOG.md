@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- New `MechanismInside` illustration.
+- New `Configuration` illustration.
 
 ## [2.31.2] - 2024-08-05
 

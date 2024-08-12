@@ -33,7 +33,7 @@ const illustartionsList = {
       group: 'States',
     },
     {
-      name: 'MechanismInside',
+      name: 'Configuration',
       group: 'States',
     },
     {
