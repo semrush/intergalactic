@@ -1,13 +1,8 @@
 <template>
-  <div
-    class="vp-tooltip-container"
-  >
+  <div class="vp-tooltip-container">
 
-    <slot  />
-    <div
-      class="vp-tooltip"
-      aria-hidden="true"
-    >
+    <slot />
+    <div class="vp-tooltip" aria-hidden="true">
       <div class="vp-tooltip-arrow"></div>
       {{ tooltipText }}
     </div>
@@ -47,7 +42,7 @@ export default {
   z-index: 1;
   white-space: nowrap;
   pointer-events: none;
-  top: 100%; 
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
 }
@@ -56,33 +51,42 @@ export default {
   position: absolute;
   border-width: 6px;
   border-style: solid;
-  top: -10px; 
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   border-color: transparent transparent var(--intergalactic-tooltip-invert, #191b23) transparent;
 }
 
-.vp-tooltip-container:focus-within .vp-tooltip,
-.vp-tooltip-container > *:first-child:hover + .vp-tooltip {
+.vp-tooltip-container:has(:focus-visible) .vp-tooltip,
+.vp-tooltip-container>*:first-child:hover+.vp-tooltip {
   opacity: 1;
   transition-delay: 200ms;
+}
+
+body:has(.vp-tooltip-container > *:first-child:hover + .vp-tooltip) .vp-tooltip-container:has(:focus-visible):not(:has(:hover)) .vp-tooltip {
+  opacity: 0;
 }
 
 .VPNavScreen .vp-tooltip {
   display: none;
 }
-.VPMenu:has(.vp-tooltip) {
-  overflow: visible;
+
+.VPMenu.VPMenu:has(.vp-tooltip) {
+  overflow-x: visible;
+  overflow-y: visible;
 }
+
 .appearance-action:has(.vp-tooltip) {
   margin-right: -2px;
   display: flex;
   align-items: center;
+}
 
 .dark .vp-tooltip {
   color: var(--intergalactic-text-primary, #191b23);
   background-color: var(--intergalactic-tooltip-default, #ffffff);
 }
+
 .dark .vp-tooltip-arrow {
   border-color: transparent transparent var(--intergalactic-tooltip-default, #ffffff) transparent;
 }
