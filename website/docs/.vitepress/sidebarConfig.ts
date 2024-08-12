@@ -124,22 +124,6 @@ export const sideBarConfig: SidebarConfig = [
         ],
       },
       {
-        text: 'Content',
-        collapsed: true,
-        items: [
-          {
-            link: '/content/punctuation/punctuation',
-            activeMatch: '/content/punctuation/',
-            text: 'Punctuation and special symbols',
-          },
-          {
-            link: '/content/date-format/date-format',
-            activeMatch: '/content/date-format/',
-            text: 'Date format',
-          },
-        ],
-      },
-      {
         text: 'Layout',
         collapsed: true,
         items: [
@@ -157,6 +141,22 @@ export const sideBarConfig: SidebarConfig = [
             link: '/layout/box-system/box-system',
             activeMatch: '/layout/box-system/',
             text: 'Flex-box and spacing system',
+          },
+        ],
+      },
+      {
+        text: 'Content',
+        collapsed: true,
+        items: [
+          {
+            link: '/content/punctuation/punctuation',
+            activeMatch: '/content/punctuation/',
+            text: 'Punctuation and special symbols',
+          },
+          {
+            link: '/content/date-format/date-format',
+            activeMatch: '/content/date-format/',
+            text: 'Date format',
           },
         ],
       },
