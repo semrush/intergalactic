@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.33.0] - 2024-08-09
+
+### Changed
+
+- Removed `aria-posinset` as it wasn't improving component accessibility.
+
 ## [5.32.2] - 2024-08-05
 
 ### Changed
