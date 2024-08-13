@@ -262,9 +262,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
               </Link>
             )}
           </Notice.Content>
-          <Notice.CloseIcon interactive onClick={onNotificationClose}>
-            <CloseAltM />
-          </Notice.CloseIcon>
+          <Notice.CloseIcon onClick={onNotificationClose} />
         </Notice>
 
         <SFeedbackRating render={Modal} visible={visible} onClose={this.handelCloseModal} p={0}>
