@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.3] - 2024-08-13
+
+### Fixed
+
+- Clear the role of Menu popper.
+
 ## [4.35.2] - 2024-07-31
 
 ### Changed
