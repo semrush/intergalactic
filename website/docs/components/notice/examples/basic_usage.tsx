@@ -1,6 +1,5 @@
 import React from 'react';
 import Notice from 'intergalactic/notice';
-import CloseAltM from 'intergalactic/icon/Close/m';
 import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
 import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
 import Question from 'intergalactic/icon/Question/m';
@@ -30,9 +29,7 @@ const Demo = () => (
         <Button use='tertiary'>Ask me later</Button>
       </Notice.Actions>
     </Notice.Content>
-    <Notice.CloseIcon>
-      <CloseAltM />
-    </Notice.CloseIcon>
+    <Notice.CloseIcon />
   </Notice>
 );
 

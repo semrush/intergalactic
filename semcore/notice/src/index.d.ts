@@ -1,6 +1,6 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
-import { IconProps } from '@semcore/icon';
+import Button from '@semcore/button';
 import { FadeInOutProps } from '@semcore/animation';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'muted';
@@ -65,7 +65,7 @@ declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext>
   Label: Intergalactic.Component<'div', NoticeLabelProps>;
   Actions: typeof Box;
   Content: typeof Box;
-  CloseIcon: Intergalactic.Component<'div', IconProps>;
+  CloseIcon: typeof Button;
 };
 
 declare const NoticeSmart: Intergalactic.Component<'div', NoticeSmartProps>;

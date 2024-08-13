@@ -14,6 +14,7 @@
   "dependencies": {
     "@semcore/animation": "2.31.2",
     "@semcore/utils": "4.32.2",
+    "@semcore/button": "5.35.1",
     "@semcore/flex-box": "5.31.2",
     "@semcore/icon": "4.43.2",
     "@semcore/notice-global": "2.48.2"
