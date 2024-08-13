@@ -168,7 +168,9 @@ function ToggleButton(props) {
   const { styles } = props;
 
   const SToggleButton = Root;
-  return sstyled(styles)(<SToggleButton render={Flex} role={'button'} {...props} />);
+  return sstyled(styles)(
+    <SToggleButton alignItems='center' render={Flex} role={'button'} {...props} />,
+  );
 }
 
 function Collapse(props) {

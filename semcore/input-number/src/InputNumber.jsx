@@ -7,6 +7,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
 import { forkRef } from '@semcore/utils/lib/ref';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 export function parseValueWithMinMax(
   value,
@@ -175,7 +176,7 @@ class Value extends Component {
 
   // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
   componentDidMount() {
-    this.valueInputRef.current?.addEventListener('wheel', this.handleWheel);
+    this.valueInputRef.current?.addEventListener('wheel', this.onWheel);
 
     const { inputRef, value } = this.asProps;
 
@@ -202,8 +203,12 @@ class Value extends Component {
   }
 
   componentWillUnmount() {
-    this.valueInputRef.current?.removeEventListener('wheel', this.handleWheel);
+    this.valueInputRef.current?.removeEventListener('wheel', this.onWheel);
   }
+
+  onWheel = (event) => {
+    callAllEventHandlers(this.asProps.onWheel, this.handleWheel)(event);
+  };
 
   handleWheel = (event) => {
     if (event.target !== this.valueInputRef.current) return;
