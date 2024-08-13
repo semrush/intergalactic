@@ -28,7 +28,7 @@ class RootButton extends Component {
   containerRef = React.createRef();
 
   state = {
-    ariaLabelledByContent: '',
+    ariaLabelledByContent: null,
   };
 
   getTextProps() {
@@ -48,7 +48,7 @@ class RootButton extends Component {
   componentDidMount() {
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
-        this.containerRef.current && !hasLabels(this.containerRef.current),
+        this.containerRef.current && !hasLabels(this.containerRef.current) && !this.asProps.title,
         `'title' or 'aria-label' or 'aria-labelledby' are required props for buttons without text content`,
         this.asProps['data-ui-name'] || RootButton.displayName,
       );
@@ -64,46 +64,7 @@ class RootButton extends Component {
     }
   }
 
-  renderChildren() {
-    const { Children, styles, addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
-
-    return sstyled(styles)(
-      <>
-        {AddonLeft ? <Button.Addon tag={AddonLeft} /> : null}
-        {addonTextChildren(Children, Button.Text, Button.Addon)}
-        {AddonRight ? <Button.Addon tag={AddonRight} /> : null}
-      </>,
-    );
-  }
-
-  renderOnlyAddons() {
-    const {
-      styles,
-      addonLeft: AddonLeft,
-      addonRight: AddonRight,
-      title,
-      ['aria-label']: ariaLabel,
-    } = this.asProps;
-
-    const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
-
-    return sstyled(styles)(
-      <Hint
-        tag={Button.Addon}
-        title={hintContent}
-        timeout={[250, 50]}
-        __excludeProps={['aria-label']}
-      >
-        {AddonLeft && <AddonLeft />}
-        {AddonRight && <AddonRight />}
-      </Hint>,
-    );
-  }
-
   render() {
-    const SButton = Root;
-    const SInner = Box;
-    const SSpin = Box;
     const {
       styles,
       use,
@@ -113,8 +74,28 @@ class RootButton extends Component {
       size,
       neighborLocation,
       children: hasChildren,
+      title,
+      ['aria-label']: ariaLabel,
+      Children,
+      addonLeft: AddonLeft,
+      addonRight: AddonRight,
+      hintPlacement,
     } = this.asProps;
     const useTheme = use && theme ? `${use}-${theme}` : false;
+    const SButton = Root;
+    const SInner = hasChildren && !title ? Box : Hint;
+    const SSpin = Box;
+    const buttonAriaLabel = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
+    const hintProps =
+      hasChildren && !title
+        ? {}
+        : {
+            title: buttonAriaLabel,
+            timeout: [250, 50],
+            __excludeProps: ['aria-label'],
+            placement: hintPlacement,
+            theme: theme === 'invert' ? 'invert' : undefined,
+          };
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
@@ -130,9 +111,21 @@ class RootButton extends Component {
               ref={this.containerRef}
               aria-busy={loading}
               aria-disabled={disabled}
+              aria-label={buttonAriaLabel}
+              __excludeProps={['title']}
             >
-              <SInner tag='span' loading={loading}>
-                {hasChildren ? this.renderChildren() : this.renderOnlyAddons()}
+              <SInner tag='span' loading={loading} {...hintProps}>
+                {AddonLeft ? (
+                  <Button.Addon>
+                    <AddonLeft />
+                  </Button.Addon>
+                ) : null}
+                {addonTextChildren(Children, Button.Text, Button.Addon)}
+                {AddonRight ? (
+                  <Button.Addon>
+                    <AddonRight />
+                  </Button.Addon>
+                ) : null}
               </SInner>
               {loading && (
                 <SSpin tag='span'>
