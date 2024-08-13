@@ -14,6 +14,8 @@ import fire from '@semcore/utils/lib/fire';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Portal from '@semcore/portal';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
 
@@ -45,6 +47,7 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
      * @default [',', ';', '|', 'Enter', 'Tab']
      * */
     delimiters?: string[];
+    locale?: string;
   };
 
 /** @deprecated */
@@ -64,11 +67,13 @@ export type InputTagsContext = InputTagsProps & {
 class InputTags extends Component<IInputTagsProps> {
   static displayName = 'InputTags';
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
     defaultValue: '',
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -181,12 +186,13 @@ class InputTags extends Component<IInputTagsProps> {
   getTagTextProps(_, index: number) {
     return {
       uid: `${this.asProps.uid}-${index}`,
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
   render() {
     const SInputTags = Root;
-    const { Children, styles } = this.asProps;
+    const { Children, styles, locale } = this.asProps;
     const SListAriaWrapper = 'ul';
 
     return sstyled(styles)(
@@ -288,13 +294,14 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
+  const { getI18nText } = props;
 
   return sstyled(props.styles)(
     <>
       {true && (
         <Portal>
           <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-            Press Enter to edit
+            {getI18nText('pressEnterToEdit')}
           </ScreenReaderOnly>
         </Portal>
       )}
