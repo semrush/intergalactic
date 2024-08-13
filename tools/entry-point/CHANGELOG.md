@@ -1,3 +1,17 @@
+## [15.104.1] - 2024-08-13
+
+### @semcore/accordion
+
+- **Added** `alignItems=center` property by default to the ToggleButton.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Clear the role of Menu popper.
+
+### @semcore/input-number
+
+- **Added** Handler for `onWheel` property on `Input.Value`.
+
 ## [15.104.0] - 2024-08-12
 
 ### @semcore/d3-chart

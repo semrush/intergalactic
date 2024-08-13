@@ -1537,7 +1537,7 @@ importers:
         specifier: 4.32.2
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.33.2
+        specifier: 5.33.3
         version: link:../input-number
       '@semcore/spin':
         specifier: 5.31.2
@@ -2197,7 +2197,7 @@ importers:
         specifier: 4.30.2
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.35.3
+        specifier: 4.35.4
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.31.2
@@ -2622,7 +2622,7 @@ importers:
         specifier: 4.32.2
         version: link:../input
       '@semcore/select':
-        specifier: 4.45.3
+        specifier: 4.45.4
         version: link:../select
       '@semcore/utils':
         specifier: 4.32.2

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/time-picker",
   "description": "Semrush TimePicker Component",
-  "version": "4.47.1",
+  "version": "4.47.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -15,7 +15,7 @@
     "@semcore/button": "5.35.1",
     "@semcore/flex-box": "5.31.2",
     "@semcore/input": "4.32.2",
-    "@semcore/select": "4.45.3",
+    "@semcore/select": "4.45.4",
     "@semcore/utils": "4.32.2"
   },
   "peerDependencies": {
