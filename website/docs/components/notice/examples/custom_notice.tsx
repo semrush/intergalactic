@@ -11,22 +11,17 @@ const Demo = () => (
     <Notice.Label mr={2}>
       <Question />
     </Notice.Label>
-    <Notice.Content style={{ display: 'flex', alignItems: 'center' }}>
-      <Text mr={2}>Meet our SEO Dashboard! Is it working well for you?</Text>
+    <Notice.Content display='flex'>
+      <Text my={1} mr={2}>
+        Meet our SEO Dashboard! Is it working well for you?
+      </Text>
       <Notice.Actions mt={0}>
-        <Button mr={2}>
-          <Button.Addon>
-            <ThumbUpM />
-          </Button.Addon>
-          <Button.Text>Yes</Button.Text>
+        <Button mr={2} addonLeft={ThumbUpM}>
+          Yes
         </Button>
-        <Button mr={2}>
-          <Button.Addon>
-            <ThumbDownM />
-          </Button.Addon>
-          <Button.Text>No</Button.Text>
+        <Button mr={2} addonLeft={ThumbDownM}>
+          No
         </Button>
-        <Button use='tertiary'>Ask me later</Button>
       </Notice.Actions>
     </Notice.Content>
     <Notice.CloseIcon />
