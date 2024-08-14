@@ -58,28 +58,12 @@ const Demo = () => {
               Congratulations on passing all the steps!
             </Text>
           </Wizard.Step>
-          <Flex justifyContent='space-between' w='100%'>
+          <Flex justifyContent='space-between' w='100%' mt={5}>
             {step > 1 && (
-              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
-                <Button.Addon>
-                  <ArrowLeft />
-                </Button.Addon>
-                <Button.Text>{steps[step - 2].title}</Button.Text>
-              </Button>
+              <Wizard.StepBack onActive={setStep}>{steps[step - 2].title}</Wizard.StepBack>
             )}
             {step !== steps.length && (
-              <Button
-                use='tertiary'
-                mt={5}
-                onClick={() => {
-                  setStep(step + 1);
-                }}
-              >
-                <Button.Text>{steps[step].title}</Button.Text>
-                <Button.Addon>
-                  <ArrowRight />
-                </Button.Addon>
-              </Button>
+              <Wizard.StepNext onActive={setStep}>{steps[step].title}</Wizard.StepNext>
             )}
           </Flex>
         </Wizard.Content>

@@ -2,14 +2,12 @@ import React from 'react';
 import Wizard from 'intergalactic/wizard';
 import Button from 'intergalactic/button';
 import { Flex } from 'intergalactic/flex-box';
-import ArrowRight from 'intergalactic/icon/ArrowRight/m';
-import ArrowLeft from 'intergalactic/icon/ArrowLeft/m';
 
 const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 
 const Demo = () => {
   const [step, setStep] = React.useState(1);
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState(true);
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 
@@ -32,28 +30,12 @@ const Demo = () => {
           <Wizard.Step step={1}>Step 1</Wizard.Step>
           <Wizard.Step step={2}>Step 2</Wizard.Step>
           <Wizard.Step step={3}>Step 3</Wizard.Step>
-          <Flex justifyContent='space-between' w='100%'>
+          <Flex justifyContent='space-between' w='100%' mt={5}>
             {step > 1 && (
-              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
-                <Button.Addon>
-                  <ArrowLeft />
-                </Button.Addon>
-                <Button.Text>{steps[step - 2].title}</Button.Text>
-              </Button>
+              <Wizard.StepBack onActive={setStep}>{steps[step - 2].title}</Wizard.StepBack>
             )}
             {step !== steps.length && (
-              <Button
-                use='tertiary'
-                mt={5}
-                onClick={() => {
-                  setStep(step + 1);
-                }}
-              >
-                <Button.Text>{steps[step].title}</Button.Text>
-                <Button.Addon>
-                  <ArrowRight />
-                </Button.Addon>
-              </Button>
+              <Wizard.StepNext onActive={setStep}>{steps[step].title}</Wizard.StepNext>
             )}
           </Flex>
         </Wizard.Content>

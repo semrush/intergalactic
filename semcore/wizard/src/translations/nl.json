@@ -1,3 +1,5 @@
 {
-  "completedStep": "Voltooide stap"
+  "completedStep": "Voltooide stap",
+  "backButton": "Terug naar {buttonName}",
+  "nextButton": "Ga naar {buttonName}"
 }
