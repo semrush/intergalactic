@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.39.4] - 2024-08-12
+
+### Fixed
+
+- `role` and `aria-*` attributes on Trigger, Popper and Color items.
+- Description for delete colors from custom palette.
+
 ## [2.39.3] - 2024-08-12
 
 ### Changed

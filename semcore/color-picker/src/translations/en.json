@@ -1,13 +1,13 @@
 {
   "currentColor": "Color field, current color is {color}",
-  "emptyColor": "Color field, empty",
-  "goToPaletteHint": "{currentColor}, press Tab to go to palette or click to hide palette",
-  "palette": "Colors palette, press Tab+Shift to go back to color field",
+  "colorTrigger": "Color field",
+  "palette": "Colors palette",
   "presetColors": "Preset colors",
-  "customColors": "Custom color field container",
-  "itemColor": "Color {color}",
+  "customColors": "Custom preset colors",
+  "addColor": "Add color",
   "clearColor": "Clear color",
-  "colorField": "Custom color field, HEX format",
+  "colorField": "Custom color, HEX format",
   "colorFieldConfirm": "Add color to the list of custom colors",
-  "colorFieldClear": "Clear custom color field"
+  "colorFieldClear": "Clear custom color field",
+  "deleteColorDescriber": "Press delete for delete color"
 }

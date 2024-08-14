@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.2] - 2024-08-14
+
+### Added
+
+- `aria-haspopup=dialog` in Trigger.
+
 ## [4.36.1] - 2024-08-12
 
 ### Changed

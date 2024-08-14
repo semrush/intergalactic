@@ -3,6 +3,8 @@ import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import CloseM from '@semcore/icon/Close/m';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { Hint } from '@semcore/tooltip';
 
 type ItemAsProps = {
   styles?: React.CSSProperties;
@@ -10,28 +12,40 @@ type ItemAsProps = {
   displayLabel?: boolean;
   editable?: boolean;
   selected?: boolean;
-  onRemove?: React.MouseEventHandler;
+  onRemove?: React.MouseEventHandler | React.KeyboardEventHandler;
   Children?: React.FC;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+  uid: string;
 };
 
 export function Item(props: ItemAsProps) {
-  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText } =
+  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } =
     props as any;
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;
   const SLine = 'svg';
+  const deleteDescriber = `delete_${value}_${uid}`;
+
+  const handleKeydown = React.useCallback((event: React.KeyboardEvent) => {
+    if (event.key === 'Delete' || (event.key === 'Backspace' && event.metaKey)) {
+      onRemove?.(event);
+    }
+  }, []);
 
   return sstyled(styles)(
     <SItemContainer
-      render={Box}
+      render={Hint}
       selected={selected}
       value={value}
       displayLabel={displayLabel}
-      role='listitem'
-      aria-atomic='true'
-      aria-label={value ? getI18nText('itemColor', { color: value }) : getI18nText('clearColor')}
+      role='option'
+      aria-selected={selected}
+      title={value ?? getI18nText('clearColor')}
+      aria-describedby={editable ? deleteDescriber : undefined}
+      onKeyDown={handleKeydown}
+      __excludeProps={['title']}
+      timeout={[250, 50]}
     >
       {!value && (
         <SLine
@@ -52,9 +66,14 @@ export function Item(props: ItemAsProps) {
       {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
       <Children />
       {editable && (
-        <SCloseIcon onClick={onRemove}>
-          <CloseM color='gray-500' w={10} h={10} />
-        </SCloseIcon>
+        <>
+          <SCloseIcon tabIndex={-1} aria-hidden={true} onClick={onRemove}>
+            <CloseM color='gray-500' w={10} h={10} />
+          </SCloseIcon>
+          <ScreenReaderOnly aria-hidden={true} id={deleteDescriber}>
+            {getI18nText('deleteColorDescriber')}
+          </ScreenReaderOnly>
+        </>
       )}
     </SItemContainer>,
   ) as React.ReactElement;

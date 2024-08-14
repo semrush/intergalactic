@@ -55,7 +55,7 @@ SItemContainer:not([value]) {
   }
 }
 
-SColors {
+SColorsContainer, SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
