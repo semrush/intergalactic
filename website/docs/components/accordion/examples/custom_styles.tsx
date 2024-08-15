@@ -39,10 +39,10 @@ const Demo = () => {
                     selected && 'styled-accordion-item-selected',
                   )}
                 >
-                  <Accordion.Item.Chevron mr={2} />
-                  <Accordion.Item.ToggleButton my={0}>{`Section ${
-                    index + 1
-                  }`}</Accordion.Item.ToggleButton>
+                  <Accordion.Item.ToggleButton>
+                    <Accordion.Item.Chevron mr={2} />
+                    Section {index + 1}
+                  </Accordion.Item.ToggleButton>
                 </Accordion.Item.Toggle>
                 <Accordion.Item.Collapse>
                   <Box p='12px 32px'>{`Hello Section ${index + 1}`}</Box>

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.3] - 2024-08-07
+
+### Fixed
+
+- Passing undefined to `zIndex` prop was removing default `zIndex` value.
+
 ## [5.39.2] - 2024-08-02
 
 ### Added

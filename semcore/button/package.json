@@ -1,7 +1,7 @@
 {
   "name": "@semcore/button",
   "description": "Semrush Button Component",
-  "version": "5.35.0",
+  "version": "5.35.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -15,7 +15,7 @@
     "@semcore/flex-box": "5.31.2",
     "@semcore/neighbor-location": "4.29.2",
     "@semcore/spin": "5.31.2",
-    "@semcore/tooltip": "6.40.2",
+    "@semcore/tooltip": "6.40.3",
     "@semcore/utils": "4.32.2"
   },
   "peerDependencies": {

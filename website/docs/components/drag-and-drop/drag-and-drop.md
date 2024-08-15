@@ -75,7 +75,7 @@ Table: Where to use drag and drop component
 | [Card](/components/card/card)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
 | [Table](/table-group/data-table/data-table)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
 | [TabPanel](/components/tab-panel/tab-panel)        | ![](static/drag-tabpanel.png)                                                  |
-| [Select/Multiselect](/components/select/select) | ![](static/drag-default.png) ![](static/dragging.png) |
+| [Button](/components/button/button), [Dropdown](/components/dropdown/dropdown) | ![](static/drag-default.png) ![](static/dragging.png) |
 
 ## Interaction
 
