@@ -58,6 +58,7 @@ SNoticeBubble {
   position: fixed;
   right: var(--intergalactic-spacing-3x, 12px);
   top: var(--intergalactic-spacing-3x, 12px);
+  z-index: var(--intergalactic-z-index-notice-bubble, 999);
 
   @media (max-width: 767px) {
     width: calc(100% - var(--intergalactic-spacing-6x, 24px));

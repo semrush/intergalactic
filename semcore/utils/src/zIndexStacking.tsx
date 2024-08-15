@@ -1,52 +1,35 @@
 import React from 'react';
-import defaultDesignThemeJson from './themes/default.json';
-import { useContextTokens } from './ThemeProvider';
-const defaultDesignThemeTokens = defaultDesignThemeJson as Record<string, string>;
+import { register } from './core';
 
-const zIndexStackingContext = React.createContext(0);
+const REGISTER_KEY = 'zIndexStack';
 
-export type ZIndexDesignTokens =
-  | 'z-index-deep'
-  | 'z-index-overlay'
-  | 'z-index-modal'
-  | 'z-index-popper'
-  | 'z-index-dropdown'
-  | 'z-index-tooltip'
-  | 'z-index-notice-bubble';
+export const useZIndexStacking = () => {
+  const [zIndex, setZIndex] = React.useState(0);
 
-export const useZIndexStacking = (designToken?: ZIndexDesignTokens) => {
-  const contextTokens = useContextTokens();
-  const parentContextValue = React.useContext(zIndexStackingContext);
-  const contextValue = React.useMemo(() => {
-    if (!designToken) return parentContextValue;
-    const tokenName = designToken.startsWith('--intergalactic-')
-      ? designToken
-      : `--intergalactic-${designToken}`;
-    const tokenValue = parseInt(
-      contextTokens?.[tokenName] || defaultDesignThemeTokens[tokenName],
-      10,
-    );
-    if (Number.isNaN(tokenValue)) return parentContextValue;
-    return parentContextValue + tokenValue;
-  }, [designToken, contextTokens, parentContextValue]);
-  return contextValue;
+  React.useEffect(() => {
+    const parentZIndex = register.get(REGISTER_KEY, 0);
+    const increment = 100;
+    const zIndex = parentZIndex + increment;
+
+    register.set(REGISTER_KEY, zIndex);
+    setZIndex(zIndex);
+
+    return () => {
+      const current = register.get(REGISTER_KEY, zIndex);
+      register.set(REGISTER_KEY, current - increment);
+    };
+  }, []);
+
+  return zIndex;
 };
-export const ZIndexStackingContextProvider: React.FC<{
-  designToken: ZIndexDesignTokens;
-  children: React.ReactNode;
-}> = ({ designToken, children }) => {
-  const contextValue = useZIndexStacking(designToken);
-  return (
-    <zIndexStackingContext.Provider value={contextValue}>{children}</zIndexStackingContext.Provider>
-  );
-};
-export const zIndexStackingEnhance = (designToken?: ZIndexDesignTokens) => {
+
+export const zIndexStackingEnhance = () => {
   return (props: any) => {
     const { ...other } = props;
-    const parentZIndexStacking = useZIndexStacking(designToken);
+    const zIndexStacking = useZIndexStacking();
     return {
       ...other,
-      parentZIndexStacking,
+      zIndexStacking,
     };
   };
 };

@@ -2733,7 +2733,7 @@
     "type": "other",
     "rawValue": "999",
     "computedValue": "999",
-    "components": []
+    "components": ["notice-bubble"]
   },
   {
     "name": "--intergalactic-tooltip-default",

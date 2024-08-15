@@ -9,10 +9,6 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Portal from '@semcore/portal';
 
 import style from './style/tooltip.shadow.css';
-import {
-  useZIndexStacking,
-  ZIndexStackingContextProvider,
-} from '@semcore/utils/lib/zIndexStacking';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
@@ -145,31 +141,25 @@ function TooltipPopper(props) {
   const SArrow = Box;
   const STooltipPortalledWrapper = Box;
 
-  const contextZIndex = useZIndexStacking('z-index-tooltip');
-  const zIndex = props.zIndex || contextZIndex;
-
   return sstyled(styles)(
-    <ZIndexStackingContextProvider designToken='z-index-tooltip'>
-      <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        <STooltipPortalledWrapper aria-live={ariaLive} zIndex={zIndex}>
-          <STooltip
-            render={Popper.Popper}
-            use:disablePortal
+    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
+      <STooltipPortalledWrapper aria-live={ariaLive}>
+        <STooltip
+          render={Popper.Popper}
+          use:disablePortal
+          use:theme={resolveColor(theme)}
+          use:aria-live={undefined}
+        >
+          <Children />
+          <SArrow
+            data-popper-arrow
             use:theme={resolveColor(theme)}
-            use:aria-live={undefined}
-            use:zIndex={undefined}
-          >
-            <Children />
-            <SArrow
-              data-popper-arrow
-              use:theme={resolveColor(theme)}
-              bgColor={resolveColor(arrowBgColor)}
-              shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
-            />
-          </STooltip>
-        </STooltipPortalledWrapper>
-      </Portal>
-    </ZIndexStackingContextProvider>,
+            bgColor={resolveColor(arrowBgColor)}
+            shadowColor={resolveColor(arrowShadowColor ?? arrowBgColor)}
+          />
+        </STooltip>
+      </STooltipPortalledWrapper>
+    </Portal>,
   );
 }
 

@@ -16,10 +16,6 @@ import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 import Button from '@semcore/button';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { Hint } from '@semcore/tooltip';
-import {
-  ZIndexStackingContextProvider,
-  zIndexStackingEnhance,
-} from '@semcore/utils/lib/zIndexStacking';
 
 import style from './style/notice-bubble.shadow.css';
 import { forkRef, useForkRef } from '@semcore/utils/lib/ref';
@@ -49,11 +45,7 @@ const Notices = (props) => {
 class NoticeBubbleContainerRoot extends Component {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
-  static enhance = [
-    i18nEnhance(localizedMessages),
-    contextThemeEnhance(),
-    zIndexStackingEnhance('z-index-notice-bubble'),
-  ];
+  static enhance = [i18nEnhance(localizedMessages), contextThemeEnhance()];
   static defaultProps = {
     manager,
     i18n: localizedMessages,
@@ -89,29 +81,25 @@ class NoticeBubbleContainerRoot extends Component {
   render() {
     const SNoticeBubble = Root;
     const SNoticeAriaLiveWrapper = 'div';
-    const { Children, styles, disablePortal, getI18nText, ref, parentZIndexStacking } =
-      this.asProps;
+    const { Children, styles, disablePortal, getI18nText, ref } = this.asProps;
     const { notices, warnings } = this.state;
 
     return sstyled(styles)(
-      <ZIndexStackingContextProvider designToken='z-index-notice-bubble'>
-        <Portal disablePortal={disablePortal}>
-          <SNoticeBubble
-            render={Box}
-            ref={ref}
-            tag='section'
-            role='region'
-            aria-label={getI18nText('notification')}
-            zIndex={parentZIndexStacking}
-          >
-            <Children />
-            <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
-            <SNoticeAriaLiveWrapper aria-live='polite'>
-              <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
-            </SNoticeAriaLiveWrapper>
-          </SNoticeBubble>
-        </Portal>
-      </ZIndexStackingContextProvider>,
+      <Portal disablePortal={disablePortal}>
+        <SNoticeBubble
+          render={Box}
+          ref={ref}
+          tag='section'
+          role='region'
+          aria-label={getI18nText('notification')}
+        >
+          <Children />
+          <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
+          <SNoticeAriaLiveWrapper aria-live='polite'>
+            <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
+          </SNoticeAriaLiveWrapper>
+        </SNoticeBubble>
+      </Portal>,
     );
   }
 }
@@ -121,7 +109,6 @@ const FocusLock = React.forwardRef((props, outerRef) => {
   const innerRef = React.useRef();
   useFocusLock(innerRef, false, 'auto', !focusLock, true);
   const ref = useForkRef(outerRef, innerRef);
-
   return <Flex ref={ref} {...other} />;
 });
 

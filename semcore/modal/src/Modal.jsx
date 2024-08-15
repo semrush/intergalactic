@@ -18,10 +18,7 @@ import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
-import {
-  ZIndexStackingContextProvider,
-  useZIndexStacking,
-} from '@semcore/utils/lib/zIndexStacking';
+import { useZIndexStacking } from '@semcore/utils/lib/zIndexStacking';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -143,12 +140,10 @@ function Window(props) {
       duration={duration}
       ref={windowRef}
     >
-      <ZIndexStackingContextProvider designToken='z-index-modal'>
-        <PortalProvider value={windowRef}>
-          {closable && <Modal.Close />}
-          <Children />
-        </PortalProvider>
-      </ZIndexStackingContextProvider>
+      <PortalProvider value={windowRef}>
+        {closable && <Modal.Close />}
+        <Children />
+      </PortalProvider>
     </SWindow>,
   );
 }
@@ -159,7 +154,7 @@ function Overlay(props) {
   const overlayRef = React.useRef(null);
   usePreventScroll(visible, props.disablePreventScroll);
   useContextTheme(overlayRef, visible);
-  const zIndex = useZIndexStacking('z-index-modal');
+  const zIndex = useZIndexStacking();
 
   return sstyled(styles)(
     <SOverlay render={FadeInOut} ref={overlayRef} zIndex={zIndex}>

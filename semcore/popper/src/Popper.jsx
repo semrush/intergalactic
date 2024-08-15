@@ -29,10 +29,7 @@ import logger from '@semcore/utils/lib/logger';
 import createPopper from './createPopper';
 
 import style from './style/popper.shadow.css';
-import {
-  useZIndexStacking,
-  ZIndexStackingContextProvider,
-} from '@semcore/utils/lib/zIndexStacking';
+import { useZIndexStacking } from '@semcore/utils/lib/zIndexStacking';
 
 function isObject(obj) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -612,10 +609,8 @@ function PopperPopper(props) {
     focusMaster = false,
     handleFocusOut,
     role,
-    zIndex: providedZIndex,
   } = props;
   const ref = React.useRef(null);
-  const zIndex = useZIndexStacking('z-index-popper');
 
   // https://github.com/facebook/react/issues/11387
   const stopPropagation = React.useCallback((event) => {
@@ -680,6 +675,8 @@ function PopperPopper(props) {
     }
   }, [visible, role]);
 
+  const zIndex = useZIndexStacking();
+
   return sstyled(styles)(
     <Portal
       disablePortal={disablePortal}
@@ -687,46 +684,44 @@ function PopperPopper(props) {
       onMount={setPortalMounted}
     >
       <NeighborLocation controlsLength={controlsLength}>
-        <ZIndexStackingContextProvider designToken='z-index-popper'>
-          <SPopper
-            render={Scale}
-            animationsDisabled={animationsDisabled}
-            visible={visible}
-            duration={[duration, duration / 2]}
-            ref={ref}
-            onClick={stopPropagation}
-            onContextMenu={stopPropagation}
-            onDoubleClick={stopPropagation}
-            onDrag={stopPropagation}
-            onDragEnd={stopPropagation}
-            onDragEnter={stopPropagation}
-            onDragExit={stopPropagation}
-            onDragLeave={stopPropagation}
-            onDragOver={stopPropagation}
-            onDragStart={stopPropagation}
-            onDrop={stopPropagation}
-            onMouseDown={stopPropagation}
-            onMouseMove={stopPropagation}
-            onMouseOver={stopPropagation}
-            onMouseOut={stopPropagation}
-            onMouseUp={stopPropagation}
-            onKeyDown={propagateFocusLockSyntheticEvent}
-            onKeyPress={stopPropagation}
-            onKeyUp={stopPropagation}
-            onFocus={stopPropagation}
-            onBlur={propagateFocusLockSyntheticEvent}
-            onChange={stopPropagation}
-            onInput={stopPropagation}
-            onInvalid={stopPropagation}
-            onReset={stopPropagation}
-            onSubmit={stopPropagation}
-            use:zIndex={providedZIndex ?? zIndex}
-          >
-            <PortalProvider value={ref}>
-              <Children />
-            </PortalProvider>
-          </SPopper>
-        </ZIndexStackingContextProvider>
+        <SPopper
+          render={Scale}
+          animationsDisabled={animationsDisabled}
+          visible={visible}
+          duration={[duration, duration / 2]}
+          ref={ref}
+          onClick={stopPropagation}
+          onContextMenu={stopPropagation}
+          onDoubleClick={stopPropagation}
+          onDrag={stopPropagation}
+          onDragEnd={stopPropagation}
+          onDragEnter={stopPropagation}
+          onDragExit={stopPropagation}
+          onDragLeave={stopPropagation}
+          onDragOver={stopPropagation}
+          onDragStart={stopPropagation}
+          onDrop={stopPropagation}
+          onMouseDown={stopPropagation}
+          onMouseMove={stopPropagation}
+          onMouseOver={stopPropagation}
+          onMouseOut={stopPropagation}
+          onMouseUp={stopPropagation}
+          onKeyDown={propagateFocusLockSyntheticEvent}
+          onKeyPress={stopPropagation}
+          onKeyUp={stopPropagation}
+          onFocus={stopPropagation}
+          onBlur={propagateFocusLockSyntheticEvent}
+          onChange={stopPropagation}
+          onInput={stopPropagation}
+          onInvalid={stopPropagation}
+          onReset={stopPropagation}
+          onSubmit={stopPropagation}
+          zIndex={zIndex}
+        >
+          <PortalProvider value={ref}>
+            <Children />
+          </PortalProvider>
+        </SPopper>
       </NeighborLocation>
     </Portal>,
   );
