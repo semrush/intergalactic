@@ -14,14 +14,16 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 
 :::
 
-## Behavior arrows
+## Using as tabs
 
-Switch to Pills using the `Tab` key and attempt switching with the arrow keys.
+In case of using pills as tabs for navigation in your app, set behavior to `manual`, to make user explicitly select tabs. 
+
+Don't forget to add role `tabpanel` and `aria-labelledby` to the content of each tab.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/behavior_arrows.tsx';
+  export Demo from './examples/tabs_example.tsx';
 </script>
 
 :::

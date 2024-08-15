@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.38.3] - 2024-08-12
+
+### Added
+
+- `alignItems=center` property by default to the ToggleButton.
+
 ## [5.38.2] - 2024-08-05
 
 ### Changed

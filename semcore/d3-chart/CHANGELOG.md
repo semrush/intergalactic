@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.51.3] - 2024-08-08
+
+### Changed
+
+- Radial tree radian line wasn't applying provided color.
+- Venn chart was rendering `0` data with minSize (not it's not rendered at all).
+
 ## [3.51.2] - 2024-08-05
 
 ### Changed

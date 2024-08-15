@@ -136,7 +136,6 @@ function Pill(props) {
       type='button'
       neighborLocation={neighborLocation}
       aria-disabled={disabled}
-      aria-posinset={index + 1}
       {...roleAreaProps}
     >
       {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}

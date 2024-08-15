@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.32.0] - 2024-08-09
+
+### Added
+
+- New `Configuration` illustration.
+
 ## [2.31.2] - 2024-08-05
 
 ### Changed
