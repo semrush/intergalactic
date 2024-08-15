@@ -39,7 +39,7 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>
-        <DescriptionTooltip.Trigger tag={HintLink}>
+        <DescriptionTooltip.Trigger tag={HintLink} role={'button'}>
           About fastest animals
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
