@@ -42,7 +42,7 @@ class Head extends Component<AsProps> {
   static displayName: string;
 
   sortWrapperRefs = new Map<Node, boolean>();
-  defaultMinWidths = new Map<Node, number>();
+  defaultWidths = new Map<Node, { minWidth: number; computedWidth: number }>();
 
   bindHandlerSortClick = (name: string) => (event: React.MouseEvent) => {
     this.asProps.$onSortClick(name, event);
@@ -74,12 +74,15 @@ class Head extends Component<AsProps> {
 
   calculateMinWidth = (node: HTMLElement, column: Column) => {
     if (
-      !this.defaultMinWidths.has(node) &&
+      !this.defaultWidths.has(node) &&
       (column.props.wMin || column.props.wMax || column.props.w)
     ) {
       const computedStyle = window.getComputedStyle(node);
 
-      this.defaultMinWidths.set(node, cssToIntDefault(computedStyle.getPropertyValue('width')));
+      this.defaultWidths.set(node, {
+        minWidth: cssToIntDefault(computedStyle.getPropertyValue('min-width')),
+        computedWidth: cssToIntDefault(computedStyle.getPropertyValue('width')),
+      });
     }
 
     if (column.active) {
@@ -118,11 +121,11 @@ class Head extends Component<AsProps> {
 
       document.body.appendChild(clonedColumn);
 
-      const computedWidth = Math.floor(clonedColumn.getBoundingClientRect().width);
+      const computedWidth = Math.ceil(clonedColumn.getBoundingClientRect().width);
 
       document.body.removeChild(clonedColumn);
 
-      const defaultNodeWidth = this.defaultMinWidths.get(node) ?? 0;
+      const defaultNodeWidth = this.defaultWidths.get(node)?.computedWidth ?? 0;
 
       if (computedWidth >= defaultNodeWidth) {
         node.style.setProperty('min-width', defaultNodeWidth + SORT_ICON_WIDTH + 'px');
@@ -133,8 +136,10 @@ class Head extends Component<AsProps> {
           node.style.setProperty('min-width', computedWidth + SORT_ICON_WIDTH + 'px');
         }
       }
-    } else if (this.defaultMinWidths.has(node)) {
-      node.style.setProperty('min-width', this.defaultMinWidths.get(node) + 'px');
+    } else if (this.defaultWidths.has(node)) {
+      const defaultNodeMinWidth = this.defaultWidths.get(node)?.minWidth;
+
+      node.style.setProperty('min-width', defaultNodeMinWidth + 'px');
     }
   };
 
