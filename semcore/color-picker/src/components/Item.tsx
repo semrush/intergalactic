@@ -28,7 +28,7 @@ export function Item(props: ItemAsProps) {
   const deleteDescriber = `delete_${value}_${uid}`;
 
   const handleKeydown = React.useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'Delete' || (event.key === 'Backspace' && event.metaKey)) {
+    if (event.key === 'Delete' || event.key === 'Backspace') {
       onRemove?.(event);
     }
   }, []);
