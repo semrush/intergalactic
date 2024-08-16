@@ -139,11 +139,13 @@ class FeedbackYesNo extends React.PureComponent {
     return (
       <Notice
         hidden={!visible}
+        display='flex'
         style={{
           borderTop: 'none',
           borderRight: 'none',
           borderLeft: 'none',
           borderRadius: '0',
+          alignItems: 'center',
         }}
       >
         <Notice.Label mr={3} aria-hidden={true}>
@@ -151,7 +153,7 @@ class FeedbackYesNo extends React.PureComponent {
         </Notice.Label>
         <Notice.Content>
           <Text mr={4}>Do you find our Design System useful?</Text>
-          <Box mt={2} inline>
+          <Box inline>
             <Dropdown onVisibleChange={this.handleChangeDdVisible('yes')}>
               <Dropdown.Trigger>
                 <Button active={feedbackType === 'yes'}>
