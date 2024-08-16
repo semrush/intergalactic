@@ -44,6 +44,8 @@ const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
 const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
 
 const textTag = computed(() => {
+  if (!hasChildren.value) return 'p';
+  if (props.depth === 0) return 'h2';
   return 'p';
   // return !hasChildren.value
   //   ? 'p'
