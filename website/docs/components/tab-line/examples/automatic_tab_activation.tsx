@@ -6,7 +6,7 @@ const Demo = () => {
 
   return (
     <>
-      <TabLine onChange={setValue} value={value} aria-label='Animals'>
+      <TabLine onChange={setValue} value={value}>
         <TabLine.Item value={1} aria-controls='tab-panel-1'>
           Cats
         </TabLine.Item>
