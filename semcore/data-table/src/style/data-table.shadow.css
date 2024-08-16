@@ -98,12 +98,15 @@ SColumn[sortable] {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
 
+  &[justifyContent='right']:hover SSortWrapper, &[justifyContent='right']:focus SSortWrapper {
+    position: absolute;
+    flex-basis: 0;
+    right: var(--intergalactic-spacing-3x, 12px);
+  }
   &[justifyContent='right'][active] SSortWrapper {
     position: relative;
-  }
-  &[justifyContent='right'][active='false']:hover SSortWrapper, &[justifyContent='right'][active='false']:focus SSortWrapper {
-    position: absolute;
-    right: var(--intergalactic-spacing-3x, 12px);
+    flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+    right: 0;
   }
 
   &:hover SSortWrapper, &:focus SSortWrapper, &[active] SSortWrapper {
