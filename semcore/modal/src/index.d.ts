@@ -4,6 +4,7 @@ import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { PortalProps } from '@semcore/portal';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { TextProps } from '@semcore/typography';
+import Button from '@semcore/button';
 
 /** @deprecated */
 export interface IModalProps extends ModalProps, UnknownProperties {}
@@ -54,7 +55,7 @@ export type ModalContext = {
 declare const Modal: Intergalactic.Component<'div', ModalProps, ModalContext> & {
   Window: Intergalactic.Component<'div', WindowProps>;
   Overlay: typeof Box;
-  Close: typeof Box;
+  Close: typeof Button;
   Title: Intergalactic.Component<'div', TextProps>;
 };
 

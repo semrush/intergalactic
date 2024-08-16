@@ -108,7 +108,7 @@ function Cancel(props) {
 function Notice(props) {
   const { styles, theme = 'muted', use = 'secondary' } = props;
   const SNotice = Root;
-  return sstyled(styles)(<SNotice render={NoticeSmart} theme={theme} use={use} />);
+  return sstyled(styles)(<SNotice render={NoticeSmart} use:theme={theme} use:use={use} />);
 }
 
 export default createComponent(FeedbackForm, {

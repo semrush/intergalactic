@@ -1,7 +1,8 @@
 {
-  "title": "Saat girişi, girilen saat {time} {meridiem}",
-  "titleEmpty": "Saat girişi, saat girilmedi",
-  "hours": "Saat giriş alanı",
-  "minutes": "Dakika giriş alanı",
-  "format": "Saat formatı {meridiem}"
+  "title": "{time} {meridiem}",
+  "titleEmpty": "Seç",
+  "hours": "Saat",
+  "minutes": "Dakika",
+  "formatToggler": "Zaman aralığı",
+  "changedFormatNotice": "Zaman aralığı {meridiem} olarak değiştirildi"
 }

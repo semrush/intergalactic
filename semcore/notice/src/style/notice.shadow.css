@@ -86,9 +86,11 @@ SActions {
 }
 
 SLabel {
-  margin-top: var(--intergalactic-spacing-05x, 2px);
+  min-height: var(--intergalactic-form-control-m, 28px);
+  height: fit-content;
   margin-right: var(--intergalactic-spacing-2x, 8px);
   display: inline-flex;
+  align-items: center;
 }
 
 SLabel[theme='info'] {

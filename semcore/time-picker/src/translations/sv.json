@@ -1,7 +1,8 @@
 {
-  "title": "Inmatad tid, angiven tid är {time} {meridiem}",
-  "titleEmpty": "Inmatad tid, ingen tid angiven",
-  "hours": "Fält för inmatade timmar",
-  "minutes": "Fält för inmatade minuter",
-  "format": "Tidsformat {meridiem}"
+  "title": "{time} {meridiem}",
+  "titleEmpty": "Välj",
+  "hours": "Timmar",
+  "minutes": "Minuter",
+  "formatToggler": "Tidsperiod",
+  "changedFormatNotice": "Tidsperiod ändrad till {meridiem}"
 }

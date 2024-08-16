@@ -2188,7 +2188,7 @@
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
     "description": "Default size of the controls.",
-    "components": ["button", "input", "input-tags", "pills", "time-picker"]
+    "components": ["button", "input", "input-tags", "notice", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-form-control-l",
@@ -2214,7 +2214,6 @@
       "format-text",
       "input-tags",
       "link",
-      "notice",
       "notice-global",
       "radio",
       "select",

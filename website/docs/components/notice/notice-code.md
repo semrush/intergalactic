@@ -26,7 +26,7 @@ For even more customization, refer to the [FeedbackYesNo](/patterns/feedback-yes
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from './examples/custom_notice.tsx';
 </script>
 
 :::

@@ -1,7 +1,8 @@
 {
-  "title": "시간 입력값, 입력된 시간은 {time} {meridiem}",
-  "titleEmpty": "시간 입력값, 입력된 시간 없음",
-  "hours": "시간 입력란",
-  "minutes": "분 입력란",
-  "format": "시간 형식 {meridiem}"
+  "title": "{time} {meridiem}",
+  "titleEmpty": "선택",
+  "hours": "시",
+  "minutes": "분",
+  "formatToggler": "시간대",
+  "changedFormatNotice": "시간대가 {meridiem}로 변경되었습니다"
 }
