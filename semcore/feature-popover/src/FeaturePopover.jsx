@@ -147,7 +147,7 @@ class FeaturePopoverPopper extends Component {
                 onClick={$onCloseClick}
                 use='tertiary'
                 theme='muted'
-                size='l'
+                size='m'
                 addonLeft={CloseIcon}
                 type='button'
               />
