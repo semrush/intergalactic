@@ -241,6 +241,7 @@ class DropdownMenuRoot extends Component {
       ignorePortalsStacking,
       focusMaster: interaction === 'click',
       hideFocus: highlightedIndex !== null,
+      'use:role': null,
     };
   }
 
@@ -468,7 +469,6 @@ function Menu(props) {
     interaction,
     autoFocus,
     animationsDisabled,
-    role: false,
   };
   return (
     <ListBoxContextProvider>

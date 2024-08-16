@@ -48,10 +48,15 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-* The `<fieldset>` surrounds the entire grouping of checkboxes or radio buttons. The `<legend>` provides a description for the grouping.
-* Some assistive technology reads the legend text for each fieldset, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.
+Ensure that `behavior` prop value is suitable for the use case. If you need to use Pills as a group of radio buttons, set `behavior='auto'`. If you need to use Pills as a group of tabs, set `behavior='manual'`.
 
-Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons).
+When using Pills as tabs, ensure the following:
+
+1. Apply the `tabpanel` role to the content that corresponds to each tab.
+2. Add the `aria-labelledby` attribute to the content that corresponds to each tab.
+3. Include the `aria-controls` attribute for each pill, linking it to the corresponding content.
+
+Refer [Using as tabs example](/components/pills/pills-code#using-as-tabs).
 
 ### Roles & attributes
 

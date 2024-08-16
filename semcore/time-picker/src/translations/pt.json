@@ -1,7 +1,8 @@
 {
-  "title": "Entrada de hora – a hora informada é {time} {meridiem}",
-  "titleEmpty": "Entrada de hora – hora não foi informada",
-  "hours": "Campo de entrada de horas",
-  "minutes": "Campo de entrada de minutos",
-  "format": "Formato de hora {meridiem}"
+  "title": "{time} {meridiem}",
+  "titleEmpty": "Selecionar",
+  "hours": "Horas",
+  "minutes": "Minutos",
+  "formatToggler": "Período",
+  "changedFormatNotice": "Período alterado para {meridiem}"
 }

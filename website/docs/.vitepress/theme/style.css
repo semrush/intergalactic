@@ -665,7 +665,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   margin: 24px 0 16px 0;
 }
 
-.vp-doc a[class], .vp-doc a[class]:hover, .vp-doc a[class]:active, .vp-doc a[class]:visited {
+.vp-doc a[class]:not(.playground-runtime a), .vp-doc a[class]:hover:not(.playground-runtime a), .vp-doc a[class]:active:not(.playground-runtime a), .vp-doc a[class]:visited:not(.playground-runtime a) {
   color: var(--vp-c-indigo-2);
 }
 
