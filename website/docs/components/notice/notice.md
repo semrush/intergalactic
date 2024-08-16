@@ -53,7 +53,7 @@ const Preview = (preview) => {
   const closable = bool({
     key: 'closable',
     defaultValue: true,
-    label: 'Close Icon',
+    label: 'Close button',
   });
 
   const msg = text({
@@ -82,10 +82,12 @@ const Preview = (preview) => {
         </Notice.Label>
       )}
       <Notice.Content>
-        <Text bold mb={2} size={300} lineHeight='24px' tag='div'>
+        <Text bold my='2px' size={300} tag='div'>
           Look at this notice!
         </Text>
-        {msg}
+        <Text my={1} tag='div'>
+          {msg}
+        </Text>
         {actions && (
           <Notice.Actions>
             <Button use='primary' theme='success'>
@@ -149,11 +151,11 @@ Table: Notice content examples
 
 ## Sizes, paddings and margins
 
-The notice can be used as a standalone component or embedded within other components. _For instance, it can be placed inside dropdowns and modal windows._
-
-![](static/notice-monster-big-paddings.png)
+If your `Notice` has an icon and/or the **Close** button, add `2px` top and bottom margins to the title, and `4px` margins to the main text to align the elements visually.
 
 ![](static/notice-margins.png)
+
+The notice can be used as a standalone component or embedded within other components. _For instance, it can be placed inside dropdowns and modal windows._
 
 The internal paddings of the notice match those of the component it's nested within.
 
@@ -174,13 +176,13 @@ We recommend to set the maximum width of the notice message to 650-800px.
 
 Table: Notice themes
 
-| Theme                                                                                                                                                                                                                                                            | Appearance example      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| **Muted**: Used for regular messages and hints.                                                                                                                                                                                                                  | ![](static/muted.png)   |
-| **Info**: Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). | ![](static/info.png)    |
-| **Success**: Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example.                                                                                                                       | ![](static/success.png) |
-| **Warning**: Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures.                                                                                                              | ![](static/warning.png) |
-| **Danger**: Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss.                                                                                                                              | ![](static/danger.png)  |
+| Theme       | Usage and appearance example                                               |
+| ----------- | -------------------------------------------------------------------------- |
+| **Muted**   | Used for regular messages and hints. ![](static/muted.png)   |
+| **Info**    | Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)).  ![](static/info.png)    |
+| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example.  ![](static/success.png) |
+| **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures.  ![](static/warning.png) |
+| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss.   ![](static/danger.png)  |
 
 ## Placement in interface
 

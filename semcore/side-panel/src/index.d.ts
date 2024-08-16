@@ -4,6 +4,7 @@ import { FadeInOutProps, SlideProps } from '@semcore/animation';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import Button from '@semcore/button';
 
 export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
 export type OnCloseType = (
@@ -79,7 +80,7 @@ declare const SidePanel: Intergalactic.Component<'div', SidePanelProps, SidePane
   Title: typeof Text;
   Overlay: Intergalactic.Component<'div', SidePanelOverlayProps>;
   Panel: Intergalactic.Component<'div', SidePanelPanelProps>;
-  Close: typeof Box;
+  Close: typeof Button;
 };
 
 export default SidePanel;
