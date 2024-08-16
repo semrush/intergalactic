@@ -183,7 +183,7 @@ class InputTags extends Component<IInputTagsProps> {
       },
     };
   }
-  getTagTextProps(_, index: number) {
+  getTagTextProps(_: any, index: number) {
     return {
       uid: `${this.asProps.uid}-${index}`,
       getI18nText: this.asProps.getI18nText,
