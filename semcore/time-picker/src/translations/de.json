@@ -1,7 +1,8 @@
 {
-  "title": "Zeiteingabe, eingegebene Zeit ist {time} {meridiem}",
-  "titleEmpty": "Zeiteingabe, keine Zeit eingegeben",
-  "hours": "Eingabefeld Stunden",
-  "minutes": "Eingabefeld Minuten",
-  "format": "Zeitformat {meridiem}"
+  "title": "{time} {meridiem}",
+  "titleEmpty": "Auswählen",
+  "hours": "Stunden",
+  "minutes": "Minuten",
+  "formatToggler": "Zeitraum",
+  "changedFormatNotice": "Zeitraum geändert auf {meridiem}"
 }
