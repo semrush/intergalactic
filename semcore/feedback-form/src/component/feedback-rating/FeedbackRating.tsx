@@ -243,11 +243,16 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
 
     return sstyled(styles)(
       <Root render={Box}>
-        <Notice visible={notificationVisible} aria-label={getI18nText('leaveFeedback')}>
-          <Notice.Label mt={1} mr={3} aria-hidden={true}>
+        <Notice
+          visible={notificationVisible}
+          aria-label={getI18nText('leaveFeedback')}
+          tag={Flex}
+          alignItems={'center'}
+        >
+          <Notice.Label mr={3} aria-hidden={true}>
             <FeedbackIllustration />
           </Notice.Label>
-          <Notice.Content style={{ display: 'flex', alignItems: 'center' }}>
+          <Notice.Content tag={Flex} alignItems={'center'}>
             <Text mr={3}>{notificationText}</Text>
             <Notice.Actions mt={0}>
               <SliderRating
