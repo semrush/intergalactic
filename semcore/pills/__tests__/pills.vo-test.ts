@@ -14,7 +14,9 @@ test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pu
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
   await voiceOver.next();
-
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Your opinion radio group');
+  await voiceOver.interact();
   expect(await voiceOver.lastSpokenPhrase()).toBe('Like radio button, 1 of 3');
   await voiceOver.next();
   expect(await voiceOver.lastSpokenPhrase()).toBe("Don't care selected radio button, 2 of 3");
