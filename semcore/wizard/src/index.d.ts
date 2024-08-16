@@ -69,7 +69,7 @@ export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps
     | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;
 };
-export type WizardStepNextProps = ButtonProps & {
+export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps & {
   onActive?:
     | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
     | React.Dispatch<React.SetStateAction<T>>;

@@ -10,8 +10,8 @@ import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Button from '@semcore/button';
-import ArrowRight from 'intergalactic/icon/ArrowRight/m';
-import ArrowLeft from 'intergalactic/icon/ArrowLeft/m';
+import ArrowRight from '@semcore/icon/ArrowRight/m';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 
 import style from './style/wizard.shadow.css';
 
