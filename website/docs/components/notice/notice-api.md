@@ -39,13 +39,13 @@ import Notice from 'intergalactic/notice';
 <Notice.Content />;
 ```
 
-## Notice.CloseIcon
+## Notice.Close
 
-The component is inherited from `Box` and is used to insert the **Close** button.
+The component is inherited from `Button` and is used to insert the **Close** button.
 
 ```jsx
 import Notice from 'intergalactic/notice';
-<Notice.CloseIcon />;
+<Notice.Close />;
 ```
 
 ## NoticeSmart

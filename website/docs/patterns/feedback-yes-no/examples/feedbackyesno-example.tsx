@@ -197,7 +197,7 @@ class FeedbackYesNo extends React.PureComponent {
             </Button>
           </Box>
         </Notice.Content>
-        <Notice.CloseIcon onClick={() => this.changeVisible(false)} />
+        <Notice.Close onClick={() => this.changeVisible(false)} />
       </Notice>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import Close from '@semcore/icon/Close/m';
+import CloseIconM from '@semcore/icon/Close/m';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
 import logger from '@semcore/utils/lib/logger';
@@ -43,6 +43,12 @@ class RootNotice extends Component {
   }
 
   getCloseIconProps() {
+    const { getI18nText } = this.asProps;
+
+    return { getI18nText };
+  }
+
+  getCloseProps() {
     const { getI18nText } = this.asProps;
 
     return { getI18nText };
@@ -105,9 +111,16 @@ function Content({ styles }) {
 function CloseIcon({ styles, getI18nText }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
+    <SCloseIcon render={Box} tag={CloseIconM} interactive aria-label={getI18nText('close')} />,
+  );
+}
+
+function Close({ styles, getI18nText }) {
+  const SCloseIcon = Root;
+  return sstyled(styles)(
     <SCloseIcon
       render={Button}
-      addonLeft={Close}
+      addonLeft={CloseIconM}
       use='tertiary'
       theme='muted'
       aria-label={getI18nText('close')}
@@ -120,4 +133,5 @@ export default createComponent(RootNotice, {
   Actions,
   Content,
   CloseIcon,
+  Close,
 });

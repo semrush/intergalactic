@@ -7,7 +7,6 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Notice from '@semcore/notice';
-import CloseAltM from '@semcore/icon/Close/m';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';
 import { Text } from '@semcore/typography';
@@ -267,7 +266,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
               </Link>
             )}
           </Notice.Content>
-          <Notice.CloseIcon onClick={onNotificationClose} />
+          <Notice.Close onClick={onNotificationClose} />
         </Notice>
 
         <SFeedbackRating render={Modal} visible={visible} onClose={this.handelCloseModal} p={0}>

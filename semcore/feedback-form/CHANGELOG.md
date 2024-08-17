@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.33.5] - 2024-08-16
+
+### Changed
+
+- Using `Notice.Close` instead of `Notice.CloseIcon`.
+
 ## [6.33.4] - 2024-08-16
 
 ### Fixed

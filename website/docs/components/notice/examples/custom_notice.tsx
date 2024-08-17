@@ -24,7 +24,7 @@ const Demo = () => (
         </Button>
       </Notice.Actions>
     </Notice.Content>
-    <Notice.CloseIcon />
+    <Notice.Close />
   </Notice>
 );
 
