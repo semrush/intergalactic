@@ -1,3 +1,27 @@
+## [15.105.0] - 2024-08-17
+
+### @semcore/data-table
+
+- **Fixed** Sort icon behavior.
+- **Fixed** Columns width (min-width) calculation.
+
+### @semcore/feedback-form
+
+- **Changed** Using `Notice.Close` instead of `Notice.CloseIcon`.
+- **Fixed** Using `theme` property for Notice.
+
+### @semcore/inline-edit
+
+- **Changed** Updated translations.
+
+### @semcore/notice
+
+- **Changed** Close icon to `Button` component.
+
+### @semcore/time-picker
+
+- **Changed** Updated translations.
+
 ## [15.104.1] - 2024-08-13
 
 ### @semcore/accordion

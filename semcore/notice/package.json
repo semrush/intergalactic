@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice",
   "description": "Semrush Notice Component",
-  "version": "5.38.2",
+  "version": "5.39.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
