@@ -99,7 +99,7 @@ const Preview = (preview) => {
           </Notice.Actions>
         )}
       </Notice.Content>
-      {closable && <Notice.CloseIcon onClick={handlerClose} />}
+      {closable && <Notice.Close onClick={handlerClose} />}
     </Notice>
   );
 };
@@ -138,7 +138,7 @@ Component consists of the following:
 1. `Notice.Content`.
 2. `Notice.Label` (optional). It can be an [icon](/style/icon/icon), [badge](/components/badge/badge) or illustration that accompanies the message.
 3. `Notice.Actions` (optional).
-4. `Notice.CloseIcon` (optional).
+4. `Notice.Close` (optional).
 
 ## Notice content examples
 

@@ -32,7 +32,7 @@ describe('Notice', () => {
   test.concurrent('Should support custom close icon', () => {
     const component = (
       <Notice>
-        <Notice.CloseIcon data-testid='close'>Close Icon</Notice.CloseIcon>
+        <Notice.Close data-testid='close'>Close Icon</Notice.Close>
       </Notice>
     );
     const { getByTestId } = render(component);
@@ -68,7 +68,7 @@ describe('Notice', () => {
               <button type='button'>Wow, so cool!</button>
             </Notice.Actions>
           </Notice.Content>
-          <Notice.CloseIcon />
+          <Notice.Close />
         </Notice>
       </>
     );
@@ -88,7 +88,7 @@ describe('Notice', () => {
             <button type='button'>Wow, so cool!</button>
           </Notice.Actions>
         </Notice.Content>
-        <Notice.CloseIcon />
+        <Notice.Close />
       </Notice>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);

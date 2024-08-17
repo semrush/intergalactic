@@ -20,7 +20,7 @@ class NoticeSmart extends Component {
           <Children />
           {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
         </Notice.Content>
-        {closable && <Notice.CloseIcon onClick={onClose} />}
+        {closable && <Notice.Close onClick={onClose} />}
       </SNoticeSmart>
     );
   }
