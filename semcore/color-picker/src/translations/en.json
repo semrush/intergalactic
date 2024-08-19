@@ -9,5 +9,5 @@
   "colorField": "Custom color, HEX format",
   "colorFieldConfirm": "Add color to the list of custom colors",
   "colorFieldClear": "Clear custom color field",
-  "deleteColorDescriber": "Delete color with delete or backspace"
+  "deleteColorDescriber": "Delete color with backspace"
 }
