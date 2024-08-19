@@ -7,10 +7,10 @@ import { Flex } from 'intergalactic/flex-box';
 const Demo = () => {
   const inputValueRef = React.useRef<HTMLInputElement>();
   const [tags, setTags] = React.useState([
-    'vk',
-    'fk',
-    'twitter',
-    'instagram',
+    'TikTok',
+    'Facebook',
+    'LinkedIn',
+    'Instagram',
     'Some secret social network with a very long name',
   ]);
   const [value, setValue] = React.useState('');

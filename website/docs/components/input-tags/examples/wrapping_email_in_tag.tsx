@@ -6,7 +6,7 @@ import { Flex } from 'intergalactic/flex-box';
 
 const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 
-const defaultTags = ['bob@vk.com', 'wolf@instagram.dot', 'fekla@fk.com', 'tuz@twitter.net'];
+const defaultTags = ['bob@email.com', 'alice@domain.net', 'mary@website.com', 'steve@company.com'];
 
 const Demo = () => {
   const [tags, setTags] = React.useState(defaultTags);
