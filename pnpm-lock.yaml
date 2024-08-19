@@ -1188,7 +1188,7 @@ importers:
         specifier: 4.43.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.38.2
+        specifier: 5.39.0
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: 5.40.2
