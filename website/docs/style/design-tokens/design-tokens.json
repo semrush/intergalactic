@@ -2404,7 +2404,6 @@
     "description": "32px",
     "components": [
       "errors",
-      "feature-popover",
       "format-text",
       "fullscreen-modal",
       "notice-bubble",
@@ -2418,7 +2417,15 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "40px",
-    "components": ["errors", "feedback-form", "fullscreen-modal", "modal", "side-panel", "wizard"]
+    "components": [
+      "errors",
+      "feature-popover",
+      "feedback-form",
+      "fullscreen-modal",
+      "modal",
+      "side-panel",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-spacing-14x",

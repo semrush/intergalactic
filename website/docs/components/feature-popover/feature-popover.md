@@ -11,6 +11,7 @@ import React from 'react';
 
 import Button from 'intergalactic/button';
 import FeaturePopover from 'intergalactic/feature-popover';
+import { Text } from 'intergalactic/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
@@ -34,7 +35,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
   const closeIcon = bool({
     key: 'icon',
     defaultValue: true,
-    label: 'Show Close icon',
+    label: 'Show Close button',
   });
 
   const visible = bool({
@@ -67,8 +68,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
         </Button>
       </FeaturePopover.Trigger>
       <FeaturePopover.Popper closeIcon={closeIcon} wMax={250}>
-        With this new feature, users can now enjoy improved user experience, or expanded
-        capabilities.
+        <Text size={200}>
+          With this new feature, users can now enjoy improved user experience, or expanded capabilities.
+        </Text>
       </FeaturePopover.Popper>
     </FeaturePopover>
   );
@@ -128,9 +130,9 @@ The title should be brief, contain a call to action, and summarize the main thou
 
 The feature description should be short and informative. Try using no more than one or two sentences. A paragraph may contain [links](/components/link/link) and formatted text.
 
-### Close icon
+### Close button
 
-`Close` icon is always placed in the upper right corner of the component. It closes FeaturePopover. We recommend you to show it always, and not to hide this control from the user.
+The **Close** button is always placed in the upper-right corner of the `FeaturePopover` and is used to close it. We recommend always displaying this control and not hiding it from the user.
 
 ### Buttons
 
@@ -150,16 +152,6 @@ Table: FeaturePopover illustration sizes
 | Small, 40px * 40px      | ![](static/spotlight-default.png) |
 | Medium, 80px * 80px     | ![](static/spotlight-big.png)     |
 
-### Styles
-
-Table: FeaturePopover default styles
-
-| Element      | Tokens                                                                              |
-| ------------ | ----------------------------------------------------------------------------------- |
-| Container    | `--box-shadow-popper` for box-shadow, `--bg-primary-highlight` for background-color |
-| Spot         | `--bg-primary-highlight` for background-color                                       |
-| `Close` icon | `--icon-non-interactive` for background-color                                       |
-
 ### Maximum width
 
 You can use `wMax` property to set the maximum width of the FeaturePopover's popper. But we recommend to set the following widths:
@@ -169,13 +161,11 @@ You can use `wMax` property to set the maximum width of the FeaturePopover's pop
 
 ### Content indents
 
-![Paddings of the container are 16px (padding-right is 32px).](static/spotlight-paddings.png)
-
 ![](static/spotlight-content-margins.png)
 
-- For title use 16px font-size (`--fs-300`, `--lh-300` tokens). Margin-bottom is 4px (use `--spacing-1x` token).
-- For paragraph use 14px font-size (`--fs-200`, `--lh-200` tokens).
-- The invert `primary` & `tertiary` muted button has M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
+- For the title use 16px font-size (`--fs-300`, `--lh-300` tokens). Margin-bottom is 4px (use `--spacing-1x` token).
+- For the paragraph use 14px font-size (`--fs-200`, `--lh-200` tokens).
+- The invert `primary` & `tertiary` muted buttons have M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
 - Illustration's margin-right is 16px (`--spacing-4x` token).
 
 ## Appearance and hiding
