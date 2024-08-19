@@ -65,6 +65,13 @@ const codesandboxUrl = computed(() => {
       break;
     }
   }
+  /*
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />*/
 
   const codesandboxParameters = dataToLzCompressedJson({
     files: {
@@ -75,6 +82,7 @@ const codesandboxUrl = computed(() => {
             react: '18',
             'react-dom': '18',
             '@types/react': '18',
+            '@fontsource/inter': '5'
           },
         },
       },
@@ -82,10 +90,17 @@ const codesandboxUrl = computed(() => {
         content: `import React from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
+import "./styles.css"
+import "@fontsource/inter";
 
 const root = createRoot(document.getElementById("root"));
 root.render(<App />);
 `,
+      },
+      'src/styles.css': {
+        content: `body {
+  font-family: 'Inter', sans-serif;
+}`
       },
       'src/App.tsx': {
         content: code + '\n\nexport const App = () => <Demo />;\n',

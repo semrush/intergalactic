@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.0] - 2024-08-14
+
+### Changed
+
+- Close icon to `Button` component.
+
 ## [5.38.2] - 2024-08-05
 
 ### Changed

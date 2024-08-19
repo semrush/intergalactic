@@ -7,7 +7,6 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Notice from '@semcore/notice';
-import CloseAltM from '@semcore/icon/Close/m';
 import CheckM from '@semcore/icon/Check/m';
 import WarnM from '@semcore/icon/Warning/m';
 import { Text } from '@semcore/typography';
@@ -243,11 +242,16 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
 
     return sstyled(styles)(
       <Root render={Box}>
-        <Notice visible={notificationVisible} aria-label={getI18nText('leaveFeedback')}>
-          <Notice.Label mt={1} mr={2} aria-hidden={true}>
+        <Notice
+          visible={notificationVisible}
+          aria-label={getI18nText('leaveFeedback')}
+          tag={Flex}
+          alignItems={'center'}
+        >
+          <Notice.Label mr={3} aria-hidden={true}>
             <FeedbackIllustration />
           </Notice.Label>
-          <Notice.Content style={{ display: 'flex', alignItems: 'center' }}>
+          <Notice.Content tag={Flex} alignItems={'center'}>
             <Text mr={3}>{notificationText}</Text>
             <Notice.Actions mt={0}>
               <SliderRating
@@ -262,9 +266,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
               </Link>
             )}
           </Notice.Content>
-          <Notice.CloseIcon interactive onClick={onNotificationClose}>
-            <CloseAltM />
-          </Notice.CloseIcon>
+          <Notice.Close onClick={onNotificationClose} />
         </Notice>
 
         <SFeedbackRating render={Modal} visible={visible} onClose={this.handelCloseModal} p={0}>

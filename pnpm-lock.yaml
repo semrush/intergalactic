@@ -1191,7 +1191,7 @@ importers:
         specifier: 4.43.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.38.2
+        specifier: 5.39.0
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: 5.40.2
@@ -1824,6 +1824,9 @@ importers:
       '@semcore/animation':
         specifier: 2.31.2
         version: link:../animation
+      '@semcore/button':
+        specifier: 5.35.1
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core

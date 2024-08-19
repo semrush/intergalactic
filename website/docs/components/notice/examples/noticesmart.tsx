@@ -3,7 +3,6 @@ import { NoticeSmart } from 'intergalactic/notice';
 import QuestionAltM from 'intergalactic/icon/Question/m';
 import WarningM from 'intergalactic/icon/Warning/m';
 import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
-import FireM from 'intergalactic/icon/Fire/m';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 import Button from 'intergalactic/button';
@@ -22,10 +21,12 @@ const Demo = () => {
         onClose={() => setFirstHidden(true)}
         hidden={firstHidden}
       >
-        <Text size={300} bold tag='div' mb={1}>
+        <Text size={300} bold tag='div' my={'2px'}>
           New tool was launched
         </Text>
-        Hi there! There a cool new tool was launched. Take a look!
+        <Text tag='div' my={1}>
+          Hi there! There a cool new tool was launched. Take a look!
+        </Text>
       </NoticeSmart>
       <NoticeSmart
         theme='muted'
@@ -34,7 +35,9 @@ const Demo = () => {
         onClose={() => setSecondHidden(true)}
         hidden={secondHidden}
       >
-        It's just a regular message or hint.
+        <Text tag='div' my={1}>
+          It's just a regular message or hint.
+        </Text>
       </NoticeSmart>
       <NoticeSmart
         theme='success'
@@ -48,17 +51,19 @@ const Demo = () => {
           </Button>
         }
       >
-        <Text size={300} bold tag='div' mb={1}>
+        <Text size={300} bold tag='div' my={'2px'}>
           We've released a cool new feature!
         </Text>
-        <Text size={200}>
+        <Text tag='div' my={1}>
           Unveiling a breakthrough feature, our latest product enhancement redefines the user
           experience with unparalleled innovation and functionality.
         </Text>
       </NoticeSmart>
       <NoticeSmart theme='warning' label={<WarningM />}>
-        The Link Building tool is under maintenance. Starting new campaigns is temporarily
-        unavailable, but you can continue working with your existing Link Building campaigns.
+        <Text tag='div' my={1}>
+          The Link Building tool is under maintenance. Starting new campaigns is temporarily
+          unavailable, but you can continue working with your existing Link Building campaigns.
+        </Text>
       </NoticeSmart>
       <NoticeSmart theme='danger'>
         Once you click Regenerate, the article will be rewritten. The previous version cannot be
