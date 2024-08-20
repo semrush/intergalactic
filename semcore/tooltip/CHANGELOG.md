@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.40.4] - 2024-08-20
+
+### Fixed
+
+- Loosing focus in Description.Tooltip.
+
 ## [6.40.3] - 2024-08-08
 
 ### Fixed
