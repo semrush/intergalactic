@@ -20,7 +20,7 @@ const colors = [
 const Demo = () => {
   return (
     <Flex direction='column'>
-      <Text tag='label' size={300} htmlFor='cake-color'>
+      <Text tag='label' size={200} htmlFor='cake-color'>
         Cake color
       </Text>
       <ColorPicker>

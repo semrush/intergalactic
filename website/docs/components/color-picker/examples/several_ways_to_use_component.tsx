@@ -10,7 +10,7 @@ const Demo = () => {
   return (
     <Flex gap={5} flexWrap>
       <Flex direction='column'>
-        <Text tag='label' size={300} htmlFor='player-1-color'>
+        <Text tag='label' size={200} htmlFor='player-1-color'>
           Color 1
         </Text>
         <ColorPicker value={value} onChange={setValue}>
@@ -38,7 +38,7 @@ const Demo = () => {
         </ColorPicker>
       </Flex>
       <Flex direction='column'>
-        <Text tag='label' size={300} htmlFor='player-2-color'>
+        <Text tag='label' size={200} htmlFor='player-2-color'>
           Color 2
         </Text>
         <ColorPicker value={value} onChange={setValue}>
