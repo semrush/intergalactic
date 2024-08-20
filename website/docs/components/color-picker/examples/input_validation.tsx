@@ -16,7 +16,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='t-shirt-color'>
+      <Text tag='label' size={300} htmlFor='t-shirt-color'>
         T-shirt color
       </Text>
       <ColorPicker>

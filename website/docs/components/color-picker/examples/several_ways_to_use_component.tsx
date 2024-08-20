@@ -10,8 +10,8 @@ const Demo = () => {
   return (
     <Flex gap={5} flexWrap>
       <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='player-1-color'>
-          Player 1 color
+        <Text tag='label' size={300} htmlFor='player-1-color'>
+          Color 1
         </Text>
         <ColorPicker value={value} onChange={setValue}>
           <ColorPicker.Trigger mt={2} id='player-1-color' />
@@ -38,8 +38,8 @@ const Demo = () => {
         </ColorPicker>
       </Flex>
       <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='player-2-color'>
-          Player 2 color
+        <Text tag='label' size={300} htmlFor='player-2-color'>
+          Color 2
         </Text>
         <ColorPicker value={value} onChange={setValue}>
           <ColorPicker.Trigger mt={2} id='player-2-color' />

@@ -13,14 +13,14 @@ const Demo = () => {
         New tag
       </Text>
       <ColorPicker value={value} onChange={setValue}>
-        <Input ml={1} w={200} mt={2}>
+        <Input ml={1} w={300} mt={2}>
           <ColorPicker.Trigger tag={Input.Addon} interactive aria-label='New tag color'>
             <div
               style={{
-                width: '12px',
-                height: '12px',
+                width: '16px',
+                height: '16px',
                 borderRadius: '50%',
-                border: '1px solid #C4C7CF',
+                border: '1px solid var(--intergalactic-border-secondary)',
                 backgroundColor: value,
               }}
             />

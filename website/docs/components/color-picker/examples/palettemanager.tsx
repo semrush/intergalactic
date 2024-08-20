@@ -6,7 +6,7 @@ import { Flex } from 'intergalactic/flex-box';
 const Demo = () => {
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='main-theme-color'>
+      <Text tag='label' size={300} htmlFor='main-theme-color'>
         Main theme color
       </Text>
       <ColorPicker>
