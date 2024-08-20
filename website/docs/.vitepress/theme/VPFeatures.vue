@@ -38,8 +38,8 @@ const grid = computed(() => {
 <template>
   <div v-if="features" class="VPFeatures">
     <div class="container">
-      <li class="items">
-        <ol
+      <ol class="items">
+        <li
           v-for="feature in features"
           :key="feature.title"
           class="item"
@@ -55,8 +55,8 @@ const grid = computed(() => {
             :target="feature.target"
             :header="header"
           />
-        </ol>
-      </li>
+        </li>
+      </ol>
     </div>
   </div>
 </template>
