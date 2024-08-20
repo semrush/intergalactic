@@ -334,28 +334,28 @@ describe('Select Trigger', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal>
-        <Select.Trigger aria-label='Select trigger' data-testid='trigger1' />
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
         <Select.Menu data-testid='menu'>
           <Select.Option value='1'>Option 1</Select.Option>
-          <Select.Option value='2' data-testid='option-1-2'>
+          <Select.Option value='2' data-testid='option-2'>
             Option 2
           </Select.Option>
         </Select.Menu>
       </Select>,
     );
-    fireEvent.click(getByTestId('trigger1'));
+    fireEvent.click(getByTestId('trigger'));
     act(() => {
       vi.runAllTimers();
     });
-    act(() => getByTestId('option-1-2').focus());
-    fireEvent.click(getByTestId('option-1-2'));
+    act(() => getByTestId('option-2').focus());
+    fireEvent.click(getByTestId('option-2'));
     act(() => {
       vi.runAllTimers();
     });
     act(() => {
       vi.runAllTimers();
     });
-    expect(getByTestId('trigger1')).toHaveFocus();
+    expect(getByTestId('trigger')).toHaveFocus();
 
     vi.useRealTimers();
   });
@@ -363,48 +363,70 @@ describe('Select Trigger', () => {
   test.sequential(
     'focus position preserve with mouse navigation and interaction=focus',
     async () => {
+      vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
-          <Select.Trigger aria-label='Select trigger' data-testid='trigger2' tag='input' />
+          <Select.Trigger aria-label='Select trigger' data-testid='trigger' tag='input' />
           <Select.Menu data-testid='menu'>
             <Select.Option value='1'>Option 1</Select.Option>
-            <Select.Option value='2' data-testid='option-2-2'>
+            <Select.Option value='2' data-testid='option-2'>
               Option 2
             </Select.Option>
           </Select.Menu>
         </Select>,
       );
+      act(() => getByTestId('trigger').focus());
+      act(() => {
+        vi.runAllTimers();
+      });
+      act(() => getByTestId('option-2').focus());
+      fireEvent.click(getByTestId('option-2'));
+      act(() => {
+        vi.runAllTimers();
+      });
+      expect(getByTestId('trigger')).toHaveFocus();
 
-      const trigger = getByTestId('trigger2');
-      await userEvent.click(trigger);
-
-      const option = getByTestId('option-2-2');
-      await userEvent.click(option);
-
-      expect(trigger).toHaveFocus();
+      vi.useRealTimers();
     },
   );
 
   test.sequential(
     'focus position preserve with keyboard navigation and interaction=focus',
     async () => {
+      vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
-          <Select.Trigger aria-label='Select trigger' data-testid='trigger3' tag={'input'} />
-          <Select.Menu>
+          <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
+            <input data-testid='input-in-trigger' />
+          </Select.Trigger>
+          <Select.Menu data-testid='menu'>
             <Select.Option value='1'>Option 1</Select.Option>
-            <Select.Option value='2'>Option 2</Select.Option>
+            <Select.Option value='2' data-testid='option-2'>
+              Option 2
+            </Select.Option>
           </Select.Menu>
         </Select>,
       );
+      act(() => {
+        vi.runAllTimers();
+      });
+      fireEvent.keyDown(document.body, { key: 'Tab' });
+      act(() => getByTestId('input-in-trigger').focus());
+      act(() => {
+        vi.runAllTimers();
+      });
+      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
+      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
+      act(() => {
+        vi.runAllTimers();
+      });
+      act(() => {
+        vi.runAllTimers();
+      });
 
-      await userEvent.keyboard('[Tab]');
-      expect(getByTestId('trigger3')).toHaveFocus();
+      expect(getByTestId('input-in-trigger')).toHaveFocus();
 
-      await userEvent.keyboard('[ArrowDown]');
-      await userEvent.keyboard('[Enter]');
-
-      expect(getByTestId('trigger3')).toHaveFocus();
+      vi.useRealTimers();
     },
   );
 });

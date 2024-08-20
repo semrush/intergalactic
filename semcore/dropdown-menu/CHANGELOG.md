@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.5] - 2024-08-20
+
+### Fixed
+
+- Disable `autoFocus` to popper.
+
 ## [4.35.4] - 2024-08-13
 
 ### Fixed
