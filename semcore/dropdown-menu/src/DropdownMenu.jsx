@@ -555,7 +555,11 @@ function NestingTrigger(props) {
   return (
     <NestingContext.Provider value={null}>
       {sstyled(styles)(
-        <SDropdownMenuItem nesting-trigger tabIndex={!disabled ? 0 : undefined} render={Flex} />,
+        <SDropdownMenuItem
+          nesting-trigger
+          use:tabIndex={!disabled ? 0 : undefined}
+          render={Flex}
+        />,
       )}
     </NestingContext.Provider>
   );
@@ -565,7 +569,7 @@ function NestingItem(props) {
   const { styles } = props;
   const SDropdownNestingItem = Root;
 
-  return sstyled(styles)(<SDropdownNestingItem render={NestingTrigger} tabIndex={-1} />);
+  return sstyled(styles)(<SDropdownNestingItem render={NestingTrigger} use:tabIndex={-1} />);
 }
 
 function Addon(props) {

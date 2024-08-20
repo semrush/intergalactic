@@ -8,6 +8,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 import style from './style/dropdown.shadow.css';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
@@ -138,8 +139,8 @@ class Dropdown extends Component {
 
 function DropdownTrigger({ styles, tag: Tag }) {
   const hasInputTrigger = isInputTriggerTag(Tag);
-
   const SDropdownTrigger = Root;
+
   return sstyled(styles)(
     <SDropdownTrigger render={Popper.Trigger} role={hasInputTrigger ? 'combobox' : 'button'} />,
   );
