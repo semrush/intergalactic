@@ -68,7 +68,7 @@ export function Item(props: ItemAsProps) {
       {editable && (
         <>
           <SCloseIcon tabIndex={-1} aria-hidden={true} onClick={onRemove}>
-            <CloseM color='gray-500' w={10} h={10} />
+            <CloseM color='icon-primary-neutral' w={10} h={10} />
           </SCloseIcon>
           <ScreenReaderOnly aria-hidden={true} id={deleteDescriber}>
             {getI18nText('deleteColorDescriber')}

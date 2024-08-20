@@ -56,7 +56,7 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
         )}
       </SColors>
       <SPlusButton onClick={onPlusButtonClick} role='button' aria-label={getI18nText('addColor')}>
-        <MathPlusM color='gray-500' />
+        <MathPlusM color='icon-primary-neutral' />
       </SPlusButton>
     </SColorsContainer>,
   ) as React.ReactElement;
