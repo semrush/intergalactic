@@ -114,11 +114,6 @@ describe('Icon', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test('should always have role button if interactive', () => {
-    const { getByTestId } = render(<Icon data-testid='icon' interactive={true} role={undefined} />);
-    expect(getByTestId('icon').attributes['role'].value).toEqual('button');
-  });
-
   test('a11y', async () => {
     const { container } = render(
       <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>

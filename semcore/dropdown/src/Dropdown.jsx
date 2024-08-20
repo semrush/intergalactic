@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
-import Popper from '@semcore/popper';
+import Popper, { isInputTriggerTag } from '@semcore/popper';
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -136,6 +136,15 @@ class Dropdown extends Component {
   }
 }
 
+function DropdownTrigger({ styles, tag: Tag }) {
+  const hasInputTrigger = isInputTriggerTag(Tag);
+
+  const SDropdownTrigger = Root;
+  return sstyled(styles)(
+    <SDropdownTrigger render={Popper.Trigger} role={hasInputTrigger ? 'combobox' : 'button'} />,
+  );
+}
+
 function DropdownPopper({ styles }) {
   const SDropdownPopper = Root;
   return sstyled(styles)(<SDropdownPopper render={Popper.Popper} />);
@@ -144,7 +153,7 @@ function DropdownPopper({ styles }) {
 export default createComponent(
   Dropdown,
   {
-    Trigger: Popper.Trigger,
+    Trigger: DropdownTrigger,
     Popper: DropdownPopper,
   },
   {

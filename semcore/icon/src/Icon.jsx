@@ -65,9 +65,9 @@ function Icon(props, ref) {
 
   return (
     <SIcon
-      {...propsForElement(propsEnhance)}
       role={interactive ? 'button' : undefined}
       aria-hidden={interactive ? undefined : 'true'}
+      {...propsForElement(propsEnhance)}
       style={Object.assign({}, style, propsEnhance.style)}
       className={cn(className, propsEnhance.className) || undefined}
       onKeyDown={onKeyDown}

@@ -65,7 +65,6 @@ class TooltipRoot extends Component {
     return {
       'aria-describedby': popperId,
       popperId,
-      role: undefined,
     };
   }
 
@@ -259,6 +258,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       'aria-describedby': undefined,
       'aria-controls': visible ? `igc-${this.asProps.uid}-popper` : undefined,
       onKeyDown: this.handleTriggerKeyDown,
+      role: 'button',
     };
   }
 

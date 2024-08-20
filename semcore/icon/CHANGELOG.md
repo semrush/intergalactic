@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.43.3] - 2024-08-20
-
-### Fixed
-
-- Disabled role overwriting (from props) for interactive icons.
-
 ## [4.43.2] - 2024-08-05
 
 ### Changed
