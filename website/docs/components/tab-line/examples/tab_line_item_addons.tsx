@@ -9,7 +9,7 @@ const Demo = () => {
   const [value, setValue] = React.useState(1);
   return (
     <>
-      <TabLine value={value} onChange={setValue}>
+      <TabLine value={value} onChange={setValue} aria-label='Social network reports'>
         <TabLine.Item value={1} aria-controls='tab-panel-1'>
           <TabLine.Item.Addon>
             <FacebookM />
