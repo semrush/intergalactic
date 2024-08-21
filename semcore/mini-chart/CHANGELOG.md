@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.18.0] - 2024-08-21
+
+### Added
+
+- Api to render custom segments in Score.Line.
+
 ## [0.17.2] - 2024-08-05
 
 ### Changed
