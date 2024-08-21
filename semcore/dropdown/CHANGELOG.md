@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Focusing in popover.
 
+## [4.36.2] - 2024-08-20
+
+### Changed
+
+- Enforce role (`combobox` or `button`) to trigger by its tag.
+
 ## [4.36.1] - 2024-08-12
 
 ### Changed

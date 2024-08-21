@@ -538,7 +538,7 @@ class Popper extends Component {
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
-  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef, tag: Tag } = props;
+  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef } = props;
 
   const triggerRef = React.useRef();
 
@@ -570,14 +570,11 @@ function Trigger(props) {
     };
   }, [active]);
 
-  const hasInputTrigger = isInputTriggerTag(Tag);
-
   return (
     <>
       <STrigger
         render={Box}
         inline
-        role={hasInputTrigger ? 'combobox' : 'button'}
         aria-haspopup={true}
         ref={triggerRef}
         onFocus={handleFocus}
