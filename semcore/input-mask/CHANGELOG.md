@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.34.0] - 2024-08-21
+
+### Fixed
+
+- Curet was moving to the end of input after deleting characters in the middle of the input.
+
 ## [5.33.2] - 2024-08-05
 
 ### Changed

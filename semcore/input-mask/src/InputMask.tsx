@@ -289,14 +289,6 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
     }, 0);
   };
 
-  onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace') {
-      setTimeout(() => {
-        this.setSelectionRange();
-      }, 0);
-    }
-  };
-
   setSelectionRange = () => {
     if (!this.inputRef.current) return;
     const { value } = this.inputRef.current;
@@ -384,7 +376,6 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
                   wMin={this.state.maskWidth}
                   aria-describedby={`hint-${uid}`}
                   {...controlProps}
-                  onKeyDown={callAllEventHandlers(this.onKeyDown, controlProps.onKeyDown)}
                   __excludeProps={['placeholder']}
                 />
                 <Children />
