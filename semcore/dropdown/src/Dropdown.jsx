@@ -112,6 +112,7 @@ class Dropdown extends Component {
       ignorePortalsStacking,
       ref: this.popperRef,
       focusMaster: interaction === 'click',
+      autoFocus: 'enforced',
     };
   }
 

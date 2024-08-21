@@ -6,6 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
+- Loosing focus in Description.Tooltip.
 - Enforce role `button` to DescriptionTooltip trigger.
 
 ## [6.40.3] - 2024-08-08

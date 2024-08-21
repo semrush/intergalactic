@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.36.2] - 2024-08-20
+
+### Fixed
+
+- Focusing in popover.
+
 ## [4.36.2] - 2024-08-20
 
 ### Changed
