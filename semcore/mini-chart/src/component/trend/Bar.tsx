@@ -61,7 +61,7 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
       <STrendBar render={Box} ref={this.containerRef} __excludeProps={['data']}>
         <svg width='100%' height='100%' viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}>
           {this.data.map((barItem, index) => {
-            let color = resolveColor('skeleton-bg');
+            let color = resolveColor('chart-palette-order-other-data');
 
             if (barItem.color) {
               color = resolveColor(barItem.color);

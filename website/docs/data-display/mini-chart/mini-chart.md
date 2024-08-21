@@ -107,21 +107,21 @@ Mini chart has two types:
 
 Table: Mini chart types
 
-| type       | Appearance example | Description |
-| ---------- | ------------------ | ----------- |
-| `trend`    | ![](static/trend.png) | Use to show trend from a list of values. |
-| `score`    | ![](static/score.png) | Use to visualize some value or to indicate if something (in per cents or absolute numbers) is good/bad, high/low, above average, etc. |
+| type    | Appearance example    | Description                                                                                                                           |
+| ------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `trend` | ![](static/trend.png) | Use to show trend from a list of values.                                                                                              |
+| `score` | ![](static/score.png) | Use to visualize some value or to indicate if something (in per cents or absolute numbers) is good/bad, high/low, above average, etc. |
 
 ### Trend type
 
 Table: Versions of charts with trend type
 
-| Chart type       | Appearance example | Description |
-| ---------------- | ------------------ | ----------- |
-| Line chart       | ![](static/trend-line.png) | Use to show overall trend over time for a big data set.|
-| Area chart       | ![](static/trend-area.png) | Use to show overall trend over time for a big data set, but when you need to make trend more visible in the interface.|
-| Bar chart        | ![](static/trend-bar.png) | Use to show overall trend over time for a small data set. |
-| Histogram chart  | ![](static/trend-histogram.png) |Use to show overall trend over time for a big data set. |
+| Chart type      | Appearance example              | Description                                                                                                            |
+| --------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Line chart      | ![](static/trend-line.png)      | Use to show overall trend over time for a big data set.                                                                |
+| Area chart      | ![](static/trend-area.png)      | Use to show overall trend over time for a big data set, but when you need to make trend more visible in the interface. |
+| Bar chart       | ![](static/trend-bar.png)       | Use to show overall trend over time for a small data set.                                                              |
+| Histogram chart | ![](static/trend-histogram.png) | Use to show overall trend over time for a big data set.                                                                |
 
 You can show the highest/lowest point if necessary.
 
@@ -135,9 +135,9 @@ The choice of one of the charts below depends on how visually prominent the valu
 
 Table: Versions of charts with score type
 
-| Chart type               | Appearance example |
-| ------------------------ | ------------------ |
-| Donut chart              | ![](static/score-donut.png) |
+| Chart type               | Appearance example               |
+| ------------------------ | -------------------------------- |
+| Donut chart              | ![](static/score-donut.png)      |
 | Semi donut chart (Gauge) | ![](static/score-semi-donut.png) |
 | Line gauge chart         | ![](static/score-line-gauge.png) |
 
@@ -161,9 +161,9 @@ You can place a value with any font size next to a mini-chart. We recommend maki
 
 Table: Mini chart states
 
-| State         | Appearance example | Description |
-| ------------- | ------------------ | ----------- |
-| Default       | ![](static/trend-default.png) | |
-| Null data     | ![](static/trend-null-data.png) | If all values on the chart are zero, then show the trend line on the zero axis. **Zero counts as data. 0 ≠ n/a.** |
-| No available data       | ![](static/trend-no-data.png) | If there are no available data, then show only the "n/a" text for the value. |
-| Initial data loading | ![](static/trend-skeleton.png) | When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart. |
+| State                | Appearance example              | Description                                                                                                        |
+| -------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Default              | ![](static/trend-default.png)   |                                                                                                                    |
+| Null data            | ![](static/trend-null-data.png) | If all values on the chart are zero, then show the trend line on the zero axis. **Zero counts as data. 0 ≠ n/a.**  |
+| No available data    | ![](static/trend-no-data.png)   | If there are no available data, then show only the "n/a" text for the value.                                       |
+| Initial data loading | ![](static/trend-skeleton.png)  | When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart. |

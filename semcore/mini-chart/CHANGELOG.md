@@ -6,7 +6,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Api to render custom segments in Score.Line.
+- API to render custom segments in Score.Line.
+
+### Changed
+
+- Styles for Bar and Donut mini charts.
 
 ## [0.17.2] - 2024-08-05
 

@@ -64,7 +64,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
               cy='12'
               r={radius}
               strokeWidth={strokeWidth}
-              stroke={resolveColor('skeleton-bg')}
+              stroke={resolveColor('chart-grid-bar-chart-base-bg')}
               strokeDasharray={
                 loading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
               }
