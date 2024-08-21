@@ -242,6 +242,7 @@ class DropdownMenuRoot extends Component {
       focusMaster: interaction === 'click',
       hideFocus: highlightedIndex !== null,
       'use:role': null,
+      'use:autoFocus': false,
     };
   }
 
