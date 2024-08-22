@@ -46,6 +46,11 @@ describe('Icon', () => {
     expect(getByTestId('icon').attributes['aria-hidden']?.value).toEqual(undefined);
   });
 
+  test('should have class with pointer-events=none if interactive is false ', () => {
+    const { getByTestId } = render(<Icon data-testid='icon' mr={2} interactive={false} />);
+    expect(getByTestId('icon').attributes['class'].value).toMatch(/noPointerEvents/);
+  });
+
   test('should support children', () => {
     const { getByTestId } = render(
       <Icon>
