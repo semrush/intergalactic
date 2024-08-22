@@ -1,25 +1,20 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled, ComponentType } from '@semcore/core';
-import { Box, Flex, BoxProps } from '@semcore/flex-box';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { Box, Flex } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import { CommonScoreProps } from './Score';
 
 import style from './line.shadow.css';
-
-export type ScoreLineGaugeProps = BoxProps &
-  CommonScoreProps & {
-    /**
-     * Count of line segments
-     */
-    segments?: number;
-  };
-
-type Enhances = {
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-};
+import {
+  Enhances,
+  ScoreLineComponent,
+  ScoreLineGaugeProps,
+  SegmentProps,
+  InnerSegmentProps,
+} from './Line.types';
 
 class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
   static enhance = [resolveColorEnhance()];
+  static displayName = 'ScoreLine';
 
   static style = style;
 
@@ -27,9 +22,28 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
     animate: true,
   };
 
+  getSegmentProps(segmentProps: SegmentProps) {
+    const { children, resolveColor } = this.asProps;
+
+    let sum = 0;
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement<SegmentProps>(child)) {
+        sum = sum + child.props.value;
+      }
+    });
+
+    const width = sum > 0 ? (100 * segmentProps.value) / sum : 0;
+
+    return {
+      w: `${width}%`,
+      'use:color': resolveColor(segmentProps.color),
+    };
+  }
+
   render() {
     const SLineGauge = Root;
     const SLineValue = Box;
+    const SAnimationLine = Box;
     const SLineGaugeSegment = Flex;
     const SLineSegmentItem = Box;
     const {
@@ -37,9 +51,24 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
       styles,
       color = 'chart-palette-order-1',
       resolveColor,
-      segments,
       loading,
+      children,
+      Children,
+      animate,
     } = this.asProps;
+
+    if (children !== undefined) {
+      return sstyled(styles)(
+        <SLineGauge render={Box} segments>
+          <SLineGaugeSegment>
+            <Children />
+          </SLineGaugeSegment>
+          {animate && <SAnimationLine />}
+        </SLineGauge>,
+      );
+    }
+
+    const { segments } = this.asProps;
 
     const SegmentItems = [];
 
@@ -69,12 +98,22 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
       <SLineGauge render={Box}>
         {!loading && <SLineValue w={percent} color={resolveColor(color)} />}
         {Boolean(SegmentItems.length) && <SLineGaugeSegment>{SegmentItems}</SLineGaugeSegment>}
+        {animate && <SAnimationLine />}
       </SLineGauge>,
     );
   }
 }
 
-export const ScoreLine: ComponentType<ScoreLineGaugeProps, {}, {}, Enhances> =
-  createComponent(LineRoot);
+function Segment(props: InnerSegmentProps) {
+  const { styles } = props;
+  const SLineSegmentItem = Root;
+
+  return sstyled(styles)(<SLineSegmentItem render={Box} />);
+}
+Segment.displayName = 'Segment';
+
+export const ScoreLine: ScoreLineComponent = createComponent(LineRoot, {
+  Segment,
+});
 
 ScoreLine.displayName = 'MiniChart.ScoreLine';

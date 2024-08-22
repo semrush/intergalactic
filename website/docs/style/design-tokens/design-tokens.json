@@ -1449,7 +1449,7 @@
     "rawValue": "rgba({gray.100}, 0.8)",
     "computedValue": "rgba(224, 225, 233, 0.8)",
     "description": "Default color for the Skeleton.",
-    "components": ["mini-chart", "skeleton"]
+    "components": ["skeleton"]
   },
   {
     "name": "--intergalactic-skeleton-bg-invert",
@@ -3355,7 +3355,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Default background color of a bar in the BarChart.",
-    "components": ["d3-chart"]
+    "components": ["d3-chart", "mini-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-period-bg",
