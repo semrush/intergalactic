@@ -2709,8 +2709,8 @@
   {
     "name": "--intergalactic-z-index-modal",
     "type": "other",
-    "rawValue": "600",
-    "computedValue": "600",
+    "rawValue": "900",
+    "computedValue": "900",
     "components": []
   },
   {
