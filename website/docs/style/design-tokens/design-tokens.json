@@ -1160,7 +1160,7 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary icon.",
-    "components": ["carousel", "notice-global"]
+    "components": ["carousel"]
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
@@ -1168,7 +1168,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Hover and active (selected) states of the inverted version of the primary icon.",
-    "components": ["notice-global"]
+    "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
@@ -2353,6 +2353,7 @@
       "format-text",
       "modal",
       "notice",
+      "notice-global",
       "pagination",
       "product-head",
       "side-panel",
