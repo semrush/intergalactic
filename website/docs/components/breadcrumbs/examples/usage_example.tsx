@@ -3,7 +3,7 @@ import Breadcrumbs from 'intergalactic/breadcrumbs';
 import Ellipsis from 'intergalactic/ellipsis';
 
 const Demo = () => (
-  <Breadcrumbs wMax={300}>
+  <Breadcrumbs>
     <Ellipsis>
       <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role={'link'}>
         Ellipsis
