@@ -1,3 +1,46 @@
+## [15.106.0] - 2024-08-23
+
+### @semcore/dropdown
+
+- **Fixed** Focusing in popover.
+- **Changed** Enforce role (`combobox` or `button`) to trigger by its tag.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Disable `autoFocus` to popper.
+
+### @semcore/feature-popover
+
+- **Changed** Close icon replaced with button.
+
+### @semcore/icon
+
+- **Added** New `TikTok` icon.
+- **Fixed** Browser error about trying to focus on the svg element with `aria-hidden` (in Button, for example).
+
+### @semcore/mini-chart
+
+- **Added** API to render custom segments in Score.Line.
+- **Changed** Styles for Bar and Donut mini charts.
+
+### @semcore/notice-global
+
+- **Changed** Close icon to button.
+- **Changed** Content is now centered vertically by default.
+
+### @semcore/popper
+
+- **Removed** Default `role` from trigger.
+
+### @semcore/radio
+
+- **Fixed** Display of invalid state.
+
+### @semcore/tooltip
+
+- **Fixed** Loosing focus in Description.Tooltip.
+- **Fixed** Enforce role `button` to DescriptionTooltip trigger.
+
 ## [15.105.0] - 2024-08-17
 
 ### @semcore/data-table
