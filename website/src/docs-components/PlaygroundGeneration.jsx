@@ -10,6 +10,7 @@ import { getHighlighterCore } from 'shiki/core';
 import { createPortal } from 'react-dom';
 import { isolateStyles } from '../../docs/.vitepress/theme/isolateStyles';
 import getWasm from 'shiki/wasm';
+import { codeTheme } from '../../docs/.vitepress/code-theme';
 
 const ShadowRooted = ({ children }) => {
   const ref = React.useRef();
@@ -139,7 +140,9 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
   React.useEffect(() => {
     (async () => {
       const highlighter = await getHighlighterCore({
-        themes: [import('shiki/themes/github-dark.mjs')],
+        // themes: [import('shiki/themes/github-dark.mjs')],
+        // themes: [import('shiki/themes/aurora-x.mjs')],
+        themes: [codeTheme.dark],
         langs: [import('shiki/langs/tsx.mjs')],
         loadWasm: getWasm,
       });
