@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.49.0] - 2024-08-07
+
+### Changed
+
+- Close icon to button.
+- Content is now centered vertically by default.
+
 ## [2.48.2] - 2024-08-05
 
 ### Changed
