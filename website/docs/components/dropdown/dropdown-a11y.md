@@ -15,9 +15,8 @@ Table: Keyboard support
 
 | Key              | Function                                       |
 | ---------------- | ---------------------------------------------- |
-| `Tab` | Moves focus to the next focusable element.     |
-| `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Space` , `Enter` | Activates the selected item or control.        |
+| `Tab`, <nobr>`Shift + Tab`</nobr> | Moves focus cyclically through all focusable elements in the dropdown, including the dropdown container.     |
+| `Space` , `Enter` | **On the trigger:** opens the dropdown.      |
 | `Esc` | Closes the dropdown.                           |
 
 See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
@@ -26,13 +25,25 @@ See detailed information for the controlling dropdown with the keyboard in the [
 
 The list below describes roles and attributes that component already has.
 
-Table: Roles and attributes
+Table: Default roles and attributes
 
-| Role | Attribute    | Element | Usage                                                                                                                                                   |
-| ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `combobox` |        | `div` | The `combobox` role identifies an element as an input that controls another element, such as a `listbox` or `grid` , that can dynamically pop up to help the user set the value of that input. |
-|      | `aria-label` | `div` | The `aria-label` attribute defines a string value that labels an interactive element.                                                                   |
-|      | `tabIndex` | `div` | Makes the trigger focusable and includes it in the page `Tab` sequence. This approach to managing focus is described in the section on roving tabindex. |
+| Component            | Attribute                  | Usage                                                                     |
+| -------------------- | -------------------------- | ------------------------------------------------------------------------- |
+| `Dropdown.Trigger`   | `role="button"`            | Ideintifies the element as a clickable button. |
+| `Dropdown.Trigger`   | `aria-haspopup="dialog"`   | Indicates that the element triggers a dialog. |
+| `Dropdown.Trigger`   | `aria-controls="IDREF"`    | Identifies the element that serves as the dropdown popper. |
+| `Dropdown.Trigger`   | `aria-expanded="true"` or `"false"` | Indicates whether the dropdown is open. |
+| `Dropdown.Popper`    | `role="dialog"`            | Identifies the element as a dialog, indicating that its content is grouped and separated from the rest of the page content. |
+
+## Considerations for developers
+
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
+Table: Recommended roles and attributes
+
+| Component            | Attribute                  | Usage                                                                  |
+| -------------------- | -------------------------- | ---------------------------------------------------------------------- |
+| `Dropdown.Popper`    | `aria-label` or `aria-labelledby` | Defines an accessible name for the dropdown popper. We recommend using `aria-labelledby` connected to the dropdown trigger, as shown in the [example](./dropdown-code.md#basic-usage). |
 
 ## Other recommendations
 
