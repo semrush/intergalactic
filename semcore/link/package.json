@@ -1,7 +1,7 @@
 {
   "name": "@semcore/link",
   "description": "Semrush Link Component",
-  "version": "5.36.3",
+  "version": "5.36.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@semcore/utils": "4.32.2",
-    "@semcore/typography": "5.40.2",
+    "@semcore/typography": "5.41.0",
     "@semcore/flex-box": "5.31.2",
-    "@semcore/tooltip": "6.40.3"
+    "@semcore/tooltip": "6.40.4"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
