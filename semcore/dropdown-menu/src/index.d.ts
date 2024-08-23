@@ -74,6 +74,8 @@ export type DropdownMenuItemProps = FlexProps & {
    * @default m
    */
   size?: DropdownMenuSize;
+  /** Subtitle for menu item */
+  subTitle?: string;
 };
 
 /** @deprecated */
@@ -116,6 +118,13 @@ export type DropdownMenuHandlers = DropdownHandlers & {
 
 export type DropdownMenuTriggerProps = DropdownTriggerProps;
 
+export type DropdownMenuGroupProps = BoxProps & {
+  /** Title for group of dropdown menu items */
+  title: React.ReactNode;
+  /** Subtitle for group of dropdown menu items */
+  subTitle?: string;
+};
+
 declare const DropdownMenu: Intergalactic.Component<
   'div',
   DropdownMenuProps,
@@ -144,8 +153,15 @@ declare const DropdownMenu: Intergalactic.Component<
   > & {
     Addon: typeof Box;
   };
+  /**
+   * @deprecated Use Group with title prop
+   */
   ItemTitle: Intergalactic.Component<'div', DropdownMenuItemTitleProps>;
+  /**
+   * @deprecated Use prop subTitle on Group or Item component
+   */
   ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
+  Group: Intergalactic.Component<'div', DropdownMenuGroupProps>;
   Nesting: Intergalactic.Component<
     'div',
     DropdownMenuItemProps,

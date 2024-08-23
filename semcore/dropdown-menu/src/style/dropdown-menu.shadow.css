@@ -96,8 +96,6 @@ SDropdownMenuList {
 }
 
 SDropdownMenuItem {
-  display: flex;
-  align-items: center;
   position: relative;
   text-decoration: none;
   box-sizing: border-box;
@@ -221,4 +219,26 @@ SDropdownNestingItem SDropdownMenuItem {
   padding-bottom: 0;
   padding-left: 0;
   min-height: auto;
+}
+
+SGroupTitleContainer[size='l'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+  min-height: 40px;
+}
+
+SGroupTitleContainer[size='m'] {
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-2x, 8px);
+  min-height: 32px;
+}
+
+SGroupTitle {
+  font-weight: var(--intergalactic-bold, 700);
+}
+
+SGroupHint, SItemHint {
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
