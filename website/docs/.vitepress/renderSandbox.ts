@@ -3,8 +3,11 @@ import { resolve as resolvePath } from 'path';
 import parseImports from 'parse-es-import';
 import { transformSync } from 'esbuild';
 import fs from 'fs';
+import { codeTheme } from './code-theme';
 
-const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'));
+const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'), {
+  theme: codeTheme,
+});
 
 const findLastIndex = <T>(arr: T[], predicate: (item: T) => boolean): number => {
   for (let i = arr.length - 1; i >= 0; i--) {

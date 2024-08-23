@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.0] - 2024-08-22
+
+### Added
+
+- New `TikTok` icon.
+
+## [4.43.3] - 2024-08-22
+
+### Fixed
+
+- Browser error about trying to focus on the svg element with `aria-hidden` (in Button, for example).
+
 ## [4.43.2] - 2024-08-05
 
 ### Changed
