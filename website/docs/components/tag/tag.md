@@ -137,11 +137,11 @@ Component consists of the following:
 - `Tag.Close` — a button that removes the tag
 - `Tag.Circle` — a round addon, usually an image.
 
-## Sizes and paddings
+## Sizes
 
-Table: Tag sizes and paddings
+Table: Tag sizes
 
-| Size (height in px) | Paddings                                       |
+| Size (height in px) | Appearance example                             |
 | ------------------- | ---------------------------------------------- |
 | M (20px)            | ![](static/tag-M.png) ![](static/tag2-M.png)   |
 | L (28px)            | ![](static/tag-L.png) ![](static/tag2-L.png)   |
@@ -153,14 +153,14 @@ The component offers several themes for tags.
 
 Table: Tag themes
 
-| Tag theme                         | Appearance example                | Description                                                                                                                                                                                                                     |
-| --------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `primary`                         | ![](static/primary.png)           | The `primary` theme of tag suitable for use on a light background. The default color is `--gray-500`. |
-| `primary` with `color:"white"`    | ![](static/primary-invert.png)    | An inversion of the `primary` tag is used on the dark or colored backgrounds.                                                                                                                                                        |
-| `secondary`                       | ![](static/secondary.png)         | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required.                                                                                                       |
-| `secondary` with `color:"white"`  | ![](static/secondary-invert.png)  | An inversion of the `secondary` tag suitable for dark or colored backgrounds.                                                                                                                                                   |
-| `additional`                      | ![](static/additional.png)        | Ideal for special tags that are added to other tags.                                                                                                                                                                            |
-| `additional` with `color:"white"` | ![](static/additional-invert.png) | An inversion of the `additional` theme used for special tags that are added to other tags.                                                                                                                                      |
+| Tag theme                         | Appearance example                | Description                                                                                                               |
+| --------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `primary`                         | ![](static/primary.png)           | The `primary` theme of tag suitable for use on a light background. The default color is `--gray-500`.                     |
+| `primary` with `color:"white"`    | ![](static/primary-invert.png)    | An inversion of the `primary` tag is used on the dark or colored backgrounds.                                             |
+| `secondary`                       | ![](static/secondary.png)         | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required. |
+| `secondary` with `color:"white"`  | ![](static/secondary-invert.png)  | An inversion of the `secondary` tag suitable for dark or colored backgrounds.                                             |
+| `additional`                      | ![](static/additional.png)        | Ideal for special tags that are added to other tags.                                                                      |
+| `additional` with `color:"white"` | ![](static/additional-invert.png) | An inversion of the `additional` theme used for special tags that are added to other tags.                                |
 
 ### Tag colors
 
@@ -168,20 +168,9 @@ To change tag color, use colors with 500 tone from [our palette tokens](/style/d
 
 In the case where you use other colors to color the tag, make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast).
 
-## Interaction
+## Additional theme
 
-Table: Tag states
-
-| Tag theme                        | States                                  |
-| -------------------------------- | --------------------------------------- |
-| `primary`                        | ![](static/default-color-example.png)   |
-| `primary` with `color:"white"`   | ![](static/invert-states.png)           |
-| `secondary`                      | ![](static/secondary-states.png)        |
-| `secondary` with `color:"white"` | ![](static/secondary-invert-states.png) |
-
-## Tag for adding other tags
-
-Users can create tags using tags with the `additional` theme.
+Use Tag with `additional` theme and `interactive` property, to create such an element.
 
 | State  | Appearance example     | Styles                                                                                                                      |
 | ------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -189,7 +178,7 @@ Users can create tags using tags with the `additional` theme.
 | Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                       |
 | Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                       |
 
-This tag opens [InlineInput](/components/inline-input/inline-input), and you can add a [mask label](/components/input-mask/input-mask) to guide the user on what to type into the input.
+This tag opens [InlineInput](/components/inline-input/inline-input).
 
 ![](static/add-input-L.png)
 
@@ -197,11 +186,11 @@ Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and
 
 ![](static/add-loading-L.png)
 
-If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` displays a tooltip with the full tag label.
+If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` should display a tooltip with the full tag label.
 
 ## Editing tag
 
-For editable tags, use the [InlineInput](/components/inline-input/inline-input) component, similar to adding a tag. Refer to the [live example](/components/tag/tag-code#editing_tag).
+For editable tags, use the [InlineInput](/components/inline-input/inline-input) component. Refer to the [live example](/components/tag/tag-code#editing_tag).
 
 ## Long text
 
@@ -229,21 +218,14 @@ Table: Margins between tags
 | L (28px)            | ![](static/tag-margins-L.png)  |
 | XL (40px)           | ![](static/tag-margins-XL.png) |
 
-<!-- @## Tag and other components
-
-Recommendations on positioning of tags in relation to other components:
-
-- In most cases, place tag to the right of the component.
-- In the card, place tag at the bottom. -->
-
 ## Usage in UX/UI
 
-Use tags for visual marking of objects, fast recognition and navigation.
+Use tags for visual marking and grouping of information and objects.
 
-### Example of usage in card
+### Usage in card example
 
 ![](static/tag-card.png)
 
-### Example of usage in table
+### Usage in table example
 
 ![](static/tag-table-pic.png)
