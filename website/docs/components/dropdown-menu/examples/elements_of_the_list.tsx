@@ -31,7 +31,10 @@ const Demo = () => {
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
             <DropdownMenu.Item subTitle={'Hint for item 3'}>Item 3</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 4</DropdownMenu.Item>
+            <DropdownMenu.Item2>
+              <DropdownMenu.Item2.Content>Item 4</DropdownMenu.Item2.Content>
+              <DropdownMenu.Item2.DeleteButton />
+            </DropdownMenu.Item2>
             <DropdownMenu.Item>Item 5</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Menu>

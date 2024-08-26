@@ -556,7 +556,7 @@ function Nesting({ styles, disabled }) {
 
   return (
     <NestingContext.Provider value={contextValue}>
-      {sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />)}
+      {sstyled(styles)(<SDropdownMenuNesting aria-haspopup='menu' render={DropdownMenu.Item} />)}
     </NestingContext.Provider>
   );
 }
@@ -645,7 +645,7 @@ function Trigger({ keyboardFocused, onKeyboardFocusedStateChange }) {
     onKeyboardFocusedStateChange(keyboardFocused);
   }, [keyboardFocused, onKeyboardFocusedStateChange]);
 
-  return <Root render={Dropdown.Trigger} aria-haspopup='true' />;
+  return <Root render={Dropdown.Trigger} aria-haspopup='menu' />;
 }
 Trigger.enhance = [keyboardFocusEnhance(false)];
 
@@ -673,71 +673,71 @@ function Group({ styles, title, Children, subTitle, size }) {
   );
 }
 
-// class DropdownMenuItemRoot extends Component {
-//   static displayName = 'DropdownMenuItem';
-//   static style = style;
-//   static enhance = [uniqueIDEnhancement()];
-//
-//   getContentProps() {
-//     const { size, uid } = this.asProps;
-//     return {
-//       size,
-//       'aria-describedby': `igc-${uid}-option-hint`,
-//     };
-//   }
-//
-//   getHintProps() {
-//     const { size, uid } = this.asProps;
-//     return {
-//       size,
-//       id: `igc-${uid}-option-hint`,
-//     };
-//   }
-//
-//   render() {
-//     const { styles, label, disabled, highlighted, triggerKeyboardFocused, Children } = this.asProps;
-//     const SDropdownMenuItem = Root;
-//
-//     const advancedMode = isAdvanceMode(Children, [DropdownMenuItem.Content.displayName], true);
-//
-//     return sstyled(styles)(
-//       <SDropdownMenuItem
-//         ref={this.ref}
-//         render={Box}
-//         role={advancedMode ? undefined : 'menuitem'}
-//         tabIndex={-1}
-//         id={label}
-//         use:highlighted={!disabled && highlighted && triggerKeyboardFocused}
-//       >
-//         <Children />
-//       </SDropdownMenuItem>,
-//     );
-//   }
-// }
+class DropdownMenuItemRoot extends Component {
+  static displayName = 'DropdownMenuItem';
+  static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
-// function ItemContent({ styles }) {
-//   const SItemContent = Root;
-//   return sstyled(styles)(<SItemContent render={Flex} role='menuitem' />);
-// }
-//
-// function ItemHint({ styles }) {
-//   const SItemHint = Root;
-//   return sstyled(styles)(<SItemHint render={Flex} aria-hidden={'true'} tabindex={-1} />);
-// }
-//
-// function DeleteButton({ styles }) {
-//   const SDeleteButton = Root;
-//   return sstyled(styles)(
-//     <SDeleteButton render={Button} addonLeft={TrashM} aria-label={'Delete'} />,
-//   );
-// }
+  getContentProps() {
+    const { size, uid } = this.asProps;
+    return {
+      size,
+      'aria-describedby': `igc-${uid}-option-hint`,
+    };
+  }
 
-// const DropdownMenuItem = createComponent(DropdownMenuItemRoot, {
-//   Addon,
-//   Content: ItemContent,
-//   Hint: ItemHint,
-//   DeleteButton,
-// });
+  getHintProps() {
+    const { size, uid } = this.asProps;
+    return {
+      size,
+      id: `igc-${uid}-option-hint`,
+    };
+  }
+
+  render() {
+    const { styles, label, disabled, highlighted, triggerKeyboardFocused, Children } = this.asProps;
+    const SDropdownMenuItemContainer = Root;
+
+    const advancedMode = isAdvanceMode(Children, [DropdownMenuItem.Content.displayName], true);
+
+    return sstyled(styles)(
+      <SDropdownMenuItemContainer
+        ref={this.ref}
+        render={Box}
+        role={advancedMode ? undefined : 'menuitem'}
+        tabIndex={-1}
+        id={label}
+        use:highlighted={!disabled && highlighted && triggerKeyboardFocused}
+      >
+        <Children />
+      </SDropdownMenuItemContainer>,
+    );
+  }
+}
+
+function ItemContent({ styles }) {
+  const SItemContent = Root;
+  return sstyled(styles)(<SItemContent render={Flex} role='menuitem' />);
+}
+
+function ItemHint({ styles }) {
+  const SItemHint = Root;
+  return sstyled(styles)(<SItemHint render={Flex} aria-hidden={'true'} tabindex={-1} />);
+}
+
+function DeleteButton({ styles }) {
+  const SDeleteButton = Root;
+  return sstyled(styles)(
+    <SDeleteButton render={Button} addonLeft={TrashM} aria-label={'Delete'} />,
+  );
+}
+
+const DropdownMenuItem = createComponent(DropdownMenuItemRoot, {
+  Addon,
+  Content: ItemContent,
+  Hint: ItemHint,
+  DeleteButton,
+});
 
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
@@ -747,6 +747,7 @@ const DropdownMenu = createComponent(
     List,
     Menu,
     Item: [Item, { Addon }],
+    Item2: DropdownMenuItem,
     Nesting: [Nesting, { Trigger: NestingTrigger, Addon, Item: NestingItem }],
     ItemTitle: Title,
     ItemHint: Hint,
