@@ -170,7 +170,7 @@ In the case where you use other colors to color the tag, make sure to [check the
 
 ## Additional theme
 
-Use Tag with `additional` theme and `interactive` property, to create such an element. 
+Use Tag with `additional` theme and `interactive` property, to create such an element.
 
 | State  | Appearance example     | Styles                                                                                                                      |
 | ------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
