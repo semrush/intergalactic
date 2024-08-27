@@ -88,6 +88,7 @@ const grid = computed(() => {
   display: flex;
   flex-wrap: wrap;
   margin: -8px;
+  list-style: none;
 }
 
 .item {
