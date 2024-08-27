@@ -9,6 +9,11 @@ import {
   removeFocusBorders,
   areFocusBordersPlacedCorrectly,
 } from '../focus-lock/focusBorders';
+import {
+  addIframeBorders,
+  areIframeBordersPlacedCorrectly,
+  removeIframeBorders,
+} from '../focus-lock/iframeBorders';
 
 export { isFocusInside, setFocus };
 
@@ -49,11 +54,18 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
     }
 
     if (!areFocusBordersPlacedCorrectly()) removeFocusBorders();
-    if (focusBordersConsumers.size > 0) addFocusBorders();
+    if (!areIframeBordersPlacedCorrectly()) removeIframeBorders();
+    if (focusBordersConsumers.size > 0) {
+      addFocusBorders();
+      addIframeBorders();
+    }
 
     return () => {
       focusBordersConsumers.delete(id);
-      if (focusBordersConsumers.size === 0) removeFocusBorders();
+      if (focusBordersConsumers.size === 0) {
+        removeFocusBorders();
+        removeIframeBorders();
+      }
     };
   }, [disabled]);
 };
