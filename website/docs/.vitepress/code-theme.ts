@@ -49,10 +49,10 @@ const lightTheme: ThemeRegistrationAny = {
     'editor.wordHighlightStrongBackground': '#34d05800',
     'editor.wordHighlightStrongBorder': '#24943e50',
     'editorBracketHighlight.foreground1': '#005cc5',
-    'editorBracketHighlight.foreground2': '#a84700',
+    'editorBracketHighlight.foreground2': '#d85d00',
     'editorBracketHighlight.foreground3': '#5a32a3',
     'editorBracketHighlight.foreground4': '#005cc5',
-    'editorBracketHighlight.foreground5': '#a84700',
+    'editorBracketHighlight.foreground5': '#d85d00',
     'editorBracketHighlight.foreground6': '#5a32a3',
     'editorBracketMatch.background': '#34d05840',
     'editorBracketMatch.border': '#34d05800',
@@ -76,7 +76,7 @@ const lightTheme: ThemeRegistrationAny = {
     focusBorder: '#2188ff',
     foreground: '#444d56',
     'gitDecoration.addedResourceForeground': '#28a745',
-    'gitDecoration.conflictingResourceForeground': '#a84700',
+    'gitDecoration.conflictingResourceForeground': '#d85d00',
     'gitDecoration.deletedResourceForeground': '#c20046',
     'gitDecoration.ignoredResourceForeground': '#959da5',
     'gitDecoration.modifiedResourceForeground': '#005cc5',
@@ -101,7 +101,7 @@ const lightTheme: ThemeRegistrationAny = {
     'notifications.foreground': '#2f363d',
     'notificationsErrorIcon.foreground': '#c20046',
     'notificationsInfoIcon.foreground': '#005cc5',
-    'notificationsWarningIcon.foreground': '#a84700',
+    'notificationsWarningIcon.foreground': '#d85d00',
     'panel.background': '#f6f8fa',
     'panel.border': '#e1e4e8',
     'panelInput.border': '#e1e4e8',
@@ -151,7 +151,7 @@ const lightTheme: ThemeRegistrationAny = {
     'terminal.ansiBrightBlack': '#959da5',
     'terminal.ansiBrightBlue': '#005cc5',
     'terminal.ansiBrightCyan': '#3192aa',
-    'terminal.ansiBrightGreen': '#00751d',
+    'terminal.ansiBrightGreen': '#028623',
     'terminal.ansiBrightMagenta': '#5a32a3',
     'terminal.ansiBrightRed': '#c20046',
     'terminal.ansiBrightWhite': '#d1d5da',
@@ -219,7 +219,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'entity.name.tag',
       settings: {
-        foreground: '#00751d',
+        foreground: '#028623',
       },
     },
     {
@@ -265,7 +265,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'variable',
       settings: {
-        foreground: '#a84700',
+        foreground: '#d85d00',
       },
     },
     {
@@ -344,7 +344,7 @@ const lightTheme: ThemeRegistrationAny = {
       scope: 'string.regexp constant.character.escape',
       settings: {
         fontStyle: 'bold',
-        foreground: '#00751d',
+        foreground: '#028623',
       },
     },
     {
@@ -368,7 +368,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'punctuation.definition.list.begin.markdown',
       settings: {
-        foreground: '#a84700',
+        foreground: '#d85d00',
       },
     },
     {
@@ -381,7 +381,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'markup.quote',
       settings: {
-        foreground: '#00751d',
+        foreground: '#028623',
       },
     },
     {
@@ -427,14 +427,14 @@ const lightTheme: ThemeRegistrationAny = {
       scope: ['markup.inserted', 'meta.diff.header.to-file', 'punctuation.definition.inserted'],
       settings: {
         background: '#f0fff4',
-        foreground: '#00751d',
+        foreground: '#028623',
       },
     },
     {
       scope: ['markup.changed', 'punctuation.definition.changed'],
       settings: {
         background: '#ffebda',
-        foreground: '#a84700',
+        foreground: '#d85d00',
       },
     },
     {
