@@ -57,7 +57,7 @@ You have the ability to change the default styles for your project. We offer [de
 
 ### Controlled & uncontrolled
 
-Our components are designed to be controlled externally, meaning they do not have an internal state. This grants you complete control over the state and its changes. Each property that can be modified comes with a corresponding handler. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
+By default, our components work in uncontrolled mode. Once you provide a value a pair of prop and handler (for example, `value` and `onChange`), the component starts ignore it's internal state related to this pair of props and switches it to a controlled mode. This grants you complete control over the state and its changes. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
 
 ::: tip
 This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
