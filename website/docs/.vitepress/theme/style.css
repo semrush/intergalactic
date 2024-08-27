@@ -829,7 +829,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   --vp-code-copy-code-border-color: var(--vp-c-divider);
   --vp-code-copy-code-hover-bg: var(--vp-c-bg);
   --vp-code-copy-code-hover-border-color: var(--vp-c-divider);
-  --vp-code-lang-color: var(--vp-c-text-3);
+  --vp-code-lang-color: var(--vp-c-text-2);
   --vp-code-line-diff-add-color: var(--vp-c-green-soft);
   --vp-code-line-diff-add-symbol-color: var(--vp-c-green-1);
   --vp-code-line-diff-remove-color: var(--vp-c-red-soft);
@@ -1057,7 +1057,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--intergalactic-text-secondary);
 }
 .types-deprecated-tag {
-  color: var(--vp-c-danger-3);
+  color: var(--vp-c-danger-1);
   border: 1px solid var(--vp-c-danger-3);
   background-color: var(--vp-c-danger-soft);
   border-radius: 4px;
