@@ -5,7 +5,8 @@ import Dropdown, {
   DropdownHandlers,
   DropdownTriggerProps,
 } from '@semcore/dropdown';
-import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
+import Button from '@semcore/button';
 import { ScrollAreaProps } from '@semcore/scroll-area';
 
 export type DropdownMenuSize = 'm' | 'l';
@@ -152,6 +153,9 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   > & {
     Addon: typeof Box;
+    Button: typeof Button;
+    Content: typeof Flex;
+    Hint: typeof Flex;
   };
   /**
    * @deprecated Use Group with title prop
@@ -172,6 +176,8 @@ declare const DropdownMenu: Intergalactic.Component<
     Item: Intergalactic.Component<'div', DropdownMenuItemProps>;
     Addon: typeof Box;
   };
+
+  selectedIndexContext: React.Context<number>;
 };
 
 export default DropdownMenu;
