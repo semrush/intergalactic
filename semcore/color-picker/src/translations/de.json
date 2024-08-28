@@ -1,13 +1,13 @@
 {
   "currentColor": "Farbfeld, aktuelle Farbe ist {color}",
-  "emptyColor": "Farbfeld, leer",
-  "goToPaletteHint": "{currentColor}, drücken Sie Tab, um zur Palette zu gehen, oder klicken Sie, um die Palette auszublenden",
-  "palette": "Farbpalette, drücken Sie Tab+Umschalt, um zum Farbfeld zurückzukehren",
+  "emptyColor": "Feld für Farbe",
+  "palette": "Farbpalette",
   "presetColors": "Voreingestellte Farben",
-  "customColors": "Container für Feld für benutzerdefinierte Farbe",
-  "itemColor": "Farbe {color}",
+  "customColors": "Benutzerdefinierte voreingestellte Farben",
+  "addColor": "Farbe hinzufügen",
   "clearColor": "Farbe löschen",
-  "colorField": "Feld für benutzerdefinierte Farbe, HEX-Format",
+  "colorField": "Benutzerdefinierte Farbe, HEX-Format",
   "colorFieldConfirm": "Farbe zur Liste benutzerdefinierter Farben hinzufügen",
-  "colorFieldClear": "Feld für benutzerdefinierte Farbe leeren"
+  "colorFieldClear": "Feld für benutzerdefinierte Farbe leeren",
+  "deleteColorDescriber": "Farbe mit Rücktaste löschen"
 }
