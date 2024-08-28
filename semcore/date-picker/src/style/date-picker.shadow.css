@@ -86,64 +86,8 @@ SRangeIndicator[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
 }
 
-SHumanizedDate {
-  position: absolute;
-  pointer-events: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-}
-
-SMask {
-  letter-spacing: 0;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-SSingleDateInput SValue,
-SDateRange SMask,
-SSingleDateInput SMask,
-SDateRange SValue {
-  opacity: 0;
-}
-
-SSingleDateInput:focus-within SHumanizedDate {
-  opacity: 0;
-  z-index: var(--intergalactic-z-index-deep, -999);
-}
-
-SSingleDateInput:focus-within SValue,
-SSingleDateInput:focus-within SMask {
-  opacity: 1;
-}
-
-SDateRange SValue {
-  opacity: 0;
-}
-
-SDateRange:focus-within SHumanizedDate {
-  opacity: 0;
-  z-index: var(--intergalactic-z-index-deep, -999);
-}
-
-SDateRange:focus-within SValue,
-SDateRange:focus-within SMask {
-  opacity: 1;
-}
-
-SInputMask[noHumanizedDate] SValue,
-SInputMask[noHumanizedDate] SMask {
-  opacity: 1;
-}
-
-SDateRange SInputMask:focus-within SMask {
+SDateRange SValue:focus {
   background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
-}
-
-SRangeSep[fulfilled],
-SDateRange:focus-within SRangeSep {
-  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SRangeComparatorHeader {

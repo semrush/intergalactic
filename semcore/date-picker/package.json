@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.32.2",
     "@semcore/base-trigger": "4.43.0",
     "@semcore/button": "5.35.2",
+    "@semcore/checkbox": "7.34.2",
     "@semcore/divider": "4.30.2",
     "@semcore/dropdown": "4.36.3",
     "@semcore/flex-box": "5.31.2",
@@ -22,10 +22,11 @@
     "@semcore/input": "4.32.2",
     "@semcore/input-mask": "5.33.2",
     "@semcore/neighbor-location": "4.29.2",
-    "@semcore/typography": "5.41.0",
-    "@semcore/checkbox": "7.34.2",
     "@semcore/tooltip": "6.40.4",
-    "dayjs": "1.8.36"
+    "@semcore/typography": "5.41.0",
+    "@semcore/utils": "4.32.2",
+    "dayjs": "1.8.36",
+    "maska": "^3.0.2"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

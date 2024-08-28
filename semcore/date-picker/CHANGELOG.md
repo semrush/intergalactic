@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.51.0] - 2024-08-28
+
+### Changed
+
+- `InputTrigger` date typing behavior was changed to handle typings edge cases.
+
 ## [4.50.4] - 2024-08-23
 
 ### Changed

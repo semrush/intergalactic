@@ -818,6 +818,9 @@ importers:
       dayjs:
         specifier: 1.8.36
         version: 1.8.36
+      maska:
+        specifier: ^3.0.2
+        version: 3.0.2
       react:
         specifier: 16.8 - 18
         version: 18.2.0
@@ -19745,6 +19748,10 @@ packages:
 
   /marked-ast@0.3.0:
     resolution: {integrity: sha512-yQ3Bwrz9Zu3NLY5wUMekpB5g0IXLShYHmD/hee+N+uhra1FEVu8rKXokRAPhfxD2kYeYlIivyKVDjVVXjvMEng==}
+    dev: false
+
+  /maska@3.0.2:
+    resolution: {integrity: sha512-onh3JCFrkUTFrrhhDpfQZGwQ830zeEUEVbuQDZpLzY/JXJ5QR+hQ6FJ7lcw1NikAixtpGXkxxC+teO5glT3Vyw==}
     dev: false
 
   /mathml-tag-names@2.1.3:

@@ -1,6 +1,5 @@
 import React from 'react';
 import BaseTrigger from '@semcore/base-trigger';
-import InputMask from '@semcore/input-mask';
 import Tooltip from '@semcore/tooltip';
 import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
@@ -10,6 +9,8 @@ import { datesIntersects } from '../utils/datesIntersects';
 import { includesDate } from '../utils/includesDate';
 import dayjs from 'dayjs';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import Input from '@semcore/input';
+import { MaskInput as Maska } from 'maska';
 
 import style from '../style/date-picker.shadow.css';
 import assignProps from '@semcore/utils/lib/assignProps';
@@ -164,7 +165,7 @@ class SingleDateInputRoot extends Component {
 
     return sstyled(styles)(
       <SSingleDateInput
-        render={InputMask}
+        render={Input}
         tag={Tooltip}
         placement='top-start'
         title={errorText}
@@ -408,7 +409,7 @@ class DateRangeRoot extends Component {
 
     return sstyled(styles)(
       <SDateRange
-        render={InputMask}
+        render={Input}
         tag={Tooltip}
         ignorePortalsStacking
         placement={lastChangedInput === 'to' ? 'top-end' : 'top-start'}
@@ -443,7 +444,7 @@ const Indicator = (props) => {
   const SIndicator = Root;
 
   return sstyled(props.styles)(
-    <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden='true' tabIndex={-1} />,
+    <SIndicator render={Input.Addon} tag={Calendar} aria-hidden='true' tabIndex={-1} />,
   );
 };
 
@@ -452,7 +453,7 @@ const RangeSep = (props) => {
 
   return sstyled(props.styles)(
     <SRangeSep
-      render={InputMask.Addon}
+      render={Input.Addon}
       tag={Flex}
       alignItems='center'
       justifyContent='center'
@@ -566,181 +567,10 @@ const MaskedInput = ({
     [order, allowedParts],
   );
 
-  const [internalValue, setInternalValue] = React.useState(outer);
-  const value = React.useMemo(() => stringifyValue(internalValue), [stringifyValue, internalValue]);
-
-  const lastKnownOuterValue = React.useRef(outer);
+  const [value, setValue] = React.useState('');
   React.useEffect(() => {
-    if (
-      lastKnownOuterValue.current?.day !== outer?.day ||
-      lastKnownOuterValue.current?.month !== outer?.month ||
-      lastKnownOuterValue.current?.year !== outer?.year
-    ) {
-      setInternalValue(outer);
-    }
-    lastKnownOuterValue.current = outer;
-  }, [outer, setInternalValue]);
-
-  const pipeMask = React.useCallback(
-    (value) => {
-      let placeholdersOnly = true;
-      for (let i = 0; i < value.length; i++) {
-        if (value[i] !== '_' && value[i] !== sep) {
-          placeholdersOnly = false;
-          break;
-        }
-      }
-
-      if (placeholdersOnly) {
-        onMaskPipeBlock?.(null);
-        return '';
-      }
-
-      const getOffsetTo = (partName) => {
-        const partsBefore = order.slice(0, order.indexOf(partName));
-        let offset = 0;
-        for (const part of partsBefore) {
-          if (part === 'year' && allowedParts.year) offset += 4;
-          if (part === 'month' && allowedParts.month) offset += 2;
-          if (part === 'day' && allowedParts.day) offset += 2;
-        }
-        offset += partsBefore.length * sep.length;
-        return offset;
-      };
-
-      const indexesOfPipedChars = [];
-      const parsed = {};
-      const parts = value.split(sep);
-      for (const partName in placeholders) {
-        parsed[partName] = placeholders[partName];
-      }
-      for (let i = 0; i < order.length; i++) {
-        parsed[order[i]] = parts[i];
-      }
-
-      let { year, month, day } = parsed;
-
-      if (allowedParts.month) {
-        if (month[0] !== '_' && parseInt(month[0], 10) > 1) {
-          month = `0${month[0]}`;
-          indexesOfPipedChars.push(getOffsetTo('month'));
-        }
-        if (month === '00') month = '01';
-        if (month[0] !== '_' && month[1] !== '_' && parseInt(month, 10) > 12) return false;
-      }
-      if (allowedParts.day) {
-        if (day[0] !== '_' && parseInt(day[0], 10) > 3) {
-          day = `0${day[0]}`;
-          indexesOfPipedChars.push(getOffsetTo('day'));
-        }
-        if (day === '00') day = '01';
-        if (day[0] !== '_' && day[1] !== '_' && parseInt(day, 10) > 31) return false;
-      }
-
-      year = year
-        .split('')
-        .map((char) => (char === '_' ? placeholders.year : char))
-        .join('');
-      month = month
-        .split('')
-        .map((char) => (char === '_' ? placeholders.month : char))
-        .join('');
-      day = day
-        .split('')
-        .map((char) => (char === '_' ? placeholders.day : char))
-        .join('');
-
-      const yearFulfilled =
-        !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
-      const monthFulfilled =
-        !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
-      const dayFulfilled =
-        !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
-      const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
-
-      if (fulfilled) {
-        const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
-        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
-        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
-
-        date.setFullYear(yearParsed, monthParsed, dayParsed);
-
-        if (disabledDates?.some(includesDate(dayjs(date), 'date'))) {
-          onMaskPipeBlock?.(date);
-          return false;
-        }
-
-        if (allowedParts.day) {
-          if (date.getDate() !== parseInt(day, 10)) {
-            onMaskPipeBlock?.(date);
-            return false;
-          }
-        }
-      }
-
-      const result = [];
-      for (const part of order) {
-        if (part === 'year') result.push(year);
-        if (part === 'month') result.push(month);
-        if (part === 'day') result.push(day);
-      }
-
-      onMaskPipeBlock?.(null);
-      return { value: result.join(sep), indexesOfPipedChars };
-    },
-    [placeholders, sep, order, allowedParts, disabledDates, onMaskPipeBlock],
-  );
-
-  const handleChange = React.useCallback(
-    (value) => {
-      const parsed = {};
-      for (const partName in placeholders) {
-        parsed[partName] = placeholders[partName];
-      }
-      const parts = value.split(sep);
-      for (let i = 0; i < order.length; i++) {
-        parsed[order[i]] = parts[i];
-      }
-      const { year, month, day } = parsed;
-      setInternalValue({ year, month, day });
-
-      const yearFulfilled =
-        !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
-      const monthFulfilled =
-        !allowedParts.month || (month && month.length === 2 && !month.includes(placeholders.month));
-      const dayFulfilled =
-        !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
-      const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
-      if (fulfilled) {
-        const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
-        const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
-        const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
-
-        date.setFullYear(yearParsed, monthParsed, dayParsed);
-
-        onDateChange(date);
-        lastKnownOuterValue.current = { year, month, day };
-        return;
-      }
-
-      if (lastKnownOuterValue.current !== null) {
-        onDateChange(null);
-        lastKnownOuterValue.current = null;
-      }
-
-      if (yearFulfilled && allowedParts.year) {
-        const date = new Date(0, 0, 0, 0, 0, 0, 0);
-        date.setFullYear(parseInt(year, 10));
-        if (monthFulfilled && allowedParts.month) {
-          date.setMonth(parseInt(month, 10) - 1);
-        }
-        onDisplayedPeriodChange(date);
-      }
-    },
-    [onDateChange, setInternalValue, placeholders, onDisplayedPeriodChange, order, allowedParts],
-  );
+    setValue(stringifyValue(outer));
+  }, [outer?.year, outer?.month, outer?.day]);
 
   const mask = React.useMemo(() => {
     const result = [];
@@ -752,23 +582,7 @@ const MaskedInput = ({
     }
     return result.join(sep);
   }, [sep, order, placeholders]);
-  const aliases = React.useMemo(
-    () => ({
-      [placeholders.year]: /\d/,
-      [placeholders.month]: /\d/,
-      [placeholders.day]: /\d/,
-    }),
-    [placeholders],
-  );
-  const maskOnlySymbols = React.useMemo(
-    () => ({
-      [placeholders.year]: true,
-      [placeholders.month]: true,
-      [placeholders.day]: true,
-      [sep]: true,
-    }),
-    [sep, placeholders],
-  );
+
   const humanizedDate = React.useMemo(() => {
     let outerDate = outerValue;
     if (typeof outerValue === 'number' || typeof outerValue === 'string') {
@@ -816,7 +630,6 @@ const MaskedInput = ({
     setWidth(maxWidth);
   }, [locale, humanizedDate, allowedParts, mask]);
 
-  const SHumanizedDate = 'div';
   const handleInputRef = React.useCallback(
     (node) => {
       ref.current = node;
@@ -843,14 +656,151 @@ const MaskedInput = ({
     setAppliedWidth(width);
   }, [width, focused]);
 
+  const maskInstanceRef = React.useRef(null);
+  React.useEffect(() => {
+    if (!ref.current) return;
+    if (maskInstanceRef.current) return;
+
+    setTimeout(() => {
+      const onMaska = ({ masked }) => {
+        if (document.activeElement !== ref.current) return;
+        const cursorPosition = ref.current.selectionStart;
+        const cursorAtEnd = masked.length === cursorPosition;
+
+        const value = masked + mask.substring(masked.length);
+        let placeholdersOnly = true;
+        const placeholdersList = Object.values(placeholders);
+        for (let i = 0; i < value.length; i++) {
+          if (!placeholdersList.includes(value[i]) && value[i] !== sep) {
+            placeholdersOnly = false;
+            break;
+          }
+        }
+
+        if (placeholdersOnly) {
+          onMaskPipeBlock?.(null);
+          return '';
+        }
+
+        const parsed = {};
+        const parts = value.split(sep);
+        for (const partName in placeholders) {
+          parsed[partName] = placeholders[partName];
+        }
+        for (let i = 0; i < order.length; i++) {
+          parsed[order[i]] = parts[i];
+        }
+
+        let { year, month, day } = parsed;
+
+        if (allowedParts.month) {
+          if (month[0] !== placeholders.month && parseInt(month[0], 10) > 1 && cursorAtEnd) {
+            month = `0${month[0]}`;
+          }
+          if (month === '00' && cursorAtEnd) month = '01';
+          if (
+            month[0] !== placeholders.month &&
+            month[1] !== placeholders.month &&
+            parseInt(month, 10) > 12
+          ) {
+            return;
+          }
+        }
+        if (allowedParts.day) {
+          if (day[0] !== placeholders.day && parseInt(day[0], 10) > 3 && cursorAtEnd) {
+            day = `0${day[0]}`;
+          }
+          if (day === '00' && cursorAtEnd) day = '01';
+          if (
+            day[0] !== placeholders.day &&
+            day[1] !== placeholders.day &&
+            parseInt(day, 10) > 31
+          ) {
+            return;
+          }
+        }
+
+        year = year
+          .split('')
+          .map((char) => (char === placeholders.year ? placeholders.year : char))
+          .join('');
+        month = month
+          .split('')
+          .map((char) => (char === placeholders.month ? placeholders.month : char))
+          .join('');
+        day = day
+          .split('')
+          .map((char) => (char === placeholders.day ? placeholders.day : char))
+          .join('');
+
+        const yearFulfilled =
+          !allowedParts.year || (year && year.length >= 4 && !year.includes(placeholders.year));
+        const monthFulfilled =
+          !allowedParts.month ||
+          (month && month.length === 2 && !month.includes(placeholders.month));
+        const dayFulfilled =
+          !allowedParts.day || (day && day.length === 2 && !day.includes(placeholders.day));
+        const fulfilled = yearFulfilled && monthFulfilled && dayFulfilled;
+
+        if (fulfilled) {
+          const date = new Date(0, 0, 0, 0, 0, 0, 0);
+          const yearParsed = allowedParts.year ? parseInt(year, 10) : 0;
+          const monthParsed = allowedParts.month ? parseInt(month, 10) - 1 : 0;
+          const dayParsed = allowedParts.day ? parseInt(day, 10) : 1;
+
+          date.setFullYear(yearParsed, monthParsed, dayParsed);
+
+          if (disabledDates?.some(includesDate(dayjs(date), 'date'))) {
+            onMaskPipeBlock?.(date);
+            return;
+          }
+
+          if (allowedParts.day) {
+            if (date.getDate() !== parseInt(day, 10)) {
+              onMaskPipeBlock?.(date);
+              return;
+            }
+          }
+          onDateChange(date);
+        }
+
+        const result = [];
+        for (const part of order) {
+          if (part === 'year') result.push(year);
+          if (part === 'month') result.push(month);
+          if (part === 'day') result.push(day);
+        }
+
+        onMaskPipeBlock?.(null);
+        if (cursorAtEnd) {
+          setValue(result.join(sep).substring(0, masked.length));
+        } else {
+          setValue(masked);
+        }
+      };
+      maskInstanceRef.current = new Maska(ref.current, {
+        mask: mask,
+        eager: true,
+        tokens: {
+          [placeholders.year]: { pattern: /\d/ },
+          [placeholders.month]: { pattern: /\d/ },
+          [placeholders.day]: { pattern: /\d/ },
+        },
+        onMaska,
+      });
+    }, 0);
+
+    return () => {
+      maskInstanceRef.current?.destroy();
+    };
+  }, [mask]);
+
   return sstyled(styles)(
-    <InputMask.Value
+    <Input.Value
       title={`${labelPrefix} ${mask}`}
       mask={mask}
-      aliases={aliases}
-      maskOnlySymbols={maskOnlySymbols}
       placeholder={mask}
-      inputW={appliedWidth}
+      w={appliedWidth}
       wMin={appliedWidth}
       id={inputId}
       {...otherProps}
@@ -858,14 +808,8 @@ const MaskedInput = ({
       onBlur={handleBlur}
       focused={focused}
       ref={handleInputRef}
-      pipe={pipeMask}
-      value={value ?? ''}
-      onChange={handleChange}
-      noHumanizedDate={!humanizedDate}
-      animationsDisabled={animationsDisabled}
-    >
-      {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
-    </InputMask.Value>,
+      value={(innerFocused ? value : humanizedDate) || ''}
+    />,
   );
 };
 

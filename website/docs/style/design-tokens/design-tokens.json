@@ -2696,7 +2696,7 @@
     "type": "other",
     "rawValue": "-999",
     "computedValue": "-999",
-    "components": ["date-picker"]
+    "components": []
   },
   {
     "name": "--intergalactic-z-index-overlay",
