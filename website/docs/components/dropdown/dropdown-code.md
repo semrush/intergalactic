@@ -4,15 +4,9 @@ fileSource: dropdown
 tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
-::: warning
-:warning: If you need to customize your work with a dropdown window, refer to the documentation [intergalactic/popper](/utils/popper/popper)
-:::
-
-The component is a wrap over [intergalactic/popper](/utils/popper/popper) with styles for a dropdown window.
+`Dropdown` is a styled wrapper around the `Popper` component and shares the same API. Refer to [Popper documentation](/utils/popper/popper) if you need any customization.
 
 ## Basic usage
-
-The component API is completely identical to [intergalactic/popper](/utils/popper/popper)
 
 ::: sandbox
 

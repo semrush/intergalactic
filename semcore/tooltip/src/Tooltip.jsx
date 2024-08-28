@@ -65,7 +65,6 @@ class TooltipRoot extends Component {
     return {
       'aria-describedby': popperId,
       popperId,
-      role: undefined,
     };
   }
 
@@ -231,13 +230,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       <DescriptionTooltip.Popper>{title}</DescriptionTooltip.Popper>
     </>
   );
-  handlePopperVisibleChange = (visible) => {
-    if (visible) {
-      setTimeout(() => {
-        this.popperRef.current.focus();
-      }, 0);
-    }
-  };
+
   handleTriggerKeyDown = (event) => {
     if (this.asProps.interaction !== 'click') return;
     if (event.key === ' ' && ['INPUT', 'TEXTAREA'].includes(event.target.tagName)) return;
@@ -259,6 +252,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       'aria-describedby': undefined,
       'aria-controls': visible ? `igc-${this.asProps.uid}-popper` : undefined,
       onKeyDown: this.handleTriggerKeyDown,
+      role: 'button',
     };
   }
 
@@ -269,6 +263,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
       ref: this.popperRef,
       role: 'dialog',
       tabIndex: 0,
+      autoFocus: 'enforced',
     };
   }
 }

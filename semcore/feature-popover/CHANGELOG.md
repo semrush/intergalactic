@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.0] - 2024-08-07
+
+### Changed
+
+- Close icon replaced with button.
+
 ## [4.42.3] - 2024-08-12
 
 ### Changed

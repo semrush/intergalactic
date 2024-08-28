@@ -1537,6 +1537,12 @@ const iconsList = {
       ],
     },
     {
+      name: 'TikTok',
+      size: ['l', 'm'],
+      group: 'Social',
+      tags: ['tiktok', 'logo', 'тикток', 'лого', 'social', 'note', 'нота', 'video', 'видео'],
+    },
+    {
       name: 'Twitter',
       size: ['l', 'm'],
       group: 'Social',
@@ -1558,7 +1564,7 @@ const iconsList = {
       name: 'Youtube',
       size: ['l', 'm'],
       group: 'Social',
-      tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип'],
+      tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип', 'video', 'видео'],
     },
     {
       name: 'YoutubePlaceholder',
@@ -3268,6 +3274,8 @@ const iconsList = {
         'winner',
         'победитель',
         'приз',
+        'champion',
+        'чемпион',
       ],
     },
     {

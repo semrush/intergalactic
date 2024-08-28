@@ -533,7 +533,7 @@
   --intergalactic-overlay-limitation-secondary: rgba(255, 255, 255, 0.85);
   --intergalactic-z-index-deep: -999;
   --intergalactic-z-index-overlay: 500;
-  --intergalactic-z-index-modal: 600;
+  --intergalactic-z-index-modal: 900;
   --intergalactic-z-index-popper: 700;
   --intergalactic-z-index-dropdown: 750;
   --intergalactic-z-index-tooltip: 800;

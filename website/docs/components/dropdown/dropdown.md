@@ -8,8 +8,9 @@ tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('d
 
 <script lang="tsx">
 import React from 'react';
-import { ButtonTrigger } from 'intergalactic/base-trigger';
+import Button from 'intergalactic/button';
 import Dropdown from 'intergalactic/dropdown';
+import { Text } from 'intergalactic/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
@@ -56,10 +57,12 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
   return (
     <Dropdown placement={placement} interaction={interactive} stretch={stretch}>
-      <Dropdown.Trigger>
-        <ButtonTrigger>Trigger</ButtonTrigger>
+      <Dropdown.Trigger id="dropdown-trigger">
+        <Button>Trigger</Button>
       </Dropdown.Trigger>
-      <Dropdown.Popper aria-label="Popper description">Hello there! I'm Dropdown's content</Dropdown.Popper>
+      <Dropdown.Popper p={4} aria-labelledby="dropdown-trigger">
+        <Text size={200}>Hello there! I'm Dropdown's content</Text>
+      </Dropdown.Popper>
     </Dropdown>
   );
 });
@@ -69,7 +72,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 ## Description
 
-**Dropdown** is a component that displays content, such as a form or message, when triggered by a clickable item. This clickable item, also known as the trigger, can be a [Select](/components/select/select), [Button](/components/button/button), [Input](/components/input/input), or any other component.
+**Dropdown** is a component that displays content, such as a form or message, when triggered by a clickable item. This clickable item, also known as the trigger, can be a [Button](/components/button/button), any type of [BaseTrigger](/components/base-trigger/base-trigger), [FilterTrigger](/components/filter-trigger/filter-trigger), or other component.
 
 ### Component composition
 
@@ -97,15 +100,16 @@ Margin between trigger and dropdown is always 4px.
 
 **Dropdown opens:**
 
-- by clicking on the trigger;
-- by typing in the input.
+- by clicking on the trigger
+- by pressing `Enter` or `Space` on the trigger
+- by typing in the input trigger
 
 **Dropdown is hidden:**
 
-- by clicking outside the dropdown;
-- by an action inside the dropdown (for example, by clicking the "Cancel" button);
-- by clicking `Esc`;
-- when input trigger loses `focus`.
+- by clicking outside the dropdown
+- by an action inside the dropdown (for example, by clicking the "Cancel" button)
+- by pressing `Esc`
+- when the input trigger loses `focus`
 
 ## Position
 
@@ -114,13 +118,13 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 ![All possible positions for Dropdown component based on Popper.js properties clockwise: top-start, top, top-end, right-start, right, right-end, bottom-end, bottom, bottom-start, left-end, left, left-start.](static/dropdown-directions.png)
 
 ::: tip
-**Dropdown component should maintain its position and not move when a user scrolls the page.** For instance, if the dropdown opens upward, it should stay in that position even if the user scrolls the page.
+**The Dropdown component should maintain its position relative to the trigger and not move when the page is scrolled.** For instance, if the dropdown opens upward, it should remain in that position even if the user scrolls down, causing the dropdown to become partially or completely hidden.
 :::
 
 ## Usage in UX/UI
 
-- Don’t use dropdown inside dropdown.
-- When dropdown is opened, the trigger should get the `active` state.
+- Don’t open dropdowns from other dropdowns
+- When the dropdown is opened, the trigger should get the `active` state
 
 ![](static/dropdown-trigger-yes-no.png)
 

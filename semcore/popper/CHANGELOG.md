@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.4] - 2024-08-20
+
+### Removed
+
+- Default `role` from trigger.
+
 ## [5.39.3] - 2024-08-07
 
 ### Fixed

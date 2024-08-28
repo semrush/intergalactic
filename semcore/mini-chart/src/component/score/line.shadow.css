@@ -2,22 +2,14 @@
 
 SLineGauge {
   height: 8px;
-  background-color: var(--intergalactic-skeleton-bg, rgba(224, 225, 233, 0.8));
+  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
   border-radius: var(--intergalactic-chart-rounded, 2px);
   overflow: hidden;
   position: relative;
 }
 
-SLineGauge[animate] SLineValue {
-  transition: all var(--intergalactic-duration-extra-slow, 500) ease-in-out;
-  animation-name: move-line;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in-out;
-}
-
 SLineValue {
   height: 8px;
-  background-color: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   border-radius: var(--intergalactic-chart-rounded, 2px) 0 0 var(--intergalactic-chart-rounded, 2px);
 }
 
@@ -25,7 +17,7 @@ SLineValue[percent] {
   width: var(--percent);
 }
 
-SLineValue[color] {
+SLineValue[color], SLineSegmentItem[color] {
   background-color: var(--color, var(--intergalactic-chart-palette-order-1, #2bb3ff));
 }
 
@@ -33,11 +25,7 @@ SLineGauge[segments] {
   border-radius: var(--intergalactic-progress-bar-rounded, 6px);
 }
 
-SLineGauge[segments] SLineValue {
-  border-radius: var(--intergalactic-progress-bar-rounded, 6px) 0 0 var(--intergalactic-progress-bar-rounded, 6px);
-}
-
-SLineGaugeSegment {
+SLineGaugeSegment, SAnimationLine {
   position: absolute;
   top: 0;
   left: 0;
@@ -53,14 +41,22 @@ SLineSegmentItem:last-child {
 SLineSegmentItem {
   height: 8px;
   background: transparent;
-  margin-right: 1px;
   border-right-color: var(--intergalactic-chart-grid-border, #ffffff);
   border-right-style: solid;
   border-right-width: 1px;
   box-sizing: content-box;
 }
 
+SAnimationLine {
+  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
+  transition: all var(--intergalactic-duration-extra-slow, 500) ease-in-out;
+  animation-name: move-line;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 @keyframes move-line {
-  0% {transform: translateX(-100%);}
-  100% {transform: translateX(0);}
+  0% {transform: translateX(0);}
+  100% {transform: translateX(100%);}
 }

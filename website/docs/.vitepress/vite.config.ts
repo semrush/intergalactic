@@ -85,6 +85,34 @@ export const viteConfig = defineConfig({
         find: /^.*\/VPSocialLinks\.vue$/,
         replacement: fileURLToPath(new URL('./theme/VPSocialLinks.vue', import.meta.url)),
       },
+      {
+        find: /^.*\/VPDocAside\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPDocAside.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPDoc\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPDoc.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPDocFooter\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPDocFooter.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPHero\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPHero.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPFeatures\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPFeatures.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPFeature\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPFeature.vue', import.meta.url)),
+      },
+      {
+        find: /^.*\/VPHome\.vue$/,
+        replacement: fileURLToPath(new URL('./theme/VPHome.vue', import.meta.url)),
+      },
     ],
   },
 });

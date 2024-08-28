@@ -44,11 +44,14 @@ const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
 const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
 
 const textTag = computed(() => {
-  return !hasChildren.value
-    ? 'p'
-    : props.depth + 2 === 7
-      ? 'p'
-      : `h${props.depth + 2}`
+  if (!hasChildren.value) return 'p';
+  if (props.depth === 0) return 'h2';
+  return 'p';
+  // return !hasChildren.value
+  //   ? 'p'
+  //   : props.depth + 2 === 7
+  //     ? 'p'
+  //     : `h${props.depth + 2}`
 })
 
 const itemRole = computed(() => (isLink.value ? undefined : 'button'))

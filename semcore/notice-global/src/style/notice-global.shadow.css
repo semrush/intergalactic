@@ -1,5 +1,6 @@
 SNoticeGlobal {
   display: flex;
+  align-items: center;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
   box-sizing: border-box;
@@ -7,13 +8,7 @@ SNoticeGlobal {
 }
 
 SCloseIcon {
-  flex-shrink: 0;
-  margin-top: var(--intergalactic-spacing-05x, 2px);
   margin-left: var(--intergalactic-spacing-4x, 16px);
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 SNoticeGlobal[theme='neutral'] {
@@ -24,53 +19,21 @@ SNoticeGlobal[theme='neutral'] {
 SNoticeGlobal[theme='info'] {
   background-color: var(--intergalactic-bg-primary-info, #008ff8);
   color: var(--intergalactic-text-primary-invert, #ffffff);
-
-  & SCloseIcon {
-    color: var(--intergalactic-icon-primary-invert, #ffffff);
-
-    &:hover {
-      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
-    }
-  }
 }
 
 SNoticeGlobal[theme='danger'] {
   background-color: var(--intergalactic-bg-primary-critical, #ff4953);
   color: var(--intergalactic-text-primary-invert, #ffffff);
-
-  & SCloseIcon {
-    color: var(--intergalactic-icon-primary-invert, #ffffff);
-
-    &:hover {
-      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
-    }
-  }
 }
 
 SNoticeGlobal[theme='warning'] {
   background-color: var(--intergalactic-bg-primary-warning, #ff642d);
   color: var(--intergalactic-text-primary-invert, #ffffff);
-
-  & SCloseIcon {
-    color: var(--intergalactic-icon-primary-invert, #ffffff);
-
-    &:hover {
-      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
-    }
-  }
 }
 
 SNoticeGlobal[theme='success'] {
   background-color: var(--intergalactic-bg-primary-success, #009f81);
   color: var(--intergalactic-text-primary-invert, #ffffff);
-
-  & SCloseIcon {
-    color: var(--intergalactic-icon-primary-invert, #ffffff);
-
-    &:hover {
-      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
-    }
-  }
 }
 
 SNoticeGlobal[theme='custom'] {
