@@ -17,8 +17,6 @@ import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import ButtonComponent from '@semcore/button';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-// import {forkRef} from '@semcore/utils/lib/ref';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -70,30 +68,9 @@ class DropdownMenuRoot extends Component {
           this.handlers.selectedIndex(index);
         },
       ],
-      visible: [
-        null,
-        (visible) => {
-          if (visible) {
-            setTimeout(() => {
-              this.menuRef.current?.focus();
-            }, 100);
-          }
-        },
-      ],
+      visible: null,
     };
   }
-
-  // focusTrigger = () => {
-  //   const trigger = this.triggerRef.current;
-  //   if (!trigger) return;
-  //   if (isFocusInside(trigger)) return;
-  //   setFocus(trigger);
-  // };
-
-  focusMenu = () => {
-    const menu = this.menuRef.current;
-    menu?.focus();
-  };
 
   bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
@@ -151,10 +128,7 @@ class DropdownMenuRoot extends Component {
         return;
       }
     }
-    if (
-      (e.key.startsWith('Arrow') || e.key === ' ' || e.key === 'Enter') &&
-      !this.state.keyboardFocused
-    ) {
+    if (e.key.startsWith('Arrow') && !this.state.keyboardFocused) {
       this.setState({ keyboardFocused: true });
     }
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
@@ -175,7 +149,8 @@ class DropdownMenuRoot extends Component {
         } else if (e.key === 'ArrowLeft') {
           if (focusedIndex === 0) {
             this.setState({ focusLockItemIndex: null });
-            this.menuRef.current?.focus();
+            // this.menuRef.current?.focus();
+            item.focus();
           }
           const prevFocused = focusable[focusedIndex - 1];
           if (prevFocused) {
@@ -191,9 +166,9 @@ class DropdownMenuRoot extends Component {
       case 'ArrowDown': {
         if (visible) {
           this.moveHighlightedIndex(amount, e);
-          if (isFocusInside(this.popperRef.current)) {
-            this.focusMenu();
-          }
+          setTimeout(() => {
+            this.itemRefs[this.asProps.highlightedIndex]?.focus();
+          });
           e.preventDefault();
           e.stopPropagation();
         }
@@ -202,9 +177,9 @@ class DropdownMenuRoot extends Component {
       case 'ArrowUp': {
         if (visible) {
           this.moveHighlightedIndex(-amount, e);
-          if (isFocusInside(this.popperRef.current)) {
-            this.focusMenu();
-          }
+          setTimeout(() => {
+            this.itemRefs[this.asProps.highlightedIndex]?.focus();
+          });
           e.preventDefault();
           e.stopPropagation();
         }
@@ -242,7 +217,6 @@ class DropdownMenuRoot extends Component {
       'aria-expanded': visible ? 'true' : 'false',
       onKeyDown: this.bindHandlerKeyDown('trigger'),
       ref: this.triggerRef,
-      onKeyboardFocus: this.handleTriggerKeyboardFocus,
     };
   }
 
@@ -256,10 +230,7 @@ class DropdownMenuRoot extends Component {
       ref: this.menuRef,
       id: `igc-${uid}-list`,
       role: 'menu',
-      tabIndex: -1,
       'aria-labelledby': triggerId,
-      'aria-activedescendant':
-        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
     };
   }
 
@@ -300,22 +271,16 @@ class DropdownMenuRoot extends Component {
         this.itemRefs[index] = node;
         this.scrollToNode(node);
       };
-    } else {
-      ref = (node) => {
-        node?.blur();
-      };
     }
 
     return {
       id: `igc-${uid}-option-${index}`,
       size,
-      highlighted,
-      focusLock: this.state.focusLockItemIndex === index,
-      menuRef: this.menuRef,
+      focusLock: highlighted,
+      tabIndex: highlighted ? 1 : -1,
       ref,
       index,
       handleFocusOut: this.handleItemFocusOut,
-      triggerKeyboardFocused: this.state.keyboardFocused,
       onMouseEnter: () => this.handlers.selectedIndex(index),
     };
   }
@@ -490,7 +455,7 @@ function List(props) {
   return sstyled(props.styles)(
     <ListBoxContextProvider>
       <ScrollAreaComponent shadow={true}>
-        <SDropdownMenuList render={ScrollAreaComponent.Container} disabled />
+        <SDropdownMenuList render={ScrollAreaComponent.Container} />
       </ScrollAreaComponent>
     </ListBoxContextProvider>,
   );
@@ -526,30 +491,22 @@ function Menu(props) {
 
 function Item({
   styles,
-  id,
-  menuRef,
   focusLock,
   disabled,
-  highlighted,
   handleFocusOut,
-  triggerKeyboardFocused,
   Children,
   'aria-describedby': ariaDescribedby,
 }) {
   const SDropdownMenuItemContainer = Root;
   const ref = React.useRef();
-  useFocusLock(ref, false, menuRef, !focusLock || disabled, true, handleFocusOut);
 
-  const menuItemContextValue = {
-    contentId: id,
-    ref,
-  };
+  useFocusLock(ref, false, 'auto', !focusLock || disabled, true, handleFocusOut);
+
+  const menuItemContextValue = {};
   const ariaDescribes = [];
 
   const advancedMode = isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true);
-  const hasActions = isAdvanceMode(Children, [DropdownMenu.Item.Button.displayName], true);
   const hasHint = isAdvanceMode(Children, [DropdownMenu.Item.Hint.displayName], true);
-  const actionsDescriptionId = `igc-${useUID()}-actions`;
 
   if (hasHint) {
     const hintId = `igc-${useUID()}-option-hint`;
@@ -560,30 +517,18 @@ function Item({
 
   ariaDescribes.push(ariaDescribedby);
 
-  if (hasActions) {
-    ariaDescribes.push(actionsDescriptionId);
-  }
-
-  menuItemContextValue.ariaDescribes = ariaDescribes;
-
   return sstyled(styles)(
     <menuItemContext.Provider value={menuItemContextValue}>
       <SDropdownMenuItemContainer
+        ref={ref}
         render={Box}
-        use:highlighted={!disabled && highlighted && triggerKeyboardFocused}
-        role={advancedMode ? undefined : 'menuitem'}
-        tabIndex={-1}
-        use:id={advancedMode ? undefined : id}
-        use:aria-describedby={advancedMode ? undefined : ariaDescribes.join(' ')}
-        __excludeProps={advancedMode ? ['aria-describedby'] : undefined}
+        use:highlighted={!disabled && document.activeElement === ref.current}
+        use:role={'menuitem'}
+        use:aria-describedby={ariaDescribes.join(' ')}
+        focusWithin
       >
         <Children />
       </SDropdownMenuItemContainer>
-      {hasActions && (
-        <ScreenReaderOnly aria-hidden={true} id={actionsDescriptionId}>
-          Has actions. Press right to navigate
-        </ScreenReaderOnly>
-      )}
     </menuItemContext.Provider>,
   );
 }
@@ -710,17 +655,8 @@ function Group({ styles, title, Children, subTitle, size }) {
 
 function ItemContent({ styles }) {
   const SItemContent = Root;
-  const menuItemCtxValue = React.useContext(menuItemContext);
 
-  return sstyled(styles)(
-    <SItemContent
-      render={Flex}
-      role='menuitem'
-      id={menuItemCtxValue.contentId}
-      ref={menuItemCtxValue.ref}
-      use:aria-describedby={menuItemCtxValue.ariaDescribes.join(' ')}
-    />,
-  );
+  return sstyled(styles)(<SItemContent render={Flex} />);
 }
 
 function ItemHint({ styles }) {
