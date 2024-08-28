@@ -35,7 +35,8 @@ class DropdownMenuRoot extends Component {
       i18n: localizedMessages,
       locale: 'en',
       interaction: 'click',
-      timeout: props.timeout || (props.interaction === 'hover' ? [0, 100] : undefined),
+      timeout: props.interaction === 'hover' ? [0, 100] : undefined,
+      ...props,
     };
   };
 
