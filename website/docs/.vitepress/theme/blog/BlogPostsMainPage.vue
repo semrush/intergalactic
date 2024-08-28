@@ -6,7 +6,7 @@ import BlogPosts from './BlogPosts.vue'
   <section class="blog-posts-main-page">
     <div class="blog-posts-main-page-container">
       <h2 class="blog-posts-main-page-title">Latest updates</h2>
-      <BlogPosts />
+      <BlogPosts :header="3" />
     </div>
   </section>
 </template>
