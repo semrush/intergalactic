@@ -98,6 +98,7 @@ class Dropdown extends Component {
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
       onKeyDown: this.handlerTriggerKeyDown,
+      'aria-haspopup': 'dialog',
     };
   }
 

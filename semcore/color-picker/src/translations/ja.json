@@ -1,13 +1,13 @@
 {
   "currentColor": "カラーフィールド、現在のカラーは{color}です",
-  "emptyColor": "カラーフィールド、空欄",
-  "goToPaletteHint": "{currentColor}、Tabキーでパレットに移動、またはクリックでパレット非表示",
-  "palette": "カラーパレット、Tab+Shiftキーでカラーフィールドに戻る",
+  "emptyColor": "Color field",
+  "palette": "Colors palette",
   "presetColors": "プリセットカラー",
-  "customColors": "カラーフィールドコンテナをカスタマイズ",
-  "itemColor": "カラー{color}",
+  "customColors": "Custom preset colors",
+  "addColor": "Add color",
   "clearColor": "カラーをクリア",
-  "colorField": "カラーフィールドをカスタマイズ、HEXフォーマット",
+  "colorField": "Custom color, HEX format",
   "colorFieldConfirm": "カスタムカラーリストに色を追加",
-  "colorFieldClear": "カスタムカラーフィールドをクリア"
+  "colorFieldClear": "カスタムカラーフィールドをクリア",
+  "deleteColorDescriber": "Delete color with backspace"
 }
