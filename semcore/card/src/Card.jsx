@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { ButtonLink } from '@semcore/button';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
 
@@ -39,21 +40,21 @@ function Title(props) {
   const { styles, innerHint, Children, innerHintAriaLabel, hintAfterAriaLabel } = props;
   const hintAfter = props.hintAfter || props.hint;
   const STitle = Root;
-  const SIcon = InfoM;
+  const SIcon = ButtonLink;
   const STooltip = DescriptionTooltip;
   return sstyled(styles)(
     <>
       <STitle render={Text}>
         <Children />
         {innerHint && (
-          <STooltip ml={1} title={innerHint} aria-label={innerHintAriaLabel}>
-            <SIcon interactive />
+          <STooltip ml={1} title={innerHint}>
+            <SIcon addonLeft={InfoM} use={'secondary'} aria-label={innerHintAriaLabel} />
           </STooltip>
         )}
       </STitle>
       {hintAfter && (
-        <STooltip title={hintAfter} aria-label={hintAfterAriaLabel}>
-          <SIcon interactive />
+        <STooltip title={hintAfter}>
+          <SIcon addonLeft={InfoM} use={'secondary'} aria-label={hintAfterAriaLabel} />
         </STooltip>
       )}
     </>,

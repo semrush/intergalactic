@@ -7,6 +7,7 @@ import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Spin from '@semcore/spin';
+import { ButtonLink } from '@semcore/button';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import InputNumber, { InputNumberValueProps } from '@semcore/input-number';
@@ -339,9 +340,9 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
       ) : (
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
-            tag={(props.icon as any) ?? CheckM}
-            role='button'
-            interactive
+            tag={ButtonLink}
+            addonLeft={(props.icon as any) ?? CheckM}
+            use={'secondary'}
             onClick={handleConfirm}
             className={sConfirmIconStyles.className}
             style={sConfirmIconStyles.style}
@@ -391,9 +392,9 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
       ) : (
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
-            tag={(props.icon as any) ?? CloseM}
-            role='button'
-            interactive
+            tag={ButtonLink}
+            use={'secondary'}
+            addonLeft={(props.icon as any) ?? CloseM}
             onClick={handleCancel}
             className={sCancelIconStyles.className}
             style={sCancelIconStyles.style}

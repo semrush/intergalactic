@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
-import Button from 'intergalactic/button';
+import Button, { ButtonLink } from 'intergalactic/button';
 import { DescriptionTooltip } from 'intergalactic/tooltip';
 import Education from 'intergalactic/icon/Education/m';
 import BookM from 'intergalactic/icon/Book/m';
@@ -28,8 +28,8 @@ const Demo = () => {
           </Breadcrumbs>
 
           <Header.Links>
-            <Link addonLeft={Education}>Tool course</Link>
-            <Link addonLeft={BookM}>User manual</Link>
+            <ButtonLink addonLeft={Education}>Tool course</ButtonLink>
+            <ButtonLink addonLeft={BookM}>User manual</ButtonLink>
           </Header.Links>
         </Header.Row>
 

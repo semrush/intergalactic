@@ -16,6 +16,7 @@
     "@semcore/flex-box": "5.31.2",
     "@semcore/typography": "5.41.0",
     "@semcore/tooltip": "6.40.4",
+    "@semcore/button": "5.35.2",
     "@semcore/icon": "4.44.0"
   },
   "peerDependencies": {

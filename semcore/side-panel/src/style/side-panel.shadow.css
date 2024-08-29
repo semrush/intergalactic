@@ -69,41 +69,41 @@ SClose {
   }
 }
 
-SBack[size="m"] {
-  display: flex;
-  align-items: center;
-  color: var(--intergalactic-text-secondary, #6c6e79);
-  font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-100, 133%);
-  height: auto;
-  min-width: auto;
-  max-width: 100%;
-  margin-left: calc(var(--intergalactic-spacing-2x, 8px) * -1 + 1px);
-  margin-bottom: var(--intergalactic-spacing-1x, 4px);
+/*SBack[size="m"] {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  color: var(--intergalactic-text-secondary, #6c6e79);*/
+/*  font-size: var(--intergalactic-fs-100, 12px);*/
+/*  line-height: var(--intergalactic-lh-100, 133%);*/
+/*  height: auto;*/
+/*  min-width: auto;*/
+/*  max-width: 100%;*/
+/*  margin-left: calc(var(--intergalactic-spacing-2x, 8px) * -1 + 1px);*/
+/*  margin-bottom: var(--intergalactic-spacing-1x, 4px);*/
 
-  &:hover {
-    color: var(--intergalactic-text-hint-hover-active, #484a54);
-  }
-}
-SBack[size="m"] SInner {
-  justify-content: flex-start;
-}
-SBack SText {
-  display: block;
-}
+/*  &:hover {*/
+/*    color: var(--intergalactic-text-hint-hover-active, #484a54);*/
+/*  }*/
+/*}*/
+/*SBack[size="m"] SInner {*/
+/*  justify-content: flex-start;*/
+/*}*/
+/*SBack SText {*/
+/*  display: block;*/
+/*}*/
 
-SBack[size] SText {
-  margin-left: var(--intergalactic-spacing-1x, 4px);
-}
+/*SBack[size] SText {*/
+/*  margin-left: var(--intergalactic-spacing-1x, 4px);*/
+/*}*/
 
-SBackText {
-  margin-left: var(--intergalactic-spacing-1x, 4px);
-  font-size: var(--intergalactic-fs-100, 12px);
-  line-height: var(--intergalactic-lh-200, 142%);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+/*SBackText {*/
+/*  margin-left: var(--intergalactic-spacing-1x, 4px);*/
+/*  font-size: var(--intergalactic-fs-100, 12px);*/
+/*  line-height: var(--intergalactic-lh-200, 142%);*/
+/*  white-space: nowrap;*/
+/*  overflow: hidden;*/
+/*  text-overflow: ellipsis;*/
+/*}*/
 
 STitle {
   font-size: var(--intergalactic-fs-300, 16px);

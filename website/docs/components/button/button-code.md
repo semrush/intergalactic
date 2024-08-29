@@ -57,3 +57,15 @@ You could add a `loading` prop to the `Button` or manually add an `Addon` with `
 </script>
 
 :::
+
+## Button with link skin
+
+If you need to render a Button which looks like a Link, you could use `ButtonLink`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/button_link.tsx';
+</script>
+
+:::
