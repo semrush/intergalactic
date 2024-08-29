@@ -8,6 +8,7 @@ import resolveColorEnhance from 'intergalactic/utils/lib/enhances/resolveColorEn
 import {
   ButtonLinkAddonProps,
   ButtonLinkChildren,
+  ButtonLinkComponent,
   ButtonLinkProps,
   ButtonLinkTextProps,
 } from './ButtonLink.type';
@@ -41,7 +42,7 @@ function Addon(props: ButtonLinkAddonProps) {
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
-export const ButtonLink = createComponent<ButtonLinkProps, ButtonLinkChildren>(RootButtonLink, {
+export const ButtonLink = createComponent(RootButtonLink, {
   Text,
   Addon,
-});
+}) as ButtonLinkComponent;

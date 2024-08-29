@@ -42,9 +42,7 @@ export type ButtonChildren = {
   Addon: Intergalactic.Component<'span', ButtonAddonProps>;
 };
 
-// declare const Button: Intergalactic.Component<'button', ButtonProps, ButtonContext> & {
-//     Text: Intergalactic.Component<'span', ButtonTextProps>;
-//     Addon: Intergalactic.Component<'span', ButtonAddonProps>;
-// };
-//
-// export default Button;
+export type ButtonComponent = Intergalactic.Component<'button', ButtonProps, ButtonContext> & {
+  Text: Intergalactic.Component<'span', ButtonTextProps>;
+  Addon: Intergalactic.Component<'span', ButtonAddonProps>;
+};

@@ -5,7 +5,13 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 
 import style from './button.shadow.css';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
-import { ButtonAddonProps, ButtonChildren, ButtonProps, ButtonTextProps } from './Button.type';
+import {
+  ButtonAddonProps,
+  ButtonChildren,
+  ButtonComponent,
+  ButtonProps,
+  ButtonTextProps,
+} from './Button.type';
 
 class RootButton extends AbstractButton {
   static displayName = 'Button';
@@ -31,9 +37,9 @@ function Addon(props: ButtonAddonProps) {
   return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
-const Button = createComponent<ButtonProps, ButtonChildren>(RootButton, {
+const Button = createComponent(RootButton, {
   Text,
   Addon,
-});
+}) as ButtonComponent;
 
 export default Button;
