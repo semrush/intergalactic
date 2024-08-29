@@ -420,6 +420,9 @@ importers:
 
   semcore/card:
     dependencies:
+      '@semcore/button':
+        specifier: 5.35.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
