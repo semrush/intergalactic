@@ -18,7 +18,7 @@ Addons can be added:
 
 :::
 
-## Button with icon
+## Icon-only button
 
 To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`.
 
@@ -30,7 +30,19 @@ To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`
 
 :::
 
-## Link as button
+## Button looks like Link
+
+In case you need to render a Button that looks like a Link, use the `Button.Link` component.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/button_link.tsx';
+</script>
+
+:::
+
+## Link looks like Button
 
 To create a button that acts like a link, refer to the [Link as button example](/components/link/link-code#link-as-button).
 
@@ -54,18 +66,6 @@ You could add a `loading` prop to the `Button` or manually add an `Addon` with `
 
 <script lang="tsx">
   export Demo from './examples/button_with_loading.tsx';
-</script>
-
-:::
-
-## Button with link skin
-
-If you need to render a Button which looks like a Link, you could use `ButtonLink`.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/button_link.tsx';
 </script>
 
 :::

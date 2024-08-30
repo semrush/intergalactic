@@ -7,21 +7,24 @@ import CloseM from 'intergalactic/icon/Close/m';
 const Demo = () => {
   return (
     <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
-      <ButtonLink addonLeft={CheckM}>Button Link primary</ButtonLink>
+      <ButtonLink addonLeft={CheckM}>Primary Button.Link</ButtonLink>
+      <ButtonLink addonLeft={CheckM} color={'text-primary'}>
+        Colored primary Button.Link
+      </ButtonLink>
+      <ButtonLink addonRight={CloseM} color={'text-critical'}>
+        Colored primary Button.Link
+      </ButtonLink>
       <ButtonLink use={'secondary'}>
         <ButtonLink.Addon>
           <CheckM />
         </ButtonLink.Addon>
-        <ButtonLink.Text>Button Link secondary</ButtonLink.Text>
-      </ButtonLink>
-      <ButtonLink addonRight={CloseM} color={'text-critical'}>
-        Close
+        <ButtonLink.Text>Secondary Button.Link</ButtonLink.Text>
       </ButtonLink>
 
-      <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} />
+      <ButtonLink addonLeft={CheckM} aria-label={'Icon-only button'} />
 
       <ButtonLink addonLeft={CheckM} size={500}>
-        Large size
+        Button.Link with other text size
       </ButtonLink>
     </Flex>
   );
