@@ -16,7 +16,12 @@ const focusable = [
   [{ has: 'autofocus' }],
 ];
 
-export const isFocusable = (node: Node) => {
+export type Options = {
+  skipDisabled?: boolean;
+  skipTabIndex?: boolean;
+};
+
+export const isFocusable = (node: Node, options: Options = {}) => {
   if (!node) return false;
   if (!node.ownerDocument) return false;
   if (!node.ownerDocument.defaultView?.HTMLElement) return false;
@@ -27,8 +32,8 @@ export const isFocusable = (node: Node) => {
     )
   )
     return false;
-  if (node.hasAttribute('disabled')) return false;
-  if (node.getAttribute('tabindex') === '-1') return false;
+  if (node.hasAttribute('disabled') && !options.skipDisabled) return false;
+  if (node.getAttribute('tabindex') === '-1' && !options.skipTabIndex) return false;
   const tagName = node.tagName;
   for (const params of focusable) {
     if (

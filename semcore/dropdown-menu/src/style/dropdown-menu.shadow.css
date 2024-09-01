@@ -233,3 +233,7 @@ SGroupTitle {
 SGroupHint, SItemHint {
   color: var(--intergalactic-text-secondary, #6c6e79);
 }
+
+SItemContent:focus {
+  outline: none;
+}

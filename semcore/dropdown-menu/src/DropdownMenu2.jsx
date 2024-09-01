@@ -17,6 +17,9 @@ import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import ButtonComponent from '@semcore/button';
+import { forkRef } from '@semcore/utils/lib/ref';
+import { isFocusable } from '@semcore/utils/lib/focus-lock/isFocusable';
+import { vi } from 'vitest';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -40,11 +43,12 @@ class DropdownMenuRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
     interaction: 'click',
+    inlineActions: false,
+    placement: 'bottom-start',
   };
 
   state = {
     focusLockItemIndex: null,
-    keyboardFocused: false,
   };
 
   popperRef = React.createRef();
@@ -76,7 +80,7 @@ class DropdownMenuRoot extends Component {
     const amount = e.shiftKey ? 5 : 1;
     const targetTagName = e.target.tagName;
 
-    const { visible, highlightedIndex, placement } = this.asProps;
+    const { visible, highlightedIndex, placement, inlineActions } = this.asProps;
 
     if (e.key === ' ' && ['INPUT', 'TEXTAREA'].includes(targetTagName)) return;
     if (e.key === 'Enter' && targetTagName === 'TEXTAREA') return;
@@ -87,118 +91,117 @@ class DropdownMenuRoot extends Component {
     )
       return;
 
-    if (visible && e.key === 'Tab') {
-      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
-      if (item && getFocusableIn(item).length !== 0) {
-        this.setState({ focusLockItemIndex: highlightedIndex });
-      } else {
-        this.handlers.highlightedIndex(null);
-      }
-      return;
-    }
-
-    if (e.key === 'Escape' && this.state.focusLockItemIndex !== null) {
-      this.setState({ focusLockItemIndex: null });
-      return false;
-    }
-
-    const verticalPlacement =
-      !placement || placement.startsWith('top') || placement.startsWith('bottom');
-
-    if (['ArrowDown', 'ArrowUp'].includes(e.key) && verticalPlacement) {
+    if (
+      place === 'trigger' &&
+      ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
+      e.target.getAttribute('role') !== 'menuitem'
+    ) {
       e.preventDefault();
       this.handlers.visible(true);
+
+      setTimeout(() => {
+        const element = this.itemRefs[this.asProps.highlightedIndex];
+
+        element?.focus();
+      }, 0);
     }
-    if (['ArrowLeft', 'ArrowRight'].includes(e.key) && !verticalPlacement) {
-      const show =
-        (e.key === 'ArrowRight' && placement.startsWith('right')) ||
-        (e.key === 'ArrowLeft' && placement.startsWith('left'));
-      const hide =
-        (e.key === 'ArrowLeft' && placement.startsWith('right')) ||
-        (e.key === 'ArrowRight' && placement.startsWith('left'));
-      const visibleChanged = (visible && hide) || (!visible && show);
-      if (show) {
-        this.handlers.visible(true);
-      } else if (hide) {
+
+    const show =
+      (e.key === 'ArrowRight' && placement.startsWith('right')) ||
+      (e.key === 'ArrowLeft' && placement.startsWith('left'));
+    const hide =
+      (e.key === 'ArrowLeft' && placement.startsWith('right')) ||
+      (e.key === 'ArrowRight' && placement.startsWith('left')) ||
+      e.key === 'Escape';
+
+    if (
+      place === 'trigger' &&
+      (!visible || inlineActions) &&
+      show &&
+      e.target.getAttribute('role') === 'menuitem'
+    ) {
+      this.handlers.visible(true);
+      this.handlers.highlightedIndex(0);
+      setTimeout(() => {
+        this.itemRefs[this.asProps.highlightedIndex]?.focus();
+      }, 0);
+
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    if (place === 'list' && visible && hide && e.target.getAttribute('role') === 'menuitem') {
+      if (
+        e.key === 'Escape' ||
+        !inlineActions ||
+        (inlineActions && this.asProps.highlightedIndex === 0)
+      ) {
         this.handlers.visible(false);
-      }
-      if (visibleChanged) {
+        this.triggerRef.current?.focus();
+
         e.preventDefault();
         e.stopPropagation();
+
         return;
       }
     }
-    if (e.key.startsWith('Arrow') && !this.state.keyboardFocused) {
-      this.setState({ keyboardFocused: true });
-    }
-    if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
-      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
-      const focusable = getFocusableIn(item);
-      if (focusable.length > 0 && item) {
-        const focusedIndex = focusable.indexOf(document.activeElement);
-        if (e.key === 'ArrowRight') {
-          if (focusedIndex === -1) {
-            this.setState({ focusLockItemIndex: highlightedIndex });
-          }
-          const nextFocused = focusable[focusedIndex + 1];
-          if (nextFocused) {
-            e.preventDefault();
-            e.stopPropagation();
-            nextFocused.focus();
-          }
-        } else if (e.key === 'ArrowLeft') {
-          if (focusedIndex === 0) {
-            this.setState({ focusLockItemIndex: null });
-            // this.menuRef.current?.focus();
-            item.focus();
-          }
-          const prevFocused = focusable[focusedIndex - 1];
-          if (prevFocused) {
-            e.preventDefault();
-            e.stopPropagation();
-            prevFocused.focus();
-          }
-        }
-      }
-    }
 
-    switch (e.key) {
-      case 'ArrowDown': {
-        if (visible) {
-          this.moveHighlightedIndex(amount, e);
-          setTimeout(() => {
-            this.itemRefs[this.asProps.highlightedIndex]?.focus();
-          });
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        break;
-      }
-      case 'ArrowUp': {
-        if (visible) {
-          this.moveHighlightedIndex(-amount, e);
-          setTimeout(() => {
-            this.itemRefs[this.asProps.highlightedIndex]?.focus();
-          });
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        break;
-      }
-      case ' ':
-      case 'Enter':
-        if (this.highlightedItemRef.current && highlightedIndex !== null) {
-          e.stopPropagation();
-          e.preventDefault();
-          this.highlightedItemRef.current.click();
-        } else {
-          if (place === 'trigger') {
-            this.handlers.visible(false);
+    if (place === 'list') {
+      switch (e.key) {
+        case 'ArrowDown': {
+          if (visible && !inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
 
             e.preventDefault();
+            e.stopPropagation();
           }
+          break;
         }
-        break;
+        case 'ArrowRight': {
+          if (visible && inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
+
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          break;
+        }
+        case 'ArrowUp': {
+          if (visible && !inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(-amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
+
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          break;
+        }
+        case 'ArrowLeft': {
+          if (visible && inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(-amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
+
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          break;
+        }
+        case ' ':
+        case 'Enter':
+          if (this.highlightedItemRef.current && highlightedIndex !== null) {
+            e.stopPropagation();
+            e.preventDefault();
+            this.highlightedItemRef.current.click();
+          }
+
+          break;
+      }
     }
   };
 
@@ -227,6 +230,8 @@ class DropdownMenuRoot extends Component {
     return {
       size,
       index: this.asProps.highlightedIndex,
+      tabIndex: -1,
+      onKeyDown: this.bindHandlerKeyDown('list'),
       ref: this.menuRef,
       id: `igc-${uid}-list`,
       role: 'menu',
@@ -260,29 +265,35 @@ class DropdownMenuRoot extends Component {
   }
 
   getItemProps(props, index) {
-    const { size, highlightedIndex, uid } = this.asProps;
-    const highlighted = index === highlightedIndex;
-    let ref = (node) => {
-      this.itemRefs[index] = node;
+    const { size, uid } = this.asProps;
+
+    const ref = (node) => {
+      if (node?.getAttribute('role') === 'menuitem') {
+        this.itemRefs[index] = node;
+      }
+
+      if (node === document.activeElement) {
+        this.scrollToNode(node);
+      }
     };
     this.itemProps[index] = props;
-    if (highlighted) {
-      ref = (node) => {
-        this.itemRefs[index] = node;
-        this.scrollToNode(node);
-      };
-    }
 
-    return {
+    const itemProps = {
       id: `igc-${uid}-option-${index}`,
       size,
-      focusLock: highlighted,
-      tabIndex: highlighted ? 1 : -1,
       ref,
       index,
       handleFocusOut: this.handleItemFocusOut,
       onMouseEnter: () => this.handlers.selectedIndex(index),
     };
+
+    if (props.tag === ButtonComponent) {
+      itemProps.use = props.use ?? 'tertiary';
+      itemProps.theme = props.theme ?? 'muted';
+      itemProps.size = props.size ?? 's';
+    }
+
+    return itemProps;
   }
 
   handleItemFocusOut = (event) => {
@@ -372,7 +383,7 @@ class DropdownMenuRoot extends Component {
     }, 0);
   };
 
-  moveHighlightedIndex(amount, e) {
+  getHighlightedIndex = (amount) => {
     let { highlightedIndex } = this.asProps;
     const itemsLastIndex = this.itemProps.length - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item.selected);
@@ -397,13 +408,13 @@ class DropdownMenuRoot extends Component {
     }
 
     if (this.itemProps[newIndex]?.disabled) {
-      this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
+      this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
     } else if (!this.itemProps[newIndex]) {
-      this.handlers.highlightedIndex(0, e);
+      return 0;
     } else {
-      this.handlers.highlightedIndex(newIndex, e);
+      return newIndex;
     }
-  }
+  };
 
   componentDidUpdate(prevProps) {
     const visibilityChanged = this.asProps.visible !== prevProps.visible;
@@ -489,24 +500,22 @@ function Menu(props) {
   );
 }
 
-function Item({
-  styles,
-  focusLock,
-  disabled,
-  handleFocusOut,
-  Children,
-  'aria-describedby': ariaDescribedby,
-}) {
+function Item({ id, styles, disabled, Children, forwardRef }) {
   const SDropdownMenuItemContainer = Root;
-  const ref = React.useRef();
+  const itemRef = React.useRef();
 
-  useFocusLock(ref, false, 'auto', !focusLock || disabled, true, handleFocusOut);
+  const [highlighted, setHighlighted] = React.useState(false);
 
-  const menuItemContextValue = {};
+  const menuItemContextValue = {
+    contentId: id,
+    ref: forkRef(forwardRef, itemRef),
+  };
   const ariaDescribes = [];
 
-  const advancedMode = isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true);
+  const hasSubMenu = isAdvanceMode(Children, [DropdownMenu.displayName], true);
   const hasHint = isAdvanceMode(Children, [DropdownMenu.Item.Hint.displayName], true);
+  const advancedMode =
+    isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true) || hasSubMenu || hasHint;
 
   if (hasHint) {
     const hintId = `igc-${useUID()}-option-hint`;
@@ -515,16 +524,46 @@ function Item({
     ariaDescribes.push(hintId);
   }
 
-  ariaDescribes.push(ariaDescribedby);
+  if (hasSubMenu) {
+    menuItemContextValue.hasSubMenu = true;
+  }
+
+  menuItemContextValue.ariaDescribes = ariaDescribes;
+
+  React.useEffect(() => {
+    const onFocus = (e) => {
+      if (e.target === itemRef.current) {
+        setHighlighted(true);
+
+        if (hasSubMenu) {
+          e.stopPropagation();
+        }
+      }
+    };
+    const onBlur = (e) => {
+      if (e.target === itemRef.current) {
+        setHighlighted(false);
+      }
+    };
+
+    document.addEventListener('focus', onFocus, { capture: true });
+    document.addEventListener('blur', onBlur, { capture: true });
+
+    return () => {
+      document.removeEventListener('focus', onFocus, { capture: true });
+      document.removeEventListener('blur', onBlur, { capture: true });
+    };
+  }, [itemRef.current]);
 
   return sstyled(styles)(
     <menuItemContext.Provider value={menuItemContextValue}>
       <SDropdownMenuItemContainer
-        ref={ref}
         render={Box}
-        use:highlighted={!disabled && document.activeElement === ref.current}
-        use:role={'menuitem'}
-        use:aria-describedby={ariaDescribes.join(' ')}
+        ref={advancedMode ? undefined : menuItemContextValue.ref}
+        use:highlighted={!disabled && highlighted}
+        role={advancedMode ? undefined : 'menuitem'}
+        use:id={advancedMode ? undefined : id}
+        tabIndex={advancedMode ? undefined : -1}
         focusWithin
       >
         <Children />
@@ -655,8 +694,45 @@ function Group({ styles, title, Children, subTitle, size }) {
 
 function ItemContent({ styles }) {
   const SItemContent = Root;
+  const ref = React.useRef();
+  const menuItemCtxValue = React.useContext(menuItemContext);
 
-  return sstyled(styles)(<SItemContent render={Flex} />);
+  let subMenu = undefined;
+
+  if (menuItemCtxValue.hasSubMenu) {
+    subMenu = 'true';
+  }
+
+  const [describedby, setDescribedby] = React.useState(new Set(menuItemCtxValue.ariaDescribes));
+
+  React.useEffect(() => {
+    const element = ref.current;
+    const parent = element?.parentElement;
+
+    if (
+      parent.getAttribute('aria-haspopup') === 'true' &&
+      parent.getAttribute('aria-describedby')
+    ) {
+      setDescribedby((prev) => {
+        prev.add(parent.getAttribute('aria-describedby'));
+
+        return new Set(prev);
+      });
+    }
+  }, [menuItemCtxValue.ariaDescribes]);
+
+  return sstyled(styles)(
+    <SItemContent
+      render={Flex}
+      role={'menuitem'}
+      id={menuItemCtxValue.contentId}
+      tabIndex={-1}
+      ref={forkRef(menuItemCtxValue.ref, ref)}
+      use:aria-describedby={[...describedby].join(' ')}
+      aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
+      aria-expanded={subMenu}
+    />,
+  );
 }
 
 function ItemHint({ styles }) {
@@ -666,13 +742,6 @@ function ItemHint({ styles }) {
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden={'true'} />);
 }
 
-function Button({ styles }) {
-  const SDeleteButton = Root;
-  return sstyled(styles)(
-    <SDeleteButton render={ButtonComponent} use={'tertiary'} theme={'muted'} size={'s'} />,
-  );
-}
-
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
@@ -680,7 +749,7 @@ const DropdownMenu = createComponent(
     Popper: Dropdown.Popper,
     List,
     Menu,
-    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint, Button }],
+    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint }],
     Nesting: [Nesting, { Trigger: NestingTrigger, Addon, Item: NestingItem }],
     ItemTitle: Title,
     ItemHint: Hint,

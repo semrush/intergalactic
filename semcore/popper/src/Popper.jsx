@@ -33,6 +33,8 @@ import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/utils/lib/zIndexStacking';
+import { forkRef } from '@semcore/utils/lib/ref';
+import { findAllComponents } from '@semcore/utils/lib/findComponent';
 
 function isObject(obj) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -76,7 +78,7 @@ const MODIFIERS_OPTIONS = [
   'eventListeners',
 ];
 
-class Popper extends Component {
+class PopperRoot extends Component {
   static displayName = 'Popper';
 
   static style = style;
@@ -351,11 +353,13 @@ class Popper extends Component {
 
     const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
+    const triggers = findAllComponents(this.asProps.Children, [Popper.Trigger.displayName]);
     if (
       now < this.state.ignoreTriggerFocusUntil &&
       visible &&
       component === 'trigger' &&
-      focusAction
+      focusAction &&
+      triggers.length === 1
     ) {
       return;
     }
@@ -538,7 +542,8 @@ class Popper extends Component {
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
-  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef } = props;
+  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef, forwardRef } =
+    props;
 
   const triggerRef = React.useRef();
 
@@ -553,6 +558,14 @@ function Trigger(props) {
     if (focusSourceRef.current !== 'keyboard') return;
     onKeyboardFocus?.();
   }, [onKeyboardFocus]);
+
+  React.useEffect(() => {
+    document.addEventListener('focus', handleFocus);
+
+    return () => {
+      document.removeEventListener('focus', handleFocus);
+    };
+  }, []);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;
@@ -576,8 +589,7 @@ function Trigger(props) {
         render={Box}
         inline
         aria-haspopup={true}
-        ref={triggerRef}
-        onFocus={handleFocus}
+        ref={forkRef(triggerRef, forwardRef)}
         onBlur={props.onBlur}
       >
         <Children />
@@ -731,7 +743,9 @@ function PopperPopper(props) {
 
 PopperPopper.enhance = [keyboardFocusEnhance(false)];
 
-export default createComponent(Popper, {
+const Popper = createComponent(PopperRoot, {
   Trigger,
   Popper: PopperPopper,
 });
+
+export default Popper;
