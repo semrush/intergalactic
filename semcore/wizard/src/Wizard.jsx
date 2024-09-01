@@ -165,10 +165,9 @@ function Stepper(props) {
   return sstyled(styles)(
     <SStepper
       render={Box}
-      tag='h3'
       role='tab'
       id={`${uid}-step-${step}`}
-      aria-controls={`${uid}-content-${step}`}
+      aria-controls={active ? `${uid}-content-${step}` : undefined}
       aria-disabled={disabled}
       aria-current={active}
       onClick={handlerClick}
@@ -186,7 +185,7 @@ function Stepper(props) {
 Stepper.enhance = [keyboardFocusEnhance()];
 
 function Content(props) {
-  const { Children, styles, uid, step } = props;
+  const { Children, children: hasChildren, styles, uid, step } = props;
   const SContent = Root;
   return sstyled(styles)(
     <SContent
@@ -195,14 +194,14 @@ function Content(props) {
       aria-labelledby={`${uid}-step-${step}`}
       id={`${uid}-content-${step}`}
     >
-      <Children />
+      {hasChildren ? <Children /> : stepName}
     </SContent>,
   );
 }
 
 function StepBack(props) {
   const SStepBack = Root;
-  const { Children, styles, getI18nText, step } = props;
+  const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
     props.onActive?.(props.step - 1);
   }, [props.step]);
@@ -210,30 +209,30 @@ function StepBack(props) {
     <SStepBack
       render={Button}
       use='tertiary'
+      size='l'
       onClick={handleClick}
-      aria-label={getI18nText('backButton', { buttonName: `#${step + 1}` })}
+      aria-label={getI18nText('backButton', { buttonName: stepName })}
     >
       <Button.Addon>
         <ArrowLeft />
       </Button.Addon>
-      <Button.Text>
-        <Children />
-      </Button.Text>
+      <Button.Text>{hasChildren ? <Children /> : stepName}</Button.Text>
     </SStepBack>,
   );
 }
 function StepNext(props) {
   const SStepNext = Root;
-  const { Children, styles, getI18nText, step } = props;
+  const { Children, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
     props.onActive?.(props.step + 1);
   }, [props.step]);
   return sstyled(styles)(
     <SStepNext
       render={Button}
-      use='primary'
+      use='tertiary'
+      size='l'
       onClick={handleClick}
-      aria-label={getI18nText('nextButton', { buttonName: `#${step + 1}` })}
+      aria-label={getI18nText('nextButton', { buttonName: stepName })}
     >
       <Button.Text>
         <Children />

@@ -1,5 +1,5 @@
 {
   "completedStep": "Genomfört steg",
-  "backButton": "Back to {buttonName}",
-  "nextButton": "Go to {buttonName}"
+  "backButton": "Tillbaka till {buttonName}",
+  "nextButton": "Fortsätt till {buttonName}"
 }

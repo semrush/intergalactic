@@ -31,11 +31,9 @@ const Demo = () => {
           <Wizard.Step step={2}>Step 2</Wizard.Step>
           <Wizard.Step step={3}>Step 3</Wizard.Step>
           <Flex justifyContent='space-between' w='100%' mt={5}>
-            {step > 1 && (
-              <Wizard.StepBack onActive={setStep}>{steps[step - 2].title}</Wizard.StepBack>
-            )}
+            {step > 1 && <Wizard.StepBack onActive={setStep} stepName={steps[step - 2].title} />}
             {step !== steps.length && (
-              <Wizard.StepNext onActive={setStep}>{steps[step].title}</Wizard.StepNext>
+              <Wizard.StepNext onActive={setStep} stepName={steps[step].title} />
             )}
           </Flex>
         </Wizard.Content>

@@ -1,5 +1,5 @@
 {
   "completedStep": "Tamamlanan adım",
   "backButton": "Geri dön{buttonName}",
-  "nextButton": "Git {buttonName}"
+  "nextButton": "{buttonName} adresine devam edin"
 }
