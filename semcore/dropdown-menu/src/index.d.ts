@@ -166,14 +166,26 @@ declare const DropdownMenu: Intergalactic.Component<
    */
   ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
   Group: Intergalactic.Component<'div', DropdownMenuGroupProps>;
+  /**
+   * @deprecated Use Item instead of Nesting
+   */
   Nesting: Intergalactic.Component<
     'div',
     DropdownMenuItemProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
   > & {
+    /**
+     * @deprecated Use Item instead of Nesting
+     */
     Trigger: Intergalactic.Component<'div', DropdownMenuItemProps>;
+    /**
+     * @deprecated Use Item instead of Nesting
+     */
     Item: Intergalactic.Component<'div', DropdownMenuItemProps>;
+    /**
+     * @deprecated Use Item instead of Nesting
+     */
     Addon: typeof Box;
   };
 

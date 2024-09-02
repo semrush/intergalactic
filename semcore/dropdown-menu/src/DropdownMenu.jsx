@@ -14,11 +14,14 @@ import style from './style/dropdown-menu.shadow.css';
 import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance, {
+  useFocusSource,
+} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import ButtonComponent from '@semcore/button';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-// import {forkRef} from '@semcore/utils/lib/ref';
+import { forkRef } from '@semcore/utils/lib/ref';
+import { isFocusable } from '@semcore/utils/lib/focus-lock/isFocusable';
+import { vi } from 'vitest';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -42,11 +45,9 @@ class DropdownMenuRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
     interaction: 'click',
-  };
-
-  state = {
-    focusLockItemIndex: null,
-    keyboardFocused: false,
+    inlineActions: false,
+    placement: 'bottom-start',
+    timeout: 0,
   };
 
   popperRef = React.createRef();
@@ -70,36 +71,26 @@ class DropdownMenuRoot extends Component {
           this.handlers.selectedIndex(index);
         },
       ],
-      visible: [
-        null,
-        (visible) => {
-          if (visible) {
-            setTimeout(() => {
-              this.menuRef.current?.focus();
-            }, 100);
-          }
-        },
-      ],
+      visible: null,
     };
   }
 
-  // focusTrigger = () => {
-  //   const trigger = this.triggerRef.current;
-  //   if (!trigger) return;
-  //   if (isFocusInside(trigger)) return;
-  //   setFocus(trigger);
-  // };
+  handleClickTrigger = (e) => {
+    e.preventDefault();
+    this.handlers.visible(true);
 
-  focusMenu = () => {
-    const menu = this.menuRef.current;
-    menu?.focus();
+    setTimeout(() => {
+      const element = this.itemRefs[this.asProps.highlightedIndex];
+
+      element?.focus();
+    }, 0);
   };
 
   bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
     const targetTagName = e.target.tagName;
 
-    const { visible, highlightedIndex, placement } = this.asProps;
+    const { visible, highlightedIndex, placement, inlineActions } = this.asProps;
 
     if (e.key === ' ' && ['INPUT', 'TEXTAREA'].includes(targetTagName)) return;
     if (e.key === 'Enter' && targetTagName === 'TEXTAREA') return;
@@ -110,129 +101,109 @@ class DropdownMenuRoot extends Component {
     )
       return;
 
-    if (visible && e.key === 'Tab') {
-      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
-      if (item && getFocusableIn(item).length !== 0) {
-        this.setState({ focusLockItemIndex: highlightedIndex });
-      } else {
-        this.handlers.highlightedIndex(null);
-      }
+    if (
+      place === 'trigger' &&
+      ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
+      e.target.getAttribute('role') !== 'menuitem'
+    ) {
+      this.handleClickTrigger(e);
+    }
+
+    const show =
+      (e.key === 'ArrowRight' && placement.startsWith('right')) ||
+      (e.key === 'ArrowLeft' && placement.startsWith('left'));
+    const hide =
+      (e.key === 'ArrowLeft' && placement.startsWith('right')) ||
+      (e.key === 'ArrowRight' && placement.startsWith('left')) ||
+      e.key === 'Escape';
+    const isMenuItem = e.target.getAttribute('role') === 'menuitem';
+
+    if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
+      this.handlers.visible(true);
+      this.handlers.highlightedIndex(0);
+      setTimeout(() => {
+        this.itemRefs[this.asProps.highlightedIndex]?.focus();
+      }, 0);
+
+      e.preventDefault();
+      e.stopPropagation();
       return;
     }
-
-    if (e.key === 'Escape' && this.state.focusLockItemIndex !== null) {
-      this.setState({ focusLockItemIndex: null });
-      return false;
-    }
-
-    const verticalPlacement =
-      !placement || placement.startsWith('top') || placement.startsWith('bottom');
-
-    if (['ArrowDown', 'ArrowUp'].includes(e.key) && verticalPlacement) {
-      e.preventDefault();
-      this.handlers.visible(true);
-    }
-    if (['ArrowLeft', 'ArrowRight'].includes(e.key) && !verticalPlacement) {
-      const show =
-        (e.key === 'ArrowRight' && placement.startsWith('right')) ||
-        (e.key === 'ArrowLeft' && placement.startsWith('left'));
-      const hide =
-        (e.key === 'ArrowLeft' && placement.startsWith('right')) ||
-        (e.key === 'ArrowRight' && placement.startsWith('left'));
-      const visibleChanged = (visible && hide) || (!visible && show);
-      if (show) {
-        this.handlers.visible(true);
-      } else if (hide) {
+    if (place === 'list' && visible && hide && isMenuItem) {
+      if (
+        !inlineActions ||
+        (inlineActions && (e.key === 'Escape' || this.asProps.highlightedIndex === 0))
+      ) {
         this.handlers.visible(false);
-      }
-      if (visibleChanged) {
+        this.triggerRef.current?.focus();
+
         e.preventDefault();
         e.stopPropagation();
         return;
       }
     }
-    if (
-      (e.key.startsWith('Arrow') || e.key === ' ' || e.key === 'Enter') &&
-      !this.state.keyboardFocused
-    ) {
-      this.setState({ keyboardFocused: true });
-    }
-    if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
-      const item = highlightedIndex !== null && this.itemRefs[highlightedIndex];
-      const focusable = getFocusableIn(item);
-      if (focusable.length > 0 && item) {
-        const focusedIndex = focusable.indexOf(document.activeElement);
-        if (e.key === 'ArrowRight') {
-          if (focusedIndex === -1) {
-            this.setState({ focusLockItemIndex: highlightedIndex });
-          }
-          const nextFocused = focusable[focusedIndex + 1];
-          if (nextFocused) {
+
+    if (place === 'list') {
+      switch (e.key) {
+        case 'ArrowDown': {
+          if (visible && !inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
+
             e.preventDefault();
             e.stopPropagation();
-            nextFocused.focus();
           }
-        } else if (e.key === 'ArrowLeft') {
-          if (focusedIndex === 0) {
-            this.setState({ focusLockItemIndex: null });
-            this.menuRef.current?.focus();
-          }
-          const prevFocused = focusable[focusedIndex - 1];
-          if (prevFocused) {
+          break;
+        }
+        case 'ArrowRight': {
+          if (visible && inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
+
             e.preventDefault();
             e.stopPropagation();
-            prevFocused.focus();
           }
+          break;
         }
-      }
-    }
-
-    switch (e.key) {
-      case 'ArrowDown': {
-        if (visible) {
-          this.moveHighlightedIndex(amount, e);
-          if (isFocusInside(this.popperRef.current)) {
-            this.focusMenu();
-          }
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        break;
-      }
-      case 'ArrowUp': {
-        if (visible) {
-          this.moveHighlightedIndex(-amount, e);
-          if (isFocusInside(this.popperRef.current)) {
-            this.focusMenu();
-          }
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        break;
-      }
-      case ' ':
-      case 'Enter':
-        if (this.highlightedItemRef.current && highlightedIndex !== null) {
-          e.stopPropagation();
-          e.preventDefault();
-          this.highlightedItemRef.current.click();
-        } else {
-          if (place === 'trigger') {
-            this.handlers.visible(false);
+        case 'ArrowUp': {
+          if (visible && !inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(-amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
 
             e.preventDefault();
+            e.stopPropagation();
           }
+          break;
         }
-        break;
-    }
-  };
+        case 'ArrowLeft': {
+          if (visible && inlineActions) {
+            const newHighlightedIndex = this.getHighlightedIndex(-amount);
+            this.itemRefs[newHighlightedIndex]?.focus();
+            this.handlers.highlightedIndex(newHighlightedIndex, e);
 
-  handleTriggerKeyboardFocus = () => {
-    if (this.ignoreTriggerKeyboardFocusUntil > Date.now()) return false;
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          break;
+        }
+        case ' ':
+        case 'Enter':
+          if (this.highlightedItemRef.current && highlightedIndex !== null) {
+            e.stopPropagation();
+            e.preventDefault();
+            this.highlightedItemRef.current.click();
+          }
+
+          break;
+      }
+    }
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
 
     return {
       size,
@@ -241,25 +212,24 @@ class DropdownMenuRoot extends Component {
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
       onKeyDown: this.bindHandlerKeyDown('trigger'),
+      onClick: this.handleClickTrigger,
       ref: this.triggerRef,
-      onKeyboardFocus: this.handleTriggerKeyboardFocus,
     };
   }
 
   getListProps() {
-    const { size, highlightedIndex, visible, uid } = this.asProps;
+    const { size, uid } = this.asProps;
     const triggerId = this.triggerRef.current?.id;
 
     return {
       size,
       index: this.asProps.highlightedIndex,
+      tabIndex: -1,
+      onKeyDown: this.bindHandlerKeyDown('list'),
       ref: this.menuRef,
       id: `igc-${uid}-list`,
       role: 'menu',
-      tabIndex: -1,
       'aria-labelledby': triggerId,
-      'aria-activedescendant':
-        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
     };
   }
 
@@ -289,92 +259,39 @@ class DropdownMenuRoot extends Component {
   }
 
   getItemProps(props, index) {
-    const { size, highlightedIndex, uid } = this.asProps;
-    const highlighted = index === highlightedIndex;
-    let ref = (node) => {
-      this.itemRefs[index] = node;
+    const { size, uid } = this.asProps;
+
+    const ref = (node) => {
+      if (node?.getAttribute('role') === 'menuitem') {
+        this.itemRefs[index] = node;
+      }
+
+      if (node === document.activeElement) {
+        this.scrollToNode(node);
+      }
     };
     this.itemProps[index] = props;
-    if (highlighted) {
-      ref = (node) => {
-        this.itemRefs[index] = node;
-        this.scrollToNode(node);
-      };
-    } else {
-      ref = (node) => {
-        node?.blur();
-      };
-    }
 
-    return {
+    const itemProps = {
       id: `igc-${uid}-option-${index}`,
       size,
-      highlighted,
-      focusLock: this.state.focusLockItemIndex === index,
-      menuRef: this.menuRef,
       ref,
       index,
-      handleFocusOut: this.handleItemFocusOut,
-      triggerKeyboardFocused: this.state.keyboardFocused,
       onMouseEnter: () => this.handlers.selectedIndex(index),
     };
+
+    if (props.tag === ButtonComponent) {
+      itemProps.use = props.use ?? 'tertiary';
+      itemProps.theme = props.theme ?? 'muted';
+      itemProps.size = props.size ?? 's';
+    }
+
+    return itemProps;
   }
 
-  handleItemFocusOut = (event) => {
-    if (event.relatedTarget === this.popperRef.current) return;
-    const focused = event.relatedTarget;
-
-    if (hasParent(focused, this.popperRef.current)) {
-      this.handlers.highlightedIndex(null);
-      this.setState({ focusLockItemIndex: null });
-      focused.focus();
-    }
-  };
-
-  handleNestingClick = (event) => {
-    const itemIndex = this.itemRefs.indexOf(event.currentTarget);
-    if (itemIndex === -1) return;
-    const focusable = getFocusableIn(event.currentTarget);
-    focusable[0]?.focus();
-    if (focusable[0] && this.state.focusLockItemIndex === null) {
-      this.setState({ focusLockItemIndex: null });
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  };
-  handleNestingKeyDown = (event) => {
-    if (event.key === ' ') {
-      this.handleNestingClick(event);
-    }
-  };
-  getNestingProps = () => {
-    const { size } = this.asProps;
-    return {
-      size,
-      onClick: this.handleNestingClick,
-      onKeyDown: this.handleNestingKeyDown,
-    };
-  };
-  handleNestedVisibleChange = (lastUserInteraction) => {
-    if (
-      this.asProps.visible &&
-      this.asProps.highlightedIndex === null &&
-      lastUserInteraction === 'keyboard'
-    ) {
-      this.handlers.highlightedIndex(0);
-    }
-  };
-  getNestingTriggerProps = () => {
-    const { size, visible } = this.asProps;
-    return {
-      size,
-      visible,
-      onNestedVisibleChange: this.handleNestedVisibleChange,
-    };
-  };
-  getNestingItemProps = () => {
-    return this.getNestingTriggerProps();
-  };
+  // getNestingProps(props, index) {
+  //   return this.getItemProps(props, index);
+  // }
 
   getItemHintProps() {
     const { size } = this.asProps;
@@ -407,7 +324,7 @@ class DropdownMenuRoot extends Component {
     }, 0);
   };
 
-  moveHighlightedIndex(amount, e) {
+  getHighlightedIndex = (amount) => {
     let { highlightedIndex } = this.asProps;
     const itemsLastIndex = this.itemProps.length - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item.selected);
@@ -432,13 +349,13 @@ class DropdownMenuRoot extends Component {
     }
 
     if (this.itemProps[newIndex]?.disabled) {
-      this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
+      this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
     } else if (!this.itemProps[newIndex]) {
-      this.handlers.highlightedIndex(0, e);
+      return 0;
     } else {
-      this.handlers.highlightedIndex(newIndex, e);
+      return newIndex;
     }
-  }
+  };
 
   componentDidUpdate(prevProps) {
     const visibilityChanged = this.asProps.visible !== prevProps.visible;
@@ -457,14 +374,6 @@ class DropdownMenuRoot extends Component {
         const selectedItemIndex = this.itemProps.findIndex((item) => item.selected);
         if (selectedItemIndex === -1 || this.asProps.highlightedIndex !== null) return;
         this.handlers.highlightedIndex(selectedItemIndex);
-      }, 0);
-    }
-    if (
-      (this.state.focusLockItemIndex !== this.asProps.highlightedIndex || !this.asProps.visible) &&
-      this.state.focusLockItemIndex !== null
-    ) {
-      setTimeout(() => {
-        this.setState({ focusLockItemIndex: null });
       }, 0);
     }
   }
@@ -490,7 +399,7 @@ function List(props) {
   return sstyled(props.styles)(
     <ListBoxContextProvider>
       <ScrollAreaComponent shadow={true}>
-        <SDropdownMenuList render={ScrollAreaComponent.Container} disabled />
+        <SDropdownMenuList render={ScrollAreaComponent.Container} />
       </ScrollAreaComponent>
     </ListBoxContextProvider>,
   );
@@ -524,32 +433,22 @@ function Menu(props) {
   );
 }
 
-function Item({
-  styles,
-  id,
-  menuRef,
-  focusLock,
-  disabled,
-  highlighted,
-  handleFocusOut,
-  triggerKeyboardFocused,
-  Children,
-  'aria-describedby': ariaDescribedby,
-}) {
+function Item({ id, styles, disabled, Children, forwardRef }) {
   const SDropdownMenuItemContainer = Root;
-  const ref = React.useRef();
-  useFocusLock(ref, false, menuRef, !focusLock || disabled, true, handleFocusOut);
+  const itemRef = React.useRef();
+
+  const [highlighted, setHighlighted] = React.useState(false);
 
   const menuItemContextValue = {
     contentId: id,
-    ref,
+    ref: forkRef(forwardRef, itemRef),
   };
   const ariaDescribes = [];
 
-  const advancedMode = isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true);
-  const hasActions = isAdvanceMode(Children, [DropdownMenu.Item.Button.displayName], true);
+  const hasSubMenu = isAdvanceMode(Children, [DropdownMenu.displayName], true);
   const hasHint = isAdvanceMode(Children, [DropdownMenu.Item.Hint.displayName], true);
-  const actionsDescriptionId = `igc-${useUID()}-actions`;
+  const advancedMode =
+    isAdvanceMode(Children, [DropdownMenu.Item.Content.displayName], true) || hasSubMenu || hasHint;
 
   if (hasHint) {
     const hintId = `igc-${useUID()}-option-hint`;
@@ -558,100 +457,54 @@ function Item({
     ariaDescribes.push(hintId);
   }
 
-  ariaDescribes.push(ariaDescribedby);
-
-  if (hasActions) {
-    ariaDescribes.push(actionsDescriptionId);
+  if (hasSubMenu) {
+    menuItemContextValue.hasSubMenu = true;
   }
 
   menuItemContextValue.ariaDescribes = ariaDescribes;
+
+  React.useEffect(() => {
+    const onFocus = (e) => {
+      if (e.target === itemRef.current) {
+        setHighlighted(true);
+
+        if (hasSubMenu) {
+          e.stopPropagation();
+        }
+      }
+    };
+    const onBlur = (e) => {
+      if (e.target === itemRef.current) {
+        setHighlighted(false);
+      }
+    };
+
+    document.addEventListener('focus', onFocus, { capture: true });
+    document.addEventListener('blur', onBlur, { capture: true });
+
+    return () => {
+      document.removeEventListener('focus', onFocus, { capture: true });
+      document.removeEventListener('blur', onBlur, { capture: true });
+    };
+  }, [itemRef.current]);
+
+  const focusSourceRef = useFocusSource();
 
   return sstyled(styles)(
     <menuItemContext.Provider value={menuItemContextValue}>
       <SDropdownMenuItemContainer
         render={Box}
-        use:highlighted={!disabled && highlighted && triggerKeyboardFocused}
+        ref={advancedMode ? undefined : menuItemContextValue.ref}
+        use:highlighted={!disabled && highlighted && focusSourceRef.current === 'keyboard'}
         role={advancedMode ? undefined : 'menuitem'}
-        tabIndex={-1}
         use:id={advancedMode ? undefined : id}
-        use:aria-describedby={advancedMode ? undefined : ariaDescribes.join(' ')}
-        __excludeProps={advancedMode ? ['aria-describedby'] : undefined}
+        tabIndex={advancedMode ? undefined : -1}
+        focusWithin
       >
         <Children />
       </SDropdownMenuItemContainer>
-      {hasActions && (
-        <ScreenReaderOnly aria-hidden={true} id={actionsDescriptionId}>
-          Has actions. Press right to navigate
-        </ScreenReaderOnly>
-      )}
     </menuItemContext.Provider>,
   );
-}
-
-const NestingContext = React.createContext(null);
-
-function Nesting({ styles, disabled }) {
-  const SDropdownMenuNesting = Root;
-  const contextValue = React.useMemo(() => ({ disabled }), [disabled]);
-
-  return (
-    <NestingContext.Provider value={contextValue}>
-      {sstyled(styles)(<SDropdownMenuNesting aria-haspopup='true' render={DropdownMenu.Item} />)}
-    </NestingContext.Provider>
-  );
-}
-
-function NestingTrigger(props) {
-  const { styles, visible, onNestedVisibleChange } = props;
-  const SDropdownMenuItemContainer = Root;
-  const nestingContext = React.useContext(NestingContext);
-  const disabled = props.disabled || nestingContext?.disabled;
-
-  const lastUserInteractionRef = React.useRef(undefined);
-  React.useEffect(() => {
-    onNestedVisibleChange(lastUserInteractionRef.current);
-  }, [visible]);
-
-  const handleMouseEvent = React.useCallback(() => {
-    lastUserInteractionRef.current = 'mouse';
-  }, []);
-  const handleKeyboardEvent = React.useCallback(() => {
-    lastUserInteractionRef.current = 'keyboard';
-  }, []);
-
-  React.useEffect(() => {
-    document.addEventListener('mouseover', handleMouseEvent, { capture: true });
-    document.addEventListener('keydown', handleKeyboardEvent, {
-      capture: true,
-    });
-    return () => {
-      document.removeEventListener('mouseover', handleMouseEvent, {
-        capture: true,
-      });
-      document.removeEventListener('keydown', handleKeyboardEvent, {
-        capture: true,
-      });
-    };
-  }, []);
-
-  return (
-    <NestingContext.Provider value={null}>
-      {sstyled(styles)(
-        <SDropdownMenuItemContainer
-          nesting-trigger
-          use:tabIndex={!disabled ? 0 : undefined}
-          render={Flex}
-        />,
-      )}
-    </NestingContext.Provider>
-  );
-}
-
-function NestingItem(props) {
-  const { styles } = props;
-  const SDropdownNestingItem = Root;
-
-  return sstyled(styles)(<SDropdownNestingItem render={NestingTrigger} use:tabIndex={-1} />);
 }
 
 function Addon(props) {
@@ -663,21 +516,6 @@ function Addon(props) {
       {...other}
     />
   );
-}
-
-/**
- * @deprecated Use Item hint
- */
-function Hint(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(<SDropdownMenuItemContainer render={Flex} variant='hint' />);
-}
-/**
- * @deprecated Use Group with title prop
- */
-function Title(props) {
-  const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(<SDropdownMenuItemContainer render={Flex} variant='title' />);
 }
 
 function Trigger() {
@@ -710,15 +548,43 @@ function Group({ styles, title, Children, subTitle, size }) {
 
 function ItemContent({ styles }) {
   const SItemContent = Root;
+  const ref = React.useRef();
   const menuItemCtxValue = React.useContext(menuItemContext);
+
+  let subMenu = undefined;
+
+  if (menuItemCtxValue.hasSubMenu) {
+    subMenu = 'true';
+  }
+
+  const [describedby, setDescribedby] = React.useState(new Set(menuItemCtxValue.ariaDescribes));
+
+  React.useEffect(() => {
+    const element = ref.current;
+    const parent = element?.parentElement;
+
+    if (
+      parent.getAttribute('aria-haspopup') === 'true' &&
+      parent.getAttribute('aria-describedby')
+    ) {
+      setDescribedby((prev) => {
+        prev.add(parent.getAttribute('aria-describedby'));
+
+        return new Set(prev);
+      });
+    }
+  }, [menuItemCtxValue.ariaDescribes]);
 
   return sstyled(styles)(
     <SItemContent
       render={Flex}
-      role='menuitem'
+      role={'menuitem'}
       id={menuItemCtxValue.contentId}
-      ref={menuItemCtxValue.ref}
-      use:aria-describedby={menuItemCtxValue.ariaDescribes.join(' ')}
+      tabIndex={-1}
+      ref={forkRef(menuItemCtxValue.ref, ref)}
+      use:aria-describedby={[...describedby].join(' ')}
+      aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
+      aria-expanded={subMenu}
     />,
   );
 }
@@ -730,10 +596,39 @@ function ItemHint({ styles }) {
   return sstyled(styles)(<SItemHint render={Flex} id={hintId} aria-hidden={'true'} />);
 }
 
-function Button({ styles }) {
-  const SDeleteButton = Root;
-  return sstyled(styles)(
-    <SDeleteButton render={ButtonComponent} use={'tertiary'} theme={'muted'} size={'s'} />,
+/**
+ * @deprecated Use Item hint
+ */
+function Hint(props) {
+  const SDropdownMenuItemContainer = Root;
+  return sstyled(props.styles)(<SDropdownMenuItemContainer render={Flex} variant='hint' />);
+}
+/**
+ * @deprecated Use Group with title prop
+ */
+function Title(props) {
+  const SDropdownMenuItemContainer = Root;
+  return sstyled(props.styles)(<SDropdownMenuItemContainer render={Flex} variant='title' />);
+}
+
+/**
+ * @deprecated
+ */
+function Nesting({ forwardRef }) {
+  return <Root render={DropdownMenu.Item} ref={forwardRef} />;
+}
+
+/**
+ * @deprecated
+ */
+function NestingTrigger({ forwardRef }) {
+  return (
+    <Root
+      render={DropdownMenu.Item.Content}
+      tag={DropdownMenu.Trigger}
+      ref={forwardRef}
+      use:role={'menuitem'}
+    />
   );
 }
 
@@ -744,8 +639,11 @@ const DropdownMenu = createComponent(
     Popper: Dropdown.Popper,
     List,
     Menu,
-    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint, Button }],
-    Nesting: [Nesting, { Trigger: NestingTrigger, Addon, Item: NestingItem }],
+    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint }],
+    /**
+     * @deprecated. Use just Item. See examples on
+     */
+    Nesting: [Nesting, { Trigger: NestingTrigger, Addon }],
     ItemTitle: Title,
     ItemHint: Hint,
     Group,

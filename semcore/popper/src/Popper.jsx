@@ -34,7 +34,6 @@ import {
   ZIndexStackingContextProvider,
 } from '@semcore/utils/lib/zIndexStacking';
 import { forkRef } from '@semcore/utils/lib/ref';
-import { findAllComponents } from '@semcore/utils/lib/findComponent';
 
 function isObject(obj) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -131,12 +130,11 @@ class PopperRoot extends Component {
     },
   };
 
-  // timer: ReturnType<typeof setTimeout>;
-  // observer: ResizeObserver;
   triggerRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
   lastPopperReference = null;
+  ignoreTriggerFocusUntil = false;
 
   constructor(props) {
     super(props);
@@ -155,7 +153,6 @@ class PopperRoot extends Component {
     };
   }
 
-  state = { ignoreTriggerFocusUntil: 0 };
   mouseEnterCursorPositionRef = { current: null };
 
   createTriggerRef = (ref) => {
@@ -351,16 +348,8 @@ class PopperRoot extends Component {
       this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };
     }
 
-    const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
-    const triggers = findAllComponents(this.asProps.Children, [Popper.Trigger.displayName]);
-    if (
-      now < this.state.ignoreTriggerFocusUntil &&
-      visible &&
-      component === 'trigger' &&
-      focusAction &&
-      triggers.length === 1
-    ) {
+    if (this.ignoreTriggerFocusUntil && visible && component === 'trigger' && focusAction) {
       return;
     }
     if (!visible) {
@@ -392,13 +381,13 @@ class PopperRoot extends Component {
             this.popper.current.setOptions({});
           }
         }
+        if (!visible && component === 'popper') {
+          this.ignoreTriggerFocusUntil = false;
+        }
       }, 0);
     });
-    const ignoringDuration = 2000;
-    if (!visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
-      this.setState({
-        ignoreTriggerFocusUntil: now + ignoringDuration,
-      });
+    if (component === 'popper' && !visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
+      this.ignoreTriggerFocusUntil = true;
     }
   };
 
@@ -410,17 +399,10 @@ class PopperRoot extends Component {
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
     const latency = visible ? timeoutConfig[0] : timeoutConfig[1];
     clearTimeout(this.timer);
-    if (this.asProps.visible) {
-      this.timer = setTimeout(() => {
-        handlers.visible(visible, e);
-      }, latency);
-      cb();
-    } else {
-      this.timer = setTimeout(() => {
-        handlers.visible(visible, e);
-        cb();
-      }, latency);
-    }
+    this.timer = setTimeout(() => {
+      handlers.visible(visible, e);
+    }, latency);
+    cb();
   };
 
   getTriggerProps() {
@@ -439,27 +421,8 @@ class PopperRoot extends Component {
       onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'trigger'),
       disableEnforceFocus,
       popperRef: this.popperRef,
-      /** order of handlers is important here! */
-      onBlur: callAllEventHandlers(interactionProps.onBlur, this.handleTriggerBlur),
     };
   }
-
-  handleTriggerBlur = () => {
-    const { timeout } = this.asProps;
-    const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
-    const delay = timeoutConfig[1];
-
-    clearTimeout(this.triggerBlurTimeout);
-    /** Need to call timeout with delay as for hiding */
-    this.triggerBlurTimeout = setTimeout(() => {
-      /** Need to check visible prop in next frame because this.asProps updates only after rerender */
-      requestAnimationFrame(() => {
-        if (!this.asProps.visible) {
-          this.setState({ ignoreTriggerFocusUntil: 0 });
-        }
-      });
-    }, delay);
-  };
 
   getPopperProps() {
     const {
@@ -554,10 +517,13 @@ function Trigger(props) {
   }, [highlighted]);
 
   const focusSourceRef = useFocusSource();
-  const handleFocus = React.useCallback(() => {
-    if (focusSourceRef.current !== 'keyboard') return;
-    onKeyboardFocus?.();
-  }, [onKeyboardFocus]);
+  const handleFocus = React.useCallback(
+    (e) => {
+      if (focusSourceRef.current !== 'keyboard' || e.target !== triggerRef.current) return;
+      onKeyboardFocus?.();
+    },
+    [onKeyboardFocus],
+  );
 
   React.useEffect(() => {
     document.addEventListener('focus', handleFocus);
