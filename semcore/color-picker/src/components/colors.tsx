@@ -1,6 +1,6 @@
 import React from 'react';
 import { Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import ColorPicker, { PaletteManager } from '../ColorPicker';
 
@@ -20,7 +20,12 @@ export function Colors(props: ColorsAsProps) {
   const SColors = Root;
 
   return sstyled(styles)(
-    <SColors render={Box} role='list' aria-label={getI18nText('presetColors')}>
+    <SColors
+      render={Box}
+      role='listbox'
+      aria-orientation='horizontal'
+      aria-label={getI18nText('presetColors')}
+    >
       {Children.origin ? (
         <Children />
       ) : (
@@ -33,18 +38,26 @@ export function Colors(props: ColorsAsProps) {
 export function ColorsCustom(props: ColorsCustomAsProps) {
   const { Children, styles, colors, onPlusButtonClick, getI18nText } = props;
   const SColors = Root;
+  const SColorsContainer = Flex;
   const SPlusButton = 'div';
 
   return sstyled(styles)(
-    <SColors render={Box} role='list' aria-label={getI18nText('customColors')}>
-      {Children.origin ? (
-        <Children />
-      ) : (
-        colors?.map((color) => <PaletteManager.Item value={color} key={color} />)
-      )}
-      <SPlusButton onClick={onPlusButtonClick} aria-hidden='true'>
-        <MathPlusM color='gray-500' />
+    <SColorsContainer>
+      <SColors
+        render={Box}
+        role='listbox'
+        aria-orientation='horizontal'
+        aria-label={getI18nText('customColors')}
+      >
+        {Children.origin ? (
+          <Children />
+        ) : (
+          colors?.map((color) => <PaletteManager.Item value={color} key={color} />)
+        )}
+      </SColors>
+      <SPlusButton onClick={onPlusButtonClick} role='button' aria-label={getI18nText('addColor')}>
+        <MathPlusM color='icon-primary-neutral' />
       </SPlusButton>
-    </SColors>,
+    </SColorsContainer>,
   ) as React.ReactElement;
 }

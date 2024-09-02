@@ -5,6 +5,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/color-picker.shadow.css';
+import uniqueIdEnhance from '@semcore/utils/lib/uniqueID';
 
 type RootAsProps = {
   defaultColors?: string[];
@@ -17,11 +18,16 @@ type RootAsProps = {
 
 type State = { focus: boolean };
 
-class PaletteManagerRoot extends Component<RootAsProps, State> {
+const enhance = {
+  getI18nText: i18nEnhance(localizedMessages),
+  uid: uniqueIdEnhance(),
+};
+
+class PaletteManagerRoot extends Component<RootAsProps, {}, State, typeof enhance> {
   static displayName = 'PaletteManager';
 
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = Object.values(enhance);
 
   static defaultProps = {
     defaultColors: [],
@@ -29,7 +35,6 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
     locale: 'en',
   };
 
-  _colors: string[] = [];
   refInput = React.createRef<HTMLInputElement>();
 
   state: State = {
@@ -42,21 +47,19 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
     };
   }
 
-  get colors(): string[] {
-    return this.props.colors !== undefined ? this.asProps.colors! : this._colors;
-  }
-
   bindHandlerItemRemove = (value: string) => (event: React.MouseEvent) => {
     event.stopPropagation();
+    const { colors = [] } = this.asProps;
     this.handlers.colors(
-      this.colors.filter((color: string) => color !== value),
+      colors.filter((color: string) => color !== value),
       event,
     );
   };
 
   bindHandlerItemAdd = () => (value: string, event: React.MouseEvent) => {
-    if (!this.colors.includes(value)) {
-      this.handlers.colors(this.colors.concat(value), event);
+    const { colors = [] } = this.asProps;
+    if (!colors.includes(value)) {
+      this.handlers.colors(colors.concat(value), event);
     }
   };
 
@@ -77,9 +80,10 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
   }
 
   getItemProps({ value }: any) {
-    this._colors.push(value);
+    const { uid } = this.asProps;
 
     return {
+      uid,
       editable: true,
       onRemove: this.bindHandlerItemRemove(value),
       getI18nText: this.asProps.getI18nText,
@@ -103,8 +107,6 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
 
   render(this: any) {
     const { styles, Children } = this.asProps;
-
-    this._colors = [];
 
     const PaletteManager = this[CORE_INSTANCE];
 

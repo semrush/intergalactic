@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import usePosts from './useBlogPosts'
-import VPFeatures from 'vitepress/dist/client/theme-default/components/VPFeatures.vue'
+import VPFeatures from '../VPFeatures.vue'
 
 const { allPosts: posts } = usePosts()
+defineProps<{
+  header?: number
+}>()
 
 </script>
 
@@ -14,6 +17,7 @@ const { allPosts: posts } = usePosts()
       details: post.excerpt + '<br /><br />' + post.date.string,
       link: `/blog/${post.slug}/`,
     }))"
+    :header="header"
   />
 </template>
 

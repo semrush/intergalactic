@@ -33,6 +33,10 @@ export type DropdownMenuProps = DropdownProps & {
    */
   onHighlightedIndexChange?: (highlightedIndex: number | null) => void;
   locale?: string;
+  /**
+   * Flag for menu that using as actions on DropdownMenu.Item
+   */
+  inlineActions?: boolean;
 };
 
 /** @deprecated */

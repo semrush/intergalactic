@@ -22,11 +22,11 @@ The list below describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Attribute                  | Element | Usage                                                                                                                                                    |
-| -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                            | `nav`   | The `nav` element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents. |
-| `aria-label="Breadcrumbs"` | `nav`   | Provides a label for the group of links that describes the type of navigation provided.                                                                  |
-| `aria-current="page"`      | `a`     | Applied to the last link in the set to indicate that it represents the current page.                                                                     |
+| Element            | Roles & attributes         | Usage                                                                                                                                  |
+| ------------------ | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Breadcrumbs`      | `nav`                      | Represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents. |
+| `Breadcrumbs`      | `aria-label="Breadcrumbs"` | Provides a label for the group of links that describes the type of navigation provided.                                                |
+| `Breadcrumbs.Item` | `aria-current="page"`      | Applied to the last link in the set to indicate that it represents the current page.                                                   |
 
 ## Considerations for designers & developers
 

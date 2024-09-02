@@ -26,7 +26,7 @@ const lightTheme: ThemeRegistrationAny = {
     'debugToolBar.background': '#fff',
     descriptionForeground: '#6a737d',
     'diffEditor.insertedTextBackground': '#34d05822',
-    'diffEditor.removedTextBackground': '#d73a4922',
+    'diffEditor.removedTextBackground': '#c2004622',
     'dropdown.background': '#fafbfc',
     'dropdown.border': '#e1e4e8',
     'dropdown.foreground': '#2f363d',
@@ -49,20 +49,20 @@ const lightTheme: ThemeRegistrationAny = {
     'editor.wordHighlightStrongBackground': '#34d05800',
     'editor.wordHighlightStrongBorder': '#24943e50',
     'editorBracketHighlight.foreground1': '#005cc5',
-    'editorBracketHighlight.foreground2': '#e36209',
+    'editorBracketHighlight.foreground2': '#d85d00',
     'editorBracketHighlight.foreground3': '#5a32a3',
     'editorBracketHighlight.foreground4': '#005cc5',
-    'editorBracketHighlight.foreground5': '#e36209',
+    'editorBracketHighlight.foreground5': '#d85d00',
     'editorBracketHighlight.foreground6': '#5a32a3',
     'editorBracketMatch.background': '#34d05840',
     'editorBracketMatch.border': '#34d05800',
     'editorCursor.foreground': '#044289',
-    'editorError.foreground': '#cb2431',
+    'editorError.foreground': '#c20046',
     'editorGroup.border': '#e1e4e8',
     'editorGroupHeader.tabsBackground': '#f6f8fa',
     'editorGroupHeader.tabsBorder': '#e1e4e8',
     'editorGutter.addedBackground': '#28a745',
-    'editorGutter.deletedBackground': '#d73a49',
+    'editorGutter.deletedBackground': '#c20046',
     'editorGutter.modifiedBackground': '#2188ff',
     'editorIndentGuide.activeBackground': '#d7dbe0',
     'editorIndentGuide.background': '#eff2f6',
@@ -72,12 +72,12 @@ const lightTheme: ThemeRegistrationAny = {
     'editorWarning.foreground': '#f9c513',
     'editorWhitespace.foreground': '#d1d5da',
     'editorWidget.background': '#f6f8fa',
-    errorForeground: '#cb2431',
+    errorForeground: '#c20046',
     focusBorder: '#2188ff',
     foreground: '#444d56',
     'gitDecoration.addedResourceForeground': '#28a745',
-    'gitDecoration.conflictingResourceForeground': '#e36209',
-    'gitDecoration.deletedResourceForeground': '#d73a49',
+    'gitDecoration.conflictingResourceForeground': '#d85d00',
+    'gitDecoration.deletedResourceForeground': '#c20046',
     'gitDecoration.ignoredResourceForeground': '#959da5',
     'gitDecoration.modifiedResourceForeground': '#005cc5',
     'gitDecoration.submoduleResourceForeground': '#959da5',
@@ -99,9 +99,9 @@ const lightTheme: ThemeRegistrationAny = {
     'notifications.background': '#fafbfc',
     'notifications.border': '#e1e4e8',
     'notifications.foreground': '#2f363d',
-    'notificationsErrorIcon.foreground': '#d73a49',
+    'notificationsErrorIcon.foreground': '#c20046',
     'notificationsInfoIcon.foreground': '#005cc5',
-    'notificationsWarningIcon.foreground': '#e36209',
+    'notificationsWarningIcon.foreground': '#d85d00',
     'panel.background': '#f6f8fa',
     'panel.border': '#e1e4e8',
     'panelInput.border': '#e1e4e8',
@@ -151,15 +151,15 @@ const lightTheme: ThemeRegistrationAny = {
     'terminal.ansiBrightBlack': '#959da5',
     'terminal.ansiBrightBlue': '#005cc5',
     'terminal.ansiBrightCyan': '#3192aa',
-    'terminal.ansiBrightGreen': '#22863a',
+    'terminal.ansiBrightGreen': '#028623',
     'terminal.ansiBrightMagenta': '#5a32a3',
-    'terminal.ansiBrightRed': '#cb2431',
+    'terminal.ansiBrightRed': '#c20046',
     'terminal.ansiBrightWhite': '#d1d5da',
     'terminal.ansiBrightYellow': '#b08800',
     'terminal.ansiCyan': '#1b7c83',
     'terminal.ansiGreen': '#28a745',
     'terminal.ansiMagenta': '#5a32a3',
-    'terminal.ansiRed': '#d73a49',
+    'terminal.ansiRed': '#c20046',
     'terminal.ansiWhite': '#6a737d',
     'terminal.ansiYellow': '#dbab09',
     'terminal.foreground': '#586069',
@@ -219,19 +219,19 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'entity.name.tag',
       settings: {
-        foreground: '#22863a',
+        foreground: '#028623',
       },
     },
     {
       scope: 'keyword',
       settings: {
-        foreground: '#d73a49',
+        foreground: '#c20046',
       },
     },
     {
       scope: ['storage', 'storage.type'],
       settings: {
-        foreground: '#d73a49',
+        foreground: '#c20046',
       },
     },
     {
@@ -265,7 +265,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'variable',
       settings: {
-        foreground: '#e36209',
+        foreground: '#d85d00',
       },
     },
     {
@@ -278,34 +278,34 @@ const lightTheme: ThemeRegistrationAny = {
       scope: 'invalid.broken',
       settings: {
         fontStyle: 'italic',
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {
       scope: 'invalid.deprecated',
       settings: {
         fontStyle: 'italic',
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {
       scope: 'invalid.illegal',
       settings: {
         fontStyle: 'italic',
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {
       scope: 'invalid.unimplemented',
       settings: {
         fontStyle: 'italic',
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {
       scope: 'carriage-return',
       settings: {
-        background: '#d73a49',
+        background: '#c20046',
         content: '^M',
         fontStyle: 'italic underline',
         foreground: '#fafbfc',
@@ -314,7 +314,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'message.error',
       settings: {
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {
@@ -344,7 +344,7 @@ const lightTheme: ThemeRegistrationAny = {
       scope: 'string.regexp constant.character.escape',
       settings: {
         fontStyle: 'bold',
-        foreground: '#22863a',
+        foreground: '#028623',
       },
     },
     {
@@ -368,7 +368,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'punctuation.definition.list.begin.markdown',
       settings: {
-        foreground: '#e36209',
+        foreground: '#d85d00',
       },
     },
     {
@@ -381,7 +381,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'markup.quote',
       settings: {
-        foreground: '#22863a',
+        foreground: '#028623',
       },
     },
     {
@@ -420,21 +420,21 @@ const lightTheme: ThemeRegistrationAny = {
       scope: ['markup.deleted', 'meta.diff.header.from-file', 'punctuation.definition.deleted'],
       settings: {
         background: '#ffeef0',
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {
       scope: ['markup.inserted', 'meta.diff.header.to-file', 'punctuation.definition.inserted'],
       settings: {
         background: '#f0fff4',
-        foreground: '#22863a',
+        foreground: '#028623',
       },
     },
     {
       scope: ['markup.changed', 'punctuation.definition.changed'],
       settings: {
         background: '#ffebda',
-        foreground: '#e36209',
+        foreground: '#d85d00',
       },
     },
     {
@@ -486,7 +486,7 @@ const lightTheme: ThemeRegistrationAny = {
     {
       scope: 'brackethighlighter.unmatched',
       settings: {
-        foreground: '#b31d28',
+        foreground: '#c20046',
       },
     },
     {

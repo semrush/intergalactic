@@ -371,13 +371,16 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { Children, selectedIndex } = this.asProps;
+    const { Children, selectedIndex, interaction, timeout } = this.asProps;
 
     this.itemProps = [];
 
     return (
       <selectedIndexContext.Provider value={selectedIndex}>
-        <Root render={Dropdown}>
+        <Root
+          render={Dropdown}
+          timeout={timeout || (interaction === 'hover' ? [0, 100] : undefined)}
+        >
           <Children />
         </Root>
       </selectedIndexContext.Provider>
