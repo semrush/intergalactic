@@ -281,10 +281,6 @@ class DropdownMenuRoot extends Component {
     return itemProps;
   }
 
-  // getNestingProps(props, index) {
-  //   return this.getItemProps(props, index);
-  // }
-
   getItemHintProps() {
     const { size } = this.asProps;
     return {

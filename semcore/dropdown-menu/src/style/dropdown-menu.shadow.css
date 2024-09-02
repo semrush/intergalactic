@@ -124,7 +124,7 @@ SDropdownMenuItemContainer[selected] {
   }
 }
 
-SDropdownMenuItemContainer[highlighted]:not(:focus-within) {
+SDropdownMenuItemContainer[highlighted] {
   z-index: 1;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
 }
