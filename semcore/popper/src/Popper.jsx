@@ -134,7 +134,7 @@ class PopperRoot extends Component {
   popperRef = React.createRef();
   popper = React.createRef();
   lastPopperReference = null;
-  ignoreTriggerFocusUntil = false;
+  ignoreTriggerFocus = false;
 
   constructor(props) {
     super(props);
@@ -349,7 +349,7 @@ class PopperRoot extends Component {
     }
 
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
-    if (this.ignoreTriggerFocusUntil && visible && component === 'trigger' && focusAction) {
+    if (this.ignoreTriggerFocus && visible && component === 'trigger' && focusAction) {
       return;
     }
     if (!visible) {
@@ -382,12 +382,12 @@ class PopperRoot extends Component {
           }
         }
         if (!visible && component === 'popper') {
-          this.ignoreTriggerFocusUntil = false;
+          this.ignoreTriggerFocus = false;
         }
       }, 0);
     });
     if (component === 'popper' && !visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
-      this.ignoreTriggerFocusUntil = true;
+      this.ignoreTriggerFocus = true;
     }
   };
 
