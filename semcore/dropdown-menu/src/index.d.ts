@@ -79,8 +79,6 @@ export type DropdownMenuItemProps = FlexProps & {
    * @default m
    */
   size?: DropdownMenuSize;
-  /** Subtitle for menu item */
-  subTitle?: string;
 };
 
 /** @deprecated */
@@ -157,7 +155,6 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   > & {
     Addon: typeof Box;
-    Button: typeof Button;
     Content: typeof Flex;
     Hint: typeof Flex;
   };

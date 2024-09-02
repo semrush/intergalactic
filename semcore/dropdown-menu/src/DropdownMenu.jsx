@@ -494,7 +494,6 @@ function Item({ id, styles, disabled, Children, forwardRef }) {
         role={advancedMode ? undefined : 'menuitem'}
         use:id={advancedMode ? undefined : id}
         tabIndex={advancedMode ? undefined : -1}
-        focusWithin
       >
         <Children />
       </SDropdownMenuItemContainer>
