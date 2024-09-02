@@ -1,5 +1,5 @@
 import React from 'react';
-import DropdownMenu, { DDMenu, DDMenu3 } from 'intergalactic/dropdown-menu';
+import DropdownMenu from 'intergalactic/dropdown-menu';
 import { ButtonTrigger } from 'intergalactic/base-trigger';
 import { Text } from 'intergalactic/typography';
 import { Flex, Box } from 'intergalactic/flex-box';
@@ -15,17 +15,11 @@ const TooltipContent = () => {
   return <div>Some tooltip for {tooltipIndex + 1}</div>;
 };
 
-const TooltipContentDD = () => {
-  const tooltipIndex = React.useContext(DDMenu.selectedIndexContext);
-
-  return <div>Some tooltip for {tooltipIndex + 1}</div>;
-};
-
 const Demo = () => {
   return (
     <Box>
       <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='dropdown-menu-elements-of-the-list'>
+        <Text tag='label' size={200} htmlFor='dropdown-menu-elements-of-the-list-2'>
           Elements of the list
         </Text>
         <DropdownMenu>
@@ -33,227 +27,34 @@ const Demo = () => {
             tag={ButtonTrigger}
             mt={2}
             mr='auto'
-            id='dropdown-menu-elements-of-the-list'
+            id='dropdown-menu-elements-of-the-list-2'
           >
             I'll show u some options, buddy
           </DropdownMenu.Trigger>
           <DropdownMenu.Menu>
             <Tooltip placement={'right'} timeout={[0, 50]}>
-              {({ getPopperProps }) => {
-                const { id: popperId } = getPopperProps();
-
-                return (
-                  <>
-                    {/*<DropdownMenu.Group title={"I'm title"} subTitle={"I'm subtitle"}>*/}
-                    <DropdownMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                      Item 1
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                      <DropdownMenu.Item.Content>Item 2</DropdownMenu.Item.Content>
-                      <DropdownMenu.Item.Hint>Hint for item 2</DropdownMenu.Item.Hint>
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                      <DropdownMenu.Item.Content>Item 3</DropdownMenu.Item.Content>
-                      <DropdownMenu.Item.Hint>Hint for item 3</DropdownMenu.Item.Hint>
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                      <Flex justifyContent='space-between'>
-                        <DropdownMenu.Item.Content>Item 4</DropdownMenu.Item.Content>
-                        <Flex>
-                          <DropdownMenu.Item.Button addonLeft={PlusM} aria-label={'Add new'} />
-                          <DropdownMenu.Item.Button addonLeft={TrashM} aria-label={'Delete'} />
-                        </Flex>
-                      </Flex>
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                      Item 5
-                    </DropdownMenu.Item>
-                    {/*</DropdownMenu.Group>*/}
-                    <Tooltip.Popper w={200} aria-hidden={true}>
-                      <TooltipContent />
-                    </Tooltip.Popper>
-                  </>
-                );
-              }}
+              <DropdownMenu.Group title={"I'm title"} subTitle={"I'm subtitle"}>
+                <DropdownMenu.Item tag={Tooltip.Trigger}>
+                  <DropdownMenu.Item.Content>Item 1</DropdownMenu.Item.Content>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item tag={Tooltip.Trigger}>
+                  <DropdownMenu.Item.Content>Item 2</DropdownMenu.Item.Content>
+                  <DropdownMenu.Item.Hint>Hint for item 2</DropdownMenu.Item.Hint>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item tag={Tooltip.Trigger}>
+                  <DropdownMenu.Item.Content>Item 3</DropdownMenu.Item.Content>
+                  <DropdownMenu.Item.Hint>Hint for item 3</DropdownMenu.Item.Hint>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item tag={Tooltip.Trigger}>
+                  <DropdownMenu.Item.Content>Item 4</DropdownMenu.Item.Content>
+                </DropdownMenu.Item>
+              </DropdownMenu.Group>
+              <Tooltip.Popper w={200} aria-hidden={true}>
+                <TooltipContent />
+              </Tooltip.Popper>
             </Tooltip>
           </DropdownMenu.Menu>
         </DropdownMenu>
-      </Flex>
-
-      <br />
-
-      <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='dropdown-menu-elements-of-the-list-2'>
-          Elements of the list
-        </Text>
-        <DDMenu>
-          <DDMenu.Trigger
-            tag={ButtonTrigger}
-            mt={2}
-            mr='auto'
-            id='dropdown-menu-elements-of-the-list-2'
-          >
-            I'll show u some options, buddy
-          </DDMenu.Trigger>
-          <DDMenu.Menu>
-            <Tooltip placement={'right'} timeout={[0, 50]}>
-              {({ getPopperProps }) => {
-                const { id: popperId } = getPopperProps();
-
-                return (
-                  <>
-                    <DDMenu.Group title={"I'm title"} subTitle={"I'm subtitle"}>
-                      <DDMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                        <DDMenu.Item.Content>Item 1</DDMenu.Item.Content>
-                      </DDMenu.Item>
-                      <DDMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                        <DDMenu.Item.Content>Item 2</DDMenu.Item.Content>
-                        <DDMenu.Item.Hint>Hint for item 2</DDMenu.Item.Hint>
-                      </DDMenu.Item>
-                      <DDMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                        <DDMenu.Item.Content>Item 3</DDMenu.Item.Content>
-                        <DDMenu.Item.Hint>Hint for item 3</DDMenu.Item.Hint>
-                      </DDMenu.Item>
-                      <DDMenu.Item tag={Tooltip.Trigger} aria-describedby={popperId as string}>
-                        <DDMenu visible={true} orientation='horizontal' placement={'right'}>
-                          {({ getListProps, getTriggerProps }) => {
-                            const listProps = getListProps();
-                            const triggerProps = getTriggerProps();
-
-                            return (
-                              <Flex justifyContent='space-between'>
-                                <DDMenu.Item.Content {...triggerProps}>Item 4</DDMenu.Item.Content>
-                                <Flex {...listProps}>
-                                  <DDMenu.Item
-                                    tag={Button}
-                                    addonLeft={PlusM}
-                                    aria-label={'Add new'}
-                                  />
-                                  <DDMenu.Item
-                                    tag={Button}
-                                    addonLeft={TrashM}
-                                    aria-label={'Delete'}
-                                  />
-                                </Flex>
-                              </Flex>
-                            );
-                          }}
-                        </DDMenu>
-                      </DDMenu.Item>
-                      <DDMenu.Item>
-                        <DDMenu placement={'right'} interaction={'hover'}>
-                          <DDMenu.Item.Content
-                            tag={DDMenu.Trigger}
-                            justifyContent={'space-between'}
-                          >
-                            Item 5
-                            <ChevronRightIcon />
-                          </DDMenu.Item.Content>
-                          <DDMenu.Menu>
-                            <DDMenu.Item>1</DDMenu.Item>
-                            <DDMenu.Item>2</DDMenu.Item>
-                            <DDMenu.Item>3</DDMenu.Item>
-                          </DDMenu.Menu>
-                        </DDMenu>
-                      </DDMenu.Item>
-                    </DDMenu.Group>
-                    <Tooltip.Popper w={200} aria-hidden={true}>
-                      <TooltipContentDD />
-                    </Tooltip.Popper>
-                  </>
-                );
-              }}
-            </Tooltip>
-          </DDMenu.Menu>
-        </DDMenu>
-      </Flex>
-
-      <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='dropdown-menu-elements-of-the-list-3'>
-          Elements of the list
-        </Text>
-        <DDMenu3>
-          <DDMenu3.Trigger
-            tag={ButtonTrigger}
-            mt={2}
-            mr='auto'
-            id='dropdown-menu-elements-of-the-list-3'
-          >
-            I'll show u some options, buddy
-          </DDMenu3.Trigger>
-          <DDMenu3.Menu>
-            <Tooltip placement={'right'} timeout={[0, 50]}>
-              {({ getPopperProps }) => {
-                const { id: popperId } = getPopperProps();
-
-                return (
-                  <>
-                    <DDMenu3.Group title={"I'm title"} subTitle={"I'm subtitle"}>
-                      <DDMenu3.Item tag={Tooltip.Trigger}>
-                        <DDMenu3.Item.Content>Item 1</DDMenu3.Item.Content>
-                      </DDMenu3.Item>
-                      <DDMenu3.Item tag={Tooltip.Trigger}>
-                        <DDMenu3.Item.Content>Item 2</DDMenu3.Item.Content>
-                        <DDMenu3.Item.Hint>Hint for item 2</DDMenu3.Item.Hint>
-                      </DDMenu3.Item>
-                      <DDMenu3.Item tag={Tooltip.Trigger}>
-                        <DDMenu3.Item.Content>Item 3</DDMenu3.Item.Content>
-                        <DDMenu3.Item.Hint>Hint for item 3</DDMenu3.Item.Hint>
-                      </DDMenu3.Item>
-                      <DDMenu3.Item tag={Tooltip.Trigger}>
-                        <DDMenu3 visible={true} orientation='horizontal' placement={'right'}>
-                          {({ getListProps, getTriggerProps }) => {
-                            const listProps = getListProps();
-                            const triggerProps = getTriggerProps();
-
-                            return (
-                              <Flex justifyContent='space-between'>
-                                <DDMenu3.Item.Content {...triggerProps}>
-                                  Item 4
-                                </DDMenu3.Item.Content>
-                                <Flex {...listProps}>
-                                  <DDMenu3.Item
-                                    tag={Button}
-                                    addonLeft={PlusM}
-                                    aria-label={'Add new'}
-                                  />
-                                  <DDMenu3.Item
-                                    tag={Button}
-                                    addonLeft={TrashM}
-                                    aria-label={'Delete'}
-                                  />
-                                </Flex>
-                              </Flex>
-                            );
-                          }}
-                        </DDMenu3>
-                      </DDMenu3.Item>
-                      <DDMenu3.Item>
-                        <DDMenu3 placement={'right'} interaction={'hover'}>
-                          <DDMenu3.Item.Content
-                            tag={DDMenu3.Trigger}
-                            justifyContent={'space-between'}
-                          >
-                            Item 5
-                            <ChevronRightIcon />
-                          </DDMenu3.Item.Content>
-                          <DDMenu3.Menu>
-                            <DDMenu3.Item>1</DDMenu3.Item>
-                            <DDMenu3.Item>2</DDMenu3.Item>
-                            <DDMenu3.Item>3</DDMenu3.Item>
-                          </DDMenu3.Menu>
-                        </DDMenu3>
-                      </DDMenu3.Item>
-                    </DDMenu3.Group>
-                    <Tooltip.Popper w={200} aria-hidden={true}>
-                      <TooltipContentDD />
-                    </Tooltip.Popper>
-                  </>
-                );
-              }}
-            </Tooltip>
-          </DDMenu3.Menu>
-        </DDMenu3>
       </Flex>
     </Box>
   );

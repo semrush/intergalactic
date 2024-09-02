@@ -63,13 +63,24 @@ It is appropriate when it is necessary to manage only the content within the opt
 The component has several variants of list elements layout:
 
 - `DropdownMenu.Item`, which is an element of the list (can be selected with the keyboard)
-- `DropdownMenu.ItemTitle`, which is the title of the list (cannot be selected with the keyboard)
-- `DropdownMenu.ItemHint`, which is list subhead or message with additional information (cannot be selected with the keyboard)
+- `DropdownMenu.Item.Content`, which is the content of Item if you need to use Hint or Submenu
+- `DropdownMenu.Item.Hint`, which is list subhead or message with additional information (cannot be selected with the keyboard)
+
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/elements_of_the_list.tsx';
+</script>
+
+:::
+
+## Some actions on menu item
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/item_actions.tsx';
 </script>
 
 :::
@@ -90,25 +101,10 @@ You can see the list of available methods in the [API](/components/dropdown-menu
 
 ## Nested dropdown menus
 
-You can use `DropdownMenu.Nesting` and `DropdownMenu.Nesting.Trigger` to create basic nested menus.
-Refer to this example to see needed components structure.
-
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/nested.tsx';
-</script>
-
-:::
-
-## Nested dropdowns with focusable elements
-
-If you want to put focusable elements in dropdown items that also contain nesting, you need to use more complex structure with `DropdownMenu.Nesting.Item`. 
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/nested-with-focusables.tsx';
 </script>
 
 :::

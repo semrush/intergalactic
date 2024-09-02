@@ -7,21 +7,13 @@ import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@se
 import uniqueIDEnhancement, { useUID } from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
-import { hasParent } from '@semcore/utils/lib/hasParent';
-
 import style from './style/dropdown-menu.shadow.css';
 import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
-import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
-import keyboardFocusEnhance, {
-  useFocusSource,
-} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import ButtonComponent from '@semcore/button';
 import { forkRef } from '@semcore/utils/lib/ref';
-import { isFocusable } from '@semcore/utils/lib/focus-lock/isFocusable';
-import { vi } from 'vitest';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
