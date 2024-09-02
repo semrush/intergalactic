@@ -27,17 +27,13 @@ class DropdownMenuRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
-  static defaultProps = (props) => {
-    return {
-      size: 'm',
-      defaultVisible: false,
-      defaultHighlightedIndex: null,
-      i18n: localizedMessages,
-      locale: 'en',
-      interaction: 'click',
-      timeout: props.interaction === 'hover' ? [0, 100] : undefined,
-      ...props,
-    };
+  static defaultProps = {
+    size: 'm',
+    defaultVisible: false,
+    defaultHighlightedIndex: null,
+    i18n: localizedMessages,
+    locale: 'en',
+    interaction: 'click',
   };
 
   state = {
@@ -427,12 +423,12 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, interaction, timeout } = this.asProps;
 
     this.itemProps = [];
 
     return (
-      <Root render={Dropdown}>
+      <Root render={Dropdown} timeout={timeout || (interaction === 'hover' ? [0, 100] : undefined)}>
         <Children />
       </Root>
     );
