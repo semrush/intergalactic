@@ -23,7 +23,7 @@ const Demo = () => {
         </Button.Addon>
         <Button.Text>Export</Button.Text>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Popper wMax='257px'>
+      <DropdownMenu.Popper wMax='256px'>
         <SpinContainer loading={loading}>
           <DropdownMenu.List>
             <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
@@ -33,17 +33,18 @@ const Demo = () => {
           <Notice
             theme='warning'
             style={{
-              padding: '12px 8px',
+              padding: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-2x)',
               borderWidth: 0,
               borderTopWidth: '1px',
-              borderRadius: '0 0 6px 6px',
+              borderRadius:
+                '0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium)',
             }}
           >
             <Notice.Content>
               <Text tag='strong' mb={1} style={{ display: 'block' }}>
                 Export failed
               </Text>
-              <Text lineHeight='18px'>
+              <Text>
                 If the problem persists, please contact us at{' '}
                 <Link inline href='mailto:feedback@semrush.com'>
                   feedback@semrush.com

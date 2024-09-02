@@ -9,11 +9,11 @@ const Demo = () => {
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='dropdown-menu-nested'>
-        Nested dropdown menu
+        Nested menus
       </Text>
       <DropdownMenu>
         <DropdownMenu.Trigger mt={2} mr='auto' id='dropdown-menu-nested' tag={ButtonTrigger}>
-          Click me
+          Check them out
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -21,14 +21,20 @@ const Demo = () => {
           <DropdownMenu.Item>Item 3</DropdownMenu.Item>
           <DropdownMenu.Item>
             <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
-              <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+              <DropdownMenu.Item.Content
+                tag={DropdownMenu.Trigger}
+                justifyContent={'space-between'}
+              >
                 Item 4
                 <DropdownMenu.Item.Addon tag={ChevronRightIcon} color='icon-secondary-neutral' />
               </DropdownMenu.Item.Content>
               <DropdownMenu.Menu w={120}>
                 <DropdownMenu.Item>
                   <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
-                    <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                    <DropdownMenu.Item.Content
+                      tag={DropdownMenu.Trigger}
+                      justifyContent={'space-between'}
+                    >
                       Item 4.1
                       <DropdownMenu.Item.Addon
                         tag={ChevronRightIcon}
@@ -44,7 +50,10 @@ const Demo = () => {
                 </DropdownMenu.Item>
                 <DropdownMenu.Item>
                   <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
-                    <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                    <DropdownMenu.Item.Content
+                      tag={DropdownMenu.Trigger}
+                      justifyContent={'space-between'}
+                    >
                       Item 4.2
                       <DropdownMenu.Item.Addon
                         tag={ChevronRightIcon}
@@ -54,7 +63,10 @@ const Demo = () => {
                     <DropdownMenu.Menu w={120}>
                       <DropdownMenu.Item>
                         <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
-                          <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                          <DropdownMenu.Item.Content
+                            tag={DropdownMenu.Trigger}
+                            justifyContent={'space-between'}
+                          >
                             Item 4.2.1
                             <DropdownMenu.Item.Addon
                               tag={ChevronRightIcon}

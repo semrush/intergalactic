@@ -17,7 +17,7 @@ const Demo = () => {
           mr='auto'
           id='dropdown-menu-children-items'
         >
-          Click me
+          Check the options
         </DropdownMenu.Trigger>
         {/* Adding max-height to the dropdown menu */}
         <DropdownMenu.Menu hMax={'180px'}>

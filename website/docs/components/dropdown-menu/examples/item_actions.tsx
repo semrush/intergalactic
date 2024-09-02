@@ -13,11 +13,11 @@ const Demo = () => {
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='dropdown-menu-with-menu'>
-        Elements of the list
+        List item with actions
       </Text>
       <DropdownMenu>
         <DropdownMenu.Trigger tag={ButtonTrigger} mt={2} mr='auto' id='dropdown-menu-with-menu'>
-          I'll show u some options, buddy
+          Check the options
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -32,7 +32,7 @@ const Demo = () => {
                 return (
                   <Flex justifyContent='space-between'>
                     <DropdownMenu.Item.Content {...triggerProps}>Item 3</DropdownMenu.Item.Content>
-                    <Flex {...listProps}>
+                    <Flex gap={1} {...listProps}>
                       <DropdownMenu.Item tag={Button} addonLeft={PlusM} aria-label={'Add new'} />
                       <DropdownMenu.Item tag={Button} addonLeft={TrashM} aria-label={'Delete'} />
                     </Flex>
@@ -48,7 +48,7 @@ const Demo = () => {
                 justifyContent={'space-between'}
               >
                 Item 4
-                <ChevronRightIcon />
+                <ChevronRightIcon color='icon-secondary-neutral' />
               </DropdownMenu.Item.Content>
               <DropdownMenu.Menu>
                 <DropdownMenu.Item>Add</DropdownMenu.Item>
