@@ -4,14 +4,8 @@ import style from './buttonLink.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Box } from '@semcore/flex-box';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
-import resolveColorEnhance from 'intergalactic/utils/lib/enhances/resolveColorEnhance';
-import {
-  ButtonLinkAddonProps,
-  ButtonLinkChildren,
-  ButtonLinkComponent,
-  ButtonLinkProps,
-  ButtonLinkTextProps,
-} from './ButtonLink.type';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { ButtonLinkAddonProps, ButtonLinkComponent, ButtonLinkTextProps } from './ButtonLink.type';
 
 const enhance = {
   keyboardFocused: keyboardFocusEnhance(),
