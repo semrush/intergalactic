@@ -1,13 +1,13 @@
 {
   "currentColor": "颜色字段，当前颜色为 {color}",
-  "emptyColor": "颜色字段，空",
-  "goToPaletteHint": "{currentColor}，按 Tab 转到调色板或单击隐藏调色板",
-  "palette": "调色板，按 Tab+Shift 返回颜色字段",
+  "emptyColor": "Color field",
+  "palette": "Colors palette",
   "presetColors": "预设颜色",
-  "customColors": "自定义颜色字段容器",
-  "itemColor": "颜色 {color}",
+  "customColors": "Custom preset colors",
+  "addColor": "Add color",
   "clearColor": "清除颜色",
-  "colorField": "自定义颜色字段，HEX 格式",
+  "colorField": "Custom color, HEX format",
   "colorFieldConfirm": "将颜色添加到自定义颜色列表",
-  "colorFieldClear": "清除自定义颜色字段"
+  "colorFieldClear": "清除自定义颜色字段",
+  "deleteColorDescriber": "Delete color with backspace"
 }

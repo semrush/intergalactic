@@ -1,0 +1,14 @@
+# Recommends using inclusive and accessible alternatives to certain words and phrases
+
+extends: substitution
+message: "For inclusivity, consider using '%s' instead of '%s'."
+level: suggestion
+ignorecase: true
+capitalize: true
+action:
+  name: replace
+swap:
+  see: refer to
+  above: earlier
+  below: following
+

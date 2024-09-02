@@ -3,7 +3,7 @@ extends: existence
 message: "Avoid using H4–H6 headings. Consider refactoring the information or splitting it into several pages."
 # Vale doesn't ignore this rule when H4 headings are marked as exceptions.
 # Change the level back to "error" when this bug is fixed.
-level: warning
+level: suggestion
 scope: raw
 raw:
   - '(?<=\n)#{4,}\s.*'
