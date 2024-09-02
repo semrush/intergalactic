@@ -161,10 +161,10 @@ Addon before the text has `margin-left`, while the trailing addon has `margin-ri
 
 Table: Button sizes and margins
 
-| Button size (height in px)  | Icon size | Margins             | Description     |
-| --------------------------- | --------- | ------------------- | --------------- |
-| **M (28px)** | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
-| **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+| Button size (height in px) | Icon size | Margins                | Description                                                                                                              |
+| -------------------------- | --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **M (28px)**               | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
+| **L (40px)**               | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 
 ## Button types and themes
 
@@ -194,21 +194,36 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 
 Table: Button themes
 
-| Button type | `muted`    | `info`               | `success`            | `danger`        | `invert`|
-| ----------- | ---------- | -------------------- | -------------------- | --------------- | ------- |
-| `primary`   | _no theme_ | ![](static/info-butt.png) | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png) |
-| `secondary` | ![](static/secondary-muted.png)  | _deprecated_ | _no theme_ | _no theme_ | ![](static/invert-second-normal.png) |
-| `tertiary`  | ![](static/tertiary-muted.png) | ![](static/tertiary-info.png)  | _no theme_ | _no theme_ | ![](static/invert-tertiary-normal.png) |
+| Button type | `muted`                         | `info`                        | `success`                    | `danger`                    | `invert`                               |
+| ----------- | ------------------------------- | ----------------------------- | ---------------------------- | --------------------------- | -------------------------------------- |
+| `primary`   | _no theme_                      | ![](static/info-butt.png)     | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png)          |
+| `secondary` | ![](static/secondary-muted.png) | _deprecated_                  | _no theme_                   | _no theme_                  | ![](static/invert-second-normal.png)   |
+| `tertiary`  | ![](static/tertiary-muted.png)  | ![](static/tertiary-info.png) | _no theme_                   | _no theme_                  | ![](static/invert-tertiary-normal.png) |
 
 ## Button states
 
 Table: States for all buttons types and themes
 
-| Button type | Normal    | Hover       | Active        | Loading        | Disabled     |
-| ----------- | --------- | ----------- | ------------- | -------------- | ------------ |
-| `primary`     | ![](static/button-normal.png) | ![](static/button-hover.png) | ![](static/button-active.png) | ![](static/button-loading.png) | ![](static/button-disabled.png) |
-| `secondary`   | ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
-| `tertiary`    | ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
+| Button type | Normal                        | Hover                           | Active                           | Loading                           | Disabled                           |
+| ----------- | ----------------------------- | ------------------------------- | -------------------------------- | --------------------------------- | ---------------------------------- |
+| `primary`   | ![](static/button-normal.png) | ![](static/button-hover.png)    | ![](static/button-active.png)    | ![](static/button-loading.png)    | ![](static/button-disabled.png)    |
+| `secondary` | ![](static/secondary.png)     | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
+| `tertiary`  | ![](static/tertiary.png)      | ![](static/tertiary-hover.png)  | ![](static/tertiary-active.png)  | ![](static/tertiary-loading.png)  | ![](static/tertiary-disabled.png)  |
+
+## Button with Link styles
+
+::: tip
+This component was specifically created for cases where it is necessary to ensure proper accessibility for existing patterns in the interface. We recommend avoiding such cases as much as possible and using the Button and Link components instead.
+:::
+
+In cases where you need a button to look like a link, use a separate Button.Link` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use a trigger for the feedback form.
+
+Table: Button with Link styles
+
+| Button type | Appearance example & states           |
+| ----------- | ------------------------------------- |
+| `primary`   | ![](static/button-link-primary.png)   |
+| `secondary` | ![](static/button-link-secondary.png) |
 
 ## Button width
 
@@ -309,4 +324,3 @@ It may also be helpful checking the following branding guidelines:
 ## Grouped buttons
 
 To combine the components such as Button, [Input](/components/input/input), and [Select](/components/select/select), use the [`neighborLocation`](/components/button/button-api) property.
-
