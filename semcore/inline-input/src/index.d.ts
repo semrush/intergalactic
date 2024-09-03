@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
-import { ButtonLink } from '@semcore/Button';
+import { ButtonLinkComponent } from '@semcore/button';
 
 /** @deprecated */
 export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}
@@ -147,12 +147,12 @@ declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, Inli
   Addon: Intergalactic.Component<'div', InlineInputAddonProps, InlineInputProps>;
   Value: Intergalactic.Component<'input', InlineInputValueProps, InlineInputProps>;
   ConfirmControl: Intergalactic.Component<
-    typeof ButtonLink,
+    ButtonLinkComponent,
     InlineInputConfirmControlProps,
     InlineInputProps
   >;
   CancelControl: Intergalactic.Component<
-    typeof ButtonLink,
+    ButtonLinkComponent,
     InlineInputCancelControlProps,
     InlineInputProps
   >;

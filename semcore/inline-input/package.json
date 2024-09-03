@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/button": "*",
     "@semcore/testing-utils": "1.0.0",
     "@semcore/spin": "*",
     "@semcore/tooltip": "*"
