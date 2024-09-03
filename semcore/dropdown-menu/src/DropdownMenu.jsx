@@ -380,9 +380,7 @@ function List(props) {
 
   return sstyled(props.styles)(
     <ListBoxContextProvider>
-      <ScrollAreaComponent shadow={true}>
-        <SDropdownMenuList render={ScrollAreaComponent.Container} />
-      </ScrollAreaComponent>
+      <SDropdownMenuList render={ScrollAreaComponent} shadow={true} />
     </ListBoxContextProvider>,
   );
 }

@@ -526,10 +526,10 @@ function Trigger(props) {
   );
 
   React.useEffect(() => {
-    document.addEventListener('focus', handleFocus);
+    document.addEventListener('focusin', handleFocus);
 
     return () => {
-      document.removeEventListener('focus', handleFocus);
+      document.removeEventListener('focusin', handleFocus);
     };
   }, []);
 
