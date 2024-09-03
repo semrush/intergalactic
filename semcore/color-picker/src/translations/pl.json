@@ -1,13 +1,13 @@
 {
   "currentColor": "Pole koloru, bieżący kolor to {color}",
-  "emptyColor": "Pole koloru, puste",
-  "goToPaletteHint": "{currentColor}, naciśnij Tab, aby przejść do palety, lub kliknij, aby ukryć paletę",
-  "palette": "Paleta kolorów, naciśnij Tab+Shift, aby wrócić do pola koloru",
+  "emptyColor": "Color field",
+  "palette": "Colors palette",
   "presetColors": "Gotowe kolory",
-  "customColors": "Kontener pola koloru niestandardowego",
-  "itemColor": "Kolor {color}",
+  "customColors": "Custom preset colors",
+  "addColor": "Add color",
   "clearColor": "Wyczyść kolor",
-  "colorField": "Pole koloru niestandardowego, format szesnastkowy",
+  "colorField": "Custom color, HEX format",
   "colorFieldConfirm": "Dodaj kolor do listy kolorów niestandardowych",
-  "colorFieldClear": "Wyczyść pole koloru niestandardowego"
+  "colorFieldClear": "Wyczyść pole koloru niestandardowego",
+  "deleteColorDescriber": "Delete color with backspace"
 }

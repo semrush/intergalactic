@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.0] - 2024-08-26
+
+### Changed
+
+- Now DropdownMenu with `interaction="hover"` has `timeout={[0, 100]}` (0 for showing, 100 for hiding) by default.
+
 ## [4.35.5] - 2024-08-20
 
 ### Fixed

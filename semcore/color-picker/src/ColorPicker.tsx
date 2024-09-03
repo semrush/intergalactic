@@ -154,19 +154,18 @@ class ColorPickerRoot extends Component<RootAsProps> {
 }
 
 export function Trigger(props: TriggerAsProps) {
-  const { Children, value, popperVisible, getI18nText } = props;
+  const { Children, getI18nText, value } = props;
+
   const label = React.useMemo(() => {
-    const currentColor = value
-      ? getI18nText('currentColor', { color: value })
-      : getI18nText('emptyColor');
-    if (popperVisible) {
-      return getI18nText('goToPaletteHint', { currentColor });
+    if (!value) {
+      return getI18nText('emptyColor');
     }
-    return currentColor;
-  }, [value, popperVisible]);
+
+    return getI18nText('currentColor', { color: value });
+  }, [value]);
 
   return (
-    <Root render={Dropdown.Trigger} tag={DefaultTrigger} aria-label={label}>
+    <Root render={Dropdown.Trigger} tag={DefaultTrigger} aria-label={label} role='combobox'>
       <Children />
     </Root>
   );
