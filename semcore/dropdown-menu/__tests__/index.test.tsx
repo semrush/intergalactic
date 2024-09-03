@@ -84,15 +84,12 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('supports disabled, selected & highlighted props ', async ({ task }) => {
+  test.concurrent('supports disabled, selected props ', async ({ task }) => {
     const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
           <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-          <DropdownMenu.Item highlighted {...({ triggerKeyboardFocused: true } as any)}>
-            highlighted
-          </DropdownMenu.Item>
         </DropdownMenu.List>
       </DropdownMenu>
     );
@@ -176,32 +173,6 @@ describe('DropdownMenu', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
 
-  test.concurrent('highlights selected item', async ({ expect }) => {
-    let highlightedIndex: number | null = null;
-
-    const component = render(
-      <DropdownMenu
-        placement='right'
-        onHighlightedIndexChange={(i) => {
-          highlightedIndex = i;
-        }}
-      >
-        <DropdownMenu.Trigger tag='button' data-testid='dd-trigger'>
-          Trigger
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Menu>
-          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-          <DropdownMenu.Item selected>Item 3</DropdownMenu.Item>
-        </DropdownMenu.Menu>
-      </DropdownMenu>,
-    );
-
-    const trigger = component.getByTestId('dd-trigger');
-    await userEvent.click(trigger);
-    await new Promise((resolve) => setTimeout(resolve, 1));
-    await expect(highlightedIndex).toBe(2);
-  });
   test.sequential("doesn't autofocus trigger when closed on just rerender", async ({ expect }) => {
     const Component = () => {
       return (

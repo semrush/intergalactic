@@ -194,3 +194,5 @@ declare const DropdownMenu: Intergalactic.Component<
 };
 
 export default DropdownMenu;
+
+export { DropdownMenu as DropdownMenuOld };

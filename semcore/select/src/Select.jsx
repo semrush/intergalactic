@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import DropdownMenu from '@semcore/dropdown-menu';
+import { DropdownMenuOld as DropdownMenu } from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import findComponent from '@semcore/utils/lib/findComponent';
@@ -15,6 +15,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { isInputTriggerTag } from '@semcore/popper';
+import { Flex } from '@semcore/flex-box';
 
 import style from './style/select.shadow.css';
 
@@ -295,7 +296,7 @@ function Option(props) {
   const { styles, Children } = props;
 
   return sstyled(styles)(
-    <SSelectOption render={DropdownMenu.Item}>
+    <SSelectOption render={DropdownMenu.Item} tag={Flex}>
       <optionPropsContext.Provider value={props}>
         <Children />
       </optionPropsContext.Provider>

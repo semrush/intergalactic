@@ -150,6 +150,32 @@ describe('Select Trigger', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('highlights selected item', async ({ expect }) => {
+    let highlightedIndex: number | null = null;
+
+    const component = render(
+      <Select
+        onHighlightedIndexChange={(i) => {
+          highlightedIndex = i;
+        }}
+      >
+        <Select.Trigger data-testid='dd-trigger'>Trigger</Select.Trigger>
+        <Select.Menu>
+          <Select.Option value={1}>Item 1</Select.Option>
+          <Select.Option value={2}>Item 2</Select.Option>
+          <Select.Option value={3} selected>
+            Item 3
+          </Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+
+    const trigger = component.getByTestId('dd-trigger');
+    await userEvent.click(trigger);
+    await new Promise((resolve) => setTimeout(resolve, 1));
+    await expect(highlightedIndex).toBe(2);
+  });
+
   test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({
     expect,
   }) => {
