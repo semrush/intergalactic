@@ -23,7 +23,9 @@ SIcon {
   margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 STooltip {
-  vertical-align: middle;
+  line-height: normal;
+  vertical-align: top;
+  margin-top: calc(var(--intergalactic-spacing-05x, 2px) / 2);
 }
 
 SDescription {
