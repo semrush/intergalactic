@@ -519,10 +519,11 @@ function Trigger(props) {
   const focusSourceRef = useFocusSource();
   const handleFocus = React.useCallback(
     (e) => {
-      if (focusSourceRef.current !== 'keyboard' || e.target !== triggerRef.current) return;
-      onKeyboardFocus?.();
+      if (focusSourceRef.current === 'keyboard' && hasParent(e.target, triggerRef.current)) {
+        onKeyboardFocus?.();
+      }
     },
-    [onKeyboardFocus],
+    [onKeyboardFocus, focusSourceRef.current, triggerRef.current],
   );
 
   React.useEffect(() => {

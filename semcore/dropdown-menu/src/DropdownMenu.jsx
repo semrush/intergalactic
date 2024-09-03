@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
@@ -375,12 +375,16 @@ class DropdownMenuRoot extends Component {
   }
 }
 
-function List(props) {
+function List({ styles, Children }) {
   const SDropdownMenuList = Root;
 
-  return sstyled(props.styles)(
+  return sstyled(styles)(
     <ListBoxContextProvider>
-      <SDropdownMenuList render={ScrollAreaComponent} shadow={true} />
+      <SDropdownMenuList render={ScrollAreaComponent} shadow={true}>
+        <ScrollAreaComponent.Container tabIndex={undefined}>
+          <Children />
+        </ScrollAreaComponent.Container>
+      </SDropdownMenuList>
     </ListBoxContextProvider>,
   );
 }
