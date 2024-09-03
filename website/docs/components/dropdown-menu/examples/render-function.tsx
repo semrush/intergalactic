@@ -30,7 +30,7 @@ const Demo = () => {
                 mr='auto'
                 id='dropdown-menu-render-function'
               >
-                Click me
+                Check them out
               </ButtonTrigger>
               <Box
                 {...popperProps}

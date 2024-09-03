@@ -20,7 +20,7 @@ const Demo = () => {
     <Box>
       <Flex direction='column'>
         <Text tag='label' size={200} htmlFor='dropdown-menu-elements-of-the-list-2'>
-          Elements of the list
+          List item types
         </Text>
         <DropdownMenu>
           <DropdownMenu.Trigger
@@ -29,11 +29,11 @@ const Demo = () => {
             mr='auto'
             id='dropdown-menu-elements-of-the-list-2'
           >
-            I'll show u some options, buddy
+            Check the options
           </DropdownMenu.Trigger>
           <DropdownMenu.Menu>
             <Tooltip placement={'right'} timeout={[0, 50]}>
-              <DropdownMenu.Group title={"I'm title"} subTitle={"I'm subtitle"}>
+              <DropdownMenu.Group title={'Title'} subTitle={'Subtitle'}>
                 <DropdownMenu.Item tag={Tooltip.Trigger}>
                   <DropdownMenu.Item.Content>Item 1</DropdownMenu.Item.Content>
                 </DropdownMenu.Item>
