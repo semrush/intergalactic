@@ -1530,6 +1530,9 @@ importers:
 
   semcore/inline-input:
     dependencies:
+      '@semcore/button':
+        specifier: 5.35.2
+        version: link:../button
       '@semcore/core':
         specifier: 2.29.2
         version: link:../core
@@ -1561,9 +1564,6 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@semcore/button':
-        specifier: '*'
-        version: link:../button
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils

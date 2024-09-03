@@ -19,7 +19,8 @@
     "@semcore/utils": "4.32.2",
     "@semcore/input-number": "5.33.3",
     "@semcore/input": "4.32.2",
-    "@semcore/core": "2.29.2"
+    "@semcore/core": "2.29.2",
+    "@semcore/button": "5.35.2"
   },
   "devDependencies": {
     "@types/react": "18.0.21",
