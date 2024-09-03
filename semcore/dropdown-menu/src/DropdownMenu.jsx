@@ -384,6 +384,8 @@ function List({ styles, Children }) {
         <ScrollAreaComponent.Container tabIndex={undefined}>
           <Children />
         </ScrollAreaComponent.Container>
+        <ScrollAreaComponent.Bar orientation='horizontal' />
+        <ScrollAreaComponent.Bar orientation='vertical' />
       </SDropdownMenuList>
     </ListBoxContextProvider>,
   );
