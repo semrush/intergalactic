@@ -49,7 +49,7 @@ const Demo = () => {
                   <DropdownMenu.Item.Content>Item 4</DropdownMenu.Item.Content>
                 </DropdownMenu.Item>
               </DropdownMenu.Group>
-              <Tooltip.Popper w={200} aria-hidden={true}>
+              <Tooltip.Popper w={120} aria-hidden={true}>
                 <TooltipContent />
               </Tooltip.Popper>
             </Tooltip>

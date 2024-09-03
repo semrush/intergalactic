@@ -5,7 +5,7 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 ---
 
 ::: warning
- If you need to customize your work of the dropdown menu, please refer to the documentation for[intergalactic/popper](/utils/popper/popper)
+ If you need to customize your work of the dropdown menu, refer to the documentation for[intergalactic/popper](/utils/popper/popper)
 :::
 
 The component is a wrapper over the [intergalactic/dropdown](/components/dropdown/dropdown) that allows for the following:
@@ -66,7 +66,7 @@ The component offers several options for laying out list item types:
 
 - `DropdownMenu.Item`: A list element that can be selected with the keyboard.
 - `DropdownMenu.Item.Content`: The content within an item, used when you need to include a hint or submenu.
-- `DropdownMenu.Item.Hint`: A subheading or message with additional information (cannot be selected with the keyboard).
+- `DropdownMenu.Item.Hint`: A subheading or message with additional information (can't be selected with the keyboard).
 
 ::: sandbox
 

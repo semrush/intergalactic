@@ -54,7 +54,7 @@ The list always drops down, regardless of space availability under the trigger. 
 
 ## Data loading
 
-If the list takes time to load, such as when the system cannot load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
+If the list takes time to load, such as when the system can't load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
 
 For more information about trigger states, refer to [Select / Multiselect](/components/select/select#a24650).
 
