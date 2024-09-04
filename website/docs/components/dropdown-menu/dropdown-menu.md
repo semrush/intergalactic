@@ -96,9 +96,9 @@ List item can be a title. It doesn't have `hover` or `active` state and it isnâ€
 
 ### Button
 
-You can add a button to any list.
+You can add a button to the list.
 
-#### Action button
+<!-- #### Action button
 
 Action button opens another dropdown, takes user to a new page or performs any other action on the page.
 
@@ -106,7 +106,7 @@ Action button opens another dropdown, takes user to a new page or performs any o
 
 The item with button should have the same hover as a regular item in the list.
 
-![](static/list-button-hover.png)
+![](static/list-button-hover.png) -->
 
 #### Addition button
 
@@ -122,7 +122,7 @@ Table: DropdownMenu addition button states
 | Loading                | ![](static/button-4.png) | For loading state change submit icon to [Spin](/components/spin/spin) with XS size. Input receives the `disabled` state.                                                                                      |
 | Error                  | ![](static/button-5.png) | If an error occurred during adding, show the error message in a tooltip and highlight the input.                                                                                                              |
 
-#### Button inside the item
+#### Button inside item
 
 You can add a button to the right of an item for an additional action.
 
@@ -153,7 +153,7 @@ You can put the following addons before and after the text inside the list item:
 - user picture or avatar,
 - control such as [Link component](/components/link/link), [Button](/components/button/button) or [Switch](/components/switch/switch).
 
-### Addon before the text
+### Addon before text
 
 Before the text you can place an icon, flag or image. In this case icon always has the color of the text.
 
@@ -165,7 +165,7 @@ Table: Addon before the text examples
 | Flag         | ![](static/flag-addon.png) |
 | Image/avatar | ![](static/pic-addon.png)  |
 
-### Addon after the text
+### Addon after text
 
 After the text you can place either non-interactive and interactive addons: an icon, badge, switch, link or button.
 
