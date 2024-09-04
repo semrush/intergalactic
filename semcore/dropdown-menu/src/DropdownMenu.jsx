@@ -570,6 +570,8 @@ function ItemContent({ styles }) {
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
+      alignItems={menuItemCtxValue.hasSubMenu ? 'center' : undefined}
+      justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
     />,
   );
 }
