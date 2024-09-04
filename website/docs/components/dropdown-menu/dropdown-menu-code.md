@@ -23,7 +23,7 @@ The component is a wrapper over the [intergalactic/dropdown](/components/dropdow
 
 :::
 
-## Dropdown-menu
+## Dropdown menu
 
 There are a few ways to display the dropdown menu in this component.
 
@@ -60,7 +60,7 @@ This is best when you only need to manage the content within the options list.
 
 :::
 
-## List item types
+## Menu item types
 
 The component offers several options for laying out list item types:
 
@@ -76,7 +76,7 @@ The component offers several options for laying out list item types:
 
 :::
 
-## List item with actions
+## Menu item with actions
 
 ::: sandbox
 

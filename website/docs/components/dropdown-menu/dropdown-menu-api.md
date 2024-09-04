@@ -79,17 +79,6 @@ import DropdownMenu from 'intergalactic/dropdown-menu';
 
 <TypesView type="DropdownMenuItemHintProps" :types={...types} />
 
-## DropdownMenu.Item.Hint
-
-This non-interactive menu item is used to display tips in the list. Using as an `aria-describedby` for `DropdownMenu.Item`.
-
-```jsx
-import DropdownMenu from 'intergalactic/dropdown-menu';
-<DropdownMenu.Item.Hint />;
-```
-
-<TypesView type="DropdownMenuItemHintProps" :types={...types} />
-
 ## DropdownMenu.Group
 
 Group of interactive menu items.
@@ -101,24 +90,13 @@ import DropdownMenu from 'intergalactic/dropdown-menu';
 
 <TypesView type="DropdownMenuGroupProps" :types={...types} />
 
-## ~~DropdownMenu.ItemTitle~~ Deprecated, use DropdownMenu.Group
+## DropdownMenu.Item.Hint
 
-This non-interactive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
-
-```jsx
-import DropdownMenu from 'intergalactic/dropdown-menu';
-<DropdownMenu.ItemTitle />;
-```
-
-<TypesView type="DropdownMenuItemTitleProps" :types={...types} />
-
-## ~~DropdownMenu.ItemHint~~ Deprecated, use DropdownMenu.Item.Hint or DropdownMenu.Group with `subTitle` props
-
-This non-interactive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
+This non-interactive menu item is used to display tips in the list. Using as an `aria-describedby` for `DropdownMenu.Item`.
 
 ```jsx
 import DropdownMenu from 'intergalactic/dropdown-menu';
-<DropdownMenu.ItemHint />;
+<DropdownMenu.Item.Hint />;
 ```
 
 <TypesView type="DropdownMenuItemHintProps" :types={...types} />
@@ -130,3 +108,35 @@ Context of the component is available inside the render-function.
 <TypesView type="DropdownMenuContext" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>
+
+## Deprecated
+
+### DropdownMenu.ItemTitle
+
+::: info
+The `DropdownMenu.ItemTitle` is deprecated, use `DropdownMenu.Group` instead.
+:::
+
+This non-interactive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
+
+```jsx
+import DropdownMenu from 'intergalactic/dropdown-menu';
+<DropdownMenu.ItemTitle />;
+```
+
+<TypesView type="DropdownMenuItemTitleProps" :types={...types} />
+
+### DropdownMenu.ItemHint
+
+::: info
+The `DropdownMenu.ItemHint` is deprecated, use `DropdownMenu.Item.Hint` or `DropdownMenu.Group` with `subTitle` props instead.
+:::
+
+This non-interactive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
+
+```jsx
+import DropdownMenu from 'intergalactic/dropdown-menu';
+<DropdownMenu.ItemHint />;
+```
+
+<TypesView type="DropdownMenuItemHintProps" :types={...types} />
