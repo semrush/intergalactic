@@ -68,14 +68,6 @@ SCalendarUnit {
     color: var(--intergalactic-text-primary, #191b23);
     background-color: var(--intergalactic-date-picker-cell-hover, #e0e1e9);
   }
-
-  &:focus {
-    z-index: 1;
-  }
-
-  &:focus-visible {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  }
 }
 
 SCalendarUnit[today] {
@@ -238,6 +230,17 @@ SCalendarUnit[disabled] {
   opacity: 0.4;
   cursor: default;
   pointer-events: none;
+}
+
+SCalendar:focus {
+  outline: none;
+  & SCalendarUnit[highlighted] {
+    z-index: 1;
+    box-shadow: var(
+      --intergalactic-keyboard-focus,
+      0px 0px 0px 3px rgba(0, 143, 248, 0.5)
+    );
+  }
 }
 
 @media (prefers-reduced-motion) {

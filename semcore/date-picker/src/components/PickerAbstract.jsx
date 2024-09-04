@@ -113,13 +113,13 @@ class PickerAbstract extends Component {
     const day = this.keyDiff[e.key];
 
     const getCurrentHighlightedDay = (day) => {
-      const current_day = day.toDate();
-      const isDisabledDay = _disabled.some(includesDate(dayjs(current_day), 'date'));
-      return isDisabledDay ? null : current_day;
+      return day.toDate();
     };
 
     if (place === 'popper' && (e.key === ' ' || (e.key === 'Enter' && highlighted.length))) {
-      this.handlers.value(highlighted[0]);
+      if (!this.isDisabledDay(highlighted[0])) {
+        this.handlers.value(highlighted[0]);
+      }
       e.preventDefault();
     }
     if (day) {
