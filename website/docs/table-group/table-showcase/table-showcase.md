@@ -105,6 +105,7 @@ const styles = `
     margin: 0;
     margin-top: 12px;
     padding: 0;
+    padding-left: 0 !important;
 
   }
 
@@ -206,6 +207,7 @@ const styles = `
     margin: 0;
     margin-top: 12px;
     padding: 0;
+    padding-left: 0 !important;
 
   }
 `; 
@@ -224,7 +226,7 @@ const App = function () {
 
   return (
 
-    <div className='table-group-grid'>
+    <ul className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -235,7 +237,7 @@ const App = function () {
           type={item.type}
         />
       ))}
-    </div>
+    </ul>
 
   ); 
 }
@@ -327,6 +329,7 @@ const styles = `
     margin: 0;
     margin-top: 12px;
     padding: 0;
+    padding-left: 0 !important;
 
   }
 `; 
@@ -345,7 +348,7 @@ const App = function () {
 
   return (
 
-    <div className='table-group-grid'>
+    <ul className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -356,7 +359,7 @@ const App = function () {
           type={item.type}
         />
       ))}
-    </div>
+    </ul>
 
   ); 
 }

@@ -12,12 +12,12 @@ function ComponentCard({ image, text, disabled, href, type, onClick }) {
   }
 
   return (
-    <div className={styles.card} disabled={disabled}>
+    <li className={styles.card} disabled={disabled}>
       {/* biome-ignore lint/a11y/useValidAnchor: */}
       <a className={styles.linkUi} href={href} aria-label={text} onClick={onClick ?? undefined} />
       <img src={url} alt='image' aria-hidden='true' />
       <Text className={styles.title}>{text}</Text>
-    </div>
+    </li>
   );
 }
 
