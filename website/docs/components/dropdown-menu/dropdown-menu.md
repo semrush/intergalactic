@@ -177,11 +177,7 @@ If an icon displays additional information about an item, we recommend placing i
 
 ### Info icon
 
-`Info` icon displays a tooltip when hovered over (see examples in the [Informer](/patterns/informer/informer)). We recommend making the active zone for the icon larger than the icon's size. The margin between the icon and the text should always be 4px.
-
-![](static/info-icon.png)
-
-![](static/info-icon-tooltip.png)
+Avoid adding `Info` icon for displayng a tooltip. Check the [Tooltip section below](#tooltip).
 
 ### Counter
 
@@ -205,6 +201,12 @@ Table: Secondary text sizes
 | --------- | --------------------------- | ---------------------- |
 | M         | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
 | L         | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
+
+## Tooltip
+
+If you want to add a tooltip to an item, apply it to the entire item. We do not recommend adding an additional `Info` icon, as it does not display a tooltip on hover.
+
+![](static/info-icon-tooltip.png)
 
 ## Dropdown scroll
 
