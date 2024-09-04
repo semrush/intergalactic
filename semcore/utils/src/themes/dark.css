@@ -436,6 +436,8 @@
   --intergalactic-compact: 0.3;
   /* Base denominator of the design system. */
   --intergalactic-scale-indent: 4px;
+  /* Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions. */
+  --intergalactic-form-control-s: 20px;
   /* Default size of the controls. */
   --intergalactic-form-control-m: 28px;
   /* Large size of the controls. */
