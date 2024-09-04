@@ -12,7 +12,7 @@ The component is child element rendering in a DOM node that exists outside of th
 
 ```javascript
 <Modal>
-  <Select disablePortal>Контент</Portal>
+  <Select disablePortal>Content</Portal>
 </Modal>
 ```
 
