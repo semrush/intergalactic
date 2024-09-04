@@ -41,7 +41,7 @@ Keyboard control should be performed sequentially across all interactive element
 
 ## Keyboard support for button, link, input, etc.
 
-### Link и hint link
+### Link and hint link
 
 - Links get focus by pressing the `Tab` key.
 - Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)).
@@ -56,13 +56,13 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 - Buttons are highlighted with a blue outline when focused on, regardless of the button color.
 - When you press `Enter`, the link is clicked or an action is performed.
 
-### Input и textarea
+### Input and textarea
 
 - Input fields get focus by pressing the `Tab` key.
 - When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (for example, orange).
 - The target action is performed by pressing `Enter` (saving, applying a filter, etc.).
 
-### Checkbox, radio и switch
+### Checkbox, radio and switch
 
 - Selection controls get focus when you press `Tab`.
 - When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (for example, orange).
