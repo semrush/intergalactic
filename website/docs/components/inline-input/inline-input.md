@@ -165,7 +165,7 @@ Table: InlineInput states
 | Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                               |
 | Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/design-tokens) token). |
 
-## Save и Cancel icon buttons
+## Save and Cancel icon buttons
 
 For the default state of the icons use the following tokens:
 

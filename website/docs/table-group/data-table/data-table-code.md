@@ -421,7 +421,7 @@ Add borders to columns by passing the `vBorders` property to specific columns.
 
 :::
 
-## Сolumn expand
+## Column expand
 
 The active column will expand if there isn't enough space. Fixed-width columns will not change size. 
 
@@ -432,7 +432,7 @@ Be cautious with columns with a `wMax` property, as the sort icon may overlap th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/сolumn-expand.tsx'; 
+  export Demo from './examples/column-expand.tsx'; 
 </script>
 
 :::
