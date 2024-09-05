@@ -113,7 +113,7 @@ Context of the component is available inside the render-function.
 
 ### DropdownMenu.ItemTitle
 
-::: info
+::: warning
 The `DropdownMenu.ItemTitle` is deprecated, use `DropdownMenu.Group` instead.
 :::
 
@@ -128,7 +128,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 
 ### DropdownMenu.ItemHint
 
-::: info
+::: warning
 The `DropdownMenu.ItemHint` is deprecated, use `DropdownMenu.Item.Hint` or `DropdownMenu.Group` with `subTitle` props instead.
 :::
 
