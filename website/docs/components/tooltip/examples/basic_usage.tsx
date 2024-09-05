@@ -56,9 +56,9 @@ const Demo = () => (
       </DescriptionTooltip>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
-          tag={InfoM}
-          color='var(--intergalactic-icon-secondary-neutral)'
-          interactive
+          tag={ButtonLink}
+          addonLeft={InfoM}
+          color='icon-secondary-neutral'
           aria-label='About peregrine falcon'
         />
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
