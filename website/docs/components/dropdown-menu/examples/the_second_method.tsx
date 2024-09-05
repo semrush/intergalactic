@@ -8,7 +8,7 @@ const Demo = () => {
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='dropdown-menu-children-items'>
-        Button trigger
+        Your choice
       </Text>
       <DropdownMenu>
         <DropdownMenu.Trigger
@@ -17,7 +17,7 @@ const Demo = () => {
           mr='auto'
           id='dropdown-menu-children-items'
         >
-          Check the options
+          Choose an item
         </DropdownMenu.Trigger>
         {/* Adding max-height to the dropdown menu */}
         <DropdownMenu.Menu hMax={'180px'}>
