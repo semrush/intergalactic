@@ -6,7 +6,6 @@ import Dropdown, {
   DropdownTriggerProps,
 } from '@semcore/dropdown';
 import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
 import { ScrollAreaProps } from '@semcore/scroll-area';
 
 export type DropdownMenuSize = 'm' | 'l';
@@ -138,6 +137,12 @@ declare const DropdownMenu: Intergalactic.Component<
   Popper: Intergalactic.Component<'div', DropdownMenuProps>;
   List: Intergalactic.Component<
     'div',
+    DropdownMenuListProps,
+    DropdownMenuContext,
+    [handlers: DropdownMenuHandlers]
+  >;
+  Actions: Intergalactic.Component<
+    typeof Flex,
     DropdownMenuListProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]

@@ -21,16 +21,8 @@ const Demo = () => {
                 Item 3
               </DropdownMenu.Item.Content>
               <DropdownMenu.Actions gap={1}>
-                <DropdownMenu.Item
-                    tag={Button}
-                    addonLeft={PlusM}
-                    aria-label={'Add new'}
-                />
-                <DropdownMenu.Item
-                    tag={Button}
-                    addonLeft={TrashM}
-                    aria-label={'Delete'}
-                />
+                <DropdownMenu.Item tag={Button} addonLeft={PlusM} aria-label={'Add new'} />
+                <DropdownMenu.Item tag={Button} addonLeft={TrashM} aria-label={'Delete'} />
               </DropdownMenu.Actions>
             </Flex>
           </DropdownMenu>

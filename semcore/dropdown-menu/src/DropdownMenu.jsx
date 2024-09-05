@@ -396,9 +396,7 @@ function List({ styles, Children }) {
 function Actions({ styles }) {
   const SDropdownMenuActions = Root;
 
-  return sstyled(styles)(
-    <SDropdownMenuActions render={Flex}/>,
-  );
+  return sstyled(styles)(<SDropdownMenuActions render={Flex} />);
 }
 
 function Menu(props) {
