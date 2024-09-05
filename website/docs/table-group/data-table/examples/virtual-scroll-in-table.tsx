@@ -22,7 +22,7 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} totalRows={10000}>
       <DataTable.Head>
         <DataTable.Column name='id' children='ID' />
         <DataTable.Column name='keyword' children='Keyword' />

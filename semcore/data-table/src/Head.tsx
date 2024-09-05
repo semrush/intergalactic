@@ -5,11 +5,17 @@ import ScrollArea from '@semcore/scroll-area';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
-import type { Column } from './types';
+import {
+  flattenColumns,
+  FOCUS_CELL_EVENT_NAME,
+  getFixedStyle,
+  getScrollOffsetValue,
+} from './utils';
+import { ColIndex, Column, RowIndex } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
+import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 export const SORT_ICON_WIDTH = 20;
 
@@ -34,6 +40,7 @@ type AsProps = {
   uid?: string;
   withScrollBar?: boolean;
   animationsDisabled?: boolean;
+  eventEmitter: EventEmitter;
 };
 
 class Head extends Component<AsProps> {
@@ -41,8 +48,33 @@ class Head extends Component<AsProps> {
 
   static displayName: string;
 
+  headCellMap = new Map<ColIndex, HTMLElement | null>();
+
+  disposeFocusCellEvent: (() => void) | undefined;
+
   sortWrapperRefs = new Map<Node, boolean>();
   defaultWidths = new Map<Node, { minWidth: number; computedWidth: number }>();
+
+  componentDidMount() {
+    this.disposeFocusCellEvent = this.asProps.eventEmitter.subscribe(
+      FOCUS_CELL_EVENT_NAME,
+      this.setFocusToHeadCell,
+    );
+  }
+
+  componentWillUnmount() {
+    this.disposeFocusCellEvent?.();
+  }
+
+  setFocusToHeadCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
+    const isSortable = this.columns.some((column) => column.sortable);
+
+    if (isSortable && rowIndex === -1) {
+      const cell = this.headCellMap.get(colIndex);
+
+      cell?.focus();
+    }
+  };
 
   bindHandlerSortClick = (name: string) => (event: React.MouseEvent) => {
     this.asProps.$onSortClick(name, event);
@@ -61,8 +93,9 @@ class Head extends Component<AsProps> {
     }
   };
 
-  makeColumnRefHandler = (column: Column) => (ref: HTMLElement | null) => {
+  makeColumnRefHandler = (column: Column, index: number) => (ref: HTMLElement | null) => {
     setRef(column.props.ref, ref);
+    this.headCellMap.set(index, ref);
     if (column.props.forwardRef) {
       setRef(column.props.forwardRef, ref);
     }
@@ -144,10 +177,10 @@ class Head extends Component<AsProps> {
   };
 
   renderColumns(columns: Column[], width: number) {
-    return columns.map((column) => this.renderColumn(column, width));
+    return columns.map((column, index) => this.renderColumn(column, width, index));
   }
 
-  renderColumn(column: Column, width: number) {
+  renderColumn(column: Column, width: number, index: number) {
     const { styles, use, hidden, uid } = this.asProps;
     const SColumn = Flex as any;
     const SHead = Box;
@@ -186,10 +219,10 @@ class Head extends Component<AsProps> {
         borderRight={isGroup ? false : column.borderRight}
         active={isGroup ? false : column.active}
         group={isGroup}
-        tabIndex={column.sortable ? 0 : undefined}
+        tabIndex={-1}
         __excludeProps={['hidden']}
         {...column.props}
-        ref={this.makeColumnRefHandler(column)}
+        ref={this.makeColumnRefHandler(column, index)}
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,
@@ -263,14 +296,14 @@ class Head extends Component<AsProps> {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={-1} zIndex={2}>
-            <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
+            <SHead render={Box} role='row' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>
           {Boolean(withScrollBar) && (
-            <div style={displayContents} role='rowgroup'>
-              <div style={displayContents} role='row'>
-                <div style={displayContents} role='cell'>
+            <div style={displayContents}>
+              <div style={displayContents}>
+                <div style={displayContents}>
                   <ScrollArea.Bar orientation='horizontal' />
                 </div>
               </div>

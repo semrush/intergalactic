@@ -12,13 +12,15 @@ import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
-import { flattenColumns } from './utils';
+import { flattenColumns, FOCUS_CELL_EVENT_NAME } from './utils';
 import type {
+  ColIndex,
   Column,
   NestedCells,
   PropsLayer,
   PseudoChildPropsGetter,
   RowData,
+  RowIndex,
   SortDirection,
 } from './types';
 import Head from './Head';
@@ -26,6 +28,8 @@ import Body from './Body';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/data-table.shadow.css';
+import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
+import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
@@ -45,6 +49,7 @@ type AsProps = {
   use: 'primary' | 'secondary';
   sort: SortDirection[];
   data: RowData[];
+  totalRows?: number;
   uniqueKey: string;
   uid?: string;
 };
@@ -59,10 +64,7 @@ type BodyAsProps = {
 };
 
 export type DataTableData = { [key: string]: unknown };
-export type DataTableSort<Columns extends string | number | symbol = string> = [
-  sortBy: Columns,
-  sortDirection: 'desc' | 'asc',
-];
+export type DataTableSort<Column = string> = [sortBy: Column, sortDirection: 'desc' | 'asc'];
 export type DataTableTheme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 export type DataTableUse = 'primary' | 'secondary';
 export type DataTableRow = DataTableCell[];
@@ -74,10 +76,20 @@ export type DataTableCell = {
   [key: string]: unknown;
 };
 
+/**
+ * Datatable must have an accessible name (aria-table-name).
+ * It should describe table content.
+ */
+type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  title?: string;
+}>;
+
 /** @deprecated */
 export interface IDataTableProps<
   DataTableData extends { [key: string]: any }[] = UnknownProperties[],
-> extends DataTableProps<DataTableData> {}
+> extends Omit<DataTableProps<DataTableData>, keyof DataTableAriaProps> {}
 export type DataTableProps<DataTableData extends { [key: string]: any }[] = UnknownProperties[]> =
   BoxProps & {
     /** Table theme according to visual hierarchy on the page
@@ -96,7 +108,9 @@ export type DataTableProps<DataTableData extends { [key: string]: any }[] = Unkn
     uniqueKey?: keyof DataTableData[0];
     /** Make cells compact by changing left and right paddings to smaller ones*/
     compact?: boolean;
-  };
+    /** Count of total rows if table using virtual scroll. Needs for accessibility */
+    totalRows?: number;
+  } & DataTableAriaProps;
 
 /** @deprecated */
 export interface IDataTableHeadProps extends DataTableHeadProps, UnknownProperties {}
@@ -219,6 +233,10 @@ class RootDefinitionTable extends Component<AsProps> {
     sort: [],
     data: [],
   } as AsProps;
+
+  eventEmitter = new EventEmitter();
+
+  focusedCell: [RowIndex, ColIndex] = [0, 0];
 
   columns: Column[] = [];
 
@@ -383,6 +401,7 @@ class RootDefinitionTable extends Component<AsProps> {
       onResize: this.handlerResize,
       $scrollRef: this.scrollHeadRef,
       uid,
+      eventEmitter: this.eventEmitter,
     };
   }
 
@@ -423,6 +442,7 @@ class RootDefinitionTable extends Component<AsProps> {
       rowPropsLayers,
       $scrollRef: this.scrollBodyRef,
       uid,
+      eventEmitter: this.eventEmitter,
     };
   }
 
@@ -518,17 +538,108 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
   }
 
+  get totalRows() {
+    const { data, totalRows } = this.asProps;
+
+    return totalRows ?? (data ?? []).length;
+  }
+
+  changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
+    const isSortable = this.columns.some((column) => column.sortable);
+
+    const maxCol = this.columns.length - 1;
+    const maxRow = this.totalRows - 1;
+
+    let changed = true;
+    let newRow = this.focusedCell[0] + rowIndex;
+    let newCol = this.focusedCell[1] + colIndex;
+
+    if (
+      ((isSortable && newRow < -1) || (!isSortable && newRow < 0) || newRow > maxRow) &&
+      newRow !== this.focusedCell[0]
+    ) {
+      newRow = this.focusedCell[0];
+      changed = false;
+    }
+    if ((newCol < 0 || newCol > maxCol) && newCol !== this.focusedCell[1]) {
+      newCol = this.focusedCell[1];
+      changed = false;
+    }
+
+    this.focusedCell = [newRow, newCol];
+
+    return changed;
+  };
+
+  handleKeyDown = (e: React.KeyboardEvent) => {
+    let emitFocusChange = false;
+
+    switch (e.key) {
+      case 'ArrowLeft': {
+        emitFocusChange = this.changeFocusCell(0, -1);
+        break;
+      }
+      case 'ArrowRight': {
+        emitFocusChange = this.changeFocusCell(0, 1);
+        break;
+      }
+      case 'ArrowUp': {
+        emitFocusChange = this.changeFocusCell(-1, 0);
+        break;
+      }
+      case 'ArrowDown': {
+        emitFocusChange = this.changeFocusCell(1, 0);
+        break;
+      }
+    }
+
+    if (emitFocusChange) {
+      this.eventEmitter.emit(FOCUS_CELL_EVENT_NAME, ...this.focusedCell);
+    }
+  };
+
+  handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+      const focusedCell = this.getFocusedCell();
+
+      focusedCell?.removeAttribute('inert');
+      focusedCell?.focus();
+
+      e.currentTarget.setAttribute('tabIndex', '-1');
+    }
+  };
+
+  handleBlur = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+      e.currentTarget.setAttribute('tabIndex', '0');
+    }
+  };
+
+  getFocusedCell = (): HTMLDivElement | undefined => {
+    const rows = this.tableRef.current?.querySelectorAll<HTMLDivElement>('[role=row]');
+    const focusedRow = rows?.[this.focusedCell[0] + 1];
+
+    const cells = focusedRow?.querySelectorAll<HTMLDivElement>('[role=gridcell]');
+    const focusedCell = cells?.[this.focusedCell[1]];
+
+    return focusedCell;
+  };
+
   render() {
     const SDataTable = Root;
-    const { Children, styles, data } = this.asProps;
+    const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
       <SDataTable
         render={Box}
         __excludeProps={['data']}
         ref={this.tableRef}
-        role='table'
-        aria-rowcount={(data ?? []).length}
+        role='grid'
+        onKeyDown={this.handleKeyDown}
+        tabIndex={0}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        aria-rowcount={this.totalRows}
       >
         <Children />
       </SDataTable>,

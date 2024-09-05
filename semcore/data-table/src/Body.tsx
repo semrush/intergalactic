@@ -2,8 +2,8 @@ import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
-import { getFixedStyle, getScrollOffsetValue } from './utils';
-import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
+import { FOCUS_CELL_EVENT_NAME, getFixedStyle, getScrollOffsetValue } from './utils';
+import { RowData, Column, NestedCells, PropsLayer, Cell, RowIndex, ColIndex } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
@@ -12,6 +12,9 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 import scrollStyles from './style/scroll-shadows.shadow.css';
+import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -40,6 +43,7 @@ type AsProps = {
   uid?: string;
   animationsDisabled?: boolean;
   scrollContainerRef: React.Ref<HTMLDivElement>;
+  eventEmitter: EventEmitter;
 };
 
 type State = {
@@ -48,7 +52,7 @@ type State = {
   scrollOffset: number;
 };
 
-class Body extends Component<AsProps, State> {
+class Body extends Component<AsProps, {}, State> {
   state: State = {
     rowHeight: undefined,
     scrollAreaHeight: undefined,
@@ -59,10 +63,83 @@ class Body extends Component<AsProps, State> {
   firstRowRef = React.createRef<HTMLDivElement>();
   firstRowResizeObserver: ResizeObserver | null = null;
 
+  cellRefMap = new Map<RowIndex, Map<ColIndex, HTMLElement | null>>();
+  lockedCell: [HTMLElement | null, boolean] = [null, false];
+
+  disposeFocusCellEvent: (() => void) | undefined;
+
+  componentDidMount() {
+    this.disposeFocusCellEvent = this.asProps.eventEmitter.subscribe(
+      FOCUS_CELL_EVENT_NAME,
+      this.setFocusToCell,
+    );
+  }
+
   getRowHeight = () => {
     const { virtualScroll } = this.asProps;
     const rowHeightFromProps = typeof virtualScroll === 'object' && virtualScroll?.rowHeight;
     return rowHeightFromProps || this.state.rowHeight;
+  };
+
+  setFocusToCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
+    const row = this.cellRefMap.get(rowIndex);
+    const cell = row?.get(colIndex);
+
+    cell?.removeAttribute('inert');
+    cell?.focus();
+  };
+
+  handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.currentTarget === this.lockedCell[0]) {
+      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (this.lockedCell[1]) {
+        if (e.key === 'Escape') {
+          this.lockedCell[0]?.focus();
+          this.lockedCell[1] = false;
+        }
+        if (e.key.startsWith('Arrow')) {
+          e.stopPropagation();
+        }
+        if (e.key === 'Tab') {
+          if (e.target === focusableChildren[0] && e.shiftKey) {
+            focusableChildren[focusableChildren.length - 1]?.focus();
+            e.preventDefault();
+          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
+            focusableChildren[0]?.focus();
+            e.preventDefault();
+          }
+        }
+      } else if (e.key === 'Enter') {
+        this.lockedCell[1] = true;
+        focusableChildren[0]?.focus();
+      } else if (e.key === 'Tab') {
+        this.lockedCell[0]?.setAttribute('inert', '');
+      }
+    }
+  };
+
+  onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (e.target === e.currentTarget) {
+      const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (focusableChildren.length === 1) {
+        focusableChildren[0].focus();
+      } else if (focusableChildren.length > 1) {
+        this.lockedCell = [e.currentTarget, false];
+      }
+    }
+  };
+
+  onBlurCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+      e.currentTarget.setAttribute('inert', '');
+      e.currentTarget.setAttribute('tabIndex', '-1');
+    }
   };
 
   renderCells(cells: NestedCells, rowData: RowData, dataIndex: number) {
@@ -93,6 +170,12 @@ class Body extends Component<AsProps, State> {
           children: React.ReactNode;
           style: React.CSSProperties;
         };
+
+        if (!this.cellRefMap.has(dataIndex)) {
+          this.cellRefMap.set(dataIndex, new Map());
+        }
+
+        const rowCellsMap = this.cellRefMap.get(dataIndex)!;
 
         const columnWMin = column?.props?.wMin;
         const columnWMax = column?.props?.wMax;
@@ -127,10 +210,14 @@ class Body extends Component<AsProps, State> {
           .filter(Boolean)
           .map((name) => `igc-table-${uid}-${name}`);
 
+        props.ref = (node: HTMLDivElement | null) => {
+          rowCellsMap.set(cellIndex, node);
+        };
+
         return sstyled(styles)(
           <SCell
             key={cell.name}
-            role='cell'
+            role='gridcell'
             headers={headerIds.join(' ')}
             __excludeProps={['data']}
             {...props}
@@ -139,6 +226,11 @@ class Body extends Component<AsProps, State> {
             use={use}
             borderLeft={props.borderLeft}
             borderRight={props.borderRight}
+            tabIndex={-1}
+            onKeyDown={this.handleKeyDown}
+            onFocus={this.onFocusCell}
+            onBlur={this.onBlurCell}
+            inert={''}
           />,
         ) as React.ReactElement;
       }
@@ -274,6 +366,7 @@ class Body extends Component<AsProps, State> {
 
   componentWillUnmount() {
     this.firstRowResizeObserver?.disconnect();
+    this.disposeFocusCellEvent?.();
   }
 
   render() {
@@ -347,12 +440,13 @@ class Body extends Component<AsProps, State> {
             ref={forkRef(...scrollContainerRefs)}
             role='rowgroup'
             focusRingTopOffset={'3px'}
+            tabIndex={-1}
           >
             {body}
           </ScrollArea.Container>
-          <div style={displayContents} role='rowgroup'>
-            <div style={displayContents} role='row'>
-              <div style={displayContents} role='cell'>
+          <div style={displayContents}>
+            <div style={displayContents}>
+              <div style={displayContents}>
                 <ScrollArea.Bar
                   orientation='horizontal'
                   bottom={0}
