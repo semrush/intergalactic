@@ -224,6 +224,10 @@ class DropdownMenuRoot extends Component {
     };
   }
 
+  getActionsProps() {
+    return this.getListProps();
+  }
+
   getPopperProps() {
     const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex } =
       this.asProps;
@@ -231,7 +235,6 @@ class DropdownMenuRoot extends Component {
     return {
       ref: this.popperRef,
       tabIndex: -1,
-      onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
       disablePortal,
       ignorePortalsStacking,
@@ -388,6 +391,13 @@ function List({ styles, Children }) {
         <ScrollAreaComponent.Bar orientation='vertical' />
       </SDropdownMenuList>
     </ListBoxContextProvider>,
+  );
+}
+function Actions({ styles }) {
+  const SDropdownMenuActions = Root;
+
+  return sstyled(styles)(
+    <SDropdownMenuActions render={Flex}/>,
   );
 }
 
@@ -625,6 +635,7 @@ const DropdownMenu = createComponent(
     Trigger,
     Popper: Dropdown.Popper,
     List,
+    Actions,
     Menu,
     Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint }],
     /**

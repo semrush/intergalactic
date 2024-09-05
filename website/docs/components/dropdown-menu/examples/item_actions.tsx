@@ -15,21 +15,24 @@ const Demo = () => {
         <DropdownMenu.Item>Item 2</DropdownMenu.Item>
 
         <DropdownMenu.Item>
-          <DropdownMenu visible={true} inlineActions placement={'right'}>
-            {({ getListProps, getTriggerProps }) => {
-              const listProps = getListProps();
-              const triggerProps = getTriggerProps();
-
-              return (
-                <Flex justifyContent='space-between'>
-                  <DropdownMenu.Item.Content {...triggerProps}>Item 3</DropdownMenu.Item.Content>
-                  <Flex gap={1} {...listProps}>
-                    <DropdownMenu.Item tag={Button} addonLeft={PlusM} aria-label={'Add new'} />
-                    <DropdownMenu.Item tag={Button} addonLeft={TrashM} aria-label={'Delete'} />
-                  </Flex>
-                </Flex>
-              );
-            }}
+          <DropdownMenu inlineActions placement={'right'}>
+            <Flex justifyContent='space-between'>
+              <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                Item 3
+              </DropdownMenu.Item.Content>
+              <DropdownMenu.Actions gap={1}>
+                <DropdownMenu.Item
+                    tag={Button}
+                    addonLeft={PlusM}
+                    aria-label={'Add new'}
+                />
+                <DropdownMenu.Item
+                    tag={Button}
+                    addonLeft={TrashM}
+                    aria-label={'Delete'}
+                />
+              </DropdownMenu.Actions>
+            </Flex>
           </DropdownMenu>
         </DropdownMenu.Item>
         <DropdownMenu.Item>
