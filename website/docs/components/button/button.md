@@ -148,14 +148,12 @@ Component consists of the following:
 1. `Button.Text`
 2. `Button.Addon`
 
-`Button.Text` has margins on the right and left sides. You can add addons before and after the text. As addons you can use:
+You can add addons before and after the text. As addons you can use:
 
-- [Icon](/style/icon/icon),
-- [Counter](/components/counter/counter),
-- [Badge](/components/badge/badge),
-- [Flag](/components/flags/flags).
-
-Addon before the text has `margin-left`, while the trailing addon has `margin-right`.
+- [Icon](/style/icon/icon)
+- [Counter](/components/counter/counter)
+- [Badge](/components/badge/badge)
+- [Flag](/components/flags/flags)
 
 ## Sizes and margins
 
