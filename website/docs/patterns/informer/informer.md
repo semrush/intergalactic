@@ -11,11 +11,11 @@ tabs: Design('informer'), Example('informer-code')
 
 The informer consists of the following elements:
 
-- `Info` icon with `margin-left: 4px`
-- [Tooltip](/components/tooltip/tooltip) with the message (appears on clicking or pressing Enter/Space on the icon)
+- [ButtonLink](../../components/button/button.md#button-with-link-styles) with the `Info` icon and without text, with `margin-left: 4px`
+- [DescriptionTooltip](/components/tooltip/tooltip) with the message (appears on clicking or pressing Enter/Space on the icon)
 
 ::: tip
-Avoid using the `Info` icon with the `h1` title. This title typically pertains to hero blocks and similar elements. Adding tooltips to the main page title might seem unusual.
+Avoid using the `Informer` with the `h1` title. This title typically pertains to hero blocks and similar elements. Adding tooltips to the main page title might seem unusual.
 :::
 
 Table: Info icon with different title sizes
@@ -49,11 +49,11 @@ For comprehensive details, refer to [Tooltip](/components/tooltip/tooltip).
 
 ## Usage in UX/UI
 
-When the `Info` icon contains supplementary information about a control within a group of controls (for example, filters), pay attention to margins.
+When the `Informer` contains supplementary information about a control within a group of controls (for example, filters), pay attention to margins.
 
 ![](static/informer-yes-no.png)
 
-When controls are accompanied by text labels, position the `Info` icon adjacent to the labels.
+When controls are accompanied by text labels, position the `Informer` adjacent to the labels.
 
 ![](static/info-with-butt-group.png)
 

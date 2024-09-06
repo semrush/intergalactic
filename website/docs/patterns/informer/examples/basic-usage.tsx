@@ -3,6 +3,7 @@ import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 import { DescriptionTooltip } from 'intergalactic/tooltip';
 import Link from 'intergalactic/link';
+import { ButtonLink } from 'intergalactic/button';
 import InfoM from 'intergalactic/icon/Info/m';
 import InfoL from 'intergalactic/icon/Info/l';
 
@@ -12,10 +13,10 @@ const Demo = () => (
       <Text size={700}>Fastest animals</Text>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
-          tag={InfoL}
-          interactive
+          tag={ButtonLink}
+          addonLeft={InfoL}
           aria-label='About fastest animals'
-          color='--intergalactic-icon-secondary-neutral'
+          color='icon-secondary-neutral'
         />
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
           <Text tag='p' mb={3}>
@@ -34,10 +35,10 @@ const Demo = () => (
       <Text size={200}>Peregrine falcon</Text>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
-          tag={InfoM}
-          interactive
+          tag={ButtonLink}
+          addonLeft={InfoM}
           aria-label='About peregrine falcon'
-          color='--intergalactic-icon-secondary-neutral'
+          color='icon-secondary-neutral'
         />
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>
           <Text tag='p' mb={3}>
