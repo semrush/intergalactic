@@ -42,21 +42,6 @@ export const sideBarConfig: SidebarConfig = [
           {
             link: '/core-principles/a11y/a11y',
             text: 'Accessibility',
-            collapsed: true,
-            items: [
-              {
-                link: '/core-principles/a11y/a11y-general',
-                text: 'Development requirements',
-              },
-              {
-                link: '/core-principles/a11y/a11y-keyboard',
-                text: 'Keyboard support',
-              },
-              {
-                link: '/core-principles/a11y/a11y-design',
-                text: 'Design requirements',
-              },
-            ],
           },
           {
             link: '/core-principles/principles/principles',

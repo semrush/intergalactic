@@ -33,6 +33,7 @@ import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
 } from '@semcore/utils/lib/zIndexStacking';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 function isObject(obj) {
   return typeof obj === 'object' && !Array.isArray(obj);
@@ -76,7 +77,7 @@ const MODIFIERS_OPTIONS = [
   'eventListeners',
 ];
 
-class Popper extends Component {
+class PopperRoot extends Component {
   static displayName = 'Popper';
 
   static style = style;
@@ -129,12 +130,11 @@ class Popper extends Component {
     },
   };
 
-  // timer: ReturnType<typeof setTimeout>;
-  // observer: ResizeObserver;
   triggerRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
   lastPopperReference = null;
+  ignoreTriggerFocus = false;
 
   constructor(props) {
     super(props);
@@ -153,7 +153,6 @@ class Popper extends Component {
     };
   }
 
-  state = { ignoreTriggerFocusUntil: 0 };
   mouseEnterCursorPositionRef = { current: null };
 
   createTriggerRef = (ref) => {
@@ -349,14 +348,8 @@ class Popper extends Component {
       this.mouseEnterCursorPositionRef.current = { x: e.clientX, y: e.clientY };
     }
 
-    const now = Date.now();
     const focusAction = ['onFocus', 'onKeyboardFocus', 'onFocusCapture'].includes(action);
-    if (
-      now < this.state.ignoreTriggerFocusUntil &&
-      visible &&
-      component === 'trigger' &&
-      focusAction
-    ) {
+    if (this.ignoreTriggerFocus && visible && component === 'trigger' && focusAction) {
       return;
     }
     if (!visible) {
@@ -388,13 +381,13 @@ class Popper extends Component {
             this.popper.current.setOptions({});
           }
         }
+        if (!visible && component === 'popper') {
+          this.ignoreTriggerFocus = false;
+        }
       }, 0);
     });
-    const ignoringDuration = 2000;
-    if (!visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
-      this.setState({
-        ignoreTriggerFocusUntil: now + ignoringDuration,
-      });
+    if (component === 'popper' && !visible && ['onClick', 'onBlur', 'onKeyDown'].includes(action)) {
+      this.ignoreTriggerFocus = true;
     }
   };
 
@@ -406,17 +399,10 @@ class Popper extends Component {
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
     const latency = visible ? timeoutConfig[0] : timeoutConfig[1];
     clearTimeout(this.timer);
-    if (this.asProps.visible) {
-      this.timer = setTimeout(() => {
-        handlers.visible(visible, e);
-      }, latency);
-      cb();
-    } else {
-      this.timer = setTimeout(() => {
-        handlers.visible(visible, e);
-        cb();
-      }, latency);
-    }
+    this.timer = setTimeout(() => {
+      handlers.visible(visible, e);
+    }, latency);
+    cb();
   };
 
   getTriggerProps() {
@@ -435,27 +421,8 @@ class Popper extends Component {
       onKeyDown: this.bindHandlerKeyDown(onKeyDown, 'trigger'),
       disableEnforceFocus,
       popperRef: this.popperRef,
-      /** order of handlers is important here! */
-      onBlur: callAllEventHandlers(interactionProps.onBlur, this.handleTriggerBlur),
     };
   }
-
-  handleTriggerBlur = () => {
-    const { timeout } = this.asProps;
-    const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
-    const delay = timeoutConfig[1];
-
-    clearTimeout(this.triggerBlurTimeout);
-    /** Need to call timeout with delay as for hiding */
-    this.triggerBlurTimeout = setTimeout(() => {
-      /** Need to check visible prop in next frame because this.asProps updates only after rerender */
-      requestAnimationFrame(() => {
-        if (!this.asProps.visible) {
-          this.setState({ ignoreTriggerFocusUntil: 0 });
-        }
-      });
-    }, delay);
-  };
 
   getPopperProps() {
     const {
@@ -538,7 +505,8 @@ class Popper extends Component {
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
-  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef } = props;
+  const { Children, focusHint, onKeyboardFocus, highlighted, active, popperRef, forwardRef } =
+    props;
 
   const triggerRef = React.useRef();
 
@@ -549,10 +517,22 @@ function Trigger(props) {
   }, [highlighted]);
 
   const focusSourceRef = useFocusSource();
-  const handleFocus = React.useCallback(() => {
-    if (focusSourceRef.current !== 'keyboard') return;
-    onKeyboardFocus?.();
-  }, [onKeyboardFocus]);
+  const handleFocus = React.useCallback(
+    (e) => {
+      if (focusSourceRef.current === 'keyboard' && hasParent(e.target, triggerRef.current)) {
+        onKeyboardFocus?.();
+      }
+    },
+    [onKeyboardFocus, focusSourceRef.current, triggerRef.current],
+  );
+
+  React.useEffect(() => {
+    document.addEventListener('focusin', handleFocus);
+
+    return () => {
+      document.removeEventListener('focusin', handleFocus);
+    };
+  }, []);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;
@@ -576,8 +556,7 @@ function Trigger(props) {
         render={Box}
         inline
         aria-haspopup={true}
-        ref={triggerRef}
-        onFocus={handleFocus}
+        ref={forkRef(triggerRef, forwardRef)}
         onBlur={props.onBlur}
       >
         <Children />
@@ -731,7 +710,9 @@ function PopperPopper(props) {
 
 PopperPopper.enhance = [keyboardFocusEnhance(false)];
 
-export default createComponent(Popper, {
+const Popper = createComponent(PopperRoot, {
   Trigger,
   Popper: PopperPopper,
 });
+
+export default Popper;

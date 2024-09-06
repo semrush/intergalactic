@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.34.0] - 2024-09-06
+## [4.35.0] - 2024-09-06
 
 ### Added
 
 - Internal api for understanding what (mouse or keyboard) caused focus change.
+
+## [4.34.0] - 2024-09-04
+
+### Added
+
+- New `--intergalactic-form-control-s` token for Button with `s` size. Use it for small interactive addons. Avoid using it with the main actions.
 
 ## [4.33.0] - 2024-07-26
 

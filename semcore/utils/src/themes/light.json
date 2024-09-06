@@ -231,6 +231,7 @@
   "--intergalactic-fs-800": "48px",
   "--intergalactic-compact": "0.3",
   "--intergalactic-scale-indent": "4px",
+  "--intergalactic-form-control-s": "20px",
   "--intergalactic-form-control-m": "28px",
   "--intergalactic-form-control-l": "40px",
   "--intergalactic-spacing-05x": "2px",
