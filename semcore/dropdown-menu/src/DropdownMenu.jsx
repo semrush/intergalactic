@@ -15,6 +15,7 @@ import { setFocus } from '@semcore/utils/lib/focus-lock/setFocus';
 import { isFocusInside } from '@semcore/utils/lib/focus-lock/isFocusInside';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -25,7 +26,7 @@ const ListBoxContextProvider = ({ children }) => (
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages), focusSourceEnhance()];
 
   static defaultProps = {
     size: 'm',
@@ -400,7 +401,10 @@ class DropdownMenuRoot extends Component {
         this.handlers.highlightedIndex(null);
         this.highlightedItemRef.current = null;
         this.ignoreTriggerKeyboardFocusUntil = Date.now() + 100;
-        if (document.activeElement === document.body || isFocusInside(this.popperRef.current)) {
+        if (
+          (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
+          this.asProps.focusSourceRef.current === 'keyboard'
+        ) {
           setFocus(this.triggerRef.current);
         }
       }

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.0] - 2024-09-06
+
+### Fixed
+
+- In combobox patterns users needed double click outside to unfocus the input.
+
 ## [4.36.0] - 2024-08-26
 
 ### Changed
