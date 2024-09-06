@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.5] - 2024-09-02
+
+### Changed
+
+- Internal `ignoreFocus` logic on focusable trigger.
+
 ## [5.39.4] - 2024-08-20
 
 ### Removed

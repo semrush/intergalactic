@@ -139,6 +139,16 @@ export type DataTableColumnProps = FlexProps & {
   borderRight?: boolean;
   /** Add vertical border to the left side of the cell */
   borderLeft?: boolean;
+  /**
+   * Enable changing column width with sort icon
+   * @default false
+   */
+  changeSortSize?: boolean;
+  /**
+   * Enable column to use as a column for recalculation width
+   * @default false (By default used first column with maximum width)
+   */
+  sortSizeRecalculation?: boolean;
 };
 
 /** @deprecated */

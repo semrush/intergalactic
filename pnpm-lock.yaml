@@ -976,6 +976,9 @@ importers:
       '@semcore/flex-box':
         specifier: 5.31.2
         version: link:../flex-box
+      '@semcore/icon':
+        specifier: 4.44.0
+        version: link:../icon
       '@semcore/scroll-area':
         specifier: 5.35.0
         version: link:../scroll-area
@@ -998,9 +1001,6 @@ importers:
       '@semcore/button':
         specifier: workspace:*
         version: link:../button
-      '@semcore/icon':
-        specifier: 4.26.0
-        version: 4.26.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils

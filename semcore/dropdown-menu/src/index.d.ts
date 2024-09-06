@@ -5,7 +5,7 @@ import Dropdown, {
   DropdownHandlers,
   DropdownTriggerProps,
 } from '@semcore/dropdown';
-import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import { ScrollAreaProps } from '@semcore/scroll-area';
 
 export type DropdownMenuSize = 'm' | 'l';
@@ -32,6 +32,10 @@ export type DropdownMenuProps = DropdownProps & {
    */
   onHighlightedIndexChange?: (highlightedIndex: number | null) => void;
   locale?: string;
+  /**
+   * Flag for menu that using as actions on DropdownMenu.Item
+   */
+  inlineActions?: boolean;
 };
 
 /** @deprecated */
@@ -116,6 +120,13 @@ export type DropdownMenuHandlers = DropdownHandlers & {
 
 export type DropdownMenuTriggerProps = DropdownTriggerProps;
 
+export type DropdownMenuGroupProps = BoxProps & {
+  /** Title for group of dropdown menu items */
+  title: React.ReactNode;
+  /** Subtitle for group of dropdown menu items */
+  subTitle?: string;
+};
+
 declare const DropdownMenu: Intergalactic.Component<
   'div',
   DropdownMenuProps,
@@ -126,6 +137,12 @@ declare const DropdownMenu: Intergalactic.Component<
   Popper: Intergalactic.Component<'div', DropdownMenuProps>;
   List: Intergalactic.Component<
     'div',
+    DropdownMenuListProps,
+    DropdownMenuContext,
+    [handlers: DropdownMenuHandlers]
+  >;
+  Actions: Intergalactic.Component<
+    typeof Flex,
     DropdownMenuListProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
@@ -143,19 +160,44 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   > & {
     Addon: typeof Box;
+    Content: typeof Flex;
+    Hint: typeof Flex;
   };
+  /**
+   * @deprecated Use Group with title prop
+   */
   ItemTitle: Intergalactic.Component<'div', DropdownMenuItemTitleProps>;
+  /**
+   * @deprecated Use prop subTitle on Group or Item component
+   */
   ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
+  Group: Intergalactic.Component<'div', DropdownMenuGroupProps>;
+  /**
+   * @deprecated Use Item instead of Nesting
+   */
   Nesting: Intergalactic.Component<
     'div',
     DropdownMenuItemProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
   > & {
+    /**
+     * @deprecated Use Item instead of Nesting
+     */
     Trigger: Intergalactic.Component<'div', DropdownMenuItemProps>;
+    /**
+     * @deprecated Use Item instead of Nesting
+     */
     Item: Intergalactic.Component<'div', DropdownMenuItemProps>;
+    /**
+     * @deprecated Use Item instead of Nesting
+     */
     Addon: typeof Box;
   };
+
+  selectedIndexContext: React.Context<number>;
 };
 
 export default DropdownMenu;
+
+export { DropdownMenu as DropdownMenuOld };

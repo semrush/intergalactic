@@ -26,7 +26,7 @@ Table: Roles and attributes
 | Component | Role | Attribute         | Usage           |
 | ------------------- | ------ | ----------------- | -------------------------------------------------------------------------------------------------------- | 
 |`Tag`  |  |`tabIndex="-1"` | Removes the tag from the page `Tab` sequence. This attribute is added to the noninteractive tag. |
-|`Tag` with `interactive` property | `button` |       | Defines an interaсtive tag as a button.  |
+|`Tag` with `interactive` property | `button` |       | Defines an interactive tag as a button.  |
 | `Tag.Close` | `button` | `aria-label="Remove"` | Defines an icon as a button and adds label to it for assistive technologies. |
 
 ## Considerations for developers

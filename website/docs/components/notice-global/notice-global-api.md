@@ -23,7 +23,7 @@ import NoticeGlobal from 'intergalactic/notice';
 
 ## NoticeGlobal.CloseIcon
 
-The component is inherited from `Box` and is used to insert the close cross.
+The component is inherited from `Button` and is used to insert the **Close** button.
 
 ```jsx
 import NoticeGlobal from 'intergalactic/notice';

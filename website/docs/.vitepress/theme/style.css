@@ -1065,3 +1065,13 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   display: inline-block;
   margin-right: 10px;
 }
+
+.vp-doc [class*='language-'] pre {
+  padding: 0;
+  overflow: hidden;
+}
+
+.vp-doc [class*='language-'] code {
+  overflow: auto;
+  padding: 20px;
+}

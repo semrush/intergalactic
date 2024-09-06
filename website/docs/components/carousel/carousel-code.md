@@ -43,10 +43,10 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 
 :::
 
-## Hidden controls to move focus in hidden block
+## Hiding nested elements on hidden slides
 
-- `ariaHidden` controls the visibility on the screens.
-- `tabIndex` controls the visibility of the focus.
+- `ariaHidden` controls the element's visibility for screen readers.
+- `tabIndex` determines whether the element is included in the tab sequence on the page.
 
 ```jsx
 <Carousel index={index} onIndexChange={handleChangeIndex}>

@@ -8,7 +8,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 import style from './style/dropdown.shadow.css';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
