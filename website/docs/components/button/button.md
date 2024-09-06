@@ -216,7 +216,7 @@ Table: States for all buttons types and themes
 This component was specifically created for cases where it is necessary to ensure proper accessibility for existing patterns in the interface. We recommend avoiding such cases as much as possible and using the Button and Link components instead.
 :::
 
-In cases where you need a button to look like a link, use a separate Button.Link` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use a trigger for the feedback form.
+In cases where you need a button to look like a link, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the feedback form trigger.
 
 Table: Button with Link styles
 

@@ -30,9 +30,9 @@ To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`
 
 :::
 
-## Button looks like Link
+## Button looking like Link
 
-In case you need to render a Button that looks like a Link, use the `Button.Link` component.
+In case you need to render a Button that looks like a Link, use the `ButtonLink` component.
 
 ::: sandbox
 
