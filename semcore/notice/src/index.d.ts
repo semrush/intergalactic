@@ -53,7 +53,7 @@ export type NoticeSmartProps = NoticeProps & {
    */
   actions?: React.ReactNode;
   /**
-   *  Adds a Close icon
+   *  Adds a Close button
    */
   closable?: boolean;
   /**
