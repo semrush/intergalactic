@@ -14,7 +14,7 @@ const translate = createSearchTranslate(defaultTranslations)
 </script>
 
 <template>
-  <search>
+  <search role="search">
     <button type="button" class="DocSearch DocSearch-Button" :aria-label="translate('button.buttonAriaLabel')">
       <span class="DocSearch-Button-Container">
         <span class="vp-icon DocSearch-Search-Icon"></span>
