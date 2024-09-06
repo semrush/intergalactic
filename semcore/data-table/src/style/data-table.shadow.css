@@ -105,7 +105,7 @@ SColumn[sortable] {
   }
   &[justifyContent='right'][active] SSortWrapper {
     position: relative;
-    flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+    flex-basis: inherit;
     right: 0;
   }
 

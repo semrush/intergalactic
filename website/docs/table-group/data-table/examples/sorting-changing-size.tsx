@@ -28,7 +28,7 @@ const Demo = () => {
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' justifyContent='left' sortable />
         <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} sortable />
-        <DataTable.Column name='cpc' children='CPC' wMax={60} sortable />
+        <DataTable.Column name='cpc' children='CPC' wMax={60} sortable changeSortSize />
         <DataTable.Column name='vol' children='Vol.' wMax={120} justifyContent='left' sortable />
       </DataTable.Head>
       <DataTable.Body>
