@@ -26,13 +26,7 @@ const Demo = () => {
   return (
     <DataTable data={sortedData} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
-        <DataTable.Column
-          name='keyword'
-          children='Keyword'
-          justifyContent='left'
-          sortable
-          sortSizeRecalculation
-        />
+        <DataTable.Column name='keyword' children='Keyword' justifyContent='left' sortable />
         <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} sortable />
         <DataTable.Column name='cpc' children='CPC' wMax={60} sortable changeSortSize />
         <DataTable.Column
@@ -40,6 +34,7 @@ const Demo = () => {
           children='Vol.'
           justifyContent='left'
           sortable
+          wMax={120}
           sortSizeRecalculation
         />
       </DataTable.Head>

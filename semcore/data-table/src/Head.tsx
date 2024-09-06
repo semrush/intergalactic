@@ -94,14 +94,28 @@ class Head extends Component<AsProps> {
           useForRecalculation: Boolean(column.props.sortSizeRecalculation),
         });
       }
-
-      this.backToColumnDefaults(ref);
-
-      if (column.props.changeSortSize && column.active) {
-        this.calculateActiveColumnMinWidth(ref);
-      }
     }
   };
+
+  componentDidUpdate() {
+    let activeColumn: HTMLElement | null = null;
+
+    this.columns.forEach((column) => {
+      const { changeSortSize, ref } = column.props;
+
+      if (column.active && changeSortSize && ref.current) {
+        activeColumn = ref.current;
+      }
+
+      if (ref.current) {
+        this.backToColumnDefaults(ref.current);
+      }
+    });
+
+    if (activeColumn) {
+      this.calculateActiveColumnMinWidth(activeColumn);
+    }
+  }
 
   changeMaxNodeWidth = (diff: number, exceptNode: HTMLElement) => {
     let lastMaxWidth = 0;
