@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
@@ -14,6 +14,7 @@ import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import ButtonComponent from '@semcore/button';
 import { forkRef } from '@semcore/utils/lib/ref';
+import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -27,7 +28,7 @@ const menuItemContext = React.createContext({});
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages), focusSourceEnhance()];
 
   static defaultProps = {
     size: 'm',
@@ -353,7 +354,10 @@ class DropdownMenuRoot extends Component {
       if (!this.asProps.visible) {
         this.handlers.highlightedIndex(null);
         this.highlightedItemRef.current = null;
-        if (document.activeElement === document.body || isFocusInside(this.popperRef.current)) {
+        if (
+          (document.activeElement === document.body || isFocusInside(this.popperRef.current)) &&
+          this.asProps.focusSourceRef.current === 'keyboard'
+        ) {
           setFocus(this.triggerRef.current);
         }
       }
