@@ -4,14 +4,16 @@ fileSource: dropdown-menu
 tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Example('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
 ---
 
-::: warning
-:warning: If you need to customize your work with the dropdown menu, please refer to the documentation [intergalactic/popper](/utils/popper/popper)
+::: tip
+ If you need to customize your work of the dropdown menu, refer to the documentation for [intergalactic/popper](/utils/popper/popper)
 :::
 
-The component is a wrap over [intergalactic/dropdown](/components/dropdown/dropdown) with the following logic:
+The component is a wrapper over the [intergalactic/dropdown](/components/dropdown/dropdown) that allows for the following:
 
-- Display of the list of options in a dropdown window
-- Scrolling the list of options using the keyboard
+- Displaying a list of options in a dropdown
+- Scrolling through the list of options using keyboard
+
+## Basic usage
 
 ::: sandbox
 
@@ -21,18 +23,18 @@ The component is a wrap over [intergalactic/dropdown](/components/dropdown/dropd
 
 :::
 
-## Dropdown-menu
+## Dropdown menu
 
-There are several methods of displaying the dropdown menu in the component. We will show each of them below.
+There are a few ways to display the dropdown menu in this component.
 
-### The first method
+### First method
 
-We implement it with the help of the combination of two components:
+Use a combination of two components:
 
-- `DropdownMenu.Popper` – layout of a dropdown window
-- `DropdownMenu.List` and [ScrollArea](/components/scroll-area/scroll-area) with option list styles
+- `DropdownMenu.Popper`—for the dropdown layout
+- `DropdownMenu.List` and `ScrollArea`—for the option list styles
 
-This method is good when you need a flexible content customization in a dropdown menu.
+This method works well when you need flexible customization of the dropdown menu content.
 
 ::: sandbox
 
@@ -42,13 +44,13 @@ This method is good when you need a flexible content customization in a dropdown
 
 :::
 
-### The second method
+### Second method
 
-The easiest method is to use `DropdownMenu.Menu`.
+The easiest way is to use `DropdownMenu.Menu`.
 
-It is appropriate when it is necessary to manage only the content within the options list.
+This is best when you only need to manage the content within the options list.
 
-`DropdownMenu.Menu` is a wrap over `DropdownMenu.Popper` and `DropdownMenu.List`. All props will fall through to `DropdownMenu.List`.
+`DropdownMenu.Menu` is a wrapper around `DropdownMenu.Popper` and `DropdownMenu.List`, and all props pass through to `DropdownMenu.List`.
 
 ::: sandbox
 
@@ -58,27 +60,37 @@ It is appropriate when it is necessary to manage only the content within the opt
 
 :::
 
-## Elements of the list
+## Menu item types
 
-The component has several variants of list elements layout:
+The component offers several options for laying out list item types:
 
-- `DropdownMenu.Item`, which is an element of the list (can be selected with the keyboard)
-- `DropdownMenu.ItemTitle`, which is the title of the list (cannot be selected with the keyboard)
-- `DropdownMenu.ItemHint`, which is list subhead or message with additional information (cannot be selected with the keyboard)
+- `DropdownMenu.Item`: A list element that can be selected with the keyboard.
+- `DropdownMenu.Item.Content`: The content within an item, used when you need to include a hint or submenu.
+- `DropdownMenu.Item.Hint`: A subheading or message with additional information (can't be selected with the keyboard).
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/elements_of_the_list.tsx';
+  export Demo from './examples/list_item_types.tsx';
+</script>
+
+:::
+
+## Menu item with actions
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/item_actions.tsx';
 </script>
 
 :::
 
 ## Render-function
 
-As with the lower-level components, you can access the component logic by passing the render-function into the body.
+Like with lower-level components, you can access the component's logic by passing a render function into the body.
 
-You can see the list of available methods in the [API](/components/dropdown-menu/dropdown-menu-api#aad4e2).
+You can find the list of available methods in the [Context section of the API](/components/dropdown-menu/dropdown-menu-api#context).
 
 ::: sandbox
 
@@ -88,27 +100,12 @@ You can see the list of available methods in the [API](/components/dropdown-menu
 
 :::
 
-## Nested dropdown menus
-
-You can use `DropdownMenu.Nesting` and `DropdownMenu.Nesting.Trigger` to create basic nested menus.
-Refer to this example to see needed components structure.
+## Nested menus
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/nested.tsx';
-</script>
-
-:::
-
-## Nested dropdowns with focusable elements
-
-If you want to put focusable elements in dropdown items that also contain nesting, you need to use more complex structure with `DropdownMenu.Nesting.Item`. 
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/nested-with-focusables.tsx';
 </script>
 
 :::

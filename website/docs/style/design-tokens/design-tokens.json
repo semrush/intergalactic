@@ -2183,6 +2183,14 @@
     "components": []
   },
   {
+    "name": "--intergalactic-form-control-s",
+    "type": "sizing",
+    "rawValue": "{scale-indent}*5",
+    "computedValue": "20px",
+    "description": "Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions.",
+    "components": ["button"]
+  },
+  {
     "name": "--intergalactic-form-control-m",
     "type": "sizing",
     "rawValue": "{scale-indent}*7",
@@ -2499,7 +2507,7 @@
     "rawValue": "{rounded-small}",
     "computedValue": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
-    "components": ["checkbox", "select"]
+    "components": ["button", "checkbox", "select"]
   },
   {
     "name": "--intergalactic-badge-rounded",

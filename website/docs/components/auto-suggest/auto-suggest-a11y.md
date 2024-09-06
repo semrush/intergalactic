@@ -24,7 +24,7 @@ For more information about the accessibility of these patterns, refer to the doc
 
 * [Input](/components/input/input-a11y)
 * [Select](/components/select/select-a11y)
-* [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper)
+<!-- * [Keyboard support for popper](/core-principles/a11y/a11y-keyboard#keyboard-support-for-popper) -->
 
 ## Other recommendations
 
