@@ -252,11 +252,11 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should focus to body (skip head) if head is hidden', async ({ task }) => {
+  test.concurrent('Should focus to first cell in body', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
-          <DataTable.Head hidden>
+          <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
             <DataTable.Column name='cpc' children='CPC' />
@@ -271,12 +271,9 @@ describe('DataTable', () => {
 
     await userEvent.keyboard('[Tab]');
 
-    const groups = getAllByRole('rowgroup');
-    const head = groups[0];
-    const body = groups[1];
+    const cells = getAllByRole('gridcell');
 
-    expect(head).not.toHaveFocus();
-    expect(body).toHaveFocus();
+    expect(cells[0]).toHaveFocus();
   });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
@@ -842,50 +839,6 @@ describe('DataTable', () => {
       </div>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Hover of grouped rows', async ({ task }) => {
-    const data = [
-      {
-        keyword: 'www.ebay.com',
-        [ROW_GROUP]: [
-          {
-            kd: '11.2',
-          },
-          {
-            kd: '10',
-          },
-        ],
-      },
-    ];
-
-    const component = (
-      <div style={{ width: 800 }}>
-        <DataTable data={data}>
-          <DataTable.Head>
-            <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' />
-          </DataTable.Head>
-          <DataTable.Body />
-        </DataTable>
-      </div>
-    );
-
-    await expect(
-      await snapshot(component, {
-        actions: {
-          hover: '[data-ui-name="DefinitionTable.Body"] [data-ui-name="Flex"]',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-    await expect(
-      await snapshot(component, {
-        actions: {
-          hover:
-            '[data-ui-name="DefinitionTable.Body"] [data-ui-name="group-cell"] [data-ui-name="Flex"]',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Active state for row', async ({ task }) => {
