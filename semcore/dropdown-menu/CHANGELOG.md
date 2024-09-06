@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Pattern `aria-activedescendant` to `row-in-tabindex`.
+- Accessibility pattern `aria-activedescendant` to `row-in-tabindex`.
 - Added possibility to add some actions for menu item (as submenu).
 - Refactored Nesting menu.
 
