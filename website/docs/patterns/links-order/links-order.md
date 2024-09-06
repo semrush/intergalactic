@@ -23,6 +23,8 @@ Table: Links order in ProductHead
 | **User manual**                                             | Opens page with the Knowledge Base manual.                                       | ![](static/link11.png) |
 | **Send feedback**                                           | Opens dropdown with feedback form.                                                  | ![](static/link12.png) |
 
-::: tip
 For more information about link styles, refer to the [Link component](/components/link/link).
+
+::: tip
+Use the [ButtonLink](../../components/button/button.md#button-with-link-styles) component if the element acts as a button, that is opens a dialog or changes the page.
 :::

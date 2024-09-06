@@ -144,8 +144,8 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger>
-          <ButtonLink addonLeft={ChatM}>Send feedback</ButtonLink>
+        <Dropdown.Trigger tag={ButtonLink} addonLeft={ChatM}>
+          Send feedback
         </Dropdown.Trigger>
         <Dropdown.Popper
           role={'dialog'}

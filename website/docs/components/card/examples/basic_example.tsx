@@ -12,7 +12,12 @@ const Demo = () => (
   <Card tag='section' aria-labelledby='card-title'>
     <Card.Header>
       <Flex justifyContent='space-between' alignItems='center'>
-        <Card.Title innerHint={tooltipContent} tag='h3' id='card-title'>
+        <Card.Title
+          innerHint={tooltipContent}
+          innerHintAriaLabel='About fastest animals'
+          tag='h3'
+          id='card-title'
+        >
           Fastest animals
         </Card.Title>
         <Button addonLeft={SettingsM} use='tertiary' theme='muted' aria-label='Settings' />

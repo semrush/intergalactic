@@ -212,11 +212,11 @@ Table: States for all buttons types and themes
 
 ## Button with Link styles
 
-::: tip
-This component was specifically created for cases where it is necessary to ensure proper accessibility for existing patterns in the interface. We recommend avoiding such cases as much as possible and using the Button and Link components instead.
+::: warning
+This component was created to ensure proper accessibility for existing patterns in the interface. We don't recommend adding buttons with link styles into new interfaces. Instead, use either `Button` or `Link` depending on what the element does.
 :::
 
-In cases where you need a button to look like a link, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the feedback form trigger.
+If you need an element that looks like a link, but has the native button semantics, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the dialog trigger.
 
 Table: Button with Link styles
 

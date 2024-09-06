@@ -3,7 +3,7 @@ import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
 import Button, { ButtonLink } from 'intergalactic/button';
 import { DescriptionTooltip } from 'intergalactic/tooltip';
-import Education from 'intergalactic/icon/Education/m';
+import Chat from 'intergalactic/icon/Chat/m';
 import BookM from 'intergalactic/icon/Book/m';
 import MathPlusM from 'intergalactic/icon/MathPlus/m';
 import SettingsM from 'intergalactic/icon/Settings/m';
@@ -28,8 +28,8 @@ const Demo = () => {
           </Breadcrumbs>
 
           <Header.Links>
-            <ButtonLink addonLeft={Education}>Tool course</ButtonLink>
-            <ButtonLink addonLeft={BookM}>User manual</ButtonLink>
+            <ButtonLink addonLeft={Chat}>Feedback</ButtonLink>
+            <Link addonLeft={BookM}>User manual</Link>
           </Header.Links>
         </Header.Row>
 
