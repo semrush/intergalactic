@@ -30,11 +30,6 @@ STooltip[theme='warning'] {
   border: 1px solid var(--intergalactic-border-critical-active, #d1002f);
 }
 
-STooltip[data-popper-reference-hidden] {
-  visibility: hidden;
-  pointer-events: none;
-}
-
 SArrow {
   position: absolute;
   border: 6px solid;
