@@ -8,7 +8,7 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 
 **ProductHead** is a comprehensive composed component that contains all common controls, CTAs, and filters for data filtering in the product's reports.
 
-It is always positioned below the main Semrush header and searchbar.
+It's always positioned below the main Semrush header and searchbar.
 
 ## Component composition
 
@@ -16,8 +16,8 @@ It is always positioned below the main Semrush header and searchbar.
 
 **The report header includes the following:**
 
-1. `ProductHead.Row`: The header is divided into rows with components, and they are separated from each other by equal paddings.
-2. `ProductHead.Links`: They are usually placed at the top right of the header, refer to [Additional links pattern](/patterns/links-order/links-order).
+1. `ProductHead.Row`: The header is divided into rows with components, and they're separated from each other by equal paddings.
+2. `ProductHead.Links`: They're usually placed at the top right of the header, refer to [Additional links pattern](/patterns/links-order/links-order).
 3. `ProductHead.Buttons`.
 4. `Title`: It's a name of the product and the project. Can have additional controls for customizing the product or performing additional actions.
 5. `Info`: It's a row with global filters and/or additional information.
@@ -33,7 +33,7 @@ If there is a [Notice](/components/notice/notice) in the header, it has an 8px m
 
 ![product-head notice-margins](static/notice-margins.png)
 
-### Margins between the elements
+### Margins between elements
 
 ![product-head element sizes](static/elements-margins.png)
 
@@ -42,7 +42,7 @@ If there is a [Notice](/components/notice/notice) in the header, it has an 8px m
 ### Breadcrumbs and additional links
 
 ::: tip
-Use the [ButtonLink](../../components/button/button.md#button-with-link-styles) component if the element acts as a button, that is opens a dialog or changes the page.
+Use the [ButtonLink](../../components/button/button.md#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
 :::
 
 - [Breadcrumbs](/components/breadcrumbs/breadcrumbs) and [additional links](/patterns/links-order/links-order) are center-aligned.
@@ -87,4 +87,3 @@ In these cases, the margin between the row with the product's title and the TabL
 ![product-head without filters](static/without-filters.png)
 
 ![product-head without filters](static/min-info.png)
-
