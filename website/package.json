@@ -16,6 +16,7 @@
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.1",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vueuse/core": "^11.0.3",
     "algoliasearch": "4.8.4",
     "bowser": "^2.11.0",
     "classnames": "2.2.6",

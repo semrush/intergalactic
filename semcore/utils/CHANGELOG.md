@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.35.0] - 2024-09-06
+
+### Added
+
+- Internal api for understanding what (mouse or keyboard) caused focus change.
+
 ## [4.34.0] - 2024-09-04
 
 ### Added
