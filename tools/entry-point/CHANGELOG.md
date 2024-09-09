@@ -1,3 +1,48 @@
+## [15.107.0] - 2024-09-06
+
+### @semcore/color-picker
+
+- **Fixed** `role` and `aria-*` attributes on Trigger, Popper and Color items.
+- **Fixed** Description for delete colors from custom palette.
+
+### @semcore/data-table
+
+- **Added** Properties to enable changing size of sortable columns (by default, `false`). `changeSortSize` for columns that could be can be increased for the sort icon and `sortSizeRecalculation` for column due to which there may be an increase. By default, for sortSizeRecalculation used column with maximum width.
+
+### @semcore/dropdown
+
+- **Added** `aria-haspopup=dialog` in Trigger.
+
+### @semcore/dropdown-menu
+
+- **Fixed** In combobox patterns users needed double click outside to unfocus the input.
+- **Changed** Accessibility pattern `aria-activedescendant` to `row-in-tabindex`.
+- **Changed** Added possibility to add some actions for menu item (as submenu).
+- **Changed** Refactored Nesting menu.
+- **Changed** Now DropdownMenu with `interaction="hover"` has `timeout={[0, 100]}` (0 for showing, 100 for hiding) by default.
+
+### @semcore/icon
+
+- **Fixed** Strange viewBox issue in `CursorMove` icon.
+
+### @semcore/popper
+
+- **Changed** Internal `ignoreFocus` logic on focusable trigger.
+
+### @semcore/select
+
+- **Changed** Using old version of DropdownMenu component.
+
+### @semcore/tooltip
+
+- **Fixed** In some rare cases, tooltip wasn't appearing.
+
+### @semcore/utils
+
+- **Added** Internal api for understanding what (mouse or keyboard) caused focus change.
+- **Added** New `--intergalactic-form-control-s` token for Button with `s` size. Use it for small interactive addons. Avoid using it with the main actions.
+- **Fixed** Now focus lock is preventing focus from falling into iframes.
+
 ## [15.106.0] - 2024-08-23
 
 ### @semcore/dropdown
