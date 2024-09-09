@@ -30,20 +30,20 @@ For the select trigger, you can use one of the following [BaseTrigger](/componen
 
 Table: Trigger button types
 
-| BaseTrigger type | Appearance example |
-| ---------------- | ------------------ |
-| [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L. | ![](static/primary-default.png) |
+| BaseTrigger type                                                                                                                                        | Appearance example                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L.                                                           | ![](static/primary-default.png)           |
 | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
-| LinkTrigger with the color of text (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text. | ![](static/tertiary.png) |
+| LinkTrigger with the color of text (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text.                               | ![](static/tertiary.png)                  |
 
 ### Trigger sizes
 
 Table: Trigger button sizes
 
-| Size | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)         | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)      | LinkTrigger with the color of text          |
-| ---- | --------------------- | ---------------- | ------------------------------------------- |
-| M    | ![](static/primary-select-m.png) | ![](static/inline-select-m.png) | ![](static/tertiary-select-m.png) |
-| L    | ![](static/primary-select-l.png) | ![](static/inline-select-l.png) | ![](static/tertiary-select-l.png) |
+| Size | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger) | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) | LinkTrigger with the color of text |
+| ---- | -------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------- |
+| M    | ![](static/primary-select-m.png)                                     | ![](static/inline-select-m.png)                                  | ![](static/tertiary-select-m.png)  |
+| L    | ![](static/primary-select-l.png)                                     | ![](static/inline-select-l.png)                                  | ![](static/tertiary-select-l.png)  |
 
 ### Maximum width
 
@@ -57,24 +57,24 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 
 Table: Trigger button states
 
-| State         | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)        | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)          | LinkTrigger with the color of text    |
-| ------------- | -------------------- | -------------------- | ------------------------------------- |
-| Default       | ![](static/primary-default.png)           | ![](static/inline-select-placeholder.png) | ![](static/tertiary-select-placeholder.png) |
-| Hover | ![](static/primary-hover.png) | ![](static/inline-select-hover.png)         | ![](static/tertiary-select-hover.png)         |
-| Active | ![](static/primary-active.png) | ![](static/inline-select-hover.png)         | ![](static/tertiary-select-hover.png)         |
-| Placeholder   | ![](static/primary-placeholder.png)   | ![](static/inline-select-placeholder.png) | ![](static/tertiary-select-placeholder.png) |
-| Loading       | ![](static/primary-loading.png)           | ![](static/inline-select-loading.png)     | ![](static/tertiary-select-loading.png)     |
-| Valid         | ![](static/primary-valid.png)               | ![](static/inline-select-valid.png)         | ![](static/inline-select-valid.png)           |
-| Invalid       | ![](static/primary-invalid.png)           | ![](static/inline-select-invalid.png)     | ![](static/inline-select-invalid.png)       |
-| Disabled      | ![](static/primary-disabled.png)         | ![](static/inline-select-disabled.png)   | ![](static/tertiary-select-disabled.png)   |
+| State       | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger) | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) | LinkTrigger with the color of text          |
+| ----------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------- |
+| Default     | ![](static/primary-default.png)                                      | ![](static/inline-select-placeholder.png)                        | ![](static/tertiary-select-placeholder.png) |
+| Hover       | ![](static/primary-hover.png)                                        | ![](static/inline-select-hover.png)                              | ![](static/tertiary-select-hover.png)       |
+| Active      | ![](static/primary-active.png)                                       | ![](static/inline-select-hover.png)                              | ![](static/tertiary-select-hover.png)       |
+| Placeholder | ![](static/primary-placeholder.png)                                  | ![](static/inline-select-placeholder.png)                        | ![](static/tertiary-select-placeholder.png) |
+| Loading     | ![](static/primary-loading.png)                                      | ![](static/inline-select-loading.png)                            | ![](static/tertiary-select-loading.png)     |
+| Valid       | ![](static/primary-valid.png)                                        | ![](static/inline-select-valid.png)                              | ![](static/inline-select-valid.png)         |
+| Invalid     | ![](static/primary-invalid.png)                                      | ![](static/inline-select-invalid.png)                            | ![](static/inline-select-invalid.png)       |
+| Disabled    | ![](static/primary-disabled.png)                                     | ![](static/inline-select-disabled.png)                           | ![](static/tertiary-select-disabled.png)    |
 
 When the value of the trigger isn't known while the select is loading, center the Spin within it.
 
 Table: Trigger button loading state for the unknown value in the trigger
 
-| State         | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)        | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)          | LinkTrigger with the color of text    |
-| ------------- | -------------------- | -------------------- | ------------------------------------- |
-| Loading       | ![](static/primary-loading-center.png) | ![](static/inline-select-loading-center.png) | ![](static/tertiary-select-loading-center.png) |
+| State   | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger) | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) | LinkTrigger with the color of text             |
+| ------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------- |
+| Loading | ![](static/primary-loading-center.png)                               | ![](static/inline-select-loading-center.png)                     | ![](static/tertiary-select-loading-center.png) |
 
 ## Trigger content
 
@@ -82,16 +82,63 @@ The select trigger can contain an icon, flag, or other addon before the text. Th
 
 Table: Content types trigger button can have
 
-| Element | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger)  | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger)     | LinkTrigger with the color of text                  |
-| ------- | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
-| Flag    | ![](static/flag-primary.png)   | ![](static/inline-flag.png)   | ![](static/tertiary-flag.png)   |
-| Icon    | ![](static/icon-primary.png)   | ![](static/inline-icon.png)   | ![](static/tertiary-icon.png)   |
-| Avatar  | ![](static/pic-primary.png)     | ![](static/inline-pic.png)     | ![](static/tertiary-pic.png)     |
-| Badge   | ![](static/badge-primary.png) | ![](static/inline-badge.png) | ![](static/tertiary-badge.png) |
+| Element | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger) | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) | LinkTrigger with the color of text |
+| ------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------- |
+| Flag    | ![](static/flag-primary.png)                                         | ![](static/inline-flag.png)                                      | ![](static/tertiary-flag.png)      |
+| Icon    | ![](static/icon-primary.png)                                         | ![](static/inline-icon.png)                                      | ![](static/tertiary-icon.png)      |
+| Avatar  | ![](static/pic-primary.png)                                          | ![](static/inline-pic.png)                                       | ![](static/tertiary-pic.png)       |
+| Badge   | ![](static/badge-primary.png)                                        | ![](static/inline-badge.png)                                     | ![](static/tertiary-badge.png)     |
 
 ## DropdownMenu
 
-Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/dropdown-menu).
+Read about the dropdown menu, its possibilities, menu items, their types and states in the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
+
+### Height
+
+If DropdownMenu has more than seven items, show scroll. We also recommend adding search input to such lists.
+
+![](static/dropdown-height.png)
+
+### Item states
+
+- If the list is taking a long time to load or filter results (for example, due to a slow connection), then display "Loading...".
+- If a user enters a value that isn’t in the list, then display "Nothing found".
+- If there are backend errors, a warning message should be displayed with the text "Something went wrong. Please try again later."
+
+![](static/loading-flow.png)
+
+![](static/loading-error.png)
+
+### Data loading
+
+If the list takes time to load, such as when the system can't load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
+
+For more information about the trigger states, refer to [Select / Multiselect](/components/select/select#a24650).
+
+![](static/select-loading-trigger.png)
+
+### List with search input
+
+If the list includes a search input, it should automatically receive focus when the user opens the dropdown.
+
+As the user enters a value into the input, only the items that match the input should remain in the list. Don’t highlight these items in this case.
+
+### List item states
+
+Refer to the [DropdownMenu](/components/dropdown-menu/dropdown-menu#menu-item-states) for details.
+
+### Pinned item
+
+You can pin an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/divider) and fixed while scrolling the list.
+
+Table: Pinned item examples
+
+| Item content      | Appearance example                                           | Description                                                                                                                                                                                   |
+| ----------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Title             | ![](static/fixed-heading.png)                                | Fixed title refers to the entire list and it should have a [Divider](/components/divider/divider).                                                                                            |
+| Input with search | ![](static/fixed-input.png)                                  | If the list has more than 10 items, add the search input. When user opens the list, the input gets the `focus` state. For a placeholder use the text: “Start typing {parameter}” or "Search". |
+| Notice            | ![](static/fixed-notice.png) ![](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: var(--bold)`.                                                                                                    |
+| Button            | ![](static/fixed-button.png)                                 |                                                                                                                                                                                               |
 
 ## Multiselect
 
@@ -119,21 +166,21 @@ In long lists (for example, in the list of countries), the values selected by th
 
 Table: Specific cases for multiselect
 
-| User opens select and starts selecting the items.    | User closes select.    | User has reopened select, and the items they selected are pinned at the very top of the list. When unchecking these items, they remain in the same place. |
-| ------------------------------------------------------- | ---------------------- | -------------------------------------- |
-| ![](static/multiselect-flow-1.png) ![](static/multiselect-flow-2.png) | ![](static/multiselect-flow-3.png) | ![](static/multiselect-flow-4.png)  |
+| User opens select and starts selecting the items.                     | User closes select.                | User has reopened select, and the items they selected are pinned at the very top of the list. When unchecking these items, they remain in the same place. |
+| --------------------------------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![](static/multiselect-flow-1.png) ![](static/multiselect-flow-2.png) | ![](static/multiselect-flow-3.png) | ![](static/multiselect-flow-4.png)                                                                                                                        |
 
-### Displaying the selected values in the trigger
+### Displaying selected values in trigger
 
 Table: States for displaying the selected values in the trigger
 
-|                                                                                                                                      | Appearance example                                       |
-| ----------------------------- | -------------------------------------------------------- |
-| If nothing is selected, write "Select" + the required value.   | ![](static/multiselect-trigger-1.png) |
-| If everything is selected, write `All`.    | ![](static/multiselect-trigger-2.png) |
+|                                                                                                                                           | Appearance example                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| If nothing is selected, write "Select" + the required value.                                                                              | ![](static/multiselect-trigger-1.png) |
+| If everything is selected, write `All`.                                                                                                   | ![](static/multiselect-trigger-2.png) |
 | If the user selects 1 or 2 values, show them in the trigger listing them with commas. If they don’t fit, collapse the text in `ellipsis`. | ![](static/multiselect-trigger-3.png) |
-| **The select has a label.** If more than 2 values are selected, add them to the "Label: N selected" construction. | ![](static/multiselect-trigger-4.png) |
-| **The select doesn't have a label.** If more than 2 values are selected, add them to the "N selected" construction. | ![](static/multiselect-trigger-5.png) |
+| **The select has a label.** If more than 2 values are selected, add them to the "Label: N selected" construction.                         | ![](static/multiselect-trigger-4.png) |
+| **The select doesn't have a label.** If more than 2 values are selected, add them to the "N selected" construction.                       | ![](static/multiselect-trigger-5.png) |
 
 ### Search
 
@@ -154,8 +201,7 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 - Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
-We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.
+We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user can't select or deselect all options due to limitations.
 :::
 
 ![](static/multiselect-limit.png)
-
