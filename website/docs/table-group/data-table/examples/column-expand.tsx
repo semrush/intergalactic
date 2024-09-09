@@ -5,7 +5,12 @@ const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
-    <DataTable data={data} sort={sort} onSortChange={setSort} aria-label={'Table title. Column expanded'}>
+    <DataTable
+      data={data}
+      sort={sort}
+      onSortChange={setSort}
+      aria-label={'Table title. Column expanded'}
+    >
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' wMax={'300px'} />
         <DataTable.Column name='kd' children='Difficulty Difficulty' sortable wMax={'85px'} />

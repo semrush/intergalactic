@@ -19,7 +19,7 @@ const Demo = () => {
         <DataTable.Body />
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table title. Fixed header'}>
         <Box position='sticky' top={top} zIndex={2}>
           <DataTable.Head wMin={1000} withScrollBar>
             <DataTable.Column name='keyword' children='Keyword' />

@@ -9,7 +9,11 @@ const Demo = () => {
     <>
       <div style={{ border: '1px solid' }} ref={portalRef} />
       <Divider my={5} />
-      <DataTable style={{ border: '1px solid' }} data={data} aria-label={'Table title. Header separation'}>
+      <DataTable
+        style={{ border: '1px solid' }}
+        data={data}
+        aria-label={'Table title. Header separation'}
+      >
         <PortalProvider value={portalRef}>
           <Portal>
             <DataTable.Head>

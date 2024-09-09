@@ -34,7 +34,7 @@ const Demo = () => {
                 active: value.includes(index),
                 collapse: {
                   children: (
-                    <DataTable data={data}>
+                    <DataTable data={data} aria-label={'Table title. In table'}>
                       {/* [1] Hide the table header */}
                       <DataTable.Head hidden>
                         {/* [2] Set "inherit" to use the size from the top table for each column. */}

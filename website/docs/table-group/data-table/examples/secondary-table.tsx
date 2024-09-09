@@ -3,7 +3,12 @@ import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} use='secondary' sort={['kd', 'desc']} aria-label={'Table title. Secondary'}>
+    <DataTable
+      data={data}
+      use='secondary'
+      sort={['kd', 'desc']}
+      aria-label={'Table title. Secondary'}
+    >
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' sortable />
