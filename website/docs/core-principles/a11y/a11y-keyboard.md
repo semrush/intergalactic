@@ -41,7 +41,7 @@ Keyboard control should be performed sequentially across all interactive element
 
 ## Keyboard support for button, link, input, etc.
 
-### Link и hint link
+### Link and hint link
 
 - Links get focus by pressing the `Tab` key.
 - Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)).
@@ -56,13 +56,13 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 - Buttons are highlighted with a blue outline when focused on, regardless of the button color.
 - When you press `Enter`, the link is clicked or an action is performed.
 
-### Input и textarea
+### Input and textarea
 
 - Input fields get focus by pressing the `Tab` key.
 - When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (for example, orange).
 - The target action is performed by pressing `Enter` (saving, applying a filter, etc.).
 
-### Checkbox, radio и switch
+### Checkbox, radio and switch
 
 - Selection controls get focus when you press `Tab`.
 - When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (for example, orange).
@@ -88,7 +88,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 - Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows – using `Tab`.
 - When you press `Enter`, an event occurs, as if you press the mouse button. If the entire row have `focus`, you follow the link, and if only the icon has `focus`, then the action is performed, etc.
 
-## Keyboard support for popper
+<!-- ## Keyboard support for popper
 
 Common cases about focus behavior when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
 
@@ -138,7 +138,7 @@ The trigger always has a `tabIndex=0` (even when disabled) or is an input/textar
 
 ## Focus, onClick and popper in the popper
 
-A popper inside another popper has the same situation as in the above case.
+A popper inside another popper has the same situation as in the above case. -->
 
 ## Keyboard support for modal window
 

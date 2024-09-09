@@ -47,6 +47,8 @@ export type Column<
       vBorders: boolean;
       borderLeft: Property.BorderLeft;
       borderRight: Property.BorderLeft;
+      changeSortSize?: boolean;
+      sortSizeRecalculation?: boolean;
     }> &
     Props;
   columns: Column[];

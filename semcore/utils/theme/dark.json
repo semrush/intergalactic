@@ -1622,6 +1622,11 @@
       "type": "spacing",
       "description": "Base denominator of the design system."
     },
+    "form-control-s": {
+      "value": "{scale-indent}*5",
+      "type": "sizing",
+      "description": "Small size of the controls. Use it for small interactive addons. Avoid using it with the main actions."
+    },
     "form-control-m": {
       "value": "{scale-indent}*7",
       "type": "sizing",

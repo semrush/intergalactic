@@ -94,6 +94,30 @@ To enable column sorting:
 
 :::
 
+## Change width for sorting column
+
+If some column has `changeSortSize={true}`, by default, it will be increased by the largest column if the computed width less than `content width` + `sorting icon width`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/sorting-changing-size.tsx'; 
+</script>
+
+:::
+
+## Change width for sorting column by specific columns
+
+You could set `sortSizeRecalculation={true}` for using this column as column to recalculation width (after increase to sorting column). The needed width will be divided equally between all such columns.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/sorting-changing-size-by-columns.tsx'; 
+</script>
+
+:::
+
 ## Fixed header
 
 Use the `<Box position="sticky" top={top} />` to fix the table header.

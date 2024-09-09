@@ -38,7 +38,7 @@ const Preview = (preview) => {
   const closable = bool({
     key: 'closable',
     defaultValue: true,
-    label: 'Close Icon',
+    label: 'Closable',
   });
 
   const msg = text({
@@ -106,13 +106,9 @@ Component consists of the following:
 1. `NoticeGlobal.Content`;
 2. `NoticeGlobal.CloseIcon` (optional).
 
-## Styles
+## Margins
 
-### Paddings
-
-![](static/gnotice-paddings.png)
-
-### Margins
+There's an `8px` (`--spacing-2x`) margin between the text and any buttons that follow it. The margin between additional actions on the right-hand side is `16px` (`--spacing-4x`).
 
 ![](static/gnotice-margins.png)
 
@@ -174,15 +170,15 @@ As the notice is a temporary message, it should have a preset "lifespan." The "l
 
 When user hides the notice, the entire page moves up to the height of the closed component.
 
-NoticeGlobal can be hide by:
+NoticeGlobal can be hidden by:
 
-- Clicking on the `Close` icon.
-- Clicking on the link that triggers the re-opening condition (for example, "Ask me later," "Never show again," etc.).
-- If there is no `Close` icon or hide link, the user can't manually hide such notice. It will be hidden according to the conditions set by the service (after a certain time, a certain number of sessions, after clicking on the trigger, etc.).
+- Activating the **Close** button.
+- Activating the link that triggers the re-opening condition (for example, "Ask me later," "Never show again," etc.).
+- If there is no **Close** button or hide link, the user can't manually hide such notice. It will be hidden according to the conditions set by the service (after a certain time, a certain number of sessions, after clicking on the trigger, etc.).
 
 ### Animation
 
-By clicking on the closing icon or closing link, the notice shall smoothly close with a `fade-out` effect lasting `250ms`. The page content moves up to the notice's position within `250ms`.
+When hiding, the notice shall smoothly close with a `fade-out` effect lasting `250ms`. The page content moves up to the notice's position within `250ms`.
 
 ## Custom notice
 

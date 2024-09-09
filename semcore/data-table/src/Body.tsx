@@ -10,7 +10,6 @@ import trottle from '@semcore/utils/lib/rafTrottle';
 import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
-import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 import scrollStyles from './style/scroll-shadows.shadow.css';
 import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
@@ -177,8 +176,8 @@ class Body extends Component<AsProps, {}, State> {
 
         const rowCellsMap = this.cellRefMap.get(dataIndex)!;
 
-        const columnWMin = column?.props?.wMin;
-        const columnWMax = column?.props?.wMax;
+        const columnWMin = column?.props?.ref.current?.style.getPropertyValue('min-width');
+        const columnWMax = column?.props?.ref.current?.style.getPropertyValue('max-width');
 
         let props: CellProps = {
           name: cell.name,
@@ -192,7 +191,7 @@ class Body extends Component<AsProps, {}, State> {
             minWidth: columnWMin,
             maxWidth:
               columnWMax && column?.sortable
-                ? `calc(${SORT_ICON_WIDTH}px + ${cssToIntDefault(columnWMax.toString())}px)`
+                ? `calc(${SORT_ICON_WIDTH}px + ${columnWMax})`
                 : columnWMax,
           },
         };

@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.43.0] - 2024-08-05
+## [4.44.0] - 2024-09-09
 
 ### Added
 
 - Keyboard control.
+
+## [4.43.0] - 2024-09-04
+
+### Added
+
+- Properties to enable changing size of sortable columns (by default, `false`). `changeSortSize` for columns that could be can be increased for the sort icon and `sortSizeRecalculation` for column due to which there may be an increase. By default, for sortSizeRecalculation used column with maximum width.
 
 ## [4.42.0] - 2024-08-23
 

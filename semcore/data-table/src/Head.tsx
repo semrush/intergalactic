@@ -14,7 +14,6 @@ import {
 import { ColIndex, Column, RowIndex } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
-import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 export const SORT_ICON_WIDTH = 20;
@@ -28,6 +27,15 @@ const ariaSort = {
   asc: 'ascending',
 } as const;
 const displayContents = { display: 'contents' };
+
+function cssToIntDefault(value: string, defaultValue = 0) {
+  let result = parseFloat(value);
+  if (Number.isNaN(result)) {
+    result = defaultValue;
+  }
+
+  return Math.round(result);
+}
 
 type AsProps = {
   $onSortClick: (name: string, event: React.MouseEvent | React.KeyboardEvent) => void;
@@ -53,7 +61,15 @@ class Head extends Component<AsProps> {
   disposeFocusCellEvent: (() => void) | undefined;
 
   sortWrapperRefs = new Map<Node, boolean>();
-  defaultWidths = new Map<Node, { minWidth: number; computedWidth: number }>();
+  defaultWidths = new Map<
+    HTMLElement,
+    {
+      minWidth: number;
+      maxWidth: number | null;
+      computedWidth: number;
+      useForRecalculation: boolean;
+    }
+  >();
 
   componentDidMount() {
     this.disposeFocusCellEvent = this.asProps.eventEmitter.subscribe(
@@ -101,78 +117,144 @@ class Head extends Component<AsProps> {
     }
 
     if (ref && ref.getAttribute('scope') === 'col') {
-      this.calculateMinWidth(ref, column);
+      if (!this.defaultWidths.has(ref)) {
+        const computedStyle = window.getComputedStyle(ref);
+
+        this.defaultWidths.set(ref, {
+          minWidth: cssToIntDefault(computedStyle.getPropertyValue('min-width')),
+          computedWidth: cssToIntDefault(computedStyle.getPropertyValue('width')),
+          maxWidth: cssToIntDefault(computedStyle.getPropertyValue('max-width')) || null,
+          useForRecalculation: Boolean(column.props.sortSizeRecalculation),
+        });
+      }
     }
   };
 
-  calculateMinWidth = (node: HTMLElement, column: Column) => {
-    if (
-      !this.defaultWidths.has(node) &&
-      (column.props.wMin || column.props.wMax || column.props.w)
-    ) {
-      const computedStyle = window.getComputedStyle(node);
+  componentDidUpdate() {
+    let activeColumn: HTMLElement | null = null;
 
-      this.defaultWidths.set(node, {
-        minWidth: cssToIntDefault(computedStyle.getPropertyValue('min-width')),
-        computedWidth: cssToIntDefault(computedStyle.getPropertyValue('width')),
-      });
-    }
+    this.columns.forEach((column) => {
+      const { changeSortSize, ref } = column.props;
 
-    if (column.active) {
-      const clonedColumn = document.createElement('div');
-      const computedStyle = window.getComputedStyle(node);
-
-      node.childNodes.forEach((node) => {
-        if (!this.sortWrapperRefs.get(node)) {
-          clonedColumn.append(node.cloneNode(true));
-        }
-      });
-
-      clonedColumn.style.setProperty('visibility', 'hidden', 'important');
-
-      const styles = [
-        'display',
-        'flex',
-        'margin',
-        'padding',
-        'background',
-        'font-style',
-        'font-width',
-        'font-size',
-        'font-weight',
-      ];
-
-      styles.forEach((key) => {
-        clonedColumn.style.setProperty(
-          key,
-          computedStyle.getPropertyValue(key),
-          computedStyle.getPropertyPriority(key),
-        );
-      });
-
-      clonedColumn.style.setProperty('width', 'fit-content', 'important');
-
-      document.body.appendChild(clonedColumn);
-
-      const computedWidth = Math.ceil(clonedColumn.getBoundingClientRect().width);
-
-      document.body.removeChild(clonedColumn);
-
-      const defaultNodeWidth = this.defaultWidths.get(node)?.computedWidth ?? 0;
-
-      if (computedWidth >= defaultNodeWidth) {
-        node.style.setProperty('min-width', defaultNodeWidth + SORT_ICON_WIDTH + 'px');
-      } else {
-        const freeSpace = defaultNodeWidth - computedWidth;
-
-        if (freeSpace < SORT_ICON_WIDTH) {
-          node.style.setProperty('min-width', computedWidth + SORT_ICON_WIDTH + 'px');
-        }
+      if (column.active && changeSortSize && ref.current) {
+        activeColumn = ref.current;
       }
-    } else if (this.defaultWidths.has(node)) {
+
+      if (ref.current) {
+        this.backToColumnDefaults(ref.current);
+      }
+    });
+
+    if (activeColumn) {
+      this.calculateActiveColumnMinWidth(activeColumn);
+    }
+  }
+
+  changeMaxNodeWidth = (diff: number, exceptNode: HTMLElement) => {
+    let lastMaxWidth = 0;
+    let node: HTMLElement | null = null;
+    const recalculatedNodes: HTMLElement[] = [];
+
+    this.defaultWidths.forEach((value, key) => {
+      if (value.computedWidth > lastMaxWidth && key !== exceptNode) {
+        node = key;
+        lastMaxWidth = value.computedWidth;
+      }
+      if (value.useForRecalculation) {
+        recalculatedNodes.push(key);
+      }
+    });
+
+    const setNodeMinWidth = (node: HTMLElement, diff: number) => {
+      const defaultNodeWidth = this.defaultWidths.get(node)?.computedWidth;
       const defaultNodeMinWidth = this.defaultWidths.get(node)?.minWidth;
 
-      node.style.setProperty('min-width', defaultNodeMinWidth + 'px');
+      if (defaultNodeWidth) {
+        const maxWidth = defaultNodeWidth - diff;
+        node.style.setProperty('max-width', `${maxWidth}px`);
+
+        if (defaultNodeMinWidth) {
+          node.style.setProperty('min-width', `min(${maxWidth}px, ${defaultNodeMinWidth}px)`);
+        }
+      }
+    };
+
+    if (recalculatedNodes.length > 0) {
+      const diffPart = diff / recalculatedNodes.length;
+
+      recalculatedNodes.forEach((node) => {
+        setNodeMinWidth(node, diffPart);
+      });
+    } else if (node !== null) {
+      setNodeMinWidth(node, diff);
+    }
+  };
+
+  backToColumnDefaults = (node: HTMLElement) => {
+    const defaultNodeMinWidth = this.defaultWidths.get(node)?.minWidth;
+    const defaultNodeMaxWidth = this.defaultWidths.get(node)?.maxWidth;
+
+    node.style.setProperty('min-width', defaultNodeMinWidth + 'px');
+
+    if (defaultNodeMaxWidth) {
+      node.style.setProperty('max-width', defaultNodeMaxWidth + 'px');
+    } else {
+      node.style.removeProperty('max-width');
+    }
+  };
+
+  calculateActiveColumnMinWidth = (node: HTMLElement) => {
+    const clonedColumn = document.createElement('div');
+    const computedStyle = window.getComputedStyle(node);
+
+    node.childNodes.forEach((node) => {
+      if (!this.sortWrapperRefs.get(node)) {
+        clonedColumn.append(node.cloneNode(true));
+      }
+    });
+
+    clonedColumn.style.setProperty('visibility', 'hidden', 'important');
+
+    const styles = [
+      'display',
+      'flex',
+      'margin',
+      'padding',
+      'background',
+      'font-style',
+      'font-width',
+      'font-size',
+      'font-weight',
+    ];
+
+    styles.forEach((key) => {
+      clonedColumn.style.setProperty(
+        key,
+        computedStyle.getPropertyValue(key),
+        computedStyle.getPropertyPriority(key),
+      );
+    });
+
+    clonedColumn.style.setProperty('width', 'fit-content', 'important');
+
+    document.body.appendChild(clonedColumn);
+
+    const computedWidth = Math.ceil(clonedColumn.getBoundingClientRect().width);
+
+    document.body.removeChild(clonedColumn);
+
+    const defaultNodeWidth = this.defaultWidths.get(node)?.computedWidth ?? 0;
+
+    if (computedWidth >= defaultNodeWidth) {
+      node.style.setProperty('min-width', defaultNodeWidth + SORT_ICON_WIDTH + 'px');
+      this.changeMaxNodeWidth(SORT_ICON_WIDTH, node);
+    } else {
+      const freeSpace = defaultNodeWidth - computedWidth;
+
+      if (freeSpace < SORT_ICON_WIDTH) {
+        node.style.setProperty('min-width', computedWidth + SORT_ICON_WIDTH + 'px');
+        this.changeMaxNodeWidth(freeSpace, node);
+      }
     }
   };
 
