@@ -42,7 +42,7 @@ In case you need to render a Button that looks like a Link, use the `ButtonLink`
 
 :::
 
-## Link looks like Button
+## Link looking like Button
 
 To create a button that acts like a link, refer to the [Link as button example](/components/link/link-code#link-as-button).
 
