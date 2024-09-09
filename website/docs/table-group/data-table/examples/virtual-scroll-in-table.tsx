@@ -22,7 +22,7 @@ const data = Array(10000)
 
 const Demo = () => {
   return (
-    <DataTable data={data} totalRows={10000}>
+    <DataTable data={data} totalRows={10000} aria-label={'Table title. Virtual scroll'}>
       <DataTable.Head>
         <DataTable.Column name='id' children='ID' />
         <DataTable.Column name='keyword' children='Keyword' />

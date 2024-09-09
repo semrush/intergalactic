@@ -7,7 +7,7 @@ const Demo = () => {
 
   return (
     <>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table title. Fixed header'}>
         <Box position='sticky' top={top} zIndex={2}>
           <DataTable.Head wMin={1000}>
             <DataTable.Column name='keyword' children='Keyword' />

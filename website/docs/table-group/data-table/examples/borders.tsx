@@ -5,7 +5,7 @@ const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
-    <DataTable data={data} sort={sort} onSortChange={setSort}>
+    <DataTable data={data} sort={sort} onSortChange={setSort} aria-label={'Table title. Borders'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' sortable />
         <DataTable.Column vBorders>

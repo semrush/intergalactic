@@ -23,7 +23,7 @@ const Demo = () => {
   return (
     /* [1] Wrapping the table in the Accordion control component; */
     <Accordion value={exapnded} onChange={setExapnded}>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table title. Accordion inside table'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />

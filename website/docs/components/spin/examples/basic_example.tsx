@@ -24,7 +24,7 @@ const Demo = () => {
         <Button onClick={() => setLoading(true)}>Load data</Button>
         <Button onClick={() => setLoading(false)}>Stop loading</Button>
       </Flex>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table title'}>
         <DataTable.Head>
           <DataTable.Column name='fruit' children='Fruit' />
           <DataTable.Column name='quantity' children='Quantity' />
