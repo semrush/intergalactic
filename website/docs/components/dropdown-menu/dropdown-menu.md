@@ -9,7 +9,7 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 **DropdownMenu** is a component for displaying the menu of options and their nested items.
 
 ::: tip
-Note that the DropdownMenu component does not handle the value change in the trigger. This mechanism is implemented in the [Select](/components/select/select#a24650).
+Note that the DropdownMenu component doesn't handle the value change in the trigger. This mechanism is implemented in the [Select](/components/select/select#a24650).
 :::
 
 ## Sizes and indents
@@ -36,7 +36,7 @@ Table: DropdownMenu width
 
 ### Height
 
-We recommended to avoid limiting the dropdown's height for the menus. It's important for the user to see all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
+We recommended to avoid limiting the dropdown's height for the menus. It's important for the user to observe all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
 
 ## Placement
 
@@ -120,7 +120,7 @@ Table: Button inside the item cases of use
 | Case          | Appearance example                | Description                                                                                                                                                                                                                                                                                                       |
 | ------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Delete item   | ![](static/item-delete.png)       | If a list item can be deleted, use Button with `use="secondary"` and `tertiary` theme.                                                                                                                                                                                                                            |
-| Drag and drop | ![](static/dragging-dropdown.png) | To drag and drop list items, use the `MoveAlt` icon with the `--icon-secondary-neutral` color. The icon should appear when hovering over the item, and the cursor should change to `move`. For more information on dragging and dropping items, see the [Drag and drop](/components/drag-and-drop/drag-and-drop). |
+| Drag and drop | ![](static/dragging-dropdown.png) | To drag and drop list items, use the `MoveAlt` icon with the `--icon-secondary-neutral` color. The icon should appear when hovering over the item, and the cursor should change to `move`. For more information on dragging and dropping items, refer to the [Drag and drop](/components/drag-and-drop/drag-and-drop). |
 
 <!-- ### Reset item
 
@@ -166,7 +166,7 @@ If an icon displays additional information about an item, we recommend placing i
 
 ### Info icon
 
-Avoid adding `Info` icon for displayng a tooltip. Check the [Tooltip section below](#tooltip).
+Avoid adding `Info` icon for displayng a tooltip. Check the [Tooltip section](#tooltip).
 
 ### Counter
 
@@ -182,7 +182,7 @@ Badge can be placed after the text. The margin between the text and the badge is
 
 ## Tooltip
 
-If you want to add a tooltip to an item, apply it to the entire item. We do not recommend adding an additional `Info` icon, as it does not display a tooltip on hover.
+If you want to add a tooltip to an item, apply it to the entire item. We don't recommend adding an additional `Info` icon, as it doesn't display a tooltip on hover.
 
 ![](static/info-icon-tooltip.png)
 
