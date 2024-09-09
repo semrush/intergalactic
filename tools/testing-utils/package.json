@@ -9,7 +9,6 @@
   "dependencies": {
     "@axe-core/playwright": "^4.9.1",
     "@babel/core": "7.19.1",
-    "@playwright/test": "1.43.0",
     "@previewjs/plugin-react": "^15.0.1",
     "@previewjs/screenshot": "^0.2.12",
     "@semcore/babel-preset-ui": "*",

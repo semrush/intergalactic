@@ -20,15 +20,16 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
           build.onLoad({ filter: /^@test-entrypoint$/, namespace: 'test-entrypoint' }, () => {
             const contents = `
               import React from 'react';
-              import ReactDOM from 'react-dom';
+              import { createRoot } from 'react-dom/client';
               import App from '${resolvePath(standFilePath)}';
               import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
 
-              ReactDOM.render(
+              const root = createRoot(document.querySelector('#root'));
+              
+              root.render(
                 <I18nProvider value='${locale}'>
                   <App />
-                </I18nProvider>,
-                document.querySelector('#root')
+                </I18nProvider>
               );
             `;
 
