@@ -39,7 +39,7 @@ const htmlCode = computed(() => {
   if (preferSemcoreUi.value) {
     code = code.replace(/;intergalactic\//g, ";@semcore/ui/")
   }
-  return code;
+  return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code tabindex="0">')
 });
 const codesandboxUrl = computed(() => {
   let code = rawCode;

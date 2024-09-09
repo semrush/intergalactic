@@ -17,11 +17,10 @@ const pageName = computed(() =>
 </script>
 
 <template>
-  <main
+  <div
     class="VPDoc"
     :class="{ 'has-sidebar': hasSidebar, 'has-aside': hasAside }"
   >
-    <slot name="doc-top" />
     <div class="container">
       <div v-if="hasAside" class="aside" :class="{'left-aside': leftAside}">
         <div class="aside-curtain" />
@@ -39,8 +38,9 @@ const pageName = computed(() =>
         </div>
       </div>
 
-      <div class="content">
-        <div class="content-container">
+      <main class="content">
+      <slot name="doc-top" />
+      <div class="content-container">
           <slot name="doc-before" />
           <div class="main">
             <Content
@@ -55,10 +55,10 @@ const pageName = computed(() =>
             <template #doc-footer-before><slot name="doc-footer-before" /></template>
           </VPDocFooter>
         </div>
-      </div>
+      </main>
     </div>
     <slot name="doc-bottom" />
-  </main>
+  </div>
   <slot name="doc-after" />
 </template>
 

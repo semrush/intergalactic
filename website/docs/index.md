@@ -22,7 +22,7 @@ features:
     details: 56+ React components out of the box
     link: /components/components-showcase/components-showcase
     linkText: Explore
-  - title: Сharts
+  - title: Charts
     details: 14+ chart types built with d3.js and accessibility in mind
     link: /data-display/chart-showcase/chart-showcase
     linkText: Explore

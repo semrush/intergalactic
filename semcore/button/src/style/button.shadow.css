@@ -50,6 +50,12 @@ SButton[disabled] {
   z-index: 0;
 }
 
+SButton[size='s'] {
+  width: var(--intergalactic-form-control-s, 20px);
+  height: var(--intergalactic-form-control-s, 20px);
+  border-radius: var(--intergalactic-addon-rounded, 4px);
+}
+
 SButton[size='m'] {
   height: var(--intergalactic-form-control-m, 28px);
   border-radius: var(--intergalactic-control-rounded, 6px);

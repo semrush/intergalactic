@@ -18,7 +18,7 @@ export type NoticeGlobalProps = FadeInOutProps & {
    */
   duration?: number;
   /**
-   *  Adds a Close icon
+   *  Adds a Close button
    */
   closable?: boolean;
   /**
