@@ -170,7 +170,7 @@ Table: Specific cases for multiselect
 | --------------------------------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/multiselect-flow-1.png) ![](static/multiselect-flow-2.png) | ![](static/multiselect-flow-3.png) | ![](static/multiselect-flow-4.png)                                                                                                                        |
 
-### Displaying the selected values in the trigger
+### Displaying selected values in trigger
 
 Table: States for displaying the selected values in the trigger
 
@@ -201,7 +201,7 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 - Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
-We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.
+We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user can't select or deselect all options due to limitations.
 :::
 
 ![](static/multiselect-limit.png)
