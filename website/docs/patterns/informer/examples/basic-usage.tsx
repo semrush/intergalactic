@@ -9,7 +9,7 @@ import InfoL from 'intergalactic/icon/Info/l';
 
 const Demo = () => (
   <>
-    <Flex gap={1} mb={4} alignItems='baseline'>
+    <Flex gap={1} mb={4} alignItems='flex-end'>
       <Text size={700}>Fastest animals</Text>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
