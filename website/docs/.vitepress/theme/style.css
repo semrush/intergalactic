@@ -573,9 +573,6 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
 }
 
 .vp-doc h1[class], .vp-doc h2[class], .vp-doc h3[class], .vp-doc h4[class], .vp-doc h5[class], .vp-doc h6[class] {
-  font-size: inherit;
-  line-height: var(--intergalactic-lh-300, 150%);
-  letter-spacing: inherit;
   margin: unset;
 }
 

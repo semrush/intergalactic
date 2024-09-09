@@ -8,14 +8,14 @@ SCard {
     --intergalactic-box-shadow-card,
     0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)
   );
-}
 
-STitle {
-  color: var(--intergalactic-text-primary, #191b23);
-  font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
-  font-weight: var(--intergalactic-bold, 700);
-  margin-right: var(--intergalactic-spacing-1x, 4px);
+  STitle {
+    color: var(--intergalactic-text-primary, #191b23);
+    font-size: var(--intergalactic-fs-300, 16px);
+    line-height: var(--intergalactic-lh-300, 150%);
+    font-weight: var(--intergalactic-bold, 700);
+    margin-right: var(--intergalactic-spacing-1x, 4px);
+  }
 }
 
 SIcon {
