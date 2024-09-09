@@ -49,22 +49,28 @@ function Title(props) {
         {innerHint && (
           <STooltip ml={1} title={innerHint}>
             <SIcon
-              addonLeft={InfoM}
               use={'secondary'}
               aria-label={innerHintAriaLabel}
               color={'--intergalactic-icon-secondary-neutral'}
-            />
+            >
+              <SIcon.Addon>
+                <InfoM />
+              </SIcon.Addon>
+            </SIcon>
           </STooltip>
         )}
       </STitle>
       {hintAfter && (
         <STooltip title={hintAfter}>
           <SIcon
-            addonLeft={InfoM}
             use={'secondary'}
             aria-label={hintAfterAriaLabel}
             color={'--intergalactic-icon-secondary-neutral'}
-          />
+          >
+            <SIcon.Addon>
+              <InfoM />
+            </SIcon.Addon>
+          </SIcon>
         </STooltip>
       )}
     </>,
