@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
 import Carousel from 'intergalactic/carousel';
 
 const images = [
@@ -25,7 +24,14 @@ const Demo = () => (
     indicators='default'
   >
     {images.map((url, index) => (
-      <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
+      <Carousel.Item
+        tag='img'
+        role='button'
+        key={url}
+        src={url}
+        w={imageWidth}
+        aria-label={`Zoomable image with ${altTexts[index]}`}
+      />
     ))}
   </Carousel>
 );
