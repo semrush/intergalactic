@@ -2,7 +2,7 @@ import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
-import { FOCUS_CELL_EVENT_NAME, getFixedStyle, getScrollOffsetValue } from './utils';
+import { getFixedStyle, getScrollOffsetValue } from './utils';
 import { RowData, Column, NestedCells, PropsLayer, Cell, RowIndex, ColIndex } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import syncScroll from '@semcore/utils/lib/syncScroll';
@@ -11,9 +11,7 @@ import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import scrollStyles from './style/scroll-shadows.shadow.css';
-import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
-import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -42,7 +40,6 @@ type AsProps = {
   uid?: string;
   animationsDisabled?: boolean;
   scrollContainerRef: React.Ref<HTMLDivElement>;
-  eventEmitter: EventEmitter;
 };
 
 type State = {
@@ -62,30 +59,12 @@ class Body extends Component<AsProps, {}, State> {
   firstRowRef = React.createRef<HTMLDivElement>();
   firstRowResizeObserver: ResizeObserver | null = null;
 
-  cellRefMap = new Map<RowIndex, Map<ColIndex, HTMLElement | null>>();
   lockedCell: [HTMLElement | null, boolean] = [null, false];
-
-  disposeFocusCellEvent: (() => void) | undefined;
-
-  componentDidMount() {
-    this.disposeFocusCellEvent = this.asProps.eventEmitter.subscribe(
-      FOCUS_CELL_EVENT_NAME,
-      this.setFocusToCell,
-    );
-  }
 
   getRowHeight = () => {
     const { virtualScroll } = this.asProps;
     const rowHeightFromProps = typeof virtualScroll === 'object' && virtualScroll?.rowHeight;
     return rowHeightFromProps || this.state.rowHeight;
-  };
-
-  setFocusToCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
-    const row = this.cellRefMap.get(rowIndex);
-    const cell = row?.get(colIndex);
-
-    cell?.removeAttribute('inert');
-    cell?.focus();
   };
 
   handleKeyDown = (e: React.KeyboardEvent) => {
@@ -110,12 +89,11 @@ class Body extends Component<AsProps, {}, State> {
             focusableChildren[0]?.focus();
             e.preventDefault();
           }
+          e.stopPropagation();
         }
       } else if (e.key === 'Enter') {
         this.lockedCell[1] = true;
         focusableChildren[0]?.focus();
-      } else if (e.key === 'Tab') {
-        this.lockedCell[0]?.setAttribute('inert', '');
       }
     }
   };
@@ -131,13 +109,6 @@ class Body extends Component<AsProps, {}, State> {
       } else if (focusableChildren.length > 1) {
         this.lockedCell = [e.currentTarget, false];
       }
-    }
-  };
-
-  onBlurCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
-      e.currentTarget.setAttribute('inert', '');
-      e.currentTarget.setAttribute('tabIndex', '-1');
     }
   };
 
@@ -169,12 +140,6 @@ class Body extends Component<AsProps, {}, State> {
           children: React.ReactNode;
           style: React.CSSProperties;
         };
-
-        if (!this.cellRefMap.has(dataIndex)) {
-          this.cellRefMap.set(dataIndex, new Map());
-        }
-
-        const rowCellsMap = this.cellRefMap.get(dataIndex)!;
 
         const columnWMin = column?.props?.ref.current?.style.getPropertyValue('min-width');
         const columnWMax = column?.props?.ref.current?.style.getPropertyValue('max-width');
@@ -209,10 +174,6 @@ class Body extends Component<AsProps, {}, State> {
           .filter(Boolean)
           .map((name) => `igc-table-${uid}-${name}`);
 
-        props.ref = (node: HTMLDivElement | null) => {
-          rowCellsMap.set(cellIndex, node);
-        };
-
         return sstyled(styles)(
           <SCell
             key={cell.name}
@@ -228,8 +189,6 @@ class Body extends Component<AsProps, {}, State> {
             tabIndex={-1}
             onKeyDown={this.handleKeyDown}
             onFocus={this.onFocusCell}
-            onBlur={this.onBlurCell}
-            inert={''}
             aria-colindex={cellIndex + 1}
           />,
         ) as React.ReactElement;
@@ -366,7 +325,6 @@ class Body extends Component<AsProps, {}, State> {
 
   componentWillUnmount() {
     this.firstRowResizeObserver?.disconnect();
-    this.disposeFocusCellEvent?.();
   }
 
   render() {

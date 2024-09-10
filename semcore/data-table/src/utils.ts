@@ -53,5 +53,3 @@ export const getFixedStyle = (
   const vars = columnsFixed.map((column) => `var(--${column.name}_width)`);
   return [side, vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`];
 };
-
-export const FOCUS_CELL_EVENT_NAME = 'focusCell';

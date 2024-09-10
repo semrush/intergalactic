@@ -5,17 +5,11 @@ import ScrollArea from '@semcore/scroll-area';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import {
-  flattenColumns,
-  FOCUS_CELL_EVENT_NAME,
-  getFixedStyle,
-  getScrollOffsetValue,
-} from './utils';
-import { ColIndex, Column, RowIndex } from './types';
+import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
+import { ColIndex, Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
-import EventEmitter from '@semcore/utils/lib/eventEmitter';
-import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 
 export const SORT_ICON_WIDTH = 20;
 
@@ -49,7 +43,6 @@ type AsProps = {
   uid?: string;
   withScrollBar?: boolean;
   animationsDisabled?: boolean;
-  eventEmitter: EventEmitter;
 };
 
 class Head extends Component<AsProps> {
@@ -58,8 +51,7 @@ class Head extends Component<AsProps> {
   static displayName: string;
 
   headCellMap = new Map<ColIndex, HTMLElement | null>();
-
-  disposeFocusCellEvent: (() => void) | undefined;
+  lockedCell: [HTMLElement | null, boolean] = [null, false];
 
   sortWrapperRefs = new Map<Node, boolean>();
   defaultWidths = new Map<
@@ -72,28 +64,49 @@ class Head extends Component<AsProps> {
     }
   >();
 
-  componentDidMount() {
-    this.disposeFocusCellEvent = this.asProps.eventEmitter.subscribe(
-      FOCUS_CELL_EVENT_NAME,
-      this.setFocusToHeadCell,
-    );
-  }
+  handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.currentTarget === this.lockedCell[0]) {
+      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
 
-  componentWillUnmount() {
-    this.disposeFocusCellEvent?.();
-  }
+      if (this.lockedCell[1]) {
+        if (e.key === 'Escape') {
+          this.lockedCell[0]?.focus();
+          this.lockedCell[1] = false;
+        }
+        if (e.key.startsWith('Arrow')) {
+          e.stopPropagation();
+        }
+        if (e.key === 'Tab') {
+          if (e.target === focusableChildren[0] && e.shiftKey) {
+            focusableChildren[focusableChildren.length - 1]?.focus();
+            e.preventDefault();
+          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
+            focusableChildren[0]?.focus();
+            e.preventDefault();
+          }
+        }
+      } else if (e.key === 'Enter') {
+        this.lockedCell[1] = true;
+        focusableChildren[0]?.focus();
+      } else if (e.key === 'Tab') {
+        this.lockedCell[0]?.setAttribute('inert', '');
+      }
+    }
+  };
 
-  setFocusToHeadCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
-    this.headCellMap.forEach((cell) => {
-      cell?.setAttribute('inert', '');
-    });
+  onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (e.target === e.currentTarget) {
+      const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
 
-    const cell = this.headCellMap.get(colIndex);
-
-    cell?.removeAttribute('inert');
-
-    if (rowIndex === -1) {
-      cell?.focus();
+      if (focusableChildren.length === 1) {
+        focusableChildren[0].focus();
+      } else if (focusableChildren.length > 1) {
+        this.lockedCell = [e.currentTarget, false];
+      }
     }
   };
 
@@ -317,12 +330,13 @@ class Head extends Component<AsProps> {
         onKeyDown={callAllEventHandlers(
           column.props.onKeyDown,
           column.sortable ? this.bindHandlerKeyDown(column.name) : undefined,
+          this.handleKeyDown,
         )}
         style={style}
         hidden={hidden}
         aria-sort={ariaSortValue}
-        inert={''}
         aria-colindex={index + 1}
+        onFocus={this.onFocusCell}
       >
         {isGroup ? (
           <>
