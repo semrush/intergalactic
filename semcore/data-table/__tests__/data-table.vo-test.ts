@@ -24,7 +24,7 @@ test('Users can interact with DataTable via VoiceOver', async ({
   await voiceOver.interact();
 
   await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('In table');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('In Table');
   await voiceOver.press('Control+Option+ArrowDown');
   await voiceOver.press('Control+Option+ArrowDown');
   await voiceOver.press('Control+Option+ArrowRight');
