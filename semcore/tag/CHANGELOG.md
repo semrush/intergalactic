@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.44.0] - 2024-08-13
+
+### Changed
+
+* Remove button aria-label from "Remove" to "Delete".
+
+### Fixed
+
+* `interactive` prop passing from `TagContainer` to `Tag`.
+
+### Added
+
+* `TagContainer.Circle` and `TagContainer.Addon` components.
+
 ## [5.43.0] - 2024-08-13
 
 ### Changed

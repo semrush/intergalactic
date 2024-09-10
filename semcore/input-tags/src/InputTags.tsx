@@ -192,7 +192,7 @@ class InputTags extends Component<IInputTagsProps> {
 
   render() {
     const SInputTags = Root;
-    const { Children, styles, locale } = this.asProps;
+    const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
     return sstyled(styles)(
@@ -317,8 +317,8 @@ export default createComponent(InputTags, {
     {
       Text: InputTagContainerTag,
       Close: TagContainer.Close,
-      Addon: TagContainer.Tag.Addon,
-      Circle: TagContainer.Tag.Circle,
+      Addon: TagContainer.Addon,
+      Circle: TagContainer.Circle,
     },
   ],
 }) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
