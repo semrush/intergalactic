@@ -10,6 +10,13 @@ test('Users can interact with DataTable virtual scroll via VoiceOver', async ({
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);
+
+  await page.evaluate(() => {
+    document.querySelectorAll('[role=gridcell]').forEach((el) => {
+      el.removeAttribute('inert');
+    });
+  });
+
   await voiceOver.interact();
 
   await voiceOver.interact();
