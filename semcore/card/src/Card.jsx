@@ -5,6 +5,7 @@ import { Text } from '@semcore/typography';
 import { ButtonLink } from '@semcore/button';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
+import cn from 'classnames';
 
 import style from './style/card.shadow.css';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
@@ -40,38 +41,42 @@ function Title(props) {
   const { styles, innerHint, Children, innerHintAriaLabel, hintAfterAriaLabel } = props;
   const hintAfter = props.hintAfter || props.hint;
   const STitle = Root;
-  const SIcon = ButtonLink;
-  const STooltip = DescriptionTooltip;
+
   return sstyled(styles)(
     <>
       <STitle render={Text}>
         <Children />
         {innerHint && (
-          <STooltip ml={1} title={innerHint}>
-            <SIcon
+          <DescriptionTooltip>
+            <DescriptionTooltip.Trigger
+              tag={ButtonLink}
+              ml={1}
               use={'secondary'}
               aria-label={innerHintAriaLabel}
               color={'--intergalactic-icon-secondary-neutral'}
             >
-              <SIcon.Addon>
+              <ButtonLink.Addon>
                 <InfoM />
-              </SIcon.Addon>
-            </SIcon>
-          </STooltip>
+              </ButtonLink.Addon>
+            </DescriptionTooltip.Trigger>
+            <DescriptionTooltip.Popper>{innerHint}</DescriptionTooltip.Popper>
+          </DescriptionTooltip>
         )}
       </STitle>
       {hintAfter && (
-        <STooltip title={hintAfter}>
-          <SIcon
+        <DescriptionTooltip>
+          <DescriptionTooltip.Trigger
+            tag={ButtonLink}
             use={'secondary'}
             aria-label={hintAfterAriaLabel}
             color={'--intergalactic-icon-secondary-neutral'}
           >
-            <SIcon.Addon>
+            <ButtonLink.Addon>
               <InfoM />
-            </SIcon.Addon>
-          </SIcon>
-        </STooltip>
+            </ButtonLink.Addon>
+          </DescriptionTooltip.Trigger>
+          <DescriptionTooltip.Popper>{hintAfter}</DescriptionTooltip.Popper>
+        </DescriptionTooltip>
       )}
     </>,
   );

@@ -16,16 +16,14 @@ SCard {
     font-weight: var(--intergalactic-bold, 700);
     margin-right: var(--intergalactic-spacing-1x, 4px);
   }
-}
 
-SIcon {
-  cursor: help;
-  margin-right: var(--intergalactic-spacing-1x, 4px);
-}
-STooltip {
-  line-height: normal;
-  vertical-align: top;
-  margin-top: calc(var(--intergalactic-spacing-05x, 2px) / 2);
+  [data-ui-name='DescriptionTooltip.Trigger'] {
+    cursor: help;
+    margin-right: var(--intergalactic-spacing-1x, 4px);
+    line-height: normal;
+    vertical-align: top;
+    margin-top: calc(var(--intergalactic-spacing-1x, 4px) / 2);
+  }
 }
 
 SDescription {
