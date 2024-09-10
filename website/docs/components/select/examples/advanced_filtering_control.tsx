@@ -13,7 +13,10 @@ const data = Array(26)
 const Demo = () => {
   const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
-    () => data.filter((option) => option.value.toString().includes(filter)),
+    () =>
+      data.filter((option) => {
+        return option.value.toString().toLowerCase().includes(filter.toLowerCase());
+      }),
     [filter],
   );
 

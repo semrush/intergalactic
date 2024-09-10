@@ -26,6 +26,18 @@ In the simplest case, you can implement the select by passing an array of option
 
 :::
 
+## Custom selected label
+
+In the `label` in `option` item, you could set custom display value for selected option.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom_selected_label.tsx';
+</script>
+
+:::
+
 ## Controlled and uncontrolled modes
 
 The component can operate in either controlled or uncontrolled mode.
