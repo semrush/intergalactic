@@ -230,6 +230,7 @@ class Body extends Component<AsProps, {}, State> {
             onFocus={this.onFocusCell}
             onBlur={this.onBlurCell}
             inert={''}
+            aria-colindex={cellIndex + 1}
           />,
         ) as React.ReactElement;
       }

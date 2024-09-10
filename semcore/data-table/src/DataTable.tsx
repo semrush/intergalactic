@@ -30,6 +30,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import style from './style/data-table.shadow.css';
 import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
+import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
@@ -246,7 +247,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
   eventEmitter = new EventEmitter();
 
-  focusedCell: [RowIndex, ColIndex] = [0, 0];
+  focusedCell: [RowIndex, ColIndex] | null = null;
 
   columns: Column[] = [];
 
@@ -554,8 +555,20 @@ class RootDefinitionTable extends Component<AsProps> {
     return totalRows ?? (data ?? []).length;
   }
 
+  hasFocusableInHeader = () => {
+    const hasFocusable = this.columns.some((column) => {
+      const columnElement = column.props.ref.current;
+
+      return column.sortable || (columnElement && hasFocusableIn(columnElement));
+    });
+
+    return hasFocusable;
+  };
+
   changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
-    const isSortable = this.columns.some((column) => column.sortable);
+    if (!this.focusedCell) return false;
+
+    const hasFocusable = this.hasFocusableInHeader();
 
     const maxCol = this.columns.length - 1;
     const maxRow = this.totalRows - 1;
@@ -565,7 +578,7 @@ class RootDefinitionTable extends Component<AsProps> {
     let newCol = this.focusedCell[1] + colIndex;
 
     if (
-      ((isSortable && newRow < -1) || (!isSortable && newRow < 0) || newRow > maxRow) &&
+      ((hasFocusable && newRow < -1) || (!hasFocusable && newRow < 0) || newRow > maxRow) &&
       newRow !== this.focusedCell[0]
     ) {
       newRow = this.focusedCell[0];
@@ -603,14 +616,24 @@ class RootDefinitionTable extends Component<AsProps> {
       }
     }
 
-    if (emitFocusChange) {
+    if (emitFocusChange && this.focusedCell) {
       this.eventEmitter.emit(FOCUS_CELL_EVENT_NAME, ...this.focusedCell);
     }
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
-      const focusedCell = this.getFocusedCell();
+      if (!this.focusedCell) {
+        const hasFocusable = this.hasFocusableInHeader();
+
+        if (hasFocusable) {
+          this.focusedCell = [-1, 0];
+        } else {
+          this.focusedCell = [0, 0];
+        }
+      }
+
+      const focusedCell = this.getFocusedCell(this.focusedCell);
 
       focusedCell?.removeAttribute('inert');
       focusedCell?.focus();
@@ -625,14 +648,14 @@ class RootDefinitionTable extends Component<AsProps> {
     }
   };
 
-  getFocusedCell = (): HTMLDivElement | undefined => {
+  getFocusedCell = (focusedCell: [number, number]): HTMLDivElement | undefined => {
     const rows = this.tableRef.current?.querySelectorAll<HTMLDivElement>('[role=row]');
-    const focusedRow = rows?.[this.focusedCell[0] + 1];
+    const focusedRow = rows?.[focusedCell[0] + 1];
 
-    const cells = focusedRow?.querySelectorAll<HTMLDivElement>('[role=gridcell]');
-    const focusedCell = cells?.[this.focusedCell[1]];
-
-    return focusedCell;
+    const cells = focusedRow?.querySelectorAll<HTMLDivElement>(
+      '[role=gridcell], [role=columnheader]',
+    );
+    return cells?.[focusedCell[1]];
   };
 
   render() {
@@ -650,6 +673,7 @@ class RootDefinitionTable extends Component<AsProps> {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         aria-rowcount={this.totalRows}
+        aria-colcount={this.columns.length}
       >
         <Children />
       </SDataTable>,

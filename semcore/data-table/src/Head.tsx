@@ -15,6 +15,7 @@ import { ColIndex, Column, RowIndex } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
+import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 
 export const SORT_ICON_WIDTH = 20;
 
@@ -83,11 +84,15 @@ class Head extends Component<AsProps> {
   }
 
   setFocusToHeadCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
-    const isSortable = this.columns.some((column) => column.sortable);
+    this.headCellMap.forEach((cell) => {
+      cell?.setAttribute('inert', '');
+    });
 
-    if (isSortable && rowIndex === -1) {
-      const cell = this.headCellMap.get(colIndex);
+    const cell = this.headCellMap.get(colIndex);
 
+    cell?.removeAttribute('inert');
+
+    if (rowIndex === -1) {
       cell?.focus();
     }
   };
@@ -316,6 +321,8 @@ class Head extends Component<AsProps> {
         style={style}
         hidden={hidden}
         aria-sort={ariaSortValue}
+        inert={''}
+        aria-colindex={index + 1}
       >
         {isGroup ? (
           <>
