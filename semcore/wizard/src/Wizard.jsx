@@ -33,6 +33,7 @@ class WizardRoot extends Component {
     return {
       steps: this._steps,
       active: props.step === this.asProps.step,
+      id: `${this.asProps.uid}-step-${props.step}`,
     };
   }
 
@@ -87,12 +88,17 @@ class WizardRoot extends Component {
 
   render() {
     const SWizard = this.Root;
-    const { Children, styles } = this.asProps;
+    const { Children, styles, uid, step } = this.asProps;
 
     this._steps.clear();
 
     return sstyled(styles)(
-      <SWizard render={Modal} ref={this.modalRef}>
+      <SWizard
+        render={Modal}
+        aria-label={undefined}
+        ref={this.modalRef}
+        aria-labelledby={`${uid}-step-${step}`}
+      >
         <Children />
       </SWizard>,
     );
@@ -166,7 +172,6 @@ function Stepper(props) {
     <SStepper
       render={Box}
       role='tab'
-      id={`${uid}-step-${step}`}
       aria-controls={active ? `${uid}-content-${step}` : undefined}
       aria-disabled={disabled}
       aria-current={active}
@@ -222,7 +227,7 @@ function StepBack(props) {
 }
 function StepNext(props) {
   const SStepNext = Root;
-  const { Children, styles, getI18nText, stepName } = props;
+  const { Children, children: hasChildren, styles, getI18nText, stepName } = props;
   const handleClick = React.useCallback(() => {
     props.onActive?.(props.step + 1);
   }, [props.step]);
@@ -234,9 +239,7 @@ function StepNext(props) {
       onClick={handleClick}
       aria-label={getI18nText('nextButton', { buttonName: stepName })}
     >
-      <Button.Text>
-        <Children />
-      </Button.Text>
+      <Button.Text>{hasChildren ? <Children /> : stepName}</Button.Text>
       <Button.Addon>
         <ArrowRight />
       </Button.Addon>
