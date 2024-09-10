@@ -17,7 +17,7 @@ const imageWidth = width - 75;
 const Demo = () => (
   <Carousel
     w={width}
-    aria-roledescription='image carousel'
+    aria-roledescription='carousel'
     aria-label='Beauty of Nature'
     zoom={true}
     zoomWidth={1000}

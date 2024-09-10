@@ -16,7 +16,7 @@ const width = 600;
 const imageWidth = width - 75;
 
 const Demo = () => (
-  <Carousel w={width} aria-roledescription='image carousel' aria-label='Beauty of Nature'>
+  <Carousel w={width} aria-roledescription='carousel' aria-label='Beauty of Nature'>
     <>
       <Flex>
         <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
