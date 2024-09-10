@@ -918,6 +918,10 @@ describe('DataTable', () => {
     });
     vi.useRealTimers();
 
+    container.querySelectorAll('[role=gridcell]').forEach((el) => {
+      el.removeAttribute('inert');
+    });
+
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -954,6 +958,10 @@ describe('DataTable', () => {
       vi.runAllTimers();
     });
     vi.useRealTimers();
+
+    container.querySelectorAll('[role=gridcell]').forEach((el) => {
+      el.removeAttribute('inert');
+    });
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

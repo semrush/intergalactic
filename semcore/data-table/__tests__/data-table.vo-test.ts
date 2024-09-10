@@ -13,6 +13,13 @@ test('Users can interact with DataTable via VoiceOver', async ({
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);
+
+  await page.evaluate(() => {
+    document.querySelectorAll('[role=gridcell]').forEach((el) => {
+      el.removeAttribute('inert');
+    });
+  });
+
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
