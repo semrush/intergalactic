@@ -28,7 +28,7 @@ Great data visualization is key to our UI, so handle charts and tables with care
 
 ## Design tokens
 
-The Intergalactic Design System uses two sets of design tokens: [basic](style/design-tokens/design-tokens#base-tokens-palette) and [semantic](style/design-tokens/design-tokens#semantic-tokens). Basic tokens set the main colors, while semantic tokens build on them. Changing the basic tokens lets you create new themes.
+The Intergalactic Design System uses two sets of design tokens: [basic](/style/design-tokens/design-tokens#base-tokens-palette) and [semantic](/style/design-tokens/design-tokens#semantic-tokens). Basic tokens set the main colors, while semantic tokens build on them. Changing the basic tokens lets you create new themes.
 
 Check out [Design tokens](/style/design-tokens/design-tokens) to learn more about how they work and how to use them.
 
