@@ -9,7 +9,7 @@ test.describe('DataTable', () => {
     await page.setContent(htmlContent);
 
     await page.evaluate(() => {
-      document.querySelectorAll('[role=gridcell]').forEach((el) => {
+      document.querySelectorAll('[role=columnheader], [role=gridcell]').forEach((el) => {
         el.removeAttribute('inert');
       });
     });
