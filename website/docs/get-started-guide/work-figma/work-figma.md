@@ -8,7 +8,7 @@ title: Figma libraries
 
 ## Detaching and updating components
 
-::: loom_video https://www.loom.com/share/5733829ef80f415d828f3e0d045249d6 :::
+::: loom_video https://www.loom.com/share/7955fcb33bad47a6bf73c131c14cc446 :::
 
 ## Core libraries
 
