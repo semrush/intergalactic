@@ -5,8 +5,6 @@ import { Text } from '@semcore/typography';
 import { ButtonLink } from '@semcore/button';
 import { DescriptionTooltip } from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
-import cn from 'classnames';
-
 import style from './style/card.shadow.css';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
