@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.39.0] - 2024-09-12
+
+### Changed
+
+- Refactored to `AbstractDropdown` and `Dropdown.Item`.
+
 ## [4.38.0] - 2024-09-06
 
 ### Fixed

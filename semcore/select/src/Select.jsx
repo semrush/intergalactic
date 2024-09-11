@@ -1,7 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { DropdownMenuOld as DropdownMenu } from '@semcore/dropdown-menu';
+import createComponent, { Root, sstyled } from '@semcore/core';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Dropdown, { AbstractDropdown, enhance, selectedIndexContext } from '@semcore/dropdown';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import findComponent from '@semcore/utils/lib/findComponent';
@@ -11,13 +12,12 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
 import { selectContext } from './context';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { isInputTriggerTag } from '@semcore/popper';
-import { Flex } from '@semcore/flex-box';
 
 import style from './style/select.shadow.css';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -31,47 +31,74 @@ function getEmptyValue(multiselect) {
   return multiselect ? [] : null;
 }
 
-const scrollToNode = (node) => {
-  if (!node) return;
-  if (!node.scrollIntoView) return;
-  node.scrollIntoView({
-    block: 'nearest',
-    inline: 'nearest',
-  });
-};
-
-class RootSelect extends Component {
+class RootSelect extends AbstractDropdown {
   static displayName = 'Select';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages), resolveColorEnhance()];
+  static enhance = Object.values(enhance).concat([resolveColorEnhance()]);
 
   static defaultProps = (props) => ({
     placeholder: props.multiselect ? 'Select options' : 'Select option',
     size: 'm',
     defaultValue: getEmptyValue(props.multiselect),
     defaultVisible: false,
+    defaultHighlightedIndex: props.highlightedIndex ?? 0,
+    defaultSelectedIndex: props.selectedIndex ?? 0,
     scrollToSelected: true,
     i18n: localizedMessages,
     locale: 'en',
+    interaction: props.interaction ?? 'click',
+    inlineActions: false,
+    timeout: props.timeout ?? 0,
   });
 
-  firstSelectedOptionRef = React.createRef();
+  role = 'select';
 
-  triggerRef = React.createRef();
+  componentDidUpdate(prevProps) {
+    const { visible } = this.asProps;
+    const visibilityChanged = visible !== prevProps.visible;
 
-  isScrolledToFirstOption = false;
+    super.componentDidUpdate(prevProps);
+
+    if (visibilityChanged && prevProps.visible !== undefined) {
+      if (visible) {
+        const options = this.popperRef.current?.querySelectorAll('[role="option"]');
+        const selected = this.popperRef.current?.querySelector('[aria-selected="true"]');
+
+        if (selected && options) {
+          this.scrollToNode(selected);
+
+          for (let i = 0; i < options.length - 1; i++) {
+            if (options[i] === selected) {
+              this.handlers.highlightedIndex(i);
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  itemRef(props, index, node) {
+    super.itemRef(props, index, node);
+
+    const { highlightedIndex } = this.asProps;
+    const isHighlighted = index === highlightedIndex;
+
+    if (isHighlighted) {
+      this.scrollToNode(node);
+    }
+  }
 
   uncontrolledProps() {
     return {
-      visible: null,
+      ...super.uncontrolledProps(),
       value: null,
     };
   }
 
   getTriggerProps() {
     const {
-      size,
       disabled,
       visible,
       state,
@@ -81,20 +108,30 @@ class RootSelect extends Component {
       forwardRef,
       name,
       multiselect,
-      uid,
-      disablePortal,
       getI18nText,
+      highlightedIndex,
+      uid,
+      Children,
     } = this.asProps;
 
+    const hasMenu = isAdvanceMode(Children, [Select.Menu.displayName]);
+    const ariaControls = hasMenu ? `igc-${uid}-list` : `igc-${uid}-popper`;
+
     return {
-      id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-list` : undefined,
-      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
-      'aria-haspopup': 'listbox',
-      'aria-expanded': visible ? 'true' : 'false',
+      ...super.getTriggerProps(),
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handleOpenKeyDown.bind(this),
+        this.handleArrowKeyDown.bind(this),
+      ),
+      'aria-controls': visible ? ariaControls : undefined,
+      'aria-haspopup': hasMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
+      'aria-activedescendant':
+        hasMenu && visible && highlightedIndex !== null
+          ? `igc-${uid}-option-${highlightedIndex}`
+          : undefined,
       empty: isEmptyValue(value),
-      size,
       value,
       name,
       $hiddenRef: forwardRef,
@@ -106,65 +143,45 @@ class RootSelect extends Component {
       onClear: this.handlerClear,
       children: this.renderChildrenTrigger(value, options),
       getI18nText,
-      ref: this.triggerRef,
     };
   }
 
   getListProps() {
-    const { multiselect, uid } = this.asProps;
+    const { multiselect } = this.asProps;
 
     return {
+      ...super.getListProps(),
       'aria-multiselectable': multiselect ? 'true' : undefined,
-      id: `igc-${uid}-list`,
-      role: 'listbox',
-      'aria-label': 'List of options',
     };
   }
 
-  getMenuProps() {
-    const { uid, getI18nText, multiselect } = this.asProps;
-
+  getPopperProps() {
     return {
-      'aria-multiselectable': multiselect ? 'true' : undefined,
-      id: `igc-${uid}-list`,
-      role: 'listbox',
-      'aria-label': getI18nText('optionsList'),
+      ...super.getPopperProps(),
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handlePreventPopperKeyDown.bind(this),
+        this.handleArrowKeyDown.bind(this),
+      ),
     };
   }
 
-  getOptionProps(props) {
-    const { value } = this.asProps;
+  getOptionProps(props, index) {
+    const { value, highlightedIndex, focusSourceRef } = this.asProps;
+    const highlighted = index === highlightedIndex && focusSourceRef.current === 'keyboard';
     const selected = isSelectedOption(value, props.value);
-    const other = {};
-
-    if (selected) {
-      other.ref = this.handleOptionNode;
-    }
 
     return {
+      ...super.getItemProps(props, index),
+      highlighted,
       selected,
       'aria-selected': selected ? 'true' : 'false',
       'aria-disabled': props.disabled ? 'true' : 'false',
       role: 'option',
-      onClick: this.bindHandlerOptionClick(props.value),
-      ...other,
+      onClick: this.bindHandlerOptionClick(props.value, index),
+      ref: (node) => this.itemRef(props, index, node),
     };
   }
-
-  lastHandleOptionNodeCall = -1;
-  handleOptionNode = (node) => {
-    if (!this.asProps.scrollToSelected) return;
-    if (Date.now() - this.lastHandleOptionNodeCall < 30) return;
-    this.lastHandleOptionNodeCall = Date.now();
-    setTimeout(() => {
-      // in most cases 10ms timeout works perfectly and scrolls before user can see it
-      if (this.asProps.visible) scrollToNode(node);
-    }, 10);
-    setTimeout(() => {
-      // in rare cases 10ms timeout it not enough so 30ms timeout saves the day
-      if (this.asProps.visible) scrollToNode(node);
-    }, 30);
-  };
 
   getOptionCheckboxProps() {
     const { size, resolveColor } = this.asProps;
@@ -198,9 +215,9 @@ class RootSelect extends Component {
       : value;
   }
 
-  bindHandlerOptionClick = (optionValue) => (e) => {
+  bindHandlerOptionClick = (optionValue, index) => (e) => {
     let newValue = optionValue;
-    const { value, multiselect, interaction } = this.asProps;
+    const { value, multiselect } = this.asProps;
     if (Array.isArray(value)) {
       if (value.includes(optionValue)) {
         newValue = value.filter((v) => v !== optionValue);
@@ -209,6 +226,8 @@ class RootSelect extends Component {
       }
     }
     this.handlers.value(newValue, e);
+    this.handlers.highlightedIndex(index);
+    this.triggerRef.current?.focus();
     if (!multiselect) {
       this.handlers.visible(false);
     }
@@ -274,9 +293,10 @@ function Trigger({
 
   return sstyled(styles)(
     <SSelectTrigger
-      render={DropdownMenu.Trigger}
+      render={Dropdown.Trigger}
       tag={Tag}
       placeholder={getI18nText('selectPlaceholder')}
+      role={'combobox'}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
     >
       {addonTextChildren(
@@ -295,10 +315,19 @@ function Option(props) {
   const SSelectOption = Root;
   const { styles, Children } = props;
 
+  const hasCheckbox = isAdvanceMode(Children, [Select.Option.Checkbox.displayName]);
+  const hasContent = isAdvanceMode(Children, [Select.Option.Content.displayName]);
+
   return sstyled(styles)(
-    <SSelectOption render={DropdownMenu.Item} tag={Flex}>
+    <SSelectOption render={Dropdown.Item}>
       <optionPropsContext.Provider value={props}>
-        <Children />
+        {hasCheckbox && !hasContent ? (
+          <Select.Option.Content>
+            <Children />
+          </Select.Option.Content>
+        ) : (
+          <Children />
+        )}
       </optionPropsContext.Provider>
     </SSelectOption>,
   );
@@ -350,16 +379,19 @@ const Select = createComponent(
         Text: ButtonTrigger.Text,
       },
     ],
-    Popper: DropdownMenu.Popper,
+    Popper: Dropdown.Popper,
     List: DropdownMenu.List,
     Menu: DropdownMenu.Menu,
     Option: [
       Option,
       {
         Addon: DropdownMenu.Item.Addon,
+        Content: DropdownMenu.Item.Content,
+        Hint: DropdownMenu.Item.Hint,
         Checkbox,
       },
     ],
+    Group: Dropdown.Group,
     OptionTitle: DropdownMenu.ItemTitle,
     OptionHint: DropdownMenu.ItemHint,
     Divider,
@@ -370,5 +402,6 @@ const Select = createComponent(
 );
 
 export const wrapSelect = (wrapper) => wrapper;
+Select.selectedIndexContext = selectedIndexContext;
 
 export default Select;

@@ -2202,6 +2202,9 @@ importers:
       '@semcore/divider':
         specifier: 4.31.0
         version: link:../divider
+      '@semcore/dropdown':
+        specifier: 4.36.4
+        version: link:../dropdown
       '@semcore/dropdown-menu':
         specifier: 4.38.0
         version: link:../dropdown-menu

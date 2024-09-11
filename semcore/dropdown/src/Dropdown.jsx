@@ -8,10 +8,13 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 import style from './style/dropdown.shadow.css';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import { DropdownItem } from './DropdownItem';
+import { Flex, Box } from '@semcore/flex-box';
+import { useUID } from '@semcore/utils/lib/uniqueID';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
-class Dropdown extends Component {
+class DropdownRoot extends Component {
   static displayName = 'Dropdown';
   static style = style;
   static defaultProps = {
@@ -152,13 +155,42 @@ function DropdownPopper({ styles }) {
   return sstyled(styles)(<SDropdownPopper render={Popper.Popper} />);
 }
 
-export default createComponent(
-  Dropdown,
+function DropdownGroup(props) {
+  const { styles, title, Children, subTitle, size } = props;
+  const SGroup = Root;
+  const SDropdownItemContainer = Dropdown.Item;
+  const SGroupTitle = Flex;
+  const SGroupHint = Flex;
+  const uidTitle = useUID('title_mi_group');
+  const uidSubTitle = useUID('sub_title_mi_group');
+  const groupAriaProps = {
+    'aria-labelledby': uidTitle,
+    'aria-describedby': subTitle ? uidSubTitle : undefined,
+  };
+  return sstyled(styles)(
+    <>
+      <SDropdownItemContainer notInteractive aria-hidden={'true'} tabindex={-1} size={size}>
+        <SGroupTitle id={uidTitle}>{title}</SGroupTitle>
+        {subTitle && <SGroupHint id={uidSubTitle}>{subTitle}</SGroupHint>}
+      </SDropdownItemContainer>
+      <SGroup render={Box} role={'group'} {...groupAriaProps} __excludeProps={['title']}>
+        <Children />
+      </SGroup>
+    </>,
+  );
+}
+
+const Dropdown = createComponent(
+  DropdownRoot,
   {
     Trigger: DropdownTrigger,
     Popper: DropdownPopper,
+    Item: DropdownItem,
+    Group: DropdownGroup,
   },
   {
     parent: Popper,
   },
 );
+
+export default Dropdown;
