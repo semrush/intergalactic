@@ -2,11 +2,11 @@
 title: Figma libraries
 ---
 
-## Introduction to our libraries
+## Introduction
 
-::: loom_video https://www.loom.com/share/32ac37f7d13046308cab7095d05bcdcb :::
+::: loom_video https://www.loom.com/share/9cdb9e91f56a4d50accd96f08c5e4d90?sid=a55dba9e-88b3-4d19-826f-60f3c8b5dcf5 :::
 
-### Detaching and updating components
+## Detaching and updating components
 
 ::: loom_video https://www.loom.com/share/5733829ef80f415d828f3e0d045249d6 :::
 
@@ -24,7 +24,7 @@ title: Figma libraries
 
 ::: loom_video https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6 :::
 
-## Start designing with our libraries
+## Start designing with libraries
 
 How to start designing with the Intergalactic Design System Figma libraries? Where you should start from?
 
@@ -32,7 +32,7 @@ How to start designing with the Intergalactic Design System Figma libraries? Whe
 
 ::: loom_video https://www.loom.com/share/91042725e5f3425a80b62c1e82cab152 :::
 
-### Getting started with Charts library
+## Charts library
 
 How to choose the right visualization for your task?
 

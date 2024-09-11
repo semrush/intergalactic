@@ -6,7 +6,7 @@ title: For designers
 
 <!-- Welcome to a series of quick video guides to help you get started with the Intergalactic Design System for your product designs. -->
 
-::: loom_video https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e :::
+::: loom_video https://www.loom.com/share/70c05f1fbadc457ebcd74af6c31bfbe7?sid=d13fc781-66aa-4fb8-8758-aeba64bb67a8 :::
 
 <!-- ## How to contribute?
 
