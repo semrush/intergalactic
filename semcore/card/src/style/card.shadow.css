@@ -18,7 +18,6 @@ SCard {
   }
 
   [data-ui-name='DescriptionTooltip.Trigger'] {
-    cursor: help;
     margin-right: var(--intergalactic-spacing-1x, 4px);
     line-height: normal;
     vertical-align: top;
