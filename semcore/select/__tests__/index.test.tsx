@@ -176,9 +176,7 @@ describe('Select Trigger', () => {
     await expect(highlightedIndex).toBe(2);
   });
 
-  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({
-    expect,
-  }) => {
+  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async () => {
     const spyChange = vi.fn();
 
     const component = (
@@ -418,8 +416,8 @@ describe('Select Trigger', () => {
 
   test.sequential(
     'focus position preserve with keyboard navigation and interaction=focus',
-    async () => {
-      vi.useFakeTimers();
+    async ({ expect }) => {
+      // vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
           <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
@@ -433,26 +431,15 @@ describe('Select Trigger', () => {
           </Select.Menu>
         </Select>,
       );
-      act(() => {
-        vi.runAllTimers();
-      });
-      fireEvent.keyDown(document.body, { key: 'Tab' });
-      act(() => getByTestId('input-in-trigger').focus());
-      act(() => {
-        vi.runAllTimers();
-      });
-      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
-      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
-      act(() => {
-        vi.runAllTimers();
-      });
-      act(() => {
-        vi.runAllTimers();
-      });
+
+      await userEvent.keyboard('[Tab]');
 
       expect(getByTestId('input-in-trigger')).toHaveFocus();
 
-      vi.useRealTimers();
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Enter]');
+
+      expect(getByTestId('input-in-trigger')).toHaveFocus();
     },
   );
 });

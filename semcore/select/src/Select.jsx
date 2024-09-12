@@ -60,19 +60,17 @@ class RootSelect extends AbstractDropdown {
 
     super.componentDidUpdate(prevProps);
 
-    if (visibilityChanged && prevProps.visible !== undefined) {
-      if (visible) {
-        const options = this.popperRef.current?.querySelectorAll('[role="option"]');
-        const selected = this.popperRef.current?.querySelector('[aria-selected="true"]');
+    if (visibilityChanged && visible) {
+      const options = this.menuRef.current?.querySelectorAll('[role="option"]');
+      const selected = this.menuRef.current?.querySelector('[aria-selected="true"]');
 
-        if (selected && options) {
-          this.scrollToNode(selected);
+      if (selected && options) {
+        this.scrollToNode(selected);
 
-          for (let i = 0; i < options.length - 1; i++) {
-            if (options[i] === selected) {
-              this.handlers.highlightedIndex(i);
-              break;
-            }
+        for (let i = 0; i < options.length; i++) {
+          if (options[i] === selected) {
+            this.handlers.highlightedIndex(i);
+            break;
           }
         }
       }
@@ -169,7 +167,7 @@ class RootSelect extends AbstractDropdown {
   getOptionProps(props, index) {
     const { value, highlightedIndex, focusSourceRef } = this.asProps;
     const highlighted = index === highlightedIndex && focusSourceRef.current === 'keyboard';
-    const selected = isSelectedOption(value, props.value);
+    const selected = props.selected ?? isSelectedOption(value, props.value);
 
     return {
       ...super.getItemProps(props, index),
