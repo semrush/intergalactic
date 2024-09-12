@@ -629,7 +629,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
       cell?.focus();
 
-      if (newRow !== 1) {
+      if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
         const headerCell = this.cellsMap.get(0)?.get(newCol);
 
