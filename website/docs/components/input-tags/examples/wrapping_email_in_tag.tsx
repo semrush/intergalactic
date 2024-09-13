@@ -71,7 +71,7 @@ const Demo = () => {
           ))}
           <InputTags.Value
             id='add-email'
-            placeholder='Another participant email'
+            placeholder='Add email'
             value={value}
             onChange={handleChange}
           />

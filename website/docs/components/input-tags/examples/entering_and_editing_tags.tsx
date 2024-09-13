@@ -11,7 +11,7 @@ const Demo = () => {
     'Facebook',
     'LinkedIn',
     'Instagram',
-    'Some secret social network with a very long name',
+    'Social media with a very long name',
   ]);
   const [value, setValue] = React.useState('');
 
@@ -89,6 +89,7 @@ const Demo = () => {
           onKeyDown={handleInputKeyDown}
           ref={inputValueRef}
           id='add-new-social-media'
+          placeholder='Add social media'
         />
       </InputTags>
     </Flex>
