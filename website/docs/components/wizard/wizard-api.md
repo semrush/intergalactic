@@ -30,6 +30,25 @@ import Wizard from 'intergalactic/wizard';
 
 <TypesView type="WizardStepProps" :types={...types} />
 
+## Wizard.StepBack
+
+```jsx
+import Wizard from 'intergalactic/wizard';
+<Wizard.StepBack />;
+```
+
+<TypesView type="WizardStepBackProps" :types={...types} />
+
+## Wizard.StepNext
+
+```jsx
+import Wizard from 'intergalactic/wizard';
+<Wizard.StepNext />;
+```
+
+<TypesView type="WizardStepNextProps" :types={...types} />
+
+
 ## Wizard.Stepper
 
 ```jsx
