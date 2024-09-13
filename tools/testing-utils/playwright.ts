@@ -14,19 +14,19 @@ export const getAccessibilityViolations: GetAccessibilityViolations = async ({ p
     .disableRules(['color-contrast'])
     .analyze();
 
-  const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
-    if (v.impact === 'critical' && v.description === 'Ensures buttons have discernible text') {
-      const onlyComboboxButtons = v.nodes.every((node) => {
-        return node.html.startsWith('<button') && node.html.includes('role="combobox"');
-      });
+  return accessibilityScanResults.violations.filter(skipButtonComboboxDiscernibleErrors);
+};
 
-      return !onlyComboboxButtons;
-    }
+export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
+  if (v.impact === 'critical' && v.description === 'Ensures buttons have discernible text') {
+    const onlyComboboxButtons = v.nodes.every((node) => {
+      return node.html.startsWith('<button') && node.html.includes('role="combobox"');
+    });
 
-    return true;
+    return !onlyComboboxButtons;
   }
 
-  return accessibilityScanResults.violations.filter(skipButtonComboboxDiscernibleErrors);
+  return true;
 };
 
 // biome-ignore lint/correctness/noEmptyPattern:

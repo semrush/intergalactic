@@ -68,25 +68,28 @@ class RootSelect extends AbstractDropdown {
   uncontrolledProps() {
     return {
       ...super.uncontrolledProps(),
-      visible: [null, (visible) => {
-        if (visible === true) {
-          setTimeout(() => {
-            const options = this.menuRef.current?.querySelectorAll('[role="option"]');
-            const selected = this.menuRef.current?.querySelector('[aria-selected="true"]');
+      visible: [
+        null,
+        (visible) => {
+          if (visible === true) {
+            setTimeout(() => {
+              const options = this.menuRef.current?.querySelectorAll('[role="option"]');
+              const selected = this.menuRef.current?.querySelector('[aria-selected="true"]');
 
-            if (selected && options) {
-              this.scrollToNode(selected);
+              if (selected && options) {
+                this.scrollToNode(selected);
 
-              for (let i = 0; i < options.length; i++) {
-                if (options[i] === selected) {
-                  this.handlers.highlightedIndex(i);
-                  break;
+                for (let i = 0; i < options.length; i++) {
+                  if (options[i] === selected) {
+                    this.handlers.highlightedIndex(i);
+                    break;
+                  }
                 }
               }
-            }
-          }, 0);
-        }
-      }],
+            }, 0);
+          }
+        },
+      ],
       value: null,
     };
   }

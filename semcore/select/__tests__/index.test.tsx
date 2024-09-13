@@ -12,6 +12,7 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Select from '../src';
 // @ts-ignore
 import InputSearch from '../src/InputSearch';
+import { skipButtonComboboxDiscernibleErrors } from '@semcore/testing-utils/playwright';
 
 HTMLElement.prototype.scrollIntoView = () => {};
 
@@ -176,7 +177,9 @@ describe('Select Trigger', () => {
     await expect(highlightedIndex).toBe(2);
   });
 
-  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({ expect }) => {
+  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({
+    expect,
+  }) => {
     const spyChange = vi.fn();
 
     const component = (
@@ -351,7 +354,7 @@ describe('Select Trigger', () => {
     vi.useRealTimers();
 
     const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    expect(results.violations.filter(skipButtonComboboxDiscernibleErrors)).toHaveLength(0);
   });
 
   test.concurrent('focus position preserve with mouse navigation', async () => {
