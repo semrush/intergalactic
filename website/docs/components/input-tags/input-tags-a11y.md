@@ -22,7 +22,7 @@ See detailed information about the keyboard support for the input fields in the 
 
 - Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Keep it simple – do not all browsers correctly expose multiple labels that are linked to the same form element. [Refer to our examples](/components/input-tags/input-tags-code).
 - Make optional fields obvious by adding text "optional" to the input.
-- Inputs with `invalid` state should be associated with their error message. [Refer to the Validation pattern example](/patterns/validation-form/validation-form-code).
+- Inputs with the `invalid` state should be associated with their error message using `aria-describedby`.
 
 ## Resources
 
