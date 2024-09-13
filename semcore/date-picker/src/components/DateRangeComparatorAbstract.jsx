@@ -498,6 +498,7 @@ class DateRangeComparatorAbstract extends Component {
       unitRefs: this.unitRefs,
       getI18nText,
       actionsDescribing: index === 0 ? 'range-compare' : null,
+      tabIndex: index === 0 ? 0 : -1,
     };
   }
 

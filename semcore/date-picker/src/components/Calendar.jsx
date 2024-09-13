@@ -46,7 +46,7 @@ class CalendarWeekDaysRoot extends Component {
       date = date.add(1, 'day');
       return {
         children: short,
-        abbr: long,
+        'aria-label': long,
       };
     });
   }
@@ -68,9 +68,9 @@ class CalendarWeekDaysRoot extends Component {
   }
 }
 
-function CalendarWeekUnit({ styles, abbr }) {
+function CalendarWeekUnit({ styles }) {
   const SWeekDay = Root;
-  return sstyled(styles)(<SWeekDay abbr={abbr} render={Box} role='gridcell' />);
+  return sstyled(styles)(<SWeekDay render={Box} role='columnheader' />);
 }
 
 function resolveHighlighting(date, unit, highlighted) {
@@ -151,7 +151,7 @@ class CalendarAbstract extends Component {
 
       'aria-selected': selecting.selected,
       'aria-disabled': disabled,
-      'aria-current': highlighting.highlighted,
+      'aria-current': highlighting.highlighted ? 'date' : undefined,
 
       disabled,
       today: date.isSame(self.today, unit),
