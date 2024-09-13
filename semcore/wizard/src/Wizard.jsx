@@ -88,7 +88,7 @@ class WizardRoot extends Component {
 
   render() {
     const SWizard = this.Root;
-    const { Children, styles, uid, step } = this.asProps;
+    const { Children, styles, uid } = this.asProps;
 
     this._steps.clear();
 
@@ -97,7 +97,7 @@ class WizardRoot extends Component {
         render={Modal}
         aria-label={undefined}
         ref={this.modalRef}
-        aria-labelledby={`${uid}-step-${step}`}
+        aria-labelledby={`${uid}-title`}
       >
         <Children />
       </SWizard>,
@@ -111,7 +111,7 @@ function Sidebar(props) {
   const SSidebarHeader = 'h2';
   const SSidebarMenu = 'div';
   return sstyled(styles)(
-    <SSidebar render={Box}>
+    <SSidebar render={Box} __excludeProps={['title']}>
       {title && <SSidebarHeader id={`${uid}-title`}>{title}</SSidebarHeader>}
       <SSidebarMenu role='tablist' aria-orientation='vertical'>
         <Children />
@@ -172,9 +172,10 @@ function Stepper(props) {
     <SStepper
       render={Box}
       role='tab'
+      id={`${uid}-stepper-${step}`}
       aria-controls={active ? `${uid}-content-${step}` : undefined}
       aria-disabled={disabled}
-      aria-current={active}
+      aria-selected={active}
       onClick={handlerClick}
       onKeyDown={handlerKeyDown}
     >
@@ -196,7 +197,7 @@ function Content(props) {
     <SContent
       render={Box}
       role='tabpanel'
-      aria-labelledby={`${uid}-step-${step}`}
+      aria-labelledby={`${uid}-stepper-${step}`}
       id={`${uid}-content-${step}`}
     >
       {hasChildren ? <Children /> : stepName}
