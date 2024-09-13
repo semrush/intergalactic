@@ -10,6 +10,7 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import log from '@semcore/utils/lib/logger';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import style from './style/tag.shadow.css';
 
@@ -218,11 +219,29 @@ class RootTagContainer extends Component {
 
   render() {
     const STagContainer = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, forcedAdvancedMode } = this.asProps;
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(
+        Children,
+        [
+          TagContainer.Tag.displayName,
+          TagContainer.Addon.displayName,
+          TagContainer.Close.displayName,
+          TagContainer.Circle.displayName,
+        ],
+        true,
+      );
 
     return sstyled(styles)(
       <STagContainer render={Box}>
-        <Children />
+        {advancedMode ? (
+          <Children />
+        ) : (
+          <TagContainer.Tag>
+            <Children />
+          </TagContainer.Tag>
+        )}
       </STagContainer>,
     );
   }
@@ -343,7 +362,11 @@ function Addon(props) {
 function Circle(props) {
   const SCircle = Root;
   const { styles, color, resolveColor } = props;
-  return sstyled(styles)(<SCircle render={Box} tag='span' tag-color={resolveColor(color)} />);
+  const tagColor = React.useMemo(() => {
+    if (typeof resolveColor !== 'function') return;
+    return resolveColor(color);
+  }, [color, resolveColor]);
+  return sstyled(styles)(<SCircle render={Box} tag='span' tag-color={tagColor} />);
 }
 
 const Tag = createComponent(RootTag, {

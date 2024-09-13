@@ -280,7 +280,7 @@ function InputTagContainer(props: any) {
     },
     [props.onClick],
   );
-  const interactive = props.ediable || props.onClick;
+  const interactive = props.editable || props.onClick;
 
   return sstyled(props.styles)(
     <STag
@@ -298,13 +298,11 @@ function InputTagContainerTag(props: any) {
 
   return sstyled(props.styles)(
     <>
-      {true && (
-        <Portal>
-          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-            {getI18nText('pressEnterToEdit')}
-          </ScreenReaderOnly>
-        </Portal>
-      )}
+      <Portal>
+        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+          {getI18nText('pressEnterToEdit')}
+        </ScreenReaderOnly>
+      </Portal>
       <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
     </>,
   );

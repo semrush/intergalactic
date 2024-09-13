@@ -99,10 +99,6 @@ STagContainer SAddon {
     text-decoration: none;
   }
 }
-/* 
-STagContainer SAddon {
-  border: 0;
-} */
 
 STag[disabled],
 STagContainerClose[disabled] {
