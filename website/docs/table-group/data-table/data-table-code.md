@@ -226,7 +226,9 @@ You can provide `data` property for `<DataTable.Row/>` . It isn't used in the co
 
 Define `<DataTable.Cell/>` with the appropriate `name={name}` to apply properties to a table cell. You can use multiple `<DataTable.Cell/>` for different business logic.
 
-`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components ((for example, `` styled(DataTable. Cell) `...` `` )) isn't allowed.
+::: tip
+`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Cell) `...` `` ) isn't allowed.
+:::
 
 You can provide `data` property for `<DataTable.Cell/>` . It isn't used in the component runtime but improves strict typings.
 

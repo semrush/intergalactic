@@ -9,13 +9,12 @@ tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A
 
 Table: Keyboard support
 
-| Key                                                   | Function                                                                                                                                                   |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                                                 | Moves focus to the next focusable element.                                                                                                                 |
-| `Shift + Tab`                                         | Moves focus to the previous focusable element.                                                                                                             |
-| `Left Arrow`, `Right Arrow`, `Up Arrow`, `Down Arrow` | Move the focus across the grid of table cells.                                                                                                             |
-| <nobr>`Up Arrow`</nobr>, <nobr>`Down Arrow`</nobr>    | Moves selection between the list options in the dropdown. If selection is on the last/first option, moves selection to the first/last option respectively. |
-| `Enter`                                               | Activates interactive elements inside the table grid.                                                                                                      |
+| Key                                                   | Function                                              |
+| ----------------------------------------------------- | ----------------------------------------------------- |
+| `Tab`                                                 | Moves focus to the next focusable element.            |
+| `Shift + Tab`                                         | Moves focus to the previous focusable element.        |
+| `Left Arrow`, `Right Arrow`, `Up Arrow`, `Down Arrow` | Move the focus across the grid of table cells.        |
+| `Enter`                                               | Activates interactive elements inside the table grid. |
 
 ### Roles & attributes
 
