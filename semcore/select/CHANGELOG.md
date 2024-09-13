@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.6] - 2024-09-03
+
+### Changed
+
+- Using old version of DropdownMenu component.
+
 ## [4.45.5] - 2024-08-23
 
 ### Changed

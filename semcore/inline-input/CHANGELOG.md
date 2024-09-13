@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2024-08-29
+
+### Changed
+
+- Render confirm/cancel buttons with `ButtonLink` component.
+
+## [4.41.3] - 2024-09-06
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [5.31.2 ~> 5.32.0], `@semcore/icon` [4.44.0 ~> 4.44.1], `@semcore/tooltip` [6.40.4 ~> 6.41.0], `@semcore/utils` [4.32.2 ~> 4.35.0], `@semcore/core` [2.29.2 ~> 2.30.0]).
+
 ## [4.41.2] - 2024-08-23
 
 ### Changed

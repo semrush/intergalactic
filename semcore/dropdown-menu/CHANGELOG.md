@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.38.0] - 2024-09-06
+
+### Fixed
+
+- In combobox patterns users needed double click outside to unfocus the input.
+
+## [4.37.0] - 2024-09-02
+
+### Changed
+
+- Accessibility pattern `aria-activedescendant` to `row-in-tabindex`.
+- Added possibility to add some actions for menu item (as submenu).
+- Refactored Nesting menu.
+
+## [4.36.0] - 2024-08-26
+
+### Changed
+
+- Now DropdownMenu with `interaction="hover"` has `timeout={[0, 100]}` (0 for showing, 100 for hiding) by default.
+
 ## [4.35.5] - 2024-08-20
 
 ### Fixed

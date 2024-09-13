@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
+import { ButtonLinkComponent } from '@semcore/button';
 
 /** @deprecated */
 export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}
@@ -145,8 +146,16 @@ type InlineInputCtx = {
 declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, InlineInputCtx> & {
   Addon: Intergalactic.Component<'div', InlineInputAddonProps, InlineInputProps>;
   Value: Intergalactic.Component<'input', InlineInputValueProps, InlineInputProps>;
-  ConfirmControl: Intergalactic.Component<'div', InlineInputConfirmControlProps, InlineInputProps>;
-  CancelControl: Intergalactic.Component<'div', InlineInputCancelControlProps, InlineInputProps>;
+  ConfirmControl: Intergalactic.Component<
+    ButtonLinkComponent,
+    InlineInputConfirmControlProps,
+    InlineInputProps
+  >;
+  CancelControl: Intergalactic.Component<
+    ButtonLinkComponent,
+    InlineInputCancelControlProps,
+    InlineInputProps
+  >;
   NumberValue: Intergalactic.Component<'div', {}, InlineInputProps>;
   NumberControls: Intergalactic.Component<'div', {}, InlineInputProps>;
 };

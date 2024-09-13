@@ -140,8 +140,6 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
   React.useEffect(() => {
     (async () => {
       const highlighter = await getHighlighterCore({
-        // themes: [import('shiki/themes/github-dark.mjs')],
-        // themes: [import('shiki/themes/aurora-x.mjs')],
         themes: [codeTheme.dark],
         langs: [import('shiki/langs/tsx.mjs')],
         loadWasm: getWasm,

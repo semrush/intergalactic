@@ -1,21 +1,21 @@
 import React from 'react';
 import Breadcrumbs from 'intergalactic/breadcrumbs';
-import Tooltip from 'intergalactic/tooltip';
+import Ellipsis from 'intergalactic/ellipsis';
 
 const Demo = () => (
   <Breadcrumbs>
-    <Tooltip tag={Breadcrumbs.Item} active={false} href='#' title='Projects' role={'link'}>
-      Projects
-    </Tooltip>
-    <Tooltip
-      tag={Breadcrumbs.Item}
-      active={false}
-      href='#'
-      title="This title is longer than a giraffe's neck, I bet it's been doing neck workouts!"
-      role={'link'}
-    >
-      This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
-    </Tooltip>
+    <Ellipsis>
+      <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role={'link'}>
+        Ellipsis
+      </Ellipsis.Content>
+      <Ellipsis.Popper />
+    </Ellipsis>
+    <Ellipsis>
+      <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role={'link'}>
+        This title is longer than a giraffe's neck, I bet it's been doing neck workouts!
+      </Ellipsis.Content>
+      <Ellipsis.Popper />
+    </Ellipsis>
     <Breadcrumbs.Item active>Current page</Breadcrumbs.Item>
   </Breadcrumbs>
 );

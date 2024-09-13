@@ -2,13 +2,11 @@
 <template>
   <div class="page-title-container" v-if="title">
     <h1 class="page-title">{{ title }}</h1>
-    <div class="page-top-tabs-fake-aside"></div>
   </div>
   <div class="page-top-tabs-container">
     <div class="page-top-tabs-content">
       <a class="page-top-tabs-tab" v-for="tab in tabs" :href="tab.url" :data-current="tab.current" @click="handleClick">{{ tab.title }}</a>
     </div>
-    <div class="page-top-tabs-fake-aside"></div>
   </div>
 </template>
 
@@ -42,32 +40,9 @@
   overflow: auto;
 }
 
-.page-top-tabs-fake-aside {
-  display: none;
-  position: relative;
-  flex-grow: 1;
-  padding-left: 32px;
-  width: 100%;
-  max-width: 256px;
-}
-
 @media (min-width: 680px) and (max-width: 1280px) {
   .page-top-tabs-container {
     margin-bottom: 20px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .page-top-tabs-fake-aside {
-    display: block;
-  }
-}
-
-@media (min-width: 960px) {
-
-  .page-top-tabs-container,
-  .page-title-container {
-    padding: 0 32px;
   }
 }
 

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.37.0] - 2024-09-09
+
+### Added
+
+- Component `ButtonLink`.
+
+## [5.36.0] - 2024-09-06
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/tooltip` [6.40.4 ~> 6.41.0], `@semcore/utils` [4.32.2 ~> 4.35.0]).
+
 ## [5.35.2] - 2024-08-23
 
 ### Changed

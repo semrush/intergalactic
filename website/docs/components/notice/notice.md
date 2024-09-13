@@ -227,13 +227,13 @@ Since the notice serves as a temporary notification, it should have a predefined
 
 ### Hiding
 
-- Clicking on the `Close` icon.
-- Clicking on a link that triggers a re-opening condition (for example, "Ask me later," "Never show again," etc.).
-- If there is no `Close` icon or hide link, the user can't manually hide the notice. It will be hidden automatically based on conditions set by the service (such as a specific duration, a certain number of sessions, or triggering a specific action).
+- Activating the **Close** button.
+- Activating a link that triggers a re-opening condition (for example, "Ask me later," "Never show again," etc.).
+- If there is no **Close** button or hide link, the user can't manually hide the notice. It will be hidden automatically based on conditions set by the service (such as a specific duration, a certain number of sessions, or triggering a specific action).
 
 ### Animation
 
-When the close icon or closing link is clicked, the notice should smoothly fade out with a duration of `250ms`. The page content should transition to fill the space vacated by the notice within `250ms`.
+When hiding, the notice should smoothly fade out with a duration of `250ms`. The page content should transition to fill the space vacated by the notice within `250ms`.
 
 ## Custom notice
 
