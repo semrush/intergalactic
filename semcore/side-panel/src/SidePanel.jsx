@@ -11,7 +11,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
-import Button from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
@@ -234,12 +234,12 @@ function Title(props) {
 
 function Back(props) {
   const SBack = Root;
-  const SBackText = Button.Text;
+  const SBackText = ButtonLink.Text;
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={Button} use='tertiary' theme='muted' type='button'>
-      <Button.Addon tag={ArrowLeft} />
+    <SBack render={ButtonLink} color={'text-hint'} size={100} addonLeft={ArrowLeft}>
+      {/*<ButtonLink.Addon><ArrowLeft /></ButtonLink.Addon>*/}
       <SBackText>
         <Children />
       </SBackText>

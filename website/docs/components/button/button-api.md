@@ -32,4 +32,15 @@ import Button from 'intergalactic/button';
 <Button.Text />;
 ```
 
+## ButtonLink
+
+Modified button component (`type=button` by default) with display as link.
+
+```jsx
+import { ButtonLink } from 'intergalactic/button';
+<Button />;
+```
+
+<TypesView type="ButtonLinkProps" :types={...types} />
+
 <script setup>import { data as types } from '@types.data.ts';</script>

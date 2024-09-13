@@ -2,9 +2,8 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
-import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import { Hint } from '@semcore/tooltip';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -297,10 +296,7 @@ class TotalPages extends Component {
           </STotalLastPages>
         ) : (
           <STotalPages
-            render={Link}
-            tag='button'
-            type='button'
-            role={undefined}
+            render={ButtonLink}
             aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
           />
         )}

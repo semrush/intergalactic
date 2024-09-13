@@ -380,7 +380,6 @@
       "format-text",
       "fullscreen-modal",
       "pills",
-      "side-panel",
       "slider",
       "switch",
       "tab-panel",
@@ -468,7 +467,7 @@
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
     "description": "Hover and active states for the link text.",
-    "components": ["base-trigger", "format-text", "link", "tab-panel"]
+    "components": ["base-trigger", "button", "format-text", "link", "tab-panel"]
   },
   {
     "name": "--intergalactic-text-link-invert",
@@ -492,7 +491,7 @@
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
     "description": "Visited link text.",
-    "components": ["link"]
+    "components": ["button", "link"]
   },
   {
     "name": "--intergalactic-text-hint",
@@ -500,7 +499,7 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Hint link text.",
-    "components": ["d3-chart", "format-text"]
+    "components": ["button", "d3-chart", "format-text"]
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
@@ -508,7 +507,7 @@
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
     "description": "Hover and active states of the hint link text.",
-    "components": ["format-text", "side-panel", "typography"]
+    "components": ["button", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-text-hint-invert",
@@ -1178,7 +1177,6 @@
     "description": "Secondary neutral icon.",
     "components": [
       "breadcrumbs",
-      "card",
       "carousel",
       "format-text",
       "inline-input",
@@ -1785,7 +1783,7 @@
     "rawValue": "rgba({blue.400}, 0.5)",
     "computedValue": "rgba(0, 143, 248, 0.5)",
     "description": "Color for default keyboard focus outline styles.",
-    "components": ["format-text", "link"]
+    "components": ["button", "format-text", "link"]
   },
   {
     "name": "--intergalactic-keyboard-focus-outline-invert",
@@ -1873,7 +1871,7 @@
     "rawValue": "117%",
     "computedValue": "117%",
     "description": "Use with font-size-800.",
-    "components": ["format-text", "typography"]
+    "components": ["button", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-lh-700",
@@ -1881,7 +1879,7 @@
     "rawValue": "110%",
     "computedValue": "110%",
     "description": "Use with font-size-700.",
-    "components": ["errors", "format-text", "typography"]
+    "components": ["button", "errors", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-lh-600",
@@ -1889,7 +1887,7 @@
     "rawValue": "125%",
     "computedValue": "125%",
     "description": "Use with font-size-600.",
-    "components": ["format-text", "typography"]
+    "components": ["button", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-lh-500",
@@ -1897,7 +1895,7 @@
     "rawValue": "117%",
     "computedValue": "117%",
     "description": "Use with font-size-500.",
-    "components": ["format-text", "fullscreen-modal", "modal", "typography"]
+    "components": ["button", "format-text", "fullscreen-modal", "modal", "typography"]
   },
   {
     "name": "--intergalactic-lh-400",
@@ -1905,7 +1903,7 @@
     "rawValue": "120%",
     "computedValue": "120%",
     "description": "Use with font-size-400.",
-    "components": ["format-text", "product-head", "typography"]
+    "components": ["button", "format-text", "product-head", "typography"]
   },
   {
     "name": "--intergalactic-lh-300",
@@ -1954,7 +1952,6 @@
       "pagination",
       "product-head",
       "radio",
-      "side-panel",
       "slider",
       "switch",
       "tab-line",
@@ -1974,11 +1971,11 @@
     "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
+      "button",
       "d3-chart",
       "data-table",
       "format-text",
       "fullscreen-modal",
-      "side-panel",
       "switch",
       "tag",
       "typography"
@@ -2052,12 +2049,12 @@
     "computedValue": "12px",
     "description": "Use this font-size with caution for text in some additional messages. Always check its contrast and readability.",
     "components": [
+      "button",
       "counter",
       "d3-chart",
       "data-table",
       "format-text",
       "fullscreen-modal",
-      "side-panel",
       "switch",
       "tag",
       "typography"
@@ -2136,35 +2133,35 @@
     "type": "fontSizes",
     "rawValue": "20px",
     "computedValue": "20px",
-    "components": ["format-text", "product-head", "typography"]
+    "components": ["button", "format-text", "product-head", "typography"]
   },
   {
     "name": "--intergalactic-fs-500",
     "type": "fontSizes",
     "rawValue": "24px",
     "computedValue": "24px",
-    "components": ["format-text", "fullscreen-modal", "modal", "typography"]
+    "components": ["button", "format-text", "fullscreen-modal", "modal", "typography"]
   },
   {
     "name": "--intergalactic-fs-600",
     "type": "fontSizes",
     "rawValue": "32px",
     "computedValue": "32px",
-    "components": ["format-text", "typography"]
+    "components": ["button", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-fs-700",
     "type": "fontSizes",
     "rawValue": "36px",
     "computedValue": "36px",
-    "components": ["errors", "format-text", "typography"]
+    "components": ["button", "errors", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-fs-800",
     "type": "fontSizes",
     "rawValue": "48px",
     "computedValue": "48px",
-    "components": ["format-text", "typography"]
+    "components": ["button", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-compact",
@@ -2215,6 +2212,7 @@
     "components": [
       "accordion",
       "base-trigger",
+      "button",
       "checkbox",
       "counter",
       "dropdown-menu",

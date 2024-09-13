@@ -7,6 +7,7 @@ import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Spin from '@semcore/spin';
+import { ButtonLink } from '@semcore/button';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import InputNumber, { InputNumberValueProps } from '@semcore/input-number';
@@ -337,17 +338,14 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
       {hasChildren ? (
         <Children />
       ) : (
-        <Tooltip {...props.$tooltipsProps}>
-          <Tooltip.Trigger
-            tag={(props.icon as any) ?? CheckM}
-            role='button'
-            interactive
-            onClick={handleConfirm}
-            className={sConfirmIconStyles.className}
-            style={sConfirmIconStyles.style}
-          />
-          <Tooltip.Popper p={3}>{title}</Tooltip.Popper>
-        </Tooltip>
+        <ButtonLink
+          addonLeft={(props.icon as any) ?? CheckM}
+          use={'secondary'}
+          onClick={handleConfirm}
+          className={sConfirmIconStyles.className}
+          style={sConfirmIconStyles.style}
+          aria-label={title}
+        />
       )}
     </SAddon>,
   ) as React.ReactElement;
@@ -389,17 +387,14 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
       {hasChildren ? (
         <Children />
       ) : (
-        <Tooltip {...props.$tooltipsProps}>
-          <Tooltip.Trigger
-            tag={(props.icon as any) ?? CloseM}
-            role='button'
-            interactive
-            onClick={handleCancel}
-            className={sCancelIconStyles.className}
-            style={sCancelIconStyles.style}
-          />
-          <Tooltip.Popper p={3}>{title}</Tooltip.Popper>
-        </Tooltip>
+        <ButtonLink
+          use={'secondary'}
+          addonLeft={(props.icon as any) ?? CloseM}
+          onClick={handleCancel}
+          className={sCancelIconStyles.className}
+          style={sCancelIconStyles.style}
+          aria-label={title}
+        />
       )}
     </SAddon>,
   ) as React.ReactElement;
