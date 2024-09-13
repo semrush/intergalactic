@@ -1673,7 +1673,7 @@ importers:
         specifier: 4.33.0
         version: link:../input
       '@semcore/portal':
-        specifier: 3.31.2
+        specifier: 3.32.0
         version: link:../portal
       '@semcore/scroll-area':
         specifier: 5.36.0
