@@ -32,7 +32,7 @@ const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
 
 const enhance = {
   uid: uniqueIDEnhancement(),
-  getI18nText: i18nEnhance(localizedMessages),
+  i18nEnahnce: i18nEnhance(localizedMessages),
 };
 const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
@@ -42,7 +42,12 @@ class CarouselRoot extends Component<
   CarouselProps,
   CarouselContext,
   CarouselState,
-  typeof enhance
+  typeof enhance & {
+    getI18nText: (
+      messageId: string,
+      variables?: { [key: string]: string | number | undefined },
+    ) => string;
+  }
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -391,6 +396,7 @@ class CarouselRoot extends Component<
 
   getIndicatorsProps() {
     const { items } = this.state;
+    const { getI18nText } = this.asProps;
 
     return {
       items: items.map((item, key) => ({
@@ -399,16 +405,19 @@ class CarouselRoot extends Component<
         key,
       })),
       role: 'tablist',
+      'aria-label': getI18nText('slides'),
     };
   }
 
-  getIndicatorProps(_, index: number) {
+  getIndicatorProps(_: any, index: number) {
     const isCurrent = this.isSelected(index);
+    const { getI18nText } = this.asProps;
 
     return {
       role: 'tab',
       'aria-selected': isCurrent,
       'aria-controls': `igc-${this.asProps.uid}-carousel-item-${index}`,
+      'aria-label': getI18nText('slide', { slideNumber: index + 1 }),
     };
   }
 
@@ -533,16 +542,14 @@ class CarouselRoot extends Component<
         onTouchEnd={this.handlerTouchEnd}
         ref={this.refCarousel}
         id={`igc-${uid}-carousel`}
+        aria-roledescription={ariaRoledescription}
       >
         {Controls.length === 0 ? (
           <>
             <Flex>
               <Carousel.Prev />
               <SContentBox>
-                <Carousel.Container
-                  aria-roledescription={ariaRoledescription}
-                  aria-label={ariaLabel}
-                >
+                <Carousel.Container aria-label={ariaLabel}>
                   <Children />
                 </Carousel.Container>
               </SContentBox>
