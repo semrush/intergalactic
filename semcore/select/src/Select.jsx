@@ -54,29 +54,6 @@ class RootSelect extends AbstractDropdown {
 
   role = 'select';
 
-  componentDidUpdate(prevProps) {
-    const { visible } = this.asProps;
-    const visibilityChanged = visible !== prevProps.visible;
-
-    super.componentDidUpdate(prevProps);
-
-    if (visibilityChanged && visible) {
-      const options = this.menuRef.current?.querySelectorAll('[role="option"]');
-      const selected = this.menuRef.current?.querySelector('[aria-selected="true"]');
-
-      if (selected && options) {
-        this.scrollToNode(selected);
-
-        for (let i = 0; i < options.length; i++) {
-          if (options[i] === selected) {
-            this.handlers.highlightedIndex(i);
-            break;
-          }
-        }
-      }
-    }
-  }
-
   itemRef(props, index, node) {
     super.itemRef(props, index, node);
 
@@ -91,6 +68,25 @@ class RootSelect extends AbstractDropdown {
   uncontrolledProps() {
     return {
       ...super.uncontrolledProps(),
+      visible: [null, (visible) => {
+        if (visible === true) {
+          setTimeout(() => {
+            const options = this.menuRef.current?.querySelectorAll('[role="option"]');
+            const selected = this.menuRef.current?.querySelector('[aria-selected="true"]');
+
+            if (selected && options) {
+              this.scrollToNode(selected);
+
+              for (let i = 0; i < options.length; i++) {
+                if (options[i] === selected) {
+                  this.handlers.highlightedIndex(i);
+                  break;
+                }
+              }
+            }
+          }, 0);
+        }
+      }],
       value: null,
     };
   }
@@ -110,10 +106,11 @@ class RootSelect extends AbstractDropdown {
       highlightedIndex,
       uid,
       Children,
+      children: hasChildren,
     } = this.asProps;
 
-    const hasMenu = isAdvanceMode(Children, [Select.Menu.displayName]);
-    const ariaControls = hasMenu ? `igc-${uid}-list` : `igc-${uid}-popper`;
+    const isMenu = isAdvanceMode(Children, [Select.Menu.displayName], true) || !hasChildren;
+    const ariaControls = isMenu ? `igc-${uid}-list` : `igc-${uid}-popper`;
 
     return {
       ...super.getTriggerProps(),
@@ -123,10 +120,10 @@ class RootSelect extends AbstractDropdown {
         this.handleArrowKeyDown.bind(this),
       ),
       'aria-controls': visible ? ariaControls : undefined,
-      'aria-haspopup': hasMenu ? 'listbox' : 'dialog',
+      'aria-haspopup': isMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
       'aria-activedescendant':
-        hasMenu && visible && highlightedIndex !== null
+        isMenu && visible && highlightedIndex !== null
           ? `igc-${uid}-option-${highlightedIndex}`
           : undefined,
       empty: isEmptyValue(value),
@@ -165,7 +162,7 @@ class RootSelect extends AbstractDropdown {
   }
 
   getOptionProps(props, index) {
-    const { value, highlightedIndex, focusSourceRef } = this.asProps;
+    const { value, highlightedIndex, focusSourceRef, size = 'm' } = this.asProps;
     const highlighted = index === highlightedIndex && focusSourceRef.current === 'keyboard';
     const selected = props.selected ?? isSelectedOption(value, props.value);
 
@@ -178,6 +175,7 @@ class RootSelect extends AbstractDropdown {
       role: 'option',
       onClick: this.bindHandlerOptionClick(props.value, index),
       ref: (node) => this.itemRef(props, index, node),
+      size,
     };
   }
 
@@ -224,8 +222,6 @@ class RootSelect extends AbstractDropdown {
       }
     }
     this.handlers.value(newValue, e);
-    this.handlers.highlightedIndex(index);
-    this.triggerRef.current?.focus();
     if (!multiselect) {
       this.handlers.visible(false);
     }
@@ -250,6 +246,8 @@ class RootSelect extends AbstractDropdown {
       "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
       other['data-ui-name'] || Select.displayName,
     );
+
+    this.itemProps = [];
 
     if (options) {
       return (

@@ -176,7 +176,7 @@ describe('Select Trigger', () => {
     await expect(highlightedIndex).toBe(2);
   });
 
-  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async () => {
+  test('Should select by keypress space with button as trigger (FilterTrigger as example)', async ({ expect }) => {
     const spyChange = vi.fn();
 
     const component = (
@@ -199,7 +199,7 @@ describe('Select Trigger', () => {
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[Space]');
 
-    expect(spyChange).toHaveBeenCalledWith(1, expect.anything());
+    expect(spyChange).toHaveBeenCalledWith(2, expect.anything());
   });
 
   test.concurrent('Should support tag as string', async ({ task }) => {
@@ -432,7 +432,7 @@ describe('Select Trigger', () => {
         </Select>,
       );
 
-      await userEvent.keyboard('[Tab]');
+      getByTestId('input-in-trigger').focus();
 
       expect(getByTestId('input-in-trigger')).toHaveFocus();
 

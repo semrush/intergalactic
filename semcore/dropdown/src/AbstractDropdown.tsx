@@ -75,6 +75,10 @@ export abstract class AbstractDropdown extends Component<
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
+    const { interaction } = this.asProps;
+
+    if (interaction === 'none') return false;
+
     e.preventDefault();
     this.handlers.visible(true);
 
@@ -316,6 +320,10 @@ export abstract class AbstractDropdown extends Component<
         }
 
         break;
+      default:
+        this.handlers.highlightedIndex(null);
+        // @ts-ignore
+        this.highlightedItemRef.current = null;
     }
 
     if (amount !== null) {

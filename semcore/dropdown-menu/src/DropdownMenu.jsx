@@ -155,6 +155,8 @@ class DropdownMenuRoot extends AbstractDropdown {
   render() {
     const { Children, selectedIndex, interaction, timeout } = this.asProps;
 
+    this.itemProps = [];
+
     return (
       <selectedIndexContext.Provider value={selectedIndex}>
         <Root
