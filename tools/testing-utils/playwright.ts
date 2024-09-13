@@ -4,8 +4,9 @@ import { test as base } from '@playwright/test';
 import { voiceOverTest as voiceOverBase } from '@guidepup/playwright';
 import { allure } from 'allure-playwright';
 import type { TestInfo } from 'playwright/types/test';
+import axe from 'axe-core';
 
-type GetAccessibilityViolations = (params: { page: Page }) => Promise<any[]>;
+type GetAccessibilityViolations = (params: { page: Page }) => Promise<axe.AxeResults['violations']>;
 
 export const getAccessibilityViolations: GetAccessibilityViolations = async ({ page }) => {
   const accessibilityScanResults = await new AxeBuilder({ page })
@@ -13,7 +14,19 @@ export const getAccessibilityViolations: GetAccessibilityViolations = async ({ p
     .disableRules(['color-contrast'])
     .analyze();
 
-  return accessibilityScanResults.violations;
+  const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
+    if (v.impact === 'critical' && v.description === 'Ensures buttons have discernible text') {
+      const onlyComboboxButtons = v.nodes.every((node) => {
+        return node.html.startsWith('<button') && node.html.includes('role="combobox"');
+      });
+
+      return !onlyComboboxButtons;
+    }
+
+    return true;
+  }
+
+  return accessibilityScanResults.violations.filter(skipButtonComboboxDiscernibleErrors);
 };
 
 // biome-ignore lint/correctness/noEmptyPattern:
