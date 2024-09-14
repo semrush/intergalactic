@@ -52,7 +52,7 @@ class RootSelect extends AbstractDropdown {
     timeout: props.timeout ?? 0,
   });
 
-  role = 'select';
+  role = 'listbox';
 
   itemRef(props, index, node) {
     super.itemRef(props, index, node);

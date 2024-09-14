@@ -37,7 +37,7 @@ export abstract class AbstractDropdown extends Component<
   {},
   Enhances<typeof enhance>
 > {
-  protected abstract role: 'menu' | 'select';
+  protected abstract role: 'menu' | 'listbox';
 
   popperRef = React.createRef<HTMLElement>();
   triggerRef = React.createRef<HTMLElement>();
@@ -64,7 +64,7 @@ export abstract class AbstractDropdown extends Component<
   }
 
   get childRole() {
-    if (this.role === 'select') {
+    if (this.role === 'listbox') {
       return 'option';
     }
 
@@ -325,7 +325,7 @@ export abstract class AbstractDropdown extends Component<
 
     if (amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
-      if (newHighlightedIndex !== undefined && this.role !== 'select') {
+      if (newHighlightedIndex !== undefined && this.role !== 'listbox') {
         this.itemRefs[newHighlightedIndex]?.focus();
       }
       this.handlers.highlightedIndex(newHighlightedIndex, e);
