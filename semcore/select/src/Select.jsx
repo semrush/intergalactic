@@ -227,6 +227,7 @@ class RootSelect extends AbstractDropdown {
     this.handlers.value(newValue, e);
     if (!multiselect) {
       this.handlers.visible(false);
+      e.preventDefault();
     }
   };
 

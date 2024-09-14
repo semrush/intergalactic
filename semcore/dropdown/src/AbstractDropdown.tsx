@@ -37,7 +37,7 @@ export abstract class AbstractDropdown extends Component<
   {},
   Enhances<typeof enhance>
 > {
-  protected abstract role: 'menu' | 'listbox' | 'select';
+  protected abstract role: 'menu' | 'select';
 
   popperRef = React.createRef<HTMLElement>();
   triggerRef = React.createRef<HTMLElement>();
@@ -66,9 +66,6 @@ export abstract class AbstractDropdown extends Component<
   get childRole() {
     if (this.role === 'select') {
       return 'option';
-    }
-    if (this.role === 'listbox') {
-      return 'listitem';
     }
 
     return 'menuitem';
@@ -115,7 +112,7 @@ export abstract class AbstractDropdown extends Component<
       tabIndex: -1,
       ref: this.menuRef,
       id: `igc-${uid}-list`,
-      role: this.role === 'menu' ? 'menu' : 'listbox',
+      role: this.role,
       'aria-labelledby': triggerId,
     };
   }

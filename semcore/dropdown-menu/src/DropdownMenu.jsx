@@ -365,14 +365,18 @@ function ItemHint({ styles }) {
  */
 function Hint(props) {
   const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(<SDropdownMenuItemContainer render={Flex} variant='hint' />);
+  return sstyled(props.styles)(
+    <SDropdownMenuItemContainer render={Dropdown.Item} variant='hint' />,
+  );
 }
 /**
  * @deprecated Use Group with title prop
  */
 function Title(props) {
   const SDropdownMenuItemContainer = Root;
-  return sstyled(props.styles)(<SDropdownMenuItemContainer render={Flex} variant='title' />);
+  return sstyled(props.styles)(
+    <SDropdownMenuItemContainer render={Dropdown.Item} variant='title' />,
+  );
 }
 
 /**
