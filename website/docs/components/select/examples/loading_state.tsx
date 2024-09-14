@@ -20,7 +20,7 @@ const Demo = () => (
       </Text>
       <div>
         <Select mt={2} mr='auto' id='loading-select-no-chevron'>
-          <Select.Trigger chevron={false} placeholder={<Spin size='xs' mx={4} />} />
+          <Select.Trigger chevron={false} placeholder={<Spin size='xs' mx={4} />} tabIndex={-1} />
         </Select>
       </div>
     </Flex>
