@@ -4,7 +4,7 @@ a11y: AA
 tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
-## Considerations for designers and developers
+## Considerations for designers & developers
 
 - Counter text should be clear and concise.
 - If you're using `Counter` on a colored or dark background, make sure that [it has enough contrast against the background](/core-principles/a11y/a11y-design#color_and_contrast).

@@ -30,7 +30,7 @@ const Demo = () => (
         key={url}
         src={url}
         w={imageWidth}
-        aria-label={`Zoomable image with ${altTexts[index]}`}
+        aria-label={`Open in fullscreen ${altTexts[index]}`}
       />
     ))}
   </Carousel>
