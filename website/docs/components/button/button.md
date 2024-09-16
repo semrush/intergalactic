@@ -11,13 +11,28 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Button from 'intergalactic/button';
+import Button, { ButtonLink } from 'intergalactic/button';
 import CheckM from 'intergalactic/icon/Check/m';
-
+import CheckL from 'intergalactic/icon/Check/l';
 import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
+import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
 
-const SIZES = ['m', 'l'];
-const USE = ['primary', 'secondary', 'tertiary'];
+const COMPONENTS = [Button, ButtonLink];
+const SIZES_BUTTON = ['m', 'l'];
+const SIZES_LINK = [
+  { value: '100', name: '100 = 12px' },
+  { value: '200', name: '200 = 14px' },
+  { value: '300', name: '300 = 16px' },
+  { value: '400', name: '400 = 19px' },
+  { value: '500', name: '500 = 25px' },
+  { value: '600', name: '600 = 33px' },
+  { value: '700', name: '700 = 36px' },
+  { value: '800', name: '800 = 48px' },
+];
+const USE = {
+  Button: ['primary', 'secondary', 'tertiary'],
+  ButtonLink: ['primary', 'secondary'],
+};
 const THEME = {
   primary: ['info', 'success', 'warning', 'danger', 'invert'],
   secondary: ['info', 'muted', 'invert'],
@@ -27,33 +42,65 @@ const THEME = {
 const Preview = (preview) => {
   const { bool, select, radio, text } = preview('Button');
 
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: SIZES,
+  const component = select({
+    key: 'component',
+    defaultValue: 'Button',
+    label: 'Component',
+    options: COMPONENTS.map((component) => ({
+      name: component.displayName,
+      value: component.displayName,
+    })),
   });
+
+  const sizeButton = component === 'Button'
+  ? radio({
+      key: 'sizeButton',
+      defaultValue: 'm',
+      label: 'Size',
+      options: SIZES_BUTTON,
+    })
+  : null;
+
+  const sizeLink = component === 'ButtonLink'
+  ? select({
+      key: 'sizeLink',
+      defaultValue: '300',
+      label: 'Size',
+      options: SIZES_LINK,
+    })
+  : null;
 
   const use = select({
     key: 'use',
     defaultValue: 'secondary',
     label: 'Use',
-    options: USE.map((value) => ({
+    options: USE[component].map((value) => ({
       name: value,
       value,
     })),
   });
 
-  const theme = select({
-    key: 'theme',
-    placeholder: 'Select theme',
-    // defaultValue: THEME["secondary"][1],
-    label: 'Theme',
-    options: THEME[use].map((value) => ({
-      name: value,
-      value,
-    })),
-  });
+  const theme = component === 'Button'
+  ? select({
+      key: 'theme',
+      placeholder: 'Select theme',
+      // defaultValue: THEME["secondary"][1],
+      label: 'Theme',
+      options: THEME[use].map((value) => ({
+        name: value,
+        value,
+      })),
+    })
+  : null;
+
+  const color = component === 'ButtonLink'
+  ? text({
+      key: 'color',
+      label: 'Color',
+      defaultValue: '',
+      placeholder: '',
+    })
+  : null;
 
   const active = bool({
     key: 'active',
@@ -67,11 +114,13 @@ const Preview = (preview) => {
     label: 'Disabled',
   });
 
-  const loading = bool({
-    key: 'loading',
-    defaultValue: false,
-    label: 'Loading',
-  });
+  const loading = component === 'Button'
+  ? bool({
+      key: 'loading',
+      defaultValue: false,
+      label: 'Loading',
+    })
+  : null;
 
   const beforeIcon = bool({
     key: 'before',
@@ -93,10 +142,14 @@ const Preview = (preview) => {
   const beforeIconMap = {
     l: <CheckM />,
     m: <CheckM />,
+    false: <CheckM />,
+    true: <CheckL />,
   };
   const afterIconMap = {
     l: <ArrowRightM />,
     m: <ArrowRightM />,
+    false: <ArrowRightM />,
+    true: <ArrowRightL />,
   };
 
   const renderIcon = (position, size) => {
@@ -111,18 +164,30 @@ const Preview = (preview) => {
   };
 
   return (
-    <Button
-      use={use}
-      theme={theme}
-      size={size}
-      loading={loading}
-      disabled={disabled || loading}
-      active={active}
-    >
-      {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', size)}</Button.Addon>}
-      {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
-      {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', size)}</Button.Addon>}
-    </Button>
+    component === 'Button'
+    ? <Button
+        use={use}
+        theme={theme}
+        size={sizeButton}
+        loading={loading}
+        disabled={disabled || loading}
+        active={active}
+      >
+        {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', sizeButton)}</Button.Addon>}
+        {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
+        {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', sizeButton)}</Button.Addon>}
+      </Button>
+    : <ButtonLink
+        use={use}
+        size={sizeLink}
+        color={color}
+        disabled={disabled}
+        active={active}
+      >
+        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (parseInt(sizeLink, 10) > 500) )}</ButtonLink.Addon>}
+        {(beforeIcon || afterIcon) && child ? <ButtonLink.Text>{child}</ButtonLink.Text> : child}
+        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (parseInt(sizeLink, 10) > 500) )}</ButtonLink.Addon>}
+      </ButtonLink>
   );
 };
 
