@@ -302,6 +302,7 @@ function Trigger({
       {addonTextChildren(
         Children,
         Tag.Text || ButtonTrigger.Text,
+        Tag.Value || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
         true,
       )}
