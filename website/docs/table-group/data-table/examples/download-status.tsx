@@ -20,8 +20,13 @@ const Demo = () => {
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
-      <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
-        <DataTable.Body />
+      <SpinContainer
+        loading={loading}
+        style={{ overflow: 'initial' }}
+        use:aria-busy={undefined}
+        inert={loading ? '' : undefined}
+      >
+        <DataTable.Body aria-busy={loading} />
         <SpinContainer.Overlay />
       </SpinContainer>
     </DataTable>
