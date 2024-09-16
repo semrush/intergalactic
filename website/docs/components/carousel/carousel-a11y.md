@@ -13,8 +13,8 @@ Table: Keyboard support
 | Key                         | Function                                                                                                                                                                           |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`, `Shift + Tab`        | Moves focus through interactive elements in the carousel.                                                                                                                          |
-| `Enter`                     | Opens slide in modal window if `zoom` property is set to `true`.                                                                                                                   |
-| `Left Arrow`, `Right Arrow` | Activates the previous or next tab in the slide indicators. If the last tab is active, activates the first tab. Shows the slide associated with the activated tab. |
+| `Enter`, `Space`            | Opens slide in modal window if `zoom` property is set to `true`.                                                                                                                   |
+| `Left Arrow`, `Right Arrow` | Moves focus to the previous or next tab in the slide indicators. If focus is on the last tab, moves focus to the first tab. Shows the slide associated with the newly focused tab. |
 
 ### Roles and attributes
 
@@ -35,9 +35,9 @@ Table: Roles and attributes
 | `Carousel.Item`       | `role="tabpanel"`                             | Indicates that the element acts as a tabpanel, controlled by its linked tab.                                                                                                         |
 |                       | `aria-roledescription="slide"`                | Indicates the element serves as a tabpanel that is controlled by its associated tab element.                                                                                         |
 |                       | `aria-current="active"`                       | Indicates that this element represents the current item within a container or set of related elements.                                                                               |
-| `Carousel.Prev`       | `aria-controls="carouselID"`                  | Refers to the tabpanel element associated with the previous tab.                                                                                                                              |
+| `Carousel.Prev`       | `aria-controls="carouselID"`                  | Refers to the tabpanel element associated with the previous tab.                                                                                                                     |
 |                       | `aria-label="Previous slide"`                 | Defines a label for the button that opens previous list item.                                                                                                                        |
-| `Carousel.Next`       | `aria-controls="carouselID"`                  | Refers to the tabpanel element associated with the next tab.                                                                                                                              |
+| `Carousel.Next`       | `aria-controls="carouselID"`                  | Refers to the tabpanel element associated with the next tab.                                                                                                                         |
 |                       | `aria-label="Next slide"`                     | Defines a label for the button that opens next list item.                                                                                                                            |  |
 | `Modal.Close`         | `aria-label="Close"`                          | Provides an accessible name for the **Close** button inside the Modal window.                                                                                                        |
 
