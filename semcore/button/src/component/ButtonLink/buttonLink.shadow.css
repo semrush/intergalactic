@@ -1,0 +1,160 @@
+SButton {
+  display: inline-block;
+  font-family: inherit;
+  font-size: var(--intergalactic-fs-200, 14px);
+  color: var(--intergalactic-text-link, #006dca);
+  line-height: normal;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  background: none;
+  transition: color 0.15s ease-in-out;
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &[active],
+  &:hover,
+  &:active {
+    color: var(--intergalactic-text-link-hover-active, #044792);
+
+    & SText {
+      border-color: currentColor;
+    }
+  }
+
+  &[enableVisited]:visited,
+  &[enableVisited]:visited:hover {
+    color: var(--intergalactic-text-link-visited, #8649e1);
+  }
+
+  SText {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    transition: border-bottom-color 0.15s ease-in-out;
+  }
+}
+
+SButton[keyboardFocused] {
+  outline-color: var(--intergalactic-keyboard-focus-outline, rgba(0, 143, 248, 0.5));
+  outline-style: solid;
+  outline-width: 3px;
+}
+
+SButton[visually-disabled] {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  /* Disable link interactions */
+  pointer-events: none;
+}
+
+SButton[use='secondary'] {
+  color: var(--intergalactic-text-hint, #6c6e79);
+
+  &[active],
+  &:active,
+  &:hover {
+    color: var(--intergalactic-text-hint-hover-active, #484a54);
+  }
+
+  SText {
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: currentColor;
+  }
+}
+
+SAddon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--intergalactic-spacing-05x, 2px);
+  vertical-align: middle;
+}
+
+SButton SAddon {
+  &:not(:only-child):first-child {
+    margin-right: var(--intergalactic-spacing-1x, 4px);
+  }
+
+  &:not(:only-child):last-child {
+    margin-left: var(--intergalactic-spacing-1x, 4px);
+  }
+}
+
+SButton[text-color] {
+  color: var(--text-color);
+
+  &[active],
+  &:hover,
+  &:active {
+    color: var(--text-color);
+    filter: brightness(0.8);
+  }
+}
+
+SButton[size='100'] {
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
+}
+
+SButton[size='200'] {
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+}
+
+SButton[size='300'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+}
+
+SButton[size='400'] {
+  font-size: var(--intergalactic-fs-400, 20px);
+  line-height: var(--intergalactic-lh-400, 120%);
+}
+
+SButton[size='500'] {
+  font-size: var(--intergalactic-fs-500, 24px);
+  line-height: var(--intergalactic-lh-500, 117%);
+}
+
+SButton[size='600'] {
+  font-size: var(--intergalactic-fs-600, 32px);
+  line-height: var(--intergalactic-lh-600, 125%);
+}
+
+SButton[size='700'] {
+  font-size: var(--intergalactic-fs-700, 36px);
+  line-height: var(--intergalactic-lh-700, 110%);
+}
+
+SButton[size='800'] {
+  font-size: var(--intergalactic-fs-800, 48px);
+  line-height: var(--intergalactic-lh-800, 117%);
+}
+
+@media (prefers-reduced-motion) {
+  SButton {
+    transition: none;
+  }
+
+  SText {
+    transition: none;
+  }
+}

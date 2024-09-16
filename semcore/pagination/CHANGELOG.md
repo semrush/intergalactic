@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.0] - 2024-08-29
+
+### Changed
+
+- Render total pages button with `ButtonLink` component.
+
 ## [4.42.5] - 2024-09-06
 
 ### Changed
