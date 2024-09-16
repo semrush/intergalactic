@@ -10,15 +10,15 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 
 Table: Keyboard support
 
-| Key                         | Function                                                                                                                                                                           |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`, `Shift + Tab`        | Moves focus through interactive elements in the carousel.                                                                                                                          |
-| `Enter`, `Space`            | Opens slide in modal window if `zoom` property is set to `true`.                                                                                                                   |
-| `Left Arrow`, `Right Arrow` | Moves focus to the previous or next tab in the slide indicators. If focus is on the last tab, moves focus to the first tab. Shows the slide associated with the newly focused tab. |
+| Key                         | Function                                                                                                                                                           |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Tab`, `Shift + Tab`        | Moves focus through interactive elements in the carousel.                                                                                                          |
+| `Enter`, `Space`            | Opens slide in modal window if `zoom` property is set to `true`.                                                                                                   |
+| `Left Arrow`, `Right Arrow` | Activates the previous or next tab in the slide indicators. If the last tab is active, activates the first tab. Shows the slide associated with the activated tab. |
 
 ### Roles and attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
@@ -41,18 +41,18 @@ Table: Roles and attributes
 |                       | `aria-label="Next slide"`                     | Defines a label for the button that opens next list item.                                                                                                                            |  |
 | `Modal.Close`         | `aria-label="Close"`                          | Provides an accessible name for the **Close** button inside the Modal window.                                                                                                        |
 
-<!-- | `Carousel.Item`                                     | `aria-label="X of Y"`                         | Provides an accessible name for the tab (slide) that indicates what position the slide is in the set of slides.                                                                      | -->
-
 ## Considerations for designers & developers
 
-You can add a specific `aria-label` to the button that wraps the slide when the zoom property is set to true. In our examples, the default label is "Open in fullscreen" ([refer to the examples](/components/carousel/carousel-code)).
+1. If you're using the Carousel to display images, make sure to add alt text to each image so assistive technologies can announce the slides properly.
+2. If you're using the Carousel to display a set of cards, don't forget to associate the items with the cards using `aria-labelledby`.
+3. You can add a specific `aria-label` to the button that wraps the slide when the `zoom` property is set to `true`. In our examples, the default label is "Open in fullscreen" ([refer to the examples](/components/carousel/carousel-code)).
 
 ## Auto-play
 
-We do not recommend adding auto-play to the Carousel component at all.
+We don't recommend adding auto-play to the Carousel component at all.
 
 ::: tip
-However, if for some reason you decide to add it, please remember to add a pause button and ensure that it is keyboard accessible and has an appropriate `aria-label` if it won’t be visually present.
+If you decide to add it, make sure to include a pause button that's keyboard accessible and has an appropriate `aria-label` if it's not visible.
 :::
 
 ## Resources
@@ -61,6 +61,6 @@ However, if for some reason you decide to add it, please remember to add a pause
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
 
 <!--@include: ./carousel-a11y-report.md-->
