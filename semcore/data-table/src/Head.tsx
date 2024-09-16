@@ -10,6 +10,7 @@ import { ColIndex, Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 export const SORT_ICON_WIDTH = 20;
 
@@ -43,6 +44,7 @@ type AsProps = {
   uid?: string;
   withScrollBar?: boolean;
   animationsDisabled?: boolean;
+  getI18nText?: (str: string) => string;
 };
 
 class Head extends Component<AsProps> {
@@ -63,6 +65,11 @@ class Head extends Component<AsProps> {
       useForRecalculation: boolean;
     }
   >();
+
+  sortableColumnDescribeId() {
+    const { uid } = this.asProps;
+    return `${uid}-column-sortable-describer`;
+  }
 
   handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.currentTarget === this.lockedCell[0]) {
@@ -337,6 +344,9 @@ class Head extends Component<AsProps> {
         aria-sort={ariaSortValue}
         aria-colindex={index + 1}
         onFocus={this.onFocusCell}
+        aria-describedby={
+          column.sortable && !column.active ? this.sortableColumnDescribeId() : undefined
+        }
       >
         {isGroup ? (
           <>
@@ -378,6 +388,7 @@ class Head extends Component<AsProps> {
       sticky,
       withScrollBar,
       animationsDisabled,
+      getI18nText,
     } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
@@ -414,6 +425,9 @@ class Head extends Component<AsProps> {
           )}
         </ScrollArea>
         {Children.origin}
+        <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
+          {getI18nText?.('sortableColumn')}
+        </ScreenReaderOnly>
       </SHeadWrapper>,
     );
   }

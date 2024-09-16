@@ -26,7 +26,8 @@ import type {
 import Head from './Head';
 import Body from './Body';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import style from './style/data-table.shadow.css';
 import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
@@ -52,6 +53,7 @@ type AsProps = {
   totalRows?: number;
   uniqueKey: string;
   uid?: string;
+  getI18nText?: (str: string) => string;
 };
 
 type HeadAsProps = {
@@ -235,7 +237,7 @@ class RootDefinitionTable extends Component<AsProps> {
   static displayName = 'DefinitionTable';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     use: 'primary',
@@ -400,7 +402,7 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 
   getHeadProps(props: HeadAsProps) {
-    const { use, uid } = this.asProps;
+    const { use, uid, getI18nText } = this.asProps;
     const columnsChildren = this.childrenToColumns(props.children);
 
     this.columns = flattenColumns(columnsChildren);
@@ -411,6 +413,7 @@ class RootDefinitionTable extends Component<AsProps> {
       onResize: this.handlerResize,
       $scrollRef: this.scrollHeadRef,
       uid,
+      getI18nText,
     };
   }
 
