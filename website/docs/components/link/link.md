@@ -11,15 +11,17 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Link from 'intergalactic/link';
 import CheckM from 'intergalactic/icon/Check/m';
+import CheckL from 'intergalactic/icon/Check/l';
 import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
+import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
 
 const SIZE = [
   { value: '100', name: '100 = 12px' },
   { value: '200', name: '200 = 14px' },
   { value: '300', name: '300 = 16px' },
-  { value: '400', name: '400 = 19px' },
-  { value: '500', name: '500 = 25px' },
-  { value: '600', name: '600 = 33px' },
+  { value: '400', name: '400 = 20px' },
+  { value: '500', name: '500 = 24px' },
+  { value: '600', name: '600 = 32px' },
   { value: '700', name: '700 = 36px' },
   { value: '800', name: '800 = 48px' },
 ];
@@ -77,12 +79,12 @@ const Preview = (preview) => {
     label: 'Text',
   });
 
-  const renderIcon = (position) => {
+  const renderIcon = (position, size) => {
     switch (position) {
       case 'before':
-        return <CheckM />;
+        return size < 400 ? <CheckM /> : <CheckL />;
       case 'after':
-        return <ArrowRightM />;
+        return size < 400 ? <ArrowRightM /> : <ArrowRightL />;
       default:
         return false;
     }
@@ -90,9 +92,9 @@ const Preview = (preview) => {
 
   return (
     <Link color={color} size={size} disabled={disabled} active={active} href='#'>
-      {beforeIcon && <Link.Addon>{renderIcon('before')}</Link.Addon>}
+      {beforeIcon && <Link.Addon>{renderIcon('before', size)}</Link.Addon>}
       {beforeIcon || afterIcon ? <Link.Text>{child}</Link.Text> : child}
-      {afterIcon && <Link.Addon>{renderIcon('after')}</Link.Addon>}
+      {afterIcon && <Link.Addon>{renderIcon('after', size)}</Link.Addon>}
     </Link>
   );
 };

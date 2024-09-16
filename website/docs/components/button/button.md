@@ -23,9 +23,9 @@ const SIZES_LINK = [
   { value: '100', name: '100 = 12px' },
   { value: '200', name: '200 = 14px' },
   { value: '300', name: '300 = 16px' },
-  { value: '400', name: '400 = 19px' },
-  { value: '500', name: '500 = 25px' },
-  { value: '600', name: '600 = 33px' },
+  { value: '400', name: '400 = 20px' },
+  { value: '500', name: '500 = 24px' },
+  { value: '600', name: '600 = 32px' },
   { value: '700', name: '700 = 36px' },
   { value: '800', name: '800 = 48px' },
 ];
@@ -184,9 +184,9 @@ const Preview = (preview) => {
         disabled={disabled}
         active={active}
       >
-        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (parseInt(sizeLink, 10) > 500) )}</ButtonLink.Addon>}
+        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
         {(beforeIcon || afterIcon) && child ? <ButtonLink.Text>{child}</ButtonLink.Text> : child}
-        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (parseInt(sizeLink, 10) > 500) )}</ButtonLink.Addon>}
+        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
       </ButtonLink>
   );
 };
