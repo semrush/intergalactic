@@ -2196,6 +2196,9 @@ importers:
       '@semcore/base-trigger':
         specifier: 4.43.1
         version: link:../base-trigger
+      '@semcore/button':
+        specifier: 5.36.0
+        version: link:../button
       '@semcore/checkbox':
         specifier: 7.35.0
         version: link:../checkbox
@@ -13231,7 +13234,6 @@ packages:
 
   /chokidar@2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
-    deprecated: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
     requiresBuild: true
     dependencies:
       anymatch: 2.0.0
