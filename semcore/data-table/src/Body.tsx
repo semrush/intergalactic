@@ -3,7 +3,7 @@ import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
-import { RowData, Column, NestedCells, PropsLayer, Cell, RowIndex, ColIndex } from './types';
+import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
@@ -80,6 +80,7 @@ class Body extends Component<AsProps, {}, State> {
         }
         if (e.key.startsWith('Arrow')) {
           e.stopPropagation();
+          e.preventDefault();
         }
         if (e.key === 'Tab') {
           if (e.target === focusableChildren[0] && e.shiftKey) {

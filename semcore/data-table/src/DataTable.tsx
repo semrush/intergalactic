@@ -645,18 +645,22 @@ class RootDefinitionTable extends Component<AsProps> {
         break;
       }
       case 'ArrowLeft': {
+        e.preventDefault();
         this.changeFocusCell(0, -1);
         break;
       }
       case 'ArrowRight': {
+        e.preventDefault();
         this.changeFocusCell(0, 1);
         break;
       }
       case 'ArrowUp': {
+        e.preventDefault();
         this.changeFocusCell(-1, 0);
         break;
       }
       case 'ArrowDown': {
+        e.preventDefault();
         this.changeFocusCell(1, 0);
         break;
       }
