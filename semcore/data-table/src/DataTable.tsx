@@ -628,7 +628,18 @@ class RootDefinitionTable extends Component<AsProps> {
 
     if (cell && currentCell !== cell) {
       currentCell?.setAttribute('inert', '');
+
+      if (currentCell !== currentHeaderCell) {
+        currentCell?.removeAttribute('aria-describedby');
+      }
+
+      const headerCell = this.cellsMap.get(0)?.get(newCol);
+      const describedBy = headerCell?.getAttribute('aria-describedby');
+
       cell.removeAttribute('inert');
+      if (headerCell !== cell && describedBy) {
+        cell.setAttribute('aria-describedby', describedBy);
+      }
 
       cell?.focus();
 
