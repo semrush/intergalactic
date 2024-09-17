@@ -12,20 +12,20 @@ tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A
 
 ### Types
 
-Our design system offers two table types – [primary](../table-primary/table-primary) and [secondary](../table-secondary/table-secondary).
+Our design system has two table types – [primary](../table-primary/table-primary) and [secondary](../table-secondary/table-secondary).
 
 ### Common styles for table content
 
 Table: Common styles for table content
 
-| Content                     | Styles and tokens                          |
-| --------------------------- | ------------------------------------------ |
-| Text in the header          | Use `--fs-100` and `--lh-100` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
-| The text in the row         | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
-| Secondary text              | Use `--text-secondary` token for color.               |
-| Stand alone icon            | Icon with M size and `--icon-secondary-neutral` token for color.    |
-| The icon next to the text   | Icon with M size and `--icon-secondary-neutral` token for color.   |
-| Header and cell checkbox    | Use [Checkbox](/components/checkbox/checkbox) with M size.  |
+| Content                   | Styles and tokens                                                                                                      |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Text in the header        | Use `--fs-100` and `--lh-100` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
+| The text in the row       | Use `--fs-200` and `--lh-200` tokens for font-size and line-height respectively, and `--text-primary` token for color. |
+| Secondary text            | Use `--text-secondary` token for color.                                                                                |
+| Stand alone icon          | Icon with M size and `--icon-secondary-neutral` token for color.                                                       |
+| The icon next to the text | Icon with M size and `--icon-secondary-neutral` token for color.                                                       |
+| Header and cell checkbox  | Use [Checkbox](/components/checkbox/checkbox) with M size.                                                             |
 
 ## Sorting
 
@@ -67,17 +67,17 @@ Consider using darker icon colors to increase contrast when using colored cell b
 
 Table: Hover styles for different cells
 
-| State                    | Appearance                                   | Styles                                                                                                                                                                          |
-| ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Default, hover           | ![](static/default-hover.png)   | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)`. When you `hover` on, background color changes to `background: var(--table-td-cell-hover)`. |
-| Unread, unread hover     | ![](static/unread-hover.png)     | `background-color: var(--table-td-cell-unread)`. The `hover` state is the same as default cell has.                                                                                                |
-| Selected, selected hover | ![](static/selected-hover.png) | `background-color: var(--table-td-cell-selected)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-selected-hover)`.                                                              |
-| New, new hover           | ![](static/new-hover.png)           | `background-color: var(--table-td-cell-new)`. When you `hover` on, the background color changes to `background-color: background-color: var(--table-td-cell-new-hover)`.                                          |
-| Error, error hover       | ![](static/danger-hover.png)     | `background-color: var(--table-td-cell-critical)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-critical-hover)`.                                                                |
-| Warning, warning hover   | ![](static/warning-hover.png)   | `background-color: var(--table-td-cell-warning)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-warning-hover)`.                                                          |
-| Current, current hover   | ![](static/current-hover.png)   | The row is tagged with tag `You`. The `hover` state is the same as the `default` state.                                                                                         |
-| Loading                  | ![](static/loading-hover.png)   | Change opacity of the elements inside a row to `--disabled-opacity`. Spin has size XS.                                                                                                                           |
-| Limit, limit hover       | ![](static/limit.png)                   | For limiting rows use `--overlay-limitation-secondary` token. The `hover` state is the same as the default state has.                                                |
+| State                    | Appearance                     | Styles                                                                                                                                                                                 |
+| ------------------------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default, hover           | ![](static/default-hover.png)  | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)`. When you `hover` on, background color changes to `background: var(--table-td-cell-hover)`. |
+| Unread, unread hover     | ![](static/unread-hover.png)   | `background-color: var(--table-td-cell-unread)`. The `hover` state is the same as default cell has.                                                                                    |
+| Selected, selected hover | ![](static/selected-hover.png) | `background-color: var(--table-td-cell-selected)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-selected-hover)`.                       |
+| New, new hover           | ![](static/new-hover.png)      | `background-color: var(--table-td-cell-new)`. When you `hover` on, the background color changes to `background-color: background-color: var(--table-td-cell-new-hover)`.               |
+| Error, error hover       | ![](static/danger-hover.png)   | `background-color: var(--table-td-cell-critical)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-critical-hover)`.                       |
+| Warning, warning hover   | ![](static/warning-hover.png)  | `background-color: var(--table-td-cell-warning)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-warning-hover)`.                         |
+| Current, current hover   | ![](static/current-hover.png)  | The row is tagged with tag `You`. The `hover` state is the same as the `default` state.                                                                                                |
+| Loading                  | ![](static/loading-hover.png)  | Change opacity of the elements inside a row to `--disabled-opacity`. Spin has size XS.                                                                                                 |
+| Limit, limit hover       | ![](static/limit.png)          | For limiting rows use `--overlay-limitation-secondary` token. The `hover` state is the same as the default state has.                                                                  |
 
 ### Hover for row-span and col-span
 
@@ -137,7 +137,9 @@ The most common case is scroll bar showed at the bottom of the table. Horizontal
 
 ::: tip
 Having a horizontal scroll in a large table is not a bad practice; it is a familiar experience for most users (similar to Excel). It is wrong when adding columns to a table makes them unnecessarily narrow, without the need for scrolling.
+
 <!-- > [UX tables to work with (Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12) -->
+
 :::
 
 ![](static/scroll-horizontal.png)
