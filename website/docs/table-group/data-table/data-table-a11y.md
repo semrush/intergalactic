@@ -11,7 +11,7 @@ Table: Keyboard support
 
 | Key                                                   | Function                                              |
 | ----------------------------------------------------- | ----------------------------------------------------- |
-| `Tab`                                                 | Moves focus to the next focusable element.            |
+| `Tab`                                                 | Moves focus to the next focusable element outside of the table.            |
 | `Shift + Tab`                                         | Moves focus to the previous focusable element.        |
 | `Left Arrow`, `Right Arrow`, `Up Arrow`, `Down Arrow` | Move the focus across the grid of table cells.        |
 | `Enter`                                               | Activates interactive elements inside the table grid. |
