@@ -42,7 +42,7 @@ Table: Attributes
 
 | Component / element | Attribute                  | Usage                                                        |
 | ------------------- | -------------------------- | ------------------------------------------------------------ |
-| `DataTable`         | `aria-label`               | Defines the accessible name of a table without visible text. |
+| `DataTable`         | `aria-label`               | Defines the accessible name of a table without a visible title. |
 |                     | `aria-labelledby="ID_REF"` | Refers to the heading element that labels the `grid`.        |
 
 ## Considerations for designers
