@@ -27,15 +27,15 @@ Table: Roles and attributes
 | Component         | Attribute                             | Usage                                                                                                                                     |
 | ----------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Wizard`          | `aria-labelledby="IDREF"`             | Defines an accessible name for the dialog. Automatically populated from the title in the `Wizard.Sidebar`. |
-| `Wizard`          | `role="dialog"`, `aria-modal="true"`  | Identifies the element as a modal dialog. Inherited from [Modal](../modal/modal-a11y). |
+|                   | `role="dialog"`, `aria-modal="true"`  | Identifies the element as a modal dialog. Inherited from [Modal](../modal/modal-a11y). |
 | `Modal.Close`     | `aria-label="Close"`                  | Defines an accessible name for the **Close** button. Inherited from [Modal](../modal/modal-a11y). |
 | <nobr>`Wizard.Sidebar > div`</nobr> | `role="tablist"`    | Identifies the element as a set of tabs. |
-| <nobr>`Wizard.Sidebar > div`</nobr> | `aria-orientation="vertical"`  | Indicates that the orientation of the tablist is vertical, helping to use the appropriate keys for navigation. |
+|                   | `aria-orientation="vertical"`  | Indicates that the orientation of the tablist is vertical, helping to use the appropriate keys for navigation. |
 | `Wizard.Stepper`  | `role="tab"`                          | Identifies the element as a tab. |
-| `Wizard.Stepper`  | `aria-selected="true/false"`          | Indicates whether the tab is active. |
-| `Wizard.Stepper`  | `aria-controls="IDREF"`               | Refers to the content area that corresponds to this tab. |
+|                   | `aria-selected="true/false"`          | Indicates whether the tab is active. |
+|                   | `aria-controls="IDREF"`               | Refers to the content area that corresponds to this tab. |
 | `Wizard.Content`  | `role="tabpanel"`                     | Identifies the element as a content area associated with a tab. |
-| `Wizard.Content`  | `aria-labelledby="IDREF"`             | Defines an accessible name for the content area by referring to the corresponding tab. |
+|                   | `aria-labelledby="IDREF"`             | Defines an accessible name for the content area by referring to the corresponding tab. |
 | `Wizard.StepBack` | `aria-label="Back to {Step}"`         | Defines an accessible name for the button that goes to the previous step. |
 | `Wizard.StepNext` | `aria-label="Go to {Step}"`           | Defines an accessible name for the button that goes to the next step. |
 
