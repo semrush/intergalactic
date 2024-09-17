@@ -9,7 +9,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 
 ### Roles and attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
