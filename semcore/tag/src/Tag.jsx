@@ -225,6 +225,10 @@ class RootTagContainer extends Component {
       isAdvanceMode(
         Children,
         [
+          'InputTags.' + Tag.Text.displayName,
+          'InputTags.' + Tag.Addon.displayName,
+          'InputTags.' + Tag.Close.displayName,
+          'InputTags.' + Tag.Circle.displayName,
           TagContainer.Tag.displayName,
           TagContainer.Addon.displayName,
           TagContainer.Close.displayName,
