@@ -21,6 +21,17 @@ import Wizard from 'intergalactic/wizard';
 
 <TypesView type="WizardSidebarProps" :types={...types} />
 
+## Wizard.Stepper
+
+```jsx
+import Wizard from 'intergalactic/wizard';
+<Wizard.Stepper />;
+```
+
+<TypesView type="WizardStepperProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>
+
 ## Wizard.Step
 
 ```jsx
@@ -47,15 +58,3 @@ import Wizard from 'intergalactic/wizard';
 ```
 
 <TypesView type="WizardStepNextProps" :types={...types} />
-
-
-## Wizard.Stepper
-
-```jsx
-import Wizard from 'intergalactic/wizard';
-<Wizard.Stepper />;
-```
-
-<TypesView type="WizardStepperProps" :types={...types} />
-
-<script setup>import { data as types } from '@types.data.ts';</script>

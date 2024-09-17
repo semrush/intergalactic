@@ -58,15 +58,15 @@ const Demo = () => {
           </Wizard.Step>
           <Wizard.Step step={3}>
             <RadioGroup name='radio' value={value} onChange={setValue}>
-              <Radio mr={2}>
+              <Radio mr={2} mb={3}>
                 <Radio.Value value='Manually' />
                 <Radio.Text>Manually</Radio.Text>
               </Radio>
-              <Radio mr={2}>
+              <Radio mr={2} mb={3}>
                 <Radio.Value value='From TXT' />
                 <Radio.Text>From TXT</Radio.Text>
               </Radio>
-              <Radio mr={2}>
+              <Radio mr={2} mb={3}>
                 <Radio.Value value='From SCV' />
                 <Radio.Text>From SCV</Radio.Text>
               </Radio>

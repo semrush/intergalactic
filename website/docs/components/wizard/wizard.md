@@ -10,13 +10,13 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 
 ### When to use wizard
 
-- Use a wizard when dealing with large tasks that cannot be simplified. Breaking them down into steps helps users focus on each part of the task.
+- Use a wizard when dealing with large tasks that can't be simplified. Breaking them down into steps helps users focus on each part of the task.
 - If a task requires a specific sequence of steps to be followed, a wizard ensures users don't miss important parts and make fewer mistakes.
 - Wizards are suitable when a task involves three-five steps. For smaller tasks with just two steps or very large tasks with more than ten steps, consider alternative approaches and components.
 
 ### When don’t use wizard
 
-- Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/feature-popover), [Informers](../../patterns/informer/informer.md), [hint links](../button/button.md#button-with-link-styles), or videos for education.
+- Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/feature-popover), [Informers](../../patterns/informer/informer), [hint links](../button/button#button-with-link-styles), or videos for education.
 - Advanced users may find predefined steps in a wizard restrictive. Consider using wizards for audiences that would benefit from step-by-step guidance.
 
 ## Component composition
@@ -41,7 +41,7 @@ color: var(--intergalactic-text-secondary-invert);
 margin-top: var(--intergalactic-spacing-1x);
 ```
 
-Sub-steps have the following styles:
+Sub-steps should have the following styles:
 
 ```CSS
 color: var(--intergalactic-text-primary-invert);
@@ -81,7 +81,7 @@ Table: Wizard content area styles
 - Users can move between interactive elements within the window using the `Tab` key.
 - The Wizard can be closed with the `Esc` key.
 
-When the Wizard closes, the focus should return to the page. Refer to [Accessibility](./wizard-a11y.md) guidelines.
+When the Wizard closes, the focus should return to the page. Refer to [Accessibility](./wizard-a11y) guidelines.
 
 ## Wizard in Modal
 
@@ -138,13 +138,13 @@ If an error occurs on the backend while submitting a form, display the error mes
 
 ![](static/error-all.png)
 
-### Sizes of controls in the form
+### Sizes of form controls
 
 In the form, use the same sizes for inputs and controls.
 
 ![](static/form-yes-no.png)
 
-### Saving the entered value
+### Saving entered value
 
-If data entered into the form by the user was not sent and the window is closed, save the entered data so that the user doesn't lose it.
+If data entered into the form by the user wasn't sent and the window is closed, save the entered data so that the user doesn't lose it.
 

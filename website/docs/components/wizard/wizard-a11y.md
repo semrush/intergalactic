@@ -10,11 +10,11 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 
 Table: Keyboard support
 
-| Key                               | Function                                       |
-| --------------------------------- | ---------------------------------------------- |
-| `Tab`, <nobr>`Shift + Tab`</nobr> | Moves focus to the next (or previous) focusable element. |
+| Key                               | Function                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------- |
+| `Tab`, <nobr>`Shift + Tab`</nobr> | Moves focus to the next (or previous) focusable element.                        |
 | `Enter`, `Space`                  | If a `Stepper` is focused, activates it and switches to the corresponding step. |
-| `Esc`                             | Closes the wizard.                             |
+| `Esc`                             | Closes the wizard.                                                              |
 
 See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
@@ -41,7 +41,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-Ensure the proper heading hierarchy in the `Wizard`. The `Wizard` starts with an `h2` heading by default, so each step should start with an `h3` heading, and so on. Refer to the [example](./wizard-code.md#basic-example) for details.
+Ensure the proper heading hierarchy in the `Wizard`. The `Wizard` starts with an `h2` heading by default, so each step should start with an `h3` heading, and so on. Refer to the [example](./wizard-code#basic-example) for details.
 
 ## Resources
 

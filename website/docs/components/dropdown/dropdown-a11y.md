@@ -43,7 +43,7 @@ Table: Recommended roles and attributes
 
 | Component            | Attribute                  | Usage                                                                  |
 | -------------------- | -------------------------- | ---------------------------------------------------------------------- |
-| `Dropdown.Popper`    | `aria-label` or `aria-labelledby` | Defines an accessible name for the dropdown popper. We recommend using `aria-labelledby` connected to the dropdown trigger, as shown in the [example](./dropdown-code.md#basic-usage). |
+| `Dropdown.Popper`    | `aria-label` or `aria-labelledby` | Defines an accessible name for the dropdown popper. We recommend using `aria-labelledby` connected to the dropdown trigger, as shown in the [example](./dropdown-code#basic-usage). |
 
 ## Other recommendations
 
