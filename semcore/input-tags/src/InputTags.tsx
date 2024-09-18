@@ -9,8 +9,13 @@ import createComponent, {
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps } from '@semcore/tag';
+import Tag, { TagProps, TagContainer } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import Portal from '@semcore/portal';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
 
@@ -42,6 +47,7 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
      * @default [',', ';', '|', 'Enter', 'Tab']
      * */
     delimiters?: string[];
+    locale?: string;
   };
 
 /** @deprecated */
@@ -61,11 +67,13 @@ export type InputTagsContext = InputTagsProps & {
 class InputTags extends Component<IInputTagsProps> {
   static displayName = 'InputTags';
   static style = style;
-
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
     defaultValue: '',
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -169,16 +177,23 @@ class InputTags extends Component<IInputTagsProps> {
     return {
       size: this.asProps.size,
       onClick: this.bindHandlerTagClick(editable),
+      interactive: editable,
       ref: (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
       },
+    };
+  }
+  getTagTextProps(_: any, index: number) {
+    return {
+      uid: `${this.asProps.uid}-${index}`,
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
-    const SListAriaWrapper = 'div';
+    const SListAriaWrapper = 'ul';
 
     return sstyled(styles)(
       <SInputTags
@@ -225,7 +240,6 @@ class Value extends Component<IInputTagsValueProps> {
     /* for display cursor */
     let magicOffset = 2;
     if (placeholder && (value === undefined || value === '')) {
-      // @ts-ignore
       spacerNode['innerText'] = placeholder;
       /* for [placeholder] {
           text-overflow: ellipsis;
@@ -252,32 +266,57 @@ class Value extends Component<IInputTagsValueProps> {
   }
 }
 
-function InputTag(props: any) {
+function InputTagContainer(props: any) {
   const STag = Root;
 
-  const onKeyDown = (event: React.KeyboardEvent) => {
-    if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault();
-      props.onClick(event);
+  const onKeyDown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (props.onClick && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        props.onClick(event);
 
-      return false;
-    }
-  };
+        return false;
+      }
+    },
+    [props.onClick],
+  );
+  const interactive = props.editable || props.onClick;
 
   return sstyled(props.styles)(
-    <STag data-value={props.value} render={Tag} onKeyDown={onKeyDown} />,
+    <STag
+      data-value={props.value}
+      render={TagContainer}
+      tag='li'
+      onKeyDown={onKeyDown}
+      interactive={interactive}
+    />,
+  );
+}
+function InputTagContainerTag(props: any) {
+  const STag = Root;
+  const { getI18nText } = props;
+
+  return sstyled(props.styles)(
+    <>
+      <Portal>
+        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+          {getI18nText('pressEnterToEdit')}
+        </ScreenReaderOnly>
+      </Portal>
+      <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
+    </>,
   );
 }
 
 export default createComponent(InputTags, {
   Value,
   Tag: [
-    InputTag,
+    InputTagContainer,
     {
-      Text: Tag.Text,
-      Close: Tag.Close,
-      Addon: Tag.Addon,
-      Circle: Tag.Circle,
+      Text: InputTagContainerTag,
+      Close: TagContainer.Close,
+      Addon: TagContainer.Addon,
+      Circle: TagContainer.Circle,
     },
   ],
 }) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
