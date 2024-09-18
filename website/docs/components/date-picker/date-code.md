@@ -88,9 +88,9 @@ Date ranges may be customized or switched off at all, by transferring `periods={
 
 :::
 
-## Week picker made from DateRangePicker
+## Week picker
 
-You can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode.
+You can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode. For example, you can create the WeekPeaker using DateRangePicker.
 
 ::: sandbox
 
