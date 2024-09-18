@@ -13,7 +13,7 @@ import {
   Title,
   Trigger as ButtonTrigger,
   InputTrigger,
-} from './components';
+} from './components/index';
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 import { formatDDMMYY } from './utils/formatDate';

@@ -4,6 +4,7 @@ import { js, jsx, ts, tsx } from '@ast-grep/napi';
 import { log } from './logger';
 
 type PathsToPatchImports = Record<string, number>;
+const handledFiles = new Set<string>();
 
 const intgDir = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
@@ -84,9 +85,9 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
           },
         });
 
-        if (nodesES.length > 0) {
-          pathsToPatchImports[resolvedPath] = nodesES.length;
-        }
+        // if (nodesES.length > 0) {
+        pathsToPatchImports[resolvedPath] = nodesES.length;
+        // }
 
         if (nodesCJS.length > 0) {
           pathsToPatchImports[resolvedPath] = pathsToPatchImports[resolvedPath]
@@ -106,10 +107,16 @@ export async function getImportPaths(baseDir: string): Promise<PathsToPatchImpor
   return pathsToPatchImports;
 }
 
-export async function replaceImports(baseDir: string): Promise<void> {
+export async function replaceImports(
+  baseDir: string,
+  originalPackageData: { main?: string },
+): Promise<void> {
+  const mainIsCJs = originalPackageData.main?.includes('/cjs/');
   const packageData = await fs.readJSON(path.resolve(intgDir, 'package.json'), 'utf8');
   const newName = packageData.name;
-  const regexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"];/g);
+  const relativeRegexpEs = new RegExp(/from ['|"]\.\/([^.'"]*)()['|"];/g);
+  const shallowRegexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}([^/\n]*)(?<!\/table)['|"];/g);
+  const deepRegexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"];/g);
   const regexpCJS = new RegExp(/require\(['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"]\)/g);
 
   const pathsToPatchImports: PathsToPatchImports = {};
@@ -118,15 +125,29 @@ export async function replaceImports(baseDir: string): Promise<void> {
 
   await Promise.all(
     Object.entries(pathsToPatchImports).map(async ([pathToFile, count]) => {
-      const scriptData = await fs.readFile(pathToFile, 'utf8');
+      const newPathToFile =
+        pathToFile.endsWith('.js') && !pathToFile.includes('/cjs/') && mainIsCJs
+          ? pathToFile.replace(/\.js$/, '.mjs')
+          : pathToFile;
 
-      const dataToWrite = scriptData
-        .replace(regexpES, `from '${newName}/$2';`)
-        .replace(regexpCJS, `require("${newName}/$2")`);
+      if (handledFiles.has(newPathToFile)) return;
+      handledFiles.add(newPathToFile);
 
-      await fs.writeFile(pathToFile, dataToWrite, 'utf8');
+      const initialContent = await fs.readFile(pathToFile, 'utf8');
 
-      log(`  - Replaced ${count} old imports in: [${pathToFile}].`);
+      const newContent = initialContent
+        .replace(shallowRegexpES, `from '${newName}/$2/index.mjs';`)
+        .replace(deepRegexpES, `from '${newName}/$2.mjs';`)
+        .replace(regexpCJS, `require("${newName}/$2")`)
+        .replace(relativeRegexpEs, `from './$1.mjs';`);
+
+      if (newPathToFile !== pathToFile) {
+        await Promise.all([fs.unlink(pathToFile), fs.writeFile(newPathToFile, newContent, 'utf8')]);
+      } else {
+        await fs.writeFile(pathToFile, newContent, 'utf8');
+      }
+
+      log(`  - Replaced ${count} old imports in: [${newPathToFile}].`);
     }),
   );
 }

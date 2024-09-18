@@ -1,7 +1,7 @@
 import React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
-import MathPlusM from '@semcore/icon/MathPlus/m';
+import MathPlusM from '@semcore/icon/MathPlus/m/index';
 import ColorPicker, { PaletteManager } from '../ColorPicker';
 
 type ColorsAsProps = {

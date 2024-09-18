@@ -1,6 +1,6 @@
 export { default as Plot } from './Plot';
-export { ChartLegend, ChartLegendTable } from './component/ChartLegend';
-export { default as Chart } from './component/Chart';
+export { ChartLegend, ChartLegendTable } from './component/ChartLegend/index';
+export { default as Chart } from './component/Chart/index';
 export { XAxis, YAxis } from './Axis';
 
 export { default as Line } from './Line';

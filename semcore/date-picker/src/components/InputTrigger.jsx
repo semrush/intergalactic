@@ -3,7 +3,7 @@ import BaseTrigger from '@semcore/base-trigger';
 import InputMask from '@semcore/input-mask';
 import Tooltip from '@semcore/tooltip';
 import { Flex, Box } from '@semcore/flex-box';
-import Calendar from '@semcore/icon/Calendar/m';
+import Calendar from '@semcore/icon/Calendar/m/index';
 import createComponent, { Root, sstyled, Component } from '@semcore/core';
 import NeighborLocation from '@semcore/neighbor-location';
 import { datesIntersects } from '../utils/datesIntersects';

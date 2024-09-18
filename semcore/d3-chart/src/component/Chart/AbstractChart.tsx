@@ -6,7 +6,7 @@ import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import ChartLegend, { ChartLegendTable } from '../ChartLegend';
+import ChartLegend, { ChartLegendTable } from '../ChartLegend/index';
 import { Flex } from '@semcore/flex-box';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';

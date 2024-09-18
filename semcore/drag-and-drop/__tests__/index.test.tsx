@@ -3,7 +3,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import DnD from '../src';
 import Badge from '@semcore/badge';
-import LinkedInS from '@semcore/icon/LinkedIn/m';
+import LinkedInS from '@semcore/icon/LinkedIn/m/index';
 import TabPanel from '@semcore/tab-panel';
 import { cleanup } from '@semcore/testing-utils/testing-library';
 

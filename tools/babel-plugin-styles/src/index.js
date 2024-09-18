@@ -32,7 +32,7 @@ function StylesPlugin({ types: t }, opts) {
           t.Identifier(ident),
           t.TaggedTemplateExpression(
             t.MemberExpression(
-              addNamed(p, 'sstyled', '@semcore/utils/lib/core/index'),
+              addNamed(p, 'sstyled', '@semcore/utils/lib/core/styled/index'),
               t.Identifier('insert'),
             ),
             t.TemplateLiteral(

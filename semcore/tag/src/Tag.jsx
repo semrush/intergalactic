@@ -3,7 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
-import CloseM from '@semcore/icon/Close/m';
+import CloseM from '@semcore/icon/Close/m/index';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';

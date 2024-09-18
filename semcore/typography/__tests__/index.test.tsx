@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import Check from '@semcore/icon/Check/m';
-import Question from '@semcore/icon/Question/m';
+import Check from '@semcore/icon/Check/m/index';
+import Question from '@semcore/icon/Question/m/index';
 import { Blockquote, List, Text, Hint } from '../src';
 
 import { cleanup, render } from '@semcore/testing-utils/testing-library';

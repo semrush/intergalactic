@@ -2,8 +2,8 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
-import CheckM from '@semcore/icon/Check/m';
-import CloseM from '@semcore/icon/Close/m';
+import CheckM from '@semcore/icon/Check/m/index';
+import CloseM from '@semcore/icon/Close/m/index';
 import style from '../style/color-picker.shadow.css';
 
 type InputColorAsProps = {

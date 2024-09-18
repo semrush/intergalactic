@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
+import ChevronDown from '@semcore/icon/ChevronDown/m/index';
 import BaseTrigger from './BaseTrigger';
 import Spin from '@semcore/spin';
 import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';

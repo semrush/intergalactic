@@ -2,8 +2,6 @@
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
   "version": "2.34.0",
-  "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",

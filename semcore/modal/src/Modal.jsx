@@ -4,7 +4,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
 import Button from '@semcore/button';
 import OutsideClick from '@semcore/outside-click';
-import CloseIcon from '@semcore/icon/Close/l';
+import CloseIcon from '@semcore/icon/Close/l/index';
 import fire from '@semcore/utils/lib/fire';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
