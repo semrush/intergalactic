@@ -18,7 +18,7 @@ Button with the `ShowYes` icon enables the password display. `ShowNo` hides the 
 
 ## Loading state
 
-If the input is in a loading state while searching, sending, or entering data dynamically, add [Spin](/components/spin/spin) as the right addon. 
+If the input is in a loading state while searching, sending, or entering data dynamically, add [Spin](/components/spin/spin) as the right addon.
 
 <!-- During this time, the input may also be `disabled`. -->
 
@@ -44,7 +44,7 @@ The input field may have a **Clear** button inside it to clear the entered value
 
 ## Input with submit button inside
 
-You can place a submit button inside the input as the right addon. It is only visible when the input has a nonempty value.
+You can place a submit button inside the input as the right addon. It's only visible when the input has a nonempty value.
 
 ::: sandbox
 
@@ -56,7 +56,7 @@ You can place a submit button inside the input as the right addon. It is only vi
 
 ## Input with text addon
 
-You can add text to the input as an addon that the user cannot modify. This can be useful when you need a fixed placeholder text in the input.
+You can add text to the input as an addon that the user can't modify. This can be useful when you need a fixed placeholder text in the input.
 
 ::: sandbox
 

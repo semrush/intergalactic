@@ -61,12 +61,12 @@ const Preview = (preview) => {
     defaultValue: false,
     label: 'Read-only',
   });
-  
+
   return (
     <Input size={size} state={state}>
       {before && <Input.Addon><CheckM /></Input.Addon>}
       <Input.Value disabled={disabled} readOnly={readOnly} placeholder='Placeholder' />
-      {after && 
+      {after &&
         <Input.Addon>
           <ButtonLink use='secondary'>
             <ButtonLink.Addon>
@@ -145,7 +145,7 @@ When two addons are stacked together, their indents will be divided in half. Thi
 ## Interaction
 
 ::: tip
-Use the `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
+Use the `read-only` state for component that can't be interacted with, except for copy its value. Also use it for links which might be copied.
 
 Use the `disabled` state if the input availability depends on the value of another element.
 :::
@@ -168,7 +168,7 @@ The search input can have a non-clickable icon before the text and a button for 
 
 ![](static/search.png)
 
-## Input with a counter
+## Input with counter
 
 You can place [Counter](/components/counter/counter) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
@@ -187,5 +187,5 @@ Table: Input with counter
 
 1. Use input fields only for single-line information. If you need to enter a lot of data, use a [Textarea](/components/textarea/textarea) instead.
 2. Label the inputs clearly, so users can quickly understand what data needs to be entered.
-3. Select an appropriate width for the input field based on the content to be entered. For example, if it's for a phone number, the input width shouldn't be wider than what is expected for a phone number.
+3. Select an appropriate width for the input field based on the content to be entered. For example, if it's for a phone number, the input width shouldn't be wider than what's expected for a phone number.
 
