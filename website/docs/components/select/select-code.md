@@ -102,7 +102,7 @@ The component offers several variants of options layout:
 
 ## Options filtering
 
-The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/input) component with clear button.
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/input) component with a **Clear** button.
 
 The example below shows one of the ways to implement filtering.
 

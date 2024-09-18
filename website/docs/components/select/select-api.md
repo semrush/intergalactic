@@ -35,7 +35,7 @@ import Select from 'intergalactic/select';
 
 ## Select.InputSearch
 
-It is a wrap over the `<Input.Value/>`.
+It is a wrap over the `<Input/>` component.
 
 ```jsx
 import { InputSearch } from 'intergalactic/select';

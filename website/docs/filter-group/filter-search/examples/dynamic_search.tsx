@@ -1,5 +1,7 @@
 import React from 'react';
 import Input from 'intergalactic/input';
+import { Hint } from 'intergalactic/tooltip';
+import { ButtonLink } from 'intergalactic/button';
 import CloseM from 'intergalactic/icon/Close/m';
 import Search from 'intergalactic/icon/Search/m';
 import { Text } from 'intergalactic/typography';
@@ -35,7 +37,15 @@ const Demo = () => {
           placeholder='Enter keyword here'
         />
         {value && (
-          <Input.Addon tag={CloseM} interactive onClick={handleClick} aria-label='Clear filter' />
+          <Input.Addon>
+            <Hint
+              tag={ButtonLink}
+              use='secondary'
+              addonLeft={CloseM}
+              title='Clear'
+              onClick={handleClick}
+            />
+          </Input.Addon>
         )}
       </Input>
     </Flex>

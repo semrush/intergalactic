@@ -2,43 +2,37 @@ import React from 'react';
 import Input from 'intergalactic/input';
 import ShowYesM from 'intergalactic/icon/ShowYes/m';
 import ShowNoM from 'intergalactic/icon/ShowNo/m';
-import Button from 'intergalactic/button';
+import { ButtonLink } from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import { Flex } from 'intergalactic/flex-box';
 import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [type, setType] = React.useState('password');
 
   return (
-    <>
+    <Flex direction='column' gap={2}>
       <Text tag='label' htmlFor='password-example' size={200}>
         Your password
       </Text>
-      <Box mt={2}>
-        <Input w={240}>
-          <Input.Value
-            defaultValue='I_like_cats'
-            placeholder='Password'
-            type={type}
-            id='password-example'
-          />
+      <Input w={240}>
+        <Input.Value
+          defaultValue='I_like_cats'
+          placeholder='Password'
+          type={type}
+          id='password-example'
+        />
+        <Input.Addon>
           <Hint
             title={type === 'password' ? 'Show password' : 'Hide password'}
-            aria-label={undefined}
-          >
-            <Input.Addon
-              aria-label={type === 'password' ? 'Show password' : 'Hide password'}
-              mr='-1px'
-              tag={Button}
-              onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
-            >
-              {type === 'password' ? <ShowYesM /> : <ShowNoM />}
-            </Input.Addon>
-          </Hint>
-        </Input>
-      </Box>
-    </>
+            tag={ButtonLink}
+            use='secondary'
+            addonLeft={type === 'password' ? ShowYesM : ShowNoM}
+            onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
+          />
+        </Input.Addon>
+      </Input>
+    </Flex>
   );
 };
 
