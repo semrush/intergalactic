@@ -2,7 +2,7 @@ import React from 'react';
 import DataTable from 'intergalactic/data-table';
 import SpinContainer from 'intergalactic/spin-container';
 
-const Demo = () => {
+const Demo = (): any => {
   const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -24,6 +24,7 @@ const Demo = () => {
         loading={loading}
         style={{ overflow: 'initial' }}
         use:aria-busy={undefined}
+        // @ts-ignore
         inert={loading ? '' : undefined}
       >
         <DataTable.Body aria-busy={loading} />
