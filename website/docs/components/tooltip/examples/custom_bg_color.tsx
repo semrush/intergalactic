@@ -1,13 +1,11 @@
 import React from 'react';
 import Tooltip from 'intergalactic/tooltip';
 import { Box } from 'intergalactic/flex-box';
-import Link from 'intergalactic/link';
+import { ButtonLink } from 'intergalactic/button';
 
 const Demo = () => (
   <Tooltip>
-    <Tooltip.Trigger tag={Link} href='#'>
-      Colored tooltip
-    </Tooltip.Trigger>
+    <Tooltip.Trigger tag={ButtonLink}>Colored tooltip</Tooltip.Trigger>
     <Tooltip.Popper
       arrowBgColor={'bg-primary-advertising'}
       arrowShadowColor={'border-tooltip-invert'}

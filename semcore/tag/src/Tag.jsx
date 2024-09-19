@@ -10,6 +10,7 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import log from '@semcore/utils/lib/logger';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import style from './style/tag.shadow.css';
 
@@ -59,8 +60,8 @@ class RootTag extends Component {
   }
 
   getCircleProps() {
-    const { size } = this.asProps;
-    return { size };
+    const { size, color, resolveColor } = this.asProps;
+    return { size, color, resolveColor };
   }
 
   getTextProps() {
@@ -81,7 +82,7 @@ class RootTag extends Component {
     this.setState({ focusable: 'container' });
   };
   getCloseProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, color, resolveColor } = this.asProps;
     const id = this.asProps.id || `igc-${this.asProps.uid}-tag`;
 
     return {
@@ -91,6 +92,8 @@ class RootTag extends Component {
       'aria-label': getI18nText('remove'),
       onMount: this.handleCloseMount,
       onUnmount: this.handleCloseUnmount,
+      color,
+      resolveColor,
     };
   }
 
@@ -147,11 +150,23 @@ class RootTag extends Component {
 class RootTagContainer extends Component {
   static displayName = 'TagContainer';
   static style = style;
-
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement(), resolveColorEnhance()];
+  static defaultProps = {
+    color: 'gray-500',
+    theme: 'primary',
+  };
 
   getTagProps() {
-    const { size, theme, color, disabled, active, uid, id: outerId } = this.asProps;
+    const {
+      size,
+      theme,
+      color,
+      disabled,
+      uid,
+      id: outerId,
+      interactive,
+      resolveColor,
+    } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
 
     return {
@@ -160,12 +175,34 @@ class RootTagContainer extends Component {
       size,
       theme,
       color,
-      active,
+      tag: interactive ? 'button' : undefined,
+      interactive,
+      resolveColor,
     };
   }
 
+  getCircleProps() {
+    const { color, resolveColor, size } = this.asProps;
+    return { color, resolveColor, size };
+  }
+
+  getAddonProps() {
+    const { color, resolveColor } = this.asProps;
+
+    return { color, resolveColor };
+  }
+
   getCloseProps() {
-    const { size, theme, color, disabled, active, uid, id: outerId, getI18nText } = this.asProps;
+    const {
+      size,
+      theme,
+      color,
+      disabled,
+      uid,
+      id: outerId,
+      getI18nText,
+      resolveColor,
+    } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
 
     return {
@@ -173,20 +210,42 @@ class RootTagContainer extends Component {
       size,
       theme,
       color,
-      active,
       id: `${id}-clear`,
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
+      resolveColor,
     };
   }
 
   render() {
     const STagContainer = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, forcedAdvancedMode } = this.asProps;
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(
+        Children,
+        [
+          'InputTags.' + Tag.Text.displayName,
+          'InputTags.' + Tag.Addon.displayName,
+          'InputTags.' + Tag.Close.displayName,
+          'InputTags.' + Tag.Circle.displayName,
+          TagContainer.Tag.displayName,
+          TagContainer.Addon.displayName,
+          TagContainer.Close.displayName,
+          TagContainer.Circle.displayName,
+        ],
+        true,
+      );
 
     return sstyled(styles)(
       <STagContainer render={Box}>
-        <Children />
+        {advancedMode ? (
+          <Children />
+        ) : (
+          <TagContainer.Tag>
+            <Children />
+          </TagContainer.Tag>
+        )}
       </STagContainer>,
     );
   }
@@ -241,6 +300,17 @@ class RootCloseTagContainer extends Component {
   }
 }
 
+function TagContainerCircle(props) {
+  const SAddon = Box;
+  const SCircle = Root;
+  const { styles, color, resolveColor } = props;
+  return sstyled(styles)(
+    <SAddon tag-color={resolveColor(color)}>
+      <SCircle render={Box} />
+    </SAddon>,
+  );
+}
+
 function Text(props) {
   const SText = Root;
   const { styles } = props;
@@ -283,14 +353,24 @@ function Close(props) {
 
 function Addon(props) {
   const SAddon = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} tag='span' />);
+  const { styles, color, resolveColor } = props;
+
+  const tagColor = React.useMemo(() => {
+    if (typeof resolveColor !== 'function') return;
+    return resolveColor(color);
+  }, [color, resolveColor]);
+
+  return sstyled(styles)(<SAddon render={Box} tag='div' tag-color={tagColor} />);
 }
 
 function Circle(props) {
   const SCircle = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SCircle render={Box} tag='span' />);
+  const { styles, color, resolveColor } = props;
+  const tagColor = React.useMemo(() => {
+    if (typeof resolveColor !== 'function') return;
+    return resolveColor(color);
+  }, [color, resolveColor]);
+  return sstyled(styles)(<SCircle render={Box} tag='span' tag-color={tagColor} />);
 }
 
 const Tag = createComponent(RootTag, {
@@ -306,7 +386,9 @@ const CloseTagContainer = createComponent(RootCloseTagContainer, {
 
 export const TagContainer = createComponent(RootTagContainer, {
   Tag,
+  Addon,
   Close: CloseTagContainer,
+  Circle: TagContainerCircle,
 });
 
 export default Tag;

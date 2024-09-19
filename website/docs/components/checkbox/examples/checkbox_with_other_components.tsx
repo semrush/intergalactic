@@ -4,6 +4,7 @@ import Checkbox from 'intergalactic/checkbox';
 import { DescriptionTooltip } from 'intergalactic/tooltip';
 import InfoM from 'intergalactic/icon/Info/m';
 import Link from 'intergalactic/link';
+import { ButtonLink } from 'intergalactic/button';
 
 function noop(e) {
   e.preventDefault();
@@ -16,9 +17,9 @@ const Demo = () => (
       <DescriptionTooltip placement='right'>
         <DescriptionTooltip.Trigger
           ml={1}
-          tag={InfoM}
+          tag={ButtonLink}
+          addonLeft={InfoM}
           color='icon-secondary-neutral'
-          interactive
           aria-label='Additional info'
         />
         <DescriptionTooltip.Popper aria-label={'Additional info about checkbox item'}>

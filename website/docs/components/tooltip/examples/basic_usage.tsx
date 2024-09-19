@@ -1,9 +1,9 @@
 import React from 'react';
 import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip';
 import { Flex } from 'intergalactic/flex-box';
-import { Text, Hint as HintLink } from 'intergalactic/typography';
+import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
-import Button from 'intergalactic/button';
+import Button, { ButtonLink } from 'intergalactic/button';
 import FileExportM from 'intergalactic/icon/FileExport/m';
 import CheckAltM from 'intergalactic/icon/CheckAlt/m';
 import InfoM from 'intergalactic/icon/Info/m';
@@ -39,7 +39,7 @@ const Demo = () => (
     <Flex gap={4} alignItems='center'>
       DescriptionTooltip:
       <DescriptionTooltip>
-        <DescriptionTooltip.Trigger tag={HintLink} role={'button'}>
+        <DescriptionTooltip.Trigger tag={ButtonLink} use={'secondary'}>
           About fastest animals
         </DescriptionTooltip.Trigger>
         <DescriptionTooltip.Popper aria-label='About fastest animals'>
@@ -56,9 +56,9 @@ const Demo = () => (
       </DescriptionTooltip>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
-          tag={InfoM}
-          color='var(--intergalactic-icon-secondary-neutral)'
-          interactive
+          tag={ButtonLink}
+          addonLeft={InfoM}
+          color='icon-secondary-neutral'
           aria-label='About peregrine falcon'
         />
         <DescriptionTooltip.Popper aria-label='About peregrine falcon'>

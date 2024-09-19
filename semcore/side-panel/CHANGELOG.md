@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.43.0] - 2024-08-29
+
+### Changed
+
+- Render back button with `ButtonLink` component.
+
 ## [3.42.1] - 2024-09-06
 
 ### Changed

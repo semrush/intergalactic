@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.0] - 2024-09-12
+
+### Fixed
+
+- Hidden elements might be considered as focusable. It was breaking "Skip to content after plot" feature in d3-chart in some cases.
+
 ## [4.35.0] - 2024-09-06
 
 ### Added

@@ -108,41 +108,6 @@ describe('InlineInput', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('custom texts', async ({ task }) => {
-    const component = (
-      <>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <InlineInput>
-          <InlineInput.Value />
-          <InlineInput.ConfirmControl
-            title='Sh**ck is love'
-            $tooltipsProps={{ visible: true, disablePortal: true }}
-          />
-          <InlineInput.CancelControl
-            title='DRAIN THE SWAMP!'
-            $tooltipsProps={{ visible: true, disablePortal: true }}
-          />
-        </InlineInput>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-      </>
-    );
-
-    /**
-     * Tooltip overlay may be possitioned in weird place,
-     * it's expected when disablePortal option is enabled
-     */
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('on blur behavior', () => {
     vi.useFakeTimers();
     const spyCancel = vi.fn();

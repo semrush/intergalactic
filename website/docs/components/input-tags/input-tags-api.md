@@ -39,7 +39,7 @@ import InputTags from 'intergalactic/input-tags';
 <InputTags.Tag.Addon />;
 ```
 
-Inherited from the [Tag.Addon](/components/tag/tag-api#a5b4f0) component.
+Inherited from the [Tag.Addon](../tag/tag-api#tag-addon) component.
 
 ## InputTags.Tag.Text
 
@@ -48,7 +48,7 @@ import InputTags from 'intergalactic/input-tags';
 <InputTags.Tag.Text />;
 ```
 
-Inherited from the [Tag.Text](/components/tag/tag-api#a49c29) component.
+Inherited from the [Tag.Text](../tag/tag-api#tag-text) component.
 
 ## InputTags.Tag.Close
 
@@ -57,7 +57,7 @@ import InputTags from 'intergalactic/input-tags';
 <InputTags.Tag.Close />;
 ```
 
-Inherited from the [Tag.Close](/components/tag/tag-api#a871eb) component.
+Inherited from the [Tag.Close](../tag/tag-api#tag-close) component.
 
 ## InputTags.Tag.Circle
 
@@ -66,6 +66,6 @@ import InputTags from 'intergalactic/input-tags';
 <InputTags.Tag.Circle />;
 ```
 
-Inherited from the [Tag.Circle](/components/tag/tag-api#a701f6) component.
+Inherited from the [Tag.Circle](../tag/tag-api#tag-circle) component.
 
 <script setup>import { data as types } from '@types.data.ts';</script>

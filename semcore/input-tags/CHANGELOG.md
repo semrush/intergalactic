@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.38.0] - 2024-08-13
+
+### Changed
+
+- Tags remove button now follow tag in the DOM.
+- Added aria description to editable tags.
+
 ## [4.37.0] - 2024-09-06
 
 ### Changed
