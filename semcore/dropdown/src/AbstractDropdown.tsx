@@ -325,13 +325,23 @@ export abstract class AbstractDropdown extends Component<
 
     if (amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
-      if (newHighlightedIndex !== undefined && this.role !== 'listbox') {
+      if (newHighlightedIndex !== undefined && this.role === 'menu') {
         this.itemRefs[newHighlightedIndex]?.focus();
+      }
+      if (this.role === 'listbox') {
+        this.focusTrigger();
       }
       this.handlers.highlightedIndex(newHighlightedIndex, e);
 
       e.preventDefault();
       e.stopPropagation();
     }
+  }
+
+  focusTrigger() {
+    const trigger = this.triggerRef.current;
+    if (!trigger) return;
+    if (isFocusInside(trigger)) return;
+    setFocus(trigger);
   }
 }
