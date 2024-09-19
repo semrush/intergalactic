@@ -562,12 +562,28 @@ class RootDefinitionTable extends Component<AsProps> {
       rows.forEach((row, rowIndex) => {
         const rowCellsMap = new Map<ColIndex, HTMLElement>();
 
-        row
-          .querySelectorAll<HTMLDivElement>('[role=gridcell], [role=columnheader]')
-          ?.forEach((cell, cellIndex) => {
-            cell.setAttribute('inert', '');
+        const queriedRowCells = row.querySelectorAll<HTMLDivElement>(
+          '[role=gridcell], [role=columnheader]',
+        );
+
+        let cellIndex = 0;
+
+        queriedRowCells.forEach((cell) => {
+          cell.setAttribute('inert', '');
+
+          const cellName = cell.getAttribute('name');
+          const columnsName = cellName?.split('/');
+
+          if (columnsName && columnsName.length > 1) {
+            columnsName.forEach(() => {
+              rowCellsMap.set(cellIndex, cell);
+              cellIndex = cellIndex + 1;
+            });
+          } else {
             rowCellsMap.set(cellIndex, cell);
-          });
+            cellIndex = cellIndex + 1;
+          }
+        });
 
         this.cellsMap.set(rowIndex, rowCellsMap);
       });
@@ -608,6 +624,7 @@ class RootDefinitionTable extends Component<AsProps> {
     const currentCell = currentRow?.get(this.focusedCell[1]);
     const currentHeaderCell = this.cellsMap.get(0)?.get(this.focusedCell[1]);
 
+    let changed = true;
     let newRow = this.focusedCell[0] + rowIndex;
     let newCol = this.focusedCell[1] + colIndex;
 
@@ -616,10 +633,14 @@ class RootDefinitionTable extends Component<AsProps> {
       newRow !== this.focusedCell[0]
     ) {
       newRow = this.focusedCell[0];
+      changed = false;
     }
     if ((newCol < 0 || newCol > maxCol) && newCol !== this.focusedCell[1]) {
       newCol = this.focusedCell[1];
+      changed = false;
     }
+
+    if (!changed) return;
 
     this.focusedCell = [newRow, newCol];
 
@@ -638,6 +659,8 @@ class RootDefinitionTable extends Component<AsProps> {
 
         headerCell?.removeAttribute('inert');
       }
+    } else if (currentCell === cell) {
+      this.changeFocusCell(rowIndex, colIndex);
     }
   };
 
