@@ -26,7 +26,7 @@ Using these components with an icon addon and without the text will provide the 
 
 ### Roles and attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+The following list will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
 | Attribute             | Usage                                                                                                                                                                                                                     |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,4 +41,4 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
