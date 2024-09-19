@@ -62,6 +62,14 @@ class WizardRoot extends Component {
     };
   }
 
+  stepperRefs = [];
+  stepperFocusPrev = (i) => () => {
+    this.stepperRefs[i - 1]?.focus();
+  };
+  stepperFocusNext = (i) => () => {
+    this.stepperRefs[i + 1]?.focus();
+  };
+
   getStepperProps(props, i) {
     let number = i + 1;
     if (this._steps.has(props.step)) {
@@ -75,6 +83,11 @@ class WizardRoot extends Component {
       number,
       getI18nText: this.asProps.getI18nText,
       uid: this.asProps.uid,
+      ref: (node) => {
+        this.stepperRefs[i] = node;
+      },
+      focusNext: this.stepperFocusNext(i),
+      focusPrev: this.stepperFocusPrev(i),
     };
   }
 
@@ -145,6 +158,8 @@ function Stepper(props) {
     number,
     getI18nText,
     uid,
+    focusNext,
+    focusPrev,
   } = props;
   const SStepper = Root;
   const SStepNumber = 'span';
@@ -164,8 +179,14 @@ function Stepper(props) {
         e.preventDefault();
         onActive(step, e);
       }
+      if (e.key === 'ArrowUp') {
+        focusPrev();
+      }
+      if (e.key === 'ArrowDown') {
+        focusNext();
+      }
     },
-    [step, onActive],
+    [step, onActive, focusPrev, focusNext],
   );
 
   return sstyled(styles)(
