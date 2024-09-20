@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Keyboard control.
+- Keyboard navigation.
 
 ## [4.43.0] - 2024-09-04
 
