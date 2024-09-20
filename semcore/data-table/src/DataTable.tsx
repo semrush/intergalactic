@@ -14,18 +14,23 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
 import { flattenColumns } from './utils';
 import type {
+  ColIndex,
   Column,
   NestedCells,
   PropsLayer,
   PseudoChildPropsGetter,
   RowData,
+  RowIndex,
   SortDirection,
 } from './types';
 import Head from './Head';
 import Body from './Body';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import style from './style/data-table.shadow.css';
+import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
+import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
@@ -45,8 +50,10 @@ type AsProps = {
   use: 'primary' | 'secondary';
   sort: SortDirection[];
   data: RowData[];
+  totalRows?: number;
   uniqueKey: string;
   uid?: string;
+  getI18nText?: (str: string) => string;
 };
 
 type HeadAsProps = {
@@ -59,10 +66,7 @@ type BodyAsProps = {
 };
 
 export type DataTableData = { [key: string]: unknown };
-export type DataTableSort<Columns extends string | number | symbol = string> = [
-  sortBy: Columns,
-  sortDirection: 'desc' | 'asc',
-];
+export type DataTableSort<Column = string> = [sortBy: Column, sortDirection: 'desc' | 'asc'];
 export type DataTableTheme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 export type DataTableUse = 'primary' | 'secondary';
 export type DataTableRow = DataTableCell[];
@@ -74,10 +78,20 @@ export type DataTableCell = {
   [key: string]: unknown;
 };
 
+/**
+ * Datatable must have an accessible name (aria-table-name).
+ * It should describe table content.
+ */
+type DataTableAriaProps = Intergalactic.RequireAtLeastOne<{
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  title?: string;
+}>;
+
 /** @deprecated */
 export interface IDataTableProps<
   DataTableData extends { [key: string]: any }[] = UnknownProperties[],
-> extends DataTableProps<DataTableData> {}
+> extends Omit<DataTableProps<DataTableData>, keyof DataTableAriaProps> {}
 export type DataTableProps<DataTableData extends { [key: string]: any }[] = UnknownProperties[]> =
   BoxProps & {
     /** Table theme according to visual hierarchy on the page
@@ -96,7 +110,9 @@ export type DataTableProps<DataTableData extends { [key: string]: any }[] = Unkn
     uniqueKey?: keyof DataTableData[0];
     /** Make cells compact by changing left and right paddings to smaller ones*/
     compact?: boolean;
-  };
+    /** Count of total rows if table using virtual scroll. Needs for accessibility */
+    totalRows?: number;
+  } & DataTableAriaProps;
 
 /** @deprecated */
 export interface IDataTableHeadProps extends DataTableHeadProps, UnknownProperties {}
@@ -221,7 +237,7 @@ class RootDefinitionTable extends Component<AsProps> {
   static displayName = 'DefinitionTable';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     use: 'primary',
@@ -229,6 +245,10 @@ class RootDefinitionTable extends Component<AsProps> {
     sort: [],
     data: [],
   } as AsProps;
+
+  focusedCell: [RowIndex, ColIndex] = [0, 0];
+  cellsMap = new Map<RowIndex, Map<ColIndex, HTMLElement>>();
+  lastInteraction: 'mouse' | 'keyboard' | null = null;
 
   columns: Column[] = [];
 
@@ -382,7 +402,7 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 
   getHeadProps(props: HeadAsProps) {
-    const { use, uid } = this.asProps;
+    const { use, uid, getI18nText } = this.asProps;
     const columnsChildren = this.childrenToColumns(props.children);
 
     this.columns = flattenColumns(columnsChildren);
@@ -393,6 +413,7 @@ class RootDefinitionTable extends Component<AsProps> {
       onResize: this.handlerResize,
       $scrollRef: this.scrollHeadRef,
       uid,
+      getI18nText,
     };
   }
 
@@ -528,17 +549,182 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
   }
 
+  get totalRows() {
+    const { data, totalRows } = this.asProps;
+
+    return totalRows ?? (data ?? []).length;
+  }
+
+  fillCells() {
+    const rows = this.tableRef.current?.querySelectorAll<HTMLDivElement>('[role=row]');
+
+    if (rows?.length) {
+      rows.forEach((row, rowIndex) => {
+        const rowCellsMap = new Map<ColIndex, HTMLElement>();
+
+        row
+          .querySelectorAll<HTMLDivElement>('[role=gridcell], [role=columnheader]')
+          ?.forEach((cell, cellIndex) => {
+            cell.setAttribute('inert', '');
+            rowCellsMap.set(cellIndex, cell);
+          });
+
+        this.cellsMap.set(rowIndex, rowCellsMap);
+      });
+    }
+  }
+
+  setInert(value: boolean) {
+    const cells = this.tableRef.current?.querySelectorAll<HTMLDivElement>(
+      '[role=gridcell], [role=columnheader]',
+    );
+
+    cells?.forEach((cell) => {
+      if (value === true) {
+        cell.setAttribute('inert', '');
+      } else {
+        cell.removeAttribute('inert');
+      }
+    });
+  }
+
+  hasFocusableInHeader = () => {
+    const hasFocusable = this.columns.some((column) => {
+      const columnElement = column.props.ref.current;
+
+      return column.sortable || (columnElement && hasFocusableIn(columnElement));
+    });
+
+    return hasFocusable;
+  };
+
+  changeFocusCell = (rowIndex: RowIndex, colIndex: ColIndex) => {
+    const hasFocusable = this.hasFocusableInHeader();
+
+    const maxCol = this.columns.length - 1;
+    const maxRow = this.totalRows;
+
+    const currentRow = this.cellsMap.get(this.focusedCell[0]);
+    const currentCell = currentRow?.get(this.focusedCell[1]);
+    const currentHeaderCell = this.cellsMap.get(0)?.get(this.focusedCell[1]);
+
+    let newRow = this.focusedCell[0] + rowIndex;
+    let newCol = this.focusedCell[1] + colIndex;
+
+    if (
+      ((hasFocusable && newRow < 0) || (!hasFocusable && newRow < 1) || newRow > maxRow) &&
+      newRow !== this.focusedCell[0]
+    ) {
+      newRow = this.focusedCell[0];
+    }
+    if ((newCol < 0 || newCol > maxCol) && newCol !== this.focusedCell[1]) {
+      newCol = this.focusedCell[1];
+    }
+
+    this.focusedCell = [newRow, newCol];
+
+    const row = this.cellsMap.get(newRow);
+    const cell = row?.get(newCol);
+
+    if (cell && currentCell !== cell) {
+      currentCell?.setAttribute('inert', '');
+      cell.removeAttribute('inert');
+
+      cell?.focus();
+
+      if (newRow !== 0) {
+        currentHeaderCell?.setAttribute('inert', '');
+        const headerCell = this.cellsMap.get(0)?.get(newCol);
+
+        headerCell?.removeAttribute('inert');
+      }
+    }
+  };
+
+  handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case 'Tab': {
+        this.setInert(true);
+        break;
+      }
+      case 'ArrowLeft': {
+        e.preventDefault();
+        this.changeFocusCell(0, -1);
+        break;
+      }
+      case 'ArrowRight': {
+        e.preventDefault();
+        this.changeFocusCell(0, 1);
+        break;
+      }
+      case 'ArrowUp': {
+        e.preventDefault();
+        this.changeFocusCell(-1, 0);
+        break;
+      }
+      case 'ArrowDown': {
+        e.preventDefault();
+        this.changeFocusCell(1, 0);
+        break;
+      }
+    }
+  };
+
+  handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+      if (this.cellsMap.size === 0) {
+        this.fillCells();
+
+        const hasFocusable = this.hasFocusableInHeader();
+
+        if (hasFocusable) {
+          this.focusedCell = [0, 0];
+        } else {
+          this.focusedCell = [1, 0];
+        }
+      }
+
+      this.setInert(true);
+
+      const row = this.cellsMap.get(this.focusedCell[0]);
+      const cell = row?.get(this.focusedCell[1]);
+
+      cell?.removeAttribute('inert');
+      cell?.focus();
+
+      e.currentTarget.setAttribute('tabIndex', '-1');
+    }
+  };
+
+  handleBlur = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+      this.setInert(false);
+      e.currentTarget.setAttribute('tabIndex', '0');
+    }
+  };
+
+  handleMouseMove = () => {
+    this.lastInteraction = 'mouse';
+    this.setInert(false);
+  };
+
   render() {
     const SDataTable = Root;
-    const { Children, styles, data } = this.asProps;
+    const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
       <SDataTable
         render={Box}
         __excludeProps={['data']}
         ref={this.tableRef}
-        role='table'
-        aria-rowcount={(data ?? []).length}
+        role='grid'
+        onKeyDown={this.handleKeyDown}
+        onMouseMove={this.handleMouseMove}
+        tabIndex={0}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        aria-rowcount={this.totalRows}
+        aria-colcount={this.columns.length}
       >
         <Children />
       </SDataTable>,

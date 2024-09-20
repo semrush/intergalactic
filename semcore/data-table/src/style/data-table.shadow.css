@@ -350,6 +350,7 @@ SCell {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
   transition: width calc(var(--intergalactic-duration-extra-fast, 100) * 1ms) ease-in-out;
+  outline: none;
 }
 
 SCell[use='primary'] {
@@ -387,6 +388,19 @@ SCell[theme='warning'] {
 
 SCell[theme='danger'] {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
+}
+
+SCell:focus-visible {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    inset: 3px;
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    pointer-events: none;
+  }
 }
 
 SHeightHold {

@@ -18,7 +18,7 @@ const Demo = () => {
   const [value, setValue] = React.useState([]);
   return (
     <Accordion value={value} onChange={setValue}>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table title. Table in table'}>
         <DataTable.Head wMin={1000}>
           <DataTable.Column name='keyword' children='Keyword' fixed='left' />
           <DataTable.Column name='kd' children='KD,%' />
@@ -33,7 +33,7 @@ const Demo = () => {
                 active: value.includes(index),
                 collapse: {
                   children: (
-                    <DataTable data={data}>
+                    <DataTable data={data} aria-label={'Table title. In accordion'}>
                       {/* [1] Set the desired z-index */}
                       <DataTable.Head hidden z-index={1}>
                         <DataTable.Column name='keyword' flex='inherit' fixed='left' />

@@ -7,7 +7,7 @@ import { LinkTrigger } from 'intergalactic/base-trigger';
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Customizing header'}>
       <DataTable.Head>
         <DataTable.Column
           name='keyword'

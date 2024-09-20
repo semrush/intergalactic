@@ -8,7 +8,7 @@ const Demo = () => {
   const containerRect = useResizeObserver(containerRef);
 
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

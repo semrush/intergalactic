@@ -14,7 +14,7 @@ const Demo = () => {
     };
   }, [loading]);
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Fixed header with spin overlay'}>
       <Box position='sticky' top={0} zIndex={2}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />

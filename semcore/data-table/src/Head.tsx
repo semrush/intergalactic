@@ -6,9 +6,11 @@ import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
-import type { Column } from './types';
+import { ColIndex, Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 export const SORT_ICON_WIDTH = 20;
 
@@ -42,12 +44,16 @@ type AsProps = {
   uid?: string;
   withScrollBar?: boolean;
   animationsDisabled?: boolean;
+  getI18nText?: (str: string) => string;
 };
 
 class Head extends Component<AsProps> {
   columns: Column[] = [];
 
   static displayName: string;
+
+  headCellMap = new Map<ColIndex, HTMLElement | null>();
+  lockedCell: [HTMLElement | null, boolean] = [null, false];
 
   sortWrapperRefs = new Map<Node, boolean>();
   defaultWidths = new Map<
@@ -59,6 +65,57 @@ class Head extends Component<AsProps> {
       useForRecalculation: boolean;
     }
   >();
+
+  sortableColumnDescribeId() {
+    const { uid } = this.asProps;
+    return `${uid}-column-sortable-describer`;
+  }
+
+  handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.currentTarget === this.lockedCell[0]) {
+      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (this.lockedCell[1]) {
+        if (e.key === 'Escape') {
+          this.lockedCell[0]?.focus();
+          this.lockedCell[1] = false;
+        }
+        if (e.key.startsWith('Arrow')) {
+          e.stopPropagation();
+        }
+        if (e.key === 'Tab') {
+          if (e.target === focusableChildren[0] && e.shiftKey) {
+            focusableChildren[focusableChildren.length - 1]?.focus();
+            e.preventDefault();
+          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
+            focusableChildren[0]?.focus();
+            e.preventDefault();
+          }
+        }
+      } else if (e.key === 'Enter') {
+        this.lockedCell[1] = true;
+        focusableChildren[0]?.focus();
+      } else if (e.key === 'Tab') {
+        this.lockedCell[0]?.setAttribute('inert', '');
+      }
+    }
+  };
+
+  onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (e.target === e.currentTarget) {
+      const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (focusableChildren.length === 1) {
+        focusableChildren[0].focus();
+      } else if (focusableChildren.length > 1) {
+        this.lockedCell = [e.currentTarget, false];
+      }
+    }
+  };
 
   bindHandlerSortClick = (name: string) => (event: React.MouseEvent) => {
     this.asProps.$onSortClick(name, event);
@@ -77,8 +134,9 @@ class Head extends Component<AsProps> {
     }
   };
 
-  makeColumnRefHandler = (column: Column) => (ref: HTMLElement | null) => {
+  makeColumnRefHandler = (column: Column, index: number) => (ref: HTMLElement | null) => {
     setRef(column.props.ref, ref);
+    this.headCellMap.set(index, ref);
     if (column.props.forwardRef) {
       setRef(column.props.forwardRef, ref);
     }
@@ -226,10 +284,10 @@ class Head extends Component<AsProps> {
   };
 
   renderColumns(columns: Column[], width: number) {
-    return columns.map((column) => this.renderColumn(column, width));
+    return columns.map((column, index) => this.renderColumn(column, width, index));
   }
 
-  renderColumn(column: Column, width: number) {
+  renderColumn(column: Column, width: number, index: number) {
     const { styles, use, hidden, uid } = this.asProps;
     const SColumn = Flex as any;
     const SHead = Box;
@@ -240,12 +298,6 @@ class Head extends Component<AsProps> {
     const isGroup = column.columns?.length > 0;
     const cSize = isGroup ? flattenColumns(column.columns).length : 1;
     const [name, value] = getFixedStyle(column, this.columns);
-
-    logger.warn(
-      column.props.wMax && column.props.sortSizeRecalculation,
-      "You can't use 'sortSizeRecalculation' property with 'wMax' property",
-      `${this.asProps['data-ui-name'] || Head.displayName}_column_${column.name}`,
-    );
 
     const style = {
       flexBasis: column.props.flex === undefined && `${width * cSize}%`,
@@ -274,10 +326,10 @@ class Head extends Component<AsProps> {
         borderRight={isGroup ? false : column.borderRight}
         active={isGroup ? false : column.active}
         group={isGroup}
-        tabIndex={column.sortable ? 0 : undefined}
+        tabIndex={-1}
         __excludeProps={['hidden']}
         {...column.props}
-        ref={this.makeColumnRefHandler(column)}
+        ref={this.makeColumnRefHandler(column, index)}
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,
@@ -285,10 +337,16 @@ class Head extends Component<AsProps> {
         onKeyDown={callAllEventHandlers(
           column.props.onKeyDown,
           column.sortable ? this.bindHandlerKeyDown(column.name) : undefined,
+          this.handleKeyDown,
         )}
         style={style}
         hidden={hidden}
         aria-sort={ariaSortValue}
+        aria-colindex={index + 1}
+        onFocus={this.onFocusCell}
+        aria-describedby={
+          column.sortable && !column.active ? this.sortableColumnDescribeId() : undefined
+        }
       >
         {isGroup ? (
           <>
@@ -330,6 +388,7 @@ class Head extends Component<AsProps> {
       sticky,
       withScrollBar,
       animationsDisabled,
+      getI18nText,
     } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
@@ -351,14 +410,14 @@ class Head extends Component<AsProps> {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={-1} zIndex={2}>
-            <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
+            <SHead render={Box} role='row' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>
           {Boolean(withScrollBar) && (
-            <div style={displayContents} role='rowgroup'>
-              <div style={displayContents} role='row'>
-                <div style={displayContents} role='cell'>
+            <div style={displayContents}>
+              <div style={displayContents}>
+                <div style={displayContents}>
                   <ScrollArea.Bar orientation='horizontal' />
                 </div>
               </div>
@@ -366,6 +425,9 @@ class Head extends Component<AsProps> {
           )}
         </ScrollArea>
         {Children.origin}
+        <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
+          {getI18nText?.('sortableColumn')}
+        </ScreenReaderOnly>
       </SHeadWrapper>,
     );
   }
