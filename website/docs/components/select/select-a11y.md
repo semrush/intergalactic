@@ -22,7 +22,7 @@ Table: Keyboard support
 
 ### Roles and attributes for listbox
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
@@ -37,7 +37,7 @@ Table: Roles and attributes
 
 ### Roles and attributes for combobox
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 

@@ -26,5 +26,5 @@ Table: Links order in ProductHead
 For more information about link styles, refer to the [Link component](/components/link/link).
 
 ::: tip
-Use the [ButtonLink](../../components/button/button.md#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
+Use the [ButtonLink](../../components/button/button#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
 :::
