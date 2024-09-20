@@ -31,12 +31,11 @@ The following list will help you to keep in mind the necessary roles and attribu
 | Attribute             | Usage                                                                                                                                                                                                                     |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-hidden="false"` | Makes the **non-interactive** icon accessible for the assistive technology. Add this attribute to non-interactive icons if they convey meaningful information, such as status, category and so on, that isn't represented by text. |
-| `aria-label` or `aria-labelledby` | Defines an accessible name for the icon. This attribute is required for elements that don't have any text content and aren't hidden from the assistive technology. <br/>For best accessibility, consider adding a visible [Hint](../../components/tooltip/tooltip), which automatically provides an `aria-label` for its trigger, as demonstrated in the [example](./icon-code).  |
+| `aria-label` or `aria-labelledby` | Defines an accessible name for the icon. This attribute is required for elements that don't have any text content and aren't hidden from the assistive technology. <br/>For best accessibility, add a visible [Hint](../../components/tooltip/tooltip), which will automatically provide an `aria-label` for its trigger, as demonstrated in the [example](./icon-code).  |
 
 ## Considerations for designers
 
-- If an icon has a function in the interface and doesn't have any accompanying text, the function should be conveyed to assistive technology users with an appropriate `aria-label` text. For example, if a `Trash` icon removes a table row in the interface, add an `aria-label="Remove row"` attribute.
-- For icons with less obvious meanings, add a visible [Hint](../../components/tooltip/tooltip). `Hint` text will be automatically used as an `aria-label` for the icon, so you won't need to specify it twice.
+- If an icon has a function in the interface and doesn't have any accompanying text, the function should be conveyed to users with a visible `Hint` and an `aria-label`. Use the [Hint](../../components/tooltip/tooltip) component, which will automatically add an `aria-label` with the same content to the icon. For example, if a `Trash` icon removes a table row in the interface, add a `Hint` with the `"Remove row"` text.
 - Check icon contrast against background. [The contrast ratio should be at least 3:1](https://www.w3.org/WAI/WCAG21/Techniques/general/G207).
 
 ## Other recommendations
