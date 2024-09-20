@@ -28,6 +28,7 @@ class WizardRoot extends Component {
   _steps = new Map();
   modalRef = React.createRef();
   contentRef = React.createRef();
+  state = { highlighted: null };
 
   getStepProps(props) {
     return {
@@ -64,10 +65,20 @@ class WizardRoot extends Component {
 
   stepperRefs = [];
   stepperFocusPrev = (i) => () => {
-    this.stepperRefs[i - 1]?.focus();
+    const prevStep = this._steps.get(this.asProps.step);
+    if (!prevStep) return;
+    this.setState({ highlighted: prevStep?.step });
+    setTimeout(() => {
+      this.stepperRefs[i - 1]?.focus();
+    }, 0);
   };
   stepperFocusNext = (i) => () => {
-    this.stepperRefs[i + 1]?.focus();
+    const nextStep = this._steps.get(this.asProps.step + 2);
+    if (!nextStep) return;
+    this.setState({ highlighted: nextStep?.step });
+    setTimeout(() => {
+      this.stepperRefs[i + 1]?.focus();
+    }, 0);
   };
 
   getStepperProps(props, i) {
@@ -78,8 +89,12 @@ class WizardRoot extends Component {
     } else {
       this._steps.set(props.step, { number, ...props });
     }
+    const active = props.step === this.asProps.step;
+    const highlighted =
+      this.state.highlighted === props.step || (this.state.highlighted === null && i === 0);
     return {
-      active: props.step === this.asProps.step,
+      active,
+      tabIndex: highlighted ? 0 : -1,
       number,
       getI18nText: this.asProps.getI18nText,
       uid: this.asProps.uid,
@@ -93,6 +108,7 @@ class WizardRoot extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.step === this.asProps.step) return;
+    this.setState({ highlighted: this.asProps.step || null });
     setTimeout(() => {
       if (prevProps.step === this.asProps.step) return;
       setFocus(this.contentRef.current);
@@ -123,6 +139,9 @@ function Sidebar(props) {
   const SSidebar = Root;
   const SSidebarHeader = 'h2';
   const SSidebarMenu = 'div';
+
+  const handleKeyDown = React.useCallback((e) => {}, []);
+
   return sstyled(styles)(
     <SSidebar render={Box} __excludeProps={['title']}>
       {title && <SSidebarHeader id={`${uid}-title`}>{title}</SSidebarHeader>}
@@ -181,9 +200,11 @@ function Stepper(props) {
       }
       if (e.key === 'ArrowUp') {
         focusPrev();
+        e.stopPropagation();
       }
       if (e.key === 'ArrowDown') {
         focusNext();
+        e.stopPropagation();
       }
     },
     [step, onActive, focusPrev, focusNext],
