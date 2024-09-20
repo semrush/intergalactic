@@ -29,6 +29,7 @@ export const isFocusable = (node: Node) => {
     return false;
   if (node.hasAttribute('disabled')) return false;
   if (node.getAttribute('tabindex') === '-1') return false;
+  if (node.getAttribute('hidden') !== null) return false;
   const tagName = node.tagName;
   for (const params of focusable) {
     if (
@@ -37,8 +38,12 @@ export const isFocusable = (node: Node) => {
         if (typeof param === 'object' && param.has && node.hasAttribute(param.has)) return true;
         return false;
       })
-    )
+    ) {
+      const style = getComputedStyle(node);
+      if (style.display === 'none' || style.visibility === 'hidden') return false;
+
       return true;
+    }
   }
   return false;
 };

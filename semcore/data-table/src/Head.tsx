@@ -284,10 +284,10 @@ class Head extends Component<AsProps> {
   };
 
   renderColumns(columns: Column[], width: number) {
-    return columns.map((column, index) => this.renderColumn(column, width, index));
+    return columns.map((column) => this.renderColumn(column, width));
   }
 
-  renderColumn(column: Column, width: number, index: number) {
+  renderColumn(column: Column, width: number) {
     const { styles, use, hidden, uid } = this.asProps;
     const SColumn = Flex as any;
     const SHead = Box;
@@ -311,6 +311,17 @@ class Head extends Component<AsProps> {
     if (!column.setVar) {
       style['flexBasis'] = `var(${column.varWidth})`;
     }
+
+    const ariaDescribedBy = [];
+    if (column.sortable && !column.active) {
+      ariaDescribedBy.push(this.sortableColumnDescribeId());
+    }
+    if (column.parentColumns.length > 0) {
+      const parentName = column.parentColumns[0].name;
+      ariaDescribedBy.push(`igc-table-${uid}-${parentName}-group`);
+    }
+
+    const index = this.columns.findIndex((flattenCol) => flattenCol.name === column.name);
 
     return sstyled(styles)(
       <SColumn
@@ -344,14 +355,12 @@ class Head extends Component<AsProps> {
         aria-sort={ariaSortValue}
         aria-colindex={index + 1}
         onFocus={this.onFocusCell}
-        aria-describedby={
-          column.sortable && !column.active ? this.sortableColumnDescribeId() : undefined
-        }
+        aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
       >
         {isGroup ? (
           <>
             <SColumn
-              role='columnheader'
+              id={`igc-table-${uid}-${column.name}-group`}
               groupHead
               use={use}
               active={column.active}

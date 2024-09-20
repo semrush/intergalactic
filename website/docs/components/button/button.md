@@ -11,13 +11,28 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Button from 'intergalactic/button';
+import Button, { ButtonLink } from 'intergalactic/button';
 import CheckM from 'intergalactic/icon/Check/m';
-
+import CheckL from 'intergalactic/icon/Check/l';
 import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
+import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
 
-const SIZES = ['m', 'l'];
-const USE = ['primary', 'secondary', 'tertiary'];
+const COMPONENTS = [Button, ButtonLink];
+const SIZES_BUTTON = ['m', 'l'];
+const SIZES_LINK = [
+  { value: '100', name: '100 = 12px' },
+  { value: '200', name: '200 = 14px' },
+  { value: '300', name: '300 = 16px' },
+  { value: '400', name: '400 = 20px' },
+  { value: '500', name: '500 = 24px' },
+  { value: '600', name: '600 = 32px' },
+  { value: '700', name: '700 = 36px' },
+  { value: '800', name: '800 = 48px' },
+];
+const USE = {
+  Button: ['primary', 'secondary', 'tertiary'],
+  ButtonLink: ['primary', 'secondary'],
+};
 const THEME = {
   primary: ['info', 'success', 'warning', 'danger', 'invert'],
   secondary: ['info', 'muted', 'invert'],
@@ -27,33 +42,64 @@ const THEME = {
 const Preview = (preview) => {
   const { bool, select, radio, text } = preview('Button');
 
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: SIZES,
+  const component = select({
+    key: 'component',
+    defaultValue: 'Button',
+    label: 'Component',
+    options: COMPONENTS.map((component) => ({
+      name: component.displayName,
+      value: component.displayName,
+    })),
   });
+
+  const sizeButton = component === 'Button'
+  ? radio({
+      key: 'sizeButton',
+      defaultValue: 'm',
+      label: 'Size',
+      options: SIZES_BUTTON,
+    })
+  : null;
+
+  const sizeLink = component === 'ButtonLink'
+  ? select({
+      key: 'sizeLink',
+      defaultValue: '300',
+      label: 'Size',
+      options: SIZES_LINK,
+    })
+  : null;
 
   const use = select({
     key: 'use',
     defaultValue: 'secondary',
     label: 'Use',
-    options: USE.map((value) => ({
+    options: USE[component].map((value) => ({
       name: value,
       value,
     })),
   });
 
-  const theme = select({
-    key: 'theme',
-    placeholder: 'Select theme',
-    // defaultValue: THEME["secondary"][1],
-    label: 'Theme',
-    options: THEME[use].map((value) => ({
-      name: value,
-      value,
-    })),
-  });
+  const theme = component === 'Button'
+  ? select({
+      key: 'theme',
+      placeholder: 'Select theme',
+      label: 'Theme',
+      options: THEME[use].map((value) => ({
+        name: value,
+        value,
+      })),
+    })
+  : null;
+
+  const color = component === 'ButtonLink'
+  ? text({
+      key: 'color',
+      label: 'Color',
+      defaultValue: '',
+      placeholder: '',
+    })
+  : null;
 
   const active = bool({
     key: 'active',
@@ -67,11 +113,13 @@ const Preview = (preview) => {
     label: 'Disabled',
   });
 
-  const loading = bool({
-    key: 'loading',
-    defaultValue: false,
-    label: 'Loading',
-  });
+  const loading = component === 'Button'
+  ? bool({
+      key: 'loading',
+      defaultValue: false,
+      label: 'Loading',
+    })
+  : null;
 
   const beforeIcon = bool({
     key: 'before',
@@ -93,10 +141,14 @@ const Preview = (preview) => {
   const beforeIconMap = {
     l: <CheckM />,
     m: <CheckM />,
+    false: <CheckM />,
+    true: <CheckL />,
   };
   const afterIconMap = {
     l: <ArrowRightM />,
     m: <ArrowRightM />,
+    false: <ArrowRightM />,
+    true: <ArrowRightL />,
   };
 
   const renderIcon = (position, size) => {
@@ -111,18 +163,30 @@ const Preview = (preview) => {
   };
 
   return (
-    <Button
-      use={use}
-      theme={theme}
-      size={size}
-      loading={loading}
-      disabled={disabled || loading}
-      active={active}
-    >
-      {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', size)}</Button.Addon>}
-      {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
-      {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', size)}</Button.Addon>}
-    </Button>
+    component === 'Button'
+    ? <Button
+        use={use}
+        theme={theme}
+        size={sizeButton}
+        loading={loading}
+        disabled={disabled || loading}
+        active={active}
+      >
+        {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', sizeButton)}</Button.Addon>}
+        {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
+        {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', sizeButton)}</Button.Addon>}
+      </Button>
+    : <ButtonLink
+        use={use}
+        size={sizeLink}
+        color={color}
+        disabled={disabled}
+        active={active}
+      >
+        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
+        {(beforeIcon || afterIcon) && child ? <ButtonLink.Text>{child}</ButtonLink.Text> : child}
+        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
+      </ButtonLink>
   );
 };
 
@@ -148,23 +212,21 @@ Component consists of the following:
 1. `Button.Text`
 2. `Button.Addon`
 
-`Button.Text` has margins on the right and left sides. You can add addons before and after the text. As addons you can use:
+You can add addons before and after the text. As addons you can use:
 
-- [Icon](/style/icon/icon),
-- [Counter](/components/counter/counter),
-- [Badge](/components/badge/badge),
-- [Flag](/components/flags/flags).
-
-Addon before the text has `margin-left`, while the trailing addon has `margin-right`.
+- [Icon](/style/icon/icon)
+- [Counter](/components/counter/counter)
+- [Badge](/components/badge/badge)
+- [Flag](/components/flags/flags)
 
 ## Sizes and margins
 
 Table: Button sizes and margins
 
-| Button size (height in px)  | Icon size | Margins             | Description     |
-| --------------------------- | --------- | ------------------- | --------------- |
-| **M (28px)** | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
-| **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+| Button size (height in px) | Icon size | Margins                | Description                                                                                                              |
+| -------------------------- | --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **M (28px)**               | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
+| **L (40px)**               | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 
 ## Button types and themes
 
@@ -194,21 +256,36 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 
 Table: Button themes
 
-| Button type | `muted`    | `info`               | `success`            | `danger`        | `invert`|
-| ----------- | ---------- | -------------------- | -------------------- | --------------- | ------- |
-| `primary`   | _no theme_ | ![](static/info-butt.png) | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png) |
-| `secondary` | ![](static/secondary-muted.png)  | _deprecated_ | _no theme_ | _no theme_ | ![](static/invert-second-normal.png) |
-| `tertiary`  | ![](static/tertiary-muted.png) | ![](static/tertiary-info.png)  | _no theme_ | _no theme_ | ![](static/invert-tertiary-normal.png) |
+| Button type | `muted`                         | `info`                        | `success`                    | `danger`                    | `invert`                               |
+| ----------- | ------------------------------- | ----------------------------- | ---------------------------- | --------------------------- | -------------------------------------- |
+| `primary`   | _no theme_                      | ![](static/info-butt.png)     | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png)          |
+| `secondary` | ![](static/secondary-muted.png) | _deprecated_                  | _no theme_                   | _no theme_                  | ![](static/invert-second-normal.png)   |
+| `tertiary`  | ![](static/tertiary-muted.png)  | ![](static/tertiary-info.png) | _no theme_                   | _no theme_                  | ![](static/invert-tertiary-normal.png) |
 
 ## Button states
 
 Table: States for all buttons types and themes
 
-| Button type | Normal    | Hover       | Active        | Loading        | Disabled     |
-| ----------- | --------- | ----------- | ------------- | -------------- | ------------ |
-| `primary`     | ![](static/button-normal.png) | ![](static/button-hover.png) | ![](static/button-active.png) | ![](static/button-loading.png) | ![](static/button-disabled.png) |
-| `secondary`   | ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
-| `tertiary`    | ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
+| Button type | Normal                        | Hover                           | Active                           | Loading                           | Disabled                           |
+| ----------- | ----------------------------- | ------------------------------- | -------------------------------- | --------------------------------- | ---------------------------------- |
+| `primary`   | ![](static/button-normal.png) | ![](static/button-hover.png)    | ![](static/button-active.png)    | ![](static/button-loading.png)    | ![](static/button-disabled.png)    |
+| `secondary` | ![](static/secondary.png)     | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
+| `tertiary`  | ![](static/tertiary.png)      | ![](static/tertiary-hover.png)  | ![](static/tertiary-active.png)  | ![](static/tertiary-loading.png)  | ![](static/tertiary-disabled.png)  |
+
+## Button with Link styles
+
+::: warning
+This component was created to ensure proper accessibility for existing patterns in the interface. Avoid adding buttons with link styles into new interfaces. Instead, use either `Button` or `Link` depending on what the element does.
+:::
+
+If you need an element that looks like a link, but has the native button semantics, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the dialog trigger.
+
+Table: Button with Link styles
+
+| Button type | Appearance example & states           |
+| ----------- | ------------------------------------- |
+| `primary`   | ![](static/button-link-primary.png)   |
+| `secondary` | ![](static/button-link-secondary.png) |
 
 ## Button width
 
@@ -309,4 +386,3 @@ It may also be helpful checking the following branding guidelines:
 ## Grouped buttons
 
 To combine the components such as Button, [Input](/components/input/input), and [Select](/components/select/select), use the [`neighborLocation`](/components/button/button-api) property.
-
