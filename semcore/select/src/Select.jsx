@@ -126,9 +126,7 @@ class RootSelect extends AbstractDropdown {
       'aria-haspopup': isMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
       'aria-activedescendant':
-        isMenu && visible && highlightedIndex !== null
-          ? `igc-${uid}-option-${highlightedIndex}`
-          : undefined,
+        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       empty: isEmptyValue(value),
       value,
       name,
