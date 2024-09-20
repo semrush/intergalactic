@@ -8,8 +8,8 @@ const Demo = () => {
   return (
     <>
       <Link addonLeft={HomeM} aria-label='home page' href='#' />
-      <Link ml={4} aria-label='go to the next page' href='#'>
-        <Link.Addon tag={Hint} title={'go to the next page'}>
+      <Link ml={4} href='#' tag={Hint} title={'go to the next page'}>
+        <Link.Addon>
           <LinkExternalM />
         </Link.Addon>
       </Link>

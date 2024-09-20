@@ -41,11 +41,11 @@ Keyboard control should be performed sequentially across all interactive element
 
 ## Keyboard support for button, link, input, etc.
 
-### Link and hint link
+### Link
 
 - Links get focus by pressing the `Tab` key.
 - Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)).
-- When you press `Enter`, the link is clicked or an action is performed.
+- When you press `Enter`, the link is activated.
 
 ::: tip
 Note that links (anchor elements) are only keyboard operable by default if they have a valid href attribute.
@@ -54,7 +54,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 ### Button
 
 - Buttons are highlighted with a blue outline when focused on, regardless of the button color.
-- When you press `Enter`, the link is clicked or an action is performed.
+- When you press `Enter` or `Space`, the button is activated.
 
 ### Input and textarea
 

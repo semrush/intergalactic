@@ -72,7 +72,7 @@ There are two moments you need to consider when using link with addons and ellip
 
 ## Link without visible text
 
-If a link has no visible text, it is important to add [Tooltip](/components/tooltip/tooltip-code) and an `aria-label` attribute with a description of the link for accessibility purposes.
+If a link has no visible text, it is important to add a [Hint](/components/tooltip/tooltip-code) with a label of the link function for accessibility purposes. Adding a `Hint` will automatically provide an `aria-label` for the link.
 
 ::: sandbox
 

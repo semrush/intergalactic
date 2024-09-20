@@ -14,9 +14,9 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 - If a task requires a specific sequence of steps to be followed, a wizard ensures users don't miss important parts and make fewer mistakes.
 - Wizards are suitable when a task involves three-five steps. For smaller tasks with just two steps or very large tasks with more than ten steps, consider alternative approaches and components.
 
-### When don’t use wizard
+### When not to use wizard
 
-- Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/feature-popover), `Info` icons, [hint links](/style/typography/typography#hints_hint_links), or videos for education.
+- Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/feature-popover), [Informer](../../patterns/informer/informer.md), [DesctiptionTooltip](../tooltip/tooltip.md), or videos for education.
 - Advanced users may find predefined steps in a wizard restrictive. Consider using wizards for audiences that would benefit from step-by-step guidance.
 
 ## Component composition
