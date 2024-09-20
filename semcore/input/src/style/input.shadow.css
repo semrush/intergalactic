@@ -78,6 +78,11 @@ SAddon {
   padding: 0 var(--intergalactic-spacing-2x, 8px);
   height: 100%;
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+
+  button [data-ui-name="ButtonLink.Addon"],
+  a [data-ui-name="Link.Addon"] {
+    margin-bottom: 0;
+  }
 }
 
 SAddon[interactive] {
