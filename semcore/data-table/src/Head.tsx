@@ -284,10 +284,10 @@ class Head extends Component<AsProps> {
   };
 
   renderColumns(columns: Column[], width: number) {
-    return columns.map((column, index) => this.renderColumn(column, width, index));
+    return columns.map((column) => this.renderColumn(column, width));
   }
 
-  renderColumn(column: Column, width: number, index: number) {
+  renderColumn(column: Column, width: number) {
     const { styles, use, hidden, uid } = this.asProps;
     const SColumn = Flex as any;
     const SHead = Box;
