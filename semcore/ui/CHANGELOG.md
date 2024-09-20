@@ -1,3 +1,42 @@
+## [15.108.0] - 2024-09-20
+
+### @semcore/button
+
+- **Added** Component `ButtonLink`.
+
+### @semcore/card
+
+- **Changed** Render hints in header with `ButtonLink` component.
+
+### @semcore/inline-input
+
+- **Changed** Render confirm/cancel buttons with `ButtonLink` component.
+
+### @semcore/input-tags
+
+- **Changed** Tags remove button now follow tag in the DOM.
+- **Changed** Added aria description to editable tags.
+
+### @semcore/pagination
+
+- **Changed** Render total pages button with `ButtonLink` component.
+
+### @semcore/side-panel
+
+- **Changed** Render back button with `ButtonLink` component.
+
+### @semcore/tag
+
+- **Changed** Remove button aria-label from "Remove" to "Delete".
+- **Fixed** `interactive` prop passing from `TagContainer` to `Tag`.
+- **Added** `TagContainer.Circle` and `TagContainer.Addon` components.
+- **Changed** Remove button aria-label from "Remove" to "Delete".
+- **Fixed** `interactive` prop passing from `TagContainer` to `Tag`.
+
+### @semcore/utils
+
+- **Fixed** Hidden elements might be considered as focusable. It was breaking "Skip to content after plot" feature in d3-chart in some cases.
+
 ## [15.107.0] - 2024-09-06
 
 ### @semcore/color-picker
