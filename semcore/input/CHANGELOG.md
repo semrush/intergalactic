@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.33.1] - 2024-09-20
+
+### Fixed
+
+- Margins for Input.Addon's that are Link.Addon or ButtonLink.Addon.
+
 ## [4.33.0] - 2024-09-06
 
 ### Changed
