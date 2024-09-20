@@ -1,4 +1,6 @@
 {
-  "next": "Sonraki",
-  "prev": "Önceki"
+  "next": "Sonraki slayt",
+  "prev": "Önceki slayt",
+  "slides": "Slaytlar",
+  "slide": "Slayt {slideNumber}"
 }

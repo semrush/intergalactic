@@ -1,4 +1,6 @@
 {
-  "next": "Weiter",
-  "prev": "Vorher"
+  "next": "Nächste Folie",
+  "prev": "Vorherige Folie",
+  "slides": "Folien",
+  "slide": "Folie {slideNumber}"
 }

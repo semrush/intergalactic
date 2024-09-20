@@ -1,4 +1,6 @@
 {
-  "next": "Volgende",
-  "prev": "Vorige"
+  "next": "Volgende dia",
+  "prev": "Vorige dia",
+  "slides": "Dia's",
+  "slide": "Dia {slideNumber}"
 }
