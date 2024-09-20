@@ -41,7 +41,7 @@ Links can be colored for specific purposes. You can apply a specific color to li
 
 ## Link as button
 
-You can display a link as a button.
+In case you need to render a Link that looks like a Button, use the [Button component](/components/button/button-code) with `tag={'a'}`.
 
 ::: tip
 If you need to display disabled link as a `Button` you should remove `href` prop by yourself.
