@@ -18,16 +18,25 @@ test('Users can interact with Carousel via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.itemText()).toBe('Beauty of Nature image carousel');
+  expect(await voiceOver.itemText()).toBe('Beauty of Nature carousel');
   await voiceOver.interact();
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('list Beauty of Nature 3 items');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('Beauty of Nature group');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('1 of 3');
+  // 'A cyclist performing stunts in the forest',
+  // 'A vulture flies with its wings spread wide',
+  // 'A pug wrapped in a blanket sits on the road in the forest',
+  expect(await voiceOver.lastSpokenPhrase()).toContain(
+    'Open in fullscreen A cyclist performing stunts in the forest current item button',
+  );
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('2 of 3');
+  expect(await voiceOver.lastSpokenPhrase()).toContain(
+    'Open in fullscreen A vulture flies with its wings spread wide button',
+  );
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('3 of 3');
+  expect(await voiceOver.lastSpokenPhrase()).toContain(
+    'Open in fullscreen A pug wrapped in a blanket sits on the road in the forest button',
+  );
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

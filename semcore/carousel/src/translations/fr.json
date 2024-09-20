@@ -1,4 +1,6 @@
 {
-  "next": "Suivant",
-  "prev": "Précédent"
+  "next": "Diapositive suivante",
+  "prev": "Diapositive précédente",
+  "slides": "Diapositives",
+  "slide": "Diapositive {slideNumber}"
 }

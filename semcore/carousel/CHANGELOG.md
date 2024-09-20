@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.43.4] - 2024-09-06
 
-### Changed
+### Fixed
 
 - Carousel controls are not focusable and available to be navigated to each control by screen readers.
 
