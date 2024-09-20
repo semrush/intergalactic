@@ -4,7 +4,7 @@ import DropdownMenu from 'intergalactic/dropdown-menu';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
-const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
+const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
 const Demo = () => {
   const [tags, setTags] = React.useState([]);
@@ -45,7 +45,7 @@ const Demo = () => {
         visible={visible}
         onVisibleChange={(visible) => setVisible(visible)}
       >
-        <DropdownMenu.Trigger tag={InputTags} mt={2} w={200} size='l' onRemove={onRemoveLastTag}>
+        <DropdownMenu.Trigger tag={InputTags} mt={2} w={300} size='l' onRemove={onRemoveLastTag}>
           {tags.map((tag, i) => (
             <InputTags.Tag key={i} theme='primary'>
               <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>

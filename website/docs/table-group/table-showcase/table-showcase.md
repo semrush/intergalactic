@@ -7,11 +7,12 @@ docs: true
 
 Here, you can find quick links related to our table and its specific use cases.
 
+For the details about the main component for tables, refer to [Datatable](http://localhost:5173/intergalactic/table-group/data-table/data-table).
+
 ## Table types
 
-* [Primary table](/table-group/table-primary/table-primary): This is the fundamental table type designed for presenting extensive data volumes and complex functionality.
-* [Secondary table](/table-group/table-secondary/table-secondary): A table type for displaying a small amount of data in a compact format, without complex functionality within widgets and cards.
-
+- [Primary table](/table-group/table-primary/table-primary): This is the fundamental table type designed for presenting extensive data volumes and complex functionality.
+- [Secondary table](/table-group/table-secondary/table-secondary): A table type for displaying a small amount of data in a compact format, without complex functionality within widgets and cards.
 
 ## Controls
 
@@ -105,6 +106,8 @@ const styles = `
     margin: 0;
     margin-top: 12px;
     padding: 0;
+    padding-left: 0 !important;
+    list-style: none;
 
   }
 
@@ -127,7 +130,7 @@ const App = function () {
 
   return (
 
-    <div className='table-group-grid'>
+    <ul className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -138,7 +141,7 @@ const App = function () {
           type={item.type}
         />
       ))}
-    </div>
+    </ul>
 
   ); 
 }
@@ -206,6 +209,7 @@ const styles = `
     margin: 0;
     margin-top: 12px;
     padding: 0;
+    padding-left: 0 !important;
 
   }
 `; 
@@ -224,7 +228,7 @@ const App = function () {
 
   return (
 
-    <div className='table-group-grid'>
+    <ul className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -235,7 +239,7 @@ const App = function () {
           type={item.type}
         />
       ))}
-    </div>
+    </ul>
 
   ); 
 }
@@ -327,6 +331,7 @@ const styles = `
     margin: 0;
     margin-top: 12px;
     padding: 0;
+    padding-left: 0 !important;
 
   }
 `; 
@@ -345,7 +350,7 @@ const App = function () {
 
   return (
 
-    <div className='table-group-grid'>
+    <ul className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -356,7 +361,7 @@ const App = function () {
           type={item.type}
         />
       ))}
-    </div>
+    </ul>
 
   ); 
 }

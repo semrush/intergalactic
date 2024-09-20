@@ -8,7 +8,8 @@ import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import propsForElement from '@semcore/utils/lib/propsForElement';
-import Button from '../src';
+import Button, { ButtonLink } from '../src';
+import CloseM from '@semcore/icon/Close/m';
 
 describe('Button', () => {
   // beforeEach(cleanup);
@@ -690,5 +691,32 @@ describe('Button', () => {
         },
       ),
     ).toMatchImageSnapshot(task);
+  });
+});
+
+describe('ButtonLink', () => {
+  test.concurrent('renders correctly', async ({ task }) => {
+    const component = (
+      <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
+        <ButtonLink addonLeft={CheckM}>Button Link primary</ButtonLink>
+        <ButtonLink use={'secondary'}>
+          <ButtonLink.Addon>
+            <CheckM />
+          </ButtonLink.Addon>
+          <ButtonLink.Text>Button Link secondary</ButtonLink.Text>
+        </ButtonLink>
+        <ButtonLink addonRight={CloseM} color={'text-critical'}>
+          Close
+        </ButtonLink>
+
+        <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} />
+
+        <ButtonLink addonLeft={CheckM} size={500}>
+          Large size
+        </ButtonLink>
+      </Flex>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.37.0] - 2024-09-09
+
+### Added
+
+- Component `ButtonLink`.
+
 ## [5.36.0] - 2024-09-06
 
 ### Changed

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2024-08-29
+
+### Changed
+
+- Render confirm/cancel buttons with `ButtonLink` component.
+
 ## [4.41.3] - 2024-09-06
 
 ### Changed

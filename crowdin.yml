@@ -29,7 +29,117 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "semcore/d3-chart/src/a11y/translations/view/en.csv",
+    "first_line_contains_header": true,
+    "scheme" : "identifier,source_phrase,context,translation",
+    "translation": "/%original_path%/%two_letters_code%.csv",
+  },
+  {
     "source": "semcore/data-table/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/date-picker/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/drag-and-drop/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/dropdown/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/dropdown-menu/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/AccessDenied/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/Maintenance/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/PageError/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/PageNotFound/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/ProjectNotFound/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/feature-popover/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/feedback-form/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/fullscreen-modal/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/inline-edit/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/inline-input/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/input-number/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/input-tags/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/modal/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/notice/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/notice-bubble/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/notice-global/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/pagination/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/select/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/side-panel/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/skeleton/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/spin/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/tag/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {

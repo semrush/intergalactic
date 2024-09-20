@@ -1,38 +1,36 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
 import NeighborLocation from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
 import SpinButton from './SpinButton';
-
-import style from './style/button.shadow.css';
 import hasLabels from '@semcore/utils/lib/hasLabels';
+import { AbstractButtonProps } from './AbstractButton.type';
+import { Component, CORE_INSTANCE, Root, sstyled } from '@semcore/core';
 
-export const MAP_USE_DEFAULT_THEME = {
+export const MAP_USE_DEFAULT_THEME: Record<string, string> = {
   primary: 'info',
   secondary: 'muted',
   tertiary: 'info',
 };
 
-class RootButton extends Component {
-  static displayName = 'Button';
-  static enhance = [keyboardFocusEnhance()];
-  static style = style;
-  static defaultProps = {
-    use: 'secondary',
-    size: 'm',
-  };
-  containerRef = React.createRef();
+type Props = AbstractButtonProps<any, any, any>;
+
+export abstract class AbstractButton extends Component<Props, {}, {}> {
+  static displayName = 'AbstractButton';
+
+  containerRef = React.createRef<HTMLButtonElement>();
 
   state = {
     ariaLabelledByContent: null,
   };
 
+  protected abstract getTextColor(): string | undefined;
+
   getTextProps() {
     const { size } = this.asProps;
+
     return {
       size,
     };
@@ -50,21 +48,22 @@ class RootButton extends Component {
       logger.warn(
         this.containerRef.current && !hasLabels(this.containerRef.current) && !this.asProps.title,
         `'title' or 'aria-label' or 'aria-labelledby' are required props for buttons without text content`,
-        this.asProps['data-ui-name'] || RootButton.displayName,
+        this.asProps['data-ui-name'] || AbstractButton.displayName,
       );
     }
 
-    if (this.asProps['aria-labelledby']) {
+    const ariaLabelledby = this.asProps['aria-labelledby'];
+
+    if (ariaLabelledby) {
       setTimeout(() => {
         this.setState({
-          ariaLabelledByContent:
-            document.getElementById(this.asProps['aria-labelledby'])?.textContent ?? '',
+          ariaLabelledByContent: document.getElementById(ariaLabelledby)?.textContent ?? '',
         });
       }, 0);
     }
   }
 
-  renderButton({ buttonProps, children }) {
+  renderButton({ buttonProps, children }: any) {
     const { styles } = this.asProps;
     const SButton = Root;
 
@@ -75,7 +74,7 @@ class RootButton extends Component {
     );
   }
 
-  renderButtonWithHint({ buttonProps, children, hintProps }) {
+  renderButtonWithHint({ buttonProps, children, hintProps }: any) {
     const { styles } = this.asProps;
     const SButton = Root;
 
@@ -103,17 +102,20 @@ class RootButton extends Component {
       addonRight: AddonRight,
       hintPlacement,
     } = this.asProps;
+    // @ts-ignore
+    const Button = this[CORE_INSTANCE];
     const useTheme = use && theme ? `${use}-${theme}` : false;
     const SInner = Box;
     const SSpin = Box;
     const buttonAriaLabel = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
-    const buttonProps = {
+    const buttonProps: Record<string, any> = {
       type: 'button',
       tag: 'button',
       disabled,
       'use:theme': useTheme,
       ref: this.containerRef,
+      'text-color': this.getTextColor(),
       'aria-busy': loading,
       'aria-disabled': disabled,
       __excludeProps: ['title'],
@@ -132,6 +134,7 @@ class RootButton extends Component {
         {(neighborLocation) => {
           const children = sstyled(styles)(
             <>
+              {/* @ts-ignore */}
               <SInner tag='span' loading={loading}>
                 {AddonLeft ? (
                   <Button.Addon>
@@ -164,20 +167,3 @@ class RootButton extends Component {
     );
   }
 }
-
-function Text(props) {
-  const SText = Root;
-  return sstyled(props.styles)(<SText render={Box} tag='span' />);
-}
-
-function Addon(props) {
-  const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
-}
-
-const Button = createComponent(RootButton, {
-  Text,
-  Addon,
-});
-
-export default Button;

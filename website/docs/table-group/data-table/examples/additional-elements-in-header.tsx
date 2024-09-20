@@ -1,8 +1,22 @@
 import React from 'react';
 import DataTable from 'intergalactic/data-table';
 import ProgressBar from 'intergalactic/progress-bar';
+import { ScreenReaderOnly } from 'intergalactic/utils/lib/ScreenReaderOnly';
+
+const maxValue = 100;
 
 const Demo = () => {
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    const timerFetch = setInterval(() => {
+      setValue((value) => (value < maxValue ? value + 4 : 0));
+    }, 3000);
+    return () => {
+      clearInterval(timerFetch);
+    };
+  }, []);
+
   return (
     <DataTable data={data} aria-label={'Table title. Additional elements in header'}>
       <DataTable.Head>
@@ -10,11 +24,13 @@ const Demo = () => {
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
-        <ProgressBar value={40} size='s' style={{ borderRadius: 0 }}>
+        <ProgressBar value={value} size='s' style={{ borderRadius: 0 }} aria-hidden={true}>
           <ProgressBar.Value style={{ borderRadius: 0 }} />
         </ProgressBar>
       </DataTable.Head>
-      <DataTable.Body />
+      <DataTable.Body>
+        <ScreenReaderOnly aria-live={'polite'}>{value}%</ScreenReaderOnly>
+      </DataTable.Body>
     </DataTable>
   );
 };

@@ -7,7 +7,7 @@ import Dropdown from 'intergalactic/dropdown';
 import ChatM from 'intergalactic/icon/Chat/m';
 import Textarea from 'intergalactic/textarea';
 import { Text } from 'intergalactic/typography';
-import Button from 'intergalactic/button';
+import Button, { ButtonLink } from 'intergalactic/button';
 
 const validate = {
   description: (value = '') => {
@@ -144,13 +144,8 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger>
-          <Button theme={'info'} use={'tertiary'}>
-            <Button.Addon>
-              <ChatM />
-            </Button.Addon>
-            <Button.Text>Send feedback</Button.Text>
-          </Button>
+        <Dropdown.Trigger tag={ButtonLink} addonLeft={ChatM}>
+          Send feedback
         </Dropdown.Trigger>
         <Dropdown.Popper
           role={'dialog'}

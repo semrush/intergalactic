@@ -12,15 +12,15 @@ const Demo = () => {
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <Flex>
-          <Box p={3} style={{ width: 'var(--keyword_width)' }}>
+        <Flex role={'row'}>
+          <Box p={3} style={{ width: 'var(--keyword_width)' }} role={'gridcell'} tabIndex={-1}>
             Summary
           </Box>
-          <Box p={3} style={{ width: 'var(--kd_width)' }} />
-          <Box p={3} style={{ width: 'var(--cpc_width)' }}>
+          <Box p={3} style={{ width: 'var(--kd_width)' }} role={'gridcell'} tabIndex={-1} />
+          <Box p={3} style={{ width: 'var(--cpc_width)' }} role={'gridcell'} tabIndex={-1}>
             {data.reduce((sum, row) => sum + row.cpc, 0)}
           </Box>
-          <Box p={3} style={{ width: 'var(--vol_width)' }}>
+          <Box p={3} style={{ width: 'var(--vol_width)' }} role={'gridcell'} tabIndex={-1}>
             {data.reduce((sum, row) => sum + row.vol, 0)}
           </Box>
         </Flex>

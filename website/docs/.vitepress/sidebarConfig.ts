@@ -512,11 +512,6 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Bubble chart',
           },
           {
-            link: '/data-display/compact-horizontal-bar/compact-horizontal-bar',
-            activeMatch: '/data-display/compact-horizontal-bar/',
-            text: 'Compact horizontal bar bar chart',
-          },
-          {
             link: '/data-display/donut-chart/donut-chart',
             activeMatch: '/data-display/donut-chart/',
             text: 'Donut / Pie chart',
