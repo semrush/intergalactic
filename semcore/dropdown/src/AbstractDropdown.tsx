@@ -6,6 +6,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import { isFocusInside, setFocus } from '@semcore/utils/lib/use/useFocusLock';
 import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 import { DropdownProps } from './index';
+import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 type AbstractDDProps = {
   visible: boolean;
@@ -105,6 +106,7 @@ export abstract class AbstractDropdown extends Component<
   getListProps() {
     const { size, uid } = this.asProps;
     const triggerId = this.triggerRef.current?.id;
+    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
 
     return {
       size,
@@ -113,7 +115,7 @@ export abstract class AbstractDropdown extends Component<
       ref: this.menuRef,
       id: `igc-${uid}-list`,
       role: this.role,
-      'aria-labelledby': triggerId,
+      'aria-label': getAccessibleName(triggerElement),
     };
   }
 
