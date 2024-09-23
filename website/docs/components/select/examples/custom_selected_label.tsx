@@ -13,7 +13,7 @@ const options = Array(6)
 
 const Demo = () => (
   <Flex direction='column'>
-    <Text tag='label' size={200} htmlFor='basic-select'>
+    <Text tag='label' size={200} htmlFor='select-custom-label'>
       Select with custom selected label
     </Text>
     <Select
