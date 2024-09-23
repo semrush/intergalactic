@@ -625,18 +625,16 @@ class RootDefinitionTable extends Component<AsProps> {
     const currentHeaderCell = this.cellsMap.get(0)?.get(this.focusedCell[1]);
 
     let changed = true;
-    let newRow = this.focusedCell[0] + rowIndex;
-    let newCol = this.focusedCell[1] + colIndex;
+    const newRow = this.focusedCell[0] + rowIndex;
+    const newCol = this.focusedCell[1] + colIndex;
 
     if (
       ((hasFocusable && newRow < 0) || (!hasFocusable && newRow < 1) || newRow > maxRow) &&
       newRow !== this.focusedCell[0]
     ) {
-      newRow = this.focusedCell[0];
       changed = false;
     }
     if ((newCol < 0 || newCol > maxCol) && newCol !== this.focusedCell[1]) {
-      newCol = this.focusedCell[1];
       changed = false;
     }
 
