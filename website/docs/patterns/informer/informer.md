@@ -5,7 +5,7 @@ tabs: Design('informer'), Example('informer-code')
 
 ## Description
 
-**Informer** is a pattern used to show rich tooltips within the interface. It's useful when there is limited space to add, for example, a [hint link](/style/typography/typography#hints-hint-links) alongside a component.
+**Informer** is a pattern used to show rich tooltips within the interface. It's useful when there is limited space to add, for example, a [ButtonLink](../../components/button/button.md#button-with-link-styles) with text alongside a component.
 
 ## Appearance
 

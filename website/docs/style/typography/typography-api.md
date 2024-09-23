@@ -52,7 +52,9 @@ import { Blockquote } from 'intergalactic/typography';
 
 ## Hint
 
-The hint is very similar to [Link component](/components/link/link) and has a similar structure from `Addon` + `Text`.
+::: warning
+The [ButtonLink](../../components/button/button-code#button-looking-like-link) component has been implemented to replace the `Hint` component. Using `Hint` as a button or a pseudo-link is no longer recommended.
+:::
 
 ```jsx
 import { Hint } from 'intergalactic/typography';

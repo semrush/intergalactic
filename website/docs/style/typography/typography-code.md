@@ -65,12 +65,6 @@ For proper nested ordered lists counting, you need to explicitly specify the `st
 
 ## Hint with button role
 
-For `Hint` with `role=button` your need to add `onKeyDown` handler yourself for correct working from the keyboard.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/hint-with-button-role.tsx';
-</script>
-
+::: warning
+The [ButtonLink](../../components/button/button-code#button-looking-like-link) component has been implemented to replace the `Hint` component. Using `Hint` as a button or a pseudo-link is no longer recommended.
 :::

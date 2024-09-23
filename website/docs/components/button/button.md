@@ -275,7 +275,7 @@ Table: States for all buttons types and themes
 ## Button with Link styles
 
 ::: warning
-This component was created to ensure proper accessibility for existing patterns in the interface. Avoid adding buttons with link styles into new interfaces. Instead, use either `Button` or `Link` depending on what the element does.
+This component was created to ensure proper accessibility for existing patterns in the interface. Avoid adding buttons with link styles into new interfaces, especially with `use="primary"`. Instead, use either `Button` or `Link` depending on what the element does.
 :::
 
 If you need an element that looks like a link, but has the native button semantics, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the dialog trigger.
@@ -287,6 +287,21 @@ Table: Button with Link styles
 | `primary`   | ![](static/button-link-primary.png)   |
 | `secondary` | ![](static/button-link-secondary.png) |
 
+The following table shows in which cases you should use `primary` or `secondary` `ButtonLink`.
+
+Table: How to choose what type of ButtonLink you should use
+
+| Action on the page                     | use="primary"                       | use="secondary" |
+| -------------------------------------- | ----------------------------------- | --------------- |
+| Reloading the page                     | ✅                                  | ❌              |
+| Updating data in a small block/widget  | ✅                                  | ❌              |
+| Updating data in a table row           | Allowed if it's an important action | ✅              |
+| Opening a modal window                 | Allowed if it's an important action | ✅              |
+| Opening a dropdown                     | Allowed if it's an important action | ✅              |
+| Opening an accordion                   | Allowed if it's an important action | ✅              |
+| Opening the full text on the same page | ❌                                  | ✅              |
+| `DescriptionTooltip` on click          | ❌                                  | ✅              |
+
 ## Button width
 
 The button width is determined by its content. But it can also be stretched to a certain width. For example:
@@ -295,11 +310,11 @@ The button width is determined by its content. But it can also be stretched to a
 w="100%"
 ```
 
-It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
+It's necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
 
 ![](static/button-width.png)
 
-It is important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
+It's important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
 
 ![](static/button-width2.png)
 
