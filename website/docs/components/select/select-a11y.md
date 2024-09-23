@@ -7,75 +7,65 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 
 ## What component has
 
-### Keyboard support for select and multiselect lists
+### Keyboard support
 
 Table: Keyboard support
 
-| Key                            | Function                                                                                                                                  |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Moves focus to the next focusable element.                                                                                                |
-| `Shift + Tab` | Moves focus to the previous focusable element.                                                                                            |
-| `Space` , `Enter` , `Down Arrow` | When focus is on the trigger, opens the dropdown.                                                                                         |
-| `Up Arrow` , `Down Arrow` | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
-| `Space` , `Enter` | Selects the option and closes the dropdown.                                                                                               |
-| `Esc` | Closes the dropdown and returns focus to the trigger.                                                                                     |
+| Key                                   | Function                                                                                                                                  |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`, <nobr>`Shift + Tab`</nobr>     | Moves focus to the next (or previous) focusable element. <br/>When the dropdown is open, focus cycles through the focusable elements within the dropdown.    |
+| `Space`, `Enter`                      | Opens and closes the dropdown. <br/>When the dropdown is open and an option is highlighted, selects or deselects the highlighted option.      |
+| `Up Arrow`, <nobr>`Down Arrow`</nobr> | Opens the dropdown. <br/>When the dropdown is open, moves the highlight through the options. If the last/first option is highlighted, moves to the first/last option respectively. |
+| `Esc`                                 | Closes the dropdown without changing the `Select` value. |
 
-### Roles and attributes for listbox
+### Roles and attributes
 
 The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role       | Attribute                      | Element | Usage                                                                                                                                                                 |
-| ---------- | ------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `button` |                                | `div` | Identifies Select. Trigger as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label` .                        |
-| `listbox` |                                | `div` | Identifies the element as a `listbox` .                                                                                                                                |
-| `option` |                                | `div` | Identifies the element as a `listbox` option. The text content of the element provides the accessible name of the option.                                             |
-| `checkbox` |                                | `div` | Identifies the div element as a checkbox. The child text content of this `div` provides the accessible name of the checkbox.                                          |
-|            | `aria-selected="true"` | `li` | Specified on an option in the `listbox` when it is visually highlighted as selected. Occurs only when an option in the list is referenced by `aria-activedescendant` . |
-|            | `aria-label="List of options"` | `div` | Defines a string value that labels an interactive element. It is required props for select without text content.                                                      |
+| Component            | Attribute                         | Usage                                                                                                                                                                 |
+| -------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Select.Trigger`     | `role="combobox"`                 | Identifies the element as a combobox, that is an input that opens a list of options or a grid. |
+|                      | `aria-activedescendant="IDREF"`   | When the list is open, indicates which option is currently highlighted. |
+|                      | `aria-autocomplete="list"`        | **Only if an [Input](../input/input) is used as the trigger.** Indicates that a list of values that could complete the input is provided during input. |
+|                      | `aria-controls="IDREF"`           | Identifies the element that's controlled by the trigger. If `Select` is used with `Select.Menu` or without nested elements, refers to `Select.List`. Otherwise, refers to `Select.Popper`. |
+|                      | `aria-disabled="true/false"`      | Indicates whether the `Select` is disabled or enabled. |
+|                      | `aria-expanded="true/false"`      | Indicates whether the dropdown is open or closed. |
+|                      | `aria-haspopup="listbox"`         | Indicates that the trigger opens a list of options. |
+| `Select.List`        | `role="listbox"`                  | Identifies the element as a list of options. |
+|                      | `aria-label`                      | Defines an accessible name for the list of options. Automatically populated from the accessible name of the trigger. |
+|                      | `aria-multiselectable="true"`     | **Only if the `multiselect` property is set.** Indicates that multiple options can be selected. |
+| `Select.Option`      | `role="option"`                   | Identifies the element as a selectable item in a listbox. |
+|                      | `aria-selected="true/false"`      | Indicates whether the option value is currently selected. |
+|                      | `aria-disabled="true/false"`      | Indicates whether the option is disabled or enabled.  |
+| `Select.InputSearch.Clear` | `aria-label="Clear search field"` | Defines an accessible name for the **Clear** button. |
 
-### Roles and attributes for combobox
-
-The following list describes roles and attributes that component already has.
-
-Table: Roles and attributes
-
-| Role       | Attribute                       | Element | Usage                                                                                                                                                                                                                                                                                                                                 |
-| ---------- | ------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `combobox` |                                 | `div` | Identifies the input as a `combobox` .                                                                                                                                                                                                                                                                                                 |
-|            | `aria-labelledby="#IDREF"` | `div` | Identifies the element that labels the combobox.                                                                                                                                                                                                                                                                                      |
-|            | `aria-controls="#IDREF"` | `div` | Identifies the element that serves as the popup.                                                                                                                                                                                                                                                                                      |
-|            | `aria-expanded="false"` | `div` | Indicates that the popup element isn’t displayed.                                                                                                                                                                                                                                                                                    |
-|            | `aria-expanded="true"` | `div` | Indicates that the popup element is displayed.                                                                                                                                                                                                                                                                                        |
-|            | `aria-activedescendant="IDREF"` | `div` | When an option in the listbox is visually indicated as having keyboard focus, refers to that option. When navigation keys, such as `Down Arrow` , are pressed, the JavaScript changes the value. Enables assistive technologies to know which element the application regards as focused while DOM focus remains on the input element. |
-|            | `aria-autocomplete` | `div` | Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for a `combobox` , `searchbox` , or `textbox` and specifies how predictions will be presented if they are made.                                                                                                          |
-|            | `aria-haspopup` | `div` | Indicates the availability and type of interactive popup element that can be triggered by the element on which the attribute is set.                                                                                                                                                                                                  |
-
-* [Listbox Example with Grouped Options](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-grouped/) article demonstrates a single-select listbox widget with grouped options.
-* Find more information in [ARIA Authoring Practices Guide from W3C](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html).
-* For more information about the radio or checkbox list see [Radio button](/components/radio/radio-a11y) and [Checkbox](/components/checkbox/checkbox-a11y) guides.
 <!-- * For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper). -->
 
 ## Considerations for developers
 
 ### Roles and attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+The following list will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
 Table: Roles and attributes
 
-| Role | Attribute    | Element | Usage                                                                                                            |
-| ---- | ------------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
-|      | `aria-label` | `div` | Defines a string value that labels an interactive element. It is required props for select without text content. |
+| Component            | Attribute                       | Usage                                                                                         |
+| -------------------- | ------------------------------- | --------------------------------------------------------------------------------------------- |
+| `Select.InputSearch` | `role="combobox"`               | Identifies the element as a combobox, that is an input that opens a list of options or a grid. [Example of this and the following attributes usage](./select-code.md#options-filtering). |
+|                      | `aria-autocomplete="list"`      | Indicates that a list of values that could complete the input is provided during input. |
+|                      | `aria-controls="IDREF"`         | Identifies the element that's controlled by the trigger. Should refer to the `Select.List`. |
+|                      | `aria-owns="IDREF"`             | Indicates the functional hierarchy between the `InputSearch` and the list of options. Should refer to the `Select.List`. |
+|                      | `aria-expanded="true"`          | Indicates that the associated list of options is open. |
+|                      | `aria-activedescendant="IDREF"` | Indicates which option is currently highlighted. |
 
 ## Resources
 
-* [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives core recommendations for the accessible select lists.
-* Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
+* Select-only combobox example in [ARIA Authoring Practices Guide from W3C](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html).
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 <!--@include: ./select-a11y-report.md-->
