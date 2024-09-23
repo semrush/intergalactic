@@ -12,8 +12,8 @@ const Demo = () => {
         const a = aRow[prop as SortableColumn];
         const b = bRow[prop as SortableColumn];
         if (a === b) return 0;
-        if (sortDirection === 'asc') return a - b;
-        else return b - a;
+        if (sortDirection === 'asc') return a > b ? 1 : -1;
+        else return a > b ? -1 : 1;
       }),
     [sort],
   );
