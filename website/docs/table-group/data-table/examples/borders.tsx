@@ -1,17 +1,16 @@
 import React from 'react';
-import DataTable, { DataTableSort } from 'intergalactic/data-table';
+import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
-    <DataTable data={data} sort={sort} onSortChange={setSort} aria-label={'Table title. Borders'}>
+    <DataTable data={data} aria-label={'Table title. Borders'}>
       <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' sortable />
+        <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column vBorders>
           Organic Sessions
-          <DataTable.Column name='kd' children='KD %' sortable />
-          <DataTable.Column name='cpc' children='CPC' sortable />
+          <DataTable.Column name='kd' children='KD %' />
+          <DataTable.Column name='cpc' children='CPC' />
           <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Column>
         <DataTable.Column name='other' children='Other' />
