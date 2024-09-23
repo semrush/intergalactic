@@ -13,7 +13,8 @@ Table: Keyboard support
 | Key                               | Function                                                                        |
 | --------------------------------- | ------------------------------------------------------------------------------- |
 | `Tab`, <nobr>`Shift + Tab`</nobr> | Moves focus to the next (or previous) focusable element.                        |
-| `Enter`, `Space`                  | If a `Stepper` is focused, activates it and switches to the corresponding step. |
+| `Up Arrow`, <nobr>`Down Arrow`</nobr> | If a `Stepper` is focused, selects the previous (or next) `Stepper`.        |
+| `Enter`, `Space`                  | If a `Stepper` is selected, activates it and switches to the corresponding step. |
 | `Esc`                             | Closes the wizard.                                                              |
 
 See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
