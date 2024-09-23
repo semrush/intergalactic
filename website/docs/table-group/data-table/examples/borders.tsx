@@ -2,7 +2,6 @@ import React from 'react';
 import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
-
   return (
     <DataTable data={data} aria-label={'Table title. Borders'}>
       <DataTable.Head>

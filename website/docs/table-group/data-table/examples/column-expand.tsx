@@ -2,12 +2,8 @@ import React from 'react';
 import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
-
   return (
-    <DataTable
-      data={data}
-      aria-label={'Table title. Column expanded'}
-    >
+    <DataTable data={data} aria-label={'Table title. Column expanded'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' wMax={'300px'} />
         <DataTable.Column name='kd' children='Difficulty Difficulty' wMax={'85px'} />
