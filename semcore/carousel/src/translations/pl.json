@@ -1,4 +1,6 @@
 {
-  "next": "Dalej",
-  "prev": "Poprzednio"
+  "next": "Następny slajd",
+  "prev": "Poprzedni slajd",
+  "slides": "Slajdy",
+  "slide": "Slajd {slideNumber}"
 }

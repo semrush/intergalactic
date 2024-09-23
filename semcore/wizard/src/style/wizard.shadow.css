@@ -97,3 +97,7 @@ SContent {
     0;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
+
+SSidebarMenu {
+  display: contents;
+}

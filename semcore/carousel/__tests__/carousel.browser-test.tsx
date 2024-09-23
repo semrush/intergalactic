@@ -17,7 +17,7 @@ test.describe('Carousel', () => {
     await page.getByLabel('Next').click();
     await page.getByLabel('Next').click();
 
-    const items = await page.getByRole('listitem').all();
+    const items = await page.locator('[data-ui-name="Carousel.Item"]').all();
 
     expect(items.length).toBe(3);
 

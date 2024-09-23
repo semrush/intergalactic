@@ -54,7 +54,7 @@ Although it's technically possible to use interactive elements inside a Tooltip,
 
 ### Hint default attributes
 
-The list below describes roles and attributes the component already has.
+The following list describes roles and attributes the component already has.
 
 Table: Hint default attributes
 
@@ -66,7 +66,7 @@ Table: Hint default attributes
 
 ### Tooltip default attributes
 
-The list below describes roles and attributes the component already has.
+The following list describes roles and attributes the component already has.
 
 Table: Tooltip default attributes
 
@@ -79,7 +79,7 @@ Table: Tooltip default attributes
 
 ### DescriptionTooltip default attributes
 
-The list below describes roles and attributes the component already has.
+The following list describes roles and attributes the component already has.
 
 Table: DescriptionTooltip default attributes
 
