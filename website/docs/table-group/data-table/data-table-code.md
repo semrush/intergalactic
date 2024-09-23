@@ -96,7 +96,7 @@ To enable column sorting:
 
 ## Pagination
 
-It is important, to put pagination outside of table body.
+Avoid placing [Pagination](/components/pagination/pagination) inside the table, as the pagination component has a `nav` landmark assigned to it.
 
 ::: sandbox
 
