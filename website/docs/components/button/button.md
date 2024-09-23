@@ -291,16 +291,16 @@ The following table shows in which cases you should use `primary` or `secondary`
 
 Table: How to choose what type of ButtonLink you should use
 
-| Action on the page                     | use="primary"                        | use="secondary" |
-| -------------------------------------- | ------------------------------------ | ---------- |
-| Reloading the page                     | ✅                                   | ❌         |
-| Updating data in a small block/widget  | ✅                                   | ❌         |
-| Updating data in a table row           | Allowed if it is an important action | ✅         |
-| Opening a modal window                 | Allowed if it is an important action | ✅         |
-| Opening a dropdown                     | Allowed if it is an important action | ✅         |
-| Opening an accordion                   | Allowed if it is an important action | ✅         |
-| Opening the full text on the same page | ❌                                   | ✅         |
-| `DescriptionTooltip` on click          | ❌                                   | ✅         |
+| Action on the page                     | use="primary"                       | use="secondary" |
+| -------------------------------------- | ----------------------------------- | --------------- |
+| Reloading the page                     | ✅                                  | ❌              |
+| Updating data in a small block/widget  | ✅                                  | ❌              |
+| Updating data in a table row           | Allowed if it's an important action | ✅              |
+| Opening a modal window                 | Allowed if it's an important action | ✅              |
+| Opening a dropdown                     | Allowed if it's an important action | ✅              |
+| Opening an accordion                   | Allowed if it's an important action | ✅              |
+| Opening the full text on the same page | ❌                                  | ✅              |
+| `DescriptionTooltip` on click          | ❌                                  | ✅              |
 
 ## Button width
 
@@ -310,11 +310,11 @@ The button width is determined by its content. But it can also be stretched to a
 w="100%"
 ```
 
-It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
+It's necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
 
 ![](static/button-width.png)
 
-It is important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
+It's important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
 
 ![](static/button-width2.png)
 

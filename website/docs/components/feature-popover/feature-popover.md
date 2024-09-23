@@ -87,7 +87,7 @@ FeaturePopover contains only simple reference/promotional information. The purpo
 
 **Use it when:**
 
-- It is necessary to draw the user’s attention to an interface part.
+- It's necessary to draw the user’s attention to an interface part.
 - You need to point at the next step for the user.
 
 ::: warning

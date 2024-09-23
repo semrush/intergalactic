@@ -53,7 +53,7 @@ Note that links (anchor elements) are only keyboard operable by default if they 
 
 ### Button
 
-- Buttons are highlighted with a blue outline when focused on, regardless of the button color.
+- Buttons are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/design-tokens#semantic_tokens)), regardless of the button theme.
 - When you press `Enter` or `Space`, the button is activated.
 
 ### Input and textarea
