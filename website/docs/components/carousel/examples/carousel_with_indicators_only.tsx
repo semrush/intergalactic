@@ -16,13 +16,21 @@ const width = 600;
 const imageWidth = width - 75;
 
 const Demo = () => (
-  <Carousel w={width} aria-roledescription='image carousel' aria-label='Beauty of Nature'>
+  <Carousel w={width} aria-roledescription='carousel' aria-label='Beauty of Nature'>
     <>
       <Flex>
         <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
           <Carousel.Container>
             {images.map((url, index) => (
-              <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
+              <Carousel.Item
+                tag='img'
+                role='button'
+                key={url}
+                src={url}
+                w={imageWidth}
+                alt={altTexts[index]}
+                aria-label={`Open in fullscreen ${altTexts[index]}`}
+              />
             ))}
           </Carousel.Container>
         </Box>

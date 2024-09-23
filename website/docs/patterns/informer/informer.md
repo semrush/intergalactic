@@ -11,7 +11,7 @@ tabs: Design('informer'), Example('informer-code')
 
 The informer consists of the following elements:
 
-- [ButtonLink](../../components/button/button.md#button-with-link-styles) with the `Info` icon and without text, with `margin-left: 4px`
+- [ButtonLink](../../components/button/button#button-with-link-styles) with the `Info` icon and without text, with `margin-left: 4px`
 - [DescriptionTooltip](/components/tooltip/tooltip) with the message (appears on clicking or pressing Enter/Space on the icon)
 
 ::: tip

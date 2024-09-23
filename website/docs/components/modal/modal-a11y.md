@@ -14,13 +14,13 @@ Table: Keyboard support
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
 | `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Esc`         | Closes the modal. Refer to [Closing the modal](./modal.md#closing-the-modal) for more details. |
+| `Esc`         | Closes the modal. Refer to [Closing the modal](./modal#closing-the-modal) for more details. |
 
 See more about the focus behavior in the modal in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard-support-for-modal-window).
 
 ### Roles & attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles & attributes
 

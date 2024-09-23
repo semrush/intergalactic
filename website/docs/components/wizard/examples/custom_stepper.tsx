@@ -3,8 +3,6 @@ import Wizard from 'intergalactic/wizard';
 import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
-import ArrowRight from 'intergalactic/icon/ArrowRight/m';
-import ArrowLeft from 'intergalactic/icon/ArrowLeft/m';
 import Input from 'intergalactic/input';
 import Radio, { RadioGroup } from 'intergalactic/radio';
 
@@ -34,10 +32,10 @@ const Demo = () => {
     <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title='Header'>
+        <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={setStep}>
             Personal
-            <Text color='#FFFFFF95' tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
@@ -46,7 +44,7 @@ const Demo = () => {
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={setStep} number={2.1}>
             Import source
-            <Text color='#FFFFFF95' tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
               {value === '' ? 'Not selected' : value}
             </Text>
           </Wizard.Stepper>
@@ -60,42 +58,28 @@ const Demo = () => {
           </Wizard.Step>
           <Wizard.Step step={3}>
             <RadioGroup name='radio' value={value} onChange={setValue}>
-              <Radio mr={2}>
+              <Radio mr={2} mb={3}>
                 <Radio.Value value='Manually' />
                 <Radio.Text>Manually</Radio.Text>
               </Radio>
-              <Radio mr={2}>
+              <Radio mr={2} mb={3}>
                 <Radio.Value value='From TXT' />
                 <Radio.Text>From TXT</Radio.Text>
               </Radio>
-              <Radio mr={2}>
+              <Radio mr={2} mb={3}>
                 <Radio.Value value='From SCV' />
                 <Radio.Text>From SCV</Radio.Text>
               </Radio>
             </RadioGroup>
           </Wizard.Step>
-          <Flex justifyContent='space-between' w='100%'>
+          <Flex mt={5}>
             {step > 1 && (
-              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
-                <Button.Addon>
-                  <ArrowLeft />
-                </Button.Addon>
-                <Button.Text>{steps[step - 2].title}</Button.Text>
-              </Button>
+              <Wizard.StepBack onActive={setStep}>{steps[step - 2].title}</Wizard.StepBack>
             )}
             {step !== steps.length && (
-              <Button
-                use='tertiary'
-                mt={5}
-                onClick={() => {
-                  setStep(step + 1);
-                }}
-              >
-                <Button.Text>{steps[step].title}</Button.Text>
-                <Button.Addon>
-                  <ArrowRight />
-                </Button.Addon>
-              </Button>
+              <Wizard.StepNext ml='auto' onActive={setStep}>
+                {steps[step].title}
+              </Wizard.StepNext>
             )}
           </Flex>
         </Wizard.Content>

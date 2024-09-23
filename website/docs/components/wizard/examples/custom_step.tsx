@@ -3,24 +3,25 @@ import Wizard from 'intergalactic/wizard';
 import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
-import ArrowRight from 'intergalactic/icon/ArrowRight/m';
-import ArrowLeft from 'intergalactic/icon/ArrowLeft/m';
 import Input from 'intergalactic/input';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
-    <Flex ref={ref} direction='column'>
-      <Input mb={4}>
-        <Input.Value placeholder='Your name' />
+    <Flex ref={ref} direction='column' gap={4}>
+      <Text size={500} tag='h3'>
+        Keywords
+      </Text>
+      <Input>
+        <Input.Value placeholder='Keyword 1' />
       </Input>
       <Input>
-        <Input.Value placeholder='Your email' />
+        <Input.Value placeholder='Keyword 2' />
       </Input>
     </Flex>
   );
 });
 
-const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
+const steps = [{ title: 'Keywords' }, { title: 'Location' }, { title: 'Schedule' }];
 
 const Demo = () => {
   const [step, setStep] = React.useState(1);
@@ -31,16 +32,16 @@ const Demo = () => {
   return (
     <>
       <Button onClick={handleOpen}>Open modal</Button>
-      <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title='Header'>
+      <Wizard visible={visible} step={step} w={600} h={400} onClose={handleClose}>
+        <Wizard.Sidebar title='Site Audit Settings'>
           <Wizard.Stepper step={1} onActive={setStep}>
-            Step 1
+            {steps[0].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={setStep}>
-            Step 2
+            {steps[1].title}
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={setStep}>
-            Step 3
+            {steps[2].title}
           </Wizard.Stepper>
         </Wizard.Sidebar>
         <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
@@ -51,35 +52,17 @@ const Demo = () => {
             }}
           </Wizard.Step>
           <Wizard.Step step={3}>
-            <Text size={400} fontWeight={500}>
+            <Text size={500} tag='h3'>
               Final step
             </Text>
             <Text tag='p' mt={2}>
               Congratulations on passing all the steps!
             </Text>
           </Wizard.Step>
-          <Flex justifyContent='space-between' w='100%'>
-            {step > 1 && (
-              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
-                <Button.Addon>
-                  <ArrowLeft />
-                </Button.Addon>
-                <Button.Text>{steps[step - 2].title}</Button.Text>
-              </Button>
-            )}
+          <Flex mt={5}>
+            {step > 1 && <Wizard.StepBack onActive={setStep} stepName={steps[step - 2].title} />}
             {step !== steps.length && (
-              <Button
-                use='tertiary'
-                mt={5}
-                onClick={() => {
-                  setStep(step + 1);
-                }}
-              >
-                <Button.Text>{steps[step].title}</Button.Text>
-                <Button.Addon>
-                  <ArrowRight />
-                </Button.Addon>
-              </Button>
+              <Wizard.StepNext ml='auto' onActive={setStep} stepName={steps[step].title} />
             )}
           </Flex>
         </Wizard.Content>

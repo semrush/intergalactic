@@ -7,7 +7,7 @@ tabs: Design('feedback-rating'), A11y('feedback-rating-a11y'), Example('feedback
 
 ### Roles and attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 

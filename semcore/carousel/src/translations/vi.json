@@ -1,4 +1,6 @@
 {
-  "next": "Tiếp",
-  "prev": "Trước"
+  "next": "Slide tiếp theo",
+  "prev": "Slide trước",
+  "slides": "Slide",
+  "slide": "Slide {slideNumber}"
 }
