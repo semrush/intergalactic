@@ -26,6 +26,7 @@ function Demo() {
       plotHeight={28}
       showLegend={true}
       a11yAltTextConfig={a11yAltTextConfig}
+      aria-lable={'Cigarette chart'}
     />
   );
 }

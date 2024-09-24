@@ -9,6 +9,7 @@ const Demo = () => {
       plotWidth={500}
       plotHeight={300}
       invertAxis={true}
+      aria-lable={'CompactHorizontalBar chart'}
     />
   );
 };

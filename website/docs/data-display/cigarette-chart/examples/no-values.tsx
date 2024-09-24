@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart, interpolateValue } from 'intergalactic/d3-chart';
 
 function Demo() {
-  return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} showLegend={true} />;
+  return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} showLegend={true} aria-lable={'Cigarette chart'} />;
 }
 
 const data: Record<string, number | typeof interpolateValue> = {

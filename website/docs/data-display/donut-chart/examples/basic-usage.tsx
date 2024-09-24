@@ -4,7 +4,7 @@ import { Chart } from 'intergalactic/d3-chart';
 const Demo = () => {
   return (
     <div style={{ width: '450px' }}>
-      <Chart.Donut plotWidth={300} plotHeight={300} data={data} />
+      <Chart.Donut plotWidth={300} plotHeight={300} data={data} aria-lable={'Donut chart'} />
     </div>
   );
 };

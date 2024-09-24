@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart, colors } from 'intergalactic/d3-chart';
 
 const Demo = () => {
-  return <Chart.Radar data={data} groupKey={'categories'} plotWidth={400} plotHeight={400} />;
+  return <Chart.Radar data={data} groupKey={'categories'} plotWidth={400} plotHeight={400} aria-lable={'Radar chart'} />;
 };
 
 const data = {
