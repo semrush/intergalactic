@@ -27,7 +27,7 @@ const Demo = () => {
         plotWidth={500}
         plotHeight={450}
         onClickBar={(barIndex) => alert(`Bar ${barIndex} clicked`)}
-        aria-lable={'CompactHorizontalBar chart'}
+        aria-label={'CompactHorizontalBar chart'}
       />
     </Flex>
   );

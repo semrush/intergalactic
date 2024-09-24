@@ -2,7 +2,9 @@ import React from 'react';
 import { Chart } from 'intergalactic/d3-chart';
 
 function Demo() {
-  return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} aria-lable={'Cigarette chart'} />;
+  return (
+    <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} aria-label={'Cigarette chart'} />
+  );
 }
 
 const data = {

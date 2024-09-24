@@ -48,7 +48,7 @@ export type ListData = ObjectData[];
  * Chart must have an accessible name (aria-name).
  * It should describe chart content.
  */
-type ChartContainerAriaProps = Intergalactic.RequireAtLeastOne<{
+export type ChartContainerAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
   title?: string;
