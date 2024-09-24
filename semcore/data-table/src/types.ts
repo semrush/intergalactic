@@ -66,3 +66,6 @@ export type RowData<
     [ROW_GROUP]: RowData[];
   }>;
 export type NestedCells = (Cell | NestedCells)[] & { flatRowData?: RowData };
+
+export type RowIndex = number;
+export type ColIndex = number;

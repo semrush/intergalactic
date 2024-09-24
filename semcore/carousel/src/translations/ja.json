@@ -1,4 +1,6 @@
 {
-  "next": "次へ",
-  "prev": "前へ"
+  "next": "次のスライド",
+  "prev": "前のスライド",
+  "slides": "スライド",
+  "slide": "スライド{slideNumber}"
 }

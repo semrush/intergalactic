@@ -19,7 +19,7 @@ const Demo = () => {
 
   return (
     <Accordion value={value} onChange={setValue}>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table title. In table'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />
@@ -34,7 +34,7 @@ const Demo = () => {
                 active: value.includes(index),
                 collapse: {
                   children: (
-                    <DataTable data={data}>
+                    <DataTable data={data} aria-label={'Table title. In table'}>
                       {/* [1] Hide the table header */}
                       <DataTable.Head hidden>
                         {/* [2] Set "inherit" to use the size from the top table for each column. */}

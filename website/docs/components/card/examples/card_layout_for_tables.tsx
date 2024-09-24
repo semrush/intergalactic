@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from 'intergalactic/card';
-import { Text } from 'intergalactic/typography';
 import SettingsM from 'intergalactic/icon/Settings/m';
 import DataTable from 'intergalactic/data-table';
 
@@ -56,7 +55,7 @@ const Demo = () => (
       </Card.Description>
     </Card.Header>
     <Card.Body p={'0 0 20px 0'}>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table in card'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />

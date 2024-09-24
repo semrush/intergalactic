@@ -12,7 +12,7 @@ See detailed information about the keyboard support for the all clickable elemen
 
 ### Roles & attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles & attributes
 

@@ -1,4 +1,6 @@
 {
-  "next": "다음",
-  "prev": "이전"
+  "next": "다음 슬라이드",
+  "prev": "이전 슬라이드",
+  "slides": "슬라이드",
+  "slide": "슬라이드 {slideNumber}"
 }

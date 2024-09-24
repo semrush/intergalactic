@@ -35,6 +35,10 @@
     "translation": "/%original_path%/%two_letters_code%.csv",
   },
   {
+    "source": "semcore/data-table/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/date-picker/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
@@ -92,6 +96,10 @@
   },
   {
     "source": "/semcore/input-number/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/input-tags/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {

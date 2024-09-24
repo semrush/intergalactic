@@ -195,11 +195,11 @@ describe('Wizard', () => {
   test('a11y', async () => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title='Header' role={undefined}>
-          <Wizard.Stepper step={1} aria-label='step 1' role={undefined}>
+        <Wizard.Sidebar title='Header'>
+          <Wizard.Stepper step={1} aria-label='step 1'>
             Step 1
           </Wizard.Stepper>
-          <Wizard.Stepper step={2} aria-label='step 2' role={undefined}>
+          <Wizard.Stepper step={2} aria-label='step 2'>
             Step 2
           </Wizard.Stepper>
         </Wizard.Sidebar>

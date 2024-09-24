@@ -56,3 +56,15 @@ For example, to find out whether an element is selected and to highlight it, pas
 </script>
 
 :::
+
+## SEO friendly accordion
+
+By default, collapsed sections are not rendered in the DOM. If you need to render all sections, pass `preserveNode` to the `Accordion.Item.Collapse` component.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/seo.tsx';
+</script>
+
+:::

@@ -11,13 +11,28 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Button from 'intergalactic/button';
+import Button, { ButtonLink } from 'intergalactic/button';
 import CheckM from 'intergalactic/icon/Check/m';
-
+import CheckL from 'intergalactic/icon/Check/l';
 import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
+import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
 
-const SIZES = ['m', 'l'];
-const USE = ['primary', 'secondary', 'tertiary'];
+const COMPONENTS = [Button, ButtonLink];
+const SIZES_BUTTON = ['m', 'l'];
+const SIZES_LINK = [
+  { value: '100', name: '100 = 12px' },
+  { value: '200', name: '200 = 14px' },
+  { value: '300', name: '300 = 16px' },
+  { value: '400', name: '400 = 20px' },
+  { value: '500', name: '500 = 24px' },
+  { value: '600', name: '600 = 32px' },
+  { value: '700', name: '700 = 36px' },
+  { value: '800', name: '800 = 48px' },
+];
+const USE = {
+  Button: ['primary', 'secondary', 'tertiary'],
+  ButtonLink: ['primary', 'secondary'],
+};
 const THEME = {
   primary: ['info', 'success', 'warning', 'danger', 'invert'],
   secondary: ['info', 'muted', 'invert'],
@@ -27,33 +42,64 @@ const THEME = {
 const Preview = (preview) => {
   const { bool, select, radio, text } = preview('Button');
 
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: SIZES,
+  const component = select({
+    key: 'component',
+    defaultValue: 'Button',
+    label: 'Component',
+    options: COMPONENTS.map((component) => ({
+      name: component.displayName,
+      value: component.displayName,
+    })),
   });
+
+  const sizeButton = component === 'Button'
+  ? radio({
+      key: 'sizeButton',
+      defaultValue: 'm',
+      label: 'Size',
+      options: SIZES_BUTTON,
+    })
+  : null;
+
+  const sizeLink = component === 'ButtonLink'
+  ? select({
+      key: 'sizeLink',
+      defaultValue: '300',
+      label: 'Size',
+      options: SIZES_LINK,
+    })
+  : null;
 
   const use = select({
     key: 'use',
     defaultValue: 'secondary',
     label: 'Use',
-    options: USE.map((value) => ({
+    options: USE[component].map((value) => ({
       name: value,
       value,
     })),
   });
 
-  const theme = select({
-    key: 'theme',
-    placeholder: 'Select theme',
-    // defaultValue: THEME["secondary"][1],
-    label: 'Theme',
-    options: THEME[use].map((value) => ({
-      name: value,
-      value,
-    })),
-  });
+  const theme = component === 'Button'
+  ? select({
+      key: 'theme',
+      placeholder: 'Select theme',
+      label: 'Theme',
+      options: THEME[use].map((value) => ({
+        name: value,
+        value,
+      })),
+    })
+  : null;
+
+  const color = component === 'ButtonLink'
+  ? text({
+      key: 'color',
+      label: 'Color',
+      defaultValue: '',
+      placeholder: '',
+    })
+  : null;
 
   const active = bool({
     key: 'active',
@@ -67,11 +113,13 @@ const Preview = (preview) => {
     label: 'Disabled',
   });
 
-  const loading = bool({
-    key: 'loading',
-    defaultValue: false,
-    label: 'Loading',
-  });
+  const loading = component === 'Button'
+  ? bool({
+      key: 'loading',
+      defaultValue: false,
+      label: 'Loading',
+    })
+  : null;
 
   const beforeIcon = bool({
     key: 'before',
@@ -93,10 +141,14 @@ const Preview = (preview) => {
   const beforeIconMap = {
     l: <CheckM />,
     m: <CheckM />,
+    false: <CheckM />,
+    true: <CheckL />,
   };
   const afterIconMap = {
     l: <ArrowRightM />,
     m: <ArrowRightM />,
+    false: <ArrowRightM />,
+    true: <ArrowRightL />,
   };
 
   const renderIcon = (position, size) => {
@@ -111,18 +163,30 @@ const Preview = (preview) => {
   };
 
   return (
-    <Button
-      use={use}
-      theme={theme}
-      size={size}
-      loading={loading}
-      disabled={disabled || loading}
-      active={active}
-    >
-      {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', size)}</Button.Addon>}
-      {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
-      {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', size)}</Button.Addon>}
-    </Button>
+    component === 'Button'
+    ? <Button
+        use={use}
+        theme={theme}
+        size={sizeButton}
+        loading={loading}
+        disabled={disabled || loading}
+        active={active}
+      >
+        {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', sizeButton)}</Button.Addon>}
+        {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
+        {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', sizeButton)}</Button.Addon>}
+      </Button>
+    : <ButtonLink
+        use={use}
+        size={sizeLink}
+        color={color}
+        disabled={disabled}
+        active={active}
+      >
+        {beforeIcon && <ButtonLink.Addon>{renderIcon(beforeIcon && 'before', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
+        {(beforeIcon || afterIcon) && child ? <ButtonLink.Text>{child}</ButtonLink.Text> : child}
+        {afterIcon && <ButtonLink.Addon>{renderIcon(afterIcon && 'after', (parseInt(sizeLink, 10) > 300) )}</ButtonLink.Addon>}
+      </ButtonLink>
   );
 };
 
@@ -211,7 +275,7 @@ Table: States for all buttons types and themes
 ## Button with Link styles
 
 ::: warning
-This component was created to ensure proper accessibility for existing patterns in the interface. Avoid adding buttons with link styles into new interfaces. Instead, use either `Button` or `Link` depending on what the element does.
+This component was created to ensure proper accessibility for existing patterns in the interface. Avoid adding buttons with link styles into new interfaces, especially with `use="primary"`. Instead, use either `Button` or `Link` depending on what the element does.
 :::
 
 If you need an element that looks like a link, but has the native button semantics, use the separate `ButtonLink` component instead of a link. For example, in the [Feedback](/components/feedback/feedback-form-code) and [ProductHead](/components/product-head/product-head-code) components, use `ButtonLink` as the dialog trigger.
@@ -223,6 +287,21 @@ Table: Button with Link styles
 | `primary`   | ![](static/button-link-primary.png)   |
 | `secondary` | ![](static/button-link-secondary.png) |
 
+The following table shows in which cases you should use `primary` or `secondary` `ButtonLink`.
+
+Table: How to choose what type of ButtonLink you should use
+
+| Action on the page                     | use="primary"                       | use="secondary" |
+| -------------------------------------- | ----------------------------------- | --------------- |
+| Reloading the page                     | ✅                                  | ❌              |
+| Updating data in a small block/widget  | ✅                                  | ❌              |
+| Updating data in a table row           | Allowed if it's an important action | ✅              |
+| Opening a modal window                 | Allowed if it's an important action | ✅              |
+| Opening a dropdown                     | Allowed if it's an important action | ✅              |
+| Opening an accordion                   | Allowed if it's an important action | ✅              |
+| Opening the full text on the same page | ❌                                  | ✅              |
+| `DescriptionTooltip` on click          | ❌                                  | ✅              |
+
 ## Button width
 
 The button width is determined by its content. But it can also be stretched to a certain width. For example:
@@ -231,11 +310,11 @@ The button width is determined by its content. But it can also be stretched to a
 w="100%"
 ```
 
-It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
+It's necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
 
 ![](static/button-width.png)
 
-It is important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
+It's important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
 
 ![](static/button-width2.png)
 

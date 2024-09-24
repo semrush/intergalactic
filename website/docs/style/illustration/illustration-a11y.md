@@ -10,7 +10,7 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 
 According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (for example, `button`, `link`).
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 

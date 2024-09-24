@@ -159,7 +159,7 @@ While loading or reloading content, show a [SpinContainer](/components/spin-cont
 
 ### Error
 
-If an error occurs during data loading, show a suitable message and a button to reload the content. Refer to [WidgetEmpty](../widget-empty/widget-empty.md#something-went-wrong) for more details.
+If an error occurs during data loading, show a suitable message and a button to reload the content. Refer to [WidgetEmpty](../widget-empty/widget-empty#something-went-wrong) for more details.
 
 ![](static/error.png)
 
