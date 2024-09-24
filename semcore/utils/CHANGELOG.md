@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.36.1] - 2024-09-25
+
+### Fixed
+
+- Attribute `suppressHydrationWarning` was not appling to components.
+
 ## [4.36.0] - 2024-09-12
 
 ### Fixed
