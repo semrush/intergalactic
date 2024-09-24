@@ -447,7 +447,7 @@ export abstract class AbstractChart<
       this.asProps;
 
     return sstyled(styles)(
-      <SChart render={Flex} gap={5}>
+      <SChart render={Flex} gap={5} __excludeProps={['data']} role={'group'}>
         {this.renderLegend()}
         <Plot
           data={data}
