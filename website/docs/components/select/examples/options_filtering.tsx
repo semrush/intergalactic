@@ -28,36 +28,15 @@ const Demo = () => {
       <Select placeholder='Select value'>
         <Select.Trigger id='options-filtering-select' mr='auto' mt={2} />
         <Select.Popper>
-          {({ highlightedIndex }) => (
-            <>
-              <InputSearch
-                value={filter}
-                onChange={setFilter}
-                placeholder='Search'
-                role='combobox'
-                aria-autocomplete='list'
-                aria-controls='search-list'
-                aria-owns='search-list'
-                aria-expanded='true'
-                aria-activedescendant={`option-${highlightedIndex}`}
-              />
-              <Select.List hMax={'224px'} id='search-list'>
-                {options.map(({ value, label }, index) => (
-                  <Select.Option
-                    value={value}
-                    key={value}
-                    id={`option-${index}`}
-                    aria-selected={index === highlightedIndex}
-                  >
-                    {label}
-                  </Select.Option>
-                ))}
-                {!options.length && (
-                  <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
-                )}
-              </Select.List>
-            </>
-          )}
+          <InputSearch value={filter} onChange={setFilter} placeholder='Search' />
+          <Select.List hMax={'224px'}>
+            {options.map(({ value, label }) => (
+              <Select.Option value={value} key={value}>
+                {label}
+              </Select.Option>
+            ))}
+            {!options.length && <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>}
+          </Select.List>
         </Select.Popper>
       </Select>
     </Flex>

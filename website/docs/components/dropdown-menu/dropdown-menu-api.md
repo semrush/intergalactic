@@ -79,16 +79,16 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 
 <TypesView type="DropdownMenuItemHintProps" :types={...types} />
 
-## DropdownMenu.Group
+## Dropdown.Group
 
 Group of interactive menu items.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
-<DropdownMenu.Group />;
+import Dropdown from "intergalactic/dropdown";
+<Dropdown.Group />;
 ```
 
-<TypesView type="DropdownMenuGroupProps" :types={...types} />
+<TypesView type="DropdownGroupProps" :types={...types} />
 
 ## DropdownMenu.Item.Hint
 
