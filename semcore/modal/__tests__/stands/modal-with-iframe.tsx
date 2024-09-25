@@ -1,6 +1,9 @@
 import React from 'react';
+// @ts-ignore
 import Button from 'intergalactic/button';
+// @ts-ignore
 import Modal from 'intergalactic/modal';
+// @ts-ignore
 import { Text } from 'intergalactic/typography';
 
 const html = 'data:text/html,' + encodeURIComponent('<html><body><input /></body></html>');
