@@ -4146,7 +4146,7 @@ const iconsList = {
       ],
     },
     {
-      name: 'AmazonColored',
+      name: 'Amazon',
       size: ['l', 'm'],
       group: 'Color',
       tags: ['logo', 'логотип', 'лого', 'amazon', 'амазон', 'shop', 'магазин'],
@@ -4438,7 +4438,7 @@ const iconsList = {
       tags: ['outlook', 'микрософт', 'мелкософт', 'майкрософт', 'ms', 'microsoft', 'logo', 'лого'],
     },
     {
-      name: 'MozColored',
+      name: 'Moz',
       size: ['l', 'm'],
       group: 'Color',
       tags: [
@@ -4455,7 +4455,13 @@ const iconsList = {
       ],
     },
     {
-      name: 'SnapchatColored',
+      name: 'Salesforce',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['logo', 'логотип', 'лого', 'salesforce', 'сейлсфорс', 'marketplace', 'магазин'],
+    },
+    {
+      name: 'Snapchat',
       size: ['l', 'm'],
       group: 'Color',
       tags: ['logo', 'логотип', 'лого', 'snapchat', 'снэпчат', 'social', 'chat', 'чат'],
