@@ -192,18 +192,6 @@ Components added to `<DataTable.Head/>` will be inserted at the end of the heade
 
 :::
 
-## Header separation
-
-Move the table header outside of the table using a portal. All functionality will work, and the table body will adjust to the header's size.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/header-separation.tsx';
-</script>
-
-:::
-
 ## Access to rows
 
 To apply properties to a table row, use `<DataTable.Row/>` . You can use multiple `<DataTable.Row/>` to separate the business logic.
