@@ -1,22 +1,15 @@
 import React from 'react';
-import DataTable, { DataTableSort } from 'intergalactic/data-table';
+import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
-  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
-
   return (
-    <DataTable
-      data={data}
-      sort={sort}
-      onSortChange={setSort}
-      aria-label={'Table title. Column expanded'}
-    >
+    <DataTable data={data} aria-label={'Table title. Column expanded'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' wMax={'300px'} />
-        <DataTable.Column name='kd' children='Difficulty Difficulty' sortable wMax={'85px'} />
-        <DataTable.Column name='cpc' children='CPC' sortable />
-        <DataTable.Column name='vol' children='Vol.' sortable wMax={'300px'} />
-        <DataTable.Column name='md' children='Marketing SEO' sortable wMax={'90px'} />
+        <DataTable.Column name='kd' children='Difficulty Difficulty' wMax={'85px'} />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' wMax={'300px'} />
+        <DataTable.Column name='md' children='Marketing SEO' wMax={'90px'} />
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>
