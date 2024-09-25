@@ -22,13 +22,13 @@ const Demo = () => (
     indicators='preview'
   >
     {images.map((url, index) => (
-      <Carousel.Item key={url}>
+      <Carousel.Item key={url} w={imageWidth}>
         <img
           role='button'
           src={url}
           alt={altTexts[index]}
           aria-label={`Open in fullscreen ${altTexts[index]}`}
-          style={{ width: imageWidth }}
+          style={{ height: '100%', objectFit: 'cover' }}
         />
       </Carousel.Item>
     ))}

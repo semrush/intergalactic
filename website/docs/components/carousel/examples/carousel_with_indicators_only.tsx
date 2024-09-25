@@ -22,13 +22,13 @@ const Demo = () => (
         <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
           <Carousel.Container>
             {images.map((url, index) => (
-              <Carousel.Item key={url}>
+              <Carousel.Item key={url} w={imageWidth}>
                 <img
                   role='button'
                   src={url}
                   alt={altTexts[index]}
                   aria-label={`Open in fullscreen ${altTexts[index]}`}
-                  style={{ width: imageWidth }}
+                  style={{ width: '100%' }}
                 />
               </Carousel.Item>
             ))}
