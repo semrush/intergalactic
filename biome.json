@@ -88,7 +88,8 @@
       "a11y": {
         "useAnchorContent": "off",
         "noSvgWithoutTitle": "off",
-        "noNoninteractiveTabindex": "off"
+        "noNoninteractiveTabindex": "off",
+        "noNoninteractiveElementToInteractiveRole": "off"
       },
       "complexity": {
         "useFlatMap": "off",

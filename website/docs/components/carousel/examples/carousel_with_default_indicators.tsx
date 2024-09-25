@@ -24,14 +24,14 @@ const Demo = () => (
     indicators='default'
   >
     {images.map((url, index) => (
-      <Carousel.Item
-        tag='img'
-        role='button'
-        key={url}
-        src={url}
-        w={imageWidth}
-        aria-label={`Open in fullscreen ${altTexts[index]}`}
-      />
+      <Carousel.Item key={url}>
+        <img
+          role='button'
+          src={url}
+          aria-label={`Open in fullscreen ${altTexts[index]}`}
+          style={{ width: imageWidth }}
+        />
+      </Carousel.Item>
     ))}
   </Carousel>
 );
