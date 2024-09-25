@@ -4317,6 +4317,12 @@ const iconsList = {
       tags: ['logo', 'лого', 'js', 'javascript', 'джава', 'скрипт'],
     },
     {
+      name: 'LinkedInColored',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['linked', 'in', 'social', 'logo', 'лого', 'линкед', 'ин'],
+    },
+    {
       name: 'LookerStudio',
       size: ['l', 'm'],
       group: 'Color',
@@ -4335,7 +4341,7 @@ const iconsList = {
       ],
     },
     {
-      name: 'MailChimp',
+      name: 'Mailchimp',
       size: ['l', 'm'],
       group: 'Color',
       tags: [
@@ -4453,6 +4459,18 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Color',
       tags: ['logo', 'логотип', 'лого', 'snapchat', 'снэпчат', 'social', 'chat', 'чат'],
+    },
+    {
+      name: 'TikTokColored',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['tiktok', 'logo', 'тикток', 'лого', 'social', 'note', 'нота', 'video', 'видео'],
+    },
+    {
+      name: 'TikTokColoredInvert',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['tiktok', 'logo', 'тикток', 'лого', 'social', 'note', 'нота', 'video', 'видео'],
     },
     {
       name: 'WhatsApp',
