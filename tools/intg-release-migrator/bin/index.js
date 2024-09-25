@@ -17,7 +17,7 @@ const argv = yargs(hideBin(process.argv))
   .parse();
 
 const { checkImports } = require('../tools/checkImports');
-const { replaceImports } = require('../tools/importUtils');
+const { replaceLibsImports } = require('../tools/importUtils');
 
 const baseDir = argv.d || 'src';
 
@@ -33,7 +33,7 @@ if (argv.t === 'check') {
   // biome-ignore lint/suspicious/noConsoleLog:
   console.log('start replace old imports in ', baseDir);
 
-  replaceImports(baseDir).then(() => {
+  replaceLibsImports(baseDir).then(() => {
     // biome-ignore lint/suspicious/noConsoleLog:
     console.log('Done!');
   });

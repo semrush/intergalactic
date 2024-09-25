@@ -107,7 +107,7 @@ export async function getImportPaths(baseDir: string): Promise<PathsToPatchImpor
   return pathsToPatchImports;
 }
 
-export async function replaceImports(
+export async function replaceLibsAndExtensionsImports(
   baseDir: string,
   originalPackageData: { main?: string },
 ): Promise<void> {
@@ -148,6 +148,31 @@ export async function replaceImports(
       }
 
       log(`  - Replaced ${count} old imports in: [${newPathToFile}].`);
+    }),
+  );
+}
+
+export async function replaceLibsImports(baseDir: string): Promise<void> {
+  const packageData = await fs.readJSON(path.resolve(intgDir, 'package.json'), 'utf8');
+  const newName = packageData.name;
+  const regexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"];/g);
+  const regexpCJS = new RegExp(/require\(['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"]\)/g);
+
+  const pathsToPatchImports: PathsToPatchImports = {};
+
+  await checkFilesInDir(baseDir, pathsToPatchImports);
+
+  await Promise.all(
+    Object.entries(pathsToPatchImports).map(async ([pathToFile, count]) => {
+      const scriptData = await fs.readFile(pathToFile, 'utf8');
+
+      const dataToWrite = scriptData
+        .replace(regexpES, `from '${newName}/$2';`)
+        .replace(regexpCJS, `require("${newName}/$2")`);
+
+      await fs.writeFile(pathToFile, dataToWrite, 'utf8');
+
+      log(`  - Replaced ${count} old imports in: [${pathToFile}].`);
     }),
   );
 }

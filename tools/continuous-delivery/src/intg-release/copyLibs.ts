@@ -22,9 +22,9 @@ async function copyComponent(componentName: string, toCopy: string | string[]) {
       await fs.copy(from, to, { recursive: true });
     }),
   );
-  const { replaceImports } = await import('intergalactic-migrate');
+  const { replaceLibsAndExtensionsImports } = await import('intergalactic-migrate');
 
-  await replaceImports(path.resolve(dirname, componentName), packageData);
+  await replaceLibsAndExtensionsImports(path.resolve(dirname, componentName), packageData);
 }
 
 async function makeIndexType(componentName: string) {
