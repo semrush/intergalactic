@@ -78,6 +78,7 @@ class DateRangeComparatorAbstract extends Component {
       preselectedValue,
       preselectedCompare,
       focusedRange,
+      getI18nText,
     } = this.asProps;
 
     let value = preselectedValue ?? this.asProps.value?.value;
@@ -97,6 +98,8 @@ class DateRangeComparatorAbstract extends Component {
       onHighlightedChange:
         focusedRange === 'compare' ? onCompareHighlightedChange : onHighlightedChange,
       onDisplayedPeriodChange,
+      role: 'listbox',
+      'aria-label': getI18nText('periods'),
     };
   }
 

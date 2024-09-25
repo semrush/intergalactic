@@ -429,14 +429,20 @@ class DateRangeRoot extends Component {
 
 const FromMaskedInput = (props) => {
   const SFromMaskedInput = Root;
+  const { getI18nText } = props;
 
-  return sstyled(props.styles)(<SFromMaskedInput labelPrefix='from date' render={MaskedInput} />);
+  return sstyled(props.styles)(
+    <SFromMaskedInput labelPrefix={getI18nText('fromDatePlaceholder')} render={MaskedInput} />,
+  );
 };
 
 const ToMaskedInput = (props) => {
   const SToMaskedInput = Root;
+  const { getI18nText } = props;
 
-  return sstyled(props.styles)(<SToMaskedInput labelPrefix='to date' render={MaskedInput} />);
+  return sstyled(props.styles)(
+    <SToMaskedInput labelPrefix={getI18nText('toDatePlaceholder')} render={MaskedInput} />,
+  );
 };
 
 const Indicator = (props) => {
@@ -845,7 +851,7 @@ const MaskedInput = ({
 
   return sstyled(styles)(
     <InputMask.Value
-      title={`${labelPrefix} ${mask}`}
+      aria-label={`${labelPrefix} ${mask}`}
       mask={mask}
       aliases={aliases}
       maskOnlySymbols={maskOnlySymbols}
@@ -863,6 +869,7 @@ const MaskedInput = ({
       onChange={handleChange}
       noHumanizedDate={!humanizedDate}
       animationsDisabled={animationsDisabled}
+      inputRole='combobox'
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,

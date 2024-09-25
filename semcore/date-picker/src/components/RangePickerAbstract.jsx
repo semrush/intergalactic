@@ -379,6 +379,7 @@ class RangePickerAbstract extends Component {
       onHighlightedChange,
       onDisplayedPeriodChange,
       preselectedValue,
+      getI18nText,
     } = this.asProps;
     return {
       periods,
@@ -386,6 +387,8 @@ class RangePickerAbstract extends Component {
       onChange: this.handleApply,
       onHighlightedChange,
       onDisplayedPeriodChange,
+      role: 'listbox',
+      'aria-label': getI18nText('periods'),
     };
   }
 

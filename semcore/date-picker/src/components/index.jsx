@@ -34,7 +34,7 @@ InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
   const SPopper = Root;
-  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role='region' />);
+  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role='dialog' />);
 }
 
 export function Header(props) {
