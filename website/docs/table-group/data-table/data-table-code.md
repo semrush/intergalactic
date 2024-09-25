@@ -94,6 +94,18 @@ To enable column sorting:
 
 :::
 
+## Pagination
+
+Avoid placing [Pagination](/components/pagination/pagination) inside the table, as the pagination component has a `nav` landmark assigned to it.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/pagination.tsx';
+</script>
+
+:::
+
 ## Change width for sorting column
 
 If some column has `changeSortSize={true}`, by default, it will be increased by the largest column if the computed width less than `content width` + `sorting icon width`.
