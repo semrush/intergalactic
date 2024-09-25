@@ -319,10 +319,6 @@ export abstract class AbstractDropdown extends Component<
         }
 
         break;
-      default:
-        this.handlers.highlightedIndex(null);
-        // @ts-ignore
-        this.highlightedItemRef.current = null;
     }
 
     if (amount !== null) {
