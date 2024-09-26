@@ -43,13 +43,12 @@ test.describe('Select', () => {
     await page.keyboard.press('Space');
 
     await page.waitForSelector('input');
-    await page.keyboard.press('Tab');
 
     const inputLocaltor = await page.locator('input');
 
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const optionBLocator = await page.locator('text=Option b');
+    const optionBLocator = await page.locator('text=Banana');
     const optionBRect = (await optionBLocator.boundingBox())!;
     await page.mouse.click(
       optionBRect.x + optionBRect.width / 2,
@@ -62,6 +61,6 @@ test.describe('Select', () => {
 
     const triggerLocatior = await page.locator('[data-ui-name="Select.Trigger"]');
 
-    await expect(await triggerLocatior.textContent()).toBe('Option b');
+    await expect(await triggerLocatior.textContent()).toBe('Banana');
   });
 });
