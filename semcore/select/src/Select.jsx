@@ -38,7 +38,7 @@ class RootSelect extends AbstractDropdown {
   static enhance = Object.values(enhance).concat([resolveColorEnhance()]);
 
   static defaultProps = (props) => {
-    const hasInputSearch = isAdvanceMode(props.children, [Select.InputSearch.displayName], true);
+    const hasInputSearch = props.children && isAdvanceMode(props.children, [Select.InputSearch.displayName], true);
     const defaultIndex = hasInputSearch ? null : 0;
 
     return {
