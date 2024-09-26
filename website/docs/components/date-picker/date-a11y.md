@@ -31,15 +31,14 @@ The following list describes roles and attributes that component already has.
 
 Table: Trigger roles and attributes
 
-| Component / element                         | Role / Attribute                                                             | Usage                                                                                                          |
-| ------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `DatePicker.Trigger`                        | `aria-label="Date field"`                                                    | Defines the accessible name.                                                                                   |
-|                                             | `aria-controls="IDREF"`                                                      | Indicates which element this trigger opens.                                                                    |
-| <nobr>`DatePicker.Trigger` > `div`</nobr>   | `aria-haspopup="true"`                                                       | Indicates that the element triggers a dialog.                                                                  |
-|                                             | Inherits `aria-controls="IDREF"` from its parent.                            |                                                                                                                |
-| <nobr>`DatePicker.Trigger` > `input`</nobr> | Inherits `aria-haspopup="true"` and `aria-controls="IDREF"` from its parent. |
-|                                             | `role="combobox"`                                                            | Identifies the element as a combobox—a text input combined with a list of options.                             |
-|                                             | `aria-describedby="IDREF"`                                                   | Provides the input with an accessible description by linking to a hint that explains the required data format. |
+| Component / element                         | Role / Attribute                                                               | Usage                                                                                                          |
+| ------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `DatePicker.Trigger`                        | `aria-label="Date field"`                                                      | Defines the accessible name.                                                                                   |
+|                                             | `aria-controls="IDREF"`                                                        | Indicates which element this trigger opens.                                                                    |
+| <nobr>`DatePicker.Trigger` > `input`</nobr> | `aria-haspopup="dialog"` and inherits `aria-controls="IDREF"` from its parent. | `aria-haspopup` indicates that the element triggers a dialog.                                                  |
+|                                             | `aria-expanded="false/true"`                                                   | Indicates whether the dialog is open or not.                                                                   |
+|                                             | `role="combobox"`                                                              | Identifies the element as a combobox—a text input combined with a list of options.                             |
+|                                             | `aria-describedby="IDREF"`                                                     | Provides the input with an accessible description by linking to a hint that explains the required data format. |
 
 #### Popper and its content
 
