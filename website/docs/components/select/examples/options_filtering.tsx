@@ -26,7 +26,7 @@ const Demo = () => {
             value={filter}
             onChange={setFilter}
             placeholder='Search'
-            aria-describedby={filter && 'search-result'}
+            aria-describedby={filter ? 'search-result' : undefined}
           />
           <Select.List hMax={'224px'}>
             {options.map(({ value, label }) => (
@@ -35,7 +35,9 @@ const Demo = () => {
               </Select.Option>
             ))}
             {options.length ? (
-              <ScreenReaderOnly id='search-result'>{options.length} results found</ScreenReaderOnly>
+              <ScreenReaderOnly id='search-result' aria-hidden={'true'}>
+                {options.length} results found
+              </ScreenReaderOnly>
             ) : (
               <Select.OptionHint id='search-result' key='Nothing'>
                 Nothing found

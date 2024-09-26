@@ -31,6 +31,12 @@ class InputSearchRoot extends Component {
     };
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.inputRef.current?.focus();
+    }, 0);
+  }
+
   handleClear = (e) => {
     this.handlers.value('', e);
     setTimeout(() => {
@@ -48,7 +54,6 @@ class InputSearchRoot extends Component {
     return {
       value,
       onChange: this.handlers.value,
-      autoFocus: true,
       ref: this.inputRef,
     };
   }
