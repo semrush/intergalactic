@@ -37,20 +37,25 @@ class RootSelect extends AbstractDropdown {
   static style = style;
   static enhance = Object.values(enhance).concat([resolveColorEnhance()]);
 
-  static defaultProps = (props) => ({
-    placeholder: props.multiselect ? 'Select options' : 'Select option',
-    size: 'm',
-    defaultValue: getEmptyValue(props.multiselect),
-    defaultVisible: false,
-    defaultHighlightedIndex: props.highlightedIndex ?? 0,
-    defaultSelectedIndex: props.selectedIndex ?? 0,
-    scrollToSelected: true,
-    i18n: localizedMessages,
-    locale: 'en',
-    interaction: props.interaction ?? 'click',
-    inlineActions: false,
-    timeout: props.timeout ?? 0,
-  });
+  static defaultProps = (props) => {
+    const hasInputSearch = isAdvanceMode(props.children, [Select.InputSearch.displayName], true);
+    const defaultIndex = hasInputSearch ? null : 0;
+
+    return {
+      placeholder: props.multiselect ? 'Select options' : 'Select option',
+      size: 'm',
+      defaultValue: getEmptyValue(props.multiselect),
+      defaultVisible: false,
+      defaultHighlightedIndex: props.highlightedIndex ?? defaultIndex,
+      defaultSelectedIndex: props.selectedIndex ?? defaultIndex,
+      scrollToSelected: true,
+      i18n: localizedMessages,
+      locale: 'en',
+      interaction: props.interaction ?? 'click',
+      inlineActions: false,
+      timeout: props.timeout ?? 0,
+    };
+  };
 
   role = 'listbox';
 

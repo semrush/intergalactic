@@ -10,8 +10,8 @@ import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 type AbstractDDProps = {
   visible: boolean;
-  highlightedIndex: number;
-  selectedIndex: number;
+  highlightedIndex: number | null;
+  selectedIndex: number | null;
   placement: DropdownProps['placement'];
   inlineActions: boolean;
   disablePortal: boolean;
@@ -49,14 +49,14 @@ export abstract class AbstractDropdown extends Component<
 
   highlightedItemRef = React.createRef<HTMLElement>();
 
-  prevHighlightedIndex = 0;
+  prevHighlightedIndex: number | null = null;
 
   uncontrolledProps() {
     return {
       selectedIndex: null,
       highlightedIndex: [
         null,
-        (index: number) => {
+        (index: number | null) => {
           this.handlers.selectedIndex(index);
         },
       ],
@@ -83,7 +83,7 @@ export abstract class AbstractDropdown extends Component<
     if (this.role === 'menu') {
       setTimeout(() => {
         const { highlightedIndex } = this.asProps;
-        const element = this.itemRefs[highlightedIndex];
+        const element = this.itemRefs[highlightedIndex ?? 0];
         element?.focus();
       }, 0);
     }
@@ -191,23 +191,27 @@ export abstract class AbstractDropdown extends Component<
   }
 
   getHighlightedIndex(amount: number): number {
-    let { highlightedIndex } = this.asProps;
+    const { highlightedIndex } = this.asProps;
     const itemsLastIndex = this.itemProps.length - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item.selected);
 
     if (itemsLastIndex < 0) return 0;
 
+    let innerHighlightedIndex: number;
+
     if (highlightedIndex == null) {
       if (selectedIndex !== -1) {
-        highlightedIndex = selectedIndex;
-      } else if (this.highlightedItemRef.current) {
-        highlightedIndex = this.prevHighlightedIndex;
+        innerHighlightedIndex = selectedIndex;
+      } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
+        innerHighlightedIndex = this.prevHighlightedIndex;
       } else {
-        highlightedIndex = amount < 0 ? 0 : itemsLastIndex;
+        innerHighlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
+    } else {
+      innerHighlightedIndex = highlightedIndex;
     }
 
-    let newIndex = highlightedIndex + amount;
+    let newIndex = innerHighlightedIndex + amount;
     if (newIndex < 0) {
       newIndex = amount + itemsLastIndex + 1;
     } else if (newIndex > itemsLastIndex) {
@@ -229,7 +233,7 @@ export abstract class AbstractDropdown extends Component<
 
     if (visibilityChanged && prevProps.visible !== undefined) {
       if (!visible) {
-        this.handlers.highlightedIndex(0);
+        this.handlers.highlightedIndex(null);
         // @ts-ignore
         this.highlightedItemRef.current = null;
         if (
