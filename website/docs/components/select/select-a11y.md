@@ -53,12 +53,7 @@ Table: Roles and attributes
 
 | Component            | Attribute                       | Usage                                                                                         |
 | -------------------- | ------------------------------- | --------------------------------------------------------------------------------------------- |
-| `Select.InputSearch` | `role="combobox"`               | Identifies the element as a combobox, that is an input that opens a list of options or a grid. [Example of this and the following attributes usage](./select-code.md#options-filtering). |
-|                      | `aria-autocomplete="list"`      | Indicates that a list of values that could complete the input is provided during input. |
-|                      | `aria-controls="IDREF"`         | Identifies the element that's controlled by the trigger. Should refer to the `Select.List`. |
-|                      | `aria-owns="IDREF"`             | Indicates the functional hierarchy between the `InputSearch` and the list of options. Should refer to the `Select.List`. |
-|                      | `aria-expanded="true"`          | Indicates that the associated list of options is open. |
-|                      | `aria-activedescendant="IDREF"` | Indicates which option is currently highlighted. |
+| `Select.InputSearch` | `aria-describedby="IDREF"`      | Define an accessible description announcing the number of search results. Refer to the [options filtering example](./select-code.md#options-filtering). |
 
 ## Resources
 

@@ -6,9 +6,7 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 
 ## Description
 
-**Select** component allows users to choose one or more values from a list. It can optionally include search input, titles, buttons, grouping, and nesting.
-
-The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
+**Select** component allows users to choose one or more values from a list. It can optionally include a search input, titles, buttons, grouping, and nesting.
 
 ## Component composition
 
@@ -17,12 +15,13 @@ The component is composed of a trigger button (explained in this guide) and the 
 Component consists of the following:
 
 - `Select.Trigger`
-- `Select.Menu`
+- `Select.Popper`
 - `Select.InputSearch`
+- `Select.List`
+- `Select.Group`
 - `Select.Option`
-- `Select.OptionHint`
-- `Select.OptionTitle`
-- `Select.OptionCheckbox`
+- `Select.Option.Checkbox`
+- `Select.Option.Hint`
 
 ## Trigger
 
@@ -47,7 +46,7 @@ Table: Trigger button sizes
 
 ### Maximum width
 
-If the trigger has a maximum width, collapse long values into an `ellipsis`. When hovering, show the tooltip with the full value name.
+If the trigger width is limited, collapse long values with an `ellipsis`. When hovering, show a [Hint](../tooltip/tooltip) with the full value.
 
 ![](static/content-sizes.png)
 
@@ -162,7 +161,7 @@ If you have more than three values, add the "Select all" option at the very begi
 
 ## Specific cases for multiselect
 
-In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
+In long lists (for example, countries or time zones), selected values should be pinned to the top when the list is reopened.
 
 Table: Specific cases for multiselect
 
@@ -201,7 +200,7 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 - Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
-We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user can't select or deselect all options due to limitations.
+Hide the **Select all** and **Deselect all** buttons from lists where the maximum number of selected options is limited.
 :::
 
 ![](static/multiselect-limit.png)

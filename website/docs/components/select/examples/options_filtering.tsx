@@ -1,5 +1,5 @@
 import React from 'react';
-import Select, { InputSearch } from 'intergalactic/select';
+import Select from 'intergalactic/select';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
@@ -36,7 +36,7 @@ const Demo = () => {
             ))}
             {options.length ? (
               <ScreenReaderOnly id='search-result' aria-hidden={'true'}>
-                {options.length} results found
+                {options.length} result{options.length > 1 && 's'} found
               </ScreenReaderOnly>
             ) : (
               <Select.OptionHint id='search-result' key='Nothing'>

@@ -21,12 +21,12 @@ const Demo = () => (
           getPopperProps, // function encapsulating Select.Popper logic
           getListProps, // function encapsulating Select.List logic
           getDividerProps, // function encapsulating Select.Divider logic
-          getItemHintProps, // function encapsulating Select.ItemHint logic
+          getItemHintProps, // function encapsulating Select.Item.Hint logic
           getItemProps, // function encapsulating Select.Item logic,
           getItemTitleProps, // function encapsulating Select.ItemTitle logic
           getGroupProps, // function encapsulating Select.Group logic
           getOptionProps, // function encapsulating Select.Option logic
-          getOptionCheckboxProps, // function encapsulating Select.OptionCheckbox logic
+          getOptionCheckboxProps, // function encapsulating Select.Option.Checkbox logic
           value: currentValue, // the current value of the select
         } = props;
         const {

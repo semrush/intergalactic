@@ -19,7 +19,7 @@ import Select from 'intergalactic/select';
 
 ## Select.Trigger
 
-It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger).
+A wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger).
 
 ```jsx
 import Select from 'intergalactic/select';
@@ -35,7 +35,7 @@ import Select from 'intergalactic/select';
 
 ## Select.InputSearch
 
-It is a wrap over the `<Input.Value/>`.
+A wrap over the `<Input.Value/>`.
 
 ```jsx
 import { InputSearch } from 'intergalactic/select';
