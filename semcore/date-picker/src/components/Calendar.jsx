@@ -258,14 +258,14 @@ class CalendarAbstract extends Component {
   }
 }
 
-function CalendarUnit({ styles, date, outdated, disabled, highlighted }) {
+function CalendarUnit({ styles, date, long, outdated, disabled, highlighted }) {
   const SCalendarUnit = Root;
   return sstyled(styles)(
     <SCalendarUnit
       use:disabled={disabled || outdated || !date}
       render={Box}
       aria-hidden={!date}
-      aria-label={date}
+      aria-label={long || date}
       use:tabIndex={highlighted ? 0 : -1}
     />,
   );
@@ -373,7 +373,9 @@ class CalendarMonthsRoot extends CalendarAbstract {
     return range(12, () => {
       const month = this.createUnit({ date }, 'month');
       month.children = new Intl.DateTimeFormat(locale, { month: 'short' }).format(date.valueOf());
-      month.abbr = new Intl.DateTimeFormat(locale, { month: 'long' }).format(date.valueOf());
+      month.long = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
+        date.valueOf(),
+      );
       date = date.add(1, 'month');
       return month;
     });
