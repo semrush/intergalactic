@@ -114,16 +114,20 @@ class DateRangeComparatorAbstract extends Component {
 
   getPrevProps() {
     const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
     return {
       getI18nText,
       onClick: this.bindHandlerNavigateClick(-1),
+      'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
   }
   getNextProps() {
     const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
     return {
       getI18nText,
       onClick: this.bindHandlerNavigateClick(1),
+      'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
   }
 

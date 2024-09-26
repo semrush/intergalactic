@@ -53,7 +53,7 @@ export const Title = ({ Children, styles }) => {
 
 export function Prev({ getI18nText, children, Children }) {
   return (
-    <Root render={Button} use='tertiary' theme='muted' size='l' aria-label={getI18nText('prev')}>
+    <Root render={Button} use='tertiary' theme='muted' size='l'>
       {children ? (
         <Children />
       ) : (
@@ -67,7 +67,7 @@ export function Prev({ getI18nText, children, Children }) {
 
 export function Next({ getI18nText, children, Children }) {
   return (
-    <Root render={Button} use='tertiary' theme='muted' size='l' aria-label={getI18nText('next')}>
+    <Root render={Button} use='tertiary' theme='muted' size='l'>
       {children ? (
         <Children />
       ) : (

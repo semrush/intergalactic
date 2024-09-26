@@ -327,16 +327,24 @@ class RangePickerAbstract extends Component {
   }
 
   getNextProps() {
+    const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
+
     return {
       onClick: this.bindHandlerNavigateClick(1),
-      getI18nText: this.asProps.getI18nText,
+      getI18nText,
+      'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
   }
 
   getPrevProps() {
+    const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
+
     return {
       onClick: this.bindHandlerNavigateClick(-1),
-      getI18nText: this.asProps.getI18nText,
+      getI18nText,
+      'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
   }
 
