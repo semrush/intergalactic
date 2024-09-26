@@ -1,5 +1,6 @@
 import React from 'react';
 import Select, { InputSearch } from 'intergalactic/select';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
@@ -21,14 +22,25 @@ const Demo = () => {
       <Select placeholder='Select a fruit'>
         <Select.Trigger id='options-filtering-select' mr='auto' mt={2} />
         <Select.Popper>
-          <InputSearch value={filter} onChange={setFilter} placeholder='Search' />
+          <InputSearch
+            value={filter}
+            onChange={setFilter}
+            placeholder='Search'
+            aria-describedby={filter && 'search-result'}
+          />
           <Select.List hMax={'224px'}>
             {options.map(({ value, label }) => (
               <Select.Option value={value} key={value}>
                 {label}
               </Select.Option>
             ))}
-            {!options.length && <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>}
+            {options.length ? (
+              <ScreenReaderOnly id='search-result'>{options.length} results found</ScreenReaderOnly>
+            ) : (
+              <Select.OptionHint id='search-result' key='Nothing'>
+                Nothing found
+              </Select.OptionHint>
+            )}
           </Select.List>
         </Select.Popper>
       </Select>
