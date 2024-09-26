@@ -15,11 +15,13 @@ Refer to [Charts showcase](/data-display/chart-showcase/chart-showcase), to expl
 
 Axes help users understand data relationships and navigate through data. A plot can include horizontal and vertical lines.
 
-|     | Appearance example | When to use |
-| --- | ------------------ | ----------- |
-| Horizontal lines     | ![](static/axes-horizontal.png) | Use with charts showing data trends over time. |
-| Both horizontal and vertical lines    | ![](static/axes-all.png) | Use with scatter plots and bubble charts. |
-| Vertical lines     | ![](static/axes-vertical.png) | Use with horizontal bar charts. |
+Table: Grid and axes
+
+|                                    | Appearance example              | When to use                                    |
+| ---------------------------------- | ------------------------------- | ---------------------------------------------- |
+| Horizontal lines                   | ![](static/axes-horizontal.png) | Use with charts showing data trends over time. |
+| Both horizontal and vertical lines | ![](static/axes-all.png)        | Use with scatter plots and bubble charts.      |
+| Vertical lines                     | ![](static/axes-vertical.png)   | Use with horizontal bar charts.                |
 
 **Basic styles for `Chart.Plot`:**
 
@@ -83,7 +85,7 @@ Avoid measurement units in tooltips unless needed for clarity. However, in more 
 
 Tooltip padding is always 12px.
 
-![](static/tooltip-paddings.png) ![](static/tooltip-margins.png) 
+![](static/tooltip-paddings.png) ![](static/tooltip-margins.png)
 
 ### Edge cases
 
@@ -110,11 +112,11 @@ Use a solid line for new data. The tooltip should mention the start of data coll
 
 Table: Chart dot styles
 
-| Appearance        | Styles   |
-| ----------------- | -------- |
-| ![](static/tooltip-4.png) ![](static/tooltip-2.png) | Default dot size is `8px * 8px`. The dot's size in hovered state is `10px * 10px`. |
-| ![](static/tooltip-1.png)                                                                | Color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
-| ![](static/tooltip-3.png)                                                                | Background color for hovering bar charts is `--chart-grid-bar-chart-hover`.                                           |
+| Appearance                                          | Styles                                                                                                                  |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| ![](static/tooltip-4.png) ![](static/tooltip-2.png) | Default dot size is `8px * 8px`. The dot's size in hovered state is `10px * 10px`.                                      |
+| ![](static/tooltip-1.png)                           | Color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
+| ![](static/tooltip-3.png)                           | Background color for hovering bar charts is `--chart-grid-bar-chart-hover`.                                             |
 
 ## Legend
 
