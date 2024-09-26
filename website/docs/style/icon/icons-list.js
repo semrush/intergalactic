@@ -4360,7 +4360,7 @@ const iconsList = {
       ],
     },
     {
-      name: 'MatomoColored',
+      name: 'Matomo',
       size: ['l', 'm'],
       group: 'Color',
       tags: [
@@ -4388,7 +4388,7 @@ const iconsList = {
         'soft',
         'office',
         'микрософт',
-        'мелкософт',
+
         'logo',
         'лого',
         'майкрософт',
@@ -4406,7 +4406,7 @@ const iconsList = {
         'soft',
         'office',
         'микрософт',
-        'мелкософт',
+
         'logo',
         'лого',
         'майкрософт',
@@ -4425,7 +4425,6 @@ const iconsList = {
         '365',
         'офис',
         'микрософт',
-        'мелкософт',
         'майкрософт',
         'logo',
         'лого',
@@ -4435,7 +4434,7 @@ const iconsList = {
       name: 'MicrosoftOutlook',
       size: ['l', 'm'],
       group: 'Color',
-      tags: ['outlook', 'микрософт', 'мелкософт', 'майкрософт', 'ms', 'microsoft', 'logo', 'лого'],
+      tags: ['outlook', 'микрософт', 'майкрософт', 'ms', 'microsoft', 'logo', 'лого'],
     },
     {
       name: 'Moz',
