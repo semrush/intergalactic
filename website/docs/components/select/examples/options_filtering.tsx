@@ -3,13 +3,6 @@ import Select, { InputSearch } from 'intergalactic/select';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
-const data = Array(26)
-  .fill(0)
-  .map((_, index) => ({
-    label: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-    value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-  }));
-
 const Demo = () => {
   const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
@@ -23,9 +16,9 @@ const Demo = () => {
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='options-filtering-select'>
-        Options filtering
+        Fruit
       </Text>
-      <Select placeholder='Select value'>
+      <Select placeholder='Select a fruit'>
         <Select.Trigger id='options-filtering-select' mr='auto' mt={2} />
         <Select.Popper>
           <InputSearch value={filter} onChange={setFilter} placeholder='Search' />
@@ -42,5 +35,23 @@ const Demo = () => {
     </Flex>
   );
 };
+
+const data = [
+  'Apple',
+  'Banana',
+  'Blueberry',
+  'Grape',
+  'Kiwi',
+  'Mango',
+  'Melon',
+  'Orange',
+  'Peach',
+  'Pear',
+  'Pineapple',
+  'Strawberry',
+].map((item) => ({
+  label: item,
+  value: item,
+}));
 
 export default Demo;
