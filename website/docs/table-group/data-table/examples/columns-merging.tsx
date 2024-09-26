@@ -4,7 +4,7 @@ import DataTable from 'intergalactic/data-table';
 const data = [
   {
     keyword: 'ebay buy',
-    'kd/cpc/vol': 'This is columns group. This is columns group. This is columns group.',
+    'kd/cpc/vol': 'These three columns are grouped.',
   },
   {
     keyword: 'ebay buy',
