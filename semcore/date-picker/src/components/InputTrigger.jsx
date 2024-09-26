@@ -31,7 +31,7 @@ class InputTriggerRoot extends Component {
       id,
       role,
       'aria-haspopup': ariaHasPopup,
-      'aria-expanded': ariaExpanded,
+      // 'aria-expanded': ariaExpanded,
       'aria-label': ariaLabel,
       style,
       ...otherProps
@@ -45,7 +45,7 @@ class InputTriggerRoot extends Component {
       role,
       'aria-haspopup': ariaHasPopup,
       'aria-label': ariaLabel,
-      'aria-expanded': ariaExpanded,
+      // 'aria-expanded': ariaExpanded,
       style,
       ...otherProps
     } = this.asProps;

@@ -103,10 +103,11 @@ export class Period extends Component {
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
+            key={i}
             use='tertiary'
             theme='muted'
+            role='option'
             styles={styles}
-            key={i}
             active={this.getActiveControl(period, value)}
             onClick={callAllEventHandlers(onClick, () => onChange(period))}
             onMouseEnter={callAllEventHandlers(onMouseEnter, () => {

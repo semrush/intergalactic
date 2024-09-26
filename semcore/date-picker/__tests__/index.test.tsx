@@ -88,7 +88,7 @@ describe('DatePicker', () => {
               <DatePicker.Trigger.SingleDateInput.MaskedInput id='date-picker-a11y-test-trigger' />
             </DatePicker.Trigger.SingleDateInput>
           </DatePicker.Trigger>
-          <DatePicker.Popper />
+          <DatePicker.Popper aria-label='Date picker' />
         </DatePicker>
       </div>,
     );
@@ -383,7 +383,7 @@ describe('DateRangePicker', () => {
         <DateRangePicker.ButtonTrigger aria-label='date range picker'>
           Open date range picker
         </DateRangePicker.ButtonTrigger>
-        <DateRangePicker.Popper />
+        <DateRangePicker.Popper aria-label='date range picker' />
       </DateRangePicker>,
     );
 
