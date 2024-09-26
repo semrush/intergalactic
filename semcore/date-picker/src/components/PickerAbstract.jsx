@@ -117,7 +117,7 @@ class PickerAbstract extends Component {
     };
 
     if (place === 'popper' && (e.key === ' ' || (e.key === 'Enter' && highlighted.length))) {
-      if (!this.isDisabledDay(highlighted[0])) {
+      if (!this.isDisabled(highlighted[0])) {
         this.handlers.value(highlighted[0]);
       }
       e.preventDefault();
@@ -142,6 +142,12 @@ class PickerAbstract extends Component {
       }
     }
   };
+
+  isDisabled(date) {
+    const { disabled } = this.asProps;
+
+    return disabled.some(includesDate(dayjs(date), 'date'));
+  }
 
   getButtonTriggerProps() {
     const { value, size, visible } = this.asProps;
