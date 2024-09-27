@@ -85,9 +85,7 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
           },
         });
 
-        // if (nodesES.length > 0) {
         pathsToPatchImports[resolvedPath] = nodesES.length;
-        // }
 
         if (nodesCJS.length > 0) {
           pathsToPatchImports[resolvedPath] = pathsToPatchImports[resolvedPath]
