@@ -92,7 +92,6 @@ SAddon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
   vertical-align: middle;
 }
 
