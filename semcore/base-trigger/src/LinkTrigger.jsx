@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import ChevronDown from '@semcore/icon/ChevronDown/m';
+import ChevronDown from '@semcore/icon/ChevronDown/m/index';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';

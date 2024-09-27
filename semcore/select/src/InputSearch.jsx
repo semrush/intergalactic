@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import SearchM from '@semcore/icon/Search/m';
-import CloseM from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/m/index';
+import CloseM from '@semcore/icon/Close/m/index';
 import Input from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
 import { selectContext } from './context';

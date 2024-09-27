@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
-import CloseM from '@semcore/icon/Close/m';
+import CloseM from '@semcore/icon/Close/m/index';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';

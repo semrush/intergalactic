@@ -4,13 +4,13 @@ import { Flex, Box } from '@semcore/flex-box';
 import { FadeInOut, Slide } from '@semcore/animation';
 import Portal, { PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
-import CloseIcon from '@semcore/icon/Close/l';
+import CloseIcon from '@semcore/icon/Close/l/index';
 import fire from '@semcore/utils/lib/fire';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
-import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m/index';
 import Button, { ButtonLink } from '@semcore/button';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
@@ -72,22 +72,11 @@ class RootSidePanel extends Component {
     );
   }
 
-  calculateDelayAnimation(name) {
-    const delay = this.asProps.duration / 2;
-    const usedOverlay = this.isUsedOverlay();
-
-    return {
-      overlay: usedOverlay ? [0, delay] : 0,
-      panel: usedOverlay ? [delay, 0] : 0,
-    }[name];
-  }
-
   getOverlayProps() {
     const { visible, duration, animationsDisabled, disablePreventScroll } = this.asProps;
     return {
       visible,
       duration,
-      delay: this.calculateDelayAnimation('overlay'),
       animationsDisabled,
       disablePreventScroll,
     };
@@ -108,9 +97,8 @@ class RootSidePanel extends Component {
       visible,
       placement,
       closable,
-      duration,
+      duration: duration + duration / 2,
       disableEnforceFocus: !this.isUsedOverlay(),
-      delay: this.calculateDelayAnimation('panel'),
       onOutsideClick: this.handleOutsideClick,
       onKeyDown: this.handleSidebarKeyDown,
       animationsDisabled,

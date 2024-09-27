@@ -7,6 +7,9 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
 
 async function copyComponent(componentName: string, toCopy: string | string[]) {
+  const packageData = await fs.readJSON(
+    path.resolve(dirname, '..', '..', 'semcore', componentName, 'package.json'),
+  );
   await fs.mkdir(path.resolve(dirname, componentName), { recursive: true });
 
   const dirsToCopy = Array.isArray(toCopy) ? toCopy : [toCopy];
@@ -19,9 +22,9 @@ async function copyComponent(componentName: string, toCopy: string | string[]) {
       await fs.copy(from, to, { recursive: true });
     }),
   );
-  const { replaceImports } = await import('intergalactic-migrate');
+  const { replaceLibsAndExtensionsImports } = await import('intergalactic-migrate');
 
-  await replaceImports(path.resolve(dirname, componentName));
+  await replaceLibsAndExtensionsImports(path.resolve(dirname, componentName), packageData);
 }
 
 async function makeIndexType(componentName: string) {
@@ -47,15 +50,15 @@ Object.keys(item).forEach(function (key) {
 async function makeIndexESM(componentName: string) {
   const pathToFile = path.resolve(dirname, componentName, 'index.mjs');
 
-  let dataToWrite = `export * from './lib/es6/index.js';`;
+  let dataToWrite = `export * from './lib/es6/index.mjs';`;
 
   const indexData = await fs.readFile(
-    path.resolve(dirname, componentName, 'lib', 'es6', 'index.js'),
+    path.resolve(dirname, componentName, 'lib', 'es6', 'index.mjs'),
     'utf8',
   );
 
   if (/export { default(,|\s})/.test(indexData) || indexData.includes('export default')) {
-    dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.js';`;
+    dataToWrite = dataToWrite + `\nexport { default } from './lib/es6/index.mjs';`;
   }
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
