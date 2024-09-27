@@ -7,7 +7,7 @@ tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-c
 
 ## What component has
 
-- If the dropdown with the calendar grid opens, then a current date gets the focus.
+- If the dropdown with the calendar grid opens, then the current date gets the focus.
 - If a date is selected, the accessible name of the "Date field" input is updated to include the selected date.
 
 ### Keyboard support
@@ -16,12 +16,12 @@ Table: Keyboard support
 
 | Key                         | Function                                                                                                                                                                                  |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                       | Moves focus to next element in the dropdown `Tab` sequence. If focus is on the last button (specifically "OK"), moves focus to the first button (specifically Previous Year).             |
-| `Shift + Tab`               | Moves focus to previous element in the dialog `Tab` sequence. If focus is on the first button (specifically Previous Year), moves focus to the last button (specifically "OK").           |
-| `Enter` , `Space`           | Open the date picker dropdown. Move focus to selected date, specifically the date displayed in the date input text field. If no date has been selected, places focus on the current date. |
-| `ESC`                       | Closes the dialog and returns focus to the trigger.                                                                                                                                       |
-| `Up Arrow`, `Down Arrow`    | Moves focus to the same day of the previous or next week, respectively.                                                                                                                   |
-| `Left Arrow`, `Right Arrow` | Moves focus to the previous or next day, respectively.                                                                                                                                    |
+| `Tab`                       | Moves focus to the next focusable element. If the last element in the dropdown is focused, moves focus to the first element. |
+| `Shift + Tab`               | Moves focus to the previous focusable element. If the first element in the dropdown is focused, moves focus to the last element. |
+| `Enter`, `Space`            | Opens the dropdown. When the dropdown is open and focus is on the calendar, applies the selected date and closes the dropdown. |
+| `Esc`                       | Closes the dropdown and returns focus to the trigger.                                                                                                                                       |
+| `Up Arrow`, `Down Arrow`    | Moves selection to the same day of the previous or next week, respectively.                                                                                                                   |
+| `Left Arrow`, `Right Arrow` | Moves selection to the previous or next day, respectively.                                                                                                                                    |
 
 ### Roles and attributes
 
@@ -35,9 +35,9 @@ Table: Trigger roles and attributes
 | ------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
 | `DatePicker.Trigger`                        | `aria-label="Date field"`                                                      | Defines the accessible name.                                                                                   |
 |                                             | `aria-controls="IDREF"`                                                        | Indicates which element this trigger opens.                                                                    |
-| <nobr>`DatePicker.Trigger` > `input`</nobr> | `aria-haspopup="dialog"` and inherits `aria-controls="IDREF"` from its parent. | `aria-haspopup` indicates that the element triggers a dialog.                                                  |
+| <nobr>`DatePicker.Trigger` > `input`</nobr> | `role="combobox"`                                                              | Identifies the element as a combobox—a text input combined with a list of options.                             |
+|                                             | `aria-haspopup="dialog"` and inherits `aria-controls="IDREF"` from its parent. | `aria-haspopup` indicates that the element triggers a dialog.                                                  |
 |                                             | `aria-expanded="false/true"`                                                   | Indicates whether the dialog is open or not.                                                                   |
-|                                             | `role="combobox"`                                                              | Identifies the element as a combobox—a text input combined with a list of options.                             |
 |                                             | `aria-describedby="IDREF"`                                                     | Provides the input with an accessible description by linking to a hint that explains the required data format. |
 
 #### Popper and its content
