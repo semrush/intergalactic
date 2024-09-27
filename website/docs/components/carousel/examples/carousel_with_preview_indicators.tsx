@@ -26,6 +26,7 @@ const Demo = () => (
     {images.map((url, index) => (
       <Carousel.Item key={url} w={imageWidth}>
         <img
+          // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
           role='button'
           src={url}
           alt={altTexts[index]}
