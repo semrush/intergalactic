@@ -4,7 +4,7 @@ import DataTable from 'intergalactic/data-table';
 const data = [
   {
     keyword: 'ebay buy',
-    'kd/cpc/vol': 'This is columns group. This is columns group. This is columns group.',
+    'kd/cpc/vol': 'These three columns are grouped.',
   },
   {
     keyword: 'ebay buy',
@@ -34,7 +34,7 @@ const data = [
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Columns merging'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

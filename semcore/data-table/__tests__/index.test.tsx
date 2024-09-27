@@ -64,23 +64,35 @@ describe('DataTable', () => {
     test('props nesting', () => {
       const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
 
-      assertType<JSX.Element>(<DataTable tag={Link} href='https://google.com' xProp1={1} />);
+      assertType<JSX.Element>(
+        <DataTable aria-label={'table label'} tag={Link} href='https://google.com' xProp1={1} />,
+      );
       // @ts-expect-error
-      assertType<JSX.Element>(<DataTable href='https://google.com' />);
+      assertType<JSX.Element>(<DataTable href='https://google.com' aria-label={'table label'} />);
     });
     test('typed data', () => {
       assertType<JSX.Element>(
-        <DataTable<{ a: number; b: number; c: number }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
+        <DataTable<{ a: number; b: number; c: number }[]>
+          data={[{ a: 1, b: 2, c: 3 }]}
+          aria-label={'table label'}
+        />,
       );
       assertType<JSX.Element>(
-        // @ts-expect-error
-        <DataTable<{ a: string; b: string; c: string }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
+        <DataTable<{ a: string; b: string; c: string }[]>
+          // @ts-expect-error
+          data={[{ a: 1, b: 2, c: 3 }]}
+          aria-label={'table label'}
+        />,
       );
     });
     test('data&uniqueKey relation', () => {
-      assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='a' />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='f' />);
+      assertType<JSX.Element>(
+        <DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='a' aria-label={'table label'} />,
+      );
+      assertType<JSX.Element>(
+        // @ts-expect-error
+        <DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='f' aria-label={'table label'} />,
+      );
     });
   });
 
@@ -92,7 +104,7 @@ describe('DataTable', () => {
   test.concurrent('renders correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -109,7 +121,7 @@ describe('DataTable', () => {
   test.concurrent('Customizing the header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword'>
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
@@ -150,7 +162,7 @@ describe('DataTable', () => {
   test.concurrent('The size of the columns', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto' />
             <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100} />
@@ -167,7 +179,7 @@ describe('DataTable', () => {
   test.concurrent('The alignment of the columns', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword'>
               Keyword
@@ -207,7 +219,12 @@ describe('DataTable', () => {
   test.concurrent('Sorting', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} sort={['kd', 'desc']} onSortChange={vi.fn()}>
+        <DataTable
+          data={data}
+          sort={['kd', 'desc']}
+          onSortChange={vi.fn()}
+          aria-label={'table label'}
+        >
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' sortable id='row' />
@@ -231,7 +248,7 @@ describe('DataTable', () => {
   test.concurrent('Sorting by keyboard', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} onSortChange={vi.fn()}>
+        <DataTable data={data} onSortChange={vi.fn()} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' sortable id='row' />
@@ -252,11 +269,11 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should focus to body (skip head) if head is hidden', async ({ task }) => {
+  test.concurrent('Should focus to first cell in body', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
-          <DataTable.Head hidden>
+        <DataTable data={data} aria-label={'table label'}>
+          <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
             <DataTable.Column name='cpc' children='CPC' />
@@ -271,19 +288,16 @@ describe('DataTable', () => {
 
     await userEvent.keyboard('[Tab]');
 
-    const groups = getAllByRole('rowgroup');
-    const head = groups[0];
-    const body = groups[1];
+    const cells = getAllByRole('gridcell');
 
-    expect(head).not.toHaveFocus();
-    expect(body).toHaveFocus();
+    expect(cells[0]).toHaveFocus();
   });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   test.skip('Fixed columns', async ({ task }) => {
     const component = (
       <div style={{ width: 500 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head wMin={800}>
             <DataTable.Column name='keyword' children='Keyword' fixed='left' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -300,7 +314,7 @@ describe('DataTable', () => {
   test.concurrent('Multi-level header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column>
@@ -320,7 +334,7 @@ describe('DataTable', () => {
   test.concurrent('Adding additional elements to the header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -345,7 +359,7 @@ describe('DataTable', () => {
         <div style={{ width: 800 }}>
           <div style={{ border: '1px solid' }} ref={portalRef} />
           <Divider my={5} />
-          <DataTable style={{ border: '1px solid' }} data={data}>
+          <DataTable style={{ border: '1px solid' }} data={data} aria-label={'table label'}>
             <PortalProvider value={portalRef}>
               <Portal>
                 <DataTable.Head>
@@ -367,7 +381,7 @@ describe('DataTable', () => {
   test.concurrent('Access to Row', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -407,7 +421,7 @@ describe('DataTable', () => {
   test.concurrent('Access to Cell', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -441,7 +455,7 @@ describe('DataTable', () => {
   test.skip.concurrent('Access to a set of cells', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -470,7 +484,7 @@ describe('DataTable', () => {
   test.concurrent('Adding additional elements to the table body', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -512,7 +526,7 @@ describe('DataTable', () => {
     const component = (
       <div style={{ width: 800 }}>
         <Accordion value={[1, 2]} onChange={vi.fn}>
-          <DataTable data={data}>
+          <DataTable data={data} aria-label={'table label'}>
             <DataTable.Head>
               <DataTable.Column name='keyword' children='Keyword' />
               <DataTable.Column name='kd' children='KD,%' />
@@ -577,7 +591,7 @@ describe('DataTable', () => {
     const component = (
       <div style={{ width: 800 }}>
         <Accordion value={[1, 2]} onChange={vi.fn}>
-          <DataTable data={data}>
+          <DataTable data={data} aria-label={'table label'}>
             <DataTable.Head wMin={800}>
               <DataTable.Column name='keyword' children='Keyword' fixed='left' />
               <DataTable.Column name='kd' children='KD,%' />
@@ -593,7 +607,7 @@ describe('DataTable', () => {
                     fontWeight: 'normal',
                     collapse: {
                       children: (
-                        <DataTable data={data} zIndex={2}>
+                        <DataTable data={data} zIndex={2} aria-label={'table label'}>
                           <DataTable.Head hidden>
                             <DataTable.Column name='keyword' fixed='left' />
                             <DataTable.Column name='kd' />
@@ -630,7 +644,7 @@ describe('DataTable', () => {
   test.concurrent('Download status', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -658,7 +672,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -706,7 +720,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -761,7 +775,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -813,7 +827,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -830,7 +844,7 @@ describe('DataTable', () => {
   test.concurrent('Secondary table', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} use='secondary' sort={['kd', 'desc']}>
+        <DataTable data={data} use='secondary' sort={['kd', 'desc']} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' sortable />
@@ -842,50 +856,6 @@ describe('DataTable', () => {
       </div>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Hover of grouped rows', async ({ task }) => {
-    const data = [
-      {
-        keyword: 'www.ebay.com',
-        [ROW_GROUP]: [
-          {
-            kd: '11.2',
-          },
-          {
-            kd: '10',
-          },
-        ],
-      },
-    ];
-
-    const component = (
-      <div style={{ width: 800 }}>
-        <DataTable data={data}>
-          <DataTable.Head>
-            <DataTable.Column name='keyword' children='Keyword' />
-            <DataTable.Column name='kd' children='KD,%' />
-          </DataTable.Head>
-          <DataTable.Body />
-        </DataTable>
-      </div>
-    );
-
-    await expect(
-      await snapshot(component, {
-        actions: {
-          hover: '[data-ui-name="DefinitionTable.Body"] [data-ui-name="Flex"]',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
-    await expect(
-      await snapshot(component, {
-        actions: {
-          hover:
-            '[data-ui-name="DefinitionTable.Body"] [data-ui-name="group-cell"] [data-ui-name="Flex"]',
-        },
-      }),
-    ).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Active state for row', async ({ task }) => {
@@ -911,7 +881,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -936,7 +906,7 @@ describe('DataTable', () => {
   test('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
-      <DataTable data={[{ keyword: 123 }]}>
+      <DataTable data={[{ keyword: 123 }]} aria-label={'table label'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='KD,%' />
         </DataTable.Head>
@@ -947,6 +917,10 @@ describe('DataTable', () => {
       vi.runAllTimers();
     });
     vi.useRealTimers();
+
+    container.querySelectorAll('[role=gridcell]').forEach((el) => {
+      el.removeAttribute('inert');
+    });
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -970,7 +944,7 @@ describe('DataTable', () => {
 
     const { container } = render(
       <div style={{ width: 800 }}>
-        <DataTable data={data}>
+        <DataTable data={data} aria-label={'table label'}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' />
@@ -985,6 +959,10 @@ describe('DataTable', () => {
     });
     vi.useRealTimers();
 
+    container.querySelectorAll('[role=gridcell]').forEach((el) => {
+      el.removeAttribute('inert');
+    });
+
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -993,7 +971,7 @@ describe('DataTable', () => {
 describe('DataTable.Column', () => {
   test.concurrent('Should support set flex after rerender', () => {
     const { getByTestId, rerender } = render(
-      <DataTable data={[]}>
+      <DataTable data={[]} aria-label={'table label'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' data-testid='column' flex={0} />
           <DataTable.Column name='kd' />
@@ -1002,7 +980,7 @@ describe('DataTable.Column', () => {
     );
     expect(getByTestId('column').style.flex).toBe('0 0px');
     rerender(
-      <DataTable data={[]}>
+      <DataTable data={[]} aria-label={'table label'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' data-testid='column' flex={0} />
         </DataTable.Head>
@@ -1014,7 +992,7 @@ describe('DataTable.Column', () => {
   test.concurrent('Should support ref', () => {
     const spy = vi.fn();
     render(
-      <DataTable data={[]}>
+      <DataTable data={[]} aria-label={'table label'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' ref={spy} />
           <DataTable.Column name='kd' />

@@ -186,20 +186,9 @@ We have specific styles for highlighting quotes in paragraphs.
 
 ## Hints (hint links)
 
-Text can be wrapped in a hint link (pseudo-link) component, creating a control that triggers events on the page without reloading it. This pseudo-link is usually used to show and hide [tooltips](../../components/tooltip/tooltip) or parts of the UI.
-
-![](static/hint-link.png)
-
-### Hint link states
-
-Table: Hint link states
-
-| State        | Appearance example  | Styles and tokens      | Cursor          |
-| ------------ | ------------------- | ---------------------- | --------------- |
-| Normal       | ![](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.     | `help` or `pointer`, if clickable   |
-| Active/hover | ![](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If used with an icon, the icon changes color along with the text. | `help`, `default` or `pointer` (depending on the usage context) |
-| Disabled     | ![](static/hint-disabled.png) | `--disabled-opacity`. Use this state as a last resort and be sure to label the disabled link with an explanatory tooltip.     | `default`       |
-| visited      |             | This link does not have `visited` state.  |                   |
+::: warning
+The [ButtonLink](../../components/button/button.md#button-with-link-styles) component has been implemented to replace the `Hint` component. Using `Hint` as a button or pseudo-link is no longer recommended.
+:::
 
 ## Which heading with which paragraph size shall be used
 

@@ -9,7 +9,7 @@ tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container
 
 ### Roles and attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles & attributes
 

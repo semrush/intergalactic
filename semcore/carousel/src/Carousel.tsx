@@ -32,8 +32,7 @@ const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
 
 const enhance = {
   uid: uniqueIDEnhancement(),
-  getI18nText: i18nEnhance(localizedMessages),
-  keyboardFocusEnhance: keyboardFocusEnhance(),
+  i18nEnahnce: i18nEnhance(localizedMessages),
 };
 const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
@@ -43,7 +42,12 @@ class CarouselRoot extends Component<
   CarouselProps,
   CarouselContext,
   CarouselState,
-  typeof enhance
+  typeof enhance & {
+    getI18nText: (
+      messageId: string,
+      variables?: { [key: string]: string | number | undefined },
+    ) => string;
+  }
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -358,7 +362,7 @@ class CarouselRoot extends Component<
   };
 
   getPrevProps() {
-    const { bounded, getI18nText } = this.asProps;
+    const { bounded, getI18nText, uid } = this.asProps;
     const { items, selectedIndex } = this.state;
     let disabled = false;
     if (items.length && bounded) {
@@ -369,12 +373,12 @@ class CarouselRoot extends Component<
       onKeyDown: this.bindHandlerKeydownControl('left'),
       disabled,
       label: getI18nText('prev'),
-      tabIndex: -1,
+      'aria-controls': `igc-${uid}-carousel`,
     };
   }
 
   getNextProps() {
-    const { bounded, getI18nText } = this.asProps;
+    const { bounded, getI18nText, uid } = this.asProps;
     const { items, selectedIndex } = this.state;
     let disabled = false;
     if (items.length && bounded) {
@@ -386,12 +390,13 @@ class CarouselRoot extends Component<
       onKeyDown: this.bindHandlerKeydownControl('right'),
       disabled,
       label: getI18nText('next'),
-      tabIndex: -1,
+      'aria-controls': `igc-${uid}-carousel`,
     };
   }
 
   getIndicatorsProps() {
     const { items } = this.state;
+    const { getI18nText } = this.asProps;
 
     return {
       items: items.map((item, key) => ({
@@ -399,6 +404,20 @@ class CarouselRoot extends Component<
         onClick: this.bindHandlerClickIndicator(key),
         key,
       })),
+      role: 'tablist',
+      'aria-label': getI18nText('slides'),
+    };
+  }
+
+  getIndicatorProps(_: any, index: number) {
+    const isCurrent = this.isSelected(index);
+    const { getI18nText } = this.asProps;
+
+    return {
+      role: 'tab',
+      'aria-selected': isCurrent,
+      'aria-controls': `igc-${this.asProps.uid}-carousel-item-${index}`,
+      'aria-label': getI18nText('slide', { slideNumber: index + 1 }),
     };
   }
 
@@ -430,7 +449,7 @@ class CarouselRoot extends Component<
   }
 
   isSelected(index: number) {
-    const { items, selectedIndex } = this.state;
+    const { items } = this.state;
 
     if (items.length === 0) {
       return true;
@@ -442,15 +461,7 @@ class CarouselRoot extends Component<
   renderModal(isSmall: boolean, ComponentItems: any[]) {
     const SModalContainer = Root;
     const SModalBox = Box;
-    const {
-      styles,
-      uid,
-      duration,
-      zoom: hasZoom,
-      zoomWidth,
-      'aria-label': ariaLabel,
-      'aria-roledescription': ariaRoledescription,
-    } = this.asProps;
+    const { styles, uid, duration, zoomWidth } = this.asProps;
     const { isOpenZoom } = this.state;
 
     return sstyled(styles)(
@@ -465,7 +476,7 @@ class CarouselRoot extends Component<
           <SModalBox>
             <SModalContainer
               render={Box}
-              role='list'
+              aria-live='polite'
               use:duration={`${duration}ms`}
               ref={this.refModalContainer}
               use:w={undefined}
@@ -508,6 +519,7 @@ class CarouselRoot extends Component<
     const {
       styles,
       Children,
+      uid,
       zoom: hasZoom,
       'aria-label': ariaLabel,
       'aria-roledescription': ariaRoledescription,
@@ -523,21 +535,21 @@ class CarouselRoot extends Component<
     return sstyled(styles)(
       <SCarousel
         render={Box}
-        role='group'
+        role='region'
+        roledescription='carousel'
         onKeyDown={this.handlerKeyDown}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
         ref={this.refCarousel}
+        id={`igc-${uid}-carousel`}
+        aria-roledescription={ariaRoledescription}
       >
         {Controls.length === 0 ? (
           <>
             <Flex>
               <Carousel.Prev />
               <SContentBox>
-                <Carousel.Container
-                  aria-roledescription={ariaRoledescription}
-                  aria-label={ariaLabel}
-                >
+                <Carousel.Container aria-label={ariaLabel}>
                   <Children />
                 </Carousel.Container>
               </SContentBox>
@@ -581,11 +593,15 @@ const Container = (props: BoxProps & { duration?: number }) => {
   const SContainer = Root;
   const { styles, duration } = props;
 
-  return sstyled(styles)(<SContainer render={Box} role='list' use:duration={`${duration}ms`} />);
+  return sstyled(styles)(
+    <SContainer render={Box} use:duration={`${duration}ms`} aria-live='polite' />,
+  );
 };
 
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
+  keepFocusTimeout: NodeJS.Timeout | undefined;
+  static enhance = [keyboardFocusEnhance(false)];
 
   componentDidMount() {
     const { toggleItem, transform } = this.props;
@@ -603,28 +619,43 @@ class Item extends Component<CarouselItemProps> {
     const refItem = this.refItem.current;
 
     toggleItem && refItem && toggleItem({ node: refItem }, true);
+    clearTimeout(this.keepFocusTimeout);
   }
 
   componentDidUpdate(prevProps: CarouselItemProps) {
+    clearTimeout(this.keepFocusTimeout);
+
     const transform = this.props.transform;
     const refItem = this.refItem.current;
 
     if (prevProps.transform !== transform && refItem) {
       refItem.style.transform = `translateX(${transform}%)`;
     }
+    if (this.props.current) {
+      this.keepFocusTimeout = setTimeout(() => {
+        if (
+          document.activeElement !== refItem &&
+          (document.activeElement as HTMLElement)?.dataset.carousel === refItem?.dataset.carousel
+        ) {
+          refItem?.focus();
+        }
+      }, 100);
+    }
   }
 
   render() {
-    const { styles, index, uid, current, zoomIn, onToggleZoomModal, transform } = this.props;
+    const { styles, index, uid, current, zoomIn, onToggleZoomModal } = this.props;
     const SItem = Root;
 
     return sstyled(styles)(
       <SItem
         render={Box}
         ref={this.refItem}
-        role='listitem'
+        role='tabpanel'
+        data-carousel={`igc-${uid}-carousel`}
         id={`igc-${uid}-carousel-item-${index}`}
         aria-current={current}
+        use:tabIndex={current ? 0 : -1}
         onClick={zoomIn ? onToggleZoomModal : undefined}
         zoomIn={zoomIn}
       />,
@@ -633,7 +664,7 @@ class Item extends Component<CarouselItemProps> {
 }
 
 const Prev = (props: CarouselButtonProps) => {
-  const { styles, children, Children, label, top = 0, inverted, tabIndex } = props;
+  const { styles, children, Children, label, top = 0, inverted } = props;
   const SPrev = Root;
   const SPrevButton = Button;
 
@@ -648,7 +679,6 @@ const Prev = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
-          tabIndex={tabIndex}
         />
       )}
     </SPrev>,
@@ -656,7 +686,7 @@ const Prev = (props: CarouselButtonProps) => {
 };
 
 const Next = (props: CarouselButtonProps) => {
-  const { styles, children, Children, label, top = 0, inverted, tabIndex } = props;
+  const { styles, children, Children, label, top = 0, inverted } = props;
   const SNext = Root;
   const SNextButton = Button;
 
@@ -671,7 +701,6 @@ const Next = (props: CarouselButtonProps) => {
           theme={inverted ? 'invert' : 'muted'}
           use={'tertiary'}
           size={'l'}
-          tabIndex={tabIndex}
         />
       )}
     </SNext>,
@@ -682,19 +711,20 @@ const Indicators = ({ items, styles, Children, inverted }: CarouselIndicatorsPro
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
-      <SIndicators render={Box} aria-hidden='true'>
+      <SIndicators render={Box}>
         <Children />
       </SIndicators>,
     );
   }
   return sstyled(styles)(
-    <SIndicators render={Box} aria-hidden='true'>
+    <SIndicators render={Box}>
       {items?.map((item, index) => (
         <Carousel.Indicator key={index} {...item} inverted={inverted} />
       ))}
     </SIndicators>,
   );
 };
+Indicators.enhance = [keyboardFocusEnhance()];
 
 const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
   const SIndicator = Root;

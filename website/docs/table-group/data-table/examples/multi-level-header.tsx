@@ -3,7 +3,7 @@ import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Multi level header'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column vBorders wMax={'40%'}>

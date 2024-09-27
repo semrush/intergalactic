@@ -7,8 +7,6 @@
   background: var(--intergalactic-bg-secondary-neutral);
   border-radius: var(--intergalactic-rounded-medium);
   margin-bottom: 0 !important;
-  text-decoration: none;
-  color: var(--intergalactic-text-primary);
 }
 .card:hover {
   cursor: pointer;
@@ -21,12 +19,14 @@
   opacity: calc(var(--intergalactic-disabled-opacity) + 0.1);
   pointer-events: none;
 }
-.linkUi {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+a.linkUi {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: var(--intergalactic-text-primary) !important
+}
+.linkUi img {
+  width: 100%;;
 }
 .title {
   margin-top: var(--intergalactic-spacing-3x) !important;

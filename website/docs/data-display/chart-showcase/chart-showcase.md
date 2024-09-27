@@ -93,7 +93,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -201,7 +201,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -309,7 +309,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -423,7 +423,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -552,7 +552,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -641,7 +641,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -742,7 +742,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -802,7 +802,7 @@ const App = function (props) {
   const items = Object.keys(group).map((el) => group[el]);
 
   return (
-    <Box style={cardsStyle}>
+    <Box tag="ul" style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}

@@ -87,7 +87,7 @@ FeaturePopover contains only simple reference/promotional information. The purpo
 
 **Use it when:**
 
-- It is necessary to draw the user’s attention to an interface part.
+- It's necessary to draw the user’s attention to an interface part.
 - You need to point at the next step for the user.
 
 ::: warning
@@ -181,7 +181,7 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 - Use FeaturePopover only to display promotional or onboarding information. The purpose of component is to emphasize a feature and/or explain why it can be useful to the user.
 - Mind the user path and the context, in which users will see FeaturePopover. Show it ad hoc and don’t overload the message with unnecessary information.
 - Always allow the user to close FeaturePopover. Don’t force the user to use a feature.
-- Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to `Info` icons, hint links and so on.
+- Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to an [Informer](../../patterns/informer/informer), [DescriptionTooltip](../tooltip/tooltip.md), and so on.
 - Make sure that FeaturePopover doesn't cover important parts in the interface that the user needs in the context of use.
 
 ### Terms of use

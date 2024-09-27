@@ -82,7 +82,7 @@ When the fullscreen modal window is closed, focus always returns to its trigger.
 
 ### Loading
 
-When loading and reloading the content of the window, use [SpinContainer](../spin-container/spin-container.md) with XXL size.
+When loading and reloading the content of the window, use [SpinContainer](../spin-container/spin-container) with XXL size.
 
 ![](static/loading.png)
 

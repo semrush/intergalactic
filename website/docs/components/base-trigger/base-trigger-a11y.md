@@ -12,7 +12,7 @@ See detailed information about the keyboard support for the FilterTrigger in the
 
 ### Roles and attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 | Role     | Attribute    | Element             | Usage                                                                                                             |
 | -------- | ------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------- |

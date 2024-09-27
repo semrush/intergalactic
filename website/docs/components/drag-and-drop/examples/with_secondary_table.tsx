@@ -54,7 +54,7 @@ const Demo = () => {
   );
 
   return (
-    <DataTable use='secondary' data={sortedData} w={400}>
+    <DataTable use='secondary' data={sortedData} w={400} aria-label={'Table title'}>
       <DataTable.Head>
         <DataTable.Column name='countryTitle' children='Keyword' wMin={140} justifyContent='left' />
         <DataTable.Column name='cpc' children='CPC' />

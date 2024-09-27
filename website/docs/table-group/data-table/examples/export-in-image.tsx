@@ -44,7 +44,7 @@ const Demo = () => {
     <Flex>
       <svg ref={svgRef} xmlns='http://www.w3.org/2000/svg' width={width} height={height}>
         <foreignObject width='100%' height='100%'>
-          <DataTable data={data}>
+          <DataTable data={data} aria-label={'Table title. Export in image'}>
             <DataTable.Head>
               <DataTable.Column name='keyword' children='Keyword' />
               <DataTable.Column name='kd' children='KD,%' />

@@ -11,6 +11,7 @@ import { forkRef } from '@semcore/utils/lib/ref';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { SORT_ICON_WIDTH } from './Head';
 import scrollStyles from './style/scroll-shadows.shadow.css';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -47,7 +48,7 @@ type State = {
   scrollOffset: number;
 };
 
-class Body extends Component<AsProps, State> {
+class Body extends Component<AsProps, {}, State> {
   state: State = {
     rowHeight: undefined,
     scrollAreaHeight: undefined,
@@ -58,10 +59,58 @@ class Body extends Component<AsProps, State> {
   firstRowRef = React.createRef<HTMLDivElement>();
   firstRowResizeObserver: ResizeObserver | null = null;
 
+  lockedCell: [HTMLElement | null, boolean] = [null, false];
+
   getRowHeight = () => {
     const { virtualScroll } = this.asProps;
     const rowHeightFromProps = typeof virtualScroll === 'object' && virtualScroll?.rowHeight;
     return rowHeightFromProps || this.state.rowHeight;
+  };
+
+  handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.currentTarget === this.lockedCell[0]) {
+      const focusableChildren = Array.from(this.lockedCell[0].children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (this.lockedCell[1]) {
+        if (e.key === 'Escape') {
+          this.lockedCell[0]?.focus();
+          this.lockedCell[1] = false;
+        }
+        if (e.key.startsWith('Arrow')) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+        if (e.key === 'Tab') {
+          if (e.target === focusableChildren[0] && e.shiftKey) {
+            focusableChildren[focusableChildren.length - 1]?.focus();
+            e.preventDefault();
+          } else if (e.target === focusableChildren[focusableChildren.length - 1] && !e.shiftKey) {
+            focusableChildren[0]?.focus();
+            e.preventDefault();
+          }
+          e.stopPropagation();
+        }
+      } else if (e.key === 'Enter') {
+        this.lockedCell[1] = true;
+        focusableChildren[0]?.focus();
+      }
+    }
+  };
+
+  onFocusCell = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
+    if (e.target === e.currentTarget) {
+      const focusableChildren = Array.from(e.currentTarget.children).flatMap((node) =>
+        getFocusableIn(node as HTMLElement),
+      );
+
+      if (focusableChildren.length === 1) {
+        focusableChildren[0].focus();
+      } else if (focusableChildren.length > 1) {
+        this.lockedCell = [e.currentTarget, false];
+      }
+    }
   };
 
   renderCells(cells: NestedCells, rowData: RowData, dataIndex: number) {
@@ -126,10 +175,12 @@ class Body extends Component<AsProps, State> {
           .filter(Boolean)
           .map((name) => `igc-table-${uid}-${name}`);
 
+        const ariaColspan = nameParts.length;
+
         return sstyled(styles)(
           <SCell
             key={cell.name}
-            role='cell'
+            role='gridcell'
             headers={headerIds.join(' ')}
             __excludeProps={['data']}
             {...props}
@@ -138,6 +189,11 @@ class Body extends Component<AsProps, State> {
             use={use}
             borderLeft={props.borderLeft}
             borderRight={props.borderRight}
+            tabIndex={-1}
+            onKeyDown={this.handleKeyDown}
+            onFocus={this.onFocusCell}
+            aria-colindex={cellIndex + 1}
+            aria-colspan={ariaColspan === 1 ? undefined : ariaColspan}
           />,
         ) as React.ReactElement;
       }
@@ -346,12 +402,13 @@ class Body extends Component<AsProps, State> {
             ref={forkRef(...scrollContainerRefs)}
             role='rowgroup'
             focusRingTopOffset={'3px'}
+            tabIndex={-1}
           >
             {body}
           </ScrollArea.Container>
-          <div style={displayContents} role='rowgroup'>
-            <div style={displayContents} role='row'>
-              <div style={displayContents} role='cell'>
+          <div style={displayContents}>
+            <div style={displayContents}>
+              <div style={displayContents}>
                 <ScrollArea.Bar
                   orientation='horizontal'
                   bottom={0}

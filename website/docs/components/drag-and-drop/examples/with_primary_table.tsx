@@ -51,7 +51,7 @@ const Demo = () => {
   );
 
   return (
-    <DataTable data={sortedData} w={600}>
+    <DataTable data={sortedData} w={600} aria-label={'Table title'}>
       <DataTable.Head>
         <DataTable.Column name='checkbox' wMax={30}>
           <Checkbox />

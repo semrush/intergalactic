@@ -11,15 +11,17 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Link from 'intergalactic/link';
 import CheckM from 'intergalactic/icon/Check/m';
+import CheckL from 'intergalactic/icon/Check/l';
 import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
+import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
 
 const SIZE = [
   { value: '100', name: '100 = 12px' },
   { value: '200', name: '200 = 14px' },
   { value: '300', name: '300 = 16px' },
-  { value: '400', name: '400 = 19px' },
-  { value: '500', name: '500 = 25px' },
-  { value: '600', name: '600 = 33px' },
+  { value: '400', name: '400 = 20px' },
+  { value: '500', name: '500 = 24px' },
+  { value: '600', name: '600 = 32px' },
   { value: '700', name: '700 = 36px' },
   { value: '800', name: '800 = 48px' },
 ];
@@ -77,12 +79,12 @@ const Preview = (preview) => {
     label: 'Text',
   });
 
-  const renderIcon = (position) => {
+  const renderIcon = (position, size) => {
     switch (position) {
       case 'before':
-        return <CheckM />;
+        return size < 400 ? <CheckM /> : <CheckL />;
       case 'after':
-        return <ArrowRightM />;
+        return size < 400 ? <ArrowRightM /> : <ArrowRightL />;
       default:
         return false;
     }
@@ -90,9 +92,9 @@ const Preview = (preview) => {
 
   return (
     <Link color={color} size={size} disabled={disabled} active={active} href='#'>
-      {beforeIcon && <Link.Addon>{renderIcon('before')}</Link.Addon>}
+      {beforeIcon && <Link.Addon>{renderIcon('before', size)}</Link.Addon>}
       {beforeIcon || afterIcon ? <Link.Text>{child}</Link.Text> : child}
-      {afterIcon && <Link.Addon>{renderIcon('after')}</Link.Addon>}
+      {afterIcon && <Link.Addon>{renderIcon('after', size)}</Link.Addon>}
     </Link>
   );
 };
@@ -207,34 +209,34 @@ For links placed in one line, maintain a margin between them that is a multiple 
 
 ![](static/link-margin.png)
 
-## Default link or Hint link?
+## Default link or ButtonLink?
 
 ::: tip
-Find detailed information on the hint link in the [Typography guide](/style/typography/typography#hints_hint_links).
+For more information refer to [ButtonLink](../button/button.md#button-with-link-styles).
 :::
 
-- Default link is suitable for internal and external transitions, reloading the page, updating data in a small block/widget, and clickable email.
-- Hint link is recommended for updating data in a table row, opening a modal window, opening a dropdown, opening an accordion, opening the full text on the same page, and tooltip on click/hover.
+- Default link is suitable for going to a page, either internal (within domain) or external, opening an email address or download a file.
+- `ButtonLink` can be used in cases where you'd normally use a button, but there's not enough space. Such cases are: reloading the page, updating data in a widget, opening a dialog or a dropdown, and so on.
 
 Table: How to choose what type of link you should use
 
-| Action on the page   | Default link       | Hint link |
-| -------------------- | ------------------ | --------- |
-| Internal transition                    | ✅                                   | ❌        |
-| External transition                    | ✅                                   | ❌        |
-| Reloading the page                     | ✅                                   | ❌        |
-| Updating data in a small block/widget  | ✅                                   | ❌        |
-| Clickable email                        | ✅                                   | ❌        |
-| Updating data in a table row           | Allowed if it is an important action | ✅        |
-| Opening a modal window                 | Allowed if it is an important action | ✅        |
-| Opening a dropdown                     | Allowed if it is an important action | ✅        |
-| Opening of an accordion                | Allowed if it is an important action | ✅        |
-| Opening the full text on the same page | ❌                                   | ✅        |
-| Tooltip on click/hover                 | ❌                                   | ✅        |
+| Action on the page                     | Default link       | ButtonLink |
+| -------------------------------------- | ------------------ | ---------- |
+| Internal transition                    | ✅                 | ❌         |
+| External transition                    | ✅                 | ❌         |
+| Clickable email                        | ✅                 | ❌         |
+| Reloading the page                     | ❌                 | ✅         |
+| Updating data in a small block/widget  | ❌                 | ✅         |
+| Updating data in a table row           | ❌                 | ✅         |
+| Opening a modal window                 | ❌                 | ✅         |
+| Opening a dropdown                     | ❌                 | ✅         |
+| Opening an accordion                   | ❌                 | ✅         |
+| Opening the full text on the same page | ❌                 | ✅         |
+| `DescriptionTooltip` on click          | ❌                 | ✅         |
 
 ## Links in tables
 
-- If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/button).
+- Use [tertiary buttons](/components/button/button) in tables whenever there's enough space. If the space is limited, you can use [ButtonLink](../button/button.md#button-with-link-styles) instead.
 - In table rows, use 14px links. If the link is a URL leading to an external page, include the `LinkExternal` icon with M size and `--icon-secondary-neutral` color next to it. Ensure it has a `margin-left: var(--spacing-1x)`.
 
 ![](static/table-yes-no.png)
