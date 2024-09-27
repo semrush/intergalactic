@@ -199,6 +199,23 @@ class RootSelect extends AbstractDropdown {
     return { my: 1, 'aria-disabled': 'true' };
   }
 
+  handleOpenKeyDown(e) {
+    super.handleOpenKeyDown(e);
+
+    if (this.asProps.visible !== true && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
+      const hasInputSearch = isAdvanceMode(
+        this.asProps.Children,
+        [Select.InputSearch.displayName],
+        true,
+      );
+      const defaultIndex = hasInputSearch ? null : 0;
+
+      this.handlers.highlightedIndex(defaultIndex);
+
+      return false;
+    }
+  }
+
   renderChildrenTrigger(value, options) {
     if (options) {
       return [].concat(value).reduce((acc, value) => {

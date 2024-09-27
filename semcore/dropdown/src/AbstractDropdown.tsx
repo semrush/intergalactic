@@ -276,6 +276,7 @@ export abstract class AbstractDropdown extends Component<
   }
   protected handleOpenKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (
+      this.asProps.visible !== true &&
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
       e.currentTarget.getAttribute('role') !== this.childRole
     ) {
