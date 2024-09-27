@@ -3,7 +3,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import InlineInput from '../src/InlineInput';
-import SerpM from '@semcore/icon/Serp/m';
+import SerpM from '@semcore/icon/Serp/m/index';
 
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';

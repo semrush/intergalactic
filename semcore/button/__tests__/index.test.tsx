@@ -6,10 +6,10 @@ import { render } from '@semcore/testing-utils/testing-library';
 
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
-import CheckM from '@semcore/icon/Check/m';
+import CheckM from '@semcore/icon/Check/m/index';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button, { ButtonLink } from '../src';
-import CloseM from '@semcore/icon/Close/m';
+import CloseM from '@semcore/icon/Close/m/index';
 
 describe('Button', () => {
   // beforeEach(cleanup);

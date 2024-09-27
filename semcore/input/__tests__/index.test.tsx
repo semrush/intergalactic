@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '@semcore/icon/Search/m';
+import Search from '@semcore/icon/Search/m/index';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';

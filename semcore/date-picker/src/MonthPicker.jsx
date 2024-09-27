@@ -9,7 +9,7 @@ import {
   Title,
   Trigger as ButtonTrigger,
   InputTrigger,
-} from './components';
+} from './components/index';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 

@@ -3,7 +3,7 @@
   "description": "Semrush Select Component",
   "version": "4.46.0",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.js",
+  "module": "lib/es6/index.mjs",
   "typings": "lib/types/index.d.ts",
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",

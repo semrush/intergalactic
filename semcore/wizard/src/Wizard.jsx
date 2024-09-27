@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Modal from '@semcore/modal';
-import CheckM from '@semcore/icon/Check/m';
+import CheckM from '@semcore/icon/Check/m/index';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';

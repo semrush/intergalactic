@@ -46,9 +46,9 @@ import Ellipsis from '@semcore/ellipsis';
 import resolveColor from '@semcore/utils/lib/color';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
-import LikeM from '@semcore/icon/Like/m';
+import LikeM from '@semcore/icon/Like/m/index';
 import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
-import Icon from '@semcore/icon/Video/m';
+import Icon from '@semcore/icon/Video/m/index';
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 

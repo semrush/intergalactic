@@ -7,7 +7,7 @@ import { Flex, Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
 import isNode from '@semcore/utils/lib/isNode';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import CloseIcon from '@semcore/icon/Close/m';
+import CloseIcon from '@semcore/icon/Close/m/index';
 import { Timer } from './utils';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
