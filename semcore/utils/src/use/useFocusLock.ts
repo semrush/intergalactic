@@ -45,7 +45,11 @@ export const makeFocusLockSyntheticEvent = (baseEvent: Event) => {
   return syntheticEvent;
 };
 
-const useFocusBorders = (React: ReactT, disabled?: boolean) => {
+const useFocusBorders = (
+  React: ReactT,
+  disabled?: boolean,
+  trapRef?: React.RefObject<HTMLElement>,
+) => {
   useUniqueIdHookMock(React);
   React.useEffect(() => {
     const id = getUniqueId('focus-borders-consumer');
@@ -54,10 +58,10 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
     }
 
     if (!areFocusBordersPlacedCorrectly()) removeFocusBorders();
-    if (!areIframeBordersPlacedCorrectly()) removeIframeBorders();
+    if (!areIframeBordersPlacedCorrectly(trapRef?.current)) removeIframeBorders();
     if (focusBordersConsumers.size > 0) {
       addFocusBorders();
-      addIframeBorders();
+      addIframeBorders(trapRef?.current);
     }
 
     return () => {
@@ -136,7 +140,7 @@ const useFocusLockHook = (
   focusMaster = false,
   onFocusOut?: (event: Event) => void,
 ) => {
-  useFocusBorders(React, disabled);
+  useFocusBorders(React, disabled, trapRef);
 
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
@@ -166,7 +170,7 @@ const useFocusLockHook = (
         )
           return;
 
-        if (focusCameFrom) {
+        if (focusCameFrom && focusMovedTo) {
           setFocus(trapRef.current, focusCameFrom, focusMovedTo);
         }
 
