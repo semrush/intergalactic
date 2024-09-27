@@ -72,22 +72,11 @@ class RootSidePanel extends Component {
     );
   }
 
-  calculateDelayAnimation(name) {
-    const delay = this.asProps.duration / 2;
-    const usedOverlay = this.isUsedOverlay();
-
-    return {
-      overlay: usedOverlay ? [0, delay] : 0,
-      panel: usedOverlay ? [delay, 0] : 0,
-    }[name];
-  }
-
   getOverlayProps() {
     const { visible, duration, animationsDisabled, disablePreventScroll } = this.asProps;
     return {
       visible,
       duration,
-      delay: this.calculateDelayAnimation('overlay'),
       animationsDisabled,
       disablePreventScroll,
     };
@@ -108,9 +97,8 @@ class RootSidePanel extends Component {
       visible,
       placement,
       closable,
-      duration,
+      duration: duration + duration / 2,
       disableEnforceFocus: !this.isUsedOverlay(),
-      delay: this.calculateDelayAnimation('panel'),
       onOutsideClick: this.handleOutsideClick,
       onKeyDown: this.handleSidebarKeyDown,
       animationsDisabled,
