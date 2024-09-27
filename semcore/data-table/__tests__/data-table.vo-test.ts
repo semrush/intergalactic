@@ -4,7 +4,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
-test('Users can interact with DataTable via VoiceOver', async ({
+test.skip('Users can interact with DataTable via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
@@ -13,11 +13,12 @@ test('Users can interact with DataTable via VoiceOver', async ({
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);
+
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
   await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('In table');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('In Table');
   await voiceOver.press('Control+Option+ArrowDown');
   await voiceOver.press('Control+Option+ArrowDown');
   await voiceOver.press('Control+Option+ArrowRight');

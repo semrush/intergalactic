@@ -25,7 +25,7 @@ const Demo = () => {
     };
   }, [loading]);
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Skeleton'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

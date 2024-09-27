@@ -12,8 +12,8 @@ const Demo = () => {
         const a = aRow[prop as SortableColumn];
         const b = bRow[prop as SortableColumn];
         if (a === b) return 0;
-        if (sortDirection === 'asc') return a - b;
-        else return b - a;
+        if (sortDirection === 'asc') return a > b ? 1 : -1;
+        else return a > b ? -1 : 1;
       }),
     [sort],
   );
@@ -24,7 +24,12 @@ const Demo = () => {
   );
 
   return (
-    <DataTable data={sortedData} sort={sort} onSortChange={setSort}>
+    <DataTable
+      data={sortedData}
+      sort={sort}
+      onSortChange={setSort}
+      aria-label={'Table title. Sorting'}
+    >
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' justifyContent='left' sortable />
         <DataTable.Column name='kd' children='KD,%' justifyContent='right' wMax={68} sortable />

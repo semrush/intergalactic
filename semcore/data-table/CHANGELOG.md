@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.0] - 2024-09-20
+
+### Added
+
+- Keyboard navigation.
+
 ## [4.43.0] - 2024-09-04
 
 ### Added

@@ -8,6 +8,12 @@ test.describe('DataTable', () => {
 
     await page.setContent(htmlContent);
 
+    await page.evaluate(() => {
+      document.querySelectorAll('[role=columnheader], [role=gridcell]').forEach((el) => {
+        el.removeAttribute('inert');
+      });
+    });
+
     const violations = await getAccessibilityViolations({ page });
 
     expect(violations).toEqual([]);

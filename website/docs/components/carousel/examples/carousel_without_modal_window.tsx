@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
 import Carousel from 'intergalactic/carousel';
 
 const images = [
@@ -18,12 +17,20 @@ const imageWidth = width - 75;
 const Demo = () => (
   <Carousel
     w={width}
-    aria-roledescription='image carousel'
+    aria-roledescription='carousel'
     aria-label='Beauty of Nature'
     indicators='preview'
   >
     {images.map((url, index) => (
-      <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
+      <Carousel.Item
+        tag='img'
+        role='button'
+        key={url}
+        src={url}
+        w={imageWidth}
+        alt={altTexts[index]}
+        aria-label={`Open in fullscreen ${altTexts[index]}`}
+      />
     ))}
   </Carousel>
 );

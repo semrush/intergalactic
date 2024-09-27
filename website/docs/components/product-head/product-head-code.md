@@ -5,7 +5,7 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 ---
 
 ::: tip
-The **Feedback** button uses the [ButtonLink](../button/button.md#button-with-link-styles) component to ensure proper semantics and accessibility.
+The **Feedback** button uses the [ButtonLink](../button/button#button-with-link-styles) component to ensure proper semantics and accessibility.
 :::
 
 ::: sandbox

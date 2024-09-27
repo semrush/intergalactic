@@ -3,7 +3,7 @@ import DataTable from 'intergalactic/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Column size'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto' />
         <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100} />

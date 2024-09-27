@@ -4,7 +4,7 @@ import Link from 'intergalactic/link';
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Access to cells'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

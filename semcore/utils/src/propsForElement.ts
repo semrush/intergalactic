@@ -553,6 +553,7 @@ const allowedAttributes = new Set([
   'elementtiming',
   'attr',
   'inert',
+  'suppressHydrationWarning',
 ]);
 
 export const validAttr = (name: string) => {

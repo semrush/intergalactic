@@ -18,7 +18,7 @@ Table: Keyboard support
 
 ### Roles & attributes
 
-The list below describes roles and attributes that component already has.
+The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
@@ -33,7 +33,7 @@ Table: Roles and attributes
 - Elements with the `aria-live` attribute or `status` role are automatically announced only when their content changes. So, if you want your content to be announced automatically, you should initially create an empty element and then update its content.
 - Don't trap keyboard focus in the `NoticeBubble`. Users should be able to navigate in and out freely.
 - If keyboard focus was in the `NoticeBubble`, after closing it set focus back on the element that triggered the notice. If that element doesn't exist anymore, set focus on its parent landmark.
-- If your `NoticeBubble` has interactive elements beside the **Close** button, set keyboard focus on the first non-destructive interactive element when the `NoticeBubble` appears ([example](./notice-bubble-code.md#focus-management)).
+- If your `NoticeBubble` has interactive elements beside the **Close** button, set keyboard focus on the first non-destructive interactive element when the `NoticeBubble` appears ([example](./notice-bubble-code#focus-management)).
 
 ## Other recommendations
 

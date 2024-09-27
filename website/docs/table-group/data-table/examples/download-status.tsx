@@ -2,7 +2,7 @@ import React from 'react';
 import DataTable from 'intergalactic/data-table';
 import SpinContainer from 'intergalactic/spin-container';
 
-const Demo = () => {
+const Demo = (): any => {
   const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -13,15 +13,21 @@ const Demo = () => {
     };
   }, [loading]);
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Table title. Download status'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
-      <SpinContainer loading={loading} style={{ overflow: 'initial' }}>
-        <DataTable.Body />
+      <SpinContainer
+        loading={loading}
+        style={{ overflow: 'initial' }}
+        use:aria-busy={undefined}
+        // @ts-ignore
+        inert={loading ? '' : undefined}
+      >
+        <DataTable.Body aria-busy={loading} />
         <SpinContainer.Overlay />
       </SpinContainer>
     </DataTable>

@@ -42,7 +42,7 @@ If there is a [Notice](/components/notice/notice) in the header, it has an 8px m
 ### Breadcrumbs and additional links
 
 ::: tip
-Use the [ButtonLink](../../components/button/button.md#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
+Use the [ButtonLink](../../components/button/button#button-with-link-styles) component if the element acts as a button, that's opens a dialog or changes the page.
 :::
 
 - [Breadcrumbs](/components/breadcrumbs/breadcrumbs) and [additional links](/patterns/links-order/links-order) are center-aligned.

@@ -31,7 +31,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-- Make sure screenreader reads your tags list as a group. Refer to the [Grouping tags example](./tag-code.md#grouping-tags).
+- Make sure screenreader reads your tags list as a group. Refer to the [Grouping tags example](./tag-code#grouping-tags).
 - Interactive tags that are used as a button or a link for filtering content should also follow the accessibility guidelines for [Button](/components/button/button-a11y) or [Link](/components/link/link-a11y), respectively.
 
 ## Considerations for designers

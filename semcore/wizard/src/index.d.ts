@@ -1,6 +1,7 @@
 import React from 'react';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
+import { ButtonProps } from '@semcore/button';
 import { ModalProps } from '@semcore/modal';
 
 export type WizardStep = string | number | boolean;
@@ -12,6 +13,7 @@ export type WizardProps = ModalProps & {
    * Active step value
    */
   step: WizardStep;
+  locale?: string;
 };
 
 /** @deprecated */
@@ -62,6 +64,19 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
   disabled?: boolean;
 };
 
+export type WizardStepBackProps<T extends WizardStep = WizardStep> = ButtonProps & {
+  onActive?:
+    | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
+  stepName?: string;
+};
+export type WizardStepNextProps<T extends WizardStep = WizardStep> = ButtonProps & {
+  onActive?:
+    | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
+  stepName?: string;
+};
+
 type IntergalacticWizardStepperComponent<PropsExtending = {}> = (<
   Value extends WizardStep,
   Tag extends Intergalactic.Tag = 'div',
@@ -76,6 +91,8 @@ declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
   Step: Intergalactic.Component<'div', WizardStepProps>;
   Stepper: IntergalacticWizardStepperComponent;
   Content: typeof Box;
+  StepBack: Intergalactic.Component<'button', WizardStepBackProps>;
+  StepNext: Intergalactic.Component<'button', WizardStepNextProps>;
 };
 
 declare const wrapWizardStepper: <PropsExtending extends {}>(
