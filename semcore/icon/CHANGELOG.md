@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.46.0] - 2024-09-27
+
+### Added
+
+- New `Ahrefs`, `Microsoft`, `Moz`, `Shapchat`, `Amazon`, `CallRailColored`, `MailChimp`, `Matomo`, `LinkedInColored`, `TikTokColored`, `TikTokColoredInvert`, `Salesforce` icons.
+
 ## [4.45.0] - 2024-09-20
 
 ### Changed
