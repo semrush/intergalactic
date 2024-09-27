@@ -1,6 +1,6 @@
 import React from 'react';
 import DataTable from 'intergalactic/data-table';
-import Link from 'intergalactic/link';
+import { ButtonLink } from 'intergalactic/button';
 
 const Demo = () => {
   return (
@@ -13,31 +13,20 @@ const Demo = () => {
       </DataTable.Head>
       <DataTable.Body>
         <DataTable.Cell data={data} name='keyword'>
-          {(props, row) => {
-            return {
-              children: <Link>{row[props.name]}</Link>,
-            };
-          }}
-        </DataTable.Cell>
-        <DataTable.Cell data={data} name='keyword'>
           {(props, row, index) => {
             return {
-              style: {
-                cursor: 'pointer',
-              },
-              onClick: () => {
-                alert(`Click row 
+              children: (
+                <ButtonLink
+                  onClick={() => {
+                    alert(`Click row 
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(row, null, '  ')};
                   index: ${index};`);
-              },
-              onKeyDown: (event) => {
-                if (event.key === ' ' || event.key === 'Enter')
-                  alert(`Click row 
-                    props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                    row: ${JSON.stringify(row, null, '  ')};
-                    index: ${index};`);
-              },
+                  }}
+                >
+                  {row[props.name]}
+                </ButtonLink>
+              ),
             };
           }}
         </DataTable.Cell>
