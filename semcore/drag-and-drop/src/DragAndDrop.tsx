@@ -359,6 +359,15 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           nextIndex = index + indexDiff;
         }
         this.state.items[nextIndex]?.node.focus();
+        const { getI18nText } = this.asProps;
+        const a11yHint = getI18nText('grabbing', {
+          itemPosition: nextIndex + 1,
+          itemsCount: this.state.items.length,
+        });
+        this.setState({
+          a11yHint,
+        });
+        return false;
       });
     }
   };
@@ -458,7 +467,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   render() {
     const { attach, detach } = this;
     const SA11yHint = 'div';
-    const { a11yHint } = this.state;
+    const { a11yHint, dragging } = this.state;
     const context = { attach, detach };
 
     return sstyled(this.asProps.styles)(
@@ -468,7 +477,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
             {a11yHint}
           </SA11yHint>
         )}
-        <Root render={Box} />
+        <Root render={Box} aria-hidden={dragging !== null ? 'true' : undefined} />
       </DragAndDropContext.Provider>,
     );
   }

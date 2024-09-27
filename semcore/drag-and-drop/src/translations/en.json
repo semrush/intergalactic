@@ -1,11 +1,12 @@
 {
-  "grabbed": "{itemText} grabbed, current position is {itemPosition} of {itemsCount}",
-  "grabbing": "Grabbing {itemText}, drop position is {itemPosition} of {itemsCount}",
-  "dropped": "{itemText} dropped, final position is {itemPosition} of {itemsCount}",
+  "describe": "Press {control} to grab the element for drag and drop",
+  "grabbed": "{itemText} grabbed. Current position: {itemPosition} out of {itemsCount}. Use the arrows to change the position, Space to apply the new position, Escape to cancel.",
+  "grabbing": "New position: {itemPosition} out of {itemsCount}",
+  "dropped": "Position {itemPosition} applied",
   "grabbedWithZone": "{itemText} grabbed, current position is {itemPosition} of {itemsCount} in {zoneName}",
   "grabbingFullWithZone": "Grabbing {itemText}, drop position is {itemPosition} of {itemsCount} in {zoneName}",
   "grabbingJustWithZone": "Grabbing {itemText}, drop in {zoneName}",
   "droppedFullWithZone": "{itemText} dropped, final position is {itemPosition} of {itemsCount} in {zoneName}",
   "droppedJustWithZone": "{itemText} dropped in {zoneName}",
-  "discarded": "Dragging was discarded"
+  "discarded": "Drag and drop canceled"
 }
