@@ -2,10 +2,10 @@ import { hasParent } from '../hasParent';
 
 const iframeBorders = new Set<HTMLElement>();
 
-export const addIframeBorders = (excludeFor: HTMLElement | null) => {
+export const addIframeBorders = (excludeFor?: HTMLElement | null) => {
   const iframes = document.querySelectorAll('iframe');
   iframes.forEach((iframe) => {
-    if (excludeFor !== null && hasParent(iframe, excludeFor)) {
+    if (excludeFor && hasParent(iframe, excludeFor)) {
       return;
     }
 
@@ -47,9 +47,9 @@ export const removeIframeBorders = () => {
   iframeBorders.forEach((node) => node?.remove());
   iframeBorders.clear();
 };
-export const areIframeBordersPlacedCorrectly = (excludeFor: HTMLElement | null) => {
+export const areIframeBordersPlacedCorrectly = (excludeFor?: HTMLElement | null) => {
   const iframes = Array.from(document.querySelectorAll('iframe')).filter((iframe) => {
-    return excludeFor === null || !hasParent(iframe, excludeFor);
+    return !excludeFor || !hasParent(iframe, excludeFor);
   });
 
   if (iframes.length * 2 === iframeBorders.size) return false;
