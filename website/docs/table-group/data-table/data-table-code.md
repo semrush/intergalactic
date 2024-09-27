@@ -94,6 +94,18 @@ To enable column sorting:
 
 :::
 
+## Pagination
+
+Avoid placing [Pagination](/components/pagination/pagination) inside the table, as the pagination component has a `nav` landmark assigned to it.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/pagination.tsx';
+</script>
+
+:::
+
 ## Change width for sorting column
 
 If some column has `changeSortSize={true}`, by default, it will be increased by the largest column if the computed width less than `content width` + `sorting icon width`.
@@ -188,18 +200,6 @@ Components added to `<DataTable.Head/>` will be inserted at the end of the heade
 
 <script lang="tsx">
   export Demo from './examples/additional-elements-in-header.tsx';
-</script>
-
-:::
-
-## Header separation
-
-Move the table header outside of the table using a portal. All functionality will work, and the table body will adjust to the header's size.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/header-separation.tsx';
 </script>
 
 :::

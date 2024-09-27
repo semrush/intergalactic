@@ -175,6 +175,8 @@ class Body extends Component<AsProps, {}, State> {
           .filter(Boolean)
           .map((name) => `igc-table-${uid}-${name}`);
 
+        const ariaColspan = nameParts.length;
+
         return sstyled(styles)(
           <SCell
             key={cell.name}
@@ -191,6 +193,7 @@ class Body extends Component<AsProps, {}, State> {
             onKeyDown={this.handleKeyDown}
             onFocus={this.onFocusCell}
             aria-colindex={cellIndex + 1}
+            aria-colspan={ariaColspan === 1 ? undefined : ariaColspan}
           />,
         ) as React.ReactElement;
       }
