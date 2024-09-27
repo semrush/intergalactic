@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import SearchM from '@semcore/icon/Search/m/index';
-import CloseM from '@semcore/icon/Close/m/index';
+import SearchM from '@semcore/icon/Search/m';
+import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import { selectContext } from './context';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';

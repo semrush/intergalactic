@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 import Tooltip from '@semcore/tooltip';
 import pick from '@semcore/utils/lib/pick';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { assignProps } from '@semcore/utils/lib/core/index';
+import { assignProps } from '@semcore/utils/lib/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 
 const deafultTooltipPropsList = [

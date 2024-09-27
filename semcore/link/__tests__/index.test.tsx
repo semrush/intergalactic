@@ -2,15 +2,15 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import Calendar from '@semcore/icon/Calendar/m/index';
+import Calendar from '@semcore/icon/Calendar/m';
 
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Link from '../src';
-import CheckM from '@semcore/icon/Check/m/index';
-import EditXS from '@semcore/icon/Edit/m/index';
+import CheckM from '@semcore/icon/Check/m';
+import EditXS from '@semcore/icon/Edit/m';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 

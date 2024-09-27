@@ -6,7 +6,7 @@ import { cleanup, render, screen, userEvent } from '@semcore/testing-utils/testi
 
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
-import SettingsM from '@semcore/icon/Settings/m/index';
+import SettingsM from '@semcore/icon/Settings/m';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Card from '../src';

@@ -11,7 +11,7 @@ import {
   Title,
   Trigger as ButtonTrigger,
   InputTrigger,
-} from './components/index';
+} from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
 
