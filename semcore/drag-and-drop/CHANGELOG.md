@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.43.0] - 2024-10-01
+
+### Changed
+
+- Improve accessibility for component.
+
 ## [3.42.0] - 2024-09-20
 
 ### Changed

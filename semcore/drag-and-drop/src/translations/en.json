@@ -3,7 +3,7 @@
   "grabbed": "{itemText} grabbed. Current position: {itemPosition} out of {itemsCount}. Use the arrows to change the position, Space to apply the new position, Escape to cancel.",
   "grabbing": "New position: {itemPosition} out of {itemsCount}",
   "dropped": "Position {itemPosition} applied",
-  "grabbedWithZone": "{itemText} grabbed, current position is {itemPosition} of {itemsCount} in {zoneName}",
+  "grabbedWithZone": "{itemText} grabbed, current position: {itemPosition} out of {itemsCount} in {zoneName}",
   "grabbingFullWithZone": "Grabbing {itemText}, drop position is {itemPosition} of {itemsCount} in {zoneName}",
   "grabbingJustWithZone": "Grabbing {itemText}, drop in {zoneName}",
   "droppedFullWithZone": "{itemText} dropped, final position is {itemPosition} of {itemsCount} in {zoneName}",

@@ -75,11 +75,11 @@ const Demo = () => {
   );
 
   return (
-    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD}>
+    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD} aria-label={'Draggable charts'}>
       {widgets.map((id, index) => {
         if (!id) {
           return (
-            <DnD.DropZone key={index}>
+            <DnD.DropZone key={index} aria-label={'Drop zone'}>
               <Flex
                 alignItems='center'
                 gap={1}
