@@ -1,5 +1,5 @@
 import React from 'react';
-import { Intergalactic, UnknownProperties } from '@semcore/core';
+import { Intergalactic, UnknownProperties, PropGetterFn } from '@semcore/core';
 import Popper, {
   PopperContext,
   PopperProps,
@@ -25,7 +25,9 @@ export type DropdownProps = PopperProps & {
 
 /** @deprecated */
 export interface IDropdownContext extends DropdownContext, UnknownProperties {}
-export type DropdownContext = PopperContext & {};
+export type DropdownContext = PopperContext & {
+  getGroupProps: PropGetterFn;
+};
 
 /** @deprecated */
 export interface IDropdownHandlers extends DropdownHandlers, UnknownProperties {}

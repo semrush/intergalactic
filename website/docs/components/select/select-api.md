@@ -65,21 +65,14 @@ import Select from 'intergalactic/select';
 <Select.OptionTitle />;
 ```
 
-## Select.OptionCheckbox
-
-```jsx
-import Select from 'intergalactic/select';
-<Select.OptionCheckbox />;
-```
-
-<TypesView type="SelectOptionCheckboxProps" :types={...types} />
-
 ## Select.Option.Checkbox
 
 ```jsx
 import Select from 'intergalactic/select';
 <Select.Option.Checkbox />;
 ```
+
+<TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
 Styled [`Box`](/layout/box-system/box-api#a3cfce).
 
