@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.0] - 2024-09-30
+
+### Fixed
+
+* Click outside utility was considering all clicks inside of shadow root as clicks outside.
+
 ## [4.36.3] - 2024-09-26
 
 ### Changed
@@ -14,13 +20,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Moving focus in an iframe didn't remove visible focus from elements in the focus-locked container.
 
-
 ## [4.36.1] - 2024-09-25
 
 ### Fixed
 
 * Attribute `suppressHydrationWarning` was not appling to components.
-
 
 ## [4.36.0] - 2024-09-12
 

@@ -1,6 +1,16 @@
 export const getEventTarget = (event: React.SyntheticEvent | Event): EventTarget | null => {
   if ('composedPath' in event) {
-    return event.composedPath()?.[0] || event.target;
+    const composedPath = event.composedPath();
+
+    if (composedPath) {
+      for (const element of composedPath) {
+        if ('shadowRoot' in element && element.shadowRoot) {
+          return element;
+        }
+      }
+    }
+
+    return composedPath?.[0] || event.target;
   }
   if (event.nativeEvent && 'composedPath' in event.nativeEvent) {
     return event.nativeEvent.composedPath()?.[0] || event.target;
