@@ -835,18 +835,8 @@ export const sideBarConfig: SidebarConfig = [
         text: 'Bug reporting',
       },
       {
-        text: 'Terms',
-        collapsed: true,
-        items: [
-          {
-            link: '/terms/privacy/privacy',
-            text: 'Privacy Policy',
-          },
-          {
-            link: '/terms/terms-of-use/terms-of-use',
-            text: 'Terms of Use',
-          },
-        ],
+        link: '/terms/terms-of-use/terms-of-use',
+        text: 'Terms of Use',
       },
     ],
   },
