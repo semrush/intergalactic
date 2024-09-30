@@ -1,18 +1,17 @@
 ---
 title: DataTable
 fileSource: data-table
-tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'), Changelog('data-table-changelog')
+tabs: Design('data-table'), A11y('data-table-a11y'), API('data-table-api'), Example('data-table-code'), Changelog('data-table-changelog')
 ---
 
 The DataTable component simplifies the creation of tabular data. It uses CSS flex for layout and doesn't rely on native tables.
 
-## Basic usage
+## Basic primary table
 
 To create a table, provide columns with titles using `<DataTable.Column name={name}/>` and data with `data={data}`.
 
 ::: tip
-`<DataTable.Column/>` must be a child component of `<DataTable.Head/>`
-
+`<DataTable.Column/>` must be a child component of `<DataTable.Head/>`.
 :::
 
 ::: sandbox
@@ -22,6 +21,239 @@ To create a table, provide columns with titles using `<DataTable.Column name={na
 </script>
 
 :::
+
+## Basic secondary table
+
+Use the secondary table to compactly display a small amount of data.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/secondary-table.tsx';
+</script>
+
+:::
+
+## Table styles
+
+### Compact
+
+Reduce table cel paddings by adding the `compact` property.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/compact.tsx';
+</script>
+
+:::
+
+### Borders
+
+Add borders to columns by passing the `vBorders` property to specific columns.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/borders.tsx';
+</script>
+
+:::
+
+## Table header
+
+### Fixed header
+
+Use the `<Box position="sticky" top={top} />` to fix the table header.
+
+::: tip
+Set `zIndex=2` for correct display.
+:::
+
+Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. In such cases, scroll can be added to the header and the bottom of the table.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/fixed-header.tsx';
+</script>
+
+:::
+
+### Fixed header with table loading state
+
+For correct components overlapping, use the `SpinContainer` component with `SpinContainer.Overlay` but without `SpinContainer.Content` .
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/fixed-header-with-spin-overlay.tsx';
+</script>
+
+:::
+
+### Customizing header
+
+You can insert tooltips, selectors, and other components into the table header using the `children` property.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/customizing-header.tsx';
+</script>
+
+:::
+
+
+## Table columns
+
+### Column sizes
+
+Columns are inherited from the `Flex` component and accept its parameters, such as `flex` , `wMin` , and `wMax` , to adjust the column width.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/column-sizes.tsx';
+</script>
+
+:::
+
+### Column alignment
+
+Columns and cells inherit properties from the `Flex` component, so you can use `justifyContent` and `alignItems` to align columns and cells. Table cells automatically inherit the same properties as the column.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/column-alignment.tsx';
+</script>
+
+:::
+
+### Fixed columns
+
+To fix table columns, use the `fixed` property with `<DataTable.Column/>` .
+
+::: tip
+If fixed columns aren't visible in the following example, try reducing the window size.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/fixed-columns.tsx';
+</script>
+
+:::
+
+### Columns merging
+
+Merge two or more columns by changing the table data and using `/` to combine column keys.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/columns-merging.tsx';
+</script>
+
+:::
+
+### Column expand
+
+The active column will expand if there isn't enough space. Fixed-width columns won't change size.
+
+::: tip
+Be cautious with columns with a `wMax` property, as the sort icon may overlap the header text on hover, hiding part of the text.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/column-expand.tsx';
+</script>
+
+:::
+
+## Table rows
+
+### Access to rows
+
+To apply properties to a table row, use `<DataTable.Row/>` . You can use multiple `<DataTable.Row/>` to separate the business logic.
+
+::: tip
+`<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Row) `...` `` ) isn't allowed.
+:::
+
+You can provide `data` property for `<DataTable.Row/>` . It isn't used in the component runtime but improves strict typings.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/access-to-rows.tsx';
+</script>
+
+:::
+
+### Rows merging
+
+Merge two or more rows by adding a special grouping key to the table data.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/rows-merging.tsx';
+</script>
+
+:::
+
+## Table cells
+
+### Access to cells
+
+Define `<DataTable.Cell/>` with the appropriate `name={name}` to apply properties to a table cell. You can use multiple `<DataTable.Cell/>` for different business logic.
+
+::: tip
+`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Cell) `...` `` ) isn't allowed.
+:::
+
+You can provide `data` property for `<DataTable.Cell/>` . It isn't used in the component runtime but improves strict typings.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/access-to-cells.tsx';
+</script>
+
+:::
+
+### Access to set of cells
+
+To apply properties to multiple table cells, define `<DataTable.Cell />` with their names listed using `/` .
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/access-to-set-of-cells.tsx';
+</script>
+
+:::
+
+### Custom footer cells
+
+To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-footer-cells.tsx';
+</script>
+
+:::
+
+
+
+
 
 ## Scroll in table
 
@@ -37,42 +269,6 @@ By default, scrolling is displayed at the bottom of the table, but it can also b
 
 <script lang="tsx">
   export Demo from './examples/scroll-in-table.tsx';
-</script>
-
-:::
-
-## Customizing header
-
-You can insert tooltips, selectors, and other components into the table header using the `children` property.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/customizing-header.tsx';
-</script>
-
-:::
-
-## Column sizes
-
-Columns are inherited from the `Flex` component and accept its parameters, such as `flex` , `wMin` , and `wMax` , to adjust the column width.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/column-sizes.tsx';
-</script>
-
-:::
-
-## Column alignment
-
-Columns and cells inherit properties from the `Flex` component, so you can use `justifyContent` and `alignItems` to align columns and cells. Table cells automatically inherit the same properties as the column.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/column-alignment.tsx';
 </script>
 
 :::
@@ -130,52 +326,6 @@ You could set `sortSizeRecalculation={true}` for using this column as column to 
 
 :::
 
-## Fixed header
-
-Use the `<Box position="sticky" top={top} />` to fix the table header.
-
-::: tip
-Set `zIndex=2` for correct display.
-:::
-
-Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. In such cases, scroll can be added to the header and the bottom of the table.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/fixed-header.tsx';
-</script>
-
-:::
-
-## Fixed header with table loading state
-
-For correct components overlapping, use the `SpinContainer` component with `SpinContainer.Overlay` but without `SpinContainer.Content` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/fixed-header-with-spin-overlay.tsx';
-</script>
-
-:::
-
-## Fixed columns
-
-To fix table columns, use the `fixed` property with `<DataTable.Column/>` .
-
-::: tip
-If fixed columns aren't visible in the following example, try reducing the window size.
-:::
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/fixed-columns.tsx';
-</script>
-
-:::
-
 ## Multi-level header
 
 Create a multi-level header by nesting columns within each other.
@@ -204,54 +354,6 @@ Components added to `<DataTable.Head/>` will be inserted at the end of the heade
 
 :::
 
-## Access to rows
-
-To apply properties to a table row, use `<DataTable.Row/>` . You can use multiple `<DataTable.Row/>` to separate the business logic.
-
-::: tip
-`<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Row) `...` `` ) isn't allowed.
-:::
-
-You can provide `data` property for `<DataTable.Row/>` . It isn't used in the component runtime but improves strict typings.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/access-to-rows.tsx';
-</script>
-
-:::
-
-## Access to cells
-
-Define `<DataTable.Cell/>` with the appropriate `name={name}` to apply properties to a table cell. You can use multiple `<DataTable.Cell/>` for different business logic.
-
-::: tip
-`<DataTable.Cell/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Cell) `...` `` ) isn't allowed.
-:::
-
-You can provide `data` property for `<DataTable.Cell/>` . It isn't used in the component runtime but improves strict typings.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/access-to-cells.tsx';
-</script>
-
-:::
-
-## Access to set of cells
-
-To apply properties to multiple table cells, define `<DataTable.Cell />` with their names listed using `/` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/access-to-set-of-cells.tsx';
-</script>
-
-:::
-
 ## Adding additional elements to table body
 
 Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
@@ -260,18 +362,6 @@ Components added to `<DataTable.Body/>` will be inserted at the end of the table
 
 <script lang="tsx">
   export Demo from './examples/adding-additional-elements-to-table-body.tsx';
-</script>
-
-:::
-
-## Custom footer cells
-
-To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/custom-footer-cells.tsx';
 </script>
 
 :::
@@ -375,42 +465,6 @@ Add a skeleton to the table by directly substituting it in the `data` or replaci
 
 :::
 
-## Columns merging
-
-Merge two or more columns by changing the table data and using `/` to combine column keys.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/columns-merging.tsx';
-</script>
-
-:::
-
-## Rows merging
-
-Merge two or more rows by adding a special grouping key to the table data.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/rows-merging.tsx';
-</script>
-
-:::
-
-## Secondary table
-
-Use the secondary table for compactly displaying a small amount of data.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/secondary-table.tsx';
-</script>
-
-:::
-
 ## Export in image
 
 Export the table to an image.
@@ -419,46 +473,6 @@ Export the table to an image.
 
 <script lang="tsx">
   export Demo from './examples/export-in-image.tsx';
-</script>
-
-:::
-
-## Compact
-
-Reduce table cel paddings by adding the `compact` property.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/compact.tsx';
-</script>
-
-:::
-
-## Borders
-
-Add borders to columns by passing the `vBorders` property to specific columns.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/borders.tsx';
-</script>
-
-:::
-
-## Column expand
-
-The active column will expand if there isn't enough space. Fixed-width columns won't change size.
-
-::: tip
-Be cautious with columns with a `wMax` property, as the sort icon may overlap the header text on hover, hiding part of the text.
-:::
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/column-expand.tsx';
 </script>
 
 :::
