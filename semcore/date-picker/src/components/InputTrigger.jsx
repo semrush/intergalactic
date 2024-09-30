@@ -851,7 +851,7 @@ const MaskedInput = ({
 
   return sstyled(styles)(
     <InputMask.Value
-      aria-label={`${labelPrefix} ${mask}`}
+      aria-label={labelPrefix}
       title={mask}
       mask={mask}
       aliases={aliases}
