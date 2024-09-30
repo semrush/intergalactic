@@ -14,14 +14,14 @@ tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-c
 
 Table: Keyboard support
 
-| Key                         | Function                                                                                                                                                                                  |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                       | Moves focus to the next focusable element. If the last element in the dropdown is focused, moves focus to the first element. |
+| Key                         | Function                                                                                                                         |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | Moves focus to the next focusable element. If the last element in the dropdown is focused, moves focus to the first element.     |
 | `Shift + Tab`               | Moves focus to the previous focusable element. If the first element in the dropdown is focused, moves focus to the last element. |
-| `Enter`, `Space`            | Opens the dropdown. When the dropdown is open and focus is on the calendar, applies the selected date and closes the dropdown. |
-| `Esc`                       | Closes the dropdown and returns focus to the trigger.                                                                                                                                       |
-| `Up Arrow`, `Down Arrow`    | Moves selection to the same day of the previous or next week, respectively.                                                                                                                   |
-| `Left Arrow`, `Right Arrow` | Moves selection to the previous or next day, respectively.                                                                                                                                    |
+| `Enter`, `Space`            | Opens the dropdown. When the dropdown is open and focus is on the calendar, applies the selected date and closes the dropdown.   |
+| `Esc`                       | Closes the dropdown and returns focus to the trigger.                                                                            |
+| `Up Arrow`, `Down Arrow`    | Moves selection to the same day of the previous or next week, respectively.                                                      |
+| `Left Arrow`, `Right Arrow` | Moves selection to the previous or next day, respectively.                                                                       |
 
 ### Roles and attributes
 
