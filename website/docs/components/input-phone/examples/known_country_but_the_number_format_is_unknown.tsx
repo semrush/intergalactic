@@ -1,5 +1,7 @@
 import React from 'react';
 import Input from 'intergalactic/input';
+import { Hint } from 'intergalactic/tooltip';
+import { ButtonLink } from 'intergalactic/button';
 import Flag from 'intergalactic/flags';
 import CloseM from 'intergalactic/icon/Close/m';
 import { Text } from 'intergalactic/typography';
@@ -18,13 +20,15 @@ const Demo = () => {
         </Input.Addon>
         <Input.Value value={value} onChange={(v) => setValue(v)} id='phone-number' />
         {Number.parseInt(value, 10) > 2 && (
-          <Input.Addon
-            tag={CloseM}
-            interactive
-            aria-label='Clear'
-            color='icon-secondary-neutral'
-            onClick={() => setValue('+1')}
-          />
+          <Input.Addon>
+            <Hint
+              tag={ButtonLink}
+              use='secondary'
+              addonLeft={CloseM}
+              title='Clear'
+              onClick={() => setValue('+1')}
+            />
+          </Input.Addon>
         )}
       </Input>
     </Flex>

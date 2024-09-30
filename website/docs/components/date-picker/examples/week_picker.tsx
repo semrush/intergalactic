@@ -3,7 +3,7 @@ import { DateRangePicker } from 'intergalactic/date-picker';
 import { Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
 
-function dateToClosestWeek(date) {
+function dateToClosestWeek(date: Date): [Date, Date] {
   const startWeek = new Date(date);
   const endWeek = new Date(date);
 
@@ -14,16 +14,32 @@ function dateToClosestWeek(date) {
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
-  const [value, setValue] = React.useState([]);
-  const [highlighted, setHighlighted] = React.useState([]);
-
-  React.useEffect(() => {
-    if (!value[0]) return;
-    const week = dateToClosestWeek(value[0]);
-    if (!value[1] || week[0].getTime() !== value[0].getTime()) {
-      setValue(week);
+  const [value, setValue] = React.useState<Date[]>([]);
+  const [highlighted, setHighlighted] = React.useState<Date[]>([]);
+  const [preselected, setPreselected] = React.useState<Date[]>([]);
+  const handleHighlightedChange = React.useCallback((highlighted: Date[]) => {
+    if (highlighted.length === 0) {
+      setHighlighted([]);
+      setPreselected([]);
+      return;
     }
-  }, [value[0]?.getTime()]);
+    const week = dateToClosestWeek(highlighted[0]);
+    setHighlighted(week);
+    setPreselected(week);
+  }, []);
+  const handleChange = React.useCallback((value: Date[]) => {
+    if (value.length === 0) {
+      setValue([]);
+      setHighlighted([]);
+      setPreselected([]);
+      return;
+    }
+    const week = dateToClosestWeek(value[0]);
+    setValue(week);
+    setHighlighted(week);
+    setPreselected(week);
+    setVisible(false);
+  }, []);
 
   return (
     <Flex direction='column'>
@@ -32,10 +48,13 @@ const Demo = () => {
       </Text>
       <DateRangePicker
         visible={visible}
-        onVisibleChange={(visible) => setVisible(visible)}
+        onVisibleChange={setVisible}
         value={value}
-        onChange={setValue}
+        onChange={handleChange}
         highlighted={highlighted}
+        preselectedValue={preselected}
+        onPreselectedValueChange={handleChange}
+        onHighlightedChange={handleHighlightedChange}
       >
         <DateRangePicker.Trigger mt={2}>
           <DateRangePicker.Trigger.DateRange>
@@ -47,29 +66,7 @@ const Demo = () => {
         </DateRangePicker.Trigger>
         <DateRangePicker.Popper>
           <DateRangePicker.Header />
-          <DateRangePicker.Calendar
-            renderOutdated
-            onHighlightedChange={(date) => {
-              if (date.length === 1) setHighlighted([]);
-            }}
-          >
-            {({ days }) =>
-              days.map((data, i) => (
-                <DateRangePicker.Calendar.Unit
-                  {...data}
-                  key={i}
-                  onMouseEnter={() => {
-                    setHighlighted(dateToClosestWeek(data.date));
-                  }}
-                  onClick={() => {
-                    setValue(dateToClosestWeek(data.date));
-                    setVisible(false);
-                    return false;
-                  }}
-                />
-              ))
-            }
-          </DateRangePicker.Calendar>
+          <DateRangePicker.Calendar renderOutdated />
         </DateRangePicker.Popper>
       </DateRangePicker>
     </Flex>

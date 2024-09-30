@@ -6,7 +6,7 @@ tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code
 
 ## Password input
 
-Button with the `ShowYes` button enables the password display. `ShowNo` hides the password and shows bullets, respectively.
+Button with the `ShowYes` icon enables the password display. `ShowNo` hides the password and shows bullets, respectively.
 
 ::: sandbox
 
@@ -18,7 +18,7 @@ Button with the `ShowYes` button enables the password display. `ShowNo` hides th
 
 ## Loading state
 
-If the input is in a loading state while searching, sending, or entering data dynamically, add our [Spin](/components/spin/spin) to the right addon. 
+If the input is in a loading state while searching, sending, or entering data dynamically, add [Spin](/components/spin/spin) as the right addon.
 
 <!-- During this time, the input may also be `disabled`. -->
 
@@ -32,7 +32,7 @@ If the input is in a loading state while searching, sending, or entering data dy
 
 ## Input with clearing ability
 
-The input field may have a clickable `Close` icon inside it to clear the entered value. This icon is only visible when there is some typed text or values in the input field, regardless of its status.
+The input field may have a **Clear** button inside it to clear the entered value. This button is only visible when there is some typed text or values in the input field, regardless of its status.
 
 ::: sandbox
 
@@ -44,7 +44,7 @@ The input field may have a clickable `Close` icon inside it to clear the entered
 
 ## Input with submit button inside
 
-You can place submit button inside the input as the right addon. It is only visible when the input has `focused` state.
+You can place a submit button inside the input as the right addon. It's only visible when the input has a nonempty value.
 
 ::: sandbox
 
@@ -56,7 +56,7 @@ You can place submit button inside the input as the right addon. It is only visi
 
 ## Input with text addon
 
-You can add text to the input as an addon that the user cannot modify. This can be useful when you need a fixed placeholder text in the input.
+You can add text to the input as an addon that the user can't modify. This can be useful when you need a fixed placeholder text in the input.
 
 ::: sandbox
 

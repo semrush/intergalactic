@@ -19,11 +19,11 @@ const Demo = () => {
         </MonthPicker>
       </Flex>
       <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='simple-date-range-picker'>
+        <Text tag='label' size={200} htmlFor='simple-month-range-picker'>
           Month range picker
         </Text>
         <MonthRangePicker value={valueRange} onChange={(date) => setValueRange(date)}>
-          <MonthRangePicker.Trigger mt={2} id='simple-date-range-picker' />
+          <MonthRangePicker.Trigger mt={2} id='simple-month-range-picker' />
           <MonthRangePicker.Popper />
         </MonthRangePicker>
       </Flex>

@@ -1,8 +1,14 @@
+import { hasParent } from '../hasParent';
+
 const iframeBorders = new Set<HTMLElement>();
 
-export const addIframeBorders = () => {
+export const addIframeBorders = (excludeFor?: HTMLElement | null) => {
   const iframes = document.querySelectorAll('iframe');
   iframes.forEach((iframe) => {
+    if (excludeFor && hasParent(iframe, excludeFor)) {
+      return;
+    }
+
     const iframeBefore = document.createElement('div');
     iframeBefore.style.position = 'fixed';
     iframeBefore.setAttribute('tabindex', '0');
@@ -41,8 +47,10 @@ export const removeIframeBorders = () => {
   iframeBorders.forEach((node) => node?.remove());
   iframeBorders.clear();
 };
-export const areIframeBordersPlacedCorrectly = () => {
-  const iframes = Array.from(document.querySelectorAll('iframe'));
+export const areIframeBordersPlacedCorrectly = (excludeFor?: HTMLElement | null) => {
+  const iframes = Array.from(document.querySelectorAll('iframe')).filter((iframe) => {
+    return !excludeFor || !hasParent(iframe, excludeFor);
+  });
 
   if (iframes.length * 2 === iframeBorders.size) return false;
 

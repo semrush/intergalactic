@@ -3,6 +3,8 @@ import Input from 'intergalactic/input';
 import CloseM from 'intergalactic/icon/Close/m';
 import Search from 'intergalactic/icon/Search/m';
 import Button from 'intergalactic/button';
+import { Hint } from 'intergalactic/tooltip';
+import { ButtonLink } from 'intergalactic/button';
 import NeighborLocation from 'intergalactic/neighbor-location';
 import Select from 'intergalactic/select';
 import { Text } from 'intergalactic/typography';
@@ -39,19 +41,21 @@ const Demo = () => {
           <Select placeholder='Everywhere' options={options} />
           <Input w={200}>
             <Input.Value
-              ml={2}
               value={value}
               onChange={handleChange}
               id='search-with-select-filter-by-keyword'
               placeholder='Enter keyword here'
             />
             {value && (
-              <Input.Addon
-                tag={CloseM}
-                interactive
-                onClick={handleClick}
-                aria-label='Clear filter'
-              />
+              <Input.Addon>
+                <Hint
+                  tag={ButtonLink}
+                  use='secondary'
+                  addonLeft={CloseM}
+                  title='Clear'
+                  onClick={handleClick}
+                />
+              </Input.Addon>
             )}
           </Input>
           <Button aria-label='Search'>

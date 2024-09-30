@@ -1,3 +1,18 @@
+## [15.109.0] - 2024-09-27
+
+### @semcore/icon
+
+- **Added** New `Ahrefs`, `Microsoft`, `Moz`, `Shapchat`, `Amazon`, `CallRailColored`, `MailChimp`, `Matomo`, `LinkedInColored`, `TikTokColored`, `TikTokColoredInvert`, `Salesforce` icons.
+
+### @semcore/side-panel
+
+- **Changed** Removed weird animation delay on `SidePanel` close that was causing animation fragmenting.
+
+### @semcore/utils
+
+- **Fixed** Moving focus in an iframe didn't remove visible focus from elements in the focus-locked container.
+- **Fixed** Attribute `suppressHydrationWarning` was not appling to components.
+
 ## [15.108.0] - 2024-09-20
 
 ### @semcore/button

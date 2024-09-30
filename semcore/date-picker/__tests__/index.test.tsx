@@ -47,7 +47,7 @@ describe('DatePicker', () => {
         <DatePicker.Popper />
       </DatePicker>,
     );
-    fireEvent.click(getByLabelText('Next period'));
+    fireEvent.click(getByLabelText('Next month'));
     // change visible
     fireEvent.click(getByText('Select date'));
     act(() => {
@@ -67,7 +67,7 @@ describe('DatePicker', () => {
       <DatePicker defaultVisible defaultDisplayedPeriod='2021-09-10T12:00:00.808Z' />
     );
     const { getByText, getByLabelText } = render(component);
-    fireEvent.click(getByLabelText('Previous period'));
+    fireEvent.click(getByLabelText('Previous month'));
     // change visible
     fireEvent.click(getByText('15'));
     act(() => {
@@ -88,7 +88,7 @@ describe('DatePicker', () => {
               <DatePicker.Trigger.SingleDateInput.MaskedInput id='date-picker-a11y-test-trigger' />
             </DatePicker.Trigger.SingleDateInput>
           </DatePicker.Trigger>
-          <DatePicker.Popper />
+          <DatePicker.Popper aria-label='Date picker' />
         </DatePicker>
       </div>,
     );
@@ -274,7 +274,7 @@ describe('DateRangePicker', () => {
       </DateRangePicker>
     );
     const { getByText, getByLabelText } = render(component);
-    fireEvent.click(getByLabelText('Next period'));
+    fireEvent.click(getByLabelText('Next month'));
     // change visible
     fireEvent.click(getByText('Select date period'));
     act(() => {
@@ -293,7 +293,7 @@ describe('DateRangePicker', () => {
     const { getByText, getByLabelText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={'2021-09-10T12:00:00.808Z'} />,
     );
-    fireEvent.click(getByLabelText('Previous period'));
+    fireEvent.click(getByLabelText('Previous month'));
     // change visible
     fireEvent.click(getByText('31'));
     fireEvent.click(getByText('Apply'));
@@ -383,7 +383,7 @@ describe('DateRangePicker', () => {
         <DateRangePicker.ButtonTrigger aria-label='date range picker'>
           Open date range picker
         </DateRangePicker.ButtonTrigger>
-        <DateRangePicker.Popper />
+        <DateRangePicker.Popper aria-label='date range picker' />
       </DateRangePicker>,
     );
 
