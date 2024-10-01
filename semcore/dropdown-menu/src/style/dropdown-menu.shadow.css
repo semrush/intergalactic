@@ -140,3 +140,7 @@ SDropdownNestingItem SDropdownMenuItemContainer {
 SItemContent:focus {
   outline: none;
 }
+
+SItemHint {
+  color: var(--intergalactic-text-secondary, #6c6e79);
+}
