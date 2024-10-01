@@ -57,8 +57,6 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 <DropdownMenu.Menu />;
 ```
 
-<TypesView type="DropdownMenuMenuProps" :types={...types} />
-
 ## DropdownMenu.Item
 
 Interactive menu items that are available for selection and switching from the keyboard.
@@ -67,6 +65,8 @@ Interactive menu items that are available for selection and switching from the k
 import DropdownMenu from "intergalactic/dropdown-menu";
 <DropdownMenu.Item />;
 ```
+
+<TypesView type="DropdownMenuItemProps" :types={...types} />
 
 ## DropdownMenu.Item.Content
 
