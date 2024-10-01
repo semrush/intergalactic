@@ -11,6 +11,9 @@ import { fileURLToPath, URL } from 'url';
 
 export const viteConfig = defineConfig({
   base: '/intergalactic/',
+  server: {
+    host: '0.0.0.0',
+  },
   plugins: [
     pluginReact(),
     createUnplugin<{}>(() => ({

@@ -175,8 +175,11 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       zoneName: zoneName || '',
     });
 
-    if (itemIndex === this.state.dragging?.index) this.setState({ dragOver: null, a11yHint });
-    else this.setState({ dragOver: itemIndex, a11yHint }, this.swapElements);
+    if (itemIndex === this.state.dragging?.index) {
+      this.setState({ dragOver: null, a11yHint });
+    } else {
+      this.setState({ dragOver: itemIndex, a11yHint }, this.swapElements);
+    }
   };
   handleItemDrop = () => {
     const { onDnD, getI18nText } = this.asProps;
@@ -297,6 +300,15 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     } else {
       this.containerRef.current?.insertBefore(node, dragNode.nextSibling);
     }
+
+    this.setState((prevState) => {
+      return {
+        dragging: {
+          ...prevState.dragging,
+          index: dragOver,
+        },
+      };
+    });
   };
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
     if (event.key === ' ') {
@@ -386,35 +398,22 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         const nextIndex = findNextRectangleIndex(rects, nodeRect, event.key as DirectionArrows);
         if (nextIndex === -1) return false;
 
-        const { items } = this.state;
-
-        let nextNode: ChildNode | null | undefined;
-
-        if (nextIndex > index) {
-          nextNode = items[nextIndex]?.node.nextSibling;
-        } else if (nextIndex < index) {
-          nextNode =
-            nextIndex === 0 ? items[nextIndex]?.node : items[nextIndex]?.node.previousSibling;
-        } else {
-          nextNode =
-            nodeIndex === 0
-              ? items[nextIndex]?.node.nextSibling?.nextSibling
-              : items[nextIndex]?.node.previousSibling;
-        }
-
-        this.containerRef.current?.insertBefore(node, nextNode ?? null);
-        node.focus();
-
         if (node && this.state.dragging !== null) {
           const { getI18nText } = this.asProps;
           const a11yHint = getI18nText('grabbing', {
             itemPosition: nextIndex + 1,
             itemsCount: this.state.items.length,
           });
-          this.setState({
-            a11yHint,
-            dragOver: nextIndex,
-          });
+          this.setState(
+            {
+              a11yHint,
+              dragOver: nextIndex,
+            },
+            () => {
+              this.swapElements();
+              node.focus();
+            },
+          );
         }
         return false;
       });
