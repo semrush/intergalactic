@@ -1,5 +1,5 @@
-import createComponent from '@semcore/utils/lib/core/index';
+import createComponent from '@semcore/utils/lib/core';
 
 export default createComponent;
 
-export * from '@semcore/utils/lib/core/index';
+export * from '@semcore/utils/lib/core';

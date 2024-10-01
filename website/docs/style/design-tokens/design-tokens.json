@@ -2213,7 +2213,6 @@
     "components": [
       "accordion",
       "base-trigger",
-      "button",
       "checkbox",
       "counter",
       "dropdown",

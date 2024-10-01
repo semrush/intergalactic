@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from '@semcore/typography';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import SortAsc from '@semcore/icon/SortAsc/m/index';
-import SortDesc from '@semcore/icon/SortDesc/m/index';
+import SortAsc from '@semcore/icon/SortAsc/m';
+import SortDesc from '@semcore/icon/SortDesc/m';
 import Context from './context';
 
 const SORTING_ICON = {

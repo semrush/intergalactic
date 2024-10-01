@@ -82,7 +82,7 @@ export { default as RadialTree } from './RadialTree';
 export * from './RadialTree';
 
 // @ts-ignore
-export { ChartLegend, ChartLegendTable } from './component/ChartLegend/index';
+export { ChartLegend, ChartLegendTable } from './component/ChartLegend';
 
 // @ts-ignore
 export * from './component/ChartLegend/LegendFlex/LegendFlex.type';
@@ -94,7 +94,7 @@ export * from './component/ChartLegend/LegendItem/LegendItem.type';
 // @ts-ignore
 export * from './Pattern';
 
-export { default as Chart } from './component/Chart/index';
+export { default as Chart } from './component/Chart';
 export * from './component/Chart/AbstractChart.type';
 export * from './component/Chart/LineChart.type';
 export * from './component/Chart/BarChart.type';

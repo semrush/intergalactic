@@ -4,7 +4,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { render, fireEvent, cleanup, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-import Return from '@semcore/icon/Return/m/index';
+import Return from '@semcore/icon/Return/m';
 import Pagination from '../src';
 import Button from '@semcore/button';
 

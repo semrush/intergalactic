@@ -10,6 +10,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `Dropdown.Item` with styles for DropdownMenu.Item and Select.Item.
 - `Dropdown.Group` with styles for wrap DropdownMenu.Item and Select.Item into groups.
 
+## [4.37.1] - 2024-09-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.36.0 ~> 4.36.2], `@semcore/core` [2.31.0 ~> 2.31.1]).
+
 ## [4.37.0] - 2024-09-20
 
 ### Changed

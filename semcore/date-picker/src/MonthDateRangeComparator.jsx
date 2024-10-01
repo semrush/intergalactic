@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Root, sstyled } from '@semcore/core';
-import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components/index';
+import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import { Box, Flex } from '@semcore/flex-box';
 import dayjs from 'dayjs';

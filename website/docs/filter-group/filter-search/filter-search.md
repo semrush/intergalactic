@@ -42,7 +42,7 @@ Set a delay for sending the entered value. So you'll not burden the search engin
 | ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Placeholder | ![](static/placeholder.png) | Default filter state. Input should always have a placeholder that reflects the purpose of the filter. If it searches only for one parameter, then write: "Filter by {parameter}". **If it searches for many parameters, then write just "Search"**. |
 | Focus       | ![](static/focus.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                   |
-| Filled      | ![](static/filled.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                               |
+| Filled      | ![](static/filled.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the **Clear** button to reset the entered value.                                                                                                               |
 
 ::: tip
 **Why not "Search"**
@@ -65,7 +65,7 @@ Use [NeighborLocation](/utils/neighbor-location/neighbor-location) to "glue" mul
 | ----------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Placeholder | ![](static/placeholder-button.png) | Default filter state. Input should always have a placeholder that reflects the purpose of the filter. If it searches only for one parameter, then write: "Filter by {parameter}'. **If it searches for many parameters, then write just "Search"**. |
 | Focus       | ![](static/focus-button.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                   |
-| Filled      | ![](static/filled-button.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                               |
+| Filled      | ![](static/filled-button.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the **Clear** button to reset the entered value.                                                                                                               |
 
 ## Search tuning
 
@@ -75,7 +75,7 @@ For the case when fine-tuning of the filter is needed, add select next to the in
 | ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Placeholder | ![](static/placeholder-select.png) | Default filter state. Input should always have a placeholder that reflects the essence of the filter. If you search only for one parameter, then write: "Filter by {parameter}". **If you search for many parameters, then write just "Search"**. |
 | Focus       | ![](static/focus-select.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                 |
-| Filled      | ![](static/filled-select.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                             |
+| Filled      | ![](static/filled-select.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the **Clear** button to reset the entered value.                                                                                                             |
 
 ## Text label
 
@@ -101,11 +101,11 @@ Use `--yellow-300` color with 40% opacity for highlighting. The height of the hi
 
 ## Nothing found
 
-For this state add a control to reset the filter. This will help the user to understand how to fix the situation and there is no data because of the filter.
+If nothing is found, display a button to reset the filter. This will help the user to understand why no data is displayed, and how to fix the situation.
 
-You can change the secondary text if necessary.
+You can change the description if necessary.
 
-**Don't confuse these two "empty" states below. They differ in message and illustration.**
+Refer to [Widget empty state](../../components/widget-empty/widget-empty.md) for more details.
 
 | State                         | Appearance example            |
 | ----------------------------- | ----------------------------- |

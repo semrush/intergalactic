@@ -64,7 +64,7 @@ export default createBaseComponent(${obj.name})
       `,
     templateDTS: () => `
 import { IconProps } from '@semcore/icon';
-import { Intergalactic } from '@semcore/utils/lib/core/index';
+import { Intergalactic } from '@semcore/utils/lib/core';
 declare const _default: Intergalactic.Component<'svg', IconProps>;
 export default _default;
       `,

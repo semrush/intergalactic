@@ -3,7 +3,7 @@ import BaseTrigger from '@semcore/base-trigger';
 import InputMask from '@semcore/input-mask';
 import Tooltip from '@semcore/tooltip';
 import { Flex, Box } from '@semcore/flex-box';
-import Calendar from '@semcore/icon/Calendar/m/index';
+import Calendar from '@semcore/icon/Calendar/m';
 import createComponent, { Root, sstyled, Component } from '@semcore/core';
 import NeighborLocation from '@semcore/neighbor-location';
 import { datesIntersects } from '../utils/datesIntersects';
@@ -31,7 +31,7 @@ class InputTriggerRoot extends Component {
       id,
       role,
       'aria-haspopup': ariaHasPopup,
-      'aria-expanded': ariaExpanded,
+      // 'aria-expanded': ariaExpanded,
       'aria-label': ariaLabel,
       style,
       ...otherProps
@@ -45,7 +45,7 @@ class InputTriggerRoot extends Component {
       role,
       'aria-haspopup': ariaHasPopup,
       'aria-label': ariaLabel,
-      'aria-expanded': ariaExpanded,
+      // 'aria-expanded': ariaExpanded,
       style,
       ...otherProps
     } = this.asProps;
@@ -429,14 +429,20 @@ class DateRangeRoot extends Component {
 
 const FromMaskedInput = (props) => {
   const SFromMaskedInput = Root;
+  const { getI18nText } = props;
 
-  return sstyled(props.styles)(<SFromMaskedInput labelPrefix='from date' render={MaskedInput} />);
+  return sstyled(props.styles)(
+    <SFromMaskedInput labelPrefix={getI18nText('fromDatePlaceholder')} render={MaskedInput} />,
+  );
 };
 
 const ToMaskedInput = (props) => {
   const SToMaskedInput = Root;
+  const { getI18nText } = props;
 
-  return sstyled(props.styles)(<SToMaskedInput labelPrefix='to date' render={MaskedInput} />);
+  return sstyled(props.styles)(
+    <SToMaskedInput labelPrefix={getI18nText('toDatePlaceholder')} render={MaskedInput} />,
+  );
 };
 
 const Indicator = (props) => {
@@ -845,7 +851,8 @@ const MaskedInput = ({
 
   return sstyled(styles)(
     <InputMask.Value
-      title={`${labelPrefix} ${mask}`}
+      aria-label={labelPrefix}
+      title={mask}
       mask={mask}
       aliases={aliases}
       maskOnlySymbols={maskOnlySymbols}
@@ -863,6 +870,7 @@ const MaskedInput = ({
       onChange={handleChange}
       noHumanizedDate={!humanizedDate}
       animationsDisabled={animationsDisabled}
+      inputRole='combobox'
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,

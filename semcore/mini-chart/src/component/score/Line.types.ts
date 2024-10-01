@@ -1,4 +1,4 @@
-import { Intergalactic, ComponentType } from '@semcore/utils/lib/core/index';
+import { Intergalactic, ComponentType } from '@semcore/utils/lib/core';
 import { CommonScoreProps } from './Score';
 import React from 'react';
 import { BoxProps, Box } from '@semcore/flex-box';

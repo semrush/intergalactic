@@ -24,14 +24,15 @@ const Demo = () => (
     indicators='default'
   >
     {images.map((url, index) => (
-      <Carousel.Item
-        tag='img'
-        role='button'
-        key={url}
-        src={url}
-        w={imageWidth}
-        aria-label={`Open in fullscreen ${altTexts[index]}`}
-      />
+      <Carousel.Item key={url} w={imageWidth}>
+        <img
+          // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
+          role='button'
+          src={url}
+          aria-label={`Open in fullscreen ${altTexts[index]}`}
+          style={{ width: '100%' }}
+        />
+      </Carousel.Item>
     ))}
   </Carousel>
 );

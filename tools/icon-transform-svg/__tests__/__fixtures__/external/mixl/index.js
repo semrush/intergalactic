@@ -20,7 +20,7 @@ function mixl(_ref, ref) {
     _ref$viewBox = _ref.viewBox,
     viewBox = _ref$viewBox === void 0 ? '0 0 16 16' : _ref$viewBox,
     props = (0, _objectWithoutProperties2["default"])(_ref, _excluded);
-  _logger["default"].warn(true, "you are using the old icon, use import from '@semcore/icon/Name/Size/index'", "mixl");
+  _logger["default"].warn(true, "you are using the old icon, use import from '@semcore/icon/Name/Size'", "mixl");
   return /*#__PURE__*/_react["default"].createElement(_icon["default"], (0, _extends2["default"])({
     ref: ref,
     "data-name": "mixl",

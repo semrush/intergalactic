@@ -13,7 +13,7 @@ Table: Keyboard support
 | Key                         | Function                                                                                                                                                           |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `Tab`, `Shift + Tab`        | Moves focus through interactive elements in the carousel.                                                                                                          |
-| `Enter`, `Space`            | Opens slide in modal window if `zoom` property is set to `true`.                                                                                                   |
+| `Enter`, `Space`            | Opens slide in modal window.                                                                                                                                       |
 | `Left Arrow`, `Right Arrow` | Activates the previous or next tab in the slide indicators. If the last tab is active, activates the first tab. Shows the slide associated with the activated tab. |
 
 ### Roles and attributes

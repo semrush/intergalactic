@@ -22,15 +22,16 @@ const Demo = () => (
         <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
           <Carousel.Container>
             {images.map((url, index) => (
-              <Carousel.Item
-                tag='img'
-                role='button'
-                key={url}
-                src={url}
-                w={imageWidth}
-                alt={altTexts[index]}
-                aria-label={`Open in fullscreen ${altTexts[index]}`}
-              />
+              <Carousel.Item key={url} w={imageWidth}>
+                <img
+                  // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
+                  role='button'
+                  src={url}
+                  alt={altTexts[index]}
+                  aria-label={`Open in fullscreen ${altTexts[index]}`}
+                  style={{ width: '100%' }}
+                />
+              </Carousel.Item>
             ))}
           </Carousel.Container>
         </Box>

@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Root, sstyled } from '@semcore/core';
-import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components/index';
+import { Header as CalendarHeader, Next, Period, Popper, Prev, Title } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import { Box, Flex } from '@semcore/flex-box';
 import Divider from '@semcore/divider';
@@ -121,9 +121,9 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
   getBodyProps({ showButtons }) {
     return {
       children: (
-        <Flex direction='row-reverse'>
-          <DateRangeComparator.Periods showButtons={showButtons} />
+        <Flex>
           <DateRangeComparator.RangeCalendar />
+          <DateRangeComparator.Periods showButtons={showButtons} />
         </Flex>
       ),
     };

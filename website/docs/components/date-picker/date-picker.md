@@ -84,7 +84,7 @@ const App = PlaygroundGeneration(
 
 ## Description
 
-**DatePicker** is a component used to input or select a specific date or date range. It is available in four types:
+**DatePicker** is a component used to input or select a specific date or date range. It's available in four types:
 
 - Date picker (for selecting a single day)
 - Date range picker (for selecting a range of days/weeks)
@@ -161,7 +161,7 @@ You can add custom elements inside cells: for example, a small progressbar under
 
 selects only one month. Once the month is selected, the dropdown closes, and the value in the trigger updates.
 
-While a calendar with two month blocks can be displayed, it is more commonly used for range selection (see below).
+While a calendar with two month blocks can be displayed, it's more commonly used for range selection.
 
 ![](static/monthpicker-normal-2sizes.png)
 

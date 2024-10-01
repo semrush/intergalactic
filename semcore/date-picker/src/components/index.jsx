@@ -4,8 +4,8 @@ import { Component, Root, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import ChevronLeft from '@semcore/icon/ChevronLeft/m/index';
-import ChevronRight from '@semcore/icon/ChevronRight/m/index';
+import ChevronLeft from '@semcore/icon/ChevronLeft/m';
+import ChevronRight from '@semcore/icon/ChevronRight/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
 import InputTriggerBase from './InputTrigger';
@@ -34,7 +34,7 @@ InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
   const SPopper = Root;
-  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role='region' />);
+  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role='dialog' />);
 }
 
 export function Header(props) {
@@ -53,7 +53,7 @@ export const Title = ({ Children, styles }) => {
 
 export function Prev({ getI18nText, children, Children }) {
   return (
-    <Root render={Button} use='tertiary' theme='muted' size='l' aria-label={getI18nText('prev')}>
+    <Root render={Button} use='tertiary' theme='muted' size='l'>
       {children ? (
         <Children />
       ) : (
@@ -67,7 +67,7 @@ export function Prev({ getI18nText, children, Children }) {
 
 export function Next({ getI18nText, children, Children }) {
   return (
-    <Root render={Button} use='tertiary' theme='muted' size='l' aria-label={getI18nText('next')}>
+    <Root render={Button} use='tertiary' theme='muted' size='l'>
       {children ? (
         <Children />
       ) : (
@@ -103,10 +103,11 @@ export class Period extends Component {
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
+            key={i}
             use='tertiary'
             theme='muted'
+            role='option'
             styles={styles}
-            key={i}
             active={this.getActiveControl(period, value)}
             onClick={callAllEventHandlers(onClick, () => onChange(period))}
             onMouseEnter={callAllEventHandlers(onMouseEnter, () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import Globe from '@semcore/icon/Globe/m/index';
+import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 
 import { render, fireEvent, cleanup, act, userEvent } from '@semcore/testing-utils/testing-library';
@@ -10,8 +10,8 @@ import { axe } from '@semcore/testing-utils/axe';
 import Pills from '../src';
 import { Intergalactic } from '@semcore/core';
 import { assertType } from 'vitest';
-import ThumbUpM from '@semcore/icon/ThumbUp/m/index';
-import ThumbDownM from '@semcore/icon/ThumbDown/m/index';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
 import { Box } from '@semcore/flex-box';
 
 describe('PillGroup', () => {

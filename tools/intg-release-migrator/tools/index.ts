@@ -1,4 +1,4 @@
 import { checkImports } from './checkImports';
-import { replaceLibsImports, replaceLibsAndExtensionsImports } from './importUtils';
+import { replaceImports } from './importUtils';
 
-export { checkImports, replaceLibsImports, replaceLibsAndExtensionsImports };
+export { checkImports, replaceImports };

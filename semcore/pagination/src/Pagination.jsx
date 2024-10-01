@@ -5,7 +5,7 @@ import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
 import Button, { ButtonLink } from '@semcore/button';
 import { Hint } from '@semcore/tooltip';
-import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m/index';
+import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';

@@ -1,9 +1,9 @@
 {
   "name": "@semcore/breakpoints",
   "description": "Semrush Breakpoints Component",
-  "version": "1.33.0",
+  "version": "1.33.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -12,7 +12,7 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.36.0"
+    "@semcore/utils": "4.36.2"
   },
   "peerDependencies": {
     "react": "16.8 - 18",

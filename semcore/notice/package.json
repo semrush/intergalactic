@@ -1,9 +1,9 @@
 {
   "name": "@semcore/notice",
   "description": "Semrush Notice Component",
-  "version": "5.40.0",
+  "version": "5.40.1",
   "main": "lib/cjs/index.js",
-  "module": "lib/es6/index.mjs",
+  "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -12,12 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/animation": "2.33.0",
-    "@semcore/utils": "4.36.0",
-    "@semcore/button": "5.37.0",
-    "@semcore/flex-box": "5.33.0",
-    "@semcore/icon": "4.45.0",
-    "@semcore/notice-global": "2.50.0"
+    "@semcore/animation": "2.33.1",
+    "@semcore/utils": "4.36.2",
+    "@semcore/button": "5.37.1",
+    "@semcore/flex-box": "5.33.1",
+    "@semcore/icon": "4.46.0",
+    "@semcore/notice-global": "2.50.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

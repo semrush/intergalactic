@@ -2,7 +2,7 @@ import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
-import CheckM from '@semcore/icon/Check/m/index';
+import CheckM from '@semcore/icon/Check/m';
 import TabPanel from '../src';
 
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
