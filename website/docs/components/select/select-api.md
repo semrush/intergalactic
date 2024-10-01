@@ -5,7 +5,7 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ---
 
 ::: tip
-`Select` is a wrap over `DropdownMenu` with the addition of new selection features.
+`Select` is a wrapper over `DropdownMenu` with additional selection features.
 :::
 
 ## Select
@@ -19,7 +19,7 @@ import Select from 'intergalactic/select';
 
 ## Select.Trigger
 
-A wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger).
+A wrapper over [DropdownMenu.Trigger](../dropdown-menu/dropdown-menu-api#dropdownmenu-trigger) with [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger) as the default tag.
 
 ```jsx
 import Select from 'intergalactic/select';
@@ -28,21 +28,52 @@ import Select from 'intergalactic/select';
 
 ## Select.Menu
 
+A wrapper over `Select.Popper` and `Select.List`, with all props passed to `Select.List`.
+
 ```jsx
 import Select from 'intergalactic/select';
 <Select.Menu />;
 ```
 
+## Select.Popper
+
+A wrapper over [DropdownMenu.Popper](../dropdown-menu/dropdown-menu-api#dropdownmenu-popper).
+
+```jsx
+import Select from 'intergalactic/select';
+<Select.Popper />;
+```
+
+## Select.List
+
+A wrapper over [DropdownMenu.List](../dropdown-menu/dropdown-menu-api#dropdownmenu-list).
+
+```jsx
+import Select from 'intergalactic/select';
+<Select.List />;
+```
+
 ## Select.InputSearch
 
-A wrap over the `<Input.Value/>`.
+A wrapper over [Input](../input/input-api) with a `Search` icon and a **Clear** button as default addons.
 
 ```jsx
 import { InputSearch } from 'intergalactic/select';
 <InputSearch />;
 ```
 
+## Select.Group
+
+A wrapper over [Dropdown.Group](../dropdown-menu/dropdown-menu-api#dropdown-group).
+
+```jsx
+import Select from 'intergalactic/select';
+<Select.Group />;
+```
+
 ## Select.Option
+
+A wrapper over [DropdownMenu.Item](../dropdown-menu/dropdown-menu-api#dropdownmenu-item) with additional props.
 
 ```jsx
 import Select from 'intergalactic/select';
@@ -51,21 +82,18 @@ import Select from 'intergalactic/select';
 
 <TypesView type="SelectOptionProps" :types={...types} />
 
-## Select.OptionHint
+## Select.Option.Hint
+
+Styled [Flex](/layout/box-system/box-api#flex).
 
 ```jsx
 import Select from 'intergalactic/select';
-<Select.OptionHint />;
-```
-
-## Select.OptionTitle
-
-```jsx
-import Select from 'intergalactic/select';
-<Select.OptionTitle />;
+<Select.Option.Hint />;
 ```
 
 ## Select.Option.Checkbox
+
+A styled [Box](/layout/box-system/box-api#box) that looks like a checkbox.
 
 ```jsx
 import Select from 'intergalactic/select';
@@ -74,6 +102,28 @@ import Select from 'intergalactic/select';
 
 <TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
-Styled [`Box`](/layout/box-system/box-api#a3cfce).
+## Deprecated
+
+### Select.OptionHint
+
+::: warning
+The `Select.OptionHint` is deprecated, use `Select.Option.Hint` or `Select.Group` with `subTitle` prop instead.
+:::
+
+```jsx
+import Select from 'intergalactic/select';
+<Select.OptionHint />;
+```
+
+### Select.OptionTitle
+
+::: warning
+The `Select.OptionTitle` is deprecated, use `Select.Group` with `title` prop instead.
+:::
+
+```jsx
+import Select from 'intergalactic/select';
+<Select.OptionTitle />;
+```
 
 <script setup>import { data as types } from '@types.data.ts';</script>
