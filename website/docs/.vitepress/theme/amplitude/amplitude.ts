@@ -1,4 +1,3 @@
-import Bowser from 'bowser';
 import { watch } from 'vue';
 import { Router } from 'vitepress';
 import amplitudeHttp from './amplitude-client';
@@ -12,12 +11,6 @@ export const initAmplitude = () => {
 };
 
 export const logEvent = (eventType: string, eventProperties: Record<string, any> = {}) => {
-  if (process.env.NODE_ENV !== 'production') {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log('logEvent [disabled in dev mode]', eventType, eventProperties);
-    return;
-  }
-
   amplitudeHttp.logEvent(eventType, { event_properties: eventProperties });
 };
 
