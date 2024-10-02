@@ -104,6 +104,33 @@ You can insert tooltips, selectors, and other components into the table header u
 
 :::
 
+### Multi-level header
+
+Create a multi-level header by nesting columns within each other.
+
+::: tip
+`name` property isn't applicable for group columns.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/multi-level-header.tsx';
+</script>
+
+:::
+
+### Additional elements in header
+
+Components added to `<DataTable.Head/>` will be inserted at the end of the header.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/additional-elements-in-header.tsx';
+</script>
+
+:::
 
 ## Table columns
 
@@ -207,6 +234,18 @@ Merge two or more rows by adding a special grouping key to the table data.
 
 :::
 
+### Custom rows rendering
+
+If built-in virtualization doesn't meet your requirements, you can implement your own virtualization using `renderRows` prop.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-rows-rendering.tsx';
+</script>
+
+:::
+
 ## Table cells
 
 ### Access to cells
@@ -251,28 +290,6 @@ To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
 
 :::
 
-
-
-
-
-## Scroll in table
-
-`<DataTable/>` , `<DataTable.Head/>` , and `<DataTable.Body/>` are inherited from the Box component and accept all its parameters. `<DataTable/>` serves as a container for `<DataTable.Head/>` and `<DataTable.Body/>` where scrolling is implemented.
-
-::: tip
-If horizontal scrolling isn't visible, try reducing the window size
-:::
-
-By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to the [Fixed header section](/table-group/data-table/data-table#fixed_header).
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/scroll-in-table.tsx';
-</script>
-
-:::
-
 ## Sorting
 
 To enable column sorting:
@@ -290,6 +307,63 @@ To enable column sorting:
 
 :::
 
+### Changing width for sorting column
+
+If some column has `changeSortSize={true}`, by default, it will be increased by the largest column if the computed width less than `content width` + `sorting icon width`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/sorting-changing-size.tsx';
+</script>
+
+:::
+
+### Changing width of column by reducing width of another column
+
+You could set `sortSizeRecalculation={true}` for using this column as column to recalculation width (after increase to sorting column). The needed width will be divided equally between all such columns.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/sorting-changing-size-by-columns.tsx';
+</script>
+
+:::
+
+## Table scroll
+
+### Basic scroll
+
+`<DataTable/>` , `<DataTable.Head/>` , and `<DataTable.Body/>` are inherited from the Box component and accept all its parameters. `<DataTable/>` serves as a container for `<DataTable.Head/>` and `<DataTable.Body/>` where scrolling is implemented.
+
+::: tip
+If horizontal scrolling isn't visible, try reducing the window size
+:::
+
+By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to the [Fixed header section](/table-group/data-table/data-table#fixed_header).
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/scroll-in-table.tsx';
+</script>
+
+:::
+
+### Virtual scroll
+
+Enable scroll virtualization using the `virtualScroll` property.
+Note that built-in virtualization support tables with fixed-height rows only.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/virtual-scroll-in-table.tsx';
+</script>
+
+:::
+
 ## Pagination
 
 Avoid placing [Pagination](/components/pagination/pagination) inside the table, as the pagination component has a `nav` landmark assigned to it.
@@ -302,71 +376,35 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 
 :::
 
-## Change width for sorting column
+## Table states
 
-If some column has `changeSortSize={true}`, by default, it will be increased by the largest column if the computed width less than `content width` + `sorting icon width`.
+### Download status
 
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/sorting-changing-size.tsx';
-</script>
-
-:::
-
-## Change width for sorting column by specific columns
-
-You could set `sortSizeRecalculation={true}` for using this column as column to recalculation width (after increase to sorting column). The needed width will be divided equally between all such columns.
+Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/sorting-changing-size-by-columns.tsx';
+  export Demo from './examples/download-status.tsx';
 </script>
 
 :::
 
-## Multi-level header
+### Skeleton in table
 
-Create a multi-level header by nesting columns within each other.
-
-::: tip
-`name` property isn't applicable for group columns.
-:::
+Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/multi-level-header.tsx';
+  export Demo from './examples/skeleton-in-table.tsx';
 </script>
 
 :::
 
-## Additional elements in header
+## Specific cases
 
-Components added to `<DataTable.Head/>` will be inserted at the end of the header.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/additional-elements-in-header.tsx';
-</script>
-
-:::
-
-## Adding additional elements to table body
-
-Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
-</script>
-
-:::
-
-## Accordion inside table
+### Accordion inside table
 
 Extend table functionality using the `intergalactic/accordion` component. This allows you to add accordions to table rows.
 
@@ -385,7 +423,7 @@ Extend table functionality using the `intergalactic/accordion` component. This a
 
 :::
 
-## Table in table
+### Table in table
 
 Refer to the [example with the accordion](/table-group/data-table/data-table#accordion_in_table).
 
@@ -400,7 +438,7 @@ Refer to the [example with the accordion](/table-group/data-table/data-table#acc
 
 :::
 
-## Table in table with fixed column
+### Table in table with fixed column
 
 Refer to the [example with the table inside the table](/table-group/data-table/data-table#table_in_table).
 
@@ -416,56 +454,7 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 :::
 
-## Virtual scroll in table
-
-Enable scroll virtualization using the `virtualScroll` property.
-Note that built-in virtualization support tables with fixed-height rows only.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/virtual-scroll-in-table.tsx';
-</script>
-
-:::
-
-## Custom rows rendering
-
-If built-in virtualization doesn't meet your requirements, you can implement your own virtualization using `renderRows` prop.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/custom-rows-rendering.tsx';
-</script>
-
-:::
-
-## Download status
-
-Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/download-status.tsx';
-</script>
-
-:::
-
-## Skeleton in table
-
-Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/skeleton-in-table.tsx';
-</script>
-
-:::
-
-## Export in image
+### Export in image
 
 Export the table to an image.
 
@@ -473,6 +462,18 @@ Export the table to an image.
 
 <script lang="tsx">
   export Demo from './examples/export-in-image.tsx';
+</script>
+
+:::
+
+### Adding additional elements to table body
+
+Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
 </script>
 
 :::
