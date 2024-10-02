@@ -175,11 +175,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       zoneName: zoneName || '',
     });
 
-    if (itemIndex === this.state.dragging?.index) {
-      this.setState({ dragOver: null, a11yHint });
-    } else {
-      this.setState({ dragOver: itemIndex, a11yHint }, this.swapElements);
-    }
+    this.setState({ dragOver: itemIndex, a11yHint }, this.swapElements);
   };
   handleItemDrop = () => {
     const { onDnD, getI18nText } = this.asProps;
@@ -288,35 +284,29 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const { items, dragging, dragOver } = this.state;
     const draggingIndex = dragging?.index ?? null;
 
-    if (draggingIndex === null || dragOver === null || draggingIndex === dragOver) return;
+    if (draggingIndex === null || dragOver === null) return;
 
     const node = items[draggingIndex]?.node;
     const dragNode = items[dragOver]?.node;
 
     if (!node || !dragNode) return;
 
-    if (draggingIndex > dragOver) {
+    if (draggingIndex === dragOver) {
+      const nextDragNode = items[dragOver + 1]?.node ?? null;
+      this.containerRef.current?.insertBefore(node, nextDragNode);
+    } else if (draggingIndex > dragOver) {
       this.containerRef.current?.insertBefore(node, dragNode);
     } else {
       this.containerRef.current?.insertBefore(node, dragNode.nextSibling);
     }
 
-    this.setState((prevState) => {
-      return {
-        dragging: {
-          ...prevState.dragging,
-          index: dragOver,
-        },
-      };
-    });
+    node.focus();
   };
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
     if (event.key === ' ') {
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
-        const dragOver = this.state.dragOver;
-        const prevIndex = this.state.dragging.index;
         this.handleItemDrop();
         this.setState({
           dragging: null,
@@ -324,12 +314,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           keyboardDraggingIndex: null,
           animatedScaling: index,
           hideHoverEffect: true,
-        });
-
-        requestAnimationFrame(() => {
-          const prevIndexNode = this.state.items[prevIndex]?.node;
-          if (prevIndexNode !== document.activeElement) return;
-          this.state.items[dragOver!]?.node.focus();
         });
       } else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
@@ -411,7 +395,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
             },
             () => {
               this.swapElements();
-              node.focus();
             },
           );
         }
@@ -419,15 +402,12 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       });
     }
   };
-  handleItemFocus = (index: number) => {
+  handleItemFocus = () => {
     if (!this.state.dragging) return;
-    this.setState({ dragOver: index, keyboardDraggingIndex: index });
     this.updateItemScaling();
   };
 
   makeItemDragStartHandler = (index: number) => () => this.handleItemDragStart(index);
-  makeItemDropHandler = () => () => this.handleItemDrop();
-  makeItemFocusHandler = (index: number) => () => this.handleItemFocus(index);
   makeItemKeyDownHandler = (index: number) => (event: KeyboardEvent) =>
     this.handleItemKeyDown(event, index);
 
@@ -440,10 +420,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       onDragEnd: this.handleItemDragEnd,
       onDragOver: this.handleItemDragOver,
       onDragEnter: this.handleItemDragEnter,
-      onDrop: this.makeItemDropHandler(),
+      onDrop: this.handleItemDrop,
       onMouseMove: this.handleItemMouseMove,
       onKeyDown: this.makeItemKeyDownHandler(index),
-      onFocus: this.makeItemFocusHandler(index),
+      onFocus: this.handleItemFocus,
       dropPreview: index === this.state.dragOver,
       keyboardDragging: index === this.state.keyboardDraggingIndex,
       reversedScaling: this.state.reversedScaling,
@@ -509,7 +489,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   componentDidUpdate(prevProps: AsProps) {
     if (prevProps.customFocus !== this.asProps.customFocus) {
       const itemIndex = this.getCustomFocusItemIndex(this.asProps.customFocus);
-      if (this.state.items[itemIndex!]) this.handleItemFocus(itemIndex!);
+      if (this.state.items[itemIndex!]) this.handleItemFocus();
     }
   }
 
