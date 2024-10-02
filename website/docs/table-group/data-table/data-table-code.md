@@ -80,7 +80,7 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 
 :::
 
-### Fixed header with table loading state
+### Fixed header with loading state in table
 
 For correct components overlapping, use the `SpinContainer` component with `SpinContainer.Overlay` but without `SpinContainer.Content` .
 
@@ -92,9 +92,9 @@ For correct components overlapping, use the `SpinContainer` component with `Spin
 
 :::
 
-### Customizing header
+### Header customization
 
-You can insert tooltips, selectors, and other components into the table header using the `children` property.
+You can insert tooltips, selects, and other components into the table header using the `children` property.
 
 ::: sandbox
 
@@ -158,7 +158,7 @@ Columns and cells inherit properties from the `Flex` component, so you can use `
 
 :::
 
-### Fixed columns
+### Fixed column
 
 To fix table columns, use the `fixed` property with `<DataTable.Column/>` .
 
@@ -186,7 +186,7 @@ Merge two or more columns by changing the table data and using `/` to combine co
 
 :::
 
-### Column expand
+### Column expansion
 
 The active column will expand if there isn't enough space. Fixed-width columns won't change size.
 
@@ -378,7 +378,7 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 
 ## Table states
 
-### Download status
+### Loading data
 
 Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
 
@@ -390,7 +390,7 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 
 :::
 
-### Skeleton in table
+### Skeleton
 
 Add a skeleton to the table by directly substituting it in the `data` or replacing `rows` with `<DataTable.Body/>` .
 
@@ -423,6 +423,28 @@ Extend table functionality using the `intergalactic/accordion` component. This a
 
 :::
 
+### Adding additional elements to table body
+
+Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
+</script>
+
+:::
+
+### Export to image
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/export-in-image.tsx';
+</script>
+
+:::
+
 ### Table in table
 
 Refer to the [example with the accordion](/table-group/data-table/data-table#accordion_in_table).
@@ -450,30 +472,6 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 <script lang="tsx">
   export Demo from './examples/table-in-table-with-fixed-column.tsx';
-</script>
-
-:::
-
-### Export in image
-
-Export the table to an image.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/export-in-image.tsx';
-</script>
-
-:::
-
-### Adding additional elements to table body
-
-Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
 </script>
 
 :::
