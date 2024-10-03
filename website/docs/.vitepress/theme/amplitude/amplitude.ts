@@ -62,7 +62,9 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       (node) => node.tagName === 'A' && node.classList.contains('VPFeature'),
     );
 
-    if (feature?.getAttribute('href')?.includes('/components/accordion/accordion')) {
+    if (
+      feature?.getAttribute('href')?.includes('/components/components-showcase/components-showcase')
+    ) {
       return logEvent('card_components:click', { pathname });
     }
     if (feature?.getAttribute('href')?.includes('/data-display/chart-showcase/chart-showcase')) {
@@ -254,7 +256,11 @@ const handleChangeRoute = (to: string, from: string) => {
   const fromItems = from.split('/');
   const toItems = to.split('/');
 
-  if (from !== '/' && to !== '/' && (fromItems[2] !== toItems[2] || fromItems[3] !== toItems[3])) {
+  if (
+    from !== '/intergalactic/' &&
+    to !== '/intergalactic/' &&
+    (fromItems[2] !== toItems[2] || fromItems[3] !== toItems[3])
+  ) {
     return logEvent('left_menu-2-level:click', { pathname: from, link: to });
   }
 };
