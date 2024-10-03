@@ -3,12 +3,6 @@ import { nanoid } from 'nanoid';
 import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
 import Bowser from 'bowser';
 
-declare global {
-  interface Window {
-    cookiehub: any;
-  }
-}
-
 type IdentificationParameter = {
   platform: string;
   os_name: string;
@@ -25,19 +19,6 @@ const getThemePreference = () => {
   return document.body.classList.contains('dark') ? 'dark' : 'light';
 };
 
-const getIsConsented = (getExternalProviderConsentStatus: () => boolean): boolean => {
-  const hasCookieHubConsented = Boolean(
-    window.cookiehub !== undefined &&
-      window.cookiehub.hasConsented !== undefined &&
-      window.cookiehub.hasConsented('analytics') === true,
-  );
-  const hasExternalProviderConsented =
-    typeof getExternalProviderConsentStatus === 'function' &&
-    getExternalProviderConsentStatus() === true;
-
-  return hasCookieHubConsented || hasExternalProviderConsented;
-};
-
 const AMPLITUDE_HTTP_HANDLER = 'https://api2.amplitude.com/2/httpapi';
 const AMPLITUDE_HTTP_IDENTIFY_HANDLER = 'https://api2.amplitude.com/identify';
 
@@ -45,30 +26,18 @@ const amplitudeHttp = {
   setDeviceId(): string {
     if (!this.deviceId) {
       this.deviceId = nanoid();
-      setCookie(AMPLITUDE_COOKIE_NAME, this.deviceId, AMPLITUDE_COOKIE_EXP_DATE);
     }
+    setCookie(AMPLITUDE_COOKIE_NAME, this.deviceId, AMPLITUDE_COOKIE_EXP_DATE);
 
     return this.deviceId;
   },
 
-  init(
-    apiKey: string,
-    options: { getExternalConsentStatusCb?: () => void; amplitudeFetchCb?: () => void } = {},
-  ) {
+  init(apiKey: string) {
     this.apiKey = apiKey;
-    this.options = options;
-    this.getExternalConsentStatusCb =
-      options && typeof options.getExternalConsentStatusCb === 'function'
-        ? options.getExternalConsentStatusCb
-        : undefined;
-    this.amplitudeFetchCb =
-      options && typeof options.amplitudeFetchCb === 'function'
-        ? options.amplitudeFetchCb
-        : undefined;
     this.deviceId = getCookie(AMPLITUDE_COOKIE_NAME);
     this.sessionId = Date.now();
 
-    if (getIsConsented(this.getExternalConsentStatusCb)) {
+    if (!this.deviceId) {
       this.setDeviceId();
       this.sendUserProperties();
     }
@@ -82,20 +51,17 @@ const amplitudeHttp = {
   },
 
   async sendUserProperties() {
-    const { apiKey, deviceId, sessionId, getExternalConsentStatusCb } = this;
+    const { apiKey, deviceId, sessionId } = this;
     let identification = '';
-    const isConsentGotten = getIsConsented(getExternalConsentStatusCb);
 
     if (!this.areParamsCorrect(deviceId, sessionId, apiKey)) {
       return this;
     }
 
-    const preparedDeviceId = isConsentGotten ? deviceId : nanoid();
-
     try {
       identification = JSON.stringify([
         {
-          device_id: preparedDeviceId,
+          device_id: deviceId,
           ...this.getIdentificationParameter(),
         },
       ]);
@@ -123,24 +89,17 @@ const amplitudeHttp = {
   },
 
   async logEvent(eventType: string, eventArguments = {}) {
-    const { apiKey, deviceId, sessionId, getExternalConsentStatusCb } = this;
-    const isConsentGotten = getIsConsented(getExternalConsentStatusCb);
+    const { apiKey, deviceId, sessionId } = this;
     let body = '';
-
-    if (isConsentGotten) {
-      this.setDeviceId();
-    }
 
     if (!this.areParamsCorrect(deviceId, sessionId, apiKey)) {
       return this;
     }
 
-    const preparedDeviceId = isConsentGotten ? deviceId : nanoid();
-    const preparedSessionId = isConsentGotten ? sessionId : Date.now();
     const events = [
       {
-        device_id: preparedDeviceId,
-        session_id: preparedSessionId,
+        device_id: deviceId,
+        session_id: sessionId,
         event_type: eventType,
         ...eventArguments,
         ...this.getIdentificationParameter(),
@@ -157,6 +116,12 @@ const amplitudeHttp = {
       });
     } catch (error) {
       console.error("amplitude-client: can't prepare event for sending", error);
+      return this;
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+      console.log('logEvent [disabled in dev mode]', eventType, eventArguments);
       return this;
     }
 
