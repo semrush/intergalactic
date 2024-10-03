@@ -92,7 +92,9 @@ class RootSelect extends AbstractDropdown {
                   }
                 }
               }
-            }, 0);
+              // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
+              // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
+            }, 30);
           }
         },
       ],
