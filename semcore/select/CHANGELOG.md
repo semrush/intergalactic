@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.0] - 2024-09-24
+
+### Changed
+
+- `aria-haspopup` set to `dialog` if select has some additional buttons in popover.
+- Refactored to `AbstractDropdown` and `Dropdown.Item`.
+
 ## [4.46.1] - 2024-09-27
 
 ### Changed

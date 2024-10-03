@@ -109,3 +109,13 @@ You can find the list of available methods in the [Context section of the API](/
 </script>
 
 :::
+
+## Nested menus with focusable elements
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/nested-with-focusable.tsx';
+</script>
+
+:::

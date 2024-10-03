@@ -7,7 +7,7 @@ const options = Array(20)
   .fill('')
   .map((_, index) => ({
     value: index,
-    label: `Label ${index}`,
+    label: `Option ${index}`,
     children: `Option ${index}`,
   }));
 
