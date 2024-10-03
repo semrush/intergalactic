@@ -176,7 +176,7 @@ If fixed columns aren't visible in the following example, try reducing the windo
 
 ### Columns merging
 
-Merge two or more columns by changing the table data and using `/` to combine column keys.
+Merge columns by changing the table data and using `/` to combine column keys. You can merge columns for a specific row, as shown in the example below, or for all rows.
 
 ::: sandbox
 
@@ -222,9 +222,9 @@ You can provide `data` property for `<DataTable.Row/>` . It isn't used in the co
 
 :::
 
-### Rows merging
+### Rows grouping
 
-Merge two or more rows by adding a special grouping key to the table data.
+Group cells from different rows by adding a special grouping key to the table data.
 
 ::: sandbox
 
@@ -242,6 +242,18 @@ If built-in virtualization doesn't meet your requirements, you can implement you
 
 <script lang="tsx">
   export Demo from './examples/custom-rows-rendering.tsx';
+</script>
+
+:::
+
+### Custom footer row
+
+To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-footer-cells.tsx';
 </script>
 
 :::
@@ -274,18 +286,6 @@ To apply properties to multiple table cells, define `<DataTable.Cell />` with th
 
 <script lang="tsx">
   export Demo from './examples/access-to-set-of-cells.tsx';
-</script>
-
-:::
-
-### Custom footer cells
-
-To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/custom-footer-cells.tsx';
 </script>
 
 :::
@@ -402,9 +402,7 @@ Add a skeleton to the table by directly substituting it in the `data` or replaci
 
 :::
 
-## Specific cases
-
-### Accordion inside table
+## Accordion inside table
 
 Extend table functionality using the `intergalactic/accordion` component. This allows you to add accordions to table rows.
 
@@ -423,27 +421,7 @@ Extend table functionality using the `intergalactic/accordion` component. This a
 
 :::
 
-### Adding additional elements to table body
-
-Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
-</script>
-
-:::
-
-### Export to image
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/export-in-image.tsx';
-</script>
-
-:::
+## Specific cases
 
 ### Table in table
 
@@ -472,6 +450,28 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 
 <script lang="tsx">
   export Demo from './examples/table-in-table-with-fixed-column.tsx';
+</script>
+
+:::
+
+### Adding additional elements to table body
+
+Components added to `<DataTable.Body/>` will be inserted at the end of the table body. Use `z-index=1` to block fixed columns or `z-index=2` to block scrolling if needed.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
+</script>
+
+:::
+
+### Export to image
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/export-in-image.tsx';
 </script>
 
 :::
