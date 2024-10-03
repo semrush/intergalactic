@@ -28,7 +28,12 @@ const Demo = () => {
           </DropdownMenu>
         </DropdownMenu.Item>
         <DropdownMenu.Item>
-          <DropdownMenu placement={'right'} interaction={'hover'} timeout={[0, 300]}>
+          <DropdownMenu
+            placement={'right-start'}
+            interaction={'hover'}
+            timeout={[0, 300]}
+            offset={[-11, 12]}
+          >
             <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
               Item 4
               <ChevronRightIcon color='icon-secondary-neutral' />

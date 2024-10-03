@@ -6,7 +6,8 @@ import Checkbox from 'intergalactic/checkbox';
 import { Text } from 'intergalactic/typography';
 import Link from 'intergalactic/link';
 import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
-import { Hint } from 'intergalactic/tooltip';
+import { DescriptionTooltip } from 'intergalactic/tooltip';
+import { ButtonLink } from 'intergalactic/button';
 
 const data = [
   {
@@ -79,18 +80,17 @@ const Demo = () => {
               ),
             })}
           </DataTable.Cell>
-          <DataTable.Cell data={data} name='hint'>
+          <DataTable.Cell data={data} name='hint' alignItems='start'>
             {() => ({
               children: (
-                <Hint
-                  title='Hello world'
-                  tag={Text}
-                  underline
-                  style={{ textDecorationStyle: 'dashed' }}
-                  color='text-secondary'
-                >
-                  Hint link
-                </Hint>
+                <DescriptionTooltip>
+                  <DescriptionTooltip.Trigger tag={ButtonLink} use='secondary'>
+                    About
+                  </DescriptionTooltip.Trigger>
+                  <DescriptionTooltip.Popper aria-label='About data'>
+                    Some description of the data.
+                  </DescriptionTooltip.Popper>
+                </DescriptionTooltip>
               ),
             })}
           </DataTable.Cell>

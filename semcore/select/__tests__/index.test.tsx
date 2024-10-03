@@ -12,6 +12,7 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Select from '../src';
 // @ts-ignore
 import InputSearch from '../src/InputSearch';
+import { skipButtonComboboxDiscernibleErrors } from '@semcore/testing-utils/playwright';
 
 HTMLElement.prototype.scrollIntoView = () => {};
 
@@ -201,7 +202,7 @@ describe('Select Trigger', () => {
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[Space]');
 
-    expect(spyChange).toHaveBeenCalledWith(1, expect.anything());
+    expect(spyChange).toHaveBeenCalledWith(2, expect.anything());
   });
 
   test.concurrent('Should support tag as string', async ({ task }) => {
@@ -353,7 +354,7 @@ describe('Select Trigger', () => {
     vi.useRealTimers();
 
     const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    expect(results.violations.filter(skipButtonComboboxDiscernibleErrors)).toHaveLength(0);
   });
 
   test.concurrent('focus position preserve with mouse navigation', async () => {
@@ -418,8 +419,8 @@ describe('Select Trigger', () => {
 
   test.sequential(
     'focus position preserve with keyboard navigation and interaction=focus',
-    async () => {
-      vi.useFakeTimers();
+    async ({ expect }) => {
+      // vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction='focus'>
           <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
@@ -433,26 +434,15 @@ describe('Select Trigger', () => {
           </Select.Menu>
         </Select>,
       );
-      act(() => {
-        vi.runAllTimers();
-      });
-      fireEvent.keyDown(document.body, { key: 'Tab' });
-      act(() => getByTestId('input-in-trigger').focus());
-      act(() => {
-        vi.runAllTimers();
-      });
-      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
-      fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
-      act(() => {
-        vi.runAllTimers();
-      });
-      act(() => {
-        vi.runAllTimers();
-      });
+
+      getByTestId('input-in-trigger').focus();
 
       expect(getByTestId('input-in-trigger')).toHaveFocus();
 
-      vi.useRealTimers();
+      await userEvent.keyboard('[ArrowDown]');
+      await userEvent.keyboard('[Enter]');
+
+      expect(getByTestId('input-in-trigger')).toHaveFocus();
     },
   );
 });

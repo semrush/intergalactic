@@ -7,10 +7,11 @@ import DropdownMenu, {
   DropdownMenuHandlers,
   DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
+import Dropdown from '@semcore/dropdown';
 import { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import Input, { InputValueProps } from '@semcore/input';
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps, Flex } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface ISelectInputSearch extends SelectInputSearch, UnknownProperties {}
@@ -84,6 +85,10 @@ export interface ISelectOption extends SelectOption, UnknownProperties {}
 /** @deprecated */
 export interface ISelectOptionProps extends SelectOptionProps, UnknownProperties {}
 export type SelectOptionProps = DropdownMenuItemProps & {
+  /**
+   * Enables selected state
+   */
+  selected?: boolean;
   /** Value of the option */
   value: string | number;
 };
@@ -136,7 +141,7 @@ type IntergalacticSelectComponent<PropsExtending = {}> = (<
 
 declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
-    'div',
+    typeof Dropdown.Trigger,
     DropdownMenuTriggerProps & ButtonTriggerProps,
     {},
     [handlers: SelectHandlers]
@@ -147,6 +152,7 @@ declare const Select: IntergalacticSelectComponent & {
   Popper: typeof DropdownMenu.Popper;
   List: typeof DropdownMenu.List;
   Menu: typeof DropdownMenu.Menu;
+  Group: typeof Dropdown.Group;
   Option: Intergalactic.Component<
     'option',
     SelectOptionProps,
@@ -155,8 +161,16 @@ declare const Select: IntergalacticSelectComponent & {
   > & {
     Addon: typeof DropdownMenu.Item.Addon;
     Checkbox: Intergalactic.Component<'div', SelectOptionCheckboxProps>;
+    Content: typeof Flex;
+    Hint: typeof Flex;
   };
+  /**
+   * @deprecated Use Select.Group
+   */
   OptionTitle: typeof DropdownMenu.ItemTitle;
+  /**
+   * @deprecated Use Select.Option.Hint or Select.Group with subTitle property
+   */
   OptionHint: typeof DropdownMenu.ItemHint;
   Divider: typeof Divider;
   InputSearch: typeof InputSearch;

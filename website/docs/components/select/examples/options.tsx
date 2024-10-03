@@ -10,27 +10,34 @@ const Demo = () => (
     </Text>
     <Select>
       <Select.Trigger
-        placeholder="I'll show u some options, buddy"
+        placeholder='There are several option types'
         mr='auto'
         mt={2}
         id='options-select'
       />
       <Select.Menu>
-        <Select.Option value={1}>I'm option</Select.Option>
+        <Select.Option value={1}>Default option</Select.Option>
         <Select.Option value={2}>
           <Select.Option.Checkbox />
-          I'm option-checkbox
+          Checkbox option
         </Select.Option>
         <Select.Option value={3} disabled>
           <Select.Option.Checkbox />
-          I'm disabled option-checkbox
+          Disabled checkbox option
         </Select.Option>
         <Select.Option value={3}>
-          <Select.Option.Checkbox indeterminate />
-          I'm indeterminate option-checkbox
+          <Select.Option.Content>
+            <Select.Option.Checkbox indeterminate />
+            Indeterminate checkbox option
+          </Select.Option.Content>
+          <Select.Option.Hint>Hint for the option</Select.Option.Hint>
         </Select.Option>
-        <Select.OptionTitle>I'm title</Select.OptionTitle>
-        <Select.OptionHint>I'm hint</Select.OptionHint>
+
+        <Select.Group title={'Group title'} subTitle={'Hint for the title'}>
+          <Select.Option value={4}>1st option in group</Select.Option>
+          <Select.Option value={5}>2nd option in group</Select.Option>
+          <Select.Option value={6}>3rd option in group</Select.Option>
+        </Select.Group>
       </Select.Menu>
     </Select>
   </Flex>

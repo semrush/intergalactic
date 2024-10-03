@@ -2,6 +2,10 @@ SInputSearch[size='m'] {
   height: 32px;
 }
 
+SSearchClear {
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
+}
+
 SSearchClear[hide] {
   visibility: hidden;
 }

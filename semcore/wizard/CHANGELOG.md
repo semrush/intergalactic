@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.44.2] - 2024-10-03
+
+### Fixed
+
+- Switching wizard steps with arrows.
+
 ## [2.44.1] - 2024-09-27
 
 ### Changed

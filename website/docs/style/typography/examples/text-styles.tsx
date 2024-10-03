@@ -1,5 +1,6 @@
 import React from 'react';
-import { Hint, Text } from 'intergalactic/typography';
+import { Text } from 'intergalactic/typography';
+import Link from 'intergalactic/link';
 
 const Demo = () => (
   <div>
@@ -13,7 +14,7 @@ const Demo = () => (
       But I do love the taste of a <Text color='text-success'>good burger</Text>. Mm-mm-mm.
     </Text>
     <Text size={300} tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Hint>good burger</Hint>. Mm-mm-mm.
+      But I do love the taste of a <Link href='https://semrush.com'>good burger</Link>. Mm-mm-mm.
     </Text>
     <Text size={300} tag='p' mb={2} mt={0}>
       But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
