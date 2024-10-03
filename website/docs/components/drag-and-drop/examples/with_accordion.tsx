@@ -44,10 +44,16 @@ const Demo = () => {
   );
 
   return (
-    <DnD tag={Accordion} onDnD={handleDnD} value={value} onChange={(value: any) => onChange(value)}>
+    <DnD
+      tag={Accordion}
+      onDnD={handleDnD}
+      value={value}
+      onChange={(value: any) => onChange(value)}
+      aria-label={'drag-and-drop container'}
+    >
       {sortedSections.map((section) => (
         <Accordion.Item value={section.id} key={section.id}>
-          <DnD.Draggable tag={Accordion.Item.Toggle} pb={2} w={420}>
+          <DnD.Draggable tag={Accordion.Item.Toggle} pb={2} w={420} aria-label={section.question}>
             <Flex alignItems='center'>
               <Accordion.Item.Chevron mr={2} />
               <Text size={300} tag='h3' my={0}>

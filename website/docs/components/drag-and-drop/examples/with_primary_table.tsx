@@ -62,7 +62,7 @@ const Demo = () => {
         <DataTable.Column name='vol' children='Vol.' />
         <DataTable.Column name='kd' children='KD' />
       </DataTable.Head>
-      <DnD onDnD={handleDnD}>
+      <DnD onDnD={handleDnD} aria-label={'drag-and-drop container'}>
         <DataTable.Body>
           <DataTable.Cell data={data} name='checkbox'>
             {() => ({ children: <Checkbox /> })}
@@ -95,10 +95,10 @@ const Demo = () => {
             })}
           </DataTable.Cell>
           <DataTable.Row>
-            {(props) => {
+            {(props, data, rowIndex) => {
               return {
                 children: (
-                  <DnD.Draggable tag={Flex} placement='left'>
+                  <DnD.Draggable tag={Flex} placement='left' aria-label={`${rowIndex} row`}>
                     {props.children}
                   </DnD.Draggable>
                 ),
