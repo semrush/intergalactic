@@ -5,7 +5,7 @@ import Spin from 'intergalactic/spin';
 import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
-  <Flex gap={2} flexWrap>
+  <Flex gap={4} flexWrap>
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='loading-select'>
         Normal loading state

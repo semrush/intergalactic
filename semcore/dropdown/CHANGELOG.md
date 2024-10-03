@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `AbstractDropdown` internal class. Need it to create DropdownMenu and Select.
+- `AbstractDropdown` internal class. It's needed to create DropdownMenu and Select.
 - `Dropdown.Item` with styles for DropdownMenu.Item and Select.Item.
 - `Dropdown.Group` with styles for wrap DropdownMenu.Item and Select.Item into groups.
 

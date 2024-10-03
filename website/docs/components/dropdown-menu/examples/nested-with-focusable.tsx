@@ -20,7 +20,12 @@ const Demo = () => {
         {options.map((item) => {
           return (
             <DropdownMenu.Item key={item}>
-              <DropdownMenu placement='right' interaction='hover' timeout={[0, 300]}>
+              <DropdownMenu
+                placement='right-start'
+                interaction='hover'
+                timeout={[0, 300]}
+                offset={[-11, 12]}
+              >
                 <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
                   {item}
                   <DropdownMenu.Item.Addon tag={ChevronRightIcon} color='icon-secondary-neutral' />

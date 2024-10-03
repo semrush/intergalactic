@@ -29,11 +29,11 @@ For the select trigger, you can use one of the following [BaseTrigger](/componen
 
 Table: Trigger button types
 
-| BaseTrigger type                                                                                                                                        | Appearance example                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L.                                                           | ![](static/primary-default.png)           |
-| [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
-| LinkTrigger with the color of text (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text.                               | ![](static/tertiary.png)                  |
+| BaseTrigger type                                                                                                                                     | Appearance example                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L.                                                        | ![](static/primary-default.png)           |
+| [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) (looks like a link, but it's a button). Used in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
+| LinkTrigger styled like a link with text color (looks like a link, but it's a button). It's used in two sizes: 14px and 16px.                       | ![](static/tertiary.png)                  |
 
 ### Trigger sizes
 
@@ -110,7 +110,7 @@ If the menu has more than seven items, limit its height and add scroll. We also 
 
 ### Data loading
 
-If the list takes time to load, such as when the system can't load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
+When the list is loading or data is being fetched, replace the `Chevron` icon with an XS spinner, and keep the trigger non-clickable in its default state.
 
 ![](static/select-loading-trigger.png)
 
@@ -157,7 +157,7 @@ If the list includes more than 10 values, add a search input. Otherwise, it will
 
 ### Select all
 
-If the list has more than three values, add the **Select all** option at the very beginning of the list. When everything is selected, change it to **Deselect all**.
+If the list has more than three values, add the **Select all** option at the very beginning of the list. When at least one value is selected, change this option to **Deselect all**.
 
 ![](static/multiselect-all.png)
 
@@ -167,10 +167,10 @@ In long lists (for example, countries or time zones), selected values should be 
 
 Table: Specific cases for multiselect
 
-| Step                                                  | Illustration                         |
-| ----------------------------------------------------- | ------------------------------------ |
-| User opens the select and starts selecting items.     | ![](static/multiselect-flow-1-2.png) |
-| User closes the select.                               | ![](static/multiselect-flow-3.png)   |
+| Step                                                                                                                                                   | Illustration                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| User opens the select and starts selecting items.                                                                                                      | ![](static/multiselect-flow-1-2.png) |
+| User closes the select.                                                                                                                                | ![](static/multiselect-flow-3.png)   |
 | When user reopens the select, selected items are at the top of the list. If user deselects the items, they remain in place until the select is closed. | ![](static/multiselect-flow-4-5.png) |
 
 ### Displaying selected values in trigger
