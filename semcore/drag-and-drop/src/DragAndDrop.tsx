@@ -630,7 +630,9 @@ const DropZone = (props: DropZoneProps) => {
   const SDropZone = Root;
   const { styles } = props;
 
-  return sstyled(styles)(<SDropZone render={DragAndDrop.Draggable} noDrag isDropZone />);
+  return sstyled(styles)(
+    <SDropZone render={DragAndDrop.Draggable} noDrag isDropZone aria-describedby={null} />,
+  );
 };
 
 const DragAndDrop = createComponent(DragAndDropRoot, {
