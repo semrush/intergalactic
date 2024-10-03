@@ -51,9 +51,9 @@ The following list will help you to keep in mind the necessary roles and attribu
 
 Table: Roles and attributes
 
-| Component            | Attribute                  | Usage                                                                                                                                                    |
-| -------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Select.InputSearch` | `aria-describedby="IDREF"` | Defines an accessible description announcing the number of search results. Refer to the [options filtering example](./select-code.md#options-filtering). |
+| Component            | Attribute                  | Usage                                                                                                                                                                             |
+| -------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Select.InputSearch` | `aria-describedby="IDREF"` | Defines an accessible description for the element. Use it to announce the number of search results. Refer to the [options filtering example](./select-code.md#options-filtering). |
 
 ## Resources
 
