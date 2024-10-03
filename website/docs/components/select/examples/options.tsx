@@ -10,7 +10,7 @@ const Demo = () => (
     </Text>
     <Select>
       <Select.Trigger
-        placeholder="There are several option types"
+        placeholder='There are several option types'
         mr='auto'
         mt={2}
         id='options-select'
@@ -33,7 +33,7 @@ const Demo = () => (
           <Select.Option.Hint>Hint for the option</Select.Option.Hint>
         </Select.Option>
 
-        <Select.Group title={"Group title"} subTitle={"Hint for the title"}>
+        <Select.Group title={'Group title'} subTitle={'Hint for the title'}>
           <Select.Option value={4}>1st option in group</Select.Option>
           <Select.Option value={5}>2nd option in group</Select.Option>
           <Select.Option value={6}>3rd option in group</Select.Option>
