@@ -303,6 +303,15 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     node.focus();
   };
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    if (this.state.dragging && event.key === 'Tab') {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     if (event.key === ' ') {
       event.preventDefault();
       event.stopPropagation();
@@ -359,7 +368,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           bottom: 0,
           left: 0,
         };
-        let nodeIndex = -1;
 
         this.containerRef.current?.childNodes.forEach((childNode, index) => {
           if (childNode instanceof HTMLElement) {
@@ -375,7 +383,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
             if (childNode === node) {
               nodeRect = roundedRect;
-              nodeIndex = index;
             }
           }
         });
