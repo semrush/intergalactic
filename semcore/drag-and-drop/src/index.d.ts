@@ -1,6 +1,15 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 
+/**
+ * DragAndDrop and Draggable containers must have an accessible names (aria-group-name).
+ */
+type DNDAriaProps = Intergalactic.RequireAtLeastOne<{
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  title?: string;
+}>;
+
 /** @deprecated */
 export interface IDragAndDropProps extends DragAndDropProps, UnknownProperties {}
 export type DragAndDropProps = BoxProps & {
@@ -56,15 +65,20 @@ export type DragAndDropContext = {
   getDroppableProps: PropGetterFn;
 };
 
-export type DropZoneProps = BoxProps & {
-  /**
-   * Used for add zoneName in a11y hints
-   */
-  zoneName?: string;
-};
+export type DropZoneProps = BoxProps &
+  DNDAriaProps & {
+    /**
+     * Used for add zoneName in a11y hints
+     */
+    zoneName?: string;
+  };
 
-declare const DragAndDrop: Intergalactic.Component<'div', DragAndDropProps, DragAndDropContext> & {
-  Draggable: Intergalactic.Component<'div', DraggableProps>;
+declare const DragAndDrop: Intergalactic.Component<
+  'div',
+  DragAndDropProps & DNDAriaProps,
+  DragAndDropContext
+> & {
+  Draggable: Intergalactic.Component<'div', DraggableProps & DNDAriaProps>;
   DropZone: Intergalactic.Component<typeof Box, DropZoneProps>;
   /** @deprecated use `DragAndDrop.DropZone` instead */
   Droppable: Intergalactic.Component<typeof Box, DropZoneProps>;
