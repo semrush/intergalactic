@@ -157,7 +157,7 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
           );
           buttonProps.neighborLocation = neighborLocation;
 
-          if (!hasChildren || title) {
+          if (hasChildren === undefined || title) {
             return this.renderButtonWithHint({ buttonProps, hintProps, children });
           }
 

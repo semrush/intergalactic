@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.38.2] - 2024-10-01
+
+### Fixed
+
+- `hasChildren` condition to only display full text link or Addon only.
+
 ## [5.38.1] - 2024-09-27
 
 ### Changed
