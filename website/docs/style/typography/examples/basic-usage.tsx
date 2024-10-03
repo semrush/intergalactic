@@ -1,5 +1,6 @@
 import React from 'react';
-import { Blockquote, Hint, List, Text } from 'intergalactic/typography';
+import { Blockquote, List, Text } from 'intergalactic/typography';
+import Link from 'intergalactic/link';
 
 const Demo = () => (
   <div>
@@ -25,7 +26,7 @@ const Demo = () => (
       H4, 24px
     </Text>
     <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Hint>good burger</Hint>. Mm-mm-mm.
+      But I do love the taste of a <Link href='https://semrush.com'>good burger</Link>. Mm-mm-mm.
     </Text>
     <Text size={400} tag='h5' fontWeight={500} mb={2} mt={0}>
       H5, 20px
