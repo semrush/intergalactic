@@ -53,7 +53,7 @@ Table: Roles and attributes
 
 | Component            | Attribute                  | Usage                                                                                                                                                                             |
 | -------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Select.InputSearch` | `aria-describedby="IDREF"` | Defines an accessible description for the element. Use it to announce the number of search results. Refer to the [options filtering example](./select-code.md#options-filtering). |
+| `Select.InputSearch` | `aria-describedby="IDREF"` | Defines an accessible description for the **Search** input. Use it to announce the number of search results, as demonstrated in the [options filtering example](./select-code.md#options-filtering). |
 
 ## Resources
 
