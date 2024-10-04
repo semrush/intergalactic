@@ -7,7 +7,7 @@ const options = Array(6)
   .fill('')
   .map((_, index) => ({
     value: index, // value of the selected option
-    label: `Label ${index}`, // the value displayed in the trigger when the option is selected
+    label: `Option ${index}`, // the value displayed in the trigger when the option is selected
     children: `Option ${index}`, // option's children displayed in the dropdown
   }));
 

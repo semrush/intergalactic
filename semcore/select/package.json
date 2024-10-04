@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@semcore/base-trigger": "4.44.1",
+    "@semcore/button": "5.36.0",
     "@semcore/checkbox": "7.36.1",
     "@semcore/divider": "4.32.1",
     "@semcore/dropdown-menu": "4.39.1",
+    "@semcore/dropdown": "4.36.4",
     "@semcore/popper": "5.40.1",
     "@semcore/flex-box": "5.33.1",
     "@semcore/icon": "4.46.0",

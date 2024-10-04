@@ -8,3 +8,98 @@ SDropdownPopper {
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
   color: var(--intergalactic-text-primary, #191b23);
 }
+
+SDropdownItem {
+  position: relative;
+  text-decoration: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  line-height: normal;
+  color: var(--intergalactic-text-primary, #191b23);
+
+  &:hover {
+    background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+SDropdownItem[selected] {
+  background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
+  box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
+
+  &:hover {
+    background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
+  }
+}
+
+SDropdownItem[highlighted] {
+  z-index: 1;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
+}
+
+SDropdownItem[disabled] {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  pointer-events: none;
+}
+
+SDropdownItem[size='l'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+  min-height: 40px;
+}
+
+SDropdownItem[size='m'] {
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-2x, 8px);
+  min-height: 32px;
+}
+
+SDropdownItem[notInteractive] {
+  cursor: default;
+
+  &:hover {
+    background: none;
+  }
+}
+
+SDropdownItem[variant='hint'] {
+  color: var(--intergalactic-text-secondary, #6c6e79);
+  cursor: default;
+
+  &:hover {
+    background: none;
+  }
+}
+
+SDropdownItem[variant='title'] {
+  font-weight: var(--intergalactic-bold, 700);
+  cursor: default;
+
+  &:hover {
+    background: none;
+  }
+}
+
+SDropdownItem[visible] {
+  background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
+}
+
+SDropdownItem[nesting-trigger] {
+  justify-content: space-between;
+}
+
+SGroupTitle {
+  font-weight: var(--intergalactic-bold, 700);
+}
+
+SGroupHint {
+  color: var(--intergalactic-text-secondary, #6c6e79);
+}

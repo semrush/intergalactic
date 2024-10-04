@@ -253,12 +253,12 @@ describe('DropdownMenu', () => {
     });
   });
 
-  test.concurrent('disabled nested', ({ expect }) => {
+  test.concurrent('disabled nested', async ({ expect }) => {
     const { getByTestId } = render(
-      <DropdownMenu visible placement='right'>
+      <DropdownMenu placement='right'>
         <DropdownMenu.Trigger tag='button'>Trigger</DropdownMenu.Trigger>
-        <DropdownMenu.Menu data-testid='dropdown-menu-with-disabled-nesting'>
-          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item data-testid='dd-menu-item-1'>Item 1</DropdownMenu.Item>
           <DropdownMenu.Item disabled>
             <DropdownMenu interaction='hover' placement='right'>
               <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
@@ -274,9 +274,12 @@ describe('DropdownMenu', () => {
       </DropdownMenu>,
     );
 
-    const menu = getByTestId('dropdown-menu-with-disabled-nesting');
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+    expect(getByTestId('dd-menu-item-1')).toHaveFocus();
 
-    expect(getFocusableIn(menu)).toHaveLength(0);
+    await userEvent.keyboard('[ArrowDown]');
+    expect(getByTestId('dd-menu-item-1')).toHaveFocus();
   });
 
   test.sequential('Should support selected hover ', async ({ task }) => {
@@ -305,16 +308,17 @@ describe('DropdownMenu', () => {
     const component = (
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Menu hMax={'180px'}>
-          <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
-          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 3</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 4</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 5</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 6</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 7</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 8</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 9</DropdownMenu.Item>
+          <DropdownMenu.Group title={'List heading'}>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 4</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 5</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 6</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 7</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 8</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 9</DropdownMenu.Item>
+          </DropdownMenu.Group>
         </DropdownMenu.Menu>
       </DropdownMenu>
     );

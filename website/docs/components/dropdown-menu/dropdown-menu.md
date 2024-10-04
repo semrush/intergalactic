@@ -44,16 +44,12 @@ The menu always drops down, regardless of space availability under the trigger. 
 
 ## Menu item states
 
-### States
-
 Table: DropdownMenu item states
 
 | State               | Appearance                        | Tokens                                |
 | ------------------- | --------------------------------- | ------------------------------------- |
 | Default             | ![](static/item-default.png)      | `--dropdown-menu-item`                |
 | Hover               | ![](static/item-hover.png)        | `--dropdown-menu-item-hover`          |
-| Selected            | ![](static/item-active.png)       | `--dropdown-menu-item-selected`       |
-| Selected with hover | ![](static/item-active-hover.png) | `--dropdown-menu-item-selected-hover` |
 | Disabled            | ![](static/item-disabled.png)     | `--disabled-opacity`                  |
 
 ## Menu item types

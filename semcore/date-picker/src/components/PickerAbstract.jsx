@@ -113,13 +113,13 @@ class PickerAbstract extends Component {
     const day = this.keyDiff[e.key];
 
     const getCurrentHighlightedDay = (day) => {
-      const current_day = day.toDate();
-      const isDisabledDay = _disabled.some(includesDate(dayjs(current_day), 'date'));
-      return isDisabledDay ? null : current_day;
+      return day.toDate();
     };
 
     if (place === 'popper' && (e.key === ' ' || (e.key === 'Enter' && highlighted.length))) {
-      this.handlers.value(highlighted[0]);
+      if (!this.isDisabled(highlighted[0])) {
+        this.handlers.value(highlighted[0]);
+      }
       e.preventDefault();
     }
     if (day) {
@@ -142,6 +142,12 @@ class PickerAbstract extends Component {
       }
     }
   };
+
+  isDisabled(date) {
+    const { disabled } = this.asProps;
+
+    return disabled.some(includesDate(dayjs(date), 'date'));
+  }
 
   getButtonTriggerProps() {
     const { value, size, visible } = this.asProps;
@@ -187,16 +193,24 @@ class PickerAbstract extends Component {
   }
 
   getNextProps() {
+    const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
+
     return {
       onClick: this.bindHandlerNavigateClick(1),
-      getI18nText: this.asProps.getI18nText,
+      getI18nText,
+      'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
   }
 
   getPrevProps() {
+    const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
+
     return {
       onClick: this.bindHandlerNavigateClick(-1),
-      getI18nText: this.asProps.getI18nText,
+      getI18nText,
+      'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
   }
 

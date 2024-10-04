@@ -121,9 +121,9 @@ class DateRangeComparatorRoot extends RangeComparatorAbstract {
   getBodyProps({ showButtons }) {
     return {
       children: (
-        <Flex direction='row-reverse'>
-          <DateRangeComparator.Periods showButtons={showButtons} />
+        <Flex>
           <DateRangeComparator.RangeCalendar />
+          <DateRangeComparator.Periods showButtons={showButtons} />
         </Flex>
       ),
     };

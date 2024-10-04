@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.36.0] - 2024-09-26
+
+### Changed
+
+- Now all `aria-*` attributes are passed to the input field.
+
+### Added
+
+- `inputRole` prop.
+
 ## [5.35.1] - 2024-09-27
 
 ### Changed

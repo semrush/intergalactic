@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.52.0] - 2024-09-03
+
+### Changed
+
+- Calendars aria attributes and roles now makes it to be represented and announced as grid to make it accessible for screen readers.
+- Calendar navigation arrows now get specific aria labels like "Previous month" and "Next month" instead of "Previous period" and "Next period".
+- Popper aria role changed from "region" to "dialog".
+- Input trigger got combobox role.
+
 ## [4.51.1] - 2024-09-27
 
 ### Changed

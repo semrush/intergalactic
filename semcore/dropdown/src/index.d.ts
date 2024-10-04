@@ -1,4 +1,5 @@
-import { Intergalactic, UnknownProperties } from '@semcore/core';
+import React from 'react';
+import { Intergalactic, UnknownProperties, PropGetterFn } from '@semcore/core';
 import Popper, {
   PopperContext,
   PopperProps,
@@ -6,6 +7,7 @@ import Popper, {
   PopperTriggerProps,
   PopperPopperProps,
 } from '@semcore/popper';
+import { Box, BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface IDropdownProps extends DropdownProps, UnknownProperties {}
@@ -23,7 +25,9 @@ export type DropdownProps = PopperProps & {
 
 /** @deprecated */
 export interface IDropdownContext extends DropdownContext, UnknownProperties {}
-export type DropdownContext = PopperContext & {};
+export type DropdownContext = PopperContext & {
+  getGroupProps: PropGetterFn;
+};
 
 /** @deprecated */
 export interface IDropdownHandlers extends DropdownHandlers, UnknownProperties {}
@@ -50,6 +54,13 @@ export type DropdownPopperProps = PopperPopperProps &
     role?: 'dialog';
   };
 
+export type DropdownGroupProps = BoxProps & {
+  /** Title for group of dropdown menu items */
+  title: React.ReactNode;
+  /** Subtitle for group of dropdown menu items */
+  subTitle?: string;
+};
+
 declare const Dropdown: Intergalactic.Component<
   'div',
   DropdownProps,
@@ -63,6 +74,8 @@ declare const Dropdown: Intergalactic.Component<
     PopperContext,
     [handlers: PopperHandlers]
   >;
+  Item: Intergalactic.Component<typeof Box>;
+  Group: Intergalactic.Component<'div', DropdownGroupProps>;
 };
 
 export default Dropdown;

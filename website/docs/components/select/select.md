@@ -6,9 +6,7 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 
 ## Description
 
-**Select** component allows users to choose one or more values from a list. It can optionally include search input, titles, buttons, grouping, and nesting.
-
-The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
+**Select** component allows users to choose one or more values from a list. It can optionally include a search input, titles, buttons, grouping, and nesting.
 
 ## Component composition
 
@@ -17,12 +15,13 @@ The component is composed of a trigger button (explained in this guide) and the 
 Component consists of the following:
 
 - `Select.Trigger`
-- `Select.Menu`
+- `Select.Popper`
 - `Select.InputSearch`
+- `Select.List`
+- `Select.Group`
 - `Select.Option`
-- `Select.OptionHint`
-- `Select.OptionTitle`
-- `Select.OptionCheckbox`
+- `Select.Option.Checkbox`
+- `Select.Option.Hint`
 
 ## Trigger
 
@@ -30,11 +29,11 @@ For the select trigger, you can use one of the following [BaseTrigger](/componen
 
 Table: Trigger button types
 
-| BaseTrigger type                                                                                                                                        | Appearance example                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L.                                                           | ![](static/primary-default.png)           |
-| [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
-| LinkTrigger with the color of text (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text.                               | ![](static/tertiary.png)                  |
+| BaseTrigger type                                                                                                                                     | Appearance example                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L.                                                        | ![](static/primary-default.png)           |
+| [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) (looks like a link, but it's a button). Used in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
+| LinkTrigger styled like a link with text color (looks like a link, but it's a button). It's used in two sizes: 14px and 16px.                       | ![](static/tertiary.png)                  |
 
 ### Trigger sizes
 
@@ -47,7 +46,7 @@ Table: Trigger button sizes
 
 ### Maximum width
 
-If the trigger has a maximum width, collapse long values into an `ellipsis`. When hovering, show the tooltip with the full value name.
+If the trigger width is limited, collapse long values with an `ellipsis`. When hovering, show a [Hint](../tooltip/tooltip) with the full value.
 
 ![](static/content-sizes.png)
 
@@ -89,17 +88,17 @@ Table: Content types trigger button can have
 | Avatar  | ![](static/pic-primary.png)                                          | ![](static/inline-pic.png)                                       | ![](static/tertiary-pic.png)       |
 | Badge   | ![](static/badge-primary.png)                                        | ![](static/inline-badge.png)                                     | ![](static/tertiary-badge.png)     |
 
-## DropdownMenu
+## Menu
 
-Read about the dropdown menu, its possibilities, menu items, their types and states in the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
+Menu in `Select` is based on `DropdownMenu`, so refer to [DropdownMenu](/components/dropdown-menu/dropdown-menu) for basic properties of the menu and its items. This guide describes features specific for `Select`.
 
 ### Height
 
-If DropdownMenu has more than seven items, show scroll. We also recommend adding search input to such lists.
+If the menu has more than seven items, limit its height and add scroll. We also recommend adding search input to such lists.
 
 ![](static/dropdown-height.png)
 
-### Item states
+### List states
 
 - If the list is taking a long time to load or filter results (for example, due to a slow connection), then display "Loading...".
 - If a user enters a value that isn’t in the list, then display "Nothing found".
@@ -111,21 +110,27 @@ If DropdownMenu has more than seven items, show scroll. We also recommend adding
 
 ### Data loading
 
-If the list takes time to load, such as when the system can't load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
-
-For more information about the trigger states, refer to [Select / Multiselect](/components/select/select#a24650).
+When the list is loading or data is being fetched, replace the `Chevron` icon with an XS spinner, and keep the trigger non-clickable in its default state.
 
 ![](static/select-loading-trigger.png)
 
 ### List with search input
 
-If the list includes a search input, it should automatically receive focus when the user opens the dropdown.
+If the list includes a search input, the input automatically receives focus when the dropdown is opened.
 
 As the user enters a value into the input, only the items that match the input should remain in the list. Don’t highlight these items in this case.
 
 ### List item states
 
-Refer to the [DropdownMenu](/components/dropdown-menu/dropdown-menu#menu-item-states) for details.
+Table: Select menu item states
+
+| State               | Appearance                        | Tokens                                |
+| ------------------- | --------------------------------- | ------------------------------------- |
+| Default             | ![](static/item-default.png)      | `--dropdown-menu-item`                |
+| Hover               | ![](static/item-hover.png)        | `--dropdown-menu-item-hover`          |
+| Selected            | ![](static/item-active.png)       | `--dropdown-menu-item-selected`       |
+| Selected with hover | ![](static/item-active-hover.png) | `--dropdown-menu-item-selected-hover` |
+| Disabled            | ![](static/item-disabled.png)     | `--disabled-opacity`                  |
 
 ### Pinned item
 
@@ -142,33 +147,31 @@ Table: Pinned item examples
 
 ## Multiselect
 
-**Multiselect** is a select type with the functionality to choose several items from a list. Items in such a list are represented by checkboxes.
+**Multiselect** is a select type with the functionality to choose several items from a list. Items in such a list include checkboxes.
 
 ![](static/multiselect-default.png)
 
 If the list includes more than 10 values, add a search input. Otherwise, it will be difficult for the user to navigate among all values.
 
-::: tip
-The search input should receive the focus state when the user opens the list, helping the user avoid extra clicks.
-:::
-
 ![](static/multiselect-scroll.png)
 
 ### Select all
 
-If you have more than three values, add the "Select all" option at the very beginning of the list. When everything is selected, change it to "Deselect all".
+If the list has more than three values, add the **Select all** option at the very beginning of the list. When at least one value is selected, change this option to **Deselect all**.
 
 ![](static/multiselect-all.png)
 
 ## Specific cases for multiselect
 
-In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
+In long lists (for example, countries or time zones), selected values should be placed at the top of the list when the list is opened.
 
 Table: Specific cases for multiselect
 
-| User opens select and starts selecting the items.                     | User closes select.                | User has reopened select, and the items they selected are pinned at the very top of the list. When unchecking these items, they remain in the same place. |
-| --------------------------------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![](static/multiselect-flow-1.png) ![](static/multiselect-flow-2.png) | ![](static/multiselect-flow-3.png) | ![](static/multiselect-flow-4.png)                                                                                                                        |
+| Step                                                                                                                                                   | Illustration                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| User opens the select and starts selecting items.                                                                                                      | ![](static/multiselect-flow-1-2.png) |
+| User closes the select.                                                                                                                                | ![](static/multiselect-flow-3.png)   |
+| When user reopens the select, selected items are at the top of the list. If user deselects the items, they remain in place until the select is closed. | ![](static/multiselect-flow-4-5.png) |
 
 ### Displaying selected values in trigger
 
@@ -184,13 +187,13 @@ Table: States for displaying the selected values in the trigger
 
 ### Search
 
-If the user searches for something and clicks "Select all" or "Deselect all", all found results will be selected or deselected. Other values, those that haven’t been searched for, don’t change their state.
+If the user searches for something and clicks **Select all** or **Deselect all**, all found results will be selected or deselected. Other values, those that haven’t been searched for, don’t change their state.
 
-For example, if the user has selected the "Gunship" and then searches for the "A" bands, then clicks "Select all", three more visible bands will be selected. As a result, four values will be marked as selected (three bands that start with "A" and the previously checked "Gunship").
+For example, if the user has selected the "Gunship" and then searches for the "A" bands, then clicks **Select all**, three more visible bands will be selected. As a result, four values will be marked as selected (three bands that start with "A" and the previously checked "Gunship").
 
 ![](static/multiselect-something-found.png)
 
-Don’t show "Select all" or "Deselect all" at the time when the user has searched and got no results.
+Don’t show **Select all** or **Deselect all** when the user has searched and got no results.
 
 ![](static/multiselect-nothing-found.png)
 
@@ -201,7 +204,7 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 - Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
-We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user can't select or deselect all options due to limitations.
+Hide the **Select all** and **Deselect all** buttons from lists where the maximum number of selected options is limited.
 :::
 
 ![](static/multiselect-limit.png)

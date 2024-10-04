@@ -375,6 +375,7 @@
       "counter",
       "d3-chart",
       "date-picker",
+      "dropdown",
       "dropdown-menu",
       "flags",
       "format-text",
@@ -783,7 +784,7 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Background of the regular primary control.",
-    "components": ["button", "checkbox", "dropdown-menu", "radio", "select", "slider", "switch"]
+    "components": ["button", "checkbox", "dropdown", "radio", "select", "slider", "switch"]
   },
   {
     "name": "--intergalactic-control-primary-info-hover",
@@ -1359,7 +1360,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover state of the default background color for the list item in the dropdown-menu.",
-    "components": ["dropdown-menu"]
+    "components": ["dropdown"]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
@@ -1367,7 +1368,7 @@
     "rawValue": "rgba({blue.100}, 0.7)",
     "computedValue": "rgba(196, 229, 254, 0.7)",
     "description": "Active (selected) state of the default background color for the list item in the dropdown-menu.",
-    "components": ["dropdown-menu", "select"]
+    "components": ["dropdown", "select"]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
@@ -1375,7 +1376,7 @@
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
     "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu.",
-    "components": ["dropdown-menu", "select"]
+    "components": ["dropdown", "select"]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
@@ -1811,6 +1812,7 @@
       "data-table",
       "date-picker",
       "drag-and-drop",
+      "dropdown",
       "dropdown-menu",
       "feedback-form",
       "fullscreen-modal",
@@ -1916,7 +1918,7 @@
       "card",
       "checkbox",
       "d3-chart",
-      "dropdown-menu",
+      "dropdown",
       "errors",
       "format-text",
       "radio",
@@ -1943,7 +1945,7 @@
       "checkbox",
       "d3-chart",
       "data-table",
-      "dropdown-menu",
+      "dropdown",
       "format-text",
       "fullscreen-modal",
       "notice",
@@ -1998,7 +2000,7 @@
     "components": [
       "card",
       "color-picker",
-      "dropdown-menu",
+      "dropdown",
       "flags",
       "format-text",
       "fullscreen-modal",
@@ -2076,7 +2078,7 @@
       "d3-chart",
       "data-table",
       "date-picker",
-      "dropdown-menu",
+      "dropdown",
       "format-text",
       "fullscreen-modal",
       "input",
@@ -2111,7 +2113,7 @@
       "card",
       "checkbox",
       "d3-chart",
-      "dropdown-menu",
+      "dropdown",
       "errors",
       "format-text",
       "input",
@@ -2214,7 +2216,7 @@
       "base-trigger",
       "checkbox",
       "counter",
-      "dropdown-menu",
+      "dropdown",
       "feedback-form",
       "format-text",
       "input-tags",
@@ -2242,6 +2244,7 @@
       "counter",
       "d3-chart",
       "data-table",
+      "dropdown",
       "dropdown-menu",
       "feature-popover",
       "format-text",
@@ -2279,6 +2282,7 @@
       "d3-chart",
       "data-table",
       "date-picker",
+      "dropdown",
       "dropdown-menu",
       "feature-popover",
       "feedback-form",
@@ -2324,7 +2328,7 @@
       "d3-chart",
       "data-table",
       "date-picker",
-      "dropdown-menu",
+      "dropdown",
       "errors",
       "feedback-form",
       "format-text",
@@ -2614,7 +2618,7 @@
       "carousel",
       "checkbox",
       "date-picker",
-      "dropdown-menu",
+      "dropdown",
       "inline-input",
       "input",
       "input-number",

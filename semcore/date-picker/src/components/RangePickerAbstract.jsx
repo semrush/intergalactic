@@ -262,16 +262,7 @@ class RangePickerAbstract extends Component {
       onKeyDown: this.handlerKeyDown('popper'),
       children: (
         <>
-          <Flex direction='row-reverse'>
-            {periods.length > 0 && (
-              <>
-                <Flex direction='column'>
-                  <Picker.Period />
-                  <Flex mt='auto'>{buttons}</Flex>
-                </Flex>
-                <Divider m='-16px 16px' orientation='vertical' h='auto' />
-              </>
-            )}
+          <Flex>
             <Flex>
               <Box mr={2}>
                 <Picker.Header>
@@ -289,6 +280,15 @@ class RangePickerAbstract extends Component {
                 <Picker.Calendar />
               </Box>
             </Flex>
+            {periods.length > 0 && (
+              <>
+                <Divider m='-16px 16px' orientation='vertical' h='auto' />
+                <Flex direction='column'>
+                  <Picker.Period />
+                  <Flex mt='auto'>{buttons}</Flex>
+                </Flex>
+              </>
+            )}
           </Flex>
           {periods.length === 0 && (
             <>
@@ -327,16 +327,24 @@ class RangePickerAbstract extends Component {
   }
 
   getNextProps() {
+    const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
+
     return {
       onClick: this.bindHandlerNavigateClick(1),
-      getI18nText: this.asProps.getI18nText,
+      getI18nText,
+      'aria-label': navigateStep === 'month' ? getI18nText('nextMonth') : getI18nText('nextYear'),
     };
   }
 
   getPrevProps() {
+    const { getI18nText } = this.asProps;
+    const { navigateStep } = this;
+
     return {
       onClick: this.bindHandlerNavigateClick(-1),
-      getI18nText: this.asProps.getI18nText,
+      getI18nText,
+      'aria-label': navigateStep === 'month' ? getI18nText('prevMonth') : getI18nText('prevYear'),
     };
   }
 
@@ -368,6 +376,7 @@ class RangePickerAbstract extends Component {
       unitRefs: this.unitRefs,
       getI18nText,
       actionsDescribing: index === 0 ? 'range' : null,
+      tabIndex: index === 0 ? 0 : -1,
     };
   }
 
@@ -378,6 +387,7 @@ class RangePickerAbstract extends Component {
       onHighlightedChange,
       onDisplayedPeriodChange,
       preselectedValue,
+      getI18nText,
     } = this.asProps;
     return {
       periods,
@@ -385,6 +395,8 @@ class RangePickerAbstract extends Component {
       onChange: this.handleApply,
       onHighlightedChange,
       onDisplayedPeriodChange,
+      role: 'listbox',
+      'aria-label': getI18nText('periods'),
     };
   }
 
