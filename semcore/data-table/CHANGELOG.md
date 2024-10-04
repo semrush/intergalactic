@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.2] - 2024-10-04
+
+### Fixed
+
+- Preventing defaults and propagation for pressing Enter on TableCell with focusable elements.
+
 ## [4.44.1] - 2024-09-27
 
 ### Changed
