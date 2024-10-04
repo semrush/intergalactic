@@ -174,9 +174,9 @@ If fixed columns aren't visible in the following example, try reducing the windo
 
 :::
 
-### Columns merging
+### Columns grouping
 
-Merge columns by changing the table data and using `/` to combine column keys. You can merge columns for a specific row, as shown in the example below, or for all rows.
+Merge columns by changing the table data and using `/` to combine column keys. You can merge columns for a specific row, as shown in the following example, or for all rows.
 
 ::: sandbox
 
@@ -242,18 +242,6 @@ If built-in virtualization doesn't meet your requirements, you can implement you
 
 <script lang="tsx">
   export Demo from './examples/custom-rows-rendering.tsx';
-</script>
-
-:::
-
-### Custom footer row
-
-To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/custom-footer-cells.tsx';
 </script>
 
 :::
@@ -462,6 +450,18 @@ Components added to `<DataTable.Body/>` will be inserted at the end of the table
 
 <script lang="tsx">
   export Demo from './examples/adding-additional-elements-to-table-body.tsx';
+</script>
+
+:::
+
+### Custom styles for table body
+
+It’s an example of a custom styles for the table body, which uses CSS variables to set the correct cell width in a flex row. To reuse column sizes, use CSS variables like `var(--<%column-name%>_width)`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom-view-for-table-body.tsx';
 </script>
 
 :::
