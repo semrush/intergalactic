@@ -209,7 +209,7 @@ function Close({ styles, children: hasChildren, Children, getI18nText }) {
       size='l'
       addonLeft={hasChildren ? undefined : CloseIcon}
     >
-      {hasChildren ? <Children /> : null}
+      {hasChildren ? <Children /> : undefined}
     </SClose>,
   );
 }
