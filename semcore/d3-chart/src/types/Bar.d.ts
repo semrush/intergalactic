@@ -45,6 +45,10 @@ export type BarProps = Context & {
   maxBarSize?: number;
   /** Enables charts patterns that enhances charts accessibility */
   patterns?: PatternsConfig;
+  /**
+   * Defines the x and y offset for positioning bars
+   */
+  offset?: [number, number] | ((index: number) => [number, number]);
 };
 
 /** @deprecated */
