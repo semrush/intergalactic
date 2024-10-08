@@ -46,6 +46,7 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
       shape,
       size,
       onClick: this.bindOnChange(line.id),
+      onChange: this.bindOnChange(line.id),
       onMouseEnter: this.bindOnMouseEnterItem(line.id),
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
