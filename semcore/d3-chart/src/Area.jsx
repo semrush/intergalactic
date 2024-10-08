@@ -13,8 +13,8 @@ import {
   interpolateValue,
   getChartDefaultColorName,
 } from './utils';
-import AnimatedClipPath from './AnimatedClipPath';
 import { PatternFill, resolvePatternDasharray } from './Pattern';
+import AnimatedClipPath from './AnimatedClipPath';
 
 import style from './style/area.shadow.css';
 
