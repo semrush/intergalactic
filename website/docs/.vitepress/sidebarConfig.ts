@@ -185,6 +185,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Breadcrumbs',
           },
           {
+            link: '/components/bulk-textarea/bulk-textarea',
+            activeMatch: '/components/bulk-textarea/',
+            text: 'BulkTextarea',
+          },
+          {
             link: '/components/button/button',
             activeMatch: '/components/button/',
             text: 'Button',
