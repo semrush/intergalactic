@@ -63,6 +63,7 @@ const Demo = () => {
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
+          aria-label={'Chart legend aria label'}
         />
       </Box>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>

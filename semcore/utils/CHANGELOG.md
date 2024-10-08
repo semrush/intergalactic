@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.37.0] - 2024-10-08
+
+### Added
+
+- Internal type for transform enhances types to the `asProps` type.
+
 ## [4.36.0] - 2024-09-12
 
 ### Fixed

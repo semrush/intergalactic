@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.53.0] - 2024-10-08
+
+### Added
+
+- Required `aria-*` attributes for the Legend.
+
+### Fixed
+
+- Types for enhances.
+
 ## [3.52.0] - 2024-09-20
 
 ### Changed

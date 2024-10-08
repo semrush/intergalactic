@@ -45,17 +45,17 @@ export type ObjectData = Record<string, unknown>;
 export type ListData = ObjectData[];
 
 /**
- * Chart must have an accessible name (aria-name).
- * It should describe chart content.
+ * Chart, Legend must have an accessible names (aria-name).
+ * It should describe chart or legend content.
  */
-export type ChartContainerAriaProps = Intergalactic.RequireAtLeastOne<{
+export type AriaNameProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
   title?: string;
 }>;
 
 export type BaseChartProps<T extends ListData | ObjectData> = FlexProps &
-  ChartContainerAriaProps & {
+  AriaNameProps & {
     /**
      * Chart data. For all charts except Donut(Pie), Radar and Venn should be an Array
      */

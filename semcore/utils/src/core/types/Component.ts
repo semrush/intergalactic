@@ -99,7 +99,7 @@ abstract class RootComponent<
   Props = {},
   Context = {},
   State = {},
-  Enhance = {},
+  Enhance extends readonly ((...args: any[]) => any)[] = [],
 > extends PureComponent<Props, State> {
   get handlers(): Readonly<IRootComponentHandlers> {
     return {};
@@ -107,7 +107,12 @@ abstract class RootComponent<
 
   get asProps() {
     return {} as Readonly<
-      Merge<Props & IRootComponentProps<Props, Context> & Enhance, AllHTMLAttributes<any>>
+      Merge<
+        Props &
+          IRootComponentProps<Props, Context> &
+          Intergalactic.InternalTypings.ExtractEnhanceType<Enhance>,
+        AllHTMLAttributes<any>
+      >
     >;
   }
 
@@ -165,6 +170,39 @@ export namespace Intergalactic {
     export type EfficientOmit<Type, Keys> = {
       [Property in keyof Type as Exclude<Property, Keys>]: Type[Property];
     };
+    export type ExtractEnhanceType<F extends readonly ((...args: any[]) => any)[]> =
+      F['length'] extends 0
+        ? {}
+        : F['length'] extends 1
+        ? {
+            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+          }
+        : F['length'] extends 2
+        ? {
+            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+          } & {
+            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+          }
+        : F['length'] extends 3
+        ? {
+            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+          } & {
+            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+          } & {
+            [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+          }
+        : {};
+    // & {
+    //   [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+    // } & {
+    //   [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
+    // } & {
+    //   [K in keyof ReturnType<F[4]>]: ReturnType<F[4]>[K];
+    // } & {
+    //   [K in keyof ReturnType<F[5]>]: ReturnType<F[5]>[K];
+    // } & {
+    //   [K in keyof ReturnType<F[6]>]: ReturnType<F[6]>[K];
+    // };
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
       MergeProps<
         Tag extends React.FC

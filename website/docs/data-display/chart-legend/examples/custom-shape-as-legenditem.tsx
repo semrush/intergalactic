@@ -44,7 +44,7 @@ const Demo = () => {
 
   return (
     <div>
-      <ChartLegend items={lines}>
+      <ChartLegend items={lines} aria-label={'Chart legend aria label'}>
         <ChartLegend.LegendItem>
           <ChartLegend.LegendItem.Shape style={{ background: 'transparent' }}>
             {(props) => {

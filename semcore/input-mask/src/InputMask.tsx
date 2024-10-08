@@ -17,7 +17,7 @@ import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { Box, Flex } from '@semcore/flex-box';
 import { forkRef } from '@semcore/utils/lib/ref';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-import uniqueIDEnhancement, { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/input-mask.shadow.css';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -110,7 +110,7 @@ class InputMask extends Component<IInputProps> {
   }
 }
 
-class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
+class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance> {
   static defaultProps = {
     includeInputProps: inputProps,
     defaultValue: '',
@@ -126,7 +126,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, UniqueIDProps> {
     },
   };
 
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement()] as const;
 
   inputRef = React.createRef<HTMLInputElement>();
   maskRef = React.createRef<HTMLDivElement>();
