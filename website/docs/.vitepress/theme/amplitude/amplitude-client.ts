@@ -43,8 +43,9 @@ const amplitudeHttp = {
     }
 
     const theme = getThemePreference();
+    const pathname = window.location.pathname;
 
-    this.logEvent('init_app', { event_properties: { theme } });
+    this.logEvent('init_app', { event_properties: { theme, pathname } });
 
     return this;
   },

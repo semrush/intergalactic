@@ -59,6 +59,7 @@ export type FocusSourceEnhanceHook = (props: {
   keyboardFocused: boolean;
   onFocus: (e: React.FocusEvent) => void;
   onBlur: () => void;
+  focusSourceRef: React.MutableRefObject<typeof lastFocusSource>;
 };
 
 const focusSourceEnhance = (): FocusSourceEnhanceHook => {

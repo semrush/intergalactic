@@ -146,7 +146,7 @@ Table: Font styles for metrics
 
 ## Text styles
 
-You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link component](/components/link/link), a [hint component](/style/typography/typography#hints_hint_links), or applying `strikethrough`.
+You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link component](/components/link/link), or applying `strikethrough`.
 
 ::: sandbox
 

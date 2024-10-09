@@ -1,3 +1,58 @@
+## [15.110.0] - 2024-10-04
+
+### @semcore/button
+
+- **Fixed** `hasChildren` condition to only display full Button or Addon only.
+
+### @semcore/data-table
+
+- **Fixed** Preventing defaults and propagation for pressing Enter on TableCell with focusable elements.
+
+### @semcore/date-picker
+
+- **Changed** Calendars aria attributes and roles now makes it to be represented and announced as grid to make it accessible for screen readers.
+- **Changed** Calendar navigation arrows now get specific aria labels like "Previous month" and "Next month" instead of "Previous period" and "Next period".
+- **Changed** Popper aria role changed from "region" to "dialog".
+- **Changed** Input trigger got combobox role.
+
+### @semcore/dropdown
+
+- **Added** `AbstractDropdown` internal class. It's needed to create DropdownMenu and Select.
+- **Added** `Dropdown.Item` with styles for DropdownMenu.Item and Select.Item.
+- **Added** `Dropdown.Group` with styles for wrap DropdownMenu.Item and Select.Item into groups.
+
+### @semcore/dropdown-menu
+
+- **Changed** Refactored to `AbstractDropdown` and `Dropdown.Item`.
+
+### @semcore/input-mask
+
+- **Changed** Now all `aria-*` attributes are passed to the input field.
+- **Added** `inputRole` prop.
+
+### @semcore/link
+
+- **Fixed** `hasChildren` condition to only display full text link or Addon only.
+
+### @semcore/select
+
+- **Changed** `aria-haspopup` set to `dialog` if select has some additional buttons in popover.
+- **Changed** Refactored to `AbstractDropdown` and `Dropdown.Item`.
+
+### @semcore/side-panel
+
+- **Fixed** Using Button close with only icon.
+
+### @semcore/utils
+
+- **Added** Method for get accessible name of element.
+- **Fixed** Click outside utility was considering all clicks inside of shadow root as clicks outside.
+- **Changed** Internal apis extending.
+
+### @semcore/wizard
+
+- **Fixed** Switching wizard steps with arrows.
+
 ## [15.109.0] - 2024-09-27
 
 ### @semcore/icon

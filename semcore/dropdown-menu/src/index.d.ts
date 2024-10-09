@@ -58,6 +58,7 @@ export interface IDropdownMenuItemProps extends DropdownMenuItemProps, UnknownPr
 export type DropdownMenuItemProps = FlexProps & {
   /**
    * Enables selected state
+   * @deprecated Dropdown menu item can't have that state
    */
   selected?: boolean;
   /**
@@ -120,13 +121,6 @@ export type DropdownMenuHandlers = DropdownHandlers & {
 
 export type DropdownMenuTriggerProps = DropdownTriggerProps;
 
-export type DropdownMenuGroupProps = BoxProps & {
-  /** Title for group of dropdown menu items */
-  title: React.ReactNode;
-  /** Subtitle for group of dropdown menu items */
-  subTitle?: string;
-};
-
 declare const DropdownMenu: Intergalactic.Component<
   'div',
   DropdownMenuProps,
@@ -154,7 +148,7 @@ declare const DropdownMenu: Intergalactic.Component<
     [handlers: DropdownMenuHandlers]
   >;
   Item: Intergalactic.Component<
-    'div',
+    typeof Dropdown.Item,
     DropdownMenuItemProps,
     DropdownMenuContext,
     [handlers: DropdownMenuHandlers]
@@ -171,7 +165,7 @@ declare const DropdownMenu: Intergalactic.Component<
    * @deprecated Use prop subTitle on Group or Item component
    */
   ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
-  Group: Intergalactic.Component<'div', DropdownMenuGroupProps>;
+  Group: typeof Dropdown.Group;
   /**
    * @deprecated Use Item instead of Nesting
    */
@@ -199,5 +193,3 @@ declare const DropdownMenu: Intergalactic.Component<
 };
 
 export default DropdownMenu;
-
-export { DropdownMenu as DropdownMenuOld };

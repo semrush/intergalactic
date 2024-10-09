@@ -5,7 +5,7 @@ import Spin from 'intergalactic/spin';
 import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
-  <Flex gap={2} flexWrap>
+  <Flex gap={4} flexWrap>
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='loading-select'>
         Normal loading state
@@ -20,7 +20,7 @@ const Demo = () => (
       </Text>
       <div>
         <Select mt={2} mr='auto' id='loading-select-no-chevron'>
-          <Select.Trigger chevron={false} placeholder={<Spin size='xs' mx={4} />} />
+          <Select.Trigger chevron={false} placeholder={<Spin size='xs' mx={4} />} tabIndex={-1} />
         </Select>
       </div>
     </Flex>

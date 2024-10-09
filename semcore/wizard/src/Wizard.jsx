@@ -65,7 +65,7 @@ class WizardRoot extends Component {
 
   stepperRefs = [];
   stepperFocusPrev = (i) => () => {
-    const prevStep = this._steps.get(this.asProps.step);
+    const prevStep = this._steps.get(i);
     if (!prevStep) return;
     this.setState({ highlighted: prevStep?.step });
     setTimeout(() => {
@@ -73,7 +73,7 @@ class WizardRoot extends Component {
     }, 0);
   };
   stepperFocusNext = (i) => () => {
-    const nextStep = this._steps.get(this.asProps.step + 2);
+    const nextStep = this._steps.get(i + 2);
     if (!nextStep) return;
     this.setState({ highlighted: nextStep?.step });
     setTimeout(() => {
