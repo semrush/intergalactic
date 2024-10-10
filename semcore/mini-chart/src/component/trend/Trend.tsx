@@ -21,12 +21,10 @@ export type CommonTrendProps = BoxProps & {
   data: any[];
 };
 
-export abstract class Trend<P extends CommonTrendProps, E> extends Component<
-  P,
-  {},
-  { width: number; height: number },
-  E
-> {
+export abstract class Trend<
+  P extends CommonTrendProps,
+  E extends readonly ((...args: any[]) => any)[],
+> extends Component<P, {}, { width: number; height: number }, E> {
   state = {
     width: 200,
     height: 100,

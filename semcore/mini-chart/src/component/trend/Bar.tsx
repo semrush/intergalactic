@@ -29,8 +29,8 @@ type Enhances = {
   isHistogram?: true;
 };
 
-class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
-  static enhance = [resolveColorEnhance()];
+class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
+  static enhance = [resolveColorEnhance()] as const;
 
   static style = style;
 

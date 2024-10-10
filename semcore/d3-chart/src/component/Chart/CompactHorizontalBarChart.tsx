@@ -10,10 +10,13 @@ import { scaleBand, scaleLinear } from 'd3-scale';
 // @ts-ignore
 import { CompactHorizontalBar } from '../..';
 import { AbstractChart } from './AbstractChart';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 class CompactHorizontalBarChartComponent extends AbstractChart<
   CompactHorizontalBarChartData,
-  CompactHorizontalBarChartProps
+  CompactHorizontalBarChartProps,
+  typeof CompactHorizontalBarChartComponent.enhance
 > {
   static displayName = 'Chart.CompactHorizontalBar';
   public static defaultProps: Partial<BaseChartProps<any>> = {
@@ -23,6 +26,8 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
     showTooltip: true,
     showLegend: false,
   };
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   get xScale() {
     return this.asProps.xScale ?? this.valueScale;
@@ -86,6 +91,10 @@ class CompactHorizontalBarChartComponent extends AbstractChart<
 
   renderTooltip(): React.ReactNode {
     return null;
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'CompactHorizontalBar' });
   }
 
   private get categoryScale() {

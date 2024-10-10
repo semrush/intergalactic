@@ -35,8 +35,8 @@ type Enhances = {
   withArea?: true;
 };
 
-class TrendLineRoot extends Trend<TrendLineProps, Enhances> {
-  static enhance = [resolveColorEnhance(), uniqueIDEnhancement()];
+class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> {
+  static enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
 
   static style = style;
 

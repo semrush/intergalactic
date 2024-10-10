@@ -20,15 +20,10 @@ import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 const wMin = 2;
 
-type Enhances = {
-  resolveColor: ReturnType<typeof resolveColorEnhance>;
-  uid: ReturnType<typeof uniqueIDEnhancement>;
-};
-
 class CigaretteChartComponent extends AbstractChart<
   CigaretteChartData,
   CigaretteChartProps,
-  Enhances
+  typeof CigaretteChartComponent.enhance
 > {
   static displayName = 'Cigarette.Bar';
 
@@ -48,7 +43,7 @@ class CigaretteChartComponent extends AbstractChart<
     };
   };
 
-  static enhance = [resolveColorEnhance(), uniqueIDEnhancement()];
+  static enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
 
   protected override plotPadding = 0;
 
@@ -289,6 +284,10 @@ class CigaretteChartComponent extends AbstractChart<
         </Flex>
       </SChart>,
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Cigarette' });
   }
 
   private get selectedData() {

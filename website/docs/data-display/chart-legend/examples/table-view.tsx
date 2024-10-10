@@ -29,7 +29,7 @@ const Demo = () => {
 
   return (
     <div style={{ width: '200px' }}>
-      <ChartLegendTable items={lines} />
+      <ChartLegendTable items={lines} aria-label={'Chart legend aria label'} />
     </div>
   );
 };

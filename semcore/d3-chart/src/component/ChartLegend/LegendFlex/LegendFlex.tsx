@@ -42,7 +42,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
     const orientation = direction === 'row' ? 'vertical' : 'horizontal';
 
     return sstyled(styles)(
-      <SLegendFlex render={Flex}>
+      <SLegendFlex render={Flex} role={'group'}>
         {items.map(({ id }) => {
           return <Children key={id} />;
         })}

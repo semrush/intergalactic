@@ -14,8 +14,8 @@ type Enhances = {
   isSemiDonut?: true;
 };
 
-class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
-  static enhance = [resolveColorEnhance()];
+class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
+  static enhance = [resolveColorEnhance()] as const;
 
   static style = style;
 

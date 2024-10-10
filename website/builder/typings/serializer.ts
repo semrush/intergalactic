@@ -228,6 +228,8 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         switch (operator) {
           case ts.SyntaxKind.KeyOfKeyword:
             return ['keyof ', traverse(type)];
+          case ts.SyntaxKind.ReadonlyKeyword:
+            return 'readonly';
         }
         throw new Error(`Got unknown type operator ${ts.SyntaxKind[operator]} (${operator})`);
       }

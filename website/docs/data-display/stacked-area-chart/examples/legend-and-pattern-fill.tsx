@@ -54,7 +54,13 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Checkbox'} patterns />
+      <ChartLegend
+        dataHints={dataHints}
+        items={legendItems}
+        shape={'Checkbox'}
+        patterns
+        aria-label={'Legend for the stacked area chart'}
+      />
       <Plot
         data={data}
         scale={[xScale, yScale]}

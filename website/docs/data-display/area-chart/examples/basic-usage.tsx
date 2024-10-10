@@ -18,6 +18,7 @@ const Demo = () => {
       plotWidth={500}
       plotHeight={200}
       tooltipValueFormatter={formatDate}
+      aria-label={'Area chart'}
     />
   );
 };

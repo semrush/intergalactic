@@ -36,8 +36,8 @@ class LegendItemRoot extends Component<
     ),
   });
 
-  getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
-    const { checked, color, shape, label, id, size, onClick, resolveColor, patterns } =
+  getShapeProps() {
+    const { checked, color, shape, label, id, size, onChange, resolveColor, patterns } =
       this.asProps;
 
     return {
@@ -49,11 +49,18 @@ class LegendItemRoot extends Component<
       patternKey: color,
       patterns,
       size,
-      onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
-        if (onClick && e.key === ' ') {
-          onClick();
+      onChange: () => {
+        if (shape !== 'Checkbox') {
+          return false;
         }
       },
+      onClick: (e: React.SyntheticEvent<HTMLInputElement>) => {
+        if (shape === 'Checkbox') {
+          e.stopPropagation();
+          return false;
+        }
+      },
+      'aria-labelledby': id,
     };
   }
 
@@ -125,9 +132,9 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     patternKey = getChartDefaultColorName(0),
     Children,
     children: hasChildren,
-    onKeyUp,
-    label,
     patterns,
+    onChange,
+    onClick,
   } = props;
 
   if (hasChildren) {
@@ -149,8 +156,8 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           size={size}
           checked={checked}
           theme={checked ? color : undefined}
-          onKeyUp={onKeyUp}
-          aria-label={label}
+          onChange={onChange}
+          onClick={onClick}
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>

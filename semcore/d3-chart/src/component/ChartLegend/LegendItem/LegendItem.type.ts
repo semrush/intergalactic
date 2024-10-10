@@ -61,10 +61,18 @@ export type LegendItemProps = LegendItem & {
   patterns?: PatternsConfig;
 };
 
-export type ShapeProps = LegendItem & {
-  size: LSize;
-  shape: ShapeType;
-};
+export type ShapeProps = LegendItem &
+  (
+    | {
+        size: LSize;
+        shape: Exclude<ShapeType, 'Checkbox'>;
+      }
+    | {
+        size: LSize;
+        shape: Extract<ShapeType, 'Checkbox'>;
+        onChange: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+      }
+  );
 
 export const StaticShapes = ['Circle', 'Line', 'Square', 'Pattern'] as const;
 

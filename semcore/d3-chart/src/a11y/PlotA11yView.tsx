@@ -52,7 +52,11 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
     }, 0);
   }, [providedData, hints, config, locale, translations, localizedMessages]);
 
-  const handleSkip = React.useCallback(() => {
+  const handleClose = React.useCallback(() => {
+    plotRef.current?.focus();
+  }, []);
+  const handleSkip = React.useCallback((event: React.SyntheticEvent) => {
+    event.preventDefault();
     if (!plotRef.current) return;
 
     heavyFindNextFocusableElement(plotRef.current)?.focus();
@@ -61,20 +65,19 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
     (event: React.KeyboardEvent) => {
       if (!(event.key === 'Enter' || event.key === ' ')) return;
 
-      event.preventDefault();
-      handleSkip();
+      handleSkip(event);
     },
     [handleSkip],
   );
-  const handleGoToTable = React.useCallback(() => {
+  const handleGoToTable = React.useCallback((event: React.SyntheticEvent) => {
+    event.preventDefault();
     dataTableRef.current?.focus();
   }, []);
   const handleGoToTableKeyboard = React.useCallback(
     (event: React.KeyboardEvent) => {
       if (!(event.key === 'Enter' || event.key === ' ')) return;
 
-      event.preventDefault();
-      handleGoToTable();
+      handleGoToTable(event);
     },
     [handleGoToTable],
   );
@@ -98,23 +101,28 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   const dataTableRef = React.useRef<HTMLTableElement>(null);
 
   return sstyled(styles)(
-    <SPlotA11yView render={Box} tabIndex={0} aria-label={texts.label}>
-      {/* biome-ignore lint/a11y/useValidAnchor: */}
-      <a aria-hidden onClick={handleSkip}>
+    <SPlotA11yView
+      render={Box}
+      tabIndex={0}
+      aria-label={texts.label}
+      role={'dialog'}
+      __excludeProps={['data']}
+    >
+      <button type={'button'} onClick={handleClose}>
         {texts.close}
-      </a>
+      </button>
       {/* biome-ignore lint/a11y/useValidAnchor: */}
-      <a role='link' tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
+      <a href={'#'} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
         {texts.skipPlot}
       </a>
       {/* biome-ignore lint/a11y/useValidAnchor: */}
-      <a role='link' tabIndex={0} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
+      <a href={`#${id}-data-table`} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
         {texts.goToTable}
       </a>
       <strong>
         <label htmlFor={`${id}-data-summary`}>{texts.summary}</label>
       </strong>
-      <div id={`${id}-data-summary`} aria-busy={generatingSummary} tabIndex={0}>
+      <div id={`${id}-data-summary`} aria-busy={generatingSummary}>
         {generatingSummary ? texts.summaryPlaceholder : summary}
       </div>
       <strong>
