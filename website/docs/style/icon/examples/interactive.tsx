@@ -1,10 +1,12 @@
 import React from 'react';
 import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
+import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => (
-  <LinkExternalM
+  <Hint
+    tag={LinkExternalM}
     interactive
-    aria-label='Go to our awesome article'
+    title='Go to our awesome article'
     color='icon-secondary-neutral'
   />
 );

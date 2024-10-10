@@ -2,6 +2,8 @@ import React from 'react';
 import Input from 'intergalactic/input';
 import InputMask from 'intergalactic/input-mask';
 import Select, { InputSearch } from 'intergalactic/select';
+import { Hint } from 'intergalactic/tooltip';
+import { ButtonLink } from 'intergalactic/button';
 import NeighborLocation from 'intergalactic/neighbor-location';
 import Flag from 'intergalactic/flags';
 import { Text } from 'intergalactic/typography';
@@ -90,13 +92,16 @@ const Demo = () => {
               onChange={setPhoneNumber}
               mask={phoneMask.replace(/_/g, '9')}
             />
-            {phoneNumber !== phoneMask && (
-              <Input.Addon
-                tag={CloseM}
-                aria-label='Clear'
-                interactive
-                onClick={() => setPhoneNumber(prefix)}
-              />
+            {phoneNumber !== prefix && (
+              <Input.Addon>
+                <Hint
+                  tag={ButtonLink}
+                  use='secondary'
+                  addonLeft={CloseM}
+                  title='Clear'
+                  onClick={() => setPhoneNumber(prefix)}
+                />
+              </Input.Addon>
             )}
           </InputMask>
         </NeighborLocation>

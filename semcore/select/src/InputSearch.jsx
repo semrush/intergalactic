@@ -3,6 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
+import { ButtonLink } from '@semcore/button';
 import { selectContext } from './context';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -54,12 +55,10 @@ class InputSearchRoot extends Component {
   getClearProps() {
     const { value, getI18nText } = this.asProps;
     return {
-      role: 'button',
       ref: this.closeIconRef,
       /* hide through css because the width of the input changes */
       hide: !value,
       'aria-hidden': !value,
-      interactive: true,
       'aria-label': getI18nText('clearSearch'),
       onClick: this.handleClear,
     };
@@ -102,12 +101,8 @@ const SearchValue = (props) => {
 };
 const SearchClear = (props) => {
   const SSearchClear = Root;
-  const { styles, Children } = props;
-  return sstyled(styles)(
-    <SSearchClear render={Input.Addon} tag={CloseM}>
-      <Children />
-    </SSearchClear>,
-  );
+  const { styles } = props;
+  return sstyled(styles)(<SSearchClear render={ButtonLink} addonLeft={CloseM} use={'secondary'} />);
 };
 
 const InputSearch = createComponent(InputSearchRoot, {

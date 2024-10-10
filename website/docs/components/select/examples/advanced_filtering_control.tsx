@@ -1,70 +1,77 @@
 import React from 'react';
 import Select, { InputSearch } from 'intergalactic/select';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
-
-const data = Array(26)
-  .fill(0)
-  .map((_, index) => ({
-    label: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-    value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
-  }));
 
 const Demo = () => {
   const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
-    () => data.filter((option) => option.value.toString().includes(filter)),
+    () =>
+      data.filter((option) => {
+        return option.value.toString().toLowerCase().includes(filter.toLowerCase());
+      }),
     [filter],
   );
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='advanced-filtering'>
-        Advanced filtering control
+      <Text tag='label' size={200} htmlFor='options-filtering-advanced'>
+        Fruit
       </Text>
-      <Select placeholder='Select value'>
-        <Select.Trigger mt={2} mr='auto' id='advanced-filtering' />
+      <Select placeholder='Select a fruit'>
+        <Select.Trigger id='options-filtering-advanced' mr='auto' mt={2} />
         <Select.Popper>
-          {({ highlightedIndex }) => (
-            <>
-              <InputSearch value={filter} onChange={setFilter}>
-                <InputSearch.SearchIcon />
-                <InputSearch.Value
-                  placeholder='Search'
-                  role='combobox'
-                  aria-autocomplete='list'
-                  aria-controls='search-list'
-                  aria-owns='search-list'
-                  aria-expanded='true'
-                  aria-activedescendant={`option-${highlightedIndex}`}
-                />
-                <InputSearch.Clear
-                  onClick={() => {
-                    return false;
-                  }}
-                />
-              </InputSearch>
-              <Select.List hMax={'224px'} id='search-list'>
-                {options.map(({ value, label }, index) => (
-                  <Select.Option
-                    value={value}
-                    key={value}
-                    id={`option-${index}`}
-                    aria-selected={index === highlightedIndex}
-                  >
-                    {label}
-                  </Select.Option>
-                ))}
-                {!options.length && (
-                  <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
-                )}
-              </Select.List>
-            </>
-          )}
+          <InputSearch value={filter} onChange={setFilter}>
+            <InputSearch.SearchIcon />
+            <InputSearch.Value
+              placeholder='Search'
+              aria-describedby={filter ? 'search-result-advanced' : undefined}
+            />
+            <InputSearch.Clear
+              onClick={() => {
+                return false;
+              }}
+            />
+          </InputSearch>
+          <Select.List hMax={'224px'}>
+            {options.map(({ value, label }) => (
+              <Select.Option value={value} key={value}>
+                {label}
+              </Select.Option>
+            ))}
+            {options.length ? (
+              <ScreenReaderOnly id='search-result-advanced' aria-hidden={'true'}>
+                {options.length} result{options.length > 1 && 's'} found
+              </ScreenReaderOnly>
+            ) : (
+              <Select.OptionHint id='search-result-advanced' key='Nothing'>
+                Nothing found
+              </Select.OptionHint>
+            )}
+          </Select.List>
         </Select.Popper>
       </Select>
     </Flex>
   );
 };
+
+const data = [
+  'Apple',
+  'Banana',
+  'Blueberry',
+  'Grape',
+  'Kiwi',
+  'Mango',
+  'Melon',
+  'Orange',
+  'Peach',
+  'Pear',
+  'Pineapple',
+  'Strawberry',
+].map((item) => ({
+  label: item,
+  value: item,
+}));
 
 export default Demo;

@@ -5,6 +5,11 @@ import { serializeInterfaceDeclaration } from './interfaces';
 import { serializeTypeDeclaration } from './typeAliases';
 import { serializeClassDeclaration } from './classes';
 
+const mapTypes = {
+  ButtonProps: 'AbstractButtonProps',
+  ButtonLinkProps: 'AbstractButtonProps',
+};
+
 const serializeFileDeclaration = (fileDeclaration: ts.SourceFile, filepath: string) => {
   const interfaceDec: ts.InterfaceDeclaration[] = [];
   const typesDec: ts.TypeAliasDeclaration[] = [];
@@ -92,6 +97,10 @@ export default {
             declaration,
           };
         }
+      }
+      for (const originalKey in mapTypes) {
+        const mappedKey = mapTypes[originalKey];
+        typings[originalKey] = typings[mappedKey];
       }
       for (const typing in typings) {
         const dependencies = typings[typing].dependencies;

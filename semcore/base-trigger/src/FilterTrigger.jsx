@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled, CHILDREN_COMPONENT } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -28,6 +28,7 @@ const filterTriggerInputProps = [
   'aria-activedescendant',
   'aria-label',
   'aria-labelledby',
+  'role',
 ];
 
 class RootFilterTrigger extends Component {
@@ -123,7 +124,7 @@ class RootFilterTrigger extends Component {
         render={Box}
         aria-label={getI18nText('filter')}
         __excludeProps={['id']}
-        use:role={role}
+        use:role={undefined}
         use:aria-controls={undefined}
         use:aria-owns={undefined}
         use:aria-haspopup={undefined}

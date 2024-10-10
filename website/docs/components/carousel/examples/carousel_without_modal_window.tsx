@@ -22,15 +22,16 @@ const Demo = () => (
     indicators='preview'
   >
     {images.map((url, index) => (
-      <Carousel.Item
-        tag='img'
-        role='button'
-        key={url}
-        src={url}
-        w={imageWidth}
-        alt={altTexts[index]}
-        aria-label={`Open in fullscreen ${altTexts[index]}`}
-      />
+      <Carousel.Item key={url} w={imageWidth}>
+        <img
+          // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
+          role='button'
+          src={url}
+          alt={altTexts[index]}
+          aria-label={`Open in fullscreen ${altTexts[index]}`}
+          style={{ height: '100%', objectFit: 'cover' }}
+        />
+      </Carousel.Item>
     ))}
   </Carousel>
 );

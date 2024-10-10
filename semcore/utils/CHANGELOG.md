@@ -2,11 +2,41 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.37.0] - 2024-10-08
+## [4.39.0] - 2024-10-08
 
 ### Added
 
 - Internal type for transform enhances types to the `asProps` type.
+
+## [4.38.0] - 2024-09-20
+
+### Added
+
+- Method for get accessible name of element.
+
+## [4.37.0] - 2024-09-30
+
+### Fixed
+
+- Click outside utility was considering all clicks inside of shadow root as clicks outside.
+
+## [4.36.3] - 2024-09-26
+
+### Changed
+
+- Internal apis extending.
+
+## [4.36.2] - 2024-09-27
+
+### Fixed
+
+- Moving focus in an iframe didn't remove visible focus from elements in the focus-locked container.
+
+## [4.36.1] - 2024-09-25
+
+### Fixed
+
+- Attribute `suppressHydrationWarning` was not appling to components.
 
 ## [4.36.0] - 2024-09-12
 

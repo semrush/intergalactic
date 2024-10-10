@@ -6,7 +6,7 @@ import ShowYesM from 'intergalactic/icon/ShowYes/m';
 import ShowNoM from 'intergalactic/icon/ShowNo/m';
 import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
+import { ButtonLink } from 'intergalactic/button';
 import { Hint } from 'intergalactic/tooltip';
 
 const Demo = () => {
@@ -29,25 +29,27 @@ const Demo = () => {
           />
           {value && (
             <Input.Addon pl={2} pr={1}>
-              <Hint tag={CloseM} interactive title='Clear' onClick={() => setValue('')} />
+              <Hint
+                tag={ButtonLink}
+                addonLeft={CloseM}
+                use='secondary'
+                title='Clear'
+                onClick={() => setValue('')}
+              />
             </Input.Addon>
           )}
           <Input.Addon px={2}>
             <Link>Forgot?</Link>
           </Input.Addon>
-          <Hint
-            title={type === 'password' ? 'Show password' : 'Hide password'}
-            aria-label={undefined}
-          >
-            <Input.Addon
-              aria-label={type === 'password' ? 'Show password' : 'Hide password'}
-              mr='-1px'
-              tag={Button}
+          <Input.Addon>
+            <Hint
+              title={type === 'password' ? 'Show password' : 'Hide password'}
+              tag={ButtonLink}
+              use='secondary'
+              addonLeft={type === 'password' ? ShowYesM : ShowNoM}
               onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
-            >
-              {type === 'password' ? <ShowYesM /> : <ShowNoM />}
-            </Input.Addon>
-          </Hint>
+            />
+          </Input.Addon>
         </Input>
       </Box>
     </>

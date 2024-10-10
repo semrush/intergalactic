@@ -46,7 +46,7 @@ class CalendarWeekDaysRoot extends Component {
       date = date.add(1, 'day');
       return {
         children: short,
-        abbr: long,
+        'aria-label': long,
       };
     });
   }
@@ -68,9 +68,9 @@ class CalendarWeekDaysRoot extends Component {
   }
 }
 
-function CalendarWeekUnit({ styles, abbr }) {
+function CalendarWeekUnit({ styles }) {
   const SWeekDay = Root;
-  return sstyled(styles)(<SWeekDay abbr={abbr} render={Box} />);
+  return sstyled(styles)(<SWeekDay render={Box} role='columnheader' />);
 }
 
 function resolveHighlighting(date, unit, highlighted) {
@@ -135,6 +135,7 @@ class CalendarAbstract extends Component {
       date: formatDDMMYY(date, locale),
       dateKey: this.formatter(date, locale),
       children: '',
+      role: 'gridcell',
       startSelected: selecting.startSelected,
       endSelected: selecting.endSelected,
       selected: selecting.selected,
@@ -147,6 +148,10 @@ class CalendarAbstract extends Component {
       compareEndHighlighted: comparedHighlighting.endHighlighted,
       compareStart: comparing.startSelected,
       compareEnd: comparing.endSelected,
+
+      'aria-selected': selecting.selected,
+      'aria-disabled': disabled,
+      'aria-current': highlighting.highlighted ? 'date' : undefined,
 
       disabled,
       today: date.isSame(self.today, unit),
@@ -190,13 +195,23 @@ class CalendarAbstract extends Component {
     fire(this, 'onHighlightedChange', highlighted.length ? [highlighted[0]] : []);
   };
 
-  getUnitProps({ dateKey }) {
+  getUnitProps({ dateKey }, index) {
+    const inRow = 7;
     const { unitRefs } = this.asProps;
     return {
+      'aria-colindex': (index % inRow) + 1,
+      'aria-rowindex': Math.floor(index / inRow) + 1,
       ref: (node) => {
         if (!dateKey) return;
         unitRefs[dateKey] = node;
       },
+    };
+  }
+
+  getRootProps() {
+    return {
+      role: 'grid',
+      tabIndex: 0,
     };
   }
 
@@ -243,16 +258,15 @@ class CalendarAbstract extends Component {
   }
 }
 
-function CalendarUnit({ styles, date, outdated, disabled }) {
+function CalendarUnit({ styles, date, long, outdated, disabled, highlighted }) {
   const SCalendarUnit = Root;
   return sstyled(styles)(
     <SCalendarUnit
       use:disabled={disabled || outdated || !date}
       render={Box}
-      tag='button'
-      type='button'
       aria-hidden={!date}
-      aria-label={date}
+      aria-label={long || date}
+      use:tabIndex={highlighted ? 0 : -1}
     />,
   );
 }
@@ -283,23 +297,23 @@ class CalendarDaysRoot extends CalendarAbstract {
       : date.get('d');
 
     let prevMonthDays = dateStartOfWeek
-      ? range(prevDate.daysInMonth(), () => {
-          const day = this.createUnit({ date: prevDate, outdated: true }, 'date');
+      ? range(prevDate.daysInMonth(), (i) => {
+          const day = this.createUnit({ date: prevDate, outdated: true, i }, 'date');
           day.children = String(prevDate.get('date'));
           prevDate = prevDate.add(1, 'day');
           return day;
         }).slice(-dateStartOfWeek)
       : [];
 
-    const monthDays = range(date.daysInMonth(), () => {
-      const day = this.createUnit({ date }, 'date');
+    const monthDays = range(date.daysInMonth(), (i) => {
+      const day = this.createUnit({ date, i }, 'date');
       day.children = String(date.get('date'));
       date = date.add(1, 'day');
       return day;
     });
 
-    let nextMonthDays = range(42 - prevMonthDays.length - monthDays.length, () => {
-      const day = this.createUnit({ date: nextDate, outdated: true }, 'date');
+    let nextMonthDays = range(42 - prevMonthDays.length - monthDays.length, (i) => {
+      const day = this.createUnit({ date: nextDate, outdated: true, i }, 'date');
       day.children = String(nextDate.get('date'));
       nextDate = nextDate.add(1, 'day');
       return day;
@@ -329,13 +343,15 @@ class CalendarDaysRoot extends CalendarAbstract {
     const description = this.describeValue();
 
     return sstyled(styles)(
-      <SCalendar render={Box}>
-        <CalendarWeekDays locale={locale} />
-        <SGridDays onMouseLeave={this.handleMouseLeave}>
+      <SCalendar render={Box} {...this.getRootProps()}>
+        <CalendarWeekDays locale={locale} role='row' />
+        <SGridDays onMouseLeave={this.handleMouseLeave} role='row'>
           <Children />
         </SGridDays>
-        <ScreenReaderOnly>
-          <span aria-live='polite'>{description}</span>
+        <ScreenReaderOnly role='row'>
+          <span aria-live='polite' role='gridcell'>
+            {description}
+          </span>
         </ScreenReaderOnly>
       </SCalendar>,
     );
@@ -357,7 +373,9 @@ class CalendarMonthsRoot extends CalendarAbstract {
     return range(12, () => {
       const month = this.createUnit({ date }, 'month');
       month.children = new Intl.DateTimeFormat(locale, { month: 'short' }).format(date.valueOf());
-      month.abbr = new Intl.DateTimeFormat(locale, { month: 'long' }).format(date.valueOf());
+      month.long = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
+        date.valueOf(),
+      );
       date = date.add(1, 'month');
       return month;
     });
@@ -378,12 +396,14 @@ class CalendarMonthsRoot extends CalendarAbstract {
     const description = this.describeValue();
 
     return sstyled(styles)(
-      <SCalendar render={Box}>
-        <SGridMonths onMouseLeave={this.handleMouseLeave}>
+      <SCalendar render={Box} {...this.getRootProps()}>
+        <SGridMonths onMouseLeave={this.handleMouseLeave} role='row'>
           <Children />
         </SGridMonths>
-        <ScreenReaderOnly>
-          <span aria-live='polite'>{description}</span>
+        <ScreenReaderOnly role='row'>
+          <span aria-live='polite' role='gridcell'>
+            {description}
+          </span>
         </ScreenReaderOnly>
       </SCalendar>,
     );

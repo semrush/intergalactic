@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.0] - 2024-09-24
+
+### Changed
+
+- `aria-haspopup` set to `dialog` if select has some additional buttons in popover.
+- Refactored to `AbstractDropdown` and `Dropdown.Item`.
+
+## [4.46.1] - 2024-09-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.44.0 ~> 4.44.1], `@semcore/checkbox` [7.36.0 ~> 7.36.1], `@semcore/divider` [4.32.0 ~> 4.32.1], `@semcore/dropdown-menu` [4.39.0 ~> 4.39.1], `@semcore/popper` [5.40.0 ~> 5.40.1], `@semcore/flex-box` [5.33.0 ~> 5.33.1], `@semcore/icon` [4.45.0 ~> 4.46.0], `@semcore/input` [4.34.0 ~> 4.34.1], `@semcore/utils` [4.36.0 ~> 4.36.2], `@semcore/core` [2.31.0 ~> 2.31.1]).
+
 ## [4.46.0] - 2024-09-20
 
 ### Changed

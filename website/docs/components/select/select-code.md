@@ -5,10 +5,10 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ---
 
 ::: tip
-If you need to customize the dropdown menu's behavior, please refer to the [intergalactic/popper](/utils/popper/popper) documentation.
+If you need more customization for the dropdown menu, refer to [intergalactic/popper](/utils/popper/popper).
 :::
 
-The Select component serves as a wrapper over [intergalactic/dropdown-menu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
+The Select component serves as a wrapper over [DropdownMenu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
 
 ## Basic usage
 
@@ -22,6 +22,18 @@ In the simplest case, you can implement the select by passing an array of option
 
 <script lang="tsx">
   export Demo from './examples/basic_usage.tsx';
+</script>
+
+:::
+
+## Custom selected label
+
+In the `label` in `option` item, you could set custom display value for selected option.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/custom_selected_label.tsx';
 </script>
 
 :::
@@ -50,7 +62,7 @@ When you need to customize the trigger, you can pass the desired component to th
 
 :::
 
-In cases when you require deeper customization, you can "unfold" the component into its constituents. The example below shows how to create a Select component for selecting a list of countries.
+In cases when you require deeper customization, you can "unfold" the component into its constituents. The following example shows how to create a Select component for selecting a list of countries.
 
 ::: sandbox
 
@@ -73,7 +85,7 @@ These components serve as wrappers over the corresponding components of the [Dro
 - `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/scroll-area) inside.
 - `Select.Menu` is a wrapper over `Select.Popper` and `Select.List`, and all props are passed to `Select.List`.
 
-The example below shows how to insert a [Notice](/components/notice/notice) in the Select dropdown window.
+This example shows how to insert a [Notice](/components/notice/notice) in the Select dropdown window.
 
 ::: sandbox
 
@@ -87,10 +99,10 @@ The example below shows how to insert a [Notice](/components/notice/notice) in t
 
 The component offers several variants of options layout:
 
-- `Select.Option`: an element of the list (can be selected from the keyboard).
-- `Select.OptionCheckbox`: an element of the list for multiple selections (can be selected from the keyboard).
-- `Select.OptionTitle`: a title of the list (cannot be selected from the keyboard).
-- `Select.OptionHint`: a subtitle of the list or a message with additional information (cannot be selected from the keyboard).
+- `Select.Option`: an element of the list (can be selected)
+- `Select.Option.Checkbox`: a checkbox for an option in a multiselect
+- `Select.Option.Hint`: a subtitle for an option
+- `Select.Group`: a group of options, with a `title` (required) and `subTitle` (optional)
 
 ::: sandbox
 
@@ -102,14 +114,28 @@ The component offers several variants of options layout:
 
 ## Options filtering
 
-The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/input) component with clear button.
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/input) component with a `Search` icon and a **Clear** button.
 
-The example below shows one of the ways to implement filtering.
+This example shows one of the ways to implement filtering.
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/options_filtering.tsx';
+</script>
+
+:::
+
+## Advanced filtering control
+
+To get more control over the parts of `InputSearch` component, you can use the children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
+
+In this example the **Clear** button handler is disabled.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/advanced_filtering_control.tsx';
 </script>
 
 :::
@@ -123,25 +149,12 @@ The example below shows one of the ways to implement filtering.
 </script>
 
 :::
-## Advanced filtering control
-
-To get more control over the parts of `InputSearch` component, you can use children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
-
-In the example below clear button handler is disabled.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/advanced_filtering_control.tsx';
-</script>
-
-:::
 
 ## Multiselect
 
 The component has the ability to select several options. This functionality can be enabled by using the `multiselect` property.
 
-The layout of options inside the component will be changed to `Select.OptionCheckbox`, and the `value` will become an array.
+The internal layout of options will change to include `Select.Option.Checkbox`, and the `value` will become an array.
 
 ::: sandbox
 
@@ -153,7 +166,7 @@ The layout of options inside the component will be changed to `Select.OptionChec
 
 ## Sorting multiselect options
 
-The example below shows one of the ways to sort the selected options.
+This example shows one of the ways to sort the selected options.
 
 ::: sandbox
 
@@ -167,7 +180,7 @@ The example below shows one of the ways to sort the selected options.
 
 As with many of our components, you can access the logic of the component by passing a render-function to it.
 
-The example below shows how to implement "Select all" and "Deselect all" buttons using this function.
+This example shows how to implement "Select all" and "Deselect all" buttons using this function.
 
 ::: sandbox
 

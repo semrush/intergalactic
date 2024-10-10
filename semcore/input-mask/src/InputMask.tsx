@@ -80,6 +80,11 @@ export type InputMaskValueProps = InputValueProps & {
    * Overrids width of the input field
    */
   inputW?: string | number;
+
+  /**
+   * Aria role for input
+   */
+  inputRole?: string;
 };
 
 type InputMaskCtx = {
@@ -333,6 +338,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
       forwardRef,
       uid,
       inputW,
+      inputRole,
       ...otherProps
     } = this.asProps;
 
@@ -345,6 +351,7 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
     const [controlProps, boxProps] = getInputProps(
       otherProps,
       includeInputProps as Array<keyof typeof otherProps>,
+      true,
     );
     const ref = forkRef(this.inputRef, forwardRef!);
 
@@ -384,8 +391,9 @@ class Value extends Component<InputMaskValueProps, {}, {}, typeof Value.enhance>
                   wMin={this.state.maskWidth}
                   aria-describedby={`hint-${uid}`}
                   {...controlProps}
+                  role={inputRole}
                   onKeyDown={callAllEventHandlers(this.onKeyDown, controlProps.onKeyDown)}
-                  __excludeProps={['placeholder']}
+                  __excludeProps={['placeholder', 'title']}
                 />
                 <Children />
               </SInputMask>

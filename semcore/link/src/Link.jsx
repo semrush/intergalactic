@@ -100,7 +100,7 @@ class RootLink extends Component {
         ref={this.containerRef}
         __excludeProps={['disabled', 'aria-disabled']}
       >
-        {hasChildren ? this.renderChildren() : this.renderOnlyAddons()}
+        {hasChildren !== undefined ? this.renderChildren() : this.renderOnlyAddons()}
       </SLink>,
     );
   }

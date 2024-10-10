@@ -2,14 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.53.1] - 2024-10-08
+## [3.54.1] - 2024-10-08
 
 ### Fixed
 
 - Keyboard control in NVDA form mode for Legend checkbox items.
 - Each checkbox in the Legend rendered as 3 elements for NVDA.
 
-## [3.53.0] - 2024-10-08
+## [3.54.0] - 2024-10-08
 
 ### Added
 
@@ -18,6 +18,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Types for enhances.
+
+## [3.53.0] - 2024-10-04
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.33.1 ~> 2.34.0], `@semcore/utils` [4.36.2 ~> 4.38.0], `@semcore/core` [2.31.1 ~> 2.32.0]).
+
+## [3.52.1] - 2024-09-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.33.0 ~> 2.33.1], `@semcore/utils` [4.36.0 ~> 4.36.2], `@semcore/core` [2.31.0 ~> 2.31.1]).
 
 ## [3.52.0] - 2024-09-20
 

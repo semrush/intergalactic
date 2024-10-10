@@ -1,5 +1,5 @@
 SButton {
-  display: inline-block;
+  display: inline-flex;
   font-family: inherit;
   font-size: var(--intergalactic-fs-200, 14px);
   color: var(--intergalactic-text-link, #006dca);
@@ -80,11 +80,18 @@ SButton[use='secondary'] {
   }
 }
 
+SInner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
 SAddon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
   vertical-align: middle;
 }
 

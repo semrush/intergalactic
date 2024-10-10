@@ -29,7 +29,7 @@ test.describe('Input', () => {
     const inputLocator = await page.locator('input');
     await expect(await inputLocator.inputValue()).toBe('Hello world');
     await page.keyboard.press('Tab');
-    const clearButtonLocator = await page.locator('[data-name="Close"]');
+    const clearButtonLocator = await page.locator('[aria-label="Clear"]');
     await expect(clearButtonLocator).toBeFocused();
     await page.keyboard.down('Enter');
 

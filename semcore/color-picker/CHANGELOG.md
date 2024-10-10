@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.40.1] - 2024-10-08
+## [2.40.3] - 2024-10-08
 
 ### Fixed
 
 - Types for enhances.
+
+## [2.40.2] - 2024-10-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.37.1 ~> 5.37.2], `@semcore/dropdown` [4.37.1 ~> 4.38.0], `@semcore/utils` [4.36.2 ~> 4.38.0]).
+
+## [2.40.1] - 2024-09-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.37.0 ~> 5.37.1], `@semcore/icon` [4.45.0 ~> 4.46.0], `@semcore/utils` [4.36.0 ~> 4.36.2]).
 
 ## [2.40.0] - 2024-09-20
 
