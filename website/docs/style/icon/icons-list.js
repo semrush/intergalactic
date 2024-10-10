@@ -1246,6 +1246,12 @@ const iconsList = {
       tags: ['question', 'mark', 'вопрос', 'знак', '?'],
     },
     {
+      name: 'Recent',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: ['recent', 'clock', 'arrow', 'time', 'недавние', 'часы', 'стрелка', 'время'],
+    },
+    {
       name: 'Sitemap',
       size: ['l', 'm'],
       group: 'Status',
