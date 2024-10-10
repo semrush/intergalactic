@@ -191,18 +191,17 @@ export namespace Intergalactic {
           } & {
             [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
           }
+        : F['length'] extends 4
+        ? {
+            [K in keyof ReturnType<F[0]>]: ReturnType<F[0]>[K];
+          } & {
+            [K in keyof ReturnType<F[1]>]: ReturnType<F[1]>[K];
+          } & {
+            [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
+          } & {
+            [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
+          }
         : {};
-    // & {
-    //   [K in keyof ReturnType<F[2]>]: ReturnType<F[2]>[K];
-    // } & {
-    //   [K in keyof ReturnType<F[3]>]: ReturnType<F[3]>[K];
-    // } & {
-    //   [K in keyof ReturnType<F[4]>]: ReturnType<F[4]>[K];
-    // } & {
-    //   [K in keyof ReturnType<F[5]>]: ReturnType<F[5]>[K];
-    // } & {
-    //   [K in keyof ReturnType<F[6]>]: ReturnType<F[6]>[K];
-    // };
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
       MergeProps<
         Tag extends React.FC
