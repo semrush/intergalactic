@@ -37,7 +37,6 @@ function Icon(props, ref) {
     'use:color': color,
     interactive: interactive,
     keyboardFocused: keyboardFocused,
-    noPointerEvents: !interactive,
   });
 
   function onKeyDown(event) {
