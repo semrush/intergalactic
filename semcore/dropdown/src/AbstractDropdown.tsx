@@ -20,24 +20,15 @@ type AbstractDDProps = {
   timeout?: number | [number, number];
 };
 
-export const enhance = {
-  uid: uniqueIDEnhancement(),
-  getI18nText: i18nEnhance(localizedMessages),
-  focusSourceRef: focusSourceEnhance(),
-};
-
-type Enhances<T extends { [key: string]: (...args: any) => any }> = {
-  [K in keyof T]: ReturnType<T[K]>[K];
-};
+export const enhance = [
+  uniqueIDEnhancement(),
+  i18nEnhance(localizedMessages),
+  focusSourceEnhance(),
+];
 
 export const selectedIndexContext = React.createContext(0);
 
-export abstract class AbstractDropdown extends Component<
-  AbstractDDProps,
-  {},
-  {},
-  Enhances<typeof enhance>
-> {
+export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}, typeof enhance> {
   protected abstract role: 'menu' | 'listbox';
 
   popperRef = React.createRef<HTMLElement>();
