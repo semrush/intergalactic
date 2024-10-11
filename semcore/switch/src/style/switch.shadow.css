@@ -126,6 +126,7 @@ SSlider {
   &[checked] {
     transform: translateX(50%) scaleX(1);
   }
+  pointer-events: none;
 }
 
 SToggle[active] SSlider {
