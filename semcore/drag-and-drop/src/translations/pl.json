@@ -1,11 +1,12 @@
 {
-  "grabbed": "Chwycono element {itemText}, bieżąca pozycja to {itemPosition} z {itemsCount}",
-  "grabbing": "Chwytanie elementu {itemText}, pozycja upuszczenia to {itemPosition} z {itemsCount}",
-  "dropped": "Upuszczono element {itemText}, ostateczna pozycja to {itemPosition} z {itemsCount}",
-  "grabbedWithZone": "Chwycono element {itemText}, bieżąca pozycja to {itemPosition} z {itemsCount} w strefie {zoneName}",
+  "describe": "Naciśnij {control}, aby chwycić element do przeciągnięcia i upuszczenia",
+  "grabbed": "Chwycono element {itemText}. Bieżąca pozycja: {itemPosition} z {itemsCount}. Użyj strzałek, aby zmienić pozycję, klawisza spacji, aby zastosować nową pozycję, lub klawisza Escape, aby anulować.",
+  "grabbing": "Nowa pozycja: {itemPosition} z {itemsCount}",
+  "dropped": "Zastosowano pozycję {itemPosition}",
+  "grabbedWithZone": "Chwycono element {itemText}, bieżąca pozycja: {itemPosition} z {itemsCount} w strefie {zoneName}",
   "grabbingFullWithZone": "Chwytanie elementu {itemText}, pozycja upuszczenia to {itemPosition} z {itemsCount} w strefie {zoneName}",
   "grabbingJustWithZone": "Chwytanie elementu {itemText}, upuszczenie w strefie {zoneName}",
   "droppedFullWithZone": "Upuszczono element {itemText}, ostateczna pozycja to {itemPosition} z {itemsCount} w strefie {zoneName}",
   "droppedJustWithZone": "Upuszczono element {itemText} w strefie {zoneName}",
-  "discarded": "Przeciąganie zostało odrzucone"
+  "discarded": "Anulowano przeciąganie i upuszczanie"
 }

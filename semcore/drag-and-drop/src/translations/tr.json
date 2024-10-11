@@ -1,11 +1,12 @@
 {
-  "grabbed": "{itemText} alındı, mevcut konum {itemPosition}/{itemsCount}",
-  "grabbing": "{itemText} alınıyor, bırakma konumu {itemPosition}/{itemsCount}",
-  "dropped": "{itemText} bırakıldı, son konum {itemPosition}/{itemsCount}",
-  "grabbedWithZone": "{itemText} alındı, mevcut konum {zoneName} içinde {itemPosition}/{itemsCount}",
+  "describe": "Sürükleyip bırakmak üzere öğeyi yakalamak için {control} tuşuna basın",
+  "grabbed": "{itemText} Yakalandı. Geçerli konum: {itemPosition} out of {itemsCount}. Pozisyonu değiştirmek için okları, yeni pozisyonu uygulamak için Space tuşunu, iptal etmek için Escape tuşunu kullanın.",
+  "grabbing": "Yeni pozisyon: {itemPosition} {itemsCount} dışında",
+  "dropped": "Pozisyon {itemPosition} uygulandı",
+  "grabbedWithZone": "{itemText} yakalandı, geçerli konum: {itemPosition} {itemsCount} dışında {zoneName} içinde",
   "grabbingFullWithZone": "{itemText} alınıyor, bırakma konumu {zoneName} içinde {itemPosition}/{itemsCount}",
   "grabbingJustWithZone": "{itemText} alınıyor, {zoneName} içine bırakın",
   "droppedFullWithZone": "{itemText} bırakıldı, son konum {zoneName} içinde {itemPosition}/{itemsCount}",
   "droppedJustWithZone": "{itemText} {zoneName} içine bırakıldı",
-  "discarded": "Sürükleme iptal edildi"
+  "discarded": "Sürükle ve bırak iptal edildi"
 }

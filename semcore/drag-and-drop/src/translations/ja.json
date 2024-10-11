@@ -1,11 +1,12 @@
 {
-  "grabbed": "{itemText}が選択されており、現在位置は{itemsCount}の{itemPosition}です",
-  "grabbing": "{itemText}が選択されており、ドロップ位置は{itemsCount}の{itemPosition}です",
-  "dropped": "{itemText}がドロップされ、最終位置は{itemsCount}の{itemPosition}になりました",
-  "grabbedWithZone": "{itemText} を入手しました。現在の位置は{zoneName} の{itemsCount} の{itemPosition} です。",
+  "describe": "{control}を押すと、要素を選択してドラッグ＆ドロップできます",
+  "grabbed": "{itemText}が選択されました。現在の位置：{itemPosition}/{itemsCount}。位置を変更するには矢印キーを使用し、新しい位置を適用するにはスペースバーを使用し、取り消すにはEscapeキーを使用します。",
+  "grabbing": "新しい位置：{itemPosition}/{itemsCount}",
+  "dropped": "{itemPosition}番目の位置が適用されました",
+  "grabbedWithZone": "{itemText}が選択されました。現在の位置：{zoneName}の{itemPosition}/{itemsCount}",
   "grabbingFullWithZone": "{itemText} を入手し、ドロップ位置は{zoneName} の{itemsCount} の{itemPosition} です",
   "grabbingJustWithZone": "{itemText} を入手し、{zoneName} にドロップします",
   "droppedFullWithZone": "{itemText} を入手しました。最終位置は{zoneName} の{itemsCount} の{itemPosition} です",
   "droppedJustWithZone": "{itemText} が {zoneName} にドロップしました",
-  "discarded": "ドラッグは破棄されました"
+  "discarded": "ドラッグ＆ドロップが取り消されました"
 }

@@ -33,9 +33,16 @@ describe('DragAndDrop', () => {
     const currentTab = 'overview';
 
     const component = (
-      <DnD tag={TabPanel} value={currentTab} onDnD={() => {}}>
+      <DnD tag={TabPanel} value={currentTab} onDnD={() => {}} aria-label={'dnd group'}>
         {tabs.map((tab) => (
-          <DnD.Draggable placement='bottom' tag={TabPanel.Item} value={tab} key={tab} pb={0}>
+          <DnD.Draggable
+            placement='bottom'
+            tag={TabPanel.Item}
+            value={tab}
+            key={tab}
+            pb={0}
+            aria-label={(titles as any)[tab]}
+          >
             {(icons as any)[tab] ?? null}
             <TabPanel.Item.Text>{(titles as any)[tab]}</TabPanel.Item.Text>
           </DnD.Draggable>

@@ -1,11 +1,12 @@
 {
-  "grabbed": "Đã chọn {itemText}, vị trí hiện tại là {itemPosition} thuộc {itemsCount}",
-  "grabbing": "Chọn {itemText}, vị trí thả là {itemPosition} thuộc {itemsCount}",
-  "dropped": "Đã thả {itemText}, vị trí cuối cùng là {itemPosition} thuộc {itemsCount}",
-  "grabbedWithZone": "Đã chọn {itemText}, vị trí hiện tại là {itemPosition} thuộc {itemsCount} trong {zoneName}",
+  "describe": "Nhấn {control} để chọn thành phần để kéo và thả",
+  "grabbed": "{itemText} đã được chọn. Vị trí hiện tại: {itemPosition} trên tổng số {itemsCount}. Sử dụng các nút mũi tên để thay đổi vị trí, nút Space để áp dụng vị trí mới, nút Escape để hủy.",
+  "grabbing": "Vị trí mới: {itemPosition} trên tổng số {itemsCount}",
+  "dropped": "Vị trí {itemPosition} đã được áp dụng",
+  "grabbedWithZone": "{itemText} đã được chọn, vị trí hiện tại: {itemPosition} trên tổng số {itemsCount} trong {zoneName}",
   "grabbingFullWithZone": "Chọn {itemText}, vị trí thả là {itemPosition} thuộc {itemsCount} trong {zoneName}",
   "grabbingJustWithZone": "Chọn {itemText}, thả vào {zoneName}",
   "droppedFullWithZone": "Đã thả {itemText}, vị trí cuối cùng là {itemPosition} thuộc {itemsCount} trong {zoneName}",
   "droppedJustWithZone": "Đã thả {itemText} vào {zoneName}",
-  "discarded": "Thao tác kéo đã bị loại bỏ"
+  "discarded": "Đã hủy kéo và thả"
 }

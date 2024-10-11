@@ -1,11 +1,12 @@
 {
-  "grabbed": "Item capturado: {itemText}. Posição atual: {itemPosition} de {itemsCount}.",
-  "grabbing": "Capturando item: {itemText}. Posição para soltar: {itemPosition} de {itemsCount}.",
-  "dropped": "Item solto: {itemText}. Posição final: {itemPosition} de {itemsCount}.",
-  "grabbedWithZone": "{itemText} capturado, a posição atual é {itemPosition} de {itemsCount} em {zoneName}",
+  "describe": "Pressione {control} para capturar o elemento para arrastar e soltar",
+  "grabbed": "{itemText} capturado. Posição atual: {itemPosition} de {itemsCount}. Use as setas para alterar a posição, Espaço para aplicar a nova posição e Escape para cancelar.",
+  "grabbing": "Nova posição: {itemPosition} de {itemsCount}",
+  "dropped": "Posição {itemPosition} aplicada",
+  "grabbedWithZone": "{itemText} capturado, posição atual: {itemPosition} de {itemsCount} em {zoneName}",
   "grabbingFullWithZone": "Capturando {itemText}, a posição para soltar é {itemPosition} de {itemsCount} em {zoneName}",
   "grabbingJustWithZone": "Capturando {itemText}, soltar em {zoneName}",
   "droppedFullWithZone": "{itemText} solto, a posição final é {itemPosition} de {itemsCount} em {zoneName}",
   "droppedJustWithZone": "{itemText} solto em {zoneName}",
-  "discarded": "A ação de arrastar foi descartada"
+  "discarded": "Arrastar e soltar cancelado"
 }
