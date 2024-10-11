@@ -7,7 +7,7 @@ docs: true
 
 Here, you can find quick links related to our table and its specific use cases.
 
-For the details about the main component for tables, refer to [Datatable](/table-group/data-table/data-table).
+For the details about the main component for tables, refer to [DataTable](/table-group/data-table/data-table).
 
 ## Table types
 

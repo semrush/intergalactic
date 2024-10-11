@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Improve accessibility for component.
 
+## [3.42.2] - 2024-10-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [5.41.1 ~> 5.41.2], `@semcore/utils` [4.36.2 ~> 4.38.0], `@semcore/core` [2.31.1 ~> 2.32.0]).
+
 ## [3.42.1] - 2024-09-27
 
 ### Changed

@@ -11,7 +11,7 @@ const Demo = () => {
     >
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' sortable />
+        <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>

@@ -93,6 +93,8 @@ class Body extends Component<AsProps, {}, State> {
           e.stopPropagation();
         }
       } else if (e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
         this.lockedCell[1] = true;
         focusableChildren[0]?.focus();
       }
