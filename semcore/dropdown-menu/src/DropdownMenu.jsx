@@ -353,6 +353,11 @@ function ItemContent({ styles }) {
   );
 }
 
+function ItemContentText({ styles }) {
+  const SItemContentText = Root;
+  return sstyled(styles)(<SItemContentText />);
+}
+
 function ItemHint({ styles }) {
   const SItemHint = Root;
   const { hintId } = React.useContext(menuItemContext);
@@ -408,7 +413,7 @@ const DropdownMenu = createComponent(
     List,
     Actions,
     Menu,
-    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint }],
+    Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
     /**
      * @deprecated. Use just Item. See examples on
      */
