@@ -2,7 +2,7 @@ import React from 'react';
 import DropdownMenu from 'intergalactic/dropdown-menu';
 import Button from 'intergalactic/button';
 import Tooltip from 'intergalactic/tooltip';
-import WarningIconM from 'intergalactic/icon/Warning/m';
+import DesktopIconM from 'intergalactic/icon/Desktop/m';
 
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(DropdownMenu.selectedIndexContext);
@@ -27,7 +27,7 @@ const Demo = () => {
             <DropdownMenu.Item tag={Tooltip.Trigger}>
               <DropdownMenu.Item.Content>
                 <DropdownMenu.Item.Addon>
-                  <WarningIconM />
+                  <DesktopIconM />
                 </DropdownMenu.Item.Addon>
                 <DropdownMenu.Item.Text>Item 3</DropdownMenu.Item.Text>
               </DropdownMenu.Item.Content>
