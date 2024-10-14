@@ -982,6 +982,9 @@ importers:
       '@semcore/scroll-area':
         specifier: 5.39.0
         version: link:../scroll-area
+      '@semcore/typography':
+        specifier: 5.44.0
+        version: link:../typography
       '@semcore/utils':
         specifier: 4.39.0
         version: link:../utils
