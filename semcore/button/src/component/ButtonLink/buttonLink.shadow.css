@@ -93,6 +93,7 @@ SAddon {
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  pointer-events: none;
 }
 
 SButton SAddon {

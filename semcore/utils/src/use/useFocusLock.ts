@@ -97,6 +97,7 @@ const getUniqueId = (prefix: string) =>
  *
  * Version update `1 -> 2`. Fixed call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target)
  * Version update `2 -> 3`. Fixed React version isolation in nested hooks (`useFocusBorders`, `useUniqueId`).
+ * Version update `3 -> 4`. Fixed lock for correct working with iframes in modal
  *
  * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
  * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
@@ -109,7 +110,7 @@ const getUniqueId = (prefix: string) =>
  * If new update requires to remove some hooks – add mocks instead of them.
  * If new update requires to add some hooks and no workaround with current hooks list is possible – probably focus lock hook key should be changed.
  */
-const focusLockVersion = 3;
+const focusLockVersion = 4;
 const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
 
 const focusLockAllTraps = new Set<HTMLElement>();

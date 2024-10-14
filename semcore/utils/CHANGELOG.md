@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.39.0] - 2024-10-08
+## [4.40.0] - 2024-10-15
 
 ### Added
 
 - Internal type for transform enhances types to the `asProps` type.
+
+## [4.39.0] - 2024-10-11
+
+### Fixed
+
+- Update focusLock version.
 
 ## [4.38.0] - 2024-09-20
 
