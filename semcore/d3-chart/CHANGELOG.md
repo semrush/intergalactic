@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.55.2] - 2024-10-15
+
+### Fixed
+
+- Handle onClick on ChartLegend items.
+- `onChangeVisibleItem` handler on ChartLegend component.
+
 ## [3.55.1] - 2024-10-15
 
 ### Fixed

@@ -1,4 +1,4 @@
-import React, { DOMAttributes } from 'react';
+import React, { DOMAttributes, HTMLProps } from 'react';
 import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -37,7 +37,7 @@ class LegendItemRoot extends Component<
   });
 
   getShapeProps() {
-    const { checked, color, shape, label, id, size, onChange, resolveColor, patterns } =
+    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
       this.asProps;
 
     return {
@@ -49,16 +49,8 @@ class LegendItemRoot extends Component<
       patternKey: color,
       patterns,
       size,
-      onChange: () => {
-        if (shape !== 'Checkbox') {
-          return false;
-        }
-      },
-      onClick: (e: React.SyntheticEvent<HTMLInputElement>) => {
-        if (shape === 'Checkbox') {
-          e.stopPropagation();
-          return false;
-        }
+      onChange: (value: boolean) => {
+        onChangeLegendItem(id, value);
       },
       'aria-labelledby': id,
     };
@@ -73,11 +65,14 @@ class LegendItemRoot extends Component<
     };
   }
 
-  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps {
-    const { color, ...props } = this.asProps;
+  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
+    const { id, checked, color, onChangeLegendItem, ...props } = this.asProps;
 
     return {
       ...props,
+      id,
+      checked,
+      onClick: () => onChangeLegendItem(id, !checked),
       children: props.label,
     };
   }
@@ -134,7 +129,6 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     children: hasChildren,
     patterns,
     onChange,
-    onClick,
   } = props;
 
   if (hasChildren) {
@@ -157,7 +151,6 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           checked={checked}
           theme={checked ? color : undefined}
           onChange={onChange}
-          onClick={onClick}
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>
