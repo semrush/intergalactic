@@ -72,7 +72,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 
 :::
 
-## DropdownMenu customization
+## Menu customization
 
 Similar to [intergalactic/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
 
