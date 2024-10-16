@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.0] - 2024-10-16
+
+### Changed
+
+- Disable input field if total number of pages is one.
+
 ## [4.43.3] - 2024-10-11
 
 ### Changed
