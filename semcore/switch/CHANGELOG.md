@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.35.2] - 2024-10-16
+
+### Fixed
+
+- Animations in some popovers (for example in dropdown menu items).
+
 ## [5.35.1] - 2024-10-11
 
 ### Fixed
