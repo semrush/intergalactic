@@ -9,6 +9,7 @@ import DropdownMenu from '../src';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 import { Box } from '@semcore/flex-box';
 import { ButtonTrigger } from '@semcore/base-trigger';
+import DesktopIconM from '@semcore/icon/Desktop/m';
 
 describe('DropdownMenu', () => {
   beforeEach(cleanup);
@@ -102,9 +103,14 @@ describe('DropdownMenu', () => {
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>
-            <DropdownMenu.Item.Addon>Addon</DropdownMenu.Item.Addon>
-            <DropdownMenu.Item.Addon mr={2}>One more addon</DropdownMenu.Item.Addon>
-            Text
+            <DropdownMenu.Item.Content>
+              <DropdownMenu.Item.Addon>Addon</DropdownMenu.Item.Addon>
+              <DropdownMenu.Item.Addon>One more addon</DropdownMenu.Item.Addon>
+              <DropdownMenu.Item.Addon>
+                <DesktopIconM />
+              </DropdownMenu.Item.Addon>
+              <DropdownMenu.Item.Text>Text</DropdownMenu.Item.Text>
+            </DropdownMenu.Item.Content>
           </DropdownMenu.Item>
         </DropdownMenu.List>
       </DropdownMenu>

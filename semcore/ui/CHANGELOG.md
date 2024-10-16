@@ -1,3 +1,29 @@
+## [15.111.0] - 2024-10-11
+
+### @semcore/base-trigger
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/button
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/icon
+
+- **Added** New `Recent` icon.
+
+### @semcore/link
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/switch
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/utils
+
+- **Fixed** Update focusLock version.
+
 ## [15.110.0] - 2024-10-04
 
 ### @semcore/button

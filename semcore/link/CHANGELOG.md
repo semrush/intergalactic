@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.38.3] - 2024-10-11
+
+### Fixed
+
+- Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
 ## [5.38.2] - 2024-10-01
 
 ### Fixed

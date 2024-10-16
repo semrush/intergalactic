@@ -99,10 +99,10 @@ SDropdownMenuItemContainer[nesting-trigger] {
   justify-content: space-between;
 }
 
-SDropdownMenuItemAddon {
+SDropdownMenuItemAddon, SItemContentText {
   display: inline-flex;
-  margin-left: var(--intergalactic-spacing-2x, 8px);
-  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 
   &:first-child {
     margin-left: 0;
