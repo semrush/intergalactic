@@ -24,7 +24,7 @@ export const enhance = [
   uniqueIDEnhancement(),
   i18nEnhance(localizedMessages),
   focusSourceEnhance(),
-];
+] as const;
 
 export const selectedIndexContext = React.createContext(0);
 

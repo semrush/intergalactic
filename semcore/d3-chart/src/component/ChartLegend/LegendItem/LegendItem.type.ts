@@ -54,11 +54,17 @@ export type LegendItemProps = LegendItem & {
   /**
    * Handler for select/deselect legend item.
    * !Need to redefine onClick, because we don't have `event` in it.
+   * @deprecated
    */
-  onClick: () => void;
+  onClick?: () => void;
 
   /** Enables patterns symbols that enhances charts accessibility */
   patterns?: PatternsConfig;
+
+  /**
+   * Handler for select/deselect legend item
+   */
+  onChangeLegendItem: (id: LegendItemKey, checked: boolean) => void;
 };
 
 export type ShapeProps = LegendItem &
