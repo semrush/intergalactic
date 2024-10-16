@@ -32,18 +32,12 @@ class Switch extends Component {
     this.forceUpdate = this.forceUpdate.bind(this);
   }
 
-  componentWillUnmount() {
-    if (!canUseDOM()) return;
-    window.removeEventListener('mouseup', this.handleMouseUp);
-  }
   handleMouseUp = () => {
     this.setState({ active: false });
-    window.removeEventListener('mouseup', this.handleMouseUp);
   };
   handleMouseDown = (event) => {
     if (event?.button !== 0) return;
     this.setState({ active: true });
-    window.addEventListener('mouseup', this.handleMouseUp);
   };
 
   getValueProps() {
@@ -71,7 +65,13 @@ class Switch extends Component {
     const checked = this.inputRef.current?.checked;
 
     return sstyled(styles)(
-      <SSwitch render={Box} tag='label' checked={checked} onMouseDown={this.handleMouseDown}>
+      <SSwitch
+        render={Box}
+        tag='label'
+        checked={checked}
+        onMouseDown={this.handleMouseDown}
+        onMouseUp={this.handleMouseUp}
+      >
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
