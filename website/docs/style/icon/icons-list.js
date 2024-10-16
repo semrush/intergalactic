@@ -820,6 +820,18 @@ const iconsList = {
       tags: ['simplify', 'minimize', 'уменьшить', 'упростить', 'упрощать', 'размер', 'size'],
     },
     {
+      name: 'Tack',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['pin', 'tack', 'add', 'favorite', 'закрепить', 'избранное'],
+    },
+    {
+      name: 'TackNo',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['unpin', 'untack', 'favorite', 'remove', 'открепить', 'избранное'],
+    },
+    {
       name: 'TagFilled',
       size: ['l', 'm'],
       group: 'Action',
