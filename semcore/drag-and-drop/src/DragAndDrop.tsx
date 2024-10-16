@@ -182,14 +182,15 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (!onDnD) return;
 
     const { items, dragging, dragOver } = this.state;
-    if (!dragging || dragOver === null) return;
-    const currentItem = items[dragOver];
+    if (!dragging) return;
+    const currentItem = dragOver !== null ? items[dragOver] : items[dragging.index];
     const draggingItem = items[dragging.index];
 
     if (!currentItem || !draggingItem) return;
 
     const node = currentItem.isDropZone ? draggingItem.node : currentItem.node;
-    const itemText = node.getAttribute('aria-label') || node.textContent || `${dragOver + 1}`;
+    const itemText =
+      node.getAttribute('aria-label') || node.textContent || `${(dragOver ?? dragging.index) + 1}`;
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
@@ -223,9 +224,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       if (fromNode) {
         onDnD({
           fromId: fromNode.id,
-          fromIndex: dragging!.index,
+          fromIndex: dragging.index,
           toId: currentItem.id,
-          toIndex: dragOver,
+          toIndex: dragOver ?? dragging.index,
         });
       }
     }
