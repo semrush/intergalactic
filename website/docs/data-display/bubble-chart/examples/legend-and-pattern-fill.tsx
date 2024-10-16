@@ -37,7 +37,12 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <ChartLegend dataHints={dataHints} items={legendItems} patterns />
+      <ChartLegend
+        dataHints={dataHints}
+        items={legendItems}
+        patterns
+        aria-label={'Legend for the bubble chart'}
+      />
       <Plot
         data={data}
         scale={[xScale, yScale]}

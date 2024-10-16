@@ -1,4 +1,4 @@
-import React, { DOMAttributes } from 'react';
+import React, { DOMAttributes, HTMLProps } from 'react';
 import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -36,8 +36,8 @@ class LegendItemRoot extends Component<
     ),
   });
 
-  getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
-    const { checked, color, shape, label, id, size, onClick, resolveColor, patterns } =
+  getShapeProps() {
+    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
       this.asProps;
 
     return {
@@ -49,11 +49,10 @@ class LegendItemRoot extends Component<
       patternKey: color,
       patterns,
       size,
-      onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
-        if (onClick && e.key === ' ') {
-          onClick();
-        }
+      onChange: (value: boolean) => {
+        onChangeLegendItem(id, value);
       },
+      'aria-labelledby': id,
     };
   }
 
@@ -66,11 +65,14 @@ class LegendItemRoot extends Component<
     };
   }
 
-  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps {
-    const { color, ...props } = this.asProps;
+  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
+    const { id, checked, color, onChangeLegendItem, ...props } = this.asProps;
 
     return {
       ...props,
+      id,
+      checked,
+      onClick: () => onChangeLegendItem(id, !checked),
       children: props.label,
     };
   }
@@ -125,9 +127,8 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     patternKey = getChartDefaultColorName(0),
     Children,
     children: hasChildren,
-    onKeyUp,
-    label,
     patterns,
+    onChange,
   } = props;
 
   if (hasChildren) {
@@ -149,8 +150,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           size={size}
           checked={checked}
           theme={checked ? color : undefined}
-          onKeyUp={onKeyUp}
-          aria-label={label}
+          onChange={onChange}
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>

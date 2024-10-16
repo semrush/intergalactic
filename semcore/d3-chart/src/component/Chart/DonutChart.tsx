@@ -7,8 +7,14 @@ import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
 import { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
 import { Flex } from '@semcore/flex-box';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps> {
+class DonutChartComponent extends AbstractChart<
+  DonutChartData,
+  DonutChartProps,
+  typeof DonutChartComponent.enhance
+> {
   static displayName = 'Chart.Donut';
   static defaultProps: Partial<DonutChartProps> = {
     direction: 'row-reverse',
@@ -17,6 +23,8 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
     marginX: 0,
     marginY: 0,
   };
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   get xScale() {
     const { xScale } = this.asProps;
@@ -95,6 +103,10 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
         }}
       </Donut.Tooltip>
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Donut' });
   }
 }
 

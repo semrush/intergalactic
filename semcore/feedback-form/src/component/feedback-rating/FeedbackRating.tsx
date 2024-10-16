@@ -4,7 +4,6 @@ import { Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Notice from '@semcore/notice';
 import CheckM from '@semcore/icon/Check/m';
@@ -25,20 +24,20 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import style from '../../style/feedback-rating.shadow.css';
 
-type Enhances = {
-  getI18nText: ReturnType<typeof useI18n>;
-  uid: ReturnType<typeof uniqueIDEnhancement>;
-};
-
 type State = {
   error: boolean;
 };
 
-class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhances> {
+class FeedbackRatingRoot extends Component<
+  FeedbackRatingProps,
+  {},
+  State,
+  typeof FeedbackRatingRoot.enhance
+> {
   static displayName = 'FeedbackRatingForm';
   static style = style;
 
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
   static defaultProps = {
     onSubmit: () => {},

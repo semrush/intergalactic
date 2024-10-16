@@ -10,9 +10,17 @@ import { BarProps } from '../../types';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
+class BarChartComponent extends AbstractChart<
+  BarChartData,
+  BarChartProps,
+  typeof BarChartComponent.enhance
+> {
   static displayName = 'Chart.Bar';
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   get xScale() {
     const { xScale, invertAxis } = this.asProps;
@@ -195,6 +203,10 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
         }}
       </HoverRect.Tooltip>
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Bar' });
   }
 
   private handleClickBar = (

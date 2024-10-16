@@ -77,6 +77,7 @@ const Demo = () => {
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
           patterns
+          aria-label={'Legend for the stacked horizontal bar chart'}
         />
         <Plot
           data={data}

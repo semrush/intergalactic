@@ -18,16 +18,13 @@ type RootAsProps = {
 
 type State = { focus: boolean };
 
-const enhance = {
-  getI18nText: i18nEnhance(localizedMessages),
-  uid: uniqueIdEnhance(),
-};
+const enhance = [i18nEnhance(localizedMessages), uniqueIdEnhance()] as const;
 
 class PaletteManagerRoot extends Component<RootAsProps, {}, State, typeof enhance> {
   static displayName = 'PaletteManager';
 
   static style = style;
-  static enhance = Object.values(enhance);
+  static enhance = enhance;
 
   static defaultProps = {
     defaultColors: [],

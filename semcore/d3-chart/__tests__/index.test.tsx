@@ -2799,6 +2799,7 @@ describe('Focus skip to content after plot', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
 
     expect(getByTestId('focusableElement-1')).toHaveFocus();
@@ -2850,6 +2851,7 @@ describe('Focus skip to content after plot', () => {
 
     const { getByTestId } = render(<PlotComponent />);
 
+    await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');

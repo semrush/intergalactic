@@ -9,6 +9,7 @@ const Demo = () => {
       data={data}
       plotWidth={500}
       plotHeight={450}
+      aria-label={'CompactHorizontalBar chart'}
     />
   );
 };

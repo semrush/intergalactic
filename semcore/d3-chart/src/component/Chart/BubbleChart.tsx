@@ -7,9 +7,17 @@ import { AbstractChart } from './AbstractChart';
 import { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChart.type';
 import { Text } from '@semcore/typography';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartProps> {
+class BubbleChartComponent extends AbstractChart<
+  BubbleChartData,
+  BubbleChartProps,
+  typeof BubbleChartComponent.enhance
+> {
   static displayName = 'Chart.Bubble';
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   protected get dataKeys(): string[] {
     const { data } = this.props;
@@ -110,6 +118,10 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
         }}
       </Bubble.Tooltip>
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Bubble' });
   }
 }
 

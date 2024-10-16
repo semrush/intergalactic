@@ -4,7 +4,7 @@ import { LegendItem, LegendItemType } from '../LegendItem/LegendItem.type';
 import React from 'react';
 import { LegendProps, LSize } from '../BaseLegend.type';
 
-export type LegendTableProps = Omit<LegendProps, 'items'> & {
+export type LegendTableProps = Intergalactic.InternalTypings.EfficientOmit<LegendProps, 'items'> & {
   /**
    * Legend items
    */

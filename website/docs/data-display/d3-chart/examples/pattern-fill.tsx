@@ -13,6 +13,7 @@ const Demo = () => {
       curve={curveCardinal}
       patterns
       showXAxis={false}
+      aria-label={'Area chart'}
     />
   );
 };

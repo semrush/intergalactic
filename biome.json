@@ -26,7 +26,8 @@
       "./tools/entry-point/**/*.js",
       "./tools/entry-point/**/*.mjs",
       "./tools/entry-point/**/*.d.ts",
-      "./tools/intg-release-migrator/tools/*.js"
+      "./tools/intg-release-migrator/tools/*.js",
+      "./tools/playground/examples/**"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
