@@ -17,6 +17,8 @@ import { interpolateValue, scaleToBand } from '../../utils';
 
 import Cigarette from '../Cigarette/Cigarette';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 const wMin = 2;
 
@@ -43,7 +45,11 @@ class CigaretteChartComponent extends AbstractChart<
     };
   };
 
-  static enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
+  static enhance = [
+    resolveColorEnhance(),
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+  ] as const;
 
   protected override plotPadding = 0;
 
