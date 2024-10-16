@@ -23,33 +23,3 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 </script>
 
 :::
-
-## TabPanel with drag & drop
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/with_tabpanel.tsx'; 
-</script>
-
-:::
-
-## Secondary DataTable with drag & drop
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/with_secondary_table.tsx'; 
-</script>
-
-:::
-
-## Primary DataTable with drag & drop
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/with_primary_table.tsx'; 
-</script>
-
-:::
