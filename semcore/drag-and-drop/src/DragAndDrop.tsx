@@ -351,6 +351,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         }
       }
 
+      if (event.target instanceof HTMLElement) {
+        event.target.focus();
+      }
+
       return false;
     } else if (event.key.startsWith('Arrow') && this.state.dragging) {
       if (this.state.animatedScaling !== null) {
