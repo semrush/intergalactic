@@ -17,6 +17,7 @@
     "@semcore/scroll-area": "5.39.0",
     "@semcore/utils": "4.39.0",
     "@semcore/icon": "4.48.0",
+    "@semcore/typography": "5.44.0",
     "classnames": "2.2.6"
   },
   "peerDependencies": {

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2024-10-15
+
+### Added
+
+- New `DropdownMenu.Item.Text` for wrapping text if used with addons.
+
 ## [4.41.0] - 2024-10-11
 
 ### Changed

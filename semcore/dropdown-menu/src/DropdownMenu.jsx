@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import createComponent, { sstyled, Root } from '@semcore/core';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
-import { Flex, useBox, Box } from '@semcore/flex-box';
+import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { useUID } from '@semcore/utils/lib/uniqueID';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -12,6 +12,7 @@ import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { forkRef } from '@semcore/utils/lib/ref';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonComponent from '@semcore/button';
+import { Text } from '@semcore/typography';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -347,10 +348,15 @@ function ItemContent({ styles }) {
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
-      alignItems={menuItemCtxValue.hasSubMenu ? 'center' : undefined}
+      alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
     />,
   );
+}
+
+function ItemContentText({ styles }) {
+  const SItemContentText = Root;
+  return sstyled(styles)(<SItemContentText render={Text} />);
 }
 
 function ItemHint({ styles }) {
@@ -408,7 +414,7 @@ const DropdownMenu = createComponent(
     List,
     Actions,
     Menu,
-    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint }],
+    Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
     /**
      * @deprecated. Use just Item. See examples on
      */

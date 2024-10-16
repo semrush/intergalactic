@@ -7,6 +7,7 @@ import Dropdown, {
 } from '@semcore/dropdown';
 import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import { ScrollAreaProps } from '@semcore/scroll-area';
+import { Text } from '@semcore/typography';
 
 export type DropdownMenuSize = 'm' | 'l';
 
@@ -155,6 +156,7 @@ declare const DropdownMenu: Intergalactic.Component<
   > & {
     Addon: typeof Box;
     Content: typeof Flex;
+    Text: typeof Text;
     Hint: typeof Flex;
   };
   /**
