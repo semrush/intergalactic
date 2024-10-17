@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- New `ShopifyColored`, `WooCommerceColored`, `MetaColored`, `InstagramColored`, `WhatConvertsColored`, `CallTrackingMetricsColored`, `GoogleDisplayVideoAds`, `PipedriveColored`, `CampaignMonitorColored`, `ConstantContactColored`,`Yext`, `BirdeyeColored` icons.
+- New `ShopifyColored`, `WooCommerceColored`, `MetaColored`, `WhatConvertsColored`, `CallTrackingMetricsColored`, `GoogleDisplayVideoAds`, `PipedriveColored`, `CampaignMonitorColored`, `ConstantContactColored`,`Yext`, `BirdeyeColored` icons.
 
 ## [4.49.0] - 2024-10-15
 
