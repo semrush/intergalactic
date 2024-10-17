@@ -10,7 +10,6 @@ import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import pick from '@semcore/utils/lib/pick';
-import { b } from 'vitest/dist/reporters-QGe8gs4b';
 
 type AsProps = {
   maxLine?: number;
@@ -98,13 +97,14 @@ const createMeasurerElement = (element: HTMLDivElement) => {
   temporaryElement.style.position = 'absolute';
   temporaryElement.style.right = '0%';
   temporaryElement.style.bottom = '0%';
-  temporaryElement.style.width = styleElement.getPropertyValue('width');
-  temporaryElement.style.height = styleElement.getPropertyValue('height');
   temporaryElement.style.visibility = 'hidden';
   temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
   temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
   temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
   temporaryElement.style.lineHeight = styleElement.getPropertyValue('line-height');
+  temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
+  temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
+
   temporaryElement.style.fontFeatureSettings =
     styleElement.getPropertyValue('font-feature-settings');
   temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
@@ -122,8 +122,10 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean
 
   document.body.appendChild(measuringElement);
   if (multiline) {
+    measuringElement.style.width = `${currentWidth}px`;
+
     const width = measuringElement.scrollWidth;
-    const height = measuringElement.scrollHeight;
+    const height = measuringElement.getBoundingClientRect().height;
 
     if (Math.ceil(currentHeight) < height || Math.ceil(currentWidth) < width) {
       isOverflowing = true;
