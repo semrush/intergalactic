@@ -4485,6 +4485,7 @@ const iconsList = {
     //     'social',
     //     'logo',
     //     'facebook',
+    //     'meta',
     //     'фейсбук',
     //     'инстаграм',
     //     'photo',
