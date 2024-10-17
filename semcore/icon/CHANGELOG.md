@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.50.0] - 2024-10-17
+
+### Added
+
+- New `ShopifyColored`, `WooCommerceColored`, `MetaColored`, `InstagramColored`, `WhatConvertsColored`, `CallTrackingMetricsColored`, `GoogleDisplayVideoAds`, `PipedriveColored`, `CampaignMonitorColored`, `ConstantContactColored`,`Yext`, `BirdeyeColored` icons.
+
 ## [4.49.0] - 2024-10-15
 
 ### Added
