@@ -11,10 +11,9 @@ import {
   getNullData,
   definedNullData,
   interpolateValue,
-  getChartDefaultColorName,
 } from './utils';
-import { PatternFill, resolvePatternDasharray } from './Pattern';
 import AnimatedClipPath from './AnimatedClipPath';
+import { PatternFill } from './Pattern';
 
 import style from './style/area.shadow.css';
 
@@ -110,8 +109,6 @@ class AreaRoot extends Component {
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');
 
-    const patternKey = color || getChartDefaultColorName(0);
-
     return sstyled(styles)(
       <>
         {!advancedMode && (
@@ -122,7 +119,6 @@ class AreaRoot extends Component {
             color={resolveColor(color)}
             use:duration={`${duration}ms`}
             transparent={transparent}
-            strokeDasharray={patterns ? resolvePatternDasharray(patternKey, patterns) : undefined}
           />
         )}
         <SArea
