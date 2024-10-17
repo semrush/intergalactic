@@ -226,6 +226,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           const lightness = color.hsl.l;
           const difference = 100 - lightness;
           color.set('hsl.l', Math.min(100, lightness + difference * modification.value));
+          rawValues[token] = `${rawValues[token]} / lighten(${modification.value}) / hsl`;
         } else {
           throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
         }

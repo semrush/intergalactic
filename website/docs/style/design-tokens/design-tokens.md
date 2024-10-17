@@ -4,7 +4,7 @@ fileSource: utils
 tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code'), Changelog('design-tokens-changelog')
 ---
 
-::: tip
+::: info
 Design tokens are available for use from **intergalactic@13.5.0** version.
 :::
 
@@ -18,6 +18,10 @@ Intergalactic Design System has:
 - set of semantic tokens which are applied across all components and even the chart library.
 
 These sets form the default theme of the design system.
+
+::: tip
+For the complete JSON with all the token sets, refer to the [GitHub repository](https://github.com/semrush/intergalactic/tree/master/semcore/utils/theme).
+:::
 
 ## Stylelint plugin
 
