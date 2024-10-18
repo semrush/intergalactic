@@ -494,7 +494,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if ((key === 'dropped' || key === 'discarded') && canUseDOM()) {
       this.clearA11yHintTimeout = window.setTimeout(() => {
         this.setState({ a11yHint: null });
-      }, 4000);
+      }, 2000);
     }
   };
 
