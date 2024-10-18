@@ -76,6 +76,7 @@ const Demo = () => {
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
           patterns
+          aria-label={'Legend for the line chart'}
         />
         <Plot
           data={data}

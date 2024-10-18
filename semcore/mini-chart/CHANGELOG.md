@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version minor update due to children dependencies update (`@semcore/flex-box` [5.34.0 ~> 5.35.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
 
+## [0.21.1] - 2024-10-08
+
+### Fixed
+
+- Types for enhances.
+
 ## [0.21.0] - 2024-10-04
 
 ### Changed

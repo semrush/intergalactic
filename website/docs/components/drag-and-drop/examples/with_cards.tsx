@@ -38,6 +38,7 @@ const Widget: React.FC<{ title: string }> = ({ title }) => {
           data={data}
           plotWidth={200}
           plotHeight={200}
+          aria-label={'Bar chart'}
         />
       </Card.Body>
     </Card>

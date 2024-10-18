@@ -44,7 +44,7 @@ const legendItems = [
 const Demo = () => {
   return (
     <>
-      <ChartLegend items={legendItems} patterns />
+      <ChartLegend items={legendItems} patterns aria-label={'Legend for the venn chart'} />
       <Plot height={300} width={400} data={data} patterns>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />

@@ -28,7 +28,12 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend items={legendItems} shape={'Checkbox'} patterns />
+      <ChartLegend
+        items={legendItems}
+        shape={'Checkbox'}
+        patterns
+        aria-label={'Legend for the scatterplot chart'}
+      />
       <Plot scale={[xScale, yScale]} width={width} height={height} data={data} patterns={true}>
         <YAxis>
           <YAxis.Ticks />

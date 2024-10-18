@@ -5,15 +5,14 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 
 import style from './line.shadow.css';
 import {
-  Enhances,
   ScoreLineComponent,
   ScoreLineGaugeProps,
   SegmentProps,
   InnerSegmentProps,
 } from './Line.types';
 
-class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
-  static enhance = [resolveColorEnhance()];
+class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
+  static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 
   static style = style;
