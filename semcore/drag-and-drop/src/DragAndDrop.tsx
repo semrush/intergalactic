@@ -72,6 +72,8 @@ type State = {
   reversedScaling: boolean;
 };
 
+type A11yHintKeys = keyof typeof localizedMessages.en;
+
 class DragAndDropRoot extends Component<AsProps, {}, State> {
   static displayName = 'DragAndDrop';
   static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()];
@@ -94,6 +96,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   };
 
   containerRef = React.createRef<HTMLDivElement>();
+  clearA11yHintTimeout = 0;
 
   handleItemDragStart = (index: number) => {
     const { items } = this.state;
@@ -103,7 +106,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const itemText =
       currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
 
-    const { getI18nText } = this.asProps;
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
@@ -111,7 +113,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
     );
 
-    const a11yHint = getI18nText(zoneName ? 'grabbedWithZone' : 'grabbed', {
+    this.setA11yHint(zoneName ? 'grabbedWithZone' : 'grabbed', {
       itemText,
       itemPosition: itemPosition + 1,
       itemsCount,
@@ -119,7 +121,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     });
 
     this.setState((prevState: State) => ({
-      a11yHint: a11yHint,
       dragging: {
         index,
         initialItemsRects: prevState.items.map((item) => item?.node.getBoundingClientRect()),
@@ -137,7 +138,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   };
   handleItemDragOver = (event: DragEvent) => {
     event.preventDefault();
-    const { getI18nText } = this.asProps;
     const { items, dragging, dragOver } = this.state;
     if (!dragging) return;
     const itemIndex = dragging.initialItemsRects.findIndex(
@@ -168,17 +168,17 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       ? 'grabbingJustWithZone'
       : 'grabbingFullWithZone';
 
-    const a11yHint = getI18nText(i18nKey, {
+    this.setA11yHint(i18nKey, {
       itemText,
       itemPosition: itemPosition + 1,
       itemsCount,
       zoneName: zoneName || '',
     });
 
-    this.setState({ dragOver: itemIndex, a11yHint }, this.swapElements);
+    this.setState({ dragOver: itemIndex }, this.swapElements);
   };
   handleItemDrop = () => {
-    const { onDnD, getI18nText } = this.asProps;
+    const { onDnD } = this.asProps;
     if (!onDnD) return;
 
     const { items, dragging, dragOver } = this.state;
@@ -204,7 +204,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       ? 'droppedJustWithZone'
       : 'droppedFullWithZone';
 
-    const a11yHint = getI18nText(i18nKey, {
+    this.setA11yHint(i18nKey, {
       itemText,
       itemPosition: itemPosition + 1,
       itemsCount,
@@ -212,7 +212,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     });
 
     this.setState({
-      a11yHint,
       dragging: null,
       dragOver: null,
       keyboardDraggingIndex: null,
@@ -334,10 +333,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     } else if (event.key === 'Escape' && this.state.dragging) {
       event.preventDefault();
       event.stopPropagation();
-      const { getI18nText } = this.asProps;
-      const a11yHint = getI18nText('discarded');
+
+      this.setA11yHint('discarded');
       this.setState({
-        a11yHint,
         dragging: null,
         dragOver: null,
         keyboardDraggingIndex: null,
@@ -395,20 +393,13 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         if (nextIndex === -1) return false;
 
         if (node && this.state.dragging !== null) {
-          const { getI18nText } = this.asProps;
-          const a11yHint = getI18nText('grabbing', {
+          this.setA11yHint('grabbing', {
             itemPosition: nextIndex + 1,
             itemsCount: this.state.items.length,
           });
-          this.setState(
-            {
-              a11yHint,
-              dragOver: nextIndex,
-            },
-            () => {
-              this.swapElements();
-            },
-          );
+          this.setState({ dragOver: nextIndex }, () => {
+            this.swapElements();
+          });
         }
         return false;
       });
@@ -490,11 +481,28 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     return itemIndex;
   };
 
+  setA11yHint = (key: A11yHintKeys, options: any = {}) => {
+    clearTimeout(this.clearA11yHintTimeout);
+
+    const { getI18nText } = this.asProps;
+
+    this.setState({
+      a11yHint: getI18nText(key, options),
+    });
+
+    if (key === 'dropped' || key === 'discarded') {
+      this.clearA11yHintTimeout = setTimeout(() => {
+        this.setState({ a11yHint: null });
+      }, 4000);
+    }
+  };
+
   componentDidMount() {
     document.addEventListener('keydown', this.handlePageKeyDown, { capture: true });
   }
 
   componentWillUnmount() {
+    clearTimeout(this.clearA11yHintTimeout);
     document.removeEventListener('keydown', this.handlePageKeyDown, { capture: true });
   }
 
