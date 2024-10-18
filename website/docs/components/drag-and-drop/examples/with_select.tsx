@@ -64,7 +64,11 @@ const Demo = () => {
       <Select.Menu hMax={800}>
         {({ highlightedIndex }) => {
           return (
-            <DnD onDnD={handleDnD} customFocus={highlightedIndex}>
+            <DnD
+              onDnD={handleDnD}
+              customFocus={highlightedIndex}
+              aria-label={'drag-and-drop container'}
+            >
               <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
                 <Text bold>Show table columns</Text>
                 <Link tag='button' size={200} onClick={resetToDefault}>
@@ -81,6 +85,7 @@ const Demo = () => {
                   selected={selectedColumns.includes(column.id)}
                   value={column.id}
                   key={column.id}
+                  aria-label={column.label}
                 >
                   <Select.Option.Checkbox />
                   {column.label}

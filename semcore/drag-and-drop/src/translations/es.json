@@ -1,11 +1,12 @@
 {
-  "grabbed": "Ítem {itemText} capturado, la posición actual es {itemPosition} de {itemsCount}",
-  "grabbing": "Ítem {itemText} capturado, la posición para soltar es {itemPosition} de {itemsCount}",
-  "dropped": "Ítem {itemText} soltado, la posición final es {itemPosition} de {itemsCount}",
-  "grabbedWithZone": "{itemText} capturado, la posición actual es {itemPosition} de {itemsCount} en {zoneName}",
+  "describe": "Pulsa {control} para seleccionar el elemento y arrastrarlo",
+  "grabbed": "El elemento {itemText} está seleccionado. Posición actual: {itemPosition} de {itemsCount}. Utiliza las flechas para cambiar la posición, la tecla espacio para aplicar la nueva posición, y la tecla escape para cancelar.",
+  "grabbing": "Nueva posición: {itemPosition} de {itemsCount}",
+  "dropped": "Posición {itemPosition} aplicada",
+  "grabbedWithZone": "El elemento {itemText} se ha seleccionado. La posición actual es {itemPosition} de {itemsCount} en {zoneName}",
   "grabbingFullWithZone": "Capturando {itemText}, la posición para soltar es {itemPosition} de {itemsCount} en {zoneName}",
   "grabbingJustWithZone": "Capturando {itemText}, soltar en {zoneName}",
   "droppedFullWithZone": "{itemText} soltado, la posición final es {itemPosition} de {itemsCount} en {zoneName}",
   "droppedJustWithZone": "{itemText} soltado en {zoneName}",
-  "discarded": "Se descartó el arrastre"
+  "discarded": "Arrastrar y soltar cancelado"
 }
