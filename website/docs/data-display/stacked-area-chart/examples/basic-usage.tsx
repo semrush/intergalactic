@@ -29,6 +29,7 @@ const Demo = () => {
       axisXValueFormatter={formatDate('axis')}
       stacked={true}
       curve={curveCardinal}
+      aria-label={'Stacked area chart'}
     />
   );
 };

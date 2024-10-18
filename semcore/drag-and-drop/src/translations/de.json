@@ -1,11 +1,12 @@
 {
-  "grabbed": "{itemText} erfasst, aktuelle Position ist {itemPosition} von {itemsCount}",
-  "grabbing": "Erfasse {itemText}, Ablageposition ist {itemPosition} von {itemsCount}",
-  "dropped": "{itemText} abgelegt, finale Position ist {itemPosition} von {itemsCount}",
-  "grabbedWithZone": "{itemText} erfasst, aktuelle Position ist {itemPosition} von {itemsCount} in {zoneName}",
+  "describe": "Drücken Sie {control} , um das Element für Drag-and-Drop zu greifen",
+  "grabbed": "{itemText} gegriffen. Aktuelle Position: {itemPosition} von {itemsCount}. Verwenden Sie die Pfeile, um die Position zu ändern, die Leertaste, um die neue Position anzuwenden, und Escape, um abzubrechen.",
+  "grabbing": "Neue Position: {itemPosition} von {itemsCount}",
+  "dropped": "Position {itemPosition} angewendet",
+  "grabbedWithZone": "{itemText} gegriffen, aktuelle Position: {itemPosition} von {itemsCount} in {zoneName}",
   "grabbingFullWithZone": "Erfasse {itemText}, Ablageposition ist {itemPosition} von {itemsCount} in {zoneName}",
   "grabbingJustWithZone": "Erfasse {itemText}, Ablegen in {zoneName}",
   "droppedFullWithZone": "{itemText} abgelegt, finale Position ist {itemPosition} von {itemsCount} in {zoneName}",
   "droppedJustWithZone": "{itemText} abgelegt in {zoneName}",
-  "discarded": "Ziehen wurde abgebrochen"
+  "discarded": "Drag-and-Drop abgebrochen"
 }

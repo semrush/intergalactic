@@ -1,11 +1,12 @@
 {
-  "grabbed": "{itemText} vastgepakt, huidige positie is {itemPosition} van {itemsCount}",
-  "grabbing": "{itemText} is vastgepakt, nieuwe positie is {itemPosition} van {itemsCount}",
-  "dropped": "{itemText} losgelaten, eindpositie is {itemPosition} van {itemsCount}",
-  "grabbedWithZone": "{itemText} vastgepakt, huidige positie is {itemPosition} van {itemsCount} in {zoneName}",
+  "describe": "Druk op {control} om het element vast te pakken en te slepen",
+  "grabbed": "{itemText} vastgepakt. Huidige positie: {itemPosition} van {itemsCount}. Gebruik de pijltjes om de positie te veranderen, spatie om de nieuwe positie toe te passen of escape om te annuleren.",
+  "grabbing": "Nieuwe positie: {itemPosition} van {itemsCount}",
+  "dropped": "Positie {itemPosition} toegepast",
+  "grabbedWithZone": "{itemText} vastgepakt, huidige positie: {itemPosition} van {itemsCount} in {zoneName}",
   "grabbingFullWithZone": "{itemText} is vastgepakt, nieuwe positie is {itemPosition} van {itemsCount} in {zoneName}",
   "grabbingJustWithZone": "{itemText} is vastgepakt, nieuwe positie in {zoneName}",
   "droppedFullWithZone": "{itemText} losgelaten, eindpositie is {itemPosition} van {itemsCount} in {zoneName}",
   "droppedJustWithZone": "{itemText} heeft nieuwe positie in {zoneName}",
-  "discarded": "Verslepen genegeerd"
+  "discarded": "Slepen geannuleerd"
 }

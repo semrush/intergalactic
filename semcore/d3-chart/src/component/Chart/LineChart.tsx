@@ -7,9 +7,17 @@ import { Line, minMax, HoverLine } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
+class LineChartComponent extends AbstractChart<
+  LineChartData,
+  LineChartProps,
+  typeof LineChartComponent.enhance
+> {
   static displayName = 'Chart.Line';
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   protected get xScale() {
     const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
@@ -115,6 +123,10 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
         }}
       </HoverLine.Tooltip>
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Line' });
   }
 }
 
