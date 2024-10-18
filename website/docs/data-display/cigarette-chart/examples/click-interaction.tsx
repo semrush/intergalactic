@@ -9,7 +9,15 @@ function Demo() {
     console.log('click', key);
   };
 
-  return <Chart.Cigarette data={data} plotWidth={400} plotHeight={28} onClick={handleClick} />;
+  return (
+    <Chart.Cigarette
+      data={data}
+      plotWidth={400}
+      plotHeight={28}
+      onClick={handleClick}
+      aria-label={'Cigarette chart'}
+    />
+  );
 }
 
 const data: { [key: KEY]: number } = {

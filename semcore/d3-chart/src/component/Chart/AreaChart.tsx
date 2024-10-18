@@ -7,9 +7,17 @@ import { AbstractChart } from './AbstractChart';
 import { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
+class AreaChartComponent extends AbstractChart<
+  AreaChartData,
+  AreaChartProps,
+  typeof AreaChartComponent.enhance
+> {
   static displayName = 'Chart.Area';
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   get xScale() {
     const { xScale, marginY = 40, plotWidth, data, groupKey } = this.asProps;
@@ -134,6 +142,10 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
         }}
       </HoverLine.Tooltip>
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Area' });
   }
 }
 

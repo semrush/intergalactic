@@ -20,7 +20,7 @@ class LegendTableRoot extends BaseLegend<LegendTableProps> {
     const columnsCount = items[0]?.columns.length;
 
     return sstyled(styles)(
-      <SLegendTable render={Box} columns-count={columnsCount + 1}>
+      <SLegendTable render={Box} columns-count={columnsCount + 1} role={'group'}>
         {items.map(({ id, columns = [] }, index) => {
           return (
             <React.Fragment key={id}>

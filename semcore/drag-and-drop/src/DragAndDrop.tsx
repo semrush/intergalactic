@@ -10,6 +10,7 @@ import { DropZoneProps } from './index';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 import uniqueIDEnhance from '@semcore/utils/lib/uniqueID';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 type AsProps = {
   /**
@@ -490,8 +491,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       a11yHint: getI18nText(key, options),
     });
 
-    if (key === 'dropped' || key === 'discarded') {
-      this.clearA11yHintTimeout = setTimeout(() => {
+    if ((key === 'dropped' || key === 'discarded') && canUseDOM()) {
+      this.clearA11yHintTimeout = window.setTimeout(() => {
         this.setState({ a11yHint: null });
       }, 4000);
     }

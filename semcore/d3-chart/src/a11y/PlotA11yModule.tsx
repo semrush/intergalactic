@@ -18,7 +18,7 @@ export type A11yViewProps = {
   locale: NavigatorLanguage['language'];
   config: PartialDataSummarizationConfig;
 
-  plotRef: React.RefObject<Element>;
+  plotRef: React.RefObject<HTMLElement>;
 };
 
 export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {

@@ -14,6 +14,6 @@ import { ChartLegend } from 'intergalactic/d3-chart';
 <ChartLegend />;
 ```
 
-<TypesView type="LegendFlexProps" :types={...types} />
+<TypesView type="LegendProps" :types={...types} />
 
 <script setup>import { data as types } from '@types.data.ts';</script>

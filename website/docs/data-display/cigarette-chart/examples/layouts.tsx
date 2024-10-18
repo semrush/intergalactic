@@ -18,6 +18,7 @@ function Demo() {
         showLegend={true}
         tooltipTitle='Some title for tooltip'
         showTotalInTooltip={true}
+        aria-label={'Cigarette chart'}
       />
 
       <Chart.Cigarette
@@ -31,6 +32,7 @@ function Demo() {
           </Text>
         }
         showLegend={true}
+        aria-label={'Cigarette chart'}
       />
     </Flex>
   );

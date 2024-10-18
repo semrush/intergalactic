@@ -4,7 +4,13 @@ import { Chart } from '@semcore/d3-chart';
 const Demo = () => {
   return (
     <div style={{ width: '500px' }}>
-      <Chart.Venn data={data} plotWidth={300} plotHeight={300} legendProps={legendProps} />
+      <Chart.Venn
+        data={data}
+        plotWidth={300}
+        plotHeight={300}
+        legendProps={legendProps}
+        aria-label={'Venn chart'}
+      />
     </div>
   );
 };
