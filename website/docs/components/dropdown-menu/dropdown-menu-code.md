@@ -66,6 +66,8 @@ The component offers several options for laying out list item types:
 
 - `DropdownMenu.Item`: A list element that can be selected with the keyboard.
 - `DropdownMenu.Item.Content`: The content within an item, used when you need to include a hint or submenu.
+- `DropdownMenu.Item.Addon`: Used to add, for example, icons.
+- `DropdownMenu.Item.Text`: Used for wrapping text if used with addons.
 - `DropdownMenu.Item.Hint`: A subheading or message with additional information (can't be selected with the keyboard).
 
 ::: sandbox

@@ -20,7 +20,3 @@ SIcon[interactive] {
     filter: brightness(0.8);
   }
 }
-
-SIcon[noPointerEvents] {
-  pointer-events: none;
-}

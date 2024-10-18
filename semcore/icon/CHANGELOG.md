@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2024-10-15
+
+### Added
+
+- New `Tack` and `TackNo` icons.
+
+## [4.48.0] - 2024-10-10
+
+### Added
+
+- New `Recent` icon.
+
 ## [4.47.0] - 2024-10-04
 
 ### Changed

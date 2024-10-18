@@ -32,7 +32,7 @@ const App = PlaygroundGeneration(
       <Pagination
         currentPage={currentPage}
         onCurrentPageChange={(value) => onChange('currentPage', value)}
-        totalPages={totalPages}
+        totalPages={Number(totalPages)}
       />
     );
   },

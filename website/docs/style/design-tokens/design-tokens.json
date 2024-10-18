@@ -1525,7 +1525,7 @@
   {
     "name": "--intergalactic-table-td-cell-hover",
     "type": "color",
-    "rawValue": "{gray.100}",
+    "rawValue": "{gray.100} / lighten(0.5) / hsl",
     "computedValue": "#f0f0f4",
     "description": "Background of the default hovered cell in the Table.",
     "components": []
@@ -1533,7 +1533,7 @@
   {
     "name": "--intergalactic-table-td-cell-active",
     "type": "color",
-    "rawValue": "{gray.100}",
+    "rawValue": "{gray.100} / lighten(0.2) / hsl",
     "computedValue": "#e6e7ed",
     "description": "Background of the default active cell in the Table.",
     "components": []
@@ -2283,7 +2283,6 @@
       "data-table",
       "date-picker",
       "dropdown",
-      "dropdown-menu",
       "feature-popover",
       "feedback-form",
       "format-text",

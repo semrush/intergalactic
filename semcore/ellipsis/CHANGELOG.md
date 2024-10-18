@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.36.1] - 2024-10-16
+
+### Added
+
+- `line-height` value to temporary element size calculation.
+
+## [2.36.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [2.35.0] - 2024-10-04
 
 ### Changed
