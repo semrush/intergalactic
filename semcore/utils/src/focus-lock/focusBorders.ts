@@ -6,7 +6,13 @@ export const BEFORE_BORDER_ID = '__intergalactic-focus-border-before';
 export const AFTER_BORDER_ID = '__intergalactic-focus-border-after';
 
 export const addFocusBorders = (element: HTMLElement) => {
-  if (!focusBordersRefs.has(element)) {
+  if (
+    !focusBordersRefs.has(element) &&
+    !(
+      element.previousSibling instanceof HTMLElement &&
+      element.previousSibling.dataset.id === BEFORE_BORDER_ID
+    )
+  ) {
     const before = document.createElement('div');
     const after = document.createElement('div');
 
@@ -23,7 +29,12 @@ export const addFocusBorders = (element: HTMLElement) => {
           event.relatedTarget // prevent initial focus
         ) {
           const focusable = getFocusableIn(element);
-          focusable[focusable.length - 1]?.focus();
+
+          if (event.relatedTarget === focusable[0]) {
+            focusable[focusable.length - 1]?.focus();
+          } else {
+            focusable[0]?.focus();
+          }
         }
       });
     });
@@ -39,12 +50,19 @@ export const addFocusBorders = (element: HTMLElement) => {
           event.relatedTarget // prevent initial focus
         ) {
           const focusable = getFocusableIn(element);
-          focusable[0]?.focus();
+
+          if (event.relatedTarget === focusable[focusable.length - 1]) {
+            focusable[0]?.focus();
+          } else {
+            focusable[focusable.length - 1]?.focus();
+          }
         }
       });
     });
 
-    element.prepend(before);
+    const elementParent = element.parentElement;
+
+    elementParent?.insertBefore(before, element);
     element.append(after);
   }
 };

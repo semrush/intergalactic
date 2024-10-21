@@ -103,13 +103,15 @@ const useFocusLockHook = (
   onFocusOut?: (event: Event) => void,
 ) => {
   React.useEffect(() => {
-    if (trapRef.current) {
-      addFocusBorders(trapRef.current);
+    const trapNode = trapRef.current;
+
+    if (trapNode && !disabled) {
+      addFocusBorders(trapNode);
     }
 
     return () => {
-      if (trapRef.current) {
-        removeFocusBorders(trapRef.current);
+      if (trapNode) {
+        removeFocusBorders(trapNode);
       }
     };
   }, [disabled]);
@@ -141,6 +143,10 @@ const useFocusLockHook = (
           isFocusInside(returnFocusTo.current)
         )
           return;
+
+        if (focusCameFrom && focusMovedTo) {
+          setFocus(trapRef.current, focusCameFrom, focusMovedTo);
+        }
 
         onFocusOut?.(event);
       });
