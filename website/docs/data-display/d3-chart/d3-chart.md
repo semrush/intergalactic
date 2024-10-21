@@ -2,7 +2,7 @@
 title: D3 chart
 fileSource: d3-chart
 docs: true
-tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
+tabs: Design('d3-chart'), A11y('d3-chart-a11y'), API('d3-chart-api'), Example('d3-chart-code'), Changelog('d3-chart-changelog')
 ---
 
 ## Description
@@ -87,15 +87,13 @@ Tooltip padding is always 12px.
 
 ![](static/tooltip-paddings.png) ![](static/tooltip-margins.png)
 
-### Edge cases
-
-#### Not available data
+### Unavailable data
 
 Represent missing data with a dashed line.
 
 ![](static/partially.png)
 
-#### Start of data collecting
+### Start of data collecting
 
 Use a solid line for new data. The tooltip should mention the start of data collection, use `--chart-grid-y-accent-hover-line` token for the text color.
 
@@ -126,32 +124,32 @@ Legend explains chart data and can act as filters. For detailed information, ref
 
 ![](static/heading.png)
 
-In our design system, data is typically placed within a [Card](/components/card/card), which consists of the `Card.Header` and `Card.Body`.
+In our design system, data is typically placed within a [Card](/components/card/card), which consists of `Card.Header` and `Card.Body`.
 
 ### Chart title
 
-Every chart needs a clear title. If the title is far from the chart, ensure clear margins. Make titles clickable and use an `Info` icon for additional details.
+Make sure each chart has a title, and it's clear which chart each title belongs to.
+
+If you're displaying the chart inside a `Card`, use the [Card.Title](../../components/card/card.md#cardheader) component.
 
 ![](static/heading.png)
-
-For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches [link styles](/components/link/link).
 
 ### Chart description
 
 You can add a description text to your chart. Typically, such a text can provide information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to visualized data.
 
-![](static/subtitle.png)
+If you're displaying the chart inside a `Card`, use the [Card.Description](../../components/card/card.md#cardheader) component.
 
-For the description text, use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color.
+![](static/subtitle.png)
 
 ## Initial data loading
 
 During the initial data loading, display the [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
-If the chart has a title, it should be displayed during the initial loading. The user should be aware of what is being loaded, and whether they need to wait for the process to complete.
+If the chart has a title, it should be displayed during the initial loading. The user should be aware of what's being loaded, and whether they need to wait for the process to complete.
 
 ::: tip
-Each chart type has a specific skeleton. Refer to type-specific guides.
+Each chart type has a specific skeleton. Refer to specific chart type guides and [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#skeleton-examples-for-charts).
 :::
 
 ## Edge cases

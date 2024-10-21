@@ -1,11 +1,12 @@
 {
-  "grabbed": "Elemento {itemText} preso, la posizione attuale è {itemPosition} di {itemsCount}",
-  "grabbing": "Stai prendendo l'elemento {itemText}, la posizione di rilascio è {itemPosition} di {itemsCount}",
-  "dropped": "Elemento {itemText} rilasciato, la posizione finale è {itemPosition} di {itemsCount}",
-  "grabbedWithZone": "Elemento {itemText} preso, la posizione attuale è {itemPosition} di {itemsCount} nel {zoneName}",
+  "describe": "Premi {control} per afferrare l'elemento da trascinare e rilasciare",
+  "grabbed": "{itemText} preso. Posizione attuale: {itemPosition} su {itemsCount}. Usa le frecce per cambiare la posizione, Spazio per applicare la nuova posizione, Esc per annullare.",
+  "grabbing": "Nuova posizione: {itemPosition} su {itemsCount}",
+  "dropped": "Posizione {itemPosition} applicata",
+  "grabbedWithZone": "Elemento {itemText} preso, posizione attuale: {itemPosition} su {itemsCount} nel {zoneName}",
   "grabbingFullWithZone": "Stai prendendo l'elemento {itemText}, la posizione di rilascio è {itemPosition} di {itemsCount} nel {zoneName}",
   "grabbingJustWithZone": "Stai prendendo l'elemento {itemText}, deposito in {zoneName}",
   "droppedFullWithZone": "Elemento {itemText} depositato, la posizione finale è {itemPosition} di {itemsCount} nel {zoneName}",
   "droppedJustWithZone": "{itemText} depositato in {zoneName}",
-  "discarded": "Il trascinamento è stato scartato"
+  "discarded": "Trascinamento cancellato"
 }

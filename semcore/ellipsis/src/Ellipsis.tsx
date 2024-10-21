@@ -95,12 +95,16 @@ const createMeasurerElement = (element: HTMLDivElement) => {
   temporaryElement.style.display = 'inline-block';
   temporaryElement.style.padding = '0';
   temporaryElement.style.position = 'absolute';
-  temporaryElement.style.right = '150%';
-  temporaryElement.style.bottom = '150%';
+  temporaryElement.style.right = '0%';
+  temporaryElement.style.bottom = '0%';
   temporaryElement.style.visibility = 'hidden';
   temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
   temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
   temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
+  temporaryElement.style.lineHeight = styleElement.getPropertyValue('line-height');
+  temporaryElement.style.whiteSpace = styleElement.getPropertyValue('white-space');
+  temporaryElement.style.wordWrap = styleElement.getPropertyValue('word-wrap');
+
   temporaryElement.style.fontFeatureSettings =
     styleElement.getPropertyValue('font-feature-settings');
   temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
@@ -114,20 +118,26 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean
 
   const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
   const measuringElement = createMeasurerElement(element);
-  let currentSize;
-  let initialSize;
+  let isOverflowing = false;
+
   document.body.appendChild(measuringElement);
   if (multiline) {
-    currentSize = currentHeight;
     measuringElement.style.width = `${currentWidth}px`;
-    initialSize = measuringElement.getBoundingClientRect().height;
+
+    const width = measuringElement.scrollWidth;
+    const height = measuringElement.getBoundingClientRect().height;
+
+    if (Math.ceil(currentHeight) < height || Math.ceil(currentWidth) < width) {
+      isOverflowing = true;
+    }
   } else {
-    currentSize = currentWidth;
     measuringElement.style.whiteSpace = 'nowrap';
-    initialSize = measuringElement.getBoundingClientRect().width;
+    isOverflowing = currentWidth < measuringElement.scrollWidth;
   }
+
   document.body.removeChild(measuringElement);
-  return currentSize < initialSize;
+
+  return isOverflowing;
 }
 
 const forcedAdvancedMode = { forcedAdvancedMode: true } as any;

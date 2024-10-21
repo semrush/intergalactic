@@ -198,6 +198,7 @@ class PaginationRoot extends Component {
     return {
       min: 1,
       max: totalPages,
+      disabled: totalPages === 1,
       value: dirtyCurrentPage === undefined ? currentPage : dirtyCurrentPage,
       onBlur: this.handlePageValueBlur,
       onChange: this.handlePageValueChange,

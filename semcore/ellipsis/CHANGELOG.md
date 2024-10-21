@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.36.1] - 2024-10-16
+
+### Added
+
+- `line-height` value to temporary element size calculation.
+
 ## [2.36.0] - 2024-10-11
 
 ### Changed

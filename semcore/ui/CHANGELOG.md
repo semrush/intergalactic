@@ -1,3 +1,56 @@
+## [15.112.0] - 2024-10-18
+
+### @semcore/carousel
+
+- **Fixed** Types for enhances.
+
+### @semcore/color-picker
+
+- **Fixed** Types for enhances.
+
+### @semcore/d3-chart
+
+- **Fixed** Handle onClick on ChartLegend items.
+- **Fixed** `onChangeVisibleItem` handler on ChartLegend component.
+- **Fixed** Keyboard control in NVDA form mode for Legend checkbox items.
+- **Fixed** Each checkbox in the Legend rendered as 3 elements for NVDA.
+- **Added** Required `aria-*` attributes for the Legend.
+- **Fixed** Types for enhances.
+
+### @semcore/drag-and-drop
+
+- **Changed** Improve accessibility for component.
+
+### @semcore/dropdown-menu
+
+- **Added** New `DropdownMenu.Item.Text` for wrapping text if used with addons.
+
+### @semcore/ellipsis
+
+- **Added** `line-height` value to temporary element size calculation.
+
+### @semcore/feedback-form
+
+- **Fixed** Types for enhances.
+
+### @semcore/icon
+
+- **Added** New `ShopifyColored`, `WooCommerceColored`, `MetaColored`, `WhatConvertsColored`, `CallTrackingMetricsColored`, `GoogleDisplayVideoAds`, `PipedriveColored`, `CampaignMonitorColored`, `ConstantContactColored`,`Yext`, `BirdeyeColored`, `InstagramColored` icons.
+- **Added** New `Tack` and `TackNo` icons.
+
+### @semcore/pagination
+
+- **Changed** Disable input field if total number of pages is one.
+
+### @semcore/switch
+
+- **Fixed** Animations in some popovers (for example in dropdown menu items).
+
+### @semcore/utils
+
+- **Added** Internal type for transform enhances types to the `asProps` type.
+- **Fixed** Display values for design tokens with modifications.
+
 ## [15.111.0] - 2024-10-11
 
 ### @semcore/base-trigger

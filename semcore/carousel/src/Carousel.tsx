@@ -30,10 +30,7 @@ const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowRight: 'right',
 };
 
-const enhance = {
-  uid: uniqueIDEnhancement(),
-  i18nEnahnce: i18nEnhance(localizedMessages),
-};
+const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
 const isSmallScreen = (index: number) => index === 1;
@@ -42,12 +39,7 @@ class CarouselRoot extends Component<
   CarouselProps,
   CarouselContext,
   CarouselState,
-  typeof enhance & {
-    getI18nText: (
-      messageId: string,
-      variables?: { [key: string]: string | number | undefined },
-    ) => string;
-  }
+  typeof enhance
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -61,7 +53,7 @@ class CarouselRoot extends Component<
   };
 
   static style = style;
-  static enhance = Object.values(enhance);
+  static enhance = enhance;
 
   defaultItemsCount = 0;
   refCarousel = React.createRef<HTMLElement>();

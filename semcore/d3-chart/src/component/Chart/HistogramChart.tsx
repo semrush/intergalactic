@@ -7,9 +7,17 @@ import { AbstractChart } from './AbstractChart';
 import { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class HistogramChartComponent extends AbstractChart<HistogramChartData, HistogramChartProps> {
+class HistogramChartComponent extends AbstractChart<
+  HistogramChartData,
+  HistogramChartProps,
+  typeof HistogramChartComponent.enhance
+> {
   static displayName = 'Chart.Histogram';
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   get xScale() {
     const {
@@ -184,6 +192,10 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
         }}
       </HoverRect.Tooltip>
     );
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Histogram' });
   }
 }
 

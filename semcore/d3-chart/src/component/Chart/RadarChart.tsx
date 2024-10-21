@@ -5,8 +5,16 @@ import { AbstractChart } from './AbstractChart';
 import { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps> {
+class RadarChartComponent extends AbstractChart<
+  RadarChartData,
+  RadarChartProps,
+  typeof RadarChartComponent.enhance
+> {
+  static enhance = [i18nEnhance(localizedMessages)] as const;
+
   protected renderChart(): React.ReactNode {
     const { groupKey, showDots, circle } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
@@ -87,6 +95,10 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
 
   protected get yScale(): ScaleLinear<any, any> {
     return this.asProps.scale ?? scaleLinear().domain(this.domain);
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'Radar' });
   }
 
   private get domain(): [number, number] {

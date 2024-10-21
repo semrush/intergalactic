@@ -1,7 +1,5 @@
 import React from 'react';
 import DnD from 'intergalactic/drag-and-drop';
-import Badge from 'intergalactic/badge';
-import LinkedInM from 'intergalactic/icon/LinkedIn/m';
 import TabPanel from 'intergalactic/tab-panel';
 import Counter from 'intergalactic/counter';
 import Flag from 'intergalactic/flags';
@@ -68,6 +66,7 @@ const Demo = () => {
       value={currentTab}
       onChange={(tab) => setCurrentTab(tab as string)}
       onDnD={handleDnD}
+      aria-label={'drag-and-drop container'}
     >
       {tabs.map((tab) => (
         <DnD.Draggable
@@ -77,6 +76,7 @@ const Demo = () => {
           key={tab}
           pb={0}
           disabled={disabledTabs.includes(tab)}
+          aria-label={`${tab} panel`}
         >
           {renderTab(tab)}
         </DnD.Draggable>

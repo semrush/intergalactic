@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.43.8] - 2024-10-15
+
+### Fixed
+
+- Types for enhances.
+
 ## [3.43.7] - 2024-10-11
 
 ### Changed

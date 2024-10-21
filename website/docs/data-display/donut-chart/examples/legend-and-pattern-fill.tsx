@@ -75,6 +75,7 @@ const Demo = () => {
           onMouseLeaveItem={handleMouseLeave}
           dataHints={dataHints}
           patterns
+          aria-label={'Legend for the donut chart'}
         />
       </Card.Body>
     </Card>

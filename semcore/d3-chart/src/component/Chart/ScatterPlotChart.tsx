@@ -11,8 +11,14 @@ import {
 } from './ScatterPlotChart.type';
 import { Text } from '@semcore/typography';
 import { BaseChartProps, ListData } from './AbstractChart.type';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
-class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, ScatterPlotChartProps> {
+class ScatterPlotChartComponent extends AbstractChart<
+  ScatterPlotChartData,
+  ScatterPlotChartProps,
+  typeof ScatterPlotChartComponent.enhance
+> {
   static displayName = 'Chart.ScatterPlot';
   public static defaultProps: Partial<BaseChartProps<ListData>> = {
     direction: 'column',
@@ -21,6 +27,8 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
     showTooltip: true,
     showLegend: false,
   };
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   protected get dataKeys(): string[] {
     const { data, groupKey, valueKey } = this.props;
@@ -121,6 +129,10 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
           </ScatterPlot.Tooltip>
         );
       });
+  }
+
+  protected getLegendAriaLabel(): string {
+    return this.asProps.getI18nText('legendForChart', { chartType: 'ScatterPlot' });
   }
 }
 

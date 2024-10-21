@@ -6,13 +6,11 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import style from './style/counter.shadow.css';
 import { CounterProps } from './index';
 
-const enhance = {
-  resolveColor: resolveColorEnhance(),
-};
+const enhance = [resolveColorEnhance()] as const;
 
 class Counter extends Component<CounterProps, {}, {}, typeof enhance> {
   static displayName = 'Counter';
-  static enhance = Object.values(enhance);
+  static enhance = enhance;
 
   static style = style;
 
