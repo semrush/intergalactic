@@ -10,6 +10,7 @@ import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import pick from '@semcore/utils/lib/pick';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 type AsProps = {
   maxLine?: number;
@@ -25,6 +26,7 @@ type AsProps = {
 
 type AsPropsMiddle = {
   text: string;
+  textRef: RefObject<HTMLElement>;
   tooltip?: boolean;
   styles?: React.CSSProperties;
   containerRect?: { width: number };
@@ -206,6 +208,10 @@ class RootEllipsis extends Component<AsProps> {
       (Ellipsis as any).Popper.displayName,
     ]);
     const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
+
+    tooltipProps.visible = visible;
+    tooltipProps.onVisibleChange = this.handlerVisibleChange;
+
     if (trim === 'middle') {
       return sstyled(styles)(
         <EllipsisMiddle
@@ -214,6 +220,7 @@ class RootEllipsis extends Component<AsProps> {
           tooltip={tooltip}
           containerRect={containerRect}
           containerRef={containerRef}
+          textRef={this.textRef}
           tooltipProps={tooltipProps}
           advanceMode={advanceMode}
           {...other}
@@ -227,8 +234,6 @@ class RootEllipsis extends Component<AsProps> {
         <SContainer
           interaction='hover'
           title={!advanceMode ? text : undefined}
-          visible={visible}
-          onVisibleChange={this.handlerVisibleChange}
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
@@ -269,6 +274,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     tooltip,
     containerRect,
     containerRef,
+    textRef,
     tooltipProps,
     children,
     advanceMode,
@@ -336,7 +342,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
       <SContainerMiddle
         interaction={interaction}
         title={text as any}
-        ref={ref}
+        ref={forkRef(ref, textRef)}
         tag={Tooltip}
         __excludeProps={['title']}
         {...tooltipProps}
