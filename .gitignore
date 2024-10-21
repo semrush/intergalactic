@@ -75,3 +75,6 @@ playwright-report
 # Allure
 allure-results
 allure-report
+
+storybook-static
+*storybook.log

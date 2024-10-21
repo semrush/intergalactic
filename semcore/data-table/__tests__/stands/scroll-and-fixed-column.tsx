@@ -6,7 +6,7 @@ import Link from 'intergalactic/link';
 
 const Demo = () => {
   return (
-    <DataTable data={data}>
+    <DataTable data={data} aria-label={'Scroll and FixedColumn table'}>
       <DataTable.Head wMin={1000} withScrollBar>
         <DataTable.Column name='keyword' wMin={180} children='Keyword' fixed='left' sortable />
         <DataTable.Column name='kd' wMin={180} children='KD,%' sortable />
