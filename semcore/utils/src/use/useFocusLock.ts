@@ -4,20 +4,9 @@ import LocalReact from 'react';
 import { isFocusInside } from '../focus-lock/isFocusInside';
 import { setFocus } from '../focus-lock/setFocus';
 import { getFocusableIn } from '../focus-lock/getFocusableIn';
-import {
-  addFocusBorders,
-  removeFocusBorders,
-  areFocusBordersPlacedCorrectly,
-} from '../focus-lock/focusBorders';
-import {
-  addIframeBorders,
-  areIframeBordersPlacedCorrectly,
-  removeIframeBorders,
-} from '../focus-lock/iframeBorders';
+import { addFocusBorders, removeFocusBorders } from '../focus-lock/focusBorders';
 
 export { isFocusInside, setFocus };
-
-const focusBordersConsumers = new Set();
 
 const syntheticEvents = {
   blur: 'focusout-intergalactic-focus-lock-synthetic',
@@ -45,35 +34,6 @@ export const makeFocusLockSyntheticEvent = (baseEvent: Event) => {
   return syntheticEvent;
 };
 
-const useFocusBorders = (
-  React: ReactT,
-  disabled?: boolean,
-  trapRef?: React.RefObject<HTMLElement>,
-) => {
-  useUniqueIdHookMock(React);
-  React.useEffect(() => {
-    const id = getUniqueId('focus-borders-consumer');
-    if (!disabled) {
-      focusBordersConsumers.add(id);
-    }
-
-    if (!areFocusBordersPlacedCorrectly()) removeFocusBorders();
-    if (!areIframeBordersPlacedCorrectly(trapRef?.current)) removeIframeBorders();
-    if (focusBordersConsumers.size > 0) {
-      addFocusBorders();
-      addIframeBorders(trapRef?.current);
-    }
-
-    return () => {
-      focusBordersConsumers.delete(id);
-      if (focusBordersConsumers.size === 0) {
-        removeFocusBorders();
-        removeIframeBorders();
-      }
-    };
-  }, [disabled]);
-};
-
 type ReactT = typeof LocalReact;
 
 let uniqueId = 0;
@@ -98,6 +58,7 @@ const getUniqueId = (prefix: string) =>
  * Version update `1 -> 2`. Fixed call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target)
  * Version update `2 -> 3`. Fixed React version isolation in nested hooks (`useFocusBorders`, `useUniqueId`).
  * Version update `3 -> 4`. Fixed lock for correct working with iframes in modal
+ * Version update `4 -> 5`. Changed placements for border - now they wrap trap node
  *
  * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
  * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
@@ -110,7 +71,7 @@ const getUniqueId = (prefix: string) =>
  * If new update requires to remove some hooks – add mocks instead of them.
  * If new update requires to add some hooks and no workaround with current hooks list is possible – probably focus lock hook key should be changed.
  */
-const focusLockVersion = 4;
+const focusLockVersion = 5;
 const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
 
 const focusLockAllTraps = new Set<HTMLElement>();
@@ -141,7 +102,17 @@ const useFocusLockHook = (
   focusMaster = false,
   onFocusOut?: (event: Event) => void,
 ) => {
-  useFocusBorders(React, disabled, trapRef);
+  React.useEffect(() => {
+    if (trapRef.current) {
+      addFocusBorders(trapRef.current);
+    }
+
+    return () => {
+      if (trapRef.current) {
+        removeFocusBorders(trapRef.current);
+      }
+    };
+  }, [disabled]);
 
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
@@ -170,10 +141,6 @@ const useFocusLockHook = (
           isFocusInside(returnFocusTo.current)
         )
           return;
-
-        if (focusCameFrom && focusMovedTo) {
-          setFocus(trapRef.current, focusCameFrom, focusMovedTo);
-        }
 
         onFocusOut?.(event);
       });
