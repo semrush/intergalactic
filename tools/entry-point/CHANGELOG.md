@@ -1,3 +1,9 @@
+## [15.113.0] - 2024-10-23
+
+### @semcore/d3-chart
+
+- **Added** Function type for `hideHoverLine` property in the `Hover` component.
+
 ## [15.112.0] - 2024-10-18
 
 ### @semcore/carousel
