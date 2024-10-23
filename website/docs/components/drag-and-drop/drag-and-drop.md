@@ -54,14 +54,3 @@ Dragging trajectory isn’t restricted, allowing the element to be moved freely 
 | When an object is dragged over the drop zone, if the object was dragged from another area, the drop zone background changes to `--bg-primary-neutral-hover`.  | ![](static/drag-card.png)  |
 | When rearranging objects in a list or grid, the drop zone is created dynamically by pushing apart neighbouring objects. In this case, the drop zone background is `--bg-secondary-neutral-hover`.  | ![](static/dragging.png)  |
 | If the drop zone under the dragged object is unavailable, mouse cursor changes to `not-allowed`.  | ![](static/no-drop.png)  |
-
-<!--
-COMMENT. This looks like we intended entire objects to be grabbable, not only the grab area:
-When dragging either a clickable or non-clickable element, a long click on any part of the element will change the cursor to a "move" cursor, indicating that dragging has begun.
-
-COMMENT. Almost the same thing from another part of the page:
-Note that short and long clicks have different meanings, with long clicks used for clickable draggable objects.
-
-COMMENT. Didn't understand what it means exactly... Can we remove it?
-Apply the required styles to show that an element is being dragged during the `DragEvent`.
--->

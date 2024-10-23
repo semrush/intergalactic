@@ -29,7 +29,7 @@ Table: Roles and attributes
 | ----------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `DragAndDrop`           | `role="group"`                 | Identifies the entire area containing draggable objects and drop zones as a group.                 |
 | `DragAndDrop.Draggable` | `role="group"`                 | Identifies the draggable object as a group. This is important for cases when draggable objects contain interactive elements.                |
-|                         | `aria-describedby="IDREF"`     | Provides an accessible description for the draggable object, informing the user which key to press to grab the object. <!-- currently description and the alert message aren't connected, we probably have to update the description to be the same as the alert message --> |
+|                         | `aria-describedby="IDREF"`     | Provides an accessible description for the draggable object, informing the user which key to press to grab the object. |
 |                         | `tabindex="0"`                 | Makes the draggable object focusable.           |
 | `DragAndDrop.DropZone`  | `role="group"`                 | Identifies the drop zone as a group.            |
 | `div.A11yHint`          | `role="alert"`, `aria-live="assertive"` | Instructs assistive technology to announce current drag and drop status immediately, interrupting any other announcements.                 |
