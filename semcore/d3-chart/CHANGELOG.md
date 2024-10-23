@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.56.0] - 2024-10-23
+
+### Added
+
+- Function type for `hideHoverLine` property in the `Hover` component.
+
 ## [3.55.2] - 2024-10-15
 
 ### Fixed
