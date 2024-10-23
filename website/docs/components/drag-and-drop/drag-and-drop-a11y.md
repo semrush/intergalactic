@@ -55,17 +55,9 @@ If the grabbed item or the drop zone has a `zoneName`, messages will be as per t
 | Object is dropped in an empty drop zone              | `{itemText} dropped in {zoneName}`                                                         |
 | Object is dropped in a drop zone with other objects  | `{itemText} dropped, final position is {itemPosition} of {itemsCount} in {zoneName}`       |
 
-## Considerations for developers
+## Considerations for developers and designers
 
 Set accessible names for `DragAndDrop`, `DragAndDrop.Draggable`, and `DragAndDrop.DropZone` using `aria-label` or `aria-labelledby`. This allows the user to recognize which objects can be dragged, and to which drag zones they can be dragged to.
-
-<!--
-| Element                 | Attribute                      | Usage                                                                                           |
-| ----------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `DragAndDrop`           | `aria-label` or `aria-labelledby` | Defines an accessible name for the group containing draggable objects and drop zones.   |
-| `DragAndDrop.Draggable` | `aria-label` or `aria-labelledby` | Defines an accessible name for the draggable object.  |
-| `DragAndDrop.DropZone`  | `aria-label` or `aria-labelledby` | Defines an accessible name for the drop zone.  |
--->
 
 ## Other recommendations
 

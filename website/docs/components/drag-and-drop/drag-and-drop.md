@@ -36,7 +36,7 @@ The component consists of the following parts:
 | When the grab area is hovered, mouse cursor turns into `grab`.  | ![](static/hover-grab.png)  |
 | When the object is grabbed, mouse cursor turns into `grabbed`, the object box-shadow changes to `--box-shadow-dnd`.  | ![](static/dragging.png)  |
 
-Drag indicator can be placed vertically, as in lists, or horizontally, as in cards.
+Drag indicator can be placed vertically, as in list items, or horizontally, as in cards.
 
 ![](static/draggable-card.png)
 
