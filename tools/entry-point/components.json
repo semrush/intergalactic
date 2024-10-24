@@ -19,7 +19,7 @@
   "@semcore/drag-and-drop": "3.43.0",
   "@semcore/dropdown": "4.40.0",
   "@semcore/dropdown-menu": "4.42.0",
-  "@semcore/d3-chart": "3.55.2",
+  "@semcore/d3-chart": "3.56.0",
   "@semcore/ellipsis": "2.36.1",
   "@semcore/email": "1.0.2",
   "@semcore/errors": "4.41.0",
