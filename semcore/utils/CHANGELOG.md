@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2024-10-22
+
+### Changed
+
+- Focus lock logic. For now, we add focus borders in every trap node instead of one instance for whole document.
+
 ## [4.41.0] - 2024-10-18
 
 ### Added

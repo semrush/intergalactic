@@ -213,9 +213,9 @@ describe('SidePanel', () => {
       </Portal>,
     );
 
-    // 5 because: border-focus (before + after), empty div, div with `Content in portal`
+    // 3 because: empty div, div with `Content in portal`
     // and div with `Content in body` should be in body too.
     // Without `ignorePortalsStacking`, it'll be in the first `SidePanel`.
-    expect(document.body.children).toHaveLength(5);
+    expect(document.body.children).toHaveLength(3);
   });
 });

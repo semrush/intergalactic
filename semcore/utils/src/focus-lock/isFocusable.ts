@@ -1,3 +1,5 @@
+import { AFTER_BORDER_ID, BEFORE_BORDER_ID } from './focusBorders';
+
 const focusable = [
   ['BUTTON'],
   ['SELECT'],
@@ -30,6 +32,11 @@ export const isFocusable = (node: Node) => {
   if (node.hasAttribute('disabled')) return false;
   if (node.getAttribute('tabindex') === '-1') return false;
   if (node.getAttribute('hidden') !== null) return false;
+  if (
+    node.getAttribute('data-id') === BEFORE_BORDER_ID ||
+    node.getAttribute('data-id') === AFTER_BORDER_ID
+  )
+    return false;
   const tagName = node.tagName;
   for (const params of focusable) {
     if (
