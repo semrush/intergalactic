@@ -105,7 +105,7 @@ const useFocusLockHook = (
   React.useEffect(() => {
     const trapNode = trapRef.current;
 
-    if (trapNode && !disabled) {
+    if (trapNode && !disabled && getFocusableIn(trapNode).length > 0) {
       addFocusBorders(trapNode);
     }
 

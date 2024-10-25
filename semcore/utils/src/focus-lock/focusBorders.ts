@@ -63,7 +63,7 @@ export const addFocusBorders = (element: HTMLElement) => {
     const elementParent = element.parentElement;
 
     elementParent?.insertBefore(before, element);
-    element.append(after);
+    elementParent?.append(after);
   }
 };
 export const removeFocusBorders = (element: HTMLElement) => {
