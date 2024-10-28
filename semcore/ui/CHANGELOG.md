@@ -1,3 +1,17 @@
+## [15.114.0] - 2024-10-28
+
+### @semcore/ellipsis
+
+- **Fixed** Logic of showing tooltip for trimmed in the middle texts - show only for cropped.
+
+### @semcore/popper
+
+- **Fixed** Returning focus to trigger for focusable interaction popovers.
+
+### @semcore/utils
+
+- **Changed** Focus lock logic. For now, we add focus borders in every trap node instead of one instance for whole document.
+
 ## [15.113.0] - 2024-10-23
 
 ### @semcore/d3-chart
