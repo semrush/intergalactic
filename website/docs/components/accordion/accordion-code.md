@@ -31,6 +31,18 @@ By default, the accordion has the `secondary` theme (`use` property).
 
 :::
 
+## Heading tag
+
+By default, `Accordion.Item.Toggle` is set to an `h3` heading level, but you can change it if needed.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/heading_tag.tsx';
+</script>
+
+:::
+
 ## Primary theme
 
 Pass `use='primary'` to enable the primary theme for the accordion.
@@ -59,7 +71,7 @@ For example, to find out whether an element is selected and to highlight it, pas
 
 ## SEO friendly accordion
 
-By default, collapsed sections are not rendered in the DOM. If you need to render all sections, pass `preserveNode` to the `Accordion.Item.Collapse` component.
+By default, collapsed sections aren't rendered in the DOM. If you need to render all sections, pass `preserveNode` to the `Accordion.Item.Collapse` component.
 
 ::: sandbox
 
