@@ -22,8 +22,8 @@ const Demo = () => (
         Very long description which should show ellipsis when there isn't enough space.
       </Card.Description>
     </Card.Header>
-    <Card.Body tag={Ellipsis}>
-      <Text size={200}>
+    <Card.Body>
+      <Text tag={Ellipsis} size={200}>
         Long body text which should show ellipsis when there isn't enough space.
       </Text>
     </Card.Body>
