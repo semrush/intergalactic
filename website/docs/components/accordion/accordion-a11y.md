@@ -26,7 +26,7 @@ Table: Roles and attributes
 | ----------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Accordion.Item.ToggleButton` | `role="button"`           | Defines element as clickable and can be activated by user, and controls the visibility of accordion's content panel.                      |
 |                               | `aria-expanded="true"`    | Set to `true` when the accordion panel is expanded, otherwise set to `false`.                                                             |
-|                               | `aria-controls="ID"`      | Points to the `ID` of the panel which the toggle button controls.                                                                         |
+|                               | `aria-controls="IDREF"`      | Points to the `ID` of the panel which the toggle button controls.                                                                         |
 | `Accordion.Item.Chevron`      | `aria-hidden="true"`      | Hides non-interactive icon from the assistive technologies.                                                                               |
 | `Accordion.Item.Collapse`     | `region`                  | Creates a landmark region that contains the currently expanded accordion panel.                                                           |
 |                               | `aria-labelledby="IDREF"` | Defines the accessible name for the `region` element. References the `Accordion.Item.ToggleButton` that expands and collapses the region. |
