@@ -382,7 +382,9 @@ class PopperRoot extends Component {
           }
         }
         if (!visible && component === 'popper') {
-          this.ignoreTriggerFocus = false;
+          setTimeout(() => {
+            this.ignoreTriggerFocus = false;
+          }, 0);
         }
       }, 0);
     });
