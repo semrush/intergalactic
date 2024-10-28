@@ -95,7 +95,7 @@ const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   const styleElement = window.getComputedStyle(element, null);
   const temporaryElement = document.createElement('temporary-block');
   temporaryElement.style.display = styleElement.getPropertyValue('display');
-  temporaryElement.style.padding = '0';
+  temporaryElement.style.padding = styleElement.getPropertyValue('padding');
   temporaryElement.style.position = 'absolute';
   temporaryElement.style.right = '0%';
   temporaryElement.style.bottom = '0%';
