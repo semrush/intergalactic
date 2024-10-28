@@ -91,10 +91,10 @@ const defaultTooltipProps = [
   'cursorAnchoring',
 ];
 
-const createMeasurerElement = (element: HTMLDivElement) => {
+const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   const styleElement = window.getComputedStyle(element, null);
   const temporaryElement = document.createElement('temporary-block');
-  temporaryElement.style.display = 'inline-block';
+  temporaryElement.style.display = styleElement.getPropertyValue('display');
   temporaryElement.style.padding = '0';
   temporaryElement.style.position = 'absolute';
   temporaryElement.style.right = '0%';
@@ -111,15 +111,15 @@ const createMeasurerElement = (element: HTMLDivElement) => {
     styleElement.getPropertyValue('font-feature-settings');
   temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
 
-  temporaryElement.innerHTML = element.innerHTML;
+  temporaryElement.innerHTML = text ?? element.innerHTML;
   return temporaryElement;
 };
 
-function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean {
+function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: string): boolean {
   if (!element) return false;
 
   const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
-  const measuringElement = createMeasurerElement(element);
+  const measuringElement = createMeasurerElement(element, text);
   let isOverflowing = false;
 
   document.body.appendChild(measuringElement);
@@ -162,8 +162,9 @@ class RootEllipsis extends Component<AsProps> {
   textRef = React.createRef<HTMLDivElement>();
 
   showTooltip() {
-    const { maxLine = 1 } = this.asProps;
-    return isTextOverflowing(this.textRef.current!, maxLine > 1);
+    const { maxLine = 1, Children } = this.asProps;
+    const text = reactToText(getOriginChildren(Children));
+    return isTextOverflowing(this.textRef.current!, maxLine > 1, text);
   }
 
   handlerVisibleChange = (visible: boolean) => {
