@@ -11,21 +11,21 @@
 
 :root {
   --halloween-gradient: linear-gradient(180deg, #FF642D 78.4%, #E43016 78.41%, #B22012 79.8%, #9F0707 81.89%);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: var(--halloween-gradient);
+  --vp-home-hero-image-background-image: var(--halloween-gradient);
+  --vp-home-hero-image-filter: blur(40px);
 }
 
 .dark {
   --halloween-gradient: linear-gradient(180deg, #FF642D 79.8%, #00FF1A 81.2%, #00FF1A 82.94%);
+  --vp-c-brand-1: #ff642d !important;
+  --vp-c-brand-2: #ff642d !important;
+  --vp-c-brand-3: #e15320 !important;
 }
 
 .VPHero[data-ui-name], h1 {
   font-family: 'Creepster', -apple-system, serif, Garamond !important;
-}
-
-:root {
-    --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: var(--halloween-gradient);
-    --vp-home-hero-image-background-image: var(--halloween-gradient);
-    --vp-home-hero-image-filter: blur(40px);
 }
 
 @media (min-width: 640px) {
