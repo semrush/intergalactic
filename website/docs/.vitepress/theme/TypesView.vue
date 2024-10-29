@@ -13,7 +13,7 @@
         <FormattedTypeString :type="prop.type" :types="types" />
       </td>
       <td>
-        <span v-if="prop.params.deprecated" class="types-deprecated-tag">Deprecated</span>  
+        <span v-if="prop.params.deprecated" class="types-deprecated-tag">Deprecated</span>
         {{ prop.description }}
       </td>
     </tr>

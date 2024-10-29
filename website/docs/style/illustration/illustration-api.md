@@ -6,8 +6,8 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 ## Illustration
 
 ```jsx
-import Select from 'intergalactic/select';
-<Select />;
+import Coffee from 'intergalactic/illustration/Coffee';
+<Coffee />;
 ```
 
 <TypesView type="IllustrationProps" :types={...types} />
