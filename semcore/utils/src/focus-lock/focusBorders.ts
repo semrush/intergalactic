@@ -22,42 +22,38 @@ export const addFocusBorders = (element: HTMLElement) => {
     before.style.position = 'fixed';
     before.dataset.id = BEFORE_BORDER_ID;
     before.addEventListener('focus', (event) => {
-      Promise.resolve().then(() => {
-        if (
-          document.activeElement === focusBordersRefs.get(element)?.before &&
-          event.relatedTarget !== focusBordersRefs.get(element)?.after && // prevent loop
-          event.relatedTarget // prevent initial focus
-        ) {
-          const focusable = getFocusableIn(element);
+      if (
+        document.activeElement === focusBordersRefs.get(element)?.before &&
+        event.relatedTarget !== focusBordersRefs.get(element)?.after && // prevent loop
+        event.relatedTarget // prevent initial focus
+      ) {
+        const focusable = getFocusableIn(element);
 
-          if (event.relatedTarget === focusable[0]) {
-            focusable[focusable.length - 1]?.focus();
-          } else {
-            focusable[0]?.focus();
-          }
+        if (event.relatedTarget === focusable[0]) {
+          focusable[focusable.length - 1]?.focus();
+        } else {
+          focusable[0]?.focus();
         }
-      });
+      }
     });
 
     after.setAttribute('tabindex', '0');
     after.style.position = 'fixed';
     after.dataset.id = AFTER_BORDER_ID;
     after.addEventListener('focus', (event) => {
-      Promise.resolve().then(() => {
-        if (
-          document.activeElement === focusBordersRefs.get(element)?.after &&
-          event.relatedTarget !== focusBordersRefs.get(element)?.before && // prevent loop
-          event.relatedTarget // prevent initial focus
-        ) {
-          const focusable = getFocusableIn(element);
+      if (
+        document.activeElement === focusBordersRefs.get(element)?.after &&
+        event.relatedTarget !== focusBordersRefs.get(element)?.before && // prevent loop
+        event.relatedTarget // prevent initial focus
+      ) {
+        const focusable = getFocusableIn(element);
 
-          if (event.relatedTarget === focusable[focusable.length - 1]) {
-            focusable[0]?.focus();
-          } else {
-            focusable[focusable.length - 1]?.focus();
-          }
+        if (event.relatedTarget === focusable[focusable.length - 1]) {
+          focusable[0]?.focus();
+        } else {
+          focusable[focusable.length - 1]?.focus();
         }
-      });
+      }
     });
 
     const elementParent = element.parentElement;
