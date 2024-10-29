@@ -28,14 +28,14 @@ In this example, emails are wrapped in tags without any width limitation.
 
 :::
 
-## Input with DropdownMenu for tag filtering
+## Select for tag filtering
 
-In this example, selected options from the dropdown menu are wrapped in tags within the input field.
+In this example, selected options are wrapped in tags within the input field.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_dropdownmenu_for_tag_filtering.tsx';
+  export Demo from './examples/select_for_tag_filtering.tsx';
 </script>
 
 :::

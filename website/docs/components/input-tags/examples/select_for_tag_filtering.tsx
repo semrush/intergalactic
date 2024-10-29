@@ -1,12 +1,13 @@
 import React from 'react';
 import InputTags from 'intergalactic/input-tags';
-import DropdownMenu from 'intergalactic/dropdown-menu';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
+import Select from 'intergalactic/select';
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
 const Demo = () => {
+  const selectTriggerRef = React.useRef(null);
   const [tags, setTags] = React.useState([]);
   const [valueInput, setValueInput] = React.useState('');
   const [visible, setVisible] = React.useState(false);
@@ -18,8 +19,10 @@ const Demo = () => {
     }
   }
 
-  function onRemoveTag(index) {
+  function onRemoveTag(index, e) {
+    e.stopPropagation();
     setTags(tags.filter((tag, i) => i !== index));
+    selectTriggerRef.current?.focus();
   }
 
   function onChangeValue(value) {
@@ -27,25 +30,30 @@ const Demo = () => {
     setVisible(true);
   }
 
-  function onSelectTag(value) {
-    setTags(tags.concat(value));
+  function onChange(value) {
+    setTags(value);
     setValueInput('');
   }
 
-  const tagsFilter = tagsSelect.filter((tag) => tag.includes(valueInput));
+  const tagsFilter = tagsSelect.filter((tag) => {
+    return tag.toLowerCase().includes(valueInput.toLowerCase()) && !tags.includes(tag);
+  });
 
   return (
     <Flex direction='column'>
       <Text tag='label' size={300} htmlFor='secondary-social-medias'>
         Social media
       </Text>
-      <DropdownMenu
+      <Select
         interaction='focus'
         size='l'
         visible={visible}
         onVisibleChange={(visible) => setVisible(visible)}
+        multiselect={true}
+        value={tags}
+        onChange={onChange}
       >
-        <DropdownMenu.Trigger tag={InputTags} mt={2} w={300} size='l' onRemove={onRemoveLastTag}>
+        <Select.Trigger tag={InputTags} mt={2} w={300} size='l' onRemove={onRemoveLastTag}>
           {tags.map((tag, i) => (
             <InputTags.Tag key={i} theme='primary'>
               <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
@@ -53,20 +61,21 @@ const Demo = () => {
             </InputTags.Tag>
           ))}
           <InputTags.Value
+            ref={selectTriggerRef}
             value={valueInput}
             onChange={onChangeValue}
             id='secondary-social-medias'
           />
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Menu>
+        </Select.Trigger>
+        <Select.Menu>
           {tagsFilter.map((tag, i) => (
-            <DropdownMenu.Item key={i} onClick={() => onSelectTag(tag)}>
+            <Select.Option value={tag} key={i}>
               {tag}
-            </DropdownMenu.Item>
+            </Select.Option>
           ))}
-          {!tagsFilter.length && <DropdownMenu.ItemHint>Not found</DropdownMenu.ItemHint>}
-        </DropdownMenu.Menu>
-      </DropdownMenu>
+          {!tagsFilter.length && <Select.Option.Hint>Not found</Select.Option.Hint>}
+        </Select.Menu>
+      </Select>
     </Flex>
   );
 };
