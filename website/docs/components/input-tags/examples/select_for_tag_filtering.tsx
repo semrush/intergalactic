@@ -75,7 +75,7 @@ const Demo = () => {
             </Select.Option>
           ))}
           {!tagsFilter.length && valueInput !== '' && (
-            <Select.OptionHint>Not found</Select.OptionHint>
+            <Select.OptionHint>Nothing found</Select.OptionHint>
           )}
         </Select.Menu>
       </Select>
