@@ -47,7 +47,7 @@ const Demo = () => {
       <Select
         interaction='focus'
         size='l'
-        visible={visible}
+        visible={visible && tags.length < 4}
         onVisibleChange={(visible) => setVisible(visible)}
         multiselect={true}
         value={tags}
@@ -65,6 +65,7 @@ const Demo = () => {
             value={valueInput}
             onChange={onChangeValue}
             id='secondary-social-medias'
+            placeholder='Select social media'
           />
         </Select.Trigger>
         <Select.Menu>
@@ -73,7 +74,9 @@ const Demo = () => {
               {tag}
             </Select.Option>
           ))}
-          {!tagsFilter.length && <Select.Option.Hint>Not found</Select.Option.Hint>}
+          {!tagsFilter.length && valueInput !== '' && (
+            <Select.OptionHint>Not found</Select.OptionHint>
+          )}
         </Select.Menu>
       </Select>
     </Flex>
