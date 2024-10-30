@@ -45,7 +45,9 @@ const amplitudeHttp = {
     const theme = getThemePreference();
     const pathname = window.location.pathname;
 
-    this.logEvent('init_app', { event_properties: { theme, pathname } });
+    this.logEvent('init_app', {
+      event_properties: { theme, pathname, referrer: document.referrer },
+    });
 
     return this;
   },
@@ -181,7 +183,6 @@ const amplitudeHttp = {
           OS: `${systemInfo.os.name} ${systemInfo.os.versionName} v${systemInfo.os.version}`,
           platform: `${systemInfo.platform.vendor} ${systemInfo.platform.type}`,
           language,
-          referer: document.referrer,
           screen: `${width} x ${height}`,
         },
       },
