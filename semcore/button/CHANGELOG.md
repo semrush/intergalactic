@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fix disabled state is not applied to ButtonLink
+- Fixed disabled state is not applied to ButtonLink
 
 ## [5.39.0] - 2024-10-28
 

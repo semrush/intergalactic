@@ -12,8 +12,6 @@ const enhance = {
   resolveColor: resolveColorEnhance(),
 };
 
-// TODO: find how Button becames visually-disabled={disabled}
-
 class RootButtonLink extends AbstractButton {
   static displayName = 'ButtonLink';
   static enhance = Object.values(enhance);
