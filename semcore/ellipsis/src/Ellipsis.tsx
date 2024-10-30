@@ -134,7 +134,7 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: s
     }
   } else {
     measuringElement.style.whiteSpace = 'nowrap';
-    isOverflowing = Math.ceil(currentWidth) < measuringElement.scrollWidth;
+    isOverflowing = Math.ceil(currentWidth) < measuringElement.getBoundingClientRect().width;
   }
 
   document.body.removeChild(measuringElement);
