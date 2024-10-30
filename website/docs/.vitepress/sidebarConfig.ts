@@ -41,6 +41,7 @@ export const sideBarConfig: SidebarConfig = [
         items: [
           {
             link: '/core-principles/a11y/a11y',
+            activeMatch: '/core-principles/a11y/',
             text: 'Accessibility',
           },
           {
@@ -93,18 +94,8 @@ export const sideBarConfig: SidebarConfig = [
           },
           {
             link: '/style/css-injection/css-injection',
+            activeMatch: '/style/css-injection/',
             text: 'CSS Injection',
-            collapsed: true,
-            items: [
-              {
-                link: '/style/css-injection/css-injection-local',
-                text: 'Local CSS Injection',
-              },
-              {
-                link: '/style/css-injection/css-injection-global',
-                text: 'Global CSS Injection',
-              },
-            ],
           },
         ],
       },
@@ -451,7 +442,7 @@ export const sideBarConfig: SidebarConfig = [
           },
           {
             link: '/data-display/d3-chart/d3-chart',
-            activeMatch: '/data-display/d3-chart/d3-chart/',
+            activeMatch: '/data-display/d3-chart/',
             text: 'D3 chart',
           },
           {
@@ -736,6 +727,7 @@ export const sideBarConfig: SidebarConfig = [
           },
           {
             link: '/patterns/success-state/success-state',
+            activeMatch: '/patterns/success-state/',
             text: 'Success state',
           },
           {

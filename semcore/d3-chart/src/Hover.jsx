@@ -85,7 +85,10 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
-    if (hideHoverLine) {
+    const isHide =
+      typeof hideHoverLine === 'function' ? hideHoverLine(xIndex, yIndex) : hideHoverLine;
+
+    if (isHide) {
       return null;
     }
 

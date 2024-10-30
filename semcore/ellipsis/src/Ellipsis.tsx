@@ -10,6 +10,7 @@ import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import pick from '@semcore/utils/lib/pick';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 type AsProps = {
   maxLine?: number;
@@ -25,6 +26,7 @@ type AsProps = {
 
 type AsPropsMiddle = {
   text: string;
+  textRef: RefObject<HTMLElement>;
   tooltip?: boolean;
   styles?: React.CSSProperties;
   containerRect?: { width: number };
@@ -89,11 +91,11 @@ const defaultTooltipProps = [
   'cursorAnchoring',
 ];
 
-const createMeasurerElement = (element: HTMLDivElement) => {
+const createMeasurerElement = (element: HTMLDivElement, text?: string) => {
   const styleElement = window.getComputedStyle(element, null);
   const temporaryElement = document.createElement('temporary-block');
-  temporaryElement.style.display = 'inline-block';
-  temporaryElement.style.padding = '0';
+  temporaryElement.style.display = styleElement.getPropertyValue('display');
+  temporaryElement.style.padding = styleElement.getPropertyValue('padding');
   temporaryElement.style.position = 'absolute';
   temporaryElement.style.right = '0%';
   temporaryElement.style.bottom = '0%';
@@ -109,15 +111,15 @@ const createMeasurerElement = (element: HTMLDivElement) => {
     styleElement.getPropertyValue('font-feature-settings');
   temporaryElement.style.fontVariantNumeric = styleElement.getPropertyValue('font-variant-numeric');
 
-  temporaryElement.innerHTML = element.innerHTML;
+  temporaryElement.innerHTML = text ?? element.innerHTML;
   return temporaryElement;
 };
 
-function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean {
+function isTextOverflowing(element: HTMLDivElement, multiline: boolean, text?: string): boolean {
   if (!element) return false;
 
   const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
-  const measuringElement = createMeasurerElement(element);
+  const measuringElement = createMeasurerElement(element, text);
   let isOverflowing = false;
 
   document.body.appendChild(measuringElement);
@@ -132,7 +134,7 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean
     }
   } else {
     measuringElement.style.whiteSpace = 'nowrap';
-    isOverflowing = currentWidth < measuringElement.scrollWidth;
+    isOverflowing = Math.ceil(currentWidth) < measuringElement.scrollWidth;
   }
 
   document.body.removeChild(measuringElement);
@@ -160,8 +162,9 @@ class RootEllipsis extends Component<AsProps> {
   textRef = React.createRef<HTMLDivElement>();
 
   showTooltip() {
-    const { maxLine = 1 } = this.asProps;
-    return isTextOverflowing(this.textRef.current!, maxLine > 1);
+    const { maxLine = 1, Children } = this.asProps;
+    const text = reactToText(getOriginChildren(Children));
+    return isTextOverflowing(this.textRef.current!, maxLine > 1, text);
   }
 
   handlerVisibleChange = (visible: boolean) => {
@@ -206,6 +209,10 @@ class RootEllipsis extends Component<AsProps> {
       (Ellipsis as any).Popper.displayName,
     ]);
     const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
+
+    tooltipProps.visible = visible;
+    tooltipProps.onVisibleChange = this.handlerVisibleChange;
+
     if (trim === 'middle') {
       return sstyled(styles)(
         <EllipsisMiddle
@@ -214,6 +221,7 @@ class RootEllipsis extends Component<AsProps> {
           tooltip={tooltip}
           containerRect={containerRect}
           containerRef={containerRef}
+          textRef={this.textRef}
           tooltipProps={tooltipProps}
           advanceMode={advanceMode}
           {...other}
@@ -227,8 +235,6 @@ class RootEllipsis extends Component<AsProps> {
         <SContainer
           interaction='hover'
           title={!advanceMode ? text : undefined}
-          visible={visible}
-          onVisibleChange={this.handlerVisibleChange}
           {...tooltipProps}
           {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
@@ -269,6 +275,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     tooltip,
     containerRect,
     containerRef,
+    textRef,
     tooltipProps,
     children,
     advanceMode,
@@ -336,7 +343,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
       <SContainerMiddle
         interaction={interaction}
         title={text as any}
-        ref={ref}
+        ref={forkRef(ref, textRef)}
         tag={Tooltip}
         __excludeProps={['title']}
         {...tooltipProps}
