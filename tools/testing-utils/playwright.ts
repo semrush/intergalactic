@@ -40,6 +40,8 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
     suit = 'Axe';
   } else if (testFilePath.includes('vo')) {
     suit = 'Voice over';
+  } else if (testFilePath.includes('storybook')) {
+    suit = 'Storybook';
   }
 
   await allure.label('component', testInfo.titlePath[1]);
