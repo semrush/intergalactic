@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.40.2] - 2024-10-30
+
+### Fixed
+
+- Fixed Signleton Tooltip example stretched to full width of window
+
 ## [4.40.1] - 2024-10-28
 
 ### Changed
