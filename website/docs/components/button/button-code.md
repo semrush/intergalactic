@@ -18,9 +18,6 @@ Addons can be added:
 
 :::
 
-[//]: # (For test example in iframe)
-[//]: # (::: iframe http://127.0.0.1:8080/iframe.html?globals=&args=&id=components-button--docs&viewMode=docs 220px :::)
-
 ## Icon-only button
 
 To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`.
