@@ -16,7 +16,7 @@ type IdentificationParameter = {
 };
 
 const getThemePreference = () => {
-  return document.body.classList.contains('dark') ? 'dark' : 'light';
+  return document.getElementsByTagName('html')[0].classList.contains('dark') ? 'dark' : 'light';
 };
 
 const AMPLITUDE_HTTP_HANDLER = 'https://api2.amplitude.com/2/httpapi';
