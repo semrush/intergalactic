@@ -647,7 +647,7 @@ export const PatternFill = ({
         {fill.children}
       </pattern>
     );
-  }, [patternKey]);
+  }, [patternKey, id, color, patterns]);
 
   return <DefaultPattern />;
 };
@@ -692,7 +692,7 @@ export const PatternSymbol: React.FC<
         {children}
       </svg>
     );
-  }, [patternKey]);
+  }, [patternKey, color, patterns]);
 
   return <DefaultSymbol {...props} />;
 };

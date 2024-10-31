@@ -100,7 +100,7 @@ const clickHandler = (event: MouseEvent & { target: HTMLElement }) => {
       if (navbarMenuLink.innerText.toLowerCase() === 'releases') {
         return logEvent('link_releases:click', { pathname });
       }
-      if (navbarMenuLink.innerText.toLowerCase().includes('report')) {
+      if (navbarMenuLink.innerText.toLowerCase().includes('requests')) {
         return logEvent('link_report:click', { pathname });
       }
     }
@@ -252,7 +252,8 @@ const handleChangeRoute = (to: string, from: string) => {
   if (
     from !== '/intergalactic/' &&
     to !== '/intergalactic/' &&
-    (fromItems[2] !== toItems[2] || fromItems[3] !== toItems[3])
+    (fromItems[2] !== toItems[2] || fromItems[3] !== toItems[3]) &&
+    !['blog', 'bug-reporting', 'terms'].includes(toItems[2])
   ) {
     return logEvent('left_menu-2-level:click', { pathname: from, link: to });
   }
