@@ -14,7 +14,7 @@ const Demo = () => {
         <Button>Open Popover</Button>
         {visible && <FeaturePopover.Spot />}
       </FeaturePopover.Trigger>
-      <FeaturePopover.Popper closeIcon wMax={350}>
+      <FeaturePopover.Popper closeIcon wMax={350} aria-label={'New feature description'}>
         <Flex alignItems='start'>
           <Box
             w={40}
