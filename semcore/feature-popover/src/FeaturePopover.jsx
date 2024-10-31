@@ -129,7 +129,7 @@ class FeaturePopoverPopper extends Component {
     } = this.asProps;
 
     return sstyled(styles)(
-      <Popper.Popper disableEnforceFocus zIndex={zIndex} role={'dialog'} tabIndex={0} autoFocus>
+      <Popper.Popper disableEnforceFocus zIndex={zIndex} tabIndex={0} autoFocus>
         <Animation
           visible={visible}
           duration={duration}
@@ -137,7 +137,7 @@ class FeaturePopoverPopper extends Component {
           initialAnimation
           animationsDisabled={animationsDisabled}
         >
-          <SFeaturePopover render={Box}>
+          <SFeaturePopover render={Box} role={'dialog'}>
             {closeIcon && (
               <SClose
                 aria-label={getI18nText('close')}

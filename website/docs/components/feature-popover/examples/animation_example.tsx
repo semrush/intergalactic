@@ -9,7 +9,7 @@ const Demo = () => {
   const handleVisibleChange = (visible) => () => setVisible(visible);
 
   return (
-    <FeaturePopover visible={visible} onVisibleChange={setVisible}>
+    <FeaturePopover visible={visible} onVisibleChange={setVisible} disablePortal>
       <FeaturePopover.Trigger>
         <Button>Open Popover</Button>
         {visible && <FeaturePopover.Spot />}

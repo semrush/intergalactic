@@ -59,6 +59,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       visible={visible}
       placement={placement}
       onVisibleChange={(v) => onChange('visible', v)}
+      disablePortal
     >
       <FeaturePopover.Trigger>
         <Button>
