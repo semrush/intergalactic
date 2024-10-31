@@ -21,8 +21,11 @@ const Demo = () => {
 
   function onRemoveTag(index, e) {
     e.stopPropagation();
+    const newTags = tags.filter((tag, i) => i !== index);
     setTags(tags.filter((tag, i) => i !== index));
-    selectTriggerRef.current?.focus();
+    if (newTags.length === index) {
+      selectTriggerRef.current?.focus();
+    }
   }
 
   function onChangeValue(value) {
@@ -32,6 +35,10 @@ const Demo = () => {
 
   function onChange(value) {
     setTags(value);
+    setValueInput('');
+  }
+
+  function onBlurValue() {
     setValueInput('');
   }
 
@@ -53,7 +60,15 @@ const Demo = () => {
         value={tags}
         onChange={onChange}
       >
-        <Select.Trigger tag={InputTags} mt={2} w={300} size='l' onRemove={onRemoveLastTag}>
+        <Select.Trigger
+          tag={InputTags}
+          mt={2}
+          w={300}
+          size='l'
+          onRemove={onRemoveLastTag}
+          tabIndex={-1}
+          delimiters={[]}
+        >
           {tags.map((tag, i) => (
             <InputTags.Tag key={i} theme='primary'>
               <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
@@ -66,6 +81,7 @@ const Demo = () => {
             onChange={onChangeValue}
             id='secondary-social-medias'
             placeholder='Select social media'
+            onBlur={onBlurValue}
           />
         </Select.Trigger>
         <Select.Menu>
