@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.56.2] - 2024-10-30
+
+### Fixed
+
+- Fix unpredictable behavoir of charts with pattern fill, when interacting with chart's legend
+
 ## [3.56.1] - 2024-10-28
 
 ### Changed
