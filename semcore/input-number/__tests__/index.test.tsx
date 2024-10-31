@@ -63,6 +63,22 @@ describe('InputNumber', () => {
     expect(input.value).toBe('12,345.4');
   });
 
+  test.sequential('Should accept not locale decimal separator', async () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid='input3333' value='' onChange={spy} />
+      </InputNumber>,
+    );
+
+    const input = getByTestId('input3333') as HTMLInputElement;
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('12345,99');
+
+    expect(spy).lastCalledWith('12345.99', expect.anything());
+    expect(input.value).toBe('12,345.99');
+  });
+
   test.sequential('Should accept format in hundredths fractions numbers', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
