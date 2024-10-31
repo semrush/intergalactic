@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Improve accessibility for component.
+- A11y improvements: added role="dialog" and autofocus for the popover, made an aria-label or aria-labelledby a required attribute. Disabled aria-haspopup and changed the default interaction to "none" for the trigger.
 
 ## [4.47.1] - 2024-10-28
 
