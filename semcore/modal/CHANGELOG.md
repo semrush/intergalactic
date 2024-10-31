@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.1] - 2024-10-30
+
+### Changed
+
+- Added selector specificity for modal close button.
+
 ## [4.49.0] - 2024-10-28
 
 ### Changed
