@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.52.0] - 2024-10-30
+
+### Added
+
+- New `PopupAlt` icon.
+
 ## [4.51.0] - 2024-10-28
 
 ### Changed

@@ -16,7 +16,7 @@ type IdentificationParameter = {
 };
 
 const getThemePreference = () => {
-  return document.body.classList.contains('dark') ? 'dark' : 'light';
+  return document.getElementsByTagName('html')[0].classList.contains('dark') ? 'dark' : 'light';
 };
 
 const AMPLITUDE_HTTP_HANDLER = 'https://api2.amplitude.com/2/httpapi';
@@ -45,7 +45,9 @@ const amplitudeHttp = {
     const theme = getThemePreference();
     const pathname = window.location.pathname;
 
-    this.logEvent('init_app', { event_properties: { theme, pathname } });
+    this.logEvent('init_app', {
+      event_properties: { theme, pathname, referrer: document.referrer },
+    });
 
     return this;
   },
@@ -181,7 +183,6 @@ const amplitudeHttp = {
           OS: `${systemInfo.os.name} ${systemInfo.os.versionName} v${systemInfo.os.version}`,
           platform: `${systemInfo.platform.vendor} ${systemInfo.platform.type}`,
           language,
-          referer: document.referrer,
           screen: `${width} x ${height}`,
         },
       },
