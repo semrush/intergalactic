@@ -10,7 +10,6 @@ SDropdownPopper {
 }
 
 SDropdownItem {
-  display: block;
   position: relative;
   text-decoration: none;
   box-sizing: border-box;
