@@ -1,3 +1,27 @@
+
+export type IllustrationProps = {
+    /**
+     * Main color of the illustration
+     **/
+    primaryColor?: string;
+    /**
+     * Secondary color of the illustration
+     **/
+    secondaryColor?: string;
+    /**
+     * Changes background fill of the illustration
+     **/
+    fill?: string;
+    /**
+     * Width of the illustration
+     **/
+    width?: string | number;
+    /**
+     * Height of the illustration
+     **/
+    height?: string | number;
+}
+
 export type TIllustrationNamesErrors =
   | 'access_denied'
   | 'blocked'
