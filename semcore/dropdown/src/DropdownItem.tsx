@@ -8,5 +8,5 @@ type DropdownItemProps = {
 
 export function DropdownItem(props: DropdownItemProps) {
   const SDropdownItem = Root;
-  return sstyled(props.styles)(<SDropdownItem render={Flex} direction='row' />);
+  return sstyled(props.styles)(<SDropdownItem render={Flex} direction='column' />);
 }

@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed Signleton Tooltip example stretched to full width of window
+- Signleton Tooltip example stretched to full width of window.
 
 ## [4.40.1] - 2024-10-28
 
