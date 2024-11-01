@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.36.3] - 2024-10-30
+
+### Fixed
+
+- Logic of showing tooltip with one line text and float width value.
+
+## [2.36.2] - 2024-10-21
+
+### Fixed
+
+- Logic of showing tooltip for trimmed in the middle texts - show only for cropped.
+
 ## [2.36.1] - 2024-10-16
 
 ### Added

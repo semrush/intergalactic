@@ -1,56 +1,70 @@
-const focusBordersRefs: {
-  before: HTMLElement | null;
-  after: HTMLElement | null;
-} = { before: null, after: null };
+import { getFocusableIn } from './getFocusableIn';
 
-export const addFocusBorders = () => {
-  if (!focusBordersRefs.before) {
-    focusBordersRefs.before = document.createElement('div');
-    focusBordersRefs.before.setAttribute('tabindex', '0');
-    focusBordersRefs.before.style.position = 'fixed';
-    focusBordersRefs.before.dataset.id = '__intergalactic-focus-border-before';
-    focusBordersRefs.before.addEventListener('focus', (event) => {
-      Promise.resolve().then(() => {
-        if (
-          document.activeElement === focusBordersRefs.before &&
-          event.relatedTarget !== focusBordersRefs.after && // prevent loop
-          event.relatedTarget // prevent initial focus
-        ) {
-          focusBordersRefs.after?.focus();
+const focusBordersRefs = new Map<HTMLElement, { before: HTMLElement; after: HTMLElement }>();
+
+export const BEFORE_BORDER_ID = '__intergalactic-focus-border-before';
+export const AFTER_BORDER_ID = '__intergalactic-focus-border-after';
+
+export const addFocusBorders = (element: HTMLElement) => {
+  if (
+    !focusBordersRefs.has(element) &&
+    !(
+      element.previousSibling instanceof HTMLElement &&
+      element.previousSibling.dataset.id === BEFORE_BORDER_ID
+    )
+  ) {
+    const before = document.createElement('div');
+    const after = document.createElement('div');
+
+    focusBordersRefs.set(element, { before, after });
+
+    before.setAttribute('tabindex', '0');
+    before.style.position = 'fixed';
+    before.dataset.id = BEFORE_BORDER_ID;
+    before.addEventListener('focus', (event) => {
+      if (
+        document.activeElement === focusBordersRefs.get(element)?.before &&
+        event.relatedTarget !== focusBordersRefs.get(element)?.after && // prevent loop
+        event.relatedTarget // prevent initial focus
+      ) {
+        const focusable = getFocusableIn(element);
+
+        if (event.relatedTarget === focusable[0]) {
+          focusable[focusable.length - 1]?.focus();
+        } else {
+          focusable[0]?.focus();
         }
-      });
+      }
     });
-    document.body.prepend(focusBordersRefs.before);
-  }
-  if (!focusBordersRefs.after) {
-    focusBordersRefs.after = document.createElement('div');
-    focusBordersRefs.after.setAttribute('tabindex', '0');
-    focusBordersRefs.after.dataset.id = '__intergalactic-focus-border-after';
-    focusBordersRefs.after.style.position = 'fixed';
-    focusBordersRefs.after.addEventListener('focus', (event) => {
-      Promise.resolve().then(() => {
-        if (
-          document.activeElement === focusBordersRefs.after &&
-          event.relatedTarget !== focusBordersRefs.before && // prevent loop
-          event.relatedTarget // prevent initial focus
-        ) {
-          focusBordersRefs.before?.focus();
+
+    after.setAttribute('tabindex', '0');
+    after.style.position = 'fixed';
+    after.dataset.id = AFTER_BORDER_ID;
+    after.addEventListener('focus', (event) => {
+      if (
+        document.activeElement === focusBordersRefs.get(element)?.after &&
+        event.relatedTarget !== focusBordersRefs.get(element)?.before && // prevent loop
+        event.relatedTarget // prevent initial focus
+      ) {
+        const focusable = getFocusableIn(element);
+
+        if (event.relatedTarget === focusable[focusable.length - 1]) {
+          focusable[0]?.focus();
+        } else {
+          focusable[focusable.length - 1]?.focus();
         }
-      });
+      }
     });
-    document.body.append(focusBordersRefs.after);
+
+    const elementParent = element.parentElement;
+
+    elementParent?.insertBefore(before, element);
+    elementParent?.append(after);
   }
 };
-export const removeFocusBorders = () => {
-  focusBordersRefs.before?.remove();
-  focusBordersRefs.after?.remove();
-  focusBordersRefs.before = null;
-  focusBordersRefs.after = null;
-};
-export const areFocusBordersPlacedCorrectly = () => {
-  if (!focusBordersRefs.before || !focusBordersRefs.after) return true;
-  if (document.body.children[0] !== focusBordersRefs.before) return false;
-  if (document.body.children[document.body.children.length - 1] !== focusBordersRefs.after)
-    return false;
-  return true;
+export const removeFocusBorders = (element: HTMLElement) => {
+  const focusRefs = focusBordersRefs.get(element);
+  focusRefs?.before.remove();
+  focusRefs?.after.remove();
+  focusBordersRefs.delete(element);
 };

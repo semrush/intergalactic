@@ -131,7 +131,7 @@ There, you can find the detailed process for creating a new theme for our design
 
 In this case, you need to take more steps.
 
-1. Duplicate [the library with tokens and three main libraries with components](/get-started-guide/work-figma/work-figma#core_libraries).
+1. Duplicate [library with tokens](/get-started-guide/work-figma/work-figma#core_libraries).
 2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playground: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), [public](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
 3. Test and try on the theme for all components of the library in the theme playground.
 4. Save the JSON of the theme, and either give it to the developers, or commit it yourself.

@@ -1,9 +1,56 @@
 @import url('../../../../semcore/utils/lib/themes/auto.css');
+/* Second import for Halloween only */
+@import url('halloween/fonts.css');
 
 /**
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
+
+/* Here Halloween styles start  */
+
+:root {
+  --halloween-gradient: linear-gradient(180deg, #FF642D 78.4%, #E43016 78.41%, #B22012 79.8%, #9F0707 81.89%);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: var(--halloween-gradient);
+  --vp-home-hero-image-background-image: var(--halloween-gradient);
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+.dark {
+  --halloween-gradient: linear-gradient(180deg, #FF642D 79.8%, #00FF1A 81.2%, #00FF1A 82.94%);
+  --vp-c-brand-1: #ff642d !important;
+  --vp-c-brand-2: #ff642d !important;
+  --vp-c-brand-3: #e15320 !important;
+}
+
+.VPHero[data-ui-name], h1 {
+  font-family: 'Creepster', -apple-system, serif, Garamond !important;
+}
+
+@media (min-width: 640px) {
+    .main h1 .name {
+      font-size: 56px !important;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .main h1 .name {
+      font-size: 80px !important;
+    }
+  }
+
+.page-title {
+    font-size: 48px !important;
+    line-height: 56px !important;
+    background: var(--halloween-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+/* Here Halloween styles end  */
+
 
 ::selection {
   background: rgba(171, 108, 254, 0.24);
@@ -62,13 +109,12 @@
  * Component: Home
  * -------------------------------------------------------------------------- */
 
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(315deg, #8932FF 35%, #4FD3FE 96%);
-
-  --vp-home-hero-image-background-image: linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
-  --vp-home-hero-image-filter: blur(40px);
-}
+/* :root {
+    --vp-home-hero-name-color: #FF642D;
+    --vp-home-hero-name-background: -webkit-linear-gradient(315deg, #8932FF 35%, #4FD3FE 96%);
+    --vp-home-hero-image-background-image: linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
+    --vp-home-hero-image-filter: blur(40px);
+} */
 
 .image-container {
   width: 240px !important;
@@ -564,7 +610,13 @@ video {
 
 /* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
-h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
+h1[class],
+h2[class],
+h3[class],
+h4[class],
+h5[class],
+h6[class] {
+  font-family: 'Inter', -apple-system, sans-serif, Arial;
   font-weight: var(--intergalactic-bold, 700);
 }
 
@@ -572,7 +624,13 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--vp-c-indigo-1) !important;
 }
 
-.vp-doc h1[class], .vp-doc h2[class], .vp-doc h3[class], .vp-doc h4[class], .vp-doc h5[class], .vp-doc h6[class] {
+.vp-doc h1[class],
+.vp-doc h2[class],
+.vp-doc h3[class],
+.vp-doc h4[class],
+.vp-doc h5[class],
+.vp-doc h6[class] {
+  font-family: 'Inter', -apple-system, sans-serif, Arial;
   margin: unset;
 }
 
@@ -604,7 +662,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--vp-c-indigo-1);
 }
 
-.vp-doc li[class] + li[class]:not([data-ui-name="InputTags.Tag"]) {
+.vp-doc li[class]+li[class]:not([data-ui-name="InputTags.Tag"]) {
   margin: unset;
 }
 
@@ -662,7 +720,10 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   margin: 24px 0 16px 0;
 }
 
-.vp-doc a[class]:not(.playground-runtime a), .vp-doc a[class]:hover:not(.playground-runtime a), .vp-doc a[class]:active:not(.playground-runtime a), .vp-doc a[class]:visited:not(.playground-runtime a) {
+.vp-doc a[class]:not(.playground-runtime a),
+.vp-doc a[class]:hover:not(.playground-runtime a),
+.vp-doc a[class]:active:not(.playground-runtime a),
+.vp-doc a[class]:visited:not(.playground-runtime a) {
   color: var(--vp-c-indigo-2);
 }
 
@@ -1053,6 +1114,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   text-decoration: line-through;
   color: var(--intergalactic-text-secondary);
 }
+
 .types-deprecated-tag {
   color: var(--vp-c-danger-1);
   border: 1px solid var(--vp-c-danger-3);
@@ -1073,6 +1135,6 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   padding: 20px;
 }
 
-.vp-doc li[data-ui-name] + li[data-ui-name] {
+.vp-doc li[data-ui-name]+li[data-ui-name] {
   margin-top: 2px;
 }

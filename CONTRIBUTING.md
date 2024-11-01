@@ -3,7 +3,7 @@ First of all, thank you for your interest in the library. We'd love to accept yo
 ### Prerequisites
 
 1. Install the latest LTS version of [Node.js](https://nodejs.org/en).
-2. Install [pnpm](https://pnpm.js.org) globally by running: `npm i -g pnpm`.
+2. Install [pnpm](https://pnpm.js.org) globally by running: `npm i -g pnpm@8`.
 3. Set up commit signing for your contributions. Follow these steps:
    - [Generate a GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
    - [Add your GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)
@@ -64,6 +64,7 @@ To preview the website locally, run `pnpm website`. The site will be accessible 
 Ensuring the accessibility of our components is a priority. We conduct automated screen reader tests, focusing on VoiceOver screen reader in Safari on macOS. Here's how to set up and run these tests:
 
 - To set up the environment, execute `pnpm vo-test:setup`.
+- Open  `voiceOver Utility > General` on your mac and enable the setting "Allow VoiceOver to be controlled with AppleScript"
 - Run the tests using the command `pnpm vo-test`.
 
 ## Caveats
@@ -211,7 +212,7 @@ Here's how the plugin works:
 3. The plugin modifies the component's JS code to add a `className` like `.SLink-xxx-enableVisited` if the `enableVisited` prop is provided. This happens for each selector.
 4. The import statement for the `.shadow.css` file is removed, and the CSS rules from the file are moved to the compiled JS output. These rules operate like CSS-in-JS, and they are incorporated into the page's stylesheets from the JS code.
 
-If users prefer to include CSS in the final bundle in the traditional way, they can follow the instructions provided in this [guide](https://developer.semrush.com/intergalactic/internal/production/).
+If users prefer to include CSS in the final bundle in the traditional way, they can follow the instructions provided in this [guide](https://developer.semrush.com/intergalactic/get-started-guide/dev-starter-guide/production-tips).
 
 ## Conduct
 

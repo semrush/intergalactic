@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.1] - 2024-10-25
+
+### Fixed
+
+- Returning focus to trigger for focusable interaction popovers.
+
 ## [5.43.0] - 2024-10-18
 
 ### Changed
