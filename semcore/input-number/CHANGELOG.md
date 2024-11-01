@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.1] - 2024-10-31
+
+### Added
+
+- Possibility to press both `.` and `,` as a decimal separator.
+
 ## [5.39.0] - 2024-10-28
 
 ### Changed

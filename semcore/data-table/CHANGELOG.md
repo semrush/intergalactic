@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.1] - 2024-11-01
+
+### Fixed
+
+- Unexpected focusing on the first element of table after first clicking on some interactive element inside it.
+
 ## [4.47.0] - 2024-10-28
 
 ### Changed

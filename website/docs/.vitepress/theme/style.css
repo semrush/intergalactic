@@ -1,6 +1,6 @@
 @import url('../../../../semcore/utils/lib/themes/auto.css');
 /* Second import for Halloween only */
-@import url('../../../src/fonts.css');
+@import url('halloween/fonts.css');
 
 /**
  * Customize default theme styling by overriding CSS variables:
@@ -33,7 +33,7 @@
       font-size: 56px !important;
     }
   }
-  
+
   @media (min-width: 960px) {
     .main h1 .name {
       font-size: 80px !important;

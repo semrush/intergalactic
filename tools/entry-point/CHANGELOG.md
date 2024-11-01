@@ -1,3 +1,39 @@
+## [15.115.0] - 2024-11-01
+
+### @semcore/button
+
+- **Fixed** Disabled state is not applied to ButtonLink.
+
+### @semcore/d3-chart
+
+- **Fixed** Fix unpredictable behavoir of charts with pattern fill, when interacting with chart's legend
+
+### @semcore/data-table
+
+- **Fixed** Unexpected focusing on the first element of table after first clicking on some interactive element inside it.
+
+### @semcore/ellipsis
+
+- **Fixed** Logic of showing tooltip with one line text and float width value.
+
+### @semcore/icon
+
+- **Added** New `PopupAlt` icon.
+
+### @semcore/input-number
+
+- **Added** Possibility to press both `.` and `,` as a decimal separator.
+
+### @semcore/modal
+
+- **Changed** Added selector specificity for modal close button.
+
+### @semcore/utils
+
+- **Added** `display: contents` for ThemeProvider element by default.
+- **Fixed** Types for ThemeProvider: added all `JSX.IntrinsicElements['div']` types.
+- **Changed** Code cleanup - removed unnecessary promise in focus handler for focusBorders.
+
 ## [15.114.0] - 2024-10-28
 
 ### @semcore/ellipsis

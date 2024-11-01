@@ -57,7 +57,7 @@ SButton[keyboardFocused] {
   outline-width: 3px;
 }
 
-SButton[visually-disabled] {
+SButton[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   /* Disable link interactions */
