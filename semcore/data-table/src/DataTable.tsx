@@ -31,7 +31,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import style from './style/data-table.shadow.css';
 import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
-import { hasParent } from '@semcore/utils/lib/hasParent';
+import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
@@ -55,6 +55,7 @@ type AsProps = {
   uniqueKey: string;
   uid?: string;
   getI18nText?: (str: string) => string;
+  focusSourceRef?: React.RefObject<'mouse' | 'keyboard' | 'none'>;
 };
 
 type HeadAsProps = {
@@ -238,7 +239,7 @@ class RootDefinitionTable extends Component<AsProps> {
   static displayName = 'DefinitionTable';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages), focusSourceEnhance()];
 
   static defaultProps = {
     use: 'primary',
@@ -249,7 +250,6 @@ class RootDefinitionTable extends Component<AsProps> {
 
   focusedCell: [RowIndex, ColIndex] = [0, 0];
   cellsMap = new Map<RowIndex, Map<ColIndex, HTMLElement>>();
-  lastInteraction: 'mouse' | 'keyboard' | null = null;
 
   columns: Column[] = [];
 
@@ -675,7 +675,6 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   handleKeyDown = (e: React.KeyboardEvent) => {
-    this.lastInteraction = 'keyboard';
     switch (e.key) {
       case 'Tab': {
         this.setInert(true);
@@ -707,7 +706,7 @@ class RootDefinitionTable extends Component<AsProps> {
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
-      this.lastInteraction !== 'mouse'
+      this.asProps.focusSourceRef?.current === 'keyboard'
     ) {
       if (this.cellsMap.size === 0) {
         this.fillCells();
@@ -741,7 +740,6 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   handleMouseMove = () => {
-    this.lastInteraction = 'mouse';
     this.setInert(false);
   };
 
