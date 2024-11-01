@@ -78,6 +78,15 @@ class RootSelect extends AbstractDropdown {
         null,
         (visible) => {
           if (visible === true) {
+            const hasInputSearch = isAdvanceMode(
+              this.asProps.Children,
+              [Select.InputSearch.displayName],
+              true,
+            );
+            const defaultIndex = hasInputSearch ? null : 0;
+
+            this.handlers.highlightedIndex(defaultIndex);
+
             setTimeout(() => {
               const options = this.menuRef.current?.querySelectorAll('[role="option"]');
               const selected = this.menuRef.current?.querySelector('[aria-selected="true"]');
@@ -199,23 +208,6 @@ class RootSelect extends AbstractDropdown {
 
   getDividerProps() {
     return { my: 1, 'aria-disabled': 'true' };
-  }
-
-  handleOpenKeyDown(e) {
-    super.handleOpenKeyDown(e);
-
-    if (this.asProps.visible !== true && ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
-      const hasInputSearch = isAdvanceMode(
-        this.asProps.Children,
-        [Select.InputSearch.displayName],
-        true,
-      );
-      const defaultIndex = hasInputSearch ? null : 0;
-
-      this.handlers.highlightedIndex(defaultIndex);
-
-      return false;
-    }
   }
 
   renderChildrenTrigger(value, options) {

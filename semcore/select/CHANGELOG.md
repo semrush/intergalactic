@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.2] - 2024-11-01
+
+### Fixed
+
+- The `Option` not being highlighted by default when opening `Select` by `focus` interaction.
+
 ## [4.48.1] - 2024-10-28
 
 ### Changed
