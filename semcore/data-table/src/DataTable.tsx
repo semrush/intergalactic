@@ -31,6 +31,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import style from './style/data-table.shadow.css';
 import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import { hasParent } from '@semcore/utils/lib/hasParent';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
@@ -674,6 +675,7 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   handleKeyDown = (e: React.KeyboardEvent) => {
+    this.lastInteraction = 'keyboard';
     switch (e.key) {
       case 'Tab': {
         this.setInert(true);
@@ -703,7 +705,10 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+    if (
+      (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
+      this.lastInteraction !== 'mouse'
+    ) {
       if (this.cellsMap.size === 0) {
         this.fillCells();
 
