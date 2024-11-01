@@ -139,7 +139,7 @@ const Demo = () => {
         </HoverLine.Tooltip>
         <StackedArea x='time'>
           {legendItems.map((item, index) => {
-            const itemIndex = index + 1;
+            const itemIndex = String(index + 1);
             return (
               item.checked && (
                 <StackedArea.Area
