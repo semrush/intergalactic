@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.0] - 2024-11-01
+
+### Added
+
+- `display: contents` for ThemeProvider element by default.
+
+### Fixed
+
+- Types for ThemeProvider: added all `JSX.IntrinsicElements['div']` types.
+
 ## [4.42.1] - 2024-10-29
 
 ### Changed
