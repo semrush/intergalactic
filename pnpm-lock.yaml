@@ -2728,6 +2728,9 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@semcore/icon':
+        specifier: workspace:*
+        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
