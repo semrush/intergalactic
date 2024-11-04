@@ -59,7 +59,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
 
     if (children !== undefined) {
       return sstyled(styles)(
-        <SLineGauge render={Box} segments baseBgColor={resolveColor(baseBgColor)}>
+        <SLineGauge render={Box} segments base-bg-color={resolveColor(baseBgColor)}>
           <SLineGaugeSegment>
             <Children />
           </SLineGaugeSegment>
