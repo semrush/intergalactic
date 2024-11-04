@@ -1,7 +1,7 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Website Examples visual regression', () => {
-//this is exmaple of screenshot test
+  //this is exmaple of screenshot test
   test('[Basic] Button Renders and Visible', async ({ page }) => {
     await page.goto('/?path=/story/components-button--simple-button');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
@@ -33,5 +33,4 @@ test.describe('Website Examples visual regression', () => {
     await element.waitFor();
     await expect(element).toHaveScreenshot();
   });
-
 });

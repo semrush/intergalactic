@@ -1,8 +1,6 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Button base tests', () => {
-
-
   test('[Regular Button] Is Visible', async ({ page }) => {
     await page.goto('/?path=/story/components-button--simple-button');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
@@ -11,7 +9,9 @@ test.describe('Button base tests', () => {
     await expect(button).toBeVisible();
   });
 
-  test('[Button with addon and aria-label] Poppep by mouse iteraction @regression @button', async ({ page }) => {
+  test('[Button with addon and aria-label] Poppep by mouse iteraction @regression @button', async ({
+    page,
+  }) => {
     await page.goto('/?path=/story/components-button--button-with-no-visible-text');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     await frame.locator('body').waitFor();
@@ -32,23 +32,21 @@ test.describe('Button base tests', () => {
     }
   });
 
-  test('[Button with addon and aria-label] Poppep by keyboard iteraction @regression', async ({ page }) => {
+  test('[Button with addon and aria-label] Poppep by keyboard iteraction @regression', async ({
+    page,
+  }) => {
     await page.goto('/?path=/story/components-button--button-with-no-visible-text');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     const emelent = frame.locator('body');
     await emelent.waitFor();
     const popperConfirmLocator = frame.locator('text=Confirm action');
     const popperCloseLocator = frame.locator('text=Close notification');
-    const confirmButtonLocator = frame.locator('button[aria-label="Confirm action"]');
-    const x = 50; 
-    const y = 50; 
+    const x = 50;
+    const y = 50;
     await emelent.click({ position: { x, y } });
-    await page.keyboard.press('Tab'); 
+    await page.keyboard.press('Tab');
     await expect(popperConfirmLocator).toBeVisible();
-    await page.keyboard.press('Tab'); 
-    const closeButtonLocator = frame.locator('button[aria-label="Close notification"]');
+    await page.keyboard.press('Tab');
     await expect(popperCloseLocator).toBeVisible();
   });
-
 });
-
