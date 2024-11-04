@@ -126,10 +126,22 @@ class FeaturePopoverPopper extends Component {
       animationsDisabled,
       getI18nText,
       zIndex,
+      'aria-label': ariaLabel,
+      'aria-describedBy': ariaDescribedBy,
+      title,
     } = this.asProps;
 
     return sstyled(styles)(
-      <Popper.Popper disableEnforceFocus zIndex={zIndex} tabIndex={0} autoFocus>
+      <Popper.Popper
+        disableEnforceFocus
+        zIndex={zIndex}
+        tabIndex={0}
+        autoFocus
+        role={'dialog'}
+        aria-describedby={ariaDescribedBy}
+        aria-label={ariaLabel}
+        title={title}
+      >
         <Animation
           visible={visible}
           duration={duration}
@@ -137,7 +149,10 @@ class FeaturePopoverPopper extends Component {
           initialAnimation
           animationsDisabled={animationsDisabled}
         >
-          <SFeaturePopover render={Box} role={'dialog'}>
+          <SFeaturePopover
+            render={Box}
+            __excludeProps={['aria-label', 'aria-describedBy', 'title']}
+          >
             {closeIcon && (
               <SClose
                 aria-label={getI18nText('close')}
