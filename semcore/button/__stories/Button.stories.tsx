@@ -93,7 +93,7 @@ export const ButtonLikeALink: Story = () => {
   );
 };
 
-export const ButtonWithNoVisibleTest: Story = () => {
+export const ButtonWithNoVisibleText: Story = () => {
   return (
     <>
       <Button addonLeft={CheckM} aria-label='Confirm action' mr={2} />
