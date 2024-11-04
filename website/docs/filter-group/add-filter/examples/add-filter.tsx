@@ -72,6 +72,11 @@ const filters = [
     name: 'Colors',
     values: ['Blue', 'Gray', 'Green', 'Orange', 'Pink', 'Red', 'Salad', 'Violet', 'Yellow'],
   },
+  { name: 'Devices', values: ['Desktop', 'Phone', 'Tablet'] },
+  {
+    name: 'Languages',
+    values: ['Chinese', 'English', 'French', 'German', 'Italian', 'Korean', 'Spanish', 'Turkish'],
+  },
   { name: 'Materials', values: ['Glass', 'Metal', 'Paper', 'Wood'] },
   { name: 'Shapes', values: ['Circle', 'Rectangle', 'Star', 'Triangle'] },
 ];
