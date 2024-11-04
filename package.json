@@ -10,7 +10,7 @@
     "install-n-browser-test": "pnpm install && pnpm browser-test",
     "install-n-axe-test": "pnpm install && pnpm axe-test",
     "install-n-storybook-test": "pnpm install && npx concurrently -k -s first \"pnpm storybook:build --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && pnpm run storybook:test\"",
-    "install-n-storybook-snapshot-test": "pnpm install && pnpm storybook-snapshot:test",
+    "install-n-storybook-snapshot-test": "pnpm install && npx concurrently -k -s first \"pnpm storybook:build --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && pnpm storybook:snapshot-test\"",
     "test": "vitest",
     "test:setup": "docker build -t intergalactic-playwright -f playwright.dockerfile .",
     "test:docker": "pnpm run-in-docker pnpm install-n-test",
