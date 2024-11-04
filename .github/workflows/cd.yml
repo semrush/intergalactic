@@ -287,3 +287,53 @@ jobs:
       - name: Fail if test step actually failed
         if: steps.axe-testing.outcome != 'success'
         run: exit 1
+  storybook-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - uses: pnpm/action-setup@v4.0.0
+        with:
+          version: 8.7.6
+          run_install: false
+
+      - name: Storybook testing
+        id: storybook-testing
+        run: |
+          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.43.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.storybook.config.ts"
+        continue-on-error: true
+      - name: Save test results as artifacts
+        if: steps.storybook-testing.outcome != 'success'
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-testing-failure-output
+          path: test-results
+          retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.storybook-testing.outcome != 'success'
+        run: exit 1
+  storybook-snapshot-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - uses: pnpm/action-setup@v4.0.0
+        with:
+          version: 8.7.6
+          run_install: false
+
+      - name: Storybook snapshot testing
+        id: storybook-snapshot-testing
+        run: |
+          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.43.0-jammy bash -c "npm install --global pnpm@8.11.0 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.storybook-snapshot.config.ts"
+        continue-on-error: true
+      - name: Save test results as artifacts
+        if: steps.storybook-snapshot-testing.outcome != 'success'
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-snapshot-testing-failure-output
+          path: test-results
+          retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.storybook-snapshot-testing.outcome != 'success'
+        run: exit 1
