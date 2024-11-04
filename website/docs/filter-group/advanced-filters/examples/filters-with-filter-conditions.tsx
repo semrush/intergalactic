@@ -71,11 +71,15 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
     </Flex>
     {closable ? (
-      <Button use='tertiary' theme='muted' onClick={onClose}>
-        <Button.Addon tag={Hint} title={'Remove filter'} ignorePortalsStacking>
-          <TrashM />
-        </Button.Addon>
-      </Button>
+      <Button
+        use='tertiary'
+        theme='muted'
+        onClick={onClose}
+        tag={Hint}
+        title={'Remove filter'}
+        ignorePortalsStacking
+        addonLeft={TrashM}
+      />
     ) : null}
   </Flex>
 );
