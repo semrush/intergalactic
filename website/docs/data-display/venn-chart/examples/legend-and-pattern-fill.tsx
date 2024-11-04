@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Venn, colors } from 'intergalactic/d3-chart';
+import { Plot, Venn } from 'intergalactic/d3-chart';
 import { Text } from 'intergalactic/typography';
 import { ChartLegend } from '@semcore/d3-chart';
 
@@ -19,25 +19,25 @@ const defaultLegendItems = [
     id: 'G',
     label: 'Good',
     checked: true,
-    color: colors['green-03'],
+    color: 'chart-palette-order-1',
   },
   {
     id: 'F',
     label: 'Fast',
     checked: true,
-    color: colors['blue-03'],
+    color: 'chart-palette-order-2',
   },
   {
     id: 'C',
     label: 'Cheap',
     checked: true,
-    color: colors['orange-03'],
+    color: 'chart-palette-order-3',
   },
   {
     id: 'U',
     label: 'Unknown',
     checked: true,
-    color: colors['pink-03'],
+    color: 'chart-palette-order-4',
   },
 ];
 
