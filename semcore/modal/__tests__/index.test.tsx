@@ -2,13 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import {
-  cleanup,
-  fireEvent,
-  render,
-  userEvent,
-  waitFor,
-} from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -346,9 +340,11 @@ describe('Modal', () => {
     expect(getByTestId('openModalButton')).toHaveFocus();
 
     await userEvent.keyboard('[Enter]');
-    await waitFor(() => expect(getByText('Do you want to save your changes?')).toBeTruthy());
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    expect(getByText('Do you want to save your changes?')).toBeTruthy();
 
     await userEvent.keyboard('[Escape]');
-    await waitFor(() => expect(getByTestId('openModalButton')).toHaveFocus());
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    expect(getByTestId('openModalButton')).toHaveFocus();
   });
 });
