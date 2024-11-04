@@ -16,13 +16,13 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "baseUrl": "./semcore",
-    "typeRoots": ["node_modules/@types", "tools/@types"]
-  },
-  "paths": {
-    "@semcore/ui/*": ["semcore/*"],
-    "intergalactic/*": ["semcore/*"],
-    "@semcore/*": ["semcore/*"],
-    "@tools/*": ["tools/*"]
+    "typeRoots": ["node_modules/@types", "tools/@types"],
+    "paths": {
+      "@semcore/ui/*": ["*/src"],
+      "intergalactic/*": ["*/src"],
+      "@semcore/*": ["*/src"],
+      "@tools/*": ["../tools/*"]
+    }
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
   "include": ["semcore", "tools"],
