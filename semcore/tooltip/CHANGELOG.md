@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.46.1] - 2024-11-04
+
+### Added
+
+- `role=status` to TooltipPopper Wrapper.
+
 ## [6.46.0] - 2024-11-01
 
 ### Changed

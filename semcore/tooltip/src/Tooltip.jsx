@@ -150,7 +150,7 @@ function TooltipPopper(props) {
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        <STooltipPortalledWrapper aria-live={ariaLive} zIndex={zIndex}>
+        <STooltipPortalledWrapper role={'status'} aria-live={ariaLive} zIndex={zIndex}>
           <STooltip
             render={Popper.Popper}
             use:disablePortal
