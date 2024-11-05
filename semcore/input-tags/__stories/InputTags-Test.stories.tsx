@@ -13,7 +13,7 @@ import { SelectTagForFiltering } from './InputTags.stories';
 
 const meta: Meta<typeof InputTags> = {
   title: 'Components/InputTags/Test',
-  component: InputTags
+  component: InputTags,
 };
 
 export default meta;
@@ -23,11 +23,10 @@ const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
 export const SelectTagForFilteringTest: Story = {
   render: () => {
-
     return (
       <>
         <Button addonLeft={CloseM} aria-label='Prev focusable element' />
-          <SelectTagForFiltering.render />
+        <SelectTagForFiltering.render />
         <Button addonLeft={CloseM} aria-label='Next focusable element' />
       </>
     );
