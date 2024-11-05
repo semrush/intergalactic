@@ -6,7 +6,7 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ## Basic example
 
-To see the `FeaturePopover` again, reload the page.
+To open the `FeaturePopover` again, reload the page.
 
 ::: sandbox
 
