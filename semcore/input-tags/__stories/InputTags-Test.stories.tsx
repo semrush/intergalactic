@@ -10,7 +10,7 @@ import Button from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
 
 const meta: Meta<typeof InputTags> = {
-  title: 'Components/InputTags',
+  title: 'Components/InputTags/Test',
   component: InputTags
 };
 
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof InputTags>;
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
-export const SelectTagForFiltering: Story = {
+export const SelectTagForFilteringTest: Story = {
   render: () => {
     const selectTriggerRef = React.useRef(null);
     const [tags, setTags] = React.useState([]);

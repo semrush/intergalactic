@@ -33,8 +33,9 @@
     "@semcore/testing-utils": "1.0.0",
     "@semcore/tooltip": "*",
     "@semcore/select": "*",
-    "@semcore/dropdown-menu": "*",
     "@semcore/typography": "*",
-    "@semcore/flex-box": "*"
+    "@semcore/flex-box": "*",
+    "@semcore/button": "*",
+    "@semcore/icon": "*"
   }
 }
