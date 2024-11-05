@@ -515,6 +515,11 @@ td {
   border-radius: 6px;
 }
 
+.embedded-documentation-iframe {
+  width: 100%;
+  border: 0;
+}
+
 img,
 video {
   border-radius: 6px;
