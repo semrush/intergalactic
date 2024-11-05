@@ -25,14 +25,14 @@ export const SelectTagForFiltering: Story = {
     const [tags, setTags] = React.useState([]);
     const [valueInput, setValueInput] = React.useState('');
     const [visible, setVisible] = React.useState(false);
-  
+
     function onRemoveLastTag() {
       if (tags.length) {
         setValueInput(tags[tags.length - 1]);
         setTags(tags.slice(0, -1));
       }
     }
-  
+
     function onRemoveTag(index, e) {
       e.stopPropagation();
       const newTags = tags.filter((tag, i) => i !== index);
@@ -41,28 +41,26 @@ export const SelectTagForFiltering: Story = {
         selectTriggerRef.current?.focus();
       }
     }
-  
+
     function onChangeValue(value) {
       setValueInput(value);
       setVisible(true);
     }
-  
+
     function onChange(value) {
       setTags(value);
       setValueInput('');
     }
-  
+
     function onBlurValue() {
       setValueInput('');
     }
-  
+
     const tagsFilter = tagsSelect.filter((tag) => {
       return tag.toLowerCase().includes(valueInput.toLowerCase()) && !tags.includes(tag);
     });
 
     return (
-      <>
-      <Button addonLeft={CloseM} aria-label='Prev focusable element' />
       <Flex direction='column'>
       <Text tag='label' size={300} htmlFor='secondary-social-medias'>
         Social media
@@ -112,8 +110,6 @@ export const SelectTagForFiltering: Story = {
         </Select.Menu>
       </Select>
     </Flex>
-    <Button addonLeft={CloseM} aria-label='Next focusable element' />
-    </>
     );
   },
 };
