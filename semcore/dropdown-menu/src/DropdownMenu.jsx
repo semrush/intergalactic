@@ -94,12 +94,12 @@ class DropdownMenuRoot extends AbstractDropdown {
   }
 
   getItemProps(props, index) {
-    const { highlightedIndex } = this.asProps;
+    const { highlightedIndex, visible } = this.asProps;
     const isHighlighted = index === highlightedIndex;
 
     const itemProps = {
       ...super.getItemProps(props, index),
-      tabIndex: isHighlighted ? 0 : -1,
+      tabIndex: isHighlighted && visible ? 0 : -1,
       ref: (node) => this.itemRef(props, index, node),
     };
 
