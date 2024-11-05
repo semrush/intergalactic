@@ -21,7 +21,7 @@ const Demo = () => {
       </Text>
       <Select placeholder='Select a fruit'>
         <Select.Trigger id='options-filtering-advanced' mr='auto' mt={2} />
-        <Select.Popper>
+        <Select.Popper aria-label={'Fruit options with search'}>
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
             <InputSearch.Value

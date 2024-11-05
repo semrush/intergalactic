@@ -23,7 +23,7 @@ const Demo = () => {
         </Button.Addon>
         <Button.Text>Export</Button.Text>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Popper wMax='256px'>
+      <DropdownMenu.Popper wMax='256px' aria-label={'Export options'}>
         <SpinContainer loading={loading}>
           <DropdownMenu.List>
             <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
