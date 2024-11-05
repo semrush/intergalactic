@@ -1,8 +1,8 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Input-Tags Render and Visible', () => {
-  //this is exmaple of screenshot test
-  test('Input Tag with Select - Empty Input ans expanded select', async ({ page , browserName}) => {
+ 
+  test('Input Tag with Select - Empty Input ans expanded select', async ({ page, browserName }) => {
     await page.goto('/?path=/story/components-inputtags--select-tag-for-filtering');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     await frame.locator('body').waitFor();
@@ -11,14 +11,12 @@ test.describe('Input-Tags Render and Visible', () => {
     const y = 30;
     await element.click({ position: { x, y } });
     await element.click({ position: { x, y } });
-    if(browserName === 'firefox'){
-        await page.keyboard.press('Tab');
-      }
-      else{
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('Tab');
-      }  
+    if (browserName === 'firefox') {
+      await page.keyboard.press('Tab');
+    } else {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+    }
     await expect(element).toHaveScreenshot();
   });
-
 });
