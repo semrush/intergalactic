@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
@@ -17,7 +17,7 @@ const meta: Meta<typeof InputTags> = {
 export default meta;
 type Story = StoryObj<typeof InputTags>;
 
-const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
+const tagsSelect: string[] = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
 export const SelectTagForFiltering: Story = {
   render: () => {
@@ -33,21 +33,22 @@ export const SelectTagForFiltering: Story = {
       }
     }
 
-    function onRemoveTag(index, e) {
+    function onRemoveTag(index: number, e: React.MouseEvent<HTMLElement>) {
       e.stopPropagation();
       const newTags = tags.filter((tag, i) => i !== index);
+      const selectTriggerRef = useRef<HTMLElement | null>(null);
       setTags(tags.filter((tag, i) => i !== index));
       if (newTags.length === index) {
         selectTriggerRef.current?.focus();
       }
     }
 
-    function onChangeValue(value) {
+    function onChangeValue(value: React.SetStateAction<string>) {
       setValueInput(value);
       setVisible(true);
     }
 
-    function onChange(value) {
+    function onChange(value: React.SetStateAction<never[]>) {
       setTags(value);
       setValueInput('');
     }
@@ -56,8 +57,10 @@ export const SelectTagForFiltering: Story = {
       setValueInput('');
     }
 
-    const tagsFilter = tagsSelect.filter((tag) => {
-      return tag.toLowerCase().includes(valueInput.toLowerCase()) && !tags.includes(tag);
+    const tagsFilter = tagsSelect.filter((tag: string) => {
+      return (
+        tag.toLowerCase().includes(valueInput.toLowerCase()) && !(tags as string[]).includes(tag)
+      );
     });
 
     return (
