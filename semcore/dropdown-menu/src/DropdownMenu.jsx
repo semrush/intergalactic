@@ -94,12 +94,8 @@ class DropdownMenuRoot extends AbstractDropdown {
   }
 
   getItemProps(props, index) {
-    const { highlightedIndex, visible } = this.asProps;
-    const isHighlighted = index === highlightedIndex;
-
     const itemProps = {
       ...super.getItemProps(props, index),
-      tabIndex: isHighlighted && visible ? 0 : -1,
       ref: (node) => this.itemRef(props, index, node),
     };
 
@@ -149,6 +145,11 @@ class DropdownMenuRoot extends AbstractDropdown {
           e.stopPropagation();
           return false;
         }
+      }
+      if (place === 'list' && e.key === 'Tab') {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
       }
     };
   }
