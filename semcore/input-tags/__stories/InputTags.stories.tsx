@@ -21,7 +21,7 @@ const tagsSelect: string[] = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
 export const SelectTagForFiltering: Story = {
   render: () => {
-    const selectTriggerRef = React.useRef<HTMLElement | null>(null);
+    const selectTriggerRef = React.useRef<HTMLInputElement | null>(null); 
     const [tags, setTags] = React.useState<string[]>([]);
     const [valueInput, setValueInput] = React.useState('');
     const [visible, setVisible] = React.useState(false);
