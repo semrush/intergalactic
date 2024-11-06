@@ -8,6 +8,7 @@ STooltip {
   line-height: var(--intergalactic-lh-200, 142%);
   word-wrap: break-word;
   max-width: 228px;
+  width: max-content;
   font-weight: normal;
   white-space: normal;
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));

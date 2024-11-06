@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.46.1] - 2024-11-06
+
+### Added
+
+- `max-content` width for Tooltip by default.
+
 ## [6.46.0] - 2024-11-01
 
 ### Changed
