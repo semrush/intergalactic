@@ -719,4 +719,31 @@ describe('ButtonLink', () => {
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
+
+  test.concurrent('disabled renders correctly', async ({ task }) => {
+    const component = (
+      <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
+        <ButtonLink addonLeft={CheckM} disabled={true}>
+          Button Link primary
+        </ButtonLink>
+        <ButtonLink use={'secondary'} disabled={true}>
+          <ButtonLink.Addon>
+            <CheckM />
+          </ButtonLink.Addon>
+          <ButtonLink.Text>Button Link secondary</ButtonLink.Text>
+        </ButtonLink>
+        <ButtonLink addonRight={CloseM} color={'text-critical'} disabled={true}>
+          Close
+        </ButtonLink>
+
+        <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} disabled={true} />
+
+        <ButtonLink addonLeft={CheckM} size={500} disabled={true}>
+          Large size
+        </ButtonLink>
+      </Flex>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
 });

@@ -3,7 +3,7 @@ import { useForkRef } from './ref';
 import useEnhancedEffect from './use/useEnhancedEffect';
 
 type Tokens = { [tokenName: string]: string };
-export type ThemeProviderProps = {
+export type ThemeProviderProps = JSX.IntrinsicElements['div'] & {
   tokens: Tokens;
   children: React.ReactNode;
 };
@@ -26,8 +26,10 @@ export const useContextTheme = (ref: React.RefObject<HTMLElement>, available?: b
     }
   }, [tokensKey, available]);
 };
-export const contextThemeEnhance = (getAvailable?: (props: any) => boolean | undefined) => {
-  return (props: any) => {
+export const contextThemeEnhance = <T extends Record<string, any> = {}>(
+  getAvailable?: (props: T) => boolean | undefined,
+) => {
+  return (props: T) => {
     const existingRef = props.ref;
     const available = React.useMemo(() => getAvailable?.(props), Object.values(props));
     const enhanceRef: any = React.useRef();
@@ -44,19 +46,26 @@ export const contextThemeEnhance = (getAvailable?: (props: any) => boolean | und
 
 const themeContext = React.createContext<Tokens | null>(null);
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
-  const { tokens: providedTokens = {}, children, tag: Tag = 'div', ...restProps } = props as any;
+export const ThemeProvider = (props: ThemeProviderProps): React.ReactElement => {
+  const { tokens: providedTokens = {}, children, style: providedStyle = {}, ...restProps } = props;
   const contextTokens = React.useContext(themeContext);
   const tokens = React.useMemo(
     () => (contextTokens === null ? providedTokens : { ...contextTokens, ...providedTokens }),
     [contextTokens, providedTokens],
   );
+  const style: React.CSSProperties = React.useMemo(() => {
+    return {
+      display: 'contents',
+      ...tokens,
+      ...providedStyle,
+    };
+  }, [tokens, providedStyle]);
 
   return (
     <themeContext.Provider value={tokens}>
-      <Tag {...restProps} style={tokens}>
+      <div {...restProps} style={style}>
         {children}
-      </Tag>
+      </div>
     </themeContext.Provider>
-  ) as any;
+  );
 };

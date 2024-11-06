@@ -1,7 +1,7 @@
 {
   "name": "@semcore/grid",
   "description": "Semrush Grid Component",
-  "version": "5.36.0",
+  "version": "5.37.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,8 +12,8 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.42.0",
-    "@semcore/flex-box": "5.37.0"
+    "@semcore/utils": "4.43.0",
+    "@semcore/flex-box": "5.38.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

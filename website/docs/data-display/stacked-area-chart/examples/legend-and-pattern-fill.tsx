@@ -28,7 +28,36 @@ const lineColors = {
 
 const dataHints = makeDataHintsContainer();
 
+const getDegaultLegendItems = () => {
+  return Object.keys(data[0])
+    .filter((name) => name !== 'time')
+    .map((item) => {
+      return {
+        id: item,
+        label: `Stack ${item}`,
+        checked: true,
+        color: lineColors[item],
+      };
+    });
+};
+
 const Demo = () => {
+  const [legendItems, setLegendItems] = React.useState(getDegaultLegendItems);
+
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      const newItems = prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+
+      return newItems;
+    });
+  }, []);
+
   const MARGIN = 28;
   const width = 500;
   const height = 260;
@@ -41,17 +70,6 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 15]);
 
-  const legendItems = Object.keys(data[0])
-    .filter((name) => name !== 'time')
-    .map((item) => {
-      return {
-        id: item,
-        label: `Stack ${item}`,
-        checked: true,
-        color: lineColors[item],
-      };
-    });
-
   return (
     <>
       <ChartLegend
@@ -60,6 +78,7 @@ const Demo = () => {
         shape={'Checkbox'}
         patterns
         aria-label={'Legend for the stacked area chart'}
+        onChangeVisibleItem={handleChangeVisible}
       />
       <Plot
         data={data}
@@ -95,24 +114,20 @@ const Demo = () => {
                       day: 'numeric',
                     })}
                   </HoverLine.Tooltip.Title>
-                  <Flex justifyContent='space-between'>
-                    <HoverLine.Tooltip.Dot mr={4} color={lineColors[1]}>
-                      {legendItems[0].label}
-                    </HoverLine.Tooltip.Dot>
-                    <Text bold>{data[xIndex][1]}</Text>
-                  </Flex>
-                  <Flex mt={2} justifyContent='space-between'>
-                    <HoverLine.Tooltip.Dot mr={4} color={lineColors[2]}>
-                      {legendItems[1].label}
-                    </HoverLine.Tooltip.Dot>
-                    <Text bold>{data[xIndex][2]}</Text>
-                  </Flex>
-                  <Flex mt={2} justifyContent='space-between'>
-                    <HoverLine.Tooltip.Dot mr={4} color={lineColors[3]}>
-                      {legendItems[2].label}
-                    </HoverLine.Tooltip.Dot>
-                    <Text bold>{data[xIndex][3]}</Text>
-                  </Flex>
+
+                  {legendItems.map((item, index) => {
+                    const itemIndex = index + 1;
+
+                    return (
+                      <Flex key={item.id} justifyContent='space-between'>
+                        <HoverLine.Tooltip.Dot mr={4} color={lineColors[itemIndex]}>
+                          {item.label}
+                        </HoverLine.Tooltip.Dot>
+                        <Text bold>{data[xIndex][itemIndex]}</Text>
+                      </Flex>
+                    );
+                  })}
+
                   <Flex mt={2} justifyContent='space-between'>
                     <Box mr={4}>Total</Box>
                     <Text bold>{data[xIndex][1] + data[xIndex][2] + data[xIndex][3]}</Text>
@@ -123,25 +138,22 @@ const Demo = () => {
           }}
         </HoverLine.Tooltip>
         <StackedArea x='time'>
-          <StackedArea.Area y='1' color={lineColors[1]} curve={curveCardinal}>
-            <StackedArea.Area.Dots />
-          </StackedArea.Area>
-          <StackedArea.Area
-            y='2'
-            fill='chart-palette-order-2'
-            color={lineColors[2]}
-            curve={curveCardinal}
-          >
-            <StackedArea.Area.Dots />
-          </StackedArea.Area>
-          <StackedArea.Area
-            y='3'
-            fill='chart-palette-order-3'
-            color={lineColors[3]}
-            curve={curveCardinal}
-          >
-            <StackedArea.Area.Dots />
-          </StackedArea.Area>
+          {legendItems.map((item, index) => {
+            const itemIndex = String(index + 1);
+            return (
+              item.checked && (
+                <StackedArea.Area
+                  key={item.id}
+                  y={itemIndex}
+                  fill={`chart-palette-order-${itemIndex}`}
+                  color={lineColors[itemIndex]}
+                  curve={curveCardinal}
+                >
+                  <StackedArea.Area.Dots />
+                </StackedArea.Area>
+              )
+            );
+          })}
         </StackedArea>
       </Plot>
     </>
