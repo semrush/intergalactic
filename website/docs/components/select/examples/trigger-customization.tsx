@@ -23,7 +23,7 @@ const Demo = () => {
         </Select.Trigger>
         <Select.Menu hMax={180}>
           {Object.keys(iso2Name).map((value) => (
-            <Select.Option style={{ display: 'block' }} key={value} value={value}>
+            <Select.Option key={value} value={value}>
               <Flags iso2={value as keyof typeof iso2Name} mr={2} />
               {formatName(iso2Name[value])}
             </Select.Option>
@@ -35,3 +35,4 @@ const Demo = () => {
 };
 
 export default Demo;
+ 
