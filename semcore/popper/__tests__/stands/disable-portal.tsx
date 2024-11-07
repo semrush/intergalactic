@@ -9,7 +9,7 @@ const Demo = () => {
     <div>
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Trigger tag={ButtonTrigger}>Disabled portal</DropdownMenu.Trigger>
-        <DropdownMenu.Popper p={5} data-testid='popper'>
+        <DropdownMenu.Popper p={5} data-testid='popper' aria-label={'Select popper'}>
           <input data-testid='input-in-popper' />
         </DropdownMenu.Popper>
       </DropdownMenu>

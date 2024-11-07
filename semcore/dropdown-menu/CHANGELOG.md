@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.43.1] - 2024-11-06
+## [4.43.2] - 2024-11-06
 
 ### Fixed
 
 - Unexpected focus on actions in DropdownMenu.Item.
+
+## [4.43.1] - 2024-11-05
+
+### Added
+
+- `DropdownPopperAriaProps` type for DropdownMenu.Popper props.
 
 ## [4.43.0] - 2024-11-01
 

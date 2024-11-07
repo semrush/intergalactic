@@ -141,7 +141,7 @@ const Demo = () => {
         onVisibleChange={handleChangeVisible}
       >
         <Select.Trigger tag={FilterTrigger}>{triggerValue}</Select.Trigger>
-        <Select.Popper>
+        <Select.Popper aria-label={'Options with search'}>
           {({ highlightedIndex }) => (
             <>
               <InputSearch

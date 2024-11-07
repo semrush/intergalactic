@@ -39,7 +39,7 @@ export type DropdownTriggerProps = PopperTriggerProps;
  * DropdownPopper must have an accessible name (aria-dialog-name).
  * It should describe popper content.
  */
-type DropdownPopperAriaProps = Intergalactic.RequireAtLeastOne<{
+export type DropdownPopperAriaProps = Intergalactic.RequireAtLeastOne<{
   'aria-label'?: string;
   'aria-labelledby'?: string;
   title?: string;
