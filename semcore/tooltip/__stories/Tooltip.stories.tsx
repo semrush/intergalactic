@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Tooltip from '@semcore/tooltip';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import Tooltip from '../src';
+import Select from '../../select/src';
+import { Text } from '../../typography/src';
+import { Flex } from '../../flex-box/src';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
