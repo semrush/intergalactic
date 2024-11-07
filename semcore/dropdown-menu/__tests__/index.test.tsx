@@ -84,7 +84,6 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-
   test.sequential('Should support hover', async ({ task }) => {
     const component = (
       <DropdownMenu>
