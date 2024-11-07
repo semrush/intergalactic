@@ -1,7 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Tooltip, { Hint, DescriptionTooltip } from '@semcore/tooltip';
+import Tooltip, { Hint, DescriptionTooltip } from '../src';
+
+import { SingletonWithTooltip } from './examples/tooltip-in-select';
+
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Link from '@semcore/link';
@@ -92,6 +95,10 @@ export const SimpleTooltip: Story = {
       </Flex>
     );
   },
+};
+
+export const Singleton: Story = {
+  render: SingletonWithTooltip,
 };
 
 export const TooltipWithRoleStatus: Story = {

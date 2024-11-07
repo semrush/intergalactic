@@ -30,6 +30,9 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "1.0.0",
+    "@semcore/button": "*",
+    "@semcore/typography": "*",
+    "@semcore/dropdown-menu": "*"
   }
 }
