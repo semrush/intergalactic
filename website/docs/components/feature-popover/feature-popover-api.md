@@ -17,7 +17,7 @@ import FeaturePopover from 'intergalactic/feature-popover';
 
 ## FeaturePopover.Trigger
 
-This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>`.
+This is the element, to which `<FeaturePopover.Popper/>` will be attached. It's fully inherited from `<Popper.Trigger/>`.
 
 ```jsx
 import FeaturePopover from 'intergalactic/feature-popover';
@@ -28,7 +28,7 @@ import FeaturePopover from 'intergalactic/feature-popover';
 
 ## FeaturePopover.Popper
 
-This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It is fully inherited from `<Popper.Popper/>`.
+This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It's fully inherited from `<Popper.Popper/>`.
 
 ```jsx
 import FeaturePopover from 'intergalactic/feature-popover';
