@@ -2752,21 +2752,12 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@semcore/button':
-        specifier: workspace:*
-        version: link:../button
       '@semcore/icon':
         specifier: workspace:*
         version: link:../icon
-      '@semcore/link':
-        specifier: workspace:*
-        version: link:../link
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
-      '@semcore/typography':
-        specifier: workspace:*
-        version: link:../typography
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21

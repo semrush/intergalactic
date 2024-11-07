@@ -12,6 +12,7 @@ import Button, { ButtonLink } from '@semcore/button';
 import FileExportM from '@semcore/icon/FileExport/m';
 import CheckAltM from '@semcore/icon/CheckAlt/m';
 import InfoM from '@semcore/icon/Info/m';
+import { TooltipWithChangingPopper } from './examples/role-status';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
@@ -102,27 +103,5 @@ export const Singleton: Story = {
 };
 
 export const TooltipWithRoleStatus: Story = {
-  render: () => {
-    const [numb, setNumb] = React.useState(0);
-
-    React.useEffect(() => {
-      const interval = setTimeout(() => {
-        setNumb((prev) => prev + 1);
-      }, 10000);
-
-      return () => {
-        clearTimeout(interval);
-      };
-    }, []);
-
-    return (
-      <Tooltip
-        tag={Link}
-        href='https://google.com'
-        title={`Default tooltip contains short text explaining something about the trigger ${numb}.`}
-      >
-        Keywords
-      </Tooltip>
-    );
-  },
+  render: TooltipWithChangingPopper,
 };
