@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Tooltip from '../src';
 
-import {SingletonWithTooltip} from './examples/tooltip-in-select';
+import { SingletonWithTooltip } from './examples/tooltip-in-select';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
