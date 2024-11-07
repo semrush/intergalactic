@@ -31,6 +31,10 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@semcore/testing-utils": "1.0.0",
-    "@semcore/icon": "workspace:*"
+    "@semcore/icon": "workspace:*",
+    "@semcore/link": "workspace:*",
+    "@semcore/button": "workspace:*",
+    "@semcore/flex-box": "workspace:*",
+    "@semcore/typography": "workspace:*"
   }
 }
