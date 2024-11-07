@@ -32,7 +32,8 @@ const SelectWithTooltip = React.memo(
                   value={option}
                   key={index}
                   tag={Tooltip.Trigger}
-                  {...{ 'use:inline': false }}
+                   // @ts-ignore
+                   use:inline={false}
                 >
                   {option}
                 </Select.Option>
