@@ -1745,6 +1745,15 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@semcore/button':
+        specifier: '*'
+        version: link:../button
+      '@semcore/flex-box':
+        specifier: '*'
+        version: link:../flex-box
+      '@semcore/icon':
+        specifier: '*'
+        version: link:../icon
       '@semcore/select':
         specifier: '*'
         version: link:../select
@@ -1754,6 +1763,9 @@ importers:
       '@semcore/tooltip':
         specifier: '*'
         version: link:../tooltip
+      '@semcore/typography':
+        specifier: '*'
+        version: link:../typography
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -2299,6 +2311,9 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
+      '@semcore/typography':
+        specifier: '*'
+        version: link:../typography
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
