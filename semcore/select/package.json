@@ -37,6 +37,8 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@types/classnames": "2.2.6",
-    "@semcore/testing-utils": "1.0.0"
+    "@semcore/testing-utils": "1.0.0",
+    "@semcore/typography": "*",
+    "@semcore/flex-box": "*"
   }
 }

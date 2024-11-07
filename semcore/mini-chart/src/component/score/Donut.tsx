@@ -28,6 +28,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
     const {
       value,
       styles,
+      baseBgColor = 'chart-grid-bar-chart-base-bg',
       color = 'chart-palette-order-1',
       resolveColor,
       isSemiDonut,
@@ -64,7 +65,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
               cy='12'
               r={radius}
               strokeWidth={strokeWidth}
-              stroke={resolveColor('chart-grid-bar-chart-base-bg')}
+              stroke={resolveColor(baseBgColor)}
               strokeDasharray={
                 loading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
               }

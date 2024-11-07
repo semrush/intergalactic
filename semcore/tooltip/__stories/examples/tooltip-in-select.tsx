@@ -1,28 +1,34 @@
 import React from 'react';
-import Tooltip from 'intergalactic/tooltip';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import { Flex } from '../../../flex-box/src';
+import { Text } from '../../../typography/src';
+import Select from '../../../select/src';
+import Tooltip from '../../src';
 
 const options = Array(50)
   .fill('')
   .map((_, index) => `Option ${index}`);
 
-const tooltipIndexContext = React.createContext(0);
+const tooltipIndexContext = React.createContext<number>(0);
 
-const TooltipContent = () => {
+const TooltipContent: React.FC = () => {
   const tooltipIndex = React.useContext(tooltipIndexContext);
   return <>Option {tooltipIndex} description</>;
 };
 
 const SelectWithTooltip = React.memo(
-  ({ setTooltipIndex }: { setTooltipIndex: (number) => void }) => {
+  ({ setTooltipIndex }: { setTooltipIndex: (index: number) => void }) => {
     return (
       <Flex direction='column'>
         <Text tag='label' size={200} htmlFor='select-with-tooltips'>
           Select with tooltips
         </Text>
-        <Select onHighlightedIndexChange={setTooltipIndex}>
+        <Select
+          onHighlightedIndexChange={(index) => {
+            if (index !== null) {
+              setTooltipIndex(index);
+            }
+          }}
+        >
           <Select.Trigger placeholder='Select option' mt={2} mr='auto' id='select-with-tooltips' />
           <Select.Menu>
             <Tooltip timeout={[0, 50]} placement='right'>
@@ -50,14 +56,11 @@ const SelectWithTooltip = React.memo(
   () => true,
 );
 
-const Demo = () => {
-  const [tooltipIndex, setTooltipIndex] = React.useState(0);
-
+export const SingletonWithTooltip = () => {
+  const [tooltipIndex, setTooltipIndex] = React.useState<number>(0);
   return (
     <tooltipIndexContext.Provider value={tooltipIndex}>
       <SelectWithTooltip setTooltipIndex={setTooltipIndex} />
     </tooltipIndexContext.Provider>
   );
 };
-
-export default Demo;
