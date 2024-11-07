@@ -38,6 +38,7 @@ const SelectWithTooltip = React.memo(
             <Tooltip timeout={[0, 50]} placement='right'>
               {options.map((option, index) => (
                 <Select.Option
+                  //use:inline={true}
                   onMouseEnter={() => setTooltipIndex(index)}
                   value={option}
                   key={index}
@@ -60,7 +61,7 @@ const SelectWithTooltip = React.memo(
 
 export const Singleton: Story = {
   render: () => {
-    const [tooltipIndex, setTooltipIndex] = React.useState(0);
+    const [tooltipIndex, setTooltipIndex] = React.useState<number>(0);
     return (
       <tooltipIndexContext.Provider value={tooltipIndex}>
         <SelectWithTooltip setTooltipIndex={setTooltipIndex} />
