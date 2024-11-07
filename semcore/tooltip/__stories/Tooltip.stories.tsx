@@ -32,17 +32,24 @@ const SelectWithTooltip = React.memo(
         <Text tag='label' size={200} htmlFor='select-with-tooltips'>
           Select with tooltips
         </Text>
-        <Select onHighlightedIndexChange={setTooltipIndex}>
+        <Select
+          onHighlightedIndexChange={(index) => {
+            if (index !== null) {
+              setTooltipIndex(index);
+            }
+          }}
+        >
           <Select.Trigger placeholder='Select option' mt={2} mr='auto' id='select-with-tooltips' />
           <Select.Menu>
             <Tooltip timeout={[0, 50]} placement='right'>
               {options.map((option, index) => (
                 <Select.Option
-                  //use:inline={true}
                   onMouseEnter={() => setTooltipIndex(index)}
                   value={option}
                   key={index}
                   tag={Tooltip.Trigger}
+                  // @ts-ignore
+                  use:inline={false}
                 >
                   {option}
                 </Select.Option>
