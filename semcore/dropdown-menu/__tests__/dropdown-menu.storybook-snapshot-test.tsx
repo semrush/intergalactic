@@ -1,7 +1,7 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Menu item with actions example ', () => {
-  test('Renders and visisble when just expanded', async ({ page}) => {
+  test('Renders and visisble when just expanded', async ({ page }) => {
     await page.goto('/?path=/story/components-dropdown-menu--menu-item-with-actions');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     const element = await frame.locator('body');
