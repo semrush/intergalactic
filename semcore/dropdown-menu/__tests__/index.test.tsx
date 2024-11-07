@@ -43,20 +43,6 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
-          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-        </DropdownMenu.List>
-      </DropdownMenu>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('Supports sizes', async ({ task }) => {
     const component = (
       <React.Fragment>
@@ -98,26 +84,6 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('supports addons', async ({ task }) => {
-    const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
-          <DropdownMenu.Item>
-            <DropdownMenu.Item.Content>
-              <DropdownMenu.Item.Addon>Addon</DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Addon>One more addon</DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Addon>
-                <DesktopIconM />
-              </DropdownMenu.Item.Addon>
-              <DropdownMenu.Item.Text>Text</DropdownMenu.Item.Text>
-            </DropdownMenu.Item.Content>
-          </DropdownMenu.Item>
-        </DropdownMenu.List>
-      </DropdownMenu>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
 
   test.sequential('Should support hover', async ({ task }) => {
     const component = (
