@@ -340,9 +340,11 @@ describe('Modal', () => {
     expect(getByTestId('openModalButton')).toHaveFocus();
 
     await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     expect(getByText('Do you want to save your changes?')).toBeTruthy();
 
     await userEvent.keyboard('[Escape]');
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     expect(getByTestId('openModalButton')).toHaveFocus();
   });
 });

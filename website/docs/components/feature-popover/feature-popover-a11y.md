@@ -5,25 +5,40 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ## What component has
 
-<!-- ### Keyboard support
+### Keyboard support
 
-See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper). -->
+Table: Keyboard support
+
+| Key              | Function                                                                           |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| `Tab`            | Moves focus to the next focusable element. When the last element is reached, moves focus to the next focusable element outside of the popover.   |
+| <nobr>`Shift + Tab`</nobr> | Moves focus to the previous focusable element. When the first element is reached, moves focus to the previous focusable element outside of the popover. |
+| `Esc`            | Closes the popover.                                                                |
 
 ### Attributes
 
-The list below describes attributes that component already has.
+The following table describes attributes that component already has.
 
 Table: Attributes
 
-| Attribute            | Element           | Usage                                                                                                                                                                                                            |
--------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
+| Component               | Attribute                   | Usage                                                                                    |
+| ----------------------- | --------------------------- | ---------------------------------------------------------------------------------------- |
+| `FeaturePopover.Popper` | `role="dialog"`             | Identifies the element as a dialog, indicating that its content is grouped and separated from the rest of the page content. |
+|                         | `tabindex="0"`, `autoFocus` | Automatically focuses the entire popover when it opens, helping the user to locate it on the page, especially when several popovers open in sequence. |
 
-## Resources
+## Considerations for developers
 
-- [W3 modal alert example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/alert/alert.html) and [W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) have detailed information about the `alert` accessible behavior.
-- Find useful information about `status` role in [MDN's guide for status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role).
+### Attributes
+
+The following table will help you to keep in mind the necessary attributes to make our components fully accessible in your interfaces.
+
+Table: Attributes
+
+| Component               | Attribute                         | Usage                                                                                    |
+| ----------------------- | --------------------------------- | ---------------------------------------------------------------------------------------- |
+| `FeaturePopover`        | `disablePortal`                   | Disables rendering in a React portal. Add this property so that the popover follows the highlighted interface element in the focus and reading order. Refer to [our example](./feature-popover-code.md). |
+| `FeaturePopover.Popper` | `aria-label` or `aria-labelledby` | Defines an accessible name for the popover. Refer to [our example](./feature-popover-code.md). |
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

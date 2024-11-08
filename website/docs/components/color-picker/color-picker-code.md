@@ -54,14 +54,3 @@ There are multiple ways to add colors in ColorPicker;
 
 :::
 
-## Items with tooltips
-
-You can use default items with other components. For example, with [Tooltip](/components/tooltip/tooltip).
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/items_with_tooltips.tsx';
-</script>
-
-:::

@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.1] - 2024-11-04
+
+### Added
+
+- `left` and `top` properties with `-1` value to `ScreenReaderOnly` container for prevent impact on layout of application.
+
+## [4.43.0] - 2024-11-01
+
+### Added
+
+- `display: contents` for ThemeProvider element by default.
+
+### Fixed
+
+- Types for ThemeProvider: added all `JSX.IntrinsicElements['div']` types.
+
+## [4.42.1] - 2024-10-29
+
+### Changed
+
+- Code cleanup - removed unnecessary promise in focus handler for focusBorders.
+
 ## [4.42.0] - 2024-10-22
 
 ### Changed

@@ -47,7 +47,21 @@ const App = PlaygroundGeneration(
       options: ORIENTATIONS,
     });
 
-    return <Divider use={use} theme={theme} wMin={200} orientation={orientation} />;
+    return (
+      orientation === 'horizontal' ? 
+        <Divider
+          orientation={orientation}
+          theme={theme}
+          use={use}
+          wMin={200}
+        />
+        : <Divider
+          orientation={orientation}
+          theme={theme}
+          use={use}
+          hMin={20}
+        />
+    )
   },
   { LayoutPreview },
 );

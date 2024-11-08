@@ -83,16 +83,12 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 **FeaturePopover** is a component that helps drawing users’ attention to an interface part or control. _For example, it may point to a new function or suggest the next step to the user._
 
-FeaturePopover contains only simple reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
+`FeaturePopover` contains only basic reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
 
 **Use it when:**
 
 - It's necessary to draw the user’s attention to an interface part.
 - You need to point at the next step for the user.
-
-::: warning
-:rotating_light: Despite using Popper, FeaturePopover should not intercept or manipulate keyboard focus as it can appear while the user is engaged in another scenario and distract them.
-:::
 
 ## Component composition
 
@@ -168,29 +164,29 @@ You can use `wMax` property to set the maximum width of the FeaturePopover's pop
 - The invert `primary` & `tertiary` muted buttons have M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
 - Illustration's margin-right is 16px (`--spacing-4x` token).
 
-## Appearance and hiding
+## Appearing and hiding
 
 Component appears according to the timings you set through the `timeout` property.
 
-FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by clicking on the highlighted interface element.
+`FeaturePopover` hides after using one of its buttons, pressing `Esc`, or using the highlighted interface element.
 
 ## Usage in UX/UI
 
 ### General recommendations
 
-- Use FeaturePopover only to display promotional or onboarding information. The purpose of component is to emphasize a feature and/or explain why it can be useful to the user.
-- Mind the user path and the context, in which users will see FeaturePopover. Show it ad hoc and don’t overload the message with unnecessary information.
-- Always allow the user to close FeaturePopover. Don’t force the user to use a feature.
-- Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to an [Informer](../../patterns/informer/informer), [DescriptionTooltip](../tooltip/tooltip.md), and so on.
-- Make sure that FeaturePopover doesn't cover important parts in the interface that the user needs in the context of use.
+- Use `FeaturePopover` only to display promotional or onboarding information. The purpose of component is to emphasize a feature and/or explain why it can be useful to the user.
+- Mind the user path and the context in which users will encounter the `FeaturePopover`. Show it ad hoc and don’t overload the message with unnecessary information.
+- Always allow the user to close the `FeaturePopover`. Don’t force the user to use the advertised feature.
+- Write briefly and concisely. Information in `FeaturePopover` shouldn't exceed the minimum required to start using the function. Move additional step-by-step instructions to an [Informer](../../patterns/informer/informer), [DescriptionTooltip](../tooltip/tooltip.md), and so on.
+- Make sure that `FeaturePopover` doesn't cover important parts in the interface that the user needs in the context of use.
 
 ### Terms of use
 
-- Don’t show more than one FeaturePopover on a page at the same time.
-- FeaturePopover for a new function should be shown for no more than a month.
-- FeaturePopover should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show FeaturePopover on the element in the table. Don’t distract the user.
-- **Don’t show FeaturePopover if the user has already interacted with the advertised item.**
-- FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", don’t show this message to them again.
+- Don’t show more than one `FeaturePopover` at the same time.
+- `FeaturePopover` for a new function should be shown for no more than a month.
+- `FeaturePopover` should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show `FeaturePopover` on the element in the table. Don’t distract the user.
+- **Don’t show `FeaturePopover` if the user has already interacted with the advertised item.**
+- `FeaturePopover` should be shown only once (except for cases when user clicked "Show later"). If the user has closed `FeaturePopover` or clicked "Got it", don’t show this message to them again.
 
 ## Recommendations for copy
 

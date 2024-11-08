@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2024-11-06
+
+### Changed
+
+- A11y improvements: added role="dialog" and autofocus for the popover, made an aria-label or aria-labelledby a required attribute. Disabled aria-haspopup and changed the default interaction to "none" for the trigger.
+
+## [4.48.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/animation` [2.37.0 ~> 2.38.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.47.1] - 2024-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/popper` [5.43.0 ~> 5.43.1], `@semcore/animation` [2.36.0 ~> 2.37.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
 ## [4.47.0] - 2024-10-18
 
 ### Changed

@@ -271,11 +271,17 @@ class Value extends Component {
     // so, we change role to `region` here and back to `input` in handleKeyUp
     element.role = 'region';
 
-    // we could press dot second time - prevent this '1.5.'
-    if (event.key === this.separatorDecimal && value.indexOf(this.separatorDecimal) !== -1) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
+    if (event.key === '.' || event.key === ',') {
+      // for the first decimal separator we should replace both ',' and '.' to '.' because of how js convert strings to numbers (with ',' it will be NaN)
+      if (value.indexOf(this.separatorDecimal) === -1 && event.key === ',') {
+        event.currentTarget.value = value + '.';
+      }
+      // we could press decimal separator second time - prevent this '1.5.'
+      else if (value.indexOf(this.separatorDecimal) !== -1) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
     }
 
     if (event.key === 'Backspace' && value.endsWith(this.separatorDecimal)) {
