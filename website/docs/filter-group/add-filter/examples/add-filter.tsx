@@ -19,23 +19,39 @@ type FilterSelectProps = {
 };
 
 const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectProps) => {
-  const selectPopperRef = React.useRef<HTMLDivElement>();
+  const selectMenuRef = React.useRef<HTMLDivElement>();
+  const triggerRef = React.useRef<HTMLButtonElement>();
+  const [selectVisible, setSelectVisible] = React.useState(false);
+  const focusTrigger = React.useCallback(() => {
+    triggerRef.current?.focus();
+    setSelectVisible(true);
+  }, []);
+
+  React.useEffect(() => {
+    focusTrigger();
+  }, []);
 
   const isEscapeKeyDown = (e) => {
     return e.key === 'Escape';
   };
 
   return (
-    <Select interaction={'focus'} value={value} onChange={onChange} placeholder={name}>
+    <Select
+      visible={selectVisible}
+      onVisibleChange={setSelectVisible}
+      value={value}
+      onChange={onChange}
+      placeholder={name}
+    >
       <Select.Trigger
-        autoFocus
+        triggerRef={triggerRef}
         onKeyDown={(e) => {
           if (isEscapeKeyDown(e) && !value) {
             onClear();
           }
         }}
         onBlur={(e) => {
-          if (!value && !selectPopperRef.current?.contains(e.relatedTarget)) {
+          if (!value && !e.relatedTarget.contains(selectMenuRef.current)) {
             onClear();
           }
         }}
@@ -44,15 +60,13 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
       >
         {value}
       </Select.Trigger>
-      <Select.Popper ref={selectPopperRef}>
-        <Select.List>
-          {options.map((option, idx) => (
-            <Select.Option value={option} key={idx}>
-              {option}
-            </Select.Option>
-          ))}
-        </Select.List>
-      </Select.Popper>
+      <Select.Menu ref={selectMenuRef}>
+        {options.map((option, idx) => (
+          <Select.Option value={option} key={idx}>
+            {option}
+          </Select.Option>
+        ))}
+      </Select.Menu>
     </Select>
   );
 };
@@ -65,6 +79,8 @@ type Filter = {
 type FilterData = Record<string, string>;
 
 const Demo = () => {
+  const [name, setName] = React.useState('');
+  const [size, setSize] = React.useState('');
   const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>([]);
   const [filterData, setFilterData] = React.useState<FilterData>({});
   const [addFilterVisible, setAddFilterVisible] = React.useState<boolean>(false);
@@ -74,26 +90,24 @@ const Demo = () => {
   };
 
   const updateFilterData = (value: string, name: string) => {
-    setFilterData((prevData) => {
-      return { ...prevData, ...{ [name]: value } };
-    });
+    const newData = { ...filterData, ...{ [name]: value } };
+    setFilterData(newData);
   };
 
   const removeByName = (nameToRemove) => {
-    setSelectedFilters((prevFields) => {
-      return prevFields.filter(({ name }) => name !== nameToRemove);
-    });
+    const newFields = selectedFilters.filter(({ name }) => name !== nameToRemove);
+    setSelectedFilters(newFields);
 
-    setFilterData((prevData) => {
-      const newData = { ...prevData };
-      newData[nameToRemove];
-      return newData;
-    });
+    const newData = { ...filterData };
+    newData[nameToRemove] = '';
+    setFilterData(newData);
   };
 
   const clearAllFilters = () => {
     setSelectedFilters([]);
     setFilterData({});
+    setName('');
+    setSize('');
   };
 
   const filtersWithoutSelected = React.useMemo(() => {
@@ -103,8 +117,8 @@ const Demo = () => {
   }, [filters, selectedFilters]);
 
   const hasFilterData = React.useMemo(() => {
-    return Object.values(filterData).filter((v) => v).length > 0;
-  }, [filterData]);
+    return name || size || Object.values(filterData).filter((v) => v).length > 0;
+  }, [filterData, name, size]);
 
   return (
     <Flex gap={2} flexWrap>
@@ -113,33 +127,32 @@ const Demo = () => {
           <SearchM />
         </Input.Addon>
         <Input.Value
-          value={filterData['name']}
-          onChange={(v) => updateFilterData(v, 'name')}
+          value={name}
+          onChange={setName}
           placeholder='Filter by name'
           aria-label='Filter by name'
         />
-        {filterData['name'] && (
+        {name && (
           <Input.Addon>
             <Hint
               tag={ButtonLink}
               use='secondary'
               addonLeft={CloseM}
               title='Clear'
-              onClick={() => removeByName('name')}
+              onClick={() => setName('')}
             />
           </Input.Addon>
         )}
       </Input>
 
-      <Select value={filterData['size']} onChange={(v) => updateFilterData(v, 'size')}>
+      <Select value={size} onChange={setSize}>
         <Select.Trigger
-          empty={!filterData['size']}
+          empty={!size}
           placeholder='Size'
           tag={FilterTrigger}
-          onClear={() => removeByName('size')}
-          aria-label='Select size'
+          onClear={() => setSize('')}
         >
-          Size: {filterData['size']}
+          Size: {size}
         </Select.Trigger>
         <Select.Menu>
           {sizes.map((item, idx) => (
