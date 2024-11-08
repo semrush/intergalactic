@@ -12,7 +12,6 @@ test.describe('Tooltip renders', () => {
     await element.click({ position: { x, y } });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
-    await new Promise(resolve => setTimeout(resolve, 1000));
     await expect(element).toHaveScreenshot();
   });
 });
