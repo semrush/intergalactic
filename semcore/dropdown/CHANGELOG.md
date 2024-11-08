@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.2] - 2024-11-08
+
+### Fixed
+
+- Double click event on DropDownMenu.Items.
+
 ## [4.41.1] - 2024-11-05
 
 ### Added
