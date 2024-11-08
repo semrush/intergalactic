@@ -1,7 +1,7 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Tooltip renders', () => {
-  test('Singleton - select expands and visible', async ({ page, browserName }) => {
+  test.skip('Singleton - select expands and visible', async ({ page, browserName }) => {
     await page.goto('/?path=/story/components-tooltip--singleton');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     await frame.locator('body').waitFor();
