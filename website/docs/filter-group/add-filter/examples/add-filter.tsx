@@ -52,7 +52,13 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
           }
         }}
         onBlur={(e) => {
-          if (!value && !e.relatedTarget.contains(selectMenuRef.current)) {
+          if (
+            !value &&
+            !selectMenuRef.current
+              ?.closest('[data-ui-name="DropdownMenu.Popper"]')
+              ?.contains(e.relatedTarget)
+          ) {
+            setSelectVisible(false);
             onClear();
             setSelectVisible(false);
           }
@@ -101,7 +107,7 @@ const Demo = () => {
     setSelectedFilters(newFields);
 
     const newData = { ...filterData };
-    newData[nameToRemove] = '';
+    delete newData[nameToRemove];
     setFilterData(newData);
   };
 
@@ -185,7 +191,7 @@ const Demo = () => {
             {filtersWithoutSelected.map((filterItem) => (
               <DropdownMenu.Item
                 key={filterItem.name}
-                onClick={(e) => {
+                onClick={() => {
                   updateFilterFields(filterItem);
                   setAddFilterVisible(false);
                 }}
