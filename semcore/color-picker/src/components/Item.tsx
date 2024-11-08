@@ -18,6 +18,17 @@ type ItemAsProps = {
   uid: string;
 };
 
+const interaction = {
+  trigger: [
+    ['onMouseEnter', 'onKeyboardFocus', 'onTouchStart', 'onFocus'],
+    ['onMouseLeave', 'onBlur'],
+  ],
+  popper: [
+    ['onMouseEnter', 'onFocusCapture', 'onTouchStart'],
+    ['onMouseLeave', 'onBlur'],
+  ],
+};
+
 export function Item(props: ItemAsProps) {
   const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText, uid } =
     props as any;
@@ -36,6 +47,7 @@ export function Item(props: ItemAsProps) {
   return sstyled(styles)(
     <SItemContainer
       render={Hint}
+      interaction={interaction}
       selected={selected}
       value={value}
       displayLabel={displayLabel}
