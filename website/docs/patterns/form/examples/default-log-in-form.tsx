@@ -7,18 +7,33 @@ import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
-  const { register, handleSubmit, errors, reset } = useForm({
-    mode: 'onBlur',
+  const {
+    register,
+    handleSubmit,
+    errors,
+    reset,
+    formState: { dirtyFields, touched },
+  } = useForm({
+    mode: 'onSubmit',
   });
+  const emailRef = React.useRef<HTMLInputElement>();
+  const passwordRef = React.useRef<HTMLInputElement>();
 
   const onSubmit = (data) => {
     reset({ email: '', password: '' });
     alert(JSON.stringify(data));
   };
 
+  const showError = (fieldName, ref: typeof emailRef) => {
+    return (
+      Boolean(touched[fieldName] && errors[fieldName]?.message) &&
+      document.activeElement === ref.current
+    );
+  };
+
   return (
     <>
-      <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column'>
+      <Flex tag='form' noValidate onSubmit={handleSubmit(onSubmit)} direction='column'>
         <Text size={300} tag='label' mb={1} htmlFor='email'>
           Email
         </Text>
@@ -26,7 +41,7 @@ const Demo = () => {
           <Tooltip.Popper
             placement='right'
             theme='warning'
-            visible={errors['email']}
+            visible={showError('email', emailRef)}
             id='form-email-error'
           >
             {errors['email']?.message}
@@ -53,6 +68,7 @@ const Demo = () => {
                     },
                   }) as React.ForwardedRef<HTMLInputElement>,
                 })}
+                ref={emailRef}
                 autoComplete='email'
                 aria-invalid={Boolean(errors['email'])}
                 aria-errormessage={errors['email'] ? 'form-email-error' : undefined}
@@ -67,7 +83,7 @@ const Demo = () => {
           <Tooltip.Popper
             placement='right'
             theme='warning'
-            visible={errors['password']}
+            visible={showError('password', passwordRef)}
             id='form-password-error'
           >
             {errors['password']?.message}
@@ -88,8 +104,13 @@ const Demo = () => {
                   type: 'password',
                   ref: register({
                     required: 'Password is required',
+                    minLength: {
+                      value: 8,
+                      message: 'Password must have at least 8 characters',
+                    },
                   }) as React.ForwardedRef<HTMLInputElement>,
                 })}
+                ref={passwordRef}
                 autoComplete='password'
                 aria-invalid={Boolean(errors['password'])}
                 aria-errormessage={errors['password'] ? 'form-password-error' : undefined}
