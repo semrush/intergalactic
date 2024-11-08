@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.54.2] - 2024-11-01
-
-### Added
-
-- Missing translations for datepicker
-
 ## [4.54.1] - 2024-11-01
 
 ### Changed
