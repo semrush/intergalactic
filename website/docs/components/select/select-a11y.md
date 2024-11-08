@@ -46,7 +46,7 @@ Table: Roles and attributes
 
 ## Considerations for developers
 
-Only use `Select.Popper` explicitly if it must have additional elements beside the list, such as `InputSearch` or `Notice`, as in the [menu customization example](./select-code.md#menu-customization) and the [option filtering example](./select-code.md#options-filtering). In that case the popper will be presented as a dialog, which hints to the screen reader user to use the `Tab` key to navigate between the list of options and other elements. 
+Only use `Select.Popper` explicitly if it must have additional elements beside the list, such as `InputSearch` or `Notice`, as in the [menu customization example](./select-code.md#menu-customization) and the [option filtering example](./select-code.md#options-filtering). In that case the popper will be presented as a dialog, which hints to the screen reader user to use the `Tab` key to navigate between the list of options and other elements.
 
 If your `Select` is a list of options without additional features, use it without children or with `Select.Menu`, as in the [basic example](./select-code.md#basic-usage). This will let the screen reader user know that `Up` and `Down` keys are enough to navigate within the control.
 
@@ -56,9 +56,10 @@ The following list will help you to keep in mind the necessary roles and attribu
 
 Table: Roles and attributes
 
-| Component            | Attribute                  | Usage                                                                                                                                                                             |
-| -------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Select.InputSearch` | `aria-describedby="IDREF"` | Defines an accessible description for the **Search** input. Use it to announce the number of search results, as demonstrated in the [options filtering example](./select-code.md#options-filtering). |
+| Component            | Attribute                         | Usage                                                     |
+| -------------------- | --------------------------------- | --------------------------------------------------------- |
+| `Select.Popper`      | `aria-label` or `aria-labelledby` | **Only if `Select.Popper` is used explicitly.** Defines an accessible name for the popper. |
+| `Select.InputSearch` | `aria-describedby="IDREF"`        | Defines an accessible description for the **Search** input. Use it to announce the number of search results, as demonstrated in the [options filtering example](./select-code.md#options-filtering). |
 
 ## Resources
 

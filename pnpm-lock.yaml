@@ -1202,9 +1202,18 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@semcore/button':
+        specifier: '*'
+        version: link:../button
+      '@semcore/dropdown-menu':
+        specifier: '*'
+        version: link:../dropdown-menu
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
+      '@semcore/typography':
+        specifier: '*'
+        version: link:../typography
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -1736,6 +1745,15 @@ importers:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@semcore/button':
+        specifier: '*'
+        version: link:../button
+      '@semcore/flex-box':
+        specifier: '*'
+        version: link:../flex-box
+      '@semcore/icon':
+        specifier: '*'
+        version: link:../icon
       '@semcore/select':
         specifier: '*'
         version: link:../select
@@ -1745,6 +1763,9 @@ importers:
       '@semcore/tooltip':
         specifier: '*'
         version: link:../tooltip
+      '@semcore/typography':
+        specifier: '*'
+        version: link:../typography
       '@types/react':
         specifier: 18.0.21
         version: 18.0.21
@@ -2290,6 +2311,9 @@ importers:
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
+      '@semcore/typography':
+        specifier: '*'
+        version: link:../typography
       '@types/classnames':
         specifier: 2.2.6
         version: 2.2.6
@@ -4893,6 +4917,11 @@ packages:
     resolution: {integrity: sha512-uLls06UVKgFG9QD4OeFYLEGteMIAa5kpTPcFL28yuCIIzsf6ZyKZMllKVOCZFhiZ5ptnwX4mtKdWCBE/uT4amg==}
     engines: {node: '>=6.9.0'}
 
+  /@babel/helper-plugin-utils@7.25.9:
+    resolution: {integrity: sha512-kSMlyUVdWe25rEsRGviIgOWnoT/nfABVWlqt9N19/dIPWViAOW2s9wznP5tURbs/IDuNk4gPy3YdYRgH3uxhBw==}
+    engines: {node: '>=6.9.0'}
+    dev: false
+
   /@babel/helper-remap-async-to-generator@7.18.9(@babel/core@7.19.1):
     resolution: {integrity: sha512-dI7q50YKd8BAv3VEfgg7PS7yD3Rtbi2J1XMXaalXO0W0164hYLnh8zpjRS0mte9MfVp/tltvr/cfdXPvJr1opA==}
     engines: {node: '>=6.9.0'}
@@ -5348,7 +5377,7 @@ packages:
       '@babel/core': 7.19.1
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-plugin-utils': 7.25.9
     dev: false
 
   /@babel/plugin-syntax-import-assertions@7.20.0(@babel/core@7.19.1):
@@ -5594,7 +5623,7 @@ packages:
       '@babel/core': 7.19.1
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-plugin-utils': 7.25.9
       '@babel/plugin-syntax-flow': 7.22.5(@babel/core@7.19.1)
     dev: false
 
@@ -6052,7 +6081,7 @@ packages:
       '@babel/core': 7.19.1
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-plugin-utils': 7.25.9
       '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-transform-flow-strip-types': 7.22.5(@babel/core@7.19.1)
     dev: false

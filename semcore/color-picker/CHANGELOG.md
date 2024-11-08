@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.41.2] - 2024-11-05
+
+### Fixed
+
+- Display `Hint` on focused `Color.Item`.
+
 ## [2.41.1] - 2024-11-01
 
 ### Changed

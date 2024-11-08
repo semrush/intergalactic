@@ -95,23 +95,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   getListProps() {
-    const { size, uid } = this.asProps;
-    const triggerId = this.triggerRef.current?.id;
-    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
-
-    return {
-      size,
-      index: this.asProps.highlightedIndex,
-      tabIndex: -1,
-      ref: this.menuRef,
-      id: `igc-${uid}-list`,
-      role: this.role,
-      'aria-label': getAccessibleName(triggerElement),
-    };
+    return this.getBasicListProps();
   }
 
   getMenuProps() {
-    return this.getListProps();
+    return this.getBasicListProps();
   }
 
   getPopperProps() {
@@ -336,10 +324,26 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     }
   }
 
-  focusTrigger() {
+  private focusTrigger() {
     const trigger = this.triggerRef.current;
     if (!trigger) return;
     if (isFocusInside(trigger)) return;
     setFocus(trigger);
+  }
+
+  private getBasicListProps() {
+    const { size, uid } = this.asProps;
+    const triggerId = this.triggerRef.current?.id;
+    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
+
+    return {
+      size,
+      index: this.asProps.highlightedIndex,
+      tabIndex: -1,
+      ref: this.menuRef,
+      id: `igc-${uid}-list`,
+      role: this.role,
+      'aria-label': getAccessibleName(triggerElement),
+    };
   }
 }

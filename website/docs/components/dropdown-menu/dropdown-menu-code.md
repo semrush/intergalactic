@@ -29,6 +29,22 @@ There are a few ways to display the dropdown menu in this component.
 
 ### First method
 
+The easiest way is to use `DropdownMenu.Menu`.
+
+This is best when you only need to manage the content within the options list.
+
+`DropdownMenu.Menu` is a wrapper around `DropdownMenu.Popper` and `DropdownMenu.List`, and all props pass through to `DropdownMenu.List`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/the_second_method.tsx';
+</script>
+
+:::
+
+### Second method
+
 Use a combination of two components:
 
 - `DropdownMenu.Popper`—for the dropdown layout
@@ -40,22 +56,6 @@ This method works well when you need flexible customization of the dropdown menu
 
 <script lang="tsx">
   export Demo from './examples/dropdown-menu.tsx';
-</script>
-
-:::
-
-### Second method
-
-The easiest way is to use `DropdownMenu.Menu`.
-
-This is best when you only need to manage the content within the options list.
-
-`DropdownMenu.Menu` is a wrapper around `DropdownMenu.Popper` and `DropdownMenu.List`, and all props pass through to `DropdownMenu.List`.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/the_second_method.tsx';
 </script>
 
 :::

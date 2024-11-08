@@ -12,8 +12,8 @@ function noop(e) {
 
 const Demo = () => (
   <>
-    <Flex>
-      <Checkbox mb={3} label='Option 1' />
+    <Flex mb={3}>
+      <Checkbox label='Option 1' />
       <DescriptionTooltip placement='right'>
         <DescriptionTooltip.Trigger
           ml={1}
@@ -28,8 +28,8 @@ const Demo = () => (
       </DescriptionTooltip>
     </Flex>
 
-    <Flex>
-      <Checkbox mb={3}>
+    <Flex mb={3}>
+      <Checkbox>
         <Checkbox.Value />
         <Checkbox.Text>
           Option 2

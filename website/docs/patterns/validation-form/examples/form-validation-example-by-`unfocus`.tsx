@@ -194,7 +194,7 @@ class Demo extends React.Component {
                             }}
                           >
                             <Select.Trigger w={'100%'} onBlur={(e) => input.onBlur(e)} />
-                            <Select.Popper>
+                            <Select.Popper aria-label={'Options'}>
                               <Select.Option value={1}>Morning</Select.Option>
                               <Select.Option value={2}>Afternoon</Select.Option>
                               <Select.Option value={3}>Evening</Select.Option>

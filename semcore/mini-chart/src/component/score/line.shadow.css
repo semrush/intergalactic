@@ -2,7 +2,7 @@
 
 SLineGauge {
   height: 8px;
-  background-color: var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9);
+  background-color: var(--base-bg-color, var(--intergalactic-chart-grid-bar-chart-base-bg, #e0e1e9));
   border-radius: var(--intergalactic-chart-rounded, 2px);
   overflow: hidden;
   position: relative;

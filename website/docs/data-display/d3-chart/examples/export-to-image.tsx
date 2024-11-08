@@ -79,7 +79,7 @@ const Demo = () => {
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax='257px'>
+        <DropdownMenu.Popper wMax='257px' aria-label={'Extensions'}>
           <DropdownMenu.List>
             {extensions.map((name) => (
               <DropdownMenu.Item onClick={downloadImage(name)}>{name}</DropdownMenu.Item>
