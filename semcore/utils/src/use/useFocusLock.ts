@@ -34,6 +34,27 @@ export const makeFocusLockSyntheticEvent = (baseEvent: Event) => {
   return syntheticEvent;
 };
 
+const useFocusBorders = (
+  React: ReactT,
+  disabled?: boolean,
+  trapRef?: React.RefObject<HTMLElement>,
+) => {
+  useUniqueIdHookMock(React);
+  React.useEffect(() => {
+    const trapNode = trapRef?.current;
+
+    if (trapNode && !disabled && getFocusableIn(trapNode).length > 0) {
+      addFocusBorders(trapNode);
+    }
+
+    return () => {
+      if (trapNode) {
+        removeFocusBorders(trapNode);
+      }
+    };
+  }, [disabled]);
+};
+
 type ReactT = typeof LocalReact;
 
 let uniqueId = 0;
@@ -102,19 +123,7 @@ const useFocusLockHook = (
   focusMaster = false,
   onFocusOut?: (event: Event) => void,
 ) => {
-  React.useEffect(() => {
-    const trapNode = trapRef.current;
-
-    if (trapNode && !disabled && getFocusableIn(trapNode).length > 0) {
-      addFocusBorders(trapNode);
-    }
-
-    return () => {
-      if (trapNode) {
-        removeFocusBorders(trapNode);
-      }
-    };
-  }, [disabled]);
+  useFocusBorders(React, disabled, trapRef);
 
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);

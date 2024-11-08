@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.2] - 2024-11-08
+
+### Fixed
+
+- Hooks order in focusLock hook.
+
 ## [4.43.1] - 2024-11-04
 
 ### Added

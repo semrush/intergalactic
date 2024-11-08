@@ -15,7 +15,7 @@ If you need to customize tooltip behavior, refer to [intergalactic/popper](/util
 
 ## Basic usage
 
-Use the appropriate component depending on your case. See [Tooltip API](tooltip-api) and [Tooltip A11y](tooltip-a11y) for more details.
+Use the appropriate component depending on your case. Refer to [Tooltip API](tooltip-api) and [Tooltip A11y](tooltip-a11y) for more details.
 
 ::: sandbox
 
