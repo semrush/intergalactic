@@ -48,11 +48,13 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
         onKeyDown={(e) => {
           if (isEscapeKeyDown(e) && !value) {
             onClear();
+            setSelectVisible(false);
           }
         }}
         onBlur={(e) => {
           if (!value && !e.relatedTarget.contains(selectMenuRef.current)) {
             onClear();
+            setSelectVisible(false);
           }
         }}
         tag={FilterTrigger}
