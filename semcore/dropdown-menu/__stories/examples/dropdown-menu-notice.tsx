@@ -5,7 +5,7 @@ import Link from '../../../link/src';
 import { Text } from '../../../typography/src';
 import Notice from '../../../notice/src';
 import SpinContainer from '../../../spin-container/src';
-import FileExportM from 'intergalactic/icon/FileExport/m';
+import FileExportM from '@semcore/icon/FileExport/m';
 
 export const DropdownMenuWithNoticeExample = () => {
   const [loading, setLoading] = React.useState(false);
