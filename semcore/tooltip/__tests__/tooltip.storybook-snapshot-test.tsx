@@ -1,7 +1,7 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
 test.describe('Tooltip renders', () => {
-  test.skip('Singleton - select expands and visible', async ({ page, browserName }) => {
+  test('Singleton - select expands and visible', async ({ page, browserName }) => {
     await page.goto('/?path=/story/components-tooltip--singleton');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     await frame.locator('body').waitFor();
@@ -12,6 +12,7 @@ test.describe('Tooltip renders', () => {
     await element.click({ position: { x, y } });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
+    await page.keyboard.press('ArrowDown');
     await expect(element).toHaveScreenshot();
   });
 });
