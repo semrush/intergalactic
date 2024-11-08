@@ -7,6 +7,7 @@ import TrashM from '@semcore/icon/Trash/m';
 import PlusM from '@semcore/icon/MathPlus/m';
 import Button from '../../button/src';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
+import { DropdownMenuWithNoticeExample } from './examples/dropdown-menu-notice';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu',
@@ -14,6 +15,10 @@ const meta: Meta<typeof DropdownMenu> = {
 };
 
 type Story = StoryObj<typeof DropdownMenu>;
+
+export const DropdownMenuWithNotice: Story = {
+  render: DropdownMenuWithNoticeExample,
+};
 
 export const MenuItemWithActions: Story = {
   render: () => {

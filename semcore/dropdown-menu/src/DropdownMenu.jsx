@@ -40,6 +40,7 @@ class DropdownMenuRoot extends AbstractDropdown {
     timeout: 0,
   };
 
+  actionsRef = React.createRef();
   role = 'menu';
 
   itemRef(props, index, node) {
@@ -84,19 +85,31 @@ class DropdownMenuRoot extends AbstractDropdown {
       onKeyDown: callAllEventHandlers(
         this.handlePreventCommonKeyDown.bind(this),
         this.handlePreventPopperKeyDown.bind(this),
-        // this.handleKeyDownForPopper.bind(this),
       ),
     };
   }
 
   getActionsProps() {
-    return this.getListProps();
+    return {
+      ...this.getListProps(),
+      ref: this.actionsRef,
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventTabOnActions.bind(this),
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handleKeyDownForMenu('list'),
+        this.handleArrowKeyDown.bind(this),
+      ),
+    };
   }
 
   getItemProps(props, index) {
+    const { highlightedIndex, visible } = this.asProps;
+    const isHighlighted = index === highlightedIndex;
     const itemProps = {
       ...super.getItemProps(props, index),
+      tabIndex: isHighlighted && visible ? 0 : -1,
       ref: (node) => this.itemRef(props, index, node),
+      actionsRef: this.actionsRef,
     };
 
     if (props.tag === ButtonComponent) {
@@ -146,12 +159,15 @@ class DropdownMenuRoot extends AbstractDropdown {
           return false;
         }
       }
-      if (place === 'list' && e.key === 'Tab') {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
     };
+  }
+
+  handlePreventTabOnActions(e) {
+    if (e.key === 'Tab') {
+      e.stopPropagation();
+      e.preventDefault();
+      return false;
+    }
   }
 
   render() {
@@ -221,7 +237,7 @@ function Menu(props) {
   );
 }
 
-function Item({ id, styles, disabled, Children, forwardRef, role }) {
+function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, actionsRef }) {
   const SDropdownMenuItemContainer = Root;
   const itemRef = React.useRef();
 
@@ -231,6 +247,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role }) {
     contentId: id,
     ref: forkRef(forwardRef, itemRef),
     role,
+    tabIndex,
   };
   const ariaDescribes = [];
 
@@ -265,6 +282,10 @@ function Item({ id, styles, disabled, Children, forwardRef, role }) {
     const onBlur = (e) => {
       if (e.target === itemRef.current) {
         setHighlighted(false);
+
+        if (actionsRef.current) {
+          itemRef.current.tabIndex = -1;
+        }
       }
     };
 
@@ -287,7 +308,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role }) {
         use:highlighted={!disabled && highlighted && focusSourceRef.current === 'keyboard'}
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
-        tabIndex={advancedMode ? undefined : -1}
+        use:tabIndex={advancedMode ? -1 : tabIndex}
       >
         <Children />
       </SDropdownMenuItemContainer>
@@ -344,7 +365,7 @@ function ItemContent({ styles }) {
       render={Flex}
       role={menuItemCtxValue.role}
       id={menuItemCtxValue.contentId}
-      tabIndex={-1}
+      tabIndex={menuItemCtxValue.tabIndex}
       ref={forkRef(menuItemCtxValue.ref, ref)}
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
