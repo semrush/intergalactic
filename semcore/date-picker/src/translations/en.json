@@ -19,7 +19,7 @@
   "fromDate": "From {date}",
   "toDate": "To {date}",
   "fromDatePlaceholder": "From date",
-  "periods": "Presets",
+  "periods": "Date period presets",
   "toDatePlaceholder": "To date",
   "dateRange": "Date range",
   "dateRange1": "First date range",
