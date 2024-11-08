@@ -54,7 +54,7 @@ const Demo = () => {
               </Select.Trigger.Addon>
             </Select.Trigger>
 
-            <Select.Popper tabIndex={-1}>
+            <Select.Popper tabIndex={-1} aria-label={'Phone countries with search'}>
               <>
                 <InputSearch
                   placeholder='Search'

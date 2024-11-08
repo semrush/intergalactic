@@ -10,6 +10,11 @@ export type CommonScoreProps = {
   color?: string;
 
   /**
+   * Color of background
+   */
+  baseBgColor?: string;
+
+  /**
    * Flag to enable skeleton
    * @default false
    */

@@ -49,6 +49,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
       value,
       styles,
       color = 'chart-palette-order-1',
+      baseBgColor,
       resolveColor,
       loading,
       children,
@@ -58,7 +59,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
 
     if (children !== undefined) {
       return sstyled(styles)(
-        <SLineGauge render={Box} segments>
+        <SLineGauge render={Box} segments base-bg-color={resolveColor(baseBgColor)}>
           <SLineGaugeSegment>
             <Children />
           </SLineGaugeSegment>
@@ -94,7 +95,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.en
     }
 
     return sstyled(styles)(
-      <SLineGauge render={Box}>
+      <SLineGauge render={Box} base-bg-color={resolveColor(baseBgColor)}>
         {!loading && <SLineValue w={percent} color={resolveColor(color)} />}
         {Boolean(SegmentItems.length) && <SLineGaugeSegment>{SegmentItems}</SLineGaugeSegment>}
         {animate && <SAnimationLine />}
