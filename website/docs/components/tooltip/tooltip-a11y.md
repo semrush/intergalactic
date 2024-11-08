@@ -74,8 +74,9 @@ Table: Tooltip default attributes
 | ---------- | -------------- | --------------------------------------------------------------------------- |
 | `Trigger`  | `aria-describedby="IDREF"`                              | Allows assistive technologies to announce popper content as trigger's description. |
 | `Popper`   | `role="tooltip"`                                        | Indicates that this is a container with tooltip's content. |
-| `Popper`   | `aria-live="polite"` (except for `theme="warning"`)     | Ensures compatibility with browsers and screen readers that doesn't support `aria-describedby` . Assistive technologies will announce popper content when it's opened or changed. |
-| `Popper`   | `aria-live="assertive"` (only with `theme="warning"`)   | Like `aria-live="polite"`, but will interrupt any other announcement a screen reader is currently making. |
+|            | `aria-live="polite"` (except for `theme="warning"`)     | Ensures compatibility with browsers and screen readers that doesn't support `aria-describedby`. Assistive technologies will announce popper content when it's opened or changed. |
+|            | `role="status"` (except for `theme="warning"`)          | Provides the same functionality as `aria-live="polite"` for better client support. Additionally, implicitly enables the `aria-atomic` attribute, ensuring that the entire content is read when a part of it is updated. |
+|            | `aria-live="assertive"` (only with `theme="warning"`)   | Like `aria-live="polite"`, but will interrupt any other announcement a screen reader is currently making. |
 
 ### DescriptionTooltip default attributes
 
@@ -92,4 +93,4 @@ Table: DescriptionTooltip default attributes
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
