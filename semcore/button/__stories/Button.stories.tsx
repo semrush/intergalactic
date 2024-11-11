@@ -40,22 +40,15 @@ export const ExampleStory: Story = {
   },
 
   play: async ({ canvasElement }) => {
-    // Assigns canvas to the component root element
     const canvas = within(canvasElement);
-
-    // Starts querying from the component's root element
-    // await userEvent.type(canvas.getByTestId('example-element'), 'something');
-
-    await userEvent.click(canvas.getByRole('button', { name: 'Confirm' }));
-
-    const hint = canvas.getByText('Confirm');
-    expect(hint).toBeVisible();
-
-    // Отправляем событие на canvasElement, чтобы сымитировать клик по области
-    await userEvent.click(hint);
-
-    // Проверяем, что hint стал невидимым после клика
-    expect(hint).not.toBeVisible();
+    const button = canvas.getByRole('button', { name: 'Confirm' });
+    await userEvent.click(button);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const tooltip = canvasElement.querySelector('[data-ui-name="Hint.Popper"]');
+    expect(tooltip).toBeVisible();
+    await userEvent.click(canvasElement);
+    await userEvent.click(canvasElement);
+    expect(tooltip).not.toBeVisible();
   },
 };
 
