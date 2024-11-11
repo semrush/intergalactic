@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { userEvent, within, fn, expect } from '@storybook/test';
 
 import Badge from '@semcore/badge';
 import CheckM from '@semcore/icon/Check/m';
@@ -23,6 +23,39 @@ export const SimpleButton: Story = {
   args: {
     children: 'Button',
     onClick: fn(),
+  },
+};
+
+export const ExampleStory: Story = {
+  render: () => {
+    return (
+      <>
+        <Button title='Confirm'>
+          <Button.Addon>
+            <CheckM />
+          </Button.Addon>
+        </Button>
+      </>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    // Assigns canvas to the component root element
+    const canvas = within(canvasElement);
+
+    // Starts querying from the component's root element
+    // await userEvent.type(canvas.getByTestId('example-element'), 'something');
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Confirm' }));
+
+    const hint = canvas.getByText('Confirm');
+    expect(hint).toBeVisible();
+
+    // Отправляем событие на canvasElement, чтобы сымитировать клик по области
+    await userEvent.click(hint);
+
+    // Проверяем, что hint стал невидимым после клика
+    expect(hint).not.toBeVisible();
   },
 };
 
