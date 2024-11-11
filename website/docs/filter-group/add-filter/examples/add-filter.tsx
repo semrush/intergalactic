@@ -60,7 +60,7 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
         tag={FilterTrigger}
         onClear={onClear}
       >
-        {value}
+        {name}: {value}
       </Select.Trigger>
       <Select.Menu ref={selectMenuRef}>
         {options.map((option, idx) => (
@@ -208,27 +208,27 @@ const Demo = () => {
 const filters: Filter[] = [
   {
     id: 'cbf46bbe-4c1d-47a8-b3fe-11d55298d97d',
-    name: 'Colors',
+    name: 'Color',
     values: ['Blue', 'Gray', 'Green', 'Orange', 'Pink', 'Red', 'Salad', 'Violet', 'Yellow'],
   },
   {
     id: '254c8b3d-bd58-4019-ae45-0e0babfadd34',
-    name: 'Devices',
+    name: 'Device',
     values: ['Desktop', 'Phone', 'Tablet'],
   },
   {
     id: 'bdf21be3-b398-4e0c-bcbe-6afa7fcab43e',
-    name: 'Languages',
+    name: 'Language',
     values: ['Chinese', 'English', 'French', 'German', 'Italian', 'Korean', 'Spanish', 'Turkish'],
   },
   {
     id: 'e8409dcd-a3ad-405b-8840-4623e752cb92',
-    name: 'Materials',
+    name: 'Material',
     values: ['Glass', 'Metal', 'Paper', 'Wood'],
   },
   {
     id: '80b9d5ae-882f-4457-9beb-f6481cfe26c6',
-    name: 'Shapes',
+    name: 'Shape',
     values: ['Circle', 'Rectangle', 'Star', 'Triangle'],
   },
 ];
