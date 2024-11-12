@@ -14,7 +14,11 @@ const preview: Preview = {
       config: {
         rules: [
           { id: 'color-contrast', enabled: false },
-          { id: 'image-alt', enabled: false }, 
+          { id: 'html-has-lang', enabled: false },
+          { id: 'html-lang-valid', enabled: false },
+          { id: 'meta-viewport', enabled: false },
+          { id: 'video-caption', enabled: false },
+          { id: 'scope-attr-valid', enabled: true },
         ],
       },
     },

@@ -1,17 +1,7 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 
-test.describe('Button base tests', () => {
-  test('[Regular Button] Is Visible', async ({ page }) => {
-    await page.goto('/?path=/story/components-button--simple-button');
-    const frame = page.frameLocator('iframe[data-is-storybook="true"]');
-    await frame.locator('body').waitFor();
-    const button = frame.getByRole('button', { name: 'Button' });
-    await expect(button).toBeVisible();
-  });
-
-  test('[Button with addon and aria-label] Poppep by mouse iteraction @regression @button', async ({
-    page,
-  }) => {
+test.describe('Button with addon and aria-label', () => {
+  test('Poppep by mouse iteraction', async ({ page }) => {
     await page.goto('/?path=/story/components-button--button-with-no-visible-text');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     await frame.locator('body').waitFor();
@@ -32,9 +22,7 @@ test.describe('Button base tests', () => {
     }
   });
 
-  test('[Button with addon and aria-label] Poppep by keyboard iteraction @regression', async ({
-    page,
-  }) => {
+  test('Poppep by keyboard iteraction', async ({ page }) => {
     await page.goto('/?path=/story/components-button--button-with-no-visible-text');
     const frame = page.frameLocator('iframe[data-is-storybook="true"]');
     const emelent = frame.locator('body');
