@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Preview } from "@storybook/react";
-import { PortalProvider } from '@semcore/portal';
 
 const preview: Preview = {
   parameters: {

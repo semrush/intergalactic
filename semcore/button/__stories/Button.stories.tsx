@@ -38,60 +38,53 @@ export const ExampleStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Находим и кликаем по кнопке, которая отображает tooltip
     const button = canvas.getByRole('button', { name: 'Confirm action' });
     await userEvent.click(button);
 
-    // Используем waitFor для ожидания, пока tooltip станет видимым
-    const tooltip = await waitFor(
+    const hint = await waitFor(
       () => {
-        const tooltipElement = within(document.body).queryByText('Confirm action');
-        if (!tooltipElement) throw new Error('Tooltip not found');
-
-        const tooltipStyles = window.getComputedStyle(tooltipElement);
-        if (tooltipStyles.opacity === '1') {
-          return tooltipElement;
+        const hintElement = within(document.body).queryByText('Confirm action');
+        if (!hintElement) throw new Error('Hint not found');
+        const hintStyles = window.getComputedStyle(hintElement);
+        if (hintStyles.opacity === '1') {
+          return hintElement;
         } else {
-          throw new Error('Tooltip not found');
+          throw new Error('hint not visible');
         }
       },
       { timeout: 3000 },
     );
 
-    // Проверяем, что tooltip действительно видим
-    expect(tooltip).toBeVisible();
+    expect(hint).toBeVisible();
 
     await userEvent.click(canvasElement);
 
-    // Ожидаем, пока tooltip станет невидимым
     await waitFor(
       () => {
-        if (tooltip.getAttribute('aria-hidden') === 'true') {
+        if (hint.getAttribute('aria-hidden') === 'true') {
           return true;
         }
 
-        const tooltipStyles = window.getComputedStyle(tooltip);
+        const hintStyles = window.getComputedStyle(hint);
         if (
-          tooltipStyles.opacity === '0' ||
-          tooltipStyles.display === 'none' ||
-          tooltipStyles.visibility === 'hidden'
+          hintStyles.opacity === '0' ||
+          hintStyles.display === 'none' ||
+          hintStyles.visibility === 'hidden'
         ) {
           return true;
         }
 
-        throw new Error('Tooltip все еще видим');
+        throw new Error('hint still visible');
       },
       { timeout: 3000 },
     );
+    const isHintHidden =
+    hint.getAttribute('aria-hidden') === 'true' ||
+      window.getComputedStyle(hint).visibility === 'hidden' ||
+      window.getComputedStyle(hint).display === 'none' ||
+      window.getComputedStyle(hint).opacity === '0';
 
-    // Проверяем, что tooltip больше не виден
-    const isTooltipHidden =
-      tooltip.getAttribute('aria-hidden') === 'true' ||
-      window.getComputedStyle(tooltip).visibility === 'hidden' ||
-      window.getComputedStyle(tooltip).display === 'none' ||
-      window.getComputedStyle(tooltip).opacity === '0';
-
-    expect(isTooltipHidden).toBe(true);
+    expect(isHintHidden).toBe(true);
   },
 };
 

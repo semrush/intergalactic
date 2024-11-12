@@ -155,9 +155,5 @@
       "parse-es-import@0.6.0": "patches/parse-es-import@0.6.0.patch",
       "react-virtualized@9.22.3": "patches/react-virtualized@9.22.3.patch"
     }
-  },
-  "dependencies": {
-    "@storybook/addon-knobs": "^8.0.1",
-    "storybook-addon-playwright": "^4.21.0"
   }
 }
