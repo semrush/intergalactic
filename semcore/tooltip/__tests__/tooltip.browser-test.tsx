@@ -36,4 +36,40 @@ test.describe('Tooltip', () => {
 
     await expect(page).toHaveScreenshot();
   });
+
+  test('Renders correctly', async ({ page }) => {
+    const standPath = 'semcore/tooltip/__tests__/stands/basic-render.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Renders correctly with warning theme', async ({ page }) => {
+    const standPath = 'semcore/tooltip/__tests__/stands/warning-theme.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Renders correctly with invert theme', async ({ page }) => {
+    const standPath = 'semcore/tooltip/__tests__/stands/invert-theme.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Renders correctly with changed color for arrow', async ({ page }) => {
+    const standPath = 'semcore/tooltip/__tests__/stands/changed-arrow-color.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
 });

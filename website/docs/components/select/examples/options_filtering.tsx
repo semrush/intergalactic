@@ -39,9 +39,16 @@ const Demo = () => {
                 {options.length} result{options.length > 1 && 's'} found
               </ScreenReaderOnly>
             ) : (
-              <Select.OptionHint id='search-result' key='Nothing'>
+              <Text
+                tag={'div'}
+                id='search-result'
+                key='Nothing'
+                p={'6px 8px'}
+                size={200}
+                use={'secondary'}
+              >
                 Nothing found
-              </Select.OptionHint>
+              </Text>
             )}
           </Select.List>
         </Select.Popper>
