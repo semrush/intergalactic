@@ -1,6 +1,6 @@
 import React from 'react';
 import DropdownMenu from 'intergalactic/dropdown-menu';
-import { Button } from 'intergalactic/button';
+import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
