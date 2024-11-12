@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within, fn, expect } from '@storybook/test';
+import { userEvent, within, fn, expect, waitFor } from '@storybook/test';
 
 import Badge from '@semcore/badge';
 import CheckM from '@semcore/icon/Check/m';
@@ -30,25 +30,64 @@ export const ExampleStory: Story = {
   render: () => {
     return (
       <>
-        <Button title='Confirm'>
-          <Button.Addon>
-            <CheckM />
-          </Button.Addon>
-        </Button>
+        <Button addonLeft={CheckM} aria-label='Confirm action' mr={2} />
       </>
     );
   },
 
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole('button', { name: 'Confirm' });
-    await userEvent.click(button);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const tooltip = canvasElement.querySelector('[data-ui-name="Hint.Popper"]');
-    expect(tooltip).toBeVisible();
-    await userEvent.click(canvasElement);
-    await userEvent.click(canvasElement);
-    expect(tooltip).not.toBeVisible();
+
+  // Находим и кликаем по кнопке, которая отображает tooltip
+  const button = canvas.getByRole('button', { name: 'Confirm action' });
+  await userEvent.click(button);
+
+  // Используем waitFor для ожидания, пока tooltip станет видимым
+  const tooltip = await waitFor(() => {
+    const tooltipElement = within(document.body).queryByText('Confirm action');
+    if (!tooltipElement) throw new Error("Tooltip not found");
+    
+    const tooltipStyles = window.getComputedStyle(tooltipElement);
+    if (tooltipStyles.opacity === '1') {
+      return tooltipElement;
+    } else {
+      throw new Error("Tooltip not found");
+    }
+  }, { timeout: 3000 });
+
+  // Проверяем, что tooltip действительно видим
+  expect(tooltip).toBeVisible();
+
+  await userEvent.click(canvasElement);
+
+  // Ожидаем, пока tooltip станет невидимым
+  await waitFor(() => {
+    if (tooltip.getAttribute('aria-hidden') === 'true') {
+      return true;
+    }
+
+    const tooltipStyles = window.getComputedStyle(tooltip);
+    if (
+      tooltipStyles.opacity === '0' ||
+      tooltipStyles.display === 'none' ||
+      tooltipStyles.visibility === 'hidden'
+    ) {
+      return true;
+    }
+    
+    throw new Error("Tooltip все еще видим");
+  }, { timeout: 3000 });
+
+  // Проверяем, что tooltip больше не виден
+  const isTooltipHidden =
+    tooltip.getAttribute('aria-hidden') === 'true' ||
+    window.getComputedStyle(tooltip).visibility === 'hidden' ||
+    window.getComputedStyle(tooltip).display === 'none' ||
+    window.getComputedStyle(tooltip).opacity === '0';
+
+   expect(isTooltipHidden).toBe(true);
+ 
+ 
   },
 };
 

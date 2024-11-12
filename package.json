@@ -49,7 +49,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:test": "playwright test --config=playwright.storybook.config.ts",
-    "storybook:snapshot-test": "playwright test --config=playwright.storybook-snapshot.config.ts"
+    "storybook:snapshot-test": "playwright test --config=playwright.storybook-snapshot.config.ts",
+    "storybook:play-test": "storybook test"
   },
   "private": true,
   "devDependencies": {
@@ -82,6 +83,7 @@
     "@storybook/react": "8.3.5",
     "@storybook/react-vite": "8.3.5",
     "@storybook/test": "8.3.5",
+    "@storybook/test-runner": "8.3.5",
     "@testing-library/react": "13.4.0",
     "@types/node": "18.16.15",
     "@vitejs/plugin-react": "2.0.0",
