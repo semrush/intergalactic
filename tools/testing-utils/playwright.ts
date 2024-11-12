@@ -32,24 +32,27 @@ export const skipButtonComboboxDiscernibleErrors = (v: axe.Result) => {
 // biome-ignore lint/correctness/noEmptyPattern:
 const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo) => {
   let suit = 'unknown';
+  //let describeName = '';
   const testFilePath = testInfo.titlePath[0] ?? '';
 
   if (testFilePath.includes('browser')) {
-    suit = 'Browser';
+    suit = 'Browser tests';
   } else if (testFilePath.includes('axe')) {
-    suit = 'Axe';
+    suit = 'Axe tests';
   } else if (testFilePath.includes('vo')) {
-    suit = 'Voice over';
-  } else if (testFilePath.includes('storybook')) {
-    suit = 'Storybook';
+    suit = 'Voice over tests';
+  } else if (testFilePath.includes('shapshot')) {
+    suit = 'Snapshot tests';
+  } else if (testFilePath.includes('index')) {
+    suit = 'Unit tests';
   }
 
   await allure.label('component', testInfo.titlePath[1]);
-  await allure.feature(suit);
-  await allure.story(testInfo.title);
+  await allure.layer(suit);
+  await allure.story(testInfo.title); // надо будет заменить на story title
 
   await allure.parentSuite(testInfo.titlePath[1]);
-  await allure.suite(suit);
+ // await allure.suite(describeName ||suit);
   await allure.subSuite(testInfo.title);
 
   await use();
