@@ -79,7 +79,7 @@ export const ExampleStory: Story = {
       { timeout: 3000 },
     );
     const isHintHidden =
-    hint.getAttribute('aria-hidden') === 'true' ||
+      hint.getAttribute('aria-hidden') === 'true' ||
       window.getComputedStyle(hint).visibility === 'hidden' ||
       window.getComputedStyle(hint).display === 'none' ||
       window.getComputedStyle(hint).opacity === '0';
