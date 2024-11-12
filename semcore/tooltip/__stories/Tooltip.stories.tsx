@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
 
 import { SingletonWithTooltip } from './examples/tooltip-in-select';
+import { IgnorePortalStacking as IPS } from './examples/ignore-portal-stacking';
 
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -104,4 +105,8 @@ export const Singleton: Story = {
 
 export const TooltipWithRoleStatus: Story = {
   render: TooltipWithChangingPopper,
+};
+
+export const IgnorePortalStacking: Story = {
+  render: IPS,
 };
