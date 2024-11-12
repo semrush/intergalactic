@@ -38,56 +38,60 @@ export const ExampleStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-  // Находим и кликаем по кнопке, которая отображает tooltip
-  const button = canvas.getByRole('button', { name: 'Confirm action' });
-  await userEvent.click(button);
+    // Находим и кликаем по кнопке, которая отображает tooltip
+    const button = canvas.getByRole('button', { name: 'Confirm action' });
+    await userEvent.click(button);
 
-  // Используем waitFor для ожидания, пока tooltip станет видимым
-  const tooltip = await waitFor(() => {
-    const tooltipElement = within(document.body).queryByText('Confirm action');
-    if (!tooltipElement) throw new Error("Tooltip not found");
-    
-    const tooltipStyles = window.getComputedStyle(tooltipElement);
-    if (tooltipStyles.opacity === '1') {
-      return tooltipElement;
-    } else {
-      throw new Error("Tooltip not found");
-    }
-  }, { timeout: 3000 });
+    // Используем waitFor для ожидания, пока tooltip станет видимым
+    const tooltip = await waitFor(
+      () => {
+        const tooltipElement = within(document.body).queryByText('Confirm action');
+        if (!tooltipElement) throw new Error('Tooltip not found');
 
-  // Проверяем, что tooltip действительно видим
-  expect(tooltip).toBeVisible();
+        const tooltipStyles = window.getComputedStyle(tooltipElement);
+        if (tooltipStyles.opacity === '1') {
+          return tooltipElement;
+        } else {
+          throw new Error('Tooltip not found');
+        }
+      },
+      { timeout: 3000 },
+    );
 
-  await userEvent.click(canvasElement);
+    // Проверяем, что tooltip действительно видим
+    expect(tooltip).toBeVisible();
 
-  // Ожидаем, пока tooltip станет невидимым
-  await waitFor(() => {
-    if (tooltip.getAttribute('aria-hidden') === 'true') {
-      return true;
-    }
+    await userEvent.click(canvasElement);
 
-    const tooltipStyles = window.getComputedStyle(tooltip);
-    if (
-      tooltipStyles.opacity === '0' ||
-      tooltipStyles.display === 'none' ||
-      tooltipStyles.visibility === 'hidden'
-    ) {
-      return true;
-    }
-    
-    throw new Error("Tooltip все еще видим");
-  }, { timeout: 3000 });
+    // Ожидаем, пока tooltip станет невидимым
+    await waitFor(
+      () => {
+        if (tooltip.getAttribute('aria-hidden') === 'true') {
+          return true;
+        }
 
-  // Проверяем, что tooltip больше не виден
-  const isTooltipHidden =
-    tooltip.getAttribute('aria-hidden') === 'true' ||
-    window.getComputedStyle(tooltip).visibility === 'hidden' ||
-    window.getComputedStyle(tooltip).display === 'none' ||
-    window.getComputedStyle(tooltip).opacity === '0';
+        const tooltipStyles = window.getComputedStyle(tooltip);
+        if (
+          tooltipStyles.opacity === '0' ||
+          tooltipStyles.display === 'none' ||
+          tooltipStyles.visibility === 'hidden'
+        ) {
+          return true;
+        }
 
-   expect(isTooltipHidden).toBe(true);
- 
- 
+        throw new Error('Tooltip все еще видим');
+      },
+      { timeout: 3000 },
+    );
+
+    // Проверяем, что tooltip больше не виден
+    const isTooltipHidden =
+      tooltip.getAttribute('aria-hidden') === 'true' ||
+      window.getComputedStyle(tooltip).visibility === 'hidden' ||
+      window.getComputedStyle(tooltip).display === 'none' ||
+      window.getComputedStyle(tooltip).opacity === '0';
+
+    expect(isTooltipHidden).toBe(true);
   },
 };
 

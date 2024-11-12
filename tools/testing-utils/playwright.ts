@@ -52,7 +52,7 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
   await allure.story(testInfo.title); // надо будет заменить на story title
 
   await allure.parentSuite(testInfo.titlePath[1]);
- // await allure.suite(describeName ||suit);
+  // await allure.suite(describeName ||suit);
   await allure.subSuite(testInfo.title);
 
   await use();
