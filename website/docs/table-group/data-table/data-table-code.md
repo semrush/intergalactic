@@ -204,24 +204,6 @@ Be cautious with columns with a `wMax` property, as the sort icon may overlap th
 
 ## Table rows
 
-### Access to rows
-
-To apply properties to a table row, use `<DataTable.Row/>` . You can use multiple `<DataTable.Row/>` to separate the business logic.
-
-::: tip
-`<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Row) `...` `` ) isn't allowed.
-:::
-
-You can provide `data` property for `<DataTable.Row/>` . It isn't used in the component runtime but improves strict typings.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/access-to-rows.tsx';
-</script>
-
-:::
-
 ### Rows grouping
 
 Group cells from different rows by adding a special grouping key to the table data.
