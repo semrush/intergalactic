@@ -1,6 +1,5 @@
 import React from 'react';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import ChevronRightIcon from '@semcore/ui/icon/ChevronRight/m';
 import InputNumber from '@semcore/ui/input-number';
 import NeighborLocation from '@semcore/ui/neighbor-location';
@@ -15,7 +14,7 @@ const max = 8;
 const Demo = () => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={ButtonTrigger}>Click me</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger tag={Button}>Click me</DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         {options.map((item) => {
           return (

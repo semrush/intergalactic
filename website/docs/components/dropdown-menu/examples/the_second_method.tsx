@@ -1,6 +1,6 @@
 import React from 'react';
 import DropdownMenu from 'intergalactic/dropdown-menu';
-import { ButtonTrigger } from 'intergalactic/base-trigger';
+import { Button } from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 import { Flex } from 'intergalactic/flex-box';
 
@@ -11,12 +11,7 @@ const Demo = () => {
         Your choice
       </Text>
       <DropdownMenu>
-        <DropdownMenu.Trigger
-          tag={ButtonTrigger}
-          mt={2}
-          mr='auto'
-          id='dropdown-menu-children-items'
-        >
+        <DropdownMenu.Trigger tag={Button} mt={2} mr='auto' id='dropdown-menu-children-items'>
           Choose an item
         </DropdownMenu.Trigger>
         {/* Adding max-height to the dropdown menu */}
