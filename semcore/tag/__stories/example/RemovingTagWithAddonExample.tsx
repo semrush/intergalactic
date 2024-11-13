@@ -3,7 +3,7 @@ import { TagContainer } from '@semcore/tag';
 import Edit from '@semcore/icon/Edit/m';
 import { Box } from '@semcore/flex-box';
 
-export const TagWithAddonExample = () => {
+export const RemovingTagWithAddonExample = () => {
   const [tags, setTags] = React.useState(['Facebook', 'X (Twitter)', 'Instagram']);
 
   const handleEditTag = (e: React.SyntheticEvent) => {
