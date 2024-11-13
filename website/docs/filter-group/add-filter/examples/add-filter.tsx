@@ -36,6 +36,11 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
     return e.key === 'Escape';
   };
 
+  const clearAndHide = () => {
+    onClear();
+    setSelectVisible(false);
+  };
+
   return (
     <Select
       visible={selectVisible}
@@ -48,8 +53,7 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
         triggerRef={triggerRef}
         onKeyDown={(e) => {
           if (isEscapeKeyDown(e) && !value) {
-            onClear();
-            setSelectVisible(false);
+            clearAndHide();
           }
         }}
         onBlur={(e) => {
@@ -59,8 +63,7 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
               ?.closest('[data-ui-name="DropdownMenu.Popper"]')
               ?.contains(e.relatedTarget)
           ) {
-            setSelectVisible(false);
-            onClear();
+            clearAndHide();
           }
         }}
         tag={FilterTrigger}

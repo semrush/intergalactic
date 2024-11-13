@@ -289,6 +289,43 @@ importers:
         specifier: 18.0.21
         version: 18.0.21
 
+  semcore/add-filter-pattern:
+    dependencies:
+      '@semcore/button':
+        specifier: 5.39.1
+        version: link:../button
+      '@semcore/core':
+        specifier: ^2.17.5
+        version: link:../core
+      '@semcore/flex-box':
+        specifier: 5.38.0
+        version: link:../flex-box
+      '@semcore/icon':
+        specifier: 4.52.0
+        version: link:../icon
+      '@semcore/link':
+        specifier: 5.41.0
+        version: link:../link
+      '@semcore/modal':
+        specifier: 4.49.1
+        version: link:../modal
+      '@semcore/tooltip':
+        specifier: 6.46.0
+        version: link:../tooltip
+      '@semcore/typography':
+        specifier: 5.47.0
+        version: link:../typography
+      react:
+        specifier: 16.8 - 18
+        version: 18.2.0
+      react-dom:
+        specifier: 16.8 - 18
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
+
   semcore/animation:
     dependencies:
       '@semcore/core':

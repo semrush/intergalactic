@@ -43,6 +43,7 @@ export function FeedbackItem({
         const invalid = meta.invalid && meta.touched;
         const errorState = showError && invalid;
         const popperId = `${uid}-error-description`;
+
         const inputProps = assignProps(
           {
             ...propsForElement(other),
@@ -53,6 +54,7 @@ export function FeedbackItem({
           },
           input,
         );
+
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
