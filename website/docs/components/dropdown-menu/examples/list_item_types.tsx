@@ -13,28 +13,28 @@ const TooltipContent = () => {
 const Demo = () => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={Button}>Check the options</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger tag={Button}>Explore menu item types</DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         <Tooltip placement={'right'} timeout={[0, 50]}>
-          <DropdownMenu.Group title={'Title'} subTitle={'Subtitle'}>
+          <DropdownMenu.Group title={'Menu title'} subTitle={'Subtitle'}>
             <DropdownMenu.Item tag={Tooltip.Trigger}>
-              <DropdownMenu.Item.Content>Item 1</DropdownMenu.Item.Content>
+              <DropdownMenu.Item.Content>Menu item 1</DropdownMenu.Item.Content>
             </DropdownMenu.Item>
             <DropdownMenu.Item tag={Tooltip.Trigger}>
-              <DropdownMenu.Item.Content>Item 2</DropdownMenu.Item.Content>
-              <DropdownMenu.Item.Hint>Hint for item 2</DropdownMenu.Item.Hint>
+              <DropdownMenu.Item.Content>Menu item 2</DropdownMenu.Item.Content>
+              <DropdownMenu.Item.Hint>Hint for menu item 2</DropdownMenu.Item.Hint>
             </DropdownMenu.Item>
             <DropdownMenu.Item tag={Tooltip.Trigger}>
               <DropdownMenu.Item.Content>
                 <DropdownMenu.Item.Addon>
                   <DesktopIconM />
                 </DropdownMenu.Item.Addon>
-                <DropdownMenu.Item.Text>Item 3</DropdownMenu.Item.Text>
+                <DropdownMenu.Item.Text>Menu item 3</DropdownMenu.Item.Text>
               </DropdownMenu.Item.Content>
-              <DropdownMenu.Item.Hint>Hint for item 3</DropdownMenu.Item.Hint>
+              <DropdownMenu.Item.Hint>Hint for menu item 3</DropdownMenu.Item.Hint>
             </DropdownMenu.Item>
             <DropdownMenu.Item tag={Tooltip.Trigger}>
-              <DropdownMenu.Item.Content>Item 4</DropdownMenu.Item.Content>
+              <DropdownMenu.Item.Content>Menu item 4</DropdownMenu.Item.Content>
             </DropdownMenu.Item>
           </DropdownMenu.Group>
           <Tooltip.Popper w={120} aria-hidden={true}>
