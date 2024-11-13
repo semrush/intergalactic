@@ -9,16 +9,16 @@ import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 const Demo = () => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={Button}>List item with actions</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger tag={Button}>Explore menu items with actions</DropdownMenu.Trigger>
       <DropdownMenu.Menu>
-        <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-        <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        <DropdownMenu.Item>Menu item 1</DropdownMenu.Item>
+        <DropdownMenu.Item>Menu item 2</DropdownMenu.Item>
 
         <DropdownMenu.Item>
           <DropdownMenu inlineActions placement={'right'}>
             <Flex justifyContent='space-between'>
               <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-                Item 3
+              Menu item 3
               </DropdownMenu.Item.Content>
               <DropdownMenu.Actions gap={1}>
                 <DropdownMenu.Item tag={Button} addonLeft={PlusM} aria-label={'Add new'} />
@@ -35,7 +35,7 @@ const Demo = () => {
             offset={[-11, 12]}
           >
             <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-              Item 4
+            Menu item 4
               <ChevronRightIcon color='icon-secondary-neutral' />
             </DropdownMenu.Item.Content>
             <DropdownMenu.Menu>
