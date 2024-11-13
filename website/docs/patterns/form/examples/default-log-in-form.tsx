@@ -14,21 +14,17 @@ const Demo = () => {
     reset,
     formState: { dirtyFields, touched },
   } = useForm({
-    mode: 'onSubmit',
+    mode: 'onChange',
   });
-  const emailRef = React.useRef<HTMLInputElement>();
-  const passwordRef = React.useRef<HTMLInputElement>();
+  const [focusedFieldName, setFocusedFieldName] = React.useState('');
 
   const onSubmit = (data) => {
     reset({ email: '', password: '' });
     alert(JSON.stringify(data));
   };
 
-  const showError = (fieldName, ref: typeof emailRef) => {
-    return (
-      Boolean(touched[fieldName] && errors[fieldName]?.message) &&
-      document.activeElement === ref.current
-    );
+  const showError = (fieldName) => {
+    return Boolean(errors[fieldName]?.message) && focusedFieldName === fieldName;
   };
 
   return (
@@ -41,7 +37,7 @@ const Demo = () => {
           <Tooltip.Popper
             placement='right'
             theme='warning'
-            visible={showError('email', emailRef)}
+            visible={showError('email')}
             id='form-email-error'
           >
             {errors['email']?.message}
@@ -68,7 +64,8 @@ const Demo = () => {
                     },
                   }) as React.ForwardedRef<HTMLInputElement>,
                 })}
-                ref={emailRef}
+                onFocus={() => setFocusedFieldName('email')}
+                onBlur={() => setFocusedFieldName('')}
                 autoComplete='email'
                 aria-invalid={Boolean(errors['email'])}
                 aria-errormessage={errors['email'] ? 'form-email-error' : undefined}
@@ -83,7 +80,7 @@ const Demo = () => {
           <Tooltip.Popper
             placement='right'
             theme='warning'
-            visible={showError('password', passwordRef)}
+            visible={showError('password')}
             id='form-password-error'
           >
             {errors['password']?.message}
@@ -110,7 +107,8 @@ const Demo = () => {
                     },
                   }) as React.ForwardedRef<HTMLInputElement>,
                 })}
-                ref={passwordRef}
+                onFocus={() => setFocusedFieldName('password')}
+                onBlur={() => setFocusedFieldName('')}
                 autoComplete='password'
                 aria-invalid={Boolean(errors['password'])}
                 aria-errormessage={errors['password'] ? 'form-password-error' : undefined}
