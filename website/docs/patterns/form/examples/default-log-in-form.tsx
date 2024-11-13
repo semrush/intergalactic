@@ -33,15 +33,14 @@ const Demo = () => {
         <Text size={300} tag='label' mb={1} htmlFor='email'>
           Email
         </Text>
-        <Tooltip animationsDisabled>
-          <Tooltip.Popper
-            placement='right'
-            theme='warning'
-            visible={showError('email')}
-            id='form-email-error'
-          >
-            {errors['email']?.message}
-          </Tooltip.Popper>
+        <Tooltip
+          placement='top'
+          theme='warning'
+          interaction={'none'}
+          visible={showError('email')}
+          animationsDisabled
+        >
+          <Tooltip.Popper id='form-email-error'>{errors['email']?.message}</Tooltip.Popper>
           <Tooltip.Trigger
             tag={Input}
             w='100%'
@@ -76,15 +75,14 @@ const Demo = () => {
         <Text size={300} tag='label' mb={1} htmlFor='password'>
           Password
         </Text>
-        <Tooltip animationsDisabled>
-          <Tooltip.Popper
-            placement='right'
-            theme='warning'
-            visible={showError('password')}
-            id='form-password-error'
-          >
-            {errors['password']?.message}
-          </Tooltip.Popper>
+        <Tooltip
+          interaction={'none'}
+          placement='top'
+          theme='warning'
+          visible={showError('password')}
+          animationsDisabled
+        >
+          <Tooltip.Popper id='form-password-error'>{errors['password']?.message}</Tooltip.Popper>
           <Tooltip.Trigger
             tag={Input}
             w='100%'
