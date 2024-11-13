@@ -26,68 +26,6 @@ export const SimpleButton: Story = {
   },
 };
 
-export const ExampleStory: Story = {
-  render: () => {
-    return (
-      <>
-        <Button addonLeft={CheckM} aria-label='Confirm action' mr={2} />
-      </>
-    );
-  },
-
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    const button = canvas.getByRole('button', { name: 'Confirm action' });
-    await userEvent.click(button);
-
-    const hint = await waitFor(
-      () => {
-        const hintElement = within(document.body).queryByText('Confirm action');
-        if (!hintElement) throw new Error('Hint not found');
-        const hintStyles = window.getComputedStyle(hintElement);
-        if (hintStyles.opacity === '1') {
-          return hintElement;
-        } else {
-          throw new Error('hint not visible');
-        }
-      },
-      { timeout: 3000 },
-    );
-
-    expect(hint).toBeVisible();
-
-    await userEvent.click(canvasElement);
-
-    await waitFor(
-      () => {
-        if (hint.getAttribute('aria-hidden') === 'true') {
-          return true;
-        }
-
-        const hintStyles = window.getComputedStyle(hint);
-        if (
-          hintStyles.opacity === '0' ||
-          hintStyles.display === 'none' ||
-          hintStyles.visibility === 'hidden'
-        ) {
-          return true;
-        }
-
-        throw new Error('hint still visible');
-      },
-      { timeout: 3000 },
-    );
-    const isHintHidden =
-      hint.getAttribute('aria-hidden') === 'true' ||
-      window.getComputedStyle(hint).visibility === 'hidden' ||
-      window.getComputedStyle(hint).display === 'none' ||
-      window.getComputedStyle(hint).opacity === '0';
-
-    expect(isHintHidden).toBe(true);
-  },
-};
-
 export const Addons: Story = {
   render: () => {
     return (
@@ -171,6 +109,28 @@ export const ButtonWithNoVisibleText: Story = {
         <Button addonLeft={CloseM} aria-label='Close notification' />
       </>
     );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const button = canvas.getByRole('button', { name: 'Confirm action' });
+    await userEvent.hover(button);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    
+    const hint = within(document.body).queryByText('Confirm action');
+    if (!hint) throw new Error('Hint not found');
+    expect(hint).toBeVisible(); 
+    const hintStyles = window.getComputedStyle(hint);
+    expect(hintStyles.padding).toBe("12px");
+    expect(hintStyles.fontSize).toBe('14px');
+    expect(hint.textContent).not.toBeNull();
+    expect(hintStyles.color).toBe('rgb(25, 27, 35)'); 
+    expect(hintStyles.backgroundColor).toBe('rgb(255, 255, 255)');
+
+    await userEvent.unhover(button);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    expect(hint).not.toBeVisible();
   },
 };
 
