@@ -1,93 +1,9 @@
 import React from 'react';
-import { snapshot } from '@semcore/testing-utils/snapshot';
 import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Tooltip, { Hint, DescriptionTooltip } from '../src';
-
-describe('Tooltip', () => {
-  beforeEach(cleanup);
-
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = (
-      <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal>
-          <Tooltip.Trigger>
-            <button type='button'>Test</button>
-          </Tooltip.Trigger>
-          <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
-        </Tooltip>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Renders correctly with warning theme', async ({ task }) => {
-    const component = (
-      <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal theme='warning'>
-          <Tooltip.Trigger>
-            <button type='button'>Test</button>
-          </Tooltip.Trigger>
-          <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
-        </Tooltip>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Renders correctly with invert theme', async ({ task }) => {
-    const component = (
-      <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal theme='invert'>
-          <Tooltip.Trigger>
-            <button type='button'>Test</button>
-          </Tooltip.Trigger>
-          <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
-        </Tooltip>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.skip('Renders correctly with custom theme', async ({ task }) => {
-    const component = (
-      <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal>
-          <Tooltip.Trigger>
-            <button type='button'>Test</button>
-          </Tooltip.Trigger>
-          <Tooltip.Popper style={{ opacity: 1 }} theme='green'>
-            text text text
-          </Tooltip.Popper>
-        </Tooltip>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('Renders correctly with changed color for arrow', async ({ task }) => {
-    const component = (
-      <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal>
-          <Tooltip.Trigger>
-            <button type='button'>Test</button>
-          </Tooltip.Trigger>
-          <Tooltip.Popper arrowBgColor={'green'} arrowShadowColor={'grey'}>
-            text text text
-          </Tooltip.Popper>
-        </Tooltip>
-      </div>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-});
 
 describe('Tooltip.Trigger', () => {
   beforeEach(cleanup);

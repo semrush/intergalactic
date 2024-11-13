@@ -1,3 +1,40 @@
+## [15.116.0] - 2024-11-08
+
+### @semcore/color-picker
+
+- **Fixed** Display `Hint` on focused `Color.Item`.
+
+### @semcore/dropdown
+
+- **Fixed** Double click event on DropDownMenu.Items.
+- **Added** Export for `DropdownPopperAriaProps` type.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Unexpected focus on actions in DropdownMenu.Item.
+- **Added** `DropdownPopperAriaProps` type for DropdownMenu.Popper props.
+
+### @semcore/feature-popover
+
+- **Changed** A11y improvements: added role="dialog" and autofocus for the popover, made an aria-label or aria-labelledby a required attribute. Disabled aria-haspopup and changed the default interaction to "none" for the trigger.
+
+### @semcore/mini-chart
+
+- **Added** `baseBgColor` option to specify pass second color as background for TrendLine and ScoreDonut
+
+### @semcore/select
+
+- **Fixed** The `Option` not being highlighted by default when opening `Select` by `focus` interaction.
+
+### @semcore/tooltip
+
+- **Added** `role=status` to TooltipPopper Wrapper.
+
+### @semcore/utils
+
+- **Fixed** Hooks order in focusLock hook.
+- **Added** `left` and `top` properties with `-1` value to `ScreenReaderOnly` container for prevent impact on layout of application.
+
 ## [15.115.0] - 2024-11-01
 
 ### @semcore/button
