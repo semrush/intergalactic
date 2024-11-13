@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Select from 'intergalactic/select';
-import { ButtonTrigger } from 'intergalactic/base-trigger';
-import Counter from 'intergalactic/counter';
-import Tooltip from 'intergalactic/tooltip';
-import InputTags from 'intergalactic/input-tags/';
-import Button from 'intergalactic/button';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import Select from '@semcore/select';
+import { ButtonTrigger } from '@semcore/base-trigger';
+import Counter from '@semcore/counter';
+import Tooltip from '@semcore/tooltip';
+import InputTags from '@semcore/input-tags/';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const defaultValues = {
@@ -15,18 +15,21 @@ const Demo = () => {
     day_week: 'Monday',
     emails: ['first@react.hook.form', 'first@react.hook.form'],
   };
-  const { handleSubmit, getValues, setValue, control, setError, errors } = useForm({
+  const { handleSubmit, getValues, setValue, control, setError, clearErrors, errors } = useForm({
     defaultValues,
   });
   const [valueTag, setValueTag] = React.useState('');
+  const [isFocused, setIsFocused] = React.useState(false);
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   };
 
+  const isEmailValid = (val) => /.+@.+\..+/i.test(val);
+
   const handleAppendTags = (newTags) => {
     const tags = getValues('emails');
-    if (newTags.some((tag) => !/.+@.+\..+/i.test(tag))) {
+    if (newTags.some((tag) => !isEmailValid(tag))) {
       setError('emails', { message: "Email isn't valid" });
       return;
     }
@@ -36,6 +39,20 @@ const Demo = () => {
     }
     setValue('emails', [...tags, ...newTags]);
     setValueTag('');
+  };
+
+  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target.value && !isEmailValid(e.target.value)) {
+      setError('emails', { message: "Email isn't valid" });
+    }
+    setIsFocused(false);
+  };
+
+  const handleInputChange = (value: string) => {
+    setValueTag(value);
+    if (value && isEmailValid(value)) {
+      clearErrors();
+    }
   };
 
   const handleRemoveTag = () => {
@@ -55,10 +72,13 @@ const Demo = () => {
   };
 
   const periods = ['Daily', 'Weekly'].map((value) => ({ value, children: value }));
-  const daysWeek = ['Monday', 'Tuesday', 'Wednesday', 'Wednesday', 'Friday'].map((value) => ({
+  const daysWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map((value) => ({
     value,
     children: value,
   }));
+
+  const invalid = Boolean(errors.emails);
+  const showError = isFocused && invalid;
 
   return (
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
@@ -92,16 +112,16 @@ const Demo = () => {
               theme='warning'
               w='100%'
               animationsDisabled
-              visible={Boolean(errors['emails'])}
+              visible={showError}
             >
               <Tooltip.Trigger
                 tag={InputTags}
                 size='l'
-                state={errors['emails'] ? 'invalid' : 'normal'}
+                state={showError ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
-                aria-invalid={Boolean(errors['emails'])}
-                aria-errormessage={errors['emails'] ? 'form-emails-error' : undefined}
+                aria-invalid={showError}
+                aria-errormessage={showError ? 'form-emails-error' : undefined}
               >
                 {tags.map((tag, idx) => (
                   <InputTags.Tag key={tag + idx}>
@@ -109,7 +129,12 @@ const Demo = () => {
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
                   </InputTags.Tag>
                 ))}
-                <InputTags.Value value={valueTag} onChange={setValueTag} />
+                <InputTags.Value
+                  value={valueTag}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
+                  onFocus={() => setIsFocused(true)}
+                />
               </Tooltip.Trigger>
               <Tooltip.Popper id='form-emails-error'>
                 {String((errors['emails'] as any)?.message)}

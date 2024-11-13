@@ -1,30 +1,41 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Flex } from 'intergalactic/flex-box';
-import Tooltip from 'intergalactic/tooltip';
-import Input from 'intergalactic/input';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
+import { Flex } from '@semcore/flex-box';
+import Tooltip from '@semcore/tooltip';
+import Input from '@semcore/input';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   const {
     register,
+    trigger,
     handleSubmit,
     errors,
     reset,
-    formState: { dirtyFields, touched },
+    formState: { dirtyFields, isSubmitted },
   } = useForm({
-    mode: 'onChange',
+    mode: 'onBlur',
   });
   const [focusedFieldName, setFocusedFieldName] = React.useState('');
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: { email: string; passwrod: string }) => {
     reset({ email: '', password: '' });
     alert(JSON.stringify(data));
   };
 
-  const showError = (fieldName) => {
-    return Boolean(errors[fieldName]?.message) && focusedFieldName === fieldName;
+  const invalid = (fieldName: string): boolean => {
+    const hasError = Boolean(errors[fieldName]);
+    if (isSubmitted) {
+      return hasError;
+    }
+
+    return dirtyFields[fieldName] && hasError;
+  };
+
+  const showError = (fieldName: string): boolean => {
+    const isActive = focusedFieldName === fieldName;
+    return invalid(fieldName) && isActive;
   };
 
   return (
@@ -46,30 +57,37 @@ const Demo = () => {
             w='100%'
             mb={2}
             size='l'
-            state={errors['email'] ? 'invalid' : 'normal'}
+            state={invalid('email') ? 'invalid' : 'normal'}
             controlsLength={1}
           >
-            {({ getTriggerProps }) => (
-              <Input.Value
-                {...getTriggerProps({
-                  id: 'email',
-                  name: 'email',
-                  type: 'email',
-                  ref: register({
-                    required: 'Email is required',
-                    pattern: {
-                      value: /.+@.+\..+/i,
-                      message: 'Email is not valid',
+            {({ getTriggerProps }) => {
+              return (
+                <Input.Value
+                  {...getTriggerProps({
+                    id: 'email',
+                    name: 'email',
+                    type: 'email',
+                    onChange: () => {
+                      if (invalid('email')) {
+                        trigger('email');
+                      }
                     },
-                  }) as React.ForwardedRef<HTMLInputElement>,
-                })}
-                onFocus={() => setFocusedFieldName('email')}
-                onBlur={() => setFocusedFieldName('')}
-                autoComplete='email'
-                aria-invalid={Boolean(errors['email'])}
-                aria-errormessage={errors['email'] ? 'form-email-error' : undefined}
-              />
-            )}
+                    ref: register({
+                      required: 'Email is required',
+                      pattern: {
+                        value: /.+@.+\..+/i,
+                        message: 'Email is not valid',
+                      },
+                    }) as React.ForwardedRef<HTMLInputElement>,
+                  })}
+                  onFocus={() => setFocusedFieldName('email')}
+                  onBlur={() => setFocusedFieldName('')}
+                  autoComplete='email'
+                  aria-invalid={invalid('email')}
+                  aria-errormessage={invalid('email') ? 'form-email-error' : undefined}
+                />
+              );
+            }}
           </Tooltip.Trigger>
         </Tooltip>
         <Text size={300} tag='label' mb={1} htmlFor='password'>
@@ -88,7 +106,7 @@ const Demo = () => {
             w='100%'
             mb={4}
             size='l'
-            state={errors['password'] ? 'invalid' : 'normal'}
+            state={invalid('password') ? 'invalid' : 'normal'}
             controlsLength={1}
           >
             {({ getTriggerProps }) => (
@@ -97,6 +115,11 @@ const Demo = () => {
                   id: 'password',
                   name: 'password',
                   type: 'password',
+                  onChange: () => {
+                    if (invalid('password')) {
+                      trigger('password');
+                    }
+                  },
                   ref: register({
                     required: 'Password is required',
                     minLength: {
@@ -108,8 +131,8 @@ const Demo = () => {
                 onFocus={() => setFocusedFieldName('password')}
                 onBlur={() => setFocusedFieldName('')}
                 autoComplete='password'
-                aria-invalid={Boolean(errors['password'])}
-                aria-errormessage={errors['password'] ? 'form-password-error' : undefined}
+                aria-invalid={invalid('password')}
+                aria-errormessage={invalid('password') ? 'form-password-error' : undefined}
               />
             )}
           </Tooltip.Trigger>
