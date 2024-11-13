@@ -34,7 +34,6 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
   let suit = 'unknown';
   const testFilePath = testInfo.titlePath[0] ?? '';
 
-  
   if (testFilePath.includes('browser')) {
     suit = 'Browser tests';
   } else if (testFilePath.includes('axe')) {
