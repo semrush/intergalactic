@@ -128,6 +128,7 @@ class FeaturePopoverPopper extends Component {
       zIndex,
       'aria-label': ariaLabel,
       'aria-describedBy': ariaDescribedBy,
+      'aria-labelledby': ariaLabelledby,
       title,
     } = this.asProps;
 
@@ -140,6 +141,7 @@ class FeaturePopoverPopper extends Component {
         role={'dialog'}
         aria-describedby={ariaDescribedBy}
         aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
         title={title}
       >
         <Animation
