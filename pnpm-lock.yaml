@@ -98,6 +98,9 @@ importers:
       '@storybook/addon-essentials':
         specifier: 8.3.5
         version: 8.3.5(storybook@8.3.5)
+      '@storybook/addon-interactions':
+        specifier: 8.3.5
+        version: 8.3.5(storybook@8.3.5)
       '@storybook/addon-links':
         specifier: 8.3.5
         version: 8.3.5(react@18.2.0)(storybook@8.3.5)
@@ -10117,6 +10120,19 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.3.5
+    dev: true
+
+  /@storybook/addon-interactions@8.3.5(storybook@8.3.5):
+    resolution: {integrity: sha512-GtTy/A+mG7vDOahQr2avT4dpWtCRiFDSYcWyuQOZm10y8VDDw157HQM+FuhxjV9Owrrohy9F24oBUwRG8H3b5A==}
+    peerDependencies:
+      storybook: ^8.3.5
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.3.5(storybook@8.3.5)
+      '@storybook/test': 8.3.5(storybook@8.3.5)
+      polished: 4.3.1
+      storybook: 8.3.5
+      ts-dedent: 2.2.0
     dev: true
 
   /@storybook/addon-links@8.3.5(react@18.2.0)(storybook@8.3.5):
