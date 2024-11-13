@@ -51,6 +51,7 @@ describe('Tag', () => {
       }),
     ).toMatchImageSnapshot(task);
   });
+
   test.concurrent('Renders with focus ring when interactive', async ({ task }) => {
     const component = (
       <Tag id='interactive-tag' interactive>
@@ -164,7 +165,7 @@ describe('Tag', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should support theme props', async ({ task }) => {
+  test.concurrent('Should support theme props', async ({ task }) => {
     const component = themes.flatMap((theme) =>
       colors.map((color) => (
         <Tag key={`${theme}-${color}`} theme={theme} color={color}>
