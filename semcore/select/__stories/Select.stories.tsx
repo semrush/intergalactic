@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Select from '@semcore/select';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { SelectWithSearchExample } from './example/select-with-search';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
@@ -59,3 +60,7 @@ export const options: Story = {
 };
 
 export default meta;
+
+export const SelectWithSearch: Story = {
+  render: SelectWithSearchExample,
+};
