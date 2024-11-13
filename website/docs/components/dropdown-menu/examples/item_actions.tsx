@@ -18,7 +18,7 @@ const Demo = () => {
           <DropdownMenu inlineActions placement={'right'}>
             <Flex justifyContent='space-between'>
               <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-              Menu item 3
+                Menu item 3
               </DropdownMenu.Item.Content>
               <DropdownMenu.Actions gap={1}>
                 <DropdownMenu.Item tag={Button} addonLeft={PlusM} aria-label={'Add new'} />
@@ -35,7 +35,7 @@ const Demo = () => {
             offset={[-11, 12]}
           >
             <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-            Menu item 4
+              Menu item 4
               <ChevronRightIcon color='icon-secondary-neutral' />
             </DropdownMenu.Item.Content>
             <DropdownMenu.Menu>
