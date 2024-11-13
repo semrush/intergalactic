@@ -1,10 +1,10 @@
 import React from 'react';
-import Select from 'intergalactic/select';
+import Select from '@semcore/select';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
-const Demo = () => {
+export const SelectWithSearchExample = () => {
   const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
     () =>
@@ -21,7 +21,7 @@ const Demo = () => {
       </Text>
       <Select placeholder='Select a fruit'>
         <Select.Trigger id='options-filtering-select' mr='auto' mt={2} />
-        <Select.Popper aria-label={'Fruits with search'}>
+        <Select.Popper aria-label={'Select popper'}>
           <Select.InputSearch
             value={filter}
             onChange={setFilter}
@@ -74,5 +74,3 @@ const data = [
   label: item,
   value: item,
 }));
-
-export default Demo;
