@@ -81,6 +81,7 @@
     "@storybook/react": "8.3.5",
     "@storybook/react-vite": "8.3.5",
     "@storybook/test": "8.3.5",
+    "@storybook/addon-interactions": "8.3.5",
     "@testing-library/react": "13.4.0",
     "@types/node": "18.16.15",
     "@types/react": "18.0.21",

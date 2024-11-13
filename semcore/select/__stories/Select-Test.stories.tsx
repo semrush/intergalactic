@@ -27,7 +27,6 @@ export const BasicSelectFocusIteracrion: Story = {
   render: () => {
     return (
       <>
-        <Button>Focus start</Button>
         <Flex direction='column'>
           <Text tag='label' size={200} htmlFor='basic-select'>
             Basic select
@@ -41,7 +40,6 @@ export const BasicSelectFocusIteracrion: Story = {
             interaction='focus'
           />
         </Flex>
-        <Button size={'m'}>Focus end</Button>
       </>
     );
   },
