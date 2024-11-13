@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.49.2] - 2024-11-12
+
+### Fixed
+
+- Display of tags with TagContainer and addons.
+
 ## [5.49.1] - 2024-11-08
 
 ### Changed
