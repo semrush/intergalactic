@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.36.5] - 2024-11-12
+
+### Fixed
+
+- Custom `visible` and `onVisibleChange` properties to Ellipsis.
+
 ## [2.36.4] - 2024-11-08
 
 ### Changed

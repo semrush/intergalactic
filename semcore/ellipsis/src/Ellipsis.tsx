@@ -11,6 +11,7 @@ import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import pick from '@semcore/utils/lib/pick';
 import { forkRef } from '@semcore/utils/lib/ref';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 type AsProps = {
   maxLine?: number;
@@ -210,8 +211,10 @@ class RootEllipsis extends Component<AsProps> {
     ]);
     const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
 
-    tooltipProps.visible = visible;
-    tooltipProps.onVisibleChange = this.handlerVisibleChange;
+    tooltipProps.visible = tooltipProps.visible ?? visible;
+    tooltipProps.onVisibleChange = tooltipProps.onVisibleChange
+      ? callAllEventHandlers(tooltipProps.onVisibleChange, this.handlerVisibleChange)
+      : this.handlerVisibleChange;
 
     if (trim === 'middle') {
       return sstyled(styles)(
