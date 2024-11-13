@@ -7,11 +7,13 @@ import Checkbox from 'intergalactic/checkbox';
 import Select from 'intergalactic/select';
 import { ButtonTrigger } from 'intergalactic/base-trigger';
 import Button from 'intergalactic/button';
+import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [selected, setSelected] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState([]);
   const [selectedFirst, setSelectedFirst] = React.useState(0);
+  const [selectInFocus, setSelectInFocus] = React.useState(false);
   const defaultValues = {
     export: 'all',
   };
@@ -90,14 +92,32 @@ const Demo = () => {
               <Radio style={{ alignItems: 'center' }}>
                 <Radio.Value value='first' />
                 <Radio.Text>First</Radio.Text>
-                <Select
-                  size='l'
-                  ml={2}
-                  state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
-                  tag={ButtonTrigger}
-                  options={optionsFirst}
-                  onChange={onChangeSelect}
-                />
+
+                <Tooltip>
+                  <Tooltip.Popper
+                    id='form-select-error'
+                    theme='warning'
+                    placement='top'
+                    visible={selectInFocus && value.includes('first') && !!errors['export']}
+                  >
+                    Field is requried.
+                  </Tooltip.Popper>
+                  <Tooltip.Trigger
+                    w={'100%'}
+                    inline={false}
+                    onFocus={() => setSelectInFocus(true)}
+                    onBlur={() => setSelectInFocus(false)}
+                  >
+                    <Select
+                      size='l'
+                      ml={2}
+                      state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
+                      tag={ButtonTrigger}
+                      options={optionsFirst}
+                      onChange={onChangeSelect}
+                    />
+                  </Tooltip.Trigger>
+                </Tooltip>
               </Radio>
             </RadioGroup>
           )}
