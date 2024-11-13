@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.1] - 2024-11-13
+
+### Added
+
+- Possibility to set `aria-labelledby` to the `Popper`.
+
 ## [4.49.0] - 2024-11-06
 
 ### Changed
