@@ -28,7 +28,8 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
   }, []);
 
   React.useEffect(() => {
-    focusTrigger();
+    // calling focusTrigger with timeout to enable animation
+    setTimeout(focusTrigger);
   }, []);
 
   const isEscapeKeyDown = (e) => {
@@ -60,7 +61,6 @@ const FilterSelect = ({ value, onClear, onChange, options, name }: FilterSelectP
           ) {
             setSelectVisible(false);
             onClear();
-            setSelectVisible(false);
           }
         }}
         tag={FilterTrigger}
