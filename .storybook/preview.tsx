@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Preview } from "@storybook/react";
-
 import { PortalProvider } from '@semcore/portal';
 
 const preview: Preview = {
@@ -14,11 +13,11 @@ const preview: Preview = {
     config: {
       rules: [
         { id: 'color-contrast', enabled: false },
-          { id: 'html-has-lang', enabled: false },
-          { id: 'html-lang-valid', enabled: false }, 
-         { id: 'meta-viewport', enabled: false },
+        { id: 'html-has-lang', enabled: false },
+        { id: 'html-lang-valid', enabled: false }, 
+        { id: 'meta-viewport', enabled: false },
         { id: 'video-caption', enabled: false },
-          { id: 'scope-attr-valid', enabled: true },
+        { id: 'scope-attr-valid', enabled: true },
       ],
     },
 
