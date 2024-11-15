@@ -21,7 +21,7 @@ In the simplest case, you can implement the select by passing an array of option
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/basic_usage.tsx';
 </script>
 
 :::
@@ -33,7 +33,7 @@ In the `label` in `option` item, you could set custom display value for selected
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_selected_label.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/custom_selected_label.tsx';
 </script>
 
 :::
@@ -45,7 +45,7 @@ The component can operate in either controlled or uncontrolled mode.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/controlled_and_uncontrolled_modes.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/controlled_and_uncontrolled_modes.tsx';
 </script>
 
 :::
@@ -57,7 +57,7 @@ When you need to customize the trigger, you can pass the desired component to th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/trigger_customization.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/trigger_customization.tsx';
 </script>
 
 :::
@@ -67,7 +67,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/trigger-customization.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/trigger_customization_deep.tsx';
 </script>
 
 :::
@@ -90,7 +90,7 @@ This example shows how to insert a [Notice](/components/notice/notice) in the Se
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/dropdownmenu_customization.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/dropdownmenu_customization.tsx';
 </script>
 
 :::
@@ -107,7 +107,7 @@ The component offers several variants of options layout:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/options.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/options.tsx';
 </script>
 
 :::
@@ -121,7 +121,7 @@ This example shows one of the ways to implement filtering.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/options_filtering.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/options_filtering.tsx';
 </script>
 
 :::
@@ -135,7 +135,7 @@ In this example the **Clear** button handler is disabled.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/advanced_filtering_control.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/advanced_filtering_control.tsx';
 </script>
 
 :::
@@ -145,7 +145,7 @@ In this example the **Clear** button handler is disabled.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/loading_state.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/loading_state.tsx';
 </script>
 
 :::
@@ -159,7 +159,7 @@ The internal layout of options will change to include `Select.Option.Checkbox`, 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/multiselect.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/multiselect.tsx';
 </script>
 
 :::
@@ -171,7 +171,7 @@ This example shows one of the ways to sort the selected options.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/sorting_multiselect_options.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/sorting_multiselect_options.tsx';
 </script>
 
 :::
@@ -185,7 +185,7 @@ This example shows how to implement "Select all" and "Deselect all" buttons usin
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/render-function.tsx';
+  export Demo from 'stories/components/select/__stories__/docs-examples/render_function.tsx';
 </script>
 
 :::

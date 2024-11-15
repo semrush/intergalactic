@@ -1,19 +1,16 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: [
-    "../semcore/*/__stories/**/*.mdx",
-    "../semcore/*/__stories/**/*.stories.@(ts|tsx)",
-  ],
+  stories: ['../stories/**/__stories__/*.stories.@(ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-storysource",
-    "@storybook/addon-a11y",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-storysource',
+    '@storybook/addon-a11y',
     '@storybook/addon-interactions',
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
   typescript: {

@@ -25,7 +25,7 @@
     }
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
-  "include": ["semcore", "tools"],
+  "include": ["semcore", "tools", "stories"],
   "exclude": [
     "node_modules",
     "tools/playground/examples/*",

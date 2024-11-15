@@ -49,6 +49,14 @@ export const viteConfig = defineConfig({
         return `${resolvePath(__dirname, '../../src/docs', purePath)}.jsx`;
       },
     })).vite({}),
+    createUnplugin<{}>(() => ({
+      name: 'stories-resolver',
+      async resolveId(id) {
+        if (!id.startsWith('stories/')) return null;
+        const purePath = id.substring('stories/'.length);
+        return resolvePath(__dirname, '../../../stories', purePath);
+      },
+    })).vite({}),
     unpluginIcons.vite({}),
     unpluginStatic.vite({}),
     unpluginIllustrations.vite({}),
