@@ -116,7 +116,7 @@ Refer to the following tutorials, for the detailed process for creating a new th
 ::: tip
 **In cases where different styles are needed for just one component or a part of the design system:**
 
-- Designer can follow the same scenario described above
+- Designer can create a new theme as described earlier, and apply it only to the necessary component
 - Developer can use [ThemeProvider](/style/design-tokens/design-tokens-usage-development#themeprovider)
   :::
 
