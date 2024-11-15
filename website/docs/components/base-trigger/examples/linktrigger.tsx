@@ -1,24 +1,27 @@
 import React from 'react';
 import Select from 'intergalactic/select';
 import { LinkTrigger } from 'intergalactic/base-trigger';
-
-const options = Array(6)
-  .fill('')
-  .map((_, index) => ({
-    value: index,
-    label: `Label ${index}`,
-    children: `Option ${index}`,
-  }));
+import { Flex } from 'intergalactic/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
-  <Select
-    tag={LinkTrigger}
-    options={options}
-    id='link-trigger-select'
-    placeholder='Select an option'
-    mt={2}
-    mr='auto'
-  />
+  <Flex gap={2}>
+    <Text size={200} tag='label' htmlFor='device-link-select'>
+      Device:
+    </Text>
+    <Select tag={LinkTrigger} options={devices} id='device-link-select' />
+    <Select tag={LinkTrigger} options={periods} aria-label='Period' placeholder='Select period' ml={4} />
+  </Flex>
 );
+
+const devices = ['Desktop', 'Mobile', 'Tablet'].map((item) => ({
+  value: item,
+  children: item,
+}));
+
+const periods = ['Last week', 'Last month', 'Last 6 months'].map((item) => ({
+  value: item,
+  children: item,
+}));
 
 export default Demo;

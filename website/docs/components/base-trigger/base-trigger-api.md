@@ -9,7 +9,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 Basic trigger-button for all dropdowns.
 
 ```js
-import { BaseTrigger } from 'intergalactic/base-trigger';
+import BaseTrigger from 'intergalactic/base-trigger';
 ```
 
 <TypesView type="BaseTriggerProps" :types={...types} />
