@@ -110,7 +110,7 @@ Creating a theme usually starts with design. In fact, this is the most time-cons
 
 Refer to the following tutorials, for the detailed process for creating a new theme:
 
-- Internal libraries have two tutorials, [tutorial for Figma tokens](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=13125-73031&node-type=canvas&t=qOTf0DSn0M8p63of-11) and [tutorial for Tokens Studio](https://www.figma.com/design/K1s6wF8NTH3uNHvjkn6hjc/Themes'-playground-%26-tutorial-%F0%9F%8E%93?m=auto&t=jHrLhhOMB32IMklB-6)
+- Semrush designers and developers can use two tutorials, [tutorial for Figma tokens](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=13125-73031&node-type=canvas&t=qOTf0DSn0M8p63of-11) and [tutorial for Tokens Studio](https://www.figma.com/design/K1s6wF8NTH3uNHvjkn6hjc/Themes'-playground-%26-tutorial-%F0%9F%8E%93?m=auto&t=jHrLhhOMB32IMklB-6)
 - Public libraries now have only [tutorial for Tokens Studio](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens)
 
 ::: tip
