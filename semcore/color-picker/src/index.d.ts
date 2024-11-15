@@ -10,7 +10,7 @@ export type ItemProps = BoxProps & {
   /**
    * Color item in hexadecimal format.
    */
-  value?: string;
+  value?: string | null;
   /**
    * Shows label `A` as text color icon inside all color items
    */
@@ -35,7 +35,7 @@ export type ColorsProps = BoxProps & {
   /**
    * Array of color items
    */
-  colors?: string[];
+  colors?: Array<string | null>;
 };
 
 /** @deprecated */

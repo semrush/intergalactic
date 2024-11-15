@@ -8,7 +8,7 @@ test.skip('Users can interact with DropdownMenu via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/dropdown-menu/examples/basic.tsx';
+  const standPath = 'stories/components/dropdown-menu/__stories__/docs-examples/basic.tsx';
   const reportPath = 'website/docs/components/dropdown-menu/dropdown-menu-a11y-report.md';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
