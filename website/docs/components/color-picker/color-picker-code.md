@@ -10,7 +10,7 @@ PaletteManager lets you add your own colors by typing in the hexadecimal code an
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/palettemanager.tsx';
+  export Demo from 'stories/components/color-picker/__stories__/docs-examples/palettemanager.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ To prevent users from entering white as a color option, replace the default vali
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_validation.tsx';
+  export Demo from 'stories/components/color-picker/__stories__/docs-examples/input_validation.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ You have complete control over the appearance of ColorPicker, including the trig
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_trigger.tsx';
+  export Demo from 'stories/components/color-picker/__stories__/docs-examples/custom_trigger.tsx';
 </script>
 
 :::
@@ -49,7 +49,7 @@ There are multiple ways to add colors in ColorPicker;
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/several_ways_to_use_component.tsx';
+  export Demo from 'stories/components/color-picker/__stories__/docs-examples/several_ways_to_use_component.tsx';
 </script>
 
 :::
