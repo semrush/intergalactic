@@ -1,16 +1,16 @@
 import React from 'react';
-import Dropdown from 'intergalactic/dropdown';
-import Select from 'intergalactic/select';
-import Input from 'intergalactic/input';
-import MathPlusM from 'intergalactic/icon/MathPlus/m';
+import Dropdown from '@semcore/dropdown';
+import Select from '@semcore/select';
+import Input from '@semcore/input';
+import MathPlusM from '@semcore/icon/MathPlus/m';
 import { Hint } from '@semcore/ui/tooltip';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Divider from 'intergalactic/divider';
-import Button from 'intergalactic/button';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import CloseM from 'intergalactic/icon/Close/m';
-import TrashM from 'intergalactic/icon/Trash/m';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import Divider from '@semcore/divider';
+import Button from '@semcore/button';
+import { FilterTrigger } from '@semcore/base-trigger';
+import CloseM from '@semcore/icon/Close/m';
+import TrashM from '@semcore/icon/Trash/m';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const makeOptions = (options) => options.map((value) => ({ value, children: value }));
