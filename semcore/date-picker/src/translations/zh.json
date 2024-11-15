@@ -16,6 +16,7 @@
   "compare": "比较",
   "fromDate": "从 {date}",
   "toDate": "至 {date}",
+  "periods": "预设",
   "dateRange": "日期范围",
   "dateRange1": "第一个日期范围",
   "dateRange2": "第二个日期范围",

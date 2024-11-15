@@ -13,7 +13,7 @@ Addons can be added:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/addons.tsx';
+  export Demo from 'stories/components/button/__stories__/docs-examples/addons.tsx';
 </script>
 
 :::
@@ -25,7 +25,7 @@ To use a button with a single icon, you need to wrap it in the `<Button.Addon/>`
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/button_with_icon.tsx';
+  export Demo from 'stories/components/button/__stories__/docs-examples/button_with_icon.tsx';
 </script>
 
 :::
@@ -37,7 +37,7 @@ In case you need to render a Button that looks like a Link, use the `ButtonLink`
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/button_link.tsx';
+  export Demo from 'stories/components/button/__stories__/docs-examples/button_link.tsx';
 </script>
 
 :::
@@ -53,7 +53,7 @@ If there is no visible text in the button, it is necessary to add an `aria-label
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/button_accessibility.tsx';
+  export Demo from 'stories/components/button/__stories__/docs-examples/button_accessibility.tsx';
 </script>
 
 :::
@@ -65,7 +65,7 @@ You could add a `loading` prop to the `Button` or manually add an `Addon` with `
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/button_with_loading.tsx';
+  export Demo from 'stories/components/button/__stories__/docs-examples/button_with_loading.tsx';
 </script>
 
 :::

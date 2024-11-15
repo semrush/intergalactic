@@ -16,6 +16,7 @@
   "compare": "次と比較",
   "fromDate": "{date}から",
   "toDate": "{date}まで",
+  "periods": "プリセット",
   "dateRange": "日付範囲",
   "dateRange1": "一番目の日付範囲",
   "dateRange2": "二番目の日付範囲",
