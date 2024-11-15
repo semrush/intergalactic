@@ -5,7 +5,7 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 
 ## Link
 
-A modified link component that can be `disabled` and have `Addon` elements. By default, the link is `inline-block` and `no-wrap` – that is, in most cases it's used as a stand-alone component.
+A modified link component that can be `disabled` and have `Addon` elements. By default, the link is `inline-block` and `no-wrap` – that's, in most cases it's used as a stand-alone component.
 
 ```jsx
 import Link from 'intergalactic/link';
