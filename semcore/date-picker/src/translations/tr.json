@@ -16,6 +16,7 @@
   "compare": "Şuna göre karşılaştır",
   "fromDate": "{date} adresinden",
   "toDate": "{date} tarihine kadar",
+  "periods": "Ön Ayarlar",
   "dateRange": "Tarih aralığı",
   "dateRange1": "İlk tarih aralığı",
   "dateRange2": "İkinci tarih aralığı",
