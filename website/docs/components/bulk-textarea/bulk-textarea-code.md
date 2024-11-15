@@ -5,4 +5,4 @@ tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-ap
 
 ## Expanded BulkTextarea
 
-*Here we should add an example of how our users can expand the component if they need to change the placement of the controls.*
+*HERE, WE SHOULD ADD AN EXAMPLE OF HOW OUR USERS CAN EXPAND THE COMPONENT IF THEY NEED TO CHANGE THE PLACEMENT OF THE CONTROLS.*
