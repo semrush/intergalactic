@@ -4,7 +4,7 @@ import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
-const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
+const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 
 const defaultTags = ['bob@email.com', 'alice@domain.net', 'mary@website.com', 'steve@company.com'];
 
@@ -12,7 +12,7 @@ const Demo = () => {
   const [tags, setTags] = React.useState(defaultTags);
   const [value, setValue] = React.useState('');
 
-  const changeState = (tags, value) => {
+  const changeState = (tags?: string[], value?: string) => {
     if (tags !== undefined) {
       setTags(tags);
     }
@@ -21,7 +21,7 @@ const Demo = () => {
     }
   };
 
-  const handleAppendTags = (newTags) => {
+  const handleAppendTags = (newTags: string[]) => {
     setTags((tags) => [...tags, ...newTags]);
     setValue(() => '');
   };
@@ -30,11 +30,11 @@ const Demo = () => {
     changeState(tags.slice(0, -1), tags.slice(-1)[0]);
   };
 
-  const handleChange = (value) => {
+  const handleChange = (value: string) => {
     changeState(undefined, value);
   };
 
-  const handleCloseTag = (e) => {
+  const handleCloseTag = (e: React.SyntheticEvent<HTMLElement>) => {
     const { dataset } = e.currentTarget;
     changeState(
       tags.filter((tag, ind) => ind !== Number(dataset.id)),
@@ -42,7 +42,7 @@ const Demo = () => {
     );
   };
 
-  const handleSelect = (value) => {
+  const handleSelect = (value: string) => {
     changeState([...tags, value], '');
   };
 

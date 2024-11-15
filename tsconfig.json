@@ -21,7 +21,8 @@
       "@semcore/ui/*": ["*/src"],
       "intergalactic/*": ["*/src"],
       "@semcore/*": ["*/src"],
-      "@tools/*": ["../tools/*"]
+      "@tools/*": ["../tools/*"],
+      "@semcore/utils/lib/*": ["./utils/src/*"]
     }
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],

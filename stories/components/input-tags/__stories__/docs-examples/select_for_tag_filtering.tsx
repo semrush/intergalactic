@@ -7,8 +7,8 @@ import Select from '@semcore/select';
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
 const Demo = () => {
-  const selectTriggerRef = React.useRef(null);
-  const [tags, setTags] = React.useState([]);
+  const selectTriggerRef = React.useRef<HTMLInputElement>(null);
+  const [tags, setTags] = React.useState<string[]>([]);
   const [valueInput, setValueInput] = React.useState('');
   const [visible, setVisible] = React.useState(false);
 
@@ -19,7 +19,7 @@ const Demo = () => {
     }
   }
 
-  function onRemoveTag(index, e) {
+  function onRemoveTag(index: number, e: React.SyntheticEvent<HTMLElement>) {
     e.stopPropagation();
     const newTags = tags.filter((tag, i) => i !== index);
     setTags(tags.filter((tag, i) => i !== index));
@@ -28,12 +28,12 @@ const Demo = () => {
     }
   }
 
-  function onChangeValue(value) {
+  function onChangeValue(value: string) {
     setValueInput(value);
     setVisible(true);
   }
 
-  function onChange(value) {
+  function onChange(value: string[]) {
     setTags(value);
     setValueInput('');
   }

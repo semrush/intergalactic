@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'intergalactic/button';
-import CheckM from 'intergalactic/icon/Check/m';
-import CloseM from 'intergalactic/icon/Close/m';
+import CheckM from '@semcore/icon/Check/m';
+import CloseM from '@semcore/icon/Close/m';
 
 const Demo = () => {
   return (

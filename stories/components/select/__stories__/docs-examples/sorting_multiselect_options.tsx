@@ -3,6 +3,11 @@ import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
+interface Option {
+  value: number;
+  title: string;
+}
+
 const options = Array(20)
   .fill('')
   .map((i, idx) => ({
@@ -10,7 +15,7 @@ const options = Array(20)
     title: `Awesome option ${idx}`,
   }));
 
-const Option = ({ value, title }) => (
+const Option = ({ value, title }: Option) => (
   <Select.Option value={value} key={value}>
     <Select.Option.Checkbox />
     {title}
@@ -18,10 +23,10 @@ const Option = ({ value, title }) => (
 );
 
 const Demo = () => {
-  const [selected, setSelected] = React.useState([]);
-  const [prevSelected, setPrevSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState<number[]>([]);
+  const [prevSelected, setPrevSelected] = React.useState<Option[]>([]);
 
-  const handleVisibleChange = (value) => {
+  const handleVisibleChange = (value: boolean) => {
     if (value) return;
     setPrevSelected(options.filter((o) => selected.includes(o.value)));
   };
@@ -30,7 +35,7 @@ const Demo = () => {
     if (!prevSelected.length) {
       return options.map((props) => <Option key={props.value} {...props} />);
     }
-    const [checked, unchecked] = options.reduce(
+    const [checked, unchecked] = options.reduce<[Option[], Option[]]>(
       (acc, o) => {
         prevSelected.find((v) => v.value === o.value) ? acc[0].push(o) : acc[1].push(o);
         return acc;
@@ -51,7 +56,7 @@ const Demo = () => {
       </Text>
       <Select
         value={selected}
-        onChange={(v) => setSelected(v)}
+        onChange={(v: number[]) => setSelected(v)}
         onVisibleChange={handleVisibleChange}
         multiselect
         placeholder='Select values'

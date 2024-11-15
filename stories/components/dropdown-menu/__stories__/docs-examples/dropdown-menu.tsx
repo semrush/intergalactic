@@ -5,7 +5,7 @@ import Link from 'intergalactic/link';
 import { Text } from 'intergalactic/typography';
 import Notice from 'intergalactic/notice';
 import SpinContainer from 'intergalactic/spin-container';
-import FileExportM from 'intergalactic/icon/FileExport/m';
+import FileExportM from '@semcore/icon/FileExport/m';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);

@@ -5,10 +5,11 @@ import { Box } from '@semcore/flex-box';
 const Demo = () => {
   const [tags, setTags] = React.useState(['Facebook', 'X (Twitter)', 'Instagram']);
 
-  const handleEditTag = (e) => {
-    const { dataset } = e.currentTarget.parentElement;
+  const handleEditTag = (e: React.SyntheticEvent) => {
+    const parent = e.currentTarget.parentElement;
+    const dataset = parent ? parent.dataset : null;
     const allTags = [...tags];
-    setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
+    setTags(allTags.filter((tag, ind) => ind !== Number(dataset?.id)));
 
     return false;
   };

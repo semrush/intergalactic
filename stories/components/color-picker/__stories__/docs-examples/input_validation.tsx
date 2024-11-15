@@ -6,7 +6,7 @@ import { Flex } from 'intergalactic/flex-box';
 const Demo = () => {
   const [state, setState] = React.useState<'normal' | 'invalid'>('normal');
 
-  const onChange = (value) => {
+  const onChange = (value: any) => {
     if (value.toLowerCase() === 'ffffff') {
       setState('invalid');
     }

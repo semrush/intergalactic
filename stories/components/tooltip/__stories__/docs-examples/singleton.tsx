@@ -16,13 +16,21 @@ const TooltipContent = () => {
 };
 
 const SelectWithTooltip = React.memo(
-  ({ setTooltipIndex }: { setTooltipIndex: (number) => void }) => {
+  ({ setTooltipIndex }: { setTooltipIndex: (number: number) => void }) => {
+    const handleHighlightedIndexChange = React.useCallback(
+      (index: number | null) => {
+        if (index !== null) {
+          setTooltipIndex(index);
+        }
+      },
+      [setTooltipIndex],
+    );
     return (
       <Flex direction='column'>
         <Text tag='label' size={200} htmlFor='select-with-tooltips'>
           Select with tooltips
         </Text>
-        <Select onHighlightedIndexChange={setTooltipIndex}>
+        <Select onHighlightedIndexChange={handleHighlightedIndexChange}>
           <Select.Trigger placeholder='Select option' mt={2} mr='auto' id='select-with-tooltips' />
           <Select.Menu>
             <Tooltip timeout={[0, 50]} placement='right'>

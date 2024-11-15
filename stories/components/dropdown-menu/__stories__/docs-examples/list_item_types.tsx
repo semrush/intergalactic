@@ -2,7 +2,7 @@ import React from 'react';
 import DropdownMenu from 'intergalactic/dropdown-menu';
 import Button from 'intergalactic/button';
 import Tooltip from 'intergalactic/tooltip';
-import DesktopIconM from 'intergalactic/icon/Desktop/m';
+import DesktopIconM from '@semcore/icon/Desktop/m';
 
 const TooltipContent = () => {
   const tooltipIndex = React.useContext(DropdownMenu.selectedIndexContext);

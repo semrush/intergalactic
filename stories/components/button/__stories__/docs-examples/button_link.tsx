@@ -1,9 +1,9 @@
 import React from 'react';
 import { ButtonLink } from 'intergalactic/button';
 import { Flex } from 'intergalactic/flex-box';
-import CheckM from 'intergalactic/icon/Check/m';
-import CheckL from 'intergalactic/icon/Check/l';
-import CloseM from 'intergalactic/icon/Close/m';
+import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/l';
+import CloseM from '@semcore/icon/Close/m';
 
 const Demo = () => {
   return (

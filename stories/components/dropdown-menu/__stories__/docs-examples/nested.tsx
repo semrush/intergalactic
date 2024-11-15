@@ -1,7 +1,7 @@
 import React from 'react';
 import DropdownMenu from 'intergalactic/dropdown-menu';
 import Button from 'intergalactic/button';
-import ChevronRightIcon from 'intergalactic/icon/ChevronRight/m';
+import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 
 const Demo = () => {
   return (

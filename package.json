@@ -64,6 +64,7 @@
     "@semcore/continuous-delivery": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
+    "@semcore/icon": "workspace:*",
     "@semcore/esbuild-plugin-semcore": "workspace:*",
     "@semcore/gcs-upload": "workspace:*",
     "@semcore/slack-integration": "workspace:*",

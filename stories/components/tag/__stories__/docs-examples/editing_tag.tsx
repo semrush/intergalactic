@@ -7,7 +7,7 @@ const Demo = () => {
   const [value, setValue] = React.useState('Default tag');
   const [editable, setEditable] = React.useState(false);
 
-  const handleValue = (value) => {
+  const handleValue = (value: string) => {
     setEditable(false);
     setValue(value);
   };

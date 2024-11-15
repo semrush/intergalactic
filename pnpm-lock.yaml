@@ -86,6 +86,9 @@ importers:
       '@semcore/gcs-upload':
         specifier: workspace:*
         version: link:tools/gcs-upload
+      '@semcore/icon':
+        specifier: workspace:*
+        version: link:semcore/icon
       '@semcore/slack-integration':
         specifier: workspace:*
         version: link:tools/slack-integration

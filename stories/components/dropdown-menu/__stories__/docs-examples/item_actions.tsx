@@ -1,8 +1,8 @@
 import React from 'react';
 import DropdownMenu from 'intergalactic/dropdown-menu';
 import { Flex } from 'intergalactic/flex-box';
-import TrashM from 'intergalactic/icon/Trash/m';
-import PlusM from 'intergalactic/icon/MathPlus/m';
+import TrashM from '@semcore/icon/Trash/m';
+import PlusM from '@semcore/icon/MathPlus/m';
 import Button from 'intergalactic/button';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 

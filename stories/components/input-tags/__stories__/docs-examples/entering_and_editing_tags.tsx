@@ -5,7 +5,7 @@ import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
-  const inputValueRef = React.useRef<HTMLInputElement>();
+  const inputValueRef = React.useRef<HTMLInputElement>(null);
   const [tags, setTags] = React.useState([
     'TikTok',
     'Facebook',
@@ -15,7 +15,7 @@ const Demo = () => {
   ]);
   const [value, setValue] = React.useState('');
 
-  const handleAppendTags = (newTags) => {
+  const handleAppendTags = (newTags: string[]) => {
     setTags((tags) => [...tags, ...newTags]);
     setValue('');
   };
@@ -26,33 +26,35 @@ const Demo = () => {
     setValue(`${tags.slice(-1)[0]} ${value}`);
   };
 
-  const handleCloseTag = (e) => {
+  const handleCloseTag = (e: React.SyntheticEvent) => {
     e.preventDefault();
   };
 
-  const handleTagKeyDown = (e) => {
+  const handleTagKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.code === 'Enter' || e.code === 'Space') {
       handleEditTag(e);
     }
     return false;
   };
 
-  const handleEditTag = (e) => {
+  const handleEditTag = (
+    e: React.SyntheticEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => {
     const { dataset } = e.currentTarget;
     let allTags = [...tags];
     if (value) {
       allTags = [...allTags, value];
     }
     setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
-    if (!e.defaultPrevented) {
-      setValue(tags[dataset.id]);
+    if (!e.defaultPrevented && dataset.id !== undefined) {
+      setValue(tags[Number(dataset.id)]);
       inputValueRef.current?.focus();
     }
     return false;
   };
 
-  const handleInputKeyDown = (e) => {
-    const { value } = e.target;
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const value = e.target instanceof HTMLInputElement ? e.target.value : null;
     if (e.key === 'Enter' && value) {
       handleAppendTags([value]);
 

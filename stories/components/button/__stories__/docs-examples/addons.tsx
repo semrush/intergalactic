@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'intergalactic/button';
+import Button from '@semcore/button';
 import Badge from '@semcore/ui/badge';
-import CheckM from 'intergalactic/icon/Check/m';
+import CheckM from '@semcore/icon/Check/m';
 
 const Demo = () => {
   return (
