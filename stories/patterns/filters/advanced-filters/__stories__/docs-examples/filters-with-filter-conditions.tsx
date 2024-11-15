@@ -13,9 +13,14 @@ import CloseM from '@semcore/icon/Close/m';
 import TrashM from '@semcore/icon/Trash/m';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
-const makeOptions = (options) => options.map((value) => ({ value, children: value }));
-
-const Filter = ({ closable, onClose, id, name, ...props }) => (
+const makeOptions = (options: string[]) => options.map((value) => ({ value, children: value }));
+interface FilterProps extends React.ComponentPropsWithoutRef<typeof Flex> {
+  closable?: boolean;
+  onClose?: () => void;
+  id: string;
+  name: string;
+}
+const Filter: React.FC<FilterProps> = ({ closable, onClose, id, name, ...props }) => (
   <Flex {...props} gap={2}>
     <Flex flexWrap gap={4} tag='fieldset' m={0} p={0} style={{ border: 'none' }}>
       <ScreenReaderOnly>
@@ -81,9 +86,9 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
 );
 
 const Demo = () => {
-  const [filtersCount, setFiltersCount] = React.useState(1);
-  const [visible, setVisible] = React.useState(false);
-  const buttonRef = React.useRef(null);
+  const [filtersCount, setFiltersCount] = React.useState<number>(1);
+  const [visible, setVisible] = React.useState<boolean>(false);
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
 
   React.useEffect(() => {
     if (!buttonRef.current) return;
