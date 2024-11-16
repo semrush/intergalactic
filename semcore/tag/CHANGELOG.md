@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.49.3] - 2024-11-12
+
+### Fixed
+
+- Display of tags with TagContainer and addons in the `InputTags` component.
+
 ## [5.49.2] - 2024-11-12
 
 ### Fixed
