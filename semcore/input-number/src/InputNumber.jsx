@@ -470,8 +470,6 @@ class Value extends Component {
           use:ref={forkRef(this.valueInputRef, inputRef, forwardRef)}
           use:value={displayValue}
           inputMode='decimal'
-          aria-valuemin={min}
-          aria-valuemax={max}
           min={min}
           max={max}
           step={step}
