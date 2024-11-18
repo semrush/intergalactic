@@ -8,9 +8,9 @@ import Tooltip from 'intergalactic/tooltip';
 import 'intergalactic/utils/style/var.css';
 
 const warningBlockStyles = {
-  background: 'var(--red-50)',
-  border: '1px solid var(--red-200)',
-  borderRadius: 'var(--rounded-m)',
+  background: 'var(--intergalactic-bg-secondary-critical)',
+  border: '1px solid var(--intergalactic-border-critical)',
+  borderRadius: 'var(--intergalactic-surface-rounded)',
   marginBottom: '24px',
   padding: '16px',
 };
@@ -36,9 +36,7 @@ const Demo = () => {
     <React.Fragment>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal visible={visible} onClose={handleClose} w={536}>
-        <Text tag='h2' size={500} mb={4}>
-          Delete project?
-        </Text>
+        <Modal.Title mb={4}>Delete project?</Modal.Title>
         <Text size={300} mb={4} tag='p'>
           This will <Text tag='strong'>delete</Text> the following campaigns set up for{' '}
           <Text tag='strong'>test.com</Text> with all their data:
