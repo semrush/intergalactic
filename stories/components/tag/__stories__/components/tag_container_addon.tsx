@@ -4,7 +4,7 @@ import Edit from "@semcore/icon/Edit/m";
 import { Box } from "@semcore/flex-box";
 
 
-export const TagContainerWithAddonExample = () => {
+const Demo = () => {
   const [tags, setTags] = React.useState(['Facebook', 'X (Twitter)', 'Instagram']);
 
   const handleEditTag = (e: React.SyntheticEvent) => {
@@ -56,3 +56,5 @@ export const TagContainerWithAddonExample = () => {
     </Box>
   );
 };
+
+export default Demo;

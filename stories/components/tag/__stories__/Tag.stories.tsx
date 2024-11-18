@@ -9,8 +9,8 @@ import GroupingTagsMoreExample from './docs-examples/grouping_tags_more';
 import RemovingTagExample from './docs-examples/removing_tag';
 import TagAddonExample from './docs-examples/tag_addon';
 
-import { TagAddonSizesPositionsExample } from './components/tag_with_addon_all_sizes_positions';
-import { TagContainerWithAddonExample } from './components/tag_container_addon';
+import TagAddonSizesPositionsExample from './components/tag_with_addon_all_sizes_positions';
+import TagContainerWithAddonExample from './components/tag_container_addon';
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',

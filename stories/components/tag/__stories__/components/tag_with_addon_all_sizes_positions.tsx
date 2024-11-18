@@ -6,7 +6,7 @@ import SmileHappyL from '@semcore/icon/SmileHappy/l';
 import SmileSadM from '@semcore/icon/SmileSad/m';
 import SmileSadL from '@semcore/icon/SmileSad/l';
 
-export const TagAddonSizesPositionsExample = () => {
+const Demo = () => {
   return (
     <Flex direction='column' gap={3}>
       <Flex gap={1}>
@@ -108,3 +108,5 @@ export const TagAddonSizesPositionsExample = () => {
     </Flex>
   );
 };
+
+export default Demo;
