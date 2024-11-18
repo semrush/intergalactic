@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Display of tags with TagContainer and addons in the `InputTags` component.
+- Display of tags with TagContainer and `Addon` / `Circle` in the `InputTags` component.
 
 ## [5.49.2] - 2024-11-12
 
