@@ -2,15 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Tooltip from '@semcore/tooltip';
 
-import BasicUsageExample from './docs-examples/basic_usage';
-import CustomBgColorExample from './docs-examples/custom_bg_color';
-import IgnorePortalStackingExample from './docs-examples/ignore_portal_stacking';
-import InfoIconExample from './docs-examples/info_icon';
-import NestedExample from './docs-examples/nested';
-import PlacementPropertiesExample from './docs-examples/placement-properties';
-import RoleStatusExample from './docs-examples/role-status';
-import SingletonExample from './docs-examples/singleton';
-import TitleExample from './docs-examples/title';
+import BasicUsageExample from './examples/basic_usage';
+import CustomBgColorExample from './examples/custom_bg_color';
+import IgnorePortalStackingExample from './examples/ignore_portal_stacking';
+import InfoIconExample from './examples/info_icon';
+import NestedExample from './examples/nested';
+import PlacementPropertiesExample from './examples/placement-properties';
+import RoleStatusExample from './examples/role-status';
+import SingletonExample from './examples/singleton';
+import TitleExample from './examples/title';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',

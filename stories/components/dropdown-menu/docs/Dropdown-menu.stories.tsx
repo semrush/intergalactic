@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import DropdownMenu from '@semcore/dropdown-menu';
 
-import BasicExample from './docs-examples/basic';
-import DropdownMenuExample from './docs-examples/dropdown-menu';
-import ItemActionsExample from './docs-examples/item_actions';
-import ListItemTypesExample from './docs-examples/list_item_types';
-import NestedExample from './docs-examples/nested';
-import NestedWithFocusableExample from './docs-examples/nested_with_focusable';
-import RenderFunctionExample from './docs-examples/render_function';
-import TheSecondMethodExample from './docs-examples/the_second_method';
+import BasicExample from './examples/basic';
+import DropdownMenuExample from './examples/dropdown-menu';
+import ItemActionsExample from './examples/item_actions';
+import ListItemTypesExample from './examples/list_item_types';
+import NestedExample from './examples/nested';
+import NestedWithFocusableExample from './examples/nested_with_focusable';
+import RenderFunctionExample from './examples/render_function';
+import TheSecondMethodExample from './examples/the_second_method';
 
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu',

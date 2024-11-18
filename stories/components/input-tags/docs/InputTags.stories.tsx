@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import InputTags from '@semcore/input-tags';
 
-import SelectForTagFilteringExample from './docs-examples/select_for_tag_filtering';
-import EnteringAndEditingTagsExample from './docs-examples/entering_and_editing_tags';
-import WrappingEmailInTagExample from './docs-examples/wrapping_email_in_tag';
+import SelectForTagFilteringExample from './examples/select_for_tag_filtering';
+import EnteringAndEditingTagsExample from './examples/entering_and_editing_tags';
+import WrappingEmailInTagExample from './examples/wrapping_email_in_tag';
 
 const meta: Meta<typeof InputTags> = {
   title: 'Components/InputTags',

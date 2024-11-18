@@ -12,7 +12,7 @@ test.describe('Button', () => {
   });
 
   test('Buttons with Addons and text', async ({ page }) => {
-    const standPath = 'stories/components/button/__stories__/docs-examples/addons.tsx';
+    const standPath = 'stories/components/button/docs/examples/addons.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -30,7 +30,7 @@ test.describe('Button', () => {
   });
 
   test('Buttons Icon Only', async ({ page }) => {
-    const standPath = 'stories/components/button/__stories__/docs-examples/button_with_icon.tsx';
+    const standPath = 'stories/components/button/docs/examples/button_with_icon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -39,7 +39,7 @@ test.describe('Button', () => {
   });
 
   test('Should support hover with only Addon', async ({ page }) => {
-    const standPath = 'stories/components/button/__stories__/docs-examples/button_with_icon.tsx';
+    const standPath = 'stories/components/button/docs/examples/button_with_icon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -52,8 +52,7 @@ test.describe('Button', () => {
   });
 
   test('Should support hover with only addon prop', async ({ page }) => {
-    const standPath =
-      'stories/components/button/__stories__/docs-examples/button_accessibility.tsx';
+    const standPath = 'stories/components/button/docs/examples/button_accessibility.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

@@ -5,10 +5,10 @@ import ColorPicker, { PaletteManager } from '@semcore/color-picker';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
-import CustomTriggerExample from './docs-examples/custom_trigger';
-import InputValidationExample from './docs-examples/input_validation';
-import PalettemanagerExample from './docs-examples/palettemanager';
-import SeveralWaysToUseComponentExample from './docs-examples/several_ways_to_use_component';
+import CustomTriggerExample from './examples/custom_trigger';
+import InputValidationExample from './examples/input_validation';
+import PalettemanagerExample from './examples/palettemanager';
+import SeveralWaysToUseComponentExample from './examples/several_ways_to_use_component';
 
 const meta: Meta<typeof ColorPicker> = {
   title: 'Components/ColorPicker',

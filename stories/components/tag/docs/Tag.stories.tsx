@@ -9,10 +9,8 @@ import GroupingTagsMoreExample from './docs-examples/grouping_tags_more';
 import RemovingTagExample from './docs-examples/removing_tag';
 import TagAddonExample from './docs-examples/tag_addon';
 
-import { TagAddonSizesPositionsExample } from './components/TagAddonSizesPositionsExample';
-
 const meta: Meta<typeof Tag> = {
-  title: 'Components/Tag',
+  title: 'Components/Tag/Documents',
   component: Tag,
 };
 
@@ -45,8 +43,4 @@ export const RemovingTag: Story = {
 
 export const TagAddon: Story = {
   render: TagAddonExample,
-};
-
-export const TagWithAddonSizesAndPositions: Story = {
-  render: TagAddonSizesPositionsExample,
 };

@@ -18,7 +18,7 @@ The component is a wrapper over the [intergalactic/dropdown](/components/dropdow
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/basic.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/basic.tsx';
 </script>
 
 :::
@@ -38,7 +38,7 @@ This is best when you only need to manage the content within the options list.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/the_second_method.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/the_second_method.tsx';
 </script>
 
 :::
@@ -55,7 +55,7 @@ This method works well when you need flexible customization of the dropdown menu
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/dropdown-menu.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/dropdown-menu.tsx';
 </script>
 
 :::
@@ -73,7 +73,7 @@ The component offers several options for laying out list item types:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/list_item_types.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/list_item_types.tsx';
 </script>
 
 :::
@@ -83,7 +83,7 @@ The component offers several options for laying out list item types:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/item_actions.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/item_actions.tsx';
 </script>
 
 :::
@@ -97,7 +97,7 @@ You can find the list of available methods in the [Context section of the API](/
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/render_function.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/render_function.tsx';
 </script>
 
 :::
@@ -107,7 +107,7 @@ You can find the list of available methods in the [Context section of the API](/
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/nested.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/nested.tsx';
 </script>
 
 :::
@@ -117,7 +117,7 @@ You can find the list of available methods in the [Context section of the API](/
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/__stories__/docs-examples/nested_with_focusable.tsx';
+  export Demo from 'stories/components/dropdown-menu/docs/examples/nested_with_focusable.tsx';
 </script>
 
 :::
