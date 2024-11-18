@@ -49,11 +49,7 @@ const Demo = () => {
               </Input.Addon>
             )}
           </Input>
-          <Button aria-label='Search'>
-            <Button.Addon>
-              <Search />
-            </Button.Addon>
-          </Button>
+          <Hint tag={Button} addonLeft={Search} title='Search' />
         </NeighborLocation>
       </Box>
     </Flex>

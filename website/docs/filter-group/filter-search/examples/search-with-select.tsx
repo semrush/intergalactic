@@ -2,7 +2,6 @@ import React from 'react';
 import Input from 'intergalactic/input';
 import CloseM from 'intergalactic/icon/Close/m';
 import Search from 'intergalactic/icon/Search/m';
-import Button from 'intergalactic/button';
 import { Hint } from 'intergalactic/tooltip';
 import { ButtonLink } from 'intergalactic/button';
 import NeighborLocation from 'intergalactic/neighbor-location';
@@ -10,15 +9,9 @@ import Select from 'intergalactic/select';
 import { Text } from 'intergalactic/typography';
 import { Flex, Box } from 'intergalactic/flex-box';
 
-const selectOptions = ['Option 1', 'Option 2'];
-
 const Demo = () => {
   const [value, setValue] = React.useState('');
-
-  const options = selectOptions.map((option) => ({
-    value: option,
-    children: option,
-  }));
+  const [scope, setScope] = React.useState('Everywhere');
 
   const handleChange = React.useCallback(
     (v) => {
@@ -33,18 +26,21 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='search-with-select-filter-by-keyword'>
-        Filter by keyword
+      <Text tag='label' size={200} htmlFor='search-with-select-backlinks'>
+        Filter backlinks
       </Text>
       <Box mt={2}>
         <NeighborLocation>
-          <Select placeholder='Everywhere' options={options} />
+          <Select aria-label='Search scope' options={options} value={scope} onChange={setScope} />
           <Input w={200}>
+            <Input.Addon>
+              <Search />
+            </Input.Addon>
             <Input.Value
               value={value}
               onChange={handleChange}
-              id='search-with-select-filter-by-keyword'
-              placeholder='Enter keyword here'
+              id='search-with-select-backlinks'
+              placeholder='Search'
             />
             {value && (
               <Input.Addon>
@@ -58,15 +54,15 @@ const Demo = () => {
               </Input.Addon>
             )}
           </Input>
-          <Button aria-label='Search'>
-            <Button.Addon>
-              <Search />
-            </Button.Addon>
-          </Button>
         </NeighborLocation>
       </Box>
     </Flex>
   );
 };
+
+const options = ['Everywhere', 'URL', 'Target URL'].map((option) => ({
+  value: option,
+  children: option,
+}));
 
 export default Demo;
