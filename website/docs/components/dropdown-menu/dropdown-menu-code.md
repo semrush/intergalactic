@@ -88,20 +88,6 @@ The component offers several options for laying out list item types:
 
 :::
 
-## Render-function
-
-Like with lower-level components, you can access the component's logic by passing a render function into the body.
-
-You can find the list of available methods in the [Context section of the API](/components/dropdown-menu/dropdown-menu-api#context).
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/dropdown-menu/docs/examples/render_function.tsx';
-</script>
-
-:::
-
 ## Nested menus
 
 ::: sandbox

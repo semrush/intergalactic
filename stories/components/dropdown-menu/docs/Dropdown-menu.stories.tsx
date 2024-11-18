@@ -8,7 +8,6 @@ import ItemActionsExample from './examples/item_actions';
 import ListItemTypesExample from './examples/list_item_types';
 import NestedExample from './examples/nested';
 import NestedWithFocusableExample from './examples/nested_with_focusable';
-import RenderFunctionExample from './examples/render_function';
 import TheSecondMethodExample from './examples/the_second_method';
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -41,10 +40,6 @@ export const Nested: Story = {
 
 export const NestedWithFocusable: Story = {
   render: NestedWithFocusableExample,
-};
-
-export const RenderFunction: Story = {
-  render: RenderFunctionExample,
 };
 
 export const TheSecondMethod: Story = {

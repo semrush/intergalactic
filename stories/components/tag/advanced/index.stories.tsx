@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Tag from '@semcore/tag';
 
-import { TagAddonSizesPositionsExample } from './components/TagAddonSizesPositionsExample';
+import TagAddonSizesPositionsExample from './components/tag_with_addon_all_sizes_positions';
+import TagContainerAddonExample from './components/tag_container_addon';
 
 const meta: Meta<typeof Tag> = {
-  title: 'Components/Tag/Advanced',
+  title: 'Components/Tag',
   component: Tag,
 };
 
@@ -13,4 +14,8 @@ type Story = StoryObj<typeof Tag>;
 
 export const TagWithAddonSizesAndPositions: Story = {
   render: TagAddonSizesPositionsExample,
+};
+
+export const TagContainerAddon: Story = {
+  render: TagContainerAddonExample,
 };

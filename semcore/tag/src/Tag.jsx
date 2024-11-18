@@ -140,7 +140,7 @@ class RootTag extends Component {
         role={isInteractive ? 'button' : undefined}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
-        {addonTextChildren(Children, Tag.Text, Tag.Addon)}
+        {addonTextChildren(Children, Tag.Text, [Tag.Addon, TagContainer.Circle])}
         {addonRight ? <Tag.Addon tag={addonRight} /> : null}
       </STag>,
     );
