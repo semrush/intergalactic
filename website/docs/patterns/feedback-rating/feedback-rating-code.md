@@ -11,7 +11,7 @@ Refer to the [Feedback component API](/components/feedback/feedback-form-api) fo
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/feedback-rating-example.tsx';
+  export Demo from 'stories/patterns/feedback-rating/__stories__/examples/feedback_rating_form.tsx';
 </script>
 
 :::

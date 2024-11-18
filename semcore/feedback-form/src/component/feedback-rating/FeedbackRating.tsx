@@ -230,6 +230,7 @@ class FeedbackRatingRoot extends Component<
       onNotificationClose,
       getI18nText,
       errorFeedbackEmail,
+      modalWidth,
       ...other
     } = this.asProps;
 
@@ -268,7 +269,13 @@ class FeedbackRatingRoot extends Component<
           <Notice.Close onClick={onNotificationClose} />
         </Notice>
 
-        <SFeedbackRating render={Modal} visible={visible} onClose={this.handelCloseModal} p={0}>
+        <SFeedbackRating
+          render={Modal}
+          visible={visible}
+          onClose={this.handelCloseModal}
+          p={0}
+          w={modalWidth ?? 440}
+        >
           <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
               sstyled(styles)(
@@ -279,7 +286,6 @@ class FeedbackRatingRoot extends Component<
                   loading={status !== 'loading' ? api.submitting : status === 'loading'}
                   p={1}
                   m={9}
-                  wMax={284}
                 >
                   <Flex justifyContent='center'>
                     <SliderRating value={rating} readonly={true} />
@@ -295,7 +301,6 @@ class FeedbackRatingRoot extends Component<
                     {...other}
                     onSubmit={api.handleSubmit}
                     title={getI18nText('formTitle')}
-                    wMax={320}
                   >
                     <FeedbackRating.Item name={'rating'} initialValue={rating}>
                       {({ input }) => {

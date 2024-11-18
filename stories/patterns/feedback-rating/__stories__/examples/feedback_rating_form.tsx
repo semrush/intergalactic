@@ -1,7 +1,7 @@
 import React from 'react';
-import { FeedbackRating } from 'intergalactic/feedback-form';
-import Link from 'intergalactic/link';
-import { Text } from 'intergalactic/typography';
+import { FeedbackRating } from '@semcore/feedback-form';
+import Link from '@semcore/link';
+import { Text } from '@semcore/typography';
 
 type FormValues = {
   rating: number;
@@ -21,7 +21,7 @@ const initValue = {
   option3: false,
 };
 
-const fakeSendDataToServer = (data) => {
+const fakeSendDataToServer = (data: any) => {
   return new Promise((resolve) => {
     // biome-ignore lint/suspicious/noConsoleLog:
     console.log('Send data to server', data);
