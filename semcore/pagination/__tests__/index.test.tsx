@@ -209,14 +209,16 @@ describe('Pagination.PageInput', () => {
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <div>
           EN (default):
-          <Pagination currentPage={12345} totalPages={10000}>
+          <Pagination currentPage={12345} totalPages={222333}>
             <Pagination.PageInput />
+            <Pagination.TotalPages />
           </Pagination>
         </div>
         <div>
           DE:
-          <Pagination locale={'de'} currentPage={12345} totalPages={10000}>
+          <Pagination locale={'de'} currentPage={12345} totalPages={222333}>
             <Pagination.PageInput />
+            <Pagination.TotalPages />
           </Pagination>
         </div>
       </snapshot.ProxyProps>
