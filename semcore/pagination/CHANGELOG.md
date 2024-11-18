@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.0] - 2024-11-18
+
+### Added
+
+- `Intl.NumberFormat` for total pages.
+
 ## [4.46.0] - 2024-11-15
 
 ### Change

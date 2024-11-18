@@ -5,9 +5,9 @@ import { Flex } from '@semcore/flex-box';
 const Demo = () => {
   return (
     <Flex direction='column'>
-      <Pagination currentPage={1} totalPages={1} />
+      <Pagination totalPages={17824} locale='de' />
 
-      <Pagination totalPages={1} locale='de' />
+      <Pagination totalPages={178247} locale='ko' />
     </Flex>
   );
 };
