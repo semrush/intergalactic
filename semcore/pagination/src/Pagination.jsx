@@ -13,23 +13,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import style from './style/pagination.shadow.css';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
-function formatThousands(value) {
-  const main = String(value);
-  const length = main.length;
-  let output = '';
-  let i = length - 1;
-
-  while (i >= 0) {
-    output = main.charAt(i) + output;
-    if ((length - i) % 3 === 0 && i > 0) {
-      output = `,${output}`;
-    }
-    i -= 1;
-  }
-
-  return output;
-}
-
 class PaginationRoot extends Component {
   static displayName = 'Pagination';
 
@@ -209,10 +192,11 @@ class PaginationRoot extends Component {
   };
 
   getTotalPagesProps = () => {
-    const { currentPage, totalPages, getI18nText } = this.asProps;
+    const { currentPage, totalPages, getI18nText, locale } = this.asProps;
+    const formatter = new Intl.NumberFormat(locale, { style: 'decimal' });
     return {
       totalPages,
-      children: formatThousands(totalPages),
+      children: formatter.format(totalPages),
       isLastOrSingle: currentPage === totalPages,
       onClick: () => this.handlePageChange(totalPages),
       getI18nText,
