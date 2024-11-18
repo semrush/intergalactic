@@ -203,6 +203,26 @@ describe('Pagination.PageInput', () => {
       }),
     ).toMatchImageSnapshot(task);
   });
+
+  test.concurrent('Should correctly render for different locales', async ({ task }) => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <div>
+          EN (default):
+          <Pagination currentPage={12345} totalPages={10000}>
+            <Pagination.PageInput />
+          </Pagination>
+        </div>
+        <div>
+          DE:
+          <Pagination locale={'de'} currentPage={12345} totalPages={10000}>
+            <Pagination.PageInput />
+          </Pagination>
+        </div>
+      </snapshot.ProxyProps>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
 });
 
 describe('Pagination.PageInput.Value', () => {

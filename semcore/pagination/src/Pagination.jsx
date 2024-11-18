@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
-import Input from '@semcore/input';
+import InputNumber from '@semcore/input-number';
 import { Text } from '@semcore/typography';
 import Button, { ButtonLink } from '@semcore/button';
 import { Hint } from '@semcore/tooltip';
@@ -177,9 +177,10 @@ class PaginationRoot extends Component {
   };
 
   getPageInputProps = () => {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, locale } = this.asProps;
     return {
       getI18nText,
+      locale,
     };
   };
 
@@ -309,12 +310,19 @@ class TotalPages extends Component {
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
 
-  return sstyled(props.styles)(<SPageInputValue render={Input.Value} />);
+  return sstyled(props.styles)(
+    <SPageInputValue
+      render={InputNumber.Value}
+      // By default, InputNumber has validation on blur.
+      // We should disable it, because of Pagination.PageInput.Addon
+      onBlur={() => false}
+    />,
+  );
 };
 
 const PageInputAddon = (props) => {
   const SPageInputAddon = Root;
-  return sstyled(props.styles)(<SPageInputAddon render={Input.Addon} />);
+  return sstyled(props.styles)(<SPageInputAddon render={InputNumber.Addon} />);
 };
 
 class PageInput extends Component {
@@ -323,14 +331,18 @@ class PageInput extends Component {
   render() {
     const SPageInput = Root;
     const SLabel = Text;
-    const { Children, getI18nText, styles, uid } = this.asProps;
+    const { Children, getI18nText, styles, uid, locale } = this.asProps;
 
     return sstyled(styles)(
       <>
         <SLabel tag='label' htmlFor={`pagination-input-${uid}`}>
           {getI18nText('pageInputLabel')}
         </SLabel>
-        <SPageInput render={Input} controlsLength={Children.origin ? undefined : 2}>
+        <SPageInput
+          render={InputNumber}
+          controlsLength={Children.origin ? undefined : 2}
+          locale={locale}
+        >
           {Children.origin ? (
             <Children />
           ) : (
