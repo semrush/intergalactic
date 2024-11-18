@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Button', () => {
   test('Basic', async ({ page }) => {
-    const standPath = 'stories/components/button/__stories__/components/Basic.tsx';
+    const standPath = 'stories/components/button/advanced/examples/Basic.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -21,7 +21,7 @@ test.describe('Button', () => {
   });
 
   test('Buttons Sizes M/L', async ({ page }) => {
-    const standPath = 'stories/components/button/__stories__/components/ButtonSizes.tsx';
+    const standPath = 'stories/components/button/advanced/examples/ButtonSizes.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
