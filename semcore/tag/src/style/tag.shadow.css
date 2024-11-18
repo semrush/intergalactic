@@ -46,8 +46,7 @@ STagContainer SAddon {
 }
 
 STag,
-STagContainerClose,
-STagContainer SAddon {
+STagContainerClose {
   position: relative;
   display: inline-flex;
   align-items: center;

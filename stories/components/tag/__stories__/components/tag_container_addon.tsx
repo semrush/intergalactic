@@ -1,8 +1,7 @@
-import React from "react";
-import Tag, { TagContainer } from "@semcore/tag";
-import Edit from "@semcore/icon/Edit/m";
-import { Box } from "@semcore/flex-box";
-
+import React from 'react';
+import { TagContainer } from '@semcore/tag';
+import Edit from '@semcore/icon/Edit/m';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const [tags, setTags] = React.useState(['Facebook', 'X (Twitter)', 'Instagram']);
@@ -19,14 +18,7 @@ const Demo = () => {
   return (
     <Box>
       {tags.map((tag, idx) => (
-        <TagContainer
-          theme="secondary"
-          size="l"
-          data-id={idx}
-          key={idx}
-          mr={1}
-          interactive
-        >
+        <TagContainer theme='secondary' size='l' data-id={idx} key={idx} mr={1} interactive>
           <TagContainer.Tag>
             <TagContainer.Addon>
               <Edit />
@@ -37,14 +29,7 @@ const Demo = () => {
         </TagContainer>
       ))}
       {tags.map((tag, idx) => (
-        <TagContainer
-          theme="secondary"
-          size="m"
-          data-id={idx}
-          key={idx}
-          mr={1}
-          interactive
-        >
+        <TagContainer theme='secondary' size='m' data-id={idx} key={idx} mr={1} interactive>
           <TagContainer.Tag>
             <TagContainer.Addon>
               <Edit />
