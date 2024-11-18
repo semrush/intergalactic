@@ -2032,9 +2032,9 @@ importers:
       '@semcore/icon':
         specifier: 4.52.1
         version: link:../icon
-      '@semcore/input':
-        specifier: 4.39.1
-        version: link:../input
+      '@semcore/input-number':
+        specifier: 5.39.2
+        version: link:../input-number
       '@semcore/link':
         specifier: 5.41.1
         version: link:../link
