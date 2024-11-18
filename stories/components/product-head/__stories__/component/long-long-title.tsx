@@ -25,7 +25,7 @@ const Demo = () => {
                 Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com Domain.com
                 Domain.com Domain.com Domain.com
               </Ellipsis>
-              <ButtonLink addonLeft={EditM} />
+              <ButtonLink addonLeft={EditM} aria-label={'Hint for button-link'} />
             </Text>
           </Title>
           <Header.Links>
