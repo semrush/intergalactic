@@ -4,9 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.45.0] - 2024-11-18
 
-### Moved
+### Changed
 
-- `InputTags.Value` from `ul`.
+- Moved `InputTags.Value` from `ul`.
+- Added calculated accessible name from `InputTags.Value` as `aria-label` for `ul` group.
 
 ## [4.44.0] - 2024-11-18
 

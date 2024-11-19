@@ -19,6 +19,8 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -80,6 +82,22 @@ class InputTags extends Component<IInputTagsProps> {
   inputRef = React.createRef<HTMLInputElement>();
   scrollContainerRef = React.createRef<HTMLElement>();
   tagsRefs: (HTMLElement | null)[] = [];
+
+  state = {
+    tagsContainerAriaLabel: '',
+  };
+
+  componentDidMount() {
+    const { Children } = this.asProps;
+    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
+    const InputComponent = InputComponents[0];
+    const InputElement = InputComponent.ref?.current ?? null;
+    const inputAccessibleName = getAccessibleName(InputElement);
+
+    this.setState({
+      tagsContainerAriaLabel: inputAccessibleName,
+    });
+  }
 
   moveFocusToInput = (event: React.FocusEvent) => {
     const inputRef = this.inputRef.current;
@@ -197,7 +215,7 @@ class InputTags extends Component<IInputTagsProps> {
     const SListAriaWrapper = 'ul';
 
     const TagsComponents = findAllComponents(Children, ['InputTags.Tag']);
-    const InputComponent = findAllComponents(Children, ['InputTags.Value']);
+    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
 
     return sstyled(styles)(
       <SInputTags
@@ -207,8 +225,10 @@ class InputTags extends Component<IInputTagsProps> {
         onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
       >
-        <SListAriaWrapper>{TagsComponents}</SListAriaWrapper>
-        {InputComponent}
+        <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
+          {TagsComponents}
+        </SListAriaWrapper>
+        {InputComponents}
       </SInputTags>,
     );
   }
