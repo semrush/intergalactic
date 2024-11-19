@@ -1,20 +1,20 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import CloseM from 'intergalactic/icon/Close/m';
-import Search from 'intergalactic/icon/Search/m';
-import { Hint } from 'intergalactic/tooltip';
-import { ButtonLink } from 'intergalactic/button';
-import NeighborLocation from 'intergalactic/neighbor-location';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
-import { Flex, Box } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import CloseM from '@semcore/icon/Close/m';
+import Search from '@semcore/icon/Search/m';
+import { Hint } from '@semcore/tooltip';
+import { ButtonLink } from '@semcore/button';
+import NeighborLocation from '@semcore/neighbor-location';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
   const [scope, setScope] = React.useState('Everywhere');
 
   const handleChange = React.useCallback(
-    (v) => {
+    (v: string) => {
       setValue(v);
     },
     [value],

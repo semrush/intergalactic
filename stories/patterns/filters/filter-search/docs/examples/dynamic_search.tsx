@@ -1,17 +1,17 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import { Hint } from 'intergalactic/tooltip';
-import { ButtonLink } from 'intergalactic/button';
-import CloseM from 'intergalactic/icon/Close/m';
-import Search from 'intergalactic/icon/Search/m';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import { Hint } from '@semcore/tooltip';
+import { ButtonLink } from '@semcore/button';
+import CloseM from '@semcore/icon/Close/m';
+import Search from '@semcore/icon/Search/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
   const handleChange = React.useCallback(
-    (v) => {
+    (v: string) => {
       setValue(v);
     },
     [value],
