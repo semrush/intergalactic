@@ -6,7 +6,7 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 ## Pagination
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
@@ -17,7 +17,7 @@ import Pagination from 'intergalactic/pagination';
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.FirstPage />;
 ```
 
@@ -26,14 +26,14 @@ import Pagination from 'intergalactic/pagination';
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.NextPage />;
 ```
 
 ## Pagination.PageInput
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput />;
 ```
 
@@ -42,7 +42,7 @@ import Pagination from 'intergalactic/pagination';
 ## Pagination.PageInput.Value
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
@@ -53,14 +53,14 @@ import Pagination from 'intergalactic/pagination';
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.PrevPage />;
 ```
 
 ## Pagination.TotalPages
 
 ```jsx
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.TotalPages />;
 ```
 

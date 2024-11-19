@@ -9,7 +9,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 <script lang="tsx">
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Counter from 'intergalactic/counter';
+import Counter from '@semcore/ui/counter';
 
 const SIZES = ['m', 'l', 'xl'];
 

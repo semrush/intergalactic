@@ -11,11 +11,11 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Notice from 'intergalactic/notice';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import QuestionAltM from 'intergalactic/icon/Question/m';
+import Notice from '@semcore/ui/notice';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
 
 const THEME = ['info', 'muted', 'success', 'warning', 'danger'];
 

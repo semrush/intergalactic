@@ -8,9 +8,9 @@ tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('d
 
 <script lang="tsx">
 import React from 'react';
-import Button from 'intergalactic/button';
-import Dropdown from 'intergalactic/dropdown';
-import { Text } from 'intergalactic/typography';
+import Button from '@semcore/ui/button';
+import Dropdown from '@semcore/ui/dropdown';
+import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [

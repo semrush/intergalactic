@@ -82,12 +82,12 @@ There are two ways to implement SSR.
 
 This method will work for you if you're not using the **@semcore/shadow-loader** package (see [CSS extract](/get-started-guide/dev-starter-guide/production-tips#css-extract)).
 
-Use the **intergalactic/core** package and the `sstyled.getStyles` function which will return `style` tags with all the necessary styles:
+Use the **@semcore/ui/core** package and the `sstyled.getStyles` function which will return `style` tags with all the necessary styles:
 
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { sstyled } from 'intergalactic/core';
+import { sstyled } from '@semcore/ui/core';
 import App from './App';
 
 const body = ReactDOM.renderToString(<App />);

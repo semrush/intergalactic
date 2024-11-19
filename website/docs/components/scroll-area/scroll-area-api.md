@@ -7,7 +7,7 @@ tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), E
 ## ScrollArea
 
 ```jsx
-import ScrollArea from 'intergalactic/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea />;
 ```
 
@@ -18,14 +18,14 @@ import ScrollArea from 'intergalactic/scroll-area';
 This is a wrap over the content to calculate its size. It takes all properties of `Box`.
 
 ```jsx
-import ScrollArea from 'intergalactic/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Container />;
 ```
 
 ## ScrollArea.Bar
 
 ```jsx
-import ScrollArea from 'intergalactic/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar />;
 ```
 
@@ -36,7 +36,7 @@ import ScrollArea from 'intergalactic/scroll-area';
 Stylized div. It takes all properties of `Box`.
 
 ```jsx
-import ScrollArea from 'intergalactic/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar.Slider />;
 ```
 

@@ -5,7 +5,7 @@ tabs: Design('portal'), API('portal-api'), Changelog('portal-changelog')
 ---
 
 ```jsx
-import Portal, { PortalProvider } from 'intergalactic/portal';
+import Portal, { PortalProvider } from '@semcore/ui/portal';
 ```
 
 <TypesView type="PortalProps" :types={...types} />
