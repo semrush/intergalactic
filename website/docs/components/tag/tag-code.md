@@ -11,7 +11,7 @@ You can add addons to the Tag component in two ways: by passing the desired tag 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/tag_addon.tsx';
+  export Demo from 'stories/components/tag/docs/examples/tag_addon.tsx';
 </script>
 
 :::
@@ -27,7 +27,7 @@ We recommend to use colors with 500 tone from [our palette tokens](/style/design
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/custom_tag_color.tsx';
+  export Demo from 'stories/components/tag/docs/examples/custom_tag_color.tsx';
 </script>
 
 :::
@@ -43,7 +43,7 @@ If the number of tags is less than 5, add `role="group"` to the parent element.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/grouping_tags_less.tsx';
+  export Demo from 'stories/components/tag/docs/examples/grouping_tags_less.tsx';
 </script>
 
 :::
@@ -55,7 +55,7 @@ If the number of tags is 5 or more, wrap them in a `ul` list, with each `Tag` as
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/grouping_tags_more.tsx';
+  export Demo from 'stories/components/tag/docs/examples/grouping_tags_more.tsx';
 </script>
 
 :::
@@ -65,7 +65,7 @@ If the number of tags is 5 or more, wrap them in a `ul` list, with each `Tag` as
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/adding_tag.tsx';
+  export Demo from 'stories/components/tag/docs/examples/adding_tag.tsx';
 </script>
 
 :::
@@ -77,7 +77,7 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/editing_tag.tsx';
+  export Demo from 'stories/components/tag/docs/examples/editing_tag.tsx';
 </script>
 
 :::
@@ -87,7 +87,7 @@ Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tag/__stories__/docs-examples/removing_tag.tsx';
+  export Demo from 'stories/components/tag/docs/examples/removing_tag.tsx';
 </script>
 
 :::
