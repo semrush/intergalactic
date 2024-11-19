@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
-
-import FiltersWithConditionsEx from './docs-examples/filters-with-filter-conditions';
+import FiltersWithConditionsEx from './examples/filters-with-filter-conditions';
 
 const meta: Meta = {
   title: 'Patterns/Filters/FiltersWithConditions',
@@ -11,5 +9,5 @@ const meta: Meta = {
 export default meta;
 
 export const FiltersWithConditions: StoryObj = {
-  render: FiltersWithConditionsEx
+  render: FiltersWithConditionsEx,
 };
