@@ -232,7 +232,7 @@ describe('Checkbox', () => {
   });
 
   test.concurrent(
-    'Only CheckMark should have aria-label from root aria-label',
+    'Only Control should have aria-label from root aria-label',
     async ({ expect }) => {
       const { getByTestId } = render(
         <Checkbox aria-label={'test aria label'} data-testid={'checkboxContainer'}>
@@ -243,10 +243,10 @@ describe('Checkbox', () => {
         </Checkbox>,
       );
 
-      expect(getByTestId('checkboxCheckMark')).toHaveAttribute('aria-label', 'test aria label');
-
-      expect(getByTestId('checkboxContainer')).not.toHaveAttribute('aria-label', 'test aria label');
+      expect(getByTestId('checkboxCheckMark')).not.toHaveAttribute('aria-label', 'test aria label');
       expect(getByTestId('checkboxControl')).not.toHaveAttribute('aria-label', 'test aria label');
+
+      expect(getByTestId('checkboxContainer')).toHaveAttribute('aria-label', 'test aria label');
     },
   );
 

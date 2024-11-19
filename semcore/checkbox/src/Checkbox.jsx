@@ -95,8 +95,16 @@ class CheckboxRoot extends Component {
 }
 
 class ValueRoot extends Component {
-  static defaultProps = {
-    includeInputProps: inputProps,
+  static defaultProps = (props) => {
+    return {
+      includeInputProps: [
+        ...inputProps,
+        ...(props.includeInputProps ?? []),
+        'aria-label',
+        'aria-labelledby',
+        'aria-describedby',
+      ],
+    };
   };
   static enhance = [autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
