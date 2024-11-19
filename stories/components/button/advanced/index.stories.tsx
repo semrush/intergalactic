@@ -4,6 +4,10 @@ import Button from '@semcore/button';
 
 import ButtonExample from './examples/Basic';
 import ButtonSizesExample from './examples/ButtonSizes';
+import ButtonHintExample from './examples/ButtonHint';
+
+import { ButtonHintColorTest } from './__tests__/ButtonHintColor.test';
+
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Advanced',
@@ -19,4 +23,9 @@ export const SimpleButton: Story = {
 
 export const Sizes: Story = {
   render: ButtonSizesExample,
+};
+
+export const CompareHintButtonTooltip: Story = {
+  render: ButtonHintExample,
+  play: ButtonHintColorTest,
 };
