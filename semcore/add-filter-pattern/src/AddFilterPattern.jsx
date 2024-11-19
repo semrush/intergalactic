@@ -139,6 +139,13 @@ class RootAddFilterPattern extends Component {
     };
   }
 
+  getSelectProps(props) {
+    // const { name } = props;
+    return {
+      onChange: null, //
+    };
+  }
+
   render() {
     const { Children } = this.asProps;
     const AlwaysVisibleFiltersChildren = findAllComponents(Children, [
@@ -241,8 +248,56 @@ function Clear({ filterData = {}, clearAll }) {
   );
 }
 
+class FilterPatternSelectItemRoot extends Component {
+  static defaultProps = (props) => {
+    return {
+      visible: props.visible ?? true,
+    };
+  };
+
+  uncontrolledProps = (props, context) => {
+    return {
+      visible: null,
+    };
+  };
+
+  getTriggerProps() {
+    return {
+      onBlur: () => {
+        // if need to close
+        this.handlers.visible(false);
+      },
+    };
+  }
+  getPopperProps() {
+    return {};
+  }
+  getMenuProps() {
+    return {
+      ref: this.menuRef,
+    };
+  }
+
+  render() {
+    return (
+      <Root
+        render={Select}
+        visible={this.asProps.visible}
+        onVisibleChange={this.handlers.visible}
+      />
+    );
+  }
+}
+
+const FilterPatternSelectItem = createComponent(FilterPatternSelectItemRoot, {
+  Trigger: Select.Trigger,
+  Popper: Select.Popper,
+  Option: Select.Option,
+});
+
 const AddFilterPattern = createComponent(RootAddFilterPattern, {
   Item: FilterPatternItem,
+  Select: FilterPatternSelectItem,
   DropDownMenu: AddFilterDropDown,
   Clear,
 });

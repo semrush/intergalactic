@@ -90,6 +90,14 @@ export const AddFilterPatternBasicExample = () => {
         }}
       </AddFilterPattern.Item>
 
+      <AddFilterPattern.Select name={'lang'}>
+        <AddFilterPattern.Select.Trigger placeholder='language' />
+        <AddFilterPattern.Select.Menu>
+          <AddFilterPattern.Select.Option>en</AddFilterPattern.Select.Option>
+          <AddFilterPattern.Select.Option>de</AddFilterPattern.Select.Option>
+        </AddFilterPattern.Select.Menu>
+      </AddFilterPattern.Select>
+
       {filters.map(({ id, name, displayName, options }) => {
         return (
           <AddFilterPattern.Item
