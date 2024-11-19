@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.4] - 2024-11-18
+
+### Changed
+
+- Description for `innerHint` and `hintAfter` properties.
+
 ## [5.43.3] - 2024-11-18
 
 ### Changed
