@@ -8,7 +8,7 @@ test.describe('5-star Feedback form', () => {
     if (browserName === 'firefox') return;
 
     const standPath =
-      'stories/patterns/feedback-rating/__stories__/examples/feedback_rating_form.tsx';
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -44,7 +44,7 @@ test.describe('5-star Feedback form', () => {
 
   test('default validation', async ({ page }) => {
     const standPath =
-      'stories/patterns/feedback-rating/__stories__/examples/feedback_rating_form.tsx';
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
