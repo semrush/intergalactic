@@ -98,6 +98,6 @@ test.describe('Select', () => {
     await close.hover();
 
     await new Promise((resolve) => setTimeout(resolve, 500));
-    await expect(page).toHaveScreenshot();  
+    await expect(page).toHaveScreenshot();
   });
 });
