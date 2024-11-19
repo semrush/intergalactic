@@ -54,6 +54,7 @@ const Demo = () => {
       initialValues={initValue}
       rating={rating}
       visible={visible}
+      modalWidth = {300}
       onVisibleChange={handleVisibleChange}
       onNotificationClose={handleCloseNotification}
       status={status}
