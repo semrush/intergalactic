@@ -243,10 +243,10 @@ describe('Checkbox', () => {
         </Checkbox>,
       );
 
-      expect(getByTestId('checkboxCheckMark')).not.toHaveAttribute('aria-label', 'test aria label');
-      expect(getByTestId('checkboxControl')).not.toHaveAttribute('aria-label', 'test aria label');
+      expect(getByTestId('checkboxControl')).toHaveAttribute('aria-label', 'test aria label');
 
-      expect(getByTestId('checkboxContainer')).toHaveAttribute('aria-label', 'test aria label');
+      expect(getByTestId('checkboxCheckMark')).not.toHaveAttribute('aria-label', 'test aria label');
+      expect(getByTestId('checkboxContainer')).not.toHaveAttribute('aria-label', 'test aria label');
     },
   );
 
