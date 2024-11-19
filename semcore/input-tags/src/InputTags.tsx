@@ -90,8 +90,7 @@ class InputTags extends Component<IInputTagsProps> {
   componentDidMount() {
     const { Children } = this.asProps;
     const InputComponents = findAllComponents(Children, ['InputTags.Value']);
-    const InputComponent = InputComponents[0];
-    const InputElement = InputComponent.ref?.current ?? null;
+    const InputElement = InputComponents[0]?.ref?.current ?? null;
     const inputAccessibleName = getAccessibleName(InputElement);
 
     this.setState({
