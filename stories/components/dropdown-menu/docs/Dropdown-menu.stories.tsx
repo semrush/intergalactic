@@ -11,7 +11,7 @@ import NestedWithFocusableExample from './examples/nested_with_focusable';
 import TheSecondMethodExample from './examples/the_second_method';
 
 const meta: Meta<typeof DropdownMenu> = {
-  title: 'Components/Dropdown Menu',
+  title: 'Components/Dropdown Menu/Documentation',
   component: DropdownMenu,
 };
 export default meta;

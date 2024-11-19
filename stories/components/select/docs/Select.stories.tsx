@@ -17,7 +17,7 @@ import TriggerCustomizationDeepExample from './examples/trigger_customization_de
 import TriggerCustomizationExample from './examples/trigger_customization';
 
 const meta: Meta<typeof Select> = {
-  title: 'Components/Select/Documents',
+  title: 'Components/Select/Documentation',
   component: Select,
 };
 export default meta;

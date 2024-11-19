@@ -13,11 +13,11 @@ import SingletonExample from './examples/singleton';
 import TitleExample from './examples/title';
 
 const meta: Meta<typeof Tooltip> = {
-  title: 'Components/Tooltip',
+  title: 'Components/Tooltip/Documentation',
   component: Tooltip,
 };
-
 export default meta;
+
 type Story = StoryObj<typeof Tooltip>;
 
 export const BasicUsage: Story = {

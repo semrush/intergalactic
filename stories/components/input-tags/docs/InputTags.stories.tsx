@@ -7,7 +7,7 @@ import EnteringAndEditingTagsExample from './examples/entering_and_editing_tags'
 import WrappingEmailInTagExample from './examples/wrapping_email_in_tag';
 
 const meta: Meta<typeof InputTags> = {
-  title: 'Components/InputTags',
+  title: 'Components/InputTags/Documentation',
   component: InputTags,
 };
 

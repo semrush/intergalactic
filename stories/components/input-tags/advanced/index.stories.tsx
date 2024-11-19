@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import InputTags from '@semcore/input-tags';
 
-import TagsWithAddonsExample from './components/tags_with_addons';
+import TagsWithAddonsExample from './examples/tags_with_addons';
 
 const meta: Meta<typeof InputTags> = {
-  title: 'Components/InputTags',
+  title: 'Components/InputTags/Advanced',
   component: InputTags,
 };
 

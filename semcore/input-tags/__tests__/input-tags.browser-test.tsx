@@ -15,7 +15,7 @@ test.describe('Input-Tags Render and Visible', () => {
     page,
     browserName,
   }) => {
-    const standPath = 'stories/components/input-tags/advanced/components/tags_with_addons.tsx';
+    const standPath = 'stories/components/input-tags/advanced/examples/tags_with_addons.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

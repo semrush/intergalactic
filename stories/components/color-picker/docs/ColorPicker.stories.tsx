@@ -11,7 +11,7 @@ import PalettemanagerExample from './examples/palettemanager';
 import SeveralWaysToUseComponentExample from './examples/several_ways_to_use_component';
 
 const meta: Meta<typeof ColorPicker> = {
-  title: 'Components/ColorPicker',
+  title: 'Components/ColorPicker/Documentation',
   component: ColorPicker,
 };
 
