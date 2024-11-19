@@ -274,7 +274,7 @@ class FeedbackRatingRoot extends Component<
           visible={visible}
           onClose={this.handelCloseModal}
           p={0}
-          w={modalWidth ?? 440}
+          use:w={modalWidth ?? 440}
         >
           <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
