@@ -8,7 +8,7 @@ tabs: Design('advanced-filters'), Example('advanced-filters-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/filters/advanced-filters/__stories__/docs-examples/filters-with-filter-conditions.tsx';
+  export Demo from 'stories/patterns/filters/advanced-filters/docs/examples/filters-with-filter-conditions.tsx';
 </script>
 
 :::

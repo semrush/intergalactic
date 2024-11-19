@@ -8,7 +8,7 @@ test.skip('Users can interact with Select via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'stories/components/select/__stories__/docs-examples/basic_usage.tsx';
+  const standPath = 'stories/components/select/docs/examples/basic_usage.tsx';
   const reportPath = 'website/docs/components/select/select-a11y-report.md';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
