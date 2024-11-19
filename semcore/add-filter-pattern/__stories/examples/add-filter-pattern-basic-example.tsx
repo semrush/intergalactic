@@ -10,14 +10,11 @@ import CloseM from '@semcore/icon/Close/m';
 import SearchM from '@semcore/icon/Search/m';
 
 export const AddFilterPatternBasicExample = () => {
-  const [name, setName] = React.useState('');
-  const [size, setSize] = React.useState('');
   const [filterData, setFilterData] = React.useState({});
 
   const clearField = React.useCallback(
     (name) => {
-      const tempData = { ...filterData };
-      delete tempData[name];
+      const tempData = { ...filterData, [name]: null };
       setFilterData(tempData);
     },
     [filterData],
@@ -27,7 +24,7 @@ export const AddFilterPatternBasicExample = () => {
     <AddFilterPattern gap={2} flexWrap>
       <AddFilterPattern.Item alwaysVisible={true} placeholder='Filter by name' name='name'>
         {(props) => {
-          const { value, onChange, onClear, placeholder } = props;
+          const { value, onChange, onClear, placeholder, name } = props;
 
           return (
             <Input w={160}>
@@ -35,7 +32,7 @@ export const AddFilterPatternBasicExample = () => {
                 <SearchM />
               </Input.Addon>
               <Input.Value
-                placehoder={placeholder}
+                placeholder={placeholder}
                 onChange={(v) => {
                   onChange(v);
                   setFilterData({ ...filterData, ...{ [name]: v } });
@@ -119,15 +116,15 @@ export const AddFilterPatternBasicExample = () => {
                   onVisibleChange={onVisibleChange}
                   visible={selectVisible}
                   placeholder={placeholder}
+                  onChange={(v) => {
+                    onChange(v);
+                    setFilterData({ filterData, [name]: v });
+                  }}
                 >
                   <Select.Trigger
                     tag={FilterTrigger}
                     empty={!value}
                     onClear={onClear}
-                    onChange={(v) => {
-                      onChange(v);
-                      setFilterData({ filterData, [name]: v });
-                    }}
                     autoFocus={shouldAutoFocus}
                     {...selectProps}
                   >

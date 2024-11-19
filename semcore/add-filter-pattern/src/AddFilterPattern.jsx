@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react';
 import { Flex } from '@semcore/flex-box';
 import Button, { ButtonLink } from '@semcore/button';
 import MathPlusM from '@semcore/icon/MathPlus/m';
-import createComponent, { Component, sstyled, Root, createBaseComponent } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import CloseM from '@semcore/icon/Close/m';
-import { assignProps } from '@semcore/utils/lib/core';
+import { findAllComponents } from '@semcore/utils/lib/findComponent';
 
 const isEscapeKeyDown = (e) => {
   return e.key === 'Escape';
@@ -26,17 +26,6 @@ const getDefaultAddDropDownItems = (props) => {
     .filter((v) => v);
 };
 
-const getDefaultVisibleFilters = (props) => {
-  const items = props.children
-    .flat()
-    .map(({ props: { alwaysVisible, name } }) => {
-      return alwaysVisible ? name : undefined;
-    })
-    .filter((v) => v);
-
-  return new Set(items);
-};
-
 class RootAddFilterPattern extends Component {
   static displayName = 'AddFilterPattern';
 
@@ -44,21 +33,17 @@ class RootAddFilterPattern extends Component {
     super(props);
 
     this.getDefaultAddDropDownItems = () => getDefaultAddDropDownItems(props);
-    this.getDefaultVisibleFilters = () => getDefaultVisibleFilters(props);
-
     this.selectMenuRefs = new Map();
 
     this.state = {
-      visibleFilters: this.getDefaultVisibleFilters(),
+      visibleFilters: new Set(),
       addDropDownItems: this.getDefaultAddDropDownItems(),
       filterData: {},
     };
   }
 
   getItemProps(props) {
-    const { placehoder, name, displayName, alwaysVisible } = props;
-
-    const value = this.state.filterData[name];
+    const { placeholder, name, displayName, alwaysVisible } = props;
 
     const hideField = () => {
       if (alwaysVisible) {
@@ -68,15 +53,14 @@ class RootAddFilterPattern extends Component {
     };
 
     const onClear = () => {
-      const dataTemp = { ...this.state.filterData };
-      delete dataTemp[name];
-
       this.setState({
-        filterData: dataTemp,
+        filterData: { ...this.state.filterData, [name]: null },
       });
+
       hideField();
     };
 
+    const value = this.state.filterData[name];
     const selectProps = {
       onKeyDown: (e) => {
         if (isEscapeKeyDown(e) && !value) {
@@ -104,10 +88,10 @@ class RootAddFilterPattern extends Component {
     };
 
     return {
+      key: name,
       name,
-      placehoder,
+      placeholder,
       value,
-      visible: this.state.visibleFilters.has(name),
       displayName: displayName ?? name,
       onClear,
       onChange: (v) => {
@@ -125,7 +109,7 @@ class RootAddFilterPattern extends Component {
   clearAll() {
     this.setState({
       filterData: {},
-      visibleFilters: this.getDefaultVisibleFilters(),
+      visibleFilters: new Set(),
     });
   }
 
@@ -157,10 +141,25 @@ class RootAddFilterPattern extends Component {
 
   render() {
     const { Children } = this.asProps;
+    const AlwaysVisibleFiltersChildren = findAllComponents(Children, [
+      'AddFilterPattern.Item',
+    ]).filter(({ props }) => {
+      return props.alwaysVisible;
+    });
+
+    const AllHideableItems = findAllComponents(Children, ['AddFilterPattern.Item']).filter(
+      ({ props }) => {
+        return !props.alwaysVisible;
+      },
+    );
+    const VisibleFiltersChildren = Array.from(this.state.visibleFilters).map((name) => {
+      return AllHideableItems.find(({ props }) => props.name === name);
+    });
 
     return (
       <Root render={Flex}>
-        <Children />
+        {AlwaysVisibleFiltersChildren}
+        {VisibleFiltersChildren}
         <AddFilterPattern.DropDownMenu />
         <AddFilterPattern.Clear />
       </Root>
@@ -168,7 +167,6 @@ class RootAddFilterPattern extends Component {
   }
 }
 
-// todo separate visible from hiddable???
 function FilterPatternItem(props) {
   const [autoFocus, setAutoFocus] = React.useState();
   React.useEffect(() => {
@@ -184,7 +182,7 @@ function FilterPatternItem(props) {
     setSelectVisible(visible);
   }, []);
 
-  const { Children, visible } = props;
+  const { Children } = props;
   const itemProps = {
     ...props,
     onVisibleChange,
@@ -192,14 +190,7 @@ function FilterPatternItem(props) {
     selectVisible,
   };
 
-  return (
-    visible && (
-      <Root render={Flex}>
-        {typeof Children.origin === 'function' && Children.origin(itemProps)}
-        {/* <Children autoFocus={autoFocus} {...inputProps} /> */}
-      </Root>
-    )
-  );
+  return typeof Children.origin === 'function' && Children.origin(itemProps);
 }
 
 function AddFilterDropDown(props) {
