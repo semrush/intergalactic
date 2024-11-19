@@ -3,15 +3,6 @@ import { FeedbackRating } from '@semcore/feedback-form';
 import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
 
-type FormValues = {
-  rating: number;
-  description: string;
-  email: string;
-  option1: boolean;
-  option2: boolean;
-  option3: boolean;
-};
-
 const initValue = {
   rating: 0,
   description: '',
@@ -21,7 +12,7 @@ const initValue = {
   option3: false,
 };
 
-const fakeSendDataToServer = (data: any) => {
+const fakeSendDataToServer = (data: Record<string, any>) => {
   return new Promise((resolve) => {
     // biome-ignore lint/suspicious/noConsoleLog:
     console.log('Send data to server', data);
@@ -37,7 +28,7 @@ const Demo = () => {
   const [rating, setRating] = React.useState(0);
   const [notificationVisible, setNotificationVisible] = React.useState(true);
 
-  const handleSubmit = React.useCallback(async (values: FormValues) => {
+  const handleSubmit = React.useCallback(async (values: Record<string, any>) => {
     setStatus('loading');
     await fakeSendDataToServer(values);
     setStatus('success');
