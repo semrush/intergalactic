@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.36.0] - 2024-11-19
+
+### Added
+
+- `modalWidth` property for the FeedbackRating component.
+
 ## [6.35.3] - 2024-11-18
 
 ### Changed

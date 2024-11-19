@@ -37,6 +37,9 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
 
   onVisibleChange: (visible: boolean, rating: number) => void;
 
+  /** width for modal with form */
+  modalWidth?: number | string;
+
   /** header of modal with form */
   header: React.ReactNode;
   /** text for submit button of form */
