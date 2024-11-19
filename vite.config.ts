@@ -20,7 +20,7 @@ export default defineConfig({
         return await resolveSemcoreSources(id);
       },
       loadInclude: (id) => {
-        return id.includes('/semcore/') || id.includes('__stories__');
+        return id.includes('/semcore/') || id.includes('stories/');
       },
       async load(id) {
         return await loadSemcoreSources(id);

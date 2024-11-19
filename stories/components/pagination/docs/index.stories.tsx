@@ -2,12 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Pagination from '@semcore/pagination';
 
-import BasicUsageExample from './docs-examples/basic_usage';
-
-import TotalPageIs1Example from './components/total_pages_is_1';
+import BasicUsageExample from './examples/basic_usage';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Pagination',
+  title: 'Components/Pagination/Documentation',
   component: Pagination,
 };
 
@@ -16,8 +14,4 @@ type Story = StoryObj<typeof Pagination>;
 
 export const BasicUsage: Story = {
   render: BasicUsageExample,
-};
-
-export const TotalPageIs1: Story = {
-  render: TotalPageIs1Example,
 };
