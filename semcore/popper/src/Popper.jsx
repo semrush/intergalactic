@@ -529,12 +529,12 @@ function Trigger(props) {
   );
 
   React.useEffect(() => {
-    document.addEventListener('focusin', handleFocus);
+    triggerRef.current?.addEventListener('focusin', handleFocus);
 
     return () => {
-      document.removeEventListener('focusin', handleFocus);
+      triggerRef.current?.removeEventListener('focusin', handleFocus);
     };
-  }, []);
+  }, [triggerRef.current, handleFocus]);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;
