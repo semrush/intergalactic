@@ -11,7 +11,7 @@ To open the `FeaturePopover` again, reload the page.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/feature-popover/__stories__/docs-examples/Basic.tsx';
+  export Demo from 'stories/components/feature-popover/docs/examples/Basic.tsx';
 </script>
 
 :::
