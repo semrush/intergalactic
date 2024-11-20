@@ -221,6 +221,7 @@ class InputTags extends Component<IInputTagsProps> {
         onMouseDown={this.moveFocusToInput}
         onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
+        tabIndex={-1}
       >
         <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
           {TagsComponents}
