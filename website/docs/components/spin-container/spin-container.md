@@ -8,10 +8,10 @@ tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container
 
 <script lang="tsx">
 import React from 'react';
-import SpinContainer from 'intergalactic/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Input from 'intergalactic/input';
-import { Box } from 'intergalactic/flex-box';
+import Input from '@semcore/ui/input';
+import { Box } from '@semcore/ui/flex-box';
 
 const playground = (createGroupWidgets) => {
   const { bool, radio, text, select } = createGroupWidgets('SpinContainer');

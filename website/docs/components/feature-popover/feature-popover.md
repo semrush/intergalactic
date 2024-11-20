@@ -9,9 +9,9 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 <script lang="tsx">
 import React from 'react';
 
-import Button from 'intergalactic/button';
-import FeaturePopover from 'intergalactic/feature-popover';
-import { Text } from 'intergalactic/typography';
+import Button from '@semcore/ui/button';
+import FeaturePopover from '@semcore/ui/feature-popover';
+import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [

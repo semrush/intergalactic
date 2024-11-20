@@ -10,7 +10,7 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import InputMask from 'intergalactic/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];

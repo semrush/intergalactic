@@ -9,7 +9,7 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 Drag control component.
 
 ```jsx
-import DnD from 'intergalactic/drag-and-drop';
+import DnD from '@semcore/ui/drag-and-drop';
 <DnD />;
 ```
 
@@ -20,7 +20,7 @@ import DnD from 'intergalactic/drag-and-drop';
 The element, which will be dragged.
 
 ```jsx
-import DnD from 'intergalactic/drag-and-drop';
+import DnD from '@semcore/ui/drag-and-drop';
 <DnD>
   <DnD.Draggable />
 </DnD>
@@ -33,7 +33,7 @@ import DnD from 'intergalactic/drag-and-drop';
 The area, to which the dragged element will be placed.
 
 ```jsx
-import DnD from 'intergalactic/drag-and-drop';
+import DnD from '@semcore/ui/drag-and-drop';
 <DnD>
   <DnD.DropZone />
 </DnD>
