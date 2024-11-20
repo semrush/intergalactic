@@ -201,18 +201,22 @@ class ClearButton extends Component {
     if (empty) return null;
 
     return sstyled(styles)(
-      <Hint title={getI18nText('clear')}>
-        <SFilterTrigger
-          render={BaseTrigger}
-          tag='button'
-          type='button'
-          size={size}
-          empty={empty}
-          selected
-          disabled={disabled}
-        >
-          <FilterTrigger.Addon tag={Close} />
-        </SFilterTrigger>
+      <Hint>
+        <Hint.Trigger>
+          <SFilterTrigger
+            render={BaseTrigger}
+            tag='button'
+            type='button'
+            size={size}
+            empty={empty}
+            selected
+            disabled={disabled}
+            title={getI18nText('clear')}
+          >
+            <FilterTrigger.Addon tag={Close} />
+          </SFilterTrigger>
+        </Hint.Trigger>
+        <Hint.Popper>{getI18nText('clear')}</Hint.Popper>
       </Hint>,
     );
   }
