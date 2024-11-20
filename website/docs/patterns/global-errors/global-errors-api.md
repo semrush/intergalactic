@@ -5,7 +5,7 @@ tabs: Design('global-errors'), A11y('global-errors-a11y'), API('global-errors-ap
 
 ## Error
 
-The component that can be used to collect any global errors display on the page.
+The component that can be used to display any global errors on the page.
 
 ```jsx
 import Error from 'intergalactic/errors';
@@ -16,7 +16,7 @@ import Error from 'intergalactic/errors';
 
 ## Error.Title
 
-Error name. Extends for `<Box/>`.
+Error title. Extends for `<Box/>`.
 
 ```jsx
 import Error from 'intergalactic/errors';
@@ -43,7 +43,7 @@ import Error from 'intergalactic/errors';
 
 ## AccessDenied
 
-Placeholder for the 403 error. For some reason the page is restricted for the user.
+Template for the 403 error: user has no access to the page.
 
 ```jsx
 import { AccessDenied } from 'intergalactic/errors';
@@ -54,7 +54,7 @@ import { AccessDenied } from 'intergalactic/errors';
 
 ## Maintenance
 
-The placeholder for the global state for the period of technical works.
+Template for the global state for the period of technical works.
 
 ```jsx
 import { Maintenance } from 'intergalactic/errors';
@@ -65,7 +65,7 @@ import { Maintenance } from 'intergalactic/errors';
 
 ## PageError
 
-The placeholder for 500 error, caused by some technical problems on the page. There are two options to display: when we are aware of the error and warn the user; when we don't know about the error and recommend the user to refresh the page or contact us.
+Template for the 500 error, caused by some technical problems.
 
 ```jsx
 import { PageError } from 'intergalactic/errors';
@@ -76,7 +76,7 @@ import { PageError } from 'intergalactic/errors';
 
 ## PageNotFound
 
-Placeholder for the 404 error, when the page isn’t found.
+Template for the 404 error: page not found.
 
 ```jsx
 import { PageNotFound } from 'intergalactic/errors';
@@ -87,7 +87,7 @@ import { PageNotFound } from 'intergalactic/errors';
 
 ## ProjectNotFound
 
-The placeholder for the 404 error, but for the project page.
+Template for the 404 error, but for a project page.
 
 ```jsx
 import { ProjectNotFound } from 'intergalactic/errors';
