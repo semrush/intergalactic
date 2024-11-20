@@ -1,32 +1,29 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import { Hint } from 'intergalactic/tooltip';
-import { ButtonLink } from 'intergalactic/button';
-import CloseM from 'intergalactic/icon/Close/m';
-import Search from 'intergalactic/icon/Search/m';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import { Hint } from '@semcore/tooltip';
+import { ButtonLink } from '@semcore/button';
+import CloseM from '@semcore/icon/Close/m';
+import Search from '@semcore/icon/Search/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
-  const handleChange = React.useCallback(
-    (v) => {
-      setValue(v);
-    },
-    [value],
-  );
+  const handleChange = React.useCallback((v: string) => {
+    setValue(v);
+  }, []);
 
   const handleClick = React.useCallback(() => {
     setValue('');
-  }, ['']);
+  }, []);
 
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='dynamic-search-filter-by-keyword'>
         Filter by keyword
       </Text>
-      <Input w={200} mt={2} aria-live='polite'>
+      <Input w={200} mt={2}>
         <Input.Addon>
           <Search />
         </Input.Addon>

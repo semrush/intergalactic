@@ -1,27 +1,24 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import { Hint } from 'intergalactic/tooltip';
-import { ButtonLink } from 'intergalactic/button';
-import CloseM from 'intergalactic/icon/Close/m';
-import Search from 'intergalactic/icon/Search/m';
-import Button from 'intergalactic/button';
-import NeighborLocation from 'intergalactic/neighbor-location';
-import { Text } from 'intergalactic/typography';
-import { Flex, Box } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import { Hint } from '@semcore/tooltip';
+import { ButtonLink } from '@semcore/button';
+import CloseM from '@semcore/icon/Close/m';
+import Search from '@semcore/icon/Search/m';
+import Button from '@semcore/button';
+import NeighborLocation from '@semcore/neighbor-location';
+import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
-  const handleChange = React.useCallback(
-    (v) => {
-      setValue(v);
-    },
-    [value],
-  );
+  const handleChange = React.useCallback((v: string) => {
+    setValue(v);
+  }, []);
 
   const handleClick = React.useCallback(() => {
     setValue('');
-  }, ['']);
+  }, []);
 
   return (
     <Flex direction='column'>
@@ -49,11 +46,7 @@ const Demo = () => {
               </Input.Addon>
             )}
           </Input>
-          <Button aria-label='Search'>
-            <Button.Addon>
-              <Search />
-            </Button.Addon>
-          </Button>
+          <Hint tag={Button} addonLeft={Search} title='Search' />
         </NeighborLocation>
       </Box>
     </Flex>
