@@ -8,8 +8,8 @@ tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('t
 
 <script lang="tsx">
 import React from 'react';
-import TabLine from 'intergalactic/tab-line';
-import Badge from 'intergalactic/badge';
+import TabLine from '@semcore/ui/tab-line';
+import Badge from '@semcore/ui/badge';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(

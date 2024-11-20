@@ -7,7 +7,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 ## FullscreenModal
 
 ```js
-import FullscreenModal from 'intergalactic/fullscreen-modal';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
 ```
 
 <TypesView type="FullscreenModalProps" :types={...types} />

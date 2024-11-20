@@ -11,7 +11,7 @@ For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-cha
 ## Chart.Cigarette
 
 ```js
-import { Chart } from 'intergalactic/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="CigaretteChartProps" :types={...types} />

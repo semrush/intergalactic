@@ -9,7 +9,7 @@ tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Example('spin-code'), 
 Note that Spin is built with SVG inside.
 
 ```jsx
-import Spin from 'intergalactic/spin';
+import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 

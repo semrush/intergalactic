@@ -9,7 +9,7 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 <script lang="tsx">
 import React from 'react';
 
-import Pagination from 'intergalactic/pagination';
+import Pagination from '@semcore/ui/pagination';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(

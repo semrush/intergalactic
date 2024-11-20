@@ -9,7 +9,7 @@ tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('t
 Component represents native `textarea` tag and takes all its properties such as `value` and `defaultValue`.
 
 ```jsx
-import Textarea from 'intergalactic/textarea';
+import Textarea from '@semcore/ui/textarea';
 <Textarea />;
 ```
 

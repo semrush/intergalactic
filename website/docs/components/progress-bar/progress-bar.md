@@ -8,7 +8,7 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 
 <script lang="tsx">
 import React from 'react';
-import ProgressBar from 'intergalactic/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['l', 'm', 's'];

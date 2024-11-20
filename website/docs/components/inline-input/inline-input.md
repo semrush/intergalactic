@@ -9,7 +9,7 @@ tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api')
 
 <script lang="tsx">
 import React from 'react';
-import InlineInput from 'intergalactic/inline-input';
+import InlineInput from '@semcore/ui/inline-input';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const STATES = ['normal', 'invalid', 'valid'];

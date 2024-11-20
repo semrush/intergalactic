@@ -21,12 +21,12 @@ In case your report layout demands it, you have the option to vertically arrange
 
 <script lang="tsx">
 import React, { useEffect, useState } from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import { Hint } from 'intergalactic/tooltip';
-import Skeleton from 'intergalactic/skeleton';
-import 'intergalactic/utils/style/var.css';
-import { AnimatedNumber } from 'intergalactic/counter/src';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import { Hint } from '@semcore/ui/tooltip';
+import Skeleton from '@semcore/ui/skeleton';
+import '@semcore/ui/utils/style/var.css';
+import { AnimatedNumber } from '@semcore/ui/counter/src';
 
 const Demo = () => {
   const [loading, setLoading] = useState(true);

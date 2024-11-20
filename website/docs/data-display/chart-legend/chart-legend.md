@@ -11,7 +11,7 @@ tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-cod
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import { ChartLegend as ChartL, LegendItem, LegendFlexProps } from '@semcore/d3-chart';
-import DesktopIcon from 'intergalactic/icon/Desktop/m';
+import DesktopIcon from '@semcore/ui/icon/Desktop/m';
 import { Intergalactic } from '@semcore/core';
 import { IconProps } from '@semcore/icon';
 

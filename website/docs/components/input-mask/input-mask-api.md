@@ -7,7 +7,7 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 ## InputMask
 
 ```js
-import InputMask from 'intergalactic/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 ```
 
 The API is the same as [Input](/components/input/input-api).
@@ -15,7 +15,7 @@ The API is the same as [Input](/components/input/input-api).
 ## InputMask.Value
 
 ```js
-import InputMask from 'intergalactic/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 <InputMask.Value />;
 ```
 
@@ -24,7 +24,7 @@ import InputMask from 'intergalactic/input-mask';
 ## InputMask.Addon
 
 ```js
-import InputMask from 'intergalactic/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 <InputMask.Addon />;
 ```
 

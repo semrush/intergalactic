@@ -9,7 +9,7 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 Basic trigger-button for all dropdowns.
 
 ```js
-import { BaseTrigger } from 'intergalactic/base-trigger';
+import { BaseTrigger } from '@semcore/ui/base-trigger';
 ```
 
 <TypesView type="BaseTriggerProps" :types={...types} />
@@ -19,7 +19,7 @@ import { BaseTrigger } from 'intergalactic/base-trigger';
 Button-trigger with the `ChevronDownM` icon.
 
 ```js
-import { ButtonTrigger } from 'intergalactic/base-trigger';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
 ```
 
 <TypesView type="ButtonTriggerProps" :types={...types} />
@@ -29,7 +29,7 @@ import { ButtonTrigger } from 'intergalactic/base-trigger';
 This trigger looks like a link with the `ChevronDownM` icon.
 
 ```js
-import { LinkTrigger } from 'intergalactic/base-trigger';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
 ```
 
 <TypesView type="LinkTriggerProps" :types={...types} />
@@ -39,7 +39,7 @@ import { LinkTrigger } from 'intergalactic/base-trigger';
 Trigger for filters.
 
 ```js
-import { FilterTrigger } from 'intergalactic/base-trigger';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
 ```
 
 <TypesView type="FilterTriggerProps" :types={...types} />

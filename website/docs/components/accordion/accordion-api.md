@@ -6,7 +6,7 @@ tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example
 ## Accordion
 
 ```jsx
-import Accordion from 'intergalactic/accordion';
+import Accordion from '@semcore/ui/accordion';
 
 <Accordion />;
 ```
@@ -16,7 +16,7 @@ import Accordion from 'intergalactic/accordion';
 ## Accordion.Item
 
 ```jsx
-import { Accordion } from 'intergalactic/accordion';
+import { Accordion } from '@semcore/ui/accordion';
 
 <Accordion.Item />;
 ```
@@ -26,7 +26,7 @@ import { Accordion } from 'intergalactic/accordion';
 ## Accordion.Item.Toggle
 
 ```jsx
-import { Accordion } from 'intergalactic/accordion';
+import { Accordion } from '@semcore/ui/accordion';
 
 <Accordion.Item.Toggle />;
 ```
@@ -36,7 +36,7 @@ Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 ## Accordion.Item.Collapse
 
 ```jsx
-import { Accordion } from 'intergalactic/accordion';
+import { Accordion } from '@semcore/ui/accordion';
 
 <Accordion.Item.Collapse />;
 ```
@@ -48,7 +48,7 @@ Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
 ## Accordion.Item.Chevron
 
 ```jsx
-import { Accordion } from 'intergalactic/accordion';
+import { Accordion } from '@semcore/ui/accordion';
 
 <Accordion.Item.Chevron />;
 ```

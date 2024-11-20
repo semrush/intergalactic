@@ -31,7 +31,7 @@ The stylelint plugin help developers avoid mistakes in design token names. It's 
 // .stylelintrc.json
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["intergalactic/stylelint-plugin"],
+  "plugins": ["@semcore/stylelint-plugin"],
   "rules": {
     "intergalactic/design-tokens": true
   }
