@@ -13,9 +13,7 @@ test.describe('FilterTrigger', () => {
     const popperLocator = await page.locator('[data-ui-name="Select.Menu"]');
     await expect(popperLocator).toHaveCount(0);
 
-    const triggerLocator = await page.locator(
-      '[data-ui-name="Select.Trigger"] [data-ui-name="FilterTrigger.TriggerButton"]',
-    );
+    const triggerLocator = await page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
 
     await expect(triggerLocator).toBeFocused();
 
