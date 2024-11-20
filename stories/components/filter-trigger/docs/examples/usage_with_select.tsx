@@ -1,8 +1,8 @@
 import React from 'react';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import { FilterTrigger } from '@semcore/base-trigger';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => (
   <Flex direction='column' gap={2} alignItems='start'>

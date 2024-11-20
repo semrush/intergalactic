@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2024-11-20
+
+### Fixed
+
+- Added `Hint` to the `FilterTrigger.ClearButton`.
+- Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
+- Added `role` combobox to the `FilterTrigger.TriggerButton`.
+- Added screenreader only `selected` text to the `FilterTrigger.Counter` value.
+
 ## [4.48.1] - 2024-11-08
 
 ### Changed

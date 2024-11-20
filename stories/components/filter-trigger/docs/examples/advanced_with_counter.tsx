@@ -1,7 +1,7 @@
 import React from 'react';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import Dropdown from 'intergalactic/dropdown';
-import Button from 'intergalactic/button';
+import { FilterTrigger } from '@semcore/base-trigger';
+import Dropdown from '@semcore/dropdown';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [filters, setFilters] = React.useState(0);

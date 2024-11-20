@@ -1,16 +1,15 @@
 import React from 'react';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
+import { FilterTrigger } from '@semcore/base-trigger';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import Button from '@semcore/button';
 
 const Demo = () => {
-  const triggerRef = React.useRef<HTMLButtonElement>();
-  const [selectVisible, setSelectVisible] = React.useState(false);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
   const focusTrigger = React.useCallback(() => {
     triggerRef.current?.focus();
-    setSelectVisible(true);
+    triggerRef.current?.click();
   }, []);
 
   return (
@@ -19,7 +18,7 @@ const Demo = () => {
         Controlled filter
       </Text>
       <Flex gap={2} mt={2}>
-        <Select visible={selectVisible} onVisibleChange={setSelectVisible}>
+        <Select>
           <Select.Trigger tag={FilterTrigger} triggerRef={triggerRef} id='controlled-filter' />
           <Select.Menu>
             {options.map((option, idx) => {

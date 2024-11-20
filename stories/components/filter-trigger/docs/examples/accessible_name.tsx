@@ -1,7 +1,8 @@
 import React from 'react';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import Select from 'intergalactic/select';
-import { Flex } from 'intergalactic/flex-box';
+import { FilterTrigger } from '@semcore/base-trigger';
+import Select from '@semcore/select';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   const [shape, setShape] = React.useState('');
@@ -9,6 +10,24 @@ const Demo = () => {
 
   return (
     <Flex gap={2} alignItems='end' flexWrap>
+      <Flex direction='column'>
+        <Text tag='label' htmlFor='controlled-filter' size={200}>
+          Controlled filter
+        </Text>
+        <Select>
+          <Select.Trigger tag={FilterTrigger} id='controlled-filter' />
+          <Select.Menu aria-label={'Controlled filter'}>
+            {options.map((option, idx) => {
+              const { title } = option;
+              return (
+                <Select.Option value={title} key={idx}>
+                  {title}
+                </Select.Option>
+              );
+            })}
+          </Select.Menu>
+        </Select>
+      </Flex>
       <Select
         options={languages}
         tag={FilterTrigger}
@@ -42,6 +61,20 @@ const Demo = () => {
           ))}
         </Select.Menu>
       </Select>
+      <Select onChange={setMaterial} multiselect>
+        <Select.Trigger tag={FilterTrigger} placeholder='Material' aria-label='Material'>
+          <FilterTrigger.Text>Material: </FilterTrigger.Text>
+          {material.length > 0 && <FilterTrigger.Counter count={material.length} />}
+        </Select.Trigger>
+        <Select.Menu>
+          {materials.map((option, idx) => (
+            <Select.Option value={option} key={idx}>
+              <Select.Option.Checkbox />
+              {option}
+            </Select.Option>
+          ))}
+        </Select.Menu>
+      </Select>
     </Flex>
   );
 };
@@ -60,5 +93,10 @@ const languages = [
 });
 const materials = ['Glass', 'Metal', 'Paper', 'Wood'];
 const shapes = ['Circle', 'Rectangle', 'Star', 'Triangle'];
+const options = Array(6)
+  .fill(0)
+  .map((i, idx) => ({
+    title: `Option ${idx}`,
+  }));
 
 export default Demo;
