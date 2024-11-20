@@ -232,10 +232,15 @@ describe('Checkbox', () => {
   });
 
   test.concurrent(
-    'Only Control should have aria-label from root aria-label',
+    'Only Control should have aria-label, aria-labelledby, aria-describedby from root',
     async ({ expect }) => {
       const { getByTestId } = render(
-        <Checkbox aria-label={'test aria label'} data-testid={'checkboxContainer'}>
+        <Checkbox
+          aria-label={'test aria label'}
+          aria-labelledby={'test aria labelledby'}
+          aria-describedby={'test aria describedby'}
+          data-testid={'checkboxContainer'}
+        >
           <Checkbox.Value>
             <Checkbox.Value.Control data-testid={'checkboxControl'} />
             <Checkbox.Value.CheckMark data-testid={'checkboxCheckMark'} />
@@ -244,9 +249,35 @@ describe('Checkbox', () => {
       );
 
       expect(getByTestId('checkboxControl')).toHaveAttribute('aria-label', 'test aria label');
+      expect(getByTestId('checkboxControl')).toHaveAttribute(
+        'aria-labelledby',
+        'test aria labelledby',
+      );
+      expect(getByTestId('checkboxControl')).toHaveAttribute(
+        'aria-describedby',
+        'test aria describedby',
+      );
 
       expect(getByTestId('checkboxCheckMark')).not.toHaveAttribute('aria-label', 'test aria label');
       expect(getByTestId('checkboxContainer')).not.toHaveAttribute('aria-label', 'test aria label');
+
+      expect(getByTestId('checkboxCheckMark')).not.toHaveAttribute(
+        'aria-labelledby',
+        'test aria labelledby',
+      );
+      expect(getByTestId('checkboxContainer')).not.toHaveAttribute(
+        'aria-labelledby',
+        'test aria labelledby',
+      );
+
+      expect(getByTestId('checkboxCheckMark')).not.toHaveAttribute(
+        'aria-describedby',
+        'test aria describedby',
+      );
+      expect(getByTestId('checkboxContainer')).not.toHaveAttribute(
+        'aria-describedby',
+        'test aria describedby',
+      );
     },
   );
 

@@ -62,6 +62,8 @@ class CheckboxRoot extends Component {
       hoistDisabled: this.hoistDisabled,
       rootDisabled: this.props.disabled,
       ['aria-label']: this.asProps['aria-label'],
+      ['aria-labelledby']: this.asProps['aria-labelledby'],
+      ['aria-describedby']: this.asProps['aria-describedby'],
     };
   }
 
@@ -79,6 +81,8 @@ class CheckboxRoot extends Component {
           'checkedDefault',
           'label',
           'aria-label',
+          'aria-labelledby',
+          'aria-describedby',
         ]}
       >
         {hasChildren ? (
