@@ -11,11 +11,11 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Button, { ButtonLink } from 'intergalactic/button';
-import CheckM from 'intergalactic/icon/Check/m';
-import CheckL from 'intergalactic/icon/Check/l';
-import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
-import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+import CheckL from '@semcore/ui/icon/Check/l';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import ArrowRightL from '@semcore/ui/icon/ArrowRight/l';
 
 const COMPONENTS = [Button, ButtonLink];
 const SIZES_BUTTON = ['m', 'l'];

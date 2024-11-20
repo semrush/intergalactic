@@ -6,7 +6,7 @@ tabs: Design('data-table'), A11y('data-table-a11y'), API('data-table-api'), Exam
 ## DataTable
 
 ```jsx
-import DataTable from 'intergalactic/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable />;
 ```
 
@@ -15,7 +15,7 @@ import DataTable from 'intergalactic/data-table';
 ## DataTable.Head
 
 ```jsx
-import DataTable from 'intergalactic/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable.Head />;
 ```
 
@@ -24,7 +24,7 @@ import DataTable from 'intergalactic/data-table';
 ## DataTable.Column
 
 ```jsx
-import DataTable from 'intergalactic/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable.Column />;
 ```
 
@@ -33,7 +33,7 @@ import DataTable from 'intergalactic/data-table';
 ## DataTable.Body
 
 ```jsx
-import DataTable from 'intergalactic/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable.Body />;
 ```
 
@@ -42,7 +42,7 @@ It's a wrapper over a [Box](/layout/box-system/box-api#a3cfce) component.
 ## DataTable.Row
 
 ```jsx
-import DataTable from 'intergalactic/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable.Row />;
 ```
 
@@ -51,7 +51,7 @@ import DataTable from 'intergalactic/data-table';
 ## DataTable.Cell
 
 ```jsx
-import DataTable from 'intergalactic/data-table';
+import DataTable from '@semcore/ui/data-table';
 <DataTable.Cell />;
 ```
 

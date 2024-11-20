@@ -7,7 +7,7 @@ tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api')
 ## InputNumber
 
 ```js
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/ui/input-number';
 ```
 
 <TypesView type="InputNumberProps" :types={...types} />
@@ -15,7 +15,7 @@ import InputNumber from 'intergalactic/input-number';
 ## InputNumber.Value
 
 ```jsx
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Value />;
 ```
 
@@ -24,7 +24,7 @@ import InputNumber from 'intergalactic/input-number';
 ## InputNumber.Controls
 
 ```jsx
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Controls />;
 ```
 
@@ -33,7 +33,7 @@ import InputNumber from 'intergalactic/input-number';
 ## InputNumber.Addon
 
 ```jsx
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Addon />;
 ```
 

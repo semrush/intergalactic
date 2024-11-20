@@ -9,7 +9,7 @@ tabs: Design('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('t
 Wrap over the tab elements.
 
 ```jsx
-import TabLine from 'intergalactic/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine />;
 ```
 
@@ -20,7 +20,7 @@ import TabLine from 'intergalactic/tab-line';
 This tab element may contain `Addon` and `Text`. The structure is similar to [Button](/components/button/button). It takes some properties of the TabLine (for example, `size`, `disabled`) and can override them.
 
 ```jsx
-import TabLine from 'intergalactic/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item />;
 ```
 
@@ -31,7 +31,7 @@ import TabLine from 'intergalactic/tab-line';
 The addon inside the tab (most commonly an icon) sets the correct indents depending on the size. It takes all the properties of the `Box`.
 
 ```jsx
-import TabLine from 'intergalactic/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Addon />;
 ```
 
@@ -42,7 +42,7 @@ This ordinary text sets the appropriate indents depending on the size. If a simp
 It takes all the properties of the `Box`.
 
 ```jsx
-import TabLine from 'intergalactic/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Text />;
 ```
 

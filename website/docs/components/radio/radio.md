@@ -8,7 +8,7 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 <script lang="tsx">
 import React from 'react';
-import Radio, { RadioGroup } from 'intergalactic/radio';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
