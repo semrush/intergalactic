@@ -12,16 +12,13 @@ import { Flex, Box } from '@semcore/flex-box';
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
-  const handleChange = React.useCallback(
-    (v: string) => {
-      setValue(v);
-    },
-    [value],
-  );
+  const handleChange = React.useCallback((v: string) => {
+    setValue(v);
+  }, []);
 
   const handleClick = React.useCallback(() => {
     setValue('');
-  }, ['']);
+  }, []);
 
   return (
     <Flex direction='column'>

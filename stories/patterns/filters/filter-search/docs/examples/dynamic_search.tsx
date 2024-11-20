@@ -10,23 +10,20 @@ import { Flex } from '@semcore/flex-box';
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
-  const handleChange = React.useCallback(
-    (v: string) => {
-      setValue(v);
-    },
-    [value],
-  );
+  const handleChange = React.useCallback((v: string) => {
+    setValue(v);
+  }, []);
 
   const handleClick = React.useCallback(() => {
     setValue('');
-  }, ['']);
+  }, []);
 
   return (
     <Flex direction='column'>
       <Text tag='label' size={200} htmlFor='dynamic-search-filter-by-keyword'>
         Filter by keyword
       </Text>
-      <Input w={200} mt={2} aria-live='polite'>
+      <Input w={200} mt={2}>
         <Input.Addon>
           <Search />
         </Input.Addon>

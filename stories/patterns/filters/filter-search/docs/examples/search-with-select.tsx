@@ -13,16 +13,13 @@ const Demo = () => {
   const [value, setValue] = React.useState('');
   const [scope, setScope] = React.useState('Everywhere');
 
-  const handleChange = React.useCallback(
-    (v: string) => {
-      setValue(v);
-    },
-    [value],
-  );
+  const handleChange = React.useCallback((v: string) => {
+    setValue(v);
+  }, []);
 
   const handleClick = React.useCallback(() => {
     setValue('');
-  }, ['']);
+  }, []);
 
   return (
     <Flex direction='column'>
