@@ -88,10 +88,8 @@ class InputTags extends Component<IInputTagsProps> {
   };
 
   componentDidMount() {
-    const { Children } = this.asProps;
-    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
-    const InputElement = InputComponents[0]?.ref?.current ?? null;
-    const inputAccessibleName = getAccessibleName(InputElement);
+    const inputElement = this.inputRef.current;
+    const inputAccessibleName = getAccessibleName(inputElement);
 
     this.setState({
       tagsContainerAriaLabel: inputAccessibleName,
