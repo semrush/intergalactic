@@ -8,11 +8,10 @@ import Button from 'intergalactic/button';
 import FileDownloadM from 'intergalactic/icon/FileDownload/m';
 import CopyM from 'intergalactic/icon/Copy/m';
 import styles from './styles.module.css';
-import { preferSemcoreUi } from '../../.vitepress/theme/preferences';
 
 const IllustrationDetailsPanel = ({ onClose, name }) => {
   const getImportText = React.useCallback(() => {
-    const lib = preferSemcoreUi.value ? '@semcore/ui' : 'intergalactic';
+    const lib = '@semcore/ui';
     const importText = `import ${name} from '${lib}/illustration/${name}'`;
 
     return importText;
