@@ -214,7 +214,7 @@ The tooltip's position shouldn't change when scrolling the page, ensuring it rem
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/tooltip/__stories__/docs-examples/placement-properties.tsx';
+  export Demo from 'stories/components/tooltip/docs/examples/placement-properties.tsx';
 </script>
 
 :::

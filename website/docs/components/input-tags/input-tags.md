@@ -82,9 +82,11 @@ const Preview = (preview) => {
     <InputTags size={size} state={state}>
       {tagText.length ? (
         <InputTags.Tag tabIndex={0} editable={editableTag}>
-          {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
-          {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
-          <InputTags.Tag.Text>{tagText}</InputTags.Tag.Text>
+          <InputTags.Tag.Text>
+            {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
+            {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
+            {tagText}
+          </InputTags.Tag.Text>
           {closeTag && <InputTags.Tag.Close />}
         </InputTags.Tag>
       ) : null}

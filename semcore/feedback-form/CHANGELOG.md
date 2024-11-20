@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.36.0] - 2024-11-19
+
+### Added
+
+- `modalWidth` property for the FeedbackRating component.
+
+## [6.35.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3], `@semcore/tooltip` [6.46.1 ~> 6.46.2]).
+
 ## [6.35.2] - 2024-11-08
 
 ### Changed

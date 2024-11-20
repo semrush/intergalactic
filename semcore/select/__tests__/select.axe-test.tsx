@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Select', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'stories/components/select/__stories__/docs-examples/options_filtering.tsx';
+    const standPath = 'stories/components/select/docs/examples/options_filtering.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

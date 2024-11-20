@@ -8,7 +8,7 @@ test.skip('Users can interact with ColorPicker via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'stories/components/color-picker/__stories__/docs-examples/palettemanager.tsx';
+  const standPath = 'stories/components/color-picker/docs/examples/palettemanager.tsx';
   const reportPath = 'website/docs/components/color-picker/color-picker-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
