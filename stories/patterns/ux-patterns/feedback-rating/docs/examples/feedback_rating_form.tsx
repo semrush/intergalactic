@@ -49,7 +49,7 @@ const Demo = () => {
       notificationVisible={notificationVisible}
       notificationText={'Is it working well for you?'}
       learnMoreLink={'http://google.com'}
-      header={<FeedbackRating.Header>Feedback form title</FeedbackRating.Header>}
+      header={<FeedbackRating.Header>Great! What do you like the most?</FeedbackRating.Header>}
       submitText={'Send feedback'}
       initialValues={initValue}
       rating={rating}
@@ -62,17 +62,17 @@ const Demo = () => {
       formConfig={[
         {
           key: 'option1',
-          label: 'Label 1',
+          label: 'Score is more accurate',
           type: 'checkbox',
         },
         {
           key: 'option2',
-          label: 'Label 2',
+          label: 'Formula is more transparent',
           type: 'checkbox',
         },
         {
           key: 'option3',
-          label: 'Label 3',
+          label: 'It’s easier to use for evaluation',
           type: 'checkbox',
         },
         {
