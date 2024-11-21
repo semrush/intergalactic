@@ -580,7 +580,11 @@ h6[class] {
 }
 
 .vp-doc a[class]:hover {
-  color: var(--vp-c-indigo-1) !important;
+  color: var(--vp-c-indigo-1);
+}
+
+.vp-doc a[class][type=none]:hover {
+  color: var(--vp-c-white);
 }
 
 .vp-doc h1[class],
