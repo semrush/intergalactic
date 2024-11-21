@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.3] - 2024-11-16
+
+### Removed
+
+- Not working `aria-valuemin` and `aria-minmax`, because of type `text` for input in InputNumber.
+
 ## [5.39.2] - 2024-11-08
 
 ### Changed

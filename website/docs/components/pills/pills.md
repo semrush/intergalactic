@@ -10,8 +10,8 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 import React from 'react';
 import Pills from '@semcore/pills';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import LikeM from 'intergalactic/icon/Like/m';
-import LikeL from 'intergalactic/icon/Like/l';
+import LikeM from '@semcore/ui/icon/Like/m';
+import LikeL from '@semcore/ui/icon/Like/l';
 
 // LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
 //   'LikeOutline';

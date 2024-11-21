@@ -5,7 +5,7 @@ tabs: Design('global-errors'), A11y('global-errors-a11y'), API('global-errors-ap
 
 ## Example of using templates
 
-Both graphics and texts are already included in ready-to-use templates. The locale can be either got inside the component, or wrapped in an application `I18nProvider` from the `intergalactic/utils` package, as in the example below.
+Both graphics and texts are already included in ready-to-use templates. The locale can be either got inside the component, or wrapped in an application `I18nProvider` from the `@semcore/utils` package, as in the example below.
 
 ::: sandbox
 

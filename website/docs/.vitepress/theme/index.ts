@@ -8,9 +8,6 @@ import TypesView from './TypesView.vue';
 import Page404 from './Page404.vue';
 import DevportalLogo from './DevportalLogo.vue';
 import DocFooter from './DocFooter.vue';
-import PreferenceSwitch from './PreferenceSwitch.vue';
-import BlogPosts from './blog/BlogPosts.vue';
-import BlogPostsMainPage from './blog/BlogPostsMainPage.vue';
 import DosDonts from './DosDonts.vue';
 import mediumZoom from 'medium-zoom';
 import { h, onMounted, watch, nextTick } from 'vue';
@@ -20,7 +17,6 @@ export default {
   ...Theme,
   Layout: () => {
     return h(Theme.Layout, null, {
-      'nav-screen-content-after': () => h(PreferenceSwitch),
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-top': () => h(PageTopTabs),
       'not-found': () => h(Page404),
@@ -32,8 +28,6 @@ export default {
     app.component('Sandbox', Sandbox);
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
-    app.component('BlogPosts', BlogPosts);
-    app.component('BlogPostsMainPage', BlogPostsMainPage);
     app.component('DosDonts', DosDonts);
   },
   setup() {

@@ -41,8 +41,6 @@ SAddon {
 }
 
 STagContainer SAddon {
-  font-weight: var(--intergalactic-medium, 500);
-  color: var(--tag-color);
   padding-left: 0;
   padding-right: 0;
 }

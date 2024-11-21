@@ -8,8 +8,8 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 <script lang="tsx">
 import React from 'react';
-import Ellipsis from 'intergalactic/ellipsis';
-import { Box } from 'intergalactic/flex-box';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 

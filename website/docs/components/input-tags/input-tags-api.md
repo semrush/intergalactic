@@ -7,7 +7,7 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 ## InputTags
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 ```
 
 <TypesView type="InputTagsProps" :types={...types} />
@@ -15,7 +15,7 @@ import InputTags from 'intergalactic/input-tags';
 ## InputTags.Value
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Value />;
 ```
 
@@ -26,7 +26,7 @@ import InputTags from 'intergalactic/input-tags';
 Styled component [Tag](/components/tag/tag).
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag />;
 ```
 
@@ -35,7 +35,7 @@ import InputTags from 'intergalactic/input-tags';
 ## InputTags.Tag.Addon
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag.Addon />;
 ```
 
@@ -44,7 +44,7 @@ Inherited from the [Tag.Addon](../tag/tag-api#tag-addon) component.
 ## InputTags.Tag.Text
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag.Text />;
 ```
 
@@ -53,7 +53,7 @@ Inherited from the [Tag.Text](../tag/tag-api#tag-text) component.
 ## InputTags.Tag.Close
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag.Close />;
 ```
 
@@ -62,7 +62,7 @@ Inherited from the [Tag.Close](../tag/tag-api#tag-close) component.
 ## InputTags.Tag.Circle
 
 ```jsx
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag.Circle />;
 ```
 

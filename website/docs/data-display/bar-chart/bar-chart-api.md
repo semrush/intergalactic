@@ -11,7 +11,7 @@ For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-cha
 ## Chart.Bar
 
 ```js
-import { Chart } from 'intergalactic/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="BarChartProps" :types={...types} />
@@ -19,7 +19,7 @@ import { Chart } from 'intergalactic/d3-chart';
 ## Bar
 
 ```js
-import { Bar } from 'intergalactic/d3-chart';
+import { Bar } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="BarProps" :types={...types} />

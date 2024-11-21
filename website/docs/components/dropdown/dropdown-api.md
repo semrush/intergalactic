@@ -13,7 +13,7 @@ The `Dropdown` is a wrap over the `Popper` with the addition of styles, presets 
 The wrap over the `<Popper/>` component.
 
 ```jsx
-import Dropdown from 'intergalactic/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 <Dropdown />;
 ```
 
@@ -24,7 +24,7 @@ import Dropdown from 'intergalactic/dropdown';
 The wrap over the `<Popper.Trigger/>` component.
 
 ```jsx
-import Dropdown from 'intergalactic/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Trigger />;
 ```
 
@@ -35,7 +35,7 @@ import Dropdown from 'intergalactic/dropdown';
 The wrap over the `<Popper.Popper/>` component.
 
 ```jsx
-import Dropdown from 'intergalactic/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Popper />;
 ```
 
