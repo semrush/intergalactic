@@ -9,13 +9,13 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 <script lang="tsx">
 import React from 'react';
 
-import Button from 'intergalactic/button';
-import Tooltip, { Hint, DescriptionTooltip } from 'intergalactic/tooltip';
-import { Box, Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import Button from '@semcore/ui/button';
+import Tooltip, { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Link from 'intergalactic/link';
-import FileExportM from 'intergalactic/icon/FileExport/m';
+import Link from '@semcore/ui/link';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 
 const PLACEMENT = [
   'top-start',

@@ -9,7 +9,7 @@ tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api')
 Use this state to display "No data" (including "Nothing found") empty states.
 
 ```jsx
-import { NoData } from 'intergalactic/widget-empty';
+import { NoData } from '@semcore/ui/widget-empty';
 <NoData />;
 ```
 
@@ -20,7 +20,7 @@ import { NoData } from 'intergalactic/widget-empty';
 Use this state to display error messages.
 
 ```jsx
-import { Error } from 'intergalactic/widget-empty';
+import { Error } from '@semcore/ui/widget-empty';
 <Error />;
 ```
 
@@ -31,7 +31,7 @@ import { Error } from 'intergalactic/widget-empty';
 Use this component to display customized empty states.
 
 ```jsx
-import WidgetEmpty from 'intergalactic/widget-empty';
+import WidgetEmpty from '@semcore/ui/widget-empty';
 <WidgetEmpty />;
 ```
 

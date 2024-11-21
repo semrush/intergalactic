@@ -13,7 +13,6 @@ import { computed, onMounted } from 'vue';
 import { createRoot as createReactRoot } from 'react-dom/client'
 import lzString from 'lz-string';
 import { isolateStyles } from './isolateStyles';
-import { preferSemcoreUi } from './preferences';
 const { compressToBase64: lzCompressToBase64 } = lzString;
 
 (globalThis as any).createReactRoot = createReactRoot;
@@ -35,17 +34,11 @@ const dataToLzCompressedJson = (data) => {
 
 const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
 const htmlCode = computed(() => {
-  let code = atob(codeEncoded!);
-  if (preferSemcoreUi.value) {
-    code = code.replace(/;intergalactic\//g, ";@semcore/ui/")
-  }
-  return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code tabindex="0">')
+  let code = atob(codeEncoded!).replace(/intergalactic\//g, "@semcore/ui/");
+  return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code tabindex="0">');
 });
 const codesandboxUrl = computed(() => {
-  let code = rawCode;
-  if (preferSemcoreUi.value) {
-    code = code.replace(/'intergalactic\//g, "'@semcore/ui/")
-  }
+  let code = rawCode.replace(/'intergalactic\//g, "'@semcore/ui/");
   const dependencies = {};
   const lines = code!.split('\n');
   for (const line of lines) {

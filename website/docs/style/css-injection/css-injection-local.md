@@ -18,7 +18,7 @@ If you need to change the style of a component in one specific case, then you sh
 Install our `component` and our plugin `@semcore/babel-plugin-styles` to properly transpile the code.
 
 ```bash
-npm i intergalactic @semcore/babel-plugin-styles
+npm i @semcore/ui @semcore/babel-plugin-styles
 ```
 
 ### Step two
@@ -48,7 +48,7 @@ Write your own styles for our components using one of the following methods:
 * CSS-in-JS
 
 ```jsx
-import { sstyled } from 'intergalactic/core';
+import { sstyled } from '@semcore/ui/core';
 const styles = sstyled.css`
   SWhatever {
     some-styles: 'Cool';
@@ -71,7 +71,7 @@ import styles from './custom.shadow.css';
 Pass the new styles to the `styles` property of our component:
 
 ```jsx
-import Button from 'intergalactic/Button';
+import Button from '@semcore/ui/Button';
 export default (props) => <Button styles={styles} {...props} />;
 ```
 
@@ -90,8 +90,8 @@ Look at the source of styles in GitHub, styles are written in the same format.
 **You can use variables as properties:**
 
 ```jsx
-import { sstyled } from 'intergalactic/core';
-import Button from 'intergalactic/button';
+import { sstyled } from '@semcore/ui/core';
+import Button from '@semcore/ui/button';
 
 const styles = sstyled.css`
   SButton {

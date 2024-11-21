@@ -819,10 +819,6 @@ export const sideBarConfig: SidebarConfig = [
   {
     items: [
       {
-        link: '/blog/',
-        text: 'Intergalactic news',
-      },
-      {
         link: '/bug-reporting/report-bug/report-bug',
         text: 'Bug reporting',
       },

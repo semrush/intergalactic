@@ -9,8 +9,8 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 <script lang="tsx">
 import React from 'react';
 
-import Dot from 'intergalactic/dot';
-import Button from 'intergalactic/button';
+import Dot from '@semcore/ui/dot';
+import Button from '@semcore/ui/button';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['m', 'l'];

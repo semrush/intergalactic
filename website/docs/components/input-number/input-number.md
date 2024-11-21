@@ -8,7 +8,7 @@ tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api')
 
 <script lang="tsx">
 import React from 'react';
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/ui/input-number';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const STATES = ['normal', 'invalid', 'valid'];

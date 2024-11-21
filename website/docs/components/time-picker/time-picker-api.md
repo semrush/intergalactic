@@ -7,7 +7,7 @@ tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), E
 ## Time picker
 
 ```jsx
-import Timepicker from 'intergalactic/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 ```
 
 <TypesView type="TimePickerProps" :types={...types} />
@@ -17,7 +17,7 @@ import Timepicker from 'intergalactic/time-picker';
 <TypesView type="TimePickerItemProps" :types={...types} />
 
 ```jsx
-import Timepicker from 'intergalactic/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 <Timepicker>
   <Timepicker.Hours />
   <Timepicker.Minutes />
@@ -29,7 +29,7 @@ import Timepicker from 'intergalactic/time-picker';
 <TypesView type="TimePickerFormatProps" :types={...types} />
 
 ```jsx
-import Timepicker from 'intergalactic/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Format />;
 ```
 
@@ -38,7 +38,7 @@ import Timepicker from 'intergalactic/time-picker';
 It is a usual `span`-element, it takes the HTML-attributes available for it.
 
 ```jsx
-import Timepicker from 'intergalactic/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Separator />;
 ```
 
