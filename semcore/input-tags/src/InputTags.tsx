@@ -171,16 +171,6 @@ class InputTags extends Component<IInputTagsProps> {
     fire(this, 'onRemove', event);
   };
 
-  handleContainerFocus = (event: React.FocusEvent) => {
-    const { target } = event;
-    const { current: container } = this.scrollContainerRef;
-    if (!container || target !== container) return;
-    const hasTags = this.tagsRefs.some(Boolean);
-    if (hasTags) return;
-    if (event.relatedTarget === this.inputRef.current) return;
-    this.moveFocusToInput(event);
-  };
-
   getValueProps() {
     return {
       ref: this.inputRef,
@@ -219,9 +209,8 @@ class InputTags extends Component<IInputTagsProps> {
         render={Input}
         tag={ScrollArea}
         onMouseDown={this.moveFocusToInput}
-        onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
-        tabIndex={-1}
+        tabIndex={null}
       >
         <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
           {TagsComponents}
