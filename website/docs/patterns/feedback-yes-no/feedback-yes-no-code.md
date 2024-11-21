@@ -4,7 +4,7 @@ fileSource: feedback-form
 tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
-Refer to the [Feedback component API](/components/feedback/feedback-form-api) for all the props you can use in the form pattern below.
+Refer to [Feedback component API](/components/feedback/feedback-form-api) for the `FeedbackForm` properties.
 
 ## Basic usage
 

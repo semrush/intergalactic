@@ -77,13 +77,18 @@ class Feedback extends React.PureComponent<{
             <FeedbackForm.Item name='email' validate={validate.email}>
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id='email' />
+                  <Input.Value
+                    {...input}
+                    onChange={this.handleChange(input.onChange)}
+                    id='email'
+                    aria-describedby='privacy-description'
+                  />
                 </Input>
               )}
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight='18px' size={200} color='#6c6e79'>
+            <Text size={200} color='text-secondary' id='privacy-description'>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
@@ -138,6 +143,7 @@ class FeedbackYesNo extends React.PureComponent {
 
     return (
       <Notice
+        aria-label='Leave feedback'
         hidden={!visible}
         display='flex'
         style={{
@@ -155,15 +161,10 @@ class FeedbackYesNo extends React.PureComponent {
           <Text mr={4}>Do you find our Design System useful?</Text>
           <Box inline>
             <Dropdown onVisibleChange={this.handleChangeDdVisible('yes')}>
-              <Dropdown.Trigger>
-                <Button active={feedbackType === 'yes'}>
-                  <Button.Addon>
-                    <ThumbUpM />
-                  </Button.Addon>
-                  <Button.Text>Yes</Button.Text>
-                </Button>
+              <Dropdown.Trigger tag={Button} addonLeft={ThumbUpM} active={feedbackType === 'yes'}>
+                Yes
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description'>
+              <Dropdown.Popper aria-label='Feedback form'>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
@@ -174,15 +175,15 @@ class FeedbackYesNo extends React.PureComponent {
               </Dropdown.Popper>
             </Dropdown>
             <Dropdown onVisibleChange={this.handleChangeDdVisible('no')}>
-              <Dropdown.Trigger ml={2}>
-                <Button active={feedbackType === 'no'}>
-                  <Button.Addon>
-                    <ThumbDownM />
-                  </Button.Addon>
-                  <Button.Text>No</Button.Text>
-                </Button>
+              <Dropdown.Trigger
+                ml={2}
+                tag={Button}
+                addonLeft={ThumbDownM}
+                active={feedbackType === 'no'}
+              >
+                No
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description'>
+              <Dropdown.Popper aria-label='Feedback form'>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
