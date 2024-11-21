@@ -8,8 +8,6 @@ const manager = new NoticeBubbleManager();
 let counter = 0;
 
 const Demo = () => {
-  const bubbleRef = React.useRef<any>(null);
-
   const handleClick = () => {
     counter++;
 

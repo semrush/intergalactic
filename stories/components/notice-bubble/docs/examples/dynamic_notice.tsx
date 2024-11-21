@@ -8,7 +8,7 @@ import { Flex } from '@semcore/flex-box';
 
 const manager = new NoticeBubbleManager();
 
-let notice = null;
+let notice: any = null;
 
 const Demo = () => {
   const tryAgain = async () => {
