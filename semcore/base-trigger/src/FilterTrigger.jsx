@@ -170,7 +170,7 @@ class TriggerButton extends Component {
       <SFilterTrigger
         render={BaseTrigger}
         tag='button'
-        role='combobox'
+        use:role='combobox'
         type='button'
         w='100%'
         empty={empty}
