@@ -9,6 +9,7 @@ SView {
   overflow: hidden;
   box-sizing: border-box;
   color: var(--intergalactic-text-primary-invert, #ffffff);
+  gap: var(--intergalactic-spacing-2x, 8px);
 
   &[type='info'] {
     background: var(--intergalactic-bg-primary-invert, #191b23);
@@ -42,7 +43,7 @@ SDismiss {
   border: 0;
   background: transparent;
 }
-SDismiss[use][use] {
+SDismiss[use] {
   /* height: auto; */
   padding: 0 1px;
 }

@@ -11,7 +11,7 @@ const Demo = () => {
       icon: <CheckM color='--intergalactic-icon-primary-success' />,
       children: 'Keyword was successfully moved to Keyword Analyzer!',
       initialAnimation: true,
-      duration: 5000,
+      // duration: 5000,
     });
   };
 

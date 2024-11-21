@@ -206,7 +206,7 @@ class ViewInfo extends Component {
         role={type === 'warning' ? 'alert' : this.props.role}
       >
         <Hint>
-          <Hint.Trigger>
+          <Hint.Trigger display={'contents'}>
             <SDismiss
               // biome-ignore lint/a11y/useValidAriaValues:
               aria-haspopup={undefined}
