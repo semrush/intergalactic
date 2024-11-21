@@ -1,8 +1,6 @@
 name: publish-storybook
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [test-storybook]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.actor == 'semrush-ci-whale' }}
   cancel-in-progress: true
@@ -23,8 +21,8 @@ jobs:
           git_commit_gpgsign: true
           git_committer_name: semrush-ci-whale
           git_committer_email: semrush-ci-whale@users.noreply.github.com
-      - name: Update storybook-rc-build branch
+      - name: Update storybook/build-rc branch
         run: |
-          git checkout -b storybook-rc-build
-          git push --force --set-upstream origin storybook-rc-build
-          git push origin storybook-rc-build --force
+          git checkout -b storybook/build-rc
+          git push --force --set-upstream origin storybook/build-rc
+          git push origin storybook/build-rc --force
