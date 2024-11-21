@@ -1,6 +1,6 @@
 import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import Checkbox from 'intergalactic/checkbox';
+import { Flex } from '@semcore/flex-box';
+import Checkbox from '@semcore/checkbox';
 
 const Demo = () => {
   const [checked, setChecked] = React.useState([false, false, false]);

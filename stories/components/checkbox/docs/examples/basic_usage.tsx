@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from 'intergalactic/checkbox';
+import Checkbox from '@semcore/checkbox';
 
 const fieldsetStyle = { border: 'none' };
 const ulStyle = {};
