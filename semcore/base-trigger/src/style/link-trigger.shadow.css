@@ -18,7 +18,8 @@ SLinkTrigger {
   color: var(--intergalactic-text-link, #006dca);
   background: none;
   transition: color 0.15s ease-in-out;
-
+  border-image-width: none;
+  
   &[active],
   &:hover,
   &:active {

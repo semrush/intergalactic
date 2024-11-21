@@ -10,7 +10,13 @@ const Demo = () => (
       Device:
     </Text>
     <Select tag={LinkTrigger} options={devices} id='device-link-select' />
-    <Select tag={LinkTrigger} options={periods} aria-label='Period' placeholder='Select period' ml={4} />
+    <Select
+      tag={LinkTrigger}
+      options={periods}
+      aria-label='Period'
+      placeholder='Select period'
+      ml={4}
+    />
   </Flex>
 );
 
