@@ -3,6 +3,7 @@ import { FilterTrigger } from '@semcore/base-trigger';
 import Select from '@semcore/select';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import Ellipsis from '@semcore/ellipsis';
 
 const Demo = () => {
   const [shape, setShape] = React.useState('');
@@ -35,9 +36,11 @@ const Demo = () => {
         aria-label='Language'
       />
       <Select onChange={setShape}>
-        <Select.Trigger tag={FilterTrigger} placeholder='Shape' aria-label='Shape'>
-          <span aria-hidden>Shape: </span>
-          {shape}
+        <Select.Trigger tag={FilterTrigger} placeholder='Shape' aria-label='Shape' wMax={146}>
+          <FilterTrigger.Text tag={Ellipsis}>
+            <span aria-hidden>Shape: </span>
+            {shape}
+          </FilterTrigger.Text>
         </Select.Trigger>
         <Select.Menu>
           {shapes.map((option, idx) => (
