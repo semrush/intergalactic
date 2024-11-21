@@ -10,6 +10,8 @@ class NoticeBubbleManager {
   emitter = null;
   counter = 0;
 
+  replaceTimer = 0;
+
   constructor() {
     this.emitter = new EventEmitter();
   }
@@ -66,6 +68,22 @@ class NoticeBubbleManager {
       return true;
     }
     return false;
+  }
+
+  replaceLast(props) {
+    if (this.replaceTimer) {
+      clearTimeout(this.replaceTimer);
+    }
+
+    const item = this.items[this.items.length - 1];
+
+    if (item) {
+      this.remove(this.counter - 1);
+    }
+
+    this.replaceTimer = setTimeout(() => {
+      this.add(props);
+    }, 300);
   }
 
   remove(uid) {

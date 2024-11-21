@@ -1,7 +1,7 @@
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from 'intergalactic/notice-bubble';
-import Button from 'intergalactic/button';
-import ReloadM from 'intergalactic/icon/Reload/m';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import Button from '@semcore/button';
+import Link from '@semcore/link';
 
 const manager = new NoticeBubbleManager();
 
@@ -9,12 +9,12 @@ const Demo = () => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     const { focus } = manager.add({
-      children: 'Data for 5 new profiles is ready. Please reload the page to view it.',
-      action: (
-        <Button theme='invert' addonLeft={ReloadM}>
-          Reload the page
-        </Button>
+      children: (
+        <>
+          Link was moved to <Link href='#'>Cats from outer space group</Link>
+        </>
       ),
+      action: <Button theme='invert'>Undo</Button>,
       initialAnimation: true,
       duration: 0,
       onClose: () => {
@@ -31,7 +31,7 @@ const Demo = () => {
   return (
     <>
       <Button onClick={handleClick} ref={openButtonRef}>
-        Show notice with reload action
+        Show notice with undo action
       </Button>
       <NoticeBubbleContainer manager={manager} />
     </>
