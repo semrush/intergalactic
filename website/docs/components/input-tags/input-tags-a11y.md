@@ -18,11 +18,21 @@ Table: Keyboard support
 
 Find detailed information about the keyboard support for input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
+### Roles and attributes
+
+The following table describes roles and attributes the component already has.
+
+Table: Roles and attributes
+
+| Element            | Attribute       | Usage                              |
+| ------------------ | --------------- | ---------------------------------- |
+| `InputTags` > `ul` | `aria-label`    | Defines an accessible name for the list of tags. Automatically populated from the accessible name of `InputTags.Value`. |
+
 ## Considerations for developers
 
-- Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique within the page, only one label can be associated with each form element. [Refer to our examples](/components/input-tags/input-tags-code).
+- Label `InputTags.Value` using either `<label>`, `aria-labelledby` or `aria-label`. Remember that, when using `<label>`, only one label can be associated with each form element. [Refer to our examples](/components/input-tags/input-tags-code).
 - Indicate optional fields clearly by adding the word "optional" beside the input label.
-- Inputs with the `invalid` state should be associated with their error message using `aria-describedby`.
+- Inputs in `invalid` state should be associated with their error message using `aria-describedby`.
 
 ## Resources
 
