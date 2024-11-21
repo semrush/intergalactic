@@ -50,7 +50,8 @@ const Demo = () => {
 
   const handleInputChange = (value: string) => {
     setValueTag(value);
-    if (value && isEmailValid(value)) {
+
+    if (!value || isEmailValid(value)) {
       clearErrors();
     }
   };
