@@ -61,20 +61,6 @@ const Demo = () => {
           ))}
         </Select.Menu>
       </Select>
-      <Select onChange={setMaterial} multiselect>
-        <Select.Trigger tag={FilterTrigger} placeholder='Material' aria-label='Material'>
-          <FilterTrigger.Text>Material: </FilterTrigger.Text>
-          {material.length > 0 && <FilterTrigger.Counter count={material.length} />}
-        </Select.Trigger>
-        <Select.Menu>
-          {materials.map((option, idx) => (
-            <Select.Option value={option} key={idx}>
-              <Select.Option.Checkbox />
-              {option}
-            </Select.Option>
-          ))}
-        </Select.Menu>
-      </Select>
     </Flex>
   );
 };
