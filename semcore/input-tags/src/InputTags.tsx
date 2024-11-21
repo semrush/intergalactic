@@ -315,7 +315,7 @@ export default createComponent(InputTags, {
     {
       Text: InputTagContainerTag,
       Close: TagContainer.Close,
-      Addon: TagContainer.Addon,
+      Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
     },
   ],

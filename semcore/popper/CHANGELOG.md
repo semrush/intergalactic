@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.44.2] - 2024-11-19
+
+### Fixed
+
+- Call `onKeyboardFocus` for poppers inside poppers.
+
 ## [5.44.1] - 2024-11-08
 
 ### Changed

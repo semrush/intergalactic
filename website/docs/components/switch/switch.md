@@ -8,8 +8,8 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 <script lang="tsx">
 import React from 'react';
-import Switch from 'intergalactic/switch';
-import CheckM from 'intergalactic/icon/Check/m';
+import Switch from '@semcore/ui/switch';
+import CheckM from '@semcore/ui/icon/Check/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(

@@ -401,4 +401,16 @@ describe('InputNumber', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+
+  test('a11y min/max', async () => {
+    const { container } = render(
+      <InputNumber>
+        <InputNumber.Value aria-label='input-number' value='23' min={1} max={200} />
+        <InputNumber.Controls showControls />
+      </InputNumber>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 });

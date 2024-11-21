@@ -8,10 +8,10 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 
 <script lang="tsx">
 import React from 'react';
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import CheckM from 'intergalactic/icon/Check/m';
+import CheckM from '@semcore/ui/icon/Check/m';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
@@ -82,9 +82,11 @@ const Preview = (preview) => {
     <InputTags size={size} state={state}>
       {tagText.length ? (
         <InputTags.Tag tabIndex={0} editable={editableTag}>
-          {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
-          {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
-          <InputTags.Tag.Text>{tagText}</InputTags.Tag.Text>
+          <InputTags.Tag.Text>
+            {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
+            {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
+            {tagText}
+          </InputTags.Tag.Text>
           {closeTag && <InputTags.Tag.Close />}
         </InputTags.Tag>
       ) : null}

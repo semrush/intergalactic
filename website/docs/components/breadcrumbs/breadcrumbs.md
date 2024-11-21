@@ -9,7 +9,7 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 <script lang="tsx">
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Breadcrumbs from 'intergalactic/breadcrumbs';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
 
 const App = PlaygroundGeneration(() => {
   return (

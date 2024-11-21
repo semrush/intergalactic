@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Tooltip', () => {
   test('Opens on mouse hover', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/__stories__/docs-examples/basic_usage.tsx';
+    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -25,7 +25,7 @@ test.describe('Tooltip', () => {
   });
 
   test('Opens on keyboard focus', async ({ page }) => {
-    const standPath = 'stories/components/tooltip/__stories__/docs-examples/basic_usage.tsx';
+    const standPath = 'stories/components/tooltip/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -38,7 +38,7 @@ test.describe('Tooltip', () => {
   });
 
   test.skip('Singleton - select expands and visible', async ({ page, browserName }) => {
-    const standPath = 'stories/components/tooltip/__stories__/docs-examples/singleton.tsx';
+    const standPath = 'stories/components/tooltip/docs/examples/singleton.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

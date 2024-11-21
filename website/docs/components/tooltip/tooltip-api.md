@@ -13,7 +13,7 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ## Tooltip
 
 ```jsx
-import Tooltip from 'intergalactic/tooltip';
+import Tooltip from '@semcore/ui/tooltip';
 <Tooltip />;
 ```
 
@@ -22,7 +22,7 @@ import Tooltip from 'intergalactic/tooltip';
 ## Hint
 
 ```jsx
-import { Hint } from 'intergalactic/tooltip';
+import { Hint } from '@semcore/ui/tooltip';
 <Hint />;
 ```
 
@@ -31,7 +31,7 @@ import { Hint } from 'intergalactic/tooltip';
 ## DescriptionTooltip
 
 ```jsx
-import { DescriptionTooltip } from 'intergalactic/tooltip';
+import { DescriptionTooltip } from '@semcore/ui/tooltip';
 <DescriptionTooltip />;
 ```
 

@@ -3,8 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Dropdown-menu', () => {
   test('Should render white shadows in list', async ({ page }) => {
-    const standPath =
-      'stories/components/dropdown-menu/__stories__/docs-examples/the_second_method.tsx';
+    const standPath = 'stories/components/dropdown-menu/docs/examples/the_second_method.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

@@ -8,7 +8,7 @@ tabs: Design('global-errors'), A11y('global-errors-a11y'), API('global-errors-ap
 The component that can be used to collect any global errors display on the page.
 
 ```jsx
-import Error from 'intergalactic/errors';
+import Error from '@semcore/ui/errors';
 <Error />;
 ```
 
@@ -19,7 +19,7 @@ import Error from 'intergalactic/errors';
 Error name. Extends for `<Box/>`.
 
 ```jsx
-import Error from 'intergalactic/errors';
+import Error from '@semcore/ui/errors';
 <Error.Title />;
 ```
 
@@ -28,7 +28,7 @@ import Error from 'intergalactic/errors';
 Error description. Extends for `<Box/>`.
 
 ```jsx
-import Error from 'intergalactic/errors';
+import Error from '@semcore/ui/errors';
 <Error.Description />;
 ```
 
@@ -37,7 +37,7 @@ import Error from 'intergalactic/errors';
 Container for controls. Extends for `<Box/>`.
 
 ```jsx
-import Error from 'intergalactic/errors';
+import Error from '@semcore/ui/errors';
 <Error.Controls />;
 ```
 
@@ -46,7 +46,7 @@ import Error from 'intergalactic/errors';
 Placeholder for the 403 error. For some reason the page is restricted for the user.
 
 ```jsx
-import { AccessDenied } from 'intergalactic/errors';
+import { AccessDenied } from '@semcore/ui/errors';
 <AccessDenied />;
 ```
 
@@ -57,7 +57,7 @@ import { AccessDenied } from 'intergalactic/errors';
 The placeholder for the global state for the period of technical works.
 
 ```jsx
-import { Maintenance } from 'intergalactic/errors';
+import { Maintenance } from '@semcore/ui/errors';
 <Maintenance />;
 ```
 
@@ -68,7 +68,7 @@ import { Maintenance } from 'intergalactic/errors';
 The placeholder for 500 error, caused by some technical problems on the page. There are two options to display: when we are aware of the error and warn the user; when we don't know about the error and recommend the user to refresh the page or contact us.
 
 ```jsx
-import { PageError } from 'intergalactic/errors';
+import { PageError } from '@semcore/ui/errors';
 <PageError />;
 ```
 
@@ -79,7 +79,7 @@ import { PageError } from 'intergalactic/errors';
 Placeholder for the 404 error, when the page isn’t found.
 
 ```jsx
-import { PageNotFound } from 'intergalactic/errors';
+import { PageNotFound } from '@semcore/ui/errors';
 <PageNotFound />;
 ```
 
@@ -90,7 +90,7 @@ import { PageNotFound } from 'intergalactic/errors';
 The placeholder for the 404 error, but for the project page.
 
 ```jsx
-import { ProjectNotFound } from 'intergalactic/errors';
+import { ProjectNotFound } from '@semcore/ui/errors';
 <ProjectNotFound />;
 ```
 

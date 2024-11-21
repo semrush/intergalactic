@@ -1,3 +1,41 @@
+## [15.117.0] - 2024-11-18
+
+### @semcore/date-picker
+
+- **Changed** Aria-label for date presets listbox.
+- **Added** Translations for aria-label for date presets listbox.
+
+### @semcore/ellipsis
+
+- **Fixed** Custom `visible` and `onVisibleChange` properties to Ellipsis.
+
+### @semcore/feature-popover
+
+- **Added** Possibility to set `aria-labelledby` to the `Popper`.
+
+### @semcore/input-number
+
+- **Removed** Not working `aria-valuemin` and `aria-minmax`, because of type `text` for input in InputNumber.
+
+### @semcore/input-tags
+
+- **Changed** `Addon` component to the Addon from `TagContainer.Tag`. IMPORTANT - you should use Addon in `InputTags.Tag.Text` for correct rendering.
+
+### @semcore/pagination
+
+- **Added** `Intl.NumberFormat` for total pages.
+- **Change** `Input` to `NumberInput` for `Pagination.PageInput` component.
+- **Fixed** Formatted value displaying - correct thousands' separator depending on locale.
+
+### @semcore/tag
+
+- **Fixed** Display of tags with TagContainer and `Addon` / `Circle` in the `InputTags` component.
+- **Fixed** Display of tags with TagContainer and addons.
+
+### @semcore/tooltip
+
+- **Added** `max-content` width for Tooltip by default.
+
 ## [15.116.0] - 2024-11-08
 
 ### @semcore/color-picker

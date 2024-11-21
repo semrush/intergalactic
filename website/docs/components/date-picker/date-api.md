@@ -9,7 +9,7 @@ tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-c
 Widget for selecting the date/month.
 
 ```jsx
-import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
+import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <DatePicker />;
 <MonthPicker />;
 ```
@@ -21,7 +21,7 @@ import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 Widget for selecting the range of dates/months.
 
 ```jsx
-import { DateRangePicker, MonthRangePicker } from 'intergalactic/date-picker';
+import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker />;
 <MonthRangePicker />;
 ```
@@ -33,7 +33,7 @@ import { DateRangePicker, MonthRangePicker } from 'intergalactic/date-picker';
 Trigger input, exists by default. `DateRangePicker` has the same interface.
 
 ```jsx
-import { DatePicker } from 'intergalactic/date-picker';
+import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
@@ -44,7 +44,7 @@ import { DatePicker } from 'intergalactic/date-picker';
 Component for rendering the configurable periods.
 
 ```jsx
-import { DateRangePicker } from 'intergalactic/date-picker';
+import { DateRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker.Period />;
 ```
 
@@ -55,7 +55,7 @@ import { DateRangePicker } from 'intergalactic/date-picker';
 Calendar component 📅
 
 ```jsx
-import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
+import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <DatePicker.Calendar />;
 <MonthPicker.Calendar />;
 ```
@@ -67,7 +67,7 @@ import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
 The unit inside the calendar.
 
 ```jsx
-import { DatePicker, MonthPicker } from 'intergalactic/date-picker';
+import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <DatePicker.Calendar.Unit />;
 <MonthPicker.Calendar.Unit />;
 ```
