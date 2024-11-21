@@ -306,15 +306,18 @@ importers:
       '@semcore/link':
         specifier: 5.41.0
         version: link:../link
-      '@semcore/modal':
-        specifier: 4.49.1
-        version: link:../modal
+      '@semcore/select':
+        specifier: 4.48.2
+        version: link:../select
       '@semcore/tooltip':
         specifier: 6.46.0
         version: link:../tooltip
       '@semcore/typography':
         specifier: 5.47.0
         version: link:../typography
+      '@semcore/utils':
+        specifier: 4.43.0
+        version: link:../utils
       react:
         specifier: 16.8 - 18
         version: 18.2.0
