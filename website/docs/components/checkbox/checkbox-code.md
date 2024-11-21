@@ -10,7 +10,7 @@ You can wrap checkbox controls into group using `<fieldset>` and adding `<legend
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/checkbox/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ When one or more options are selected from the list, the parent checkbox gets an
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/partial_selection.tsx';
+  export Demo from 'stories/components/checkbox/docs/examples/partial_selection.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ You can place other components next to the `Checkbox` or inside the `Checkbox.Te
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/checkbox_with_other_components.tsx';
+  export Demo from 'stories/components/checkbox/docs/examples/checkbox_with_other_components.tsx';
 </script>
 
 :::
@@ -52,7 +52,7 @@ For more control over the input, you can pass props to `Checkbox.Value.Control`.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional_props_for_input.tsx';
+  export Demo from 'stories/components/checkbox/docs/examples/additional_props_for_input.tsx';
 </script>
 
 :::

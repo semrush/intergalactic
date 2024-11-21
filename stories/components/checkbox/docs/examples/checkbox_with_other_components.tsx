@@ -1,12 +1,12 @@
 import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import Checkbox from 'intergalactic/checkbox';
-import { DescriptionTooltip } from 'intergalactic/tooltip';
-import InfoM from 'intergalactic/icon/Info/m';
-import Link from 'intergalactic/link';
-import { ButtonLink } from 'intergalactic/button';
+import { Flex } from '@semcore/flex-box';
+import Checkbox from '@semcore/checkbox';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import InfoM from '@semcore/icon/Info/m';
+import Link from '@semcore/link';
+import { ButtonLink } from '@semcore/button';
 
-function noop(e) {
+function noop(e: React.SyntheticEvent) {
   e.preventDefault();
 }
 
