@@ -1,6 +1,5 @@
 import React from 'react';
 import InputTags from '@semcore/input-tags';
-import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
@@ -42,18 +41,12 @@ const Demo = () => {
     );
   };
 
-  const handleSelect = (value: string) => {
-    changeState([...tags, value], '');
-  };
-
   return (
     <Flex direction='column'>
       <Text tag='label' size={300} htmlFor='add-email'>
         Participants
       </Text>
-      <Select interaction='focus' onChange={handleSelect}>
-        <Select.Trigger
-          tag={InputTags}
+      <InputTags
           mt={2}
           size='l'
           onAppend={handleAppendTags}
@@ -75,13 +68,7 @@ const Demo = () => {
             value={value}
             onChange={handleChange}
           />
-        </Select.Trigger>
-        {value && (
-          <Select.Menu>
-            <Select.Option value={value}>{value}</Select.Option>
-          </Select.Menu>
-        )}
-      </Select>
+        </InputTags>
     </Flex>
   );
 };
