@@ -21,7 +21,7 @@ Composition, styles, and margins of the message:
 ![](static/ge_margins.png)
 
 ::: tip
-Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
+State description should be brief. Two or three small sentences usually are enough.
 :::
 
 ### Margins
@@ -31,7 +31,7 @@ Be brief. Don't write too long message in the state description. Two or three sm
 
 ![](static/ge_margins-2.png)
 
-### Positioning on the page
+### Positioning on page
 
 The message is centered horizontally and vertically. Give a container with an error message a relative height – `height: 70vh`.
 
@@ -52,7 +52,7 @@ For screens less than 768px:
 
 ![](static/ge_not-found.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A102726).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A102726).
 
 **Title**
 
@@ -70,7 +70,7 @@ Go to homepage (if not logged in, it leads you to the main Semrush; if logged in
 
 ![](static/ge_project-not-found.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A105405).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A105405).
 
 **Title**
 
@@ -94,11 +94,11 @@ If you have any other problems with access to the project, please contact our [S
 
 ## Something went wrong
 
-### When you don't know what the problem is
+### Unexpected problem
 
 ![](static/ge_smthng.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A102761).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A102761).
 
 **Title**
 
@@ -112,11 +112,11 @@ We are aware of the issue and are working to fix it. Please try again later or c
 
 Reload page (refreshes the page).
 
-### When you know, what the problem is
+### Known problem
 
 ![](static/ge_smthng-we-know.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A105950).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A105950).
 
 **Title**
 
@@ -136,7 +136,7 @@ Try again (refreshes the page).
 
 ![](static/ge_under-maintenance-2.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A107925).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A107925).
 
 **Title**
 
@@ -154,7 +154,7 @@ Go to homepage (if not logged in, it leads you to the main Semrush; if logged in
 
 ![](static/ge_access-login.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A115802).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A115802).
 
 **Title**
 
@@ -173,7 +173,7 @@ It seems that you were lost in space. Please log in or sign up to view the page.
 
 ![](static/ge_access-denied.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A118562).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A118562).
 
 **Title**
 
@@ -192,7 +192,7 @@ Go to homepage (if not logged in, it leads you to the main Semrush; if logged in
 
 ![](static/ge_connection-was-lost.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A110472).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A110472).
 
 **Title**
 
@@ -213,7 +213,7 @@ Reconnect and reload the page.
 
 ![](static/ge_connection-timed-out.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A113086).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A113086).
 
 **Title**
 
@@ -232,7 +232,7 @@ The initial connection between Cloudflare’s network and the origin web server 
 
 ![](static/ge_blocked-request.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2842%3A114910).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2842%3A114910).
 
 **Title**
 
@@ -256,7 +256,7 @@ This is the 400 error page. Try one of the following:
 
 ![](static/ge_confirmation-captcha.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A123668).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A123668).
 
 **Title**
 
@@ -277,7 +277,7 @@ Please complete the security check, and we’ll be out of your way.
 
 ![](static/ge_no-payment.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A128860).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A128860).
 
 **Title**
 
@@ -295,7 +295,7 @@ Go to Dashboard (leads user to the Dashboard)..
 
 ![](static/ge_dns-resolution.png)
 
-Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A94736).
+Illustration can be found in the [internal Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A94736).
 
 **Title**
 
@@ -366,8 +366,8 @@ The location is the same in both cases: the placeholder is centered vertically a
 ### Controls
 
 1. If the error is processed by Cloudflare, we don't add buttons.
-2. In other cases, it is recommended to add controls allowing the user:
-   2.1 to leave the page:" Go to homepage";
-   2.2 to take some actions to get rid of this state and load the page: "Reload page" / "Try again" / "Submit".
-3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something isn’t working.
+2. In other cases, it's recommended to add controls allowing the user:
+    - to leave the page, such as **Go to homepage**
+    - to handle the problem and reload the page, such as **Reload page**, **Try again**, or **Submit**
+3. The **Contact us** button is only used for unexpected errors, so that the user can contact support and report the problem.
 
