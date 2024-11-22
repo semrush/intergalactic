@@ -8,7 +8,7 @@ import Divider from '@semcore/ui/divider';
 import Info from '@semcore/ui/icon/Info/m';
 
 const Demo = () => (
-  <Flex gap={6}>
+  <Flex gap={6} direction='column' w='min-content'>
     <Flex direction='column'>
       <Flex gap={1} alignItems='center'>
         <Text size={200} noWrap>
@@ -50,7 +50,7 @@ const Demo = () => (
         </Text>
       </Flex>
     </Flex>
-    <Divider orientation='vertical' />
+    <Divider />
     <Flex direction='column'>
       <Flex gap={1} alignItems='center'>
         <Text size={200} noWrap>
@@ -97,7 +97,7 @@ const Demo = () => (
         />
       </Flex>
     </Flex>
-    <Divider orientation='vertical' />
+    <Divider />
     <Flex direction='column'>
       <Flex gap={1} alignItems='center'>
         <Text size={200} noWrap>

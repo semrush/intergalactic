@@ -3,7 +3,9 @@ title: Summary
 tabs: Design('summary'), Example('summary-code')
 ---
 
-## Default summary example
+## Basic example
+
+Display [Skeleton](/components/skeleton/skeleton) during initial data loading.
 
 ::: sandbox
 
@@ -13,19 +15,9 @@ tabs: Design('summary'), Example('summary-code')
 
 :::
 
-## Vertical layout with skeleton
+## Vertical layout with Mini chart
 
-In case your report layout demands it, you have the option to vertically arrange the metrics. To enhance user experience during the initial data retrieval, consider displaying [Skeleton](/components/skeleton/skeleton).
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/vertical-layout.tsx';
-</script>
-
-:::
-
-## Summary with minitrend
+You have the option to arrange metrics vertically.
 
 You can show [Mini charts](../../data-display/mini-chart/mini-chart.md) alongside metrics. Remember to set `aria-hidden`, or add a meaningful `aria-label`.
 
