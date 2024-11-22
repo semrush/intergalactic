@@ -8,7 +8,7 @@ tabs: Design('typography'), A11y('typography-a11y'), API('typography-api'), Exam
 It's a main component for text in our interfaces. By default, this is a `span` tag.
 
 ```jsx
-import { Text } from 'intergalactic/typography';
+import { Text } from '@semcore/ui/typography';
 <Text />;
 ```
 
@@ -19,7 +19,7 @@ import { Text } from 'intergalactic/typography';
 A list tagged with ʻul`. It's possible to set a custom marker for all items.
 
 ```jsx
-import { List } from 'intergalactic/typography';
+import { List } from '@semcore/ui/typography';
 <List />;
 ```
 
@@ -31,7 +31,7 @@ A list item tagged with `li`. It's possible to set a custom marker.
 Also, it is possible to customise content with `<List.Item.Content />`;
 
 ```jsx
-import { List } from 'intergalactic/typography';
+import { List } from '@semcore/ui/typography';
 <List.Item />;
 <List.Item.Content />;
 ```
@@ -44,7 +44,7 @@ import { List } from 'intergalactic/typography';
 Quotes from great people 🙊
 
 ```jsx
-import { Blockquote } from 'intergalactic/typography';
+import { Blockquote } from '@semcore/ui/typography';
 <Blockquote />;
 ```
 
@@ -57,7 +57,7 @@ The [ButtonLink](../../components/button/button-code#button-looking-like-link) c
 :::
 
 ```jsx
-import { Hint } from 'intergalactic/typography';
+import { Hint } from '@semcore/ui/typography';
 <Hint>
   <Hint.Addon />
   <Hint.Text />
@@ -75,7 +75,7 @@ Note that the component is in another package `intergalactic/format-text`.
 :::
 
 ```jsx
-import FormatText from 'intergalactic/format-text';
+import FormatText from '@semcore/ui/format-text';
 <FormatText />;
 ```
 

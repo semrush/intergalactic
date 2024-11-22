@@ -29,10 +29,10 @@ Table: Info icon with different title sizes
 
 Table: Informer states
 
-| State          | Appearance example          | Styles       |
-| -------------- | --------------------------- | ------------ |
-| Normal         | ![](static/info.png)        | `color: var(--intergalactic-icon-secondary-neutral)`                              |
-| Hover, active  | ![](static/info-active.png) | `color: var(--intergalactic-icon-secondary-neutral-hover-active)`, `cursor: pointer`. |
+| State          | Styles       |
+| -------------- | ------------ |
+| Normal         | `color: var(--intergalactic-icon-secondary-neutral)` ![](static/info.png)                                      |
+| Hover and active  | `color: var(--intergalactic-icon-secondary-neutral-hover-active)`, `cursor: pointer` ![](static/info-active.png) |
 
 ## Click zone
 

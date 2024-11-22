@@ -7,7 +7,7 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 ## Switch
 
 ```jsx
-import Switch from 'intergalactic/switch';
+import Switch from '@semcore/ui/switch';
 <Switch />;
 ```
 
@@ -16,7 +16,7 @@ import Switch from 'intergalactic/switch';
 ## Switch.Value
 
 ```jsx
-import Switch from 'intergalactic/switch';
+import Switch from '@semcore/ui/switch';
 <Switch.Value />;
 ```
 
@@ -25,7 +25,7 @@ import Switch from 'intergalactic/switch';
 ## Switch.Addon
 
 ```jsx
-import Switch from 'intergalactic/switch';
+import Switch from '@semcore/ui/switch';
 <Switch.Addon />;
 ```
 

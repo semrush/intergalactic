@@ -16,6 +16,7 @@
   "compare": "Comparar con",
   "fromDate": "Desde {date}",
   "toDate": "Hasta {date}",
+  "periods": "Predefinidos",
   "dateRange": "Rango de fechas",
   "dateRange1": "Primer rango de fechas",
   "dateRange2": "Segundo rango de fechas",

@@ -9,11 +9,11 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 <script lang="tsx">
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Link from 'intergalactic/link';
-import CheckM from 'intergalactic/icon/Check/m';
-import CheckL from 'intergalactic/icon/Check/l';
-import ArrowRightM from 'intergalactic/icon/ArrowRight/m';
-import ArrowRightL from 'intergalactic/icon/ArrowRight/l';
+import Link from '@semcore/ui/link';
+import CheckM from '@semcore/ui/icon/Check/m';
+import CheckL from '@semcore/ui/icon/Check/l';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+import ArrowRightL from '@semcore/ui/icon/ArrowRight/l';
 
 const SIZE = [
   { value: '100', name: '100 = 12px' },
@@ -105,7 +105,7 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It is a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
+**Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It's a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
 
 ## Appearance
 
@@ -113,7 +113,7 @@ const App = PlaygroundGeneration(Preview);
 
 ![](static/default-link.png)
 
-**Custom link:** A link with customized functionality and visual appearance. When creating custom links, follow the basic rules of default links. Avoid excessive use of custom links in your interface. Color for hover and active states, and color for icon is calculated with CSS filter, so you do not need to set them by yourself.
+**Custom link:** A link with customized functionality and visual appearance. When creating custom links, follow the basic rules of default links. Avoid excessive use of custom links in your interface. Color for hover and active states, and color for icon is calculated with CSS filter, so you don't need to set them by yourself.
 
 ![](static/custom-link.png)
 
@@ -156,7 +156,7 @@ Hided this section because it's for the dark theme.
 | visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
 | visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
 
-## Links on a dark and colored background
+## Links on dark and colored background
 
 Default links can be used on a colored background within a [Notice](/components/notice/notice) component.
 
@@ -165,14 +165,14 @@ Default links can be used on a colored background within a [Notice](/components/
 ## Link text and target zone
 
 ::: tip
-_Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
+_Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that aren't contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
 
 _Links shouldn't be too large on mobile. Very large links that take up much of the viewport can be accidentally activated, such as when a user touches the screen to scroll up or down._
 
 [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
 :::
 
-When clicking on a link that leads to another page or opens a modal window, the link text should clearly indicate the type of page or modal window it will be. Use an infinitive form ("What should be done?") for the link text.
+For a link that leads to another page or opens a modal dialog, the link text should clearly indicate the type of page or modal window it will be. Use an infinitive form ("What should be done?") for the link text.
 
 ![](static/name-example-1.png)
 
@@ -186,13 +186,13 @@ Always put quotation marks inside the link.
 
 ![](static/name-example-4.png)
 
-If a sentence ends with an email, URL, or domain that is a link, don’t include a period at the end of the sentence as users often copy the address and may accidentally include the period.
+If a sentence ends with an email, URL, or domain link, omit the period in the end of the sentence. Users often select and copy addresses, and may accidentally include the period.
 
 ![](static/name-example-5.png)
 
 Avoid putting punctuation marks in link text, except when the entire sentence is a link.
 
-In lists, it is recommended to make the entire line a link to reduce visual clutter and improve click ability.
+In lists, it's recommended to make the entire line a link to reduce visual clutter and improve click ability.
 
 ![](static/name-example-6.png)
 
@@ -202,7 +202,7 @@ If a link spans two lines, ensure that the cursor remains consistent throughout 
 
 ## Margin between links
 
-For links placed in one line, maintain a margin between them that is a multiple of 4px:
+For links placed in one line, maintain a margin between them that's a multiple of 4px:
 
 - 20px for sufficient space
 - 12px for limited space

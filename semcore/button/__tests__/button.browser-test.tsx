@@ -2,8 +2,44 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Button', () => {
+  test('Basic', async ({ page }) => {
+    const standPath = 'stories/components/button/advanced/examples/Basic.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Buttons with Addons and text', async ({ page }) => {
+    const standPath = 'stories/components/button/docs/examples/addons.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Buttons Sizes M/L', async ({ page }) => {
+    const standPath = 'stories/components/button/advanced/examples/ButtonSizes.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
+  test('Buttons Icon Only', async ({ page }) => {
+    const standPath = 'stories/components/button/docs/examples/button_with_icon.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    await expect(page).toHaveScreenshot();
+  });
+
   test('Should support hover with only Addon', async ({ page }) => {
-    const standPath = 'website/docs/components/button/examples/button_with_icon.tsx';
+    const standPath = 'stories/components/button/docs/examples/button_with_icon.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -16,7 +52,7 @@ test.describe('Button', () => {
   });
 
   test('Should support hover with only addon prop', async ({ page }) => {
-    const standPath = 'website/docs/components/button/examples/button_accessibility.tsx';
+    const standPath = 'stories/components/button/docs/examples/button_accessibility.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

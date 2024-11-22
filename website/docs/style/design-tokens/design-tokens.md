@@ -31,10 +31,10 @@ The stylelint plugin help developers avoid mistakes in design token names. It's 
 // .stylelintrc.json
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["intergalactic/stylelint-plugin"],
+  "plugins": ["@semcore/stylelint-plugin"],
   "rules": {
-		"intergalactic/design-tokens": true
-	}
+    "intergalactic/design-tokens": true
+  }
 }
 ```
 
@@ -96,54 +96,34 @@ const App = DesignTokens;
 
 ## Themes
 
-If you are creating a product that differs in style from other products of Semrush, apply a custom theme for your branding.
+If you need to build a product that differs in style from our default theme, you can create a custom theme for it.
 
-### What is a theme?
+Theme is a set of tokens represented in CSS variables that has different from the default sets values. Values can be changed for base, semantic, or both sets. You can redefine them globally or only for a specific subtree of React app. Refer to [Usage in development](/style/design-tokens/design-tokens-usage-development).
 
-Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Refer to [Usage in development](/style/design-tokens/design-tokens-usage-development).
-
-## Creating your own theme
-
-**First of all, answer these questions for your case:**
-
-1. Do you want to use the components of the Intergalactic Design System and need a completely different look and feel for them?
-2. Is your product not a Semrush core product?
-
-If the answer to all the questions above is yes, then you definitely need a theme that is different from the default one.
+## Creating new theme
 
 ### Step one. Design new theme
 
 Creating a theme usually starts with design. In fact, this is the most time-consuming part.
 
-There are several ways (and, of course, there are more than the two that we offer next!). You can choose the one that suits you best based on your case.
+**We recommend you using the native Figma variables (tokens) functionality**. But if you need more functionality that Figma doesn't have at the moment, use [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files.
 
-Let's take a look at the two main theme creation situations: local and global.
+Refer to the following tutorials, for the detailed process for creating a new theme:
 
-#### **Local theme: you need to try on other tokens or a new theme for a component or part of the design system**
-
-In this case we recommend you using [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files, and it can help you save time trying new values for tokens of your new theme.
+- Semrush designers and developers can use two tutorials, [tutorial for Figma tokens](https://www.figma.com/design/1TV7YbEL3FaV0znCkQtsrC/Themes'-playground-%26-tutorial-%F0%9F%8E%93?node-id=13125-73031&node-type=canvas&t=qOTf0DSn0M8p63of-11) and [tutorial for Tokens Studio](https://www.figma.com/design/K1s6wF8NTH3uNHvjkn6hjc/Themes'-playground-%26-tutorial-%F0%9F%8E%93?m=auto&t=jHrLhhOMB32IMklB-6)
+- Other users can use the [tutorial for Tokens Studio](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens)
 
 ::: tip
-There, you can find the detailed process for creating a new theme for our design system explained: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), [public](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
-:::
+**In cases where different styles are needed for just one component or a part of the design system:**
 
-#### **Global theme: you need to develop a theme for the entire design system**
+- Designer can create a new theme as described earlier, and apply it only to the necessary component
+- Developer can use [ThemeProvider](/style/design-tokens/design-tokens-usage-development#themeprovider)
+  :::
 
-In this case, you need to take more steps.
+### Step two. Connect new theme to components in code
 
-1. Duplicate [library with tokens](/get-started-guide/work-figma/work-figma#core_libraries).
-2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playground: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), [public](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
-3. Test and try on the theme for all components of the library in the theme playground.
-4. Save the JSON of the theme, and either give it to the developers, or commit it yourself.
-5. Voila! You are awesome!
-
-### Step two. Connect the new theme to the components in code
-
-This is where the magic of converting the JSON file with tokens into a new theme for the design system components begins.
-
-We recommend you to check:
+For this step, you need to export your token sets with the new values and process them into CSS styles in the way that suits you best. We recommend referring to the following links:
 
 - [Usage in development](/style/design-tokens/design-tokens-usage-development);
 - [Example for custom component](/style/design-tokens/design-tokens-code);
 - [CSS Injection guide](/style/css-injection/css-injection).
-

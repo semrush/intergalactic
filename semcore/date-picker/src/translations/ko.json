@@ -16,6 +16,7 @@
   "compare": "비교 기간",
   "fromDate": "{date}부터",
   "toDate": "{date}까지",
+  "periods": "사전 설정",
   "dateRange": "날짜 범위",
   "dateRange1": "첫 번째 날짜 범위",
   "dateRange2": "두 번째 날짜 범위",

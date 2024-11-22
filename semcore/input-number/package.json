@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-number",
   "description": "Semrush InputNumber Component",
-  "version": "5.39.2",
+  "version": "5.39.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

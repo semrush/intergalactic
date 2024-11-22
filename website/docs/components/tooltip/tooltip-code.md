@@ -20,7 +20,7 @@ Use the appropriate component depending on your case. Refer to [Tooltip API](too
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/tooltip/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -32,7 +32,7 @@ This example shows how to ensure accessibility if you decide to nest focusable e
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/nested.tsx';
+  export Demo from 'stories/components/tooltip/docs/examples/nested.tsx';
 </script>
 
 :::
@@ -44,7 +44,7 @@ You can use a single tooltip for multiple reference elements. This allows you to
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/singleton.tsx';
+  export Demo from 'stories/components/tooltip/docs/examples/singleton.tsx';
 </script>
 
 :::
@@ -56,7 +56,7 @@ By default, when a tooltip is rendered on the edge of a relatively positioned bl
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/ignore_portal_stacking.tsx';
+  export Demo from 'stories/components/tooltip/docs/examples/ignore_portal_stacking.tsx';
 </script>
 
 :::
@@ -68,7 +68,7 @@ For some specific cases, you can color the Tooltip's arrow using the `arrowBgCol
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_bg_color.tsx';
+  export Demo from 'stories/components/tooltip/docs/examples/custom_bg_color.tsx';
 </script>
 
 :::

@@ -23,9 +23,9 @@ Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-t
 
 <script lang="tsx">
 import React from 'react';
-import 'intergalactic/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
-import Button from 'intergalactic/button';
-import { Box } from 'intergalactic/flex-box';
+import '@semcore/ui/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
+import Button from '@semcore/ui/button';
+import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import cx from 'classnames';
 import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';

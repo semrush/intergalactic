@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.3] - 2024-11-15
+
+### Changed
+
+- Aria-label for date presets listbox.
+
+### Added
+
+- Translations for aria-label for date presets listbox.
+
 ## [4.54.2] - 2024-11-08
 
 ### Changed

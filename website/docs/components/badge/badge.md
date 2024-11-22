@@ -9,7 +9,7 @@ tabs: Design('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code
 <script lang="tsx">
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Badge from 'intergalactic/badge';
+import Badge from '@semcore/ui/badge';
 
 const Preview = (preview) => {
   const { select, radio, text } = preview('Badge');

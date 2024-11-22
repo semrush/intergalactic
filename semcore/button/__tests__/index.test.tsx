@@ -111,17 +111,6 @@ describe('Button', () => {
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should support size props', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Button size='l'>Button</Button>
-        <Button size='m'>Button</Button>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('should support theme props', async ({ task }) => {
     const component = (
       <div style={{ background: '#eee' }}>

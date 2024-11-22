@@ -8,7 +8,7 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 <script lang="tsx">
 import React from 'react';
-import Checkbox from 'intergalactic/checkbox';
+import Checkbox from '@semcore/ui/checkbox';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
