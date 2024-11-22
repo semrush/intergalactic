@@ -1,3 +1,49 @@
+## [15.118.0] - 2024-11-22
+
+### @semcore/base-trigger
+
+- **Fixed** HTML element of `LinkTrigger` from `div` to `button` as part of a11y improvements. The change allows to use 'LinkTrigger' with `label` properly
+
+### @semcore/card
+
+- **Changed** Description for `innerHint` and `hintAfter` properties.
+
+### @semcore/checkbox
+
+- **Fixed** `aria-label` property moved from the root component to the `Input.Value` component.
+
+### @semcore/dropdown
+
+- **Fixed** `onMouseEnter` in Dropdown.Item was not bubbling the event.
+
+### @semcore/errors
+
+- **Removed** `role='alert'` from `<Error>` component.
+- **Removed** `aria-hidden` from `Error.Image`.
+- **Changed** Empty `alt=""` for `Error.Image`.
+- **Changed** Padding and colors in examples in documentation.
+
+### @semcore/feedback-form
+
+- **Added** `modalWidth` property for the FeedbackRating component.
+
+### @semcore/input-tags
+
+- **Changed** Moved `InputTags.Value` from `ul`.
+- **Changed** Added calculated accessible name from `InputTags.Value` as `aria-label` for `ul` group.
+
+### @semcore/mini-chart
+
+- **Fixed** Cropping in `SemiDonut` chart.
+
+### @semcore/popper
+
+- **Fixed** Call `onKeyboardFocus` for poppers inside poppers.
+
+### @semcore/utils
+
+- **Fixed** `findAllComponents` method. Now it correctly searches in descendants of merged components.
+
 ## [15.117.0] - 2024-11-18
 
 ### @semcore/date-picker
