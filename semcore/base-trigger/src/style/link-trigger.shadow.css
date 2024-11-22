@@ -20,6 +20,10 @@ SLinkTrigger {
   transition: color 0.15s ease-in-out;
   border: 0;
 
+  &:focus {
+    outline: none;
+  }
+
   &[active],
   &:hover,
   &:active {
