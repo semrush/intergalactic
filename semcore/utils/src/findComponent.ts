@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, MutableRefObject } from 'react';
 import { CHILDREN_COMPONENT, INHERITED_NAME } from './core/index';
 import getOriginChildren from './getOriginChildren';
 
@@ -36,8 +36,12 @@ export function isAdvanceMode(Children: any, name: string[], recursively?: boole
   return !!findComponent(children, name, recursively);
 }
 
-export function findAllComponents(Children: any, names: string[]): ReactElement[] {
-  const result: ReactElement[] = [];
+type IntergalacticComponent = ReactElement & {
+  ref?: MutableRefObject<HTMLElement>;
+};
+
+export function findAllComponents(Children: any, names: string[]): IntergalacticComponent[] {
+  const result: IntergalacticComponent[] = [];
 
   const findAllAndAdd = (Children: any) => {
     const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
@@ -45,6 +49,12 @@ export function findAllComponents(Children: any, names: string[]): ReactElement[
       if (React.isValidElement(child)) {
         if (child.type === React.Fragment) {
           findAllAndAdd(child.props.children);
+        } else if (
+          typeof child.type === 'function' &&
+          CHILDREN_COMPONENT in child.type &&
+          child.type[CHILDREN_COMPONENT]
+        ) {
+          findAllAndAdd(child.type);
         } else {
           // @ts-ignore
           const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
