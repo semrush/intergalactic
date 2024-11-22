@@ -34,7 +34,7 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
         }
       },
       onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (!value  && e.key === 'Escape') {
+        if (!value && e.key === 'Escape') {
           onClear();
         }
       },
