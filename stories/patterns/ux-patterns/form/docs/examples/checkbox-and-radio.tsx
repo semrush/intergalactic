@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Radio, { RadioGroup } from 'intergalactic/radio';
-import Checkbox from 'intergalactic/checkbox';
-import Select from 'intergalactic/select';
-import { ButtonTrigger } from 'intergalactic/base-trigger';
-import Button from 'intergalactic/button';
-import Tooltip from 'intergalactic/tooltip';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import Radio, { RadioGroup } from '@semcore/radio';
+import Checkbox from '@semcore/checkbox';
+import Select from '@semcore/select';
+import { ButtonTrigger } from '@semcore/base-trigger';
+import Button from '@semcore/button';
+import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
   const [selected, setSelected] = React.useState(false);

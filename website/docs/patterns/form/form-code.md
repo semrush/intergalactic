@@ -10,7 +10,7 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/default-log-in-form.tsx';
+  export Demo from 'stories/patterns/ux-patterns/form/docs/examples/default-log-in-form.tsx';
 </script>
 
 :::
@@ -20,7 +20,7 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/inputtags-and-select.tsx';
+  export Demo from 'stories/patterns/ux-patterns/form/docs/examples/inputtags-and-select.tsx';
 </script>
 
 :::
@@ -30,7 +30,7 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/datepicker-and-timepicker.tsx';
+  export Demo from 'stories/patterns/ux-patterns/form/docs/examples/datepicker-and-timepicker.tsx';
 </script>
 
 :::
@@ -40,7 +40,7 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/checkbox-and-radio.tsx';
+  export Demo from 'stories/patterns/ux-patterns/form/docs/examples/checkbox-and-radio.tsx';
 </script>
 
 :::
