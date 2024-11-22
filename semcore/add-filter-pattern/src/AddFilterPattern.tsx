@@ -37,9 +37,14 @@ type AddFilterPatternState = {
   filterData: FilterData;
 };
 
-// todo: fix types
-const getDefaultAddDropdownItems = (props: AddFilterPatternProps) => {
-  return (props.children as any)
+const getDefaultAddDropdownItems = (
+  props: AddFilterPatternProps,
+): AddFilterPatternDropdownOptions => {
+  const childrenArray: React.ReactNode[] = Array.isArray(props.children)
+    ? props.children
+    : [props.children];
+
+  return childrenArray
     .flat()
     .map(({ props }: any) => {
       const { alwaysVisible, name, displayName } = props;
@@ -51,7 +56,7 @@ const getDefaultAddDropdownItems = (props: AddFilterPatternProps) => {
 
       return { label, value };
     })
-    .filter((v?: AddFilterPatternDropdownOptions) => v);
+    .filter((v) => v);
 };
 
 class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilterPatternState> {
@@ -71,22 +76,14 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
     };
   }
 
+  setFilterValue(name: string, value: any) {
+    this.setState({
+      filterData: { ...this.state.filterData, [name]: value },
+    });
+  }
+
   getSelectProps(props: AddFilterPatternItemProps): AddFilterPatternSelectProps {
     const { name, displayName, alwaysVisible, ...rest } = props;
-    const hideField = () => {
-      if (alwaysVisible) {
-        return;
-      }
-      this.toggleFieldVisibility(name, false);
-    };
-
-    const onClear = () => {
-      this.setState({
-        filterData: { ...this.state.filterData, [name]: null },
-      });
-
-      hideField();
-    };
 
     const value = this.state.filterData[name];
 
@@ -94,7 +91,10 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       ...rest,
       value,
       name,
-      onClear,
+      onClear: () => {
+        this.setFilterValue(name, null);
+        this.hideFilter(name, alwaysVisible);
+      },
       onChange: (v: any) => {
         this.setState({
           filterData: { ...this.state.filterData, [name]: v },
@@ -107,39 +107,22 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
     const { name, displayName, alwaysVisible, ...rest } = props;
     const value = this.state.filterData[name];
 
-    const hideField = () => {
-      if (alwaysVisible) {
-        return;
-      }
-      this.toggleFieldVisibility(name, false);
-    };
-
-    const onClear = () => {
-      this.setState({
-        filterData: { ...this.state.filterData, [name]: '' },
-      });
-
-      hideField();
-    };
-
     let valueProps: AddFilterPatternSearchValueProps = {
       value,
       onChange: (v) => {
-        this.setState({
-          filterData: { ...this.state.filterData, [name]: v },
-        });
+        this.setFilterValue(name, v);
       },
     };
     if (!alwaysVisible) {
       valueProps = {
         onBlur: () => {
           if (!value) {
-            hideField();
+            this.hideFilter(name, alwaysVisible);
           }
         },
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Escape') {
-            hideField();
+            this.hideFilter(name, alwaysVisible);
           }
         },
         autoFocus: !alwaysVisible,
@@ -149,27 +132,17 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
 
     return {
       ...rest,
-      onClear,
+      onClear: () => {
+        this.setFilterValue(name, '');
+
+        this.hideFilter(name, alwaysVisible);
+      },
       valueProps,
     };
   }
 
   getDropdownProps(props: AddFilterPatternItemProps): AddFilterPatternDropdownProps {
     const { name, alwaysVisible, displayName, ...rest } = props;
-    const hideField = () => {
-      if (alwaysVisible) {
-        return;
-      }
-      this.toggleFieldVisibility(name, false);
-    };
-
-    const onClear = () => {
-      this.setState({
-        filterData: { ...this.state.filterData, [name]: null },
-      });
-
-      hideField();
-    };
 
     const value = this.state.filterData[name];
 
@@ -177,18 +150,23 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       ...rest,
       value,
       name,
-      onClear,
+      onClear: () => {
+        this.setFilterValue(name, null);
+        this.hideFilter(name, alwaysVisible);
+      },
       onChange: (v: any) => {
-        this.setState({
-          filterData: { ...this.state.filterData, [name]: v },
-        });
+        this.setFilterValue(name, v);
       },
     };
   }
 
   clearAll() {
+    const filterData: FilterData = {};
+    Object.entries(this.state.filterData).forEach(([key, value]: [string, any]) => {
+      filterData[key] = typeof value === 'string' ? '' : value;
+    });
     this.setState({
-      filterData: {},
+      filterData,
       visibleFilters: new Set(),
     });
   }
@@ -202,6 +180,13 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
     }
 
     this.setState({ visibleFilters });
+  }
+
+  hideFilter(name: string, alwaysVisible?: boolean) {
+    if (alwaysVisible) {
+      return;
+    }
+    this.toggleFieldVisibility(name, false);
   }
 
   getDropdownMenuProps() {

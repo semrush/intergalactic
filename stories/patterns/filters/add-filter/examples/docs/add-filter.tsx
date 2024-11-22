@@ -1,5 +1,5 @@
 import React from 'react';
-import AddFilterPattern from '../../src';
+import AddFilterPattern from '@semcore/add-filter-pattern';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
@@ -11,7 +11,6 @@ import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
-import { str } from 'storybook/internal/docs-tools';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
@@ -145,7 +144,7 @@ const defaultFilterData = {
   device: '',
   position: '',
 };
-export const AddFilterPatternBasicExample = () => {
+const AddFilterPatternExample = () => {
   const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
 
   const clearField = React.useCallback(
@@ -287,45 +286,7 @@ export const AddFilterPatternBasicExample = () => {
   );
 };
 
-type Filter = {
-  id: string;
-  name: string;
-  displayName: string;
-  options: string[];
-};
-
-const filters: Filter[] = [
-  {
-    id: 'cbf46bbe-4c1d-47a8-b3fe-11d55298d97d',
-    name: 'color',
-    displayName: 'Color',
-    options: ['Blue', 'Gray', 'Green', 'Orange', 'Pink', 'Red', 'Salad', 'Violet', 'Yellow'],
-  },
-  {
-    id: '254c8b3d-bd58-4019-ae45-0e0babfadd34',
-    name: 'device',
-    displayName: 'Device',
-    options: ['Desktop', 'Phone', 'Tablet'],
-  },
-  {
-    id: 'bdf21be3-b398-4e0c-bcbe-6afa7fcab43e',
-    name: 'language',
-    displayName: 'Language',
-    options: ['Chinese', 'English', 'French', 'German', 'Italian', 'Korean', 'Spanish', 'Turkish'],
-  },
-  {
-    id: 'e8409dcd-a3ad-405b-8840-4623e752cb92',
-    name: 'material',
-    displayName: 'Material',
-    options: ['Glass', 'Metal', 'Paper', 'Wood'],
-  },
-  {
-    id: '80b9d5ae-882f-4457-9beb-f6481cfe26c6',
-    name: 'shape',
-    displayName: 'Shape',
-    options: ['Circle', 'Rectangle', 'Star', 'Triangle'],
-  },
-];
+export default AddFilterPatternExample;
 
 const devices = ['Desktop', 'Phone', 'Tablet'];
 const sizes = ['Small', 'Medium', 'Large'];
