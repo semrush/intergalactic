@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.2] - 2024-11-21
+
+### Fixed
+
+- HTML element of `LinkTrigger` from `div` to `button` as part of a11y improvements. The change allows to use 'LinkTrigger' with `label` properly
+
 ## [4.48.1] - 2024-11-08
 
 ### Changed
