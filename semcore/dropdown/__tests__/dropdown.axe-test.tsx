@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Dropdown', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'website/docs/components/dropdown/examples/basic_usage.tsx';
+    const standPath = 'stories/components/dropdown/docs/examples/basic_usage.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
