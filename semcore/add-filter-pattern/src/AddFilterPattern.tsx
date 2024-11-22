@@ -121,7 +121,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
           }
         },
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (e.key === 'Escape') {
+          if (!value && e.key === 'Escape') {
             this.hideFilter(name, alwaysVisible);
           }
         },
@@ -280,7 +280,14 @@ function Clear({ filterData = {}, clearAll }: ClearButtonProps) {
 
   return (
     hasFilterData && (
-      <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
+      <Button
+        use='tertiary'
+        theme='muted'
+        addonLeft={CloseM}
+        ml='auto'
+        title='Clear filters'
+        onClick={clearAll}
+      >
         Clear filters
       </Button>
     )

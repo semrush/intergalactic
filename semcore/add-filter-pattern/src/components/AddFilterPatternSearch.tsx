@@ -9,7 +9,7 @@ class AddFilterPatternSearchRoot extends Component<AddFilterPatternItemProps> {
   static displayName = 'AddFilterPatternSearch';
 
   render() {
-    return <Root render={Flex} alignContent={'center'} __excludeProps={['onChange']} />;
+    return <Root render={Flex} __excludeProps={['onChange']} />;
   }
 }
 

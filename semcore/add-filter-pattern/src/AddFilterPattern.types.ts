@@ -63,7 +63,6 @@ declare const AddFilterPatternType: Intergalactic.Component<'div', AddFilterPatt
   Dropdown: typeof AddFilterPatternDropdownType;
   Search: typeof AddFilterPatternSearchType;
   Select: typeof AddFilterPatternSelectType;
-  // do we need to publish this???
   DropdownMenu: Intergalactic.Component<typeof DropdownMenu>;
   Clear: Intergalactic.Component<'button'>;
 };

@@ -57,7 +57,7 @@ const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear, onChange, p
           aria-label='Filter by fullname'
         />
         {valueProps.value && (
-          <AddFilterPattern.Search.Addon>
+          <AddFilterPattern.Search.Input.Addon>
             <Hint
               tag={ButtonLink}
               use='secondary'
@@ -65,7 +65,7 @@ const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear, onChange, p
               title='Clear'
               onClick={onClear}
             />
-          </AddFilterPattern.Search.Addon>
+          </AddFilterPattern.Search.Input.Addon>
         )}
       </AddFilterPattern.Search.Input>
 

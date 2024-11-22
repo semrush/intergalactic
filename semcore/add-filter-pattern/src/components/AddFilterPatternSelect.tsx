@@ -44,7 +44,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
         }
       },
       onKeyDown: (e: React.KeyboardEvent<HTMLImageElement>) => {
-        if (e.key === 'Escape') {
+        if (!value && e.key === 'Escape') {
           onClear();
         }
       },
