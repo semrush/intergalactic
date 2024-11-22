@@ -3,6 +3,8 @@ import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
@@ -60,39 +62,42 @@ const Demo = () => {
         value={tags}
         onChange={onChange}
       >
-        <Select.Trigger
-          tag={InputTags}
-          mt={2}
-          w={300}
-          size='l'
-          onRemove={onRemoveLastTag}
-          delimiters={[]}
-        >
-          {tags.map((tag, i) => (
-            <InputTags.Tag key={i} theme='primary'>
-              <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-              <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
-            </InputTags.Tag>
-          ))}
-          <InputTags.Value
-            ref={selectTriggerRef}
-            value={valueInput}
-            onChange={onChangeValue}
-            id='secondary-social-medias'
-            placeholder='Select social media'
-            onBlur={onBlurValue}
-          />
-        </Select.Trigger>
-        <Select.Menu>
-          {tagsFilter.map((tag, i) => (
-            <Select.Option value={tag} key={i}>
-              {tag}
-            </Select.Option>
-          ))}
-          {!tagsFilter.length && valueInput !== '' && (
-            <Select.OptionHint>Nothing found</Select.OptionHint>
-          )}
-        </Select.Menu>
+        {({ getTriggerProps }) => {
+          const { onBlur, ref, ...triggerProps } = getTriggerProps();
+          const triggerRef = ref ? forkRef(selectTriggerRef, ref) : selectTriggerRef;
+
+          return (
+            <>
+              <InputTags mt={2} w={300} size='l' onRemove={onRemoveLastTag} delimiters={[]}>
+                {tags.map((tag, i) => (
+                  <InputTags.Tag key={i} theme='primary'>
+                    <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+                    <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
+                  </InputTags.Tag>
+                ))}
+                <InputTags.Value
+                  {...triggerProps}
+                  ref={triggerRef}
+                  value={valueInput}
+                  onChange={onChangeValue}
+                  id='secondary-social-medias'
+                  placeholder='Select social media'
+                  onBlur={callAllEventHandlers(onBlurValue, onBlur)}
+                />
+              </InputTags>
+              <Select.Menu>
+                {tagsFilter.map((tag, i) => (
+                  <Select.Option value={tag} key={i}>
+                    {tag}
+                  </Select.Option>
+                ))}
+                {!tagsFilter.length && valueInput !== '' && (
+                  <Select.OptionHint>Nothing found</Select.OptionHint>
+                )}
+              </Select.Menu>
+            </>
+          );
+        }}
       </Select>
     </Flex>
   );

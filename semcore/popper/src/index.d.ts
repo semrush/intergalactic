@@ -121,7 +121,10 @@ export type PopperPopperProps = BoxProps &
 /** @deprecated */
 export interface IPopperContext extends PopperContext, UnknownProperties {}
 export type PopperContext = {
-  getTriggerProps: PropGetterFn;
+  getTriggerProps: () => {
+    ref?: React.MutableRefObject<any>;
+    onBlur?: (e: React.SyntheticEvent) => void;
+  };
   getPopperProps: PropGetterFn;
   popper: Instance;
   // Rename to setTriggerRef

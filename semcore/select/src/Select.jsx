@@ -139,6 +139,7 @@ class RootSelect extends AbstractDropdown {
         this.handleOpenKeyDown.bind(this),
         this.handleArrowKeyDown.bind(this),
       ),
+      role: 'combobox',
       'aria-controls': visible ? ariaControls : undefined,
       'aria-haspopup': isMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
@@ -311,7 +312,6 @@ function Trigger({
       render={Dropdown.Trigger}
       tag={Tag}
       placeholder={getI18nText('selectPlaceholder')}
-      role={'combobox'}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
     >
       {addonTextChildren(

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.5] - 2024-11-22
+
+### Changed
+
+- Moved property `role` from `Trigger` to `getTriggerProps` method.
+
 ## [4.48.4] - 2024-11-18
 
 ### Changed
