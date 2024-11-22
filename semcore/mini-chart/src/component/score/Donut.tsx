@@ -55,6 +55,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
     }
 
     const viewBox = isSemiDonut ? '0 0 24 12' : '0 0 24 24';
+    const strokeDashoffsetBase = -1 * (valueStrokeDasharray + (isSemiDonut ? offsetPoint : 0));
 
     return sstyled(styles)(
       <SDonutContainer render={Box} semi={isSemiDonut}>
@@ -69,7 +70,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
               strokeDasharray={
                 loading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
               }
-              strokeDashoffset={-1 * valueStrokeDasharray}
+              strokeDashoffset={strokeDashoffsetBase}
             />
             {!loading && (
               <>
@@ -87,7 +88,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
                     values={`0;${valueStrokeDasharray}`}
                   />
                 </circle>
-                {value !== 100 && (
+                {value !== 100 && !isSemiDonut && (
                   <circle
                     cx='12'
                     cy='12'
