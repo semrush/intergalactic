@@ -18,6 +18,9 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
+import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -79,6 +82,19 @@ class InputTags extends Component<IInputTagsProps> {
   inputRef = React.createRef<HTMLInputElement>();
   scrollContainerRef = React.createRef<HTMLElement>();
   tagsRefs: (HTMLElement | null)[] = [];
+
+  state = {
+    tagsContainerAriaLabel: '',
+  };
+
+  componentDidMount() {
+    const inputElement = this.inputRef.current;
+    const inputAccessibleName = getAccessibleName(inputElement);
+
+    this.setState({
+      tagsContainerAriaLabel: inputAccessibleName,
+    });
+  }
 
   moveFocusToInput = (event: React.FocusEvent) => {
     const inputRef = this.inputRef.current;
@@ -155,16 +171,6 @@ class InputTags extends Component<IInputTagsProps> {
     fire(this, 'onRemove', event);
   };
 
-  handleContainerFocus = (event: React.FocusEvent) => {
-    const { target } = event;
-    const { current: container } = this.scrollContainerRef;
-    if (!container || target !== container) return;
-    const hasTags = this.tagsRefs.some(Boolean);
-    if (hasTags) return;
-    if (event.relatedTarget === this.inputRef.current) return;
-    this.moveFocusToInput(event);
-  };
-
   getValueProps() {
     return {
       ref: this.inputRef,
@@ -195,17 +201,21 @@ class InputTags extends Component<IInputTagsProps> {
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
+    const TagsComponents = findAllComponents(Children, ['InputTags.Tag']);
+    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
+
     return sstyled(styles)(
       <SInputTags
         render={Input}
         tag={ScrollArea}
         onMouseDown={this.moveFocusToInput}
-        onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
+        tabIndex={null}
       >
-        <SListAriaWrapper>
-          <Children />
+        <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
+          {TagsComponents}
         </SListAriaWrapper>
+        {InputComponents}
       </SInputTags>,
     );
   }

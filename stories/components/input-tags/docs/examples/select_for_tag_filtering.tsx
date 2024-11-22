@@ -66,7 +66,6 @@ const Demo = () => {
           w={300}
           size='l'
           onRemove={onRemoveLastTag}
-          tabIndex={-1}
           delimiters={[]}
         >
           {tags.map((tag, i) => (
