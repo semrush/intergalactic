@@ -1,7 +1,7 @@
 import React from 'react';
-import Select from 'intergalactic/select';
-import { LinkTrigger } from 'intergalactic/base-trigger';
-import { Flex } from 'intergalactic/flex-box';
+import Select from '@semcore/select';
+import { LinkTrigger } from '@semcore/base-trigger';
+import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 const Demo = () => (
