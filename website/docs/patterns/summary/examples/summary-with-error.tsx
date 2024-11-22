@@ -1,135 +1,122 @@
 import React from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import { Hint } from 'intergalactic/tooltip';
-import WarningM from 'intergalactic/icon/Warning/m';
-import { AnimatedNumber } from 'intergalactic/counter/src';
-import 'intergalactic/utils/style/var.css';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import Warning from 'intergalactic/icon/Warning/m';
+import Link from '@semcore/ui/link';
+import { ButtonLink } from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import Info from '@semcore/ui/icon/Info/m';
 
-const Demo = () => {
-  React.useEffect(() => {
-    const container = document.getElementsByClassName('container');
-    if (!container) return;
-    function detectWrap(node) {
-      for (const container of node) {
-        for (const child of container.children) {
-          if (child.offsetTop > container.offsetTop) {
-            child.style.borderLeft = 'none';
-            child.style.borderRight = '1px solid var(--gray-200)';
-            child.style.marginRight = '24px';
-            child.style.paddingLeft = 0;
-          } else {
-            child.style.borderLeft = '1px solid var(--gray-200)';
-            child.style.borderRight = 'none';
-            child.style.paddingLeft = '24px';
-          }
-        }
-      }
-    }
-    window.addEventListener('DOMContentLoaded', (e) => {
-      detectWrap(container);
-    });
-    window.addEventListener('resize', (e) => {
-      detectWrap(container);
-    });
-
-    return () => {
-      window.removeEventListener('DOMContentLoaded', (e) => {
-        detectWrap(container);
-      });
-      window.removeEventListener('resize', (e) => {
-        detectWrap(container);
-      });
-    };
-  }, []);
-
-  return (
-    <Flex flexWrap className='container'>
-      <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Hint title='Keyword' wMax='100%'>
-          <Text size={200} tag='p' noWrap tabIndex={0}>
-            Keyword
-          </Text>
-        </Hint>
-        <Flex alignItems='baseline'>
-          <Text
-            size={500}
-            color='gray-800'
-            fontWeight='bold'
-            mr={2}
-            tag='a'
-            href='https://semrush.com'
-            target='_blank'
-          >
-            <AnimatedNumber value={145} formatValue={(x) => Math.round(x).toString()} delay={300} />
-          </Text>
-          <Text size={100} color='green-500' tag='p'>
-            +12
-          </Text>
-        </Flex>
-      </Box>
-      <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Hint title='Traffic' wMax='100%'>
-          <Text size={200} tag='p' noWrap tabIndex={0}>
-            Traffic
-          </Text>
-        </Hint>
-        <Flex mt={2} alignItems='center'>
-          <WarningM color='gray-300' />
-          <Text
-            size={100}
-            color='blue-500'
-            ml={2}
-            tag='a'
-            href='https://semrush.com'
-            target='_blank'
-          >
-            Reload
-          </Text>
-        </Flex>
-      </Box>
-      <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
-        <Hint title='Traffic cost' wMax='100%'>
-          <Text size={200} tag='p' noWrap tabIndex={0}>
-            Traffic cost
-          </Text>
-        </Hint>
-        <Flex mt={2} alignItems='center'>
-          <WarningM color='gray-300' />
-          <Text
-            size={100}
-            color='blue-500'
-            ml={2}
-            tag='a'
-            href='https://semrush.com'
-            target='_blank'
-          >
-            Reload
-          </Text>
-        </Flex>
-      </Box>
-      <Box w={160} mb={4}>
-        <Hint title='Branded traffic' wMax='100%'>
-          <Text size={200} tag='p' noWrap tabIndex={0}>
-            Branded traffic
-          </Text>
-        </Hint>
-        <Flex mt={2} alignItems='center'>
-          <WarningM color='gray-300' />
-          <Text
-            size={100}
-            color='blue-500'
-            ml={2}
-            tag='a'
-            href='https://semrush.com'
-            target='_blank'
-          >
-            Reload
-          </Text>
-        </Flex>
-      </Box>
+const Demo = () => (
+  <Flex gap={6}>
+    <Flex direction='column'>
+      <Flex gap={1} alignItems='center'>
+        <Text size={200} noWrap>
+          Visibility
+        </Text>
+        <DescriptionTooltip>
+          <DescriptionTooltip.Trigger
+            tag={Info}
+            interactive
+            aria-label='About visibility'
+            color='icon-secondary-neutral'
+          />
+          <DescriptionTooltip.Popper aria-label='About visibility'>
+            <Text size={200}>
+              The Visibility index is based on click-through rate (CTR) that shows a website's
+              progress in Google's top 100 for keywords from the current tracking campaign. A zero-
+              percent visibility means that the domain isn't ranking in Google's top 100 results for
+              any of these keywords; and a 100-percent visibility means that the domain keeps the
+              first position in the SERP for all of these keywords.
+            </Text>
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
+      <Text size={100} color='text-secondary'>
+        last 30 days
+      </Text>
+      <Flex gap={2} mt={1} h={28} alignItems='center'>
+        <Hint
+          tag={Warning}
+          title='Something went wrong'
+          aria-hidden={false}
+          color='icon-secondary-neutral'
+        />
+        <ButtonLink>Reload</ButtonLink>
+      </Flex>
     </Flex>
-  );
-};
+    <Divider orientation='vertical' />
+    <Flex direction='column'>
+      <Flex gap={1} alignItems='center'>
+        <Text size={200} noWrap>
+          Estimated traffic
+        </Text>
+        <DescriptionTooltip>
+          <DescriptionTooltip.Trigger
+            tag={Info}
+            interactive
+            aria-label='About estimated traffic'
+            color='icon-secondary-neutral'
+          />
+          <DescriptionTooltip.Popper aria-label='About estimated traffic'>
+            <Text size={200}>
+              An estimation based on the average click-through rate of each position in Google's
+              results multiplied by the volume of the keyword, and divided by 30 (i.e., the number
+              of days in a month). It shows the probability that a user will click on a domain's
+              search result depending on this domain's position in the SERP.
+            </Text>
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
+      <Text size={100} color='text-secondary'>
+        last 30 days
+      </Text>
+      <Flex gap={2} mt={1} h={28} alignItems='center'>
+        <Hint
+          tag={Warning}
+          title='Something went wrong'
+          aria-hidden={false}
+          color='icon-secondary-neutral'
+        />
+        <ButtonLink>Reload</ButtonLink>
+      </Flex>
+    </Flex>
+    <Divider orientation='vertical' />
+    <Flex direction='column'>
+      <Flex gap={1} alignItems='center'>
+        <Text size={200} noWrap>
+          Average position
+        </Text>
+        <DescriptionTooltip>
+          <DescriptionTooltip.Trigger
+            tag={Info}
+            interactive
+            aria-label='About Average position'
+            color='icon-secondary-neutral'
+          />
+          <DescriptionTooltip.Popper aria-label='About Average position'>
+            <Text size={200}>
+              The average of your rankings for all keywords in your Position Tracking campaign. Any
+              keyword you're not ranking for will be assigned a rank of 100.
+            </Text>
+          </DescriptionTooltip.Popper>
+        </DescriptionTooltip>
+      </Flex>
+      <Text size={100} color='text-secondary'>
+        last 30 days
+      </Text>
+      <Flex gap={2} mt={1} h={28} alignItems='center'>
+        <Hint
+          tag={Warning}
+          title='Something went wrong'
+          aria-hidden={false}
+          color='icon-secondary-neutral'
+        />
+        <ButtonLink>Reload</ButtonLink>
+      </Flex>
+    </Flex>
+  </Flex>
+);
 
 export default Demo;
