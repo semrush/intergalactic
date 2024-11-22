@@ -583,10 +583,6 @@ h6[class] {
   color: var(--vp-c-indigo-1);
 }
 
-.vp-doc a[class][type=none]:hover {
-  color: var(--vp-c-white);
-}
-
 .vp-doc h1[class],
 .vp-doc h2[class],
 .vp-doc h3[class],
