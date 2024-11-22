@@ -11,7 +11,7 @@ import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
   const [selected, setSelected] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState([]);
+  const [selectedValue, setSelectedValue] = React.useState<string[]>([]);
   const [selectedFirst, setSelectedFirst] = React.useState(0);
   const [selectInFocus, setSelectInFocus] = React.useState(false);
   const defaultValues = {
@@ -21,7 +21,7 @@ const Demo = () => {
     defaultValues,
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: typeof defaultValues) => {
     if (data.export === 'first') {
       if (!selectedFirst) {
         setError('export', { message: 'Require enter value' });
@@ -46,12 +46,12 @@ const Demo = () => {
   };
 
   const optionsFirst = [100, 500].map((value) => ({ value, children: value }));
-  const onChangeSelect = (value) => {
+  const onChangeSelect = (value: number) => {
     reset({ export: 'first' });
     setSelectedFirst(value);
   };
-  const onChangCheckbox = (checked, e) => {
-    const { value } = e.target;
+  const onChangCheckbox = (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement, Event>) => {
+    const value = e?.currentTarget.value as string;
     const tmpArray = checked ? [...selectedValue, value] : selectedValue.filter((v) => v !== value);
     tmpArray.length && reset({ export: 'selected' });
     setSelectedValue(tmpArray);

@@ -19,7 +19,7 @@ const Demo = () => {
     defaultValues,
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: typeof defaultValues) => {
     alert(JSON.stringify(data));
   };
 
@@ -27,7 +27,7 @@ const Demo = () => {
     reset(defaultValues);
   };
 
-  const onPreventDefault = (e) => {
+  const onPreventDefault = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 

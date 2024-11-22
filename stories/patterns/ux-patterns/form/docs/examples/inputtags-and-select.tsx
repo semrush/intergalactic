@@ -21,15 +21,15 @@ const Demo = () => {
   const [valueTag, setValueTag] = React.useState('');
   const [isFocused, setIsFocused] = React.useState(false);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: typeof defaultValues) => {
     alert(JSON.stringify(data));
   };
 
-  const isEmailValid = (val) => /.+@.+\..+/i.test(val);
+  const isEmailValid = (val: string) => /.+@.+\..+/i.test(val);
 
-  const handleAppendTags = (newTags) => {
+  const handleAppendTags = (newTags: string[]) => {
     const tags = getValues('emails');
-    if (newTags.some((tag) => !isEmailValid(tag))) {
+    if (newTags.some((tag: string) => !isEmailValid(tag))) {
       setError('emails', { message: "Email isn't valid" });
       return;
     }
@@ -63,12 +63,12 @@ const Demo = () => {
     setValueTag(`${tags.slice(-1)[0]} ${valueTag}`);
   };
 
-  const handleCloseTag = (e) => {
+  const handleCloseTag = (e: React.MouseEvent<HTMLDivElement>) => {
     const tags = getValues('emails');
     const { dataset } = e.currentTarget;
     setValue(
       'emails',
-      tags.filter((tag, ind) => ind !== Number(dataset.id)),
+      tags.filter((tag: string, idx: number) => idx !== Number(dataset.id)),
     );
   };
 
@@ -124,7 +124,7 @@ const Demo = () => {
                 aria-invalid={showError}
                 aria-errormessage={showError ? 'form-emails-error' : undefined}
               >
-                {tags.map((tag, idx) => (
+                {tags.map((tag: string, idx: number) => (
                   <InputTags.Tag key={tag + idx}>
                     <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
