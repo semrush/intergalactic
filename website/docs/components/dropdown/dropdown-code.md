@@ -11,7 +11,7 @@ tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('d
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/dropdown/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -21,7 +21,7 @@ tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('d
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/focus_interaction.tsx';
+  export Demo from 'stories/components/dropdown/docs/examples/focus_interaction.tsx';
 </script>
 
 :::
