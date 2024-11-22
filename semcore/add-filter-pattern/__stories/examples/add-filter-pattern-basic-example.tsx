@@ -44,10 +44,8 @@ const SearchFilterInput = ({ valueProps, onClear, placeholder }) => {
 const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear }) => {
   const { value } = valueProps;
   return (
-    <>
-      <AddFilterPattern.Search.Addon neighborLocation='right'>
-        <Select placeholder='Everywhere' options={selectOptions} />
-      </AddFilterPattern.Search.Addon>
+    <Flex>
+      <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
 
       <AddFilterPattern.Search.Input neighborLocation='both'>
         <AddFilterPattern.Search.Input.Value
@@ -69,14 +67,12 @@ const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear }) => {
         )}
       </AddFilterPattern.Search.Input>
 
-      <AddFilterPattern.Search.Addon neighborLocation='left'>
-        <Button>
-          <Button.Addon>
-            <SearchM />
-          </Button.Addon>
-        </Button>
-      </AddFilterPattern.Search.Addon>
-    </>
+      <Button neighborLocation='left'>
+        <Button.Addon>
+          <SearchM />
+        </Button.Addon>
+      </Button>
+    </Flex>
   );
 };
 
@@ -120,7 +116,7 @@ const Keywords = ({ value, onChange, onClear }) => {
         <Button
           ml={2}
           onClick={() => {
-            setTextAreaValue('');
+            onChange(null);
           }}
         >
           Clear all

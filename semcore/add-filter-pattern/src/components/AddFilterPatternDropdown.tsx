@@ -10,13 +10,7 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
 
   static defaultProps = (props: AddFilterPatternSelectProps) => {
     return {
-      visible: !props.alwaysVisible,
-    };
-  };
-
-  uncontrolledProps = (props: AddFilterPatternSelectProps) => {
-    return {
-      visible: [null, (v) => v],
+      defaultVisible: !props.alwaysVisible,
     };
   };
 
@@ -48,7 +42,7 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
   }
 
   render() {
-    return <Root render={Dropdown} onVisibleChange={this.handlers.visible} />;
+    return <Root render={Dropdown} __excludeProps={['onChange']} />;
   }
 }
 

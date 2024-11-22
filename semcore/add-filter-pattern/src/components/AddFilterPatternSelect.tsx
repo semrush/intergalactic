@@ -10,13 +10,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
 
   static defaultProps = (props: AddFilterPatternSelectProps) => {
     return {
-      visible: !props.alwaysVisible,
-    };
-  };
-
-  uncontrolledProps = (props: AddFilterPatternSelectProps) => {
-    return {
-      visible: [null, (v) => v],
+      defaultVisible: !props.alwaysVisible,
     };
   };
 
@@ -53,9 +47,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
   }
 
   render() {
-    return (
-      <Root render={Select} __excludeProps={['onChange']} onVisibleChange={this.handlers.visible} />
-    );
+    return <Root render={Select} __excludeProps={['onChange']} />;
   }
 }
 

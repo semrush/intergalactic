@@ -7,17 +7,9 @@ import { AddFilterPatternItemProps, AddFilterPatternSearchProps } from '../AddFi
 
 class AddFilterPatternSearchRoot extends Component<AddFilterPatternItemProps> {
   static displayName = 'AddFilterPatternSearch';
-  inputRef?: HTMLElement;
 
   render() {
-    return (
-      <Root
-        render={Flex}
-        __excludeProps={['onChange']}
-        // visible={this.asProps.visible}
-        // onVisibleChange={this.handlers.visible}
-      />
-    );
+    return <Root render={Flex} __excludeProps={['onChange']} />;
   }
 }
 
