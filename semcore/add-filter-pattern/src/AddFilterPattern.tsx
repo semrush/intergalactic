@@ -6,20 +6,36 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
 import FilterPatternType, {
-  AddFilterPatternDropdownOptions,
   AddFilterPatternSelectProps,
   AddFilterPatternProps,
-  AddFilterPatternState,
-  ClearButtonProps,
-  AddFilterDropdownMenuProps,
   AddFilterPatternSearchProps,
   AddFilterPatternItemProps,
   AddFilterPatternDropdownProps,
+  AddFilterPatternSearchValueProps,
 } from './AddFilterPattern.types';
 import AddFilterPatternSelect from './components/AddFilterPatternSelect';
 import AddFilterPatternSearch from './components/AddFilterPatternSearch';
 import AddFilterPatternDropdown from './components/AddFilterPatternDropdown';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
+
+type AddFilterPatternDropdownOptions = Array<{ label: string; value: string }>;
+type AddFilterDropdownMenuProps = {
+  options: AddFilterPatternDropdownOptions;
+  toggleFieldVisibility: (name: string, status?: boolean) => void;
+  visibleFilters: Set<string>;
+};
+
+type FilterData = Record<string, any>;
+type ClearButtonProps = {
+  filterData: FilterData;
+  clearAll: () => void;
+};
+
+type AddFilterPatternState = {
+  visibleFilters: Set<string>;
+  addDropdownItems: AddFilterPatternDropdownOptions;
+  filterData: FilterData;
+};
 
 // todo: fix types
 const getDefaultAddDropdownItems = (props: AddFilterPatternProps) => {
@@ -78,7 +94,6 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       ...rest,
       value,
       name,
-      displayName: displayName ?? name,
       onClear,
       onChange: (v: any) => {
         this.setState({
@@ -89,7 +104,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
   }
 
   getSearchProps(props: AddFilterPatternItemProps): AddFilterPatternSearchProps {
-    const { name, displayName, alwaysVisible, onChange, ...rest } = props;
+    const { name, displayName, alwaysVisible, ...rest } = props;
     const value = this.state.filterData[name];
 
     const hideField = () => {
@@ -107,23 +122,22 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       hideField();
     };
 
-    let valueProps = {
-      value: this.state.filterData[name],
-      onChange: (v: any) => {
+    let valueProps: AddFilterPatternSearchValueProps = {
+      value,
+      onChange: (v) => {
         this.setState({
           filterData: { ...this.state.filterData, [name]: v },
         });
       },
     };
-
     if (!alwaysVisible) {
       valueProps = {
-        onBlur(e) {
+        onBlur: () => {
           if (!value) {
             hideField();
           }
         },
-        onKeyDown(e) {
+        onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Escape') {
             hideField();
           }
@@ -141,7 +155,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
   }
 
   getDropdownProps(props: AddFilterPatternItemProps): AddFilterPatternDropdownProps {
-    const { name, empty, alwaysVisible, displayName, ...rest } = props;
+    const { name, alwaysVisible, displayName, ...rest } = props;
     const hideField = () => {
       if (alwaysVisible) {
         return;
@@ -163,8 +177,6 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       ...rest,
       value,
       name,
-      empty,
-      displayName: displayName ?? name,
       onClear,
       onChange: (v: any) => {
         this.setState({

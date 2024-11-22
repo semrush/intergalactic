@@ -1,32 +1,36 @@
 import React from 'react';
-import AddFilterPattern from '@semcore/add-filter-pattern';
+import AddFilterPattern from '../../src';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
-import { Flex } from 'intergalactic/flex-box';
+import { Flex } from '@semcore/flex-box';
 
 import SearchM from '@semcore/icon/Search/m';
 import { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
-import { Hint } from '@semcore/ui/tooltip';
-import { Text } from 'intergalactic/typography';
-import Radio, { RadioGroup } from 'intergalactic/radio';
-import Textarea from 'intergalactic/textarea';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import Radio, { RadioGroup } from '@semcore/radio';
+import Textarea from '@semcore/textarea';
+import { str } from 'storybook/internal/docs-tools';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
   { value: 'Option 2', children: 'Option 2' },
 ];
 
-const SearchFilterInput = ({ valueProps, onClear, placeholder }) => {
-  const { value } = valueProps;
-
+const SearchFilterInput = ({ valueProps, onClear, onChange, placeholder }) => {
   return (
     <AddFilterPattern.Search.Input>
       <AddFilterPattern.Search.Input.Addon>
         <SearchM />
       </AddFilterPattern.Search.Input.Addon>
-      <AddFilterPattern.Search.Input.Value {...valueProps} w={110} placeholder={placeholder} />
-      {value && (
+      <AddFilterPattern.Search.Input.Value
+        {...valueProps}
+        onChange={onChange}
+        w={110}
+        placeholder={placeholder}
+      />
+      {valueProps.value && (
         <AddFilterPattern.Search.Input.Addon>
           <Hint
             tag={ButtonLink}
@@ -41,20 +45,19 @@ const SearchFilterInput = ({ valueProps, onClear, placeholder }) => {
   );
 };
 
-const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear }) => {
-  const { value } = valueProps;
+const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear, onChange, placeholder }) => {
   return (
     <Flex>
       <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
 
-      <AddFilterPattern.Search.Input neighborLocation='both'>
+      <AddFilterPattern.Search.Input w={130} neighborLocation='both'>
         <AddFilterPattern.Search.Input.Value
           {...valueProps}
-          w={130}
-          placeholder='Filter by fullname'
+          placeholder={placeholder}
+          onChange={onChange}
           aria-label='Filter by fullname'
         />
-        {value && (
+        {valueProps.value && (
           <AddFilterPattern.Search.Addon>
             <Hint
               tag={ButtonLink}
@@ -76,7 +79,7 @@ const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear }) => {
   );
 };
 
-const Keywords = ({ value, onChange, onClear }) => {
+const Keywords = ({ value, onChange }) => {
   const [textAreaValue, setTextAreaValue] = React.useState(value?.value ?? '');
 
   const applyFilters = () => {
@@ -125,8 +128,25 @@ const Keywords = ({ value, onChange, onClear }) => {
     </>
   );
 };
+
+type FilterData = {
+  name: string;
+  fullname: string;
+  size: string;
+  position: string;
+  device: string;
+  keywords: { value: string[]; displayValue: string } | null;
+};
+const defaultFilterData = {
+  name: '',
+  fullname: '',
+  size: '',
+  keywords: null,
+  device: '',
+  position: '',
+};
 export const AddFilterPatternBasicExample = () => {
-  const [filterData, setFilterData] = React.useState({ size: '', keywords: null, device: '' });
+  const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
 
   const clearField = React.useCallback(
     (name: string) => {
@@ -138,44 +158,47 @@ export const AddFilterPatternBasicExample = () => {
 
   return (
     <AddFilterPattern gap={2} flexWrap>
-      <AddFilterPattern.Search
-        onChange={(v) => {
-          setFilterData({ ...filterData, name: v });
-        }}
-        onClear={() => {
-          clearField('name');
-        }}
-        alwaysVisible={true}
-        name='name'
-        displayName='Name'
-      >
-        {(props) => <SearchFilterInput {...props} placeholder={'Filter by name'} />}
+      <AddFilterPattern.Search alwaysVisible={true} name='name' displayName='Name'>
+        {({ onClear, ...rest }) => (
+          <SearchFilterInput
+            {...rest}
+            placeholder={'Filter by name'}
+            onChange={(v) => {
+              rest.valueProps.onChange(v);
+              setFilterData({ ...filterData, name: v });
+            }}
+            onClear={() => {
+              onClear();
+              clearField('name');
+            }}
+          />
+        )}
       </AddFilterPattern.Search>
 
-      <AddFilterPattern.Search
-        onChange={(v) => {
-          setFilterData({ ...filterData, fullname: v });
-        }}
-        onClear={() => {
-          clearField('fullname');
-        }}
-        alwaysVisible={true}
-        name='fullname'
-        displayName='Fullname'
-      >
-        {FilterSearchByFullNameWithNeighbours}
+      <AddFilterPattern.Search alwaysVisible={true} name='fullname' displayName='Fullname'>
+        {({ onClear, ...rest }) => (
+          <FilterSearchByFullNameWithNeighbours
+            {...rest}
+            onChange={(v) => {
+              rest.valueProps.onChange(v);
+              setFilterData({ ...filterData, fullname: v });
+            }}
+            onClear={() => {
+              onClear();
+              clearField('fullname');
+            }}
+            placeholder={'Filter by fullname'}
+          />
+        )}
       </AddFilterPattern.Search>
 
       <AddFilterPattern.Select
-        alwaysVisible={true}
-        name='size'
-        displayName='Size'
         onChange={(v) => {
           setFilterData({ ...filterData, size: v });
         }}
-        onClear={() => {
-          clearField('size');
-        }}
+        alwaysVisible={true}
+        name='size'
+        displayName='Size'
       >
         <AddFilterPattern.Select.Trigger
           placeholder='Size'
@@ -194,16 +217,7 @@ export const AddFilterPatternBasicExample = () => {
         </AddFilterPattern.Select.Menu>
       </AddFilterPattern.Select>
 
-      <AddFilterPattern.Dropdown
-        name='keywords'
-        displayName='Keywords'
-        onChange={(v) => {
-          setFilterData({ ...filterData, keywords: v });
-        }}
-        onClear={() => {
-          clearField('keywords');
-        }}
-      >
+      <AddFilterPattern.Dropdown name='keywords' displayName='Keywords'>
         <AddFilterPattern.Dropdown.Trigger placeholder='Exclude keywords'>
           {`Exclude: ${filterData.keywords?.displayValue} keywords`}
         </AddFilterPattern.Dropdown.Trigger>
@@ -215,21 +229,32 @@ export const AddFilterPatternBasicExample = () => {
           aria-label='List of excluded keywords'
           aria-modal='false'
         >
-          {Keywords}
+          {({ onChange, ...rest }) => (
+            <Keywords
+              onChange={(v) => {
+                onChange(v);
+                setFilterData({ ...filterData, keywords: v });
+              }}
+            />
+          )}
         </AddFilterPattern.Dropdown.Popper>
       </AddFilterPattern.Dropdown>
 
-      <AddFilterPattern.Search
-        onChange={(v) => {
-          setFilterData({ ...filterData, position: v });
-        }}
-        onClear={() => {
-          clearField('position');
-        }}
-        name='position'
-        displayName='Position'
-      >
-        {(props) => <SearchFilterInput {...props} placeholder={'Filter by position'} />}
+      <AddFilterPattern.Search name='position' displayName='Position'>
+        {({ onClear, ...rest }) => (
+          <SearchFilterInput
+            {...rest}
+            placeholder={'Filter by position'}
+            onChange={(v) => {
+              rest.valueProps.onChange(v);
+              setFilterData({ ...filterData, position: v });
+            }}
+            onClear={() => {
+              onClear();
+              clearField('position');
+            }}
+          />
+        )}
       </AddFilterPattern.Search>
 
       <AddFilterPattern.Select
