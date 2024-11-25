@@ -4,3 +4,4 @@ packages:
   - '!tools/@types'
   - 'website'
   - vite-project
+  - 'stories'
