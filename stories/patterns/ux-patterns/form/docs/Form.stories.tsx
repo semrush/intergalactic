@@ -4,6 +4,7 @@ import DatepickerAndTimepickerExample from './examples/datepicker-and-timepicker
 import DefaultLogInFormExample from './examples/default-log-in-form';
 import InputTagsAndSelectExample from './examples/inputtags-and-select';
 
+import { DefaultLogInFormTest } from './__tests__/DefaultLogInForm.test';
 
 const meta: Meta = {
   title: 'Patterns/UX Patterns/Form',
@@ -19,6 +20,7 @@ export const DatepickerAndTimepicker: StoryObj = {
 
 export const DefaultLogInForm: StoryObj = {
     render: DefaultLogInFormExample,
+    play: DefaultLogInFormTest,
 };
 
 export const InputTagsAndSelect: StoryObj = {
