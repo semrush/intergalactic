@@ -1,5 +1,5 @@
 ---
-title: File extentions
+title: File extensions
 ---
 
 Use uppercase and no period in:
@@ -11,15 +11,15 @@ Use uppercase and no period in:
 <DosDonts>
     <template #dont>
         <p>.PDF, .CSS, .HTML</p>
-        <img src="./static/export-to-pdf.png" style="margin: auto" />
+        <img src="./static/export-to-pdf-dont.png" style="margin: auto" />
     </template>
     <template #do>
         <p>PDF, CSS, HTML</p>
-        <img src="./static/export-to-_pdf.png" style="margin: auto" />
+        <img src="./static/export-to-pdf-do.png" style="margin: auto" />
     </template>
 </DosDonts>
 
-Use lowercase and specify a noun after the extension in <b>full sentences</b> in:
+Use lowercase and specify a noun after the extension in **full sentences** in:
 * tooltips
 * notices
 * messages
@@ -27,11 +27,11 @@ Use lowercase and specify a noun after the extension in <b>full sentences</b> in
 <DosDonts>
     <template #dont>
         <p>Add a DOCX file.</p>
-        <p>Save your file in a csv file format.</p>
+        <p>Save your file in the pdf file format.</p>
         </template>
     <template #do>
         <p>Add a .docx file.</p>
-        <p>Save your file in a .csv file format.</p>
+        <p>Save your file in the .pdf file format.</p>
     </template>
 </DosDonts>
 
