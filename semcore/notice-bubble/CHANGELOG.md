@@ -6,11 +6,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `replaceLast` method to the Manager.
+- `replaceLast` method to the Manager to display the next bubble on over the last one.
 
 ### Fixed
 
-- Warning about `Hint` title.
+- Warning about `Hint` title about `title` and `Hint.Popper` at the same time.
 
 ## [5.47.1] - 2024-11-08
 

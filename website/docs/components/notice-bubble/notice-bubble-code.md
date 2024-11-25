@@ -128,3 +128,17 @@ Use `type="warning"` for this case.
 </script>
 
 :::
+
+## Overlap previous notice
+
+::: tip
+Use this API only if you allow enough time between your notices for people to read the message in notice.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
+</script>
+
+:::

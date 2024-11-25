@@ -5,12 +5,16 @@ import Link from '@semcore/link';
 
 const manager = new NoticeBubbleManager();
 
+let counter = 0;
+
 const Demo = () => {
   const handleClick = () => {
-    manager.add({
+    counter++;
+
+    manager.replaceLast({
       children: (
         <>
-          Link was moved to <Link href='#'>Cats from outer space group</Link>
+          Link {counter} was moved to <Link href='#'>Cats from outer space group</Link>
         </>
       ),
       initialAnimation: true,
