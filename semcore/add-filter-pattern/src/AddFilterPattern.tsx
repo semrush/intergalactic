@@ -117,7 +117,9 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       valueProps = {
         onBlur: () => {
           if (!value) {
-            this.hideFilter(name, alwaysVisible);
+            setTimeout(() => {
+              this.hideFilter(name, alwaysVisible);
+            }, 50);
           }
         },
         onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -163,7 +165,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
   clearAll() {
     const filterData: FilterData = {};
     Object.entries(this.state.filterData).forEach(([key, value]: [string, any]) => {
-      filterData[key] = typeof value === 'string' ? '' : value;
+      filterData[key] = typeof value === 'string' ? '' : null;
     });
     this.setState({
       filterData,

@@ -30,7 +30,7 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
       ref: this.popperRef,
       onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
         if (!value && !this.popperRef.current?.contains(e.relatedTarget)) {
-          setTimeout(onClear);
+          setTimeout(onClear, 50);
         }
       },
       onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {

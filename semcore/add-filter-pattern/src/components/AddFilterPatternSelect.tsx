@@ -40,7 +40,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
             ?.closest('[data-ui-name="DropdownMenu.Popper"]')
             ?.contains(e.relatedTarget)
         ) {
-          setTimeout(onClear);
+          setTimeout(onClear, 50);
         }
       },
       onKeyDown: (e: React.KeyboardEvent<HTMLImageElement>) => {
