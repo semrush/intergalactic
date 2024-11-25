@@ -1,9 +1,9 @@
 import { Intergalactic } from '@semcore/core';
 import { FlexProps } from '@semcore/flex-box';
 import Select, { SelectProps } from '@semcore/select';
-import Input from '@semcore/ui/input';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Dropdown, { DropdownProps } from '@semcore/ui/dropdown';
+import Input from '@semcore/input';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Dropdown, { DropdownProps } from '@semcore/dropdown';
 
 export type AddFilterPatternItemProps = {
   alwaysVisible?: boolean;

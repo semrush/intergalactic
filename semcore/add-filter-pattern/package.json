@@ -19,7 +19,11 @@
     "@semcore/button": "5.39.1",
     "@semcore/flex-box": "5.38.0",
     "@semcore/tooltip": "6.46.0",
-    "@semcore/utils": "4.43.0"
+    "@semcore/utils": "4.43.0",
+    "@semcore/dropdown-menu": "4.43.3",
+    "@semcore/dropdown": "4.41.3",
+    "@semcore/input": "4.39.2",
+    "@semcore/base-trigger": "4.48.2"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",

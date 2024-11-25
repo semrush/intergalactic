@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
-import { Box, Flex } from '@semcore/ui/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import Input from '@semcore/input';
 
 import { AddFilterPatternItemProps, AddFilterPatternSearchProps } from '../AddFilterPattern.types';

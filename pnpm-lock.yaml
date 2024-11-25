@@ -291,18 +291,30 @@ importers:
 
   semcore/add-filter-pattern:
     dependencies:
+      '@semcore/base-trigger':
+        specifier: 4.48.2
+        version: link:../base-trigger
       '@semcore/button':
         specifier: 5.39.1
         version: 5.39.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
+      '@semcore/dropdown':
+        specifier: 4.41.3
+        version: link:../dropdown
+      '@semcore/dropdown-menu':
+        specifier: 4.43.3
+        version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.38.0
         version: 5.38.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.52.0
         version: 4.52.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/input':
+        specifier: 4.39.2
+        version: link:../input
       '@semcore/link':
         specifier: 5.41.0
         version: 5.41.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)

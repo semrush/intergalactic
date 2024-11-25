@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { AddFilterPatternSelectProps } from '../AddFilterPattern.types';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { FilterTrigger } from '@semcore/base-trigger';
 
 class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps> {
   static displayName = 'AddFilterPatternDropdown';

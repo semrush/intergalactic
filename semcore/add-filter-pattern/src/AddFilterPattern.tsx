@@ -18,9 +18,9 @@ import AddFilterPatternSearch from './components/AddFilterPatternSearch';
 import AddFilterPatternDropdown from './components/AddFilterPatternDropdown';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
 
-type AddFilterPatternDropdownOptions = Array<{ label: string; value: string }>;
+type AddFilterPatternDoprdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
-  options: AddFilterPatternDropdownOptions;
+  options: AddFilterPatternDoprdownOption[];
   toggleFieldVisibility: (name: string, status?: boolean) => void;
   visibleFilters: Set<string>;
 };
@@ -33,35 +33,34 @@ type ClearButtonProps = {
 
 type AddFilterPatternState = {
   visibleFilters: Set<string>;
-  addDropdownItems: AddFilterPatternDropdownOptions;
+  addDropdownItems: AddFilterPatternDoprdownOption[];
   filterData: FilterData;
 };
 
 const getDefaultAddDropdownItems = (
   props: AddFilterPatternProps,
-): AddFilterPatternDropdownOptions => {
-  const childrenArray: React.ReactNode[] = Array.isArray(props.children)
+): AddFilterPatternDoprdownOption[] => {
+  const childrenArray: React.ReactElement<AddFilterPatternItemProps>[] = Array.isArray(
+    props.children,
+  )
     ? props.children
     : [props.children];
 
   return childrenArray
     .flat()
-    .map(({ props }: any) => {
-      const { alwaysVisible, name, displayName } = props;
-      if (alwaysVisible) {
-        return;
-      }
+    .filter(({ props }) => !props.alwaysVisible)
+    .map(({ props }) => {
+      const { name, displayName } = props;
       const value = name;
       const label = displayName ?? name;
 
       return { label, value };
-    })
-    .filter((v) => v);
+    });
 };
 
 class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilterPatternState> {
   static displayName = 'AddFilterPattern';
-  getDefaultAddDropdownItems: () => AddFilterPatternDropdownOptions;
+  getDefaultAddDropdownItems: () => AddFilterPatternDoprdownOption[];
   selectMenuRefs: Map<string, HTMLElement>;
 
   constructor(props: AddFilterPatternProps) {
