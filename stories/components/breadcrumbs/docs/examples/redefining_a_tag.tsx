@@ -1,6 +1,6 @@
 import React from 'react';
-import Breadcrumbs from 'intergalactic/breadcrumbs';
-import Link from 'intergalactic/link';
+import Breadcrumbs from '@semcore/breadcrumbs';
+import Link from '@semcore/link';
 
 const Demo = () => (
   <Breadcrumbs>
