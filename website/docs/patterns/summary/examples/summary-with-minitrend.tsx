@@ -38,16 +38,13 @@ const Demo = () => (
       <Flex alignItems='baseline' gap={1} mt={1}>
         <Link
           size={500}
-          color='text-large-info'
+          color='text-large-secondary'
           fontWeight='bold'
           href='https://semrush.com'
           target='_blank'
         >
-          42
+          n/a
         </Link>
-        <Text size={100} color='text-secondary' noWrap>
-          no change
-        </Text>
       </Flex>
     </Flex>
     <Divider />
