@@ -132,7 +132,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       id: `igc-${uid}-option-${index}`,
       size,
       index,
-      onMouseEnter: () => this.handlers.selectedIndex(index),
+      onMouseEnter: () => {
+        this.handlers.selectedIndex(index);
+      },
       role: this.childRole,
     };
   }

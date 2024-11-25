@@ -579,10 +579,6 @@ h6[class] {
   font-weight: var(--intergalactic-bold, 700);
 }
 
-.vp-doc a[class]:hover {
-  color: var(--vp-c-indigo-1) !important;
-}
-
 .vp-doc h1[class],
 .vp-doc h2[class],
 .vp-doc h3[class],

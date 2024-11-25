@@ -1,8 +1,7 @@
 import React from 'react';
-// @ts-ignore
-import MiniChart from 'intergalactic/mini-chart';
-// @ts-ignore
-import { Flex, Box } from 'intergalactic/flex-box';
+
+import MiniChart from '../../src';
+import { Flex, Box } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
@@ -10,7 +9,7 @@ const Demo = () => {
       <Flex flexWrap={true} alignItems={'flex-end'}>
         <MiniChart.ScoreDonut value={30} w={'50px'} />
         <MiniChart.ScoreSemiDonut value={45} w={'50px'} />
-        <MiniChart.ScoreDonut loading={true} value={30} w={'50px'} />
+        <MiniChart.ScoreDonut loading={true} value={60} w={'50px'} />
         <MiniChart.ScoreSemiDonut loading={true} value={30} w={'50px'} />
       </Flex>
       <br />

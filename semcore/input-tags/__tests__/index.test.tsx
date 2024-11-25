@@ -29,61 +29,17 @@ describe('InputTags', () => {
   });
 
   test.concurrent('renders basic example', async ({ task }) => {
+    const tags = ['vk', 'fk', 'twitter', 'instagram'];
     const Component = () => {
-      const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
-      const [value, setValue] = React.useState('');
-
-      const handleAppendTags = (newTags: string[]) => {
-        setTags((tags) => [...tags, ...newTags]);
-        setValue('');
-      };
-
-      const handleRemoveTag = () => {
-        if (tags.length === 0) return;
-        setTags(tags.slice(0, -1));
-        setValue(`${tags.slice(-1)[0]} ${value}`);
-      };
-
-      const handleCloseTag = (event: any) => {
-        event.preventDefault();
-      };
-
-      const handleEditTag = (event: any) => {
-        const { dataset } = event.currentTarget;
-        let allTags = [...tags];
-        if (value) {
-          allTags = [...allTags, value];
-        }
-        setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
-        if (!event.defaultPrevented) {
-          setValue(tags[dataset.id]);
-        }
-        return false;
-      };
-
-      const handleBlurInput = (event: any) => {
-        const { value } = event.currentTarget;
-        if (value) handleAppendTags([value]);
-      };
-
       return (
-        <InputTags size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+        <InputTags size='l'>
           {tags.map((tag, idx) => (
-            <Tooltip key={idx}>
-              <Tooltip.Trigger
-                tag={InputTags.Tag}
-                theme='primary'
-                editable
-                data-id={idx}
-                onClick={handleEditTag}
-              >
-                <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-                <InputTags.Tag.Close onClick={handleCloseTag} />
-              </Tooltip.Trigger>
-              <Tooltip.Popper>tag</Tooltip.Popper>
-            </Tooltip>
+            <InputTags.Tag key={idx} theme='primary' editable data-id={idx}>
+              <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+              <InputTags.Tag.Close />
+            </InputTags.Tag>
           ))}
-          <InputTags.Value value={value} onChange={setValue} onBlur={handleBlurInput} />
+          <InputTags.Value />
         </InputTags>
       );
     };
