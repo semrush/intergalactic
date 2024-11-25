@@ -1,0 +1,10 @@
+{
+  "name": "@semrush/stories",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react-hook-form": "6.10.1"
+  }
+}

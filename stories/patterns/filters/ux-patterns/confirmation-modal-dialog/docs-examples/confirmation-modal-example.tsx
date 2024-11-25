@@ -5,7 +5,8 @@ import Modal from '@semcore/modal';
 import { Text, List } from '@semcore/typography';
 import Input from '@semcore/input';
 import Tooltip from '@semcore/tooltip';
-import '@semcore/utils/style/var.css';
+import '@semcore/utils/lib/themes/default.css';
+import { useForm } from 'react-hook-form';
 
 const warningBlockStyles = {
   background: 'var(--intergalactic-bg-secondary-critical)',
@@ -16,24 +17,40 @@ const warningBlockStyles = {
 };
 
 const Demo = () => {
-  const [value, setValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
-  const [focused, setFocused] = React.useState(false);
-  const [state, setState] = React.useState<'normal' | 'invalid' | 'valid'>('normal');
-  const isValid = value === 'test';
   const handleOpen = React.useCallback(() => setVisible(true), []);
   const handleClose = React.useCallback(() => setVisible(false), []);
-  const handleDelete = React.useCallback(() => {
-    setFocused(true);
-    setState(isValid ? 'normal' : 'invalid');
-  }, [value]);
 
-  function handlerInput(v) {
-    setValue(v);
-  }
+  const {
+    register,
+    trigger,
+    handleSubmit,
+    errors,
+    getValues,
+    formState: { dirtyFields, isSubmitted },
+  } = useForm({
+    mode: 'onBlur',
+  });
+  const [focusedFieldName, setFocusedFieldName] = React.useState('');
+
+  const onSubmit = handleClose;
+
+  const invalid = (fieldName: string): boolean => {
+    const hasError = Boolean(errors[fieldName]);
+    if (isSubmitted) {
+      return hasError;
+    }
+
+    return dirtyFields[fieldName] && hasError;
+  };
+
+  const showError = (fieldName: string): boolean => {
+    const isActive = focusedFieldName === fieldName;
+    return invalid(fieldName) && isActive;
+  };
 
   return (
-    <React.Fragment>
+    <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal visible={visible} onClose={handleClose} w={536}>
         <Modal.Title mb={4}>Delete project?</Modal.Title>
@@ -47,46 +64,77 @@ const Demo = () => {
           <List.Item>Backlink Audit</List.Item>
           <List.Item>Content Analyzer</List.Item>
         </List>
-        <Flex style={warningBlockStyles} tag='label' direction='column' htmlFor='project'>
-          <Text size={300} mb={2} tag='p'>
-            Confirm deletion by typing the project name{' '}
-            <Text tag='strong' color='red-500'>
-              Test
+
+        <form noValidate onSubmit={handleSubmit(onSubmit)}>
+          <Flex style={warningBlockStyles} tag='label' direction='column' htmlFor='project'>
+            <Text size={300} mb={2} tag='p'>
+              Confirm deletion by typing the project name{' '}
+              <Text tag='strong' color='red-500'>
+                Test
+              </Text>
             </Text>
-          </Text>
-          <Tooltip
-            title='Please enter a correct project name.'
-            visible={focused && !isValid}
-            theme='warning'
-            placement='right'
-            ignorePortalsStacking
-          >
-            <Input size='l' state={state} w={'100%'}>
-              <Input.Value
-                id='project'
-                placeholder='Enter project name'
-                value={value}
-                onChange={handlerInput}
-                onBlur={() => {
-                  setFocused(false);
-                  setState(isValid ? 'normal' : 'invalid');
+
+            <Tooltip
+              visible={showError('project')}
+              theme='warning'
+              placement='right'
+              interaction={'none'}
+              ignorePortalsStacking
+            >
+              <Tooltip.Popper id='form-email-error'>
+                Please enter a correct project name.
+              </Tooltip.Popper>
+
+              <Tooltip.Trigger
+                tag={Input}
+                w='100%'
+                mb={2}
+                size='l'
+                state={invalid('project') ? 'invalid' : 'normal'}
+                controlsLength={1}
+              >
+                {({ getTriggerProps }) => {
+                  return (
+                    <Input.Value
+                      {...getTriggerProps({
+                        id: 'project',
+                        name: 'project',
+                        placeholder: 'Enter project name',
+                        onChange: () => {
+                          if (invalid('project')) {
+                            trigger('project');
+                          }
+                        },
+                        ref: register({
+                          required: 'Please enter correct project name',
+                          pattern: /test/i,
+                        }) as React.ForwardedRef<HTMLInputElement>,
+                      })}
+                      size='l'
+                      w={'100%'}
+                      onFocus={() => setFocusedFieldName('project')}
+                      onBlur={() => setFocusedFieldName('')}
+                      aria-invalid={invalid('project')}
+                      aria-errormessage={invalid('project') ? 'form-project-error' : undefined}
+                    />
+                  );
                 }}
-                onFocus={() => {
-                  setFocused(true);
-                  setState(isValid ? 'normal' : 'invalid');
-                }}
-              />
-            </Input>
-          </Tooltip>
-        </Flex>
-        <Button use='primary' theme='danger' size='l' onClick={handleDelete}>
-          Delete
-        </Button>
-        <Button size='l' ml={2} onClick={handleClose}>
-          Cancel
-        </Button>
+              </Tooltip.Trigger>
+            </Tooltip>
+          </Flex>
+
+          <Flex direction={'row'}>
+            <Button use='primary' theme='danger' size='l' type='submit'>
+              Delete
+            </Button>
+
+            <Button size='l' ml={2} onClick={handleClose} type='button'>
+              Cancel
+            </Button>
+          </Flex>
+        </form>
       </Modal>
-    </React.Fragment>
+    </>
   );
 };
 
