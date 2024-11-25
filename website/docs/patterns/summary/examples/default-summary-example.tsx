@@ -12,9 +12,12 @@ const Demo = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [loading]);
 
   return (
