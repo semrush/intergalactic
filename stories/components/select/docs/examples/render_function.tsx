@@ -28,15 +28,30 @@ const Demo = () => (
           getOptionProps, // function encapsulating Select.Option logic
           getOptionCheckboxProps, // function encapsulating Select.Option.Checkbox logic
           value: currentValue, // the current value of the select
+          visible: currentVisible, // the current value of visibility state
         } = props;
         const {
-          visible, // function that controls the internal state of visibility
-          value, // function that controls the internal state of the selected value
+          visible, // function that controls visibility
+          value, // function that controls value
+          highlightedIndex, // function that controls the index of the highlighted item
         } = handlers;
+
+        // we manually highlight the first option from the list except 'select all / deselect all'
+        React.useEffect(() => {
+          if (currentVisible === true) {
+            highlightedIndex(1);
+          }
+        }, [currentVisible]);
 
         const handleClick = () => {
           const newValue = (currentValue as any).length ? [] : options.map(({ value }) => value);
           value(newValue);
+
+          // after select all we will close popper
+          if (currentVisible === true && newValue.length > 0) {
+            visible(false);
+          }
+
           return false; // cancel the default handler
         };
 
@@ -49,7 +64,7 @@ const Demo = () => (
                   {(currentValue as any).length ? 'Deselect all' : 'Select all'}
                 </Text>
               </Select.Option>
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <Select.Option value={option.value} key={option.value}>
                   <Select.Option.Checkbox />
                   {option.value}
