@@ -129,10 +129,10 @@ Use `type="warning"` for this case.
 
 :::
 
-## Overlap previous notice
+## Replace previous notice
 
-::: tip
-Use this API only if you allow enough time between your notices for people to read the message in notice.
+::: warning
+Use this API only if there's enough time between events, so that all notices have enough time to appear and be read by the user, or if missing some notices isn't critical.
 :::
 
 ::: sandbox
