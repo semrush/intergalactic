@@ -64,7 +64,7 @@ const Demo = () => (
                   {(currentValue as any).length ? 'Deselect all' : 'Select all'}
                 </Text>
               </Select.Option>
-              {options.map((option, index) => (
+              {options.map((option) => (
                 <Select.Option value={option.value} key={option.value}>
                   <Select.Option.Checkbox />
                   {option.value}
