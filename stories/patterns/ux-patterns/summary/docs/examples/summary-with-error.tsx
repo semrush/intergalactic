@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { Hint, DescriptionTooltip } from '@semcore/tooltip';
-import Warning from 'intergalactic/icon/Warning/m';
+import Warning from '@semcore/icon/Warning/m';
 import { ButtonLink } from '@semcore/button';
 import Divider from '@semcore/divider';
 import Info from '@semcore/icon/Info/m';
