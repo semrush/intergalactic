@@ -12,8 +12,6 @@
     "build": "pnpm semcore-builder --source=js,ts"
   },
   "dependencies": {
-    "@semcore/typography": "5.47.0",
-    "@semcore/link": "5.41.0",
     "@semcore/select": "4.48.2",
     "@semcore/icon": "4.52.0",
     "@semcore/button": "5.39.1",
