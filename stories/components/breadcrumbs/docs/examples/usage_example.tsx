@@ -1,6 +1,6 @@
 import React from 'react';
-import Breadcrumbs from 'intergalactic/breadcrumbs';
-import Ellipsis from 'intergalactic/ellipsis';
+import Breadcrumbs from '@semcore/breadcrumbs';
+import Ellipsis from '@semcore/ellipsis';
 
 const Demo = () => (
   <Breadcrumbs>
