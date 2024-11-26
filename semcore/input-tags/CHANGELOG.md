@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.1] - 2024-11-25
+
+### Fixed
+
+- Unnecessary `clickable` announcement by VO on not editable tags.
+
 ## [4.45.0] - 2024-11-18
 
 ### Changed
