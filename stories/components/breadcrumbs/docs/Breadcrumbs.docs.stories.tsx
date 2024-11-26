@@ -18,5 +18,3 @@ export const BasicUsage: StoryObj<typeof Breadcrumbs> = {
 export const RedefiningATag: StoryObj<typeof Breadcrumbs> = {
   render: RedefiningATagExample,
 };
-
-

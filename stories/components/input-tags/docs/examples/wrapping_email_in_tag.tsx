@@ -46,29 +46,24 @@ const Demo = () => {
       <Text tag='label' size={300} htmlFor='add-email'>
         Participants
       </Text>
-      <InputTags
-          mt={2}
-          size='l'
-          onAppend={handleAppendTags}
-          onRemove={handleRemoveTag}
-        >
-          {tags.map((tag, idx) => (
-            <InputTags.Tag
-              key={idx}
-              theme='primary'
-              color={isValidEmail(tag) ? 'green-500' : 'red-500'}
-            >
-              <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-              <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
-            </InputTags.Tag>
-          ))}
-          <InputTags.Value
-            id='add-email'
-            placeholder='Add email'
-            value={value}
-            onChange={handleChange}
-          />
-        </InputTags>
+      <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+        {tags.map((tag, idx) => (
+          <InputTags.Tag
+            key={idx}
+            theme='primary'
+            color={isValidEmail(tag) ? 'green-500' : 'red-500'}
+          >
+            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
+          </InputTags.Tag>
+        ))}
+        <InputTags.Value
+          id='add-email'
+          placeholder='Add email'
+          value={value}
+          onChange={handleChange}
+        />
+      </InputTags>
     </Flex>
   );
 };
