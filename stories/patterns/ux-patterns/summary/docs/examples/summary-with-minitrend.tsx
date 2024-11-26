@@ -1,11 +1,11 @@
 import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import { DescriptionTooltip } from '@semcore/ui/tooltip';
-import MiniChart from '@semcore/ui/mini-chart';
-import Link from '@semcore/ui/link';
-import Divider from '@semcore/ui/divider';
-import Info from '@semcore/ui/icon/Info/m';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import MiniChart from '@semcore/mini-chart';
+import Link from '@semcore/link';
+import Divider from '@semcore/divider';
+import Info from '@semcore/icon/Info/m';
 
 const Demo = () => (
   <Flex gap={6} direction='column' w='min-content'>

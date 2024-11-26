@@ -1,12 +1,11 @@
 import React from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import { Hint, DescriptionTooltip } from '@semcore/ui/tooltip';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { Hint, DescriptionTooltip } from '@semcore/tooltip';
 import Warning from 'intergalactic/icon/Warning/m';
-import Link from '@semcore/ui/link';
-import { ButtonLink } from '@semcore/ui/button';
-import Divider from '@semcore/ui/divider';
-import Info from '@semcore/ui/icon/Info/m';
+import { ButtonLink } from '@semcore/button';
+import Divider from '@semcore/divider';
+import Info from '@semcore/icon/Info/m';
 
 const Demo = () => (
   <Flex gap={6}>
