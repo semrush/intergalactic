@@ -10,7 +10,7 @@ Display [Skeleton](/components/skeleton/skeleton) during initial data loading.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/default-summary-example.tsx';
+  export Demo from 'stories/patterns/ux-patterns/summary/docs/examples/default-summary-example.tsx';
 </script>
 
 :::
@@ -24,7 +24,7 @@ You can show [Mini charts](../../data-display/mini-chart/mini-chart.md) alongsid
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/summary-with-minitrend.tsx';
+  export Demo from 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-minitrend.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ You can show [Mini charts](../../data-display/mini-chart/mini-chart.md) alongsid
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/summary-with-error.tsx';
+  export Demo from 'stories/patterns/ux-patterns/summary/docs/examples/summary-with-error.tsx';
 </script>
 
 :::
