@@ -18,5 +18,5 @@ export const BasicUsage: Story = {
 };
 
 export const FocusInteraction: Story = {
-    render: FocusInteractionExample,
-  };
+  render: FocusInteractionExample,
+};
