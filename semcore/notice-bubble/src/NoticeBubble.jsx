@@ -68,9 +68,7 @@ class NoticeBubbleContainerRoot extends Component {
   };
 
   componentDidMount() {
-    const { manager } = this.asProps;
-    manager.counter = 0;
-    this._unsubscribe = manager.addListener(this.handleChange);
+    this._unsubscribe = this.asProps.manager.addListener(this.handleChange);
   }
 
   componentWillUnmount = () => {

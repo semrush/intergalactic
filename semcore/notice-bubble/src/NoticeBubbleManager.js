@@ -77,7 +77,7 @@ class NoticeBubbleManager {
 
     const item = this.items[this.items.length - 1];
 
-    if (item) {
+    if (item?.visible) {
       this.remove(this.counter - 1);
     }
 
