@@ -8,6 +8,7 @@ import NoConnectionNoticeExample from './examples/no_connection_notice';
 import NoConnectionNoticeWithActionExample from './examples/no_connection_notice_with_action';
 import NoticebubbleNotInPortalExample from './examples/noticebubble_not_in_portal';
 import ReloadActionExample from './examples/reload_action';
+import ReplaceLastNoticeExample from './examples/replace_last_notice';
 import SpecialEventsNoticeExample from './examples/special_events_notice';
 import SuccessNoticeExample from './examples/success_notice';
 import UndoActionExample from './examples/undo_action';
@@ -59,4 +60,8 @@ export const SuccessNotice: StoryObj = {
 
 export const UndoAction: StoryObj = {
   render: UndoActionExample,
+};
+
+export const ReplaceLastNotice: StoryObj = {
+  render: ReplaceLastNoticeExample,
 };
