@@ -203,26 +203,21 @@ class ViewInfo extends Component {
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
         role={type === 'warning' ? 'alert' : this.props.role}
       >
-        <Hint>
-          <Hint.Trigger display={'contents'}>
-            <SDismiss
-              // biome-ignore lint/a11y/useValidAriaValues:
-              aria-haspopup={undefined}
-              tag={Button}
-              type='button'
-              use='tertiary'
-              size='m'
-              theme='invert'
-              onClick={this.handleClose}
-              aria-label={getI18nText('close')}
-              active={false}
-              title={getI18nText('close')}
-            >
-              <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
-            </SDismiss>
-          </Hint.Trigger>
-          <Hint.Popper>{getI18nText('close')}</Hint.Popper>
-        </Hint>
+        <SDismiss
+          // biome-ignore lint/a11y/useValidAriaValues:
+          aria-haspopup={undefined}
+          tag={Button}
+          type='button'
+          use='tertiary'
+          size='m'
+          theme='invert'
+          onClick={this.handleClose}
+          aria-label={getI18nText('close')}
+          active={false}
+          title={getI18nText('close')}
+        >
+          <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
+        </SDismiss>
 
         {isNode(icon) ? (
           <>
