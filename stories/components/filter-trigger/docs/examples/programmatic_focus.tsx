@@ -14,12 +14,16 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='controlled-filter' size={200}>
+      <Text tag='label' htmlFor='controlled-filter-programmatic-focus' size={200}>
         Controlled filter
       </Text>
       <Flex gap={2} mt={2}>
         <Select>
-          <Select.Trigger tag={FilterTrigger} triggerRef={triggerRef} id='controlled-filter' />
+          <Select.Trigger
+            tag={FilterTrigger}
+            triggerRef={triggerRef}
+            id='controlled-filter-programmatic-focus'
+          />
           <Select.Menu>
             {options.map((option, idx) => {
               const { title } = option;
