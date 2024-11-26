@@ -15,9 +15,9 @@ export const DynamicSearch: StoryObj = {
 };
 
 export const SearchByButton: StoryObj = {
-    render: SearchByButtonExample,
+  render: SearchByButtonExample,
 };
 
 export const SearchWithSelect: StoryObj = {
-    render: SearchWithSelectExample,
+  render: SearchWithSelectExample,
 };
