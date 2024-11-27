@@ -47,11 +47,6 @@ const Demo = () => (
           const newValue = (currentValue as any).length ? [] : options.map(({ value }) => value);
           value(newValue);
 
-          // after select all we will close popper
-          if (currentVisible === true && newValue.length > 0) {
-            visible(false);
-          }
-
           return false; // cancel the default handler
         };
 

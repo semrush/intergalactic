@@ -117,19 +117,4 @@ test.describe('Select', () => {
 
     await expect(page).toHaveScreenshot();
   });
-
-  test('Show close after select all in render function', async ({ page }) => {
-    const standPath = 'stories/components/select/docs/examples/render_function.tsx';
-    const htmlContent = await e2eStandToHtml(standPath, 'en');
-
-    await page.setContent(htmlContent);
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-
-    // select all, should close
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('Enter');
-
-    await expect(page).toHaveScreenshot();
-  });
 });
