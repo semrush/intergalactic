@@ -4,7 +4,7 @@ import Select, { SelectProps } from '@semcore/select';
 import Input from '@semcore/input';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Dropdown, { DropdownPopperProps, DropdownProps } from '@semcore/dropdown';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { FilterTrigger } from '@semcore/base-trigger';
 import React from 'react';
 import { Hint } from '@semcore/tooltip';
 

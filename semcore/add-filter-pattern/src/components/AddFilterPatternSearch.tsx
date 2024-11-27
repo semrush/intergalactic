@@ -25,7 +25,7 @@ class AddFilterPatternSearchRoot extends Component<AddFilterPatternItemProps> {
       onChange: rewiredOnChange,
       onBlur: () => {
         if (!value) {
-          setTimeout(onClear, 50);
+          setTimeout(onClear, 100);
         }
       },
       onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
