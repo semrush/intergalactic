@@ -1,7 +1,7 @@
 import React from 'react';
-import DropdownMenu from 'intergalactic/dropdown-menu';
-import Button from 'intergalactic/button';
-import Tooltip from 'intergalactic/tooltip';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Button from '@semcore/button';
+import Tooltip from '@semcore/tooltip';
 import DesktopIconM from '@semcore/icon/Desktop/m';
 
 const TooltipContent = () => {
