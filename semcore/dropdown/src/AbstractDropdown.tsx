@@ -79,6 +79,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         element?.focus();
       }, 0);
     }
+
+    return false;
   };
 
   getTriggerProps() {
