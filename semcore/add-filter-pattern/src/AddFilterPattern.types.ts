@@ -3,7 +3,10 @@ import { FlexProps } from '@semcore/flex-box';
 import Select, { SelectProps } from '@semcore/select';
 import Input from '@semcore/input';
 import DropdownMenu from '@semcore/dropdown-menu';
-import Dropdown, { DropdownProps } from '@semcore/dropdown';
+import Dropdown, { DropdownPopperProps, DropdownProps } from '@semcore/dropdown';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import React from 'react';
+import { Hint } from '@semcore/tooltip';
 
 export type AddFilterPatternItemProps = {
   alwaysVisible?: boolean;
@@ -11,59 +14,54 @@ export type AddFilterPatternItemProps = {
   displayName?: string;
 };
 
-export type AddFilterPatternSelectProps = AddFilterPatternItemProps &
-  SelectProps & { onClear: () => void };
+export type AddFilterPatternSelectProps = AddFilterPatternItemProps & SelectProps;
 
 declare const AddFilterPatternSelectType: Intergalactic.Component<
   typeof Select,
   AddFilterPatternSelectProps
 > & {
-  Trigger: typeof Select.Trigger;
+  Trigger: typeof FilterTrigger;
   Popper: typeof Select.Popper;
   Option: typeof Select.Option;
-};
-
-export type AddFilterPatternSearchValueProps = {
-  value: any;
-  onChange?: (v: any, e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  autoFocus?: boolean;
-};
-export type AddFilterPatternSearchProps = {
-  onClear: () => void;
-  valueProps: AddFilterPatternSearchValueProps;
+  Menu: typeof Select.Menu;
 };
 
 declare const AddFilterPatternSearchType: Intergalactic.Component<
   typeof Input,
-  AddFilterPatternItemProps
+  AddFilterPatternItemProps,
+  {
+    value: string;
+    onClear: () => void;
+    onChange: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;
+  }
 > & {
-  Input: typeof Input;
+  Input: typeof Input & {
+    CloseHint: typeof Hint;
+  };
 };
 
-export type AddFilterPatternDropdownProps = AddFilterPatternItemProps &
-  DropdownProps & {
-    value: any;
-    onClear: () => void;
-    onChange?: (v: any, e: React.ChangeEvent<HTMLInputElement>) => void;
-  };
-
+export type AddFilterPatternDropdownProps = AddFilterPatternItemProps & DropdownProps;
 declare const AddFilterPatternDropdownType: Intergalactic.Component<
   typeof Dropdown,
   AddFilterPatternDropdownProps
 > & {
   Trigger: typeof Dropdown.Trigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: Intergalactic.Component<
+    typeof Dropdown.Popper,
+    DropdownPopperProps,
+    { onChange: (v: any) => void }
+  >;
 };
 
-export type AddFilterPatternProps = FlexProps & {};
+export type AddFilterPatternProps = FlexProps & {
+  onClearAll: () => void;
+};
 
 declare const AddFilterPatternType: Intergalactic.Component<'div', AddFilterPatternProps> & {
   Dropdown: typeof AddFilterPatternDropdownType;
   Search: typeof AddFilterPatternSearchType;
   Select: typeof AddFilterPatternSelectType;
-  DropdownMenu: Intergalactic.Component<typeof DropdownMenu>;
+  DropdownMenu: typeof DropdownMenu;
   Clear: Intergalactic.Component<'button'>;
 };
 

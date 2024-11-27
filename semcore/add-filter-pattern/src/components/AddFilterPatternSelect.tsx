@@ -4,6 +4,7 @@ import Select from '@semcore/select';
 import { AddFilterPatternSelectProps } from '../AddFilterPattern.types';
 import { FilterTrigger } from '@semcore/base-trigger';
 
+type AsPropsWithOnClear<T> = T & { onClear: () => void };
 class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> {
   static displayName = 'AddFilterPatternSelect';
   menuRef = React.createRef<HTMLDivElement>();
@@ -28,7 +29,9 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
   }
 
   getTriggerProps(props: { onClear: () => void }) {
-    const { value, onClear, alwaysVisible } = this.asProps;
+    const { value, onClear, alwaysVisible } = this.asProps as AsPropsWithOnClear<
+      typeof this.asProps
+    >;
 
     return {
       ...props,

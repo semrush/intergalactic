@@ -11,27 +11,36 @@ import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
+import type { AddFilterPatternDropdownProps } from '@semcore/add-filter-pattern';
+import { verify } from 'crypto';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
   { value: 'Option 2', children: 'Option 2' },
 ];
 
-const SearchFilterInput = ({ valueProps, onClear, onChange, placeholder }) => {
+type SearchFilterInputProps = {
+  placeholder: string;
+  onChange: (v: string) => void;
+  value: string;
+  onClear: () => void;
+};
+
+const SearchFilterInput = ({ value, onClear, onChange, placeholder }: SearchFilterInputProps) => {
   return (
     <AddFilterPattern.Search.Input>
       <AddFilterPattern.Search.Input.Addon>
         <SearchM />
       </AddFilterPattern.Search.Input.Addon>
       <AddFilterPattern.Search.Input.Value
-        {...valueProps}
+        value={value}
         onChange={onChange}
         w={110}
         placeholder={placeholder}
       />
-      {valueProps.value && (
+      {Boolean(value) && (
         <AddFilterPattern.Search.Input.Addon>
-          <Hint
+          <AddFilterPattern.Search.Input.CloseHint
             tag={ButtonLink}
             use='secondary'
             addonLeft={CloseM}
@@ -44,21 +53,26 @@ const SearchFilterInput = ({ valueProps, onClear, onChange, placeholder }) => {
   );
 };
 
-const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear, onChange, placeholder }) => {
+const FilterSearchByFullNameWithNeighbours = ({
+  value,
+  onClear,
+  onChange,
+  placeholder,
+}: SearchFilterInputProps) => {
   return (
     <Flex>
       <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
 
       <AddFilterPattern.Search.Input w={130} neighborLocation='both'>
         <AddFilterPattern.Search.Input.Value
-          {...valueProps}
           placeholder={placeholder}
           onChange={onChange}
+          value={value}
           aria-label='Filter by fullname'
         />
-        {valueProps.value && (
+        {Boolean(value) && (
           <AddFilterPattern.Search.Input.Addon>
-            <Hint
+            <AddFilterPattern.Search.Input.CloseHint
               tag={ButtonLink}
               use='secondary'
               addonLeft={CloseM}
@@ -78,7 +92,16 @@ const FilterSearchByFullNameWithNeighbours = ({ valueProps, onClear, onChange, p
   );
 };
 
-const Keywords = ({ value, onChange }) => {
+type KeywordDataItem = {
+  value: string;
+  displayValue: string;
+} | null;
+
+type KeywordProps = {
+  value: KeywordDataItem;
+  onChange: (v: KeywordDataItem) => void;
+};
+const Keywords = ({ value, onChange }: KeywordProps) => {
   const [textAreaValue, setTextAreaValue] = React.useState(value?.value ?? '');
 
   const applyFilters = () => {
@@ -86,7 +109,7 @@ const Keywords = ({ value, onChange }) => {
       return;
     }
     const countLine = textAreaValue.match(/\n/g) || [];
-    const value = textAreaValue.split(/\n/g) || [];
+    const value = textAreaValue;
     const displayValue = String(countLine.length || (textAreaValue && 1));
 
     onChange({
@@ -94,6 +117,7 @@ const Keywords = ({ value, onChange }) => {
       displayValue,
     });
   };
+
   return (
     <>
       <Text tag='label' htmlFor='textarea' size={200} color='text-primary'>
@@ -134,7 +158,7 @@ type FilterData = {
   size: string;
   position: string;
   device: string;
-  keywords: { value: string[]; displayValue: string } | null;
+  keywords: KeywordDataItem | null;
 };
 const defaultFilterData = {
   name: '',
@@ -148,51 +172,50 @@ const AddFilterPatternExample = () => {
   const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
 
   const clearField = React.useCallback(
-    (name: string) => {
-      const tempData = { ...filterData, [name]: null };
+    (name: keyof FilterData) => {
+      const valueType = typeof filterData[name];
+      const tempData = { ...filterData, [name]: valueType === 'string' ? '' : null };
       setFilterData(tempData);
     },
     [filterData],
   );
 
   return (
-    <AddFilterPattern gap={2} flexWrap>
+    <AddFilterPattern
+      onClearAll={() => {
+        setFilterData(defaultFilterData);
+      }}
+      gap={2}
+      flexWrap
+    >
       <AddFilterPattern.Search alwaysVisible={true} name='name' displayName='Name'>
-        {({ onClear, ...rest }) => (
-          <SearchFilterInput
-            {...rest}
-            placeholder={'Filter by name'}
-            onChange={(v) => {
-              rest.valueProps.onChange(v);
-              setFilterData({ ...filterData, name: v });
-            }}
-            onClear={() => {
-              onClear();
-              clearField('name');
-            }}
-          />
-        )}
+        <SearchFilterInput
+          placeholder={'Filter by name'}
+          onChange={(v: string) => {
+            setFilterData({ ...filterData, name: v });
+          }}
+          onClear={() => {
+            clearField('name');
+          }}
+          value={filterData['name']}
+        />
       </AddFilterPattern.Search>
 
       <AddFilterPattern.Search alwaysVisible={true} name='fullname' displayName='Fullname'>
-        {({ onClear, ...rest }) => (
-          <FilterSearchByFullNameWithNeighbours
-            {...rest}
-            onChange={(v) => {
-              rest.valueProps.onChange(v);
-              setFilterData({ ...filterData, fullname: v });
-            }}
-            onClear={() => {
-              onClear();
-              clearField('fullname');
-            }}
-            placeholder={'Filter by fullname'}
-          />
-        )}
+        <FilterSearchByFullNameWithNeighbours
+          onChange={(v) => {
+            setFilterData({ ...filterData, fullname: v });
+          }}
+          onClear={() => {
+            clearField('fullname');
+          }}
+          placeholder={'Filter by fullname'}
+          value={filterData['fullname']}
+        />
       </AddFilterPattern.Search>
 
       <AddFilterPattern.Select
-        onChange={(v) => {
+        onChange={(v: any) => {
           setFilterData({ ...filterData, size: v });
         }}
         alwaysVisible={true}
@@ -202,7 +225,7 @@ const AddFilterPatternExample = () => {
         <AddFilterPattern.Select.Trigger
           placeholder='Size'
           onClear={() => {
-            clearField('size');
+            return clearField('size');
           }}
         >
           {'Size'}: {filterData.size}
@@ -228,42 +251,36 @@ const AddFilterPatternExample = () => {
           aria-label='List of excluded keywords'
           aria-modal='false'
         >
-          {({ onChange, ...rest }) => (
+          {({ onChange }) => (
             <Keywords
               onChange={(v) => {
-                onChange(v);
                 setFilterData({ ...filterData, keywords: v });
+                onChange(v);
               }}
+              value={filterData.keywords}
             />
           )}
         </AddFilterPattern.Dropdown.Popper>
       </AddFilterPattern.Dropdown>
 
       <AddFilterPattern.Search name='position' displayName='Position'>
-        {({ onClear, ...rest }) => (
-          <SearchFilterInput
-            {...rest}
-            placeholder={'Filter by position'}
-            onChange={(v) => {
-              rest.valueProps.onChange(v);
-              setFilterData({ ...filterData, position: v });
-            }}
-            onClear={() => {
-              onClear();
-              clearField('position');
-            }}
-          />
-        )}
+        <SearchFilterInput
+          placeholder={'Filter by position'}
+          onChange={(v) => {
+            setFilterData({ ...filterData, position: v });
+          }}
+          onClear={() => {
+            clearField('position');
+          }}
+          value={filterData['position']}
+        />
       </AddFilterPattern.Search>
 
       <AddFilterPattern.Select
         name='device'
         displayName='Device'
-        onChange={(v) => {
+        onChange={(v: any) => {
           setFilterData({ ...filterData, device: v });
-        }}
-        onClear={() => {
-          clearField('device');
         }}
       >
         <AddFilterPattern.Select.Trigger

@@ -6,12 +6,8 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
 import FilterPatternType, {
-  AddFilterPatternSelectProps,
   AddFilterPatternProps,
-  AddFilterPatternSearchProps,
   AddFilterPatternItemProps,
-  AddFilterPatternDropdownProps,
-  AddFilterPatternSearchValueProps,
 } from './AddFilterPattern.types';
 import AddFilterPatternSelect from './components/AddFilterPatternSelect';
 import AddFilterPatternSearch from './components/AddFilterPatternSearch';
@@ -81,74 +77,46 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
     });
   }
 
-  getSelectProps(props: AddFilterPatternItemProps): AddFilterPatternSelectProps {
-    const { name, displayName, alwaysVisible, ...rest } = props;
-
+  getSelectProps(props: AddFilterPatternItemProps) {
+    const { name, alwaysVisible } = props;
     const value = this.state.filterData[name];
 
     return {
-      ...rest,
       value,
-      name,
+      alwaysVisible,
       onClear: () => {
         this.setFilterValue(name, null);
         this.hideFilter(name, alwaysVisible);
       },
-      onChange: (v: any) => {
-        this.setState({
-          filterData: { ...this.state.filterData, [name]: v },
-        });
-      },
-    };
-  }
-
-  getSearchProps(props: AddFilterPatternItemProps): AddFilterPatternSearchProps {
-    const { name, displayName, alwaysVisible, ...rest } = props;
-    const value = this.state.filterData[name];
-
-    let valueProps: AddFilterPatternSearchValueProps = {
-      value,
-      onChange: (v) => {
+      onChange: (v: string) => {
         this.setFilterValue(name, v);
       },
     };
-    if (!alwaysVisible) {
-      valueProps = {
-        onBlur: () => {
-          if (!value) {
-            setTimeout(() => {
-              this.hideFilter(name, alwaysVisible);
-            }, 50);
-          }
-        },
-        onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (!value && e.key === 'Escape') {
-            this.hideFilter(name, alwaysVisible);
-          }
-        },
-        autoFocus: !alwaysVisible,
-        ...valueProps,
-      };
-    }
-
-    return {
-      ...rest,
-      onClear: () => {
-        this.setFilterValue(name, '');
-
-        this.hideFilter(name, alwaysVisible);
-      },
-      valueProps,
-    };
   }
 
-  getDropdownProps(props: AddFilterPatternItemProps): AddFilterPatternDropdownProps {
-    const { name, alwaysVisible, displayName, ...rest } = props;
-
+  getSearchProps(props: AddFilterPatternItemProps) {
+    const { name, alwaysVisible } = props;
     const value = this.state.filterData[name];
 
     return {
-      ...rest,
+      value,
+      alwaysVisible,
+      onChange: (v: string) => {
+        this.setFilterValue(name, v);
+      },
+      onClear: () => {
+        this.setFilterValue(name, '');
+        this.hideFilter(name, alwaysVisible);
+        setTimeout(console.log, 0, this);
+      },
+    };
+  }
+
+  getDropdownProps(props: AddFilterPatternItemProps) {
+    const { name, alwaysVisible } = props;
+    const value = this.state.filterData[name];
+
+    return {
       value,
       name,
       onClear: () => {
@@ -170,6 +138,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
       filterData,
       visibleFilters: new Set(),
     });
+    this.props.onClearAll();
   }
 
   toggleFieldVisibility(name: string, status = true) {
@@ -208,6 +177,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
 
   render() {
     const { Children } = this.asProps;
+
     const componentsNames = [
       'AddFilterPattern.Search',
       'AddFilterPattern.Select',

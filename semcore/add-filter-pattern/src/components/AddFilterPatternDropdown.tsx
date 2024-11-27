@@ -4,6 +4,11 @@ import Dropdown from '@semcore/dropdown';
 import { AddFilterPatternSelectProps } from '../AddFilterPattern.types';
 import { FilterTrigger } from '@semcore/base-trigger';
 
+type AsPropsTypeWithHandlers<T> = T & {
+  onChange: (v: any) => void;
+  onClear: () => void;
+};
+
 class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps> {
   static displayName = 'AddFilterPatternDropdown';
   popperRef = React.createRef<HTMLDivElement>();
@@ -15,7 +20,10 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
   };
 
   getTriggerProps() {
-    const { value, onClear, alwaysVisible } = this.asProps;
+    const { value, onClear, alwaysVisible } = this.asProps as AsPropsTypeWithHandlers<
+      typeof this.asProps
+    >;
+
     return {
       tag: FilterTrigger,
       empty: !value,
@@ -25,7 +33,8 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
   }
 
   getPopperProps() {
-    const { value, onClear } = this.asProps;
+    const { value, onClear } = this.asProps as AsPropsTypeWithHandlers<typeof this.asProps>;
+
     return {
       ref: this.popperRef,
       onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
