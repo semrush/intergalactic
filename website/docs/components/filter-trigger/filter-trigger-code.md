@@ -8,7 +8,7 @@ The component is used as an active state of a trigger in filters.
 
 ## Usage with Select
 
-Use `FilterTrigger` as a `tag` for `Select` or `Select.Trigger`.
+Use `FilterTrigger` as a `tag` for `Select.Trigger`.
 
 ::: sandbox
 
@@ -22,7 +22,7 @@ Use `FilterTrigger` as a `tag` for `Select` or `Select.Trigger`.
 
 If your `FilterTrigger` doesn't have a `<label>` element, use `aria-labelledby` or `aria-label`.
 
-If the filter name is displayed in the trigger alongside the value, hide it from the assistive technology to avoid double reading.
+If the filter name is included in the trigger alongside the value, hide it from the assistive technology to avoid redundant reading.
 
 ::: sandbox
 

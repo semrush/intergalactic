@@ -14,7 +14,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='controlled-filter-programmatic-focus' size={200}>
+      <Text tag='label' htmlFor='controlled-filter-trigger' id='controlled-filter-label' size={200}>
         Controlled filter
       </Text>
       <Flex gap={2} mt={2}>
@@ -22,9 +22,9 @@ const Demo = () => {
           <Select.Trigger
             tag={FilterTrigger}
             triggerRef={triggerRef}
-            id='controlled-filter-programmatic-focus'
+            id='controlled-filter-trigger'
           />
-          <Select.Menu>
+          <Select.Menu aria-labelledby='controlled-filter-label'>
             {options.map((option, idx) => {
               const { title } = option;
               return (

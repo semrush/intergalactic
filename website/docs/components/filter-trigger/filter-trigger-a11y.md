@@ -25,8 +25,16 @@ For other roles and attributes, refer to documentation for components that are c
 
 ## Considerations for developers
 
-* Make sure your `FilterTrigger` has an accessible name by using a `<label>` element, `aria-labelledby` or `aria-label`. Refer to [our examples](filter-trigger-code.md).
-* If the filter name is displayed in the trigger alongside the value, hide it from the assistive technology to avoid double reading. Refer to the [accessible name example](./filter-trigger-code.md#accessible-name).
+Sometimes, the filter name is included in the trigger alongside the value, for example "Color: Blue." In these cases, hide the name part from assistive technology to avoid redundant reading. Refer to the [accessible name example](./filter-trigger-code.md#accessible-name).
+
+### Roles and attributes
+
+The following table will help you to keep in mind the necessary attributes to make our components fully accessible in the particular cases in your interfaces.
+
+| Component       | Attribute                                                  | Usage                                                        |
+| --------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| `Trigger`       | `<label for="IDREF">` or `aria-labelledby="IDREF"` or `aria-label` | Defines an accessible name for the trigger. Refer to [our examples](filter-trigger-code.md). |
+| `Select.Menu`   | `aria-labelledby="IDREF"` or `aria-label`                          | Due to system limitations, `<Select.Menu>` doesn't generate its accessible name automatically when used with `FilterTrigger`. Make sure to label it explicitly, as in [our examples](./filter-trigger-code.md). |
 
 ## Other recommendations
 
