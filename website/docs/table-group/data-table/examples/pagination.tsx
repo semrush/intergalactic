@@ -78,7 +78,7 @@ const data = [
     vol: -1,
   },
   {
-    keyword: 'ebay buy',
+    keyword: 'ebay buy last',
     kd: 75.89,
     cpc: 0,
     vol: 21644290,
