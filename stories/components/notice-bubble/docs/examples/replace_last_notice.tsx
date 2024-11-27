@@ -1,16 +1,20 @@
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubbleManager } from 'intergalactic/notice-bubble';
-import Button from 'intergalactic/button';
-import Link from 'intergalactic/link';
+import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
+import Button from '@semcore/button';
+import Link from '@semcore/link';
 
 const manager = new NoticeBubbleManager();
 
+let counter = 0;
+
 const Demo = () => {
   const handleClick = () => {
-    manager.add({
+    counter++;
+
+    manager.replaceLast({
       children: (
         <>
-          Link was moved to <Link href='#'>Cats from outer space group</Link>
+          Link {counter} was moved to <Link href='#'>Cats from outer space group</Link>
         </>
       ),
       initialAnimation: true,
