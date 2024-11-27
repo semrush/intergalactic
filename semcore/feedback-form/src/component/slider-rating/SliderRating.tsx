@@ -3,11 +3,16 @@ import createComponent, { Component, Root, sstyled, Intergalactic } from '@semco
 import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
   value: number;
   onChange?: (value: number) => void;
   readonly?: boolean;
+  noticeTextId?: string;
 };
 
 type State = {
@@ -22,15 +27,29 @@ type StarProps = BoxProps & {
 const MIN = 1;
 const MAX = 5;
 
-class SliderRatingRoot extends Component<SliderRatingProps, State> {
+class SliderRatingRoot extends Component<
+  SliderRatingProps,
+  {},
+  State,
+  typeof SliderRatingRoot.enhance
+> {
   static displayName = 'SliderRating';
   static style = style;
 
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [
+    keyboardFocusEnhance(),
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+  ] as const;
 
   state: State = {
     hoveredIndex: -1,
     clickedIndex: -1,
+  };
+
+  static defaultProps = {
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   handleClick = (newValue: number) => (e: React.SyntheticEvent<SVGElement>) => {
@@ -96,12 +115,25 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
     }
   };
 
-  render() {
-    const { styles, value } = this.asProps;
+  getLabelText() {
     const { hoveredIndex } = this.state;
-    const SSliderRating = Root;
+    const { readonly, value } = this.asProps;
+    if (readonly) {
+      return `Your rating: ${hoveredIndex + 1} out of 5`;
+    }
 
-    const label = value ? value : hoveredIndex === -1 ? 'Not set' : hoveredIndex + 1;
+    return value ? value : hoveredIndex === -1 ? 'Not set' : `${hoveredIndex + 1} out of ${MAX}`;
+  }
+
+  render() {
+    const { styles, readonly, getI18nText, uid, noticeTextId } = this.asProps;
+    const { hoveredIndex } = this.state;
+
+    const SSliderRating = Root;
+    const sliderDescriberId = `${uid}-slider-describer`;
+    const role = readonly ? 'image' : 'slider';
+
+    const label = this.getLabelText();
 
     return sstyled(styles)(
       <SSliderRating
@@ -109,13 +141,21 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
         gap={1}
         onMouseLeave={this.handleMouseLeave}
         onKeyDown={this.handleKeyDown}
-        role='slider'
+        role={role}
         aria-orientation='horizontal'
+        aria-describedby={sliderDescriberId}
+        aria-labelledby={noticeTextId}
         aria-valuemin={MIN}
         aria-valuemax={MAX}
         aria-valuetext={label}
         aria-valuenow={hoveredIndex + 1}
       >
+        {readonly && (
+          <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
+            {getI18nText('sliderDescriber')}
+          </ScreenReaderOnly>
+        )}
+
         {new Array(MAX).fill(null).map((_, index) => {
           return (
             <Box key={index} position={'relative'}>

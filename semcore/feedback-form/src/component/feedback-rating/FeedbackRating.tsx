@@ -88,6 +88,11 @@ class FeedbackRatingRoot extends Component<
     };
   }
 
+  getNoticeTextId() {
+    const { uid } = this.asProps;
+    return `${uid}-feedback-rating-notice`;
+  }
+
   handleChangeRating = (rating: number) => {
     this.asProps.onVisibleChange(true, rating);
   };
@@ -127,7 +132,6 @@ class FeedbackRatingRoot extends Component<
       <FeedbackRating.Item
         name={config.key}
         initialValue={initialValue}
-        type={'checkbox'}
         key={config.key}
         tag={'li'}
       >
@@ -239,6 +243,7 @@ class FeedbackRatingRoot extends Component<
     const textFields = formConfig.filter(
       (item) => item.type === 'textarea' || item.type === 'input',
     );
+    const notificationId = this.getNoticeTextId();
 
     return sstyled(styles)(
       <Root render={Box}>
@@ -252,12 +257,14 @@ class FeedbackRatingRoot extends Component<
             <FeedbackIllustration />
           </Notice.Label>
           <Notice.Content tag={Flex} alignItems={'center'}>
-            <Text mr={3}>{notificationText}</Text>
+            <Text mr={3} id={notificationId}>
+              {notificationText}
+            </Text>
             <Notice.Actions mt={0}>
               <SliderRating
                 value={rating}
                 onChange={this.handleChangeRating}
-                aria-label={notificationText}
+                noticeTextId={notificationId}
               />
             </Notice.Actions>
             {learnMoreLink && (
@@ -275,6 +282,7 @@ class FeedbackRatingRoot extends Component<
           onClose={this.handelCloseModal}
           p={0}
           use:w={modalWidth ?? 440}
+          aria-labelledby={this.headerId}
         >
           <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
@@ -300,7 +308,6 @@ class FeedbackRatingRoot extends Component<
                     ref={forwardRef}
                     {...other}
                     onSubmit={api.handleSubmit}
-                    title={getI18nText('formTitle')}
                   >
                     <FeedbackRating.Item name={'rating'} initialValue={rating}>
                       {({ input }) => {
@@ -308,13 +315,9 @@ class FeedbackRatingRoot extends Component<
                       }}
                     </FeedbackRating.Item>
 
-                    <div role={'group'} aria-labelledby={this.headerId}>
-                      <ul>
-                        {checkboxFields.map((formConfigItem) =>
-                          this.renderCheckbox(formConfigItem),
-                        )}
-                      </ul>
-                    </div>
+                    <ul aria-labelledby={this.headerId}>
+                      {checkboxFields.map((formConfigItem) => this.renderCheckbox(formConfigItem))}
+                    </ul>
 
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 

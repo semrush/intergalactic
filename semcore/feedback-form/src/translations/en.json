@@ -4,5 +4,6 @@
   "formTitle": "Feedback form",
   "submitButton": "Send feedback",
   "successMessage": "Thank you for your feedback!",
-  "errorMessage": "Something went wrong. Please try again or contact us at {email}."
+  "errorMessage": "Something went wrong. Please try again or contact us at {email}.",
+  "sliderDescriber": "Press Enter to select the rating"
 }
