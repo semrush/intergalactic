@@ -14,8 +14,10 @@ const Demo = () => {
       <DataTable.Body>
         <DataTable.Cell data={data} name='keyword/kd/cpc/vol'>
           {(props, row) => {
+            // @ts-ignore
+            const value = row[props.name];
             return {
-              children: ['-', '$0', 'n/a'].includes(row[props.name]) ? <Spin /> : props.children,
+              children: ['-', '$0', 'n/a'].includes(value) ? <Spin /> : props.children,
             };
           }}
         </DataTable.Cell>

@@ -15,7 +15,7 @@ const RowAccordion = React.forwardRef(
 );
 
 const Demo = () => {
-  const [value, setValue] = React.useState([]);
+  const [value, setValue] = React.useState<number[]>([]);
   return (
     <Accordion value={value} onChange={setValue}>
       <DataTable data={data} aria-label={'Table title. Table in table'}>

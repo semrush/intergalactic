@@ -11,7 +11,6 @@ const RowAccordion = React.forwardRef(function (
 ) {
   return (
     <Accordion.Item value={value} ref={ref}>
-      <Accordion.Item.Toggle {...props} />
       <Accordion.Item.Collapse {...collapse} preserveNode />
     </Accordion.Item>
   );

@@ -15,27 +15,30 @@ const Demo = () => {
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
       const svgElement = svgRef.current;
-      let svgText = svgElementToSvgText(svgElement);
-      svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
-      svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
 
-      const downloadUrl = await svgText2DownloadUrl(svgText, 2 * width, 2 * height, extention);
+      if (svgElement) {
+        let svgText = svgElementToSvgText(svgElement);
+        svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
+        svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
 
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = `image.${extention}`;
+        const downloadUrl = await svgText2DownloadUrl(svgText, 2 * width, 2 * height, extention);
 
-      link.dispatchEvent(
-        new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        }),
-      );
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = `image.${extention}`;
 
-      setTimeout(() => {
-        link.remove();
-      }, 100);
+        link.dispatchEvent(
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+          }),
+        );
+
+        setTimeout(() => {
+          link.remove();
+        }, 100);
+      }
     },
     [],
   );
@@ -135,7 +138,7 @@ const getCSSStyles = (parentElement: Element) => {
 
     try {
       if (!s.cssRules) continue;
-    } catch (e) {
+    } catch (e: any) {
       if (e.name !== 'SecurityError') throw e; // for Firefox
       continue;
     }
@@ -184,8 +187,8 @@ const svgText2DownloadUrl = async (svg: string, width: number, height: number, f
 
     const image = new Image();
     image.onload = function () {
-      context.clearRect(0, 0, width, height);
-      context.drawImage(image, 0, 0, width, height);
+      context?.clearRect(0, 0, width, height);
+      context?.drawImage(image, 0, 0, width, height);
 
       const img = canvas.toDataURL(`image/${format}`);
       resolve(img);
