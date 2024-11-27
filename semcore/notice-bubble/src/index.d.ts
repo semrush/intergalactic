@@ -103,6 +103,10 @@ export type NoticeBubbleManagerClass = {
    * Removes notice by uid.
    * */
   remove: (uid: string) => boolean;
+  /**
+   * Replace last notice (if it is existing)
+   */
+  replaceLast: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => void;
 };
 
 /**
@@ -149,6 +153,10 @@ export declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
    * Removes notice by uid.
    * */
   remove(uid: string): boolean;
+  /**
+   * Replace last notice (if it is existing)
+   */
+  replaceLast: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => void;
 }
 
 export declare const noticeBubbleDefaultManager: NoticeBubbleManager;
