@@ -3,13 +3,25 @@ import InputTags from '@semcore/input-tags';
 import { Box } from '@semcore/flex-box';
 import Notice from '@semcore/notice';
 
-const TAGUS = (props) => (
-  <InputTags.Tag {...props}>
+const TAGUS = () => (
+  <InputTags.Tag>
     <InputTags.Tag.Text>123</InputTags.Tag.Text>
   </InputTags.Tag>
 );
 
-const InputVrapper = ({ value, setValue, handleInputKeyDown, inputValueRef }) => {
+type InputWrapperProps = {
+  value: string;
+  setValue: (value: string) => void;
+  handleInputKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => false | undefined;
+  inputValueRef: React.RefObject<HTMLInputElement>;
+};
+
+const InputWrapper = ({
+  value,
+  setValue,
+  handleInputKeyDown,
+  inputValueRef,
+}: InputWrapperProps) => {
   return (
     <InputTags.Value
       value={value}
@@ -22,13 +34,19 @@ const InputVrapper = ({ value, setValue, handleInputKeyDown, inputValueRef }) =>
   );
 };
 
-const Inner = ({ value, setValue, handleInputKeyDown, inputValueRef, tags }) => {
+const Inner = ({
+  value,
+  setValue,
+  handleInputKeyDown,
+  inputValueRef,
+  tags,
+}: InputWrapperProps & { tags: string[] }) => {
   return (
     <>
-      {tags.map((tag, idx) => (
+      {tags.map((tag) => (
         <TAGUS key={tag} />
       ))}
-      <InputVrapper
+      <InputWrapper
         value={value}
         setValue={setValue}
         handleInputKeyDown={handleInputKeyDown}
@@ -164,7 +182,7 @@ const Demo = () => {
                 <TAGUS key={tag} />
               ))}
             </InputTags.TagsContainer>
-            <InputVrapper
+            <InputWrapper
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
@@ -194,7 +212,7 @@ const Demo = () => {
             {tags.map((tag, idx) => (
               <TAGUS key={tag} />
             ))}
-            <InputVrapper
+            <InputWrapper
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
