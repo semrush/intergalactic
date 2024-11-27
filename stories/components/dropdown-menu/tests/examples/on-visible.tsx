@@ -9,7 +9,7 @@ import FileExportM from '@semcore/icon/FileExport/m';
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
 
-  const handleVisiblity = (next) => {
+  const handleVisiblity = (next: any) => {
     if (next) {
       alert("boom");
     }
