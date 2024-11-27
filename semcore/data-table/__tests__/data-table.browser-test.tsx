@@ -29,6 +29,7 @@ test.describe('DataTable', () => {
 
     await page.keyboard.press('Tab');
     await expect(page.getByRole('gridcell', { name: 'ebay buy' })).toBeFocused();
+    await page.keyboard.press('ArrowDown');
 
     await page.keyboard.press('Tab');
     await expect(page.getByRole('button', { name: 'Next' })).toBeFocused();
