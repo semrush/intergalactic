@@ -1,9 +1,9 @@
 import React from 'react';
-import DropdownMenu from 'intergalactic/dropdown-menu';
-import { Flex } from 'intergalactic/flex-box';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex } from '@semcore/flex-box';
 import TrashM from '@semcore/icon/Trash/m';
 import PlusM from '@semcore/icon/MathPlus/m';
-import Button from 'intergalactic/button';
+import Button from '@semcore/button';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 
 const Demo = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import DropdownMenu from 'intergalactic/dropdown-menu';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
