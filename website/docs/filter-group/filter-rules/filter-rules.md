@@ -155,7 +155,7 @@ The shortcut keys `Cmd` + `Enter` (macOS) and `Ctrl` + `Enter` (Windows) apply t
 
 **Values switched places**
 
-If the user entered a value in the right input that is less than the value in the left one, they will swap when the focus is lost.
+If the value in the right input is less than the value in the left one, they will swap when **both** inputs lose focus.
 
 **Inserting values into an input**
 

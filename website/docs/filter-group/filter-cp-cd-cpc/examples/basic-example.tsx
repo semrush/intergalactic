@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Dropdown from 'intergalactic/dropdown';
 import { Flex } from 'intergalactic/flex-box';
 import Button from 'intergalactic/button';
@@ -7,30 +7,38 @@ import NeighborLocation from 'intergalactic/neighbor-location';
 import InputNumber from 'intergalactic/input-number';
 import { Text } from 'intergalactic/typography';
 
-const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }) => {
+const InputRange = ({ value: valueState, changeValue, ...other }) => {
   const minRange = 1;
   const maxRange = 8;
-  let revertValues = false;
+
+  const fromRef = useRef(null);
+  const toRef = useRef(null);
 
   const handleChange = (key) => (value) => {
-    if (revertValues) {
-      revertValues = false;
-    } else {
-      valueState[key] = value;
-      changeValue({ ...valueState });
-    }
+    valueState[key] = value ? Number(value) : '';
+    changeValue({ ...valueState });
   };
 
   const handleBlur = () => {
-    const { from, to } = valueState;
-    if (from > to) {
-      revertValues = true;
-      changeValue({
-        from: Math.max(to, minRange),
-        to: Math.min(from, maxRange),
-      });
-    }
+    setTimeout(() => {
+      if (document.activeElement !== fromRef.current && document.activeElement !== toRef.current) {
+        const { from, to } = valueState;
+        if (from > to && to) {
+          changeValue({
+            from: Math.max(to, minRange),
+            to: Math.min(from, maxRange),
+          });
+        }
+        if ((!to || !from) && (to || from)) {
+          changeValue({
+            from: from ? from : minRange,
+            to: to ? to : maxRange,
+          });
+        }
+      }
+    }, 0);
   };
+
   const { from, to } = valueState;
 
   return (
@@ -40,11 +48,13 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            aria-labelledby={ariaLabelledby}
+            aria-label='From'
             placeholder='From'
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
+            ref={fromRef}
+            autoFocus
           />
           <InputNumber.Controls />
         </InputNumber>
@@ -52,11 +62,12 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            aria-labelledby={ariaLabelledby}
+            aria-label='To'
             placeholder='To'
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
+            ref={toRef}
           />
           <InputNumber.Controls />
         </InputNumber>
@@ -67,20 +78,21 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
 
 const setTriggerText = ({ from, to }) => {
   if (from && to) {
-    return `${from} - ${to}`;
-  }
-  if (from !== '' || to !== '') {
-    return `${from !== '' ? from : to}`;
+    return from === to ? from : `${from}-${to}`;
   }
   return null;
 };
 
 const Demo = () => {
-  const [filters, setFilters] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
-  const [value, setValue] = React.useState({ from: '', to: '' });
-  const [displayValue, setDisplayValue] = React.useState('');
-  const clearAll = () => setFilters(false);
+  const [filters, setFilters] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState({ from: '', to: '' });
+  const [displayValue, setDisplayValue] = useState('');
+  const clearAll = () => {
+    setFilters(false);
+    setValue({ from: '', to: '' });
+    setVisible(false);
+  };
   const applyFilters = () => {
     const { from, to } = value;
     setVisible(false);
@@ -98,29 +110,19 @@ const Demo = () => {
     <Dropdown visible={visible} onVisibleChange={setVisible}>
       <Dropdown.Trigger
         placeholder='Competitive Density'
+        aria-label='Competitive Density'
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
+        role='combobox' // for a11y testing, remove before merging
       >
-        {`Com.: ${displayValue}`}
+        <span aria-hidden>Com.:</span> {displayValue}
       </Dropdown.Trigger>
-      <Dropdown.Popper
-        w='224px'
-        p='8px 8px 16px'
-        role='dialog'
-        aria-labelledby='title-CD'
-        aria-modal='false'
-      >
+      <Dropdown.Popper w={240} p={2} pb={3} aria-labelledby='title-CD'>
         <Text id='title-CD' size={200} bold>
           Custom range
         </Text>
-        <InputRange
-          ariaLabelledby='title-CD'
-          value={value}
-          changeValue={setValue}
-          my={2}
-          onKeyDown={handleKeyDown}
-        />
+        <InputRange value={value} changeValue={setValue} my={2} onKeyDown={handleKeyDown} />
         <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
           Apply
         </Button>
