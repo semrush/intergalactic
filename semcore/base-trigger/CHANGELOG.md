@@ -9,7 +9,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Added `Hint` to the `FilterTrigger.ClearButton`.
 - Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
 - Added `role` combobox to the `FilterTrigger.TriggerButton`.
-- Added screenreader only `selected` text to the `FilterTrigger.Counter` value.
+- Added `count` prop to `FilterTrigger.Counter`, along with screenreader only `selected` text
 
 ## [4.48.1] - 2024-11-08
 
