@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.25.2] - 2024-11-22
+
+### Fixed
+
+- Cropping in `SemiDonut` chart.
+
 ## [0.25.1] - 2024-11-01
 
 ### Added

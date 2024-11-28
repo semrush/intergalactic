@@ -19,49 +19,49 @@ SError {
       margin-right: var(--intergalactic-spacing-3x, 12px);
     }
   }
-}
 
-SInner {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
+  SInner {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    box-sizing: border-box;
 
-SImageWrapper,
-SImage {
-  width: 260px;
-  height: 260px;
+    SImageWrapper,
+    SImage {
+      width: 260px;
+      height: 260px;
 
-  @media (max-width: 320px) {
-    width: 200px;
-    height: 200px;
+      @media (max-width: 320px) {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    SImageWrapper {
+      margin-right: var(--intergalactic-spacing-10x, 40px);
+    }
+
+    SWrapper {
+      flex: 1 0 300px;
+      max-width: 100%;
+      margin-top: var(--intergalactic-spacing-8x, 32px);
+    }
+
+    STitle[data-errors-title] {
+      font-size: var(--intergalactic-fs-700, 36px);
+      line-height: var(--intergalactic-lh-700, 110%);
+      color: var(--intergalactic-text-primary, #191b23);
+      font-weight: var(--intergalactic-semi-bold, 600);
+      margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
+    }
+
+    SDescription {
+      font-size: var(--intergalactic-fs-300, 16px);
+      line-height: var(--intergalactic-lh-300, 150%);
+      color: var(--intergalactic-text-primary, #191b23);
+      margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
+    }
   }
-}
-
-SImageWrapper {
-  margin-right: var(--intergalactic-spacing-10x, 40px);
-}
-
-SWrapper {
-  flex: 1 0 300px;
-  max-width: 100%;
-  margin-top: var(--intergalactic-spacing-8x, 32px);
-}
-
-STitle[data-errors-title] {
-  font-size: var(--intergalactic-fs-700, 36px);
-  line-height: var(--intergalactic-lh-700, 110%);
-  color: var(--intergalactic-text-primary, #191b23);
-  font-weight: var(--intergalactic-semi-bold, 600);
-  margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
-}
-
-SDescription {
-  font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 150%);
-  color: var(--intergalactic-text-primary, #191b23);
-  margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
 }

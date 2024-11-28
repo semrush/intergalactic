@@ -166,8 +166,7 @@ class InputTags extends Component<IInputTagsProps> {
     }
   };
 
-  bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
-    if (!editable) return;
+  onTagClick = (event: React.MouseEvent) => {
     fire(this, 'onRemove', event);
   };
 
@@ -182,7 +181,7 @@ class InputTags extends Component<IInputTagsProps> {
   getTagProps({ editable }: { editable: boolean }, index: number) {
     return {
       size: this.asProps.size,
-      onClick: this.bindHandlerTagClick(editable),
+      onClick: editable ? this.onTagClick : undefined,
       interactive: editable,
       ref: (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
@@ -304,16 +303,21 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
-  const { getI18nText } = props;
+  const { getI18nText, editable } = props;
 
   return sstyled(props.styles)(
     <>
-      <Portal>
-        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-          {getI18nText('pressEnterToEdit')}
-        </ScreenReaderOnly>
-      </Portal>
-      <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
+      {editable && (
+        <Portal>
+          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+            {getI18nText('pressEnterToEdit')}
+          </ScreenReaderOnly>
+        </Portal>
+      )}
+      <STag
+        aria-describedby={editable ? `${props.uid}-description` : undefined}
+        render={TagContainer.Tag}
+      />
     </>,
   );
 }

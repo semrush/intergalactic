@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.0] - 2024-11-21
+
+### Removed
+
+- `role='alert'` from `<Error>` component.
+- `aria-hidden` from `Error.Image`.
+
+### Changed
+
+- Empty `alt=""` for `Error.Image`.
+- Padding and colors in examples in documentation.
+
 ## [4.42.3] - 2024-11-18
 
 ### Changed

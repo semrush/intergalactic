@@ -18,6 +18,7 @@
     "baseUrl": "./semcore",
     "typeRoots": ["node_modules/@types", "tools/@types"],
     "paths": {
+      "@semcore/illustration/*": ["illustration/*"],
       "@semcore/ui/*": ["*/src"],
       "intergalactic/*": ["*/src"],
       "@semcore/*": ["*/src"],

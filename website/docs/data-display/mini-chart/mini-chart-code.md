@@ -8,7 +8,7 @@ tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Exam
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/mini-chart/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -18,7 +18,7 @@ tabs: Design('mini-chart'), A11y('mini-chart-a11y'), API('mini-chart-api'), Exam
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/base_color.tsx';
+  export Demo from 'stories/components/mini-chart/docs/examples/base_color.tsx';
 </script>
 
 :::

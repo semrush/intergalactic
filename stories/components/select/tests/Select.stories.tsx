@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import { Text } from '@semcore/typography';
+import OnVisibleExample from './examples/on_visible';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select/Test',
@@ -41,4 +42,8 @@ export const BasicSelectFocusIteracrion: Story = {
       </>
     );
   },
+};
+
+export const OnVisible: Story = {
+  render: OnVisibleExample,
 };
