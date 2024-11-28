@@ -47,6 +47,126 @@ export const Base: Story = {
   render: BaseExample,
 };
 
+export const AccessToCells: Story = {
+  render: AccessToCellsExample,
+};
+
+export const AccessToSetOfCells: Story = {
+  render: AccessToSetOfCellsExample,
+};
+
 export const AccordionInsideTable: Story = {
   render: AccordionInsideTableExample,
+};
+
+export const AddingAdditionalElementsToTableBody: Story = {
+  render: AddingAdditionalElementsToTableBodyExample,
+};
+
+export const AdditionalElementsInHeader: Story = {
+  render: AdditionalElementsInHeaderExample,
+};
+
+export const Borders: Story = {
+  render: BordersExample,
+};
+
+export const ColumnAlignment: Story = {
+  render: ColumnAlignmentExample,
+};
+
+export const ColumnExpand: Story = {
+  render: ColumnExpandExample,
+};
+
+export const ColumnSize: Story = {
+  render: ColumnSizeExample,
+};
+
+export const ColumnsMerging: Story = {
+  render: ColumnsMergingExample,
+};
+
+export const Compact: Story = {
+  render: CompactExample,
+};
+
+export const CustomRowsRendering: Story = {
+  render: CustomRowsRenderingExample,
+};
+
+export const CustomViewForTableBody: Story = {
+  render: CustomViewForTableBodyExample,
+};
+
+export const CustomizingHeader: Story = {
+  render: CustomizingHeaderExample,
+};
+
+export const DownloadStatus: Story = {
+  render: DownloadStatusExample,
+};
+
+export const ExportInImage: Story = {
+  render: ExportInImageExample,
+};
+
+export const FixedColumns: Story = {
+  render: FixedColumnsExample,
+};
+
+export const FixedHeader: Story = {
+  render: FixedHeaderExample,
+};
+
+export const FixedHeaderWithSpinOverlay: Story = {
+  render: FixedHeaderWithSpinOverlayExample,
+};
+
+export const MultiLevelHeader: Story = {
+  render: MultiLevelHeaderExample,
+};
+
+export const Pagination: Story = {
+  render: PaginationExample,
+};
+
+export const RowsMerging: Story = {
+  render: RowsMergingExample,
+};
+
+export const ScrollInTable: Story = {
+  render: ScrollInTableExample,
+};
+
+export const SecondaryTable: Story = {
+  render: SecondaryTableExample,
+};
+
+export const SkeletonInTable: Story = {
+  render: SkeletonInTableExample,
+};
+
+export const Sorting: Story = {
+  render: SortingExample,
+};
+
+export const SortingChangingSize: Story = {
+  render: SortingChangingSizeExample,
+};
+
+export const SortingChangingSizeByColumns: Story = {
+  render: SortingChangingSizeByColumnsExample,
+};
+
+export const TableInTable: Story = {
+  render: TableInTableExample,
+};
+
+export const TableInTableWithFixedColumn: Story = {
+  render: TableInTableWithFixedColumnExample,
+};
+
+export const VirtualScrollInTable: Story = {
+  render: VirtualScrollInTableExample,
 };
