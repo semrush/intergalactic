@@ -6,6 +6,7 @@ import createComponent, {
   PropGetterFn,
   UnknownProperties,
   Intergalactic,
+  IRootComponentProps,
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
@@ -18,8 +19,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
-import { findAllComponents } from '@semcore/utils/lib/findComponent';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { extractFrom, isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 /** @deprecated */
@@ -166,8 +166,7 @@ class InputTags extends Component<IInputTagsProps> {
     }
   };
 
-  bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
-    if (!editable) return;
+  onTagClick = (event: React.MouseEvent) => {
     fire(this, 'onRemove', event);
   };
 
@@ -182,7 +181,7 @@ class InputTags extends Component<IInputTagsProps> {
   getTagProps({ editable }: { editable: boolean }, index: number) {
     return {
       size: this.asProps.size,
-      onClick: this.bindHandlerTagClick(editable),
+      onClick: editable ? this.onTagClick : undefined,
       interactive: editable,
       ref: (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
@@ -195,14 +194,34 @@ class InputTags extends Component<IInputTagsProps> {
       getI18nText: this.asProps.getI18nText,
     };
   }
+  getInputTagsContainerProps() {
+    return {
+      tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
+    };
+  }
 
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
-    const TagsComponents = findAllComponents(Children, ['InputTags.Tag']);
-    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
+    const isAdvancedMode = isAdvanceMode(Children, ['InputTags.TagsContainer']);
+
+    if (isAdvancedMode) {
+      return sstyled(styles)(
+        <SInputTags
+          render={Input}
+          tag={ScrollArea}
+          onMouseDown={this.moveFocusToInput}
+          container={this.scrollContainerRef}
+          tabIndex={null}
+        >
+          <Children />
+        </SInputTags>,
+      );
+    }
+
+    const [InputComponents, RestComponents] = extractFrom(Children, ['InputTags.Value']);
 
     return sstyled(styles)(
       <SInputTags
@@ -213,7 +232,7 @@ class InputTags extends Component<IInputTagsProps> {
         tabIndex={null}
       >
         <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
-          {TagsComponents}
+          {RestComponents}
         </SListAriaWrapper>
         {InputComponents}
       </SInputTags>,
@@ -276,6 +295,20 @@ class Value extends Component<IInputTagsValueProps> {
   }
 }
 
+function InputTagsContainer({
+  Children,
+  tagsContainerAriaLabel,
+  styles,
+}: IRootComponentProps & { tagsContainerAriaLabel: string }) {
+  const SListAriaWrapper = 'ul';
+
+  return sstyled(styles)(
+    <SListAriaWrapper aria-label={tagsContainerAriaLabel}>
+      <Children />
+    </SListAriaWrapper>,
+  );
+}
+
 function InputTagContainer(props: any) {
   const STag = Root;
 
@@ -304,22 +337,28 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
-  const { getI18nText } = props;
+  const { getI18nText, editable } = props;
 
   return sstyled(props.styles)(
     <>
-      <Portal>
-        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-          {getI18nText('pressEnterToEdit')}
-        </ScreenReaderOnly>
-      </Portal>
-      <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
+      {editable && (
+        <Portal>
+          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+            {getI18nText('pressEnterToEdit')}
+          </ScreenReaderOnly>
+        </Portal>
+      )}
+      <STag
+        aria-describedby={editable ? `${props.uid}-description` : undefined}
+        render={TagContainer.Tag}
+      />
     </>,
   );
 }
 
 export default createComponent(InputTags, {
   Value,
+  TagsContainer: InputTagsContainer,
   Tag: [
     InputTagContainer,
     {
@@ -331,6 +370,7 @@ export default createComponent(InputTags, {
   ],
 }) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
   Value: typeof Input.Value;
+  TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
     Text: typeof Tag.Text;
     Close: typeof Tag.Close;

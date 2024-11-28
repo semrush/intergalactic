@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.2] - 2024-11-27
+
+### Fixed
+
+- Advanced rendering of child elements doesn't display tags at all.
+
+## [4.45.1] - 2024-11-25
+
+### Fixed
+
+- Unnecessary `clickable` announcement by VO on not editable tags.
+
 ## [4.45.0] - 2024-11-18
 
 ### Changed

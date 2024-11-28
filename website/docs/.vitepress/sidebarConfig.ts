@@ -125,14 +125,29 @@ export const sideBarConfig: SidebarConfig = [
         collapsed: true,
         items: [
           {
+            link: '/content/date-format/date-format',
+            activeMatch: '/content/date-format/',
+            text: 'Date format',
+          },
+          {
+            link: '/content/file-extensions/file-extensions',
+            activeMatch: '/content/file-extensions/',
+            text: 'File extensions',
+          },
+          {
+            link: '/content/numbers/numbers',
+            activeMatch: '/content/numbers/',
+            text: 'Numbers',
+          },
+          {
             link: '/content/punctuation/punctuation',
             activeMatch: '/content/punctuation/',
             text: 'Punctuation and special symbols',
           },
           {
-            link: '/content/date-format/date-format',
-            activeMatch: '/content/date-format/',
-            text: 'Date format',
+            link: '/content/units-of-measurement/units-of-measurement',
+            activeMatch: '/content/units-of-measurement/',
+            text: 'Units of measurement',
           },
         ],
       },
