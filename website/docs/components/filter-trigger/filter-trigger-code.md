@@ -34,15 +34,9 @@ If the filter name is included in the trigger alongside the value, hide it from 
 
 ## Advanced filters with counter
 
-This example uses [Dropdown](/components/dropdown/dropdown) and [Counter](/components/counter/counter). It's recommended for [Advanced filters](../../filter-group/advanced-filters/advanced-filters.md) where it's important to show that there are several additional filters inside.
+For an example of using `FilterTrigger` with [Dropdown](/components/dropdown/dropdown) and graphic counter, refer to [Advanced filters](../../filter-group/advanced-filters/advanced-filters-code.md).
 
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/filter-trigger/docs/examples/advanced_with_counter.tsx';
-</script>
-
-:::
+![](static/filter-active-counter-m.png)
 
 ## Programmatic focus
 
