@@ -16,7 +16,7 @@ import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { Box, Flex } from '@semcore/flex-box';
 import { forkRef } from '@semcore/utils/lib/ref';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/input-mask.shadow.css';

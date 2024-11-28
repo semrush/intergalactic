@@ -11,7 +11,7 @@ import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { TagProps, TagContainer } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Portal from '@semcore/portal';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';

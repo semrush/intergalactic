@@ -3,7 +3,7 @@ import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import CloseM from '@semcore/icon/Close/m';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
 
 type ItemAsProps = {
