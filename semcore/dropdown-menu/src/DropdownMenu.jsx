@@ -43,25 +43,6 @@ class DropdownMenuRoot extends AbstractDropdown {
   actionsRef = React.createRef();
   role = 'menu';
 
-  uncontrolledProps() {
-    return {
-      ...super.uncontrolledProps(),
-      visible: [
-        null,
-        (visible) => {
-          if (visible === true) {
-            setTimeout(() => {
-              const highlightedIndex = this.asProps.highlightedIndex ?? 0;
-              const element = this.itemRefs[highlightedIndex];
-              element?.focus();
-              this.handlers.highlightedIndex(highlightedIndex);
-            }, 0);
-          }
-        },
-      ],
-    };
-  }
-
   itemRef(props, index, node) {
     super.itemRef(props, index, node);
 
