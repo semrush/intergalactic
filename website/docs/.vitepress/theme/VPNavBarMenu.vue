@@ -2,9 +2,6 @@
 import { useData } from 'vitepress'
 import VPNavBarMenuLink from 'vitepress/dist/client/theme-default/components/VPNavBarMenuLink.vue'
 import VPNavBarMenuGroup from 'vitepress/dist/client/theme-default/components/VPNavBarMenuGroup.vue'
-import VPFlyout from 'vitepress/dist/client/theme-default/components/VPFlyout.vue'
-import PreferenceSwitch from './PreferenceSwitch.vue';
-import { preferSemcoreUi } from './preferences'
 
 const { theme } = useData()
 </script>
@@ -16,17 +13,6 @@ const { theme } = useData()
       <VPNavBarMenuLink v-if="'link' in item" :item="item" />
       <VPNavBarMenuGroup v-else :item="item" />
     </template>
-    <VPFlyout
-      :class="{
-        VPNavBarMenuGroup: true,
-        active: false
-      }"
-      :button="preferSemcoreUi ? '@semcore/ui' : 'intergalactic'"
-      :items="[]"
-    >
-      
-      <PreferenceSwitch :paddings="true" />
-    </VPFlyout>
   </nav>
 </template>
 

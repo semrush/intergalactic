@@ -7,7 +7,7 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 ## Ellipsis
 
 ```jsx
-import Ellipsis from 'intergalactic/ellipsis';
+import Ellipsis from '@semcore/ui/ellipsis';
 <Ellipsis />;
 ```
 

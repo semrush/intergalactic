@@ -9,7 +9,7 @@ tabs: Design('chart-legend'), API('chart-legend-api'), Example('chart-legend-cod
 For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-chart/d3-chart-api).
 
 ```js
-import { ChartLegend } from 'intergalactic/d3-chart';
+import { ChartLegend } from '@semcore/ui/d3-chart';
 
 <ChartLegend />;
 ```

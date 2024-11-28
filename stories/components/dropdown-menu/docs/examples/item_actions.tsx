@@ -1,9 +1,9 @@
 import React from 'react';
-import DropdownMenu from 'intergalactic/dropdown-menu';
-import { Flex } from 'intergalactic/flex-box';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex } from '@semcore/flex-box';
 import TrashM from '@semcore/icon/Trash/m';
 import PlusM from '@semcore/icon/MathPlus/m';
-import Button from 'intergalactic/button';
+import Button from '@semcore/button';
 import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
 
 const Demo = () => {
@@ -21,8 +21,8 @@ const Demo = () => {
                 Menu item 3
               </DropdownMenu.Item.Content>
               <DropdownMenu.Actions gap={1}>
-                <DropdownMenu.Item tag={Button} addonLeft={PlusM} aria-label={'Add new'} />
-                <DropdownMenu.Item tag={Button} addonLeft={TrashM} aria-label={'Delete'} />
+                <DropdownMenu.Item tag={Button} addonLeft={PlusM} title={'Add new'} />
+                <DropdownMenu.Item tag={Button} addonLeft={TrashM} title={'Delete'} />
               </DropdownMenu.Actions>
             </Flex>
           </DropdownMenu>

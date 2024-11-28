@@ -3,6 +3,7 @@ import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
@@ -66,7 +67,6 @@ const Demo = () => {
           w={300}
           size='l'
           onRemove={onRemoveLastTag}
-          tabIndex={-1}
           delimiters={[]}
         >
           {tags.map((tag, i) => (
@@ -82,6 +82,7 @@ const Demo = () => {
             id='secondary-social-medias'
             placeholder='Select social media'
             onBlur={onBlurValue}
+            aria-describedby={valueInput ? 'search-result' : undefined}
           />
         </Select.Trigger>
         <Select.Menu>
@@ -90,8 +91,22 @@ const Demo = () => {
               {tag}
             </Select.Option>
           ))}
-          {!tagsFilter.length && valueInput !== '' && (
-            <Select.OptionHint>Nothing found</Select.OptionHint>
+          {tagsFilter.length !== 0 && valueInput !== '' && (
+            <ScreenReaderOnly id='search-result' aria-hidden={'true'}>
+              {tagsFilter.length} result{tagsFilter.length > 1 && 's'} found
+            </ScreenReaderOnly>
+          )}
+          {tagsFilter.length === 0 && valueInput !== '' && (
+            <Text
+              tag={'div'}
+              id='search-result'
+              key='Nothing'
+              p={'6px 8px'}
+              size={200}
+              use={'secondary'}
+            >
+              Nothing found
+            </Text>
           )}
         </Select.Menu>
       </Select>

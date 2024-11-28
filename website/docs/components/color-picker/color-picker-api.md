@@ -9,7 +9,7 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 Widget for selecting the color.
 
 ```jsx
-import ColorPicker from 'intergalactic/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker />;
 ```
 
@@ -20,7 +20,7 @@ import ColorPicker from 'intergalactic/color-picker';
 The wrap over the `<Dropdown.Trigger/>` component.
 
 ```jsx
-import ColorPicker from 'intergalactic/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Trigger />;
 ```
 
@@ -29,7 +29,7 @@ import ColorPicker from 'intergalactic/color-picker';
 The wrap over the `<Dropdown.Popper/>` component.
 
 ```jsx
-import ColorPicker from 'intergalactic/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Popper />;
 ```
 
@@ -38,7 +38,7 @@ import ColorPicker from 'intergalactic/color-picker';
 Group of ColorPicker.Items.
 
 ```jsx
-import ColorPicker from 'intergalactic/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Colors />;
 ```
 
@@ -49,7 +49,7 @@ import ColorPicker from 'intergalactic/color-picker';
 One unit of `<ColorPicker.Colors />`. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
-import ColorPicker from 'intergalactic/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Item />;
 ```
 
@@ -60,7 +60,7 @@ import ColorPicker from 'intergalactic/color-picker';
 Part of ColorPicker that provides the ability to add and remove custom colors to the palette.
 
 ```jsx
-import { PaletteManager } from 'intergalactic/color-picker';
+import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager />;
 ```
 
@@ -71,7 +71,7 @@ import { PaletteManager } from 'intergalactic/color-picker';
 Group of PaletteManager.Items.
 
 ```jsx
-import { PaletteManager } from 'intergalactic/color-picker';
+import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Colors />;
 ```
 
@@ -82,7 +82,7 @@ import { PaletteManager } from 'intergalactic/color-picker';
 One unit of `<PaletteManager.Colors />`. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
-import { PaletteManager } from 'intergalactic/color-picker';
+import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Item />;
 ```
 
@@ -93,7 +93,7 @@ import { PaletteManager } from 'intergalactic/color-picker';
 Input for adding colors in hexadecimal format.
 
 ```jsx
-import { PaletteManager } from 'intergalactic/color-picker';
+import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.InputColor />;
 ```
 

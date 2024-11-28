@@ -11,8 +11,8 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import NoticeGlobal from 'intergalactic/notice-global';
-import { Box } from 'intergalactic/flex-box';
+import NoticeGlobal from '@semcore/ui/notice-global';
+import { Box } from '@semcore/ui/flex-box';
 
 const THEME = ['neutral', 'info', 'success', 'warning', 'danger'];
 

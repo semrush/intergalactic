@@ -18,6 +18,9 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
+import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -79,6 +82,19 @@ class InputTags extends Component<IInputTagsProps> {
   inputRef = React.createRef<HTMLInputElement>();
   scrollContainerRef = React.createRef<HTMLElement>();
   tagsRefs: (HTMLElement | null)[] = [];
+
+  state = {
+    tagsContainerAriaLabel: '',
+  };
+
+  componentDidMount() {
+    const inputElement = this.inputRef.current;
+    const inputAccessibleName = getAccessibleName(inputElement);
+
+    this.setState({
+      tagsContainerAriaLabel: inputAccessibleName,
+    });
+  }
 
   moveFocusToInput = (event: React.FocusEvent) => {
     const inputRef = this.inputRef.current;
@@ -150,19 +166,8 @@ class InputTags extends Component<IInputTagsProps> {
     }
   };
 
-  bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
-    if (!editable) return;
+  onTagClick = (event: React.MouseEvent) => {
     fire(this, 'onRemove', event);
-  };
-
-  handleContainerFocus = (event: React.FocusEvent) => {
-    const { target } = event;
-    const { current: container } = this.scrollContainerRef;
-    if (!container || target !== container) return;
-    const hasTags = this.tagsRefs.some(Boolean);
-    if (hasTags) return;
-    if (event.relatedTarget === this.inputRef.current) return;
-    this.moveFocusToInput(event);
   };
 
   getValueProps() {
@@ -176,7 +181,7 @@ class InputTags extends Component<IInputTagsProps> {
   getTagProps({ editable }: { editable: boolean }, index: number) {
     return {
       size: this.asProps.size,
-      onClick: this.bindHandlerTagClick(editable),
+      onClick: editable ? this.onTagClick : undefined,
       interactive: editable,
       ref: (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
@@ -195,17 +200,21 @@ class InputTags extends Component<IInputTagsProps> {
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
+    const TagsComponents = findAllComponents(Children, ['InputTags.Tag']);
+    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
+
     return sstyled(styles)(
       <SInputTags
         render={Input}
         tag={ScrollArea}
         onMouseDown={this.moveFocusToInput}
-        onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
+        tabIndex={null}
       >
-        <SListAriaWrapper>
-          <Children />
+        <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
+          {TagsComponents}
         </SListAriaWrapper>
+        {InputComponents}
       </SInputTags>,
     );
   }
@@ -294,16 +303,21 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
-  const { getI18nText } = props;
+  const { getI18nText, editable } = props;
 
   return sstyled(props.styles)(
     <>
-      <Portal>
-        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-          {getI18nText('pressEnterToEdit')}
-        </ScreenReaderOnly>
-      </Portal>
-      <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
+      {editable && (
+        <Portal>
+          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+            {getI18nText('pressEnterToEdit')}
+          </ScreenReaderOnly>
+        </Portal>
+      )}
+      <STag
+        aria-describedby={editable ? `${props.uid}-description` : undefined}
+        render={TagContainer.Tag}
+      />
     </>,
   );
 }

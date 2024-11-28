@@ -9,7 +9,7 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 The component responsible for the background under the progress bar value.
 
 ```jsx
-import ProgressBar from 'intergalactic/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar />;
 ```
 
@@ -20,7 +20,7 @@ import ProgressBar from 'intergalactic/progress-bar';
 The component responsible for the progress bar value.
 
 ```jsx
-import ProgressBar from 'intergalactic/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar.Value />;
 ```
 

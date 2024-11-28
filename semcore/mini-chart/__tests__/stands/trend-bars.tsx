@@ -1,8 +1,7 @@
 import React from 'react';
-// @ts-ignore
-import MiniChart from 'intergalactic/mini-chart';
-// @ts-ignore
-import { Flex } from 'intergalactic/flex-box';
+
+import MiniChart from '../../src';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const data = [

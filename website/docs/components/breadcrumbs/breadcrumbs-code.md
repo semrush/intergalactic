@@ -10,7 +10,7 @@ Try resizing the page to see how the links adjust. If the text in a link is too 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/usage_example.tsx';
+  export Demo from 'stories/components/breadcrumbs/docs/examples/usage_example.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ You can redefine `tag` for the `<Breadcrumbs.Item />`. This is necessary, for ex
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/redefining_a_tag.tsx';
+  export Demo from 'stories/components/breadcrumbs/docs/examples/redefining_a_tag.tsx';
 </script>
 
 :::

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.4] - 2024-11-25
+
+### Fixed
+
+- Double call of `onVisibleChange` handler.
+
+## [4.41.3] - 2024-11-22
+
+### Fixed
+
+- `onMouseEnter` in Dropdown.Item was not bubbling the event.
+
 ## [4.41.2] - 2024-11-08
 
 ### Fixed

@@ -13,7 +13,7 @@ For all common D3 chart properties, refer to [D3 chart API](/data-display/d3-cha
 For Horizontal view, you should pass `true` into `invertAxis` prop
 
 ```js
-import { Chart } from 'intergalactic/d3-chart';
+import { Chart } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="BarChartProps" :types={...types} />
@@ -23,7 +23,7 @@ import { Chart } from 'intergalactic/d3-chart';
 Horizontal chart Bar.
 
 ```js
-import { HorizontalBar } from 'intergalactic/d3-chart';
+import { HorizontalBar } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="HorizontalBarProps" :types={...types} />
@@ -33,7 +33,7 @@ import { HorizontalBar } from 'intergalactic/d3-chart';
 It have children components `Bar, HorizontalBar`.
 
 ```js
-import { GroupBar } from 'intergalactic/d3-chart';
+import { GroupBar } from '@semcore/ui/d3-chart';
 
 <GroupBar>
   <GroupBar.Bar />

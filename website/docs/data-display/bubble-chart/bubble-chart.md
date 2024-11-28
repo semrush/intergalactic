@@ -11,7 +11,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart, BubbleChartProps } from '@semcore/d3-chart';
-import resolveColor from 'intergalactic/utils/lib/color';
+import resolveColor from '@semcore/ui/utils/lib/color';
 
 const data = [
   { x: 2, y: 3, value: 5040, label: 'label 1' },

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.41.2] - 2024-11-20
+
+### Fixed
+
+- `aria-label` property moved from the root component to the `Input.Value` component.
+
 ## [7.41.1] - 2024-11-08
 
 ### Changed

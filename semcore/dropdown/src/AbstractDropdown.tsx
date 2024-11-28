@@ -69,6 +69,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (interaction === 'none') return false;
 
     e.preventDefault();
+    e.stopPropagation();
     this.handlers.visible(true);
 
     if (this.role === 'menu') {
@@ -78,6 +79,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         element?.focus();
       }, 0);
     }
+
+    return false;
   };
 
   getTriggerProps() {
@@ -132,7 +135,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       id: `igc-${uid}-option-${index}`,
       size,
       index,
-      onMouseEnter: () => this.handlers.selectedIndex(index),
+      onMouseEnter: () => {
+        this.handlers.selectedIndex(index);
+      },
       role: this.childRole,
     };
   }

@@ -8,8 +8,8 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 <script lang="tsx">
 import React from 'react';
-import Tag from 'intergalactic/tag';
-import EditM from 'intergalactic/icon/Edit/m';
+import Tag from '@semcore/ui/tag';
+import EditM from '@semcore/ui/icon/Edit/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration((createGroupWidgets) => {

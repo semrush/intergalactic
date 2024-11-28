@@ -10,7 +10,7 @@ tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example
 Wrap over the tab elements.
 
 ```jsx
-import TabPanel from 'intergalactic/tab-panel';
+import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel />;
 ```
 
@@ -25,7 +25,7 @@ It is recommended to make tabs with links, so that the user can open a separate 
 :::
 
 ```jsx
-import TabPanel from 'intergalactic/tab-panel';
+import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item />;
 ```
 
@@ -38,7 +38,7 @@ The addon inside the tab (most commonly an icon) sets the correct indents depend
 It takes all the properties of the `Box`.
 
 ```jsx
-import TabPanel from 'intergalactic/tab-panel';
+import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Addon />;
 ```
 
@@ -49,7 +49,7 @@ This ordinary text sets the appropriate indents depending on the size. If a simp
 It takes all the properties of the `Box`.
 
 ```jsx
-import TabPanel from 'intergalactic/tab-panel';
+import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Text />;
 ```
 

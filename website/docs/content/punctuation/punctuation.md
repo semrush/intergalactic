@@ -90,7 +90,7 @@ Use to prevent unwanted line breaks.
 | &shy;        | `&shy;`            |
 
 * Use to indicate where a hyphenated break is allowed. It’s invisible otherwise
-* Useful in scenarios when the same string is displayed in different layouts 
+* Useful in scenarios when the same string is displayed in different layouts
 
 <DosDonts>
     <template #dont>
@@ -340,6 +340,6 @@ Avoid using the “x” letter.
         <!-- the period prevents Vitepress from converting x to &times; -->
     </template>
     <template #do>
-        1080 &times; 1920 px        
+        1080 &times; 1920 px
     </template>
 </DosDonts>
