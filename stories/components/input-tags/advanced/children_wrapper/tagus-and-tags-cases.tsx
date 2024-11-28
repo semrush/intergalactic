@@ -2,10 +2,16 @@ import React from 'react';
 import InputTags from '@semcore/input-tags';
 import { Box } from '@semcore/flex-box';
 import Notice from '@semcore/notice';
+import { Text, List } from '@semcore/ui/typography';
 
 const TAGUS = () => (
   <InputTags.Tag>
-    <InputTags.Tag.Text>123</InputTags.Tag.Text>
+    <InputTags.Tag.Text><InputTags.Tag.Circle
+        style={{
+          background: '#2595e4'
+        }}
+      />123</InputTags.Tag.Text>
+    <InputTags.Tag.Close />
   </InputTags.Tag>
 );
 
@@ -29,30 +35,8 @@ const InputWrapper = ({
       onKeyDown={handleInputKeyDown}
       ref={inputValueRef}
       id='add-new-social-media'
-      placeholder='Add social media'
+      placeholder='InputWrapper'
     />
-  );
-};
-
-const Inner = ({
-  value,
-  setValue,
-  handleInputKeyDown,
-  inputValueRef,
-  tags,
-}: InputWrapperProps & { tags: string[] }) => {
-  return (
-    <>
-      {tags.map((tag) => (
-        <TAGUS key={tag} />
-      ))}
-      <InputWrapper
-        value={value}
-        setValue={setValue}
-        handleInputKeyDown={handleInputKeyDown}
-        inputValueRef={inputValueRef}
-      />
-    </>
   );
 };
 
@@ -116,30 +100,17 @@ const Demo = () => {
 
   return (
     <>
-      <Notice mb={2} theme='success'>
-        <Notice.Content>
-          <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-            <InputTags.TagsContainer>
-              {tags.map((tag, idx) => (
-                <TAGUS key={tag} />
-              ))}
-            </InputTags.TagsContainer>
-            <InputTags.Value
-              value={value}
-              onChange={setValue}
-              onKeyDown={handleInputKeyDown}
-              ref={inputValueRef}
-              id='add-new-social-media'
-              placeholder='Add social media'
-            />
-          </InputTags>
-        </Notice.Content>
-      </Notice>
 
       <Notice mb={2} theme='warning'>
         <Notice.Content>
+        <Text size={200} mb={2} >
+            Case1: No TagContainers: Tagus + Tags + InputTags.Value
+          </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
             {tags.map((tag, idx) => (
+              <TAGUS key={tag} />
+            ))}
+             {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
                 <InputTags.Tag.Text>123</InputTags.Tag.Text>
               </InputTags.Tag>
@@ -150,7 +121,7 @@ const Demo = () => {
               onKeyDown={handleInputKeyDown}
               ref={inputValueRef}
               id='add-new-social-media'
-              placeholder='Add social media'
+              placeholder='Tagus+Tags+Value'
             />
           </InputTags>
         </Notice.Content>
@@ -158,17 +129,54 @@ const Demo = () => {
 
       <Notice mb={2} theme='warning'>
         <Notice.Content>
+        <Text size={200} mb={2} >
+            Case2: TagContainer For both: Tagus + Tags + InputTags.Value
+          </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-            {tags.map((tag, idx) => (
-              <TAGUS key={tag} />
+          <InputTags.TagsContainer>
+              {tags.map((tag, idx) => (
+                <TAGUS key={tag} />
+              ))}
+          
+           
+             {tags.map((tag, idx) => (
+              <InputTags.Tag key={tag}>
+                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+              </InputTags.Tag>
             ))}
+              </InputTags.TagsContainer>
             <InputTags.Value
               value={value}
               onChange={setValue}
               onKeyDown={handleInputKeyDown}
               ref={inputValueRef}
               id='add-new-social-media'
-              placeholder='Add social media'
+              placeholder='Tagus and Tags with container+Value'
+            />
+          </InputTags>
+        </Notice.Content>
+      </Notice>
+
+
+      <Notice mb={2} theme='danger'>
+        <Notice.Content>
+        <Text size={200} mb={2} >
+            Case3: No TagContainer : Tagus + Tags + InputWrapper
+          </Text>
+          <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+            {tags.map((tag, idx) => (
+              <TAGUS key={tag} />
+            ))}
+             {tags.map((tag, idx) => (
+              <InputTags.Tag key={tag}>
+                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+              </InputTags.Tag>
+            ))}
+             <InputWrapper
+              value={value}
+              setValue={setValue}
+              handleInputKeyDown={handleInputKeyDown}
+              inputValueRef={inputValueRef}
             />
           </InputTags>
         </Notice.Content>
@@ -176,43 +184,23 @@ const Demo = () => {
 
       <Notice mb={2} theme='warning'>
         <Notice.Content>
+        <Text size={200} mb={2} >
+            Case4: TagContainer for both : Tagus + Tags + InputWrapper
+          </Text>
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-            <InputTags.TagsContainer>
+          <InputTags.TagsContainer>
               {tags.map((tag, idx) => (
                 <TAGUS key={tag} />
               ))}
-            </InputTags.TagsContainer>
-            <InputWrapper
-              value={value}
-              setValue={setValue}
-              handleInputKeyDown={handleInputKeyDown}
-              inputValueRef={inputValueRef}
-            />
-          </InputTags>
-        </Notice.Content>
-      </Notice>
-
-      <Notice mb={2} theme='danger'>
-        <Notice.Content>
-          <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-            <Inner
-              value={value}
-              setValue={setValue}
-              handleInputKeyDown={handleInputKeyDown}
-              inputValueRef={inputValueRef}
-              tags={tags}
-            />
-          </InputTags>
-        </Notice.Content>
-      </Notice>
-
-      <Notice mb={2} theme='danger'>
-        <Notice.Content>
-          <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
-            {tags.map((tag, idx) => (
-              <TAGUS key={tag} />
+          
+           
+             {tags.map((tag, idx) => (
+              <InputTags.Tag key={tag}>
+                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+              </InputTags.Tag>
             ))}
-            <InputWrapper
+              </InputTags.TagsContainer>
+              <InputWrapper
               value={value}
               setValue={setValue}
               handleInputKeyDown={handleInputKeyDown}
