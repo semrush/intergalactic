@@ -77,4 +77,43 @@ export function findAllComponents(Children: any, names: string[]): Intergalactic
   return result;
 }
 
+/**
+ * Extract some components from Children and return them and rest of components as tuple.
+ */
+export function extractFrom(Children: any, names: string[]): IntergalacticComponent[][] {
+  const extracted: IntergalacticComponent[] = [];
+  const rest: IntergalacticComponent[] = [];
+
+  const extractor = (Children: any) => {
+    const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
+    React.Children.toArray(children).forEach((child) => {
+      if (React.isValidElement(child)) {
+        if (child.type === React.Fragment) {
+          extractor(child.props.children);
+        } else if (
+          typeof child.type === 'function' &&
+          CHILDREN_COMPONENT in child.type &&
+          child.type[CHILDREN_COMPONENT]
+        ) {
+          extractor(child.type);
+        } else {
+          // @ts-ignore
+          const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
+          const component = !!inheritedNames.find((name: string) => names.includes(name));
+
+          if (component) {
+            extracted.push(child);
+          } else {
+            rest.push(child);
+          }
+        }
+      }
+    });
+  };
+
+  extractor(Children);
+
+  return [extracted, rest];
+}
+
 export default findComponent;
