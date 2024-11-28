@@ -4,7 +4,7 @@ import { selectOption } from './utils';
 
 test.describe('FilterTrigger', () => {
   test('Basic usage', async ({ page }) => {
-    const standPath = 'website/docs/components/filter-trigger/examples/usage_with_select.tsx';
+    const standPath = 'stories/components/filter-trigger/docs/examples/usage_with_select.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

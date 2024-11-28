@@ -8,7 +8,7 @@ test.skip('Users can interact with FilterTrigger via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/filter-trigger/examples/usage_with_select.tsx';
+  const standPath = 'stories/components/filter-trigger/docs/examples/usage_with_select.tsx';
   const reportPath = 'website/docs/components/filter-trigger/filter-trigger-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');

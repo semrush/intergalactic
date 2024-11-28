@@ -77,6 +77,11 @@ export type FilterTriggerProps = BaseTriggerProps & {
   triggerRef?: React.Ref<HTMLButtonElement>;
 };
 
+export type FilterTriggerCounterProps = {
+  /** Count for render */
+  count?: number;
+};
+
 declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
   Text: typeof Box;
   Addon: typeof Box;
@@ -95,7 +100,7 @@ declare const LinkTrigger: Intergalactic.Component<'div', LinkTriggerProps> & {
 declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> & {
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
-  Counter: Intergalactic.Component<'div', BoxProps & DotProps>;
+  Counter: Intergalactic.Component<'div', BoxProps & DotProps & FilterTriggerCounterProps>;
   TriggerButton: typeof BaseTrigger;
   ClearButton: typeof BaseTrigger;
 };

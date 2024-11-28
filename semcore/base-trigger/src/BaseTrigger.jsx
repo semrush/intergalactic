@@ -74,7 +74,7 @@ function Text(props) {
   const { children, styles, empty, placeholder } = props;
 
   return sstyled(styles)(
-    <SText render={Box} display-placeholder={empty}>
+    <SText render={Box} display-placeholder={empty} aria-hidden={empty}>
       {empty ? placeholder : children}
     </SText>,
   );
