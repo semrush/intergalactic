@@ -211,7 +211,7 @@ class ClearButton extends Component {
             empty={empty}
             selected
             disabled={disabled}
-            title={getI18nText('clear')}
+            aria-label={getI18nText('clear')}
           >
             <FilterTrigger.Addon tag={Close} />
           </SFilterTrigger>
