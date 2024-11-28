@@ -5,7 +5,7 @@ import style from '../../style/slider-rating.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
@@ -118,8 +118,9 @@ class SliderRatingRoot extends Component<
   getLabelText() {
     const { hoveredIndex } = this.state;
     const { readonly, value } = this.asProps;
+
     if (readonly) {
-      return `Your rating: ${hoveredIndex + 1} out of 5`;
+      return `Your rating: ${value} out of 5`;
     }
 
     return value ? value : hoveredIndex === -1 ? 'Not set' : `${hoveredIndex + 1} out of ${MAX}`;
@@ -150,7 +151,7 @@ class SliderRatingRoot extends Component<
         aria-valuetext={label}
         aria-valuenow={hoveredIndex + 1}
       >
-        {readonly && (
+        {!readonly && (
           <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
             {getI18nText('sliderDescriber')}
           </ScreenReaderOnly>

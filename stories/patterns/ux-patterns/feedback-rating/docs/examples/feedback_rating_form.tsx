@@ -49,7 +49,7 @@ const Demo = () => {
       notificationVisible={notificationVisible}
       notificationText={'Is it working well for you?'}
       learnMoreLink={'http://google.com'}
-      header={<FeedbackRating.Header>Great! What do you like the most?</FeedbackRating.Header>}
+      header={'Great! What do you like the most?'}
       submitText={'Send feedback'}
       initialValues={initValue}
       rating={rating}
@@ -87,12 +87,12 @@ const Demo = () => {
           type: 'input',
           validate: FeedbackRating.validate.email('Set correct email'),
           description: (
-            <Text size={200} color='text-secondary'>
+            <>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
               </Link>
-            </Text>
+            </>
           ),
         },
       ]}

@@ -5,16 +5,17 @@ import { Box } from '@semcore/flex-box';
 import style from '../../style/checkbox-button.shadow.css';
 import Checkbox, { CheckboxProps } from '@semcore/checkbox';
 
-class CheckboxButtonRoot extends Component<CheckboxProps> {
+class CheckboxButtonRoot extends Component<CheckboxProps & { focused: boolean }> {
   static style = style;
 
   render() {
-    const { styles, id, label, ...other } = this.asProps;
+    const { styles, id, label, type, focused, ...other } = this.asProps;
+
     const SCheckboxButton = Root;
     return sstyled(styles)(
-      <SCheckboxButton render={Box} __excludeProps={['onChange', 'id']}>
+      <SCheckboxButton render={Box} __excludeProps={['onChange', 'id', 'type']}>
         <Checkbox {...other}>
-          <Checkbox.Value id={id} />
+          <Checkbox.Value autoFocus={focused} id={id} />
           <Checkbox.Text>{label}</Checkbox.Text>
         </Checkbox>
       </SCheckboxButton>,

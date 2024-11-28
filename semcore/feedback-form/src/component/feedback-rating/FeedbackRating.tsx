@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
@@ -125,15 +125,15 @@ class FeedbackRatingRoot extends Component<
     }
   }
 
-  renderCheckbox = (config: FormConfigItem) => {
+  renderCheckbox = (config: FormConfigItem, index: number) => {
     const initialValue = this.props.initialValues[config.key];
 
     return (
       <FeedbackRating.Item
         name={config.key}
         initialValue={initialValue}
+        type={'checkbox'}
         key={config.key}
-        tag={'li'}
       >
         {({ input }) => (
           <FeedbackRating.Checkbox
@@ -142,6 +142,7 @@ class FeedbackRatingRoot extends Component<
             name={config.key}
             label={config.label}
             onChange={this.handleChange(input.onChange)}
+            focused={index === 0}
           />
         )}
       </FeedbackRating.Item>
@@ -178,7 +179,6 @@ class FeedbackRatingRoot extends Component<
               return (
                 <Textarea
                   {...input}
-                  autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
                   id={config.key}
@@ -201,13 +201,9 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' ? (
-              <Text lineHeight='18px' size={200} color='#6c6e79'>
-                {config.description}
-              </Text>
-            ) : (
-              config.description
-            )}
+            <Text aria-describedby={config.key} size={200} color='text-secondary'>
+              {config.description}
+            </Text>
           </Box>
         )}
       </Flex>
@@ -284,7 +280,7 @@ class FeedbackRatingRoot extends Component<
           use:w={modalWidth ?? 440}
           aria-labelledby={this.headerId}
         >
-          <Form decorators={[this.focusDecorator]} {...other}>
+          <Form decorators={[this.focusDecorator]} validateOnBlur={true} {...other}>
             {(api) =>
               sstyled(styles)(
                 <SpinContainer
@@ -299,7 +295,11 @@ class FeedbackRatingRoot extends Component<
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {header as any}
+                  {(header as ReactElement)?.type === FeedbackRating.Header ? (
+                    header
+                  ) : (
+                    <FeedbackRating.Header>{header}</FeedbackRating.Header>
+                  )}
 
                   <Box
                     tag='form'
@@ -315,9 +315,11 @@ class FeedbackRatingRoot extends Component<
                       }}
                     </FeedbackRating.Item>
 
-                    <ul aria-labelledby={this.headerId}>
-                      {checkboxFields.map((formConfigItem) => this.renderCheckbox(formConfigItem))}
-                    </ul>
+                    <div role={'group'} aria-labelledby={this.headerId}>
+                      {checkboxFields.map((formConfigItem, index) =>
+                        this.renderCheckbox(formConfigItem, index),
+                      )}
+                    </div>
 
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}
 

@@ -50,9 +50,11 @@ export function FeedbackItem({
             'aria-invalid': errorState ? true : false,
             'aria-errormessage': popperId,
             'aria-describedby': errorState && meta.active ? popperId : undefined,
+            'aria-haspopup': errorState && meta.active ? true : undefined,
           },
           input,
         );
+
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
@@ -65,7 +67,13 @@ export function FeedbackItem({
             }}
             {...tooltipProps}
           >
-            <Tooltip.Trigger inline={false} role={undefined} tag={tag} {...(tag ? inputProps : {})}>
+            <Tooltip.Trigger
+              inline={false}
+              role={undefined}
+              tag={tag}
+              {...(tag ? inputProps : {})}
+              __excludeProps={['type', 'aria-haspopup']}
+            >
               {typeof Children.origin === 'function' &&
                 Children.origin({
                   input: inputProps,

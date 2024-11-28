@@ -5,7 +5,8 @@ import { Text as TypographyText } from '@semcore/typography';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import logger from '@semcore/utils/lib/logger';
 
@@ -110,7 +111,7 @@ class ValueRoot extends Component {
       ],
     };
   };
-  static enhance = [autoFocusEnhance(), resolveColorEnhance()];
+  static enhance = [autoFocusEnhance(), keyboardFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
 
