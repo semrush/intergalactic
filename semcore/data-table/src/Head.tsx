@@ -10,7 +10,7 @@ import { ColIndex, Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
 import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 
 export const SORT_ICON_WIDTH = 20;
 
