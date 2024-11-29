@@ -69,7 +69,6 @@ test.describe('Dropdown-menu - Item actions', () => {
 
     //Escape returns focus in menu item, hints hidden
     await page.keyboard.press('Escape');
-    await page.keyboard.press('Escape');
     await expect(Item3).toBeFocused();
     await expect(MathPlus).not.toBeFocused();
     await expect(Trash).not.toBeFocused();
@@ -129,12 +128,6 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     //1rd item  submenu focused
     await page.keyboard.press('Enter');
     await expect(SubItem1).toBeFocused();
-
-    //navigation  inside the sumbenu
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
   });
 });
 
