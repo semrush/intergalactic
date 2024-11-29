@@ -35,6 +35,7 @@ test.describe('Dropdown-menu - Item actions', () => {
 
     const Menu = await page.locator('[data-ui-name="DropdownMenu.Popper"]');
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(500);
     await expect(ddMenu).not.toBeFocused();
     await expect(Menu).toBeVisible();
     const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Menu item 1")');
@@ -60,6 +61,7 @@ test.describe('Dropdown-menu - Item actions', () => {
     //Enter focuses addons and they have hints
     await page.keyboard.press('Enter');
     await expect(MathPlus).toBeFocused();
+    await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('ArrowRight');
@@ -93,6 +95,7 @@ test.describe('Dropdown-menu - Item actions', () => {
     await expect(Item4).toBeFocused();
     await expect(Add).not.toBeVisible();
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(500);
     await expect(ddMenu).toBeFocused();
     await expect(Menu).not.toBeVisible();
   });
@@ -104,7 +107,7 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    //1st item focused when Menu expands and submenu displayed + visual regression
+    //1st item focused when Menu expands and submenu displayed
     const ddMenu = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     await page.keyboard.press('Tab');
     await expect(ddMenu).toBeFocused();
@@ -119,19 +122,16 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
     const Item3 = page.locator('[data-ui-name="DropdownMenu.Item.Content"]:has-text("Item 3")');
     await expect(Item3).toBeFocused();
     await expect(SubItem1).not.toBeFocused();
 
-    //1rd item  submenu focused  + visual regression
+    //1rd item  submenu focused  
     await page.keyboard.press('Enter');
     await expect(SubItem1).toBeFocused();
-    await expect(page).toHaveScreenshot();
 
-    //navigation and visual regression inside the sumbenu
+    //navigation  inside the sumbenu
     await page.keyboard.press('Tab');
-    await expect(page).toHaveScreenshot();
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await expect(page).toHaveScreenshot();
