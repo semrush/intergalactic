@@ -4,7 +4,7 @@ import { selectOption } from './utils';
 
 test.describe('FilterTrigger', () => {
   test('Focus control', async ({ page, browserName }) => {
-    const standPath = 'website/docs/components/filter-trigger/examples/usage_with_select.tsx';
+    const standPath = 'stories/components/filter-trigger/docs/examples/usage_with_select.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -13,9 +13,7 @@ test.describe('FilterTrigger', () => {
     const popperLocator = await page.locator('[data-ui-name="Select.Menu"]');
     await expect(popperLocator).toHaveCount(0);
 
-    const triggerLocator = await page.locator(
-      '[data-ui-name="Select.Trigger"] [data-ui-name="FilterTrigger.TriggerButton"]',
-    );
+    const triggerLocator = await page.locator('[data-ui-name="FilterTrigger.TriggerButton"]');
 
     await expect(triggerLocator).toBeFocused();
 
