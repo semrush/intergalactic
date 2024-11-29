@@ -2,7 +2,7 @@ import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 class TimePickerFormat extends Component {

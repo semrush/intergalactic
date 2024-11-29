@@ -3,7 +3,7 @@ import InputTags from '@semcore/input-tags';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Select from '@semcore/select';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 
 const tagsSelect = ['LinkedIn', 'Facebook', 'TikTok', 'Instagram'];
 
