@@ -29,7 +29,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
             to: Math.min(from, maxRange),
           });
         }
-        if ((!to || !from) && (to || from)) {
+        if ((to === '' || from === '') && (to !== '' || from !== '')) {
           changeValue({
             from: from ? from : minRange,
             to: to ? to : maxRange,
@@ -77,7 +77,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
 };
 
 const setTriggerText = ({ from, to }) => {
-  if (from && to) {
+  if (from !== '' && to !== '') {
     return from === to ? from : `${from}-${to}`;
   }
   return null;
