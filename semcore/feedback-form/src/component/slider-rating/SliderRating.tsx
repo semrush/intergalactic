@@ -151,12 +151,6 @@ class SliderRatingRoot extends Component<
         aria-valuetext={label}
         aria-valuenow={hoveredIndex + 1}
       >
-        {!readonly && (
-          <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
-            {getI18nText('sliderDescriber')}
-          </ScreenReaderOnly>
-        )}
-
         {new Array(MAX).fill(null).map((_, index) => {
           return (
             <Box key={index} position={'relative'}>
@@ -164,6 +158,12 @@ class SliderRatingRoot extends Component<
             </Box>
           );
         })}
+
+        {!readonly && (
+          <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
+            {getI18nText('sliderDescriber')}
+          </ScreenReaderOnly>
+        )}
       </SSliderRating>,
     );
   }
