@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
-import Dropdown from 'intergalactic/dropdown';
-import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import NeighborLocation from 'intergalactic/neighbor-location';
-import InputNumber from 'intergalactic/input-number';
-import { Text } from 'intergalactic/typography';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import InputNumber from '@semcore/ui/input-number';
+import { Text } from '@semcore/ui/typography';
 
 const InputRange = ({ value: valueState, changeValue, ...other }) => {
   const minRange = 1;
@@ -114,14 +114,15 @@ const Demo = () => {
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
+        id='CD-trigger'
       >
         <span aria-hidden>Com.:</span> {displayValue}
       </Dropdown.Trigger>
-      <Dropdown.Popper w={240} p={2} pb={3} aria-labelledby='title-CD'>
+      <Dropdown.Popper w={240} p={2} pb={3} aria-labelledby='CD-trigger'>
         <Text id='title-CD' size={200} bold>
           Custom range
         </Text>
-        <InputRange value={value} changeValue={setValue} my={2} onKeyDown={handleKeyDown} />
+        <InputRange role='group' aria-labelledby='title-CD' value={value} changeValue={setValue} my={2} onKeyDown={handleKeyDown} />
         <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
           Apply
         </Button>
