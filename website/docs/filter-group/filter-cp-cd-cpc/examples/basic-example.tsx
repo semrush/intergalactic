@@ -114,11 +114,10 @@ const Demo = () => {
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
-        id='CD-trigger'
       >
         <span aria-hidden>Com.:</span> {displayValue}
       </Dropdown.Trigger>
-      <Dropdown.Popper w={240} p={2} pb={3} aria-labelledby='CD-trigger'>
+      <Dropdown.Popper w={240} p={2} pb={3} aria-label='Competitive Density'>
         <Text id='title-CD' size={200} bold>
           Custom range
         </Text>
