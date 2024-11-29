@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.1] - 2024-11-29
+
+### Changed
+
+- Default tag for BaseTrigger to `button` as part of a11y improvement
+
 ## [4.49.0] - 2024-11-20
 
 ### Fixed
