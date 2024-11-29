@@ -6,7 +6,7 @@ test.skip('Users can interact with DataTable virtual scroll via VoiceOver', asyn
   page,
   voiceOver,
 }) => {
-  const standPath = 'website/docs/table-group/data-table/examples/virtual-scroll-in-table.tsx';
+  const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);
