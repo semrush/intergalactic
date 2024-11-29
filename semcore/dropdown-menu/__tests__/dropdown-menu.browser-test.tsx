@@ -126,7 +126,7 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     await expect(Item3).toBeFocused();
     await expect(SubItem1).not.toBeFocused();
 
-    //1rd item  submenu focused  
+    //1rd item  submenu focused
     await page.keyboard.press('Enter');
     await expect(SubItem1).toBeFocused();
 
