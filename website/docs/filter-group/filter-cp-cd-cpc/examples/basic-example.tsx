@@ -122,7 +122,14 @@ const Demo = () => {
         <Text id='title-CD' size={200} bold>
           Custom range
         </Text>
-        <InputRange role='group' aria-labelledby='title-CD' value={value} changeValue={setValue} my={2} onKeyDown={handleKeyDown} />
+        <InputRange
+          role='group'
+          aria-labelledby='title-CD'
+          value={value}
+          changeValue={setValue}
+          my={2}
+          onKeyDown={handleKeyDown}
+        />
         <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
           Apply
         </Button>
