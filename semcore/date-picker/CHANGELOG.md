@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.5] - 2024-11-29
+
+### Fixed
+
+- Blinking when opening `DateRangeComparators`.
+
 ## [4.54.4] - 2024-11-22
 
 ### Changed
