@@ -24,13 +24,13 @@ export class NpmUtils {
     log(`pnpm filter "${pnpmFilter}".`);
     log(`pnpm options "${pnpmOptions}".`);
 
-    if (nonSemcoreUiPatches.length !== 0) {
-      if (!prerelease && !process.argv.includes('--dry-run')) {
-        await NpmUtils.uploadStatic(pnpmFilter);
-      }
-
-      await this.publishComponents(pnpmFilter, pnpmOptions);
-    }
+    // if (nonSemcoreUiPatches.length !== 0) {
+    //   if (!prerelease && !process.argv.includes('--dry-run')) {
+    //     await NpmUtils.uploadStatic(pnpmFilter);
+    //   }
+    //
+    //   await this.publishComponents(pnpmFilter, pnpmOptions);
+    // }
     if (hasSemcoreUi) {
       await this.publishSemcoreUi(pnpmOptions);
     }
