@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * @deprecated Use ScreenReaderOnly from 'flex-box' component
+ */
 export const ScreenReaderOnly = (props: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
