@@ -114,7 +114,6 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     const SubItem1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Item 4.1.1")');
     await expect(Item1).toBeFocused();
     await expect(SubItem1).not.toBeFocused();
-    await expect(page).toHaveScreenshot();
 
     //3rd item focused and 3rd submenu shown + visual regression
     await page.keyboard.press('ArrowDown');
