@@ -46,19 +46,12 @@ const Filter: React.FC<FilterProps> = ({
   conditionId,
   ...props
 }) => {
-  const [rowState, setRowState] = useState(data);
-
-  useEffect(() => {
-    setRowState(data);
-  }, [data]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') applyFilters();
   };
 
   const handleChange = (key: string) => (value: string) => {
-    const newData = { ...rowState, [key]: value };
-    setRowState(newData);
     onUpdate(data.id, key, value);
   };
 
@@ -80,21 +73,21 @@ const Filter: React.FC<FilterProps> = ({
         <ScreenReaderOnly tag='legend'>{`Condition #${conditionId}`}</ScreenReaderOnly>
         <Select
           options={makeOptions(filterConfig.rule)}
-          value={rowState.rule}
+          value={data.rule}
           onChange={handleChange('rule')}
           aria-label='Rule'
           w={100}
         />
         <Select
           options={makeOptions(filterConfig.type)}
-          value={rowState.type}
+          value={data.type}
           onChange={handleChange('type')}
           aria-label='Type'
           w={100}
         />
         <Select
           options={makeOptions(filterConfig.filter)}
-          value={rowState.filter}
+          value={data.filter}
           onChange={handleChange('filter')}
           aria-label='Filter'
           w={150}
@@ -103,7 +96,7 @@ const Filter: React.FC<FilterProps> = ({
           <Input.Value
             aria-label='Value'
             placeholder='Enter value'
-            value={rowState.value}
+            value={data.value}
             onChange={handleChange('value')}
             onKeyDown={handleKeyDown}
           />
