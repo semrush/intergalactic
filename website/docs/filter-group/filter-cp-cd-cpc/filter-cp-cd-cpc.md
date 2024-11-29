@@ -7,7 +7,7 @@ tabs: Design('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 Make sure to read [Filter common rules](/filter-group/filter-rules/filter-rules).
 :::
 
-**These filters are combined in one guide, since they differ only in the sorting parameter and the name.** The principle of work and states are the same.
+**These filters are combined in one guide, since they differ only in the filter parameter and the name.** The principle of work and states are the same.
 
 ## Description
 
@@ -15,6 +15,7 @@ These filters allow to enter only a custom number range. They have no preset dat
 
 **When working with these filters, it's important for the user to:**
 
+- understand that they can enter custom values
 - quickly enter the data
 - quickly understand that nothing was found
 - quickly reset the entered data and search again
@@ -48,7 +49,7 @@ These filters use the [InputRange](/components/input-number/input-number#inputra
 
 When user opens the dropdown, keyboard focus immediately goes to the first custom range input.
 
-Filter interaction is described in detail in the [Filter common rules](/filter-group/filter-rules/filter-rules).
+Filter interaction is described in detail in [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 ## Tooltips
 
