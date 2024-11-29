@@ -8,7 +8,6 @@ import ButtonHintExample from './examples/ButtonHint';
 
 import { ButtonHintColorTest } from './__tests__/ButtonHintColor.test';
 
-
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Advanced',
   component: Button,

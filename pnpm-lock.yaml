@@ -3180,6 +3180,22 @@ importers:
       react-hook-form:
         specifier: 6.10.1
         version: 6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@17.0.2)
+      d3-scale:
+        specifier: 3.3.0
+        version: 3.3.0
+      react-hook-form:
+        specifier: 6.10.1
+        version: 6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@16.14.0)
+      react-virtualized:
+        specifier: 9.22.3
+        version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@16.14.0)(react@16.14.0)
+    devDependencies:
+      '@types/d3-scale':
+        specifier: 3.3.0
+        version: 3.3.0
+      '@types/react-virtualized':
+        specifier: ^9.22.0
+        version: 9.22.0
 
   tools/babel-plugin-react-semcore:
     dependencies:
@@ -10650,6 +10666,12 @@ packages:
     resolution: {integrity: sha512-0g/A+mZXgFkQxN3HniRDbXMN79K3CdTpLsevj+PXiTcb2hVyvkZUBg37StmgCQkaD84cUJ4uaDAWq7UJOQy2Tg==}
     dev: false
 
+  /@types/d3-scale@3.3.0:
+    resolution: {integrity: sha512-rJj4nh/71Rw5bZgTF5cA5rW60WT3x8RbivEsScgQ66sqFnYZRmuyKSayyo7JiP+c9KJJiQhY9JXBmY16FZa3+g==}
+    dependencies:
+      '@types/d3-time': 3.0.0
+    dev: true
+
   /@types/d3-scale@4.0.3:
     resolution: {integrity: sha512-PATBiMCpvHJSMtZAMEhc2WyL+hnzarKzI6wAHYjhsonjWJYGq5BXTzQjv4l8m2jO183/4wZ90rKvSeT7o72xNQ==}
     dependencies:
@@ -10954,6 +10976,13 @@ packages:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
       '@types/react': 18.0.21
+
+  /@types/react-virtualized@9.22.0:
+    resolution: {integrity: sha512-JL/YCCFZ123za//cj10Apk54F0UGFMrjOE0QHTuXt1KBMFrzLOGv9/x6Uc/pZ0Gaf4o6w61Fostvlw0DwuPXig==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/react': 18.0.21
+    dev: true
 
   /@types/react@18.0.21:
     resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
@@ -24142,6 +24171,18 @@ packages:
       - supports-color
     dev: true
 
+  /react-dom@16.14.0(react@16.14.0):
+    resolution: {integrity: sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==}
+    peerDependencies:
+      react: ^16.14.0
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      react: 16.14.0
+      scheduler: 0.19.1
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -24437,6 +24478,23 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-virtualized@9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@16.14.0)(react@16.14.0):
+    resolution: {integrity: sha512-MKovKMxWTcwPSxE1kK1HcheQTWfuCxAuBoSTf2gwyMM21NdX/PXUhnoP8Uc5dRKd+nKm8v41R36OellhdCpkrw==}
+    peerDependencies:
+      react: ^15.3.0 || ^16.0.0-alpha
+      react-dom: ^15.3.0 || ^16.0.0-alpha
+    dependencies:
+      '@babel/runtime': 7.19.0
+      clsx: 1.2.1
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+      react-lifecycles-compat: 3.0.4
+    dev: false
+    patched: true
+
   /react-virtualized@9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-MKovKMxWTcwPSxE1kK1HcheQTWfuCxAuBoSTf2gwyMM21NdX/PXUhnoP8Uc5dRKd+nKm8v41R36OellhdCpkrw==}
     peerDependencies:
@@ -24460,6 +24518,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
+      prop-types: 15.8.1
     dev: false
 
   /react@18.2.0:
@@ -25139,6 +25198,13 @@ packages:
     engines: {node: '>=v12.22.7'}
     dependencies:
       xmlchars: 2.2.0
+
+  /scheduler@0.19.1:
+    resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+    dev: false
 
   /scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}

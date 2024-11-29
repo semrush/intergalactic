@@ -167,6 +167,74 @@ describe('DropdownMenu', () => {
     expect(component.getByTestId('dd-button-trigger')).not.toHaveFocus();
   });
 
+  test.sequential('Should call onVisibleChange event once', async ({ expect }) => {
+    const spy = vi.fn();
+    const Component = () => {
+      return (
+        <DropdownMenu onVisibleChange={spy}>
+          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+            Trigger
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+      );
+    };
+    render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
+  test.sequential('Should call events on items in controlled component', async ({ expect }) => {
+    const spy = vi.fn();
+    const Component = () => {
+      const [visible, setVisible] = React.useState(false);
+      return (
+        <DropdownMenu
+          visible={visible}
+          onVisibleChange={(value) => {
+            setVisible(value);
+          }}
+        >
+          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+            Trigger
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item
+              onClick={() => {
+                spy();
+                setVisible(false);
+              }}
+            >
+              Item 1
+            </DropdownMenu.Item>
+            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+      );
+    };
+    render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]'); // open
+    await userEvent.keyboard('[Escape]'); // close
+    await userEvent.keyboard('[Enter]'); // open
+    await userEvent.keyboard('[Enter]'); // click on the first item and close // 1
+    await userEvent.keyboard('[Enter]'); // open
+    await userEvent.keyboard('[Enter]'); // click on the first item and close // 2
+    await userEvent.keyboard('[Enter]'); // open
+    await userEvent.keyboard('[Enter]'); // click on the first item and close // 3
+
+    expect(spy).toHaveBeenCalledTimes(3);
+  });
+
   test.sequential('Should call onClick event once', async ({ expect }) => {
     const spy = vi.fn();
     const Component = () => {

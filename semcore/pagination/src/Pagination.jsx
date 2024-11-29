@@ -11,7 +11,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/pagination.shadow.css';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 
 class PaginationRoot extends Component {
   static displayName = 'Pagination';

@@ -8,7 +8,7 @@ import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 import style from './style/drag-and-drop.shadow.css';
 import { DropZoneProps } from './index';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhance from '@semcore/utils/lib/uniqueID';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 

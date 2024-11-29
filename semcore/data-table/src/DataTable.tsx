@@ -546,8 +546,14 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: AsProps) {
     this.setVarStyle(this.columns);
+
+    if (prevProps.data !== this.props.data) {
+      if (this.tableRef.current && !isFocusInside(this.tableRef.current)) {
+        this.cellsMap.clear();
+      }
+    }
   }
 
   get totalRows() {

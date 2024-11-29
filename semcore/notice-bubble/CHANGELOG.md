@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.48.0] - 2024-11-21
+
+### Added
+
+- `replaceLast` method to the Manager to display the next bubble on over the last one.
+
+### Fixed
+
+- Warning about `Hint` title about `title` and `Hint.Popper` at the same time.
+- Unnecessary counter resetting with each mount of `NoticeBubble` component.
+
 ## [5.47.2] - 2024-11-22
 
 ### Changed

@@ -3,5 +3,6 @@ packages:
   - 'tools/*'
   - '!tools/@types'
   - 'website'
+  - 'stories'
   - vite-project
   - 'stories'

@@ -5,6 +5,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "react-hook-form": "6.10.1"
+    "react-hook-form": "6.10.1",
+    "d3-scale": "3.3.0",
+    "react-virtualized": "9.22.3"
+  },
+  "devDependencies": {
+    "@types/react-virtualized": "^9.22.0",
+    "@types/d3-scale": "3.3.0"
   }
 }

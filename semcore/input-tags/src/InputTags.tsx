@@ -6,20 +6,20 @@ import createComponent, {
   PropGetterFn,
   UnknownProperties,
   Intergalactic,
+  IRootComponentProps,
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { TagProps, TagContainer } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Portal from '@semcore/portal';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
-import { findAllComponents } from '@semcore/utils/lib/findComponent';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { extractFrom, isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 /** @deprecated */
@@ -194,14 +194,34 @@ class InputTags extends Component<IInputTagsProps> {
       getI18nText: this.asProps.getI18nText,
     };
   }
+  getInputTagsContainerProps() {
+    return {
+      tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
+    };
+  }
 
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
-    const TagsComponents = findAllComponents(Children, ['InputTags.Tag']);
-    const InputComponents = findAllComponents(Children, ['InputTags.Value']);
+    const isAdvancedMode = isAdvanceMode(Children, ['InputTags.TagsContainer']);
+
+    if (isAdvancedMode) {
+      return sstyled(styles)(
+        <SInputTags
+          render={Input}
+          tag={ScrollArea}
+          onMouseDown={this.moveFocusToInput}
+          container={this.scrollContainerRef}
+          tabIndex={null}
+        >
+          <Children />
+        </SInputTags>,
+      );
+    }
+
+    const [InputComponents, RestComponents] = extractFrom(Children, ['InputTags.Value']);
 
     return sstyled(styles)(
       <SInputTags
@@ -212,7 +232,7 @@ class InputTags extends Component<IInputTagsProps> {
         tabIndex={null}
       >
         <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
-          {TagsComponents}
+          {RestComponents}
         </SListAriaWrapper>
         {InputComponents}
       </SInputTags>,
@@ -275,6 +295,20 @@ class Value extends Component<IInputTagsValueProps> {
   }
 }
 
+function InputTagsContainer({
+  Children,
+  tagsContainerAriaLabel,
+  styles,
+}: IRootComponentProps & { tagsContainerAriaLabel: string }) {
+  const SListAriaWrapper = 'ul';
+
+  return sstyled(styles)(
+    <SListAriaWrapper aria-label={tagsContainerAriaLabel}>
+      <Children />
+    </SListAriaWrapper>,
+  );
+}
+
 function InputTagContainer(props: any) {
   const STag = Root;
 
@@ -324,6 +358,7 @@ function InputTagContainerTag(props: any) {
 
 export default createComponent(InputTags, {
   Value,
+  TagsContainer: InputTagsContainer,
   Tag: [
     InputTagContainer,
     {
@@ -335,6 +370,7 @@ export default createComponent(InputTags, {
   ],
 }) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
   Value: typeof Input.Value;
+  TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
     Text: typeof Tag.Text;
     Close: typeof Tag.Close;

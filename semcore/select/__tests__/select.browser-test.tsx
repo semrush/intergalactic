@@ -100,4 +100,21 @@ test.describe('Select', () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(page).toHaveScreenshot();
   });
+
+  test('Show highlight the first option item in render function', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/render_function.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await expect(page).toHaveScreenshot();
+
+    // close and reopen
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('Enter');
+
+    await expect(page).toHaveScreenshot();
+  });
 });

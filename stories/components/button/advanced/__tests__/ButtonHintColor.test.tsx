@@ -38,5 +38,4 @@ export async function ButtonHintColorTest({ canvasElement }: { canvasElement: HT
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const buttonStyles6 = window.getComputedStyle(button6);
   expect(buttonStyles6.backgroundColor).toBe('rgba(0, 143, 248, 0)');
-
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import DropdownMenu from 'intergalactic/dropdown-menu';
-import Button from 'intergalactic/button';
-import Link from 'intergalactic/link';
-import { Text } from 'intergalactic/typography';
-import Notice from 'intergalactic/notice';
-import SpinContainer from 'intergalactic/spin-container';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Button from '@semcore/button';
+import Link from '@semcore/link';
+import { Text } from '@semcore/typography';
+import Notice from '@semcore/notice';
+import SpinContainer from '@semcore/spin-container';
 import FileExportM from '@semcore/icon/FileExport/m';
 
 const Demo = () => {
