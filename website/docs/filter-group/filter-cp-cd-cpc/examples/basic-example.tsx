@@ -114,7 +114,6 @@ const Demo = () => {
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
-        role='combobox' // for a11y testing, remove before merging
       >
         <span aria-hidden>Com.:</span> {displayValue}
       </Dropdown.Trigger>
