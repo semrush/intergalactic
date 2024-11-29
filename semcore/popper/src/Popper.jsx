@@ -19,7 +19,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';

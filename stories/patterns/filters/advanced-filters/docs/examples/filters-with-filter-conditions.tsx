@@ -11,7 +11,7 @@ import Button from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
 import CloseM from '@semcore/icon/Close/m';
 import TrashM from '@semcore/icon/Trash/m';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 
 const makeOptions = (options: string[]) => options.map((value) => ({ value, children: value }));
 interface FilterProps extends React.ComponentPropsWithoutRef<typeof Flex> {
@@ -23,8 +23,8 @@ interface FilterProps extends React.ComponentPropsWithoutRef<typeof Flex> {
 const Filter: React.FC<FilterProps> = ({ closable, onClose, id, name, ...props }) => (
   <Flex {...props} gap={2}>
     <Flex flexWrap gap={4} tag='fieldset' m={0} p={0} style={{ border: 'none' }}>
-      <ScreenReaderOnly>
-        <Text tag='legend' size={200} mb={2}>
+      <ScreenReaderOnly tag={'legend'}>
+        <Text size={200} mb={2}>
           {name}
         </Text>
       </ScreenReaderOnly>
