@@ -1,37 +1,44 @@
-import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import { Text } from 'intergalactic/typography';
-import Select from 'intergalactic/select';
-import Divider from 'intergalactic/divider';
-import NeighborLocation from 'intergalactic/neighbor-location';
-import InputNumber from 'intergalactic/input-number';
+import React, { useState, useRef } from 'react';
+import { Flex } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { Text } from '@semcore/ui/typography';
+import Select from '@semcore/ui/select';
+import Divider from '@semcore/ui/divider';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import InputNumber from '@semcore/ui/input-number';
 
-const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }) => {
-  const minRange = 0;
-  const maxRange = 100;
-  let revertValues = false;
+const InputRange = ({ value: valueState, changeValue, ...other }) => {
+  const minRange = 1;
+
+  const fromRef = useRef(null);
+  const toRef = useRef(null);
 
   const handleChange = (key) => (value) => {
-    if (revertValues) {
-      revertValues = false;
-    } else {
-      valueState[key] = value;
-      changeValue({ ...valueState });
-    }
+    valueState[key] = value ? Number(value) : '';
+    changeValue({ ...valueState });
   };
 
   const handleBlur = () => {
-    const { from, to } = valueState;
-    if (from > to && to !== '') {
-      revertValues = true;
-      changeValue({
-        from: Math.max(to, minRange),
-        to: Math.min(from, maxRange),
-      });
-    }
+    setTimeout(() => {
+      if (document.activeElement !== fromRef.current && document.activeElement !== toRef.current) {
+        const { from, to } = valueState;
+        if (from > to && to) {
+          changeValue({
+            from: Math.max(to, minRange),
+            to: from,
+          });
+        }
+        if (from === '' && to !== '') {
+          changeValue({
+            from: minRange,
+            to,
+          });
+        }
+      }
+    }, 0);
   };
+
   const { from, to } = valueState;
 
   return (
@@ -40,24 +47,24 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
         <InputNumber>
           <InputNumber.Value
             min={minRange}
-            max={maxRange}
-            aria-labelledby={ariaLabelledby}
+            aria-label='From'
             placeholder='From'
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
+            ref={fromRef}
           />
           <InputNumber.Controls />
         </InputNumber>
         <InputNumber>
           <InputNumber.Value
             min={minRange}
-            max={maxRange}
-            aria-labelledby={ariaLabelledby}
+            aria-label='To'
             placeholder='To'
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
+            ref={toRef}
           />
           <InputNumber.Controls />
         </InputNumber>
@@ -66,82 +73,86 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
   );
 };
 
+const numberFormat = new Intl.NumberFormat('en-US');
+
 const setTriggerText = ({ from, to }) => {
-  if (from && to) {
-    return `${from} - ${to}`;
-  }
-  if (from === '' && to !== '') {
-    return `0 - ${to}`;
-  }
   if (from !== '') {
-    return `${from}`;
+    if (to === '') return `${numberFormat.format(from)}+`;
+    else if (from === to) return numberFormat.format(from);
+    else return `${numberFormat.format(from)}-${numberFormat.format(to)}`;
   }
   return null;
 };
 
 const Demo = () => {
-  const [filters, setFilters] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
-  const [value, setValue] = React.useState({ from: '', to: '' });
-  const [displayValue, setDisplayValue] = React.useState('');
+  const [visible, setVisible] = useState(false);
+  const [customRange, setCustomRange] = useState({ from: '', to: '' });
+  const [selectValue, setSelectValue] = useState(null);
+  const [displayValue, setDisplayValue] = useState(null);
+
   const clearAll = () => {
-    setFilters(false);
+    setCustomRange({ from: '', to: '' });
+    setSelectValue(null);
+    setDisplayValue(null);
   };
+
   const applyFilters = () => {
-    const { from, to } = value;
     setVisible(false);
-    setFilters(from || to ? true : false);
-    setDisplayValue(setTriggerText(value));
+    setDisplayValue(setTriggerText(customRange));
+    setSelectValue(null);
   };
+
   const handleKeyDown = (e) => {
     e.stopPropagation();
     if (e.key === 'Enter') {
       applyFilters();
     }
   };
+
   const handleSelect = (value) => {
-    setVisible(false);
-    setFilters(true);
     setDisplayValue(value);
+    setSelectValue(value);
+    setCustomRange({ from: '', to: '' });
   };
 
   return (
-    <Select visible={visible} onVisibleChange={setVisible} onChange={handleSelect}>
+    <Select
+      visible={visible}
+      onVisibleChange={setVisible}
+      onChange={handleSelect}
+      value={selectValue}
+    >
       <Select.Trigger
-        placeholder='KD %'
+        placeholder='Volume'
+        aria-label='Volume'
         active={visible}
-        empty={!filters || displayValue === null}
+        empty={displayValue === null}
         onClear={clearAll}
         tag={FilterTrigger}
       >
-        {`KD ${displayValue} %`}
+        <span aria-hidden>Volume: </span>
+        {displayValue}
       </Select.Trigger>
-      <Select.Popper
-        w='224px'
-        role='dialog'
-        aria-label='Filters for page sorting'
-        aria-modal='false'
-      >
-        <Select.List>
-          {[
-            ['80-100', 'Very hard'],
-            ['60-79', 'Hard'],
-            ['40-59', 'Possible'],
-            ['0-39', 'Easy'],
-          ].map((item) => (
-            <Select.Option key={item[0]} value={item[0]}>{`${item[0]}% ${item[1]}`}</Select.Option>
-          ))}
+      <Select.Popper w={224} aria-label='Volume'>
+        <Select.List aria-label='Presets'>
+          {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
+            (item) => (
+              <Select.Option key={item} value={item}>
+                {item}
+              </Select.Option>
+            ),
+          )}
         </Select.List>
         <Divider my={1} />
-        <Flex p='4px 8px 16px' direction='column'>
-          <Text id='custom-range' size={200} bold>
+        <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
+          <Text id='custom-range-title' size={200} bold>
             Custom range
           </Text>
           <InputRange
-            ariaLabelledby='custom-range'
-            value={value}
-            changeValue={setValue}
-            my={2}
+            role='group'
+            aria-labelledby='custom-range-title'
+            value={customRange}
+            changeValue={setCustomRange}
             onKeyDown={handleKeyDown}
           />
           <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
