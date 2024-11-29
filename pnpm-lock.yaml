@@ -3177,9 +3177,6 @@ importers:
 
   stories:
     dependencies:
-      react-hook-form:
-        specifier: 6.10.1
-        version: 6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@17.0.2)
       d3-scale:
         specifier: 3.3.0
         version: 3.3.0
@@ -24243,12 +24240,12 @@ packages:
       react-side-effect: 2.1.2(react@18.2.0)
     dev: false
 
-  /react-hook-form@6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@17.0.2):
+  /react-hook-form@6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@16.14.0):
     resolution: {integrity: sha512-tPfNu2q8HUUKL4gOsJzzoBX8+3y2brJk+61TO+RO9GtpLnWPptLrAIupMtyPeENMpLmLfBKHhT9nfezHLTW2mA==}
     peerDependencies:
       react: ^16.8.0 || ^17
     dependencies:
-      react: 17.0.2
+      react: 16.14.0
     dev: false
     patched: true
 
@@ -24512,8 +24509,8 @@ packages:
     dev: false
     patched: true
 
-  /react@17.0.2:
-    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
+  /react@16.14.0:
+    resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
