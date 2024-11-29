@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.36.1] - 2024-11-29
+
+### Changed
+
+- FeedbackRating form a11y
+
 ## [6.36.0] - 2024-11-19
 
 ### Added
