@@ -7,8 +7,8 @@ import { Text } from 'intergalactic/typography';
 const min = 1;
 const max = 8;
 const Demo = () => {
-  const [from, setFrom] = React.useState(undefined);
-  const [to, setTo] = React.useState(undefined);
+  const [from, setFrom] = React.useState<string>('');
+  const [to, setTo] = React.useState<string>('');
   const handleBlur = React.useCallback(() => {
     if (from > to) {
       setFrom(to);

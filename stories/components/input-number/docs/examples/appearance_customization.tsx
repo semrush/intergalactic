@@ -7,13 +7,13 @@ import { Text } from 'intergalactic/typography';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
-  const inputRef = React.useRef(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const decrement = React.useCallback(() => {
-    inputRef.current.stepDown();
+    inputRef.current?.stepDown();
   }, []);
   const increment = React.useCallback(() => {
-    inputRef.current.stepUp();
+    inputRef.current?.stepUp();
   }, []);
 
   return (
