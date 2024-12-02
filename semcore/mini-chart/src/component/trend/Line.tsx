@@ -98,7 +98,12 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
 
     return sstyled(styles)(
       <STrendLine render={Box} ref={this.containerRef} __excludeProps={['data']}>
-        <svg width='100%' height='100%' viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
+          role='img'
+        >
           <polyline
             points={points.join(' ')}
             stroke={this.color}

@@ -59,7 +59,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
 
     return sstyled(styles)(
       <SDonutContainer render={Box} semi={isSemiDonut}>
-        <svg width='100%' height='100%' viewBox={viewBox} fill='none'>
+        <svg width='100%' height='100%' viewBox={viewBox} fill='none' role='img'>
           <g>
             <circle
               cx='12'
