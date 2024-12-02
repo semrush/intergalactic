@@ -67,6 +67,7 @@ const Demo = () => {
           aria-label='Keywords'
           aria-describedby='textarea-description'
           autoFocus
+          placeholder={'Keyword - broad match\n[Keyword] - exact match'}
         />
         <Flex mt={4}>
           <Button use='primary' theme='info' onClick={applyFilters}>
