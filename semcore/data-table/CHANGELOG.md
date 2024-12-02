@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Keyboard access after changing data in the Table (for example after pagination changes).
+- Keyboard access after changing data in the Table (only if focus outside a Table).
 
 ## [4.47.3] - 2024-11-22
 
