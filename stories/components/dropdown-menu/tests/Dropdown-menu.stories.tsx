@@ -18,5 +18,5 @@ export const OnVisible: Story = {
 };
 
 export const OnVisible2nd: Story = {
-    render: OnVisible2ndExample,
-  };
+  render: OnVisible2ndExample,
+};

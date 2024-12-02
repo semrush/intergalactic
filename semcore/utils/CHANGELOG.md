@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Internal method for extract some children by the displayName from the `Children` entity.
 
+## [4.43.4] - 2024-11-28
+
+### Changed
+
+- Marked `ScreenReaderOnly` as deprecated component, use it now from `flex-box` package.
+
 ## [4.43.3] - 2024-11-19
 
 ### Fixed
