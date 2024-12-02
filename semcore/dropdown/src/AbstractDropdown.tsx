@@ -73,17 +73,22 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     this.handlers.visible(!visible);
 
     setTimeout(() => {
-      if (this.asProps.visible) {
-        const highlightedIndex = this.asProps.highlightedIndex ?? 0;
-        const element = this.itemRefs[highlightedIndex];
-        element?.focus();
-        if (this.role === 'menu') {
-          this.handlers.highlightedIndex(highlightedIndex);
-        }
+      const { visible, inlineActions } = this.asProps;
+      if (visible || inlineActions) {
+        this.afterOpenPopper();
       }
     }, 0);
 
     return false;
+  };
+
+  afterOpenPopper = () => {
+    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const element = this.itemRefs[highlightedIndex];
+    element?.focus();
+    if (this.role === 'menu') {
+      this.handlers.highlightedIndex(highlightedIndex);
+    }
   };
 
   getTriggerProps() {
