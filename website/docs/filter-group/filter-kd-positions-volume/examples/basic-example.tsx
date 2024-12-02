@@ -23,7 +23,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
     setTimeout(() => {
       if (document.activeElement !== fromRef.current && document.activeElement !== toRef.current) {
         const { from, to } = valueState;
-        if (from > to && to) {
+        if (from > to && to !== '') {
           changeValue({
             from: Math.max(to, minRange),
             to: from,
