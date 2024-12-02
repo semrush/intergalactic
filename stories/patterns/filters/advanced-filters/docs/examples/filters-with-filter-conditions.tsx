@@ -70,7 +70,7 @@ const Filter: React.FC<FilterProps> = ({
         style={{ border: 'none' }}
         mr={Number(!removable) * 9}
       >
-        <ScreenReaderOnly tag='legend' aria-hidden>{`Condition #${conditionId}`}</ScreenReaderOnly>
+        <ScreenReaderOnly tag='legend'>{`Condition #${conditionId}`}</ScreenReaderOnly>
         <Select
           options={makeOptions(filterConfig.rule)}
           value={data.rule}
