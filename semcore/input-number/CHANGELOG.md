@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.39.5] - 2024-12-02
+## [5.40.1] - 2024-12-02
 
 ### Removed
 
 - Unnecessary role changes on keypress.
+
+## [5.40.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/input` [4.39.2 ~> 4.40.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
 
 ## [5.39.4] - 2024-11-22
 
