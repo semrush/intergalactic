@@ -64,20 +64,22 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction } = this.asProps;
+    const { interaction, visible } = this.asProps;
 
     if (interaction === 'none') return false;
 
     e.preventDefault();
     e.stopPropagation();
-    this.handlers.visible(true);
+    this.handlers.visible(!visible);
 
     setTimeout(() => {
-      const highlightedIndex = this.asProps.highlightedIndex ?? 0;
-      const element = this.itemRefs[highlightedIndex];
-      element?.focus();
-      if (this.role === 'menu') {
-        this.handlers.highlightedIndex(highlightedIndex);
+      if (this.asProps.visible) {
+        const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+        const element = this.itemRefs[highlightedIndex];
+        element?.focus();
+        if (this.role === 'menu') {
+          this.handlers.highlightedIndex(highlightedIndex);
+        }
       }
     }, 0);
 
