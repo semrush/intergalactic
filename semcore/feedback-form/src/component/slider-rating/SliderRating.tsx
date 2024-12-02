@@ -123,7 +123,10 @@ class SliderRatingRoot extends Component<
       return `Your rating: ${value} out of 5`;
     }
 
-    return value ? value : hoveredIndex === -1 ? 'Not set' : `${hoveredIndex + 1} out of ${MAX}`;
+    if (value) {
+      return value;
+    }
+    return hoveredIndex === -1 ? 'Not set' : `${hoveredIndex + 1} out of ${MAX}`;
   }
 
   render() {
@@ -145,7 +148,6 @@ class SliderRatingRoot extends Component<
         role={role}
         aria-orientation='horizontal'
         aria-describedby={sliderDescriberId}
-        aria-labelledby={noticeTextId}
         aria-valuemin={MIN}
         aria-valuemax={MAX}
         aria-valuetext={label}

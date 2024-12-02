@@ -161,6 +161,9 @@ class FeedbackRatingRoot extends Component<
         (config.label as unknown as JSX.Element)
       );
 
+    const isDescriptionReactFragment =
+      (config.description as ReactElement)?.type === React.Fragment;
+
     return (
       <Flex tag='label' mt={4} direction='column' htmlFor={config.key} key={config.key}>
         {label}
@@ -201,9 +204,13 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            <Text aria-describedby={config.key} size={200} color='text-secondary'>
-              {config.description}
-            </Text>
+            {typeof config.description === 'string' || isDescriptionReactFragment ? (
+              <Text lineHeight='18px' size={200} color='text-secondary'>
+                {config.description}
+              </Text>
+            ) : (
+              config.description
+            )}
           </Box>
         )}
       </Flex>
@@ -260,7 +267,7 @@ class FeedbackRatingRoot extends Component<
               <SliderRating
                 value={rating}
                 onChange={this.handleChangeRating}
-                noticeTextId={notificationId}
+                aria-labelledby={notificationId}
               />
             </Notice.Actions>
             {learnMoreLink && (
