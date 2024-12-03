@@ -11,7 +11,7 @@ Use [InputNumber](/components/input-number/input-number) and [NeighborLocation](
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/range_of_values.tsx';
+  export Demo from 'stories/components/input-number/docs/examples/range_of_values.tsx';
 </script>
 
 :::
@@ -23,7 +23,7 @@ You have the ability to customize the component's appearance. To ensure the step
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/appearance_customization.tsx';
+  export Demo from 'stories/components/input-number/docs/examples/appearance_customization.tsx';
 </script>
 
 :::
