@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.40.1] - 2024-12-02
+
+### Removed
+
+- Unnecessary role changes on keypress.
+
 ## [5.40.0] - 2024-11-29
 
 ### Changed
