@@ -1,8 +1,19 @@
 import { expect, vi } from './vitest';
 import * as axeMatchers from 'vitest-axe/matchers';
-import { toHaveStyle, toHaveFocus, toHaveAttribute } from '@testing-library/jest-dom/matchers';
+import {
+  toHaveStyle,
+  toHaveFocus,
+  toHaveAttribute,
+  toBeInTheDocument,
+} from '@testing-library/jest-dom/matchers';
 import { toMatchImageSnapshot } from './toMatchImageSnapshot';
-expect.extend({ toMatchImageSnapshot, toHaveStyle, toHaveFocus, toHaveAttribute } as any);
+expect.extend({
+  toMatchImageSnapshot,
+  toHaveStyle,
+  toHaveFocus,
+  toHaveAttribute,
+  toBeInTheDocument,
+} as any);
 expect.extend(axeMatchers);
 
 Object.defineProperty(window.SVGElement.prototype, 'getBBox', {

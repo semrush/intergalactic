@@ -40,6 +40,14 @@ class DropdownMenuRoot extends AbstractDropdown {
     timeout: 0,
   };
 
+  static nestedMenuInteraction = {
+    trigger: [
+      ['onClick', 'onMouseEnter'],
+      ['onClick', 'onMouseLeave'],
+    ],
+    popper: [['onMouseEnter'], ['onMouseLeave']],
+  };
+
   actionsRef = React.createRef();
   role = 'menu';
 

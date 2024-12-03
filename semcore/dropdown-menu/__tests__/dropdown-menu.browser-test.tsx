@@ -29,11 +29,11 @@ test.describe('Dropdown-menu - Item actions', () => {
 
     await page.setContent(htmlContent);
     //1st item focused when Menu expands
-    const ddMenu = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    const ddMenu = page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     await page.keyboard.press('Tab');
     await expect(ddMenu).toBeFocused();
 
-    const Menu = await page.locator('[data-ui-name="DropdownMenu.Popper"]');
+    const Menu = page.locator('[data-ui-name="DropdownMenu.Popper"]');
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
     await expect(ddMenu).not.toBeFocused();
@@ -80,13 +80,14 @@ test.describe('Dropdown-menu - Item actions', () => {
     });
     await expect(Item4).toBeFocused();
     const Add = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Add")');
-    await expect(Add).toBeVisible();
-    await expect(Add).not.toBeFocused();
+    await expect(Add).not.toBeVisible();
     await expect(page).toHaveScreenshot();
 
     //Focus on submenu item by Enter
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(500);
     await expect(Item4).not.toBeFocused();
+    await expect(Add).toBeVisible();
     await expect(Add).toBeFocused();
 
     //Return and close all menus
@@ -106,7 +107,7 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    //1st item focused when Menu expands and submenu displayed
+    //1st item focused when Menu expands and submenu don't displayed
     const ddMenu = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
     await page.keyboard.press('Tab');
     await expect(ddMenu).toBeFocused();
@@ -115,7 +116,7 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     const Item1 = page.locator('[data-ui-name="DropdownMenu.Item.Content"]:has-text("Item 1")');
     const SubItem1 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("Item 4.1.1")');
     await expect(Item1).toBeFocused();
-    await expect(SubItem1).not.toBeFocused();
+    await expect(SubItem1).not.toBeVisible();
 
     //3rd item focused and 3rd submenu shown + visual regression
     await page.keyboard.press('ArrowDown');
@@ -123,10 +124,10 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     await page.waitForTimeout(500);
     const Item3 = page.locator('[data-ui-name="DropdownMenu.Item.Content"]:has-text("Item 3")');
     await expect(Item3).toBeFocused();
-    await expect(SubItem1).not.toBeFocused();
 
     //1st item  submenu focused
     await page.keyboard.press('Enter');
+    await expect(SubItem1).toBeVisible();
     await expect(SubItem1).toBeFocused();
 
     //Input number focused and focus not loast by clicking up/down

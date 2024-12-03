@@ -30,7 +30,7 @@ const Demo = () => {
         <DropdownMenu.Item>
           <DropdownMenu
             placement={'right-start'}
-            interaction={'hover'}
+            interaction={DropdownMenu.nestedMenuInteraction}
             timeout={[0, 300]}
             offset={[-11, 12]}
           >
