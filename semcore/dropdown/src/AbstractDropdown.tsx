@@ -64,13 +64,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction, visible } = this.asProps;
+    const { interaction } = this.asProps;
 
     if (interaction === 'none') return false;
-
-    e.preventDefault();
-    e.stopPropagation();
-    this.handlers.visible(!visible);
 
     setTimeout(() => {
       const { visible, inlineActions } = this.asProps;
@@ -78,8 +74,6 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         this.afterOpenPopper();
       }
     }, 0);
-
-    return false;
   };
 
   afterOpenPopper = () => {
