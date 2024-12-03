@@ -125,9 +125,23 @@ test.describe('Dropdown-menu - Nested menus with focusable elements', () => {
     await expect(Item3).toBeFocused();
     await expect(SubItem1).not.toBeFocused();
 
-    //1rd item  submenu focused
+    //1st item  submenu focused
     await page.keyboard.press('Enter');
     await expect(SubItem1).toBeFocused();
+
+    //Input number focused and focus not loast by clicking up/down
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    const input1 = page.locator('input[data-ui-name="InputNumber.Value"][placeholder="1"]');
+    await expect(input1).toBeFocused();
+
+    //Apply btn focused and focus not loast by clicking up/down
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    const button = page.locator('button[data-ui-name="Button"]:has-text("Apply")');
+    await expect(button).toBeFocused();
+    await expect(SubItem1).not.toBeFocused();
   });
 });
 
