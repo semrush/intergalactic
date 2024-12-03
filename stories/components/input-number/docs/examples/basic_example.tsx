@@ -1,5 +1,5 @@
 import React from 'react';
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/input-number';
 
 const Demo = () => {
   return (

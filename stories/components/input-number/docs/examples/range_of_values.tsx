@@ -1,8 +1,8 @@
 import React from 'react';
-import InputNumber from 'intergalactic/input-number';
-import NeighborLocation from 'intergalactic/neighbor-location';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import InputNumber from '@semcore/input-number';
+import NeighborLocation from '@semcore/neighbor-location';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const min = 1;
 const max = 8;
