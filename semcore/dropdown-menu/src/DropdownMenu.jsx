@@ -125,6 +125,12 @@ class DropdownMenuRoot extends AbstractDropdown {
     return (e) => {
       const { visible, placement, inlineActions } = this.asProps;
 
+      // stop propagation keyboard events if it calls not on DropdownMenu.Items
+      if (place === 'list' && !this.menuRef.current?.contains(e.target)) {
+        e.stopPropagation();
+        return false;
+      }
+
       const show =
         (e.key === 'ArrowRight' && placement?.startsWith('right')) ||
         (e.key === 'ArrowLeft' && placement?.startsWith('left'));

@@ -11,10 +11,6 @@ const options = ['Item 1', 'Item 2', 'Item 3'];
 const min = 1;
 const max = 8;
 
-const stopPropagation = (e: React.KeyboardEvent) => {
-  e.stopPropagation();
-};
-
 const Demo = () => {
   return (
     <DropdownMenu>
@@ -43,25 +39,15 @@ const Demo = () => {
                   <Box p={2}>
                     <NeighborLocation>
                       <InputNumber w='50%'>
-                        <InputNumber.Value
-                          min={min}
-                          max={max}
-                          placeholder={min.toString()}
-                          onKeyDown={stopPropagation}
-                        />
+                        <InputNumber.Value min={min} max={max} placeholder={min.toString()} />
                         <InputNumber.Controls />
                       </InputNumber>
                       <InputNumber w='50%'>
-                        <InputNumber.Value
-                          min={min}
-                          max={max}
-                          placeholder={max.toString()}
-                          onKeyDown={stopPropagation}
-                        />
+                        <InputNumber.Value min={min} max={max} placeholder={max.toString()} />
                         <InputNumber.Controls />
                       </InputNumber>
                     </NeighborLocation>
-                    <Button w='100%' mt={1} use='primary' onKeyDown={stopPropagation}>
+                    <Button w='100%' mt={1} use='primary'>
                       Apply
                     </Button>
                   </Box>
