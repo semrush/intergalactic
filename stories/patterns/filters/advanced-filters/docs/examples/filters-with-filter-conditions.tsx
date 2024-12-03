@@ -200,7 +200,6 @@ const Demo = () => {
         empty={!savedFilters.length}
         onClear={clearAll}
         tag={FilterTrigger}
-        w={200}
       >
         <FilterTrigger.TriggerButton>
           <FilterTrigger.Text aria-hidden>Advanced filters</FilterTrigger.Text>
