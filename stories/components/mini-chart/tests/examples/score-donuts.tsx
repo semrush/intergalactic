@@ -1,16 +1,16 @@
 import React from 'react';
 
-import MiniChart from '../../src';
+import MiniChart from '@semcore/mini-chart';
 import { Flex, Box } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
     <Box w={'500px'}>
       <Flex flexWrap={true} alignItems={'flex-end'}>
-        <MiniChart.ScoreDonut value={30} w={'50px'} />
-        <MiniChart.ScoreSemiDonut value={45} w={'50px'} />
-        <MiniChart.ScoreDonut loading={true} value={60} w={'50px'} />
-        <MiniChart.ScoreSemiDonut loading={true} value={30} w={'50px'} />
+        <MiniChart.ScoreDonut value={30} w={'50px'} aria-hidden/>
+        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-hidden/>
+        <MiniChart.ScoreDonut loading={true} value={60} w={'50px'} aria-hidden/>
+        <MiniChart.ScoreSemiDonut loading={true} value={30} w={'50px'}aria-hidden />
       </Flex>
       <br />
       <Flex flexWrap={true} alignItems={'flex-end'}>
