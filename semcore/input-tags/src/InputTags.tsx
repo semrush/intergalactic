@@ -362,7 +362,7 @@ export default createComponent(InputTags, {
   Tag: [
     InputTagContainer,
     {
-      Text: InputTagContainerTag,
+      Text: [InputTagContainerTag, { Content: Tag.Text }],
       Close: TagContainer.Close,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
