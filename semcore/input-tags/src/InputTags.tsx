@@ -10,7 +10,7 @@ import createComponent, {
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps, TagContainer } from '@semcore/tag';
+import Tag, { TagProps, TagContainer, TagTextProps, TagContext } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -372,7 +372,9 @@ export default createComponent(InputTags, {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: typeof Tag.Text;
+    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
+      Content: Intergalactic.Component<'div', TagTextProps>;
+    };
     Close: typeof Tag.Close;
     Addon: typeof Tag.Addon;
     Circle: typeof Tag.Circle;
