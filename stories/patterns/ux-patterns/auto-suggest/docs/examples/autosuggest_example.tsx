@@ -4,7 +4,7 @@ import Input from 'intergalactic/input';
 import { Text } from 'intergalactic/typography';
 import { Box } from 'intergalactic/flex-box';
 
-const Highlight = ({ highlight, children }) => {
+const Highlight = ({ highlight, children }: { highlight: string; children: string }) => {
   let html = children;
   if (highlight) {
     try {
@@ -18,17 +18,22 @@ const Highlight = ({ highlight, children }) => {
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
-const debounce = (func, timeout) => {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
+const debounce = (func: Function, timeout: number) => {
+  let timer: number;
+  return (...args: any[]) => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => {
       func(...args);
     }, timeout);
   };
 };
 
-const fakeFetch = async (query) => {
+type Suggestion = {
+  value: string;
+  title: string;
+};
+
+const fakeFetch = async (query: string): Promise<Suggestion[]> => {
   if (!query) return [];
 
   return [
@@ -60,7 +65,7 @@ const fakeFetch = async (query) => {
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [query, setQuery] = React.useState('');
-  const [suggestions, setSuggestions] = React.useState([]);
+  const [suggestions, setSuggestions] = React.useState<Suggestion[]>([]);
   const loadSuggestions = React.useCallback(
     debounce(
       (query: string) => fakeFetch(query).then((suggestions) => setSuggestions(suggestions)),
@@ -71,7 +76,7 @@ const Demo = () => {
   React.useEffect(() => {
     loadSuggestions(query);
   }, [query]);
-  const handleSelect = React.useCallback((x) => {
+  const handleSelect = React.useCallback((x: string) => {
     setQuery(x);
     setVisible(false);
   }, []);
