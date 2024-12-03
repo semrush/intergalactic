@@ -38,7 +38,9 @@ test.describe('Options Filtering', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
-    const Trigger = page.locator('[data-ui-name="ButtonTrigger.Text"][placeholder="Select a fruit"]');
+    const Trigger = page.locator(
+      '[data-ui-name="ButtonTrigger.Text"][placeholder="Select a fruit"]',
+    );
     await Trigger.click();
 
     await page.waitForSelector('input');
@@ -63,7 +65,6 @@ test.describe('Options Filtering', () => {
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
 
-   
     await page.keyboard.press('Space');
     await new Promise((resolve) => setTimeout(resolve, 500));
     const triggerLocatior = await page.locator('[data-ui-name="Select.Trigger"]');
@@ -138,20 +139,20 @@ test.describe('Options Filtering', () => {
 });
 
 test.describe('Render function', () => {
-test('Show highlight the first option item', async ({ page }) => {
-  const standPath = 'stories/components/select/docs/examples/render_function.tsx';
-  const htmlContent = await e2eStandToHtml(standPath, 'en');
+  test('Show highlight the first option item', async ({ page }) => {
+    const standPath = 'stories/components/select/docs/examples/render_function.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
 
-  await page.setContent(htmlContent);
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('Enter');
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
 
-  await expect(page).toHaveScreenshot();
+    await expect(page).toHaveScreenshot();
 
-  // close and reopen
-  await page.keyboard.press('Escape');
-  await page.keyboard.press('Enter');
+    // close and reopen
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('Enter');
 
-  await expect(page).toHaveScreenshot();
-});
+    await expect(page).toHaveScreenshot();
+  });
 });
