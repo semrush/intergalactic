@@ -1,3 +1,50 @@
+## [15.119.0] - 2024-11-29
+
+### @semcore/base-trigger
+
+- **Fixed** Added `Hint` to the `FilterTrigger.ClearButton`.
+- **Fixed** Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
+- **Fixed** Added `role` combobox to the `FilterTrigger.TriggerButton`.
+- **Fixed** Added `count` prop to `FilterTrigger.Counter`, along with screenreader only `selected` text.
+- **Fixed** `placeholder` text is now `aria-hidden` for triggers because of `aria-label` and double pronouncing.
+
+### @semcore/data-table
+
+- **Fixed** Keyboard access after changing data in the Table (only if focus outside a Table).
+
+### @semcore/date-picker
+
+- **Fixed** Blinking when opening `DateRangeComparators`.
+
+### @semcore/dropdown
+
+- **Fixed** Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
+- **Fixed** Double call of `onVisibleChange` handler.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
+
+### @semcore/flex-box
+
+- **Added** `ScreenReaderOnly` component from `Root` component from `core` package.
+
+### @semcore/input-tags
+
+- **Fixed** Advanced rendering of child elements doesn't display tags at all.
+- **Fixed** Unnecessary `clickable` announcement by VO on not editable tags.
+
+### @semcore/notice-bubble
+
+- **Added** `replaceLast` method to the Manager to display the next bubble on over the last one.
+- **Fixed** Warning about `Hint` title about `title` and `Hint.Popper` at the same time.
+- **Fixed** Unnecessary counter resetting with each mount of `NoticeBubble` component.
+
+### @semcore/utils
+
+- **Added** Internal method for extract some children by the displayName from the `Children` entity.
+- **Changed** Marked `ScreenReaderOnly` as deprecated component, use it now from `flex-box` package.
+
 ## [15.118.0] - 2024-11-22
 
 ### @semcore/base-trigger

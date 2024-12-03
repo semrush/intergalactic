@@ -24,9 +24,10 @@ The following table describes roles and attributes the component already has.
 
 Table: Roles and attributes
 
-| Element            | Attribute       | Usage                              |
-| ------------------ | --------------- | ---------------------------------- |
-| `InputTags` > `ul` | `aria-label`    | Defines an accessible name for the list of tags. Automatically populated from the accessible name of `InputTags.Value`. |
+| Element              | Attribute                  | Usage                              |
+| -------------------- | -------------------------- | ---------------------------------- |
+| `InputTags` > `ul`   | `aria-label`               | Defines an accessible name for the list of tags. Automatically populated from the accessible name of `InputTags.Value`. |
+| `InputTags.Tag.Text` | `aria-describedby="IDREF"` | **Only for `editable` tags**. Provides a "Press Enter to edit" description. |
 
 ## Considerations for developers
 

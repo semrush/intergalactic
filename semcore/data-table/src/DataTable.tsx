@@ -550,7 +550,9 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
 
     if (prevProps.data !== this.props.data) {
-      this.cellsMap.clear();
+      if (this.tableRef.current && !isFocusInside(this.tableRef.current)) {
+        this.cellsMap.clear();
+      }
     }
   }
 

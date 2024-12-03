@@ -45,11 +45,11 @@ export const fetchFromNpm = async (filter?: string[]) => {
     }
   >('https://registry.npmjs.org/-/v1/search?text=@semcore/&size=250');
 
-  // if (npmSearchResult.total !== npmSearchResult.objects.length) {
-  //   throw new Error(
-  //     'Gosh, seems like our npm search unable to find all packages at once, need to update search',
-  //   );
-  // }
+  if (npmSearchResult.total !== npmSearchResult.objects.length) {
+    throw new Error(
+      'Gosh, seems like our npm search unable to find all packages at once, need to update search',
+    );
+  }
 
   const currentVersions: { [packageName: string]: { version: string } & PackageNpmRegistry } = {};
   const objectsToFetch = npmSearchResult.objects.filter(
@@ -80,6 +80,13 @@ export const fetchFromNpm = async (filter?: string[]) => {
   );
 
   log(`Fetched info about ${Object.keys(currentVersions).length} packages.`);
+
+  currentVersions['@semcore/slack-integration'] = {
+    version: '0.0.3',
+    dependencies: {
+      '@semcore/changelog-handler': '0.0.1',
+    },
+  };
 
   return currentVersions;
 };
