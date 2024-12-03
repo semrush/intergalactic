@@ -9,6 +9,7 @@ import ButtonWithIconExample from './examples/button_with_icon';
 import ButtonLoadingExample from './examples/button_with_loading';
 
 import { ButtonAccessibilityTest } from './__tests__/ButtonAccessibility.test';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Documentation',
@@ -32,7 +33,7 @@ export const ButtonLikeALink: Story = {
 
 export const ButtonWithNoVisibleText: Story = {
   render: ButtonAccessibilityExample,
-  play: ButtonAccessibilityTest,
+  play: playWrapper(ButtonAccessibilityTest),
 };
 
 export const ButtonWithLoadingState: Story = {
