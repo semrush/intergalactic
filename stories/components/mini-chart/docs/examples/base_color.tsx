@@ -20,9 +20,9 @@ const Demo = () => {
         <br />
         <MiniChart.ScoreLine segments={3} value={2} baseBgColor={'chart-palette-order-4'} />
         <br />
-        <MiniChart.ScoreDonut value={value} w={'50px'} baseBgColor={'chart-palette-order-5'} />
+        <MiniChart.ScoreDonut value={value} w={'50px'} baseBgColor={'chart-palette-order-5'} aria-hidden />
         <br />
-        <MiniChart.ScoreSemiDonut value={value} w={'50px'} baseBgColor={'chart-palette-order-2'} />
+        <MiniChart.ScoreSemiDonut value={value} w={'50px'} baseBgColor={'chart-palette-order-2'} aria-hidden />
       </Box>
     </Flex>
   );

@@ -6,6 +6,7 @@ import { Trend, CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
 import style from '../skeleton/skeleton.shadow.css';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 export type TrendLineProps = CommonTrendProps & {
   /**
@@ -95,10 +96,17 @@ class TrendLineRoot extends Trend<TrendLineProps, typeof TrendLineRoot.enhance> 
     for (let i = 0; i < length; i++) {
       points.push(`${step * i},${this.defaultHeight - this.data[i]}`);
     }
+    const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <STrendLine render={Box} ref={this.containerRef} __excludeProps={['data']}>
-        <svg width='100%' height='100%' viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}>
+      <STrendLine render={Box} ref={this.containerRef} __excludeProps={['data', ...__excludeProps]}>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
+          role='img'
+          {...extractedAriaProps}
+        >
           <polyline
             points={points.join(' ')}
             stroke={this.color}
