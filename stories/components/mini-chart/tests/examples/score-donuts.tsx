@@ -6,10 +6,10 @@ import { Flex, Box } from '@semcore/flex-box';
 const Demo = () => {
   return (
     <Box w={'500px'}>
-      <Flex flexWrap={true} alignItems={'flex-end'}>
-        <MiniChart.ScoreDonut value={30} w={'50px'} aria-hidden/>
-        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-hidden/>
-        <MiniChart.ScoreDonut loading={true} value={60} w={'50px'} aria-hidden/>
+      <Flex flexWrap={true} alignItems={'flex-end'} id="mylabel">
+        <MiniChart.ScoreDonut value={30} w={'50px'} aria-label="test"/>
+        <MiniChart.ScoreSemiDonut value={45} w={'50px'} aria-labelledby={'mylabel'}/>
+        <MiniChart.ScoreDonut loading={true} value={60} w={'50px'} aria-describedby={'mylabel'}/>
         <MiniChart.ScoreSemiDonut loading={true} value={30} w={'50px'}aria-hidden />
       </Flex>
       <br />

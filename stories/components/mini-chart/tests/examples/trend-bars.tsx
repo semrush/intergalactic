@@ -14,11 +14,11 @@ const Demo = () => {
   ];
 
   return (
-    <Flex>
-      <MiniChart.TrendBar data={data} />
-      <MiniChart.TrendBar data={data} loading={true} />
-      <MiniChart.TrendHistogram data={data} />
-      <MiniChart.TrendHistogram data={data} loading={true} />
+    <Flex id="mylabel">
+      <MiniChart.TrendBar data={data} aria-hidden/>
+      <MiniChart.TrendBar data={data} loading={true} aria-label="test"/>
+      <MiniChart.TrendHistogram data={data} aria-labelledby={'mylabel'}/>
+      <MiniChart.TrendHistogram data={data} loading={true} aria-describedby={'mylabel'}/>
     </Flex>
   );
 };
