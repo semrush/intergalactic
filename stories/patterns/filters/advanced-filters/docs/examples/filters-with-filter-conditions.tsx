@@ -122,9 +122,10 @@ const Demo = () => {
   const [newFilters, setNewFilters] = useState<FilterData[]>(savedFilters);
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState('');
+
   const addButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const applyButtonRef = React.useRef<HTMLButtonElement | null>(null);
-
+  
   const newFilter: FilterData = {
     id: 0,
     rule: 'Include',
@@ -151,7 +152,7 @@ const Demo = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMessage('');
-    }, 500);
+    }, 300);
     return () => clearTimeout(timer);
   }, [message]);
 
@@ -175,8 +176,9 @@ const Demo = () => {
   };
 
   const clearConditions = () => {
-    setNewFilters([newFilter]);
     setMessage('Conditions cleared');
+    applyButtonRef.current?.focus()
+    setNewFilters([newFilter]);
   };
 
   const applyFilters = () => {
@@ -185,7 +187,7 @@ const Demo = () => {
     setSavedFilters([...newFilters.filter((item) => item.value !== '')]);
   };
 
-  const clearAll = () => {
+  const clearFilter = () => {
     setNewFilters([newFilter]);
     setSavedFilters([]);
     setVisible(false);
@@ -198,7 +200,7 @@ const Demo = () => {
         aria-label='Advanced filters'
         id='advanced-filters-trigger'
         empty={!savedFilters.length}
-        onClear={clearAll}
+        onClear={clearFilter}
         tag={FilterTrigger}
       >
         <FilterTrigger.TriggerButton>
