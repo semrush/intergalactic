@@ -446,8 +446,7 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
-    const SValueHidden = 'div';
-    const { styles, min, max, step, forwardRef, inputRef, value, displayValue } = this.asProps;
+    const { styles, min, max, step, forwardRef, inputRef, displayValue } = this.asProps;
 
     return sstyled(styles)(
       <>
@@ -466,12 +465,6 @@ class Value extends Component {
           max={max}
           step={step}
         />
-        {/* the next hidden div is necessary for the screen reader to report the value
-        in the input, because after validation the value can change to the `min` or `max`
-        if entered less than `min` or more than `max` */}
-        <SValueHidden aria-live='polite' aria-atomic={true}>
-          {displayValue}
-        </SValueHidden>
       </>,
     );
   }
