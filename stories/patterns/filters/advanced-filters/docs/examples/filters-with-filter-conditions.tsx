@@ -214,7 +214,7 @@ const Demo = () => {
           <Hint tag={FilterTrigger.ClearButton} title='Clear advanced filters' />
         )}
       </Dropdown.Trigger>
-      <Dropdown.Popper aria-labelledby='advanced-filters-trigger'>
+      <Dropdown.Popper aria-label='Advanced filters'>
         <ScreenReaderOnly aria-live='polite' role='status'>
           {message}
         </ScreenReaderOnly>
