@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
-import Select, { InputSearch } from 'intergalactic/select';
-import { FilterTrigger } from 'intergalactic/base-trigger';
-import Ellipsis from 'intergalactic/ellipsis';
-import ReloadIcon from 'intergalactic/icon/Reload/m';
+import Button, { ButtonLink } from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/flex-box';
+import Select, { InputSearch } from '@semcore/ui/select';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Ellipsis from '@semcore/ui/ellipsis';
+import ReloadIcon from '@semcore/ui/icon/Reload/m';
 
 const serpFeatures = [
   'Featured Snippet',
@@ -56,24 +56,29 @@ const Demo = () => {
   const [error, setError] = React.useState(true);
   const [visible, setVisible] = React.useState(false);
   const [value, setValue] = React.useState<string[]>([]);
-  const [filter, setFilter] = React.useState('');
+  const [search, setSearch] = React.useState('');
+  const [message, setMessage] = React.useState('');
+
   const options = React.useMemo(
-    () => data.filter((option) => option.value.toLowerCase().includes(filter.toLowerCase())),
-    [filter],
+    () => data.filter((option) => option.value.toLowerCase().includes(search.toLowerCase())),
+    [search],
   );
 
   const handleChangeVisible = React.useCallback((visible: boolean) => {
     setVisible(visible);
     if (visible === true) {
       setLoading(true);
+      setMessage('Loading...');
       setTimeout(() => {
         setLoading(false);
+        setMessage('Something went wrong.');
       }, 1000);
     }
   }, []);
 
   const handleReloadClick = React.useCallback(() => {
     setLoading(true);
+    setMessage('Loading...');
     setTimeout(() => {
       setLoading(false);
       setError(false);
@@ -120,9 +125,9 @@ const Demo = () => {
   if (value.length === data.length) {
     triggerValue = 'All selected';
   } else if (value.length === 1) {
-    triggerValue = `SERP Features: ${value[0] === null ? 'None' : value[0]}`;
+    triggerValue = `${value[0] === null ? 'None' : value[0]}`;
   } else if (value.length > 1) {
-    triggerValue = `SERP Features: ${value.length} selected`;
+    triggerValue = `${value.length} selected`;
   }
 
   const isAllSelected = compareSelectedValues(
@@ -140,35 +145,30 @@ const Demo = () => {
         visible={visible}
         onVisibleChange={handleChangeVisible}
       >
-        <Select.Trigger tag={FilterTrigger}>{triggerValue}</Select.Trigger>
-        <Select.Popper aria-label={'Options with search'}>
+        <Select.Trigger aria-label='SERP Features' tag={FilterTrigger}>
+          <span aria-hidden>SERP Features:</span> {triggerValue}
+        </Select.Trigger>
+        <Select.Popper aria-label='SERP Features'>
           {({ highlightedIndex }) => (
             <>
               <InputSearch
-                value={filter}
-                onChange={setFilter}
-                placeholder='Search'
-                role='combobox'
-                aria-autocomplete='list'
-                aria-controls='search-list'
-                aria-owns='search-list'
-                aria-expanded='true'
-                aria-activedescendant={`option-${highlightedIndex}`}
+                value={search}
+                onChange={setSearch}
+                placeholder='Search' // remove if added to the component
+                aria-label='Search' // remove if added to the component
+                aria-describedby={search ? 'search-result' : undefined}
               />
-              {loading && (
-                <Text tag={'div'} m={'10px 8px 11px 8px'} size={200} use={'secondary'}>
-                  Loading...
-                </Text>
-              )}
-              {!loading && error && (
-                <>
-                  <Text tag={'div'} m={'10px 8px 11px 8px'} size={200} use={'secondary'}>
-                    Something went wrong.
+              {(loading || error) && (
+                <Flex direction='column' alignItems='start' gap={1} p={2}>
+                  <Text size={200} use={'secondary'} aria-live='polite' role='status'>
+                    {message}
                   </Text>
-                  <Button addonLeft={ReloadIcon} onClick={handleReloadClick} use={'tertiary'}>
-                    Reload
-                  </Button>
-                </>
+                  {error && !loading && (
+                    <ButtonLink addonLeft={ReloadIcon} onClick={handleReloadClick}>
+                      Reload
+                    </ButtonLink>
+                  )}
+                </Flex>
               )}
               {!loading && !error && (
                 <>
@@ -188,7 +188,8 @@ const Demo = () => {
                     wMax={'260px'}
                     p={0}
                     id='search-list'
-                    orientation={'vertical'}
+                    orientation={'vertical'} // is this necessary?
+                    aria-label='SERP Features'
                   >
                     {options.map((option, index) => {
                       return (
@@ -209,31 +210,42 @@ const Demo = () => {
                         </>
                       );
                     })}
-                    {!options.length && (
-                      <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
+                    {options.length ? (
+                      <ScreenReaderOnly id='search-result'>
+                        {options.length} result{options.length > 1 && 's'} found
+                      </ScreenReaderOnly>
+                    ) : (
+                      <Text
+                        tag='div'
+                        key='Nothing'
+                        id='search-result'
+                        use='secondary'
+                        size={200}
+                        p={2}
+                      >
+                        Nothing found
+                      </Text>
                     )}
                   </Select.List>
+                  <Select.Divider />
                   {options.length > 0 && (
-                    <>
-                      <Select.Divider />
-                      <Select.Option
-                        value={null}
-                        key={'none'}
-                        id={'option-null'}
-                        onClick={handleNoneClick}
-                        disabled={valueHasSerpFeatures(value)}
-                      >
-                        <Select.Option.Checkbox />
-                        None
-                      </Select.Option>
-
-                      <Box m={'8px 8px 12px 8px'}>
-                        <Button use={'primary'} w={'100%'}>
-                          Apply
-                        </Button>
-                      </Box>
-                    </>
+                    <Select.Option
+                      value={null}
+                      key={'none'}
+                      id={'option-null'}
+                      onClick={handleNoneClick}
+                      disabled={valueHasSerpFeatures(value)}
+                    >
+                      <Select.Option.Checkbox />
+                      None
+                    </Select.Option>
                   )}
+
+                  <Box my={3} mx={2}>
+                    <Button use={'primary'} w={'100%'}>
+                      Apply
+                    </Button>
+                  </Box>
                 </>
               )}
             </>
