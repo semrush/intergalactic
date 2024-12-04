@@ -9,6 +9,7 @@ import Dropdown, {
 import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import { ScrollAreaProps } from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
+import { eventInteraction } from '@semcore/popper';
 
 export type DropdownMenuSize = 'm' | 'l';
 
@@ -193,6 +194,7 @@ declare const DropdownMenu: Intergalactic.Component<
   };
 
   selectedIndexContext: React.Context<number>;
+  nestedMenuInteraction: eventInteraction;
 };
 
 export default DropdownMenu;
