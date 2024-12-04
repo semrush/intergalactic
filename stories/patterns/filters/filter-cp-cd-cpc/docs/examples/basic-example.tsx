@@ -128,7 +128,7 @@ const Demo = () => {
       >
         <span aria-hidden>Com.:</span> {displayValue}
       </Dropdown.Trigger>
-      <Dropdown.Popper w={240} p={2} pb={3} aria-label='Competitive Density'>
+      <Dropdown.Popper w={240} p={2} pb={3} aria-label='Competitive Density' tabIndex={-1}>
         <Text id='title-CD' size={200} bold>
           Custom range
         </Text>
