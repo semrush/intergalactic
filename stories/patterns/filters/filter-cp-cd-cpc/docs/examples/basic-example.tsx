@@ -7,14 +7,25 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 
-const InputRange = ({ value: valueState, changeValue, ...other }) => {
+interface ValueState {
+  from: number | string;
+  to: number | string;
+}
+
+interface InputRangeProps {
+  value: ValueState;
+  changeValue: (updatedValue: ValueState) => void;
+  [key: string]: any;
+}
+
+const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue, ...other }) => {
   const minRange = 1;
   const maxRange = 8;
 
-  const fromRef = useRef(null);
-  const toRef = useRef(null);
+  const fromRef = useRef<HTMLInputElement | null>(null);
+  const toRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (key) => (value) => {
+  const handleChange = (key: keyof ValueState) => (value: string | number | null) => {
     valueState[key] = value ? Number(value) : '';
     changeValue({ ...valueState });
   };
@@ -25,8 +36,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
         const { from, to } = valueState;
         if (from > to && to !== '') {
           changeValue({
-            from: Math.max(to, minRange),
-            to: Math.min(from, maxRange),
+            from: Math.max(Number(to), minRange),
+            to: Math.min(Number(from), maxRange),
           });
         }
         if ((to === '' || from === '') && (to !== '' || from !== '')) {
@@ -50,7 +61,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
             max={maxRange}
             aria-label='From'
             placeholder='From'
-            value={from}
+            value={from !== '' ? String(from) : undefined}
             onChange={handleChange('from')}
             onBlur={handleBlur}
             ref={fromRef}
@@ -64,7 +75,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
             max={maxRange}
             aria-label='To'
             placeholder='To'
-            value={to}
+            value={to !== '' ? String(to) : undefined}
             onChange={handleChange('to')}
             onBlur={handleBlur}
             ref={toRef}
@@ -76,17 +87,17 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
   );
 };
 
-const setTriggerText = ({ from, to }) => {
+const setTriggerText = ({ from, to }: { from: number | string; to: number | string }): string | null => {
   if (from !== '' && to !== '') {
-    return from === to ? from : `${from}-${to}`;
+    return from === to ? `${from}` : `${from}-${to}`;
   }
   return null;
 };
 
 const Demo = () => {
+  const [value, setValue] = useState<ValueState>({ from: '', to: '' });
   const [filters, setFilters] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState({ from: '', to: '' });
   const [displayValue, setDisplayValue] = useState('');
   const clearAll = () => {
     setFilters(false);
@@ -97,10 +108,10 @@ const Demo = () => {
     const { from, to } = value;
     setVisible(false);
     setFilters(!!(from || to));
-    setDisplayValue(setTriggerText(value));
+    setDisplayValue(setTriggerText(value) || '');
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       applyFilters();
     }
