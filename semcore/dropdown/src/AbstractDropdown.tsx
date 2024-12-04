@@ -266,6 +266,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
       e.currentTarget.getAttribute('role') !== this.childRole
     ) {
+      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+        this.handlers.visible(true);
+      }
+
       this.handleClickTrigger(e);
     }
   }

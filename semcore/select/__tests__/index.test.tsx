@@ -202,7 +202,7 @@ describe('Select Trigger', () => {
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[Space]');
 
-    expect(spyChange).toHaveBeenCalledWith(2, expect.anything());
+    expect(spyChange).toHaveBeenCalledWith(1, expect.anything());
   });
 
   test.concurrent('Should support tag as string', async ({ task }) => {
