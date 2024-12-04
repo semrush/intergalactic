@@ -156,3 +156,28 @@ test.describe('Render function', () => {
     await expect(page).toHaveScreenshot();
   });
 });
+
+test.describe('Focus interaction', () => {
+  test('Open By mouse', async ({ page }) => {
+    const standPath = 'stories/components/select/tests/examples/focus_interaction.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const trigger = page.locator('button[placeholder = "Select option"]');
+    await trigger.click();
+    await expect(page.locator('[data-ui-name ="DropdownMenu.Popper"]')).toBeVisible();
+    await trigger.click();
+    await expect(page.locator('[data-ui-name ="DropdownMenu.Popper"]')).toBeVisible();
+  });
+
+  test('Open By keyboard', async ({ page }) => {
+    const standPath = 'stories/components/select/tests/examples/focus_interaction.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    await page.keyboard.press('Tab');
+    await expect(page.locator('[data-ui-name ="DropdownMenu.Popper"]')).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('[data-ui-name ="DropdownMenu.Popper"]')).not.toBeVisible();
+  });
+});
