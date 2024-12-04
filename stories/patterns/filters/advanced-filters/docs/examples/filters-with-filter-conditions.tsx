@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Dropdown from '@semcore/dropdown';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
@@ -37,85 +37,81 @@ interface FilterProps extends React.ComponentPropsWithoutRef<typeof Flex> {
   conditionId: number;
 }
 
-const Filter: React.FC<FilterProps> = ({
-  removable,
-  data,
-  applyFilters,
-  onUpdate,
-  onRemove,
-  conditionId,
-  ...props
-}) => {
+const Filter = React.forwardRef(
+  (
+    { removable, data, applyFilters, onUpdate, onRemove, conditionId, ...props }: FilterProps,
+    ref: React.Ref<HTMLDivElement>,
+  ) => {
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') applyFilters();
+    };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') applyFilters();
-  };
+    const handleChange = (key: string) => (value: string) => {
+      onUpdate(data.id, key, value);
+    };
 
-  const handleChange = (key: string) => (value: string) => {
-    onUpdate(data.id, key, value);
-  };
+    const handleRemove = () => {
+      onRemove(data.id, conditionId);
+    };
 
-  const handleRemove = () => {
-    onRemove(data.id, conditionId);
-  };
-
-  return (
-    <Flex {...props} gap={2}>
-      <Flex
-        flexWrap
-        gap={4}
-        tag='fieldset'
-        m={0}
-        p={0}
-        style={{ border: 'none' }}
-        mr={Number(!removable) * 9}
-      >
-        <ScreenReaderOnly tag='legend'>{`Condition #${conditionId}`}</ScreenReaderOnly>
-        <Select
-          options={makeOptions(filterConfig.rule)}
-          value={data.rule}
-          onChange={handleChange('rule')}
-          aria-label='Rule'
-          w={100}
-        />
-        <Select
-          options={makeOptions(filterConfig.type)}
-          value={data.type}
-          onChange={handleChange('type')}
-          aria-label='Type'
-          w={100}
-        />
-        <Select
-          options={makeOptions(filterConfig.filter)}
-          value={data.filter}
-          onChange={handleChange('filter')}
-          aria-label='Filter'
-          w={150}
-        />
-        <Input w={150}>
-          <Input.Value
-            aria-label='Value'
-            placeholder='Enter value'
-            value={data.value}
-            onChange={handleChange('value')}
-            onKeyDown={handleKeyDown}
+    return (
+      <Flex {...props} gap={2} ref={ref}>
+        <Flex
+          flexWrap
+          gap={4}
+          tag='fieldset'
+          m={0}
+          p={0}
+          style={{ border: 'none' }}
+          mr={Number(!removable) * 9}
+        >
+          <ScreenReaderOnly tag='legend'>{`Condition #${conditionId}`}</ScreenReaderOnly>
+          <Select
+            options={makeOptions(filterConfig.rule)}
+            value={data.rule}
+            onChange={handleChange('rule')}
+            aria-label='Rule'
+            w={100}
           />
-        </Input>
-        {removable && (
-          <Button
-            use='tertiary'
-            theme='muted'
-            addonLeft={TrashM}
-            onClick={handleRemove}
-            title={'Remove condition'}
-            hintPlacement='right'
-            ml={-2}
+          <Select
+            options={makeOptions(filterConfig.type)}
+            value={data.type}
+            onChange={handleChange('type')}
+            aria-label='Type'
+            w={100}
           />
-        )}
+          <Select
+            options={makeOptions(filterConfig.filter)}
+            value={data.filter}
+            onChange={handleChange('filter')}
+            aria-label='Filter'
+            w={150}
+          />
+          <Input w={150}>
+            <Input.Value
+              aria-label='Value'
+              placeholder='Enter value'
+              value={data.value}
+              onChange={handleChange('value')}
+              onKeyDown={handleKeyDown}
+            />
+          </Input>
+          {removable && (
+            <Button
+              use='tertiary'
+              theme='muted'
+              addonLeft={TrashM}
+              onClick={handleRemove}
+              title={'Remove condition'}
+              hintPlacement='right'
+              ml={-2}
+            />
+          )}
+        </Flex>
       </Flex>
-    </Flex>
-  );
-};
+    );
+  },
+);
 
 const Demo = () => {
   const [savedFilters, setSavedFilters] = useState<FilterData[]>([]);
@@ -123,9 +119,11 @@ const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState('');
 
+  const filtersGroupRef = useRef<HTMLDivElement[]>([]);
+
   const addButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const applyButtonRef = React.useRef<HTMLButtonElement | null>(null);
-  
+
   const newFilter: FilterData = {
     id: 0,
     rule: 'Include',
@@ -173,11 +171,16 @@ const Demo = () => {
   const removeFilter = (id: number, conditionId: number) => {
     setNewFilters(newFilters.filter((item) => item.id !== id));
     setMessage(`Condition #${conditionId} removed`);
+
+    requestAnimationFrame(() => {
+      const index = id === 0 ? 0 : id - 1;
+      filtersGroupRef.current?.[index]?.focus();
+    });
   };
 
   const clearConditions = () => {
     setMessage('Conditions cleared');
-    applyButtonRef.current?.focus()
+    applyButtonRef.current?.focus();
     setNewFilters([newFilter]);
   };
 
@@ -230,6 +233,10 @@ const Demo = () => {
                 onUpdate={updateFilters}
                 onRemove={removeFilter}
                 applyFilters={applyFilters}
+                tabIndex={-1}
+                ref={(node: HTMLDivElement) => {
+                  filtersGroupRef.current[index] = node;
+                }}
               />
             ))}
             <Button use='tertiary' addonLeft={MathPlusM} onClick={addFilter} ref={addButtonRef}>
