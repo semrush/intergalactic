@@ -8,14 +8,14 @@ import InputNumber from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 
 interface ValueState {
-  from: number | string;
-  to: number | string;
+  from: string;
+  to: string;
 }
 
 interface InputRangeProps {
   value: ValueState;
   changeValue: (updatedValue: ValueState) => void;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue, ...other }) => {
@@ -25,8 +25,8 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
   const fromRef = useRef<HTMLInputElement | null>(null);
   const toRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (key: keyof ValueState) => (value: string | number | null) => {
-    valueState[key] = value ? Number(value) : '';
+  const handleChange = (key: keyof ValueState) => (value: string | null) => {
+    valueState[key] = value ?? '';
     changeValue({ ...valueState });
   };
 
@@ -36,14 +36,14 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
         const { from, to } = valueState;
         if (from > to && to !== '') {
           changeValue({
-            from: Math.max(Number(to), minRange),
-            to: Math.min(Number(from), maxRange),
+            from: Math.max(Number(to), minRange).toString(),
+            to: Math.min(Number(from), maxRange).toString(),
           });
         }
         if ((to === '' || from === '') && (to !== '' || from !== '')) {
           changeValue({
-            from: from !== '' ? from : minRange,
-            to: to !== '' ? to : maxRange,
+            from: from !== '' ? from : minRange.toString(),
+            to: to !== '' ? to : maxRange.toString(),
           });
         }
       }
@@ -61,7 +61,7 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
             max={maxRange}
             aria-label='From'
             placeholder='From'
-            value={from !== '' ? String(from) : undefined}
+            value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
             ref={fromRef}
@@ -75,7 +75,7 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
             max={maxRange}
             aria-label='To'
             placeholder='To'
-            value={to !== '' ? String(to) : undefined}
+            value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
             ref={toRef}
@@ -87,7 +87,7 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
   );
 };
 
-const setTriggerText = ({ from, to }: { from: number | string; to: number | string }): string | null => {
+const setTriggerText = ({ from, to }: { from: string; to: string }): string | null => {
   if (from !== '' && to !== '') {
     return from === to ? `${from}` : `${from}-${to}`;
   }
@@ -108,7 +108,7 @@ const Demo = () => {
     const { from, to } = value;
     setVisible(false);
     setFilters(!!(from || to));
-    setDisplayValue(setTriggerText(value) || '');
+    setDisplayValue(setTriggerText(value) ?? '');
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
