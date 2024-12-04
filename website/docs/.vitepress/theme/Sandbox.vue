@@ -1,5 +1,5 @@
 <template>
-  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }">
+  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" role="region" aria-label="Playground">
   </div>
   <div class="code-wrapper" v-if="!hideCode">
     <span v-html="htmlCode"></span>
