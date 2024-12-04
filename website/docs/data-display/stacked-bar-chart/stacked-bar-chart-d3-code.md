@@ -50,6 +50,8 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 ## Stacked and grouped chart
 
+To group bars that are not stacked, refer to [Grouped bars example](/data-display/bar-chart/bar-chart-d3-code#grouped-bars).
+
 ::: sandbox
 
 <script lang="tsx">
