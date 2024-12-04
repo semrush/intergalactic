@@ -143,6 +143,7 @@ describe('DropdownMenu', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[ArrowRight]');
     await userEvent.keyboard('[Enter]');
 
@@ -229,12 +230,16 @@ describe('DropdownMenu', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[Escape]'); // close
     await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[Enter]'); // click on the first item and close // 1
     await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[Enter]'); // click on the first item and close // 2
     await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[Enter]'); // click on the first item and close // 3
 
     expect(spy).toHaveBeenCalledTimes(3);
@@ -260,6 +265,7 @@ describe('DropdownMenu', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[Enter]');
 
@@ -321,6 +327,7 @@ describe('DropdownMenu', () => {
 
       await userEvent.keyboard('[Tab]');
       await userEvent.keyboard('[Enter]');
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await userEvent.keyboard('[ArrowDown]');
       await userEvent.keyboard('[Enter]');
       expect(getByTestId('item-2-2')).toBeTruthy();
@@ -348,6 +355,7 @@ describe('DropdownMenu', () => {
 
       await userEvent.keyboard('[Tab]');
       await userEvent.keyboard('[Enter]');
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await userEvent.keyboard('[ArrowDown]');
       await userEvent.keyboard('[ArrowRight]');
       expect(getByTestId('item-2-2')).toBeTruthy();
@@ -377,6 +385,7 @@ describe('DropdownMenu', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 500));
     expect(getByTestId('dd-menu-item-1')).toHaveFocus();
 
     await userEvent.keyboard('[ArrowDown]');
