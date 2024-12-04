@@ -47,7 +47,7 @@ const Demo = () => {
       >
         <span aria-hidden>Include:</span> {`${keywords} keyword${keywords > 1 ? 's' : ''}`}
       </Dropdown.Trigger>
-      <Dropdown.Popper w={325} p={4} aria-label='Include keywords'>
+      <Dropdown.Popper w={325} p={4} aria-label='Include keywords' tabIndex={-1}>
         <ScreenReaderOnly role='status' aria-live='polite'>
           {message}
         </ScreenReaderOnly>
