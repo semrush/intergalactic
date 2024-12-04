@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.7] - 2024-12-04
+
+### Added
+
+- `placeholder` and `aria-label` for input in `InputSearch` component.
+
 ## [4.48.6] - 2024-11-29
 
 ### Changed
