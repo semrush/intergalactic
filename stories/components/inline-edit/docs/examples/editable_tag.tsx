@@ -1,13 +1,13 @@
 import React from 'react';
-import InlineInput from 'intergalactic/inline-input';
-import InlineEdit from 'intergalactic/inline-edit';
-import Tag from 'intergalactic/tag';
+import InlineInput from '@semcore/inline-input';
+import InlineEdit from '@semcore/inline-edit';
+import Tag from '@semcore/tag';
 
 const Demo = () => {
   const [value, setValue] = React.useState('Default tag');
   const [editable, setEditable] = React.useState(false);
 
-  const handleValue = (value) => {
+  const handleValue = (value: string) => {
     setEditable(false);
     setValue(value);
   };

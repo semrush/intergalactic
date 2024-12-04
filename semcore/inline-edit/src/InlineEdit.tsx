@@ -81,6 +81,15 @@ class InlineEdit extends Component<AsProps> {
     this.handlers.editable(true);
   }
 
+  componentDidUpdate(prevProps: AsProps) {
+    const { editable } = this.props;
+    if (prevProps.editable !== editable && editable === false) {
+      setTimeout(() => {
+        this.viewRef.current?.focus();
+      }, 0);
+    }
+  }
+
   render() {
     const SInlineEdit = Root;
     const { Children, children: hasChildren, styles } = this.asProps;

@@ -4,7 +4,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('InlineEdit', () => {
   test('Confirming', async ({ page }) => {
-    const standPath = 'website/docs/components/inline-edit/examples/simple_use.tsx';
+    const standPath = 'stories/components/inline-edit/docs/examples/simple_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -27,7 +27,7 @@ test.describe('InlineEdit', () => {
     await expect(textContent?.trim()).toBe(randomText?.trim());
   });
   test('Cancelling', async ({ page }) => {
-    const standPath = 'website/docs/components/inline-edit/examples/simple_use.tsx';
+    const standPath = 'stories/components/inline-edit/docs/examples/simple_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -46,7 +46,7 @@ test.describe('InlineEdit', () => {
     await expect(textContent?.replace(/ SaveCancel$/, '').trim()).toBe(initialText?.trim());
   });
   test('Cancelling after page scrolling', async ({ page }) => {
-    const standPath = 'website/docs/components/inline-edit/examples/simple_use.tsx';
+    const standPath = 'stories/components/inline-edit/docs/examples/simple_use.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     const newLines = Array(100)
