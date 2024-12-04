@@ -73,7 +73,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       if (visible || inlineActions) {
         this.afterOpenPopper();
       }
-    }, 0);
+    }, 200); // because first will be executed onClick handler in popper
   };
 
   afterOpenPopper = () => {

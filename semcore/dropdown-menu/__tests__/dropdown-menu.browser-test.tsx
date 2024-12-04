@@ -11,6 +11,7 @@ test.describe('Dropdown-menu', () => {
     const ddMenu = await page.locator('#dropdown-menu-children-items');
 
     await ddMenu.click();
+    await page.waitForTimeout(1000);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
