@@ -1,19 +1,19 @@
 import React from 'react';
-import NeighborLocation from 'intergalactic/neighbor-location';
-import InputNumber from 'intergalactic/input-number';
-import Button from 'intergalactic/button';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import InputNumber from '@semcore/ui/input-number';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
-  const inputRef = React.useRef(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const decrement = React.useCallback(() => {
-    inputRef.current.stepDown();
+    inputRef.current?.stepDown();
   }, []);
   const increment = React.useCallback(() => {
-    inputRef.current.stepUp();
+    inputRef.current?.stepUp();
   }, []);
 
   return (
@@ -23,7 +23,7 @@ const Demo = () => {
       </Text>
       <Flex w={100} mt={2}>
         <NeighborLocation>
-          <Button onClick={decrement} aria-label='Decrease members count by 10'>
+          <Button onClick={decrement} title='Decrease by 10'>
             -
           </Button>
           <InputNumber>
@@ -36,7 +36,7 @@ const Demo = () => {
               id='alternative-example'
             />
           </InputNumber>
-          <Button onClick={increment} aria-label='Increase members count by 10'>
+          <Button onClick={increment} title='Increase by 10'>
             +
           </Button>
         </NeighborLocation>

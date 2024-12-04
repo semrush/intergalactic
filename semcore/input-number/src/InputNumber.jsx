@@ -255,10 +255,6 @@ class Value extends Component {
     if (event.key === 'Shift') {
       this.cursorPosition = -1;
     }
-
-    const element = event.currentTarget;
-
-    element.role = 'input';
   };
 
   handleKeyDown = (event) => {
@@ -266,10 +262,6 @@ class Value extends Component {
     const value = element.value;
     const length = value.length;
     const { displayValue } = this.asProps;
-
-    // we need this dirty hack for screen readers, because they couldn't read full value in input after adding there ','.
-    // so, we change role to `region` here and back to `input` in handleKeyUp
-    element.role = 'region';
 
     if (event.key === '.' || event.key === ',') {
       // for the first decimal separator we should replace both ',' and '.' to '.' because of how js convert strings to numbers (with ',' it will be NaN)
@@ -454,8 +446,7 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
-    const SValueHidden = 'div';
-    const { styles, min, max, step, forwardRef, inputRef, value, displayValue } = this.asProps;
+    const { styles, min, max, step, forwardRef, inputRef, displayValue } = this.asProps;
 
     return sstyled(styles)(
       <>
@@ -474,12 +465,6 @@ class Value extends Component {
           max={max}
           step={step}
         />
-        {/* the next hidden div is necessary for the screen reader to report the value
-        in the input, because after validation the value can change to the `min` or `max`
-        if entered less than `min` or more than `max` */}
-        <SValueHidden aria-live='polite' aria-atomic={true}>
-          {value}
-        </SValueHidden>
       </>,
     );
   }

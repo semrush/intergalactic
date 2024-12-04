@@ -7,6 +7,7 @@ import ButtonSizesExample from './examples/ButtonSizes';
 import ButtonHintExample from './examples/ButtonHint';
 
 import { ButtonHintColorTest } from './__tests__/ButtonHintColor.test';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Advanced',
@@ -26,5 +27,5 @@ export const Sizes: Story = {
 
 export const CompareHintButtonTooltip: Story = {
   render: ButtonHintExample,
-  play: ButtonHintColorTest,
+  play: playWrapper(ButtonHintColorTest),
 };

@@ -27,6 +27,7 @@ declare global {
       toHaveNoViolations(): R;
       toHaveFocus(): R;
       toHaveStyle(style: string): R;
+      toBeInTheDocument(): R;
     }
   }
 }
