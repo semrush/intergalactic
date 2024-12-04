@@ -1,6 +1,7 @@
 import { ScaleBand, ScaleLinear } from 'd3-scale';
 import { Stack } from 'd3-shape';
-import { IntergalacticD3Component } from '../../types';
+// @ts-ignore
+import { IntergalacticD3Component } from '../../Plot';
 
 type StackGroupData = {
   [key: string]: number;
@@ -8,7 +9,7 @@ type StackGroupData = {
 
 export type StackGroupProps = {
   children: React.ReactNode | React.ReactNode[];
-  data: StackGroupData[];
+  data?: StackGroupData[];
   x: keyof StackGroupData;
   scale?: [ScaleBand<any>, ScaleLinear<any, any>];
   maxBarSize?: number;

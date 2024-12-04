@@ -65,7 +65,7 @@ class StackGroupBarRoot extends Component<StackGroupProps> {
   getSeries(group: string) {
     const { data } = this.asProps;
 
-    return this.stacks[group]?.(data);
+    return this.stacks[group]?.(data!); // data always will be because of CreateElement wrapper
   }
 
   getBarProps({ y, group, hMin = MIN_HEIGHT }: StackGroupBarProps, index: number) {

@@ -108,4 +108,4 @@ export * from './component/Chart/RadarChart.type';
 export * from './component/Chart/ScatterPlotChart.type';
 export * from './component/Chart/CigaretteChart.type';
 
-export * from './component/StackGroupBar/StackGroupBar.type';
+export { default as StackGroupBar } from './component/StackGroupBar/StackGroupBar';
