@@ -84,6 +84,8 @@ The bar can also have negative values. For better readability, add an additional
 
 To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 
+To combine multiple stacked bars see [Stacked and grouped bars](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code#stacked-and-grouped-chart)
+
 ::: tip
 The `<GroupBar.Bar/>` component is a customized `<Bar/>` that has the same API.
 :::

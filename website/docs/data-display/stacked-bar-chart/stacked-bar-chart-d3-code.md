@@ -47,3 +47,13 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 </script>
 
 :::
+
+## Stacked and grouped chart
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/d3-chart/docs/examples/StackedGroupedBar.tsx';
+</script>
+
+:::

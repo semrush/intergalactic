@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import StackedGroupedBarExample from './examples/StacjedGroupedBar';
+import StackedGroupedBarExample from './examples/StackedGroupedBar';
 
 const meta: Meta = {
-  title: 'Components/d3Charts/Documentation',
+  title: 'Components/d3Charts/Documentation/StackGroupBar',
 };
 
 export default meta;
