@@ -8,7 +8,7 @@ tabs: Design('filter-include-exclude'), Example('filter-include-exclude-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-example.tsx';
+  export Demo from 'stories/patterns/filters/filter-include-exclude/docs/examples/basic-example.tsx';
 </script>
 
 :::
