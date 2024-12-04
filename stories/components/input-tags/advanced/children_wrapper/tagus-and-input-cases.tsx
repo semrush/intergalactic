@@ -10,7 +10,9 @@ const TAGUS = () => (
         style={{
           background: '#2595e4'
         }}
-      />123</InputTags.Tag.Text>
+      />
+      <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+      </InputTags.Tag.Text>
     <InputTags.Tag.Close />
   </InputTags.Tag>
 );
