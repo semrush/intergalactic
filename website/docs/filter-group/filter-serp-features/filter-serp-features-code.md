@@ -11,7 +11,7 @@ Press the **Reload** button to load the fully functional state.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/serp-filter.tsx';
+  export Demo from 'stories/patterns/filters/serp-features/docs/examples/serp-filter.tsx';
 </script>
 
 :::

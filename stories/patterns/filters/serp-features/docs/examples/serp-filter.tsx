@@ -1,11 +1,11 @@
 import React from 'react';
-import Button, { ButtonLink } from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
-import { Flex, Box, ScreenReaderOnly } from '@semcore/ui/flex-box';
-import Select, { InputSearch } from '@semcore/ui/select';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import Ellipsis from '@semcore/ui/ellipsis';
-import ReloadIcon from '@semcore/ui/icon/Reload/m';
+import Button, { ButtonLink } from '@semcore/button';
+import { Text } from '@semcore/typography';
+import { Flex, Box, ScreenReaderOnly } from '@semcore/flex-box';
+import Select, { InputSearch } from '@semcore/select';
+import { FilterTrigger } from '@semcore/base-trigger';
+import Ellipsis from '@semcore/ellipsis';
+import ReloadIcon from '@semcore/icon/Reload/m';
 
 const serpFeatures = [
   'Featured Snippet',
@@ -29,7 +29,7 @@ const serpFeatures = [
   'Rich Snippets',
 ];
 
-const data = serpFeatures.map((i, idx) => {
+const data = serpFeatures.map((i: string) => {
   return {
     label: i,
     value: i,
@@ -59,6 +59,8 @@ const Demo = () => {
   const [search, setSearch] = React.useState('');
   const [message, setMessage] = React.useState('');
 
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+
   const options = React.useMemo(
     () => data.filter((option) => option.value.toLowerCase().includes(search.toLowerCase())),
     [search],
@@ -82,6 +84,8 @@ const Demo = () => {
     setTimeout(() => {
       setLoading(false);
       setError(false);
+      console.log(triggerRef.current);
+      triggerRef.current?.focus();
     }, 1000);
   }, []);
 
@@ -145,7 +149,7 @@ const Demo = () => {
         visible={visible}
         onVisibleChange={handleChangeVisible}
       >
-        <Select.Trigger aria-label='SERP Features' tag={FilterTrigger}>
+        <Select.Trigger aria-label='SERP Features' tag={FilterTrigger} triggerRef={triggerRef}>
           <span aria-hidden>SERP Features:</span> {triggerValue}
         </Select.Trigger>
         <Select.Popper aria-label='SERP Features'>
