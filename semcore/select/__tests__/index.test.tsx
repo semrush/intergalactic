@@ -200,7 +200,7 @@ describe('Select Trigger', () => {
 
     await userEvent.keyboard('[ArrowDown]');
     await userEvent.keyboard('[ArrowDown]');
-    await userEvent.keyboard('[Space]');   
+    await userEvent.keyboard('[Space]');
 
     expect(spyChange).toHaveBeenCalledWith(2, expect.anything());
   });
@@ -527,5 +527,5 @@ describe('InputSearch', () => {
 
     fireEvent.click(getByRole('button'));
     expect(spy).toHaveBeenCalledWith('', expect.anything());
-  });  
+  });
 });
