@@ -48,7 +48,7 @@ const Demo = () => {
     <FeedbackRating
       notificationVisible={notificationVisible}
       notificationText={'Is it working well for you?'}
-      learnMoreLink={'http://google.com'}
+      learnMoreLink={'https://developer.semrush.com/intergalactic/patterns/feedback-rating/feedback-rating-a11y'}
       header={'Great! What do you like the most?'}
       submitText={'Send feedback'}
       initialValues={initValue}
@@ -72,7 +72,7 @@ const Demo = () => {
         },
         {
           key: 'option3',
-          label: 'It’s easier to use for evaluation',
+          label: 'It\'s easier to use for evaluation',
           type: 'checkbox',
         },
         {
