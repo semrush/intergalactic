@@ -124,7 +124,6 @@ const Demo = () => {
         <Text size={300} tag='label' mb={1} htmlFor='password'>
           Password
         </Text>
-
         <FormControl
           name='password'
           type='password'
