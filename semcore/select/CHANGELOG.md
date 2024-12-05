@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.48.7] - 2024-12-05
+
+### Fixed
+
+- set `aria-activedescendant` for Trigger only if there is available option with current highlightedIndex.
+
 ## [4.48.6] - 2024-11-29
 
 ### Changed
