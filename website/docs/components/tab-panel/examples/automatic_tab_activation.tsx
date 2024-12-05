@@ -7,19 +7,19 @@ const Demo = () => {
   return (
     <>
       <TabPanel onChange={setValue} value={value} behavior='auto' aria-label='Animals'>
-        <TabPanel.Item value={1} aria-controls='tab-panel-1'>
+        <TabPanel.Item value={1} aria-controls='tab-panel-1-1' id='tab-label-1-1'>
           Cats
         </TabPanel.Item>
-        <TabPanel.Item value={2} aria-controls='tab-panel-2'>
+        <TabPanel.Item value={2} aria-controls='tab-panel-1-2' id='tab-label-1-2'>
           Dogs
         </TabPanel.Item>
-        <TabPanel.Item value={3} aria-controls='tab-panel-3'>
+        <TabPanel.Item value={3} aria-controls='tab-panel-1-3' id='tab-label-1-3'>
           Birds
         </TabPanel.Item>
       </TabPanel>
       {
         [
-          <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
+          <div id='tab-panel-1-1' role='tabpanel' aria-labelledby='tab-label-1-1' tabIndex={-1}>
             <h3>Cats</h3>
             <p>
               They are the only creatures that can simultaneously demand your attention and ignore
@@ -27,10 +27,10 @@ const Demo = () => {
             </p>
           </div>,
           <div
-            id='tab-panel-2'
+            id='tab-panel-1-2'
             aria-hidden='true'
             role='tabpanel'
-            aria-labelledby='tab-label-2'
+            aria-labelledby='tab-label-1-2'
             tabIndex={-1}
           >
             <h3>Dogs</h3>
@@ -40,10 +40,10 @@ const Demo = () => {
             </p>
           </div>,
           <div
-            id='tab-panel-3'
+            id='tab-panel-1-3'
             aria-hidden='true'
             role='tabpanel'
-            aria-labelledby='tab-label-3'
+            aria-labelledby='tab-label-1-3'
             tabIndex={-1}
           >
             <h3>Birds</h3>
