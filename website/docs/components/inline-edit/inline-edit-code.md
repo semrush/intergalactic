@@ -10,7 +10,7 @@ Use `<InlineEdit />` to make plain text wrapped in [InlineInput](/components/inl
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/simple_use.tsx';
+  export Demo from 'stories/components/inline-edit/docs/examples/simple_use.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ As far as `<InlineEdit />` is flexible, it could be used with almost any childre
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/editable_tag.tsx';
+  export Demo from 'stories/components/inline-edit/docs/examples/editable_tag.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ In this example, the value entered in the input is stored on the backend.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/pseudo_network_interaction.tsx';
+  export Demo from 'stories/components/inline-edit/docs/examples/pseudo_network_interaction.tsx';
 </script>
 
 :::
