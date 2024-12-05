@@ -68,20 +68,21 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     if (interaction === 'none') return false;
 
-    e.preventDefault();
-    e.stopPropagation();
-    this.handlers.visible(true);
-
     setTimeout(() => {
-      const highlightedIndex = this.asProps.highlightedIndex ?? 0;
-      const element = this.itemRefs[highlightedIndex];
-      element?.focus();
-      if (this.role === 'menu') {
-        this.handlers.highlightedIndex(highlightedIndex);
+      const { visible, inlineActions } = this.asProps;
+      if (visible || inlineActions) {
+        this.afterOpenPopper();
       }
-    }, 0);
+    }, 200); // because first will be executed onClick handler in popper
+  };
 
-    return false;
+  afterOpenPopper = () => {
+    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const element = this.itemRefs[highlightedIndex];
+    element?.focus();
+    if (this.role === 'menu') {
+      this.handlers.highlightedIndex(highlightedIndex);
+    }
   };
 
   getTriggerProps() {
@@ -265,6 +266,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
       e.currentTarget.getAttribute('role') !== this.childRole
     ) {
+      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+        this.handlers.visible(true);
+      }
+
       this.handleClickTrigger(e);
     }
   }

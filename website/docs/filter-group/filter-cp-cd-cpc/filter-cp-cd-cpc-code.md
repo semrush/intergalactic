@@ -8,7 +8,7 @@ tabs: Design('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-example.tsx';
+  export Demo from 'stories/patterns/filters/filter-cp-cd-cpc/docs/examples/basic-example.tsx';
 </script>
 
 :::

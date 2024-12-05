@@ -4,18 +4,6 @@ import { Box } from '@semcore/flex-box';
 import Notice from '@semcore/notice';
 import { Text, List } from '@semcore/ui/typography';
 
-const TAGUS = () => (
-  <InputTags.Tag>
-  
-    <InputTags.Tag.Text><InputTags.Tag.Circle
-        style={{
-          background: '#2595e4'
-        }}
-      />123</InputTags.Tag.Text>
-    <InputTags.Tag.Close />
-  </InputTags.Tag>
-);
-
 type InputWrapperProps = {
   value: string;
   setValue: (value: string) => void;
@@ -111,7 +99,9 @@ const Demo = () => {
           <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
             {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                <InputTags.Tag.Text>
+                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                </InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
             <InputTags.Value
@@ -135,7 +125,10 @@ const Demo = () => {
           <InputTags.TagsContainer>
             {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                <InputTags.Tag.Text>
+                <InputTags.Tag.Circle style={{ background: '#2595e4'}}/> 
+                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                </InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
             </InputTags.TagsContainer>
@@ -160,7 +153,9 @@ const Demo = () => {
           <InputTags.TagsContainer>
             {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                <InputTags.Tag.Text>
+                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                </InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
             </InputTags.TagsContainer>

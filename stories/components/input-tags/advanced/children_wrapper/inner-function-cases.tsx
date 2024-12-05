@@ -6,12 +6,13 @@ import { Text, List } from '@semcore/ui/typography';
 
 const TAGUS = () => (
   <InputTags.Tag>
-  
     <InputTags.Tag.Text><InputTags.Tag.Circle
         style={{
           background: '#2595e4'
         }}
-      />123</InputTags.Tag.Text>
+      /> 
+      <InputTags.Tag.Text.Content>Tag With text and addon</InputTags.Tag.Text.Content>
+      </InputTags.Tag.Text>
     <InputTags.Tag.Close />
   </InputTags.Tag>
 );
