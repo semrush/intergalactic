@@ -1,6 +1,5 @@
-import React from 'react';
 import { Intergalactic } from '@semcore/core';
-import { FlexProps } from '@semcore/flex-box';
+import { FlexProps, Box } from '@semcore/flex-box';
 import Select, { SelectProps } from '@semcore/select';
 import Input from '@semcore/input';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -26,13 +25,16 @@ declare const AddFilterPatternSelectType: Intergalactic.Component<
   List: typeof Select.List;
 };
 
+export type AddFilterPatternInputProps = AddFilterPatternItemProps & {
+  addonLeft?: typeof Box;
+  addonRight?: typeof Box;
+};
 declare const AddFilterPatternInputType: Intergalactic.Component<
   typeof Input,
-  AddFilterPatternItemProps,
+  AddFilterPatternInputProps,
   {
     value: string;
     onClear: () => void;
-    onChange: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;
   }
 > & {
   Addon: typeof Input.Addon;

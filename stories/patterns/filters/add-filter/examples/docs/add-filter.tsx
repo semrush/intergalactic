@@ -127,50 +127,52 @@ const AddFilterPatternExample = () => {
         {Boolean(filterData['name']) && (
           <AddFilterPattern.Input.Addon>
             <Hint
+            tag={ButtonLink}
+            use='secondary'
+            addonLeft={CloseM}
+            title='Clear'
+            onClick={() => {
+              clearField('name');
+            }}
+          />
+            </AddFilterPattern.Input.Addon>
+        )}
+      </AddFilterPattern.Input>
+
+      <AddFilterPattern.Input
+        addonLeft={<Select placeholder='Everywhere' options={selectOptions} />}
+        addonRight={
+          <Button>
+            <Button.Addon>
+              <SearchM />
+            </Button.Addon>
+          </Button>
+        }
+        alwaysVisible={true}
+        name={'fullname'}
+        displayName={'Fullname'}
+      >
+        <AddFilterPattern.Input.Value
+          placeholder={'Filter by fullname'}
+          onChange={(v) => {
+            setFilterData({ ...filterData, fullname: v });
+          }}
+          value={filterData['fullname']}
+          aria-label='Filter by fullname'
+        />
+        {Boolean(filterData['fullname']) && (
+          <AddFilterPattern.Input.Addon>
+            <Hint
               tag={ButtonLink}
               use='secondary'
               addonLeft={CloseM}
               title='Clear'
               onClick={() => {
-                clearField('name');
+                clearField('fullname');
               }}
             />
           </AddFilterPattern.Input.Addon>
         )}
-      </AddFilterPattern.Input>
-
-      <AddFilterPattern.Input alwaysVisible={true} name={'fullname'} displayName={'Fullname'}>
-        <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
-
-        <Flex neighborLocation='both'>
-          <AddFilterPattern.Input.Value
-            placeholder={'Filter by fullname'}
-            onChange={(v) => {
-              setFilterData({ ...filterData, fullname: v });
-            }}
-            value={filterData['fullname']}
-            aria-label='Filter by fullname'
-          />
-          {Boolean(filterData['fullname']) && (
-            <AddFilterPattern.Input.Addon>
-              <Hint
-                tag={ButtonLink}
-                use='secondary'
-                addonLeft={CloseM}
-                title='Clear'
-                onClick={() => {
-                  clearField('fullname');
-                }}
-              />
-            </AddFilterPattern.Input.Addon>
-          )}
-        </Flex>
-
-        <Button neighborLocation='left'>
-          <Button.Addon>
-            <SearchM />
-          </Button.Addon>
-        </Button>
       </AddFilterPattern.Input>
 
       <AddFilterPattern.Select

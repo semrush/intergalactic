@@ -1,11 +1,13 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
+import { AddFilterPatternInputProps } from '../AddFilterPattern.types';
 import { InputValueProps } from '@semcore/input';
+import { Flex } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
-class AddFilterPatternInputRoot extends Component<AddFilterPatternItemProps> {
+class AddFilterPatternInputRoot extends Component<AddFilterPatternInputProps> {
   static displayName = 'AddFilterPatternInput';
 
   getValueProps(props: InputValueProps) {
@@ -30,7 +32,16 @@ class AddFilterPatternInputRoot extends Component<AddFilterPatternItemProps> {
   }
 
   render() {
-    return <Root render={Input} w={'auto'} inline={false} />;
+    const { addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
+    return (
+      <Flex>
+        <NeighborLocation>
+          {AddonLeft ? <AddonLeft /> : null}
+          <Root render={Input} w={'auto'} inline={false} />
+          {AddonRight ? <AddonRight /> : null}
+        </NeighborLocation>
+      </Flex>
+    );
   }
 }
 

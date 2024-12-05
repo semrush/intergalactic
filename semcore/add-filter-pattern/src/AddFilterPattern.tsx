@@ -8,7 +8,6 @@ import CloseM from '@semcore/icon/Close/m';
 import FilterPatternType, {
   AddFilterPatternProps,
   AddFilterPatternItemProps,
-  FilterData,
 } from './AddFilterPattern.types';
 import AddFilterPatternSelect from './components/AddFilterPatternSelect';
 import AddFilterPatternInput from './components/AddFilterPatternInput';
