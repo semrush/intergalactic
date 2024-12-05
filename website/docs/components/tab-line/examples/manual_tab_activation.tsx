@@ -7,13 +7,25 @@ const Demo = () => {
   return (
     <>
       <TabLine onChange={setValue} value={value} behavior='manual' aria-label='Animals'>
-        <TabLine.Item value={1} aria-controls='tab-panel-3-1' id='tab-label-3-1'>
+        <TabLine.Item
+          value={1}
+          aria-controls={value === 1 ? 'tab-panel-3-1' : undefined}
+          id='tab-label-3-1'
+        >
           Cats
         </TabLine.Item>
-        <TabLine.Item value={2} aria-controls='tab-panel-3-2' id='tab-label-3-2'>
+        <TabLine.Item
+          value={2}
+          aria-controls={value === 2 ? 'tab-panel-3-2' : undefined}
+          id='tab-label-3-2'
+        >
           Dogs
         </TabLine.Item>
-        <TabLine.Item value={3} aria-controls='tab-panel-3-3' id='tab-label-3-3'>
+        <TabLine.Item
+          value={3}
+          aria-controls={value === 3 ? 'tab-panel-3-3' : undefined}
+          id='tab-label-3-3'
+        >
           Birds
         </TabLine.Item>
       </TabLine>
