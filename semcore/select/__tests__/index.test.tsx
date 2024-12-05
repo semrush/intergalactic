@@ -198,12 +198,11 @@ describe('Select Trigger', () => {
     await userEvent.keyboard('[Tab]');
     expect(getByTestId('buttonTrigger')).toHaveFocus();
 
-    // todo OOM crash because of code below
-    // await userEvent.keyboard('[ArrowDown]');
-    // await userEvent.keyboard('[ArrowDown]');
-    // await userEvent.keyboard('[Space]');
-    //
-    // expect(spyChange).toHaveBeenCalledWith(1, expect.anything());
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Space]');   
+
+    expect(spyChange).toHaveBeenCalledWith(2, expect.anything());
   });
 
   test.concurrent('Should support tag as string', async ({ task }) => {
@@ -528,5 +527,5 @@ describe('InputSearch', () => {
 
     fireEvent.click(getByRole('button'));
     expect(spy).toHaveBeenCalledWith('', expect.anything());
-  });
+  });  
 });
