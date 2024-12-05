@@ -1,3 +1,4 @@
+import React from 'react';
 import { Intergalactic } from '@semcore/core';
 import { FlexProps } from '@semcore/flex-box';
 import Select, { SelectProps } from '@semcore/select';
@@ -5,8 +6,6 @@ import Input from '@semcore/input';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Dropdown, { DropdownPopperProps, DropdownProps } from '@semcore/dropdown';
 import { FilterTrigger } from '@semcore/base-trigger';
-import React from 'react';
-import { Hint } from '@semcore/tooltip';
 
 export type AddFilterPatternItemProps = {
   alwaysVisible?: boolean;
@@ -38,7 +37,6 @@ declare const AddFilterPatternInputType: Intergalactic.Component<
 > & {
   Addon: typeof Input.Addon;
   Value: typeof Input.Value;
-  CloseHint: typeof Hint;
 };
 
 export type AddFilterPatternDropdownProps = AddFilterPatternItemProps & DropdownProps;
@@ -47,15 +45,13 @@ declare const AddFilterPatternDropdownType: Intergalactic.Component<
   AddFilterPatternDropdownProps
 > & {
   Trigger: typeof Dropdown.Trigger;
-  Popper: Intergalactic.Component<
-    typeof Dropdown.Popper,
-    DropdownPopperProps,
-    { onChange: (v: any) => void }
-  >;
+  Popper: Intergalactic.Component<typeof Dropdown.Popper, DropdownPopperProps>;
 };
 
+export type FilterData = Record<string, any>;
 export type AddFilterPatternProps = FlexProps & {
   onClearAll: () => void;
+  filterData: FilterData;
 };
 
 declare const AddFilterPatternType: Intergalactic.Component<'div', AddFilterPatternProps> & {

@@ -8,6 +8,7 @@ import CloseM from '@semcore/icon/Close/m';
 import FilterPatternType, {
   AddFilterPatternProps,
   AddFilterPatternItemProps,
+  FilterData,
 } from './AddFilterPattern.types';
 import AddFilterPatternSelect from './components/AddFilterPatternSelect';
 import AddFilterPatternInput from './components/AddFilterPatternInput';
@@ -24,7 +25,6 @@ type AddFilterDropdownMenuProps = {
   getI18nText: (key: string) => string;
 };
 
-type FilterData = Record<string, any>;
 type ClearAllFiltersButtonProps = {
   hasFilterData: boolean;
   clearAll: () => void;
@@ -34,7 +34,6 @@ type ClearAllFiltersButtonProps = {
 type AddFilterPatternState = {
   visibleFilters: Set<string>;
   addDropdownItems: AddFilterPatternDropdownOption[];
-  filterData: FilterData;
 };
 
 const componentsNames = [
@@ -86,7 +85,6 @@ class RootAddFilterPattern extends Component<
     this.state = {
       visibleFilters: new Set(),
       addDropdownItems: RootAddFilterPattern.getDefaultAddDropdownOptions(props.children),
-      filterData: {},
     };
   }
 
@@ -98,44 +96,27 @@ class RootAddFilterPattern extends Component<
     });
   }
 
-  setFilterValue(name: string, value: any) {
-    this.setState(({ filterData }) => {
-      const newFilterData = { ...filterData, [name]: value };
-      return {
-        filterData: newFilterData,
-      };
-    });
-  }
-
   getSelectProps(props: AddFilterPatternItemProps) {
     const { name, alwaysVisible } = props;
-    const value = this.state.filterData[name];
+    const { filterData } = this.asProps;
 
     return {
-      value,
+      value: filterData[name],
       alwaysVisible,
       onClear: () => {
-        this.setFilterValue(name, null);
         this.hideFilter(name, alwaysVisible);
-      },
-      onChange: (v: string) => {
-        this.setFilterValue(name, v);
       },
     };
   }
 
   getInputProps(props: AddFilterPatternItemProps) {
     const { name, alwaysVisible } = props;
-    const value = this.state.filterData[name];
+    const { filterData } = this.asProps;
 
     return {
-      value,
+      value: filterData[name],
       alwaysVisible,
-      onChange: (v: string) => {
-        this.setFilterValue(name, v);
-      },
       onClear: () => {
-        this.setFilterValue(name, null);
         this.hideFilter(name, alwaysVisible);
       },
     };
@@ -143,28 +124,19 @@ class RootAddFilterPattern extends Component<
 
   getDropdownProps(props: AddFilterPatternItemProps) {
     const { name, alwaysVisible } = props;
-    const value = this.state.filterData[name];
+    const { filterData } = this.asProps;
 
     return {
-      value,
+      value: filterData[name],
       name,
       onClear: () => {
-        this.setFilterValue(name, null);
         this.hideFilter(name, alwaysVisible);
-      },
-      onChange: (v: any) => {
-        this.setFilterValue(name, v);
       },
     };
   }
 
   clearAll() {
-    const filterData: FilterData = {};
-    Object.entries(this.state.filterData).forEach(([key]: [string, any]) => {
-      filterData[key] = null;
-    });
     this.setState({
-      filterData,
       visibleFilters: new Set(),
     });
     this.props.onClearAll();
@@ -201,10 +173,10 @@ class RootAddFilterPattern extends Component<
   }
 
   getClearAllFiltersProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, filterData } = this.asProps;
     return {
-      hasFilterData: Object.values(this.state.filterData).filter(Boolean).length > 0,
-      clearAll: this.clearAll.bind(this),
+      hasFilterData: Object.values(filterData).filter(Boolean).length > 0,
+      clearAll: () => this.clearAll(),
       getI18nText,
     };
   }

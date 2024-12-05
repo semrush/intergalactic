@@ -6,7 +6,7 @@ import { Flex } from '@semcore/flex-box';
 import SearchM from '@semcore/icon/Search/m';
 import { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
-import { Text } from '@semcore/typography';
+import { Hint, Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
 
@@ -14,81 +14,6 @@ const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
   { value: 'Option 2', children: 'Option 2' },
 ];
-
-type SearchFilterInputProps = {
-  placeholder: string;
-  onChange: (v: string) => void;
-  value: string;
-  onClear: () => void;
-};
-
-const SearchFilterInput = ({ value, onClear, onChange, placeholder }: SearchFilterInputProps) => {
-  return (
-    <>
-      <AddFilterPattern.Input.Addon>
-        <SearchM />
-      </AddFilterPattern.Input.Addon>
-      <AddFilterPattern.Input.Value
-        value={value}
-        onChange={onChange}
-        w={110}
-        placeholder={placeholder}
-      />
-      {Boolean(value) && (
-        <AddFilterPattern.Input.Addon>
-          <AddFilterPattern.Input.CloseHint
-            tag={ButtonLink}
-            use='secondary'
-            addonLeft={CloseM}
-            title='Clear'
-            onClick={onClear}
-          />
-        </AddFilterPattern.Input.Addon>
-      )}
-    </>
-  );
-};
-
-const FilterSearchByFullNameWithNeighbors = ({
-  value,
-  onClear,
-  onChange,
-  placeholder,
-}: SearchFilterInputProps) => {
-  return (
-    <>
-      <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
-
-      {/* 
-      // @ts-ignore */}
-      <Flex w={130} neighborLocation='both'>
-        <AddFilterPattern.Input.Value
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
-          aria-label='Filter by fullname'
-        />
-        {Boolean(value) && (
-          <AddFilterPattern.Input.Addon>
-            <AddFilterPattern.Input.CloseHint
-              tag={ButtonLink}
-              use='secondary'
-              addonLeft={CloseM}
-              title='Clear'
-              onClick={onClear}
-            />
-          </AddFilterPattern.Input.Addon>
-        )}
-      </Flex>
-
-      <Button neighborLocation='left'>
-        <Button.Addon>
-          <SearchM />
-        </Button.Addon>
-      </Button>
-    </>
-  );
-};
 
 type KeywordDataItem = {
   value: string;
@@ -180,36 +105,72 @@ const AddFilterPatternExample = () => {
 
   return (
     <AddFilterPattern
+      filterData={filterData}
       onClearAll={() => {
         setFilterData(defaultFilterData);
       }}
       gap={2}
       flexWrap
     >
-      <AddFilterPattern.Input alwaysVisible={true} name='name' displayName='Name'>
-        <SearchFilterInput
-          placeholder={'Filter by name'}
+      <AddFilterPattern.Input alwaysVisible={true} name={'name'} displayName={'Name'}>
+        <AddFilterPattern.Input.Addon>
+          <SearchM />
+        </AddFilterPattern.Input.Addon>
+        <AddFilterPattern.Input.Value
+          w={110}
+          value={filterData['name']}
           onChange={(v: string) => {
             setFilterData({ ...filterData, name: v });
           }}
-          onClear={() => {
-            clearField('name');
-          }}
-          value={filterData['name']}
+          placeholder={'Filter by name'}
         />
+        {Boolean(filterData['name']) && (
+          <AddFilterPattern.Input.Addon>
+            <Hint
+              tag={ButtonLink}
+              use='secondary'
+              addonLeft={CloseM}
+              title='Clear'
+              onClick={() => {
+                clearField('name');
+              }}
+            />
+          </AddFilterPattern.Input.Addon>
+        )}
       </AddFilterPattern.Input>
 
-      <AddFilterPattern.Input alwaysVisible={true} name='fullname' displayName='Fullname'>
-        <FilterSearchByFullNameWithNeighbors
-          onChange={(v) => {
-            setFilterData({ ...filterData, fullname: v });
-          }}
-          onClear={() => {
-            clearField('fullname');
-          }}
-          placeholder={'Filter by fullname'}
-          value={filterData['fullname']}
-        />
+      <AddFilterPattern.Input alwaysVisible={true} name={'fullname'} displayName={'Fullname'}>
+        <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
+
+        <Flex neighborLocation='both'>
+          <AddFilterPattern.Input.Value
+            placeholder={'Filter by fullname'}
+            onChange={(v) => {
+              setFilterData({ ...filterData, fullname: v });
+            }}
+            value={filterData['fullname']}
+            aria-label='Filter by fullname'
+          />
+          {Boolean(filterData['fullname']) && (
+            <AddFilterPattern.Input.Addon>
+              <Hint
+                tag={ButtonLink}
+                use='secondary'
+                addonLeft={CloseM}
+                title='Clear'
+                onClick={() => {
+                  clearField('fullname');
+                }}
+              />
+            </AddFilterPattern.Input.Addon>
+          )}
+        </Flex>
+
+        <Button neighborLocation='left'>
+          <Button.Addon>
+            <SearchM />
+          </Button.Addon>
+        </Button>
       </AddFilterPattern.Input>
 
       <AddFilterPattern.Select
@@ -249,29 +210,40 @@ const AddFilterPatternExample = () => {
           aria-label='List of excluded keywords'
           aria-modal='false'
         >
-          {({ onChange }) => (
-            <Keywords
-              onChange={(v) => {
-                setFilterData({ ...filterData, keywords: v });
-                onChange(v);
-              }}
-              value={filterData.keywords}
-            />
-          )}
+          <Keywords
+            onChange={(v) => {
+              setFilterData({ ...filterData, keywords: v });
+            }}
+            value={filterData.keywords}
+          />
         </AddFilterPattern.Dropdown.Popper>
       </AddFilterPattern.Dropdown>
 
-      <AddFilterPattern.Input name='position' displayName='Position'>
-        <SearchFilterInput
-          placeholder={'Filter by position'}
+      <AddFilterPattern.Input name={'position'} displayName={'Position'}>
+        <AddFilterPattern.Input.Addon>
+          <SearchM />
+        </AddFilterPattern.Input.Addon>
+        <AddFilterPattern.Input.Value
+          w={110}
+          value={filterData['position']}
           onChange={(v) => {
             setFilterData({ ...filterData, position: v });
           }}
-          onClear={() => {
-            clearField('position');
-          }}
-          value={filterData['position']}
+          placeholder={'Filter by position'}
         />
+        {Boolean(filterData['position']) && (
+          <AddFilterPattern.Input.Addon>
+            <Hint
+              tag={ButtonLink}
+              use='secondary'
+              addonLeft={CloseM}
+              title='Clear'
+              onClick={() => {
+                clearField('position');
+              }}
+            />
+          </AddFilterPattern.Input.Addon>
+        )}
       </AddFilterPattern.Input>
 
       <AddFilterPattern.Select
