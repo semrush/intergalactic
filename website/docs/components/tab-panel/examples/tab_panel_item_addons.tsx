@@ -10,13 +10,13 @@ const Demo = () => {
   return (
     <>
       <TabPanel value={value} onChange={setValue} aria-label='Social network reports'>
-        <TabPanel.Item value={1} aria-controls='tab-panel-1'>
+        <TabPanel.Item value={1} aria-controls='tab-panel-4-1' id='tab-label-4-1'>
           <TabPanel.Item.Addon>
             <FacebookM />
           </TabPanel.Item.Addon>
           <TabPanel.Item.Text>Facebook</TabPanel.Item.Text>
         </TabPanel.Item>
-        <TabPanel.Item value={2} aria-controls='tab-panel-2'>
+        <TabPanel.Item value={2} aria-controls='tab-panel-4-2' id='tab-label-4-2'>
           <TabPanel.Item.Addon>
             <InstagramM />
           </TabPanel.Item.Addon>
@@ -25,7 +25,7 @@ const Demo = () => {
             <Badge bg='green-400'>new</Badge>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
-        <TabPanel.Item value={3} aria-controls='tab-panel-3'>
+        <TabPanel.Item value={3} aria-controls='tab-panel-4-3' id='tab-label-4-3'>
           <TabPanel.Item.Addon>
             <TwitterM />
           </TabPanel.Item.Addon>
@@ -34,7 +34,7 @@ const Demo = () => {
       </TabPanel>
       {
         [
-          <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
+          <div id='tab-panel-4-1' role='tabpanel' aria-labelledby='tab-label-4-1' tabIndex={-1}>
             <h3>Facebook</h3>
             <p>
               It's where your aunt's cat has more followers than you, and your high school nemesis
@@ -42,10 +42,10 @@ const Demo = () => {
             </p>
           </div>,
           <div
-            id='tab-panel-2'
+            id='tab-panel-4-2'
             aria-hidden='true'
             role='tabpanel'
-            aria-labelledby='tab-label-2'
+            aria-labelledby='tab-label-4-2'
             tabIndex={-1}
           >
             <h3>Instagram</h3>
@@ -55,10 +55,10 @@ const Demo = () => {
             </p>
           </div>,
           <div
-            id='tab-panel-3'
+            id='tab-panel-4-3'
             aria-hidden='true'
             role='tabpanel'
-            aria-labelledby='tab-label-3'
+            aria-labelledby='tab-label-4-3'
             tabIndex={-1}
           >
             <h3>Twitter</h3>
