@@ -33,12 +33,13 @@ class AddFilterPatternInputRoot extends Component<AddFilterPatternInputProps> {
 
   render() {
     const { addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
+
     return (
       <Flex>
         <NeighborLocation>
-          {AddonLeft ? <AddonLeft /> : null}
+          {AddonLeft ? AddonLeft : null}
           <Root render={Input} w={'auto'} inline={false} />
-          {AddonRight ? <AddonRight /> : null}
+          {AddonRight ? AddonRight : null}
         </NeighborLocation>
       </Flex>
     );

@@ -26,8 +26,8 @@ declare const AddFilterPatternSelectType: Intergalactic.Component<
 };
 
 export type AddFilterPatternInputProps = AddFilterPatternItemProps & {
-  addonLeft?: typeof Box;
-  addonRight?: typeof Box;
+  addonLeft?: React.ReactNode;
+  addonRight?: React.ReactNode;
 };
 declare const AddFilterPatternInputType: Intergalactic.Component<
   typeof Input,

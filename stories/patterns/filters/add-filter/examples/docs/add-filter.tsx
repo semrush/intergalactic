@@ -127,15 +127,15 @@ const AddFilterPatternExample = () => {
         {Boolean(filterData['name']) && (
           <AddFilterPattern.Input.Addon>
             <Hint
-            tag={ButtonLink}
-            use='secondary'
-            addonLeft={CloseM}
-            title='Clear'
-            onClick={() => {
-              clearField('name');
-            }}
-          />
-            </AddFilterPattern.Input.Addon>
+              tag={ButtonLink}
+              use='secondary'
+              addonLeft={CloseM}
+              title='Clear'
+              onClick={() => {
+                clearField('name');
+              }}
+            />
+          </AddFilterPattern.Input.Addon>
         )}
       </AddFilterPattern.Input>
 
