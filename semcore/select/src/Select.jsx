@@ -183,7 +183,8 @@ class RootSelect extends AbstractDropdown {
 
   getOptionProps(props, index) {
     const { value, highlightedIndex, focusSourceRef, size = 'm' } = this.asProps;
-    const highlighted = index === highlightedIndex && focusSourceRef.current === 'keyboard';
+    const highlighted =
+      index === highlightedIndex && focusSourceRef.current === 'keyboard' && !props.disabled;
     const selected = props.selected ?? isSelectedOption(value, props.value);
 
     return {

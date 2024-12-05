@@ -207,7 +207,7 @@ const Demo = () => {
                   <Select.Option
                     value={'%all%'}
                     onClick={isAllSelected ? handleDeselectAll : handleSelectAll}
-                    disabled={value.length === 1 && value[0] === null}
+                    disabled={value.length === 1 && value[0] === '%none%'}
                   >
                     <Text color='text-link'>{isAllSelected ? 'Deselect all' : 'Select all'}</Text>
                   </Select.Option>
@@ -228,7 +228,7 @@ const Demo = () => {
                             value={option.value}
                             key={option.value}
                             aria-selected={value.includes(option.value)}
-                            disabled={value.length === 1 && value[0] === null}
+                            disabled={value.length === 1 && value[0] === '%none%'}
                           >
                             <Select.Option.Checkbox />
                             <Ellipsis placement={'right'}>

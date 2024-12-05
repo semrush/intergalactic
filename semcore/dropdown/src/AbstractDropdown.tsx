@@ -309,7 +309,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       }
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current && highlightedIndex !== null) {
+        if (
+          this.highlightedItemRef.current &&
+          highlightedIndex !== null &&
+          !this.itemProps[highlightedIndex].disabled
+        ) {
           e.stopPropagation();
           e.preventDefault();
           this.highlightedItemRef.current.click();
