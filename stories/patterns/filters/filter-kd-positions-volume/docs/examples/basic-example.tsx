@@ -8,13 +8,24 @@ import Divider from '@semcore/ui/divider';
 import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 
-const InputRange = ({ value: valueState, changeValue, ...other }) => {
+interface ValueState {
+  from: number | string;
+  to: number | string;
+}
+
+interface InputRangeProps {
+  value: ValueState;
+  changeValue: (updatedValue: ValueState) => void;
+  [key: string]: any;
+}
+
+const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue, ...other }) => {
   const minRange = 1;
 
-  const fromRef = useRef(null);
-  const toRef = useRef(null);
+  const fromRef = useRef<HTMLInputElement | null>(null);
+  const toRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (key) => (value) => {
+  const handleChange = (key: keyof ValueState) => (value: string | number | null) => {
     valueState[key] = value ? Number(value) : '';
     changeValue({ ...valueState });
   };
@@ -25,13 +36,13 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
         const { from, to } = valueState;
         if (from > to && to !== '') {
           changeValue({
-            from: Math.max(to, minRange),
-            to: from,
+            from: Math.max(Number(to), minRange).toString(),
+            to: Math.min(Number(from)).toString(),
           });
         }
         if (from === '' && to !== '') {
           changeValue({
-            from: minRange,
+            from: minRange.toString(),
             to,
           });
         }
@@ -47,8 +58,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
         <InputNumber>
           <InputNumber.Value
             min={minRange}
-            aria-label='From'
-            placeholder='From'
+            aria-label="From"
+            placeholder="From"
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -59,8 +70,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
         <InputNumber>
           <InputNumber.Value
             min={minRange}
-            aria-label='To'
-            placeholder='To'
+            aria-label="To"
+            placeholder="To"
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -75,21 +86,21 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
 
 const numberFormat = new Intl.NumberFormat('en-US');
 
-const setTriggerText = ({ from, to }) => {
+const setTriggerText = ({ from, to }: ValueState): string | null => {
   if (from !== '') {
-    if (to === '') return `${numberFormat.format(from)}+`;
-    else if (from === to) return numberFormat.format(from);
-    else return `${numberFormat.format(from)}-${numberFormat.format(to)}`;
+    if (to === '') return `${numberFormat.format(Number(from))}+`;
+    else if (from === to) return numberFormat.format(Number(from));
+    else return `${numberFormat.format(Number(from))}-${numberFormat.format(Number(to))}`;
   }
   return null;
 };
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
-  const [customRange, setCustomRange] = useState({ from: '', to: '' });
-  const [selectValue, setSelectValue] = useState(null);
-  const [displayValue, setDisplayValue] = useState(null);
-  const triggerRef = React.useRef(null);
+  const [customRange, setCustomRange] = useState<ValueState>({ from: '', to: '' });
+  const [selectValue, setSelectValue] = useState<string | null>(null);
+  const [displayValue, setDisplayValue] = useState<string | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const clearAll = () => {
     setCustomRange({ from: '', to: '' });
@@ -103,10 +114,15 @@ const Demo = () => {
     setSelectValue(null);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     e.stopPropagation();
 
-    if (e.key === 'Tab' && e.shiftKey && e.target.getAttribute('aria-label') === 'From') {
+    if (
+      e.key === 'Tab' &&
+      e.shiftKey &&
+      e.target instanceof HTMLElement &&
+      e.target.getAttribute('aria-label') === 'From'
+    ) {
       e.preventDefault();
       triggerRef.current?.focus();
     }
@@ -116,7 +132,7 @@ const Demo = () => {
     }
   };
 
-  const handleKeyDownApply = (e) => {
+  const handleKeyDownApply = (e: React.KeyboardEvent) => {
     if (e.key === 'Tab' && !e.shiftKey) {
       e.preventDefault();
       e.stopPropagation();
@@ -124,7 +140,7 @@ const Demo = () => {
     }
   };
 
-  const handleSelect = (value) => {
+  const handleSelect = (value: string) => {
     setDisplayValue(value);
     setSelectValue(value);
     setCustomRange({ from: '', to: '' });
@@ -138,8 +154,8 @@ const Demo = () => {
       value={selectValue}
     >
       <Select.Trigger
-        placeholder='Volume'
-        aria-label='Volume'
+        placeholder="Volume"
+        aria-label="Volume"
         active={visible}
         empty={displayValue === null}
         onClear={clearAll}
@@ -149,32 +165,32 @@ const Demo = () => {
         <span aria-hidden>Volume: </span>
         {displayValue}
       </Select.Trigger>
-      <Select.Popper w={224} aria-label='Volume'>
-        <Select.List aria-label='Presets'>
+      <Select.Popper w={224} aria-label="Volume">
+        <Select.List aria-label="Presets">
           {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
             (item) => (
               <Select.Option key={item} value={item}>
                 {item}
               </Select.Option>
-            ),
+            )
           )}
         </Select.List>
         <Divider my={1} />
-        <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
-          <Text id='custom-range-title' size={200} bold>
+        <Flex px={2} pt={1} pb={3} gap={2} direction="column">
+          <Text id="custom-range-title" size={200} bold>
             Custom range
           </Text>
           <InputRange
-            role='group'
-            aria-labelledby='custom-range-title'
+            role="group"
+            aria-labelledby="custom-range-title"
             value={customRange}
             changeValue={setCustomRange}
             onKeyDown={handleKeyDown}
           />
           <Button
-            use='primary'
-            theme='info'
-            w='100%'
+            use="primary"
+            theme="info"
+            w="100%"
             onClick={applyFilters}
             onKeyDown={handleKeyDownApply}
           >
