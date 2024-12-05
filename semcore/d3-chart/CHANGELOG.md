@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.58.0] - 2024-12-04
+
+### Added
+
+- New type of charts - `StackGroupBar`.
+
 ## [3.57.0] - 2024-11-29
 
 ### Changed
