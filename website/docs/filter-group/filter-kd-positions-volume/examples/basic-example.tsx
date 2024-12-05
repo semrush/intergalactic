@@ -89,6 +89,7 @@ const Demo = () => {
   const [customRange, setCustomRange] = useState({ from: '', to: '' });
   const [selectValue, setSelectValue] = useState(null);
   const [displayValue, setDisplayValue] = useState(null);
+  const triggerRef = React.useRef(null);
 
   const clearAll = () => {
     setCustomRange({ from: '', to: '' });
@@ -104,8 +105,22 @@ const Demo = () => {
 
   const handleKeyDown = (e) => {
     e.stopPropagation();
+
+    if (e.key === 'Tab' && e.shiftKey && e.target.getAttribute('aria-label') === 'From') {
+      e.preventDefault();
+      triggerRef.current?.focus();
+    }
+
     if (e.key === 'Enter') {
       applyFilters();
+    }
+  };
+
+  const handleKeyDownApply = (e) => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerRef.current?.focus();
     }
   };
 
@@ -129,6 +144,7 @@ const Demo = () => {
         empty={displayValue === null}
         onClear={clearAll}
         tag={FilterTrigger}
+        triggerRef={triggerRef}
       >
         <span aria-hidden>Volume: </span>
         {displayValue}
@@ -155,7 +171,13 @@ const Demo = () => {
             changeValue={setCustomRange}
             onKeyDown={handleKeyDown}
           />
-          <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
+          <Button
+            use='primary'
+            theme='info'
+            w='100%'
+            onClick={applyFilters}
+            onKeyDown={handleKeyDownApply}
+          >
             Apply
           </Button>
         </Flex>
