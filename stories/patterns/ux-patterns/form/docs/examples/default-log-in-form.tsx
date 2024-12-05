@@ -130,9 +130,9 @@ const Demo = () => {
                 })}
                 onFocus={() => setFocusedFieldName('password')}
                 onBlur={() => setFocusedFieldName('')}
-                autoComplete='password'
+                autoComplete='current-password'
                 aria-invalid={invalid('password')}
-                aria-errormessage={invalid('password') ? 'form-password-error' : undefined}
+                aria-describedby={invalid('password') ? 'form-password-error' : undefined}
               />
             )}
           </Tooltip.Trigger>

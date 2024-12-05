@@ -3,7 +3,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Select from '@semcore/select';
-import { ButtonTrigger } from '@semcore/base-trigger';
 import Counter from '@semcore/counter';
 import Tooltip from '@semcore/tooltip';
 import InputTags from '@semcore/input-tags/';
@@ -13,11 +12,12 @@ const Demo = () => {
   const defaultValues = {
     period: 'Weekly',
     day_week: 'Monday',
-    emails: ['first@react.hook.form', 'first@react.hook.form'],
+    emails: ['first@react.hook.form', 'second@react.hook.form'],
   };
-  const { handleSubmit, getValues, setValue, control, setError, clearErrors, errors } = useForm({
-    defaultValues,
-  });
+  const { handleSubmit, getValues, setValue, control, setError, clearErrors, errors, watch } =
+    useForm({
+      defaultValues,
+    });
   const [valueTag, setValueTag] = React.useState('');
   const [isFocused, setIsFocused] = React.useState(false);
 
@@ -83,29 +83,35 @@ const Demo = () => {
 
   return (
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
-      <Text size={300} tag='label' mb={1}>
+      <Text size={300} tag='label' mb={2}>
         Email frequency
       </Text>
 
-      <Flex mb={4}>
+      <Flex mb={6} gap={4}>
         <Controller
-          render={(props) => <Select tag={ButtonTrigger} options={periods} {...props} />}
+          render={(props) => <Select size='l' options={periods} {...props} />}
           control={control}
           name='period'
         />
-        <Controller
-          render={(props) => <Select ml={4} tag={ButtonTrigger} options={daysWeek} {...props} />}
-          control={control}
-          name='day_week'
-        />
+        {watch('period') === 'Weekly' && (
+          <Controller
+            render={(props) => <Select size='l' aria-label='Day' options={daysWeek} {...props} />}
+            control={control}
+            name='day_week'
+          />
+        )}
       </Flex>
 
       <Controller
         render={({ value: tags = [] }) => (
           <>
-            <Text size={300} tag='label' mb={1}>
+            <Text size={300} tag='label' mb={2}>
               Emails
-              <Counter ml={1} size='l'>{`${tags.length}/5`}</Counter>
+              <Counter
+                ml={1}
+                size='xl'
+                theme={tags.length < 5 ? '' : 'warning'}
+              >{`${tags.length}/5`}</Counter>
             </Text>
             <Tooltip
               interaction='none'
@@ -121,8 +127,6 @@ const Demo = () => {
                 state={showError ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
-                aria-invalid={showError}
-                aria-errormessage={showError ? 'form-emails-error' : undefined}
               >
                 {tags.map((tag: string, idx: number) => (
                   <InputTags.Tag key={tag + idx}>
@@ -135,6 +139,8 @@ const Demo = () => {
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
                   onFocus={() => setIsFocused(true)}
+                  aria-invalid={showError}
+                  aria-describedby={showError ? 'form-emails-error' : undefined}
                 />
               </Tooltip.Trigger>
               <Tooltip.Popper id='form-emails-error'>
@@ -147,7 +153,7 @@ const Demo = () => {
         name='emails'
       />
 
-      <Button mt={4} type='submit' use='primary' theme='success' size='l'>
+      <Button mt={8} type='submit' use='primary' theme='success' size='l' wMin={120}>
         Save
       </Button>
     </Flex>
