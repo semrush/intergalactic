@@ -214,12 +214,12 @@ class RootAddFilterPattern extends Component<
     this.alwaysVisibleFilters = RootAddFilterPattern.findComponentsByVisibility(Children, true);
     this.allHidableFilters = RootAddFilterPattern.findComponentsByVisibility(Children, false);
 
-    const FilteredVisible = this.getVisibleFromHidableFilters();
+    const VisibleFilteredChildren = this.getVisibleFromHidableFilters();
 
     return (
       <Root render={Flex}>
         {this.alwaysVisibleFilters}
-        {FilteredVisible}
+        {VisibleFilteredChildren}
         <AddFilterPattern.DropdownMenu />
         <AddFilterPattern.ClearAllFilters />
       </Root>
