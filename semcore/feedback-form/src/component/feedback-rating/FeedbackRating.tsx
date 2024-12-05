@@ -205,7 +205,7 @@ class FeedbackRatingRoot extends Component<
         {config.description && (
           <Box mt={2}>
             {typeof config.description === 'string' || isDescriptionReactFragment ? (
-              <Text lineHeight='18px' size={200} color='text-secondary'>
+              <Text size={200} color='text-secondary'>
                 {config.description}
               </Text>
             ) : (
