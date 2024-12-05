@@ -10,70 +10,100 @@ import FilterPatternType, {
   AddFilterPatternItemProps,
 } from './AddFilterPattern.types';
 import AddFilterPatternSelect from './components/AddFilterPatternSelect';
-import AddFilterPatternSearch from './components/AddFilterPatternSearch';
+import AddFilterPatternInput from './components/AddFilterPatternInput';
 import AddFilterPatternDropdown from './components/AddFilterPatternDropdown';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-type AddFilterPatternDoprdownOption = { label: string; value: string };
+type AddFilterPatternDropdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
-  options: AddFilterPatternDoprdownOption[];
+  options: AddFilterPatternDropdownOption[];
   toggleFieldVisibility: (name: string, status?: boolean) => void;
   visibleFilters: Set<string>;
+  getI18nText: (key: string) => string;
 };
 
 type FilterData = Record<string, any>;
-type ClearButtonProps = {
-  filterData: FilterData;
+type ClearAllFiltersButtonProps = {
+  hasFilterData: boolean;
   clearAll: () => void;
+  getI18nText: (key: string) => string;
 };
 
 type AddFilterPatternState = {
   visibleFilters: Set<string>;
-  addDropdownItems: AddFilterPatternDoprdownOption[];
+  addDropdownItems: AddFilterPatternDropdownOption[];
   filterData: FilterData;
 };
 
-const getDefaultAddDropdownItems = (
-  props: AddFilterPatternProps,
-): AddFilterPatternDoprdownOption[] => {
-  const childrenArray: React.ReactElement<AddFilterPatternItemProps>[] = Array.isArray(
-    props.children,
-  )
-    ? props.children
-    : [props.children];
+const componentsNames = [
+  'AddFilterPattern.Input',
+  'AddFilterPattern.Select',
+  'AddFilterPattern.Dropdown',
+];
 
-  return childrenArray
-    .flat()
-    .filter(({ props }) => !props.alwaysVisible)
-    .map(({ props }) => {
+const enhance = [i18nEnhance(localizedMessages)] as const;
+class RootAddFilterPattern extends Component<
+  AddFilterPatternProps,
+  {},
+  AddFilterPatternState,
+  typeof enhance
+> {
+  static displayName = 'AddFilterPattern';
+  alwaysVisibleFilters?: React.ReactElement<AddFilterPatternItemProps>[];
+  allHidableFilters?: React.ReactElement<AddFilterPatternItemProps>[];
+
+  static enhance = enhance;
+  static defaultProps = {
+    i18n: localizedMessages,
+    locale: 'en',
+  };
+
+  static findComponentsByVisibility = (children: React.ReactNode, alwaysVisible: boolean) => {
+    return findAllComponents(children, componentsNames).filter(
+      ({ props }: { props: AddFilterPatternItemProps }) => {
+        return Boolean(props.alwaysVisible) === alwaysVisible;
+      },
+    );
+  };
+
+  static getDefaultAddDropdownOptions = (children: React.ReactNode) => {
+    const allHidableItems = RootAddFilterPattern.findComponentsByVisibility(children, false);
+
+    return allHidableItems.map(({ props }: { props: AddFilterPatternItemProps }) => {
       const { name, displayName } = props;
       const value = name;
       const label = displayName ?? name;
 
       return { label, value };
     });
-};
-
-class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilterPatternState> {
-  static displayName = 'AddFilterPattern';
-  getDefaultAddDropdownItems: () => AddFilterPatternDoprdownOption[];
-  selectMenuRefs: Map<string, HTMLElement>;
+  };
 
   constructor(props: AddFilterPatternProps) {
     super(props);
-    this.getDefaultAddDropdownItems = () => getDefaultAddDropdownItems(props);
-    this.selectMenuRefs = new Map();
 
     this.state = {
       visibleFilters: new Set(),
-      addDropdownItems: this.getDefaultAddDropdownItems(),
+      addDropdownItems: RootAddFilterPattern.getDefaultAddDropdownOptions(props.children),
       filterData: {},
     };
   }
 
+  getVisibleFromHidableFilters() {
+    return Array.from(this.state.visibleFilters).map((name) => {
+      return (this.allHidableFilters ?? []).find(
+        ({ props }: { props: AddFilterPatternItemProps }) => props.name === name,
+      );
+    });
+  }
+
   setFilterValue(name: string, value: any) {
-    this.setState({
-      filterData: { ...this.state.filterData, [name]: value },
+    this.setState(({ filterData }) => {
+      const newFilterData = { ...filterData, [name]: value };
+      return {
+        filterData: newFilterData,
+      };
     });
   }
 
@@ -94,7 +124,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
     };
   }
 
-  getSearchProps(props: AddFilterPatternItemProps) {
+  getInputProps(props: AddFilterPatternItemProps) {
     const { name, alwaysVisible } = props;
     const value = this.state.filterData[name];
 
@@ -105,9 +135,8 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
         this.setFilterValue(name, v);
       },
       onClear: () => {
-        this.setFilterValue(name, '');
+        this.setFilterValue(name, null);
         this.hideFilter(name, alwaysVisible);
-        setTimeout(console.log, 0, this);
       },
     };
   }
@@ -131,8 +160,8 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
 
   clearAll() {
     const filterData: FilterData = {};
-    Object.entries(this.state.filterData).forEach(([key, value]: [string, any]) => {
-      filterData[key] = typeof value === 'string' ? '' : null;
+    Object.entries(this.state.filterData).forEach(([key]: [string, any]) => {
+      filterData[key] = null;
     });
     this.setState({
       filterData,
@@ -141,7 +170,7 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
     this.props.onClearAll();
   }
 
-  toggleFieldVisibility(name: string, status = true) {
+  toggleFieldVisibility(name: string, status: boolean) {
     const visibleFilters = new Set(Array.from(this.state.visibleFilters));
     if (status) {
       visibleFilters.add(name);
@@ -160,79 +189,67 @@ class RootAddFilterPattern extends Component<AddFilterPatternProps, {}, AddFilte
   }
 
   getDropdownMenuProps() {
+    const { getI18nText } = this.asProps;
+
     return {
       options: this.state.addDropdownItems,
       toggleFieldVisibility: (name: string, status: boolean) =>
         this.toggleFieldVisibility(name, status),
       visibleFilters: this.state.visibleFilters,
+      getI18nText,
     };
   }
 
-  getClearProps() {
+  getClearAllFiltersProps() {
+    const { getI18nText } = this.asProps;
     return {
-      filterData: this.state.filterData,
+      hasFilterData: Object.values(this.state.filterData).filter(Boolean).length > 0,
       clearAll: this.clearAll.bind(this),
+      getI18nText,
     };
   }
 
   render() {
     const { Children } = this.asProps;
+    this.alwaysVisibleFilters = RootAddFilterPattern.findComponentsByVisibility(Children, true);
+    this.allHidableFilters = RootAddFilterPattern.findComponentsByVisibility(Children, false);
 
-    const componentsNames = [
-      'AddFilterPattern.Search',
-      'AddFilterPattern.Select',
-      'AddFilterPattern.Dropdown',
-    ];
-
-    const AlwaysVisibleFiltersChildren = findAllComponents(Children, componentsNames).filter(
-      ({ props }: { props: AddFilterPatternItemProps }) => props.alwaysVisible,
-    );
-
-    const AllHideableItems = findAllComponents(Children, componentsNames).filter(
-      ({ props }: { props: AddFilterPatternItemProps }) => {
-        return !props.alwaysVisible;
-      },
-    );
-    const VisibleFiltersChildren = Array.from(this.state.visibleFilters).map((name) => {
-      return AllHideableItems.find(
-        ({ props }: { props: AddFilterPatternItemProps }) => props.name === name,
-      );
-    });
+    const FilteredVisible = this.getVisibleFromHidableFilters();
 
     return (
       <Root render={Flex}>
-        {AlwaysVisibleFiltersChildren}
-        {VisibleFiltersChildren}
+        {this.alwaysVisibleFilters}
+        {FilteredVisible}
         <AddFilterPattern.DropdownMenu />
-        <AddFilterPattern.Clear />
+        <AddFilterPattern.ClearAllFilters />
       </Root>
     );
   }
 }
 
-function AddFilterDropdown(props: AddFilterDropdownMenuProps) {
-  const { options = [], toggleFieldVisibility, visibleFilters } = props;
-  const [addFilterVisible, setAddFilterVisible] = React.useState(false);
+function AddFilterDropdownMenu(props: AddFilterDropdownMenuProps) {
+  const { options, toggleFieldVisibility, visibleFilters, getI18nText } = props;
+  const [visible, setVisible] = React.useState(false);
 
-  const optionsWithourVisible = React.useMemo(() => {
+  const optionsWithoutVisible = React.useMemo(() => {
     return options.filter((filter) => {
       return !Array.from(visibleFilters).includes(filter.value);
     });
   }, [options, visibleFilters]);
 
   return (
-    Boolean(optionsWithourVisible.length) && (
-      <DropdownMenu visible={addFilterVisible} onVisibleChange={setAddFilterVisible}>
+    Boolean(optionsWithoutVisible.length) && (
+      <DropdownMenu visible={visible} onVisibleChange={setVisible}>
         <DropdownMenu.Trigger tag={Button} use='tertiary' addonLeft={MathPlusM}>
-          Add filter
+          {getI18nText('AddFilterPattern.DropdownTrigger.Text')}
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
-          {optionsWithourVisible.map(({ label, value }) => (
+          {optionsWithoutVisible.map(({ label, value }) => (
             <DropdownMenu.Item
               key={value}
               onClick={() => {
-                toggleFieldVisibility(value);
-                setAddFilterVisible(false);
+                toggleFieldVisibility(value, true);
+                setVisible(false);
               }}
             >
               {label}
@@ -244,22 +261,11 @@ function AddFilterDropdown(props: AddFilterDropdownMenuProps) {
   );
 }
 
-function Clear({ filterData = {}, clearAll }: ClearButtonProps) {
-  const hasFilterData = React.useMemo(() => {
-    return Object.values(filterData).filter((v) => v).length > 0;
-  }, [filterData]);
-
+function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFiltersButtonProps) {
   return (
     hasFilterData && (
-      <Button
-        use='tertiary'
-        theme='muted'
-        addonLeft={CloseM}
-        ml='auto'
-        title='Clear filters'
-        onClick={clearAll}
-      >
-        Clear filters
+      <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
+        {getI18nText('AddFilterPattern.Button.Text')}
       </Button>
     )
   );
@@ -267,10 +273,10 @@ function Clear({ filterData = {}, clearAll }: ClearButtonProps) {
 
 const AddFilterPattern: typeof FilterPatternType = createComponent(RootAddFilterPattern, {
   Select: AddFilterPatternSelect,
-  Search: AddFilterPatternSearch,
+  Input: AddFilterPatternInput,
   Dropdown: AddFilterPatternDropdown,
-  DropdownMenu: AddFilterDropdown,
-  Clear,
+  DropdownMenu: AddFilterDropdownMenu,
+  ClearAllFilters,
 });
 
 export default AddFilterPattern;

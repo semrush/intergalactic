@@ -3,16 +3,12 @@ import AddFilterPattern from '@semcore/add-filter-pattern';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
-
 import SearchM from '@semcore/icon/Search/m';
 import { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
-import { Hint } from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
-import type { AddFilterPatternDropdownProps } from '@semcore/add-filter-pattern';
-import { verify } from 'crypto';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
@@ -28,67 +24,69 @@ type SearchFilterInputProps = {
 
 const SearchFilterInput = ({ value, onClear, onChange, placeholder }: SearchFilterInputProps) => {
   return (
-    <AddFilterPattern.Search.Input>
-      <AddFilterPattern.Search.Input.Addon>
+    <>
+      <AddFilterPattern.Input.Addon>
         <SearchM />
-      </AddFilterPattern.Search.Input.Addon>
-      <AddFilterPattern.Search.Input.Value
+      </AddFilterPattern.Input.Addon>
+      <AddFilterPattern.Input.Value
         value={value}
         onChange={onChange}
         w={110}
         placeholder={placeholder}
       />
       {Boolean(value) && (
-        <AddFilterPattern.Search.Input.Addon>
-          <AddFilterPattern.Search.Input.CloseHint
+        <AddFilterPattern.Input.Addon>
+          <AddFilterPattern.Input.CloseHint
             tag={ButtonLink}
             use='secondary'
             addonLeft={CloseM}
             title='Clear'
             onClick={onClear}
           />
-        </AddFilterPattern.Search.Input.Addon>
+        </AddFilterPattern.Input.Addon>
       )}
-    </AddFilterPattern.Search.Input>
+    </>
   );
 };
 
-const FilterSearchByFullNameWithNeighbours = ({
+const FilterSearchByFullNameWithNeighbors = ({
   value,
   onClear,
   onChange,
   placeholder,
 }: SearchFilterInputProps) => {
   return (
-    <Flex>
+    <>
       <Select placeholder='Everywhere' options={selectOptions} neighborLocation='right' />
 
-      <AddFilterPattern.Search.Input w={130} neighborLocation='both'>
-        <AddFilterPattern.Search.Input.Value
+      {/* 
+      // @ts-ignore */}
+      <Flex w={130} neighborLocation='both'>
+        <AddFilterPattern.Input.Value
           placeholder={placeholder}
           onChange={onChange}
           value={value}
           aria-label='Filter by fullname'
         />
         {Boolean(value) && (
-          <AddFilterPattern.Search.Input.Addon>
-            <AddFilterPattern.Search.Input.CloseHint
+          <AddFilterPattern.Input.Addon>
+            <AddFilterPattern.Input.CloseHint
               tag={ButtonLink}
               use='secondary'
               addonLeft={CloseM}
               title='Clear'
               onClick={onClear}
             />
-          </AddFilterPattern.Search.Input.Addon>
+          </AddFilterPattern.Input.Addon>
         )}
-      </AddFilterPattern.Search.Input>
+      </Flex>
 
       <Button neighborLocation='left'>
         <Button.Addon>
           <SearchM />
         </Button.Addon>
       </Button>
-    </Flex>
+    </>
   );
 };
 
@@ -188,7 +186,7 @@ const AddFilterPatternExample = () => {
       gap={2}
       flexWrap
     >
-      <AddFilterPattern.Search alwaysVisible={true} name='name' displayName='Name'>
+      <AddFilterPattern.Input alwaysVisible={true} name='name' displayName='Name'>
         <SearchFilterInput
           placeholder={'Filter by name'}
           onChange={(v: string) => {
@@ -199,10 +197,10 @@ const AddFilterPatternExample = () => {
           }}
           value={filterData['name']}
         />
-      </AddFilterPattern.Search>
+      </AddFilterPattern.Input>
 
-      <AddFilterPattern.Search alwaysVisible={true} name='fullname' displayName='Fullname'>
-        <FilterSearchByFullNameWithNeighbours
+      <AddFilterPattern.Input alwaysVisible={true} name='fullname' displayName='Fullname'>
+        <FilterSearchByFullNameWithNeighbors
           onChange={(v) => {
             setFilterData({ ...filterData, fullname: v });
           }}
@@ -212,7 +210,7 @@ const AddFilterPatternExample = () => {
           placeholder={'Filter by fullname'}
           value={filterData['fullname']}
         />
-      </AddFilterPattern.Search>
+      </AddFilterPattern.Input>
 
       <AddFilterPattern.Select
         onChange={(v: any) => {
@@ -263,7 +261,7 @@ const AddFilterPatternExample = () => {
         </AddFilterPattern.Dropdown.Popper>
       </AddFilterPattern.Dropdown>
 
-      <AddFilterPattern.Search name='position' displayName='Position'>
+      <AddFilterPattern.Input name='position' displayName='Position'>
         <SearchFilterInput
           placeholder={'Filter by position'}
           onChange={(v) => {
@@ -274,7 +272,7 @@ const AddFilterPatternExample = () => {
           }}
           value={filterData['position']}
         />
-      </AddFilterPattern.Search>
+      </AddFilterPattern.Input>
 
       <AddFilterPattern.Select
         name='device'

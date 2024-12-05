@@ -17,14 +17,9 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
 
   getSelectProps(props: AddFilterPatternSelectProps): AddFilterPatternSelectProps {
     const { onChange } = this.asProps;
-    const rewiredOnChange: typeof onChange = (v, e) => {
-      props.onChange?.(v, e);
-      onChange?.(v, e);
-    };
-
     return {
       ...props,
-      onChange: rewiredOnChange,
+      onChange,
     };
   }
 
@@ -66,15 +61,23 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
     };
   }
 
+  getListProps() {
+    return {
+      ref: this.menuRef,
+    };
+  }
+
   render() {
-    return <Root render={Select} __excludeProps={['onChange']} />;
+    return <Root render={Select} />;
   }
 }
 
-const AddFilterPatternSelectItem = createComponent(AddFilterPatternSelectRoot, {
+const AddFilterPatternSelect = createComponent(AddFilterPatternSelectRoot, {
   Trigger: Select.Trigger,
   Menu: Select.Menu,
   Option: Select.Option,
+  List: Select.List,
+  Popper: Select.Popper,
 });
 
-export default AddFilterPatternSelectItem;
+export default AddFilterPatternSelect;

@@ -51,14 +51,13 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternSelectProps
   }
 
   render() {
-    return <Root render={Dropdown} __excludeProps={['onChange']} />;
+    return <Root render={Dropdown} />;
   }
 }
 
-const AddFilterPatternSelectItem = createComponent(AddFilterPatternDropdownRoot, {
-  Dropdown,
+const AddFilterPatternDropdown = createComponent(AddFilterPatternDropdownRoot, {
   Trigger: Dropdown.Trigger,
   Popper: Dropdown.Popper,
 });
 
-export default AddFilterPatternSelectItem;
+export default AddFilterPatternDropdown;

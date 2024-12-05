@@ -1,7 +1,7 @@
 {
   "name": "@semcore/add-filter-pattern",
   "description": "Semrush Add Filter Pattern component",
-  "version": "6.35.1",
+  "version": "1.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

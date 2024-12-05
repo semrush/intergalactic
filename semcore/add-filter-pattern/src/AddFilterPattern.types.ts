@@ -24,9 +24,10 @@ declare const AddFilterPatternSelectType: Intergalactic.Component<
   Popper: typeof Select.Popper;
   Option: typeof Select.Option;
   Menu: typeof Select.Menu;
+  List: typeof Select.List;
 };
 
-declare const AddFilterPatternSearchType: Intergalactic.Component<
+declare const AddFilterPatternInputType: Intergalactic.Component<
   typeof Input,
   AddFilterPatternItemProps,
   {
@@ -35,9 +36,9 @@ declare const AddFilterPatternSearchType: Intergalactic.Component<
     onChange: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;
   }
 > & {
-  Input: typeof Input & {
-    CloseHint: typeof Hint;
-  };
+  Addon: typeof Input.Addon;
+  Value: typeof Input.Value;
+  CloseHint: typeof Hint;
 };
 
 export type AddFilterPatternDropdownProps = AddFilterPatternItemProps & DropdownProps;
@@ -59,11 +60,11 @@ export type AddFilterPatternProps = FlexProps & {
 
 declare const AddFilterPatternType: Intergalactic.Component<'div', AddFilterPatternProps> & {
   Dropdown: typeof AddFilterPatternDropdownType;
-  Search: typeof AddFilterPatternSearchType;
+  Input: typeof AddFilterPatternInputType;
   Select: typeof AddFilterPatternSelectType;
   DropdownMenu: typeof DropdownMenu;
-  Clear: Intergalactic.Component<'button'>;
+  ClearAllFilters: Intergalactic.Component<'button'>;
 };
 
-export { AddFilterPatternSearchType, AddFilterPatternSelectType, AddFilterPatternDropdownType };
+export { AddFilterPatternInputType, AddFilterPatternSelectType, AddFilterPatternDropdownType };
 export default AddFilterPatternType;

@@ -8,21 +8,17 @@ import { Hint } from '@semcore/tooltip';
 import { InputValueProps } from '@semcore/input';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
-class AddFilterPatternSearchRoot extends Component<AddFilterPatternItemProps> {
-  static displayName = 'AddFilterPatternSearch';
+class AddFilterPatternInputRoot extends Component<AddFilterPatternItemProps> {
+  static displayName = 'AddFilterPatternInput';
 
-  getInputValueProps(props: InputValueProps) {
+  getValueProps(props: InputValueProps) {
     const { onChange, value, onClear, alwaysVisible } = this.asProps as AsPropsWithOnClear<
       typeof this.asProps
     >;
-    const rewiredOnChange = (value: string, event: React.SyntheticEvent<HTMLInputElement>) => {
-      props.onChange?.(value, event);
-      onChange?.(value as any);
-    };
 
     return {
       ...props,
-      onChange: rewiredOnChange,
+      onChange,
       onBlur: () => {
         if (!value) {
           setTimeout(onClear, 100);
@@ -37,34 +33,28 @@ class AddFilterPatternSearchRoot extends Component<AddFilterPatternItemProps> {
     };
   }
 
-  getInputCloseHintProps(props: { onClick: (e: React.SyntheticEvent) => void }) {
+  getCloseHintProps(props: { onClick: (e: React.SyntheticEvent) => void }) {
     const { onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
-
-    const rewiredOnClick = (e: React.SyntheticEvent) => {
-      props.onClick?.(e);
-      onClear?.();
-    };
 
     return {
       ...props,
-      onClick: rewiredOnClick,
+      onClick: onClear,
     };
   }
 
   render() {
-    return <Root render={Flex} __excludeProps={['onChange']} />;
+    return (
+      <Flex>
+        <Root render={Input} __excludeProps={['onChange']} />
+      </Flex>
+    );
   }
 }
 
-const AddFilterPatternSearchItem = createComponent(AddFilterPatternSearchRoot, {
-  Input: [
-    Input,
-    {
-      Value: Input.Value,
-      Addon: Input.Addon,
-      CloseHint: Hint,
-    },
-  ],
+const AddFilterPatternInput = createComponent(AddFilterPatternInputRoot, {
+  Value: Input.Value,
+  Addon: Input.Addon,
+  CloseHint: Hint,
 });
 
-export default AddFilterPatternSearchItem;
+export default AddFilterPatternInput;
