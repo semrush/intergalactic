@@ -77,6 +77,7 @@ export type ShapeProps = LegendItem &
         size: LSize;
         shape: Extract<ShapeType, 'Checkbox'>;
         onChange: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+        'aria-labelledby'?: string;
       }
   );
 
