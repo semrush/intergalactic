@@ -130,6 +130,10 @@ const Demo = () => {
     if (e.key === 'Enter') {
       applyFilters();
     }
+
+    if (e.key === 'Escape') {
+      setVisible(false);
+    }
   };
 
   const handleKeyDownApply = (e: React.KeyboardEvent) => {
