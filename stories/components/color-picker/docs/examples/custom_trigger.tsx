@@ -34,7 +34,7 @@ const Demo = () => {
         </ColorPicker>
       </Flex>
       <Flex direction='column'>
-        <Text tag='label' size={300} htmlFor='new-tag'>
+        <Text tag='label' size={300} htmlFor='new-tag1'>
           New tag
         </Text>
         <ColorPicker value={value} onChange={setValue}>
@@ -50,7 +50,7 @@ const Demo = () => {
                 }}
               />
             </ColorPicker.Trigger>
-            <Input.Value placeholder='Tag name' id='new-tag' />
+            <Input.Value placeholder='Tag name' id='new-tag1' />
           </Input>
           <ColorPicker.Popper>
             <ColorPicker.Colors />
