@@ -11,11 +11,11 @@ Use uppercase and no period in:
 <DosDonts>
     <template #dont>
         <p>.PDF, .CSS, .HTML</p>
-        <img src="./static/export-to-pdf-dont.png" style="margin: auto" />
+        <img src="./static/export-to-pdf-dont.png" style="margin: auto" alt="A button labeled 'Export to dot PDF'" />
     </template>
     <template #do>
         <p>PDF, CSS, HTML</p>
-        <img src="./static/export-to-pdf-do.png" style="margin: auto" />
+        <img src="./static/export-to-pdf-do.png" style="margin: auto" alt="A button labeled 'Export to PDF'" />
     </template>
 </DosDonts>
 

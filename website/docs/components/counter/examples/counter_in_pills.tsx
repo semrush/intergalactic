@@ -3,7 +3,7 @@ import Pills from 'intergalactic/pills';
 import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
-  <Pills defaultValue='all'>
+  <Pills defaultValue='all' aria-label='Pills with counters'>
     <Pills.Item value='all'>
       <Pills.Item.Text>All</Pills.Item.Text>
       <Pills.Item.Addon>
