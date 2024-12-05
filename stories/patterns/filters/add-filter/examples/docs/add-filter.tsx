@@ -9,6 +9,7 @@ import CloseM from '@semcore/icon/Close/m';
 import { Hint, Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
+import NeighborLocation from '@semcore/neighbor-location';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
@@ -126,11 +127,10 @@ const AddFilterPatternExample = () => {
         />
         {Boolean(filterData['name']) && (
           <AddFilterPattern.Input.Addon>
-            <Hint
-              tag={ButtonLink}
+            <ButtonLink
               use='secondary'
               addonLeft={CloseM}
-              title='Clear'
+              aria-label='Clear'
               onClick={() => {
                 clearField('name');
               }}
@@ -162,11 +162,10 @@ const AddFilterPatternExample = () => {
         />
         {Boolean(filterData['fullname']) && (
           <AddFilterPattern.Input.Addon>
-            <Hint
-              tag={ButtonLink}
+            <ButtonLink
               use='secondary'
               addonLeft={CloseM}
-              title='Clear'
+              aria-label='Clear'
               onClick={() => {
                 clearField('fullname');
               }}
