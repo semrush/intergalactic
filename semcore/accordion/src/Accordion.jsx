@@ -146,13 +146,7 @@ class Toggle extends Component {
     const SItemToggle = Root;
 
     return sstyled(styles)(
-      <SItemToggle
-        use={use}
-        ref={this.toggleRef}
-        render={Text}
-        onKeyDown={this.handleKeyDown}
-        aria-disabled={disabled ? 'true' : undefined}
-      />,
+      <SItemToggle use={use} ref={this.toggleRef} render={Text} onKeyDown={this.handleKeyDown} />,
     );
   }
 }

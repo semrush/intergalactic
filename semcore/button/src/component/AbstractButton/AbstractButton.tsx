@@ -117,7 +117,6 @@ export abstract class AbstractButton extends Component<Props, {}, {}> {
       ref: this.containerRef,
       'text-color': this.getTextColor(),
       'aria-busy': loading,
-      'aria-disabled': disabled,
       __excludeProps: ['title'],
     };
 
