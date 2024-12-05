@@ -1,13 +1,13 @@
 import type { Meta } from '@storybook/react';
 
-import BaseTriggerExample from './examples/base-trigger';
+import LinkTriggerExample from './examples/base-trigger';
 
-const meta: Meta<typeof BaseTrigger> = {
+const meta = {
   title: 'Components/BaseTrigger/Documentation',
 };
 
-export const BaseTrigger = {
-  render: BaseTriggerExample,
+export const LinkTrigger = {
+  render: LinkTriggerExample,
 };
 
 export default meta;
