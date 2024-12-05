@@ -37,6 +37,10 @@ interface FilterProps extends React.ComponentPropsWithoutRef<typeof Flex> {
   conditionId: number;
 }
 
+const outlineStyle = {
+  outline: 'none',
+};
+
 const Filter = React.forwardRef(
   (
     { removable, data, applyFilters, onUpdate, onRemove, conditionId, ...props }: FilterProps,
@@ -55,7 +59,7 @@ const Filter = React.forwardRef(
     };
 
     return (
-      <Flex {...props} gap={2} ref={ref}>
+      <Flex {...props} gap={2} ref={ref} style={outlineStyle}>
         <Flex
           flexWrap
           gap={4}
