@@ -13,7 +13,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Tag With text and addon
+            <InputTags.Tag.Text.Content>Tag With text and addon</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
         </InputTags.Tag>
         <InputTags.Tag editable={false} tabIndex={0}>
@@ -28,7 +28,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Edit />
             </InputTags.Tag.Addon>
-            Tag with addon text and close
+            <InputTags.Tag.Text.Content>Tag with addon text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -43,7 +43,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Addon circle text and close
+            <InputTags.Tag.Text.Content>Addon circle text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -72,7 +72,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Tag With text and addon
+            <InputTags.Tag.Text.Content>Tag With text and addon</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
         </InputTags.Tag>
         <InputTags.Tag editable={false} tabIndex={0}>
@@ -87,7 +87,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Edit />
             </InputTags.Tag.Addon>
-            Tag with addon text and close
+            <InputTags.Tag.Text.Content>Tag with addon text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -102,7 +102,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Addon circle text and close
+            <InputTags.Tag.Text.Content>Addon circle text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -131,7 +131,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Tag With text and addon
+            <InputTags.Tag.Text.Content>Tag With text and addon</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
         </InputTags.Tag>
         <InputTags.Tag editable={false} tabIndex={0}>
@@ -146,7 +146,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Edit />
             </InputTags.Tag.Addon>
-            Tag with addon text and close
+            <InputTags.Tag.Text.Content>Tag with addon text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -161,7 +161,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Addon circle text and close
+            <InputTags.Tag.Text.Content>Addon circle text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -190,7 +190,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Tag With text and addon
+            <InputTags.Tag.Text.Content>Tag With text and addon</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
         </InputTags.Tag>
         <InputTags.Tag editable={false} tabIndex={0}>
@@ -205,7 +205,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Edit />
             </InputTags.Tag.Addon>
-            Tag with addon text and close
+            <InputTags.Tag.Text.Content>Tag with addon text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
@@ -220,7 +220,7 @@ const Demo = () => {
             <InputTags.Tag.Addon>
               <Check />
             </InputTags.Tag.Addon>
-            Addon circle text and close
+            <InputTags.Tag.Text.Content>Addon circle text and close</InputTags.Tag.Text.Content>
           </InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
