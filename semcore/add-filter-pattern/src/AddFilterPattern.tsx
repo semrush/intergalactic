@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import createComponent, { Component, Root } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
@@ -58,16 +58,22 @@ class RootAddFilterPattern extends Component<
     locale: 'en',
   };
 
-  static findComponentsByVisibility = (children: React.ReactNode, alwaysVisible: boolean) => {
-    return findAllComponents(children, componentsNames).filter(
-      ({ props }: { props: AddFilterPatternItemProps }) => {
-        return Boolean(props.alwaysVisible) === alwaysVisible;
-      },
-    );
+  static findAllFilters = (children: React.ReactNode) => {
+    return findAllComponents(children, componentsNames);
+  };
+
+  static filterChildrenByVisibility = (
+    filterChildren: React.ReactElement<AddFilterPatternItemProps>[],
+    alwaysVisible: boolean,
+  ) => {
+    return filterChildren.filter(({ props }: { props: AddFilterPatternItemProps }) => {
+      return Boolean(props.alwaysVisible) === alwaysVisible;
+    });
   };
 
   static getDefaultAddDropdownOptions = (children: React.ReactNode) => {
-    const allHidableItems = RootAddFilterPattern.findComponentsByVisibility(children, false);
+    const allFilters = RootAddFilterPattern.findAllFilters(children);
+    const allHidableItems = RootAddFilterPattern.filterChildrenByVisibility(allFilters, false);
 
     return allHidableItems.map(({ props }: { props: AddFilterPatternItemProps }) => {
       const { name, displayName } = props;
@@ -87,11 +93,11 @@ class RootAddFilterPattern extends Component<
     };
   }
 
-  getVisibleFromHidableFilters() {
+  getVisibleFromHidableFilters(allFilters: React.ReactElement<AddFilterPatternItemProps>[]) {
+    const allHidableFilters = RootAddFilterPattern.filterChildrenByVisibility(allFilters, false);
+
     return Array.from(this.state.visibleFilters).map((name) => {
-      return (this.allHidableFilters ?? []).find(
-        ({ props }: { props: AddFilterPatternItemProps }) => props.name === name,
-      );
+      return allHidableFilters.find(({ props }) => props.name === name);
     });
   }
 
@@ -182,14 +188,13 @@ class RootAddFilterPattern extends Component<
 
   render() {
     const { Children } = this.asProps;
-    this.alwaysVisibleFilters = RootAddFilterPattern.findComponentsByVisibility(Children, true);
-    this.allHidableFilters = RootAddFilterPattern.findComponentsByVisibility(Children, false);
-
-    const VisibleFilteredChildren = this.getVisibleFromHidableFilters();
+    const allFilters = RootAddFilterPattern.findAllFilters(Children);
+    const AlwaysVisibleFilters = RootAddFilterPattern.filterChildrenByVisibility(allFilters, true);
+    const VisibleFilteredChildren = this.getVisibleFromHidableFilters(allFilters);
 
     return (
       <Root render={Flex}>
-        {this.alwaysVisibleFilters}
+        {AlwaysVisibleFilters}
         {VisibleFilteredChildren}
         <AddFilterPattern.DropdownMenu />
         <AddFilterPattern.ClearAllFilters />
