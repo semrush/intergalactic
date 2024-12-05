@@ -144,16 +144,19 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
         langs: [import('shiki/langs/tsx.mjs')],
         loadWasm: getWasm,
       });
-      const html = highlighter.codeToHtml(source, {
-        lang: 'tsx',
-        theme: 'github-dark',
-      });
+      const html = highlighter
+        .codeToHtml(source, {
+          lang: 'tsx',
+          theme: 'github-dark',
+        })
+        .replace(' tabindex="0"><code>', '><code tabindex="0" aria-label="JSX">');
+
       setHighlightedSource(html);
     })();
   }, [source]);
 
   return (
-    <div className={styles.wrapperPlayground} aria-hidden='true'>
+    <div className={styles.wrapperPlayground}>
       <div className={styles.workArea}>
         <div className={`${styles.playgroundRuntime}`} style={{ margin: 0 }}>
           <ShadowRooted>
@@ -187,7 +190,11 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
         )}
       </div>
       {hasWidget ? (
-        <div className={`${styles.widgetsBar} playground-widgets-bar`}>
+        <div
+          className={`${styles.widgetsBar} playground-widgets-bar`}
+          role='group'
+          aria-label='Component properties'
+        >
           {widgetControls.map((control, i) => {
             return (
               <div className={styles.widgetGroup} key={i}>
