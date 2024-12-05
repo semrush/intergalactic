@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.27.0] - 2024-12-02
+
+### Added
+
+- `role=img` to all svg charts.
+
 ## [0.26.0] - 2024-11-29
 
 ### Changed

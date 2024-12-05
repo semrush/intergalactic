@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.1] - 2024-12-02
+
+### Fixed
+
+- Focus didn't return to the View element after edit.
+
 ## [4.41.0] - 2024-11-29
 
 ### Changed

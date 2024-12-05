@@ -1,15 +1,15 @@
 import React from 'react';
-import InlineInput from 'intergalactic/inline-input';
-import InlineEdit from 'intergalactic/inline-edit';
-import EditM from 'intergalactic/icon/Edit/m';
-import { Text } from 'intergalactic/typography';
+import InlineInput from '@semcore/inline-input';
+import InlineEdit from '@semcore/inline-edit';
+import EditM from '@semcore/icon/Edit/m';
+import { Text } from '@semcore/typography';
 
 const Example = () => {
   const [title, setTitle] = React.useState('The Adventures of Intergalactic Whale');
   const [editingTitle, setEditingTitle] = React.useState(false);
   const [savingTitle, setSavingTitle] = React.useState(false);
   const stopEditing = () => setEditingTitle(false);
-  const handleTitle = (title) => {
+  const handleTitle = (title: string) => {
     setSavingTitle(true);
     /** Here we are doing some network activities */
     setTimeout(() => {
