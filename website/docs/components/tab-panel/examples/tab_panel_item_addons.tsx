@@ -10,13 +10,21 @@ const Demo = () => {
   return (
     <>
       <TabPanel value={value} onChange={setValue} aria-label='Social network reports'>
-        <TabPanel.Item value={1} aria-controls='tab-panel-4-1' id='tab-label-4-1'>
+        <TabPanel.Item
+          value={1}
+          aria-controls={value === 1 ? 'tab-panel-4-1' : undefined}
+          id='tab-label-4-1'
+        >
           <TabPanel.Item.Addon>
             <FacebookM />
           </TabPanel.Item.Addon>
           <TabPanel.Item.Text>Facebook</TabPanel.Item.Text>
         </TabPanel.Item>
-        <TabPanel.Item value={2} aria-controls='tab-panel-4-2' id='tab-label-4-2'>
+        <TabPanel.Item
+          value={2}
+          aria-controls={value === 2 ? 'tab-panel-4-2' : undefined}
+          id='tab-label-4-2'
+        >
           <TabPanel.Item.Addon>
             <InstagramM />
           </TabPanel.Item.Addon>
@@ -25,7 +33,11 @@ const Demo = () => {
             <Badge bg='green-400'>new</Badge>
           </TabPanel.Item.Addon>
         </TabPanel.Item>
-        <TabPanel.Item value={3} aria-controls='tab-panel-4-3' id='tab-label-4-3'>
+        <TabPanel.Item
+          value={3}
+          aria-controls={value === 3 ? 'tab-panel-4-3' : undefined}
+          id='tab-label-4-3'
+        >
           <TabPanel.Item.Addon>
             <TwitterM />
           </TabPanel.Item.Addon>
