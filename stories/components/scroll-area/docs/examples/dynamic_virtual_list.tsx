@@ -1,5 +1,4 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 import ScrollArea from 'intergalactic/scroll-area';
 import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
@@ -25,7 +24,6 @@ const Demo = () => {
   const [data, setData] = React.useState(list);
   const innerRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
   const ref = (node: HTMLDivElement | null) => {
-    node = findDOMNode(node);
     if (node && innerRef.current) {
       innerRef.current = node.querySelector('.ReactVirtualized__Grid__innerScrollContainer');
     }
