@@ -13,6 +13,7 @@ import log from '@semcore/utils/lib/logger';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import style from './style/tag.shadow.css';
+import { ScreenReaderOnly } from '@semcore/flex-box/src';
 
 const legacyThemeRecommendedMigration = {
   primary: {
@@ -156,6 +157,18 @@ class RootTagContainer extends Component {
     theme: 'primary',
   };
 
+  srTimeout = 0;
+
+  state = {
+    srMessage: '',
+  };
+
+  componentWillUnmount() {
+    if (this.srTimeout) {
+      clearTimeout(this.srTimeout);
+    }
+  }
+
   getTagProps() {
     const {
       size,
@@ -192,7 +205,7 @@ class RootTagContainer extends Component {
     return { color, resolveColor };
   }
 
-  getCloseProps() {
+  getCloseProps(props) {
     const {
       size,
       theme,
@@ -214,6 +227,30 @@ class RootTagContainer extends Component {
       'aria-labelledby': `${id}-clear ${id}-text`,
       'aria-label': getI18nText('remove'),
       resolveColor,
+      onKeyDown: (event) => {
+        const { onKeyDown, onClick } = props;
+
+        if (event.key === 'Enter' || event.key === ' ') {
+          const tagContent = document.querySelector(`#${id}-text`).textContent;
+          const srMessage = getI18nText('Tag.Container.DeleteButton.deleted:sr-message', {
+            tagContent,
+          });
+
+          this.setState({ srMessage });
+          setTimeout(() => {
+            this.setState({ srMessage: '' });
+          }, 1000);
+        }
+
+        if (onKeyDown) {
+          return onKeyDown(event);
+        }
+
+        if (onClick && (event.key === 'Enter' || event.key === ' ')) {
+          event.preventDefault();
+          onClick(event);
+        }
+      },
     };
   }
 
@@ -246,6 +283,9 @@ class RootTagContainer extends Component {
             <Children />
           </TagContainer.Tag>
         )}
+        <ScreenReaderOnly role='status' aria-live='polite'>
+          {this.state.srMessage}
+        </ScreenReaderOnly>
       </STagContainer>,
     );
   }
@@ -268,19 +308,6 @@ class RootCloseTagContainer extends Component {
 
   static enhance = [resolveColorEnhance(), keyboardFocusEnhance()];
 
-  handleKeyDown = (event) => {
-    const { onKeyDown, onClick } = this.asProps;
-
-    if (onKeyDown) {
-      return onKeyDown(event);
-    }
-
-    if (onClick && (event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault();
-      onClick(event);
-    }
-  };
-
   render() {
     const STagContainerClose = Root;
     const { Children, styles, color, resolveColor } = this.asProps;
@@ -292,7 +319,6 @@ class RootCloseTagContainer extends Component {
         interactive={true}
         interactiveView={true}
         tag-color={resolveColor(color)}
-        onKeyDown={this.handleKeyDown}
       >
         <Children />
       </STagContainerClose>,

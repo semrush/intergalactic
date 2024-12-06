@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.51.0] - 2024-12-06
+
+### Added
+
+- Announcement after deleting a tag.
+
 ## [5.50.0] - 2024-11-29
 
 ### Changed
