@@ -1,6 +1,6 @@
 {
   "clearSearch": "Effacer le champ de recherche",
   "selectPlaceholder": "Sélectionner une option",
-  "triggerHint": "Appuyez sur la touche Tab pour accéder au popover",
-  "optionsList": "Liste des options"
+  "Select.InputSearch.Value:placeholder": "Recherche",
+  "Select.InputSearch.Value:aria-label": "Recherche"
 }

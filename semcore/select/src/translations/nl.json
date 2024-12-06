@@ -1,6 +1,6 @@
 {
   "clearSearch": "Wis zoekveld",
   "selectPlaceholder": "Selecteer optie",
-  "triggerHint": "Druk op Tab om naar de pop-over te gaan",
-  "optionsList": "Overzicht van opties"
+  "Select.InputSearch.Value:placeholder": "Zoeken",
+  "Select.InputSearch.Value:aria-label": "Zoeken"
 }
