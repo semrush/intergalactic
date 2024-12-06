@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import ProgressBar from 'intergalactic/progress-bar';
-import WarningM from 'intergalactic/icon/Warning/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import ProgressBar from '@semcore/progress-bar';
+import WarningM from '@semcore/icon/Warning/m';
 
 const limitsMax = 10;
 const limitsUsed = 10;
