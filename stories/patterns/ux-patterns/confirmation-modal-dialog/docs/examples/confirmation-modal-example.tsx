@@ -123,18 +123,16 @@ const Demo = () => {
             </Text>
 
             <Tooltip
-              visible={showErrorTooltip()}
-              theme='warning'
               placement='right'
               interaction={'none'}
-              ignorePortalsStacking
+              animationsDisabled={true}
             >
-              <Tooltip.Popper id='form-project-error'>
-                Please enter a correct project name.
+              <Tooltip.Popper visible={showErrorTooltip()} theme='warning' id='form-project-error'>
+                {errors[fieldName]?.message}
               </Tooltip.Popper>
 
-              <Tooltip.Trigger
-                tag={Input}
+              <Input
+                tag={Tooltip.Trigger}
                 w='100%'
                 mb={2}
                 size='l'
@@ -144,14 +142,14 @@ const Demo = () => {
                 <Input.Value
                   {...field}
                   id={fieldName}
+                  onFocus={() => setFocusedFieldName(fieldName)}
                   placeholder={'Enter project name'}
                   size='l'
                   w={'100%'}
                   aria-invalid={invalid()}
                   aria-errormessage={invalid() ? 'form-project-error' : undefined}
-                  onFocus={() => setFocusedFieldName(fieldName)}
                 />
-              </Tooltip.Trigger>
+              </Input>
             </Tooltip>
           </Flex>
 
