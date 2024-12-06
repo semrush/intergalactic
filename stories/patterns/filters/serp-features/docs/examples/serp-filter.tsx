@@ -62,6 +62,7 @@ const Demo = () => {
   const [triggerValue, setTriggerValue] = React.useState<string[]>([]);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const applyButtonRef = React.useRef<HTMLButtonElement>(null);
 
   const options = React.useMemo(
     () => data.filter((option) => option.value.toLowerCase().includes(search.toLowerCase())),
@@ -143,6 +144,17 @@ const Demo = () => {
     setTriggerValue([]);
   };
 
+  const handleKeyDownTrigger = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Tab' && value.length > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        applyButtonRef.current?.focus();
+      }
+    },
+    [value],
+  );
+
   let triggerValueText: string | undefined;
 
   if (triggerValue.length === data.length) {
@@ -174,6 +186,7 @@ const Demo = () => {
           triggerRef={triggerRef}
           empty={triggerValue.length === 0}
           onClear={handleClear}
+          onKeyDown={handleKeyDownTrigger}
         >
           <span aria-hidden>SERP Features:</span> {triggerValueText}
         </Select.Trigger>
@@ -273,7 +286,7 @@ const Demo = () => {
                 )}
               </div>
               <Box my={3} mx={2}>
-                <Button use={'primary'} w={'100%'} onClick={handleApply}>
+                <Button use={'primary'} w={'100%'} onClick={handleApply} ref={applyButtonRef}>
                   Apply
                 </Button>
               </Box>
