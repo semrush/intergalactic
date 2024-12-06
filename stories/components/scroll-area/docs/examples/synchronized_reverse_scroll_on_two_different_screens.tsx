@@ -17,14 +17,18 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-  mirror: any;
-  handleScrollMain = (e) => {
-    this.mirror.scrollTop =
-      this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
+  mirror: HTMLDivElement | null = null;
+  handleScrollMain = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (this.mirror) {
+      this.mirror.scrollTop =
+        this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
+    }
   };
 
   componentDidMount() {
-    this.mirror.scrollTop = this.mirror.scrollHeight - this.mirror.clientHeight;
+    if (this.mirror) {
+      this.mirror.scrollTop = this.mirror.scrollHeight - this.mirror.clientHeight;
+    }
   }
 
   render() {
@@ -53,7 +57,7 @@ class Demo extends React.PureComponent {
           <h2>Reversed mirror</h2>
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container
-              ref={(node) => {
+              ref={(node: HTMLDivElement | null) => {
                 this.mirror = node;
               }}
             >

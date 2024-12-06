@@ -17,13 +17,17 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-  controlled: any;
-  handleMainScroll = (e) => {
-    this.controlled.scrollTop = e.currentTarget.scrollTop;
+  controlled: HTMLDivElement | null = null;
+  handleMainScroll = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (this.controlled) {
+      this.controlled.scrollTop = e.currentTarget.scrollTop;
+    }
   };
 
   componentDidMount() {
-    this.controlled.scrollTop = 0;
+    if (this.controlled) {
+      this.controlled.scrollTop = 0;
+    }
   }
 
   render() {
@@ -52,7 +56,7 @@ class Demo extends React.PureComponent {
           <h2>Controlled</h2>
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container
-              ref={(node) => {
+              ref={(node: HTMLDivElement | null) => {
                 this.controlled = node;
               }}
             >
