@@ -12,7 +12,6 @@ type SliderRatingProps = {
   value: number;
   onChange?: (value: number) => void;
   readonly?: boolean;
-  noticeTextId?: string;
 };
 
 type State = {
@@ -117,20 +116,28 @@ class SliderRatingRoot extends Component<
 
   getLabelText() {
     const { hoveredIndex } = this.state;
-    const { readonly, value } = this.asProps;
+    const { readonly, value, getI18nText } = this.asProps;
 
     if (readonly) {
-      return `Your rating: ${value} out of 5`;
+      return getI18nText('FeedbackRating.SliderRating.aria-valuetext.readonly', {
+        selectedRating: value,
+        max: MAX,
+      });
     }
 
     if (value) {
       return value;
     }
-    return hoveredIndex === -1 ? 'Not set' : `${hoveredIndex + 1} out of ${MAX}`;
+    return hoveredIndex === -1
+      ? getI18nText('FeedbackRating.SliderRating.aria-valuetext.empty')
+      : getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
+          selectedRating: value,
+          max: MAX,
+        });
   }
 
   render() {
-    const { styles, readonly, getI18nText, uid, noticeTextId } = this.asProps;
+    const { styles, readonly, getI18nText, uid } = this.asProps;
     const { hoveredIndex } = this.state;
 
     const SSliderRating = Root;
