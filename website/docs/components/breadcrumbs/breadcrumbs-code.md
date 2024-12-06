@@ -15,7 +15,7 @@ Try resizing the page to see how the links adjust. If the text in a link is too 
 
 :::
 
-## Redefining a tag
+## Redefining tag
 
 You can redefine `tag` for the `<Breadcrumbs.Item />`. This is necessary, for example, to use `Link` from `react-router`.
 
