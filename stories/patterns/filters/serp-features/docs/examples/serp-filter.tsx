@@ -177,7 +177,12 @@ const Demo = () => {
         >
           <span aria-hidden>SERP Features:</span> {triggerValueText}
         </Select.Trigger>
-        <Select.Popper aria-label='SERP Features' tag={Flex} direction='column-reverse'>
+        <Select.Popper aria-label='SERP Features'>
+          <InputSearch
+            value={search}
+            onChange={setSearch}
+            aria-describedby={search ? 'search-result' : undefined}
+          />
           {(loading || error) && (
             <Flex direction='column' alignItems='start' gap={1} p={2}>
               <Text size={200} use={'secondary'} aria-live='polite' role='status'>
@@ -192,11 +197,6 @@ const Demo = () => {
           )}
           {!loading && !error && (
             <>
-              <Box my={3} mx={2}>
-                <Button use={'primary'} w={'100%'} onClick={handleApply}>
-                  Apply
-                </Button>
-              </Box>
               <div
                 role={'listbox'}
                 aria-label='SERP Features'
@@ -272,13 +272,13 @@ const Demo = () => {
                   </Select.Option>
                 )}
               </div>
+              <Box my={3} mx={2}>
+                <Button use={'primary'} w={'100%'} onClick={handleApply}>
+                  Apply
+                </Button>
+              </Box>
             </>
           )}
-          <InputSearch
-            value={search}
-            onChange={setSearch}
-            aria-describedby={search ? 'search-result' : undefined}
-          />
         </Select.Popper>
       </Select>
     </>
