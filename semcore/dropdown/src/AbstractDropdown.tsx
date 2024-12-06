@@ -181,7 +181,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const itemsLastIndex = this.itemProps.length - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item.selected);
 
-    if (itemsLastIndex < 0) return 0;
+    if (itemsLastIndex < 0) return -1;
 
     let innerHighlightedIndex: number;
 
@@ -207,7 +207,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (this.itemProps[newIndex]?.disabled) {
       return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
     } else if (!this.itemProps[newIndex]) {
-      return 0;
+      return -1;
     } else {
       return newIndex;
     }
@@ -322,9 +322,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     if (amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
-      if (newHighlightedIndex !== undefined && this.role === 'menu') {
-        this.itemRefs[newHighlightedIndex]?.focus();
-      }
+
       if (
         this.role === 'listbox' &&
         this.triggerRef.current &&
@@ -332,7 +330,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ) {
         this.focusTrigger();
       }
-      this.handlers.highlightedIndex(newHighlightedIndex, e);
+
+      if (newHighlightedIndex !== -1) {
+        this.handlers.highlightedIndex(newHighlightedIndex, e);
+        if (this.role === 'menu') {
+          this.itemRefs[newHighlightedIndex]?.focus();
+        }
+      }
 
       e.preventDefault();
       e.stopPropagation();
