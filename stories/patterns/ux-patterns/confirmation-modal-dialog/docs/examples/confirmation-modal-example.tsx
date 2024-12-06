@@ -129,7 +129,7 @@ const Demo = () => {
               interaction={'none'}
               ignorePortalsStacking
             >
-              <Tooltip.Popper id='form-email-error'>
+              <Tooltip.Popper id='form-project-error'>
                 Please enter a correct project name.
               </Tooltip.Popper>
 

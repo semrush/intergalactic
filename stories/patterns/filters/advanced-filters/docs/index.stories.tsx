@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FiltersWithConditionsEx from './docs-examples/filters-with-filter-conditions';
+import FiltersWithConditionsEx from './examples/docs/filters-with-filter-conditions';
 
 const meta: Meta = {
   title: 'Patterns/Filters/FiltersWithConditions',
