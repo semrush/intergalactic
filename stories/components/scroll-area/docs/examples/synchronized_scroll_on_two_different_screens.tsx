@@ -17,14 +17,17 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-  mirror: any;
-  handleScrollMain = (e) => {
-    this.mirror.scrollTop =
-      this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
+  controlled: HTMLDivElement | null = null;
+  handleMainScroll = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (this.controlled) {
+      this.controlled.scrollTop = e.currentTarget.scrollTop;
+    }
   };
 
   componentDidMount() {
-    this.mirror.scrollTop = this.mirror.scrollHeight - this.mirror.clientHeight;
+    if (this.controlled) {
+      this.controlled.scrollTop = 0;
+    }
   }
 
   render() {
@@ -33,7 +36,7 @@ class Demo extends React.PureComponent {
         <Box style={{ position: 'relative' }}>
           <h2>Main</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container onScroll={this.handleScrollMain}>
+            <ScrollArea.Container onScroll={this.handleMainScroll}>
               {[...new Array(100)].map((_, index) => (
                 <Box
                   key={index}
@@ -50,25 +53,23 @@ class Demo extends React.PureComponent {
         </Box>
 
         <Box>
-          <h2>Reversed mirror</h2>
+          <h2>Controlled</h2>
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container
-              ref={(node) => {
-                this.mirror = node;
+              ref={(node: HTMLDivElement | null) => {
+                this.controlled = node;
               }}
             >
-              <Flex flexWrap reverse>
-                {[...new Array(100)].map((_, index) => (
-                  <Box
-                    key={index}
-                    inline
-                    m={2}
-                    w={120}
-                    h={120}
-                    style={{ backgroundColor: getRandomColor() }}
-                  />
-                ))}
-              </Flex>
+              {[...new Array(100)].map((_, index) => (
+                <Box
+                  key={index}
+                  inline
+                  m={2}
+                  w={120}
+                  h={120}
+                  style={{ backgroundColor: getRandomColor() }}
+                />
+              ))}
             </ScrollArea.Container>
             <ScrollArea.Bar />
           </ScrollArea>

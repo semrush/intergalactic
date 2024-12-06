@@ -1,5 +1,4 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 import ScrollArea from 'intergalactic/scroll-area';
 import { Box, Flex } from 'intergalactic/flex-box';
 import { Text } from 'intergalactic/typography';
@@ -7,7 +6,11 @@ import Button from 'intergalactic/button';
 import { List } from 'react-virtualized';
 
 const list = [...new Array(6)];
-const renderRow = ({ key, index, style }) => {
+const renderRow = ({
+  key,
+  index,
+  style,
+}: { key: string; index: number; style: React.CSSProperties }) => {
   return (
     <Box key={key} inline m={2} w={120} h={120} style={{ border: '1px solid black', ...style }}>
       <Text bold size={200} m='auto'>
@@ -19,10 +22,9 @@ const renderRow = ({ key, index, style }) => {
 
 const Demo = () => {
   const [data, setData] = React.useState(list);
-  const innerRef = React.useRef();
-  const ref = (node) => {
-    node = findDOMNode(node);
-    if (node) {
+  const innerRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
+  const ref = (node: HTMLDivElement | null) => {
+    if (node && innerRef.current) {
       innerRef.current = node.querySelector('.ReactVirtualized__Grid__innerScrollContainer');
     }
   };
@@ -49,6 +51,7 @@ const Demo = () => {
           <ScrollArea inner={innerRef}>
             <ScrollArea.Container
               ref={ref}
+              // @ts-ignore
               tag={List}
               height={500}
               rowCount={data.length}
