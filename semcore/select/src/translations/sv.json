@@ -1,6 +1,6 @@
 {
   "clearSearch": "Rensa sökfält",
   "selectPlaceholder": "Välj alternativ",
-  "triggerHint": "Tryck på Tab för att gå till popover",
-  "optionsList": "Lista över alternativ"
+  "Select.InputSearch.Value:placeholder": "Sök",
+  "Select.InputSearch.Value:aria-label": "Sök"
 }
