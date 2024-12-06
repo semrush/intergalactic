@@ -9,8 +9,8 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 
 interface ValueState {
-  from: number | string;
-  to: number | string;
+  from: string;
+  to: string;
 }
 
 interface InputRangeProps {
@@ -25,11 +25,12 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
   const fromRef = useRef<HTMLInputElement | null>(null);
   const toRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (key: keyof ValueState) => (value: string | number | null) => {
-    valueState[key] = value ? Number(value) : '';
-    changeValue({ ...valueState });
+  const handleChange = (key: keyof ValueState) => (value: string | null) => {
+    changeValue({
+      ...valueState,
+      [key]: value || '', 
+    });
   };
-
   const handleBlur = () => {
     setTimeout(() => {
       if (document.activeElement !== fromRef.current && document.activeElement !== toRef.current) {
@@ -58,8 +59,8 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
         <InputNumber>
           <InputNumber.Value
             min={minRange}
-            aria-label="From"
-            placeholder="From"
+            aria-label='From'
+            placeholder='From'
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -70,8 +71,8 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
         <InputNumber>
           <InputNumber.Value
             min={minRange}
-            aria-label="To"
-            placeholder="To"
+            aria-label='To'
+            placeholder='To'
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -158,8 +159,8 @@ const Demo = () => {
       value={selectValue}
     >
       <Select.Trigger
-        placeholder="Volume"
-        aria-label="Volume"
+        placeholder='Volume'
+        aria-label='Volume'
         active={visible}
         empty={displayValue === null}
         onClear={clearAll}
@@ -169,8 +170,8 @@ const Demo = () => {
         <span aria-hidden>Volume: </span>
         {displayValue}
       </Select.Trigger>
-      <Select.Popper w={224} aria-label="Volume">
-        <Select.List aria-label="Presets">
+      <Select.Popper w={224} aria-label='Volume'>
+        <Select.List aria-label='Presets'>
           {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
             (item) => (
               <Select.Option key={item} value={item}>
@@ -180,21 +181,21 @@ const Demo = () => {
           )}
         </Select.List>
         <Divider my={1} />
-        <Flex px={2} pt={1} pb={3} gap={2} direction="column">
-          <Text id="custom-range-title" size={200} bold>
+        <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
+          <Text id='custom-range-title' size={200} bold>
             Custom range
           </Text>
           <InputRange
-            role="group"
-            aria-labelledby="custom-range-title"
+            role='group'
+            aria-labelledby='custom-range-title'
             value={customRange}
             changeValue={setCustomRange}
             onKeyDown={handleKeyDown}
           />
           <Button
-            use="primary"
-            theme="info"
-            w="100%"
+            use='primary'
+            theme='info'
+            w='100%'
             onClick={applyFilters}
             onKeyDown={handleKeyDownApply}
           >
