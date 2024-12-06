@@ -25,26 +25,30 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
   const fromRef = useRef<HTMLInputElement | null>(null);
   const toRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (key: keyof ValueState) => (value: string | null) => {
-    changeValue({
-      ...valueState,
-      [key]: value || '', 
-    });
-  };
+  const handleChange =
+    (key: keyof ValueState) =>
+    (value: string | number | undefined) => {
+      changeValue({
+        ...valueState,
+        [key]: value !== undefined ? String(value) : '',
+      });
+    };
+
   const handleBlur = () => {
     setTimeout(() => {
       if (document.activeElement !== fromRef.current && document.activeElement !== toRef.current) {
-        const { from, to } = valueState;
-        if (from > to && to !== '') {
+        const from = Number(valueState.from);
+        const to = Number(valueState.to);
+        if (from > to && valueState.to !== '') {
           changeValue({
-            from: Math.max(Number(to), minRange).toString(),
-            to: Math.min(Number(from)).toString(),
+            from: to > minRange ? to.toString() : minRange.toString(),
+            to: from.toString(),
           });
         }
-        if (from === '' && to !== '') {
+        if (valueState.from === '' && valueState.to !== '') {
           changeValue({
             from: minRange.toString(),
-            to,
+            to: valueState.to,
           });
         }
       }
@@ -87,32 +91,32 @@ const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue,
 
 const numberFormat = new Intl.NumberFormat('en-US');
 
-const setTriggerText = ({ from, to }: ValueState): string | null => {
+const setTriggerText = ({ from, to }: ValueState): string | undefined => {
   if (from !== '') {
     if (to === '') return `${numberFormat.format(Number(from))}+`;
-    else if (from === to) return numberFormat.format(Number(from));
-    else return `${numberFormat.format(Number(from))}-${numberFormat.format(Number(to))}`;
+    if (from === to) return numberFormat.format(Number(from));
+    return `${numberFormat.format(Number(from))}-${numberFormat.format(Number(to))}`;
   }
-  return null;
+  return undefined;
 };
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [customRange, setCustomRange] = useState<ValueState>({ from: '', to: '' });
-  const [selectValue, setSelectValue] = useState<string | null>(null);
-  const [displayValue, setDisplayValue] = useState<string | null>(null);
+  const [selectValue, setSelectValue] = useState<string | undefined>(undefined);
+  const [displayValue, setDisplayValue] = useState<string | undefined>(undefined);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const clearAll = () => {
     setCustomRange({ from: '', to: '' });
-    setSelectValue(null);
-    setDisplayValue(null);
+    setSelectValue(undefined);
+    setDisplayValue(undefined);
   };
 
   const applyFilters = () => {
     setVisible(false);
     setDisplayValue(setTriggerText(customRange));
-    setSelectValue(null);
+    setSelectValue(undefined);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -162,7 +166,7 @@ const Demo = () => {
         placeholder='Volume'
         aria-label='Volume'
         active={visible}
-        empty={displayValue === null}
+        empty={!displayValue}
         onClear={clearAll}
         tag={FilterTrigger}
         triggerRef={triggerRef}
