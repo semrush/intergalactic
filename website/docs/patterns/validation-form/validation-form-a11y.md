@@ -13,7 +13,7 @@ Refer to [Form](/patterns/form/form-a11y) for the recommendations on how to make
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
+Find detailed information about keyboard support for all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ## Considerations for designers
 
@@ -26,4 +26,4 @@ See detailed information about the keyboard support for the all form elements in
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

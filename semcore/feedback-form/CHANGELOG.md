@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.37.1] - 2024-12-05
+
+### Fixed
+
+- There was always `aria-errormessage` in FeedbackItem, even if there was no message popup.
+
 ## [6.37.0] - 2024-11-29
 
 ### Changed
