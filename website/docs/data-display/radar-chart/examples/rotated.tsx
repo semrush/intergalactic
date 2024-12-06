@@ -21,9 +21,11 @@ const Demo = () => {
         min={-360}
         max={360}
         w={360}
+        id='angle-slider'
       />
       <div>
-        Angle: {angleOffset.toFixed(2)} rad ({angleDegOffset.toFixed(0)} deg)
+        <label htmlFor='angle-slider'>Angle:</label> {angleOffset.toFixed(2)} rad (
+        {angleDegOffset.toFixed(0)} deg)
       </div>
       <Plot data={data} width={width} height={height}>
         <Radar scale={scale} type='circle' angleOffset={angleOffset}>

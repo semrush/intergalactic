@@ -44,12 +44,14 @@ class InputSearchRoot extends Component {
   };
 
   getValueProps() {
-    const { value } = this.asProps;
+    const { value, getI18nText } = this.asProps;
     return {
       value,
       onChange: this.handlers.value,
       autoFocus: true,
       ref: this.inputRef,
+      placeholder: getI18nText('Select.InputSearch.Value:placeholder'),
+      'aria-label': getI18nText('Select.InputSearch.Value:aria-label'),
     };
   }
   getClearProps() {
