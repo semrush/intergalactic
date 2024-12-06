@@ -169,9 +169,7 @@ class TriggerButton extends Component {
     return sstyled(styles)(
       <SFilterTrigger
         render={BaseTrigger}
-        tag='button'
         use:role='combobox'
-        type='button'
         w='100%'
         empty={empty}
         selected={!empty}
@@ -205,8 +203,6 @@ class ClearButton extends Component {
         <Hint.Trigger>
           <SFilterTrigger
             render={BaseTrigger}
-            tag='button'
-            type='button'
             size={size}
             empty={empty}
             selected

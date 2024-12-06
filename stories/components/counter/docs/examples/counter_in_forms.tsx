@@ -1,9 +1,9 @@
 import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Textarea from 'intergalactic/textarea';
-import Counter from 'intergalactic/counter';
-import { ScreenReaderOnly } from 'intergalactic/utils/lib/ScreenReaderOnly';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import Textarea from '@semcore/textarea';
+import Counter from '@semcore/counter';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const maxSymbols = 150;
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import NotificationM from 'intergalactic/icon/Notification/m';
-import Dot from 'intergalactic/dot';
-import { AnimatedNumber } from 'intergalactic/counter';
-import { Hint } from 'intergalactic/tooltip';
+import Button from '@semcore/button';
+import NotificationM from '@semcore/icon/Notification/m';
+import Dot from '@semcore/dot';
+import { AnimatedNumber } from '@semcore/counter';
+import { Hint } from '@semcore/tooltip';
 
 const notificationsCount = 18;
 

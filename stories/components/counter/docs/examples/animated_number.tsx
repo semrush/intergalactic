@@ -1,6 +1,6 @@
 import React from 'react';
-import { AnimatedNumber } from 'intergalactic/counter';
-import Button from 'intergalactic/button';
+import { AnimatedNumber } from '@semcore/counter';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [value, setValue] = React.useState(20);

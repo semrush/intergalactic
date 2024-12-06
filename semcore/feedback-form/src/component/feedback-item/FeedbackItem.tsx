@@ -48,7 +48,7 @@ export function FeedbackItem({
             ...propsForElement(other),
             state: errorState ? 'invalid' : 'normal',
             'aria-invalid': errorState ? true : false,
-            'aria-errormessage': popperId,
+            'aria-errormessage': errorState && meta.active ? popperId : undefined,
             'aria-describedby': errorState && meta.active ? popperId : undefined,
           },
           input,
