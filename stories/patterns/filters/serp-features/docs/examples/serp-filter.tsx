@@ -146,13 +146,13 @@ const Demo = () => {
 
   const handleKeyDownTrigger = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === 'Tab' && value.length > 0) {
+      if (e.key === 'Tab' && value.length > 0 && visible) {
         e.preventDefault();
         e.stopPropagation();
         applyButtonRef.current?.focus();
       }
     },
-    [value],
+    [value, visible],
   );
 
   let triggerValueText: string | undefined;
