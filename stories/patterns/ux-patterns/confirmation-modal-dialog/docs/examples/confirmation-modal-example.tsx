@@ -6,7 +6,7 @@ import { Text, List } from '@semcore/typography';
 import Input from '@semcore/input';
 import Tooltip from '@semcore/tooltip';
 import '@semcore/utils/lib/themes/default.css';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 const warningBlockStyles = {
   background: 'var(--intergalactic-bg-secondary-critical)',
@@ -16,38 +16,86 @@ const warningBlockStyles = {
   padding: '16px',
 };
 
+type FormValues = {
+  project: string;
+};
+const fieldName: keyof FormValues = 'project';
+
 const Demo = () => {
+  const { register, trigger, handleSubmit, reset, resetField, getValues, formState } =
+    useForm<FormValues>({
+      mode: 'onBlur',
+      defaultValues: { project: '' },
+    });
+
   const [visible, setVisible] = React.useState(false);
   const handleOpen = React.useCallback(() => setVisible(true), []);
-  const handleClose = React.useCallback(() => setVisible(false), []);
+  const handleClose = React.useCallback(() => {
+    setVisible(false);
+    reset({ project: '' }, { keepIsSubmitted: false, keepTouched: false });
+  }, []);
 
-  const {
-    register,
-    trigger,
-    handleSubmit,
-    errors,
-    getValues,
-    formState: { dirtyFields, isSubmitted },
-  } = useForm({
-    mode: 'onBlur',
-  });
+  const { errors, isSubmitted, touchedFields } = formState;
   const [focusedFieldName, setFocusedFieldName] = React.useState('');
+  const onSubmit: SubmitHandler<FormValues> = handleClose;
 
-  const onSubmit = handleClose;
+  const hasError = () => {
+    const error = errors[fieldName];
 
-  const invalid = (fieldName: string): boolean => {
-    const hasError = Boolean(errors[fieldName]);
-    if (isSubmitted) {
-      return hasError;
+    if (error && error.type === 'projectRequired' && !isSubmitted) {
+      return false;
     }
 
-    return dirtyFields[fieldName] && hasError;
+    return Boolean(error);
   };
 
-  const showError = (fieldName: string): boolean => {
-    const isActive = focusedFieldName === fieldName;
-    return invalid(fieldName) && isActive;
+  const invalid = (): boolean => {
+    return Boolean(touchedFields[fieldName]) && hasError();
   };
+
+  const showErrorTooltip = (): boolean => {
+    const isActive = focusedFieldName === fieldName;
+    return invalid() && isActive;
+  };
+
+  const resetIfChangedToValid = (isValid: boolean) => {
+    if (isValid) {
+      resetField(fieldName, { keepTouched: false, defaultValue: getValues(fieldName) });
+    }
+  };
+
+  type RegisterOptions = Parameters<typeof register>[1];
+  const registerHelper = (options: RegisterOptions) => {
+    const usersOnChange = options?.onChange;
+
+    const result = register(fieldName, options);
+    const { onChange, ...rest } = result;
+    const rewiredOnChange = (_v: string, e: React.SyntheticEvent) => {
+      onChange(e);
+      usersOnChange?.(e);
+    };
+
+    return { ...rest, onChange: rewiredOnChange };
+  };
+
+  const field = registerHelper({
+    validate: {
+      projectRequired: (v) => {
+        return Boolean(v) || 'Please enter correct project name';
+      },
+      projectName: (v) => {
+        if (!v) {
+          return true;
+        }
+
+        return /^test$/i.test(v) || 'Please enter correct project name';
+      },
+    },
+    onBlur: () => setFocusedFieldName(''),
+    onChange: () => {
+      hasError() && trigger().then(resetIfChangedToValid);
+    },
+  });
 
   return (
     <>
@@ -75,7 +123,7 @@ const Demo = () => {
             </Text>
 
             <Tooltip
-              visible={showError('project')}
+              visible={showErrorTooltip()}
               theme='warning'
               placement='right'
               interaction={'none'}
@@ -90,35 +138,19 @@ const Demo = () => {
                 w='100%'
                 mb={2}
                 size='l'
-                state={invalid('project') ? 'invalid' : 'normal'}
+                state={invalid() ? 'invalid' : 'normal'}
                 controlsLength={1}
               >
-                {({ getTriggerProps }) => {
-                  return (
-                    <Input.Value
-                      {...getTriggerProps({
-                        id: 'project',
-                        name: 'project',
-                        placeholder: 'Enter project name',
-                        onChange: () => {
-                          if (invalid('project')) {
-                            trigger('project');
-                          }
-                        },
-                        ref: register({
-                          required: 'Please enter correct project name',
-                          pattern: /test/i,
-                        }) as React.ForwardedRef<HTMLInputElement>,
-                      })}
-                      size='l'
-                      w={'100%'}
-                      onFocus={() => setFocusedFieldName('project')}
-                      onBlur={() => setFocusedFieldName('')}
-                      aria-invalid={invalid('project')}
-                      aria-errormessage={invalid('project') ? 'form-project-error' : undefined}
-                    />
-                  );
-                }}
+                <Input.Value
+                  {...field}
+                  id={fieldName}
+                  placeholder={'Enter project name'}
+                  size='l'
+                  w={'100%'}
+                  aria-invalid={invalid()}
+                  aria-errormessage={invalid() ? 'form-project-error' : undefined}
+                  onFocus={() => setFocusedFieldName(fieldName)}
+                />
               </Tooltip.Trigger>
             </Tooltip>
           </Flex>
