@@ -71,7 +71,11 @@ const DesignTokens = ({ tokens }) => {
     <div>
       <div className={styles.filters}>
         <Input className={styles.nameFilterInput} size='l'>
-          <Input.Addon className={styles.nameFilterInputIcon} tag={SearchIcon} />
+          <Input.Addon
+            className={styles.nameFilterInputIcon}
+            tag={SearchIcon}
+            use:aria-hidden={undefined}
+          />
           <Input.Value placeholder='Find token' value={nameFilter} onChange={setNameFilter} />
         </Input>
         <Select

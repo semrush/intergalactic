@@ -8,6 +8,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Logic for showing/hiding highlight for an option depending on whether the Trigger is in focus or not.
 
+## [4.48.8] - 2024-12-05
+
+### Fixed
+
+- set `aria-activedescendant` for Trigger only if there is available option with current highlightedIndex.
+- The first option is highlighted, event if it is disabled.
+
+## [4.48.7] - 2024-12-04
+
+### Added
+
+- `placeholder` and `aria-label` for input in `InputSearch` component.
+
 ## [4.48.6] - 2024-11-29
 
 ### Changed

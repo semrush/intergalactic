@@ -56,11 +56,7 @@ const Demo = () => {
 
             <Select.Popper tabIndex={-1} aria-label={'Phone countries with search'}>
               <>
-                <InputSearch
-                  placeholder='Search'
-                  value={countryFilter}
-                  onChange={setCountryFilterValue}
-                />
+                <InputSearch value={countryFilter} onChange={setCountryFilterValue} />
 
                 <Select.List hMax='240px' w='232px' aria-label={'Countries'}>
                   {Object.keys(countries)
