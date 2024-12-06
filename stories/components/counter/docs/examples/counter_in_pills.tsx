@@ -1,6 +1,6 @@
 import React from 'react';
-import Pills from 'intergalactic/pills';
-import { Text } from 'intergalactic/typography';
+import Pills from '@semcore/pills';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
   <Pills defaultValue='all' aria-label='Pills with counters'>

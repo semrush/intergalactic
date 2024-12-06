@@ -94,7 +94,7 @@ export class RootItem extends Component {
       disabled,
       id: `igc-${uid}-${value}-toggle-button`,
       'aria-expanded': selected ? 'true' : 'false',
-      'aria-controls': `igc-${uid}-${value}-collapse`,
+      'aria-controls': selected ? `igc-${uid}-${value}-collapse` : undefined,
     };
   }
 
