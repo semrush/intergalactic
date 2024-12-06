@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Form } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -316,11 +316,9 @@ class FeedbackRatingRoot extends Component<
                     {...other}
                     onSubmit={api.handleSubmit}
                   >
-                    <FeedbackRating.Item name={'rating'} initialValue={rating}>
-                      {({ input }) => {
-                        return <input {...input} type='hidden' />;
-                      }}
-                    </FeedbackRating.Item>
+                    <Field name={'rating'} initialValue={rating}>
+                      {({ input }) => <input {...input} type='hidden' />}
+                    </Field>
 
                     <div role={'group'} aria-labelledby={this.headerId}>
                       {checkboxFields.map((formConfigItem, index) =>
