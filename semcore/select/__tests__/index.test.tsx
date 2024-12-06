@@ -173,7 +173,7 @@ describe('Select Trigger', () => {
 
     const trigger = component.getByTestId('dd-trigger');
     await userEvent.click(trigger);
-    await new Promise((resolve) => setTimeout(resolve, 1));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(highlightedIndex).toBe(2);
   });
 

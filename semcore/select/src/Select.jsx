@@ -158,6 +158,21 @@ class RootSelect extends AbstractDropdown {
       onClear: this.handlerClear,
       children: this.renderChildrenTrigger(value, options),
       getI18nText,
+
+      onBlur: () => {
+        // if popper is opened and we moved from the trigger in select - it means we moved on some controls in popper and should hide highlighted for the option
+        if (this.asProps.visible) {
+          this.prevHighlightedIndex = this.asProps.highlightedIndex;
+          this.handlers.highlightedIndex(null);
+        }
+      },
+      onFocus: () => {
+        // if popper is opened and we moved to the trigger in select - it means we moved from some controls in popper and should highlight the last highlighted option
+        if (this.asProps.visible) {
+          const index = this.prevHighlightedIndex;
+          this.handlers.highlightedIndex(index);
+        }
+      },
     };
   }
 

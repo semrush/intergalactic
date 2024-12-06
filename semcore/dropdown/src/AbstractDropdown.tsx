@@ -64,22 +64,16 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction, visible } = this.asProps;
+    const { interaction } = this.asProps;
 
     if (interaction === 'none') return false;
-
-    e.preventDefault();
-    e.stopPropagation();
-    this.handlers.visible(!visible);
 
     setTimeout(() => {
       const { visible, inlineActions } = this.asProps;
       if (visible || inlineActions) {
         this.afterOpenPopper();
       }
-    }, 0);
-
-    return false;
+    }, 200); // because first will be executed onClick handler in popper
   };
 
   afterOpenPopper = () => {
@@ -272,6 +266,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
       e.currentTarget.getAttribute('role') !== this.childRole
     ) {
+      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+        this.handlers.visible(true);
+      }
+
       this.handleClickTrigger(e);
     }
   }

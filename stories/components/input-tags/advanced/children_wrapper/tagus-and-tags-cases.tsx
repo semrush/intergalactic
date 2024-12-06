@@ -10,7 +10,9 @@ const TAGUS = () => (
         style={{
           background: '#2595e4'
         }}
-      />123</InputTags.Tag.Text>
+      />
+       <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+      </InputTags.Tag.Text>
     <InputTags.Tag.Close />
   </InputTags.Tag>
 );
@@ -112,7 +114,10 @@ const Demo = () => {
             ))}
              {tags.map((tag, idx) => (
               <InputTags.Tag key={tag}>
-                <InputTags.Tag.Text>123</InputTags.Tag.Text>
+                <InputTags.Tag.Text>
+                <InputTags.Tag.Circle style={{ background: '#2595e4'}}/>
+                <InputTags.Tag.Text.Content>123</InputTags.Tag.Text.Content>
+                </InputTags.Tag.Text>
               </InputTags.Tag>
             ))}
             <InputTags.Value
