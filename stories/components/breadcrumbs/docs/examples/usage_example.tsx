@@ -3,7 +3,7 @@ import Breadcrumbs from '@semcore/breadcrumbs';
 import Ellipsis from '@semcore/ellipsis';
 
 const Demo = () => (
-  <Breadcrumbs>
+  <Breadcrumbs aria-label='Truncation example'>
     <Ellipsis>
       <Ellipsis.Content tag={Breadcrumbs.Item} active={false} href='#' role={'link'}>
         Ellipsis
