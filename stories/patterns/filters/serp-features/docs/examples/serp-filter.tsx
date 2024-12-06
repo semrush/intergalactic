@@ -121,7 +121,7 @@ const Demo = () => {
   }, [value, filteredValues, setValue]);
 
   const handleNoneClick = React.useCallback(() => {
-    if (value.length === 1 && value[0] === null) {
+    if (value.length === 1 && value[0] === '%none%') {
       setValue([]);
     } else {
       setValue(['%none%']);
