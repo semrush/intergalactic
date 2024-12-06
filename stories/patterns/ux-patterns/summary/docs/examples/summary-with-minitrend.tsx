@@ -36,15 +36,9 @@ const Demo = () => (
         last 30 days
       </Text>
       <Flex alignItems='baseline' gap={1} mt={1}>
-        <Link
-          size={500}
-          color='text-large-secondary'
-          fontWeight='bold'
-          href='https://semrush.com'
-          target='_blank'
-        >
+        <Text size={500} color='text-large-secondary' bold noWrap>
           n/a
-        </Link>
+        </Text>
       </Flex>
     </Flex>
     <Divider />
