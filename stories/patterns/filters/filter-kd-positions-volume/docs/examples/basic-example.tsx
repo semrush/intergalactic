@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Flex } from '@semcore/ui/flex-box';
-import Button from '@semcore/ui/button';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import { Text } from '@semcore/ui/typography';
-import Select from '@semcore/ui/select';
-import Divider from '@semcore/ui/divider';
-import NeighborLocation from '@semcore/ui/neighbor-location';
-import InputNumber from '@semcore/ui/input-number';
+import { Flex } from '@semcore/flex-box';
+import Button from '@semcore/button';
+import { FilterTrigger } from '@semcore/base-trigger';
+import { Text } from '@semcore/typography';
+import Select from '@semcore/select';
+import Divider from '@semcore/divider';
+import NeighborLocation from '@semcore/neighbor-location';
+import InputNumber from '@semcore/input-number';
 
 interface ValueState {
   from: string;
@@ -16,23 +16,21 @@ interface ValueState {
 interface InputRangeProps {
   value: ValueState;
   changeValue: (updatedValue: ValueState) => void;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
-const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue, ...other }) => {
-  const minRange = 1;
+const minRange = 1;
 
+const InputRange: React.FC<InputRangeProps> = ({ value: valueState, changeValue, ...other }) => {
   const fromRef = useRef<HTMLInputElement | null>(null);
   const toRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange =
-    (key: keyof ValueState) =>
-    (value: string | number | undefined) => {
-      changeValue({
-        ...valueState,
-        [key]: value !== undefined ? String(value) : '',
-      });
-    };
+  const handleChange = (key: keyof ValueState) => (value: string | number | undefined) => {
+    changeValue({
+      ...valueState,
+      [key]: value !== undefined ? String(value) : '',
+    });
+  };
 
   const handleBlur = () => {
     setTimeout(() => {
@@ -96,6 +94,8 @@ const setTriggerText = ({ from, to }: ValueState): string | undefined => {
     if (to === '') return `${numberFormat.format(Number(from))}+`;
     if (from === to) return numberFormat.format(Number(from));
     return `${numberFormat.format(Number(from))}-${numberFormat.format(Number(to))}`;
+  } else if (to !== '') {
+    return `${numberFormat.format(minRange)}-${numberFormat.format(Number(to))}`;
   }
   return undefined;
 };
@@ -133,10 +133,12 @@ const Demo = () => {
     }
 
     if (e.key === 'Enter') {
+      e.preventDefault();
       applyFilters();
     }
 
     if (e.key === 'Escape') {
+      e.preventDefault();
       setVisible(false);
     }
   };
@@ -181,7 +183,7 @@ const Demo = () => {
               <Select.Option key={item} value={item}>
                 {item}
               </Select.Option>
-            )
+            ),
           )}
         </Select.List>
         <Divider my={1} />
