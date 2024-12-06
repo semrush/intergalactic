@@ -143,7 +143,9 @@ class RootSelect extends AbstractDropdown {
       'aria-haspopup': isMenu ? 'listbox' : 'dialog',
       'aria-disabled': disabled ? 'true' : 'false',
       'aria-activedescendant':
-        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
+        visible && highlightedIndex !== null && this.itemRefs[highlightedIndex]
+          ? `igc-${uid}-option-${highlightedIndex}`
+          : undefined,
       empty: isEmptyValue(value),
       value,
       name,
@@ -196,7 +198,8 @@ class RootSelect extends AbstractDropdown {
 
   getOptionProps(props, index) {
     const { value, highlightedIndex, focusSourceRef, size = 'm' } = this.asProps;
-    const highlighted = index === highlightedIndex && focusSourceRef.current === 'keyboard';
+    const highlighted =
+      index === highlightedIndex && focusSourceRef.current === 'keyboard' && !props.disabled;
     const selected = props.selected ?? isSelectedOption(value, props.value);
 
     return {
