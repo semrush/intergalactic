@@ -76,7 +76,12 @@ const DesignTokens = ({ tokens }) => {
             tag={SearchIcon}
             use:aria-hidden={undefined}
           />
-          <Input.Value placeholder='Find token' value={nameFilter} onChange={setNameFilter} />
+          <Input.Value
+            placeholder='Find token'
+            value={nameFilter}
+            onChange={setNameFilter}
+            aria-label={'Search tokens'}
+          />
         </Input>
         <Select
           className={styles.componentsFilterSelect}
