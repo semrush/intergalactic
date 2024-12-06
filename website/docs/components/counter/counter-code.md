@@ -9,7 +9,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_in_filters.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_in_filters.tsx';
 </script>
 
 :::
@@ -23,7 +23,7 @@ Don't forget to place counters inside the `Addon` to create correct margins.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_in_button.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_in_button.tsx';
 </script>
 
 :::
@@ -35,7 +35,7 @@ As the [design guide recommends](./counter#usage-in-ux-ui), the counter changes 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_in_forms.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_in_forms.tsx';
 </script>
 
 :::
@@ -47,7 +47,7 @@ Plain text counters should be implemented using [Typography](/style/typography/t
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_and_typography.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_and_typography.tsx';
 </script>
 
 :::
@@ -59,7 +59,7 @@ Counters inside [Pills](/components/pills/pills) are implemented using [Typograp
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_in_pills.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_in_pills.tsx';
 </script>
 
 :::
@@ -71,7 +71,7 @@ Displaying limits is done using [Typography](/style/typography/typography), with
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_in_limits.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_in_limits.tsx';
 </script>
 
 :::
@@ -83,7 +83,7 @@ The `Dot` component also contains a text counter. For more information, refer to
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/counter_in_dot.tsx';
+  export Demo from 'stories/components/counter/docs/examples/counter_in_dot.tsx';
 </script>
 
 :::
@@ -95,7 +95,7 @@ The `AnimatedNumber` component allows showing numeric value changes with animati
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/animated_number.tsx';
+  export Demo from 'stories/components/counter/docs/examples/animated_number.tsx';
 </script>
 
 :::
