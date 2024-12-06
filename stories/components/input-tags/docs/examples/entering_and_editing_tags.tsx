@@ -53,15 +53,6 @@ const Demo = () => {
     return false;
   };
 
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const value = e.target instanceof HTMLInputElement ? e.target.value : null;
-    if (e.key === 'Enter' && value) {
-      handleAppendTags([value]);
-
-      return false;
-    }
-  };
-
   return (
     <Flex direction='column'>
       <Text tag='label' size={300} htmlFor='add-new-social-media'>
@@ -88,7 +79,6 @@ const Demo = () => {
         <InputTags.Value
           value={value}
           onChange={setValue}
-          onKeyDown={handleInputKeyDown}
           ref={inputValueRef}
           id='add-new-social-media'
           placeholder='Add social media'

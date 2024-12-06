@@ -67,10 +67,15 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-class InputTags extends Component<IInputTagsProps> {
+type State = {
+  tagsContainerAriaLabel: string;
+  srMessage: string;
+};
+
+class InputTags extends Component<IInputTagsProps, {}, State, typeof InputTags.enhance> {
   static displayName = 'InputTags';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],
@@ -82,9 +87,11 @@ class InputTags extends Component<IInputTagsProps> {
   inputRef = React.createRef<HTMLInputElement>();
   scrollContainerRef = React.createRef<HTMLElement>();
   tagsRefs: (HTMLElement | null)[] = [];
+  srMessageTimeout = 0;
 
   state = {
     tagsContainerAriaLabel: '',
+    srMessage: '',
   };
 
   componentDidMount() {
@@ -94,6 +101,12 @@ class InputTags extends Component<IInputTagsProps> {
     this.setState({
       tagsContainerAriaLabel: inputAccessibleName,
     });
+  }
+
+  componentWillUnmount() {
+    if (this.srMessageTimeout) {
+      clearTimeout(this.srMessageTimeout);
+    }
   }
 
   moveFocusToInput = (event: React.FocusEvent) => {
@@ -108,7 +121,7 @@ class InputTags extends Component<IInputTagsProps> {
 
   handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { key, currentTarget } = event;
-    const { delimiters } = this.asProps;
+    const { delimiters, getI18nText } = this.asProps;
     const { value } = currentTarget;
     const lastSymbol = value.slice(-1);
     const trimmedValue = value.trim();
@@ -117,6 +130,11 @@ class InputTags extends Component<IInputTagsProps> {
       event.preventDefault();
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
+
+      this.setTagActionMessage(
+        getI18nText('InputTags.addedNewTag:sr-message', { tagValue: trimmedValue }),
+      );
+
       if (typeof this.inputRef.current?.scrollIntoView === 'function') {
         setTimeout(() => {
           if (typeof this.inputRef.current?.scrollIntoView === 'function') {
@@ -200,6 +218,13 @@ class InputTags extends Component<IInputTagsProps> {
     };
   }
 
+  setTagActionMessage(message: string) {
+    this.setState({ srMessage: message });
+    this.srMessageTimeout = window.setTimeout(() => {
+      this.setState({ srMessage: '' });
+    }, 2000);
+  }
+
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
@@ -209,6 +234,27 @@ class InputTags extends Component<IInputTagsProps> {
 
     if (isAdvancedMode) {
       return sstyled(styles)(
+        <>
+          <SInputTags
+            render={Input}
+            tag={ScrollArea}
+            onMouseDown={this.moveFocusToInput}
+            container={this.scrollContainerRef}
+            tabIndex={null}
+          >
+            <Children />
+          </SInputTags>
+          <ScreenReaderOnly role='status' aria-live='polite'>
+            {this.state.srMessage}
+          </ScreenReaderOnly>
+        </>,
+      );
+    }
+
+    const [InputComponents, RestComponents] = extractFrom(Children, ['InputTags.Value']);
+
+    return sstyled(styles)(
+      <>
         <SInputTags
           render={Input}
           tag={ScrollArea}
@@ -216,26 +262,15 @@ class InputTags extends Component<IInputTagsProps> {
           container={this.scrollContainerRef}
           tabIndex={null}
         >
-          <Children />
-        </SInputTags>,
-      );
-    }
-
-    const [InputComponents, RestComponents] = extractFrom(Children, ['InputTags.Value']);
-
-    return sstyled(styles)(
-      <SInputTags
-        render={Input}
-        tag={ScrollArea}
-        onMouseDown={this.moveFocusToInput}
-        container={this.scrollContainerRef}
-        tabIndex={null}
-      >
-        <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
-          {RestComponents}
-        </SListAriaWrapper>
-        {InputComponents}
-      </SInputTags>,
+          <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
+            {RestComponents}
+          </SListAriaWrapper>
+          {InputComponents}
+        </SInputTags>
+        <ScreenReaderOnly role='status' aria-live='polite'>
+          {this.state.srMessage}
+        </ScreenReaderOnly>
+      </>,
     );
   }
 }

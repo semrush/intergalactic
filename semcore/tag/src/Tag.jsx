@@ -239,7 +239,7 @@ class RootTagContainer extends Component {
           this.setState({ srMessage });
           setTimeout(() => {
             this.setState({ srMessage: '' });
-          }, 1000);
+          }, 2000);
         }
 
         if (onKeyDown) {
@@ -275,18 +275,20 @@ class RootTagContainer extends Component {
       );
 
     return sstyled(styles)(
-      <STagContainer render={Box}>
-        {advancedMode ? (
-          <Children />
-        ) : (
-          <TagContainer.Tag>
+      <>
+        <STagContainer render={Box}>
+          {advancedMode ? (
             <Children />
-          </TagContainer.Tag>
-        )}
+          ) : (
+            <TagContainer.Tag>
+              <Children />
+            </TagContainer.Tag>
+          )}
+        </STagContainer>
         <ScreenReaderOnly role='status' aria-live='polite'>
           {this.state.srMessage}
         </ScreenReaderOnly>
-      </STagContainer>,
+      </>,
     );
   }
 }
