@@ -25,7 +25,6 @@ const Demo = () => {
           <Select.InputSearch
             value={filter}
             onChange={setFilter}
-            placeholder='Search'
             aria-describedby={filter ? 'search-result' : undefined}
           />
           <Select.List hMax={'224px'}>

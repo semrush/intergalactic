@@ -1,6 +1,6 @@
 {
   "clearSearch": "Suchfeld leeren",
   "selectPlaceholder": "Option auswählen",
-  "triggerHint": "Drücken Sie Tab, um zum Popover zu gehen",
-  "optionsList": "Liste der Optionen"
+  "Select.InputSearch.Value:placeholder": "Suche",
+  "Select.InputSearch.Value:aria-label": "Suche"
 }
