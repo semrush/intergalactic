@@ -94,7 +94,7 @@ export class RootItem extends Component {
       disabled,
       id: `igc-${uid}-${value}-toggle-button`,
       'aria-expanded': selected ? 'true' : 'false',
-      'aria-controls': `igc-${uid}-${value}-collapse`,
+      'aria-controls': selected ? `igc-${uid}-${value}-collapse` : undefined,
     };
   }
 
@@ -146,13 +146,7 @@ class Toggle extends Component {
     const SItemToggle = Root;
 
     return sstyled(styles)(
-      <SItemToggle
-        use={use}
-        ref={this.toggleRef}
-        render={Text}
-        onKeyDown={this.handleKeyDown}
-        aria-disabled={disabled ? 'true' : undefined}
-      />,
+      <SItemToggle use={use} ref={this.toggleRef} render={Text} onKeyDown={this.handleKeyDown} />,
     );
   }
 }

@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.1] - 2024-12-05
+
+### Removed
+
+- Unnecessary `aria-disabled` on disabled `Toggle` component.
+
+### Changed
+
+- Set `aria-controls` to expanded `Toggle` only.
+
 ## [5.43.0] - 2024-11-29
 
 ### Changed

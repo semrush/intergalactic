@@ -22,7 +22,7 @@ const Demo = () => {
     <Flex>
       <Box style={{ position: 'relative' }}>
         <ScrollArea w={600} hMax={400} shadow>
-          <ScrollArea.Container ref={containerRef}>
+          <ScrollArea.Container ref={containerRef} id='custom-container-id'>
             <Box w={1200}>
               {[...new Array(100)].map((_, index) => (
                 <Box
@@ -36,7 +36,7 @@ const Demo = () => {
               ))}
             </Box>
           </ScrollArea.Container>
-          <ScrollArea.Bar orientation='vertical' />
+          <ScrollArea.Bar orientation='vertical' aria-controls='custom-container-id' />
         </ScrollArea>
         <br />
         <br />
@@ -49,6 +49,7 @@ const Demo = () => {
           w={200}
           h={40}
           style={{ background: 'rgba(0,0,0,0.1)' }}
+          aria-controls='custom-container-id'
         >
           <ScrollArea.Bar.Slider h={30} />
         </ScrollArea.Bar>

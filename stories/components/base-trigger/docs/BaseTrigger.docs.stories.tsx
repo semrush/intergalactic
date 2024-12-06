@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import LinkTriggerExample from './examples/linktrigger';
 
-const meta: Meta<typeof LinkTrigger> = {
+const meta = {
   title: 'Components/BaseTrigger/Documentation',
 };
 

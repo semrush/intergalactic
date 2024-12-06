@@ -45,7 +45,7 @@ class RootButtonTrigger extends Component {
     const { Children, styles, loading, chevron, empty } = this.asProps;
 
     return sstyled(styles)(
-      <Root render={BaseTrigger} tag='button' type='button'>
+      <Root render={BaseTrigger}>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         {(chevron || loading) && (
           <SButtonAddon>

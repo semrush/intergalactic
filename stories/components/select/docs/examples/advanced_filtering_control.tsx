@@ -25,7 +25,6 @@ const Demo = () => {
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
             <InputSearch.Value
-              placeholder='Search'
               aria-describedby={filter ? 'search-result-advanced' : undefined}
             />
             <InputSearch.Clear
