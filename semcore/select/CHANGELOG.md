@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2024-12-05
+
+### Added
+
+- Logic for showing/hiding highlight for an option depending on whether the Trigger is in focus or not.
+
 ## [4.48.6] - 2024-11-29
 
 ### Changed
