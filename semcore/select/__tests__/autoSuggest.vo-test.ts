@@ -8,7 +8,8 @@ test.skip('Users can interact with AutoSuggest via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/auto-suggest/examples/autosuggest_example.tsx';
+  const standPath =
+    'stories/patterns/ux-patterns/auto-suggest/docs/examples/autosuggest_example.tsx';
   const reportPath = 'website/docs/components/auto-suggest/auto-suggest-a11y-report.md';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();

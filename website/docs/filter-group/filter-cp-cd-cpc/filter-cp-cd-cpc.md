@@ -4,33 +4,28 @@ tabs: Design('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 ---
 
 ::: tip
-**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).**
+Make sure to read [Filter common rules](/filter-group/filter-rules/filter-rules).
 :::
 
-**These filters are combined in one guide, since they differ only in the sorting parameter and the name.** The principle of work and states are the same.
+**These filters are combined in one guide, since they differ only in the filter parameter and the name.** The principle of work and states are the same.
 
 ## Description
 
-**Click Potential filter** is a filter to sort the data on the page by the Click Potential parameter.
+These filters allow to enter only a custom number range. They have no preset data since click potetntial, competitive density and cost per click are very individual parameters for each product.
 
-**Competitive Density filter** is a filter to sort the data on the page by the Competitive Density parameter.
+**When working with these filters, it's important for the user to:**
 
-**CPC filter** is a filter to sort the data on the page by the CPC parameter.
-
-They contain only a field for a custom range value, there is no preset data, since click potetntial, competitive density and cost per click are very individual parameters for each product.
-
-**When working with these filters, it is important for the user to:**
-
-- quickly enter the data it needs;
-- quickly understand that nothing was found;
-- quickly reset the entered data and search again;
-- be able to change data.
+- understand that they can enter custom values
+- quickly enter the data
+- quickly understand that nothing was found
+- quickly reset the entered data and search again
+- be able to change data
 
 ## Appearance
 
 ### Trigger
 
-**Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
+**Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the trigger value isn't truncated.
 
 | Filter              | Appearance example                                                    | Description                                                                         |
 | ------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -40,7 +35,7 @@ They contain only a field for a custom range value, there is no preset data, sin
 
 ### Dropdown
 
-**Don't make a dropdown width less than 224px**, otherwise the maximum possible values will not fit into the custom range inputs.
+**Don't make the dropdown width less than 224px**, otherwise the maximum possible values won't fit into the inputs.
 
 | Filter              | Appearance example                                                    |
 | ------------------- | --------------------------------------------------------------------- |
@@ -48,21 +43,17 @@ They contain only a field for a custom range value, there is no preset data, sin
 | Competitive Density | ![opened cd](static/opened-cd.png) ![filled cd](static/filled-cd.png) |
 | CPC                 | ![opened cpc](static/opened.png) ![filled cpc](static/filled.png)     |
 
-## Custom range
-
-If the filter has the ability to select a custom period, then use [InputNumber](/components/input-number/input-number).
-
-The behavior and appearance of the stepper buttons is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
-
 ## Interaction
 
-When user opens a dropdown, the focus immediately goes to the first custom range input.
+These filters use the [InputRange](/components/input-number/input-number#inputrange) pattern.
 
-Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/filter-rules).
+When user opens the dropdown, keyboard focus immediately goes to the first custom range input.
+
+Filter interaction is described in detail in [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 ## Tooltips
 
-For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/filter-rules).
+For more information about tooltips, refer to [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 | Filter              | Appearance example                     |
 | ------------------- | -------------------------------------- |

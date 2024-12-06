@@ -8,7 +8,7 @@ tabs: Design('filter-kd-positions-volume'), Example('filter-kd-position-volume-c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-example.tsx';
+  export Demo from 'stories/patterns/filters/filter-kd-positions-volume/docs/examples/basic-example.tsx';
 </script>
 
 :::

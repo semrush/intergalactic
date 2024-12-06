@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dropdown",
   "description": "Semrush Dropdown Component",
-  "version": "4.41.3",
+  "version": "4.41.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.38.2",
-    "@semcore/popper": "5.44.2",
-    "@semcore/utils": "4.43.3"
+    "@semcore/flex-box": "5.39.0",
+    "@semcore/popper": "5.45.0",
+    "@semcore/utils": "4.44.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.17.5",
