@@ -19,6 +19,7 @@ const warningBlockStyles = {
 type FormValues = {
   project: string;
 };
+
 const fieldName: keyof FormValues = 'project';
 
 const Demo = () => {
@@ -64,21 +65,7 @@ const Demo = () => {
     }
   };
 
-  type RegisterOptions = Parameters<typeof register>[1];
-  const registerHelper = (options: RegisterOptions) => {
-    const usersOnChange = options?.onChange;
-
-    const result = register(fieldName, options);
-    const { onChange, ...rest } = result;
-    const rewiredOnChange = (_v: string, e: React.SyntheticEvent) => {
-      onChange(e);
-      usersOnChange?.(e);
-    };
-
-    return { ...rest, onChange: rewiredOnChange };
-  };
-
-  const field = registerHelper({
+  const { onChange, ...restField } = register(fieldName, {
     validate: {
       projectRequired: (v) => {
         return Boolean(v) || 'Please enter correct project name';
@@ -92,10 +79,16 @@ const Demo = () => {
       },
     },
     onBlur: () => setFocusedFieldName(''),
-    onChange: () => {
+  });
+
+  const field = {
+    onChange: (_v: string, e: React.SyntheticEvent) => {
+      // important: keep call order, otherwise validation breaks
+      onChange(e);
       hasError() && trigger().then(resetIfChangedToValid);
     },
-  });
+    ...restField,
+  };
 
   return (
     <>
@@ -122,11 +115,7 @@ const Demo = () => {
               </Text>
             </Text>
 
-            <Tooltip
-              placement='right'
-              interaction={'none'}
-              animationsDisabled={true}
-            >
+            <Tooltip placement='right' interaction={'none'} animationsDisabled={true}>
               <Tooltip.Popper visible={showErrorTooltip()} theme='warning' id='form-project-error'>
                 {errors[fieldName]?.message}
               </Tooltip.Popper>

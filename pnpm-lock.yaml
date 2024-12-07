@@ -3190,8 +3190,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0
       react-hook-form:
-        specifier: 7.53.2
-        version: 7.53.2(react@16.14.0)
+        specifier: 7.54.0
+        version: 7.54.0(react@16.14.0)
       react-virtualized:
         specifier: 9.22.3
         version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@16.14.0)(react@16.14.0)
@@ -24248,8 +24248,8 @@ packages:
       react: 18.2.0
     patched: true
 
-  /react-hook-form@7.53.2(react@16.14.0):
-    resolution: {integrity: sha512-YVel6fW5sOeedd1524pltpHX+jgU2u3DSDtXEaBORNdqiNrsX/nUI/iGXONegttg0mJVnfrIkiV0cmTU6Oo2xw==}
+  /react-hook-form@7.54.0(react@16.14.0):
+    resolution: {integrity: sha512-PS05+UQy/IdSbJNojBypxAo9wllhHgGmyr8/dyGQcPoiMf3e7Dfb9PWYVRco55bLbxH9S+1yDDJeTdlYCSxO3A==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
