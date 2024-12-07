@@ -120,8 +120,8 @@ const Demo = () => {
                 {errors[fieldName]?.message}
               </Tooltip.Popper>
 
-              <Input
-                tag={Tooltip.Trigger}
+              <Tooltip.Trigger
+                tag={Input}
                 w='100%'
                 mb={2}
                 size='l'
@@ -138,7 +138,7 @@ const Demo = () => {
                   aria-invalid={invalid()}
                   aria-errormessage={invalid() ? 'form-project-error' : undefined}
                 />
-              </Input>
+              </Tooltip.Trigger>
             </Tooltip>
           </Flex>
 
