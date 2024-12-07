@@ -170,7 +170,7 @@ class SliderRatingRoot extends Component<
 
         {!readonly && (
           <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
-            {getI18nText('sliderDescriber')}
+            {getI18nText('FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber')}
           </ScreenReaderOnly>
         )}
       </SSliderRating>,
