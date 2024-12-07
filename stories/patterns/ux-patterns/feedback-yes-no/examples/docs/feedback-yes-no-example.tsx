@@ -139,8 +139,6 @@ class FeedbackYesNo extends React.PureComponent {
     this.setState({ status: 'loading' });
   };
   onChange = (e: any, trigger: string) => {
-    console.log(trigger);
-
     const { value } = e.currentTarget;
     this.setState({ value: { ...this.state.value, [trigger]: value } });
   };
