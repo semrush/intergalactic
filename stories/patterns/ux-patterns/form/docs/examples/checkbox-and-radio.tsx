@@ -40,7 +40,7 @@ const Demo = () => {
         Export data
       </Text>
       <Controller
-        render={({ value, ...props }) => (
+        render={({ field: { value }, ...props }) => (
           <RadioGroup {...props} value={value} size='l' gap={3} aria-labelledby='radio-group-label'>
             <Radio mb={2} value='all' label='All' />
             <Radio>

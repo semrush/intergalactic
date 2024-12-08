@@ -1,148 +1,162 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm, useFormContext, RegisterOptions } from 'react-hook-form';
 import { Flex } from '@semcore/flex-box';
 import Tooltip from '@semcore/tooltip';
 import Input from '@semcore/input';
 import Button from '@semcore/button';
 import { Text } from '@semcore/typography';
 
-const Demo = () => {
+type FormValues = {
+  email: string;
+  password: string;
+};
+
+const defaultValues = { email: '', password: '' };
+
+type FormControlProps = {
+  name: keyof FormValues;
+  type: string;
+  options: RegisterOptions;
+};
+
+const FormControl = ({ name, type, options }: FormControlProps) => {
   const {
     register,
     trigger,
-    handleSubmit,
-    errors,
-    reset,
-    formState: { dirtyFields, isSubmitted },
-  } = useForm({
-    mode: 'onBlur',
-  });
-  const [focusedFieldName, setFocusedFieldName] = React.useState('');
+    getFieldState,
+    resetField,
+    getValues,
+    formState: { isSubmitted, errors },
+  } = useFormContext();
+  const { isTouched } = getFieldState(name);
+  const [active, setActive] = React.useState<boolean>(false);
+  const error = errors[name];
 
-  const onSubmit = (data: { email: string; passwrod: string }) => {
-    reset({ email: '', password: '' });
-    alert(JSON.stringify(data));
-  };
-
-  const invalid = (fieldName: string): boolean => {
-    const hasError = Boolean(errors[fieldName]);
-    if (isSubmitted) {
-      return hasError;
+  const hasError = () => {
+    if (error?.type === 'required' && !isSubmitted) {
+      return false;
     }
 
-    return dirtyFields[fieldName] && hasError;
+    return Boolean(error);
   };
 
-  const showError = (fieldName: string): boolean => {
-    const isActive = focusedFieldName === fieldName;
-    return invalid(fieldName) && isActive;
+  const invalid = (): boolean => {
+    return isTouched && hasError();
+  };
+
+  const showErrorTooltip = (): boolean => {
+    return invalid() && active;
+  };
+
+  const resetIfChangedToValid = (isValid: boolean) => {
+    if (isValid) {
+      resetField(name, { keepTouched: false, defaultValue: getValues(name) });
+    }
+  };
+
+  const { onChange, ...restField } = register(name, {
+    ...options,
+    onBlur: () => setActive(false),
+  });
+
+  const field = {
+    onChange: (_v: string, e: React.SyntheticEvent) => {
+      // important: keep call order, otherwise validation breaks
+      onChange(e);
+      hasError() && trigger().then(resetIfChangedToValid);
+    },
+    ...restField,
   };
 
   return (
-    <>
+    <Tooltip placement='top' interaction={'none'} animationsDisabled>
+      <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
+        {error?.message as any}
+      </Tooltip.Popper>
+      <Tooltip.Trigger
+        tag={Input}
+        w='100%'
+        mb={2}
+        size='l'
+        state={invalid() ? 'invalid' : 'normal'}
+        controlsLength={1}
+      >
+        {({ getTriggerProps }) => {
+          return (
+            <Input.Value
+              {...getTriggerProps({
+                id: name,
+                type: type,
+              })}
+              {...field}
+              onFocus={() => setActive(true)}
+              autoComplete={type}
+              aria-invalid={invalid()}
+              aria-errormessage={invalid() ? `form-${name}-error` : undefined}
+            />
+          );
+        }}
+      </Tooltip.Trigger>
+    </Tooltip>
+  );
+};
+
+const Demo = () => {
+  const methods = useForm<FormValues>({
+    mode: 'onBlur',
+    defaultValues,
+  });
+  const { handleSubmit, reset } = methods;
+
+  const onSubmit = (data: { email: string; password: string }) => {
+    reset(defaultValues, { keepIsSubmitted: false, keepTouched: false });
+    alert(JSON.stringify(data));
+  };
+
+  return (
+    <FormProvider {...methods}>
       <Flex tag='form' noValidate onSubmit={handleSubmit(onSubmit)} direction='column'>
         <Text size={300} tag='label' mb={1} htmlFor='email'>
           Email
         </Text>
-        <Tooltip
-          placement='top'
-          theme='warning'
-          interaction={'none'}
-          visible={showError('email')}
-          animationsDisabled
-        >
-          <Tooltip.Popper id='form-email-error'>{errors['email']?.message}</Tooltip.Popper>
-          <Tooltip.Trigger
-            tag={Input}
-            w='100%'
-            mb={2}
-            size='l'
-            state={invalid('email') ? 'invalid' : 'normal'}
-            controlsLength={1}
-          >
-            {({ getTriggerProps }) => {
-              return (
-                <Input.Value
-                  {...getTriggerProps({
-                    id: 'email',
-                    name: 'email',
-                    type: 'email',
-                    onChange: () => {
-                      if (invalid('email')) {
-                        trigger('email');
-                      }
-                    },
-                    ref: register({
-                      required: 'Email is required',
-                      pattern: {
-                        value: /.+@.+\..+/i,
-                        message: 'Email is not valid',
-                      },
-                    }) as React.ForwardedRef<HTMLInputElement>,
-                  })}
-                  onFocus={() => setFocusedFieldName('email')}
-                  onBlur={() => setFocusedFieldName('')}
-                  autoComplete='email'
-                  aria-invalid={invalid('email')}
-                  aria-errormessage={invalid('email') ? 'form-email-error' : undefined}
-                />
-              );
-            }}
-          </Tooltip.Trigger>
-        </Tooltip>
+        <FormControl
+          name='email'
+          type='email'
+          options={{
+            validate: {
+              required: (v: string) => Boolean(v) || 'Email is required',
+              email: (v: string) => {
+                if (!v) {
+                  return true;
+                }
+
+                return /.+@.+\..+/i.test(v) || 'Email is not valid';
+              },
+            },
+          }}
+        />
+
         <Text size={300} tag='label' mb={1} htmlFor='password'>
           Password
         </Text>
-        <Tooltip
-          interaction={'none'}
-          placement='top'
-          theme='warning'
-          visible={showError('password')}
-          animationsDisabled
-        >
-          <Tooltip.Popper id='form-password-error'>{errors['password']?.message}</Tooltip.Popper>
-          <Tooltip.Trigger
-            tag={Input}
-            w='100%'
-            mb={4}
-            size='l'
-            state={invalid('password') ? 'invalid' : 'normal'}
-            controlsLength={1}
-          >
-            {({ getTriggerProps }) => (
-              <Input.Value
-                {...getTriggerProps({
-                  id: 'password',
-                  name: 'password',
-                  type: 'password',
-                  onChange: () => {
-                    if (invalid('password')) {
-                      trigger('password');
-                    }
-                  },
-                  ref: register({
-                    required: 'Password is required',
-                    minLength: {
-                      value: 8,
-                      message: 'Password must have at least 8 characters',
-                    },
-                  }) as React.ForwardedRef<HTMLInputElement>,
-                })}
-                onFocus={() => setFocusedFieldName('password')}
-                onBlur={() => setFocusedFieldName('')}
-                autoComplete='current-password'
-                aria-invalid={invalid('password')}
-                aria-describedby={invalid('password') ? 'form-password-error' : undefined}
-              />
-            )}
-          </Tooltip.Trigger>
-        </Tooltip>
+
+        <FormControl
+          name='password'
+          type='password'
+          options={{
+            required: 'Password is required',
+            minLength: {
+              value: 8,
+              message: 'Password must have at least 8 characters',
+            },
+          }}
+        />
 
         <Button type='submit' use='primary' theme='success' size='l' w='100%'>
           Log in
         </Button>
       </Flex>
-    </>
+    </FormProvider>
   );
 };
 

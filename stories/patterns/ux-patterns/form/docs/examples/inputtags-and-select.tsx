@@ -14,10 +14,18 @@ const Demo = () => {
     day_week: 'Monday',
     emails: ['first@react.hook.form', 'second@react.hook.form'],
   };
-  const { handleSubmit, getValues, setValue, control, setError, clearErrors, errors, watch } =
-    useForm({
-      defaultValues,
-    });
+  const {
+    handleSubmit,
+    getValues,
+    setValue,
+    control,
+    setError,
+    clearErrors,
+    formState: { errors },
+    watch,
+  } = useForm({
+    defaultValues,
+  });
   const [valueTag, setValueTag] = React.useState('');
   const [isFocused, setIsFocused] = React.useState(false);
 
@@ -89,13 +97,15 @@ const Demo = () => {
 
       <Flex mb={6} gap={4}>
         <Controller
-          render={(props) => <Select size='l' options={periods} {...props} />}
+          render={({ field }) => <Select size='l' options={periods} {...field} />}
           control={control}
           name='period'
         />
         {watch('period') === 'Weekly' && (
           <Controller
-            render={(props) => <Select size='l' aria-label='Day' options={daysWeek} {...props} />}
+            render={({ field }) => (
+              <Select size='l' aria-label='Day' options={daysWeek} {...{ field }} />
+            )}
             control={control}
             name='day_week'
           />
@@ -103,7 +113,7 @@ const Demo = () => {
       </Flex>
 
       <Controller
-        render={({ value: tags = [] }) => (
+        render={({ field: { value: tags = [] } }) => (
           <>
             <Text size={300} tag='label' mb={2}>
               Emails
