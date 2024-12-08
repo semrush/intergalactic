@@ -35,22 +35,22 @@ const Demo = () => {
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
       <Flex mb={4}>
         <Flex direction='column'>
-          <Text size={300} tag='label' mb={1}>
+          <Text size={300} tag='label' mb={1} htmlFor='startDate'>
             Start date
           </Text>
           <Controller
-            render={(props) => <DatePicker size='l' {...props} />}
+            render={(props) => <DatePicker id='startDate' size='l' {...props} />}
             control={control}
             name='start_date'
           />
         </Flex>
         <Flex direction='column' ml={2}>
-          <Text size={300} tag='label' mb={1}>
+          <Text size={300} tag='label' mb={1} htmlFor='startTime'>
             Time
           </Text>
           <Controller
             render={(props) => (
-              <TimePicker size='l' is12Hour {...props}>
+              <TimePicker id='startTime' size='l' is12Hour {...props}>
                 <TimePicker.Hours />
                 <TimePicker.Separator />
                 <TimePicker.Minutes />
@@ -71,22 +71,22 @@ const Demo = () => {
       {period && (
         <Flex mb={4}>
           <Flex direction='column'>
-            <Text size={300} tag='label' mb={1}>
+            <Text size={300} tag='label' mb={1} htmlFor='dueDate'>
               Due date
             </Text>
             <Controller
-              render={(props) => <DatePicker size='l' {...props} />}
+              render={(props) => <DatePicker id='dueDate' size='l' {...props} />}
               control={control}
               name='due_date'
             />
           </Flex>
           <Flex direction='column' ml={2}>
-            <Text size={300} tag='label' mb={1}>
+            <Text size={300} tag='label' mb={1} htmlFor='dueTime'>
               Time
             </Text>
             <Controller
               render={(props) => (
-                <TimePicker size='l' is12Hour {...props}>
+                <TimePicker id='dueTime' size='l' is12Hour {...props}>
                   <TimePicker.Hours />
                   <TimePicker.Separator />
                   <TimePicker.Minutes />

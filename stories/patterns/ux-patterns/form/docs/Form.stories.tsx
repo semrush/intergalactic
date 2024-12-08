@@ -15,16 +15,16 @@ export const CheckboxAndRadio: StoryObj = {
 };
 
 export const DatepickerAndTimepicker: StoryObj = {
-    render: DatepickerAndTimepickerExample,
+  render: DatepickerAndTimepickerExample,
 };
 
 export const DefaultLogInForm: StoryObj = {
-    render: DefaultLogInFormExample,
-    play: DefaultLogInFormTest,
+  render: DefaultLogInFormExample,
+  play: DefaultLogInFormTest,
 };
 
 export const InputTagsAndSelect: StoryObj = {
-    render: InputTagsAndSelectExample,
+  render: InputTagsAndSelectExample,
 };
 
 export default meta;

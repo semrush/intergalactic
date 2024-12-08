@@ -91,20 +91,20 @@ const Demo = () => {
 
   return (
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
-      <Text size={300} tag='label' mb={2}>
+      <Text size={300} tag='label' mb={2} htmlFor='period'>
         Email frequency
       </Text>
 
       <Flex mb={6} gap={4}>
         <Controller
-          render={({ field }) => <Select size='l' options={periods} {...field} />}
+          render={({ field }) => <Select size='l' id='period' options={periods} {...field} />}
           control={control}
           name='period'
         />
         {watch('period') === 'Weekly' && (
           <Controller
             render={({ field }) => (
-              <Select size='l' aria-label='Day' options={daysWeek} {...{ field }} />
+              <Select size='l' aria-label='Day' options={daysWeek} {...field} />
             )}
             control={control}
             name='day_week'
@@ -115,7 +115,7 @@ const Demo = () => {
       <Controller
         render={({ field: { value: tags = [] } }) => (
           <>
-            <Text size={300} tag='label' mb={2}>
+            <Text size={300} tag='label' mb={2} htmlFor='emails'>
               Emails
               <Counter
                 ml={1}
@@ -145,12 +145,14 @@ const Demo = () => {
                   </InputTags.Tag>
                 ))}
                 <InputTags.Value
+                  id='emails'
                   value={valueTag}
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
                   onFocus={() => setIsFocused(true)}
                   aria-invalid={showError}
                   aria-describedby={showError ? 'form-emails-error' : undefined}
+                  __excludeProps={['aria-haspopup']}
                 />
               </Tooltip.Trigger>
               <Tooltip.Popper id='form-emails-error'>

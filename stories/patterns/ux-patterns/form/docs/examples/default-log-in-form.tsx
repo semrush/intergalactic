@@ -17,18 +17,17 @@ type FormControlProps = {
   name: keyof FormValues;
   type: string;
   options: RegisterOptions;
+  autocomplete: string;
 };
 
-const FormControl = ({ name, type, options }: FormControlProps) => {
+const FormControl = ({ name, type, options, autocomplete }: FormControlProps) => {
   const {
     register,
     trigger,
-    getFieldState,
     resetField,
     getValues,
     formState: { isSubmitted, errors },
   } = useFormContext();
-  const { isTouched } = getFieldState(name);
   const [active, setActive] = React.useState<boolean>(false);
   const error = errors[name];
 
@@ -40,12 +39,8 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
     return Boolean(error);
   };
 
-  const invalid = (): boolean => {
-    return isTouched && hasError();
-  };
-
   const showErrorTooltip = (): boolean => {
-    return invalid() && active;
+    return hasError() && active;
   };
 
   const resetIfChangedToValid = (isValid: boolean) => {
@@ -73,30 +68,19 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
       <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
         {error?.message as any}
       </Tooltip.Popper>
-      <Tooltip.Trigger
-        tag={Input}
-        w='100%'
-        mb={2}
-        size='l'
-        state={invalid() ? 'invalid' : 'normal'}
-        controlsLength={1}
-      >
-        {({ getTriggerProps }) => {
-          return (
-            <Input.Value
-              {...getTriggerProps({
-                id: name,
-                type: type,
-              })}
-              {...field}
-              onFocus={() => setActive(true)}
-              autoComplete={type}
-              aria-invalid={invalid()}
-              aria-errormessage={invalid() ? `form-${name}-error` : undefined}
-            />
-          );
-        }}
-      </Tooltip.Trigger>
+      <Input w='100%' mb={2} size='l' state={hasError() ? 'invalid' : 'normal'} controlsLength={1}>
+        <Tooltip.Trigger
+          tag={Input.Value}
+          {...field}
+          id={name}
+          type={type}
+          onFocus={() => setActive(true)}
+          autoComplete={autocomplete}
+          aria-invalid={hasError()}
+          aria-describedby={hasError() ? `form-${name}-error` : undefined}
+          __excludeProps={['aria-haspopup']}
+        />
+      </Input>
     </Tooltip>
   );
 };
@@ -122,6 +106,7 @@ const Demo = () => {
         <FormControl
           name='email'
           type='email'
+          autocomplete='email'
           options={{
             validate: {
               required: (v: string) => Boolean(v) || 'Email is required',
@@ -143,6 +128,7 @@ const Demo = () => {
         <FormControl
           name='password'
           type='password'
+          autocomplete='current-password'
           options={{
             required: 'Password is required',
             minLength: {
