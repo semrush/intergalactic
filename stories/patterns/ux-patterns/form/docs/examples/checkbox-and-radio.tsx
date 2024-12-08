@@ -10,14 +10,19 @@ import Button from '@semcore/button';
 import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
-  const [selected, setSelected] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState<string[]>([]);
   const [selectedFirst, setSelectedFirst] = React.useState(0);
   const [selectInFocus, setSelectInFocus] = React.useState(false);
   const defaultValues = {
     export: 'all',
   };
-  const { handleSubmit, control, reset, errors, setError } = useForm({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    setError,
+    formState: { errors },
+  } = useForm({
     defaultValues,
   });
 
@@ -32,14 +37,13 @@ const Demo = () => {
     }
     if (data.export === 'selected') {
       if (!selectedValue.length) {
-        setError('export', { message: 'Require chouse value' });
+        setError('export', { message: 'Require choose value' });
         return;
       } else {
         data.export = `selected [${selectedValue.join(',')}]`;
       }
     }
     reset(defaultValues);
-    setSelected(false);
     setSelectedValue([]);
     setSelectedFirst(0);
     alert(JSON.stringify(data));
@@ -50,14 +54,15 @@ const Demo = () => {
     reset({ export: 'first' });
     setSelectedFirst(value);
   };
-  const onChangCheckbox = (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement, Event>) => {
+  const onChangeCheckbox = (
+    checked: boolean,
+    e?: React.SyntheticEvent<HTMLInputElement, Event>,
+  ) => {
     const value = e?.currentTarget.value as string;
+
     const tmpArray = checked ? [...selectedValue, value] : selectedValue.filter((v) => v !== value);
     tmpArray.length && reset({ export: 'selected' });
     setSelectedValue(tmpArray);
-  };
-  const onSelectedRadio = () => {
-    setSelected(!selected);
   };
 
   return (
@@ -67,60 +72,64 @@ const Demo = () => {
           Export data
         </Text>
         <Controller
-          render={({ value, ...props }) => (
-            <RadioGroup {...props} value={value} size='l'>
-              <Radio mb={3}>
-                <Radio.Value value='all' />
-                <Radio.Text>All</Radio.Text>
-              </Radio>
-              <Radio mb={3}>
-                <Radio.Value value='selected' onChange={onSelectedRadio} />
-                <Radio.Text>Selected</Radio.Text>
-                {selected &&
-                  [100, 500].map((v) => (
-                    <Checkbox
-                      size='l'
-                      ml={2}
-                      key={v}
-                      state={value.includes('selected') && errors['export'] ? 'invalid' : 'normal'}
-                    >
-                      <Checkbox.Value value={v} onChange={onChangCheckbox} />
-                      <Checkbox.Text children={v} />
-                    </Checkbox>
-                  ))}
-              </Radio>
-              <Radio style={{ alignItems: 'center' }}>
-                <Radio.Value value='first' />
-                <Radio.Text>First</Radio.Text>
+          render={({ field: { value, onChange }, ...props }) => {
+            return (
+              <RadioGroup {...props} value={value} onChange={(_v, e) => onChange(e)} size='l'>
+                <Radio mb={3}>
+                  <Radio.Value value='all' />
+                  <Radio.Text>All</Radio.Text>
+                </Radio>
+                <Radio mb={3}>
+                  <Radio.Value value='selected' />
+                  <Radio.Text>Selected</Radio.Text>
+                  {value === 'selected' &&
+                    [100, 500].map((v) => (
+                      <Checkbox
+                        size='l'
+                        ml={2}
+                        key={v}
+                        state={
+                          value.includes('selected') && errors['export'] ? 'invalid' : 'normal'
+                        }
+                      >
+                        <Checkbox.Value value={v} onChange={onChangeCheckbox} />
+                        <Checkbox.Text children={v} />
+                      </Checkbox>
+                    ))}
+                </Radio>
+                <Radio style={{ alignItems: 'center' }}>
+                  <Radio.Value value='first' />
+                  <Radio.Text>First</Radio.Text>
 
-                <Tooltip>
-                  <Tooltip.Popper
-                    id='form-select-error'
-                    theme='warning'
-                    placement='top'
-                    visible={selectInFocus && value.includes('first') && !!errors['export']}
-                  >
-                    Field is requried.
-                  </Tooltip.Popper>
-                  <Tooltip.Trigger
-                    w={'100%'}
-                    inline={false}
-                    onFocus={() => setSelectInFocus(true)}
-                    onBlur={() => setSelectInFocus(false)}
-                  >
-                    <Select
-                      size='l'
-                      ml={2}
-                      state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
-                      tag={ButtonTrigger}
-                      options={optionsFirst}
-                      onChange={onChangeSelect}
-                    />
-                  </Tooltip.Trigger>
-                </Tooltip>
-              </Radio>
-            </RadioGroup>
-          )}
+                  <Tooltip>
+                    <Tooltip.Popper
+                      id='form-select-error'
+                      theme='warning'
+                      placement='top'
+                      visible={selectInFocus && value.includes('first') && !!errors['export']}
+                    >
+                      Field is required.
+                    </Tooltip.Popper>
+                    <Tooltip.Trigger
+                      w={'100%'}
+                      inline={false}
+                      onFocus={() => setSelectInFocus(true)}
+                      onBlur={() => setSelectInFocus(false)}
+                    >
+                      <Select
+                        size='l'
+                        ml={2}
+                        state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
+                        tag={ButtonTrigger}
+                        options={optionsFirst}
+                        onChange={onChangeSelect}
+                      />
+                    </Tooltip.Trigger>
+                  </Tooltip>
+                </Radio>
+              </RadioGroup>
+            );
+          }}
           control={control}
           name='export'
         />

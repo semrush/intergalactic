@@ -15,7 +15,15 @@ const Demo = () => {
     day_week: 'Monday',
     emails: ['first@react.hook.form', 'first@react.hook.form'],
   };
-  const { handleSubmit, getValues, setValue, control, setError, clearErrors, errors } = useForm({
+  const {
+    handleSubmit,
+    getValues,
+    setValue,
+    control,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm({
     defaultValues,
   });
   const [valueTag, setValueTag] = React.useState('');
@@ -89,19 +97,21 @@ const Demo = () => {
 
       <Flex mb={4}>
         <Controller
-          render={(props) => <Select tag={ButtonTrigger} options={periods} {...props} />}
+          render={({ field }) => <Select tag={ButtonTrigger} options={periods} {...field} />}
           control={control}
           name='period'
         />
         <Controller
-          render={(props) => <Select ml={4} tag={ButtonTrigger} options={daysWeek} {...props} />}
+          render={({ field }) => (
+            <Select ml={4} tag={ButtonTrigger} options={daysWeek} {...field} />
+          )}
           control={control}
           name='day_week'
         />
       </Flex>
 
       <Controller
-        render={({ value: tags = [] }) => (
+        render={({ field: { value: tags = [] } }) => (
           <>
             <Text size={300} tag='label' mb={1}>
               Emails
