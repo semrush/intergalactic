@@ -7,7 +7,7 @@ import fire from '@semcore/utils/lib/fire';
 import { includesDate } from '../utils/includesDate';
 import { formatDDMMYY, formatMMYY } from '../utils/formatDate';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 
 import style from '../style/calendar.shadow.css';
 

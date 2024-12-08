@@ -1,6 +1,6 @@
 import React from 'react';
 import Select, { InputSearch } from '@semcore/select';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
@@ -25,7 +25,6 @@ const Demo = () => {
           <InputSearch value={filter} onChange={setFilter}>
             <InputSearch.SearchIcon />
             <InputSearch.Value
-              placeholder='Search'
               aria-describedby={filter ? 'search-result-advanced' : undefined}
             />
             <InputSearch.Clear

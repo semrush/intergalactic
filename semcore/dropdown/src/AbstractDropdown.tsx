@@ -68,19 +68,21 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     if (interaction === 'none') return false;
 
-    e.preventDefault();
-    e.stopPropagation();
-    this.handlers.visible(true);
+    setTimeout(() => {
+      const { visible, inlineActions } = this.asProps;
+      if (visible || inlineActions) {
+        this.afterOpenPopper();
+      }
+    }, 200); // because first will be executed onClick handler in popper
+  };
 
+  afterOpenPopper = () => {
+    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const element = this.itemRefs[highlightedIndex];
+    element?.focus();
     if (this.role === 'menu') {
-      setTimeout(() => {
-        const { highlightedIndex } = this.asProps;
-        const element = this.itemRefs[highlightedIndex ?? 0];
-        element?.focus();
-      }, 0);
+      this.handlers.highlightedIndex(highlightedIndex);
     }
-
-    return false;
   };
 
   getTriggerProps() {
@@ -179,7 +181,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     const itemsLastIndex = this.itemProps.length - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item.selected);
 
-    if (itemsLastIndex < 0) return 0;
+    if (itemsLastIndex < 0) return -1;
 
     let innerHighlightedIndex: number;
 
@@ -205,7 +207,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (this.itemProps[newIndex]?.disabled) {
       return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
     } else if (!this.itemProps[newIndex]) {
-      return 0;
+      return -1;
     } else {
       return newIndex;
     }
@@ -264,6 +266,10 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
       e.currentTarget.getAttribute('role') !== this.childRole
     ) {
+      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+        this.handlers.visible(true);
+      }
+
       this.handleClickTrigger(e);
     }
   }
@@ -301,7 +307,11 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       }
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current && highlightedIndex !== null) {
+        if (
+          this.highlightedItemRef.current &&
+          highlightedIndex !== null &&
+          !this.itemProps[highlightedIndex].disabled
+        ) {
           e.stopPropagation();
           e.preventDefault();
           this.highlightedItemRef.current.click();
@@ -312,9 +322,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
     if (amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
-      if (newHighlightedIndex !== undefined && this.role === 'menu') {
-        this.itemRefs[newHighlightedIndex]?.focus();
-      }
+
       if (
         this.role === 'listbox' &&
         this.triggerRef.current &&
@@ -322,7 +330,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       ) {
         this.focusTrigger();
       }
-      this.handlers.highlightedIndex(newHighlightedIndex, e);
+
+      if (newHighlightedIndex !== -1) {
+        this.handlers.highlightedIndex(newHighlightedIndex, e);
+        if (this.role === 'menu') {
+          this.itemRefs[newHighlightedIndex]?.focus();
+        }
+      }
 
       e.preventDefault();
       e.stopPropagation();

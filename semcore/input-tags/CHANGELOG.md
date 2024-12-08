@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.3] - 2024-12-03
+
+### Fixed
+
+- Difference in text size in tags with and without Addons.
+
+## [4.45.2] - 2024-11-27
+
+### Fixed
+
+- Advanced rendering of child elements doesn't display tags at all.
+
 ## [4.45.1] - 2024-11-25
 
 ### Fixed

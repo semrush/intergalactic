@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.2] - 2024-12-05
+
+### Removed
+
+- Default tag `button` from FilterTrigger and ButtonTrigger to reduce code duplication.
+
+## [4.49.1] - 2024-11-29
+
+### Changed
+
+- Default tag for BaseTrigger to `button` as part of a11y improvement.
+
+## [4.49.0] - 2024-11-20
+
+### Fixed
+
+- Added `Hint` to the `FilterTrigger.ClearButton`.
+- Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
+- Added `role` combobox to the `FilterTrigger.TriggerButton`.
+- Added `count` prop to `FilterTrigger.Counter`, along with screenreader only `selected` text.
+- `placeholder` text is now `aria-hidden` for triggers because of `aria-label` and double pronouncing.
+
 ## [4.48.2] - 2024-11-21
 
 ### Fixed

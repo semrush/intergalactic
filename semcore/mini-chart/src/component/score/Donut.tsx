@@ -6,6 +6,7 @@ import { assignProps } from '@semcore/core';
 import { CommonScoreProps } from './Score';
 
 import style from './donut.shadow.css';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
@@ -56,10 +57,18 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enha
 
     const viewBox = isSemiDonut ? '0 0 24 12' : '0 0 24 24';
     const strokeDashoffsetBase = -1 * (valueStrokeDasharray + (isSemiDonut ? offsetPoint : 0));
+    const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SDonutContainer render={Box} semi={isSemiDonut}>
-        <svg width='100%' height='100%' viewBox={viewBox} fill='none'>
+      <SDonutContainer render={Box} semi={isSemiDonut} __excludeProps={__excludeProps}>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={viewBox}
+          fill='none'
+          role='img'
+          {...extractedAriaProps}
+        >
           <g>
             <circle
               cx='12'

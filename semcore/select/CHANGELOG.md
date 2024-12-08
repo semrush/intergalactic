@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.0] - 2024-12-05
+
+### Added
+
+- Logic for showing/hiding highlight for an option depending on whether the Trigger is in focus or not.
+
+## [4.48.8] - 2024-12-05
+
+### Fixed
+
+- set `aria-activedescendant` for Trigger only if there is available option with current highlightedIndex.
+- The first option is highlighted, event if it is disabled.
+
+## [4.48.7] - 2024-12-04
+
+### Added
+
+- `placeholder` and `aria-label` for input in `InputSearch` component.
+
+## [4.48.6] - 2024-11-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.48.2 ~> 4.49.0], `@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/checkbox` [7.41.2 ~> 7.42.0], `@semcore/divider` [4.37.2 ~> 4.38.0], `@semcore/dropdown-menu` [4.43.3 ~> 4.43.4], `@semcore/dropdown` [4.41.3 ~> 4.41.5], `@semcore/popper` [5.44.2 ~> 5.45.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/icon` [4.52.2 ~> 4.53.0], `@semcore/input` [4.39.2 ~> 4.40.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
 ## [4.48.5] - 2024-11-22
 
 ### Changed

@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.1] - 2024-12-05
+
+### Removed
+
+- Unnecessary `aria-disabled` on disabled `Toggle` component.
+
+### Changed
+
+- Set `aria-controls` to expanded `Toggle` only.
+
+## [5.43.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0]).
+
 ## [5.42.3] - 2024-11-22
 
 ### Changed

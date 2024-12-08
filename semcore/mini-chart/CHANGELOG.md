@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.27.0] - 2024-12-02
+
+### Added
+
+- `role=img` to all svg charts.
+
+## [0.26.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
 ## [0.25.2] - 2024-11-22
 
 ### Fixed

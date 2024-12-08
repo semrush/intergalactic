@@ -85,7 +85,7 @@ const Preview = (preview) => {
           <InputTags.Tag.Text>
             {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
             {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
-            {tagText}
+            {(circleTag || before) ? (<InputTags.Tag.Text.Content>{tagText}</InputTags.Tag.Text.Content>) : tagText}
           </InputTags.Tag.Text>
           {closeTag && <InputTags.Tag.Close />}
         </InputTags.Tag>

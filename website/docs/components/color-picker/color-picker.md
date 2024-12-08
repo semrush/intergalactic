@@ -94,7 +94,7 @@ Table: Color items
 
 Table: Color item states
 
-| | Normal | Hover | Active | Usage |
+| Item type | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
 | Background color | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-item-bg-hover.png) | ![](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
 | Text color | ![](static/colorpicker-item-text-default.png) | ![](static/colorpicker-item-text-hover.png) | ![](static/colorpicker-item-text-active.png)| Use for changing text and background colors of other components.|
@@ -105,7 +105,7 @@ Table: Color item states
 
 Table: Custom color item states
 
-| | Normal | Hover | Active                                              | Usage |
+| Item type | Normal | Hover | Active                                              | Usage |
 | ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
 | Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
 | Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
@@ -114,7 +114,7 @@ Table: Custom color item states
 
 Table: States of item for adding colors
 
-| | Normal | Hover | Active | Usage |
+| Item type | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
 | Add color button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)| Use Button with icon and change border-radius to 50%.|
 

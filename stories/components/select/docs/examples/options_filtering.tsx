@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from '@semcore/select';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
@@ -25,7 +25,6 @@ const Demo = () => {
           <Select.InputSearch
             value={filter}
             onChange={setFilter}
-            placeholder='Search'
             aria-describedby={filter ? 'search-result' : undefined}
           />
           <Select.List hMax={'224px'}>

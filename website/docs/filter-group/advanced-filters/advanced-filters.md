@@ -7,7 +7,7 @@ tabs: Design('advanced-filters'), Example('advanced-filters-code')
 
 **Advanced filters** is a pattern for filter controls that need to be combined into a group for any reason (logical relationship or related filters).
 
-When working with the combined filters, the user should see the number of applied filters in the group and be able to quickly apply or remove applied filters.
+When working with combined filters, the user should know the number of applied filters in the group and be able to quickly add or remove filters.
 
 ![](static/advanced-filters-dropdown-filled.png)
 
@@ -37,13 +37,13 @@ You can visually separate submit buttons from the filters by using the following
 
 ### Counter
 
-The [Counter](/components/counter/counter) appears after applying the filter. It shows the number of filters applied within the advanced filters group.
+Counter appears after applying the filter. It shows the number of filters applied within the advanced filters group.
 
 ![](static/advanced-filter.png)
 
-### Remove filter button
+### Clear button
 
-Refer to the [FilterTrigger](/components/filter-trigger/filter-trigger#default-filtertrigger) component, as it's used as the trigger in this pattern.
+The **Clear advanced filters** button works the same way as the **Clear** button in [FilterTrigger](/components/filter-trigger/filter-trigger#default-filtertrigger), with the only difference being its name.
 
 ## Dropdown or accordion?
 
@@ -61,18 +61,18 @@ Refer to the [FilterTrigger](/components/filter-trigger/filter-trigger#default-f
 
 Advanced filters implemented in the dropdown must have:
 
-- A button for adding a new line of conditions (optional).
-- "Apply" and "Clear all" buttons.
+- A button to add a new condition (optional)
+- **Apply** and **Clear all** buttons
 
 You can fix advanced filters implemented in the dropdown at the top of the page while scrolling.
 
 ### Opened filter
 
-- The dropdown should have a fixed width.
+- The dropdown width should be fixed.
 - If the dropdown has many lines with filters, after 4 lines, we recommend hiding others with a scroll.
-- Clicking the "Apply" button closes the dropdown, and the counter of the applied filters appears in the trigger.
-- The "Clear all" button clears all entered values.
-- The value entered in the input is applied by pressing "Enter".
+- Clicking the **Apply** button closes the dropdown, and the counter in the trigger appears or updates.
+- The **Clear all** button clears all entered values.
+- The value entered in the input is applied by pressing **Enter**.
 
 Table: Opened filter examples
 
@@ -122,7 +122,7 @@ Table: Advanced filter states
 | Hover       | ![filter hover state](static/hover.png)            |
 | Active      | ![filter active state](static/advanced-filter.png) |
 
-- Dynamic filter application (no "Apply" button) is useful when loading data while applying the filter strongly affects the output. It's important to show the content to the user immediately when applying the filter, without waiting for confirmation from the "Apply" button.
+- Dynamic filter application (no **Apply** button) is useful when loading data while applying the filter strongly affects the output. It's important to show the content to the user immediately when applying the filter, without waiting for confirmation from the **Apply** button.
 - Filters are valid only within one report. However, they should be saved when returning to this report (within the same product) and when reloading the page.
 - When changing the base, date, or switching between reports, the values in advanced filters should be saved.
 - Filter settings are forwarded to the URL.
@@ -131,7 +131,7 @@ Table: Advanced filter states
 
 - The delete button appears in the filter form after applying filters and clears the entire group of filters.
 - The advanced filters-dependent page content is reloaded and overrides the applied values.
-- By clicking the "Clear all" button, everything applied in the group will be deleted.
+- By clicking the **Clear all** button, everything applied in the group will be deleted.
 
 ### Loading
 

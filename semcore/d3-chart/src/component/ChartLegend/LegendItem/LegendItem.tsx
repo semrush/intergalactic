@@ -41,7 +41,6 @@ class LegendItemRoot extends Component<
       this.asProps;
 
     return {
-      id,
       label,
       shape,
       checked,
@@ -151,6 +150,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           checked={checked}
           theme={checked ? color : undefined}
           onChange={onChange}
+          aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>
