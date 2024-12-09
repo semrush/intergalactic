@@ -77,7 +77,7 @@ const DesignTokens = ({ tokens }) => {
             use:aria-hidden={undefined}
           />
           <Input.Value
-            placeholder='Find token'
+            placeholder='Enter component or element name to find token'
             value={nameFilter}
             onChange={setNameFilter}
             aria-label={'Search tokens'}

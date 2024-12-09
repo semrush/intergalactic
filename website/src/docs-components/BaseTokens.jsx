@@ -35,7 +35,7 @@ const BaseTokens = ({ tokens }) => {
           use:aria-hidden={undefined}
         />
         <Input.Value
-          placeholder='Find token'
+          placeholder='Enter color name to find token'
           value={filter}
           onChange={setFilter}
           aria-label={'Search tokens'}
