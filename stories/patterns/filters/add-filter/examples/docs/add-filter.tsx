@@ -9,7 +9,7 @@ import CloseM from '@semcore/icon/Close/m';
 import { Hint, Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
-import NeighborLocation from '@semcore/neighbor-location';
+import Input from '@semcore/input';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
@@ -139,40 +139,36 @@ const AddFilterPatternExample = () => {
         )}
       </AddFilterPattern.Input>
 
-      <AddFilterPattern.Input
-        addonLeft={<Select placeholder='Everywhere' options={selectOptions} />}
-        addonRight={
-          <Button>
-            <Button.Addon>
-              <SearchM />
-            </Button.Addon>
-          </Button>
-        }
-        alwaysVisible={true}
-        name={'fullname'}
-        displayName={'Fullname'}
-      >
-        <AddFilterPattern.Input.Value
-          placeholder={'Filter by fullname'}
-          onChange={(v) => {
-            setFilterData({ ...filterData, fullname: v });
-          }}
-          value={filterData['fullname']}
-          aria-label='Filter by fullname'
-        />
-        {Boolean(filterData['fullname']) && (
-          <AddFilterPattern.Input.Addon>
-            <ButtonLink
-              use='secondary'
-              addonLeft={CloseM}
-              aria-label='Clear'
-              onClick={() => {
-                clearField('fullname');
-              }}
-            />
-          </AddFilterPattern.Input.Addon>
-        )}
-      </AddFilterPattern.Input>
+      <AddFilterPattern.Item name={'fullname'} displayName={'Fullname'}>
+        <Select placeholder='Everywhere' options={selectOptions} neighborLocation={'right'} />
+        <Input neighborLocation={'both'}>
+          <Input.Value
+            placeholder={'Filter by fullname'}
+            onChange={(v) => {
+              setFilterData({ ...filterData, fullname: v });
+            }}
+            value={filterData['fullname']}
+            aria-label='Filter by fullname'
+          />
+          {Boolean(filterData['fullname']) && (
+            <Input.Addon>
+              <ButtonLink
+                use='secondary'
+                addonLeft={CloseM}
+                aria-label='Clear'
+                onClick={() => {
+                  clearField('fullname');
+                }}
+              />
+            </Input.Addon>
+          )}
+        </Input>
+        <Button neighborLocation={'left'}>
+          <Button.Addon>
+            <SearchM />
+          </Button.Addon>
+        </Button>
+      </AddFilterPattern.Item>
 
       <AddFilterPattern.Select
         onChange={(v: any) => {
