@@ -1,0 +1,40 @@
+{
+  "name": "@semcore/add-filter-pattern",
+  "description": "Semrush Add Filter Pattern component",
+  "version": "1.0.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder --source=js,ts"
+  },
+  "dependencies": {
+    "@semcore/select": "4.48.2",
+    "@semcore/icon": "4.52.0",
+    "@semcore/button": "5.39.1",
+    "@semcore/flex-box": "5.38.0",
+    "@semcore/tooltip": "6.46.0",
+    "@semcore/utils": "4.43.0",
+    "@semcore/dropdown-menu": "4.43.3",
+    "@semcore/dropdown": "4.41.3",
+    "@semcore/input": "4.39.2",
+    "@semcore/base-trigger": "4.48.2",
+    "@semcore/neighbor-location": "4.37.0"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^2.17.5",
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/semcore/add-filter-pattern"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.21"
+  }
+}
