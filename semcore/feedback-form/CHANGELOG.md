@@ -2,11 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.37.1] - 2024-12-05
+## [6.38.0] - 2024-12-06
+
+### Added
+
+- `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating.
+- `role="image"` and `aria-label` for SliderRating's readonly mode.
+- `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it.
+- autofocus to first checkbox. Moved from `textarea`.
+- `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
+
+### Changed
+
+- color of privacy-description text to the `text-secondary` token in FeedbackRating form.
+- `FeedbackRating.Header` as optional, when specifying FeedbackRating's `header` prop.
+
+### Removed
+
+- `title` attribute from FeedbackRating form.
+- removed `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
+- removed unnecessary tooltip around `input[type="hidden"]`
+- removed `line-height` from privacy-description text in FeedbackRating form.
 
 ### Fixed
 
-- There was always `aria-errormessage` in FeedbackItem, even if there was no message popup.
+- `aria-errormessage` always appearing in FeedbackItem, even if form control is valid.
+- `type="checkbox"` attributes on `<div> / <li> / <label>` elements, wrapping checkbox.
 
 ## [6.37.0] - 2024-11-29
 
