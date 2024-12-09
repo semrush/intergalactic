@@ -10,7 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `role="image"` and `aria-label` for SliderRating's readonly mode.
 - `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it.
 - autofocus to first checkbox. Moved from `textarea`.
-- added `aria-describedby`, that connects privacy-description text and related form control.
+- `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
 
 ### Changed
 
