@@ -14,7 +14,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- color of privacy-description text `text-secondary` token.
+- color of privacy-description text to the `text-secondary` token in FeedbackRating form.
 - `FeedbackRating.Header` as optional, when specifying FeedbackRating's `header` prop.
 
 ### Removed
