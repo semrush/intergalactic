@@ -34,6 +34,7 @@ const SuggestSearch = connectAutoComplete(
           onChange={handleChangeValue}
           value={currentRefinement}
           placeholder='What illustration are you looking for?'
+          aria-label={'Search illustrations'}
         />
         {!!currentRefinement && (
           <Input.Addon>
