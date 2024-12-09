@@ -199,6 +199,11 @@ class InputTags extends Component<IInputTagsProps> {
       tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
     };
   }
+  getTagContainerTextContentProps() {
+    return {
+      tabIndex: null,
+    };
+  }
 
   render() {
     const SInputTags = Root;
@@ -356,13 +361,17 @@ function InputTagContainerTag(props: any) {
   );
 }
 
+function TagContainerTextContent(props: IRootComponentProps) {
+  return sstyled(props.styles)(<Root render={Tag.Text} />);
+}
+
 export default createComponent(InputTags, {
   Value,
   TagsContainer: InputTagsContainer,
   Tag: [
     InputTagContainer,
     {
-      Text: [InputTagContainerTag, { Content: Tag.Text }],
+      Text: [InputTagContainerTag, { Content: TagContainerTextContent }],
       Close: TagContainer.Close,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
