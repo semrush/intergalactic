@@ -108,7 +108,7 @@ const Demo = () => {
   });
   const { handleSubmit, reset } = methods;
 
-  const onSubmit = (data: { email: string; password: string }) => {
+  const onSubmit = (data: FormValues) => {
     reset(defaultValues, { keepIsSubmitted: false, keepTouched: false });
     alert(JSON.stringify(data));
   };
