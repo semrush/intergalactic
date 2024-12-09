@@ -1,7 +1,6 @@
 import React from 'react';
 import { FeedbackRating } from '@semcore/feedback-form';
 import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
 
 const initValue = {
   rating: 0,
