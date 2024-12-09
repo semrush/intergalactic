@@ -120,6 +120,7 @@ ${prerenderLines.join('\n')}
       viewBox={viewBox}
       fill={fill}
       tag="svg"
+      aria-hidden={true}
       {...props}
     >${jsx}</Box>
   );

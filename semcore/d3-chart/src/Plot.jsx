@@ -100,6 +100,7 @@ class PlotRoot extends Component {
         onMouseLeave={this.handlerMouseLeave}
         aria-label={label}
         tabIndex={0}
+        aria-hidden={true}
       >
         <Children />
         <foreignObject width='100%' height='100%' data-aria-only>

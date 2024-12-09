@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.41.0] - 2024-12-09
+
+### Added
+
+- `aria-hidden=true` by default for all illustrations.
+
 ## [2.40.0] - 2024-11-29
 
 ### Changed
