@@ -19,7 +19,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Removed
 
-- `title` attribute from from FeedbackRating form.
+- `title` attribute from FeedbackRating form.
 - removed `<ul><li>` structure from checkboxes, leaving only `div role="group"`.
 - removed unnecessary tooltip around `input[type="hidden"]`
 - removed `line-height` from privacy-description text.
