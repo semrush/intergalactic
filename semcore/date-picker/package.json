@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "Semrush DatePicker Component",
-  "version": "4.54.5",
+  "version": "4.54.6",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@semcore/utils": "4.44.0",
-    "@semcore/base-trigger": "4.49.0",
-    "@semcore/button": "5.40.0",
+    "@semcore/base-trigger": "4.49.2",
+    "@semcore/button": "5.40.1",
     "@semcore/divider": "4.38.0",
-    "@semcore/dropdown": "4.41.5",
+    "@semcore/dropdown": "4.41.7",
     "@semcore/flex-box": "5.39.0",
     "@semcore/icon": "4.53.0",
     "@semcore/input": "4.40.0",
