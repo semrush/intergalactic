@@ -123,7 +123,7 @@ export interface IPopperContext extends PopperContext, UnknownProperties {}
 export type PopperContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
-  popper: Instance;
+  popper: React.MutableRefObject<Instance>;
   // Rename to setTriggerRef
   setTrigger: (ref: HTMLElement) => void;
   setPopper: (ref: HTMLElement) => void;
