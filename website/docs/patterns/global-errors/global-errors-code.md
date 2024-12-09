@@ -10,7 +10,7 @@ Both graphics and localized texts are already included in ready-to-use templates
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/global-errors/examples/templates.tsx';
+  export Demo from 'stories/patterns/ux-patterns/global-errors/docs/examples/templates.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ You can create a custom error message. In the `Error` package, you will find the
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/patterns/ux-patterns/global-errors/examples/custom-error.tsx';
+  export Demo from 'stories/patterns/ux-patterns/global-errors/docs/examples/custom-error.tsx';
 </script>
 
 :::
