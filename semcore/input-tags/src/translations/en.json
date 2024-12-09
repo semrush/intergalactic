@@ -1,3 +1,4 @@
 {
-  "pressEnterToEdit": "Press Enter to edit"
+  "pressEnterToEdit": "Press Enter to edit",
+  "InputTags.addedNewTag:sr-message": "{tagValue} added"
 }
