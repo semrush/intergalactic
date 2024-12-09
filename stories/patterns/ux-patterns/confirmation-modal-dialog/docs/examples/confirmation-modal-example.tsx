@@ -120,25 +120,18 @@ const Demo = () => {
                 {errors[fieldName]?.message}
               </Tooltip.Popper>
 
-              <Tooltip.Trigger
-                tag={Input}
-                w='100%'
-                mb={2}
-                size='l'
-                state={invalid() ? 'invalid' : 'normal'}
-                controlsLength={1}
-              >
-                <Input.Value
+              <Input state={invalid() ? 'invalid' : 'normal'} controlsLength={1} mb={2} size='l'>
+                <Tooltip.Trigger
+                  tag={Input.Value}
                   {...field}
                   id={fieldName}
-                  onFocus={() => setFocusedFieldName(fieldName)}
                   placeholder={'Enter project name'}
-                  size='l'
                   w={'100%'}
+                  onFocus={() => setFocusedFieldName(fieldName)}
                   aria-invalid={invalid()}
                   aria-errormessage={invalid() ? 'form-project-error' : undefined}
                 />
-              </Tooltip.Trigger>
+              </Input>
             </Tooltip>
           </Flex>
 
