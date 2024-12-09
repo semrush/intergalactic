@@ -101,31 +101,14 @@ const Demo = () => {
                   <Radio.Value value='first' />
                   <Radio.Text>First</Radio.Text>
 
-                  <Tooltip>
-                    <Tooltip.Popper
-                      id='form-select-error'
-                      theme='warning'
-                      placement='top'
-                      visible={selectInFocus && value.includes('first') && !!errors['export']}
-                    >
-                      Field is required.
-                    </Tooltip.Popper>
-                    <Tooltip.Trigger
-                      w={'100%'}
-                      inline={false}
-                      onFocus={() => setSelectInFocus(true)}
-                      onBlur={() => setSelectInFocus(false)}
-                    >
-                      <Select
-                        size='l'
-                        ml={2}
-                        state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
-                        tag={ButtonTrigger}
-                        options={optionsFirst}
-                        onChange={onChangeSelect}
-                      />
-                    </Tooltip.Trigger>
-                  </Tooltip>
+                  <Select
+                    size='l'
+                    ml={2}
+                    state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
+                    tag={ButtonTrigger}
+                    options={optionsFirst}
+                    onChange={onChangeSelect}
+                  />
                 </Radio>
               </RadioGroup>
             );

@@ -76,7 +76,7 @@ const Demo = () => {
     const { dataset } = e.currentTarget;
     setValue(
       'emails',
-      tags.filter((tag: string, idx: number) => idx !== Number(dataset.id)),
+      tags.filter((tag, idx) => idx !== Number(dataset.id)),
     );
   };
 
