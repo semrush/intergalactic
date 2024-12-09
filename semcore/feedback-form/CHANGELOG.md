@@ -7,7 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating.
-- `role="image"` and `aria-label="Your rating: {x} out of 5"` for SliderRating's readonly mode in FeedbackRating.
+- `role="image"` and `aria-label` for SliderRating's readonly mode.
 - `aria-labelledby=<Header>` to FeedbackRating modal.
 - autofocus to first checkbox. Moved from `textarea`.
 - added `aria-describedby`, that connects privacy-description text and related form control.
