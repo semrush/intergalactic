@@ -292,7 +292,7 @@ importers:
         specifier: 18.0.21
         version: 18.0.21
 
-  semcore/add-filter-pattern:
+  semcore/add-filter:
     dependencies:
       '@semcore/base-trigger':
         specifier: 4.48.2
@@ -318,9 +318,6 @@ importers:
       '@semcore/input':
         specifier: 4.39.2
         version: 4.39.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location':
-        specifier: 4.37.0
-        version: link:../neighbor-location
       '@semcore/select':
         specifier: 4.48.2
         version: 4.48.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
