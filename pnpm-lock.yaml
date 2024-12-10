@@ -321,9 +321,6 @@ importers:
       '@semcore/select':
         specifier: 4.48.2
         version: 4.48.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/tooltip':
-        specifier: 6.46.0
-        version: 6.46.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.43.0
         version: 4.43.0(react-dom@18.2.0)(react@18.2.0)
