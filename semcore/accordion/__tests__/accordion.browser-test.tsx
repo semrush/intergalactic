@@ -69,5 +69,4 @@ test.describe('Non compact', () => {
     await section1Header.click();
     await expect(page).toHaveScreenshot();
   });
-
 });
