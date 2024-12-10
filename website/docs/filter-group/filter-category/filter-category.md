@@ -19,8 +19,8 @@ For trigger use [Select](/components/select/select) with `min-width: 102px` and 
 
 It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or cannot understand what category is selected.
 
-| Input size | Inactive filter (Select)               | Active filter (FilterTrigger)              |
-| ---------- | -------------------------------------- | ------------------------------------------ |
+| Input size | Inactive filter (Select)               | Active filter (FilterTrigger)               |
+| ---------- | -------------------------------------- | ------------------------------------------- |
 | M          | ![inactive filter](static/default.png) | ![active filter](static/filter-trigger.png) |
 
 ## Filter by one category
@@ -37,10 +37,12 @@ For placeholder text use: "Category".
 
 ### Active trigger
 
-The list of categories is sorted:
+Table: Sorting variants for categories
 
-- alphabetically (if there are no counters in the list options);
-- by the number of domains (if there are domain counters in the list optons).
+| The list of categories is sorted:                                          | Appearance example                                       |
+| -------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Alphabetically (if there are no counters in the list options)              | ![dropdown without counters](static/without-counter.png) |
+| By the number of domains (if there are domain counters in the list optons) | ![dropdown with counters](static/counter.png)            |
 
 ::: tip
 Add search if there are more than 10 categories in the list.
@@ -48,11 +50,9 @@ Add search if there are more than 10 categories in the list.
 
 Collapse long categories according to the [rules for long URLs](/table-group/table-controls/table-controls#a5b913) and add a tooltip to them.
 
-The counters in the list are optional. If the table is heavy with data, it can be difficult to calculate values for counters right away. However, if possible, we recommend using counters.
+![long category](static/long-category.png)
 
-|                    | Alphabetically                                           | By the number of domains                      | Long category name                         |
-| ------------------ | -------------------------------------------------------- | --------------------------------------------- | ------------------------------------------ |
-| Appearance example | ![dropdown without counters](static/without-counter.png) | ![dropdown with counters](static/counter.png) | ![long category](static/long-category.png) |
+The counters in the list are optional. If the table is heavy with data, it can be difficult to calculate values for counters right away. However, if possible, we recommend using counters.
 
 ### Filled trigger
 
@@ -99,10 +99,12 @@ For placeholder text use: "Category".
 
 ### Active trigger
 
-The list of categories is sorted:
+Table: Sorting variants for categories
 
-- alphabetically (if there are no counters in the list options);
-- by the number of domains (if there are domain counters in the list optons).
+| The list of categories is sorted:                                          | Appearance example                                                   |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Alphabetically (if there are no counters in the list options)              | ![dropdown without counters](static/without-counter-multiselect.png) |  |
+| By the number of domains (if there are domain counters in the list optons) | ![dropdown with counters](static/counter-multiselect.png)            |
 
 ::: tip
 Add search if there are more than 10 categories in the list.
@@ -110,11 +112,9 @@ Add search if there are more than 10 categories in the list.
 
 Collapse long categories according to the [rules for long URLs](/table-group/table-controls/table-controls#a5b913) and add a tooltip to them.
 
-Select all / Deselect all functionality is optional.
+![long category](static/long-category-multiselect.png)
 
-|                    | Alphabetically                                                       | By the number of domains                                  | Long category name                                     |
-| ------------------ | -------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------ |
-| Appearance example | ![dropdown without counters](static/without-counter-multiselect.png) | ![dropdown with counters](static/counter-multiselect.png) | ![long category](static/long-category-multiselect.png) |
+Select all / Deselect all functionality is optional.
 
 ::: tip
 The counters in the list are optional, as if there are many filters nearby, it can be difficult to recount data on the fly. Also, if the table is heavy, it can also be difficult to calculate right away. However, if possible, we recommend using counters.

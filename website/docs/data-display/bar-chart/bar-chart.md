@@ -102,7 +102,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 - Bar charts categorize data qualitatively, showing how different categories compare.
 - Histograms organize data quantitatively, indicating how often values fall within certain ranges.
-:::
+  :::
 
 ### When to use
 
@@ -117,7 +117,7 @@ Consider using the [horizontal bar chart](/data-display/bar-horizontal/bar-horiz
 
 ## Appearance
 
-The upper part of the bar should have `border-radius: 2px`. 
+The upper part of the bar should have `border-radius: 2px`.
 
 ![](/data-display/bar-chart/static/bar-chart.png)
 
@@ -171,9 +171,9 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 Table: Bar chart interaction
 
-|                                   | Appearance example                        |
-| --------------------------------- | ----------------------------------------- |
-| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)                  |
+| Categories count                  | Appearance example                                        |
+| --------------------------------- | --------------------------------------------------------- |
+| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)   |
 | Chart with two or more categories | ![](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
 ::: tip

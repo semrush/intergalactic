@@ -115,10 +115,9 @@ Avoid sizes outside the minimum limits, because For too small venn chart, the in
 
 Add a legend with values for clarity.
 
-
 Table: Venn chart legend placement
 
-|                                      | Appearance example         |
+| Widget size                          | Appearance example         |
 | ------------------------------------ | -------------------------- |
 | Chart inside small widgets (< 400px) | ![](static/venn-small.png) |
 | Chart inside large widgets (> 400px) | ![](static/venn-big.png)   |
@@ -150,9 +149,9 @@ Wrap long labels onto the next line.
 
 Table: Venn chart interaction
 
-| State   | Appearance example                         | Styles                        |
-| ------- | ------------------------------------------ | ----------------------------- |
-| Default | ![](static/venn-big.png) | 50% fill transparency and 2px stroke size.      |
+| State   | Appearance example         | Styles                                        |
+| ------- | -------------------------- | --------------------------------------------- |
+| Default | ![](static/venn-big.png)   | 50% fill transparency and 2px stroke size.    |
 | Hover   | ![](static/venn-hover.png) | Hovered sector fill increases to 70% opacity. |
 
 ## Tooltip
@@ -161,10 +160,10 @@ Show data set names and values, including intersection details and percentages.
 
 Table: Venn chart tooltip
 
-|                                           | Appearance example                          | Tooltip content                                                                                                                                        |
-| ----------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Hover over a sector                    | ![](static/venn-hover.png)  | Show name of the data set and its value.    |
-| Hover over an intersection area | ![](static/venn-hover2.png) | Display the intersection percentage and its value. List the names and values of intersecting sectors below.|
+| Case                            | Appearance example          | Tooltip content                                                                                             |
+| ------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Hover over a sector             | ![](static/venn-hover.png)  | Show name of the data set and its value.                                                                    |
+| Hover over an intersection area | ![](static/venn-hover2.png) | Display the intersection percentage and its value. List the names and values of intersecting sectors below. |
 
 ## Edge cases
 

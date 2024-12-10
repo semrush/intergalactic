@@ -92,7 +92,7 @@ We have a compact version of the horizontal bar chart — **[Compact horizontal 
 
 - Bar charts categorize data qualitatively, showing how different categories compare.
 - Histograms organize data quantitatively, indicating how often values fall within certain ranges.
-:::
+  :::
 
 ## Appearance
 
@@ -113,8 +113,8 @@ Table: Margins for Horizontal bar chart
 | Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `margin: 8px 0px`                                                                                          | ![bar-chart margins](static/margins-1.png) |
-| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png) |
-| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png) |
+| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png)                  |
+| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png)                  |
 
 ## Grid and axes
 
@@ -157,7 +157,7 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 Table: Horizontal bar chart interaction
 
-|                                   | Appearance example      |
+| Categories count                  | Appearance example      |
 | --------------------------------- | ----------------------- |
 | Chart with one category           | ![](static/hover-1.png) |
 | Chart with two or more categories | ![](static/hover-2.png) |

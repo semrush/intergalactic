@@ -17,7 +17,7 @@ Axes help users understand data relationships and navigate through data. A plot 
 
 Table: Grid and axes
 
-|                                    | Appearance example              | When to use                                    |
+| Grid lines                         | Appearance example              | When to use                                    |
 | ---------------------------------- | ------------------------------- | ---------------------------------------------- |
 | Horizontal lines                   | ![](static/axes-horizontal.png) | Use with charts showing data trends over time. |
 | Both horizontal and vertical lines | ![](static/axes-all.png)        | Use with scatter plots and bubble charts.      |

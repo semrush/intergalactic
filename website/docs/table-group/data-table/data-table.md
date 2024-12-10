@@ -39,7 +39,7 @@ To display additional information about a column, use tooltip. It will appear by
 
 Table: Conditions for the tooltip appearance
 
-|                                                       | Appearance example        |
+| Case                                                  | Appearance example        |
 | ----------------------------------------------------- | ------------------------- |
 | If text is too long and collapsed into an `ellipsis`. | ![](static/tooltip-1.png) |
 | If the column has additional explanatory information. | ![](static/tooltip-2.png) |

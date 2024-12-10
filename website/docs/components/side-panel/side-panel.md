@@ -51,10 +51,10 @@ The trigger for opening the SidePanel can be the following:
 
 Table: SidePanel with and without overlay
 
-|                 | Appearance example                     | Styles                                                                                                           | When to use                                                                             |
-| --------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Without overlay | ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
-| With overlay    | ![](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
+| Appearance example                          | Styles                                                                                                                | When to use                                                                             |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Without overlay ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
+| With overlay ![](static/dark-theme.png)     | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.                            | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
 ## Appearance
 
@@ -109,7 +109,7 @@ align-items: center;
 ### Placement in the interface
 
 - You can customize whether the panel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
-- The focus remains inside the panel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using  `Tab`.
+- The focus remains inside the panel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using `Tab`.
 
 ### Page scroll
 
@@ -162,4 +162,3 @@ While loading or reloading content, show a [SpinContainer](/components/spin-cont
 If an error occurs during data loading, show a suitable message and a button to reload the content. Refer to [WidgetEmpty](../widget-empty/widget-empty#something-went-wrong) for more details.
 
 ![](static/error.png)
-
