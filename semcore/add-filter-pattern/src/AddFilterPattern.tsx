@@ -36,6 +36,7 @@ type AddFilterPatternState = {
 };
 
 const componentsNames = [
+  'AddFilterPattern.Item',
   'AddFilterPattern.Input',
   'AddFilterPattern.Select',
   'AddFilterPattern.Dropdown',
@@ -66,8 +67,13 @@ class RootAddFilterPattern extends Component<
     filterChildren: React.ReactElement<AddFilterPatternItemProps>[],
     alwaysVisible: boolean,
   ) => {
-    return filterChildren.filter(({ props }: { props: AddFilterPatternItemProps }) => {
-      return Boolean(props.alwaysVisible) === alwaysVisible;
+    return filterChildren.filter(({ props, type }) => {
+      return (
+        Boolean(props.alwaysVisible) === alwaysVisible ||
+        (typeof type !== 'string' &&
+          'displayName' in type &&
+          type.displayName === 'AddFilterPattern.Item')
+      );
     });
   };
 
@@ -247,7 +253,12 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
   );
 }
 
+function AddFilterPatternItem() {
+  return <Root render={Flex} />;
+}
+
 const AddFilterPattern: typeof FilterPatternType = createComponent(RootAddFilterPattern, {
+  Item: AddFilterPatternItem,
   Select: AddFilterPatternSelect,
   Input: AddFilterPatternInput,
   Dropdown: AddFilterPatternDropdown,

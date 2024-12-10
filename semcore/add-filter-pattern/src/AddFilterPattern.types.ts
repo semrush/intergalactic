@@ -1,5 +1,5 @@
 import { Intergalactic } from '@semcore/core';
-import { FlexProps, Box } from '@semcore/flex-box';
+import { FlexProps, Flex } from '@semcore/flex-box';
 import Select, { SelectProps } from '@semcore/select';
 import Input from '@semcore/input';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -14,6 +14,11 @@ export type AddFilterPatternItemProps = {
 
 export type AddFilterPatternSelectProps = AddFilterPatternItemProps & SelectProps;
 
+declare const AddFilterPatternItemType: Intergalactic.Component<
+  typeof Flex,
+  AddFilterPatternItemProps
+>;
+
 declare const AddFilterPatternSelectType: Intergalactic.Component<
   typeof Select,
   AddFilterPatternSelectProps
@@ -25,13 +30,9 @@ declare const AddFilterPatternSelectType: Intergalactic.Component<
   List: typeof Select.List;
 };
 
-export type AddFilterPatternInputProps = AddFilterPatternItemProps & {
-  addonLeft?: React.ReactNode;
-  addonRight?: React.ReactNode;
-};
 declare const AddFilterPatternInputType: Intergalactic.Component<
   typeof Input,
-  AddFilterPatternInputProps,
+  AddFilterPatternItemProps,
   {
     value: string;
     onClear: () => void;
@@ -57,6 +58,7 @@ export type AddFilterPatternProps = FlexProps & {
 };
 
 declare const AddFilterPatternType: Intergalactic.Component<'div', AddFilterPatternProps> & {
+  Item: typeof AddFilterPatternItemType;
   Dropdown: typeof AddFilterPatternDropdownType;
   Input: typeof AddFilterPatternInputType;
   Select: typeof AddFilterPatternSelectType;
@@ -64,5 +66,4 @@ declare const AddFilterPatternType: Intergalactic.Component<'div', AddFilterPatt
   ClearAllFilters: Intergalactic.Component<'button'>;
 };
 
-export { AddFilterPatternInputType, AddFilterPatternSelectType, AddFilterPatternDropdownType };
 export default AddFilterPatternType;
