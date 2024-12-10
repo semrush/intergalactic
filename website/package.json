@@ -35,7 +35,7 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-table-captions": "^1.0.4",
     "medium-zoom": "^1.1.0",
-    "nanoid": "3.3.4",
+    "nanoid": "3.3.8",
     "node-fetch": "^3.3.1",
     "normalize.css": "8.0.1",
     "p-limit": "4.0.0",
