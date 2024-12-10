@@ -1,32 +1,23 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Select from '@semcore/select';
-import { AddFilterPatternSelectProps } from '../AddFilterPattern.types';
+import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
+import { SelectProps } from '@semcore/select';
 import { FilterTrigger } from '@semcore/base-trigger';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
-class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> {
+class AddFilterPatternSelectRoot extends Component<AddFilterPatternItemProps> {
   static displayName = 'AddFilterPatternSelect';
   menuRef = React.createRef<HTMLDivElement>();
 
-  static defaultProps = (props: AddFilterPatternSelectProps) => {
+  static defaultProps = () => {
     return {
-      defaultVisible: !props.alwaysVisible,
+      defaultVisible: true,
     };
   };
 
-  getSelectProps(props: AddFilterPatternSelectProps): AddFilterPatternSelectProps {
-    const { onChange } = this.asProps;
-    return {
-      ...props,
-      onChange,
-    };
-  }
-
   getTriggerProps(props: { onClear: () => void }) {
-    const { value, onClear, alwaysVisible } = this.asProps as AsPropsWithOnClear<
-      typeof this.asProps
-    >;
+    const { value, onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
       ...props,
@@ -51,7 +42,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternSelectProps> 
         props.onClear?.();
         onClear();
       },
-      autoFocus: !alwaysVisible,
+      autoFocus: true,
     };
   }
 

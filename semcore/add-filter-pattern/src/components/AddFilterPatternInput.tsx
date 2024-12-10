@@ -1,19 +1,16 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import { AddFilterPatternInputProps } from '../AddFilterPattern.types';
+import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
 import { InputValueProps } from '@semcore/input';
-import { Flex } from '@semcore/flex-box';
-import NeighborLocation from '@semcore/neighbor-location';
+import { ButtonLink } from '@semcore/ui/button';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
-class AddFilterPatternInputRoot extends Component<AddFilterPatternInputProps> {
+class AddFilterPatternInputRoot extends Component<AddFilterPatternItemProps> {
   static displayName = 'AddFilterPatternInput';
 
   getValueProps(props: InputValueProps) {
-    const { value, onClear, alwaysVisible } = this.asProps as AsPropsWithOnClear<
-      typeof this.asProps
-    >;
+    const { value, onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
       ...props,
@@ -27,28 +24,31 @@ class AddFilterPatternInputRoot extends Component<AddFilterPatternInputProps> {
           onClear();
         }
       },
-      autoFocus: !alwaysVisible,
+      autoFocus: true,
+    };
+  }
+
+  getClearProps() {
+    const { onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+
+    return {
+      onClick: onClear,
     };
   }
 
   render() {
-    const { addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
-
-    return (
-      <Flex>
-        <NeighborLocation>
-          {AddonLeft ? AddonLeft : null}
-          <Root render={Input} w={'auto'} inline={false} />
-          {AddonRight ? AddonRight : null}
-        </NeighborLocation>
-      </Flex>
-    );
+    return <Root render={Input} w={'auto'} inline={false} />;
   }
 }
+
+const Clear = () => {
+  return <Root render={ButtonLink} />;
+};
 
 const AddFilterPatternInput = createComponent(AddFilterPatternInputRoot, {
   Value: Input.Value,
   Addon: Input.Addon,
+  Clear: Clear,
 });
 
 export default AddFilterPatternInput;
