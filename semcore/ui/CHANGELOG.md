@@ -1,12 +1,28 @@
 ## [15.119.0] - 2024-11-29
 
+### @semcore/accordion
+
+- **Removed** Unnecessary `aria-disabled` on disabled `Toggle` component.
+- **Changed** Set `aria-controls` to expanded `Toggle` only.
+
 ### @semcore/base-trigger
 
+- **Removed** Default tag `button` from FilterTrigger and ButtonTrigger to reduce code duplication.
+- **Changed** Default tag for BaseTrigger to `button` as part of a11y improvement.
 - **Fixed** Added `Hint` to the `FilterTrigger.ClearButton`.
 - **Fixed** Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
 - **Fixed** Added `role` combobox to the `FilterTrigger.TriggerButton`.
 - **Fixed** Added `count` prop to `FilterTrigger.Counter`, along with screenreader only `selected` text.
 - **Fixed** `placeholder` text is now `aria-hidden` for triggers because of `aria-label` and double pronouncing.
+
+### @semcore/button
+
+- **Removed** Unnecessary `aria-disabled` on disabled button.
+
+### @semcore/d3-chart
+
+- **Added** `aria-labelledby` for `LegendItem` checkbox.
+- **Added** New type of charts - `StackGroupBar`.
 
 ### @semcore/data-table
 
@@ -18,6 +34,8 @@
 
 ### @semcore/dropdown
 
+- **Fixed** Click handler was called for disabled Item.
+- **Fixed** Dropdown didn't close when the trigger was clicked for the second time.
 - **Fixed** Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
 - **Fixed** Double call of `onVisibleChange` handler.
 
@@ -25,20 +43,44 @@
 
 - **Fixed** Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
 
+### @semcore/feedback-form
+
+- **Fixed** There was always `aria-errormessage` in FeedbackItem, even if there was no message popup.
+
 ### @semcore/flex-box
 
 - **Added** `ScreenReaderOnly` component from `Root` component from `core` package.
 
+### @semcore/inline-edit
+
+- **Fixed** Focus didn't return to the View element after edit.
+
+### @semcore/input-number
+
+- **Removed** Unnecessary role changes on keypress.
+
 ### @semcore/input-tags
 
+- **Fixed** Difference in text size in tags with and without Addons.
 - **Fixed** Advanced rendering of child elements doesn't display tags at all.
 - **Fixed** Unnecessary `clickable` announcement by VO on not editable tags.
+
+### @semcore/mini-chart
+
+- **Added** `role=img` to all svg charts.
 
 ### @semcore/notice-bubble
 
 - **Added** `replaceLast` method to the Manager to display the next bubble on over the last one.
 - **Fixed** Warning about `Hint` title about `title` and `Hint.Popper` at the same time.
 - **Fixed** Unnecessary counter resetting with each mount of `NoticeBubble` component.
+
+### @semcore/select
+
+- **Added** Logic for showing/hiding highlight for an option depending on whether the Trigger is in focus or not.
+- **Fixed** set `aria-activedescendant` for Trigger only if there is available option with current highlightedIndex.
+- **Fixed** The first option is highlighted, event if it is disabled.
+- **Added** `placeholder` and `aria-label` for input in `InputSearch` component.
 
 ### @semcore/utils
 

@@ -40,6 +40,14 @@ class DropdownMenuRoot extends AbstractDropdown {
     timeout: 0,
   };
 
+  static nestedMenuInteraction = {
+    trigger: [
+      ['onClick', 'onMouseEnter'],
+      ['onClick', 'onMouseLeave'],
+    ],
+    popper: [['onMouseEnter'], ['onMouseLeave']],
+  };
+
   actionsRef = React.createRef();
   role = 'menu';
 
@@ -124,6 +132,12 @@ class DropdownMenuRoot extends AbstractDropdown {
   handleKeyDownForMenu(place) {
     return (e) => {
       const { visible, placement, inlineActions } = this.asProps;
+
+      // stop propagation keyboard events if it calls not on DropdownMenu.Items
+      if (place === 'list' && !this.menuRef.current?.contains(e.target) && !inlineActions) {
+        e.stopPropagation();
+        return false;
+      }
 
       const show =
         (e.key === 'ArrowRight' && placement?.startsWith('right')) ||

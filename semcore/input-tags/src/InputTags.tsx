@@ -10,7 +10,7 @@ import createComponent, {
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps, TagContainer } from '@semcore/tag';
+import Tag, { TagProps, TagContainer, TagTextProps, TagContext } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -199,6 +199,11 @@ class InputTags extends Component<IInputTagsProps> {
       tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
     };
   }
+  getTagContainerTextContentProps() {
+    return {
+      tabIndex: null,
+    };
+  }
 
   render() {
     const SInputTags = Root;
@@ -356,13 +361,17 @@ function InputTagContainerTag(props: any) {
   );
 }
 
+function TagContainerTextContent(props: IRootComponentProps) {
+  return sstyled(props.styles)(<Root render={Tag.Text} />);
+}
+
 export default createComponent(InputTags, {
   Value,
   TagsContainer: InputTagsContainer,
   Tag: [
     InputTagContainer,
     {
-      Text: InputTagContainerTag,
+      Text: [InputTagContainerTag, { Content: TagContainerTextContent }],
       Close: TagContainer.Close,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
@@ -372,7 +381,9 @@ export default createComponent(InputTags, {
   Value: typeof Input.Value;
   TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: typeof Tag.Text;
+    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
+      Content: Intergalactic.Component<'div', TagTextProps>;
+    };
     Close: typeof Tag.Close;
     Addon: typeof Tag.Addon;
     Circle: typeof Tag.Circle;

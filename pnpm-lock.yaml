@@ -113,6 +113,9 @@ importers:
       '@storybook/blocks':
         specifier: 8.3.5
         version: 8.3.5(react-dom@18.2.0)(react@18.2.0)(storybook@8.3.5)
+      '@storybook/manager-api':
+        specifier: 8.4.6
+        version: 8.4.6(storybook@8.3.5)
       '@storybook/react':
         specifier: 8.3.5
         version: 8.3.5(@storybook/test@8.3.5)(react-dom@18.2.0)(react@18.2.0)(storybook@8.3.5)(typescript@5.1.6)
@@ -258,7 +261,7 @@ importers:
         specifier: 2.39.0
         version: link:../animation
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -515,7 +518,7 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -555,7 +558,7 @@ importers:
         specifier: 1.39.0
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -617,7 +620,7 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -626,7 +629,7 @@ importers:
         specifier: 4.38.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -874,10 +877,10 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.49.0
+        specifier: 4.49.2
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.42.0
@@ -889,7 +892,7 @@ importers:
         specifier: 4.38.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -994,7 +997,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.44.0
+        specifier: 5.44.1
         version: link:../card
       '@semcore/core':
         specifier: ^2.17.5
@@ -1065,7 +1068,7 @@ importers:
         specifier: ^2.17.5
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -1193,7 +1196,7 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1273,7 +1276,7 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.42.0
@@ -1300,7 +1303,7 @@ importers:
         specifier: 4.50.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.43.0
+        specifier: 5.43.1
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: 5.48.0
@@ -1445,7 +1448,7 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1637,7 +1640,7 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: 2.37.0
@@ -1652,7 +1655,7 @@ importers:
         specifier: 4.40.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../input-number
       '@semcore/spin':
         specifier: 5.39.0
@@ -1949,7 +1952,7 @@ importers:
         specifier: 2.39.0
         version: link:../animation
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2070,7 +2073,7 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2082,7 +2085,7 @@ importers:
         specifier: 4.53.0
         version: link:../icon
       '@semcore/input-number':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../input-number
       '@semcore/link':
         specifier: 5.42.0
@@ -2315,10 +2318,10 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.49.0
+        specifier: 4.49.2
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.42.0
@@ -2330,10 +2333,10 @@ importers:
         specifier: 4.38.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.43.4
+        specifier: 4.43.5
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -2749,7 +2752,7 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2761,7 +2764,7 @@ importers:
         specifier: 4.40.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.48.6
+        specifier: 4.49.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.44.0
@@ -3226,6 +3229,12 @@ importers:
 
   stories:
     dependencies:
+      '@storybook/components':
+        specifier: 8.4.6
+        version: 8.4.6(storybook@8.3.5)
+      '@storybook/icons':
+        specifier: 1.2.12
+        version: 1.2.12(react-dom@16.14.0)(react@16.14.0)
       d3-scale:
         specifier: 3.3.0
         version: 3.3.0
@@ -10880,6 +10889,14 @@ packages:
       storybook: 8.3.5
     dev: true
 
+  /@storybook/components@8.4.6(storybook@8.3.5):
+    resolution: {integrity: sha512-9tKSJJCyFT5RZMRGyozTBJkr9C9Yfk1nuOE9XbDEE1Z+3/IypKR9+iwc5mfNBStDNY+rxtYWNLKBb5GPR2yhzA==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.3.5
+    dev: false
+
   /@storybook/core@8.3.5:
     resolution: {integrity: sha512-GOGfTvdioNa/n+Huwg4u/dsyYyBcM+gEcdxi3B7i5x4yJ3I912KoVshumQAOF2myKSRdI8h8aGWdx7nnjd0+5Q==}
     dependencies:
@@ -10900,7 +10917,6 @@ packages:
       - bufferutil
       - supports-color
       - utf-8-validate
-    dev: true
 
   /@storybook/csf-plugin@8.3.5(storybook@8.3.5):
     resolution: {integrity: sha512-ODVqNXwJt90hG7QW8I9w/XUyOGlr0l7XltmIJgXwB/2cYDvaGu3JV5Ybg7O0fxPV8uXk7JlRuUD8ZYv5Low6pA==}
@@ -10917,11 +10933,21 @@ packages:
     resolution: {integrity: sha512-dHYFQH3mA+EtnCkHXzicbLgsvzYjcDJ1JWsogbItZogkPHgSJM/Wr71uMkcvw8v9mmCyP4NpXJuu6bPoVsOnzg==}
     dependencies:
       type-fest: 2.19.0
-    dev: true
 
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
     dev: true
+
+  /@storybook/icons@1.2.12(react-dom@16.14.0)(react@16.14.0):
+    resolution: {integrity: sha512-UxgyK5W3/UV4VrI3dl6ajGfHM4aOqMAkFLWe2KibeQudLf6NJpDrDMSHwZj+3iKC4jFU7dkKbbtH2h/al4sW3Q==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+    dev: false
 
   /@storybook/icons@1.2.12(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UxgyK5W3/UV4VrI3dl6ajGfHM4aOqMAkFLWe2KibeQudLf6NJpDrDMSHwZj+3iKC4jFU7dkKbbtH2h/al4sW3Q==}
@@ -10945,10 +10971,10 @@ packages:
       util: 0.12.5
     dev: true
 
-  /@storybook/manager-api@8.3.5(storybook@8.3.5):
-    resolution: {integrity: sha512-fEQoKKi7h7pzh2z9RfuzatJxubrsfL/CB99fNXQ0wshMSY/7O4ckd18pK4fzG9ErnCtLAO9qsim4N/4eQC+/8Q==}
+  /@storybook/manager-api@8.4.6(storybook@8.3.5):
+    resolution: {integrity: sha512-TsXlQ5m5rTl2KNT9icPFyy822AqXrx1QplZBt/L7cFn7SpqQKDeSta21FH7MG0piAvzOweXebVSqKngJ6cCWWQ==}
     peerDependencies:
-      storybook: ^8.3.5
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
       storybook: 8.3.5
     dev: true
@@ -11022,7 +11048,7 @@ packages:
     dependencies:
       '@storybook/components': 8.3.5(storybook@8.3.5)
       '@storybook/global': 5.0.0
-      '@storybook/manager-api': 8.3.5(storybook@8.3.5)
+      '@storybook/manager-api': 8.4.6(storybook@8.3.5)
       '@storybook/preview-api': 8.3.5(storybook@8.3.5)
       '@storybook/react-dom-shim': 8.3.5(react-dom@18.2.0)(react@18.2.0)(storybook@8.3.5)
       '@storybook/test': 8.3.5(storybook@8.3.5)
@@ -11256,7 +11282,6 @@ packages:
     dependencies:
       '@types/connect': 3.4.35
       '@types/node': 18.16.15
-    dev: true
 
   /@types/caseless@0.12.2:
     resolution: {integrity: sha512-6ckxMjBBD8URvjB6J3NcnuAn5Pkl7t3TizAg+xdlzzQGSPSmBcXf8KoIH0ua/i+tio+ZRUHEXp0HEmvaR4kt0w==}
@@ -11278,7 +11303,6 @@ packages:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
       '@types/node': 18.16.15
-    dev: true
 
   /@types/d3-array@3.0.4:
     resolution: {integrity: sha512-nwvEkG9vYOc0Ic7G7kwgviY4AQlTfYGIZ0fqB7CQHXGyYM6nO7kJh5EguSNA3jfh4rq7Sb7eMVq8isuvg2/miQ==}
@@ -11368,7 +11392,6 @@ packages:
       '@types/node': 18.16.15
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
-    dev: true
 
   /@types/express@4.17.1:
     resolution: {integrity: sha512-VfH/XCP0QbQk5B5puLqTLEeFgR8lfCJHZJKkInZ9mkYd+u8byX0kztXEQxEk4wZXJs8HI+7km2ALXjn4YKcX9w==}
@@ -11385,7 +11408,6 @@ packages:
       '@types/express-serve-static-core': 4.17.33
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.1
-    dev: true
 
   /@types/final-form-focus@1.1.7:
     resolution: {integrity: sha512-vC0lKyLSVxKOuBfOjtYPBuEGyKBh6PK9RadmSBHNr3d5Lm4ZJMGt4O53QS/4oREATmPq4qmwcjOiuCeeaFkf0w==}
@@ -11521,7 +11543,6 @@ packages:
 
   /@types/mime@3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
-    dev: true
 
   /@types/minimatch@5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
@@ -11588,11 +11609,9 @@ packages:
 
   /@types/qs@6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
-    dev: true
 
   /@types/range-parser@1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
-    dev: true
 
   /@types/react-dom@18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
@@ -11661,7 +11680,6 @@ packages:
     dependencies:
       '@types/mime': 3.0.1
       '@types/node': 18.16.15
-    dev: true
 
   /@types/source-list-map@0.1.2:
     resolution: {integrity: sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==}
@@ -13084,7 +13102,6 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       tslib: 2.5.0
-    dev: true
 
   /astral-regex@1.0.0:
     resolution: {integrity: sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==}
@@ -13534,7 +13551,6 @@ packages:
     engines: {node: '>=12.0.0'}
     dependencies:
       open: 8.4.2
-    dev: true
 
   /big-integer@1.6.52:
     resolution: {integrity: sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg==}
@@ -13700,7 +13716,6 @@ packages:
       unpipe: 1.0.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /bonjour@3.5.0:
     resolution: {integrity: sha512-RaVTblr+OnEli0r/ud8InrU7D+G0y6aJhlxaLa6Pwty4+xoxboF1BsUI45tujvRpbj9dQVoglChqonGAsjEBYg==}
@@ -13771,7 +13786,6 @@ packages:
 
   /browser-assert@1.2.1:
     resolution: {integrity: sha512-nfulgvOR6S4gt9UKCeGJOuSGBPGiFT6oQ/2UBnvTY/5aQ1PnksW72fhZkM30DzoRRv2WpwZf1vHHEr3mtuXIWQ==}
-    dev: true
 
   /browserslist@4.21.5:
     resolution: {integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==}
@@ -14667,7 +14681,6 @@ packages:
   /cookie@0.7.1:
     resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
     engines: {node: '>= 0.6'}
-    dev: true
 
   /copy-anything@2.0.6:
     resolution: {integrity: sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw==}
@@ -15546,7 +15559,6 @@ packages:
   /define-lazy-prop@2.0.0:
     resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
     engines: {node: '>=8'}
-    dev: true
 
   /define-properties@1.2.0:
     resolution: {integrity: sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==}
@@ -16319,7 +16331,6 @@ packages:
       esbuild: 0.21.5
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /esbuild-sunos-64@0.14.29:
     resolution: {integrity: sha512-EfhQN/XO+TBHTbkxwsxwA7EfiTHFe+MNDfxcf0nj97moCppD9JHPq48MLtOaDcuvrTYOcrMdJVeqmmeQ7doTcg==}
@@ -16799,7 +16810,6 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /ext-list@2.2.2:
     resolution: {integrity: sha512-u+SQgsubraE6zItfVA0tBuCBhfU9ogSRnsvygI7wht9TS510oLkBRXBsqopeUG/GBOIQyKZO9wjTqIu/sf5zFA==}
@@ -17186,7 +17196,6 @@ packages:
       unpipe: 1.0.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /find-cache-dir@2.1.0:
     resolution: {integrity: sha512-Tq6PixE0w/VMFfCgbONnkiQIVol/JJL7nRMi20fqzA4NRs9AfeqMGeRdPi3wIhYkxjeBaWh2rxwapn5Tu3IqOQ==}
@@ -19100,7 +19109,6 @@ packages:
     resolution: {integrity: sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==}
     engines: {node: '>=8'}
     hasBin: true
-    dev: true
 
   /is-dotfile@1.0.3:
     resolution: {integrity: sha512-9YclgOGtN/f8zx0Pr4FQYMdibBiTaH3sn52vjYip4ZSf6C4/6RfTEZ+MR4GvKhCxdPh21Bg42/WL55f6KSnKpg==}
@@ -19164,7 +19172,6 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       has-tostringtag: 1.0.0
-    dev: true
 
   /is-glob@2.0.1:
     resolution: {integrity: sha512-a1dBeB19NXsf/E0+FHqkagizel/LQw2DjSQpvQrj3zT+jYPpaUCryPnrQajXKFLCMuf4I6FhRpaGtw4lPrG6Eg==}
@@ -19458,7 +19465,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       is-docker: 2.2.1
-    dev: true
 
   /is-yarn-global@0.3.0:
     resolution: {integrity: sha512-VjSeb/lHmkoyd8ryPVIKvOCn4D1koMqY+vqyjjUfc3xyKtP4dYOxM44sZrnqQSzSds3xyOrUTLTC9LVCVgLngw==}
@@ -20089,7 +20095,6 @@ packages:
   /jsdoc-type-pratt-parser@4.1.0:
     resolution: {integrity: sha512-Hicd6JK5Njt2QB6XYFS7ok9e37O8AYk3jTcppG4YVQnYjOemymvTcmc7OWsmq/Qqj5TdRFO5/x/tIPmBeRtGHg==}
     engines: {node: '>=12.0.0'}
-    dev: true
 
   /jsdom@22.1.0:
     resolution: {integrity: sha512-/9AVW7xNbsBv6GfWho4TTNjEo9fe6Zhf9O7s0Fhhr3u+awPwAJMKwAMXnkk5vBxflqLW9hTHX/0cs+P3gW+cQw==}
@@ -21062,7 +21067,6 @@ packages:
 
   /merge-descriptors@1.0.3:
     resolution: {integrity: sha512-gaNvAS7TZ897/rVaZ0nMtAyxNyi/pdbjbAwUpFQpN70GqnVfOiXpeUUMKRBmzXaSQ8DdTX4/0ms62r2K+hE6mQ==}
-    dev: true
 
   /merge-options@3.0.4:
     resolution: {integrity: sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==}
@@ -22388,7 +22392,6 @@ packages:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
-    dev: true
 
   /opener@1.5.2:
     resolution: {integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==}
@@ -22772,7 +22775,6 @@ packages:
 
   /path-to-regexp@0.1.10:
     resolution: {integrity: sha512-7lf7qcQidTku0Gu3YDPc8DJ1q7OOucfa/BSsIwjuh56VU7katFvuM8hULfkwB3Fns/rsVF7PwPKVw1sl5KQS9w==}
-    dev: true
 
   /path-to-regexp@0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
@@ -24657,7 +24659,6 @@ packages:
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.6
-    dev: true
 
   /qs@6.5.3:
     resolution: {integrity: sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==}
@@ -24736,7 +24737,6 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
-    dev: true
 
   /rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
@@ -25301,7 +25301,6 @@ packages:
       source-map: 0.6.1
       tiny-invariant: 1.3.3
       tslib: 2.5.0
-    dev: true
 
   /rechoir@0.6.2:
     resolution: {integrity: sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==}
@@ -26596,7 +26595,6 @@ packages:
       - bufferutil
       - supports-color
       - utf-8-validate
-    dev: true
 
   /stream-events@1.0.5:
     resolution: {integrity: sha512-E1GUzBSgvct8Jsb3v2X15pjzN1tYebtbLaMg+eBOUOAxgbLoSbT2NS91ckc5lJD1KfLjId+jXJRgo0qnV5Nerg==}
@@ -28178,7 +28176,6 @@ packages:
       is-generator-function: 1.0.10
       is-typed-array: 1.1.10
       which-typed-array: 1.1.9
-    dev: true
 
   /utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.7] - 2024-12-05
+
+### Fixed
+
+- Click handler was called for disabled Item.
+
+## [4.41.6] - 2024-12-02
+
+### Fixed
+
+- Dropdown didn't close when the trigger was clicked for the second time.
+
 ## [4.41.5] - 2024-11-27
 
 ### Fixed

@@ -195,13 +195,13 @@ Use the curly style, just like for the quotation ‘a‘ ’marks
 
 <DosDonts>
     <template #dont>
-        <img src="./static/period-dont.png" style="margin: auto" />
-        <p><input type="checkbox"> Remind later.</p>
+        <img src="./static/period-dont.png" style="margin: auto" alt="A hovered button with tooltip saying 'Share report' with period in the end" />
+        <p><input type="checkbox" role="img" aria-label="checkbox"> Remind later.</p>
         <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span>.</p>
     </template>
     <template #do>
-        <img src="./static/period-do.png" style="margin: auto" />
-        <p><input type="checkbox"> Remind later</p>
+        <img src="./static/period-do.png" style="margin: auto" alt="A hovered button with tooltip saying 'Share report' without period in the end" />
+        <p><input type="checkbox" role="img" aria-label="checkbox"> Remind later</p>
         <p>Your competitor <span style="color: var(--intergalactic-text-link)">https://rival.com</span></p>
     </template>
 </DosDonts>

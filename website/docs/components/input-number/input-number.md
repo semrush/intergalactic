@@ -172,7 +172,7 @@ Table: InputRange states
 
 ### Validation for a range of numbers
 
-If the user enters a value in the right input that is less than the value in the left input, the values will switch when the focus is lost (`onBlur`).
+If the value in the right input is less than the value in the left input, the values will switch when **both** inputs lose focus (`onBlur`).
 
 Table: Validation case for InputRange
 
