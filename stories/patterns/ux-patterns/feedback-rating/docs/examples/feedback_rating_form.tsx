@@ -1,7 +1,6 @@
 import React from 'react';
 import { FeedbackRating } from '@semcore/feedback-form';
 import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
 
 const initValue = {
   rating: 0,
@@ -48,8 +47,8 @@ const Demo = () => {
     <FeedbackRating
       notificationVisible={notificationVisible}
       notificationText={'Is it working well for you?'}
-      learnMoreLink={'http://google.com'}
-      header={<FeedbackRating.Header>Feedback form title</FeedbackRating.Header>}
+      learnMoreLink={'https://developer.semrush.com/intergalactic/patterns/feedback-rating/feedback-rating-a11y'}
+      header={'Great! What do you like the most?'}
       submitText={'Send feedback'}
       initialValues={initValue}
       rating={rating}
@@ -62,17 +61,17 @@ const Demo = () => {
       formConfig={[
         {
           key: 'option1',
-          label: 'Label 1',
+          label: 'Score is more accurate',
           type: 'checkbox',
         },
         {
           key: 'option2',
-          label: 'Label 2',
+          label: 'Formula is more transparent',
           type: 'checkbox',
         },
         {
           key: 'option3',
-          label: 'Label 3',
+          label: 'It\'s easier to use for evaluation',
           type: 'checkbox',
         },
         {
@@ -87,12 +86,12 @@ const Demo = () => {
           type: 'input',
           validate: FeedbackRating.validate.email('Set correct email'),
           description: (
-            <Text size={200} color='text-secondary'>
+            <>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
               </Link>
-            </Text>
+            </>
           ),
         },
       ]}
