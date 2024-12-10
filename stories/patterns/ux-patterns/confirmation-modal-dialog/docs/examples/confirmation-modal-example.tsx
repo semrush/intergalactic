@@ -116,7 +116,12 @@ const Demo = () => {
             </Text>
 
             <Tooltip placement='right' interaction={'none'} animationsDisabled={true}>
-              <Tooltip.Popper visible={showErrorTooltip()} theme='warning' id='form-project-error'>
+              <Tooltip.Popper
+                visible={showErrorTooltip()}
+                theme='warning'
+                id='form-project-error'
+                aria-live={'off'}
+              >
                 {errors[fieldName]?.message}
               </Tooltip.Popper>
 
@@ -129,6 +134,7 @@ const Demo = () => {
                   w={'100%'}
                   onFocus={() => setFocusedFieldName(fieldName)}
                   aria-invalid={invalid()}
+                  aria-describedby={invalid() ? 'form-project-error' : undefined}
                   aria-errormessage={invalid() ? 'form-project-error' : undefined}
                 />
               </Input>
