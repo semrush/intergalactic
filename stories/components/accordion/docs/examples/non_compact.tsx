@@ -1,12 +1,10 @@
 import React from 'react';
-import Accordion from 'intergalactic/accordion';
-import { Box } from 'intergalactic/flex-box';
+import Accordion from '@semcore/accordion';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
-  const [value, onChange] = React.useState([0]);
-
   return (
-    <Accordion value={value} onChange={(value) => onChange(value)}>
+    <Accordion use='primary'>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.Toggle pb={2}>
