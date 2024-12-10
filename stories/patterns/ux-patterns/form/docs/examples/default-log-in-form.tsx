@@ -70,33 +70,35 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
 
   return (
     <Tooltip placement='top' interaction={'none'} animationsDisabled>
-      <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
-        {error?.message as any}
-      </Tooltip.Popper>
-      <Tooltip.Trigger
-        tag={Input}
-        w='100%'
-        mb={2}
-        size='l'
-        state={invalid() ? 'invalid' : 'normal'}
-        controlsLength={1}
-      >
-        {({ getTriggerProps }) => {
-          return (
-            <Input.Value
+      {({ getTriggerProps }) => {
+        return (
+          <Input
+            w='100%'
+            mb={2}
+            size='l'
+            state={invalid() ? 'invalid' : 'normal'}
+            controlsLength={1}
+          >
+            <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
+              {error?.message as any}
+            </Tooltip.Popper>
+
+            <Tooltip.Trigger
               {...getTriggerProps({
                 id: name,
                 type: type,
               })}
               {...field}
+              tag={Input.Value}
               onFocus={() => setActive(true)}
               autoComplete={type}
               aria-invalid={invalid()}
+              aria-describedby={invalid() ? 'form-project-error' : undefined}
               aria-errormessage={invalid() ? `form-${name}-error` : undefined}
             />
-          );
-        }}
-      </Tooltip.Trigger>
+          </Input>
+        );
+      }}
     </Tooltip>
   );
 };
