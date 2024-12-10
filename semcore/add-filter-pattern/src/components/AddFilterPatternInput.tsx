@@ -48,7 +48,7 @@ const Clear = () => {
 const AddFilterPatternInput = createComponent(AddFilterPatternInputRoot, {
   Value: Input.Value,
   Addon: Input.Addon,
-  Clear: Clear,
+  Clear,
 });
 
 export default AddFilterPatternInput;

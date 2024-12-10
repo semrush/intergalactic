@@ -2,7 +2,6 @@ import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Select from '@semcore/select';
 import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
-import { SelectProps } from '@semcore/select';
 import { FilterTrigger } from '@semcore/base-trigger';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
@@ -38,10 +37,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternItemProps> {
         }
       },
       empty: !value,
-      onClear: () => {
-        props.onClear?.();
-        onClear();
-      },
+      onClear,
       autoFocus: true,
     };
   }
