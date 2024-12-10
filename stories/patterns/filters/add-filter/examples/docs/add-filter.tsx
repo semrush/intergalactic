@@ -1,5 +1,5 @@
 import React from 'react';
-import AddFilterPattern from '@semcore/add-filter-pattern';
+import AddFilter from '@semcore/ui/add-filter';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
@@ -95,7 +95,7 @@ const defaultFilterData = {
   position: '',
   link: '',
 };
-const AddFilterPatternExample = () => {
+const AddFilterExample = () => {
   const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
 
   const clearField = React.useCallback(
@@ -189,7 +189,7 @@ const AddFilterPatternExample = () => {
         </Select.Menu>
       </Select>
 
-      <AddFilterPattern
+      <AddFilter
         filterData={filterData}
         onClearAll={() => {
           setFilterData(defaultFilterData);
@@ -197,12 +197,12 @@ const AddFilterPatternExample = () => {
         gap={2}
         flexWrap
       >
-        <AddFilterPattern.Dropdown name='keywords' displayName='Keywords'>
-          <AddFilterPattern.Dropdown.Trigger placeholder='Exclude keywords'>
+        <AddFilter.Dropdown name='keywords' displayName='Keywords'>
+          <AddFilter.Dropdown.Trigger placeholder='Exclude keywords'>
             {`Exclude: ${filterData.keywords?.displayValue} keywords`}
-          </AddFilterPattern.Dropdown.Trigger>
+          </AddFilter.Dropdown.Trigger>
 
-          <AddFilterPattern.Dropdown.Popper
+          <AddFilter.Dropdown.Popper
             w={325}
             p='8px 8px 16px'
             role='dialog'
@@ -215,14 +215,14 @@ const AddFilterPatternExample = () => {
               }}
               value={filterData.keywords}
             />
-          </AddFilterPattern.Dropdown.Popper>
-        </AddFilterPattern.Dropdown>
+          </AddFilter.Dropdown.Popper>
+        </AddFilter.Dropdown>
 
-        <AddFilterPattern.Input name={'position'} displayName={'Position'}>
-          <AddFilterPattern.Input.Addon>
+        <AddFilter.Input name={'position'} displayName={'Position'}>
+          <AddFilter.Input.Addon>
             <SearchM />
-          </AddFilterPattern.Input.Addon>
-          <AddFilterPattern.Input.Value
+          </AddFilter.Input.Addon>
+          <AddFilter.Input.Value
             w={110}
             value={filterData['position']}
             onChange={(v) => {
@@ -231,8 +231,8 @@ const AddFilterPatternExample = () => {
             placeholder={'Filter by position'}
           />
           {Boolean(filterData['position']) && (
-            <AddFilterPattern.Input.Addon>
-              <AddFilterPattern.Input.Clear
+            <AddFilter.Input.Addon>
+              <AddFilter.Input.Clear
                 use='secondary'
                 addonLeft={CloseM}
                 aria-label='Clear'
@@ -240,39 +240,39 @@ const AddFilterPatternExample = () => {
                   clearField('position');
                 }}
               />
-            </AddFilterPattern.Input.Addon>
+            </AddFilter.Input.Addon>
           )}
-        </AddFilterPattern.Input>
+        </AddFilter.Input>
 
-        <AddFilterPattern.Select
+        <AddFilter.Select
           name='device'
           displayName='Device'
           onChange={(v: any) => {
             setFilterData({ ...filterData, device: v });
           }}
         >
-          <AddFilterPattern.Select.Trigger
+          <AddFilter.Select.Trigger
             placeholder='Device'
             onClear={() => {
               clearField('device');
             }}
           >
             {'Device'}: {filterData.device}
-          </AddFilterPattern.Select.Trigger>
-          <AddFilterPattern.Select.Menu>
+          </AddFilter.Select.Trigger>
+          <AddFilter.Select.Menu>
             {devices.map((item, idx) => (
-              <AddFilterPattern.Select.Option key={idx} value={item}>
+              <AddFilter.Select.Option key={idx} value={item}>
                 {item}
-              </AddFilterPattern.Select.Option>
+              </AddFilter.Select.Option>
             ))}
-          </AddFilterPattern.Select.Menu>
-        </AddFilterPattern.Select>
-      </AddFilterPattern>
+          </AddFilter.Select.Menu>
+        </AddFilter.Select>
+      </AddFilter>
     </Flex>
   );
 };
 
-export default AddFilterPatternExample;
+export default AddFilterExample;
 
 const devices = ['Desktop', 'Phone', 'Tablet'];
 const sizes = ['Small', 'Medium', 'Large'];

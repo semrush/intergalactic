@@ -1,12 +1,12 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Select from '@semcore/select';
-import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
+import { AddFilterItemProps } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
-class AddFilterPatternSelectRoot extends Component<AddFilterPatternItemProps> {
-  static displayName = 'AddFilterPatternSelect';
+class AddFilterSelectRoot extends Component<AddFilterItemProps> {
+  static displayName = 'AddFilterSelect';
   menuRef = React.createRef<HTMLDivElement>();
 
   static defaultProps = () => {
@@ -59,7 +59,7 @@ class AddFilterPatternSelectRoot extends Component<AddFilterPatternItemProps> {
   }
 }
 
-const AddFilterPatternSelect = createComponent(AddFilterPatternSelectRoot, {
+const AddFilterSelect = createComponent(AddFilterSelectRoot, {
   Trigger: Select.Trigger,
   Menu: Select.Menu,
   Option: Select.Option,
@@ -67,4 +67,4 @@ const AddFilterPatternSelect = createComponent(AddFilterPatternSelectRoot, {
   Popper: Select.Popper,
 });
 
-export default AddFilterPatternSelect;
+export default AddFilterSelect;

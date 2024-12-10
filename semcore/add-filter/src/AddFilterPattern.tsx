@@ -5,20 +5,17 @@ import createComponent, { Component, Root } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
-import AddFilterPatternType, {
-  AddFilterPatternProps,
-  AddFilterPatternItemProps,
-} from './AddFilterPattern.types';
-import AddFilterPatternSelect from './components/AddFilterPatternSelect';
-import AddFilterPatternInput from './components/AddFilterPatternInput';
-import AddFilterPatternDropdown from './components/AddFilterPatternDropdown';
+import AddFilterType, { AddFilterProps, AddFilterItemProps } from './AddFilter.types';
+import AddFilterSelect from './components/AddFilterSelect';
+import AddFilterInput from './components/AddFilterInput';
+import AddFilterDropdown from './components/AddFilterDropdown';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-type AddFilterPatternDropdownOption = { label: string; value: string };
+type AddFilterDropdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
-  options: AddFilterPatternDropdownOption[];
+  options: AddFilterDropdownOption[];
   toggleFieldVisibility: (name: string, status?: boolean) => void;
   visibleFilters: Set<string>;
   getI18nText: (key: string) => string;
@@ -30,25 +27,16 @@ type ClearAllFiltersButtonProps = {
   getI18nText: (key: string) => string;
 };
 
-type AddFilterPatternState = {
+type AddFilterState = {
   visibleFilters: Set<string>;
-  addDropdownItems: AddFilterPatternDropdownOption[];
+  addDropdownItems: AddFilterDropdownOption[];
 };
 
-const componentsNames = [
-  'AddFilterPattern.Input',
-  'AddFilterPattern.Select',
-  'AddFilterPattern.Dropdown',
-];
+const componentsNames = ['AddFilter.Input', 'AddFilter.Select', 'AddFilter.Dropdown'];
 
 const enhance = [i18nEnhance(localizedMessages)] as const;
-class RootAddFilterPattern extends Component<
-  AddFilterPatternProps,
-  {},
-  AddFilterPatternState,
-  typeof enhance
-> {
-  static displayName = 'AddFilterPattern';
+class RootAddFilter extends Component<AddFilterProps, {}, AddFilterState, typeof enhance> {
+  static displayName = 'AddFilter';
 
   static enhance = enhance;
   static defaultProps = {
@@ -61,30 +49,30 @@ class RootAddFilterPattern extends Component<
   };
 
   static getDefaultAddDropdownOptions = (children: React.ReactNode) => {
-    const filters = RootAddFilterPattern.getFilterPatternItems(children);
+    const filters = RootAddFilter.getFilterPatternItems(children);
 
-    return filters.map(({ props }: { props: AddFilterPatternItemProps }) => {
+    return filters.map(({ props }: { props: AddFilterItemProps }) => {
       const { name, displayName } = props;
       return { label: displayName ?? name, value: name };
     });
   };
 
-  constructor(props: AddFilterPatternProps) {
+  constructor(props: AddFilterProps) {
     super(props);
 
     this.state = {
       visibleFilters: new Set(),
-      addDropdownItems: RootAddFilterPattern.getDefaultAddDropdownOptions(props.children),
+      addDropdownItems: RootAddFilter.getDefaultAddDropdownOptions(props.children),
     };
   }
 
-  getVisibleFilters(allFilters: React.ReactElement<AddFilterPatternItemProps>[]) {
+  getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
     return Array.from(this.state.visibleFilters).map((name) => {
       return allFilters.find(({ props }) => props.name === name);
     });
   }
 
-  getItemCommonProps(props: AddFilterPatternItemProps) {
+  getItemCommonProps(props: AddFilterItemProps) {
     const { name } = props;
     const { filterData } = this.asProps;
 
@@ -96,15 +84,15 @@ class RootAddFilterPattern extends Component<
     };
   }
 
-  getSelectProps(props: AddFilterPatternItemProps) {
+  getSelectProps(props: AddFilterItemProps) {
     return this.getItemCommonProps(props);
   }
 
-  getInputProps(props: AddFilterPatternItemProps) {
+  getInputProps(props: AddFilterItemProps) {
     return this.getItemCommonProps(props);
   }
 
-  getDropdownProps(props: AddFilterPatternItemProps) {
+  getDropdownProps(props: AddFilterItemProps) {
     return this.getItemCommonProps(props);
   }
 
@@ -153,14 +141,14 @@ class RootAddFilterPattern extends Component<
 
   render() {
     const { Children } = this.asProps;
-    const allFilters = RootAddFilterPattern.getFilterPatternItems(Children);
+    const allFilters = RootAddFilter.getFilterPatternItems(Children);
     const VisibleFilteredChildren = this.getVisibleFilters(allFilters);
 
     return (
       <Root render={Flex}>
         {VisibleFilteredChildren}
-        <AddFilterPattern.DropdownMenu />
-        <AddFilterPattern.ClearAllFilters />
+        <AddFilter.DropdownMenu />
+        <AddFilter.ClearAllFilters />
       </Root>
     );
   }
@@ -180,7 +168,7 @@ function AddFilterDropdownMenu(props: AddFilterDropdownMenuProps) {
     Boolean(optionsWithoutVisible.length) && (
       <DropdownMenu visible={visible} onVisibleChange={setVisible}>
         <DropdownMenu.Trigger tag={Button} use='tertiary' addonLeft={MathPlusM}>
-          {getI18nText('AddFilterPattern.DropdownTrigger.Text')}
+          {getI18nText('AddFilter.DropdownTrigger.Text')}
         </DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           {optionsWithoutVisible.map(({ label, value }) => (
@@ -204,18 +192,18 @@ function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFilte
   return (
     hasFilterData && (
       <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
-        {getI18nText('AddFilterPattern.Button.Text')}
+        {getI18nText('AddFilter.Button.Text')}
       </Button>
     )
   );
 }
 
-const AddFilterPattern: typeof AddFilterPatternType = createComponent(RootAddFilterPattern, {
-  Select: AddFilterPatternSelect,
-  Input: AddFilterPatternInput,
-  Dropdown: AddFilterPatternDropdown,
+const AddFilter: typeof AddFilterType = createComponent(RootAddFilter, {
+  Select: AddFilterSelect,
+  Input: AddFilterInput,
+  Dropdown: AddFilterDropdown,
   DropdownMenu: AddFilterDropdownMenu,
   ClearAllFilters,
 });
 
-export default AddFilterPattern;
+export default AddFilter;

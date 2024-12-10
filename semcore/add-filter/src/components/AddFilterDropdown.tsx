@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
+import { AddFilterItemProps } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
 
 type AsPropsTypeWithHandlers<T> = T & {
@@ -9,8 +9,8 @@ type AsPropsTypeWithHandlers<T> = T & {
   onClear: () => void;
 };
 
-class AddFilterPatternDropdownRoot extends Component<AddFilterPatternItemProps> {
-  static displayName = 'AddFilterPatternDropdown';
+class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
+  static displayName = 'AddFilterDropdown';
   popperRef = React.createRef<HTMLDivElement>();
 
   static defaultProps = () => {
@@ -53,9 +53,9 @@ class AddFilterPatternDropdownRoot extends Component<AddFilterPatternItemProps> 
   }
 }
 
-const AddFilterPatternDropdown = createComponent(AddFilterPatternDropdownRoot, {
+const AddFilterDropdown = createComponent(AddFilterDropdownRoot, {
   Trigger: Dropdown.Trigger,
   Popper: Dropdown.Popper,
 });
 
-export default AddFilterPatternDropdown;
+export default AddFilterDropdown;

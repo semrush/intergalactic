@@ -1,13 +1,13 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import { AddFilterPatternItemProps } from '../AddFilterPattern.types';
+import { AddFilterItemProps } from '../AddFilter.types';
 import { InputValueProps } from '@semcore/input';
-import { ButtonLink } from '@semcore/ui/button';
+import { ButtonLink } from '@semcore/button';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
-class AddFilterPatternInputRoot extends Component<AddFilterPatternItemProps> {
-  static displayName = 'AddFilterPatternInput';
+class AddFilterInputRoot extends Component<AddFilterItemProps> {
+  static displayName = 'AddFilterInput';
 
   getValueProps(props: InputValueProps) {
     const { value, onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
@@ -45,10 +45,10 @@ const Clear = () => {
   return <Root render={ButtonLink} />;
 };
 
-const AddFilterPatternInput = createComponent(AddFilterPatternInputRoot, {
+const AddFilterInput = createComponent(AddFilterInputRoot, {
   Value: Input.Value,
   Addon: Input.Addon,
   Clear,
 });
 
-export default AddFilterPatternInput;
+export default AddFilterInput;

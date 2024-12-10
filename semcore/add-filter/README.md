@@ -19,7 +19,7 @@ npm install intergalactic
 ## Usage
 
 ```jsx
-import AddFilterPattern from 'intergalactic/add-filter-pattern';
+import AddFilter from 'intergalactic/add-filter';
 ```
 
 <details>
@@ -43,7 +43,7 @@ of the components that is discussed below. There should only be one version of t
 You can use the package the same way but without `/ui/` in the import path.
 
 ```jsx
-import AddFilterPattern from '@semcore/add-filter-pattern';
+import AddFilter from '@semcore/add-filter';
 ```
 
 </details>
