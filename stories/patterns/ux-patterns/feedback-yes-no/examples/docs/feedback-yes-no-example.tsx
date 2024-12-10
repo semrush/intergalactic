@@ -33,14 +33,15 @@ const validate = {
   },
 };
 
+type FeedbackChangeEvent = React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>;
 class Feedback extends React.PureComponent<{
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
-  onChange: (event: React.SyntheticEvent<HTMLInputElement>) => void;
+  onChange: (event: FeedbackChangeEvent) => void;
   value: { feedback: string; email: string };
 }> {
-  handleChange = (fn: (e: React.SyntheticEvent) => void) => (_: any, e: React.SyntheticEvent) => {
+  handleChange = (fn: (e: FeedbackChangeEvent) => void) => (_: any, e: FeedbackChangeEvent) => {
     fn(e);
     this.props.onChange(e);
   };
@@ -138,7 +139,7 @@ class FeedbackYesNo extends React.PureComponent {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
-  onChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
+  onChange = (e: FeedbackChangeEvent) => {
     const { value, id } = e.currentTarget;
     this.setState({ value: { ...this.state.value, [id]: value } });
   };
