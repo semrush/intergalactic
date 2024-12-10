@@ -37,12 +37,12 @@ class Feedback extends React.PureComponent<{
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
-  onChange: (event: any, trigger: string) => void;
+  onChange: (event: React.SyntheticEvent<HTMLInputElement>) => void;
   value: { feedback: string; email: string };
 }> {
   handleChange = (fn: (e: React.SyntheticEvent) => void) => (_: any, e: React.SyntheticEvent) => {
     fn(e);
-    this.props.onChange(e, e.currentTarget.id);
+    this.props.onChange(e);
   };
 
   render() {
@@ -138,9 +138,9 @@ class FeedbackYesNo extends React.PureComponent {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
-  onChange = (e: any, trigger: string) => {
-    const { value } = e.currentTarget;
-    this.setState({ value: { ...this.state.value, [trigger]: value } });
+  onChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    const { value, id } = e.currentTarget;
+    this.setState({ value: { ...this.state.value, [id]: value } });
   };
   requestServer = (status: string, time: number, cb?: () => void) => {
     this.timeout = setTimeout(() => {
