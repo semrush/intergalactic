@@ -8,7 +8,7 @@ tabs: Design('informer'), Example('informer-code')
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic-usage.tsx';
+  export Demo from 'stories/patterns/ux-patterns/informer/docs/examples/basic-usage.tsx';
 </script>
 
 :::
