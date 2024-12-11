@@ -6,7 +6,7 @@ const Demo = () => {
   const [value, onChange] = React.useState([0]);
 
   return (
-    <Accordion value={value} onChange={(value) => onChange(value)}>
+    <Accordion value={value} onChange={(value: any) => onChange(value)}>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.Toggle pb={2}>
