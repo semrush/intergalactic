@@ -1,5 +1,10 @@
 <template>
-  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" aria-label="Playground">
+  <div 
+    :id="playgroundId" 
+    :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" 
+    aria-label="Playground" 
+    :role="role === 'undefined' ? null : role"
+  >
   </div>
   <div class="code-wrapper" v-if="!hideCode">
     <span v-html="htmlCode"></span>
@@ -32,7 +37,14 @@ const dataToLzCompressedJson = (data) => {
   return base64;
 };
 
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
+const { 
+  playgroundId, 
+  htmlCode: codeEncoded, 
+  rawCode: rawCodeEncoded, 
+  hideCode: hideCodeEncoded, 
+  stylesIsolation,
+  role, 
+ } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean, role: String })
 const htmlCode = computed(() => {
   let code = atob(codeEncoded!).replace(/intergalactic\//g, "@semcore/ui/");
   return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code tabindex="0">');

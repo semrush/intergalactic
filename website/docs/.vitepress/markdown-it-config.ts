@@ -16,7 +16,7 @@ export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
   })
     .use(container, 'react-view', {
       render(tokens, idx) {
-        return renderSandbox(tokens, idx, 'react-view', plainTextOnly);
+        return renderSandbox(tokens, idx, 'react-view', plainTextOnly, undefined, 'region');
       },
     })
     .use((md) => {

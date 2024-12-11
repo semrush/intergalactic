@@ -98,6 +98,7 @@ export const renderSandbox = (
   htmlTagName: string,
   renderNothing = false,
   state?: { relativePath: string },
+  role?: string,
 ) => {
   const renderFunc = (tokens: any[], idx: number, htmlTag: string) => {
     if (renderNothing) return '';
@@ -171,7 +172,7 @@ export const renderSandbox = (
 
       const encodedHtmlCode = btoa(htmlCode);
       const encodedRawCode = btoa(displayedCode);
-      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}" :stylesIsolation="${
+      return `<Sandbox playgroundId="${playgroundId}" role="${role}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}" :stylesIsolation="${
         htmlTag === 'sandbox'
       }">`;
     }
