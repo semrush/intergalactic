@@ -28,9 +28,9 @@ These filters have preset range options and also allow to enter a custom number 
 - For trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
 - **Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the trigger value isn't truncated.
 
-| Filter             | Appearance example                                                      | Description                                                                                                                                                                |
-| ------------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Keyword Difficulty | ![default](static/placeholder-kd.png) ![active](static/active-kd.png)   | The Keyword Difficulty filter trigger always has one size. Abbreviate the name to **KD %**.                                                                                |
+| Filter             | Appearance example                                                      | Description                                                                                                                                                               |
+| ------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Keyword Difficulty | ![default](static/placeholder-kd.png) ![active](static/active-kd.png)   | The Keyword Difficulty filter trigger always has one size. Abbreviate the name to **KD %**.                                                                               |
 | Positions          | ![default](static/placeholder-pos.png) ![active](static/active-pos.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Positions in full. If they don’t fit, abbreviate the filter name to **Pos.**. |
 | Volume             | ![default](static/placeholder-vol.png) ![active](static/active-vol.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Volume in full. If they don’t fit, abbreviate the filter name to **Vol.**.    |
 
@@ -58,7 +58,7 @@ Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
 
 Use the [InputRange](/components/input-number/input-number#inputrange) pattern to enter a custom range.
 
-|                                                                    | Appearance example                   |
+| Case                                                               | Appearance example                   |
 | ------------------------------------------------------------------ | ------------------------------------ |
 | If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers.png)     |
 | If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
@@ -86,4 +86,3 @@ Validation is described in the [Filter common rules](/filter-group/filter-rules/
 ## Nothing found
 
 "Empty" state is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
-
