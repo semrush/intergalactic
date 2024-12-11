@@ -3180,6 +3180,9 @@ importers:
 
   stories:
     dependencies:
+      react-hook-form:
+        specifier: 7.54.0
+        version: 7.54.0(react@18.2.0)
       '@storybook/components':
         specifier: 8.4.6
         version: 8.4.6(storybook@8.3.5)
@@ -3192,7 +3195,7 @@ importers:
       react-hook-form:
         specifier: 7.54.0
         version: 7.54.0(react@16.14.0)
-      react-virtualized:
+      react-virtualized
         specifier: 9.22.3
         version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@16.14.0)(react@16.14.0)
     devDependencies:
@@ -24255,6 +24258,15 @@ packages:
       react: ^16.8.0 || ^17 || ^18 || ^19
     dependencies:
       react: 16.14.0
+    dev: false
+
+  /react-hook-form@7.54.0(react@18.2.0):
+    resolution: {integrity: sha512-PS05+UQy/IdSbJNojBypxAo9wllhHgGmyr8/dyGQcPoiMf3e7Dfb9PWYVRco55bLbxH9S+1yDDJeTdlYCSxO3A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-instantsearch-core@6.39.1(algoliasearch@4.8.4)(react@18.2.0):
