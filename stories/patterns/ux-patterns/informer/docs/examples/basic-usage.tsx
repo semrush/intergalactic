@@ -1,15 +1,15 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import { DescriptionTooltip } from 'intergalactic/tooltip';
-import Link from 'intergalactic/link';
-import { ButtonLink } from 'intergalactic/button';
-import InfoM from 'intergalactic/icon/Info/m';
-import InfoL from 'intergalactic/icon/Info/l';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import Link from '@semcore/link';
+import { ButtonLink } from '@semcore/button';
+import InfoM from '@semcore/icon/Info/m';
+import InfoL from '@semcore/icon/Info/l';
 
 const Demo = () => (
   <>
-    <Flex gap={1} mb={4} alignItems='flex-end'>
+    <Flex gap={1} mb={4} alignItems='baseline'>
       <Text size={700}>Fastest animals</Text>
       <DescriptionTooltip>
         <DescriptionTooltip.Trigger
