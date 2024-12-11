@@ -1,9 +1,5 @@
 <template>
-  <div 
-    :id="playgroundId" 
-    :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" 
-    aria-label="Playground" 
-    :role="!hideCode ? null : 'region'"
+  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" aria-label="Playground" :role="!hideCode ? null : 'region'"
   >
   </div>
   <div class="code-wrapper" v-if="!hideCode">

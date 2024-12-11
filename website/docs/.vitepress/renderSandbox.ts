@@ -98,7 +98,6 @@ export const renderSandbox = (
   htmlTagName: string,
   renderNothing = false,
   state?: { relativePath: string },
-  role?: string,
 ) => {
   const renderFunc = (tokens: any[], idx: number, htmlTag: string) => {
     if (renderNothing) return '';
