@@ -53,12 +53,12 @@ const Demo = () => {
         ofRows={10}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
-          <Text tag={'label'} size={200}>
+          <Text tag={'label'} size={200} htmlFor={'keywords'}>
             list of keywords
           </Text>
           <BulkTextarea.Counter />
         </Flex>
-        <BulkTextarea.InputField />
+        <BulkTextarea.InputField id={'keywords'} />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />
           <BulkTextarea.ClearAllButton />

@@ -145,8 +145,10 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
     this.setState({ rowsCount });
   };
 
-  handleClickClearAllButton = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-    this.handlers.value('');
+  handleClickClearAllButton = (e: Event) => {
+    this.asProps.onBlur?.('', e);
+    this.setState({ showErrors: false, errorIndex: -1, errors: [] });
+    this.handlers.state('normal');
   };
 
   handleChangeErrorIndex = (amount: number) => () => {

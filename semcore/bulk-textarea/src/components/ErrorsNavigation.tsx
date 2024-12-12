@@ -16,6 +16,9 @@ export type ErrorsNavigationProps = {
 
 export function ErrorsNavigation(props: ErrorsNavigationProps) {
   const { errorIndex, errorsCount, onPrevError, onNextError, size, showErrors } = props;
+  const currentIndex = errorIndex + 1;
+  const nextIndex = currentIndex === errorsCount || errorIndex === -1 ? 1 : currentIndex + 1;
+  const prevIndex = currentIndex === 1 || errorIndex === -1 ? errorsCount : currentIndex - 1;
   return (
     <Flex alignItems='center'>
       {errorsCount > 0 && showErrors && (
@@ -25,14 +28,16 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             addonLeft={ChevronDownM}
             use={'tertiary'}
             theme={'muted'}
-            aria-label={'Next error'}
+            aria-label={`Go to the ${nextIndex} invalid value`}
+            hintPlacement={'bottom'}
           />
           <Button
             onClick={onPrevError}
             addonLeft={ChevronUpM}
             use={'tertiary'}
             theme={'muted'}
-            aria-label={'Previous error'}
+            aria-label={`Go to the ${prevIndex} invalid value`}
+            hintPlacement={'bottom'}
           />
           <Text size={size === 'l' ? 300 : 200} color='text-critical'>
             {errorIndex === -1

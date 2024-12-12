@@ -37,7 +37,7 @@ class InputField extends Component<InputFieldProps> {
   constructor(props: InputFieldProps) {
     super(props);
 
-    this.textarea = this.createContentEditableElement();
+    this.textarea = this.createContentEditableElement(props.id);
     this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
 
     this.textareaObserver.observe(this.textarea, { childList: true });
@@ -97,11 +97,15 @@ class InputField extends Component<InputFieldProps> {
     this.textareaObserver.disconnect();
   }
 
-  createContentEditableElement() {
+  createContentEditableElement(id?: string) {
     const textarea = document.createElement('div');
     textarea.setAttribute('contentEditable', 'true');
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
+
+    if (id) {
+      textarea.setAttribute('id', id);
+    }
 
     textarea.addEventListener('paste', this.handlePaste.bind(this));
     textarea.addEventListener('input', this.handleChange.bind(this));
@@ -280,7 +284,11 @@ class InputField extends Component<InputFieldProps> {
             return <Tooltip.Popper>{errorItem?.errorMessage}</Tooltip.Popper>;
           }}
         </Tooltip>
-        <SInputField render={Box} ref={this.containerRef} __excludeProps={['onBlur']} />
+        <SInputField
+          render={Box}
+          ref={this.containerRef}
+          __excludeProps={['onBlur', 'value', 'id']}
+        />
       </>,
     );
   }

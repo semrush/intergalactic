@@ -21,6 +21,10 @@ export type ErrorItem = {
 
 export type InputFieldProps = {
   /**
+   * Unique id
+   */
+  id?: string;
+  /**
    * String to render in textarea. OnChanging value, it will go throw paste pipeline
    */
   value: string;
