@@ -431,15 +431,27 @@ importers:
 
   semcore/bulk-textarea:
     dependencies:
+      '@semcore/button':
+        specifier: 5.40.1
+        version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
         version: link:../core
+      '@semcore/counter':
+        specifier: 3.37.0
+        version: link:../counter
       '@semcore/flex-box':
         specifier: 5.39.0
         version: link:../flex-box
-      '@semcore/textarea':
-        specifier: 5.38.0
-        version: link:../textarea
+      '@semcore/popper':
+        specifier: 5.45.0
+        version: link:../popper
+      '@semcore/tooltip':
+        specifier: 6.47.0
+        version: link:../tooltip
+      '@semcore/typography':
+        specifier: 5.48.0
+        version: link:../typography
       '@semcore/utils':
         specifier: 4.44.0
         version: link:../utils

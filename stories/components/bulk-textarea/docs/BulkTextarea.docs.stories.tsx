@@ -6,6 +6,7 @@ import UsageExample from './examples/BaseExample';
 
 const meta: Meta<typeof BulkTextarea> = {
   title: 'Components/BulkTextarea/Documentation',
+  component: BulkTextarea,
 };
 
 export default meta;

@@ -6,6 +6,7 @@ import style from './inputField.shadow.css';
 import { PopperContext } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 class InputField extends Component<InputFieldProps> {
   static displayName = 'Textarea';
@@ -37,7 +38,7 @@ class InputField extends Component<InputFieldProps> {
   constructor(props: InputFieldProps) {
     super(props);
 
-    this.textarea = this.createContentEditableElement(props.id);
+    this.textarea = this.createContentEditableElement(props);
     this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
 
     this.textareaObserver.observe(this.textarea, { childList: true });
@@ -97,14 +98,21 @@ class InputField extends Component<InputFieldProps> {
     this.textareaObserver.disconnect();
   }
 
-  createContentEditableElement(id?: string) {
+  createContentEditableElement(props: InputFieldProps) {
     const textarea = document.createElement('div');
     textarea.setAttribute('contentEditable', 'true');
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
 
-    if (id) {
-      textarea.setAttribute('id', id);
+    if (props.id) {
+      textarea.setAttribute('id', props.id);
+    }
+    const { extractedAriaProps } = extractAriaProps(props);
+    for (const key in extractedAriaProps) {
+      const ariaProp: string | undefined = (props as any)[key];
+      if (ariaProp) {
+        textarea.setAttribute(key, ariaProp);
+      }
     }
 
     textarea.addEventListener('paste', this.handlePaste.bind(this));

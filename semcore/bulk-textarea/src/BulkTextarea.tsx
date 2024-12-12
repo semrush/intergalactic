@@ -170,15 +170,15 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
   };
 
   render() {
-    return <Root render={Box} __excludeProps={['onBlur']} />;
+    return <Root render={Box} __excludeProps={['onBlur', 'value']} />;
   }
 }
 
-const BulkTextarea: BulkTextareaType = createComponent(BulkTextareaRoot, {
+const BulkTextarea = createComponent(BulkTextareaRoot, {
   InputField,
   Counter,
   ClearAllButton,
   ErrorsNavigation,
-});
+}) as BulkTextareaType;
 
 export default BulkTextarea;

@@ -14,7 +14,11 @@
   "dependencies": {
     "@semcore/utils": "4.44.0",
     "@semcore/flex-box": "5.39.0",
-    "@semcore/textarea": "5.38.0",
+    "@semcore/button": "5.40.1",
+    "@semcore/typography": "5.48.0",
+    "@semcore/counter": "3.37.0",
+    "@semcore/popper": "5.45.0",
+    "@semcore/tooltip": "6.47.0",
     "csstype": "3.0.8"
   },
   "peerDependencies": {
