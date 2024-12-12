@@ -16,43 +16,41 @@ defineProps<{
 </script>
 
 <template>
- 
-  <article class="VPFeature">
-    <VPLink
-      class="box"
-      :href="link"
-      :rel="rel"
-      :target="target"
-      :no-icon="true"
-      :tag="link ? 'a' : 'div'" 
-    >
-    <div v-if="typeof icon === 'object' && icon.wrap" class="icon">
+  <VPLink
+    class="VPFeature"
+    :href="link"
+    :rel="rel"
+    :target="target"
+    :no-icon="true"
+    :tag="link ? 'a' : 'div'"
+  >
+    <article class="box">
+      <div v-if="typeof icon === 'object' && icon.wrap" class="icon">
+        <VPImage
+          :image="icon"
+          :alt="icon.alt"
+          :height="icon.height || 48"
+          :width="icon.width || 48"
+        />
+      </div>
       <VPImage
+        v-else-if="typeof icon === 'object'"
         :image="icon"
         :alt="icon.alt"
         :height="icon.height || 48"
         :width="icon.width || 48"
       />
-    </div>
-    <VPImage
-      v-else-if="typeof icon === 'object'"
-      :image="icon"
-      :alt="icon.alt"
-      :height="icon.height || 48"
-      :width="icon.width || 48"
-    />
-    <div v-else-if="icon" class="icon" v-html="icon"></div>
-    <component :is="`h${header || 2}`" class="title" v-html="title"></component>
-    <p v-if="details" class="details" v-html="details"></p>
+      <div v-else-if="icon" class="icon" v-html="icon"></div>
+      <component :is="`h${header || 2}`" class="title" v-html="title"></component>
+      <p v-if="details" class="details" v-html="details"></p>
 
-    <div v-if="linkText" class="link-text">
-      <p class="link-text-value">
-        {{ linkText }} <span class="vpi-arrow-right link-text-icon" />
-      </p>
-    </div>
-  </VPLink>
-      
+      <div v-if="linkText" class="link-text">
+        <p class="link-text-value">
+          {{ linkText }} <span class="vpi-arrow-right link-text-icon" />
+        </p>
+      </div>
     </article>
+  </VPLink>
 </template>
 
 <style scoped>
@@ -65,7 +63,7 @@ defineProps<{
   transition: border-color 0.25s, background-color 0.25s;
 }
 
-.VPFeature:hover {
+.VPFeature.link:hover {
   border-color: var(--vp-c-brand-1);
 }
 
