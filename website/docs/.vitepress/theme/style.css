@@ -368,22 +368,22 @@
   box-shadow: var(--vp-shadow-1);
 }
 
-.VPFeatures .VPFeature.link:hover {
+.VPFeatures .VPFeature:hover {
   box-shadow: var(--vp-shadow-2);
   transition: box-shadow 0.25s !important;
 }
 
-.VPFeatures .VPFeature.link:hover h2.title {
+.VPFeatures .VPFeature:hover h2.title {
   color: var(--vp-c-brand-1);
   transition: color 0.25s !important;
 }
 
-.VPFeatures .VPFeature.link:hover p.link-text-value .link-text-icon {
+.VPFeatures .VPFeature:hover p.link-text-value .link-text-icon {
   margin-left: 8px;
   transition: margin-left 0.5s !important;
 }
 
-.dark .VPFeatures .VPFeature.link:hover {
+.dark .VPFeatures .VPFeature:hover {
   box-shadow: var(--vp-shadow-3);
   transition: box-shadow 0.25s !important;
 }
