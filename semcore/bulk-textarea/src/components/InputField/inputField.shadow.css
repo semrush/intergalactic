@@ -16,6 +16,7 @@ SInputField > div {
     display: flex;
     margin-bottom: var(--intergalactic-spacing-1x, 4px);
     position: relative;
+    word-break: break-all;
 
     &:last-of-type {
       margin-bottom: 0;

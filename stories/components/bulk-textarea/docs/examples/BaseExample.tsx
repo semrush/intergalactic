@@ -52,7 +52,7 @@ const Demo = () => {
         rowsDelimiters={[',']}
         ofRows={10}
       >
-        <Flex alignItems='center' justifyContent='space-between' mb={2}>
+        <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag={'label'} size={200}>
             list of keywords
           </Text>
