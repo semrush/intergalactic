@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.58.2] - 2024-12-12
+
+### Removed
+
+- `aria-labelledby` from `LegendItem` with shapes other, than checkbox.
+
+### Changed
+
+- `aria-labelledby` value in `LegendItem` to unique id.
+
 ## [3.58.1] - 2024-12-05
 
 ### Added
