@@ -1,6 +1,6 @@
 import React from 'react';
-import Accordion from 'intergalactic/accordion';
-import { Box } from 'intergalactic/flex-box';
+import Accordion from '@semcore/accordion';
+import { Box } from '@semcore/flex-box';
 
 const cn = (...classes: any[]) => classes.filter(Boolean).join(' ');
 

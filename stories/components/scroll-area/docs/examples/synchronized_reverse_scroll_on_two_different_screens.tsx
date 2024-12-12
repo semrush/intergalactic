@@ -17,13 +17,18 @@ function getRandomColor() {
 }
 
 class Demo extends React.PureComponent {
-  controlled: any;
-  handleMainScroll = (e) => {
-    this.controlled.scrollTop = e.currentTarget.scrollTop;
+  mirror: HTMLDivElement | null = null;
+  handleScrollMain = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (this.mirror) {
+      this.mirror.scrollTop =
+        this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
+    }
   };
 
   componentDidMount() {
-    this.controlled.scrollTop = 0;
+    if (this.mirror) {
+      this.mirror.scrollTop = this.mirror.scrollHeight - this.mirror.clientHeight;
+    }
   }
 
   render() {
@@ -32,7 +37,7 @@ class Demo extends React.PureComponent {
         <Box style={{ position: 'relative' }}>
           <h2>Main</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container onScroll={this.handleMainScroll}>
+            <ScrollArea.Container onScroll={this.handleScrollMain}>
               {[...new Array(100)].map((_, index) => (
                 <Box
                   key={index}
@@ -49,23 +54,25 @@ class Demo extends React.PureComponent {
         </Box>
 
         <Box>
-          <h2>Controlled</h2>
+          <h2>Reversed mirror</h2>
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container
-              ref={(node) => {
-                this.controlled = node;
+              ref={(node: HTMLDivElement | null) => {
+                this.mirror = node;
               }}
             >
-              {[...new Array(100)].map((_, index) => (
-                <Box
-                  key={index}
-                  inline
-                  m={2}
-                  w={120}
-                  h={120}
-                  style={{ backgroundColor: getRandomColor() }}
-                />
-              ))}
+              <Flex flexWrap reverse>
+                {[...new Array(100)].map((_, index) => (
+                  <Box
+                    key={index}
+                    inline
+                    m={2}
+                    w={120}
+                    h={120}
+                    style={{ backgroundColor: getRandomColor() }}
+                  />
+                ))}
+              </Flex>
             </ScrollArea.Container>
             <ScrollArea.Bar />
           </ScrollArea>
