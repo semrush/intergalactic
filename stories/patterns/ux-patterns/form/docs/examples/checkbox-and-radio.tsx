@@ -6,17 +6,21 @@ import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
 
+
+type FormValues = {
+  export?: string;
+}
+const defaultValues : FormValues = {
+  export: 'all',
+};
 const Demo = () => {
   const [selectedFirst, setSelectedFirst] = React.useState(100);
-  const defaultValues = {
-    export: 'all',
-  };
-  const { handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control, reset } = useForm<FormValues>({
     defaultValues,
   });
   const optionsFirst = [100, 500].map((value) => ({ value, children: value }));
 
-  const onSubmit = (data: typeof defaultValues) => {
+  const onSubmit = (data: FormValues) => {
     if (data.export === 'first') {
       data.export = `first ${selectedFirst}`;
     }
@@ -40,8 +44,8 @@ const Demo = () => {
         Export data
       </Text>
       <Controller
-        render={({ field: { value }, ...props }) => (
-          <RadioGroup {...props} value={value} size='l' gap={3} aria-labelledby='radio-group-label'>
+        render={({ field }) => (
+          <RadioGroup {...field} size='l' gap={3} aria-labelledby='radio-group-label'>
             <Radio mb={2} value='all' label='All' />
             <Radio>
               <Radio.Value value='selected' />

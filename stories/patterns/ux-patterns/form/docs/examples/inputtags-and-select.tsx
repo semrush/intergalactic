@@ -37,7 +37,7 @@ const Demo = () => {
 
   const handleAppendTags = (newTags: string[]) => {
     const tags = getValues('emails');
-    if (newTags.some((tag: string) => !isEmailValid(tag))) {
+    if (newTags.some((tag) => !isEmailValid(tag))) {
       setError('emails', { message: "Email isn't valid" });
       return;
     }
@@ -138,7 +138,7 @@ const Demo = () => {
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
               >
-                {tags.map((tag: string, idx: number) => (
+                {tags.map((tag, idx) => (
                   <InputTags.Tag key={tag + idx}>
                     <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />

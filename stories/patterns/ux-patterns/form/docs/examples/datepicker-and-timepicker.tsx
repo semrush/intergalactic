@@ -7,19 +7,27 @@ import TimePicker from '@semcore/time-picker';
 import Checkbox from '@semcore/checkbox';
 import Button from '@semcore/button';
 
+type FormValues = {
+  start_date?: Date | undefined;
+  start_time?: string | undefined;
+  due_date?: Date | undefined;
+  due_time?: string | undefined;
+};
+const defaultValues: FormValues = {
+  start_date: new Date(),
+  start_time: '12:00',
+  due_date: new Date(),
+  due_time: '12:00',
+};
+
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);
-  const defaultValues = {
-    start_date: new Date(),
-    start_time: '12:00',
-    due_date: new Date(),
-    due_time: '12:00',
-  };
-  const { handleSubmit, control, reset } = useForm({
+
+  const { handleSubmit, control, reset } = useForm<FormValues>({
     defaultValues,
   });
 
-  const onSubmit = (data: typeof defaultValues) => {
+  const onSubmit = (data: FormValues) => {
     alert(JSON.stringify(data));
   };
 
