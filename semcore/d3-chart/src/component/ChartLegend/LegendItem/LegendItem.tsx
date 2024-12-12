@@ -17,16 +17,17 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
+const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
 class LegendItemRoot extends Component<
   LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> },
   {},
   {},
-  typeof LegendItemRoot.enhance
+  typeof enhance
 > {
   static displayName = 'LegendItem';
   static style = style;
 
-  static enhance = [resolveColorEnhance(), uniqueIDEnhancement()];
+  static enhance = enhance;
 
   static defaultProps = () => ({
     children: (
@@ -40,9 +41,9 @@ class LegendItemRoot extends Component<
     ),
   });
 
-  getId() {
-    const { uid } = this.asProps;
-    return `chart-legend-item-${uid}`;
+  getUniqueID() {
+    const { uid, shape } = this.asProps;
+    return shape === 'Checkbox' ? `chart-legend-item-${uid}` : undefined;
   }
 
   getShapeProps() {
@@ -59,7 +60,7 @@ class LegendItemRoot extends Component<
       onChange: (value: boolean) => {
         onChangeLegendItem(id, value);
       },
-      'aria-labelledby': shape === 'Checkbox' ? this.getId() : undefined,
+      'aria-labelledby': this.getUniqueID(),
     };
   }
 
@@ -78,7 +79,7 @@ class LegendItemRoot extends Component<
 
     return {
       ...props,
-      id: shape === 'Checkbox' ? this.getId() : undefined,
+      id: this.getUniqueID(),
       checked,
       onClick: () => onChangeLegendItem(id, !checked),
       children: props.label,
