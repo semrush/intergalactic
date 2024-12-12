@@ -1,7 +1,7 @@
 import React from 'react';
-import ColorPicker, { PaletteManager } from 'intergalactic/color-picker';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import ColorPicker, { PaletteManager } from '@semcore/color-picker';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#98848D');
