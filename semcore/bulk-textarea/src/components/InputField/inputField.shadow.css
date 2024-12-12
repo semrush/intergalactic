@@ -32,19 +32,19 @@ SInputField > div {
     }
   }
 
-  > div:nth-child(n + 11) {
-    background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
-  }
+  /*> div:nth-child(n + 11) {*/
+  /*  background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);*/
+  /*}*/
 
   &:has(div:nth-child(n + 10)) {
     > div:before {
-      min-width: 20px;
+      min-width: 18px;
     }
   }
 
   &:has(div:nth-child(n + 100)) {
     > div:before {
-      min-width: 30px;
+      min-width: 28px;
     }
   }
 }
@@ -60,17 +60,17 @@ SInputField[size='m'] > div {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 
-  min-height: calc(var(--minRows) * 20px);
-  max-height: calc(var(--maxRows) * 20px);
+  min-height: calc(var(--minRows) * (20px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
+  max-height: calc(var(--maxRows) * (20px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
 }
 
 SInputField[size='l'] > div {
-  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-4x, 16px);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 
-  min-height: calc(var(--minRows) * 24px);
-  max-height: calc(var(--maxRows) * 24px);
+  min-height: calc(var(--minRows) * (24px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
+  max-height: calc(var(--maxRows) * (24px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
 }
 
 

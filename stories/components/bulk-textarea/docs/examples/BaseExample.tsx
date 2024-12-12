@@ -50,7 +50,7 @@ const Demo = () => {
         onBlur={setValue}
         rowValidation={validateRow}
         rowsDelimiters={[',']}
-        ofRows={10}
+        ofRows={30}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag={'label'} size={200} id={'keywords-label'}>

@@ -55,6 +55,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
       validateOn,
       onBlur,
       rowsDelimiters,
+      ofRows,
     } = this.asProps;
     const { errors, errorIndex, showErrors } = this.state;
 
@@ -64,6 +65,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
       state,
       minRows,
       maxRows,
+      ofRows,
       onChangeRows: this.handleChangeRows,
       onEnterNextRow: () => {
         if (validateOn?.includes('enterNextRow')) {

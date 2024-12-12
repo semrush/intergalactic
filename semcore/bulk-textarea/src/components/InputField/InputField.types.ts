@@ -77,6 +77,12 @@ export type InputFieldProps = {
   rowsDelimiters?: string[];
 
   /**
+   * Count of max rows in badge
+   * @default 100
+   */
+  ofRows?: number;
+
+  /**
    * Paste props
    */
   pasteProps: PasteProps;

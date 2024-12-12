@@ -19,11 +19,7 @@ export type BulkTextareaProps = {
   rowsDelimiters?: InputFieldProps['rowsDelimiters'];
   pasteProps?: InputFieldProps['pasteProps'];
 
-  /**
-   * Count of max rows in badge
-   * @default 100
-   */
-  ofRows?: number;
+  ofRows?: InputFieldProps['ofRows'];
 };
 
 export type BulkTextareaType = Intergalactic.Component<'div', BoxProps & BulkTextareaProps> & {

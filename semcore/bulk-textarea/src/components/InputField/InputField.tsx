@@ -53,6 +53,14 @@ class InputField extends Component<InputFieldProps> {
   }
 
   componentDidMount() {
+    const classes = this.containerRef.current?.classList;
+    const styleSheet = document.createElement('style');
+    const ofRows = this.asProps.ofRows ?? Infinity;
+    styleSheet.textContent = `.${classes?.item(0)} > div > div:nth-child(n + ${ofRows + 1}) {
+    background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
+  }`;
+
+    document.head.appendChild(styleSheet);
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
