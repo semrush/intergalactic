@@ -461,6 +461,8 @@ export abstract class AbstractChart<
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
+          use:aria-label={undefined}
+          aria-hidden={true}
         >
           {this.renderAxis()}
           {this.renderTooltip()}

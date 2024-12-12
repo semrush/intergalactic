@@ -7,6 +7,8 @@ import { eventToPoint, uniqueId } from './utils';
 import { PlotA11yModule } from './a11y/PlotA11yModule';
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
 import colorResolverEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/plot.shadow.css';
 
@@ -24,7 +26,7 @@ class PlotRoot extends Component {
     height: 0,
   });
 
-  static enhance = [keyboardFocusEnhance(), colorResolverEnhance()];
+  static enhance = [keyboardFocusEnhance(), colorResolverEnhance(), i18nEnhance(localizedMessages)];
 
   plotId = uniqueId();
 
@@ -85,10 +87,12 @@ class PlotRoot extends Component {
 
   render() {
     const SPlot = Root;
-    const { styles, width, height, Children, data, a11yAltTextConfig, label, locale } =
+    const { styles, width, height, Children, data, a11yAltTextConfig, label, locale, getI18nText } =
       this.asProps;
 
     if (!width || !height) return null;
+
+    const ariaLabel = label ?? getI18nText('d3Chart.Plot:aria-label');
 
     return sstyled(styles)(
       <SPlot
@@ -98,9 +102,8 @@ class PlotRoot extends Component {
         ref={this.rootRef}
         onMouseMove={this.handlerMouseMove}
         onMouseLeave={this.handlerMouseLeave}
-        aria-label={label}
+        aria-label={ariaLabel}
         tabIndex={0}
-        aria-hidden={true}
       >
         <Children />
         <foreignObject width='100%' height='100%' data-aria-only>
