@@ -4,5 +4,9 @@
   "formTitle": "Modulo di feedback",
   "submitButton": "Invia feedback",
   "successMessage": "Grazie per il tuo feedback!",
-  "errorMessage": "Si è verificato un errore. Prova di nuovo o contattaci all'indirizzo {email}."
+  "errorMessage": "Si è verificato un errore. Prova di nuovo o contattaci all'indirizzo {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Premi Invio per selezionare la valutazione",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "La tua valutazione: {selectedRating} su {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Non impostato",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} su {max}"
 }
