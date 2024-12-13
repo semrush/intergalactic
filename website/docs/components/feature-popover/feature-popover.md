@@ -67,7 +67,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
           {visible && <FeaturePopover.Spot />}
         </Button>
       </FeaturePopover.Trigger>
-      <FeaturePopover.Popper closeIcon={closeIcon} wMax={250}>
+      <FeaturePopover.Popper closeIcon={closeIcon} wMax={250} aria-label="New feature">
         <Text size={200}>
           With this new feature, users can now enjoy improved user experience, or expanded capabilities.
         </Text>

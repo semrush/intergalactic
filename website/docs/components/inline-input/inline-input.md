@@ -4,7 +4,6 @@ fileSource: inline-input
 tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-code'), Changelog('inline-input-changelog')
 ---
 
-
 ::: react-view
 
 <script lang="tsx">
@@ -35,7 +34,7 @@ const Preview = (preview) => {
 
   return (
     <InlineInput state={state} disabled={disabled}>
-      <InlineInput.Value placeholder='Placeholder' />
+      <InlineInput.Value placeholder='Placeholder' aria-label='Inline input label' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
@@ -46,7 +45,6 @@ const App = PlaygroundGeneration(Preview);
 </script>
 
 :::
-
 
 ## Description
 
@@ -103,10 +101,10 @@ Addons are slots inside the input to the left or right of the text for additiona
 
 Table: Leading addon styles
 
-|                                                               | Appearance example                               | Margins                                                | Icon size and color                             |
-| ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------- |
-| For components with text less than 24px (including this size) | ![](static/leading-addon-focus.png) | ![](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral)` |
-| For components with text larger than 24px                     | ![](static/leading-addon-big.png)   | ![](static/leading-addon-big-margins.png) | L size, `color: var(--icon-secondary-neutral)` |
+| Font size                                                          | Appearance example                  | Margins                                   | Icon size and color                            |
+| ------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------- | ---------------------------------------------- |
+| For components with font size less than 24px (including this size) | ![](static/leading-addon-focus.png) | ![](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral)` |
+| For components with font size larger than 24px                     | ![](static/leading-addon-big.png)   | ![](static/leading-addon-big-margins.png) | L size, `color: var(--icon-secondary-neutral)` |
 
 ### Label
 
@@ -125,10 +123,10 @@ The save icon is always has `--icon-secondary-success` token as color, the cance
 
 Table: Trailing addon styles
 
-|                                                               | Appearance example                                       | Margins                              | Icon size |
-| ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------ | --------- |
-| For components with text less than 24px (including this size) | ![](static/trailing-addon-margins.png)     | ![](static/small-text.png) | M         |
-| For components with text larger than 24px                     | ![](static/trailing-addon-big-margins.png) | ![](static/big-text.png)     | L         |
+| Font size                                                          | Appearance example                         | Margins                    | Icon size |
+| ------------------------------------------------------------------ | ------------------------------------------ | -------------------------- | --------- |
+| For components with font size less than 24px (including this size) | ![](static/trailing-addon-margins.png)     | ![](static/small-text.png) | M         |
+| For components with font size larger than 24px                     | ![](static/trailing-addon-big-margins.png) | ![](static/big-text.png)   | L         |
 
 ## Tooltip
 
@@ -155,15 +153,15 @@ InlineInput can take on the same states as a [normal input](/components/input/in
 
 Table: InlineInput states
 
-| State         | Appearance example                       | Styles                                                                                                                                             |
-| ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal        | ![](static/normal.png)       | `border-bottom: 1px solid var(--border-primary)`                                                                                                  |
-| Focus         | ![](static/focus.png)         | `border-bottom: 1px solid var(--border-info-active)`, `box-shadow: var(--keyboard-focus)`                                                        |
-| Invalid       | ![](static/invalid.png)     | `border-bottom: 1px solid var(--border-danger-active)`                                                                                            |
-| Invalid focus | ![](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active)`, `box-shadow: var(--keyboard-focus-invalid)`                                              |
-| Valid         | ![](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active)`                                                                                           |
-| Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                               |
-| Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/design-tokens) token). |
+| State         | Appearance example            | Styles                                                                                                                                                          |
+| ------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Normal        | ![](static/normal.png)        | `border-bottom: 1px solid var(--border-primary)`                                                                                                                |
+| Focus         | ![](static/focus.png)         | `border-bottom: 1px solid var(--border-info-active)`, `box-shadow: var(--keyboard-focus)`                                                                       |
+| Invalid       | ![](static/invalid.png)       | `border-bottom: 1px solid var(--border-danger-active)`                                                                                                          |
+| Invalid focus | ![](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active)`, `box-shadow: var(--keyboard-focus-invalid)`                                                             |
+| Valid         | ![](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active)`                                                                                                         |
+| Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                                              |
+| Loading       | ![](static/loading.png)       | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/design-tokens) token). |
 
 ## Save and Cancel icon buttons
 
@@ -201,4 +199,3 @@ _An InlineInput is convenient when you need to add a note, an additional descrip
 For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/input). A regular input doesn't have the ability to change the height of the input to fit it into a compact table.
 
 ![](static/inline-tag-yes-no.png)
-
