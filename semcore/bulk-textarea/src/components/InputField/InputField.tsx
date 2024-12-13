@@ -338,7 +338,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       <>
         <Tooltip
           interaction={'none'}
-          placement={'right-start'}
+          placement={'right'}
           visible={this.state.visibleErrorPopper && showErrors && Boolean(errorItem?.errorMessage)}
           theme={'warning'}
           offset={[0, 24]}
