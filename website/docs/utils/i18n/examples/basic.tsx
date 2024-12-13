@@ -16,7 +16,7 @@ const Demo = () => {
               nextPageDescription: 'Volgende pagina {pageNumber}',
               pageInputLabel: 'Pagina:',
               totalPagesLabel: 'van',
-              paginering: 'Paginering',
+              pagination: 'Paginering',
               firstPage: 'Eerste pagina',
               currentPage: 'Huidige pagina',
               confirm: 'Bevestig paginanummer',
