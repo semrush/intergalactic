@@ -32,7 +32,7 @@ import AddFilter from 'intergalactic/ui/add-filter';
 You can only install one package from the design system
 
 ```sh
-npm install @semcore/add-filter-pattern @semcore/core
+npm install @semcore/add-filter @semcore/core
 ```
 
 `@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
