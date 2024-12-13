@@ -18,12 +18,7 @@ import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
 const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
-class LegendItemRoot extends Component<
-  LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> },
-  {},
-  {},
-  typeof enhance
-> {
+class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 
@@ -117,7 +112,7 @@ class LegendItemRoot extends Component<
     const disabled = StaticShapes.includes(shape);
 
     return sstyled(styles)(
-      <SLegendItem render={Flex} disabled={disabled} __excludeProps={'id'}>
+      <SLegendItem render={Flex} disabled={disabled} __excludeProps={['id']}>
         <Children />
       </SLegendItem>,
     );
