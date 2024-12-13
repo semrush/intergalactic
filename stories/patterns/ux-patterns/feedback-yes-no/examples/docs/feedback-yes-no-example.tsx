@@ -91,16 +91,19 @@ class Feedback extends React.PureComponent<{
               initialValue={''}
               validateOnBlur={value.email === '' ? false : true}
             >
-              {({ input }) => (
-                <Input state={input.state}>
-                  <Input.Value
-                    {...input}
-                    onChange={this.handleChange(input.onChange)}
-                    id='email'
-                    aria-describedby='privacy-description'
-                  />
-                </Input>
-              )}
+              {({ input }) => {
+                const ariaDescribeBy = input['aria-describedby'] ?? 'privacy-description';
+                return (
+                  <Input state={input.state}>
+                    <Input.Value
+                      {...input}
+                      onChange={this.handleChange(input.onChange)}
+                      id='email'
+                      aria-describedby={ariaDescribeBy}
+                    />
+                  </Input>
+                );
+              }}
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
