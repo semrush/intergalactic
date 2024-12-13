@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.58.2] - 2024-12-12
+## [3.58.3] - 2024-12-12
 
 ### Removed
 
@@ -11,6 +11,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - `aria-labelledby` value in `LegendItem` to unique id.
+
+## [3.58.2] - 2024-12-09
+
+### Added
+
+- `aria-*` attributes for svg from parent group for all simple charts (Chart.*).
+- `aria-label=Chart` by default for all advanced charts (Plot...).
 
 ## [3.58.1] - 2024-12-05
 

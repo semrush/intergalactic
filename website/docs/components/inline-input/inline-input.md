@@ -34,7 +34,7 @@ const Preview = (preview) => {
 
   return (
     <InlineInput state={state} disabled={disabled}>
-      <InlineInput.Value placeholder='Placeholder' />
+      <InlineInput.Value placeholder='Placeholder' aria-label='Inline input label' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
