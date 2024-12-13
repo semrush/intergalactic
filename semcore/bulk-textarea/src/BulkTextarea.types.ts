@@ -8,6 +8,7 @@ import { ErrorsNavigationProps } from './components/ErrorsNavigation';
 export type BulkTextareaProps = {
   value?: InputFieldProps['value'];
   onBlur?: InputFieldProps['onBlur'];
+  placeholder?: InputFieldProps['placeholder'];
   size?: InputFieldProps['size'];
   state?: InputFieldProps['state'];
 

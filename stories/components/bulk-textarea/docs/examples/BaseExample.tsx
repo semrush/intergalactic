@@ -3,7 +3,7 @@ import BulkTextarea from '@semcore/bulk-textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
-const validateRow = (row: string, index: number, rows: string[]) => {
+const validateRow = (row: string, rows: string[]) => {
   let isValid = true;
   let errorMessage = '';
 
@@ -21,36 +21,37 @@ const validateRow = (row: string, index: number, rows: string[]) => {
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setValue(`const Demo = () => {
-  const [value, setValue] = React.useState('');
-
-  React.useEffect(() => {
-      setTimeout(() => {
-          setValue()
-      }, 1000);
-  }, []);
-  
-  return (
-    <Box>
-      <Text tag={'label'}>list of keywords</Text>
-      <BulkTextarea w={400} value={value} onChange={() => null} />
-    </Box>
-  );
-};`);
-    }, 1000);
-  }, []);
+  //   React.useEffect(() => {
+  //     setTimeout(() => {
+  //       setValue(`const Demo = () => {
+  //   const [value, setValue] = React.useState('');
+  //
+  //   React.useEffect(() => {
+  //       setTimeout(() => {
+  //           setValue()
+  //       }, 1000);
+  //   }, []);
+  //
+  //   return (
+  //     <Box>
+  //       <Text tag={'label'}>list of keywords</Text>
+  //       <BulkTextarea w={400} value={value} onChange={() => null} />
+  //     </Box>
+  //   );
+  // };`);
+  //     }, 1000);
+  //   }, []);
 
   return (
     <Box>
       <BulkTextarea
         w={400}
+        ofRows={30}
         value={value}
         onBlur={setValue}
         rowValidation={validateRow}
         rowsDelimiters={[',']}
-        ofRows={30}
+        placeholder={'Placeholder'}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag={'label'} size={200} id={'keywords-label'}>

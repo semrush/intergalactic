@@ -11,6 +11,11 @@ SInputField > div {
   word-break: keep-all;
   font-family: inherit;
 
+  &:empty:before {
+    content: attr(placeholder);
+    color: var(--intergalactic-text-placeholder, #8a8e9b);
+  }
+
   > div {
     counter-increment: row;
     display: flex;
@@ -22,7 +27,7 @@ SInputField > div {
       margin-bottom: 0;
     }
 
-    &:before {
+    &:not(:empty):before {
       content: counter(row) '.';
       display: inline-block;
       white-space: nowrap;

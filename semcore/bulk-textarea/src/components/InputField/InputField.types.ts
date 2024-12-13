@@ -24,6 +24,11 @@ export type InputFieldProps = {
    * Unique id
    */
   id?: string;
+
+  /**
+   * Placeholder for field
+   */
+  placeholder?: string;
   /**
    * String to render in textarea. OnChanging value, it will go throw paste pipeline
    */

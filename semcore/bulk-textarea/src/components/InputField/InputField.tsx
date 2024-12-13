@@ -140,6 +140,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (props.id) {
       textarea.setAttribute('id', props.id);
     }
+    if (props.placeholder) {
+      textarea.setAttribute('placeholder', props.placeholder);
+    }
     const { extractedAriaProps } = extractAriaProps(props);
     for (const key in extractedAriaProps) {
       const ariaProp: string | undefined = (props as any)[key];
@@ -154,19 +157,19 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
     textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
 
-    const firstRow = document.createElement('div');
-    const emptyText = document.createElement('br');
-    firstRow.appendChild(emptyText);
-    textarea.appendChild(firstRow);
-
     return textarea;
   }
 
   handleValueOutChange() {
-    const value = this.props.value;
-    const listOfNodes = this.prepareNodesForPaste(value);
+    const { value } = this.props;
 
-    this.textarea.replaceChildren(...listOfNodes);
+    if (value === '') {
+      this.textarea.replaceChildren('');
+    } else {
+      const listOfNodes = this.prepareNodesForPaste(value);
+
+      this.textarea.replaceChildren(...listOfNodes);
+    }
 
     this.recalculateIsEmpty();
   }
@@ -217,10 +220,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
-        const firstRow = document.createElement('div');
-        const emptyText = document.createElement('br');
-        firstRow.appendChild(emptyText);
-        this.textarea.replaceChildren(firstRow);
+        this.textarea.replaceChildren();
       }
 
       this.recalculateIsEmpty();
@@ -331,10 +331,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const preparedLine = rowProcessing(line);
       if ((preparedLine === '' && skipEmptyRows === false) || preparedLine !== '') {
         const node = document.createElement('div');
-        const text =
-          preparedLine === ''
-            ? document.createElement('br')
-            : document.createTextNode(preparedLine);
+        const text = document.createTextNode(preparedLine);
+        // preparedLine === ''
+        //   ? document.createElement('br')
+        //   : document.createTextNode(preparedLine);
         node.append(text);
         listOfNodes.push(node);
       }

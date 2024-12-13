@@ -52,6 +52,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
       minRows,
       maxRows,
       rowValidation,
+      placeholder,
       validateOn,
       onBlur,
       rowsDelimiters,
@@ -66,6 +67,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
       minRows,
       maxRows,
       ofRows,
+      placeholder,
       onChangeRows: this.handleChangeRows,
       onEnterNextRow: () => {
         if (validateOn?.includes('enterNextRow')) {
@@ -104,7 +106,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
 
   getCounterProps() {
     const { ofRows } = this.asProps;
-    const { rowsCount } = this.state;
+    const { rowsCount, isEmptyText } = this.state;
 
     let counterTheme = '';
 
@@ -116,7 +118,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
 
     return {
       theme: counterTheme,
-      rowsCount,
+      rowsCount: isEmptyText ? 0 : rowsCount,
       ofRows,
     };
   }
@@ -172,7 +174,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
   };
 
   render() {
-    return <Root render={Box} __excludeProps={['onBlur', 'value']} />;
+    return <Root render={Box} __excludeProps={['onBlur', 'value', 'placeholder']} />;
   }
 }
 
