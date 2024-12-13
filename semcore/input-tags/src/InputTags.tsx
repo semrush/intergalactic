@@ -199,6 +199,11 @@ class InputTags extends Component<IInputTagsProps> {
       tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
     };
   }
+  getTagContainerTextContentProps() {
+    return {
+      tabIndex: null,
+    };
+  }
 
   render() {
     const SInputTags = Root;
@@ -339,21 +344,33 @@ function InputTagContainerTag(props: any) {
   const STag = Root;
   const { getI18nText, editable } = props;
 
+  const ref = React.useRef<HTMLElement>();
+
+  React.useEffect(() => {
+    if (
+      ref.current instanceof HTMLButtonElement ||
+      ref.current?.getAttribute('role') === 'button'
+    ) {
+      ref.current.setAttribute('aria-describedby', `${props.uid}-description`);
+    } else {
+      ref.current?.removeAttribute('aria-describedby');
+    }
+  }, [ref.current, props.uid]);
+
   return sstyled(props.styles)(
     <>
-      {editable && (
-        <Portal>
-          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-            {getI18nText('pressEnterToEdit')}
-          </ScreenReaderOnly>
-        </Portal>
-      )}
-      <STag
-        aria-describedby={editable ? `${props.uid}-description` : undefined}
-        render={TagContainer.Tag}
-      />
+      <Portal>
+        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+          {getI18nText('pressEnterToEdit')}
+        </ScreenReaderOnly>
+      </Portal>
+      <STag render={TagContainer.Tag} ref={ref} />
     </>,
   );
+}
+
+function TagContainerTextContent(props: IRootComponentProps) {
+  return sstyled(props.styles)(<Root render={Tag.Text} />);
 }
 
 export default createComponent(InputTags, {
@@ -362,7 +379,7 @@ export default createComponent(InputTags, {
   Tag: [
     InputTagContainer,
     {
-      Text: [InputTagContainerTag, { Content: Tag.Text }],
+      Text: [InputTagContainerTag, { Content: TagContainerTextContent }],
       Close: TagContainer.Close,
       Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,

@@ -112,10 +112,10 @@ When there are too many tags to fit within the input, the input field's height i
 
 Table: InputTags sizes
 
-| Size     | Appearance      |                 | Margins        |
-| -------- | --------------- | --------------- | -------------- |
-| M input is used with the M tag | ![](static/m-size.png) | ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
-| L input is used with the L tag | ![](static/l-size.png) | ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
+| Size                           | Appearance                                      | Margins                      |
+| ------------------------------ | ----------------------------------------------- | ---------------------------- |
+| M input is used with the M tag | ![](static/m-size.png) ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
+| L input is used with the L tag | ![](static/l-size.png) ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
 
 ## Tag colors
 
@@ -141,9 +141,9 @@ Tags can be added either by selecting options from the menu, or by [entering dat
 
 Table: Interaction with InputTags
 
-| Data from the combobox    | User-entered data   | Data from the combobox and user-entered data    |
-| ------------------------- | ------------------- | ------------------------ |
-| ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png) |
+| Data from the combobox     | User-entered data          | Data from the combobox and user-entered data |
+| -------------------------- | -------------------------- | -------------------------------------------- |
+| ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png)                   |
 
 When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [combobox menu](/components/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
 
@@ -182,4 +182,3 @@ Note that this behavior isn’t recommended due to poor accessibility. Web page 
 You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an [Ellipsis](../ellipsis/ellipsis.md). Hovering over the tag will display a `Hint` with the full text of the tag.
 
 ![](static/ellipsis.png)
-
