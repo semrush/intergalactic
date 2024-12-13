@@ -5,6 +5,7 @@ import DefaultLogInFormExample from './examples/default-log-in-form';
 import InputTagsAndSelectExample from './examples/inputtags-and-select';
 
 import { DefaultLogInFormTest } from './__tests__/DefaultLogInForm.test';
+import { playWrapper } from '../../../../utils/playWrapper';
 
 const meta: Meta = {
   title: 'Patterns/UX Patterns/Form',
@@ -15,16 +16,16 @@ export const CheckboxAndRadio: StoryObj = {
 };
 
 export const DatepickerAndTimepicker: StoryObj = {
-    render: DatepickerAndTimepickerExample,
+  render: DatepickerAndTimepickerExample,
 };
 
 export const DefaultLogInForm: StoryObj = {
-    render: DefaultLogInFormExample,
-    play: DefaultLogInFormTest,
+  render: DefaultLogInFormExample,
+  play: playWrapper(DefaultLogInFormTest),
 };
 
 export const InputTagsAndSelect: StoryObj = {
-    render: InputTagsAndSelectExample,
+  render: InputTagsAndSelectExample,
 };
 
 export default meta;

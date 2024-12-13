@@ -7,7 +7,6 @@ import Checkbox from '@semcore/checkbox';
 import Select from '@semcore/select';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
   const [selectedValue, setSelectedValue] = React.useState<string[]>([]);
@@ -58,9 +57,17 @@ const Demo = () => {
     checked: boolean,
     e?: React.SyntheticEvent<HTMLInputElement, Event>,
   ) => {
-    const value = e?.currentTarget.value as string;
+    const value = e?.currentTarget.value;
 
-    const tmpArray = checked ? [...selectedValue, value] : selectedValue.filter((v) => v !== value);
+    const currentSelectedValue = [...selectedValue];
+    if (value !== undefined) {
+      currentSelectedValue.push(value);
+    }
+
+    const tmpArray = checked
+      ? currentSelectedValue
+      : currentSelectedValue.filter((v) => v !== value);
+
     tmpArray.length && reset({ export: 'selected' });
     setSelectedValue(tmpArray);
   };
