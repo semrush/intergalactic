@@ -11,17 +11,12 @@ const Demo = () => {
           i18n={{
             nld: {
               prevPageLabel: 'Vorige',
-              prevPageDescription: 'Vorige pagina {pageNumber}',
               nextPageLabel: 'Volgende',
-              nextPageDescription: 'Volgende pagina {pageNumber}',
               pageInputLabel: 'Pagina:',
               totalPagesLabel: 'van',
               pagination: 'Paginering',
               firstPage: 'Eerste pagina',
-              currentPage: 'Huidige pagina',
-              confirm: 'Bevestig paginanummer',
               lastPage: 'Laatste pagina #{lastPageNumber}',
-              goToPage: 'Pagina {pageNumber}',
             },
           }}
           totalPages={123}
