@@ -51,7 +51,7 @@ const Preview = (preview) => {
     label: 'Value',
   });
 
-  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} />;
+  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} aria-label="Progress bar" />;
 };
 
 const App = PlaygroundGeneration(Preview, {filterProps: ['w']});

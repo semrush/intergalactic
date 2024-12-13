@@ -344,19 +344,27 @@ function InputTagContainerTag(props: any) {
   const STag = Root;
   const { getI18nText, editable } = props;
 
+  const ref = React.useRef<HTMLElement>();
+
+  React.useEffect(() => {
+    if (
+      ref.current instanceof HTMLButtonElement ||
+      ref.current?.getAttribute('role') === 'button'
+    ) {
+      ref.current.setAttribute('aria-describedby', `${props.uid}-description`);
+    } else {
+      ref.current?.removeAttribute('aria-describedby');
+    }
+  }, [ref.current, props.uid]);
+
   return sstyled(props.styles)(
     <>
-      {editable && (
-        <Portal>
-          <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
-            {getI18nText('pressEnterToEdit')}
-          </ScreenReaderOnly>
-        </Portal>
-      )}
-      <STag
-        aria-describedby={editable ? `${props.uid}-description` : undefined}
-        render={TagContainer.Tag}
-      />
+      <Portal>
+        <ScreenReaderOnly id={`${props.uid}-description`} aria-hidden='true'>
+          {getI18nText('pressEnterToEdit')}
+        </ScreenReaderOnly>
+      </Portal>
+      <STag render={TagContainer.Tag} ref={ref} />
     </>,
   );
 }

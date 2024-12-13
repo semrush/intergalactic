@@ -13,6 +13,7 @@ import { Plot, XAxis, YAxis } from '../..';
 import { Text } from '@semcore/typography';
 import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
@@ -449,6 +450,8 @@ export abstract class AbstractChart<
     const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration } =
       this.asProps;
 
+    const { extractedAriaProps } = extractAriaProps(this.asProps);
+
     return sstyled(styles)(
       <SChart render={Flex} gap={5} __excludeProps={['data']} role={'group'}>
         {this.renderLegend()}
@@ -461,6 +464,7 @@ export abstract class AbstractChart<
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
+          {...extractedAriaProps}
         >
           {this.renderAxis()}
           {this.renderTooltip()}

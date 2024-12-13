@@ -45,7 +45,13 @@ const Demo = () => {
 
   return (
     <Flex>
-      <svg ref={svgRef} xmlns='http://www.w3.org/2000/svg' width={width} height={height}>
+      <svg
+        ref={svgRef}
+        xmlns='http://www.w3.org/2000/svg'
+        width={width}
+        height={height}
+        aria-hidden={true}
+      >
         <foreignObject width='100%' height='100%'>
           <DataTable data={data} aria-label={'Table title. Export in image'}>
             <DataTable.Head>
