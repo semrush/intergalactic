@@ -7,10 +7,19 @@ import { PopperContext } from '@semcore/popper';
 import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
-class InputField extends Component<InputFieldProps> {
+type State = {
+  visibleErrorPopper: boolean;
+  currentRowIndex: number;
+};
+
+class InputField extends Component<InputFieldProps, {}, State, typeof InputField.enhance> {
   static displayName = 'Textarea';
   static style = style;
+
+  static enhance = [uniqueIDEnhancement()] as const;
+
   static defaultProps = {
     defaultValue: '',
     size: 'm',
@@ -33,6 +42,7 @@ class InputField extends Component<InputFieldProps> {
 
   state = {
     visibleErrorPopper: false,
+    currentRowIndex: -1,
   };
 
   constructor(props: InputFieldProps) {
@@ -67,10 +77,20 @@ class InputField extends Component<InputFieldProps> {
   }
 
   componentDidUpdate(prevProps: InputFieldProps): void {
-    const { value, errors, errorIndex } = this.props;
+    const { value, errors, errorIndex, showErrors } = this.props;
 
     if (prevProps.value !== value && value !== this.getRows().join(this.delimiter)) {
       this.handleValueOutChange();
+    }
+
+    if (prevProps.showErrors !== showErrors) {
+      if (showErrors) {
+        this.textarea.setAttribute('aria-invalid', 'true');
+        this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+      } else {
+        this.textarea.removeAttribute('aria-invalid');
+        this.textarea.removeAttribute('aria-describedby');
+      }
     }
 
     if (prevProps.errorIndex !== errorIndex) {
@@ -104,6 +124,11 @@ class InputField extends Component<InputFieldProps> {
 
   componentWillUnmount() {
     this.textareaObserver.disconnect();
+  }
+
+  get popperDescribedId() {
+    const { uid } = this.asProps;
+    return `bulk-textarea-${uid}-popper-describedby`;
   }
 
   createContentEditableElement(props: InputFieldProps) {
@@ -146,9 +171,15 @@ class InputField extends Component<InputFieldProps> {
     this.recalculateIsEmpty();
   }
 
-  handleChangeTextareaTree(): void {
+  handleChangeTextareaTree(mutations: MutationRecord[]): void {
     const childNodes = this.textarea.childNodes;
     this.props.onChangeRows(childNodes.length);
+
+    const mutationRecord = mutations[0];
+
+    mutationRecord.addedNodes.forEach((node) => {
+      this.validateRow(node);
+    });
   }
 
   handleMouseMove(event: MouseEvent): void {
@@ -157,39 +188,17 @@ class InputField extends Component<InputFieldProps> {
 
   handlePaste(event: ClipboardEvent) {
     event.preventDefault();
+    const { validateOn } = this.asProps;
     const value = event.clipboardData?.getData('text/plain');
     const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
 
     this.textarea.append(...listOfNodes);
 
-    this.recalculateIsEmpty();
-  }
-
-  handleChangeRow(event: Event) {
-    const { rowValidation } = this.asProps;
-    const selection = document.getSelection();
-
-    const rowNode =
-      selection?.focusNode?.parentNode === this.textarea
-        ? selection?.focusNode
-        : selection?.focusNode?.parentNode;
-
-    if (rowNode instanceof HTMLElement && rowValidation) {
-      const index = Array.from(this.textarea.childNodes).indexOf(rowNode);
-      const value = rowNode?.textContent ?? '';
-
-      const { isValid, errorMessage } = rowValidation(value, index + 1, this.getRows());
-
-      if (!isValid) {
-        rowNode.dataset.isInvalid = 'true';
-        rowNode.setAttribute('aria-errormessage', errorMessage);
-      } else {
-        rowNode.dataset.isInvalid = 'false';
-        rowNode.removeAttribute('aria-errormessage');
-        this.recalculateErrors();
-        this.setState({ visibleErrorPopper: false });
-      }
+    if (validateOn.includes('paste')) {
+      this.recalculateErrors();
     }
+
+    this.recalculateIsEmpty();
   }
 
   handleChange(event: Event) {
@@ -215,8 +224,6 @@ class InputField extends Component<InputFieldProps> {
       }
 
       this.recalculateIsEmpty();
-
-      this.handleChangeRow(event);
     }
   }
 
@@ -232,7 +239,8 @@ class InputField extends Component<InputFieldProps> {
 
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
       const selection = document.getSelection();
-      const currentRowValue = selection?.focusNode?.textContent;
+      const currentNode = selection?.focusNode;
+      const currentRowValue = currentNode?.textContent;
 
       if (!currentRowValue) {
         event.preventDefault();
@@ -248,6 +256,7 @@ class InputField extends Component<InputFieldProps> {
         }
 
         if (validateOn.includes('enterNextRow')) {
+          this.validateRow(currentNode);
           this.recalculateErrors();
         }
         onEnterNextRow();
@@ -288,7 +297,7 @@ class InputField extends Component<InputFieldProps> {
         <Tooltip
           interaction={'none'}
           placement={'right-start'}
-          visible={this.state.visibleErrorPopper && showErrors && errorItem !== undefined}
+          visible={this.state.visibleErrorPopper && showErrors && Boolean(errorItem?.errorMessage)}
           theme={'warning'}
           offset={[0, 24]}
         >
@@ -297,7 +306,9 @@ class InputField extends Component<InputFieldProps> {
             this.popper = popper;
             this.popper.current?.update();
 
-            return <Tooltip.Popper>{errorItem?.errorMessage}</Tooltip.Popper>;
+            return (
+              <Tooltip.Popper id={this.popperDescribedId}>{errorItem?.errorMessage}</Tooltip.Popper>
+            );
           }}
         </Tooltip>
         <SInputField
@@ -311,7 +322,7 @@ class InputField extends Component<InputFieldProps> {
 
   private prepareNodesForPaste(value: string): HTMLDivElement[] {
     const listOfNodes: HTMLDivElement[] = [];
-    const { pasteProps, rowValidation } = this.asProps;
+    const { pasteProps } = this.asProps;
     const rowProcessing = pasteProps?.rowProcessing ?? ((row: string) => row.trim());
     const skipEmptyRows = pasteProps?.skipEmptyRows ?? false;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
@@ -328,24 +339,6 @@ class InputField extends Component<InputFieldProps> {
         listOfNodes.push(node);
       }
     });
-
-    if (rowValidation) {
-      listOfNodes.forEach((node, index) => {
-        const { isValid, errorMessage } = rowValidation(
-          node.textContent ?? '',
-          index + 1,
-          this.getRows(),
-        );
-
-        if (isValid) {
-          node.dataset.isInvalid = 'false';
-          node.removeAttribute('aria-errormessage');
-        } else {
-          node.dataset.isInvalid = 'true';
-          node.setAttribute('aria-errormessage', errorMessage);
-        }
-      });
-    }
 
     return listOfNodes;
   }
@@ -366,7 +359,7 @@ class InputField extends Component<InputFieldProps> {
     const errors: ErrorItem[] = [];
 
     this.textarea.childNodes.forEach((node, index) => {
-      if (node instanceof HTMLDivElement && node.dataset.isInvalid === 'true') {
+      if (node instanceof HTMLDivElement && node.getAttribute('aria-invalid') === 'true') {
         const errorItem = {
           errorMessage: node.getAttribute('aria-errormessage') ?? '',
           rowNode: node,
@@ -389,15 +382,40 @@ class InputField extends Component<InputFieldProps> {
   }
 
   private toggleErrorsPopper(target?: unknown) {
-    if (target instanceof HTMLDivElement && target.dataset.isInvalid === 'true') {
+    if (
+      target instanceof HTMLDivElement &&
+      target.getAttribute('aria-invalid') === 'true' &&
+      target !== this.textarea
+    ) {
       const index = Array.from(this.textarea.childNodes).indexOf(target);
       this.setState({ visibleErrorPopper: true, currentRowIndex: index }, () => {
         this.setPopperTrigger?.(target);
         this.popper?.current?.update();
       });
     } else {
-      this.setState({ visibleErrorPopper: false, currentRowIndex: -1 });
+      this.setState({ visibleErrorPopper: false });
     }
+  }
+
+  private validateRow(node: Node): boolean {
+    const { rowValidation } = this.asProps;
+    if (rowValidation && node instanceof HTMLElement) {
+      const { isValid, errorMessage } = rowValidation(node.textContent ?? '', this.getRows());
+
+      if (!isValid) {
+        node.setAttribute('aria-invalid', 'true');
+        node.setAttribute('aria-errormessage', errorMessage);
+      } else {
+        node.removeAttribute('aria-invalid');
+        node.removeAttribute('aria-errormessage');
+        this.recalculateErrors();
+        this.setState({ visibleErrorPopper: false });
+      }
+
+      return isValid;
+    }
+
+    return true;
   }
 }
 

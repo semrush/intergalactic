@@ -215,7 +215,7 @@
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
     "description": "Secondary background of the message with critical information you want to accent.",
-    "components": ["bulk-textarea", "notice"]
+    "components": ["notice"]
   },
   {
     "name": "--intergalactic-bg-secondary-critical-hover",

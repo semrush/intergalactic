@@ -64,11 +64,7 @@ export type InputFieldProps = {
   /**
    * Function to validate row
    */
-  rowValidation?: (
-    row: string,
-    rowIndex: number,
-    rows: string[],
-  ) => { isValid: boolean; errorMessage: string };
+  rowValidation?: (row: string, rows: string[]) => { isValid: boolean; errorMessage: string };
 
   /**
    * Delimiters (event.key) for rows
