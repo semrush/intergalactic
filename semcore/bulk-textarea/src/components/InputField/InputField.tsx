@@ -164,7 +164,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const { value } = this.props;
 
     if (value === '') {
-      this.textarea.replaceChildren('');
+      this.textarea.textContent = '';
     } else {
       const listOfNodes = this.prepareNodesForPaste(value);
 

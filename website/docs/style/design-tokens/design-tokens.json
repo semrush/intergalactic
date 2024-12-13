@@ -398,7 +398,14 @@
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
     "description": "Placeholder text only.",
-    "components": ["base-trigger", "inline-input", "input", "input-mask", "textarea"]
+    "components": [
+      "base-trigger",
+      "bulk-textarea",
+      "inline-input",
+      "input",
+      "input-mask",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -2433,6 +2440,7 @@
     "computedValue": "32px",
     "description": "32px",
     "components": [
+      "bulk-textarea",
       "errors",
       "format-text",
       "fullscreen-modal",

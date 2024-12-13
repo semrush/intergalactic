@@ -12,8 +12,10 @@ SInputField > div {
   font-family: inherit;
 
   &:empty:before {
-    content: attr(placeholder);
+    content: '1. ' attr(placeholder);
     color: var(--intergalactic-text-placeholder, #8a8e9b);
+    position: absolute;
+    left: 33px;
   }
 
   > div {
@@ -63,6 +65,10 @@ SInputField[size='m'] > div {
 
   min-height: calc(var(--minRows) * (20px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
   max-height: calc(var(--maxRows) * (20px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
+
+  &:empty {
+    padding-left: var(--intergalactic-spacing-8x, 32px);
+  }
 }
 
 SInputField[size='l'] > div {
@@ -72,6 +78,10 @@ SInputField[size='l'] > div {
 
   min-height: calc(var(--minRows) * (24px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
   max-height: calc(var(--maxRows) * (24px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
+
+  &:empty {
+    padding-left: var(--intergalactic-spacing-8x, 32px);
+  }
 }
 
 
