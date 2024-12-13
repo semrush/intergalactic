@@ -195,7 +195,40 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const value = event.clipboardData?.getData('text/plain');
     const listOfNodes = value ? this.prepareNodesForPaste(value) : [];
 
-    this.textarea.append(...listOfNodes);
+    const selection = document.getSelection();
+
+    if (selection) {
+      const focusNode = selection.focusNode;
+      const previousNode = focusNode?.previousSibling;
+      const rowNode = focusNode?.parentElement;
+
+      if (focusNode === this.textarea) {
+        this.textarea.append(...listOfNodes);
+      } else if (previousNode) {
+        previousNode.after(...listOfNodes);
+      } else if (rowNode instanceof HTMLDivElement) {
+        const before = rowNode.textContent?.substring(0, selection.focusOffset) ?? '';
+        const after = rowNode.textContent?.substring(selection.focusOffset) ?? '';
+
+        const firstNodeToInsert = listOfNodes.splice(0, 1);
+        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+
+        rowNode.textContent = before + firstNodeToInsert[0]?.textContent ?? '';
+
+        rowNode.after(...listOfNodes);
+
+        const range = document.createRange();
+        range.setStart(lastNodeToInsert, 1);
+        range.setEnd(lastNodeToInsert, 1);
+
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        if (lastNodeToInsert) {
+          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+        }
+      }
+    }
 
     if (validateOn.includes('paste')) {
       this.recalculateErrors();
@@ -209,10 +242,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (target instanceof HTMLDivElement) {
       const nodes = this.textarea.childNodes;
       const firstNode = nodes.item(0);
+      const selection = document.getSelection();
 
       if (firstNode instanceof Text) {
         const nodeText = firstNode.textContent ?? '';
-        const selection = document.getSelection();
         const firstRow = document.createElement('div');
         const text = document.createTextNode(nodeText);
         firstRow.append(text);
@@ -221,6 +254,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
         this.textarea.replaceChildren();
+      }
+
+      const rowNode =
+        selection?.focusNode?.parentNode === this.textarea
+          ? selection?.focusNode
+          : selection?.focusNode?.parentNode;
+
+      if (rowNode instanceof HTMLElement) {
+        this.validateRow(rowNode);
       }
 
       this.recalculateIsEmpty();

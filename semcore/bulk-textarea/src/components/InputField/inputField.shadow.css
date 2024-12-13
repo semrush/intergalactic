@@ -18,12 +18,31 @@ SInputField > div {
     left: 33px;
   }
 
+  &:nth-child(even) {
+    color: red;
+    counter-increment: row;
+    /*display: flex;*/
+    margin-bottom: var(--intergalactic-spacing-1x, 4px);
+    position: relative;
+    word-break: break-all;
+
+    &:before {
+      content: counter(row) '.';
+      display: inline-block;
+      white-space: nowrap;
+      text-align: right;
+      color: var(--intergalactic-text-secondary, #6c6e79);
+      margin-right: var(--intergalactic-spacing-1x, 4px);
+    }
+  }
+
   > div {
     counter-increment: row;
     display: flex;
     margin-bottom: var(--intergalactic-spacing-1x, 4px);
     position: relative;
     word-break: break-all;
+    padding-right: 20px;
 
     &:last-of-type {
       margin-bottom: 0;
