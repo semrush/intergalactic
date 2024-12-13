@@ -100,12 +100,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const selection = document.getSelection();
 
       if (selection && node instanceof HTMLDivElement) {
-        const range = document.createRange();
-        range.setStart(node, 0);
-        range.setEnd(node, 1);
-
-        selection.removeAllRanges();
-        selection.addRange(range);
+        this.setSelection(node, 0, 1);
 
         node.focus();
         node.scrollIntoView({
@@ -217,12 +212,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
         rowNode.after(...listOfNodes);
 
-        const range = document.createRange();
-        range.setStart(lastNodeToInsert, 1);
-        range.setEnd(lastNodeToInsert, 1);
-
-        selection.removeAllRanges();
-        selection.addRange(range);
+        this.setSelection(lastNodeToInsert, 1, 1);
 
         if (lastNodeToInsert) {
           lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
@@ -258,17 +248,34 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (
         firstNode instanceof HTMLDivElement &&
         !firstNode.textContent &&
-        secondNode instanceof HTMLBRElement
+        (secondNode instanceof HTMLBRElement ||
+          firstNode.childNodes.item(0) instanceof HTMLBRElement)
       ) {
         this.textarea.textContent = '';
       }
 
-      const rowNode =
-        selection?.focusNode?.parentNode === this.textarea
-          ? selection?.focusNode
-          : selection?.focusNode?.parentNode;
+      let maxDeep = 10;
+      let rowNode = selection?.focusNode;
+
+      while (rowNode?.parentNode !== this.textarea && maxDeep > 0) {
+        rowNode = rowNode?.parentNode;
+        maxDeep--;
+      }
 
       if (rowNode instanceof HTMLElement) {
+        const childNodes = rowNode.childNodes;
+        const textContent = rowNode.textContent ?? '';
+
+        if (childNodes.length > 1) {
+          const offset = childNodes.item(0).textContent?.length;
+
+          rowNode.textContent = textContent;
+
+          if (offset) {
+            this.setSelection(rowNode.childNodes.item(0), offset, offset);
+          }
+        }
+
         this.validateRow(rowNode);
       }
 
@@ -465,6 +472,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
 
     return true;
+  }
+
+  private setSelection(node: Node, start: number, end: number): void {
+    const selection = document.getSelection();
+    const range = document.createRange();
+    range.setStart(node, start);
+    range.setEnd(node, end);
+
+    selection?.removeAllRanges();
+    selection?.addRange(range);
   }
 }
 
