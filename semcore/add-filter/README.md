@@ -1,12 +1,12 @@
-# @semcore/feedback-form
+# @semcore/add-filter
 
-[![version](https://img.shields.io/npm/v/@semcore/feedback-form.svg)](https://www.npmjs.com/@semcore/feedback-form)
-[![downloads](https://img.shields.io/npm/dt/@semcore/feedback-form.svg)](https://www.npmjs.com/package/@semcore/feedback-form)
+[![version](https://img.shields.io/npm/v/@semcore/add-filter.svg)](https://www.npmjs.com/@semcore/add-filter)
+[![downloads](https://img.shields.io/npm/dt/@semcore/add-filter.svg)](https://www.npmjs.com/package/@semcore/add-filter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
 > This component is part of the Intergalactic Design System
 
-### 📖 [Component documentation](https://developer.semrush.com/intergalactic/components/feedback-form/)
+### 📖 [Component documentation](https://developer.semrush.com/intergalactic/components/add-filter/)
 
 ### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
 
@@ -19,7 +19,7 @@ npm install intergalactic
 ## Usage
 
 ```jsx
-import AddFilter from 'intergalactic/add-filter';
+import AddFilter from 'intergalactic/ui/add-filter';
 ```
 
 <details>

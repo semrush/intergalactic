@@ -159,7 +159,7 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
-    "source": "semcore/add-filter-pattern/src/translations/en.json",
+    "source": "semcore/add-filter/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   }
 ]

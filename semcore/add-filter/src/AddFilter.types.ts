@@ -44,8 +44,6 @@ declare const AddFilterType: Intergalactic.Component<'div', AddFilterProps> & {
   Dropdown: typeof AddFilterDropdownType;
   Input: typeof AddFilterInputType;
   Select: typeof AddFilterSelectType;
-  DropdownMenu: typeof DropdownMenu;
-  ClearAllFilters: typeof Button;
 };
 
 export { AddFilterInputType, AddFilterSelectType, AddFilterDropdownType };

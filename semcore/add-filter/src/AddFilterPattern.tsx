@@ -16,7 +16,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 type AddFilterDropdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
   options: AddFilterDropdownOption[];
-  toggleFieldVisibility: (name: string, status?: boolean) => void;
+  toggleFieldVisibility: (name: string, status: boolean) => void;
   visibleFilters: Set<string>;
   getI18nText: (key: string) => string;
 };
@@ -32,20 +32,22 @@ type AddFilterState = {
   addDropdownItems: AddFilterDropdownOption[];
 };
 
-const componentsNames = ['AddFilter.Input', 'AddFilter.Select', 'AddFilter.Dropdown'];
-
-const enhance = [i18nEnhance(localizedMessages)] as const;
-class RootAddFilter extends Component<AddFilterProps, {}, AddFilterState, typeof enhance> {
+class RootAddFilter extends Component<
+  AddFilterProps,
+  {},
+  AddFilterState,
+  typeof RootAddFilter.enhance
+> {
   static displayName = 'AddFilter';
-
-  static enhance = enhance;
+  static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
   };
 
+  static componentsNames = ['AddFilter.Input', 'AddFilter.Select', 'AddFilter.Dropdown'];
   static getFilterPatternItems = (children: React.ReactNode) => {
-    return findAllComponents(children, componentsNames).filter(({ props }) => Boolean(props.name));
+    return findAllComponents(children, RootAddFilter.componentsNames);
   };
 
   static getDefaultAddDropdownOptions = (children: React.ReactNode) => {
@@ -144,11 +146,13 @@ class RootAddFilter extends Component<AddFilterProps, {}, AddFilterState, typeof
     const allFilters = RootAddFilter.getFilterPatternItems(Children);
     const VisibleFilteredChildren = this.getVisibleFilters(allFilters);
 
+    const dropdownProps = this.getDropdownMenuProps();
+    const clearAllFiltersProps = this.getClearAllFiltersProps();
     return (
       <Root render={Flex}>
         {VisibleFilteredChildren}
-        <AddFilter.DropdownMenu />
-        <AddFilter.ClearAllFilters />
+        <AddFilterDropdownMenu {...dropdownProps} />
+        <ClearAllFilters {...clearAllFiltersProps} />
       </Root>
     );
   }
@@ -163,47 +167,43 @@ function AddFilterDropdownMenu(props: AddFilterDropdownMenuProps) {
       return !Array.from(visibleFilters).includes(filter.value);
     });
   }, [options, visibleFilters]);
-
+  if (!optionsWithoutVisible.length) {
+    return null;
+  }
   return (
-    Boolean(optionsWithoutVisible.length) && (
-      <DropdownMenu visible={visible} onVisibleChange={setVisible}>
-        <DropdownMenu.Trigger tag={Button} use='tertiary' addonLeft={MathPlusM}>
-          {getI18nText('AddFilter.DropdownTrigger.Text')}
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Menu>
-          {optionsWithoutVisible.map(({ label, value }) => (
-            <DropdownMenu.Item
-              key={value}
-              onClick={() => {
-                toggleFieldVisibility(value, true);
-                setVisible(false);
-              }}
-            >
-              {label}
-            </DropdownMenu.Item>
-          ))}
-        </DropdownMenu.Menu>
-      </DropdownMenu>
-    )
+    <DropdownMenu visible={visible} onVisibleChange={setVisible}>
+      <DropdownMenu.Trigger tag={Button} use='tertiary' addonLeft={MathPlusM}>
+        {getI18nText('AddFilter.DropdownTrigger.Text')}
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Menu>
+        {optionsWithoutVisible.map(({ label, value }) => (
+          <DropdownMenu.Item
+            key={value}
+            onClick={() => {
+              toggleFieldVisibility(value, true);
+              setVisible(false);
+            }}
+          >
+            {label}
+          </DropdownMenu.Item>
+        ))}
+      </DropdownMenu.Menu>
+    </DropdownMenu>
   );
 }
 
 function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFiltersButtonProps) {
-  return (
-    hasFilterData && (
-      <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
-        {getI18nText('AddFilter.Button.Text')}
-      </Button>
-    )
-  );
+  return hasFilterData ? (
+    <Button use='tertiary' theme='muted' addonLeft={CloseM} ml='auto' onClick={clearAll}>
+      {getI18nText('AddFilter.Button.Text')}
+    </Button>
+  ) : null;
 }
 
 const AddFilter: typeof AddFilterType = createComponent(RootAddFilter, {
   Select: AddFilterSelect,
   Input: AddFilterInput,
   Dropdown: AddFilterDropdown,
-  DropdownMenu: AddFilterDropdownMenu,
-  ClearAllFilters,
 });
 
 export default AddFilter;
