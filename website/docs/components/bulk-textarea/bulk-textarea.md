@@ -9,7 +9,7 @@ _**WILL WE USE "ROW" OR "LINE" WORD FOR THE LINE WITH A VALUE? If we will use "L
 
 **BulkTextarea** is a multiline text field designed for entering lists of comma-separated values.
 
-You can enter a list manually in this field using **Enter** or a comma, or paste a comma-separated list. You can also define your own rules for splitting values into rows.
+You can enter a list manually using **Enter** or a comma, or paste a comma-separated list. You can also define your own rules for splitting values into rows.
 
 This component also provides the possibility to validate every row and the whole input.
 
@@ -19,7 +19,7 @@ This component also provides the possibility to validate every row and the whole
 
 Component consists of the following:
 
-_(THESE NAMES ARE TEMPORARY, WILL BE UPDATED ACCORDING TO THE ACTUAL COMPONENT)_
+**_(THESE NAMES ARE TEMPORARY, WILL BE UPDATED ACCORDING TO THE ACTUAL COMPONENT)_**
 
 - `BulkTextarea.Label`
 - `BulkTextarea.Textarea`
@@ -43,7 +43,7 @@ Table: BulkTextarea sizes
 
 ### Rows
 
-Each row is numbered. Rows that fail validation are marked with a `Warning` icon on the right. Rows that exceed the limit have a different background color.
+Each row is numbered. Rows that fail validation are marked with a `Warning` icon on the right. Rows that exceed the limit are highlighted.
 
 ![](static/bulktextarea-rows.png)
 
@@ -58,11 +58,11 @@ Table: BulkTextarea with counter
 | M (`--fs-200`)   | ![](static/bulk-m.png) |
 | L (`--fs-300`)   | ![](static/bulk-l.png) |
 
-### How counter work
+### How counter works
 
-1. The counter shows the value limit and updates once there’s at least one character in a line.
+1. The counter shows the value limit and updates once user in a new line.
 2. The counter updates if the user deletes a line.
-3. Empty lines are removed immediately in the component if the user presses the Enter key or a comma on an empty line.
+3. If the user presses Enter or types a comma on an empty line, they stay on the same line. This helps avoid adding unnecessary blank lines.
 4. Duplicate lines are counted.
 5. You can set your own validation rules for how invalid values are counted in the counter.
 
@@ -92,13 +92,11 @@ Error navigation shows up after all the values or a single value (depending on t
 
 ![](static/bulktextarea-error-navigation.png)
 
-When a button is clicked, the cursor moves to the first or last invalid row, depending on the button. The entire row's value is selected for quick deletion. The text next to the navigation buttons updates to "n out of n" when the cursor is moved using the buttons, keyboard, or mouse.
+When a button is clicked, the cursor moves to the first or last invalid row, depending on the button. The entire row's value is selected for quick deletion. The text next to the navigation buttons updates to _"n out of n"_ when the cursor is moved using the buttons, keyboard, or mouse.
 
 ![](static/bulktextarea-error-navigation-1.png)
 
-When navigating between invalid rows, the text next to the buttons is updated.  
-
-If you move from an invalid row to a valid row, the counter stays the same.
+When navigating between invalid rows, the text next to the buttons is updated. If you move from an invalid row to a valid row, the counter in the text stays the same.
 
 ### Resize control
 
@@ -118,7 +116,7 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-You can define your own validation rules for the input: on submit, onBlur, or on line break. By default, validation in the component works on line break.
+You can define your own validation rules for the input: instant, on submit, onBlur, or on line break. By default, our component uses instant validation.
 
 ### Tooltips
 
