@@ -1,1 +1,4 @@
-{}
+{
+  "AddFilter.DropdownTrigger.Text": "Ajouter un filtre",
+  "AddFilter.Button.Text": "Effacer les filtres"
+}
