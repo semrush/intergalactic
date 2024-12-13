@@ -8,7 +8,7 @@ test.skip('Users can interact with Accordion via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/accordion/examples/basic_usage.tsx';
+  const standPath = 'stories/components/accordion/docs/examples/basic_usage.tsx';
   const reportPath = 'website/docs/components/accordion/accordion-a11y-report.md';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();

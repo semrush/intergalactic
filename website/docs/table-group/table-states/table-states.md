@@ -12,10 +12,10 @@ When a message with a loading or error state appears, it should have a `margin-t
 
 Table: Basic rules for table states
 
-|                                                       | First screen                                                | Scrolling the page  |
-| ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| Example with [ProgressBar](/components/progress-bar/progress-bar) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
-| Example with [SpinContainer](/components/spin-container/spin-container)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
+| Examples                                                        | First screen                     | Scrolling the page               |
+| --------------------------------------------------------------- | -------------------------------- | -------------------------------- |
+| With [ProgressBar](/components/progress-bar/progress-bar)       | ![](static/table-sticky-1.png)   | ![](static/table-sticky-2.png)   |
+| With [SpinContainer](/components/spin-container/spin-container) | ![](static/sticky-loading-1.png) | ![](static/sticky-loading-2.png) |
 
 ::: tip
 Avoid changing the table height when it's switched between states.
@@ -120,9 +120,9 @@ Show this state when there is an error in the product on the backend, preventing
 
 Table: Examples of "Something went wrong" state
 
-|                                            | Appearance example                                         |
-| ------------------------------------------ | --------------------------------------------------------- |
-| We are aware of the problem, and fixing it | ![](static/error-known.png)         |
+| Case                                       | Appearance example              |
+| ------------------------------------------ | ------------------------------- |
+| We are aware of the problem, and fixing it | ![](static/error-known.png)     |
 | We don't know about the problem yet        | ![](static/error-not-known.png) |
 
 ::: tip
