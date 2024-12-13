@@ -12,8 +12,11 @@ import TheSecondMethodExample from './examples/the_second_method';
 
 import { BasicUsageTest } from './__tests__/basic.test';
 import { DropdownMenuTest } from './__tests__/dropdown-menu.test';
+import { ListItemTypesTest } from './__tests__/list_item_types.test';
 import { ItemActionsTest } from './__tests__/item_actions.test';
 import { NestedWithFocusableTest } from './__tests__/nested_with_focusable.test';
+import { NestedTest } from './__tests__/nested.test';
+import { TheSecondMethodTest } from './__tests__/the_second_method.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -41,10 +44,12 @@ export const ItemActions: Story = {
 
 export const ListItemTypes: Story = {
   render: ListItemTypesExample,
+  play: playWrapper(ListItemTypesTest),
 };
 
 export const Nested: Story = {
   render: NestedExample,
+  play: playWrapper(NestedTest),
 };
 
 export const NestedWithFocusable: Story = {
@@ -54,4 +59,5 @@ export const NestedWithFocusable: Story = {
 
 export const TheSecondMethod: Story = {
   render: TheSecondMethodExample,
+  play: playWrapper(TheSecondMethodTest),
 };

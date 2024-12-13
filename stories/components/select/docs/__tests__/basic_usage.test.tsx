@@ -3,11 +3,10 @@ import { expect, userEvent, within } from '@storybook/test';
 export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLElement }) {
   const canvas = within(canvasElement);
 
-  const trigger = within(document.body).queryByText("Actions");
+  const trigger = within(document.body).queryByText("Select option");
   if (!(trigger)) {
     throw new Error('Trigger not found');
   }
  await userEvent.click(trigger);
- 
 
 }

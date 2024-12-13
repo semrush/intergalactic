@@ -5,7 +5,7 @@ export async function DropdownMenuTest({ canvasElement }: { canvasElement: HTMLE
 
   const button = within(document.body).queryByText("Export");
   if (!(button)) {
-    throw new Error('Section 1 not found');
+    throw new Error('Trigger not found');
   }
  await userEvent.click(button);
  
