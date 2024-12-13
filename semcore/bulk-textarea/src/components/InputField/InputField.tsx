@@ -242,6 +242,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (target instanceof HTMLDivElement) {
       const nodes = this.textarea.childNodes;
       const firstNode = nodes.item(0);
+      const secondNode = nodes.item(1);
       const selection = document.getSelection();
 
       if (firstNode instanceof Text) {
@@ -253,7 +254,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
-        this.textarea.replaceChildren();
+        this.textarea.textContent = '';
+      } else if (
+        firstNode instanceof HTMLDivElement &&
+        !firstNode.textContent &&
+        secondNode instanceof HTMLBRElement
+      ) {
+        this.textarea.textContent = '';
       }
 
       const rowNode =
@@ -373,10 +380,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const preparedLine = rowProcessing(line);
       if ((preparedLine === '' && skipEmptyRows === false) || preparedLine !== '') {
         const node = document.createElement('div');
-        const text = document.createTextNode(preparedLine);
-        // preparedLine === ''
-        //   ? document.createElement('br')
-        //   : document.createTextNode(preparedLine);
+        const text =
+          preparedLine === ''
+            ? document.createElement('br')
+            : document.createTextNode(preparedLine);
         node.append(text);
         listOfNodes.push(node);
       }
