@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.43.6] - 2024-12-16
+
+### Changed
+
+- Removed tabIndex on Popper in Menu component.
+
 ## [4.43.5] - 2024-12-09
 
 ### Changed

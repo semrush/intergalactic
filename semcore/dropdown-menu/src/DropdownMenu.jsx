@@ -244,7 +244,7 @@ function Menu(props) {
   };
   return (
     <ListBoxContextProvider>
-      <DropdownMenu.Popper {...popperProps} role={null}>
+      <DropdownMenu.Popper {...popperProps} role={null} use:tabIndex={null}>
         <Root render={DropdownMenu.List} />
       </DropdownMenu.Popper>
     </ListBoxContextProvider>
@@ -322,7 +322,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, acti
         use:highlighted={!disabled && highlighted && focusSourceRef.current === 'keyboard'}
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
-        use:tabIndex={advancedMode ? -1 : tabIndex}
+        use:tabIndex={advancedMode ? undefined : tabIndex}
       >
         <Children />
       </SDropdownMenuItemContainer>
