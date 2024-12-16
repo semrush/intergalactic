@@ -11,6 +11,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it.
 - autofocus to first checkbox. Moved from `textarea`.
 - `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
+- same visual feedback for keyboard interactions to SliderRating same as on hover
 
 ### Changed
 

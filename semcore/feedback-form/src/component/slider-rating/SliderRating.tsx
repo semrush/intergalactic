@@ -75,6 +75,7 @@ class SliderRatingRoot extends Component<
       filled: value ? index + 1 <= value || index <= hoveredIndex : index <= hoveredIndex,
       onClick: this.handleClick(index + 1),
       onMouseEnter: readonly ? undefined : this.handleMouseEnder(index),
+      hovered: hoveredIndex === index,
     };
   }
 
