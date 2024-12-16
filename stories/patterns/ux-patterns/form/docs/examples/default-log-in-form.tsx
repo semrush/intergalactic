@@ -24,8 +24,6 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
     register,
     trigger,
     getFieldState,
-    resetField,
-    getValues,
     formState: { isSubmitted, errors },
   } = useFormContext();
   const { isTouched } = getFieldState(name);
@@ -48,12 +46,6 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
     return invalid() && active;
   };
 
-  const resetIfChangedToValid = (isValid: boolean) => {
-    if (isValid) {
-      resetField(name, { keepTouched: false, defaultValue: getValues(name) });
-    }
-  };
-
   const { onChange, ...restField } = register(name, {
     ...options,
     onBlur: () => setActive(false),
@@ -63,7 +55,7 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
     onChange: (_v: string, e: React.SyntheticEvent) => {
       // important: keep call order, otherwise validation breaks
       onChange(e);
-      hasError() && trigger().then(resetIfChangedToValid);
+      hasError() && trigger();
     },
     ...restField,
   };
