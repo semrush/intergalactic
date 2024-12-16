@@ -85,8 +85,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (prevProps.showErrors !== showErrors) {
       if (showErrors) {
-        this.textarea.setAttribute('aria-invalid', 'true');
-        this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+        if (errors.length > 0) {
+          this.textarea.setAttribute('aria-invalid', 'true');
+          this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+        }
       } else {
         this.textarea.removeAttribute('aria-invalid');
         this.textarea.removeAttribute('aria-describedby');
@@ -151,6 +153,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.addEventListener('blur', this.handleBlur.bind(this));
     textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
     textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
+    textarea.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
 
     return textarea;
   }
@@ -182,6 +185,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleMouseMove(event: MouseEvent): void {
     this.toggleErrorsPopper(event.target);
+  }
+
+  handleMouseLeave(event: MouseEvent): void {
+    this.setState({ visibleErrorPopper: false });
   }
 
   handlePaste(event: ClipboardEvent) {
@@ -288,6 +295,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (this.asProps.validateOn.includes('blur')) {
       this.recalculateErrors();
     }
+    this.setState({ visibleErrorPopper: false });
   };
 
   handleKeyDown(event: KeyboardEvent) {
@@ -319,52 +327,53 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
-    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      const selection = document.getSelection();
-      const rowNode =
-        selection?.focusNode instanceof Text
-          ? selection.focusNode.parentNode
-          : selection?.focusNode;
+    if (
+      event.key === 'ArrowDown' ||
+      event.key === 'ArrowUp' ||
+      event.key === 'ArrowLeft' ||
+      event.key === 'ArrowRight'
+    ) {
+      setTimeout(() => {
+        const selection = document.getSelection();
+        const rowNode =
+          selection?.focusNode instanceof Text
+            ? selection.focusNode.parentNode
+            : selection?.focusNode;
 
-      let target: ChildNode | undefined | null = null;
-
-      if (event.key === 'ArrowDown') {
-        target = rowNode?.nextSibling;
-      } else if (event.key === 'ArrowUp') {
-        target = rowNode?.previousSibling;
-      }
-
-      this.toggleErrorsPopper(target);
+        this.toggleErrorsPopper(rowNode);
+      }, 0);
     }
   }
 
   render() {
     const SInputField = Root;
-    const { styles, errors, errorIndex, showErrors, currentRowIndex } = this.asProps;
-
+    const { styles, errors, errorIndex, showErrors, currentRowIndex, commonErrorMessage } =
+      this.asProps;
+    const { visibleErrorPopper } = this.state;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
 
     if (currentRowIndex !== -1) {
       errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
     }
 
+    const errorMessage = errorItem?.errorMessage ?? commonErrorMessage;
+    const visibleErrorTooltip = showErrors && visibleErrorPopper && Boolean(errorMessage);
+
     return sstyled(styles)(
       <>
         <Tooltip
           interaction={'none'}
-          placement={'right'}
-          visible={this.state.visibleErrorPopper && showErrors && Boolean(errorItem?.errorMessage)}
+          placement={errorItem?.errorMessage ? 'right' : 'right-start'}
+          visible={visibleErrorTooltip}
           theme={'warning'}
-          offset={[0, 24]}
+          offset={errorItem?.errorMessage ? [0, 24] : undefined}
         >
           {({ popper, setTrigger }) => {
             this.setPopperTrigger = setTrigger;
             this.popper = popper;
             this.popper.current?.update();
 
-            return (
-              <Tooltip.Popper id={this.popperDescribedId}>{errorItem?.errorMessage}</Tooltip.Popper>
-            );
+            return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
           }}
         </Tooltip>
         <SInputField
@@ -438,14 +447,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   private toggleErrorsPopper(target?: unknown) {
-    if (
-      target instanceof HTMLDivElement &&
-      target.getAttribute('aria-invalid') === 'true' &&
-      target !== this.textarea
-    ) {
+    if (target instanceof HTMLDivElement) {
       const index = Array.from(this.textarea.childNodes).indexOf(target);
       this.setState({ visibleErrorPopper: true, currentRowIndex: index }, () => {
-        this.setPopperTrigger?.(target);
+        const trigger = target.getAttribute('aria-invalid') === 'true' ? target : this.textarea;
+        this.setPopperTrigger?.(trigger);
         this.popper?.current?.update();
       });
     } else {

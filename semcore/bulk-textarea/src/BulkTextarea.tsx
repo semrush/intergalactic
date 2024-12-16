@@ -77,6 +77,10 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
       onBlur: (value: string, event: Event) => {
         if (validateOn?.includes('blur')) {
           this.setState({ showErrors: true });
+
+          if (this.state.errors.length === 0) {
+            this.setState({ showErrors: false });
+          }
         }
         onBlur?.(value, event);
       },

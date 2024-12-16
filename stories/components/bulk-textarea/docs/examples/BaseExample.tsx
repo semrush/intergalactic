@@ -59,7 +59,10 @@ const Demo = () => {
           </Text>
           <BulkTextarea.Counter />
         </Flex>
-        <BulkTextarea.InputField aria-labelledby={'keywords-label'} />
+        <BulkTextarea.InputField
+          aria-labelledby={'keywords-label'}
+          commonErrorMessage={'some global error'}
+        />
         <Flex alignItems='center' justifyContent='space-between' mt={2}>
           <BulkTextarea.ErrorsNavigation />
           <BulkTextarea.ClearAllButton />

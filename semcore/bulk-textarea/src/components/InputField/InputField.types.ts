@@ -72,6 +72,11 @@ export type InputFieldProps = {
   rowValidation?: (row: string, rows: string[]) => { isValid: boolean; errorMessage: string };
 
   /**
+   * Message for display error about whole field, not only one row
+   */
+  commonErrorMessage: string;
+
+  /**
    * Delimiters (event.key) for rows
    * @default Enter
    */
