@@ -165,6 +165,7 @@ class SliderRatingRoot extends Component<
         aria-valuemax={MAX}
         aria-valuetext={label}
         aria-valuenow={hoveredIndex + 1}
+        aria-label={readonly ? this.getLabelText() : null}
       >
         {new Array(MAX).fill(null).map((_, index) => {
           return (
