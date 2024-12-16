@@ -19,7 +19,7 @@ const Demo = () => {
           placement='top'
           role='tab'
         >
-          <TabPanel.Item value={2} disabled>
+          <TabPanel.Item value={2} disabled role={'button'} use:aria-selected={undefined}>
             <TabPanel.Item.Text>Disabled tab</TabPanel.Item.Text>
           </TabPanel.Item>
         </Hint>
