@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.5] - 2024-12-16
+
+### Changed
+
+- Hide scrollbars from Screen Readers in Table.Head and Table.Body.
+
 ## [4.47.4] - 2024-11-26
 
 ### Fixed
