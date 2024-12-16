@@ -37,8 +37,8 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
   });
 
   getUniqueID() {
-    const { uid, shape } = this.asProps;
-    return shape === 'Checkbox' ? `chart-legend-item-${uid}` : undefined;
+    const { uid } = this.asProps;
+    return `chart-legend-item-${uid}`;
   }
 
   getShapeProps() {
@@ -55,7 +55,7 @@ class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> 
       onChange: (value: boolean) => {
         onChangeLegendItem(id, value);
       },
-      'aria-labelledby': this.getUniqueID(),
+      'aria-labelledby': shape === 'Checkbox' ? this.getUniqueID() : null,
     };
   }
 
