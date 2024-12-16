@@ -244,7 +244,7 @@ function Menu(props) {
   };
   return (
     <ListBoxContextProvider>
-      <DropdownMenu.Popper {...popperProps} role={null}>
+      <DropdownMenu.Popper {...popperProps} role={null} use:tabIndex={null}>
         <Root render={DropdownMenu.List} />
       </DropdownMenu.Popper>
     </ListBoxContextProvider>
