@@ -126,12 +126,17 @@ class SliderRatingRoot extends Component<
     }
 
     if (value) {
-      return value;
+      const selectedRating = hoveredIndex > -1 ? hoveredIndex + 1 : value;
+      return getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
+        selectedRating: selectedRating,
+        max: MAX,
+      });
     }
+
     return hoveredIndex === -1
       ? getI18nText('FeedbackRating.SliderRating.aria-valuetext.empty')
       : getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
-          selectedRating: value,
+          selectedRating: hoveredIndex + 1,
           max: MAX,
         });
   }
