@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.41.8] - 2024-12-16
+
+### Fixed
+
+- Items lost highlighting after filtering the list.
+
 ## [4.41.7] - 2024-12-05
 
 ### Fixed
