@@ -148,9 +148,21 @@ class SliderRatingRoot extends Component<
 
     const SSliderRating = Root;
     const sliderDescriberId = `${uid}-slider-describer`;
-    const role = readonly ? 'image' : 'slider';
-
     const label = this.getLabelText();
+
+    if (readonly) {
+      return (
+        <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
+          {new Array(MAX).fill(null).map((_, index) => {
+            return (
+              <Box key={index} position={'relative'}>
+                <SliderRating.Star />
+              </Box>
+            );
+          })}
+        </SSliderRating>
+      );
+    }
 
     return sstyled(styles)(
       <SSliderRating
@@ -158,14 +170,13 @@ class SliderRatingRoot extends Component<
         gap={1}
         onMouseLeave={this.handleMouseLeave}
         onKeyDown={this.handleKeyDown}
-        role={role}
+        role={'slider'}
         aria-orientation='horizontal'
         aria-describedby={sliderDescriberId}
         aria-valuemin={MIN}
         aria-valuemax={MAX}
         aria-valuetext={label}
         aria-valuenow={hoveredIndex + 1}
-        aria-label={readonly ? this.getLabelText() : null}
       >
         {new Array(MAX).fill(null).map((_, index) => {
           return (
@@ -175,11 +186,9 @@ class SliderRatingRoot extends Component<
           );
         })}
 
-        {!readonly && (
-          <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
-            {getI18nText('FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber')}
-          </ScreenReaderOnly>
-        )}
+        <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
+          {getI18nText('FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber')}
+        </ScreenReaderOnly>
       </SSliderRating>,
     );
   }
