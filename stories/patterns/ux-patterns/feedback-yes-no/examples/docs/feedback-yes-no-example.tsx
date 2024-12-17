@@ -192,7 +192,7 @@ class FeedbackYesNo extends React.PureComponent {
               <Dropdown.Trigger tag={Button} addonLeft={ThumbUpM} active={feedbackType === 'yes'}>
                 Yes
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Feedback form'>
+              <Dropdown.Popper aria-label='Feedback form' tabIndex={-1}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
@@ -213,7 +213,7 @@ class FeedbackYesNo extends React.PureComponent {
               >
                 No
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Feedback form'>
+              <Dropdown.Popper aria-label='Feedback form' tabIndex={-1}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
