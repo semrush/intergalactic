@@ -16,12 +16,12 @@ const Demo = () => {
     <Flex direction='column' gap={3}>
       <NoticeSmart
         label={<QuestionAltM />}
-        aria-label='New tool was launched'
+        aria-labelledby='New tool announcement'
         closable
         onClose={() => setFirstHidden(true)}
         hidden={firstHidden}
       >
-        <Text size={300} bold tag='div' my={'2px'}>
+        <Text size={300} bold tag='div' my={'2px'} id='new-tool-title'>
           New tool was launched
         </Text>
         <Text tag='div' my={1}>
@@ -40,6 +40,7 @@ const Demo = () => {
         </Text>
       </NoticeSmart>
       <NoticeSmart
+        aria-label='New feature announcement'
         theme='success'
         label={<ThumbUpM />}
         closable
@@ -59,7 +60,7 @@ const Demo = () => {
           experience with unparalleled innovation and functionality.
         </Text>
       </NoticeSmart>
-      <NoticeSmart theme='warning' label={<WarningM />}>
+      <NoticeSmart theme='warning' label={<WarningM />} aria-label='Maintenance notice'>
         <Text tag='div' my={1}>
           The Link Building tool is under maintenance. Starting new campaigns is temporarily
           unavailable, but you can continue working with your existing Link Building campaigns.
