@@ -185,7 +185,7 @@ class FeedbackYesNo extends React.PureComponent {
         <Notice.Label mr={3} aria-hidden={true}>
           <FeedbackIllustration />
         </Notice.Label>
-        <Notice.Content>
+        <Notice.Content role='presentation'>
           <Text mr={4}>Do you find our Design System useful?</Text>
           <Box inline>
             <Dropdown onVisibleChange={this.handleChangeDdVisible('yes')}>
