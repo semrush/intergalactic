@@ -36,6 +36,16 @@ class RootNotice extends Component {
     locale: 'en',
   };
 
+  constructor(props) {
+    super(props);
+
+    logger.warn(
+      !props['aria-label'],
+      'Provide aria-label to help identify the type of notification',
+      RootNotice.displayName,
+    );
+  }
+
   getLabelProps() {
     const { theme, resolveColor } = this.asProps;
 
@@ -57,14 +67,8 @@ class RootNotice extends Component {
   render() {
     const SNotice = Root;
     const { Children, styles, hidden, theme, use, resolveColor, getI18nText } = this.asProps;
-    const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
-
-    let ariaLive = isAssertive ? 'assertive' : 'polite';
-    if (theme === 'neutral') {
-      ariaLive = undefined;
-    }
 
     if (use === 'primary') {
       logger.warn(
@@ -75,6 +79,12 @@ class RootNotice extends Component {
       return <NoticeGlobal {...this.asProps} />;
     }
 
+    let ariaLabel = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
+
+    if (theme === 'muted') {
+      ariaLabel = undefined;
+    }
+
     return sstyled(styles)(
       <SNotice
         render={FadeInOut}
@@ -82,8 +92,7 @@ class RootNotice extends Component {
         use:theme={useTheme}
         backgroundColor={color}
         role='region'
-        aria-live={ariaLive}
-        aria-label={getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification')}
+        aria-label={ariaLabel}
       >
         <Children />
       </SNotice>,
