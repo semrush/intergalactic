@@ -23,10 +23,8 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
   const {
     register,
     trigger,
-    getFieldState,
     formState: { isSubmitted, errors },
   } = useFormContext();
-  const { isTouched } = getFieldState(name);
   const [active, setActive] = React.useState<boolean>(false);
   const error = errors[name];
 
@@ -39,7 +37,7 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
   };
 
   const invalid = (): boolean => {
-    return isTouched && hasError();
+    return hasError();
   };
 
   const showErrorTooltip = (): boolean => {
