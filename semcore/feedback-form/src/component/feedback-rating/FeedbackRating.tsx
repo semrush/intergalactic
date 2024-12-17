@@ -287,7 +287,7 @@ class FeedbackRatingRoot extends Component<
           use:w={modalWidth ?? 440}
           aria-labelledby={this.headerId}
         >
-          <Form decorators={[this.focusDecorator]} validateOnBlur={true} {...other}>
+          <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
               sstyled(styles)(
                 <SpinContainer
