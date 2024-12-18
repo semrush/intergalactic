@@ -9,6 +9,10 @@ import { renderLegacyEmails } from './renderLegacyEmails';
 import { renderIframe } from './renderIframe';
 
 export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
+  md.renderer.rules.table_open = function (tokens, idx) {
+    return '<table>';
+  };
+
   md.use(container, 'sandbox', {
     render(tokens, idx, _, state) {
       return renderSandbox(tokens, idx, 'sandbox', plainTextOnly, state);
