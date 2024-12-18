@@ -41,7 +41,7 @@ class RootNotice extends Component {
 
     logger.warn(
       !props['aria-label'],
-      'Provide aria-label to help identify the type of notification',
+      'Provide unique aria-label to help identify the type and importance of notification',
       RootNotice.displayName,
     );
   }
