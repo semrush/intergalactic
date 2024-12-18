@@ -33,13 +33,30 @@ const validate = {
   },
 };
 
-class Feedback extends React.PureComponent<{
+type FeedbackProps = {
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
   onChange?: (event: any, trigger: string) => void;
   value?: { description: string; email: string };
-}> {
+};
+
+class Feedback extends React.PureComponent<FeedbackProps> {
+  ref = React.createRef<HTMLDivElement>();
+
+  componentDidMount(): void {
+    // need this timeout because Feedback component used in function component
+    setTimeout(() => {
+      this.ref.current?.focus();
+    }, 0);
+  }
+
+  componentDidUpdate(prevProps: Readonly<FeedbackProps>): void {
+    if (prevProps.status !== 'success' && this.props.status === 'success') {
+      this.ref.current?.focus();
+    }
+  }
+
   handleChange = (fn) => (_, e) => {
     fn(e);
   };
@@ -48,7 +65,9 @@ class Feedback extends React.PureComponent<{
     const { status, onSubmit, onCancel } = this.props;
 
     if (status === 'success') {
-      return <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
+      return (
+        <FeedbackForm.Success ref={this.ref}>Thank you for your feedback!</FeedbackForm.Success>
+      );
     }
 
     return (
@@ -109,13 +128,8 @@ class Feedback extends React.PureComponent<{
 class FeedbackYesNo extends React.PureComponent {
   state = { status: 'default', visible: true, feedbackType: null };
   timeout: any;
-  popperRef = React.createRef<HTMLDivElement>();
   onSubmit = () => {
-    this.requestServer('success', 1000, () => {
-      setTimeout(() => {
-        this.popperRef.current?.focus();
-      }, 0);
-    });
+    this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
   requestServer = (status, time, cb?: () => void) => {
@@ -168,7 +182,7 @@ class FeedbackYesNo extends React.PureComponent {
                   <Button.Text>Yes</Button.Text>
                 </Button>
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description' ref={this.popperRef}>
+              <Dropdown.Popper aria-label='Dropdown popper description' tabIndex={-1}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
@@ -187,7 +201,7 @@ class FeedbackYesNo extends React.PureComponent {
                   <Button.Text>No</Button.Text>
                 </Button>
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description' ref={this.popperRef}>
+              <Dropdown.Popper aria-label='Dropdown popper description' tabIndex={-1}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}

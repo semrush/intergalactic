@@ -30,13 +30,30 @@ const validate = {
   },
 };
 
-class Feedback extends React.PureComponent<{
+type FeedbackProps = {
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
   onChange: (event: any, trigger: string) => void;
   value: { description: string; email: string };
-}> {
+};
+
+class Feedback extends React.PureComponent<FeedbackProps> {
+  ref = React.createRef<HTMLDivElement>();
+
+  componentDidMount(): void {
+    // need this timeout because Feedback component used in function component
+    setTimeout(() => {
+      this.ref.current?.focus();
+    }, 0);
+  }
+
+  componentDidUpdate(prevProps: Readonly<FeedbackProps>): void {
+    if (prevProps.status !== 'success' && this.props.status === 'success') {
+      this.ref.current?.focus();
+    }
+  }
+
   handleChange = (fn) => (_, e) => {
     fn(e);
     this.props.onChange(e, e.currentTarget.id);
@@ -44,6 +61,12 @@ class Feedback extends React.PureComponent<{
 
   render() {
     const { status, onSubmit, onCancel, value } = this.props;
+
+    if (status === 'success') {
+      return (
+        <FeedbackForm.Success ref={this.ref}>Thank you for your feedback!</FeedbackForm.Success>
+      );
+    }
 
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
@@ -117,13 +140,8 @@ class Feedback extends React.PureComponent<{
 class FeedbackLink extends React.PureComponent {
   state = { status: 'default', value: { description: '', email: '' } };
   timeout: any;
-  popperRef = React.createRef<HTMLDivElement>();
   onSubmit = () => {
-    this.requestServer('success', 1000, () => {
-      setTimeout(() => {
-        this.popperRef.current?.focus();
-      }, 0);
-    });
+    this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
   onChange = (e, trigger) => {
@@ -153,23 +171,16 @@ class FeedbackLink extends React.PureComponent {
           aria-label={'Feedback form'}
           aria-modal={'true'}
           tabIndex={-1}
-          ref={this.popperRef}
         >
-          {(_props, { visible }) => {
-            if (status === 'success') {
-              return <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
-            }
-
-            return (
-              <Feedback
-                status={status}
-                onCancel={() => visible(false)}
-                onSubmit={() => this.onSubmit()}
-                value={value}
-                onChange={this.onChange}
-              />
-            );
-          }}
+          {(_props, { visible }) => (
+            <Feedback
+              status={status}
+              onCancel={() => visible(false)}
+              onSubmit={() => this.onSubmit()}
+              value={value}
+              onChange={this.onChange}
+            />
+          )}
         </Dropdown.Popper>
       </Dropdown>
     );
