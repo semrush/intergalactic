@@ -4,6 +4,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.58.3] - 2024-12-17
 
+### Fixed
+
+- Animation of points on ScatterPlot was on every render.
+
 ### Added
 
 - `outilne=none` for Hover rect and line.
