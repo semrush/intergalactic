@@ -33,6 +33,7 @@ class SkeletonRoot extends Component {
       <SSkeleton
         render={Box}
         durationAnim={`${duration}ms`}
+        role={'img'}
         aria-busy='true'
         aria-label={getI18nText('loading')}
       />,
