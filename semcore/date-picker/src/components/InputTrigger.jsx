@@ -486,6 +486,7 @@ const MaskedInput = ({
   animationsDisabled,
   getI18nText,
   inputId,
+  inputRole = 'combobox',
 
   __excludeProps,
 
@@ -870,7 +871,7 @@ const MaskedInput = ({
       onChange={handleChange}
       noHumanizedDate={!humanizedDate}
       animationsDisabled={animationsDisabled}
-      inputRole='combobox'
+      inputRole={inputRole}
     >
       {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
     </InputMask.Value>,

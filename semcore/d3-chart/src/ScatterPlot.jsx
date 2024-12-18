@@ -45,8 +45,10 @@ class ScatterPlotRoot extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.animationCircle();
+  componentDidUpdate(prevProps) {
+    if (prevProps.data !== this.props.data) {
+      this.animationCircle();
+    }
   }
 
   componentDidMount() {

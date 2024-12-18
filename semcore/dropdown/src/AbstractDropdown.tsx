@@ -189,12 +189,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
       } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
-        innerHighlightedIndex = this.prevHighlightedIndex;
+        innerHighlightedIndex =
+          this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
       } else {
         innerHighlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
     } else {
-      innerHighlightedIndex = highlightedIndex;
+      innerHighlightedIndex = highlightedIndex > itemsLastIndex ? itemsLastIndex : highlightedIndex;
     }
 
     let newIndex = innerHighlightedIndex + amount;
