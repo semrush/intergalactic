@@ -136,6 +136,28 @@ test.describe('Options Filtering', () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(page).toHaveScreenshot();
   });
+
+  test('Show highlight the first filtered item if previous is out of filtered list', async ({
+    page,
+  }) => {
+    const standPath = 'stories/components/select/docs/examples/options_filtering.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+    const trigger = await page.locator('[data-ui-name="Select.Trigger"]');
+    await trigger.click();
+
+    await page.waitForSelector('input');
+
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('Tab');
+
+    await page.keyboard.type('appl');
+
+    await page.keyboard.press('ArrowDown');
+
+    await expect(page).toHaveScreenshot();
+  });
 });
 
 test.describe('Render function', () => {
