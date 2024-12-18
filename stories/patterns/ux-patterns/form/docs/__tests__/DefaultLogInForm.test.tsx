@@ -30,6 +30,7 @@ const expectTooltipVisibility = async (canvas: ReturnType<typeof within>, text: 
 const EmptyFieldsByMouse = async (canvas: ReturnType<typeof within>, button: any, email: any, password: any) => {
     // Click on Log in
     await userEvent.click(button);
+    await new Promise((resolve) => setTimeout(resolve, 500));
     // Check  Focus, Attributes and Tooltip visibility
     expectFocus(email, true);
     expectFocus(password, false);
@@ -201,7 +202,7 @@ export async function DefaultLogInFormTest({ canvasElement }: { canvasElement: H
     const canvas = within(canvasElement);
     const buttonLogIn = canvas.getByRole('button', { name: 'Log in' });
     const emailInput = canvas.getByRole('textbox', { name: 'Email' });
-    const passwordInput = document.querySelector('[data-ui-name="Input.Value"][name="password"]');
+    const passwordInput = canvas.getByLabelText('Password');
     await EmptyFieldsByMouse(canvas, buttonLogIn, emailInput, passwordInput);
     await EmptyFieldsByKeyboard(canvas, buttonLogIn, emailInput, passwordInput);
     await WrongEmailMouse(canvas, buttonLogIn, emailInput, passwordInput);
