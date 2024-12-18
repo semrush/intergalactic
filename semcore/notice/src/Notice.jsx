@@ -36,14 +36,28 @@ class RootNotice extends Component {
     locale: 'en',
   };
 
-  constructor(props) {
-    super(props);
+  ref = React.createRef();
 
-    logger.warn(
-      !props['aria-label'],
-      'Provide unique aria-label to help identify the type and importance of notification',
-      RootNotice.displayName,
-    );
+  componentDidMount() {
+    if (
+      this.ref.current &&
+      process.env.NODE_ENV !== 'production' &&
+      !['muted', 'danger'].includes(this.props.theme)
+    ) {
+      const hasTitle = (node) => {
+        if (node.hasAttribute('aria-label')) return true;
+        if (node.hasAttribute('aria-labelledby')) return true;
+        if (node.hasAttribute('title')) return true;
+
+        return false;
+      };
+
+      logger.warn(
+        !hasTitle(this.ref.current),
+        `Provide unique 'title' or 'aria-label' or 'aria-labelledby' to help identify the type and importance of notification`,
+        this.props['data-ui-name'] || RootNotice.displayName,
+      );
+    }
   }
 
   getLabelProps() {
@@ -93,6 +107,7 @@ class RootNotice extends Component {
         backgroundColor={color}
         role='region'
         aria-label={ariaLabel}
+        ref={this.ref}
       >
         <Children />
       </SNotice>,
