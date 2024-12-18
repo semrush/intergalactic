@@ -51,7 +51,7 @@ class Item extends Component {
 
   render() {
     const SBreadcrumbsItem = Root;
-    const { styles, separator, active, disabled, href, tabIndex } = this.asProps;
+    const { styles, separator, active, disabled, href, tabIndex, tag } = this.asProps;
     const SSeparator = 'div';
     const SListItem = 'li';
 
@@ -63,6 +63,7 @@ class Item extends Component {
             use:tabIndex={active || disabled ? -1 : tabIndex}
             use:href={!active && !disabled ? href : undefined}
             aria-current={active ? 'page' : undefined}
+            use:tag={active ? 'span' : tag}
           />
         </SListItem>
         <SSeparator aria-hidden='true'>{separator}</SSeparator>
