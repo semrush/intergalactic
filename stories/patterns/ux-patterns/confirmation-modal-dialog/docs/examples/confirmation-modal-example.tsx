@@ -49,20 +49,10 @@ const Demo = () => {
 
     return Boolean(error);
   };
-
-  const invalid = (): boolean => {
-    return Boolean(touchedFields[fieldName]) && hasError();
-  };
-
+  
   const showErrorTooltip = (): boolean => {
     const isActive = focusedFieldName === fieldName;
-    return invalid() && isActive;
-  };
-
-  const resetIfChangedToValid = (isValid: boolean) => {
-    if (isValid) {
-      resetField(fieldName, { keepTouched: false, defaultValue: getValues(fieldName) });
-    }
+    return hasError() && isActive;
   };
 
   const { onChange, ...restField } = register(fieldName, {
@@ -85,7 +75,7 @@ const Demo = () => {
     onChange: (_v: string, e: React.SyntheticEvent) => {
       // important: keep call order, otherwise validation breaks
       onChange(e);
-      hasError() && trigger().then(resetIfChangedToValid);
+      hasError() && trigger();
     },
     ...restField,
   };
@@ -125,7 +115,7 @@ const Demo = () => {
                 {errors[fieldName]?.message}
               </Tooltip.Popper>
 
-              <Input state={invalid() ? 'invalid' : 'normal'} controlsLength={1} mb={2} size='l'>
+              <Input state={hasError() ? 'invalid' : 'normal'} controlsLength={1} mb={2} size='l'>
                 <Tooltip.Trigger
                   tag={Input.Value}
                   {...field}
@@ -133,9 +123,9 @@ const Demo = () => {
                   placeholder={'Enter project name'}
                   w={'100%'}
                   onFocus={() => setFocusedFieldName(fieldName)}
-                  aria-invalid={invalid()}
-                  aria-describedby={invalid() ? 'form-project-error' : undefined}
-                  aria-errormessage={invalid() ? 'form-project-error' : undefined}
+                  aria-invalid={hasError()}
+                  aria-describedby={hasError() ? 'form-project-error' : undefined}
+                  aria-errormessage={hasError() ? 'form-project-error' : undefined}
                 />
               </Input>
             </Tooltip>
