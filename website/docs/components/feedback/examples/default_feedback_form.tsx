@@ -117,11 +117,11 @@ class Feedback extends React.PureComponent<{
 class FeedbackLink extends React.PureComponent {
   state = { status: 'default', value: { description: '', email: '' } };
   timeout: any;
-  successRef = React.createRef<HTMLDivElement>();
+  popperRef = React.createRef<HTMLDivElement>();
   onSubmit = () => {
     this.requestServer('success', 1000, () => {
       setTimeout(() => {
-        this.successRef.current?.focus();
+        this.popperRef.current?.focus();
       }, 0);
     });
     this.setState({ status: 'loading' });
@@ -153,14 +153,11 @@ class FeedbackLink extends React.PureComponent {
           aria-label={'Feedback form'}
           aria-modal={'true'}
           tabIndex={-1}
+          ref={this.popperRef}
         >
           {(_props, { visible }) => {
             if (status === 'success') {
-              return (
-                <FeedbackForm.Success ref={this.successRef} tabIndex={-1}>
-                  Thank you for your feedback!
-                </FeedbackForm.Success>
-              );
+              return <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
             }
 
             return (

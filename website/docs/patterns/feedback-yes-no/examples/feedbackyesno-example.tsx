@@ -109,8 +109,13 @@ class Feedback extends React.PureComponent<{
 class FeedbackYesNo extends React.PureComponent {
   state = { status: 'default', visible: true, feedbackType: null };
   timeout: any;
+  popperRef = React.createRef<HTMLDivElement>();
   onSubmit = () => {
-    this.requestServer('success', 1000);
+    this.requestServer('success', 1000, () => {
+      setTimeout(() => {
+        this.popperRef.current?.focus();
+      }, 0);
+    });
     this.setState({ status: 'loading' });
   };
   requestServer = (status, time, cb?: () => void) => {
@@ -163,7 +168,7 @@ class FeedbackYesNo extends React.PureComponent {
                   <Button.Text>Yes</Button.Text>
                 </Button>
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description'>
+              <Dropdown.Popper aria-label='Dropdown popper description' ref={this.popperRef}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
@@ -182,7 +187,7 @@ class FeedbackYesNo extends React.PureComponent {
                   <Button.Text>No</Button.Text>
                 </Button>
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description'>
+              <Dropdown.Popper aria-label='Dropdown popper description' ref={this.popperRef}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
