@@ -58,14 +58,14 @@ const Demo = () => {
   const { onChange, ...restField } = register(fieldName, {
     validate: {
       projectRequired: (v) => {
-        return Boolean(v) || 'Please enter correct project name';
+        return Boolean(v) || 'Please enter the correct project name';
       },
       projectName: (v) => {
         if (!v) {
           return true;
         }
 
-        return /^test$/i.test(v) || 'Please enter correct project name';
+        return /^test$/i.test(v) || 'Please enter the correct project name';
       },
     },
     onBlur: () => setFocusedFieldName(''),
