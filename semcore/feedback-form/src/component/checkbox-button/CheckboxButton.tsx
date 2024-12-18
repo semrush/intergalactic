@@ -15,8 +15,8 @@ class CheckboxButtonRoot extends Component<CheckboxProps & { focused: boolean }>
     return sstyled(styles)(
       <SCheckboxButton render={Box} __excludeProps={['onChange', 'id', 'type']}>
         <Checkbox {...other}>
-          <Checkbox.Value autoFocus={focused} id={id} />
-          <Checkbox.Text>{label}</Checkbox.Text>
+          <Checkbox.Value autoFocus={focused} aria-labelledby={id} />
+          <Checkbox.Text id={id}>{label}</Checkbox.Text>
         </Checkbox>
       </SCheckboxButton>,
     );
