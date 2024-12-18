@@ -154,6 +154,14 @@ class CarouselRoot extends Component<
         this.slideToValue(lastSlide);
       }
     }
+
+    if (
+      (e.key === 'Enter' || e.key === ' ') &&
+      e.target instanceof HTMLDivElement &&
+      e.target.role === 'tabpanel'
+    ) {
+      this.handleToggleZoomModal();
+    }
   };
 
   toggleItem = (item: CarouselItem, removeItem = false) => {
