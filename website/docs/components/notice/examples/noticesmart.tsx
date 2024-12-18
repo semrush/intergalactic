@@ -16,12 +16,12 @@ const Demo = () => {
     <Flex direction='column' gap={3}>
       <NoticeSmart
         label={<QuestionAltM />}
-        aria-labelledby='New tool announcement'
+        aria-label='New tool announcement'
         closable
         onClose={() => setFirstHidden(true)}
         hidden={firstHidden}
       >
-        <Text size={300} bold tag='div' my={'2px'} id='new-tool-title'>
+        <Text size={300} bold tag='div' my={'2px'}>
           New tool was launched
         </Text>
         <Text tag='div' my={1}>
