@@ -1,11 +1,11 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import { Hint } from 'intergalactic/tooltip';
-import { ButtonLink } from 'intergalactic/button';
-import Flag from 'intergalactic/flags';
-import CloseM from 'intergalactic/icon/Close/m';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import { Hint } from '@semcore/tooltip';
+import { ButtonLink } from '@semcore/button';
+import Flag from '@semcore/flags';
+import CloseM from '@semcore/icon/Close/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('+1');
