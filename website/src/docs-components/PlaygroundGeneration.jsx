@@ -157,7 +157,7 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
           lang: 'tsx',
           theme: 'github-dark',
         })
-        .replace(' tabindex="0"><code>', '><code tabindex="0" aria-label="JSX">');
+        .replace(' tabindex="0"><code>', '><code aria-label="JSX">');
 
       setHighlightedSource(html);
     })();
