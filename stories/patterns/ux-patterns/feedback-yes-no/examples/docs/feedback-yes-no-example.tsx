@@ -75,8 +75,8 @@ class Feedback extends React.PureComponent<FeedbackProps> {
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <Flex tag='label' direction='column' htmlFor='feedback'>
-            <Text mb={2} size={200}>
+          <Flex direction='column'>
+            <Text mb={2} size={200} tag='label' htmlFor='feedback'>
               Tell us your suggestion or report an issue
             </Text>
             <FeedbackForm.Item
@@ -100,8 +100,8 @@ class Feedback extends React.PureComponent<FeedbackProps> {
               )}
             </FeedbackForm.Item>
           </Flex>
-          <Flex tag='label' mt={4} direction='column' htmlFor='email'>
-            <Text mb={2} size={200}>
+          <Flex mt={4} direction='column'>
+            <Text mb={2} size={200} tag='label' htmlFor='email'>
               Reply-to email
             </Text>
             <FeedbackForm.Item
