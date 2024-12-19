@@ -4,5 +4,9 @@
   "formTitle": "Geri bildirim formu",
   "submitButton": "Geri bildirim gönder",
   "successMessage": "Geri bildiriminiz için teşekkür ederiz!",
-  "errorMessage": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin veya {email} adresinden bizimle iletişime geçin."
+  "errorMessage": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin veya {email} adresinden bizimle iletişime geçin.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Derecelendirmeyi seçmek için Enter tuşuna basın",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Puanınız: {max} üzerinden {selectedRating}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Ayarlanmadı",
+  "FeedbackRating.SliderRating.aria-valuetext": "{max} üzerinden {selectedRating}"
 }

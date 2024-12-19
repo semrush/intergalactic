@@ -2,6 +2,7 @@ SSliderRating SStar {
   transition: all calc(var(--intergalactic-duration-control, 200) * 1ms) ease-out;
 }
 
+SSliderRating[keyboardFocused] SStar[hovered],
 SSliderRating SStar:hover {
   cursor: pointer;
   transform: scale(1.3);
