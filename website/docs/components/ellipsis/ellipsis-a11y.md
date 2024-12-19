@@ -4,11 +4,12 @@ a11y: AA
 tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
-## Considerations for developers
+## Considerations for designers and developers
 
-- Ensure that the complete text string is communicated to a screen reader and not just the truncated visual part. Currently, when navigating the page with a screen reader such as JAWS, this is the observed behavior.
-- Offer a trigger for keyboard users to access the tooltip of a truncated text string. If a user is navigating the page with a keyboard instead of a screen reader, they may not be aware of the contents of the full text string.
+Avoid using `Ellipsis` for non-interactive text—when using keyboard, the tooltip with the full text can only appear on focus, so it will be inaccessible for keyboard users.
+
+If you have to truncate non-interactive text, provide a control to expand the full text, such as a **Show more** button.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y#contrast).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

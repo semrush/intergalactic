@@ -1,15 +1,16 @@
 import React from 'react';
 import Ellipsis from 'intergalactic/ellipsis';
 import { Box } from 'intergalactic/flex-box';
+import Link from 'intergalactic/link';
 
 const Demo = () => {
   return (
     <Box w={220}>
-      <Ellipsis>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi hic nemo tenetur
-        voluptatem! A aliquid assumenda dolore ducimus impedit numquam ratione recusandae sed ullam
-        voluptate? Aperiam distinctio minus possimus quasi.
-      </Ellipsis>
+      <Link inline href='https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis'>
+        <Link.Text tag={Ellipsis}>
+          https://developer.semrush.com/intergalactic/components/ellipsis/ellipsis
+        </Link.Text>
+      </Link>
     </Box>
   );
 };
