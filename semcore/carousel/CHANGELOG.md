@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.45.2] - 2024-12-18
+
+### Added
+
+- Keyboard handler for zoom data in carousel by `enter` or `space`.
+
 ## [3.45.1] - 2024-12-09
 
 ### Changed

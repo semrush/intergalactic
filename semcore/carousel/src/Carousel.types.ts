@@ -76,6 +76,12 @@ export type CarouselItemProps = BoxProps & {
    * @private
    */
   transform?: number;
+
+  /**
+   * Flag data zoomed
+   * @private
+   */
+  isOpenZoom?: boolean;
 };
 
 /** @deprecated */

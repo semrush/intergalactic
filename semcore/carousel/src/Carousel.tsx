@@ -154,6 +154,14 @@ class CarouselRoot extends Component<
         this.slideToValue(lastSlide);
       }
     }
+
+    if (
+      (e.key === 'Enter' || e.key === ' ') &&
+      e.target instanceof HTMLDivElement &&
+      e.target.role === 'tabpanel'
+    ) {
+      this.handleToggleZoomModal();
+    }
   };
 
   toggleItem = (item: CarouselItem, removeItem = false) => {
@@ -330,6 +338,7 @@ class CarouselRoot extends Component<
       zoomIn: zoom,
       onToggleZoomModal: this.handleToggleZoomModal,
       transform: isCurrent ? this.getTransform() : undefined,
+      isOpenZoom: this.state.isOpenZoom,
     };
   }
 
@@ -632,6 +641,16 @@ class Item extends Component<CarouselItemProps> {
           refItem?.focus();
         }
       }, 100);
+    }
+    if (
+      prevProps.isOpenZoom === true &&
+      this.props.isOpenZoom === false &&
+      this.props.current &&
+      !this.props.zoomOut
+    ) {
+      this.keepFocusTimeout = setTimeout(() => {
+        this.refItem.current?.focus();
+      }, 200);
     }
   }
 
