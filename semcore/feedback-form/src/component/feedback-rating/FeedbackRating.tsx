@@ -113,12 +113,15 @@ class FeedbackRatingRoot extends Component<
       this.setState({ error: false });
 
       if (status === 'success') {
-        this.manager.add({
-          icon: <CheckM color='green-400' />,
-          children: getI18nText('successMessage'),
-          initialAnimation: true,
-          duration: 5000,
-        });
+        // showing notice with delay for SR, less than 100ms is not enough
+        setTimeout(() => {
+          this.manager.add({
+            icon: <CheckM color='green-400' />,
+            children: getI18nText('successMessage'),
+            initialAnimation: true,
+            duration: 5000,
+          });
+        }, 100);
       } else if (status === 'error') {
         this.setState({ error: true });
       }
