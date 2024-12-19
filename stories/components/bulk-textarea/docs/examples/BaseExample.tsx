@@ -21,26 +21,26 @@ const validateRow = (row: string, rows: string[]) => {
 const Demo = () => {
   const [value, setValue] = React.useState('');
 
-  //   React.useEffect(() => {
-  //     setTimeout(() => {
-  //       setValue(`const Demo = () => {
-  //   const [value, setValue] = React.useState('');
-  //
-  //   React.useEffect(() => {
-  //       setTimeout(() => {
-  //           setValue()
-  //       }, 1000);
-  //   }, []);
-  //
-  //   return (
-  //     <Box>
-  //       <Text tag={'label'}>list of keywords</Text>
-  //       <BulkTextarea w={400} value={value} onChange={() => null} />
-  //     </Box>
-  //   );
-  // };`);
-  //     }, 1000);
-  //   }, []);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setValue(`const Demo = () => {
+    const [value, setValue] = React.useState('');
+
+    React.useEffect(() => {
+        setTimeout(() => {
+            setValue()
+        }, 1000);
+    }, []);
+
+    return (
+      <Box>
+        <Text tag={'label'}>list of keywords</Text>
+        <BulkTextarea w={400} value={value} onChange={() => null} />
+      </Box>
+    );
+  };`);
+    }, 0);
+  }, []);
 
   return (
     <Box>

@@ -39,7 +39,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             aria-label={`Go to the ${prevIndex} invalid value`}
             hintPlacement={'bottom'}
           />
-          <Text size={size === 'l' ? 300 : 200} color='text-critical'>
+          <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1}>
             {errorIndex === -1
               ? `${errorsCount} errors`
               : `${errorIndex + 1} out of ${errorsCount}`}

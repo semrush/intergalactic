@@ -9,9 +9,12 @@ import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
+type IndexKeys = 'keyboardRowIndex' | 'mouseRowIndex';
+
 type State = {
+  [key in IndexKeys]: number;
+} & {
   visibleErrorPopper: boolean;
-  currentRowIndex: number;
 };
 
 class InputField extends Component<InputFieldProps, {}, State, typeof InputField.enhance> {
@@ -28,7 +31,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     maxRows: 10,
     defaultIsEmptyValue: true,
     defaultShowErrors: false,
-    defaultCurrentRowIndex: -1,
   };
 
   delimiter = '\n';
@@ -40,9 +42,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
 
+  lastInteraction: 'keyboard' | 'mouse' | null = null;
+
+  changeTriggerTimeout = 0;
+
   state = {
     visibleErrorPopper: false,
-    currentRowIndex: -1,
+    keyboardRowIndex: -1,
+    mouseRowIndex: -1,
   };
 
   constructor(props: InputFieldProps) {
@@ -58,7 +65,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     return {
       value: null,
       isEmptyValue: null,
-      currentRowIndex: null,
     };
   }
 
@@ -150,6 +156,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     textarea.addEventListener('paste', this.handlePaste.bind(this));
     textarea.addEventListener('input', this.handleChange.bind(this));
+    textarea.addEventListener('focus', this.handleFocus.bind(this));
     textarea.addEventListener('blur', this.handleBlur.bind(this));
     textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
     textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
@@ -184,11 +191,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseMove(event: MouseEvent): void {
-    this.toggleErrorsPopper(event.target);
+    this.lastInteraction = 'mouse';
+    this.toggleErrorsPopper('mouseRowIndex', event.target);
   }
 
   handleMouseLeave(event: MouseEvent): void {
-    this.setState({ visibleErrorPopper: false });
+    if (this.state.keyboardRowIndex === -1) {
+      this.setState({ visibleErrorPopper: false });
+    }
+    this.setState({ mouseRowIndex: -1 });
   }
 
   handlePaste(event: ClipboardEvent) {
@@ -290,6 +301,19 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
   }
 
+  handleFocus(event: FocusEvent) {
+    this.lastInteraction = 'keyboard';
+    setTimeout(() => {
+      const selection = document.getSelection();
+      const rowNode =
+        selection?.focusNode instanceof Text
+          ? selection.focusNode.parentNode
+          : selection?.focusNode;
+
+      this.toggleErrorsPopper('keyboardRowIndex', rowNode);
+    }, 0);
+  }
+
   handleBlur = (event: Event) => {
     this.asProps.onBlur(this.getRows().join(this.delimiter), event);
     if (this.asProps.validateOn.includes('blur')) {
@@ -299,6 +323,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   };
 
   handleKeyDown(event: KeyboardEvent) {
+    this.lastInteraction = 'keyboard';
     const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
 
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
@@ -340,23 +365,28 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             ? selection.focusNode.parentNode
             : selection?.focusNode;
 
-        this.toggleErrorsPopper(rowNode);
+        this.toggleErrorsPopper('keyboardRowIndex', rowNode);
       }, 0);
     }
   }
 
   render() {
     const SInputField = Root;
-    const { styles, errors, errorIndex, showErrors, currentRowIndex, commonErrorMessage } =
-      this.asProps;
-    const { visibleErrorPopper } = this.state;
+    const { styles, errors, errorIndex, showErrors, commonErrorMessage } = this.asProps;
+    const { visibleErrorPopper, mouseRowIndex, keyboardRowIndex } = this.state;
+    const currentRowIndex =
+      this.lastInteraction === 'keyboard'
+        ? keyboardRowIndex
+        : this.lastInteraction === 'mouse'
+        ? mouseRowIndex
+        : -1;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
 
     if (currentRowIndex !== -1) {
       errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
     }
 
-    const errorMessage = errorItem?.errorMessage ?? commonErrorMessage;
+    const errorMessage = errorItem?.errorMessage ?? (keyboardRowIndex !== -1 && commonErrorMessage);
     const visibleErrorTooltip = showErrors && visibleErrorPopper && Boolean(errorMessage);
 
     return sstyled(styles)(
@@ -446,14 +476,43 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     return rows;
   }
 
-  private toggleErrorsPopper(target?: unknown) {
+  private toggleErrorsPopper(key: IndexKeys, target?: unknown) {
     if (target instanceof HTMLDivElement) {
-      const index = Array.from(this.textarea.childNodes).indexOf(target);
-      this.setState({ visibleErrorPopper: true, currentRowIndex: index }, () => {
-        const trigger = target.getAttribute('aria-invalid') === 'true' ? target : this.textarea;
-        this.setPopperTrigger?.(trigger);
-        this.popper?.current?.update();
-      });
+      if (this.changeTriggerTimeout) {
+        clearTimeout(this.changeTriggerTimeout);
+      }
+
+      this.changeTriggerTimeout = window.setTimeout(
+        () => {
+          const rowIndex =
+            target instanceof HTMLDivElement
+              ? Array.from(this.textarea.childNodes).indexOf(target)
+              : -1;
+
+          this.setState(
+            (prevState) => {
+              const newState: State = {
+                visibleErrorPopper: true,
+                mouseRowIndex: prevState.mouseRowIndex,
+                keyboardRowIndex: prevState.keyboardRowIndex,
+              };
+
+              newState[key] = rowIndex;
+
+              return newState;
+            },
+            () => {
+              const trigger =
+                target.getAttribute('aria-invalid') === 'true' ? target : this.textarea;
+
+              this.setPopperTrigger?.(trigger);
+              this.popper?.current?.update();
+              // this.setState({ visibleErrorPopper: true });
+            },
+          );
+        },
+        key === 'mouseRowIndex' ? 150 : 500,
+      );
     } else {
       this.setState({ visibleErrorPopper: false });
     }
