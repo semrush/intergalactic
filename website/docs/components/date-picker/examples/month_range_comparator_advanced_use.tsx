@@ -47,13 +47,19 @@ const Demo = () => {
           <MonthDateRangeComparator.Footer>
             Place for a hint, useful message or controls.
           </MonthDateRangeComparator.Footer>
-          <Notice theme='warning' style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
+          <Notice
+            aria-labelledby='month-notice-title'
+            theme='warning'
+            style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+          >
             <Notice.Content>
               <Flex mb={1}>
                 <Notice.Label>
                   <WarningIcon />
                 </Notice.Label>
-                <Text bold>Notice heading</Text>
+                <Text bold id='month-notice-title'>
+                  Warning
+                </Text>
               </Flex>
               If you change your location, all previously collected data for this article will be
               lost.
