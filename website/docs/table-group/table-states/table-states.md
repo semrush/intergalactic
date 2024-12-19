@@ -91,8 +91,9 @@ Show this message when:
 
 ![](static/no-data-button.png)
 
-::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#nodata-example). Refer to the [WidgetEmpty documentation](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+::: tip Useful links
+- Live example of this state in [WidgetEmpty > NoData example](/components/widget-empty/widget-empty-code#nodata-example)
+- [Full list of illustrations](/style/illustration/illustration)
 :::
 
 ## Nothing found
@@ -107,8 +108,9 @@ Include a control, such as a "Clear filters" button, to help the user correct th
 
 ![](static/nothing-found-button.png)
 
-::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#nothingfound-example). Refer to the [documentation WidhetEmpty](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+::: tip Useful links
+- Live example of this state in [WidgetEmpty > Nothing found example](/components/widget-empty/widget-empty-code#nodata-example)
+- [Full list of illustrations](/style/illustration/illustration)
 :::
 
 ## Something went wrong
@@ -125,8 +127,9 @@ Table: Examples of "Something went wrong" state
 | We are aware of the problem, and fixing it | ![](static/error-known.png)     |
 | We don't know about the problem yet        | ![](static/error-not-known.png) |
 
-::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#error-example). Refer to the [WidgetEmpty documentation](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+::: tip Useful links
+- Live example of this state in [WidgetEmpty > Error example](/components/widget-empty/widget-empty-code#error-example)
+- [Full list of illustrations](/style/illustration/illustration)
 :::
 
 ## Message text
@@ -135,7 +138,7 @@ Find an example with the svg illustration for this state in the [WidgetEmpty](/c
 - Description: Explain what the user needs to do to change the situation
 - If possible, suggest an action (button or link) to help the user change the situation
 
-Refer to guides like [WidgetEmpty](/components/widget-empty/widget-empty) and [Global errors](/patterns/global-errors/global-errors).
+Refer to [WidgetEmpty](/components/widget-empty/widget-empty) and [Global errors](/patterns/global-errors/global-errors) guides.
 
 ## Table header
 

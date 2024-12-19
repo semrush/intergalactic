@@ -89,7 +89,7 @@ Basic data visualization rules are described in the [D3 chart](/data-display/d3-
 
 ## Usage
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#usage).
+Refer to [Horizontal bar chart > Usage](/data-display/bar-horizontal/bar-horizontal#usage).
 
 ## Appearance
 
@@ -99,19 +99,19 @@ Choose contrasting colors for different categories.
 
 ### Margins
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#margins).
+Refer to [Horizontal bar chart > Margins](/data-display/bar-horizontal/bar-horizontal#margins).
 
 ## Grid and axes
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#grid-and-axes).
+Refer to [Horizontal bar chart > Grid and axes](/data-display/bar-horizontal/bar-horizontal#grid-and-axes).
 
 ## Category labels
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#category-labels).
+Refer to [Horizontal bar chart > Category labels](/data-display/bar-horizontal/bar-horizontal#category-labels).
 
 ## Legend
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#legend).
+Refer to [Horizontal bar chart > Legend](/data-display/bar-horizontal/bar-horizontal#legend).
 
 ## Interaction
 
@@ -121,8 +121,8 @@ Hovering highlights a bar with `--chart-grid-bar-chart-hover`, indicating focus 
 
 ## Edge cases
 
-Refer to [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#edge-cases).
+Refer to [Horizontal bar chart > Edge cases](/data-display/bar-horizontal/bar-horizontal#edge-cases).
 
 ## Initial data loading
 
-Refer to the [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#initial-data-loading).
+Refer to [Horizontal bar chart > Initial data loading](/data-display/bar-horizontal/bar-horizontal#initial-data-loading).
