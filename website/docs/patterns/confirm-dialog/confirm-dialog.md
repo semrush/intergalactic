@@ -1,20 +1,20 @@
 ---
-title: Confirmation modal window
+title: Confirmation modal dialog
 fileSource: modal
 tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
 ---
 
 ## Description
 
-**Confirmation modal window** asks the user if they're sure that they want to proceed with the command that they've just issued to the system. It informs the user about potential problems or data loss and gives them a chance to reconsider the decision.
+**Confirmation modal dialog** asks the user if they're sure that they want to proceed with the command that they've just issued to the system. It informs the user about potential problems or data loss and gives them a chance to reconsider the decision.
 
-The dialog must have a clear descriptive message that explains what is happening. The user should be able to understand the message and have controls to act.
+The dialog must have a clear descriptive message that explains what's happening. The user should be able to understand the message and have controls to act.
 
 The dialog is built using the [Modal](/components/modal/modal) component.
 
 ## When to use
 
-When the user is about to take an irreversible action, like permanently deleting an item, or when they're about to lose unsaved data, you need to ask them in advance if they understand what’s going to happen.
+Before an irreversible action, such as permanently deleting an item or losing unsaved data, you need to make sure that the user understands the consequences.
 
 ![](static/confirm-dialog-save.png)
 
