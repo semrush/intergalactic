@@ -38,6 +38,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
   textareaObserver: MutationObserver;
+  intersectionObserver: IntersectionObserver;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -59,6 +60,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
 
     this.textareaObserver.observe(this.textarea, { childList: true });
+
+    this.intersectionObserver = new IntersectionObserver(this.handleIntersection, {
+      root: this.textarea,
+      threshold: 1.0,
+    });
   }
 
   uncontrolledProps() {
@@ -190,6 +196,40 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     });
   }
 
+  handleIntersection(entries: IntersectionObserverEntry[]): void {
+    const element = entries[0];
+
+    if (element.target instanceof HTMLDivElement) {
+      if (element.isIntersecting) {
+        this.setPopperTrigger?.(element.target);
+        this.popper?.current?.update();
+      } else if (element.rootBounds) {
+        this.setPopperTrigger?.(this.textarea);
+
+        const middle = (element.rootBounds.bottom - element.rootBounds.top) / 2;
+        const top = element.intersectionRect.top;
+        const yOffset = top < middle ? -1 * middle : middle;
+
+        this.popper?.current?.setOptions((options) => {
+          return {
+            ...options,
+            placement: 'right',
+            modifiers: [
+              ...(options.modifiers ?? []),
+              {
+                name: 'offset',
+                options: {
+                  offset: [yOffset, 10],
+                },
+              },
+            ],
+          };
+        });
+        this.popper?.current?.update();
+      }
+    }
+  }
+
   handleMouseMove(event: MouseEvent): void {
     this.lastInteraction = 'mouse';
     this.toggleErrorsPopper('mouseRowIndex', event.target);
@@ -319,7 +359,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (this.asProps.validateOn.includes('blur')) {
       this.recalculateErrors();
     }
-    this.setState({ visibleErrorPopper: false });
+    this.setState({ visibleErrorPopper: false, keyboardRowIndex: -1 });
   };
 
   handleKeyDown(event: KeyboardEvent) {
@@ -396,7 +436,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           placement={errorItem?.errorMessage ? 'right' : 'right-start'}
           visible={visibleErrorTooltip}
           theme={'warning'}
-          offset={errorItem?.errorMessage ? [0, 24] : undefined}
+          offset={errorItem?.errorMessage ? [0, 26] : undefined}
         >
           {({ popper, setTrigger }) => {
             this.setPopperTrigger = setTrigger;
@@ -507,7 +547,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
               this.setPopperTrigger?.(trigger);
               this.popper?.current?.update();
-              // this.setState({ visibleErrorPopper: true });
+
+              this.intersectionObserver.disconnect();
+              //
+              if (trigger !== this.textarea) {
+                this.intersectionObserver.observe(trigger);
+              }
             },
           );
         },
