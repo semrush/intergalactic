@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.50.1] - 2024-12-11
+
+### Fixed
+
+- first tag deleted on pressing `Enter`, when `InputTags.Value` is focused and located inside `form` tag
+
 ## [5.50.0] - 2024-11-29
 
 ### Changed
