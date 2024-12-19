@@ -1,16 +1,16 @@
 import React from 'react';
-import FeedbackForm from 'intergalactic/feedback-form';
-import Input from 'intergalactic/input';
-import { Box, Flex } from 'intergalactic/flex-box';
-import Link from 'intergalactic/link';
-import Dropdown from 'intergalactic/dropdown';
-import Textarea from 'intergalactic/textarea';
-import Notice from 'intergalactic/notice';
-import Button from 'intergalactic/button';
-import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
-import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
-import { Text } from 'intergalactic/typography';
-import FeedbackIllustration from 'intergalactic/illustration/Feedback';
+import FeedbackForm from '@semcore/feedback-form';
+import Input from '@semcore/input';
+import { Box, Flex } from '@semcore/flex-box';
+import Link from '@semcore/link';
+import Dropdown from '@semcore/dropdown';
+import Textarea from '@semcore/textarea';
+import Notice from '@semcore/notice';
+import Button from '@semcore/button';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import { Text } from '@semcore/typography';
+import FeedbackIllustration from '@semcore/illustration/Feedback';
 
 const validate = {
   description: (value = '') => {
@@ -33,12 +33,13 @@ const validate = {
   },
 };
 
+type FeedbackChangeEvent = React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>;
 type FeedbackProps = {
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
-  onChange?: (event: any, trigger: string) => void;
-  value?: { description: string; email: string };
+  onChange: (event: FeedbackChangeEvent) => void;
+  value: { feedback: string; email: string };
 };
 
 class Feedback extends React.PureComponent<FeedbackProps> {
@@ -57,12 +58,13 @@ class Feedback extends React.PureComponent<FeedbackProps> {
     }
   }
 
-  handleChange = (fn) => (_, e) => {
+  handleChange = (fn: (e: FeedbackChangeEvent) => void) => (_: any, e: FeedbackChangeEvent) => {
     fn(e);
+    this.props.onChange(e);
   };
 
   render() {
-    const { status, onSubmit, onCancel } = this.props;
+    const { status, onSubmit, onCancel, value } = this.props;
 
     if (status === 'success') {
       return (
@@ -73,36 +75,58 @@ class Feedback extends React.PureComponent<FeedbackProps> {
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <Flex tag='label' direction='column' htmlFor='suggestions'>
-            <Text mb={2} size={200}>
+          <Flex direction='column'>
+            <Text mb={2} size={200} tag='label' htmlFor='feedback'>
               Tell us your suggestion or report an issue
             </Text>
-            <FeedbackForm.Item name='feedback' validate={validate.description}>
+            <FeedbackForm.Item
+              name='feedback'
+              validate={validate.description}
+              initialValue={''}
+              placement='left-start'
+              flip={{
+                fallbackPlacements: ['right-start', 'bottom'],
+              }}
+              validateOnBlur={value.feedback === '' ? false : true}
+            >
               {({ input }) => (
                 <Textarea
                   {...input}
                   autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
-                  id='suggestions'
+                  id='feedback'
                 />
               )}
             </FeedbackForm.Item>
           </Flex>
-          <Flex tag='label' mt={4} direction='column' htmlFor='email'>
-            <Text mb={2} size={200}>
+          <Flex mt={4} direction='column'>
+            <Text mb={2} size={200} tag='label' htmlFor='email'>
               Reply-to email
             </Text>
-            <FeedbackForm.Item name='email' validate={validate.email}>
-              {({ input }) => (
-                <Input state={input.state}>
-                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id='email' />
-                </Input>
-              )}
+            <FeedbackForm.Item
+              name='email'
+              validate={validate.email}
+              initialValue={''}
+              validateOnBlur={value.email === '' ? false : true}
+            >
+              {({ input }) => {
+                const ariaDescribeBy = input['aria-describedby'] ?? 'privacy-description';
+                return (
+                  <Input state={input.state}>
+                    <Input.Value
+                      {...input}
+                      onChange={this.handleChange(input.onChange)}
+                      id='email'
+                      aria-describedby={ariaDescribeBy}
+                    />
+                  </Input>
+                );
+              }}
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight='18px' size={200} color='#6c6e79'>
+            <Text size={200} color='text-secondary' id='privacy-description'>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
@@ -126,19 +150,28 @@ class Feedback extends React.PureComponent<FeedbackProps> {
 }
 
 class FeedbackYesNo extends React.PureComponent {
-  state = { status: 'default', visible: true, feedbackType: null };
+  state = {
+    status: 'default',
+    visible: true,
+    feedbackType: null,
+    value: { feedback: '', email: '' },
+  };
   timeout: any;
   onSubmit = () => {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
-  requestServer = (status, time, cb?: () => void) => {
+  onChange = (e: FeedbackChangeEvent) => {
+    const { value, id } = e.currentTarget;
+    this.setState({ value: { ...this.state.value, [id]: value } });
+  };
+  requestServer = (status: string, time: number, cb?: () => void) => {
     this.timeout = setTimeout(() => {
       this.setState({ status });
       cb?.();
     }, time || 500);
   };
-  changeVisible = (visible) => {
+  changeVisible = (visible: boolean) => {
     this.setState({ visible });
   };
 
@@ -153,10 +186,11 @@ class FeedbackYesNo extends React.PureComponent {
   };
 
   render() {
-    const { status, visible, feedbackType } = this.state;
+    const { status, visible, feedbackType, value } = this.state;
 
     return (
       <Notice
+        aria-label='Leave feedback'
         hidden={!visible}
         display='flex'
         style={{
@@ -174,39 +208,38 @@ class FeedbackYesNo extends React.PureComponent {
           <Text mr={4}>Do you find our Design System useful?</Text>
           <Box inline>
             <Dropdown onVisibleChange={this.handleChangeDdVisible('yes')}>
-              <Dropdown.Trigger>
-                <Button active={feedbackType === 'yes'}>
-                  <Button.Addon>
-                    <ThumbUpM />
-                  </Button.Addon>
-                  <Button.Text>Yes</Button.Text>
-                </Button>
+              <Dropdown.Trigger tag={Button} addonLeft={ThumbUpM} active={feedbackType === 'yes'}>
+                Yes
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description' tabIndex={-1}>
+              <Dropdown.Popper aria-label='Feedback form' tabIndex={-1}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
                     onCancel={() => visible(false)}
                     onSubmit={() => this.onSubmit()}
+                    value={value}
+                    onChange={this.onChange}
                   />
                 )}
               </Dropdown.Popper>
             </Dropdown>
             <Dropdown onVisibleChange={this.handleChangeDdVisible('no')}>
-              <Dropdown.Trigger ml={2}>
-                <Button active={feedbackType === 'no'}>
-                  <Button.Addon>
-                    <ThumbDownM />
-                  </Button.Addon>
-                  <Button.Text>No</Button.Text>
-                </Button>
+              <Dropdown.Trigger
+                ml={2}
+                tag={Button}
+                addonLeft={ThumbDownM}
+                active={feedbackType === 'no'}
+              >
+                No
               </Dropdown.Trigger>
-              <Dropdown.Popper aria-label='Dropdown popper description' tabIndex={-1}>
+              <Dropdown.Popper aria-label='Feedback form' tabIndex={-1}>
                 {(_props, { visible }) => (
                   <Feedback
                     status={status}
                     onCancel={() => visible(false)}
                     onSubmit={() => this.onSubmit()}
+                    value={value}
+                    onChange={this.onChange}
                   />
                 )}
               </Dropdown.Popper>
@@ -222,6 +255,5 @@ class FeedbackYesNo extends React.PureComponent {
   }
 }
 
-const Demo = FeedbackYesNo;
-
+const Demo = () => <FeedbackYesNo />;
 export default Demo;
