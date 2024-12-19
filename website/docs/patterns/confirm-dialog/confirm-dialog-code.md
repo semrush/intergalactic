@@ -1,9 +1,9 @@
 ---
-title: Confirmation modal window
+title: Confirmation modal dialog
 tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
 ---
 
-## Confirm modal example
+## Delete project confirmation
 
 ::: sandbox
 

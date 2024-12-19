@@ -105,8 +105,8 @@ const Demo = () => {
               </Text>
             </Text>
 
-            <Tooltip placement='right' interaction={'none'} animationsDisabled={true}>
-              <Tooltip.Popper visible={showErrorTooltip()} theme='warning' id='form-project-error'>
+            <Tooltip placement='right' interaction={'none'} theme='warning' animationsDisabled={true}>
+              <Tooltip.Popper visible={showErrorTooltip()} id='form-project-error'>
                 {errors[fieldName]?.message}
               </Tooltip.Popper>
 

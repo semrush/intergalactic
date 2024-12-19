@@ -1,5 +1,5 @@
 ---
-title: Confirmation modal window
+title: Confirmation modal dialog
 fileSource: modal
 tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
 ---
