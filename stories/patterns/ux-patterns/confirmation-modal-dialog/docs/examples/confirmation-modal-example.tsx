@@ -97,7 +97,7 @@ const Demo = () => {
         </List>
 
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
-          <Flex style={warningBlockStyles} tag='label' direction='column' htmlFor='project'>
+          <Flex style={warningBlockStyles} tag='label' direction='column' htmlFor={fieldName}>
             <Text size={300} mb={2} tag='p'>
               Confirm deletion by typing the project name{' '}
               <Text tag='strong' color='red-500'>
