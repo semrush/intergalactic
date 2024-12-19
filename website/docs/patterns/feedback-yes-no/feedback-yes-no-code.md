@@ -11,7 +11,7 @@ Refer to [Feedback component API](/components/feedback/feedback-form-api) for th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from '/stories/patterns/ux-patterns/feedback-yes-no/examples/docs/feedback-yes-no-example.tsx';
+  export Demo from 'stories/patterns/ux-patterns/feedback-yes-no/examples/docs/feedback-yes-no-example.tsx';
 </script>
 
 :::
