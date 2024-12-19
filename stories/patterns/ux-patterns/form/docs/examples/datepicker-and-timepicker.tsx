@@ -1,25 +1,33 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import { DatePicker } from 'intergalactic/date-picker';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { DatePicker } from '@semcore/date-picker';
 import TimePicker from '@semcore/time-picker';
-import Checkbox from 'intergalactic/checkbox';
-import Button from 'intergalactic/button';
+import Checkbox from '@semcore/checkbox';
+import Button from '@semcore/button';
+
+type FormValues = {
+  start_date?: Date | undefined;
+  start_time?: string | undefined;
+  due_date?: Date | undefined;
+  due_time?: string | undefined;
+};
+const defaultValues: FormValues = {
+  start_date: new Date(),
+  start_time: '12:00',
+  due_date: new Date(),
+  due_time: '12:00',
+};
 
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);
-  const defaultValues = {
-    start_date: new Date(),
-    start_time: '12:00',
-    due_date: new Date(),
-    due_time: '12:00',
-  };
-  const { handleSubmit, control, reset } = useForm({
+
+  const { handleSubmit, control, reset } = useForm<FormValues>({
     defaultValues,
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: FormValues) => {
     alert(JSON.stringify(data));
   };
 
@@ -27,7 +35,7 @@ const Demo = () => {
     reset(defaultValues);
   };
 
-  const onPreventDefault = (e) => {
+  const onPreventDefault = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
@@ -35,22 +43,22 @@ const Demo = () => {
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
       <Flex mb={4}>
         <Flex direction='column'>
-          <Text size={300} tag='label' mb={1}>
+          <Text size={300} tag='label' mb={1} htmlFor='startDate'>
             Start date
           </Text>
           <Controller
-            render={(props) => <DatePicker size='l' {...props} />}
+            render={(props) => <DatePicker id='startDate' size='l' {...props} />}
             control={control}
             name='start_date'
           />
         </Flex>
         <Flex direction='column' ml={2}>
-          <Text size={300} tag='label' mb={1}>
+          <Text size={300} tag='label' mb={1} htmlFor='startTime'>
             Time
           </Text>
           <Controller
             render={(props) => (
-              <TimePicker size='l' is12Hour {...props}>
+              <TimePicker id='startTime' size='l' is12Hour {...props}>
                 <TimePicker.Hours />
                 <TimePicker.Separator />
                 <TimePicker.Minutes />
@@ -71,22 +79,22 @@ const Demo = () => {
       {period && (
         <Flex mb={4}>
           <Flex direction='column'>
-            <Text size={300} tag='label' mb={1}>
+            <Text size={300} tag='label' mb={1} htmlFor='dueDate'>
               Due date
             </Text>
             <Controller
-              render={(props) => <DatePicker size='l' {...props} />}
+              render={(props) => <DatePicker id='dueDate' size='l' {...props} />}
               control={control}
               name='due_date'
             />
           </Flex>
           <Flex direction='column' ml={2}>
-            <Text size={300} tag='label' mb={1}>
+            <Text size={300} tag='label' mb={1} htmlFor='dueTime'>
               Time
             </Text>
             <Controller
               render={(props) => (
-                <TimePicker size='l' is12Hour {...props}>
+                <TimePicker id='dueTime' size='l' is12Hour {...props}>
                   <TimePicker.Hours />
                   <TimePicker.Separator />
                   <TimePicker.Minutes />
