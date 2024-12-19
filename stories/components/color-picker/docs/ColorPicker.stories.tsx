@@ -1,14 +1,17 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ColorPicker, { PaletteManager } from '@semcore/color-picker';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import ColorPicker from '@semcore/color-picker';
 
+import BasicExampleExample from './examples/basic_example';
 import CustomTriggerExample from './examples/custom_trigger';
 import InputValidationExample from './examples/input_validation';
 import PalettemanagerExample from './examples/palettemanager';
 import SeveralWaysToUseComponentExample from './examples/several_ways_to_use_component';
+
+import { InputValidationTest } from './__tests__/input_validation.test';
+import { BasicExampleTest } from './__tests__/basic_example.test';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof ColorPicker> = {
   title: 'Components/ColorPicker/Documentation',
@@ -20,25 +23,8 @@ export default meta;
 type Story = StoryObj<typeof ColorPicker>;
 
 export const BasicExample: Story = {
-  render: () => {
-    return (
-      <Flex direction='column'>
-        <Text tag='label' size={200} htmlFor='main-theme-color'>
-          Main theme color
-        </Text>
-        <ColorPicker>
-          <ColorPicker.Trigger mt={2} id='main-theme-color' />
-          <ColorPicker.Popper>
-            <ColorPicker.Colors />
-            <PaletteManager>
-              <PaletteManager.Colors />
-              <PaletteManager.InputColor />
-            </PaletteManager>
-          </ColorPicker.Popper>
-        </ColorPicker>
-      </Flex>
-    );
-  },
+  render: BasicExampleExample,
+  play: playWrapper(BasicExampleTest),
 };
 
 export const CustomTrigger: Story = {
@@ -47,6 +33,7 @@ export const CustomTrigger: Story = {
 
 export const InputValidation: Story = {
   render: InputValidationExample,
+  play: playWrapper(InputValidationTest),
 };
 
 export const Palettemanager: Story = {

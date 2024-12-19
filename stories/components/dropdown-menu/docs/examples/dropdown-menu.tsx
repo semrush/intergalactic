@@ -31,6 +31,7 @@ const Demo = () => {
             <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
           </DropdownMenu.List>
           <Notice
+            aria-labelledby='export-notice-title'
             theme='warning'
             style={{
               padding: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-2x)',
@@ -41,7 +42,7 @@ const Demo = () => {
             }}
           >
             <Notice.Content>
-              <Text tag='strong' mb={1} style={{ display: 'block' }}>
+              <Text tag='strong' mb={1} style={{ display: 'block' }} id='export-notice-title'>
                 Export failed
               </Text>
               <Text>
