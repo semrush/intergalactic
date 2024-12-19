@@ -33,6 +33,7 @@
     "directory": "semcore/add-filter"
   },
   "devDependencies": {
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@semcore/testing-utils": "1.0.0"
   }
 }
