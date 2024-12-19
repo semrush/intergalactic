@@ -1,8 +1,7 @@
 import React from 'react';
-import Link from 'intergalactic/link';
+import Link from '@semcore/link';
 
-class Demo extends React.PureComponent {
-  render() {
+const Demo = () => {
     return (
       <div>
         <Link color='text-critical' href='#' size={300}>
@@ -15,7 +14,6 @@ class Demo extends React.PureComponent {
         </Link>
       </div>
     );
-  }
 }
 
 export default Demo;

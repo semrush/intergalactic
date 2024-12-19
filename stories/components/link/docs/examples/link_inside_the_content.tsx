@@ -1,11 +1,10 @@
 import React from 'react';
-import FormatText from 'intergalactic/format-text';
-import { List } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
-import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
+import FormatText from '@semcore/format-text';
+import { List } from '@semcore/typography';
+import Link from '@semcore/link';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 
-class Demo extends React.PureComponent {
-  render() {
+const Demo = () => {
     return (
       <div>
         <FormatText size={'l'}>
@@ -44,7 +43,6 @@ class Demo extends React.PureComponent {
         </List>
       </div>
     );
-  }
 }
 
 export default Demo;

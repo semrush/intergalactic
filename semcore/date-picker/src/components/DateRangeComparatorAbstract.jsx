@@ -387,6 +387,12 @@ class DateRangeComparatorAbstract extends Component {
     throw new Error('not implemented');
   }
 
+  getRangeInputProps() {
+    return {
+      inputRole: null,
+    };
+  }
+
   getValueDateRangeProps() {
     const {
       value,

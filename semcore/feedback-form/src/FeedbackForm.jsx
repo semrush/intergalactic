@@ -88,7 +88,7 @@ function Success(props) {
   const SEmail = 'div';
 
   return sstyled(styles)(
-    <SSuccess render={Box}>
+    <SSuccess render={Box} tabIndex={-1}>
       <SEmail aria-hidden={true} />
       <span>
         <Children />

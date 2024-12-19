@@ -12,6 +12,8 @@ import CounterInFormsExample from './examples/counter_in_forms';
 import CounterInLimitsExample from './examples/counter_in_limits';
 import CounterInPillsExample from './examples/counter_in_pills';
 
+import { CounterInFiltersTest } from './__tests__/counter_in_filters.test';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof Counter> = {
   title: 'Components/Counter/Documentation',
@@ -40,6 +42,7 @@ export const CounterInDot: Story = {
 
 export const CounterInFilters: Story = {
     render: CounterInFiltersExample,
+    play: playWrapper(CounterInFiltersTest),
 };
 
 export const CounterInForms: Story = {
