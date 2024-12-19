@@ -36,7 +36,7 @@ const Demo = () => {
     reset({ project: '' }, { keepIsSubmitted: false, keepTouched: false });
   }, []);
 
-  const { errors, isSubmitted, touchedFields } = formState;
+  const { errors, isSubmitted } = formState;
   const [focusedFieldName, setFocusedFieldName] = React.useState('');
   const onSubmit: SubmitHandler<FormValues> = handleClose;
 
@@ -49,7 +49,7 @@ const Demo = () => {
 
     return Boolean(error);
   };
-  
+
   const showErrorTooltip = (): boolean => {
     const isActive = focusedFieldName === fieldName;
     return hasError() && isActive;
@@ -97,8 +97,8 @@ const Demo = () => {
         </List>
 
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
-          <Flex style={warningBlockStyles} tag='label' direction='column' htmlFor={fieldName}>
-            <Text size={300} mb={2} tag='p'>
+          <Flex style={warningBlockStyles} direction='column'>
+            <Text size={300} mb={2} tag='label' htmlFor={fieldName}>
               Confirm deletion by typing the project name{' '}
               <Text tag='strong' color='red-500'>
                 Test
@@ -106,12 +106,7 @@ const Demo = () => {
             </Text>
 
             <Tooltip placement='right' interaction={'none'} animationsDisabled={true}>
-              <Tooltip.Popper
-                visible={showErrorTooltip()}
-                theme='warning'
-                id='form-project-error'
-                aria-live={'off'}
-              >
+              <Tooltip.Popper visible={showErrorTooltip()} theme='warning' id='form-project-error'>
                 {errors[fieldName]?.message}
               </Tooltip.Popper>
 
