@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `aria-colindex` was set for each Head.Cell components, even for a group.
 
+### Changed
+
+- Hide scrollbars from Screen Readers in Table.Head and Table.Body.
+
 ## [4.47.4] - 2024-11-26
 
 ### Fixed
