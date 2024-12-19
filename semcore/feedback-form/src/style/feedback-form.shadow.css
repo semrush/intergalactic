@@ -23,6 +23,7 @@ SSuccess {
   width: 320px;
   padding: var(--intergalactic-spacing-10x, 40px);
   box-sizing: border-box;
+  outline: none;
 }
 
 SEmail {

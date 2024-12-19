@@ -353,7 +353,7 @@ class Head extends Component<AsProps> {
         style={style}
         hidden={hidden}
         aria-sort={ariaSortValue}
-        aria-colindex={index + 1}
+        aria-colindex={isGroup ? undefined : index + 1}
         onFocus={this.onFocusCell}
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
       >

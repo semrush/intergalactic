@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.47.1] - 2024-12-16
+
+### Changed
+
+- `aria-haspopup` on trigger can be set from props.
+
 ## [6.47.0] - 2024-11-29
 
 ### Changed

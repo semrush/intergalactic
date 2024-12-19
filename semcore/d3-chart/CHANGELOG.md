@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.58.3] - 2024-12-12
+## [3.58.4] - 2024-12-19
 
 ### Removed
 
@@ -11,6 +11,16 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - `aria-labelledby` value in `LegendItem` to unique id.
+
+## [3.58.3] - 2024-12-17
+
+### Fixed
+
+- Animation of points on ScatterPlot was on every render.
+
+### Added
+
+- `outilne=none` for Hover rect and line.
 
 ## [3.58.2] - 2024-12-09
 

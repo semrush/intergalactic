@@ -10,6 +10,15 @@ import NestedExample from './examples/nested';
 import NestedWithFocusableExample from './examples/nested_with_focusable';
 import TheSecondMethodExample from './examples/the_second_method';
 
+import { BasicUsageTest } from './__tests__/basic.test';
+import { DropdownMenuTest } from './__tests__/dropdown-menu.test';
+import { ListItemTypesTest } from './__tests__/list_item_types.test';
+import { ItemActionsTest } from './__tests__/item_actions.test';
+import { NestedWithFocusableTest } from './__tests__/nested_with_focusable.test';
+import { NestedTest } from './__tests__/nested.test';
+import { TheSecondMethodTest } from './__tests__/the_second_method.test';
+import { playWrapper } from '../../../utils/playWrapper';
+
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Dropdown Menu/Documentation',
   component: DropdownMenu,
@@ -20,28 +29,35 @@ type Story = StoryObj<typeof DropdownMenu>;
 
 export const Basic: Story = {
   render: BasicExample,
+  play: playWrapper(BasicUsageTest),
 };
 
 export const DropdownMenuStory: Story = {
   render: DropdownMenuExample,
+  play: playWrapper(DropdownMenuTest),
 };
 
 export const ItemActions: Story = {
   render: ItemActionsExample,
+  play: playWrapper(ItemActionsTest),
 };
 
 export const ListItemTypes: Story = {
   render: ListItemTypesExample,
+  play: playWrapper(ListItemTypesTest),
 };
 
 export const Nested: Story = {
   render: NestedExample,
+  play: playWrapper(NestedTest),
 };
 
 export const NestedWithFocusable: Story = {
   render: NestedWithFocusableExample,
+  play: playWrapper(NestedWithFocusableTest),
 };
 
 export const TheSecondMethod: Story = {
   render: TheSecondMethodExample,
+  play: playWrapper(TheSecondMethodTest),
 };

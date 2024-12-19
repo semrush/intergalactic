@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.2] - 2024-12-17
+
+### Removed
+
+- `aria-live` from all items.
+- `aria-label` from "muted" theme.
+
+### Added
+
+- Log with recommendation to provide aria-labels that help distinguish different types of notices.
+
 ## [5.43.1] - 2024-12-09
 
 ### Changed

@@ -10,7 +10,7 @@ By default, links are displayed as `inline-block` and don’t wrap properly with
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/link_inside_the_content.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_inside_the_content.tsx';
 </script>
 
 :::
@@ -22,7 +22,7 @@ You can add addons to link either by specifying the desired tag in the `addonLef
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/link_addon.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_addon.tsx';
 </script>
 
 :::
@@ -34,7 +34,7 @@ Links can be colored for specific purposes. You can apply a specific color to li
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/color_links.tsx';
+  export Demo from 'stories/components/link/docs/examples/color_links.tsx';
 </script>
 
 :::
@@ -50,7 +50,7 @@ If you need to display disabled link as a `Button` you should remove `href` prop
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/link_as_button.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_as_button.tsx';
 </script>
 
 :::
@@ -65,7 +65,7 @@ There are two moments you need to consider when using link with addons and ellip
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/links_with_ellipsis.tsx';
+  export Demo from 'stories/components/link/docs/examples/links_with_ellipsis.tsx';
 </script>
 
 :::
@@ -77,7 +77,7 @@ If a link has no visible text, it's important to add a [Hint](/components/toolti
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/link_without_text.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_without_text.tsx';
 </script>
 
 :::
@@ -87,7 +87,7 @@ If a link has no visible text, it's important to add a [Hint](/components/toolti
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/link_disabled.tsx';
+  export Demo from 'stories/components/link/docs/examples/link_disabled.tsx';
 </script>
 
 :::

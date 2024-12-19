@@ -36,6 +36,30 @@ class RootNotice extends Component {
     locale: 'en',
   };
 
+  ref = React.createRef();
+
+  componentDidMount() {
+    if (
+      this.ref.current &&
+      process.env.NODE_ENV !== 'production' &&
+      !['muted', 'danger'].includes(this.props.theme)
+    ) {
+      const hasTitle = (node) => {
+        if (node.hasAttribute('aria-label')) return true;
+        if (node.hasAttribute('aria-labelledby')) return true;
+        if (node.hasAttribute('title')) return true;
+
+        return false;
+      };
+
+      logger.warn(
+        !hasTitle(this.ref.current),
+        `Provide unique 'title' or 'aria-label' or 'aria-labelledby' to help identify the type and importance of notification`,
+        this.props['data-ui-name'] || RootNotice.displayName,
+      );
+    }
+  }
+
   getLabelProps() {
     const { theme, resolveColor } = this.asProps;
 
@@ -57,14 +81,8 @@ class RootNotice extends Component {
   render() {
     const SNotice = Root;
     const { Children, styles, hidden, theme, use, resolveColor, getI18nText } = this.asProps;
-    const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
-
-    let ariaLive = isAssertive ? 'assertive' : 'polite';
-    if (theme === 'neutral') {
-      ariaLive = undefined;
-    }
 
     if (use === 'primary') {
       logger.warn(
@@ -75,6 +93,12 @@ class RootNotice extends Component {
       return <NoticeGlobal {...this.asProps} />;
     }
 
+    let ariaLabel = getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification');
+
+    if (theme === 'muted') {
+      ariaLabel = undefined;
+    }
+
     return sstyled(styles)(
       <SNotice
         render={FadeInOut}
@@ -82,8 +106,8 @@ class RootNotice extends Component {
         use:theme={useTheme}
         backgroundColor={color}
         role='region'
-        aria-live={ariaLive}
-        aria-label={getI18nText(theme === 'danger' ? 'criticalNotification' : 'notification')}
+        aria-label={ariaLabel}
+        ref={this.ref}
       >
         <Children />
       </SNotice>,

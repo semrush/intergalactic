@@ -7,7 +7,7 @@ import Button from 'intergalactic/button';
 import { Text } from 'intergalactic/typography';
 
 const Demo = () => (
-  <Notice aria-label='Feedback'>
+  <Notice aria-label='Leave feedback'>
     <Notice.Label mr={2}>
       <Question />
     </Notice.Label>
