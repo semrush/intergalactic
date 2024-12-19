@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.7] - 2024-12-16
+
+### Removed
+
+- Unnecessary `role=combobox` for all inputs from popper in any Comparator.
+
 ## [4.54.6] - 2024-12-09
 
 ### Changed

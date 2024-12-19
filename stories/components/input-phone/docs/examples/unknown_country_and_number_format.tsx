@@ -1,10 +1,10 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import CloseM from 'intergalactic/icon/Close/m';
-import { ButtonLink } from 'intergalactic/button';
-import { Hint } from 'intergalactic/tooltip';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import CloseM from '@semcore/icon/Close/m';
+import { ButtonLink } from '@semcore/button';
+import { Hint } from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('+');

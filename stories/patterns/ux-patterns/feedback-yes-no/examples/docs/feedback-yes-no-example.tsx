@@ -34,13 +34,30 @@ const validate = {
 };
 
 type FeedbackChangeEvent = React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>;
-class Feedback extends React.PureComponent<{
+type FeedbackProps = {
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
   onChange: (event: FeedbackChangeEvent) => void;
   value: { feedback: string; email: string };
-}> {
+};
+
+class Feedback extends React.PureComponent<FeedbackProps> {
+  ref = React.createRef<HTMLDivElement>();
+
+  componentDidMount(): void {
+    // need this timeout because Feedback component used in function component
+    setTimeout(() => {
+      this.ref.current?.focus();
+    }, 0);
+  }
+
+  componentDidUpdate(prevProps: Readonly<FeedbackProps>): void {
+    if (prevProps.status !== 'success' && this.props.status === 'success') {
+      this.ref.current?.focus();
+    }
+  }
+
   handleChange = (fn: (e: FeedbackChangeEvent) => void) => (_: any, e: FeedbackChangeEvent) => {
     fn(e);
     this.props.onChange(e);
@@ -50,7 +67,9 @@ class Feedback extends React.PureComponent<{
     const { status, onSubmit, onCancel, value } = this.props;
 
     if (status === 'success') {
-      return <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
+      return (
+        <FeedbackForm.Success ref={this.ref}>Thank you for your feedback!</FeedbackForm.Success>
+      );
     }
 
     return (
