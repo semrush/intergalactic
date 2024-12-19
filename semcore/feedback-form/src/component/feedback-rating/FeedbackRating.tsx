@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Form } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -88,6 +88,11 @@ class FeedbackRatingRoot extends Component<
     };
   }
 
+  getNoticeTextId() {
+    const { uid } = this.asProps;
+    return `${uid}-feedback-rating-notice`;
+  }
+
   handleChangeRating = (rating: number) => {
     this.asProps.onVisibleChange(true, rating);
   };
@@ -120,7 +125,7 @@ class FeedbackRatingRoot extends Component<
     }
   }
 
-  renderCheckbox = (config: FormConfigItem) => {
+  renderCheckbox = (config: FormConfigItem, index: number) => {
     const initialValue = this.props.initialValues[config.key];
 
     return (
@@ -129,7 +134,6 @@ class FeedbackRatingRoot extends Component<
         initialValue={initialValue}
         type={'checkbox'}
         key={config.key}
-        tag={'li'}
       >
         {({ input }) => (
           <FeedbackRating.Checkbox
@@ -138,6 +142,7 @@ class FeedbackRatingRoot extends Component<
             name={config.key}
             label={config.label}
             onChange={this.handleChange(input.onChange)}
+            focused={index === 0}
           />
         )}
       </FeedbackRating.Item>
@@ -155,6 +160,9 @@ class FeedbackRatingRoot extends Component<
       ) : (
         (config.label as unknown as JSX.Element)
       );
+
+    const isDescriptionReactFragment =
+      (config.description as ReactElement)?.type === React.Fragment;
 
     return (
       <Flex tag='label' mt={4} direction='column' htmlFor={config.key} key={config.key}>
@@ -174,7 +182,6 @@ class FeedbackRatingRoot extends Component<
               return (
                 <Textarea
                   {...input}
-                  autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
                   id={config.key}
@@ -197,8 +204,8 @@ class FeedbackRatingRoot extends Component<
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' ? (
-              <Text lineHeight='18px' size={200} color='#6c6e79'>
+            {typeof config.description === 'string' || isDescriptionReactFragment ? (
+              <Text size={200} color='text-secondary' aria-describedby={config.key}>
                 {config.description}
               </Text>
             ) : (
@@ -239,6 +246,7 @@ class FeedbackRatingRoot extends Component<
     const textFields = formConfig.filter(
       (item) => item.type === 'textarea' || item.type === 'input',
     );
+    const notificationId = this.getNoticeTextId();
 
     return sstyled(styles)(
       <Root render={Box}>
@@ -252,12 +260,14 @@ class FeedbackRatingRoot extends Component<
             <FeedbackIllustration />
           </Notice.Label>
           <Notice.Content tag={Flex} alignItems={'center'}>
-            <Text mr={3}>{notificationText}</Text>
+            <Text mr={3} id={notificationId}>
+              {notificationText}
+            </Text>
             <Notice.Actions mt={0}>
               <SliderRating
                 value={rating}
                 onChange={this.handleChangeRating}
-                aria-label={notificationText}
+                aria-labelledby={notificationId}
               />
             </Notice.Actions>
             {learnMoreLink && (
@@ -275,6 +285,7 @@ class FeedbackRatingRoot extends Component<
           onClose={this.handelCloseModal}
           p={0}
           use:w={modalWidth ?? 440}
+          aria-labelledby={this.headerId}
         >
           <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
@@ -291,7 +302,11 @@ class FeedbackRatingRoot extends Component<
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {header as any}
+                  {(header as ReactElement)?.type === FeedbackRating.Header ? (
+                    header
+                  ) : (
+                    <FeedbackRating.Header>{header}</FeedbackRating.Header>
+                  )}
 
                   <Box
                     tag='form'
@@ -300,20 +315,15 @@ class FeedbackRatingRoot extends Component<
                     ref={forwardRef}
                     {...other}
                     onSubmit={api.handleSubmit}
-                    title={getI18nText('formTitle')}
                   >
-                    <FeedbackRating.Item name={'rating'} initialValue={rating}>
-                      {({ input }) => {
-                        return <input {...input} type='hidden' />;
-                      }}
-                    </FeedbackRating.Item>
+                    <Field name={'rating'} initialValue={rating}>
+                      {({ input }) => <input {...input} type='hidden' />}
+                    </Field>
 
                     <div role={'group'} aria-labelledby={this.headerId}>
-                      <ul>
-                        {checkboxFields.map((formConfigItem) =>
-                          this.renderCheckbox(formConfigItem),
-                        )}
-                      </ul>
+                      {checkboxFields.map((formConfigItem, index) =>
+                        this.renderCheckbox(formConfigItem, index),
+                      )}
                     </div>
 
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}

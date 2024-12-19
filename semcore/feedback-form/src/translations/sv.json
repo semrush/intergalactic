@@ -4,5 +4,9 @@
   "formTitle": "Feedbackformulär",
   "submitButton": "Skicka feedback",
   "successMessage": "Tack för din feedback!",
-  "errorMessage": "Något gick fel. Försök igen eller kontakta oss via {email}."
+  "errorMessage": "Något gick fel. Försök igen eller kontakta oss via {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Tryck på Enter för att välja betyg",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Ditt betyg: {selectedRating} av {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Inget valt",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} av {max}"
 }

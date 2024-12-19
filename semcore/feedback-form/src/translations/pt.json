@@ -4,5 +4,9 @@
   "formTitle": "Formulário de comentários",
   "submitButton": "Enviar comentário",
   "successMessage": "Agradecemos pelos comentários!",
-  "errorMessage": "Algo deu errado. Tente novamente ou entre em contato conosco pelo e-mail {email}."
+  "errorMessage": "Algo deu errado. Tente novamente ou entre em contato conosco pelo e-mail {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Pressione Enter para selecionar a classificação",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Sua classificação: {selectedRating} de {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Não definida",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} de {max}"
 }
