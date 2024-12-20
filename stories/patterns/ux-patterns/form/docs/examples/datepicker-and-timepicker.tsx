@@ -8,10 +8,10 @@ import Checkbox from '@semcore/checkbox';
 import Button from '@semcore/button';
 
 type FormValues = {
-  start_date?: Date | undefined;
-  start_time?: string | undefined;
-  due_date?: Date | undefined;
-  due_time?: string | undefined;
+  start_date?: Date;
+  start_time?: string;
+  due_date?: Date;
+  due_time?: string;
 };
 const defaultValues: FormValues = {
   start_date: new Date(),
