@@ -17,9 +17,7 @@ const Demo = () => {
       <DropdownMenu.Menu>
         <Tooltip placement={'right'} timeout={[0, 50]}>
           <DropdownMenu.Group title={'Menu title'} subTitle={'Subtitle'}>
-            <DropdownMenu.Item tag={Tooltip.Trigger}>
-              <DropdownMenu.Item.Content>Menu item 1</DropdownMenu.Item.Content>
-            </DropdownMenu.Item>
+            <DropdownMenu.Item tag={Tooltip.Trigger}>Menu item 1</DropdownMenu.Item>
             <DropdownMenu.Item tag={Tooltip.Trigger}>
               <DropdownMenu.Item.Content>Menu item 2</DropdownMenu.Item.Content>
               <DropdownMenu.Item.Hint>Hint for menu item 2</DropdownMenu.Item.Hint>

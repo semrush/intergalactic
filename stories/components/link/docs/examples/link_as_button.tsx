@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import PlusM from 'intergalactic/icon/MathPlus/m';
+import Button from '@semcore/button';
+import PlusM from '@semcore/icon/MathPlus/m';
 
 const Demo = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import TabLine from 'intergalactic/tab-line';
-import { Hint } from 'intergalactic/tooltip';
+import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);
@@ -14,7 +14,7 @@ const Demo = () => {
         >
           <TabLine.Item.Text>Normal tab</TabLine.Item.Text>
         </TabLine.Item>
-        <Hint
+        <Tooltip
           title='Do not forget to add short text to explain why this item is disabled.'
           placement='top'
           role='tab'
@@ -22,7 +22,7 @@ const Demo = () => {
           <TabLine.Item value={2} disabled>
             <TabLine.Item.Text>Disabled tab</TabLine.Item.Text>
           </TabLine.Item>
-        </Hint>
+        </Tooltip>
       </TabLine>
       {
         [
