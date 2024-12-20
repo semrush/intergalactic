@@ -75,7 +75,7 @@ SMessage a {
 }
 
 SNoticeAriaLiveWrapper {
-  display: content;
+  display: contents;
 }
 
 @keyframes enter {
