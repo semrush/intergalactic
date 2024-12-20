@@ -49,6 +49,7 @@ const Demo = () => {
   }, []);
   const handleCloseNotification = React.useCallback(() => {
     setNotificationVisible(false);
+    setRefreshBtnVisible(true);
   }, []);
 
   return (
