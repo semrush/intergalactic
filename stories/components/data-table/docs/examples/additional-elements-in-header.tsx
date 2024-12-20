@@ -1,7 +1,6 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
 import ProgressBar from '@semcore/progress-bar';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const maxValue = 100;
 
@@ -24,13 +23,21 @@ const Demo = () => {
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
-        <ProgressBar value={value} size='s' style={{ borderRadius: 0 }} aria-hidden={true}>
-          <ProgressBar.Value style={{ borderRadius: 0 }} />
-        </ProgressBar>
+        <div role={'row'}>
+          {/* @ts-ignore */}
+          <div role={'gridcell'} name={'keyword/kd/cpc/vol'} tabIndex={-1}>
+            <ProgressBar
+              value={value}
+              size='s'
+              style={{ borderRadius: 0 }}
+              aria-label={'Loading table progress bar'}
+            >
+              <ProgressBar.Value style={{ borderRadius: 0 }} />
+            </ProgressBar>
+          </div>
+        </div>
       </DataTable.Head>
-      <DataTable.Body>
-        <ScreenReaderOnly aria-live={'polite'}>{value}%</ScreenReaderOnly>
-      </DataTable.Body>
+      <DataTable.Body />
     </DataTable>
   );
 };
