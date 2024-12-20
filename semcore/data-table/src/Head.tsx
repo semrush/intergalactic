@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -337,7 +337,7 @@ class Head extends Component<AsProps> {
         borderRight={isGroup ? false : column.borderRight}
         active={isGroup ? false : column.active}
         group={isGroup}
-        tabIndex={-1}
+        tabIndex={isGroup ? undefined : -1}
         __excludeProps={['hidden']}
         {...column.props}
         ref={this.makeColumnRefHandler(column, index)}
@@ -411,33 +411,35 @@ class Head extends Component<AsProps> {
     );
 
     return sstyled(styles)(
-      <SHeadWrapper sticky={sticky} animationsDisabled={animationsDisabled}>
-        <ScrollArea
-          leftOffset={offsetLeftSum}
-          rightOffset={offsetRightSum}
-          shadow
-          onResize={onResize}
-        >
-          <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={-1} zIndex={2}>
-            <SHead render={Box} role='row' __excludeProps={['hidden']}>
-              {this.renderColumns(columnsChildren, 100 / this.columns.length)}
-            </SHead>
-          </ScrollArea.Container>
-          {Boolean(withScrollBar) && (
-            <div style={displayContents}>
+      <hideScrollBarsFromScreenReadersContext.Provider value={true}>
+        <SHeadWrapper sticky={sticky} animationsDisabled={animationsDisabled}>
+          <ScrollArea
+            leftOffset={offsetLeftSum}
+            rightOffset={offsetRightSum}
+            shadow
+            onResize={onResize}
+          >
+            <ScrollArea.Container ref={$scrollRef} role='rowgroup' tabIndex={-1} zIndex={2}>
+              <SHead render={Box} role='row' __excludeProps={['hidden']}>
+                {this.renderColumns(columnsChildren, 100 / this.columns.length)}
+              </SHead>
+            </ScrollArea.Container>
+            {Boolean(withScrollBar) && (
               <div style={displayContents}>
                 <div style={displayContents}>
-                  <ScrollArea.Bar orientation='horizontal' />
+                  <div style={displayContents}>
+                    <ScrollArea.Bar orientation='horizontal' />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </ScrollArea>
-        {Children.origin}
-        <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
-          {getI18nText?.('sortableColumn')}
-        </ScreenReaderOnly>
-      </SHeadWrapper>,
+            )}
+          </ScrollArea>
+          {Children.origin}
+          <ScreenReaderOnly aria-hidden={true} id={this.sortableColumnDescribeId()}>
+            {getI18nText?.('sortableColumn')}
+          </ScreenReaderOnly>
+        </SHeadWrapper>
+      </hideScrollBarsFromScreenReadersContext.Provider>,
     );
   }
 }
