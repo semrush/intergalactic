@@ -152,7 +152,7 @@ class SliderRatingRoot extends Component<
 
     if (readonly) {
       return (
-        <SSliderRating render={Flex} gap={1} role='img' aria-label={label}>
+        <SSliderRating render={Flex} gap={1} role='img' aria-label={label} use:tabIndex={-1}>
           {new Array(MAX).fill(null).map((_, index) => {
             return (
               <Box key={index} position={'relative'}>
