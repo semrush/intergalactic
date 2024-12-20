@@ -1,12 +1,11 @@
 import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import Divider from 'intergalactic/divider';
-import Link from 'intergalactic/link';
-import LinkExternalM from 'intergalactic/icon/LinkExternal/m';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import Divider from '@semcore/divider';
+import Link from '@semcore/link';
+import LinkExternalM from '@semcore/icon/LinkExternal/m';
 
-class Demo extends React.PureComponent {
-  render() {
+const Demo = () => {
     return (
       <Flex>
         <Text flex='0 0 auto'>Sep 3</Text>
@@ -27,7 +26,6 @@ class Demo extends React.PureComponent {
         </Link>
       </Flex>
     );
-  }
 }
 
 export default Demo;

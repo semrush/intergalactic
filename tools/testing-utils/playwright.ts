@@ -62,6 +62,7 @@ const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
 });
 
+export type { Page };
 export * from '@playwright/test';
 export * from '@guidepup/playwright';
 export { AxeBuilder, test, voiceOverTest };

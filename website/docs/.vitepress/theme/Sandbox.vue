@@ -2,9 +2,9 @@
   <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" aria-label="Playground" :role="!hideCode ? null : 'region'">
   </div>
   <div class="code-wrapper" v-if="!hideCode">
-    <span v-html="htmlCode"></span>
     <a title="Open CodeSandbox" class="open-codesandbox" target="_blank" rel='noopener noreferrer'
-      :href="codesandboxUrl"></a>
+       :href="codesandboxUrl"></a>
+    <span v-html="htmlCode"></span>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ const dataToLzCompressedJson = (data) => {
 const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, stylesIsolation } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String, stylesIsolation: Boolean })
 const htmlCode = computed(() => {
   let code = atob(codeEncoded!).replace(/intergalactic\//g, "@semcore/ui/");
-  return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code tabindex="0">');
+  return code.replace('tabindex="0" v-pre=""><code>', 'v-pre=""><code>');
 });
 const codesandboxUrl = computed(() => {
   let code = rawCode.replace(/'intergalactic\//g, "'@semcore/ui/");

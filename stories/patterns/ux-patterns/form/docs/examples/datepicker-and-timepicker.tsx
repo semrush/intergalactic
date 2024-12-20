@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import { DatePicker } from 'intergalactic/date-picker';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { DatePicker } from '@semcore/date-picker';
 import TimePicker from '@semcore/time-picker';
-import Checkbox from 'intergalactic/checkbox';
-import Button from 'intergalactic/button';
+import Checkbox from '@semcore/checkbox';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);
@@ -19,7 +19,7 @@ const Demo = () => {
     defaultValues,
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: typeof defaultValues) => {
     alert(JSON.stringify(data));
   };
 
@@ -27,7 +27,7 @@ const Demo = () => {
     reset(defaultValues);
   };
 
-  const onPreventDefault = (e) => {
+  const onPreventDefault = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
