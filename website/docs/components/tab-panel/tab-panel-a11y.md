@@ -18,7 +18,7 @@ Table: Keyboard support
 
 ### Roles & attributes
 
-The following list describes roles and attributes that component already has.
+The following table describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
@@ -34,7 +34,7 @@ Table: Roles and attributes
 
 ### Roles & attributes
 
-The list below will help you to keep in mind the necessary roles and attributes you need to set to `tabpanel` with your content to make TabPanel and content it operates fully accessible. [Check our code examples](/components/tab-line/tab-line-code).
+The following table will help you to keep in mind the necessary roles and attributes you need to set to `tabpanel` with your content to make TabPanel and content it operates fully accessible. [Check our code examples](/components/tab-line/tab-line-code).
 
 Table: Roles and attributes
 
@@ -53,4 +53,4 @@ Table: Roles and attributes
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
