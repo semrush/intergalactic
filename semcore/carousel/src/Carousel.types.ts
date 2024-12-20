@@ -118,6 +118,7 @@ declare const CarouselType: Intergalactic.Component<
   CarouselContext & CarouselState
 > & {
   Container: Intergalactic.Component<'div', BoxProps>;
+  ContentBox: Intergalactic.Component<'div', BoxProps>;
   Indicators: Intergalactic.Component<'div', CarouselIndicatorsProps, CarouselState>;
   Indicator: Intergalactic.Component<'div', CarouselIndicatorProps>;
   Item: Intergalactic.Component<'div', CarouselItemProps>;

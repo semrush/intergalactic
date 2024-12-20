@@ -516,7 +516,6 @@ class CarouselRoot extends Component<
 
   render() {
     const SCarousel = Root;
-    const SContentBox = Box;
     const {
       styles,
       Children,
@@ -549,11 +548,11 @@ class CarouselRoot extends Component<
           <>
             <Flex>
               <Carousel.Prev />
-              <SContentBox>
+              <Carousel.ContentBox>
                 <Carousel.Container aria-label={ariaLabel}>
                   <Children />
                 </Carousel.Container>
-              </SContentBox>
+              </Carousel.ContentBox>
               <Carousel.Next />
             </Flex>
             {indicators === 'default' && <Carousel.Indicators />}
@@ -597,6 +596,13 @@ const Container = (props: BoxProps & { duration?: number }) => {
   return sstyled(styles)(
     <SContainer render={Box} use:duration={`${duration}ms`} aria-live='polite' />,
   );
+};
+
+const ContentBox = (props: BoxProps) => {
+  const SContentBox = Root;
+  const { styles } = props;
+
+  return sstyled(styles)(<SContentBox render={Box} />);
 };
 
 class Item extends Component<CarouselItemProps> {
@@ -748,6 +754,7 @@ const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
 
 const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
   Container,
+  ContentBox,
   Indicators,
   Indicator,
   Item,
