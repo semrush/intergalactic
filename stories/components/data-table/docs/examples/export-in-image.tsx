@@ -9,23 +9,16 @@ const extensions = ['png', 'jpeg', 'webp'];
 
 const Demo = () => {
   const tableRef = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<SVGForeignObjectElement>(null);
   const width = 500;
   const height = 300;
 
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
       if (tableRef.current) {
-        const svgElement = document.createElement('svg');
-        svgElement.setAttribute('width', width.toString());
-        svgElement.setAttribute('height', height.toString());
-        svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        ref.current?.append(tableRef.current.cloneNode(true));
 
-        const foreignObject = document.createElement('foreignObject');
-        foreignObject.setAttribute('width', '100%');
-        foreignObject.setAttribute('height', '100%');
-
-        foreignObject.appendChild(tableRef.current.cloneNode(true));
-        svgElement.appendChild(foreignObject);
+        const svgElement = ref.current?.parentElement;
 
         if (svgElement) {
           let svgText = svgElementToSvgText(svgElement);
@@ -58,7 +51,13 @@ const Demo = () => {
 
   return (
     <Flex>
-      <DataTable data={data} aria-label={'Table title. Export in image'} ref={tableRef}>
+      <div style={{ display: 'none' }}>
+        <svg xmlns='http://www.w3.org/2000/svg' width='500' height='300' aria-hidden='true'>
+          <foreignObject width='100%' height='100%' ref={ref} />
+        </svg>
+      </div>
+
+      <DataTable data={data} aria-label={'Table title. Export in image'} ref={tableRef} w={500}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />
