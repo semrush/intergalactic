@@ -3236,8 +3236,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0
       react-hook-form:
-        specifier: 6.10.1
-        version: 6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@16.14.0)
+        specifier: 7.54.0
+        version: 7.54.0(react@16.14.0)
       react-virtualized:
         specifier: 9.22.3
         version: 9.22.3(patch_hash=gbxc3pzinlxu2yolhjue4gwtqq)(react-dom@16.14.0)(react@16.14.0)
@@ -4239,8 +4239,8 @@ importers:
         specifier: 6.1.0
         version: 6.1.0(react@18.2.0)
       react-hook-form:
-        specifier: 6.10.1
-        version: 6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@18.2.0)
+        specifier: 7.54.0
+        version: 7.54.0(react@18.2.0)
       react-instantsearch:
         specifier: 6.8.3
         version: 6.8.3(algoliasearch@4.8.4)(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
@@ -24862,22 +24862,32 @@ packages:
       react-side-effect: 2.1.2(react@18.2.0)
     dev: false
 
-  /react-hook-form@6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@16.14.0):
-    resolution: {integrity: sha512-tPfNu2q8HUUKL4gOsJzzoBX8+3y2brJk+61TO+RO9GtpLnWPptLrAIupMtyPeENMpLmLfBKHhT9nfezHLTW2mA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17
-    dependencies:
-      react: 16.14.0
-    dev: false
-    patched: true
-
   /react-hook-form@6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@18.2.0):
     resolution: {integrity: sha512-tPfNu2q8HUUKL4gOsJzzoBX8+3y2brJk+61TO+RO9GtpLnWPptLrAIupMtyPeENMpLmLfBKHhT9nfezHLTW2mA==}
     peerDependencies:
       react: ^16.8.0 || ^17
     dependencies:
       react: 18.2.0
+    dev: true
     patched: true
+
+  /react-hook-form@7.54.0(react@16.14.0):
+    resolution: {integrity: sha512-PS05+UQy/IdSbJNojBypxAo9wllhHgGmyr8/dyGQcPoiMf3e7Dfb9PWYVRco55bLbxH9S+1yDDJeTdlYCSxO3A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 16.14.0
+    dev: false
+
+  /react-hook-form@7.54.0(react@18.2.0):
+    resolution: {integrity: sha512-PS05+UQy/IdSbJNojBypxAo9wllhHgGmyr8/dyGQcPoiMf3e7Dfb9PWYVRco55bLbxH9S+1yDDJeTdlYCSxO3A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-instantsearch-core@6.39.1(algoliasearch@4.8.4)(react@18.2.0):
     resolution: {integrity: sha512-rvzOoNGBT2O28mmcpXfcN4pVF+p07jlDMbEKB1TRdW3jE9dm8U6uCS/X6DWqigYLr8svVRcG/Ez+wzYK+yuPZw==}
