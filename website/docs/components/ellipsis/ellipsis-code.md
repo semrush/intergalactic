@@ -14,16 +14,6 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 :::
 
-## Link
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/link.tsx';
-</script>
-
-:::
-
 ## Trimming type
 
 It's possible to truncate the middle of the text string.
