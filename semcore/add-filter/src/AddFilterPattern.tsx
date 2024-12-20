@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import createComponent, { Component, Root } from '@semcore/core';
+import createComponent, { Component, Root } from '@semcore/utils/lib/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import CloseM from '@semcore/icon/Close/m';
