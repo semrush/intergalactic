@@ -1,4 +1,4 @@
-import React, { DOMAttributes, HTMLProps } from 'react';
+import React, { DOMAttributes } from 'react';
 import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -13,16 +13,16 @@ import {
   StaticShapes,
 } from './LegendItem.type';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
-class LegendItemRoot extends Component<
-  LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
-> {
+const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
+class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 
-  static enhance = [resolveColorEnhance()];
+  static enhance = enhance;
 
   static defaultProps = () => ({
     children: (
@@ -36,10 +36,14 @@ class LegendItemRoot extends Component<
     ),
   });
 
+  getUniqueID() {
+    const { uid } = this.asProps;
+    return `chart-legend-item-${uid}`;
+  }
+
   getShapeProps() {
     const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
       this.asProps;
-
     return {
       label,
       shape,
@@ -51,7 +55,7 @@ class LegendItemRoot extends Component<
       onChange: (value: boolean) => {
         onChangeLegendItem(id, value);
       },
-      'aria-labelledby': id,
+      'aria-labelledby': shape === 'Checkbox' ? this.getUniqueID() : null,
     };
   }
 
@@ -65,11 +69,11 @@ class LegendItemRoot extends Component<
   }
 
   getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
-    const { id, checked, color, onChangeLegendItem, ...props } = this.asProps;
+    const { id, checked, color, onChangeLegendItem, shape, ...props } = this.asProps;
 
     return {
       ...props,
-      id,
+      id: this.getUniqueID(),
       checked,
       onClick: () => onChangeLegendItem(id, !checked),
       children: props.label,
@@ -107,7 +111,7 @@ class LegendItemRoot extends Component<
     const disabled = StaticShapes.includes(shape);
 
     return sstyled(styles)(
-      <SLegendItem render={Flex} disabled={disabled}>
+      <SLegendItem render={Flex} disabled={disabled} __excludeProps={['id']}>
         <Children />
       </SLegendItem>,
     );
