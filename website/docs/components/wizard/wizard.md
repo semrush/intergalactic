@@ -68,12 +68,15 @@ Table: Stepper states
 
 ## Content area styles
 
-Table: Wizard content area styles
+### Header styles
 
-|          | Appearance example |
-| -------- | ------------------ |
-| Header styles | ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png) |
-| Footer styles | For basic controls use L size. ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png) |
+![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png)
+
+### Footer styles
+
+For basic controls use L size.
+
+![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png)
 
 ## Keyboard control
 

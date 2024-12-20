@@ -91,6 +91,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       minRows={min}
       maxRows={max}
       placeholder='Placeholder'
+      aria-label='Label for textarea'
     />
   );
 });

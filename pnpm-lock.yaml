@@ -261,7 +261,7 @@ importers:
         specifier: 2.39.0
         version: link:../animation
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -469,7 +469,7 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -509,7 +509,7 @@ importers:
         specifier: 1.39.0
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -571,7 +571,7 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -580,7 +580,7 @@ importers:
         specifier: 4.38.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -828,10 +828,10 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.49.0
+        specifier: 4.49.2
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.42.0
@@ -843,7 +843,7 @@ importers:
         specifier: 4.38.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -948,7 +948,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.44.0
+        specifier: 5.44.1
         version: link:../card
       '@semcore/core':
         specifier: ^2.17.5
@@ -1019,7 +1019,7 @@ importers:
         specifier: ^2.17.5
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -1147,7 +1147,7 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1227,7 +1227,7 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.42.0
@@ -1254,7 +1254,7 @@ importers:
         specifier: 4.50.0
         version: link:../modal
       '@semcore/notice':
-        specifier: 5.43.0
+        specifier: 5.43.1
         version: link:../notice
       '@semcore/notice-bubble':
         specifier: 5.48.0
@@ -1399,7 +1399,7 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -1591,7 +1591,7 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: 2.37.0
@@ -1606,7 +1606,7 @@ importers:
         specifier: 4.40.0
         version: link:../input
       '@semcore/input-number':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../input-number
       '@semcore/spin':
         specifier: 5.39.0
@@ -1903,7 +1903,7 @@ importers:
         specifier: 2.39.0
         version: link:../animation
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2024,7 +2024,7 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2036,7 +2036,7 @@ importers:
         specifier: 4.53.0
         version: link:../icon
       '@semcore/input-number':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../input-number
       '@semcore/link':
         specifier: 5.42.0
@@ -2269,10 +2269,10 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.49.0
+        specifier: 4.49.2
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/checkbox':
         specifier: 7.42.0
@@ -2284,10 +2284,10 @@ importers:
         specifier: 4.38.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.41.5
+        specifier: 4.41.7
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.43.4
+        specifier: 4.43.5
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.39.0
@@ -2703,7 +2703,7 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.40.0
+        specifier: 5.40.1
         version: link:../button
       '@semcore/core':
         specifier: ^2.17.5
@@ -2715,7 +2715,7 @@ importers:
         specifier: 4.40.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.48.6
+        specifier: 4.49.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.44.0
@@ -26426,6 +26426,7 @@ packages:
 
   /sudo-prompt@9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: false
 
   /superjson@2.2.1:

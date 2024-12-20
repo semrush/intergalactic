@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.42.1] - 2024-12-18
+
+### Fixed
+
+- Render hint's popper on Link with addonLeft as props and no children.
+
 ## [5.42.0] - 2024-11-29
 
 ### Changed

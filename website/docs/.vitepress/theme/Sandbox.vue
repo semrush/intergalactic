@@ -1,10 +1,10 @@
 <template>
-  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" role="region" aria-label="Playground">
+  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }" aria-label="Playground" :role="!hideCode ? null : 'region'">
   </div>
   <div class="code-wrapper" v-if="!hideCode">
-    <span v-html="htmlCode"></span>
     <a title="Open CodeSandbox" class="open-codesandbox" target="_blank" rel='noopener noreferrer'
-      :href="codesandboxUrl"></a>
+       :href="codesandboxUrl"></a>
+    <span v-html="htmlCode"></span>
   </div>
 </template>
 

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.7] - 2024-12-16
+
+### Removed
+
+- Unnecessary `role=combobox` for all inputs from popper in any Comparator.
+
+## [4.54.6] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.49.0 ~> 4.49.2], `@semcore/button` [5.40.0 ~> 5.40.1], `@semcore/dropdown` [4.41.5 ~> 4.41.7]).
+
 ## [4.54.5] - 2024-11-29
 
 ### Fixed
