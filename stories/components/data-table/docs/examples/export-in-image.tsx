@@ -8,36 +8,49 @@ import DataTable from '@semcore/data-table';
 const extensions = ['png', 'jpeg', 'webp'];
 
 const Demo = () => {
-  const svgRef = React.useRef<SVGSVGElement>(null);
+  const tableRef = React.useRef<HTMLDivElement>(null);
   const width = 500;
   const height = 300;
 
   const downloadImage = React.useCallback(
     (extention: string) => async () => {
-      const svgElement = svgRef.current;
+      if (tableRef.current) {
+        const svgElement = document.createElement('svg');
+        svgElement.setAttribute('width', width.toString());
+        svgElement.setAttribute('height', height.toString());
+        svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 
-      if (svgElement) {
-        let svgText = svgElementToSvgText(svgElement);
-        svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
-        svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
+        const foreignObject = document.createElement('foreignObject');
+        foreignObject.setAttribute('width', '100%');
+        foreignObject.setAttribute('height', '100%');
 
-        const downloadUrl = await svgText2DownloadUrl(svgText, 2 * width, 2 * height, extention);
+        foreignObject.appendChild(tableRef.current.cloneNode(true));
+        svgElement.appendChild(foreignObject);
 
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = `image.${extention}`;
+        if (svgElement) {
+          let svgText = svgElementToSvgText(svgElement);
+          svgText = svgText.replace('xmlns="http://www.w3.org/1999/xhtml"', '');
+          svgText = svgText.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
+          svgText = svgText.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
 
-        link.dispatchEvent(
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window,
-          }),
-        );
+          const downloadUrl = await svgText2DownloadUrl(svgText, 2 * width, 2 * height, extention);
 
-        setTimeout(() => {
-          link.remove();
-        }, 100);
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = `image.${extention}`;
+
+          link.dispatchEvent(
+            new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+            }),
+          );
+
+          setTimeout(() => {
+            link.remove();
+          }, 100);
+        }
       }
     },
     [],
@@ -45,25 +58,16 @@ const Demo = () => {
 
   return (
     <Flex>
-      <svg
-        ref={svgRef}
-        xmlns='http://www.w3.org/2000/svg'
-        width={width}
-        height={height}
-        aria-hidden={true}
-      >
-        <foreignObject width='100%' height='100%'>
-          <DataTable data={data} aria-label={'Table title. Export in image'}>
-            <DataTable.Head>
-              <DataTable.Column name='keyword' children='Keyword' />
-              <DataTable.Column name='kd' children='KD,%' />
-              <DataTable.Column name='cpc' children='CPC' />
-              <DataTable.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-            <DataTable.Body />
-          </DataTable>
-        </foreignObject>
-      </svg>
+      <DataTable data={data} aria-label={'Table title. Export in image'} ref={tableRef}>
+        <DataTable.Head>
+          <DataTable.Column name='keyword' children='Keyword' />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
+        </DataTable.Head>
+        <DataTable.Body />
+      </DataTable>
+
       <DropdownMenu>
         <DropdownMenu.Trigger tag={Button} ml={4}>
           <Button.Addon>

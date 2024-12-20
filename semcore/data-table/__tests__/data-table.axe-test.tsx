@@ -43,7 +43,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('additional elements in header', async ({ page }) => {
+  test('additional elements in header', async ({ page }) => {
     const standPath =
       'stories/components/data-table/docs/examples/additional-elements-in-header.tsx';
     const violations = await checkAxe(page, standPath);
@@ -104,7 +104,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('customizing header', async ({ page }) => {
+  test('customizing header', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/customizing-header.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -116,7 +116,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test.skip('export in image', async ({ page }) => {
+  test('export in image', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/export-in-image.tsx';
     const violations = await checkAxe(page, standPath);
 
