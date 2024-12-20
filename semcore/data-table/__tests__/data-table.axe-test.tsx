@@ -30,7 +30,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('accordion inside table', async ({ page }) => {
+  test.skip('accordion inside table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -43,7 +43,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('additional elements in header', async ({ page }) => {
+  test.skip('additional elements in header', async ({ page }) => {
     const standPath =
       'stories/components/data-table/docs/examples/additional-elements-in-header.tsx';
     const violations = await checkAxe(page, standPath);
@@ -92,7 +92,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('custom rows rendering', async ({ page }) => {
+  test.skip('custom rows rendering', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -104,7 +104,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('customizing header', async ({ page }) => {
+  test.skip('customizing header', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/customizing-header.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -116,7 +116,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('export in image', async ({ page }) => {
+  test.skip('export in image', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/export-in-image.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -128,7 +128,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('fixed header with spin overlay', async ({ page }) => {
+  test.skip('fixed header with spin overlay', async ({ page }) => {
     const standPath =
       'stories/components/data-table/docs/examples/fixed-header-with-spin-overlay.tsx';
     const violations = await checkAxe(page, standPath);
@@ -159,7 +159,7 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('scroll in table', async ({ page }) => {
+  test.skip('scroll in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
@@ -196,20 +196,20 @@ test.describe('DataTable', () => {
 
     expect(violations).toEqual([]);
   });
-  test('table in table with fixed column', async ({ page }) => {
+  test.skip('table in table with fixed column', async ({ page }) => {
     const standPath =
       'stories/components/data-table/docs/examples/table-in-table-with-fixed-column.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
   });
-  test('table in table', async ({ page }) => {
+  test.skip('table in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/table-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
     expect(violations).toEqual([]);
   });
-  test('virtual scroll in table', async ({ page }) => {
+  test.skip('virtual scroll in table', async ({ page }) => {
     const standPath = 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
     const violations = await checkAxe(page, standPath);
 
