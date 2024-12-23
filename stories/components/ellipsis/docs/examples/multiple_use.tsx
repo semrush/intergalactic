@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from 'intergalactic/data-table';
-import Ellipsis, { useResizeObserver } from 'intergalactic/ellipsis';
+import DataTable from '@semcore/data-table';
+import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 
 const Demo = () => {
   const containerRef = React.useRef(null);
@@ -13,11 +13,11 @@ const Demo = () => {
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' ref={containerRef} />
+        <DataTable.Column name='vol' children='Vol.' ref={containerRef}/>
       </DataTable.Head>
       <DataTable.Body>
         <DataTable.Cell data={data} name='vol'>
-          {(props, row) => {
+          {(props : any, row: any) => {
             return {
               children: (
                 <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
