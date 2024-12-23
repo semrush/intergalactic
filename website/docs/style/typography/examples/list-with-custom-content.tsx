@@ -12,7 +12,7 @@ const Demo = () => (
       </List.Item>
       <List.Item marker={<CheckM color='icon-secondary-neutral' mt={1} />}>
         <List.Item.Content w='100%' justifyContent='flex-end'>
-          (Uncheck icon) Carpe diem. Seize the day, boys.
+          (Unchecked icon) Carpe diem. Seize the day, boys.
         </List.Item.Content>
       </List.Item>
       <List.Item>
