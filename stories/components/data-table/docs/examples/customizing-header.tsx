@@ -21,10 +21,12 @@ const Demo = () => {
         </DataTable.Column>
         <DataTable.Column name='kd'>
           <DropdownMenu>
-            <DropdownMenu.Trigger>
-              <LinkTrigger color='text-primary' style={{ fontSize: '12px' }}>
-                KD,%
-              </LinkTrigger>
+            <DropdownMenu.Trigger
+              tag={LinkTrigger}
+              color='text-primary'
+              style={{ fontSize: '12px' }}
+            >
+              KD,%
             </DropdownMenu.Trigger>
             <DropdownMenu.Menu>
               <DropdownMenu.Item>Options 1</DropdownMenu.Item>
