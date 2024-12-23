@@ -99,7 +99,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.handleValueOutChange();
     }
 
-    if (prevProps.showErrors !== showErrors) {
+    if (prevProps.showErrors !== showErrors || prevProps.errors.length !== errors.length) {
       if (showErrors) {
         if (errors.length > 0) {
           this.textarea.setAttribute('aria-invalid', 'true');
@@ -363,7 +363,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   handleFocus(event: FocusEvent) {
     this.lastInteraction = 'keyboard';
 
-    this.toggleErrorsPopperByKeyboard(150);
+    if (this.asProps.showErrors) {
+      this.toggleErrorsPopperByKeyboard(150);
+    }
   }
 
   handleBlur = (event: Event) => {

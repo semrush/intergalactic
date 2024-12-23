@@ -78,9 +78,11 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
         if (validateOn?.includes('blur')) {
           this.setState({ showErrors: true });
 
-          if (this.state.errors.length === 0) {
-            this.setState({ showErrors: false });
-          }
+          setTimeout(() => {
+            if (this.state.errors.length === 0) {
+              this.setState({ showErrors: false });
+            }
+          }, 0);
         }
         onBlur?.(value, event);
       },
@@ -101,6 +103,9 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
         setTimeout(() => {
           if (this.state.showErrors) {
             this.handlers.state(errors.length === 0 ? 'normal' : 'invalid');
+          }
+          if (errors.length === 0) {
+            this.setState({ showErrors: false });
           }
         });
       },

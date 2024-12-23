@@ -12,5 +12,17 @@ const meta: Meta<typeof BulkTextarea> = {
 export default meta;
 
 export const BasicUsage: StoryObj<typeof BulkTextarea> = {
+  args: {
+    ofRows: 30,
+    size: 'm',
+    rowsDelimiters: [','],
+    minRows: 2,
+    maxRows: 10,
+    validateOn: ['blur', 'enterNextRow'],
+    pasteProps: {
+      delimiter: '\n',
+      skipEmptyRows: true,
+    },
+  },
   render: UsageExample,
 };

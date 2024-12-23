@@ -1,5 +1,5 @@
 import React from 'react';
-import BulkTextarea from '@semcore/bulk-textarea';
+import BulkTextarea, { BulkTextareaProps } from '@semcore/bulk-textarea';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
@@ -18,7 +18,7 @@ const validateRow = (row: string, rows: string[]) => {
   };
 };
 
-const Demo = () => {
+const Demo = (props: BulkTextareaProps) => {
   const [value, setValue] = React.useState('');
 
   React.useEffect(() => {
@@ -52,6 +52,7 @@ const Demo = () => {
         rowValidation={validateRow}
         rowsDelimiters={[',']}
         placeholder={'Placeholder'}
+        {...props}
       >
         <Flex alignItems='center' justifyContent='flex-start' mb={2} gap={1}>
           <Text tag={'label'} size={200} id={'keywords-label'}>
