@@ -55,13 +55,45 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   React.useEffect(() => {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
 
+    // disable previous events
+    const prevEvents = OutsideClick.eventsMap[OutsideClick.eventsMap.length - 1];
+
+    if (prevEvents) {
+      Object.entries(prevEvents[1]).forEach(([eventName, handler]) => {
+        prevEvents[0].removeEventListener(eventName, handler, true);
+      });
+    }
+
     // Using capture to handle event faster than OutsideClick handler
     outsideRoot?.addEventListener('mouseup', handleOutsideClick, true);
     outsideRoot?.addEventListener('mousedown', handleMouseDown, true);
 
+    if (outsideRoot) {
+      OutsideClick.eventsMap.push([
+        outsideRoot,
+        {
+          mouseup: handleOutsideClick,
+          mousedown: handleMouseDown,
+        },
+      ]);
+    }
+
     return () => {
+      if (outsideRoot) {
+        OutsideClick.eventsMap.pop();
+      }
+
       outsideRoot?.removeEventListener('mouseup', handleOutsideClick, true);
       outsideRoot?.removeEventListener('mousedown', handleMouseDown, true);
+
+      // enable previous events
+      const prevEvents = OutsideClick.eventsMap[OutsideClick.eventsMap.length - 1];
+
+      if (prevEvents) {
+        Object.entries(prevEvents[1]).forEach(([eventName, handler]) => {
+          prevEvents[0].addEventListener(eventName, handler, true);
+        });
+      }
     };
   }, [root]);
 
@@ -69,6 +101,11 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
 }
 
 OutsideClick.displayName = 'OutsideClick';
+
+OutsideClick.eventsMap = [] as [
+  Element | Document,
+  Record<string, EventListenerOrEventListenerObject>,
+][];
 
 export default createComponent(OutsideClick) as Intergalactic.Component<
   Intergalactic.Tag,
