@@ -1,21 +1,15 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.29.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Monterey 12._
+_Intergalactic v15.120.0, React v18.2.0, Playwright v1.43.0,
+Guidepup v0.13.1, MacOS Sonoma 14._
 
-**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/modal/examples/modal.tsx).**
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/modal/examples/basic_modal_window_usage.tsx).**
 
 ```
-1. Screen reader goes into the active element.
-2. Screen reader says "Open modal button".
-3. Screen reader triggers element default action.
-4. Screen reader says "Do you want to save your changes? web dialog with 5 items Close button".
-5. Screen reader goes to the next element.
-6. Screen reader says "heading level 2 Do you want to save your changes?".
-7. Screen reader goes to the next element.
-8. Screen reader says "Your changes will be lost if you don't save them.".
-9. Screen reader goes to the next element.
-10. Screen reader says "Save changes button".
-11. Screen reader triggers element default action.
-12. Screen reader triggers element default action.
+Open modal button
+Do you want to save your changes? web dialog with 5 items Close button Do you want to save your changes?
+heading level 2 Do you want to save your changes?
+Your changes will be lost if you don't save them.
+Save changes button
+Open modal button
 ```

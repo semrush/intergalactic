@@ -1,21 +1,15 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.29.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Monterey 12._
+_Intergalactic v15.120.0, React v18.2.0, Playwright v1.43.0,
+Guidepup v0.13.1, MacOS Sonoma 14._
 
-**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/carousel/examples/dots.tsx).**
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/carousel/examples/carousel_with_default_indicators.tsx).**
 
 ```
-1. Screen reader goes into the active element.
-2. Screen reader says "In web content Beauty of Nature image carousel".
-3. Screen reader goes into the active element.
-4. Screen reader says "Previous button".
-5. Screen reader goes to the next element.
-6. Screen reader says "list 3 items".
-7. Screen reader goes to the next element.
-8. Screen reader says "A cyclist performing stunts in the forest current item empty slide 1 of 3".
-9. Screen reader goes to the next element.
-10. Screen reader says "A vulture flies with its wings spread wide empty slide 2 of 3".
-11. Screen reader goes to the next element.
-12. Screen reader says "A pug wrapped in a blanket sits on the road in the forest empty slide 3 of 3".
+In web content Beauty of Nature carousel
+Previous slide button
+Beauty of Nature group
+Open in fullscreen A cyclist performing stunts in the forest current item button
+Open in fullscreen A vulture flies with its wings spread wide button
+Open in fullscreen A pug wrapped in a blanket sits on the road in the forest button
 ```
