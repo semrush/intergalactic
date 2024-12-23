@@ -33,9 +33,6 @@ SDropdownItem[role="menuitemcheckbox"] {
     content: '';
     display: inline-block;
     position: absolute;
-    width: 16px;
-    height: 16px;
-    left: var(--intergalactic-spacing-2x, 8px);
     background: var(--intergalactic-bg-primary-neutral, #ffffff);
     border: 1px solid;
     border-radius: var(--intergalactic-addon-rounded, 4px);
@@ -45,16 +42,13 @@ SDropdownItem[role="menuitemcheckbox"] {
   &[selected]::after {
     content: "";
     position: absolute;
-    width: 16px;
-    height: 16px;
-    left: var(--intergalactic-spacing-2x, 8px);
     background-repeat: no-repeat;
     background-position: center center;
     border: 1px solid;
     border-radius: var(--intergalactic-addon-rounded, 4px);
     background-color: var(--intergalactic-control-primary-info, #008ff8);
     border-color: var(--intergalactic-control-primary-info, #008ff8);
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
   }
 }
 
@@ -83,6 +77,15 @@ SDropdownItem[size='l'] {
   line-height: var(--intergalactic-lh-300, 150%);
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   min-height: 40px;
+
+  &[role="menuitemcheckbox"] {
+    padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+    &::before, &::after {
+      width: 20px;
+      height: 20px;
+      left: var(--intergalactic-spacing-3x, 12px);
+    }
+  }
 }
 
 SDropdownItem[size='m'] {
@@ -93,6 +96,11 @@ SDropdownItem[size='m'] {
 
   &[role="menuitemcheckbox"] {
     padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
+    &::before, &::after {
+      width: 16px;
+      height: 16px;
+      left: var(--intergalactic-spacing-2x, 8px);
+    }
   }
 }
 
