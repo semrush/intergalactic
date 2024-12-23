@@ -7,10 +7,12 @@ const Demo = () => {
   const patternSymbolSize = getPatternSymbolSize({ patternKey, patterns });
 
   return (
-    <svg height='100px' width='200px'>
+    <svg height='100px' width='200px' aria-label='PatternFill and PatternSymbol' role='img'>
       <PatternFill id='pattern-element' patternKey={patternKey} color='red' patterns={patterns} />
       <rect width='100px' height='100px' x='0' y='0' fill='url(#pattern-element)' stroke='red' />
       <PatternSymbol
+        aria-label='zigzag PatternSymbol'
+        role='img'
         color='red'
         patternKey={patternKey}
         patterns={patterns}
