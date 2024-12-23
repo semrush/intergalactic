@@ -122,6 +122,16 @@ function Label({ styles, theme, resolveColor }) {
   return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
 }
 
+function Title({ styles }) {
+  const STitle = Root;
+  return sstyled(styles)(<STitle render={Box} />);
+}
+
+function Text({ styles }) {
+  const SText = Root;
+  return sstyled(styles)(<SText render={Box} />);
+}
+
 function Actions({ styles }) {
   const SActions = Root;
   return sstyled(styles)(<SActions render={Box} />);
@@ -154,6 +164,8 @@ function Close({ styles, getI18nText }) {
 
 export default createComponent(RootNotice, {
   Label,
+  Title,
+  Text,
   Actions,
   Content,
   CloseIcon,

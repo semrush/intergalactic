@@ -12,11 +12,14 @@ class NoticeSmart extends Component {
 
   render() {
     const SNoticeSmart = Root;
-    const { Children, label, actions, closable, onClose } = this.asProps;
+    const { Children, label, title, text, actions, closable, onClose } = this.asProps;
+
     return (
       <SNoticeSmart render={Notice}>
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
+          {isNode(title) && <Notice.Title>{title}</Notice.Title>}
+          {isNode(text) && <Notice.Text>{text}</Notice.Text>}
           <Children />
           {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
         </Notice.Content>

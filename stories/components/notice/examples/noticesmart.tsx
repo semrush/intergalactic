@@ -60,12 +60,15 @@ const Demo = () => {
           experience with unparalleled innovation and functionality.
         </Text>
       </NoticeSmart>
-      <NoticeSmart theme='warning' label={<WarningM />} aria-label='Maintenance notice'>
-        <Text tag='div' my={1}>
-          The Link Building tool is under maintenance. Starting new campaigns is temporarily
-          unavailable, but you can continue working with your existing Link Building campaigns.
-        </Text>
-      </NoticeSmart>
+      <NoticeSmart
+        theme='warning'
+        title={'The Link Building tool is under maintenance.'}
+        text={
+          'Starting new campaigns is temporarily unavailable, but you can continue working with your existing Link Building campaigns.'
+        }
+        label={<WarningM />}
+        aria-label='Maintenance notice'
+      />
       <NoticeSmart theme='danger'>
         Once you click Regenerate, the article will be rewritten. The previous version cannot be
         restored.

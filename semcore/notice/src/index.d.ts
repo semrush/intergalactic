@@ -48,6 +48,9 @@ export type NoticeSmartProps = NoticeProps & {
    * A custom element for additional information
    */
   label?: React.ReactNode;
+
+  title?: React.ReactNode;
+  text?: React.ReactNode;
   /**
    * Custom action element
    */
@@ -66,6 +69,8 @@ declare const Notice: Intergalactic.Component<'div', NoticeProps, NoticeContext>
   Label: Intergalactic.Component<'div', NoticeLabelProps>;
   Actions: typeof Box;
   Content: typeof Box;
+  Title: typeof Box;
+  Text: typeof Box;
   /**
    * @deprecated Use Notice.Close instead of Notice.CloseIcon
    */

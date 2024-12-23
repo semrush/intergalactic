@@ -95,6 +95,30 @@ describe('Notice', () => {
   });
 });
 
+describe('Notice.Title and Notice.Text', () => {
+  beforeEach(cleanup);
+
+  test.concurrent('Should correctly render with title and text', async ({ task }) => {
+    const component = (
+      <Notice>
+        <Notice.Label>
+          <div style={{ width: '16px', height: '16px', background: 'orange' }} />
+        </Notice.Label>
+        <Notice.Title>Your subscription has expired</Notice.Title>
+
+        <Notice.Content>
+          <Notice.Text>49 out of your 50 projects are now locked.</Notice.Text>
+          <Notice.Actions>
+            <button type='button'>Wow, so cool!</button>
+          </Notice.Actions>
+        </Notice.Content>
+        <Notice.Close />
+      </Notice>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+});
+
 describe('Notice.Label', () => {
   beforeEach(cleanup);
 
@@ -159,6 +183,34 @@ describe('NoticeSmart', () => {
         closable
       >
         Look at this cool notice!
+      </NoticeSmart>
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should correctly render with title and text props', async ({ task }) => {
+    const component = (
+      <NoticeSmart
+        theme='warning'
+        title={'The Link Building tool is under maintenance.'}
+        text={
+          'Starting new campaigns is temporarily unavailable, but you can continue working with your existing Link Building campaigns.'
+        }
+        aria-label='Maintenance notice'
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should correctly render with title and text as children', async ({ task }) => {
+    const component = (
+      <NoticeSmart
+        theme='warning'
+        title={'The Link Building tool is under maintenance.'}
+        aria-label='Maintenance notice'
+      >
+        Starting new campaigns is temporarily unavailable, but you can continue working with your
+        existing Link Building campaigns.
       </NoticeSmart>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
