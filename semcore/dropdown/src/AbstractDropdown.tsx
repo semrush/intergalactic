@@ -18,6 +18,8 @@ type AbstractDDProps = {
   ignorePortalsStacking: boolean;
   interaction: DropdownProps['interaction'];
   timeout?: number | [number, number];
+  selectable?: boolean;
+  multiselect?: boolean;
 };
 
 export const enhance = [
@@ -58,6 +60,16 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   get childRole() {
     if (this.role === 'listbox') {
       return 'option';
+    }
+
+    const { selectable, multiselect } = this.asProps;
+
+    if (multiselect) {
+      return 'menuitemcheckbox';
+    }
+
+    if (selectable) {
+      return 'menuitemradio';
     }
 
     return 'menuitem';
@@ -132,6 +144,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   getItemProps(_: any, index: number) {
     const { size, uid } = this.asProps;
+    const role = this.childRole;
 
     return {
       id: `igc-${uid}-option-${index}`,
@@ -141,6 +154,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         this.handlers.selectedIndex(index);
       },
       role: this.childRole,
+      'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
 

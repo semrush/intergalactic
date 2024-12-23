@@ -9,6 +9,8 @@ import ListItemTypesExample from './examples/list_item_types';
 import NestedExample from './examples/nested';
 import NestedWithFocusableExample from './examples/nested_with_focusable';
 import TheSecondMethodExample from './examples/the_second_method';
+import SelectableRadioItemsExample from './examples/selectable_radio_items';
+import MultiselectItemsExample from './examples/multiselect_items';
 
 import { BasicUsageTest } from './__tests__/basic.test';
 import { DropdownMenuTest } from './__tests__/dropdown-menu.test';
@@ -60,4 +62,12 @@ export const NestedWithFocusable: Story = {
 export const TheSecondMethod: Story = {
   render: TheSecondMethodExample,
   play: playWrapper(TheSecondMethodTest),
+};
+
+export const SelectableRadioItems: Story = {
+  render: SelectableRadioItemsExample,
+};
+
+export const MultiselectItems: Story = {
+  render: MultiselectItemsExample,
 };

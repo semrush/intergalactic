@@ -126,6 +126,12 @@ class DropdownMenuRoot extends AbstractDropdown {
       itemProps.size = props.size ?? 's';
     }
 
+    if (props.selected) {
+      itemProps['aria-checked'] = true;
+    } else {
+      itemProps['aria-checked'] = false;
+    }
+
     return itemProps;
   }
 
