@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.37.1] - 2024-12-23
 
-### Added
+### Fixed
 
-- ability to open `Modal` inside the `DropdownMenu.Item`.
+- users cant compose `Modal` inside the `DropdownMenu.Item`.
 
 ## [3.37.0] - 2024-11-29
 
