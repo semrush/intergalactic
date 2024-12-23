@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.1] - 2024-12-23
+
+### Added
+
+- ability to open `Modal` inside the `DropdownMenu.Item`.
+
 ## [3.37.0] - 2024-11-29
 
 ### Changed

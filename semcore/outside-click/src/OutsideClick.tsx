@@ -27,6 +27,9 @@ export type OutsideClickProps = {
   root?: NodeByRef;
 };
 
+type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEventListenerObject };
+type RootEventsPair = [Element | Document, OutsideClickEvents];
+
 const noop = () => {};
 function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
@@ -35,6 +38,11 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const targetRef = React.useRef<Node | null>(null);
 
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
+
+  const isModalRoot = React.useCallback(
+    (root: HTMLElement) => root && root.dataset.uiName === 'Modal.Overlay',
+    [],
+  );
 
   const handleOutsideClick = useEventCallback((event: any) => {
     const isTargetEvent = [...(excludeRefs as any), nodeRef]
@@ -56,11 +64,11 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
 
     // disable previous events
-    const prevEvents = OutsideClick.eventsMap[OutsideClick.eventsMap.length - 1];
-
-    if (prevEvents) {
-      Object.entries(prevEvents[1]).forEach(([eventName, handler]) => {
-        prevEvents[0].removeEventListener(eventName, handler, true);
+    if (outsideRoot instanceof HTMLElement && isModalRoot(outsideRoot)) {
+      OutsideClick.eventsMap.forEach(([root, events]) => {
+        Object.entries(events).forEach(([eventName, handler]) => {
+          root.removeEventListener(eventName, handler, true);
+        });
       });
     }
 
@@ -86,12 +94,12 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
       outsideRoot?.removeEventListener('mouseup', handleOutsideClick, true);
       outsideRoot?.removeEventListener('mousedown', handleMouseDown, true);
 
-      // enable previous events
-      const prevEvents = OutsideClick.eventsMap[OutsideClick.eventsMap.length - 1];
-
-      if (prevEvents) {
-        Object.entries(prevEvents[1]).forEach(([eventName, handler]) => {
-          prevEvents[0].addEventListener(eventName, handler, true);
+      // disable previous events
+      if (outsideRoot instanceof HTMLElement && isModalRoot(outsideRoot)) {
+        OutsideClick.eventsMap.forEach(([root, events]) => {
+          Object.entries(events).forEach(([eventName, handler]) => {
+            root.addEventListener(eventName, handler, true);
+          });
         });
       }
     };
@@ -101,11 +109,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
 }
 
 OutsideClick.displayName = 'OutsideClick';
-
-OutsideClick.eventsMap = [] as [
-  Element | Document,
-  Record<string, EventListenerOrEventListenerObject>,
-][];
+OutsideClick.eventsMap = [] as RootEventsPair[];
 
 export default createComponent(OutsideClick) as Intergalactic.Component<
   Intergalactic.Tag,

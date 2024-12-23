@@ -13,6 +13,15 @@ function SomeFeatureComponent() {
       <DropdownMenu.Item onClick={handleOpen}>Open modal</DropdownMenu.Item>
       <Modal visible={visible} onClose={handleClose} ignorePortalsStacking w={300} h={300}>
         <Modal.Title>Title</Modal.Title>
+
+        <DropdownMenu>
+          <DropdownMenu.Trigger tag={Button}>Open menu</DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>One</DropdownMenu.Item>
+            <DropdownMenu.Item>Two</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+
         <Button size='l'>Save</Button>
       </Modal>
     </>
