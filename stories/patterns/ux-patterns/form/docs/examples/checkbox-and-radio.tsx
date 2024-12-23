@@ -5,17 +5,18 @@ import { Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
-
+import { ScreenReaderOnly } from '@semcore/flex-box';
 
 type FormValues = {
   export?: string;
-}
-const defaultValues : FormValues = {
+};
+const defaultValues: FormValues = {
   export: 'all',
 };
 const Demo = () => {
   const [selectedFirst, setSelectedFirst] = React.useState(100);
-  const { handleSubmit, control, reset } = useForm<FormValues>({
+  const [message, setMessage] = React.useState('');
+  const { handleSubmit, control, reset, getValues } = useForm<FormValues>({
     defaultValues,
   });
   const optionsFirst = [100, 500].map((value) => ({ value, children: value }));
@@ -27,9 +28,17 @@ const Demo = () => {
     alert(JSON.stringify(data));
   };
 
+  React.useEffect(() => {
+    const timer = setTimeout(() => setMessage(''), 300);
+    return () => clearTimeout(timer);
+  }, [message]);
+
   const onChangeSelect = (value: number) => {
-    reset({ export: 'first' });
     setSelectedFirst(value);
+    if(getValues('export') !== 'first') {
+      setMessage(`Selection changed to First ${value} rows`);
+      reset({ export: 'first' });
+    }
   };
 
   return (
@@ -40,6 +49,9 @@ const Demo = () => {
       alignItems='flex-start'
       gap={4}
     >
+      <ScreenReaderOnly role='status' aria-live='polite'>
+        {message}
+      </ScreenReaderOnly>
       <Text size={300} id='radio-group-label' tag='label'>
         Export data
       </Text>
