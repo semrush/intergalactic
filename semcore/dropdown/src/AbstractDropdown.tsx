@@ -153,7 +153,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       onMouseEnter: () => {
         this.handlers.selectedIndex(index);
       },
-      role: this.childRole,
+      role,
       'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
