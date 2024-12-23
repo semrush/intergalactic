@@ -1,7 +1,7 @@
 import React from 'react';
-import Ellipsis from 'intergalactic/ellipsis';
-import Card from 'intergalactic/card';
-import { Text } from 'intergalactic/typography';
+import Ellipsis from '@semcore/ellipsis';
+import Card from '@semcore/card';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   return (
