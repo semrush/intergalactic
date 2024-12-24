@@ -1,10 +1,10 @@
 import React from 'react';
-import Select from 'intergalactic/select';
-import { I18nProvider } from 'intergalactic/utils/lib/enhances/WithI18n';
-import { NoData } from 'intergalactic/widget-empty';
-import Card from 'intergalactic/card';
-import Button from 'intergalactic/button';
-import { Box } from 'intergalactic/flex-box';
+import Select from '@semcore/select';
+import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
+import { NoData } from '@semcore/widget-empty';
+import Card from '@semcore/card';
+import Button from '@semcore/button';
+import { Box } from '@semcore/flex-box';
 
 const options = [
   'en',

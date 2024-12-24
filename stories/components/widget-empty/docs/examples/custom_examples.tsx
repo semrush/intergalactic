@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import Card from 'intergalactic/card';
-import WidgetEmpty, { getIconPath } from 'intergalactic/widget-empty';
+import { Box } from '@semcore/flex-box';
+import Button from '@semcore/button';
+import Card from '@semcore/card';
+import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
 
 const Demo = () => {
   return (
