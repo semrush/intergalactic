@@ -11,8 +11,7 @@ const Demo = () => {
       <PatternFill id='pattern-element' patternKey={patternKey} color='red' patterns={patterns} />
       <rect width='100px' height='100px' x='0' y='0' fill='url(#pattern-element)' stroke='red' />
       <PatternSymbol
-        aria-label='zigzag PatternSymbol'
-        role='img'
+        role='none'
         color='red'
         patternKey={patternKey}
         patterns={patterns}
