@@ -142,7 +142,7 @@ const Demo = () => {
                 onRemove={handleRemoveTag}
               >
                 {tags.map((tag, idx) => (
-                  <InputTags.Tag key={tag + idx}>
+                  <InputTags.Tag key={idx}>
                     <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
                   </InputTags.Tag>
