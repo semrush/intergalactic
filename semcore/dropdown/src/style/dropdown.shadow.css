@@ -86,6 +86,7 @@ SDropdownItem[size='l'] {
     &::before, &::after {
       width: 20px;
       height: 20px;
+      top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
       left: var(--intergalactic-spacing-3x, 12px);
     }
   }
@@ -102,6 +103,7 @@ SDropdownItem[size='m'] {
     &::before, &::after {
       width: 16px;
       height: 16px;
+      top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
       left: var(--intergalactic-spacing-2x, 8px);
     }
   }
