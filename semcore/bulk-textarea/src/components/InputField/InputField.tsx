@@ -51,6 +51,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   toggleErrorsPopperTimeout = 0;
 
+  isFocusing = false;
+
   state = {
     visibleErrorPopper: false,
     keyboardRowIndex: -1,
@@ -95,7 +97,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   componentDidUpdate(prevProps: InputFieldProps): void {
     const { value, errors, errorIndex, showErrors } = this.props;
 
-    if (prevProps.value !== value && value !== this.getRows().join(this.delimiter)) {
+    if (prevProps.value !== value && value !== this.getRowsValue().join(this.delimiter)) {
       this.handleValueOutChange();
     }
 
@@ -117,7 +119,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const node = error?.rowNode;
       const selection = document.getSelection();
 
-      if (selection && node instanceof HTMLDivElement) {
+      if (selection && node instanceof HTMLParagraphElement) {
         this.setState({ visibleErrorPopper: false });
 
         setTimeout(() => {
@@ -215,7 +217,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   handleIntersection(entries: IntersectionObserverEntry[]): void {
     const element = entries[0];
 
-    if (element.target instanceof HTMLDivElement) {
+    if (element.target instanceof HTMLParagraphElement) {
       if (element.isIntersecting) {
         this.setPopperTrigger?.(element.target);
         this.popper?.current?.update();
@@ -248,7 +250,22 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleMouseMove(event: MouseEvent): void {
     this.lastInteraction = 'mouse';
-    this.toggleErrorsPopper('mouseRowIndex', event.target);
+    const element = event.target;
+
+    if (this.changeTriggerTimeout) {
+      clearTimeout(this.changeTriggerTimeout);
+    }
+
+    if (
+      this.isFocusing ||
+      (element instanceof HTMLElement &&
+        element.getAttribute('aria-invalid') === 'true' &&
+        element !== this.textarea)
+    ) {
+      this.toggleErrorsPopper('mouseRowIndex', element);
+    } else {
+      this.setState({ visibleErrorPopper: false });
+    }
   }
 
   handleMouseLeave(event: MouseEvent): void {
@@ -256,7 +273,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       clearTimeout(this.changeTriggerTimeout);
     }
 
-    this.setState({ mouseRowIndex: -1, visibleErrorPopper: false });
+    if (this.isFocusing) {
+      this.lastInteraction = 'keyboard';
+      const rowNode = this.getNodeFromSelection();
+
+      this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
+      this.setState({ mouseRowIndex: -1 });
+    } else {
+      this.setState({ visibleErrorPopper: false });
+    }
   }
 
   handlePaste(event: ClipboardEvent) {
@@ -276,7 +301,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.textarea.append(...listOfNodes);
       } else if (previousNode) {
         previousNode.after(...listOfNodes);
-      } else if (rowNode instanceof HTMLDivElement) {
+      } else if (rowNode instanceof HTMLParagraphElement) {
         const before = rowNode.textContent?.substring(0, selection.focusOffset) ?? '';
         const after = rowNode.textContent?.substring(selection.focusOffset) ?? '';
 
@@ -312,7 +337,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
       if (firstNode instanceof Text) {
         const nodeText = firstNode.textContent ?? '';
-        const firstRow = document.createElement('div');
+        const firstRow = document.createElement('p');
         const text = document.createTextNode(nodeText);
         firstRow.append(text);
         firstNode.replaceWith(firstRow);
@@ -322,13 +347,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.textarea.textContent = '';
         this.recalculateErrors();
       } else if (
-        firstNode instanceof HTMLDivElement &&
+        firstNode instanceof HTMLParagraphElement &&
         !firstNode.textContent &&
         (secondNode instanceof HTMLBRElement ||
           firstNode.childNodes.item(0) instanceof HTMLBRElement)
       ) {
-        this.textarea.textContent = '';
-        this.recalculateErrors();
+        if (nodes.length <= 2) {
+          this.textarea.textContent = '';
+          this.recalculateErrors();
+        } else {
+          selection?.setPosition(firstNode, 0);
+        }
       }
 
       let maxDeep = 10;
@@ -354,13 +383,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         }
 
         this.validateRow(rowNode);
+        this.recalculateErrors();
       }
+
+      this.toggleErrorsPopperByKeyboard(0);
 
       this.recalculateIsEmpty();
     }
   }
 
   handleFocus(event: FocusEvent) {
+    this.isFocusing = true;
     this.lastInteraction = 'keyboard';
 
     if (this.asProps.showErrors) {
@@ -369,7 +402,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleBlur = (event: Event) => {
-    this.asProps.onBlur(this.getRows().join(this.delimiter), event);
+    this.isFocusing = false;
+    this.asProps.onBlur(this.getRowsValue().join(this.delimiter), event);
     if (this.asProps.validateOn.includes('blur')) {
       this.recalculateErrors();
     }
@@ -394,7 +428,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else {
         if (event.key !== 'Enter') {
           event.preventDefault();
-          const row = document.createElement('div');
+          const row = document.createElement('p');
           const emptyText = document.createElement('br');
           row.appendChild(emptyText);
           this.textarea.append(row);
@@ -402,11 +436,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           selection?.setPosition(row, 0);
         }
 
-        if (validateOn.includes('enterNextRow')) {
-          this.validateRow(currentNode);
-          this.recalculateErrors();
-        }
-        onEnterNextRow();
+        setTimeout(() => {
+          if (validateOn.includes('enterNextRow')) {
+            this.validateRow(currentNode);
+            if (currentNode.parentNode?.previousSibling) {
+              this.validateRow(currentNode.parentNode.previousSibling);
+            }
+            this.recalculateErrors();
+          }
+          onEnterNextRow();
+        }, 0);
       }
     }
 
@@ -416,7 +455,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       event.key === 'ArrowLeft' ||
       event.key === 'ArrowRight'
     ) {
-      this.toggleErrorsPopperByKeyboard(500);
+      this.toggleErrorsPopperByKeyboard(200);
     }
   }
 
@@ -475,7 +514,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     value.split(delimiter).forEach((line) => {
       const preparedLine = rowProcessing(line);
       if ((preparedLine === '' && skipEmptyRows === false) || preparedLine !== '') {
-        const node = document.createElement('div');
+        const node = document.createElement('p');
         const text =
           preparedLine === ''
             ? document.createElement('br')
@@ -504,7 +543,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const errors: ErrorItem[] = [];
 
     this.textarea.childNodes.forEach((node, index) => {
-      if (node instanceof HTMLDivElement && node.getAttribute('aria-invalid') === 'true') {
+      if (node instanceof HTMLParagraphElement && node.getAttribute('aria-invalid') === 'true') {
         const errorItem = {
           errorMessage: node.getAttribute('aria-errormessage') ?? '',
           rowNode: node,
@@ -517,7 +556,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.asProps.onErrorsChange(errors);
   }
 
-  private getRows(): string[] {
+  private getRowsValue(): string[] {
     const rows: string[] = [];
     this.textarea.childNodes.forEach((node) => {
       rows.push(node.textContent ?? '');
@@ -533,11 +572,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (!this.isScrolling) {
       setTimeout(() => {
-        const selection = document.getSelection();
-        const rowNode =
-          selection?.focusNode instanceof Text
-            ? selection.focusNode.parentNode
-            : selection?.focusNode;
+        const rowNode = this.getNodeFromSelection();
 
         this.toggleErrorsPopper('keyboardRowIndex', rowNode, timer);
       }, 0);
@@ -549,31 +584,37 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   private toggleErrorsPopper(key: IndexKeys, target?: unknown, timer?: number) {
-    if (target instanceof HTMLDivElement) {
+    if (target instanceof HTMLDivElement || target instanceof HTMLParagraphElement) {
       if (this.changeTriggerTimeout) {
         clearTimeout(this.changeTriggerTimeout);
       }
 
       this.changeTriggerTimeout = window.setTimeout(() => {
+        const isInvalidRow =
+          target.getAttribute('aria-invalid') === 'true' && target !== this.textarea;
         const rowIndex =
-          target instanceof HTMLDivElement
+          target instanceof HTMLParagraphElement
             ? Array.from(this.textarea.childNodes).indexOf(target)
             : -1;
 
         this.setState(
           (prevState) => {
             const newState: State = {
-              visibleErrorPopper: true,
+              visibleErrorPopper: this.isFocusing ? true : isInvalidRow,
               mouseRowIndex: prevState.mouseRowIndex,
               keyboardRowIndex: prevState.keyboardRowIndex,
             };
 
-            newState[key] = rowIndex;
+            if (this.isFocusing || (key === 'mouseRowIndex' && isInvalidRow)) {
+              newState[key] = rowIndex;
+            }
 
             return newState;
           },
           () => {
-            const trigger = target.getAttribute('aria-invalid') === 'true' ? target : this.textarea;
+            // setTimeout(
+            //   () => {
+            const trigger = isInvalidRow ? target : this.textarea;
 
             this.setPopperTrigger?.(trigger);
             this.popper?.current?.update();
@@ -583,9 +624,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             if (trigger !== this.textarea) {
               this.intersectionObserver.observe(trigger);
             }
+            // },
+            // this.state.visibleErrorPopper ? 0 : 150,
+            // );
           },
         );
-      }, timer ?? 150);
+      }, timer ?? 50);
     } else {
       this.setState({ visibleErrorPopper: false });
     }
@@ -594,7 +638,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   private validateRow(node: Node): boolean {
     const { rowValidation } = this.asProps;
     if (rowValidation && node instanceof HTMLElement) {
-      const { isValid, errorMessage } = rowValidation(node.textContent ?? '', this.getRows());
+      const { isValid, errorMessage } = rowValidation(node.textContent ?? '', this.getRowsValue());
 
       if (!isValid) {
         node.setAttribute('aria-invalid', 'true');
@@ -620,6 +664,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     selection?.removeAllRanges();
     selection?.addRange(range);
+  }
+
+  private getNodeFromSelection(): Node | null {
+    const selection = document.getSelection();
+
+    const rowNode =
+      selection?.focusNode instanceof Text ? selection.focusNode.parentNode : selection?.focusNode;
+
+    return rowNode ?? null;
   }
 }
 

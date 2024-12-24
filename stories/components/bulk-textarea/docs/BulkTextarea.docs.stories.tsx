@@ -18,7 +18,10 @@ export const BasicUsage: StoryObj<typeof BulkTextarea> = {
     rowsDelimiters: [','],
     minRows: 2,
     maxRows: 10,
-    validateOn: ['blur', 'enterNextRow'],
+    validateOn: [
+      'blur',
+      // 'enterNextRow',
+    ],
     pasteProps: {
       delimiter: '\n',
       skipEmptyRows: true,
