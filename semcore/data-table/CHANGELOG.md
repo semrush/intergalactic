@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.6] - 2024-12-24
+
+### Fixed
+
+- Keyboard navigation on table with virtual scroll.
+
 ## [4.47.5] - 2024-12-16
 
 ### Fixed
