@@ -49,8 +49,11 @@ export type NoticeSmartProps = NoticeProps & {
    */
   label?: React.ReactNode;
 
+  /**
+   * A custom element for title
+   */
   title?: React.ReactNode;
-  text?: React.ReactNode;
+
   /**
    * Custom action element
    */

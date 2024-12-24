@@ -2224,6 +2224,7 @@
       "format-text",
       "input-tags",
       "link",
+      "notice",
       "radio",
       "select",
       "slider",

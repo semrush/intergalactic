@@ -19,7 +19,6 @@ class NoticeSmart extends Component {
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}
-          {isNode(text) && <Notice.Text>{text}</Notice.Text>}
           <Children />
           {isNode(actions) && <Notice.Actions>{actions}</Notice.Actions>}
         </Notice.Content>

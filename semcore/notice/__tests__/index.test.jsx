@@ -188,20 +188,6 @@ describe('NoticeSmart', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should correctly render with title and text props', async ({ task }) => {
-    const component = (
-      <NoticeSmart
-        theme='warning'
-        title={'The Link Building tool is under maintenance.'}
-        text={
-          'Starting new campaigns is temporarily unavailable, but you can continue working with your existing Link Building campaigns.'
-        }
-        aria-label='Maintenance notice'
-      />
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('Should correctly render with title and text as children', async ({ task }) => {
     const component = (
       <NoticeSmart

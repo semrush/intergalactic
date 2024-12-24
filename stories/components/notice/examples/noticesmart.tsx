@@ -63,12 +63,12 @@ const Demo = () => {
       <NoticeSmart
         theme='warning'
         title={'The Link Building tool is under maintenance.'}
-        text={
-          'Starting new campaigns is temporarily unavailable, but you can continue working with your existing Link Building campaigns.'
-        }
         label={<WarningM />}
         aria-label='Maintenance notice'
-      />
+      >
+        Starting new campaigns is temporarily unavailable, but you can continue working with your
+        existing Link Building campaigns.
+      </NoticeSmart>
       <NoticeSmart theme='danger'>
         Once you click Regenerate, the article will be rewritten. The previous version cannot be
         restored.
