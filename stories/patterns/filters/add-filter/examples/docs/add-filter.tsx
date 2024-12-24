@@ -1,5 +1,5 @@
 import React from 'react';
-import AddFilter from '@semcore/ui/add-filter';
+import AddFilter from '@semcore/add-filter';
 import Select from '@semcore/select';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
@@ -10,7 +10,7 @@ import { Text } from '@semcore/typography';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Textarea from '@semcore/textarea';
 import Input from '@semcore/input';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { FilterTrigger } from '@semcore/base-trigger';
 
 const selectOptions = [
   { value: 'Option 1', children: 'Option 1' },
