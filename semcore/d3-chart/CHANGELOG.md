@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `aria-hidden="true"` to `PatternSymbol` inside `LegendItem` to improve a11y.
+- `aria-hidden="true"` to `PatternSymbol` inside `LegendItem` to improve A11Y.
 
 ## [3.58.4] - 2024-12-19
 
