@@ -51,6 +51,39 @@ class DropdownMenuRoot extends AbstractDropdown {
   actionsRef = React.createRef();
   role = 'menu';
 
+  uncontrolledProps() {
+    return {
+      ...super.uncontrolledProps(),
+      visible: [
+        null,
+        (visible) => {
+          if (visible === true) {
+            setTimeout(() => {
+              const options = this.menuRef.current?.querySelectorAll(
+                '[role="menuitemcheckbox"]',
+                '[role="menuitemradio"]',
+              );
+              const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
+
+              if (selected && options) {
+                this.scrollToNode(selected);
+
+                for (let i = 0; i < options.length; i++) {
+                  if (options[i] === selected) {
+                    this.handlers.highlightedIndex(i);
+                    break;
+                  }
+                }
+              }
+              // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
+              // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
+            }, 30);
+          }
+        },
+      ],
+    };
+  }
+
   itemRef(props, index, node) {
     super.itemRef(props, index, node);
 
