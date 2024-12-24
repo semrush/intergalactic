@@ -34,6 +34,7 @@ const allowedAttributes = new Set([
   'onClick',
   'onContextMenu',
   'onDoubleClick',
+  'onAuxClick',
   'onDrag',
   'onDragEnd',
   'onDragEnter',
