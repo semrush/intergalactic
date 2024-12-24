@@ -1,17 +1,11 @@
 import React from 'react';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex direction='column'>
-      <Text tag='label' size={200} htmlFor='dropdown-menu-children-items'>
-        Your action
-      </Text>
       <DropdownMenu>
-        <DropdownMenu.Trigger tag={Button} mt={2} mr='auto' id='dropdown-menu-children-items'>
+        <DropdownMenu.Trigger tag={Button}>
           Explore menu items
         </DropdownMenu.Trigger>
         {/* Adding max-height to the dropdown menu */}
@@ -29,7 +23,6 @@ const Demo = () => {
           </DropdownMenu.Group>
         </DropdownMenu.Menu>
       </DropdownMenu>
-    </Flex>
   );
 };
 
