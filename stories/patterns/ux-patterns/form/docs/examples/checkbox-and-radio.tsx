@@ -29,7 +29,7 @@ const Demo = () => {
   };
 
   React.useEffect(() => {
-    const timer = setTimeout(() => setMessage(''), 300);
+    const timer = setTimeout(() => setMessage(''), 500);
     return () => clearTimeout(timer);
   }, [message]);
 
