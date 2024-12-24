@@ -29,42 +29,38 @@ SDropdownItem {
 }
 
 SDropdownItem[role="menuitemcheckbox"] {
-  &::before {
+  &::before, &::after {
     content: '';
-    display: inline-block;
     position: absolute;
-    background: var(--intergalactic-bg-primary-neutral, #ffffff);
     border: 1px solid;
     border-radius: var(--intergalactic-addon-rounded, 4px);
+    box-sizing: content-box;
+  }
+  &::before {
+    display: inline-block;
+    background: var(--intergalactic-bg-primary-neutral, #ffffff);
     transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
     border-color: var(--intergalactic-border-primary, #c4c7cf);
   }
   &[selected]::after {
-    content: "";
-    position: absolute;
     background-repeat: no-repeat;
     background-position: center center;
-    border: 1px solid;
-    border-radius: var(--intergalactic-addon-rounded, 4px);
     background-color: var(--intergalactic-control-primary-info, #008ff8);
     border-color: var(--intergalactic-control-primary-info, #008ff8);
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
   }
 }
 
-SDropdownItem[selected] {
-  box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
-}
-
 SDropdownItem[selected]:not([role="menuitemcheckbox"]) {
   background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
+  box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
 
   &:hover {
     background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
   }
 }
 
-SDropdownItem[highlighted] {
+SDropdownItem[highlighted],SDropdownItem[selected][highlighted] {
   z-index: 1;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
 }

@@ -33,6 +33,7 @@ const Demo = () => {
                       addonLeft={Trash}
                       title={'Delete item'}
                       hintPlacement='right'
+                      onClick={(e) => e.stopPropagation()}
                     />
                   </DropdownMenu.Actions>
                 </Flex>

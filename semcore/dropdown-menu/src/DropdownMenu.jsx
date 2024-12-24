@@ -163,6 +163,12 @@ class DropdownMenuRoot extends AbstractDropdown {
       itemProps['aria-checked'] = true;
     }
 
+    if (super.childRole === 'menuitemradio') {
+      itemProps.onClick = () => {
+        this.handlers.visible(false);
+      };
+    }
+
     return itemProps;
   }
 
@@ -183,7 +189,7 @@ class DropdownMenuRoot extends AbstractDropdown {
         (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
         (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
         e.key === 'Escape';
-      const isMenuItem = e.target.getAttribute('role') === super.childRole;
+      const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
       if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
         this.handlers.visible(true);

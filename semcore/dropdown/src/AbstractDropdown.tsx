@@ -76,9 +76,9 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction } = this.asProps;
+    const { interaction, inlineActions } = this.asProps;
 
-    if (interaction === 'none') return false;
+    if (interaction === 'none' || inlineActions) return false;
 
     setTimeout(() => {
       const { visible, inlineActions } = this.asProps;
@@ -250,7 +250,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   protected itemRef(props: any, index: number, node: HTMLElement | null) {
-    if (node?.getAttribute('role') === this.childRole) {
+    if (node?.getAttribute('role')?.startsWith(this.childRole)) {
       this.itemRefs[index] = node;
       this.itemProps[index] = props;
     }
@@ -279,7 +279,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (
       this.asProps.visible !== true &&
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
-      e.currentTarget.getAttribute('role') !== this.childRole
+      !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
     ) {
       if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
         this.handlers.visible(true);
