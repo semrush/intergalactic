@@ -108,7 +108,6 @@ SNext {
     margin-left: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
     margin-right: calc(2 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
-  
 }
 
 SPrevButton, SNextButton {

@@ -11,7 +11,7 @@ To ensure everyone can understand and differentiate visual elements, avoid relyi
 
 To use color thoughtfully, consider adding another indicator such as a visible border, label, underline, or icon. If you use charts and graphics that rely heavily on color, add other visual differences like hatching patterns or labels. It's also helpful to [learn about color blindness](https://webaim.org/articles/visual/colorblind) and use a Figma plugin or browser extension to verify the accessibility of your designs.
 
-Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html) to know more about use of color.
+Refer to [WCAG color use guidelines](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color) for more information.
 
 ### Text color contrast
 
@@ -22,13 +22,13 @@ Based on current criteria, the contrast ratio should meet these minimums:
 - Text smaller than 24px or 19px bold should have a contrast ratio of at least 4.5:1.
 - Text larger than 24px or 19px bold should have a contrast ratio of at least 3:1.
 
-Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) to know more about color contrast.
+Refer to [WCAG text contrast guidelines](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) for more information.
 
 ### Non-text color contrast
 
 All graphics and components must have a contrast ratio of at least 3:1 compared to the surrounding colors, unless they are purely decorative. This rule applies to icons, charts, infographics, controls, and any states like hover or active. However, inactive components, states, and purely decorative elements are exempt from these contrast ratio requirements.
 
-Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html) to know more about non-text color contrast.
+Refer to [WCAG non-text contrast guidelines](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast) for more information.
 
 ## Typography
 
@@ -42,7 +42,7 @@ Ensuring that users can easily identify which element has the keyboard focus is 
 - Use a strong, visible focus indicator for interactive elements, such as links, buttons, and form fields.
 - Ensure the focus indicator has a 3:1 color contrast ratio against the background.
 
-Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html) to know more about visible focus.
+Refer to [WCAG focus visibility guidelines](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible) for more information.
 
 ## Layout and structure
 
@@ -64,7 +64,7 @@ Make sure that user can easily understand the meaning and structure of the page 
 - Screen readers should read the information in the same order it is displayed.
 - Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading shouldn't be marked up as H1 in the code. Also, don't use plain text for headings.
 
-Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html) to know more about meaningful sequence.
+Refer to [WCAG meaningful sequence guidelines](https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence) for more information.
 
 ## Scaling and resizing
 
@@ -80,7 +80,7 @@ Use adaptive layout to allow the user to choose their preferred scale while pres
 
 This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
 
-Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/resize-text) to know more about scaling and resizing criteria.
+Refer to [WCAG text resizing guidelines](https://www.w3.org/WAI/WCAG22/Understanding/resize-text) for more information.
 
 ## Graphics and images
 
@@ -104,7 +104,7 @@ Make sure that user understands all content, including charts, icons, and images
 - Create an alternate form for the content that cannot be presented as text. For example, to help the user find an ATM, you could offer a map, a table, or a list.
 - Captcha tops the list of the most difficult and common problems that blind users face. It's often used needlessly from a security point of view, and can be replaced with other validation methods. If using a Captcha is absolutely necessary, be sure to add an audio alternative for visually impaired users.
 
-To learn more, visit the [text alternatives](https://www.w3.org/TR/WCAG21/#text-alternatives) section of the WCAG website.
+To learn more, visit the [text alternatives](https://www.w3.org/TR/WCAG22/#text-alternatives) section of the WCAG website.
 
 ## Media content
 
@@ -136,14 +136,14 @@ Minimize the need to enter text or search. Whenever possible, enable voice input
 
 Web content accessibility guidelines on:
 
-- [Non-text Content ›](https://www.w3.org/TR/WCAG21/#non-text-content)
-- [Info and Relationships ›](https://www.w3.org/TR/WCAG21/#info-and-relationships)
-- [On Focus ›](https://www.w3.org/TR/WCAG21/#on-focus)
-- [Error Identification ›](https://www.w3.org/TR/WCAG21/#error-identification)
-- [Labels or Instructions ›](https://www.w3.org/TR/WCAG21/#labels-or-instructions)
-- [Error Suggestion ›](https://www.w3.org/TR/WCAG21/#error-suggestion)
-- [Error Prevention ›](https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data)
-- [Name, Role, Value ›](https://www.w3.org/TR/WCAG21/#name-role-value)
+- [Non-text Content ›](https://www.w3.org/TR/WCAG22/#non-text-content)
+- [Info and Relationships ›](https://www.w3.org/TR/WCAG22/#info-and-relationships)
+- [On Focus ›](https://www.w3.org/TR/WCAG22/#on-focus)
+- [Error Identification ›](https://www.w3.org/TR/WCAG22/#error-identification)
+- [Labels or Instructions ›](https://www.w3.org/TR/WCAG22/#labels-or-instructions)
+- [Error Suggestion ›](https://www.w3.org/TR/WCAG22/#error-suggestion)
+- [Error Prevention ›](https://www.w3.org/TR/WCAG22/#error-prevention-legal-financial-data)
+- [Name, Role, Value ›](https://www.w3.org/TR/WCAG22/#name-role-value)
 :::
 
 ## Labels and instructions
@@ -164,13 +164,12 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 
 ![](/core-principles/a11y/static/instructions.png)
 
-::: tip
-**Useful resources**
+::: tip Useful resources
 
 Web content accessibility guidelines on:
 
-- [Link Purpose (In Context) ›](https://www.w3.org/TR/WCAG21/#link-purpose-in-context)
-- [Sensory Characteristics ›](https://www.w3.org/TR/WCAG21/#sensory-characteristics)
+- [Link Purpose (In Context) ›](https://www.w3.org/TR/WCAG22/#link-purpose-in-context)
+- [Sensory Characteristics ›](https://www.w3.org/TR/WCAG22/#sensory-characteristics)
 :::
 
 ## Touch targets
@@ -185,20 +184,18 @@ Make sure that the touch targets of the items are large enough and are easily ac
 
 ![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "You need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
 
-::: tip
-**Useful resources**
+::: tip Useful resources
 
 Web content accessibility guidelines on:
 
-- [Touch Target ›](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
+- [Touch Target ›](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum)
 - [Touch Target Size and Spacing ›](https://www.w3.org/TR/mobile-accessibility-mapping/#touch-target-size-and-spacing)
 - [Placing buttons where they are easy to access ›](https://www.w3.org/TR/mobile-accessibility-mapping/#h-placing-buttons-where-they-are-easy-to-access)
 :::
 
 ## Text readability
 
-::: tip
-**Why it's important**
+::: tip Why it's important
 
 Some of your users may suffer from dyslexia or developmental disorders, making it difficult for them to read and understand complex sentences with rich or wordy expressions. Some of your users might not understand technical terms or slang. Mobile users also have difficulty reading long paragraphs of text.
 :::
@@ -212,5 +209,5 @@ Some of your users may suffer from dyslexia or developmental disorders, making i
 - **Avoid idioms**. Try not to use idioms or other expressions whose meaning cannot be easily recognized from the usual meanings of the words that they consist of. For example, an expression like _play the fool_ can be taken literally by users with mental disabilities or those who use a sign language to communicate.
 
 ::: tip
-To learn more, visit the [Readable](https://www.w3.org/TR/WCAG21/#readable) section of the WCAG website.
+To learn more, visit the [Readable](https://www.w3.org/TR/WCAG22/#readable) section of the WCAG website.
 :::

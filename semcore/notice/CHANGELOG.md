@@ -902,7 +902,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Изменения описаны в [migration guide](/internal/migration-guide)
+- Изменения описаны в migration guide
 
 ### Added
 

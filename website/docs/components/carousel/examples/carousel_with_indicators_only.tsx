@@ -19,7 +19,7 @@ const Demo = () => (
   <Carousel w={width} aria-roledescription='carousel' aria-label='Beauty of Nature'>
     <>
       <Flex>
-        <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
+        <Carousel.ContentBox>
           <Carousel.Container>
             {images.map((url, index) => (
               <Carousel.Item key={url} w={imageWidth}>
@@ -34,7 +34,7 @@ const Demo = () => (
               </Carousel.Item>
             ))}
           </Carousel.Container>
-        </Box>
+        </Carousel.ContentBox>
       </Flex>
       <Carousel.Indicators />
     </>
