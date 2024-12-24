@@ -418,9 +418,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.lastInteraction = 'keyboard';
     const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
 
+    const selection = document.getSelection();
+    const currentNode = selection?.focusNode;
+
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
-      const selection = document.getSelection();
-      const currentNode = selection?.focusNode;
       const currentRowValue = currentNode?.textContent;
 
       if (!currentRowValue) {
@@ -429,8 +430,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         if (event.key !== 'Enter') {
           event.preventDefault();
           const row = document.createElement('p');
-          const emptyText = document.createElement('br');
-          row.appendChild(emptyText);
+          row.innerHTML = '&#xfeff;';
           this.textarea.append(row);
 
           selection?.setPosition(row, 0);
@@ -455,6 +455,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       event.key === 'ArrowLeft' ||
       event.key === 'ArrowRight'
     ) {
+      if (currentNode) {
+        this.handleCursorMovement(currentNode, event);
+      }
+
       this.toggleErrorsPopperByKeyboard(200);
     }
   }
@@ -515,11 +519,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const preparedLine = rowProcessing(line);
       if ((preparedLine === '' && skipEmptyRows === false) || preparedLine !== '') {
         const node = document.createElement('p');
-        const text =
-          preparedLine === ''
-            ? document.createElement('br')
-            : document.createTextNode(preparedLine);
-        node.append(text);
+
+        if (preparedLine === '') {
+          node.innerHTML = '&#xfeff;';
+        } else {
+          node.append(document.createTextNode(preparedLine));
+        }
+
         listOfNodes.push(node);
       }
     });
@@ -673,6 +679,54 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       selection?.focusNode instanceof Text ? selection.focusNode.parentNode : selection?.focusNode;
 
     return rowNode ?? null;
+  }
+
+  private handleCursorMovement(currentNode: Node, event: KeyboardEvent): void {
+    const baseNode = currentNode instanceof Text ? currentNode.parentNode : currentNode;
+
+    let nextNode;
+
+    switch (event.key) {
+      case 'ArrowUp':
+        event.preventDefault();
+        nextNode = baseNode?.previousSibling;
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        nextNode = baseNode?.nextSibling;
+        break;
+      case 'ArrowLeft': {
+        if (baseNode?.textContent?.trim() === '') {
+          event.preventDefault();
+          nextNode = baseNode?.previousSibling;
+        }
+        break;
+      }
+      case 'ArrowRight': {
+        if (baseNode?.textContent?.trim() === '') {
+          event.preventDefault();
+          nextNode = baseNode?.nextSibling;
+        }
+      }
+    }
+
+    if (nextNode) {
+      const selection = document.getSelection();
+      const firstNode = nextNode.childNodes.item(0);
+      const nodeToSetSelection = firstNode instanceof Text ? firstNode : nextNode;
+      const textNode = nextNode.textContent?.trim() ?? '';
+      const currentOffset = selection?.focusOffset ?? 0;
+      let offset = currentOffset <= textNode.length ? currentOffset : textNode.length;
+
+      // it only works if node is empty, that's why here we could set 0 or node.length
+      if (event.key === 'ArrowLeft') {
+        offset = textNode.length;
+      } else if (event.key === 'ArrowRight') {
+        offset = 0;
+      }
+
+      this.setSelection(nodeToSetSelection, offset, offset);
+    }
   }
 }
 
