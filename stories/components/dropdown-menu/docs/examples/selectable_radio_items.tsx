@@ -1,6 +1,8 @@
 import React from 'react';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
+import Trash from '@semcore/icon/Trash/m';
+import { Flex } from '@semcore/flex-box';
 
 const menuItems: null[] = new Array(10).fill(null);
 
@@ -22,7 +24,16 @@ const Demo = () => {
                   setSelected(index);
                 }}
               >
-                Menu item {index + 1}
+                <DropdownMenu inlineActions placement={'right'}>
+                  <Flex justifyContent='space-between'>
+                    <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                      Menu item {index + 1}
+                    </DropdownMenu.Item.Content>
+                    <DropdownMenu.Actions>
+                      <DropdownMenu.Item tag={Button} addonLeft={Trash} title={'Delete item'} />
+                    </DropdownMenu.Actions>
+                  </Flex>
+                </DropdownMenu>
               </DropdownMenu.Item>
             ))}
           </DropdownMenu.Group>
