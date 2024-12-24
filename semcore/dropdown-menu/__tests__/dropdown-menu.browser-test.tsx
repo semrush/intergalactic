@@ -8,9 +8,8 @@ test.describe('Dropdown-menu', () => {
 
     await page.setContent(htmlContent);
 
-    const ddMenu = await page.locator('#dropdown-menu-children-items');
-
-    await ddMenu.click();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
     await page.waitForTimeout(1000);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
@@ -60,7 +59,7 @@ test.describe('Dropdown-menu - Item actions', () => {
     await expect(Trash).not.toBeFocused();
 
     //Enter focuses addons and they have hints
-    await page.keyboard.press('Enter');
+    await page.keyboard.press('ArrowRight');
     await expect(MathPlus).toBeFocused();
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
