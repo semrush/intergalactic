@@ -62,7 +62,7 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
   return (
     <Tooltip placement='top' interaction={'none'} animationsDisabled>
       <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
-        {error?.message as any}
+        {showErrorTooltip() && (error?.message as any)}
       </Tooltip.Popper>
       <Input w='100%' mb={2} size='l' state={hasError() ? 'invalid' : 'normal'} controlsLength={1}>
         <Tooltip.Trigger
