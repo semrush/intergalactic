@@ -39,11 +39,6 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
 
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
 
-  const isModalRoot = React.useCallback(
-    (root: HTMLElement) => root && root.dataset.uiName === 'Modal.Overlay',
-    [],
-  );
-
   const handleOutsideClick = useEventCallback((event: any) => {
     const isTargetEvent = [...(excludeRefs as any), nodeRef]
       .filter((node) => getNodeByRef(node))
@@ -60,17 +55,26 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     targetRef.current = getEventTarget(event) as Node | null;
   });
 
+  const toggleEvents = (status: boolean, outsideRoot: Element | Document | null) => {
+    const isModalRoot =
+      outsideRoot instanceof HTMLElement && outsideRoot.dataset.uiName === 'Modal.Overlay';
+    if (!isModalRoot) {
+      return;
+    }
+
+    OutsideClick.eventsMap.forEach(([rootElement, events]) => {
+      Object.entries(events).forEach(([eventName, handler]) => {
+        const method = status ? 'addEventListener' : 'removeEventListener';
+        rootElement[method](eventName, handler, true);
+      });
+    });
+  };
+
   React.useEffect(() => {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
 
     // disable previous events
-    if (outsideRoot instanceof HTMLElement && isModalRoot(outsideRoot)) {
-      OutsideClick.eventsMap.forEach(([root, events]) => {
-        Object.entries(events).forEach(([eventName, handler]) => {
-          root.removeEventListener(eventName, handler, true);
-        });
-      });
-    }
+    toggleEvents(false, outsideRoot);
 
     // Using capture to handle event faster than OutsideClick handler
     outsideRoot?.addEventListener('mouseup', handleOutsideClick, true);
@@ -94,14 +98,8 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
       outsideRoot?.removeEventListener('mouseup', handleOutsideClick, true);
       outsideRoot?.removeEventListener('mousedown', handleMouseDown, true);
 
-      // disable previous events
-      if (outsideRoot instanceof HTMLElement && isModalRoot(outsideRoot)) {
-        OutsideClick.eventsMap.forEach(([root, events]) => {
-          Object.entries(events).forEach(([eventName, handler]) => {
-            root.addEventListener(eventName, handler, true);
-          });
-        });
-      }
+      // enabled previous events
+      toggleEvents(true, outsideRoot);
     };
   }, [root]);
 

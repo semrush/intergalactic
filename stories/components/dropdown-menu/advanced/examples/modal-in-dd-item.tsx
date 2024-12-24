@@ -15,7 +15,9 @@ function SomeFeatureComponent() {
         <Modal.Title>Title</Modal.Title>
 
         <DropdownMenu>
-          <DropdownMenu.Trigger tag={Button}>Open menu</DropdownMenu.Trigger>
+          <DropdownMenu.Trigger size='l' mr={2} tag={Button}>
+            Open menu
+          </DropdownMenu.Trigger>
           <DropdownMenu.Menu>
             <DropdownMenu.Item>One</DropdownMenu.Item>
             <DropdownMenu.Item>Two</DropdownMenu.Item>
