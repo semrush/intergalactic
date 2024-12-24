@@ -115,14 +115,17 @@ const Demo = () => {
       <Controller
         render={({ field: { value: tags = [] } }) => (
           <>
-            <Text size={300} tag='label' mb={2} htmlFor='emails'>
-              Emails
+            <Flex>
+              <Text size={300} tag='label' mb={2} htmlFor='emails'>
+                Emails
+              </Text>
+
               <Counter
                 ml={1}
                 size='xl'
                 theme={tags.length < 5 ? '' : 'warning'}
               >{`${tags.length}/5`}</Counter>
-            </Text>
+            </Flex>
             <Tooltip
               interaction='none'
               placement='bottom'
