@@ -210,9 +210,11 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await expect(Item1).toBeFocused();
 
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(100);
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
     await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
     await page.keyboard.press('Escape');
     await expect(ddMenuTrigger).toBeFocused();
     await expect(Item1).not.toBeVisible();
