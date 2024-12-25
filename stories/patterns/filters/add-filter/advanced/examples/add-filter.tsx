@@ -109,12 +109,11 @@ const AddFilterExample = () => {
 
   return (
     <Flex gap={2}>
-      <Input inline={false} w={'auto'}>
+      <Input inline={false} w={160}>
         <Input.Addon>
           <SearchM />
         </Input.Addon>
         <Input.Value
-          w={110}
           value={filterData['name']}
           onChange={(v: string) => {
             setFilterData({ ...filterData, name: v });
@@ -223,12 +222,11 @@ const AddFilterExample = () => {
           </AddFilter.Dropdown.Popper>
         </AddFilter.Dropdown>
 
-        <AddFilter.Input name={'position'} displayName={'Position'}>
+        <AddFilter.Input name={'position'} displayName={'Position'} w={160}>
           <AddFilter.Input.Addon>
             <SearchM />
           </AddFilter.Input.Addon>
           <AddFilter.Input.Value
-            w={110}
             value={filterData['position']}
             onChange={(v) => {
               setFilterData({ ...filterData, position: v });
