@@ -13,6 +13,10 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "/semcore/bulk-textarea/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/carousel/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },

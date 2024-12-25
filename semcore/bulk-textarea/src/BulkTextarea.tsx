@@ -8,6 +8,8 @@ import { InputField, InputFieldProps } from './components/InputField/InputField'
 import { Counter } from './components/Counter';
 import { ClearAllButton } from './components/ClearAllbutton';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 type State = {
   rowsCount: number;
@@ -17,7 +19,12 @@ type State = {
   showErrors: boolean;
 };
 
-class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
+class BulkTextareaRoot extends Component<
+  BulkTextareaProps,
+  {},
+  State,
+  typeof BulkTextareaRoot.enhance
+> {
   static displayName = 'BulkTextarea';
   static defaultProps = {
     defaultValue: '',
@@ -27,7 +34,10 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
     maxRows: 10,
     ofRows: 100,
     validateOn: 'blur',
+    locale: 'en',
   };
+
+  static enhance = [i18nEnhance(localizedMessages)] as const;
 
   state = {
     rowsCount: 0,
@@ -114,7 +124,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
   }
 
   getCounterProps() {
-    const { ofRows } = this.asProps;
+    const { ofRows, getI18nText } = this.asProps;
     const { rowsCount, isEmptyText } = this.state;
 
     let counterTheme = '';
@@ -126,6 +136,7 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
     }
 
     return {
+      getI18nText,
       theme: counterTheme,
       rowsCount: isEmptyText ? 0 : rowsCount,
       ofRows,
@@ -133,19 +144,21 @@ class BulkTextareaRoot extends Component<BulkTextareaProps, {}, State> {
   }
 
   getClearAllButtonProps() {
-    const { size } = this.asProps;
+    const { size, getI18nText } = this.asProps;
     return {
       onClick: this.handleClickClearAllButton,
       isHidden: this.state.isEmptyText,
       size,
+      getI18nText,
     };
   }
 
   getErrorsNavigationProps() {
-    const { size } = this.asProps;
+    const { size, getI18nText } = this.asProps;
     const { errors, errorIndex, showErrors } = this.state;
     return {
       size,
+      getI18nText,
       errorIndex: errorIndex,
       onPrevError: this.handleChangeErrorIndex(-1),
       onNextError: this.handleChangeErrorIndex(1),

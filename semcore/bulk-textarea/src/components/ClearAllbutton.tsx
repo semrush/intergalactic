@@ -2,14 +2,17 @@ import React from 'react';
 import { IRootComponentProps, Root, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
+import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 
-export function ClearAllButton(props: IRootComponentProps & { isHidden: boolean }) {
+export function ClearAllButton(
+  props: IRootComponentProps & { isHidden: boolean; getI18nText: ReturnType<typeof useI18n> },
+) {
   const SButton = Root;
   return (
     !props.isHidden &&
     sstyled(props.styles)(
       <SButton render={Button} theme='muted' use='tertiary' addonLeft={CloseM}>
-        Clear all
+        {props.getI18nText('BulkTextarea.ClearAllButton.buttonText')}
       </SButton>,
     )
   );
