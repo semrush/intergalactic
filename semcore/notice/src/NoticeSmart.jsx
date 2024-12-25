@@ -15,9 +15,13 @@ class NoticeSmart extends Component {
     const { Children, label, title, actions, closable, onClose } = this.asProps;
     const textContent =
       typeof Children.origin === 'string' ? (
-        <Notice.Text>
+        isNode(title) ? (
+          <Notice.Text>
+            <Children />
+          </Notice.Text>
+        ) : (
           <Children />
-        </Notice.Text>
+        )
       ) : (
         <Children />
       );
