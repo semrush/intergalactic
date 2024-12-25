@@ -201,7 +201,6 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
       .filter({ hasText: /^Menu item 1$/ })
       .locator('button[aria-label="Delete item"]');
     await expect(deleteButton1).toBeFocused();
-    
 
     //Remove focus on interactive element by left arrow
     await page.keyboard.press('ArrowLeft');
