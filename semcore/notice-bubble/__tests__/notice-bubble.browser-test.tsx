@@ -72,7 +72,9 @@ test.describe('Focus management - Render', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const buttonTrigger = page.locator('[data-ui-name="Button"]:has-text("Show notice with undo action")');
+    const buttonTrigger = page.locator(
+      '[data-ui-name="Button"]:has-text("Show notice with undo action")',
+    );
     await page.keyboard.press('Tab');
     await expect(buttonTrigger).toBeFocused();
     await page.keyboard.press('Enter');
@@ -84,7 +86,6 @@ test.describe('Focus management - Render', () => {
     await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(buttonTrigger).toBeFocused();
     await expect(closeButton).not.toBeVisible();
-
   });
 });
 
