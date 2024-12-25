@@ -15,11 +15,10 @@ class AddFilterSelectRoot extends Component<AddFilterItemProps> {
     };
   };
 
-  getTriggerProps(props: { onClear: () => void }) {
+  getTriggerProps() {
     const { value, onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
-      ...props,
       tag: FilterTrigger,
       onBlur: (e: React.FocusEvent<HTMLImageElement>) => {
         if (

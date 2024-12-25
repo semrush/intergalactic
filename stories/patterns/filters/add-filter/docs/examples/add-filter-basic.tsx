@@ -11,8 +11,18 @@ import AddFilter from '@semcore/add-filter';
 
 type FilterData = Record<string, any>;
 
+const defaultFilterData = {
+  name: '',
+  size: '',
+  Device: '',
+  Languages: '',
+  Materials: '',
+  Shapes: '',
+  Colors: '',
+};
+
 const Demo = () => {
-  const [filterData, setFilterData] = React.useState<FilterData>({});
+  const [filterData, setFilterData] = React.useState<FilterData>(defaultFilterData);
 
   const updateFilterData = (value: string, name: string) => {
     setFilterData((prevData) => {
@@ -22,8 +32,7 @@ const Demo = () => {
 
   const clearField = React.useCallback(
     (name: keyof FilterData) => {
-      const valueType = typeof filterData[name];
-      const tempData = { ...filterData, [name]: valueType === 'string' ? '' : null };
+      const tempData = { ...filterData, [name]: '' };
       setFilterData(tempData);
     },
     [filterData],
@@ -36,12 +45,12 @@ const Demo = () => {
           <SearchM />
         </Input.Addon>
         <Input.Value
-          value={filterData['name']}
+          value={filterData.name}
           onChange={(v) => updateFilterData(v, 'name')}
           placeholder='Filter by name'
           aria-label='Filter by name'
         />
-        {filterData['name'] && (
+        {filterData.name && (
           <Input.Addon>
             <Hint
               tag={ButtonLink}
@@ -76,7 +85,7 @@ const Demo = () => {
       <AddFilter
         filterData={filterData}
         onClearAll={() => {
-          setFilterData({});
+          setFilterData(defaultFilterData);
         }}
         gap={2}
         flexWrap

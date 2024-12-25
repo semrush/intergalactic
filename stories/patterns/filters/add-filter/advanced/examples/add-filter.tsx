@@ -198,7 +198,12 @@ const AddFilterExample = () => {
         flexWrap
       >
         <AddFilter.Dropdown name='keywords' displayName='Keywords'>
-          <AddFilter.Dropdown.Trigger placeholder='Exclude keywords'>
+          <AddFilter.Dropdown.Trigger
+            placeholder='Exclude keywords'
+            onClear={() => {
+              clearField('keywords');
+            }}
+          >
             {`Exclude: ${filterData.keywords?.displayValue} keywords`}
           </AddFilter.Dropdown.Trigger>
 

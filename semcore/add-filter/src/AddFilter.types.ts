@@ -2,10 +2,9 @@ import { Intergalactic } from '@semcore/utils/lib/core';
 import { FlexProps } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Dropdown from '@semcore/dropdown';
+import Dropdown, { DropdownTriggerProps } from '@semcore/dropdown';
 import { FilterTrigger } from '@semcore/base-trigger';
-import Button, { ButtonLink } from '@semcore/button';
+import { ButtonLink } from '@semcore/button';
 
 export type AddFilterItemProps = {
   name: string;
@@ -30,7 +29,10 @@ declare const AddFilterDropdownType: Intergalactic.Component<
   typeof Dropdown,
   AddFilterItemProps
 > & {
-  Trigger: typeof Dropdown.Trigger;
+  Trigger: Intergalactic.Component<
+    typeof Dropdown.Trigger,
+    DropdownTriggerProps & { onClear: () => void }
+  >;
   Popper: typeof Dropdown.Popper;
 };
 
