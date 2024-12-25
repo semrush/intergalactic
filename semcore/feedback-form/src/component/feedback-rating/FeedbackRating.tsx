@@ -121,7 +121,7 @@ class FeedbackRatingRoot extends Component<
             initialAnimation: true,
             duration: 5000,
           });
-        }, 100);
+        }, 300);
       } else if (status === 'error') {
         this.setState({ error: true });
       }
