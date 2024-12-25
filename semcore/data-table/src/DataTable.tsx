@@ -723,10 +723,15 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   handleBlur = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
-      this.setInert(false);
-      e.currentTarget.setAttribute('tabIndex', '0');
-    }
+    const relatedTarget = e.relatedTarget;
+    const tableElement = this.tableRef.current;
+
+    setTimeout(() => {
+      if (tableElement && (!relatedTarget || !isFocusInside(tableElement, relatedTarget))) {
+        this.setInert(false);
+        tableElement.setAttribute('tabIndex', '0');
+      }
+    }, 0);
   };
 
   handleMouseMove = () => {
