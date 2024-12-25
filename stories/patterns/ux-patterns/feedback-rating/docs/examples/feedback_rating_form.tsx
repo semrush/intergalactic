@@ -34,13 +34,15 @@ const Demo = () => {
     refreshBtnVisible && refreshBtnRef.current?.focus();
   }, [refreshBtnVisible]);
 
+  const showRefreshButton = () => setTimeout(() => setRefreshBtnVisible(true), 300);
+
   const handleSubmit = React.useCallback(async (values: Record<string, any>) => {
     setStatus('loading');
     await fakeSendDataToServer(values);
     setStatus('success');
     setVisible(false);
     setNotificationVisible(false);
-    setRefreshBtnVisible(true);
+    showRefreshButton();
   }, []);
 
   const handleVisibleChange = React.useCallback((visible: boolean, rating: number) => {
@@ -49,7 +51,7 @@ const Demo = () => {
   }, []);
   const handleCloseNotification = React.useCallback(() => {
     setNotificationVisible(false);
-    setRefreshBtnVisible(true);
+    showRefreshButton();
   }, []);
 
   return (
