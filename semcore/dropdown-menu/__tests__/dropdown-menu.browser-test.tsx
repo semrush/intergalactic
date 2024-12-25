@@ -192,6 +192,7 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await expect(ddMenuTrigger).toBeFocused();
     await expect(Item1).not.toBeVisible();
     await page.keyboard.press('Enter');
+    await page.waitForTimeout(500);
 
     //Focus on interactive element by right arrow
     await page.keyboard.press('ArrowRight');
@@ -201,6 +202,7 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
       .filter({ hasText: /^Menu item 1$/ })
       .locator('button[aria-label="Delete item"]');
     await expect(deleteButton1).toBeFocused();
+    await expect(page).toHaveScreenshot();
 
     //Remove focus on interactive element by left arrow
     await page.keyboard.press('ArrowLeft');
