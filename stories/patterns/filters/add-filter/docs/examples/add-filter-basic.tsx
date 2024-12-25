@@ -11,11 +11,6 @@ import AddFilter from '@semcore/add-filter';
 
 type FilterData = Record<string, any>;
 
-const toOptions = (values: string[]) => values.map((value) => ({
-  value,
-  children: value,
-}));
-
 const Demo = () => {
   const [filterData, setFilterData] = React.useState<FilterData>({});
 
@@ -86,19 +81,33 @@ const Demo = () => {
         gap={2}
         flexWrap
       >
-        {filters.map(({name, values}) => {
+        {filters.map(({ name, values }) => {
           return (
-          <AddFilter.Select
-            name={name}
-            displayName={name}
-            placeholder={name}
-            value={filterData[name]}
-            onChange={(v: any) => {
-              updateFilterData(v, name)
-            }}
-            options={toOptions(values)}
-          />
-        )
+            <AddFilter.Select
+              key={name}
+              name={name}
+              displayName={name}
+              onChange={(v: any) => {
+                updateFilterData(v, name);
+              }}
+            >
+              <AddFilter.Select.Trigger
+                placeholder={name}
+                onClear={() => {
+                  clearField(name);
+                }}
+              >
+                {name}: {filterData[name]}
+              </AddFilter.Select.Trigger>
+              <AddFilter.Select.Menu>
+                {values.map((item, idx) => (
+                  <AddFilter.Select.Option key={idx} value={item}>
+                    {item}
+                  </AddFilter.Select.Option>
+                ))}
+              </AddFilter.Select.Menu>
+            </AddFilter.Select>
+          );
         })}
       </AddFilter>
     </Flex>
