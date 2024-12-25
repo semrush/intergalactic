@@ -181,7 +181,9 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
     await expect(ddMenuTrigger).not.toBeFocused();
-    const Item1 = page.locator('[data-ui-name="DropdownMenu.Item.Content"]').filter({ hasText: /^Menu item 1$/ });
+    const Item1 = page
+      .locator('[data-ui-name="DropdownMenu.Item.Content"]')
+      .filter({ hasText: /^Menu item 1$/ });
     await expect(Item1).toBeFocused();
 
     //The DD closed by Enter (no focus on intercative element)
@@ -195,7 +197,10 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
-    const deleteButton1 = page.locator('[data-ui-name="DropdownMenu.Item"]').filter({ hasText: /^Menu item 1$/ }).locator('button[aria-label="Delete item"]');
+    const deleteButton1 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 1$/ })
+      .locator('button[aria-label="Delete item"]');
     await expect(deleteButton1).toBeFocused();
 
     //Remove focus on interactive element by left arrow
@@ -214,7 +219,6 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
   });
 });
 
-
 test.describe('Dropdown-menu - Multiselect items', () => {
   test('Keyboard interaction', async ({ page }) => {
     const standPath = 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
@@ -228,8 +232,12 @@ test.describe('Dropdown-menu - Multiselect items', () => {
     await page.keyboard.press('Enter');
     await page.waitForTimeout(500);
     await expect(ddMenuTrigger).not.toBeFocused();
-    const Item1 = page.locator('[data-ui-name="DropdownMenu.Item"]').filter({ hasText: /^Menu item 1$/ });
-    const Item2 = page.locator('[data-ui-name="DropdownMenu.Item"]').filter({ hasText: /^Menu item 2$/ });
+    const Item1 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 1$/ });
+    const Item2 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 2$/ });
     await expect(Item1).toBeFocused();
 
     //The DD not closed by Enter, the item unchecks
@@ -242,8 +250,10 @@ test.describe('Dropdown-menu - Multiselect items', () => {
     await page.keyboard.press('ArrowUp');
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
-    const Item10 = page.locator('[data-ui-name="DropdownMenu.Item"]').filter({ hasText: /^Menu item 10$/ });
-     await expect(Item10).toBeFocused();
+    const Item10 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 10$/ });
+    await expect(Item10).toBeFocused();
 
     //Check last item and close menu by eas
     await page.keyboard.press('Space');
