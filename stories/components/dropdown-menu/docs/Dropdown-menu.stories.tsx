@@ -19,6 +19,8 @@ import { ItemActionsTest } from './__tests__/item_actions.test';
 import { NestedWithFocusableTest } from './__tests__/nested_with_focusable.test';
 import { NestedTest } from './__tests__/nested.test';
 import { TheSecondMethodTest } from './__tests__/the_second_method.test';
+import { MultiselectItemsTest } from './__tests__/multiselect_items.test';
+import { SelectableRadioTest } from './__tests__/selectable_radio_items.test';
 import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -66,8 +68,10 @@ export const TheSecondMethod: Story = {
 
 export const SelectableRadioItems: Story = {
   render: SelectableRadioItemsExample,
+  play: playWrapper(SelectableRadioTest),
 };
 
 export const MultiselectItems: Story = {
   render: MultiselectItemsExample,
+  play: playWrapper(MultiselectItemsTest),
 };
