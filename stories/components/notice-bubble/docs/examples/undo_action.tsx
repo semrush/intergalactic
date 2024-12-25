@@ -8,7 +8,7 @@ const manager = new NoticeBubbleManager();
 const Demo = () => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
-    const { focus } = manager.add({
+    manager.add({
       children: (
         <>
           Link was moved to <Link href='#'>Cats from outer space group</Link>
@@ -25,7 +25,6 @@ const Demo = () => {
         }, 500);
       },
     });
-    focus();
   };
 
   return (

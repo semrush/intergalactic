@@ -8,7 +8,7 @@ const manager = new NoticeBubbleManager();
 const Demo = () => {
   const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
-    const { focus } = manager.add({
+    manager.add({
       children: 'Data for 5 new profiles is ready. Please reload the page to view it.',
       action: (
         <Button theme='invert' addonLeft={ReloadM}>
@@ -25,7 +25,6 @@ const Demo = () => {
         }, 500);
       },
     });
-    focus();
   };
 
   return (
