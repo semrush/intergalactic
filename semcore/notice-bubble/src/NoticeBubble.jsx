@@ -153,6 +153,12 @@ class ViewInfo extends Component {
     this.clearTimer();
   };
 
+  handleKeydown = (e) => {
+    if (e.key === 'Escape') {
+      this.handleClose(e);
+    }
+  };
+
   handleMouseEnter = () => {
     if (!this.timer) return;
     this.timer.pause();
@@ -201,6 +207,7 @@ class ViewInfo extends Component {
         ref={forkRef(forwardRef, this.ref)}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
+        onKeyDown={this.handleKeydown}
         role={type === 'warning' ? 'alert' : this.props.role}
       >
         <SDismiss
