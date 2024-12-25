@@ -60,8 +60,7 @@ class DropdownMenuRoot extends AbstractDropdown {
           if (visible === true) {
             setTimeout(() => {
               const options = this.menuRef.current?.querySelectorAll(
-                '[role="menuitemcheckbox"]',
-                '[role="menuitemradio"]',
+                '[role="menuitemcheckbox"], [role="menuitemradio"]',
               );
               const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
 
@@ -294,7 +293,17 @@ function Menu(props) {
   );
 }
 
-function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, actionsRef }) {
+function Item({
+  id,
+  styles,
+  disabled,
+  Children,
+  forwardRef,
+  role,
+  tabIndex,
+  actionsRef,
+  'aria-checked': ariaChecked,
+}) {
   const SDropdownMenuItemContainer = Root;
   const itemRef = React.useRef();
 
@@ -305,6 +314,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, acti
     ref: forkRef(forwardRef, itemRef),
     role,
     tabIndex,
+    ariaChecked,
   };
   const ariaDescribes = [];
 
@@ -366,6 +376,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, acti
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
         use:tabIndex={advancedMode ? undefined : tabIndex}
+        use:aria-checked={advancedMode ? undefined : ariaChecked}
       >
         <Children />
       </SDropdownMenuItemContainer>
@@ -427,6 +438,7 @@ function ItemContent({ styles }) {
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
+      aria-checked={menuItemCtxValue.ariaChecked}
       alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
     />,
