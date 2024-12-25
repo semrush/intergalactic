@@ -196,12 +196,12 @@ test.describe('Dropdown-menu - Selectable radio items', () => {
     //Focus on interactive element by right arrow
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(500);
-    await expect(page).toHaveScreenshot();
     const deleteButton1 = page
       .locator('[data-ui-name="DropdownMenu.Item"]')
       .filter({ hasText: /^Menu item 1$/ })
       .locator('button[aria-label="Delete item"]');
     await expect(deleteButton1).toBeFocused();
+    await expect(page).toHaveScreenshot();
 
     //Remove focus on interactive element by left arrow
     await page.keyboard.press('ArrowLeft');
