@@ -47,7 +47,12 @@ const Demo = () => {
             Start date
           </Text>
           <Controller
-            render={(props) => <DatePicker id='startDate' size='l' {...props} />}
+            render={({ field: { value, onChange } }) => (
+              <DatePicker value={value} onChange={onChange}>
+                <DatePicker.Trigger id='startDate' size='l' />
+                <DatePicker.Popper />
+              </DatePicker>
+            )}
             control={control}
             name='start_date'
           />
@@ -57,8 +62,8 @@ const Demo = () => {
             Time
           </Text>
           <Controller
-            render={(props) => (
-              <TimePicker id='startTime' size='l' is12Hour {...props}>
+            render={({ field: { value, onChange } }) => (
+              <TimePicker id='startTime' size='l' is12Hour value={value} onChange={onChange}>
                 <TimePicker.Hours />
                 <TimePicker.Separator />
                 <TimePicker.Minutes />
@@ -83,7 +88,12 @@ const Demo = () => {
               Due date
             </Text>
             <Controller
-              render={(props) => <DatePicker id='dueDate' size='l' {...props} />}
+              render={({ field: { value, onChange } }) => (
+                <DatePicker value={value} onChange={onChange}>
+                  <DatePicker.Trigger id='dueDate' size='l' />
+                  <DatePicker.Popper />
+                </DatePicker>
+              )}
               control={control}
               name='due_date'
             />
@@ -93,8 +103,8 @@ const Demo = () => {
               Time
             </Text>
             <Controller
-              render={(props) => (
-                <TimePicker id='dueTime' size='l' is12Hour {...props}>
+              render={({ field: { value, onChange } }) => (
+                <TimePicker id='dueTime' size='l' is12Hour value={value} onChange={onChange}>
                   <TimePicker.Hours />
                   <TimePicker.Separator />
                   <TimePicker.Minutes />
