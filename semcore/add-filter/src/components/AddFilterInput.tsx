@@ -16,7 +16,7 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
       ...props,
       onBlur: () => {
         if (!value) {
-          setTimeout(onClear, 100);
+          setTimeout(onClear, 200);
         }
       },
       onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {

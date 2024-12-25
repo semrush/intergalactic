@@ -1,3 +1,3 @@
-export { default } from './AddFilterPattern';
-export * from './AddFilterPattern';
+export { default } from './AddFilter';
+export * from './AddFilter';
 export * from './AddFilter.types';

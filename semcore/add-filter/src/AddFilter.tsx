@@ -168,9 +168,11 @@ function AddFilterDropdownMenu(props: AddFilterDropdownMenuProps) {
       return !Array.from(visibleFilters).includes(filter.value);
     });
   }, [options, visibleFilters]);
+
   if (!optionsWithoutVisible.length) {
     return null;
   }
+
   return (
     <DropdownMenu visible={visible} onVisibleChange={setVisible}>
       <DropdownMenu.Trigger tag={Button} use='tertiary' addonLeft={MathPlusM}>
