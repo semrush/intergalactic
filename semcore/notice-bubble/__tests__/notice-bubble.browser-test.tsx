@@ -66,6 +66,26 @@ test.describe('Focus management - Render', () => {
     await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
   });
+
+  test('Close notice by esc', async ({ page }) => {
+    const standPath = 'stories/components/notice-bubble/docs/examples/undo_action.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    const buttonTrigger = page.locator('[data-ui-name="Button"]:has-text("Show notice with undo action")');
+    await page.keyboard.press('Tab');
+    await expect(buttonTrigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    const closeButton = page.locator('[data-ui-name="Hint.Trigger"][aria-label="Close"]');
+    await expect(closeButton).toBeFocused();
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('Escape');
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    await expect(buttonTrigger).toBeFocused();
+    await expect(closeButton).not.toBeVisible();
+
+  });
 });
 
 test.describe('Replace last notice - functional', () => {
