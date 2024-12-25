@@ -7,7 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `Notice.Title` and `Notice.Text` components.
-- `title` and `text` props to `NoticeSmart`.
+- `title` props to `NoticeSmart`.
 
 ## [5.43.2] - 2024-12-17
 

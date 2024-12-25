@@ -104,9 +104,10 @@ describe('Notice.Title and Notice.Text', () => {
         <Notice.Label>
           <div style={{ width: '16px', height: '16px', background: 'orange' }} />
         </Notice.Label>
-        <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Content>
+          <Notice.Title>Your subscription has expired</Notice.Title>
+
           <Notice.Text>49 out of your 50 projects are now locked.</Notice.Text>
           <Notice.Actions>
             <button type='button'>Wow, so cool!</button>
@@ -194,6 +195,7 @@ describe('NoticeSmart', () => {
         theme='warning'
         title={'The Link Building tool is under maintenance.'}
         aria-label='Maintenance notice'
+        closable
       >
         Starting new campaigns is temporarily unavailable, but you can continue working with your
         existing Link Building campaigns.

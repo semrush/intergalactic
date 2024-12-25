@@ -128,9 +128,6 @@ SNotice[theme='custom'] {
 }
 
 STitle {
-  font-size: var(--intergalactic-fs-300, 16px);
-  font-weight: var(--intergalactic-bold, 700);
-  line-height: var(--intergalactic-lh-300, 150%);
   margin-top: var(--intergalactic-spacing-05x, 2px);
   margin-bottom: var(--intergalactic-spacing-05x, 2px);
 }

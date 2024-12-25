@@ -2,7 +2,6 @@ import React from 'react';
 import Notice from '@semcore/notice';
 import Question from '@semcore/icon/Question/m';
 import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const Demo = () => (
@@ -13,9 +12,7 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>
-          <Text>Your subscription has expired</Text>
-        </Notice.Title>
+        <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
           49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
@@ -41,9 +38,7 @@ const Demo = () => (
       </Notice.Label>
 
       <Notice.Content>
-        <Notice.Title>
-          <Text>Your subscription has expired</Text>
-        </Notice.Title>
+        <Notice.Title>Your subscription has expired</Notice.Title>
 
         <Notice.Text>
           49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).

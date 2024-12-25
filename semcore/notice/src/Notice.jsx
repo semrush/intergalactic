@@ -125,7 +125,7 @@ function Label({ styles, theme, resolveColor }) {
 
 function Title({ styles }) {
   const STitle = Root;
-  return sstyled(styles)(<STitle render={Text} tag='div' />);
+  return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight={'bold'} />);
 }
 
 function NoticeText({ styles }) {
@@ -165,7 +165,7 @@ function Close({ styles, getI18nText }) {
 
 export default createComponent(RootNotice, {
   Label,
-  Title,
+  Title: Title,
   Text: NoticeText,
   Actions,
   Content,
