@@ -323,11 +323,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
         this.textarea.textContent = '';
-        this.recalculateErrors();
+        // this.recalculateErrors();
       } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
-          this.recalculateErrors();
+          // this.recalculateErrors();
         } else {
           selection?.setPosition(firstNode, 0);
         }
@@ -628,7 +628,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else {
         node.removeAttribute('aria-invalid');
         node.removeAttribute('aria-errormessage');
-        this.recalculateErrors();
       }
 
       return isValid;
