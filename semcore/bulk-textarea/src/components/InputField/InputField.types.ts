@@ -34,9 +34,9 @@ export type InputFieldProps = {
    */
   value: string;
   /**
-   * This will call only after blurring or pressing to `clear all` button
+   * This component doesn't have default onChange callback, because we think that you need only the result after every changes/fixes
    */
-  onChange: (value: string, e: Event) => void;
+  onBlur: (value: string, e: Event) => void;
 
   /**
    * Size of component

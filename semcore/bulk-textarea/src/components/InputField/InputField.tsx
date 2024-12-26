@@ -296,11 +296,18 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const focusNode = selection.focusNode;
       const previousNode = focusNode?.previousSibling;
       const rowNode = focusNode?.parentElement;
+      const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
       if (focusNode === this.textarea) {
         this.textarea.append(...listOfNodes);
       } else if (previousNode) {
         previousNode.after(...listOfNodes);
+      } else if (
+        rowNode === this.textarea &&
+        focusNode instanceof HTMLParagraphElement &&
+        focusNode.textContent?.trim() === ''
+      ) {
+        focusNode.replaceWith(...listOfNodes);
       } else if (rowNode instanceof HTMLParagraphElement) {
         if (rowNode.textContent?.trim() === '') {
           rowNode.replaceWith(...listOfNodes);
@@ -308,23 +315,26 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           const before = rowNode.textContent?.substring(0, selection.focusOffset) ?? '';
           const after = rowNode.textContent?.substring(selection.focusOffset) ?? '';
 
-          const firstNodeToInsert = listOfNodes.splice(0, 1);
-          const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+          const firstNodeToInsert =
+            listOfNodes.length > 1 ? listOfNodes.splice(0, 1) : [lastNodeToInsert];
 
           rowNode.textContent = before + firstNodeToInsert[0]?.textContent ?? '';
 
           rowNode.after(...listOfNodes);
 
           if (lastNodeToInsert) {
-            this.setSelection(lastNodeToInsert, 1, 1);
-          } else {
-            this.setSelection(firstNodeToInsert[0], 1, 1);
-          }
-
-          if (lastNodeToInsert) {
             lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
           }
         }
+      }
+
+      if (lastNodeToInsert) {
+        this.setSelection(lastNodeToInsert, 1, 1);
+        lastNodeToInsert.scrollIntoView({
+          block: 'center',
+          inline: 'center',
+          behavior: 'smooth',
+        });
       }
     }
 
