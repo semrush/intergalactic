@@ -302,20 +302,28 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (previousNode) {
         previousNode.after(...listOfNodes);
       } else if (rowNode instanceof HTMLParagraphElement) {
-        const before = rowNode.textContent?.substring(0, selection.focusOffset) ?? '';
-        const after = rowNode.textContent?.substring(selection.focusOffset) ?? '';
+        if (rowNode.textContent?.trim() === '') {
+          rowNode.replaceWith(...listOfNodes);
+        } else {
+          const before = rowNode.textContent?.substring(0, selection.focusOffset) ?? '';
+          const after = rowNode.textContent?.substring(selection.focusOffset) ?? '';
 
-        const firstNodeToInsert = listOfNodes.splice(0, 1);
-        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+          const firstNodeToInsert = listOfNodes.splice(0, 1);
+          const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        rowNode.textContent = before + firstNodeToInsert[0]?.textContent ?? '';
+          rowNode.textContent = before + firstNodeToInsert[0]?.textContent ?? '';
 
-        rowNode.after(...listOfNodes);
+          rowNode.after(...listOfNodes);
 
-        this.setSelection(lastNodeToInsert, 1, 1);
+          if (lastNodeToInsert) {
+            this.setSelection(lastNodeToInsert, 1, 1);
+          } else {
+            this.setSelection(firstNodeToInsert[0], 1, 1);
+          }
 
-        if (lastNodeToInsert) {
-          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+          if (lastNodeToInsert) {
+            lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+          }
         }
       }
     }
@@ -346,13 +354,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
         this.textarea.textContent = '';
         this.recalculateErrors();
-      } else if (
-        firstNode instanceof HTMLParagraphElement &&
-        !firstNode.textContent &&
-        (secondNode instanceof HTMLBRElement ||
-          firstNode.childNodes.item(0) instanceof HTMLBRElement)
-      ) {
-        if (nodes.length <= 2) {
+      } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent) {
+        if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
           this.recalculateErrors();
         } else {
@@ -385,8 +388,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.validateRow(rowNode);
         this.recalculateErrors();
       }
-
-      this.toggleErrorsPopperByKeyboard(0);
 
       this.recalculateIsEmpty();
     }
@@ -653,7 +654,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         node.removeAttribute('aria-invalid');
         node.removeAttribute('aria-errormessage');
         this.recalculateErrors();
-        this.setState({ visibleErrorPopper: false });
       }
 
       return isValid;
