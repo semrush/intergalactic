@@ -133,7 +133,7 @@ const AddFilterDropdownAndSelectsExample = () => {
 
   const applyVolumeValueFromRange = () => {
     setFilterData((prevValue) => {
-      return { ...prevValue, volume: setTriggerText(customRange) };
+      return { ...prevValue, volume: setTriggerText(customRange) } as FilterData;
     });
   };
 
