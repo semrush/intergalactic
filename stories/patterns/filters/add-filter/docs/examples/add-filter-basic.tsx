@@ -63,15 +63,15 @@ const Demo = () => {
         )}
       </Input>
 
-      <Select value={filterData['size']} onChange={(v: string) => updateFilterData(v, 'size')}>
+      <Select value={filterData.size} onChange={(v: string) => updateFilterData(v, 'size')}>
         <Select.Trigger
-          empty={!filterData['size']}
+          empty={!filterData.size}
           placeholder='Size'
           tag={FilterTrigger}
           onClear={() => clearField('size')}
           aria-label='Select size'
         >
-          Size: {filterData['size']}
+          Size: {filterData.size}
         </Select.Trigger>
         <Select.Menu>
           {sizes.map((item, idx) => (

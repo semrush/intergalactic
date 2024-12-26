@@ -80,6 +80,7 @@ const Keywords = ({ value, onChange }: KeywordProps) => {
 type FilterData = {
   name: string;
   fullname: string;
+  searchFullnameOption: string | null;
   size: string;
   position: string;
   device: string;
@@ -89,6 +90,7 @@ type FilterData = {
 const defaultFilterData = {
   name: '',
   fullname: '',
+  searchFullnameOption: null,
   size: '',
   keywords: null,
   device: '',
@@ -98,14 +100,10 @@ const defaultFilterData = {
 const AddFilterExample = () => {
   const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
 
-  const clearField = React.useCallback(
-    (name: keyof FilterData) => {
-      const valueType = typeof filterData[name];
-      const tempData = { ...filterData, [name]: valueType === 'string' ? '' : null };
-      setFilterData(tempData);
-    },
-    [filterData],
-  );
+  const clearField = (name: keyof FilterData) => {
+    const valueType = typeof filterData[name];
+    setFilterData((prevData) => ({ ...prevData, [name]: valueType === 'string' ? '' : null }));
+  };
 
   return (
     <Flex gap={2}>
@@ -135,17 +133,25 @@ const AddFilterExample = () => {
       </Input>
 
       <Flex>
-        <Select placeholder='Everywhere' options={selectOptions} neighborLocation={'right'} />
+        <Select
+          placeholder='Everywhere'
+          options={selectOptions}
+          neighborLocation={'right'}
+          value={filterData.searchFullnameOption}
+          onChange={(v: any) => {
+            setFilterData({ ...filterData, searchFullnameOption: v });
+          }}
+        />
         <Input w={125} neighborLocation={'both'}>
           <Input.Value
             placeholder={'Filter by fullname'}
             onChange={(v) => {
               setFilterData({ ...filterData, fullname: v });
             }}
-            value={filterData['fullname']}
+            value={filterData.fullname}
             aria-label='Filter by fullname'
           />
-          {Boolean(filterData['fullname']) && (
+          {Boolean(filterData.fullname || filterData.searchFullnameOption) && (
             <Input.Addon>
               <ButtonLink
                 use='secondary'
@@ -153,6 +159,7 @@ const AddFilterExample = () => {
                 aria-label='Clear'
                 onClick={() => {
                   clearField('fullname');
+                  clearField('searchFullnameOption');
                 }}
               />
             </Input.Addon>
@@ -172,6 +179,7 @@ const AddFilterExample = () => {
       >
         <Select.Trigger
           tag={FilterTrigger}
+          empty={!filterData.size}
           placeholder='Size'
           onClear={() => {
             return clearField('size');
