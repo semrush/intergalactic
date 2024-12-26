@@ -430,33 +430,38 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
 
     const selection = document.getSelection();
-    const currentNode = selection?.focusNode;
+    const currentNode =
+      selection?.focusNode instanceof Text
+        ? selection?.focusNode?.parentNode
+        : selection?.focusNode;
 
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
-      const currentRowValue = currentNode?.textContent;
+      if (currentNode instanceof HTMLParagraphElement) {
+        const currentRowValue = currentNode.textContent?.trim();
 
-      if (!currentRowValue) {
-        event.preventDefault();
-      } else {
-        if (event.key !== 'Enter') {
+        if (!currentRowValue) {
           event.preventDefault();
-          const row = document.createElement('p');
-          row.innerHTML = '&#xfeff;';
-          this.textarea.append(row);
+        } else {
+          if (event.key !== 'Enter') {
+            event.preventDefault();
+            const row = document.createElement('p');
+            row.innerHTML = '&#xfeff;';
+            currentNode.after(row);
 
-          selection?.setPosition(row, 0);
-        }
-
-        setTimeout(() => {
-          if (validateOn.includes('enterNextRow')) {
-            this.validateRow(currentNode);
-            if (currentNode.parentNode?.previousSibling) {
-              this.validateRow(currentNode.parentNode.previousSibling);
-            }
-            this.recalculateErrors();
+            selection?.setPosition(row, 0);
           }
-          onEnterNextRow();
-        }, 0);
+
+          setTimeout(() => {
+            if (validateOn.includes('enterNextRow')) {
+              this.validateRow(currentNode);
+              if (currentNode.previousSibling) {
+                this.validateRow(currentNode.previousSibling);
+              }
+              this.recalculateErrors();
+            }
+            onEnterNextRow();
+          }, 0);
+        }
       }
     }
 
@@ -466,7 +471,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       event.key === 'ArrowLeft' ||
       event.key === 'ArrowRight'
     ) {
-      if (currentNode) {
+      if (currentNode instanceof HTMLParagraphElement) {
         this.handleCursorMovement(currentNode, event);
       }
 
@@ -691,31 +696,29 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     return rowNode ?? null;
   }
 
-  private handleCursorMovement(currentNode: Node, event: KeyboardEvent): void {
-    const baseNode = currentNode instanceof Text ? currentNode.parentNode : currentNode;
-
+  private handleCursorMovement(currentNode: HTMLParagraphElement, event: KeyboardEvent): void {
     let nextNode;
 
     switch (event.key) {
       case 'ArrowUp':
         event.preventDefault();
-        nextNode = baseNode?.previousSibling;
+        nextNode = currentNode.previousSibling;
         break;
       case 'ArrowDown':
         event.preventDefault();
-        nextNode = baseNode?.nextSibling;
+        nextNode = currentNode.nextSibling;
         break;
       case 'ArrowLeft': {
-        if (baseNode?.textContent?.trim() === '') {
+        if (currentNode.textContent?.trim() === '') {
           event.preventDefault();
-          nextNode = baseNode?.previousSibling;
+          nextNode = currentNode.previousSibling;
         }
         break;
       }
       case 'ArrowRight': {
-        if (baseNode?.textContent?.trim() === '') {
+        if (currentNode.textContent?.trim() === '') {
           event.preventDefault();
-          nextNode = baseNode?.nextSibling;
+          nextNode = currentNode.nextSibling;
         }
       }
     }
