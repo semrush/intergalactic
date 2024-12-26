@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.38.1] - 2024-12-26
+
+### Added
+
+- `title` prop to `FeedbackRating`.
+
 ## [6.38.0] - 2024-12-18
 
 ### Added
