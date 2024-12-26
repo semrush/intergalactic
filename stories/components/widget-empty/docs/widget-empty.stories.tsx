@@ -6,7 +6,6 @@ import Custom1Example from './examples/custom_examples';
 import Custom2Example from './examples/custom-examples';
 import ErrorExample from './examples/error_example';
 import NoDataExample from './examples/nodata_example';
-import TestEx from './examples/test';
 
 const meta: Meta<typeof WidgetEmpty> = {
   title: 'Components/WidgetEmpty/Documentation',
@@ -31,7 +30,3 @@ export const Error: Story = {
 export const NoData: Story = {
   render: NoDataExample,
 };
-
-export const Test: Story = {
-    render: TestEx,
-  };

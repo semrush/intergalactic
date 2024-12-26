@@ -13,7 +13,7 @@ const Demo = () => {
         </Card.Header>
         <Card.Body>
           <WidgetEmpty icon={getIconPath('combined-chart')}>
-            <WidgetEmpty.Title>Set up your [Tool Name]</WidgetEmpty.Title>
+            <WidgetEmpty.Title>>We haven't found any agencies matching your search criteria.Try changing your filter settings or clear filters.</WidgetEmpty.Title>
             <WidgetEmpty.Description>
               [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
               and paid search results.
