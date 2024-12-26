@@ -753,7 +753,6 @@ class RootDefinitionTable extends Component<AsProps> {
         role='grid'
         onKeyDown={this.handleKeyDown}
         onMouseMove={this.handleMouseMove}
-        onMouseDown={this.handleMouseDown}
         tabIndex={0}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
