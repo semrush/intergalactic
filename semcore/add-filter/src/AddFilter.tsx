@@ -136,7 +136,9 @@ class RootAddFilter extends Component<
     const { getI18nText, filterData } = this.asProps;
 
     return {
-      hasFilterData: Object.values(filterData).filter(Boolean).length > 0,
+      hasFilterData:
+        Object.values(filterData).filter((value) => (Array.isArray(value) ? value?.length : value))
+          .length > 0,
       clearAll: () => this.clearAll(),
       getI18nText,
     };

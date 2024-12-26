@@ -9,9 +9,7 @@ import NeighborLocation from '@semcore/neighbor-location';
 import InputNumber from '@semcore/input-number';
 import Divider from '@semcore/divider';
 import { Text } from '@semcore/typography';
-import Select from '@semcore/select';
 import Button from '@semcore/button';
-import { preview } from 'vite';
 
 type RangeValue = {
   from: string;
@@ -108,12 +106,14 @@ type FilterData = {
   name: string;
   volume: string;
   fruit: string;
+  multiValue: number[];
 };
 
 const defaultFilterData = {
   name: '',
   volume: '',
   fruit: '',
+  multiValue: [],
 };
 
 const AddFilterDropdownAndSelectsExample = () => {
@@ -260,12 +260,15 @@ const AddFilterDropdownAndSelectsExample = () => {
 
         <AddFilter.Select
           name='fruit'
-          displayName='Fruit'
+          displayName='Select with search'
           onChange={(fruit: any) => {
             setFilterData({ ...filterData, fruit });
           }}
         >
-          <AddFilter.Select.Trigger placeholder='Select a fruit'>
+          <AddFilter.Select.Trigger
+            placeholder='Select a fruit'
+            onClear={() => clearField('fruit')}
+          >
             {'Fruit'}: {filterData.fruit}
           </AddFilter.Select.Trigger>
           <AddFilter.Select.Popper aria-label='Search fruits'>
@@ -291,6 +294,31 @@ const AddFilterDropdownAndSelectsExample = () => {
             </AddFilter.Select.List>
           </AddFilter.Select.Popper>
         </AddFilter.Select>
+
+        <AddFilter.Select
+          name='multiValue'
+          displayName='MultiSelect'
+          onChange={(multiValue: any) => {
+            setFilterData({ ...filterData, multiValue });
+          }}
+          multiselect
+        >
+          <AddFilter.Select.Trigger
+            onClear={() => clearField('multiValue')}
+            placeholder='Select values'
+          >
+            {'Multiselect'}: {filterData.multiValue.join(', ')}
+          </AddFilter.Select.Trigger>
+
+          <AddFilter.Select.Menu hMax='240px'>
+            {multiSelectOptions.map(({ value, title }) => (
+              <AddFilter.Select.Option value={value} key={value}>
+                <AddFilter.Select.Option.Checkbox />
+                {title}
+              </AddFilter.Select.Option>
+            ))}
+          </AddFilter.Select.Menu>
+        </AddFilter.Select>
       </AddFilter>
     </Flex>
   );
@@ -313,5 +341,12 @@ const data = [
   label: item,
   value: item,
 }));
+
+const multiSelectOptions = Array(6)
+  .fill('')
+  .map((i, idx) => ({
+    value: idx,
+    title: `Awesome option ${idx}`,
+  }));
 
 export default AddFilterDropdownAndSelectsExample;
