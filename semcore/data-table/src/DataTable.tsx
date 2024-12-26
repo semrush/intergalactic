@@ -726,12 +726,15 @@ class RootDefinitionTable extends Component<AsProps> {
     const relatedTarget = e.relatedTarget;
     const tableElement = this.tableRef.current;
 
-    setTimeout(() => {
-      if (tableElement && (!relatedTarget || !isFocusInside(tableElement, relatedTarget))) {
-        this.setInert(false);
-        tableElement.setAttribute('tabIndex', '0');
-      }
-    }, 0);
+    if (
+      tableElement &&
+      (!relatedTarget ||
+        !isFocusInside(tableElement, relatedTarget) ||
+        this.asProps.focusSourceRef?.current !== 'keyboard')
+    ) {
+      this.setInert(false);
+      tableElement.setAttribute('tabIndex', '0');
+    }
   };
 
   handleMouseMove = () => {
@@ -750,6 +753,7 @@ class RootDefinitionTable extends Component<AsProps> {
         role='grid'
         onKeyDown={this.handleKeyDown}
         onMouseMove={this.handleMouseMove}
+        onMouseDown={this.handleMouseDown}
         tabIndex={0}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
