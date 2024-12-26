@@ -38,7 +38,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
   textareaObserver: MutationObserver;
-  intersectionObserver: IntersectionObserver;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -66,11 +65,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
 
     this.textareaObserver.observe(this.textarea, { childList: true });
-
-    this.intersectionObserver = new IntersectionObserver(this.handleIntersection.bind(this), {
-      root: this.textarea,
-      threshold: 1.0,
-    });
   }
 
   uncontrolledProps() {
@@ -212,40 +206,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.scrollingTimeout = window.setTimeout(() => {
       this.isScrolling = false;
     }, 50);
-  }
-
-  handleIntersection(entries: IntersectionObserverEntry[]): void {
-    const element = entries[0];
-
-    if (element.target instanceof HTMLParagraphElement) {
-      if (element.isIntersecting) {
-        this.setPopperTrigger?.(element.target);
-        this.popper?.current?.update();
-      } else if (element.rootBounds) {
-        this.setPopperTrigger?.(this.textarea);
-
-        const middle = (element.rootBounds.bottom - element.rootBounds.top) / 2;
-        const top = element.intersectionRect.top;
-        const yOffset = top < middle ? -1 * middle : middle;
-
-        this.popper?.current?.setOptions((options) => {
-          return {
-            ...options,
-            placement: 'right',
-            modifiers: [
-              ...(options.modifiers ?? []),
-              {
-                name: 'offset',
-                options: {
-                  offset: [yOffset, 10],
-                },
-              },
-            ],
-          };
-        });
-        this.popper?.current?.update();
-      }
-    }
   }
 
   handleMouseMove(event: MouseEvent): void {
@@ -506,10 +466,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           visible={visibleErrorTooltip}
           theme={'warning'}
           offset={errorItem?.errorMessage ? [0, 26] : undefined}
+          preventOverflow={{
+            boundary: this.containerRef.current ?? undefined,
+            tether: false,
+          }}
         >
           {({ popper, setTrigger }) => {
             this.setPopperTrigger = setTrigger;
             this.popper = popper;
+
             this.popper.current?.update();
 
             return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
@@ -518,7 +483,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         <SInputField
           render={Box}
           ref={this.containerRef}
-          __excludeProps={['onBlur', 'value', 'id']}
+          id={'boundary'}
+          __excludeProps={['onBlur', 'value']}
         />
       </>,
     );
@@ -640,12 +606,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
             this.setPopperTrigger?.(trigger);
             this.popper?.current?.update();
-
-            this.intersectionObserver.disconnect();
-
-            if (trigger !== this.textarea) {
-              this.intersectionObserver.observe(trigger);
-            }
             // },
             // this.state.visibleErrorPopper ? 0 : 150,
             // );
