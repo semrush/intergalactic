@@ -1,11 +1,11 @@
 import React from 'react';
-import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/button';
-import { Text } from '@semcore/ui/typography';
-import Notice from '@semcore/ui/notice';
-import SpinContainer from '@semcore/ui/spin-container';
-import FileExportM from '@semcore/ui/icon/FileExport/m';
-import Modal from '@semcore/ui/modal';
+import DropdownMenu from '@semcore/dropdown-menu';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import Notice from '@semcore/notice';
+import SpinContainer from '@semcore/spin-container';
+import FileExportM from '@semcore/icon/FileExport/m';
+import Modal from '@semcore/modal';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);
@@ -37,7 +37,7 @@ const Demo = () => {
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax="257px">
+        <DropdownMenu.Popper wMax="257px" aria-labelledby="dropdown-trigger">
           <SpinContainer loading={loading}>
             <DropdownMenu.List>
               <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
@@ -48,7 +48,7 @@ const Demo = () => {
             </DropdownMenu.List>
             <Notice theme="warning">
               <Notice.Content>
-                <Button onClick={handleClickOpen} use="primary">
+                <Button onClick={handleOpen} use="primary">
                   Open modal
                 </Button>
               </Notice.Content>
