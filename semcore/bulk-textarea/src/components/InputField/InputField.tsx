@@ -723,7 +723,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
-    if (nextNode) {
+    if (nextNode instanceof HTMLParagraphElement) {
       const selection = document.getSelection();
       const firstNode = nextNode.childNodes.item(0);
       const nodeToSetSelection = firstNode instanceof Text ? firstNode : nextNode;
@@ -739,6 +739,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
 
       this.setSelection(nodeToSetSelection, offset, offset);
+      nextNode.scrollIntoView({
+        block: 'nearest',
+        inline: 'nearest',
+        behavior: 'smooth',
+      });
     }
   }
 }
