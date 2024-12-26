@@ -107,16 +107,19 @@ const setTriggerText = ({ from, to }: RangeValue): string | undefined => {
 type FilterData = {
   name: string;
   volume: string;
+  fruit: string;
 };
 
 const defaultFilterData = {
   name: '',
   volume: '',
+  fruit: '',
 };
 
 const AddFilterDropdownAndSelectsExample = () => {
   const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
   const [customRange, setCustomRange] = React.useState<RangeValue>({ from: '', to: '' });
+  const [filter, setFilter] = React.useState('');
   const volumeTriggerRef = React.useRef<HTMLButtonElement | null>(null);
 
   const clearField = (name: keyof FilterData) => {
@@ -160,6 +163,14 @@ const AddFilterDropdownAndSelectsExample = () => {
       volumeTriggerRef.current?.focus();
     }
   };
+
+  const filteredOptions = React.useMemo(
+    () =>
+      data.filter((option) => {
+        return option.value.toString().toLowerCase().includes(filter.toLowerCase());
+      }),
+    [filter],
+  );
 
   return (
     <Flex gap={2}>
@@ -216,9 +227,9 @@ const AddFilterDropdownAndSelectsExample = () => {
             <AddFilter.Select.List aria-label='Presets'>
               {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
                 (item) => (
-                  <Select.Option key={item} value={item}>
+                  <AddFilter.Select.Option key={item} value={item}>
                     {item}
-                  </Select.Option>
+                  </AddFilter.Select.Option>
                 ),
               )}
             </AddFilter.Select.List>
@@ -246,9 +257,61 @@ const AddFilterDropdownAndSelectsExample = () => {
             </Flex>
           </AddFilter.Select.Popper>
         </AddFilter.Select>
+
+        <AddFilter.Select
+          name='fruit'
+          displayName='Fruit'
+          onChange={(fruit: any) => {
+            setFilterData({ ...filterData, fruit });
+          }}
+        >
+          <AddFilter.Select.Trigger placeholder='Select a fruit'>
+            {'Fruit'}: {filterData.fruit}
+          </AddFilter.Select.Trigger>
+          <AddFilter.Select.Popper aria-label='Search fruits'>
+            <AddFilter.Select.InputSearch value={filter} onChange={setFilter} />
+            <AddFilter.Select.List hMax={'224px'}>
+              {filteredOptions.map(({ value, label }) => (
+                <AddFilter.Select.Option value={value} key={value}>
+                  {label}
+                </AddFilter.Select.Option>
+              ))}
+              {!filteredOptions.length ? (
+                <Text
+                  tag={'div'}
+                  id='search-result'
+                  key='Nothing'
+                  p={'6px 8px'}
+                  size={200}
+                  use={'secondary'}
+                >
+                  Nothing found
+                </Text>
+              ) : null}
+            </AddFilter.Select.List>
+          </AddFilter.Select.Popper>
+        </AddFilter.Select>
       </AddFilter>
     </Flex>
   );
 };
+
+const data = [
+  'Apple',
+  'Banana',
+  'Blueberry',
+  'Grape',
+  'Kiwi',
+  'Mango',
+  'Melon',
+  'Orange',
+  'Peach',
+  'Pear',
+  'Pineapple',
+  'Strawberry',
+].map((item) => ({
+  label: item,
+  value: item,
+}));
 
 export default AddFilterDropdownAndSelectsExample;

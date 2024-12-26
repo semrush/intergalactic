@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root } from '@semcore/core';
 import Select from '@semcore/select';
-import { AddFilterItemProps } from '../AddFilter.types';
+import { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
 
 type AsPropsWithOnClear<T> = T & { onClear: () => void };
@@ -57,12 +57,13 @@ class AddFilterSelectRoot extends Component<AddFilterItemProps> {
   }
 }
 
-const AddFilterSelect = createComponent(AddFilterSelectRoot, {
+const AddFilterSelect: typeof AddFilterSelectType = createComponent(AddFilterSelectRoot, {
   Trigger: Select.Trigger,
   Menu: Select.Menu,
   Option: Select.Option,
   List: Select.List,
   Popper: Select.Popper,
+  InputSearch: Select.InputSearch,
 });
 
 export default AddFilterSelect;

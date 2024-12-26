@@ -17,6 +17,7 @@ declare const AddFilterSelectType: Intergalactic.Component<typeof Select, AddFil
   Option: typeof Select.Option;
   Menu: typeof Select.Menu;
   List: typeof Select.List;
+  InputSearch: typeof Select.InputSearch;
 };
 
 declare const AddFilterInputType: Intergalactic.Component<typeof Input, AddFilterItemProps> & {
