@@ -10,6 +10,7 @@ import { ClearAllButton } from './components/ClearAllbutton';
 import { ErrorsNavigation } from './components/ErrorsNavigation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 
 type State = {
   rowsCount: number;
@@ -37,7 +38,9 @@ class BulkTextareaRoot extends Component<
     locale: 'en',
   };
 
-  static enhance = [i18nEnhance(localizedMessages)] as const;
+  static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
+
+  inputFieldRef = React.createRef<HTMLDivElement>();
 
   state = {
     rowsCount: 0,
@@ -64,7 +67,7 @@ class BulkTextareaRoot extends Component<
       rowValidation,
       placeholder,
       validateOn,
-      onBlur,
+      onChange,
       rowsDelimiters,
       ofRows,
     } = this.asProps;
@@ -94,7 +97,7 @@ class BulkTextareaRoot extends Component<
             }
           }, 0);
         }
-        onBlur?.(value, event);
+        onChange?.(value, event);
       },
       onIsEmptyValueChange: (isEmpty: boolean) => {
         this.setState({ isEmptyText: isEmpty });
@@ -120,6 +123,7 @@ class BulkTextareaRoot extends Component<
         });
       },
       rowsDelimiters,
+      ref: this.inputFieldRef,
     };
   }
 
@@ -172,9 +176,13 @@ class BulkTextareaRoot extends Component<
   };
 
   handleClickClearAllButton = (e: Event) => {
-    this.asProps.onBlur?.('', e);
     this.setState({ showErrors: false, errorIndex: -1, errors: [] });
+    this.handlers.value('', e);
     this.handlers.state('normal');
+    if (this.asProps.focusSourceRef.current === 'keyboard') {
+      const textarea = this.inputFieldRef.current?.querySelector('[role="textbox"]');
+      textarea instanceof HTMLDivElement && textarea.focus();
+    }
   };
 
   handleChangeErrorIndex = (amount: number) => () => {

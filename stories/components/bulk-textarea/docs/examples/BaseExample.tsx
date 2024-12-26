@@ -48,7 +48,7 @@ const Demo = (props: BulkTextareaProps) => {
         w={400}
         ofRows={30}
         value={value}
-        onBlur={setValue}
+        onChange={setValue}
         rowValidation={validateRow}
         rowsDelimiters={[',']}
         placeholder={'Placeholder'}
