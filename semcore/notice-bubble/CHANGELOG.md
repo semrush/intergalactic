@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.48.2] - 2024-12-25
+
+### Added
+
+- autofocus to the Notice with focusable elements.
+
 ## [5.48.1] - 2024-12-24
 
 ### Fixed

@@ -2,7 +2,6 @@ import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 import React from 'react';
-import rafTrottle from '@semcore/utils/lib/rafTrottle';
 
 const EVENT_NAME = 'CHANGE';
 
@@ -54,6 +53,7 @@ class NoticeBubbleManager {
       update: this.update.bind(this, uid),
       remove: this.remove.bind(this, uid),
       ref,
+      // todo Brauer Ilia: remove this property, because we added logic about autofocus in Notice
       focus,
     };
   }

@@ -31,6 +31,7 @@ test.describe('Basic notice - Render ', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+    await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Enter');
     await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
@@ -102,6 +103,7 @@ test.describe('Replace last notice - functional', () => {
     const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
     await expect(noticeBubble).toBeVisible();
     await expect(noticeBubble).toContainText('Link 1 was moved to');
+    await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Enter');
     await new Promise((resolve) => setTimeout(resolve, 200));
     await expect(noticeBubble).toContainText('Link 2 was moved to');
