@@ -21,12 +21,11 @@ class AddFilterSelectRoot extends Component<AddFilterItemProps> {
     return {
       tag: FilterTrigger,
       onBlur: (e: React.FocusEvent<HTMLImageElement>) => {
-        if (
-          !value &&
-          !this.menuRef.current
-            ?.closest('[data-ui-name="DropdownMenu.Popper"]')
-            ?.contains(e.relatedTarget)
-        ) {
+        const closestPopper =
+          this.menuRef.current?.closest('[data-ui-name="DropdownMenu.Popper"]') ??
+          this.menuRef.current?.closest('[data-ui-name="AddFilterSelect.Popper"]');
+
+        if (!value && !closestPopper?.contains(e.relatedTarget)) {
           setTimeout(onClear, 200);
         }
       },
