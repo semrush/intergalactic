@@ -3,6 +3,7 @@ import createComponent, { Component, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { AddFilterItemProps } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
+import Button from '@semcore/button';
 
 type AsPropsTypeWithHandlers<T> = T & {
   onChange: (v: any) => void;
@@ -19,12 +20,18 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
     };
   };
 
+  uncontrolledProps() {
+    return {
+      visible: [null],
+    };
+  }
+
   getTriggerProps() {
     const { value, onClear } = this.asProps as AsPropsTypeWithHandlers<typeof this.asProps>;
 
     return {
       tag: FilterTrigger,
-      empty: !value,
+      empty: value == null,
       onClear,
       autoFocus: true,
     };
@@ -35,15 +42,18 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
 
     return {
       ref: this.popperRef,
-      onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
-        if (!value && !this.popperRef.current?.contains(e.relatedTarget)) {
-          setTimeout(onClear, 200);
-        }
-      },
       onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (!value && e.key === 'Escape') {
           onClear();
         }
+      },
+    };
+  }
+
+  getApplyButtonProps() {
+    return {
+      onClick: () => {
+        this.handlers.visible(false);
       },
     };
   }
@@ -53,9 +63,18 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
   }
 }
 
+function ApplyButton() {
+  return (
+    <Root render={Button} use='primary' theme='info'>
+      Apply
+    </Root>
+  );
+}
+
 const AddFilterDropdown = createComponent(AddFilterDropdownRoot, {
   Trigger: Dropdown.Trigger,
   Popper: Dropdown.Popper,
+  ApplyButton,
 });
 
 export default AddFilterDropdown;

@@ -132,6 +132,11 @@ const AddFilterDropdownAndSelectsExample = () => {
   };
 
   const applyVolumeValueFromRange = () => {
+    // to check for type
+    if (!customRange.to && !customRange.from) {
+      return false;
+    }
+
     setFilterData((prevValue) => {
       return { ...prevValue, volume: setTriggerText(customRange) } as FilterData;
     });
@@ -208,7 +213,7 @@ const AddFilterDropdownAndSelectsExample = () => {
         flexWrap
       >
         <AddFilter.Select
-          name='range'
+          name='volume'
           displayName='Range'
           onChange={(volume: any) => {
             setFilterData({ ...filterData, volume });
@@ -245,15 +250,13 @@ const AddFilterDropdownAndSelectsExample = () => {
                 onChange={setCustomRange}
                 onKeyDown={handleKeyDown}
               />
-              <Button
-                use='primary'
-                theme='info'
+              <AddFilter.Select.ApplyButton
                 w='100%'
                 onClick={applyVolumeValueFromRange}
                 onKeyDown={handleKeyDownApply}
               >
                 Apply
-              </Button>
+              </AddFilter.Select.ApplyButton>
             </Flex>
           </AddFilter.Select.Popper>
         </AddFilter.Select>

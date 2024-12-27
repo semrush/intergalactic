@@ -12,6 +12,10 @@ import AddFilterDropdown from './components/AddFilterDropdown';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { SelectProps } from '@semcore/ui/select';
+import { DropdownProps } from '@semcore/ui/dropdown';
+
+type SelectItemProps = SelectProps & AddFilterItemProps;
 
 type AddFilterDropdownOption = { label: string; value: string };
 type AddFilterDropdownMenuProps = {
@@ -86,16 +90,44 @@ class RootAddFilter extends Component<
     };
   }
 
-  getSelectProps(props: AddFilterItemProps) {
-    return this.getItemCommonProps(props);
-  }
-
   getInputProps(props: AddFilterItemProps) {
     return this.getItemCommonProps(props);
   }
 
+  getDropdownAndSelectProps(props: AddFilterItemProps, isEmpty: () => boolean) {
+    const { value, onClear } = this.getItemCommonProps(props);
+    return {
+      value,
+      onClear,
+      onVisibleChange: (visible: boolean) => {
+        // waiting for filterData update
+        setTimeout(() => {
+          const { onClear } = this.getItemCommonProps(props);
+
+          if (!visible && isEmpty()) {
+            onClear();
+          }
+        }, 0);
+      },
+    };
+  }
+
+  getSelectProps(props: SelectItemProps) {
+    const isEmpty = () => {
+      const { multiselect } = props;
+      const { value } = this.getItemCommonProps(props);
+      return multiselect && Array.isArray(value) ? !value?.length : !value;
+    };
+
+    return this.getDropdownAndSelectProps(props, isEmpty);
+  }
+
   getDropdownProps(props: AddFilterItemProps) {
-    return this.getItemCommonProps(props);
+    const isEmpty = () => {
+      const { value } = this.getItemCommonProps(props);
+      return value == null;
+    };
+    return this.getDropdownAndSelectProps(props, isEmpty);
   }
 
   clearAll() {

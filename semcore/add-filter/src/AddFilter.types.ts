@@ -4,7 +4,7 @@ import Select from '@semcore/select';
 import Input from '@semcore/input';
 import Dropdown, { DropdownTriggerProps } from '@semcore/dropdown';
 import { FilterTrigger } from '@semcore/base-trigger';
-import { ButtonLink } from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 
 export type AddFilterItemProps = {
   name: string;
@@ -18,6 +18,7 @@ declare const AddFilterSelectType: Intergalactic.Component<typeof Select, AddFil
   Menu: typeof Select.Menu;
   List: typeof Select.List;
   InputSearch: typeof Select.InputSearch;
+  ApplyButton: typeof Button;
 };
 
 declare const AddFilterInputType: Intergalactic.Component<typeof Input, AddFilterItemProps> & {
@@ -35,6 +36,7 @@ declare const AddFilterDropdownType: Intergalactic.Component<
     DropdownTriggerProps & { onClear: () => void }
   >;
   Popper: typeof Dropdown.Popper;
+  ApplyButton: typeof Button;
 };
 
 export type FilterData = Record<string, any>;

@@ -59,15 +59,23 @@ const Keywords = ({ value, onChange }: KeywordProps) => {
           <Radio.Text>Any keywords</Radio.Text>
         </Radio>
       </RadioGroup>
-      <Textarea value={textAreaValue} onChange={setTextAreaValue} h={132} id='textarea' />
+      <Textarea
+        value={textAreaValue}
+        onChange={setTextAreaValue}
+        h={132}
+        id='textarea'
+        autoFocus
+        placeholder={'Keyword - broad match\n[Keyword] - exact match'}
+      />
       <Flex mt={5}>
-        <Button use='primary' theme='info' onClick={applyFilters}>
+        <AddFilter.Dropdown.ApplyButton onClick={applyFilters}>
           Apply
-        </Button>
+        </AddFilter.Dropdown.ApplyButton>
+
         <Button
           ml={2}
           onClick={() => {
-            onChange(null);
+            setTextAreaValue('');
           }}
         >
           Clear all
@@ -220,6 +228,7 @@ const AddFilterExample = () => {
             role='dialog'
             aria-label='List of excluded keywords'
             aria-modal='false'
+            tabIndex={-1}
           >
             <Keywords
               onChange={(v) => {
