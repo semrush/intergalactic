@@ -355,8 +355,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           }
         }
 
-        this.validateRow(rowNode);
+        const isValid = this.validateRow(rowNode);
         this.recalculateErrors();
+
+        if (isValid) {
+          this.setPopperTrigger?.(this.textarea);
+          this.popper?.current?.update();
+        }
       }
 
       this.recalculateIsEmpty();
