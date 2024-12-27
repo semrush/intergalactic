@@ -12,8 +12,7 @@ import AddFilterDropdown from './components/AddFilterDropdown';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { SelectProps } from '@semcore/ui/select';
-import { DropdownProps } from '@semcore/ui/dropdown';
+import { SelectProps } from '@semcore/select';
 
 type SelectItemProps = SelectProps & AddFilterItemProps;
 
@@ -42,6 +41,7 @@ class RootAddFilter extends Component<
   AddFilterState,
   typeof RootAddFilter.enhance
 > {
+  AddFilterTrigger = React.createRef<HTMLButtonElement>();
   static displayName = 'AddFilter';
   static enhance = [i18nEnhance(localizedMessages)] as const;
   static defaultProps = {
@@ -86,6 +86,7 @@ class RootAddFilter extends Component<
       value: filterData[name],
       onClear: () => {
         this.hideFilter(name);
+        this.AddFilterTrigger.current?.focus();
       },
     };
   }
@@ -156,6 +157,7 @@ class RootAddFilter extends Component<
     const { getI18nText } = this.asProps;
 
     return {
+      ref: this.AddFilterTrigger,
       options: this.state.addDropdownItems,
       toggleFieldVisibility: (name: string, status: boolean) =>
         this.toggleFieldVisibility(name, status),
@@ -171,7 +173,10 @@ class RootAddFilter extends Component<
       hasFilterData:
         Object.values(filterData).filter((value) => (Array.isArray(value) ? value?.length : value))
           .length > 0,
-      clearAll: () => this.clearAll(),
+      clearAll: () => {
+        this.clearAll();
+        this.AddFilterTrigger.current?.focus();
+      },
       getI18nText,
     };
   }
@@ -193,41 +198,43 @@ class RootAddFilter extends Component<
   }
 }
 
-function AddFilterDropdownMenu(props: AddFilterDropdownMenuProps) {
-  const { options, toggleFieldVisibility, visibleFilters, getI18nText } = props;
-  const [visible, setVisible] = React.useState(false);
+const AddFilterDropdownMenu = React.forwardRef<HTMLButtonElement, AddFilterDropdownMenuProps>(
+  function (props, ref) {
+    const { options, toggleFieldVisibility, visibleFilters, getI18nText } = props;
+    const [visible, setVisible] = React.useState(false);
 
-  const optionsWithoutVisible = React.useMemo(() => {
-    return options.filter((filter) => {
-      return !Array.from(visibleFilters).includes(filter.value);
-    });
-  }, [options, visibleFilters]);
+    const optionsWithoutVisible = React.useMemo(() => {
+      return options.filter((filter) => {
+        return !Array.from(visibleFilters).includes(filter.value);
+      });
+    }, [options, visibleFilters]);
 
-  if (!optionsWithoutVisible.length) {
-    return null;
-  }
+    if (!optionsWithoutVisible.length) {
+      return null;
+    }
 
-  return (
-    <DropdownMenu visible={visible} onVisibleChange={setVisible}>
-      <DropdownMenu.Trigger tag={Button} use='tertiary' addonLeft={MathPlusM}>
-        {getI18nText('AddFilter.DropdownTrigger.Text')}
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Menu>
-        {optionsWithoutVisible.map(({ label, value }) => (
-          <DropdownMenu.Item
-            key={value}
-            onClick={() => {
-              toggleFieldVisibility(value, true);
-              setVisible(false);
-            }}
-          >
-            {label}
-          </DropdownMenu.Item>
-        ))}
-      </DropdownMenu.Menu>
-    </DropdownMenu>
-  );
-}
+    return (
+      <DropdownMenu visible={visible} onVisibleChange={setVisible}>
+        <DropdownMenu.Trigger ref={ref} tag={Button} use='tertiary' addonLeft={MathPlusM}>
+          {getI18nText('AddFilter.DropdownTrigger.Text')}
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          {optionsWithoutVisible.map(({ label, value }) => (
+            <DropdownMenu.Item
+              key={value}
+              onClick={() => {
+                toggleFieldVisibility(value, true);
+                setVisible(false);
+              }}
+            >
+              {label}
+            </DropdownMenu.Item>
+          ))}
+        </DropdownMenu.Menu>
+      </DropdownMenu>
+    );
+  },
+);
 
 function ClearAllFilters({ hasFilterData, clearAll, getI18nText }: ClearAllFiltersButtonProps) {
   return hasFilterData ? (
