@@ -11,7 +11,7 @@ const Demo = () => {
     manager.add({
       children: (
         <Flex gap={4}>
-          <MailSent width={40} height={40} style={{ flexShrink: 0 }} />
+          <MailSent style={{ flexShrink: 0 }} />
           Your post is on its way, and we will take great care of it!
         </Flex>
       ),
