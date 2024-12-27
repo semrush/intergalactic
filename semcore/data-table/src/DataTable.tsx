@@ -549,7 +549,9 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
 
     if (prevProps.data !== this.props.data) {
-      if (this.tableRef.current && !isFocusInside(this.tableRef.current)) {
+      const focusedRow = this.focusedCell[0];
+      const isFocusInHeader = focusedRow === 0 && this.hasFocusableInHeader();
+      if (this.tableRef.current && !isFocusInside(this.tableRef.current) && !isFocusInHeader) {
         this.focusedCell = [-1, -1];
       }
     }
