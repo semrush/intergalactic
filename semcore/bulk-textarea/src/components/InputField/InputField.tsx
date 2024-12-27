@@ -37,7 +37,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
-  textareaObserver: MutationObserver;
+  // textareaObserver: MutationObserver;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -62,9 +62,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     super(props);
 
     this.textarea = this.createContentEditableElement(props);
-    this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
-
-    this.textareaObserver.observe(this.textarea, { childList: true });
+    // this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
+    //
+    // this.textareaObserver.observe(this.textarea, { childList: true });
   }
 
   uncontrolledProps() {
@@ -130,9 +130,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
   }
 
-  componentWillUnmount() {
-    this.textareaObserver.disconnect();
-  }
+  // componentWillUnmount() {
+  //   this.textareaObserver.disconnect();
+  // }
 
   get popperDescribedId() {
     const { uid } = this.asProps;
@@ -185,16 +185,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.recalculateIsEmpty();
   }
 
-  handleChangeTextareaTree(mutations: MutationRecord[]): void {
-    const childNodes = this.textarea.childNodes;
-    this.props.onChangeRows(childNodes.length);
-
-    const mutationRecord = mutations[0];
-
-    mutationRecord.addedNodes.forEach((node) => {
-      this.validateRow(node);
-    });
-  }
+  // handleChangeTextareaTree(mutations: MutationRecord[]): void {
+  //   const childNodes = this.textarea.childNodes;
+  //   this.props.onChangeRows(childNodes.length);
+  //
+  //   const mutationRecord = mutations[0];
+  //
+  //   mutationRecord.addedNodes.forEach((node) => {
+  //     this.validateRow(node);
+  //   });
+  // }
 
   handleScroll(): void {
     if (this.scrollingTimeout) {
@@ -298,7 +298,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
-    if (validateOn.includes('paste')) {
+    if (validateOn.includes('paste') || this.asProps.showErrors) {
       this.recalculateErrors();
     }
 
@@ -509,6 +509,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         }
 
         listOfNodes.push(node);
+
+        this.validateRow(node);
       }
     });
 
