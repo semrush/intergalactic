@@ -19,10 +19,8 @@ const Demo = () => {
       duration: 0,
       onClose: () => {
         setTimeout(() => {
-          if (document.activeElement === document.body) {
-            openButtonRef.current?.focus();
-          }
-        }, 500);
+          openButtonRef.current?.focus();
+        }, 300);
       },
     });
   };
