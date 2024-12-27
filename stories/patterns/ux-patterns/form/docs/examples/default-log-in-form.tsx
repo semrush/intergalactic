@@ -64,7 +64,7 @@ const FormControl = ({ name, type, options, autocomplete }: FormControlProps) =>
       <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
         {showErrorTooltip() && (error?.message as any)}
       </Tooltip.Popper>
-      <Input w='100%' mb={2} size='l' state={hasError() ? 'invalid' : 'normal'} controlsLength={1}>
+      <Input w='100%' mb={4} size='l' state={hasError() ? 'invalid' : 'normal'} controlsLength={1}>
         <Tooltip.Trigger
           tag={Input.Value}
           {...field}
@@ -95,8 +95,8 @@ const Demo = () => {
 
   return (
     <FormProvider {...methods}>
-      <Flex tag='form' noValidate onSubmit={handleSubmit(onSubmit)} direction='column'>
-        <Text size={300} tag='label' mb={1} htmlFor='email'>
+      <Flex tag='form' noValidate onSubmit={handleSubmit(onSubmit)} direction='column' gap={2}>
+        <Text size={300} tag='label' htmlFor='email'>
           Email
         </Text>
         <FormControl
@@ -117,7 +117,7 @@ const Demo = () => {
           }}
         />
 
-        <Text size={300} tag='label' mb={1} htmlFor='password'>
+        <Text size={300} tag='label' htmlFor='password'>
           Password
         </Text>
         <FormControl
@@ -133,7 +133,7 @@ const Demo = () => {
           }}
         />
 
-        <Button type='submit' use='primary' theme='success' size='l' w='100%'>
+        <Button type='submit' use='primary' theme='success' size='l' w='100%' mt={2}>
           Log in
         </Button>
       </Flex>

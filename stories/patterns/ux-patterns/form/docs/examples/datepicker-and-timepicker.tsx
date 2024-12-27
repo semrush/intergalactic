@@ -35,10 +35,10 @@ const Demo = () => {
   };
 
   return (
-    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
-      <Flex mb={4}>
-        <Flex direction='column'>
-          <Text size={300} tag='label' mb={1} htmlFor='startDate'>
+    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start' gap={6}>
+      <Flex gap={4}>
+        <Flex direction='column' gap={2}>
+          <Text size={300} tag='label' htmlFor='startDate'>
             Start date
           </Text>
           <Controller
@@ -52,8 +52,8 @@ const Demo = () => {
             name='start_date'
           />
         </Flex>
-        <Flex direction='column' ml={2}>
-          <Text size={300} tag='label' mb={1} htmlFor='startTime'>
+        <Flex direction='column' gap={2}>
+          <Text size={300} tag='label' htmlFor='startTime'>
             Time
           </Text>
           <Controller
@@ -71,15 +71,15 @@ const Demo = () => {
         </Flex>
       </Flex>
 
-      <Checkbox mb={4} size='l'>
+      <Checkbox size='l'>
         <Checkbox.Value onChange={setPeriod} />
         <Checkbox.Text>Period</Checkbox.Text>
       </Checkbox>
 
       {period && (
-        <Flex mb={4}>
-          <Flex direction='column'>
-            <Text size={300} tag='label' mb={1} htmlFor='dueDate'>
+        <Flex gap={4}>
+          <Flex direction='column' gap={2}>
+            <Text size={300} tag='label' htmlFor='dueDate'>
               Due date
             </Text>
             <Controller
@@ -93,8 +93,8 @@ const Demo = () => {
               name='due_date'
             />
           </Flex>
-          <Flex direction='column' ml={2}>
-            <Text size={300} tag='label' mb={1} htmlFor='dueTime'>
+          <Flex direction='column' gap={2}>
+            <Text size={300} tag='label' htmlFor='dueTime'>
               Time
             </Text>
             <Controller
@@ -113,11 +113,11 @@ const Demo = () => {
         </Flex>
       )}
 
-      <Flex>
+      <Flex gap={3} mt={2}>
         <Button type='submit' use='primary' theme='success' size='l'>
           Create
         </Button>
-        <Button ml={2} size='l' onClick={onReset}>
+        <Button size='l' onClick={onReset}>
           Cancel
         </Button>
       </Flex>
