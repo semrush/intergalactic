@@ -29,7 +29,7 @@ SDropdownItem {
 }
 
 SDropdownItem[role="menuitemcheckbox"] {
-  &::before, &::after {
+  &::before, &[selected]::after {
     content: '';
     position: absolute;
     border: 1px solid;
