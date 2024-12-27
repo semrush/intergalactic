@@ -37,7 +37,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
-  // textareaObserver: MutationObserver;
+  textareaObserver: MutationObserver;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -62,9 +62,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     super(props);
 
     this.textarea = this.createContentEditableElement(props);
-    // this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
-    //
-    // this.textareaObserver.observe(this.textarea, { childList: true });
+    this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
+
+    this.textareaObserver.observe(this.textarea, { childList: true });
   }
 
   uncontrolledProps() {
@@ -117,22 +117,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.setState({ visibleErrorPopper: false });
 
         setTimeout(() => {
-          node.scrollIntoView({
-            block: 'center',
-            inline: 'center',
-            behavior: 'smooth',
-          });
-          setTimeout(() => {
-            this.setSelection(node, 0, 1);
-          }, 50);
-        }, 100);
+          this.setSelection(node, 0, 1);
+        }, 150);
       }
     }
   }
 
-  // componentWillUnmount() {
-  //   this.textareaObserver.disconnect();
-  // }
+  componentWillUnmount() {
+    this.textareaObserver.disconnect();
+  }
 
   get popperDescribedId() {
     const { uid } = this.asProps;
@@ -185,16 +178,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.recalculateIsEmpty();
   }
 
-  // handleChangeTextareaTree(mutations: MutationRecord[]): void {
-  //   const childNodes = this.textarea.childNodes;
-  //   this.props.onChangeRows(childNodes.length);
-  //
-  //   const mutationRecord = mutations[0];
-  //
-  //   mutationRecord.addedNodes.forEach((node) => {
-  //     this.validateRow(node);
-  //   });
-  // }
+  handleChangeTextareaTree(): void {
+    const childNodes = this.textarea.childNodes;
+    this.props.onChangeRows(childNodes.length);
+  }
 
   handleScroll(): void {
     if (this.scrollingTimeout) {
@@ -254,47 +241,50 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (selection) {
       const focusNode = selection.focusNode;
-      const previousNode = focusNode?.previousSibling;
       const rowNode = focusNode?.parentElement;
-      const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+
+      let paragraph: HTMLParagraphElement | null = null;
+      let textNode: ChildNode | null = null;
+      let position: number | null = null;
+
+      if (rowNode === this.textarea && focusNode instanceof HTMLParagraphElement) {
+        paragraph = focusNode;
+      } else if (focusNode instanceof Text && rowNode instanceof HTMLParagraphElement) {
+        paragraph = rowNode;
+      }
 
       if (focusNode === this.textarea) {
         this.textarea.append(...listOfNodes);
-      } else if (previousNode) {
-        previousNode.after(...listOfNodes);
-      } else if (
-        rowNode === this.textarea &&
-        focusNode instanceof HTMLParagraphElement &&
-        focusNode.textContent?.trim() === ''
-      ) {
-        focusNode.replaceWith(...listOfNodes);
-      } else if (rowNode instanceof HTMLParagraphElement) {
-        if (rowNode.textContent?.trim() === '') {
-          rowNode.replaceWith(...listOfNodes);
+
+        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+        textNode = lastNodeToInsert.childNodes.item(0);
+        position = (lastNodeToInsert.textContent ?? '').length;
+      } else if (paragraph) {
+        const before = paragraph.textContent?.substring(0, selection.focusOffset) ?? '';
+        const after = paragraph.textContent?.substring(selection.focusOffset) ?? '';
+
+        const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
+        const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
+
+        paragraph.textContent = before + firstNodeToInsert?.textContent ?? '';
+
+        paragraph.after(...listOfNodes);
+
+        if (lastNodeToInsert) {
+          lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
+          textNode = lastNodeToInsert.childNodes.item(0);
+          position = (lastNodeToInsert.textContent ?? '').length;
         } else {
-          const before = rowNode.textContent?.substring(0, selection.focusOffset) ?? '';
-          const after = rowNode.textContent?.substring(selection.focusOffset) ?? '';
-
-          const firstNodeToInsert =
-            listOfNodes.length > 1 ? listOfNodes.splice(0, 1) : [lastNodeToInsert];
-
-          rowNode.textContent = before + firstNodeToInsert[0]?.textContent ?? '';
-
-          rowNode.after(...listOfNodes);
-
-          if (lastNodeToInsert) {
-            lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
-          }
+          position = (paragraph.textContent ?? '').length;
+          paragraph.textContent = (paragraph.textContent ?? '') + after;
+          textNode = paragraph.childNodes.item(0);
         }
       }
 
-      if (lastNodeToInsert) {
-        this.setSelection(lastNodeToInsert, 1, 1);
-        lastNodeToInsert.scrollIntoView({
-          block: 'center',
-          inline: 'center',
-          behavior: 'smooth',
-        });
+      if (textNode instanceof Text) {
+        this.setSelection(textNode, position ?? 1, position ?? 1);
+      } else {
+        console.warn('incorrect child type', textNode, textNode?.parentNode);
       }
     }
 
@@ -495,8 +485,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     );
   }
 
-  private prepareNodesForPaste(value: string): HTMLDivElement[] {
-    const listOfNodes: HTMLDivElement[] = [];
+  private prepareNodesForPaste(value: string): HTMLParagraphElement[] {
+    const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
     const rowProcessing = pasteProps?.rowProcessing ?? ((row: string) => row.trim());
     const skipEmptyRows = pasteProps?.skipEmptyRows ?? false;
@@ -643,7 +633,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     return true;
   }
 
-  private setSelection(node: Node, start: number, end: number): void {
+  private setSelection(
+    node: Node,
+    start: number,
+    end: number,
+    scrollType: 'center' | 'nearest' = 'center',
+  ): void {
     const selection = document.getSelection();
     const range = document.createRange();
     range.setStart(node, start);
@@ -651,6 +646,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     selection?.removeAllRanges();
     selection?.addRange(range);
+
+    const nodeToScroll = node instanceof Text ? node.parentNode : node;
+
+    if (nodeToScroll instanceof HTMLElement) {
+      nodeToScroll.scrollIntoView({
+        block: scrollType,
+        inline: scrollType,
+        behavior: 'smooth',
+      });
+    }
   }
 
   private getNodeFromSelection(): Node | null {
@@ -704,12 +709,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         offset = 0;
       }
 
-      this.setSelection(nodeToSetSelection, offset, offset);
-      nextNode.scrollIntoView({
-        block: 'nearest',
-        inline: 'nearest',
-        behavior: 'smooth',
-      });
+      this.setSelection(nodeToSetSelection, offset, offset, 'nearest');
     }
   }
 }
