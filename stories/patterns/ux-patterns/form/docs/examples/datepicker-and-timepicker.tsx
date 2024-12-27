@@ -13,12 +13,7 @@ type FormValues = {
   due_date?: Date;
   due_time?: string;
 };
-const defaultValues: FormValues = {
-  start_date: new Date(),
-  start_time: '12:00',
-  due_date: new Date(),
-  due_time: '12:00',
-};
+const defaultValues: FormValues = {};
 
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);
