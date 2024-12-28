@@ -362,8 +362,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const trigger = isValid && errors.length > 1 ? this.textarea : rowNode;
 
         if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
-          this.setPopperTrigger?.(isValid ? this.textarea : rowNode);
+          this.setPopperTrigger?.(trigger);
         }
+      } else if (rowNode === null) {
+        this.setPopperTrigger?.(this.textarea);
       }
 
       this.recalculateIsEmpty();
@@ -428,11 +430,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             }
             onEnterNextRow();
           }, 0);
+
+          this.toggleErrorsPopperByKeyboard(0);
         }
       }
-    }
-
-    if (
+    } else if (
       event.key === 'ArrowDown' ||
       event.key === 'ArrowUp' ||
       event.key === 'ArrowLeft' ||
@@ -441,9 +443,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (currentNode instanceof HTMLParagraphElement) {
         this.handleCursorMovement(currentNode, event);
       }
+      this.toggleErrorsPopperByKeyboard(200);
+    } else if (event.key !== 'Tab') {
+      this.toggleErrorsPopperByKeyboard(200);
     }
-
-    this.toggleErrorsPopperByKeyboard(200);
   }
 
   render() {

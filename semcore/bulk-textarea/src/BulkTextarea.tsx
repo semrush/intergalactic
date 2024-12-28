@@ -103,6 +103,10 @@ class BulkTextareaRoot extends Component<
       },
       onIsEmptyValueChange: (isEmpty: boolean) => {
         this.setState({ isEmptyText: isEmpty });
+        if (isEmpty) {
+          this.setState({ showErrors: false, errors: [] });
+          this.handlers.state('normal');
+        }
       },
       showErrors,
       validateOn,
