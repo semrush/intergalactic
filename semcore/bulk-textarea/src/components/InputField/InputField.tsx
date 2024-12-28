@@ -36,6 +36,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   delimiter = '\n';
 
   containerRef = React.createRef<HTMLDivElement>();
+  popperRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
   textareaObserver: MutationObserver;
 
@@ -157,6 +158,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.addEventListener('focus', this.handleFocus.bind(this));
     textarea.addEventListener('blur', this.handleBlur.bind(this));
     textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
+    textarea.addEventListener('mousedown', this.handleMouseDown.bind(this));
     textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
     textarea.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     textarea.addEventListener('scroll', this.handleScroll.bind(this));
@@ -193,6 +195,16 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.scrollingTimeout = window.setTimeout(() => {
       this.isScrolling = false;
     }, 50);
+  }
+
+  handleMouseDown(event: MouseEvent): void {
+    this.lastInteraction = 'mouse';
+    const element = event.target;
+
+    if (element instanceof HTMLElement && element !== this.textarea) {
+      // because we need to change keyboardRowIndex, because the caret in real on that current row
+      this.toggleErrorsPopper('keyboardRowIndex', element);
+    }
   }
 
   handleMouseMove(event: MouseEvent): void {
@@ -313,11 +325,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
         this.textarea.textContent = '';
-        // this.recalculateErrors();
       } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
-          // this.recalculateErrors();
         } else {
           selection?.setPosition(firstNode, 0);
         }
@@ -345,12 +355,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           }
         }
 
+        const { errors, showErrors } = this.asProps;
         const isValid = this.validateRow(rowNode);
         this.recalculateErrors();
 
-        if (isValid) {
-          this.setPopperTrigger?.(this.textarea);
-          this.popper?.current?.update();
+        const trigger = isValid && errors.length > 1 ? this.textarea : rowNode;
+
+        if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
+          this.setPopperTrigger?.(isValid ? this.textarea : rowNode);
         }
       }
 
@@ -429,14 +441,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       if (currentNode instanceof HTMLParagraphElement) {
         this.handleCursorMovement(currentNode, event);
       }
-
-      this.toggleErrorsPopperByKeyboard(200);
     }
+
+    this.toggleErrorsPopperByKeyboard(200);
   }
 
   render() {
     const SInputField = Root;
-    const { styles, errors, errorIndex, showErrors, commonErrorMessage } = this.asProps;
+    const { styles, errors, errorIndex, showErrors, commonErrorMessage, lastError } = this.asProps;
     const { visibleErrorPopper, mouseRowIndex, keyboardRowIndex } = this.state;
     const currentRowIndex =
       this.lastInteraction === 'keyboard'
@@ -450,29 +462,34 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
     }
 
-    const errorMessage = errorItem?.errorMessage ?? commonErrorMessage;
+    const errorMessage = errorItem?.errorMessage ?? lastError?.errorMessage ?? commonErrorMessage;
+    const isCommonError = !errorItem?.errorMessage && !lastError?.errorMessage;
     const visibleErrorTooltip = showErrors && visibleErrorPopper && Boolean(errorMessage);
 
     return sstyled(styles)(
       <>
         <Tooltip
           interaction={'none'}
-          placement={errorItem?.errorMessage ? 'right' : 'right-start'}
+          placement={isCommonError ? 'right-start' : 'right'}
           visible={visibleErrorTooltip}
           theme={'warning'}
-          offset={errorItem?.errorMessage ? [0, 26] : undefined}
+          offset={isCommonError ? undefined : [0, 26]}
           preventOverflow={{
             boundary: this.containerRef.current ?? undefined,
             tether: false,
           }}
         >
           {({ popper, setTrigger }) => {
-            this.setPopperTrigger = setTrigger;
-            this.popper = popper;
+            if (!this.popper) {
+              this.setPopperTrigger = setTrigger;
+              this.popper = popper;
+            }
 
-            this.popper.current?.update();
-
-            return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
+            return (
+              <Tooltip.Popper id={this.popperDescribedId} ref={this.popperRef}>
+                {errorMessage}
+              </Tooltip.Popper>
+            );
           }}
         </Tooltip>
         <SInputField
@@ -597,15 +614,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             return newState;
           },
           () => {
-            // setTimeout(
-            //   () => {
             const trigger = isInvalidRow ? target : this.textarea;
-
             this.setPopperTrigger?.(trigger);
-            this.popper?.current?.update();
-            // },
-            // this.state.visibleErrorPopper ? 0 : 150,
-            // );
           },
         );
       }, timer ?? 50);

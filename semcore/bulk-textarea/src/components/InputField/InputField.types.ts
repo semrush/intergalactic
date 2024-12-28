@@ -96,6 +96,11 @@ export type InputFieldProps = {
   /**
    * Internal
    */
+  lastError: ErrorItem;
+
+  /**
+   * Internal
+   */
   currentRowIndex: number;
 
   /**

@@ -18,6 +18,7 @@ type State = {
   errorIndex: number;
   errors: InputFieldProps['errors'];
   showErrors: boolean;
+  lastError?: InputFieldProps['errors'][number];
 };
 
 class BulkTextareaRoot extends Component<
@@ -42,7 +43,7 @@ class BulkTextareaRoot extends Component<
 
   inputFieldRef = React.createRef<HTMLDivElement>();
 
-  state = {
+  state: State = {
     rowsCount: 0,
     isEmptyText: true,
     errorIndex: -1,
@@ -71,7 +72,7 @@ class BulkTextareaRoot extends Component<
       rowsDelimiters,
       ofRows,
     } = this.asProps;
-    const { errors, errorIndex, showErrors } = this.state;
+    const { errors, errorIndex, showErrors, lastError } = this.state;
 
     return {
       value,
@@ -81,6 +82,7 @@ class BulkTextareaRoot extends Component<
       maxRows,
       ofRows,
       placeholder,
+      lastError,
       onChangeRows: this.handleChangeRows,
       onEnterNextRow: () => {
         if (validateOn?.includes('enterNextRow')) {
@@ -108,8 +110,9 @@ class BulkTextareaRoot extends Component<
       errors,
       errorIndex,
       onErrorsChange: (errors: InputFieldProps['errors']) => {
+        const lastError = errors.length === 0 ? this.state.errors[0] : undefined;
         const currentLength = this.state.errors.length;
-        this.setState({ errors: errors });
+        this.setState({ errors: errors, lastError });
         if (currentLength !== errors.length) {
           this.setState({ errorIndex: -1 });
         }
@@ -119,6 +122,10 @@ class BulkTextareaRoot extends Component<
           }
           if (errors.length === 0) {
             this.setState({ showErrors: false });
+
+            setTimeout(() => {
+              this.setState({ lastError: undefined });
+            }, 150);
           }
         });
       },
