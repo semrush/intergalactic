@@ -83,7 +83,7 @@ class BulkTextareaRoot extends Component<
       ofRows,
       placeholder,
       lastError,
-      onChangeRows: this.handleChangeRows,
+      onChangeRowsCount: this.handleChangeRowsCount,
       onEnterNextRow: () => {
         if (validateOn?.includes('enterNextRow')) {
           this.setState({ showErrors: true });
@@ -100,13 +100,6 @@ class BulkTextareaRoot extends Component<
           }, 0);
         }
         onChange?.(value, event);
-      },
-      onIsEmptyValueChange: (isEmpty: boolean) => {
-        this.setState({ isEmptyText: isEmpty });
-        if (isEmpty) {
-          this.setState({ showErrors: false, errors: [] });
-          this.handlers.state('normal');
-        }
       },
       showErrors,
       validateOn,
@@ -182,8 +175,14 @@ class BulkTextareaRoot extends Component<
     };
   }
 
-  handleChangeRows = (rowsCount: number) => {
-    this.setState({ rowsCount });
+  handleChangeRowsCount = (rowsCount: number) => {
+    const isEmpty = !rowsCount;
+    this.setState({ rowsCount, isEmptyText: isEmpty });
+
+    if (isEmpty) {
+      this.setState({ showErrors: false, errors: [] });
+      this.handlers.state('normal');
+    }
   };
 
   handleClickClearAllButton = (e: Event) => {

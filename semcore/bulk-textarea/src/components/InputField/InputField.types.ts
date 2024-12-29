@@ -110,7 +110,7 @@ export type InputFieldProps = {
   /**
    * Internal
    */
-  onChangeRows: (rowsCount: number) => void;
+  onChangeRowsCount: (rowsCount: number) => void;
 
   /**
    * Internal

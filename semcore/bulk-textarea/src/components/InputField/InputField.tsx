@@ -29,11 +29,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     state: 'normal',
     minRows: 2,
     maxRows: 10,
-    defaultIsEmptyValue: true,
     defaultShowErrors: false,
   };
 
   delimiter = '\n';
+  skipEmptyRows = false;
+  emptyRowValue = '&#xfeff;';
 
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
@@ -70,19 +71,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   uncontrolledProps() {
     return {
       value: null,
-      isEmptyValue: null,
     };
   }
 
   componentDidMount() {
-    const classes = this.containerRef.current?.classList;
-    const styleSheet = document.createElement('style');
-    const ofRows = this.asProps.ofRows ?? Infinity;
-    styleSheet.textContent = `.${classes?.item(0)} > div > div:nth-child(n + ${ofRows + 1}) {
-    background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
-  }`;
+    this.setStylesForRowsOverLimit();
 
-    document.head.appendChild(styleSheet);
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
@@ -96,40 +90,46 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
 
     if (prevProps.showErrors !== showErrors || prevProps.errors.length !== errors.length) {
-      if (showErrors) {
-        if (errors.length > 0) {
-          this.textarea.setAttribute('aria-invalid', 'true');
-          this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
-        }
-      } else {
-        this.textarea.removeAttribute('aria-invalid');
-        this.textarea.removeAttribute('aria-describedby');
-      }
+      this.toggleAriaInvalid(showErrors, errors.length);
     }
 
     if (prevProps.errorIndex !== errorIndex) {
-      const error: ErrorItem | null | undefined = errors[errorIndex];
-
-      const node = error?.rowNode;
-      const selection = document.getSelection();
-
-      if (selection && node instanceof HTMLParagraphElement) {
-        this.setState({ visibleErrorPopper: false });
-
-        setTimeout(() => {
-          this.setSelection(node, 0, 1);
-        }, 150);
-      }
+      this.handleChangeErrorIndex(errorIndex);
     }
   }
 
   componentWillUnmount() {
     this.textareaObserver.disconnect();
+    this.cleanStylesForRowsOverLimit();
   }
 
   get popperDescribedId() {
     const { uid } = this.asProps;
     return `bulk-textarea-${uid}-popper-describedby`;
+  }
+
+  get errorMessage() {
+    const { errors, errorIndex, commonErrorMessage, lastError } = this.asProps;
+    const { mouseRowIndex, keyboardRowIndex } = this.state;
+    const currentRowIndex =
+      this.lastInteraction === 'keyboard'
+        ? keyboardRowIndex
+        : this.lastInteraction === 'mouse'
+        ? mouseRowIndex
+        : -1;
+    let errorItem: ErrorItem | undefined = errors[errorIndex];
+
+    if (currentRowIndex !== -1) {
+      errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
+    }
+
+    const errorMessage = errorItem?.errorMessage ?? lastError?.errorMessage ?? commonErrorMessage;
+    const isCommonError = !errorItem?.errorMessage && !lastError?.errorMessage;
+
+    return {
+      errorMessage,
+      isCommonError,
+    };
   }
 
   createContentEditableElement(props: InputFieldProps) {
@@ -175,13 +175,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
       this.textarea.replaceChildren(...listOfNodes);
     }
-
-    this.recalculateIsEmpty();
   }
 
   handleChangeTextareaTree(): void {
-    const childNodes = this.textarea.childNodes;
-    this.props.onChangeRows(childNodes.length);
+    const nodes = this.textarea.childNodes;
+    let rowsCount = nodes.length;
+
+    if (nodes.length === 1 && !nodes.item(0).textContent?.trim()) {
+      rowsCount = 0;
+    }
+
+    this.props.onChangeRowsCount(rowsCount);
   }
 
   handleScroll(): void {
@@ -271,8 +275,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         textNode = lastNodeToInsert.childNodes.item(0);
         position = (lastNodeToInsert.textContent ?? '').length;
       } else if (paragraph) {
-        const before = paragraph.textContent?.substring(0, selection.focusOffset) ?? '';
-        const after = paragraph.textContent?.substring(selection.focusOffset) ?? '';
+        const before = paragraph.textContent?.trim().substring(0, selection.focusOffset) ?? '';
+        const after = paragraph.textContent?.trim().substring(selection.focusOffset) ?? '';
 
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
@@ -285,15 +289,20 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
           textNode = lastNodeToInsert.childNodes.item(0);
           position = (lastNodeToInsert.textContent ?? '').length;
+
+          this.validateRow(lastNodeToInsert);
         } else {
           position = (paragraph.textContent ?? '').length;
           paragraph.textContent = (paragraph.textContent ?? '') + after;
           textNode = paragraph.childNodes.item(0);
+
+          this.validateRow(paragraph);
         }
       }
 
       if (textNode instanceof Text) {
         this.setSelection(textNode, position ?? 1, position ?? 1);
+        this.toggleErrorsPopper('keyboardRowIndex', textNode.parentNode);
       } else {
         console.warn('incorrect child type', textNode, textNode?.parentNode);
       }
@@ -302,8 +311,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (validateOn.includes('paste') || this.asProps.showErrors) {
       this.recalculateErrors();
     }
-
-    this.recalculateIsEmpty();
   }
 
   handleChange(event: Event) {
@@ -369,8 +376,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (rowNode === null) {
         this.setPopperTrigger?.(this.textarea);
       }
-
-      this.recalculateIsEmpty();
     }
   }
 
@@ -401,10 +406,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
 
     const selection = document.getSelection();
-    const currentNode =
-      selection?.focusNode instanceof Text
-        ? selection?.focusNode?.parentNode
-        : selection?.focusNode;
+    const currentNode = this.getNodeFromSelection();
 
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
       if (currentNode instanceof HTMLParagraphElement) {
@@ -416,7 +418,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           if (event.key !== 'Enter') {
             event.preventDefault();
             const row = document.createElement('p');
-            row.innerHTML = '&#xfeff;';
+            row.innerHTML = this.emptyRowValue;
             currentNode.after(row);
 
             selection?.setPosition(row, 0);
@@ -451,22 +453,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   render() {
     const SInputField = Root;
-    const { styles, errors, errorIndex, showErrors, commonErrorMessage, lastError } = this.asProps;
-    const { visibleErrorPopper, mouseRowIndex, keyboardRowIndex } = this.state;
-    const currentRowIndex =
-      this.lastInteraction === 'keyboard'
-        ? keyboardRowIndex
-        : this.lastInteraction === 'mouse'
-        ? mouseRowIndex
-        : -1;
-    let errorItem: ErrorItem | undefined = errors[errorIndex];
+    const { styles, showErrors } = this.asProps;
+    const { visibleErrorPopper } = this.state;
 
-    if (currentRowIndex !== -1) {
-      errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
-    }
-
-    const errorMessage = errorItem?.errorMessage ?? lastError?.errorMessage ?? commonErrorMessage;
-    const isCommonError = !errorItem?.errorMessage && !lastError?.errorMessage;
+    const { errorMessage, isCommonError } = this.errorMessage;
     const visibleErrorTooltip = showErrors && visibleErrorPopper && Boolean(errorMessage);
 
     return sstyled(styles)(
@@ -501,11 +491,36 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     );
   }
 
+  private setStylesForRowsOverLimit(): void {
+    const name = 'rowsOverLimit';
+    const existsStyleSheet = document.querySelector(`style[name=${name}]`);
+
+    if (!existsStyleSheet) {
+      const classes = this.containerRef.current?.classList;
+      const styleSheet = document.createElement('style');
+      styleSheet.setAttribute('name', name);
+      const ofRows = this.asProps.ofRows ?? Infinity;
+      styleSheet.textContent = `.${classes?.item(0)} > div > p:nth-child(n + ${ofRows + 1}) {
+    background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
+  }`;
+
+      document.head.appendChild(styleSheet);
+    }
+  }
+  private cleanStylesForRowsOverLimit(): void {
+    const name = 'rowsOverLimit';
+    const existsStyleSheet = document.querySelector(`style[name=${name}]`);
+
+    if (existsStyleSheet) {
+      document.head.removeChild(existsStyleSheet);
+    }
+  }
+
   private prepareNodesForPaste(value: string): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
     const rowProcessing = pasteProps?.rowProcessing ?? ((row: string) => row.trim());
-    const skipEmptyRows = pasteProps?.skipEmptyRows ?? false;
+    const skipEmptyRows = pasteProps?.skipEmptyRows ?? this.skipEmptyRows;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
 
     value.split(delimiter).forEach((line) => {
@@ -514,7 +529,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const node = document.createElement('p');
 
         if (preparedLine === '') {
-          node.innerHTML = '&#xfeff;';
+          node.innerHTML = this.emptyRowValue;
         } else {
           node.append(document.createTextNode(preparedLine));
         }
@@ -526,18 +541,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     });
 
     return listOfNodes;
-  }
-
-  private recalculateIsEmpty(): void {
-    const nodes = this.textarea.childNodes;
-
-    if (nodes.length === 1) {
-      const text = nodes.item(0).textContent;
-
-      this.handlers.isEmptyValue(!text);
-    } else {
-      this.handlers.isEmptyValue(nodes.length > 1 ? false : true);
-    }
   }
 
   private recalculateErrors(): void {
@@ -620,6 +623,31 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }, timer ?? 50);
     } else {
       this.setState({ visibleErrorPopper: false });
+    }
+  }
+
+  private toggleAriaInvalid(showErrors: boolean, errorsLength: number): void {
+    if (showErrors && errorsLength > 0) {
+      this.textarea.setAttribute('aria-invalid', 'true');
+      this.textarea.setAttribute('aria-describedby', this.popperDescribedId);
+    } else {
+      this.textarea.removeAttribute('aria-invalid');
+      this.textarea.removeAttribute('aria-describedby');
+    }
+  }
+
+  private handleChangeErrorIndex(errorIndex: number): void {
+    const error: ErrorItem | undefined = this.asProps.errors[errorIndex];
+
+    const node = error?.rowNode;
+    const selection = document.getSelection();
+
+    if (selection && node instanceof HTMLParagraphElement) {
+      this.setState({ visibleErrorPopper: false });
+
+      setTimeout(() => {
+        this.setSelection(node, 0, 1);
+      }, 150);
     }
   }
 
