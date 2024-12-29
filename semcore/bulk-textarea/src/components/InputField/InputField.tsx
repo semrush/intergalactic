@@ -36,7 +36,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   delimiter = '\n';
 
   containerRef = React.createRef<HTMLDivElement>();
-  popperRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
   textareaObserver: MutationObserver;
 
@@ -359,7 +358,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const isValid = this.validateRow(rowNode);
         this.recalculateErrors();
 
-        const trigger = isValid && errors.length > 1 ? this.textarea : rowNode;
+        const trigger =
+          !isValid || (isValid && errors.length === 1 && errors[0].rowNode === rowNode)
+            ? rowNode
+            : this.textarea;
 
         if (showErrors && this.popper?.current.state.elements.reference !== trigger) {
           this.setPopperTrigger?.(trigger);
@@ -444,8 +446,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
-    } else if (event.key !== 'Tab') {
-      this.toggleErrorsPopperByKeyboard(200);
     }
   }
 
@@ -488,11 +488,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
               this.popper = popper;
             }
 
-            return (
-              <Tooltip.Popper id={this.popperDescribedId} ref={this.popperRef}>
-                {errorMessage}
-              </Tooltip.Popper>
-            );
+            return <Tooltip.Popper id={this.popperDescribedId}>{errorMessage}</Tooltip.Popper>;
           }}
         </Tooltip>
         <SInputField
