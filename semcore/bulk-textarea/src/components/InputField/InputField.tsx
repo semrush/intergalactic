@@ -406,7 +406,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.lastInteraction = 'keyboard';
     const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
 
-    const selection = document.getSelection();
     const currentNode = this.getNodeFromSelection();
 
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
@@ -422,7 +421,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             row.innerHTML = this.emptyRowValue;
             currentNode.after(row);
 
-            selection?.setPosition(row, 0);
+            this.setSelection(row, 0, 0);
           }
 
           setTimeout(() => {
