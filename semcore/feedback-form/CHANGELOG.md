@@ -6,13 +6,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating
+- `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating.
 - `role="image"` and `aria-label` for SliderRating's readonly mode
-- `role="none"` to SVGs in SliderRating
+- `role="none"` to SVGs in SliderRating.
 - `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it
-- autofocus to first checkbox. Moved from `textarea`
-- `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form
-- same visual feedback for keyboard interactions to SliderRating same as on hover
+- autofocus to first checkbox. Moved from `textarea`.
+- `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
+- same visual feedback for keyboard interactions to SliderRating same as on hover.
 
 ### Changed
 
@@ -23,9 +23,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `title` attribute from FeedbackRating form.
 - `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
-- unnecessary tooltip around `input[type="hidden"]`
+- unnecessary tooltip around `input[type="hidden"]`.
 - `line-height` from privacy-description text in FeedbackRating form.
-- `aria-invalid` from checkbox's parent elements
+- `aria-invalid` from checkbox's parent elements.
+- `aria-haspop` from tooltip of field controls
 
 ## [6.38.0] - 2024-12-18
 

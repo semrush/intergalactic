@@ -50,7 +50,6 @@ export function FeedbackItem({
             'aria-invalid': errorState ? true : false,
             'aria-errormessage': errorState && meta.active ? popperId : undefined,
             'aria-describedby': errorState && meta.active ? popperId : undefined,
-            'aria-haspopup': errorState && meta.active ? true : undefined,
           },
           input,
         );
@@ -72,7 +71,7 @@ export function FeedbackItem({
               role={undefined}
               tag={tag}
               {...(tag ? inputProps : {})}
-              __excludeProps={['type', 'aria-haspopup', 'aria-describedby']}
+              __excludeProps={['type', 'aria-describedby']}
             >
               {typeof Children.origin === 'function' &&
                 Children.origin({
