@@ -34,13 +34,13 @@ test.describe('Basic notice with Interactive element', () => {
     //the focus returns to the trigger by press enter
     await page.keyboard.press('Enter');
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
-    await expect(buttonTrigger).toBeFocused()
+    await expect(buttonTrigger).toBeFocused();
 
     //еhe focus returns to the trigger by 2 escapes - 1st closes hont, 2nd-notice
     await page.keyboard.press('Enter');
     await page.keyboard.press('Escape');
     await page.keyboard.press('Escape');
-    await expect(buttonTrigger).toBeFocused()
+    await expect(buttonTrigger).toBeFocused();
   });
 
   test('Open notice by mouse click', async ({ page }) => {
@@ -66,12 +66,15 @@ test.describe('Basic notice with Interactive element', () => {
 test.describe('Success notice without Interactive element ', () => {
   test('Open notice by keyboard click', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
-    
+
     //the X button is not focused on the notice
     await openNoticeByKeyboard(page);
-    const successNotice = locators.successNotice(page,"Keyword was successfully moved to Keyword Analyzer!");
+    const successNotice = locators.successNotice(
+      page,
+      'Keyword was successfully moved to Keyword Analyzer!',
+    );
     await expect(successNotice).toBeVisible();
-    const closeButton =locators.closeButton(page);
+    const closeButton = locators.closeButton(page);
     await expect(closeButton).not.toBeFocused();
     await expect(page).toHaveScreenshot();
   });
@@ -79,9 +82,12 @@ test.describe('Success notice without Interactive element ', () => {
   test('Open notice by mouse click', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/success_notice.tsx');
 
-    const buttonText = locators.buttonTrigger(page,"Show success notice");
+    const buttonText = locators.buttonTrigger(page, 'Show success notice');
     await buttonText.click();
-    const successNotice = locators.successNotice(page,"Keyword was successfully moved to Keyword Analyzer!");
+    const successNotice = locators.successNotice(
+      page,
+      'Keyword was successfully moved to Keyword Analyzer!',
+    );
     await expect(successNotice).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
@@ -114,7 +120,7 @@ test.describe('Replace last notice', () => {
   test('The notice is visible and replaces by mouse', async ({ page }) => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx');
 
-    const buttonTrigger = locators.buttonTrigger(page,"Show basic notice");
+    const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
     await buttonTrigger.click();
     await new Promise((resolve) => setTimeout(resolve, 50));
     const noticeBubble = page.locator('[data-ui-name="NoticeBubbleContainer"]');
@@ -128,7 +134,10 @@ test.describe('Replace last notice', () => {
 
 test.describe('Notice with illustration', () => {
   test('The illustraction looks good and positioned correclty', async ({ page }) => {
-    await setupPage(page, 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx');
+    await setupPage(
+      page,
+      'stories/components/notice-bubble/docs/examples/special_events_notice.tsx',
+    );
 
     await openNoticeByKeyboard(page);
     await new Promise((resolve) => setTimeout(resolve, 50));
@@ -140,5 +149,4 @@ test.describe('Notice with illustration', () => {
     await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
   });
-
 });
