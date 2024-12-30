@@ -191,6 +191,7 @@ class FeedbackRatingRoot extends Component<
                   <Input.Value
                     {...input}
                     onChange={this.handleChange(input.onChange)}
+                    aria-describedby={config.key + '-description'}
                     id={config.key}
                   />
                 </Input>
@@ -202,7 +203,7 @@ class FeedbackRatingRoot extends Component<
         {config.description && (
           <Box mt={2}>
             {typeof config.description === 'string' || isDescriptionReactFragment ? (
-              <Text size={200} color='text-secondary' aria-describedby={config.key}>
+              <Text size={200} color='text-secondary' id={config.key + '-description'}>
                 {config.description}
               </Text>
             ) : (
