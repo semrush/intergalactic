@@ -204,7 +204,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.errorByInteraction = 'keyboard';
     const element = event.target;
 
-    if (element instanceof HTMLElement && element !== this.textarea) {
+    if (element instanceof HTMLElement) {
       // because we need to change keyboardRowIndex, because the caret in real on that current row
       this.toggleErrorsPopper('keyboardRowIndex', element);
     }
@@ -214,19 +214,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.errorByInteraction = 'mouse';
     const element = event.target;
 
-    if (this.changeTriggerTimeout) {
-      clearTimeout(this.changeTriggerTimeout);
-    }
-
-    if (
-      this.isFocusing ||
-      (element instanceof HTMLElement &&
-        element.getAttribute('aria-invalid') === 'true' &&
-        element !== this.textarea)
-    ) {
-      this.toggleErrorsPopper('mouseRowIndex', element);
-    } else {
-      this.setState({ visibleErrorPopper: false });
+    if (element !== this.textarea) {
+      if (
+        this.isFocusing ||
+        (element instanceof HTMLElement && element.getAttribute('aria-invalid') === 'true')
+      ) {
+        this.toggleErrorsPopper('mouseRowIndex', element);
+      } else {
+        this.setState({ visibleErrorPopper: false });
+      }
     }
   }
 
@@ -602,32 +598,34 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
 
       this.changeTriggerTimeout = window.setTimeout(() => {
-        const isInvalidRow =
-          target.getAttribute('aria-invalid') === 'true' && target !== this.textarea;
-        const rowIndex =
-          target instanceof HTMLParagraphElement
-            ? Array.from(this.textarea.childNodes).indexOf(target)
-            : -1;
+        const targetElement = target === this.textarea ? this.getNodeFromSelection() : target;
 
-        this.setState(
-          (prevState) => {
-            const newState: State = {
-              visibleErrorPopper: this.isFocusing ? true : isInvalidRow,
-              mouseRowIndex: prevState.mouseRowIndex,
-              keyboardRowIndex: prevState.keyboardRowIndex,
-            };
+        if (targetElement instanceof HTMLParagraphElement) {
+          const isInvalidRow = targetElement.getAttribute('aria-invalid') === 'true';
+          const rowIndex = Array.from(this.textarea.childNodes).indexOf(targetElement);
 
-            if (this.isFocusing || (key === 'mouseRowIndex' && isInvalidRow)) {
-              newState[key] = rowIndex;
-            }
+          this.setState(
+            (prevState) => {
+              const newState: State = {
+                visibleErrorPopper: this.isFocusing ? true : isInvalidRow,
+                mouseRowIndex: prevState.mouseRowIndex,
+                keyboardRowIndex: prevState.keyboardRowIndex,
+              };
 
-            return newState;
-          },
-          () => {
-            const trigger = isInvalidRow ? target : this.textarea;
-            this.setPopperTrigger?.(trigger);
-          },
-        );
+              if (this.isFocusing || (key === 'mouseRowIndex' && isInvalidRow)) {
+                newState[key] = rowIndex;
+              }
+
+              return newState;
+            },
+            () => {
+              const trigger = isInvalidRow ? targetElement : this.textarea;
+              this.setPopperTrigger?.(trigger);
+
+              this.forceUpdate();
+            },
+          );
+        }
       }, timer ?? 50);
     } else {
       this.setState({ visibleErrorPopper: false });
