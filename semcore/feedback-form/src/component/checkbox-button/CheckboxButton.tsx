@@ -3,9 +3,10 @@ import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import style from '../../style/checkbox-button.shadow.css';
-import Checkbox, { CheckboxProps } from '@semcore/checkbox';
+import Checkbox from '@semcore/checkbox';
+import { FeedbackRatingCheckboxProps } from '../feedback-rating/FeedbackRating.type';
 
-class CheckboxButtonRoot extends Component<CheckboxProps & { focused: boolean }> {
+class CheckboxButtonRoot extends Component<FeedbackRatingCheckboxProps> {
   static style = style;
 
   render() {

@@ -22,9 +22,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Removed
 
 - `title` attribute from FeedbackRating form.
-- removed `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
-- removed unnecessary tooltip around `input[type="hidden"]`
-- removed `line-height` from privacy-description text in FeedbackRating form.
+- `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
+- unnecessary tooltip around `input[type="hidden"]`
+- `line-height` from privacy-description text in FeedbackRating form.
+- `aria-invalid` from checkbox's parent elements
 
 ## [6.38.0] - 2024-12-18
 

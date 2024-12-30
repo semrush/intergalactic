@@ -132,23 +132,17 @@ class FeedbackRatingRoot extends Component<
     const initialValue = this.props.initialValues[config.key];
 
     return (
-      <FeedbackRating.Item
-        name={config.key}
-        initialValue={initialValue}
-        type={'checkbox'}
-        key={config.key}
-      >
+      <Field name={config.key} initialValue={initialValue} type={'checkbox'} key={config.key}>
         {({ input }) => (
           <FeedbackRating.Checkbox
             {...input}
             id={config.key}
-            name={config.key}
             label={config.label}
-            onChange={this.handleChange(input.onChange)}
+            onChange={(_checked, e) => input.onChange(e)}
             focused={index === 0}
           />
         )}
-      </FeedbackRating.Item>
+      </Field>
     );
   };
 
