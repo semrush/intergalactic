@@ -28,7 +28,7 @@ SDropdownItem {
   }
 }
 
-SDropdownItem[role="menuitemcheckbox"] {
+SDropdownItem[isMenuItemCheckbox] {
   &::before, &[selected]::after {
     content: '';
     position: absolute;
@@ -51,7 +51,7 @@ SDropdownItem[role="menuitemcheckbox"] {
   }
 }
 
-SDropdownItem[selected]:not([role="menuitemcheckbox"]) {
+SDropdownItem[selected]:not(SDropdownItem[isMenuItemCheckbox]) {
   background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
   box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
 
@@ -77,7 +77,7 @@ SDropdownItem[size='l'] {
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   min-height: 40px;
 
-  &[role="menuitemcheckbox"] {
+  &[isMenuItemCheckbox] {
     padding-left: calc(var(--intergalactic-spacing-3x, 12px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
     &::before, &::after {
       width: 20px;
@@ -94,7 +94,7 @@ SDropdownItem[size='m'] {
   padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px)) var(--intergalactic-spacing-2x, 8px);
   min-height: 32px;
 
-  &[role="menuitemcheckbox"] {
+  &[isMenuItemCheckbox] {
     padding-left: calc(var(--intergalactic-spacing-2x, 8px) * 2 + 16px + 2px); /* padding*2 (parent item and from checkbox to content) + checkboxWidth + border*2 */
     &::before, &::after {
       width: 16px;

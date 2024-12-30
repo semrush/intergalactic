@@ -1,12 +1,14 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Counter from 'intergalactic/counter';
-import SettingsM from 'intergalactic/icon/Settings/m';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
-import { Flex } from 'intergalactic/flex-box';
-import DnD from 'intergalactic/drag-and-drop';
+import Button, { ButtonLink } from '@semcore/button';
+import Counter from '@semcore/counter';
+import SettingsM from '@semcore/icon/Settings/m';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Text } from '@semcore/typography';
+import Link from '@semcore/link';
+import { Flex } from '@semcore/flex-box';
+import DnD from '@semcore/drag-and-drop';
+import PlusM from '@semcore/icon/MathPlus/m';
+import KebabM from '@semcore/icon/Kebab/m';
 
 const defeaultColumns = [
   { id: 'uniquePageviews', label: 'Unique Pageviews' },
@@ -49,8 +51,8 @@ const Demo = () => {
   }, [selectedColumns, columns]);
 
   return (
-    <Select multiselect value={selectedColumns} onChange={setSelectedColumns}>
-      <Select.Trigger mt={2} mr='auto' id='dropdown-menu-basic' tag={Button}>
+    <DropdownMenu selectable multiselect>
+      <DropdownMenu.Trigger mt={2} mr='auto' id='dropdown-menu-basic' tag={Button}>
         <Button.Addon>
           <SettingsM />
         </Button.Addon>
@@ -60,9 +62,9 @@ const Demo = () => {
             {selectedColumns.length}/{columns.length}
           </Counter>
         </Button.Addon>
-      </Select.Trigger>
-      <Select.Menu hMax={800}>
-        {({ highlightedIndex }) => {
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Menu hMax={800}>
+        {({ highlightedIndex, selectedIndex }) => {
           return (
             <DnD
               onDnD={handleDnD}
@@ -71,31 +73,46 @@ const Demo = () => {
             >
               <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
                 <Text bold>Show table columns</Text>
-                <Link tag='button' size={200} onClick={resetToDefault}>
+                <ButtonLink onClick={resetToDefault} role={'menuitem'}>
                   Reset to default
-                </Link>
-                <Link tag='button' size={200} onClick={toggleAll}>
+                </ButtonLink>
+                <ButtonLink onClick={toggleAll} role={'menuitem'}>
                   {selectedColumns.length === columns.length ? 'Deselect' : 'Select'} all
-                </Link>
+                </ButtonLink>
               </Flex>
-              {columns.map((column) => (
-                <DnD.Draggable
-                  tag={Select.Option}
-                  id={column.id}
-                  selected={selectedColumns.includes(column.id)}
-                  value={column.id}
+              {columns.map((column, index) => (
+                <DropdownMenu.Item
+                  tag={DnD.Draggable}
                   key={column.id}
-                  aria-label={column.label}
+                  // id={column.id}
+                  selected={selectedColumns.includes(column.id)}
+                  onClick={() => {
+                    if (!selectedColumns.includes(column.id)) {
+                      setSelectedColumns([...selectedColumns, column.id]);
+                    } else {
+                      setSelectedColumns(selectedColumns.filter((i) => i !== column.id));
+                    }
+                  }}
                 >
-                  <Select.Option.Checkbox />
-                  {column.label}
-                </DnD.Draggable>
+                  <DropdownMenu inlineActions placement={'right'}>
+                    <Flex justifyContent='space-between'>
+                      <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                        {column.label}
+                      </DropdownMenu.Item.Content>
+                      {selectedIndex === index && (
+                        <DropdownMenu.Actions>
+                          <DropdownMenu.Item tag={Button} addonLeft={KebabM} title={'Move'} />
+                        </DropdownMenu.Actions>
+                      )}
+                    </Flex>
+                  </DropdownMenu>
+                </DropdownMenu.Item>
               ))}
             </DnD>
           );
         }}
-      </Select.Menu>
-    </Select>
+      </DropdownMenu.Menu>
+    </DropdownMenu>
   );
 };
 
