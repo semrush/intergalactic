@@ -333,8 +333,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
-        } else {
-          selection?.setPosition(firstNode, 0);
         }
       }
 
