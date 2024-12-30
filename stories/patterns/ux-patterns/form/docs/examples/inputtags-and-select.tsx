@@ -86,8 +86,8 @@ const Demo = () => {
     children: value,
   }));
 
-  const invalid = Boolean(errors.emails);
-  const showError = isFocused && invalid;
+  const emailInvalid = Boolean(errors.emails);
+  const showError = isFocused && emailInvalid;
 
   return (
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
@@ -137,7 +137,7 @@ const Demo = () => {
               <Tooltip.Trigger
                 tag={InputTags}
                 size='l'
-                state={showError ? 'invalid' : 'normal'}
+                state={emailInvalid ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
               >
@@ -153,7 +153,7 @@ const Demo = () => {
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
                   onFocus={() => setIsFocused(true)}
-                  aria-invalid={showError}
+                  aria-invalid={emailInvalid}
                   aria-describedby={showError ? 'form-emails-error' : undefined}
                   __excludeProps={['aria-haspopup']}
                 />
