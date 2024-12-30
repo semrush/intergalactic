@@ -42,6 +42,7 @@ class BulkTextareaRoot extends Component<
   static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
 
   inputFieldRef = React.createRef<HTMLDivElement>();
+  clearAllButtonRef = React.createRef<HTMLButtonElement>();
 
   state: State = {
     rowsCount: 0,
@@ -90,15 +91,14 @@ class BulkTextareaRoot extends Component<
         }
       },
       onBlur: (value: string, event: Event) => {
-        if (validateOn?.includes('blur')) {
+        if (
+          validateOn?.includes('blur') &&
+          (this.asProps.focusSourceRef.current === 'keyboard' ||
+            (event instanceof FocusEvent && event.relatedTarget !== this.clearAllButtonRef.current))
+        ) {
           this.setState({ showErrors: true });
-
-          setTimeout(() => {
-            if (this.state.errors.length === 0) {
-              this.setState({ showErrors: false });
-            }
-          }, 0);
         }
+
         onChange?.(value, event);
       },
       showErrors,
@@ -158,6 +158,7 @@ class BulkTextareaRoot extends Component<
       isHidden: this.state.isEmptyText,
       size,
       getI18nText,
+      ref: this.clearAllButtonRef,
     };
   }
 

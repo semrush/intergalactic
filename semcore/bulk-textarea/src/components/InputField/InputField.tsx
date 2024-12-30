@@ -389,11 +389,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleBlur = (event: Event) => {
     this.isFocusing = false;
-    this.asProps.onBlur(this.getRowsValue().join(this.delimiter), event);
-    if (this.asProps.validateOn.includes('blur')) {
+    this.setState({ visibleErrorPopper: false });
+
+    const { validateOn, onBlur } = this.asProps;
+
+    if (validateOn.includes('blur')) {
       this.recalculateErrors();
     }
-    this.setState({ visibleErrorPopper: false });
+
+    onBlur(this.getRowsValue().join(this.delimiter), event);
 
     setTimeout(() => {
       this.setState({ keyboardRowIndex: -1 });
