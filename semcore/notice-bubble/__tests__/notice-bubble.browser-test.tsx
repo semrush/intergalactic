@@ -60,10 +60,10 @@ test.describe('Basic notice with Interactive element', () => {
 
     await openNoticeByKeyboard(page);
     await page.keyboard.press('Shift+Tab');
-    await expect(locators.buttonTrigger(page,'Show basic notice')).toBeFocused();
+    await expect(locators.buttonTrigger(page, 'Show basic notice')).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(locators.closeHint(page)).toBeVisible();
-   // await new Promise((resolve) => setTimeout(resolve, 100));
+    // await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(page).toHaveScreenshot();
   });
 });
