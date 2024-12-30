@@ -5,5 +5,5 @@
   "BulkTextarea.Counter.limitExceeded:sr-message": "Limit is exceeded",
   "BulkTextarea.ErrorsNavigation.totalErrors": "{errorsCount} {errorsCount, plural, one {error} other {errors}}",
   "BulkTextarea.ErrorsNavigation.selectedError": "{errorIndex} out of {errorsCount}",
-  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Go to the {index} invalid value"
+  "BulkTextarea.ErrorsNavigation.nextError:aria-label": "Go to the {index, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} invalid value"
 }

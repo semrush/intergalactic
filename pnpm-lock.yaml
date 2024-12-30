@@ -700,9 +700,6 @@ importers:
 
   semcore/d3-chart:
     dependencies:
-      '@formatjs/intl':
-        specifier: 2.3.0
-        version: 2.3.0(typescript@5.1.6)
       '@semcore/animation':
         specifier: 2.39.0
         version: link:../animation
@@ -3106,6 +3103,9 @@ importers:
       '@babel/runtime':
         specifier: 7.19.0
         version: 7.19.0
+      '@formatjs/intl':
+        specifier: 3.0.4
+        version: 3.0.4(typescript@5.1.6)
       '@phytonmk/nano-css':
         specifier: 5.3.7
         version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
@@ -7283,10 +7283,25 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@formatjs/ecma402-abstract@2.3.1:
+    resolution: {integrity: sha512-Ip9uV+/MpLXWRk03U/GzeJMuPeOXpJBSB5V1tjA6kJhvqssye5J5LoYLc7Z5IAHb7nR62sRoguzrFiVCP/hnzw==}
+    dependencies:
+      '@formatjs/fast-memoize': 2.2.5
+      '@formatjs/intl-localematcher': 0.5.9
+      decimal.js: 10.4.3
+      tslib: 2.5.0
+    dev: false
+
   /@formatjs/fast-memoize@1.2.4:
     resolution: {integrity: sha512-9ARYoLR8AEzXvj2nYrOVHY/h1dDMDWGTnKDLXSISF1uoPakSmfcZuSqjiqZX2wRkEUimPxdwTu/agyozBtZRHA==}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /@formatjs/fast-memoize@2.2.5:
+    resolution: {integrity: sha512-6PoewUMrrcqxSoBXAOJDiW1m+AmkrAj0RiXnOMD59GRaswjXhm3MDhgepXPBgonc09oSirAJTsAggzAGQf6A6g==}
+    dependencies:
+      tslib: 2.5.0
     dev: false
 
   /@formatjs/icu-messageformat-parser@2.1.3:
@@ -7297,11 +7312,26 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@formatjs/icu-messageformat-parser@2.9.7:
+    resolution: {integrity: sha512-cuEHyRM5VqLQobANOjtjlgU7+qmk9Q3fDQuBiRRJ3+Wp3ZoZhpUPtUfuimZXsir6SaI2TaAJ+SLo9vLnV5QcbA==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      '@formatjs/icu-skeleton-parser': 1.8.11
+      tslib: 2.5.0
+    dev: false
+
   /@formatjs/icu-skeleton-parser@1.3.9:
     resolution: {integrity: sha512-s9THwwhiiSzbGSk73FP6Ur2MBwEj1vfgYDHKa5FiXGQMfYzdRdRvyH1dgqNgSFJPB6PM3DKtkloJLjpqpSDNUg==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.11.7
       tslib: 2.4.0
+    dev: false
+
+  /@formatjs/icu-skeleton-parser@1.8.11:
+    resolution: {integrity: sha512-8LlHHE/yL/zVJZHAX3pbKaCjZKmBIO6aJY1mkVh4RMSEu/2WRZ4Ysvv3kKXJ9M8RJLBHdnk1/dUQFdod1Dt7Dw==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      tslib: 2.5.0
     dev: false
 
   /@formatjs/intl-displaynames@6.0.2:
@@ -7326,6 +7356,12 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@formatjs/intl-localematcher@0.5.9:
+    resolution: {integrity: sha512-8zkGu/sv5euxbjfZ/xmklqLyDGQSxsLqg8XOq88JW3cmJtzhCP8EtSJXlaKZnVO4beEaoiT9wj4eIoCQ9smwxA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
   /@formatjs/intl@2.3.0(typescript@5.1.6):
     resolution: {integrity: sha512-mE8zGqP+Flrd8tS3AsdvSucnblqwR5gsGM4Bd5711abkabrz52F2TDrU88rVvVfCdHV4dFHFYEmUBVZZ4pATtg==}
     peerDependencies:
@@ -7341,6 +7377,22 @@ packages:
       '@formatjs/intl-listformat': 7.0.2
       intl-messageformat: 10.1.0
       tslib: 2.4.0
+      typescript: 5.1.6
+    dev: false
+
+  /@formatjs/intl@3.0.4(typescript@5.1.6):
+    resolution: {integrity: sha512-pnetak6R7Xp/ET96O5kx9zRYoQQqr6sbRXWkJHKw0Hr/jr3ls4CddZKq+suwCDuW6p/ior2BhpOSh/WLLcJM6w==}
+    peerDependencies:
+      typescript: '5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      '@formatjs/fast-memoize': 2.2.5
+      '@formatjs/icu-messageformat-parser': 2.9.7
+      intl-messageformat: 10.7.10
+      tslib: 2.5.0
       typescript: 5.1.6
     dev: false
 
@@ -18337,6 +18389,15 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /intl-messageformat@10.7.10:
+    resolution: {integrity: sha512-hp7iejCBiJdW3zmOe18FdlJu8U/JsADSDiBPQhfdSeI8B9POtvPRvPh3nMlvhYayGMKLv6maldhR7y3Pf1vkpw==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.1
+      '@formatjs/fast-memoize': 2.2.5
+      '@formatjs/icu-messageformat-parser': 2.9.7
+      tslib: 2.5.0
+    dev: false
+
   /into-stream@3.1.0:
     resolution: {integrity: sha512-TcdjPibTksa1NQximqep2r17ISRiNE9fwlfbg3F8ANdvP5/yrFTew86VcO//jk4QTaMlbjypPBq76HN2zaKfZQ==}
     engines: {node: '>=4'}
@@ -26469,6 +26530,7 @@ packages:
 
   /sudo-prompt@9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: false
 
   /superjson@2.2.1:

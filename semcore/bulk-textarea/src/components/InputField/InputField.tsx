@@ -64,8 +64,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     this.textarea = this.createContentEditableElement(props);
     this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
-
-    this.textareaObserver.observe(this.textarea, { childList: true });
   }
 
   uncontrolledProps() {
@@ -78,6 +76,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.setStylesForRowsOverLimit();
 
     this.containerRef.current?.append(this.textarea);
+    this.textareaObserver.observe(this.textarea, { childList: true });
 
     this.handleValueOutChange();
   }

@@ -62,12 +62,13 @@ const useI18n = (
   fallbackDictionary?: Dictionary,
 ) => {
   const lang = React.useContext(Context);
-  const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
+  const formatMessage = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
+
   return React.useCallback(
     (messageId: string, variables?: { [key: string]: string | number | undefined }) => {
-      return interpolate(resolvedDictionary[messageId] ?? '', variables);
+      return formatMessage({ id: messageId ?? '' }, variables);
     },
-    [resolvedDictionary],
+    [formatMessage],
   );
 };
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
 import { UnknownProperties } from '../core';
+import { createIntl, createIntlCache } from '@formatjs/intl';
 
+const cache = createIntlCache();
 const interpolationRegex = /{(.*?)}/g;
 
 const escapeHtml = (html: string) =>
@@ -116,7 +118,15 @@ export const useAsyncI18nMessages = (
     }
   }, [container, locale]);
 
-  return store[locale] ?? fallbackMessages;
+  const intl = createIntl(
+    {
+      locale,
+      messages: store[locale],
+    },
+    cache,
+  );
+
+  return intl.formatMessage ?? fallbackMessages;
 };
 export default (container?: MessagesContainer) => {
   return (props: any): { getI18nText: ReturnType<typeof useI18n> } => {
