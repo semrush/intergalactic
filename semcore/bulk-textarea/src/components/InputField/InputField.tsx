@@ -43,7 +43,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
 
-  lastInteraction: 'keyboard' | 'mouse' | null = null;
+  errorByInteraction: 'keyboard' | 'mouse' | null = null;
 
   changeTriggerTimeout = 0;
   isScrolling = false;
@@ -111,9 +111,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const { errors, errorIndex, commonErrorMessage, lastError } = this.asProps;
     const { mouseRowIndex, keyboardRowIndex } = this.state;
     const currentRowIndex =
-      this.lastInteraction === 'keyboard'
+      this.errorByInteraction === 'keyboard'
         ? keyboardRowIndex
-        : this.lastInteraction === 'mouse'
+        : this.errorByInteraction === 'mouse'
         ? mouseRowIndex
         : -1;
     let errorItem: ErrorItem | undefined = errors[errorIndex];
@@ -200,7 +200,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseDown(event: MouseEvent): void {
-    this.lastInteraction = 'mouse';
+    // because we need to change keyboardRowIndex, because the caret in real on that current row
+    this.errorByInteraction = 'keyboard';
     const element = event.target;
 
     if (element instanceof HTMLElement && element !== this.textarea) {
@@ -210,7 +211,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseMove(event: MouseEvent): void {
-    this.lastInteraction = 'mouse';
+    this.errorByInteraction = 'mouse';
     const element = event.target;
 
     if (this.changeTriggerTimeout) {
@@ -235,7 +236,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
 
     if (this.isFocusing) {
-      this.lastInteraction = 'keyboard';
+      this.errorByInteraction = 'keyboard';
       const rowNode = this.getNodeFromSelection();
 
       this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
@@ -382,7 +383,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleFocus(event: FocusEvent) {
     this.isFocusing = true;
-    this.lastInteraction = 'keyboard';
+    this.errorByInteraction = 'keyboard';
 
     if (this.asProps.showErrors) {
       this.toggleErrorsPopperByKeyboard(150);
@@ -407,7 +408,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   };
 
   handleKeyDown(event: KeyboardEvent) {
-    this.lastInteraction = 'keyboard';
+    this.errorByInteraction = 'keyboard';
     const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
 
     const currentNode = this.getNodeFromSelection();
