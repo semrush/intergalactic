@@ -11,6 +11,8 @@ import ReloadActionExample from './examples/reload_action';
 import ReplaceLastNoticeExample from './examples/replace_last_notice';
 import SpecialEventsNoticeExample from './examples/special_events_notice';
 import SuccessNoticeExample from './examples/success_notice';
+import UndoActionExample from './examples/undo_action';
+
 
 const meta: Meta = {
   title: 'Components/NoticeBubble/Documentation',
@@ -59,4 +61,8 @@ export const SuccessNotice: StoryObj = {
 
 export const ReplaceLastNotice: StoryObj = {
   render: ReplaceLastNoticeExample,
+};
+
+export const UndoAction: StoryObj = {
+  render: UndoActionExample,
 };
