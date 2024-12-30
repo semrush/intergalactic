@@ -72,7 +72,7 @@ export function FeedbackItem({
               role={undefined}
               tag={tag}
               {...(tag ? inputProps : {})}
-              __excludeProps={['type', 'aria-haspopup']}
+              __excludeProps={['type', 'aria-haspopup', 'aria-describedby']}
             >
               {typeof Children.origin === 'function' &&
                 Children.origin({
