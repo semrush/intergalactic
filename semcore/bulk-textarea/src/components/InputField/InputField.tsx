@@ -362,6 +362,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const isValid = this.validateRow(rowNode);
         this.recalculateErrors();
 
+        if (!isValid && showErrors) {
+          this.toggleErrorsPopper('keyboardRowIndex', rowNode, 0);
+        }
+
         const trigger =
           !isValid || (isValid && errors.length === 1 && errors[0].rowNode === rowNode)
             ? rowNode
