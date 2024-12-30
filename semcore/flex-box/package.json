@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flex-box",
   "description": "Semrush FlexBox Component",
-  "version": "5.39.0",
+  "version": "5.39.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,7 +12,7 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
-    "@semcore/utils": "4.44.0",
+    "@semcore/utils": "4.44.1",
     "classnames": "2.2.6",
     "csstype": "3.0.8"
   },
