@@ -110,7 +110,7 @@ const AddFilterExample = () => {
 
   const clearField = (name: keyof FilterData) => {
     const valueType = typeof filterData[name];
-    setFilterData((prevData) => ({ ...prevData, [name]: valueType === 'string' ? '' : null }));
+    setFilterData((prevData) => ({ ...prevData, [name]: defaultFilterData[name] }));
   };
 
   return (
@@ -149,6 +149,7 @@ const AddFilterExample = () => {
           onChange={(v: any) => {
             setFilterData({ ...filterData, searchFullnameOption: v });
           }}
+          w={120}
         />
         <Input w={125} neighborLocation={'both'}>
           <Input.Value
