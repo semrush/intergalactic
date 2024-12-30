@@ -12,8 +12,16 @@ const renderRow = ({
   style,
 }: { key: string; index: number; style: React.CSSProperties }) => {
   return (
-    <Box key={key} inline m={2} w={120} h={120} style={{ border: '1px solid black', ...style }}>
-      <Text bold size={200} m='auto'>
+    <Box
+      key={key}
+      inline
+      m={2}
+      w={120}
+      h={120}
+      style={{ border: '1px solid black', ...style }}
+      role={'row'}
+    >
+      <Text bold size={200} m='auto' role={'gridcell'}>
         {index + 1}
       </Text>
     </Box>

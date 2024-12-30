@@ -31,9 +31,7 @@ Parent should have `position: relative` and `overflow` with scroll.
 
 :::
 
-## Focus management
-
-In this example keyboard focus is automatically set on the first interactive element in the bubble.
+## Undo action
 
 ::: sandbox
 

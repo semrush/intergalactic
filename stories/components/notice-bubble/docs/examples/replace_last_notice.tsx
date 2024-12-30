@@ -1,7 +1,6 @@
 import React from 'react';
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import Button from '@semcore/button';
-import Link from '@semcore/link';
 
 const manager = new NoticeBubbleManager();
 
@@ -12,11 +11,7 @@ const Demo = () => {
     counter++;
 
     manager.replaceLast({
-      children: (
-        <>
-          Link {counter} was moved to <Link href='#'>Cats from outer space group</Link>
-        </>
-      ),
+      children: `Link ${counter} was moved to "Cats from outer space"`,
       initialAnimation: true,
       duration: 0,
     });

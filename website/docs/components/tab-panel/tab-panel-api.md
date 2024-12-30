@@ -21,7 +21,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 The tab element may contain `Addon` and `Text`, its structure is similar to [Button](/components/button/button). It takes some properties from TabLine (for example, `size`, `disabled`) and may override them.
 
 ::: tip
-It is recommended to make tabs with links, so that the user can open a separate tab with the report with the right mouse button if necessary.
+It's recommended to use links in tabs, so that user can open them in a new browser tab or window, or copy their URL.
 :::
 
 ```jsx
@@ -44,7 +44,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 
 ## TabPanel.Item.Text
 
-This ordinary text sets the appropriate indents depending on the size. If a simple text without addons is used in the Tab, it will turn into `TabLine.Item.Text` automatically.
+This ordinary text sets the appropriate indents depending on the size. If plain text without addons is used in the Tab, it will turn into `TabLine.Item.Text` automatically.
 
 It takes all the properties of the `Box`.
 

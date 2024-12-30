@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
 import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -391,38 +391,40 @@ class Body extends Component<AsProps, {}, State> {
     }
 
     return (
-      <SBodyWrapper>
-        <ScrollArea
-          shadow
-          leftOffset={offsetLeftSum}
-          rightOffset={offsetRightSum}
-          onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
-          onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
-          styles={scrollStyles}
-        >
-          <ScrollArea.Container
-            ref={forkRef(...scrollContainerRefs)}
-            role='rowgroup'
-            focusRingTopOffset={'3px'}
-            tabIndex={-1}
+      <hideScrollBarsFromScreenReadersContext.Provider value={true}>
+        <SBodyWrapper>
+          <ScrollArea
+            shadow
+            leftOffset={offsetLeftSum}
+            rightOffset={offsetRightSum}
+            onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
+            onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
+            styles={scrollStyles}
           >
-            {body}
-          </ScrollArea.Container>
-          <div style={displayContents}>
+            <ScrollArea.Container
+              ref={forkRef(...scrollContainerRefs)}
+              role='rowgroup'
+              focusRingTopOffset={'3px'}
+              tabIndex={-1}
+            >
+              {body}
+            </ScrollArea.Container>
             <div style={displayContents}>
               <div style={displayContents}>
-                <ScrollArea.Bar
-                  orientation='horizontal'
-                  bottom={0}
-                  container={this.scrollContainerRef}
-                />
-                <ScrollArea.Bar orientation='vertical' w={'12px'} zIndex={2} />
+                <div style={displayContents}>
+                  <ScrollArea.Bar
+                    orientation='horizontal'
+                    bottom={0}
+                    container={this.scrollContainerRef}
+                  />
+                  <ScrollArea.Bar orientation='vertical' w={'12px'} zIndex={2} />
+                </div>
               </div>
             </div>
-          </div>
-        </ScrollArea>
-        {Children.origin}
-      </SBodyWrapper>
+          </ScrollArea>
+          {Children.origin}
+        </SBodyWrapper>
+      </hideScrollBarsFromScreenReadersContext.Provider>
     );
   }
 }
