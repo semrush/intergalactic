@@ -16,6 +16,7 @@ async function openNoticeByKeyboard(page: Page) {
 
 const locators = {
   closeButton: (page: Page) => page.getByLabel('Close'),
+  closeHint: (page: Page) => page.getByText('Close'),
   buttonTrigger: (page: Page, text: string) =>
     page.locator(`[data-ui-name="Button"]:has-text("${text}")`),
   successNotice: (page: Page, text: string) =>
@@ -29,6 +30,8 @@ test.describe('Basic notice with Interactive element', () => {
     // the X button focused on the notice with interactive element
     await openNoticeByKeyboard(page);
     await expect(locators.closeButton(page)).toBeFocused();
+    await expect(locators.closeHint(page)).toBeVisible();
+    //await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
 
     //the focus returns to the trigger by press enter
@@ -36,7 +39,7 @@ test.describe('Basic notice with Interactive element', () => {
     const buttonTrigger = locators.buttonTrigger(page, 'Show basic notice');
     await expect(buttonTrigger).toBeFocused();
 
-    //еhe focus returns to the trigger by 2 escapes - 1st closes hont, 2nd-notice
+    //еhe focus returns to the trigger by 2 escapes - 1st closes hint, 2nd-notice
     await page.keyboard.press('Enter');
     await page.keyboard.press('Escape');
     await page.keyboard.press('Escape');
@@ -57,8 +60,10 @@ test.describe('Basic notice with Interactive element', () => {
 
     await openNoticeByKeyboard(page);
     await page.keyboard.press('Shift+Tab');
+    await expect(locators.buttonTrigger(page,'Show basic notice')).toBeFocused();
     await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await expect(locators.closeHint(page)).toBeVisible();
+   // await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(page).toHaveScreenshot();
   });
 });
@@ -73,9 +78,12 @@ test.describe('Success notice without Interactive element ', () => {
       page,
       'Keyword was successfully moved to Keyword Analyzer!',
     );
+    const buttonTrigger = locators.buttonTrigger(page, 'Show success notice');
     await expect(successNotice).toBeVisible();
     const closeButton = locators.closeButton(page);
     await expect(closeButton).not.toBeFocused();
+    await expect(buttonTrigger).toBeFocused();
+    await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
   });
 
@@ -98,7 +106,7 @@ test.describe('Success notice without Interactive element ', () => {
     //the focus is on the trigger always
     await openNoticeByKeyboard(page);
     await page.keyboard.press('Enter');
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(page).toHaveScreenshot();
   });
 });
