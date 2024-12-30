@@ -1,11 +1,11 @@
 import React from 'react';
-import { NoticeSmart } from 'intergalactic/notice';
-import QuestionAltM from 'intergalactic/icon/Question/m';
-import WarningM from 'intergalactic/icon/Warning/m';
-import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
+import { NoticeSmart } from '@semcore/notice';
+import QuestionAltM from '@semcore/icon/Question/m';
+import WarningM from '@semcore/icon/Warning/m';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [firstHidden, setFirstHidden] = React.useState(false);
@@ -60,11 +60,14 @@ const Demo = () => {
           experience with unparalleled innovation and functionality.
         </Text>
       </NoticeSmart>
-      <NoticeSmart theme='warning' label={<WarningM />} aria-label='Maintenance notice'>
-        <Text tag='div' my={1}>
-          The Link Building tool is under maintenance. Starting new campaigns is temporarily
-          unavailable, but you can continue working with your existing Link Building campaigns.
-        </Text>
+      <NoticeSmart
+        theme='warning'
+        title={'The Link Building tool is under maintenance.'}
+        label={<WarningM />}
+        aria-label='Maintenance notice'
+      >
+        Starting new campaigns is temporarily unavailable, but you can continue working with your
+        existing Link Building campaigns.
       </NoticeSmart>
       <NoticeSmart theme='danger'>
         Once you click Regenerate, the article will be rewritten. The previous version cannot be

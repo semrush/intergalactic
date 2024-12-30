@@ -1,10 +1,10 @@
 import React from 'react';
-import Notice from 'intergalactic/notice';
-import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
-import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
-import Question from 'intergalactic/icon/Question/m';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
+import Notice from '@semcore/notice';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import Question from '@semcore/icon/Question/m';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
   <Notice aria-label='Leave feedback'>
