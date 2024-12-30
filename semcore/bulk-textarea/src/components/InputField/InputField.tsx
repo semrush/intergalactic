@@ -409,6 +409,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     const currentNode = this.getNodeFromSelection();
 
     if (event.key === 'Enter' || rowsDelimiters?.includes(event.key)) {
+      if (currentNode === this.textarea) {
+        event.preventDefault();
+      }
       if (currentNode instanceof HTMLParagraphElement) {
         const currentRowValue = currentNode.textContent?.trim();
 
