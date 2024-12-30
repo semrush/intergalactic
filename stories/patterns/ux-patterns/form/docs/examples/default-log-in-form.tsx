@@ -17,9 +17,10 @@ type FormControlProps = {
   name: keyof FormValues;
   type: string;
   options: RegisterOptions;
+  autocomplete: string;
 };
 
-const FormControl = ({ name, type, options }: FormControlProps) => {
+const FormControl = ({ name, type, options, autocomplete }: FormControlProps) => {
   const {
     register,
     trigger,
@@ -60,35 +61,22 @@ const FormControl = ({ name, type, options }: FormControlProps) => {
 
   return (
     <Tooltip placement='top' interaction={'none'} animationsDisabled>
-      {({ getTriggerProps }) => {
-        return (
-          <Input
-            w='100%'
-            mb={2}
-            size='l'
-            state={invalid() ? 'invalid' : 'normal'}
-            controlsLength={1}
-          >
-            <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
-              {error?.message as any}
-            </Tooltip.Popper>
-
-            <Tooltip.Trigger
-              {...getTriggerProps({
-                id: name,
-                type: type,
-              })}
-              {...field}
-              tag={Input.Value}
-              onFocus={() => setActive(true)}
-              autoComplete={type}
-              aria-invalid={invalid()}
-              aria-describedby={invalid() ? 'form-project-error' : undefined}
-              aria-errormessage={invalid() ? `form-${name}-error` : undefined}
-            />
-          </Input>
-        );
-      }}
+      <Tooltip.Popper visible={showErrorTooltip()} id={`form-${name}-error`} theme='warning'>
+        {showErrorTooltip() && (error?.message as any)}
+      </Tooltip.Popper>
+      <Input w='100%' mb={4} size='l' state={hasError() ? 'invalid' : 'normal'} controlsLength={1}>
+        <Tooltip.Trigger
+          tag={Input.Value}
+          {...field}
+          id={name}
+          type={type}
+          onFocus={() => setActive(true)}
+          autoComplete={autocomplete}
+          aria-invalid={hasError()}
+          aria-describedby={hasError() ? `form-${name}-error` : undefined}
+          __excludeProps={['aria-haspopup']}
+        />
+      </Input>
     </Tooltip>
   );
 };
@@ -107,13 +95,14 @@ const Demo = () => {
 
   return (
     <FormProvider {...methods}>
-      <Flex tag='form' noValidate onSubmit={handleSubmit(onSubmit)} direction='column'>
-        <Text size={300} tag='label' mb={1} htmlFor='email'>
+      <Flex tag='form' noValidate onSubmit={handleSubmit(onSubmit)} direction='column' gap={2}>
+        <Text size={300} tag='label' htmlFor='email'>
           Email
         </Text>
         <FormControl
           name='email'
           type='email'
+          autocomplete='email'
           options={{
             validate: {
               required: (v: string) => Boolean(v) || 'Email is required',
@@ -128,13 +117,13 @@ const Demo = () => {
           }}
         />
 
-        <Text size={300} tag='label' mb={1} htmlFor='password'>
+        <Text size={300} tag='label' htmlFor='password'>
           Password
         </Text>
-
         <FormControl
           name='password'
           type='password'
+          autocomplete='current-password'
           options={{
             required: 'Password is required',
             minLength: {
@@ -144,7 +133,7 @@ const Demo = () => {
           }}
         />
 
-        <Button type='submit' use='primary' theme='success' size='l' w='100%'>
+        <Button type='submit' use='primary' theme='success' size='l' w='100%' mt={2}>
           Log in
         </Button>
       </Flex>

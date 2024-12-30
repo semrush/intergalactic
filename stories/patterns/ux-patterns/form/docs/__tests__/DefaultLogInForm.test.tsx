@@ -34,8 +34,8 @@ const EmptyFieldsByMouse = async (canvas: ReturnType<typeof within>, button: any
     // Check  Focus, Attributes and Tooltip visibility
     expectFocus(email, true);
     expectFocus(password, false);
-    expect(email).toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Email is required', true);
     await expectTooltipVisibility(canvas, 'Password is required', false);
 
@@ -59,8 +59,8 @@ const EmptyFieldsByKeyboard = async (canvas: ReturnType<typeof within>, button: 
     // Check  Focus, Attributes and Tooltip visibility
     expectFocus(email, true);
     expectFocus(password, false);
-    expect(email).toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Email is required', true);
     await expectTooltipVisibility(canvas, 'Password is required', false);
 
@@ -82,8 +82,8 @@ const WrongEmailMouse = async (canvas: ReturnType<typeof within>, button: any, e
     // Check Focus, Attributes and Tooltip visibility
     expectFocus(email, true);
     expectFocus(password, false);
-    expect(email).toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Email is not valid', true);
     await expectTooltipVisibility(canvas, 'Password is required', false);
 
@@ -98,8 +98,8 @@ const WrongEmailMouse = async (canvas: ReturnType<typeof within>, button: any, e
     // Fix email
     await userEvent.type(email, '.com');
     // Check Attributes and Tooltip visibility
-    expect(email).not.toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).not.toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Email is not valid', false);
     await expectTooltipVisibility(canvas, 'Password is required', false);
 
@@ -123,8 +123,8 @@ const WrongPasswordMouse = async (canvas: ReturnType<typeof within>, button: any
     // Check Focus, Attributes and Tooltip visibility
     expectFocus(password, true);
     expectFocus(email, false);
-    expect(email).not.toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).not.toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Password is required', true);
 
     // Enter wrong password and click Log in
@@ -137,8 +137,8 @@ const WrongPasswordMouse = async (canvas: ReturnType<typeof within>, button: any
     // Fix the password
     await userEvent.type(password, 'test');
     // Check Attributes and Tooltip visibility
-    expect(email).not.toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).not.toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).not.toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).not.toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Password must have at least 8 characters', false);
 };
 
@@ -155,16 +155,16 @@ const WrongEmailKeyboard = async (canvas: ReturnType<typeof within>, button: any
     // Check Focus, Attributes and Tooltip visibility
     expectFocus(email, true);
     expectFocus(password, false);
-    expect(email).toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Email is not valid', true);
     await expectTooltipVisibility(canvas, 'Password is required', false);
 
     // Fix the email
     await userEvent.type(email, '.com');
     // Check Tooltip visibility
-    expect(email).not.toHaveAttribute('aria-errormessage', 'form-email-error');
-    expect(password).toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(email).not.toHaveAttribute('aria-describedby', 'form-email-error');
+    expect(password).toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Email is not valid', false);
 
     // Focus password and press on Enter
@@ -192,7 +192,7 @@ const WrongPasswordKeyboard = async (canvas: ReturnType<typeof within>, button: 
     //Fix password
     await userEvent.type(password, 'test');
     // Check  Attributes and Tooltip visibility
-    expect(password).not.toHaveAttribute('aria-errormessage', 'form-password-error');
+    expect(password).not.toHaveAttribute('aria-describedby', 'form-password-error');
     await expectTooltipVisibility(canvas, 'Password must have at least 8 characters', false);
 
 

@@ -289,6 +289,7 @@ class RootCloseTagContainer extends Component {
       <STagContainerClose
         render={Box}
         tag={'button'}
+        type='button'
         interactive={true}
         interactiveView={true}
         tag-color={resolveColor(color)}

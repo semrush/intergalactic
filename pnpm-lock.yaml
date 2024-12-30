@@ -21,9 +21,6 @@ patchedDependencies:
   parse-es-import@0.6.0:
     hash: es5kxqeif6ghjeazo562grsbqa
     path: patches/parse-es-import@0.6.0.patch
-  react-hook-form@6.10.1:
-    hash: jxraglplq2tfs5abx45wc74mnq
-    path: patches/react-hook-form@6.10.1.patch
   react-virtualized@9.22.3:
     hash: gbxc3pzinlxu2yolhjue4gwtqq
     path: patches/react-virtualized@9.22.3.patch
@@ -3956,7 +3953,7 @@ importers:
         version: 29.0.1(@types/node@18.16.15)
       react-hook-form:
         specifier: 6.10.1
-        version: 6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@18.2.0)
+        version: 6.10.1(react@18.2.0)
 
   tools/shadow-loader:
     dependencies:
@@ -24240,14 +24237,13 @@ packages:
       react-side-effect: 2.1.2(react@18.2.0)
     dev: false
 
-  /react-hook-form@6.10.1(patch_hash=jxraglplq2tfs5abx45wc74mnq)(react@18.2.0):
+  /react-hook-form@6.10.1(react@18.2.0):
     resolution: {integrity: sha512-tPfNu2q8HUUKL4gOsJzzoBX8+3y2brJk+61TO+RO9GtpLnWPptLrAIupMtyPeENMpLmLfBKHhT9nfezHLTW2mA==}
     peerDependencies:
       react: ^16.8.0 || ^17
     dependencies:
       react: 18.2.0
     dev: true
-    patched: true
 
   /react-hook-form@7.54.0(react@16.14.0):
     resolution: {integrity: sha512-PS05+UQy/IdSbJNojBypxAo9wllhHgGmyr8/dyGQcPoiMf3e7Dfb9PWYVRco55bLbxH9S+1yDDJeTdlYCSxO3A==}
