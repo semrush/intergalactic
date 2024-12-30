@@ -29,9 +29,9 @@ test.describe('Basic notice with Interactive element', () => {
 
     // the X button focused on the notice with interactive element
     await openNoticeByKeyboard(page);
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(locators.closeButton(page)).toBeFocused();
     await expect(locators.closeHint(page)).toBeVisible();
-    //await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
 
     //the focus returns to the trigger by press enter
@@ -43,6 +43,7 @@ test.describe('Basic notice with Interactive element', () => {
     await page.keyboard.press('Enter');
     await page.keyboard.press('Escape');
     await page.keyboard.press('Escape');
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(buttonTrigger).toBeFocused();
   });
 
@@ -60,10 +61,10 @@ test.describe('Basic notice with Interactive element', () => {
 
     await openNoticeByKeyboard(page);
     await page.keyboard.press('Shift+Tab');
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(locators.buttonTrigger(page, 'Show basic notice')).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(locators.closeHint(page)).toBeVisible();
-    // await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(page).toHaveScreenshot();
   });
 });
@@ -74,6 +75,7 @@ test.describe('Success notice without Interactive element ', () => {
 
     //the X button is not focused on the notice
     await openNoticeByKeyboard(page);
+    await new Promise((resolve) => setTimeout(resolve, 100));
     const successNotice = locators.successNotice(
       page,
       'Keyword was successfully moved to Keyword Analyzer!',
@@ -83,7 +85,6 @@ test.describe('Success notice without Interactive element ', () => {
     const closeButton = locators.closeButton(page);
     await expect(closeButton).not.toBeFocused();
     await expect(buttonTrigger).toBeFocused();
-    await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(page).toHaveScreenshot();
   });
 
