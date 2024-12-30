@@ -5,7 +5,7 @@ import SmileHappyM from '@semcore/icon/SmileHappy/m';
 const Demo = () => {
   return (
     <Tag color='violet-500' size='l' addonLeft={SmileHappyM}>
-      Tag
+      Positive
     </Tag>
   );
 };
