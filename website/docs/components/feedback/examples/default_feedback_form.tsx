@@ -7,7 +7,7 @@ import Dropdown from 'intergalactic/dropdown';
 import ChatM from 'intergalactic/icon/Chat/m';
 import Textarea from 'intergalactic/textarea';
 import { Text } from 'intergalactic/typography';
-import Button, { ButtonLink } from 'intergalactic/button';
+import { ButtonLink } from 'intergalactic/button';
 
 const validate = {
   description: (value = '') => {
@@ -30,13 +30,30 @@ const validate = {
   },
 };
 
-class Feedback extends React.PureComponent<{
+type FeedbackProps = {
   status: string;
   onSubmit: (data: any) => void;
   onCancel: () => void;
   onChange: (event: any, trigger: string) => void;
   value: { description: string; email: string };
-}> {
+};
+
+class Feedback extends React.PureComponent<FeedbackProps> {
+  ref = React.createRef<HTMLDivElement>();
+
+  componentDidMount(): void {
+    // need this timeout because Feedback component used in function component
+    setTimeout(() => {
+      this.ref.current?.focus();
+    }, 0);
+  }
+
+  componentDidUpdate(prevProps: Readonly<FeedbackProps>): void {
+    if (prevProps.status !== 'success' && this.props.status === 'success') {
+      this.ref.current?.focus();
+    }
+  }
+
   handleChange = (fn) => (_, e) => {
     fn(e);
     this.props.onChange(e, e.currentTarget.id);
@@ -46,14 +63,16 @@ class Feedback extends React.PureComponent<{
     const { status, onSubmit, onCancel, value } = this.props;
 
     if (status === 'success') {
-      return <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
+      return (
+        <FeedbackForm.Success ref={this.ref}>Thank you for your feedback!</FeedbackForm.Success>
+      );
     }
 
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <Flex tag='label' direction='column' htmlFor='suggestions'>
-            <Text mb={2} size={200}>
+          <Flex direction='column'>
+            <Text mb={2} size={200} tag='label' htmlFor='description'>
               Tell us your suggestion or report an issue
             </Text>
             <FeedbackForm.Item
@@ -77,8 +96,8 @@ class Feedback extends React.PureComponent<{
               )}
             </FeedbackForm.Item>
           </Flex>
-          <Flex tag='label' mt={4} direction='column' htmlFor='email'>
-            <Text mb={2} size={200}>
+          <Flex mt={4} direction='column'>
+            <Text mb={2} size={200} tag='label' htmlFor='email'>
               Reply-to email
             </Text>
             <FeedbackForm.Item
@@ -89,13 +108,18 @@ class Feedback extends React.PureComponent<{
             >
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id='email' />
+                  <Input.Value
+                    {...input}
+                    onChange={this.handleChange(input.onChange)}
+                    id='email'
+                    aria-describedby='email-description'
+                  />
                 </Input>
               )}
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text size={200} color='text-secondary'>
+            <Text size={200} color='text-secondary' id='email-description'>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
@@ -147,12 +171,7 @@ class FeedbackLink extends React.PureComponent {
         <Dropdown.Trigger tag={ButtonLink} addonLeft={ChatM}>
           Send feedback
         </Dropdown.Trigger>
-        <Dropdown.Popper
-          role={'dialog'}
-          aria-label={'Feedback form'}
-          aria-modal={'true'}
-          tabIndex={-1}
-        >
+        <Dropdown.Popper aria-label={'Feedback form'} tabIndex={-1}>
           {(_props, { visible }) => (
             <Feedback
               status={status}

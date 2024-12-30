@@ -24,7 +24,7 @@ You can add icons, badges, and counters as addons to the left or right of the te
 
 ## Disabled TabLine item
 
-Use `disabled` property to make `<TabLine.Item />` disabled. Always add `Hint` tooltip to explain why this item is disabled.
+Use `disabled` property to make `<TabLine.Item />` disabled. Always add `Tooltip` to explain why this item is disabled.
 
 ::: sandbox
 

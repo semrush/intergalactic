@@ -54,11 +54,12 @@ Playground.createWidget(
 Playground.createWidget(
   'bool',
   ({ value, onChange, label, positiveLabel, negativeLabel, ...others }) => {
+    const labelText = (value ? positiveLabel : negativeLabel) ?? label;
     return (
       <label className={styles.field}>
-        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.label}>{labelText}</div>
         <div className={styles.control}>
-          <Checkbox>
+          <Checkbox aria-label={labelText}>
             <Checkbox.Value checked={value} onChange={() => onChange(!value)} {...others} />
           </Checkbox>
         </div>
@@ -112,11 +113,18 @@ Playground.createWidget(
 Playground.createWidget(
   'radio',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
+    const labelText = (value ? positiveLabel : negativeLabel) ?? label;
     return (
       <label className={styles.field} htmlFor=''>
-        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.label}>{labelText}</div>
         <div className={styles.control}>
-          <Pills value={value} onChange={(value) => onChange(value)} behavior='radio' {...others}>
+          <Pills
+            value={value}
+            onChange={(value) => onChange(value)}
+            behavior='radio'
+            aria-label={labelText}
+            {...others}
+          >
             {options.map((o, i) => {
               const option = typeof o !== 'object' ? { value: o, name: o } : o;
               return (
@@ -149,7 +157,7 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
           lang: 'tsx',
           theme: 'github-dark',
         })
-        .replace(' tabindex="0"><code>', '><code tabindex="0" aria-label="JSX">');
+        .replace(' tabindex="0"><code>', '><code aria-label="JSX">');
 
       setHighlightedSource(html);
     })();

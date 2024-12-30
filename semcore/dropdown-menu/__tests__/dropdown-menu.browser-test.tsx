@@ -8,9 +8,8 @@ test.describe('Dropdown-menu', () => {
 
     await page.setContent(htmlContent);
 
-    const ddMenu = await page.locator('#dropdown-menu-children-items');
-
-    await ddMenu.click();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
     await page.waitForTimeout(1000);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowDown');
@@ -60,7 +59,7 @@ test.describe('Dropdown-menu - Item actions', () => {
     await expect(Trash).not.toBeFocused();
 
     //Enter focuses addons and they have hints
-    await page.keyboard.press('Enter');
+    await page.keyboard.press('ArrowRight');
     await expect(MathPlus).toBeFocused();
     await page.waitForTimeout(500);
     await expect(page).toHaveScreenshot();
@@ -166,5 +165,109 @@ test.describe('Dropdown-menu - On Visible controlled', () => {
     await page.keyboard.press('ArrowDown');
     const Item2 = page.locator('[data-ui-name="DropdownMenu.Item"]:has-text("rename")');
     await expect(Item2).toBeFocused();
+  });
+});
+
+test.describe('Dropdown-menu - Selectable radio items', () => {
+  test('Keyboard interaction', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    //1st item focused when Menu expands
+    const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    await page.keyboard.press('Tab');
+    await expect(ddMenuTrigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(ddMenuTrigger).not.toBeFocused();
+    const Item1 = page
+      .locator('[data-ui-name="DropdownMenu.Item.Content"]')
+      .filter({ hasText: /^Menu item 1$/ });
+    await expect(Item1).toBeFocused();
+
+    //The DD closed by Enter (no focus on intercative element)
+    await page.keyboard.press('Enter');
+    await expect(ddMenuTrigger).toBeFocused();
+    await expect(Item1).not.toBeVisible();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(500);
+
+    //Focus on interactive element by right arrow
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    const deleteButton1 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 1$/ })
+      .locator('button[aria-label="Delete item"]');
+    await expect(deleteButton1).toBeFocused();
+    await expect(page).toHaveScreenshot();
+
+    //Remove focus on interactive element by left arrow
+    await page.keyboard.press('ArrowLeft');
+    await expect(deleteButton1).not.toBeFocused();
+    await expect(Item1).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(100);
+    await page.keyboard.press('Escape');
+    await expect(ddMenuTrigger).toBeFocused();
+    await expect(Item1).not.toBeVisible();
+    await expect(ddMenuTrigger).toBeFocused();
+  });
+});
+
+test.describe('Dropdown-menu - Multiselect items', () => {
+  test('Keyboard interaction', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+    await page.setContent(htmlContent);
+
+    //1st item focused when Menu expands
+    const ddMenuTrigger = await page.locator('[data-ui-name="DropdownMenu.Trigger"]');
+    await page.keyboard.press('Tab');
+    await expect(ddMenuTrigger).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(ddMenuTrigger).not.toBeFocused();
+    const Item1 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 1$/ });
+    const Item2 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 2$/ });
+    await Item1.waitFor({ state: 'visible' });
+    await expect(Item1).toBeFocused();
+
+    //The DD not closed by Enter, the item unchecks
+    await page.keyboard.press('Enter');
+    await expect(Item1).not.toBeChecked();
+    await expect(Item2).toBeChecked();
+    await expect(page).toHaveScreenshot();
+
+    //Click up arrow and focus on last item
+    await page.keyboard.press('ArrowUp');
+    const Item10 = page
+      .locator('[data-ui-name="DropdownMenu.Item"]')
+      .filter({ hasText: /^Menu item 10$/ });
+    await Item10.waitFor({ state: 'visible' });
+    await expect(Item10).toBeFocused();
+    await expect(page).toHaveScreenshot();
+
+    //Check last item and close menu by eas
+    await page.keyboard.press('Space');
+    await expect(Item10).toBeChecked();
+    await page.keyboard.press('Escape');
+    await expect(Item10).not.toBeVisible();
+    await expect(ddMenuTrigger).toBeFocused();
+
+    //open menu and focus on the first selected item
+    await page.keyboard.press('Enter');
+    await Item2.waitFor({ state: 'visible' });
+    await expect(Item2).toBeFocused();
+    await expect(Item2).toBeChecked();
+    await expect(ddMenuTrigger).not.toBeFocused();
   });
 });

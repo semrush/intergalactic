@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `plural`, `selectordinal` and others Intl formatting for translations.
 
+## [4.44.1] - 2024-12-20
+
+### Fixed
+
+- Attribute `onAuxClick` was not applying to components.
+
 ## [4.44.0] - 2024-11-27
 
 ### Added

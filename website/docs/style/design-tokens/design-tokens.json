@@ -615,6 +615,7 @@
       "d3-chart",
       "date-picker",
       "divider",
+      "dropdown",
       "feedback-form",
       "fullscreen-modal",
       "inline-input",
@@ -2538,7 +2539,7 @@
     "rawValue": "{rounded-small}",
     "computedValue": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
-    "components": ["button", "checkbox", "select"]
+    "components": ["button", "checkbox", "dropdown", "select"]
   },
   {
     "name": "--intergalactic-badge-rounded",
@@ -3498,7 +3499,7 @@
     "rawValue": "{duration.fast}",
     "computedValue": "200",
     "description": "Use for small controls like Checkbox or Radio.",
-    "components": ["checkbox", "feedback-form", "radio", "slider", "tab-line"]
+    "components": ["checkbox", "dropdown", "feedback-form", "radio", "slider", "tab-line"]
   },
   {
     "name": "--intergalactic-duration-modal",

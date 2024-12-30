@@ -7,18 +7,14 @@ FeedbackYesNo form pattern consists of several components that have their own ac
 
 - [Notice](/components/notice/notice-a11y)
 - [Button](/components/button/button-a11y)
-- [Typography](/style/typography/typography-a11y)
 - [Dropdown](/components/dropdown/dropdown-a11y)
-- [Textarea](/components/textarea/textarea-a11y)
-- [Input](/components/input/input-a11y)
-- [Link component](/components/link/link-a11y)
 - [Feedback form](/components/feedback/feedback-form-a11y)
-- [Form](/patterns/form/form-a11y)
+- [Typography](/style/typography/typography-a11y)
 
 ## Keyboard support
 
-See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
+Find detailed information about the keyboard support for all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

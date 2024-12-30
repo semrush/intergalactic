@@ -75,5 +75,6 @@ SPolygonLine[color] {
 }
 
 SPieRect {
+  outline: none;
   fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
 }

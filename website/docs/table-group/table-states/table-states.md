@@ -12,10 +12,10 @@ When a message with a loading or error state appears, it should have a `margin-t
 
 Table: Basic rules for table states
 
-|                                                       | First screen                                                | Scrolling the page  |
-| ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| Example with [ProgressBar](/components/progress-bar/progress-bar) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
-| Example with [SpinContainer](/components/spin-container/spin-container)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
+| Examples                                                        | First screen                     | Scrolling the page               |
+| --------------------------------------------------------------- | -------------------------------- | -------------------------------- |
+| With [ProgressBar](/components/progress-bar/progress-bar)       | ![](static/table-sticky-1.png)   | ![](static/table-sticky-2.png)   |
+| With [SpinContainer](/components/spin-container/spin-container) | ![](static/sticky-loading-1.png) | ![](static/sticky-loading-2.png) |
 
 ::: tip
 Avoid changing the table height when it's switched between states.
@@ -91,8 +91,9 @@ Show this message when:
 
 ![](static/no-data-button.png)
 
-::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#nodata-example). Refer to the [WidgetEmpty documentation](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+::: tip Useful links
+- Live example of this state in [WidgetEmpty > NoData example](/components/widget-empty/widget-empty-code#nodata-example)
+- [Full list of illustrations](/style/illustration/illustration)
 :::
 
 ## Nothing found
@@ -107,8 +108,9 @@ Include a control, such as a "Clear filters" button, to help the user correct th
 
 ![](static/nothing-found-button.png)
 
-::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#nothingfound-example). Refer to the [documentation WidhetEmpty](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+::: tip Useful links
+- Live example of this state in [WidgetEmpty > Nothing found example](/components/widget-empty/widget-empty-code#nodata-example)
+- [Full list of illustrations](/style/illustration/illustration)
 :::
 
 ## Something went wrong
@@ -120,13 +122,14 @@ Show this state when there is an error in the product on the backend, preventing
 
 Table: Examples of "Something went wrong" state
 
-|                                            | Appearance example                                         |
-| ------------------------------------------ | --------------------------------------------------------- |
-| We are aware of the problem, and fixing it | ![](static/error-known.png)         |
+| Case                                       | Appearance example              |
+| ------------------------------------------ | ------------------------------- |
+| We are aware of the problem, and fixing it | ![](static/error-known.png)     |
 | We don't know about the problem yet        | ![](static/error-not-known.png) |
 
-::: tip
-Find an example with the svg illustration for this state in the [WidgetEmpty](/components/widget-empty/widget-empty-code#error-example). Refer to the [WidgetEmpty documentation](/components/widget-empty/widget-empty-api#images) for other illustrations and their names.
+::: tip Useful links
+- Live example of this state in [WidgetEmpty > Error example](/components/widget-empty/widget-empty-code#error-example)
+- [Full list of illustrations](/style/illustration/illustration)
 :::
 
 ## Message text
@@ -135,7 +138,7 @@ Find an example with the svg illustration for this state in the [WidgetEmpty](/c
 - Description: Explain what the user needs to do to change the situation
 - If possible, suggest an action (button or link) to help the user change the situation
 
-Refer to guides like [WidgetEmpty](/components/widget-empty/widget-empty) and [Global errors](/patterns/global-errors/global-errors).
+Refer to [WidgetEmpty](/components/widget-empty/widget-empty) and [Global errors](/patterns/global-errors/global-errors) guides.
 
 ## Table header
 

@@ -17,6 +17,14 @@ export type DropdownMenuSize = 'm' | 'l';
 export interface IDropdownMenuProps extends DropdownMenuProps, UnknownProperties {}
 export type DropdownMenuProps = DropdownProps & {
   /**
+   * Set role `menuitemradio` (or `menuitemcheckbox` if `multiselect`) for Dropdown.Item
+   */
+  selectable?: boolean;
+  /**
+   * Multiple select
+   */
+  multiselect?: boolean;
+  /**
    * Size of the menu
    * @default m
    */
@@ -60,8 +68,7 @@ export type DropdownMenuMenuProps = DropdownMenuListProps & {};
 export interface IDropdownMenuItemProps extends DropdownMenuItemProps, UnknownProperties {}
 export type DropdownMenuItemProps = FlexProps & {
   /**
-   * Enables selected state
-   * @deprecated Dropdown menu item can't have that state
+   * Enables selected state. For selectable dropdowns only.
    */
   selected?: boolean;
   /**

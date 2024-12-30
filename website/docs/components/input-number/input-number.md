@@ -146,7 +146,7 @@ Table: InputNumbers states
 
 ## Validation
 
-Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [Validation](/patterns/validation-form/validation-form) guide.
+Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [general validation guide](/patterns/validation-form/validation-form).
 
 To assist users in entering correct and valid data, you can:
 

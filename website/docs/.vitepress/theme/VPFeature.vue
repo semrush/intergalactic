@@ -16,15 +16,15 @@ defineProps<{
 </script>
 
 <template>
-  <VPLink
-    class="VPFeature"
-    :href="link"
-    :rel="rel"
-    :target="target"
-    :no-icon="true"
-    :tag="link ? 'a' : 'div'"
-  >
-    <article class="box">
+  <article class="VPFeature">
+    <VPLink
+      class="box"
+      :href="link"
+      :rel="rel"
+      :target="target"
+      :no-icon="true"
+      :tag="link ? 'a' : 'div'"
+    >
       <div v-if="typeof icon === 'object' && icon.wrap" class="icon">
         <VPImage
           :image="icon"
@@ -49,8 +49,8 @@ defineProps<{
           {{ linkText }} <span class="vpi-arrow-right link-text-icon" />
         </p>
       </div>
-    </article>
-  </VPLink>
+    </VPLink>
+  </article>
 </template>
 
 <style scoped>
@@ -63,7 +63,7 @@ defineProps<{
   transition: border-color 0.25s, background-color 0.25s;
 }
 
-.VPFeature.link:hover {
+.VPFeature:hover {
   border-color: var(--vp-c-brand-1);
 }
 

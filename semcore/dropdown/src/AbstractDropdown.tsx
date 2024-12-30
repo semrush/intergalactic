@@ -18,6 +18,8 @@ type AbstractDDProps = {
   ignorePortalsStacking: boolean;
   interaction: DropdownProps['interaction'];
   timeout?: number | [number, number];
+  selectable?: boolean;
+  multiselect?: boolean;
 };
 
 export const enhance = [
@@ -60,13 +62,23 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       return 'option';
     }
 
+    const { selectable, multiselect } = this.asProps;
+
+    if (multiselect) {
+      return 'menuitemcheckbox';
+    }
+
+    if (selectable) {
+      return 'menuitemradio';
+    }
+
     return 'menuitem';
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction } = this.asProps;
+    const { interaction, inlineActions } = this.asProps;
 
-    if (interaction === 'none') return false;
+    if (interaction === 'none' || inlineActions) return false;
 
     setTimeout(() => {
       const { visible, inlineActions } = this.asProps;
@@ -132,6 +144,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
 
   getItemProps(_: any, index: number) {
     const { size, uid } = this.asProps;
+    const role = this.childRole;
 
     return {
       id: `igc-${uid}-option-${index}`,
@@ -140,7 +153,8 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       onMouseEnter: () => {
         this.handlers.selectedIndex(index);
       },
-      role: this.childRole,
+      role,
+      'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
 
@@ -189,12 +203,13 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
       } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
-        innerHighlightedIndex = this.prevHighlightedIndex;
+        innerHighlightedIndex =
+          this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
       } else {
         innerHighlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
     } else {
-      innerHighlightedIndex = highlightedIndex;
+      innerHighlightedIndex = highlightedIndex > itemsLastIndex ? itemsLastIndex : highlightedIndex;
     }
 
     let newIndex = innerHighlightedIndex + amount;
@@ -235,7 +250,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
   }
 
   protected itemRef(props: any, index: number, node: HTMLElement | null) {
-    if (node?.getAttribute('role') === this.childRole) {
+    if (node?.getAttribute('role')?.startsWith(this.childRole)) {
       this.itemRefs[index] = node;
       this.itemProps[index] = props;
     }
@@ -264,7 +279,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
     if (
       this.asProps.visible !== true &&
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
-      e.currentTarget.getAttribute('role') !== this.childRole
+      !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
     ) {
       if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
         this.handlers.visible(true);

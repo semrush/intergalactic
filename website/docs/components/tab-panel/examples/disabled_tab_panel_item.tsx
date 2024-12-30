@@ -1,6 +1,6 @@
 import React from 'react';
 import TabPanel from 'intergalactic/tab-panel';
-import { Hint } from 'intergalactic/tooltip';
+import Tooltip from 'intergalactic/tooltip';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);
@@ -14,7 +14,7 @@ const Demo = () => {
         >
           <TabPanel.Item.Text>Normal tab</TabPanel.Item.Text>
         </TabPanel.Item>
-        <Hint
+        <Tooltip
           title='Do not forget to add short text to explain why this item is disabled.'
           placement='top'
           role='tab'
@@ -22,7 +22,7 @@ const Demo = () => {
           <TabPanel.Item value={2} disabled>
             <TabPanel.Item.Text>Disabled tab</TabPanel.Item.Text>
           </TabPanel.Item>
-        </Hint>
+        </Tooltip>
       </TabPanel>
       {
         [
