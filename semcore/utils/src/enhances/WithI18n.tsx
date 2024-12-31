@@ -63,15 +63,12 @@ const useI18n = (
   locale: LocaleKeys = 'en',
   fallbackDictionary?: Dictionary,
 ) => {
-  const lang = React.useContext(Context);
-  const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
-  const [intl, setIntl] = React.useState(() => {
-    return createIntl({ locale: lang || locale, messages: resolvedDictionary }, messagesCache);
-  });
-
-  React.useEffect(() => {
-    setIntl(createIntl({ locale: lang || locale, messages: resolvedDictionary }, messagesCache));
-  }, [resolvedDictionary, messagesCache, setIntl, lang, locale]);
+  const lang = React.useContext(Context) ?? locale;
+  const resolvedDictionary = useAsyncI18nMessages(dictionary, lang, fallbackDictionary);
+  const intl = React.useMemo(
+    () => createIntl({ locale: lang, messages: resolvedDictionary }, messagesCache),
+    [resolvedDictionary, lang],
+  );
 
   return React.useCallback(
     (messageId: string, variables?: { [key: string]: string | number | undefined }) => {
