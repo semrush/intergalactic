@@ -122,7 +122,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       errorItem = errors.find((e) => e?.rowIndex === currentRowIndex);
     }
 
-    const errorMessage = errorItem?.errorMessage ?? lastError?.errorMessage ?? commonErrorMessage;
+    const errorMessage =
+      errors.length === 0 // show any errors only if there are at least one error
+        ? null
+        : errorItem?.errorMessage ?? lastError?.errorMessage ?? commonErrorMessage;
     const isCommonError = !errorItem?.errorMessage && !lastError?.errorMessage;
 
     return {
