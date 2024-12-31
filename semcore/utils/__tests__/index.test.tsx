@@ -8,7 +8,6 @@ import isNode from '../src/isNode';
 import compose from '../src/compose';
 import useCss from '../src/use/useCss';
 import resolveColor, { shade, opacity } from '../src/color';
-import { interpolate } from '../src/enhances/i18nEnhance';
 import assignProps, { assignHandlers } from '../src/assignProps';
 import reactToText from '../src/reactToText';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
@@ -357,32 +356,6 @@ describe('Utils color', () => {
   test.concurrent('should support opacity regardless of case', () => {
     expect(opacity('#9EF2C9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
     expect(opacity('#9ef2c9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
-  });
-});
-
-describe('Utils interpolate', () => {
-  test.concurrent('Should interpolate variable with equal name', () => {
-    const Template = '{name}, dont turn this rape into a murder';
-    expect(interpolate(Template, { name: 'Sarah' })).toBe(
-      'Sarah, dont turn this rape into a murder',
-    );
-  });
-
-  test.concurrent('Should interpolate more then one variable', () => {
-    const Template = '{a}{b}{c}';
-    expect(interpolate(Template, { a: 'A', b: 'B', c: 'C' })).toBe('ABC');
-  });
-
-  test.concurrent('Should not fail if variable for template is not specified', () => {
-    const Template = '{name}, dont turn this rape into a murder';
-    expect(interpolate(Template, {})).toBe(Template);
-  });
-
-  test.concurrent('Should mirror HTML tags', () => {
-    const Template = '{name}';
-    expect(interpolate(Template, { name: `<script>console.log('oh my!')</script>` })).toBe(
-      `&lt;script&gt;console.log('oh my!')&lt;/script&gt;`,
-    );
   });
 });
 
