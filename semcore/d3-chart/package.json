@@ -17,6 +17,7 @@
     "build": "pnpm semcore-builder --source=js,ts"
   },
   "dependencies": {
+    "@formatjs/intl": "2.3.0",
     "@semcore/animation": "2.39.1",
     "@semcore/divider": "4.38.1",
     "@semcore/flex-box": "5.39.1",

@@ -443,9 +443,12 @@ importers:
       '@semcore/flex-box':
         specifier: 5.39.0
         version: 5.39.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/icon':
+        specifier: 4.53.1
+        version: link:../icon
       '@semcore/popper':
-        specifier: 5.45.0
-        version: 5.45.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 5.45.1
+        version: link:../popper
       '@semcore/tooltip':
         specifier: 6.47.0
         version: 6.47.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
@@ -453,8 +456,8 @@ importers:
         specifier: 5.48.0
         version: 5.48.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
-        specifier: 4.44.0
-        version: 4.44.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.44.1
+        version: link:../utils
       csstype:
         specifier: 3.0.8
         version: 3.0.8
@@ -700,6 +703,9 @@ importers:
 
   semcore/d3-chart:
     dependencies:
+      '@formatjs/intl':
+        specifier: 2.3.0
+        version: 2.3.0(typescript@5.1.6)
       '@semcore/animation':
         specifier: 2.39.1
         version: link:../animation

@@ -1,39 +1,6 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
 import { UnknownProperties } from '../core';
-import { createIntl, createIntlCache } from '@formatjs/intl';
-
-const cache = createIntlCache();
-const interpolationRegex = /{(.*?)}/g;
-
-const escapeHtml = (html: string) =>
-  String(html)
-    .split('')
-    .map((char) => {
-      switch (char) {
-        case '<':
-          return '&lt;';
-        case '>':
-          return '&gt;';
-        case '&':
-          return '&amp;';
-        case '"':
-          return '&quot;';
-        case '`':
-          return '&#x60';
-      }
-      return char;
-    })
-    .join('');
-
-export function interpolate(template: string, variables: {} = {}) {
-  return template.replace(interpolationRegex, (_, key) => {
-    if ((variables as any)[key] !== undefined) {
-      return escapeHtml((variables as any)[key]);
-    }
-    return _;
-  });
-}
 
 /** @deprecated */
 export interface IWithI18nEnhanceProps extends WithI18nEnhanceProps, UnknownProperties {}
@@ -118,15 +85,7 @@ export const useAsyncI18nMessages = (
     }
   }, [container, locale]);
 
-  const intl = createIntl(
-    {
-      locale,
-      messages: store[locale],
-    },
-    cache,
-  );
-
-  return intl.formatMessage ?? fallbackMessages;
+  return store[locale] ?? fallbackMessages;
 };
 export default (container?: MessagesContainer) => {
   return (props: any): { getI18nText: ReturnType<typeof useI18n> } => {

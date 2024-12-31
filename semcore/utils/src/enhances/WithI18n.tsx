@@ -1,13 +1,15 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
-import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
+import { useAsyncI18nMessages } from './i18nEnhance';
 import { UnknownProperties } from '../core';
+import { createIntl, createIntlCache } from '@formatjs/intl';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
 export type Dictionary = { [locale: string]: DictionaryItem | (() => Promise<DictionaryItem>) };
 export const Context = createContext<LocaleKeys | undefined>(undefined);
 const { Provider: I18nProvider, Consumer: I18nConsumer } = Context;
+const messagesCache = createIntlCache();
 
 function getText(dictionaries: Dictionary, locale: LocaleKeys) {
   return function (key: keyof DictionaryItem) {
@@ -62,13 +64,20 @@ const useI18n = (
   fallbackDictionary?: Dictionary,
 ) => {
   const lang = React.useContext(Context);
-  const formatMessage = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
+  const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
+  const [intl, setIntl] = React.useState(() => {
+    return createIntl({ locale: lang || locale, messages: resolvedDictionary }, messagesCache);
+  });
+
+  React.useEffect(() => {
+    setIntl(createIntl({ locale: lang || locale, messages: resolvedDictionary }, messagesCache));
+  }, [resolvedDictionary, messagesCache, setIntl, lang, locale]);
 
   return React.useCallback(
     (messageId: string, variables?: { [key: string]: string | number | undefined }) => {
-      return formatMessage({ id: messageId ?? '' }, variables);
+      return intl.formatMessage({ id: messageId ?? '' }, variables);
     },
-    [formatMessage],
+    [intl],
   );
 };
 

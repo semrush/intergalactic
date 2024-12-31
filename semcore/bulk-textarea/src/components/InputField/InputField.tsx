@@ -482,6 +482,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           {({ popper, setTrigger }) => {
             if (!this.popper) {
               this.setPopperTrigger = setTrigger;
+              // @ts-ignore
               this.popper = popper;
             }
 
