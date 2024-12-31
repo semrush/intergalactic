@@ -111,7 +111,7 @@ class ValueRoot extends Component {
       ],
     };
   };
-  static enhance = [autoFocusEnhance(), keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [keyboardFocusEnhance(), autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
 
