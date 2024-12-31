@@ -53,6 +53,7 @@ export function FeedbackItem({
           },
           input,
         );
+
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
@@ -65,7 +66,13 @@ export function FeedbackItem({
             }}
             {...tooltipProps}
           >
-            <Tooltip.Trigger inline={false} role={undefined} tag={tag} {...(tag ? inputProps : {})}>
+            <Tooltip.Trigger
+              inline={false}
+              role={undefined}
+              tag={tag}
+              {...(tag ? inputProps : {})}
+              __excludeProps={['type', 'aria-describedby']}
+            >
               {typeof Children.origin === 'function' &&
                 Children.origin({
                   input: inputProps,

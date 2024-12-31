@@ -4,5 +4,9 @@
   "formTitle": "Formulaire de commentaires",
   "submitButton": "Envoyer des commentaires",
   "successMessage": "Merci pour vos commentaires !",
-  "errorMessage": "Une erreur est survenue. Veuillez réessayer ou nous contacter à l’adresse {email}."
+  "errorMessage": "Une erreur est survenue. Veuillez réessayer ou nous contacter à l’adresse {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Appuyez sur Entrée pour sélectionner la note",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Votre ﻿note : {selectedRating} sur {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Non défini",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} sur {max}"
 }

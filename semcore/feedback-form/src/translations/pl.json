@@ -4,5 +4,9 @@
   "formTitle": "Formularz opinii",
   "submitButton": "Wyślij opinię",
   "successMessage": "Dziękujemy za opinię!",
-  "errorMessage": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami pod adresem {email}."
+  "errorMessage": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami pod adresem {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Naciśnij Enter, aby wybrać ocenę",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Twoja ocena: {selectedRating} z {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Nie ustawiono",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} z {max}"
 }
