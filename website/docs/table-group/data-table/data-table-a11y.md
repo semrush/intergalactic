@@ -40,10 +40,10 @@ The following list will help you to keep in mind the necessary attributes to mak
 
 Table: Attributes
 
-| Component / element | Attribute                  | Usage                                                           |
-| ------------------- | -------------------------- | --------------------------------------------------------------- |
-| `DataTable`         | `aria-label`               | Defines the accessible name of a table without a visible title. |
-|                     | `aria-labelledby="ID_REF"` | Refers to the heading element that labels the `grid`.           |
+| Attribute                  | Usage                                                           |
+| -------------------------- | --------------------------------------------------------------- |
+| <nobr>`aria-labelledby="IDREF"`</nobr> or `aria-label` | Defines the accessible name of the table. |
+| `aria-busy="true/false"`   | Indicates that some parts of the content haven't finished loading and assistive technology should wait before announcing updates. Use it if the table has several ARIA live regions that can update simultaneously. |
 
 ## Considerations for designers
 

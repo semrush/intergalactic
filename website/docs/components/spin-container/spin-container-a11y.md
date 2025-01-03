@@ -13,20 +13,23 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles & attributes
 
-| Attribute          | Element                 | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `aria-busy="true"` | Implicit on container.  | The `aria-busy` state indicates an element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. When multiple parts of a live region need to be loaded before changes are announced to the user, set `aria-busy="true"` until loading is complete. Then set to `aria-busy="false"`. This prevents assistive technologies from announcing changes before updates are done. |
-| `inert`            | Implicit on content.    | The `inert` attribute indicated that it's content should not be available for interacting by the user.                                                                                                                                                                                                                                                                                                                                                             |
+| Element                 | Attribute          | Usage                                                                             |
+| ----------------------- | ------------------ | --------------------------------------------------------------------------------- |
+| `SpinContainer.Content` | `inert`            | Indicates that the content is unavailable for the user. |
 
-See attributes applied to Spin on the [Spin A11y page](/components/spin/spin-a11y).
+Read also: [Spin A11y](/components/spin/spin-a11y).
 
 ## Considerations for developers
 
+Make sure the user is aware that loading has started or ended. There are two ways to do that, depending on the user flow:
+
+1. If the `SpinContainer` appears on top or instead of the last focused element, such as when submitting a form, focus the `Overlay` or its parent when the loading starts, and focus the content when it's loaded. Make sure focus is invisible if the focused element is noninteractive.
+2. In other cases, moving focus is usually undesirable, so add `role="status"` and `aria-live="polite"` attributes to the `SpinContainer`.
+
 ## Resources
 
-- Detailed information about `aria-busy` state you can find in the [W3's guide](https://www.w3.org/TR/wai-aria-1.1/#aria-busy).
-- [MDN's guide for aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy) describes core information for this state.
+[Read more about ARIA live regions on MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+Find more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

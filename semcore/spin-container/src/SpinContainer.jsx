@@ -46,7 +46,7 @@ class SpinContainerRoot extends Component {
       forcedAdvancedMode || isAdvanceMode(Children, [SpinContainer.Overlay.displayName]);
 
     return sstyled(styles)(
-      <SSpinContainer render={Box} aria-busy={loading}>
+      <SSpinContainer render={Box}>
         {advancedMode ? (
           <Children />
         ) : (
