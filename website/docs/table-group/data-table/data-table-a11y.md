@@ -43,7 +43,7 @@ Table: Attributes
 | Attribute                  | Usage                                                           |
 | -------------------------- | --------------------------------------------------------------- |
 | <nobr>`aria-labelledby="IDREF"`</nobr> or `aria-label` | Defines the accessible name of the table. |
-| `aria-busy="true/false"`   | Indicates that some parts of the content haven't finished loading and assistive technology should wait until announcing updates. Use it if the table has several ARIA live regions that can update simultaneously. |
+| `aria-busy="true/false"`   | Indicates that some parts of the content haven't finished loading and assistive technology should wait before announcing updates. Use it if the table has several ARIA live regions that can update simultaneously. |
 
 ## Considerations for designers
 
