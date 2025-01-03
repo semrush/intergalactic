@@ -34,7 +34,6 @@ class SkeletonRoot extends Component {
         render={Box}
         durationAnim={`${duration}ms`}
         role={'img'}
-        aria-busy='true'
         aria-label={getI18nText('loading')}
       />,
     );
