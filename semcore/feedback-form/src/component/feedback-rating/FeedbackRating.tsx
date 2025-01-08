@@ -162,8 +162,10 @@ class FeedbackRatingRoot extends Component<
       (config.description as ReactElement)?.type === React.Fragment;
 
     return (
-      <Flex tag='label' mt={4} direction='column' htmlFor={config.key} key={config.key}>
-        {label}
+      <Flex direction='column'>
+        <Flex tag='label' mt={4} htmlFor={config.key} key={config.key}>
+          {label}
+        </Flex>
 
         <FeedbackRating.Item
           name={config.key}
