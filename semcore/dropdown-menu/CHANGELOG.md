@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.0] - 2024-12-23
+
+### Added
+
+- `menuitemcheckbox` and `menuitemradio` roles for DropdownMenu.Item.
+
 ## [4.43.6] - 2024-12-16
 
 ### Changed

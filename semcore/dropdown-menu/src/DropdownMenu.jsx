@@ -51,6 +51,38 @@ class DropdownMenuRoot extends AbstractDropdown {
   actionsRef = React.createRef();
   role = 'menu';
 
+  uncontrolledProps() {
+    return {
+      ...super.uncontrolledProps(),
+      visible: [
+        null,
+        (visible) => {
+          if (visible === true) {
+            setTimeout(() => {
+              const options = this.menuRef.current?.querySelectorAll(
+                '[role="menuitemcheckbox"], [role="menuitemradio"]',
+              );
+              const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
+
+              if (selected && options) {
+                this.scrollToNode(selected);
+
+                for (let i = 0; i < options.length; i++) {
+                  if (options[i] === selected) {
+                    this.handlers.highlightedIndex(i);
+                    break;
+                  }
+                }
+              }
+              // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
+              // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
+            }, 30);
+          }
+        },
+      ],
+    };
+  }
+
   itemRef(props, index, node) {
     super.itemRef(props, index, node);
 
@@ -126,6 +158,16 @@ class DropdownMenuRoot extends AbstractDropdown {
       itemProps.size = props.size ?? 's';
     }
 
+    if (props.selected) {
+      itemProps['aria-checked'] = true;
+    }
+
+    if (super.childRole === 'menuitemradio') {
+      itemProps.onClick = () => {
+        this.handlers.visible(false);
+      };
+    }
+
     return itemProps;
   }
 
@@ -146,7 +188,7 @@ class DropdownMenuRoot extends AbstractDropdown {
         (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
         (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
         e.key === 'Escape';
-      const isMenuItem = e.target.getAttribute('role') === super.childRole;
+      const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
       if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
         this.handlers.visible(true);
@@ -251,7 +293,17 @@ function Menu(props) {
   );
 }
 
-function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, actionsRef }) {
+function Item({
+  id,
+  styles,
+  disabled,
+  Children,
+  forwardRef,
+  role,
+  tabIndex,
+  actionsRef,
+  'aria-checked': ariaChecked,
+}) {
   const SDropdownMenuItemContainer = Root;
   const itemRef = React.useRef();
 
@@ -262,6 +314,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, acti
     ref: forkRef(forwardRef, itemRef),
     role,
     tabIndex,
+    ariaChecked,
   };
   const ariaDescribes = [];
 
@@ -323,6 +376,7 @@ function Item({ id, styles, disabled, Children, forwardRef, role, tabIndex, acti
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
         use:tabIndex={advancedMode ? undefined : tabIndex}
+        use:aria-checked={advancedMode ? undefined : ariaChecked}
       >
         <Children />
       </SDropdownMenuItemContainer>
@@ -384,6 +438,7 @@ function ItemContent({ styles }) {
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
+      aria-checked={menuItemCtxValue.ariaChecked}
       alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
     />,
