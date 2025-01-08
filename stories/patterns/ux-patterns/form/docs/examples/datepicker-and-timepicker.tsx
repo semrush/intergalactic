@@ -8,12 +8,17 @@ import Checkbox from '@semcore/checkbox';
 import Button from '@semcore/button';
 
 type FormValues = {
-  start_date?: Date;
+  start_date?: string;
   start_time?: string;
-  due_date?: Date;
+  due_date?: string;
   due_time?: string;
 };
-const defaultValues: FormValues = {};
+const defaultValues: FormValues = {
+  start_date: '',
+  start_time: '',
+  due_date: '',
+  due_time: '',
+};
 
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);
@@ -35,7 +40,13 @@ const Demo = () => {
   };
 
   return (
-    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start' gap={6}>
+    <Flex
+      tag='form'
+      onSubmit={handleSubmit(onSubmit)}
+      direction='column'
+      alignItems='flex-start'
+      gap={6}
+    >
       <Flex gap={4}>
         <Flex direction='column' gap={2}>
           <Text size={300} tag='label' htmlFor='startDate'>
