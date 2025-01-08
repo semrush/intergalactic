@@ -422,14 +422,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         if (!currentRowValue) {
           event.preventDefault();
         } else {
-          if (event.key !== 'Enter') {
-            event.preventDefault();
-            const row = document.createElement('p');
-            row.innerHTML = this.emptyRowValue;
-            currentNode.after(row);
+          // if (event.key !== 'Enter') {
+          event.preventDefault();
+          const row = document.createElement('p');
+          row.innerHTML = this.emptyRowValue;
+          currentNode.after(row);
 
-            this.setSelection(row, 0, 0);
-          }
+          this.setSelection(row, 0, 0);
+          // }
 
           setTimeout(() => {
             if (validateOn.includes('enterNextRow')) {

@@ -58,13 +58,13 @@ SInputField > div {
   }
 
   &:has(p:nth-child(n + 10)) {
-    > div:before {
+    > p:before {
       min-width: 18px;
     }
   }
 
   &:has(p:nth-child(n + 100)) {
-    > div:before {
+    > p:before {
       min-width: 28px;
     }
   }
