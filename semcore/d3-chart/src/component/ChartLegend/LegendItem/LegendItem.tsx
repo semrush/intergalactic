@@ -141,7 +141,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
   if (shape === 'Pattern') {
     return sstyled(styles)(
       <Box mr={1}>
-        <SPatternSymbol color={color} patternKey={patternKey} />
+        <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
       </Box>,
     );
   }
@@ -158,7 +158,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>
-            <SPatternSymbol color={color} patternKey={patternKey} />
+            <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
           </Box>
         )}
       </>,

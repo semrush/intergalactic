@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.45.2] - 2025-01-08
+## [3.45.3] - 2025-01-08
 
 ### Changed
 
@@ -11,6 +11,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - `stopPropagation` for keydown events with `Arrow-*` as a `e.key`.
+
+## [3.45.2] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [5.44.1 ~> 5.44.2], `@semcore/utils` [4.44.0 ~> 4.44.1], `@semcore/core` [2.37.0 ~> 2.37.1]).
 
 ## [3.45.1] - 2024-12-09
 

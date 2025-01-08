@@ -8,13 +8,13 @@ const Demo = () => {
   return (
     <Flex gap={1}>
       <Tag size='l' addonLeft={SmileHappyM}>
-        Tag
+        Positive
       </Tag>
       <Tag size='l'>
         <Tag.Addon>
           <SmileSadM />
         </Tag.Addon>
-        <Tag.Text>Tag</Tag.Text>
+        <Tag.Text>Negative</Tag.Text>
       </Tag>
     </Flex>
   );

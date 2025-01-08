@@ -37,7 +37,7 @@ const App = PlaygroundGeneration((preview) => {
   });
 
   return (
-    <Box w={400}>
+    <Box w={200}>
       <Ellipsis trim={trim} tooltip={tooltip} maxLine={maxLine}>
         <Text>
           Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
