@@ -43,13 +43,13 @@ export function FeedbackItem({
         const invalid = meta.invalid && meta.touched;
         const errorState = showError && invalid;
         const popperId = `${uid}-error-description`;
+        const ariaDescribedBy = props['aria-describedby'];
         const inputProps = assignProps(
           {
             ...propsForElement(other),
             state: errorState ? 'invalid' : 'normal',
             'aria-invalid': errorState ? true : false,
-            'aria-errormessage': errorState && meta.active ? popperId : undefined,
-            'aria-describedby': errorState && meta.active ? popperId : undefined,
+            'aria-describedby': meta.active ? (errorState ? popperId : ariaDescribedBy) : undefined,
           },
           input,
         );

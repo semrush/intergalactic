@@ -175,6 +175,7 @@ class FeedbackRatingRoot extends Component<
           flip={{
             fallbackPlacements: ['right-start', 'bottom'],
           }}
+          aria-describedby={config.description ? config.key + '-description' : undefined}
         >
           {({ input }) => {
             if (config.type === 'textarea') {
@@ -193,7 +194,6 @@ class FeedbackRatingRoot extends Component<
                   <Input.Value
                     {...input}
                     onChange={this.handleChange(input.onChange)}
-                    aria-describedby={config.key + '-description'}
                     id={config.key}
                   />
                 </Input>
