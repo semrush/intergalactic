@@ -164,6 +164,12 @@ class SliderRatingRoot extends Component<
       );
     }
 
+    const hoverValue = hoveredIndex + 1;
+    const editModeLabel =
+      hoverValue > 0
+        ? `${getI18nText('FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber')}. ${label}`
+        : label;
+
     return sstyled(styles)(
       <SSliderRating
         render={Flex}
@@ -172,11 +178,10 @@ class SliderRatingRoot extends Component<
         onKeyDown={this.handleKeyDown}
         role={'slider'}
         aria-orientation='horizontal'
-        aria-describedby={sliderDescriberId}
         aria-valuemin={MIN}
         aria-valuemax={MAX}
-        aria-valuetext={label}
-        aria-valuenow={hoveredIndex + 1}
+        aria-valuetext={editModeLabel}
+        aria-valuenow={hoverValue}
       >
         {new Array(MAX).fill(null).map((_, index) => {
           return (
@@ -185,10 +190,6 @@ class SliderRatingRoot extends Component<
             </Box>
           );
         })}
-
-        <ScreenReaderOnly aria-hidden={true} id={sliderDescriberId}>
-          {getI18nText('FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber')}
-        </ScreenReaderOnly>
       </SSliderRating>,
     );
   }
