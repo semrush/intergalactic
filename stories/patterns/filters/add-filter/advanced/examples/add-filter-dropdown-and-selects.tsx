@@ -132,11 +132,6 @@ const AddFilterDropdownAndSelectsExample = () => {
   };
 
   const applyVolumeValueFromRange = () => {
-    // to check for type
-    if (!customRange.to && !customRange.from) {
-      return false;
-    }
-
     setFilterData((prevValue) => {
       return { ...prevValue, volume: setTriggerText(customRange) } as FilterData;
     });
