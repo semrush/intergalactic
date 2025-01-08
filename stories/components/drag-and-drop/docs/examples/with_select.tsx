@@ -64,53 +64,38 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu hMax={800}>
-        {({ highlightedIndex, selectedIndex }) => {
-          return (
-            <DnD
-              onDnD={handleDnD}
-              customFocus={highlightedIndex}
-              aria-label={'drag-and-drop container'}
+        <DnD onDnD={handleDnD} aria-label={'drag-and-drop container'}>
+          <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
+            <Text bold>Show table columns</Text>
+            <ButtonLink onClick={resetToDefault} role={'menuitem'}>
+              Reset to default
+            </ButtonLink>
+            <ButtonLink onClick={toggleAll} role={'menuitem'}>
+              {selectedColumns.length === columns.length ? 'Deselect' : 'Select'} all
+            </ButtonLink>
+          </Flex>
+          {columns.map((column, index) => (
+            <DropdownMenu.Item
+              tag={DnD.Draggable}
+              key={column.id}
+              selected={selectedColumns.includes(column.id)}
+              onClick={(e) => {
+                if (
+                  e.target instanceof HTMLElement &&
+                  e.target.getAttribute('role') === 'menuitemcheckbox'
+                ) {
+                  if (!selectedColumns.includes(column.id)) {
+                    setSelectedColumns([...selectedColumns, column.id]);
+                  } else {
+                    setSelectedColumns(selectedColumns.filter((i) => i !== column.id));
+                  }
+                }
+              }}
             >
-              <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
-                <Text bold>Show table columns</Text>
-                <ButtonLink onClick={resetToDefault} role={'menuitem'}>
-                  Reset to default
-                </ButtonLink>
-                <ButtonLink onClick={toggleAll} role={'menuitem'}>
-                  {selectedColumns.length === columns.length ? 'Deselect' : 'Select'} all
-                </ButtonLink>
-              </Flex>
-              {columns.map((column, index) => (
-                <DropdownMenu.Item
-                  tag={DnD.Draggable}
-                  key={column.id}
-                  // id={column.id}
-                  selected={selectedColumns.includes(column.id)}
-                  onClick={() => {
-                    if (!selectedColumns.includes(column.id)) {
-                      setSelectedColumns([...selectedColumns, column.id]);
-                    } else {
-                      setSelectedColumns(selectedColumns.filter((i) => i !== column.id));
-                    }
-                  }}
-                >
-                  <DropdownMenu inlineActions placement={'right'}>
-                    <Flex justifyContent='space-between'>
-                      <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
-                        {column.label}
-                      </DropdownMenu.Item.Content>
-                      {selectedIndex === index && (
-                        <DropdownMenu.Actions>
-                          <DropdownMenu.Item tag={Button} addonLeft={KebabM} title={'Move'} />
-                        </DropdownMenu.Actions>
-                      )}
-                    </Flex>
-                  </DropdownMenu>
-                </DropdownMenu.Item>
-              ))}
-            </DnD>
-          );
-        }}
+              {column.label}
+            </DropdownMenu.Item>
+          ))}
+        </DnD>
       </DropdownMenu.Menu>
     </DropdownMenu>
   );

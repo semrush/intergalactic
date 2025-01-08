@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.45.2] - 2025-01-08
+
+### Changed
+
+- Consider only elements with `draggable` attribute in calculations indexes.
+
+### Added
+
+- `stopPropagation` for keydown events with `Arrow-*` as a `e.key`.
+
 ## [3.45.1] - 2024-12-09
 
 ### Changed
