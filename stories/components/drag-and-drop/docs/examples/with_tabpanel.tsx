@@ -64,7 +64,7 @@ const Demo = () => {
     <DnD
       tag={TabPanel}
       value={currentTab}
-      onChange={(tab) => setCurrentTab(tab as string)}
+      onChange={(tab: string | number | boolean) => setCurrentTab(tab.toString())}
       onDnD={handleDnD}
       aria-label={'drag-and-drop container'}
     >

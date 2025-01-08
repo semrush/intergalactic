@@ -553,6 +553,8 @@ const Draggable = (props: any) => {
     zoneName,
     isDropZone = false,
     uid,
+    isCustomFocus = false,
+    keyboardFocused,
   } = props;
   const resolvedChildren = React.useMemo(
     () => (typeof children === 'function' ? children(props) : children),
@@ -580,6 +582,7 @@ const Draggable = (props: any) => {
       placement={placement}
       role={'group'}
       aria-describedby={`describe-draggable-${uid}`}
+      use:keyboardFocused={isCustomFocus ? false : keyboardFocused}
     >
       <Children />
     </SDraggable>,

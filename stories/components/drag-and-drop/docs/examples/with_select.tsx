@@ -77,6 +77,7 @@ const Demo = () => {
           {columns.map((column, index) => (
             <DropdownMenu.Item
               tag={DnD.Draggable}
+              isCustomFocus={true}
               key={column.id}
               selected={selectedColumns.includes(column.id)}
               onClick={(e) => {
