@@ -20,6 +20,7 @@ const Demo = () => {
           defaultValue='I_like_cats'
           placeholder='Password'
           type={type}
+          autoComplete='current-password'
           id='password-example'
         />
         <Input.Addon>

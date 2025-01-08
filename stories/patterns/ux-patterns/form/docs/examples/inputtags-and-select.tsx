@@ -141,6 +141,10 @@ const Demo = () => {
                   </InputTags.Tag>
                 ))}
                 <InputTags.Value
+                  id='emails'
+                  name='email'
+                  type='email'
+                  autoComplete='email'
                   value={valueTag}
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}

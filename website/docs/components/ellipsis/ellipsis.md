@@ -33,7 +33,7 @@ const App = PlaygroundGeneration((preview) => {
   const maxLine = text({
     key: 'maxLine',
     defaultValue: 1,
-    label: 'Rows count in multiline mode',
+    label: 'Number of lines',
   });
 
   return (

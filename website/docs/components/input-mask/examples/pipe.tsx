@@ -8,29 +8,33 @@ const Demo = () => {
   const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
 
   return (
-    <Box wMax={225} p={8} m='0 auto' style={{ borderRadius: '12px', background: '#F4F5F9' }}>
-      <Text
-        tag='label'
-        size={300}
-        medium
-        mb={2}
-        htmlFor='card_number'
-        style={{ display: 'inline-block' }}
-      >
+    <Flex
+      direction='column'
+      wMax={300}
+      gap={2}
+      p={8}
+      mx='auto'
+      style={{
+        borderRadius: 'var(--intergalactic-surface-rounded)',
+        background: 'var(--intergalactic-bg-secondary-neutral)',
+      }}
+    >
+      <Text tag='label' size={300} htmlFor='card_number'>
         Card number
       </Text>
-      <InputMask size='l' mb={4}>
+      <InputMask size='l' mb={2}>
         <InputMask.Value
           mask='9999 9999 9999 9999'
           placeholder='____ ____ ____ ____'
           onSuccess={handleSuccess}
-          title='card number - 16-digits'
+          title='16 digits'
           id='card_number'
+          autoComplete='cc-number'
         />
       </InputMask>
-      <Flex alignItems='center' justifyContent='flex-end'>
-        <Text tag='label' mr={2} size={300} htmlFor='expire_date'>
-          Expire date
+      <Flex alignItems='center' justifyContent='flex-end' gap={2}>
+        <Text tag='label' size={300} htmlFor='expire_date'>
+          Expiry date
         </Text>
         <InputMask size='l' wMax={85}>
           <InputMask.Value
@@ -38,12 +42,13 @@ const Demo = () => {
             mask='99/99'
             placeholder='MM/YY'
             pipe={pipeExpireDate}
-            title='month and year of card expiration - 4 digits in total'
+            title='Month and year, 4 digits in total'
             id='expire_date'
+            autoComplete='cc-exp'
           />
         </InputMask>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 

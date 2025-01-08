@@ -14,9 +14,9 @@ import Badge from '@semcore/ui/badge';
 const Preview = (preview) => {
   const { select, radio, text } = preview('Badge');
 
-  const color = radio({
+  const color = select({
     key: 'color',
-    defaultValue: 'white',
+    defaultValue: 'text-primary-invert',
     label: 'Color',
     options: ['text-primary-invert', 'text-primary'],
   });

@@ -7,9 +7,10 @@ const Demo = () => {
   return (
     <Flex>
       <Input neighborLocation='right' w={200}>
-        <Input.Value placeholder='Placeholder' aria-label={'Label for input with select'} />
+        <Input.Value placeholder='Placeholder' aria-label={'Input with select'} />
       </Input>
       <Select
+        aria-label='Select with input'
         neighborLocation='left'
         options={[
           { value: 'Option 1', children: 'Option 1' },
