@@ -72,6 +72,13 @@ class RootAddFilter extends Component<
     };
   }
 
+  focusAddFilterTrigger() {
+    // waiting for focus ref to appear in dom
+    setTimeout(() => {
+      this.AddFilterTrigger.current?.focus();
+    }, 20);
+  }
+
   getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
     return Array.from(this.state.visibleFilters).map((name) => {
       return allFilters.find(({ props }) => props.name === name);
@@ -86,7 +93,7 @@ class RootAddFilter extends Component<
       value: filterData[name],
       onClear: () => {
         this.hideFilter(name);
-        this.AddFilterTrigger.current?.focus();
+        this.focusAddFilterTrigger();
       },
     };
   }
@@ -175,7 +182,7 @@ class RootAddFilter extends Component<
           .length > 0,
       clearAll: () => {
         this.clearAll();
-        this.AddFilterTrigger.current?.focus();
+        this.focusAddFilterTrigger();
       },
       getI18nText,
     };
