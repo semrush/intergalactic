@@ -137,6 +137,7 @@
     "description": "Secondary background of the interface which contains the main data and information.",
     "components": [
       "accordion",
+      "bulk-textarea",
       "d3-chart",
       "drag-and-drop",
       "input",
@@ -2646,6 +2647,7 @@
     "components": [
       "accordion",
       "base-trigger",
+      "bulk-textarea",
       "button",
       "carousel",
       "checkbox",
