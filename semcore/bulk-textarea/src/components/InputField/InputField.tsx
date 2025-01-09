@@ -330,7 +330,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         selection?.setPosition(firstRow, nodeText.length);
       } else if (!firstNode || firstNode instanceof HTMLBRElement) {
         this.textarea.textContent = '';
-      } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent) {
+      } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
           this.textarea.textContent = '';
         }
