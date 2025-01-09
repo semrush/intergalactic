@@ -132,7 +132,7 @@ class BulkTextareaRoot extends Component<
   }
 
   getCounterProps() {
-    const { ofRows, getI18nText } = this.asProps;
+    const { ofRows, getI18nText, size } = this.asProps;
     const { rowsCount, isEmptyText } = this.state;
 
     let counterTheme = '';
@@ -148,6 +148,7 @@ class BulkTextareaRoot extends Component<
       theme: counterTheme,
       rowsCount: isEmptyText ? 0 : rowsCount,
       ofRows,
+      size,
     };
   }
 
