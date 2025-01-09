@@ -1,19 +1,15 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import Skeleton from 'intergalactic/skeleton';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import Button from '@semcore/button';
+import Skeleton from '@semcore/skeleton';
 
 const Demo = () => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   return (
     <>
-      <Flex gap={2} mb={3}>
-        <Button onClick={() => setLoading(true)}>Load data</Button>
-        <Button onClick={() => setLoading(false)}>Stop loading</Button>
-      </Flex>
-      <Flex role='status' aria-live='polite' h={80}>
+      <Flex role='status' aria-live='polite'>
         {!loading && (
           <Text size={200}>
             The Egyptian pyramids are ancient masonry structures located in Egypt. Sources cite at
@@ -21,11 +17,14 @@ const Demo = () => {
             the Kingdom of Kush, now located in the modern country of Sudan.
           </Text>
         )}
-        <Skeleton hidden={!loading}>
+        <Skeleton hidden={!loading} h={60}>
           <Skeleton.Text amount={2} />
           <Skeleton.Text y='40' width='60%' />
         </Skeleton>
       </Flex>
+      <Button onClick={() => setLoading(!loading)} mt={3}>
+        {loading ? 'Stop loading' : 'Start loading'}
+      </Button>
     </>
   );
 };

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import DataTable from 'intergalactic/data-table';
-import Spin from 'intergalactic/spin';
-import Button from 'intergalactic/button';
+import DataTable from '@semcore/data-table';
+import Spin from '@semcore/spin';
+import Button from '@semcore/button';
 
 const Demo = () => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   const data = [
     {
@@ -20,10 +19,6 @@ const Demo = () => {
 
   return (
     <>
-      <Flex gap={2} mb={3}>
-        <Button onClick={() => setLoading(true)}>Load data</Button>
-        <Button onClick={() => setLoading(false)}>Stop loading</Button>
-      </Flex>
       <DataTable data={data} aria-label={'Table title'}>
         <DataTable.Head>
           <DataTable.Column name='fruit' children='Fruit' />
@@ -43,6 +38,9 @@ const Demo = () => {
           </DataTable.Cell>
         </DataTable.Body>
       </DataTable>
+      <Button onClick={() => setLoading(!loading)} mt={3}>
+        {loading ? 'Stop loading' : 'Start loading'}
+      </Button>
     </>
   );
 };

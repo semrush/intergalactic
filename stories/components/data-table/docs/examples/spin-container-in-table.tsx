@@ -1,22 +1,10 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
-import Skeleton from '@semcore/skeleton';
+import SpinContainer from '@semcore/spin-container';
 import Button from '@semcore/ui/button';
 import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 
-function getSkeleton() {
-  return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
-    cssVar: `--${c}_width`,
-    name: c,
-    data: (
-      <Skeleton height={17}>
-        <Skeleton.Text y='5' width='60%' />
-      </Skeleton>
-    ),
-  }));
-}
-
-const Demo = () => {
+const Demo = (): any => {
   const [loading, setLoading] = React.useState(true);
   const [message, setMessage] = React.useState('');
 
@@ -39,16 +27,22 @@ const Demo = () => {
       <ScreenReaderOnly role='status' aria-live='polite'>
         {message}
       </ScreenReaderOnly>
-      <DataTable data={data} aria-label={'Loading using Skeleton'}>
+      <DataTable data={data} aria-label={'Loading using SpinContainer'}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />
           <DataTable.Column name='cpc' children='CPC' />
           <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Head>
-        <DataTable.Body
-          {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
-        />
+        <SpinContainer
+          loading={loading}
+          style={{ overflow: 'initial' }}
+          // @ts-ignore
+          inert={loading ? '' : undefined}
+        >
+          <DataTable.Body />
+          <SpinContainer.Overlay />
+        </SpinContainer>
       </DataTable>
       <Button onClick={handleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
@@ -75,6 +69,18 @@ const data = [
     kd: '10',
     cpc: '$0.65',
     vol: '47,354,640',
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '-',
+    cpc: '$0',
+    vol: 'n/a',
+  },
+  {
+    keyword: 'ebay buy',
+    kd: '75.89',
+    cpc: '$0',
+    vol: '21,644,290',
   },
 ];
 
