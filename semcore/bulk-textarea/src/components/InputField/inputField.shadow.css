@@ -11,7 +11,7 @@ SInputField > div {
   word-break: keep-all;
   font-family: inherit;
 
-  &:empty:before {
+  &:empty::before {
     content: '1. ' attr(placeholder);
     color: var(--intergalactic-text-placeholder, #8a8e9b);
     position: absolute;
@@ -25,7 +25,7 @@ SInputField > div {
     position: relative;
     word-break: break-all;
 
-    &:before {
+    &::before {
       content: counter(row) '.';
       display: inline-block;
       white-space: nowrap;
@@ -47,7 +47,7 @@ SInputField > div {
       margin-bottom: 0;
     }
 
-    &:not(:empty):before {
+    &:not(:empty)::before {
       content: counter(row) '.';
       display: inline-block;
       white-space: nowrap;
@@ -58,14 +58,20 @@ SInputField > div {
   }
 
   &:has(p:nth-child(n + 10)) {
-    > p:before {
-      min-width: 18px;
+    > p:nth-child(-n + 9)::before {
+      padding-left: 8px;
     }
   }
 
   &:has(p:nth-child(n + 100)) {
-    > p:before {
-      min-width: 28px;
+    > p:nth-child(-n + 9)::before {
+      padding-left: 16px;
+    }
+    > p:nth-child(n + 10)::before {
+      padding-left: 8px;
+    }
+    > p:nth-child(n + 100)::before {
+      padding-left: 0;
     }
   }
 }
