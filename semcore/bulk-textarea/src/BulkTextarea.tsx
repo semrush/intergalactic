@@ -124,7 +124,7 @@ class BulkTextareaRoot extends Component<
               this.setState({ lastError: undefined });
             }, 150);
           }
-        });
+        }, 10); // this timeout to be sure that code will be after state change
       },
       rowsDelimiters,
       ref: this.inputFieldRef,
