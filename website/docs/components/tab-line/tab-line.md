@@ -164,7 +164,7 @@ Table: TabLine states
 
 When switching between active tabs, the border-bottom moves with an `ease` transition and a duration of `500ms`.
 
-## Placement in the interface
+## Location
 
 TabLine is always placed under the [ProductHead](/components/product-head/product-head) of the report, following the title, additional controls, and filters that affect the entire report.
 

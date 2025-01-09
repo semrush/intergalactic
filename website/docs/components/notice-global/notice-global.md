@@ -144,7 +144,7 @@ Use this theme to convey serious error or problem messages concerning the entire
 
 ![](static/gnotice-danger.png)
 
-## Placement in the interface
+## Location in the interface
 
 - Always position this notice above the main website header.
 - Stretch the notice to cover the full width of the screen.

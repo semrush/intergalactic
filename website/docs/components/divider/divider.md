@@ -84,15 +84,6 @@ Table: Divider types
 | `primary`  | ![](static/solid.png)   | `border: 1px solid var(--border-primary)`   |
 | `secondary`| ![](static/dashed.png)  | `border: 1px dashed var(--border-primary)`  |
 
-## Orientation
-
-Table: Divider orientation
-
-| Orientation  | Example                         |
-| ------------ | ------------------------------- |
-| Horizontal   | ![](static/default-theme.png)   |
-| Vertical     | ![](static/solid.png)           |
-
 ## Themes
 
 The divider can be used either on a light or dark/colored background.
@@ -103,6 +94,15 @@ Table: Divider themes
 | ------- | ---------------------------- | ------------------------------------------------- |
 | Default | ![](static/default-theme.png) | `border: 1px solid var(--border-primary)`        |
 | Invert  | ![](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert)`|
+
+## Orientation
+
+Table: Divider orientation
+
+| Orientation  | Example                         |
+| ------------ | ------------------------------- |
+| Horizontal   | ![](static/default-theme.png)   |
+| Vertical     | ![](static/solid.png)           |
 
 ## Usage in UX/UI
 

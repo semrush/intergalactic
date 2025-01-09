@@ -106,7 +106,7 @@ align-items: center;
 
 ## Interaction
 
-### Placement in the interface
+### Placement
 
 - You can customize whether the panel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
 - The focus remains inside the panel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using `Tab`.

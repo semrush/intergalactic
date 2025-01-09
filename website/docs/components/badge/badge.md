@@ -94,11 +94,11 @@ The feature status can be shown inside most of the components and controls.
 
 ![](static/button_secondary.png)
 
-### Pill
+### Pills
 
 ![](static/pills.png)
 
-### Feature status in the notification
+### Notification
 
 ![](static/notice.png)
 
@@ -108,7 +108,7 @@ Don’t confuse [Tag](/components/tag/tag) and Badge components. Tag is used for
 
 ![](static/table-yes-no.png)
 
-## Location
+## Placement
 
 Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/notice) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 

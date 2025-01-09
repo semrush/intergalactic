@@ -184,7 +184,7 @@ Table: Notice themes
 | **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
 | **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
 
-## Placement in interface
+## Location
 
 ### On page
 

@@ -106,7 +106,7 @@ Usually, long URL links are most common for tables and other widgets. Read the d
 
 ![](static/ellipsis-end-tooltp.png)
 
-### Table Head
+### Table head
 
 To show more data in the limited space you can truncate the text in the table head. In this case always show a tooltip on hover to show the entire text string, or phrase.
 

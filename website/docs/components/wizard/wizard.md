@@ -58,13 +58,13 @@ padding-bottom: var(--intergalactic-spacing-1x);
 
 Table: Stepper states
 
-| State    | Appearance example     | Styles      |
-| -------- | ---------------------- | ----------- |
-| Normal   | ![](static/normal.png)                                                        | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)`                                                                     |
-| Hover    | ![](static/hover.png)                                                         | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                                                                                    |
-| Active   | ![](static/active.png)                                                        | `background-color: var(--control-primary-advertising-active)`                                                                                                       |
+| State    | Appearance example                                        | Styles                                                                                                                                     |
+| -------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Normal   | ![](static/normal.png)                                    | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)`                                             |
+| Hover    | ![](static/hover.png)                                     | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                                                            |
+| Active   | ![](static/active.png)                                    | `background-color: var(--control-primary-advertising-active)`                                                                              |
 | Disabled | ![](static/disabled.png) ![](static/disabled-tooltip.png) | Use `--disabled-opacity` token. When hovering on a button in this state, display a tooltip with a description of why the step is disabled. |
-| checked  | ![](static/checked.png)                                                       | The number changes to a `Check` icon in size M.   |
+| checked  | ![](static/checked.png)                                   | The number changes to a `Check` icon in size M.                                                                                            |
 
 ## Content area styles
 
@@ -150,4 +150,3 @@ In the form, use the same sizes for inputs and controls.
 ### Saving entered value
 
 If data entered into the form by the user wasn't sent and the window is closed, save the entered data so that the user doesn't lose it.
-
