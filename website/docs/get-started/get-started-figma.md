@@ -1,5 +1,6 @@
 ---
-title: Figma libraries
+title: Get started
+tabs: For developers('get-started-dev'), Production optimization('get-started-production'), For designers('get-started-design'), Figma libraries('get-started-figma')
 ---
 
 ## Introduction

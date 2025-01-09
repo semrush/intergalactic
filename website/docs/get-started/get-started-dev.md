@@ -1,6 +1,6 @@
 ---
-title: For developers
-tabs: Get started('dev-starter-guide'), For production('production-tips')
+title: Get started
+tabs: For developers('get-started-dev'), Production optimization('get-started-production'), For designers('get-started-design'), Figma libraries('get-started-figma')
 ---
 
 ## Introduction

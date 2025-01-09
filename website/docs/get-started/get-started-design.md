@@ -1,5 +1,6 @@
 ---
-title: For designers
+title: Get started
+tabs: For developers('get-started-dev'), Production optimization('get-started-production'), For designers('get-started-design'), Figma libraries('get-started-figma')
 ---
 
 ## Introduction
@@ -76,4 +77,4 @@ Since there are many use cases and edge cases, we have separate guidelines for [
 
 ## Resources
 
-For all the resources you need to start creating an interface for the Semrush products, refer to the [Figma libraries page](/get-started-guide/work-figma/work-figma).
+For all the resources you need to start creating an interface for the Semrush products, refer to the [Figma libraries page](/get-started-guide/work-figma).
