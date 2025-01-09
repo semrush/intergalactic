@@ -5,6 +5,7 @@ SInputField > div {
   border-style: solid;
   border-width: 1px;
   overflow: auto;
+  position: relative;
 
   color: var(--intergalactic-text-primary, #191b23);
   word-wrap: break-word;
@@ -15,7 +16,7 @@ SInputField > div {
     content: '1. ' attr(placeholder);
     color: var(--intergalactic-text-placeholder, #8a8e9b);
     position: absolute;
-    left: 33px;
+    left: var(--intergalactic-spacing-4x, 16px);
   }
 
   &:nth-child(even) {
