@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.58.5] - 2024-12-20
+
+### Added
+
+- `aria-hidden="true"` to `PatternSymbol` inside `LegendItem` to improve A11Y.
+
 ## [3.58.4] - 2024-12-19
 
 ### Removed

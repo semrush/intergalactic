@@ -248,8 +248,7 @@ class RootDefinitionTable extends Component<AsProps> {
     data: [],
   } as AsProps;
 
-  focusedCell: [RowIndex, ColIndex] = [0, 0];
-  cellsMap = new Map<RowIndex, Map<ColIndex, HTMLElement>>();
+  focusedCell: [RowIndex, ColIndex] = [-1, -1];
 
   columns: Column[] = [];
 
@@ -550,8 +549,10 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
 
     if (prevProps.data !== this.props.data) {
-      if (this.tableRef.current && !isFocusInside(this.tableRef.current)) {
-        this.cellsMap.clear();
+      const focusedRow = this.focusedCell[0];
+      const isFocusInHeader = focusedRow === 0 && this.hasFocusableInHeader();
+      if (this.tableRef.current && !isFocusInside(this.tableRef.current) && !isFocusInHeader) {
+        this.focusedCell = [-1, -1];
       }
     }
   }
@@ -560,41 +561,6 @@ class RootDefinitionTable extends Component<AsProps> {
     const { data, totalRows } = this.asProps;
 
     return totalRows ?? (data ?? []).length;
-  }
-
-  fillCells() {
-    const rows = this.tableRef.current?.querySelectorAll<HTMLDivElement>('[role=row]');
-
-    if (rows?.length) {
-      rows.forEach((row, rowIndex) => {
-        const rowCellsMap = new Map<ColIndex, HTMLElement>();
-
-        const queriedRowCells = row.querySelectorAll<HTMLDivElement>(
-          '[role=gridcell], [role=columnheader]',
-        );
-
-        let cellIndex = 0;
-
-        queriedRowCells.forEach((cell) => {
-          cell.setAttribute('inert', '');
-
-          const cellName = cell.getAttribute('name');
-          const columnsName = cellName?.split('/');
-
-          if (columnsName && columnsName.length > 1) {
-            columnsName.forEach(() => {
-              rowCellsMap.set(cellIndex, cell);
-              cellIndex = cellIndex + 1;
-            });
-          } else {
-            rowCellsMap.set(cellIndex, cell);
-            cellIndex = cellIndex + 1;
-          }
-        });
-
-        this.cellsMap.set(rowIndex, rowCellsMap);
-      });
-    }
   }
 
   setInert(value: boolean) {
@@ -627,9 +593,13 @@ class RootDefinitionTable extends Component<AsProps> {
     const maxCol = this.columns.length - 1;
     const maxRow = this.totalRows;
 
-    const currentRow = this.cellsMap.get(this.focusedCell[0]);
-    const currentCell = currentRow?.get(this.focusedCell[1]);
-    const currentHeaderCell = this.cellsMap.get(0)?.get(this.focusedCell[1]);
+    const currentRow = this.tableRef.current?.querySelector(
+      `[aria-rowindex="${this.focusedCell[0] + 1}"]`,
+    );
+    const headerRow = this.tableRef.current?.querySelector('[aria-rowindex="1"]');
+    const headerCells = headerRow?.querySelectorAll('[role=columnheader]');
+    const currentCell = currentRow?.querySelectorAll('[role=gridcell]').item(this.focusedCell[1]);
+    const currentHeaderCell = headerCells?.item(this.focusedCell[1]);
 
     let changed = true;
     const newRow = this.focusedCell[0] + rowIndex;
@@ -649,17 +619,17 @@ class RootDefinitionTable extends Component<AsProps> {
 
     this.focusedCell = [newRow, newCol];
 
-    const row = this.cellsMap.get(newRow);
-    const cell = row?.get(newCol);
+    const row = this.getRow(newRow);
+    const cell = row?.querySelectorAll('[role=gridcell], [role=columnheader]').item(newCol);
 
-    if (cell && currentCell !== cell) {
+    if (cell instanceof HTMLElement && currentCell !== cell) {
       currentCell?.setAttribute('inert', '');
 
       if (currentCell !== currentHeaderCell) {
         currentCell?.removeAttribute('aria-describedby');
       }
 
-      const headerCell = this.cellsMap.get(0)?.get(newCol);
+      const headerCell = headerCells?.item(newCol);
       const describedBy = headerCell?.getAttribute('aria-describedby');
 
       cell.removeAttribute('inert');
@@ -671,7 +641,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
       if (newRow !== 0) {
         currentHeaderCell?.setAttribute('inert', '');
-        const headerCell = this.cellsMap.get(0)?.get(newCol);
+        const headerCell = headerCells?.item(newCol);
 
         headerCell?.removeAttribute('inert');
       }
@@ -709,39 +679,63 @@ class RootDefinitionTable extends Component<AsProps> {
     }
   };
 
+  initFocusableCell = () => {
+    const hasFocusable = this.hasFocusableInHeader();
+
+    if (hasFocusable) {
+      this.focusedCell = [0, 0];
+    } else {
+      this.focusedCell = [1, 0];
+    }
+  };
+
+  getRow = (index: number) => {
+    return index === 0
+      ? this.tableRef.current?.querySelector('[role=row]')
+      : this.tableRef.current?.querySelector(`[aria-rowindex="${index + 1}"]`);
+  };
+
   handleFocus = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
     if (
       (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) &&
       this.asProps.focusSourceRef?.current === 'keyboard'
     ) {
-      if (this.cellsMap.size === 0) {
-        this.fillCells();
-
-        const hasFocusable = this.hasFocusableInHeader();
-
-        if (hasFocusable) {
-          this.focusedCell = [0, 0];
-        } else {
-          this.focusedCell = [1, 0];
-        }
+      if (this.focusedCell[0] === -1 && this.focusedCell[1] === -1) {
+        this.initFocusableCell();
       }
 
       this.setInert(true);
 
-      const row = this.cellsMap.get(this.focusedCell[0]);
-      const cell = row?.get(this.focusedCell[1]);
+      let row = this.getRow(this.focusedCell[0]);
+
+      if (!row) {
+        this.initFocusableCell();
+        row = this.getRow(this.focusedCell[0]);
+      }
+
+      const cell = row
+        ?.querySelectorAll('[role=gridcell], [role=columnheader]')
+        .item(this.focusedCell[1]);
 
       cell?.removeAttribute('inert');
-      cell?.focus();
+      cell instanceof HTMLElement && cell.focus();
 
       e.currentTarget.setAttribute('tabIndex', '-1');
     }
   };
 
   handleBlur = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+    const relatedTarget = e.relatedTarget;
+    const tableElement = this.tableRef.current;
+
+    if (
+      tableElement &&
+      (!relatedTarget ||
+        !isFocusInside(tableElement, relatedTarget) ||
+        this.asProps.focusSourceRef?.current !== 'keyboard')
+    ) {
       this.setInert(false);
-      e.currentTarget.setAttribute('tabIndex', '0');
+      tableElement.setAttribute('tabIndex', '0');
     }
   };
 

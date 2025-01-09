@@ -7,6 +7,7 @@ import ReloadM from '@semcore/icon/Reload/m';
 const manager = new NoticeBubbleManager();
 
 const Demo = () => {
+  const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     manager.add({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
@@ -18,12 +19,17 @@ const Demo = () => {
       ),
       initialAnimation: true,
       duration: 0,
+      onClose: () => {
+        setTimeout(() => {
+          openButtonRef.current?.focus();
+        }, 300);
+      },
     });
   };
 
   return (
     <>
-      <Button onClick={handleClick}>Show failure notice</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>Show failure notice</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );
