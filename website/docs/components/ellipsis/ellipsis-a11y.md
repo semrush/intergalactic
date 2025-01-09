@@ -6,9 +6,9 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 ## Considerations for designers and developers
 
-Avoid using `Ellipsis` for non-interactive text—when using keyboard, the tooltip with the full text can only appear on focus, so it will be inaccessible for keyboard users.
+Avoid using `Ellipsis` for noninteractive text—when using keyboard, the tooltip with the full text can only appear on focus, so it will be inaccessible for keyboard users.
 
-If you have to truncate non-interactive text, provide a control to expand the full text, such as a **Show more** button.
+If you have to truncate noninteractive text, provide a control to expand the full text, such as a **Show more** button.
 
 ## Other recommendations
 

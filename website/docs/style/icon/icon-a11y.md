@@ -12,7 +12,7 @@ The following list describes roles and attributes that component already has.
 
 | Attribute            | Usage                                                                                                                                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-hidden="true"` | **Only for non-interactive icons.** Hides the icon from the assistive technology.  |
+| `aria-hidden="true"` | **Only for noninteractive icons.** Hides the icon from the assistive technology.  |
 | `role="button"`      | **Only for interactive icons.** Identifies the element as a button. |
 
 ## Considerations for developers
@@ -30,7 +30,7 @@ The following list will help you to keep in mind the necessary roles and attribu
 
 | Attribute             | Usage                                                                                                                                                                                                                     |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-hidden="false"` | Makes the **non-interactive** icon accessible for the assistive technology. Add this attribute to non-interactive icons if they convey meaningful information, such as status, category and so on, that isn't represented by text. |
+| `aria-hidden="false"` | Makes the **noninteractive** icon accessible for the assistive technology. Add this attribute to noninteractive icons if they convey meaningful information, such as status, category and so on, that isn't represented by text. |
 | `aria-label` or `aria-labelledby` | Defines an accessible name for the icon. This attribute is required for elements that don't have any text content and aren't hidden from the assistive technology. <br/>For best accessibility, add a visible [Hint](../../components/tooltip/tooltip), which will automatically provide an `aria-label` for its trigger, as demonstrated in the [example](./icon-code).  |
 
 ## Considerations for designers
