@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [16.0.0] - 2025-01-09
+
+### Deprecated
+
+- `Item` element for `ColorPicker.Colors` and `PaletteManager.Colors`.
+
 ## [2.41.7] - 2024-12-30
 
 ### Changed
