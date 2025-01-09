@@ -8,7 +8,7 @@ tabs: Design('form'), A11y('form-a11y'), Example('form-code')
 - Use the `label` element, and, in specific cases, other mechanisms (for example, WAI-ARIA, title attribute etc.), to identify each form control.
 - Use the `fieldset` and `legend` elements to group and associate related form controls.
 - Validate input provided by the user and provide options to undo changes and confirm data entry.
-- Use autocomplete attribute for common fields.
+- Use appropriate `type` and `autocomplete` attributes in inputs for personal data, such as email, phone number, or credit card number. Read more in the [MDN autocomplete guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values).
 - When a form with errors is submitted, make sure focus is moved to the first field in error for inline errors or to the error container for top-of-form errors.
 
 See [Forms Tutorial from W3](https://www.w3.org/WAI/tutorials/forms/) for the detailed information and links.
@@ -20,7 +20,7 @@ See detailed information about the keyboard support for the all form elements in
 ## Considerations for designers
 
 - Provide instructions to help users understand how to complete the form and individual form controls.
-- Use autocomplete for common fields.
+- Use appropriate `type` and `autocomplete` attributes in inputs for personal data, such as email, phone number, or credit card number. Read more in the [MDN autocomplete guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values).
 - Notify users about successful task completion, any errors, and provide instructions to help them correct mistakes.
 - Divide long forms into multiple smaller forms that constitute a series of logical steps or stages and inform users about their progress.
 - Don't use inputs in forms without a visible label. Placeholder text isn’t a suitable substitute as it disappears when users start typing, which is difficult for those with cognitive disabilities. Also, assistive technology may not recognize it as the field's name. Input labels should always be visible.
