@@ -8,7 +8,7 @@ type PasteProps = {
    */
   rowProcessing?: (row: string) => string;
   /**
-   * @default false
+   * @default true
    */
   skipEmptyRows?: boolean;
 };
@@ -87,6 +87,11 @@ export type InputFieldProps = {
    * @default 100
    */
   ofRows?: number;
+
+  /**
+   * @default true
+   */
+  skipEmptyRowsInCounter?: boolean;
 
   /**
    * Paste props

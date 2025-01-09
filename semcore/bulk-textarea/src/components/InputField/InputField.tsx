@@ -8,6 +8,7 @@ import Tooltip from '@semcore/tooltip';
 import { InputFieldProps, ErrorItem } from './InputField.types';
 import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import rafTrottle from '@semcore/utils/lib/rafTrottle';
 
 type IndexKeys = 'keyboardRowIndex' | 'mouseRowIndex';
 
@@ -33,12 +34,13 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   };
 
   delimiter = '\n';
-  skipEmptyRows = false;
+  skipEmptyRows = true;
   emptyRowValue = '&#xfeff;';
+  spaceRowValue = '&nbsp;';
 
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
-  textareaObserver: MutationObserver;
+  // textareaObserver: MutationObserver;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -53,6 +55,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   isFocusing = false;
 
+  rowsCountTimeout = 0;
+  rowsCount = 0;
+
   state = {
     visibleErrorPopper: false,
     keyboardRowIndex: -1,
@@ -62,8 +67,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   constructor(props: InputFieldProps) {
     super(props);
 
+    // this.recalculateRowsCount = rafTrottle(this.recalculateRowsCount.bind(this));
     this.textarea = this.createContentEditableElement(props);
-    this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
+    // this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
   }
 
   uncontrolledProps() {
@@ -76,7 +82,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.setStylesForRowsOverLimit();
 
     this.containerRef.current?.append(this.textarea);
-    this.textareaObserver.observe(this.textarea, { childList: true });
+    // this.textareaObserver.observe(this.textarea, { childList: true });
 
     this.handleValueOutChange();
   }
@@ -98,7 +104,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   componentWillUnmount() {
-    this.textareaObserver.disconnect();
+    // this.textareaObserver.disconnect();
     this.cleanStylesForRowsOverLimit();
   }
 
@@ -168,27 +174,30 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleValueOutChange() {
-    const { value } = this.props;
+    const { value, onChangeRowsCount } = this.props;
 
     if (value === '') {
       this.textarea.textContent = '';
+      onChangeRowsCount(0);
     } else {
       const listOfNodes = this.prepareNodesForPaste(value);
 
       this.textarea.replaceChildren(...listOfNodes);
+
+      this.recalculateRowsCount();
     }
   }
 
-  handleChangeTextareaTree(): void {
-    const nodes = this.textarea.childNodes;
-    let rowsCount = nodes.length;
-
-    if (nodes.length === 1 && !nodes.item(0).textContent?.trim()) {
-      rowsCount = 0;
-    }
-
-    this.props.onChangeRowsCount(rowsCount);
-  }
+  // handleChangeTextareaTree(): void {
+  //   const nodes = this.textarea.childNodes;
+  //   let rowsCount = nodes.length;
+  //
+  //   if (nodes.length === 1 && !nodes.item(0).textContent?.trim()) {
+  //     rowsCount = 0;
+  //   }
+  //
+  //   this.props.onChangeRowsCount(rowsCount);
+  // }
 
   handleScroll(): void {
     if (this.scrollingTimeout) {
@@ -307,6 +316,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
+    this.recalculateRowsCount();
+
     if (validateOn.includes('paste') || this.asProps.showErrors) {
       this.recalculateErrors();
     }
@@ -377,6 +388,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (rowNode === null) {
         this.setPopperTrigger?.(this.textarea);
       }
+
+      this.recalculateRowsCount();
     }
   }
 
@@ -525,17 +538,26 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   private prepareNodesForPaste(value: string): HTMLParagraphElement[] {
     const listOfNodes: HTMLParagraphElement[] = [];
     const { pasteProps } = this.asProps;
-    const rowProcessing = pasteProps?.rowProcessing ?? ((row: string) => row.trim());
+    const rowProcessing =
+      pasteProps?.rowProcessing ??
+      ((row: string) => {
+        const trimmedRow = row.trim();
+        return trimmedRow === '' ? row : trimmedRow;
+      });
     const skipEmptyRows = pasteProps?.skipEmptyRows ?? this.skipEmptyRows;
     const delimiter = pasteProps?.delimiter ?? this.delimiter;
 
     value.split(delimiter).forEach((line) => {
       const preparedLine = rowProcessing(line);
+
       if ((preparedLine === '' && skipEmptyRows === false) || preparedLine !== '') {
         const node = document.createElement('p');
 
         if (preparedLine === '') {
           node.innerHTML = this.emptyRowValue;
+        } else if (preparedLine.trim() === '') {
+          const allSpacesRegExp = new RegExp('\\s', 'g');
+          node.innerHTML = preparedLine.replace(allSpacesRegExp, this.spaceRowValue);
         } else {
           node.append(document.createTextNode(preparedLine));
         }
@@ -564,6 +586,31 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     });
 
     this.asProps.onErrorsChange(errors);
+  }
+
+  private recalculateRowsCount(): void {
+    if (this.rowsCountTimeout) {
+      clearTimeout(this.rowsCountTimeout);
+    }
+
+    this.rowsCountTimeout = window.setTimeout(() => {
+      let rowsCount = 0;
+
+      this.textarea.childNodes.forEach((node) => {
+        if (
+          node instanceof HTMLParagraphElement &&
+          node.textContent !== this.getEmptyParagraph().textContent &&
+          node.textContent !== ''
+        ) {
+          rowsCount++;
+        }
+      });
+
+      if (this.rowsCount !== rowsCount) {
+        this.rowsCount = rowsCount;
+        this.asProps.onChangeRowsCount(rowsCount);
+      }
+    }, 100);
   }
 
   private getRowsValue(): string[] {
@@ -725,14 +772,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         nextNode = currentNode.nextSibling;
         break;
       case 'ArrowLeft': {
-        if (currentNode.textContent?.trim() === '') {
+        if (currentNode.textContent === this.getEmptyParagraph().textContent) {
           event.preventDefault();
           nextNode = currentNode.previousSibling;
         }
         break;
       }
       case 'ArrowRight': {
-        if (currentNode.textContent?.trim() === '') {
+        if (currentNode.textContent === this.getEmptyParagraph().textContent) {
           event.preventDefault();
           nextNode = currentNode.nextSibling;
         }
@@ -756,6 +803,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
       this.setSelection(nodeToSetSelection, offset, offset, 'nearest');
     }
+  }
+
+  private getEmptyParagraph() {
+    const element = document.createElement('p');
+
+    element.innerHTML = this.emptyRowValue;
+
+    return element;
   }
 }
 
