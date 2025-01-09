@@ -136,7 +136,6 @@ const Demo = () => {
             >
               <Tooltip.Trigger
                 tag={InputTags}
-                delimiters={[',', ';', '|', 'Enter']}
                 size='l'
                 state={emailInvalid ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
