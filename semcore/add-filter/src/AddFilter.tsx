@@ -13,6 +13,7 @@ import { findAllComponents } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { SelectProps } from '@semcore/select';
+import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
 
 type SelectItemProps = SelectProps & AddFilterItemProps;
 
@@ -43,7 +44,7 @@ class RootAddFilter extends Component<
 > {
   AddFilterTrigger = React.createRef<HTMLButtonElement>();
   static displayName = 'AddFilter';
-  static enhance = [i18nEnhance(localizedMessages)] as const;
+  static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
@@ -73,10 +74,14 @@ class RootAddFilter extends Component<
   }
 
   focusAddFilterTrigger() {
-    // waiting for focus ref to appear in dom
-    setTimeout(() => {
-      this.AddFilterTrigger.current?.focus();
-    }, 20);
+    const { focusSourceRef } = this.asProps;
+
+    if (focusSourceRef.current === 'keyboard') {
+      // waiting for focus ref to appear in dom
+      setTimeout(() => {
+        this.AddFilterTrigger.current?.focus();
+      }, 20);
+    }
   }
 
   getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
