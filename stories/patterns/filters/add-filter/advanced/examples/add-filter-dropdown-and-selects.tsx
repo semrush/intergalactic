@@ -9,7 +9,6 @@ import NeighborLocation from '@semcore/neighbor-location';
 import InputNumber from '@semcore/input-number';
 import Divider from '@semcore/divider';
 import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
 
 type RangeValue = {
   from: string;
@@ -213,6 +212,7 @@ const AddFilterDropdownAndSelectsExample = () => {
           onChange={(volume: any) => {
             setFilterData({ ...filterData, volume });
           }}
+          onUnmount={clearVolume}
         >
           <AddFilter.Select.Trigger
             placeholder='Volume'
@@ -261,6 +261,9 @@ const AddFilterDropdownAndSelectsExample = () => {
           displayName='Select with search'
           onChange={(fruit: any) => {
             setFilterData({ ...filterData, fruit });
+          }}
+          onUnmount={() => {
+            setFilter('');
           }}
         >
           <AddFilter.Select.Trigger

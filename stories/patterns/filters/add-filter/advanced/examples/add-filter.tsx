@@ -111,7 +111,6 @@ const AddFilterExample = () => {
   const [filterData, setFilterData] = React.useState<FilterData>(() => defaultFilterData);
 
   const clearField = (name: keyof FilterData) => {
-    const valueType = typeof filterData[name];
     setFilterData((prevData) => ({ ...prevData, [name]: defaultFilterData[name] }));
   };
 

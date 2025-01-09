@@ -15,6 +15,10 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
     };
   };
 
+  componentWillUnmount() {
+    this.asProps.onUnmount?.();
+  }
+
   uncontrolledProps() {
     return {
       visible: [null],

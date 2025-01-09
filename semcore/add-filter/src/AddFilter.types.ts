@@ -9,6 +9,7 @@ import Button, { ButtonLink } from '@semcore/button';
 export type AddFilterItemProps = {
   name: string;
   displayName?: string;
+  onUnmount?: () => void;
 };
 
 declare const AddFilterSelectType: Intergalactic.Component<typeof Select, AddFilterItemProps> & {

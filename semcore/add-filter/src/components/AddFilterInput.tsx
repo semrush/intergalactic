@@ -9,6 +9,10 @@ type AsPropsWithOnClear<T> = T & { onClear: () => void };
 class AddFilterInputRoot extends Component<AddFilterItemProps> {
   static displayName = 'AddFilterInput';
 
+  componentWillUnmount() {
+    this.asProps.onUnmount?.();
+  }
+
   getValueProps(props: InputValueProps) {
     const { value, onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 

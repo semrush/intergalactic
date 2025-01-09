@@ -26,6 +26,10 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
     };
   }
 
+  componentWillUnmount() {
+    this.asProps.onUnmount?.();
+  }
+
   getTriggerProps() {
     const { value, onClear } = this.asProps as AsPropsTypeWithHandlers<typeof this.asProps>;
 
