@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `aria-busy` attribute as unnecessary.
 
+### Added
+
+- `role="img"` for correct recognition by assistive technology and to avoid double reading.
+
 ## [5.39.1] - 2024-12-30
 
 ### Changed
