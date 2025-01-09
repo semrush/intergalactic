@@ -22,7 +22,6 @@ export default defineConfig({
       configureMarkdownIt(md);
     },
   },
-  appearance: 'dark',
 
   cleanUrls: true,
   lastUpdated: true,
