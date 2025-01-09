@@ -25,12 +25,14 @@ type KeywordDataItem = {
 type KeywordProps = {
   value: KeywordDataItem;
   onChange: (v: KeywordDataItem) => void;
+  onClear: () => void;
 };
-const Keywords = ({ value, onChange }: KeywordProps) => {
+const Keywords = ({ value, onChange, onClear }: KeywordProps) => {
   const [textAreaValue, setTextAreaValue] = React.useState(value?.value ?? '');
 
   const applyFilters = () => {
     if (!textAreaValue) {
+      onClear();
       return;
     }
     const countLine = textAreaValue.split(/\n/g).filter(Boolean) || [];
@@ -234,6 +236,9 @@ const AddFilterExample = () => {
             <Keywords
               onChange={(v) => {
                 setFilterData({ ...filterData, keywords: v });
+              }}
+              onClear={() => {
+                clearField('keywords');
               }}
               value={filterData.keywords}
             />
