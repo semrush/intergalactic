@@ -40,7 +40,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   containerRef = React.createRef<HTMLDivElement>();
   textarea: HTMLDivElement;
-  // textareaObserver: MutationObserver;
 
   popper: PopperContext['popper'] | null = null;
   setPopperTrigger: PopperContext['setTrigger'] | null = null;
@@ -67,9 +66,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   constructor(props: InputFieldProps) {
     super(props);
 
-    // this.recalculateRowsCount = rafTrottle(this.recalculateRowsCount.bind(this));
     this.textarea = this.createContentEditableElement(props);
-    // this.textareaObserver = new MutationObserver(this.handleChangeTextareaTree.bind(this));
   }
 
   uncontrolledProps() {
@@ -82,13 +79,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.setStylesForRowsOverLimit();
 
     this.containerRef.current?.append(this.textarea);
-    // this.textareaObserver.observe(this.textarea, { childList: true });
 
     this.handleValueOutChange();
   }
 
   componentDidUpdate(prevProps: InputFieldProps): void {
-    const { value, errors, errorIndex, showErrors } = this.props;
+    const { value, errors, errorIndex, showErrors, disabled, readonly } = this.props;
 
     if (prevProps.value !== value && value !== this.getRowsValue().join(this.delimiter)) {
       this.handleValueOutChange();
@@ -101,11 +97,27 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     if (prevProps.errorIndex !== errorIndex) {
       this.handleChangeErrorIndex(errorIndex);
     }
+
+    if (prevProps.disabled !== disabled || prevProps.readonly !== readonly) {
+      if (this.isDisabled) {
+        this.textarea.setAttribute('contenteditable', 'false');
+        this.removeEventListeners(this.textarea);
+      } else {
+        this.textarea.setAttribute('contenteditable', 'true');
+        this.addEventListeners(this.textarea);
+      }
+    }
   }
 
   componentWillUnmount() {
-    // this.textareaObserver.disconnect();
     this.cleanStylesForRowsOverLimit();
+    this.removeEventListeners(this.textarea);
+  }
+
+  get isDisabled(): boolean {
+    const { disabled, readonly } = this.asProps;
+
+    return Boolean(disabled || readonly);
   }
 
   get popperDescribedId() {
@@ -142,7 +154,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   createContentEditableElement(props: InputFieldProps) {
     const textarea = document.createElement('div');
-    textarea.setAttribute('contentEditable', 'true');
+    textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
 
@@ -160,15 +172,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
     }
 
-    textarea.addEventListener('paste', this.handlePaste.bind(this));
-    textarea.addEventListener('input', this.handleChange.bind(this));
-    textarea.addEventListener('focus', this.handleFocus.bind(this));
-    textarea.addEventListener('blur', this.handleBlur.bind(this));
-    textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
-    textarea.addEventListener('mousedown', this.handleMouseDown.bind(this));
-    textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
-    textarea.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
-    textarea.addEventListener('scroll', this.handleScroll.bind(this));
+    if (!props.disabled && !props.readonly) {
+      this.addEventListeners(textarea);
+    }
 
     return textarea;
   }
@@ -187,17 +193,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.recalculateRowsCount();
     }
   }
-
-  // handleChangeTextareaTree(): void {
-  //   const nodes = this.textarea.childNodes;
-  //   let rowsCount = nodes.length;
-  //
-  //   if (nodes.length === 1 && !nodes.item(0).textContent?.trim()) {
-  //     rowsCount = 0;
-  //   }
-  //
-  //   this.props.onChangeRowsCount(rowsCount);
-  // }
 
   handleScroll(): void {
     if (this.scrollingTimeout) {
@@ -471,11 +466,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   render() {
     const SInputField = Root;
-    const { styles, showErrors } = this.asProps;
+    const { styles, showErrors, disabled, readonly } = this.asProps;
     const { visibleErrorPopper } = this.state;
 
     const { errorMessage, isCommonError } = this.errorMessage;
-    const visibleErrorTooltip = showErrors && visibleErrorPopper && Boolean(errorMessage);
+    const visibleErrorTooltip =
+      showErrors && visibleErrorPopper && Boolean(errorMessage) && !this.isDisabled;
 
     return sstyled(styles)(
       <>
@@ -811,6 +807,29 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     element.innerHTML = this.emptyRowValue;
 
     return element;
+  }
+
+  private addEventListeners(textarea: HTMLElement) {
+    textarea.addEventListener('paste', this.handlePaste.bind(this));
+    textarea.addEventListener('input', this.handleChange.bind(this));
+    textarea.addEventListener('focus', this.handleFocus.bind(this));
+    textarea.addEventListener('blur', this.handleBlur.bind(this));
+    textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
+    textarea.addEventListener('mousedown', this.handleMouseDown.bind(this));
+    textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
+    textarea.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    textarea.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+  private removeEventListeners(textarea: HTMLElement) {
+    textarea.removeEventListener('paste', this.handlePaste);
+    textarea.removeEventListener('input', this.handleChange);
+    textarea.removeEventListener('focus', this.handleFocus);
+    textarea.removeEventListener('blur', this.handleBlur);
+    textarea.removeEventListener('keydown', this.handleKeyDown);
+    textarea.removeEventListener('mousedown', this.handleMouseDown);
+    textarea.removeEventListener('mousemove', this.handleMouseMove);
+    textarea.removeEventListener('mouseleave', this.handleMouseLeave);
+    textarea.removeEventListener('scroll', this.handleScroll);
   }
 }
 

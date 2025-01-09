@@ -11,6 +11,8 @@ export type BulkTextareaProps = {
   placeholder?: InputFieldProps['placeholder'];
   size?: InputFieldProps['size'];
   state?: InputFieldProps['state'];
+  disabled?: InputFieldProps['disabled'];
+  readonly?: InputFieldProps['readonly'];
 
   minRows?: InputFieldProps['minRows'];
   maxRows?: InputFieldProps['maxRows'];

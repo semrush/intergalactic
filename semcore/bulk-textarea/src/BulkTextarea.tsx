@@ -72,6 +72,8 @@ class BulkTextareaRoot extends Component<
       onChange,
       rowsDelimiters,
       ofRows,
+      disabled,
+      readonly,
     } = this.asProps;
     const { errors, errorIndex, showErrors, lastError } = this.state;
 
@@ -79,6 +81,8 @@ class BulkTextareaRoot extends Component<
       value,
       size,
       state,
+      disabled,
+      readonly,
       minRows,
       maxRows,
       ofRows,
@@ -153,18 +157,20 @@ class BulkTextareaRoot extends Component<
   }
 
   getClearAllButtonProps() {
-    const { size, getI18nText } = this.asProps;
+    const { size, getI18nText, disabled, readonly } = this.asProps;
+
     return {
       onClick: this.handleClickClearAllButton,
       isHidden: this.state.isEmptyText,
       size,
       getI18nText,
       ref: this.clearAllButtonRef,
+      disabled: disabled || readonly,
     };
   }
 
   getErrorsNavigationProps() {
-    const { size, getI18nText } = this.asProps;
+    const { size, getI18nText, disabled, readonly } = this.asProps;
     const { errors, errorIndex, showErrors } = this.state;
     return {
       size,
@@ -174,6 +180,7 @@ class BulkTextareaRoot extends Component<
       onNextError: this.handleChangeErrorIndex(1),
       errorsCount: errors.map(Boolean).length,
       showErrors,
+      disabled: disabled || readonly || false,
     };
   }
 

@@ -50,6 +50,18 @@ export type InputFieldProps = {
   state: 'normal' | 'valid' | 'invalid';
 
   /**
+   * Flag for disabling field
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * Flag for readonly field
+   * @default false
+   */
+  readonly?: boolean;
+
+  /**
    * Min rows
    * @default 2
    */

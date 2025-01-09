@@ -14,11 +14,20 @@ export type ErrorsNavigationProps = {
   size: 'm' | 'l';
   showErrors: boolean;
   getI18nText: ReturnType<typeof useI18n>;
+  disabled: boolean;
 };
 
 export function ErrorsNavigation(props: ErrorsNavigationProps) {
-  const { errorIndex, errorsCount, onPrevError, onNextError, size, showErrors, getI18nText } =
-    props;
+  const {
+    errorIndex,
+    errorsCount,
+    onPrevError,
+    onNextError,
+    size,
+    showErrors,
+    getI18nText,
+    disabled,
+  } = props;
   const currentIndex = errorIndex + 1;
   const nextIndex = currentIndex === errorsCount || errorIndex === -1 ? 1 : currentIndex + 1;
   const prevIndex = currentIndex === 1 || errorIndex === -1 ? errorsCount : currentIndex - 1;
@@ -35,6 +44,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
               index: nextIndex,
             })}
             hintPlacement={'bottom'}
+            disabled={disabled}
           />
           <Button
             onClick={onPrevError}
@@ -45,8 +55,9 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
               index: prevIndex,
             })}
             hintPlacement={'bottom'}
+            disabled={disabled}
           />
-          <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1}>
+          <Text size={size === 'l' ? 300 : 200} color='text-critical' ml={1} disabled={disabled}>
             {errorIndex === -1
               ? getI18nText('BulkTextarea.ErrorsNavigation.totalErrors', { errorsCount })
               : getI18nText('BulkTextarea.ErrorsNavigation.selectedError', {

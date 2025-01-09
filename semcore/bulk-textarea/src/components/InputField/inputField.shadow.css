@@ -140,3 +140,9 @@ SInputField[state='invalid'] > div {
   background-repeat: repeat-y;
 }
 
+SInputField[readonly] > div {
+  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+}
+SInputField[disabled] > div {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+}
