@@ -143,11 +143,10 @@ class SliderRatingRoot extends Component<
   }
 
   render() {
-    const { styles, readonly, getI18nText, uid } = this.asProps;
+    const { styles, readonly, getI18nText, value } = this.asProps;
     const { hoveredIndex } = this.state;
 
     const SSliderRating = Root;
-    const sliderDescriberId = `${uid}-slider-describer`;
     const label = this.getLabelText();
 
     if (readonly) {
@@ -165,9 +164,12 @@ class SliderRatingRoot extends Component<
     }
 
     const hoverValue = hoveredIndex + 1;
+
     const editModeLabel =
-      hoverValue > 0
-        ? `${getI18nText('FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber')}. ${label}`
+      hoverValue > 0 || value
+        ? `${label}. ${getI18nText(
+            'FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber',
+          )}.`
         : label;
 
     return sstyled(styles)(
