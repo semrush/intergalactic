@@ -10,7 +10,7 @@ In basic cases the most convenient way is to use the [NoticeSmart](/components/n
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/notice/examples/noticesmart.tsx';
+  export Demo from 'stories/components/notice/docs/examples/noticesmart.tsx';
 </script>
 
 :::
@@ -26,7 +26,7 @@ For even more customization, refer to the [FeedbackYesNo](/patterns/feedback-yes
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/notice/examples/custom_notice.tsx';
+  export Demo from 'stories/components/notice/docs/examples/custom_notice.tsx';
 </script>
 
 :::
