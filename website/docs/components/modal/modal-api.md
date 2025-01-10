@@ -15,7 +15,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Overlay
 
-Component which represents the background. Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
+Component which represents the background. Has all properties as [BoxProps](/layout/box-system/box-system-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';
@@ -24,7 +24,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Window
 
-Component which represents the modal window itself. Has all properties as [BoxProps](/layout/box-system/box-api) prop does.
+Component which represents the modal window itself. Has all properties as [BoxProps](/layout/box-system/box-system-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';
@@ -33,7 +33,7 @@ import Modal from '@semcore/ui/modal';
 
 ## Modal.Close
 
-Component which represents the closing icon. The component is the `CloseS` icon with the configured styles. Has all properties as [BoxProps](/layout/box-system/box-api) prop and [IconProps](/style/icon/icon-api) prop does.
+Component which represents the closing icon. The component is the `CloseS` icon with the configured styles. Has all properties as [BoxProps](/layout/box-system/box-system-api) prop and [IconProps](/style/icon/icon-api) prop does.
 
 ```jsx
 import Modal from '@semcore/ui/modal';

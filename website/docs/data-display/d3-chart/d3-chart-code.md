@@ -168,7 +168,7 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 
 ## Adaptive chart
 
-For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-api) and can help you flexibly adjust the chart size.
+For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-system-api) and can help you flexibly adjust the chart size.
 
 ::: tip
 `ResponsiveContainer` supports the `aspect` property – the aspect ratio between the width and height of a chart.

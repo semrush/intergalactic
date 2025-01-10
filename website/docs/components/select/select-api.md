@@ -84,7 +84,7 @@ import Select from '@semcore/ui/select';
 
 ## Select.Option.Hint
 
-Styled [Flex](/layout/box-system/box-api#flex).
+Styled [Flex](/layout/box-system/box-system-api#flex).
 
 ```jsx
 import Select from '@semcore/ui/select';
@@ -93,7 +93,7 @@ import Select from '@semcore/ui/select';
 
 ## Select.Option.Checkbox
 
-A styled [Box](/layout/box-system/box-api#box) that looks like a checkbox.
+A styled [Box](/layout/box-system/box-system-api#box) that looks like a checkbox.
 
 ```jsx
 import Select from '@semcore/ui/select';

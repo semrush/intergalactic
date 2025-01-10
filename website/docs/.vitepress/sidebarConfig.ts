@@ -114,7 +114,7 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Grid and page layout',
           },
           {
-            link: '/layout/box-system/box-system',
+            link: '/layout/box-system/box-system-spacing',
             activeMatch: '/layout/box-system/',
             text: 'Flex-box and spacing system',
           },

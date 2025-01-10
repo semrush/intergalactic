@@ -324,7 +324,7 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 ## Margins between buttons
 
-**The margin between buttons shall be [multiple of 4](/layout/box-system/box-system#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+**The margin between buttons shall be [multiple of 4](/layout/box-system/box-system-spacing)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
 Table: Margins between buttons
 

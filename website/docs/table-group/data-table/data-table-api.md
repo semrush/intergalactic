@@ -37,7 +37,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Body />;
 ```
 
-It's a wrapper over a [Box](/layout/box-system/box-api#a3cfce) component.
+It's a wrapper over a [Box](/layout/box-system/box-system-api#box) component.
 
 ## DataTable.Row
 

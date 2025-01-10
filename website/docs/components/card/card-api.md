@@ -5,7 +5,7 @@ tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), 
 
 ## Card
 
-It's just a [Box](../../layout/box-system/box-api#box) with predefined styles.
+It's just a [Box](../../layout/box-system/box-system-api#box) with predefined styles.
 
 ```jsx
 import Card from '@semcore/ui/card';
@@ -14,7 +14,7 @@ import Card from '@semcore/ui/card';
 
 ## Card.Header
 
-It's just a [Box](../../layout/box-system/box-api#box) with predefined paddings. Contains `Card.Title` and `Card.Description`.
+It's just a [Box](../../layout/box-system/box-system-api#box) with predefined paddings. Contains `Card.Title` and `Card.Description`.
 
 ```jsx
 import Card from '@semcore/ui/card';
@@ -23,7 +23,7 @@ import Card from '@semcore/ui/card';
 
 ## Card.Body
 
-It's just a [Box](../../layout/box-system/box-api#box) with predefined paddings.
+It's just a [Box](../../layout/box-system/box-system-api#box) with predefined paddings.
 
 ```jsx
 import Card from '@semcore/ui/card';
