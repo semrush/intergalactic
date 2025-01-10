@@ -1,7 +1,7 @@
 ---
-title: Grid and page layout
+title: Grid
 fileSource: grid
-tabs: Design('grid-system'), API('grid-api'), Grid system('grid-code'), Changelog('grid-changelog')
+tabs: Page layout('grid-system-layout'), API('grid-system-api'), Example('grid-system-code'), Changelog('grid-system-changelog')
 ---
 
 ## Description
