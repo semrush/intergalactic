@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index cda0f5dd4d8b9c2f61a4f1c42b964c0fc231116d..b379ed3fa37122bfa5e0e60cf997905f5f98d021 100644
+--- a/package.json
++++ b/package.json
+@@ -11,6 +11,7 @@
+   "source": "src/index.ts",
+   "types": "dist/index.d.ts",
+   "sideEffects": false,
++  "type": "module",
+   "files": [
+     "dist",
+     "dist/__tests__"
