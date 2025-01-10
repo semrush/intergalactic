@@ -108,7 +108,7 @@ Don’t confuse [Tag](/components/tag/tag) and Badge components. Tag is used for
 
 ![](static/table-yes-no.png)
 
-## Placement
+## Location
 
 Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/notice) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 

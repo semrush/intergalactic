@@ -14,7 +14,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 :::
 
-## Example of a dual-zone modal window
+## Example of dual-zone modal window
 
 ::: sandbox
 
