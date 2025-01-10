@@ -1,5 +1,5 @@
 ---
-title: Get started
+title: For designers
 ---
 
 ## Introduction
