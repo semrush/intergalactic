@@ -46,7 +46,7 @@ Notice includes the following mandatory elements:
 
 **Contains the following mandatory elements:**
 
-- **Rating slider.** Non-interactive and shows the user's choice on the previous step. If user closes the window, then its choice will be cleared.
+- **Rating slider.** Noninteractive and shows the user's choice on the previous step. If user closes the window, then its choice will be cleared.
 - **Title.** Set titles that are suitable for the value that user have chosen. Don't forget to add the appropriate `h` tag.
 - **Group of checkboxes with suggestions.** Depending on the number of stars chosen, you can show different predefined sets of checkboxes for selection. Show 3 checkboxes maximum.
 - **Textarea for optional text feedback.** It has defailt label "Is there anything we could improve?". But you can change it if necessary. You can set a maximum number of symbols for it.

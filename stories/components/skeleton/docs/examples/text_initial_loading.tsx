@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import Skeleton from 'intergalactic/skeleton';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import Button from '@semcore/button';
+import Skeleton from '@semcore/skeleton';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);

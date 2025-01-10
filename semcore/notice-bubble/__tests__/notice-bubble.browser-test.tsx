@@ -18,9 +18,9 @@ const locators = {
   closeButton: (page: Page) => page.getByLabel('Close'),
   closeHint: (page: Page) => page.getByText('Close'),
   buttonTrigger: (page: Page, text: string) =>
-    page.locator(`[data-ui-name="Button"]:has-text("${text}")`),
+    page.locator(`[data-ui-name="Button"]`, { hasText: text }),
   successNotice: (page: Page, text: string) =>
-    page.locator(`div[data-ui-name="Flex"] .___SMessage_f2jt1_gg_`, { hasText: text }),
+    page.locator(`div[data-ui-name="Flex"] div[class^='___SMessage']`, { hasText: text }),
 };
 
 test.describe('Basic notice with Interactive element', () => {
@@ -31,6 +31,7 @@ test.describe('Basic notice with Interactive element', () => {
     await openNoticeByKeyboard(page);
     await new Promise((resolve) => setTimeout(resolve, 100));
     await expect(locators.closeButton(page)).toBeFocused();
+    await new Promise((resolve) => setTimeout(resolve, 50));
     await expect(locators.closeHint(page)).toBeVisible();
     await expect(page).toHaveScreenshot();
 
@@ -60,8 +61,8 @@ test.describe('Basic notice with Interactive element', () => {
     await setupPage(page, 'stories/components/notice-bubble/docs/examples/basic_notice.tsx');
 
     await openNoticeByKeyboard(page);
-    await page.keyboard.press('Shift+Tab');
     await new Promise((resolve) => setTimeout(resolve, 100));
+    await page.keyboard.press('Shift+Tab');
     await expect(locators.buttonTrigger(page, 'Show basic notice')).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(locators.closeHint(page)).toBeVisible();
@@ -75,7 +76,7 @@ test.describe('Success notice without Interactive element ', () => {
 
     //the X button is not focused on the notice
     await openNoticeByKeyboard(page);
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const successNotice = locators.successNotice(
       page,
       'Keyword was successfully moved to Keyword Analyzer!',
@@ -93,6 +94,7 @@ test.describe('Success notice without Interactive element ', () => {
 
     const buttonText = locators.buttonTrigger(page, 'Show success notice');
     await buttonText.click();
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const successNotice = locators.successNotice(
       page,
       'Keyword was successfully moved to Keyword Analyzer!',
