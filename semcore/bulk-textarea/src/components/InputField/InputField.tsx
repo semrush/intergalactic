@@ -642,6 +642,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
       this.textarea.childNodes.forEach((node, index) => {
         if (node instanceof HTMLParagraphElement) {
+          node.dataset.overMaxRows = 'false';
+
           if (
             node.textContent !== this.getEmptyParagraph().textContent &&
             node.textContent !== ''
@@ -651,8 +653,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             if (rowsCount > ofRows) {
               node.dataset.overMaxRows = 'true';
             }
-          } else {
-            node.dataset.overMaxRows = 'false';
           }
         }
       });
