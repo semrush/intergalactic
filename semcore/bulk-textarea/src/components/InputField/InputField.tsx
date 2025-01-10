@@ -76,8 +76,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   componentDidMount() {
-    this.setStylesForRowsOverLimit();
-
     this.containerRef.current?.append(this.textarea);
 
     this.handleValueOutChange();
@@ -364,14 +362,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           }
         }
 
-        if (
-          textContent === '' &&
-          rowNode.childNodes.item(0) instanceof HTMLBRElement &&
-          rowNode.nextSibling?.textContent === ''
-        ) {
-          this.textarea.removeChild(rowNode.nextSibling);
-        }
-
         if (textContent.length > 0) {
           const firstSymbol = textContent.at(0);
           const lastSymbol = textContent.at(textContent.length - 1);
@@ -536,22 +526,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     );
   }
 
-  private setStylesForRowsOverLimit(): void {
-    const name = 'rowsOverLimit';
-    const existsStyleSheet = document.querySelector(`style[name=${name}]`);
-
-    if (!existsStyleSheet) {
-      const classes = this.containerRef.current?.classList;
-      const styleSheet = document.createElement('style');
-      styleSheet.setAttribute('name', name);
-      const ofRows = this.asProps.ofRows ?? Infinity;
-      styleSheet.textContent = `.${classes?.item(0)} > div > p:nth-child(n + ${ofRows + 1}) {
-    background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
-  }`;
-
-      document.head.appendChild(styleSheet);
-    }
-  }
   private cleanStylesForRowsOverLimit(): void {
     const name = 'rowsOverLimit';
     const existsStyleSheet = document.querySelector(`style[name=${name}]`);
@@ -621,14 +595,22 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     this.rowsCountTimeout = window.setTimeout(() => {
       let rowsCount = 0;
+      const { ofRows } = this.asProps;
 
-      this.textarea.childNodes.forEach((node) => {
-        if (
-          node instanceof HTMLParagraphElement &&
-          node.textContent !== this.getEmptyParagraph().textContent &&
-          node.textContent !== ''
-        ) {
-          rowsCount++;
+      this.textarea.childNodes.forEach((node, index) => {
+        if (node instanceof HTMLParagraphElement) {
+          if (
+            node.textContent !== this.getEmptyParagraph().textContent &&
+            node.textContent !== ''
+          ) {
+            rowsCount++;
+
+            if (rowsCount > ofRows) {
+              node.dataset.overMaxRows = 'true';
+            }
+          } else {
+            node.dataset.overMaxRows = 'false';
+          }
         }
       });
 

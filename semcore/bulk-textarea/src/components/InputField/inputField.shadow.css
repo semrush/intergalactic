@@ -55,6 +55,10 @@ SInputField > div {
       color: var(--intergalactic-text-secondary, #6c6e79);
       margin-right: var(--intergalactic-spacing-1x, 4px);
     }
+
+    &[data-over-max-rows='true'] {
+      background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
+    }
   }
 
   &:has(p:nth-child(n + 10)) {

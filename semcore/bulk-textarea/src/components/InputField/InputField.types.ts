@@ -98,7 +98,7 @@ export type InputFieldProps = {
    * Count of max rows in badge
    * @default 100
    */
-  ofRows?: number;
+  ofRows: number;
 
   /**
    * @default true
