@@ -256,18 +256,40 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     const selection = document.getSelection();
 
-    if (selection) {
-      const focusNode = selection.focusNode;
-      const rowNode = focusNode?.parentElement;
+    if (selection?.anchorNode && selection?.focusNode) {
+      const anchorOffset = selection.anchorOffset;
+      const focusOffset = selection.focusOffset;
+      const documentPosition = selection.anchorNode.compareDocumentPosition(selection.focusNode);
 
-      let paragraph: HTMLParagraphElement | null = null;
+      let direction = 'forward';
+
+      if (
+        (documentPosition === 0 && selection.anchorOffset > selection.focusOffset) || // if nodes are the same
+        documentPosition === Node.DOCUMENT_POSITION_PRECEDING
+      ) {
+        direction = 'backward';
+      }
+
+      const anchorElement = direction === 'forward' ? selection.anchorNode : selection.focusNode;
+      const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
+      const fromOffset = direction === 'forward' ? anchorOffset : focusOffset;
+      const toOffset = direction === 'forward' ? focusOffset : anchorOffset;
+      const anchorNode = anchorElement?.parentElement;
+      const focusNode = focusElement?.parentElement;
+
+      let paragraph = false;
       let textNode: ChildNode | null = null;
       let position: number | null = null;
 
-      if (rowNode === this.textarea && focusNode instanceof HTMLParagraphElement) {
-        paragraph = focusNode;
-      } else if (focusNode instanceof Text && rowNode instanceof HTMLParagraphElement) {
-        paragraph = rowNode;
+      if (focusNode === this.textarea && focusElement instanceof HTMLParagraphElement) {
+        paragraph = true;
+      } else if (
+        focusElement instanceof Text &&
+        focusNode instanceof HTMLParagraphElement &&
+        anchorElement instanceof Text &&
+        anchorNode instanceof HTMLParagraphElement
+      ) {
+        paragraph = true;
       }
 
       if (focusNode === this.textarea) {
@@ -276,16 +298,22 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
         textNode = lastNodeToInsert.childNodes.item(0);
         position = (lastNodeToInsert.textContent ?? '').length;
-      } else if (paragraph) {
-        const before = paragraph.textContent?.trim().substring(0, selection.focusOffset) ?? '';
-        const after = paragraph.textContent?.trim().substring(selection.focusOffset) ?? '';
+      } else if (paragraph && anchorNode && focusNode) {
+        const before = anchorNode?.textContent?.trim().substring(0, fromOffset) ?? '';
+        const after = focusNode?.textContent?.trim().substring(toOffset) ?? '';
+
+        selection.deleteFromDocument();
+
+        if (documentPosition !== 0) {
+          this.textarea.removeChild(focusNode);
+        }
 
         const firstNodeToInsert = listOfNodes.splice(0, 1)[0];
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
 
-        paragraph.textContent = before + firstNodeToInsert?.textContent ?? '';
+        anchorNode.textContent = before + firstNodeToInsert?.textContent ?? '';
 
-        paragraph.after(...listOfNodes);
+        anchorNode.after(...listOfNodes);
 
         if (lastNodeToInsert) {
           lastNodeToInsert.textContent = (lastNodeToInsert.textContent ?? '') + after;
@@ -294,11 +322,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
           this.validateRow(lastNodeToInsert);
         } else {
-          position = (paragraph.textContent ?? '').length;
-          paragraph.textContent = (paragraph.textContent ?? '') + after;
-          textNode = paragraph.childNodes.item(0);
+          position = (anchorNode.textContent ?? '').length;
+          anchorNode.textContent = (anchorNode.textContent ?? '') + after;
+          textNode = anchorNode.childNodes.item(0);
 
-          this.validateRow(paragraph);
+          this.validateRow(anchorNode);
         }
       }
 
