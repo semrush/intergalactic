@@ -66,8 +66,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   constructor(props: InputFieldProps) {
     super(props);
 
-    this.textarea = this.createContentEditableElement(props);
-
     this.handlePaste = this.handlePaste.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -78,6 +76,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.handleSelectAll = this.handleSelectAll.bind(this);
+
+    this.textarea = this.createContentEditableElement(props);
   }
 
   uncontrolledProps() {
