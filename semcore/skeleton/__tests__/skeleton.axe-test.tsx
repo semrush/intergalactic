@@ -3,7 +3,8 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Skeleton', () => {
   test('For charts', async ({ page }) => {
-    const standPath = 'storybook/components/skeleton/docs/examples/skeleton_examples_for_charts.tsx';
+    const standPath =
+      'storybook/components/skeleton/docs/examples/skeleton_examples_for_charts.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
