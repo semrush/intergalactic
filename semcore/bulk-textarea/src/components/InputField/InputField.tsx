@@ -364,6 +364,36 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           }
         }
 
+        if (
+          textContent === '' &&
+          rowNode.childNodes.item(0) instanceof HTMLBRElement &&
+          rowNode.nextSibling?.textContent === ''
+        ) {
+          this.textarea.removeChild(rowNode.nextSibling);
+        }
+
+        if (textContent.length > 0) {
+          const firstSymbol = textContent.at(0);
+          const lastSymbol = textContent.at(textContent.length - 1);
+
+          if (
+            firstSymbol === this.getEmptyParagraph().textContent ||
+            lastSymbol === this.getEmptyParagraph().textContent
+          ) {
+            if (firstSymbol === this.getEmptyParagraph().textContent) {
+              rowNode.textContent = textContent.substring(1);
+            } else if (lastSymbol === this.getEmptyParagraph().textContent) {
+              rowNode.textContent = textContent.substring(0, textContent.length - 1);
+            }
+
+            const offset = rowNode.textContent?.length;
+
+            if (offset) {
+              this.setSelection(rowNode.childNodes.item(0), offset, offset);
+            }
+          }
+        }
+
         const { errors, showErrors } = this.asProps;
         const isValid = this.validateRow(rowNode);
         this.recalculateErrors();

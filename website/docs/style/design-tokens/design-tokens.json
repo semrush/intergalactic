@@ -2242,6 +2242,7 @@
     "components": [
       "accordion",
       "base-trigger",
+      "bulk-textarea",
       "checkbox",
       "counter",
       "dropdown",
