@@ -173,6 +173,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
     if (!props.disabled && !props.readonly) {
       this.addEventListeners(textarea);
+    } else {
+      textarea.addEventListener('keydown', this.handleSelectAll.bind(this));
     }
 
     return textarea;
@@ -874,6 +876,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
     textarea.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     textarea.addEventListener('scroll', this.handleScroll.bind(this));
+
+    textarea.removeEventListener('keydown', this.handleSelectAll);
   }
   private removeEventListeners(textarea: HTMLElement) {
     textarea.removeEventListener('paste', this.handlePaste);
@@ -885,6 +889,19 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.removeEventListener('mousemove', this.handleMouseMove);
     textarea.removeEventListener('mouseleave', this.handleMouseLeave);
     textarea.removeEventListener('scroll', this.handleScroll);
+
+    textarea.addEventListener('keydown', this.handleSelectAll.bind(this));
+  }
+
+  private handleSelectAll(event: KeyboardEvent) {
+    if (event.key === 'a' && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
+
+      const node = event.target;
+      if (node instanceof HTMLElement && node === this.textarea) {
+        this.setSelection(node, 0, node.childNodes.length);
+      }
+    }
   }
 }
 
