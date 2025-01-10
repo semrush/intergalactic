@@ -4,7 +4,7 @@ import Spin from '@semcore/spin';
 import BasicExample from './examples/basic_example';
 
 const meta: Meta<typeof BasicExample> = {
-  title: 'Components/BasicExample/Documentation',
+  title: 'Components/Spin/Documentation',
   component: BasicExample,
 };
 
