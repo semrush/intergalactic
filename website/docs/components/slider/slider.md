@@ -42,7 +42,7 @@ Default component sizes:
 - Bar height: 4px
 - Knob size: 20px * 20px
 
-## Styles
+## Appearance
 
 Default component styles:
 
@@ -101,7 +101,7 @@ show a warning tooltip with an appropriate message.
 
 ## Usage in UX/UI
 
-### When to use the slider
+### When to use slider
 
 This input works best when the user doesn't need to enter a specific value
 but wants to choose an approximate value.

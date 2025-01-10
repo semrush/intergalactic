@@ -76,7 +76,7 @@ Component consists of the following:
 3. `Radio.Value`
 4. `Radio.Text`
 
-## Sizes and margins
+## Sizes
 
 The radio button has two sizes: M and L. The text label is always positioned to the right of the radio button.
 
@@ -87,7 +87,9 @@ Table: Radio button sizes
 | M (16px x 16px) | ![](static/size-m.png) |
 | L (20px x 20px) | ![](static/size-l.png) |
 
-### Margins
+## Appearance
+
+#### Margins
 
 The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
 
@@ -98,7 +100,7 @@ Table: Radio button margins
 | M (16px x 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
 | L (20px x 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
 
-## Radio button with a paragraph
+## Radio button with paragraph
 
 All radio button sizes can be used with the corresponding text paragraphs.
 
@@ -121,7 +123,7 @@ Info icon should have `margin-left: 4px`.
 
 ![](static/info-icon-margin.png)
 
-## Radio button with a link inside
+## Radio button with link inside
 
 Text label may contain a [Link component](/components/link/link).
 

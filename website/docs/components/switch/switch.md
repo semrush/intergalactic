@@ -93,7 +93,7 @@ Component consists of the following:
 - `Switch.Value`
 - `Switch.Addon`
 
-## Sizes and margins
+## Sizes
 
 The switch comes in three sizes: `m`, `l` and `xl`.
 
@@ -118,7 +118,7 @@ Table: Switch themes
 | `info`    | ![](static/on-info.png)    | Default theme.                                                 |
 | `success` | ![](static/on-success.png) | Theme for highlighting a positive enabled state of the switch. |
 
-## Icon inside Switch.Value
+## Switch with icon
 
 For larger sizes of the component (`l` and `xl`), you have the option to include an icon within the `Switch.Value`. It is recommended to use different icons for the off and on states.
 

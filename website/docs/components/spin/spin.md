@@ -119,7 +119,7 @@ For loading whole tables, forms, widgets and other complex components, use [Spin
 This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
 :::
 
-## Sizes and margins
+## Sizes
 
 The Spin component comes in six different sizes. The text size should be at least 14px.
 
@@ -134,16 +134,6 @@ Table: Spin sizes and margins
 | **XL**  | ![](static/text-vertical-xl.png)  | ![](static/text-horizontal-xl.png)  |
 | **XXL** | ![](static/text-vertical-xxl.png) | ![](static/text-horizontal-xxl.png) |
 
-## Styles
-
-::: tip
-For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/spin-container).
-:::
-
-You can place text next to the spinner to inform the user that data is being loaded. The text should use the `--text-secondary` token for color, as it is considered a secondary message according to the overall visual hierarchy of the page.
-
-**Text can be placed on the right or below the spinner.** In small components, blocks, and widgets, place the text to the right of the spinner. For large components, blocks of components, or inside large blocks and widgets, we recommend placing the text below the spinner and using one of the four largest Spin sizes.
-
 ## Themes
 
 Spin has two themes: `dark` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
@@ -154,6 +144,16 @@ Table: Spin themes
 | -------- | ------------------------- | ---------------------------------------------------- |
 | `dark`   | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
 | `invert` | ![](static/invert-m.png)  | Use this theme of Spin on a dark/colored background. |
+
+## Text placement
+
+::: tip
+For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/spin-container).
+:::
+
+You can place text next to the spinner to inform the user that data is being loaded. The text should use the `--text-secondary` token for color, as it is considered a secondary message according to the overall visual hierarchy of the page.
+
+**Text can be placed on the right or below the spinner.** In small components, blocks, and widgets, place the text to the right of the spinner. For large components, blocks of components, or inside large blocks and widgets, we recommend placing the text below the spinner and using one of the four largest Spin sizes.
 
 ## Animation
 

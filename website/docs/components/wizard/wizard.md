@@ -8,13 +8,15 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 
 **Wizard** is a component that guides users through a series of predefined steps to complete a larger task. It simplifies complex tasks by breaking them down into manageable steps, reducing the perceived complexity.
 
-### When to use wizard
+### Usage recommendations
+
+#### When to use wizard
 
 - Use a wizard when dealing with large tasks that can't be simplified. Breaking them down into steps helps users focus on each part of the task.
 - If a task requires a specific sequence of steps to be followed, a wizard ensures users don't miss important parts and make fewer mistakes.
 - Wizards are suitable when a task involves three-five steps. For smaller tasks with just two steps or very large tasks with more than ten steps, consider alternative approaches and components.
 
-### When not to use wizard
+#### When not to use wizard
 
 - Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/feature-popover), [Informer](../../patterns/informer/informer.md), [DesctiptionTooltip](../tooltip/tooltip.md), or videos for education.
 - Advanced users may find predefined steps in a wizard restrictive. Consider using wizards for audiences that would benefit from step-by-step guidance.
@@ -32,7 +34,9 @@ Component consists of the following:
 5. `Wizard.StepBack`
 6. `Wizard.StepNext`
 
-## Stepper styles
+## Appearance
+
+### Stepper styles
 
 If a `Stepper` has optional text, it should have the following styles:
 
@@ -54,7 +58,7 @@ padding-bottom: var(--intergalactic-spacing-1x);
 
 ![](static/substep-paddings-margins.png)
 
-## Stepper states
+### Stepper states
 
 Table: Stepper states
 
@@ -66,13 +70,13 @@ Table: Stepper states
 | Disabled | ![](static/disabled.png) ![](static/disabled-tooltip.png) | Use `--disabled-opacity` token. When hovering on a button in this state, display a tooltip with a description of why the step is disabled. |
 | checked  | ![](static/checked.png)                                   | The number changes to a `Check` icon in size M.                                                                                            |
 
-## Content area styles
+### Content area styles
 
-### Header styles
+#### Header styles
 
 ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png)
 
-### Footer styles
+#### Footer styles
 
 For basic controls use L size.
 

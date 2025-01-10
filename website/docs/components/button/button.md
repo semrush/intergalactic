@@ -341,7 +341,7 @@ The label of the button should clearly indicate what happens after user clicks i
 
 **The margin between buttons should be [multiple of 4](/layout/box-system/box-system#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-Table: Margins between buttons
+Table: Grouped buttons
 
 | L (40px)                 | M (28px)                 |
 | ------------------------ | ------------------------ |

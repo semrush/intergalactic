@@ -140,9 +140,7 @@ Component consists of the following:
 3. `Notice.Actions` (optional).
 4. `Notice.Close` (optional).
 
-## Appearance
-
-### Themes
+## Themes
 
 Table: Notice themes
 
@@ -153,6 +151,8 @@ Table: Notice themes
 | **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. ![](static/success.png)                                                                                                                       |
 | **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
 | **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
+
+## Appearance
 
 ### Margins and paddings
 

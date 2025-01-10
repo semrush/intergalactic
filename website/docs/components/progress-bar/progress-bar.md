@@ -75,9 +75,7 @@ ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value`
 
 ![](static/progressbar-composition.png)
 
-## Appearance
-
-### Sizes and styles
+## Sizes
 
 Our ProgressBar has three sizes.
 
@@ -89,7 +87,7 @@ Table: ProgressBar sizes and styles
 | M (8px)    | ![](static/size-m.png) | `--rounded-medium`  | Use inside the product.                                               |
 | L (12px)    | ![](static/size-l.png) | `--rounded-medium` | Use in modal windows or the start screen. |
 
-### Themes
+## Themes
 
 ProgressBar offers two themes: `dark` and `invert`, which are suitable for light and dark/colored backgrounds respectively. Both themes use the `--progress-bar-value` token for color with a gradient pattern to indicate progress.
 

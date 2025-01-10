@@ -96,9 +96,7 @@ Component consists of the following:
 2. `Checkbox.Value`
 3. `Checkbox.Text`
 
-## Appearance
-
-### Sizes
+## Sizes
 
 Checkbox has two sizes: M and L. The text label is always positioned to the right of the checkbox.
 
@@ -108,6 +106,8 @@ Table: Checkbox sizes
 | ---------------- | ----------------------- |
 | M (16px * 16px) | ![](static/size-m.png)   |
 | L (20px * 20px) | ![](static/size-l.png)   |
+
+## Appearance
 
 ### Margins
 

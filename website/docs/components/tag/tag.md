@@ -188,6 +188,16 @@ Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and
 
 If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` should display a tooltip with the full tag label.
 
+## Grouped tags
+
+Table: Grouped tags
+
+| Size (height in px) | Margins                        |
+| ------------------- | ------------------------------ |
+| M (20px)            | ![](static/tag-margins-M.png)  |
+| L (28px)            | ![](static/tag-margins-L.png)  |
+| XL (40px)           | ![](static/tag-margins-XL.png) |
+
 ## Editing tag
 
 For editable tags, use the [InlineInput](/components/inline-input/inline-input) component. Refer to the [live example](/components/tag/tag-code#editing_tag).
@@ -207,16 +217,6 @@ Unfortunately, this solution can be found in several places so far.
 :::
 
 ![more tags example](static/more-tags.png) -->
-
-## Margins between tags
-
-Table: Margins between tags
-
-| Size (height in px) | Margins                        |
-| ------------------- | ------------------------------ |
-| M (20px)            | ![](static/tag-margins-M.png)  |
-| L (28px)            | ![](static/tag-margins-L.png)  |
-| XL (40px)           | ![](static/tag-margins-XL.png) |
 
 ## Usage in UX/UI
 

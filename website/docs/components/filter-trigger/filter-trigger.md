@@ -13,9 +13,7 @@ This component helps users to:
 - quickly understand what filters are selected and what aren't;
 - reset and change filters.
 
-## Appearance
-
-### Sizes
+## Sizes
 
 FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 
@@ -26,11 +24,11 @@ Table: FilterTrigger sizes
 | M (28px)  | ![](static/filter-default-m.png) | ![](static/filter-active-m.png) | ![](static/filter-active-counter-m.png) |
 | L (40px)  | ![](static/filter-default-l.png) | ![](static/filter-active-l.png) | ![](static/filter-active-counter-l.png) |
 
-### Grouped filters
+## Grouped filters
 
 Use the same margins as other inputs and [buttons](/components/button/button#margins_between_buttons) have.
 
-Table: Margins between FilterTriggers
+Table: Grouped filters
 
 | Size (height in px)  | Margins between controls   |
 | -------------------- | -------------------------- |
