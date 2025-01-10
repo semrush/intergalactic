@@ -3,7 +3,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Select from '@semcore/select';
-import { ButtonTrigger } from '@semcore/base-trigger';
 import Counter from '@semcore/counter';
 import Tooltip from '@semcore/tooltip';
 import InputTags from '@semcore/input-tags/';
@@ -13,7 +12,7 @@ const Demo = () => {
   const defaultValues = {
     period: 'Weekly',
     day_week: 'Monday',
-    emails: ['first@react.hook.form', 'first@react.hook.form'],
+    emails: ['first@react.hook.form', 'second@react.hook.form'],
   };
   const {
     handleSubmit,
@@ -23,6 +22,7 @@ const Demo = () => {
     setError,
     clearErrors,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues,
   });
@@ -37,7 +37,7 @@ const Demo = () => {
 
   const handleAppendTags = (newTags: string[]) => {
     const tags = getValues('emails');
-    if (newTags.some((tag: string) => !isEmailValid(tag))) {
+    if (newTags.some((tag) => !isEmailValid(tag))) {
       setError('emails', { message: "Email isn't valid" });
       return;
     }
@@ -76,7 +76,7 @@ const Demo = () => {
     const { dataset } = e.currentTarget;
     setValue(
       'emails',
-      tags.filter((tag, idx) => idx !== Number(dataset.id)),
+      tags.filter((_tag, idx) => idx !== Number(dataset.id)),
     );
   };
 
@@ -86,37 +86,46 @@ const Demo = () => {
     children: value,
   }));
 
-  const invalid = Boolean(errors.emails);
-  const showError = isFocused && invalid;
+  const emailInvalid = Boolean(errors.emails);
+  const showError = isFocused && emailInvalid;
 
   return (
     <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
-      <Text size={300} tag='label' mb={1}>
+      <Text size={300} tag='label' mb={2} htmlFor='period'>
         Email frequency
       </Text>
 
-      <Flex mb={4}>
+      <Flex mb={6} gap={4}>
         <Controller
-          render={({ field }) => <Select tag={ButtonTrigger} options={periods} {...field} />}
+          render={({ field }) => <Select size='l' id='period' options={periods} {...field} />}
           control={control}
           name='period'
         />
-        <Controller
-          render={({ field }) => (
-            <Select ml={4} tag={ButtonTrigger} options={daysWeek} {...field} />
-          )}
-          control={control}
-          name='day_week'
-        />
+        {watch('period') === 'Weekly' && (
+          <Controller
+            render={({ field }) => (
+              <Select size='l' aria-label='Day' options={daysWeek} {...field} />
+            )}
+            control={control}
+            name='day_week'
+          />
+        )}
       </Flex>
 
       <Controller
         render={({ field: { value: tags = [] } }) => (
           <>
-            <Text size={300} tag='label' mb={1}>
-              Emails
-              <Counter ml={1} size='l'>{`${tags.length}/5`}</Counter>
-            </Text>
+            <Flex>
+              <Text size={300} tag='label' mb={2} htmlFor='emails'>
+                Emails
+              </Text>
+
+              <Counter
+                ml={1}
+                size='xl'
+                theme={tags.length < 5 ? '' : 'warning'}
+              >{`${tags.length}/5`}</Counter>
+            </Flex>
             <Tooltip
               interaction='none'
               placement='bottom'
@@ -128,14 +137,12 @@ const Demo = () => {
               <Tooltip.Trigger
                 tag={InputTags}
                 size='l'
-                state={showError ? 'invalid' : 'normal'}
+                state={emailInvalid ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
-                aria-invalid={showError}
-                aria-errormessage={showError ? 'form-emails-error' : undefined}
               >
-                {tags.map((tag: string, idx: number) => (
-                  <InputTags.Tag key={tag + idx}>
+                {tags.map((tag, idx) => (
+                  <InputTags.Tag key={idx}>
                     <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
                   </InputTags.Tag>
@@ -149,6 +156,9 @@ const Demo = () => {
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
                   onFocus={() => setIsFocused(true)}
+                  aria-invalid={emailInvalid}
+                  aria-describedby={showError ? 'form-emails-error' : undefined}
+                  __excludeProps={['aria-haspopup']}
                 />
               </Tooltip.Trigger>
               <Tooltip.Popper id='form-emails-error'>
@@ -161,7 +171,7 @@ const Demo = () => {
         name='emails'
       />
 
-      <Button mt={4} type='submit' use='primary' theme='success' size='l'>
+      <Button mt={8} type='submit' use='primary' theme='success' size='l' wMin={120}>
         Save
       </Button>
     </Flex>
