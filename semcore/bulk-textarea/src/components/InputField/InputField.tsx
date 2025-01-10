@@ -403,6 +403,20 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         }
       } else if (rowNode === null) {
         this.setPopperTrigger?.(this.textarea);
+
+        if (selection?.focusNode === this.textarea) {
+          const nodeIndex = selection.focusOffset;
+          const emptyParagraph = this.textarea.childNodes.item(nodeIndex - 1);
+          const emptyBr = this.textarea.childNodes.item(nodeIndex);
+
+          this.textarea.removeChild(emptyBr);
+
+          if (emptyParagraph instanceof HTMLParagraphElement) {
+            emptyParagraph.innerHTML = this.emptyRowValue;
+          }
+
+          this.setSelection(emptyParagraph, 0, 0);
+        }
       }
 
       this.recalculateRowsCount();
