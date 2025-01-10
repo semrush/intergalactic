@@ -63,7 +63,7 @@ Component consists of the following:
 5. `Pagination.PrevPage`
 6. `Pagination.TotalPages`
 
-## Margins
+## Appearance
 
 - The margins between buttons in the component are always 8px.
 - The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
@@ -101,7 +101,7 @@ The current page should always be displayed in the input:
 
 The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.
 
-## States and cases
+## Edge cases
 
 ### First page
 
@@ -135,18 +135,16 @@ If there is no data or the filter is applied, pagination shouldn't be displayed.
 
 Avoid displaying pagination while loading the table or other related data.
 
-## Additional states
+### Impossible to calculate exact number of pages
 
-### Select for choosing rows number
+In this case, add the `tilde (≈)` to the number of pages and change the link displaying the number of all pages to plain text.
+
+![](static/undefined-number.png)
+
+## Select for choosing rows number
 
 After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
 
 We recommend using these values for the select: 10, 20, 50, 100.
 
 ![](static/page-select.png)
-
-### Impossible to calculate exact number of pages
-
-In this case, add the `tilde (≈)` to the number of pages and change the link displaying the number of all pages to plain text.
-
-![](static/undefined-number.png)

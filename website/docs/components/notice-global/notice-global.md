@@ -106,12 +106,6 @@ Component consists of the following:
 1. `NoticeGlobal.Content`;
 2. `NoticeGlobal.CloseIcon` (optional).
 
-## Margins
-
-There's an `8px` (`--spacing-2x`) margin between the text and any buttons that follow it. The margin between additional actions on the right-hand side is `16px` (`--spacing-4x`).
-
-![](static/gnotice-margins.png)
-
 ## Themes
 
 ### Neutral
@@ -144,7 +138,13 @@ Use this theme to convey serious error or problem messages concerning the entire
 
 ![](static/gnotice-danger.png)
 
-## Location in the interface
+## Appearance
+
+There's an `8px` (`--spacing-2x`) margin between the text and any buttons that follow it. The margin between additional actions on the right-hand side is `16px` (`--spacing-4x`).
+
+![](static/gnotice-margins.png)
+
+## Location
 
 - Always position this notice above the main website header.
 - Stretch the notice to cover the full width of the screen.
@@ -153,7 +153,7 @@ Use this theme to convey serious error or problem messages concerning the entire
 
 ## Interaction
 
-### Appearance
+### Displaying
 
 When the global notice appears, it shifts the entire page down.
 

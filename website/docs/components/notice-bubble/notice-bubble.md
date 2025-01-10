@@ -30,6 +30,8 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 - Images (holiday alerts are an exception).
 - More than two buttons.
 
+## Usage recommendations
+
 ### When to use NoticeBubble
 
 - To notify about the beginning or completion of a process that remains hidden from the user.
@@ -68,7 +70,7 @@ Table: Use cases for NoticeBubble types
 | **No connection with action** | For interfaces unable to monitor the network connection and requiring a page refresh, utilize a notice with the "Reload the page" button. | ![](static/reload.png) |
 | **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement. | ![](static/event-alert.png) |
 
-## Styles
+## Appearance
 
 - The notice appears in the upper-right corner of the report, below the main website menu, with 12px margins at the top and right.
 - When scrolling, it remains fixed in the upper-right corner with the same 12px margins.
@@ -100,7 +102,7 @@ The notification slides in from the right edge of the viewport and closes with a
 Minimize the number of notifications to prevent banner blindness and irritation among users.
 :::
 
-### Appearance duration and closing
+### Displaying duration and hiding
 
 - Users can close the notice by clicking on the **Close** button in the upper-right corner.
 - If there are *no* interactive elements in the notice beside the **Close** button, hide the notice automatically after 4–10 seconds, depending on the amount of text inside.
