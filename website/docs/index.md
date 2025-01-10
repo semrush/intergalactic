@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /get-started/get-started-dev
+      link: /get-started-guide/dev-starter-guide/dev-starter-guide
     - theme: alt
       text: Explore Github
       link: https://github.com/semrush/intergalactic

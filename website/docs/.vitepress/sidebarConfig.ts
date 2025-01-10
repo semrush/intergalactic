@@ -13,8 +13,22 @@ export const sideBarConfig: SidebarConfig = [
     items: [
       {
         text: 'Get started',
-        link: '/get-started/get-started-dev',
-        activeMatch: '/get-started/',
+        collapsed: false,
+        items: [
+          {
+            link: '/get-started-guide/dev-starter-guide/dev-starter-guide',
+            text: 'For developers',
+            activeMatch: '/get-started-guide/dev-starter-guide/',
+          },
+          {
+            link: '/get-started-guide/dis-starter-guide/dis-starter-guide',
+            text: 'For designers',
+          },
+          {
+            link: '/get-started-guide/work-figma/work-figma',
+            text: 'Figma libraries',
+          },
+        ],
       },
     ],
   },

@@ -212,7 +212,7 @@ Here's how the plugin works:
 3. The plugin modifies the component's JS code to add a `className` like `.SLink-xxx-enableVisited` if the `enableVisited` prop is provided. This happens for each selector.
 4. The import statement for the `.shadow.css` file is removed, and the CSS rules from the file are moved to the compiled JS output. These rules operate like CSS-in-JS, and they are incorporated into the page's stylesheets from the JS code.
 
-If users prefer to include CSS in the final bundle in the traditional way, they can follow the instructions provided in this [guide](https://developer.semrush.com/intergalactic/get-started/get-started-production).
+If users prefer to include CSS in the final bundle in the traditional way, they can follow the instructions provided in this [guide](https://developer.semrush.com/intergalactic/get-started-guide/dev-starter-guide/production-tips).
 
 ## Conduct
 
