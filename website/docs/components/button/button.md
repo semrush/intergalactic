@@ -262,7 +262,7 @@ Table: Button themes
 | `secondary` | ![](static/secondary-muted.png) | _deprecated_                  | _no theme_                   | _no theme_                  | ![](static/invert-second-normal.png)   |
 | `tertiary`  | ![](static/tertiary-muted.png)  | ![](static/tertiary-info.png) | _no theme_                   | _no theme_                  | ![](static/invert-tertiary-normal.png) |
 
-<!-- I'D REMOVED THIS SECTION BECAUSE IMO SHOWING STATIC IMAGES OF STATES IS A BAD PRACTICE
+<!-- I'D REMOVED THIS SECTION BECAUSE IMO SHOWING STATIC IMAGES OF BUTTON STATES IS A BAD PRACTICE
 ## States
 
 Table: States for all buttons types and themes
