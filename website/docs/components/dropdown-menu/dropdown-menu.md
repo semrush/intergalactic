@@ -136,7 +136,7 @@ Table: Divider margins
 
 You can group menu items using the `DropdownMenu.Group` component. Groups always have titles.
 
-Group title is non-interactive, always has `font-weight: var(--bold)` and the same size as menu items.
+Group title is noninteractive, always has `font-weight: var(--bold)` and the same size as menu items.
 
 ![](static/headings.png)
 
@@ -164,7 +164,7 @@ Table: Addon before the text examples
 
 ### Addon after text
 
-After the text you can place either non-interactive and interactive addons: an icon, badge, switch, link or button.
+After the text you can place either noninteractive and interactive addons: an icon, badge, switch, link or button.
 
 <!-- commented because we don't recomment adding icons with tooltips
 If an icon displays additional information about an item, we recommend placing it right next to the text.

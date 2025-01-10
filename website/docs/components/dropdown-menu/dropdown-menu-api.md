@@ -92,7 +92,7 @@ import Dropdown from "@semcore/ui/dropdown";
 
 ## DropdownMenu.Item.Hint
 
-This non-interactive menu item is used to display tips in the list. Using as an `aria-describedby` for `DropdownMenu.Item`.
+This noninteractive menu item is used to display tips in the list. Using as an `aria-describedby` for `DropdownMenu.Item`.
 
 ```jsx
 import DropdownMenu from "@semcore/ui/dropdown-menu";
@@ -117,7 +117,7 @@ Context of the component is available inside the render-function.
 The `DropdownMenu.ItemTitle` is deprecated, use `DropdownMenu.Group` instead.
 :::
 
-This non-interactive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
+This noninteractive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
 
 ```jsx
 import DropdownMenu from "@semcore/ui/dropdown-menu";
@@ -132,7 +132,7 @@ import DropdownMenu from "@semcore/ui/dropdown-menu";
 The `DropdownMenu.ItemHint` is deprecated, use `DropdownMenu.Item.Hint` or `DropdownMenu.Group` with `subTitle` props instead.
 :::
 
-This non-interactive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
+This noninteractive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
 
 ```jsx
 import DropdownMenu from "@semcore/ui/dropdown-menu";

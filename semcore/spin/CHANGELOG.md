@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.39.2] - 2025-01-03
+
+### Removed
+
+- `aria-busy` attribute as unnecessary.
+
+### Added
+
+- `role="img"` for correct recognition by assistive technology and to avoid double reading.
+
 ## [5.39.1] - 2024-12-30
 
 ### Changed
