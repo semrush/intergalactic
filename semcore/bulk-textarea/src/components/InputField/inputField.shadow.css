@@ -87,8 +87,9 @@ SInputField[size='m'] > div {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
 
-  min-height: calc(var(--minRows) * (20px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
-  max-height: calc(var(--maxRows) * (20px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
+  min-height: calc(var(--minRows) * 20px);
+  /* (maxRowsLength - 1 * (rowsHeight + marginBottom)) + lastRowHeight */
+  max-height: calc((var(--maxRows) - 1) * (20px + var(--intergalactic-spacing-1x, 4px)) + 18px);
 
   &:empty {
     padding-left: var(--intergalactic-spacing-8x, 32px);
@@ -103,8 +104,8 @@ SInputField[size='l'] > div {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
 
-  min-height: calc(var(--minRows) * (24px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
-  max-height: calc(var(--maxRows) * (24px + var(--intergalactic-spacing-1x, 4px)) - var(--intergalactic-spacing-2x, 8px));
+  min-height: calc(var(--minRows) * 24px);
+  max-height: calc((var(--maxRows) - 1) * (24px + var(--intergalactic-spacing-1x, 4px)) + 20px);
 
   &:empty {
     padding-left: var(--intergalactic-spacing-8x, 32px);
