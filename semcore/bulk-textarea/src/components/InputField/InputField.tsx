@@ -155,6 +155,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.setAttribute('contentEditable', props.disabled || props.readonly ? 'false' : 'true');
     textarea.setAttribute('role', 'textbox');
     textarea.setAttribute('classname', 'editable');
+    textarea.setAttribute('tabIndex', '0');
 
     if (props.id) {
       textarea.setAttribute('id', props.id);
@@ -486,7 +487,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   render() {
     const SInputField = Root;
-    const { styles, showErrors, disabled, readonly } = this.asProps;
+    const { styles, showErrors } = this.asProps;
     const { visibleErrorPopper } = this.state;
 
     const { errorMessage, isCommonError } = this.errorMessage;
