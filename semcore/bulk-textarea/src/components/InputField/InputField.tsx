@@ -404,7 +404,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       } else if (rowNode === null) {
         this.setPopperTrigger?.(this.textarea);
 
-        if (selection?.focusNode === this.textarea) {
+        if (selection?.focusNode === this.textarea && this.textarea.childNodes.length > 1) {
           const nodeIndex = selection.focusOffset;
           const emptyParagraph = this.textarea.childNodes.item(nodeIndex - 1);
           const emptyBr = this.textarea.childNodes.item(nodeIndex);
