@@ -26,13 +26,14 @@ type KeywordProps = {
   value: KeywordDataItem;
   onChange: (v: KeywordDataItem) => void;
   onClear: () => void;
+  onApply: () => void;
 };
-const Keywords = ({ value, onChange, onClear }: KeywordProps) => {
+const Keywords = ({ value, onChange, onClear, onApply }: KeywordProps) => {
   const [textAreaValue, setTextAreaValue] = React.useState(value?.value ?? '');
-
   const applyFilters = () => {
     if (!textAreaValue) {
       onClear();
+      onApply();
       return;
     }
     const countLine = textAreaValue.split(/\n/g).filter(Boolean) || [];
@@ -43,6 +44,7 @@ const Keywords = ({ value, onChange, onClear }: KeywordProps) => {
       value,
       displayValue,
     });
+    onApply();
   };
 
   return (
@@ -70,9 +72,9 @@ const Keywords = ({ value, onChange, onClear }: KeywordProps) => {
         placeholder={'Keyword - broad match\n[Keyword] - exact match'}
       />
       <Flex mt={5}>
-        <AddFilter.Dropdown.ApplyButton onClick={applyFilters}>
+        <Button use='primary' theme='info' onClick={applyFilters}>
           Apply
-        </AddFilter.Dropdown.ApplyButton>
+        </Button>
 
         <Button
           ml={2}
@@ -232,15 +234,18 @@ const AddFilterExample = () => {
             aria-modal='false'
             tabIndex={-1}
           >
-            <Keywords
-              onChange={(v) => {
-                setFilterData({ ...filterData, keywords: v });
-              }}
-              onClear={() => {
-                clearField('keywords');
-              }}
-              value={filterData.keywords}
-            />
+            {({ onApply }) => (
+              <Keywords
+                onChange={(v) => {
+                  setFilterData({ ...filterData, keywords: v });
+                }}
+                onClear={() => {
+                  clearField('keywords');
+                }}
+                onApply={onApply}
+                value={filterData.keywords}
+              />
+            )}
           </AddFilter.Dropdown.Popper>
         </AddFilter.Dropdown>
 

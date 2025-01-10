@@ -2,7 +2,7 @@ import React from 'react';
 import AddFilter from '@semcore/add-filter';
 import { Flex } from '@semcore/flex-box';
 import SearchM from '@semcore/icon/Search/m';
-import { ButtonLink } from '@semcore/button';
+import Button, { ButtonLink } from '@semcore/button';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -136,7 +136,7 @@ const AddFilterDropdownAndSelectsExample = () => {
     });
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent, onApply: () => void) => {
     e.stopPropagation();
 
     if (
@@ -152,6 +152,12 @@ const AddFilterDropdownAndSelectsExample = () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       applyVolumeValueFromRange();
+      onApply();
+    }
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      onApply();
     }
   };
 
@@ -224,35 +230,48 @@ const AddFilterDropdownAndSelectsExample = () => {
             {'Volume'}: {filterData.volume}
           </AddFilter.Select.Trigger>
           <AddFilter.Select.Popper w={224} aria-label='Volume'>
-            <AddFilter.Select.List aria-label='Presets'>
-              {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
-                (item) => (
-                  <AddFilter.Select.Option key={item} value={item}>
-                    {item}
-                  </AddFilter.Select.Option>
-                ),
-              )}
-            </AddFilter.Select.List>
-            <Divider my={1} />
-            <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
-              <Text id='custom-range-title' size={200} bold>
-                Custom range
-              </Text>
-              <InputRange
-                role='group'
-                aria-labelledby='custom-range-title'
-                value={customRange}
-                onChange={setCustomRange}
-                onKeyDown={handleKeyDown}
-              />
-              <AddFilter.Select.ApplyButton
-                w='100%'
-                onClick={applyVolumeValueFromRange}
-                onKeyDown={handleKeyDownApply}
-              >
-                Apply
-              </AddFilter.Select.ApplyButton>
-            </Flex>
+            {({ onApply }) => (
+              <>
+                <AddFilter.Select.List aria-label='Presets'>
+                  {[
+                    '100,001+',
+                    '10,001-100,000',
+                    '1,001-10,000',
+                    '101-1,000',
+                    '11-100',
+                    '1-10',
+                  ].map((item) => (
+                    <AddFilter.Select.Option key={item} value={item}>
+                      {item}
+                    </AddFilter.Select.Option>
+                  ))}
+                </AddFilter.Select.List>
+                <Divider my={1} />
+                <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
+                  <InputRange
+                    role='group'
+                    aria-labelledby='custom-range-title'
+                    value={customRange}
+                    onChange={setCustomRange}
+                    onKeyDown={(e: React.KeyboardEvent) => {
+                      handleKeyDown(e, onApply);
+                    }}
+                  />
+                  <Button
+                    use='primary'
+                    theme='info'
+                    w='100%'
+                    onClick={() => {
+                      applyVolumeValueFromRange();
+                      onApply();
+                    }}
+                    onKeyDown={handleKeyDownApply}
+                  >
+                    Apply
+                  </Button>
+                </Flex>
+              </>
+            )}
           </AddFilter.Select.Popper>
         </AddFilter.Select>
 

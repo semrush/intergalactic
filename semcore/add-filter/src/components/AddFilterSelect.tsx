@@ -46,9 +46,9 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
     };
   }
 
-  getApplyButtonProps() {
+  getPopperProps() {
     return {
-      onClick: () => {
+      onApply: () => {
         this.handlers.visible(false);
       },
     };
@@ -57,14 +57,6 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
   render() {
     return <Root render={Select} />;
   }
-}
-
-function ApplyButton() {
-  return (
-    <Root render={Button} use='primary' theme='info' w='100%'>
-      Apply
-    </Root>
-  );
 }
 
 const AddFilterSelect: typeof AddFilterSelectType = createComponent(AddFilterSelectRoot, {
@@ -79,7 +71,6 @@ const AddFilterSelect: typeof AddFilterSelectType = createComponent(AddFilterSel
   List: Select.List,
   Popper: Select.Popper,
   InputSearch: Select.InputSearch,
-  ApplyButton,
 });
 
 export default AddFilterSelect;
