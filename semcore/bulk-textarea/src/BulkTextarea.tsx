@@ -218,8 +218,8 @@ class BulkTextareaRoot extends Component<
     if (!errors[newIndex]) {
       this.handleChangeErrorIndex(amount < 0 ? amount - 1 : amount + 1)();
     } else {
-      this.setState({ showErrors: false, errorIndex: newIndex }, () => {
-        this.setState({ showErrors: true });
+      this.setState({ showErrors: false, errorIndex: -1 }, () => {
+        this.setState({ showErrors: true, errorIndex: newIndex });
       });
     }
   };
