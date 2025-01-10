@@ -67,6 +67,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     super(props);
 
     this.textarea = this.createContentEditableElement(props);
+
+    this.handlePaste = this.handlePaste.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleSelectAll = this.handleSelectAll.bind(this);
   }
 
   uncontrolledProps() {
@@ -462,7 +473,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
   }
 
-  handleBlur = (event: Event) => {
+  handleBlur(event: Event) {
     this.isFocusing = false;
     this.setState({ visibleErrorPopper: false });
 
@@ -477,7 +488,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     setTimeout(() => {
       this.setState({ keyboardRowIndex: -1 });
     }, 200);
-  };
+  }
 
   handleKeyDown(event: KeyboardEvent) {
     this.errorByInteraction = 'keyboard';
@@ -867,15 +878,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   private addEventListeners(textarea: HTMLElement) {
-    textarea.addEventListener('paste', this.handlePaste.bind(this));
-    textarea.addEventListener('input', this.handleChange.bind(this));
-    textarea.addEventListener('focus', this.handleFocus.bind(this));
-    textarea.addEventListener('blur', this.handleBlur.bind(this));
-    textarea.addEventListener('keydown', this.handleKeyDown.bind(this));
-    textarea.addEventListener('mousedown', this.handleMouseDown.bind(this));
-    textarea.addEventListener('mousemove', this.handleMouseMove.bind(this));
-    textarea.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
-    textarea.addEventListener('scroll', this.handleScroll.bind(this));
+    textarea.addEventListener('paste', this.handlePaste);
+    textarea.addEventListener('input', this.handleChange);
+    textarea.addEventListener('focus', this.handleFocus);
+    textarea.addEventListener('blur', this.handleBlur);
+    textarea.addEventListener('keydown', this.handleKeyDown);
+    textarea.addEventListener('mousedown', this.handleMouseDown);
+    textarea.addEventListener('mousemove', this.handleMouseMove);
+    textarea.addEventListener('mouseleave', this.handleMouseLeave);
+    textarea.addEventListener('scroll', this.handleScroll);
 
     textarea.removeEventListener('keydown', this.handleSelectAll);
   }
@@ -890,7 +901,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     textarea.removeEventListener('mouseleave', this.handleMouseLeave);
     textarea.removeEventListener('scroll', this.handleScroll);
 
-    textarea.addEventListener('keydown', this.handleSelectAll.bind(this));
+    textarea.addEventListener('keydown', this.handleSelectAll);
   }
 
   private handleSelectAll(event: KeyboardEvent) {
