@@ -40,11 +40,11 @@ export const getFixedStyle = (
 
   const startIndexSideMap = {
     left: 0,
-    right: index,
+    right: index + 1,
   };
   const endIndexSideMap = {
     left: index,
-    right: columns.length - 1,
+    right: columns.length,
   };
   const columnsFixed = columns.slice(startIndexSideMap[side], endIndexSideMap[side]);
 
