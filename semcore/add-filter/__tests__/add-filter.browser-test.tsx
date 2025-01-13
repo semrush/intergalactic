@@ -38,7 +38,7 @@ test.describe('Add filter button', () => {
       await expect(page).toHaveScreenshot();
       await locators.addFilterListItem('Color').click();
       await expect(page).toHaveScreenshot();
-      await expect(locators.addFilterSelectTrigger('Color')).toBeFocused(); 
+      await expect(locators.addFilterSelectTrigger('Color')).toBeFocused();
     });
 
     await test.step('Verify filter hidden and filters list exapnded when cliking on Add filter', async () => {
@@ -164,24 +164,24 @@ test.describe('Add filter button', () => {
     await page.setContent(htmlContent);
     const locators = getLocators(page);
 
-      for (let i = 0; i < 6; i++) {
-        await page.keyboard.press('Tab');
-        await page.waitForTimeout(100);
-      }
-      await expect(locators.addFilterBtn).toBeFocused();
-      await page.keyboard.press('Enter');
-      await page.waitForTimeout(500);
-      //await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
-      await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(200);
-      await page.keyboard.press('ArrowDown');
-      await page.waitForTimeout(200);
-      await page.keyboard.press('Enter');
+    for (let i = 0; i < 6; i++) {
+      await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('Enter');
-      await expect(locators.clearAllBtn).toBeVisible();
+    }
+    await expect(locators.addFilterBtn).toBeFocused();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(500);
+    //await page.waitForSelector('div[data-ui-name="DropdownMenu.Item"]:has-text("Keywords")', { timeout: 5000 });
+    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(200);
+    await page.keyboard.press('ArrowDown');
+    await page.waitForTimeout(200);
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await expect(locators.clearAllBtn).toBeVisible();
 
     await test.step('Add Input filter and fill value', async () => {
       await page.keyboard.press('Tab');
@@ -215,7 +215,7 @@ test.describe('Add filter button', () => {
     await test.step('Verofy Add filter removed when all filters added', async () => {
       await expect(locators.clearAllBtn).toBeVisible();
       await expect(locators.addFilterBtn).not.toBeVisible();
-     // await expect(page).toHaveScreenshot();
+      // await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify Add filter appears and focused when Input flter removed', async () => {
@@ -461,7 +461,7 @@ test.describe('Different types of filters', () => {
     await page.keyboard.press('Enter');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.locator('[data-ui-name="InputNumber.Value"][placeholder="To"]').fill("5");
+    await page.locator('[data-ui-name="InputNumber.Value"][placeholder="To"]').fill('5');
     await page.keyboard.press('Escape');
     await expect(locators.addFilterSelectTrigger('Range')).not.toBeVisible();
     await expect(locators.addFilterBtn).toBeFocused();
