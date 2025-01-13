@@ -141,7 +141,7 @@ function onCaretClick() {
 }
 
 .VPSidebarItem.collapsed.level-0 {
-  padding-bottom: 10px;
+  padding-bottom: 24px;
 }
 
 .item {
