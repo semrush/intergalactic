@@ -5,15 +5,14 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 
 import style from './line.shadow.css';
 import {
-  Enhances,
   ScoreLineComponent,
   ScoreLineGaugeProps,
   SegmentProps,
   InnerSegmentProps,
 } from './Line.types';
 
-class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
-  static enhance = [resolveColorEnhance()];
+class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, typeof LineRoot.enhance> {
+  static enhance = [resolveColorEnhance()] as const;
   static displayName = 'ScoreLine';
 
   static style = style;
@@ -50,6 +49,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
       value,
       styles,
       color = 'chart-palette-order-1',
+      baseBgColor,
       resolveColor,
       loading,
       children,
@@ -59,7 +59,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
 
     if (children !== undefined) {
       return sstyled(styles)(
-        <SLineGauge render={Box} segments>
+        <SLineGauge render={Box} segments base-bg-color={resolveColor(baseBgColor)}>
           <SLineGaugeSegment>
             <Children />
           </SLineGaugeSegment>
@@ -95,7 +95,7 @@ class LineRoot extends Component<ScoreLineGaugeProps, {}, {}, Enhances> {
     }
 
     return sstyled(styles)(
-      <SLineGauge render={Box}>
+      <SLineGauge render={Box} base-bg-color={resolveColor(baseBgColor)}>
         {!loading && <SLineValue w={percent} color={resolveColor(color)} />}
         {Boolean(SegmentItems.length) && <SLineGaugeSegment>{SegmentItems}</SLineGaugeSegment>}
         {animate && <SAnimationLine />}

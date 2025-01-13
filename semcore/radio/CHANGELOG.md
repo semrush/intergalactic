@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.41.1] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.44.0 ~> 4.44.1], `@semcore/flex-box` [5.39.0 ~> 5.39.1], `@semcore/core` [2.37.0 ~> 2.37.1]).
+
+## [6.41.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [6.40.2] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/flex-box` [5.38.1 ~> 5.38.2], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [6.40.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/flex-box` [5.38.0 ~> 5.38.1], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [6.40.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/flex-box` [5.37.0 ~> 5.38.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [6.39.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/flex-box` [5.36.0 ~> 5.37.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [6.38.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/flex-box` [5.35.0 ~> 5.36.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [6.37.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/flex-box` [5.34.0 ~> 5.35.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [6.36.0] - 2024-10-04
 
 ### Changed

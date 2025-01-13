@@ -1,11 +1,12 @@
 {
-  "grabbed": "{itemText} valdes, nuvarande position är {itemPosition} av {itemsCount}",
-  "grabbing": "Väljer {itemText}, släppt position är {itemPosition} av {itemsCount}",
-  "dropped": "{itemText} släppdes, slutlig position är {itemPosition} av {itemsCount}",
-  "grabbedWithZone": "{itemText} valdes, nuvarande position är {itemPosition} av {itemsCount} i {zoneName}",
+  "describe": "Tryck på {control} för att greppa elementet och dra och släppa det",
+  "grabbed": "{itemText} har valts. Nuvarande position: {itemPosition} av {itemsCount}. Använd pilarna för att ändra positionen, mellanslag för att tillämpa den nya positionen, Escape för att avbryta.",
+  "grabbing": "Ny position: {itemPosition} av {itemsCount}",
+  "dropped": "Positionen {itemPosition} tillämpades",
+  "grabbedWithZone": "{itemText} valdes, nuvarande position: {itemPosition} av {itemsCount} i {zoneName}",
   "grabbingFullWithZone": "Väljer {itemText}, släppt position är {itemPosition} av {itemsCount} i {zoneName}",
   "grabbingJustWithZone": "Väljer {itemText}, släpp i {zoneName}",
   "droppedFullWithZone": "{itemText} släpptes, slutgiltig position är {itemPosition} av {itemsCount} i {zoneName}",
   "droppedJustWithZone": "{itemText} släpptes i {zoneName}",
-  "discarded": "Dragningen avvisades"
+  "discarded": "Dra och släpp avbröts"
 }

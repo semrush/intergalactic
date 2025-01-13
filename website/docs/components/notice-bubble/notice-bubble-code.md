@@ -12,7 +12,7 @@ Each example uses its own instance of `NoticeBubbleManager`, which is why notice
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_notice.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/basic_notice.tsx';
 </script>
 
 :::
@@ -26,19 +26,17 @@ Parent should have `position: relative` and `overflow` with scroll.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/noticebubble_not_in_portal.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/noticebubble_not_in_portal.tsx';
 </script>
 
 :::
 
-## Focus management
-
-In this example keyboard focus is automatically set on the first interactive element in the bubble.
+## Undo action
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/undo_action.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/undo_action.tsx';
 </script>
 
 :::
@@ -48,7 +46,7 @@ In this example keyboard focus is automatically set on the first interactive ele
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/reload_action.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/reload_action.tsx';
 </script>
 
 :::
@@ -58,7 +56,7 @@ In this example keyboard focus is automatically set on the first interactive ele
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/completion_state.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/completion_state.tsx';
 </script>
 
 :::
@@ -68,7 +66,7 @@ In this example keyboard focus is automatically set on the first interactive ele
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/success_notice.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/success_notice.tsx';
 </script>
 
 :::
@@ -78,7 +76,7 @@ In this example keyboard focus is automatically set on the first interactive ele
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/failure_notice.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/failure_notice.tsx';
 </script>
 
 :::
@@ -90,7 +88,7 @@ Activate the **Try again** button in the notice to see the loading state.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/dynamic_notice.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/dynamic_notice.tsx';
 </script>
 
 :::
@@ -100,7 +98,7 @@ Activate the **Try again** button in the notice to see the loading state.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/special_events_notice.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/special_events_notice.tsx';
 </script>
 
 :::
@@ -112,7 +110,7 @@ Use `type="warning"` for this case.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/no_connection_notice.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/no_connection_notice.tsx';
 </script>
 
 :::
@@ -124,7 +122,21 @@ Use `type="warning"` for this case.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/no_connection_notice_with_action.tsx';
+  export Demo from 'stories/components/notice-bubble/docs/examples/no_connection_notice_with_action.tsx';
+</script>
+
+:::
+
+## Replace previous notice
+
+::: warning
+Use this API only if there's enough time between events, so that all notices have enough time to appear and be read by the user, or if missing some notices isn't critical.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/notice-bubble/docs/examples/replace_last_notice.tsx';
 </script>
 
 :::

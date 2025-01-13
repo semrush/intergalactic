@@ -6,7 +6,6 @@ import Pills from '@semcore/pills';
 import OutsideClick from 'intergalactic/outside-click';
 import Copy from '@components/Copy';
 import styles from './styles.module.css';
-import { preferSemcoreUi } from '../../.vitepress/theme/preferences';
 
 const iconLetterToNumericSize = { l: 24, m: 16 };
 
@@ -20,7 +19,7 @@ const DownloadIconButton = ({ size, name, action, dataIcons, icon: Icon }) => {
   let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
   const getImportText = React.useCallback(() => {
-    const lib = preferSemcoreUi.value ? '@semcore/ui' : 'intergalactic';
+    const lib = '@semcore/ui';
     const haveSizeIcon = filterIcons.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';

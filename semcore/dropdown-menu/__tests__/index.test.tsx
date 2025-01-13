@@ -2,11 +2,17 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import Button from '@semcore/button';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
+import {
+  cleanup,
+  render,
+  fireEvent,
+  act,
+  userEvent,
+  waitFor,
+} from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
-import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
 import { Box } from '@semcore/flex-box';
 import { ButtonTrigger } from '@semcore/base-trigger';
 
@@ -40,20 +46,6 @@ describe('DropdownMenu', () => {
 
     fireEvent.keyDown(textarea, { key: 'Enter', which: 13, keyCode: 13 });
     expect(spy).not.toHaveBeenCalled();
-  });
-
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
-          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-        </DropdownMenu.List>
-      </DropdownMenu>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Supports sizes', async ({ task }) => {
@@ -90,22 +82,6 @@ describe('DropdownMenu', () => {
         <DropdownMenu.List>
           <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
           <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-        </DropdownMenu.List>
-      </DropdownMenu>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('supports addons', async ({ task }) => {
-    const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
-          <DropdownMenu.Item>
-            <DropdownMenu.Item.Addon>Addon</DropdownMenu.Item.Addon>
-            <DropdownMenu.Item.Addon mr={2}>One more addon</DropdownMenu.Item.Addon>
-            Text
-          </DropdownMenu.Item>
         </DropdownMenu.List>
       </DropdownMenu>
     );
@@ -167,6 +143,7 @@ describe('DropdownMenu', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.keyboard('[ArrowRight]');
     await userEvent.keyboard('[Enter]');
 
@@ -196,6 +173,136 @@ describe('DropdownMenu', () => {
     expect(component.getByTestId('dd-button-trigger')).not.toHaveFocus();
   });
 
+  test.sequential('Should call onVisibleChange event once', async ({ expect }) => {
+    const spy = vi.fn();
+    const Component = () => {
+      return (
+        <DropdownMenu onVisibleChange={spy}>
+          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+            Trigger
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+      );
+    };
+    render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
+  test.sequential('Should call events on items in controlled component', async ({ expect }) => {
+    const spy = vi.fn();
+    const Component = () => {
+      const [visible, setVisible] = React.useState(false);
+      return (
+        <DropdownMenu
+          visible={visible}
+          onVisibleChange={(value) => {
+            setVisible(value);
+          }}
+        >
+          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+            Trigger
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item
+              onClick={() => {
+                spy();
+                setVisible(false);
+              }}
+            >
+              Item 1
+            </DropdownMenu.Item>
+            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+      );
+    };
+    render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await userEvent.keyboard('[Escape]'); // close
+    await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await userEvent.keyboard('[Enter]'); // click on the first item and close // 1
+    await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await userEvent.keyboard('[Enter]'); // click on the first item and close // 2
+    await userEvent.keyboard('[Enter]'); // open
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await userEvent.keyboard('[Enter]'); // click on the first item and close // 3
+
+    expect(spy).toHaveBeenCalledTimes(3);
+  });
+
+  test.sequential('Should call onClick event once', async ({ expect }) => {
+    const spy = vi.fn();
+    const Component = () => {
+      return (
+        <DropdownMenu>
+          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+            Trigger
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Menu>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item onClick={spy}>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+      );
+    };
+    render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Enter]');
+
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
+  test.sequential('Should close by second click on trigger', async ({ expect }) => {
+    const Component = () => {
+      return (
+        <DropdownMenu>
+          <DropdownMenu.Trigger tag='button' data-testid='dd-button-trigger'>
+            Trigger
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Menu data-testid='dd-menu'>
+            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          </DropdownMenu.Menu>
+        </DropdownMenu>
+      );
+    };
+    const { getByTestId } = render(<Component />);
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Enter]');
+
+    const element = getByTestId('dd-menu');
+
+    expect(element).toBeInTheDocument();
+
+    await userEvent.click(getByTestId('dd-button-trigger'));
+
+    await waitFor(() => {
+      expect(element).not.toBeInTheDocument();
+    });
+  });
+
   describe.sequential('opens nested menu', () => {
     test.sequential('by enter', async ({ expect }) => {
       const { getByTestId } = render(
@@ -220,6 +327,7 @@ describe('DropdownMenu', () => {
 
       await userEvent.keyboard('[Tab]');
       await userEvent.keyboard('[Enter]');
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await userEvent.keyboard('[ArrowDown]');
       await userEvent.keyboard('[Enter]');
       expect(getByTestId('item-2-2')).toBeTruthy();
@@ -247,6 +355,7 @@ describe('DropdownMenu', () => {
 
       await userEvent.keyboard('[Tab]');
       await userEvent.keyboard('[Enter]');
+      await new Promise((resolve) => setTimeout(resolve, 500));
       await userEvent.keyboard('[ArrowDown]');
       await userEvent.keyboard('[ArrowRight]');
       expect(getByTestId('item-2-2')).toBeTruthy();
@@ -276,6 +385,7 @@ describe('DropdownMenu', () => {
 
     await userEvent.keyboard('[Tab]');
     await userEvent.keyboard('[Enter]');
+    await new Promise((resolve) => setTimeout(resolve, 500));
     expect(getByTestId('dd-menu-item-1')).toHaveFocus();
 
     await userEvent.keyboard('[ArrowDown]');

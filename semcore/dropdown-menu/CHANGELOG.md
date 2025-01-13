@@ -2,6 +2,72 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.0] - 2024-12-23
+
+### Added
+
+- `menuitemcheckbox` and `menuitemradio` roles for DropdownMenu.Item.
+
+## [4.43.6] - 2024-12-16
+
+### Changed
+
+- Removed tabIndex on Menu Items in advanced mode.
+
+## [4.43.5] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.41.5 ~> 4.41.7]).
+
+## [4.43.4] - 2024-11-27
+
+### Fixed
+
+- Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
+
+## [4.43.3] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.41.2 ~> 4.41.3], `@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [4.43.2] - 2024-11-06
+
+### Fixed
+
+- Unexpected focus on actions in DropdownMenu.Item.
+
+## [4.43.1] - 2024-11-05
+
+### Added
+
+- `DropdownPopperAriaProps` type for DropdownMenu.Popper props.
+
+## [4.43.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.40.1 ~> 4.41.0], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.42.1] - 2024-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [4.40.0 ~> 4.40.1], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.42.0] - 2024-10-15
+
+### Added
+
+- New `DropdownMenu.Item.Text` for wrapping text if used with addons.
+
+## [4.41.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/dropdown` [4.38.0 ~> 4.39.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [4.40.0] - 2024-09-24
 
 ### Changed

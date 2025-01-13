@@ -8,6 +8,12 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 
 **BaseTrigger** is a foundational component for creating triggers with button-like behavior, resembling buttons, links, or filters.
 
+`BaseTrigger` has the following types for using in different scenarios:
+
+- `ButtonTrigger`
+- `FilterTrigger`
+- `LinkTrigger`
+
 ## Sizes, margins and paddings
 
 Table: BaseTrigger sizes, margins and paddings
@@ -30,15 +36,7 @@ Table: BaseTrigger states
 | Valid     | ![](static/base-trigger-valid.png)    | The border changes color to `--border-success-active`. |
 | Disabled  | ![](static/base-trigger-disabled.png) | The component changes opacity to `--disabled-opacity`. |
 
-## BaseTrigger types
-
-BaseTrigger has the following types for using in the different scenarios:
-
-- ButtonTrigger
-- FilterTrigger
-- LinkTrigger
-
-### ButtonTrigger
+## ButtonTrigger
 
 ButtonTrigger has the same sizes as BaseTrigger has.
 
@@ -49,7 +47,7 @@ Table: ButtonTrigger sizes
 | M (28px)            | ![](static/button-trigger-normal-m.png) |
 | L (40px)            | ![](static/button-trigger-normal-l.png) |
 
-#### ButtonTrigger states
+### ButtonTrigger states
 
 Table: ButtonTrigger states
 
@@ -61,15 +59,15 @@ Table: ButtonTrigger states
 | Invalid | ![](static/button-trigger-invalid-m.png) ![](static/button-trigger-invalid-l.png) |
 | Disabled | ![](static/button-trigger-disabled-m.png) ![](static/button-trigger-disabled-l.png) |
 
-### FilterTrigger
+## FilterTrigger
 
 This type has separate detailed [FilterTrigger guide](/components/filter-trigger/filter-trigger) since it operates as an active state of a filter.
 
 ![](static/filter-trigger.png) ![](static/advanced-filter-trigger.png)
 
-### LinkTrigger
+## LinkTrigger
 
-LinkTrigger has the styles of [Link component](/components/link/link).
+LinkTrigger has the styles of the [Link component](/components/link/link).
 
 Table: LinkTrigger sizes
 
@@ -78,7 +76,7 @@ Table: LinkTrigger sizes
 | M (28px)            | ![](static/link-trigger-normal-m.png) |
 | L (40px)            | ![](static/link-trigger-normal-l.png) |
 
-#### LinkTrigger states
+### LinkTrigger states
 
 Table: LinkTrigger states
 

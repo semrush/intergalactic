@@ -13,16 +13,16 @@ import {
   StaticShapes,
 } from './LegendItem.type';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 
-class LegendItemRoot extends Component<
-  LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
-> {
+const enhance = [resolveColorEnhance(), uniqueIDEnhancement()] as const;
+class LegendItemRoot extends Component<LegendItemProps, {}, {}, typeof enhance> {
   static displayName = 'LegendItem';
   static style = style;
 
-  static enhance = [resolveColorEnhance()];
+  static enhance = enhance;
 
   static defaultProps = () => ({
     children: (
@@ -36,12 +36,15 @@ class LegendItemRoot extends Component<
     ),
   });
 
-  getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
-    const { checked, color, shape, label, id, size, onClick, resolveColor, patterns } =
-      this.asProps;
+  getUniqueID() {
+    const { uid } = this.asProps;
+    return `chart-legend-item-${uid}`;
+  }
 
+  getShapeProps() {
+    const { checked, color, shape, label, id, size, resolveColor, patterns, onChangeLegendItem } =
+      this.asProps;
     return {
-      id,
       label,
       shape,
       checked,
@@ -49,11 +52,10 @@ class LegendItemRoot extends Component<
       patternKey: color,
       patterns,
       size,
-      onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
-        if (onClick && e.key === ' ') {
-          onClick();
-        }
+      onChange: (value: boolean) => {
+        onChangeLegendItem(id, value);
       },
+      'aria-labelledby': shape === 'Checkbox' ? this.getUniqueID() : null,
     };
   }
 
@@ -66,11 +68,14 @@ class LegendItemRoot extends Component<
     };
   }
 
-  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps {
-    const { color, ...props } = this.asProps;
+  getLabelProps(): Omit<LegendItem, 'color'> & IRootComponentProps & { onClick: () => void } {
+    const { id, checked, color, onChangeLegendItem, shape, ...props } = this.asProps;
 
     return {
       ...props,
+      id: this.getUniqueID(),
+      checked,
+      onClick: () => onChangeLegendItem(id, !checked),
       children: props.label,
     };
   }
@@ -106,7 +111,7 @@ class LegendItemRoot extends Component<
     const disabled = StaticShapes.includes(shape);
 
     return sstyled(styles)(
-      <SLegendItem render={Flex} disabled={disabled}>
+      <SLegendItem render={Flex} disabled={disabled} __excludeProps={['id']}>
         <Children />
       </SLegendItem>,
     );
@@ -125,9 +130,8 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
     patternKey = getChartDefaultColorName(0),
     Children,
     children: hasChildren,
-    onKeyUp,
-    label,
     patterns,
+    onChange,
   } = props;
 
   if (hasChildren) {
@@ -137,7 +141,7 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
   if (shape === 'Pattern') {
     return sstyled(styles)(
       <Box mr={1}>
-        <SPatternSymbol color={color} patternKey={patternKey} />
+        <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
       </Box>,
     );
   }
@@ -149,12 +153,12 @@ function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabel
           size={size}
           checked={checked}
           theme={checked ? color : undefined}
-          onKeyUp={onKeyUp}
-          aria-label={label}
+          onChange={onChange}
+          aria-labelledby={props['aria-labelledby']}
         />
         {patterns && (
           <Box mt={'2px'} mr={1}>
-            <SPatternSymbol color={color} patternKey={patternKey} />
+            <SPatternSymbol color={color} patternKey={patternKey} aria-hidden />
           </Box>
         )}
       </>,

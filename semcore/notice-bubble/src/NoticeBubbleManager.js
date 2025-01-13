@@ -10,6 +10,8 @@ class NoticeBubbleManager {
   emitter = null;
   counter = 0;
 
+  replaceTimer = 0;
+
   constructor() {
     this.emitter = new EventEmitter();
   }
@@ -51,6 +53,7 @@ class NoticeBubbleManager {
       update: this.update.bind(this, uid),
       remove: this.remove.bind(this, uid),
       ref,
+      // todo Brauer Ilia: remove this property, because we added logic about autofocus in Notice
       focus,
     };
   }
@@ -68,16 +71,29 @@ class NoticeBubbleManager {
     return false;
   }
 
+  replaceLast(props) {
+    if (this.replaceTimer) {
+      clearTimeout(this.replaceTimer);
+    }
+
+    const item = this.items[this.items.length - 1];
+
+    if (item?.visible) {
+      this.remove(this.counter - 1);
+    }
+
+    this.replaceTimer = setTimeout(() => {
+      this.add(props);
+    }, 300);
+  }
+
   remove(uid) {
-    const index = this.items.findIndex((item) => item.uid === uid);
-    if (index !== -1) {
-      this.items[index].visible = false;
+    const item = this.items.find((item) => item.uid === uid);
+    if (item) {
+      item.visible = false;
       setTimeout(() => {
-        const index = this.items.findIndex((item) => item.uid === uid);
-        if (index !== -1) {
-          this.items.splice(index, 1);
-          this.emit();
-        }
+        this.items = this.items.filter((item) => item.uid !== uid);
+        this.emit();
       }, 1000);
       this.emit();
       return true;

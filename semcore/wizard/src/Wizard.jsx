@@ -6,7 +6,7 @@ import CheckM from '@semcore/icon/Check/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Button from '@semcore/button';

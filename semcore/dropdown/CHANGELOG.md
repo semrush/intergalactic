@@ -2,6 +2,90 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.42.0] - 2024-12-23
+
+### Added
+
+- `menuitemcheckbox` and `menuitemradio` roles for DropdownMenu.Item.
+
+## [4.41.8] - 2024-12-16
+
+### Fixed
+
+- Items lost highlighting after filtering the list.
+
+## [4.41.7] - 2024-12-05
+
+### Fixed
+
+- Click handler was called for disabled Item.
+
+## [4.41.6] - 2024-12-02
+
+### Fixed
+
+- Dropdown didn't close when the trigger was clicked for the second time.
+
+## [4.41.5] - 2024-11-27
+
+### Fixed
+
+- Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
+
+## [4.41.4] - 2024-11-25
+
+### Fixed
+
+- Double call of `onVisibleChange` handler.
+
+## [4.41.3] - 2024-11-22
+
+### Fixed
+
+- `onMouseEnter` in Dropdown.Item was not bubbling the event.
+
+## [4.41.2] - 2024-11-08
+
+### Fixed
+
+- Double click event on DropDownMenu.Items.
+
+## [4.41.1] - 2024-11-05
+
+### Added
+
+- Export for `DropdownPopperAriaProps` type.
+
+## [4.41.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.40.1] - 2024-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [5.43.0 ~> 5.43.1], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.40.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [4.39.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
+## [4.38.1] - 2024-10-11
+
+### Fixed
+
+- Types for enhances.
+
 ## [4.38.0] - 2024-09-24
 
 ### Added

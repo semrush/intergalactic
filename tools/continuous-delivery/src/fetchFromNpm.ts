@@ -81,5 +81,12 @@ export const fetchFromNpm = async (filter?: string[]) => {
 
   log(`Fetched info about ${Object.keys(currentVersions).length} packages.`);
 
+  currentVersions['@semcore/slack-integration'] = {
+    version: '0.0.3',
+    dependencies: {
+      '@semcore/changelog-handler': '0.0.1',
+    },
+  };
+
   return currentVersions;
 };

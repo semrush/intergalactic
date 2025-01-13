@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Form } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 import SpinContainer from '@semcore/spin-container';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Notice from '@semcore/notice';
 import CheckM from '@semcore/icon/Check/m';
@@ -25,20 +24,20 @@ import { localizedMessages } from '../../translations/__intergalactic-dynamic-lo
 import { NoticeBubbleContainer, NoticeBubbleManager } from '@semcore/notice-bubble';
 import style from '../../style/feedback-rating.shadow.css';
 
-type Enhances = {
-  getI18nText: ReturnType<typeof useI18n>;
-  uid: ReturnType<typeof uniqueIDEnhancement>;
-};
-
 type State = {
   error: boolean;
 };
 
-class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhances> {
+class FeedbackRatingRoot extends Component<
+  FeedbackRatingProps,
+  {},
+  State,
+  typeof FeedbackRatingRoot.enhance
+> {
   static displayName = 'FeedbackRatingForm';
   static style = style;
 
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()] as const;
 
   static defaultProps = {
     onSubmit: () => {},
@@ -89,6 +88,11 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
     };
   }
 
+  getNoticeTextId() {
+    const { uid } = this.asProps;
+    return `${uid}-feedback-rating-notice`;
+  }
+
   handleChangeRating = (rating: number) => {
     this.asProps.onVisibleChange(true, rating);
   };
@@ -109,39 +113,36 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
       this.setState({ error: false });
 
       if (status === 'success') {
-        this.manager.add({
-          icon: <CheckM color='green-400' />,
-          children: getI18nText('successMessage'),
-          initialAnimation: true,
-          duration: 5000,
-        });
+        // showing notice with delay for SR, less than 100ms is not enough
+        setTimeout(() => {
+          this.manager.add({
+            icon: <CheckM color='green-400' />,
+            children: getI18nText('successMessage'),
+            initialAnimation: true,
+            duration: 5000,
+          });
+        }, 300);
       } else if (status === 'error') {
         this.setState({ error: true });
       }
     }
   }
 
-  renderCheckbox = (config: FormConfigItem) => {
+  renderCheckbox = (config: FormConfigItem, index: number) => {
     const initialValue = this.props.initialValues[config.key];
 
     return (
-      <FeedbackRating.Item
-        name={config.key}
-        initialValue={initialValue}
-        type={'checkbox'}
-        key={config.key}
-        tag={'li'}
-      >
+      <Field name={config.key} initialValue={initialValue} type={'checkbox'} key={config.key}>
         {({ input }) => (
           <FeedbackRating.Checkbox
             {...input}
             id={config.key}
-            name={config.key}
             label={config.label}
-            onChange={this.handleChange(input.onChange)}
+            onChange={(_checked, e) => input.onChange(e)}
+            focused={index === 0}
           />
         )}
-      </FeedbackRating.Item>
+      </Field>
     );
   };
 
@@ -157,9 +158,14 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
         (config.label as unknown as JSX.Element)
       );
 
+    const isDescriptionReactFragment =
+      (config.description as ReactElement)?.type === React.Fragment;
+
     return (
-      <Flex tag='label' mt={4} direction='column' htmlFor={config.key} key={config.key}>
-        {label}
+      <Flex direction='column'>
+        <Flex tag='label' mt={4} htmlFor={config.key} key={config.key}>
+          {label}
+        </Flex>
 
         <FeedbackRating.Item
           name={config.key}
@@ -169,13 +175,13 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
           flip={{
             fallbackPlacements: ['right-start', 'bottom'],
           }}
+          aria-describedby={config.description ? config.key + '-description' : undefined}
         >
           {({ input }) => {
             if (config.type === 'textarea') {
               return (
                 <Textarea
                   {...input}
-                  autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
                   id={config.key}
@@ -198,8 +204,8 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
         </FeedbackRating.Item>
         {config.description && (
           <Box mt={2}>
-            {typeof config.description === 'string' ? (
-              <Text lineHeight='18px' size={200} color='#6c6e79'>
+            {typeof config.description === 'string' || isDescriptionReactFragment ? (
+              <Text size={200} color='text-secondary' id={config.key + '-description'}>
                 {config.description}
               </Text>
             ) : (
@@ -231,6 +237,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
       onNotificationClose,
       getI18nText,
       errorFeedbackEmail,
+      modalWidth,
       ...other
     } = this.asProps;
 
@@ -239,6 +246,7 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
     const textFields = formConfig.filter(
       (item) => item.type === 'textarea' || item.type === 'input',
     );
+    const notificationId = this.getNoticeTextId();
 
     return sstyled(styles)(
       <Root render={Box}>
@@ -252,12 +260,14 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
             <FeedbackIllustration />
           </Notice.Label>
           <Notice.Content tag={Flex} alignItems={'center'}>
-            <Text mr={3}>{notificationText}</Text>
+            <Text mr={3} id={notificationId}>
+              {notificationText}
+            </Text>
             <Notice.Actions mt={0}>
               <SliderRating
                 value={rating}
                 onChange={this.handleChangeRating}
-                aria-label={notificationText}
+                aria-labelledby={notificationId}
               />
             </Notice.Actions>
             {learnMoreLink && (
@@ -269,7 +279,14 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
           <Notice.Close onClick={onNotificationClose} />
         </Notice>
 
-        <SFeedbackRating render={Modal} visible={visible} onClose={this.handelCloseModal} p={0}>
+        <SFeedbackRating
+          render={Modal}
+          visible={visible}
+          onClose={this.handelCloseModal}
+          p={0}
+          use:w={modalWidth ?? 440}
+          aria-labelledby={this.headerId}
+        >
           <Form decorators={[this.focusDecorator]} {...other}>
             {(api) =>
               sstyled(styles)(
@@ -280,13 +297,16 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
                   loading={status !== 'loading' ? api.submitting : status === 'loading'}
                   p={1}
                   m={9}
-                  wMax={284}
                 >
                   <Flex justifyContent='center'>
                     <SliderRating value={rating} readonly={true} />
                   </Flex>
 
-                  {header as any}
+                  {(header as ReactElement)?.type === FeedbackRating.Header ? (
+                    header
+                  ) : (
+                    <FeedbackRating.Header>{header}</FeedbackRating.Header>
+                  )}
 
                   <Box
                     tag='form'
@@ -295,21 +315,15 @@ class FeedbackRatingRoot extends Component<FeedbackRatingProps, {}, State, Enhan
                     ref={forwardRef}
                     {...other}
                     onSubmit={api.handleSubmit}
-                    title={getI18nText('formTitle')}
-                    wMax={320}
                   >
-                    <FeedbackRating.Item name={'rating'} initialValue={rating}>
-                      {({ input }) => {
-                        return <input {...input} type='hidden' />;
-                      }}
-                    </FeedbackRating.Item>
+                    <Field name={'rating'} initialValue={rating}>
+                      {({ input }) => <input {...input} type='hidden' />}
+                    </Field>
 
                     <div role={'group'} aria-labelledby={this.headerId}>
-                      <ul>
-                        {checkboxFields.map((formConfigItem) =>
-                          this.renderCheckbox(formConfigItem),
-                        )}
-                      </ul>
+                      {checkboxFields.map((formConfigItem, index) =>
+                        this.renderCheckbox(formConfigItem, index),
+                      )}
                     </div>
 
                     {textFields.map((formConfigItem) => this.renderTextField(formConfigItem))}

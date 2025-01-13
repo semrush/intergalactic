@@ -29,8 +29,17 @@ const BaseTokens = ({ tokens }) => {
   return (
     <div>
       <Input className={styles.searchInput} size='l'>
-        <Input.Addon className={styles.nameFilterInputIcon} tag={SearchIcon} />
-        <Input.Value placeholder='Find token' value={filter} onChange={setFilter} />
+        <Input.Addon
+          className={styles.nameFilterInputIcon}
+          tag={SearchIcon}
+          use:aria-hidden={undefined}
+        />
+        <Input.Value
+          placeholder='Enter color name to find token'
+          value={filter}
+          onChange={setFilter}
+          aria-label={'Search tokens'}
+        />
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>

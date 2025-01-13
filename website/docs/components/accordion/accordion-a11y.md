@@ -22,22 +22,18 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role     | Attribute                 | Element  | Usage                                                                                                                                                                                                                       |
-| -------- | ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `region` |                           | `div`    | Creates a landmark region that contains the currently expanded accordion panel.                                                                                                                                             |
-| `button` |                           | `div`, `button` | The `button` role is for clickable elements that trigger a response when activated by the user. Adding `role="button"` tells the screen reader the element is a button, but provides no button functionality.               |
-|          | `aria-expanded="true"`    | `button` | Set to `true` when the Accordion panel is expanded, otherwise set to `false`.                                                                                                                                               |
-|          | `aria-controls="ID"`      | `button` | Points to the `ID` of the panel which the header controls.                                                                                                                                                                  |
-|          | `aria-labelledby="IDREF"` | `div`    | Defines the accessible name for the region element. References the accordion header button that expands and collapses the region. `region` elements are required to have an accessible name to be identified as a landmark. |
-|          | `aria-disabled`             |          | The `aria-disabled` state indicates that the element is perceivable but disabled, so it isn’t editable or otherwise operable. |
+| Component / element           | Role & attributes         | Usage                                                                                                                                     |
+| ----------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `Accordion.Item.ToggleButton` | `role="button"`           | Defines element as clickable and can be activated by user, and controls the visibility of accordion's content panel.                      |
+|                               | `aria-expanded="true"`    | Set to `true` when the accordion panel is expanded, otherwise set to `false`.                                                             |
+|                               | `aria-controls="IDREF"`      | Points to the `ID` of the panel which the toggle button controls.                                                                         |
+| `Accordion.Item.Chevron`      | `aria-hidden="true"`      | Hides noninteractive icon from the assistive technologies.                                                                               |
+| `Accordion.Item.Collapse`     | `region`                  | Creates a landmark region that contains the currently expanded accordion panel.                                                           |
+|                               | `aria-labelledby="IDREF"` | Defines the accessible name for the `region` element. References the `Accordion.Item.ToggleButton` that expands and collapses the region. |
 
-## Considerations for developers
+## Considerations for designers & developers
 
-- Buttons are used as the accordions so that they are tab-able by keyboard users and accessible to screen readers.
-- The accordion button should have an aria-controls attribute set to the `ID` of the element containing the accordion panel content.
-- Each button has an aria-expanded attribute on it that is toggled between `true` and `false`. If `aria-expanded="true"`, the content associated with it is shown, and if `aria-expanded="false"` the content is hidden.
-
-Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html).
+By default, `Accordion.Item.Toggle` is set to an `h3` heading level, but you can change it if needed. Refer to [our example](https://developer.semrush.com/intergalactic/components/accordion/accordion-code#heading-tag).
 
 ## Resources
 
@@ -46,4 +42,4 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

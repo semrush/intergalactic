@@ -17,7 +17,7 @@ To create a table, provide columns with titles using `<DataTable.Column name={na
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/base.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/base.tsx';
 </script>
 
 :::
@@ -29,7 +29,7 @@ Use the secondary table to compactly display a small amount of data.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/secondary-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/secondary-table.tsx';
 </script>
 
 :::
@@ -43,7 +43,7 @@ Reduce table cel paddings by adding the `compact` property.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/compact.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/compact.tsx';
 </script>
 
 :::
@@ -55,7 +55,7 @@ Add borders to columns by passing the `vBorders` property to specific columns.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/borders.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/borders.tsx';
 </script>
 
 :::
@@ -75,7 +75,7 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/fixed-header.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/fixed-header.tsx';
 </script>
 
 :::
@@ -87,7 +87,7 @@ For correct components overlapping, use the `SpinContainer` component with `Spin
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/fixed-header-with-spin-overlay.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/fixed-header-with-spin-overlay.tsx';
 </script>
 
 :::
@@ -99,7 +99,7 @@ You can insert tooltips, selects, and other components into the table header usi
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/customizing-header.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/customizing-header.tsx';
 </script>
 
 :::
@@ -115,7 +115,7 @@ Create a multi-level header by nesting columns within each other.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/multi-level-header.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/multi-level-header.tsx';
 </script>
 
 :::
@@ -127,7 +127,7 @@ Components added to `<DataTable.Head/>` will be inserted at the end of the heade
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/additional-elements-in-header.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/additional-elements-in-header.tsx';
 </script>
 
 :::
@@ -141,7 +141,7 @@ Columns are inherited from the `Flex` component and accept its parameters, such 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/column-sizes.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/column-sizes.tsx';
 </script>
 
 :::
@@ -153,7 +153,7 @@ Columns and cells inherit properties from the `Flex` component, so you can use `
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/column-alignment.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/column-alignment.tsx';
 </script>
 
 :::
@@ -169,7 +169,7 @@ If fixed columns aren't visible in the following example, try reducing the windo
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/fixed-columns.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/fixed-columns.tsx';
 </script>
 
 :::
@@ -181,7 +181,7 @@ Merge columns by changing the table data and using `/` to combine column keys. Y
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/columns-merging.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/columns-merging.tsx';
 </script>
 
 :::
@@ -197,30 +197,12 @@ Be cautious with columns with a `wMax` property, as the sort icon may overlap th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/column-expand.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/column-expand.tsx';
 </script>
 
 :::
 
 ## Table rows
-
-### Access to rows
-
-To apply properties to a table row, use `<DataTable.Row/>` . You can use multiple `<DataTable.Row/>` to separate the business logic.
-
-::: tip
-`<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>` . Don't wrap it in higher-order components, and using styled components (for example, `` styled(DataTable. Row) `...` `` ) isn't allowed.
-:::
-
-You can provide `data` property for `<DataTable.Row/>` . It isn't used in the component runtime but improves strict typings.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/access-to-rows.tsx';
-</script>
-
-:::
 
 ### Rows grouping
 
@@ -229,7 +211,7 @@ Group cells from different rows by adding a special grouping key to the table da
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/rows-merging.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/rows-merging.tsx';
 </script>
 
 :::
@@ -241,7 +223,7 @@ If built-in virtualization doesn't meet your requirements, you can implement you
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-rows-rendering.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/custom-rows-rendering.tsx';
 </script>
 
 :::
@@ -261,7 +243,7 @@ You can provide `data` property for `<DataTable.Cell/>` . It isn't used in the c
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access-to-cells.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/access-to-cells.tsx';
 </script>
 
 :::
@@ -273,7 +255,7 @@ To apply properties to multiple table cells, define `<DataTable.Cell />` with th
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/access-to-set-of-cells.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/access-to-set-of-cells.tsx';
 </script>
 
 :::
@@ -290,7 +272,7 @@ To enable column sorting:
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/sorting.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/sorting.tsx';
 </script>
 
 :::
@@ -302,7 +284,7 @@ If some column has `changeSortSize={true}`, by default, it will be increased by 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/sorting-changing-size.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/sorting-changing-size.tsx';
 </script>
 
 :::
@@ -314,7 +296,7 @@ You could set `sortSizeRecalculation={true}` for using this column as column to 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/sorting-changing-size-by-columns.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/sorting-changing-size-by-columns.tsx';
 </script>
 
 :::
@@ -334,7 +316,7 @@ By default, scrolling is displayed at the bottom of the table, but it can also b
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/scroll-in-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/scroll-in-table.tsx';
 </script>
 
 :::
@@ -347,7 +329,7 @@ Note that built-in virtualization support tables with fixed-height rows only.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/virtual-scroll-in-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/virtual-scroll-in-table.tsx';
 </script>
 
 :::
@@ -359,7 +341,7 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/pagination.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/pagination.tsx';
 </script>
 
 :::
@@ -373,7 +355,7 @@ Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to co
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/download-status.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/download-status.tsx';
 </script>
 
 :::
@@ -385,7 +367,7 @@ Add a skeleton to the table by directly substituting it in the `data` or replaci
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/skeleton-in-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/skeleton-in-table.tsx';
 </script>
 
 :::
@@ -404,7 +386,7 @@ Extend table functionality using the `intergalactic/accordion` component. This a
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/accordion-inside-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/accordion-inside-table.tsx';
 </script>
 
 :::
@@ -421,7 +403,7 @@ Refer to the [example with the accordion](/table-group/data-table/data-table#acc
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-in-table.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/table-in-table.tsx';
 </script>
 
 :::
@@ -437,7 +419,7 @@ Refer to the [example with the table inside the table](/table-group/data-table/d
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/table-in-table-with-fixed-column.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/table-in-table-with-fixed-column.tsx';
 </script>
 
 :::
@@ -449,7 +431,7 @@ Components added to `<DataTable.Body/>` will be inserted at the end of the table
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/adding-additional-elements-to-table-body.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/adding-additional-elements-to-table-body.tsx';
 </script>
 
 :::
@@ -461,7 +443,7 @@ It’s an example of a custom styles for the table body, which uses CSS variable
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom-view-for-table-body.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/custom-view-for-table-body.tsx';
 </script>
 
 :::
@@ -471,7 +453,7 @@ It’s an example of a custom styles for the table body, which uses CSS variable
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/export-in-image.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/export-in-image.tsx';
 </script>
 
 :::

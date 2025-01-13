@@ -11,6 +11,7 @@ const Demo = () => (
       <Button.Addon>
         <HamburgerM />
       </Button.Addon>
+      <Button.Text>Menu</Button.Text>
     </Popper.Trigger>
     <Popper.Popper style={style}>Attached content</Popper.Popper>
   </Popper>

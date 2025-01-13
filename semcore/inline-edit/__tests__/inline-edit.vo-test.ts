@@ -8,7 +8,7 @@ test.skip('Users can interact with Slider via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/inline-edit/examples/simple_use.tsx';
+  const standPath = 'stories/components/inline-edit/docs/examples/simple_use.tsx';
   const reportPath = 'website/docs/components/inline-edit/inline-edit-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');

@@ -6,6 +6,7 @@ import { assignProps } from '@semcore/core';
 import { CommonScoreProps } from './Score';
 
 import style from './donut.shadow.css';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 export type ScoreDonutProps = BoxProps & CommonScoreProps;
 
@@ -14,8 +15,8 @@ type Enhances = {
   isSemiDonut?: true;
 };
 
-class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
-  static enhance = [resolveColorEnhance()];
+class DonutRoot extends Component<ScoreDonutProps, {}, {}, typeof DonutRoot.enhance> {
+  static enhance = [resolveColorEnhance()] as const;
 
   static style = style;
 
@@ -28,6 +29,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
     const {
       value,
       styles,
+      baseBgColor = 'chart-grid-bar-chart-base-bg',
       color = 'chart-palette-order-1',
       resolveColor,
       isSemiDonut,
@@ -54,21 +56,30 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
     }
 
     const viewBox = isSemiDonut ? '0 0 24 12' : '0 0 24 24';
+    const strokeDashoffsetBase = -1 * (valueStrokeDasharray + (isSemiDonut ? offsetPoint : 0));
+    const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <SDonutContainer render={Box} semi={isSemiDonut}>
-        <svg width='100%' height='100%' viewBox={viewBox} fill='none'>
+      <SDonutContainer render={Box} semi={isSemiDonut} __excludeProps={__excludeProps}>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={viewBox}
+          fill='none'
+          role='img'
+          {...extractedAriaProps}
+        >
           <g>
             <circle
               cx='12'
               cy='12'
               r={radius}
               strokeWidth={strokeWidth}
-              stroke={resolveColor('chart-grid-bar-chart-base-bg')}
+              stroke={resolveColor(baseBgColor)}
               strokeDasharray={
                 loading ? undefined : `${greyStrokeDasharray} ${baseStrokeDasharray}`
               }
-              strokeDashoffset={-1 * valueStrokeDasharray}
+              strokeDashoffset={strokeDashoffsetBase}
             />
             {!loading && (
               <>
@@ -86,7 +97,7 @@ class DonutRoot extends Component<ScoreDonutProps, {}, {}, Enhances> {
                     values={`0;${valueStrokeDasharray}`}
                   />
                 </circle>
-                {value !== 100 && (
+                {value !== 100 && !isSemiDonut && (
                   <circle
                     cx='12'
                     cy='12'

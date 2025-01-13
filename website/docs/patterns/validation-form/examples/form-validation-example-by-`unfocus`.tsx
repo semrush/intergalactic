@@ -175,10 +175,15 @@ class Demo extends React.Component {
 
                     return (
                       <Tooltip>
-                        <Tooltip.Popper id='form-select-error' theme='warning' visible={showError}>
+                        <Tooltip.Popper
+                          id='form-select-error'
+                          theme='warning'
+                          placement='top'
+                          visible={showError}
+                        >
                           {meta.error}
                         </Tooltip.Popper>
-                        <Tooltip.Trigger w={'100%'}>
+                        <Tooltip.Trigger w={'100%'} inline={false} {...input}>
                           <Select
                             value={input.value === '' ? undefined : input.value}
                             size={'l'}
@@ -194,7 +199,7 @@ class Demo extends React.Component {
                             }}
                           >
                             <Select.Trigger w={'100%'} onBlur={(e) => input.onBlur(e)} />
-                            <Select.Popper>
+                            <Select.Popper aria-label={'Options'}>
                               <Select.Option value={1}>Morning</Select.Option>
                               <Select.Option value={2}>Afternoon</Select.Option>
                               <Select.Option value={3}>Evening</Select.Option>

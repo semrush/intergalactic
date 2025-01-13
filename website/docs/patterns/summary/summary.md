@@ -46,18 +46,17 @@ For metrics composed of multiple values, use these margins:
 
 Table: Summary recommended styles
 
-|                                     | Styles     |
-| ----------------------------------- | ---------- |
-| **Title**                           | Text size: 14px (`--fs-200`, `--lh-200`), color uses `--text-primary`. Accompanied by an `Info` icon of M size. Alternatively, use a medium-sized icon for displaying brand metrics (for example, for social media).       |
-| **Date/period/location/database**   | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`. |
-| **Metric**                          | Text size: 24px (`--fs-500`, `--lh-500`), color uses `--text-primary`, link color, or another relevant color for indicating specific metrics in your product. You may adjust text size to 20px or 32px as needed. Refer to the  [Typography scale](/style/typography/typography). |
-| **Metric's additional information** | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.
- |
-| **Other information**               | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`. |
+| Element                             | Styles                                                                                                                                                                                                                                                                           |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**                           | Text size: 14px (`--fs-200`, `--lh-200`), color uses `--text-primary`. Accompanied by an `Info` icon of M size. Alternatively, use a medium-sized icon for displaying brand metrics (for example, for social media).                                                             |
+| **Date/period/location/database**   | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.                                                                                                                                                                                                         |
+| **Metric**                          | Text size: 24px (`--fs-500`, `--lh-500`), color uses `--text-primary`, link color, or another relevant color for indicating specific metrics in your product. You may adjust text size to 20px or 32px as needed. Refer to the [Typography scale](/style/typography/typography). |
+| **Metric's additional information** | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.                                                                                                                                                                                                         |
+| **Other information**               | Text size: 12px (`--fs-100`, `--lh-100`), color uses `--text-secondary`.                                                                                                                                                                                                         |
 
 ## Dividers
 
-Separate metrics with 24px spacing and [Divider](/components/divider/divider). The last metric (`last-child` element) should not have a divider.
+Separate metrics with 24px spacing and [Divider](/components/divider/divider). The last metric (`last-child` element) shouldn't have a divider after it.
 
 ![](static/divider.png)
 
@@ -73,10 +72,10 @@ Main report/widget metrics can be arranged either horizontally or vertically, de
 
 Table: Summary layouts
 
-| Case                 | Layout type                    | Appearance example    |
-| -------------------- | ------------------------------ | --------------------- |
+| Case                                                  | Layout type                                   | Appearance example         |
+| ----------------------------------------------------- | --------------------------------------------- | -------------------------- |
 | If there are more than 3 metrics in the interface --> | use horizontal layout                         | ![](static/horizontal.png) |
-| If there are 3 or less metrics in the frontend -->    | vertical layout                               | ![](static/vertical.png)     |
+| If there are 3 or less metrics in the frontend -->    | vertical layout                               | ![](static/vertical.png)   |
 | If there is one metric in the interface, than -->     | show the values of which this metric consists | ![](static/one-metric.png) |
 
 ![](static/metric-yes-no.png)
@@ -89,8 +88,8 @@ Metrics can be placed not only within separate widgets but also within table cel
 
 ## Title
 
-- For cases where there's an abundance of metrics causing them to exceed page width, truncate their titles with an `ellipsis`.
-- Show the complete metric title by hovering over the title, revealing it in a tooltip. Alternatively, include the title within the `Info` icon tooltip (see [Informer](/patterns/informer/informer)).
+- When there's an abundance of metrics causing them to exceed page width, truncate titles with [Ellipsis](../../components/ellipsis/ellipsis.md), showing the full name on hover.
+- Alternatively, include the title within an [Informer](/patterns/informer/informer).
 
 ![](static/minitrend3.png)
 
@@ -110,9 +109,9 @@ Minitrends serve as simplified chart versions for displaying trends or comparing
 
 Table: Summary with minitrens
 
-| Case   | Appearance example                  |
-| ------ | ----------------------------------- |
-| Metrics exceed maximum page width --> arrange in columns. | ![](static/minitrend2.png) |
+| Case                                                         | Appearance example         |
+| ------------------------------------------------------------ | -------------------------- |
+| Metrics exceed maximum page width --> arrange in columns.    | ![](static/minitrend2.png) |
 | Metrics with the same minitrend type --> ensure equal width. | ![](static/minitrend1.png) |
 
 ### Tooltip
@@ -148,13 +147,13 @@ Table: Clickable minitrend states
 
 Table: Summary edge cases
 
-| State     | Appearance example                         |
-| --------- | ------------------------------------------ |
-| Display [Skeleton](/components/skeleton/skeleton) on initial load. | ![](static/summary-skeleton.png)   |
-| Show [Spin](/components/spin/spin) post data reload or filtering. | ![](static/spin.png)                   |
-| Indicate missing data with "n/a" message. | ![](static/not-available.png) |
-| In case of metric display error, show `Warning` icon. While hovering over the icon show tooltip with "Something went wrong" message. | ![](static/error2.png)                |
-| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![](static/error.png)                 |
+| State                                                                                                                                                        | Appearance example               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- |
+| Display [Skeleton](/components/skeleton/skeleton) on initial load.                                                                                           | ![](static/summary-skeleton.png) |
+| Show [Spin](/components/spin/spin) post data reload or filtering.                                                                                            | ![](static/spin.png)             |
+| Indicate missing data with "n/a" message.                                                                                                                    | ![](static/not-available.png)    |
+| In case of metric display error, show `Warning` icon with a "Something went wrong" [Hint](../../components/tooltip/tooltip.md).                              | ![](static/error2.png)           |
+| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._ | ![](static/error.png)            |
 
 ## Adaptivity
 
@@ -162,4 +161,3 @@ The Summary widget can have maximum and minimum widths at various resolutions.
 
 - The maximum width depends on the widget's content.
 - Avoid stretching the metrics widget to the full page width.
-

@@ -43,10 +43,7 @@ class FeaturePopover extends Component {
     placement: 'bottom-start',
     defaultVisible: false,
     onOutsideClick: () => false,
-    interaction: {
-      trigger: [['onClick']],
-      popper: [],
-    },
+    interaction: 'none',
     i18n: localizedMessages,
     locale: 'en',
   };
@@ -104,7 +101,7 @@ class FeaturePopover extends Component {
 function Trigger({ Children, styles }) {
   const STrigger = Root;
   return sstyled(styles)(
-    <STrigger render={Popper.Trigger} tag={Box}>
+    <STrigger render={Popper.Trigger} tag={Box} aria-haspopup={false}>
       <Children />
     </STrigger>,
   );
@@ -129,10 +126,24 @@ class FeaturePopoverPopper extends Component {
       animationsDisabled,
       getI18nText,
       zIndex,
+      'aria-label': ariaLabel,
+      'aria-describedBy': ariaDescribedBy,
+      'aria-labelledby': ariaLabelledby,
+      title,
     } = this.asProps;
 
     return sstyled(styles)(
-      <Popper.Popper disableEnforceFocus zIndex={zIndex}>
+      <Popper.Popper
+        disableEnforceFocus
+        zIndex={zIndex}
+        tabIndex={0}
+        autoFocus
+        role={'dialog'}
+        aria-describedby={ariaDescribedBy}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        title={title}
+      >
         <Animation
           visible={visible}
           duration={duration}
@@ -140,7 +151,10 @@ class FeaturePopoverPopper extends Component {
           initialAnimation
           animationsDisabled={animationsDisabled}
         >
-          <SFeaturePopover render={Box} aria-live='polite'>
+          <SFeaturePopover
+            render={Box}
+            __excludeProps={['aria-label', 'aria-describedBy', 'title']}
+          >
             {closeIcon && (
               <SClose
                 aria-label={getI18nText('close')}

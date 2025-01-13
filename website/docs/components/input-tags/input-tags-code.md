@@ -11,7 +11,7 @@ Here's an example where tags have a limited width and can be edited by clicking 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/entering_and_editing_tags.tsx';
+  export Demo from 'stories/components/input-tags/docs/examples/entering_and_editing_tags.tsx';
 </script>
 
 :::
@@ -23,19 +23,19 @@ In this example, emails are wrapped in tags without any width limitation.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/wrapping_email_in_tag.tsx';
+  export Demo from 'stories/components/input-tags/docs/examples/wrapping_email_in_tag.tsx';
 </script>
 
 :::
 
-## Input with DropdownMenu for tag filtering
+## Select for tag filtering
 
-In this example, selected options from the dropdown menu are wrapped in tags within the input field.
+In this example, selected options are wrapped in tags within the input field.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/input_with_dropdownmenu_for_tag_filtering.tsx';
+  export Demo from 'stories/components/input-tags/docs/examples/select_for_tag_filtering.tsx';
 </script>
 
 :::

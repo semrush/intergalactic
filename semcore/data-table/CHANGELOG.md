@@ -2,6 +2,70 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.7] - 2024-12-25
+
+### Fixed
+
+- Table remained inert after clicking on sort icon.
+
+## [4.47.6] - 2024-12-24
+
+### Fixed
+
+- Keyboard navigation on table with virtual scroll.
+
+## [4.47.5] - 2024-12-16
+
+### Fixed
+
+- `aria-colindex` was set for each Head.Cell components, even for a group.
+
+### Changed
+
+- Hide scrollbars from Screen Readers in Table.Head and Table.Body.
+
+## [4.47.4] - 2024-11-26
+
+### Fixed
+
+- Keyboard access after changing data in the Table (only if focus outside a Table).
+
+## [4.47.3] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [4.47.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [4.47.1] - 2024-11-01
+
+### Fixed
+
+- Unexpected focusing on the first element of table after first clicking on some interactive element inside it.
+
+## [4.47.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.46.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.48.0 ~> 4.50.0], `@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [4.45.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [4.44.2] - 2024-10-04
 
 ### Fixed

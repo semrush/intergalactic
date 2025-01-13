@@ -39,8 +39,7 @@ class TooltipRoot extends Component {
   subcomponents = [Tooltip.Trigger.displayName, Tooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      {/* biome-ignore lint/a11y/useValidAriaValues: */}
-      <Tooltip.Trigger {...props} aria-haspopup={undefined}>
+      <Tooltip.Trigger {...props}>
         <Children />
       </Tooltip.Trigger>
       <Tooltip.Popper>{title}</Tooltip.Popper>
@@ -63,6 +62,7 @@ class TooltipRoot extends Component {
     const popperId = visible ? `igc-${uid}-popper` : undefined;
 
     return {
+      'aria-haspopup': undefined,
       'aria-describedby': popperId,
       popperId,
     };
@@ -150,7 +150,11 @@ function TooltipPopper(props) {
   return sstyled(styles)(
     <ZIndexStackingContextProvider designToken='z-index-tooltip'>
       <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
-        <STooltipPortalledWrapper aria-live={ariaLive} zIndex={zIndex}>
+        <STooltipPortalledWrapper
+          role={ariaLive === 'polite' ? 'status' : undefined}
+          aria-live={ariaLive}
+          zIndex={zIndex}
+        >
           <STooltip
             render={Popper.Popper}
             use:disablePortal
@@ -183,8 +187,7 @@ class HintRoot extends TooltipRoot {
   subcomponents = [Hint.Trigger.displayName, Hint.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      {/* biome-ignore lint/a11y/useValidAriaValues: */}
-      <Hint.Trigger {...props} aria-haspopup={undefined}>
+      <Hint.Trigger {...props}>
         <Children />
       </Hint.Trigger>
       <Hint.Popper>{title}</Hint.Popper>
@@ -224,7 +227,7 @@ class DescriptionTooltipRoot extends TooltipRoot {
   subcomponents = [DescriptionTooltip.Trigger.displayName, DescriptionTooltip.Popper.displayName];
   defaultChildren = (title, Children, props) => (
     <>
-      <DescriptionTooltip.Trigger {...props} aria-haspopup='dialog'>
+      <DescriptionTooltip.Trigger {...props}>
         <Children />
       </DescriptionTooltip.Trigger>
       <DescriptionTooltip.Popper>{title}</DescriptionTooltip.Popper>

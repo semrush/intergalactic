@@ -33,7 +33,7 @@ Table: Trigger button types
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | [ButtonTrigger](/components/base-trigger/base-trigger#buttontrigger). Has two sizes: M and L.                                                        | ![](static/primary-default.png)           |
 | [LinkTrigger](/components/base-trigger/base-trigger#linktrigger) (looks like a link, but it's a button). Used in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
-| LinkTrigger styled like a link with text color (looks like a link, but it's a button). It's used in two sizes: 14px and 16px.                       | ![](static/tertiary.png)                  |
+| LinkTrigger styled like a link with text color (looks like a link, but it's a button). It's used in two sizes: 14px and 16px.                        | ![](static/tertiary.png)                  |
 
 ### Trigger sizes
 
@@ -177,7 +177,7 @@ Table: Specific cases for multiselect
 
 Table: States for displaying the selected values in the trigger
 
-|                                                                                                                                           | Appearance example                    |
+| Case                                                                                                                                      | Appearance example                    |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
 | If nothing is selected, write "Select" + the required value.                                                                              | ![](static/multiselect-trigger-1.png) |
 | If everything is selected, write `All`.                                                                                                   | ![](static/multiselect-trigger-2.png) |

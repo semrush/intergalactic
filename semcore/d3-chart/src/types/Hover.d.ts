@@ -29,6 +29,8 @@ type HoverTooltip = (<X, Y>(
       /** Index in `data` array of the current item */
       yIndex: Y extends string ? number : never;
     }) => { children: ReturnEl };
+    /** Flag for hide line on hovered value */
+    hideHoverLine?: boolean | ((xIndex: number | null, yIndex: number | null) => boolean);
   } & Omit<BoxProps, 'children'>,
 ) => ReturnEl) &
   TooltipTypeBase;

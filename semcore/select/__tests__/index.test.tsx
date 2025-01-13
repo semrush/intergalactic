@@ -93,7 +93,7 @@ describe('Select Trigger', () => {
       const { getByTestId } = render(
         <Select multiselect onChange={spy} visible value={['1']}>
           <Select.Trigger />
-          <Select.Popper>
+          <Select.Popper aria-label={'Select popper'}>
             <Select.Option value='1' />
             <Select.Option data-testid='option' value='2' />
           </Select.Popper>
@@ -112,7 +112,7 @@ describe('Select Trigger', () => {
       render(
         <Select onVisibleChange={spy} interaction={'none'}>
           <Select.Trigger />
-          <Select.Popper>
+          <Select.Popper aria-label={'Select popper'}>
             <Select.Option value='1' />
             <Select.Option value='2' />
           </Select.Popper>
@@ -130,7 +130,7 @@ describe('Select Trigger', () => {
     const { getByTestId } = render(
       <Select visible onVisibleChange={spy}>
         <Select.Trigger />
-        <Select.Popper>
+        <Select.Popper aria-label={'Select popper'}>
           <Select.Option data-testid='option' value='test' />
         </Select.Popper>
       </Select>,
@@ -173,7 +173,7 @@ describe('Select Trigger', () => {
 
     const trigger = component.getByTestId('dd-trigger');
     await userEvent.click(trigger);
-    await new Promise((resolve) => setTimeout(resolve, 1));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await expect(highlightedIndex).toBe(2);
   });
 
@@ -185,7 +185,7 @@ describe('Select Trigger', () => {
     const component = (
       <Select onChange={spyChange}>
         <Select.Trigger tag={'button'} data-testid='buttonTrigger' />
-        <Select.Popper>
+        <Select.Popper aria-label={'Select popper'}>
           <Select.Option value={1}>Option1</Select.Option>
           <Select.Option value={2}>Option2</Select.Option>
           <Select.Option value={3}>Option3</Select.Option>
@@ -240,7 +240,7 @@ describe('Select Trigger', () => {
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} size={size} visible disablePortal value='1'>
           <Select.Trigger />
-          <Select.Popper>
+          <Select.Popper aria-label={'Select popper'}>
             <Select.Option value='1'>
               <Select.Option.Checkbox theme={theme} />
               size {size ?? 'default'} selected
@@ -273,7 +273,7 @@ describe('Select Trigger', () => {
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} visible disablePortal>
           <Select.Trigger />
-          <Select.Popper>
+          <Select.Popper aria-label={'Select popper'}>
             <Select.Option value='1' id='option'>
               <Select.Option.Checkbox theme={theme} />
               size m selected

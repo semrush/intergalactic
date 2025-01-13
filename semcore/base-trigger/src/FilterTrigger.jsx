@@ -18,6 +18,8 @@ import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { Hint } from '@semcore/tooltip';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const filterTriggerInputProps = [
   ...inputProps,
@@ -92,7 +94,7 @@ class RootFilterTrigger extends Component {
   }
 
   getClearButtonProps() {
-    const { empty, onClear, size, disabled, getI18nText, uid } = this.asProps;
+    const { empty, onClear, size, disabled, getI18nText } = this.asProps;
 
     return {
       size,
@@ -100,7 +102,14 @@ class RootFilterTrigger extends Component {
       onClick: callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation),
       onKeyDown: this.handleStopPropagation,
       disabled,
-      id: `igc-${uid}-filter-trigger-clear`,
+      getI18nText,
+    };
+  }
+
+  getCounterProps() {
+    const { getI18nText } = this.asProps;
+
+    return {
       getI18nText,
     };
   }
@@ -108,8 +117,6 @@ class RootFilterTrigger extends Component {
   render() {
     const SWrapper = Root;
     const { Children, styles, getI18nText, empty, forcedAdvancedMode } = this.asProps;
-
-    const role = this.asProps.role === 'button' ? 'group' : this.asProps.role;
 
     const advancedMode =
       forcedAdvancedMode ||
@@ -162,8 +169,7 @@ class TriggerButton extends Component {
     return sstyled(styles)(
       <SFilterTrigger
         render={BaseTrigger}
-        tag='button'
-        type='button'
+        use:role='combobox'
         w='100%'
         empty={empty}
         selected={!empty}
@@ -188,32 +194,46 @@ class ClearButton extends Component {
 
   render() {
     const SFilterTrigger = Root;
-    const { styles, empty, size, disabled, getI18nText, uid, id } = this.asProps;
+    const { styles, empty, size, disabled, getI18nText } = this.asProps;
 
     if (empty) return null;
 
     return sstyled(styles)(
-      <SFilterTrigger
-        render={BaseTrigger}
-        tag='button'
-        type='button'
-        size={size}
-        empty={empty}
-        selected
-        disabled={disabled}
-        id={`igc-${uid}-filter-trigger-clear`}
-        aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
-        aria-label={getI18nText('clear')}
-      >
-        <FilterTrigger.Addon tag={Close} />
-      </SFilterTrigger>,
+      <Hint>
+        <Hint.Trigger>
+          <SFilterTrigger
+            render={BaseTrigger}
+            size={size}
+            empty={empty}
+            selected
+            disabled={disabled}
+            aria-label={getI18nText('clear')}
+          >
+            <FilterTrigger.Addon tag={Close} />
+          </SFilterTrigger>
+        </Hint.Trigger>
+        <Hint.Popper>{getI18nText('clear')}</Hint.Popper>
+      </Hint>,
     );
   }
 }
 
-function Counter(props) {
+function Counter({ styles, Children, count, getI18nText }) {
   const SCounter = Root;
-  return sstyled(props.styles)(<SCounter render={BaseTrigger.Addon} tag={Dot} />);
+  return sstyled(styles)(
+    <SCounter render={BaseTrigger.Addon} tag={Dot}>
+      {count !== undefined ? (
+        <>
+          {count}
+          <ScreenReaderOnly>
+            {getI18nText('BaseTrigger.FilterTrigger.Counter.selected:aria-label')}
+          </ScreenReaderOnly>
+        </>
+      ) : (
+        <Children />
+      )}
+    </SCounter>,
+  );
 }
 
 const FilterTrigger = createComponent(

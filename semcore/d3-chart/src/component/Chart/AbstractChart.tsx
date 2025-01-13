@@ -12,6 +12,8 @@ import { Flex } from '@semcore/flex-box';
 import { Plot, XAxis, YAxis } from '../..';
 import { Text } from '@semcore/typography';
 import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import { LegendTableProps } from '../ChartLegend/LegendTable/LegendTable.type';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 type ChartState = {
   dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
@@ -22,7 +24,7 @@ type ChartState = {
 export abstract class AbstractChart<
   D extends ListData | ObjectData,
   T extends BaseChartProps<D>,
-  E = {},
+  E extends readonly ((...args: any[]) => any)[] = [],
 > extends Component<T, {}, ChartState, E> {
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
@@ -127,6 +129,7 @@ export abstract class AbstractChart<
   protected abstract get xScale(): ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>;
   protected abstract get yScale(): ScaleBand<any> | ScaleLinear<any, any> | ScaleTime<any, any>;
 
+  protected abstract getLegendAriaLabel(): string;
   protected abstract renderChart(): React.ReactNode;
   protected abstract renderTooltip(): React.ReactNode;
 
@@ -356,7 +359,7 @@ export abstract class AbstractChart<
       ...legendProps,
     };
 
-    const commonLegendProps = {
+    const commonLegendProps: LegendFlexProps | LegendTableProps = {
       dataHints: this.dataHints,
       items: dataDefinitions,
       size: lProps.size,
@@ -375,14 +378,15 @@ export abstract class AbstractChart<
       onMouseLeaveItem: lProps.disableHoverItems
         ? undefined
         : callAllEventHandlers(lProps.onMouseLeaveItem, this.handleMouseLeave),
+      'aria-label': this.getLegendAriaLabel(),
     };
 
     if (lProps.legendType === 'Table') {
-      return <ChartLegendTable {...commonLegendProps} />;
+      return <ChartLegendTable {...(commonLegendProps as LegendTableProps)} />;
     }
 
     if ('withTrend' in lProps) {
-      const flexLegendProps: LegendFlexProps = {
+      const flexLegendProps = {
         ...commonLegendProps,
         withTrend: true,
         trendLabel: lProps.trendLabel,
@@ -390,10 +394,10 @@ export abstract class AbstractChart<
         onTrendIsVisibleChange: this.handleWithTrendChange,
       };
 
-      return <ChartLegend {...flexLegendProps} />;
+      return <ChartLegend {...(flexLegendProps as LegendFlexProps)} />;
     }
 
-    return <ChartLegend {...commonLegendProps} />;
+    return <ChartLegend {...(commonLegendProps as LegendFlexProps)} />;
   }
 
   protected renderAxis(): React.ReactNode {
@@ -446,8 +450,10 @@ export abstract class AbstractChart<
     const { styles, plotWidth, plotHeight, data, patterns, a11yAltTextConfig, duration } =
       this.asProps;
 
+    const { extractedAriaProps } = extractAriaProps(this.asProps);
+
     return sstyled(styles)(
-      <SChart render={Flex} gap={5}>
+      <SChart render={Flex} gap={5} __excludeProps={['data']} role={'group'}>
         {this.renderLegend()}
         <Plot
           data={data}
@@ -458,6 +464,7 @@ export abstract class AbstractChart<
           a11yAltTextConfig={a11yAltTextConfig}
           patterns={patterns}
           duration={duration}
+          {...extractedAriaProps}
         >
           {this.renderAxis()}
           {this.renderTooltip()}

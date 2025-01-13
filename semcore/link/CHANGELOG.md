@@ -2,6 +2,60 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.42.1] - 2024-12-18
+
+### Fixed
+
+- Render hint's popper on Link with addonLeft as props and no children.
+
+## [5.42.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [5.41.3] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/flex-box` [5.38.1 ~> 5.38.2], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [5.41.2] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [6.46.1 ~> 6.46.2]).
+
+## [5.41.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/flex-box` [5.38.0 ~> 5.38.1], `@semcore/tooltip` [6.46.0 ~> 6.46.1], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [5.41.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/flex-box` [5.37.0 ~> 5.38.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [5.40.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/flex-box` [5.36.0 ~> 5.37.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [5.39.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/flex-box` [5.35.0 ~> 5.36.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [5.38.3] - 2024-10-11
+
+### Fixed
+
+- Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
 ## [5.38.2] - 2024-10-01
 
 ### Fixed

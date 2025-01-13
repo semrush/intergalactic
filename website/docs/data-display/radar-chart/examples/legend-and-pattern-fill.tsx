@@ -2,7 +2,42 @@ import React from 'react';
 import { Plot, Radar, colors, LegendItem, ChartLegend } from 'intergalactic/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
+const lineColors: Record<string, string> = {
+  data_1: colors['orange-04'],
+  data_2: colors['violet-04'],
+};
+
+const getDegaultLegendItems = () => {
+  return Object.keys(data)
+    .filter((name) => name !== 'categories')
+    .map((item, index) => {
+      return {
+        id: item,
+        label: `Label for ${index + 1}`,
+        data: data[item],
+        checked: true,
+        color: lineColors[item],
+      };
+    });
+};
+
 const Demo = () => {
+  const [legendItems, setLegendItems] = React.useState(getDegaultLegendItems);
+
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      const newItems = prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+
+      return newItems;
+    });
+  }, []);
+
   const width = 500;
   const height = 500;
 
@@ -10,41 +45,34 @@ const Demo = () => {
 
   return (
     <>
-      <ChartLegend items={legendItems} patterns />
+      <ChartLegend
+        items={legendItems}
+        patterns
+        aria-label={'Legend for the radar chart'}
+        onChangeVisibleItem={handleChangeVisible}
+      />
       <Plot data={data} width={width} height={height} patterns>
         <Radar scale={scale}>
           <Radar.Axis dataKey='categories'>
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
-          <Radar.Polygon dataKey='data_1' color={colors['orange-04']}>
-            <Radar.Polygon.Line />
-            <Radar.Polygon.Dots />
-          </Radar.Polygon>
-          <Radar.Polygon dataKey='data_2' color={colors['violet-04']}>
-            <Radar.Polygon.Line />
-            <Radar.Polygon.Dots />
-          </Radar.Polygon>
+
+          {legendItems.map((item) => {
+            return (
+              item.checked && (
+                <Radar.Polygon dataKey={item.id} color={item.color}>
+                  <Radar.Polygon.Line />
+                  <Radar.Polygon.Dots />
+                </Radar.Polygon>
+              )
+            );
+          })}
         </Radar>
       </Plot>
     </>
   );
 };
-
-const legendItems: LegendItem[] = [
-  {
-    id: 'data_1',
-    label: 'Label for 1',
-    checked: true,
-    color: colors['orange-04'],
-  },
-  {
-    id: 'data_2',
-    label: 'Label for 2',
-    checked: true,
-    color: colors['violet-04'],
-  },
-];
 
 const data = {
   categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],

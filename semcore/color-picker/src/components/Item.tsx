@@ -3,7 +3,7 @@ import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import CloseM from '@semcore/icon/Close/m';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
 
 type ItemAsProps = {
@@ -16,6 +16,17 @@ type ItemAsProps = {
   Children?: React.FC;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
   uid: string;
+};
+
+const interaction = {
+  trigger: [
+    ['onMouseEnter', 'onKeyboardFocus', 'onTouchStart', 'onFocus'],
+    ['onMouseLeave', 'onBlur'],
+  ],
+  popper: [
+    ['onMouseEnter', 'onFocusCapture', 'onTouchStart'],
+    ['onMouseLeave', 'onBlur'],
+  ],
 };
 
 export function Item(props: ItemAsProps) {
@@ -36,6 +47,7 @@ export function Item(props: ItemAsProps) {
   return sstyled(styles)(
     <SItemContainer
       render={Hint}
+      interaction={interaction}
       selected={selected}
       value={value}
       displayLabel={displayLabel}

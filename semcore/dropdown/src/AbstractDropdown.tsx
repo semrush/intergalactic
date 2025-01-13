@@ -18,26 +18,19 @@ type AbstractDDProps = {
   ignorePortalsStacking: boolean;
   interaction: DropdownProps['interaction'];
   timeout?: number | [number, number];
+  selectable?: boolean;
+  multiselect?: boolean;
 };
 
-export const enhance = {
-  uid: uniqueIDEnhancement(),
-  getI18nText: i18nEnhance(localizedMessages),
-  focusSourceRef: focusSourceEnhance(),
-};
-
-type Enhances<T extends { [key: string]: (...args: any) => any }> = {
-  [K in keyof T]: ReturnType<T[K]>[K];
-};
+export const enhance = [
+  uniqueIDEnhancement(),
+  i18nEnhance(localizedMessages),
+  focusSourceEnhance(),
+] as const;
 
 export const selectedIndexContext = React.createContext(0);
 
-export abstract class AbstractDropdown extends Component<
-  AbstractDDProps,
-  {},
-  {},
-  Enhances<typeof enhance>
-> {
+export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}, typeof enhance> {
   protected abstract role: 'menu' | 'listbox';
 
   popperRef = React.createRef<HTMLElement>();
@@ -69,23 +62,38 @@ export abstract class AbstractDropdown extends Component<
       return 'option';
     }
 
+    const { selectable, multiselect } = this.asProps;
+
+    if (multiselect) {
+      return 'menuitemcheckbox';
+    }
+
+    if (selectable) {
+      return 'menuitemradio';
+    }
+
     return 'menuitem';
   }
 
   handleClickTrigger = (e: React.SyntheticEvent) => {
-    const { interaction } = this.asProps;
+    const { interaction, inlineActions } = this.asProps;
 
-    if (interaction === 'none') return false;
+    if (interaction === 'none' || inlineActions) return false;
 
-    e.preventDefault();
-    this.handlers.visible(true);
+    setTimeout(() => {
+      const { visible, inlineActions } = this.asProps;
+      if (visible || inlineActions) {
+        this.afterOpenPopper();
+      }
+    }, 200); // because first will be executed onClick handler in popper
+  };
 
+  afterOpenPopper = () => {
+    const highlightedIndex = this.asProps.highlightedIndex ?? 0;
+    const element = this.itemRefs[highlightedIndex];
+    element?.focus();
     if (this.role === 'menu') {
-      setTimeout(() => {
-        const { highlightedIndex } = this.asProps;
-        const element = this.itemRefs[highlightedIndex ?? 0];
-        element?.focus();
-      }, 0);
+      this.handlers.highlightedIndex(highlightedIndex);
     }
   };
 
@@ -104,23 +112,11 @@ export abstract class AbstractDropdown extends Component<
   }
 
   getListProps() {
-    const { size, uid } = this.asProps;
-    const triggerId = this.triggerRef.current?.id;
-    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
-
-    return {
-      size,
-      index: this.asProps.highlightedIndex,
-      tabIndex: -1,
-      ref: this.menuRef,
-      id: `igc-${uid}-list`,
-      role: this.role,
-      'aria-label': getAccessibleName(triggerElement),
-    };
+    return this.getBasicListProps();
   }
 
   getMenuProps() {
-    return this.getListProps();
+    return this.getBasicListProps();
   }
 
   getPopperProps() {
@@ -148,13 +144,17 @@ export abstract class AbstractDropdown extends Component<
 
   getItemProps(_: any, index: number) {
     const { size, uid } = this.asProps;
+    const role = this.childRole;
 
     return {
       id: `igc-${uid}-option-${index}`,
       size,
       index,
-      onMouseEnter: () => this.handlers.selectedIndex(index),
-      role: this.childRole,
+      onMouseEnter: () => {
+        this.handlers.selectedIndex(index);
+      },
+      role,
+      'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
 
@@ -195,7 +195,7 @@ export abstract class AbstractDropdown extends Component<
     const itemsLastIndex = this.itemProps.length - 1;
     const selectedIndex = this.itemProps.findIndex((item) => item.selected);
 
-    if (itemsLastIndex < 0) return 0;
+    if (itemsLastIndex < 0) return -1;
 
     let innerHighlightedIndex: number;
 
@@ -203,12 +203,13 @@ export abstract class AbstractDropdown extends Component<
       if (selectedIndex !== -1) {
         innerHighlightedIndex = selectedIndex;
       } else if (this.highlightedItemRef.current && this.prevHighlightedIndex !== null) {
-        innerHighlightedIndex = this.prevHighlightedIndex;
+        innerHighlightedIndex =
+          this.prevHighlightedIndex > itemsLastIndex ? itemsLastIndex : this.prevHighlightedIndex;
       } else {
         innerHighlightedIndex = amount < 0 ? 0 : itemsLastIndex;
       }
     } else {
-      innerHighlightedIndex = highlightedIndex;
+      innerHighlightedIndex = highlightedIndex > itemsLastIndex ? itemsLastIndex : highlightedIndex;
     }
 
     let newIndex = innerHighlightedIndex + amount;
@@ -221,7 +222,7 @@ export abstract class AbstractDropdown extends Component<
     if (this.itemProps[newIndex]?.disabled) {
       return this.getHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
     } else if (!this.itemProps[newIndex]) {
-      return 0;
+      return -1;
     } else {
       return newIndex;
     }
@@ -249,7 +250,7 @@ export abstract class AbstractDropdown extends Component<
   }
 
   protected itemRef(props: any, index: number, node: HTMLElement | null) {
-    if (node?.getAttribute('role') === this.childRole) {
+    if (node?.getAttribute('role')?.startsWith(this.childRole)) {
       this.itemRefs[index] = node;
       this.itemProps[index] = props;
     }
@@ -278,8 +279,12 @@ export abstract class AbstractDropdown extends Component<
     if (
       this.asProps.visible !== true &&
       ['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key) &&
-      e.currentTarget.getAttribute('role') !== this.childRole
+      !e.currentTarget.getAttribute('role')?.startsWith(this.childRole)
     ) {
+      if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+        this.handlers.visible(true);
+      }
+
       this.handleClickTrigger(e);
     }
   }
@@ -317,7 +322,11 @@ export abstract class AbstractDropdown extends Component<
       }
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current && highlightedIndex !== null) {
+        if (
+          this.highlightedItemRef.current &&
+          highlightedIndex !== null &&
+          !this.itemProps[highlightedIndex].disabled
+        ) {
           e.stopPropagation();
           e.preventDefault();
           this.highlightedItemRef.current.click();
@@ -328,9 +337,7 @@ export abstract class AbstractDropdown extends Component<
 
     if (amount !== null) {
       const newHighlightedIndex = this.getHighlightedIndex(amount);
-      if (newHighlightedIndex !== undefined && this.role === 'menu') {
-        this.itemRefs[newHighlightedIndex]?.focus();
-      }
+
       if (
         this.role === 'listbox' &&
         this.triggerRef.current &&
@@ -338,17 +345,39 @@ export abstract class AbstractDropdown extends Component<
       ) {
         this.focusTrigger();
       }
-      this.handlers.highlightedIndex(newHighlightedIndex, e);
+
+      if (newHighlightedIndex !== -1) {
+        this.handlers.highlightedIndex(newHighlightedIndex, e);
+        if (this.role === 'menu') {
+          this.itemRefs[newHighlightedIndex]?.focus();
+        }
+      }
 
       e.preventDefault();
       e.stopPropagation();
     }
   }
 
-  focusTrigger() {
+  private focusTrigger() {
     const trigger = this.triggerRef.current;
     if (!trigger) return;
     if (isFocusInside(trigger)) return;
     setFocus(trigger);
+  }
+
+  private getBasicListProps() {
+    const { size, uid } = this.asProps;
+    const triggerId = this.triggerRef.current?.id;
+    const triggerElement = triggerId ? document.getElementById(triggerId) : null;
+
+    return {
+      size,
+      index: this.asProps.highlightedIndex,
+      tabIndex: -1,
+      ref: this.menuRef,
+      id: `igc-${uid}-list`,
+      role: this.role,
+      'aria-label': getAccessibleName(triggerElement),
+    };
   }
 }

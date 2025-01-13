@@ -1,0 +1,52 @@
+import React from 'react';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { Flex } from '@semcore/flex-box';
+import TrashM from '@semcore/icon/Trash/m';
+import PlusM from '@semcore/icon/MathPlus/m';
+import Button from '@semcore/button';
+import ChevronRightIcon from '@semcore/icon/ChevronRight/m';
+
+const Demo = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenu.Trigger tag={Button}>Explore menu items with actions</DropdownMenu.Trigger>
+      <DropdownMenu.Menu>
+        <DropdownMenu.Item>Menu item 1</DropdownMenu.Item>
+        <DropdownMenu.Item>Menu item 2</DropdownMenu.Item>
+
+        <DropdownMenu.Item>
+          <DropdownMenu inlineActions placement={'right'}>
+            <Flex justifyContent='space-between'>
+              <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+                Menu item 3
+              </DropdownMenu.Item.Content>
+              <DropdownMenu.Actions gap={1}>
+                <DropdownMenu.Item tag={Button} addonLeft={PlusM} title={'Add new'} />
+                <DropdownMenu.Item tag={Button} addonLeft={TrashM} title={'Delete'} />
+              </DropdownMenu.Actions>
+            </Flex>
+          </DropdownMenu>
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <DropdownMenu
+            placement={'right-start'}
+            interaction={DropdownMenu.nestedMenuInteraction}
+            timeout={[0, 300]}
+            offset={[-11, 12]}
+          >
+            <DropdownMenu.Item.Content tag={DropdownMenu.Trigger}>
+              Menu item 4
+              <ChevronRightIcon color='icon-secondary-neutral' />
+            </DropdownMenu.Item.Content>
+            <DropdownMenu.Menu>
+              <DropdownMenu.Item>Add</DropdownMenu.Item>
+              <DropdownMenu.Item>Delete</DropdownMenu.Item>
+            </DropdownMenu.Menu>
+          </DropdownMenu>
+        </DropdownMenu.Item>
+      </DropdownMenu.Menu>
+    </DropdownMenu>
+  );
+};
+
+export default Demo;

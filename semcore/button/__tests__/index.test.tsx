@@ -88,18 +88,6 @@ describe('Button', () => {
     expect((buttonElement?.attributes as any)['aria-busy'].value).toBe('true');
   });
 
-  test.concurrent('should support aria-disabled when disabled', () => {
-    const { queryByTestId } = render(
-      <Button data-testid='disabled-button' disabled>
-        Text
-      </Button>,
-    );
-
-    const buttonElement = queryByTestId('disabled-button');
-
-    expect((buttonElement?.attributes as any)['aria-disabled'].value).toBe('true');
-  });
-
   test.concurrent('should support save width at loading', async ({ task }) => {
     const Component = <Button loading>Text long Text long</Button>;
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);
@@ -109,17 +97,6 @@ describe('Button', () => {
     const Component = <Button active>Test</Button>;
 
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('should support size props', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Button size='l'>Button</Button>
-        <Button size='m'>Button</Button>
-      </snapshot.ProxyProps>
-    );
-
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('should support theme props', async ({ task }) => {
@@ -712,6 +689,33 @@ describe('ButtonLink', () => {
         <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} />
 
         <ButtonLink addonLeft={CheckM} size={500}>
+          Large size
+        </ButtonLink>
+      </Flex>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('disabled renders correctly', async ({ task }) => {
+    const component = (
+      <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
+        <ButtonLink addonLeft={CheckM} disabled={true}>
+          Button Link primary
+        </ButtonLink>
+        <ButtonLink use={'secondary'} disabled={true}>
+          <ButtonLink.Addon>
+            <CheckM />
+          </ButtonLink.Addon>
+          <ButtonLink.Text>Button Link secondary</ButtonLink.Text>
+        </ButtonLink>
+        <ButtonLink addonRight={CloseM} color={'text-critical'} disabled={true}>
+          Close
+        </ButtonLink>
+
+        <ButtonLink addonLeft={CheckM} aria-label={'Confirm'} disabled={true} />
+
+        <ButtonLink addonLeft={CheckM} size={500} disabled={true}>
           Large size
         </ButtonLink>
       </Flex>

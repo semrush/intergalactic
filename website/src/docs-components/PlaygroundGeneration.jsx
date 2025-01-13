@@ -54,11 +54,12 @@ Playground.createWidget(
 Playground.createWidget(
   'bool',
   ({ value, onChange, label, positiveLabel, negativeLabel, ...others }) => {
+    const labelText = (value ? positiveLabel : negativeLabel) ?? label;
     return (
       <label className={styles.field}>
-        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.label}>{labelText}</div>
         <div className={styles.control}>
-          <Checkbox>
+          <Checkbox aria-label={labelText}>
             <Checkbox.Value checked={value} onChange={() => onChange(!value)} {...others} />
           </Checkbox>
         </div>
@@ -112,11 +113,18 @@ Playground.createWidget(
 Playground.createWidget(
   'radio',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
+    const labelText = (value ? positiveLabel : negativeLabel) ?? label;
     return (
       <label className={styles.field} htmlFor=''>
-        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.label}>{labelText}</div>
         <div className={styles.control}>
-          <Pills value={value} onChange={(value) => onChange(value)} behavior='radio' {...others}>
+          <Pills
+            value={value}
+            onChange={(value) => onChange(value)}
+            behavior='radio'
+            aria-label={labelText}
+            {...others}
+          >
             {options.map((o, i) => {
               const option = typeof o !== 'object' ? { value: o, name: o } : o;
               return (
@@ -144,16 +152,19 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
         langs: [import('shiki/langs/tsx.mjs')],
         loadWasm: getWasm,
       });
-      const html = highlighter.codeToHtml(source, {
-        lang: 'tsx',
-        theme: 'github-dark',
-      });
+      const html = highlighter
+        .codeToHtml(source, {
+          lang: 'tsx',
+          theme: 'github-dark',
+        })
+        .replace(' tabindex="0"><code>', '><code aria-label="JSX">');
+
       setHighlightedSource(html);
     })();
   }, [source]);
 
   return (
-    <div className={styles.wrapperPlayground} aria-hidden='true'>
+    <div className={styles.wrapperPlayground}>
       <div className={styles.workArea}>
         <div className={`${styles.playgroundRuntime}`} style={{ margin: 0 }}>
           <ShadowRooted>
@@ -187,7 +198,11 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
         )}
       </div>
       {hasWidget ? (
-        <div className={`${styles.widgetsBar} playground-widgets-bar`}>
+        <div
+          className={`${styles.widgetsBar} playground-widgets-bar`}
+          role='group'
+          aria-label='Component properties'
+        >
           {widgetControls.map((control, i) => {
             return (
               <div className={styles.widgetGroup} key={i}>

@@ -2,6 +2,117 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.58.5] - 2024-12-20
+
+### Added
+
+- `aria-hidden="true"` to `PatternSymbol` inside `LegendItem` to improve A11Y.
+
+## [3.58.4] - 2024-12-19
+
+### Removed
+
+- `aria-labelledby` from `LegendItem` with shapes other, than checkbox.
+
+### Changed
+
+- `aria-labelledby` value in `LegendItem` to unique id.
+
+## [3.58.3] - 2024-12-17
+
+### Fixed
+
+- Animation of points on ScatterPlot was on every render.
+
+### Added
+
+- `outilne=none` for Hover rect and line.
+
+## [3.58.2] - 2024-12-09
+
+### Added
+
+- `aria-*` attributes for svg from parent group for all simple charts (Chart.*).
+- `aria-label=Chart` by default for all advanced charts (Plot...).
+
+## [3.58.1] - 2024-12-05
+
+### Added
+
+- `aria-labelledby` for `LegendItem` checkbox.
+
+## [3.58.0] - 2024-12-04
+
+### Added
+
+- New type of charts - `StackGroupBar`.
+
+## [3.57.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.38.2 ~> 2.39.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [3.56.4] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.38.1 ~> 2.38.2], `@semcore/popper` [5.44.1 ~> 5.44.2], `@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [3.56.3] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.38.0 ~> 2.38.1], `@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [3.56.2] - 2024-10-30
+
+### Fixed
+
+- Fix unpredictable behavoir of charts with pattern fill, when interacting with chart's legend
+
+## [3.56.1] - 2024-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.36.0 ~> 2.37.0], `@semcore/popper` [5.43.0 ~> 5.43.1], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [3.56.0] - 2024-10-23
+
+### Added
+
+- Function type for `hideHoverLine` property in the `Hover` component.
+
+## [3.55.2] - 2024-10-15
+
+### Fixed
+
+- Handle onClick on ChartLegend items.
+- `onChangeVisibleItem` handler on ChartLegend component.
+
+## [3.55.1] - 2024-10-15
+
+### Fixed
+
+- Keyboard control in NVDA form mode for Legend checkbox items.
+- Each checkbox in the Legend rendered as 3 elements for NVDA.
+
+## [3.55.0] - 2024-10-15
+
+### Added
+
+- Required `aria-*` attributes for the Legend.
+
+### Fixed
+
+- Types for enhances.
+
+## [3.54.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.34.0 ~> 2.35.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [3.53.0] - 2024-10-04
 
 ### Changed

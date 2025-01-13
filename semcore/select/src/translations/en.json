@@ -1,4 +1,6 @@
 {
   "clearSearch": "Clear search field",
-  "selectPlaceholder": "Select option"
+  "selectPlaceholder": "Select option",
+  "Select.InputSearch.Value:placeholder": "Search",
+  "Select.InputSearch.Value:aria-label": "Search"
 }

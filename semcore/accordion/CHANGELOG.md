@@ -2,6 +2,64 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.2] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.44.0 ~> 4.44.1]).
+
+## [5.43.1] - 2024-12-05
+
+### Removed
+
+- Unnecessary `aria-disabled` on disabled `Toggle` component.
+
+### Changed
+
+- Set `aria-controls` to expanded `Toggle` only.
+
+## [5.43.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0]).
+
+## [5.42.3] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3]).
+
+## [5.42.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2]).
+
+## [5.42.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/button` [5.39.0 ~> 5.39.1]).
+
+## [5.42.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0]).
+
+## [5.41.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.48.0 ~> 4.50.0], `@semcore/utils` [4.39.0 ~> 4.41.0]).
+
+## [5.40.3] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/button` [5.37.2 ~> 5.37.3]).
+
 ## [5.40.2] - 2024-10-04
 
 ### Changed

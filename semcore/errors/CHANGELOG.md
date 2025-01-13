@@ -2,6 +2,72 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.2] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.1 ~> 5.40.2], `@semcore/illustration` [2.40.0 ~> 2.41.0], `@semcore/utils` [4.44.0 ~> 4.44.1], `@semcore/core` [2.37.0 ~> 2.37.1]).
+
+## [4.44.1] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.0 ~> 5.40.1]).
+
+## [4.44.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [4.43.0] - 2024-11-21
+
+### Removed
+
+- `role='alert'` from `<Error>` component.
+- `aria-hidden` from `Error.Image`.
+
+### Changed
+
+- Empty `alt=""` for `Error.Image`.
+- Padding and colors in examples in documentation.
+
+## [4.42.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3]).
+
+## [4.42.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.1 ~> 5.39.2], `@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [4.42.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.42.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.41.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.37.3 ~> 5.38.0], `@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [4.40.3] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [4.40.2] - 2024-10-04
 
 ### Changed

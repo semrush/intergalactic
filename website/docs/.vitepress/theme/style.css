@@ -368,22 +368,22 @@
   box-shadow: var(--vp-shadow-1);
 }
 
-.VPFeatures .VPFeature.link:hover {
+.VPFeatures .VPFeature:hover {
   box-shadow: var(--vp-shadow-2);
   transition: box-shadow 0.25s !important;
 }
 
-.VPFeatures .VPFeature.link:hover h2.title {
+.VPFeatures .VPFeature:hover h2.title {
   color: var(--vp-c-brand-1);
   transition: color 0.25s !important;
 }
 
-.VPFeatures .VPFeature.link:hover p.link-text-value .link-text-icon {
+.VPFeatures .VPFeature:hover p.link-text-value .link-text-icon {
   margin-left: 8px;
   transition: margin-left 0.5s !important;
 }
 
-.dark .VPFeatures .VPFeature.link:hover {
+.dark .VPFeatures .VPFeature:hover {
   box-shadow: var(--vp-shadow-3);
   transition: box-shadow 0.25s !important;
 }
@@ -467,6 +467,11 @@ td {
   width: 100%;
   height: 100%;
   border-radius: 6px;
+}
+
+.embedded-documentation-iframe {
+  width: 100%;
+  border: 0;
 }
 
 img,
@@ -564,15 +569,23 @@ video {
 
 /* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
-h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
+h1[class],
+h2[class],
+h3[class],
+h4[class],
+h5[class],
+h6[class] {
+  font-family: 'Inter', -apple-system, sans-serif, Arial;
   font-weight: var(--intergalactic-bold, 700);
 }
 
-.vp-doc a[class]:hover {
-  color: var(--vp-c-indigo-1) !important;
-}
-
-.vp-doc h1[class], .vp-doc h2[class], .vp-doc h3[class], .vp-doc h4[class], .vp-doc h5[class], .vp-doc h6[class] {
+.vp-doc h1[class],
+.vp-doc h2[class],
+.vp-doc h3[class],
+.vp-doc h4[class],
+.vp-doc h5[class],
+.vp-doc h6[class] {
+  font-family: 'Inter', -apple-system, sans-serif, Arial;
   margin: unset;
 }
 
@@ -604,7 +617,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   color: var(--vp-c-indigo-1);
 }
 
-.vp-doc li[class] + li[class]:not([data-ui-name="InputTags.Tag"]) {
+.vp-doc li[class]+li[class]:not([data-ui-name="InputTags.Tag"]) {
   margin: unset;
 }
 
@@ -662,7 +675,10 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   margin: 24px 0 16px 0;
 }
 
-.vp-doc a[class]:not(.playground-runtime a), .vp-doc a[class]:hover:not(.playground-runtime a), .vp-doc a[class]:active:not(.playground-runtime a), .vp-doc a[class]:visited:not(.playground-runtime a) {
+.vp-doc a[class]:not(.playground-runtime a),
+.vp-doc a[class]:hover:not(.playground-runtime a),
+.vp-doc a[class]:active:not(.playground-runtime a),
+.vp-doc a[class]:visited:not(.playground-runtime a) {
   color: var(--vp-c-indigo-2);
 }
 
@@ -1053,6 +1069,7 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   text-decoration: line-through;
   color: var(--intergalactic-text-secondary);
 }
+
 .types-deprecated-tag {
   color: var(--vp-c-danger-1);
   border: 1px solid var(--vp-c-danger-3);
@@ -1073,6 +1090,6 @@ h1[class], h2[class], h3[class], h4[class], h5[class], h6[class] {
   padding: 20px;
 }
 
-.vp-doc li[data-ui-name] + li[data-ui-name] {
+.vp-doc li[data-ui-name]+li[data-ui-name] {
   margin-top: 2px;
 }

@@ -14,7 +14,7 @@ By default, the accordion has the `secondary` theme (`use` property).
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/basic_usage.tsx';
+  export Demo from 'stories/components/accordion/docs/examples/basic_usage.tsx';
 </script>
 
 :::
@@ -26,7 +26,19 @@ By default, the accordion has the `secondary` theme (`use` property).
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/one_section_opening.tsx';
+  export Demo from 'stories/components/accordion/docs/examples/one_section_opening.tsx';
+</script>
+
+:::
+
+## Heading tag
+
+By default, `Accordion.Item.Toggle` is set to an `h3` heading level, but you can change it if needed.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/accordion/docs/examples/heading_tag.tsx';
 </script>
 
 :::
@@ -38,7 +50,7 @@ Pass `use='primary'` to enable the primary theme for the accordion.
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/non_compact.tsx';
+  export Demo from 'stories/components/accordion/docs/examples/non_compact.tsx';
 </script>
 
 :::
@@ -52,19 +64,19 @@ For example, to find out whether an element is selected and to highlight it, pas
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/custom_styles.tsx';
+  export Demo from 'stories/components/accordion/docs/examples/custom_styles.tsx';
 </script>
 
 :::
 
 ## SEO friendly accordion
 
-By default, collapsed sections are not rendered in the DOM. If you need to render all sections, pass `preserveNode` to the `Accordion.Item.Collapse` component.
+By default, collapsed sections aren't rendered in the DOM. If you need to render all sections, pass `preserveNode` to the `Accordion.Item.Collapse` component.
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from './examples/seo.tsx';
+  export Demo from 'stories/components/accordion/docs/examples/seo.tsx';
 </script>
 
 :::

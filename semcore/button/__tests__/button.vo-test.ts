@@ -7,7 +7,7 @@ test('Users can interact with Button with only Addons via VoiceOver', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/button/examples/button_with_icon.tsx';
+  const standPath = 'stories/components/button/docs/examples/button_with_icon.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
   await page.setContent(htmlContent);
@@ -22,7 +22,7 @@ test('Users can interact with Button with only addon props', async ({
   page,
   voiceOver: pureVoiceOver,
 }) => {
-  const standPath = 'website/docs/components/button/examples/button_accessibility.tsx';
+  const standPath = 'stories/components/button/docs/examples/button_accessibility.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
   await page.setContent(htmlContent);

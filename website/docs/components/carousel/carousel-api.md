@@ -6,7 +6,7 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 ## Carousel
 
 ```jsx
-import Carousel from 'intergalactic/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel />;
 ```
 
@@ -17,7 +17,7 @@ import Carousel from 'intergalactic/carousel';
 `Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
 ```jsx
-import Carousel from 'intergalactic/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Container />;
 ```
 
@@ -26,7 +26,7 @@ import Carousel from 'intergalactic/carousel';
 `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
 ```jsx
-import Carousel from 'intergalactic/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Item />;
 ```
 
@@ -35,7 +35,7 @@ import Carousel from 'intergalactic/carousel';
 Component view for default dots. It doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
 ```jsx
-import Carousel from 'intergalactic/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Indicators />;
 ```
 
@@ -44,7 +44,7 @@ import Carousel from 'intergalactic/carousel';
 Component view for default Chevron icons. It doesn't have own API, extends to [Box](/layout/box-system/box-api#a3cfce).
 
 ```jsx
-import Carousel from 'intergalactic/carousel';
+import Carousel from '@semcore/ui/carousel';
 <Carousel.Prev />
 <Carousel.Next />
 ```

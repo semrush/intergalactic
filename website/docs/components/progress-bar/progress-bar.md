@@ -8,7 +8,7 @@ tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api')
 
 <script lang="tsx">
 import React from 'react';
-import ProgressBar from 'intergalactic/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['l', 'm', 's'];
@@ -51,7 +51,7 @@ const Preview = (preview) => {
     label: 'Value',
   });
 
-  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} />;
+  return <ProgressBar theme={theme} size={size} duration={duration} value={value} w={200} aria-label="Progress bar" />;
 };
 
 const App = PlaygroundGeneration(Preview, {filterProps: ['w']});

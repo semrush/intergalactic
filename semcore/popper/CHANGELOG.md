@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.45.1] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.39.0 ~> 2.39.1], `@semcore/flex-box` [5.39.0 ~> 5.39.1], `@semcore/neighbor-location` [4.37.0 ~> 4.37.1], `@semcore/outside-click` [3.37.0 ~> 3.37.1], `@semcore/utils` [4.44.0 ~> 4.44.1], `@semcore/core` [2.37.0 ~> 2.37.1]).
+
+## [5.45.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.38.2 ~> 2.39.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/neighbor-location` [4.36.2 ~> 4.37.0], `@semcore/outside-click` [3.36.2 ~> 3.37.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [5.44.2] - 2024-11-19
+
+### Fixed
+
+- Call `onKeyboardFocus` for poppers inside poppers.
+
+## [5.44.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.38.0 ~> 2.38.1], `@semcore/flex-box` [5.38.0 ~> 5.38.1], `@semcore/neighbor-location` [4.36.0 ~> 4.36.1], `@semcore/outside-click` [3.36.0 ~> 3.36.1], `@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [5.44.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.37.0 ~> 2.38.0], `@semcore/flex-box` [5.37.0 ~> 5.38.0], `@semcore/neighbor-location` [4.35.0 ~> 4.36.0], `@semcore/outside-click` [3.35.0 ~> 3.36.0], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [5.43.1] - 2024-10-25
+
+### Fixed
+
+- Returning focus to trigger for focusable interaction popovers.
+
+## [5.43.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.35.0 ~> 2.36.0], `@semcore/flex-box` [5.35.0 ~> 5.36.0], `@semcore/neighbor-location` [4.33.0 ~> 4.34.0], `@semcore/outside-click` [3.33.0 ~> 3.34.0], `@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [5.42.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.34.0 ~> 2.35.0], `@semcore/flex-box` [5.34.0 ~> 5.35.0], `@semcore/neighbor-location` [4.32.0 ~> 4.33.0], `@semcore/outside-click` [3.32.0 ~> 3.33.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [5.41.0] - 2024-10-04
 
 ### Changed

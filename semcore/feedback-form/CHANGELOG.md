@@ -2,6 +2,93 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.38.1] - 2024-12-19
+
+### Added
+
+- `aria-describedby`, that refers to ScreenRiderOnly text, `aria-labelledby` referring to the notice text, `aria-valuetext` to SliderRating.
+- `role="image"` and `aria-label` for SliderRating's readonly mode
+- `role="none"` to SVGs in SliderRating.
+- `aria-labelledby` for the FeedbackRating's modal container, that refers to Header of it
+- autofocus to first checkbox. Moved from `textarea`.
+- `aria-describedby`, that connects privacy-description text and related form control in FeedbackRating form.
+- same visual feedback for keyboard interactions to SliderRating same as on hover.
+
+### Changed
+
+- color of privacy-description text to the `text-secondary` token in FeedbackRating form.
+- `FeedbackRating.Header` as optional, when specifying FeedbackRating's `header` prop.
+
+### Removed
+
+- `title` attribute from FeedbackRating form.
+- `<ul><li>` structure from checkboxes, leaving only `div role="group"` in FeedbackRating form.
+- unnecessary tooltip around `input[type="hidden"]`.
+- `line-height` from privacy-description text in FeedbackRating form.
+- `aria-invalid` from checkbox's parent elements.
+- `aria-haspop` from tooltip of field controls
+
+## [6.38.0] - 2024-12-18
+
+### Added
+
+- `tabindex` for the `FeedbackFrom.Success` component with `outline=none`.
+
+## [6.37.1] - 2024-12-05
+
+### Fixed
+
+- `aria-errormessage` always appearing in FeedbackItem, even if form control is valid.
+- `type="checkbox"` attributes on `<div> / <li> / <label>` elements, wrapping checkbox.
+
+## [6.37.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/checkbox` [7.41.2 ~> 7.42.0], `@semcore/notice-bubble` [5.47.2 ~> 5.48.0], `@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [6.36.0] - 2024-11-19
+
+### Added
+
+- `modalWidth` property for the FeedbackRating component.
+
+## [6.35.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3], `@semcore/tooltip` [6.46.1 ~> 6.46.2]).
+
+## [6.35.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.41.0 ~> 7.41.1], `@semcore/button` [5.39.1 ~> 5.39.2], `@semcore/tooltip` [6.46.0 ~> 6.46.1], `@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [6.35.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.40.0 ~> 7.41.0], `@semcore/modal` [4.49.0 ~> 4.49.1], `@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [6.35.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/checkbox` [7.39.0 ~> 7.40.0], `@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [6.34.4] - 2024-10-15
+
+### Fixed
+
+- Types for enhances.
+
+## [6.34.3] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [7.37.0 ~> 7.38.0], `@semcore/link` [5.38.2 ~> 5.38.3], `@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [6.34.2] - 2024-10-04
 
 ### Changed

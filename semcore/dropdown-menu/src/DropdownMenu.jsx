@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import createComponent, { sstyled, Root } from '@semcore/core';
 import Dropdown, { AbstractDropdown, selectedIndexContext, enhance } from '@semcore/dropdown';
-import { Flex, useBox, Box } from '@semcore/flex-box';
+import { Flex, useBox } from '@semcore/flex-box';
 import ScrollAreaComponent, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import { useUID } from '@semcore/utils/lib/uniqueID';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -12,6 +12,7 @@ import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { forkRef } from '@semcore/utils/lib/ref';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonComponent from '@semcore/button';
+import { Text } from '@semcore/typography';
 
 const ListBoxContextProvider = ({ children }) => (
   <hideScrollBarsFromScreenReadersContext.Provider value={true}>
@@ -39,7 +40,48 @@ class DropdownMenuRoot extends AbstractDropdown {
     timeout: 0,
   };
 
+  static nestedMenuInteraction = {
+    trigger: [
+      ['onClick', 'onMouseEnter'],
+      ['onClick', 'onMouseLeave'],
+    ],
+    popper: [['onMouseEnter'], ['onMouseLeave']],
+  };
+
+  actionsRef = React.createRef();
   role = 'menu';
+
+  uncontrolledProps() {
+    return {
+      ...super.uncontrolledProps(),
+      visible: [
+        null,
+        (visible) => {
+          if (visible === true) {
+            setTimeout(() => {
+              const options = this.menuRef.current?.querySelectorAll(
+                '[role="menuitemcheckbox"], [role="menuitemradio"]',
+              );
+              const selected = this.menuRef.current?.querySelector('[aria-checked="true"]');
+
+              if (selected && options) {
+                this.scrollToNode(selected);
+
+                for (let i = 0; i < options.length; i++) {
+                  if (options[i] === selected) {
+                    this.handlers.highlightedIndex(i);
+                    break;
+                  }
+                }
+              }
+              // for some reason, Google Chrome optimizes this timeout with 0 value with previous render (when we set aria-selected)
+              // and that's why its skip scrollToNodes. We selected the appropriate timeout manually.
+            }, 30);
+          }
+        },
+      ],
+    };
+  }
 
   itemRef(props, index, node) {
     super.itemRef(props, index, node);
@@ -83,29 +125,47 @@ class DropdownMenuRoot extends AbstractDropdown {
       onKeyDown: callAllEventHandlers(
         this.handlePreventCommonKeyDown.bind(this),
         this.handlePreventPopperKeyDown.bind(this),
-        // this.handleKeyDownForPopper.bind(this),
       ),
     };
   }
 
   getActionsProps() {
-    return this.getListProps();
+    return {
+      ...this.getListProps(),
+      ref: this.actionsRef,
+      onKeyDown: callAllEventHandlers(
+        this.handlePreventTabOnActions.bind(this),
+        this.handlePreventCommonKeyDown.bind(this),
+        this.handleKeyDownForMenu('list'),
+        this.handleArrowKeyDown.bind(this),
+      ),
+    };
   }
 
   getItemProps(props, index) {
-    const { highlightedIndex } = this.asProps;
+    const { highlightedIndex, visible } = this.asProps;
     const isHighlighted = index === highlightedIndex;
-
     const itemProps = {
       ...super.getItemProps(props, index),
-      tabIndex: isHighlighted ? 0 : -1,
+      tabIndex: isHighlighted && visible ? 0 : -1,
       ref: (node) => this.itemRef(props, index, node),
+      actionsRef: this.actionsRef,
     };
 
     if (props.tag === ButtonComponent) {
       itemProps.use = props.use ?? 'tertiary';
       itemProps.theme = props.theme ?? 'muted';
       itemProps.size = props.size ?? 's';
+    }
+
+    if (props.selected) {
+      itemProps['aria-checked'] = true;
+    }
+
+    if (super.childRole === 'menuitemradio') {
+      itemProps.onClick = () => {
+        this.handlers.visible(false);
+      };
     }
 
     return itemProps;
@@ -115,6 +175,12 @@ class DropdownMenuRoot extends AbstractDropdown {
     return (e) => {
       const { visible, placement, inlineActions } = this.asProps;
 
+      // stop propagation keyboard events if it calls not on DropdownMenu.Items
+      if (place === 'list' && !this.menuRef.current?.contains(e.target) && !inlineActions) {
+        e.stopPropagation();
+        return false;
+      }
+
       const show =
         (e.key === 'ArrowRight' && placement?.startsWith('right')) ||
         (e.key === 'ArrowLeft' && placement?.startsWith('left'));
@@ -122,7 +188,7 @@ class DropdownMenuRoot extends AbstractDropdown {
         (e.key === 'ArrowLeft' && placement?.startsWith('right')) ||
         (e.key === 'ArrowRight' && placement?.startsWith('left')) ||
         e.key === 'Escape';
-      const isMenuItem = e.target.getAttribute('role') === super.childRole;
+      const isMenuItem = e.target.getAttribute('role')?.startsWith(super.childRole);
 
       if (place === 'trigger' && (!visible || inlineActions) && show && isMenuItem) {
         this.handlers.visible(true);
@@ -150,6 +216,14 @@ class DropdownMenuRoot extends AbstractDropdown {
         }
       }
     };
+  }
+
+  handlePreventTabOnActions(e) {
+    if (e.key === 'Tab') {
+      e.stopPropagation();
+      e.preventDefault();
+      return false;
+    }
   }
 
   render() {
@@ -219,7 +293,17 @@ function Menu(props) {
   );
 }
 
-function Item({ id, styles, disabled, Children, forwardRef, role }) {
+function Item({
+  id,
+  styles,
+  disabled,
+  Children,
+  forwardRef,
+  role,
+  tabIndex,
+  actionsRef,
+  'aria-checked': ariaChecked,
+}) {
   const SDropdownMenuItemContainer = Root;
   const itemRef = React.useRef();
 
@@ -229,6 +313,8 @@ function Item({ id, styles, disabled, Children, forwardRef, role }) {
     contentId: id,
     ref: forkRef(forwardRef, itemRef),
     role,
+    tabIndex,
+    ariaChecked,
   };
   const ariaDescribes = [];
 
@@ -263,6 +349,10 @@ function Item({ id, styles, disabled, Children, forwardRef, role }) {
     const onBlur = (e) => {
       if (e.target === itemRef.current) {
         setHighlighted(false);
+
+        if (actionsRef.current) {
+          itemRef.current.tabIndex = -1;
+        }
       }
     };
 
@@ -285,7 +375,8 @@ function Item({ id, styles, disabled, Children, forwardRef, role }) {
         use:highlighted={!disabled && highlighted && focusSourceRef.current === 'keyboard'}
         use:role={advancedMode ? undefined : role}
         use:id={advancedMode ? undefined : id}
-        tabIndex={advancedMode ? undefined : -1}
+        use:tabIndex={advancedMode ? undefined : tabIndex}
+        use:aria-checked={advancedMode ? undefined : ariaChecked}
       >
         <Children />
       </SDropdownMenuItemContainer>
@@ -342,15 +433,21 @@ function ItemContent({ styles }) {
       render={Flex}
       role={menuItemCtxValue.role}
       id={menuItemCtxValue.contentId}
-      tabIndex={-1}
+      tabIndex={menuItemCtxValue.tabIndex}
       ref={forkRef(menuItemCtxValue.ref, ref)}
       use:aria-describedby={[...describedby].join(' ')}
       aria-haspopup={menuItemCtxValue.hasSubMenu ? 'true' : undefined}
       aria-expanded={subMenu}
-      alignItems={menuItemCtxValue.hasSubMenu ? 'center' : undefined}
+      aria-checked={menuItemCtxValue.ariaChecked}
+      alignItems='center'
       justifyContent={menuItemCtxValue.hasSubMenu ? 'space-between' : undefined}
     />,
   );
+}
+
+function ItemContentText({ styles }) {
+  const SItemContentText = Root;
+  return sstyled(styles)(<SItemContentText render={Text} />);
 }
 
 function ItemHint({ styles }) {
@@ -408,7 +505,7 @@ const DropdownMenu = createComponent(
     List,
     Actions,
     Menu,
-    Item: [Item, { Addon, Content: ItemContent, Hint: ItemHint }],
+    Item: [Item, { Addon, Content: ItemContent, Text: ItemContentText, Hint: ItemHint }],
     /**
      * @deprecated. Use just Item. See examples on
      */

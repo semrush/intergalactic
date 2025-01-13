@@ -9,7 +9,7 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 This is a wrap component, which is completely inherited from `<Popper/>`.
 
 ```jsx
-import FeaturePopover from 'intergalactic/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
@@ -17,10 +17,10 @@ import FeaturePopover from 'intergalactic/feature-popover';
 
 ## FeaturePopover.Trigger
 
-This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>`.
+This is the element, to which `<FeaturePopover.Popper/>` will be attached. It's fully inherited from `<Popper.Trigger/>`.
 
 ```jsx
-import FeaturePopover from 'intergalactic/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
@@ -28,10 +28,10 @@ import FeaturePopover from 'intergalactic/feature-popover';
 
 ## FeaturePopover.Popper
 
-This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It is fully inherited from `<Popper.Popper/>`.
+This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It's fully inherited from `<Popper.Popper/>`.
 
 ```jsx
-import FeaturePopover from 'intergalactic/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
@@ -42,7 +42,7 @@ import FeaturePopover from 'intergalactic/feature-popover';
 This blinking circle is inherited from `<Box>`.
 
 ```jsx
-import FeaturePopover from 'intergalactic/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Spot />;
 ```
 

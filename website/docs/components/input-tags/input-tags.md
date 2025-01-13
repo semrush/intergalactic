@@ -8,10 +8,10 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 
 <script lang="tsx">
 import React from 'react';
-import InputTags from 'intergalactic/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import CheckM from 'intergalactic/icon/Check/m';
+import CheckM from '@semcore/ui/icon/Check/m';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
@@ -82,9 +82,11 @@ const Preview = (preview) => {
     <InputTags size={size} state={state}>
       {tagText.length ? (
         <InputTags.Tag tabIndex={0} editable={editableTag}>
-          {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
-          {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
-          <InputTags.Tag.Text>{tagText}</InputTags.Tag.Text>
+          <InputTags.Tag.Text>
+            {circleTag && <InputTags.Tag.Circle style={{ background: '#2595e4' }} />}
+            {before && <InputTags.Tag.Addon>{beforeIconMap[size]}</InputTags.Tag.Addon>}
+            {(circleTag || before) ? (<InputTags.Tag.Text.Content>{tagText}</InputTags.Tag.Text.Content>) : tagText}
+          </InputTags.Tag.Text>
           {closeTag && <InputTags.Tag.Close />}
         </InputTags.Tag>
       ) : null}
@@ -100,7 +102,7 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**InputTags** is an input field that wraps entered information into tags. It is commonly used alongside the [Combobox](/components/auto-suggest/auto-suggest).
+**InputTags** is an input field that wraps entered information into tags. It's commonly used alongside the [Combobox](/components/auto-suggest/auto-suggest).
 
 This input field is useful for entering a large amount of similar information in a single field, such as keywords or employee emails.
 
@@ -110,10 +112,10 @@ When there are too many tags to fit within the input, the input field's height i
 
 Table: InputTags sizes
 
-| Size     | Appearance      |                 | Margins        |
-| -------- | --------------- | --------------- | -------------- |
-| M input is used with the M tag | ![](static/m-size.png) | ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
-| L input is used with the L tag | ![](static/l-size.png) | ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
+| Size                           | Appearance                                      | Margins                      |
+| ------------------------------ | ----------------------------------------------- | ---------------------------- |
+| M input is used with the M tag | ![](static/m-size.png) ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
+| L input is used with the L tag | ![](static/l-size.png) ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
 
 ## Tag colors
 
@@ -135,17 +137,15 @@ You can use colored tags to represent different categories, if needed.
 
 ## Interaction
 
-In an input field with tags, you can enter data either by selecting preset options from the combobox or by entering your own data (which will be wrapped in tags if they have punctuation separators). You can also combine both options.
+Tags can be added either by selecting options from the menu, or by [entering data manually](#turning-text-into-tags). You can also combine both options.
 
 Table: Interaction with InputTags
 
-| Data from the combobox    | User-entered data   | Data from the combobox and user-entered data    |
-| ------------------------- | ------------------- | ------------------------ |
-| ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png) |
+| Data from the combobox     | User-entered data          | Data from the combobox and user-entered data |
+| -------------------------- | -------------------------- | -------------------------------------------- |
+| ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png)                   |
 
-When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [Combobox](/components/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
-
-If the input field doesn't have preset options and allows users to enter any data, the entered data will be wrapped in a tag using punctuation separators, as described below.
+When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [combobox menu](/components/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
 
 ## Turning text into tags
 
@@ -182,4 +182,3 @@ Note that this behavior isn’t recommended due to poor accessibility. Web page 
 You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an [Ellipsis](../ellipsis/ellipsis.md). Hovering over the tag will display a `Hint` with the full text of the tag.
 
 ![](static/ellipsis.png)
-

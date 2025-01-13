@@ -2,6 +2,82 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.44.1] - 2024-12-20
+
+### Fixed
+
+- Attribute `onAuxClick` was not applying to components.
+
+## [4.44.0] - 2024-11-27
+
+### Added
+
+- Internal method for extract some children by the displayName from the `Children` entity.
+
+## [4.43.4] - 2024-11-28
+
+### Changed
+
+- Marked `ScreenReaderOnly` as deprecated component, use it now from `flex-box` package.
+
+## [4.43.3] - 2024-11-19
+
+### Fixed
+
+- `findAllComponents` method. Now it correctly searches in descendants of merged components.
+
+## [4.43.2] - 2024-11-08
+
+### Fixed
+
+- Hooks order in focusLock hook.
+
+## [4.43.1] - 2024-11-04
+
+### Added
+
+- `left` and `top` properties with `-1` value to `ScreenReaderOnly` container for prevent impact on layout of application.
+
+## [4.43.0] - 2024-11-01
+
+### Added
+
+- `display: contents` for ThemeProvider element by default.
+
+### Fixed
+
+- Types for ThemeProvider: added all `JSX.IntrinsicElements['div']` types.
+
+## [4.42.1] - 2024-10-29
+
+### Changed
+
+- Code cleanup - removed unnecessary promise in focus handler for focusBorders.
+
+## [4.42.0] - 2024-10-22
+
+### Changed
+
+- Focus lock logic. For now, we add focus borders in every trap node instead of one instance for whole document.
+
+## [4.41.0] - 2024-10-18
+
+### Added
+
+- Internal type for transform enhances types to the `asProps` type.
+
+## [4.40.0] - 2024-10-16
+
+### Fixed
+
+- Display values for design tokens with modifications.
+
+## [4.39.0] - 2024-10-11
+
+### Fixed
+
+- Update focusLock version.
+
 ## [4.38.0] - 2024-09-20
 
 ### Added

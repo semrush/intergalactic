@@ -10,7 +10,7 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import InputMask from 'intergalactic/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
@@ -103,10 +103,10 @@ Find an example of using a mask in an input field for entering a phone number in
 
 Table: InputMask's placeholder and mask appearance
 
-|             | Appearance examples      | Tokens                                                      |
-| ----------- | ------------------------ | ----------------------------------------------------------- |
-| Placeholder | ![](static/placeholder-default-2.png) | Placeholder use `--text-placeholder` as color. |
-| Mask        | ![](static/mask-default-2.png)        | Mask use `--text-primary` as color.            |
+| Appearance examples                               | Tokens                                         |
+| ------------------------------------------------- | ---------------------------------------------- |
+| Placeholder ![](static/placeholder-default-2.png) | Placeholder use `--text-placeholder` as color. |
+| Mask ![](static/mask-default-2.png)               | Mask use `--text-primary` as color.            |
 
 ## Hint instructions
 
@@ -114,8 +114,8 @@ We suggest including clear text instructions for inputs that have specific data 
 
 Table: InputMask's hint text sizes
 
-| Size (height in px) | Hint text size | Appearance example                  | Margins                                   |
-| ------------------- | ------------------- | ----------------------------------- | ----------------------------------------- |
+| Size (height in px) | Hint text size                           | Appearance example                    | Margins                                      |
+| ------------------- | ---------------------------------------- | ------------------------------------- | -------------------------------------------- |
 | M (28px)            | 12px (use `--fs-100`, `--lh-100` tokens) | ![](static/inputmask-help-text-m.png) | ![](static/inputmask-help-text-margin-m.png) |
 | L (40px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/inputmask-help-text-l.png) | ![](static/inputmask-help-text-margin-l.png) |
 
@@ -127,7 +127,6 @@ Find an example of the mask behavior in the in an input field for entering a pho
 
 Table: InputMask states
 
-| Placeholder        | Focus with mask        | Filled input                                    |
-| ------------------ | ---------------------- | ----------------------------------------------- |
-| ![](static/placeholder-default-1.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png)|
-
+| Placeholder                           | Focus with mask            | Filled input                |
+| ------------------------------------- | -------------------------- | --------------------------- |
+| ![](static/placeholder-default-1.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png) |

@@ -4,15 +4,26 @@ import Dropdown, {
   DropdownProps,
   DropdownHandlers,
   DropdownTriggerProps,
+  DropdownPopperAriaProps,
 } from '@semcore/dropdown';
 import { Box, BoxProps, FlexProps, Flex } from '@semcore/flex-box';
 import { ScrollAreaProps } from '@semcore/scroll-area';
+import { Text } from '@semcore/typography';
+import { eventInteraction } from '@semcore/popper';
 
 export type DropdownMenuSize = 'm' | 'l';
 
 /** @deprecated */
 export interface IDropdownMenuProps extends DropdownMenuProps, UnknownProperties {}
 export type DropdownMenuProps = DropdownProps & {
+  /**
+   * Set role `menuitemradio` (or `menuitemcheckbox` if `multiselect`) for Dropdown.Item
+   */
+  selectable?: boolean;
+  /**
+   * Multiple select
+   */
+  multiselect?: boolean;
   /**
    * Size of the menu
    * @default m
@@ -57,8 +68,7 @@ export type DropdownMenuMenuProps = DropdownMenuListProps & {};
 export interface IDropdownMenuItemProps extends DropdownMenuItemProps, UnknownProperties {}
 export type DropdownMenuItemProps = FlexProps & {
   /**
-   * Enables selected state
-   * @deprecated Dropdown menu item can't have that state
+   * Enables selected state. For selectable dropdowns only.
    */
   selected?: boolean;
   /**
@@ -128,7 +138,7 @@ declare const DropdownMenu: Intergalactic.Component<
   [handlers: DropdownMenuHandlers]
 > & {
   Trigger: typeof Dropdown.Trigger;
-  Popper: Intergalactic.Component<'div', DropdownMenuProps>;
+  Popper: Intergalactic.Component<'div', DropdownMenuProps & DropdownPopperAriaProps>;
   List: Intergalactic.Component<
     'div',
     DropdownMenuListProps,
@@ -155,6 +165,7 @@ declare const DropdownMenu: Intergalactic.Component<
   > & {
     Addon: typeof Box;
     Content: typeof Flex;
+    Text: typeof Text;
     Hint: typeof Flex;
   };
   /**
@@ -190,6 +201,7 @@ declare const DropdownMenu: Intergalactic.Component<
   };
 
   selectedIndexContext: React.Context<number>;
+  nestedMenuInteraction: eventInteraction;
 };
 
 export default DropdownMenu;

@@ -23,6 +23,8 @@ import {
 
 import style from './style/notice-bubble.shadow.css';
 import { forkRef, useForkRef } from '@semcore/utils/lib/ref';
+import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
@@ -68,9 +70,7 @@ class NoticeBubbleContainerRoot extends Component {
   };
 
   componentDidMount() {
-    const { manager } = this.asProps;
-    manager.counter = 0;
-    this._unsubscribe = manager.addListener(this.handleChange);
+    this._unsubscribe = this.asProps.manager.addListener(this.handleChange);
   }
 
   componentWillUnmount = () => {
@@ -128,12 +128,25 @@ const FocusLock = React.forwardRef((props, outerRef) => {
 class ViewInfo extends Component {
   timer = null;
   ref = React.createRef();
+  closeButtonRef = React.createRef();
 
   componentDidMount() {
     const { duration } = this.props;
     if (duration) {
       this.timer = new Timer(this.handleClose, duration);
       document.body.addEventListener('mousemove', this.handleBodyMouseMove);
+    }
+
+    const noticeElement = this.ref.current;
+
+    if (noticeElement) {
+      const focusableNodes = getFocusableIn(noticeElement).filter(
+        (node) => node !== this.closeButtonRef.current,
+      );
+
+      if (focusableNodes.length > 0) {
+        setTimeout(() => setFocus(noticeElement), 0);
+      }
     }
   }
 
@@ -153,6 +166,12 @@ class ViewInfo extends Component {
     // because it might be called not only from the close icon click
     fire(this, 'onClose', e);
     this.clearTimer();
+  };
+
+  handleKeydown = (e) => {
+    if (e.key === 'Escape') {
+      this.handleClose(e);
+    }
   };
 
   handleMouseEnter = () => {
@@ -203,25 +222,25 @@ class ViewInfo extends Component {
         ref={forkRef(forwardRef, this.ref)}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handleMouseEnter)}
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handleMouseLeave)}
+        onKeyDown={this.handleKeydown}
         role={type === 'warning' ? 'alert' : this.props.role}
       >
-        <Hint title={getI18nText('close')}>
-          <SDismiss
-            // biome-ignore lint/a11y/useValidAriaValues:
-            aria-haspopup={undefined}
-            tag={Button}
-            type='button'
-            use='tertiary'
-            size='m'
-            theme='invert'
-            onClick={this.handleClose}
-            aria-label={getI18nText('close')}
-            active={false}
-          >
-            <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
-          </SDismiss>
-          <Hint.Popper />
-        </Hint>
+        <SDismiss
+          // biome-ignore lint/a11y/useValidAriaValues:
+          aria-haspopup={undefined}
+          tag={Button}
+          type='button'
+          use='tertiary'
+          size='m'
+          theme='invert'
+          onClick={this.handleClose}
+          aria-label={getI18nText('close')}
+          active={false}
+          title={getI18nText('close')}
+          ref={this.closeButtonRef}
+        >
+          <Button.Addon tag={CloseIcon} color='icon-primary-invert' />
+        </SDismiss>
 
         {isNode(icon) ? (
           <>

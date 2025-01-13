@@ -30,10 +30,7 @@ const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowRight: 'right',
 };
 
-const enhance = {
-  uid: uniqueIDEnhancement(),
-  i18nEnahnce: i18nEnhance(localizedMessages),
-};
+const enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)] as const;
 const media = ['(min-width: 481px)', '(max-width: 480px)'];
 const BreakPoints = createBreakpoints(media);
 const isSmallScreen = (index: number) => index === 1;
@@ -42,12 +39,7 @@ class CarouselRoot extends Component<
   CarouselProps,
   CarouselContext,
   CarouselState,
-  typeof enhance & {
-    getI18nText: (
-      messageId: string,
-      variables?: { [key: string]: string | number | undefined },
-    ) => string;
-  }
+  typeof enhance
 > {
   static displayName = 'Carousel';
   static defaultProps = {
@@ -61,7 +53,7 @@ class CarouselRoot extends Component<
   };
 
   static style = style;
-  static enhance = Object.values(enhance);
+  static enhance = enhance;
 
   defaultItemsCount = 0;
   refCarousel = React.createRef<HTMLElement>();
@@ -161,6 +153,14 @@ class CarouselRoot extends Component<
         e.preventDefault();
         this.slideToValue(lastSlide);
       }
+    }
+
+    if (
+      (e.key === 'Enter' || e.key === ' ') &&
+      e.target instanceof HTMLDivElement &&
+      e.target.role === 'tabpanel'
+    ) {
+      this.handleToggleZoomModal();
     }
   };
 
@@ -338,6 +338,7 @@ class CarouselRoot extends Component<
       zoomIn: zoom,
       onToggleZoomModal: this.handleToggleZoomModal,
       transform: isCurrent ? this.getTransform() : undefined,
+      isOpenZoom: this.state.isOpenZoom,
     };
   }
 
@@ -515,7 +516,6 @@ class CarouselRoot extends Component<
 
   render() {
     const SCarousel = Root;
-    const SContentBox = Box;
     const {
       styles,
       Children,
@@ -548,11 +548,11 @@ class CarouselRoot extends Component<
           <>
             <Flex>
               <Carousel.Prev />
-              <SContentBox>
+              <Carousel.ContentBox>
                 <Carousel.Container aria-label={ariaLabel}>
                   <Children />
                 </Carousel.Container>
-              </SContentBox>
+              </Carousel.ContentBox>
               <Carousel.Next />
             </Flex>
             {indicators === 'default' && <Carousel.Indicators />}
@@ -598,6 +598,13 @@ const Container = (props: BoxProps & { duration?: number }) => {
   );
 };
 
+const ContentBox = (props: BoxProps) => {
+  const SContentBox = Root;
+  const { styles } = props;
+
+  return sstyled(styles)(<SContentBox render={Box} />);
+};
+
 class Item extends Component<CarouselItemProps> {
   refItem = React.createRef<HTMLElement>();
   keepFocusTimeout: NodeJS.Timeout | undefined;
@@ -640,6 +647,16 @@ class Item extends Component<CarouselItemProps> {
           refItem?.focus();
         }
       }, 100);
+    }
+    if (
+      prevProps.isOpenZoom === true &&
+      this.props.isOpenZoom === false &&
+      this.props.current &&
+      !this.props.zoomOut
+    ) {
+      this.keepFocusTimeout = setTimeout(() => {
+        this.refItem.current?.focus();
+      }, 200);
     }
   }
 
@@ -737,6 +754,7 @@ const Indicator = ({ styles, Children }: CarouselIndicatorProps) => {
 
 const Carousel: typeof CarouselType = createComponent(CarouselRoot, {
   Container,
+  ContentBox,
   Indicators,
   Indicator,
   Item,

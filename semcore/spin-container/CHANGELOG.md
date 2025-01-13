@@ -2,6 +2,60 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.40.2] - 2025-01-03
+
+### Removed
+
+- `aria-busy` attribute as unnecessary.
+
+## [7.40.1] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.44.0 ~> 4.44.1], `@semcore/spin` [5.39.0 ~> 5.39.1], `@semcore/flex-box` [5.39.0 ~> 5.39.1], `@semcore/animation` [2.39.0 ~> 2.39.1], `@semcore/core` [2.37.0 ~> 2.37.1]).
+
+## [7.40.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/spin` [5.38.2 ~> 5.39.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/animation` [2.38.2 ~> 2.39.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [7.39.2] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/spin` [5.38.1 ~> 5.38.2], `@semcore/flex-box` [5.38.1 ~> 5.38.2], `@semcore/animation` [2.38.1 ~> 2.38.2], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [7.39.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/spin` [5.38.0 ~> 5.38.1], `@semcore/flex-box` [5.38.0 ~> 5.38.1], `@semcore/animation` [2.38.0 ~> 2.38.1], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [7.39.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/spin` [5.37.0 ~> 5.38.0], `@semcore/flex-box` [5.37.0 ~> 5.38.0], `@semcore/animation` [2.37.0 ~> 2.38.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [7.38.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/spin` [5.36.0 ~> 5.37.0], `@semcore/flex-box` [5.36.0 ~> 5.37.0], `@semcore/animation` [2.36.0 ~> 2.37.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [7.37.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/spin` [5.35.0 ~> 5.36.0], `@semcore/flex-box` [5.35.0 ~> 5.36.0], `@semcore/animation` [2.35.0 ~> 2.36.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [7.36.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/spin` [5.34.0 ~> 5.35.0], `@semcore/flex-box` [5.34.0 ~> 5.35.0], `@semcore/animation` [2.34.0 ~> 2.35.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [7.35.0] - 2024-10-04
 
 ### Changed

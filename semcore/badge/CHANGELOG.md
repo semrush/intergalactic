@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.38.1] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.44.0 ~> 4.44.1]).
+
+## [4.38.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0]).
+
+## [4.37.2] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3]).
+
+## [4.37.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2]).
+
+## [4.37.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0]).
+
+## [4.36.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0]).
+
+## [4.35.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0]).
+
+## [4.34.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0]).
+
 ## [4.33.0] - 2024-10-04
 
 ### Changed

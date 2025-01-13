@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Venn, colors } from 'intergalactic/d3-chart';
+import { Plot, Venn } from 'intergalactic/d3-chart';
 import { Text } from 'intergalactic/typography';
 import { ChartLegend } from '@semcore/d3-chart';
 
@@ -14,7 +14,7 @@ const data = {
   'G/F/C': 100,
 };
 
-const legendItems = [
+const defaultLegendItems = [
   {
     id: 'G',
     label: 'Good',
@@ -41,20 +41,70 @@ const legendItems = [
   },
 ];
 
+const defaultIntersections = [
+  {
+    id: 'G/F',
+    label: 'Good & Fast',
+    visible: true,
+  },
+  {
+    id: 'G/C',
+    label: 'Fast',
+    visible: true,
+  },
+  {
+    id: 'F/C',
+    label: 'Cheap',
+    visible: true,
+  },
+  {
+    id: 'G/F/C',
+    label: 'Unknown',
+    visible: true,
+  },
+];
+
 const Demo = () => {
+  const [legendItems, setLegendItems] = React.useState(() => defaultLegendItems);
+  const intersectionItems = defaultIntersections.filter((intersection) => {
+    const intersectionKeys = intersection.id.split('/');
+    const disabled = intersectionKeys.some((key: string) => {
+      return !legendItems.find((item) => item.id === key)?.checked;
+    });
+
+    return !disabled;
+  });
+
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      const newItems = prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+
+      return newItems;
+    });
+  }, []);
+
   return (
     <>
-      <ChartLegend items={legendItems} patterns />
+      <ChartLegend
+        items={legendItems}
+        patterns
+        aria-label={'Legend for the venn chart'}
+        onChangeVisibleItem={handleChangeVisible}
+      />
       <Plot height={300} width={400} data={data} patterns>
         <Venn>
-          <Venn.Circle dataKey='G' name='Good' />
-          <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />
-          <Venn.Circle dataKey='C' name='Cheap' color={colors['orange-04']} />
-          <Venn.Circle dataKey='U' name='Unknown' color={colors['pink-03']} />
-          <Venn.Intersection dataKey='G/F' name='Good & Fast' />
-          <Venn.Intersection dataKey='G/C' name='Good & Cheap' />
-          <Venn.Intersection dataKey='F/C' name='Fast & Cheap' />
-          <Venn.Intersection dataKey='G/F/C' name='Good & Fast & Cheap' />
+          {legendItems.map(({ id, label, checked, color }) => {
+            return checked && <Venn.Circle key={id} dataKey={id} name={label} color={color} />;
+          })}
+          {intersectionItems.map(({ id, label }) => (
+            <Venn.Intersection key={id} dataKey={id} name={label} />
+          ))}
         </Venn>
         <Venn.Tooltip>
           {({ name, dataKey }) => {

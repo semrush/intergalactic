@@ -2,6 +2,71 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.43.2] - 2024-12-17
+
+### Removed
+
+- `aria-live` from all items.
+- `aria-label` from "muted" theme.
+
+### Added
+
+- Log with recommendation to provide aria-labels that help distinguish different types of notices.
+
+## [5.43.1] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.0 ~> 5.40.1]).
+
+## [5.43.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.38.2 ~> 2.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/icon` [4.52.2 ~> 4.53.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [5.42.4] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.38.1 ~> 2.38.2], `@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/button` [5.39.3 ~> 5.39.4], `@semcore/flex-box` [5.38.1 ~> 5.38.2], `@semcore/icon` [4.52.1 ~> 4.52.2], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [5.42.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3]).
+
+## [5.42.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.38.0 ~> 2.38.1], `@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/button` [5.39.1 ~> 5.39.2], `@semcore/flex-box` [5.38.0 ~> 5.38.1], `@semcore/icon` [4.52.0 ~> 4.52.1], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [5.42.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.37.0 ~> 2.38.0], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/flex-box` [5.37.0 ~> 5.38.0], `@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [5.42.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.36.0 ~> 2.37.0], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/flex-box` [5.36.0 ~> 5.37.0], `@semcore/icon` [4.50.0 ~> 4.51.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [5.41.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/animation` [2.35.0 ~> 2.36.0], `@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/button` [5.37.3 ~> 5.38.0], `@semcore/flex-box` [5.35.0 ~> 5.36.0], `@semcore/icon` [4.48.0 ~> 4.50.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [5.40.3] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [2.34.0 ~> 2.35.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/flex-box` [5.34.0 ~> 5.35.0], `@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [5.40.2] - 2024-10-04
 
 ### Changed
@@ -837,7 +902,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Изменения описаны в [migration guide](/internal/migration-guide)
+- Изменения описаны в migration guide
 
 ### Added
 

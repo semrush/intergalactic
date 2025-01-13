@@ -8,8 +8,8 @@ tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Example('divi
 
 <script lang="tsx">
 import React from 'react';
-import Divider from 'intergalactic/divider';
-import { Flex } from 'intergalactic/flex-box';
+import Divider from '@semcore/ui/divider';
+import { Flex } from '@semcore/ui/flex-box';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const USE = ['primary', 'secondary'];
@@ -47,7 +47,21 @@ const App = PlaygroundGeneration(
       options: ORIENTATIONS,
     });
 
-    return <Divider use={use} theme={theme} wMin={200} orientation={orientation} />;
+    return (
+      orientation === 'horizontal' ? 
+        <Divider
+          orientation={orientation}
+          theme={theme}
+          use={use}
+          wMin={200}
+        />
+        : <Divider
+          orientation={orientation}
+          theme={theme}
+          use={use}
+          hMin={20}
+        />
+    )
   },
   { LayoutPreview },
 );

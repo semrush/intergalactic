@@ -19,7 +19,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import keyboardFocusEnhance, {
   useFocusSource,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -382,7 +382,9 @@ class PopperRoot extends Component {
           }
         }
         if (!visible && component === 'popper') {
-          this.ignoreTriggerFocus = false;
+          setTimeout(() => {
+            this.ignoreTriggerFocus = false;
+          }, 0);
         }
       }, 0);
     });
@@ -527,12 +529,12 @@ function Trigger(props) {
   );
 
   React.useEffect(() => {
-    document.addEventListener('focusin', handleFocus);
+    triggerRef.current?.addEventListener('focusin', handleFocus);
 
     return () => {
-      document.removeEventListener('focusin', handleFocus);
+      triggerRef.current?.removeEventListener('focusin', handleFocus);
     };
-  }, []);
+  }, [triggerRef.current, handleFocus]);
 
   const activeRef = React.useRef(active);
   activeRef.current = active;

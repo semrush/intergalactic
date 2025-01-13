@@ -14,11 +14,11 @@ All components are bundled together in a single package, making the installation
 ::: code-group
 
 ```sh [pnpm]
-pnpm add intergalactic
+pnpm add @semcore/ui
 ```
 
 ```sh [npm]
-npm install intergalactic
+npm install @semcore/ui
 ```
 
 :::
@@ -34,7 +34,7 @@ We have developed this design system with a strong focus on flexibility and ease
 Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/button) component:
 
 ```jsx
-import Button from 'intergalactic/button';
+import Button from '@semcore/ui/button';
 
 <Button>
   <Button.Addon>
@@ -82,7 +82,7 @@ These handlers are especially convenient when using React hooks, as you no longe
 
 ```jsx
 import React from 'react';
-import Input from 'intergalactic/input';
+import Input from '@semcore/ui/input';
 
 export default () => {
   const [value, setValue] = React.useState('');
@@ -112,7 +112,7 @@ All our components return a DOM node in the `ref` property. This decision was ma
 Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block. By importing Box from `intergalactic/flex-box`, you can leverage its capabilities, including:
 
 ```jsx
-import { Box } from 'intergalactic/flex-box';
+import { Box } from '@semcore/ui/flex-box';
 ```
 
 `Box` allows you to:
@@ -143,7 +143,7 @@ import { Box } from 'intergalactic/flex-box';
 `Box` serves as the foundation for other components, making its features available throughout the entire library. For example:
 
 ```jsx
-import Button from 'intergalactic/button';
+import Button from '@semcore/ui/button';
 
 <Button tag="a" mb={2} w="200px">
   Still Box 🙀
@@ -154,7 +154,7 @@ Additionally, consider exploring the ["Flex"](/layout/box-system/box-system) com
 
 
 ```jsx
-import { Flex } from 'intergalactic/flex-box';
+import { Flex } from '@semcore/ui/flex-box';
 
 <Flex justifyContent="center" alignItems="center" />;
 ```

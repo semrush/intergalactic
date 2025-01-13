@@ -2,6 +2,66 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.40.2] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [6.47.0 ~> 6.47.1], `@semcore/utils` [4.44.0 ~> 4.44.1]).
+
+## [5.40.1] - 2024-12-05
+
+### Removed
+
+- Unnecessary `aria-disabled` on disabled button.
+
+## [5.40.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0]).
+
+## [5.39.4] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3]).
+
+## [5.39.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [6.46.1 ~> 6.46.2]).
+
+## [5.39.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [6.46.0 ~> 6.46.1], `@semcore/utils` [4.43.0 ~> 4.43.2]).
+
+## [5.39.1] - 2024-10-30
+
+### Fixed
+
+- Disabled state is not applied to ButtonLink.
+
+## [5.39.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0]).
+
+## [5.38.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0]).
+
+## [5.37.3] - 2024-10-11
+
+### Fixed
+
+- Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
 ## [5.37.2] - 2024-10-01
 
 ### Fixed

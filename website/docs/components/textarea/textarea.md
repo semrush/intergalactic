@@ -9,7 +9,7 @@ tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('t
 <script lang="tsx">
 import React from 'react';
 
-import TextareaReact from 'intergalactic/textarea';
+import TextareaReact from '@semcore/ui/textarea';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['m', 'l'];
@@ -91,6 +91,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       minRows={min}
       maxRows={max}
       placeholder='Placeholder'
+      aria-label='Label for textarea'
     />
   );
 });

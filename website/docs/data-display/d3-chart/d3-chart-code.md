@@ -1,16 +1,16 @@
 ---
 title: D3 chart
 fileSource: d3-chart
-tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
+tabs: Design('d3-chart'), A11y('d3-chart-a11y'), API('d3-chart-api'), Example('d3-chart-code'), Changelog('d3-chart-changelog')
 ---
 
 ## Description
 
 These components serve as the base for building charts from your data in the product.
 
-They don't manipulate your data, and will not try to calculate, sort or check it in any way. Data manipulation is the product's job, not the component's.
+They don't manipulate your data, and won't try to calculate, sort or check it in any way. Data manipulation is the product's job, not the component's.
 
-Charts are a complex component that cannot be applied in a single line. That's why its API may seem a bit inflated, since it supports all the concepts of our design system.
+Charts are a complex component that can't be applied in a single line. That's why its API may seem a bit inflated, since it supports all the concepts of our design system.
 
 ## Concept
 
@@ -20,9 +20,9 @@ Charts are a complex component that cannot be applied in a single line. That's w
 
 Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
 
-When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>`. So all properties you pass to <Line.Dots/> will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
+When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>`. So all properties you pass to `<Line.Dots/>` will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
 
-For a point change in the properties of each specific dot, you need to pass a function that will be called at each dot with the calculated properties of this dot:
+To change properties of specific dots, pass a function that will be called at each dot with the calculated properties of this dot:
 
 ```jsx
 <Line.Dots>
@@ -38,7 +38,7 @@ For a point change in the properties of each specific dot, you need to pass a fu
 You also can put functions into single elements if your properties are calculated dynamically.
 :::
 
-Since many SVG elements don't support nesting, they are rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
+Since many SVG elements don't support nesting, they're rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
 
 ```jsx
 <Line>
@@ -46,13 +46,13 @@ Since many SVG elements don't support nesting, they are rendered sequentially. F
 </Line>
 ```
 
-CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/design-tokens#themes) for more information on how to customize it.
+CSS is responsible for all the chart styles. Refer to [Themes](/style/design-tokens/design-tokens#themes) for more information on how to customize it.
 
-## Base
+## Chart plot
 
 Any SVG container must have absolute values for its size.
 
-See [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as their `range` and `domain`.
+Refer to [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as their `range` and `domain`.
 
 ::: tip
 The `range` of the horizontal `scale` is inverted, so that the axes origin is at the bottom left corner.
@@ -66,11 +66,11 @@ The `range` of the horizontal `scale` is inverted, so that the axes origin is at
 
 :::
 
-## Paddings & margins
+### Plot margins
 
-SVG size and chart plot size are usually different to prevent the clipping of additional items such as axes, axis values, and the legend.
+The chart plot usually has margins inside the `svg` container to prevent clipping grid items such as axes, axis values, and axis titles.
 
-That's why values in `scale.range ()` are set with a shift.
+That's why values in `scale.range()` are set with an offset.
 
 ::: sandbox
 
@@ -80,14 +80,16 @@ That's why values in `scale.range ()` are set with a shift.
 
 :::
 
-## Axes
+## Chart grid
+
+### Axes
 
 When you pass `scale` to the root component it also sets the coordinate axes. However, you still need to specify them for them to render.
 
 - `XAxis/YAxis` are the axis lines.
 - `ticks` are the values on the axis.
 
-It is also possible to have multiple axes with different positions.
+It's also possible to have multiple axes with different positions.
 
 You can get the number of ticks from the `scale.ticks` or `scale.domain` method. To calculate an approximate number of ticks, divide the chart size by the size of a one tick.
 
@@ -103,7 +105,7 @@ According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 
 :::
 
-## Axis values
+### Axis values
 
 You can change the values and properties on the axis by passing a function.
 
@@ -121,7 +123,24 @@ The function arguments contain calculated XY coordinates that you can use to shi
 
 :::
 
-## Additional lines
+### Axis titles
+
+Axis titles are formed in the same way as ticks and additional lines.
+
+::: tip
+By default, the title is set to the right for the Oy axis, and at the top for the Ox axis. However, you can change this condition by passing the desired location to `position`: `right`, `top`, `left`, or `bottom`.
+:::
+
+::: sandbox
+
+<script lang="tsx">
+import { Bar, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
+  export Demo from './examples/axes-titles.tsx';
+</script>
+
+:::
+
+### Additional lines
 
 Additional lines are formed in the same way as ticks.
 
@@ -137,31 +156,12 @@ To make things easier, ticks can be specified on the `Axis` component itself, an
 
 :::
 
-## Axes titles
-
-Axis titles are formed in the same way as ticks and additional lines.
-
-::: tip
-By default, the title is set to the right for the Oy axis, and at the top for the Ox axis. However, you can change this condition by passing the desired location to `position`: `right`, `top`, `left`, or `bottom`.
-:::
+### Reference line
 
 ::: sandbox
 
 <script lang="tsx">
-import { Bar, XAxis, Plot, YAxis } from 'intergalactic/d3-chart';
-  export Demo from './examples/axes-titles.tsx';
-</script>
-
-:::
-
-## Tooltip
-
-You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/tooltip.tsx';
+  export Demo from './examples/reference-line.tsx';
 </script>
 
 :::
@@ -186,24 +186,38 @@ For SVG charts to display correctly on responsive layouts, you need to dynamical
 
 :::
 
+## Tooltip
+
+You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/tooltip.tsx';
+</script>
+
+:::
+
+### Tooltip control
+
+To control over tooltip visibility and targeted position, imperatively call plot's event emitter.
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from './examples/tooltip-control.tsx';
+</script>
+
+:::
+
 ## Chart legend
 
-Refer to [Chart legend](/data-display/chart-legend/chart-legend), for a guide on how to implement a clickable chart legend.
+Refer to [Chart legend](/data-display/chart-legend/chart-legend) for a more detailed guide.
 
 ::: sandbox
 
 <script lang="tsx">
   export Demo from './examples/chart-legend.tsx';
-</script>
-
-:::
-
-## Reference line
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/reference-line.tsx';
 </script>
 
 :::
@@ -224,18 +238,6 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 
 :::
 
-## Tooltip control
-
-To control over tooltip visibility and targeted position, imperatively call plot's event emitter.
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from './examples/tooltip-control.tsx';
-</script>
-
-:::
-
 ## Export to image
 
 ::: sandbox
@@ -248,15 +250,15 @@ To control over tooltip visibility and targeted position, imperatively call plot
 
 ## Initial data loading
 
-For the initial loading of the charts, use skeleton components that are specified for all complex charts right inside them, or use [Skeleton](/components/skeleton/skeleton) for simple charts. 
+During initial chart data loading, use [Skeleton](/components/skeleton/skeleton) corresponding to the chart type. Refer to the specific chart type documentation and to [Chart Skeleton examples](../../components/skeleton/skeleton-code.md#skeleton-examples-for-charts) to choose the appropriate Skeleton type.
 
-Note that, if a chart has a title, it should be displayed while the chart is loading.
+If the chart has a title, it should be displayed while the chart is loading.
 
-## Pattern fill
+## Pattern fills, dots and lines
 
-To enable visual patterns on chart, simply add `pattern` prop to the chart component.
+To replace solid fills with visual patterns, add the `patterns` prop to the chart component.
 
-`pattern` prop is inherited by all children components. So, you can apply it both to _end_ components like `Line` and to _container_ components like `Plot` .
+The `patterns` prop is inherited by all children components. So, you can apply it both to _end_ components like `Line` and to _container_ components like `Plot` .
 
 ::: sandbox
 
@@ -309,11 +311,11 @@ You can provide custom pattern object to enforce it's form. The pattern object s
 
 The fill data is used for rendering charts like an `Area` while symbol data is needed to render corresponding symbol in chart legend or on the dots.
 
-::: sandbox 
+::: sandbox
 
 <script  lang="tsx">
 import React from 'react';
-import { Chart, Pattern } from 'intergalactic/d3-chart';
+import { Chart, Pattern } from '@semcore/ui/d3-chart';
 
 const customPattern: Pattern = {
   fill: {
@@ -346,6 +348,7 @@ const Demo = () => {
       patterns={customPattern}
       showDots
       showTooltip
+      aria-label="Area chart"
     />
   );
 };
@@ -372,7 +375,7 @@ You can also provide a list of patterns.
 
 ### Low level components use
 
-You can access `PatternFill` and `PatternSymbol` components for low level use. 
+You can access `PatternFill` and `PatternSymbol` components for low level use.
 
 `PatternFill` allows you to initialize [svg pattern](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns) and use it for customized charts.
 
@@ -386,13 +389,15 @@ You can access `PatternFill` and `PatternSymbol` components for low level use.
 
 :::
 
-## A11y formatting
+## Accessible data summary
 
-You can provide formatting functions that will control A11y module generated summary and data table content. 
+### Data formatting
+
+You can provide formatting functions that will control A11y module generated summary and data table content.
 
 ::: tip
 
-Click on this tip (to place focus on it) and press `Tab` to navigate to the chart until you see the A11y module.
+Click on this tip (to place focus on it) and press `Tab` to navigate to the chart until the accessible summary dialog opens.
 
 :::
 
@@ -403,3 +408,45 @@ Click on this tip (to place focus on it) and press `Tab` to navigate to the char
 </script>
 
 :::
+
+### Summary examples
+
+The following examples demonstrate automatically generated text summaries for various datasets and chart types.
+
+![Chart displaying change of city weather month by month.](static/charts-a11y-city-weather.png)
+
+Example summary (autogenerated):
+
+```
+Chart represents 1 time series of Temperature:  weakly growing from 15.5 to 16.5, also strongly growing from January to July and strongly declining from July to December.
+Temperature is represented from January to December.
+```
+
+![Chart displaying scatterplot of some people weight and height.](static/charts-a11y-weight-height.png)
+
+Example summary (autogenerated):
+
+```
+Chart represents 3 clusters of sizes from 1 to 66 of Height: significantly big cluster of 66 size around cross of 68.348 Weight and 174.076 Height, significantly small cluster of 1 size around cross of 78 Weight and 153 Height, and significantly small cluster of 1 size around cross of 99 Weight and 199 Height.
+Weight represented from 50 to 99 and Height represented from 148 to 199
+```
+
+![Chart displaying survey of book genre preferences across different age groups.](static/charts-a11y-books.png)
+
+Example summary (autogenerated):
+
+```
+Chart represents 3 groups each containing 3 values of Genre preferences in survey: group adults contains thriller of value 80, fiction of value 28, and romance of value 20, group elderly contains romance of value 70, fiction of value 24, and thriller of value 18, and group teenagers contains fiction of value 63, thriller of value 25, and romance of value 19.
+```
+
+![Chart displaying distribution of survived passengers classes on the Titanic.](static/charts-a11y-titanic.png)
+
+Example summary (autogenerated):
+
+```
+Chart represents 3 values of Survived passengers: Class 3 of value 218, Class 1 of value 107, and Class 2 of value 93.
+```
+
+![Chart displaying distribution of survived passengers classes on the Titanic in form of pie chart.](static/charts-a11y-titanic-pie.png)
+
+A pie chart representing the same data will have the same summary.

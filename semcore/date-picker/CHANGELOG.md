@@ -2,6 +2,70 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.54.7] - 2024-12-16
+
+### Removed
+
+- Unnecessary `role=combobox` for all inputs from popper in any Comparator.
+
+## [4.54.6] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [4.49.0 ~> 4.49.2], `@semcore/button` [5.40.0 ~> 5.40.1], `@semcore/dropdown` [4.41.5 ~> 4.41.7]).
+
+## [4.54.5] - 2024-11-29
+
+### Fixed
+
+- Blinking when opening `DateRangeComparators`.
+
+## [4.54.4] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/base-trigger` [4.48.1 ~> 4.48.2], `@semcore/button` [5.39.3 ~> 5.39.4], `@semcore/dropdown` [4.41.2 ~> 4.41.3], `@semcore/checkbox` [7.41.1 ~> 7.41.2], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [4.54.3] - 2024-11-15
+
+### Changed
+
+- Aria-label for date presets listbox.
+
+### Added
+
+- Translations for aria-label for date presets listbox.
+
+## [4.54.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/base-trigger` [4.48.0 ~> 4.48.1], `@semcore/button` [5.39.1 ~> 5.39.2], `@semcore/dropdown` [4.41.0 ~> 4.41.2], `@semcore/checkbox` [7.41.0 ~> 7.41.1], `@semcore/tooltip` [6.46.0 ~> 6.46.1], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [4.54.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/base-trigger` [4.47.0 ~> 4.48.0], `@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/checkbox` [7.40.0 ~> 7.41.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.54.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/base-trigger` [4.46.0 ~> 4.47.0], `@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/checkbox` [7.39.0 ~> 7.40.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.53.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/base-trigger` [4.45.1 ~> 4.46.0], `@semcore/button` [5.37.3 ~> 5.38.0], `@semcore/icon` [4.48.0 ~> 4.50.0], `@semcore/checkbox` [7.38.0 ~> 7.39.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [4.52.1] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/base-trigger` [4.45.0 ~> 4.45.1], `@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/checkbox` [7.37.0 ~> 7.38.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [4.52.0] - 2024-09-03
 
 ### Changed

@@ -1,3 +1,5 @@
 {
-  "trend": "Trend"
+  "d3Chart.Plot:aria-label": "Chart",
+  "trend": "Trend",
+  "legendForChart": "Chart legend"
 }

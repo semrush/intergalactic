@@ -216,6 +216,7 @@ class DateRangeComparatorAbstract extends Component {
       focusedRange === 'compare' ? this.asProps.compareHighlighted : this.asProps.highlighted;
 
     if (place === 'trigger' && INTERACTION_KEYS.includes(key)) {
+      e.preventDefault();
       e.stopPropagation();
       this.handlers.visible(!visible);
 
@@ -384,6 +385,12 @@ class DateRangeComparatorAbstract extends Component {
 
   getRangeInput() {
     throw new Error('not implemented');
+  }
+
+  getRangeInputProps() {
+    return {
+      inputRole: null,
+    };
   }
 
   getValueDateRangeProps() {

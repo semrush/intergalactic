@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dropdown-menu",
   "description": "Semrush DropdownMenu Component",
-  "version": "4.40.0",
+  "version": "4.44.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/dropdown": "4.38.0",
-    "@semcore/flex-box": "5.34.0",
-    "@semcore/scroll-area": "5.38.0",
-    "@semcore/utils": "4.38.0",
-    "@semcore/icon": "4.47.0",
+    "@semcore/dropdown": "4.42.0",
+    "@semcore/flex-box": "5.39.1",
+    "@semcore/scroll-area": "5.43.1",
+    "@semcore/utils": "4.44.1",
+    "@semcore/icon": "4.53.1",
+    "@semcore/typography": "5.48.1",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -34,7 +35,7 @@
     "@types/classnames": "2.2.6",
     "@semcore/testing-utils": "1.0.0",
     "@semcore/base-trigger": "4.26.1",
-    "@semcore/icon": "4.26.0",
+    "@semcore/icon": "workspace:*",
     "@semcore/button": "workspace:*"
   }
 }

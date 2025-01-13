@@ -187,7 +187,7 @@ describe('focus control', () => {
         <input />
         <input />
         <Popper visible disablePortal>
-          <Popper.Popper data-testid='popper' tabIndex={0}>
+          <Popper.Popper autoFocus data-testid='popper' tabIndex={0}>
             <div tabIndex={0} />
           </Popper.Popper>
         </Popper>
@@ -197,9 +197,9 @@ describe('focus control', () => {
       </div>,
     );
 
-    const PopperElement = getByTestId('popper');
+    await new Promise((r) => setTimeout(r, 0));
 
-    await userEvent.keyboard('[Tab]');
+    const PopperElement = getByTestId('popper');
 
     expect(PopperElement).toHaveFocus();
 

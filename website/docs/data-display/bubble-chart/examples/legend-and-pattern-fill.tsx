@@ -13,7 +13,32 @@ import { Flex } from '@semcore/flex-box';
 
 const dataHints = makeDataHintsContainer();
 
+const getDefaultLegendItems = () => {
+  return data.map((item, index) => {
+    return {
+      id: index.toString(),
+      label: `Round item (${item.label}) [${index}]`,
+      checked: true,
+      color: item.color,
+    };
+  });
+};
+
 const Demo = () => {
+  const [legendItems, setLegendItems] = React.useState(getDefaultLegendItems);
+
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
+
+        return item;
+      });
+    });
+  }, []);
+
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -26,18 +51,15 @@ const Demo = () => {
     .range([height - MARGIN, MARGIN])
     .domain([-2, 10]);
 
-  const legendItems = data.map((item, index) => {
-    return {
-      id: index.toString(),
-      label: `Round item (${item.label}) [${index}]`,
-      checked: true,
-      color: item.color,
-    };
-  });
-
   return (
     <Flex direction='column'>
-      <ChartLegend dataHints={dataHints} items={legendItems} patterns />
+      <ChartLegend
+        dataHints={dataHints}
+        items={legendItems}
+        patterns
+        aria-label={'Legend for the bubble chart'}
+        onChangeVisibleItem={handleChangeVisible}
+      />
       <Plot
         data={data}
         scale={[xScale, yScale]}

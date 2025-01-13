@@ -8,6 +8,9 @@ import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 import style from './style/drag-and-drop.shadow.css';
 import { DropZoneProps } from './index';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { ScreenReaderOnly } from '@semcore/flex-box';
+import uniqueIDEnhance from '@semcore/utils/lib/uniqueID';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 type AsProps = {
   /**
@@ -32,6 +35,7 @@ type AsProps = {
    */
   customFocus?: number | string;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
+  uid: string;
 };
 
 type AttachDetails = {
@@ -69,9 +73,11 @@ type State = {
   reversedScaling: boolean;
 };
 
+type A11yHintKeys = keyof typeof localizedMessages.en;
+
 class DragAndDropRoot extends Component<AsProps, {}, State> {
   static displayName = 'DragAndDrop';
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhance()];
   static defaultProps = {
     theme: 'default',
     i18n: localizedMessages,
@@ -90,6 +96,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     reversedScaling: false,
   };
 
+  containerRef = React.createRef<HTMLDivElement>();
+  clearA11yHintTimeout = 0;
+
   handleItemDragStart = (index: number) => {
     const { items } = this.state;
     const currentItem = items[index];
@@ -98,7 +107,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const itemText =
       currentItem.node.getAttribute('aria-label') || currentItem.node.textContent || `${index + 1}`;
 
-    const { getI18nText } = this.asProps;
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
@@ -106,7 +114,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       (i) => i?.node === currentItem.node || (i?.id && i?.id === currentItem.id),
     );
 
-    const a11yHint = getI18nText(zoneName ? 'grabbedWithZone' : 'grabbed', {
+    this.setA11yHint(zoneName ? 'grabbedWithZone' : 'grabbed', {
       itemText,
       itemPosition: itemPosition + 1,
       itemsCount,
@@ -114,7 +122,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     });
 
     this.setState((prevState: State) => ({
-      a11yHint: a11yHint,
       dragging: {
         index,
         initialItemsRects: prevState.items.map((item) => item?.node.getBoundingClientRect()),
@@ -132,8 +139,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   };
   handleItemDragOver = (event: DragEvent) => {
     event.preventDefault();
-    const { getI18nText } = this.asProps;
-    const { items, dragging } = this.state;
+    const { items, dragging, dragOver } = this.state;
     if (!dragging) return;
     const itemIndex = dragging.initialItemsRects.findIndex(
       (rect) =>
@@ -145,7 +151,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     );
     const currentItem = items[itemIndex];
     const draggingItem = items[dragging.index];
-    if (!currentItem || !draggingItem) return;
+    if (!currentItem || !draggingItem || itemIndex === dragOver) return;
 
     const node = currentItem.isDropZone ? draggingItem.node : currentItem.node;
 
@@ -163,49 +169,29 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       ? 'grabbingJustWithZone'
       : 'grabbingFullWithZone';
 
-    const a11yHint = getI18nText(i18nKey, {
+    this.setA11yHint(i18nKey, {
       itemText,
       itemPosition: itemPosition + 1,
       itemsCount,
       zoneName: zoneName || '',
     });
 
-    if (itemIndex === this.state.dragging?.index) this.setState({ dragOver: null, a11yHint });
-    else this.setState({ dragOver: itemIndex, a11yHint });
+    this.setState({ dragOver: itemIndex }, this.swapElements);
   };
-  get preview() {
-    const dragging = this.state.dragging?.index;
-    const dragOver = this.state.dragOver;
-
-    if (typeof dragging !== 'number' || typeof dragOver !== 'number') return {};
-    const result: Record<number, number> = {};
-    const shift = dragging < dragOver ? 1 : -1;
-    for (let i = dragging; i !== dragOver; i += shift) {
-      result[i] = i + shift;
-    }
-
-    result[dragOver] = dragging;
-    return result;
-  }
-  getSwapPreview = (index: number) => {
-    if (!this.state.dragging) return null;
-
-    const previewIndex = this.preview[index];
-    if (typeof previewIndex !== 'number') return null;
-    return this.state.items[previewIndex]?.children;
-  };
-  handleItemDrop = (index: number) => {
-    const { onDnD, getI18nText } = this.asProps;
+  handleItemDrop = () => {
+    const { onDnD } = this.asProps;
     if (!onDnD) return;
 
-    const { items, dragging } = this.state;
+    const { items, dragging, dragOver } = this.state;
     if (!dragging) return;
-    const currentItem = items[index];
+    const currentItem = dragOver !== null ? items[dragOver] : items[dragging.index];
     const draggingItem = items[dragging.index];
+
     if (!currentItem || !draggingItem) return;
 
     const node = currentItem.isDropZone ? draggingItem.node : currentItem.node;
-    const itemText = node.getAttribute('aria-label') || node.textContent || `${index + 1}`;
+    const itemText =
+      node.getAttribute('aria-label') || node.textContent || `${(dragOver ?? dragging.index) + 1}`;
     const zoneName = currentItem.zoneName;
     const zonedItems = !zoneName ? items : items.filter((i) => i?.zoneName === zoneName);
     const itemsCount = zonedItems.length;
@@ -219,7 +205,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       ? 'droppedJustWithZone'
       : 'droppedFullWithZone';
 
-    const a11yHint = getI18nText(i18nKey, {
+    this.setA11yHint(i18nKey, {
       itemText,
       itemPosition: itemPosition + 1,
       itemsCount,
@@ -227,7 +213,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     });
 
     this.setState({
-      a11yHint,
       dragging: null,
       dragOver: null,
       keyboardDraggingIndex: null,
@@ -239,9 +224,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       if (fromNode) {
         onDnD({
           fromId: fromNode.id,
-          fromIndex: dragging!.index,
+          fromIndex: dragging.index,
           toId: currentItem.id,
-          toIndex: index,
+          toIndex: dragOver ?? dragging.index,
         });
       }
     }
@@ -296,26 +281,49 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       this.setState({ reversedScaling });
     }
   };
+  swapElements = () => {
+    const { items, dragging, dragOver } = this.state;
+    const draggingIndex = dragging?.index ?? null;
+
+    if (draggingIndex === null || dragOver === null) return;
+
+    const node = items[draggingIndex]?.node;
+    const dragNode = items[dragOver]?.node;
+
+    if (!node || !dragNode) return;
+
+    if (draggingIndex === dragOver) {
+      const nextDragNode = items[dragOver + 1]?.node ?? null;
+      this.containerRef.current?.insertBefore(node, nextDragNode);
+    } else if (draggingIndex > dragOver) {
+      this.containerRef.current?.insertBefore(node, dragNode);
+    } else {
+      this.containerRef.current?.insertBefore(node, dragNode.nextSibling);
+    }
+
+    node.focus();
+  };
   handleItemKeyDown = (event: KeyboardEvent, index: number) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    if (this.state.dragging && event.key === 'Tab') {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     if (event.key === ' ') {
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
-        const dragOver = this.state.dragOver;
-        const prevIndex = this.state.dragging.index;
-        this.handleItemDrop(index);
+        this.handleItemDrop();
         this.setState({
           dragging: null,
           dragOver: null,
           keyboardDraggingIndex: null,
           animatedScaling: index,
           hideHoverEffect: true,
-        });
-
-        requestAnimationFrame(() => {
-          const prevIndexNode = this.state.items[prevIndex]?.node;
-          if (prevIndexNode !== document.activeElement) return;
-          this.state.items[dragOver!]?.node.focus();
         });
       } else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
@@ -326,70 +334,104 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     } else if (event.key === 'Escape' && this.state.dragging) {
       event.preventDefault();
       event.stopPropagation();
-      const { getI18nText } = this.asProps;
-      const a11yHint = getI18nText('discarded');
+
+      this.setA11yHint('discarded');
       this.setState({
-        a11yHint,
         dragging: null,
         dragOver: null,
         keyboardDraggingIndex: null,
         hideHoverEffect: true,
       });
+      const { items } = this.state;
+      for (let i = items.length - 1; i >= 0; i--) {
+        const node = items[i]?.node;
+        const prevNode = items[i + 1]?.node ?? null;
+        if (node) {
+          this.containerRef.current?.insertBefore(node, prevNode);
+        }
+      }
+
+      if (event.target instanceof HTMLElement) {
+        event.target.focus();
+      }
+
       return false;
-    } else if (event.key.startsWith('Arrow')) {
+    } else if (event.key.startsWith('Arrow') && this.state.dragging) {
       if (this.state.animatedScaling !== null) {
         this.setState({ animatedScaling: null });
       }
-      const item = this.state.items[index];
-      if (item?.node !== document.activeElement) return;
+      const node = event.currentTarget;
+      if (!node || node !== document.activeElement) return;
       event.preventDefault();
       requestAnimationFrame(() => {
-        if (item?.node !== document.activeElement) return;
-        const rects = this.state.items
-          .map((item) => item?.node.getBoundingClientRect()!)
-          .map((rect): { top: number; right: number; bottom: number; left: number } => ({
-            top: Math.round(rect.top),
-            right: Math.round(rect.right),
-            bottom: Math.round(rect.bottom),
-            left: Math.round(rect.left),
-          }));
-        let nextIndex = findNextRectangleIndex(rects, rects[index], event.key as DirectionArrows);
-        if (nextIndex === -1) {
-          const indexDiff = event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 1;
-          nextIndex = index + indexDiff;
+        if (!(node instanceof HTMLElement) || node !== document.activeElement) return;
+        const rects: Array<{ top: number; right: number; bottom: number; left: number }> = [];
+        let nodeRect: { top: number; right: number; bottom: number; left: number } = {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        };
+
+        this.containerRef.current?.childNodes.forEach((childNode, index) => {
+          if (childNode instanceof HTMLElement) {
+            const rect = childNode.getBoundingClientRect();
+            const roundedRect = {
+              top: Math.round(rect.top),
+              right: Math.round(rect.right),
+              bottom: Math.round(rect.bottom),
+              left: Math.round(rect.left),
+            };
+
+            rects.push(roundedRect);
+
+            if (childNode === node) {
+              nodeRect = roundedRect;
+            }
+          }
+        });
+        const nextIndex = findNextRectangleIndex(rects, nodeRect, event.key as DirectionArrows);
+        if (nextIndex === -1) return false;
+
+        if (node && this.state.dragging !== null) {
+          this.setA11yHint('grabbing', {
+            itemPosition: nextIndex + 1,
+            itemsCount: this.state.items.length,
+          });
+          this.setState({ dragOver: nextIndex }, () => {
+            this.swapElements();
+          });
         }
-        this.state.items[nextIndex]?.node.focus();
+        return false;
       });
     }
   };
-  handleItemFocus = (index: number) => {
+  handleItemFocus = () => {
     if (!this.state.dragging) return;
-    this.setState({ dragOver: index, keyboardDraggingIndex: index });
     this.updateItemScaling();
   };
 
   makeItemDragStartHandler = (index: number) => () => this.handleItemDragStart(index);
-  makeItemDropHandler = (index: number) => () => this.handleItemDrop(index);
-  makeItemFocusHandler = (index: number) => () => this.handleItemFocus(index);
   makeItemKeyDownHandler = (index: number) => (event: KeyboardEvent) =>
     this.handleItemKeyDown(event, index);
 
   getDraggableProps(_: any, index: number) {
+    const { uid } = this.asProps;
     return {
+      uid,
       index,
       onDragStart: this.makeItemDragStartHandler(index),
       onDragEnd: this.handleItemDragEnd,
       onDragOver: this.handleItemDragOver,
       onDragEnter: this.handleItemDragEnter,
-      onDrop: this.makeItemDropHandler(index),
+      onDrop: this.handleItemDrop,
       onMouseMove: this.handleItemMouseMove,
       onKeyDown: this.makeItemKeyDownHandler(index),
-      onFocus: this.makeItemFocusHandler(index),
+      onFocus: this.handleItemFocus,
       dropPreview: index === this.state.dragOver,
       keyboardDragging: index === this.state.keyboardDraggingIndex,
       reversedScaling: this.state.reversedScaling,
       dark: this.asProps.theme === 'dark',
-      swapPreview: this.getSwapPreview(index),
       hideHoverEffect: this.state.hideHoverEffect,
       animatedScaling: index === this.state.animatedScaling,
     };
@@ -440,26 +482,44 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     return itemIndex;
   };
 
+  setA11yHint = (key: A11yHintKeys, options: any = {}) => {
+    clearTimeout(this.clearA11yHintTimeout);
+
+    const { getI18nText } = this.asProps;
+
+    this.setState({
+      a11yHint: getI18nText(key, options),
+    });
+
+    if ((key === 'dropped' || key === 'discarded') && canUseDOM()) {
+      this.clearA11yHintTimeout = window.setTimeout(() => {
+        this.setState({ a11yHint: null });
+      }, 2000);
+    }
+  };
+
   componentDidMount() {
     document.addEventListener('keydown', this.handlePageKeyDown, { capture: true });
   }
 
   componentWillUnmount() {
+    clearTimeout(this.clearA11yHintTimeout);
     document.removeEventListener('keydown', this.handlePageKeyDown, { capture: true });
   }
 
   componentDidUpdate(prevProps: AsProps) {
     if (prevProps.customFocus !== this.asProps.customFocus) {
       const itemIndex = this.getCustomFocusItemIndex(this.asProps.customFocus);
-      if (this.state.items[itemIndex!]) this.handleItemFocus(itemIndex!);
+      if (this.state.items[itemIndex!]) this.handleItemFocus();
     }
   }
 
   render() {
     const { attach, detach } = this;
     const SA11yHint = 'div';
-    const { a11yHint } = this.state;
+    const { a11yHint, dragging } = this.state;
     const context = { attach, detach };
+    const { getI18nText, uid } = this.asProps;
 
     return sstyled(this.asProps.styles)(
       <DragAndDropContext.Provider value={context}>
@@ -468,7 +528,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
             {a11yHint}
           </SA11yHint>
         )}
-        <Root render={Box} />
+        <Root render={Box} role={'group'} ref={this.containerRef} />
+        <ScreenReaderOnly id={`describe-draggable-${uid}`} aria-hidden={'true'}>
+          {getI18nText('describe', { control: 'Space' })}
+        </ScreenReaderOnly>
       </DragAndDropContext.Provider>,
     );
   }
@@ -484,11 +547,11 @@ const Draggable = (props: any) => {
     noDrag = false,
     index,
     children,
-    swapPreview,
     Children,
     id,
     zoneName,
     isDropZone = false,
+    uid,
   } = props;
   const resolvedChildren = React.useMemo(
     () => (typeof children === 'function' ? children(props) : children),
@@ -509,8 +572,15 @@ const Draggable = (props: any) => {
   }, [index, resolvedChildren, attach, detach, id]);
 
   return sstyled(styles)(
-    <SDraggable render={Box} ref={ref} draggable={!noDrag} placement={placement}>
-      {swapPreview ? swapPreview : <Children />}
+    <SDraggable
+      render={Box}
+      ref={ref}
+      draggable={!noDrag}
+      placement={placement}
+      role={'group'}
+      aria-describedby={`describe-draggable-${uid}`}
+    >
+      <Children />
     </SDraggable>,
   );
 };
@@ -581,7 +651,9 @@ const DropZone = (props: DropZoneProps) => {
   const SDropZone = Root;
   const { styles } = props;
 
-  return sstyled(styles)(<SDropZone render={DragAndDrop.Draggable} noDrag isDropZone />);
+  return sstyled(styles)(
+    <SDropZone render={DragAndDrop.Draggable} noDrag isDropZone aria-describedby={null} />,
+  );
 };
 
 const DragAndDrop = createComponent(DragAndDropRoot, {

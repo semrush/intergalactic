@@ -16,16 +16,18 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "baseUrl": "./semcore",
-    "typeRoots": ["node_modules/@types", "tools/@types"]
-  },
-  "paths": {
-    "@semcore/ui/*": ["semcore/*"],
-    "intergalactic/*": ["semcore/*"],
-    "@semcore/*": ["semcore/*"],
-    "@tools/*": ["tools/*"]
+    "typeRoots": ["node_modules/@types", "tools/@types"],
+    "paths": {
+      "@semcore/illustration/*": ["illustration/*"],
+      "@semcore/ui/*": ["*/src"],
+      "intergalactic/*": ["*/src"],
+      "@semcore/*": ["*/src"],
+      "@tools/*": ["../tools/*"],
+      "@semcore/utils/lib/*": ["./utils/src/*"]
+    }
   },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
-  "include": ["semcore", "tools"],
+  "include": ["semcore", "tools", "stories"],
   "exclude": [
     "node_modules",
     "tools/playground/examples/*",

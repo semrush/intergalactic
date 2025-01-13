@@ -6,18 +6,21 @@ import createComponent, {
   PropGetterFn,
   UnknownProperties,
   Intergalactic,
+  IRootComponentProps,
 } from '@semcore/core';
 import Input, { InputProps, InputValueProps } from '@semcore/input';
 import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { TagProps, TagContainer } from '@semcore/tag';
+import Tag, { TagProps, TagContainer, TagTextProps, TagContext } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/flex-box';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import Portal from '@semcore/portal';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-tag.shadow.css';
+import { extractFrom, isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { getAccessibleName } from '@semcore/utils/lib/getAccessibleName';
 
 /** @deprecated */
 export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
@@ -79,6 +82,19 @@ class InputTags extends Component<IInputTagsProps> {
   inputRef = React.createRef<HTMLInputElement>();
   scrollContainerRef = React.createRef<HTMLElement>();
   tagsRefs: (HTMLElement | null)[] = [];
+
+  state = {
+    tagsContainerAriaLabel: '',
+  };
+
+  componentDidMount() {
+    const inputElement = this.inputRef.current;
+    const inputAccessibleName = getAccessibleName(inputElement);
+
+    this.setState({
+      tagsContainerAriaLabel: inputAccessibleName,
+    });
+  }
 
   moveFocusToInput = (event: React.FocusEvent) => {
     const inputRef = this.inputRef.current;
@@ -150,19 +166,8 @@ class InputTags extends Component<IInputTagsProps> {
     }
   };
 
-  bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
-    if (!editable) return;
+  onTagClick = (event: React.MouseEvent) => {
     fire(this, 'onRemove', event);
-  };
-
-  handleContainerFocus = (event: React.FocusEvent) => {
-    const { target } = event;
-    const { current: container } = this.scrollContainerRef;
-    if (!container || target !== container) return;
-    const hasTags = this.tagsRefs.some(Boolean);
-    if (hasTags) return;
-    if (event.relatedTarget === this.inputRef.current) return;
-    this.moveFocusToInput(event);
   };
 
   getValueProps() {
@@ -176,7 +181,7 @@ class InputTags extends Component<IInputTagsProps> {
   getTagProps({ editable }: { editable: boolean }, index: number) {
     return {
       size: this.asProps.size,
-      onClick: this.bindHandlerTagClick(editable),
+      onClick: editable ? this.onTagClick : undefined,
       interactive: editable,
       ref: (node: HTMLElement | null) => {
         this.tagsRefs[index] = node;
@@ -189,23 +194,52 @@ class InputTags extends Component<IInputTagsProps> {
       getI18nText: this.asProps.getI18nText,
     };
   }
+  getInputTagsContainerProps() {
+    return {
+      tagsContainerAriaLabel: this.state.tagsContainerAriaLabel,
+    };
+  }
+  getTagContainerTextContentProps() {
+    return {
+      tabIndex: null,
+    };
+  }
 
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
     const SListAriaWrapper = 'ul';
 
+    const isAdvancedMode = isAdvanceMode(Children, ['InputTags.TagsContainer']);
+
+    if (isAdvancedMode) {
+      return sstyled(styles)(
+        <SInputTags
+          render={Input}
+          tag={ScrollArea}
+          onMouseDown={this.moveFocusToInput}
+          container={this.scrollContainerRef}
+          tabIndex={null}
+        >
+          <Children />
+        </SInputTags>,
+      );
+    }
+
+    const [InputComponents, RestComponents] = extractFrom(Children, ['InputTags.Value']);
+
     return sstyled(styles)(
       <SInputTags
         render={Input}
         tag={ScrollArea}
         onMouseDown={this.moveFocusToInput}
-        onFocus={this.handleContainerFocus}
         container={this.scrollContainerRef}
+        tabIndex={null}
       >
-        <SListAriaWrapper>
-          <Children />
+        <SListAriaWrapper aria-label={this.state.tagsContainerAriaLabel}>
+          {RestComponents}
         </SListAriaWrapper>
+        {InputComponents}
       </SInputTags>,
     );
   }
@@ -266,6 +300,20 @@ class Value extends Component<IInputTagsValueProps> {
   }
 }
 
+function InputTagsContainer({
+  Children,
+  tagsContainerAriaLabel,
+  styles,
+}: IRootComponentProps & { tagsContainerAriaLabel: string }) {
+  const SListAriaWrapper = 'ul';
+
+  return sstyled(styles)(
+    <SListAriaWrapper aria-label={tagsContainerAriaLabel}>
+      <Children />
+    </SListAriaWrapper>,
+  );
+}
+
 function InputTagContainer(props: any) {
   const STag = Root;
 
@@ -294,7 +342,20 @@ function InputTagContainer(props: any) {
 }
 function InputTagContainerTag(props: any) {
   const STag = Root;
-  const { getI18nText } = props;
+  const { getI18nText, editable } = props;
+
+  const ref = React.useRef<HTMLElement>();
+
+  React.useEffect(() => {
+    if (
+      ref.current instanceof HTMLButtonElement ||
+      ref.current?.getAttribute('role') === 'button'
+    ) {
+      ref.current.setAttribute('aria-describedby', `${props.uid}-description`);
+    } else {
+      ref.current?.removeAttribute('aria-describedby');
+    }
+  }, [ref.current, props.uid]);
 
   return sstyled(props.styles)(
     <>
@@ -303,26 +364,34 @@ function InputTagContainerTag(props: any) {
           {getI18nText('pressEnterToEdit')}
         </ScreenReaderOnly>
       </Portal>
-      <STag aria-describedby={`${props.uid}-description`} render={TagContainer.Tag} />
+      <STag render={TagContainer.Tag} ref={ref} />
     </>,
   );
 }
 
+function TagContainerTextContent(props: IRootComponentProps) {
+  return sstyled(props.styles)(<Root render={Tag.Text} />);
+}
+
 export default createComponent(InputTags, {
   Value,
+  TagsContainer: InputTagsContainer,
   Tag: [
     InputTagContainer,
     {
-      Text: InputTagContainerTag,
+      Text: [InputTagContainerTag, { Content: TagContainerTextContent }],
       Close: TagContainer.Close,
-      Addon: TagContainer.Addon,
+      Addon: TagContainer.Tag.Addon,
       Circle: TagContainer.Circle,
     },
   ],
 }) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
   Value: typeof Input.Value;
+  TagsContainer: Intergalactic.Component<'ul'>;
   Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
-    Text: typeof Tag.Text;
+    Text: Intergalactic.Component<'div', TagProps, TagContext> & {
+      Content: Intergalactic.Component<'div', TagTextProps>;
+    };
     Close: typeof Tag.Close;
     Addon: typeof Tag.Addon;
     Circle: typeof Tag.Circle;

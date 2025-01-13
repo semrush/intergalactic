@@ -43,16 +43,17 @@ export function FeedbackItem({
         const invalid = meta.invalid && meta.touched;
         const errorState = showError && invalid;
         const popperId = `${uid}-error-description`;
+        const ariaDescribedBy = props['aria-describedby'];
         const inputProps = assignProps(
           {
             ...propsForElement(other),
             state: errorState ? 'invalid' : 'normal',
             'aria-invalid': errorState ? true : false,
-            'aria-errormessage': popperId,
-            'aria-describedby': errorState && meta.active ? popperId : undefined,
+            'aria-describedby': meta.active ? (errorState ? popperId : ariaDescribedBy) : undefined,
           },
           input,
         );
+
         if (meta?.error) lastErrorRef.current = meta.error;
 
         return (
@@ -65,7 +66,13 @@ export function FeedbackItem({
             }}
             {...tooltipProps}
           >
-            <Tooltip.Trigger inline={false} role={undefined} tag={tag} {...(tag ? inputProps : {})}>
+            <Tooltip.Trigger
+              inline={false}
+              role={undefined}
+              tag={tag}
+              {...(tag ? inputProps : {})}
+              __excludeProps={['type', 'aria-describedby']}
+            >
               {typeof Children.origin === 'function' &&
                 Children.origin({
                   input: inputProps,

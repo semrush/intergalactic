@@ -1,11 +1,12 @@
 {
-  "grabbed": "“{itemText}”已抓取，当前位置是 {itemPosition} / {itemsCount}",
-  "grabbing": "正在抓取 {itemText}，掉落位置是 {itemPosition} / {itemsCount}",
-  "dropped": "“{itemText}”已掉落，最终位置是 {itemPosition} / {itemsCount}",
-  "grabbedWithZone": "“{itemText}”已抓取，当前位置是 {itemPosition} / {itemsCount}，在 {zoneName}",
+  "describe": "按 {control} 可抓取元素进行拖放",
+  "grabbed": "{itemText} 已抓取。当前位置：{itemPosition}（共 {itemsCount}）。使用箭头更改位置，使用空格键应用新位置，使用 Esc 键取消。",
+  "grabbing": "新位置：{itemPosition}（共 {itemsCount}）",
+  "dropped": "位置 {itemPosition} 已应用",
+  "grabbedWithZone": "{itemText} 已抓取，当前位置：{itemPosition} / {itemsCount}，在 {zoneName}",
   "grabbingFullWithZone": "正在抓取 {itemText}，掉落位置是 {itemPosition} / {itemsCount}，在 {zoneName}",
   "grabbingJustWithZone": "正在抓取 {itemText}，掉落于 {zoneName}",
   "droppedFullWithZone": "“{itemText}”已抓取，最终位置是 {itemPosition} / {itemsCount}，在 {zoneName}",
   "droppedJustWithZone": "{itemText} 掉落于 {zoneName}",
-  "discarded": "拖动已被丢弃"
+  "discarded": "拖放已取消"
 }

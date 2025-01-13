@@ -16,13 +16,24 @@ Table: Keyboard support
 | `Enter`                              | **On an editable tag:** starts editing the tag. <br>**On a tag's Remove button:** removes the tag. <br>**In the filled text input:** adds a new tag. <br>**In the combobox input:** opens the list of items, or applies the selected item. |
 | `Space`                     | **On an editable tag:** starts editing the tag. <br>**On a tag's Remove button:** removes the tag. <br>**In the filled text input:** first `Space` adds a space, second `Space` adds a new tag. |
 
-See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+Find detailed information about the keyboard support for input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+
+### Roles and attributes
+
+The following table describes roles and attributes the component already has.
+
+Table: Roles and attributes
+
+| Element              | Attribute                  | Usage                              |
+| -------------------- | -------------------------- | ---------------------------------- |
+| `InputTags` > `ul`   | `aria-label`               | Defines an accessible name for the list of tags. Automatically populated from the accessible name of `InputTags.Value`. |
+| `InputTags.Tag.Text` | `aria-describedby="IDREF"` | **Only for `editable` tags**. Provides a "Press Enter to edit" description. |
 
 ## Considerations for developers
 
-- Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Keep it simple – do not all browsers correctly expose multiple labels that are linked to the same form element. [Refer to our examples](/components/input-tags/input-tags-code).
-- Make optional fields obvious by adding text "optional" to the input.
-- Inputs with the `invalid` state should be associated with their error message using `aria-describedby`.
+- Label `InputTags.Value` using either `<label>`, `aria-labelledby` or `aria-label`. Remember that, when using `<label>`, only one label can be associated with each form element. [Refer to our examples](/components/input-tags/input-tags-code).
+- Indicate optional fields clearly by adding the word "optional" beside the input label.
+- Inputs in `invalid` state should be associated with their error message using `aria-describedby`.
 
 ## Resources
 
@@ -34,4 +45,4 @@ Read more about the accessibility of the components used in `InputTags`:
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

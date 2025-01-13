@@ -9,8 +9,8 @@ tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Chan
 <script lang="tsx">
 import React from 'react';
 
-import Dot from 'intergalactic/dot';
-import Button from 'intergalactic/button';
+import Dot from '@semcore/ui/dot';
+import Button from '@semcore/ui/button';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['m', 'l'];
@@ -123,10 +123,10 @@ When the dot has a counter, it increases in size accordingly.
 
 Table: Dot with and without a counter
 
-|                   | Appearance example      |
+| Dot type          | Appearance example      |
 | ----------------- | ----------------------- |
-| without a counter | ![](static/button.png)  |
-| with a counter    | ![](static/counter.png) |
+| Without a counter | ![](static/button.png)  |
+| With a counter    | ![](static/counter.png) |
 
 If there is one update, show a dot without a counter inside.
 
@@ -160,7 +160,7 @@ We have two scenarios of how the dot disappears from a component or an item in t
 
 Table: Interaction with Dot
 
-|                                             | Conditions under which the dot disappears                     |
+| Scenario                                    | Conditions under which the dot disappears                     |
 | ------------------------------------------- | ------------------------------------------------------------- |
 | The dot disappears from the control         | after the user **has hovered** all the new items of the list. |
 |                                             | after the user **has clicked** on all new items of the list.  |

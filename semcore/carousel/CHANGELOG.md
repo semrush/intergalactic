@@ -2,6 +2,66 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.45.2] - 2024-12-18
+
+### Added
+
+- Keyboard handler for zoom data in carousel by `enter` or `space`.
+
+## [3.45.1] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.0 ~> 5.40.1]).
+
+## [3.45.0] - 2024-11-29
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/breakpoints` [1.38.2 ~> 1.39.0]).
+
+## [3.44.4] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/button` [5.39.3 ~> 5.39.4], `@semcore/breakpoints` [1.38.1 ~> 1.38.2]).
+
+## [3.44.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3]).
+
+## [3.44.2] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/button` [5.39.1 ~> 5.39.2], `@semcore/breakpoints` [1.38.0 ~> 1.38.1]).
+
+## [3.44.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/modal` [4.49.0 ~> 4.49.1], `@semcore/breakpoints` [1.37.0 ~> 1.38.0]).
+
+## [3.44.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/breakpoints` [1.36.0 ~> 1.37.0]).
+
+## [3.43.8] - 2024-10-15
+
+### Fixed
+
+- Types for enhances.
+
+## [3.43.7] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/breakpoints` [1.34.0 ~> 1.35.0]).
+
 ## [3.43.6] - 2024-10-04
 
 ### Changed

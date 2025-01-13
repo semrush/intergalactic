@@ -45,7 +45,7 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
       ...line,
       shape,
       size,
-      onClick: this.bindOnChange(line.id),
+      onChangeLegendItem: this.onChangeLegendItem,
       onMouseEnter: this.bindOnMouseEnterItem(line.id),
       onMouseLeave: this.bindOnMouseLeaveItem(line.id),
       style: { gridRowStart: `${index + 1}`, gridRowEnd: `${index + 2}` },
@@ -53,14 +53,8 @@ export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
     };
   }
 
-  bindOnChange = (id: LegendItemKey) => {
-    const item = this.asProps.items.find((item) => item.id === id);
-
-    return () => {
-      const checked = !item?.checked;
-
-      this.props.onChangeVisibleItem?.(id, checked);
-    };
+  onChangeLegendItem = (id: LegendItemKey, checked: boolean) => {
+    this.props.onChangeVisibleItem?.(id, checked);
   };
 
   bindOnMouseEnterItem = (id: LegendItemKey) => {

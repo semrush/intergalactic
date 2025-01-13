@@ -43,7 +43,7 @@ SDismiss {
   border: 0;
   background: transparent;
 }
-SDismiss[use][use] {
+SDismiss[use] {
   /* height: auto; */
   padding: 0 1px;
 }
@@ -75,7 +75,7 @@ SMessage a {
 }
 
 SNoticeAriaLiveWrapper {
-  display: content;
+  display: contents;
 }
 
 @keyframes enter {

@@ -81,6 +81,15 @@ class InlineEdit extends Component<AsProps> {
     this.handlers.editable(true);
   }
 
+  componentDidUpdate(prevProps: AsProps) {
+    const { editable } = this.props;
+    if (prevProps.editable !== editable && editable === false) {
+      setTimeout(() => {
+        this.viewRef.current?.focus();
+      }, 0);
+    }
+  }
+
   render() {
     const SInlineEdit = Root;
     const { Children, children: hasChildren, styles } = this.asProps;
@@ -99,19 +108,36 @@ class InlineEdit extends Component<AsProps> {
   }
 }
 
+const useHidden = (visible: boolean) => {
+  const [hidden, setHidden] = React.useState(true);
+
+  React.useEffect(() => {
+    if (visible) {
+      setHidden(false);
+    } else {
+      setTimeout(() => {
+        setHidden(true);
+      }, 200);
+    }
+  }, [visible]);
+
+  return hidden;
+};
+
 const Edit: React.FC<AsProps> = (props) => {
   const visible = props.editable;
   const SEdit = Root;
   const ref = React.useRef();
   const durationStr = useCssVariable('--intergalactic-duration-control', '200', ref);
   const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
+  const hidden = useHidden(Boolean(visible));
 
   return sstyled(props.styles)(
     <SEdit
       render={FadeInOut}
       visible={visible}
       duration={duration}
-      aria-hidden={visible ? undefined : 'true'}
+      aria-hidden={hidden ? 'true' : undefined}
       exiting={!visible}
       ref={ref}
     />,
@@ -133,6 +159,7 @@ const View: React.FC<AsProps> = (props) => {
     [visible, props.onEdit],
   );
   const textContent = reactToText(getOriginChildren(props.Children)).trim();
+  const hidden = useHidden(Boolean(visible));
 
   return sstyled(props.styles)(
     <SView
@@ -141,7 +168,7 @@ const View: React.FC<AsProps> = (props) => {
       preserveNode
       tabIndex={0}
       role='button'
-      aria-hidden={visible ? undefined : 'true'}
+      aria-hidden={hidden ? 'true' : undefined}
       aria-label={`${props.getI18nText('tapToEdit')}: ${textContent}`}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handleKeyDown}

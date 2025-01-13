@@ -7,7 +7,8 @@ test.describe('5-star Feedback form', () => {
     if (browserName === 'webkit') return;
     if (browserName === 'firefox') return;
 
-    const standPath = 'website/docs/patterns/feedback-rating/examples/feedback-rating-example.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -16,17 +17,17 @@ test.describe('5-star Feedback form', () => {
 
     const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
 
-    const stars = await sliderRating.locator('[data-ui-name="Box"]').all();
+    const secondStar = await sliderRating.locator('[data-ui-name="Box"]').nth(1);
 
-    await stars[1].hover();
+    await secondStar.hover();
 
     await expect(page).toHaveScreenshot();
 
-    await stars[1].click();
+    await secondStar.click();
 
-    const textarea = await page.locator('textarea');
+    const firstCheckbox = page.getByLabel('Score is more accurate');
 
-    await expect(textarea).toBeFocused();
+    await expect(firstCheckbox).toBeFocused();
 
     await expect(page).toHaveScreenshot();
 
@@ -42,18 +43,19 @@ test.describe('5-star Feedback form', () => {
   });
 
   test('default validation', async ({ page }) => {
-    const standPath = 'website/docs/patterns/feedback-rating/examples/feedback-rating-example.tsx';
+    const standPath =
+      'stories/patterns/ux-patterns/feedback-rating/docs/examples/feedback_rating_form.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
 
     const sliderRating = await page.locator('[data-ui-name="SliderRating"]');
-    const stars = await sliderRating.locator('[data-ui-name="Box"]').all();
 
-    await stars[1].click();
+    const secondStar = await sliderRating.locator('[data-ui-name="Box"]').nth(1);
+
+    await secondStar.click();
 
     const description = await page.getByLabel('If there anything we could improve?');
-
     await description.fill('some short');
 
     await page.keyboard.press('Tab');

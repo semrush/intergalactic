@@ -6,8 +6,8 @@ tabs: Design('illustration'), A11y('illustration-a11y'), API('illustration-api')
 ## Illustration
 
 ```jsx
-import Select from 'intergalactic/select';
-<Select />;
+import Coffee from '@semcore/ui/illustration/Coffee';
+<Coffee />;
 ```
 
 <TypesView type="IllustrationProps" :types={...types} />
@@ -17,7 +17,7 @@ import Select from 'intergalactic/select';
 Any illustration can be obtained using a template.
 
 ```js
-import IllustrationName from 'intergalactic/illustration/illustrationName';
+import IllustrationName from '@semcore/ui/illustration/illustrationName';
 ```
 
 ## getIllustrationPath

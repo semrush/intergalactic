@@ -35,19 +35,20 @@ const beforeEachTests = async ({}, use: () => Promise<void>, testInfo: TestInfo)
   const testFilePath = testInfo.titlePath[0] ?? '';
 
   if (testFilePath.includes('browser')) {
-    suit = 'Browser';
+    suit = 'Browser tests';
   } else if (testFilePath.includes('axe')) {
-    suit = 'Axe';
+    suit = 'Axe tests';
   } else if (testFilePath.includes('vo')) {
-    suit = 'Voice over';
+    suit = 'Voice over tests';
+  } else if (testFilePath.includes('index')) {
+    suit = 'Unit tests';
   }
 
   await allure.label('component', testInfo.titlePath[1]);
-  await allure.feature(suit);
+  await allure.layer(suit);
   await allure.story(testInfo.title);
 
-  await allure.parentSuite(testInfo.titlePath[1]);
-  await allure.suite(suit);
+  await allure.suite(testInfo.titlePath[1]);
   await allure.subSuite(testInfo.title);
 
   await use();
@@ -61,6 +62,7 @@ const voiceOverTest = voiceOverBase.extend<{ testHook: void }>({
   testHook: [beforeEachTests, { auto: true }],
 });
 
+export type { Page };
 export * from '@playwright/test';
 export * from '@guidepup/playwright';
 export { AxeBuilder, test, voiceOverTest };

@@ -5,7 +5,8 @@ import { Text as TypographyText } from '@semcore/typography';
 import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import logger from '@semcore/utils/lib/logger';
 
@@ -62,6 +63,8 @@ class CheckboxRoot extends Component {
       hoistDisabled: this.hoistDisabled,
       rootDisabled: this.props.disabled,
       ['aria-label']: this.asProps['aria-label'],
+      ['aria-labelledby']: this.asProps['aria-labelledby'],
+      ['aria-describedby']: this.asProps['aria-describedby'],
     };
   }
 
@@ -79,6 +82,8 @@ class CheckboxRoot extends Component {
           'checkedDefault',
           'label',
           'aria-label',
+          'aria-labelledby',
+          'aria-describedby',
         ]}
       >
         {hasChildren ? (
@@ -95,10 +100,18 @@ class CheckboxRoot extends Component {
 }
 
 class ValueRoot extends Component {
-  static defaultProps = {
-    includeInputProps: inputProps,
+  static defaultProps = (props) => {
+    return {
+      includeInputProps: [
+        ...inputProps,
+        ...(props.includeInputProps ?? []),
+        'aria-label',
+        'aria-labelledby',
+        'aria-describedby',
+      ],
+    };
   };
-  static enhance = [autoFocusEnhance(), resolveColorEnhance()];
+  static enhance = [keyboardFocusEnhance(), autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
 

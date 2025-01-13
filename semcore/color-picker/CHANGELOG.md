@@ -2,6 +2,66 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.41.7] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.1 ~> 5.40.2], `@semcore/dropdown` [4.41.7 ~> 4.42.0], `@semcore/tooltip` [6.47.0 ~> 6.47.1], `@semcore/utils` [4.44.0 ~> 4.44.1]).
+
+## [2.41.6] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.0 ~> 5.40.1], `@semcore/dropdown` [4.41.5 ~> 4.41.7]).
+
+## [2.41.5] - 2024-11-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/dropdown` [4.41.3 ~> 4.41.5], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/utils` [4.43.3 ~> 4.44.0]).
+
+## [2.41.4] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.3 ~> 5.39.4], `@semcore/dropdown` [4.41.2 ~> 4.41.3], `@semcore/utils` [4.43.2 ~> 4.43.3]).
+
+## [2.41.3] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3], `@semcore/tooltip` [6.46.1 ~> 6.46.2]).
+
+## [2.41.2] - 2024-11-05
+
+### Fixed
+
+- Display `Hint` on focused `Color.Item`.
+
+## [2.41.1] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/utils` [4.42.0 ~> 4.43.0]).
+
+## [2.41.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/utils` [4.41.0 ~> 4.42.0]).
+
+## [2.40.4] - 2024-10-15
+
+### Fixed
+
+- Types for enhances.
+
+## [2.40.3] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/icon` [4.47.0 ~> 4.48.0], `@semcore/utils` [4.38.0 ~> 4.39.0]).
+
 ## [2.40.2] - 2024-10-04
 
 ### Changed

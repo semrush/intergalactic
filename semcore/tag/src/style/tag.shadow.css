@@ -40,9 +40,13 @@ SAddon {
   position: relative;
 }
 
-STag,
-STagContainerClose,
 STagContainer SAddon {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+STag,
+STagContainerClose {
   position: relative;
   display: inline-flex;
   align-items: center;

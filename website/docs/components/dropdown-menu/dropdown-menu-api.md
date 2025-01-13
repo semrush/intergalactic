@@ -13,7 +13,7 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 DropdownMenu is a wrap over `<Dropdown/>`, which is a wrap over `<Popper/>`.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown";
+import DropdownMenu from "@semcore/ui/dropdown";
 <DropdownMenu />;
 ```
 
@@ -24,7 +24,7 @@ import DropdownMenu from "intergalactic/dropdown";
 DropdownMenu.Trigger is a wrap over `<Dropdown.Trigger/>` component, which is a wrap over `<Popper.Trigger/>`.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.Trigger />;
 ```
 
@@ -33,7 +33,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 DropdownMenu.Popper is a wrap over `<Dropdown.Popper/>` component, which is a wrap over `<Popper.Popper/>`.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.Popper />;
 ```
 
@@ -42,7 +42,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 DropdownMenu.List is a container component for the list items with the `<ScrollArea/>` inside it.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.List />;
 ```
 
@@ -53,7 +53,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 DropdownMenu.Menu is a wrap over the `<Dropdown.Popper/>` + `<DropdownMenu.List/>` component. In fact, it is syntactic sugar when no direct access to the `Popper` node is needed.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.Menu />;
 ```
 
@@ -62,7 +62,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 Interactive menu items that are available for selection and switching from the keyboard.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.Item />;
 ```
 
@@ -73,7 +73,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 Content of menu item. Use it if you need Hints, Actions of nested menus.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.Item.Content />;
 ```
 
@@ -84,7 +84,7 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 Group of interactive menu items.
 
 ```jsx
-import Dropdown from "intergalactic/dropdown";
+import Dropdown from "@semcore/ui/dropdown";
 <Dropdown.Group />;
 ```
 
@@ -92,10 +92,10 @@ import Dropdown from "intergalactic/dropdown";
 
 ## DropdownMenu.Item.Hint
 
-This non-interactive menu item is used to display tips in the list. Using as an `aria-describedby` for `DropdownMenu.Item`.
+This noninteractive menu item is used to display tips in the list. Using as an `aria-describedby` for `DropdownMenu.Item`.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.Item.Hint />;
 ```
 
@@ -117,10 +117,10 @@ Context of the component is available inside the render-function.
 The `DropdownMenu.ItemTitle` is deprecated, use `DropdownMenu.Group` instead.
 :::
 
-This non-interactive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
+This noninteractive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.ItemTitle />;
 ```
 
@@ -132,10 +132,10 @@ import DropdownMenu from "intergalactic/dropdown-menu";
 The `DropdownMenu.ItemHint` is deprecated, use `DropdownMenu.Item.Hint` or `DropdownMenu.Group` with `subTitle` props instead.
 :::
 
-This non-interactive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
+This noninteractive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
 
 ```jsx
-import DropdownMenu from "intergalactic/dropdown-menu";
+import DropdownMenu from "@semcore/ui/dropdown-menu";
 <DropdownMenu.ItemHint />;
 ```
 

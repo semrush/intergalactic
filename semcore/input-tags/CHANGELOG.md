@@ -2,6 +2,73 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.45.4] - 2024-12-12
+
+### Fixed
+
+- `aria-describedby` for editable tags.
+
+## [4.45.3] - 2024-12-03
+
+### Fixed
+
+- Difference in text size in tags with and without Addons.
+
+## [4.45.2] - 2024-11-27
+
+### Fixed
+
+- Advanced rendering of child elements doesn't display tags at all.
+
+## [4.45.1] - 2024-11-25
+
+### Fixed
+
+- Unnecessary `clickable` announcement by VO on not editable tags.
+
+## [4.45.0] - 2024-11-18
+
+### Changed
+
+- Moved `InputTags.Value` from `ul`.
+- Added calculated accessible name from `InputTags.Value` as `aria-label` for `ul` group.
+
+## [4.44.0] - 2024-11-18
+
+### Changed
+
+- `Addon` component to the Addon from `TagContainer.Tag`. IMPORTANT - you should use Addon in `InputTags.Tag.Text` for correct rendering.
+
+## [4.43.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/input` [4.39.0 ~> 4.39.1], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [4.43.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/input` [4.38.0 ~> 4.39.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.42.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/input` [4.37.0 ~> 4.38.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.41.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/input` [4.36.0 ~> 4.37.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [4.40.0] - 2024-10-11
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/input` [4.35.0 ~> 4.36.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [4.39.0] - 2024-10-04
 
 ### Changed

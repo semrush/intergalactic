@@ -132,11 +132,15 @@ export const renderSandbox = (
 
       let displayedCode = code;
       if (displayedCode.includes('export Demo from ')) {
-        const pathToCurrentDir = state?.relativePath.split('/').slice(0, -1) ?? '.';
-        displayedCode = fs.readFileSync(
-          resolvePath('docs', ...pathToCurrentDir, demoVariableImport),
-          'utf8',
-        );
+        if (demoVariableImport.startsWith('stories')) {
+          displayedCode = fs.readFileSync(resolvePath('..', demoVariableImport), 'utf8');
+        } else {
+          const pathToCurrentDir = state?.relativePath.split('/').slice(0, -1) ?? '.';
+          displayedCode = fs.readFileSync(
+            resolvePath('docs', ...pathToCurrentDir, demoVariableImport),
+            'utf8',
+          );
+        }
       }
 
       const htmlCode = markdownRenderer.render('```' + meta + '\n' + displayedCode + '\n```\n');

@@ -2,6 +2,66 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.8] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.1 ~> 5.40.2], `@semcore/flex-box` [5.39.0 ~> 5.39.1], `@semcore/input` [4.40.0 ~> 4.40.1], `@semcore/select` [4.49.0 ~> 4.49.1], `@semcore/utils` [4.44.0 ~> 4.44.1], `@semcore/core` [2.37.0 ~> 2.37.1]).
+
+## [4.49.7] - 2024-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.40.0 ~> 5.40.1], `@semcore/select` [4.48.6 ~> 4.49.0]).
+
+## [4.49.6] - 2024-11-29
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.4 ~> 5.40.0], `@semcore/flex-box` [5.38.2 ~> 5.39.0], `@semcore/input` [4.39.2 ~> 4.40.0], `@semcore/select` [4.48.5 ~> 4.48.6], `@semcore/utils` [4.43.3 ~> 4.44.0], `@semcore/core` [2.36.2 ~> 2.37.0]).
+
+## [4.49.5] - 2024-11-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.3 ~> 5.39.4], `@semcore/flex-box` [5.38.1 ~> 5.38.2], `@semcore/input` [4.39.1 ~> 4.39.2], `@semcore/select` [4.48.4 ~> 4.48.5], `@semcore/utils` [4.43.2 ~> 4.43.3], `@semcore/core` [2.36.1 ~> 2.36.2]).
+
+## [4.49.4] - 2024-11-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.2 ~> 5.39.3], `@semcore/select` [4.48.3 ~> 4.48.4]).
+
+## [4.49.3] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.1 ~> 5.39.2], `@semcore/flex-box` [5.38.0 ~> 5.38.1], `@semcore/input` [4.39.0 ~> 4.39.1], `@semcore/select` [4.48.2 ~> 4.48.3], `@semcore/utils` [4.43.0 ~> 4.43.2], `@semcore/core` [2.36.0 ~> 2.36.1]).
+
+## [4.49.2] - 2024-11-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.39.0 ~> 5.39.1], `@semcore/flex-box` [5.37.0 ~> 5.38.0], `@semcore/input` [4.38.0 ~> 4.39.0], `@semcore/select` [4.48.1 ~> 4.48.2], `@semcore/utils` [4.42.0 ~> 4.43.0], `@semcore/core` [2.35.0 ~> 2.36.0]).
+
+## [4.49.1] - 2024-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.38.0 ~> 5.39.0], `@semcore/flex-box` [5.36.0 ~> 5.37.0], `@semcore/input` [4.37.0 ~> 4.38.0], `@semcore/select` [4.48.0 ~> 4.48.1], `@semcore/utils` [4.41.0 ~> 4.42.0], `@semcore/core` [2.34.0 ~> 2.35.0]).
+
+## [4.49.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/button` [5.37.3 ~> 5.38.0], `@semcore/flex-box` [5.35.0 ~> 5.36.0], `@semcore/input` [4.36.0 ~> 4.37.0], `@semcore/select` [4.47.1 ~> 4.48.0], `@semcore/utils` [4.39.0 ~> 4.41.0], `@semcore/core` [2.33.0 ~> 2.34.0]).
+
+## [4.48.3] - 2024-10-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [5.37.2 ~> 5.37.3], `@semcore/flex-box` [5.34.0 ~> 5.35.0], `@semcore/input` [4.35.0 ~> 4.36.0], `@semcore/select` [4.47.0 ~> 4.47.1], `@semcore/utils` [4.38.0 ~> 4.39.0], `@semcore/core` [2.32.0 ~> 2.33.0]).
+
 ## [4.48.2] - 2024-10-04
 
 ### Changed

@@ -8,7 +8,7 @@ tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api')
 
 <script lang="tsx">
 import React from 'react';
-import InputNumber from 'intergalactic/input-number';
+import InputNumber from '@semcore/ui/input-number';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const STATES = ['normal', 'invalid', 'valid'];
@@ -146,7 +146,7 @@ Table: InputNumbers states
 
 ## Validation
 
-Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [Validation](/patterns/validation-form/validation-form) guide.
+Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [general validation guide](/patterns/validation-form/validation-form).
 
 To assist users in entering correct and valid data, you can:
 
@@ -172,7 +172,7 @@ Table: InputRange states
 
 ### Validation for a range of numbers
 
-If the user enters a value in the right input that is less than the value in the left input, the values will switch when the focus is lost (`onBlur`).
+If the value in the right input is less than the value in the left input, the values will switch when **both** inputs lose focus (`onBlur`).
 
 Table: Validation case for InputRange
 

@@ -56,7 +56,13 @@ class RootBaseTrigger extends Component {
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(styles)(
-            <SBaseTrigger render={Box} neighborLocation={neighborLocation} state={theme}>
+            <SBaseTrigger
+              render={Box}
+              tag='button'
+              type='button'
+              neighborLocation={neighborLocation}
+              state={theme}
+            >
               {state === 'invalid' && <SInvalidPattern size={size} />}
               <SInner>
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
@@ -74,7 +80,7 @@ function Text(props) {
   const { children, styles, empty, placeholder } = props;
 
   return sstyled(styles)(
-    <SText render={Box} display-placeholder={empty}>
+    <SText render={Box} display-placeholder={empty} aria-hidden={empty}>
       {empty ? placeholder : children}
     </SText>,
   );

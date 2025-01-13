@@ -70,6 +70,7 @@ SAddon {
   align-items: center;
   margin-bottom: var(--intergalactic-spacing-05x, 2px);
   vertical-align: middle;
+  pointer-events: none;
 }
 
 SLink SAddon {

@@ -26,18 +26,18 @@ const Widget: React.FC<{ title: string }> = ({ title }) => {
   }, [title]);
 
   return (
-    <Card w={240} h={300}>
+    <Card w={240} h={280}>
       <Card.Header>
         <Card.Title>{title}</Card.Title>
       </Card.Header>
       <Card.Body>
         <Chart.Bar
           duration={0}
-          mt={5}
           groupKey={'date'}
           data={data}
           plotWidth={200}
           plotHeight={200}
+          aria-label={`${title} chart`}
         />
       </Card.Body>
     </Card>
@@ -75,16 +75,17 @@ const Demo = () => {
   );
 
   return (
-    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD}>
+    <DnD tag={Flex} flexWrap gap={4} onDnD={handleDnD} aria-label={'Draggable charts'}>
       {widgets.map((id, index) => {
         if (!id) {
           return (
-            <DnD.DropZone key={index}>
+            <DnD.DropZone key={index} aria-label={`Drop zone ${index + 1}`}>
               <Flex
                 alignItems='center'
                 gap={1}
                 justifyContent='center'
-                h={300}
+                w={240}
+                h={280}
                 direction='column'
                 p={5}
                 style={{

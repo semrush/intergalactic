@@ -11,14 +11,13 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 Table: Keyboard support
 
-| Key                      | Function                          |
-| ------------------------ | --------------------------------- |
-| `Tab` | Moves focus to the next focusable element.           |
-| `Shift+Tab` | Moves focus to the previous focusable element. |
-| `Space` | Selects the focused object and start dragging.      |
-| `↓`, `↑`, `←`, `→` arrow keys | Move the focused object in the direction indicated by the key.  |
-| `Space` (while dragging) | Stops dragging.                    |
-| `Esc` | Discards dragging.                                    |
+| Key                       | Function                          |
+| ------------------------- | --------------------------------- |
+| `Tab`                     | Moves focus to the next focusable element.           |
+| <nobr>`Shift + Tab`</nobr> | Moves focus to the previous focusable element. |
+| `Space`                   | Grabs the focused object for dragging. If the object is already grabbed, drops it in the current position.      |
+| `↓`, `↑`, `←`, `→`        | Moves the grabbed object in the direction indicated by the key.  |
+| `Esc`                     | Discards dragging.                                    |
 
 ### Roles & attributes
 
@@ -26,35 +25,42 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Role    | Attribute                      | Element | Usage                                                                                                                                                                                                                               |
-| ------- | ------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `alert` |                                | `div` | Identifies the element as the container where alert content will be added or updated.                                                                                                                                               |
-|         | `aria-live="assertive"` | `div` | This doesn't have to be declared in the code because it is implicit in the alert role. Tells assistive technologies to interrupt other processes to provide users with immediate notification of relevant alert container changes. |
-|         | `tabIndex="0"` | `div` | Makes the elements focusable and includes them in the page `Tab` sequence.                                                                                                                                                          |
+| Element                 | Attribute                      | Usage                                                                                                                                                                                                                               |
+| ----------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DragAndDrop`           | `role="group"`                 | Identifies the entire area containing draggable objects and drop zones as a group.                 |
+| `DragAndDrop.Draggable` | `role="group"`                 | Identifies the draggable object as a group. This is important for cases when draggable objects contain interactive elements.                |
+|                         | `aria-describedby="IDREF"`     | Provides an accessible description for the draggable object, informing the user which key to press to grab the object. |
+|                         | `tabindex="0"`                 | Makes the draggable object focusable.           |
+| `DragAndDrop.DropZone`  | `role="group"`                 | Identifies the drop zone as a group.            |
+| `div.A11yHint`          | `role="alert"`, `aria-live="assertive"` | Instructs assistive technology to announce current drag and drop status immediately, interrupting any other announcements.                 |
 
-### Aria-live messages
+### ARIA-live notifications
 
-Text message for assistive technologies that will be read when the user interacts with the component.
+The following table describes notifications announced by assistive technology during drag and drop.
 
-| Action                | Message template                                                           |
-| --------------------- | -------------------------------------------------------------------------- |
-| Item was just grabbed | `${itemText} grabbed, current position is ${index + 1} of ${itemsCount}` |
-| Item is grabbing      | `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}` |
-| Item is dropped       | `${itemText} dropped, final position is ${index + 1} of ${itemsCount}` |
+| Action                      | Message template                                                           |
+| --------------------------- | -------------------------------------------------------------------------- |
+| User grabbed the object     | `{itemText} grabbed. Current position: {itemPosition} out of {itemsCount}. Use the arrows to change the position, Space to apply the new position, Escape to cancel.` |
+| User moved the object       | `New position: {itemPosition} out of {itemsCount}`                         |
+| User dropped the object     | `Position {itemPosition} applied`                                          |
+| User canceled drag and drop | `Drag and drop canceled`                                                   |
 
-If grabbed item or zone to drop has `zoneName`, messages will be like in the follow table.
+If the grabbed item or the drop zone has a `zoneName`, messages will be as per the following table.
 
-| Action                                          | Message template                                                                           |
-|-------------------------------------------------|--------------------------------------------------------------------------------------------|
-| Item was just grabbed                           | `${itemText} grabbed, current position is ${itemPosition} of ${itemsCount} in ${zoneName}` |
-| Item is grabbing over area with another items   | `Grabbing ${itemText}, drop position is ${itemPosition} of ${itemsCount} in ${zoneName}`   |
-| Item is grabbing over area without any items    | `Grabbing ${itemText}, drop in ${zoneName}`                                                |
-| Item is dropped in drop zone with another items | `${itemText} dropped, final position is ${itemPosition} of ${itemsCount} in ${zoneName}`   |
-| Item is dropped in drop zone without any items  | `${itemText} dropped in ${zoneName}`                                                       |
+| Action                                               | Message template                                                                           |
+|------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| User grabbed the object                              | `{itemText} grabbed, current position is {itemPosition} of {itemsCount} in {zoneName}`     |
+| Object is over an empty drop zone                    | `Grabbing {itemText}, drop in {zoneName}`                                                  |
+| Object is over a drop zone with other objects        | `Grabbing {itemText}, drop position is {itemPosition} of {itemsCount} in {zoneName}`       |
+| Object is dropped in an empty drop zone              | `{itemText} dropped in {zoneName}`                                                         |
+| Object is dropped in a drop zone with other objects  | `{itemText} dropped, final position is {itemPosition} of {itemsCount} in {zoneName}`       |
 
+## Considerations for developers and designers
+
+Set accessible names for `DragAndDrop`, `DragAndDrop.Draggable`, and `DragAndDrop.DropZone` using `aria-label` or `aria-labelledby`. This allows the user to recognize which objects can be dragged, and to which drag zones they can be dragged to.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
 
 <!--@include: ./drag-and-drop-a11y-report.md-->

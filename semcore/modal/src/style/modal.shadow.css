@@ -24,6 +24,17 @@ SWindow {
   STitle[color] {
     color: var(--color)
   }
+
+  SClose {
+    display: inline-flex;
+    position: absolute;
+    right: var(--intergalactic-spacing-2x, 8px);
+    top: var(--intergalactic-spacing-2x, 8px);
+  }
+  SClose[ghost] {
+    right: 0;
+    top: 0;
+  }
 }
 
 SWindow[ghost] {
@@ -50,17 +61,6 @@ SOverlay {
   & SOverlay {
     background: var(--intergalactic-overlay-secondary, rgba(25, 27, 35, 0.4));
   }
-}
-
-SClose {
-  display: inline-flex;
-  position: absolute;
-  right: var(--intergalactic-spacing-2x, 8px);
-  top: var(--intergalactic-spacing-2x, 8px);
-}
-SClose[ghost] {
-  right: 0;
-  top: 0;
 }
 
 @media (max-width: 767px) {

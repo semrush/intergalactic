@@ -1,5 +1,0 @@
----
-title: Intergalactic news
----
-
-<BlogPosts />

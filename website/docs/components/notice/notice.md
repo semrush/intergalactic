@@ -11,11 +11,11 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Notice from 'intergalactic/notice';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import QuestionAltM from 'intergalactic/icon/Question/m';
+import Notice from '@semcore/ui/notice';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
 
 const THEME = ['info', 'muted', 'success', 'warning', 'danger'];
 
@@ -144,10 +144,10 @@ Component consists of the following:
 
 Table: Notice content examples
 
-|                                       | Appearance example             |
-| ------------------------------------- | ------------------------------ |
-| Notice with minimum possible elements | ![](static/notice-minimal.png) |
-| Notice with maximum possible elements | ![](static/notice-monster.png) |
+| Case                      | Appearance example             |
+| ------------------------- | ------------------------------ |
+| Minimum possible elements | ![](static/notice-minimal.png) |
+| Maximum possible elements | ![](static/notice-monster.png) |
 
 ## Sizes, paddings and margins
 
@@ -176,13 +176,13 @@ We recommend to set the maximum width of the notice message to 650-800px.
 
 Table: Notice themes
 
-| Theme       | Usage and appearance example                                               |
-| ----------- | -------------------------------------------------------------------------- |
-| **Muted**   | Used for regular messages and hints. ![](static/muted.png)   |
-| **Info**    | Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)).  ![](static/info.png)    |
-| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example.  ![](static/success.png) |
-| **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures.  ![](static/warning.png) |
-| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss.   ![](static/danger.png)  |
+| Theme       | Usage and appearance example                                                                                                                                                                                                                                                |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Muted**   | Used for regular messages and hints. ![](static/muted.png)                                                                                                                                                                                                                  |
+| **Info**    | Used for neutral and important information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). ![](static/info.png) |
+| **Success** | Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. ![](static/success.png)                                                                                                                       |
+| **Warning** | Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. ![](static/warning.png)                                                                                                              |
+| **Danger**  | Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. ![](static/danger.png)                                                                                                                              |
 
 ## Placement in interface
 

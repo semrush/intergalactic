@@ -2,6 +2,70 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.49.3] - 2024-12-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.44.0 ~> 4.44.1]).
+
+## [4.49.2] - 2024-12-05
+
+### Removed
+
+- Default tag `button` from FilterTrigger and ButtonTrigger to reduce code duplication.
+
+## [4.49.1] - 2024-11-29
+
+### Changed
+
+- Default tag for BaseTrigger to `button` as part of a11y improvement.
+
+## [4.49.0] - 2024-11-20
+
+### Fixed
+
+- Added `Hint` to the `FilterTrigger.ClearButton`.
+- Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
+- Added `role` combobox to the `FilterTrigger.TriggerButton`.
+- Added `count` prop to `FilterTrigger.Counter`, along with screenreader only `selected` text.
+- `placeholder` text is now `aria-hidden` for triggers because of `aria-label` and double pronouncing.
+
+## [4.48.2] - 2024-11-21
+
+### Fixed
+
+- HTML element of `LinkTrigger` from `div` to `button` as part of a11y improvements. The change allows to use 'LinkTrigger' with `label` properly
+
+## [4.48.1] - 2024-11-08
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [4.43.0 ~> 4.43.2]).
+
+## [4.48.0] - 2024-11-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.51.0 ~> 4.52.0], `@semcore/utils` [4.42.0 ~> 4.43.0]).
+
+## [4.47.0] - 2024-10-28
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/utils` [4.41.0 ~> 4.42.0]).
+
+## [4.46.0] - 2024-10-18
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/icon` [4.48.0 ~> 4.50.0], `@semcore/utils` [4.39.0 ~> 4.41.0]).
+
+## [4.45.1] - 2024-10-11
+
+### Fixed
+
+- Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
 ## [4.45.0] - 2024-10-04
 
 ### Changed

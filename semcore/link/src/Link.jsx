@@ -22,6 +22,7 @@ class RootLink extends Component {
 
   state = {
     ariaLabelledByContent: '',
+    visibleHint: false,
   };
 
   componentDidMount() {
@@ -43,6 +44,13 @@ class RootLink extends Component {
     }
   }
 
+  handleMouseEnterOnlyAddon = () => {
+    this.setState({ visibleHint: true });
+  };
+  handleMouseLeaveOnlyAddon = () => {
+    this.setState({ visibleHint: false });
+  };
+
   renderChildren() {
     const { Children, styles, addonLeft: AddonLeft, addonRight: AddonRight } = this.asProps;
 
@@ -62,12 +70,19 @@ class RootLink extends Component {
       addonRight: AddonRight,
       title,
       ['aria-label']: ariaLabel,
+      keyboardFocused,
     } = this.asProps;
+    const { visibleHint } = this.state;
 
     const hintContent = title ?? ariaLabel ?? this.state.ariaLabelledByContent ?? '';
 
     return sstyled(styles)(
-      <Link.Addon tag={Hint} title={hintContent} timeout={[250, 50]}>
+      <Link.Addon
+        tag={Hint}
+        title={hintContent}
+        timeout={[250, 50]}
+        visible={keyboardFocused || visibleHint}
+      >
         {AddonLeft && <AddonLeft />}
         {AddonRight && <AddonRight />}
       </Link.Addon>,
@@ -99,6 +114,8 @@ class RootLink extends Component {
         use:noWrap={false}
         ref={this.containerRef}
         __excludeProps={['disabled', 'aria-disabled']}
+        onMouseEnter={this.handleMouseEnterOnlyAddon}
+        onMouseLeave={this.handleMouseLeaveOnlyAddon}
       >
         {hasChildren !== undefined ? this.renderChildren() : this.renderOnlyAddons()}
       </SLink>,

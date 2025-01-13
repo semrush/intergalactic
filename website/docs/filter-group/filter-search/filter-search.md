@@ -7,12 +7,12 @@ tabs: Design('filter-search'), Example('filter-search-code')
 
 **Filter search** is an [Input](/components/input/input) we use in filters to search in a table or other kind of data. It can apply entered data dynamically and by clicking on the submit button.
 
-**When working with Filter Search, it is important for the user:**
+**When working with Filter Search, it's important for the user:**
 
-- it is easy to find a searchable filter, as there can be many filters in the product;
-- quickly understand what exactly user is looking for;
-- quickly understand that nothing was found;
-- quickly delete the entered data and search for new ones.
+- filter search is easy to find, as there can be many filters in the product
+- quickly understand what exactly user is looking for
+- quickly understand that nothing was found
+- quickly delete entered data and do another search
 
 ## Appearance
 
@@ -24,7 +24,7 @@ This filter inherits all [Input](/components/input/input) styles and properties.
 
 ## Interaction
 
-The filter searches by the entered value, not just by exact match.
+The filter searches for partial matches, not only full words.
 
 ![](static/search-results.png)
 
@@ -32,7 +32,7 @@ The filter searches by the entered value, not just by exact match.
 
 Dynamic search applies entered value as soon as at least one character is entered into the input.
 
-**Suitable for filters that are not limited, and there is little data**.
+**Suitable for filtering data where the number of queries isn't limited, and there is little data**.
 
 ::: tip
 Set a delay for sending the entered value. So you'll not burden the search engine and it will show the results more smoothly and predictably.
@@ -44,10 +44,9 @@ Set a delay for sending the entered value. So you'll not burden the search engin
 | Focus       | ![](static/focus.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                   |
 | Filled      | ![](static/filled.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the **Clear** button to reset the entered value.                                                                                                               |
 
-::: tip
-**Why not "Search"**
+::: tip Why not “Search”
 
-This search filter works exactly like a filter. to make it obvious by what parameter it searches, indicate it in the placeholder. Leave "Search" only for simple search inputs, or when there is an additional functionality for choosing by which parameter to search.
+This search filter works exactly like a filter. To make it obvious by what parameter it searches, indicate it in the placeholder. Leave "Search" only for simple search inputs, or when there is an additional functionality for choosing by which parameter to search.
 :::
 
 ## Search by button
@@ -79,11 +78,11 @@ For the case when fine-tuning of the filter is needed, add select next to the in
 
 ## Text label
 
-Labels are often not added to filters because there isn't enough space. Instead, a placeholder or other visual elements are used. However, placeholders alone are not enough because they disappear once text is entered. Labels must be visually persistent. In some cases, a magnifying glass icon can be used as a persistent label for a search field.
+Labels are often not added to filters because there isn't enough space. Instead, a placeholder or other visual elements are used. However, placeholders alone aren't enough because they disappear once text is entered. Labels must be visually persistent. In some cases, a magnifying glass icon can be used as a persistent label for a search field.
 
 ## Input width
 
-The width depends on what parameter we are looking for. _For example, if this is a URL, then it is better to make input wider, and if input searches keywords, then **don't make it less than 160px**._
+The width depends on the data that's being used as a search query. For long strings, such as URLs, it's better to make the input wider. If input searches keywords, **don't make it less than 160px**.
 
 For a dynamic input, you can set a minimum width, since in most cases it's enough to enter a couple of characters to filter and find what you need.
 
@@ -95,7 +94,7 @@ Always add minimum width of 160px for the search input, otherwise something like
 
 This is an optional functionality. It helps the user to find on the page what they were looking for.
 
-Use `--yellow-300` color with 40% opacity for highlighting. The height of the highlighted area must match the line-height of the line.
+Use the `--intergalactic-bg-highlight-results` color for highlighting. The height of the highlighted area must match the line-height of the line.
 
 ![](static/highlighting.png)
 

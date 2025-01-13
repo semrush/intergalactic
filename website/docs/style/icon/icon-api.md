@@ -8,7 +8,7 @@ tabs: Design('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), 
 Any icon can be obtained using a template.
 
 ```js
-import IconNameSize from 'intergalactic/icon/iconName/size';
+import IconNameSize from '@semcore/ui/icon/iconName/size';
 ```
 
 <TypesView type="IconProps" :types={...types} />

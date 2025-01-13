@@ -8,18 +8,29 @@ tabs: Design('base-trigger'), A11y('base-trigger-a11y'), API('base-trigger-api')
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the FilterTrigger in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#any_other_controls_filtertrigger_pills_tabline_i_pr).
+`FilterTrigger` keyboard support is described in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#any-other-controls-filtertrigger-pills-tabline-etc).
 
-### Roles and attributes
+### Roles & attributes
 
-The following list describes roles and attributes that component already has.
+The following table describes roles and attributes that component already has.
 
-| Role     | Attribute    | Element             | Usage                                                                                                             |
-| -------- | ------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `button` |              | `button`            | Identifies the element as a button. Accessible name for the button is defined by the text content of the element. |
-| `group`  |              | `div`               | Identifies the `div` element as a group container for the buttons.                                                |
-|          | `aria-label` | `div`, `button` | The `aria-label` attribute defines a string value that labels an interactive element.                             |
+Table: Roles & attributes
+
+| Component          | Attribute                  | Usage                                                                         |
+| ------------------ | -------------------------- | ----------------------------------------------------------------------------- |
+| `Trigger.Text`     | `aria-hidden="true"`       | **Only when the value is empty**. Hides the placeholder text from assistive technology. Helps to avoid reading the trigger name twice when it's identical to the placeholder. |
+
+## Considerations for developers
+
+Make sure to label triggers by using either `<label>`, `aria-labelledby`, or `aria-label`. Refer to [our examples](./base-trigger-code.md#linktrigger).
+
+For more accessibility recommendations, refer to guidelines for components that are normally used with `BaseTrigger` and its variations:
+
+* [FilterTrigger](../filter-trigger/filter-trigger-a11y.md)
+* [Select](../select/select-a11y.md)
+* [Dropdown](../dropdown/dropdown-a11y.md)
+* [DropdownMenu](../dropdown-menu/dropdown-menu-a11y.md)
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).

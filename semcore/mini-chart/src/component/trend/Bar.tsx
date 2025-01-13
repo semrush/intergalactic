@@ -5,6 +5,7 @@ import { Trend, CommonTrendProps } from './Trend';
 import { Box } from '@semcore/flex-box';
 
 import style from '../skeleton/skeleton.shadow.css';
+import { extractAriaProps } from '@semcore/utils/lib/ariaProps';
 
 type BarItem = {
   /**
@@ -29,8 +30,8 @@ type Enhances = {
   isHistogram?: true;
 };
 
-class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
-  static enhance = [resolveColorEnhance()];
+class TrendBarRoot extends Trend<TrendBarProps, typeof TrendBarRoot.enhance> {
+  static enhance = [resolveColorEnhance()] as const;
 
   static style = style;
 
@@ -56,10 +57,17 @@ class TrendBarRoot extends Trend<TrendBarProps, Enhances> {
     const STrendBar = Root;
     const { styles, resolveColor, isHistogram, animate, loading } = this.asProps;
     const step = this.defaultWidth / this.data.length;
+    const { __excludeProps, extractedAriaProps } = extractAriaProps(this.asProps);
 
     return sstyled(styles)(
-      <STrendBar render={Box} ref={this.containerRef} __excludeProps={['data']}>
-        <svg width='100%' height='100%' viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}>
+      <STrendBar render={Box} ref={this.containerRef} __excludeProps={['data', ...__excludeProps]}>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={`0 0 ${this.svgWidth} ${this.svgHeight}`}
+          role='img'
+          {...extractedAriaProps}
+        >
           {this.data.map((barItem, index) => {
             let color = resolveColor('chart-palette-order-other-data');
 

@@ -25,14 +25,10 @@ Table: DropdownMenu sizes
 
 ### Width
 
-The width of the dropdown can be defined several ways:
+The dropdown width can be defined in two ways.
 
-Table: DropdownMenu width
-
-|                                                        | Example                                |
-| ------------------------------------------------------ | -------------------------------------- |
-| It can be defined by the maximum width of the trigger. | ![](static/trigger-dropdown.png)       |
-| It can be defined by the longest item in the list.     | ![](static/trigger-dropdown-width.png) |
+1. By the maximum width of the trigger. ![](static/trigger-dropdown.png)       
+2. By the longest item in the list.     ![](static/trigger-dropdown-width.png) 
 
 ### Height
 
@@ -42,48 +38,54 @@ We recommended to avoid limiting the dropdown's height for the menus. It's impor
 
 The menu always drops down, regardless of space availability under the trigger. This behavior is necessary to enable accessible keyboard control of the menu.
 
-## Menu item states
+## Menu item types and states
 
-Table: DropdownMenu item states
+There are three types of menu items:
 
-| State               | Appearance                        | Tokens                                |
-| ------------------- | --------------------------------- | ------------------------------------- |
-| Default             | ![](static/item-default.png)      | `--dropdown-menu-item`                |
-| Hover               | ![](static/item-hover.png)        | `--dropdown-menu-item-hover`          |
-| Disabled            | ![](static/item-disabled.png)     | `--disabled-opacity`                  |
+* default (nonselectable, only for launching actions)
+* selectable (`menuitemradio` role)
+* multiselect (`menuitemcheckbox` role)
 
-## Menu item types
+### Default menu item states
 
-### Divider
+Table: Default menu item states
 
-The dropdown menu items can be separated by [Divider](/components/divider/divider).
+| State         | Styles       |
+| ------------- | ------------------- | 
+| Default       | `background-color: var(--dropdown-menu-item)`<br>![](static/item-default.png)      |
+| Hover         | `background-color: var(--dropdown-menu-item-hover)`<br>![](static/item-hover.png)  |
+| Disabled      | `opacity: var(--disabled-opacity)`<br>![](static/item-disabled.png)       |
 
-![](static/dividers.png)
+### Selectable menu item states
 
-### Title
+Selectable menu items (`menuitemradio`) have the same states as default items, plus an additional `selected` state:
 
-You can group list items by adding a title. Use the `DropdownMenu.Group` component for this.
+Table: Selectable menu item states
 
-Title doesn't have `hover` or `active` state and it isn’t clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
+| State                | Styles       |
+| -------------------- | ------------------- | 
+| Selected             | `background-color: var(--dropdown-menu-item-selected)`<br>![](static/item-selected.png)      |
+| Selected + hover     | `background-color: var(--dropdown-menu-item-selected-hover)`<br>![](static/item-selected-hover.png)  |
 
-![](static/headings.png)
+### Multiselect menu item states
 
-### Hint
+Multiselect menu items (`menuitemcheckbox`) include a checkbox that shows whether the item is selected. The background and border styles are the same for selected and unselected items.
 
-You can add some additional information to the menu items using `DropdownMenu.Item.Hint` component.
+Table: Multiselect menu item states
 
-Table: Hint text sizes
+| State        | Styles       |
+| ------------ | ------------------- | 
+| Default      | `background-color: var(--dropdown-menu-item)`<br>![](static/item-checkbox-default.png)      |
+| Hover        | `background-color: var(--dropdown-menu-item-hover)`<br>![](static/item-checkbox-hover.png)  |
+| Selected     | `background-color: var(--dropdown-menu-item)`<br>![](static/item-checkbox-selected.png)  |
+| Disabled     | `opacity: var(--disabled-opacity)`<br>![](static/item-checkbox-disabled.png)  |
 
-| List size | Appearance example          | Tokens                 |
-| --------- | --------------------------- | ---------------------- |
-| M         | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
-| L         | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
-
+<!--
 ### Button
 
 You can add a button to the list.
 
-<!-- #### Action button
+#### Action button
 
 Action button opens another dropdown, takes user to a new page or performs any other action on the page.
 
@@ -93,9 +95,9 @@ The item with button should have the same hover as a regular item in the list.
 
 ![](static/list-button-hover.png) -->
 
-#### Addition button
+### Add item button
 
-This item with such a button adds a new item and has the following states:
+This item with a button adds a new item and has the following states:
 
 Table: DropdownMenu addition button states
 
@@ -107,17 +109,6 @@ Table: DropdownMenu addition button states
 | Loading                | ![](static/button-4.png) | For loading state change submit icon to [Spin](/components/spin/spin) with XS size. Input receives the `disabled` state.                                                                                      |
 | Error                  | ![](static/button-5.png) | If an error occurred during adding, show the error message in a tooltip and highlight the input.                                                                                                              |
 
-#### Button inside item
-
-You can add a button to the right of an item for an additional action.
-
-Table: Button inside the item cases of use
-
-| Case          | Appearance example                | Description                                                                                                                                                                                                                                                                                                       |
-| ------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Delete item   | ![](static/item-delete.png)       | If a list item can be deleted, use Button with `use="secondary"` and `tertiary` theme.                                                                                                                                                                                                                            |
-| Drag and drop | ![](static/dragging-dropdown.png) | To drag and drop list items, use the `MoveAlt` icon with the `--icon-secondary-neutral` color. The icon should appear when hovering over the item, and the cursor should change to `move`. For more information on dragging and dropping items, refer to the [Drag and drop](/components/drag-and-drop/drag-and-drop). |
-
 <!-- ### Reset item
 
 You can add reset item to the list to reset the selected value or values. Place it at the top of the list.
@@ -128,7 +119,28 @@ The reset item appears only if any item from the list is selected. After user cl
 
 ![](static/reset-scheme.png) -->
 
-## List item content
+## Grouping menu items
+
+### Divider
+
+Menu items can be visually separated by inserting a [Divider](/components/divider/divider) between them. `Divider` must have the following margins depending on the size of the menu.
+
+Table: Divider margins
+
+| Menu size      | Margins                                     |
+| -------------- | ----------------------------------------------------------------------- |
+| M              | `margin-top: var(--spacing-1x, 4px)`<br>`margin-bottom: var(--spacing-1x, 4px)` ![](static/divider-m.png) |
+| L              | `margin-top: var(--spacing-2x, 8px)`<br>`margin-bottom: var(--spacing-2x, 8px)` ![](static/divider-l.png) |
+
+### Titled group
+
+You can group menu items using the `DropdownMenu.Group` component. Groups always have titles.
+
+Group title is noninteractive, always has `font-weight: var(--bold)` and the same size as menu items.
+
+![](static/headings.png)
+
+## Menu item content
 
 You can put the following addons before and after the text inside the list item:
 
@@ -152,17 +164,24 @@ Table: Addon before the text examples
 
 ### Addon after text
 
-After the text you can place either non-interactive and interactive addons: an icon, badge, switch, link or button.
+After the text you can place either noninteractive and interactive addons: an icon, badge, switch, link or button.
 
-![](static/pic-addon-right1.png)
-
+<!-- commented because we don't recomment adding icons with tooltips
 If an icon displays additional information about an item, we recommend placing it right next to the text.
 
 ![](static/pic-addon-right.png)
+-->
+
+Table: Button inside the item cases of use
+
+| Case          | Appearance example                | Description                                                                                                                                                                                                                                                                                                       |
+| ------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Delete item   | ![](static/item-delete.png)       | If a list item can be deleted, use Button with `use="secondary"` and `tertiary` theme.                                                                                                                                                                                                                            |
+| Drag and drop | ![](static/dragging-dropdown.png) | To drag and drop list items, use the `MoveAlt` icon with the `--icon-secondary-neutral` color. The icon should appear when hovering over the item, and the cursor should change to `move`. For more information on dragging and dropping items, refer to the [Drag and drop](/components/drag-and-drop/drag-and-drop). |
 
 ### Info icon
 
-Avoid adding `Info` icon for displayng a tooltip. Check the [Tooltip section](#tooltip).
+Avoid using icons with tooltips in menu items. Check the [Tooltip section](#tooltip).
 
 ### Counter
 
@@ -175,6 +194,17 @@ You can place a text counter after the text. It should have the same size that i
 Badge can be placed after the text. The margin between the text and the badge is always 4px. If item with badge is selected, then don’t show badge in the trigger.
 
 ![badge](static/badge.png)
+
+### Hint
+
+You can display additional information in menu items using the `DropdownMenu.Item.Hint` component.
+
+Table: Hint text sizes
+
+| List size | Appearance example          | Tokens                 |
+| --------- | --------------------------- | ---------------------- |
+| M         | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
+| L         | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
 
 ## Tooltip
 

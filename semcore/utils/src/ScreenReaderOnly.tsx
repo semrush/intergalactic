@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * @deprecated Use ScreenReaderOnly from 'flex-box' component
+ */
 export const ScreenReaderOnly = (props: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
@@ -11,9 +14,10 @@ export const ScreenReaderOnly = (props: React.HTMLAttributes<HTMLSpanElement>) =
         padding: 0,
         margin: -1,
         overflow: 'hidden',
-        clip: 'rect(0, 0, 0, 0)',
         whiteSpace: 'nowrap',
         borderWidth: 0,
+        left: -1,
+        top: -1,
       }}
     />
   );

@@ -1,3 +1,432 @@
+## [15.121.0] - 2024-12-30
+
+### @semcore/breadcrumbs
+
+- **Changed** Active breadcrumb tag to `span`.
+
+### @semcore/carousel
+
+- **Added** Keyboard handler for zoom data in carousel by `enter` or `space`.
+
+### @semcore/d3-chart
+
+- **Added** `aria-hidden="true"` to `PatternSymbol` inside `LegendItem` to improve A11Y.
+- **Removed** `aria-labelledby` from `LegendItem` with shapes other, than checkbox.
+- **Changed** `aria-labelledby` value in `LegendItem` to unique id.
+- **Fixed** Animation of points on ScatterPlot was on every render.
+- **Added** `outilne=none` for Hover rect and line.
+- **Added** `aria-*` attributes for svg from parent group for all simple charts (Chart.*).
+- **Added** `aria-label=Chart` by default for all advanced charts (Plot...).
+
+### @semcore/data-table
+
+- **Fixed** Table remained inert after clicking on sort icon.
+- **Fixed** Keyboard navigation on table with virtual scroll.
+- **Fixed** `aria-colindex` was set for each Head.Cell components, even for a group.
+- **Changed** Hide scrollbars from Screen Readers in Table.Head and Table.Body.
+
+### @semcore/date-picker
+
+- **Removed** Unnecessary `role=combobox` for all inputs from popper in any Comparator.
+
+### @semcore/dropdown
+
+- **Added** `menuitemcheckbox` and `menuitemradio` roles for DropdownMenu.Item.
+- **Fixed** Items lost highlighting after filtering the list.
+
+### @semcore/dropdown-menu
+
+- **Added** `menuitemcheckbox` and `menuitemradio` roles for DropdownMenu.Item.
+- **Changed** Removed tabIndex on Menu Items in advanced mode.
+
+### @semcore/feedback-form
+
+- **Added** `tabindex` for the `FeedbackFrom.Success` component with `outline=none`.
+
+### @semcore/illustration
+
+- **Added** `aria-hidden=true` by default for all illustrations.
+
+### @semcore/input-tags
+
+- **Fixed** `aria-describedby` for editable tags.
+
+### @semcore/link
+
+- **Fixed** Render hint's popper on Link with addonLeft as props and no children.
+
+### @semcore/notice
+
+- **Removed** `aria-live` from all items.
+- **Removed** `aria-label` from "muted" theme.
+- **Added** Log with recommendation to provide aria-labels that help distinguish different types of notices.
+
+### @semcore/notice-bubble
+
+- **Added** autofocus to the Notice with focusable elements.
+- **Fixed** Notice didn't close by `escape` key.
+
+### @semcore/outside-click
+
+- **Fixed** users cant compose `Modal` inside the `DropdownMenu.Item`.
+
+### @semcore/skeleton
+
+- **Added** Role `img` for the Skeleton components.
+
+### @semcore/tooltip
+
+- **Changed** `aria-haspopup` on trigger can be set from props.
+
+### @semcore/utils
+
+- **Fixed** Attribute `onAuxClick` was not applying to components.
+
+## [15.119.0] - 2024-11-29
+
+### @semcore/accordion
+
+- **Removed** Unnecessary `aria-disabled` on disabled `Toggle` component.
+- **Changed** Set `aria-controls` to expanded `Toggle` only.
+
+### @semcore/base-trigger
+
+- **Removed** Default tag `button` from FilterTrigger and ButtonTrigger to reduce code duplication.
+- **Changed** Default tag for BaseTrigger to `button` as part of a11y improvement.
+- **Fixed** Added `Hint` to the `FilterTrigger.ClearButton`.
+- **Fixed** Remove redundant `aria-label` & `aria-labelledby` from `FilterTrigger.ClearButton`.
+- **Fixed** Added `role` combobox to the `FilterTrigger.TriggerButton`.
+- **Fixed** Added `count` prop to `FilterTrigger.Counter`, along with screenreader only `selected` text.
+- **Fixed** `placeholder` text is now `aria-hidden` for triggers because of `aria-label` and double pronouncing.
+
+### @semcore/button
+
+- **Removed** Unnecessary `aria-disabled` on disabled button.
+
+### @semcore/d3-chart
+
+- **Added** `aria-labelledby` for `LegendItem` checkbox.
+- **Added** New type of charts - `StackGroupBar`.
+
+### @semcore/data-table
+
+- **Fixed** Keyboard access after changing data in the Table (only if focus outside a Table).
+
+### @semcore/date-picker
+
+- **Fixed** Blinking when opening `DateRangeComparators`.
+
+### @semcore/dropdown
+
+- **Fixed** Click handler was called for disabled Item.
+- **Fixed** Dropdown didn't close when the trigger was clicked for the second time.
+- **Fixed** Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
+- **Fixed** Double call of `onVisibleChange` handler.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Handlers were not called for `Dropdown.Item` in a controlled `DropdownMenu` after it was closed and opened again.
+
+### @semcore/feedback-form
+
+- **Fixed** There was always `aria-errormessage` in FeedbackItem, even if there was no message popup.
+
+### @semcore/flex-box
+
+- **Added** `ScreenReaderOnly` component from `Root` component from `core` package.
+
+### @semcore/inline-edit
+
+- **Fixed** Focus didn't return to the View element after edit.
+
+### @semcore/input-number
+
+- **Removed** Unnecessary role changes on keypress.
+
+### @semcore/input-tags
+
+- **Fixed** Difference in text size in tags with and without Addons.
+- **Fixed** Advanced rendering of child elements doesn't display tags at all.
+- **Fixed** Unnecessary `clickable` announcement by VO on not editable tags.
+
+### @semcore/mini-chart
+
+- **Added** `role=img` to all svg charts.
+
+### @semcore/notice-bubble
+
+- **Added** `replaceLast` method to the Manager to display the next bubble on over the last one.
+- **Fixed** Warning about `Hint` title about `title` and `Hint.Popper` at the same time.
+- **Fixed** Unnecessary counter resetting with each mount of `NoticeBubble` component.
+
+### @semcore/select
+
+- **Added** Logic for showing/hiding highlight for an option depending on whether the Trigger is in focus or not.
+- **Fixed** set `aria-activedescendant` for Trigger only if there is available option with current highlightedIndex.
+- **Fixed** The first option is highlighted, event if it is disabled.
+- **Added** `placeholder` and `aria-label` for input in `InputSearch` component.
+
+### @semcore/utils
+
+- **Added** Internal method for extract some children by the displayName from the `Children` entity.
+- **Changed** Marked `ScreenReaderOnly` as deprecated component, use it now from `flex-box` package.
+
+## [15.118.0] - 2024-11-22
+
+### @semcore/base-trigger
+
+- **Fixed** HTML element of `LinkTrigger` from `div` to `button` as part of a11y improvements. The change allows to use 'LinkTrigger' with `label` properly
+
+### @semcore/card
+
+- **Changed** Description for `innerHint` and `hintAfter` properties.
+
+### @semcore/checkbox
+
+- **Fixed** `aria-label` property moved from the root component to the `Input.Value` component.
+
+### @semcore/dropdown
+
+- **Fixed** `onMouseEnter` in Dropdown.Item was not bubbling the event.
+
+### @semcore/errors
+
+- **Removed** `role='alert'` from `<Error>` component.
+- **Removed** `aria-hidden` from `Error.Image`.
+- **Changed** Empty `alt=""` for `Error.Image`.
+- **Changed** Padding and colors in examples in documentation.
+
+### @semcore/feedback-form
+
+- **Added** `modalWidth` property for the FeedbackRating component.
+
+### @semcore/input-tags
+
+- **Changed** Moved `InputTags.Value` from `ul`.
+- **Changed** Added calculated accessible name from `InputTags.Value` as `aria-label` for `ul` group.
+
+### @semcore/mini-chart
+
+- **Fixed** Cropping in `SemiDonut` chart.
+
+### @semcore/popper
+
+- **Fixed** Call `onKeyboardFocus` for poppers inside poppers.
+
+### @semcore/utils
+
+- **Fixed** `findAllComponents` method. Now it correctly searches in descendants of merged components.
+
+## [15.117.0] - 2024-11-18
+
+### @semcore/date-picker
+
+- **Changed** Aria-label for date presets listbox.
+- **Added** Translations for aria-label for date presets listbox.
+
+### @semcore/ellipsis
+
+- **Fixed** Custom `visible` and `onVisibleChange` properties to Ellipsis.
+
+### @semcore/feature-popover
+
+- **Added** Possibility to set `aria-labelledby` to the `Popper`.
+
+### @semcore/input-number
+
+- **Removed** Not working `aria-valuemin` and `aria-minmax`, because of type `text` for input in InputNumber.
+
+### @semcore/input-tags
+
+- **Changed** `Addon` component to the Addon from `TagContainer.Tag`. IMPORTANT - you should use Addon in `InputTags.Tag.Text` for correct rendering.
+
+### @semcore/pagination
+
+- **Added** `Intl.NumberFormat` for total pages.
+- **Change** `Input` to `NumberInput` for `Pagination.PageInput` component.
+- **Fixed** Formatted value displaying - correct thousands' separator depending on locale.
+
+### @semcore/tag
+
+- **Fixed** Display of tags with TagContainer and `Addon` / `Circle` in the `InputTags` component.
+- **Fixed** Display of tags with TagContainer and addons.
+
+### @semcore/tooltip
+
+- **Added** `max-content` width for Tooltip by default.
+
+## [15.116.0] - 2024-11-08
+
+### @semcore/color-picker
+
+- **Fixed** Display `Hint` on focused `Color.Item`.
+
+### @semcore/dropdown
+
+- **Fixed** Double click event on DropDownMenu.Items.
+- **Added** Export for `DropdownPopperAriaProps` type.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Unexpected focus on actions in DropdownMenu.Item.
+- **Added** `DropdownPopperAriaProps` type for DropdownMenu.Popper props.
+
+### @semcore/feature-popover
+
+- **Changed** A11y improvements: added role="dialog" and autofocus for the popover, made an aria-label or aria-labelledby a required attribute. Disabled aria-haspopup and changed the default interaction to "none" for the trigger.
+
+### @semcore/mini-chart
+
+- **Added** `baseBgColor` option to specify pass second color as background for TrendLine and ScoreDonut
+
+### @semcore/select
+
+- **Fixed** The `Option` not being highlighted by default when opening `Select` by `focus` interaction.
+
+### @semcore/tooltip
+
+- **Added** `role=status` to TooltipPopper Wrapper.
+
+### @semcore/utils
+
+- **Fixed** Hooks order in focusLock hook.
+- **Added** `left` and `top` properties with `-1` value to `ScreenReaderOnly` container for prevent impact on layout of application.
+
+## [15.115.0] - 2024-11-01
+
+### @semcore/button
+
+- **Fixed** Disabled state is not applied to ButtonLink.
+
+### @semcore/d3-chart
+
+- **Fixed** Fix unpredictable behavoir of charts with pattern fill, when interacting with chart's legend
+
+### @semcore/data-table
+
+- **Fixed** Unexpected focusing on the first element of table after first clicking on some interactive element inside it.
+
+### @semcore/ellipsis
+
+- **Fixed** Logic of showing tooltip with one line text and float width value.
+
+### @semcore/icon
+
+- **Added** New `PopupAlt` icon.
+
+### @semcore/input-number
+
+- **Added** Possibility to press both `.` and `,` as a decimal separator.
+
+### @semcore/modal
+
+- **Changed** Added selector specificity for modal close button.
+
+### @semcore/utils
+
+- **Added** `display: contents` for ThemeProvider element by default.
+- **Fixed** Types for ThemeProvider: added all `JSX.IntrinsicElements['div']` types.
+- **Changed** Code cleanup - removed unnecessary promise in focus handler for focusBorders.
+
+## [15.114.0] - 2024-10-28
+
+### @semcore/ellipsis
+
+- **Fixed** Logic of showing tooltip for trimmed in the middle texts - show only for cropped.
+
+### @semcore/popper
+
+- **Fixed** Returning focus to trigger for focusable interaction popovers.
+
+### @semcore/utils
+
+- **Changed** Focus lock logic. For now, we add focus borders in every trap node instead of one instance for whole document.
+
+## [15.113.0] - 2024-10-23
+
+### @semcore/d3-chart
+
+- **Added** Function type for `hideHoverLine` property in the `Hover` component.
+
+## [15.112.0] - 2024-10-18
+
+### @semcore/carousel
+
+- **Fixed** Types for enhances.
+
+### @semcore/color-picker
+
+- **Fixed** Types for enhances.
+
+### @semcore/d3-chart
+
+- **Fixed** Handle onClick on ChartLegend items.
+- **Fixed** `onChangeVisibleItem` handler on ChartLegend component.
+- **Fixed** Keyboard control in NVDA form mode for Legend checkbox items.
+- **Fixed** Each checkbox in the Legend rendered as 3 elements for NVDA.
+- **Added** Required `aria-*` attributes for the Legend.
+- **Fixed** Types for enhances.
+
+### @semcore/drag-and-drop
+
+- **Changed** Improve accessibility for component.
+
+### @semcore/dropdown-menu
+
+- **Added** New `DropdownMenu.Item.Text` for wrapping text if used with addons.
+
+### @semcore/ellipsis
+
+- **Added** `line-height` value to temporary element size calculation.
+
+### @semcore/feedback-form
+
+- **Fixed** Types for enhances.
+
+### @semcore/icon
+
+- **Added** New `ShopifyColored`, `WooCommerceColored`, `MetaColored`, `WhatConvertsColored`, `CallTrackingMetricsColored`, `GoogleDisplayVideoAds`, `PipedriveColored`, `CampaignMonitorColored`, `ConstantContactColored`,`Yext`, `BirdeyeColored`, `InstagramColored` icons.
+- **Added** New `Tack` and `TackNo` icons.
+
+### @semcore/pagination
+
+- **Changed** Disable input field if total number of pages is one.
+
+### @semcore/switch
+
+- **Fixed** Animations in some popovers (for example in dropdown menu items).
+
+### @semcore/utils
+
+- **Added** Internal type for transform enhances types to the `asProps` type.
+- **Fixed** Display values for design tokens with modifications.
+
+## [15.111.0] - 2024-10-11
+
+### @semcore/base-trigger
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/button
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/icon
+
+- **Added** New `Recent` icon.
+
+### @semcore/link
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/switch
+
+- **Fixed** Interaction with non-interactive icons (with `aria-hidden`) in Addons.
+
+### @semcore/utils
+
+- **Fixed** Update focusLock version.
+
 ## [15.110.0] - 2024-10-04
 
 ### @semcore/button

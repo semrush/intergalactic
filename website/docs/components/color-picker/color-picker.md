@@ -9,7 +9,7 @@ tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api')
 <script lang="tsx">
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import ColorPicker from 'intergalactic/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 
 const Preview = (preview) => {
   const { bool } = preview('ColorPicker');
@@ -94,7 +94,7 @@ Table: Color items
 
 Table: Color item states
 
-| | Normal | Hover | Active | Usage |
+| Item type | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
 | Background color | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-item-bg-hover.png) | ![](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
 | Text color | ![](static/colorpicker-item-text-default.png) | ![](static/colorpicker-item-text-hover.png) | ![](static/colorpicker-item-text-active.png)| Use for changing text and background colors of other components.|
@@ -105,7 +105,7 @@ Table: Color item states
 
 Table: Custom color item states
 
-| | Normal | Hover | Active                                              | Usage |
+| Item type | Normal | Hover | Active                                              | Usage |
 | ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
 | Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
 | Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
@@ -114,7 +114,7 @@ Table: Custom color item states
 
 Table: States of item for adding colors
 
-| | Normal | Hover | Active | Usage |
+| Item type | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
 | Add color button | ![](static/btn-add-default.png) | ![](static/btn-add-hover.png) | ![](static/btn-add-active.png)| Use Button with icon and change border-radius to 50%.|
 
@@ -136,49 +136,33 @@ Table: DropdownMenu appearance
 
 ![](static/colorpicker-margins-paddings.png)
 
-## Input (optional)
-
-In case when a ColorPicker allows users to add custom colors, include an input that only accepts HEX values. For more information, refer to the [Validation section](/components/color-picker/color-picker#validation).
-
-### Size, margins and paddings
-
-Use input with M size.
-
-![](static/colorpicker-input-margins.png)
-
-### Value
-
-The color value is always a 6-character string that specifies the color in the HEX format.
-
-::: tip
-User can enter both upper-case and lower-case characters, but the input will save them as upper-case.
-:::
-
-## Interaction
+## Custom colors (optional)
 
 Users have the ability to add or remove custom colors, but they cannot modify default or existing custom colors.
-
-### Adding custom color
 
 ::: tip
 We recommend that your product sync and save the user's custom palette in different parts of the interface.
 :::
 
-Users can add a color to the custom palette by clicking either the button with the `MathPlus` icon or the input field. They can add a color value by clicking the `Check` icon and remove a color by clicking the `Close` icon.
+### Adding custom color
+
+Users can add a color to the custom palette by entering the value into the input field and saving it by pressing `Enter` or clicking the `Check` button.
 
 ![](static/add-custom-color.png)
 
-### Removing custom color
-
-![](static/remove-custom-color.png)
-
-## Validation
-
-The input field only allows six characters, which can include numbers and letters. If the user enters fewer or more characters or characters that cannot be converted to a 6-character HEX value, the input gets the `invalid` state.
+The input field only allows six characters, including numbers and letters from A to F. If the user enters fewer or more characters, or characters that cannot be converted to a 6-character HEX value, the input gets the `invalid` state.
 
 To help users fix the invalid input, add the following message to the tooltip: "Please enter 6 latin letters and/or digits."
 
 ![](static/validation.png)
+
+::: tip
+User can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+:::
+
+### Removing custom color
+
+![](static/remove-custom-color.png)
 
 ## Usage in UX/UI
 

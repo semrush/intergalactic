@@ -7,7 +7,7 @@ tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container
 ## SpinContainer
 
 ```jsx
-import SpinContainer from 'intergalactic/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
@@ -18,7 +18,7 @@ import SpinContainer from 'intergalactic/spin-container';
 Content wrapper with proper `position` and `z-index`.
 
 ```jsx
-import SpinContainer from 'intergalactic/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Content />;
 ```
 
@@ -27,7 +27,7 @@ import SpinContainer from 'intergalactic/spin-container';
 By default, it is a UI component and a base that closes the content under `Spin`.
 
 ```jsx
-import SpinContainer from 'intergalactic/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Overlay />;
 ```
 
