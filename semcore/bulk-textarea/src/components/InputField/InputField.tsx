@@ -507,20 +507,35 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
           event.preventDefault();
         } else {
           event.preventDefault();
+          const selection = document.getSelection();
+          const selectionNode = selection?.focusNode;
+          const selectionOffset = selection?.focusOffset;
+
+          let defaultInnerHTML = this.emptyRowValue;
+
+          if (selectionNode instanceof Text && selectionOffset !== undefined) {
+            defaultInnerHTML =
+              selectionNode.textContent?.substring(selectionOffset) ?? this.emptyRowValue;
+
+            if (selectionNode.textContent) {
+              selectionNode.textContent = selectionNode.textContent.substring(0, selectionOffset);
+            }
+          }
+
           const row = document.createElement('p');
-          row.innerHTML = this.emptyRowValue;
+          row.innerHTML = defaultInnerHTML;
           currentNode.after(row);
 
           this.setSelection(row, 0, 0);
 
+          this.validateRow(currentNode);
+          this.validateRow(row);
+          if (currentNode.previousSibling) {
+            this.validateRow(currentNode.previousSibling);
+          }
+
           setTimeout(() => {
-            if (validateOn.includes('enterNextRow')) {
-              this.validateRow(currentNode);
-              if (currentNode.previousSibling) {
-                this.validateRow(currentNode.previousSibling);
-              }
-              this.recalculateErrors();
-            }
+            this.recalculateErrors();
             onEnterNextRow();
           }, 0);
 
@@ -537,6 +552,18 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
+    } else if (
+      event.key === 'Backspace' &&
+      currentNode instanceof HTMLParagraphElement &&
+      currentNode.textContent?.trim() === ''
+    ) {
+      const prevNode = currentNode.previousSibling;
+      if (prevNode) {
+        event.preventDefault();
+        this.textarea.removeChild(currentNode);
+        this.toggleErrorsPopperByKeyboard(0);
+        this.setSelection(prevNode, 1, 1);
+      }
     }
   }
 
