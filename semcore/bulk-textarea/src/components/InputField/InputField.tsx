@@ -513,7 +513,11 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
           let defaultInnerHTML = this.emptyRowValue;
 
-          if (selectionNode instanceof Text && selectionOffset !== undefined) {
+          if (
+            selectionNode instanceof Text &&
+            selectionOffset !== undefined &&
+            selectionOffset !== selectionNode.textContent?.length
+          ) {
             defaultInnerHTML =
               selectionNode.textContent?.substring(selectionOffset) ?? this.emptyRowValue;
 
