@@ -11,6 +11,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { Text } from '@semcore/typography';
+import findComponent from '@semcore/utils/lib/findComponent';
 
 import style from './style/notice.shadow.css';
 
@@ -128,9 +129,11 @@ function Title({ styles }) {
   return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight={'bold'} />);
 }
 
-function NoticeText({ styles }) {
+function NoticeText({ styles, Children }) {
   const SText = Root;
-  return sstyled(styles)(<SText render={Text} tag='div' />);
+  const withoutTitle = !findComponent(Children, [Notice.Title]);
+
+  return sstyled(styles)(<SText render={Text} tag='div' withoutTitle={withoutTitle} />);
 }
 
 function Actions({ styles }) {
@@ -163,7 +166,7 @@ function Close({ styles, getI18nText }) {
   );
 }
 
-export default createComponent(RootNotice, {
+const Notice = createComponent(RootNotice, {
   Label,
   Title: Title,
   Text: NoticeText,
@@ -172,3 +175,5 @@ export default createComponent(RootNotice, {
   CloseIcon,
   Close,
 });
+
+export default Notice;
