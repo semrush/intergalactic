@@ -6,7 +6,7 @@ import NoticeBigIllustrationExample from './examples/notice_big_illustration';
 import NoticeStatesExample from './examples/notice_with_different_states';
 
 const meta: Meta = {
-  title: 'Components/Notice/Advanced',
+  title: 'Components/Notice/Tests',
 };
 export default meta;
 
