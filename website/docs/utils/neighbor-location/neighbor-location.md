@@ -26,8 +26,7 @@ For example, you can group together:
 - [Input](/components/input/input)
 - [Select](/components/select/select)
 
-You may also need a `flex-box` to align the components. For more information, see
-the [Flex-box and indent system](/layout/box-system/box-system).
+You may also need a `flex-box` to align the components. For more information, read [Flex-box and spacing system](/layout/box-system/box-system-spacing).
 
 ## Grouped buttons
 

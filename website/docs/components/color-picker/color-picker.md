@@ -70,7 +70,7 @@ ColorPicker.Item has 28px * 28px size.
 
 ## Margins
 
-All margins must be [multiples of 4](/layout/box-system/box-system#spacing_system). The default recommended margins are 4px:
+All margins must be [multiples of 4](/layout/box-system/box-system-spacing). The default recommended margins are 4px:
 
 ![](static/colorpicker-margins.png)
 

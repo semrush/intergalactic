@@ -73,7 +73,7 @@ In certain cases, headings can include additional information, such as a counter
 
 ## Headings for mobile devices
 
-To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/grid-system).
+To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/breakpoints/breakpoints).
 
 ::: tip
 Only change font styles, not the markup.
