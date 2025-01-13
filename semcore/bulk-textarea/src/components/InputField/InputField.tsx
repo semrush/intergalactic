@@ -294,9 +294,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       let textNode: ChildNode | null = null;
       let position: number | null = null;
 
-      if (focusNode === this.textarea && focusElement instanceof HTMLParagraphElement) {
-        paragraph = true;
-      } else if (
+      if (
         focusElement instanceof Text &&
         focusNode instanceof HTMLParagraphElement &&
         anchorElement instanceof Text &&
@@ -305,7 +303,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         paragraph = true;
       }
 
-      if (focusNode === this.textarea) {
+      if (focusElement === this.textarea) {
         this.textarea.append(...listOfNodes);
 
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
