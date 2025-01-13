@@ -137,11 +137,11 @@ function onCaretClick() {
 
 <style scoped>
 .VPSidebarItem.level-0 {
-  padding-bottom: 10px;
+  padding-bottom: 24px;
 }
 
 .VPSidebarItem.collapsed.level-0 {
-  padding-bottom: 24px;
+  padding-bottom: 10px;
 }
 
 .item {
