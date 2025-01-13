@@ -5,14 +5,15 @@ import Warning from '@semcore/icon/Warning/m';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import ThumbUpM from '@semcore/icon/ThumbUp/m'
+import Badge from '@semcore/badge';
 
-const Demo = () => (
-  <Flex direction='column'>
-
-
-<Notice aria-label='Leave feedback' mb={2}>
+const Demo = () => ( 
+<Flex direction='column'>
+<Notice aria-label='Leave feedback' mb={2} w={400}>
     <Notice.Label mr={2}>
-      <Question />
+    <Badge bg="gray-400" color="white">
+  soon
+</Badge>
     </Notice.Label>
     <Notice.Content display='flex'>
     <Notice.Text>Your subscription has expired</Notice.Text>
@@ -27,6 +28,24 @@ const Demo = () => (
     </Notice.Content>
     <Notice.Close />
   </Notice>
+
+  <Notice aria-label='Leave feedback' mb={2}>
+    <Notice.Label mr={2}>
+    <Question />
+    </Notice.Label>
+    <Notice.Content display='flex'>
+    <Notice.Text>Your subscription has expired</Notice.Text>
+      <Notice.Actions mt={0}>
+        <Button mr={2} addonLeft={ThumbUpM}>
+          Yes
+        </Button>
+        <Button mr={2} addonLeft={ThumbUpM}>
+          No
+        </Button>
+      </Notice.Actions>
+    </Notice.Content>
+  </Notice>
+
 
     <Notice aria-label='Notice' mb={2}>
       <Notice.Label>
@@ -88,7 +107,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='success' aria-label='New feature announcement' mb={2}>
+    <Notice theme='success' aria-label='New feature announcement' mb={2} >
       <Notice.Label>
         <ThumbUpM />
       </Notice.Label>
@@ -120,7 +139,7 @@ const Demo = () => (
       <Notice.Close />
     </Notice>
 
-    <Notice theme='success' aria-label='New feature announcement' mb={2}>
+    <Notice theme='success' aria-label='New feature announcement' mb={2} w={300}>
       <Notice.Label>
         <ThumbUpM />
       </Notice.Label>
@@ -130,10 +149,7 @@ const Demo = () => (
 
         <Notice.Text>
           49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
-          To unlock your projects, please upgrade your subscription.Please tell us how to improve
-          something. 49 out of your Star Wars: The Force Awakens shattered box office records upon
-          its debut becoming the biggest film of all time in. The reports are based on the data from
-          the Russian Federation and the CIS.
+          
         </Notice.Text>
         <Notice.Actions>
           <Button use='primary' theme='success' mr={2}>
@@ -145,23 +161,28 @@ const Demo = () => (
       
     </Notice>
 
-    <Notice aria-label='Leave feedback'>
-    <Notice.Label mr={2}>
-      <Question />
-    </Notice.Label>
-    <Notice.Content display='flex'>
-    <Notice.Title>Your subscription has expired</Notice.Title>
-      <Notice.Actions mt={0}>
-        <Button mr={2} addonLeft={ThumbUpM}>
-          Yes
-        </Button>
-        <Button mr={2} addonLeft={ThumbUpM}>
-          No
-        </Button>
-      </Notice.Actions>
-    </Notice.Content>
-    <Notice.Close />
-  </Notice>
+    <Notice theme='success' aria-label='New feature announcement' mb={2} w={300}  closable
+        onClose={() => setSecondHidden(true)}>
+      <Notice.Label>
+        <ThumbUpM />
+      </Notice.Label>
+
+      <Notice.Content>
+        <Notice.Title>Your subscription has expired</Notice.Title>
+
+        <Notice.Text>
+          49 out of your 50 projects are now locked. They will be deleted in 7 days (on August 22).
+          
+        </Notice.Text>
+        <Notice.Actions>
+          <Button use='primary' theme='success' mr={2}>
+            Button
+          </Button>
+          <Button>Button</Button>
+        </Notice.Actions>
+      </Notice.Content>
+      <Notice.Close />
+    </Notice>
 
   
   </Flex>
