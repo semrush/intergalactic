@@ -1,11 +1,11 @@
-export { default as Animation, animationContext } from './Animation';
+import { Animation as AllAnimations } from '@semcore/core';
 
-export { default as Transform } from './Transform';
+const Animation = AllAnimations.Animation;
+const animationContext = AllAnimations.animationContext;
+const Transform = AllAnimations.Transform;
+const FadeInOut = AllAnimations.FadeInOut;
+const Collapse = AllAnimations.Collapse;
+const Scale = AllAnimations.Scale;
+const Slide = AllAnimations.Slide;
 
-export { default as FadeInOut } from './FadeInOut';
-
-export { default as Collapse } from './Collapse';
-
-export { default as Scale } from './Scale';
-
-export { default as Slide } from './Slide';
+export { Animation, animationContext, Transform, FadeInOut, Collapse, Scale, Slide };
