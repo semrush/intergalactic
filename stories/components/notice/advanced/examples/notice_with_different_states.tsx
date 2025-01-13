@@ -161,8 +161,7 @@ const Demo = () => (
       
     </Notice>
 
-    <Notice theme='success' aria-label='New feature announcement' mb={2} w={300}  closable
-        onClose={() => setSecondHidden(true)}>
+    <Notice theme='success' aria-label='New feature announcement' mb={2} w={300}>
       <Notice.Label>
         <ThumbUpM />
       </Notice.Label>
