@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <Box w={800}>
-      <DataTable data={data}>
+      <DataTable data={data} aria-label={'Table with fixed columns'}>
         <DataTable.Head>
           <DataTable.Column
             vBorders
