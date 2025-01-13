@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
-import { Hint } from '@semcore/ui/tooltip';
 import { Flex } from '@semcore/flex-box';
 import { ButtonLink } from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
@@ -52,8 +51,7 @@ const Demo = () => {
         />
         {filterData.name && (
           <Input.Addon>
-            <Hint
-              tag={ButtonLink}
+            <ButtonLink
               use='secondary'
               addonLeft={CloseM}
               title='Clear'
@@ -69,11 +67,11 @@ const Demo = () => {
           placeholder='Size'
           tag={FilterTrigger}
           onClear={() => clearField('size')}
-          aria-label='Select size'
+          aria-label='Size'
         >
-          Size: {filterData.size}
+          <span aria-hidden>Size:</span> {filterData.size}
         </Select.Trigger>
-        <Select.Menu>
+        <Select.Menu aria-label='Size'>
           {sizes.map((item, idx) => (
             <Select.Option key={idx} value={item}>
               {item}
@@ -102,13 +100,14 @@ const Demo = () => {
             >
               <AddFilter.Select.Trigger
                 placeholder={name}
+                aria-label={name}
                 onClear={() => {
                   clearField(name);
                 }}
               >
-                {name}: {filterData[name]}
+                <span aria-hidden>{name}:</span> {filterData[name]}
               </AddFilter.Select.Trigger>
-              <AddFilter.Select.Menu>
+              <AddFilter.Select.Menu aria-label={name}>
                 {values.map((item, idx) => (
                   <AddFilter.Select.Option key={idx} value={item}>
                     {item}
