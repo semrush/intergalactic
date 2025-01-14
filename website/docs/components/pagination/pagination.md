@@ -63,16 +63,31 @@ Component consists of the following:
 5. `Pagination.PrevPage`
 6. `Pagination.TotalPages`
 
+## Sizes
+
+This component has only two sizes: `M` and `L`. The M size uses components with `M` size, while the `L` size uses L-sized components accordingly.
+
+Table: Pagination sizes
+
+| `size` | Appearance example     |
+| ------ | ---------------------- |
+| `M`    | ![](static/m-size.png) |
+| `L`    | ![](static/l-size.png) |
+
 ## Appearance
 
-- The margins between buttons in the component are always 8px.
-- The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
+### Margin between table and pagination
 
-![](static/margins.png)
-
-The margin from the table to the pagination is 16px.
+Recommended margin between table and pagination is `--spacing-4x`.
 
 ![](static/margin-top.png)
+
+### Layout behavior
+
+In case there is no space in the interface to place pagination in a row, the component layout changes from `row` to `column`.
+
+![](static/pagination-layout-m.png)
+![](static/pagination-layout-l.png)
 
 ## Number of rows
 
@@ -86,11 +101,11 @@ We provide some recommendations for the table size:
 - The table should scroll to the beginning when the user moves between pages.
 - After sorting and filtering, the pagination always returns the user to the first page.
 
-| Appearance example                | Action          |
-| --------------------------------- | --------------- |
-| ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
-| ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
-| ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
+| Appearance example                 | Action                                                                                                           |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| ![](static/secondary-button.png)   | Opens the first page                                                                                             |
+| ![](static/secondary-button-2.png) | Opens the previous page                                                                                          |
+| ![](static/primary-button.png)     | Opens the next page                                                                                              |
 | ![](static/steps.png)              | Page input allows the user to enter a specific page, and after the user presses `Enter`, the entered page opens. |
 
 The current page should always be displayed in the input:
