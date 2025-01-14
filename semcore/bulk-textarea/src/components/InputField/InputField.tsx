@@ -454,7 +454,9 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             emptyParagraph.innerHTML = this.emptyRowValue;
           }
 
-          this.setSelection(emptyParagraph, 0, 0);
+          if (emptyParagraph) {
+            this.setSelection(emptyParagraph, 0, 0);
+          }
         }
       }
 
