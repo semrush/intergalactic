@@ -123,6 +123,10 @@ export type InputFieldProps = {
   /**
    * Internal
    */
+  rowsCount: number;
+  /**
+   * Internal
+   */
   onEnterNextRow: () => void;
   /**
    * Internal

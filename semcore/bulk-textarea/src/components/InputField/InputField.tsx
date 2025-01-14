@@ -31,6 +31,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     minRows: 2,
     maxRows: 10,
     defaultShowErrors: false,
+    defaultRowsCount: 0,
   };
 
   delimiter = '\n';
@@ -55,7 +56,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   isFocusing = false;
 
   rowsCountTimeout = 0;
-  rowsCount = 0;
 
   state = {
     visibleErrorPopper: false,
@@ -83,6 +83,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   uncontrolledProps() {
     return {
       value: null,
+      rowsCount: null,
     };
   }
 
@@ -685,8 +686,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     }
 
     this.rowsCountTimeout = window.setTimeout(() => {
-      let rowsCount = 0;
-      const { ofRows } = this.asProps;
+      let rows = 0;
+      const { ofRows, rowsCount } = this.asProps;
 
       this.textarea.childNodes.forEach((node, index) => {
         if (node instanceof HTMLParagraphElement) {
@@ -696,18 +697,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             node.textContent !== this.getEmptyParagraph().textContent &&
             node.textContent !== ''
           ) {
-            rowsCount++;
+            rows++;
 
-            if (rowsCount > ofRows) {
+            if (rows > ofRows) {
               node.dataset.overMaxRows = 'true';
             }
           }
         }
       });
 
-      if (this.rowsCount !== rowsCount) {
-        this.rowsCount = rowsCount;
-        this.asProps.onChangeRowsCount(rowsCount);
+      if (rowsCount !== rows) {
+        this.asProps.onChangeRowsCount(rows);
       }
     }, 100);
   }
