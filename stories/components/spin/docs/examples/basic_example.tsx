@@ -1,8 +1,8 @@
 import React from 'react';
-import { Flex } from 'intergalactic/flex-box';
-import DataTable from 'intergalactic/data-table';
-import Spin from 'intergalactic/spin';
-import Button from 'intergalactic/button';
+import { Flex } from '@semcore/flex-box';
+import DataTable from '@semcore/data-table';
+import Spin from '@semcore/spin';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(false);
