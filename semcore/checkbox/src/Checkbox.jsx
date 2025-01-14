@@ -7,6 +7,8 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { forkRef } from '@semcore/utils/lib/ref';
 import logger from '@semcore/utils/lib/logger';
 
 import style from './style/checkbox.shadow.css';
@@ -14,6 +16,7 @@ import style from './style/checkbox.shadow.css';
 class CheckboxRoot extends Component {
   static displayName = 'Checkbox';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = {
     size: 'm',
@@ -68,12 +71,16 @@ class CheckboxRoot extends Component {
   }
 
   render() {
-    const SLabel = Root;
-    const { Children, children: hasChildren, styles } = this.asProps;
+    const SCheckboxRoot = Root;
+    const { Children, children: hasChildren, styles, uid } = this.asProps;
+    const checkboxID = `checkbox-${uid}`;
+    const SLabel = Checkbox.Text;
+
     return sstyled(styles)(
-      <SLabel
-        render={Box}
-        tag='label'
+      <SCheckboxRoot
+        render={Flex}
+        inline={true}
+        alignItems={'flex-start'}
         __excludeProps={[
           'onChange',
           'indeterminate',
@@ -89,11 +96,11 @@ class CheckboxRoot extends Component {
           <Children />
         ) : (
           <>
-            <Checkbox.Value />
-            <Checkbox.Text />
+            <Checkbox.Value id={checkboxID} />
+            <SLabel htmlFor={checkboxID} />
           </>
         )}
-      </SLabel>,
+      </SCheckboxRoot>,
     );
   }
 }
@@ -114,6 +121,8 @@ class ValueRoot extends Component {
   static displayName = 'Value';
   static style = style;
 
+  controlRef = React.createRef();
+
   handleClick(e) {
     // idk for what it exists, leaving just in case it saves us from some bugs
     e.stopPropagation();
@@ -131,7 +140,7 @@ class ValueRoot extends Component {
 
     return {
       indeterminate,
-      ref: forwardRef,
+      ref: forkRef(forwardRef, this.controlRef),
       state,
       ...controlProps,
       onClick: callAllEventHandlers(controlProps.onClick, this.handleClick),
@@ -152,6 +161,7 @@ class ValueRoot extends Component {
     } = this.asProps;
     const [, checkMarkProps] = getInputProps(other, includeInputProps);
     const { children, Children, ...propsWithoutChildren } = checkMarkProps;
+
     return {
       theme,
       size,
@@ -160,6 +170,9 @@ class ValueRoot extends Component {
       checked,
       indeterminate,
       resolveColor,
+      onClick: () => {
+        this.controlRef.current?.click();
+      },
       ...propsWithoutChildren,
     };
   }
@@ -219,7 +232,7 @@ const CheckMark = (props) => {
   const SInvalidPattern = InvalidStateBox;
   const { theme, styles, resolveColor, state, checked, indeterminate } = props;
   return sstyled(styles)(
-    <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)}>
+    <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)} aria-hidden='true'>
       {state === 'invalid' && !checked && !indeterminate && <SInvalidPattern />}
     </SCheckbox>,
   );
@@ -239,7 +252,7 @@ const Text = (props) => {
   const resolveColor = useColorResolver();
 
   return sstyled(styles)(
-    <SText render={TypographyText} tag='span' use:color={resolveColor(color)} />,
+    <SText render={TypographyText} tag='label' use:inline={true} use:color={resolveColor(color)} />,
   );
 };
 Text.displayName = 'Text';
