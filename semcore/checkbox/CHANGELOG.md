@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.42.2] - 2025-01-14
+
+### Changed
+
+- Checkbox to be recognizable as single element by SR(VO and NVDA) .
+
 ## [7.42.1] - 2024-12-30
 
 ### Changed
