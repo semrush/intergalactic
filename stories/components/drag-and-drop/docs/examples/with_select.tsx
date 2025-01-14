@@ -20,6 +20,7 @@ const defeaultColumns = [
 const defaultSelectedColumns = ['uniquePageviews', 'entranceSources'];
 
 const Demo = () => {
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(null);
   const [columns, setColumns] = React.useState(defeaultColumns);
   const handleDnD = React.useCallback(
     ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
@@ -32,6 +33,7 @@ const Demo = () => {
         newColumns[toIndex] = columns[fromIndex];
         return newColumns;
       });
+      setHighlightedIndex(toIndex);
     },
     [],
   );
@@ -51,7 +53,12 @@ const Demo = () => {
   }, [selectedColumns, columns]);
 
   return (
-    <DropdownMenu selectable multiselect>
+    <DropdownMenu
+      selectable
+      multiselect
+      highlightedIndex={highlightedIndex}
+      onHighlightedIndexChange={setHighlightedIndex}
+    >
       <DropdownMenu.Trigger mt={2} mr='auto' id='dropdown-menu-basic' tag={Button}>
         <Button.Addon>
           <SettingsM />

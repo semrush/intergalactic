@@ -323,7 +323,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
           dragOver: null,
           keyboardDraggingIndex: null,
           animatedScaling: index,
-          hideHoverEffect: true,
+          hideHoverEffect: false,
         });
       } else if (this.state.items[index]?.draggingAllowed) {
         this.handleItemDragStart(index);
