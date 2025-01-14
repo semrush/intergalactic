@@ -305,7 +305,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
 
       if (focusElement === this.textarea) {
-        this.textarea.append(...listOfNodes);
+        this.textarea.replaceChildren(...listOfNodes);
 
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
         textNode = lastNodeToInsert.childNodes.item(0);
