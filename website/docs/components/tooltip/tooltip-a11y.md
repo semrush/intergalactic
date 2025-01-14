@@ -8,7 +8,7 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ## Considerations for designers & developers
 
 - When open, tooltips shouldn't block a user from performing any task on the page.
-- Avoid using tooltips with non-interactive elements as triggers (especially text, but icons as well), because such tooltips aren't accessible for keyboard users who don't use a screen reader.
+- Avoid using tooltips with noninteractive elements as triggers (especially text, but icons as well), because such tooltips aren't accessible for keyboard users who don't use a screen reader.
 - If your tooltip appears on hover/focus, don't put focusable elements in it. If you must have interactive elements in the tooltip, use components that open on click/Enter/Space, such as `DescriptionTooltip` or [Dropdown](../dropdown/dropdown).
 - Whenever possible, use descriptive text on your form fields that doesn't need to be activated by a focus or hover event. Tooltips can be problematic for some assistive technologies.
 
@@ -20,7 +20,7 @@ Table: Hint recommended roles and attributes
 
 | Component                           | Use case                                                               | Attributes    |
 | ----------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `Hint`                              | If the trigger is a non-interactive icon.                              | Set `aria-hidden="false"` for `Trigger` if it's merged with the icon, otherwise set it for the icon. [Example](./tooltip-code#basic-usage). |
+| `Hint`                              | If the trigger is a noninteractive icon.                              | Set `aria-hidden="false"` for `Trigger` if it's merged with the icon, otherwise set it for the icon. [Example](./tooltip-code#basic-usage). |
 | `Tooltip`                           | If an interactive element is nested and not merged with `Trigger`.     | Set `aria-describedby` and `role` to `undefined` for `Trigger`, and instead assign the value you get from the children render function to the nested element's `aria-describedby`. [Example](./tooltip-code#nested-trigger-accessibility).  |
 | `Tooltip`, `DescriptionTooltip`     | If the trigger doesn't have a visible label.                           | Set `aria-label` for `Trigger`, or the nested element if it isn't merged, to reflect trigger's name or goal. For [Informer](../../patterns/informer/informer) use something like "About {feature}". [Example](./tooltip-code#basic-usage).  |
 | `DescriptionTooltip` | Always. | Set `aria-label` for `Popper` to reflect what this tooltip is about. Can be similar to trigger's accessible name. [Example](./tooltip-code#basic-usage).  |

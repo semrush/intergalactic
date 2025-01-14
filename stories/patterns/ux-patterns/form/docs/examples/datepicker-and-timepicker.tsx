@@ -7,19 +7,27 @@ import TimePicker from '@semcore/time-picker';
 import Checkbox from '@semcore/checkbox';
 import Button from '@semcore/button';
 
+type FormValues = {
+  start_date?: string;
+  start_time?: string;
+  due_date?: string;
+  due_time?: string;
+};
+const defaultValues: FormValues = {
+  start_date: '',
+  start_time: '',
+  due_date: '',
+  due_time: '',
+};
+
 const Demo = () => {
   const [period, setPeriod] = React.useState(false);
-  const defaultValues = {
-    start_date: new Date(),
-    start_time: '12:00',
-    due_date: new Date(),
-    due_time: '12:00',
-  };
-  const { handleSubmit, control, reset } = useForm({
+
+  const { handleSubmit, control, reset } = useForm<FormValues>({
     defaultValues,
   });
 
-  const onSubmit = (data: typeof defaultValues) => {
+  const onSubmit = (data: FormValues) => {
     alert(JSON.stringify(data));
   };
 
@@ -32,25 +40,36 @@ const Demo = () => {
   };
 
   return (
-    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
-      <Flex mb={4}>
-        <Flex direction='column'>
-          <Text size={300} tag='label' mb={1}>
+    <Flex
+      tag='form'
+      onSubmit={handleSubmit(onSubmit)}
+      direction='column'
+      alignItems='flex-start'
+      gap={6}
+    >
+      <Flex gap={4}>
+        <Flex direction='column' gap={2}>
+          <Text size={300} tag='label' htmlFor='startDate'>
             Start date
           </Text>
           <Controller
-            render={(props) => <DatePicker size='l' {...props} />}
+            render={({ field: { value, onChange } }) => (
+              <DatePicker value={value} onChange={onChange}>
+                <DatePicker.Trigger id='startDate' size='l' />
+                <DatePicker.Popper />
+              </DatePicker>
+            )}
             control={control}
             name='start_date'
           />
         </Flex>
-        <Flex direction='column' ml={2}>
-          <Text size={300} tag='label' mb={1}>
+        <Flex direction='column' gap={2}>
+          <Text size={300} tag='label' htmlFor='startTime'>
             Time
           </Text>
           <Controller
-            render={(props) => (
-              <TimePicker size='l' is12Hour {...props}>
+            render={({ field: { value, onChange } }) => (
+              <TimePicker id='startTime' size='l' is12Hour value={value} onChange={onChange}>
                 <TimePicker.Hours />
                 <TimePicker.Separator />
                 <TimePicker.Minutes />
@@ -63,30 +82,35 @@ const Demo = () => {
         </Flex>
       </Flex>
 
-      <Checkbox mb={4} size='l'>
+      <Checkbox size='l'>
         <Checkbox.Value onChange={setPeriod} />
         <Checkbox.Text>Period</Checkbox.Text>
       </Checkbox>
 
       {period && (
-        <Flex mb={4}>
-          <Flex direction='column'>
-            <Text size={300} tag='label' mb={1}>
+        <Flex gap={4}>
+          <Flex direction='column' gap={2}>
+            <Text size={300} tag='label' htmlFor='dueDate'>
               Due date
             </Text>
             <Controller
-              render={(props) => <DatePicker size='l' {...props} />}
+              render={({ field: { value, onChange } }) => (
+                <DatePicker value={value} onChange={onChange}>
+                  <DatePicker.Trigger id='dueDate' size='l' />
+                  <DatePicker.Popper />
+                </DatePicker>
+              )}
               control={control}
               name='due_date'
             />
           </Flex>
-          <Flex direction='column' ml={2}>
-            <Text size={300} tag='label' mb={1}>
+          <Flex direction='column' gap={2}>
+            <Text size={300} tag='label' htmlFor='dueTime'>
               Time
             </Text>
             <Controller
-              render={(props) => (
-                <TimePicker size='l' is12Hour {...props}>
+              render={({ field: { value, onChange } }) => (
+                <TimePicker id='dueTime' size='l' is12Hour value={value} onChange={onChange}>
                   <TimePicker.Hours />
                   <TimePicker.Separator />
                   <TimePicker.Minutes />
@@ -100,11 +124,11 @@ const Demo = () => {
         </Flex>
       )}
 
-      <Flex>
+      <Flex gap={3} mt={2}>
         <Button type='submit' use='primary' theme='success' size='l'>
           Create
         </Button>
-        <Button ml={2} size='l' onClick={onReset}>
+        <Button size='l' onClick={onReset}>
           Cancel
         </Button>
       </Flex>

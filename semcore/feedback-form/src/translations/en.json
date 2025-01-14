@@ -4,5 +4,9 @@
   "formTitle": "Feedback form",
   "submitButton": "Send feedback",
   "successMessage": "Thank you for your feedback!",
-  "errorMessage": "Something went wrong. Please try again or contact us at {email}."
+  "errorMessage": "Something went wrong. Please try again or contact us at {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Press Enter to select the rating",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Your rating: {selectedRating} out of {max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Not set",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} out of {max}"
 }

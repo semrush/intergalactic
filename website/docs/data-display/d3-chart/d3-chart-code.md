@@ -348,6 +348,7 @@ const Demo = () => {
       patterns={customPattern}
       showDots
       showTooltip
+      aria-label="Area chart"
     />
   );
 };

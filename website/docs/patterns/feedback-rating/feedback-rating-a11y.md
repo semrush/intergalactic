@@ -11,13 +11,16 @@ The following list describes roles and attributes that component already has.
 
 Table: Roles and attributes
 
-| Component      | Role     | Attribute                                                                                   |
-| -------------- | -------- | ------------------------------------------------------------------------------------------- |
-| `Notice`       | `region` | `aria-label="Leave feedback"`                                                               |
-| `Notice.Label` |          | `aria-hidden={true}`                                                                        |
-| `Notice.Close` | `button` | `aria-label` comes from [Notice](/components/notice/notice-a11y).                           |
-| `SliderRating` | `slider` | `aria-label={notificationText}`                                                             |
-| `SliderRating` | `slider` | All aria attributes are the same as those the [Slider](/components/slider/slider-a11y) has. |
+| Element         | Attribute                                                          | Usage                                                               |
+| --------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `Notice`        | `aria-label="Leave feedback"`                                      | Defines an accessible name for the notice. |
+|                 |  | Other attributes in [Notice A11y](/components/notice/notice-a11y). |
+| `SliderRating`  | `aria-label={notificationText}`                                    | Defines an accessible name for the slider. |
+|                 |  | Other attributes in [Slider A11y](/components/slider/slider-a11y).   |
+| `Modal`         | `aria-labelledby="IDREF"`                                          | Defines an accessible name for the modal by referring to its title. |
+|                 |  | Other attributes in [Modal A11y](/components/notice/modal-a11y).     |
+| `Modal` > `div` | `role="group"`                                                     | Groups the checkboxes together. |
+|                 | `aria-labelledby="IDREF"`                                          | Defines an accessible name for the checkbox group by referring to the dialog title. |
 
 FeedbackRating form pattern consists of several components that have their own accessibility requirements. You can find more about each of them in their guides:
 
@@ -40,4 +43,4 @@ See detailed information about the keyboard support for the all form elements in
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the common [Accessibility guide](/core-principles/a11y/a11y).
