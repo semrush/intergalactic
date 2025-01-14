@@ -71,10 +71,10 @@ class CheckboxRoot extends Component {
   }
 
   render() {
-    const SCheckboxRoot = Root;
     const { Children, children: hasChildren, styles, uid } = this.asProps;
-    const checkboxID = `checkbox-${uid}`;
+    const SCheckboxRoot = Root;
     const SLabel = Checkbox.Text;
+    const checkboxID = `checkbox-${uid}`;
 
     return sstyled(styles)(
       <SCheckboxRoot
