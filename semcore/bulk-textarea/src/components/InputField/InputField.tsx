@@ -373,7 +373,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         firstNode.replaceWith(firstRow);
 
         selection?.setPosition(firstRow, nodeText.length);
-      } else if (!firstNode || firstNode instanceof HTMLBRElement) {
+      } else if (!firstNode || (firstNode instanceof HTMLBRElement && nodes.length === 1)) {
         this.textarea.textContent = '';
       } else if (firstNode instanceof HTMLParagraphElement && !firstNode.textContent?.trim()) {
         if (nodes.length <= 1 || secondNode instanceof HTMLBRElement) {
@@ -423,6 +423,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
               this.setSelection(rowNode.childNodes.item(0), offset, offset);
             }
           }
+        } else if (childNodes.length === 1 && childNodes[0] instanceof HTMLBRElement) {
+          rowNode.innerHTML = this.emptyRowValue;
         }
 
         const { errors, showErrors } = this.asProps;
