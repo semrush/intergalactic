@@ -536,6 +536,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             this.validateRow(currentNode.previousSibling);
           }
 
+          if (row.textContent?.trim() !== '') {
+            this.recalculateRowsCount();
+          }
+
           setTimeout(() => {
             this.recalculateErrors();
             onEnterNextRow();
