@@ -35,10 +35,11 @@ test.describe('Add filter button', () => {
 
     await test.step('Verify filter list exapnded by click on Add filter', async () => {
       await locators.addFilterBtn.click();
+      await expect(locators.addFilterListItem('Color')).toBeVisible();
       await expect(page).toHaveScreenshot();
       await locators.addFilterListItem('Color').click();
-      await expect(page).toHaveScreenshot();
       await expect(locators.addFilterSelectTrigger('Color')).toBeFocused();
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step('Verify filter hidden and filters list exapnded when cliking on Add filter', async () => {
@@ -50,7 +51,7 @@ test.describe('Add filter button', () => {
 
     await test.step('Verify filter removes and filters list remain hidden when clicking outside', async () => {
       await locators.addFilterListItem('Color').click();
-      const box = await page.$eval('div.___SFlex_11pya_gg_', (el: any) => {
+      const box = await page.$eval('div.___SFlex_1wav9_gg_', (el: any) => {
         const rect = el.getBoundingClientRect();
         return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
       });
@@ -86,7 +87,6 @@ test.describe('Add filter button', () => {
       await page.keyboard.press('Enter');
 
       await expect(locators.addFilterSelectTrigger('Color')).toBeFocused();
-      //await expect(locators.addFilterSelectOption('Blue')).toBeFocused();
     });
 
     await test.step('Verify filter hidden, filters list not expanded and Add filter focused by ESC', async () => {
