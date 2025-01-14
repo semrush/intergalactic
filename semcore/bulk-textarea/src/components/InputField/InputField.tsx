@@ -570,6 +570,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.toggleErrorsPopperByKeyboard(0);
         this.setSelection(prevNode, 1, 1);
       }
+    } else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
     }
   }
 
