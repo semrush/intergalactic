@@ -29,7 +29,7 @@ There are two potential variants for the notice to appear:
 
 Session length can be defined as a time interval, the next page load, or an update of company data.
 
-### Location
+### Placement
 
 Typically, this component is positioned at the top of a report or product.
 

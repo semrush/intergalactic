@@ -186,7 +186,7 @@ Table: Notice content examples
 | Minimum possible elements | ![](static/notice-minimal.png) |
 | Maximum possible elements | ![](static/notice-monster.png) |
 
-## Location
+## Placement
 
 ### On page
 

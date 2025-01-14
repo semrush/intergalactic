@@ -36,7 +36,7 @@ The dropdown width can be defined in two ways.
 
 We recommended to avoid limiting the dropdown's height for the menus. It's important for the user to observe all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
 
-## Location
+## Placement
 
 The menu always drops down, regardless of space availability under the trigger. This behavior is necessary to enable accessible keyboard control of the menu.
 

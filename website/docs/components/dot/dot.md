@@ -101,7 +101,7 @@ Table: Dot sizes
 | L with a counter inside | ![](static/dot-on.png)               | Use it to mark controls from the outside and show the number of updates. |
 |                         | ![](static/xl-margins.png)           |                                                                          |
 
-## Location
+## Placement
 
 Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it is always has `transform: translate (30%, -30%)`.
 

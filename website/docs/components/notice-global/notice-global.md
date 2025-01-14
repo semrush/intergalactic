@@ -144,7 +144,7 @@ There's an `8px` (`--spacing-2x`) margin between the text and any buttons that f
 
 ![](static/gnotice-margins.png)
 
-## Location
+## Placement
 
 - Always position this notice above the main website header.
 - Stretch the notice to cover the full width of the screen.
