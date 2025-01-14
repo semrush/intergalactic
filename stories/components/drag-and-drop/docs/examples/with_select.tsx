@@ -63,41 +63,43 @@ const Demo = () => {
           </Counter>
         </Button.Addon>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Menu hMax={800}>
+      <DropdownMenu.Popper hMax={800} aria-labelledby={'popper_id'}>
         <DnD onDnD={handleDnD} aria-label={'drag-and-drop container'}>
           <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
-            <Text bold>Show table columns</Text>
-            <ButtonLink onClick={resetToDefault} role={'menuitem'}>
-              Reset to default
-            </ButtonLink>
-            <ButtonLink onClick={toggleAll} role={'menuitem'}>
+            <Text bold id={'popper_id'}>
+              Show table columns
+            </Text>
+            <ButtonLink onClick={resetToDefault}>Reset to default</ButtonLink>
+            <ButtonLink onClick={toggleAll}>
               {selectedColumns.length === columns.length ? 'Deselect' : 'Select'} all
             </ButtonLink>
           </Flex>
-          {columns.map((column, index) => (
-            <DropdownMenu.Item
-              tag={DnD.Draggable}
-              isCustomFocus={true}
-              key={column.id}
-              selected={selectedColumns.includes(column.id)}
-              onClick={(e) => {
-                if (
-                  e.target instanceof HTMLElement &&
-                  e.target.getAttribute('role') === 'menuitemcheckbox'
-                ) {
-                  if (!selectedColumns.includes(column.id)) {
-                    setSelectedColumns([...selectedColumns, column.id]);
-                  } else {
-                    setSelectedColumns(selectedColumns.filter((i) => i !== column.id));
+          <DropdownMenu.List hMax={800}>
+            {columns.map((column, index) => (
+              <DropdownMenu.Item
+                tag={DnD.Draggable}
+                isCustomFocus={true}
+                key={column.id}
+                selected={selectedColumns.includes(column.id)}
+                onClick={(e) => {
+                  if (
+                    e.target instanceof HTMLElement &&
+                    e.target.getAttribute('role') === 'menuitemcheckbox'
+                  ) {
+                    if (!selectedColumns.includes(column.id)) {
+                      setSelectedColumns([...selectedColumns, column.id]);
+                    } else {
+                      setSelectedColumns(selectedColumns.filter((i) => i !== column.id));
+                    }
                   }
-                }
-              }}
-            >
-              {column.label}
-            </DropdownMenu.Item>
-          ))}
+                }}
+              >
+                {column.label}
+              </DropdownMenu.Item>
+            ))}
+          </DropdownMenu.List>
         </DnD>
-      </DropdownMenu.Menu>
+      </DropdownMenu.Popper>
     </DropdownMenu>
   );
 };
