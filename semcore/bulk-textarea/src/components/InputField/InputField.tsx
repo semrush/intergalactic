@@ -566,7 +566,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     } else if (
       event.key === 'Backspace' &&
       currentNode instanceof HTMLParagraphElement &&
-      currentNode.textContent?.trim() === ''
+      currentNode.textContent?.trim() === '' &&
+      !this.isRangeSelection()
     ) {
       const prevNode = currentNode.previousSibling;
       if (prevNode) {
@@ -950,6 +951,15 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.setSelection(node, 0, node.childNodes.length);
       }
     }
+  }
+
+  private isRangeSelection(): boolean {
+    const selection = document.getSelection();
+
+    return (
+      selection?.focusNode !== selection?.anchorNode ||
+      selection?.focusOffset !== selection?.anchorOffset
+    );
   }
 }
 
