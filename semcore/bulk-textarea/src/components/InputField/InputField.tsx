@@ -288,21 +288,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       const focusElement = direction === 'forward' ? selection.focusNode : selection.anchorNode;
       const fromOffset = direction === 'forward' ? anchorOffset : focusOffset;
       const toOffset = direction === 'forward' ? focusOffset : anchorOffset;
-      const anchorNode = anchorElement?.parentElement;
-      const focusNode = focusElement?.parentElement;
+      const anchorNode =
+        anchorElement instanceof Text ? anchorElement.parentElement : anchorElement;
+      const focusNode = focusElement instanceof Text ? focusElement.parentElement : focusElement;
 
-      let paragraph = false;
       let textNode: ChildNode | null = null;
       let position: number | null = null;
-
-      if (
-        focusElement instanceof Text &&
-        focusNode instanceof HTMLParagraphElement &&
-        anchorElement instanceof Text &&
-        anchorNode instanceof HTMLParagraphElement
-      ) {
-        paragraph = true;
-      }
 
       if (focusElement === this.textarea) {
         this.textarea.replaceChildren(...listOfNodes);
@@ -310,7 +301,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         const lastNodeToInsert = listOfNodes[listOfNodes.length - 1];
         textNode = lastNodeToInsert.childNodes.item(0);
         position = (lastNodeToInsert.textContent ?? '').length;
-      } else if (paragraph && anchorNode && focusNode) {
+      } else if (
+        focusNode instanceof HTMLParagraphElement &&
+        anchorNode instanceof HTMLParagraphElement
+      ) {
         const before = anchorNode?.textContent?.trim().substring(0, fromOffset) ?? '';
         const after = focusNode?.textContent?.trim().substring(toOffset) ?? '';
 
