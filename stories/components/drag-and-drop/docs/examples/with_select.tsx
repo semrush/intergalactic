@@ -64,17 +64,17 @@ const Demo = () => {
         </Button.Addon>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper hMax={800} aria-labelledby={'popper_id'}>
-        <DnD onDnD={handleDnD} aria-label={'drag-and-drop container'}>
-          <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
-            <Text bold id={'popper_id'}>
-              Show table columns
-            </Text>
-            <ButtonLink onClick={resetToDefault}>Reset to default</ButtonLink>
-            <ButtonLink onClick={toggleAll}>
-              {selectedColumns.length === columns.length ? 'Deselect' : 'Select'} all
-            </ButtonLink>
-          </Flex>
-          <DropdownMenu.List hMax={800}>
+        <Flex direction='column' alignItems='flex-start' p={2} gap={2}>
+          <Text bold id={'popper_id'}>
+            Show table columns
+          </Text>
+          <ButtonLink onClick={resetToDefault}>Reset to default</ButtonLink>
+          <ButtonLink onClick={toggleAll}>
+            {selectedColumns.length === columns.length ? 'Deselect' : 'Select'} all
+          </ButtonLink>
+        </Flex>
+        <DropdownMenu.List hMax={800}>
+          <DnD onDnD={handleDnD} aria-label={'drag-and-drop container'}>
             {columns.map((column, index) => (
               <DropdownMenu.Item
                 tag={DnD.Draggable}
@@ -97,8 +97,8 @@ const Demo = () => {
                 {column.label}
               </DropdownMenu.Item>
             ))}
-          </DropdownMenu.List>
-        </DnD>
+          </DnD>
+        </DropdownMenu.List>
       </DropdownMenu.Popper>
     </DropdownMenu>
   );
