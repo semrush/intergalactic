@@ -138,6 +138,6 @@ SText {
 }
 
 SText[withoutTitle] {
-  margin-top: var(--intergalactic-spacing-05x, 2px);
-  margin-bottom: var(--intergalactic-spacing-05x, 2px);
+  margin-top: var(--intergalactic-spacing-05x, 4px);
+  margin-bottom: var(--intergalactic-spacing-05x, 4px);
 }
