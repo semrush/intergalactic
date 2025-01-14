@@ -12,12 +12,12 @@ Let's compare NoticeBubble with [Notice](/components/notice/notice) and [NoticeG
 
 Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
-| Criteria         | Notice | NoticeBubble | NoticeGlobal |
-| ---------------- | ------ | ------------ | ------------ |
-| Refers to the entire website      | ❌     | ✅ ❌        | ✅           |
-| **Global**: Refers to pages, blocks, or large components rather than specific elements | ✅     | ✅ ❌        | ✅           |
-| **Important**: Missing the notice may result in missed opportunities or loss of data | ✅     | ❌           | ✅           |
-| **Temporary**: Appears and disappears under certain conditions, not a default block element         | ✅     | ✅           | ✅           |
+| Criteria                                                                                    | Notice | NoticeBubble | NoticeGlobal |
+| ------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
+| Refers to the entire website                                                                | ❌     | ✅ ❌        | ✅           |
+| **Global**: Refers to pages, blocks, or large components rather than specific elements      | ✅     | ✅ ❌        | ✅           |
+| **Important**: Missing the notice may result in missed opportunities or loss of data        | ✅     | ❌           | ✅           |
+| **Temporary**: Appears and disappears under certain conditions, not a default block element | ✅     | ✅           | ✅           |
 
 **This component includes:**
 
@@ -48,27 +48,27 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 Table: NoticeBubble types
 
-| Type     | Description | Appearance example |
-| -------- | ----------- | ------------------ |
-| **Info** | This type is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. | ![](static/text1.png) |
-| **Warning** | This type is used to alert users when a connection is lost. | ![](static/notice.png) |
+| `type`    | Description                                                                                                                             | Appearance example     |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `info`    | This type is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. | ![](static/text1.png)  |
+| `warning` | This type is used to alert users when a connection is lost.                                                                             | ![](static/notice.png) |
 
 ### Use cases for NoticeBubble types
 
 Table: Use cases for NoticeBubble types
 
-| Use case | Description | Appearance example |
-| -------- | ----------- | ------------------ |
-| **Basic** | This type of notification is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. It can also be used to notify about changes to content in other parts of the report that are not currently being viewed. | ![](static/text1.png) |
-| **Undo action** | This notification is used for completed actions with an option to cancel them. It is ideal for scenarios involving moving or deleting items. Use the button with `use="secondary"`, `theme="invert"`, and with M size for this purpose. | ![](static/default.png) |
-| **Reload action** | The button name may change based on the context. |![](static/reload-btn.png) |
-| **Loading state** | If the undo process takes time, display an intermediate loading state where the user cannot take any action. Use [Spin](/components/spin/spin) with size XS. However, refrain from using this state to display any other processes in the interface; instead, opt for the [ProgressBar](/components/progress-bar/progress-bar) in such cases. | ![](static/default-loading.png) |
-| **Completion state** | Upon successful completion, show a notification that confirms the undo action (use an icon with M size). The height of the notification should be the same as the previous state. Refer to the animation description below for recommendations on animation and timing. | ![](static/default-success.png) |
-| **Success** | This type of notification is suitable for conveying the success of user actions within the interface. It includes an additional colored icon to quickly convey the response of the interface to the user's actions without relying on reading the text. | ![](static/success-notice.png) |
-| **Failure** | This type of notification is suitable for conveying the failure of user actions within the interface. | ![](static/warning-notice.png) |
-| **No connection** | For systems capable of monitoring the network connection on their own, use a notice without a button. | ![](static/notice.png) |
-| **No connection with action** | For interfaces unable to monitor the network connection and requiring a page refresh, utilize a notice with the "Reload the page" button. | ![](static/reload.png) |
-| **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement. | ![](static/event-alert.png) |
+| Use case                       | Description                                                                                                                                                                                                                                                                                                                                   | Appearance example              |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| **Basic**                      | This type of notification is used to inform the user about the beginning or completion of a process that remains hidden from the user in the interface. It can also be used to notify about changes to content in other parts of the report that are not currently being viewed.                                                              | ![](static/text1.png)           |
+| **Undo action**                | This notification is used for completed actions with an option to cancel them. It is ideal for scenarios involving moving or deleting items. Use the button with `use="secondary"`, `theme="invert"`, and with M size for this purpose.                                                                                                       | ![](static/default.png)         |
+| **Reload action**              | The button name may change based on the context.                                                                                                                                                                                                                                                                                              | ![](static/reload-btn.png)      |
+| **Loading state**              | If the undo process takes time, display an intermediate loading state where the user cannot take any action. Use [Spin](/components/spin/spin) with size XS. However, refrain from using this state to display any other processes in the interface; instead, opt for the [ProgressBar](/components/progress-bar/progress-bar) in such cases. | ![](static/default-loading.png) |
+| **Completion state**           | Upon successful completion, show a notification that confirms the undo action (use an icon with M size). The height of the notification should be the same as the previous state. Refer to the animation description below for recommendations on animation and timing.                                                                       | ![](static/default-success.png) |
+| **Success**                    | This type of notification is suitable for conveying the success of user actions within the interface. It includes an additional colored icon to quickly convey the response of the interface to the user's actions without relying on reading the text.                                                                                       | ![](static/success-notice.png)  |
+| **Failure**                    | This type of notification is suitable for conveying the failure of user actions within the interface.                                                                                                                                                                                                                                         | ![](static/warning-notice.png)  |
+| **No connection**              | For systems capable of monitoring the network connection on their own, use a notice without a button.                                                                                                                                                                                                                                         | ![](static/notice.png)          |
+| **No connection with action**  | For interfaces unable to monitor the network connection and requiring a page refresh, utilize a notice with the "Reload the page" button.                                                                                                                                                                                                     | ![](static/reload.png)          |
+| **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement.                                                                                                                                                        | ![](static/event-alert.png)     |
 
 ## Appearance
 
@@ -105,7 +105,7 @@ Minimize the number of notifications to prevent banner blindness and irritation 
 ### Displaying duration and hiding
 
 - Users can close the notice by clicking on the **Close** button in the upper-right corner.
-- If there are *no* interactive elements in the notice beside the **Close** button, hide the notice automatically after 4–10 seconds, depending on the amount of text inside.
+- If there are _no_ interactive elements in the notice beside the **Close** button, hide the notice automatically after 4–10 seconds, depending on the amount of text inside.
 - If there are interactive elements in the notice beside the **Close** button, don't hide the notice until it becomes irrelevant, or the user closes it or interacts with one of its interactive elements.
 - If the notice is closed automatically by a timer, hovering the mouse over it (`onMouseEnter`) will reset the timer, and the countdown will start again after moving the mouse away from the notice.
 
@@ -129,6 +129,5 @@ You can show several notices at a time if necessary, but use this option thought
 - This notification acts as a separate alert and has the highest priority. Therefore, when it appears, all other user and system notifications appear below it. Each subsequent notification will overlap the previous one.
 - The notice automatically closes when the connection is restored.
 - There are two options for this notice type:
-    1. For interfaces that can monitor the network connection themselves, use a notification without a button.
-    2. For interfaces that cannot monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.
-
+  1. For interfaces that can monitor the network connection themselves, use a notification without a button.
+  2. For interfaces that cannot monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.

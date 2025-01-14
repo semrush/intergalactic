@@ -107,7 +107,7 @@ Mini chart has two types:
 
 Table: Mini chart types
 
-| type    | Appearance example    | Description                                                                                                                           |
+| `type`  | Appearance example    | Description                                                                                                                           |
 | ------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `trend` | ![](static/trend.png) | Use to show trend from a list of values.                                                                                              |
 | `score` | ![](static/score.png) | Use to visualize some value or to indicate if something (in per cents or absolute numbers) is good/bad, high/low, above average, etc. |
