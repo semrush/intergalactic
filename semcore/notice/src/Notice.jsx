@@ -129,11 +129,9 @@ function Title({ styles }) {
   return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight={'bold'} />);
 }
 
-function NoticeText({ styles, Children }) {
+function NoticeText({ styles }) {
   const SText = Root;
-  const withoutTitle = !findComponent(Children, [Notice.Title]);
-
-  return sstyled(styles)(<SText render={Text} tag='div' withoutTitle={withoutTitle} />);
+  return sstyled(styles)(<SText render={Text} tag='div' />);
 }
 
 function Actions({ styles }) {
