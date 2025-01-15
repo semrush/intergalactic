@@ -1,10 +1,11 @@
-import React, { cloneElement, useEffect } from 'react';
-import createComponent, { IFunctionProps, Intergalactic, UnknownProperties } from '@semcore/core';
-import { getNodeByRef, NodeByRef, useForkRef } from '@semcore/utils/lib/ref';
-import ownerDocument from '@semcore/utils/lib/ownerDocument';
-import useEventCallback from '@semcore/utils/lib/use/useEventCallback';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import { getEventTarget } from '@semcore/utils/lib/getEventTarget';
+import React, { cloneElement } from 'react';
+import { createComponent } from '../../coreFactory';
+import { IFunctionProps, Intergalactic, UnknownProperties } from '../../types';
+import { getNodeByRef, NodeByRef, useForkRef } from '../../utils/ref';
+import ownerDocument from '../../utils/ownerDocument';
+import getOriginChildren from '../../utils/getOriginChildren';
+import { getEventTarget } from '../../utils/getEventTarget';
+import useEventCallback from '../../utils/use/useEventCallback';
 
 /** @deprecated */
 export interface IOutsideClickProps extends OutsideClickProps, UnknownProperties {}
@@ -31,7 +32,7 @@ type OutsideClickEvents = { [key in 'mouseup' | 'mousedown']: EventListenerOrEve
 type RootEventsPair = [Element | Document, OutsideClickEvents];
 
 const noop = () => {};
-function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
+function OutsideClickRoot(props: IFunctionProps<IOutsideClickProps>) {
   const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef<Node | null>(null);
@@ -62,7 +63,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
       return;
     }
 
-    OutsideClick.eventsMap.forEach(([rootElement, events]) => {
+    OutsideClickRoot.eventsMap.forEach(([rootElement, events]) => {
       Object.entries(events).forEach(([eventName, handler]) => {
         const method = status ? 'addEventListener' : 'removeEventListener';
         rootElement[method](eventName, handler, true);
@@ -81,7 +82,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     outsideRoot?.addEventListener('mousedown', handleMouseDown, true);
 
     if (outsideRoot) {
-      OutsideClick.eventsMap.push([
+      OutsideClickRoot.eventsMap.push([
         outsideRoot,
         {
           mouseup: handleOutsideClick,
@@ -92,7 +93,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
 
     return () => {
       if (outsideRoot) {
-        OutsideClick.eventsMap.pop();
+        OutsideClickRoot.eventsMap.pop();
       }
 
       outsideRoot?.removeEventListener('mouseup', handleOutsideClick, true);
@@ -106,10 +107,10 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   return children ? cloneElement(children, { ref: handleRef }) : null;
 }
 
-OutsideClick.displayName = 'OutsideClick';
-OutsideClick.eventsMap = [] as RootEventsPair[];
+OutsideClickRoot.displayName = 'OutsideClick';
+OutsideClickRoot.eventsMap = [] as RootEventsPair[];
 
-export default createComponent(OutsideClick) as Intergalactic.Component<
+export const OutsideClick = createComponent(OutsideClickRoot) as Intergalactic.Component<
   Intergalactic.Tag,
   OutsideClickProps
 >;
