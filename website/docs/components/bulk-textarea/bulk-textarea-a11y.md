@@ -15,8 +15,16 @@ Table: Roles and attributes
 
 | Component               | Role / Attribute        | Usage                                                        |
 | ----------------------- | ----------------------- | ------------------------------------------------------------ |
-| `BulkTextarea.Textarea` | `textbox`               | Identifies an field that allows the input of free-form text. |
+| `BulkTextarea.InputField` | `textbox`               | Identifies an field that allows the input of free-form text. |
 |                         | `aria-multiline=”true”` | Indicates that a textbox accepts multiple lines of input.    |
+| CHECK if it is about rows | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Keyword {2}", on each keyboard navigation (Up/Down key) within the textbox rows without errors. |
+| `BulkTextarea.Counter` | `aria-label="{n} out of {n}"` | Sets an accessible name for the element. |
+| | `"aria-label={n} out of {n}, limit reached"` | Sets an accessible name for the element. |
+| | `"aria-label={n} out of {n}, limit exceeded"` | Sets an accessible name for the element. |
+| Buttons inside `BulkTextarea.ErrorsNavigation` | `aria-label="Next error"`, `aria-label="Previous error"` | Sets an accessible names for the elements. |
+| CHECK | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Error {n} out of {n}", while navigating between the errors using buttons. |
+| CHECK IF NEEDED `BulkTextarea.ErrorItem` | `aria-hidden="true"` | Hides noninteractive icon from the assistive technologies. |
+
 
 ### Keyboard support
 

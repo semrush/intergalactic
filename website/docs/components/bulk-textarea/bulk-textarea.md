@@ -68,15 +68,15 @@ You can set your own validation rules for how invalid values are counted in the 
 - On new line
 - On blur
 - On submit
-- Immediately on entering at least one character (we don't recommend this)
+- Immediately on entering at least one character _(we don't recommend this)_
 
-### Values near and above limit
+### Values that reached or exceeded limit
 
 When the number of values reaches the limit, the counter changes its theme to `warning`.
 
 ![](static/values-limit.png)
 
-Rows with values that exceed the limit are highlighted. Counter changes its theme to `danger`.
+Rows with values that exceed the limit are highlighted, and counter changes its theme to `danger`.
 
 ![](static/values-off-limit.png)
 
@@ -96,17 +96,17 @@ Error navigation shows up after all the values or a single value (depending on t
 
 ![](static/bulktextarea-error-navigation.png)
 
-When a button is clicked, the cursor moves to the first or last invalid row, depending on the button. The entire row's value is selected for quick deletion. The text next to the navigation buttons updates to _"Error n out of n"_ when the cursor is moved using the buttons, keyboard, or mouse.
+CHECK THIS: **When a button is clicked, the cursor moves to the first or last invalid row, depending on the button.** The entire row's value is selected for quick deletion. The text next to the navigation buttons updates to _"Error {n} out of {n}"_ when the cursor is moved using the buttons, keyboard, or mouse.
 
 ![](static/bulktextarea-error-navigation-1.png)
 
-When navigating between invalid rows, the text next to the buttons is updated. If you move from an invalid row to a valid row, the counter in the text stays the same.
+When navigating between invalid rows, the text next to the buttons is updated. If you move from an invalid row to a valid row, the counter in the errors navigation buttons stays the same.
 
 ### Resize control
 
 You can enable the resize control for the textarea, allowing users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
-When the textarea cannot be stretched further, a scrollbar will appear after a certain number of rows. We recommend adding scrollbars when the textarea has at least 5 rows.
+When the textarea cannot be stretched further, a scrollbar will appear after a certain number of rows.
 
 ::: tip
 Avoid making the textarea smaller than 160–200px in width and 3–4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
@@ -120,7 +120,7 @@ BulkTextarea has the same states and styles as [Textarea](/components/textarea/t
 
 ### Validation
 
-You can define your own validation rules for the input: instant, on submit, onBlur, or on line break. By default, our component uses instant validation.
+**CHECK THIS** You can define your own validation rules for the input: instant, on submit, onBlur, or on new line. By default, our component uses on new line validation.
 
 ### Tooltips
 
