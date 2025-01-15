@@ -1,4 +1,5 @@
 {
   "AddFilter.DropdownTrigger.Text": "Add filter",
-  "AddFilter.Button.Text": "Clear filters"
+  "AddFilter.Button.Text": "Clear filters",
+  "AddFilter.ScreenReaderMessage.FiltersCleared": "Filters cleared"
 }

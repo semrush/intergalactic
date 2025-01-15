@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from '@semcore/flex-box';
+import { Flex, ScreenReaderOnly } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import createComponent, { Component, Root } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -34,6 +34,7 @@ type ClearAllFiltersButtonProps = {
 type AddFilterState = {
   visibleFilters: Set<string>;
   addDropdownItems: AddFilterDropdownOption[];
+  clearFiltersMessage: string;
 };
 
 class RootAddFilter extends Component<
@@ -43,6 +44,8 @@ class RootAddFilter extends Component<
   typeof RootAddFilter.enhance
 > {
   AddFilterTrigger = React.createRef<HTMLButtonElement>();
+  clearMessageTimer: ReturnType<typeof setTimeout> | undefined;
+
   static displayName = 'AddFilter';
   static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
   static defaultProps = {
@@ -70,7 +73,12 @@ class RootAddFilter extends Component<
     this.state = {
       visibleFilters: new Set(),
       addDropdownItems: RootAddFilter.getDefaultAddDropdownOptions(props.children),
+      clearFiltersMessage: '',
     };
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.clearMessageTimer);
   }
 
   focusAddFilterTrigger() {
@@ -148,6 +156,19 @@ class RootAddFilter extends Component<
       visibleFilters: new Set(),
     });
     this.props.onClearAll();
+    this.announceClearMessageToSR();
+  }
+
+  announceClearMessageToSR() {
+    const { getI18nText } = this.asProps;
+    const clearFiltersMessage = getI18nText('AddFilter.Message.FiltersCleared');
+    this.setState({ clearFiltersMessage });
+
+    setTimeout(() => {
+      this.clearMessageTimer = setTimeout(() => {
+        this.setState({ clearFiltersMessage: '' });
+      }, 300);
+    });
   }
 
   toggleFieldVisibility(name: string, status: boolean) {
@@ -206,6 +227,10 @@ class RootAddFilter extends Component<
         {VisibleFilteredChildren}
         <AddFilterDropdownMenu {...dropdownProps} />
         <ClearAllFilters {...clearAllFiltersProps} />
+
+        <ScreenReaderOnly aria-live='polite' role='status'>
+          {this.state.clearFiltersMessage}
+        </ScreenReaderOnly>
       </Root>
     );
   }
