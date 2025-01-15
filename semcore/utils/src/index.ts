@@ -1,5 +1,3 @@
 throw new Error(`
-Don't import the main file!
-Import specific utils, example:
-'import resolveColor from "@semcore/lib/color"'
+From the 16th version, import utils from @semcore/core package.
 `);

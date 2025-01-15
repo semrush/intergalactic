@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "4.44.1",
+  "version": "16.0.0",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
-    "@semcore/core": "^2",
+    "@semcore/core": "^16",
     "@semcore/testing-utils": "1.0.0",
     "@types/classnames": "2.2.6",
     "@types/hoist-non-react-statics": "^3.3.1",
@@ -31,8 +31,7 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/core": "^16.0.0"
   },
   "repository": {
     "type": "git",

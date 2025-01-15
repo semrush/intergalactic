@@ -12,17 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0",
-    "react": "16.8 - 18",
-    "react-dom": "16.8 - 18"
+    "@semcore/core": "^16.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/animation"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/testing-utils": "1.0.0"
   }
 }
