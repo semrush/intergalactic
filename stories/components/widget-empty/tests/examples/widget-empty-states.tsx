@@ -5,7 +5,6 @@ import { Box, Flex } from '@semcore/flex-box';
 const Demo = () => {
   return (
     <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
-      {/* Первая колонка */}
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
         <WidgetEmpty icon={getIconPath('nothing-found')}>
           <WidgetEmpty.Title>Icon, title and description. We have no data to show</WidgetEmpty.Title>
@@ -26,7 +25,6 @@ const Demo = () => {
         </WidgetEmpty>
       </Box>
 
-      {/* Вторая колонка */}
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
         <WidgetEmpty icon={getIconPath('good')}>
           Icon and text. The project specified for this widget no longer exists.

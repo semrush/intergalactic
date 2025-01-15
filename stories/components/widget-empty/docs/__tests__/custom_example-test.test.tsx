@@ -18,7 +18,6 @@ export async function CustomExampleTest({ canvasElement }: { canvasElement: HTML
     await expect(iconImage).toHaveAttribute('alt', '');
 
     const iconWrapper = iconImage.closest('div.___SImage_1jkvg_gg_') as HTMLElement | null;
-    
 
     if (iconWrapper) {
       await expect(iconWrapper).toBeVisible();

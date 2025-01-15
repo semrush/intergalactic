@@ -10,12 +10,9 @@ import { Box, Flex } from '@semcore/flex-box';
 const Demo = () => {
 
     return (
-     
-           <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
-           <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
 
-
-
+        <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
+            <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
                     <WidgetEmpty.Description>
                         Icon, description and link. [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
@@ -27,8 +24,6 @@ const Demo = () => {
 
                 </WidgetEmpty>
 
-             
-
                 <WidgetEmpty>
                     <WidgetEmpty.Description>
                         The project no longer exists. Icon, description and ButtonLink. The project no longer exists. Icon, description and ButtonLink.
@@ -48,8 +43,8 @@ const Demo = () => {
                     </WidgetEmpty.Description>
 
                 </WidgetEmpty>
-</Box>
-<Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
+            </Box>
+            <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
 
                 <WidgetEmpty >
                     <WidgetEmpty.Title>
@@ -61,8 +56,6 @@ const Demo = () => {
 
                 </WidgetEmpty>
 
-              
-
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
                     <WidgetEmpty.Title>
                         The project no longer exists. Icon, description and ButtonLink. The project no longer exists. Icon, description and ButtonLink.
@@ -72,10 +65,10 @@ const Demo = () => {
                     </WidgetEmpty.Title>
                 </WidgetEmpty>
 
-</Box>
+            </Box>
 
-            </Flex>
-       
+        </Flex>
+
     );
 };
 

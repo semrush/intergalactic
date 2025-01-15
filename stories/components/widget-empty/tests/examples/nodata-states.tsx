@@ -7,7 +7,6 @@ import Button, { ButtonLink } from '@semcore/button';
 const Demo = () => {
   return (
     <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
-      {/* Первая колонка */}
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
 
         <NoData
@@ -33,9 +32,8 @@ const Demo = () => {
 
       </Box>
 
-      {/* Вторая колонка */}
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
-       
+
 
         <NoData>NoData</NoData>;
 
@@ -48,19 +46,19 @@ const Demo = () => {
           }
         />
 
-<NoData
-              description={
-                <>
-                  Please try again later. If the problem persists, contact us at{' '}
-                </>
-              }
-            >
-              <Box mt={4}>
-                <Button >
-                  <Button.Text>Reload page</Button.Text>
-                </Button>
-              </Box>
-            </NoData >
+        <NoData
+          description={
+            <>
+              Please try again later. If the problem persists, contact us at{' '}
+            </>
+          }
+        >
+          <Box mt={4}>
+            <Button >
+              <Button.Text>Reload page</Button.Text>
+            </Button>
+          </Box>
+        </NoData >
       </Box>
     </Flex>
 

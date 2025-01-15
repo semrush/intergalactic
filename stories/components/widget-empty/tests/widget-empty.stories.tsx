@@ -20,21 +20,21 @@ type Story = StoryObj<typeof WidgetEmpty>;
 
 
 export const WidgetEmptyCases: Story = {
-    render: WidgetEmptyCasesExample,
-  };
+  render: WidgetEmptyCasesExample,
+};
 
-  export const WidgetEmptyWithControlsCases: Story = {
-    render: WidgetEmptyWithControlsCasesExample,
-  };
+export const WidgetEmptyWithControlsCases: Story = {
+  render: WidgetEmptyWithControlsCasesExample,
+};
 
-  export const WidgetEmptyWithLinks: Story = {
-    render: WidgetEmptyWithLinksExample,
-  };
+export const WidgetEmptyWithLinks: Story = {
+  render: WidgetEmptyWithLinksExample,
+};
 
-  export const ErrorStates: Story = {
-    render: ErrorStatesExample,
-  };
+export const ErrorStates: Story = {
+  render: ErrorStatesExample,
+};
 
-  export const NoData: Story = {
-    render: NoDataExample,
-  };
+export const NoData: Story = {
+  render: NoDataExample,
+};

@@ -9,7 +9,7 @@ import { Box, Flex } from '@semcore/flex-box';
 const Demo = () => {
 
     return (
-     
+
         <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
             <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
@@ -49,8 +49,8 @@ const Demo = () => {
                         </Button>
                     </Box>
                 </WidgetEmpty>
-</Box>
-<Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
+            </Box>
+            <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
                     <WidgetEmpty.Title>
                         [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
@@ -92,9 +92,9 @@ const Demo = () => {
                         </Button>
                     </Box>
                 </WidgetEmpty>
-</Box>
-            </Flex>
-     
+            </Box>
+        </Flex>
+
     );
 };
 
