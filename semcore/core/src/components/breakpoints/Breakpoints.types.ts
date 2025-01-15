@@ -1,12 +1,12 @@
 import React from 'react';
-import { UnknownProperties } from '@semcore/core';
+import { UnknownProperties } from '../../types';
 
 type listenerType = (index: number) => void;
 type mediaType = string[];
 
 /** @deprecated */
 export interface IMediaList extends MediaList, UnknownProperties {}
-export type MediaList = {
+export type Media = {
   /** Destroy the subscription to the window.matchMedia */
   destructor(): void;
 

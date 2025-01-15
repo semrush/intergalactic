@@ -1,5 +1,5 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps, FlexProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '../../types';
+import { BoxProps, FlexProps } from '../flex-box';
 
 /* utils type */
 
