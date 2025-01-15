@@ -4,7 +4,7 @@ import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
+    <Flex direction="row" gap={6} alignItems="flex-start" justifyContent="space-between">
       <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
         <WidgetEmpty icon={getIconPath('nothing-found')}>
           <WidgetEmpty.Title>Icon, title and description. We have no data to show</WidgetEmpty.Title>

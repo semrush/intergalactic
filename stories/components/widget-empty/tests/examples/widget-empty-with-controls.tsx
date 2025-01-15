@@ -10,7 +10,7 @@ const Demo = () => {
 
     return (
 
-        <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
+        <Flex direction="row" gap={6} alignItems="flex-start"  justifyContent="space-between">
             <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
                     <WidgetEmpty.Title>Icon, title, description and button. Set up your [Tool Name]</WidgetEmpty.Title>
