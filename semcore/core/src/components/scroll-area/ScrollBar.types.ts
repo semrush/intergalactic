@@ -1,6 +1,6 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
-import { NodeByRef } from '@semcore/utils/lib/ref';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '../../types';
+import { Box, BoxProps } from '../flex-box';
+import { NodeByRef } from '../../utils/ref';
 
 /** @deprecated */
 export interface IScrollAreaProps extends ScrollAreaProps, UnknownProperties {}
@@ -20,6 +20,10 @@ export type ScrollAreaProps = BoxProps & {
   /** Tab index that is being bypassed to the scroll container. */
   tabIndex?: number | null;
 
+  /**
+   * @deprecated
+   */
+  forcedAdvancedMode?: boolean;
   /**
    * Flag to enable resizing if the parent of ScrollArea is resized
    * @default false
@@ -45,7 +49,12 @@ export type ScrollBarProps = BoxProps & {
   /** The direction of the scroll that can be calculated automatically  */
   orientation?: 'horizontal' | 'vertical';
   /** Link to the dom element, which will be a container with overflow */
-  container?: NodeByRef;
+  container?: React.MutableRefObject<HTMLElement>;
+
+  /** Internal type */
+  // horizontalBarRef?: React.MutableRefObject<HTMLElement>;
+  // /** Internal type */
+  // verticalBarRef?: React.MutableRefObject<HTMLElement>;
 };
 
 /** @deprecated */
@@ -55,6 +64,9 @@ export type ScrollBarContext = ScrollBarProps & {
 };
 
 export type ScrollAreaContainerProps = BoxProps & {
+  /** Inner prop */
+  $refInner?: React.RefObject<any>;
+
   focusRingTopOffset?: string;
   focusRingRightOffset?: string;
   focusRingBottomOffset?: string;
@@ -70,9 +82,8 @@ declare const ScrollArea: Intergalactic.Component<'div', ScrollAreaProps, Scroll
   Bar: typeof ScrollBar;
 };
 
-declare const eventCalculate: any;
+declare const eventCalculate: Event;
 
 declare const hideScrollBarsFromScreenReadersContext: React.Context<boolean>;
 
-export { eventCalculate, hideScrollBarsFromScreenReadersContext };
-export default ScrollArea;
+export { eventCalculate, hideScrollBarsFromScreenReadersContext, ScrollBar, ScrollArea };

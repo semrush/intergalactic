@@ -282,6 +282,7 @@ export namespace Intergalactic {
       __props: Props;
       __context: Context;
       __additionalContext: AdditionalContext;
+      displayName: string;
     };
     export type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
       T extends React.DetailedHTMLProps<infer _, infer Element> ? Element : HTMLElement;

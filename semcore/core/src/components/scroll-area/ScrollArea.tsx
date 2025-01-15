@@ -1,33 +1,47 @@
-import React from 'react';
+import React, { ForwardedRef } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import trottle from '@semcore/utils/lib/rafTrottle';
-import { getNodeByRef } from '@semcore/utils/lib/ref';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import BarRoot, { setAreaValue } from './ScrollBar';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { createComponent } from '../../coreFactory';
+import { Component, IRootComponentProps, Root } from '../../types';
+import { sstyled } from '../../styled';
+import { Box } from '../flex-box';
+
+import trottle from '../../utils/rafTrottle';
+import { getNodeByRef } from '../../utils/ref';
+import { isAdvanceMode } from '../../utils/findComponent';
+import { callAllEventHandlers } from '../../utils/assignProps';
+import { setAreaValue } from './ScrollBar';
+import keyboardFocusEnhance from '../../utils/enhances/keyboardFocusEnhance';
+import canUseDOM from '../../utils/canUseDOM';
+import uniqueIDEnhancement from '../../utils/uniqueID';
 
 import style from './style/scroll-area.shadow.css';
+import {
+  ScrollAreaProps,
+  ScrollArea as ScrollAreaType,
+  ScrollAreaContainerProps,
+} from './ScrollBar.types';
+import { ScrollBar } from './ScrollBar';
 
-let eventCalculate = undefined;
+let eventCalculate: Event | undefined = undefined;
 if (typeof window !== 'undefined') {
   eventCalculate = new Event('calculate');
 }
 
-const BoxWithoutPosition = React.forwardRef(({ position, ...props }, ref) => (
-  <Box ref={ref} {...props} />
-));
+const BoxWithoutPosition = React.forwardRef(
+  ({ position, ...props }: any, ref: ForwardedRef<HTMLElement>) => <Box ref={ref} {...props} />,
+);
 
-class ScrollAreaRoot extends Component {
+type State = {
+  shadowHorizontal: boolean | string;
+  shadowVertical: boolean | string;
+};
+
+class ScrollAreaRoot extends Component<ScrollAreaProps, {}, State, typeof ScrollAreaRoot.enhance> {
   static displayName = 'ScrollArea';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()];
+  static enhance = [uniqueIDEnhancement(), keyboardFocusEnhance()] as const;
 
   static defaultProps = () => ({
     container: React.createRef(),
@@ -36,25 +50,29 @@ class ScrollAreaRoot extends Component {
     observeParentSize: false,
   });
 
-  $wrapper = null;
-  observer = null;
-  horizontalBarRef = React.createRef();
-  verticalBarRef = React.createRef();
+  $wrapper: HTMLElement | null = null;
+  observer: ResizeObserver | null = null;
+  horizontalBarRef = React.createRef<HTMLElement>();
+  verticalBarRef = React.createRef<HTMLElement>();
 
-  get $container() {
-    return getNodeByRef(this.asProps.container);
+  get $container(): HTMLElement | null {
+    const element = getNodeByRef(this.asProps.container!);
+
+    return element instanceof HTMLElement ? element : null;
   }
 
-  get $inner() {
-    return getNodeByRef(this.asProps.inner);
+  get $inner(): HTMLElement | null {
+    const element = getNodeByRef(this.asProps.inner!);
+
+    return element instanceof HTMLElement ? element : null;
   }
 
-  state = {
+  state: State = {
     shadowHorizontal: false,
     shadowVertical: false,
   };
 
-  constructor(props) {
+  constructor(props: ScrollAreaProps) {
     super(props);
 
     if (canUseDOM()) {
@@ -62,15 +80,17 @@ class ScrollAreaRoot extends Component {
     }
   }
 
-  refWrapper = (node) => {
-    this.$wrapper = findDOMNode(node);
+  refWrapper = (node: HTMLElement) => {
+    this.$wrapper = findDOMNode(node) as HTMLElement;
   };
 
-  setStyleSizeProperty = (element, propertyKey, value) => {
-    let propertyValue = value;
+  setStyleSizeProperty = (element: HTMLElement, propertyKey: string, value: string | number) => {
+    let propertyValue = '';
 
     if (typeof value === 'number') {
       propertyValue = value < 1 ? `${100 * value}%` : `${value}px`;
+    } else {
+      propertyValue = value;
     }
 
     element.style.setProperty(propertyKey, propertyValue);
@@ -99,11 +119,12 @@ class ScrollAreaRoot extends Component {
     let maxWidth = Number.parseInt(style.getPropertyValue('max-width'));
     let maxHeight = Number.parseInt(style.getPropertyValue('max-height'));
 
-    if (maxWidth) {
+    if (maxWidth && parent) {
       if (observeParentSize && wMax && parent.scrollWidth > parentRect.width) {
         /** even if width is like 100.486px we should round it to 100, not 101 */
         const diff =
-          Math.round(parent.scrollWidth.toFixed(1)) - Math.round(parentRect.width.toFixed(1));
+          Math.round(Number(parent.scrollWidth.toFixed(1))) -
+          Math.round(Number(parentRect.width.toFixed(1)));
 
         if (diff < maxWidth) {
           maxWidth = maxWidth - diff;
@@ -119,11 +140,12 @@ class ScrollAreaRoot extends Component {
       }
     }
 
-    if (maxHeight) {
+    if (maxHeight && parent) {
       if (observeParentSize && hMax && parent.scrollHeight > parentRect.height) {
         /** even if height is like 100.486px we should round it to 100, not 101 */
         const diff =
-          Math.round(parent.scrollHeight.toFixed(1)) - Math.round(parentRect.height.toFixed(1));
+          Math.round(Number(parent.scrollHeight.toFixed(1))) -
+          Math.round(Number(parentRect.height.toFixed(1)));
 
         if (diff < maxHeight) {
           maxHeight = maxHeight - diff;
@@ -147,7 +169,7 @@ class ScrollAreaRoot extends Component {
     const { height, width } = this.calculateSizeContainer();
     if (height) this.$container.style.height = height;
     if (width) this.$container.style.width = width;
-    this.$container.dispatchEvent(eventCalculate);
+    this.$container.dispatchEvent(eventCalculate!);
     this.setShadowContainer();
   });
 
@@ -162,18 +184,22 @@ class ScrollAreaRoot extends Component {
   });
 
   // FIX Chrome bug, when focus state on hide control
-  handleScroll = (e) => {
-    if (e.target?.isEqualNode(this.$wrapper)) {
+  handleScroll = (e: React.SyntheticEvent<HTMLElement>) => {
+    if (e.target instanceof HTMLElement && e.target.isEqualNode(this.$wrapper)) {
       e.target.scrollTop = 0;
       e.target.scrollLeft = 0;
     }
   };
 
-  handleFocusIn = (e) => {
+  handleFocusIn = (e: FocusEvent) => {
     setTimeout(() => {
       const { keyboardFocused, leftOffset, rightOffset, topOffset, bottomOffset } = this.asProps;
 
-      if (this.$container && typeof this.$container.scrollTo === 'function') {
+      if (
+        e.target instanceof HTMLElement &&
+        this.$container &&
+        typeof this.$container.scrollTo === 'function'
+      ) {
         const viewPort = this.$container.getBoundingClientRect();
         const element = e.target.getBoundingClientRect();
 
@@ -202,7 +228,7 @@ class ScrollAreaRoot extends Component {
     }, 0);
   };
 
-  toggleShadow = (scroll, maxScroll, orientation) => {
+  toggleShadow = (scroll: number, maxScroll: number, orientation: keyof State) => {
     const roundedScroll = Math.round(scroll);
     const roundedMaxScroll = Math.round(maxScroll);
     let shadow = '';
@@ -218,9 +244,9 @@ class ScrollAreaRoot extends Component {
     } else if (roundedScroll > 0) {
       shadow = 'median';
     }
-    this.setState({
-      [orientation]: shadow,
-    });
+
+    // @ts-ignore
+    this.setState({ [orientation]: shadow });
   };
 
   setShadowContainer = () => {
@@ -343,7 +369,7 @@ class ScrollAreaRoot extends Component {
   }
 }
 
-function ContainerRoot(props) {
+function ContainerRoot(props: ScrollAreaContainerProps & IRootComponentProps) {
   const SContainer = Root;
   const {
     Children,
@@ -374,9 +400,8 @@ ContainerRoot.enhance = [keyboardFocusEnhance()];
 
 const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
-  Bar: BarRoot,
-});
+  Bar: ScrollBar,
+}) as typeof ScrollAreaType;
 
 // TODO: remove named ScrollArea export
 export { eventCalculate, ScrollArea };
-export default ScrollArea;

@@ -25,3 +25,4 @@ export * from './components/neighbor-location';
 export * from './components/outside-click';
 
 export * from './components/portal';
+export * from './components/scroll-area';

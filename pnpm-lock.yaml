@@ -766,7 +766,7 @@ importers:
         version: link:../icon
       '@semcore/scroll-area':
         specifier: 5.43.1
-        version: link:../scroll-area
+        version: 5.43.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1027,7 +1027,7 @@ importers:
         version: link:../icon
       '@semcore/scroll-area':
         specifier: 5.43.1
-        version: link:../scroll-area
+        version: 5.43.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/typography':
         specifier: 5.48.1
         version: link:../typography
@@ -1685,7 +1685,7 @@ importers:
         version: 3.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/scroll-area':
         specifier: 5.43.1
-        version: link:../scroll-area
+        version: 5.43.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/tag':
         specifier: 5.50.1
         version: link:../tag
@@ -2141,27 +2141,8 @@ importers:
   semcore/scroll-area:
     dependencies:
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box':
-        specifier: 5.39.1
-        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils':
-        specifier: 4.44.1
-        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
+        specifier: ^16.0.0
+        version: link:../core
 
   semcore/select:
     dependencies:
@@ -2373,11 +2354,11 @@ importers:
   semcore/sticky:
     dependencies:
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^16.0.0
+        version: link:../core
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.39.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2514,7 +2495,7 @@ importers:
         version: link:../icon
       '@semcore/scroll-area':
         specifier: 5.43.1
-        version: link:../scroll-area
+        version: 5.43.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/typography':
         specifier: 5.48.1
         version: link:../typography
@@ -8980,6 +8961,21 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@semcore/flex-box@5.39.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-MweW+x54BIyJKnXKSYMU5QNiZwoODzxC8jdy2MCygSSMq8oJm4g9lpqBES0ZNJm+aFbcl/WMKNyv7ueBHIfE0w==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
+      classnames: 2.2.6
+      csstype: 3.0.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@semcore/format-text@4.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Cdl0ajFFtR4YRhvvX9spp3gYqZU61DkmUu5GS/U5Xlpi58q4uI433wcYIS+vvtZuDUusqD7uJmM3H6QdRgwsIA==}
     peerDependencies:
@@ -9582,6 +9578,20 @@ packages:
       '@semcore/core': 2.24.0(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box': 5.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.27.0(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@semcore/scroll-area@5.43.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yy66gvYtiuxisQCI8YCjzN2+bz6TWXGiMx6waj1W293iwMjOjpKj5fLZzv6la1mhux29wu8hJrxpJTGcXfDWOg==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false

@@ -1,40 +1,48 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import { getNodeByRef } from '@semcore/utils/lib/ref';
-import contextEnhance from '@semcore/utils/lib/enhances/contextEnhance';
+import { createComponent } from '../../coreFactory';
+import { Component, Root } from '../../types';
+import { sstyled } from '../../styled';
+import { Box } from '../flex-box';
+import { getNodeByRef } from '../../utils/ref';
+import contextEnhance from '../../utils/enhances/contextEnhance';
 
 import style from './style/scroll-bar.shadow.css';
+
+import { ScrollBar as ScrollBarType, ScrollBarProps } from './ScrollBar.types';
 
 export const hideScrollBarsFromScreenReadersContext = React.createContext(false);
 
 export const DEFAULT_SLIDER_SIZE = 50;
 
 // updating DOM directly to avoid react dom rerendering and reconciliation
-const setAriaValues = ($container, $horizontalBar, $verticalBar) => {
+const setAriaValues = (
+  $container?: Element | null,
+  $horizontalBar?: Element | null,
+  $verticalBar?: Element | null,
+) => {
   if (!$container || !($horizontalBar || $verticalBar)) return;
   const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
     $container;
   const maxScrollRight = scrollWidth - clientWidth;
   const maxScrollBottom = scrollHeight - clientHeight;
   if ($horizontalBar) {
-    $horizontalBar.setAttribute('aria-valuenow', Math.floor(scrollLeft));
-    $horizontalBar.setAttribute('aria-valuemax', maxScrollRight);
+    $horizontalBar.setAttribute('aria-valuenow', Math.floor(scrollLeft).toString());
+    $horizontalBar.setAttribute('aria-valuemax', maxScrollRight.toString());
   }
   if ($verticalBar) {
-    $verticalBar.setAttribute('aria-valuenow', Math.floor(scrollTop));
-    $verticalBar.setAttribute('aria-valuemax', maxScrollBottom);
+    $verticalBar.setAttribute('aria-valuenow', Math.floor(scrollTop).toString());
+    $verticalBar.setAttribute('aria-valuemax', maxScrollBottom.toString());
   }
 };
 
-class ScrollBarRoot extends Component {
+class ScrollBarRoot extends Component<ScrollBarProps, {}, {}, typeof ScrollBarRoot.enhance> {
   static displayName = 'Bar';
 
   static style = style;
   static enhance = [
     contextEnhance(hideScrollBarsFromScreenReadersContext, 'hideFromScreenReaders'),
-  ];
+  ] as const;
 
   static defaultProps = () => {
     return {
@@ -43,8 +51,8 @@ class ScrollBarRoot extends Component {
     };
   };
 
-  $bar = null;
-  $slider = null;
+  $bar: HTMLElement | null = null;
+  $slider: HTMLElement | null = null;
 
   sliderStyle = { width: DEFAULT_SLIDER_SIZE, height: DEFAULT_SLIDER_SIZE };
 
@@ -58,12 +66,12 @@ class ScrollBarRoot extends Component {
     visibleScroll: false,
   };
 
-  get $container() {
-    return getNodeByRef(this.asProps.container);
+  get $container(): Element {
+    return getNodeByRef(this.asProps.container!)!;
   }
 
-  refBar = (node) => {
-    const domNode = findDOMNode(node);
+  refBar = (node: HTMLElement) => {
+    const domNode = findDOMNode(node) as HTMLElement;
     this.$bar = domNode;
     const orientation = this.getOrientation();
     const { horizontalBarRef, verticalBarRef } = this.asProps;
@@ -73,8 +81,8 @@ class ScrollBarRoot extends Component {
     setAriaValues(this.$container, horizontalBarRef?.current, verticalBarRef?.current);
   };
 
-  refSlider = (node) => {
-    this.$slider = findDOMNode(node);
+  refSlider = (node: HTMLElement) => {
+    this.$slider = findDOMNode(node) as HTMLElement;
   };
 
   calculateVisibleScroll() {
@@ -91,8 +99,8 @@ class ScrollBarRoot extends Component {
   }
 
   calculateKefScroll() {
-    const { clientWidth, clientHeight, scrollWidth, scrollHeight } = this.$container;
-    const { clientWidth: clientWidthBar, clientHeight: clientHeightBar } = this.$bar;
+    const { clientWidth, clientHeight, scrollWidth, scrollHeight } = this.$container!;
+    const { clientWidth: clientWidthBar, clientHeight: clientHeightBar } = this.$bar!;
     const { width, height } = this.sliderStyle;
     return {
       x: (clientWidthBar - width) / (scrollWidth - clientWidth),
@@ -101,7 +109,7 @@ class ScrollBarRoot extends Component {
   }
 
   calculateKefBar() {
-    const { clientWidth, clientHeight } = this.$bar;
+    const { clientWidth, clientHeight } = this.$bar!;
     const { width, height } = this.sliderStyle;
     return {
       x: (clientWidth - width) / clientWidth,
@@ -110,10 +118,10 @@ class ScrollBarRoot extends Component {
   }
 
   calculateSliderStyle() {
-    const { clientWidth, clientHeight } = this.$bar;
-    const { scrollWidth, scrollHeight } = this.$container;
+    const { clientWidth, clientHeight } = this.$bar!;
+    const { scrollWidth, scrollHeight } = this.$container!;
 
-    const calculateDimensions = (visibleSize, totalSize) => {
+    const calculateDimensions = (visibleSize: number, totalSize: number) => {
       const ratio = Math.min(visibleSize / totalSize, 1); // percentage of visible area
       return Math.round(visibleSize * ratio);
     };
@@ -124,7 +132,13 @@ class ScrollBarRoot extends Component {
     };
   }
 
-  calculateScrollByClick(position, windowOffset, mouseOffset, kefBar, kefScroll) {
+  calculateScrollByClick(
+    position: number,
+    windowOffset: number,
+    mouseOffset: number,
+    kefBar: number,
+    kefScroll: number,
+  ) {
     // bar coordinates relative to the page
     const barPage = position + windowOffset;
 
@@ -134,7 +148,12 @@ class ScrollBarRoot extends Component {
     return scroll / kefScroll;
   }
 
-  calculateScrollByDiff(mouseOffset, oldMouseOffset, oldScroll, kefScroll) {
+  calculateScrollByDiff(
+    mouseOffset: number,
+    oldMouseOffset: number,
+    oldScroll: number,
+    kefScroll: number,
+  ) {
     // mouse offset (new coordinates - old coordinates)
     const offsetMouse = mouseOffset - oldMouseOffset;
 
@@ -192,17 +211,17 @@ class ScrollBarRoot extends Component {
     if (horizontal) return 'horizontal';
   }
 
-  handleSelectStartDocument = (e) => e.preventDefault();
+  handleSelectStartDocument = (e: Event) => e.preventDefault();
 
-  handleMouseMoveDocument = (e) => {
+  handleMouseMoveDocument = (e: MouseEvent) => {
     const { pageX, pageY } = e;
     const { left, top } = this._scroll;
     const { x, y } = this.kefScroll;
     const orientation = this.getOrientation();
 
-    if (orientation === 'horizontal') {
+    if (orientation === 'horizontal' && this.$container) {
       this.$container.scrollLeft = this.calculateScrollByDiff(pageX, this._mouse.pageX, left, x);
-    } else if (orientation === 'vertical') {
+    } else if (orientation === 'vertical' && this.$container) {
       this.$container.scrollTop = this.calculateScrollByDiff(pageY, this._mouse.pageY, top, y);
     }
   };
@@ -213,14 +232,14 @@ class ScrollBarRoot extends Component {
     document.removeEventListener('selectstart', this.handleSelectStartDocument, true);
   };
 
-  handleMouseDownSlider = (e) => {
+  handleMouseDownSlider = (e: MouseEvent) => {
     // canceling the emergence of a real scroll
     e.stopPropagation();
     // save mouse coordinates (relative to the page)
     this._mouse = { pageX: e.pageX, pageY: e.pageY };
     // save the scroll of the container
     // TODO: what happens if the content increases while we scroll?
-    const { scrollLeft, scrollTop } = this.$container;
+    const { scrollLeft, scrollTop } = this.$container!;
     this._scroll = { left: scrollLeft, top: scrollTop };
 
     document.addEventListener('mousemove', this.handleMouseMoveDocument, true);
@@ -228,13 +247,13 @@ class ScrollBarRoot extends Component {
     document.addEventListener('selectstart', this.handleSelectStartDocument, true);
   };
 
-  handleMouseDownBar = (e) => {
+  handleMouseDownBar = (e: MouseEvent) => {
     // cancellation of the ascent as in a real scroll
     e.stopPropagation();
 
     const { pageX, pageY } = e;
     const { pageXOffset, pageYOffset } = window;
-    const { left, top } = this.$bar.getBoundingClientRect();
+    const { left, top } = this.$bar!.getBoundingClientRect();
     const orientation = this.getOrientation();
 
     if (orientation === 'horizontal') {
@@ -256,13 +275,13 @@ class ScrollBarRoot extends Component {
     }
   };
 
-  subscribe($node) {
+  subscribe($node: Element | null) {
     if (!$node) return;
     $node.addEventListener('scroll', this.handleScroll);
     $node.addEventListener('calculate', this.calculate);
   }
 
-  unsubscribe($node) {
+  unsubscribe($node: Element | null) {
     if (!$node) return;
     $node.removeEventListener('scroll', this.handleScroll);
     $node.removeEventListener('calculate', this.calculate);
@@ -300,7 +319,7 @@ class ScrollBarRoot extends Component {
       if (leftOffset) offsetSum += leftOffset;
       if (rightOffset) offsetSum += rightOffset;
 
-      if (position === 'sticky' && container.current) {
+      if (position === 'sticky' && container?.current) {
         const { left, right } = container.current.getBoundingClientRect();
 
         if (leftOffset) {
@@ -317,7 +336,7 @@ class ScrollBarRoot extends Component {
       if (topOffset) offsetSum += topOffset;
       if (bottomOffset) offsetSum += bottomOffset;
 
-      if (position === 'sticky' && container.current) {
+      if (position === 'sticky' && container?.current) {
         const { top, bottom } = container.current.getBoundingClientRect();
 
         if (topOffset) {
@@ -351,16 +370,15 @@ class ScrollBarRoot extends Component {
   }
 }
 
-function Slider(props) {
+function Slider(props: ScrollBarProps) {
   const { styles } = props;
   const SSlider = Root;
 
   return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
 }
 
-const ScrollBar = createComponent(ScrollBarRoot, {
+export const ScrollBar = createComponent(ScrollBarRoot, {
   Slider,
-});
+}) as typeof ScrollBarType;
 
 export { setAriaValues as setAreaValue };
-export default ScrollBar;
