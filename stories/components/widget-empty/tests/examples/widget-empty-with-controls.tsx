@@ -9,9 +9,9 @@ import { Box, Flex } from '@semcore/flex-box';
 const Demo = () => {
 
     return (
-        <div>
-            <Flex direction={'column'} gap={6} alignItems={'flex-start'}>
-
+     
+        <Flex direction="row" gap={6} alignItems="flex-start" wrap="wrap" justifyContent="space-between">
+            <Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
                     <WidgetEmpty.Title>Icon, title, description and button. Set up your [Tool Name]</WidgetEmpty.Title>
                     <WidgetEmpty.Description>
@@ -49,10 +49,11 @@ const Demo = () => {
                         </Button>
                     </Box>
                 </WidgetEmpty>
-
+</Box>
+<Box style={{ flex: '1 1 45%', minWidth: '45%' }}>
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
                     <WidgetEmpty.Title>
-                        Icon, Title and button. [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
+                        [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
                         and paid search results.
                     </WidgetEmpty.Title>
                     <Box mt={4}>
@@ -65,7 +66,7 @@ const Demo = () => {
 
                 <WidgetEmpty>
                     <WidgetEmpty.Title>
-                        Title and button. [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
+                        [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
                         and paid search results.
                     </WidgetEmpty.Title>
                     <Box mt={4}>
@@ -76,7 +77,7 @@ const Demo = () => {
                 </WidgetEmpty>
 
                 <WidgetEmpty icon={getIconPath('combined-chart')}>
-                   Icon, text and button.
+                    Icon, text and button.
                     <Box mt={4}>
                         <Button theme='success' use='primary'>
                             Set up [Tool Name]
@@ -91,9 +92,9 @@ const Demo = () => {
                         </Button>
                     </Box>
                 </WidgetEmpty>
-
+</Box>
             </Flex>
-        </div>
+     
     );
 };
 

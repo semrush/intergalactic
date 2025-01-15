@@ -41,7 +41,7 @@ To get the link to the [illustration](/style/illustration/illustration), use the
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/widget-empty/docs/examples/custom_examples.tsx';
+  export Demo from 'stories/components/widget-empty/docs/examples/custom_examples_actions.tsx';
 </script>
 
 :::

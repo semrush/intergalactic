@@ -2,9 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import WidgetEmpty from '@semcore/widget-empty';
 
-import WidgetEmptyPositiveCasesExample from './examples/positive-widget-empty-states';
-import WidgetEmptyWithControlsPositiveCasesExample from './examples/positive-widget-empty-with-controls';
-import TestExample from './examples/positive-widget-empty-description-withlink';
+import WidgetEmptyCasesExample from './examples/widget-empty-states';
+import WidgetEmptyWithControlsCasesExample from './examples/widget-empty-with-controls';
+import WidgetEmptyWithLinksExample from './examples/widget-empty-withlink';
+import ErrorStatesExample from './examples/error-states';
+import NoDataExample from './examples/nodata-states';
+
 
 
 const meta: Meta<typeof WidgetEmpty> = {
@@ -16,15 +19,22 @@ export default meta;
 type Story = StoryObj<typeof WidgetEmpty>;
 
 
-export const WidgetEmptyPositiveCases: Story = {
-    render: WidgetEmptyPositiveCasesExample,
+export const WidgetEmptyCases: Story = {
+    render: WidgetEmptyCasesExample,
   };
 
-  export const WidgetEmptyWithControlsPositiveCases: Story = {
-    render: WidgetEmptyWithControlsPositiveCasesExample,
+  export const WidgetEmptyWithControlsCases: Story = {
+    render: WidgetEmptyWithControlsCasesExample,
   };
 
-  export const Test: Story = {
-    render: TestExample,
+  export const WidgetEmptyWithLinks: Story = {
+    render: WidgetEmptyWithLinksExample,
   };
 
+  export const ErrorStates: Story = {
+    render: ErrorStatesExample,
+  };
+
+  export const NoData: Story = {
+    render: NoDataExample,
+  };
