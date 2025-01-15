@@ -268,7 +268,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -305,7 +305,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -333,7 +333,7 @@ importers:
         version: link:../dot
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -370,7 +370,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -404,7 +404,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
         version: link:../neighbor-location
@@ -444,7 +444,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -484,7 +484,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -515,7 +515,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/typography':
         specifier: 5.48.1
         version: link:../typography
@@ -552,7 +552,7 @@ importers:
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -590,6 +590,9 @@ importers:
       classnames:
         specifier: 2.2.6
         version: 2.2.6
+      csstype:
+        specifier: 3.0.8
+        version: 3.0.8
       hoist-non-react-statics:
         specifier: 3.3.2
         version: 3.3.2
@@ -632,7 +635,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -666,7 +669,7 @@ importers:
         version: link:../divider
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/popper':
         specifier: 5.45.1
         version: link:../popper
@@ -757,7 +760,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -842,7 +845,7 @@ importers:
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -888,7 +891,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -916,7 +919,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/portal':
         specifier: 3.39.1
         version: link:../portal
@@ -950,7 +953,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/grid':
         specifier: 5.38.1
         version: link:../grid
@@ -987,7 +990,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/popper':
         specifier: 5.45.1
         version: link:../popper
@@ -1018,7 +1021,7 @@ importers:
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1064,7 +1067,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/tooltip':
         specifier: 6.47.1
         version: link:../tooltip
@@ -1149,7 +1152,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/format-text':
         specifier: 4.39.1
         version: link:../format-text
@@ -1186,7 +1189,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1232,7 +1235,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1302,7 +1305,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1338,8 +1341,8 @@ importers:
   semcore/flex-box:
     dependencies:
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^16.0.0
+        version: link:../core
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1349,22 +1352,6 @@ importers:
       csstype:
         specifier: 3.0.8
         version: 3.0.8
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/classnames':
-        specifier: 2.2.6
-        version: 2.2.6
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
 
   semcore/format-text:
     dependencies:
@@ -1373,7 +1360,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1401,7 +1388,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1435,7 +1422,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1491,7 +1478,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: 'link:'
@@ -1531,7 +1518,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       colorjs.io:
         specifier: 0.4.3
         version: 0.4.3
@@ -1565,7 +1552,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1593,7 +1580,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1633,7 +1620,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
         version: link:../neighbor-location
@@ -1664,7 +1651,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/input':
         specifier: 4.40.1
         version: link:../input
@@ -1698,7 +1685,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/input':
         specifier: 4.40.1
         version: link:../input
@@ -1778,7 +1765,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/tooltip':
         specifier: 6.47.1
         version: link:../tooltip
@@ -1812,7 +1799,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1840,7 +1827,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1905,7 +1892,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1939,7 +1926,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -1973,7 +1960,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -2026,7 +2013,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -2066,7 +2053,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
         version: link:../neighbor-location
@@ -2106,7 +2093,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
         version: link:../neighbor-location
@@ -2165,7 +2152,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2190,7 +2177,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2215,7 +2202,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/typography':
         specifier: 5.48.1
         version: link:../typography
@@ -2243,7 +2230,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2286,7 +2273,7 @@ importers:
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -2332,7 +2319,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -2369,7 +2356,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2394,7 +2381,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2419,7 +2406,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2447,7 +2434,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/spin':
         specifier: 5.39.1
         version: link:../spin
@@ -2475,7 +2462,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2522,7 +2509,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
         version: link:../neighbor-location
@@ -2550,7 +2537,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
         version: link:../neighbor-location
@@ -2578,7 +2565,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2606,7 +2593,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -2646,7 +2633,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -2674,7 +2661,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2705,7 +2692,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/input':
         specifier: 4.40.1
         version: link:../input
@@ -2736,7 +2723,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/popper':
         specifier: 5.45.1
         version: link:../popper
@@ -2770,7 +2757,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon
@@ -3115,7 +3102,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/illustration':
         specifier: 2.41.0
         version: link:../illustration
@@ -3143,7 +3130,7 @@ importers:
         version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box':
         specifier: 5.39.1
-        version: link:../flex-box
+        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/icon':
         specifier: 4.53.1
         version: link:../icon

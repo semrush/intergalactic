@@ -2,12 +2,13 @@ import React from 'react';
 
 import cn from 'classnames';
 import { Properties, Property } from 'csstype';
-import { sstyled, StyledProps, UnknownProperties } from '@semcore/core';
-import propsForElement from '@semcore/utils/lib/propsForElement';
-import logger from '@semcore/utils/lib/logger';
+import propsForElement from '../../../utils/propsForElement';
+import logger from '../../../utils/logger';
+import { sstyled, StyledProps } from '../../../styled';
 
 import style from '../style/use-box.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
+import { UnknownProperties } from '../../../types';
 
 export function removeUndefinedKeys<T extends {}>(obj: T) {
   return Object.entries(obj).reduce((acc: any, [key, value]) => {

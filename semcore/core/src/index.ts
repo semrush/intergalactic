@@ -9,7 +9,6 @@ export { sstyled, createComponent, createBaseComponent, Root, Component };
 
 /** =========================== components =========================== */
 
-import * as Animation from './components/animation';
-import * as Breakpoints from './components/breakpoints';
-
-export { Animation, Breakpoints };
+export * from './components/animation';
+export * from './components/breakpoints';
+export * from './components/flex-box';

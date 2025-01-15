@@ -1,22 +1,25 @@
+// @ts-nocheck
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import contextEnhance from '@semcore/utils/lib/enhances/contextEnhance';
+import { createComponent } from '../../coreFactory';
+import { sstyled } from '../../styled';
+import { Root, Component } from '../../types';
+import { Box } from '../flex-box';
+import contextEnhance from '../../utils/enhances/contextEnhance';
 import style from './style/animate.shadow.css';
 
-function propToArray(prop) {
+function propToArray(prop: any[]) {
   return Array.isArray(prop) ? prop : [prop, prop];
 }
 
 const makeAnimationContextValue = () => {
   const context = {
     onAnimationStartSubscribers: [],
-    onAnimationStart: (callback) => {
+    onAnimationStart: (callback: any) => {
       context.onAnimationStartSubscribers.push(callback);
       return () => context.onAnimationStartSubscribers.filter((cb) => cb !== callback);
     },
     onAnimationEndSubscribers: [],
-    onAnimationEnd: (callback) => {
+    onAnimationEnd: (callback: any) => {
       context.onAnimationEndSubscribers.push(callback);
       return () => context.onAnimationEndSubscribers.filter((cb) => cb !== callback);
     },

@@ -1,5 +1,7 @@
 import React from 'react';
-import createComponent, { sstyled, Root } from '@semcore/core';
+import { createComponent } from '../../../coreFactory';
+import { sstyled } from '../../../styled';
+import { Root } from '../../../types/Component';
 import style from './invalidStateBox.shadow.css';
 import Box from '../Box';
 

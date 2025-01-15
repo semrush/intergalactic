@@ -1,9 +1,10 @@
 import React from 'react';
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { createBaseComponent } from '../../coreFactory';
+import { sstyled } from '../../styled';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
 
-function Transform(props, ref) {
+function Transform(props: any, ref: React.Ref<HTMLElement>) {
   const { transform = [], ...other } = props;
 
   return sstyled(style)(

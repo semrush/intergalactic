@@ -1,5 +1,6 @@
 import React from 'react';
-import { Intergalactic, createBaseComponent } from '@semcore/core';
+import { createBaseComponent } from '../../../coreFactory';
+import { Intergalactic } from '../../../types/Component';
 import useBox, { BoxProps } from './useBox';
 
 function Box(props: any, ref: any) {

@@ -2,7 +2,7 @@ import React from 'react';
 
 import cn from 'classnames';
 import { Property, Properties } from 'csstype';
-import { sstyled } from '@semcore/core';
+import { sstyled } from '../../../styled';
 import useBox, { BoxProps, removeUndefinedKeys } from '../Box/useBox';
 
 import style from '../style/use-flex.shadow.css';

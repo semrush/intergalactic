@@ -1,9 +1,11 @@
+// @ts-nocheck
 import React from 'react';
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { createBaseComponent } from '../../coreFactory';
+import { sstyled } from '../../styled';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
-import { useForkRef } from '@semcore/utils/lib/ref';
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import { useForkRef } from '../../utils/ref';
+import useEnhancedEffect from '../../utils/use/useEnhancedEffect';
 
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;

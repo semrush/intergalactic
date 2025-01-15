@@ -1,2 +1,2 @@
-export type * from './Component';
+export * from './Component';
 export type { UnknownProperties } from './UnknownProperties';

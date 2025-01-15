@@ -1,9 +1,10 @@
 import React from 'react';
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { createBaseComponent } from '../../coreFactory';
+import { sstyled } from '../../styled';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
 
-function FadeInOut(props, ref) {
+function FadeInOut(props: any, ref: React.Ref<HTMLElement>) {
   return sstyled(style)(
     <Animation
       ref={ref}
