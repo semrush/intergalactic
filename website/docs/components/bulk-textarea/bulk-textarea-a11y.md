@@ -25,16 +25,24 @@ Table: Roles and attributes
 | CHECK | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Error {n} out of {n}", while navigating between the errors using buttons. |
 | CHECK IF NEEDED `BulkTextarea.ErrorItem` | `aria-hidden="true"` | Hides noninteractive icon from the assistive technologies. |
 
-
 ### Keyboard support
 
 See detailed information about the keyboard support for the Input in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
-## Considerations for developers
+## Considerations for developers and designers
 
 - Keep it simple - not all browsers correctly expose multiple labels that are linked to the same form element.
-- Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Make required fields obvious by using an indicator – asterisk, description text, etc.
-- Fields with error validation should have `aria-describedby` to insure that the associated field level error message is read by assistive technology. If the error message has an `id="my-error-message"`, then the input should have `aria-describedby="my-error-message"`.
+- **CHECK THIS, maybe it works out of the box** Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Make required fields obvious by using an indicator – asterisk, description text, etc.
+ - **CHECK THIS** Fields with error validation should have `aria-describedby` to insure that the associated field level error message is read by assistive technology. If the error message has an `id="my-error-message"`, then the input should have `aria-describedby="my-error-message"`.
+
+ ### Error messages
+
+ Set error messages for the tooltips that will be shown for siighted users and read by assistive technologies. You should set:
+
+- Messages for the specific errors in the invalid lines based on your validation rules
+- Message for the whole invalid input
+
+**These messages aren't set by default in the component.**
 
 ## Resources
 
