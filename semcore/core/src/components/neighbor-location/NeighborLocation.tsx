@@ -1,12 +1,23 @@
 import React from 'react';
-import createComponent, { Root, Component, register } from '@semcore/core';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import isNode from '@semcore/utils/lib/isNode';
+import { createComponent } from '../../coreFactory';
+import { Component, Root } from '../../types';
+import register from '../../register';
+import getOriginChildren from '../../utils/getOriginChildren';
+import isNode from '../../utils/isNode';
+import {
+  NeighborItemProps,
+  NeighborLocationUnion,
+  NeighborLocationDetectProps,
+  NeighborLocationProps,
+} from './NeighborLocation.types';
 
-const Context = register.get('neighbor-location-context', React.createContext({}));
+const Context = register.get(
+  'neighbor-location-context',
+  React.createContext<{ controlsLengthRef?: React.RefObject<number> }>({}),
+);
 
-function childrenWithoutFragment(children) {
-  return React.Children.toArray(children).reduce((acc, node) => {
+function childrenWithoutFragment(children: React.ReactNode) {
+  return React.Children.toArray(children).reduce<React.ReactNode[]>((acc, node) => {
     if (React.isValidElement(node) && node.type === React.Fragment) {
       acc.push.apply(acc, childrenWithoutFragment(node.props.children));
     } else {
@@ -16,9 +27,12 @@ function childrenWithoutFragment(children) {
   }, []);
 }
 
-function calculateNeighborLocation(length, i) {
+function calculateNeighborLocation(
+  length: number,
+  i: number,
+): NeighborItemProps['neighborLocation'] {
   // default state
-  let neighborLocation = 'both';
+  let neighborLocation: NeighborLocationUnion = 'both';
   // if one child
   if (length === 1) {
     return undefined;
@@ -34,10 +48,10 @@ function calculateNeighborLocation(length, i) {
   return neighborLocation;
 }
 
-class NeighborLocationRoot extends Component {
+class NeighborLocationRoot extends Component<NeighborLocationProps> {
   static displayName = 'NeighborLocation';
 
-  controlsLengthRef = React.createRef();
+  controlsLengthRef = React.createRef() as React.MutableRefObject<number | undefined>;
   cacheChild = new Map();
 
   calculateNeighborLocation(controlsLength = 0, component = undefined) {
@@ -67,6 +81,7 @@ class NeighborLocationRoot extends Component {
   }
 
   render() {
+    // @ts-ignore
     const { Children, tag: Tag, controlsLength } = this.asProps;
     this.controlsLengthRef.current =
       controlsLength ?? childrenWithoutFragment(getOriginChildren(Children)).filter(isNode).length;
@@ -83,27 +98,31 @@ class NeighborLocationRoot extends Component {
   }
 }
 
-class Detect extends Component {
+class Detect extends Component<NeighborLocationDetectProps> {
   render() {
     const { children, neighborLocation: selfNeighborLocation, getNeighborLocation } = this.asProps;
     const calculateNeighborLocation = getNeighborLocation ? getNeighborLocation(this) : undefined;
     const neighborLocation = selfNeighborLocation ?? calculateNeighborLocation;
 
     if (!children) return;
-    if (typeof children === 'function') return children(neighborLocation);
+    if (typeof children === 'function') {
+      // @ts-ignore
+      return children(neighborLocation);
+    }
+    // @ts-ignore
     return React.cloneElement(React.Children.only(children), {
       neighborLocation,
     });
   }
 }
 
-function useNeighborLocationDetect(index) {
+function useNeighborLocationDetect(index: number) {
   const { controlsLengthRef } = React.useContext(Context);
-  if (controlsLengthRef.current === undefined) return false;
+  if (controlsLengthRef?.current === null || controlsLengthRef?.current === undefined) return false;
   return calculateNeighborLocation(controlsLengthRef.current, index);
 }
 
-const NeighborLocation = createComponent(
+export const NeighborLocation = createComponent(
   NeighborLocationRoot,
   {
     Detect: Detect,
@@ -114,5 +133,3 @@ const NeighborLocation = createComponent(
 );
 
 export { useNeighborLocationDetect };
-
-export default NeighborLocation;

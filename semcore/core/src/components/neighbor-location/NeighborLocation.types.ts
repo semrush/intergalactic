@@ -1,5 +1,7 @@
 import React from 'react';
-import { Intergalactic, ReturnEl, UnknownProperties } from '@semcore/core';
+import { Intergalactic, ReturnEl, UnknownProperties } from '../../types';
+
+export type NeighborLocationUnion = 'right' | 'both' | 'left';
 
 /** @deprecated */
 export interface INeighborLocationProps extends NeighborLocationProps, UnknownProperties {
@@ -18,7 +20,7 @@ export type NeighborLocationProps = {
 export interface INeighborItemProps extends NeighborItemProps, UnknownProperties {}
 export type NeighborItemProps = {
   /** Determines from which side the component has neighbors */
-  neighborLocation?: 'right' | 'both' | 'left' | false;
+  neighborLocation?: NeighborLocationUnion | false;
 };
 
 /** @deprecated */
@@ -29,6 +31,9 @@ export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement
     | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => ReturnEl);
+
+  /** Inner from Root */
+  getNeighborLocation: (component: any) => NeighborItemProps['neighborLocation'];
 };
 
 declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationProps> & {

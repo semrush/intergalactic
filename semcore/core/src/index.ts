@@ -21,3 +21,4 @@ export * from './components/animation';
 export * from './components/breakpoints';
 export * from './components/flex-box';
 export * from './components/grid';
+export * from './components/neighbor-location';

@@ -339,7 +339,7 @@ importers:
         version: link:../icon
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/spin':
         specifier: 5.39.1
         version: link:../spin
@@ -407,7 +407,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/spin':
         specifier: 5.39.1
         version: link:../spin
@@ -857,7 +857,7 @@ importers:
         version: link:../input-mask
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/tooltip':
         specifier: 6.47.1
         version: link:../tooltip
@@ -956,7 +956,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/grid':
         specifier: 5.38.1
-        version: link:../grid
+        version: 5.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1155,7 +1155,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/format-text':
         specifier: 4.39.1
-        version: link:../format-text
+        version: 4.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/illustration':
         specifier: 2.41.0
         version: link:../illustration
@@ -1343,27 +1343,12 @@ importers:
       '@semcore/core':
         specifier: ^16.0.0
         version: link:../core
-      '@semcore/utils':
-        specifier: 4.44.1
-        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      classnames:
-        specifier: 2.2.6
-        version: 2.2.6
-      csstype:
-        specifier: 3.0.8
-        version: 3.0.8
 
   semcore/format-text:
     dependencies:
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box':
-        specifier: 5.39.1
-        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils':
-        specifier: 4.44.1
-        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^16.0.0
+        version: link:../core
       react:
         specifier: 16.8 - 18
         version: 18.2.0
@@ -1418,27 +1403,8 @@ importers:
   semcore/grid:
     dependencies:
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box':
-        specifier: 5.39.1
-        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils':
-        specifier: 4.44.1
-        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
+        specifier: ^16.0.0
+        version: link:../core
 
   semcore/i18n-unplugin:
     dependencies:
@@ -1623,7 +1589,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1657,7 +1623,7 @@ importers:
         version: link:../input
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1860,24 +1826,8 @@ importers:
   semcore/neighbor-location:
     dependencies:
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils':
-        specifier: 4.44.1
-        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
+        specifier: ^16.0.0
+        version: link:../core
 
   semcore/notice:
     dependencies:
@@ -2056,7 +2006,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2096,7 +2046,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/outside-click':
         specifier: 3.37.1
         version: link:../outside-click
@@ -2512,7 +2462,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2540,7 +2490,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/neighbor-location':
         specifier: 4.37.1
-        version: link:../neighbor-location
+        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -9079,6 +9029,20 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@semcore/format-text@4.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-MbQ1YMW6yZ6R9H5QtTSyWhTifQctpCoRa9CfMissTadWW+FYDP0eDkYRx9vOTlkMtIEOvCunQFKGnWzhhnaCgQ==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@semcore/fullscreen-modal@3.35.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-x7ArfzhcTNtVZUnds8MB4rbPrfIv2iMTSEvi25XKMqtL3+JgFX8We//4BCsjhzo0hfb0IIbIH59ohoNTK5pTsA==}
     peerDependencies:
@@ -9106,6 +9070,20 @@ packages:
       '@semcore/core': 2.24.0(react-dom@18.2.0)(react@18.2.0)
       '@semcore/flex-box': 5.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.27.0(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@semcore/grid@5.38.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-KPDKoOOwo9lDokkYsaNwSBbVARVuThm2vlWv+x9OEefroBChkRuON5xQdXDdK0hOQTSZAKlAVlohPS1J7M0Syg==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -9356,6 +9334,19 @@ packages:
     dependencies:
       '@semcore/core': 2.24.0(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.27.0(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@semcore/neighbor-location@4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nu8WhmUByr6ahvvVKZrCcmkl5cx3cvqZ31xjuSFMhkyQA0fVbSdYArvkM9aVW1imy5LyJrpkN45+eYZAkGUZMQ==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
