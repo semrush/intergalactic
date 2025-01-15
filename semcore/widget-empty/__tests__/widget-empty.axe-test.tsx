@@ -24,4 +24,3 @@ test.describe('Widget empty', () => {
     expect(violations).toEqual([]);
   });
 });
-  
