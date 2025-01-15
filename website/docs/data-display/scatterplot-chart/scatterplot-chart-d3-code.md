@@ -23,7 +23,7 @@ For all the following examples, scale is calculated taking into account syntheti
 You can see the mathematics, used in `Change.Scatterplot` to calculate common scale, in [our GitHub repository](https://github.com/semrush/intergalactic/blob/master/semcore/d3-chart/src/component/Chart/ScatterPlotChart.tsx#L31).
 :::
 
-## Scatter plot
+## Advanced usage
 
 ::: sandbox
 
@@ -45,7 +45,7 @@ If required, you can assign your own color to Scatter plot.
 
 :::
 
-## Scatter plot with values inside
+## Displaying values in dots
 
 ::: sandbox
 
@@ -67,7 +67,7 @@ Note that for ChartLegend `patterns` property works only with default `shape={'C
 
 :::
 
-## Color customization and values inside
+## Dot values and custom colors
 
 If required, you can assign your own color to Scatter plot.
 

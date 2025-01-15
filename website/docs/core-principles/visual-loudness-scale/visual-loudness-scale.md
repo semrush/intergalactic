@@ -6,7 +6,7 @@ title: Visual loudness scale
 
 We want interfaces to help users solve their problems. Building your interface with the principles of visual hierarchy can help with that. You can check it with [visual loudness guide by Tom Osborne](https://www.viget.com/articles/visual-loudness/).
 
-## Controls loudness scale
+## Control loudness scale
 
 The table lists the main styles of our controls, arranged according to the scale of visual loudness.
 

@@ -96,6 +96,14 @@ We provide some recommendations for the table size:
 - Use a minimum of two user screens (± 2000 px) for the table.
 - Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
 
+### Selecting number of rows
+
+After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
+
+We recommend using these values for the select: 10, 20, 50, 100.
+
+![](static/page-select.png)
+
 ## Interaction
 
 - The table should scroll to the beginning when the user moves between pages.
@@ -155,11 +163,3 @@ Avoid displaying pagination while loading the table or other related data.
 In this case, add the `tilde (≈)` to the number of pages and change the link displaying the number of all pages to plain text.
 
 ![](static/undefined-number.png)
-
-## Select for choosing rows number
-
-After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
-
-We recommend using these values for the select: 10, 20, 50, 100.
-
-![](static/page-select.png)

@@ -3,7 +3,7 @@ title: Include/Exclude keywords
 tabs: Design('filter-include-exclude'), Example('filter-include-exclude-code')
 ---
 
-## Basic example
+## Basic usage
 
 ::: sandbox
 

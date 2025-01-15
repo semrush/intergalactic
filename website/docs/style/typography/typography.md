@@ -122,6 +122,24 @@ These margins can also be applied when a paragraph is followed by a paragraph wi
 
 ![](static/paragraph_margins.png)
 
+### Headings and paragraph sizes
+
+**Use a 16px paragraph with the following headings:**
+
+![](static/h1-p.png)
+
+![](static/h2-p.png)
+
+![](static/h3-p.png)
+
+**Use a 14px paragraph with the following headings:**
+
+![](static/h4-p.png)
+
+![](static/h5-p.png)
+
+![](static/h6-p.png)
+
 ## Metric
 
 For highlighting metrics in your interface, use the following styles:
@@ -189,22 +207,3 @@ We have specific styles for highlighting quotes in paragraphs.
 ::: warning
 The [ButtonLink](../../components/button/button.md#button-with-link-styles) component has been implemented to replace the `Hint` component. Using `Hint` as a button or pseudo-link is no longer recommended.
 :::
-
-## Which heading with which paragraph size shall be used
-
-**Use a 16px paragraph with the following headings:**
-
-![](static/h1-p.png)
-
-![](static/h2-p.png)
-
-![](static/h3-p.png)
-
-**Use a 14px paragraph with the following headings:**
-
-![](static/h4-p.png)
-
-![](static/h5-p.png)
-
-![](static/h6-p.png)
-
