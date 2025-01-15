@@ -1,9 +1,17 @@
 /** ============================== core ============================== */
 import { createComponent, createBaseComponent } from './coreFactory';
 import { sstyled } from './styled';
-import { Root, Component } from './types';
+import { Root, Component, UnknownProperties, Intergalactic } from './types';
 
-export { sstyled, createComponent, createBaseComponent, Root, Component };
+export {
+  sstyled,
+  createComponent,
+  createBaseComponent,
+  Root,
+  Component,
+  UnknownProperties,
+  Intergalactic,
+};
 
 /** ============================= utils ============================== */
 

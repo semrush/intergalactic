@@ -1,11 +1,13 @@
 import React from 'react';
-import { Box, BoxProps } from '@semcore/flex-box';
-import createComponent, {
+import {
   UnknownProperties,
   Intergalactic,
   Component,
   sstyled,
   Root,
+  createComponent,
+  Box,
+  BoxProps,
 } from '@semcore/core';
 
 import style from './style/format-text.shadow.css';
