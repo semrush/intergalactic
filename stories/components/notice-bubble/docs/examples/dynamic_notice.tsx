@@ -11,6 +11,7 @@ const manager = new NoticeBubbleManager();
 let notice: any = null;
 
 const Demo = () => {
+  const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const tryAgain = async () => {
     if (!notice) return;
     notice.update({
@@ -49,12 +50,17 @@ const Demo = () => {
       ),
       initialAnimation: true,
       duration: 20000,
+      onClose: () => {
+        setTimeout(() => {
+          openButtonRef.current?.focus();
+        }, 300);
+      },
     });
   };
 
   return (
     <>
-      <Button onClick={handleClick}>Show dynamic notice</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>Show dynamic notice</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

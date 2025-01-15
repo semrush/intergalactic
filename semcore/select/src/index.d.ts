@@ -31,10 +31,6 @@ export interface ISelectProps<T extends SelectValue = SelectValue> extends Selec
 export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps &
   BaseTriggerProps & {
     /**
-     * Multiple select
-     */
-    multiselect?: boolean;
-    /**
      * Options array
      */
     options?: SelectOption[];

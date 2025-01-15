@@ -80,6 +80,11 @@
   background-color: var(--intergalactic-bg-secondary-info-hover);
 }
 
+.previewIcon svg,
+.previewChangeIcon svg {
+  pointer-events: none;
+}
+
 .panelIconList {
   display: flex;
 }

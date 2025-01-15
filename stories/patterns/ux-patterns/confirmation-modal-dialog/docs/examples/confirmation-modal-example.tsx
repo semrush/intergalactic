@@ -119,8 +119,7 @@ const Demo = () => {
                   w={'100%'}
                   onFocus={() => setFocusedFieldName(fieldName)}
                   aria-invalid={hasError()}
-                  aria-describedby={hasError() ? 'form-project-error' : undefined}
-                  aria-errormessage={hasError() ? 'form-project-error' : undefined}
+                  aria-describedby={showErrorTooltip() ? 'form-project-error' : undefined}
                 />
               </Input>
             </Tooltip>
