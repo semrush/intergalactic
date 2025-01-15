@@ -14,8 +14,8 @@ test.describe('Widget empty', () => {
     await expect(firstWidgetEmpty).toHaveAttribute('role', 'status');
     await expect(firstWidgetEmpty).not.toHaveAttribute('aria-label');
 
-    const imageContainer = page.locator('div.___SImage_1jkvg_gg_').first();
-    const imageElement = imageContainer.locator('img');
+    const imageElement = page.locator('img').first();
+    const imageContainer = imageElement.locator('..');
     await expect(imageContainer).toHaveAttribute('aria-hidden', 'true');
     await expect(imageElement).toHaveAttribute('alt', '');
 
@@ -70,8 +70,8 @@ test.describe('Error', () => {
     await expect(firstWidgetEmpty).toHaveAttribute('role', 'status');
     await expect(firstWidgetEmpty).not.toHaveAttribute('aria-label');
 
-    const imageContainer = page.locator('div.___SImage_1jkvg_gg_').first();
-    const imageElement = imageContainer.locator('img');
+    const imageElement = page.locator('img').first();
+    const imageContainer = imageElement.locator('..');
     await expect(imageContainer).toHaveAttribute('aria-hidden', 'true');
     await expect(imageElement).toHaveAttribute('alt', '');
 
@@ -99,8 +99,8 @@ test.describe('NoData', () => {
     await expect(firstWidgetEmpty).toHaveAttribute('role', 'status');
     await expect(firstWidgetEmpty).not.toHaveAttribute('aria-label');
 
-    const imageContainer = page.locator('div.___SImage_1jkvg_gg_').first();
-    const imageElement = imageContainer.locator('img');
+    const imageElement = page.locator('img').first();
+    const imageContainer = imageElement.locator('..');
     await expect(imageContainer).toHaveAttribute('aria-hidden', 'true');
     await expect(imageElement).toHaveAttribute('alt', '');
 
