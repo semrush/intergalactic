@@ -9,7 +9,7 @@ import AddFilterType, { AddFilterProps, AddFilterItemProps } from './AddFilter.t
 import AddFilterSelect from './components/AddFilterSelect';
 import AddFilterInput from './components/AddFilterInput';
 import AddFilterDropdown from './components/AddFilterDropdown';
-import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import { extractFrom } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { SelectProps } from '@semcore/select';
@@ -52,11 +52,11 @@ class RootAddFilter extends Component<
 
   static componentsNames = ['AddFilter.Input', 'AddFilter.Select', 'AddFilter.Dropdown'];
   static getFilterPatternItems = (children: React.ReactNode) => {
-    return findAllComponents(children, RootAddFilter.componentsNames);
+    return extractFrom(children, RootAddFilter.componentsNames);
   };
 
   static getDefaultAddDropdownOptions = (children: React.ReactNode) => {
-    const filters = RootAddFilter.getFilterPatternItems(children);
+    const [filters] = RootAddFilter.getFilterPatternItems(children);
 
     return filters.map(({ props }: { props: AddFilterItemProps }) => {
       const { name, displayName } = props;
@@ -195,13 +195,14 @@ class RootAddFilter extends Component<
 
   render() {
     const { Children } = this.asProps;
-    const allFilters = RootAddFilter.getFilterPatternItems(Children);
-    const VisibleFilteredChildren = this.getVisibleFilters(allFilters);
+    const [filters, persistentFilters] = RootAddFilter.getFilterPatternItems(Children);
+    const VisibleFilteredChildren = this.getVisibleFilters(filters);
 
     const dropdownProps = this.getDropdownMenuProps();
     const clearAllFiltersProps = this.getClearAllFiltersProps();
     return (
-      <Root render={Flex}>
+      <Root render={Flex} gap={2} flexWrap>
+        {persistentFilters}
         {VisibleFilteredChildren}
         <AddFilterDropdownMenu {...dropdownProps} />
         <ClearAllFilters {...clearAllFiltersProps} />

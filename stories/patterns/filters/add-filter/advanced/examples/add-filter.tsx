@@ -117,7 +117,14 @@ const AddFilterExample = () => {
   };
 
   return (
-    <Flex gap={2}>
+    <AddFilter
+      filterData={filterData}
+      onClearAll={() => {
+        setFilterData(defaultFilterData);
+      }}
+      gap={2}
+      flexWrap
+    >
       <Input inline={false} w={160}>
         <Input.Addon>
           <SearchM />
@@ -208,97 +215,88 @@ const AddFilterExample = () => {
         </Select.Menu>
       </Select>
 
-      <AddFilter
-        filterData={filterData}
-        onClearAll={() => {
-          setFilterData(defaultFilterData);
-        }}
-        gap={2}
-        flexWrap
-      >
-        <AddFilter.Dropdown name='keywords' displayName='Keywords'>
-          <AddFilter.Dropdown.Trigger
-            placeholder='Exclude keywords'
-            onClear={() => {
-              clearField('keywords');
-            }}
-          >
-            {`Exclude: ${filterData.keywords?.displayValue} keywords`}
-          </AddFilter.Dropdown.Trigger>
-
-          <AddFilter.Dropdown.Popper
-            w={325}
-            p='8px 8px 16px'
-            role='dialog'
-            aria-label='List of excluded keywords'
-            aria-modal='false'
-            tabIndex={-1}
-          >
-            {({ onApply }) => (
-              <Keywords
-                onChange={(v) => {
-                  setFilterData({ ...filterData, keywords: v });
-                }}
-                onClear={() => {
-                  clearField('keywords');
-                }}
-                onApply={onApply}
-                value={filterData.keywords}
-              />
-            )}
-          </AddFilter.Dropdown.Popper>
-        </AddFilter.Dropdown>
-
-        <AddFilter.Input name={'position'} displayName={'Position'} w={160}>
-          <AddFilter.Input.Addon>
-            <SearchM />
-          </AddFilter.Input.Addon>
-          <AddFilter.Input.Value
-            value={filterData['position']}
-            onChange={(v) => {
-              setFilterData({ ...filterData, position: v });
-            }}
-            placeholder={'Filter by position'}
-          />
-          {Boolean(filterData['position']) && (
-            <AddFilter.Input.Addon>
-              <AddFilter.Input.Clear
-                use='secondary'
-                addonLeft={CloseM}
-                aria-label='Clear'
-                onClick={() => {
-                  clearField('position');
-                }}
-              />
-            </AddFilter.Input.Addon>
-          )}
-        </AddFilter.Input>
-
-        <AddFilter.Select
-          name='device'
-          displayName='Device'
-          onChange={(v: any) => {
-            setFilterData({ ...filterData, device: v });
+      <AddFilter.Dropdown name='keywords' displayName='Keywords'>
+        <AddFilter.Dropdown.Trigger
+          placeholder='Exclude keywords'
+          onClear={() => {
+            clearField('keywords');
           }}
         >
-          <AddFilter.Select.Trigger
-            placeholder='Device'
-            onClear={() => {
-              clearField('device');
-            }}
-          >
-            {'Device'}: {filterData.device}
-          </AddFilter.Select.Trigger>
-          <AddFilter.Select.Menu>
-            {devices.map((item, idx) => (
-              <AddFilter.Select.Option key={idx} value={item}>
-                {item}
-              </AddFilter.Select.Option>
-            ))}
-          </AddFilter.Select.Menu>
-        </AddFilter.Select>
-      </AddFilter>
-    </Flex>
+          {`Exclude: ${filterData.keywords?.displayValue} keywords`}
+        </AddFilter.Dropdown.Trigger>
+
+        <AddFilter.Dropdown.Popper
+          w={325}
+          p='8px 8px 16px'
+          role='dialog'
+          aria-label='List of excluded keywords'
+          aria-modal='false'
+          tabIndex={-1}
+        >
+          {({ onApply }) => (
+            <Keywords
+              onChange={(v) => {
+                setFilterData({ ...filterData, keywords: v });
+              }}
+              onClear={() => {
+                clearField('keywords');
+              }}
+              onApply={onApply}
+              value={filterData.keywords}
+            />
+          )}
+        </AddFilter.Dropdown.Popper>
+      </AddFilter.Dropdown>
+
+      <AddFilter.Input name={'position'} displayName={'Position'} w={160}>
+        <AddFilter.Input.Addon>
+          <SearchM />
+        </AddFilter.Input.Addon>
+        <AddFilter.Input.Value
+          value={filterData['position']}
+          onChange={(v) => {
+            setFilterData({ ...filterData, position: v });
+          }}
+          placeholder={'Filter by position'}
+        />
+        {Boolean(filterData['position']) && (
+          <AddFilter.Input.Addon>
+            <AddFilter.Input.Clear
+              use='secondary'
+              addonLeft={CloseM}
+              aria-label='Clear'
+              onClick={() => {
+                clearField('position');
+              }}
+            />
+          </AddFilter.Input.Addon>
+        )}
+      </AddFilter.Input>
+
+      <AddFilter.Select
+        name='device'
+        displayName='Device'
+        onChange={(v: any) => {
+          setFilterData({ ...filterData, device: v });
+        }}
+      >
+        <AddFilter.Select.Trigger
+          placeholder='Device'
+          onClear={() => {
+            clearField('device');
+          }}
+        >
+          {'Device'}: {filterData.device}
+        </AddFilter.Select.Trigger>
+        <AddFilter.Select.Menu>
+          {devices.map((item, idx) => (
+            <AddFilter.Select.Option key={idx} value={item}>
+              {item}
+            </AddFilter.Select.Option>
+          ))}
+        </AddFilter.Select.Menu>
+      </AddFilter.Select>
+    </AddFilter>
   );
 };
 

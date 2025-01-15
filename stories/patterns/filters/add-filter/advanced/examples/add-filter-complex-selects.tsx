@@ -178,7 +178,14 @@ const AddFilterDropdownAndSelectsExample = () => {
   );
 
   return (
-    <Flex gap={2}>
+    <AddFilter
+      filterData={filterData}
+      onClearAll={() => {
+        setFilterData(defaultFilterData);
+      }}
+      gap={2}
+      flexWrap
+    >
       <Input inline={false} w={160}>
         <Input.Addon>
           <SearchM />
@@ -204,143 +211,126 @@ const AddFilterDropdownAndSelectsExample = () => {
         )}
       </Input>
 
-      <AddFilter
-        filterData={filterData}
-        onClearAll={() => {
-          setFilterData(defaultFilterData);
+      <AddFilter.Select
+        name='volume'
+        displayName='Range'
+        onChange={(volume: any) => {
+          setFilterData({ ...filterData, volume });
         }}
-        gap={2}
-        flexWrap
+        onUnmount={clearVolume}
       >
-        <AddFilter.Select
-          name='volume'
-          displayName='Range'
-          onChange={(volume: any) => {
-            setFilterData({ ...filterData, volume });
-          }}
-          onUnmount={clearVolume}
+        <AddFilter.Select.Trigger
+          placeholder='Volume'
+          aria-label='Volume'
+          empty={!filterData.volume}
+          onClear={clearVolume}
+          triggerRef={volumeTriggerRef}
         >
-          <AddFilter.Select.Trigger
-            placeholder='Volume'
-            aria-label='Volume'
-            empty={!filterData.volume}
-            onClear={clearVolume}
-            triggerRef={volumeTriggerRef}
-          >
-            {'Volume'}: {filterData.volume}
-          </AddFilter.Select.Trigger>
-          <AddFilter.Select.Popper w={224} aria-label='Volume'>
-            {({ onApply }) => (
-              <>
-                <AddFilter.Select.List aria-label='Presets'>
-                  {[
-                    '100,001+',
-                    '10,001-100,000',
-                    '1,001-10,000',
-                    '101-1,000',
-                    '11-100',
-                    '1-10',
-                  ].map((item) => (
+          {'Volume'}: {filterData.volume}
+        </AddFilter.Select.Trigger>
+        <AddFilter.Select.Popper w={224} aria-label='Volume'>
+          {({ onApply }) => (
+            <>
+              <AddFilter.Select.List aria-label='Presets'>
+                {['100,001+', '10,001-100,000', '1,001-10,000', '101-1,000', '11-100', '1-10'].map(
+                  (item) => (
                     <AddFilter.Select.Option key={item} value={item}>
                       {item}
                     </AddFilter.Select.Option>
-                  ))}
-                </AddFilter.Select.List>
-                <Divider my={1} />
-                <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
-                  <InputRange
-                    role='group'
-                    aria-labelledby='custom-range-title'
-                    value={customRange}
-                    onChange={setCustomRange}
-                    onKeyDown={(e: React.KeyboardEvent) => {
-                      handleKeyDown(e, onApply);
-                    }}
-                  />
-                  <Button
-                    use='primary'
-                    theme='info'
-                    w='100%'
-                    onClick={() => {
-                      applyVolumeValueFromRange();
-                      onApply();
-                    }}
-                    onKeyDown={handleKeyDownApply}
-                  >
-                    Apply
-                  </Button>
-                </Flex>
-              </>
-            )}
-          </AddFilter.Select.Popper>
-        </AddFilter.Select>
-
-        <AddFilter.Select
-          name='fruit'
-          displayName='Select with search'
-          onChange={(fruit: any) => {
-            setFilterData({ ...filterData, fruit });
-          }}
-          onUnmount={() => {
-            setFilter('');
-          }}
-        >
-          <AddFilter.Select.Trigger
-            placeholder='Select a fruit'
-            onClear={() => clearField('fruit')}
-          >
-            {'Fruit'}: {filterData.fruit}
-          </AddFilter.Select.Trigger>
-          <AddFilter.Select.Popper aria-label='Search fruits'>
-            <AddFilter.Select.InputSearch value={filter} onChange={setFilter} />
-            <AddFilter.Select.List hMax={'224px'}>
-              {filteredOptions.map(({ value, label }) => (
-                <AddFilter.Select.Option value={value} key={value}>
-                  {label}
-                </AddFilter.Select.Option>
-              ))}
-              {!filteredOptions.length ? (
-                <Text
-                  tag={'div'}
-                  id='search-result'
-                  key='Nothing'
-                  p={'6px 8px'}
-                  size={200}
-                  use={'secondary'}
+                  ),
+                )}
+              </AddFilter.Select.List>
+              <Divider my={1} />
+              <Flex px={2} pt={1} pb={3} gap={2} direction='column'>
+                <InputRange
+                  role='group'
+                  aria-labelledby='custom-range-title'
+                  value={customRange}
+                  onChange={setCustomRange}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    handleKeyDown(e, onApply);
+                  }}
+                />
+                <Button
+                  use='primary'
+                  theme='info'
+                  w='100%'
+                  onClick={() => {
+                    applyVolumeValueFromRange();
+                    onApply();
+                  }}
+                  onKeyDown={handleKeyDownApply}
                 >
-                  Nothing found
-                </Text>
-              ) : null}
-            </AddFilter.Select.List>
-          </AddFilter.Select.Popper>
-        </AddFilter.Select>
+                  Apply
+                </Button>
+              </Flex>
+            </>
+          )}
+        </AddFilter.Select.Popper>
+      </AddFilter.Select>
 
-        <AddFilter.Select
-          name='multiValue'
-          displayName='MultiSelect'
-          onChange={(multiValue: any) => {
-            setFilterData({ ...filterData, multiValue });
-          }}
-          multiselect
-        >
-          <AddFilter.Select.Trigger
-            onClear={() => clearField('multiValue')}
-            placeholder='Select values'
-          >
-            {'Multiselect'}: {filterData.multiValue.join(', ')}
-          </AddFilter.Select.Trigger>
-
-          <AddFilter.Select.Menu hMax='240px'>
-            {multiSelectOptions.map(({ value, title }) => (
+      <AddFilter.Select
+        name='fruit'
+        displayName='Select with search'
+        onChange={(fruit: any) => {
+          setFilterData({ ...filterData, fruit });
+        }}
+        onUnmount={() => {
+          setFilter('');
+        }}
+      >
+        <AddFilter.Select.Trigger placeholder='Select a fruit' onClear={() => clearField('fruit')}>
+          {'Fruit'}: {filterData.fruit}
+        </AddFilter.Select.Trigger>
+        <AddFilter.Select.Popper aria-label='Search fruits'>
+          <AddFilter.Select.InputSearch value={filter} onChange={setFilter} />
+          <AddFilter.Select.List hMax={'224px'}>
+            {filteredOptions.map(({ value, label }) => (
               <AddFilter.Select.Option value={value} key={value}>
-                <AddFilter.Select.Option.Checkbox />
-                {title}
+                {label}
               </AddFilter.Select.Option>
             ))}
-          </AddFilter.Select.Menu>
-        </AddFilter.Select>
-      </AddFilter>
-    </Flex>
+            {!filteredOptions.length ? (
+              <Text
+                tag={'div'}
+                id='search-result'
+                key='Nothing'
+                p={'6px 8px'}
+                size={200}
+                use={'secondary'}
+              >
+                Nothing found
+              </Text>
+            ) : null}
+          </AddFilter.Select.List>
+        </AddFilter.Select.Popper>
+      </AddFilter.Select>
+
+      <AddFilter.Select
+        name='multiValue'
+        displayName='MultiSelect'
+        onChange={(multiValue: any) => {
+          setFilterData({ ...filterData, multiValue });
+        }}
+        multiselect
+      >
+        <AddFilter.Select.Trigger
+          onClear={() => clearField('multiValue')}
+          placeholder='Select values'
+        >
+          {'Multiselect'}: {filterData.multiValue.join(', ')}
+        </AddFilter.Select.Trigger>
+
+        <AddFilter.Select.Menu hMax='240px'>
+          {multiSelectOptions.map(({ value, title }) => (
+            <AddFilter.Select.Option value={value} key={value}>
+              <AddFilter.Select.Option.Checkbox />
+              {title}
+            </AddFilter.Select.Option>
+          ))}
+        </AddFilter.Select.Menu>
+      </AddFilter.Select>
+    </AddFilter>
   );
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
-import { Flex } from '@semcore/flex-box';
 import { ButtonLink } from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
 import CloseM from '@semcore/icon/Close/m';
@@ -38,7 +37,14 @@ const Demo = () => {
   );
 
   return (
-    <Flex gap={2} flexWrap>
+    <AddFilter
+      filterData={filterData}
+      onClearAll={() => {
+        setFilterData(defaultFilterData);
+      }}
+      gap={2}
+      flexWrap
+    >
       <Input w={160}>
         <Input.Addon>
           <SearchM />
@@ -80,45 +86,36 @@ const Demo = () => {
         </Select.Menu>
       </Select>
 
-      <AddFilter
-        filterData={filterData}
-        onClearAll={() => {
-          setFilterData(defaultFilterData);
-        }}
-        gap={2}
-        flexWrap
-      >
-        {filters.map(({ name, values }) => {
-          return (
-            <AddFilter.Select
-              key={name}
-              name={name}
-              displayName={name}
-              onChange={(v: any) => {
-                updateFilterData(v, name);
+      {filters.map(({ name, values }) => {
+        return (
+          <AddFilter.Select
+            key={name}
+            name={name}
+            displayName={name}
+            onChange={(v: any) => {
+              updateFilterData(v, name);
+            }}
+          >
+            <AddFilter.Select.Trigger
+              placeholder={name}
+              aria-label={name}
+              onClear={() => {
+                clearField(name);
               }}
             >
-              <AddFilter.Select.Trigger
-                placeholder={name}
-                aria-label={name}
-                onClear={() => {
-                  clearField(name);
-                }}
-              >
-                <span aria-hidden>{name}:</span> {filterData[name]}
-              </AddFilter.Select.Trigger>
-              <AddFilter.Select.Menu aria-label={name}>
-                {values.map((item, idx) => (
-                  <AddFilter.Select.Option key={idx} value={item}>
-                    {item}
-                  </AddFilter.Select.Option>
-                ))}
-              </AddFilter.Select.Menu>
-            </AddFilter.Select>
-          );
-        })}
-      </AddFilter>
-    </Flex>
+              <span aria-hidden>{name}:</span> {filterData[name]}
+            </AddFilter.Select.Trigger>
+            <AddFilter.Select.Menu aria-label={name}>
+              {values.map((item, idx) => (
+                <AddFilter.Select.Option key={idx} value={item}>
+                  {item}
+                </AddFilter.Select.Option>
+              ))}
+            </AddFilter.Select.Menu>
+          </AddFilter.Select>
+        );
+      })}
+    </AddFilter>
   );
 };
 
