@@ -6,6 +6,7 @@ import { Root, Component } from '../../types';
 import { Box } from '../flex-box';
 import contextEnhance from '../../utils/enhances/contextEnhance';
 import style from './style/animate.shadow.css';
+import { AnimationContext } from '@semcore/core';
 
 function propToArray(prop: any[]) {
   return Array.isArray(prop) ? prop : [prop, prop];
@@ -26,7 +27,7 @@ const makeAnimationContextValue = () => {
   };
   return context;
 };
-export const animationContext = React.createContext(null);
+export const animationContext = React.createContext<AnimationContext | null>(null);
 
 class Animation extends Component {
   static displayName = 'Animation';

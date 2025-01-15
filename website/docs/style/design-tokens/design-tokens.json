@@ -332,6 +332,7 @@
       "button",
       "card",
       "checkbox",
+      "core",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -348,7 +349,6 @@
       "notice",
       "pagination",
       "pills",
-      "popper",
       "product-head",
       "radio",
       "side-panel",
@@ -1808,6 +1808,7 @@
       "carousel",
       "checkbox",
       "color-picker",
+      "core",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -1822,9 +1823,7 @@
       "input",
       "input-tags",
       "pills",
-      "popper",
       "radio",
-      "scroll-area",
       "slider",
       "switch",
       "tab-line",
@@ -2241,6 +2240,7 @@
       "card",
       "carousel",
       "color-picker",
+      "core",
       "counter",
       "d3-chart",
       "data-table",
@@ -2255,7 +2255,6 @@
       "notice-bubble",
       "pagination",
       "product-head",
-      "scroll-area",
       "side-panel",
       "tag",
       "textarea",
@@ -2279,6 +2278,7 @@
       "card",
       "carousel",
       "checkbox",
+      "core",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -2297,7 +2297,6 @@
       "pills",
       "product-head",
       "radio",
-      "scroll-area",
       "select",
       "side-panel",
       "slider",
@@ -2593,7 +2592,7 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": ["d3-chart", "dropdown", "feature-popover", "notice-bubble", "popper", "tooltip"]
+    "components": ["core", "d3-chart", "dropdown", "feature-popover", "notice-bubble", "tooltip"]
   },
   {
     "name": "--intergalactic-modal-rounded",
@@ -2793,7 +2792,7 @@
     "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["core"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-right",
@@ -2801,7 +2800,7 @@
     "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["core"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-top",
@@ -2809,7 +2808,7 @@
     "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Top-to-bottom fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["core"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-bottom",
@@ -2817,7 +2816,7 @@
     "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Bottom-to-top fade shadow for the ScrollArea.",
-    "components": ["scroll-area"]
+    "components": ["core"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-left",
@@ -2857,7 +2856,7 @@
     "rawValue": "rgba({gray.800}, 0.3)",
     "computedValue": "rgba(25, 27, 35, 0.3)",
     "description": "Background color for ScrollBar.",
-    "components": ["scroll-area"]
+    "components": ["core"]
   },
   {
     "name": "--intergalactic-tag-primary-gray-normal",

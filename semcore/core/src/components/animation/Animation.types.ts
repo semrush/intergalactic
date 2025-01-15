@@ -89,10 +89,13 @@ export type SlideProps = AnimationProps & {
 };
 
 type DisposeSubscription = () => void;
-declare const animationContext: React.Context<{
-  onAnimationStart: (callback: () => void) => DisposeSubscription;
+
+export type AnimationContext = {
+  onAnimationStart: (callback: (duration: number) => void) => DisposeSubscription;
   onAnimationEnd: (callback: () => void) => DisposeSubscription;
-}>;
+};
+
+declare const animationContext: React.Context<AnimationContext>;
 declare const Animation: Intergalactic.Component<'div', AnimationProps>;
 declare const Collapse: Intergalactic.Component<'div', CollapseProps>;
 declare const FadeInOut: Intergalactic.Component<'div', FadeInOutProps>;

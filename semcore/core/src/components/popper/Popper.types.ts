@@ -1,4 +1,4 @@
-import { DOMAttributes } from 'react';
+import { DOMAttributes, HTMLAttributes } from 'react';
 import { Options, Instance } from '@popperjs/core/lib/types';
 import { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
@@ -7,14 +7,16 @@ import { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
 import { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
 
-import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { OutsideClickProps } from '@semcore/outside-click';
-import { PortalProps } from '@semcore/portal';
-import { BoxProps } from '@semcore/flex-box';
-import { ScaleProps } from '@semcore/animation';
-import { NeighborLocationProps } from '@semcore/neighbor-location';
-import { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '../../types';
+import { OutsideClickProps } from '../outside-click';
+import { PortalProps } from '../portal';
+import { BoxProps } from '../flex-box';
+import { ScaleProps } from '../animation';
+import { NeighborLocationProps } from '../neighbor-location';
+import { UniqueIDProps } from '../../utils/uniqueID';
+import { KeyboardFocusProps } from '../../utils/enhances/keyboardFocusEnhance';
+
+export type PopperComponent = 'trigger' | 'popper';
 
 export type eventInteraction = {
   trigger: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
@@ -107,9 +109,17 @@ export type PopperTriggerProps = BoxProps & {
   disableEnforceFocus?: boolean;
 };
 
+export type InnerPopperTriggerProps = React.HTMLAttributes<HTMLDivElement> & {
+  onKeyboardFocus: (event?: { currentTarget?: HTMLElement }) => void;
+  highlighted: boolean;
+  active: boolean;
+  popperRef: React.MutableRefObject<HTMLElement>;
+};
+
 /** @deprecated */
 export interface IPopperPopperProps extends PopperPopperProps, UnknownProperties {}
 export type PopperPopperProps = BoxProps &
+  PortalProps &
   KeyboardFocusProps &
   NeighborLocationProps & {
     /**
@@ -117,6 +127,16 @@ export type PopperPopperProps = BoxProps &
      */
     disableEnforceFocus?: boolean;
   };
+
+export type InnerPopperPopperProps = React.HTMLAttributes<HTMLDivElement> & {
+  visible: boolean;
+  triggerRef: React.RefObject<HTMLElement>;
+  duration: number;
+  animationsDisabled: boolean;
+  popper: React.MutableRefObject<Instance | null>;
+  focusMaster: boolean;
+  handleFocusOut: () => void;
+};
 
 /** @deprecated */
 export interface IPopperContext extends PopperContext, UnknownProperties {}
@@ -155,4 +175,4 @@ declare const Popper: Intergalactic.Component<
   >;
 };
 
-export default Popper;
+export { Popper };

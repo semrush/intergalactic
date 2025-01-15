@@ -1,1 +1,1 @@
-export { OutsideClick } from './OutsideClick';
+export { OutsideClick, OutsideClickProps } from './OutsideClick';

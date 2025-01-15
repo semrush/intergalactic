@@ -584,6 +584,9 @@ importers:
       '@phytonmk/nano-css':
         specifier: 5.3.7
         version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@popperjs/core':
+        specifier: 2.11.5
+        version: 2.11.5
       '@reshadow/core':
         specifier: 0.0.1-alpha.74
         version: 0.0.1-alpha.74
@@ -672,7 +675,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/popper':
         specifier: 5.45.1
-        version: link:../popper
+        version: 5.45.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -993,7 +996,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/popper':
         specifier: 5.45.1
-        version: link:../popper
+        version: 5.45.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -1195,7 +1198,7 @@ importers:
         version: link:../icon
       '@semcore/popper':
         specifier: 5.45.1
-        version: link:../popper
+        version: 5.45.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2016,43 +2019,9 @@ importers:
 
   semcore/popper:
     dependencies:
-      '@popperjs/core':
-        specifier: 2.11.5
-        version: 2.11.5
-      '@semcore/animation':
-        specifier: 2.39.1
-        version: 2.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/core':
-        specifier: ^2.17.5
-        version: 2.37.1(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/flex-box':
-        specifier: 5.39.1
-        version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/neighbor-location':
-        specifier: 4.37.1
-        version: 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/outside-click':
-        specifier: 3.37.1
-        version: 3.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/portal':
-        specifier: 3.39.1
-        version: 3.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils':
-        specifier: 4.44.1
-        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
+        specifier: ^16.0.0
+        version: link:../core
 
   semcore/portal:
     dependencies:
@@ -2178,7 +2147,7 @@ importers:
         version: link:../input
       '@semcore/popper':
         specifier: 5.45.1
-        version: link:../popper
+        version: 5.45.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils':
         specifier: 4.44.1
         version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
@@ -2622,7 +2591,7 @@ importers:
         version: 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/popper':
         specifier: 5.45.1
-        version: link:../popper
+        version: 5.45.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/portal':
         specifier: 3.39.1
         version: 3.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
@@ -9469,6 +9438,25 @@ packages:
       '@semcore/outside-click': 3.24.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/portal': 3.26.0(@semcore/core@2.24.0)(react-dom@18.2.0)(react@18.2.0)
       '@semcore/utils': 4.27.0(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@semcore/popper@5.45.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fbYeGrqJEvT40filNm6sEXvGfoQzMhR9hq8NQYnsk/Wbqs7s3vj12qHNJI3cuhoS7BgeHzoNCAwhHvF4hpVk2w==}
+    peerDependencies:
+      '@semcore/core': ^2.17.5
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@popperjs/core': 2.11.5
+      '@semcore/animation': 2.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/core': 2.37.1(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box': 5.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/neighbor-location': 4.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/outside-click': 3.37.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/portal': 3.39.1(@semcore/core@2.37.1)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false

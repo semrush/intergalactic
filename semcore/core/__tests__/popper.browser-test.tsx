@@ -3,7 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Popper', () => {
   test('Focus lock', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/dropdown.tsx';
+    const standPath = 'semcore/core/__tests__/popper-stands/dropdown.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -28,7 +28,7 @@ test.describe('Popper', () => {
       "This test for some reason doesn't work in FF - it puts focus on the last input after the first click",
     );
 
-    const standPath = 'semcore/popper/__tests__/stands/disable-portal.tsx';
+    const standPath = 'semcore/core/__tests__/popper-stands/disable-portal.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -48,7 +48,7 @@ test.describe('Popper', () => {
     }
   });
   test('cursor anchoring', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/cursor-anchoring.tsx';
+    const standPath = 'semcore/core/__tests__/popper-stands/cursor-anchoring.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -82,7 +82,7 @@ test.describe('Popper', () => {
   });
   test.describe('label', () => {
     test('referenced', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/label-referenced.tsx';
+      const standPath = 'semcore/core/__tests__/popper-stands/label-referenced.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -101,7 +101,7 @@ test.describe('Popper', () => {
       await expect(option3Locator).toHaveCount(0);
     });
     test('wrapped', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/label-wrapped.tsx';
+      const standPath = 'semcore/core/__tests__/popper-stands/label-wrapped.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -120,7 +120,7 @@ test.describe('Popper', () => {
       await expect(option3Locator).toHaveCount(0);
     });
     test('wrapped with disable portal', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/label-wrapped-disable-portal.tsx';
+      const standPath = 'semcore/core/__tests__/popper-stands/label-wrapped-disable-portal.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -140,7 +140,7 @@ test.describe('Popper', () => {
     });
   });
   test('page resizing', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/page-resizing.tsx';
+    const standPath = 'semcore/core/__tests__/popper-stands/page-resizing.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -159,7 +159,7 @@ test.describe('Popper', () => {
   });
   test.describe('hover interaction', () => {
     test('with mouse', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';
+      const standPath = 'semcore/core/__tests__/popper-stands/hover-interaction.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -178,7 +178,7 @@ test.describe('Popper', () => {
       await expect(popperLocator).toHaveCount(1);
     });
     test('with touch', async ({ page }) => {
-      const standPath = 'semcore/popper/__tests__/stands/hover-interaction.tsx';
+      const standPath = 'semcore/core/__tests__/popper-stands/hover-interaction.tsx';
       const htmlContent = await e2eStandToHtml(standPath, 'en');
 
       await page.setContent(htmlContent);
@@ -197,7 +197,7 @@ test.describe('Popper', () => {
     });
   });
   test('works well with multiple focusables inside of trigger', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/multiple-focusables-in-trigger.tsx';
+    const standPath = 'semcore/core/__tests__/popper-stands/multiple-focusables-in-trigger.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -233,7 +233,7 @@ test.describe('Popper', () => {
   });
 
   test('Should open popper second time', async ({ page }) => {
-    const standPath = 'semcore/popper/__tests__/stands/focus-interaction.tsx';
+    const standPath = 'semcore/core/__tests__/popper-stands/focus-interaction.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
