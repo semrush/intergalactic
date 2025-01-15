@@ -7,8 +7,17 @@ import { FilterTrigger } from '@semcore/base-trigger';
 import { ButtonLink } from '@semcore/button';
 
 export type AddFilterItemProps = {
+  /**
+   * Non-persistent filter item unique `name`. Should be the same as related `key` in `FilterData` item related to Filter Control.
+   */
   name: string;
+  /**
+   * Optional `displayName` to be displayed inside `Add filter` dropdown menu. If not specified, `name` will be used instead.
+   */
   displayName?: string;
+  /**
+   * Action to perform on filter item unmount.
+   */
   onUnmount?: () => void;
 };
 
@@ -40,7 +49,13 @@ declare const AddFilterDropdownType: Intergalactic.Component<
 
 export type FilterData = Record<string, any>;
 export type AddFilterProps = FlexProps & {
+  /**
+   * Action to perform on `Clear filters` button click.
+   */
   onClearAll: () => void;
+  /**
+   * `FilterData` object.
+   */
   filterData: FilterData;
 };
 

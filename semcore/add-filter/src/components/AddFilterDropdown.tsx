@@ -5,8 +5,9 @@ import { AddFilterItemProps } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
 
 type AsPropsTypeWithHandlers<T> = T & {
-  onChange: (v: any) => void;
   onClear: () => void;
+  unsetFocusRef: () => void;
+  setFocusRef: (el: HTMLElement) => {};
 };
 
 class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
@@ -29,10 +30,13 @@ class AddFilterDropdownRoot extends Component<AddFilterItemProps> {
   }
 
   getTriggerProps() {
-    const { value, onClear } = this.asProps as AsPropsTypeWithHandlers<typeof this.asProps>;
+    const { value, onClear, setFocusRef } = this.asProps as AsPropsTypeWithHandlers<
+      typeof this.asProps
+    >;
 
     return {
       tag: FilterTrigger,
+      triggerRef: setFocusRef,
       empty: value == null,
       onClear,
       autoFocus: true,

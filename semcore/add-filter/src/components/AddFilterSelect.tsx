@@ -3,9 +3,12 @@ import createComponent, { Component, Root } from '@semcore/core';
 import Select, { SelectProps } from '@semcore/select';
 import { AddFilterItemProps, AddFilterSelectType } from '../AddFilter.types';
 import { FilterTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
 
-type AsPropsWithOnClear<T> = T & { onClear: () => void };
+type AsPropsWithOnClear<T> = T & {
+  onClear: () => void;
+  unsetFocusRef: () => void;
+  setFocusRef: (el: HTMLElement) => {};
+};
 class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
   static displayName = 'AddFilterSelect';
 
@@ -31,10 +34,11 @@ class AddFilterSelectRoot extends Component<SelectProps & AddFilterItemProps> {
   }
 
   getTriggerProps() {
-    const { onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+    const { onClear, setFocusRef } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
       tag: FilterTrigger,
+      triggerRef: setFocusRef,
       onKeyDown: (e: React.KeyboardEvent<HTMLImageElement>) => {
         if (this.isValueEmpty() && e.key === 'Escape') {
           onClear();

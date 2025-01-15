@@ -5,7 +5,11 @@ import { AddFilterItemProps } from '../AddFilter.types';
 import { InputValueProps } from '@semcore/input';
 import { ButtonLink } from '@semcore/button';
 
-type AsPropsWithOnClear<T> = T & { onClear: () => void };
+type AsPropsWithOnClear<T> = T & {
+  onClear: () => void;
+  unsetFocusRef: () => void;
+  setFocusRef: (el: HTMLElement) => {};
+};
 class AddFilterInputRoot extends Component<AddFilterItemProps> {
   static displayName = 'AddFilterInput';
 
@@ -14,10 +18,11 @@ class AddFilterInputRoot extends Component<AddFilterItemProps> {
   }
 
   getValueProps(props: InputValueProps) {
-    const { value, onClear } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
+    const { value, onClear, setFocusRef } = this.asProps as AsPropsWithOnClear<typeof this.asProps>;
 
     return {
       ...props,
+      ref: setFocusRef,
       onBlur: () => {
         if (!value) {
           setTimeout(onClear, 200);

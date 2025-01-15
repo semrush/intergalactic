@@ -43,7 +43,8 @@ class RootAddFilter extends Component<
   AddFilterState,
   typeof RootAddFilter.enhance
 > {
-  AddFilterTrigger = React.createRef<HTMLButtonElement>();
+  addFilterTrigger = React.createRef<HTMLButtonElement>();
+  filtersFocusMap: Map<string, HTMLElement> = new Map();
   clearMessageTimer: ReturnType<typeof setTimeout> | undefined;
 
   static displayName = 'AddFilter';
@@ -81,15 +82,25 @@ class RootAddFilter extends Component<
     clearTimeout(this.clearMessageTimer);
   }
 
-  focusAddFilterTrigger() {
+  focusFilterAfterItemCleared() {
     const { focusSourceRef } = this.asProps;
-
-    if (focusSourceRef.current === 'keyboard') {
-      // waiting for focus ref to appear in dom
-      setTimeout(() => {
-        this.AddFilterTrigger.current?.focus();
-      }, 20);
+    if (focusSourceRef.current !== 'keyboard') {
+      return;
     }
+
+    setTimeout(() => {
+      if (this.state.visibleFilters.size) {
+        const nameOfLast = Array.from(this.state.visibleFilters).pop() as string;
+        const lastFilterInRow = this.filtersFocusMap.get(nameOfLast);
+        lastFilterInRow?.focus();
+      } else {
+        this.addFilterTrigger.current?.focus();
+      }
+    }, 20);
+  }
+
+  unsetFocusRef(name: string) {
+    this.filtersFocusMap.delete(name);
   }
 
   getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
@@ -103,10 +114,15 @@ class RootAddFilter extends Component<
     const { filterData } = this.asProps;
 
     return {
+      name,
       value: filterData[name],
+      setFocusRef: (ref: HTMLElement) => {
+        this.filtersFocusMap.set(name, ref);
+      },
       onClear: () => {
         this.hideFilter(name);
-        this.focusAddFilterTrigger();
+        this.unsetFocusRef(name);
+        this.focusFilterAfterItemCleared();
       },
     };
   }
@@ -116,10 +132,11 @@ class RootAddFilter extends Component<
   }
 
   getDropdownAndSelectProps(props: AddFilterItemProps, isEmpty: () => boolean) {
-    const { value, onClear } = this.getItemCommonProps(props);
+    const { setFocusRef, value, onClear } = this.getItemCommonProps(props);
     return {
       value,
       onClear,
+      setFocusRef,
       onVisibleChange: (visible: boolean) => {
         // waiting for filterData update
         setTimeout(() => {
@@ -157,6 +174,7 @@ class RootAddFilter extends Component<
     });
     this.props.onClearAll();
     this.announceClearMessageToSR();
+    this.focusFilterAfterItemCleared();
   }
 
   announceClearMessageToSR() {
@@ -186,11 +204,11 @@ class RootAddFilter extends Component<
     this.toggleFieldVisibility(name, false);
   }
 
-  getDropdownMenuProps() {
+  getFilterSelectionMenuProps() {
     const { getI18nText } = this.asProps;
 
     return {
-      ref: this.AddFilterTrigger,
+      ref: this.addFilterTrigger,
       options: this.state.addDropdownItems,
       toggleFieldVisibility: (name: string, status: boolean) =>
         this.toggleFieldVisibility(name, status),
@@ -208,7 +226,6 @@ class RootAddFilter extends Component<
           .length > 0,
       clearAll: () => {
         this.clearAll();
-        this.focusAddFilterTrigger();
       },
       getI18nText,
     };
@@ -219,13 +236,13 @@ class RootAddFilter extends Component<
     const [filters, persistentFilters] = RootAddFilter.getFilterPatternItems(Children);
     const VisibleFilteredChildren = this.getVisibleFilters(filters);
 
-    const dropdownProps = this.getDropdownMenuProps();
+    const filtersSelectionDropdown = this.getFilterSelectionMenuProps();
     const clearAllFiltersProps = this.getClearAllFiltersProps();
     return (
       <Root render={Flex} gap={2} flexWrap>
         {persistentFilters}
         {VisibleFilteredChildren}
-        <AddFilterDropdownMenu {...dropdownProps} />
+        <AddFilterDropdownMenu {...filtersSelectionDropdown} />
         <ClearAllFilters {...clearAllFiltersProps} />
 
         <ScreenReaderOnly aria-live='polite' role='status'>
