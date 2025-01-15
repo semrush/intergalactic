@@ -30,7 +30,7 @@ test.describe('Widget empty', () => {
     await expect(page).toHaveScreenshot();
 
     await page.keyboard.press('Tab');
-    await expect(page.locator('data-ui-name="Button"')).toBeFocused();
+    await expect(page.getByRole('button', { name: 'Set up [Tool Name]' })).toBeFocused();
   });
 
   test('Verify WE with different states', async ({ page }) => {
