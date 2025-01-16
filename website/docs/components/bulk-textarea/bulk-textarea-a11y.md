@@ -3,7 +3,7 @@ title: BulkTextarea
 tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-api'), Example('bulk-textarea-code'), Changelog('bulk-textarea-changelog')
 ---
 
-_**THIS DOCUMENTATION SHOULD BE CHECKED AND UPDATED ONCE MORE AFTER THE COMPONENT WILL BE IMPLEMENTED.**_
+_**THIS DOCUMENTATION SHOULD BE DOUBLE CHECKED ONCE MORE AFTER THE COMPONENT WILL BE READY FOR RELEASE.**_
 
 ## What component has
 
