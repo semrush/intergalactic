@@ -1,7 +1,8 @@
 # https://support.crowdin.com/cli-tool ver.3
-"project_id": "367533"
+"project_id": "231"
 # https://crowdin.com/settings#api-key
 "api_token_env": "CROWDIN_PERSONAL_TOKEN"
+"base_url": "https://semrush.api.crowdin.com"
 "preserve_hierarchy" : true
 "files": [
   {
