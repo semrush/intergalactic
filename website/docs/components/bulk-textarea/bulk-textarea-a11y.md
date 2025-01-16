@@ -3,7 +3,7 @@ title: BulkTextarea
 tabs: Design('bulk-textarea'), A11y('bulk-textarea-a11y'), API('bulk-textarea-api'), Example('bulk-textarea-code'), Changelog('bulk-textarea-changelog')
 ---
 
-_**THIS DOCUMENTATION SHOULD BE CHECKED AND UPDATED AFTER THE COMPONENT WILL BE IMPLEMENTED.**_
+_**THIS DOCUMENTATION SHOULD BE CHECKED AND UPDATED ONCE MORE AFTER THE COMPONENT WILL BE IMPLEMENTED.**_
 
 ## What component has
 
@@ -15,15 +15,21 @@ Table: Roles and attributes
 
 | Component               | Role / Attribute        | Usage                                                        |
 | ----------------------- | ----------------------- | ------------------------------------------------------------ |
-| `BulkTextarea.InputField` | `textbox`               | Identifies an field that allows the input of free-form text. |
+| `BulkTextarea.InputField > div` | `textbox`               | Identifies a field that allows the input of free-form text. |
 |                         | `aria-multiline=”true”` | Indicates that a textbox accepts multiple lines of input.    |
-| CHECK if it is about rows | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Keyword {2}", on each keyboard navigation (Up/Down key) within the textbox rows without errors. |
+| | `aria-labelledby="IDREF"` | Refers to the element that contains the label of field. |
+| | `aria-describedby="IDREF"` | Gives the item an accessible description by referring to the `aria-errormessage`, the tooltip, or both, describing the primary message or purpose of the item. |
+| `BulkTextarea.InputField > div > p` | `aria-invalid="true"` | A row gets this property when it gets the `invalid` status. |
+| | `aria-errormessage="[Your message here]"` | Identifies the element that provides an error message for the . |
 | `BulkTextarea.Counter` | `aria-label="{n} out of {n}"` | Sets an accessible name for the element. |
 | | `"aria-label={n} out of {n}, limit reached"` | Sets an accessible name for the element. |
 | | `"aria-label={n} out of {n}, limit exceeded"` | Sets an accessible name for the element. |
-| Buttons inside `BulkTextarea.ErrorsNavigation` | `aria-label="Next error"`, `aria-label="Previous error"` | Sets an accessible names for the elements. |
-| CHECK | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Error {n} out of {n}", while navigating between the errors using buttons. |
-| CHECK IF NEEDED `BulkTextarea.ErrorItem` | `aria-hidden="true"` | Hides noninteractive icon from the assistive technologies. |
+| Buttons inside `BulkTextarea.ErrorsNavigation` | `aria-label="Next error"`, `aria-label="Previous error"` | Sets an accessible names for the buttons with no text. |
+
+<!-- | CHECK p rows | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Keyword {2}", on each keyboard navigation (Up/Down key) within the textbox rows without errors. | 
+| CHECK IF NEEDED `BulkTextarea.ErrorItem` | `aria-hidden="true"` | Hides noninteractive icon from the assistive technologies.
+| CHECK | `aria-live="polite"` | Identifies the container element as a live region in the "polite" state, meaning assistive technology users are informed of changes to the region at the next available opportunity. Announces live message:"Error {n} out of {n}", while navigating between the errors using buttons. | |
+-->
 
 ### Keyboard support
 
@@ -31,18 +37,16 @@ For detailed information about keyboard support for the Input, refer to the [Key
 
 ## Considerations for developers and designers
 
-- Keep it simple - not all browsers correctly expose multiple labels that are linked to the same form element.
-- **CHECK THIS, maybe it works out of the box** Use labels for every input and make the `for=""` and `id=""` values match. IDs must be unique on each page, only one label can be associated to each unique form element. Make required fields obvious by using an indicator – asterisk, description text, etc.
- - **CHECK THIS** Fields with error validation should have `aria-describedby` to insure that the associated field level error message is read by assistive technology. If the error message has an `id="my-error-message"`, then the input should have `aria-describedby="my-error-message"`.
+### Error messages
 
- ### Error messages
+::: tip
+These messages aren't set by default in the component.
+:::
 
- Set error messages for the tooltips that will be shown for siighted users and read by assistive technologies. You should set:
+Set up error messages for tooltips that will be visible to sighted users and announced by assistive technologies:
 
-- Messages for the specific errors in the invalid lines based on your validation rules
-- Message for the whole invalid input
-
-**These messages aren't set by default in the component.**
+- A message for specific errors in invalid rows based on your validation rules
+- A message for the entire input if you’re validating the whole thing
 
 ## Resources
 

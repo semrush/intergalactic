@@ -46,10 +46,10 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 Table: Roles and attributes
 
-| Role    | Attribute                   | Usage                                                                 |
-| ------- | --------------------------- | --------------------------------------------------------------------- |
-| `group` |                             | Identifies the `div` element as a group container for the checkboxes. |
-|         | `aria-labelledby="[IDREF]"` | Refers to the element that contains the label of the checkbox group.  |
+| Role    | Attribute                 | Usage                                                                 |
+| ------- | ------------------------- | --------------------------------------------------------------------- |
+| `group` |                           | Identifies the `div` element as a group container for the checkboxes. |
+|         | `aria-labelledby="IDREF"` | Refers to the element that contains the label of the checkbox group.  |
 
 ## Resources
 
