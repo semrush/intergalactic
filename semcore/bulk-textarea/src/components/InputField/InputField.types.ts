@@ -101,11 +101,6 @@ export type InputFieldProps = {
   ofRows: number;
 
   /**
-   * @default true
-   */
-  skipEmptyRowsInCounter?: boolean;
-
-  /**
    * Paste props
    */
   pasteProps: PasteProps;
