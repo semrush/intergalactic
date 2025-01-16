@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from 'intergalactic/card';
-import WidgetEmpty, { getIconPath } from 'intergalactic/widget-empty';
+import Card from '@semcore/card';
+import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
 
 const Demo = () => {
   return (
