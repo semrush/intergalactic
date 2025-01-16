@@ -1,3 +1,21 @@
-import { Popper, isInputTriggerTag } from '@semcore/core';
+import {
+  Popper,
+  isInputTriggerTag,
+  Placement,
+  PopperContext,
+  PopperProps,
+  PopperHandlers,
+  PopperTriggerProps,
+  PopperPopperProps,
+} from '@semcore/core';
 
-export { Popper, isInputTriggerTag };
+export {
+  Popper,
+  isInputTriggerTag,
+  Placement,
+  PopperContext,
+  PopperProps,
+  PopperHandlers,
+  PopperTriggerProps,
+  PopperPopperProps,
+};

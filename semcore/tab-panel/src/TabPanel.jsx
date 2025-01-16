@@ -1,9 +1,9 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 import style from './style/tab-panel.shadow.css';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 
-import OutsideClick from '../src';
+import { OutsideClick } from '../src';
 
 describe('OutsideClick', () => {
   beforeEach(cleanup);

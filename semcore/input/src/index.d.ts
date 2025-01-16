@@ -2,7 +2,7 @@ import React from 'react';
 import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
-import { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 
 export type InputSize = 'm' | 'l';
 

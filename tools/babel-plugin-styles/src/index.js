@@ -31,10 +31,7 @@ function StylesPlugin({ types: t }, opts) {
         t.VariableDeclarator(
           t.Identifier(ident),
           t.TaggedTemplateExpression(
-            t.MemberExpression(
-              addNamed(p, 'sstyled', '@semcore/utils/lib/core/index'),
-              t.Identifier('insert'),
-            ),
+            t.MemberExpression(addNamed(p, 'sstyled', '@semcore/core'), t.Identifier('insert')),
             t.TemplateLiteral(
               [
                 t.TemplateElement({
@@ -158,7 +155,7 @@ function StylesPlugin({ types: t }, opts) {
     visitor: {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
-        if (source.value === '@semcore/core' || source.value.endsWith('/core/index')) {
+        if (source.value === '@semcore/core') {
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
               p.scope.getBinding(specifier.local.name)?.referencePaths.forEach((refP) => {

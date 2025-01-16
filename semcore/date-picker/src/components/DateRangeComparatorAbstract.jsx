@@ -4,7 +4,7 @@ import { Component, Root, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 import shortDateRangeFormat from '../utils/shortDateRangeFormat';
 import Checkbox from '@semcore/checkbox';

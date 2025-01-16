@@ -1,5 +1,6 @@
 import React from 'react';
-import { Intergalactic, ReturnEl, UnknownProperties } from '../../types';
+import { UnknownProperties } from '../../types/UnknownProperties';
+import { Intergalactic, ReturnEl } from '../../types/Component';
 
 export type NeighborLocationUnion = 'right' | 'both' | 'left';
 
@@ -42,6 +43,4 @@ declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationP
 
 declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;
 
-export { useNeighborLocationDetect };
-
-export default NeighborLocation;
+export { NeighborLocation, useNeighborLocationDetect };

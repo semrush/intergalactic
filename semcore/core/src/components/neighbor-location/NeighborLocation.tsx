@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent } from '../../coreFactory';
-import { Component, Root } from '../../types';
+import { Component, Root } from '../../types/Component';
 import register from '../../register';
 import getOriginChildren from '../../utils/getOriginChildren';
 import isNode from '../../utils/isNode';
@@ -9,6 +9,7 @@ import {
   NeighborLocationUnion,
   NeighborLocationDetectProps,
   NeighborLocationProps,
+  NeighborLocation as NeighborLocationType,
 } from './NeighborLocation.types';
 
 const Context = register.get(
@@ -130,6 +131,6 @@ export const NeighborLocation = createComponent(
   {
     context: Context,
   },
-);
+) as typeof NeighborLocationType;
 
 export { useNeighborLocationDetect };

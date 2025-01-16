@@ -1,3 +1,10 @@
-import { ScrollArea, hideScrollBarsFromScreenReadersContext, eventCalculate } from '@semcore/core';
+import {
+  ScrollArea,
+  hideScrollBarsFromScreenReadersContext,
+  eventCalculate,
+  ScrollAreaProps,
+} from '@semcore/core';
 
-export { ScrollArea, hideScrollBarsFromScreenReadersContext, eventCalculate };
+export { ScrollArea, hideScrollBarsFromScreenReadersContext, eventCalculate, ScrollAreaProps };
+
+export default ScrollArea;

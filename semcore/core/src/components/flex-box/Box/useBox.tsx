@@ -8,7 +8,7 @@ import { sstyled, StyledProps } from '../../../styled';
 
 import style from '../style/use-box.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
-import { UnknownProperties } from '../../../types';
+import { UnknownProperties } from '../../../types/UnknownProperties';
 
 export function removeUndefinedKeys<T extends {}>(obj: T) {
   return Object.entries(obj).reduce((acc: any, [key, value]) => {

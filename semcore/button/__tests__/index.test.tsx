@@ -7,7 +7,7 @@ import { render } from '@semcore/testing-utils/testing-library';
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 import Button, { ButtonLink } from '../src';
 import CloseM from '@semcore/icon/Close/m';
 

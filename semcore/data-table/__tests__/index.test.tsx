@@ -17,7 +17,7 @@ import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColor from '@semcore/core/lib/utils/color';
 
 import { assertType } from 'vitest';
 import { Intergalactic } from '@semcore/core';

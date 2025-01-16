@@ -2,7 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import createHoc from '../createHoc';
-import { UnknownProperties } from '../../types';
+import { UnknownProperties } from '../../types/UnknownProperties';
 
 /** @deprecated */
 export interface IEnhancedWithAutoFocusProps

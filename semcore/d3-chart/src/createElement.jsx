@@ -1,10 +1,10 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import createComponent, { createBaseComponent, CONTEXT_COMPONENT } from '@semcore/core';
-import assignProps from '@semcore/utils/lib/assignProps';
-import { useForkRef } from '@semcore/utils/lib/ref';
-import propsForElement from '@semcore/utils/lib/propsForElement';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { createComponent, createBaseComponent, CONTEXT_COMPONENT } from '@semcore/core';
+import assignProps from '@semcore/core/lib/utils/assignProps';
+import { useForkRef } from '@semcore/core/lib/utils/ref';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
 import Plot from './Plot';
 
 const EXCLUDE_PROPS = ['data', 'scale'];

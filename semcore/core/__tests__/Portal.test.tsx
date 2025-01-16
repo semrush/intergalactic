@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
-import Portal, { PortalProvider } from '../src';
+import { Portal, PortalProvider } from '../src';
 
 describe('Portal', () => {
   beforeEach(cleanup);

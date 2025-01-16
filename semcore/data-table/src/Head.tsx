@@ -4,12 +4,12 @@ import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea, { hideScrollBarsFromScreenReadersContext } from '@semcore/scroll-area';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import { ColIndex, Column } from './types';
-import logger from '@semcore/utils/lib/logger';
-import { setRef } from '@semcore/utils/lib/ref';
-import { getFocusableIn } from '@semcore/utils/lib/focus-lock/getFocusableIn';
+import logger from '@semcore/core/lib/utils/logger';
+import { setRef } from '@semcore/core/lib/utils/ref';
+import { getFocusableIn } from '@semcore/core/lib/utils/focus-lock/getFocusableIn';
 import { ScreenReaderOnly } from '@semcore/flex-box';
 
 export const SORT_ICON_WIDTH = 20;

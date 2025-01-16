@@ -3,7 +3,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Textarea from '@semcore/textarea';
 import Counter from '@semcore/counter';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/core';
 
 const maxSymbols = 150;
 

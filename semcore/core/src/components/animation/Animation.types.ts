@@ -1,4 +1,5 @@
-import { UnknownProperties, Intergalactic } from '../../types';
+import { UnknownProperties } from '../../types/UnknownProperties';
+import { Intergalactic } from '../../types/Component';
 import { BoxProps } from '../flex-box';
 
 type CssTimingFunction =

@@ -1,4 +1,4 @@
-import { CSSProperties, Ref } from 'react';
+import { CSSProperties, DetailedHTMLProps, Ref, StyleHTMLAttributes } from 'react';
 import cn from 'classnames';
 import { sstyled } from '../styled/';
 import { forkRef } from './ref';
@@ -42,7 +42,7 @@ export interface AssignableProps {
   ref?: Ref<any>;
   style?: CSSProperties;
   className?: string;
-  styles?: { [key: string]: string };
+  styles?: DetailedHTMLProps<StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
 
   [key: string]: any;
 }

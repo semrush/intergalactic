@@ -3,7 +3,7 @@ import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import styles from './style/text.shadow.css';
-import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 function getTextDecoration(underline, lineThrough) {
   if (underline) {

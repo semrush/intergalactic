@@ -1,7 +1,8 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { createComponent } from '../../coreFactory';
-import { Intergalactic, UnknownProperties } from '../../types';
+import { Intergalactic } from '../../types/Component';
+import { UnknownProperties } from '../../types/UnknownProperties';
 import register from '../../register';
 import canUseDOM from '../../utils/canUseDOM';
 import { getNodeByRef, NodeByRef } from '../../utils/ref';

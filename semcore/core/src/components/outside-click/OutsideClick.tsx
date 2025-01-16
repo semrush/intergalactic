@@ -1,6 +1,7 @@
 import React, { cloneElement } from 'react';
 import { createComponent } from '../../coreFactory';
-import { IFunctionProps, Intergalactic, UnknownProperties } from '../../types';
+import { IFunctionProps, Intergalactic } from '../../types/Component';
+import { UnknownProperties } from '../../types/UnknownProperties';
 import { getNodeByRef, NodeByRef, useForkRef } from '../../utils/ref';
 import ownerDocument from '../../utils/ownerDocument';
 import getOriginChildren from '../../utils/getOriginChildren';

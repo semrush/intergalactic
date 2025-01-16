@@ -101,15 +101,6 @@ for (const theme of themes) {
 
     const usedVariables: any = {};
 
-    // const legacyCssVariablesFile = await fs.readFile('./semcore/utils/style/var.css', 'utf-8');
-    // const legacyCssVariablesList = legacyCssVariablesFile
-    //   .split('\n')
-    //   .map((line) => line.trim())
-    //   .filter((line) => line.startsWith('--') && line.includes(':'))
-    //   .map((line) => line.substring(0, line.indexOf(':')));
-    // const legacyCssVariables = Object.fromEntries(
-    //   legacyCssVariablesList.map((variableName) => [variableName, 0]),
-    // );
     const colorLiterals: { path: string; name: string }[] = [];
 
     const processedCss = await Promise.all(
@@ -240,16 +231,6 @@ for (const theme of themes) {
         // biome-ignore lint/suspicious/noConsoleLog:
         console.log(unusedVariables.join('\n'));
       }
-      // if (Object.values(legacyCssVariables).reduce((sum, item) => sum + item) > 0) {
-      //   // biome-ignore lint/suspicious/noConsoleLog:
-      //   console.log('Still used legacy variables:');
-      //   for (const variable in legacyCssVariables) {
-      //     if (legacyCssVariables[variable] !== 0) {
-      //       // biome-ignore lint/suspicious/noConsoleLog:
-      //       console.log(`${variable} (${legacyCssVariables[variable]})`);
-      //     }
-      //   }
-      // }
       if (colorLiterals.length > 0) {
         // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Unexpected color literals:');

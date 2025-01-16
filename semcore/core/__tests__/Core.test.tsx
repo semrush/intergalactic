@@ -4,12 +4,9 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 
 const { shouldSupportRef } = sharedTests;
-import createComponent, {
-  createBaseComponent,
-  Component,
-  IComponentProps,
-  CORE_COMPONENT,
-} from '../src';
+import { createComponent, createBaseComponent, Component, IComponentProps } from '../src';
+
+import { CORE_COMPONENT } from '../src/types/symbols';
 
 /*
  * - control/uncontrollprops

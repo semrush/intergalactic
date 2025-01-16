@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex } from '../flex-box';
 import { createComponent } from '../../coreFactory';
-import { Component, Root } from '../../types';
+import { Component, Root } from '../../types/Component';
 import { sstyled } from '../../styled';
 import { RowProps, ColProps, Row as RowType } from './Grid.types';
 import style from './style/grid.shadow.css';

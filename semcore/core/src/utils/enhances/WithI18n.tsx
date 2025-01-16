@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
-import { UnknownProperties } from '../../types';
+import { UnknownProperties } from '../../types/UnknownProperties';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };

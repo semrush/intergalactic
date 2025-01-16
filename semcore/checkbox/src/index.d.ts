@@ -1,7 +1,7 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import { TextProps } from '@semcore/typography';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 export type CheckboxSize = 'm' | 'l';
 export type CheckboxState = 'normal' | 'invalid';

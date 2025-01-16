@@ -4,17 +4,17 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
 
-import isNode from '../src/isNode';
-import compose from '../src/compose';
-import useCss from '../src/use/useCss';
-import resolveColor, { shade, opacity } from '../src/color';
-import { interpolate } from '../src/enhances/i18nEnhance';
-import assignProps, { assignHandlers } from '../src/assignProps';
-import reactToText from '../src/reactToText';
-import { getRef, setRef, getNodeByRef } from '../src/ref';
+import isNode from '../src/utils/isNode';
+import compose from '../src/utils/compose';
+import useCss from '../src/utils/use/useCss';
+import { shade, opacity } from '../src/utils/color';
+import { interpolate } from '../src/utils/enhances/i18nEnhance';
+import assignProps, { assignHandlers } from '../src/utils/assignProps';
+import reactToText from '../src/utils/reactToText';
+import { getRef, setRef, getNodeByRef } from '../src/utils/ref';
 import keyboardFocusEnhance, {
   KeyboardFocusEnhanceHook,
-} from '../src/enhances/keyboardFocusEnhance';
+} from '../src/utils/enhances/keyboardFocusEnhance';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
@@ -276,7 +276,11 @@ describe('Utils CSS in JS', () => {
     // because nano singleton
     vi.resetModules();
     // TODO: resolve "Invalid hook call" issue
-    const { default: useCss, getStylesheet, Provider } = require(`${__dirname}/../src/use/useCss`);
+    const {
+      default: useCss,
+      getStylesheet,
+      Provider,
+    } = require(`${__dirname}/../src/utils/use/useCss`);
     const CSSJS = ({ css }: any) => {
       const className = useCss(css);
       return <div className={className} />;
@@ -331,12 +335,6 @@ describe('Utils compose', () => {
 
 describe('Utils color', () => {
   beforeEach(cleanup);
-
-  test.concurrent('should support resolveColor for empty value', () => {
-    expect(resolveColor(undefined)).toBe(undefined);
-    expect(resolveColor('')).toBe(undefined);
-    expect(resolveColor(null as any)).toBe(undefined);
-  });
 
   test.concurrent('should support shade for empty value', () => {
     expect(shade('', -0.08)).toBe(undefined);

@@ -43,11 +43,11 @@ import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { curveCardinal } from 'd3-shape';
 import { Flex, Box } from '@semcore/flex-box';
 import Ellipsis from '@semcore/ellipsis';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColor from '@semcore/core/lib/utils/color';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import LikeM from '@semcore/icon/Like/m';
-import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
+import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);

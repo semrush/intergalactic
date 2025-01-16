@@ -1,7 +1,18 @@
 /** ============================== core ============================== */
 import { createComponent, createBaseComponent } from './coreFactory';
 import { sstyled } from './styled';
-import { Root, Component, UnknownProperties, Intergalactic } from './types';
+import {
+  Root,
+  Component,
+  Intergalactic,
+  PropGetterFn,
+  IRootComponentProps,
+  ComponentType,
+  IRootComponentHandlers,
+  IComponentProps,
+} from './types/Component';
+import { CORE_INSTANCE } from './types/symbols';
+import { UnknownProperties } from './types/UnknownProperties';
 
 export {
   sstyled,
@@ -11,9 +22,19 @@ export {
   Component,
   UnknownProperties,
   Intergalactic,
+  PropGetterFn,
+  IRootComponentProps,
+  ComponentType,
+  IRootComponentHandlers,
+  IComponentProps,
+  CORE_INSTANCE,
 };
 
 /** ============================= utils ============================== */
+
+import assignProps from './utils/assignProps';
+
+export { assignProps };
 
 /** =========================== components =========================== */
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import { createComponent } from '../../coreFactory';
 import { sstyled } from '../../styled';
-import { Root, Component } from '../../types';
+import { Root, Component } from '../../types/Component';
 import { Box } from '../flex-box';
 import contextEnhance from '../../utils/enhances/contextEnhance';
 import style from './style/animate.shadow.css';

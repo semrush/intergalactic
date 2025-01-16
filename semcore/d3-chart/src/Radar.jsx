@@ -1,9 +1,9 @@
 import React, { cloneElement } from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import trottle from '@semcore/utils/lib/rafTrottle';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { polygonContains } from 'd3-polygon';
 import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';

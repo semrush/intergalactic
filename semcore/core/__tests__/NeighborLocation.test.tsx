@@ -1,5 +1,5 @@
 import React from 'react';
-import NeighborLocation from '../src';
+import { NeighborLocation } from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 

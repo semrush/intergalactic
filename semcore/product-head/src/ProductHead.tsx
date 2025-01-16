@@ -1,10 +1,10 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
 
 import style from './style/product-head.shadow.css';
 
-class HeaderRoot extends Component<IBoxProps> {
+class HeaderRoot extends Component<BoxProps> {
   static displayName = 'ProductHead';
   static style = style;
 

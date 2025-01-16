@@ -7,7 +7,8 @@ import { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
 import { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
 
-import { PropGetterFn, UnknownProperties, Intergalactic } from '../../types';
+import { PropGetterFn, Intergalactic } from '../../types/Component';
+import { UnknownProperties } from '../../types/UnknownProperties';
 import { OutsideClickProps } from '../outside-click';
 import { PortalProps } from '../portal';
 import { BoxProps } from '../flex-box';

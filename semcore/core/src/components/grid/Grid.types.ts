@@ -1,4 +1,5 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '../../types';
+import { PropGetterFn, Intergalactic } from '../../types/Component';
+import { UnknownProperties } from '../../types/UnknownProperties';
 import { BoxProps, FlexProps } from '../flex-box';
 
 /* utils type */

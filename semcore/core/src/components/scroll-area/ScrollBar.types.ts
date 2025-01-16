@@ -1,4 +1,5 @@
-import { PropGetterFn, UnknownProperties, Intergalactic } from '../../types';
+import { PropGetterFn, Intergalactic } from '../../types/Component';
+import { UnknownProperties } from '../../types/UnknownProperties';
 import { Box, BoxProps } from '../flex-box';
 import { NodeByRef } from '../../utils/ref';
 
@@ -48,13 +49,8 @@ export interface IScrollBarProps extends ScrollBarProps, UnknownProperties {}
 export type ScrollBarProps = BoxProps & {
   /** The direction of the scroll that can be calculated automatically  */
   orientation?: 'horizontal' | 'vertical';
-  /** Link to the dom element, which will be a container with overflow */
-  container?: React.MutableRefObject<HTMLElement>;
 
-  /** Internal type */
-  // horizontalBarRef?: React.MutableRefObject<HTMLElement>;
-  // /** Internal type */
-  // verticalBarRef?: React.MutableRefObject<HTMLElement>;
+  container?: React.RefObject<HTMLElement>;
 };
 
 /** @deprecated */

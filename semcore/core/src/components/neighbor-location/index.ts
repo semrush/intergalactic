@@ -1,4 +1,4 @@
 import { NeighborLocation, useNeighborLocationDetect } from './NeighborLocation';
-import { NeighborLocationProps } from './NeighborLocation.types';
+import { NeighborLocationProps, NeighborItemProps } from './NeighborLocation.types';
 
-export { NeighborLocation, useNeighborLocationDetect, NeighborLocationProps };
+export { NeighborLocation, useNeighborLocationDetect, NeighborLocationProps, NeighborItemProps };

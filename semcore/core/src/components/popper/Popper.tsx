@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createComponent } from '../../coreFactory';
-import { Component, IRootComponentProps, Root } from '../../types';
+import { Component, IRootComponentProps, Root } from '../../types/Component';
 import { sstyled } from '../../styled';
 import canUseDOM from '../../utils/canUseDOM';
 import { Box } from '../flex-box';

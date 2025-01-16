@@ -1,7 +1,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { createComponent } from '../../coreFactory';
-import { Component, Root } from '../../types';
+import { Component, Root } from '../../types/Component';
 import { sstyled } from '../../styled';
 import { Box } from '../flex-box';
 import { getNodeByRef } from '../../utils/ref';

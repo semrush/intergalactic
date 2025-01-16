@@ -64,7 +64,7 @@ With `@semcore/utils` package:
   "plugins": ["intergalactic/stylelint-plugin"],
   "rules": {
 		"intergalactic/design-tokens": [true, {
-      "tokensSource": "node_modules/@semcore/utils/lib/themes/default.json",
+      "tokensSource": "node_modules/@semcore/core/lib/utils/themes/default.json",
     }]
 	}
 }

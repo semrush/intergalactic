@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnknownProperties } from '../../types';
+import { UnknownProperties } from '../../types/UnknownProperties';
 
 type listenerType = (index: number) => void;
 type mediaType = string[];

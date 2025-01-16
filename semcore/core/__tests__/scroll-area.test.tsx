@@ -5,7 +5,7 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import ScrollArea from '../src';
+import { ScrollArea } from '../src';
 
 describe('ScrollArea', () => {
   beforeEach(cleanup);

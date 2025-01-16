@@ -2,7 +2,7 @@ import React, { ForwardedRef } from 'react';
 import { findDOMNode } from 'react-dom';
 
 import { createComponent } from '../../coreFactory';
-import { Component, IRootComponentProps, Root } from '../../types';
+import { Component, IRootComponentProps, Root } from '../../types/Component';
 import { sstyled } from '../../styled';
 import { Box } from '../flex-box';
 

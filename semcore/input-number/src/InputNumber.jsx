@@ -1,13 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import { IncrementIcon, DecrementIcon } from './buttons';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
-import { forkRef } from '@semcore/utils/lib/ref';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { forkRef } from '@semcore/core/lib/utils/ref';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 
 export function parseValueWithMinMax(
   value,

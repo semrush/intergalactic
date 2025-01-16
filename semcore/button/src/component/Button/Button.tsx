@@ -1,17 +1,11 @@
 import React from 'react';
-import createComponent, { sstyled, Root } from '@semcore/core';
+import { createComponent, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 import style from './button.shadow.css';
 import { AbstractButton } from '../AbstractButton/AbstractButton';
-import {
-  ButtonAddonProps,
-  ButtonChildren,
-  ButtonComponent,
-  ButtonProps,
-  ButtonTextProps,
-} from './Button.type';
+import { ButtonAddonProps, ButtonComponent, ButtonTextProps } from './Button.type';
 
 class RootButton extends AbstractButton {
   static displayName = 'Button';

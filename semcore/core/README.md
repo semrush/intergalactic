@@ -19,7 +19,7 @@ npm install intergalactic
 ## Usage
 
 ```jsx
-import createComponent, { Root, sstyled } from 'intergalactic/core';
+import { createComponent, Root, sstyled } from 'intergalactic/core';
 ```
 
 <details>
@@ -43,7 +43,7 @@ of the components that is discussed below. There should only be one version of t
 You can use the package the same way but without `/ui/` in the import path.
 
 ```jsx
-import createComponent, { Root, sstyled } from '@semcore/core';
+import { createComponent, Root, sstyled } from '@semcore/core';
 ```
 
 </details>
