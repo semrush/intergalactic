@@ -1,7 +1,7 @@
 import React from 'react';
-import Textarea from 'intergalactic/textarea';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => (
   <div>

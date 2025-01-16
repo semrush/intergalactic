@@ -1,6 +1,6 @@
 import React from 'react';
-import { Chart } from 'intergalactic/d3-chart';
-import { Flex } from 'intergalactic/flex-box';
+import { Chart } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
 
 function Demo() {
   return (

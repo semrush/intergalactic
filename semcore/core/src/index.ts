@@ -10,6 +10,8 @@ import {
   ComponentType,
   IRootComponentHandlers,
   IComponentProps,
+  ReturnEl,
+  wrapIntergalacticComponent,
 } from './types/Component';
 import { CORE_INSTANCE } from './types/symbols';
 import { UnknownProperties } from './types/UnknownProperties';
@@ -28,6 +30,8 @@ export {
   IRootComponentHandlers,
   IComponentProps,
   CORE_INSTANCE,
+  ReturnEl,
+  wrapIntergalacticComponent,
 };
 
 /** ============================= utils ============================== */

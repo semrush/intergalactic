@@ -1,5 +1,5 @@
 import React from 'react';
-import TabPanel from 'intergalactic/tab-panel';
+import TabPanel from '@semcore/tab-panel';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);

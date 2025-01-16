@@ -1,7 +1,7 @@
 import React from 'react';
-import Radio, { RadioGroup } from 'intergalactic/radio';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Radio, { RadioGroup } from '@semcore/radio';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('1');

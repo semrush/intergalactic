@@ -8,7 +8,7 @@ import {
   interpolateValue,
   ChartLegend,
   makeDataHintsContainer,
-} from 'intergalactic/d3-chart';
+} from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 

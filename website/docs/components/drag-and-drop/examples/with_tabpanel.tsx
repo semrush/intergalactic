@@ -1,8 +1,8 @@
 import React from 'react';
-import DnD from 'intergalactic/drag-and-drop';
-import TabPanel from 'intergalactic/tab-panel';
-import Counter from 'intergalactic/counter';
-import Flag from 'intergalactic/flags';
+import DnD from '@semcore/drag-and-drop';
+import TabPanel from '@semcore/tab-panel';
+import Counter from '@semcore/counter';
+import Flag from '@semcore/flags';
 
 const renderTab = (tab: string) => {
   if (tab === 'overview') {

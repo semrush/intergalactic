@@ -1,6 +1,6 @@
 import React from 'react';
-import { Blockquote, List, Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
+import { Blockquote, List, Text } from '@semcore/typography';
+import Link from '@semcore/link';
 
 const Demo = () => (
   <div>

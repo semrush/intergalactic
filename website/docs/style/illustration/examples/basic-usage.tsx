@@ -1,5 +1,5 @@
 import React from 'react';
-import MailSent from 'intergalactic/illustration/MailSent';
+import MailSent from '@semcore/illustration/MailSent';
 
 const Demo = () => {
   return <MailSent />;

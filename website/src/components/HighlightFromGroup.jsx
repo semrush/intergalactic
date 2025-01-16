@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import setRef from '@semcore/utils/lib/setRef';
-import fire from '@semcore/utils/lib/fire';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import setRef from '@semcore/core/lib/utils/setRef';
+import fire from '@semcore/core/lib/utils/fire';
 
 const KEY = {
   DOWN: 40,

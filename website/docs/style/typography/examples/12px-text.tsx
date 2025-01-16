@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
   <div>

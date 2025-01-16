@@ -1,7 +1,7 @@
 import React from 'react';
-import Pills from 'intergalactic/pills';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import Pills from '@semcore/pills';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const contentBLocks = [
   'Lorem ipsum odor amet, consectetuer adipiscing elit. Platea cursus varius interdum convallis torquent finibus phasellus integer. Massa erat aliquet elementum vivamus leo pharetra. ',

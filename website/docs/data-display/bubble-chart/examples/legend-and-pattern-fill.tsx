@@ -1,14 +1,7 @@
 import React from 'react';
-import {
-  Plot,
-  Bubble,
-  XAxis,
-  YAxis,
-  ChartLegend,
-  makeDataHintsContainer,
-} from 'intergalactic/d3-chart';
+import { Plot, Bubble, XAxis, YAxis, ChartLegend, makeDataHintsContainer } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Text } from 'intergalactic/typography';
+import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
 const dataHints = makeDataHintsContainer();

@@ -1,5 +1,5 @@
-import { Portal, PortalProvider } from '@semcore/core';
+import { Portal, PortalProvider, PortalProps } from '@semcore/core';
 
-export { Portal, PortalProvider };
+export { Portal, PortalProvider, PortalProps };
 
 export default Portal;

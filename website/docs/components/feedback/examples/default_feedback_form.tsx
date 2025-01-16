@@ -1,13 +1,13 @@
 import React from 'react';
-import FeedbackForm from 'intergalactic/feedback-form';
-import Input from 'intergalactic/input';
-import { Box, Flex } from 'intergalactic/flex-box';
-import Link from 'intergalactic/link';
-import Dropdown from 'intergalactic/dropdown';
-import ChatM from 'intergalactic/icon/Chat/m';
-import Textarea from 'intergalactic/textarea';
-import { Text } from 'intergalactic/typography';
-import { ButtonLink } from 'intergalactic/button';
+import FeedbackForm from '@semcore/feedback-form';
+import Input from '@semcore/input';
+import { Box, Flex } from '@semcore/flex-box';
+import Link from '@semcore/link';
+import Dropdown from '@semcore/dropdown';
+import ChatM from '@semcore/icon/Chat/m';
+import Textarea from '@semcore/textarea';
+import { Text } from '@semcore/typography';
+import { ButtonLink } from '@semcore/button';
 
 const validate = {
   description: (value = '') => {

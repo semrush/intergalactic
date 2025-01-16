@@ -6,6 +6,7 @@ import {
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
+  eventInteraction,
 } from './Popper.types';
 
 export {
@@ -17,4 +18,5 @@ export {
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
+  eventInteraction,
 };

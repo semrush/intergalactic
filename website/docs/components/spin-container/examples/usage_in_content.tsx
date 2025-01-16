@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import SpinContainer from 'intergalactic/spin-container';
+import { Text } from '@semcore/typography';
+import SpinContainer from '@semcore/spin-container';
 
 class Demo extends React.PureComponent {
   state = { loading: true };

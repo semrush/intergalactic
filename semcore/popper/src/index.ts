@@ -7,6 +7,7 @@ import {
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
+  eventInteraction,
 } from '@semcore/core';
 
 export {
@@ -18,4 +19,7 @@ export {
   PopperHandlers,
   PopperTriggerProps,
   PopperPopperProps,
+  eventInteraction,
 };
+
+export default Popper;

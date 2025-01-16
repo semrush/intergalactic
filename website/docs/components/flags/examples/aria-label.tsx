@@ -1,7 +1,7 @@
 import React from 'react';
-import Flags, { iso2Name } from 'intergalactic/flags';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Flags, { iso2Name } from '@semcore/flags';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const countries = ['US', 'DE', 'ES', 'FR', 'IT'];
 

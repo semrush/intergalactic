@@ -43,7 +43,6 @@ import { PlotA11yView } from '../src/a11y/PlotA11yView';
 import { curveCardinal } from 'd3-shape';
 import { Flex, Box } from '@semcore/flex-box';
 import Ellipsis from '@semcore/ellipsis';
-import resolveColor from '@semcore/core/lib/utils/color';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import LikeM from '@semcore/icon/Like/m';
@@ -1162,7 +1161,7 @@ describe('Bar', () => {
           <Line
             x='category'
             y='bar'
-            color={resolveColor('wall')}
+            color={'--wall'}
             style={{ strokeWidth: 3, strokeDasharray: 5 }}
             duration={0}
           >
@@ -1409,7 +1408,7 @@ describe('Bar', () => {
                     y={y + height / 2}
                     textAnchor='start'
                     alignmentBaseline='middle'
-                    fill={resolveColor('gray60')}
+                    fill={'--gray60'}
                   >
                     $ {value.bar}
                   </text>

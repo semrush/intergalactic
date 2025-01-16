@@ -1,7 +1,7 @@
 import React from 'react';
-import Slider from 'intergalactic/slider';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import Slider from '@semcore/slider';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('medium');

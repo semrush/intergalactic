@@ -1,12 +1,12 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Counter from 'intergalactic/counter';
-import SettingsM from 'intergalactic/icon/Settings/m';
-import Select from 'intergalactic/select';
-import { Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
-import { Flex } from 'intergalactic/flex-box';
-import DnD from 'intergalactic/drag-and-drop';
+import Button from '@semcore/button';
+import Counter from '@semcore/counter';
+import SettingsM from '@semcore/icon/Settings/m';
+import Select from '@semcore/select';
+import { Text } from '@semcore/typography';
+import Link from '@semcore/link';
+import { Flex } from '@semcore/flex-box';
+import DnD from '@semcore/drag-and-drop';
 
 const defeaultColumns = [
   { id: 'uniquePageviews', label: 'Unique Pageviews' },

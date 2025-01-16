@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChartLegend, Donut, makeDataHintsContainer, Plot } from 'intergalactic/d3-chart';
-import { Flex } from 'intergalactic/flex-box';
-import Card from 'intergalactic/card';
+import { ChartLegend, Donut, makeDataHintsContainer, Plot } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
+import Card from '@semcore/card';
 
 const dataHints = makeDataHintsContainer();
 

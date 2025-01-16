@@ -1,14 +1,14 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import Input from 'intergalactic/input';
-import Checkbox from 'intergalactic/checkbox';
-import Radio, { RadioGroup } from 'intergalactic/radio';
-import Textarea from 'intergalactic/textarea';
-import Select from 'intergalactic/select';
-import { DatePicker } from 'intergalactic/date-picker';
-import Tooltip from 'intergalactic/tooltip';
-import Button from 'intergalactic/button';
-import { Box, Flex } from 'intergalactic/flex-box';
+import { Text } from '@semcore/typography';
+import Input from '@semcore/input';
+import Checkbox from '@semcore/checkbox';
+import Radio, { RadioGroup } from '@semcore/radio';
+import Textarea from '@semcore/textarea';
+import Select from '@semcore/select';
+import { DatePicker } from '@semcore/date-picker';
+import Tooltip from '@semcore/tooltip';
+import Button from '@semcore/button';
+import { Box, Flex } from '@semcore/flex-box';
 import { Field, FieldInputProps, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
