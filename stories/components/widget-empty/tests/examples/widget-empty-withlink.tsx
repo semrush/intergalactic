@@ -36,7 +36,7 @@ const Demo = () => {
 
                 <WidgetEmpty>
                     <WidgetEmpty.Description>
-                        Icon, description and link.
+                        Description and link.
                         <Link>
                             Set up [Tool Name]
                         </Link>
@@ -48,7 +48,7 @@ const Demo = () => {
 
                 <WidgetEmpty >
                     <WidgetEmpty.Title>
-                        Icon, description and link.
+                        Title and link.
                         <Link>
                             Set up [Tool Name]
                         </Link>
