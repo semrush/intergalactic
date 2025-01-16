@@ -40,9 +40,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             addonLeft={ChevronDownM}
             use={'tertiary'}
             theme={'muted'}
-            aria-label={getI18nText('BulkTextarea.ErrorsNavigation.nextError:aria-label', {
-              index: nextIndex,
-            })}
+            aria-label={getI18nText('BulkTextarea.ErrorsNavigation.nextError:aria-label')}
             hintPlacement={'bottom'}
             disabled={disabled}
           />
@@ -51,9 +49,7 @@ export function ErrorsNavigation(props: ErrorsNavigationProps) {
             addonLeft={ChevronUpM}
             use={'tertiary'}
             theme={'muted'}
-            aria-label={getI18nText('BulkTextarea.ErrorsNavigation.nextError:aria-label', {
-              index: prevIndex,
-            })}
+            aria-label={getI18nText('BulkTextarea.ErrorsNavigation.previousError:aria-label')}
             hintPlacement={'bottom'}
             disabled={disabled}
           />
