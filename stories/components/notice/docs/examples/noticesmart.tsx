@@ -1,9 +1,8 @@
 import React from 'react';
-import Notice, { NoticeSmart } from '@semcore/notice';
+import { NoticeSmart } from '@semcore/notice';
 import QuestionAltM from '@semcore/icon/Question/m';
 import WarningM from '@semcore/icon/Warning/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
 
