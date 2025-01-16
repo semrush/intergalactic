@@ -44,7 +44,7 @@ class RootAddFilter extends Component<
   typeof RootAddFilter.enhance
 > {
   addFilterTrigger = React.createRef<HTMLButtonElement>();
-  filtersFocusMap: Map<string, HTMLElement> = new Map();
+  filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();
   clearMessageTimer: ReturnType<typeof setTimeout> | undefined;
 
   static displayName = 'AddFilter';
@@ -82,20 +82,26 @@ class RootAddFilter extends Component<
     clearTimeout(this.clearMessageTimer);
   }
 
-  focusFilterAfterItemCleared() {
+  focusFilterAfterItemCleared(name?: string) {
     const { focusSourceRef } = this.asProps;
     if (focusSourceRef.current !== 'keyboard') {
       return;
     }
 
-    setTimeout(() => {
-      if (this.state.visibleFilters.size) {
-        const nameOfLast = Array.from(this.state.visibleFilters).pop() as string;
-        const lastFilterInRow = this.filtersFocusMap.get(nameOfLast);
-        lastFilterInRow?.focus();
-      } else {
+    if (!name) {
+      setTimeout(() => {
         this.addFilterTrigger.current?.focus();
-      }
+      }, 20);
+    }
+
+    const deletedIndex = Array.from(this.state.visibleFilters).findIndex((n) => n === name);
+    setTimeout(() => {
+      const currentVisibleFiltersList = Array.from(this.state.visibleFilters);
+      const focusFilterName = currentVisibleFiltersList.at(deletedIndex);
+
+      const itemToFocus =
+        this.filtersFocusMap.get(focusFilterName) ?? this.addFilterTrigger.current;
+      itemToFocus?.focus();
     }, 20);
   }
 
@@ -122,7 +128,7 @@ class RootAddFilter extends Component<
       onClear: () => {
         this.hideFilter(name);
         this.unsetFocusRef(name);
-        this.focusFilterAfterItemCleared();
+        this.focusFilterAfterItemCleared(name);
       },
     };
   }
@@ -179,7 +185,7 @@ class RootAddFilter extends Component<
 
   announceClearMessageToSR() {
     const { getI18nText } = this.asProps;
-    const clearFiltersMessage = getI18nText('AddFilter.Message.FiltersCleared');
+    const clearFiltersMessage = getI18nText('AddFilter.ScreenReaderMessage.FiltersCleared');
     this.setState({ clearFiltersMessage });
 
     setTimeout(() => {
