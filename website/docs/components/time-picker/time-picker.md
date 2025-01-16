@@ -101,7 +101,9 @@ Table: TimePicker 24-hour and 12-hour formats
 | 24-hour format | ![](static/input-default-l.png) |
 | 12-hour format | ![](static/input-l.png)         |
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Table: TimePicker sizes
 

@@ -219,7 +219,9 @@ You can add addons before and after the text. As addons you can use:
 - [Badge](/components/badge/badge)
 - [Flag](/components/flags/flags)
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Table: Button sizes and margins
 
@@ -228,7 +230,7 @@ Table: Button sizes and margins
 | **M (28px)**               | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 | **L (40px)**               | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 
-## Types
+### Types
 
 Intergalactic Design System has three button types (`use` property in API):
 

@@ -62,7 +62,7 @@ _For example, you added a new tab to the report. In this case, you can highlight
 
 Component has one size.
 
-### Badge types
+### Types
 
 Use the following badges in the products depending on the status of the feature or product:
 

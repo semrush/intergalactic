@@ -101,7 +101,9 @@ if (type === 'trendLine') {
 
 **Mini chart** is a component for visualizing a small data set or a single value that needs to be highlighted in the interface to assist the user in quickly reviewing data and understanding how the data has changed on the page.
 
-## Types
+## Appearance
+
+### Types
 
 Mini chart has two types:
 
@@ -112,7 +114,7 @@ Table: Mini chart types
 | `trend` | ![](static/trend.png) | Use to show trend from a list of values.                                                                                              |
 | `score` | ![](static/score.png) | Use to visualize some value or to indicate if something (in per cents or absolute numbers) is good/bad, high/low, above average, etc. |
 
-### Trend type
+#### Trend type
 
 Table: Versions of charts with trend type
 
@@ -129,7 +131,7 @@ You can show the highest/lowest point if necessary.
 
 ![](static/trend-bar-point.png)
 
-### Score type
+#### Score type
 
 The choice of one of the charts below depends on how visually prominent the value should be in your interface and how much space is actually available.
 
@@ -141,7 +143,7 @@ Table: Versions of charts with score type
 | Semi donut chart (Gauge) | ![](static/score-semi-donut.png) |
 | Line gauge chart         | ![](static/score-line-gauge.png) |
 
-## Sizes
+### Sizes
 
 The component charts have default sizes, but you can set them to those you need, chart will scale to them. For example:
 

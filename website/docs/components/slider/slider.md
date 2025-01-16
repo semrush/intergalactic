@@ -35,14 +35,16 @@ which describes how the time taken to perform an action depends on the thickness
 Larger slider knobs and bars make using sliders easier and faster.
 :::
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Default component sizes:
 
 - Bar height: 4px
 - Knob size: 20px * 20px
 
-## Appearance
+### Styles
 
 Default component styles:
 

@@ -119,7 +119,9 @@ For loading whole tables, forms, widgets and other complex components, use [Spin
 This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
 :::
 
-## Sizes
+## Appearance
+
+### Sizes
 
 The Spin component comes in six different sizes. The text size should be at least 14px.
 
@@ -134,7 +136,7 @@ Table: Spin sizes and margins
 | **XL**  | ![](static/text-vertical-xl.png)  | ![](static/text-horizontal-xl.png)  |
 | **XXL** | ![](static/text-vertical-xxl.png) | ![](static/text-horizontal-xxl.png) |
 
-## Themes
+### Themes
 
 Spin has two themes: `dark` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
 

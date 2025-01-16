@@ -101,7 +101,9 @@ Other input types for entering certain data:
 - [Checkbox](/components/checkbox/checkbox)
 - [Radio](/components/radio/radio) -->
 
-## Sizes
+## Appearance
+
+### Sizes
 
 The input has two sizes.
 
@@ -111,8 +113,6 @@ Table: Input sizes
 | ------------------- | ----------------------- |
 | M (28px)            | ![](static/input-m.png) |
 | L (40px)            | ![](static/input-l.png) |
-
-## Appearance
 
 ### Label
 

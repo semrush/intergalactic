@@ -98,7 +98,9 @@ Component consists of the following:
 - `TabLine.Item.Addon`
 - `TabLine.Item.Text`
 
-## Sizes
+## Appearance
+
+### Sizes
 
 - The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 - Addons before and after the text have a margin of 8px.
@@ -110,17 +112,17 @@ Table: TabLine sizes and margins
 | M (28px)            | ![](static/tab-m.png) |
 | L (40px)            | ![](static/tab-l.png) |
 
-## Types
+### Types
 
 Depending on the context, you can use TabLine with or without a border-bottom. The border uses the `--border-primary` token for its color.
 
-### Tabs with border (underlined)
+#### Tabs with border (underlined)
 
 Use TabLine with border-bottom to visually separate navigation from the content it switches. This is particularly helpful for secondary navigation on a page.
 
 ![](static/tab-with-border.png)
 
-### Tabs without border
+#### Tabs without border
 
 Use TabLine with border-bottom to visually separate navigation from the content it switches. This is particularly helpful for secondary navigation on a page.
 

@@ -13,7 +13,9 @@ This component helps users to:
 - quickly understand what filters are selected and what aren't;
 - reset and change filters.
 
-## Sizes
+## Appearance
+
+### Sizes
 
 FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 

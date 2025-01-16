@@ -63,6 +63,8 @@ Component consists of the following:
 5. `Pagination.PrevPage`
 6. `Pagination.TotalPages`
 
+## Appearance
+
 ## Sizes
 
 This component has only two sizes: `M` and `L`. The M size uses components with `M` size, while the `L` size uses L-sized components accordingly.
@@ -73,8 +75,6 @@ Table: Pagination sizes
 | ------ | ---------------------- |
 | `M`    | ![](static/m-size.png) |
 | `L`    | ![](static/l-size.png) |
-
-## Appearance
 
 ### Margin between table and pagination
 

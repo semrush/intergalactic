@@ -36,7 +36,7 @@ Table: Content styles for single-zone and dual-zone modal windows
 | ---------------------------------- | ---------------------------------- |
 | ![](static/fullscreen-modal-3.png) | ![](static/fullscreen-modal-2.png) |
 
-#### Paddings
+### Content paddings
 
 Table: Paddings for single-zone and dual-zone modal windows
 
@@ -55,7 +55,7 @@ Table: Content alignment for single-zone and dual-zone modal windows
 | ------------------------- | ------------------------- |
 | ![](static/content-1.png) | ![](static/content-2.png) |
 
-## CTA buttons
+### CTA buttons
 
 You can use either size M or size L buttons, depending on your case.
 
