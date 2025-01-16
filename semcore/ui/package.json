@@ -82,7 +82,6 @@
     "@semcore/time-picker": "16.0.0",
     "@semcore/tooltip": "16.0.0",
     "@semcore/typography": "16.0.0",
-    "@semcore/utils": "16.0.0",
     "@semcore/widget-empty": "16.0.0",
     "@semcore/wizard": "16.0.0",
     "@semcore/i18n-unplugin": "0.17.19"
