@@ -568,18 +568,37 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.handleCursorMovement(currentNode, event);
       }
       this.toggleErrorsPopperByKeyboard(200);
-    } else if (
-      event.key === 'Backspace' &&
-      currentNode instanceof HTMLParagraphElement &&
-      currentNode.textContent?.trim() === '' &&
-      !this.isRangeSelection()
-    ) {
-      const prevNode = currentNode.previousSibling;
-      if (prevNode) {
-        event.preventDefault();
-        this.textarea.removeChild(currentNode);
-        this.toggleErrorsPopperByKeyboard(0);
-        this.setSelection(prevNode, 1, 1);
+    } else if (event.key === 'Backspace' && currentNode instanceof HTMLParagraphElement) {
+      if (currentNode.textContent?.trim() === '' && !this.isRangeSelection()) {
+        // Backspace on empty row
+        const prevNode = currentNode.previousSibling;
+        if (prevNode) {
+          event.preventDefault();
+          this.textarea.removeChild(currentNode);
+          this.toggleErrorsPopperByKeyboard(0);
+          this.setSelection(prevNode, 1, 1);
+        }
+      } else if (this.isRangeSelection()) {
+        // Backspace on selected full row
+        const selection = document.getSelection();
+        if (
+          selection?.focusNode === selection?.anchorNode &&
+          selection?.focusNode === currentNode &&
+          selection?.anchorOffset === 0 &&
+          selection?.focusOffset === 1
+        ) {
+          event.preventDefault();
+          currentNode.innerHTML = this.emptyRowValue;
+
+          this.validateRow(currentNode);
+          this.recalculateRowsCount();
+
+          setTimeout(() => {
+            this.recalculateErrors();
+          }, 0);
+
+          this.toggleErrorsPopperByKeyboard(0);
+        }
       }
     } else if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
       event.preventDefault();
