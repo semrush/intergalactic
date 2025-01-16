@@ -9,7 +9,7 @@ tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('t
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the Input in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
+For detailed information about keyboard support for the Input, refer to the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
 ## Considerations for developers
 
@@ -26,4 +26,4 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+For more accessibility recommendations, refer to the the common [Accessibility guide](/core-principles/a11y/a11y).

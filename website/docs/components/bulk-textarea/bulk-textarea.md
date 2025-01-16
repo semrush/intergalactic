@@ -24,7 +24,9 @@ Component consists of the following:
 - `BulkTextarea.ErrorsNavigation`
 - `BulkTextarea.ClearAllButton`
 
-## Sizes
+## Appearance
+
+### Sizes
 
 Component has two sizes:
 
@@ -34,8 +36,6 @@ Table: BulkTextarea sizes
 | ---------------- | ---------------------- |
 | M (`--fs-200`)   | ![](static/bulk-m.png) |
 | L (`--fs-300`)   | ![](static/bulk-l.png) |
-
-## Appearance
 
 ### Rows
 
@@ -58,7 +58,7 @@ Table: BulkTextarea with counter
 
 ### How counter works
 
-1. The counter shows the value limit and updates once user enter at least one character on an empty line.
+1. The counter shows the value limit and updates once user enters at least one character on an empty line.
 2. The counter updates if the user deletes a line.
 3. If the user presses **Enter** or types a comma on **an empty line**, they stay on the same line. This helps avoid adding unnecessary blank lines.
 4. Duplicate lines are counted.
@@ -106,7 +106,7 @@ When navigating between invalid rows, the text next to the buttons is updated. I
 
 You can enable the resize control for the textarea, allowing users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 
-When the textarea cannot be stretched further, a scrollbar will appear after a certain number of rows.
+When the textarea can't be stretched further, a scrollbar will appear after a certain number of rows.
 
 ::: tip
 Avoid making the textarea smaller than 160–200px in width and 3–4 rows in height. Working with large amounts of data in smaller sizes can be challenging, especially when it serves as a primary input in a form.
