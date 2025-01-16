@@ -240,7 +240,9 @@ test.describe('Add filter button', () => {
       await expect(locators.clearAllBtn).toBeVisible();
       await expect(locators.addFilterBtn).not.toBeFocused();
       await expect(
-        page.locator('[data-ui-name="FilterTrigger.TriggerButton"][placeholder="Exclude keywords"]'),
+        page.locator(
+          '[data-ui-name="FilterTrigger.TriggerButton"][placeholder="Exclude keywords"]',
+        ),
       ).toBeFocused();
     });
 
