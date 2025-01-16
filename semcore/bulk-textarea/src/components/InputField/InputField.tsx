@@ -31,6 +31,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     minRows: 2,
     maxRows: 10,
     defaultShowErrors: false,
+    defaultErrorIndex: -1,
     defaultRowsCount: 0,
   };
 
@@ -84,6 +85,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     return {
       value: null,
       rowsCount: null,
+      errorIndex: null,
     };
   }
 
@@ -94,7 +96,8 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   componentDidUpdate(prevProps: InputFieldProps): void {
-    const { value, errors, errorIndex, showErrors, disabled, readonly } = this.props;
+    const { value, errors, errorIndex, showErrors, disabled, readonly, highlightErrorIndex } =
+      this.props;
 
     if (prevProps.value !== value && value !== this.getRowsValue().join(this.delimiter)) {
       this.handleValueOutChange();
@@ -104,7 +107,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       this.toggleAriaInvalid(showErrors, errors.length);
     }
 
-    if (prevProps.errorIndex !== errorIndex) {
+    if (prevProps.errorIndex !== errorIndex && highlightErrorIndex) {
       this.handleChangeErrorIndex(errorIndex);
     }
 
@@ -866,7 +869,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   private handleCursorMovement(currentNode: HTMLParagraphElement, event: KeyboardEvent): void {
-    let nextNode;
+    let nextNode: ChildNode | null = null;
 
     switch (event.key) {
       case 'ArrowUp':
@@ -908,6 +911,18 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
       }
 
       this.setSelection(nodeToSetSelection, offset, offset, 'nearest');
+
+      const errorIndex = Array.from(this.textarea.childNodes)
+        .filter((node) => {
+          return node instanceof Element && node.getAttribute('aria-invalid') === 'true';
+        })
+        .findIndex((node) => {
+          return node === nextNode;
+        });
+
+      if (errorIndex !== -1) {
+        this.handlers.errorIndex(errorIndex);
+      }
     }
   }
 

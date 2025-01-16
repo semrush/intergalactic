@@ -144,6 +144,15 @@ export type InputFieldProps = {
   errorIndex: number;
   /**
    * Internal
+   * Flag for select all row
+   */
+  highlightErrorIndex: boolean;
+  /**
+   * Internal
    */
   onErrorsChange: (errors: ErrorItem[]) => void;
+  /**
+   * Internal
+   */
+  onErrorIndexChange: (errorIndex: number) => void;
 };

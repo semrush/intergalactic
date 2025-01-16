@@ -16,6 +16,7 @@ type State = {
   rowsCount: number;
   isEmptyText: boolean;
   errorIndex: number;
+  highlightErrorIndex: boolean;
   errors: InputFieldProps['errors'];
   showErrors: boolean;
   lastError?: InputFieldProps['errors'][number];
@@ -48,6 +49,7 @@ class BulkTextareaRoot extends Component<
     rowsCount: 0,
     isEmptyText: true,
     errorIndex: -1,
+    highlightErrorIndex: false,
     errors: [],
     showErrors: false,
   };
@@ -76,7 +78,8 @@ class BulkTextareaRoot extends Component<
       readonly,
       pasteProps,
     } = this.asProps;
-    const { errors, errorIndex, showErrors, lastError, rowsCount } = this.state;
+    const { errors, errorIndex, showErrors, lastError, rowsCount, highlightErrorIndex } =
+      this.state;
 
     return {
       value,
@@ -112,7 +115,6 @@ class BulkTextareaRoot extends Component<
       validateOn,
       rowValidation,
       errors,
-      errorIndex,
       onErrorsChange: (errors: InputFieldProps['errors']) => {
         const lastError = errors.length === 0 ? this.state.errors[0] : undefined;
         const currentLength = this.state.errors.length;
@@ -132,6 +134,11 @@ class BulkTextareaRoot extends Component<
             }, 150);
           }
         }, 10); // this timeout to be sure that code will be after state change
+      },
+      highlightErrorIndex,
+      errorIndex,
+      onErrorIndexChange: (errorIndex: number) => {
+        this.setState({ errorIndex, highlightErrorIndex: false });
       },
       rowsDelimiters,
       ref: this.inputFieldRef,
@@ -222,7 +229,7 @@ class BulkTextareaRoot extends Component<
       this.handleChangeErrorIndex(amount < 0 ? amount - 1 : amount + 1)();
     } else {
       this.setState({ showErrors: false, errorIndex: -1 }, () => {
-        this.setState({ showErrors: true, errorIndex: newIndex });
+        this.setState({ showErrors: true, errorIndex: newIndex, highlightErrorIndex: true });
       });
     }
   };
