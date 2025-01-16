@@ -84,14 +84,9 @@ class RootAddFilter extends Component<
 
   focusFilterAfterItemCleared(name?: string) {
     const { focusSourceRef } = this.asProps;
+
     if (focusSourceRef.current !== 'keyboard') {
       return;
-    }
-
-    if (!name) {
-      setTimeout(() => {
-        this.addFilterTrigger.current?.focus();
-      }, 20);
     }
 
     const deletedIndex = Array.from(this.state.visibleFilters).findIndex((n) => n === name);
@@ -180,7 +175,10 @@ class RootAddFilter extends Component<
     });
     this.props.onClearAll();
     this.announceClearMessageToSR();
-    this.focusFilterAfterItemCleared();
+
+    setTimeout(() => {
+      this.addFilterTrigger.current?.focus();
+    }, 20);
   }
 
   announceClearMessageToSR() {
