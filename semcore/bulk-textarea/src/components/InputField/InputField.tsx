@@ -405,13 +405,14 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             firstSymbol === this.getEmptyParagraph().textContent ||
             lastSymbol === this.getEmptyParagraph().textContent
           ) {
+            let offset: number | null = null;
             if (firstSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(1);
+              offset = 0;
             } else if (lastSymbol === this.getEmptyParagraph().textContent) {
               rowNode.textContent = textContent.substring(0, textContent.length - 1);
+              offset = rowNode.textContent.length;
             }
-
-            const offset = rowNode.textContent?.length;
 
             if (offset) {
               this.setSelection(rowNode.childNodes.item(0), offset, offset);
@@ -489,7 +490,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleKeyDown(event: KeyboardEvent) {
     this.errorByInteraction = 'keyboard';
-    const { rowsDelimiters, validateOn, onEnterNextRow } = this.asProps;
+    const { rowsDelimiters, onEnterNextRow } = this.asProps;
 
     const currentNode = this.getNodeFromSelection();
 
@@ -505,7 +506,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         } else {
           event.preventDefault();
           const selection = document.getSelection();
-          const selectionNode = selection?.focusNode;
+          const selectionNode =
+            selection?.focusNode instanceof Text
+              ? selection.focusNode
+              : selection?.focusNode?.childNodes.item(0);
           const selectionOffset = selection?.focusOffset;
 
           let defaultInnerHTML = this.emptyRowValue;
@@ -521,6 +525,10 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
             if (selectionNode.textContent) {
               selectionNode.textContent = selectionNode.textContent.substring(0, selectionOffset);
             }
+          }
+
+          if (currentNode.textContent?.trim() === '') {
+            currentNode.innerHTML = this.emptyRowValue;
           }
 
           const row = document.createElement('p');
