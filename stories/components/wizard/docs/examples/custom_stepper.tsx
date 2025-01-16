@@ -1,10 +1,10 @@
 import React from 'react';
-import Wizard from 'intergalactic/wizard';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import Input from 'intergalactic/input';
-import Radio, { RadioGroup } from 'intergalactic/radio';
+import Wizard from '@semcore/wizard';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import Input from '@semcore/input';
+import Radio, { RadioGroup } from '@semcore/radio';
 
 const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (

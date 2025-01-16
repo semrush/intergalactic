@@ -1,8 +1,8 @@
 import React from 'react';
-import Wizard from 'intergalactic/wizard';
-import Button from 'intergalactic/button';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import Wizard from '@semcore/wizard';
+import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const steps = [{ title: 'Location' }, { title: 'Keywords' }, { title: 'Schedule' }];
 
@@ -16,7 +16,7 @@ const Demo = () => {
     <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title='Site Audit Settings'>
+        <Wizard.Sidebar title='Site Audit Settings' >
           <Wizard.Stepper step={1} onActive={setStep} completed>
             {steps[0].title}
           </Wizard.Stepper>
