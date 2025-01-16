@@ -34,7 +34,7 @@ Notice includes the following mandatory elements:
 
 ### Notice behavior requirements
 
-- If the user has closed the Notice, do not show it to them again.
+- If the user has closed the Notice, don't show it to them again.
 - The Notice is displayed until the user closes it using the `Close` button, submits the feedback form, or until the set time expires.
 - Avoid displaying multiple Notices in a single product simultaneously.
 - Also, avoid showing the next Notice immediately after the user has closed the previous one.
@@ -72,7 +72,7 @@ Table: Interaction with form inputs
 | Input                                    | Description                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Group of checkboxes with suggestions** | Optional to select. Users can select any number of suggestions.                                                                                                                                                                                                                                                                  |
-| **Textarea for optional text feedback**  | Optional to fill. If user filled the textarea with a fewer than any 3 characters, then highlight the textarea with an invalid state and show a tooltip with the message how to fix this situation. Button is not disabled. You can set the message in the tooltip if necessary. ![](static/feedback-rating-textarea-invalid.png) |
+| **Textarea for optional text feedback**  | Optional to fill. If user filled the textarea with less than any 3 characters, then highlight the textarea with an invalid state and show a tooltip with the message how to fix this situation. Button isn't disabled. You can set the message in the tooltip if necessary. ![](static/feedback-rating-textarea-invalid.png) |
 | **Input for email**                      | Optional to fill. If the user clears the input, they get no errors or something that can block the form's submission.                                                                                                                                                                                                            |
 
 ## States
@@ -84,5 +84,5 @@ Table: Feedback Rating form states
 | State       | Description                                                                                                                                                                                                                                       | Appearance example                             |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | **Loading** | Triggered after clicking on the "Send feedback" button or maybe triggered while the initial loading of the form.                                                                                                                                  | ![](static/feedback-rating-loading.png)        |
-| **Error**   | Triggered if the data was not sent for some reason. The notification appears in the form above the “Send feedback” button with the default text: “Something went wrong. Please try again or contact us at {email} ". Set the {email} by yourself. | ![](static/feedback-rating-error.png)          |
+| **Error**   | Triggered if the data wasn't sent for some reason. The notification appears in the form above the “Send feedback” button with the default text: “Something went wrong. Please try again or contact us at {email} ". Set the {email} by yourself. | ![](static/feedback-rating-error.png)          |
 | **Success** | Shown after feedback data was successfully submitted.                                                                                                                                                                                             | ![](static/feedback-rating-success-notice.png) |
