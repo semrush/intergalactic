@@ -238,10 +238,15 @@ test.describe('Add filter button', () => {
       await page.waitForTimeout(100);
       await page.keyboard.press('Enter');
       await expect(locators.clearAllBtn).toBeVisible();
-      await expect(locators.addFilterBtn).toBeFocused();
+      await expect(locators.addFilterBtn).not.toBeFocused();
+      await expect(
+        page.locator('[data-ui-name="FilterTrigger.TriggerButton"][placeholder="Exclude keywords"]'),
+      ).toBeFocused();
     });
 
     await test.step('Verify Add filter appears and focused when pressing Clear filters', async () => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await page.waitForTimeout(300);
       await page.keyboard.press('Enter');

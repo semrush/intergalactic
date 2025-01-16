@@ -18,6 +18,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
  const colorOption = within(document.body).getByRole('option', { name: 'Blue' });
  expect(colorOption).toBeVisible();
  await userEvent.click(colorOption);
+ await new Promise((resolve) => setTimeout(resolve, 500));
  const clearAll = within(document.body).queryByText("Clear filters");
  expect(clearAll).toBeVisible();
 
@@ -29,9 +30,9 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
  const deviceOption = within(document.body).getByRole('option', { name: 'Phone' });
  expect(deviceOption).toBeVisible();
  await userEvent.click(deviceOption);
+ await new Promise((resolve) => setTimeout(resolve, 500));
 
  await userEvent.click(addFilter);
- await new Promise((resolve) => setTimeout(resolve, 500));
  await new Promise((resolve) => setTimeout(resolve, 500));
  expect(deviceItem).not.toBeVisible();
  const languageItem = within(document.body).getByRole('menuitem', { name: 'Language' });
@@ -48,6 +49,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
  const materialOption = within(document.body).getByRole('option', { name: 'Glass' });
  expect(materialOption).toBeVisible();
  await userEvent.click(materialOption);
+ await new Promise((resolve) => setTimeout(resolve, 500));
 
  await userEvent.click(addFilter);
  await new Promise((resolve) => setTimeout(resolve, 500));
@@ -57,6 +59,7 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
  const shapeOption = within(document.body).getByRole('option', { name: 'Star' });
  expect(shapeOption).toBeVisible();
  await userEvent.click(shapeOption);
+ await new Promise((resolve) => setTimeout(resolve, 500));
  
  expect(addFilter).not.toBeVisible();
 }
