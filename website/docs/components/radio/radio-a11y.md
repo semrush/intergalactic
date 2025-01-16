@@ -11,11 +11,11 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 Table: Keyboard support
 
-| Key                                                   | Function                                                                                                                                                                                                                                              |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                                                 | Moves focus to the checked `radio` button in the `radiogroup`. If a `radio` button isn’t checked, focus moves to the first `radio` button in the group. In case the focus is already on a `radio` button, the next `Tab` press will move the focus to the next focusable element on the page outside the `radiogroup`.                                                                                               |
-| `Shift + Tab`                                         | Moves focus to the previous focusable element.                                                                                                                                                                                                        |
-| `Up Arrow`, `Down Arrow`, `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous `radio` button in the group. If focus is on the last/first `radio` button, moves focus to the first/last `radio` button respectively. The state of the previously checked `radio` button is changed to unchecked. |
+| Key                                                   | Function                                                                                                                                                                                                                                                                                                               |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                                                 | Moves focus to the checked `radio` button in the `radiogroup`. If a `radio` button isn’t checked, focus moves to the first `radio` button in the group. In case the focus is already on a `radio` button, the next `Tab` press will move the focus to the next focusable element on the page outside the `radiogroup`. |
+| `Shift + Tab`                                         | Moves focus to the previous focusable element.                                                                                                                                                                                                                                                                         |
+| `Up Arrow`, `Down Arrow`, `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous `radio` button in the group. If focus is on the last/first `radio` button, moves focus to the first/last `radio` button respectively. The state of the previously checked `radio` button is changed to unchecked.                                                          |
 
 ### Roles and attributes
 
@@ -25,7 +25,7 @@ Table: Roles and attributes
 
 | Component     | Role                                       | Attribute       | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------- | ------------------------------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RadioGroup`  | `group`                               |                 | Identifies the `div` element as a container for a group of native `radio` inputs. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                                                                                                                                                       |
+| `RadioGroup`  | `group`                                    |                 | Identifies the `div` element as a container for a group of native `radio` inputs. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                                                                                                                                                 |
 | `Radio.Value` | `radio` implicit on `<input type="radio">` |                 | Identifies the input as an ARIA `radio` button. The accessible name is computed from the child text content of the `Radio.Text`.                                                                                                                                                                                                                                                                                                                                                |
 | `Radio.Value` |                                            | `tabIndex="0"`  | Makes the radio button focusable and includes it in the page `Tab` sequence. Set on only one radio in the radio group. On page load, is set on the first radio button in the radio group. Moves with focus inside the radio group so the most recently focused radio button is included in the page `Tab` sequence. This approach to managing focus is described in the [W3C roving tabindex documentation](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex). |
 | `Radio.Value` |                                            | `tabIndex="-1"` | Makes the element focusable but not part of the page `Tab` sequence. Applied to all radio buttons contained in the radio group except for one that is included in the page `Tab` sequence.                                                                                                                                                                                                                                                                                      |
@@ -36,9 +36,9 @@ If you use `RadioGroup` component to group radio buttons, add a common label and
 
 Table: Attributes
 
-| Component    | Attribute                   | Usage                                                             |
-| ------------ | --------------------------- | ----------------------------------------------------------------- |
-| `RadioGroup` | `aria-labelledby="[IDREF]"` | Refers to the element that contains the label of the radio group. |
+| Component    | Attribute                 | Usage                                                             |
+| ------------ | ------------------------- | ----------------------------------------------------------------- |
+| `RadioGroup` | `aria-labelledby="IDREF"` | Refers to the element that contains the label of the radio group. |
 
 ### Grouping with fieldset
 
@@ -52,7 +52,7 @@ Table: Roles and attributes
 
 | Component | Attribute                   |  Usage             |
 | --------- | --------------------------- | ---------------------------------------------------- |
-| `RadioGroup` | `aria-labelledby="[IDREF]"` | Refers to the element that contains the label of the radio group.  | -->
+| `RadioGroup` | `aria-labelledby="IDREF"` | Refers to the element that contains the label of the radio group.  | -->
 
 ## Resources
 
