@@ -133,7 +133,6 @@ STitle {
 }
 
 SText {
-  margin-top: var(--intergalactic-spacing-05x, 4px);
-  margin-top: var(--intergalactic-spacing-1x, 4px)
+  margin-top: var(--intergalactic-spacing-1x, 4px);
   margin-bottom: var(--intergalactic-spacing-1x, 4px);
 }
