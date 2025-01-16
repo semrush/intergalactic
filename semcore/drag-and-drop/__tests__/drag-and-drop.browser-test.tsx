@@ -61,7 +61,7 @@ test.describe('With cards', () => {
 
 test.describe('With dropdown', () => {
   test('Mouse interactions', async ({ page }) => {
-    const standPath = 'stories/components/drag-and-drop/docs/examples/with_select.tsx';
+    const standPath = 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -86,7 +86,7 @@ test.describe('With dropdown', () => {
   });
 
   test('Keyboard interactions', async ({ page }) => {
-    const standPath = 'stories/components/drag-and-drop/docs/examples/with_select.tsx';
+    const standPath = 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);

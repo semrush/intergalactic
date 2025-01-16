@@ -4,11 +4,8 @@ import Counter from '@semcore/counter';
 import SettingsM from '@semcore/icon/Settings/m';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
 import { Flex } from '@semcore/flex-box';
 import DnD from '@semcore/drag-and-drop';
-import PlusM from '@semcore/icon/MathPlus/m';
-import KebabM from '@semcore/icon/Kebab/m';
 
 const defeaultColumns = [
   { id: 'uniquePageviews', label: 'Unique Pageviews' },

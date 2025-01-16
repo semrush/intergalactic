@@ -3,8 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DnD from '@semcore/drag-and-drop';
 
 import CardsExample from './examples/with_cards';
-import SelectExample from './examples/with_select';
-import TabPanelExample from './examples/with_tabpanel';
+import DropdownMenuExample from './examples/with_dropdownmenu';
+
+import { WithDropdownMenuTest } from './__tests__/with_dropdownmenu.test';
+import { playWrapper } from '../../../utils/playWrapper';
 
 const meta: Meta<typeof DnD> = {
   title: 'Components/DragAndDrop/Documentation',
@@ -18,10 +20,7 @@ export const Cards: Story = {
   render: CardsExample,
 };
 
-export const Select: Story = {
-  render: SelectExample,
-};
-
-export const TabPanel: Story = {
-  render: TabPanelExample,
+export const DropdownMenu: Story = {
+  render: DropdownMenuExample,
+  play: playWrapper(WithDropdownMenuTest),
 };

@@ -9,7 +9,7 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/drag-and-drop/docs/examples/with_select.tsx';
+  export Demo from 'stories/components/drag-and-drop/docs/examples/with_dropdownmenu.tsx';
 </script>
 
 :::
