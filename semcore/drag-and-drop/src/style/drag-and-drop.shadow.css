@@ -24,7 +24,8 @@ SDraggable[draggable] {
     display: block;
   }
 
-  &[hideHoverEffect]::before {
+  /* todo removed role after refactoring dnd with some separate control for drag */
+  &:not([role="menuitemcheckbox"])[hideHoverEffect]::before {
     display: none;
   }
 }
