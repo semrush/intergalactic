@@ -223,6 +223,7 @@ class FeedbackRatingRoot extends Component<
       submitText,
       formConfig,
       notificationText,
+      notificationTitle,
       learnMoreLink,
       Children,
       styles,
@@ -260,6 +261,7 @@ class FeedbackRatingRoot extends Component<
             <FeedbackIllustration />
           </Notice.Label>
           <Notice.Content tag={Flex} alignItems={'center'}>
+            {notificationTitle ? <Notice.Title>{notificationTitle}</Notice.Title> : null}
             <Text mr={3} id={notificationId}>
               {notificationText}
             </Text>
