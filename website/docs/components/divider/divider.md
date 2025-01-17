@@ -73,6 +73,8 @@ const App = PlaygroundGeneration(
 
 **Divider** is a component that visually and semantically separates content or components.
 
+## Appearance
+
 ### Types
 
 Divider has two types: `primary` and `secondary`. Secondary type helps to separate and show the connection between two parts of the content.
