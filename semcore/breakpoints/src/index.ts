@@ -1,4 +1,9 @@
-import { defaultBreakpoints, MediaList, DEFAULT_MEDIA, createBreakpoints } from '@semcore/core';
+import {
+  defaultBreakpoints,
+  MediaList,
+  DEFAULT_MEDIA,
+  createBreakpoints,
+} from '@semcore/base-components';
 
 export default defaultBreakpoints;
 

@@ -1,6 +1,7 @@
 /** ============================== core ============================== */
-import { createComponent, createBaseComponent } from './coreFactory';
+import { createComponent, createBaseComponent, assignProps } from './coreFactory';
 import { sstyled } from './styled';
+import type { StyledProps } from './styled';
 import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './types/Component';
 import type {
   PropGetterFn,
@@ -9,9 +10,11 @@ import type {
   IRootComponentHandlers,
   IComponentProps,
   ReturnEl,
+  IFunctionProps,
 } from './types/Component';
 import { CORE_INSTANCE, CREATE_COMPONENT } from './types/symbols';
 import type { UnknownProperties } from './types/UnknownProperties';
+import register from './register';
 
 export {
   sstyled,
@@ -26,26 +29,12 @@ export {
   ComponentType,
   IRootComponentHandlers,
   IComponentProps,
+  IFunctionProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
   ReturnEl,
+  StyledProps,
   wrapIntergalacticComponent,
+  assignProps,
+  register,
 };
-
-/** ============================= utils ============================== */
-
-import assignProps from './utils/assignProps';
-
-export { assignProps };
-
-/** =========================== components =========================== */
-
-export * from './components/animation';
-export * from './components/breakpoints';
-export * from './components/flex-box';
-export * from './components/grid';
-export * from './components/neighbor-location';
-export * from './components/outside-click';
-export * from './components/popper';
-export * from './components/portal';
-export * from './components/scroll-area';

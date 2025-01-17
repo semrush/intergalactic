@@ -303,7 +303,7 @@ interface ClassWithUncontrolledProps<Props> {
   uncontrolledProps(): unknown;
 }
 
-function assignProps(p1: any, p2: any) {
+export function assignProps(p1: any, p2: any) {
   return _assignProps(p2, p1);
 }
 

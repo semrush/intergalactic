@@ -6,9 +6,8 @@ import {
   sstyled,
   Root,
   createComponent,
-  Box,
-  BoxProps,
 } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/base-components';
 
 import style from './style/format-text.shadow.css';
 

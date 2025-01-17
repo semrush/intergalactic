@@ -16,8 +16,7 @@
     "classnames": "2.2.6",
     "hoist-non-react-statics": "3.3.2",
     "@phytonmk/nano-css": "5.3.7",
-    "csstype": "3.0.8",
-    "@popperjs/core": "2.11.5"
+    "csstype": "3.0.8"
   },
   "peerDependencies": {
     "react": "16.8 - 18",

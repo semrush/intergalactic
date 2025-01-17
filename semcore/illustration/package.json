@@ -19,7 +19,7 @@
     "colorjs.io": "0.4.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

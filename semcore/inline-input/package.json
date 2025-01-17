@@ -27,7 +27,7 @@
     "@semcore/tooltip": "*"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

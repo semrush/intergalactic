@@ -12,7 +12,7 @@
     "build": "pnpm semcore-builder"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0",
+    "@semcore/base-components": "^16.0.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

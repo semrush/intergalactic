@@ -31,7 +31,7 @@
     "react-final-form": "6.5.9"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",

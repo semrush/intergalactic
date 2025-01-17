@@ -17,7 +17,7 @@
     "@semcore/animation": "16.0.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^16.0.0"
+    "@semcore/base-components": "^16.0.0"
   },
   "repository": {
     "type": "git",
