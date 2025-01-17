@@ -216,6 +216,7 @@ class FeedbackRatingRoot extends Component<
       submitText,
       formConfig,
       notificationText,
+      notificationTitle,
       learnMoreLink,
       Children,
       styles,
@@ -252,11 +253,8 @@ class FeedbackRatingRoot extends Component<
             <FeedbackIllustration />
           </Notice.Label>
           <Notice.Content tag={Flex} alignItems={'center'}>
-            {title ? <Notice.Title>{title}</Notice.Title> : null}
-            <Notice.Text>{notificationText}</Notice.Text>
-            {/* todo: remove after Notice.Title merged
-            don't forget to styles  match */}
-            {/* <Text mr={3}>{notificationText}</Text> */}
+            {notificationTitle ? <Notice.Title>{notificationTitle}</Notice.Title> : null}
+            <Text mr={3}>{notificationText}</Text>
             <Notice.Actions mt={0}>
               <SliderRating
                 value={rating}
