@@ -44,7 +44,7 @@ Table: Paddings for single-zone and dual-zone modal windows
 | ------------------------ | -------------------------- |
 | ![](static/paddings.png) | ![](static/paddings-2.png) |
 
-#### Content alignment
+### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them should be placed with `align: left`.
 - If there is only one zone for content in the modal window, it is necessary to center the content with `align: center` horizontally. We also recommend you to use the default [Modal](/components/modal/modal) component in this case instead.
