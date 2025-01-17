@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- `notificationText` prop to `FeedbackRating`.
+- `notificationTitle` prop to `FeedbackRating`.
 
 ## [6.38.1] - 2024-12-19
 
