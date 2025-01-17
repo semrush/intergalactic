@@ -1,8 +1,8 @@
 import React from 'react';
-import DnD from 'intergalactic/drag-and-drop';
-import TabPanel from 'intergalactic/tab-panel';
-import Counter from 'intergalactic/counter';
-import Flag from 'intergalactic/flags';
+import DnD from '@semcore/drag-and-drop';
+import TabPanel from '@semcore/tab-panel';
+import Counter from '@semcore/counter';
+import Flag from '@semcore/flags';
 
 const renderTab = (tab: string) => {
   if (tab === 'overview') {
@@ -64,7 +64,7 @@ const Demo = () => {
     <DnD
       tag={TabPanel}
       value={currentTab}
-      onChange={(tab) => setCurrentTab(tab as string)}
+      onChange={(tab: string | number | boolean) => setCurrentTab(tab.toString())}
       onDnD={handleDnD}
       aria-label={'drag-and-drop container'}
     >

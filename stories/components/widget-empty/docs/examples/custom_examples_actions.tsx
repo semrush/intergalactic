@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box } from 'intergalactic/flex-box';
-import Button from 'intergalactic/button';
-import Card from 'intergalactic/card';
-import WidgetEmpty, { getIconPath } from 'intergalactic/widget-empty';
+import { Box } from '@semcore/flex-box';
+import Button from '@semcore/button';
+import Card from '@semcore/card';
+import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
 
 const Demo = () => {
   return (
@@ -13,7 +13,8 @@ const Demo = () => {
         </Card.Header>
         <Card.Body>
           <WidgetEmpty icon={getIconPath('combined-chart')}>
-            <WidgetEmpty.Title>Set up your [Tool Name]</WidgetEmpty.Title>
+            <WidgetEmpty.Title>Set up your [Tool Name]
+            </WidgetEmpty.Title>
             <WidgetEmpty.Description>
               [Tool Name] allows you to get daily updates on positions in Google's top 100 organic
               and paid search results.
