@@ -27,7 +27,7 @@ class NoticeSmart extends Component {
       );
 
     return (
-      <SNoticeSmart render={Notice}>
+      <SNoticeSmart render={Notice} __excludeProps={['title']}>
         {isNode(label) && <Notice.Label>{label}</Notice.Label>}
         <Notice.Content>
           {isNode(title) && <Notice.Title>{title}</Notice.Title>}
