@@ -10,4 +10,4 @@ export { default as Scale } from './Scale';
 
 export { default as Slide } from './Slide';
 
-export type * from './Animation.types';
+export type { FadeInOutProps, SlideProps, CollapseProps, AnimationProps } from './Animation.types';
