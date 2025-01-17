@@ -12,6 +12,13 @@ const Demo = () => {
         </Box>
       </p>
       <p>
+        <Box w={111}>
+          <Ellipsis trim="middle">
+            Segment 2sfdsf
+            </Ellipsis>
+        </Box>
+      </p>
+      <p>
         <Box w={120} >
           <Ellipsis trim="end" >
             Lorem bbjips
@@ -40,6 +47,14 @@ const Demo = () => {
           w={111}
           mb={3}>
           <Ellipsis trim="end">Segment 2sfdsf</Ellipsis>
+        </Text>
+      </p>
+      <p>
+        <Text
+          display="block"
+          w={111}
+          mb={3}>
+          <Ellipsis trim="middle">Segment 2sfdsf</Ellipsis>
         </Text>
       </p>
     </div>
