@@ -3,7 +3,6 @@ import { NoticeSmart } from '@semcore/notice';
 import QuestionAltM from '@semcore/icon/Question/m';
 import WarningM from '@semcore/icon/Warning/m';
 import ThumbUpM from '@semcore/icon/ThumbUp/m';
-import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Button from '@semcore/button';
 
@@ -20,13 +19,9 @@ const Demo = () => {
         closable
         onClose={() => setFirstHidden(true)}
         hidden={firstHidden}
+        title='New tool was launched'
       >
-        <Text size={300} bold tag='div' my={'2px'}>
-          New tool was launched
-        </Text>
-        <Text tag='div' my={1}>
-          Hi there! There a cool new tool was launched. Take a look!
-        </Text>
+        Hi there! There a cool new tool was launched. Take a look!
       </NoticeSmart>
       <NoticeSmart
         theme='muted'
@@ -35,14 +30,13 @@ const Demo = () => {
         onClose={() => setSecondHidden(true)}
         hidden={secondHidden}
       >
-        <Text tag='div' my={1}>
-          It's just a regular message or hint.
-        </Text>
+        It's just a regular message or hint.
       </NoticeSmart>
       <NoticeSmart
         aria-label='New feature announcement'
         theme='success'
         label={<ThumbUpM />}
+        title="We've released a cool new feature!"
         closable
         onClose={() => setThirdHidden(true)}
         hidden={thirdHidden}
@@ -52,19 +46,17 @@ const Demo = () => {
           </Button>
         }
       >
-        <Text size={300} bold tag='div' my={'2px'}>
-          We've released a cool new feature!
-        </Text>
-        <Text tag='div' my={1}>
-          Unveiling a breakthrough feature, our latest product enhancement redefines the user
-          experience with unparalleled innovation and functionality.
-        </Text>
+        Unveiling a breakthrough feature, our latest product enhancement redefines the user
+        experience with unparalleled innovation and functionality.
       </NoticeSmart>
-      <NoticeSmart theme='warning' label={<WarningM />} aria-label='Maintenance notice'>
-        <Text tag='div' my={1}>
-          The Link Building tool is under maintenance. Starting new campaigns is temporarily
-          unavailable, but you can continue working with your existing Link Building campaigns.
-        </Text>
+      <NoticeSmart
+        theme='warning'
+        title={'The Link Building tool is under maintenance.'}
+        label={<WarningM />}
+        aria-label='Maintenance notice'
+      >
+        Starting new campaigns is temporarily unavailable, but you can continue working with your
+        existing Link Building campaigns.
       </NoticeSmart>
       <NoticeSmart theme='danger'>
         Once you click Regenerate, the article will be rewritten. The previous version cannot be

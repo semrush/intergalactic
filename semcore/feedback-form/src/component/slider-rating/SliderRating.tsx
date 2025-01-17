@@ -1,8 +1,11 @@
 import React from 'react';
 import { createComponent, Component, Root, sstyled, Intergalactic } from '@semcore/core';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
+import { Flex, Box, BoxProps, ScreenReaderOnly } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
 import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {
   value: number;
@@ -22,15 +25,29 @@ type StarProps = BoxProps & {
 const MIN = 1;
 const MAX = 5;
 
-class SliderRatingRoot extends Component<SliderRatingProps, State> {
+class SliderRatingRoot extends Component<
+  SliderRatingProps,
+  {},
+  State,
+  typeof SliderRatingRoot.enhance
+> {
   static displayName = 'SliderRating';
   static style = style;
 
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [
+    keyboardFocusEnhance(),
+    uniqueIDEnhancement(),
+    i18nEnhance(localizedMessages),
+  ] as const;
 
   state: State = {
     hoveredIndex: -1,
     clickedIndex: -1,
+  };
+
+  static defaultProps = {
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   handleClick = (newValue: number) => (e: React.SyntheticEvent<SVGElement>) => {
@@ -57,6 +74,7 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
       filled: value ? index + 1 <= value || index <= hoveredIndex : index <= hoveredIndex,
       onClick: this.handleClick(index + 1),
       onMouseEnter: readonly ? undefined : this.handleMouseEnder(index),
+      hovered: hoveredIndex === index,
     };
   }
 
@@ -96,12 +114,62 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
     }
   };
 
-  render() {
-    const { styles, value } = this.asProps;
+  getLabelText() {
     const { hoveredIndex } = this.state;
-    const SSliderRating = Root;
+    const { readonly, value, getI18nText } = this.asProps;
 
-    const label = value ? value : hoveredIndex === -1 ? 'Not set' : hoveredIndex + 1;
+    if (readonly) {
+      return getI18nText('FeedbackRating.SliderRating.aria-valuetext.readonly', {
+        selectedRating: value,
+        max: MAX,
+      });
+    }
+
+    if (value) {
+      const selectedRating = hoveredIndex > -1 ? hoveredIndex + 1 : value;
+      return getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
+        selectedRating: selectedRating,
+        max: MAX,
+      });
+    }
+
+    return hoveredIndex === -1
+      ? getI18nText('FeedbackRating.SliderRating.aria-valuetext.empty')
+      : getI18nText('FeedbackRating.SliderRating.aria-valuetext', {
+          selectedRating: hoveredIndex + 1,
+          max: MAX,
+        });
+  }
+
+  render() {
+    const { styles, readonly, getI18nText, value } = this.asProps;
+    const { hoveredIndex } = this.state;
+
+    const SSliderRating = Root;
+    const label = this.getLabelText();
+
+    if (readonly) {
+      return (
+        <SSliderRating render={Flex} gap={1} role='img' aria-label={label} use:tabIndex={-1}>
+          {new Array(MAX).fill(null).map((_, index) => {
+            return (
+              <Box key={index} position={'relative'}>
+                <SliderRating.Star />
+              </Box>
+            );
+          })}
+        </SSliderRating>
+      );
+    }
+
+    const hoverValue = hoveredIndex + 1;
+
+    const editModeLabel =
+      hoverValue > 0 || value
+        ? `${label}. ${getI18nText(
+            'FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber',
+          )}.`
+        : label;
 
     return sstyled(styles)(
       <SSliderRating
@@ -109,12 +177,12 @@ class SliderRatingRoot extends Component<SliderRatingProps, State> {
         gap={1}
         onMouseLeave={this.handleMouseLeave}
         onKeyDown={this.handleKeyDown}
-        role='slider'
+        role={'slider'}
         aria-orientation='horizontal'
         aria-valuemin={MIN}
         aria-valuemax={MAX}
-        aria-valuetext={label}
-        aria-valuenow={hoveredIndex + 1}
+        aria-valuetext={editModeLabel}
+        aria-valuenow={hoverValue}
       >
         {new Array(MAX).fill(null).map((_, index) => {
           return (
@@ -134,6 +202,7 @@ function Star(props: StarProps) {
     <SStar
       render={Box}
       tag={'svg'}
+      role='none'
       width='22'
       height='21'
       viewBox='0 0 22 21'

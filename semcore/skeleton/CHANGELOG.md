@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.40.2] - 2025-01-03
+
+### Removed
+
+- `aria-busy` attribute as unnecessary.
+
 ## [5.40.1] - 2024-12-17
 
 ### Added

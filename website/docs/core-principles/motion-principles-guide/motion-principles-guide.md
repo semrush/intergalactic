@@ -38,7 +38,10 @@ Table: Durations
 | fast             | `200ms` | Should be used for more complex effects (such as Dropdown or Accordion)                                                           |
 | extra-fast       | `100ms` | Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)                         |
 
-## Easing
+<!-- hidden because value isn't clear right now, we use standard CSS values for timing-function
+## Animation functions
+
+Hover or focus the following blocks to play the animations.
 
 ::: react-view
 
@@ -70,7 +73,7 @@ const Easing = ({ cssFunc, jsFunc, name, description }) => {
   }, [jsFunc]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} tabIndex={0}>
       <svg width={chartSize} height={chartSize + 2} className={styles.chart}>
         <path d={pathD} strokeWidth={2} />
       </svg>
@@ -117,6 +120,7 @@ const App = EasingsDemo;
 </script>
 
 :::
+-->
 
 ## Accessibility
 

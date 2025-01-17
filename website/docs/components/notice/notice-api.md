@@ -48,6 +48,24 @@ import Notice from '@semcore/ui/notice';
 <Notice.Close />;
 ```
 
+## Notice.Text
+
+The text content of the notice. Inherited from `Text`.
+
+```jsx
+import Notice from '@semcore/ui/notice';
+<Notice.Text />;
+```
+
+## Notice.Title
+
+The title of the notice. Inherited from `Text`.
+
+```jsx
+import Notice from '@semcore/ui/notice';
+<Notice.Title />;
+```
+
 ## NoticeSmart
 
 A more convenient component version with posibility to define features through props. For more details, [refer to the example](./notice-code#noticesmart).

@@ -10,6 +10,7 @@ import NoticeGlobal from '@semcore/notice-global';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
+import { Text } from '@semcore/typography';
 
 import style from './style/notice.shadow.css';
 
@@ -122,6 +123,16 @@ function Label({ styles, theme, resolveColor }) {
   return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
 }
 
+function Title({ styles }) {
+  const STitle = Root;
+  return sstyled(styles)(<STitle render={Text} tag='div' size={300} fontWeight={'bold'} />);
+}
+
+function NoticeText({ styles }) {
+  const SText = Root;
+  return sstyled(styles)(<SText render={Text} tag='div' />);
+}
+
 function Actions({ styles }) {
   const SActions = Root;
   return sstyled(styles)(<SActions render={Box} />);
@@ -152,10 +163,14 @@ function Close({ styles, getI18nText }) {
   );
 }
 
-export default createComponent(RootNotice, {
+const Notice = createComponent(RootNotice, {
   Label,
+  Title: Title,
+  Text: NoticeText,
   Actions,
   Content,
   CloseIcon,
   Close,
 });
+
+export default Notice;
