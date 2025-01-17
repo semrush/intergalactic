@@ -9,6 +9,7 @@ import {
   act,
   userEvent,
   waitFor,
+  waitForElementToBeRemoved,
 } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
@@ -298,9 +299,9 @@ describe('DropdownMenu', () => {
 
     await userEvent.click(getByTestId('dd-button-trigger'));
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    expect(element).not.toBeInTheDocument();
+    await waitFor(() => {
+      return expect(element).not.toBeInTheDocument();
+    });
   });
 
   describe.sequential('opens nested menu', () => {
