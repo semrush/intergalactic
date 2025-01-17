@@ -29,7 +29,7 @@ export type FeedbackRatingProps = Intergalactic.InternalTypings.EfficientOmit<
   /** text in notification panel */
   notificationText: string;
   /** title in notification panel */
-  notificationTitle: string;
+  notificationTitle?: string;
   /** optional link in notification panel */
   learnMoreLink?: string;
   /** rating value */
