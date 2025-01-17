@@ -11,10 +11,11 @@ export async function BasicUsageTest({ canvasElement }: { canvasElement: HTMLEle
   }
 
  await userEvent.click(addFilter);
- await new Promise((resolve) => setTimeout(resolve, 500));
+ await new Promise((resolve) => setTimeout(resolve,500));
  const colorItem = within(document.body).getByRole('menuitem', { name: 'Color' });
  expect(colorItem).toBeVisible();
  await userEvent.click(colorItem);
+ await new Promise((resolve) => setTimeout(resolve,100));
  const colorOption = within(document.body).getByRole('option', { name: 'Blue' });
  expect(colorOption).toBeVisible();
  await userEvent.click(colorOption);
