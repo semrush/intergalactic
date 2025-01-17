@@ -22,7 +22,6 @@ test.describe('Base example', () => {
     const sidebarHeader = page.locator('h2#ui-kit-r0-title');
     await expect(sidebarHeader).toHaveText('Site Audit Settings');
 
-
     const stepperTabs = page.locator('[data-ui-name="Wizard.Stepper"]');
     await expect(stepperTabs).toHaveCount(3);
 
@@ -44,15 +43,12 @@ test.describe('Base example', () => {
     await expect(firstStep).toHaveAttribute('aria-selected', 'false');
     await expect(middleStep).toHaveAttribute('aria-selected', 'true');
     await expect(lastStep).toHaveAttribute('aria-selected', 'false');
-   
-    
 
-    //content panel 
+    //content panel
     const contentPanel = page.locator('[data-ui-name="Wizard.Content"]');
     await expect(contentPanel).toHaveAttribute('role', 'tabpanel');
     await expect(contentPanel).toHaveAttribute('aria-labelledby');
     await expect(contentPanel).toHaveAttribute('step', '2');
-
 
     const backButton = page.getByRole('button', { name: 'Back to Location' });
     await expect(backButton).toBeVisible();
@@ -90,11 +86,10 @@ test.describe('Base example', () => {
     const closeButton = page.getByRole('button', { name: 'Close' });
     await expect(closeButton).toHaveAttribute('type', 'button');
     await expect(closeButton).toHaveAttribute('tabindex', '0');
-    
+
     await closeButton.click();
     await expect(modal).toBeHidden();
 
     await trigger.click();
-
   });
 });
