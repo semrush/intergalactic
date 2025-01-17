@@ -1,7 +1,7 @@
-# @semcore/core
+# @semcore/base-components
 
-[![version](https://img.shields.io/npm/v/@semcore/core.svg)](https://www.npmjs.com/@semcore/core)
-[![downloads](https://img.shields.io/npm/dt/@semcore/core.svg)](https://www.npmjs.com/package/@semcore/core)
+[![version](https://img.shields.io/npm/v/@semcore/core.svg)](https://www.npmjs.com/@semcore/base-components)
+[![downloads](https://img.shields.io/npm/dt/@semcore/core.svg)](https://www.npmjs.com/package/@semcore/base-components)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
 > This component is part of the Intergalactic Design System
@@ -19,34 +19,8 @@ npm install intergalactic
 ## Usage
 
 ```jsx
-import { createComponent, Root, sstyled } from 'intergalactic/core';
+import { Box, PortalProvider, ScrollArea } from '@semcore/base-components';
 ```
-
-<details>
-  <summary>Alternative installation and use</summary>
-
-**We do not recommend this usage path due to possible dependency and update issues.**
-
-### Install
-
-You can only install one package from the design system
-
-```sh
-npm install @semcore/core @semcore/core
-```
-
-`@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
-of the components that is discussed below. There should only be one version of the package in the project._
-
-### Usage
-
-You can use the package the same way but without `/ui/` in the import path.
-
-```jsx
-import { createComponent, Root, sstyled } from '@semcore/core';
-```
-
-</details>
 
 ## 👤 Author
 

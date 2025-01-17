@@ -6,11 +6,11 @@
     "computedValue": "#ffffff",
     "description": "Primary background of the interface which contains the main data and information.",
     "components": [
+      "base-components",
       "base-trigger",
       "card",
       "checkbox",
       "color-picker",
-      "core",
       "counter",
       "d3-chart",
       "data-table",
@@ -327,12 +327,12 @@
     "description": "Primary text.",
     "components": [
       "accordion",
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "button",
       "card",
       "checkbox",
-      "core",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -768,7 +768,7 @@
     "rawValue": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
     "computedValue": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
     "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states.",
-    "components": ["core", "radio", "textarea"]
+    "components": ["base-components", "radio", "textarea"]
   },
   {
     "name": "--intergalactic-control-switch-bg",
@@ -1802,13 +1802,13 @@
     "description": "Default keyboard focus styles.",
     "components": [
       "accordion",
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "button",
       "carousel",
       "checkbox",
       "color-picker",
-      "core",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -2235,12 +2235,12 @@
     "description": "4px",
     "components": [
       "badge",
+      "base-components",
       "base-trigger",
       "button",
       "card",
       "carousel",
       "color-picker",
-      "core",
       "counter",
       "d3-chart",
       "data-table",
@@ -2272,13 +2272,13 @@
     "description": "8px",
     "components": [
       "accordion",
+      "base-components",
       "base-trigger",
       "breadcrumbs",
       "button",
       "card",
       "carousel",
       "checkbox",
-      "core",
       "d3-chart",
       "data-table",
       "date-picker",
@@ -2555,10 +2555,10 @@
     "computedValue": "6px",
     "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
     "components": [
+      "base-components",
       "base-trigger",
       "button",
       "carousel",
-      "core",
       "date-picker",
       "dropdown-menu",
       "input",
@@ -2592,7 +2592,14 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": ["core", "d3-chart", "dropdown", "feature-popover", "notice-bubble", "tooltip"]
+    "components": [
+      "base-components",
+      "d3-chart",
+      "dropdown",
+      "feature-popover",
+      "notice-bubble",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-modal-rounded",
@@ -2792,7 +2799,7 @@
     "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Left-to-right fade shadow for the ScrollArea.",
-    "components": ["core"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-right",
@@ -2800,7 +2807,7 @@
     "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Right-to-left fade shadow for the ScrollArea.",
-    "components": ["core"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-top",
@@ -2808,7 +2815,7 @@
     "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Top-to-bottom fade shadow for the ScrollArea.",
-    "components": ["core"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-bottom",
@@ -2816,7 +2823,7 @@
     "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
     "description": "Bottom-to-top fade shadow for the ScrollArea.",
-    "components": ["core"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-left",
@@ -2856,7 +2863,7 @@
     "rawValue": "rgba({gray.800}, 0.3)",
     "computedValue": "rgba(25, 27, 35, 0.3)",
     "description": "Background color for ScrollBar.",
-    "components": ["core"]
+    "components": ["base-components"]
   },
   {
     "name": "--intergalactic-tag-primary-gray-normal",
