@@ -56,7 +56,13 @@ const Preview = (preview) => {
     label: 'Close button',
   });
 
-  const msg = text({
+  const title = text({
+    key: 'title',
+    defaultValue: 'Look at this notice!',
+    label: 'Title',
+  });
+
+const msg = text({
     key: 'text',
     defaultValue: 'You can place your message here.',
     label: 'Text',
@@ -82,12 +88,17 @@ const Preview = (preview) => {
         </Notice.Label>
       )}
       <Notice.Content>
-        <Text bold my='2px' size={300} tag='div'>
-          Look at this notice!
-        </Text>
-        <Text my={1} tag='div'>
-          {msg}
-        </Text>
+        {title && (
+          <Notice.Title>
+            {title}
+          </Notice.Title>
+        )}
+        {title || label || closable ? (
+          <Notice.Text>
+            {msg}
+          </Notice.Text>
+          ) : msg
+        }
         {actions && (
           <Notice.Actions>
             <Button use='primary' theme='success'>
@@ -137,8 +148,10 @@ Component consists of the following:
 
 1. `Notice.Content`.
 2. `Notice.Label` (optional). It can be an [icon](/style/icon/icon), [badge](/components/badge/badge) or illustration that accompanies the message.
-3. `Notice.Actions` (optional).
-4. `Notice.Close` (optional).
+3. `Notice.Close` (optional).
+4. `Notice.Title` (optional).
+5. `Notice.Text`.
+6. `Notice.Actions` (optional).
 
 ## Notice content examples
 
