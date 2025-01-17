@@ -13,18 +13,18 @@ class NoticeSmart extends Component {
   render() {
     const SNoticeSmart = Root;
     const { Children, label, title, actions, closable, onClose } = this.asProps;
-    const textContent =
-      typeof Children.origin === 'string' ? (
-        isNode(title) ? (
+    let textContent = <Children />;
+
+    if (typeof Children.origin === 'string') {
+      textContent =
+        isNode(title) || isNode(label) || closable ? (
           <Notice.Text>
             <Children />
           </Notice.Text>
         ) : (
           <Children />
-        )
-      ) : (
-        <Children />
-      );
+        );
+    }
 
     return (
       <SNoticeSmart render={Notice} __excludeProps={['title']}>

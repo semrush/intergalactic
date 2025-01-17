@@ -11,7 +11,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { Text } from '@semcore/typography';
-import findComponent from '@semcore/utils/lib/findComponent';
 
 import style from './style/notice.shadow.css';
 
