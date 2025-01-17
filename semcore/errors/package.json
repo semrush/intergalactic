@@ -14,7 +14,7 @@
   "dependencies": {
     "@semcore/button": "16.0.0",
     "@semcore/format-text": "16.0.0",
-    "@semcore/illustration": "16.0.0",
+    "@semcore/illustration": "2.41.0",
     "@semcore/typography": "16.0.0",
     "@semcore/flex-box": "16.0.0"
   },

@@ -44,7 +44,7 @@
     "@semcore/fullscreen-modal": "16.0.0",
     "@semcore/grid": "16.0.0",
     "@semcore/icon": "16.0.0",
-    "@semcore/illustration": "16.0.0",
+    "@semcore/illustration": "2.41.0",
     "@semcore/inline-input": "16.0.0",
     "@semcore/inline-edit": "16.0.0",
     "@semcore/input": "16.0.0",

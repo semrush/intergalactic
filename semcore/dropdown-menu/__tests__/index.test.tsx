@@ -298,9 +298,9 @@ describe('DropdownMenu', () => {
 
     await userEvent.click(getByTestId('dd-button-trigger'));
 
-    await waitFor(() => {
-      expect(element).not.toBeInTheDocument();
-    });
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    expect(element).not.toBeInTheDocument();
   });
 
   describe.sequential('opens nested menu', () => {

@@ -975,7 +975,7 @@ importers:
         specifier: 16.0.0
         version: link:../format-text
       '@semcore/illustration':
-        specifier: 16.0.0
+        specifier: 2.41.0
         version: link:../illustration
       '@semcore/typography':
         specifier: 16.0.0
@@ -1040,7 +1040,7 @@ importers:
         specifier: 16.0.0
         version: link:../icon
       '@semcore/illustration':
-        specifier: 16.0.0
+        specifier: 2.41.0
         version: link:../illustration
       '@semcore/input':
         specifier: 16.0.0
@@ -2200,7 +2200,7 @@ importers:
         specifier: 16.0.0
         version: link:../icon
       '@semcore/illustration':
-        specifier: 16.0.0
+        specifier: 2.41.0
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: 16.0.0
@@ -2363,7 +2363,7 @@ importers:
         specifier: 16.0.0
         version: link:../flex-box
       '@semcore/illustration':
-        specifier: 16.0.0
+        specifier: 2.41.0
         version: link:../illustration
     devDependencies:
       '@semcore/testing-utils':
