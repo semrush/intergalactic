@@ -14,14 +14,6 @@ const Demo = () => {
   return (
     <Flex direction='column' gap={3}>
       <NoticeSmart
-        label={<div style={{ width: '16px', height: '16px', background: 'orange' }} />}
-        actions={<button type='button'>Wow, so cool!</button>}
-        closable
-      >
-        Look at this cool notice!
-      </NoticeSmart>
-
-      <NoticeSmart
         label={<QuestionAltM />}
         aria-label='New tool announcement'
         closable
