@@ -19,19 +19,32 @@ function StylesPlugin({ types: t }, opts) {
     }
   }
 
-  function importProcessing(p, ident, cssPath) {
+  function importProcessing(p, ident, cssPath, stateFileName) {
     const code = fs
       .readFileSync(cssPath)
       .toString()
       // escape backticks and backslashes
       .replace(/[`\\]/g, '\\$&');
 
+    let importFromName = '@semcore/core';
+
+    if (cssPath.includes('semcore/core/src')) {
+      const folders = path
+        .dirname(stateFileName)
+        .split(path.join('semcore', 'core', 'src') + path.sep)[1]
+        .split(path.sep);
+
+      const upCount = folders.length;
+
+      importFromName = path.join(...new Array(upCount).fill('..'), 'styled');
+    }
+
     p.replaceWith(
       t.VariableDeclaration('const', [
         t.VariableDeclarator(
           t.Identifier(ident),
           t.TaggedTemplateExpression(
-            t.MemberExpression(addNamed(p, 'sstyled', '@semcore/core'), t.Identifier('insert')),
+            t.MemberExpression(addNamed(p, 'sstyled', importFromName), t.Identifier('insert')),
             t.TemplateLiteral(
               [
                 t.TemplateElement({
@@ -155,7 +168,7 @@ function StylesPlugin({ types: t }, opts) {
     visitor: {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
-        if (source.value === '@semcore/core') {
+        if (source.value === '@semcore/core' || source.value.includes('/styled')) {
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
               p.scope.getBinding(specifier.local.name)?.referencePaths.forEach((refP) => {
@@ -179,7 +192,7 @@ function StylesPlugin({ types: t }, opts) {
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
-              importProcessing(p, specifier.local.name, cssPath);
+              importProcessing(p, specifier.local.name, cssPath, state.filename);
               p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
             }
           });

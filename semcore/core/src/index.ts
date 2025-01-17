@@ -1,20 +1,17 @@
 /** ============================== core ============================== */
 import { createComponent, createBaseComponent } from './coreFactory';
 import { sstyled } from './styled';
-import {
-  Root,
-  Component,
-  Intergalactic,
+import { Root, Component, Intergalactic, wrapIntergalacticComponent } from './types/Component';
+import type {
   PropGetterFn,
   IRootComponentProps,
   ComponentType,
   IRootComponentHandlers,
   IComponentProps,
   ReturnEl,
-  wrapIntergalacticComponent,
 } from './types/Component';
-import { CORE_INSTANCE } from './types/symbols';
-import { UnknownProperties } from './types/UnknownProperties';
+import { CORE_INSTANCE, CREATE_COMPONENT } from './types/symbols';
+import type { UnknownProperties } from './types/UnknownProperties';
 
 export {
   sstyled,
@@ -30,6 +27,7 @@ export {
   IRootComponentHandlers,
   IComponentProps,
   CORE_INSTANCE,
+  CREATE_COMPONENT,
   ReturnEl,
   wrapIntergalacticComponent,
 };

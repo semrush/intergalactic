@@ -8,10 +8,8 @@ export type StyledProps = {
 /** @deprecated */
 export interface IStyledProps extends StyledProps, UnknownProperties {}
 /** @ts-ignore */
-export { default as styled } from '@reshadow/core';
+export { default as styled, use, css } from '@reshadow/core';
 /** @ts-ignore */
-export { use, css } from '@reshadow/core';
-/** @ts-ignore */
-export * from '@reshadow/core';
+// export { use, css } from '@reshadow/core';
 
-export * from './sstyled';
+export { sstyled } from './sstyled';

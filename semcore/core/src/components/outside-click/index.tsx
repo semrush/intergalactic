@@ -1,1 +1,4 @@
-export { OutsideClick, OutsideClickProps } from './OutsideClick';
+import { OutsideClick } from './OutsideClick';
+import type { OutsideClickProps } from './OutsideClick';
+
+export { OutsideClick, OutsideClickProps };

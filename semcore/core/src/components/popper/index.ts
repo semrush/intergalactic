@@ -1,5 +1,5 @@
 import { Popper, isInputTriggerTag } from './Popper';
-import {
+import type {
   Placement,
   PopperContext,
   PopperProps,
@@ -9,9 +9,9 @@ import {
   eventInteraction,
 } from './Popper.types';
 
-export {
-  Popper,
-  isInputTriggerTag,
+export { Popper, isInputTriggerTag };
+
+export type {
   Placement,
   PopperContext,
   PopperProps,

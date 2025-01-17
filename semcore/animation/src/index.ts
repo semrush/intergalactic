@@ -6,11 +6,9 @@ import {
   Collapse,
   Slide,
   Scale,
-  FadeInOutProps,
-  SlideProps,
-  CollapseProps,
-  AnimationProps,
 } from '@semcore/core';
+
+import type { FadeInOutProps, SlideProps, CollapseProps, AnimationProps } from '@semcore/core';
 
 export {
   Animation,

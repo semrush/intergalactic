@@ -589,6 +589,9 @@ importers:
       '@semcore/flex-box':
         specifier: 16.0.0
         version: link:../flex-box
+      '@semcore/icon':
+        specifier: 16.0.0
+        version: link:../icon
       '@semcore/popper':
         specifier: 16.0.0
         version: link:../popper
@@ -641,9 +644,6 @@ importers:
       '@semcore/ellipsis':
         specifier: '*'
         version: link:../ellipsis
-      '@semcore/icon':
-        specifier: '*'
-        version: link:../icon
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -652,7 +652,7 @@ importers:
         version: link:../typography
       '@semcore/utils':
         specifier: '*'
-        version: link:../utils
+        version: 4.44.1(react-dom@18.2.0)(react@18.2.0)
       '@types/d3-array':
         specifier: ^3.0.2
         version: 3.0.4
@@ -1244,9 +1244,9 @@ importers:
       '@semcore/core':
         specifier: ^16.0.0
         version: link:../core
-      '@semcore/icon':
-        specifier: 4.53.1
-        version: 4.53.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+      '@semcore/flex-box':
+        specifier: 16.0.0
+        version: link:../flex-box
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -2094,9 +2094,6 @@ importers:
       '@semcore/portal':
         specifier: 16.0.0
         version: link:../portal
-      '@semcore/utils':
-        specifier: 16.0.0
-        version: link:../utils
     devDependencies:
       '@semcore/icon':
         specifier: workspace:*
@@ -2345,9 +2342,6 @@ importers:
       '@semcore/typography':
         specifier: 16.0.0
         version: link:../typography
-      '@semcore/utils':
-        specifier: 16.0.0
-        version: link:../utils
       '@semcore/widget-empty':
         specifier: 16.0.0
         version: link:../widget-empty
@@ -2388,61 +2382,6 @@ importers:
       tsm:
         specifier: 2.2.2
         version: 2.2.2
-
-  semcore/utils:
-    dependencies:
-      '@babel/runtime':
-        specifier: 7.19.0
-        version: 7.19.0
-      '@phytonmk/nano-css':
-        specifier: 5.3.7
-        version: 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@reshadow/core':
-        specifier: 0.0.1-alpha.74
-        version: 0.0.1-alpha.74
-      classnames:
-        specifier: 2.2.6
-        version: 2.2.6
-      colorjs.io:
-        specifier: 0.4.3
-        version: 0.4.3
-      hoist-non-react-statics:
-        specifier: 3.3.2
-        version: 3.3.2
-    devDependencies:
-      '@semcore/babel-plugin-react-semcore':
-        specifier: ^4.2.1
-        version: link:../../tools/babel-plugin-react-semcore
-      '@semcore/core':
-        specifier: ^16
-        version: link:../core
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/classnames':
-        specifier: 2.2.6
-        version: 2.2.6
-      '@types/hoist-non-react-statics':
-        specifier: ^3.3.1
-        version: 3.3.1
-      '@types/node':
-        specifier: ^18.16.15
-        version: 18.16.15
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
-      '@types/react-dom':
-        specifier: 18.0.6
-        version: 18.0.6
-      fast-glob:
-        specifier: 3.2.11
-        version: 3.2.11
-      postcss:
-        specifier: 8.4.33
-        version: 8.4.33
-      postcss-value-parser:
-        specifier: 4.1.0
-        version: 4.1.0
 
   semcore/widget-empty:
     dependencies:
@@ -3173,9 +3112,6 @@ importers:
       '@semcore/typography':
         specifier: workspace:*
         version: link:../../semcore/typography
-      '@semcore/utils':
-        specifier: workspace:*
-        version: link:../../semcore/utils
       '@semcore/widget-empty':
         specifier: workspace:*
         version: link:../../semcore/widget-empty
@@ -7642,7 +7578,6 @@ packages:
 
   /@reshadow/core@0.0.1-alpha.74:
     resolution: {integrity: sha512-oYATyZXe0gLbOnqDa01T5HeivUiEY7LxyfbTYVX6Q8pIWvfBJE0ftrrJkeKA2PW5HilE7qWxn7tmlX2YQFowSg==}
-    dev: false
 
   /@reshadow/utils@0.0.1-alpha.75:
     resolution: {integrity: sha512-9YerWUjSae8RVLacGh6XUhUIhfAG9K5CgvOjAa5t4HgTZ/ris4Wz1Yxj06wBKu8QacFBpY+D4YiJCAyEqnGBXA==}
@@ -7882,21 +7817,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@semcore/flex-box@5.39.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-MweW+x54BIyJKnXKSYMU5QNiZwoODzxC8jdy2MCygSSMq8oJm4g9lpqBES0ZNJm+aFbcl/WMKNyv7ueBHIfE0w==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/i18n-unplugin@0.17.19(@semcore/core@semcore+core):
     resolution: {integrity: sha512-AVEoawoxZ/62pNKzKn41Zi8jBIhesvXAyIdV/mYQdnd4E/LrjaHblF2XHm8ofQNWqiOOucU78OivRi5i7/+MCA==}
     peerDependencies:
@@ -7920,21 +7840,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
-
-  /@semcore/icon@4.53.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Rvz2eMJfHxIxFKxa7ZKSqJjwrbI6hkQDDtW9V+yc8vOSiC9j+Pqw3O+j6Q0bRfpLtmY0hJ4tOl8wBYw//Mky9A==}
-    peerDependencies:
-      '@semcore/core': ^2.17.5
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.39.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.44.1(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@semcore/neighbor-location@4.17.2(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-fY9Iv81sl/Fh3jipe6PiZ8mzBcqNeQDG42wImtCfbNVpWbtK9IKfGpvtr9f5BnCEDz1TEVKm6XGwmgsv3qDGiA==}
@@ -8099,7 +8004,6 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@shikijs/core@1.1.1:
     resolution: {integrity: sha512-WSHuW0i4W04+UZgim378oxHBAp4S5X3hVI2zXh+t5v2fx2u/7QXz9VNisoOD/CA4O9Lc6Zs97TrKiDbWyZua6Q==}

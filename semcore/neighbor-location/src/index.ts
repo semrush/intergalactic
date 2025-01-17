@@ -1,10 +1,8 @@
-import {
-  NeighborLocation,
-  useNeighborLocationDetect,
-  NeighborLocationProps,
-  NeighborItemProps,
-} from '@semcore/core';
+import { NeighborLocation, useNeighborLocationDetect } from '@semcore/core';
 
-export { NeighborLocation, useNeighborLocationDetect, NeighborLocationProps, NeighborItemProps };
+import type { NeighborLocationProps, NeighborItemProps } from '@semcore/core';
+
+export { NeighborLocation, useNeighborLocationDetect };
+export type { NeighborLocationProps, NeighborItemProps };
 
 export default NeighborLocation;

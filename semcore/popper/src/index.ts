@@ -1,6 +1,6 @@
-import {
-  Popper,
-  isInputTriggerTag,
+import { Popper, isInputTriggerTag } from '@semcore/core';
+
+import type {
   Placement,
   PopperContext,
   PopperProps,
@@ -10,9 +10,9 @@ import {
   eventInteraction,
 } from '@semcore/core';
 
-export {
-  Popper,
-  isInputTriggerTag,
+export { Popper, isInputTriggerTag };
+
+export type {
   Placement,
   PopperContext,
   PopperProps,
