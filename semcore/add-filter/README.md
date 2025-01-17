@@ -19,7 +19,7 @@ npm install intergalactic
 ## Usage
 
 ```jsx
-import AddFilter from 'intergalactic/ui/add-filter';
+import AddFilter from '@semcore/add-filter';
 ```
 
 <details>

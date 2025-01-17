@@ -33,7 +33,6 @@ type ClearAllFiltersButtonProps = {
 
 type AddFilterState = {
   visibleFilters: Set<string>;
-  addDropdownItems: AddFilterDropdownOption[];
   clearFiltersMessage: string;
 };
 
@@ -46,6 +45,7 @@ class RootAddFilter extends Component<
   addFilterTrigger = React.createRef<HTMLButtonElement>();
   filtersFocusMap: Map<string | undefined, HTMLElement> = new Map();
   clearMessageTimer: ReturnType<typeof setTimeout> | undefined;
+  addDropdownItems: AddFilterDropdownOption[];
 
   static displayName = 'AddFilter';
   static enhance = [i18nEnhance(localizedMessages), focusSourceEnhance()] as const;
@@ -73,9 +73,10 @@ class RootAddFilter extends Component<
 
     this.state = {
       visibleFilters: new Set(),
-      addDropdownItems: RootAddFilter.getDefaultAddDropdownOptions(props.children),
       clearFiltersMessage: '',
     };
+
+    this.addDropdownItems = RootAddFilter.getDefaultAddDropdownOptions(props.children);
   }
 
   componentWillUnmount() {
@@ -100,10 +101,6 @@ class RootAddFilter extends Component<
     }, 20);
   }
 
-  unsetFocusRef(name: string) {
-    this.filtersFocusMap.delete(name);
-  }
-
   getVisibleFilters(allFilters: React.ReactElement<AddFilterItemProps>[]) {
     return Array.from(this.state.visibleFilters).map((name) => {
       return allFilters.find(({ props }) => props.name === name);
@@ -122,7 +119,6 @@ class RootAddFilter extends Component<
       },
       onClear: () => {
         this.hideFilter(name);
-        this.unsetFocusRef(name);
         this.focusFilterAfterItemCleared(name);
       },
     };
@@ -176,6 +172,7 @@ class RootAddFilter extends Component<
     this.props.onClearAll();
     this.announceClearMessageToSR();
 
+    // waiting for AddFilter button appear in the DOM
     setTimeout(() => {
       this.addFilterTrigger.current?.focus();
     }, 20);
@@ -186,11 +183,9 @@ class RootAddFilter extends Component<
     const clearFiltersMessage = getI18nText('AddFilter.ScreenReaderMessage.FiltersCleared');
     this.setState({ clearFiltersMessage });
 
-    setTimeout(() => {
-      this.clearMessageTimer = setTimeout(() => {
-        this.setState({ clearFiltersMessage: '' });
-      }, 300);
-    });
+    this.clearMessageTimer = setTimeout(() => {
+      this.setState({ clearFiltersMessage: '' });
+    }, 300);
   }
 
   toggleFieldVisibility(name: string, status: boolean) {
@@ -213,7 +208,7 @@ class RootAddFilter extends Component<
 
     return {
       ref: this.addFilterTrigger,
-      options: this.state.addDropdownItems,
+      options: this.addDropdownItems,
       toggleFieldVisibility: (name: string, status: boolean) =>
         this.toggleFieldVisibility(name, status),
       visibleFilters: this.state.visibleFilters,
