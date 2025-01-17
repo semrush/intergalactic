@@ -48,6 +48,7 @@ import Button from '@semcore/button';
 import LikeM from '@semcore/icon/Like/m';
 import { I18nProvider } from '@semcore/core/lib/utils/enhances/WithI18n';
 import Icon from '@semcore/icon/Video/m';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 
@@ -1136,6 +1137,8 @@ describe('Bar', () => {
       const width = 500;
       const height = 300;
 
+      const resolveColor = useColorResolver();
+
       const xScale = scaleBand<number>()
         .range([MARGIN, width - MARGIN])
         .domain(data.map((d) => d.category))
@@ -1161,7 +1164,7 @@ describe('Bar', () => {
           <Line
             x='category'
             y='bar'
-            color={'--wall'}
+            color={resolveColor('text-placeholder')}
             style={{ strokeWidth: 3, strokeDasharray: 5 }}
             duration={0}
           >
@@ -1384,6 +1387,8 @@ describe('Bar', () => {
       const width = 500;
       const height = 300;
 
+      const resolveColor = useColorResolver();
+
       const xScale = scaleLinear()
         .range([MARGIN * 2, width - MARGIN * 2])
         .domain([0, Math.max(...data.map((d) => d.bar))]);
@@ -1408,7 +1413,7 @@ describe('Bar', () => {
                     y={y + height / 2}
                     textAnchor='start'
                     alignmentBaseline='middle'
-                    fill={'--gray60'}
+                    fill={resolveColor('chart-grid-text-label')}
                   >
                     $ {value.bar}
                   </text>

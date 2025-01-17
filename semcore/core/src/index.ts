@@ -12,7 +12,7 @@ import type {
   ReturnEl,
   IFunctionProps,
 } from './types/Component';
-import { CORE_INSTANCE, CREATE_COMPONENT } from './types/symbols';
+import { CORE_INSTANCE, CREATE_COMPONENT, CONTEXT_COMPONENT } from './types/symbols';
 import type { UnknownProperties } from './types/UnknownProperties';
 import register from './register';
 
@@ -32,6 +32,7 @@ export {
   IFunctionProps,
   CORE_INSTANCE,
   CREATE_COMPONENT,
+  CONTEXT_COMPONENT,
   ReturnEl,
   StyledProps,
   wrapIntergalacticComponent,

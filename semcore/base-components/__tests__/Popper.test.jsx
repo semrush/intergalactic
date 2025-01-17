@@ -5,7 +5,7 @@ import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-uti
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Popper from '../src';
+import { Popper } from '../src';
 
 describe('Popper', () => {
   beforeEach(cleanup);

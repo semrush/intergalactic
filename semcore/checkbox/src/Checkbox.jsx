@@ -5,7 +5,7 @@ import { Text as TypographyText } from '@semcore/typography';
 import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/core/lib/utils/inputProps';
 import logger from '@semcore/core/lib/utils/logger';
