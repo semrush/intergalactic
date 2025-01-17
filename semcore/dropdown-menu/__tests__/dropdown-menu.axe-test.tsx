@@ -62,4 +62,22 @@ test.describe('Dropdown-menu', () => {
 
     expect(await checkByAxe(page)).toEqual([]);
   });
+
+  test('Selectable radio items', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    expect(await checkByAxe(page)).toEqual([]);
+  });
+
+  test('Multiselect items', async ({ page }) => {
+    const standPath = 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
+    const htmlContent = await e2eStandToHtml(standPath, 'en');
+
+    await page.setContent(htmlContent);
+
+    expect(await checkByAxe(page)).toEqual([]);
+  });
 });

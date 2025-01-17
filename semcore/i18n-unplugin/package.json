@@ -1,7 +1,7 @@
 {
   "name": "@semcore/i18n-unplugin",
   "description": "Semrush i18n unplugin",
-  "version": "0.18.14",
+  "version": "0.18.15",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

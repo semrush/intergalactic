@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.47.8] - 2025-01-10
+
+### Fixed
+
+- Incorrect calculation sizes for fixed (in right place) columns.
+
+## [4.47.7] - 2024-12-25
+
+### Fixed
+
+- Table remained inert after clicking on sort icon.
+
 ## [4.47.6] - 2024-12-24
 
 ### Fixed

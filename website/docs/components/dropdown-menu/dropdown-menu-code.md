@@ -107,3 +107,23 @@ The component offers several options for laying out list item types:
 </script>
 
 :::
+
+## Selectable menu items
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/dropdown-menu/docs/examples/selectable_radio_items.tsx';
+</script>
+
+:::
+
+## Multiselect menu items
+
+::: sandbox
+
+<script lang="tsx">
+  export Demo from 'stories/components/dropdown-menu/docs/examples/multiselect_items.tsx';
+</script>
+
+:::

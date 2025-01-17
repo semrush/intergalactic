@@ -363,6 +363,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       const node = event.currentTarget;
       if (!node || node !== document.activeElement) return;
       event.preventDefault();
+      event.stopPropagation();
       requestAnimationFrame(() => {
         if (!(node instanceof HTMLElement) || node !== document.activeElement) return;
         const rects: Array<{ top: number; right: number; bottom: number; left: number }> = [];
@@ -374,7 +375,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         };
 
         this.containerRef.current?.childNodes.forEach((childNode, index) => {
-          if (childNode instanceof HTMLElement) {
+          if (childNode instanceof HTMLElement && childNode.getAttribute('draggable') !== null) {
             const rect = childNode.getBoundingClientRect();
             const roundedRect = {
               top: Math.round(rect.top),
@@ -552,6 +553,8 @@ const Draggable = (props: any) => {
     zoneName,
     isDropZone = false,
     uid,
+    isCustomFocus = false,
+    keyboardFocused,
   } = props;
   const resolvedChildren = React.useMemo(
     () => (typeof children === 'function' ? children(props) : children),
@@ -579,6 +582,7 @@ const Draggable = (props: any) => {
       placement={placement}
       role={'group'}
       aria-describedby={`describe-draggable-${uid}`}
+      use:keyboardFocused={isCustomFocus ? false : keyboardFocused}
     >
       <Children />
     </SDraggable>,

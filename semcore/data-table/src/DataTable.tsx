@@ -549,7 +549,9 @@ class RootDefinitionTable extends Component<AsProps> {
     this.setVarStyle(this.columns);
 
     if (prevProps.data !== this.props.data) {
-      if (this.tableRef.current && !isFocusInside(this.tableRef.current)) {
+      const focusedRow = this.focusedCell[0];
+      const isFocusInHeader = focusedRow === 0 && this.hasFocusableInHeader();
+      if (this.tableRef.current && !isFocusInside(this.tableRef.current) && !isFocusInHeader) {
         this.focusedCell = [-1, -1];
       }
     }
@@ -723,9 +725,17 @@ class RootDefinitionTable extends Component<AsProps> {
   };
 
   handleBlur = (e: React.FocusEvent<HTMLElement, HTMLElement>) => {
-    if (!e.relatedTarget || !isFocusInside(e.currentTarget, e.relatedTarget)) {
+    const relatedTarget = e.relatedTarget;
+    const tableElement = this.tableRef.current;
+
+    if (
+      tableElement &&
+      (!relatedTarget ||
+        !isFocusInside(tableElement, relatedTarget) ||
+        this.asProps.focusSourceRef?.current !== 'keyboard')
+    ) {
       this.setInert(false);
-      e.currentTarget.setAttribute('tabIndex', '0');
+      tableElement.setAttribute('tabIndex', '0');
     }
   };
 

@@ -6,6 +6,7 @@ import ReloadM from '@semcore/icon/Reload/m';
 const manager = new NoticeBubbleManager();
 
 const Demo = () => {
+  const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     manager.add({
       children: 'Server connection lost. Check your internet connection and reload the page.',
@@ -17,12 +18,17 @@ const Demo = () => {
       type: 'warning',
       initialAnimation: true,
       duration: 0,
+      onClose: () => {
+        setTimeout(() => {
+          openButtonRef.current?.focus();
+        }, 300);
+      },
     });
   };
 
   return (
     <>
-      <Button onClick={handleClick}>Show no connection notice with action</Button>
+      <Button onClick={handleClick} ref={openButtonRef}>Show no connection notice with action</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

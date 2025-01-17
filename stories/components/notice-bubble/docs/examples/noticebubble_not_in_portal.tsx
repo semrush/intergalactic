@@ -6,6 +6,7 @@ import Link from '@semcore/link';
 const manager = new NoticeBubbleManager();
 
 const Demo = () => {
+  const openButtonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     manager.add({
       children: (
@@ -15,6 +16,11 @@ const Demo = () => {
       ),
       initialAnimation: true,
       duration: 300000,
+      onClose: () => {
+        setTimeout(() => {
+          openButtonRef.current?.focus();
+        }, 300);
+      },
     });
   };
 
@@ -24,7 +30,7 @@ const Demo = () => {
     >
       <div style={{ height: '800px' }}>
         <NoticeBubbleContainer manager={manager} disablePortal={true} />
-        <Button onClick={handleClick} m={5}>
+        <Button onClick={handleClick} m={5} ref={openButtonRef}>
           Show basic notice
         </Button>
       </div>

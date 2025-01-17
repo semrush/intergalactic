@@ -29,12 +29,13 @@ The component consists of the following parts:
 
 ## Grabbing
 
-| State description | Illustration |
-|-------------------|--------------|
-| Drag indicators are hidden in the default state.  | ![](static/drag-default.png)  |
-| Drag indicator appears when the draggable object is hovered or focused.  | ![](static/drag-hover.png)  |
-| When the grab area is hovered, mouse cursor turns into `grab`.  | ![](static/hover-grab.png)  |
-| When the object is grabbed, mouse cursor turns into `grabbed`, the object box-shadow changes to `--box-shadow-dnd`.  | ![](static/dragging.png)  |
+| State description                                                                                                   | Illustration                 |
+| ------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| Drag indicators are hidden in the default state.                                                                    | ![](static/drag-default.png) |
+| When the grab area is hovered, mouse cursor turns into `grab`.                                                      | ![](static/hover-grab.png)   |
+| When the object is grabbed, mouse cursor turns into `grabbed`, the object box-shadow changes to `--box-shadow-dnd`. | ![](static/dragging.png)     |
+
+<!-- | Drag indicator appears when the draggable object is hovered or focused.  | ![](static/drag-hover.png)  | -->
 
 Drag indicator can be placed vertically, as in list items, or horizontally, as in cards.
 
@@ -48,9 +49,9 @@ Dragging trajectory isn’t restricted, allowing the element to be moved freely 
 
 ## Dropping
 
-| State description | Illustration |
-|-------------------|--------------|
-| In the default state, the drop zone is marked with `border: 1px dashed var(--border-primary)`. Display text with `--text-secondary` color inside the zone to describe what can be dropped there. <br/><br/>When nothing is dragged, the drop zone isn't interactive and its styles don't change on hover. | ![](static/drop-zone-default.png)  |
-| When an object is dragged over the drop zone, if the object was dragged from another area, the drop zone background changes to `--bg-primary-neutral-hover`.  | ![](static/drag-card.png)  |
-| When rearranging objects in a list or grid, the drop zone is created dynamically by pushing apart neighbouring objects. In this case, the drop zone background is `--bg-secondary-neutral-hover`.  | ![](static/dragging.png)  |
-| If the drop zone under the dragged object is unavailable, mouse cursor changes to `not-allowed`.  | ![](static/no-drop.png)  |
+| State description                                                                                                                                                                                                                                                                                         | Illustration                      |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| In the default state, the drop zone is marked with `border: 1px dashed var(--border-primary)`. Display text with `--text-secondary` color inside the zone to describe what can be dropped there. <br/><br/>When nothing is dragged, the drop zone isn't interactive and its styles don't change on hover. | ![](static/drop-zone-default.png) |
+| When an object is dragged over the drop zone, if the object was dragged from another area, the drop zone background changes to `--bg-primary-neutral-hover`.                                                                                                                                              | ![](static/drag-card.png)         |
+| When rearranging objects in a list or grid, the drop zone is created dynamically by pushing apart neighbouring objects. In this case, the drop zone background is `--bg-secondary-neutral-hover`.                                                                                                         | ![](static/dragging.png)          |
+| If the drop zone under the dragged object is unavailable, mouse cursor changes to `not-allowed`.                                                                                                                                                                                                          | ![](static/no-drop.png)           |
