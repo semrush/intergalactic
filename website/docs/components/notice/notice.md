@@ -93,9 +93,12 @@ const msg = text({
             {title}
           </Notice.Title>
         )}
-        <Notice.Text>
-          {msg}
-        </Notice.Text>
+        {title || label || closable ? (
+          <Notice.Text>
+            {msg}
+          </Notice.Text>
+          ) : msg
+        }
         {actions && (
           <Notice.Actions>
             <Button use='primary' theme='success'>
