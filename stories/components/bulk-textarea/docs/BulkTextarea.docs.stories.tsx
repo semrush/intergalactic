@@ -22,12 +22,15 @@ export const BasicUsage: StoryObj<typeof BulkTextarea> = {
     minRows: 2,
     maxRows: 10,
     validateOn: [
-      'blur',
-      // 'enterNextRow',
+      // 'blur',
+      'blurRow',
     ],
     pasteProps: {
       delimiter: '\n',
       skipEmptyRows: true,
+    },
+    rowProcessing: (row) => {
+      return row.replace(/http:\/\//, '');
     },
   },
   render: UsageExample,

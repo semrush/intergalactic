@@ -23,6 +23,7 @@ export type BulkTextareaProps = {
   pasteProps?: InputFieldProps['pasteProps'];
 
   ofRows?: InputFieldProps['ofRows'];
+  rowProcessing?: InputFieldProps['rowProcessing'];
 };
 
 export type BulkTextareaType = Intergalactic.Component<'div', BoxProps & BulkTextareaProps> & {

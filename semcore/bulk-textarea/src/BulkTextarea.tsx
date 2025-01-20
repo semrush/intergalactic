@@ -77,6 +77,7 @@ class BulkTextareaRoot extends Component<
       disabled,
       readonly,
       pasteProps,
+      rowProcessing,
     } = this.asProps;
     const { errors, errorIndex, showErrors, lastError, rowsCount, highlightErrorIndex } =
       this.state;
@@ -94,9 +95,10 @@ class BulkTextareaRoot extends Component<
       lastError,
       pasteProps,
       rowsCount,
+      rowProcessing,
       onChangeRowsCount: this.handleChangeRowsCount,
-      onEnterNextRow: () => {
-        if (validateOn?.includes('enterNextRow')) {
+      onChangeRowIndex: () => {
+        if (validateOn?.includes('blurRow')) {
           this.setState({ showErrors: true });
         }
       },

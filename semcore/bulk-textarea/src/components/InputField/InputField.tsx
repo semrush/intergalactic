@@ -95,9 +95,17 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
     this.handleValueOutChange();
   }
 
-  componentDidUpdate(prevProps: InputFieldProps): void {
-    const { value, errors, errorIndex, showErrors, disabled, readonly, highlightErrorIndex } =
-      this.props;
+  componentDidUpdate(prevProps: InputFieldProps, prevState: State): void {
+    const {
+      value,
+      errors,
+      errorIndex,
+      showErrors,
+      disabled,
+      readonly,
+      highlightErrorIndex,
+      rowProcessing,
+    } = this.props;
 
     if (prevProps.value !== value && value !== this.getRowsValue().join(this.delimiter)) {
       this.handleValueOutChange();
@@ -119,6 +127,27 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
         this.textarea.setAttribute('contenteditable', 'true');
         this.addEventListeners(this.textarea);
       }
+    }
+
+    if (
+      prevState.keyboardRowIndex !== -1 &&
+      prevState.keyboardRowIndex !== this.state.keyboardRowIndex
+    ) {
+      if (rowProcessing) {
+        const rows = this.getRowsValue();
+        const newValue = rowProcessing(rows[prevState.keyboardRowIndex] ?? '', rows);
+        const newValueTextNode = document.createTextNode(newValue);
+        const paragraph = this.textarea.childNodes.item(prevState.keyboardRowIndex);
+
+        if (paragraph instanceof HTMLParagraphElement) {
+          paragraph.replaceChild(newValueTextNode, paragraph.childNodes.item(0));
+        }
+      }
+
+      if (!showErrors) {
+        this.recalculateErrors();
+      }
+      this.asProps.onChangeRowIndex(this.state.keyboardRowIndex);
     }
   }
 
@@ -223,12 +252,12 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
   }
 
   handleMouseDown(event: MouseEvent): void {
-    // because we need to change keyboardRowIndex, because the caret in real on that current row
+    // we need to change keyboardRowIndex, because the caret in real on that current row
     this.errorByInteraction = 'keyboard';
     const element = event.target;
 
     if (element instanceof HTMLElement) {
-      // because we need to change keyboardRowIndex, because the caret in real on that current row
+      // we need to change keyboardRowIndex, because the caret in real on that current row
       this.toggleErrorsPopper('keyboardRowIndex', element);
     }
   }
@@ -493,7 +522,7 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
   handleKeyDown(event: KeyboardEvent) {
     this.errorByInteraction = 'keyboard';
-    const { rowsDelimiters, onEnterNextRow } = this.asProps;
+    const { rowsDelimiters } = this.asProps;
 
     const currentNode = this.getNodeFromSelection();
 
@@ -552,7 +581,6 @@ class InputField extends Component<InputFieldProps, {}, State, typeof InputField
 
           setTimeout(() => {
             this.recalculateErrors();
-            onEnterNextRow();
           }, 0);
 
           this.toggleErrorsPopperByKeyboard(0);

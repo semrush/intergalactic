@@ -76,7 +76,7 @@ export type InputFieldProps = {
    * List of available points to validate value
    * @default blur
    */
-  validateOn: ('blur' | 'enterNextRow' | 'paste')[];
+  validateOn: ('blur' | 'blurRow' | 'paste')[];
 
   /**
    * Function to validate row
@@ -106,6 +106,11 @@ export type InputFieldProps = {
   pasteProps: PasteProps;
 
   /**
+   * Function for process row after it was blurred
+   */
+  rowProcessing?: (row: string, rows: string[]) => string;
+
+  /**
    * Internal
    */
   lastError: ErrorItem;
@@ -122,7 +127,7 @@ export type InputFieldProps = {
   /**
    * Internal
    */
-  onEnterNextRow: () => void;
+  onChangeRowIndex: (newIndex: number) => void;
   /**
    * Internal
    */
