@@ -14,7 +14,7 @@ const locators = {
 };
 
 test.describe('Base example', () => {
-  test('Attributes and Mouse interactions', async ({ page }) => {
+  test('Base example - Attributes and Mouse interactions', async ({ page }) => {
     const standPath = 'stories/components/wizard/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
@@ -124,7 +124,7 @@ test.describe('Base example', () => {
     });
   });
 
-  test('Keyboard interactions', async ({ page }) => {
+  test('Base example - Keyboard interactions', async ({ page }) => {
     const standPath = 'stories/components/wizard/docs/examples/basic_example.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
