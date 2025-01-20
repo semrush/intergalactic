@@ -19,8 +19,7 @@ test.describe('Base example', () => {
     const htmlContent = await e2eStandToHtml(standPath, 'en');
     await page.setContent(htmlContent);
 
-    const { trigger, modal, sidebar, steps, contentPanel, nextButton, prevButton } =
-      locators;
+    const { trigger, modal, sidebar, steps, contentPanel, nextButton, prevButton } = locators;
     const stepperTabs = steps(page);
     const firstStep = stepperTabs.nth(0);
     const middleStep = stepperTabs.nth(1);
