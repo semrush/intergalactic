@@ -1,4 +1,4 @@
-## Semrush Security Policies and Procedures
+## Semrush security policies and procedures
 
 This document outlines security procedures and general policies for the
 Intergalactic project as found on https://github.com/semrush/intergalactic.
@@ -6,7 +6,7 @@ Intergalactic project as found on https://github.com/semrush/intergalactic.
   * [Reporting a Vulnerability](#reporting-a-vulnerability)
   * [Following steps](#following-steps)
 
-### Reporting a Vulnerability 
+### Reporting a vulnerability 
 
 Thank you for improving the security of our open source products. Semrush Security team takes all vulnerabilities seriously.
 
