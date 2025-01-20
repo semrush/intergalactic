@@ -16,7 +16,7 @@ test.describe('Wizard axe checks', () => {
   });
 
   test('Custom Step', async ({ page }) => {
-    const standPath = 'stories/components/wizard/docs/examples/custom-step.tsx';
+    const standPath = 'stories/components/wizard/docs/examples/custom_step.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -29,7 +29,7 @@ test.describe('Wizard axe checks', () => {
   });
 
   test('Custom Stepper', async ({ page }) => {
-    const standPath = 'stories/components/wizard/docs/examples/custom-stepper.tsx';
+    const standPath = 'stories/components/wizard/docs/examples/custom_stepper.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
