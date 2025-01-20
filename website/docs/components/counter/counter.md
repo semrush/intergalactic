@@ -74,7 +74,9 @@ It is used in various components such as:
 Counter is a static component and shouldn't be clickable.
 :::
 
-## Themes
+## Appearance
+
+### Themes
 
 The appropriate theme for a counter varies based on its context and the component it is located in or near.
 

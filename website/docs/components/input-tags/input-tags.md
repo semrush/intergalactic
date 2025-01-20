@@ -147,7 +147,7 @@ Table: Interaction with InputTags
 
 When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [combobox menu](/components/auto-suggest/auto-suggest) will open. Pressing `Enter` or clicking on a list item will insert its value into the input field and wrap it in a tag.
 
-## Turning text into tags
+### Turning text into tags
 
 Text entered by the user is automatically converted into a tag inside InputTags in the following cases:
 
@@ -160,11 +160,11 @@ Text entered by the user is automatically converted into a tag inside InputTags 
 Leading and trailing spaces are trimmed when creating tags.
 :::
 
-## Pasting text
+### Pasting text
 
 After pasting copied data, the text is split into tags based on punctuation separators like commas, semicolons and vertical bars ("|").
 
-## Editing and deleting tags
+### Editing and deleting tags
 
 There are several ways to edit a tag:
 

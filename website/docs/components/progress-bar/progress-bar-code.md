@@ -4,7 +4,7 @@ fileSource: progress-bar
 tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
-## Complex usage example
+## Basic usage
 
 ::: sandbox
 

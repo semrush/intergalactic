@@ -14,7 +14,7 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 
 :::
 
-## Customized options view
+## Customized options
 
 ::: sandbox
 

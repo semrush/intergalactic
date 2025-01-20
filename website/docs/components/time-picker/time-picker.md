@@ -88,7 +88,7 @@ Component consists of the following:
 - `TimePicker.Format`
 - `TimePicker.Separator`
 
-## Appearance
+## Formats
 
 The component includes [comboboxes](/components/auto-suggest/auto-suggest#Combobox) inside the input field.
 
@@ -101,9 +101,11 @@ Table: TimePicker 24-hour and 12-hour formats
 | 24-hour format | ![](static/input-default-l.png) |
 | 12-hour format | ![](static/input-l.png)         |
 
-## Sizes and paddings
+## Appearance
 
-Table: TimePicker sizes and paddings
+### Sizes
+
+Table: TimePicker sizes
 
 | Input size (height in px) | Appearance example                 | Paddings                           |
 | ------------------------- | ---------------------------------- | ---------------------------------- |
@@ -152,7 +154,7 @@ Validation in this component is required in several cases:
 - When there is a selection of multiple time slots, and they cannot be set to equal values.
 - When users cannot select times in the past or future. In this case, the time selection also depends on the date selection, and the validation applies to the entire group of controls.
 
-### How the validation is performed
+### How validation is performed
 
 - All the fields related to the selection of the date and time receive the status `invalid`.
 - A tooltip with the description of the error is shown in the first field without placing the focus on the field.

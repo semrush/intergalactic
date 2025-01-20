@@ -4,7 +4,7 @@ fileSource: side-panel
 tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
-## Basic example
+## Basic usage
 
 ::: sandbox
 
@@ -14,7 +14,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 
 :::
 
-## Advanced example
+## Header and footer
 
 ::: sandbox
 
@@ -24,7 +24,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 
 :::
 
-## Access to internal components
+## Advanced usage
 
 You can access the internal components by expanding `SidePanel` for `SidePanel.Overlay`, `SidePanel.Panel` or `SidePanel.Close`.
 

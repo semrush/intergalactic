@@ -1,6 +1,6 @@
 First of all, thank you for your interest in the library. We'd love to accept your fixes and improvements ✨
 
-### Prerequisites
+## Prerequisites
 
 1. Install the latest LTS version of [Node.js](https://nodejs.org/en).
 2. Install [pnpm](https://pnpm.js.org) globally by running: `npm i -g pnpm@8`.
@@ -11,7 +11,7 @@ First of all, thank you for your interest in the library. We'd love to accept yo
 
 Please note that our maintainers primarily develop on macOS. While developing on Linux or Windows is possible, there might be unintended issues. Don't hesitate to [reach out for help](https://github.com/semrush/intergalactic/issues/new/choose) if you encounter any problems.
 
-### Getting Started
+## Getting Started
 
 1. Clone the repository by running: `git clone git@github.com:semrush/intergalactic.git && cd intergalactic`.
 2. Install project dependencies using: `pnpm install`.
@@ -20,7 +20,7 @@ Please note that our maintainers primarily develop on macOS. While developing on
 
 3. Build components with: `pnpm build`.
 
-### Submitting Changes
+## Submitting Changes
 
 Follow these steps to submit your changes:
 
