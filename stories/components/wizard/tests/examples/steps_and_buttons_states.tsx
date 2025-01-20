@@ -22,20 +22,20 @@ const Demo = () => {
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={setStep} number={1.1}>
           {steps[1].title}
-          <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+          <Text color='text-secondary-invert' fontWeight={400}>
               optional
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={setStep} number={1.2} fontWeight={400}>
-          <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+          <Text color='text-secondary-invert' fontWeight={400}>
           {steps[2].title}
             </Text>
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400}>
           Optional step
             </Text>
           </Wizard.Stepper>
           <Wizard.Stepper step={4} onActive={setStep} number={1.3} fontWeight={400}>
-          <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+          <Text color='text-secondary-invert' fontWeight={400}>
           {steps[3].title}
             </Text>
           </Wizard.Stepper>
@@ -47,7 +47,7 @@ const Demo = () => {
           </Wizard.Stepper>
           <Wizard.Stepper step={7} onActive={setStep}>
             {steps[6].title}
-            <Text color='text-secondary-invert' fontWeight={400} tag='div'>
+            <Text color='text-secondary-invert' fontWeight={400}>
               optional
             </Text>
           </Wizard.Stepper>
