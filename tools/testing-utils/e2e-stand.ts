@@ -67,7 +67,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
     .filter((file) => file.path.endsWith('.js'))
     .map((file) => file.text);
 
-    const htmlContent = `
+  const htmlContent = `
     <!DOCTYPE html>
     <html lang="${locale}">
       <head>
