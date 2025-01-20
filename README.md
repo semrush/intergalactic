@@ -20,7 +20,7 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 - Theme customization in every detail (find details in the [Design tokens guide](https://developer.semrush.com/intergalactic/style/design-tokens/))
 
 
-### Browser Support
+### Browser support
 
 - Google Chrome
 - Mozilla Firefox
@@ -30,7 +30,7 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 
 ---
 
-### Installation 🛠
+### Installation
 
 ```sh
 pnpm add intergalactic
