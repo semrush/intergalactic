@@ -7,7 +7,7 @@ import { LinkTrigger } from '@semcore/base-trigger';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Customizing header'}>
+    <DataTable data={data} aria-label={'Customizing header'}>
       <DataTable.Head>
         <DataTable.Column
           name='keyword'

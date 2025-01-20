@@ -80,18 +80,6 @@ Scroll in the table header is useful for very long tables with fixed columns, al
 
 :::
 
-### Fixed header with loading state in table
-
-For correct components overlapping, use the `SpinContainer` component with `SpinContainer.Overlay` but without `SpinContainer.Content` .
-
-::: sandbox
-
-<script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/fixed-header-with-spin-overlay.tsx';
-</script>
-
-:::
-
 ### Header customization
 
 You can insert tooltips, selects, and other components into the table header using the `children` property.
@@ -346,16 +334,16 @@ Avoid placing [Pagination](/components/pagination/pagination) inside the table, 
 
 :::
 
-## Table states
+## Loading states
 
-### Loading data
+### SpinContainer
 
 Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
 
 ::: sandbox
 
 <script lang="tsx">
-  export Demo from 'stories/components/data-table/docs/examples/download-status.tsx';
+  export Demo from 'stories/components/data-table/docs/examples/spin-container-in-table.tsx';
 </script>
 
 :::

@@ -24,7 +24,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 
 ## SpinContainer.Overlay
 
-By default, it is a UI component and a base that closes the content under `Spin`.
+A semitransparent box with a [Spin](../spin/spin.md) displayed over the content.
 
 ```jsx
 import SpinContainer from '@semcore/ui/spin-container';

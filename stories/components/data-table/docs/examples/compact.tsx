@@ -3,7 +3,7 @@ import DataTable from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} compact aria-label={'Table title. Compact'}>
+    <DataTable data={data} compact aria-label={'Compact'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

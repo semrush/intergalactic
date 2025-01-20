@@ -28,7 +28,7 @@ const Demo = () => {
       data={sortedData}
       sort={sort}
       onSortChange={setSort}
-      aria-label={'Table title. Sorting with change sortable column size'}
+      aria-label={'Sorting with change sortable column size'}
     >
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' justifyContent='left' sortable />

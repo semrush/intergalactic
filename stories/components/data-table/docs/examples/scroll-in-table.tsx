@@ -3,7 +3,7 @@ import DataTable from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Scroll inside'}>
+    <DataTable data={data} aria-label={'Scroll inside'}>
       <DataTable.Head wMin={1000}>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

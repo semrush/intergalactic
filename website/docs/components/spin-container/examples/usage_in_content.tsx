@@ -1,41 +1,27 @@
 import React from 'react';
 import { Text } from '@semcore/typography';
 import SpinContainer from '@semcore/spin-container';
+import Button from '@semcore/button';
 
 class Demo extends React.PureComponent {
   state = { loading: true };
-  timerFetch: any;
-  timer: any;
-
-  componentDidMount() {
-    this.timerFetch = setInterval(this.fetchData, 3000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerFetch);
-    clearInterval(this.timer);
-  }
-
-  fetchData = () => {
-    this.setState({ loading: false });
-    setTimeout(() => {
-      this.timer = this.setState({ loading: true });
-    }, 1000);
-  };
 
   render() {
     const { loading } = this.state;
 
     return (
-      <SpinContainer loading={loading} size='l' h={81}>
-        {!loading && (
-          <Text size={100}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae
-            distinctio doloremque, et id quae reiciendis repellat saepe sapiente sequi veritatis.
-            Adipisci, consequuntur excepturi nobis porro quas recusandae?
+      <>
+        <SpinContainer loading={loading} size='l' aria-live='polite' role='status'>
+          <Text size={200} tag='div'>
+            The Intergalactic Design System uses two sets of design tokens: basic and semantic.
+            Basic tokens set the main colors, while semantic tokens build on them. Changing the
+            basic tokens lets you create new themes.
           </Text>
-        )}
-      </SpinContainer>
+        </SpinContainer>
+        <Button onClick={() => this.setState({ loading: !loading })} mt={3}>
+          {loading ? 'Stop loading' : 'Start loading'}
+        </Button>
+      </>
     );
   }
 }

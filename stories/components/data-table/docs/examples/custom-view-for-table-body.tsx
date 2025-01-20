@@ -4,7 +4,7 @@ import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Custom footer cells'}>
+    <DataTable data={data} aria-label={'Custom footer cells'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

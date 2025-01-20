@@ -3,7 +3,7 @@ import DataTable from '@semcore/data-table';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Borders'}>
+    <DataTable data={data} aria-label={'Borders'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column vBorders>

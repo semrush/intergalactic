@@ -34,7 +34,7 @@ const data = [
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Columns merging'}>
+    <DataTable data={data} aria-label={'Columns merging'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

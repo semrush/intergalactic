@@ -4,7 +4,7 @@ import { ButtonLink } from '@semcore/button';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Access to cells'}>
+    <DataTable data={data} aria-label={'Access to cells'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

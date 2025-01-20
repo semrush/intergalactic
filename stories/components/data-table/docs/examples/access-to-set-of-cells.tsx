@@ -4,7 +4,7 @@ import Spin from '@semcore/spin';
 
 const Demo = () => {
   return (
-    <DataTable data={data} aria-label={'Table title. Access to set of cells'}>
+    <DataTable data={data} aria-label={'Access to set of cells'}>
       <DataTable.Head>
         <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column name='kd' children='KD,%' />

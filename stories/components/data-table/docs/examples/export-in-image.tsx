@@ -57,7 +57,7 @@ const Demo = () => {
         </svg>
       </div>
 
-      <DataTable data={data} aria-label={'Table title. Export in image'} ref={tableRef} w={500}>
+      <DataTable data={data} aria-label={'Export in image'} ref={tableRef} w={500}>
         <DataTable.Head>
           <DataTable.Column name='keyword' children='Keyword' />
           <DataTable.Column name='kd' children='KD,%' />

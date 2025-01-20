@@ -1,6 +1,8 @@
 import React from 'react';
 import DataTable from '@semcore/data-table';
 import Skeleton from '@semcore/skeleton';
+import Button from '@semcore/ui/button';
+import { ScreenReaderOnly } from '@semcore/ui/flex-box';
 
 function getSkeleton() {
   return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
@@ -16,26 +18,42 @@ function getSkeleton() {
 
 const Demo = () => {
   const [loading, setLoading] = React.useState(true);
+  const [message, setMessage] = React.useState('');
+
   React.useEffect(() => {
-    const timer = setInterval(() => {
-      setLoading(!loading);
-    }, 2000);
+    const timer = setTimeout(() => {
+      setMessage('');
+    }, 300);
     return () => {
-      clearInterval(timer);
+      clearTimeout(timer);
     };
-  }, [loading]);
+  }, [message]);
+
+  const toggleLoading = () => {
+    setLoading(!loading);
+    setMessage(loading ? 'Data loaded' : 'Loading started');
+  };
+
   return (
-    <DataTable data={data} aria-label={'Table title. Skeleton'}>
-      <DataTable.Head>
-        <DataTable.Column name='keyword' children='Keyword' />
-        <DataTable.Column name='kd' children='KD,%' />
-        <DataTable.Column name='cpc' children='CPC' />
-        <DataTable.Column name='vol' children='Vol.' />
-      </DataTable.Head>
-      <DataTable.Body
-        {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
-      />
-    </DataTable>
+    <>
+      <ScreenReaderOnly role='status' aria-live='polite'>
+        {message}
+      </ScreenReaderOnly>
+      <DataTable data={data} aria-label={'Loading using Skeleton'}>
+        <DataTable.Head>
+          <DataTable.Column name='keyword' children='Keyword' />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
+        </DataTable.Head>
+        <DataTable.Body
+          {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
+        />
+      </DataTable>
+      <Button onClick={toggleLoading} mt={3}>
+        {loading ? 'Stop loading' : 'Start loading'}
+      </Button>
+    </>
   );
 };
 
