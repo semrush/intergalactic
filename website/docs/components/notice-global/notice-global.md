@@ -43,7 +43,7 @@ const Preview = (preview) => {
 
   const msg = text({
     key: 'text',
-    defaultValue: 'You can place here your message.',
+    defaultValue: 'You can place your message here.',
     label: 'Text',
   });
 

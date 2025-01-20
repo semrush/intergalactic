@@ -14,7 +14,7 @@ tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container
 
 :::
 
-## Usage in dropdown lists
+## Usage in dropdowns
 
 This example demonstrates how to resize and display content within the SpinContainer.
 

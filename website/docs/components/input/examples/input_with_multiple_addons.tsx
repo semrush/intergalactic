@@ -23,6 +23,7 @@ const Demo = () => {
           <Input.Value
             defaultValue='I_like_cats'
             type={type}
+            autoComplete='current-password'
             value={value}
             onChange={(v) => setValue(v)}
             id='2addon-example'

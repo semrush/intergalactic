@@ -31,9 +31,10 @@ const Demo = () => {
   const [genre, setGenre] = React.useState<string | null>(movies[0].key);
 
   return (
-    <Flex direction='column'>
-      <p>Movie of what genre to pick today?</p>
+    <Flex direction='column' gap={2}>
+      <label htmlFor='genre-select'>Movie of what genre to pick today?</label>
       <Select
+        id='genre-select'
         options={movies.map(({ label, key }) => ({ value: key, children: label }))}
         value={genre}
         onChange={setGenre}

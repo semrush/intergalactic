@@ -35,13 +35,7 @@ const Demo = () => {
         />
         {value && (
           <Input.Addon>
-            <Hint
-              tag={ButtonLink}
-              use='secondary'
-              addonLeft={CloseM}
-              title='Clear'
-              onClick={handleClick}
-            />
+            <ButtonLink use='secondary' addonLeft={CloseM} title='Clear' onClick={handleClick} />
           </Input.Addon>
         )}
       </Input>

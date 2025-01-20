@@ -10,15 +10,20 @@ const Demo = () => {
   const [value, setValue] = React.useState('+');
   return (
     <Flex direction='column'>
-      <Text tag='label' htmlFor='basic-example' size={200} mr={2}>
+      <Text tag='label' htmlFor='basic-example' size={200}>
         Phone number
       </Text>
       <Input w={180} mt={2}>
-        <Input.Value id='basic-example' value={value} onChange={(v) => setValue(v)} />
+        <Input.Value
+          id='basic-example'
+          type='tel'
+          autoComplete='tel'
+          value={value}
+          onChange={(v) => setValue(v)}
+        />
         {value.length > 1 && (
           <Input.Addon>
-            <Hint
-              tag={ButtonLink}
+            <ButtonLink
               use='secondary'
               addonLeft={CloseM}
               title='Clear'

@@ -5,6 +5,7 @@ import algoliasearch from 'algoliasearch/lite';
 
 import IllustrationGroup, { IllustrationGroups, ListIllustrations } from './illustration-group';
 import Input from 'intergalactic/input';
+import { ButtonLink } from '@semcore/button';
 import { Text } from 'intergalactic/typography';
 import SearchM from 'intergalactic/icon/Search/m';
 import CloseM from 'intergalactic/icon/Close/m';
@@ -38,7 +39,12 @@ const SuggestSearch = connectAutoComplete(
         />
         {!!currentRefinement && (
           <Input.Addon>
-            <CloseM interactive onClick={() => handleChangeValue('')} />
+            <ButtonLink
+              addonLeft={CloseM}
+              use='secondary'
+              title='Clear'
+              onClick={() => handleChangeValue('')}
+            />
           </Input.Addon>
         )}
       </Input>

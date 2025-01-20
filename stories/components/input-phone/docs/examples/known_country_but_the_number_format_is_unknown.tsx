@@ -18,11 +18,16 @@ const Demo = () => {
         <Input.Addon>
           <Flag iso2='US' />
         </Input.Addon>
-        <Input.Value value={value} onChange={(v) => setValue(v)} id='phone-number' />
+        <Input.Value
+          value={value}
+          onChange={(v) => setValue(v)}
+          id='phone-number'
+          type='tel'
+          autoComplete='tel'
+        />
         {Number.parseInt(value, 10) > 2 && (
           <Input.Addon>
-            <Hint
-              tag={ButtonLink}
+            <ButtonLink
               use='secondary'
               addonLeft={CloseM}
               title='Clear'

@@ -41,8 +41,7 @@ const Demo = () => {
             />
             {value && (
               <Input.Addon>
-                <Hint
-                  tag={ButtonLink}
+                <ButtonLink
                   use='secondary'
                   addonLeft={CloseM}
                   title='Clear'

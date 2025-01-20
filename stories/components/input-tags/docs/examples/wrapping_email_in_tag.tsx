@@ -43,7 +43,7 @@ const Demo = () => {
 
   return (
     <Flex direction='column'>
-      <Text tag='label' size={300} htmlFor='add-email'>
+      <Text tag='label' size={300} htmlFor='email'>
         Participants
       </Text>
       <InputTags mt={2} size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
@@ -58,8 +58,10 @@ const Demo = () => {
           </InputTags.Tag>
         ))}
         <InputTags.Value
-          id='add-email'
+          id='email'
           placeholder='Add email'
+          type='email'
+          autoComplete='email'
           value={value}
           onChange={handleChange}
         />
