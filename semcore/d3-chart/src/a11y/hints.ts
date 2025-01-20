@@ -1,5 +1,5 @@
 import { SerializableDataType } from './insights';
-import reactToText from '@semcore/utils/lib/reactToText';
+import reactToText from '@semcore/core/lib/utils/reactToText';
 
 type DeepPartial<T> = T extends object
   ? {

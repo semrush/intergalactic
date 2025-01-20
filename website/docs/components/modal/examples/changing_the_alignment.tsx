@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Modal from 'intergalactic/modal';
+import Button from '@semcore/button';
+import Modal from '@semcore/modal';
 
 const DEFAULT_TEXT =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque commodi corporis culpa, eius error impedit itaque minus nemo nostrum numquam odio omnis sapiente soluta temporibus vel voluptatibus? Exercitationem?';

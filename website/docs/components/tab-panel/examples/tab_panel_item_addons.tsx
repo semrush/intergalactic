@@ -1,9 +1,9 @@
 import React from 'react';
-import TabPanel from 'intergalactic/tab-panel';
-import FacebookM from 'intergalactic/icon/Facebook/m';
-import InstagramM from 'intergalactic/icon/Instagram/m';
-import TwitterM from 'intergalactic/icon/Twitter/m';
-import Badge from 'intergalactic/badge';
+import TabPanel from '@semcore/tab-panel';
+import FacebookM from '@semcore/icon/Facebook/m';
+import InstagramM from '@semcore/icon/Instagram/m';
+import TwitterM from '@semcore/icon/Twitter/m';
+import Badge from '@semcore/badge';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);

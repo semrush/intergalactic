@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # @semcore/format-text
 
 [![version](https://img.shields.io/npm/v/@semcore/format-text.svg)](https://www.npmjs.com/@semcore/format-text)

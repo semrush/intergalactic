@@ -1,6 +1,6 @@
 import React from 'react';
-import { List } from 'intergalactic/typography';
-import CheckM from 'intergalactic/icon/Check/m';
+import { List } from '@semcore/typography';
+import CheckM from '@semcore/icon/Check/m';
 
 const Demo = () => (
   <div>

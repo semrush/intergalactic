@@ -1,6 +1,6 @@
 import React from 'react';
-import Popper from 'intergalactic/popper';
-import { Flex } from 'intergalactic/flex-box';
+import Popper from '@semcore/popper';
+import { Flex } from '@semcore/flex-box';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex } from 'intergalactic/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const styleBox = {

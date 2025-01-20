@@ -1,13 +1,13 @@
 import React from 'react';
 import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@upsetjs/venn.js';
 import { Component, Root, sstyled } from '@semcore/core';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import { FadeInOut } from '@semcore/animation';
 import createElement from './createElement';
 import { getChartDefaultColorName } from './utils';
 import Tooltip from './Tooltip';
 import { PatternFill } from './Pattern';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 import style from './style/venn.shadow.css';
 

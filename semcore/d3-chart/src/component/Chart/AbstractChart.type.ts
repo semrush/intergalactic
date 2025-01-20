@@ -7,7 +7,7 @@ import { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 import { PatternsConfig } from '../../Pattern';
 // @ts-ignore
 import { PlotSummarizerConfig } from '../../Plot';
-import { Intergalactic } from '@semcore/utils/lib/core';
+import { Intergalactic } from '@semcore/core';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**

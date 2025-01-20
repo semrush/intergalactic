@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
+import { Text } from '@semcore/typography';
+import Link from '@semcore/link';
 
 const Demo = () => (
   <div>

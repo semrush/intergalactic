@@ -1,8 +1,8 @@
 import React from 'react';
-import Switch from 'intergalactic/switch';
-import CheckM from 'intergalactic/icon/Check/m';
-import { Text } from 'intergalactic/typography';
-import { Box, Flex } from 'intergalactic/flex-box';
+import Switch from '@semcore/switch';
+import CheckM from '@semcore/icon/Check/m';
+import { Text } from '@semcore/typography';
+import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

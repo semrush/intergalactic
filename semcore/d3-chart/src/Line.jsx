@@ -1,7 +1,7 @@
 import React from 'react';
 import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
-import uniqueIDEnhancement, { useUID } from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement, { useUID } from '@semcore/core/lib/utils/uniqueID';
 import createElement from './createElement';
 import {
   definedData,

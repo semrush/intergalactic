@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Divider from 'intergalactic/divider';
-import { Flex } from 'intergalactic/flex-box';
-import NeighborLocation from 'intergalactic/neighbor-location';
+import Button from '@semcore/button';
+import Divider from '@semcore/divider';
+import { Flex } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/neighbor-location';
 
 const Demo = () => {
   return (

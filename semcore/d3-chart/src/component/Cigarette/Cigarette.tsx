@@ -1,10 +1,10 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import createElement from '../../createElement';
 import { roundedPath } from '../../utils';
 import { PatternFill } from '../../Pattern';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 
 class CigaretteBarRoot extends Component<any> {
   static displayName = 'Cigarette.BarItem';

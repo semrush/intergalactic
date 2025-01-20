@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, animateScroll } from 'react-scroll';
 import ArrowUpM from '@semcore/icon/ArrowUp/m';
-import trottle from '@semcore/utils/lib/rafTrottle';
+import trottle from '@semcore/core/lib/utils/rafTrottle';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
 import { logEvent } from '../utils/amplitude';

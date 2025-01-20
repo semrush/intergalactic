@@ -1,5 +1,5 @@
 import React from 'react';
-import Radio, { RadioGroup } from 'intergalactic/radio';
+import Radio, { RadioGroup } from '@semcore/radio';
 
 const Demo = () => {
   return (

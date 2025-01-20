@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import BaseTrigger from './BaseTrigger';
 import Spin from '@semcore/spin';
-import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import animatedSizeEnhance from '@semcore/core/lib/utils/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
 import style from './style/button-trigger.shadow.css';
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import Badge from 'intergalactic/badge';
-import Tag from 'intergalactic/tag';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import Badge from '@semcore/badge';
+import Tag from '@semcore/tag';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('heh');

@@ -1,6 +1,6 @@
 import React from 'react';
-import Badge from 'intergalactic/badge';
-import { Flex } from 'intergalactic/flex-box';
+import Badge from '@semcore/badge';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

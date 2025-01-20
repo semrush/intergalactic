@@ -1,7 +1,7 @@
 import React from 'react';
-import { DatePicker } from 'intergalactic/date-picker';
-import { Flex } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
+import { DatePicker } from '@semcore/date-picker';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   const today = new Date();

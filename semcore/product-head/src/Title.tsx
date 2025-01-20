@@ -1,5 +1,6 @@
 import React from 'react';
-import createComponent, {
+import {
+  createComponent,
   Component,
   sstyled,
   Root,
@@ -7,7 +8,7 @@ import createComponent, {
   Intergalactic,
 } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
-import isNode from '@semcore/utils/lib/isNode';
+import isNode from '@semcore/core/lib/utils/isNode';
 
 import style from './style/title.shadow.css';
 

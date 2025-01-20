@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import createComponent from '@semcore/core';
+import { createComponent } from '@semcore/core';
 import shortDateRangeFormat from './utils/shortDateRangeFormat';
 import {
   Header,

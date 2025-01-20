@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Donut, colors } from 'intergalactic/d3-chart';
+import { Plot, Donut, colors } from '@semcore/d3-chart';
 
 const Demo = () => {
   return (

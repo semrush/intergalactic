@@ -1,6 +1,6 @@
 import React from 'react';
-import Modal from 'intergalactic/modal';
-import Button from 'intergalactic/button';
+import Modal from '@semcore/modal';
+import Button from '@semcore/button';
 
 const overlayStyles = { background: 'rgba(255, 147, 253, .75)' };
 const closeStyles = {

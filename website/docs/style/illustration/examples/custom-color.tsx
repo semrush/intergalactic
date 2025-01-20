@@ -1,7 +1,7 @@
 import React from 'react';
-import MailSent from 'intergalactic/illustration/MailSent';
-import Congrats from 'intergalactic/illustration/Congrats';
-import { Flex } from 'intergalactic/flex-box';
+import MailSent from '@semcore/illustration/MailSent';
+import Congrats from '@semcore/illustration/Congrats';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

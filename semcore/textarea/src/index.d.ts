@@ -2,7 +2,7 @@ import { SyntheticEvent } from 'react';
 import { Property } from 'csstype';
 import { BoxProps } from '@semcore/flex-box';
 import { Intergalactic, UnknownProperties } from '@semcore/core';
-import { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import { WithAutoFocusEnhanceProps } from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
 
 /** @deprecated */
 export interface ITextareaProps extends TextareaProps, UnknownProperties {}

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from 'intergalactic/flex-box';
-import { Text } from 'intergalactic/typography';
-import ProgressBar from 'intergalactic/progress-bar';
+import { Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import ProgressBar from '@semcore/progress-bar';
 
 const maxValue = 2000;
 

@@ -1,13 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
 import { Text } from '@semcore/typography';
 import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import ChevronRightL from '@semcore/icon/ChevronRight/l';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 
 import style from './style/accordion.shadow.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import InlineInput from 'intergalactic/inline-input';
+import InlineInput from '@semcore/inline-input';
 
 const Example = () => {
   return (

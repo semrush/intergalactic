@@ -1,6 +1,7 @@
 import React from 'react';
 import { Property } from 'csstype';
-import createComponent, {
+import {
+  createComponent,
   Component,
   PropGetterFn,
   Root,
@@ -9,9 +10,9 @@ import createComponent, {
   Intergalactic,
 } from '@semcore/core';
 import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
-import syncScroll from '@semcore/utils/lib/syncScroll';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import fire from '@semcore/utils/lib/fire';
+import syncScroll from '@semcore/core/lib/utils/syncScroll';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import fire from '@semcore/core/lib/utils/fire';
 import { flattenColumns } from './utils';
 import type {
   ColIndex,
@@ -25,13 +26,13 @@ import type {
 } from './types';
 import Head from './Head';
 import Body from './Body';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import style from './style/data-table.shadow.css';
-import { isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
-import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
-import focusSourceEnhance from '@semcore/utils/lib/enhances/focusSourceEnhance';
+import { isFocusInside } from '@semcore/core/lib/utils/use/useFocusLock';
+import { hasFocusableIn } from '@semcore/core/lib/utils/use/useFocusLock';
+import focusSourceEnhance from '@semcore/core/lib/utils/enhances/focusSourceEnhance';
 
 const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',

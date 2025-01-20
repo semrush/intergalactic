@@ -1,6 +1,6 @@
 import React from 'react';
-import Divider from 'intergalactic/divider';
-import { Flex } from 'intergalactic/flex-box';
+import Divider from '@semcore/divider';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

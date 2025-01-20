@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent from '@semcore/core';
+import { createComponent } from '@semcore/core';
 import { scaleLinear, ScaleLinear } from 'd3-scale';
 // @ts-ignore
 import { Bubble, calculateBubbleDomain } from '../..';
@@ -8,7 +8,7 @@ import { BubbleChartData, BubbleChartProps, BubbleChartType } from './BubbleChar
 import { Text } from '@semcore/typography';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class BubbleChartComponent extends AbstractChart<
   BubbleChartData,

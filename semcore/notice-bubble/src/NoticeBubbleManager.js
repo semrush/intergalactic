@@ -1,6 +1,6 @@
-import EventEmitter from '@semcore/utils/lib/eventEmitter';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
+import EventEmitter from '@semcore/core/lib/utils/eventEmitter';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
+import { setFocus } from '@semcore/core/lib/utils/use/useFocusLock';
 import React from 'react';
 
 const EVENT_NAME = 'CHANGE';

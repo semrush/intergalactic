@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropGetterFn } from '@semcore/core';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { BoxProps } from '@semcore/flex-box';
 import { NeighborItemProps } from '@semcore/neighbor-location';
 import { TooltipHintProps } from '@semcore/tooltip';

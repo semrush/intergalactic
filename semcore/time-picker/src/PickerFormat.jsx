@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 import { ScreenReaderOnly } from '@semcore/flex-box';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 class TimePickerFormat extends Component {
   static enhance = [keyboardFocusEnhance(), uniqueIDEnhancement()];

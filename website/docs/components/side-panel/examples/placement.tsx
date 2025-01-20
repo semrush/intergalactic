@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import { Text } from 'intergalactic/typography';
-import Select from 'intergalactic/select';
-import SidePanel, { SidePanelPlacement } from 'intergalactic/side-panel';
+import Button from '@semcore/button';
+import { Text } from '@semcore/typography';
+import Select from '@semcore/select';
+import SidePanel, { SidePanelPlacement } from '@semcore/side-panel';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 

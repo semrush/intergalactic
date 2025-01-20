@@ -1,18 +1,18 @@
 import React from 'react';
-import { Text } from 'intergalactic/typography';
-import Link from 'intergalactic/link';
-import Button, { ButtonLink } from 'intergalactic/button';
-import { DescriptionTooltip } from 'intergalactic/tooltip';
-import Chat from 'intergalactic/icon/Chat/m';
-import BookM from 'intergalactic/icon/Book/m';
-import MathPlusM from 'intergalactic/icon/MathPlus/m';
-import SettingsM from 'intergalactic/icon/Settings/m';
-import InfoM from 'intergalactic/icon/Info/m';
-import Breadcrumbs from 'intergalactic/breadcrumbs';
-import Select from 'intergalactic/select';
-import { LinkTrigger } from 'intergalactic/base-trigger';
+import { Text } from '@semcore/typography';
+import Link from '@semcore/link';
+import Button, { ButtonLink } from '@semcore/button';
+import { DescriptionTooltip } from '@semcore/tooltip';
+import Chat from '@semcore/icon/Chat/m';
+import BookM from '@semcore/icon/Book/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
+import SettingsM from '@semcore/icon/Settings/m';
+import InfoM from '@semcore/icon/Info/m';
+import Breadcrumbs from '@semcore/breadcrumbs';
+import Select from '@semcore/select';
+import { LinkTrigger } from '@semcore/base-trigger';
 
-import Header, { Info, Title } from 'intergalactic/product-head';
+import Header, { Info, Title } from '@semcore/product-head';
 
 const Demo = () => {
   return (

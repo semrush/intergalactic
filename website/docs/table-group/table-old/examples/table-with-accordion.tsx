@@ -1,7 +1,7 @@
 import React from 'react';
-import Table from 'intergalactic/table';
-import Accordion from 'intergalactic/accordion';
-import { Box } from 'intergalactic/flex-box';
+import Table from '@semcore/table';
+import Accordion from '@semcore/accordion';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => (
   <Table>

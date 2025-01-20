@@ -1,8 +1,8 @@
 import React from 'react';
-import NotificationM from 'intergalactic/icon/Notification/m';
-import Button from 'intergalactic/button';
-import Dot from 'intergalactic/dot';
-import { Hint } from 'intergalactic/tooltip';
+import NotificationM from '@semcore/icon/Notification/m';
+import Button from '@semcore/button';
+import Dot from '@semcore/dot';
+import { Hint } from '@semcore/tooltip';
 
 const Demo = () => {
   const [dotVisible, setDotVisible] = React.useState(true);

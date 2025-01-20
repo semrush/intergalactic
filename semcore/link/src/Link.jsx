@@ -1,13 +1,13 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import { Hint } from '@semcore/tooltip';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import logger from '@semcore/utils/lib/logger';
-import hasLabels from '@semcore/utils/lib/hasLabels';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import logger from '@semcore/core/lib/utils/logger';
+import hasLabels from '@semcore/core/lib/utils/hasLabels';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 
 import style from './style/link.shadow.css';
 

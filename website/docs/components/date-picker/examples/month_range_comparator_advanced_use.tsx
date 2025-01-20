@@ -1,9 +1,9 @@
 import React from 'react';
-import { MonthDateRangeComparator } from 'intergalactic/date-picker';
-import { Flex } from 'intergalactic/flex-box';
-import Notice from 'intergalactic/notice';
-import WarningIcon from 'intergalactic/icon/Warning/m';
-import { Text } from 'intergalactic/typography';
+import { MonthDateRangeComparator } from '@semcore/date-picker';
+import { Flex } from '@semcore/flex-box';
+import Notice from '@semcore/notice';
+import WarningIcon from '@semcore/icon/Warning/m';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   return (

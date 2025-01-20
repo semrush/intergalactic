@@ -1,8 +1,8 @@
 import React from 'react';
-import Portal from 'intergalactic/portal';
-import NoticeGlobal, { NoticeGlobalTheme } from 'intergalactic/notice-global';
-import Button from 'intergalactic/button';
-import Select from 'intergalactic/select';
+import Portal from '@semcore/portal';
+import NoticeGlobal, { NoticeGlobalTheme } from '@semcore/notice-global';
+import Button from '@semcore/button';
+import Select from '@semcore/select';
 
 const themes = ['neutral', 'info', 'success', 'warning', 'danger'] as const;
 const options = themes.map((theme) => ({

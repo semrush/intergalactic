@@ -1,6 +1,6 @@
 import React from 'react';
-import TabPanel from 'intergalactic/tab-panel';
-import Tooltip from 'intergalactic/tooltip';
+import TabPanel from '@semcore/tab-panel';
+import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);

@@ -1,6 +1,6 @@
 import React from 'react';
-import createComponent, { Component, Root } from '@semcore/core';
-import isNode from '@semcore/utils/lib/isNode';
+import { createComponent, Component, Root } from '@semcore/core';
+import isNode from '@semcore/core/lib/utils/isNode';
 import Notice from './Notice';
 
 class NoticeSmart extends Component {

@@ -4,15 +4,15 @@ import InputMask from '@semcore/input-mask';
 import Tooltip from '@semcore/tooltip';
 import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
-import createComponent, { Root, sstyled, Component } from '@semcore/core';
+import { createComponent, Root, sstyled, Component } from '@semcore/core';
 import NeighborLocation from '@semcore/neighbor-location';
 import { datesIntersects } from '../utils/datesIntersects';
 import { includesDate } from '../utils/includesDate';
 import dayjs from 'dayjs';
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
 
 import style from '../style/date-picker.shadow.css';
-import assignProps from '@semcore/utils/lib/assignProps';
+import assignProps from '@semcore/core/lib/utils/assignProps';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
 const exampleDate = new Date(2000, 4, 29);

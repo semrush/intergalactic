@@ -2,7 +2,7 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { InputProps, InputValueProps } from '@semcore/input';
 import { Box, BoxProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
 export interface ITimePickerProps extends TimePickerProps, UnknownProperties {}

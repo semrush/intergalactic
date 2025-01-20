@@ -1,18 +1,18 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Modal from '@semcore/modal';
 import { Flex, Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/l';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
-import fire from '@semcore/utils/lib/fire';
+import fire from '@semcore/core/lib/utils/fire';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 
 import style from './style/fullscreen-modal.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 class FullscreenModalRoot extends Component {
   static displayName = 'FullscreenModal';

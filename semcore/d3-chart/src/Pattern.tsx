@@ -1,5 +1,5 @@
 import React from 'react';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 
 /**
  * Object that is fully describes the pattern

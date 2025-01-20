@@ -1,8 +1,8 @@
 import React from 'react';
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import createElement from './createElement';
 import { getScatterPlotRadius } from './utils';
 import Tooltip from './Tooltip';

@@ -1,8 +1,8 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 
 import Text from './Text';
 

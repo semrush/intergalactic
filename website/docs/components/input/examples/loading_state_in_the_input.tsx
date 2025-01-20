@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import Spin from 'intergalactic/spin';
-import { Text } from 'intergalactic/typography';
-import { Box } from 'intergalactic/flex-box';
+import Input from '@semcore/input';
+import Spin from '@semcore/spin';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

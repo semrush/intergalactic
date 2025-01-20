@@ -1,10 +1,10 @@
 import React from 'react';
 import { transition } from 'd3-transition';
-import { Component, sstyled, ReturnEl, UnknownProperties, Intergalactic } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import assignProps from '@semcore/utils/lib/assignProps';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { Component, sstyled, UnknownProperties, Intergalactic } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import assignProps from '@semcore/core/lib/utils/assignProps';
+import getOriginChildren from '@semcore/core/lib/utils/getOriginChildren';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 import createElement from './createElement';
 import { getChartDefaultColorName, measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';

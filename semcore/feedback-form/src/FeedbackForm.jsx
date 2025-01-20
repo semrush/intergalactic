@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Button from '@semcore/button';
 import SpinContainer from '@semcore/spin-container';
 import { NoticeSmart } from '@semcore/notice';

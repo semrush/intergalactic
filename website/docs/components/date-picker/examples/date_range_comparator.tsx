@@ -1,6 +1,6 @@
 import React from 'react';
-import { DateRangeComparator, MonthDateRangeComparator } from 'intergalactic/date-picker';
-import { Flex } from 'intergalactic/flex-box';
+import { DateRangeComparator, MonthDateRangeComparator } from '@semcore/date-picker';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   return (

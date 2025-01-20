@@ -1,7 +1,7 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
-import { Area, minMax, Plot, XAxis, YAxis } from 'intergalactic/d3-chart';
+import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
 
 const customLineStyles = { strokeWidth: 4, stroke: 'pink' };
 

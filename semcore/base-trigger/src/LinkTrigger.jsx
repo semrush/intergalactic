@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 import style from './style/link-trigger.shadow.css';
 

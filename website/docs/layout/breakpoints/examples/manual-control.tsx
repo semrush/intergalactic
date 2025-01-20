@@ -1,6 +1,6 @@
 import React from 'react';
-import Breakpoints from 'intergalactic/breakpoints';
-import Button from 'intergalactic/button';
+import Breakpoints from '@semcore/breakpoints';
+import Button from '@semcore/button';
 
 const Demo = () => {
   const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());

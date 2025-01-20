@@ -1,7 +1,7 @@
 import React from 'react';
 import { transition } from 'd3-transition';
 import { Component, Root, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import createElement from './createElement';
 import { getBubbleChartValueScale, measureText } from './utils';
 import Tooltip from './Tooltip';

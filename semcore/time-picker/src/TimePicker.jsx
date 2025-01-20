@@ -1,14 +1,14 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 import { Hours, Minutes } from './PickerInput';
 import Format from './PickerFormat';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 const MAP_MERIDIEM = {
   AM: 'PM',

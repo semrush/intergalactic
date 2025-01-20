@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Row } from 'intergalactic/grid';
-import { Box } from 'intergalactic/flex-box';
+import { Col, Row } from '@semcore/grid';
+import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
   const styleBox = {

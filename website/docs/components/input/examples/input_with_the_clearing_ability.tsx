@@ -1,10 +1,10 @@
 import React from 'react';
-import Input from 'intergalactic/input';
-import { ButtonLink } from 'intergalactic/button';
-import CloseM from 'intergalactic/icon/Close/m';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
-import { Hint } from 'intergalactic/tooltip';
+import Input from '@semcore/input';
+import { ButtonLink } from '@semcore/button';
+import CloseM from '@semcore/icon/Close/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
+import { Hint } from '@semcore/tooltip';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

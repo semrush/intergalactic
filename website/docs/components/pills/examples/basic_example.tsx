@@ -1,9 +1,9 @@
 import React from 'react';
-import Pills from 'intergalactic/pills';
-import ThumbUpM from 'intergalactic/icon/ThumbUp/m';
-import ThumbDownM from 'intergalactic/icon/ThumbDown/m';
-import { Text } from 'intergalactic/typography';
-import { Flex } from 'intergalactic/flex-box';
+import Pills from '@semcore/pills';
+import ThumbUpM from '@semcore/icon/ThumbUp/m';
+import ThumbDownM from '@semcore/icon/ThumbDown/m';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const [choice, setChoice] = React.useState(null);

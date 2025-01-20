@@ -1,5 +1,5 @@
 import React from 'react';
-import TabLine from 'intergalactic/tab-line';
+import TabLine from '@semcore/tab-line';
 
 const Demo = () => {
   const [value, setValue] = React.useState(1);

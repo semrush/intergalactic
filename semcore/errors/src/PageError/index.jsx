@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from '@semcore/button';
-import createComponent, { Component } from '@semcore/core';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { createComponent, Component } from '@semcore/core';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
+import { callAllEventHandlers } from '@semcore/core/lib/utils/assignProps';
 import Error, { getIconPath } from '../Error';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import CheckM from '@semcore/icon/Check/m';

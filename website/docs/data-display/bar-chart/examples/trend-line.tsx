@@ -1,15 +1,6 @@
 import React from 'react';
-import {
-  Plot,
-  Bar,
-  Line,
-  HoverRect,
-  HoverLine,
-  YAxis,
-  XAxis,
-  minMax,
-} from 'intergalactic/d3-chart';
-import { useColorResolver } from 'intergalactic/utils/lib/use/useColorResolver';
+import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/d3-chart';
+import { useColorResolver } from '@semcore/core/lib/utils/use/useColorResolver';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadialTreeChartSkeleton } from 'intergalactic/skeleton';
+import { RadialTreeChartSkeleton } from '@semcore/skeleton';
 
 const Demo = () => {
   return <RadialTreeChartSkeleton />;

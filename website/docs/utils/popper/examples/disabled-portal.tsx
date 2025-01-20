@@ -1,6 +1,6 @@
 import React from 'react';
-import Popper from 'intergalactic/popper';
-import Button from 'intergalactic/button';
+import Popper from '@semcore/popper';
+import Button from '@semcore/button';
 
 const style = { background: '#FFF', color: '#000', border: '1px solid #000', padding: '10px' };
 

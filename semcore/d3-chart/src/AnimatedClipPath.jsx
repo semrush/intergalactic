@@ -1,6 +1,6 @@
 import React from 'react';
-import createComponent, { Component } from '@semcore/core';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import { createComponent, Component } from '@semcore/core';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 
 class AnimatedClipPath extends Component {
   static defaultProps = {

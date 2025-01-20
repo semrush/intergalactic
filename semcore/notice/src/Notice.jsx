@@ -1,15 +1,15 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import CloseIconM from '@semcore/icon/Close/m';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
-import logger from '@semcore/utils/lib/logger';
+import logger from '@semcore/core/lib/utils/logger';
 import NoticeGlobal from '@semcore/notice-global';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
+import { cssVariableEnhance } from '@semcore/core/lib/utils/useCssVariable';
 import { Text } from '@semcore/typography';
 
 import style from './style/notice.shadow.css';

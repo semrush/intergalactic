@@ -1,5 +1,5 @@
 import React from 'react';
-import Switch from 'intergalactic/switch';
+import Switch from '@semcore/switch';
 
 const Demo = () => {
   return (

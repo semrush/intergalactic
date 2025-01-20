@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Dropdown from 'intergalactic/dropdown';
-import { Text } from 'intergalactic/typography';
+import Button from '@semcore/button';
+import Dropdown from '@semcore/dropdown';
+import { Text } from '@semcore/typography';
 
 const Demo = () => (
   <Dropdown>

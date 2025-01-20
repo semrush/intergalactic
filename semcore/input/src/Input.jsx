@@ -1,9 +1,9 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box, InvalidStateBox } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
-import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import autoFocusEnhance from '@semcore/core/lib/utils/enhances/autoFocusEnhance';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 import style from './style/input.shadow.css';
 

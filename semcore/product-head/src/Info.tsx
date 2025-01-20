@@ -1,13 +1,14 @@
 import React from 'react';
-import createComponent, {
+import {
+  createComponent,
   Component,
   sstyled,
   Root,
   UnknownProperties,
   Intergalactic,
 } from '@semcore/core';
-import { Box, BoxProps, IBoxProps } from '@semcore/flex-box';
-import isNode from '@semcore/utils/lib/isNode';
+import { Box, BoxProps } from '@semcore/flex-box';
+import isNode from '@semcore/core/lib/utils/isNode';
 
 import style from './style/info.shadow.css';
 
@@ -17,7 +18,7 @@ export type InfoItemProps = BoxProps & {
   label?: React.ReactNode;
 };
 
-class InfoRoot extends Component<IBoxProps> {
+class InfoRoot extends Component<BoxProps> {
   static displayName = 'Info';
   static style = style;
 

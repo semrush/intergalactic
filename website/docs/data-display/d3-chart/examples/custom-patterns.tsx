@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pattern, Plot, Venn } from 'intergalactic/d3-chart';
+import { Pattern, Plot, Venn } from '@semcore/d3-chart';
 
 const data = {
   G: 200,

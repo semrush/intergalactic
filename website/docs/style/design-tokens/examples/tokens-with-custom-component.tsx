@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Switch from 'intergalactic/switch';
-import { Box, Flex } from 'intergalactic/flex-box';
-import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+import Button from '@semcore/button';
+import Switch from '@semcore/switch';
+import { Box, Flex } from '@semcore/flex-box';
+import { ThemeProvider } from '@semcore/core/lib/utils/ThemeProvider';
 
 const styles = `
     .popper {

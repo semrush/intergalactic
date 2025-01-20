@@ -17,7 +17,7 @@ function getRandomColor() {
 }
 
 const Demo = () => {
-  const containerRef = React.useRef(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
   return (
     <Flex>
       <Box style={{ position: 'relative' }}>

@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import log from '@semcore/utils/lib/logger';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import addonTextChildren from '@semcore/core/lib/utils/addonTextChildren';
+import a11yEnhance from '@semcore/core/lib/utils/enhances/a11yEnhance';
+import log from '@semcore/core/lib/utils/logger';
 
 import style from './style/pills.shadow.css';
 

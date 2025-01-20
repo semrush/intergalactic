@@ -1,3 +1,5 @@
+# DEPRECATED. Use functionality from `@semcore/core`.
+
 # @semcore/animation
 
 [![version](https://img.shields.io/npm/v/@semcore/animation.svg)](https://www.npmjs.com/@semcore/animation)

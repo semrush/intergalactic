@@ -1,11 +1,10 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled, Intergalactic } from '@semcore/core';
-import { Flex, Box, BoxProps } from '@semcore/flex-box';
+import { createComponent, Component, Root, sstyled, Intergalactic } from '@semcore/core';
+import { Flex, Box, BoxProps, ScreenReaderOnly } from '@semcore/flex-box';
 import style from '../../style/slider-rating.shadow.css';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { ScreenReaderOnly } from '@semcore/flex-box';
+import keyboardFocusEnhance from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
 
 type SliderRatingProps = {

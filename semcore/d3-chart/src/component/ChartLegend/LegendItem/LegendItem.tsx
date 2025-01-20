@@ -1,5 +1,5 @@
 import React, { DOMAttributes } from 'react';
-import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
+import { createComponent, Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
 import { Text as TypographyText } from '@semcore/typography';
@@ -12,8 +12,8 @@ import {
   LegendItem,
   StaticShapes,
 } from './LegendItem.type';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import { PatternSymbol } from '../../../Pattern';
 import { getChartDefaultColorName } from '../../../utils';
 

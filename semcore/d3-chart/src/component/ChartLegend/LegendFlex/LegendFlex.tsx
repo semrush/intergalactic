@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { sstyled, Root } from '@semcore/core';
+import { createComponent, sstyled, Root } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import style from './legend-flex.shadow.css';
 import { LegendFlexType, LegendFlexProps, TrendProps } from './LegendFlex.type';
@@ -8,7 +8,7 @@ import Divider from '@semcore/divider';
 import Checkbox from '@semcore/checkbox';
 import { BaseLegend } from '../BaseLegend';
 import { localizedMessages } from '../../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
   static displayName = 'LegendFlex';

@@ -20,8 +20,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: /^@semcore\/utils\/lib\/(.*)/,
-        replacement: resolvePath(__dirname, 'semcore/utils/src/$1'),
+        find: /^@semcore\/core\/lib\/utils\/(.*)/,
+        replacement: resolvePath(__dirname, 'semcore/core/src/utils/$1'),
       },
       {
         find: /^@semcore\/icon\/(.*)/,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { Plot, Radar } from 'intergalactic/d3-chart';
-import { Flex } from 'intergalactic/flex-box';
+import { Plot, Radar } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
 
 const Demo = () => {
   const width = 250;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import { List } from 'intergalactic/typography';
-import SidePanel from 'intergalactic/side-panel';
+import Button from '@semcore/button';
+import { List } from '@semcore/typography';
+import SidePanel from '@semcore/side-panel';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

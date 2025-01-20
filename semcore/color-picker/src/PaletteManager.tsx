@@ -2,10 +2,10 @@ import React from 'react';
 import { Component, sstyled, CORE_INSTANCE } from '@semcore/core';
 import Divider from '@semcore/divider';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 import style from './style/color-picker.shadow.css';
-import uniqueIdEnhance from '@semcore/utils/lib/uniqueID';
+import uniqueIdEnhance from '@semcore/core/lib/utils/uniqueID';
 
 type RootAsProps = {
   defaultColors?: string[];

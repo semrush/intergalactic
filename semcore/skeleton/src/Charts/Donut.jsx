@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Root, sstyled } from '@semcore/core';
+import { createComponent, Root, sstyled } from '@semcore/core';
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 

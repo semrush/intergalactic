@@ -1,6 +1,6 @@
 import React, { RefObject } from 'react';
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import useEnhancedEffect from '@semcore/core/lib/utils/use/useEnhancedEffect';
+import canUseDOM from '@semcore/core/lib/utils/canUseDOM';
 
 export const useResizeObserver = (
   ref: RefObject<HTMLElement>,

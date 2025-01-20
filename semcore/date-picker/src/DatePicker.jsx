@@ -1,10 +1,10 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { createComponent, Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 import {
   Header,
   Next,

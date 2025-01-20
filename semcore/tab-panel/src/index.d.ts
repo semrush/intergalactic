@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 export type TabPanelValue = string | number | boolean;
 

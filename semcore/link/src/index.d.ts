@@ -2,7 +2,7 @@ import React from 'react';
 import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { TextProps } from '@semcore/typography';
 import { BoxProps } from '@semcore/flex-box';
-import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/core/lib/utils/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
 export interface ILinkProps extends LinkProps, UnknownProperties {}

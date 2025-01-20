@@ -1,18 +1,18 @@
 import React from 'react';
-import createComponent, { Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
+import { createComponent, Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
 import PopperOrigin from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
-import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import logger from '@semcore/utils/lib/logger';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import resolveColorEnhance from '@semcore/core/lib/utils/enhances/resolveColorEnhance';
+import { isAdvanceMode } from '@semcore/core/lib/utils/findComponent';
+import logger from '@semcore/core/lib/utils/logger';
+import uniqueIDEnhancement from '@semcore/core/lib/utils/uniqueID';
 import Portal from '@semcore/portal';
 
 import style from './style/tooltip.shadow.css';
 import {
   useZIndexStacking,
   ZIndexStackingContextProvider,
-} from '@semcore/utils/lib/zIndexStacking';
+} from '@semcore/core/lib/utils/zIndexStacking';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 

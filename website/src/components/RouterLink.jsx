@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LinkUI from '@semcore/link';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import propsForElement from '@semcore/core/lib/utils/propsForElement';
 
 const LinkInner = React.forwardRef(function (props, ref) {
   return <Link innerRef={ref} {...propsForElement(props)} />;

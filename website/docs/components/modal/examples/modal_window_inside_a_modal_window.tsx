@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'intergalactic/button';
-import Modal from 'intergalactic/modal';
-import { Text } from 'intergalactic/typography';
+import Button from '@semcore/button';
+import Modal from '@semcore/modal';
+import { Text } from '@semcore/typography';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

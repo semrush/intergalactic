@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent from '@semcore/core';
+import { createComponent } from '@semcore/core';
 import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
@@ -8,7 +8,7 @@ import { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { localizedMessages } from '../../translations/__intergalactic-dynamic-locales';
-import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/core/lib/utils/enhances/i18nEnhance';
 
 class AreaChartComponent extends AbstractChart<
   AreaChartData,

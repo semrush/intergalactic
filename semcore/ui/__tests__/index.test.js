@@ -46,7 +46,7 @@ describe('Utils', () => {
     test.skip('release was not generated', () => {});
     return;
   }
-  const utils = require.resolve('disable-jest-mapper:@semcore/utils/lib');
+  const utils = require.resolve('disable-jest-mapper:@semcore/core/lib/utils');
   const utilsDir = path.dirname(utils);
   const rscUtilsDir = path.resolve(__dirname, '../utils/lib');
 
@@ -68,7 +68,7 @@ describe('Utils', () => {
     if (utilsModule === 'index.js') return;
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
-      const source = require(`disable-jest-mapper:@semcore/utils/lib/${utilsModule}`);
+      const source = require(`disable-jest-mapper:@semcore/core/lib/utils/${utilsModule}`);
       const rscUi = require(`disable-jest-mapper:${path.resolve(
         __dirname,
         `../utils/lib/${utilsModule}`,
