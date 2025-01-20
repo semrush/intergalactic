@@ -68,7 +68,7 @@
   transition-timing-function: ease-in-out;
 }
 
-.container:hover .sliderThumb {
+.container:hover .sliderThumb, .container:focus .sliderThumb {
   transition-duration: 1000ms;
   left: calc(100% - 12px - 32px);
 }

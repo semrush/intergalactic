@@ -4,5 +4,9 @@
   "formTitle": "Biểu mẫu Phản hồi",
   "submitButton": "Gửi góp ý",
   "successMessage": "Cảm ơn góp ý của bạn!",
-  "errorMessage": "Đã xảy ra sự cố. Hãy thử lại hoặc liên hệ với chúng tôi qua {email}."
+  "errorMessage": "Đã xảy ra sự cố. Hãy thử lại hoặc liên hệ với chúng tôi qua {email}.",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "Nhấn Enter để chọn đánh giá",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "Đánh giá của bạn: {selectedRating}/{max}",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "Chưa chọn",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating}/{max}"
 }

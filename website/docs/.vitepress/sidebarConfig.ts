@@ -638,6 +638,11 @@ export const sideBarConfig: SidebarConfig = [
             text: 'Filter common rules',
           },
           {
+            link: '/filter-group/add-filter/add-filter',
+            activeMatch: '/filter-group/add-filter/',
+            text: 'Add filter',
+          },
+          {
             link: '/filter-group/advanced-filters/advanced-filters',
             activeMatch: '/filter-group/advanced-filters/',
             text: 'Advanced filters',

@@ -51,24 +51,24 @@ describe('DropdownMenu', () => {
   test.concurrent('Supports sizes', async ({ task }) => {
     const component = (
       <React.Fragment>
-        <DropdownMenu size='m'>
-          <DropdownMenu.List>
+        <DropdownMenu size='m' visible disablePortal>
+          <DropdownMenu.Menu>
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
             <DropdownMenu.ItemHint>Hint 1</DropdownMenu.ItemHint>
             <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
-          </DropdownMenu.List>
+          </DropdownMenu.Menu>
         </DropdownMenu>
         <hr />
-        <DropdownMenu size='l'>
-          <DropdownMenu.List>
+        <DropdownMenu size='l' visible disablePortal>
+          <DropdownMenu.Menu>
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
             <DropdownMenu.ItemHint>Hint 1</DropdownMenu.ItemHint>
             <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
-          </DropdownMenu.List>
+          </DropdownMenu.Menu>
         </DropdownMenu>
       </React.Fragment>
     );
@@ -78,11 +78,11 @@ describe('DropdownMenu', () => {
 
   test.concurrent('supports disabled, selected props ', async ({ task }) => {
     const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
+      <DropdownMenu visible disablePortal>
+        <DropdownMenu.Menu>
           <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
           <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-        </DropdownMenu.List>
+        </DropdownMenu.Menu>
       </DropdownMenu>
     );
 
@@ -91,12 +91,12 @@ describe('DropdownMenu', () => {
 
   test.sequential('Should support hover', async ({ task }) => {
     const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
+      <DropdownMenu visible disablePortal>
+        <DropdownMenu.Menu>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
           <DropdownMenu.Item id='dd'>Item 2</DropdownMenu.Item>
           <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-        </DropdownMenu.List>
+        </DropdownMenu.Menu>
       </DropdownMenu>
     );
 
@@ -394,14 +394,14 @@ describe('DropdownMenu', () => {
 
   test.sequential('Should support selected hover ', async ({ task }) => {
     const component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
+      <DropdownMenu visible disablePortal>
+        <DropdownMenu.Menu>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
           <DropdownMenu.Item id='dd' selected>
             Item 2
           </DropdownMenu.Item>
           <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-        </DropdownMenu.List>
+        </DropdownMenu.Menu>
       </DropdownMenu>
     );
 

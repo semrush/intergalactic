@@ -4,5 +4,9 @@
   "formTitle": "反馈表格",
   "submitButton": "发送反馈",
   "successMessage": "感谢您的反馈！",
-  "errorMessage": "出错了。请重试或通过 {email} 联系我们。"
+  "errorMessage": "出错了。请重试或通过 {email} 联系我们。",
+  "FeedbackRating.SliderRating.ScreenReaderOnly.sliderDescriber": "按 Enter 选择评级",
+  "FeedbackRating.SliderRating.aria-valuetext.readonly": "您的评级：{selectedRating} / {max",
+  "FeedbackRating.SliderRating.aria-valuetext.empty": "未设置",
+  "FeedbackRating.SliderRating.aria-valuetext": "{selectedRating} / {max}"
 }
