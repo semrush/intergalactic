@@ -154,6 +154,7 @@ export abstract class AbstractDropdown extends Component<AbstractDDProps, {}, {}
         this.handlers.selectedIndex(index);
       },
       role,
+      isMenuItemCheckbox: role === 'menuitemcheckbox',
       'aria-checked': role === 'menuitemcheckbox' || role === 'menuitemradio' ? false : undefined,
     };
   }
