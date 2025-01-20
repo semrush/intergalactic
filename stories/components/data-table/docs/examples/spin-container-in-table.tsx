@@ -17,7 +17,7 @@ const Demo = (): any => {
     };
   }, [message]);
 
-  const handleLoading = () => {
+  const toggleLoading = () => {
     setLoading(!loading);
     setMessage(loading ? 'Data loaded' : 'Loading started');
   };
@@ -44,7 +44,7 @@ const Demo = (): any => {
           <SpinContainer.Overlay />
         </SpinContainer>
       </DataTable>
-      <Button onClick={handleLoading} mt={3}>
+      <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>
     </>

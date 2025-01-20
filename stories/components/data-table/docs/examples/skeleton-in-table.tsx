@@ -29,7 +29,7 @@ const Demo = () => {
     };
   }, [message]);
 
-  const handleLoading = () => {
+  const toggleLoading = () => {
     setLoading(!loading);
     setMessage(loading ? 'Data loaded' : 'Loading started');
   };
@@ -50,7 +50,7 @@ const Demo = () => {
           {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}
         />
       </DataTable>
-      <Button onClick={handleLoading} mt={3}>
+      <Button onClick={toggleLoading} mt={3}>
         {loading ? 'Stop loading' : 'Start loading'}
       </Button>
     </>
