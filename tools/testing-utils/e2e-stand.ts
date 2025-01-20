@@ -11,7 +11,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
     entryPoints: ['@test-entrypoint'],
     plugins: [
       {
-        name: 'test-entrypint',
+        name: 'test-entrypoint',
         setup(build) {
           build.onResolve({ filter: /^@test-entrypoint$/ }, ({ path }) => ({
             path,
@@ -20,15 +20,18 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
           build.onLoad({ filter: /^@test-entrypoint$/, namespace: 'test-entrypoint' }, () => {
             const contents = `
               import React from 'react';
-              import ReactDOM from 'react-dom';
+              import { createRoot } from 'react-dom/client';
               import App from '${resolvePath(standFilePath)}';
               import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
 
-              ReactDOM.render(
+              const container = document.querySelector('#root') || document.body.appendChild(document.createElement('div'));
+              container.id = 'root';
+
+              const root = createRoot(container); 
+              root.render(
                 <I18nProvider value='${locale}'>
                   <App />
-                </I18nProvider>,
-                document.querySelector('#root')
+                </I18nProvider>
               );
             `;
 
@@ -64,18 +67,18 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
     .filter((file) => file.path.endsWith('.js'))
     .map((file) => file.text);
 
-  const htmlContent = `
-      <!DOCTYPE html>
-      <html lang="${locale}">
-        <head>
-          <style>${cssFiles.join('\n')}</style>
-        </head>
-        <body>
-          <div id="root"></div>
-          <script>${jsFiles.join('\n')}</script>
-        </body>
-      </html>
-    `;
+    const htmlContent = `
+    <!DOCTYPE html>
+    <html lang="${locale}">
+      <head>
+        ${cssFiles} 
+      </head>
+      <body>
+        <div id="root"></div>
+        <script>${jsFiles.join('\n')}</script>
+      </body>
+    </html>
+  `;
 
   return htmlContent;
 };
